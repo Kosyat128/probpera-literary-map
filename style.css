@@ -1,0 +1,135 @@
+/* ===========================
+   LiteraryMap - Probpera
+   =========================== */
+
+:root {
+    --background: #F6F1EB;
+    --primary: #2D124C;
+    --secondary: #59327D;
+    --accent: #FD7E14;
+    --white: #FFFFFF;
+    --text: #333333;
+    --shadow: 0 10px 25px rgba(0,0,0,.08);
+    --radius: 18px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:var(--background);
+    color:var(--text);
+    line-height:1.6;
+}
+
+.hero{
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+    padding:70px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:0 auto 40px;
+    font-size:20px;
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    color:var(--primary);
+    width:170px;
+    padding:25px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.card span{
+    display:block;
+    font-size:34px;
+    font-weight:bold;
+    color:var(--accent);
+}
+
+.card small{
+    display:block;
+    margin-top:10px;
+    color:#666;
+}
+
+#search-section{
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+#search{
+    width:100%;
+    padding:18px 24px;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    box-shadow:var(--shadow);
+    outline:none;
+}
+
+#map-section{
+    max-width:1400px;
+    margin:40px auto;
+    padding:0 20px 80px;
+}
+
+#map-container{
+    background:white;
+    border-radius:var(--radius);
+    min-height:700px;
+    box-shadow:var(--shadow);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#888;
+    font-size:22px;
+}
+
+footer{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:36px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.card{
+    width:145px;
+}
+
+#map-container{
+    min-height:500px;
+}
+
+}
