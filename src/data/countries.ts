@@ -1,24 +1,10 @@
-export interface Writer {
-  id: string;
-  name: string;
-  years: string;
-  birthPlace: string;
-  coordinates: [number, number];
-  portrait: string;
-  bio: string;
-  works: string[];
-}
+import type { Country } from "./types";
 
-export interface CountryData {
-  id: string;
-  name: string;
-  writers: Writer[];
-}
-
-export const countries: CountryData[] = [
+export const countries: Country[] = [
   {
     id: "france",
     name: "Франция",
+    code: "fr",
     writers: [
       {
         id: "victor-hugo",
@@ -45,6 +31,7 @@ export const countries: CountryData[] = [
   {
     id: "russia",
     name: "Россия",
+    code: "ru",
     writers: [
       {
         id: "pushkin",
