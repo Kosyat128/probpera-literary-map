@@ -31,6 +31,7 @@ export default function App() {
         />
 
         <WorldMap
+          selectedCountry={selectedCountry.name}
           onCountrySelect={(countryName) => {
             const country = countries.find((c) => c.name === countryName);
             if (country) {
