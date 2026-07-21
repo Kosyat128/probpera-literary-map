@@ -21,14 +21,18 @@ export default function App() {
       >
         <Sidebar
           items={countries.map((country) => country.name)}
+          selectedItem={selectedCountry.name}
+          onSelect={(countryName) => {
+            const country = countries.find((c) => c.name === countryName);
+            if (country) {
+              setSelectedCountry(country);
+            }
+          }}
         />
 
         <WorldMap
           onCountrySelect={(countryName) => {
-            const country = countries.find(
-              (c) => c.name === countryName
-            );
-
+            const country = countries.find((c) => c.name === countryName);
             if (country) {
               setSelectedCountry(country);
             }
