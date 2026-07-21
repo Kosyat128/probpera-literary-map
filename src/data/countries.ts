@@ -11,19 +11,19 @@ export interface CountryData {
 
 export const countries: CountryData[] = [
   {
-    id: 'france',
-    name: 'France',
+    id: "france",
+    name: "Франция",
     writers: [
-      { name: 'Victor Hugo', years: '1802–1885' },
-      { name: 'Alexandre Dumas', years: '1802–1870' }
-    ]
+      { name: "Виктор Гюго", years: "1802–1885" },
+      { name: "Александр Дюма (отец)", years: "1802–1870" },
+    ],
   },
   {
-    id: 'russia',
-    name: 'Russia',
+    id: "russia",
+    name: "Россия",
     writers: [
-      { name: 'Leo Tolstoy', years: '1828–1910' },
-      { name: 'Fyodor Dostoevsky', years: '1821–1881' }
-    ]
-  }
+      { name: "Лев Толстой", years: "1828–1910" },
+      { name: "Фёдор Достоевский", years: "1821–1881" },
+    ],
+  },
 ];
