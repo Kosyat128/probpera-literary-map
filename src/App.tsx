@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import WorldMap from "./components/WorldMap";
+import WriterPanel from "./components/WriterPanel";
 
 import { countries } from "./data/countries";
 
@@ -40,28 +41,7 @@ export default function App() {
           }}
         />
 
-        <aside
-          style={{
-            width: "340px",
-            padding: "20px",
-            borderLeft: "1px solid #3b2a6b",
-            overflowY: "auto",
-          }}
-        >
-          <h2>{selectedCountry.name}</h2>
-
-          <h3>Писатели</h3>
-
-          <ul>
-            {selectedCountry.writers.map((writer) => (
-              <li key={writer.name}>
-                <strong>{writer.name}</strong>
-                <br />
-                <small>{writer.years}</small>
-              </li>
-            ))}
-          </ul>
-        </aside>
+        <WriterPanel country={selectedCountry} />
       </div>
     </>
   );
