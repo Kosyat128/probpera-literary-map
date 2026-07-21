@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Литературная карта мира | Проба Пера</title>
+
+    <meta name="description" content="Интерактивная литературная карта мира. Писатели, книги, литературные премии и статьи со всего мира.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <h1>Литературная карта мира</h1>
+
+        <p>
+            Исследуйте страны, великих писателей, произведения и литературные премии мира.
+        </p>
+
+        <div class="stats">
+
+            <div class="card">
+                <span id="countries-count">195</span>
+                <small>Стран</small>
+            </div>
+
+            <div class="card">
+                <span id="writers-count">1240</span>
+                <small>Писателей</small>
+            </div>
+
+            <div class="card">
+                <span id="articles-count">3876</span>
+                <small>Статей</small>
+            </div>
+
+            <div class="card">
+                <span id="awards-count">34</span>
+                <small>Премии</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main>
+
+<section id="search-section">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Поиск страны или писателя..."
+    >
+
+</section>
+
+<section id="map-section">
+
+    <div id="map-container">
+
+        <!-- Здесь будет интерактивная карта -->
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 Проба Пера • LiteraryMap
+    </p>
+
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
