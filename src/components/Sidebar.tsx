@@ -1,16 +1,32 @@
 type SidebarProps = {
-  items?: string[];
+  items: string[];
 };
 
-export default function Sidebar({ items = [] }: SidebarProps) {
+export default function Sidebar({
+  items,
+}: SidebarProps) {
   return (
-    <aside style={{width:'280px',padding:'1rem',borderRight:'1px solid #3b2a6b'}}>
+    <aside
+      style={{
+        width: "260px",
+        borderRight: "1px solid #3b2a6b",
+        padding: "20px",
+      }}
+    >
       <h2>Страны</h2>
-      <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+
+      {items.map((item) => (
+        <div
+          key={item}
+          style={{
+            padding: "10px",
+            cursor: "pointer",
+            borderBottom: "1px solid #333",
+          }}
+        >
+          {item}
+        </div>
+      ))}
     </aside>
   );
 }
