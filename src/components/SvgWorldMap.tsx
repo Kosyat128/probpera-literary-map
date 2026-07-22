@@ -2,21 +2,14 @@ import { useEffect, useState } from "react";
 import { literaryCountries } from "../data/literaryMap/countries";
 import mapSvg from "../assets/map/world-countries.svg";
 
-
-type SelectedCountry = {
-  id: string;
-  name: string;
-  writers: number;
-  authors: string[];
+type SvgWorldMapProps = {
+  onCountrySelect?: (name: string) => void;
 };
 
-
-export default function SvgWorldMap() {
+export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
 
   const [svgContent, setSvgContent] = useState("");
-  const [selected, setSelected] = useState<SelectedCountry | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
-
 
   useEffect(() => {
     fetch(mapSvg)
@@ -24,11 +17,8 @@ export default function SvgWorldMap() {
       .then(svg => setSvgContent(svg));
   }, []);
 
-
   const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
-
     const target = event.target as SVGElement;
-
     const id = target.getAttribute("id");
 
     if (!id) return;
@@ -37,14 +27,8 @@ export default function SvgWorldMap() {
 
     if (!country) return;
 
-    setSelected({
-      id,
-      name: country.name,
-      writers: country.writers,
-      authors: country.authors,
-    });
+    onCountrySelect?.(country.name);
   };
-
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as SVGElement;
@@ -57,7 +41,6 @@ export default function SvgWorldMap() {
     }
   };
 
-
   return (
     <div
       style={{
@@ -69,7 +52,6 @@ export default function SvgWorldMap() {
         overflow: "hidden",
       }}
     >
-
       <div
         onClick={handleSvgClick}
         onMouseMove={handleMouseMove}
@@ -79,7 +61,6 @@ export default function SvgWorldMap() {
           height: "100%",
         }}
       />
-
 
       {hovered && (
         <div
@@ -96,30 +77,6 @@ export default function SvgWorldMap() {
           {literaryCountries[hovered as keyof typeof literaryCountries]?.name}
         </div>
       )}
-
-
-      {selected && (
-        <div
-          style={{
-            position: "absolute",
-            right: 20,
-            bottom: 20,
-            width: "280px",
-            background: "#FFF8EE",
-            padding: "20px",
-            borderRadius: "15px",
-            color: "#35205F",
-          }}
-        >
-          <h2>{selected.name}</h2>
-          <p>Писателей: <b>{selected.writers}</b></p>
-          <h3>Известные авторы</h3>
-          {selected.authors.map(author => (
-            <p key={author}>📖 {author}</p>
-          ))}
-        </div>
-      )}
-
     </div>
   );
 }
