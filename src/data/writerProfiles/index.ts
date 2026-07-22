@@ -5,3 +5,7 @@ export * from "./tolstoy";
 export * from "./dostoevsky";
 export * from "./pushkin";
 export * from "./chekhov";
+export * from "./shakespeare";
+export * from "./dickens";
+export * from "./hugo";
+export * from "./murakami";
