@@ -22,6 +22,7 @@ import { mandelshtam } from "./mandelshtam";
 import { sholokhov } from "./sholokhov";
 import { gorky } from "./gorky";
 import { blok } from "./blok";
+import { additionalRussianWriters } from "./additional";
 
 export const russianWriters = [
   tolstoy,
@@ -47,5 +48,6 @@ export const russianWriters = [
   mandelshtam,
   sholokhov,
   gorky,
-  blok
+  blok,
+  ...additionalRussianWriters
 ];
