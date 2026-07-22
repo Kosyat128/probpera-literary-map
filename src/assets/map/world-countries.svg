@@ -1,11 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
-  <!-- LiteraryMap custom SVG map layer -->
-  <!-- Country paths will be added in the next step -->
+
+  <!-- LiteraryMap custom interactive SVG layer -->
+  <!-- Base shapes prepared. Exact country contours will be replaced by final traced map paths. -->
+
   <g id="countries">
-    <path id="russia" class="country" fill="#35205F" d="" />
-    <path id="france" class="country" fill="#35205F" d="" />
-    <path id="uk" class="country" fill="#35205F" d="" />
-    <path id="usa" class="country" fill="#35205F" d="" />
-    <path id="japan" class="country" fill="#35205F" d="" />
+
+    <path
+      id="russia"
+      data-name="Россия"
+      class="country"
+      fill="#35205F"
+      d="M720 150 L980 150 L1080 230 L930 280 L760 250 Z"
+    />
+
+    <path
+      id="france"
+      data-name="Франция"
+      class="country"
+      fill="#35205F"
+      d="M470 260 L520 250 L550 300 L500 340 L450 310 Z"
+    />
+
+    <path
+      id="uk"
+      data-name="Великобритания"
+      class="country"
+      fill="#35205F"
+      d="M430 180 L460 160 L480 210 L450 230 Z"
+    />
+
+    <path
+      id="usa"
+      data-name="США"
+      class="country"
+      fill="#35205F"
+      d="M180 270 L390 250 L450 340 L330 390 L180 350 Z"
+    />
+
+    <path
+      id="japan"
+      data-name="Япония"
+      class="country"
+      fill="#35205F"
+      d="M1030 330 L1060 300 L1080 360 L1050 400 Z"
+    />
+
   </g>
+
 </svg>
