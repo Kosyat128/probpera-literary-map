@@ -23,7 +23,6 @@ export type WorldMapProps = {
 
 
 
-// Иконка маркера
 const countryIcon = new L.Icon({
 
   iconUrl:
@@ -47,7 +46,6 @@ const countryIcon = new L.Icon({
 
 
 
-// Приведение координат к формату Leaflet
 function normalizeCoordinates(
 
   coordinates:
@@ -143,7 +141,6 @@ export default function WorldMap({
 
 
 
-
   const activeCountry =
 
     countries.find(
@@ -156,14 +153,11 @@ export default function WorldMap({
 
 
 
+  const activeCoordinates = normalizeCoordinates(
 
-  const activeCoordinates =
+    activeCountry.coordinates
 
-    normalizeCoordinates(
-
-      activeCountry.coordinates
-
-    );
+  );
 
 
 
@@ -180,6 +174,8 @@ export default function WorldMap({
         padding: "1rem",
 
         minWidth: 0,
+
+        height: "calc(100vh - 80px)",
 
       }}
 
@@ -201,11 +197,13 @@ export default function WorldMap({
 
         style={{
 
-          height: "600px",
+          height: "100%",
 
           width: "100%",
 
-          borderRadius: "12px",
+          minHeight: "700px",
+
+          borderRadius: "14px",
 
           overflow: "hidden",
 
@@ -244,14 +242,11 @@ export default function WorldMap({
           countries.map((country) => {
 
 
+            const coordinates = normalizeCoordinates(
 
-            const coordinates =
+              country.coordinates
 
-              normalizeCoordinates(
-
-                country.coordinates
-
-              );
+            );
 
 
 
@@ -296,7 +291,15 @@ export default function WorldMap({
                 <Popup>
 
 
-                  <div>
+                  <div
+
+                    style={{
+
+                      minWidth: "120px",
+
+                    }}
+
+                  >
 
 
                     <strong>
@@ -306,9 +309,7 @@ export default function WorldMap({
                     </strong>
 
 
-
                     <br />
-
 
 
                     Писателей:
@@ -316,7 +317,6 @@ export default function WorldMap({
                     {" "}
 
                     {country.writers.length}
-
 
 
                   </div>
