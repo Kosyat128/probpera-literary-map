@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import type { Country, Writer } from "../data/types";
 import CountryStats from "./CountryStats";
 
@@ -6,9 +7,17 @@ type WriterPanelProps = {
 };
 
 export default function WriterPanel({ country }: WriterPanelProps) {
-
   const writers = country.writers || [];
-  const mainWriter = writers[0];
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Writer>(writers[0]);
+
+  const filteredWriters = useMemo(() => {
+    return writers.filter(writer =>
+      (writer.fullName || writer.name)
+        .toLowerCase()
+        .includes(query.toLowerCase())
+    );
+  }, [writers, query]);
 
   return (
     <aside style={{
@@ -32,12 +41,35 @@ export default function WriterPanel({ country }: WriterPanelProps) {
 
       <CountryStats country={country}/>
 
-      {mainWriter && <WriterCard writer={mainWriter}/>} 
+      <input
+        value={query}
+        onChange={(e)=>setQuery(e.target.value)}
+        placeholder="🔎 Найти писателя"
+        style={{
+          width:"100%",
+          padding:"10px",
+          margin:"15px 0",
+          borderRadius:"10px",
+          border:"1px solid #D8B98A"
+        }}
+      />
 
-      <h3>Известные авторы</h3>
+      {selected && <WriterCard writer={selected}/>} 
 
-      {writers.map(writer=>(
-        <div key={writer.id} style={{background:"#F7EBDD",padding:"10px",borderRadius:"10px",marginBottom:"8px"}}>
+      <h3>Известные авторы ({filteredWriters.length})</h3>
+
+      {filteredWriters.map(writer=>(
+        <div
+          key={writer.id}
+          onClick={()=>setSelected(writer)}
+          style={{
+            background:selected?.id===writer.id ? "#E6D5C0":"#F7EBDD",
+            padding:"10px",
+            borderRadius:"10px",
+            marginBottom:"8px",
+            cursor:"pointer"
+          }}
+        >
           <b>{writer.fullName || writer.name}</b><br/>
           <small>{writer.years}</small>
         </div>
@@ -54,6 +86,7 @@ function WriterCard({writer}:{writer:Writer}){
    <p>📅 {writer.years}</p>
    {writer.birthPlace && <p>📍 {writer.birthPlace}</p>}
    {writer.movement && <p>Направление: {writer.movement}</p>}
+   {writer.nobelYear && <p>🏆 Нобелевская премия: {writer.nobelYear}</p>}
    <h3>Произведения</h3>
    {writer.works?.map(work=><p key={work}>📖 {work}</p>)}
  </div>
