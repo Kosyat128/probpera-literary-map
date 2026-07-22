@@ -1,8 +1,10 @@
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Popup, useMap } from "react-leaflet";
+import { useEffect } from "react";
 import type { LatLngExpression } from "leaflet";
 import L from "leaflet";
 
 import { countries } from "../data/countries";
+
 
 export type WorldMapProps = {
   selectedCountry?: string;
@@ -13,8 +15,10 @@ export type WorldMapProps = {
 const countryIcon = new L.Icon({
   iconUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+
   iconRetinaUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+
   shadowUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 
@@ -30,55 +34,107 @@ function Recenter({
 }: {
   center: LatLngExpression;
 }) {
+
   const map = useMap();
 
-  map.setView(center, 3);
+
+  useEffect(() => {
+
+    map.setView(center, 3);
+
+  }, [center, map]);
+
 
   return null;
 }
 
 
+
 export default function WorldMap({
+
   selectedCountry = "France",
+
   onCountrySelect,
+
 }: WorldMapProps) {
 
+
+  if (!countries.length) {
+
+    return (
+      <div>
+        База стран не загружена
+      </div>
+    );
+
+  }
+
+
   const activeCountry =
+
     countries.find(
-      (country) => country.name === selectedCountry
+
+      (country) =>
+        country.name === selectedCountry
+
     ) ?? countries[0];
 
 
+
   return (
+
     <section
+
       style={{
+
         flex: 1,
+
         padding: "1rem",
+
       }}
+
     >
 
+
       <MapContainer
+
         center={activeCountry.coordinates}
+
         zoom={3}
+
         style={{
+
           height: "100%",
+
           minHeight: "600px",
+
           borderRadius: 12,
+
         }}
+
       >
 
+
         <Recenter
+
           center={activeCountry.coordinates}
+
         />
+
 
 
         <TileLayer
+
           attribution="&copy; OpenStreetMap contributors"
+
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
         />
 
 
+
         {countries.map((country) => (
+
 
           <Marker
 
@@ -88,20 +144,52 @@ export default function WorldMap({
 
             icon={countryIcon}
 
+
             eventHandlers={{
+
               click: () =>
+
                 onCountrySelect?.(
+
                   country.name
+
                 ),
+
             }}
 
-          />
+          >
+
+            <Popup>
+
+              <strong>
+
+                {country.name}
+
+              </strong>
+
+              <br />
+
+              Писателей:
+
+              {" "}
+
+              {country.writers.length}
+
+
+            </Popup>
+
+
+          </Marker>
+
 
         ))}
 
 
       </MapContainer>
 
+
     </section>
+
   );
+
 }
