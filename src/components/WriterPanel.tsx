@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Country, Writer } from "../data/types";
 import CountryStats from "./CountryStats";
+import WriterProfile from "./WriterProfile";
 
 type WriterPanelProps = {
   country: Country;
@@ -9,7 +10,8 @@ type WriterPanelProps = {
 export default function WriterPanel({ country }: WriterPanelProps) {
   const writers = country.writers || [];
   const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<Writer>(writers[0]);
+  const [selected, setSelected] = useState<Writer | null>(writers[0] || null);
+  const [openProfile, setOpenProfile] = useState(false);
 
   const filteredWriters = useMemo(() => {
     return writers.filter(writer =>
@@ -31,12 +33,6 @@ export default function WriterPanel({ country }: WriterPanelProps) {
       boxShadow:"0 5px 20px rgba(53,32,95,.15)"
     }}>
 
-      <div style={{display:"flex",justifyContent:"space-between",marginBottom:"15px"}}>
-        <button>←</button>
-        <button>⭐</button>
-        <button>↗</button>
-      </div>
-
       <h2 style={{color:"#35205F"}}>{country.name}</h2>
 
       <CountryStats country={country}/>
@@ -45,49 +41,48 @@ export default function WriterPanel({ country }: WriterPanelProps) {
         value={query}
         onChange={(e)=>setQuery(e.target.value)}
         placeholder="🔎 Найти писателя"
-        style={{
-          width:"100%",
-          padding:"10px",
-          margin:"15px 0",
-          borderRadius:"10px",
-          border:"1px solid #D8B98A"
-        }}
+        style={{width:"100%",padding:"10px",margin:"15px 0",borderRadius:"10px"}}
       />
 
-      {selected && <WriterCard writer={selected}/>} 
+      {selected && !openProfile && <WriterCard writer={selected} onOpen={()=>setOpenProfile(true)}/>}
 
-      <h3>Известные авторы ({filteredWriters.length})</h3>
+      {selected && openProfile && <>
+        <button onClick={()=>setOpenProfile(false)}>← Назад к списку</button>
+        <WriterProfile writer={selected}/>
+      </>}
 
-      {filteredWriters.map(writer=>(
-        <div
-          key={writer.id}
-          onClick={()=>setSelected(writer)}
-          style={{
-            background:selected?.id===writer.id ? "#E6D5C0":"#F7EBDD",
-            padding:"10px",
-            borderRadius:"10px",
-            marginBottom:"8px",
-            cursor:"pointer"
-          }}
-        >
-          <b>{writer.fullName || writer.name}</b><br/>
-          <small>{writer.years}</small>
-        </div>
-      ))}
+      {!openProfile && <>
+        <h3>Известные авторы ({filteredWriters.length})</h3>
+        {filteredWriters.map(writer=>(
+          <div
+            key={writer.id}
+            onClick={()=>{
+              setSelected(writer);
+              setOpenProfile(false);
+            }}
+            style={{
+              background:selected?.id===writer.id ? "#E6D5C0":"#F7EBDD",
+              padding:"10px",
+              borderRadius:"10px",
+              marginBottom:"8px",
+              cursor:"pointer"
+            }}
+          >
+            <b>{writer.fullName || writer.name}</b><br/>
+            <small>{writer.years}</small>
+          </div>
+        ))}
+      </>}
 
     </aside>
   );
 }
 
-function WriterCard({writer}:{writer:Writer}){
+function WriterCard({writer,onOpen}:{writer:Writer,onOpen:()=>void}){
  return <div style={{background:"#F7EBDD",borderRadius:"15px",padding:"15px"}}>
    {writer.portrait && <img src={writer.portrait} alt={writer.fullName || writer.name} style={{width:"100%",height:"160px",objectFit:"cover",borderRadius:"12px"}}/>}
    <h2 style={{color:"#35205F"}}>{writer.fullName || writer.name}</h2>
    <p>📅 {writer.years}</p>
-   {writer.birthPlace && <p>📍 {writer.birthPlace}</p>}
-   {writer.movement && <p>Направление: {writer.movement}</p>}
-   {writer.nobelYear && <p>🏆 Нобелевская премия: {writer.nobelYear}</p>}
-   <h3>Произведения</h3>
-   {writer.works?.map(work=><p key={work}>📖 {work}</p>)}
+   <button onClick={onOpen}>Открыть полный профиль</button>
  </div>
 }
