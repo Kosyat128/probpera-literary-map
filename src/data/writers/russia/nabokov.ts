@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const nabokov: WriterProfile = {id:"vladimir-nabokov",fullName:"Владимир Владимирович Набоков",birth:"22 апреля 1899",death:"2 июля 1977",country:"Россия",movement:"Модернизм",biography:"Русский и американский писатель, известный сложной художественной техникой и романом «Лолита».",works:["Лолита","Дар","Защита Лужина","Машенька"],awards:[],places:["Санкт-Петербург","Монтрё"]};
