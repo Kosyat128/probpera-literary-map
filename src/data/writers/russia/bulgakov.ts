@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const bulgakov: WriterProfile = {id:"mikhail-bulgakov",fullName:"Михаил Афанасьевич Булгаков",birth:"15 мая 1891",death:"10 марта 1940",country:"Россия",movement:"Модернизм",biography:"Русский писатель и драматург, автор сатирических и философских произведений.",works:["Мастер и Маргарита","Собачье сердце","Белая гвардия"],awards:[],places:["Москва","Киев"]};
