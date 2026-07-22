@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { literaryCountries } from "../data/literaryMap/countries";
 import mapSvg from "../assets/map/world-countries.svg";
 
@@ -13,11 +13,25 @@ type SelectedCountry = {
 
 export default function SvgWorldMap() {
 
+  const [svgContent, setSvgContent] = useState("");
   const [selected, setSelected] = useState<SelectedCountry | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
 
-  const handleCountryClick = (id: string) => {
+  useEffect(() => {
+    fetch(mapSvg)
+      .then(response => response.text())
+      .then(svg => setSvgContent(svg));
+  }, []);
+
+
+  const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
+
+    const target = event.target as SVGElement;
+
+    const id = target.getAttribute("id");
+
+    if (!id) return;
 
     const country = literaryCountries[id as keyof typeof literaryCountries];
 
@@ -32,51 +46,39 @@ export default function SvgWorldMap() {
   };
 
 
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as SVGElement;
+    const id = target.getAttribute("id");
+
+    if (id && literaryCountries[id as keyof typeof literaryCountries]) {
+      setHovered(id);
+    } else {
+      setHovered(null);
+    }
+  };
+
+
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
-        height: "100%",
+        minHeight: "700px",
         background: "#F7EBDD",
         borderRadius: "18px",
         overflow: "hidden",
       }}
     >
 
-      <img
-        src={mapSvg}
-        alt="Literary world map"
+      <div
+        onClick={handleSvgClick}
+        onMouseMove={handleMouseMove}
+        dangerouslySetInnerHTML={{ __html: svgContent }}
         style={{
           width: "100%",
           height: "100%",
         }}
       />
-
-
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-        }}
-      >
-        {Object.keys(literaryCountries).map((country) => (
-          <button
-            key={country}
-            onMouseEnter={() => setHovered(country)}
-            onMouseLeave={() => setHovered(null)}
-            onClick={() => handleCountryClick(country)}
-            style={{
-              position: "relative",
-              opacity: 0,
-              width: "20px",
-              height: "20px",
-              cursor: "pointer",
-            }}
-          >
-          </button>
-        ))}
-      </div>
 
 
       {hovered && (
@@ -110,13 +112,8 @@ export default function SvgWorldMap() {
           }}
         >
           <h2>{selected.name}</h2>
-
-          <p>
-            Писателей: <b>{selected.writers}</b>
-          </p>
-
+          <p>Писателей: <b>{selected.writers}</b></p>
           <h3>Известные авторы</h3>
-
           {selected.authors.map(author => (
             <p key={author}>📖 {author}</p>
           ))}
