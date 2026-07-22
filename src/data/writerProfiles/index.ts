@@ -13,3 +13,7 @@ export * from "./goethe";
 export * from "./schiller";
 export * from "./marquez";
 export * from "./eco";
+export * from "./dante";
+export * from "./cervantes";
+export * from "./kawabata";
+export * from "./munro";
