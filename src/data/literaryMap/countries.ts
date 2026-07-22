@@ -1,7 +1,7 @@
-import { russianWriters } from "../writers/russia";
+import { russia } from "../writers/russia";
 import { convertWriters } from "../writers/convertWriter";
 
-const convertedRussianWriters = convertWriters(russianWriters);
+const convertedRussianWriters = convertWriters(russia.writers);
 
 export const literaryCountries = {
   russia: {
