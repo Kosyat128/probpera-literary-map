@@ -13,6 +13,7 @@ export type WorldMapProps = {
 
 
 const countryIcon = new L.Icon({
+
   iconUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
 
@@ -26,13 +27,44 @@ const countryIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
+
 });
 
 
+// Поддержка двух форматов координат
+function normalizeCoordinates(
+  coordinates:
+    | [number, number]
+    | {
+        lat: number;
+        lng: number;
+      }
+): [number, number] {
+
+  if (Array.isArray(coordinates)) {
+
+    return coordinates;
+
+  }
+
+
+  return [
+    coordinates.lat,
+    coordinates.lng
+  ];
+
+}
+
+
+
 function Recenter({
+
   center,
+
 }: {
+
   center: LatLngExpression;
+
 }) {
 
   const map = useMap();
@@ -46,6 +78,7 @@ function Recenter({
 
 
   return null;
+
 }
 
 
@@ -62,12 +95,17 @@ export default function WorldMap({
   if (!countries.length) {
 
     return (
+
       <div>
+
         База стран не загружена
+
       </div>
+
     );
 
   }
+
 
 
   const activeCountry =
@@ -75,9 +113,16 @@ export default function WorldMap({
     countries.find(
 
       (country) =>
+
         country.name === selectedCountry
 
     ) ?? countries[0];
+
+
+
+  const activeCoordinates = normalizeCoordinates(
+    activeCountry.coordinates ?? [0, 0]
+  );
 
 
 
@@ -98,7 +143,7 @@ export default function WorldMap({
 
       <MapContainer
 
-        center={activeCountry.coordinates}
+        center={activeCoordinates}
 
         zoom={3}
 
@@ -117,7 +162,7 @@ export default function WorldMap({
 
         <Recenter
 
-          center={activeCountry.coordinates}
+          center={activeCoordinates}
 
         />
 
@@ -133,56 +178,75 @@ export default function WorldMap({
 
 
 
-        {countries.map((country) => (
+        {countries.map((country) => {
 
 
-          <Marker
+          const coordinates = normalizeCoordinates(
 
-            key={country.id}
+            country.coordinates ?? [0, 0]
 
-            position={country.coordinates}
-
-            icon={countryIcon}
+          );
 
 
-            eventHandlers={{
 
-              click: () =>
+          return (
 
-                onCountrySelect?.(
+            <Marker
 
-                  country.name
+              key={country.id}
 
-                ),
+              position={coordinates}
 
-            }}
-
-          >
-
-            <Popup>
-
-              <strong>
-
-                {country.name}
-
-              </strong>
-
-              <br />
-
-              Писателей:
-
-              {" "}
-
-              {country.writers.length}
+              icon={countryIcon}
 
 
-            </Popup>
+              eventHandlers={{
 
 
-          </Marker>
+                click: () =>
+
+                  onCountrySelect?.(
+
+                    country.name
+
+                  ),
 
 
-        ))}
+              }}
+
+            >
+
+
+              <Popup>
+
+
+                <strong>
+
+                  {country.name}
+
+                </strong>
+
+
+                <br />
+
+
+                Писателей:
+
+                {" "}
+
+                {country.writers.length}
+
+
+              </Popup>
+
+
+            </Marker>
+
+          );
+
+
+        })}
+
 
 
       </MapContainer>
