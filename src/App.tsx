@@ -11,9 +11,7 @@ import type { Country } from "./data/types";
 
 export default function App(){
 
- const [selectedCountry,setSelectedCountry]=useState<Country | null>(
-  countries[0] ?? null
- );
+ const [selectedCountry,setSelectedCountry]=useState<Country | null>(countries[0] ?? null);
 
  if(!selectedCountry){
   return <div>База стран не загружена</div>;
@@ -45,11 +43,7 @@ export default function App(){
     fontWeight:"bold"
    }}>
     LiteraryMap
-    <span style={{
-     marginLeft:"20px",
-     color:"#E97824",
-     fontSize:"18px"
-    }}>
+    <span style={{marginLeft:"20px",color:"#E97824",fontSize:"18px"}}>
      Литературная карта мира
     </span>
    </div>
@@ -58,8 +52,7 @@ export default function App(){
     display:"grid",
     gridTemplateColumns:"260px minmax(600px,1fr) 380px",
     gap:"14px",
-    padding:"14px",
-    alignItems:"start"
+    padding:"14px"
    }}>
 
     <Sidebar
@@ -68,13 +61,11 @@ export default function App(){
      onSelect={handleCountrySelect}
     />
 
-    <main style={{
-     display:"flex",
-     flexDirection:"column",
-     gap:"18px"
-    }}>
+    <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
 
-     <SvgWorldMap />
+     <SvgWorldMap
+      onCountrySelect={handleCountrySelect}
+     />
 
      <Timeline
       name={selectedCountry.writers[0]?.name}
