@@ -10,16 +10,31 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
 
   const [svgContent, setSvgContent] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(mapSvg)
       .then(response => response.text())
-      .then(svg => setSvgContent(svg));
+      .then(svg => {
+        const styledSvg = svg.replace(
+          "</svg>",
+          `<style>
+            .country { fill:#35205F; stroke:#F7EBDD; stroke-width:1; cursor:pointer; transition:0.3s; }
+            .country:hover { fill:#E97824; }
+            .selected-country { fill:#E97824 !important; }
+          </style></svg>`
+        );
+        setSvgContent(styledSvg);
+      });
   }, []);
 
-  const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const getCountryId = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as SVGElement;
-    const id = target.getAttribute("id");
+    return target.getAttribute("id");
+  };
+
+  const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const id = getCountryId(event);
 
     if (!id) return;
 
@@ -27,12 +42,12 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
 
     if (!country) return;
 
+    setSelected(id);
     onCountrySelect?.(country.name);
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    const target = event.target as SVGElement;
-    const id = target.getAttribute("id");
+    const id = getCountryId(event);
 
     if (id && literaryCountries[id as keyof typeof literaryCountries]) {
       setHovered(id);
@@ -44,39 +59,39 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
   return (
     <div
       style={{
-        position: "relative",
-        width: "100%",
-        minHeight: "700px",
-        background: "#F7EBDD",
-        borderRadius: "18px",
-        overflow: "hidden",
+        position:"relative",
+        width:"100%",
+        minHeight:"700px",
+        background:"#F7EBDD",
+        borderRadius:"18px",
+        overflow:"hidden"
       }}
     >
       <div
         onClick={handleSvgClick}
         onMouseMove={handleMouseMove}
-        dangerouslySetInnerHTML={{ __html: svgContent }}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
+        onMouseLeave={() => setHovered(null)}
+        dangerouslySetInnerHTML={{__html: svgContent}}
+        style={{width:"100%",height:"100%"}}
       />
 
       {hovered && (
         <div
           style={{
-            position: "absolute",
-            top: 20,
-            left: 20,
-            background: "#FFF8EE",
-            padding: "15px",
-            borderRadius: "12px",
-            color: "#35205F",
+            position:"absolute",
+            top:20,
+            left:20,
+            background:"#FFF8EE",
+            padding:"12px 18px",
+            borderRadius:"12px",
+            color:"#35205F",
+            boxShadow:"0 5px 20px rgba(0,0,0,0.15)"
           }}
         >
           {literaryCountries[hovered as keyof typeof literaryCountries]?.name}
         </div>
       )}
+
     </div>
   );
 }
