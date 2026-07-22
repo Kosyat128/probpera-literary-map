@@ -14,7 +14,7 @@ export interface Writer {
 
   birthPlace: string;
 
-  coordinates: Coordinates;
+  coordinates: Coordinates | [number, number];
 
   portrait: string;
 
