@@ -9,3 +9,7 @@ export * from "./shakespeare";
 export * from "./dickens";
 export * from "./hugo";
 export * from "./murakami";
+export * from "./goethe";
+export * from "./schiller";
+export * from "./marquez";
+export * from "./eco";
