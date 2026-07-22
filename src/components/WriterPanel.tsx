@@ -12,7 +12,9 @@ export default function WriterPanel({
 }: WriterPanelProps) {
 
 
-  const mainWriter = country.writers[0];
+  const writers = country.writers;
+
+  const mainWriter = writers[0];
 
 
 
@@ -22,18 +24,22 @@ export default function WriterPanel({
 
       style={{
 
-        width: "360px",
+        width:"380px",
 
-        padding: "18px",
+        background:"#FFF8EE",
 
-        overflowY: "auto",
+        borderRadius:"18px",
 
-        background: "#F7EBDD",
+        padding:"20px",
 
-        borderLeft:
-          "1px solid #D8B98A",
+        color:"#2B183F",
 
-        color: "#2B183F",
+        overflowY:"auto",
+
+        height:"620px",
+
+        boxShadow:
+        "0 5px 20px rgba(53,32,95,.15)",
 
       }}
 
@@ -41,44 +47,30 @@ export default function WriterPanel({
 
 
 
-      {/* Шапка страны */}
+      {/* Верхняя панель */}
 
       <div
 
         style={{
 
-          display: "flex",
+          display:"flex",
 
-          justifyContent: "space-between",
+          justifyContent:"space-between",
 
-          marginBottom: "15px",
+          marginBottom:"15px",
 
         }}
 
       >
 
-        <button>
+        <button>←</button>
 
-          ←
+        <button>⭐</button>
 
-        </button>
-
-
-        <button>
-
-          →
-
-        </button>
-
-
-        <button>
-
-          ✕
-
-        </button>
-
+        <button>↗</button>
 
       </div>
+
 
 
 
@@ -87,9 +79,9 @@ export default function WriterPanel({
 
         style={{
 
-          color: "#35205F",
+          color:"#35205F",
 
-          marginBottom: "5px",
+          marginBottom:"5px",
 
         }}
 
@@ -101,16 +93,15 @@ export default function WriterPanel({
 
 
 
-
       <p>
 
-        Писателей:
+        ✒️ Писателей:
 
         {" "}
 
         <b>
 
-          {country.writers.length}
+          {writers.length}
 
         </b>
 
@@ -119,33 +110,63 @@ export default function WriterPanel({
 
 
 
-      {/* Основной автор */}
+
 
       {mainWriter && (
-
 
         <div
 
           style={{
 
-            background:"#FFF8EE",
+            background:"#F7EBDD",
+
+            borderRadius:"15px",
 
             padding:"15px",
 
-            borderRadius:"12px",
-
-            marginBottom:"20px",
+            marginTop:"15px",
 
           }}
 
         >
 
 
-          <h3
+
+          {mainWriter.portrait && (
+
+            <img
+
+              src={mainWriter.portrait}
+
+              alt={mainWriter.name}
+
+              style={{
+
+                width:"100%",
+
+                height:"160px",
+
+                objectFit:"cover",
+
+                borderRadius:"12px",
+
+                marginBottom:"10px",
+
+              }}
+
+            />
+
+          )}
+
+
+
+
+
+          <h2
 
             style={{
 
-              color:"#35205F"
+              color:"#35205F",
 
             }}
 
@@ -153,12 +174,13 @@ export default function WriterPanel({
 
             {mainWriter.name}
 
-          </h3>
+          </h2>
+
 
 
           <p>
 
-            {mainWriter.years}
+            📅 {mainWriter.years}
 
           </p>
 
@@ -176,6 +198,8 @@ export default function WriterPanel({
 
 
 
+
+
           {mainWriter.movement && (
 
             <span
@@ -186,9 +210,11 @@ export default function WriterPanel({
 
                 color:"#fff",
 
-                padding:"5px 10px",
+                padding:"6px 12px",
 
-                borderRadius:"15px",
+                borderRadius:"20px",
+
+                fontSize:"13px",
 
               }}
 
@@ -204,8 +230,8 @@ export default function WriterPanel({
 
         </div>
 
-
       )}
+
 
 
 
@@ -214,48 +240,36 @@ export default function WriterPanel({
 
       {/* Вкладки */}
 
+
       <div
 
         style={{
 
-          display:"flex",
+          display:"grid",
 
-          gap:"12px",
+          gridTemplateColumns:"repeat(4,1fr)",
 
-          fontSize:"13px",
+          gap:"5px",
 
-          marginBottom:"20px",
+          margin:"20px 0",
+
+          fontSize:"12px",
 
         }}
 
       >
 
-        <b>
+        <button>Обзор</button>
 
-          ОБЗОР
+        <button>Книги</button>
 
-        </b>
+        <button>Места</button>
 
-        <span>
-
-          ПРОИЗВЕДЕНИЯ
-
-        </span>
-
-        <span>
-
-          МЕСТА
-
-        </span>
-
-        <span>
-
-          СВЯЗИ
-
-        </span>
+        <button>Связи</button>
 
 
       </div>
+
 
 
 
@@ -272,55 +286,48 @@ export default function WriterPanel({
       </h3>
 
 
-      <Progress
+      <Progress value={85}/>
 
-        value={80}
-
-      />
 
 
 
       <h3>
 
-        Нобелевские лауреаты
+        Влияние
 
       </h3>
 
 
-      <Progress
+      <Progress value={75}/>
 
-        value={30}
 
-      />
 
 
 
       <h3>
 
-        Статьи на сайте
+        Материалы проекта
 
       </h3>
 
 
-      <Progress
-
-        value={65}
-
-      />
+      <Progress value={60}/>
 
 
 
 
 
 
-      {/* Авторы */}
+
+
+      {/* Авторы страны */}
 
 
       <h3
 
         style={{
 
-          marginTop:"20px"
+          marginTop:"20px",
 
         }}
 
@@ -334,56 +341,51 @@ export default function WriterPanel({
 
       {
 
-
-        country.writers.slice(0,5).map(
-
-          writer => (
+        writers.slice(0,6).map(writer=>(
 
 
-            <div
+          <div
 
-              key={writer.id}
+            key={writer.id}
 
-              style={{
+            style={{
 
-                background:"#FFF8EE",
+              background:"#F7EBDD",
 
-                padding:"10px",
+              padding:"10px",
 
-                marginBottom:"8px",
+              borderRadius:"10px",
 
-                borderRadius:"10px",
+              marginBottom:"8px",
 
-              }}
+            }}
 
-            >
+          >
 
+            <b>
 
-              <b>
+              {writer.name}
 
-                {writer.name}
-
-              </b>
-
-
-              <br />
+            </b>
 
 
-              <small>
-
-                {writer.years}
-
-              </small>
+            <br/>
 
 
-            </div>
+            <small>
+
+              {writer.years}
+
+            </small>
 
 
-          )
+          </div>
 
-        )
+
+        ))
 
       }
+
 
 
 
@@ -403,27 +405,58 @@ export default function WriterPanel({
 
       {
 
-        mainWriter?.works?.slice(0,5).map(
-
-          work => (
+        mainWriter?.works?.map(work=>(
 
 
-            <p
+          <p key={work}>
 
-              key={work}
+            📖 {work}
 
-            >
-
-              📖 {work}
-
-            </p>
+          </p>
 
 
-          )
-
-        )
+        ))
 
       }
+
+
+
+
+
+
+
+      {/* Места */}
+
+
+      <h3>
+
+        Литературные места
+
+      </h3>
+
+
+      <div
+
+        style={{
+
+          background:"#F7EBDD",
+
+          padding:"12px",
+
+          borderRadius:"12px",
+
+        }}
+
+      >
+
+        📍 Дом-музей писателя
+
+        <br/>
+
+        📍 Исторические места
+
+      </div>
+
 
 
 
@@ -435,10 +468,9 @@ export default function WriterPanel({
 
       <h3>
 
-        Связи писателя
+        Связи
 
       </h3>
-
 
 
       <div
@@ -447,9 +479,9 @@ export default function WriterPanel({
 
           height:"120px",
 
-          background:"#FFF8EE",
+          background:"#F7EBDD",
 
-          borderRadius:"12px",
+          borderRadius:"15px",
 
           display:"flex",
 
@@ -461,9 +493,10 @@ export default function WriterPanel({
 
       >
 
-        Граф связей
+        Граф литературных связей
 
       </div>
+
 
 
 
@@ -479,51 +512,52 @@ export default function WriterPanel({
 
 function Progress({
 
-  value
+ value
 
 }:{
 
-  value:number
+ value:number
 
-}) {
+}){
 
 
-  return (
+ return (
 
-    <div
+  <div
 
-      style={{
+   style={{
 
-        background:"#E6D5C0",
+    height:"12px",
 
-        height:"12px",
+    background:"#E6D5C0",
 
-        borderRadius:"10px",
+    borderRadius:"10px",
 
-        marginBottom:"15px",
+    marginBottom:"15px",
 
-      }}
+    overflow:"hidden",
 
-    >
+   }}
 
-      <div
+  >
 
-        style={{
+   <div
 
-          width:`${value}%`,
+    style={{
 
-          height:"100%",
+     width:`${value}%`,
 
-          background:"#E97824",
+     height:"100%",
 
-          borderRadius:"10px",
+     background:"#E97824",
 
-        }}
+    }}
 
-      />
+   />
 
-    </div>
 
-  );
+  </div>
+
+ );
 
 }
