@@ -35,7 +35,6 @@ export interface Writer {
 }
 
 
-
 export interface Country {
 
   id: string;
@@ -44,7 +43,7 @@ export interface Country {
 
   code: string;
 
-  coordinates: [number, number];
+  coordinates: Coordinates | [number, number];
 
   writers: Writer[];
 
