@@ -43,7 +43,7 @@ export interface Country {
 
   code: string;
 
-  coordinates: Coordinates | [number, number];
+  coordinates?: Coordinates | [number, number];
 
   writers: Writer[];
 
