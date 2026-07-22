@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Sidebar from "./components/Sidebar";
-import WorldMap from "./components/WorldMap";
+import SvgWorldMap from "./components/SvgWorldMap";
 import WriterPanel from "./components/WriterPanel";
 import Timeline from "./components/Timeline";
 import LiteraryPlaces from "./components/LiteraryPlaces";
@@ -74,10 +74,7 @@ export default function App(){
      gap:"18px"
     }}>
 
-     <WorldMap
-      selectedCountry={selectedCountry.name}
-      onCountrySelect={handleCountrySelect}
-     />
+     <SvgWorldMap />
 
      <Timeline
       name={selectedCountry.writers[0]?.name}
