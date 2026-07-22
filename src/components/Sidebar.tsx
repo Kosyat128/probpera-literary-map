@@ -2,10 +2,32 @@ import { useState } from "react";
 
 
 type SidebarProps = {
+
   items: string[];
+
   selectedItem?: string;
-  onSelect?: (item: string) => void;
+
+  onSelect: (item:string)=>void;
+
 };
+
+
+
+const flags: Record<string,string> = {
+
+  "Россия":"🇷🇺",
+  "Франция":"🇫🇷",
+  "Великобритания":"🇬🇧",
+  "Германия":"🇩🇪",
+  "США":"🇺🇸",
+  "Италия":"🇮🇹",
+  "Испания":"🇪🇸",
+  "Япония":"🇯🇵",
+  "Китай":"🇨🇳",
+  "Индия":"🇮🇳",
+  "Бразилия":"🇧🇷",
+};
+
 
 
 export default function Sidebar({
@@ -16,22 +38,24 @@ export default function Sidebar({
 
   onSelect,
 
-}: SidebarProps) {
-
-
-  const [search, setSearch] = useState("");
+}:SidebarProps){
 
 
 
-  const filteredItems = items.filter(
+  const [search,setSearch] =
+    useState("");
 
-    (item) =>
 
-      item
-        .toLowerCase()
-        .includes(
-          search.toLowerCase()
-        )
+
+  const filtered = items.filter(
+
+    item =>
+
+    item
+    .toLowerCase()
+    .includes(
+      search.toLowerCase()
+    )
 
   );
 
@@ -43,56 +67,57 @@ export default function Sidebar({
 
       style={{
 
-        width: "280px",
+        width:"220px",
 
-        borderRight:
-          "1px solid #3b2a6b",
+        background:"#1F103D",
 
-        padding: "20px",
+        color:"#fff",
 
-        overflowY: "auto",
+        padding:"15px",
 
-        background:
-          "#ffffff",
+        borderRadius:"12px",
+
+        overflowY:"auto",
 
       }}
 
     >
 
 
-      <h2>
 
-        🌍 Страны
+      <h3>
 
-      </h2>
+        СТРАНЫ МИРА
+
+      </h3>
+
 
 
 
       <input
 
-        type="text"
-
         placeholder="Поиск страны..."
 
         value={search}
 
-        onChange={(e) =>
-          setSearch(e.target.value)
+        onChange={
+
+          e=>setSearch(e.target.value)
+
         }
 
 
         style={{
 
-          width: "100%",
+          width:"100%",
 
-          padding: "10px",
+          padding:"8px",
 
-          marginBottom: "15px",
+          borderRadius:"8px",
 
-          borderRadius: "6px",
+          border:"none",
 
-          border:
-            "1px solid #ccc",
+          marginBottom:"15px",
 
         }}
 
@@ -100,94 +125,161 @@ export default function Sidebar({
 
 
 
-      <div>
 
 
-        {filteredItems.length === 0 ? (
+      {
+
+        filtered.map(country=>(
 
 
-          <p>
+          <div
 
-            Страна не найдена
+            key={country}
 
-          </p>
-
-
-        ) : (
+            onClick={()=>onSelect(country)}
 
 
-          filteredItems.map((item) => (
+            style={{
+
+              display:"flex",
+
+              justifyContent:"space-between",
+
+              alignItems:"center",
+
+              padding:"8px",
+
+              marginBottom:"5px",
+
+              cursor:"pointer",
+
+              borderRadius:"8px",
 
 
-            <button
+              background:
 
-              key={item}
+              selectedItem===country
 
-              onClick={() =>
-                onSelect?.(item)
-              }
+              ?
 
+              "#35205F"
+
+              :
+
+              "transparent",
+
+            }}
+
+          >
+
+
+            <span>
+
+              {flags[country] ?? "🌍"}
+
+              {" "}
+
+              {country}
+
+            </span>
+
+
+
+            <small
 
               style={{
 
-                width: "100%",
-
-                textAlign:
-                  "left",
-
-                padding: "12px",
-
-                marginBottom:
-                  "5px",
-
-                cursor:
-                  "pointer",
-
-
-                borderRadius:
-                  "6px",
-
-
-                border:
-                  "none",
-
-
-                background:
-
-                  item === selectedItem
-
-                    ? "#3b2a6b"
-
-                    : "transparent",
-
-
-                color:
-
-                  item === selectedItem
-
-                    ? "#ffffff"
-
-                    : "#222",
-
-
-                fontSize:
-                  "15px",
+                color:"#E97824"
 
               }}
 
             >
 
-              {item}
+              {Math.floor(
 
-            </button>
+                Math.random()*50+10
+
+              )}
+
+            </small>
 
 
-          ))
-
-        )}
+          </div>
 
 
-      </div>
+        ))
+
+      }
+
+
+
+
+      <hr/>
+
+
+
+
+      <h4>
+
+        ☆ ИЗБРАННОЕ
+
+      </h4>
+
+
+
+      <p>
+
+        ⭐ 12
+
+      </p>
+
+
+
+
+
+      <hr/>
+
+
+
+
+
+      <h4>
+
+        НЕДАВНО ПРОСМОТРЕННЫЕ
+
+      </h4>
+
+
+
+
+      <p>
+
+        👤 Лев Толстой
+
+      </p>
+
+
+      <p>
+
+        👤 Фёдор Достоевский
+
+      </p>
+
+
+      <p>
+
+        👤 Александр Пушкин
+
+      </p>
+
+
+      <p>
+
+        👤 Антон Чехов
+
+      </p>
+
+
 
 
     </aside>
