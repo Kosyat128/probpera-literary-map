@@ -1,19 +1,16 @@
+import { russianWriters } from "../writers/russia";
+
 export const literaryCountries = {
   russia: {
     name: "Россия",
     flag: "🇷🇺",
-    writers: 127,
+    writers: russianWriters.length,
     articles: 127,
     places: 45,
-    nobel: 5,
+    nobel: russianWriters.filter(writer => writer.nobelYear).length,
     influence: 95,
-    authors: [
-      "Лев Николаевич Толстой",
-      "Фёдор Михайлович Достоевский",
-      "Антон Павлович Чехов",
-      "Иван Сергеевич Тургенев",
-      "Александр Сергеевич Пушкин"
-    ]
+    writersList: russianWriters,
+    authors: russianWriters.slice(0, 5).map(writer => writer.fullName)
   },
 
   france: {
