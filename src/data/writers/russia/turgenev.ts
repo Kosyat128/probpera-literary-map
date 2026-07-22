@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const turgenev: WriterProfile = {id:"ivan-turgenev",fullName:"Иван Сергеевич Тургенев",birth:"9 ноября 1818",death:"3 сентября 1883",country:"Россия",movement:"Реализм",biography:"Русский писатель, поэт и переводчик, автор романов о русской жизни XIX века.",works:["Отцы и дети","Дворянское гнездо","Записки охотника","Рудин"],awards:[],places:["Спасское-Лутовиново","Париж"]};
