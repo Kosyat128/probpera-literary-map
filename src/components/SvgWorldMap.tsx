@@ -4,13 +4,13 @@ import mapSvg from "../assets/map/world-countries.svg";
 
 type SvgWorldMapProps = {
   onCountrySelect?: (name: string) => void;
+  selectedCountry?: string;
 };
 
-export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
+export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWorldMapProps) {
 
   const [svgContent, setSvgContent] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
-  const [selected, setSelected] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(mapSvg)
@@ -20,6 +20,7 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
         `<style>
           .country {fill:#35205F;stroke:#F7EBDD;cursor:pointer;transition:.3s;}
           .country:hover {fill:#E97824;filter:drop-shadow(0 0 8px rgba(233,120,36,.5));}
+          .country-active {fill:#E97824 !important;}
         </style></svg>`
       )));
   }, []);
@@ -35,13 +36,8 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
     const country=literaryCountries[id as keyof typeof literaryCountries];
     if(!country) return;
 
-    setSelected(id);
     onCountrySelect?.(country.name);
   };
-
-  const countryData = selected
-    ? literaryCountries[selected as keyof typeof literaryCountries]
-    : null;
 
   return (
     <div style={{
@@ -61,7 +57,12 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
         }}
         onMouseLeave={()=>setHovered(null)}
         dangerouslySetInnerHTML={{__html:svgContent}}
-        style={{width:"100%",height:"100%"}}
+        style={{
+          width:"100%",
+          height:"100%",
+          transform:selectedCountry ? "scale(1.03)" : "scale(1)",
+          transition:".4s"
+        }}
       />
 
       {hovered && (
@@ -72,38 +73,10 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
           background:"#FFF8EE",
           padding:"12px 18px",
           borderRadius:"12px",
-          color:"#35205F"
+          color:"#35205F",
+          boxShadow:"0 8px 20px rgba(53,32,95,.15)"
         }}>
           {literaryCountries[hovered as keyof typeof literaryCountries]?.name}
-        </div>
-      )}
-
-      {countryData && (
-        <div style={{
-          position:"absolute",
-          right:20,
-          bottom:20,
-          width:"280px",
-          background:"#FFF8EE",
-          padding:"20px",
-          borderRadius:"18px",
-          color:"#35205F",
-          boxShadow:"0 8px 25px rgba(53,32,95,.2)"
-        }}>
-          <h2>{countryData.name}</h2>
-
-          <p>✒️ Писателей: <b>{countryData.writers}</b></p>
-          <p>📚 Статей: <b>{countryData.articles}</b></p>
-          <p>📍 Литературных мест: <b>{countryData.places}</b></p>
-
-          <hr />
-
-          <b>Главные авторы:</b>
-
-          {countryData.authors.map(author=>(
-            <div key={author}>📖 {author}</div>
-          ))}
-
         </div>
       )}
 
