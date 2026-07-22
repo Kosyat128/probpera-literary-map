@@ -17,3 +17,7 @@ export * from "./dante";
 export * from "./cervantes";
 export * from "./kawabata";
 export * from "./munro";
+export * from "./hesse";
+export * from "./mann";
+export * from "./faulkner";
+export * from "./tagore";
