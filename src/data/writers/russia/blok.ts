@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const blok:WriterProfile={id:"alexander-blok",fullName:"Александр Александрович Блок",birth:"28 ноября 1880",death:"7 августа 1921",country:"Россия",movement:"Символизм",biography:"Русский поэт Серебряного века, драматург и переводчик.",works:["Двенадцать","Незнакомка","Стихи о Прекрасной Даме"],awards:[],places:["Санкт-Петербург","Шахматово"]};
