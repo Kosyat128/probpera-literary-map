@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import WorldMap from "./components/WorldMap";
 import WriterPanel from "./components/WriterPanel";
@@ -26,9 +25,13 @@ export default function App() {
   if (!selectedCountry) {
 
     return (
+
       <div>
+
         База стран не загружена
+
       </div>
+
     );
 
   }
@@ -37,16 +40,18 @@ export default function App() {
 
 
   const handleCountrySelect = (
+
     countryName:string
+
   ) => {
 
 
     const country = countries.find(
 
-      item =>
-      item.name === countryName
+      item => item.name === countryName
 
     );
+
 
 
     if(country){
@@ -63,6 +68,7 @@ export default function App() {
 
   return (
 
+
     <div
 
       style={{
@@ -78,15 +84,6 @@ export default function App() {
       }}
 
     >
-
-
-
-      <Header
-
-        title="LiteraryMap"
-
-      />
-
 
 
 
@@ -114,7 +111,6 @@ export default function App() {
 
 
 
-
         <Sidebar
 
 
@@ -122,8 +118,7 @@ export default function App() {
 
             countries.map(
 
-              country =>
-              country.name
+              country => country.name
 
             )
 
@@ -168,6 +163,7 @@ export default function App() {
 
 
 
+
           <WorldMap
 
 
@@ -186,6 +182,8 @@ export default function App() {
 
 
           />
+
+
 
 
 
@@ -211,12 +209,14 @@ export default function App() {
 
 
 
+
           <LiteraryPlaces />
 
 
 
-        </main>
 
+
+        </main>
 
 
 
@@ -238,10 +238,12 @@ export default function App() {
 
 
 
+
       </div>
 
 
     </div>
+
 
   );
 
