@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const pushkin: WriterProfile = {id:"alexander-pushkin",fullName:"Александр Сергеевич Пушкин",birth:"6 июня 1799",death:"10 февраля 1837",country:"Россия",movement:"Романтизм, реализм",biography:"Русский поэт, драматург и прозаик, основоположник современной русской литературы.",works:["Евгений Онегин","Капитанская дочка","Борис Годунов","Повести Белкина"],awards:[],places:["Михайловское","Санкт-Петербург"]};
