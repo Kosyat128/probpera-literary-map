@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <!-- LiteraryMap custom SVG map layer -->
+  <!-- Country paths will be added in the next step -->
+  <g id="countries">
+    <path id="russia" class="country" fill="#35205F" d="" />
+    <path id="france" class="country" fill="#35205F" d="" />
+    <path id="uk" class="country" fill="#35205F" d="" />
+    <path id="usa" class="country" fill="#35205F" d="" />
+    <path id="japan" class="country" fill="#35205F" d="" />
+  </g>
+</svg>
