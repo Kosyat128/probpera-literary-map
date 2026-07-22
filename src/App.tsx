@@ -64,6 +64,7 @@ export default function App(){
     <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
 
      <SvgWorldMap
+      selectedCountry={selectedCountry.name}
       onCountrySelect={handleCountrySelect}
      />
 
