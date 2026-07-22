@@ -19,9 +19,24 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
         const styledSvg = svg.replace(
           "</svg>",
           `<style>
-            .country { fill:#35205F; stroke:#F7EBDD; stroke-width:1; cursor:pointer; transition:0.3s; }
-            .country:hover { fill:#E97824; }
-            .selected-country { fill:#E97824 !important; }
+            .country {
+              fill:#35205F;
+              stroke:#F7EBDD;
+              stroke-width:1;
+              cursor:pointer;
+              transition:all .3s ease;
+            }
+            .country:hover {
+              fill:#E97824;
+              filter:drop-shadow(0 0 8px rgba(233,120,36,.6));
+            }
+            .country-muted {
+              opacity:.45;
+            }
+            .country-active {
+              fill:#E97824 !important;
+              opacity:1 !important;
+            }
           </style></svg>`
         );
         setSvgContent(styledSvg);
@@ -35,11 +50,9 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
 
   const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const id = getCountryId(event);
-
     if (!id) return;
 
     const country = literaryCountries[id as keyof typeof literaryCountries];
-
     if (!country) return;
 
     setSelected(id);
@@ -64,7 +77,8 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
         minHeight:"700px",
         background:"#F7EBDD",
         borderRadius:"18px",
-        overflow:"hidden"
+        overflow:"hidden",
+        transition:".4s"
       }}
     >
       <div
@@ -72,7 +86,13 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHovered(null)}
         dangerouslySetInnerHTML={{__html: svgContent}}
-        style={{width:"100%",height:"100%"}}
+        style={{
+          width:"100%",
+          height:"100%",
+          transform:selected ? "scale(1.04)" : "scale(1)",
+          transformOrigin:"center",
+          transition:".4s"
+        }}
       />
 
       {hovered && (
@@ -85,13 +105,12 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
             padding:"12px 18px",
             borderRadius:"12px",
             color:"#35205F",
-            boxShadow:"0 5px 20px rgba(0,0,0,0.15)"
+            boxShadow:"0 5px 20px rgba(0,0,0,.15)"
           }}
         >
           {literaryCountries[hovered as keyof typeof literaryCountries]?.name}
         </div>
       )}
-
     </div>
   );
 }
