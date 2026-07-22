@@ -4,13 +4,23 @@ export const lithuania: Country = {
   id: "lithuania",
   name: "Литва",
   code: "lt",
+
+  coordinates: {
+    lat: 55.1694,
+    lng: 23.8813
+  },
+
   writers: [
+
     {
       id: "kristijonas_donelaitis",
       name: "Кристионас Донелайтис",
       years: "1714–1780",
       birthPlace: "Лаздинеляй, Прусское королевство",
-      coordinates: [54.8894, 22.4869],
+      coordinates: {
+        lat: 54.8894,
+        lng: 22.4869
+      },
       portrait: "",
       bio: "Литовский поэт и лютеранский пастор, основоположник литовской художественной литературы.",
       works: [
@@ -18,12 +28,16 @@ export const lithuania: Country = {
         "Басни"
       ]
     },
+
     {
       id: "simonas_daukantas",
       name: "Симонас Даукантас",
       years: "1793–1864",
       birthPlace: "Калвяй, Виленская губерния, Российская империя",
-      coordinates: [56.0547, 21.5173],
+      coordinates: {
+        lat: 56.0547,
+        lng: 21.5173
+      },
       portrait: "",
       bio: "Литовский историк, писатель и просветитель, один из первых авторов, писавших историю Литвы на литовском языке.",
       works: [
@@ -31,12 +45,16 @@ export const lithuania: Country = {
         "История Жемайтии"
       ]
     },
+
     {
       id: "antanas_baranauskas",
       name: "Антанас Баранаускас",
       years: "1835–1902",
       birthPlace: "Аникщяй, Виленская губерния, Российская империя",
-      coordinates: [55.5256, 25.1026],
+      coordinates: {
+        lat: 55.5256,
+        lng: 25.1026
+      },
       portrait: "",
       bio: "Литовский поэт, переводчик Библии и католический епископ.",
       works: [
@@ -44,12 +62,16 @@ export const lithuania: Country = {
         "Песни"
       ]
     },
+
     {
       id: "maironis",
       name: "Майронис",
       years: "1862–1932",
       birthPlace: "Пасандрявис, Ковенская губерния, Российская империя",
-      coordinates: [55.3304, 23.2892],
+      coordinates: {
+        lat: 55.3304,
+        lng: 23.2892
+      },
       portrait: "",
       bio: "Литовский поэт, драматург и священник. Один из крупнейших представителей литовского национального возрождения.",
       works: [
@@ -57,12 +79,16 @@ export const lithuania: Country = {
         "Молодая Литва"
       ]
     },
+
     {
       id: "vincas_kudirka",
       name: "Винцас Кудирка",
       years: "1858–1899",
       birthPlace: "Пайежеряй, Августовская губерния, Российская империя",
-      coordinates: [54.7198, 23.0544],
+      coordinates: {
+        lat: 54.7198,
+        lng: 23.0544
+      },
       portrait: "",
       bio: "Литовский писатель, публицист и общественный деятель. Автор текста государственного гимна Литвы.",
       works: [
@@ -70,12 +96,16 @@ export const lithuania: Country = {
         "Сатиры"
       ]
     },
+
     {
       id: "zemaite",
       name: "Жемайте",
       years: "1845–1921",
       birthPlace: "Буканте, Ковенская губерния, Российская империя",
-      coordinates: [56.0385, 21.8748],
+      coordinates: {
+        lat: 56.0385,
+        lng: 21.8748
+      },
       portrait: "",
       bio: "Литовская писательница, классик реалистической прозы.",
       works: [
@@ -84,12 +114,16 @@ export const lithuania: Country = {
         "Рассказы"
       ]
     },
+
     {
       id: "juozas_tumas_vaizgantas",
       name: "Юозас Тумас-Вайжгантас",
       years: "1869–1933",
       birthPlace: "Малайшяй, Ковенская губерния, Российская империя",
-      coordinates: [55.7420, 25.3880],
+      coordinates: {
+        lat: 55.742,
+        lng: 25.388
+      },
       portrait: "",
       bio: "Литовский писатель, литературовед и общественный деятель.",
       works: [
@@ -97,12 +131,16 @@ export const lithuania: Country = {
         "Картины"
       ]
     },
+
     {
       id: "vincas_kreve",
       name: "Винцас Креве-Мицкявичюс",
       years: "1882–1954",
       birthPlace: "Субартонай, Ковенская губерния, Российская империя",
-      coordinates: [54.2440, 24.1250],
+      coordinates: {
+        lat: 54.244,
+        lng: 24.125
+      },
       portrait: "",
       bio: "Литовский писатель, драматург и филолог. Один из крупнейших классиков литовской литературы XX века.",
       works: [
@@ -111,12 +149,16 @@ export const lithuania: Country = {
         "Шарунас"
       ]
     },
+
     {
       id: "balys_sruoga",
       name: "Балис Сруога",
       years: "1896–1947",
       birthPlace: "Байсогала, Ковенская губерния, Российская империя",
-      coordinates: [55.6396, 23.6943],
+      coordinates: {
+        lat: 55.6396,
+        lng: 23.6943
+      },
       portrait: "",
       bio: "Литовский поэт, драматург и литературовед.",
       works: [
@@ -124,12 +166,16 @@ export const lithuania: Country = {
         "Казимир Сапега"
       ]
     },
+
     {
       id: "salomeja_neris",
       name: "Саломея Нерис",
       years: "1904–1945",
       birthPlace: "Киршяй, Сувалкская губерния, Российская империя",
-      coordinates: [54.9417, 23.5438],
+      coordinates: {
+        lat: 54.9417,
+        lng: 23.5438
+      },
       portrait: "",
       bio: "Литовская поэтесса, классик литовской поэзии XX века.",
       works: [
@@ -143,7 +189,10 @@ export const lithuania: Country = {
       name: "Иева Симонайтите",
       years: "1897–1978",
       birthPlace: "Ванагай, Восточная Пруссия, Германская империя",
-      coordinates: [55.5345, 21.4705],
+      coordinates: {
+        lat: 55.5345,
+        lng: 21.4705
+      },
       portrait: "",
       bio: "Литовская писательница, крупнейший прозаик Малой Литвы. Народная писательница Литовской ССР.",
       works: [
@@ -152,12 +201,16 @@ export const lithuania: Country = {
         "Безымянные"
       ]
     },
+
     {
       id: "kazys_boruta",
       name: "Казис Борута",
       years: "1905–1965",
       birthPlace: "Кулокай, Сувалкская губерния, Российская империя",
-      coordinates: [54.6402, 23.2745],
+      coordinates: {
+        lat: 54.6402,
+        lng: 23.2745
+      },
       portrait: "",
       bio: "Литовский писатель, поэт и общественный деятель.",
       works: [
@@ -166,12 +219,16 @@ export const lithuania: Country = {
         "Рассказы"
       ]
     },
+
     {
       id: "eduardas_miezelaitis",
       name: "Эдуардас Межелайтис",
       years: "1919–1997",
       birthPlace: "Карейвоне, Литва",
-      coordinates: [55.0833, 24.9500],
+      coordinates: {
+        lat: 55.0833,
+        lng: 24.95
+      },
       portrait: "",
       bio: "Литовский поэт, эссеист и переводчик. Народный поэт Литовской ССР.",
       works: [
@@ -180,12 +237,16 @@ export const lithuania: Country = {
         "Лирика"
       ]
     },
+
     {
       id: "justinas_marcinkevicius",
       name: "Юстинас Марцинкявичюс",
       years: "1930–2011",
       birthPlace: "Важаткемис, Литва",
-      coordinates: [54.6400, 23.7200],
+      coordinates: {
+        lat: 54.64,
+        lng: 23.72
+      },
       portrait: "",
       bio: "Литовский поэт, драматург и эссеист. Один из самых известных литовских писателей XX века.",
       works: [
@@ -194,12 +255,16 @@ export const lithuania: Country = {
         "Мажвидас"
       ]
     },
+
     {
       id: "sigitas_geda",
       name: "Сигитас Гяда",
       years: "1943–2008",
       birthPlace: "Памянкальнис, Литовская ССР",
-      coordinates: [55.1200, 23.6000],
+      coordinates: {
+        lat: 55.12,
+        lng: 23.6
+      },
       portrait: "",
       bio: "Литовский поэт, драматург, переводчик и эссеист.",
       works: [
@@ -208,12 +273,16 @@ export const lithuania: Country = {
         "Избранные стихотворения"
       ]
     },
+
     {
       id: "tomas_venclova",
       name: "Томас Венцлова",
       years: "1937–",
       birthPlace: "Клайпеда, Литва",
-      coordinates: [55.7033, 21.1443],
+      coordinates: {
+        lat: 55.7033,
+        lng: 21.1443
+      },
       portrait: "",
       bio: "Литовский поэт, переводчик, литературовед и эссеист.",
       works: [
@@ -222,12 +291,16 @@ export const lithuania: Country = {
         "Статьи о литературе"
       ]
     },
+
     {
       id: "ricardas_gavelis",
       name: "Ричардас Гавялис",
       years: "1950–2002",
       birthPlace: "Вильнюс, Литовская ССР",
-      coordinates: [54.6872, 25.2797],
+      coordinates: {
+        lat: 54.6872,
+        lng: 25.2797
+      },
       portrait: "",
       bio: "Литовский писатель, драматург и публицист. Один из крупнейших литовских романистов конца XX века.",
       works: [
@@ -236,12 +309,16 @@ export const lithuania: Country = {
         "Молодой человек из Мемеля"
       ]
     },
+
     {
       id: "jurga_ivanauskaite",
       name: "Юрга Иванаускайте",
       years: "1961–2007",
       birthPlace: "Вильнюс, Литовская ССР",
-      coordinates: [54.6872, 25.2797],
+      coordinates: {
+        lat: 54.6872,
+        lng: 25.2797
+      },
       portrait: "",
       bio: "Литовская писательница, художница и путешественница.",
       works: [
@@ -250,12 +327,16 @@ export const lithuania: Country = {
         "Дети луны"
       ]
     },
+
     {
       id: "marius_ivaskevicius",
       name: "Марюс Ивашкявичюс",
       years: "1973–",
       birthPlace: "Молетай, Литовская ССР",
-      coordinates: [55.2314, 25.4169],
+      coordinates: {
+        lat: 55.2314,
+        lng: 25.4169
+      },
       portrait: "",
       bio: "Литовский писатель и драматург, один из наиболее известных современных авторов Литвы.",
       works: [
@@ -264,12 +345,16 @@ export const lithuania: Country = {
         "Русский роман"
       ]
     },
+
     {
       id: "renata_serelyte",
       name: "Рената Шерелите",
       years: "1970–",
       birthPlace: "Купишкис, Литовская ССР",
-      coordinates: [55.8400, 24.9800],
+      coordinates: {
+        lat: 55.84,
+        lng: 24.98
+      },
       portrait: "",
       bio: "Литовская писательница, поэтесса и драматург.",
       works: [
@@ -283,7 +368,10 @@ export const lithuania: Country = {
       name: "Йонас Авижюс",
       years: "1922–1999",
       birthPlace: "Медгенай, Литовская Республика",
-      coordinates: [55.9086, 23.1798],
+      coordinates: {
+        lat: 55.9086,
+        lng: 23.1798
+      },
       portrait: "",
       bio: "Литовский писатель, прозаик и общественный деятель. Один из крупнейших романистов Литвы второй половины XX века.",
       works: [
@@ -292,12 +380,16 @@ export const lithuania: Country = {
         "Сыновья"
       ]
     },
+
     {
       id: "marcelijus_martinaitis",
       name: "Марцелиюс Мартинайтис",
       years: "1936–2013",
       birthPlace: "Пасандравис, Литовская Республика",
-      coordinates: [55.3304, 23.2892],
+      coordinates: {
+        lat: 55.3304,
+        lng: 23.2892
+      },
       portrait: "",
       bio: "Литовский поэт, эссеист и переводчик, лауреат Национальной премии Литвы.",
       works: [
@@ -306,12 +398,16 @@ export const lithuania: Country = {
         "Избранные стихотворения"
       ]
     },
+
     {
       id: "judita_vaiciunaite",
       name: "Юдита Вайчюнайте",
       years: "1937–2001",
       birthPlace: "Каунас, Литва",
-      coordinates: [54.8985, 23.9036],
+      coordinates: {
+        lat: 54.8985,
+        lng: 23.9036
+      },
       portrait: "",
       bio: "Литовская поэтесса, одна из наиболее известных представительниц городской лирики.",
       works: [
@@ -320,12 +416,16 @@ export const lithuania: Country = {
         "Избранные стихотворения"
       ]
     },
+
     {
       id: "algimantas_baltakis",
       name: "Альгимантас Балтакис",
       years: "1930–2022",
       birthPlace: "Гудяляй, Литва",
-      coordinates: [55.1720, 23.7250],
+      coordinates: {
+        lat: 55.172,
+        lng: 23.725
+      },
       portrait: "",
       bio: "Литовский поэт, переводчик и публицист.",
       works: [
@@ -334,12 +434,16 @@ export const lithuania: Country = {
         "Избранная лирика"
       ]
     },
+
     {
       id: "jonas_mekas",
       name: "Йонас Мекас",
       years: "1922–2019",
       birthPlace: "Семенишкес, Литовская Республика",
-      coordinates: [55.7568, 24.9788],
+      coordinates: {
+        lat: 55.7568,
+        lng: 24.9788
+      },
       portrait: "",
       bio: "Литовский поэт, писатель и кинорежиссёр, один из основателей американского авангардного кино.",
       works: [
@@ -348,12 +452,16 @@ export const lithuania: Country = {
         "Стихотворения"
       ]
     },
+
     {
       id: "antanas_skema",
       name: "Антанас Шкема",
       years: "1910–1961",
       birthPlace: "Лодзь, Российская империя",
-      coordinates: [51.7592, 19.4550],
+      coordinates: {
+        lat: 51.7592,
+        lng: 19.455
+      },
       portrait: "",
       bio: "Литовский писатель и драматург, классик литовской литературы эмиграции.",
       works: [
@@ -362,12 +470,16 @@ export const lithuania: Country = {
         "Небесная лестница"
       ]
     },
+
     {
       id: "icchokas_meras",
       name: "Ицхокас Мерас",
       years: "1934–2014",
       birthPlace: "Кельме, Литва",
-      coordinates: [55.6302, 22.9348],
+      coordinates: {
+        lat: 55.6302,
+        lng: 22.9348
+      },
       portrait: "",
       bio: "Литовский писатель еврейского происхождения, автор произведений о Холокосте.",
       works: [
@@ -376,12 +488,16 @@ export const lithuania: Country = {
         "Луна — это всегда Луна"
       ]
     },
+
     {
       id: "saulius_tomas_kondrotas",
       name: "Саулюс Томас Кондротас",
       years: "1953–",
       birthPlace: "Каунас, Литовская ССР",
-      coordinates: [54.8985, 23.9036],
+      coordinates: {
+        lat: 54.8985,
+        lng: 23.9036
+      },
       portrait: "",
       bio: "Литовский писатель, эссеист и прозаик.",
       works: [
@@ -390,12 +506,16 @@ export const lithuania: Country = {
         "Коллекционер"
       ]
     },
+
     {
       id: "herkus_kuncius",
       name: "Геркус Кунчюс",
       years: "1965–",
       birthPlace: "Вильнюс, Литовская ССР",
-      coordinates: [54.6872, 25.2797],
+      coordinates: {
+        lat: 54.6872,
+        lng: 25.2797
+      },
       portrait: "",
       bio: "Литовский писатель, драматург и эссеист.",
       works: [
@@ -404,12 +524,16 @@ export const lithuania: Country = {
         "Маршрут"
       ]
     },
+
     {
       id: "laura_sintija_cerniauskaite",
       name: "Лаура Синтия Черняускайте",
       years: "1976–",
       birthPlace: "Вильнюс, Литовская ССР",
-      coordinates: [54.6872, 25.2797],
+      coordinates: {
+        lat: 54.6872,
+        lng: 25.2797
+      },
       portrait: "",
       bio: "Литовская писательница и драматург, лауреат Национальной премии Литвы.",
       works: [
@@ -418,3 +542,7 @@ export const lithuania: Country = {
         "Близость"
       ]
     }
+
+  ]
+};
+    
