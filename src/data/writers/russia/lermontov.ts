@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const lermontov: WriterProfile={id:"mikhail-lermontov",fullName:"Михаил Юрьевич Лермонтов",birth:"15 октября 1814",death:"27 июля 1841",country:"Россия",movement:"Романтизм",biography:"Русский поэт, прозаик и драматург, один из крупнейших представителей русской литературы XIX века.",works:["Герой нашего времени","Мцыри","Демон","Бородино"],awards:[],places:["Тарханы","Пятигорск"]};
