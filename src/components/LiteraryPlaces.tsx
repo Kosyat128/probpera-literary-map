@@ -1,52 +1,109 @@
 const places = [
+
   {
     name: "Ясная Поляна",
-    region: "Тульская область",
-    writer: "Лев Толстой",
+    region: "Тульская область, Россия",
+    writer: "Лев Николаевич Толстой",
+    years: "1828–1910",
+    description:
+      "Родовое имение Толстых, где писатель жил и создал многие свои произведения.",
+    works: [
+      "Война и мир",
+      "Анна Каренина",
+      "Воскресение"
+    ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Yasnaya_Polyana_2018.jpg/640px-Yasnaya_Polyana_2018.jpg",
+      "/images/places/yasnaya-polyana.jpg"
   },
+
 
   {
     name: "Болдино",
-    region: "Нижегородская область",
-    writer: "Александр Пушкин",
+    region: "Нижегородская область, Россия",
+    writer: "Александр Сергеевич Пушкин",
+    years: "1799–1837",
+    description:
+      "Место знаменитой Болдинской осени 1830 года — одного из самых плодотворных периодов творчества поэта.",
+    works: [
+      "Евгений Онегин",
+      "Повести Белкина",
+      "Маленькие трагедии"
+    ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Boldino_Pushkin.jpg/640px-Boldino_Pushkin.jpg",
+      "/images/places/boldino.jpg"
   },
+
 
   {
     name: "Мелихово",
-    region: "Московская область",
-    writer: "Антон Чехов",
+    region: "Московская область, Россия",
+    writer: "Антон Павлович Чехов",
+    years: "1860–1904",
+    description:
+      "Усадьба Чехова, где были написаны многие рассказы и пьесы периода зрелого творчества.",
+    works: [
+      "Чайка",
+      "Дядя Ваня",
+      "Палата №6"
+    ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Melikhovo.jpg/640px-Melikhovo.jpg",
+      "/images/places/melikhovo.jpg"
   },
+
 
   {
     name: "Петербург Достоевского",
-    region: "Санкт-Петербург",
-    writer: "Фёдор Достоевский",
+    region: "Санкт-Петербург, Россия",
+    writer: "Фёдор Михайлович Достоевский",
+    years: "1821–1881",
+    description:
+      "Городское пространство, ставшее основой многих произведений писателя.",
+    works: [
+      "Преступление и наказание",
+      "Идиот",
+      "Бедные люди"
+    ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Saint_Petersburg_view.jpg/640px-Saint_Petersburg_view.jpg",
+      "/images/places/petersburg.jpg"
   },
 
-  {
-    name: "Таганрог",
-    region: "Ростовская область",
-    writer: "Антон Чехов",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Taganrog_view.jpg/640px-Taganrog_view.jpg",
-  },
 
   {
     name: "Константиново",
-    region: "Рязанская область",
-    writer: "Сергей Есенин",
+    region: "Рязанская область, Россия",
+    writer: "Сергей Александрович Есенин",
+    years: "1895–1925",
+    description:
+      "Родина поэта, оказавшая большое влияние на его творчество и образ русской природы.",
+    works: [
+      "Анна Снегина",
+      "Письмо к женщине",
+      "Русь"
+    ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Konstantinovo.jpg/640px-Konstantinovo.jpg",
+      "/images/places/konstantinovo.jpg"
   },
+
+
+  {
+    name: "Стратфорд-на-Эйвоне",
+    region: "Уорикшир, Англия",
+    writer: "Уильям Шекспир",
+    years: "1564–1616",
+    description:
+      "Родной город английского драматурга, один из главных литературных центров Великобритании.",
+    works: [
+      "Гамлет",
+      "Макбет",
+      "Ромео и Джульетта"
+    ],
+    image:
+      "/images/places/stratford.jpg"
+  }
+
 ];
+
+
 
 
 
@@ -59,21 +116,28 @@ export default function LiteraryPlaces() {
 
       style={{
 
-        background:"#F7EBDD",
+        background:"#FFF8EE",
+
+        borderRadius:"18px",
 
         padding:"20px",
 
-        borderRadius:"12px",
+        boxShadow:
+        "0 5px 20px rgba(53,32,95,.12)"
 
       }}
 
     >
 
-      <h3
+
+
+      <h2
 
         style={{
 
           color:"#35205F",
+
+          marginBottom:"20px"
 
         }}
 
@@ -81,7 +145,9 @@ export default function LiteraryPlaces() {
 
         ПОПУЛЯРНЫЕ ЛИТЕРАТУРНЫЕ МЕСТА
 
-      </h3>
+      </h2>
+
+
 
 
 
@@ -92,115 +158,206 @@ export default function LiteraryPlaces() {
           display:"grid",
 
           gridTemplateColumns:
-          "repeat(6,1fr)",
+          "repeat(3,1fr)",
 
-          gap:"12px",
+          gap:"18px"
 
         }}
 
       >
 
-        {
 
-          places.map(place => (
 
-            <div
+      {
 
-              key={place.name}
+        places.map(place=>(
+
+
+          <article
+
+            key={place.name}
+
+            style={{
+
+              background:"#F7EBDD",
+
+              borderRadius:"15px",
+
+              overflow:"hidden",
+
+              border:
+              "1px solid #E5C9A8"
+
+            }}
+
+          >
+
+
+
+            <img
+
+              src={place.image}
+
+              alt={place.name}
 
               style={{
 
-                background:"#FFF8EE",
+                width:"100%",
 
-                borderRadius:"12px",
+                height:"160px",
 
-                overflow:"hidden",
+                objectFit:"cover"
 
-                border:
-                "1px solid #E5C9A5",
+              }}
+
+            />
+
+
+
+
+            <div
+
+              style={{
+
+                padding:"15px"
 
               }}
 
             >
 
 
-              <img
 
-                src={place.image}
-
-                alt={place.name}
+              <h3
 
                 style={{
 
-                  width:"100%",
-
-                  height:"120px",
-
-                  objectFit:"cover",
-
-                }}
-
-              />
-
-
-
-              <div
-
-                style={{
-
-                  padding:"10px",
-
-                  color:"#35205F",
+                  color:"#35205F"
 
                 }}
 
               >
 
+                {place.name}
+
+              </h3>
+
+
+
+
+              <p>
+
+                📍 {place.region}
+
+              </p>
+
+
+
+
+              <p>
+
+                👤
+
+                {" "}
 
                 <b>
 
-                  {place.name}
+                {place.writer}
 
                 </b>
 
-
-                <p>
-
-                  {region(place.region)}
-
-                </p>
+              </p>
 
 
-                <small>
 
-                  👤 {place.writer}
+              <small>
 
-                </small>
+                📅 {place.years}
+
+              </small>
 
 
-              </div>
+
+
+              <p>
+
+                {place.description}
+
+              </p>
+
+
+
+
+              <strong>
+
+                📚 Произведения:
+
+              </strong>
+
+
+
+              {
+
+                place.works.map(work=>(
+
+                  <div key={work}>
+
+                    • {work}
+
+                  </div>
+
+                ))
+
+              }
+
+
+
+
+              <button
+
+                style={{
+
+                  marginTop:"15px",
+
+                  background:"#E97824",
+
+                  color:"#fff",
+
+                  border:"none",
+
+                  padding:"8px 16px",
+
+                  borderRadius:"20px",
+
+                  cursor:"pointer"
+
+                }}
+
+              >
+
+                Подробнее
+
+              </button>
+
 
 
             </div>
 
-          ))
 
-        }
+
+          </article>
+
+
+        ))
+
+      }
 
 
       </div>
 
 
+
     </section>
 
   );
-
-}
-
-
-
-function region(text:string){
-
-  return text;
 
 }
