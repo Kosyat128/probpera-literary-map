@@ -4,10 +4,13 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import WorldMap from "./components/WorldMap";
 import WriterPanel from "./components/WriterPanel";
+import Timeline from "./components/Timeline";
+import LiteraryPlaces from "./components/LiteraryPlaces";
 
 import { countries } from "./data/countries";
 
 import type { Country } from "./data/types";
+
 
 
 export default function App() {
@@ -19,34 +22,34 @@ export default function App() {
     );
 
 
+
   if (!selectedCountry) {
 
     return (
-
       <div>
-
         База стран не загружена
-
       </div>
-
     );
 
   }
 
 
 
+
   const handleCountrySelect = (
-    countryName: string
+    countryName:string
   ) => {
 
 
     const country = countries.find(
-      (item) =>
-        item.name === countryName
+
+      item =>
+      item.name === countryName
+
     );
 
 
-    if (country) {
+    if(country){
 
       setSelectedCountry(country);
 
@@ -56,44 +59,88 @@ export default function App() {
 
 
 
+
+
   return (
 
-    <>
+    <div
 
-      <Header title="LiteraryMap" />
+      style={{
+
+        minHeight:"100vh",
+
+        background:"#F7EBDD",
+
+        display:"flex",
+
+        flexDirection:"column",
+
+      }}
+
+    >
+
+
+
+      <Header
+
+        title="LiteraryMap"
+
+      />
+
+
+
 
 
       <div
 
         style={{
 
-          display: "flex",
+          display:"grid",
 
-          height: "calc(100vh - 80px)",
+          gridTemplateColumns:
+
+          "220px 1fr 360px",
+
+          gap:"12px",
+
+          flex:1,
+
+          padding:"12px",
 
         }}
 
       >
 
 
+
+
+
         <Sidebar
 
 
           items={
+
             countries.map(
-              (country) =>
-                country.name
+
+              country =>
+              country.name
+
             )
+
           }
 
 
           selectedItem={
+
             selectedCountry.name
+
           }
 
 
           onSelect={
+
             handleCountrySelect
+
           }
 
 
@@ -101,36 +148,100 @@ export default function App() {
 
 
 
-        <WorldMap
 
 
-          selectedCountry={
-            selectedCountry.name
-          }
 
 
-          onCountrySelect={
-            handleCountrySelect
-          }
+        <main
+
+          style={{
+
+            display:"flex",
+
+            flexDirection:"column",
+
+            gap:"12px",
+
+          }}
+
+        >
 
 
-        />
+
+          <WorldMap
+
+
+            selectedCountry={
+
+              selectedCountry.name
+
+            }
+
+
+            onCountrySelect={
+
+              handleCountrySelect
+
+            }
+
+
+          />
+
+
+
+          <Timeline
+
+
+            name={
+
+              selectedCountry.writers[0]?.name
+
+            }
+
+
+            years={
+
+              selectedCountry.writers[0]?.years
+
+            }
+
+
+          />
+
+
+
+
+          <LiteraryPlaces />
+
+
+
+        </main>
+
+
+
+
 
 
 
         <WriterPanel
 
+
           country={
+
             selectedCountry
+
           }
 
+
         />
+
+
 
 
       </div>
 
 
-    </>
+    </div>
 
   );
 
