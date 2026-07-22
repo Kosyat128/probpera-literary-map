@@ -1,9 +1,19 @@
-import { MapContainer, Marker, TileLayer, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  Popup,
+  useMap,
+} from "react-leaflet";
+
 import { useEffect } from "react";
+
 import type { LatLngExpression } from "leaflet";
+
 import L from "leaflet";
 
 import { countries } from "../data/countries";
+
 
 
 export type WorldMapProps = {
@@ -12,6 +22,8 @@ export type WorldMapProps = {
 };
 
 
+
+// Иконка маркера
 const countryIcon = new L.Icon({
 
   iconUrl:
@@ -24,22 +36,37 @@ const countryIcon = new L.Icon({
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 
   iconSize: [25, 41],
+
   iconAnchor: [12, 41],
+
   popupAnchor: [1, -34],
+
   shadowSize: [41, 41],
 
 });
 
 
-// Поддержка двух форматов координат
+
+// Приведение координат к формату Leaflet
 function normalizeCoordinates(
+
   coordinates:
     | [number, number]
     | {
         lat: number;
         lng: number;
       }
+    | undefined
+
 ): [number, number] {
+
+
+  if (!coordinates) {
+
+    return [0, 0];
+
+  }
+
 
   if (Array.isArray(coordinates)) {
 
@@ -49,11 +76,15 @@ function normalizeCoordinates(
 
 
   return [
+
     coordinates.lat,
+
     coordinates.lng
+
   ];
 
 }
+
 
 
 
@@ -66,6 +97,7 @@ function Recenter({
   center: LatLngExpression;
 
 }) {
+
 
   const map = useMap();
 
@@ -83,13 +115,16 @@ function Recenter({
 
 
 
+
+
 export default function WorldMap({
 
-  selectedCountry = "France",
+  selectedCountry = "Франция",
 
   onCountrySelect,
 
 }: WorldMapProps) {
+
 
 
   if (!countries.length) {
@@ -108,6 +143,7 @@ export default function WorldMap({
 
 
 
+
   const activeCountry =
 
     countries.find(
@@ -120,9 +156,16 @@ export default function WorldMap({
 
 
 
-  const activeCoordinates = normalizeCoordinates(
-    activeCountry.coordinates ?? [0, 0]
-  );
+
+  const activeCoordinates =
+
+    normalizeCoordinates(
+
+      activeCountry.coordinates
+
+    );
+
+
 
 
 
@@ -136,28 +179,40 @@ export default function WorldMap({
 
         padding: "1rem",
 
+        minWidth: 0,
+
       }}
 
     >
 
 
+
       <MapContainer
+
 
         center={activeCoordinates}
 
+
         zoom={3}
+
+
+        scrollWheelZoom={true}
+
 
         style={{
 
-          height: "100%",
+          height: "600px",
 
-          minHeight: "600px",
+          width: "100%",
 
-          borderRadius: 12,
+          borderRadius: "12px",
+
+          overflow: "hidden",
 
         }}
 
       >
+
 
 
         <Recenter
@@ -168,88 +223,122 @@ export default function WorldMap({
 
 
 
+
         <TileLayer
 
-          attribution="&copy; OpenStreetMap contributors"
+
+          attribution="© OpenStreetMap contributors"
+
 
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
 
         />
 
 
 
-        {countries.map((country) => {
 
 
-          const coordinates = normalizeCoordinates(
+        {
 
-            country.coordinates ?? [0, 0]
-
-          );
+          countries.map((country) => {
 
 
 
-          return (
+            const coordinates =
 
-            <Marker
+              normalizeCoordinates(
 
-              key={country.id}
+                country.coordinates
 
-              position={coordinates}
-
-              icon={countryIcon}
+              );
 
 
-              eventHandlers={{
+
+            return (
+
+              <Marker
 
 
-                click: () =>
-
-                  onCountrySelect?.(
-
-                    country.name
-
-                  ),
+                key={country.id}
 
 
-              }}
-
-            >
+                position={coordinates}
 
 
-              <Popup>
+                icon={countryIcon}
 
 
-                <strong>
 
-                  {country.name}
-
-                </strong>
+                eventHandlers={{
 
 
-                <br />
+                  click: () => {
 
 
-                Писателей:
+                    onCountrySelect?.(
 
-                {" "}
+                      country.name
 
-                {country.writers.length}
-
-
-              </Popup>
+                    );
 
 
-            </Marker>
-
-          );
+                  },
 
 
-        })}
+                }}
+
+
+              >
+
+
+
+                <Popup>
+
+
+                  <div>
+
+
+                    <strong>
+
+                      {country.name}
+
+                    </strong>
+
+
+
+                    <br />
+
+
+
+                    Писателей:
+
+                    {" "}
+
+                    {country.writers.length}
+
+
+
+                  </div>
+
+
+                </Popup>
+
+
+
+              </Marker>
+
+            );
+
+
+          })
+
+        }
 
 
 
       </MapContainer>
+
 
 
     </section>
