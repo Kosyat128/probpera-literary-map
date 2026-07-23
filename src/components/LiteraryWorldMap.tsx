@@ -11,10 +11,8 @@ type Props = {
 
 
 export default function LiteraryWorldMap({
-
   onCountrySelect
-
-}:Props){
+}: Props) {
 
 
   const mapRef = useRef<HTMLDivElement>(null);
@@ -25,18 +23,19 @@ export default function LiteraryWorldMap({
 
 
 
-  useEffect(()=>{
+  // Загружаем SVG
 
+  useEffect(()=>{
 
     fetch(mapSvg)
 
-      .then(res=>res.text())
+      .then(response => response.text())
 
-      .then(data=>{
-
+      .then(data => {
 
         setSvg(data);
 
+        console.log("SVG загружен");
 
       });
 
@@ -47,48 +46,46 @@ export default function LiteraryWorldMap({
 
 
 
+  // Подключаем события к странам
+
   useEffect(()=>{
 
 
-    if(!mapRef.current) return;
-
-
-    const paths =
-
-      mapRef.current.querySelectorAll("path");
+    if(!mapRef.current || !svg) return;
 
 
 
-    console.log(
+    const paths = mapRef.current.querySelectorAll("path");
 
-      "PATH FOUND",
 
-      paths.length
-
-    );
+    console.log("PATH", paths.length);
 
 
 
-    paths.forEach((path)=>{
+    paths.forEach((element)=>{
 
 
-      const p = path as SVGPathElement;
+      const path = element as SVGPathElement;
 
 
 
-      p.onmouseenter = ()=>{
+      path.style.pointerEvents="all";
 
 
-        p.style.fill = "#E97824";
 
-        p.style.opacity = "0.8";
+      path.onmouseenter = ()=>{
 
-        p.style.cursor = "pointer";
+
+        path.style.fill="#E97824";
+
+        path.style.fillOpacity="0.75";
+
+        path.style.cursor="pointer";
 
 
         setActive(
 
-          p.id || "path"
+          path.id || "country"
 
         );
 
@@ -99,12 +96,12 @@ export default function LiteraryWorldMap({
 
 
 
-      p.onmouseleave = ()=>{
+      path.onmouseleave = ()=>{
 
 
-        p.style.fill = "";
+        path.style.fill="";
 
-        p.style.opacity = "";
+        path.style.fillOpacity="";
 
 
         setActive("");
@@ -115,23 +112,28 @@ export default function LiteraryWorldMap({
 
 
 
-      p.onclick = ()=>{
+
+      path.onclick = ()=>{
 
 
         console.log(
 
-          "CLICK",
+          "CLICK COUNTRY",
 
-          p.id
-
-        );
-
-
-        onCountrySelect?.(
-
-          p.id
+          path.id
 
         );
+
+
+        if(path.id){
+
+          onCountrySelect?.(
+
+            path.id
+
+          );
+
+        }
 
 
       };
@@ -142,7 +144,6 @@ export default function LiteraryWorldMap({
 
 
   },[svg,onCountrySelect]);
-
 
 
 
@@ -172,13 +173,14 @@ borderRadius:"18px"
 
 
 
-{/* ФОН PNG */}
+{/* ФОН КАРТЫ */}
+
 
 <img
 
 src={background}
 
-alt="literary map"
+alt="Literary world map"
 
 style={{
 
@@ -207,7 +209,9 @@ zIndex:1
 
 
 
-{/* SVG СЛОЙ */}
+
+{/* SVG ИНТЕРАКТИВНЫЙ СЛОЙ */}
+
 
 <div
 
@@ -217,29 +221,19 @@ style={{
 
 position:"absolute",
 
+left:0,
 
-/* ПОДГОНКА SVG */
+top:0,
 
-left:"105px",
+width:"100%",
 
-top:"95px",
-
-
-width:"calc(100% + 40px)",
-
-height:"calc(100% + 40px)",
-
+height:"100%",
 
 zIndex:2,
 
-
-transform:"scale(1.02)",
-
-transformOrigin:"top left"
+pointerEvents:"all"
 
 }}
-
-
 
 dangerouslySetInnerHTML={{
 
@@ -247,13 +241,15 @@ __html:svg
 
 }}
 
-
 />
 
 
 
 
 
+
+
+{/* ТЕСТОВАЯ ПОДСКАЗКА */}
 
 
 {
@@ -267,19 +263,21 @@ style={{
 
 position:"absolute",
 
-top:20,
+top:"20px",
 
-left:20,
+left:"20px",
 
 zIndex:10,
 
 background:"#FFF8EE",
 
-padding:"15px",
+color:"#35205F",
+
+padding:"12px 18px",
 
 borderRadius:"10px",
 
-color:"#35205F",
+fontFamily:"Georgia, serif",
 
 boxShadow:"0 5px 20px rgba(0,0,0,.2)"
 
@@ -287,15 +285,11 @@ boxShadow:"0 5px 20px rgba(0,0,0,.2)"
 
 >
 
-SVG:
+Страна:
 
 <br/>
 
-<b>
-
-{active}
-
-</b>
+<b>{active}</b>
 
 
 </div>
@@ -306,6 +300,7 @@ SVG:
 
 
 </div>
+
 
 );
 
