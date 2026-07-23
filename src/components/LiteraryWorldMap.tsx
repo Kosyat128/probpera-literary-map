@@ -25,12 +25,17 @@ export default function LiteraryWorldMap({
   useEffect(()=>{
 
     fetch(mapSvg)
+
       .then(res=>res.text())
+
       .then(data=>{
 
         setSvg(data);
 
+        console.log("SVG загружен");
+
       });
+
 
   },[]);
 
@@ -41,94 +46,93 @@ export default function LiteraryWorldMap({
   useEffect(()=>{
 
 
-    if(!mapRef.current) return;
+    if(!mapRef.current || !svg) return;
 
 
-    const timer = setTimeout(()=>{
+    const paths =
+      mapRef.current.querySelectorAll("path");
 
 
-      const paths =
-        mapRef.current!.querySelectorAll("path");
-
-
-      console.log(
-        "PATH FOUND:",
-        paths.length
-      );
+    console.log(
+      "PATH найдено:",
+      paths.length
+    );
 
 
 
-      paths.forEach((element)=>{
+    paths.forEach((element)=>{
 
 
-        const path =
-          element as SVGPathElement;
-
-
-
-        path.style.pointerEvents="all";
-
-        path.style.cursor="pointer";
+      const path =
+        element as SVGPathElement;
 
 
 
-        path.onmouseenter=()=>{
+      path.style.pointerEvents="all";
 
+      path.style.cursor="pointer";
 
-          path.style.fill="#E97824";
-
-          path.style.opacity="0.8";
-
-
-          setActive(
-            path.id || "country"
-          );
-
-
-        };
+      path.style.transition="0.2s";
 
 
 
-        path.onmouseleave=()=>{
+      path.onmouseenter = ()=>{
 
 
-          path.style.fill="";
+        path.style.fill="#E97824";
 
-          path.style.opacity="";
-
-
-          setActive("");
-
-        };
+        path.style.opacity="0.8";
 
 
+        setActive(
+          path.id || "path"
+        );
 
-        path.onclick=()=>{
+
+      };
 
 
-          console.log(
-            "CLICK:",
-            path.id
-          );
 
+
+
+      path.onmouseleave = ()=>{
+
+
+        path.style.fill="";
+
+        path.style.opacity="";
+
+
+        setActive("");
+
+      };
+
+
+
+
+
+      path.onclick = ()=>{
+
+
+        console.log(
+          "CLICK:",
+          path.id
+        );
+
+
+        if(path.id){
 
           onCountrySelect?.(
             path.id
           );
 
-
-        };
-
-
-      });
+        }
 
 
-
-    },300);
-
+      };
 
 
-    return ()=>clearTimeout(timer);
+    });
 
 
 
@@ -162,17 +166,21 @@ borderRadius:"18px"
 >
 
 
+{/* ФОН PNG */}
+
 <img
 
 src={background}
 
-alt="map"
+alt="literary map"
 
 style={{
 
 position:"absolute",
 
-inset:0,
+left:0,
+
+top:0,
 
 width:"100%",
 
@@ -191,28 +199,7 @@ zIndex:1
 
 
 
-<div
-
-style={{
-
-position:"absolute",
-
-left:0,
-
-top:0,
-
-width:"100%",
-
-height:"100%",
-
-zIndex:2,
-
-overflow:"hidden"
-
-}}
-
->
-
+{/* SVG КАРТА */}
 
 <div
 
@@ -222,15 +209,20 @@ style={{
 
 position:"absolute",
 
+/* СМЕЩЕНИЕ SVG */
+
 left:"35px",
 
 top:"20px",
+
 
 width:"100%",
 
 height:"100%",
 
-pointerEvents:"all"
+
+zIndex:2,
+
 
 }}
 
@@ -244,12 +236,12 @@ __html:svg
 />
 
 
-</div>
 
 
 
 
 
+{/* ПОДСКАЗКА */}
 
 {
 
@@ -262,9 +254,9 @@ style={{
 
 position:"absolute",
 
-top:20,
+top:"20px",
 
-left:20,
+left:"20px",
 
 zIndex:10,
 
@@ -274,13 +266,26 @@ color:"#35205F",
 
 padding:"12px 18px",
 
-borderRadius:"10px"
+borderRadius:"10px",
+
+boxShadow:"0 5px 20px ",
+
+fontFamily:"Georgia, serif"
 
 }}
 
 >
 
-<b>{active}</b>
+SVG:
+
+<br/>
+
+<b>
+
+{active}
+
+</b>
+
 
 </div>
 
