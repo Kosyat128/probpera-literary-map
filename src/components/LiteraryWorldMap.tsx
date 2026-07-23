@@ -144,7 +144,6 @@ export default function LiteraryWorldMap({
 
 
 
-
 return (
 
 <div
@@ -199,7 +198,30 @@ zIndex:1
 
 
 
-{/* SVG КАРТА */}
+{/* SVG СЛОЙ */}
+
+<div
+
+style={{
+
+position:"absolute",
+
+left:0,
+
+top:0,
+
+width:"100%",
+
+height:"100%",
+
+zIndex:2,
+
+overflow:"hidden"
+
+}}
+
+>
+
 
 <div
 
@@ -209,7 +231,8 @@ style={{
 
 position:"absolute",
 
-/* СМЕЩЕНИЕ SVG */
+
+/* ПОДГОНКА SVG */
 
 left:"35px",
 
@@ -221,7 +244,9 @@ width:"100%",
 height:"100%",
 
 
-zIndex:2,
+transform:"scale(0.94)",
+
+transformOrigin:"left top",
 
 
 }}
@@ -236,12 +261,13 @@ __html:svg
 />
 
 
+</div>
 
 
 
 
 
-{/* ПОДСКАЗКА */}
+
 
 {
 
@@ -268,7 +294,7 @@ padding:"12px 18px",
 
 borderRadius:"10px",
 
-boxShadow:"0 5px 20px ",
+boxShadow:"0 5px 20px rgba(0,0,0,.25)",
 
 fontFamily:"Georgia, serif"
 
