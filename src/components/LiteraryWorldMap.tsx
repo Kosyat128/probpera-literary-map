@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import background from "../assets/map/literary-map-background.png";
 import mapSvg from "../assets/map/literary-world-map.svg";
@@ -10,16 +10,15 @@ type Props = {
 
 
 export default function LiteraryWorldMap({
-
   onCountrySelect
-
 }:Props){
 
+
+const mapRef = useRef<HTMLDivElement>(null);
 
 const [svg,setSvg]=useState("");
 
 const [active,setActive]=useState("");
-
 
 
 
@@ -34,16 +33,16 @@ fetch(mapSvg)
 .then(data=>{
 
 
-let fixed = data.replace(
+let fixed=data.replace(
 
 "<svg",
 
 `<svg
+preserveAspectRatio="none"
 style="width:100%;height:100%;"
-preserveAspectRatio="none"`
+`
 
 );
-
 
 
 setSvg(fixed);
@@ -58,97 +57,127 @@ setSvg(fixed);
 
 
 
+useEffect(()=>{
+
+
+if(!mapRef.current) return;
+
+
+const paths =
+mapRef.current.querySelectorAll("path");
 
 
 
-function move(e:any){
+paths.forEach((path)=>{
 
 
-const target=e.target;
+path.addEventListener(
+
+"mouseenter",
+
+()=>{
 
 
-if(target.tagName==="path"){
+path.setAttribute(
+
+"data-old-fill",
+
+path.getAttribute("fill") || ""
+
+);
 
 
-target.classList.add("active-country");
+path.setAttribute(
+
+"fill",
+
+"#E97824"
+
+);
 
 
 setActive(
 
-target.id || "path"
+path.id || "unknown"
 
 );
 
 
 }
 
+);
 
+
+
+path.addEventListener(
+
+"mouseleave",
+
+()=>{
+
+
+const old =
+path.getAttribute(
+"data-old-fill"
+);
+
+
+
+if(old){
+
+path.setAttribute(
+"fill",
+old
+);
 
 }
 
 
 
+setActive("");
 
+}
 
-
-
-
-function leave(e:any){
-
-
-const target=e.target;
-
-
-if(target.tagName==="path"){
-
-
-target.classList.remove(
-
-"active-country"
 
 );
 
 
-}
 
+path.addEventListener(
 
+"click",
 
-}
-
-
-
-
-
-function click(e:any){
-
-
-const target=e.target;
-
-
-if(target.tagName==="path"){
+()=>{
 
 
 console.log(
 
-"PATH",
+"CLICK PATH",
 
-target.id
+path.id
 
 );
-
 
 
 onCountrySelect?.(
 
-target.id
+path.id
 
 );
 
 
 }
 
+);
 
-}
+
+
+});
+
+
+},[svg]);
+
+
 
 
 
@@ -174,38 +203,9 @@ borderRadius:"18px"
 
 
 
-<style>
-
-{`
-
-.active-country{
-
-fill:#E97824 !important;
-
-opacity:.8;
-
-cursor:pointer;
-
-}
-
-path{
-
-transition:.2s;
-
-}
-
-`}
-
-</style>
-
-
-
-
 <img
 
 src={background}
-
-alt="map"
 
 style={{
 
@@ -221,9 +221,7 @@ objectFit:"cover"
 
 }}
 
-
 />
-
 
 
 
@@ -231,11 +229,8 @@ objectFit:"cover"
 
 <div
 
-onMouseMove={move}
 
-onMouseLeave={leave}
-
-onClick={click}
+ref={mapRef}
 
 
 style={{
@@ -247,7 +242,6 @@ inset:0,
 zIndex:2
 
 }}
-
 
 
 dangerouslySetInnerHTML={{
@@ -264,6 +258,11 @@ __html:svg
 
 
 
+
+{
+
+active &&
+
 <div
 
 style={{
@@ -274,7 +273,7 @@ top:20,
 
 left:20,
 
-zIndex:5,
+zIndex:10,
 
 background:"#FFF8EE",
 
@@ -288,24 +287,17 @@ color:"#35205F"
 
 >
 
-{
-
-active &&
-
-<>
-
-SVG объект:
+Объект SVG:
 
 <br/>
 
 <b>{active}</b>
 
-</>
-
-}
-
 
 </div>
+
+
+}
 
 
 
@@ -313,6 +305,5 @@ SVG объект:
 
 
 );
-
 
 }
