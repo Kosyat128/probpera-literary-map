@@ -24,7 +24,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
     if (root) {
       root.removeAttribute("width");
       root.removeAttribute("height");
-      root.setAttribute("preserveAspectRatio", "none");
+      root.setAttribute("preserveAspectRatio", "xMidYMid meet");
       root.style.width = "100%";
       root.style.height = "100%";
       root.style.display = "block";
@@ -33,23 +33,19 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
     mapRef.current.querySelectorAll("path").forEach((element) => {
       const path = element as SVGPathElement;
 
-      // SVG используется только как интерактивный контур
       path.style.fill = "transparent";
       path.style.stroke = "rgba(53,32,95,0.28)";
       path.style.strokeWidth = "0.6px";
       path.style.pointerEvents = "all";
       path.style.cursor = "pointer";
-      path.style.transition = "fill .2s, opacity .2s";
 
       path.onmouseenter = () => {
         path.style.fill = "rgba(233,120,36,0.45)";
-        path.style.opacity = "0.9";
         setActive(path.id || "path");
       };
 
       path.onmouseleave = () => {
         path.style.fill = "transparent";
-        path.style.opacity = "1";
         setActive("");
       };
 
@@ -94,7 +90,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
             width: "100%",
             height: "100%",
             pointerEvents: "auto",
-            transform: "translate(0px, 0px) scale(1)",
+            transform: "translate(0px, 8px) scale(1.04)",
             transformOrigin: "center center"
           }}
           dangerouslySetInnerHTML={{ __html: svg }}
