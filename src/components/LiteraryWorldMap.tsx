@@ -13,9 +13,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    fetch(mapSvg)
-      .then((r) => r.text())
-      .then((data) => setSvg(data));
+    fetch(mapSvg).then((r) => r.text()).then(setSvg);
   }, []);
 
   useEffect(() => {
@@ -26,30 +24,32 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
     if (root) {
       root.removeAttribute("width");
       root.removeAttribute("height");
-      root.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      root.setAttribute("preserveAspectRatio", "none");
       root.style.width = "100%";
       root.style.height = "100%";
       root.style.display = "block";
     }
 
-    const paths = mapRef.current.querySelectorAll("path");
-
-    paths.forEach((element) => {
+    mapRef.current.querySelectorAll("path").forEach((element) => {
       const path = element as SVGPathElement;
 
+      // SVG используется только как интерактивный контур
+      path.style.fill = "transparent";
+      path.style.stroke = "rgba(53,32,95,0.28)";
+      path.style.strokeWidth = "0.6px";
       path.style.pointerEvents = "all";
       path.style.cursor = "pointer";
       path.style.transition = "fill .2s, opacity .2s";
 
       path.onmouseenter = () => {
-        path.style.fill = "#E97824";
-        path.style.opacity = "0.8";
+        path.style.fill = "rgba(233,120,36,0.45)";
+        path.style.opacity = "0.9";
         setActive(path.id || "path");
       };
 
       path.onmouseleave = () => {
-        path.style.fill = "";
-        path.style.opacity = "";
+        path.style.fill = "transparent";
+        path.style.opacity = "1";
         setActive("");
       };
 
@@ -60,15 +60,13 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
   }, [svg, onCountrySelect]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "700px",
-        overflow: "hidden",
-        borderRadius: "18px"
-      }}
-    >
+    <div style={{
+      position: "relative",
+      width: "100%",
+      height: "700px",
+      overflow: "hidden",
+      borderRadius: "18px"
+    }}>
       <img
         src={background}
         alt="literary map"
@@ -77,19 +75,17 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
           inset: 0,
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "fill",
           zIndex: 1
         }}
       />
 
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 2,
-          pointerEvents: "none"
-        }}
-      >
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
+        pointerEvents: "none"
+      }}>
         <div
           ref={mapRef}
           style={{
@@ -98,31 +94,26 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
             width: "100%",
             height: "100%",
             pointerEvents: "auto",
-            transform: "translate(32px, 20px) scale(1.03)",
+            transform: "translate(0px, 0px) scale(1)",
             transformOrigin: "center center"
           }}
           dangerouslySetInnerHTML={{ __html: svg }}
         />
       </div>
 
-      {active && (
-        <div
-          style={{
-            position: "absolute",
-            top: 20,
-            left: 20,
-            zIndex: 10,
-            background: "#FFF8EE",
-            color: "#35205F",
-            padding: "12px 18px",
-            borderRadius: "10px",
-            fontFamily: "Georgia, serif"
-          }}
-        >
-          SVG:<br />
-          <b>{active}</b>
-        </div>
-      )}
+      {active && <div style={{
+        position: "absolute",
+        top: 20,
+        left: 20,
+        zIndex: 10,
+        background: "#FFF8EE",
+        color: "#35205F",
+        padding: "12px 18px",
+        borderRadius: "10px",
+        fontFamily: "Georgia, serif"
+      }}>
+        SVG:<br/><b>{active}</b>
+      </div>}
     </div>
   );
 }
