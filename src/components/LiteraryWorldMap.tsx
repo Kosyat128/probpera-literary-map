@@ -8,12 +8,15 @@ type Props = {
 };
 
 export default function LiteraryWorldMap({onCountrySelect}: Props){
+
   const mapRef = useRef<HTMLDivElement>(null);
   const [svg,setSvg] = useState("");
   const [active,setActive] = useState("");
 
   useEffect(()=>{
-    fetch(mapSvg).then(r=>r.text()).then(setSvg);
+    fetch(mapSvg)
+      .then(r=>r.text())
+      .then(setSvg);
   },[]);
 
   useEffect(()=>{
@@ -22,7 +25,8 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
     const svgElement = mapRef.current.querySelector("svg");
 
     if(svgElement){
-      svgElement.setAttribute("preserveAspectRatio","none");
+      // сохраняем оригинальные пропорции SVG
+      svgElement.setAttribute("preserveAspectRatio","xMidYMid meet");
       svgElement.style.width="100%";
       svgElement.style.height="100%";
     }
@@ -31,6 +35,7 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
 
     paths.forEach((el)=>{
       const path = el as SVGPathElement;
+
       path.style.pointerEvents="all";
       path.style.cursor="pointer";
       path.style.transition="0.2s";
@@ -51,30 +56,69 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
         if(path.id) onCountrySelect?.(path.id);
       };
     });
+
   },[svg,onCountrySelect]);
 
-  return <div style={{position:"relative",width:"100%",height:"700px",overflow:"hidden",borderRadius:"18px"}}>
-    <img src={background} alt="literary map" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",zIndex:1}} />
+  return (
+    <div style={{
+      position:"relative",
+      width:"100%",
+      height:"700px",
+      overflow:"hidden",
+      borderRadius:"18px"
+    }}>
 
-    <div style={{position:"absolute",inset:0,overflow:"hidden",zIndex:2}}>
-      <div
-        ref={mapRef}
+      <img
+        src={background}
+        alt="literary map"
         style={{
           position:"absolute",
-          left:"0px",
-          top:"0px",
+          inset:0,
           width:"100%",
           height:"100%",
-          transform:"scale(1)",
-          transformOrigin:"center center",
-          pointerEvents:"auto"
+          objectFit:"cover",
+          zIndex:1
         }}
-        dangerouslySetInnerHTML={{__html:svg}}
       />
-    </div>
 
-    {active && <div style={{position:"absolute",top:20,left:20,zIndex:10,background:"#FFF8EE",color:"#35205F",padding:"12px 18px",borderRadius:"10px",fontFamily:"Georgia,serif"}}>
-      SVG:<br/><b>{active}</b>
-    </div>}
-  </div>;
+      <div style={{
+        position:"absolute",
+        inset:0,
+        overflow:"hidden",
+        zIndex:2
+      }}>
+
+        <div
+          ref={mapRef}
+          style={{
+            position:"absolute",
+            left:"34px",
+            top:"22px",
+            width:"calc(100% - 34px)",
+            height:"calc(100% - 22px)",
+            transform:"scale(1.015)",
+            transformOrigin:"center center",
+            pointerEvents:"auto"
+          }}
+          dangerouslySetInnerHTML={{__html:svg}}
+        />
+
+      </div>
+
+      {active && <div style={{
+        position:"absolute",
+        top:20,
+        left:20,
+        zIndex:10,
+        background:"#FFF8EE",
+        color:"#35205F",
+        padding:"12px 18px",
+        borderRadius:"10px",
+        fontFamily:"Georgia,serif"
+      }}>
+        SVG:<br/><b>{active}</b>
+      </div>}
+
+    </div>
+  );
 }
