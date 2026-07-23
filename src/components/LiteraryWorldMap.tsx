@@ -25,9 +25,7 @@ export default function LiteraryWorldMap({
   useEffect(()=>{
 
     fetch(mapSvg)
-
       .then(res=>res.text())
-
       .then(data=>{
 
         setSvg(data);
@@ -35,7 +33,6 @@ export default function LiteraryWorldMap({
         console.log("SVG загружен");
 
       });
-
 
   },[]);
 
@@ -67,7 +64,9 @@ export default function LiteraryWorldMap({
 
       path.style.pointerEvents="all";
 
-      path.style.transition="0.2s";
+      path.style.cursor="pointer";
+
+      path.style.transition="0.25s";
 
 
 
@@ -76,19 +75,15 @@ export default function LiteraryWorldMap({
 
         path.style.fill="#E97824";
 
-        path.style.opacity="0.8";
-
-        path.style.cursor="pointer";
+        path.style.opacity="0.75";
 
 
         setActive(
-          path.id || "path"
+          path.id || "country"
         );
 
 
       };
-
-
 
 
 
@@ -107,12 +102,11 @@ export default function LiteraryWorldMap({
 
 
 
-
       path.onclick = ()=>{
 
 
         console.log(
-          "CLICK:",
+          "CLICK COUNTRY:",
           path.id
         );
 
@@ -140,7 +134,6 @@ export default function LiteraryWorldMap({
 
 
 
-
 return (
 
 <div
@@ -162,7 +155,7 @@ borderRadius:"18px"
 >
 
 
-{/* PNG ФОН */}
+{/* ФОН PNG */}
 
 <img
 
@@ -188,14 +181,13 @@ zIndex:1
 
 }}
 
-
 />
 
 
 
 
 
-{/* SVG СЛОЙ */}
+{/* SVG КОНТУРЫ */}
 
 <div
 
@@ -213,7 +205,9 @@ height:"100%",
 
 overflow:"hidden",
 
-zIndex:2
+zIndex:2,
+
+pointerEvents:"none"
 
 }}
 
@@ -229,24 +223,22 @@ style={{
 position:"absolute",
 
 
-/* ПОДГОНКА SVG */
+/* ПОДГОНКА ПОД PNG */
 
-left:"-70px",
+left:"35px",
 
-top:"-45px",
-
-width:"115%",
-
-height:"115%",
+top:"20px",
 
 
-transform:"scale(1.08)",
+width:"100%",
 
-transformOrigin:"center center"
+height:"100%",
+
+
+pointerEvents:"all"
 
 
 }}
-
 
 dangerouslySetInnerHTML={{
 
@@ -265,6 +257,8 @@ __html:svg
 
 
 
+
+{/* ТЕСТОВАЯ КАРТОЧКА */}
 
 {
 
@@ -303,11 +297,7 @@ SVG:
 
 <br/>
 
-<b>
-
-{active}
-
-</b>
+<b>{active}</b>
 
 
 </div>
