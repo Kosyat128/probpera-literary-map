@@ -9,8 +9,8 @@ type Props = {
 
 export default function LiteraryWorldMap({onCountrySelect}: Props){
   const mapRef = useRef<HTMLDivElement>(null);
-  const [svg,setSvg]=useState("");
-  const [active,setActive]=useState("");
+  const [svg,setSvg] = useState("");
+  const [active,setActive] = useState("");
 
   useEffect(()=>{
     fetch(mapSvg).then(r=>r.text()).then(setSvg);
@@ -19,10 +19,18 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
   useEffect(()=>{
     if(!mapRef.current || !svg) return;
 
-    const paths=mapRef.current.querySelectorAll("path");
+    const svgElement = mapRef.current.querySelector("svg");
+
+    if(svgElement){
+      svgElement.setAttribute("preserveAspectRatio","none");
+      svgElement.style.width="100%";
+      svgElement.style.height="100%";
+    }
+
+    const paths = mapRef.current.querySelectorAll("path");
 
     paths.forEach((el)=>{
-      const path=el as SVGPathElement;
+      const path = el as SVGPathElement;
       path.style.pointerEvents="all";
       path.style.cursor="pointer";
       path.style.transition="0.2s";
@@ -53,12 +61,12 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
         ref={mapRef}
         style={{
           position:"absolute",
-          left:"18px",
-          top:"18px",
+          left:"0px",
+          top:"0px",
           width:"100%",
-          height:"103%",
-          transform:"scaleY(0.96)",
-          transformOrigin:"left top",
+          height:"100%",
+          transform:"scale(1)",
+          transformOrigin:"center center",
           pointerEvents:"auto"
         }}
         dangerouslySetInnerHTML={{__html:svg}}
