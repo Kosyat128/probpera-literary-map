@@ -112,6 +112,7 @@ export default function LiteraryWorldMap({
 
 
 
+
       p.onclick=()=>{
 
 
@@ -146,9 +147,12 @@ export default function LiteraryWorldMap({
 
 
 
+
+
 return (
 
 <div
+
 
 style={{
 
@@ -164,8 +168,15 @@ borderRadius:"18px"
 
 }}
 
+
+
 >
 
+
+
+
+
+{/* ФОН PNG */}
 
 
 <img
@@ -176,9 +187,12 @@ alt="literary map"
 
 style={{
 
+
 position:"absolute",
 
-inset:0,
+left:0,
+
+top:0,
 
 width:"100%",
 
@@ -188,6 +202,7 @@ objectFit:"cover",
 
 zIndex:1
 
+
 }}
 
 
@@ -196,29 +211,56 @@ zIndex:1
 
 
 
+
+
+
+{/* SVG СЛОЙ */}
 
 <div
 
 ref={mapRef}
 
+
 style={{
+
 
 position:"absolute",
 
-inset:0,
 
-zIndex:2
+/* подгонка SVG */
+
+left:"35px",
+
+top:"25px",
+
+width:"calc(100% + 80px)",
+
+height:"calc(100% + 50px)",
+
+
+zIndex:2,
+
+
+transform:"scale(1.04)",
+
+transformOrigin:"center"
+
 
 }}
 
+
 dangerouslySetInnerHTML={{
 
+
 __html:svg
+
 
 }}
 
 
 />
+
+
 
 
 
@@ -228,9 +270,12 @@ __html:svg
 
 active &&
 
+
 <div
 
+
 style={{
+
 
 position:"absolute",
 
@@ -246,19 +291,31 @@ padding:"15px",
 
 borderRadius:"10px",
 
-color:"#35205F"
+color:"#35205F",
+
+boxShadow:"0 5px 20px rgba(0,0,0,.2)"
+
 
 }}
 
+
 >
+
 
 SVG:
 
 <br/>
 
-<b>{active}</b>
+
+<b>
+
+{active}
+
+</b>
+
 
 </div>
+
 
 }
 
