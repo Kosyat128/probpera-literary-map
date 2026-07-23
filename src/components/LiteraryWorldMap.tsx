@@ -34,13 +34,14 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
       const path = element as SVGPathElement;
 
       path.style.fill = "transparent";
-      path.style.stroke = "rgba(53,32,95,0.28)";
-      path.style.strokeWidth = "0.6px";
+      path.style.stroke = "rgba(53,32,95,0.18)";
+      path.style.strokeWidth = "0.45px";
       path.style.pointerEvents = "all";
       path.style.cursor = "pointer";
+      path.style.transition = "fill 0.2s ease";
 
       path.onmouseenter = () => {
-        path.style.fill = "rgba(233,120,36,0.45)";
+        path.style.fill = "rgba(233,120,36,0.18)";
         setActive(path.id || "path");
       };
 
@@ -90,7 +91,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
             width: "100%",
             height: "100%",
             pointerEvents: "auto",
-            transform: "translate(0px, 8px) scale(1.04)",
+            transform: "translate(-4px, 2px) scale(1.01)",
             transformOrigin: "center center"
           }}
           dangerouslySetInnerHTML={{ __html: svg }}
