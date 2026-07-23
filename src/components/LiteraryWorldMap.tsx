@@ -9,7 +9,6 @@ type Props = {
 };
 
 
-
 export default function LiteraryWorldMap({
   onCountrySelect
 }: Props) {
@@ -23,15 +22,13 @@ export default function LiteraryWorldMap({
 
 
 
-  // Загружаем SVG
-
   useEffect(()=>{
 
     fetch(mapSvg)
 
-      .then(response => response.text())
+      .then(res=>res.text())
 
-      .then(data => {
+      .then(data=>{
 
         setSvg(data);
 
@@ -46,19 +43,19 @@ export default function LiteraryWorldMap({
 
 
 
-  // Подключаем события к странам
-
   useEffect(()=>{
 
 
     if(!mapRef.current || !svg) return;
 
 
-
     const paths = mapRef.current.querySelectorAll("path");
 
 
-    console.log("PATH", paths.length);
+    console.log(
+      "PATH найдено:",
+      paths.length
+    );
 
 
 
@@ -68,8 +65,9 @@ export default function LiteraryWorldMap({
       const path = element as SVGPathElement;
 
 
-
       path.style.pointerEvents="all";
+
+      path.style.transition="0.2s";
 
 
 
@@ -78,15 +76,13 @@ export default function LiteraryWorldMap({
 
         path.style.fill="#E97824";
 
-        path.style.fillOpacity="0.75";
+        path.style.opacity="0.8";
 
         path.style.cursor="pointer";
 
 
         setActive(
-
-          path.id || "country"
-
+          path.id || "path"
         );
 
 
@@ -101,7 +97,7 @@ export default function LiteraryWorldMap({
 
         path.style.fill="";
 
-        path.style.fillOpacity="";
+        path.style.opacity="";
 
 
         setActive("");
@@ -112,25 +108,19 @@ export default function LiteraryWorldMap({
 
 
 
-
       path.onclick = ()=>{
 
 
         console.log(
-
-          "CLICK COUNTRY",
-
+          "CLICK:",
           path.id
-
         );
 
 
         if(path.id){
 
           onCountrySelect?.(
-
             path.id
-
           );
 
         }
@@ -172,15 +162,13 @@ borderRadius:"18px"
 >
 
 
-
-{/* ФОН КАРТЫ */}
-
+{/* PNG ФОН */}
 
 <img
 
 src={background}
 
-alt="Literary world map"
+alt="literary map"
 
 style={{
 
@@ -207,15 +195,9 @@ zIndex:1
 
 
 
-
-
-
-{/* SVG ИНТЕРАКТИВНЫЙ СЛОЙ */}
-
+{/* SVG СЛОЙ */}
 
 <div
-
-ref={mapRef}
 
 style={{
 
@@ -229,11 +211,42 @@ width:"100%",
 
 height:"100%",
 
-zIndex:2,
+overflow:"hidden",
 
-pointerEvents:"all"
+zIndex:2
 
 }}
+
+>
+
+
+<div
+
+ref={mapRef}
+
+style={{
+
+position:"absolute",
+
+
+/* ПОДГОНКА SVG */
+
+left:"-70px",
+
+top:"-45px",
+
+width:"115%",
+
+height:"115%",
+
+
+transform:"scale(1.08)",
+
+transformOrigin:"center center"
+
+
+}}
+
 
 dangerouslySetInnerHTML={{
 
@@ -241,15 +254,16 @@ __html:svg
 
 }}
 
+
 />
 
 
+</div>
 
 
 
 
 
-{/* ТЕСТОВАЯ ПОДСКАЗКА */}
 
 
 {
@@ -277,19 +291,23 @@ padding:"12px 18px",
 
 borderRadius:"10px",
 
-fontFamily:"Georgia, serif",
+boxShadow:"0 5px 20px rgba(0,0,0,.25)",
 
-boxShadow:"0 5px 20px rgba(0,0,0,.2)"
+fontFamily:"Georgia, serif"
 
 }}
 
 >
 
-Страна:
+SVG:
 
 <br/>
 
-<b>{active}</b>
+<b>
+
+{active}
+
+</b>
 
 
 </div>
@@ -300,7 +318,6 @@ boxShadow:"0 5px 20px rgba(0,0,0,.2)"
 
 
 </div>
-
 
 );
 
