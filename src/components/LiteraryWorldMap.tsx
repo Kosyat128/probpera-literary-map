@@ -3,150 +3,94 @@ import { useEffect, useRef, useState } from "react";
 import background from "../assets/map/literary-map-background.png";
 import svgMap from "../assets/map/literary-world-map.svg";
 
-import { countries } from "../data/countries";
 
 
+export default function LiteraryWorldMap(){
 
-type LiteraryWorldMapProps = {
 
-  selectedCountry?: string;
+const svgRef = useRef<HTMLDivElement>(null);
 
-  onCountrySelect?: (country:string)=>void;
+const [active,setActive]=useState("");
 
-};
 
 
+useEffect(()=>{
 
-export default function LiteraryWorldMap({
 
-  selectedCountry,
+fetch(svgMap)
 
-  onCountrySelect,
+.then(res=>res.text())
 
-}: LiteraryWorldMapProps){
+.then(svg=>{
 
 
+if(!svgRef.current) return;
 
-  const [svg,setSvg] = useState("");
 
-  const [hover,setHover] = useState<any>(null);
+svgRef.current.innerHTML=svg;
 
 
-  const containerRef = useRef<HTMLDivElement>(null);
 
+const paths =
 
+svgRef.current.querySelectorAll(
+"path"
+);
 
-  useEffect(()=>{
 
 
-    fetch(svgMap)
+paths.forEach((path)=>{
 
-      .then(res=>res.text())
 
-      .then(data=>{
+path.addEventListener(
+"mouseenter",
+()=>{
 
-        setSvg(data);
 
-      });
+path.setAttribute(
+"fill",
+"#E97824"
+);
 
 
-  },[]);
+setActive(
+path.id || "unknown"
+);
 
 
+}
 
+);
 
 
-  function searchCountry(name:string){
 
+path.addEventListener(
+"mouseleave",
+()=>{
 
-    return countries.find(
 
-      country =>
+path.removeAttribute(
+"fill"
+);
 
-      country.name
-      .toLowerCase()
-      .includes(
 
-        name.toLowerCase()
+setActive("");
 
-      )
+}
 
-    );
+);
 
 
-  }
 
+});
 
 
 
+});
 
 
 
-  function handleMove(
-
-    e:React.MouseEvent
-
-  ){
-
-
-    const target =
-      e.target as SVGElement;
-
-
-
-    const id =
-      target.id;
-
-
-
-    if(!id){
-
-      setHover(null);
-
-      return;
-
-    }
-
-
-
-    const country =
-      searchCountry(id);
-
-
-
-    if(country){
-
-      setHover(country);
-
-    }
-
-
-  }
-
-
-
-
-
-
-
-  function handleClick(){
-
-
-    if(hover){
-
-
-      onCountrySelect?.(
-
-        hover.name
-
-      );
-
-
-    }
-
-
-  }
-
+},[]);
 
 
 
@@ -158,51 +102,29 @@ return(
 
 <div
 
-
-ref={containerRef}
-
-
 style={{
 
-
 position:"relative",
-
-width:"100%",
 
 height:"700px",
 
 overflow:"hidden",
 
-borderRadius:"18px",
-
-background:"#F7EBDD"
-
+borderRadius:"18px"
 
 }}
-
 
 >
 
 
 
-{/* ФИРМЕННЫЙ ФОН */}
-
-
 <img
-
 
 src={background}
 
-
-alt="Literary world map"
-
-
 style={{
 
-
 position:"absolute",
-
-inset:0,
 
 width:"100%",
 
@@ -210,10 +132,7 @@ height:"100%",
 
 objectFit:"cover"
 
-
 }}
-
-
 
 />
 
@@ -221,186 +140,82 @@ objectFit:"cover"
 
 
 
-
-{/* SVG КАРТА */}
-
-
-
 <div
 
-
-dangerouslySetInnerHTML={{
-
-__html:svg
-
-}}
+ref={svgRef}
 
 
 style={{
-
 
 position:"absolute",
 
 inset:0,
 
-width:"100%",
+zIndex:2,
 
-height:"100%",
-
-
-opacity:.55,
-
-
-pointerEvents:"none"
-
-
+cursor:"pointer"
 
 }}
-
 
 
 />
 
 
 
-
-
-
-
-{/* ИНТЕРАКТИВНЫЙ СЛОЙ */}
-
-
-
-<div
-
-
-onMouseMove={handleMove}
-
-
-onClick={handleClick}
-
-
-style={{
-
-
-position:"absolute",
-
-inset:0,
-
-cursor:"pointer",
-
-
-}}
-
-
-
->
-
-</div>
-
-
-
-
-
-
-
-
-{/* ОКНО */}
 
 
 
 {
 
-hover && (
-
+active &&
 
 <div
 
-
 style={{
-
 
 position:"absolute",
 
-top:"30px",
+top:30,
 
-left:"30px",
+left:30,
+
+zIndex:5,
 
 background:"#FFF8EE",
 
-padding:"18px",
+padding:"15px",
 
-borderRadius:"15px",
+borderRadius:"12px",
 
-width:"280px",
-
-zIndex:20,
-
-color:"#35205F",
-
-boxShadow:
-
-"0 10px 30px rgba(0,0,0,.2)"
-
+color:"#35205F"
 
 }}
-
 
 >
 
 
-<h3>
+SVG объект:
 
-{hover.name}
-
-</h3>
-
-
-
-<p>
-
-📚 Писателей:
-
-{" "}
+<br/>
 
 <b>
 
-{hover.writers?.length || 0}
+{active}
 
 </b>
-
-</p>
-
-
-
-<p>
-
-Статей:
-
-{" "}
-
-{hover.articles || 0}
-
-</p>
-
 
 
 </div>
 
-
-
-)
 
 }
 
 
 
-
-
 </div>
 
 
-);
+)
 
 
 }
