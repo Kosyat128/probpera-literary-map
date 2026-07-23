@@ -44,24 +44,20 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
       };
 
       path.onclick = ()=>{
-        if(path.id){
-          onCountrySelect?.(path.id);
-        }
+        if(path.id) onCountrySelect?.(path.id);
       };
     });
 
   },[svg,onCountrySelect]);
 
   return (
-    <div
-      style={{
-        position:"relative",
-        width:"100%",
-        height:"700px",
-        overflow:"hidden",
-        borderRadius:"18px"
-      }}
-    >
+    <div style={{
+      position:"relative",
+      width:"100%",
+      height:"700px",
+      overflow:"hidden",
+      borderRadius:"18px"
+    }}>
 
       <img
         src={background}
@@ -76,44 +72,42 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
         }}
       />
 
-      <div
-        style={{
-          position:"absolute",
-          inset:0,
-          zIndex:2,
-          overflow:"hidden"
-        }}
-      >
+      <div style={{
+        position:"absolute",
+        inset:0,
+        overflow:"hidden",
+        zIndex:2
+      }}>
+
         <div
           ref={mapRef}
           style={{
             position:"absolute",
-            left:"42px",
-            top:"20px",
-            width:"92%",
-            height:"92%",
-            transform:"scale(1.06)",
+            left:"18px",
+            top:"35px",
+            width:"100%",
+            height:"100%",
+            transform:"scale(1)",
             transformOrigin:"left top",
             pointerEvents:"auto"
           }}
           dangerouslySetInnerHTML={{__html:svg}}
         />
+
       </div>
 
       {active && (
-        <div
-          style={{
-            position:"absolute",
-            top:20,
-            left:20,
-            zIndex:10,
-            background:"#FFF8EE",
-            color:"#35205F",
-            padding:"12px 18px",
-            borderRadius:"10px",
-            fontFamily:"Georgia,serif"
-          }}
-        >
+        <div style={{
+          position:"absolute",
+          top:20,
+          left:20,
+          zIndex:10,
+          background:"#FFF8EE",
+          color:"#35205F",
+          padding:"12px 18px",
+          borderRadius:"10px",
+          fontFamily:"Georgia,serif"
+        }}>
           SVG:<br/><b>{active}</b>
         </div>
       )}
