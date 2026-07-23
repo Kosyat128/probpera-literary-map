@@ -17,45 +17,45 @@ export default function LiteraryWorldMap({
 }:Props){
 
 
-const mapRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
-const [svg,setSvg]=useState("");
+  const [svg,setSvg] = useState("");
 
-const [active,setActive]=useState("");
+  const [active,setActive] = useState("");
 
 
 
 
+  useEffect(()=>{
 
-useEffect(()=>{
 
+    fetch(mapSvg)
 
-fetch(mapSvg)
+      .then(response=>response.text())
 
-.then(r=>r.text())
+      .then(data=>{
 
-.then(data=>{
 
+        const fixed = data.replace(
 
-setSvg(
+          /<svg([^>]*)>/,
 
-data.replace(
+          `<svg$1 
+          preserveAspectRatio="xMidYMid meet"
+          style="width:100%;height:100%;position:absolute;left:0;top:0;"
+          >`
 
-"<svg",
+        );
 
-`<svg 
-style="width:100%;height:100%"
-preserveAspectRatio="none"`
 
-)
+        setSvg(fixed);
 
-);
 
+      });
 
-});
 
+  },[]);
 
-},[]);
 
 
 
@@ -63,266 +63,291 @@ preserveAspectRatio="none"`
 
 
 
-useEffect(()=>{
+  useEffect(()=>{
 
 
-if(!mapRef.current) return;
+    if(!mapRef.current) return;
 
 
+    const paths =
 
-const paths =
+      mapRef.current.querySelectorAll("path");
 
-mapRef.current.querySelectorAll("path");
 
 
+    console.log(
 
-console.log(
+      "Найдено стран:",
 
-"PATH FOUND:",
+      paths.length
 
-paths.length
+    );
 
-);
 
 
 
 
+    paths.forEach((path)=>{
 
-paths.forEach((path)=>{
 
 
+      const element = path as SVGPathElement;
 
-path.addEventListener(
 
-"mouseenter",
 
-()=>{
 
+      element.addEventListener(
 
-(path as SVGPathElement)
+        "mouseenter",
 
-.style.fill="#E97824";
+        ()=>{
 
 
+          element.style.fill = "#E97824";
 
-setActive(
+          element.style.opacity = "0.85";
 
-path.id || "NO_ID"
+          element.style.cursor = "pointer";
 
-);
 
+          setActive(
 
-}
+            element.id || "unknown"
 
-);
+          );
 
 
+        }
 
+      );
 
 
-path.addEventListener(
 
-"mouseleave",
 
-()=>{
 
 
-(path as SVGPathElement)
 
-.style.fill="";
+      element.addEventListener(
 
+        "mouseleave",
 
+        ()=>{
 
-setActive("");
 
-}
+          element.style.fill = "";
 
+          element.style.opacity = "";
 
-);
 
+          setActive("");
 
 
+        }
 
+      );
 
-path.addEventListener(
 
-"click",
 
-()=>{
 
 
-console.log(
 
-"CLICK",
 
-path.id
+      element.addEventListener(
 
-);
+        "click",
 
+        ()=>{
 
 
-onCountrySelect?.(
+          console.log(
 
-path.id
+            "Выбрано:",
 
-);
+            element.id
 
+          );
 
-}
 
-);
 
+          onCountrySelect?.(
 
+            element.id
 
-});
+          );
 
 
+        }
 
+      );
 
 
-},[svg]);
 
+    });
 
 
 
 
+  },[svg,onCountrySelect]);
 
 
 
 
-return (
 
-<div
 
 
-style={{
 
-position:"relative",
 
-height:"700px",
+  return (
 
-overflow:"hidden",
+    <div
 
-borderRadius:"18px"
+      style={{
 
-}}
+        position:"relative",
 
+        width:"100%",
 
+        height:"700px",
 
->
+        overflow:"hidden",
 
+        borderRadius:"18px"
 
-<img
+      }}
 
+    >
 
-src={background}
 
 
-style={{
 
 
-position:"absolute",
+      {/* ФОН */}
 
-inset:0,
+      <img
 
-width:"100%",
+        src={background}
 
-height:"100%",
+        alt="literary map"
 
-objectFit:"cover",
+        style={{
 
-zIndex:1
+          position:"absolute",
 
+          inset:0,
 
-}}
+          width:"100%",
 
+          height:"100%",
 
+          objectFit:"cover",
 
-/>
+          zIndex:1
 
+        }}
 
+      />
 
 
-<div
 
 
-ref={mapRef}
 
 
-style={{
 
-position:"absolute",
 
-inset:0,
+      {/* SVG */}
 
-zIndex:2
+      <div
 
-}}
 
+        ref={mapRef}
 
-dangerouslySetInnerHTML={{
 
-__html:svg
+        style={{
 
-}}
+          position:"absolute",
 
+          inset:0,
 
-/>
+          width:"100%",
 
+          height:"100%",
 
+          zIndex:2
 
+        }}
 
 
+        dangerouslySetInnerHTML={{
 
-{
+          __html:svg
 
-active &&
+        }}
 
 
-<div
+      />
 
 
-style={{
 
-position:"absolute",
 
-top:20,
 
-left:20,
 
-zIndex:10,
 
-background:"#FFF8EE",
 
-padding:"15px",
+      {
 
-borderRadius:"10px",
+        active &&
 
-color:"#35205F"
 
-}}
+        <div
 
+          style={{
 
->
+            position:"absolute",
 
-Выбран:
+            left:"20px",
 
-<br/>
+            top:"20px",
 
-<b>{active}</b>
+            zIndex:10,
 
+            background:"#FFF8EE",
 
-</div>
+            padding:"15px 20px",
 
+            borderRadius:"12px",
 
+            color:"#35205F",
 
-}
+            boxShadow:"0 5px 20px rgba(0,0,0,.2)"
 
+          }}
 
+        >
 
-</div>
+          SVG объект:
 
+          <br/>
 
-);
+          <b>
+
+            {active}
+
+          </b>
+
+
+        </div>
+
+
+      }
+
+
+
+
+
+
+    </div>
+
+
+  );
 
 }
