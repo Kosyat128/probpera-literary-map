@@ -4,323 +4,151 @@ import background from "../assets/map/literary-map-background.png";
 import mapSvg from "../assets/map/literary-world-map.svg";
 
 
-type LiteraryWorldMapProps = {
+export default function LiteraryWorldMap(){
 
-  onCountrySelect?: (country:string)=>void;
 
-};
+const [svg,setSvg]=useState("");
 
 
 
-export default function LiteraryWorldMap({
+useEffect(()=>{
 
-  onCountrySelect
 
-}: LiteraryWorldMapProps) {
+fetch(mapSvg)
 
+.then(r=>r.text())
 
+.then(data=>{
 
-  const [svg,setSvg] = useState("");
 
-  const [hover,setHover] = useState("");
+console.log("SVG загрузился");
 
 
+console.log(
 
+"PATH",
 
+(data.match(/<path/g)||[]).length
 
-  useEffect(()=>{
+);
 
 
-    fetch(mapSvg)
+console.log(
 
-      .then(response => response.text())
+"GROUP",
 
-      .then(data => {
+(data.match(/<g/g)||[]).length
 
+);
 
-        let fixed = data
 
-          .replace(
+console.log(
 
-            /<svg([^>]*)>/,
+"USE",
 
-            `<svg$1 
-              preserveAspectRatio="xMidYMid meet"
-              style="width:100%;height:100%;"
-            >`
+(data.match(/<use/g)||[]).length
 
-          );
+);
 
 
 
-        setSvg(fixed);
+setSvg(data);
 
 
-      });
+});
 
 
-  },[]);
+},[]);
 
 
 
 
 
+function click(e:any){
 
 
-  function handleMouseMove(
+console.log(
 
-    e:React.MouseEvent<HTMLDivElement>
+"КЛИК",
 
-  ){
+e.target.tagName,
 
+e.target.id,
 
-    const target = e.target as SVGElement;
+e.target.className
 
+);
 
 
-    if(target.tagName==="path"){
+}
 
 
-      const id = target.id;
 
 
-      if(id){
+return (
 
-        setHover(id);
+<div
 
-      }
+onClick={click}
 
+style={{
 
-    }
+position:"relative",
 
+height:"700px",
 
-  }
+overflow:"hidden"
 
+}}
 
+>
 
 
+<img
 
+src={background}
 
+style={{
 
-  function handleClick(){
+position:"absolute",
 
+width:"100%",
 
-    if(hover){
+height:"100%",
 
+objectFit:"cover"
 
-      console.log(
+}}
 
-        "Нажата область SVG:",
+/>
 
-        hover
 
-      );
 
+<div
 
-      onCountrySelect?.(hover);
+style={{
 
+position:"absolute",
 
-    }
+inset:0
 
+}}
 
-  }
 
+dangerouslySetInnerHTML={{
 
+__html:svg
 
+}}
 
 
+/>
 
 
+</div>
 
-  return (
 
+);
 
-
-    <div
-
-
-      style={{
-
-
-        position:"relative",
-
-        width:"100%",
-
-        height:"700px",
-
-        overflow:"hidden",
-
-        borderRadius:"18px"
-
-
-      }}
-
-
-    >
-
-
-
-
-
-
-
-      {/* ФОН PNG */}
-
-
-      <img
-
-
-        src={background}
-
-
-        alt="literary world map"
-
-
-        style={{
-
-
-          position:"absolute",
-
-          inset:0,
-
-          width:"100%",
-
-          height:"100%",
-
-          objectFit:"cover",
-
-          zIndex:1
-
-
-        }}
-
-
-      />
-
-
-
-
-
-
-
-
-      {/* SVG СЛОЙ */}
-
-
-      <div
-
-
-        onMouseMove={handleMouseMove}
-
-
-        onClick={handleClick}
-
-
-        style={{
-
-
-          position:"absolute",
-
-          inset:0,
-
-          width:"100%",
-
-          height:"100%",
-
-          zIndex:2,
-
-          cursor:"pointer"
-
-
-        }}
-
-
-        dangerouslySetInnerHTML={{
-
-
-          __html:svg
-
-
-        }}
-
-
-
-      />
-
-
-
-
-
-
-
-
-      {/* ОКНО ПРОВЕРКИ */}
-
-
-
-      {
-
-        hover &&
-
-
-        <div
-
-
-          style={{
-
-
-            position:"absolute",
-
-            top:"20px",
-
-            left:"20px",
-
-            background:"#FFF8EE",
-
-            color:"#35205F",
-
-            padding:"15px",
-
-            borderRadius:"12px",
-
-            zIndex:5,
-
-            boxShadow:"0 5px 20px rgba(0,0,0,.2)"
-
-
-          }}
-
-
-
-        >
-
-
-          SVG объект:
-
-
-          <br/>
-
-
-          <b>
-
-            {hover}
-
-          </b>
-
-
-        </div>
-
-
-      }
-
-
-
-
-
-    </div>
-
-
-
-  );
 
 }
