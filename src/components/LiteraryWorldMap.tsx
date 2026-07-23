@@ -76,14 +76,14 @@ export default function LiteraryWorldMap({
 
 
 
-      p.onmouseenter=()=>{
+      p.onmouseenter = ()=>{
 
 
-        p.style.fill="#E97824";
+        p.style.fill = "#E97824";
 
-        p.style.opacity="0.8";
+        p.style.opacity = "0.8";
 
-        p.style.cursor="pointer";
+        p.style.cursor = "pointer";
 
 
         setActive(
@@ -97,12 +97,14 @@ export default function LiteraryWorldMap({
 
 
 
-      p.onmouseleave=()=>{
 
 
-        p.style.fill="";
+      p.onmouseleave = ()=>{
 
-        p.style.opacity="";
+
+        p.style.fill = "";
+
+        p.style.opacity = "";
 
 
         setActive("");
@@ -113,7 +115,7 @@ export default function LiteraryWorldMap({
 
 
 
-      p.onclick=()=>{
+      p.onclick = ()=>{
 
 
         console.log(
@@ -135,7 +137,6 @@ export default function LiteraryWorldMap({
       };
 
 
-
     });
 
 
@@ -153,7 +154,6 @@ return (
 
 <div
 
-
 style={{
 
 position:"relative",
@@ -168,16 +168,11 @@ borderRadius:"18px"
 
 }}
 
-
-
 >
 
 
 
-
-
 {/* ФОН PNG */}
-
 
 <img
 
@@ -186,7 +181,6 @@ src={background}
 alt="literary map"
 
 style={{
-
 
 position:"absolute",
 
@@ -201,7 +195,6 @@ height:"100%",
 objectFit:"cover",
 
 zIndex:1
-
 
 }}
 
@@ -220,40 +213,37 @@ zIndex:1
 
 ref={mapRef}
 
-
 style={{
-
 
 position:"absolute",
 
 
-/* подгонка SVG */
+/* ПОДГОНКА SVG */
 
-left:"35px",
+left:"105px",
 
-top:"25px",
+top:"95px",
 
-width:"calc(100% + 80px)",
 
-height:"calc(100% + 50px)",
+width:"calc(100% + 40px)",
+
+height:"calc(100% + 40px)",
 
 
 zIndex:2,
 
 
-transform:"scale(1.04)",
+transform:"scale(1.02)",
 
-transformOrigin:"center"
-
+transformOrigin:"top left"
 
 }}
 
 
+
 dangerouslySetInnerHTML={{
 
-
 __html:svg
-
 
 }}
 
@@ -273,9 +263,7 @@ active &&
 
 <div
 
-
 style={{
-
 
 position:"absolute",
 
@@ -295,17 +283,13 @@ color:"#35205F",
 
 boxShadow:"0 5px 20px rgba(0,0,0,.2)"
 
-
 }}
 
-
 >
-
 
 SVG:
 
 <br/>
-
 
 <b>
 
