@@ -1,0 +1,70 @@
+<svg 
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 1600 900"
+width="1600"
+height="900">
+
+<!-- Россия -->
+<path
+id="russia"
+data-country="Россия"
+d=""
+fill="transparent"
+/>
+
+
+<!-- Великобритания -->
+<path
+id="uk"
+data-country="Великобритания"
+d=""
+fill="transparent"
+/>
+
+
+<!-- Франция -->
+<path
+id="france"
+data-country="Франция"
+d=""
+fill="transparent"
+/>
+
+
+<!-- Германия -->
+<path
+id="germany"
+data-country="Германия"
+d=""
+fill="transparent"
+/>
+
+
+<!-- Италия -->
+<path
+id="italy"
+data-country="Италия"
+d=""
+fill="transparent"
+/>
+
+
+<!-- США -->
+<path
+id="usa"
+data-country="США"
+d=""
+fill="transparent"
+/>
+
+
+<!-- Япония -->
+<path
+id="japan"
+data-country="Япония"
+d=""
+fill="transparent"
+/>
+
+
+</svg>
