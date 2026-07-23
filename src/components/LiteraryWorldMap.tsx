@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import background from "../assets/map/literary-map-background.png";
 import svgMap from "../assets/map/literary-world-map.svg";
 
-import { literaryCountries } from "../data/literaryMap/countries";
+import { countries } from "../data/countries";
+
 
 
 type LiteraryWorldMapProps = {
 
   selectedCountry?: string;
 
-  onCountrySelect?: (country: string) => void;
+  onCountrySelect?: (country:string)=>void;
 
 };
 
@@ -22,54 +23,55 @@ export default function LiteraryWorldMap({
 
   onCountrySelect,
 
-}: LiteraryWorldMapProps) {
+}: LiteraryWorldMapProps){
 
 
 
-  const [svgContent, setSvgContent] = useState("");
+  const [svg,setSvg] = useState("");
 
-  const [hoverCountry, setHoverCountry] = useState<any>(null);
-
-
+  const [hover,setHover] = useState<any>(null);
 
 
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+
+
+  useEffect(()=>{
 
 
     fetch(svgMap)
 
-      .then(response => response.text())
+      .then(res=>res.text())
 
-      .then(svg => {
+      .then(data=>{
 
-
-        setSvgContent(svg);
-
+        setSvg(data);
 
       });
 
 
-  }, []);
+  },[]);
 
 
 
 
 
+  function searchCountry(name:string){
 
-  function findCountry(id:string){
 
+    return countries.find(
 
-    const country = literaryCountries.find(
+      country =>
 
-      item =>
+      country.name
+      .toLowerCase()
+      .includes(
 
-      item.id.toLowerCase() === id.toLowerCase()
+        name.toLowerCase()
+
+      )
 
     );
-
-
-    return country;
 
 
   }
@@ -80,28 +82,26 @@ export default function LiteraryWorldMap({
 
 
 
-  function handleMouseMove(
+  function handleMove(
 
-    event:React.MouseEvent<HTMLDivElement>
+    e:React.MouseEvent
 
   ){
 
 
-
-    const element =
-
-      event.target as SVGElement;
+    const target =
+      e.target as SVGElement;
 
 
 
-
-    const id = element.id;
+    const id =
+      target.id;
 
 
 
     if(!id){
 
-      setHoverCountry(null);
+      setHover(null);
 
       return;
 
@@ -109,15 +109,14 @@ export default function LiteraryWorldMap({
 
 
 
-
-
-    const country = findCountry(id);
+    const country =
+      searchCountry(id);
 
 
 
     if(country){
 
-      setHoverCountry(country);
+      setHover(country);
 
     }
 
@@ -130,39 +129,20 @@ export default function LiteraryWorldMap({
 
 
 
-
-  function handleClick(
-
-    event:React.MouseEvent<HTMLDivElement>
-
-  ){
+  function handleClick(){
 
 
+    if(hover){
 
-    const element =
-
-      event.target as SVGElement;
-
-
-
-    const id = element.id;
-
-
-
-    const country = findCountry(id);
-
-
-
-    if(country){
 
       onCountrySelect?.(
 
-        country.name
+        hover.name
 
       );
 
-    }
 
+    }
 
 
   }
@@ -173,262 +153,254 @@ export default function LiteraryWorldMap({
 
 
 
+return(
 
-  return (
 
+<div
 
 
-    <div
+ref={containerRef}
 
 
-      style={{
+style={{
 
 
-        position:"relative",
+position:"relative",
 
-        width:"100%",
+width:"100%",
 
-        height:"700px",
+height:"700px",
 
-        overflow:"hidden",
+overflow:"hidden",
 
-        borderRadius:"18px",
+borderRadius:"18px",
 
-        background:"#F7EBDD",
+background:"#F7EBDD"
 
 
-      }}
+}}
 
 
-    >
+>
 
 
 
+{/* ФИРМЕННЫЙ ФОН */}
 
 
-      {/* ФОН ПРОБА ПЕРА */}
+<img
 
 
-      <img
+src={background}
 
 
-        src={background}
+alt="Literary world map"
 
 
-        alt="Literary Map"
+style={{
 
 
-        style={{
+position:"absolute",
 
+inset:0,
 
-          position:"absolute",
+width:"100%",
 
-          width:"100%",
+height:"100%",
 
-          height:"100%",
+objectFit:"cover"
 
-          objectFit:"cover",
 
+}}
 
-        }}
 
 
-      />
+/>
 
 
 
 
 
 
+{/* SVG КАРТА */}
 
 
-      {/* SVG СТРАНЫ */}
 
+<div
 
 
-      <div
+dangerouslySetInnerHTML={{
 
+__html:svg
 
+}}
 
-        onMouseMove={handleMouseMove}
 
+style={{
 
-        onMouseLeave={()=>
 
-          setHoverCountry(null)
+position:"absolute",
 
-        }
+inset:0,
 
+width:"100%",
 
-        onClick={handleClick}
+height:"100%",
 
 
-        dangerouslySetInnerHTML={{
+opacity:.55,
 
-          __html:svgContent
 
-        }}
+pointerEvents:"none"
 
 
-        style={{
 
+}}
 
-          position:"absolute",
 
-          inset:0,
 
+/>
 
-          cursor:"pointer",
 
 
 
-        }}
 
 
 
-      />
+{/* ИНТЕРАКТИВНЫЙ СЛОЙ */}
 
 
 
+<div
 
 
+onMouseMove={handleMove}
 
 
+onClick={handleClick}
 
-      {/* ОКНО ПРИ НАВЕДЕНИИ */}
 
+style={{
 
 
-      {hoverCountry && (
+position:"absolute",
 
+inset:0,
 
+cursor:"pointer",
 
-        <div
 
+}}
 
-          style={{
 
 
-            position:"absolute",
+>
 
-            top:"30px",
+</div>
 
-            left:"30px",
 
-            background:"#FFF8EE",
 
-            padding:"18px",
 
-            borderRadius:"15px",
 
-            width:"260px",
 
-            color:"#35205F",
 
-            boxShadow:
 
-            "0 10px 30px rgba(0,0,0,.15)",
+{/* ОКНО */}
 
 
 
-            zIndex:10,
+{
 
+hover && (
 
-          }}
 
+<div
 
 
-        >
+style={{
 
 
+position:"absolute",
 
-          <h3>
+top:"30px",
 
-            {hoverCountry.name}
+left:"30px",
 
-          </h3>
+background:"#FFF8EE",
 
+padding:"18px",
 
+borderRadius:"15px",
 
-          <p>
+width:"280px",
 
-            Писателей:
+zIndex:20,
 
-            {" "}
+color:"#35205F",
 
-            <b>
+boxShadow:
 
-            {hoverCountry.writersCount}
+"0 10px 30px rgba(0,0,0,.2)"
 
-            </b>
 
-          </p>
+}}
 
 
+>
 
-          <p>
 
-            Статей:
+<h3>
 
-            {" "}
+{hover.name}
 
-            {hoverCountry.articlesCount}
+</h3>
 
-          </p>
 
 
+<p>
 
+📚 Писателей:
 
-          <hr />
+{" "}
 
+<b>
 
+{hover.writers?.length || 0}
 
-          <b>
+</b>
 
-          Известные авторы:
+</p>
 
-          </b>
 
 
+<p>
 
-          {
+Статей:
 
-          hoverCountry.famousAuthors
+{" "}
 
-          ?.slice(0,3)
+{hover.articles || 0}
 
-          .map(
+</p>
 
-            (writer:string)=>(
 
-              <div key={writer}>
 
-                • {writer}
+</div>
 
-              </div>
 
-            )
 
-          )
+)
 
-          }
+}
 
 
 
-        </div>
 
 
-      )}
+</div>
 
 
+);
 
-
-
-
-
-    </div>
-
-
-  );
 
 }
