@@ -4,10 +4,26 @@ import background from "../assets/map/literary-map-background.png";
 import mapSvg from "../assets/map/literary-world-map.svg";
 
 
-export default function LiteraryWorldMap(){
+type Props = {
+
+  onCountrySelect?: (country:string)=>void;
+
+};
+
+
+
+export default function LiteraryWorldMap({
+
+  onCountrySelect
+
+}:Props){
 
 
 const [svg,setSvg]=useState("");
+
+const [active,setActive]=useState("");
+
+
 
 
 
@@ -21,38 +37,19 @@ fetch(mapSvg)
 .then(data=>{
 
 
-console.log("SVG загрузился");
+let fixed = data.replace(
 
+"<svg",
 
-console.log(
-
-"PATH",
-
-(data.match(/<path/g)||[]).length
-
-);
-
-
-console.log(
-
-"GROUP",
-
-(data.match(/<g/g)||[]).length
-
-);
-
-
-console.log(
-
-"USE",
-
-(data.match(/<use/g)||[]).length
+`<svg 
+style="width:100%;height:100%;"
+preserveAspectRatio="xMidYMid meet"`
 
 );
 
 
 
-setSvg(data);
+setSvg(fixed);
 
 
 });
@@ -64,20 +61,32 @@ setSvg(data);
 
 
 
-function click(e:any){
+
+function move(e:any){
 
 
-console.log(
+const target = e.target;
 
-"КЛИК",
 
-e.target.tagName,
 
-e.target.id,
+if(target.tagName==="path"){
 
-e.target.className
+
+target.style.fill="#E97824";
+
+target.style.cursor="pointer";
+
+
+setActive(
+
+target.id || "path"
 
 );
+
+
+
+}
+
 
 
 }
@@ -85,30 +94,103 @@ e.target.className
 
 
 
-return (
+
+function leave(e:any){
+
+
+const target=e.target;
+
+
+if(target.tagName==="path"){
+
+
+target.style.fill="";
+
+
+}
+
+
+
+}
+
+
+
+
+
+function click(e:any){
+
+
+const target=e.target;
+
+
+if(target.tagName==="path"){
+
+
+console.log(
+
+"Выбран SVG путь:",
+
+target.id
+
+);
+
+
+
+onCountrySelect?.(
+
+target.id
+
+);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+return(
+
 
 <div
 
-onClick={click}
 
 style={{
+
 
 position:"relative",
 
 height:"700px",
 
-overflow:"hidden"
+overflow:"hidden",
+
+borderRadius:"18px"
+
 
 }}
+
+
 
 >
 
 
+
 <img
+
 
 src={background}
 
+
+alt="map"
+
+
 style={{
+
 
 position:"absolute",
 
@@ -116,33 +198,111 @@ width:"100%",
 
 height:"100%",
 
-objectFit:"cover"
+objectFit:"cover",
+
+zIndex:1
+
 
 }}
+
+
 
 />
 
 
 
+
+
+
 <div
+
+
+onMouseMove={move}
+
+onMouseLeave={leave}
+
+onClick={click}
+
 
 style={{
 
+
 position:"absolute",
 
-inset:0
+inset:0,
+
+zIndex:2,
+
+cursor:"pointer"
+
 
 }}
 
 
 dangerouslySetInnerHTML={{
 
+
 __html:svg
+
 
 }}
 
 
 />
+
+
+
+
+
+
+
+
+{
+
+active &&
+
+
+<div
+
+
+style={{
+
+
+position:"absolute",
+
+top:20,
+
+left:20,
+
+zIndex:5,
+
+background:"#FFF8EE",
+
+padding:"15px",
+
+borderRadius:"10px",
+
+color:"#35205F"
+
+
+}}
+
+
+>
+
+
+SVG:
+
+<br/>
+
+<b>{active}</b>
+
+
+</div>
+
+
+}
+
 
 
 </div>
