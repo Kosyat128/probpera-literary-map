@@ -47,7 +47,6 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
         if(path.id) onCountrySelect?.(path.id);
       };
     });
-
   },[svg,onCountrySelect]);
 
   return (
@@ -84,10 +83,10 @@ export default function LiteraryWorldMap({onCountrySelect}: Props){
           style={{
             position:"absolute",
             left:"18px",
-            top:"35px",
+            top:"18px",
             width:"100%",
-            height:"100%",
-            transform:"scale(1)",
+            height:"103%",
+            transform:"scaleY(0.96)",
             transformOrigin:"left top",
             pointerEvents:"auto"
           }}
