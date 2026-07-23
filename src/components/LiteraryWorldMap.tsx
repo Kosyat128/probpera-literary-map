@@ -41,87 +41,99 @@ export default function LiteraryWorldMap({
   useEffect(()=>{
 
 
-    if(!mapRef.current || !svg) return;
+    if(!mapRef.current) return;
 
 
-    const paths = mapRef.current.querySelectorAll("path");
+    const timer = setTimeout(()=>{
 
 
-    console.log(
-      "PATH:",
-      paths.length
-    );
+      const paths =
+        mapRef.current!.querySelectorAll("path");
 
 
-
-    paths.forEach((element)=>{
-
-
-      const path = element as SVGPathElement;
+      console.log(
+        "PATH FOUND:",
+        paths.length
+      );
 
 
 
-      path.style.pointerEvents="all";
-
-      path.style.cursor="pointer";
+      paths.forEach((element)=>{
 
 
-
-      path.onmouseenter=()=>{
-
-
-        path.style.fill="#E97824";
-
-        path.style.opacity="0.8";
-
-
-        setActive(
-          path.id || "country"
-        );
-
-
-      };
+        const path =
+          element as SVGPathElement;
 
 
 
-      path.onmouseleave=()=>{
+        path.style.pointerEvents="all";
 
-
-        path.style.fill="";
-
-        path.style.opacity="";
-
-
-        setActive("");
-
-      };
+        path.style.cursor="pointer";
 
 
 
+        path.onmouseenter=()=>{
 
 
-      path.onclick=()=>{
+          path.style.fill="#E97824";
+
+          path.style.opacity="0.8";
 
 
-        console.log(
-          "CLICK",
-          path.id
-        );
+          setActive(
+            path.id || "country"
+          );
 
 
-        onCountrySelect?.(
-          path.id
-        );
+        };
 
 
-      };
+
+        path.onmouseleave=()=>{
 
 
-    });
+          path.style.fill="";
+
+          path.style.opacity="";
+
+
+          setActive("");
+
+        };
+
+
+
+        path.onclick=()=>{
+
+
+          console.log(
+            "CLICK:",
+            path.id
+          );
+
+
+          onCountrySelect?.(
+            path.id
+          );
+
+
+        };
+
+
+      });
+
+
+
+    },300);
+
+
+
+    return ()=>clearTimeout(timer);
 
 
 
   },[svg,onCountrySelect]);
+
 
 
 
@@ -150,8 +162,6 @@ borderRadius:"18px"
 >
 
 
-{/* PNG */}
-
 <img
 
 src={background}
@@ -174,13 +184,35 @@ zIndex:1
 
 }}
 
+
 />
 
 
 
 
 
-{/* SVG */}
+<div
+
+style={{
+
+position:"absolute",
+
+left:0,
+
+top:0,
+
+width:"100%",
+
+height:"100%",
+
+zIndex:2,
+
+overflow:"hidden"
+
+}}
+
+>
+
 
 <div
 
@@ -198,8 +230,6 @@ width:"100%",
 
 height:"100%",
 
-zIndex:2,
-
 pointerEvents:"all"
 
 }}
@@ -210,8 +240,11 @@ __html:svg
 
 }}
 
+
 />
 
+
+</div>
 
 
 
