@@ -30,8 +30,6 @@ export default function LiteraryWorldMap({
 
         setSvg(data);
 
-        console.log("SVG загружен");
-
       });
 
   },[]);
@@ -50,7 +48,7 @@ export default function LiteraryWorldMap({
 
 
     console.log(
-      "PATH найдено:",
+      "PATH:",
       paths.length
     );
 
@@ -62,20 +60,19 @@ export default function LiteraryWorldMap({
       const path = element as SVGPathElement;
 
 
+
       path.style.pointerEvents="all";
 
       path.style.cursor="pointer";
 
-      path.style.transition="0.25s";
 
 
-
-      path.onmouseenter = ()=>{
+      path.onmouseenter=()=>{
 
 
         path.style.fill="#E97824";
 
-        path.style.opacity="0.75";
+        path.style.opacity="0.8";
 
 
         setActive(
@@ -87,7 +84,7 @@ export default function LiteraryWorldMap({
 
 
 
-      path.onmouseleave = ()=>{
+      path.onmouseleave=()=>{
 
 
         path.style.fill="";
@@ -102,22 +99,19 @@ export default function LiteraryWorldMap({
 
 
 
-      path.onclick = ()=>{
+
+      path.onclick=()=>{
 
 
         console.log(
-          "CLICK COUNTRY:",
+          "CLICK",
           path.id
         );
 
 
-        if(path.id){
-
-          onCountrySelect?.(
-            path.id
-          );
-
-        }
+        onCountrySelect?.(
+          path.id
+        );
 
 
       };
@@ -128,6 +122,7 @@ export default function LiteraryWorldMap({
 
 
   },[svg,onCountrySelect]);
+
 
 
 
@@ -155,21 +150,19 @@ borderRadius:"18px"
 >
 
 
-{/* ФОН PNG */}
+{/* PNG */}
 
 <img
 
 src={background}
 
-alt="literary map"
+alt="map"
 
 style={{
 
 position:"absolute",
 
-left:0,
-
-top:0,
+inset:0,
 
 width:"100%",
 
@@ -187,32 +180,7 @@ zIndex:1
 
 
 
-{/* SVG КОНТУРЫ */}
-
-<div
-
-style={{
-
-position:"absolute",
-
-left:0,
-
-top:0,
-
-width:"100%",
-
-height:"100%",
-
-overflow:"hidden",
-
-zIndex:2,
-
-pointerEvents:"none"
-
-}}
-
->
-
+{/* SVG */}
 
 <div
 
@@ -222,21 +190,17 @@ style={{
 
 position:"absolute",
 
-
-/* ПОДГОНКА ПОД PNG */
-
 left:"35px",
 
 top:"20px",
-
 
 width:"100%",
 
 height:"100%",
 
+zIndex:2,
 
 pointerEvents:"all"
-
 
 }}
 
@@ -246,19 +210,13 @@ __html:svg
 
 }}
 
-
 />
 
 
-</div>
 
 
 
 
-
-
-
-{/* ТЕСТОВАЯ КАРТОЧКА */}
 
 {
 
@@ -271,9 +229,9 @@ style={{
 
 position:"absolute",
 
-top:"20px",
+top:20,
 
-left:"20px",
+left:20,
 
 zIndex:10,
 
@@ -283,22 +241,13 @@ color:"#35205F",
 
 padding:"12px 18px",
 
-borderRadius:"10px",
-
-boxShadow:"0 5px 20px rgba(0,0,0,.25)",
-
-fontFamily:"Georgia, serif"
+borderRadius:"10px"
 
 }}
 
 >
 
-SVG:
-
-<br/>
-
 <b>{active}</b>
-
 
 </div>
 
