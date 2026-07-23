@@ -41,7 +41,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: Props) {
       path.style.transition = "fill 0.2s ease";
 
       path.onmouseenter = () => {
-        path.style.fill = "rgba(233,120,36,0.06)";
+        path.style.fill = "rgba(233,120,36,0.14)";
         setActive(path.id || "path");
       };
 
