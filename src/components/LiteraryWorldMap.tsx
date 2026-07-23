@@ -15,7 +15,7 @@ export default function LiteraryWorldMap({onCountrySelect}:Props){
   if(!mapRef.current||!svg)return;
   const root=mapRef.current.querySelector("svg");
   if(root){
-   root.setAttribute("preserveAspectRatio","xMidYMid meet");
+   root.setAttribute("preserveAspectRatio","none");
    root.style.width="100%";
    root.style.height="100%";
   }
@@ -30,9 +30,9 @@ export default function LiteraryWorldMap({onCountrySelect}:Props){
  },[svg,onCountrySelect]);
 
  return <div style={{position:"relative",width:"100%",height:"700px",overflow:"hidden",borderRadius:"18px"}}>
-  <img src={background} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",zIndex:1}}/>
-  <div style={{position:"absolute",inset:0,overflow:"hidden",zIndex:2}}>
-   <div ref={mapRef} style={{position:"absolute",left:"55px",top:"38px",width:"calc(100% - 110px)",height:"calc(100% - 76px)",transform:"scale(1)",transformOrigin:"center center",pointerEvents:"auto"}} dangerouslySetInnerHTML={{__html:svg}}/>
+  <img src={background} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"fill",zIndex:1}}/>
+  <div style={{position:"absolute",inset:0,overflow:"hidden",zIndex:2,pointerEvents:"auto"}}>
+   <div ref={mapRef} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"auto"}} dangerouslySetInnerHTML={{__html:svg}}/>
   </div>
   {active&&<div style={{position:"absolute",top:20,left:20,zIndex:10,background:"#FFF8EE",color:"#35205F",padding:"12px 18px",borderRadius:"10px",fontFamily:"Georgia,serif"}}>SVG:<br/><b>{active}</b></div>}
  </div>
