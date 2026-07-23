@@ -9,8 +9,11 @@ type Props = {
 };
 
 
+
 export default function LiteraryWorldMap({
+
   onCountrySelect
+
 }:Props){
 
 
@@ -19,6 +22,7 @@ const mapRef = useRef<HTMLDivElement>(null);
 const [svg,setSvg]=useState("");
 
 const [active,setActive]=useState("");
+
 
 
 
@@ -33,19 +37,19 @@ fetch(mapSvg)
 .then(data=>{
 
 
-let fixed=data.replace(
+setSvg(
+
+data.replace(
 
 "<svg",
 
-`<svg
-preserveAspectRatio="none"
-style="width:100%;height:100%;"
-`
+`<svg 
+style="width:100%;height:100%"
+preserveAspectRatio="none"`
+
+)
 
 );
-
-
-setSvg(fixed);
 
 
 });
@@ -57,18 +61,35 @@ setSvg(fixed);
 
 
 
+
+
 useEffect(()=>{
 
 
 if(!mapRef.current) return;
 
 
+
 const paths =
+
 mapRef.current.querySelectorAll("path");
 
 
 
+console.log(
+
+"PATH FOUND:",
+
+paths.length
+
+);
+
+
+
+
+
 paths.forEach((path)=>{
+
 
 
 path.addEventListener(
@@ -78,27 +99,15 @@ path.addEventListener(
 ()=>{
 
 
-path.setAttribute(
+(path as SVGPathElement)
 
-"data-old-fill",
+.style.fill="#E97824";
 
-path.getAttribute("fill") || ""
-
-);
-
-
-path.setAttribute(
-
-"fill",
-
-"#E97824"
-
-);
 
 
 setActive(
 
-path.id || "unknown"
+path.id || "NO_ID"
 
 );
 
@@ -106,6 +115,8 @@ path.id || "unknown"
 }
 
 );
+
+
 
 
 
@@ -116,21 +127,9 @@ path.addEventListener(
 ()=>{
 
 
-const old =
-path.getAttribute(
-"data-old-fill"
-);
+(path as SVGPathElement)
 
-
-
-if(old){
-
-path.setAttribute(
-"fill",
-old
-);
-
-}
+.style.fill="";
 
 
 
@@ -143,6 +142,8 @@ setActive("");
 
 
 
+
+
 path.addEventListener(
 
 "click",
@@ -152,11 +153,12 @@ path.addEventListener(
 
 console.log(
 
-"CLICK PATH",
+"CLICK",
 
 path.id
 
 );
+
 
 
 onCountrySelect?.(
@@ -175,7 +177,12 @@ path.id
 });
 
 
+
+
+
 },[svg]);
+
+
 
 
 
@@ -186,6 +193,7 @@ path.id
 return (
 
 <div
+
 
 style={{
 
@@ -199,15 +207,19 @@ borderRadius:"18px"
 
 }}
 
->
 
+
+>
 
 
 <img
 
+
 src={background}
 
+
 style={{
+
 
 position:"absolute",
 
@@ -217,12 +229,16 @@ width:"100%",
 
 height:"100%",
 
-objectFit:"cover"
+objectFit:"cover",
+
+zIndex:1
+
 
 }}
 
-/>
 
+
+/>
 
 
 
@@ -258,12 +274,13 @@ __html:svg
 
 
 
-
 {
 
 active &&
 
+
 <div
+
 
 style={{
 
@@ -279,15 +296,16 @@ background:"#FFF8EE",
 
 padding:"15px",
 
-borderRadius:"12px",
+borderRadius:"10px",
 
 color:"#35205F"
 
 }}
 
+
 >
 
-Объект SVG:
+Выбран:
 
 <br/>
 
@@ -295,6 +313,7 @@ color:"#35205F"
 
 
 </div>
+
 
 
 }
