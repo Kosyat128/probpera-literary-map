@@ -37,49 +37,7 @@ export default function LiteraryWorldMap({
       .then(data=>{
 
 
-        let clean = data;
-
-
-        /*
-          Убираем размеры SVG,
-          которые ломают совпадение
-        */
-
-
-        clean = clean.replace(
-
-          /width="[^"]*"/g,
-
-          ""
-
-        );
-
-
-        clean = clean.replace(
-
-          /height="[^"]*"/g,
-
-          ""
-
-        );
-
-
-
-        clean = clean.replace(
-
-          "<svg",
-
-          `<svg 
-          width="100%"
-          height="100%"
-          preserveAspectRatio="none"
-          `
-
-        );
-
-
-
-        setSvg(clean);
+        setSvg(data);
 
 
       });
@@ -93,11 +51,11 @@ export default function LiteraryWorldMap({
 
 
 
-
   useEffect(()=>{
 
 
     if(!mapRef.current) return;
+
 
 
     const paths =
@@ -108,7 +66,7 @@ export default function LiteraryWorldMap({
 
     console.log(
 
-      "SVG PATH:",
+      "PATH FOUND",
 
       paths.length
 
@@ -121,33 +79,27 @@ export default function LiteraryWorldMap({
     paths.forEach((path)=>{
 
 
-      const item = path as SVGPathElement;
+      const p = path as SVGPathElement;
 
 
 
-      item.style.transition = "0.2s";
-
-
-
-
-
-      item.addEventListener(
+      p.addEventListener(
 
         "mouseenter",
 
         ()=>{
 
 
-          item.style.fill="#E97824";
+          p.style.fill="#E97824";
 
-          item.style.opacity="0.8";
+          p.style.opacity="0.8";
 
-          item.style.cursor="pointer";
+          p.style.cursor="pointer";
 
 
           setActive(
 
-            item.id || "path"
+            p.id || "path"
 
           );
 
@@ -160,16 +112,16 @@ export default function LiteraryWorldMap({
 
 
 
-      item.addEventListener(
+      p.addEventListener(
 
         "mouseleave",
 
         ()=>{
 
 
-          item.style.fill="";
+          p.style.fill="";
 
-          item.style.opacity="";
+          p.style.opacity="";
 
 
           setActive("");
@@ -183,7 +135,9 @@ export default function LiteraryWorldMap({
 
 
 
-      item.addEventListener(
+
+
+      p.addEventListener(
 
         "click",
 
@@ -192,16 +146,16 @@ export default function LiteraryWorldMap({
 
           console.log(
 
-            "CLICK:",
+            "CLICK",
 
-            item.id
+            p.id
 
           );
 
 
           onCountrySelect?.(
 
-            item.id
+            p.id
 
           );
 
@@ -225,162 +179,162 @@ export default function LiteraryWorldMap({
 
 
 
+return (
 
-  return (
+<div
 
-    <div
 
-      style={{
+style={{
 
-        position:"relative",
+position:"relative",
 
-        width:"100%",
+width:"100%",
 
-        height:"700px",
+height:"700px",
 
-        overflow:"hidden",
+overflow:"hidden",
 
-        borderRadius:"18px"
+borderRadius:"18px"
 
-      }}
+}}
 
-    >
 
 
+>
 
 
 
-      {/* BACKGROUND PNG */}
 
 
-      <img
+<img
 
-        src={background}
 
-        alt="literary map"
+src={background}
 
-        style={{
 
-          position:"absolute",
+alt="literary map"
 
-          left:0,
 
-          top:0,
+style={{
 
-          width:"100%",
 
-          height:"100%",
+position:"absolute",
 
-          objectFit:"fill",
+inset:0,
 
-          zIndex:1
+width:"100%",
 
-        }}
+height:"100%",
 
-      />
+objectFit:"cover",
 
+zIndex:1
 
 
+}}
 
 
+/>
 
 
-      {/* SVG OVERLAY */}
 
 
-      <div
 
 
-        ref={mapRef}
+<div
 
 
-        style={{
+ref={mapRef}
 
-          position:"absolute",
 
-          left:0,
+style={{
 
-          top:0,
 
-          width:"100%",
+position:"absolute",
 
-          height:"100%",
+inset:0,
 
-          zIndex:2
+zIndex:2
 
-        }}
 
+}}
 
 
-        dangerouslySetInnerHTML={{
 
-          __html:svg
+dangerouslySetInnerHTML={{
 
-        }}
 
+__html:svg
 
-      />
 
+}}
 
 
 
+/>
 
 
 
-      {
 
 
-        active &&
 
 
-        <div
+{
 
+active &&
 
-          style={{
 
-            position:"absolute",
+<div
 
-            top:"20px",
 
-            left:"20px",
+style={{
 
-            zIndex:5,
 
-            background:"#FFF8EE",
+position:"absolute",
 
-            color:"#35205F",
+top:20,
 
-            padding:"15px",
+left:20,
 
-            borderRadius:"12px"
+zIndex:10,
 
-          }}
+background:"#FFF8EE",
 
+padding:"15px",
 
+borderRadius:"10px",
 
-        >
+color:"#35205F"
 
-          Выбрано:
 
-          <br/>
+}}
 
-          <b>
+>
 
-          {active}
 
-          </b>
+SVG:
 
+<br/>
 
-        </div>
 
+<b>
 
-      }
+{active}
 
+</b>
 
 
-    </div>
+</div>
 
-  );
+
+}
+
+
+
+</div>
+
+
+);
 
 
 }
