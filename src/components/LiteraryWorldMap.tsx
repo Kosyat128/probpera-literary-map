@@ -5,11 +5,8 @@ import mapSvg from "../assets/map/literary-world-map.svg";
 
 
 type Props = {
-
   onCountrySelect?: (country:string)=>void;
-
 };
-
 
 
 export default function LiteraryWorldMap({
@@ -41,9 +38,9 @@ let fixed = data.replace(
 
 "<svg",
 
-`<svg 
+`<svg
 style="width:100%;height:100%;"
-preserveAspectRatio="xMidYMid meet"`
+preserveAspectRatio="none"`
 
 );
 
@@ -62,19 +59,18 @@ setSvg(fixed);
 
 
 
+
+
 function move(e:any){
 
 
-const target = e.target;
-
+const target=e.target;
 
 
 if(target.tagName==="path"){
 
 
-target.style.fill="#E97824";
-
-target.style.cursor="pointer";
+target.classList.add("active-country");
 
 
 setActive(
@@ -84,12 +80,14 @@ target.id || "path"
 );
 
 
-
 }
 
 
 
 }
+
+
+
 
 
 
@@ -104,7 +102,11 @@ const target=e.target;
 if(target.tagName==="path"){
 
 
-target.style.fill="";
+target.classList.remove(
+
+"active-country"
+
+);
 
 
 }
@@ -128,7 +130,7 @@ if(target.tagName==="path"){
 
 console.log(
 
-"Выбран SVG путь:",
+"PATH",
 
 target.id
 
@@ -143,25 +145,20 @@ target.id
 );
 
 
+}
+
 
 }
 
 
 
-}
 
 
-
-
-
-return(
-
+return (
 
 <div
 
-
 style={{
-
 
 position:"relative",
 
@@ -171,40 +168,58 @@ overflow:"hidden",
 
 borderRadius:"18px"
 
-
 }}
-
-
 
 >
 
 
 
-<img
+<style>
 
+{`
+
+.active-country{
+
+fill:#E97824 !important;
+
+opacity:.8;
+
+cursor:pointer;
+
+}
+
+path{
+
+transition:.2s;
+
+}
+
+`}
+
+</style>
+
+
+
+
+<img
 
 src={background}
 
-
 alt="map"
-
 
 style={{
 
-
 position:"absolute",
+
+inset:0,
 
 width:"100%",
 
 height:"100%",
 
-objectFit:"cover",
-
-zIndex:1
-
+objectFit:"cover"
 
 }}
-
 
 
 />
@@ -215,7 +230,6 @@ zIndex:1
 
 
 <div
-
 
 onMouseMove={move}
 
@@ -226,24 +240,19 @@ onClick={click}
 
 style={{
 
-
 position:"absolute",
 
 inset:0,
 
-zIndex:2,
-
-cursor:"pointer"
-
+zIndex:2
 
 }}
 
 
+
 dangerouslySetInnerHTML={{
 
-
 __html:svg
-
 
 }}
 
@@ -255,18 +264,9 @@ __html:svg
 
 
 
-
-
-{
-
-active &&
-
-
 <div
 
-
 style={{
-
 
 position:"absolute",
 
@@ -280,28 +280,32 @@ background:"#FFF8EE",
 
 padding:"15px",
 
-borderRadius:"10px",
+borderRadius:"12px",
 
 color:"#35205F"
 
-
 }}
-
 
 >
 
+{
 
-SVG:
+active &&
+
+<>
+
+SVG объект:
 
 <br/>
 
 <b>{active}</b>
 
-
-</div>
-
+</>
 
 }
+
+
+</div>
 
 
 
