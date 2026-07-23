@@ -26,29 +26,60 @@ export default function LiteraryWorldMap({
 
 
 
+
   useEffect(()=>{
 
 
     fetch(mapSvg)
 
-      .then(response=>response.text())
+      .then(res=>res.text())
 
       .then(data=>{
 
 
-        const fixed = data.replace(
+        let clean = data;
 
-          /<svg([^>]*)>/,
 
-          `<svg$1 
-          preserveAspectRatio="xMidYMid meet"
-          style="width:100%;height:100%;position:absolute;left:0;top:0;"
-          >`
+        /*
+          Убираем размеры SVG,
+          которые ломают совпадение
+        */
+
+
+        clean = clean.replace(
+
+          /width="[^"]*"/g,
+
+          ""
 
         );
 
 
-        setSvg(fixed);
+        clean = clean.replace(
+
+          /height="[^"]*"/g,
+
+          ""
+
+        );
+
+
+
+        clean = clean.replace(
+
+          "<svg",
+
+          `<svg 
+          width="100%"
+          height="100%"
+          preserveAspectRatio="none"
+          `
+
+        );
+
+
+
+        setSvg(clean);
 
 
       });
@@ -77,7 +108,7 @@ export default function LiteraryWorldMap({
 
     console.log(
 
-      "Найдено стран:",
+      "SVG PATH:",
 
       paths.length
 
@@ -90,29 +121,33 @@ export default function LiteraryWorldMap({
     paths.forEach((path)=>{
 
 
-
-      const element = path as SVGPathElement;
-
+      const item = path as SVGPathElement;
 
 
 
-      element.addEventListener(
+      item.style.transition = "0.2s";
+
+
+
+
+
+      item.addEventListener(
 
         "mouseenter",
 
         ()=>{
 
 
-          element.style.fill = "#E97824";
+          item.style.fill="#E97824";
 
-          element.style.opacity = "0.85";
+          item.style.opacity="0.8";
 
-          element.style.cursor = "pointer";
+          item.style.cursor="pointer";
 
 
           setActive(
 
-            element.id || "unknown"
+            item.id || "path"
 
           );
 
@@ -125,18 +160,16 @@ export default function LiteraryWorldMap({
 
 
 
-
-
-      element.addEventListener(
+      item.addEventListener(
 
         "mouseleave",
 
         ()=>{
 
 
-          element.style.fill = "";
+          item.style.fill="";
 
-          element.style.opacity = "";
+          item.style.opacity="";
 
 
           setActive("");
@@ -150,9 +183,7 @@ export default function LiteraryWorldMap({
 
 
 
-
-
-      element.addEventListener(
+      item.addEventListener(
 
         "click",
 
@@ -161,17 +192,16 @@ export default function LiteraryWorldMap({
 
           console.log(
 
-            "Выбрано:",
+            "CLICK:",
 
-            element.id
+            item.id
 
           );
 
 
-
           onCountrySelect?.(
 
-            element.id
+            item.id
 
           );
 
@@ -183,7 +213,6 @@ export default function LiteraryWorldMap({
 
 
     });
-
 
 
 
@@ -221,7 +250,8 @@ export default function LiteraryWorldMap({
 
 
 
-      {/* ФОН */}
+      {/* BACKGROUND PNG */}
+
 
       <img
 
@@ -233,13 +263,15 @@ export default function LiteraryWorldMap({
 
           position:"absolute",
 
-          inset:0,
+          left:0,
+
+          top:0,
 
           width:"100%",
 
           height:"100%",
 
-          objectFit:"cover",
+          objectFit:"fill",
 
           zIndex:1
 
@@ -253,8 +285,8 @@ export default function LiteraryWorldMap({
 
 
 
+      {/* SVG OVERLAY */}
 
-      {/* SVG */}
 
       <div
 
@@ -266,7 +298,9 @@ export default function LiteraryWorldMap({
 
           position:"absolute",
 
-          inset:0,
+          left:0,
+
+          top:0,
 
           width:"100%",
 
@@ -275,6 +309,7 @@ export default function LiteraryWorldMap({
           zIndex:2
 
         }}
+
 
 
         dangerouslySetInnerHTML={{
@@ -292,45 +327,46 @@ export default function LiteraryWorldMap({
 
 
 
-
       {
+
 
         active &&
 
 
         <div
 
+
           style={{
 
             position:"absolute",
 
-            left:"20px",
-
             top:"20px",
 
-            zIndex:10,
+            left:"20px",
+
+            zIndex:5,
 
             background:"#FFF8EE",
 
-            padding:"15px 20px",
-
-            borderRadius:"12px",
-
             color:"#35205F",
 
-            boxShadow:"0 5px 20px rgba(0,0,0,.2)"
+            padding:"15px",
+
+            borderRadius:"12px"
 
           }}
 
+
+
         >
 
-          SVG объект:
+          Выбрано:
 
           <br/>
 
           <b>
 
-            {active}
+          {active}
 
           </b>
 
@@ -342,12 +378,9 @@ export default function LiteraryWorldMap({
 
 
 
-
-
-
     </div>
 
-
   );
+
 
 }
