@@ -5,7 +5,6 @@ export const russianWriters: Writer[] = [
 {id:"turgenev",name:"Иван Сергеевич Тургенев",country:"Россия",city:"Орёл",years:"1818–1883",x:67,y:39,books:["Отцы и дети","Записки охотника"],period:"realism",direction:"realism",region:"europe"},
 {id:"gogol",name:"Николай Васильевич Гоголь",country:"Россия",city:"Великие Сорочинцы",years:"1809–1852",x:68,y:41,books:["Мёртвые души","Ревизор"],period:"romanticism",direction:"classic",region:"europe"},
 {id:"bulgakov",name:"Михаил Афанасьевич Булгаков",country:"Россия",city:"Киев",years:"1891–1940",x:67,y:43,books:["Мастер и Маргарита","Собачье сердце"],period:"modernism",direction:"modernism",region:"europe"},
-{id:"nabokov_ru",name:"Владимир Владимирович Набоков",country:"Россия",city:"Санкт-Петербург",years:"1899–1977",x:69,y:35,books:["Дар","Машенька"],period:"modernism",direction:"modernism",region:"europe"},
 {id:"pushkin",name:"Александр Сергеевич Пушкин",country:"Россия",city:"Москва",years:"1799–1837",x:68,y:37,books:["Евгений Онегин","Капитанская дочка"],period:"romanticism",direction:"romanticism",region:"europe"},
 {id:"lermontov",name:"Михаил Юрьевич Лермонтов",country:"Россия",city:"Москва",years:"1814–1841",x:68,y:37,books:["Герой нашего времени"],period:"romanticism",direction:"romanticism",region:"europe"},
 {id:"solzhenitsyn",name:"Александр Исаевич Солженицын",country:"Россия",city:"Кисловодск",years:"1918–2008",x:70,y:42,books:["Архипелаг ГУЛАГ","Один день Ивана Денисовича"],period:"contemporary",direction:"realism",region:"europe",nobel:true},
@@ -15,10 +14,7 @@ export const russianWriters: Writer[] = [
 {id:"gorky",name:"Максим Горький",country:"Россия",city:"Нижний Новгород",years:"1868–1936",x:69,y:38,books:["Мать","На дне"],period:"modernism",direction:"realism",region:"europe"},
 {id:"yesenin",name:"Сергей Есенин",country:"Россия",city:"Рязань",years:"1895–1925",x:68,y:39,books:["Анна Снегина","Письмо к женщине"],period:"modernism",direction:"poetry",region:"europe"},
 {id:"mayakovsky",name:"Владимир Маяковский",country:"Россия",city:"Багдати",years:"1893–1930",x:68,y:45,books:["Облако в штанах","Левый марш"],period:"modernism",direction:"avant-garde",region:"europe"},
-{id:"tvardovsky",name:"Александр Твардовский",country:"Россия",city:"Смоленская область",years:"1910–1971",x:68,y:38,books:["Василий Тёркин"],period:"contemporary",direction:"poetry",region:"europe"},
 {id:"bunin",name:"Иван Бунин",country:"Россия",city:"Воронеж",years:"1870–1953",x:68,y:39,books:["Господин из Сан-Франциско","Жизнь Арсеньева"],period:"modernism",direction:"realism",region:"europe",nobel:true},
-{id:"zoshchenko",name:"Михаил Зощенко",country:"Россия",city:"Полтава",years:"1894–1958",x:68,y:42,books:["Рассказы","Голубая книга"],period:"modernism",direction:"satire",region:"europe"},
-{id:"nabokov_world",name:"Владимир Набоков",country:"Россия/США",city:"Санкт-Петербург",years:"1899–1977",x:69,y:35,books:["Лолита","Приглашение на казнь"],period:"modernism",direction:"modernism",region:"america"},
-{id:"platonov",name:"Андрей Платонов",country:"Россия",city:"Воронеж",years:"1899–1951",x:68,y:39,books:["Котлован","Чевенгур"],period:"modernism",direction:"modernism",region:"europe"},
-{id:"sholokhov",name:"Михаил Шолохов",country:"Россия",city:"Вёшенская",years:"1905–1984",x:69,y:45,books:["Тихий Дон"],period:"realism",direction:"realism",region:"europe",nobel:true}
+{id:"sholokhov",name:"Михаил Шолохов",country:"Россия",city:"Вёшенская",years:"1905–1984",x:69,y:45,books:["Тихий Дон"],period:"realism",direction:"realism",region:"europe",nobel:true},
+{id:"nabokov_world",name:"Владимир Набоков",country:"Россия/США",city:"Санкт-Петербург",years:"1899–1977",x:69,y:35,books:["Лолита","Приглашение на казнь"],period:"modernism",direction:"modernism",region:"america"}
 ];
