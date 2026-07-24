@@ -1,5 +1,16 @@
 import type { Writer } from "./writers";
 
+export const availableMapFilters = [
+  { id: "europe", name: "Европа" },
+  { id: "asia", name: "Азия" },
+  { id: "america", name: "Америка" },
+  { id: "africa", name: "Африка" },
+  { id: "oceania", name: "Океания" },
+  { id: "nobel", name: "Нобелевские лауреаты" },
+  { id: "realism", name: "Реализм" },
+  { id: "modernism", name: "Модернизм" },
+];
+
 export function filterByRegion(writers: Writer[], region: string) {
   if (!region) return writers;
   return writers.filter((writer) => writer.region === region);
