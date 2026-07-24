@@ -9,6 +9,7 @@ import { oceaniaWriters } from "./writersOceania";
 import { middleEastWriters } from "./writersMiddleEast";
 import { scandinavianWriters } from "./writersScandinavia";
 import { balkanWriters } from "./writersBalkans";
+import { nobelWriters } from "./writersNobel";
 
 export const allWriters = [
   ...writers,
@@ -22,4 +23,5 @@ export const allWriters = [
   ...middleEastWriters,
   ...scandinavianWriters,
   ...balkanWriters,
+  ...nobelWriters,
 ];
