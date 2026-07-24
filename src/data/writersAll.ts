@@ -11,6 +11,7 @@ import { scandinavianWriters } from "./writersScandinavia";
 import { balkanWriters } from "./writersBalkans";
 import { nobelWriters } from "./writersNobel";
 import { womenWriters } from "./writersWomen";
+import { additionalWriters } from "./writersAdditional";
 
 export const allWriters = [
   ...writers,
@@ -26,4 +27,5 @@ export const allWriters = [
   ...balkanWriters,
   ...nobelWriters,
   ...womenWriters,
+  ...additionalWriters,
 ];
