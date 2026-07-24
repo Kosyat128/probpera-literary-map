@@ -11,387 +11,114 @@ import { countries } from "./data/countries";
 
 import type { Country, Writer } from "./data/types";
 
+export default function App() {
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries[0] ?? null);
+  const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
 
-
-export default function App(){
-
-
-  const [selectedCountry,setSelectedCountry] =
-
-    useState<Country | null>(
-
-      countries[0] ?? null
-
-    );
-
-
-
-  const [selectedWriter,setSelectedWriter] =
-
-    useState<Writer | null>(null);
-
-
-
-
-
-  if(!selectedCountry){
-
-    return (
-
-      <div>
-
-        База стран не загружена
-
-      </div>
-
-    );
-
+  if (!selectedCountry) {
+    return <div>База стран не загружена</div>;
   }
 
+  const handleCountrySelect = (name: string) => {
+    const country = countries.find((item) => item.name === name);
 
-
-
-
-
-
-  const handleCountrySelect = (
-
-    name:string
-
-  )=>{
-
-
-    const country = countries.find(
-
-      item =>
-
-      item.name === name
-
-    );
-
-
-
-    if(country){
-
+    if (country) {
       setSelectedCountry(country);
-
       setSelectedWriter(null);
-
     }
-
-
   };
 
+  const handleWriterSelect = (writer: Writer | null) => {
+    setSelectedWriter(writer);
 
+    if (writer) {
+      const matchedCountry = countries.find((country) =>
+        country.writers.some(
+          (countryWriter) =>
+            countryWriter.id === writer.id ||
+            countryWriter.name === writer.name ||
+            countryWriter.fullName === writer.fullName
+        )
+      );
 
-
-
-
-
+      if (matchedCountry) {
+        setSelectedCountry(matchedCountry);
+      }
+    }
+  };
 
   return (
-
     <div
-
-
       style={{
-
-        minHeight:"100vh",
-
-        background:"#F7EBDD",
-
-        color:"#35205F",
-
-        fontFamily:"Georgia, serif"
-
+        minHeight: "100vh",
+        background: "#F7EBDD",
+        color: "#35205F",
+        fontFamily: "Georgia, serif"
       }}
-
-
     >
-
-
-
-
-
-      {/* HEADER */}
-
-
-
       <div
-
-
         style={{
-
-
-          height:"72px",
-
-          background:"#1F103D",
-
-          color:"#fff",
-
-          display:"flex",
-
-          alignItems:"center",
-
-          padding:"0 28px",
-
-          fontSize:"28px",
-
-          fontWeight:"bold"
-
-
+          height: "72px",
+          background: "#1F103D",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          padding: "0 28px",
+          fontSize: "28px",
+          fontWeight: "bold"
         }}
-
-
-
       >
-
-
         LiteraryMap
-
-
-
         <span
-
           style={{
-
-            marginLeft:"20px",
-
-            color:"#E97824",
-
-            fontSize:"18px"
-
+            marginLeft: "20px",
+            color: "#E97824",
+            fontSize: "18px"
           }}
-
-
         >
-
           Литературная карта мира
-
         </span>
-
-
-
       </div>
 
-
-
-
-
-
-
-
-
       <div
-
-
         style={{
-
-
-          display:"grid",
-
-          gridTemplateColumns:
-
-          "260px minmax(600px,1fr) 380px",
-
-          gap:"14px",
-
-          padding:"14px"
-
-
+          display: "grid",
+          gridTemplateColumns: "260px minmax(600px,1fr) 380px",
+          gap: "14px",
+          padding: "14px"
         }}
-
-
       >
-
-
-
-
-
-
         <Sidebar
-
-
-          items={
-
-            countries.map(
-
-              country =>
-
-              country.name
-
-            )
-
-          }
-
-
-          selectedItem={
-
-            selectedCountry.name
-
-          }
-
-
-          onSelect={
-
-            handleCountrySelect
-
-          }
-
-
+          items={countries.map((country) => country.name)}
+          selectedItem={selectedCountry.name}
+          onSelect={handleCountrySelect}
         />
-
-
-
-
-
-
-
-
-
 
         <main
-
-
           style={{
-
-
-            display:"flex",
-
-            flexDirection:"column",
-
-            gap:"18px"
-
-
+            display: "flex",
+            flexDirection: "column",
+            gap: "18px"
           }}
-
-
-
         >
+          <LiteraryWorldMap onCountrySelect={handleCountrySelect} />
 
-
-
-
-
-          <LiteraryWorldMap
-
-
-            onCountrySelect={
-
-              handleCountrySelect
-
-            }
-
-
-          />
-
-
-
-
-
-
-
-
-          {
-
-
-          selectedWriter ?
-
-
-          (
-
-            <WriterProfile
-
-              writer={selectedWriter}
-
-            />
-
-
-          )
-
-
-          :
-
-
-          (
-
-
+          {selectedWriter ? (
+            <WriterProfile writer={selectedWriter} />
+          ) : (
             <>
-
-
               <Timeline
-
-
-                name={
-
-                  selectedCountry.writers[0]?.name
-
-                }
-
-
-                years={
-
-                  selectedCountry.writers[0]?.years
-
-                }
-
-
+                name={selectedCountry.writers[0]?.name}
+                years={selectedCountry.writers[0]?.years}
               />
 
-
-
               <LiteraryPlaces />
-
-
             </>
-
-
-          )
-
-
-          }
-
-
-
+          )}
         </main>
 
-
-
-
-
-
-
-
-        <WriterPanel
-
-
-          country={selectedCountry}
-
-
-          onWriterSelect={
-
-            setSelectedWriter
-
-          }
-
-
-        />
-
-
-
-
-
-
-
+        <WriterPanel country={selectedCountry} onWriterSelect={handleWriterSelect} />
       </div>
-
-
-
-
     </div>
-
-
   );
-
-
 }
