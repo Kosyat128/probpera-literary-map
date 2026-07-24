@@ -19,3 +19,16 @@ export function filterWriters(
     return true;
   });
 }
+
+export function searchWriters(writers: Writer[], query: string) {
+  const value = query.toLowerCase().trim();
+
+  if (!value) return writers;
+
+  return writers.filter((writer) =>
+    [writer.name, writer.country, writer.city]
+      .join(" ")
+      .toLowerCase()
+      .includes(value)
+  );
+}
