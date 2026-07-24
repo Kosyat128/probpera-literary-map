@@ -3,6 +3,7 @@ import { russianWriters } from "./writersRussia";
 import { russianMoreWriters } from "./writersRussiaMore";
 import { europeanWriters } from "./writersEurope";
 import { asianWriters } from "./writersAsia";
+import { asianMoreWriters } from "./writersAsiaMore";
 import { americanWriters } from "./writersAmerica";
 import { southAmericanWriters } from "./writersSouthAmerica";
 import { africanWriters } from "./writersAfrica";
@@ -20,6 +21,7 @@ export const allWriters = [
   ...russianMoreWriters,
   ...europeanWriters,
   ...asianWriters,
+  ...asianMoreWriters,
   ...americanWriters,
   ...southAmericanWriters,
   ...africanWriters,
