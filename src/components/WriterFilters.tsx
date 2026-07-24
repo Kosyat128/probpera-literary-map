@@ -1,9 +1,16 @@
 type Props = {
+  region?: string;
+  period?: string;
   onRegionChange?: (value: string) => void;
   onPeriodChange?: (value: string) => void;
 };
 
-export default function WriterFilters({ onRegionChange, onPeriodChange }: Props) {
+export default function WriterFilters({
+  region = "",
+  period = "",
+  onRegionChange,
+  onPeriodChange,
+}: Props) {
   return (
     <div
       style={{
@@ -16,7 +23,7 @@ export default function WriterFilters({ onRegionChange, onPeriodChange }: Props)
         fontFamily: "Georgia, serif",
       }}
     >
-      <select onChange={(e) => onRegionChange?.(e.target.value)}>
+      <select value={region} onChange={(e) => onRegionChange?.(e.target.value)}>
         <option value="">Все регионы</option>
         <option value="europe">Европа</option>
         <option value="asia">Азия</option>
@@ -25,7 +32,7 @@ export default function WriterFilters({ onRegionChange, onPeriodChange }: Props)
         <option value="oceania">Океания</option>
       </select>
 
-      <select onChange={(e) => onPeriodChange?.(e.target.value)}>
+      <select value={period} onChange={(e) => onPeriodChange?.(e.target.value)}>
         <option value="">Все эпохи</option>
         <option value="renaissance">Возрождение</option>
         <option value="romanticism">Романтизм</option>
