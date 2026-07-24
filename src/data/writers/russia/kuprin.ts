@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const kuprin: WriterProfile={id:"alexander-kuprin",fullName:"Александр Иванович Куприн",birth:"7 сентября 1870",death:"25 августа 1938",country:"Россия",movement:"Реализм",biography:"Русский писатель, автор повестей и рассказов о человеческих судьбах.",works:["Яма","Олеся","Гранатовый браслет","Поединок"],awards:[],places:["Наречье","Гатчина"]};

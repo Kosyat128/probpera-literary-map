@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const leskov: WriterProfile={id:"nikolai-leskov",fullName:"Николай Семёнович Лесков",birth:"4 февраля 1831",death:"5 марта 1895",country:"Россия",movement:"Реализм",biography:"Русский писатель, автор самобытной прозы о русском характере и народной жизни.",works:["Левша","Очарованный странник","Соборяне"],awards:[],places:["Орел","Санкт-Петербург"]};

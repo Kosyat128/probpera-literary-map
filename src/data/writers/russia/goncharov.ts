@@ -1,0 +1,2 @@
+import type { WriterProfile } from "../types";
+export const goncharov:WriterProfile={id:"ivan-goncharov",fullName:"Иван Александрович Гончаров",birth:"18 июня 1812",death:"27 сентября 1891",country:"Россия",movement:"Реализм",biography:"Русский писатель, автор классического романа о русском обществе XIX века.",works:["Обломов","Обыкновенная история","Фрегат Паллада"],awards:[],places:["Симбирск","Санкт-Петербург"]};
