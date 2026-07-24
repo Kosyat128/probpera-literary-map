@@ -27,5 +27,8 @@ export const writers: Writer[] = [
 {id:"pasternak",name:"Борис Леонидович Пастернак",country:"Россия",city:"Москва",years:"1890–1960",x:68,y:36,books:["Доктор Живаго"],period:"modernism",direction:"modernism",region:"europe",nobel:true},
 {id:"solzhenitsyn",name:"Александр Исаевич Солженицын",country:"Россия",city:"Кисловодск",years:"1918–2008",x:70,y:43,books:["Архипелаг ГУЛАГ","Один день Ивана Денисовича"],period:"contemporary",direction:"realism",region:"europe",nobel:true},
 {id:"nabokov_ru",name:"Владимир Владимирович Набоков",country:"Россия",city:"Санкт-Петербург",years:"1899–1977",x:69,y:34,books:["Дар","Защита Лужина"],period:"modernism",direction:"modernism",region:"europe"},
-{id:"gorky",name:"Максим Горький",country:"Россия",city:"Нижний Новгород",years:"1868–1936",x:68,y:40,books:["Мать","На дне"],period:"realism",direction:"realism",region:"europe"}
+{id:"gorky",name:"Максим Горький",country:"Россия",city:"Нижний Новгород",years:"1868–1936",x:68,y:40,books:["Мать","На дне"],period:"realism",direction:"realism",region:"europe"},
+{id:"leskov",name:"Николай Лесков",country:"Россия",city:"Орел",years:"1831–1895",x:67,y:38,books:["Левша","Очарованный странник"],period:"realism",direction:"realism",region:"europe"},
+{id:"kuprin",name:"Александр Куприн",country:"Россия",city:"Наровчат",years:"1870–1938",x:67,y:39,books:["Гранатовый браслет","Олеся"],period:"realism",direction:"realism",region:"europe"},
+{id:"zoshchenko",name:"Михаил Зощенко",country:"Россия",city:"Полтава",years:"1894–1958",x:68,y:38,books:["Голубая книга","Рассказы"],period:"modernism",direction:"satire",region:"europe"}
 ];
