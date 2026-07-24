@@ -1,4 +1,5 @@
 import type { Writer } from "./writers";
+import { allWriters } from "./writersAll";
 
 export type WriterFilter = {
   region?: string;
@@ -22,15 +23,18 @@ export function filterWriters(
   });
 }
 
-export function searchWriters(writers: Writer[], query: string) {
+export function searchAllWriters(query: string) {
   const value = query.toLowerCase().trim();
 
-  if (!value) return writers;
+  if (!value) return allWriters;
 
-  return writers.filter((writer) =>
+  return allWriters.filter((writer) =>
     [writer.name, writer.country, writer.city, writer.books.join(" ")]
       .join(" ")
       .toLowerCase()
       .includes(value)
   );
 }
+
+export const getNobelWriters = () =>
+  allWriters.filter((writer) => writer.nobel === true);
