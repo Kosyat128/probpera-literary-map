@@ -1,0 +1,48 @@
+import type { Country } from "../types";
+
+export const frenchGuiana: Country = {
+  id: "french_guiana",
+  name: "Французская Гвиана",
+  code: "gf",
+  writers: [
+    {
+      id: "leon_gontran_damas",
+      name: "Леон-Гонтан Дамас",
+      years: "1912–1978",
+      birthDate: "1912-04-28",
+      deathDate: "1978-01-22",
+      birthPlace: "Кайенна, Французская Гвиана",
+      deathPlace: "Вашингтон, США",
+      coordinates: {
+        lat: 4.9224,
+        lng: -52.3135
+      },
+      portrait: "",
+      bio: "Французско-гвианский поэт, писатель и эссеист. Один из основателей движения негритюда вместе с Эме Сезером и Леопольдом Седаром Сенгором. Его творчество стало важной частью франкоязычной литературы XX века и связано с темами культурной идентичности, колониального опыта и наследия африканской диаспоры.",
+      works: [
+        "Pigments",
+        "Black-Label",
+        "Graffiti"
+      ],
+      genres: [
+        "поэзия",
+        "эссе",
+        "публицистика"
+      ],
+      language: "французский",
+      nationality: "французско-гвианский автор",
+      awards: [],
+      relatedWriters: [
+        "aime_cesaire",
+        "leopold_sedar_senghor"
+      ],
+      tags: [
+        "XX век",
+        "негритюд",
+        "франкоязычная литература",
+        "карибская литература"
+      ],
+      articleUrl: ""
+    }
+  ]
+};
