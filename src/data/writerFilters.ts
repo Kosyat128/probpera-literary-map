@@ -4,6 +4,7 @@ export type WriterFilter = {
   region?: string;
   period?: string;
   direction?: string;
+  country?: string;
   nobel?: boolean;
 };
 
@@ -15,6 +16,7 @@ export function filterWriters(
     if (filter.region && writer.region !== filter.region) return false;
     if (filter.period && writer.period !== filter.period) return false;
     if (filter.direction && writer.direction !== filter.direction) return false;
+    if (filter.country && writer.country !== filter.country) return false;
     if (filter.nobel !== undefined && writer.nobel !== filter.nobel) return false;
     return true;
   });
@@ -26,7 +28,7 @@ export function searchWriters(writers: Writer[], query: string) {
   if (!value) return writers;
 
   return writers.filter((writer) =>
-    [writer.name, writer.country, writer.city]
+    [writer.name, writer.country, writer.city, writer.books.join(" ")]
       .join(" ")
       .toLowerCase()
       .includes(value)
