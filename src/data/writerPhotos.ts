@@ -1,8 +1,8 @@
 export const writerPhotos: Record<string, string> = {
-  tolstoy: "",
-  dostoevsky: "",
-  shakespeare: "",
-  hemingway: "",
-  murakami: "",
-  marquez: "",
+  tolstoy: "/writers/tolstoy.jpg",
+  dostoevsky: "/writers/dostoevsky.jpg",
+  shakespeare: "/writers/shakespeare.jpg",
+  hemingway: "/writers/hemingway.jpg",
+  murakami: "/writers/murakami.jpg",
+  marquez: "/writers/marquez.jpg",
 };
