@@ -10,5 +10,8 @@ export const russianWriters: Writer[] = [
 {id:"lermontov",name:"Михаил Лермонтов",country:"Россия",city:"Москва",years:"1814–1841",x:68,y:37,books:["Герой нашего времени"],period:"romanticism",direction:"romanticism",region:"europe"},
 {id:"solzhenitsyn",name:"Александр Солженицын",country:"Россия",city:"Кисловодск",years:"1918–2008",x:70,y:42,books:["Архипелаг ГУЛАГ","Один день Ивана Денисовича"],period:"contemporary",direction:"realism",region:"europe",nobel:true},
 {id:"pasternak",name:"Борис Пастернак",country:"Россия",city:"Москва",years:"1890–1960",x:68,y:36,books:["Доктор Живаго"],period:"modernism",direction:"modernism",region:"europe",nobel:true},
-{id:"akhmatova",name:"Анна Ахматова",country:"Россия",city:"Одесса",years:"1889–1966",x:67,y:42,books:["Реквием","Поэма без героя"],period:"modernism",direction:"modernism",region:"europe"}
+{id:"akhmatova",name:"Анна Ахматова",country:"Россия",city:"Одесса",years:"1889–1966",x:67,y:42,books:["Реквием","Поэма без героя"],period:"modernism",direction:"modernism",region:"europe"},
+{id:"leskov",name:"Николай Лесков",country:"Россия",city:"Орёл",years:"1831–1895",x:67,y:39,books:["Левша","Соборяне"],period:"realism",direction:"realism",region:"europe"},
+{id:"gorky",name:"Максим Горький",country:"Россия",city:"Нижний Новгород",years:"1868–1936",x:69,y:38,books:["Мать","На дне"],period:"modernism",direction:"realism",region:"europe"},
+{id:"yesenin",name:"Сергей Есенин",country:"Россия",city:"Рязань",years:"1895–1925",x:68,y:39,books:["Анна Снегина","Письмо к женщине"],period:"modernism",direction:"poetry",region:"europe"}
 ];
