@@ -5,4 +5,13 @@ export const writerPhotos: Record<string, string> = {
   hemingway: "/writers/hemingway.jpg",
   murakami: "/writers/murakami.jpg",
   marquez: "/writers/marquez.jpg",
+  kafka: "/writers/kafka.jpg",
+  orwell: "/writers/orwell.jpg",
+  hugo: "/writers/hugo.jpg",
+  goethe: "/writers/goethe.jpg",
+  dickens: "/writers/dickens.jpg",
+  poe: "/writers/poe.jpg",
+  borges: "/writers/borges.jpg",
+  proust: "/writers/proust.jpg",
+  joyce: "/writers/joyce.jpg",
 };
