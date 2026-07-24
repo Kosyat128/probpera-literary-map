@@ -18,22 +18,21 @@ export default function WriterCard({ writer, onClose }: Props) {
         padding: "24px",
         borderRadius: "18px",
         zIndex: 20,
-        boxShadow: "0 10px 35px rgba(53,32,95,.25)",
+        boxShadow: "0 12px 35px rgba(53,32,95,.25)",
         fontFamily: "Georgia, serif",
       }}
     >
+      <div style={{fontSize:"12px",opacity:.65,marginBottom:"6px"}}>Литературная карта мира</div>
       <h2 style={{ marginTop: 0, color: "#1F103D" }}>{writer.name}</h2>
       <p><b>Страна:</b> {writer.country}</p>
       <p><b>Город:</b> {writer.city}</p>
       <p><b>Годы жизни:</b> {writer.years}</p>
-
       <h3>Главные произведения</h3>
       <ul>
         {writer.books.map((book) => (
           <li key={book}>{book}</li>
         ))}
       </ul>
-
       <button
         onClick={onClose}
         style={{
