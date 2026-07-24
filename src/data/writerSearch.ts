@@ -11,7 +11,11 @@ export function searchWriters(query: string) {
       writer.country,
       writer.city,
       ...writer.books,
+      writer.period,
+      writer.direction,
+      writer.region,
     ]
+      .filter(Boolean)
       .join(" ")
       .toLowerCase()
       .includes(value)
@@ -24,4 +28,12 @@ export function getNobelWriters() {
 
 export function getWritersByRegion(region: string) {
   return allWriters.filter((writer) => writer.region === region);
+}
+
+export function getWritersByPeriod(period: string) {
+  return allWriters.filter((writer) => writer.period === period);
+}
+
+export function getWritersByDirection(direction: string) {
+  return allWriters.filter((writer) => writer.direction === direction);
 }
