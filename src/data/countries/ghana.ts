@@ -4,66 +4,283 @@ export const ghana: Country = {
   id: "ghana",
   name: "Гана",
   code: "gh",
+
   writers: [
     {
-      id: "joseph-ephraim-caseley-hayford",
-      name: "Джозеф Эфраим Кейсли Хейфорд",
-      years: "1866–1927",
-      birthPlace: "Кейп-Кост, Золотой Берег",
-      coordinates: { lat: 5.1315, lng: -1.2795 },
+      id: "joseph_casely_hayford",
+      name: "Джозеф Эфуа Кейсели Хейфорд",
+      fullName: "Joseph Ephraim Casely Hayford",
+      years: "1866–1930",
+
+      birthDate: "1866-05-24",
+      deathDate: "1930-01-15",
+
+      birthPlace: "Кейп-Кост",
+
+      coordinates: {
+        lat: 5.1315,
+        lng: -1.2795
+      },
+
       portrait: "",
-      bio: "Ганский писатель, юрист и общественный деятель. Один из первых западноафриканских авторов, писавших на английском языке.",
-      works: ["Эфи: история из жизни Золотого Берега", "Утрата дочери"]
+
+      bio: "Ганский писатель, юрист и один из первых авторов англоязычной литературы Западной Африки.",
+
+      works: [
+        "Эфиопия без цепей"
+      ],
+
+      genres: [
+        "роман",
+        "публицистика"
+      ],
+
+      language: "английский",
+      nationality: "ганец",
+
+      awards: [],
+
+      relatedWriters: [
+        "kofi_awoonor"
+      ],
+
+      tags: [
+        "XIX век",
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "ama-ata-aidoo",
-      name: "Ама Ата Айду",
-      years: "1942–2023",
-      birthPlace: "Абеадзе-Кесе, Гана",
-      coordinates: { lat: 5.7000, lng: -1.1500 },
-      portrait: "",
-      bio: "Ганская писательница, драматург и поэтесса. Одна из крупнейших представительниц африканской женской литературы XX века.",
-      works: ["Изменения", "Наша сестра Киллер", "Дилемма привидения"]
-    },
-    {
-      id: "ayi-kwei-armah",
-      name: "Айи Квей Арма",
-      years: "1939–",
-      birthPlace: "Аккра, Гана",
-      coordinates: { lat: 5.6037, lng: -0.1870 },
-      portrait: "",
-      bio: "Ганский писатель и эссеист, один из наиболее известных авторов постколониальной африканской литературы.",
-      works: ["Красота ещё не родилась", "Две тысячи сезонов", "Лекарство"]
-    },
-    {
-      id: "kofi-awoonor",
-      name: "Кофи Авунор",
+      id: "kofi_awoonor",
+      name: "Кофи Авоноор",
+      fullName: "Kofi Awoonor",
       years: "1935–2013",
-      birthPlace: "Вета, Гана",
-      coordinates: { lat: 5.8000, lng: 0.0000 },
+
+      birthDate: "1935-03-13",
+      deathDate: "2013-09-21",
+
+      birthPlace: "Вета",
+
+      coordinates: {
+        lat: 6.1,
+        lng: 0.6
+      },
+
       portrait: "",
-      bio: "Ганский поэт, писатель и дипломат. Соединял традиции устной поэзии народа эве с современной литературой.",
-      works: ["Переоткрытие", "Дом у моря", "Ночная музыка"]
+
+      bio: "Ганский поэт и писатель, сочетавший традиции народа эве с современной литературой.",
+
+      works: [
+        "Дом у моря"
+      ],
+
+      genres: [
+        "поэзия",
+        "проза"
+      ],
+
+      language: "английский",
+
+      nationality: "ганец",
+
+      awards: [],
+
+      relatedWriters: [
+        "ama_ata_aidoo"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "efua-sutherland",
-      name: "Эфуа Сазерленд",
-      years: "1924–1996",
-      birthPlace: "Кейп-Кост, Гана",
-      coordinates: { lat: 5.1315, lng: -1.2795 },
+      id: "ama_ata_aidoo",
+      name: "Амма Ата Айду",
+      fullName: "Ama Ata Aidoo",
+      years: "1942–2023",
+
+      birthDate: "1942-03-23",
+      deathDate: "2023-05-31",
+
+      birthPlace: "Солтпонд",
+
+      coordinates: {
+        lat: 5.21,
+        lng: -1.06
+      },
+
       portrait: "",
-      bio: "Ганская писательница, драматург и исследовательница фольклора. Одна из основателей современной ганской драматургии.",
-      works: ["Анансева, чудо-девушка", "Смеющийся ребёнок"]
+
+      bio: "Одна из крупнейших ганских писательниц XX века, драматург и поэт.",
+
+      works: [
+        "Дилемма призрака",
+        "Изменения"
+      ],
+
+      genres: [
+        "роман",
+        "драма"
+      ],
+
+      language: "английский",
+
+      nationality: "ганка",
+
+      awards: [],
+
+      relatedWriters: [
+        "ayi_kwei_armah"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "amma-darko",
-      name: "Амма Дарко",
-      years: "1956–",
-      birthPlace: "Тамале, Гана",
-      coordinates: { lat: 9.4075, lng: -0.8533 },
+      id: "ayi_kwei_armah",
+      name: "Айи Квей Арма",
+      fullName: "Ayi Kwei Armah",
+      years: "1939–",
+
+      birthDate: "1939-10-28",
+      deathDate: "",
+
+      birthPlace: "Тема",
+
+      coordinates: {
+        lat: 5.67,
+        lng: 0.02
+      },
+
       portrait: "",
-      bio: "Современная ганская писательница. Её произведения посвящены миграции, социальным проблемам и положению женщин.",
-      works: ["За гранью горизонта", "Безликие", "Горький шоколад"]
+
+      bio: "Один из наиболее известных ганских романистов, автор произведений о постколониальной Африке.",
+
+      works: [
+        "Красота ещё не родилась"
+      ],
+
+      genres: [
+        "роман",
+        "социальная проза"
+      ],
+
+      language: "английский",
+
+      nationality: "ганец",
+
+      awards: [],
+
+      relatedWriters: [
+        "nii_ayikwei_parkes"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "nii_ayikwei_parkes",
+      name: "Нии Айквей Паркс",
+      fullName: "Nii Ayikwei Parkes",
+      years: "1974–",
+
+      birthDate: "1974-01-01",
+      deathDate: "",
+
+      birthPlace: "Лондон",
+
+      coordinates: {
+        lat: 51.5074,
+        lng: -0.1278
+      },
+
+      portrait: "",
+
+      bio: "Ганский писатель, поэт и редактор, представитель современной африканской литературы.",
+
+      works: [
+        "Синий червь"
+      ],
+
+      genres: [
+        "роман",
+        "поэзия"
+      ],
+
+      language: "английский",
+
+      nationality: "ганец",
+
+      awards: [],
+
+      relatedWriters: [
+        "martin_egblewogbe"
+      ],
+
+      tags: [
+        "XXI век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "martin_egblewogbe",
+      name: "Мартин Эгбевогбе",
+      fullName: "Martin Egblewogbe",
+      years: "1975–",
+
+      birthDate: "1975-01-01",
+      deathDate: "",
+
+      birthPlace: "Аккра",
+
+      coordinates: {
+        lat: 5.6037,
+        lng: -0.187
+      },
+
+      portrait: "",
+
+      bio: "Современный ганский писатель, автор рассказов и фантастической прозы.",
+
+      works: [
+        "Сказки о невозможном"
+      ],
+
+      genres: [
+        "рассказ",
+        "фантастика"
+      ],
+
+      language: "английский",
+
+      nationality: "ганец",
+
+      awards: [],
+
+      relatedWriters: [
+        "ayi_kwei_armah"
+      ],
+
+      tags: [
+        "XXI век"
+      ],
+
+      articleUrl: ""
     }
   ]
 };
