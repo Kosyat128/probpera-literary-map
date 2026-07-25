@@ -7,47 +7,143 @@ export const southAfrica: Country = {
 
   writers: [
     {
+      id: "olive_schreiner",
+      name: "Олив Шрайнер",
+      fullName: "Olive Schreiner",
+      years: "1855–1920",
+      birthDate: "1855-03-24",
+      deathDate: "1920-12-11",
+      birthPlace: "Винбург",
+      portrait: "",
+      bio: "Южноафриканская писательница, одна из основательниц современной литературы страны.",
+      works: [
+        "История африканской фермы"
+      ],
+      genres: [
+        "роман",
+        "эссе"
+      ],
+      language: "английский",
+      nationality: "южноафриканка",
+      awards: [],
+      tags: ["XIX век", "XX век"],
+      articleUrl: ""
+    },
+
+    {
+      id: "cj_langenhoven",
+      name: "Корнелис Якоб Лангенховен",
+      fullName: "Cornelis Jacob Langenhoven",
+      years: "1873–1932",
+      birthDate: "1873",
+      deathDate: "1932",
+      birthPlace: "Лангклоф",
+      portrait: "",
+      bio: "Южноафриканский писатель и один из крупнейших деятелей литературы на африкаанс.",
+      works: [
+        "Die Hoop van Suid-Afrika"
+      ],
+      genres: [
+        "проза",
+        "поэзия"
+      ],
+      language: "африкаанс",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: ["XX век"],
+      articleUrl: ""
+    },
+
+    {
+      id: "sol_plaatje",
+      name: "Сол Платже",
+      fullName: "Solomon Tshekisho Plaatje",
+      years: "1876–1932",
+      birthDate: "1876",
+      deathDate: "1932",
+      birthPlace: "Босхоф",
+      portrait: "",
+      bio: "Писатель, переводчик и один из первых крупных чернокожих авторов Южной Африки.",
+      works: [
+        "Mhudi"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: ["XX век"],
+      articleUrl: ""
+    },
+
+    {
       id: "alan_paton",
       name: "Алан Пейтон",
       fullName: "Alan Paton",
       years: "1903–1988",
-
-      birthDate: "1903-01-11",
-      deathDate: "1988-04-12",
-
+      birthDate: "1903",
+      deathDate: "1988",
       birthPlace: "Питермарицбург",
-
-      coordinates: {
-        lat: -29.6,
-        lng: 30.38
-      },
-
       portrait: "",
-
-      bio: "Южноафриканский писатель и общественный деятель, один из главных авторов литературы о проблемах апартеида.",
-
+      bio: "Один из главных южноафриканских писателей XX века.",
       works: [
-        "Плачь, любимая страна"
+        "Плач, любимая страна"
       ],
-
       genres: [
-        "роман",
-        "социальная проза"
+        "роман"
       ],
-
       language: "английский",
       nationality: "южноафриканец",
-
       awards: [],
+      tags: ["XX век"],
+      articleUrl: ""
+    },
 
-      relatedWriters: [
-        "nadine_gordimer"
+    {
+      id: "herman_charles_bosman",
+      name: "Герман Чарльз Босман",
+      fullName: "Herman Charles Bosman",
+      years: "1905–1951",
+      birthDate: "1905",
+      deathDate: "1951",
+      birthPlace: "Кейптаун",
+      portrait: "",
+      bio: "Южноафриканский мастер рассказа.",
+      works: [
+        "Mafeking Road"
       ],
-
-      tags: [
-        "XX век"
+      genres: [
+        "рассказ"
       ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: ["XX век"],
+      articleUrl: ""
+    },
 
+    {
+      id: "eskia_mphahlele",
+      name: "Эскиа Мпахлеле",
+      fullName: "Ezekiel Mphahlele",
+      years: "1919–2008",
+      birthDate: "1919",
+      deathDate: "2008",
+      birthPlace: "Претория",
+      portrait: "",
+      bio: "Писатель, педагог и один из основателей африканского гуманизма в литературе.",
+      works: [
+        "Down Second Avenue"
+      ],
+      genres: [
+        "автобиография",
+        "эссе"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: ["XX век"],
       articleUrl: ""
     },
 
@@ -56,91 +152,70 @@ export const southAfrica: Country = {
       name: "Надин Гордимер",
       fullName: "Nadine Gordimer",
       years: "1923–2014",
-
-      birthDate: "1923-11-20",
-      deathDate: "2014-07-13",
-
+      birthDate: "1923",
+      deathDate: "2014",
       birthPlace: "Спрингс",
-
-      coordinates: {
-        lat: -26.25,
-        lng: 28.44
-      },
-
       portrait: "",
-
-      bio: "Южноафриканская писательница, лауреат Нобелевской премии по литературе 1991 года.",
-
+      bio: "Лауреат Нобелевской премии по литературе 1991 года.",
       works: [
         "Хранительница",
-        "Июльские люди"
+        "Люди июля"
       ],
-
       genres: [
-        "роман",
-        "проза"
+        "роман"
       ],
-
       language: "английский",
       nationality: "южноафриканка",
-
       awards: [
         "Нобелевская премия по литературе 1991"
       ],
-
-      relatedWriters: [
-        "athol_fugard"
-      ],
-
-      tags: [
-        "XX век"
-      ],
-
+      tags: ["XX век"],
       articleUrl: ""
     },
 
     {
-      id: "athol_fugard",
-      name: "Атоль Фугард",
-      fullName: "Athol Fugard",
-      years: "1932–2025",
-
-      birthDate: "1932-06-11",
-      deathDate: "2025-03-08",
-
-      birthPlace: "Мидделбург",
-
-      coordinates: {
-        lat: -31.49,
-        lng: 25.01
-      },
-
+      id: "alex_la_guma",
+      name: "Алекс Ла Гума",
+      fullName: "Alex La Guma",
+      years: "1925–1985",
+      birthDate: "1925",
+      deathDate: "1985",
+      birthPlace: "Кейптаун",
       portrait: "",
-
-      bio: "Южноафриканский драматург, режиссёр и писатель, один из крупнейших авторов театра XX века.",
-
+      bio: "Писатель эпохи борьбы против апартеида.",
       works: [
-        "Мастер Гарольд... и мальчики"
+        "Прогулка в ночи"
       ],
-
       genres: [
-        "драма",
-        "театр"
+        "роман"
       ],
-
       language: "английский",
       nationality: "южноафриканец",
-
       awards: [],
+      tags: ["XX век"],
+      articleUrl: ""
+    },
 
-      relatedWriters: [
-        "breyten_breytenbach"
+    {
+      id: "andre_brink",
+      name: "Андре Бринк",
+      fullName: "André Brink",
+      years: "1935–2015",
+      birthDate: "1935",
+      deathDate: "2015",
+      birthPlace: "Вреде",
+      portrait: "",
+      bio: "Один из лидеров литературы против апартеида.",
+      works: [
+        "Сухой белый сезон"
       ],
-
-      tags: [
-        "XX век"
+      genres: [
+        "роман"
       ],
-
+      language: "африкаанс, английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: ["XX век"],
       articleUrl: ""
     },
 
@@ -149,43 +224,22 @@ export const southAfrica: Country = {
       name: "Брейтен Брейтенбах",
       fullName: "Breyten Breytenbach",
       years: "1939–2024",
-
-      birthDate: "1939-09-16",
-      deathDate: "2024-11-24",
-
-      birthPlace: "Боннивейл",
-
-      coordinates: {
-        lat: -33.93,
-        lng: 19.02
-      },
-
+      birthDate: "1939",
+      deathDate: "2024",
+      birthPlace: "Бонниваль",
       portrait: "",
-
-      bio: "Южноафриканский поэт, писатель и художник, один из крупнейших авторов на языке африкаанс.",
-
+      bio: "Поэт и писатель на языке африкаанс.",
       works: [
-        "Стихи"
+        "Альбинос теряется в стране чудес"
       ],
-
       genres: [
         "поэзия",
         "проза"
       ],
-
       language: "африкаанс",
       nationality: "южноафриканец",
-
       awards: [],
-
-      relatedWriters: [
-        "jm_coetzee"
-      ],
-
-      tags: [
-        "XX век"
-      ],
-
+      tags: ["XX век"],
       articleUrl: ""
     },
 
@@ -194,93 +248,243 @@ export const southAfrica: Country = {
       name: "Дж. М. Кутзее",
       fullName: "John Maxwell Coetzee",
       years: "1940–",
-
-      birthDate: "1940-02-09",
+      birthDate: "1940",
       deathDate: "",
-
       birthPlace: "Кейптаун",
-
-      coordinates: {
-        lat: -33.92,
-        lng: 18.42
-      },
-
       portrait: "",
-
-      bio: "Южноафриканский писатель, лауреат Нобелевской премии по литературе 2003 года.",
-
+      bio: "Лауреат Нобелевской премии по литературе 2003 года.",
       works: [
         "Бесчестье",
-        "Жизнь и времена Михаэла К."
+        "Жизнь и время Михаэла К."
       ],
-
       genres: [
-        "роман",
-        "проза"
+        "роман"
       ],
-
       language: "английский",
       nationality: "южноафриканец",
-
       awards: [
         "Нобелевская премия по литературе 2003"
       ],
+      tags: ["XX век", "XXI век"],
+      articleUrl: ""
+    }
 
-      relatedWriters: [
-        "zakes_mda"
+  ]
+};
+    {
+      id: "sindiwe_magona",
+      name: "Синдиве Магона",
+      fullName: "Sindiwe Magona",
+      years: "1943–",
+      birthDate: "1943",
+      deathDate: "",
+      birthPlace: "Умтата",
+      portrait: "",
+      bio: "Южноафриканская писательница, мемуаристка и автор произведений о жизни женщин в условиях апартеида.",
+      works: [
+        "Mother to Mother",
+        "Living"
       ],
-
+      genres: [
+        "роман",
+        "мемуары"
+      ],
+      language: "английский",
+      nationality: "южноафриканка",
+      awards: [],
       tags: [
         "XX век",
         "XXI век"
       ],
-
       articleUrl: ""
     },
 
     {
       id: "zakes_mda",
-      name: "Зейкс Мда",
+      name: "Зукесва Мда",
       fullName: "Zakes Mda",
       years: "1948–",
-
-      birthDate: "1948-07-05",
+      birthDate: "1948",
       deathDate: "",
-
       birthPlace: "Хершел",
-
-      coordinates: {
-        lat: -30.0,
-        lng: 27.0
-      },
-
       portrait: "",
-
-      bio: "Южноафриканский писатель, драматург и романист, представитель современной литературы ЮАР.",
-
+      bio: "Южноафриканский писатель, драматург и художник, один из ведущих современных авторов страны.",
       works: [
-        "Сердце красного цвета"
+        "Ways of Dying",
+        "The Heart of Redness"
       ],
-
       genres: [
         "роман",
         "драма"
       ],
-
       language: "английский",
       nationality: "южноафриканец",
-
       awards: [],
-
-      relatedWriters: [
-        "kopano_matlwa"
-      ],
-
       tags: [
         "XX век",
         "XXI век"
       ],
+      articleUrl: ""
+    },
 
+    {
+      id: "achmat_dangor",
+      name: "Ахмат Дангор",
+      fullName: "Achmat Dangor",
+      years: "1948–2021",
+      birthDate: "1948",
+      deathDate: "2021",
+      birthPlace: "Йоханнесбург",
+      portrait: "",
+      bio: "Южноафриканский писатель, поэт и общественный деятель периода после апартеида.",
+      works: [
+        "Горький плод"
+      ],
+      genres: [
+        "роман",
+        "поэзия"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "zoe_wicomb",
+      name: "Зои Викомб",
+      fullName: "Zoë Wicomb",
+      years: "1948–",
+      birthDate: "1948",
+      deathDate: "",
+      birthPlace: "Порт-Элизабет",
+      portrait: "",
+      bio: "Южноафриканская писательница, известная исследованиями идентичности и наследия апартеида.",
+      works: [
+        "You Can't Get Lost in Cape Town"
+      ],
+      genres: [
+        "рассказ",
+        "роман"
+      ],
+      language: "английский",
+      nationality: "южноафриканка",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "mandla_langa",
+      name: "Мандла Ланга",
+      fullName: "Mandla Langa",
+      years: "1950–",
+      birthDate: "1950",
+      deathDate: "",
+      birthPlace: "Дурбан",
+      portrait: "",
+      bio: "Южноафриканский писатель, поэт и журналист.",
+      works: [
+        "The Memory of Stones"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "marlene_van_niekerk",
+      name: "Марлен ван Никерк",
+      fullName: "Marlene van Niekerk",
+      years: "1954–",
+      birthDate: "1954",
+      deathDate: "",
+      birthPlace: "Каледон",
+      portrait: "",
+      bio: "Одна из крупнейших современных писательниц на языке африкаанс.",
+      works: [
+        "Тристан"
+      ],
+      genres: [
+        "роман",
+        "поэзия"
+      ],
+      language: "африкаанс",
+      nationality: "южноафриканка",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "ivan_vladislavic",
+      name: "Иван Владиславич",
+      fullName: "Ivan Vladislavić",
+      years: "1957–",
+      birthDate: "1957",
+      deathDate: "",
+      birthPlace: "Претория",
+      portrait: "",
+      bio: "Южноафриканский писатель, один из крупнейших представителей современной городской прозы.",
+      works: [
+        "The Restless Supermarket"
+      ],
+      genres: [
+        "роман",
+        "сатира"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "damon_galgut",
+      name: "Деймон Гэлгут",
+      fullName: "Damon Galgut",
+      years: "1963–",
+      birthDate: "1963",
+      deathDate: "",
+      birthPlace: "Претория",
+      portrait: "",
+      bio: "Современный южноафриканский писатель, лауреат Букеровской премии.",
+      works: [
+        "Обещание"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "южноафриканец",
+      awards: [
+        "Букеровская премия 2021"
+      ],
+      tags: [
+        "XXI век"
+      ],
       articleUrl: ""
     },
 
@@ -289,44 +493,22 @@ export const southAfrica: Country = {
       name: "Копано Матлва",
       fullName: "Kopano Matlwa",
       years: "1985–",
-
-      birthDate: "1985-01-01",
+      birthDate: "1985",
       deathDate: "",
-
       birthPlace: "Претория",
-
-      coordinates: {
-        lat: -25.74,
-        lng: 28.19
-      },
-
       portrait: "",
-
-      bio: "Современная южноафриканская писательница, автор романов о молодом поколении ЮАР.",
-
+      bio: "Современная южноафриканская писательница, представитель нового поколения литературы страны.",
       works: [
-        "Кокос"
+        "Coconut"
       ],
-
       genres: [
-        "роман",
-        "проза"
+        "роман"
       ],
-
       language: "английский",
       nationality: "южноафриканка",
-
       awards: [],
-
-      relatedWriters: [
-        "nadine_gordimer"
-      ],
-
       tags: [
         "XXI век"
       ],
-
       articleUrl: ""
     }
-  ]
-};
