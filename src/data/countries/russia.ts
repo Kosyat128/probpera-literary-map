@@ -1024,10 +1024,9 @@ export const russia: Country = {
       ],
       articleUrl: ""
     }
-  ]
-};
-    {
-      id: "esenin",
+   ],
+  {
+    id: "esenin",
       name: "Сергей Александрович Есенин",
       years: "1895–1925",
       birthDate: "1895-09-21",
