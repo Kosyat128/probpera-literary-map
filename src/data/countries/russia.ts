@@ -1288,3 +1288,5 @@ export const russia: Country = {
       ],
       articleUrl: ""
     }
+  ]
+};
