@@ -4,96 +4,275 @@ export const egypt: Country = {
   id: "egypt",
   name: "Египет",
   code: "eg",
+
   writers: [
     {
-      id: "taha-hussein",
+      id: "rifaa_al_tahtawi",
+      name: "Рифаа ат-Тахтави",
+      fullName: "Rifa'a al-Tahtawi",
+      years: "1801–1873",
+      birthDate: "1801-10-15",
+      deathDate: "1873-06-27",
+      birthPlace: "Таха",
+      coordinates: {
+        lat: 30.04,
+        lng: 31.24
+      },
+      portrait: "",
+      bio: "Египетский просветитель, писатель и публицист, один из основателей современной арабской интеллектуальной традиции.",
+      works: [
+        "Извлечение золота из описания Парижа"
+      ],
+      genres: [
+        "эссе",
+        "публицистика"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "muhammad_husayn_haykal"
+      ],
+      tags: [
+        "XIX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "muhammad_husayn_haykal",
+      name: "Мухаммад Хусейн Хайкаль",
+      fullName: "Muhammad Husayn Haykal",
+      years: "1888–1956",
+      birthDate: "1888-08-20",
+      deathDate: "1956-12-08",
+      birthPlace: "Кафр-Ганнам",
+      coordinates: {
+        lat: 30.97,
+        lng: 31.16
+      },
+      portrait: "",
+      bio: "Египетский писатель, журналист и один из основателей современного арабского романа.",
+      works: [
+        "Зейнаб"
+      ],
+      genres: [
+        "роман",
+        "проза"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "taha_hussein"
+      ],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "taha_hussein",
       name: "Таха Хусейн",
+      fullName: "Taha Hussein",
       years: "1889–1973",
-      birthPlace: "Избет-эль-Кило, Египет",
-      coordinates: { lat: 29.3000, lng: 30.9000 },
+      birthDate: "1889-11-14",
+      deathDate: "1973-10-28",
+      birthPlace: "Избет-эль-Кило",
+      coordinates: {
+        lat: 29.98,
+        lng: 31.13
+      },
       portrait: "",
-      bio: "Египетский писатель, литературный критик и общественный деятель, одна из важнейших фигур арабского культурного возрождения XX века.",
-      works: ["Дни", "Будущее культуры в Египте"]
+      bio: "Египетский писатель, литературный критик и один из крупнейших арабских интеллектуалов XX века.",
+      works: [
+        "Дни"
+      ],
+      genres: [
+        "автобиография",
+        "критика"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "naguib_mahfouz"
+      ],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
     },
+
     {
-      id: "naguib-mahfouz",
+      id: "naguib_mahfouz",
       name: "Нагиб Махфуз",
+      fullName: "Naguib Mahfouz",
       years: "1911–2006",
-      birthPlace: "Каир, Египет",
-      coordinates: { lat: 30.0444, lng: 31.2357 },
+      birthDate: "1911-12-11",
+      deathDate: "2006-08-30",
+      birthPlace: "Каир",
+      coordinates: {
+        lat: 30.04,
+        lng: 31.24
+      },
       portrait: "",
-      bio: "Египетский писатель, лауреат Нобелевской премии по литературе 1988 года и один из крупнейших представителей арабской литературы XX века.",
-      works: ["Каирская трилогия", "Переулок Мидак", "Дети нашей улицы"]
+      bio: "Крупнейший египетский писатель, первый арабский лауреат Нобелевской премии по литературе.",
+      works: [
+        "Каирская трилогия",
+        "Дети нашей улицы"
+      ],
+      genres: [
+        "роман",
+        "реализм"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [
+        "Нобелевская премия по литературе 1988"
+      ],
+      relatedWriters: [
+        "yusuf_idris"
+      ],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
     },
+
     {
-      id: "yusuf-idris",
+      id: "yusuf_idris",
       name: "Юсуф Идрис",
+      fullName: "Yusuf Idris",
       years: "1927–1991",
-      birthPlace: "Факус, Египет",
-      coordinates: { lat: 30.7300, lng: 31.8000 },
+      birthDate: "1927-05-19",
+      deathDate: "1991-08-01",
+      birthPlace: "Фагус",
+      coordinates: {
+        lat: 30.9,
+        lng: 31.3
+      },
       portrait: "",
-      bio: "Египетский писатель и драматург, один из крупнейших мастеров арабского рассказа XX века.",
-      works: ["Самое дешёвое из ночей", "Запретная любовь"]
+      bio: "Египетский писатель и драматург, мастер короткой прозы.",
+      works: [
+        "Самые дешёвые ночи"
+      ],
+      genres: [
+        "рассказ",
+        "драма"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "sonallah_ibrahim"
+      ],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
     },
+
     {
-      id: "salwa-bakr",
-      name: "Сальва Бакр",
-      years: "1949–",
-      birthPlace: "Каир, Египет",
-      coordinates: { lat: 30.0444, lng: 31.2357 },
-      portrait: "",
-      bio: "Египетская писательница и литературный критик, известная произведениями о социальных проблемах.",
-      works: ["Золотая колесница, которая не едет"]
-    },
-    {
-      id: "alaa-al-aswany",
-      name: "Алаа аль-Асуани",
-      years: "1957–",
-      birthPlace: "Каир, Египет",
-      coordinates: { lat: 30.0444, lng: 31.2357 },
-      portrait: "",
-      bio: "Египетский писатель и один из наиболее известных современных арабских романистов.",
-      works: ["Дом Якобяна", "Чикаго"]
-    },
-    {
-      id: "ahmed-khaled-tawfik",
-      name: "Ахмед Халед Тауфик",
-      years: "1962–2018",
-      birthPlace: "Танта, Египет",
-      coordinates: { lat: 30.7865, lng: 31.0004 },
-      portrait: "",
-      bio: "Египетский писатель и врач, известный произведениями в жанрах фантастики и хоррора.",
-      works: ["Утопия", "Ма Вараа ат-Табиа"]
-    },
-    {
-      id: "gamal-al-ghitani",
-      name: "Гамаль аль-Гитани",
-      years: "1945–2015",
-      birthPlace: "Сохаг, Египет",
-      coordinates: { lat: 26.5600, lng: 31.7000 },
-      portrait: "",
-      bio: "Египетский писатель и журналист, один из крупнейших представителей современной египетской прозы.",
-      works: ["Зейни Баракат"]
-    },
-    {
-      id: "sanaa-allah-ibrahim",
-      name: "Санаалла Ибрахим",
+      id: "sonallah_ibrahim",
+      name: "Суналлах Ибрахим",
+      fullName: "Sonallah Ibrahim",
       years: "1937–",
-      birthPlace: "Каир, Египет",
-      coordinates: { lat: 30.0444, lng: 31.2357 },
+      birthDate: "1937-03-14",
+      deathDate: "",
+      birthPlace: "Каир",
+      coordinates: {
+        lat: 30.04,
+        lng: 31.24
+      },
       portrait: "",
-      bio: "Египетский писатель и журналист, представитель современной арабской интеллектуальной прозы.",
-      works: ["Комитет"]
+      bio: "Современный египетский писатель, представитель политической и экспериментальной прозы.",
+      works: [
+        "Комитет"
+      ],
+      genres: [
+        "роман",
+        "политическая проза"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "ahmed_khaled_tawfik"
+      ],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
     },
+
     {
-      id: "radwa-ashour",
-      name: "Радва Ашур",
-      years: "1946–2014",
-      birthPlace: "Каир, Египет",
-      coordinates: { lat: 30.0444, lng: 31.2357 },
+      id: "ahmed_khaled_tawfik",
+      name: "Ахмед Халед Тауфик",
+      fullName: "Ahmed Khaled Towfik",
+      years: "1962–2018",
+      birthDate: "1962-06-10",
+      deathDate: "2018-04-02",
+      birthPlace: "Танта",
+      coordinates: {
+        lat: 30.79,
+        lng: 31.0
+      },
       portrait: "",
-      bio: "Египетская писательница, литературовед и профессор, одна из известных арабских авторов второй половины XX века.",
-      works: ["Граната", "Спектр"]
+      bio: "Популярный египетский писатель, один из главных авторов арабской фантастики и ужасов.",
+      works: [
+        "Утопия",
+        "Сверхъестественное"
+      ],
+      genres: [
+        "фантастика",
+        "ужасы"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "alaa_al_aswany"
+      ],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "alaa_al_aswany",
+      name: "Алаа аль-Асуани",
+      fullName: "Alaa Al Aswany",
+      years: "1957–",
+      birthDate: "1957-05-26",
+      deathDate: "",
+      birthPlace: "Каир",
+      coordinates: {
+        lat: 30.04,
+        lng: 31.24
+      },
+      portrait: "",
+      bio: "Современный египетский писатель, автор романов о жизни египетского общества.",
+      works: [
+        "Дом Якобьяна"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      relatedWriters: [
+        "naguib_mahfouz"
+      ],
+      tags: [
+        "XXI век"
+      ],
+      articleUrl: ""
     }
   ]
 };
