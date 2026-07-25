@@ -4,153 +4,336 @@ export const algeria: Country = {
   id: "algeria",
   name: "Алжир",
   code: "dz",
+
   writers: [
     {
-      id: "albert-camus",
-      name: "Альбер Камю",
-      years: "1913–1960",
-      birthDate: "1913-11-07",
-      deathDate: "1960-01-04",
-      birthPlace: "Мондови, Французский Алжир",
-      deathPlace: "Вильблевен, Франция",
-      coordinates: { lat: 36.7560, lng: 8.0500 },
+      id: "moufdi_zakaria",
+      name: "Муфди Закария",
+      fullName: "Moufdi Zakaria",
+      years: "1908–1977",
+
+      birthDate: "1908-06-12",
+      deathDate: "1977-08-17",
+
+      birthPlace: "Бени-Изген",
+
+      coordinates: {
+        lat: 32.4,
+        lng: 3.78
+      },
+
       portrait: "",
-      bio: "Французский писатель и философ алжирского происхождения. Лауреат Нобелевской премии по литературе 1957 года.",
-      works: ["Посторонний", "Чума", "Миф о Сизифе"],
-      genres: ["роман", "эссе", "философия"],
-      awards: ["Нобелевская премия по литературе"],
-      language: "французский",
-      nationality: "француз",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["Нобелевская премия", "экзистенциализм", "французская литература"]
-    },
-    {
-      id: "kateb-yacine",
-      name: "Катеб Ясин",
-      years: "1929–1989",
-      birthDate: "1929-08-06",
-      deathDate: "1989-10-28",
-      birthPlace: "Константина, Алжир",
-      deathPlace: "Гренобль, Франция",
-      coordinates: { lat: 36.3650, lng: 6.6147 },
-      portrait: "",
-      bio: "Алжирский писатель и поэт, один из основателей современной алжирской литературы на французском языке.",
-      works: ["Неджа"],
-      genres: ["роман", "драма", "поэзия"],
-      language: "французский",
+
+      bio: "Алжирский поэт, один из крупнейших представителей арабоязычной литературы Алжира, автор текста государственного гимна страны.",
+
+      works: [
+        "Ильяс и Гибран",
+        "Стихотворения о национальном движении"
+      ],
+
+      genres: [
+        "поэзия"
+      ],
+
+      language: "арабский",
+
       nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["алжирская литература", "франкоязычная литература"]
+
+      awards: [],
+
+      relatedWriters: [
+        "mouloud_feraoun"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "assia-djebar",
-      name: "Ассия Джебар",
-      years: "1936–2015",
-      birthDate: "1936-06-30",
-      deathDate: "2015-02-06",
-      birthPlace: "Шершель, Алжир",
-      deathPlace: "Париж, Франция",
-      coordinates: { lat: 36.6060, lng: 2.1900 },
+      id: "mouloud_feraoun",
+      name: "Мулуд Фераун",
+      fullName: "Mouloud Feraoun",
+
+      years: "1913–1962",
+
+      birthDate: "1913-03-08",
+      deathDate: "1962-03-15",
+
+      birthPlace: "Тизи-Узу",
+
+      coordinates: {
+        lat: 36.71,
+        lng: 4.05
+      },
+
       portrait: "",
-      bio: "Алжирская писательница, историк и режиссёр, одна из крупнейших представительниц франкоязычной литературы Магриба.",
-      works: ["Любовь, фантазия", "Женщины Алжира в своих покоях"],
-      genres: ["роман", "эссе", "история"],
+
+      bio: "Алжирский писатель кабильского происхождения, один из крупнейших авторов франкоязычной литературы Алжира.",
+
+      works: [
+        "Сын бедняка"
+      ],
+
+      genres: [
+        "роман",
+        "автобиографическая проза"
+      ],
+
       language: "французский",
-      nationality: "алжирка",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["женская проза", "алжирская литература"]
+
+      nationality: "алжирец",
+
+      awards: [],
+
+      relatedWriters: [
+        "mohammed_dib"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "mohammed-dib",
+      id: "mohammed_dib",
       name: "Мохаммед Диб",
+      fullName: "Mohammed Dib",
+
       years: "1920–2003",
+
       birthDate: "1920-07-21",
       deathDate: "2003-05-02",
-      birthPlace: "Тлемсен, Алжир",
-      deathPlace: "Париж, Франция",
-      coordinates: { lat: 34.8783, lng: -1.3150 },
+
+      birthPlace: "Тлемсен",
+
+      coordinates: {
+        lat: 34.88,
+        lng: -1.31
+      },
+
       portrait: "",
-      bio: "Алжирский писатель и поэт, один из крупнейших представителей литературы Алжира XX века.",
-      works: ["Большой дом", "Алжирская трилогия"],
-      genres: ["роман", "поэзия"],
+
+      bio: "Один из основателей современной алжирской литературы, автор романов о жизни Алжира периода колониализма.",
+
+      works: [
+        "Большой дом",
+        "Пламя"
+      ],
+
+      genres: [
+        "роман",
+        "проза"
+      ],
+
       language: "французский",
+
       nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["алжирская литература", "роман"]
+
+      awards: [],
+
+      relatedWriters: [
+        "kateb_yacine"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "rachid-boudjedra",
-      name: "Рашид Будаджедра",
+      id: "kateb_yacine",
+      name: "Катеб Ясин",
+      fullName: "Kateb Yacine",
+
+      years: "1929–1989",
+
+      birthDate: "1929-08-02",
+      deathDate: "1989-10-28",
+
+      birthPlace: "Константина",
+
+      coordinates: {
+        lat: 36.36,
+        lng: 6.61
+      },
+
+      portrait: "",
+
+      bio: "Алжирский писатель и драматург, один из крупнейших представителей франкоязычной литературы Магриба.",
+
+      works: [
+        "Недра"
+      ],
+
+      genres: [
+        "роман",
+        "драма"
+      ],
+
+      language: "французский",
+
+      nationality: "алжирец",
+
+      awards: [],
+
+      relatedWriters: [
+        "assia_djebar"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "assia_djebar",
+      name: "Ассия Джебар",
+      fullName: "Assia Djebar",
+
+      years: "1936–2015",
+
+      birthDate: "1936-06-30",
+      deathDate: "2015-02-06",
+
+      birthPlace: "Шершель",
+
+      coordinates: {
+        lat: 36.61,
+        lng: 2.19
+      },
+
+      portrait: "",
+
+      bio: "Алжирская писательница, историк и режиссёр, одна из самых известных франкоязычных авторов XX века.",
+
+      works: [
+        "Любовь, фантазия",
+        "Женщины Алжира в своих покоях"
+      ],
+
+      genres: [
+        "роман",
+        "эссе"
+      ],
+
+      language: "французский",
+
+      nationality: "алжирка",
+
+      awards: [],
+
+      relatedWriters: [
+        "rachid_boudjedra"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "rachid_boudjedra",
+      name: "Рашид Буджедра",
+      fullName: "Rachid Boudjedra",
+
       years: "1941–",
+
       birthDate: "1941-09-05",
-      birthPlace: "Айн-Бейда, Алжир",
-      coordinates: { lat: 35.8000, lng: 7.3900 },
+      deathDate: "",
+
+      birthPlace: "Айн-Бейда",
+
+      coordinates: {
+        lat: 35.8,
+        lng: 7.39
+      },
+
       portrait: "",
-      bio: "Алжирский писатель и поэт, представитель современной арабоязычной и франкоязычной литературы.",
-      works: ["Распад"],
-      genres: ["роман", "поэзия"],
+
+      bio: "Современный алжирский писатель и один из наиболее известных авторов франкоязычной прозы.",
+
+      works: [
+        "Отторжение"
+      ],
+
+      genres: [
+        "роман"
+      ],
+
       language: "французский",
+
       nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["современная литература", "алжирская литература"]
+
+      awards: [],
+
+      relatedWriters: [
+        "boualem_sansal"
+      ],
+
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+
+      articleUrl: ""
     },
+
     {
-      id: "malek-haddad",
-      name: "Малек Хаддад",
-      years: "1927–1978",
-      birthDate: "1927-07-05",
-      deathDate: "1978-06-02",
-      birthPlace: "Константина, Алжир",
-      deathPlace: "Алжир, Алжир",
-      coordinates: { lat: 36.3650, lng: 6.6147 },
-      portrait: "",
-      bio: "Алжирский писатель и поэт периода борьбы за независимость страны.",
-      works: ["Последний образ"],
-      genres: ["роман", "поэзия"],
-      language: "французский",
-      nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["освободительное движение", "алжирская литература"]
-    },
-    {
-      id: "boualem-sansal",
+      id: "boualem_sansal",
       name: "Буалем Сансаль",
+      fullName: "Boualem Sansal",
+
       years: "1949–",
+
       birthDate: "1949-10-15",
-      birthPlace: "Тиарет, Алжир",
-      coordinates: { lat: 35.3700, lng: 1.3200 },
+      deathDate: "",
+
+      birthPlace: "Тенес",
+
+      coordinates: {
+        lat: 36.5,
+        lng: 1.3
+      },
+
       portrait: "",
-      bio: "Алжирский писатель и эссеист, один из известных современных франкоязычных авторов.",
-      works: ["2084: конец света"],
-      genres: ["роман", "эссе"],
+
+      bio: "Современный алжирский писатель франкоязычной литературы, автор романов о памяти, истории и обществе.",
+
+      works: [
+        "Германский посёлок"
+      ],
+
+      genres: [
+        "роман",
+        "антиутопия"
+      ],
+
       language: "французский",
+
       nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["антиутопия", "современная литература"]
-    },
-    {
-      id: "yasmina-khadra",
-      name: "Ясмина Хадра",
-      years: "1955–",
-      birthDate: "1955-01-10",
-      birthPlace: "Кенадса, Алжир",
-      coordinates: { lat: 31.5667, lng: -2.4333 },
-      portrait: "",
-      bio: "Псевдоним алжирского писателя Мохаммеда Мулессеуля.",
-      works: ["Теракт", "Ласточки Кабула"],
-      genres: ["роман", "триллер"],
-      language: "французский",
-      nationality: "алжирец",
-      articleUrl: "",
-      relatedWriters: [],
-      tags: ["современный роман", "триллер"]
+
+      awards: [],
+
+      relatedWriters: [
+        "assia_djebar"
+      ],
+
+      tags: [
+        "XXI век"
+      ],
+
+      articleUrl: ""
     }
   ]
 };
