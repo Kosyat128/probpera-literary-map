@@ -1023,11 +1023,10 @@ export const russia: Country = {
         "Нобелевская премия"
       ],
       articleUrl: ""
-    }
-   ],
-  {
-    id: "esenin",
-      name: "Сергей Александрович Есенин",
+    },
+    {
+  id: "esenin",
+  name: "Сергей Александрович Есенин",
       years: "1895–1925",
       birthDate: "1895-09-21",
       deathDate: "1925-12-28",
