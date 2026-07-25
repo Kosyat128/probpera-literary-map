@@ -1,95 +1,147 @@
 import type { Country } from "../types";
 
-export const iceland: Country = {
-  id: "iceland",
-  name: "Исландия",
-  code: "is",
+export const ireland: Country = {
+  id: "ireland",
+  name: "Ирландия",
+  code: "ie",
 
   writers: [
     {
-      id: "snorri_sturluson",
-      name: "Снорри Стурлусон",
-      fullName: "Snorri Sturluson",
-      years: "1179–1241",
+      id: "jonathan_swift",
+      name: "Джонатан Свифт",
+      fullName: "Jonathan Swift",
+      years: "1667–1745",
 
-      birthDate: "1179",
-      deathDate: "1241-09-23",
+      birthDate: "1667-11-30",
+      deathDate: "1745-10-19",
 
-      birthPlace: "Исландия",
+      birthPlace: "Дублин",
 
       coordinates: {
-        lat: 64.1,
-        lng: -21.9
+        lat: 53.3498,
+        lng: -6.2603
       },
 
       portrait: "",
 
-      bio: "Исландский писатель Средневековья, автор «Младшей Эдды» и «Круга земного».",
+      bio: "Ирландский писатель и сатирик, один из крупнейших авторов англоязычной литературы XVIII века.",
 
       works: [
-        "Младшая Эдда",
-        "Круг земной"
+        "Путешествия Гулливера",
+        "Сказка бочки"
       ],
 
       genres: [
-        "саги",
-        "мифология"
+        "сатира",
+        "проза"
       ],
 
-      language: "древнеисландский",
+      language: "английский",
 
-      nationality: "исландец",
+      nationality: "ирландец",
 
       awards: [],
 
       relatedWriters: [
-        "jon_arnason"
+        "george_bernard_shaw"
       ],
 
       tags: [
-        "Средневековье"
+        "XVIII век"
       ],
 
       articleUrl: ""
     },
 
     {
-      id: "jon_arnason",
-      name: "Йоун Арнасон",
-      fullName: "Jón Árnason",
+      id: "george_bernard_shaw",
+      name: "Джордж Бернард Шоу",
+      fullName: "George Bernard Shaw",
 
-      years: "1819–1888",
+      years: "1856–1950",
 
-      birthDate: "1819-08-17",
-      deathDate: "1888-09-04",
+      birthDate: "1856-07-26",
+      deathDate: "1950-11-02",
 
-      birthPlace: "Исландия",
+      birthPlace: "Дублин",
 
       coordinates: {
-        lat: 64.1,
-        lng: -21.9
+        lat: 53.3498,
+        lng: -6.2603
       },
 
       portrait: "",
 
-      bio: "Исландский писатель и собиратель народных сказаний.",
+      bio: "Ирландский драматург, лауреат Нобелевской премии по литературе 1925 года.",
 
       works: [
-        "Исландские народные сказки"
+        "Пигмалион",
+        "Дом, где разбиваются сердца"
       ],
 
       genres: [
-        "фольклор"
+        "драма"
       ],
 
-      language: "исландский",
+      language: "английский",
 
-      nationality: "исландец",
+      nationality: "ирландец",
+
+      awards: [
+        "Нобелевская премия по литературе 1925"
+      ],
+
+      relatedWriters: [
+        "oscar_wilde"
+      ],
+
+      tags: [
+        "XIX век",
+        "XX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "oscar_wilde",
+      name: "Оскар Уайльд",
+      fullName: "Oscar Wilde",
+
+      years: "1854–1900",
+
+      birthDate: "1854-10-16",
+      deathDate: "1900-11-30",
+
+      birthPlace: "Дублин",
+
+      coordinates: {
+        lat: 53.3498,
+        lng: -6.2603
+      },
+
+      portrait: "",
+
+      bio: "Ирландский писатель, поэт и драматург, один из крупнейших представителей эстетизма.",
+
+      works: [
+        "Портрет Дориана Грея",
+        "Как важно быть серьёзным"
+      ],
+
+      genres: [
+        "роман",
+        "драма"
+      ],
+
+      language: "английский",
+
+      nationality: "ирландец",
 
       awards: [],
 
       relatedWriters: [
-        "grimur_thomsen"
+        "bram_stoker"
       ],
 
       tags: [
@@ -100,88 +152,92 @@ export const iceland: Country = {
     },
 
     {
-      id: "grimur_thomsen",
-      name: "Гримур Томсен",
-      fullName: "Grímur Thomsen",
+      id: "bram_stoker",
+      name: "Брэм Стокер",
+      fullName: "Bram Stoker",
 
-      years: "1820–1896",
+      years: "1847–1912",
 
-      birthDate: "1820-05-15",
-      deathDate: "1896-11-27",
+      birthDate: "1847-11-08",
+      deathDate: "1912-04-20",
 
-      birthPlace: "Бессастадир",
+      birthPlace: "Дублин",
 
       coordinates: {
-        lat: 64.1,
-        lng: -22.0
+        lat: 53.3498,
+        lng: -6.2603
       },
 
       portrait: "",
 
-      bio: "Исландский поэт и литературный критик.",
+      bio: "Ирландский писатель, автор знаменитого готического романа «Дракула».",
 
       works: [
-        "Поэтические сборники"
+        "Дракула"
+      ],
+
+      genres: [
+        "готический роман",
+        "ужасы"
+      ],
+
+      language: "английский",
+
+      nationality: "ирландец",
+
+      awards: [],
+
+      relatedWriters: [
+        "w_b_yeats"
+      ],
+
+      tags: [
+        "XIX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "w_b_yeats",
+      name: "Уильям Батлер Йейтс",
+      fullName: "William Butler Yeats",
+
+      years: "1865–1939",
+
+      birthDate: "1865-06-13",
+      deathDate: "1939-01-28",
+
+      birthPlace: "Дублин",
+
+      coordinates: {
+        lat: 53.3498,
+        lng: -6.2603
+      },
+
+      portrait: "",
+
+      bio: "Великий ирландский поэт, лауреат Нобелевской премии по литературе 1923 года.",
+
+      works: [
+        "Башня",
+        "Кельтские сумерки"
       ],
 
       genres: [
         "поэзия"
       ],
 
-      language: "исландский",
+      language: "английский",
 
-      nationality: "исландец",
+      nationality: "ирландец",
 
-      awards: [],
+      awards: [
+        "Нобелевская премия по литературе 1923"
+      ],
 
       relatedWriters: [
-        "gunnar_gunnarsson"
-      ],
-
-      tags: [
-        "XIX век"
-      ],
-
-      articleUrl: ""
-    },
-
-    {
-      id: "gunnar_gunnarsson",
-      name: "Гуннар Гуннарссон",
-      fullName: "Gunnar Gunnarsson",
-
-      years: "1889–1975",
-
-      birthDate: "1889-05-18",
-      deathDate: "1975-11-21",
-
-      birthPlace: "Вальтьофсстадюр",
-
-      coordinates: {
-        lat: 65.0,
-        lng: -15.3
-      },
-
-      portrait: "",
-
-      bio: "Один из самых известных исландских романистов XX века.",
-
-      works: [
-        "Гостевой дом"
-      ],
-
-      genres: [
-        "роман"
-      ],
-
-      language: "исландский",
-
-      nationality: "исландец",
-
-      awards: [],
-
-      relatedWriters: [
-        "gudmundur_kamban"
+        "james_joyce"
       ],
 
       tags: [
@@ -192,92 +248,93 @@ export const iceland: Country = {
     },
 
     {
-      id: "gudmundur_kamban",
-      name: "Гвюдмюндюр Камбан",
-      fullName: "Guðmundur Kamban",
+      id: "james_joyce",
+      name: "Джеймс Джойс",
+      fullName: "James Joyce",
 
-      years: "1888–1945",
+      years: "1882–1941",
 
-      birthDate: "1888-06-08",
-      deathDate: "1945-05-05",
+      birthDate: "1882-02-02",
+      deathDate: "1941-01-13",
 
-      birthPlace: "Исландия",
+      birthPlace: "Дублин",
 
       coordinates: {
-        lat: 64.1,
-        lng: -21.9
+        lat: 53.3498,
+        lng: -6.2603
       },
 
       portrait: "",
 
-      bio: "Исландский драматург и писатель XX века.",
+      bio: "Один из крупнейших писателей модернизма XX века.",
 
       works: [
-        "Морская птица"
+        "Улисс",
+        "Дублинцы",
+        "Портрет художника в юности"
+      ],
+
+      genres: [
+        "роман",
+        "модернизм"
+      ],
+
+      language: "английский",
+
+      nationality: "ирландец",
+
+      awards: [],
+
+      relatedWriters: [
+        "samuel_beckett"
+      ],
+
+      tags: [
+        "XX век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "samuel_beckett",
+      name: "Сэмюэл Беккет",
+      fullName: "Samuel Beckett",
+
+      years: "1906–1989",
+
+      birthDate: "1906-04-13",
+      deathDate: "1989-12-22",
+
+      birthPlace: "Фоксрок",
+
+      coordinates: {
+        lat: 53.27,
+        lng: -6.17
+      },
+
+      portrait: "",
+
+      bio: "Ирландский драматург и писатель, лауреат Нобелевской премии по литературе 1969 года.",
+
+      works: [
+        "В ожидании Годо"
       ],
 
       genres: [
         "драма",
-        "роман"
+        "театр абсурда"
       ],
 
-      language: "исландский",
-
-      nationality: "исландец",
-
-      awards: [],
-
-      relatedWriters: [
-        "halldor_laxness"
-      ],
-
-      tags: [
-        "XX век"
-      ],
-
-      articleUrl: ""
-    },
-
-    {
-      id: "halldor_laxness",
-      name: "Халлдор Лакснесс",
-      fullName: "Halldór Laxness",
-
-      years: "1902–1998",
-
-      birthDate: "1902-04-23",
-      deathDate: "1998-02-08",
-
-      birthPlace: "Рейкьявик",
-
-      coordinates: {
-        lat: 64.15,
-        lng: -21.94
-      },
-
-      portrait: "",
-
-      bio: "Величайший исландский писатель XX века, лауреат Нобелевской премии по литературе 1955 года.",
-
-      works: [
-        "Самостоятельные люди",
-        "Атомная станция"
-      ],
-
-      genres: [
-        "роман"
-      ],
-
-      language: "исландский",
-
-      nationality: "исландец",
+      language: "английский",
+      nationality: "ирландец",
 
       awards: [
-        "Нобелевская премия по литературе 1955"
+        "Нобелевская премия по литературе 1969"
       ],
 
       relatedWriters: [
-        "steinn_steinarr"
+        "flann_obrien"
       ],
 
       tags: [
@@ -288,42 +345,43 @@ export const iceland: Country = {
     },
 
     {
-      id: "steinn_steinarr",
-      name: "Стейнн Стейннар",
-      fullName: "Steinn Steinarr",
+      id: "flann_obrien",
+      name: "Фланн О’Брайен",
+      fullName: "Flann O'Brien",
 
-      years: "1908–1958",
+      years: "1911–1966",
 
-      birthDate: "1908-10-13",
-      deathDate: "1958-05-25",
+      birthDate: "1911-10-05",
+      deathDate: "1966-04-01",
 
-      birthPlace: "Олвюсау",
+      birthPlace: "Страбейн",
 
       coordinates: {
-        lat: 63.9,
-        lng: -20.9
+        lat: 54.82,
+        lng: -7.46
       },
 
       portrait: "",
 
-      bio: "Один из крупнейших исландских поэтов XX века.",
+      bio: "Ирландский писатель и сатирик XX века.",
 
       works: [
-        "Время и вода"
+        "Третий полицейский"
       ],
 
       genres: [
-        "поэзия"
+        "роман",
+        "сатира"
       ],
 
-      language: "исландский",
+      language: "английский",
 
-      nationality: "исландец",
+      nationality: "ирландец",
 
       awards: [],
 
       relatedWriters: [
-        "arnaldur_indridason"
+        "edna_obrien"
       ],
 
       tags: [
@@ -334,47 +392,95 @@ export const iceland: Country = {
     },
 
     {
-      id: "arnaldur_indridason",
-      name: "Арнальдур Индридасон",
-      fullName: "Arnaldur Indriðason",
+      id: "edna_obrien",
+      name: "Эдна О’Брайен",
+      fullName: "Edna O'Brien",
 
-      years: "1961–",
+      years: "1930–2024",
 
-      birthDate: "1961-01-28",
-      deathDate: "",
+      birthDate: "1930-12-15",
+      deathDate: "2024-07-27",
 
-      birthPlace: "Рейкьявик",
+      birthPlace: "Туамгрэни",
 
       coordinates: {
-        lat: 64.15,
-        lng: -21.94
+        lat: 52.88,
+        lng: -8.53
       },
 
       portrait: "",
 
-      bio: "Современный исландский писатель, один из самых известных авторов скандинавского детектива.",
+      bio: "Одна из самых известных ирландских писательниц второй половины XX века.",
 
       works: [
-        "Город мёртвых"
+        "Деревенские девушки"
       ],
 
       genres: [
-        "детектив"
+        "роман"
       ],
 
-      language: "исландский",
+      language: "английский",
 
-      nationality: "исландец",
+      nationality: "ирландка",
 
       awards: [],
 
       relatedWriters: [
-        "halldor_laxness"
+        "seamus_heaney"
       ],
 
       tags: [
         "XX век",
         "XXI век"
+      ],
+
+      articleUrl: ""
+    },
+
+    {
+      id: "seamus_heaney",
+      name: "Шеймус Хини",
+      fullName: "Seamus Heaney",
+
+      years: "1939–2013",
+
+      birthDate: "1939-04-13",
+      deathDate: "2013-08-30",
+
+      birthPlace: "Беллагай",
+
+      coordinates: {
+        lat: 54.7,
+        lng: -6.8
+      },
+
+      portrait: "",
+
+      bio: "Ирландский поэт, лауреат Нобелевской премии по литературе 1995 года.",
+
+      works: [
+        "Смерть натуралиста"
+      ],
+
+      genres: [
+        "поэзия"
+      ],
+
+      language: "английский",
+
+      nationality: "ирландец",
+
+      awards: [
+        "Нобелевская премия по литературе 1995"
+      ],
+
+      relatedWriters: [
+        "james_joyce"
+      ],
+
+      tags: [
+        "XX век"
       ],
 
       articleUrl: ""
