@@ -7,21 +7,45 @@ export const egypt: Country = {
 
   writers: [
     {
+      id: "ahmad_shawqi",
+      name: "Ахмад Шауки",
+      fullName: "Ahmed Shawqi",
+      years: "1868–1932",
+      birthDate: "1868",
+      deathDate: "1932",
+      birthPlace: "Каир",
+      portrait: "",
+      bio: "Египетский поэт и драматург, один из величайших представителей арабской поэзии.",
+      works: [
+        "Шаукитские поэмы",
+        "Смерть Клеопатры"
+      ],
+      genres: [
+        "поэзия",
+        "драма"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      tags: [
+        "XIX век",
+        "XX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
       id: "rifaa_al_tahtawi",
       name: "Рифаа ат-Тахтави",
       fullName: "Rifa'a al-Tahtawi",
       years: "1801–1873",
-      birthDate: "1801-10-15",
-      deathDate: "1873-06-27",
-      birthPlace: "Таха",
-      coordinates: {
-        lat: 30.04,
-        lng: 31.24
-      },
+      birthDate: "1801",
+      deathDate: "1873",
+      birthPlace: "Танта",
       portrait: "",
-      bio: "Египетский просветитель, писатель и публицист, один из основателей современной арабской интеллектуальной традиции.",
+      bio: "Египетский писатель, переводчик и просветитель, один из основателей современной арабской культуры.",
       works: [
-        "Извлечение золота из описания Парижа"
+        "Извлечение золота из краткого описания Парижа"
       ],
       genres: [
         "эссе",
@@ -30,9 +54,6 @@ export const egypt: Country = {
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "muhammad_husayn_haykal"
-      ],
       tags: [
         "XIX век"
       ],
@@ -41,31 +62,23 @@ export const egypt: Country = {
 
     {
       id: "muhammad_husayn_haykal",
-      name: "Мухаммад Хусейн Хайкаль",
+      name: "Мухаммед Хусейн Хайкал",
       fullName: "Muhammad Husayn Haykal",
       years: "1888–1956",
-      birthDate: "1888-08-20",
-      deathDate: "1956-12-08",
+      birthDate: "1888",
+      deathDate: "1956",
       birthPlace: "Кафр-Ганнам",
-      coordinates: {
-        lat: 30.97,
-        lng: 31.16
-      },
       portrait: "",
-      bio: "Египетский писатель, журналист и один из основателей современного арабского романа.",
+      bio: "Египетский писатель и журналист, автор одного из первых современных арабских романов.",
       works: [
         "Зейнаб"
       ],
       genres: [
-        "роман",
-        "проза"
+        "роман"
       ],
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "taha_hussein"
-      ],
       tags: [
         "XX век"
       ],
@@ -77,13 +90,9 @@ export const egypt: Country = {
       name: "Таха Хусейн",
       fullName: "Taha Hussein",
       years: "1889–1973",
-      birthDate: "1889-11-14",
-      deathDate: "1973-10-28",
-      birthPlace: "Избет-эль-Кило",
-      coordinates: {
-        lat: 29.98,
-        lng: 31.13
-      },
+      birthDate: "1889",
+      deathDate: "1973",
+      birthPlace: "Изаб",
       portrait: "",
       bio: "Египетский писатель, литературный критик и один из крупнейших арабских интеллектуалов XX века.",
       works: [
@@ -96,9 +105,32 @@ export const egypt: Country = {
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "naguib_mahfouz"
+      tags: [
+        "XX век"
       ],
+      articleUrl: ""
+    },
+
+    {
+      id: "abbas_al_aqqad",
+      name: "Аббас Махмуд аль-Аккад",
+      fullName: "Abbas Mahmoud al-Aqqad",
+      years: "1889–1964",
+      birthDate: "1889",
+      deathDate: "1964",
+      birthPlace: "Асуан",
+      portrait: "",
+      bio: "Египетский писатель, критик и мыслитель.",
+      works: [
+        "Гении"
+      ],
+      genres: [
+        "эссе",
+        "критика"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
       tags: [
         "XX век"
       ],
@@ -110,31 +142,49 @@ export const egypt: Country = {
       name: "Нагиб Махфуз",
       fullName: "Naguib Mahfouz",
       years: "1911–2006",
-      birthDate: "1911-12-11",
-      deathDate: "2006-08-30",
+      birthDate: "1911",
+      deathDate: "2006",
       birthPlace: "Каир",
-      coordinates: {
-        lat: 30.04,
-        lng: 31.24
-      },
       portrait: "",
-      bio: "Крупнейший египетский писатель, первый арабский лауреат Нобелевской премии по литературе.",
+      bio: "Египетский писатель, лауреат Нобелевской премии по литературе 1988 года.",
       works: [
         "Каирская трилогия",
         "Дети нашей улицы"
       ],
       genres: [
         "роман",
-        "реализм"
+        "рассказ"
       ],
       language: "арабский",
       nationality: "египтянин",
       awards: [
         "Нобелевская премия по литературе 1988"
       ],
-      relatedWriters: [
-        "yusuf_idris"
+      tags: [
+        "XX век"
       ],
+      articleUrl: ""
+    },
+
+    {
+      id: "edward_al_kharrat",
+      name: "Эдвард аль-Харрат",
+      fullName: "Edward al-Kharrat",
+      years: "1926–2015",
+      birthDate: "1926",
+      deathDate: "2015",
+      birthPlace: "Александрия",
+      portrait: "",
+      bio: "Египетский писатель и представитель литературного модернизма.",
+      works: [
+        "Рама и дракон"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
       tags: [
         "XX век"
       ],
@@ -146,28 +196,20 @@ export const egypt: Country = {
       name: "Юсуф Идрис",
       fullName: "Yusuf Idris",
       years: "1927–1991",
-      birthDate: "1927-05-19",
-      deathDate: "1991-08-01",
-      birthPlace: "Фагус",
-      coordinates: {
-        lat: 30.9,
-        lng: 31.3
-      },
+      birthDate: "1927",
+      deathDate: "1991",
+      birthPlace: "Факус",
       portrait: "",
-      bio: "Египетский писатель и драматург, мастер короткой прозы.",
+      bio: "Египетский писатель, один из мастеров арабского рассказа.",
       works: [
-        "Самые дешёвые ночи"
+        "Самая дешёвая ночь"
       ],
       genres: [
-        "рассказ",
-        "драма"
+        "рассказ"
       ],
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "sonallah_ibrahim"
-      ],
       tags: [
         "XX век"
       ],
@@ -175,21 +217,45 @@ export const egypt: Country = {
     },
 
     {
+      id: "salah_abdel_sabour",
+      name: "Салах Абдель Сабур",
+      fullName: "Salah Abdel Sabour",
+      years: "1931–1981",
+      birthDate: "1931",
+      deathDate: "1981",
+      birthPlace: "Загазик",
+      portrait: "",
+      bio: "Египетский поэт и драматург, один из крупнейших представителей арабской поэзии XX века.",
+      works: [
+        "Трагедия аль-Халладжа"
+      ],
+      genres: [
+        "поэзия",
+        "драма"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
+    }
+  ]
+};
+    {
       id: "sonallah_ibrahim",
       name: "Суналлах Ибрахим",
       fullName: "Sonallah Ibrahim",
       years: "1937–",
-      birthDate: "1937-03-14",
+      birthDate: "1937",
       deathDate: "",
       birthPlace: "Каир",
-      coordinates: {
-        lat: 30.04,
-        lng: 31.24
-      },
       portrait: "",
-      bio: "Современный египетский писатель, представитель политической и экспериментальной прозы.",
+      bio: "Египетский писатель, один из крупнейших представителей современной арабской прозы.",
       works: [
-        "Комитет"
+        "Комитет",
+        "Звезда августа"
       ],
       genres: [
         "роман",
@@ -198,8 +264,60 @@ export const egypt: Country = {
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "ahmed_khaled_tawfik"
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "ibrahim_aslan",
+      name: "Ибрахим Аслан",
+      fullName: "Ibrahim Aslan",
+      years: "1935–2012",
+      birthDate: "1935",
+      deathDate: "2012",
+      birthPlace: "Танта",
+      portrait: "",
+      bio: "Египетский писатель, известный психологической прозой.",
+      works: [
+        "Маленькая дверь"
+      ],
+      genres: [
+        "роман",
+        "рассказ"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "bahaa_taher",
+      name: "Баха Тахер",
+      fullName: "Bahaa Taher",
+      years: "1935–2022",
+      birthDate: "1935",
+      deathDate: "2022",
+      birthPlace: "Гиза",
+      portrait: "",
+      bio: "Египетский писатель, один из наиболее известных представителей современной арабской литературы.",
+      works: [
+        "Любовь в изгнании",
+        "Дядя Ахмед"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [
+        "Международная премия по арабской литературе"
       ],
       tags: [
         "XX век",
@@ -209,33 +327,75 @@ export const egypt: Country = {
     },
 
     {
-      id: "ahmed_khaled_tawfik",
-      name: "Ахмед Халед Тауфик",
-      fullName: "Ahmed Khaled Towfik",
-      years: "1962–2018",
-      birthDate: "1962-06-10",
-      deathDate: "2018-04-02",
-      birthPlace: "Танта",
-      coordinates: {
-        lat: 30.79,
-        lng: 31.0
-      },
+      id: "gamal_al_ghitani",
+      name: "Гамаль аль-Гитани",
+      fullName: "Gamal al-Ghitani",
+      years: "1945–2015",
+      birthDate: "1945",
+      deathDate: "2015",
+      birthPlace: "Сохаг",
       portrait: "",
-      bio: "Популярный египетский писатель, один из главных авторов арабской фантастики и ужасов.",
+      bio: "Египетский писатель, известный исторической и философской прозой.",
       works: [
-        "Утопия",
-        "Сверхъестественное"
+        "Зайни Баракат"
       ],
       genres: [
-        "фантастика",
-        "ужасы"
+        "исторический роман"
       ],
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "alaa_al_aswany"
+      tags: [
+        "XX век"
       ],
+      articleUrl: ""
+    },
+
+    {
+      id: "radwa_ashour",
+      name: "Радва Ашур",
+      fullName: "Radwa Ashour",
+      years: "1946–2014",
+      birthDate: "1946",
+      deathDate: "2014",
+      birthPlace: "Каир",
+      portrait: "",
+      bio: "Египетская писательница, литературный критик и исследователь.",
+      works: [
+        "Гранада"
+      ],
+      genres: [
+        "роман",
+        "историческая проза"
+      ],
+      language: "арабский",
+      nationality: "египтянка",
+      awards: [],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "ahdaf_soueif",
+      name: "Ахдаф Суэйф",
+      fullName: "Ahdaf Soueif",
+      years: "1950–",
+      birthDate: "1950",
+      deathDate: "",
+      birthPlace: "Каир",
+      portrait: "",
+      bio: "Египетская писательница, создающая произведения на английском языке.",
+      works: [
+        "Карта любви"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "египтянка",
+      awards: [],
       tags: [
         "XX век",
         "XXI век"
@@ -245,20 +405,16 @@ export const egypt: Country = {
 
     {
       id: "alaa_al_aswany",
-      name: "Алаа аль-Асуани",
+      name: "Алаа аль-Асвани",
       fullName: "Alaa Al Aswany",
       years: "1957–",
-      birthDate: "1957-05-26",
+      birthDate: "1957",
       deathDate: "",
       birthPlace: "Каир",
-      coordinates: {
-        lat: 30.04,
-        lng: 31.24
-      },
       portrait: "",
-      bio: "Современный египетский писатель, автор романов о жизни египетского общества.",
+      bio: "Египетский писатель и автор одного из самых известных современных арабских романов.",
       works: [
-        "Дом Якобьяна"
+        "Дом Якобяна"
       ],
       genres: [
         "роман"
@@ -266,9 +422,85 @@ export const egypt: Country = {
       language: "арабский",
       nationality: "египтянин",
       awards: [],
-      relatedWriters: [
-        "naguib_mahfouz"
+      tags: [
+        "XXI век"
       ],
+      articleUrl: ""
+    },
+
+    {
+      id: "ahmed_khaled_towfik",
+      name: "Ахмед Халед Тауфик",
+      fullName: "Ahmed Khaled Towfik",
+      years: "1962–2018",
+      birthDate: "1962",
+      deathDate: "2018",
+      birthPlace: "Танта",
+      portrait: "",
+      bio: "Египетский писатель, один из самых популярных авторов фантастики и хоррора в арабском мире.",
+      works: [
+        "Utopia",
+        "Ma Wara'a Al-Tabia"
+      ],
+      genres: [
+        "фантастика",
+        "ужасы"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "hamdi_abu_golayyel",
+      name: "Хамди Абу Джалиль",
+      fullName: "Hamdi Abu Golayyel",
+      years: "1967–",
+      birthDate: "1967",
+      deathDate: "",
+      birthPlace: "Эль-Файюм",
+      portrait: "",
+      bio: "Современный египетский писатель и автор романов о социальных изменениях.",
+      works: [
+        "Факир"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "арабский",
+      nationality: "египтянин",
+      awards: [],
+      tags: [
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "miral_al_tahawy",
+      name: "Мираль ат-Тахауи",
+      fullName: "Miral al-Tahawy",
+      years: "1968–",
+      birthDate: "1968",
+      deathDate: "",
+      birthPlace: "Эль-Хусейния",
+      portrait: "",
+      bio: "Египетская писательница, представительница современной арабской женской прозы.",
+      works: [
+        "Синяя баккара",
+        "Палатка"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "арабский",
+      nationality: "египтянка",
+      awards: [],
       tags: [
         "XXI век"
       ],
