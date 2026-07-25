@@ -7,50 +7,35 @@ export const kenya: Country = {
 
   writers: [
     {
-      id: "ngugi_wa_thiongo",
-      name: "Нгуги Ва Тхионго",
-      fullName: "Ngũgĩ wa Thiong'o",
-      years: "1938–",
-
-      birthDate: "1938-01-05",
-      deathDate: "",
-
-      birthPlace: "Камирииту",
-
+      id: "marjorie_oludhe_macgoye",
+      name: "Марджори Олудхе Макгой",
+      fullName: "Marjorie Oludhe Macgoye",
+      years: "1928–2015",
+      birthDate: "1928-10-21",
+      deathDate: "2015-11-01",
+      birthPlace: "Саутгемптон",
       coordinates: {
-        lat: -1.25,
-        lng: 36.68
+        lat: -0.09,
+        lng: 34.77
       },
-
       portrait: "",
-
-      bio: "Один из крупнейших африканских писателей XX–XXI веков, автор романов о колониальном опыте Кении и борьбе за культурную независимость.",
-
+      bio: "Кенийская писательница и поэтесса, одна из крупнейших представительниц литературы Кении XX века.",
       works: [
-        "Зерно пшеницы",
-        "Дьявол на кресте"
+        "Coming to Birth"
       ],
-
       genres: [
         "роман",
-        "проза"
+        "поэзия"
       ],
-
       language: "английский",
-
-      nationality: "кениец",
-
+      nationality: "кенийка",
       awards: [],
-
       relatedWriters: [
         "grace_ogot"
       ],
-
       tags: [
-        "XX век",
-        "XXI век"
+        "XX век"
       ],
-
       articleUrl: ""
     },
 
@@ -59,276 +44,294 @@ export const kenya: Country = {
       name: "Грейс Огот",
       fullName: "Grace Ogot",
       years: "1930–2015",
-
       birthDate: "1930-05-15",
       deathDate: "2015-03-18",
-
-      birthPlace: "Асембо",
-
+      birthPlace: "Алго",
       coordinates: {
         lat: -0.1,
-        lng: 34.7
+        lng: 34.75
       },
-
       portrait: "",
-
-      bio: "Первая известная кенийская женщина-писательница, автор рассказов и романов.",
-
+      bio: "Кенийская писательница и одна из первых женщин-авторов современной литературы страны.",
       works: [
-        "Страна без слёз"
+        "Земля без грома"
       ],
-
       genres: [
-        "роман",
-        "рассказ"
+        "рассказ",
+        "роман"
       ],
-
       language: "английский",
-
-      nationality: "кеннийка",
-
+      nationality: "кенийка",
       awards: [],
-
       relatedWriters: [
-        "meja_mwangi"
+        "ngugi_wa_thiongo"
       ],
-
       tags: [
         "XX век"
       ],
+      articleUrl: ""
+    },
 
+    {
+      id: "ngugi_wa_thiongo",
+      name: "Нгуги Ва Тхионго",
+      fullName: "Ngũgĩ wa Thiong'o",
+      years: "1938–2025",
+      birthDate: "1938-01-05",
+      deathDate: "2025-05-28",
+      birthPlace: "Лимуру",
+      coordinates: {
+        lat: -0.72,
+        lng: 36.65
+      },
+      portrait: "",
+      bio: "Крупнейший кенийский писатель, один из самых известных африканских авторов XX–XXI веков.",
+      works: [
+        "Не плачь, дитя",
+        "Зерно пшеницы"
+      ],
+      genres: [
+        "роман",
+        "эссе"
+      ],
+      language: "английский, кикуйю",
+      nationality: "кениец",
+      awards: [],
+      relatedWriters: [
+        "meja_mwangi"
+      ],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "henry_ole_kulet",
+      name: "Генри Оле Куолет",
+      fullName: "Henry Ole Kulet",
+      years: "1946–2022",
+      birthDate: "1946",
+      deathDate: "2022-02-18",
+      birthPlace: "Нарок",
+      coordinates: {
+        lat: -1.08,
+        lng: 35.87
+      },
+      portrait: "",
+      bio: "Кенийский писатель, известный романами о культуре народа масаи.",
+      works: [
+        "Is It Possible?"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "кениец",
+      awards: [],
+      relatedWriters: [
+        "meja_mwangi"
+      ],
+      tags: [
+        "XX век"
+      ],
       articleUrl: ""
     },
 
     {
       id: "meja_mwangi",
-      name: "Мейджа Мванги",
+      name: "Межа Мванги",
       fullName: "Meja Mwangi",
       years: "1948–",
-
-      birthDate: "1948-12-27",
+      birthDate: "1948",
       deathDate: "",
-
       birthPlace: "Ньери",
-
       coordinates: {
         lat: -0.42,
         lng: 36.95
       },
-
       portrait: "",
-
-      bio: "Кенийский писатель, автор социальной прозы о жизни современной Африки.",
-
+      bio: "Один из самых известных кенийских романистов.",
       works: [
-        "Убийцы",
-        "Вкус смерти"
+        "Kill Me Quick",
+        "Going Down River Road"
       ],
-
       genres: [
-        "роман",
-        "социальная проза"
+        "роман"
       ],
-
       language: "английский",
-
       nationality: "кениец",
-
       awards: [],
-
-      relatedWriters: [
-        "margaret_ogola"
-      ],
-
-      tags: [
-        "XX век",
-        "XXI век"
-      ],
-
-      articleUrl: ""
-    },
-
-    {
-      id: "margaret_ogola",
-      name: "Маргарет Огаола",
-      fullName: "Margaret Atieno Ogola",
-      years: "1958–2011",
-
-      birthDate: "1958-06-12",
-      deathDate: "2011-09-22",
-
-      birthPlace: "Найроби",
-
-      coordinates: {
-        lat: -1.2864,
-        lng: 36.8172
-      },
-
-      portrait: "",
-
-      bio: "Кенийская писательница и врач, известная романами о семье, обществе и судьбе женщин.",
-
-      works: [
-        "Река и источник"
-      ],
-
-      genres: [
-        "роман",
-        "социальная проза"
-      ],
-
-      language: "английский",
-
-      nationality: "кеннийка",
-
-      awards: [],
-
       relatedWriters: [
         "binyavanga_wainaina"
       ],
-
       tags: [
         "XX век"
       ],
-
       articleUrl: ""
     },
 
     {
       id: "binyavanga_wainaina",
-      name: "Биньяванга Вайнайна",
+      name: "Биняванга Вайнайна",
       fullName: "Binyavanga Wainaina",
       years: "1971–2019",
-
       birthDate: "1971-01-18",
       deathDate: "2019-05-21",
-
-      birthPlace: "Накуру",
-
+      birthPlace: "Найроби",
       coordinates: {
-        lat: -0.3031,
-        lng: 36.08
+        lat: -1.29,
+        lng: 36.82
       },
-
       portrait: "",
-
-      bio: "Кенийский писатель, эссеист и основатель литературного журнала Kwani?.",
-
+      bio: "Кенийский писатель и эссеист, основатель литературного журнала Kwani?.",
       works: [
-        "Однажды я напишу о месте"
+        "Однажды я напишу об этом месте"
       ],
-
       genres: [
         "эссе",
-        "проза"
+        "мемуары"
       ],
-
       language: "английский",
-
       nationality: "кениец",
-
       awards: [],
-
       relatedWriters: [
         "mukoma_wa_ngugi"
       ],
-
       tags: [
         "XXI век"
       ],
-
       articleUrl: ""
     },
 
     {
       id: "mukoma_wa_ngugi",
-      name: "Мукаома ва Нгуги",
-      fullName: "Mukoma wa Ngugi",
+      name: "Мукома ва Нгуги",
+      fullName: "Mũkoma wa Ngũgĩ",
       years: "1971–",
-
-      birthDate: "1971-01-01",
+      birthDate: "1971",
       deathDate: "",
-
-      birthPlace: "Иллинойс",
-
+      birthPlace: "Кения",
       coordinates: {
-        lat: 40.0,
-        lng: -89.0
+        lat: -1.29,
+        lng: 36.82
       },
-
       portrait: "",
-
-      bio: "Кенийский писатель, поэт и литературный критик, сын Нгуги Ва Тхионго.",
-
+      bio: "Кенийский писатель, поэт и исследователь литературы.",
       works: [
-        "Найроби Хит"
+        "Nairobi Heat"
       ],
-
       genres: [
         "роман",
-        "поэзия"
+        "детектив"
       ],
-
       language: "английский",
-
       nationality: "кениец",
-
       awards: [],
-
       relatedWriters: [
         "yvonne_adhiambo_owuor"
       ],
-
       tags: [
         "XXI век"
       ],
-
       articleUrl: ""
     },
 
     {
       id: "yvonne_adhiambo_owuor",
-      name: "Ивон Адхиамбо Овуор",
+      name: "Ивонн Адиамбо Оувор",
       fullName: "Yvonne Adhiambo Owuor",
       years: "1968–",
-
-      birthDate: "1968-01-01",
+      birthDate: "1968",
       deathDate: "",
-
-      birthPlace: "Найроби",
-
+      birthPlace: "Кения",
       coordinates: {
-        lat: -1.2864,
-        lng: 36.8172
+        lat: -1.29,
+        lng: 36.82
       },
-
       portrait: "",
-
-      bio: "Современная кенийская писательница, автор романов о памяти, истории и наследии колониального периода.",
-
+      bio: "Современная кенийская писательница, автор исторической прозы.",
       works: [
         "Пыль"
       ],
-
       genres: [
-        "роман",
-        "проза"
+        "роман"
       ],
-
       language: "английский",
-
-      nationality: "кеннийка",
-
+      nationality: "кенийка",
       awards: [],
-
       relatedWriters: [
-        "ngugi_wa_thiongo"
+        "billy_kahora"
       ],
-
       tags: [
         "XXI век"
       ],
+      articleUrl: ""
+    },
 
+    {
+      id: "billy_kahora",
+      name: "Билли Кахора",
+      fullName: "Billy Kahora",
+      years: "1975–",
+      birthDate: "1975",
+      deathDate: "",
+      birthPlace: "Найроби",
+      coordinates: {
+        lat: -1.29,
+        lng: 36.82
+      },
+      portrait: "",
+      bio: "Кенийский писатель и редактор, представитель современной литературы Восточной Африки.",
+      works: [
+        "The True Story of David Munyakei"
+      ],
+      genres: [
+        "проза",
+        "эссе"
+      ],
+      language: "английский",
+      nationality: "кениец",
+      awards: [],
+      relatedWriters: [
+        "peter_kimani"
+      ],
+      tags: [
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
+      id: "peter_kimani",
+      name: "Питер Кимани",
+      fullName: "Peter Kimani",
+      years: "1971–",
+      birthDate: "1971",
+      deathDate: "",
+      birthPlace: "Найроби",
+      coordinates: {
+        lat: -1.29,
+        lng: 36.82
+      },
+      portrait: "",
+      bio: "Современный кенийский писатель и журналист.",
+      works: [
+        "Dance of the Jakaranda"
+      ],
+      genres: [
+        "роман"
+      ],
+      language: "английский",
+      nationality: "кениец",
+      awards: [],
+      relatedWriters: [
+        "ngugi_wa_thiongo"
+      ],
+      tags: [
+        "XXI век"
+      ],
       articleUrl: ""
     }
   ]
