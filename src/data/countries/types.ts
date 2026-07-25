@@ -1,22 +1,23 @@
 export type WriterProfile = {
   id: string;
-  fullName: string;
 
-  // Existing date format
-  birth: string;
+  // Supports existing database format
+  name?: string;
+  fullName?: string;
+
+  birth?: string;
   death?: string;
+  years?: string;
 
-  // Additional compatible date fields
   birthDate?: string;
   deathDate?: string;
-
   birthPlace?: string;
   deathPlace?: string;
 
   portrait?: string;
 
-  country: string;
-  movement: string;
+  country?: string;
+  movement?: string;
 
   genres?: string[];
   languages?: string[];
@@ -25,15 +26,26 @@ export type WriterProfile = {
   tags?: string[];
   category?: string;
 
-  biography: string;
+  bio?: string;
+  biography?: string;
   description?: string;
 
-  works: string[];
-  awards: string[];
+  works?: string[];
+  awards?: string[];
 
   nobelYear?: number;
 
-  places: string[];
+  places?: string[];
+
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+
+  relatedWriters?: string[];
+  articleUrl?: string;
+
+  [key: string]: unknown;
 };
 
 export type Country = {
