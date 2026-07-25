@@ -198,9 +198,9 @@ export const france: Country = {
         "Возрождение",
         "Плеяда"
       ],
-      articleUrl: ""
-    }
-        {
+          articleUrl: ""
+  },
+  {
       id: "joachim_du_bellay",
       name: "Жоашен дю Белле",
       years: "1522–1560",
