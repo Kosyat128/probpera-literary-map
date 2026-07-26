@@ -1,5 +1,6 @@
 import type { WriterProfile as Writer } from "../data/countries/types";
 import { formatDate } from "../utils/formatDate";
+import { resolveRelatedWriters } from "../utils/resolveRelatedWriters";
 
 type WriterProfileProps = {
   writer: Writer;
@@ -23,6 +24,7 @@ function calculateAge(birthDate?: string, deathDate?: string) {
 
 export default function WriterProfile({ writer }: WriterProfileProps) {
   const age = calculateAge(writer.birthDate, writer.deathDate);
+  const relatedNames = resolveRelatedWriters(writer.relatedWriters || []);
 
   return (
     <section style={{
@@ -49,11 +51,11 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       {writer.literaryEra && <p>⏳ Литературная эпоха: {writer.literaryEra}</p>}
       {writer.languages && <p>🌐 Языки: {writer.languages.join(", ")}</p>}
 
-      {writer.relatedWriters && writer.relatedWriters.length > 0 && (
+      {relatedNames.length > 0 && (
         <>
           <h2>🤝 Связанные авторы</h2>
           <ul>
-            {writer.relatedWriters.map((item) => <li key={item}>{item}</li>)}
+            {relatedNames.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </>
       )}
