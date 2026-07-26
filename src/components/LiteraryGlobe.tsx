@@ -1,8 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls, Sphere } from "@react-three/drei";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { countries } from "../data/countries";
-import { worldContours } from "../data/worldContours";
+import { worldContours, setWorldContours } from "../data/worldContours";
+import { parseWorldContours } from "../data/loadWorldContours";
 import AntiqueContinentLayer from "./AntiqueContinentLayer";
 
 interface Props { onCountrySelect?: (name:string)=>void; }
@@ -22,7 +23,7 @@ function LiteraryMarkers({onCountrySelect}:Props){
  }),[]);
  return <>{markers.map(p=>{const focus=active===p.name||hovered===p.name;return <group key={p.name} position={p.position}>
  <mesh onClick={()=>{setActive(p.name);onCountrySelect?.(p.name)}} onPointerOver={()=>setHovered(p.name)} onPointerOut={()=>setHovered(null)}><sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/><meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/></mesh>
- {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight:700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
+ {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight=700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
  </group>})}</>;
 }
 
@@ -39,6 +40,13 @@ function AntiqueGlow(){return <Sphere args={[0.745,64,64]}><meshBasicMaterial co
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#35205F" transparent opacity={.12}/></Sphere>}
 
 export default function LiteraryGlobe({onCountrySelect}:Props){
+ useEffect(()=>{
+  fetch('/data/geo/countries.geojson')
+   .then(response=>response.json())
+   .then(data=>setWorldContours(parseWorldContours(data)))
+   .catch(()=>{});
+ },[]);
+
  return <div style={{width:'100%',height:'560px',background:'radial-gradient(circle,#35205F,#1F103D)',borderRadius:18,overflow:'hidden'}}>
  <Canvas camera={{position:[0,0,3.45],fov:35}}>
   <ambientLight intensity={2}/><directionalLight position={[4,3,4]} intensity={2.5}/>
