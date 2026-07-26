@@ -1,18 +1,17 @@
 import { useParams } from "react-router-dom";
-import type { Writer } from "../data/types";
 import WriterProfile from "../components/WriterProfile";
-import { russianWriters } from "../data/writers/russia";
-import { convertWriters } from "../data/writers/convertWriter";
+import { allWriters } from "../data/countries/writerRegistry";
+import type { WriterProfile as Writer } from "../data/countries/types";
 
-const writers: Writer[] = convertWriters(russianWriters);
+const writers: Writer[] = allWriters;
 
-export default function WritersPage(){
+export default function WritersPage() {
   const { id } = useParams();
-  const writer = writers.find(item => item.id === id);
+  const writer = writers.find((item) => item.id === id);
 
-  if(!writer){
+  if (!writer) {
     return <div>Писатель не найден</div>;
   }
 
-  return <WriterProfile writer={writer}/>;
+  return <WriterProfile writer={writer} />;
 }
