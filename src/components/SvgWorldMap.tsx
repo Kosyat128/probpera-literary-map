@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import { literaryCountries } from "../data/literaryMap/countries";
 import mapSvg from "../assets/map/literary-world-map.svg";
+import mapBackground from "../assets/map/literary-map-background.png";
 
 type SvgWorldMapProps = {
   onCountrySelect?: (name: string) => void;
@@ -31,7 +32,18 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", minHeight: "700px", background: "#F7EBDD", borderRadius: "18px", overflow: "hidden" }}>
+    <div style={{ position: "relative", width: "100%", minHeight: "700px", borderRadius: "18px", overflow: "hidden" }}>
+      <img
+        src={mapBackground}
+        alt="Literary world map background"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
+        }}
+      />
       <div
         onClick={handleSvgClick}
         onMouseMove={(e) => {
@@ -40,10 +52,10 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
         }}
         onMouseLeave={() => setHovered(null)}
         dangerouslySetInnerHTML={{ __html: svgContent }}
-        style={{ width: "100%", height: "100%", transform: selectedCountry ? "scale(1.03)" : "scale(1)", transition: ".4s" }}
+        style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", transform: selectedCountry ? "scale(1.03)" : "scale(1)", transition: ".4s" }}
       />
       {hovered && literaryCountries[hovered as keyof typeof literaryCountries] && (
-        <div style={{ position: "absolute", top: 20, left: 20, background: "#FFF8EE", padding: "12px 18px", borderRadius: "12px", color: "#35205F" }}>
+        <div style={{ position: "absolute", zIndex: 2, top: 20, left: 20, background: "#FFF8EE", padding: "12px 18px", borderRadius: "12px", color: "#35205F" }}>
           <b>{literaryCountries[hovered as keyof typeof literaryCountries].name}</b>
         </div>
       )}
