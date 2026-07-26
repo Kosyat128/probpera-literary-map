@@ -9,6 +9,7 @@ type GlobalWriterSearchProps = {
 
 export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearchProps) {
   const [search, setSearch] = useState("");
+  const [country, setCountry] = useState("");
   const [genre, setGenre] = useState("");
   const [language, setLanguage] = useState("");
   const [period, setPeriod] = useState("");
@@ -16,14 +17,15 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
 
   const writers = useMemo(() => getAllWriters(countries), []);
 
+  const countryList = countries.map((item) => item.name);
   const genres = [...new Set(writers.flatMap((writer) => writer.genres || []))];
   const languages = [...new Set(writers.flatMap((writer) => writer.language ? [writer.language] : writer.languages || []))];
   const periods = [...new Set(writers.flatMap((writer) => writer.tags || []))];
   const awards = [...new Set(writers.flatMap((writer) => writer.awards || []))];
 
   const results = useMemo(
-    () => filterWriters(writers, { search, genre, language, period, award }),
-    [writers, search, genre, language, period, award]
+    () => filterWriters(writers, { search, country, genre, language, period, award }),
+    [writers, search, country, genre, language, period, award]
   );
 
   return (
@@ -34,6 +36,11 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
         placeholder="🔎 Найти писателя мира"
         style={{ width: "100%", padding: "10px" }}
       />
+
+      <select value={country} onChange={(event) => setCountry(event.target.value)}>
+        <option value="">Все страны</option>
+        {countryList.map((item) => <option key={item}>{item}</option>)}
+      </select>
 
       <select value={genre} onChange={(event) => setGenre(event.target.value)}>
         <option value="">Все жанры</option>
@@ -61,9 +68,11 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
             <button
               key={writer.id}
               onClick={() => onWriterSelect?.(writer)}
-              style={{ display: "block", width: "100%", padding: "6px", textAlign: "left" }}
+              style={{ display: "block", width: "100%", padding: "8px", textAlign: "left" }}
             >
-              {writer.name}
+              <b>{writer.name}</b>
+              <br />
+              <small>{writer.country || ""} {writer.years || ""}</small>
             </button>
           ))}
         </div>
