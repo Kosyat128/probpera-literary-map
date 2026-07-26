@@ -30,8 +30,9 @@ function AntiqueGlobe(){return <Sphere args={[0.72,128,128]}><meshStandardMateri
 function ParchmentSurface(){return <Sphere args={[0.724,128,128]}><meshStandardMaterial color="#D2B47C" transparent opacity={.22} roughness={1}/></Sphere>}
 function OldAtlasInk(){return <Sphere args={[0.728,96,96]}><meshStandardMaterial color="#3D2412" wireframe transparent opacity={.1}/></Sphere>}
 function AntiqueContinents(){return <Sphere args={[0.731,128,128]}><meshStandardMaterial color="#5A3B20" transparent opacity={.11} roughness={1}/></Sphere>}
-function SeaRoutes(){return <Sphere args={[0.733,96,96]}><meshStandardMaterial color="#D66A1F" wireframe transparent opacity={.025}/></Sphere>}
-function CompassLayer(){return <Sphere args={[0.735,64,64]}><meshBasicMaterial color="#3D2412" wireframe transparent opacity={.03}/></Sphere>}
+function ContinentInk(){return <Sphere args={[0.733,128,128]}><meshBasicMaterial color="#24150C" transparent opacity={.04}/></Sphere>}
+function SeaRoutes(){return <Sphere args={[0.735,96,96]}><meshStandardMaterial color="#D66A1F" wireframe transparent opacity={.025}/></Sphere>}
+function CompassLayer(){return <Sphere args={[0.737,64,64]}><meshBasicMaterial color="#3D2412" wireframe transparent opacity={.025}/></Sphere>}
 function AntiqueGlow(){return <Sphere args={[0.74,64,64]}><meshBasicMaterial color="#D66A1F" transparent opacity={.025}/></Sphere>}
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#35205F" transparent opacity={.12}/></Sphere>}
 
@@ -40,7 +41,7 @@ export default function LiteraryGlobe({onCountrySelect}:Props){
  <Canvas camera={{position:[0,0,3.45],fov:35}}>
   <ambientLight intensity={2}/>
   <directionalLight position={[4,3,4]} intensity={2.5}/>
-  <AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
+  <AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
   <LiteraryMarkers onCountrySelect={onCountrySelect}/>
   <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
  </Canvas>
