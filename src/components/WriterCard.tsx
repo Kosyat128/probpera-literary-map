@@ -12,7 +12,9 @@ export default function WriterCard({ writer, onClose }: Props) {
         position: "absolute",
         right: "30px",
         top: "30px",
-        width: "320px",
+        width: "360px",
+        maxHeight: "680px",
+        overflowY: "auto",
         background: "#FFF8EE",
         color: "#35205F",
         padding: "24px",
@@ -22,17 +24,60 @@ export default function WriterCard({ writer, onClose }: Props) {
         fontFamily: "Georgia, serif",
       }}
     >
-      <div style={{fontSize:"12px",opacity:.65,marginBottom:"6px"}}>Литературная карта мира</div>
-      <h2 style={{ marginTop: 0, color: "#1F103D" }}>{writer.name || writer.fullName}</h2>
+      <div style={{ fontSize: "12px", opacity: .65, marginBottom: "6px" }}>
+        Литературная карта мира
+      </div>
+
+      {writer.portrait && (
+        <img
+          src={writer.portrait}
+          alt={writer.name || writer.fullName}
+          style={{ width: "100%", borderRadius: "12px", marginBottom: "15px" }}
+        />
+      )}
+
+      <h2 style={{ marginTop: 0, color: "#1F103D" }}>
+        {writer.name || writer.fullName}
+      </h2>
+
       <p><b>Страна:</b> {writer.country || ""}</p>
-      <p><b>Место рождения:</b> {writer.birthPlace || ""}</p>
+      <p><b>Национальность:</b> {writer.nationality || ""}</p>
       <p><b>Годы жизни:</b> {writer.years || ""}</p>
+      <p><b>Место рождения:</b> {writer.birthPlace || ""}</p>
+
+      {writer.movement && <p><b>Направление:</b> {writer.movement}</p>}
+
+      {writer.genres && writer.genres.length > 0 && (
+        <p><b>Жанры:</b> {writer.genres.join(", ")}</p>
+      )}
+
+      {writer.language && <p><b>Язык:</b> {writer.language}</p>}
+
+      {writer.bio && (
+        <>
+          <h3>О писателе</h3>
+          <p>{writer.bio}</p>
+        </>
+      )}
+
       <h3>Главные произведения</h3>
       <ul>
         {(writer.works || []).map((work) => (
           <li key={work}>{work}</li>
         ))}
       </ul>
+
+      {writer.awards && writer.awards.length > 0 && (
+        <>
+          <h3>Награды</h3>
+          <ul>
+            {writer.awards.map((award) => (
+              <li key={award}>{award}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
       <button
         onClick={onClose}
         style={{
