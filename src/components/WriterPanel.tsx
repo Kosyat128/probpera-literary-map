@@ -33,21 +33,17 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   const eras = [...new Set(writers.flatMap(writer => writer.tags || []))];
 
   const filteredWriters = useMemo(() => {
-    return writers
-      .filter(writer => {
-        const name = (writer.fullName || writer.name || "").toLowerCase();
-        if (query && !name.includes(query.toLowerCase())) return false;
-        if (genre && !writer.genres?.includes(genre)) return false;
-        if (language && writer.language !== language && !writer.languages?.includes(language)) return false;
-        if (era && !writer.tags?.includes(era)) return false;
-        return true;
-      })
-      .sort((a, b) => {
-        if (sort === "years") {
-          return (a.birthDate || "9999").localeCompare(b.birthDate || "9999");
-        }
-        return (a.fullName || a.name || "").localeCompare(b.fullName || b.name || "");
-      });
+    return writers.filter(writer => {
+      const name = (writer.fullName || writer.name || "").toLowerCase();
+      if (query && !name.includes(query.toLowerCase())) return false;
+      if (genre && !writer.genres?.includes(genre)) return false;
+      if (language && writer.language !== language && !writer.languages?.includes(language)) return false;
+      if (era && !writer.tags?.includes(era)) return false;
+      return true;
+    }).sort((a, b) => {
+      if (sort === "years") return (a.birthDate || "9999").localeCompare(b.birthDate || "9999");
+      return (a.fullName || a.name || "").localeCompare(b.fullName || b.name || "");
+    });
   }, [writers, query, genre, language, era, sort]);
 
   const chooseWriter = (writer: Writer) => {
@@ -60,7 +56,7 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
     <h2 style={{color:"#35205F"}}>{country.name}</h2>
     <div style={{color:"#E97824",fontWeight:"bold"}}>Литературных авторов: {writers.length}</div>
 
-    <CountryStats country={country}/>
+    <CountryStats country={country} onWriterSelect={chooseWriter}/>
 
     <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="🔎 Найти писателя" style={{width:"100%",padding:"10px",margin:"15px 0"}}/>
 
