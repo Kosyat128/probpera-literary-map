@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls, Sphere } from "@react-three/drei";
 import { useMemo, useState } from "react";
 import { countries } from "../data/countries";
+import AntiqueContinentLayer from "./AntiqueContinentLayer";
 
 interface Props { onCountrySelect?: (name:string)=>void; }
 
@@ -41,6 +42,7 @@ export default function LiteraryGlobe({onCountrySelect}:Props){
  <Canvas camera={{position:[0,0,3.45],fov:35}}>
   <ambientLight intensity={2}/><directionalLight position={[4,3,4]} intensity={2.5}/>
   <AntiqueFrame/><AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><HistoricalMapLines/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
+  <AntiqueContinentLayer/>
   <LiteraryMarkers onCountrySelect={onCountrySelect}/>
   <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
  </Canvas>
