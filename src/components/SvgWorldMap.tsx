@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 import { literaryCountries } from "../data/literaryMap/countries";
 import mapSvg from "../assets/map/literary-world-map.svg";
 
@@ -28,11 +29,11 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
       );
   }, []);
 
-  const getCountryId = (event: React.MouseEvent<HTMLDivElement>) => {
+  const getCountryId = (event: MouseEvent<HTMLDivElement>) => {
     return (event.target as SVGElement).getAttribute("id");
   };
 
-  const handleSvgClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleSvgClick = (event: MouseEvent<HTMLDivElement>) => {
     const id = getCountryId(event);
     if (!id) return;
 
