@@ -504,8 +504,10 @@ export const southAfrica: Country = {
       language: "английский",
       nationality: "южноафриканка",
       awards: [],
-      tags: [
+           tags: [
         "XXI век"
       ],
       articleUrl: ""
     }
+  ]
+};
