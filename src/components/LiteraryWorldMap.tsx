@@ -33,7 +33,10 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
       <div style={{ flex: 1, position: "relative" }}>
         <GlobalWriterSearch onWriterSelect={selectWriter} />
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
-        <WriterClusters onCountrySelect={selectCountry} />
+        <WriterClusters
+          onCountrySelect={selectCountry}
+          selectedCountry={selectedCountry?.id}
+        />
       </div>
 
       {selectedCountry && (
