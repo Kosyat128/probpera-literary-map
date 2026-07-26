@@ -1,7 +1,7 @@
-import type { Writer } from "./types";
+import type { WriterProfile } from "./types";
 import { countries } from "./index";
 
-export const allWriters: Writer[] = countries.flatMap(
+export const allWriters: WriterProfile[] = countries.flatMap(
   (country) => country.writers || []
 );
 
