@@ -22,15 +22,17 @@ function LiteraryMarkers({onCountrySelect}:Props){
  }),[]);
  return <>{markers.map(p=>{const focus=active===p.name||hovered===p.name;return <group key={p.name} position={p.position}>
   <mesh onClick={()=>{setActive(p.name);onCountrySelect?.(p.name)}} onPointerOver={()=>setHovered(p.name)} onPointerOut={()=>setHovered(null)}>
-   <sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/><meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/>
+   <sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/>
+   <meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/>
   </mesh>
   {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight:700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
  </group>})}</>;
 }
 
-function AntiqueGlobe(){return <Sphere args={[0.72,128,128]}><meshStandardMaterial color="#8B6B3F" roughness={1}/></Sphere>}
-function ParchmentSurface(){return <Sphere args={[0.724,128,128]}><meshStandardMaterial color="#C9A66B" transparent opacity={.25} roughness={1}/></Sphere>}
-function OldMapLines(){return <Sphere args={[0.728,96,96]}><meshStandardMaterial color="#4B2E17" wireframe transparent opacity={.12}/></Sphere>}
+function AntiqueGlobe(){return <Sphere args={[0.72,128,128]}><meshStandardMaterial color="#7A5A32" roughness={1}/></Sphere>}
+function ParchmentSurface(){return <Sphere args={[0.724,128,128]}><meshStandardMaterial color="#D2B47C" transparent opacity={.22} roughness={1}/></Sphere>}
+function OldAtlasInk(){return <Sphere args={[0.728,96,96]}><meshStandardMaterial color="#3D2412" wireframe transparent opacity={.1}/></Sphere>}
+function AntiqueGlow(){return <Sphere args={[0.74,64,64]}><meshBasicMaterial color="#D66A1F" transparent opacity={.025}/></Sphere>}
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#35205F" transparent opacity={.12}/></Sphere>}
 
 export default function LiteraryGlobe({onCountrySelect}:Props){
@@ -38,7 +40,7 @@ export default function LiteraryGlobe({onCountrySelect}:Props){
   <Canvas camera={{position:[0,0,3.45],fov:35}}>
    <ambientLight intensity={2}/>
    <directionalLight position={[4,3,4]} intensity={2.5}/>
-   <AntiqueGlobe/><ParchmentSurface/><OldMapLines/><Atmosphere/>
+   <AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><OldAtlasInk/><Atmosphere/>
    <LiteraryMarkers onCountrySelect={onCountrySelect}/>
    <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
   </Canvas>
