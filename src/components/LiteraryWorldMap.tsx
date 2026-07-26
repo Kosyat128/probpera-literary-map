@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import SvgWorldMap from "./SvgWorldMap";
 import WriterPanel from "./WriterPanel";
 import GlobalWriterSearch from "./GlobalWriterSearch";
+import WriterClusters from "./WriterClusters";
 import { countries } from "../data/countries";
 import type { Country } from "../data/countries/types";
 import WriterCard from "./WriterCard";
@@ -40,6 +41,8 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
         <GlobalWriterSearch onWriterSelect={selectWriter} />
 
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
+
+        <WriterClusters />
 
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
           {allWriters.map((writer) => {
