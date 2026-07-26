@@ -35,10 +35,11 @@ function AntiqueGlow(){return <Sphere args={[1.06,64,64]}><meshStandardMaterial 
 function OuterAtmosphere(){return <Sphere args={[1.14,64,64]}><meshStandardMaterial color="#35205F" transparent opacity={.08}/></Sphere>}
 function DepthRing(){return <Sphere args={[1.16,32,32]}><meshStandardMaterial color="#E97824" wireframe transparent opacity={.03}/></Sphere>}
 function NavigationHalo(){return <Sphere args={[1.19,48,48]}><meshStandardMaterial color="#E97824" transparent wireframe opacity={.025}/></Sphere>}
+function FocusGlow(){return <Sphere args={[1.21,48,48]}><meshStandardMaterial color="#F6B04A" transparent opacity={.018}/></Sphere>}
 
 export default function LiteraryGlobe({onCountrySelect}:Props){return <div style={{width:"100%",height:"760px",background:"#1F103D",borderRadius:18,overflow:"hidden"}}>
 <Canvas camera={{position:[0,0,3.2],fov:42}}>
 <ambientLight intensity={1.4}/><directionalLight position={[3,3,3]} intensity={2.5}/><pointLight position={[-3,2,3]} intensity={1.7}/>
-<GlobeBase/><GlobeGrid/><AntiqueGlow/><OuterAtmosphere/><DepthRing/><NavigationHalo/><LiteraryMarkers onCountrySelect={onCountrySelect}/>
-<OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={.25} minDistance={2.2} maxDistance={5}/>
+<GlobeBase/><GlobeGrid/><AntiqueGlow/><OuterAtmosphere/><DepthRing/><NavigationHalo/><FocusGlow/><LiteraryMarkers onCountrySelect={onCountrySelect}/>
+<OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={.2} minDistance={2.2} maxDistance={5}/>
 </Canvas></div>}
