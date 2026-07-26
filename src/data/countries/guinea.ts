@@ -16,24 +16,14 @@ export const guineaBissau: Country = {
       birthPlace: "Бисау, Гвинея-Бисау",
       portrait: "",
       bio: "Первый романист Гвинеи-Бисау, один из главных представителей современной литературы страны.",
-      works: [
-        "Eterna Paixão",
-        "A Última Tragédia"
-      ],
-      genres: [
-        "роман",
-        "проза"
-      ],
+      works: ["Eterna Paixão", "A Última Tragédia"],
+      genres: ["роман", "проза"],
       language: "португальский",
       nationality: "гвинеец-бисаусец",
       awards: [],
-      tags: [
-        "XX век",
-        "XXI век"
-      ],
+      tags: ["XX век", "XXI век"],
       articleUrl: ""
     },
-
     {
       id: "odete_semedo",
       name: "Одети Семеду",
@@ -44,23 +34,14 @@ export const guineaBissau: Country = {
       birthPlace: "Бисау, Гвинея-Бисау",
       portrait: "",
       bio: "Гвинейско-бисауская поэтесса, писательница и исследовательница культуры.",
-      works: [
-        "No Fundo do Canto"
-      ],
-      genres: [
-        "поэзия",
-        "проза"
-      ],
+      works: ["No Fundo do Canto"],
+      genres: ["поэзия", "проза"],
       language: "португальский",
       nationality: "гвинейка-бисауска",
       awards: [],
-      tags: [
-        "XX век",
-        "XXI век"
-      ],
+      tags: ["XX век", "XXI век"],
       articleUrl: ""
     },
-
     {
       id: "antonio_aurelio_gomes",
       name: "Антониу Аурелиу Гомеш",
@@ -72,17 +53,15 @@ export const guineaBissau: Country = {
       portrait: "",
       bio: "Современный писатель и поэт Гвинеи-Бисау.",
       works: [],
-      genres: [
-        "поэзия",
-        "проза"
-      ],
+      genres: ["поэзия", "проза"],
       language: "португальский",
       nationality: "гвинеец-бисаусец",
       awards: [],
-      tags: [
-        "XXI век"
-      ],
+      tags: ["XXI век"],
       articleUrl: ""
     }
   ]
 };
+
+// Backward compatibility with countries/index.ts
+export const guinea = guineaBissau;
