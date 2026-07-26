@@ -43,7 +43,9 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
         return true;
       })
       .sort((a, b) => {
-        if (sort === "years") return (a.years || "").localeCompare(b.years || "");
+        if (sort === "years") {
+          return (a.birthDate || "9999").localeCompare(b.birthDate || "9999");
+        }
         return (a.fullName || a.name || "").localeCompare(b.fullName || b.name || "");
       });
   }, [writers, query, genre, language, era, sort]);
@@ -79,7 +81,7 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
 
     <select value={sort} onChange={e=>setSort(e.target.value)} style={{width:"100%",padding:"8px",marginTop:"10px"}}>
       <option value="name">По алфавиту</option>
-      <option value="years">По годам</option>
+      <option value="years">По дате рождения</option>
     </select>
 
     {selected && !openProfile && <div><h3>{selected.fullName || selected.name}</h3><button onClick={()=>setOpenProfile(true)}>Открыть полный профиль</button></div>}
