@@ -7,14 +7,12 @@ import type { Country } from "../data/countries/types";
 import WriterCard from "./WriterCard";
 import { getAllWriters } from "../filters/writerFilters";
 
-
 type LiteraryWorldMapProps = {
   onCountrySelect?: (name: string) => void;
 };
 
 export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapProps) {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
-
   const allWriters = useMemo(() => getAllWriters(countries), []);
   const [selectedWriter, setSelectedWriter] = useState(allWriters[0] ?? null);
 
@@ -52,6 +50,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
                 key={writer.id}
                 onClick={() => selectWriter(writer)}
                 aria-label={writer.name}
+                title={`${writer.name} ${writer.years || ""}`}
                 style={{
                   position: "absolute",
                   left: `${writer.coordinates?.lng ?? 0}%`,
