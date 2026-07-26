@@ -26,21 +26,15 @@ export default function LiteraryWorldMap({onCountrySelect}:Props){
   if(writer.country) selectCountry(writer.country);
  };
 
- return <div style={{display:'grid',gridTemplateColumns:'260px minmax(700px,1fr) 340px',gap:16,width:'100%',minHeight:700,alignItems:'start'}}>
-  <aside style={{background:'#1F103D',borderRadius:18,padding:16,color:'white',height:650,overflow:'auto'}}>
-   <h2>🌍 Страны мира</h2>
-   <input placeholder="Поиск страны..." style={{width:'100%',padding:12,borderRadius:8,border:0}}/>
-   {countries.map(c=><div key={c.id} onClick={()=>selectCountry(c.name)} style={{padding:'9px 6px',display:'flex',justifyContent:'space-between',cursor:'pointer'}}><span>🌐 {c.name}</span><span style={{color:'#E97824'}}>{c.writers.length}</span></div>)}
-  </aside>
+ return <div style={{display:'grid',gridTemplateColumns:'minmax(700px,1fr) 340px',gap:16,width:'100%',minHeight:700,alignItems:'start'}}>
+   <main style={{minWidth:0}}>
+    <div style={{background:'#FFF8EE',borderRadius:16,padding:10,marginBottom:12}}>
+     <GlobalWriterFilters filters={filters} onChange={setFilters}/>
+    </div>
+    <LiteraryGlobe onCountrySelect={selectCountry}/>
+    {selectedWriter&&<WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>} 
+   </main>
 
-  <main style={{minWidth:0}}>
-   <div style={{background:'#FFF8EE',borderRadius:16,padding:10,marginBottom:12}}>
-    <GlobalWriterFilters filters={filters} onChange={setFilters}/>
-   </div>
-   <LiteraryGlobe onCountrySelect={selectCountry}/>
-   {selectedWriter&&<WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>} 
-  </main>
-
-  {selectedCountry&&<WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
- </div>;
+   {selectedCountry&&<WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
+  </div>;
 }
