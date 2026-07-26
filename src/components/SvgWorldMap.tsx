@@ -16,11 +16,17 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
   useEffect(() => {
     fetch(mapSvg)
       .then((response) => response.text())
-      .then((svg) => setSvgContent(svg));
+      .then((svg) => {
+        const fixedSvg = svg
+          .replace(/fill="#ececec"/g, 'fill="transparent"')
+          .replace(/fill="black"/g, 'fill="transparent"');
+        setSvgContent(fixedSvg);
+      });
   }, []);
 
   const getCountryId = (event: ReactMouseEvent<HTMLDivElement>) => {
-    return (event.target as SVGElement).getAttribute("id");
+    const target = event.target as SVGElement;
+    return target.getAttribute("id") || target.getAttribute("name");
   };
 
   const handleSvgClick = (event: ReactMouseEvent<HTMLDivElement>) => {
@@ -44,6 +50,7 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
           objectFit: "cover"
         }}
       />
+
       <div
         onClick={handleSvgClick}
         onMouseMove={(e) => {
@@ -51,12 +58,27 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
           setHovered(id && literaryCountries[id as keyof typeof literaryCountries] ? id : null);
         }}
         onMouseLeave={() => setHovered(null)}
-        dangerouslySetInnerHTML={{ __html: svgContent }}
-        style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", transform: selectedCountry ? "scale(1.03)" : "scale(1)", transition: ".4s" }}
+        dangerouslySetInnerHTML={{
+          __html: svgContent.replace(
+            /<path/g,
+            '<path style="fill:transparent;cursor:pointer;transition:0.3s"'
+          )
+        }}
+        style={{
+          position: "relative",
+          zIndex: 1,
+          width: "100%",
+          height: "100%",
+          transform: selectedCountry ? "scale(1.03)" : "scale(1)",
+          transition: ".4s"
+        }}
       />
+
       {hovered && literaryCountries[hovered as keyof typeof literaryCountries] && (
         <div style={{ position: "absolute", zIndex: 2, top: 20, left: 20, background: "#FFF8EE", padding: "12px 18px", borderRadius: "12px", color: "#35205F" }}>
           <b>{literaryCountries[hovered as keyof typeof literaryCountries].name}</b>
+          <br />
+          Писателей: {literaryCountries[hovered as keyof typeof literaryCountries].writers?.length || 0}
         </div>
       )}
     </div>
