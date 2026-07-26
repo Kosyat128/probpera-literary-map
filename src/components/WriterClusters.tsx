@@ -34,12 +34,13 @@ export default function WriterClusters({ onCountrySelect, selectedCountry }: Pro
       {clusters.map((cluster) => {
         if (selectedCountry && selectedCountry !== cluster.id) return null;
 
-        const size = Math.min(56, 24 + cluster.count * 2);
+        const size = Math.min(64, Math.max(30, 26 + Math.log(cluster.count + 1) * 10));
 
         return (
           <button
             key={cluster.id}
             title={`${cluster.name}: ${cluster.count} писателей`}
+            aria-label={`${cluster.name}: ${cluster.count} писателей`}
             onClick={() => onCountrySelect?.(cluster.name)}
             style={{
               position: "absolute",
