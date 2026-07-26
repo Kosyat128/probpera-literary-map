@@ -1,7 +1,6 @@
 export type WriterProfile = {
   id: string;
 
-  // Supports existing database format
   name?: string;
   fullName?: string;
 
@@ -52,5 +51,9 @@ export type Country = {
   id: string;
   name: string;
   code?: string;
+  flag?: string;
+  coordinates?: [number, number] | { lat: number; lng: number };
   writers: WriterProfile[];
+
+  [key: string]: unknown;
 };
