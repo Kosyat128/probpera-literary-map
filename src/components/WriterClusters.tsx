@@ -1,25 +1,26 @@
 import { useMemo } from "react";
 import { countries } from "../data/countries";
-import { getAllWriters } from "../filters/writerFilters";
+import type { WriterProfile } from "../data/countries/types";
 
 type Props = {
   onCountrySelect?: (name: string) => void;
   selectedCountry?: string;
+  writers?: WriterProfile[];
 };
 
-export default function WriterClusters({ onCountrySelect, selectedCountry }: Props) {
+export default function WriterClusters({ onCountrySelect, selectedCountry, writers }: Props) {
   const clusters = useMemo(() => {
-    const writers = getAllWriters(countries);
+    const sourceWriters = writers || countries.flatMap((country) => country.writers || []);
 
     return countries
       .map((country) => ({
         id: country.id,
         name: country.name,
         coordinates: country.coordinates,
-        count: writers.filter((writer) => writer.country === country.name).length,
+        count: sourceWriters.filter((writer) => writer.country === country.name).length,
       }))
       .filter((country) => country.count > 0);
-  }, []);
+  }, [writers]);
 
   const getPosition = (coordinates: typeof clusters[number]["coordinates"]) => {
     if (!coordinates) return { left: "50%", top: "50%" };
