@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere } from "@react-three/drei";
+import { Html, OrbitControls, Sphere } from "@react-three/drei";
 import { useMemo } from "react";
 
 interface Props {
@@ -12,22 +12,46 @@ const markers = [
   { name: "Япония", x: 0.75, y: 0.1, z: 0.7, count: 43, color: "#E97824" },
 ];
 
-function LiteraryMarkers() {
+function LiteraryMarkers({ onCountrySelect }: Props) {
   const points = useMemo(() => markers, []);
 
   return (
     <>
       {points.map((point) => (
-        <mesh key={point.name} position={[point.x, point.y, point.z]}>
-          <sphereGeometry args={[0.035, 24, 24]} />
-          <meshStandardMaterial color={point.color} emissive={point.color} />
-        </mesh>
+        <group key={point.name} position={[point.x, point.y, point.z]}>
+          <mesh
+            onClick={() => onCountrySelect?.(point.name)}
+          >
+            <sphereGeometry args={[0.07, 32, 32]} />
+            <meshStandardMaterial
+              color={point.color}
+              emissive={point.color}
+              emissiveIntensity={0.7}
+            />
+          </mesh>
+          <Html distanceFactor={7} center>
+            <div
+              style={{
+                background: "#FFF8EE",
+                color: "#35205F",
+                border: `2px solid ${point.color}`,
+                borderRadius: "20px",
+                padding: "4px 8px",
+                fontSize: "12px",
+                fontWeight: 700,
+                whiteSpace: "nowrap"
+              }}
+            >
+              {point.name} · {point.count}
+            </div>
+          </Html>
+        </group>
       ))}
     </>
   );
 }
 
-export default function LiteraryGlobe({}: Props) {
+export default function LiteraryGlobe({ onCountrySelect }: Props) {
   return (
     <div
       style={{
@@ -49,7 +73,7 @@ export default function LiteraryGlobe({}: Props) {
           />
         </Sphere>
 
-        <LiteraryMarkers />
+        <LiteraryMarkers onCountrySelect={onCountrySelect} />
 
         <OrbitControls
           enableZoom
