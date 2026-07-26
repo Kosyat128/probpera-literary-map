@@ -7,6 +7,7 @@ import type { Country } from "../data/countries/types";
 import WriterCard from "./WriterCard";
 import { getAllWriters } from "../filters/writerFilters";
 
+
 type LiteraryWorldMapProps = {
   onCountrySelect?: (name: string) => void;
 };
@@ -23,10 +24,22 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
     onCountrySelect?.(name);
   };
 
+  const selectWriter = (writer: typeof selectedWriter) => {
+    setSelectedWriter(writer);
+
+    if (writer?.country) {
+      const country = countries.find((item) => item.name === writer.country);
+      if (country) {
+        setSelectedCountry(country);
+        onCountrySelect?.(country.name);
+      }
+    }
+  };
+
   return (
     <div style={{ display: "flex", gap: "20px", position: "relative" }}>
       <div style={{ flex: 1, position: "relative" }}>
-        <GlobalWriterSearch onWriterSelect={setSelectedWriter} />
+        <GlobalWriterSearch onWriterSelect={selectWriter} />
 
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
 
@@ -34,7 +47,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
           {allWriters.map((writer) => (
             <button
               key={writer.id}
-              onClick={() => setSelectedWriter(writer)}
+              onClick={() => selectWriter(writer)}
               aria-label={writer.name}
               style={{
                 position: "absolute",
