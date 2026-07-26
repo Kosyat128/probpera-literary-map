@@ -62,15 +62,21 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
         {awards.map((item) => <option key={item}>{item}</option>)}
       </select>
 
-      {search && (
+      {(search || country || genre || language || period || award) && (
+        <div style={{ marginTop: "12px", color: "#35205F", fontWeight: "bold" }}>
+          Найдено авторов: {results.length}
+        </div>
+      )}
+
+      {(search || country || genre || language || period || award) && (
         <div style={{ marginTop: "10px" }}>
           {results.slice(0, 20).map((writer) => (
             <button
               key={writer.id}
               onClick={() => onWriterSelect?.(writer)}
-              style={{ display: "block", width: "100%", padding: "8px", textAlign: "left" }}
+              style={{ display: "block", width: "100%", padding: "8px", textAlign: "left", marginBottom: "6px" }}
             >
-              <b>{writer.name}</b>
+              <b>{writer.fullName || writer.name}</b>
               <br />
               <small>{writer.country || ""} {writer.years || ""}</small>
             </button>
