@@ -19,7 +19,7 @@ type PointerOrigin = {
   y: number;
 };
 
-function geoToCameraPosition(lat: number, lng: number, radius = 3.05) {
+function geoToCameraPosition(lat: number, lng: number, radius = 3.45) {
   const phi = ((90 - lat) * Math.PI) / 180;
   const theta = ((lng + 180) * Math.PI) / 180;
 
@@ -134,7 +134,7 @@ function MuseumAtmosphere() {
             vec3 viewDirection = normalize(cameraPosition - vWorldPosition);
             float fresnel = 1.0 - max(0.0, dot(normalize(vWorldNormal), viewDirection));
             float glow = pow(fresnel, 2.7);
-            gl_FragColor = vec4(0.91, 0.60, 0.24, glow * 0.42);
+            gl_FragColor = vec4(0.91, 0.55, 0.20, glow * 0.21);
           }
         `,
       }),
@@ -144,10 +144,61 @@ function MuseumAtmosphere() {
   useEffect(() => () => material.dispose(), [material]);
 
   return (
-    <mesh scale={1.16}>
+    <mesh scale={1.09}>
       <sphereGeometry args={[1, 96, 96]} />
       <primitive object={material} attach="material" />
     </mesh>
+  );
+}
+
+function MuseumMount() {
+  return (
+    <group>
+      <mesh raycast={() => null}>
+        <torusGeometry args={[1.09, 0.014, 18, 256]} />
+        <meshPhysicalMaterial
+          color="#c58a43"
+          emissive="#3b1506"
+          emissiveIntensity={0.28}
+          roughness={0.32}
+          metalness={0.78}
+          clearcoat={0.46}
+          clearcoatRoughness={0.3}
+        />
+      </mesh>
+
+      <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
+        <torusGeometry args={[1.02, 0.008, 14, 256]} />
+        <meshPhysicalMaterial
+          color="#d59a50"
+          emissive="#472007"
+          emissiveIntensity={0.22}
+          roughness={0.34}
+          metalness={0.74}
+          clearcoat={0.45}
+        />
+      </mesh>
+
+      <mesh position={[0, 1.13, 0]} raycast={() => null}>
+        <sphereGeometry args={[0.07, 24, 24]} />
+        <meshPhysicalMaterial color="#c37a2c" metalness={0.85} roughness={0.24} />
+      </mesh>
+
+      <mesh position={[0, -1.18, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.11, 0.17, 0.3, 32]} />
+        <meshPhysicalMaterial color="#8f4b1d" metalness={0.82} roughness={0.28} />
+      </mesh>
+
+      <mesh position={[0, -1.35, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.34, 0.39, 0.08, 48]} />
+        <meshPhysicalMaterial
+          color="#b56a26"
+          metalness={0.86}
+          roughness={0.24}
+          clearcoat={0.5}
+        />
+      </mesh>
+    </group>
   );
 }
 
@@ -233,7 +284,7 @@ function GlobeSurface({
           transparent
           depthWrite={false}
           toneMapped={false}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
         />
       </Sphere>
 
@@ -342,11 +393,11 @@ function GlobeScene({
 
   return (
     <>
-      <ambientLight intensity={0.72} color="#f3d6a0" />
-      <hemisphereLight args={["#ffe1ad", "#160d08", 1.25]} />
-      <directionalLight position={[4.5, 3.4, 4]} intensity={2.7} color="#ffd9a0" />
-      <pointLight position={[-3.5, -0.7, 2]} intensity={18} distance={7} color="#b66832" />
-      <pointLight position={[0, 3.5, -3]} intensity={10} distance={7} color="#7c5a39" />
+      <ambientLight intensity={0.66} color="#f7d29a" />
+      <hemisphereLight args={["#ffe2ab", "#170620", 1.12]} />
+      <directionalLight position={[4.5, 3.4, 4]} intensity={2.35} color="#ffd6a0" />
+      <pointLight position={[-3.5, -0.7, 2]} intensity={13} distance={7} color="#c45b24" />
+      <pointLight position={[0, 3.5, -3]} intensity={8} distance={7} color="#6f2b8d" />
 
       <GlobeSurface
         atlas={atlas}
@@ -354,6 +405,7 @@ function GlobeScene({
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
       />
+      <MuseumMount />
       <MicrostateMarkers
         atlas={atlas}
         countries={countries}
@@ -378,7 +430,9 @@ function GlobeScene({
         enablePan={false}
         enableZoom
         minDistance={2.25}
-        maxDistance={4.6}
+        maxDistance={5}
+        minPolarAngle={0.5}
+        maxPolarAngle={2.62}
         rotateSpeed={0.48}
         zoomSpeed={0.75}
         autoRotate
@@ -440,7 +494,7 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
   return (
     <div className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}>
       <Canvas
-        camera={{ position: [0, 0.12, 3.35], fov: 34, near: 0.1, far: 100 }}
+        camera={{ position: [0, 0.08, 3.55], fov: 43, near: 0.1, far: 100 }}
         dpr={[1, 1.75]}
         gl={{
           antialias: true,

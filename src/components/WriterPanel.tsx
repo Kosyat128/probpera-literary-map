@@ -11,7 +11,7 @@ type WriterPanelProps = {
 };
 
 function getWriterName(writer: Writer) {
-  return writer.name || writer.fullName || "Неизвестный автор";
+  return writer.fullName || writer.name || "Неизвестный автор";
 }
 
 function getInitials(writer: Writer) {
@@ -21,6 +21,12 @@ function getInitials(writer: Writer) {
     .map((part) => part[0])
     .join("")
     .toUpperCase();
+}
+
+function resolvePortrait(source?: string) {
+  if (!source) return "";
+  if (/^(https?:|data:)/.test(source)) return source;
+  return `${import.meta.env.BASE_URL}${source.replace(/^\/+/, "")}`;
 }
 
 function flagFromCode(code?: string) {
@@ -216,7 +222,7 @@ export default function WriterPanel({
                   <span>{getInitials(writer)}</span>
                   {writer.portrait && (
                     <img
-                      src={writer.portrait}
+                      src={resolvePortrait(writer.portrait)}
                       alt=""
                       loading="lazy"
                       onError={(event) => {
@@ -251,6 +257,9 @@ export default function WriterPanel({
               activeWriter.tags?.[0] ||
               "Литературная традиция"}
           </span>
+          {activeWriter.editorial?.status === "verified" && (
+            <span className="editorial-badge">Проверено редакцией</span>
+          )}
           <h4>{getWriterName(activeWriter)}</h4>
           <p className="writer-years">{activeWriter.years}</p>
           <p className="writer-bio">
@@ -268,6 +277,17 @@ export default function WriterPanel({
                   <li key={work}>{work}</li>
                 ))}
               </ol>
+            </div>
+          )}
+
+          {activeWriter.editorial?.sources && activeWriter.editorial.sources.length > 0 && (
+            <div className="source-block">
+              <span>Источники</span>
+              {activeWriter.editorial.sources.map((source) => (
+                <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
+                  {source.publisher || source.title}
+                </a>
+              ))}
             </div>
           )}
         </section>

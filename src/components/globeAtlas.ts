@@ -38,8 +38,8 @@ export type GlobeAtlas = {
   dispose: () => void;
 };
 
-const MAP_WIDTH = 2048;
-const MAP_HEIGHT = 1024;
+const MAP_WIDTH = 3072;
+const MAP_HEIGHT = 1536;
 const HIT_WIDTH = 1024;
 const HIT_HEIGHT = 512;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
@@ -129,32 +129,37 @@ function drawFeature(
 
 function drawParchmentBackground(context: CanvasRenderingContext2D) {
   const gradient = context.createLinearGradient(0, 0, MAP_WIDTH, MAP_HEIGHT);
-  gradient.addColorStop(0, "#5a452f");
-  gradient.addColorStop(0.35, "#6f5739");
-  gradient.addColorStop(0.7, "#59422d");
-  gradient.addColorStop(1, "#33251c");
+  gradient.addColorStop(0, "#9f682d");
+  gradient.addColorStop(0.22, "#c08a43");
+  gradient.addColorStop(0.55, "#a86f30");
+  gradient.addColorStop(0.8, "#855224");
+  gradient.addColorStop(1, "#58361d");
   context.fillStyle = gradient;
   context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
   let seed = 86173;
-  for (let index = 0; index < 18000; index += 1) {
+  for (let index = 0; index < 30000; index += 1) {
     seed = (seed * 1664525 + 1013904223) >>> 0;
     const x = seed % MAP_WIDTH;
     seed = (seed * 1664525 + 1013904223) >>> 0;
     const y = seed % MAP_HEIGHT;
-    const radius = 0.3 + (seed % 17) / 13;
-    const opacity = 0.012 + (seed % 11) / 900;
+    const radius = 0.25 + (seed % 19) / 11;
+    const opacity = 0.014 + (seed % 13) / 780;
 
     context.beginPath();
     context.arc(x, y, radius, 0, Math.PI * 2);
-    context.fillStyle = `rgba(244, 214, 153, ${opacity})`;
+    context.fillStyle =
+      index % 3 === 0
+        ? `rgba(68, 37, 17, ${opacity})`
+        : `rgba(255, 225, 158, ${opacity})`;
     context.fill();
   }
 
   [
-    [0.18, 0.34, 0.17],
-    [0.62, 0.7, 0.22],
-    [0.84, 0.22, 0.13],
+    [0.18, 0.34, 0.15],
+    [0.62, 0.7, 0.18],
+    [0.84, 0.22, 0.12],
+    [0.43, 0.12, 0.09],
   ].forEach(([x, y, strength]) => {
     const stain = context.createRadialGradient(
       MAP_WIDTH * x,
@@ -162,20 +167,39 @@ function drawParchmentBackground(context: CanvasRenderingContext2D) {
       0,
       MAP_WIDTH * x,
       MAP_HEIGHT * y,
-      MAP_WIDTH * 0.18
+      MAP_WIDTH * 0.16
     );
-    stain.addColorStop(0, `rgba(45, 25, 13, ${strength})`);
+    stain.addColorStop(0, `rgba(52, 25, 10, ${strength})`);
     stain.addColorStop(1, "rgba(45, 25, 13, 0)");
     context.fillStyle = stain;
     context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
   });
+
+  context.save();
+  context.globalAlpha = 0.12;
+  context.strokeStyle = "#f7d592";
+  context.lineWidth = 0.7;
+  for (let y = 4; y < MAP_HEIGHT; y += 7) {
+    context.beginPath();
+    context.moveTo(0, y);
+    context.bezierCurveTo(
+      MAP_WIDTH * 0.28,
+      y + ((y * 17) % 9) - 4,
+      MAP_WIDTH * 0.72,
+      y - ((y * 11) % 7) + 3,
+      MAP_WIDTH,
+      y
+    );
+    context.stroke();
+  }
+  context.restore();
 }
 
 function drawGraticule(context: CanvasRenderingContext2D) {
   context.save();
-  context.strokeStyle = "rgba(235, 203, 139, 0.12)";
-  context.lineWidth = 1;
-  context.setLineDash([4, 7]);
+  context.strokeStyle = "rgba(61, 34, 15, 0.22)";
+  context.lineWidth = 1.15;
+  context.setLineDash([3, 8]);
 
   for (let lng = -150; lng <= 150; lng += 30) {
     const x = ((lng + 180) / 360) * MAP_WIDTH;
@@ -205,8 +229,8 @@ function drawSeaRoutes(context: CanvasRenderingContext2D) {
   ];
 
   context.save();
-  context.strokeStyle = "rgba(224, 181, 100, 0.17)";
-  context.lineWidth = 1.4;
+  context.strokeStyle = "rgba(57, 29, 12, 0.32)";
+  context.lineWidth = 1.6;
   context.setLineDash([3, 8]);
 
   routes.forEach(([x1, y1, cx, cy, x2, y2]) => {
@@ -220,8 +244,94 @@ function drawSeaRoutes(context: CanvasRenderingContext2D) {
 }
 
 function featureColor(index: number, mapColor = 0) {
-  const tone = (index * 17 + mapColor * 11) % 26;
-  return `hsl(${34 + (tone % 9)}, ${27 + (tone % 8)}%, ${43 + (tone % 7)}%)`;
+  const palette = [
+    "#b77b3b",
+    "#9b7142",
+    "#af6d43",
+    "#87764a",
+    "#be8745",
+    "#977147",
+    "#b06e35",
+    "#8b6744",
+    "#c08b4c",
+    "#9a5f3e",
+  ];
+  return palette[(index * 7 + mapColor * 3) % palette.length];
+}
+
+function mapPoint(lng: number, lat: number) {
+  return {
+    x: ((lng + 180) / 360) * MAP_WIDTH,
+    y: ((90 - lat) / 180) * MAP_HEIGHT,
+  };
+}
+
+function drawCompassRose(context: CanvasRenderingContext2D, lng: number, lat: number, radius: number) {
+  const point = mapPoint(lng, lat);
+  context.save();
+  context.translate(point.x, point.y);
+  context.strokeStyle = "rgba(56, 27, 11, 0.56)";
+  context.fillStyle = "rgba(81, 40, 16, 0.42)";
+  context.lineWidth = 2;
+
+  for (let index = 0; index < 16; index += 1) {
+    const angle = (Math.PI * 2 * index) / 16;
+    const longRay = index % 4 === 0;
+    const outer = longRay ? radius : radius * 0.66;
+    context.beginPath();
+    context.moveTo(Math.cos(angle) * radius * 0.14, Math.sin(angle) * radius * 0.14);
+    context.lineTo(Math.cos(angle - 0.055) * outer, Math.sin(angle - 0.055) * outer);
+    context.lineTo(Math.cos(angle + 0.055) * outer, Math.sin(angle + 0.055) * outer);
+    context.closePath();
+    if (longRay) context.fill();
+    else context.stroke();
+  }
+
+  context.beginPath();
+  context.arc(0, 0, radius * 0.82, 0, Math.PI * 2);
+  context.stroke();
+  context.font = `600 ${radius * 0.32}px Georgia`;
+  context.textAlign = "center";
+  context.fillText("N", 0, -radius * 1.04);
+  context.restore();
+}
+
+function drawAntiqueLabels(context: CanvasRenderingContext2D) {
+  const labels = [
+    { text: "EUROPA", lng: 18, lat: 53, size: 40, angle: -0.08 },
+    { text: "AFRICA", lng: 19, lat: 8, size: 46, angle: 0.04 },
+    { text: "ASIA", lng: 87, lat: 46, size: 54, angle: -0.03 },
+    { text: "AMERICA SEPTENTRIONALIS", lng: -108, lat: 48, size: 31, angle: -0.1 },
+    { text: "AMERICA MERIDIONALIS", lng: -63, lat: -21, size: 28, angle: 0.12 },
+    { text: "TARTARIA", lng: 72, lat: 59, size: 24, angle: -0.06 },
+    { text: "INDIA", lng: 79, lat: 23, size: 22, angle: 0.05 },
+    { text: "OCEANVS ATLANTICVS", lng: -30, lat: 18, size: 24, angle: -0.18 },
+    { text: "MARE PACIFICVM", lng: 155, lat: -12, size: 25, angle: 0.16 },
+    { text: "OCEANIA", lng: 137, lat: -27, size: 26, angle: -0.08 },
+  ];
+
+  context.save();
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+
+  labels.forEach(({ text, lng, lat, size, angle }) => {
+    const point = mapPoint(lng, lat);
+    context.save();
+    context.translate(point.x, point.y);
+    context.rotate(angle);
+    context.font = `600 ${size}px Georgia, serif`;
+    context.letterSpacing = `${Math.max(2, size * 0.1)}px`;
+    context.strokeStyle = "rgba(229, 178, 98, 0.18)";
+    context.lineWidth = 3;
+    context.strokeText(text, 0, 0);
+    context.fillStyle = "rgba(55, 28, 13, 0.7)";
+    context.fillText(text, 0, 0);
+    context.restore();
+  });
+
+  context.restore();
+  drawCompassRose(context, -42, -30, 62);
+  drawCompassRose(context, 151, 21, 48);
 }
 
 function makeMapCanvas(features: GeoFeature[]) {
@@ -242,10 +352,12 @@ function makeMapCanvas(features: GeoFeature[]) {
       MAP_WIDTH,
       MAP_HEIGHT,
       featureColor(index, feature.properties.MAPCOLOR13),
-      "rgba(48, 28, 16, 0.72)",
-      1.15
+      "rgba(46, 24, 11, 0.78)",
+      1.5
     );
   });
+
+  drawAntiqueLabels(context);
 
   const glaze = context.createRadialGradient(
     MAP_WIDTH * 0.46,
@@ -255,9 +367,9 @@ function makeMapCanvas(features: GeoFeature[]) {
     MAP_HEIGHT * 0.5,
     MAP_WIDTH * 0.62
   );
-  glaze.addColorStop(0, "rgba(255, 229, 176, 0.17)");
-  glaze.addColorStop(0.58, "rgba(80, 48, 25, 0)");
-  glaze.addColorStop(1, "rgba(25, 15, 10, 0.34)");
+  glaze.addColorStop(0, "rgba(255, 224, 154, 0.28)");
+  glaze.addColorStop(0.5, "rgba(105, 55, 20, 0)");
+  glaze.addColorStop(1, "rgba(37, 16, 8, 0.38)");
   context.fillStyle = glaze;
   context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
@@ -450,11 +562,11 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     highlightContext.clearRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
     if (selectedCountryId) {
-      drawHighlight(selectedCountryId, "rgba(227, 164, 67, 0.34)", "#ffd78c", 2.8, 18);
+      drawHighlight(selectedCountryId, "rgba(255, 127, 22, 0.26)", "#ff9b2f", 3.2, 10);
     }
 
     if (hoveredCountryId && hoveredCountryId !== selectedCountryId) {
-      drawHighlight(hoveredCountryId, "rgba(255, 220, 142, 0.2)", "#f6c96d", 2, 12);
+      drawHighlight(hoveredCountryId, "rgba(255, 171, 62, 0.16)", "#ffb24c", 2.2, 7);
     }
 
     highlightTexture.needsUpdate = true;

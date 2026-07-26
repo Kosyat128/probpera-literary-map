@@ -48,6 +48,15 @@ export type WriterProfile = {
   relatedWriters?: string[];
   articleUrl?: string;
   articles?: string[];
+  editorial?: {
+    status: "draft" | "reviewed" | "verified";
+    reviewedAt?: string;
+    sources?: Array<{
+      title: string;
+      url: string;
+      publisher?: string;
+    }>;
+  };
 
   [key: string]: unknown;
 };
