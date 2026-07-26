@@ -25,28 +25,43 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   };
 
   return (
-    <aside style={{width:"340px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto"}}>
-      <h2 style={{color:"#35205F"}}>{country.name}</h2>
-      <div style={{color:"#E97824",fontWeight:"bold"}}>Литературных авторов: {writers.length}</div>
+    <aside style={{width:"340px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto",color:"#35205F"}}>
+      <h2>🌍 {country.name}</h2>
+
+      <div style={{background:"#F7EBDD",padding:"10px",borderRadius:"10px"}}>
+        <p>✒️ Авторов: {writers.length}</p>
+        <p>📚 Литературная база: {writers.length ? "загружена" : "нет данных"}</p>
+        <p>🕰 Эпохи: классическая и современная литература</p>
+      </div>
 
       <CountryStats country={country} onWriterSelect={chooseWriter}/>
 
-      {selected && !openProfile && (
-        <div>
-          <h3>{selected.name || selected.fullName}</h3>
-          <button onClick={()=>setOpenProfile(true)}>Открыть полный профиль</button>
-        </div>
-      )}
-
-      {selected && openProfile && <WriterProfile writer={selected}/>} 
-
-      <h3>Главные авторы ({sortedWriters.length})</h3>
-      {sortedWriters.map(writer => (
-        <div key={writer.id} onClick={()=>chooseWriter(writer)} style={{padding:"10px",cursor:"pointer",background:selected?.id===writer.id?"#E6D5C0":"#F7EBDD",marginBottom:"8px",borderRadius:"10px"}}>
+      <h3>⭐ Главные авторы</h3>
+      {sortedWriters.slice(0,10).map(writer => (
+        <div key={writer.id || writer.name}
+          onClick={()=>chooseWriter(writer)}
+          style={{padding:"10px",cursor:"pointer",background:selected?.id===writer.id?"#E6D5C0":"#F7EBDD",marginBottom:"8px",borderRadius:"10px"}}>
           <b>{writer.name || writer.fullName}</b><br/>
           <small>{writer.years}</small>
         </div>
       ))}
+
+      {selected && (
+        <>
+          <hr/>
+          <button onClick={()=>setOpenProfile(!openProfile)}>
+            {openProfile ? "Скрыть профиль" : "Открыть профиль"}
+          </button>
+          {openProfile && <WriterProfile writer={selected}/>} 
+        </>
+      )}
+
+      <hr/>
+      <h3>Разделы страны</h3>
+      <p>🏛 Литературные места</p>
+      <p>🏆 Премии и награды</p>
+      <p>💬 Цитаты авторов</p>
+      <p>📅 Календарь событий</p>
     </aside>
   );
 }
