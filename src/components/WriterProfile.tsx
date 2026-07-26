@@ -32,11 +32,8 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       color: "#35205F"
     }}>
       {writer.portrait && (
-        <img
-          src={writer.portrait}
-          alt={writer.fullName || writer.name}
-          style={{ width: "220px", height: "280px", objectFit: "cover", borderRadius: "14px" }}
-        />
+        <img src={writer.portrait} alt={writer.fullName || writer.name}
+          style={{ width: "220px", height: "280px", objectFit: "cover", borderRadius: "14px" }} />
       )}
 
       <h1>{writer.fullName || writer.name}</h1>
@@ -49,7 +46,27 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       {writer.birthPlace && <p>📍 Родился: {writer.birthPlace}</p>}
       {writer.deathPlace && <p>⚰ Место смерти: {writer.deathPlace}</p>}
       {writer.movement && <p>📚 Направление: {writer.movement}</p>}
+      {writer.literaryEra && <p>⏳ Литературная эпоха: {writer.literaryEra}</p>}
       {writer.languages && <p>🌐 Языки: {writer.languages.join(", ")}</p>}
+
+      {writer.relatedWriters && writer.relatedWriters.length > 0 && (
+        <>
+          <h2>🤝 Связанные авторы</h2>
+          <ul>
+            {writer.relatedWriters.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </>
+      )}
+
+      {writer.articles && writer.articles.length > 0 && (
+        <>
+          <h2>📰 Статьи на сайте ПРОБА ПЕРА</h2>
+          <ul>
+            {writer.articles.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </>
+      )}
+
       {writer.nobelYear && <p>🏆 Нобелевская премия по литературе: {writer.nobelYear}</p>}
 
       <h2>Биография</h2>
@@ -57,9 +74,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
 
       <h2>Главные произведения</h2>
       <ul>
-        {(writer.works || []).map((work) => (
-          <li key={work}>{work}</li>
-        ))}
+        {(writer.works || []).map((work) => <li key={work}>{work}</li>)}
       </ul>
     </section>
   );
