@@ -13,30 +13,40 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState("");
   const [language, setLanguage] = useState("");
+  const [era, setEra] = useState("");
+  const [sort, setSort] = useState("name");
   const [selected, setSelected] = useState<Writer | null>(writers[0] || null);
   const [openProfile, setOpenProfile] = useState(false);
 
   useEffect(() => {
-    const firstWriter = country.writers?.[0] || null;
-    setSelected(firstWriter);
+    setSelected(country.writers?.[0] || null);
     setOpenProfile(false);
     setQuery("");
     setGenre("");
     setLanguage("");
+    setEra("");
+    setSort("name");
   }, [country]);
 
   const genres = [...new Set(writers.flatMap(writer => writer.genres || []))];
   const languages = [...new Set(writers.flatMap(writer => writer.language ? [writer.language] : writer.languages || []))];
+  const eras = [...new Set(writers.flatMap(writer => writer.tags || []))];
 
-  const filteredWriters = useMemo(() => writers.filter(writer => {
-    const name = (writer.fullName || writer.name || "").toLowerCase();
-
-    if (query && !name.includes(query.toLowerCase())) return false;
-    if (genre && !writer.genres?.includes(genre)) return false;
-    if (language && writer.language !== language && !writer.languages?.includes(language)) return false;
-
-    return true;
-  }), [writers, query, genre, language]);
+  const filteredWriters = useMemo(() => {
+    return writers
+      .filter(writer => {
+        const name = (writer.fullName || writer.name || "").toLowerCase();
+        if (query && !name.includes(query.toLowerCase())) return false;
+        if (genre && !writer.genres?.includes(genre)) return false;
+        if (language && writer.language !== language && !writer.languages?.includes(language)) return false;
+        if (era && !writer.tags?.includes(era)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        if (sort === "years") return (a.years || "").localeCompare(b.years || "");
+        return (a.fullName || a.name || "").localeCompare(b.fullName || b.name || "");
+      });
+  }, [writers, query, genre, language, era, sort]);
 
   const chooseWriter = (writer: Writer) => {
     setSelected(writer);
@@ -45,30 +55,34 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   };
 
   return <aside style={{width:"380px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto"}}>
-    <h2 style={{color:"#35205F",marginBottom:"5px"}}>{country.name}</h2>
-    <div style={{color:"#E97824",fontWeight:"bold",marginBottom:"12px"}}>
-      Литературных авторов: {writers.length}
-    </div>
+    <h2 style={{color:"#35205F"}}>{country.name}</h2>
+    <div style={{color:"#E97824",fontWeight:"bold"}}>Литературных авторов: {writers.length}</div>
 
     <CountryStats country={country}/>
 
     <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="🔎 Найти писателя" style={{width:"100%",padding:"10px",margin:"15px 0"}}/>
 
-    <select value={genre} onChange={e=>setGenre(e.target.value)} style={{width:"100%",padding:"8px",marginBottom:"10px"}}>
+    <select value={genre} onChange={e=>setGenre(e.target.value)} style={{width:"100%",padding:"8px"}}>
       <option value="">Все жанры</option>
-      {genres.map(item=><option key={item} value={item}>{item}</option>)}
+      {genres.map(item=><option key={item}>{item}</option>)}
     </select>
 
-    <select value={language} onChange={e=>setLanguage(e.target.value)} style={{width:"100%",padding:"8px",marginBottom:"10px"}}>
+    <select value={language} onChange={e=>setLanguage(e.target.value)} style={{width:"100%",padding:"8px",marginTop:"10px"}}>
       <option value="">Все языки</option>
-      {languages.map(item=><option key={item} value={item}>{item}</option>)}
+      {languages.map(item=><option key={item}>{item}</option>)}
     </select>
 
-    {selected && !openProfile && <div>
-      <h3>{selected.fullName || selected.name}</h3>
-      <button onClick={()=>setOpenProfile(true)}>Открыть полный профиль</button>
-    </div>}
+    <select value={era} onChange={e=>setEra(e.target.value)} style={{width:"100%",padding:"8px",marginTop:"10px"}}>
+      <option value="">Все эпохи</option>
+      {eras.map(item=><option key={item}>{item}</option>)}
+    </select>
 
+    <select value={sort} onChange={e=>setSort(e.target.value)} style={{width:"100%",padding:"8px",marginTop:"10px"}}>
+      <option value="name">По алфавиту</option>
+      <option value="years">По годам</option>
+    </select>
+
+    {selected && !openProfile && <div><h3>{selected.fullName || selected.name}</h3><button onClick={()=>setOpenProfile(true)}>Открыть полный профиль</button></div>}
     {selected && openProfile && <WriterProfile writer={selected}/>} 
 
     <h3>Авторы ({filteredWriters.length})</h3>
