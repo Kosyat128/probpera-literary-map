@@ -28,6 +28,8 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
     [writers, search, country, genre, language, period, award]
   );
 
+  const hasFilters = Boolean(search || country || genre || language || period || award);
+
   return (
     <div style={{ padding: "15px", background: "#FFF8EE", borderRadius: "16px" }}>
       <input
@@ -62,23 +64,34 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
         {awards.map((item) => <option key={item}>{item}</option>)}
       </select>
 
-      {(search || country || genre || language || period || award) && (
+      {hasFilters && (
         <div style={{ marginTop: "12px", color: "#35205F", fontWeight: "bold" }}>
           Найдено авторов: {results.length}
         </div>
       )}
 
-      {(search || country || genre || language || period || award) && (
+      {hasFilters && (
         <div style={{ marginTop: "10px" }}>
           {results.slice(0, 20).map((writer) => (
             <button
               key={writer.id}
               onClick={() => onWriterSelect?.(writer)}
-              style={{ display: "block", width: "100%", padding: "8px", textAlign: "left", marginBottom: "6px" }}
+              style={{
+                display: "block",
+                width: "100%",
+                padding: "10px",
+                textAlign: "left",
+                marginBottom: "8px",
+                borderRadius: "10px"
+              }}
             >
-              <b>{writer.fullName || writer.name}</b>
+              <b>✒️ {writer.fullName || writer.name}</b>
               <br />
-              <small>{writer.country || ""} {writer.years || ""}</small>
+              <small>🌍 {writer.country || ""}</small>
+              <br />
+              <small>📅 {writer.years || ""}</small>
+              <br />
+              {writer.genres?.length ? <small>📚 {writer.genres.join(", ")}</small> : null}
             </button>
           ))}
         </div>
