@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Country, Writer } from "../data/countries";
 import CountryStats from "./CountryStats";
 import WriterProfile from "./WriterProfile";
@@ -15,6 +15,15 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   const [language, setLanguage] = useState("");
   const [selected, setSelected] = useState<Writer | null>(writers[0] || null);
   const [openProfile, setOpenProfile] = useState(false);
+
+  useEffect(() => {
+    const firstWriter = country.writers?.[0] || null;
+    setSelected(firstWriter);
+    setOpenProfile(false);
+    setQuery("");
+    setGenre("");
+    setLanguage("");
+  }, [country]);
 
   const genres = [...new Set(writers.flatMap(writer => writer.genres || []))];
   const languages = [...new Set(writers.flatMap(writer => writer.language ? [writer.language] : writer.languages || []))];
