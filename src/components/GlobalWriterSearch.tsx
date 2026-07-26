@@ -1,8 +1,13 @@
 import { useMemo, useState } from "react";
 import { countries } from "../data/countries";
 import { filterWriters, getAllWriters } from "../filters/writerFilters";
+import type { Writer } from "../data/countries/types";
 
-export default function GlobalWriterSearch() {
+type GlobalWriterSearchProps = {
+  onWriterSelect?: (writer: Writer) => void;
+};
+
+export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearchProps) {
   const [search, setSearch] = useState("");
 
   const writers = useMemo(() => getAllWriters(countries), []);
@@ -24,9 +29,13 @@ export default function GlobalWriterSearch() {
       {search && (
         <div style={{ marginTop: "10px" }}>
           {results.slice(0, 20).map((writer) => (
-            <div key={writer.id} style={{ padding: "6px" }}>
+            <button
+              key={writer.id}
+              onClick={() => onWriterSelect?.(writer)}
+              style={{ display: "block", width: "100%", padding: "6px", textAlign: "left" }}
+            >
               {writer.name}
-            </div>
+            </button>
           ))}
         </div>
       )}
