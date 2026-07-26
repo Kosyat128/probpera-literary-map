@@ -36,8 +36,19 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
         <WriterClusters onCountrySelect={selectCountry} />
       </div>
 
-      {selectedCountry && <WriterPanel country={selectedCountry} />}
-      {selectedWriter && <WriterCard writer={selectedWriter} onClose={() => setSelectedWriter(null)} />}
+      {selectedCountry && (
+        <WriterPanel
+          country={selectedCountry}
+          onWriterSelect={selectWriter}
+        />
+      )}
+
+      {selectedWriter && (
+        <WriterCard
+          writer={selectedWriter}
+          onClose={() => setSelectedWriter(null)}
+        />
+      )}
     </div>
   );
 }
