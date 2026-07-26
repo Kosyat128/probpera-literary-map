@@ -5,16 +5,19 @@ export const literaryCountries = Object.fromEntries(
     country.id,
     {
       name: country.name,
-      flag: country.flag || "🌍",
+      flag: (country as any).flag || "🌍",
       writers: country.writers?.length || 0,
-      articles: country.articles || 0,
-      places: country.places || 0,
-      nobel: country.writers?.filter((writer) => writer.nobel).length || 0,
-      influence: country.influence || 0,
+      articles: (country as any).articles || 0,
+      places: (country as any).places || 0,
+      nobel:
+        country.writers?.filter(
+          (writer) => writer.nobelYear
+        ).length || 0,
+      influence: (country as any).influence || 0,
       writersList: country.writers || [],
       authors: (country.writers || [])
         .slice(0, 5)
-        .map((writer) => writer.fullName || writer.name),
+        .map((writer) => writer.fullName || writer.name || ""),
     },
   ])
 );
