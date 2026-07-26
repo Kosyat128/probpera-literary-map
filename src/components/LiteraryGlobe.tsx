@@ -78,6 +78,7 @@ function LiteraryMarkers({
                 emissiveIntensity={focus ? 4 : 1}
               />
             </mesh>
+
             {focus && (
               <Html center>
                 <div
@@ -89,6 +90,7 @@ function LiteraryMarkers({
                     padding: "10px 14px",
                     fontWeight: 700,
                     boxShadow: "0 12px 30px rgba(31,16,61,0.18)",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   🌍 {marker.name}
@@ -123,7 +125,7 @@ function ParchmentSurface() {
 function OldAtlasInk() {
   return (
     <Sphere args={[0.728, 96, 96]}>
-      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.055} />
+      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.05} />
     </Sphere>
   );
 }
@@ -139,7 +141,7 @@ function AntiqueContinents() {
 function ContinentInk() {
   return (
     <Sphere args={[0.733, 128, 128]}>
-      <meshBasicMaterial color="#24150C" transparent opacity={0.045} />
+      <meshBasicMaterial color="#24150C" transparent opacity={0.04} />
     </Sphere>
   );
 }
@@ -147,7 +149,7 @@ function ContinentInk() {
 function HistoricalMapLines() {
   return (
     <Sphere args={[0.735, 96, 96]}>
-      <meshBasicMaterial color="#4A2A16" wireframe transparent opacity={0.03} />
+      <meshBasicMaterial color="#4A2A16" wireframe transparent opacity={0.028} />
     </Sphere>
   );
 }
@@ -155,7 +157,7 @@ function HistoricalMapLines() {
 function SeaRoutes() {
   return (
     <Sphere args={[0.737, 96, 96]}>
-      <meshStandardMaterial color="#D66A1F" wireframe transparent opacity={0.014} />
+      <meshStandardMaterial color="#D66A1F" wireframe transparent opacity={0.012} />
     </Sphere>
   );
 }
@@ -163,7 +165,7 @@ function SeaRoutes() {
 function CompassLayer() {
   return (
     <Sphere args={[0.739, 64, 64]}>
-      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.02} />
+      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.018} />
     </Sphere>
   );
 }
@@ -171,7 +173,7 @@ function CompassLayer() {
 function AntiqueGlow() {
   return (
     <Sphere args={[0.745, 64, 64]}>
-      <meshBasicMaterial color="#D66A1F" transparent opacity={0.018} />
+      <meshBasicMaterial color="#D66A1F" transparent opacity={0.015} />
     </Sphere>
   );
 }
@@ -179,7 +181,7 @@ function AntiqueGlow() {
 function Atmosphere() {
   return (
     <Sphere args={[0.82, 64, 64]}>
-      <meshBasicMaterial color="#35205F" transparent opacity={0.09} />
+      <meshBasicMaterial color="#35205F" transparent opacity={0.08} />
     </Sphere>
   );
 }
@@ -199,16 +201,16 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
       style={{
         width: "100%",
         height: "560px",
-        background: "radial-gradient(circle at 50% 40%, #4a2c76 0%, #1F103D 58%, #12081f 100%)",
+        background: "radial-gradient(circle at 50% 40%, #51307b 0%, #1F103D 58%, #0f081a 100%)",
         borderRadius: 18,
         overflow: "hidden",
-        boxShadow: "0 20px 55px rgba(31,16,61,0.28)",
+        boxShadow: "0 24px 60px rgba(31,16,61,0.32)",
       }}
     >
       <Canvas camera={{ position: [0, 0, 3.45], fov: 35 }}>
-        <ambientLight intensity={2.25} />
-        <directionalLight position={[4, 3, 4]} intensity={2.8} />
-        <pointLight position={[-2, 1, 2]} intensity={1.2} />
+        <ambientLight intensity={2.15} />
+        <directionalLight position={[4, 3, 4]} intensity={2.5} />
+        <pointLight position={[-2, 1, 2]} intensity={1} />
 
         <AntiqueGlobe />
         <ParchmentSurface />
