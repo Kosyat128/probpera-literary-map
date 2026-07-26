@@ -1,11 +1,25 @@
 import type { WorldContourFeature } from "./worldContours";
 
+function extractCoordinates(geometry:any): Array<number[][] | number[][][]> {
+  if (!geometry?.coordinates) return [];
+
+  if (geometry.type === "Polygon") {
+    return geometry.coordinates;
+  }
+
+  if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.flat();
+  }
+
+  return [];
+}
+
 export function parseWorldContours(data:any): WorldContourFeature[] {
   const features = data?.features ?? [];
 
-  return features
-    .map((feature:any) => ({
-      coordinates: feature?.geometry?.coordinates
+  return features.flatMap((feature:any) =>
+    extractCoordinates(feature?.geometry).map((coordinates) => ({
+      coordinates
     }))
-    .filter((item:WorldContourFeature) => Boolean(item.coordinates));
+  );
 }
