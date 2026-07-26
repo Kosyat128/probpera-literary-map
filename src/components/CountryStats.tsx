@@ -3,9 +3,10 @@ import { getCountryMetadata } from "../data/countries/getCountryMetadata";
 
 type Props = {
   country: Country;
+  onWriterSelect?: (writer: Country["writers"][number]) => void;
 };
 
-export default function CountryStats({country}: Props){
+export default function CountryStats({ country, onWriterSelect }: Props){
   const data = country as Country & {
     nobel?: number;
     places?: number;
@@ -14,7 +15,6 @@ export default function CountryStats({country}: Props){
   };
 
   const metadata = getCountryMetadata(country.id);
-
   const featuredWriters = country.writers.slice(0, 5);
 
   return (
@@ -56,7 +56,21 @@ export default function CountryStats({country}: Props){
         ⭐ Главные авторы:
         <ul>
           {featuredWriters.map((writer) => (
-            <li key={writer.id}>{writer.fullName || writer.name}</li>
+            <li key={writer.id}>
+              <button
+                onClick={() => onWriterSelect?.(writer)}
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  color: "#35205F",
+                  cursor: "pointer",
+                  padding: 0,
+                  fontWeight: "bold"
+                }}
+              >
+                {writer.fullName || writer.name}
+              </button>
+            </li>
           ))}
         </ul>
       </div>
