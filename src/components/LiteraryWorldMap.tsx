@@ -49,6 +49,7 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
         <GlobalWriterSearch onWriterSelect={selectWriter} />
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
         <WriterClusters
+          writers={filteredWriters}
           onCountrySelect={selectCountry}
           selectedCountry={selectedCountry?.id}
         />
