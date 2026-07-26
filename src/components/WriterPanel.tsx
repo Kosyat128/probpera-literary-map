@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { Country, Writer } from "../data/types";
+import type { Country, Writer } from "../data/countries";
 import CountryStats from "./CountryStats";
 import WriterProfile from "./WriterProfile";
 
@@ -15,7 +15,7 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   const [openProfile, setOpenProfile] = useState(false);
 
   const filteredWriters = useMemo(() => writers.filter(writer =>
-    (writer.fullName || writer.name).toLowerCase().includes(query.toLowerCase())
+    (writer.fullName || writer.name || "").toLowerCase().includes(query.toLowerCase())
   ), [writers, query]);
 
   const chooseWriter = (writer: Writer) => {
