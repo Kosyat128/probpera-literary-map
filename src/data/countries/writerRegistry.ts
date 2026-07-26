@@ -1,11 +1,10 @@
-import type { Writer } from "../types";
-import { convertWriters } from "./convertWriter";
-import { russianWriters } from "./russia";
+import type { Writer } from "./types";
+import { countries } from "./index";
 
-export const allWriters: Writer[] = [
- ...convertWriters(russianWriters)
-];
+export const allWriters: Writer[] = countries.flatMap(
+  (country) => country.writers || []
+);
 
-export function getWriterById(id:string){
- return allWriters.find(writer=>writer.id===id);
+export function getWriterById(id: string) {
+  return allWriters.find((writer) => writer.id === id);
 }
