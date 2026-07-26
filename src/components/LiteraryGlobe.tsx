@@ -41,13 +41,8 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
       <group key={point.name} position={point.position}>
         <mesh onClick={() => onCountrySelect?.(point.name)}>
           <sphereGeometry args={[point.size, 32, 32]} />
-          <meshStandardMaterial
-            color={point.color}
-            emissive={point.color}
-            emissiveIntensity={1.2}
-          />
+          <meshStandardMaterial color={point.color} emissive={point.color} emissiveIntensity={1.2} />
         </mesh>
-
         <Html distanceFactor={7} center>
           <div style={{
             background: "rgba(255,248,238,.95)",
@@ -60,13 +55,25 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
             boxShadow: "0 5px 16px rgba(0,0,0,.25)",
             whiteSpace: "nowrap"
           }}>
-            {point.name}<br />
-            📚 {point.count}
+            {point.name}<br />📚 {point.count}
           </div>
         </Html>
       </group>
     ))}
   </>;
+}
+
+function GlobeGrid() {
+  return (
+    <Sphere args={[1.005, 48, 48]}>
+      <meshStandardMaterial
+        color="#8C6A32"
+        wireframe
+        transparent
+        opacity={0.08}
+      />
+    </Sphere>
+  );
 }
 
 export default function LiteraryGlobe({ onCountrySelect }: Props) {
@@ -79,15 +86,25 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
       overflow: "hidden"
     }}>
       <Canvas camera={{ position: [0, 0, 3.2] }}>
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[3, 3, 3]} intensity={2} />
+        <ambientLight intensity={1.3} />
+        <directionalLight position={[3, 3, 3]} intensity={2.4} />
+        <pointLight position={[-3, 2, 3]} intensity={1.5} />
 
         <Sphere args={[1, 128, 128]}>
-          <meshStandardMaterial color="#C8A96A" roughness={0.95} />
+          <meshStandardMaterial
+            color="#C8A96A"
+            roughness={0.95}
+          />
         </Sphere>
 
+        <GlobeGrid />
+
         <Sphere args={[1.03, 64, 64]}>
-          <meshStandardMaterial color="#E7C98A" transparent opacity={0.12} />
+          <meshStandardMaterial
+            color="#E7C98A"
+            transparent
+            opacity={0.12}
+          />
         </Sphere>
 
         <LiteraryMarkers onCountrySelect={onCountrySelect} />
