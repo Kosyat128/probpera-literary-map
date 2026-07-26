@@ -2,7 +2,7 @@ import { Line } from "@react-three/drei";
 
 interface Props {
   features?: Array<{
-    coordinates: number[][];
+    coordinates: number[][] | number[][][];
   }>;
 }
 
@@ -16,12 +16,18 @@ function projectPoint(lat:number,lng:number,radius=0.742):[number,number,number]
   ];
 }
 
+function normalizeCoordinates(coords:number[][]|number[][][]){
+ if(!coords.length) return [];
+ if(Array.isArray(coords[0][0])) return coords[0] as number[][];
+ return coords as number[][];
+}
+
 export default function AntiqueContinentLayer({features=[]}:Props){
  return <>
   {features.map((feature,index)=>(
     <Line
       key={index}
-      points={feature.coordinates.map(([lng,lat])=>projectPoint(lat,lng))}
+      points={normalizeCoordinates(feature.coordinates).map(([lng,lat])=>projectPoint(lat,lng))}
       color="#24150C"
       lineWidth={1}
       transparent
