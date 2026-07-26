@@ -692,6 +692,25 @@ export const france: Country = {
         "Отверженные",
         "Человек, который смеётся"
       ],
+      workDetails: [
+        {
+          id: "les-miserables",
+          title: "Отверженные",
+          originalTitle: "Les Misérables",
+          firstPublished: 1862,
+          originalLanguage: "французский",
+          genres: ["роман", "социальная проза"],
+          tags: ["справедливость", "милосердие", "Париж", "романтизм"],
+          description: "Монументальный роман Виктора Гюго о законе, совести и возможности нравственного преображения, впервые опубликованный в 1862 году.",
+          coverUrl: "https://covers.openlibrary.org/b/id/12721865-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL1063588W",
+          sourceUrl: "https://www.maisonsvictorhugo.paris.fr/",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
+      ],
       genres: [
         "романтизм",
         "роман",
@@ -1107,6 +1126,25 @@ export const france: Country = {
         "Чума",
         "Миф о Сизифе",
         "Падение"
+      ],
+      workDetails: [
+        {
+          id: "the-stranger",
+          title: "Посторонний",
+          originalTitle: "L’Étranger",
+          firstPublished: 1942,
+          originalLanguage: "французский",
+          genres: ["роман", "философская проза"],
+          tags: ["абсурд", "отчуждение", "Алжир", "XX век"],
+          description: "Краткий роман Альбера Камю, опубликованный издательством Gallimard в 1942 году. История Мерсо стала одним из ключевых художественных выражений темы абсурда.",
+          coverUrl: "https://covers.openlibrary.org/b/id/13151269-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL1230613W",
+          sourceUrl: "https://www.gallimard.fr/catalogue/l-etranger/9782070360024",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
       ],
       genres: [
         "философская проза",

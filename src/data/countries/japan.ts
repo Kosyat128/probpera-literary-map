@@ -888,6 +888,25 @@ export const japan: Country = {
         "1Q84",
         "Охота на овец"
       ],
+      workDetails: [
+        {
+          id: "norwegian-wood",
+          title: "Норвежский лес",
+          originalTitle: "ノルウェイの森",
+          firstPublished: 1987,
+          originalLanguage: "японский",
+          genres: ["роман", "современная проза"],
+          tags: ["память", "молодость", "утрата", "Токио"],
+          description: "Роман о памяти, взрослении и переживании утраты, впервые изданный в Японии в 1987 году. Название отсылает к песне The Beatles Norwegian Wood.",
+          coverUrl: "https://covers.openlibrary.org/b/id/2237620-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL2625457W",
+          sourceUrl: "https://www.shinchosha.co.jp/book/100154/",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
+      ],
       genres: [
         "роман",
         "магический реализм",

@@ -8,13 +8,21 @@ import {
   useState,
 } from "react";
 
-import ReaderPanel, { loadReaderProfile } from "./components/ReaderPanel";
+import ArticleEngagement from "./community/ArticleEngagement";
+import CommunityHub, { type CommunityView } from "./community/CommunityHub";
+import { useAuth } from "./community/AuthContext";
+import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
+import { buildBookArchive } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
+import ShareLinks from "./editorial/ShareLinks";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
 const LiteraryCalendar = lazy(() => import("./components/LiteraryCalendar"));
+const BookArchiveSection = lazy(
+  () => import("./components/BookArchiveSection")
+);
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
 
@@ -78,24 +86,28 @@ const sectionLinks = [
     title: "Мнение о книге",
     copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
     href: "https://probpera.ru/read/page-article/page-books",
+    image: "brand/series-1.webp",
   },
   {
     number: "02",
     title: "Книга vs экранизация",
     copy: "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.",
     href: "https://probpera.ru/read/page-article/page-bookvsmovie",
+    image: "brand/magazine-cover.webp",
   },
   {
     number: "03",
     title: "Литературные премии",
     copy: "История крупнейших наград, лауреаты, произведения и культурный контекст.",
     href: "https://probpera.ru/read/page-article/famous_prizes/",
+    image: "brand/section-prizes.webp",
   },
   {
     number: "04",
     title: "Биографии классиков",
     copy: "Тщательные человеческие биографии: судьба, время, характер и главные тексты автора.",
     href: "https://probpera.ru/read",
+    image: "brand/series-3.webp",
   },
 ];
 
@@ -109,6 +121,15 @@ const portraitSourceLinks: Record<string, string> = {
 
 function normalizeSearch(value: string) {
   return value.trim().toLocaleLowerCase("ru");
+}
+
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
 }
 
 function writerName(writer: Writer) {
@@ -130,15 +151,16 @@ function assetUrl(path: string) {
 }
 
 export default function App() {
+  const { user } = useAuth();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>("all");
-  const [readerOpen, setReaderOpen] = useState(false);
-  const [readerProfile, setReaderProfile] =
-    useState<ReturnType<typeof loadReaderProfile>>(null);
+  const [communityOpen, setCommunityOpen] = useState(false);
+  const [communityView, setCommunityView] =
+    useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -146,7 +168,6 @@ export default function App() {
     import("./data/countries").then((module) => {
       if (active) setCountryArchive(module.countries);
     });
-    setReaderProfile(loadReaderProfile());
     return () => {
       active = false;
     };
@@ -161,16 +182,12 @@ export default function App() {
     () => new Set(allWriters.flatMap((writer) => writer.works || [])).size,
     [allWriters]
   );
-  const editorialAudit = useMemo(
-    () => auditCountryArchive(countryArchive),
+  const bookArchive = useMemo(
+    () => buildBookArchive(countryArchive),
     [countryArchive]
   );
-
-  const topCountries = useMemo(
-    () =>
-      [...countryArchive]
-        .sort((first, second) => second.writers.length - first.writers.length)
-        .slice(0, 5),
+  const editorialAudit = useMemo(
+    () => auditCountryArchive(countryArchive),
     [countryArchive]
   );
 
@@ -189,6 +206,14 @@ export default function App() {
       country.writers.some((writer) => writer.editorial?.status === "verified")
     );
   }, [atlasFilter, countryArchive]);
+
+  const topCountries = useMemo(
+    () =>
+      [...filteredCountries]
+        .sort((first, second) => second.writers.length - first.writers.length)
+        .slice(0, 5),
+    [filteredCountries]
+  );
 
   const filterCounts = useMemo(
     () => ({
@@ -255,32 +280,47 @@ export default function App() {
   }, [countryArchive]);
 
   const bookOfDay = useMemo(() => {
-    const books = countryArchive.flatMap((country) =>
-      country.writers.flatMap((writer) =>
-        (writer.works || []).map((title) => ({ title, writer, country }))
-      )
+    const editorialBooks = bookArchive.filter(
+      (book) =>
+        Boolean(book.coverUrl) &&
+        ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
+    const books = editorialBooks.length ? editorialBooks : bookArchive;
     if (!books.length) return null;
     const dayNumber = Math.floor(Date.now() / 86_400_000);
     return books[dayNumber % books.length];
-  }, [countryArchive]);
+  }, [bookArchive]);
 
-  const selectCountry = useCallback((country: Country, focusAtlas = false) => {
-    setSelectedCountry(country);
-    setSelectedWriter(country.writers[0] ?? null);
-    setSearch("");
-    setSearchOpen(false);
-    if (focusAtlas) {
-      window.requestAnimationFrame(() =>
-        atlasRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-      );
-    }
-  }, []);
+  const selectCountry = useCallback(
+    (country: Country, focusAtlas = false, writer?: Writer) => {
+      setSelectedCountry(country);
+      setSelectedWriter(writer ?? country.writers[0] ?? null);
+      setSearch("");
+      setSearchOpen(false);
+      if (focusAtlas) {
+        window.requestAnimationFrame(() =>
+          atlasRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          })
+        );
+      }
+    },
+    []
+  );
 
   const closeCountry = useCallback(() => {
     setSelectedCountry(null);
     setSelectedWriter(null);
   }, []);
+
+  const openCommunity = useCallback((view: CommunityView) => {
+    setCommunityView(view);
+    setCommunityOpen(true);
+  }, []);
+
+  const readerName =
+    user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
 
   return (
     <div className="magazine-app">
@@ -311,13 +351,23 @@ export default function App() {
           <a href="#journal">Статьи</a>
           <a href="#sections">Разделы</a>
           <a href="#calendar">Календарь</a>
+          <button type="button" onClick={() => openCommunity("forum")}>
+            Форум
+          </button>
           <a href="#about">О проекте</a>
         </nav>
 
-        <button className="reader-button" type="button" onClick={() => setReaderOpen(true)}>
-          <span>{readerProfile?.name?.slice(0, 1).toUpperCase() || "✦"}</span>
-          {readerProfile?.name || "Клуб читателей"}
-        </button>
+        <div className="header-actions">
+          <SocialLinks />
+          <button
+            className="reader-button"
+            type="button"
+            onClick={() => openCommunity("account")}
+          >
+            <span>{readerName.slice(0, 1).toUpperCase() || "✦"}</span>
+            {readerName || "Войти"}
+          </button>
+        </div>
       </header>
 
       <main>
@@ -398,6 +448,7 @@ export default function App() {
                   autoComplete="off"
                   aria-expanded={searchOpen}
                   aria-controls="country-results"
+                  onClick={() => setSearchOpen(true)}
                   onChange={(event) => setSearch(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === "Escape") setSearchOpen(false);
@@ -420,11 +471,20 @@ export default function App() {
                       <button
                         type="button"
                         key={country.id}
-                        onMouseDown={(event) => event.preventDefault()}
+                        onPointerDown={(event) => {
+                          event.preventDefault();
+                        }}
                         onClick={() => selectCountry(country)}
                       >
                         <span>{country.name}</span>
-                        <small>{country.writers.length} авторов</small>
+                        <small>
+                          {country.writers.length}{" "}
+                          {pluralRu(country.writers.length, [
+                            "автор",
+                            "автора",
+                            "авторов",
+                          ])}
+                        </small>
                       </button>
                     ))
                   ) : (
@@ -473,7 +533,14 @@ export default function App() {
             <section className="globe-column" id="globe-stage">
               <div className="globe-copy">
                 <span>Музейный глобус · ручная навигация</span>
-                <p>{filteredCountries.length} стран доступно в выбранной коллекции</p>
+                <p>
+                  В выбранной коллекции — {filteredCountries.length}{" "}
+                  {pluralRu(filteredCountries.length, [
+                    "страна",
+                    "страны",
+                    "стран",
+                  ])}
+                </p>
               </div>
 
               {filteredCountries.length > 0 ? (
@@ -515,12 +582,30 @@ export default function App() {
           </div>
         </section>
 
-        <section className="daily-grid">
+        <section className="daily-grid" id="book-day">
           <article className="book-of-day">
-            <div className="book-cover" aria-hidden="true">
-              <span>Проба Пера</span>
-              <strong>{bookOfDay?.title || "Книга дня"}</strong>
-              <i>✦</i>
+            <div className={`book-cover${bookOfDay?.coverUrl ? " has-image" : ""}`}>
+              {bookOfDay?.coverUrl ? (
+                <a
+                  href={bookOfDay.coverSourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Источник обложки «${bookOfDay.title}»`}
+                >
+                  <img
+                    src={bookOfDay.coverUrl}
+                    alt={`Обложка книги «${bookOfDay.title}»`}
+                    loading="lazy"
+                  />
+                  <small>Источник обложки</small>
+                </a>
+              ) : (
+                <>
+                  <span>Проба Пера</span>
+                  <strong>{bookOfDay?.title || "Книга дня"}</strong>
+                  <i>✦</i>
+                </>
+              )}
             </div>
             <div>
               <span className="section-kicker">Выбор энциклопедии</span>
@@ -528,13 +613,35 @@ export default function App() {
               <h4>{bookOfDay?.title || "Открываем библиотеку…"}</h4>
               <p>
                 {bookOfDay
-                  ? `${writerName(bookOfDay.writer)} · ${bookOfDay.country.name}. Начните литературное путешествие с одного из ключевых произведений национальной традиции.`
+                  ? `${writerName(bookOfDay.writer)} · ${bookOfDay.country.name}. ${
+                      bookOfDay.description ||
+                      "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
+                    }`
                   : "Каждый день энциклопедия выбирает новое произведение из единой базы стран."}
               </p>
+              {bookOfDay?.tags && (
+                <div className="book-tags" aria-label="Темы книги">
+                  {bookOfDay.tags.slice(0, 4).map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              )}
               {bookOfDay && (
-                <button type="button" onClick={() => selectCountry(bookOfDay.country, true)}>
-                  Открыть страну <span>→</span>
-                </button>
+                <div className="book-actions">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      selectCountry(bookOfDay.country, true, bookOfDay.writer)
+                    }
+                  >
+                    Открыть автора и страну <span>→</span>
+                  </button>
+                  {bookOfDay.sourceUrl && (
+                    <a href={bookOfDay.sourceUrl} target="_blank" rel="noreferrer">
+                      Источник сведений
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </article>
@@ -562,6 +669,23 @@ export default function App() {
             </ul>
           </article>
         </section>
+
+        <Suspense
+          fallback={
+            <section className="book-archive-section">
+              <div className="book-archive-empty">
+                <strong>Собираем книжный архив…</strong>
+              </div>
+            </section>
+          }
+        >
+          <BookArchiveSection
+            books={bookArchive}
+            onBookSelect={(book) =>
+              selectCountry(book.country, true, book.writer)
+            }
+          />
+        </Suspense>
 
         <section className="editorial-section" id="journal">
           <header className="section-heading">
@@ -597,8 +721,51 @@ export default function App() {
                 >
                   Все материалы рубрики
                 </a>
+                <ShareLinks url={feature.articleUrl} title={feature.title} />
               </article>
             ))}
+          </div>
+          <div className="journal-engagement">
+            <div>
+              <span className="section-kicker">Обсуждение номера</span>
+              <h3>Статья заканчивается, разговор — продолжается</h3>
+              <p>
+                Оценки и комментарии привязаны к конкретной публикации. Авторский
+                текст остаётся неизменным, а читательская дискуссия живёт отдельно.
+              </p>
+            </div>
+            <ArticleEngagement
+              articleSlug="opinion-hells-angels"
+              compact
+            />
+          </div>
+        </section>
+
+        <section className="community-section" id="community">
+          <div className="community-illustration" aria-hidden="true" />
+          <div className="community-copy">
+            <span className="section-kicker">Литературное сообщество</span>
+            <h2>Клуб внимательных читателей</h2>
+            <p>
+              Форум для обстоятельного разговора о книгах, переводах и
+              экранизациях. Без случайных виджетов: единый профиль, содержательные
+              комментарии, рейтинги и редакционная модерация.
+            </p>
+            <ul>
+              <li>Обсуждения книг и публикаций журнала</li>
+              <li>Оценки материалов и произведений</li>
+              <li>Профиль читателя и история участия</li>
+            </ul>
+            <div>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                Открыть форум
+              </button>
+              {!user && (
+                <button type="button" onClick={() => openCommunity("account")}>
+                  Вступить в клуб
+                </button>
+              )}
+            </div>
           </div>
         </section>
 
@@ -613,7 +780,10 @@ export default function App() {
           <div className="author-showcase">
             {featuredAuthors.map(({ country, writer }) => (
               <article key={`${country.id}-${writer.id}`}>
-                <button type="button" onClick={() => selectCountry(country, true)}>
+                <button
+                  type="button"
+                  onClick={() => selectCountry(country, true, writer)}
+                >
                   <img
                     src={assetUrl(writer.portrait || "")}
                     alt={writerName(writer)}
@@ -647,11 +817,19 @@ export default function App() {
           </header>
           <div>
             {sectionLinks.map((section) => (
-              <a href={section.href} target="_blank" rel="noreferrer" key={section.title}>
-                <span>{section.number}</span>
-                <h3>{section.title}</h3>
-                <p>{section.copy}</p>
-                <i>→</i>
+              <a
+                href={section.href}
+                target="_blank"
+                rel="noreferrer"
+                key={section.title}
+                style={{ "--section-art": `url(${assetUrl(section.image)})` } as React.CSSProperties}
+              >
+                <div>
+                  <span>{section.number}</span>
+                  <h3>{section.title}</h3>
+                  <p>{section.copy}</p>
+                  <i>→</i>
+                </div>
               </a>
             ))}
           </div>
@@ -668,35 +846,71 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <div>
-          <img src={assetUrl("brand/probpera-logo.png")} alt="" />
-          <span>
-            <strong>Проба Пера</strong>
-            <small>Литературный журнал и мировая энциклопедия</small>
-          </span>
+        <div className="footer-main">
+          <section className="footer-brand">
+            <a href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
+              <img src={assetUrl("brand/probpera-logo.png")} alt="" />
+              <span>
+                <strong>Проба Пера</strong>
+                <small>Литературный журнал и мировая энциклопедия</small>
+              </span>
+            </a>
+            <p>
+              Авторские статьи и единая интерактивная экосистема о мировой
+              литературе: страны, писатели, книги, эпохи и разговор читателей.
+            </p>
+            <SocialLinks />
+          </section>
+
+          <nav className="footer-map" aria-label="Карта сайта">
+            <section>
+              <h2>Журнал</h2>
+              <a href="https://probpera.ru/read">Все публикации</a>
+              <a href="https://probpera.ru/read/page-article/page-books">
+                Мнение о книге
+              </a>
+              <a href="https://probpera.ru/read/page-article/page-bookvsmovie">
+                Книга и экранизация
+              </a>
+              <a href="https://probpera.ru/read/page-words">
+                Редкие слова
+              </a>
+              <a href="https://probpera.ru/read/page-article/famous_prizes">
+                Литературные премии
+              </a>
+            </section>
+            <section>
+              <h2>Энциклопедия</h2>
+              <a href="#atlas">Литературная карта</a>
+              <a href="#authors">Писатели</a>
+              <a href="#books">Книжный архив</a>
+              <a href="#calendar">Календарь событий</a>
+              <a href="#about">Редакционный стандарт</a>
+            </section>
+            <section>
+              <h2>Сообщество</h2>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                Форум читателей
+              </button>
+              <button type="button" onClick={() => openCommunity("account")}>
+                {user ? "Личный кабинет" : "Вход и регистрация"}
+              </button>
+              <a href="mailto:probperasite@yandex.ru">Связаться с редакцией</a>
+              <a href="https://probpera.ru/contacts">Контакты</a>
+            </section>
+          </nav>
         </div>
-        <p>
-          Авторские статьи · сотрудничество:{" "}
+        <div className="footer-bottom">
+          <p>© 2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>
-        </p>
-        <nav>
-          <a href="https://t.me/probbaperra" target="_blank" rel="noreferrer">
-            Telegram
-          </a>
-          <a href="https://vk.com/probperaru" target="_blank" rel="noreferrer">
-            VK
-          </a>
-          <a href="https://dzen.ru/probpera.ru" target="_blank" rel="noreferrer">
-            Дзен
-          </a>
-        </nav>
+          <span>Независимый литературный журнал</span>
+        </div>
       </footer>
 
-      <ReaderPanel
-        open={readerOpen}
-        onClose={() => setReaderOpen(false)}
-        onProfileChange={setReaderProfile}
-        profile={readerProfile}
+      <CommunityHub
+        open={communityOpen}
+        initialView={communityView}
+        onClose={() => setCommunityOpen(false)}
       />
     </div>
   );

@@ -226,6 +226,25 @@ export const england: Country = {
         "Король Лир",
         "Сонеты"
       ],
+      workDetails: [
+        {
+          id: "hamlet",
+          title: "Гамлет",
+          originalTitle: "The Tragedy of Hamlet, Prince of Denmark",
+          firstPublished: 1603,
+          originalLanguage: "английский",
+          genres: ["трагедия", "драма"],
+          tags: ["месть", "власть", "сомнение", "театр Возрождения"],
+          description: "Трагедия о принце Датском, написанная приблизительно на рубеже XVI–XVII веков. Первое известное печатное издание появилось в 1603 году.",
+          coverUrl: "https://covers.openlibrary.org/b/id/8281954-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL9170454W",
+          sourceUrl: "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
+      ],
       genres: [
         "трагедия",
         "комедия",

@@ -29,10 +29,14 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build production site
         run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          VITE_BOOSTY_URL: ${{ vars.VITE_BOOSTY_URL }}
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

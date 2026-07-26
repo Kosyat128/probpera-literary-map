@@ -1230,6 +1230,25 @@ export const usa: Country = {
         "Песнь Соломона",
         "Самые голубые глаза"
       ],
+      workDetails: [
+        {
+          id: "beloved",
+          title: "Возлюбленная",
+          originalTitle: "Beloved",
+          firstPublished: 1987,
+          originalLanguage: "английский",
+          genres: ["роман", "историческая проза"],
+          tags: ["память", "рабство", "семья", "травма"],
+          description: "Роман Тони Моррисон о памяти рабства и его последствиях для семьи. Опубликован в 1987 году и удостоен Пулитцеровской премии за художественную книгу в 1988 году.",
+          coverUrl: "https://covers.openlibrary.org/b/id/8261367-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL50548W",
+          sourceUrl: "https://www.pulitzer.org/winners/toni-morrison",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
+      ],
       genres: [
         "роман",
         "социальная проза"

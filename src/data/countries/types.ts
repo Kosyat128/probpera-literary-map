@@ -1,3 +1,21 @@
+export type WorkProfile = {
+  id: string;
+  title: string;
+  originalTitle?: string;
+  firstPublished?: number;
+  originalLanguage?: string;
+  genres?: string[];
+  tags?: string[];
+  description?: string;
+  coverUrl?: string;
+  coverSourceUrl?: string;
+  sourceUrl?: string;
+  editorial?: {
+    status: "draft" | "reviewed" | "verified";
+    reviewedAt?: string;
+  };
+};
+
 export type WriterProfile = {
   id: string;
 
@@ -31,6 +49,7 @@ export type WriterProfile = {
   description?: string;
 
   works?: string[];
+  workDetails?: WorkProfile[];
   awards?: string[];
 
   nobelYear?: number;

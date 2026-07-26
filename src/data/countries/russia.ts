@@ -698,6 +698,25 @@ export const russia: Country = {
         "Братья Карамазовы",
         "Бесы"
       ],
+      workDetails: [
+        {
+          id: "crime-and-punishment",
+          title: "Преступление и наказание",
+          originalTitle: "Преступление и наказание",
+          firstPublished: 1866,
+          originalLanguage: "русский",
+          genres: ["роман", "психологическая проза"],
+          tags: ["вина", "нравственный выбор", "Петербург", "реализм"],
+          description: "Роман о преступлении, самообмане и трудном возвращении к человеческой связи. Впервые публиковался по частям в журнале «Русский вестник» в 1866 году.",
+          coverUrl: "https://covers.openlibrary.org/b/id/9411873-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL166894W",
+          sourceUrl: "https://fedordostoevsky.ru/works/lifetime/crime/",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
+      ],
       genres: [
         "роман",
         "психологическая проза",
@@ -743,6 +762,25 @@ export const russia: Country = {
         "Анна Каренина",
         "Воскресение",
         "Смерть Ивана Ильича"
+      ],
+      workDetails: [
+        {
+          id: "war-and-peace",
+          title: "Война и мир",
+          originalTitle: "Война и мир",
+          firstPublished: 1869,
+          originalLanguage: "русский",
+          genres: ["роман-эпопея", "исторический роман"],
+          tags: ["наполеоновские войны", "семья", "история", "реализм"],
+          description: "Роман-эпопея о частной жизни и историческом времени. Отдельное книжное издание в шести томах вышло в 1868–1869 годах.",
+          coverUrl: "https://covers.openlibrary.org/b/id/12621906-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL267171W",
+          sourceUrl: "https://tolstoy.ru/creativity/90-volume-collection-of-the-works/",
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-26"
+          }
+        }
       ],
       genres: [
         "реализм",
@@ -1006,6 +1044,25 @@ export const russia: Country = {
         "Мастер и Маргарита",
         "Собачье сердце",
         "Белая гвардия"
+      ],
+      workDetails: [
+        {
+          id: "master-and-margarita",
+          title: "Мастер и Маргарита",
+          originalTitle: "Мастер и Маргарита",
+          firstPublished: 1967,
+          originalLanguage: "русский",
+          genres: ["роман", "фантастика", "сатира"],
+          tags: ["Москва", "Понтий Пилат", "творчество", "свобода"],
+          description: "Главный роман Михаила Булгакова, над которым писатель работал в 1928–1940 годах. Первая журнальная публикация состоялась посмертно, с купюрами, в 1966–1967 годах.",
+          coverUrl: "https://covers.openlibrary.org/b/id/15013644-L.jpg",
+          coverSourceUrl: "https://openlibrary.org/works/OL36999384W",
+          sourceUrl: "https://bulgakovmuseum.ru/",
+          editorial: {
+            status: "reviewed",
+            reviewedAt: "2026-07-26"
+          }
+        }
       ],
       genres: [
         "роман",
