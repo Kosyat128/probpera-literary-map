@@ -5,6 +5,8 @@ import LiteraryWorldMap from "./components/LiteraryWorldMap";
 import WriterPanel from "./components/WriterPanel";
 import Timeline from "./components/Timeline";
 import LiteraryPlaces from "./components/LiteraryPlaces";
+import QuoteOfDay from "./components/QuoteOfDay";
+import LiteraryCalendar from "./components/LiteraryCalendar";
 
 import { countries } from "./data/countries";
 import type { Country, Writer } from "./data/countries";
@@ -23,9 +25,7 @@ export default function App() {
     }
   };
 
-  const handleWriterSelect = (writer: Writer) => {
-    setSelectedWriter(writer);
-  };
+  const handleWriterSelect = (writer: Writer) => setSelectedWriter(writer);
 
   return (
     <div style={{ minHeight:"100vh", background:"#F7EBDD", color:"#35205F", fontFamily:"Georgia, serif" }}>
@@ -35,11 +35,7 @@ export default function App() {
       </header>
 
       <div style={{display:"grid",gridTemplateColumns:"260px minmax(700px,1fr) 340px",gap:"14px",padding:"14px"}}>
-        <Sidebar
-          items={countries.map((country)=>country.name)}
-          selectedItem={selectedCountry.name}
-          onSelect={handleCountrySelect}
-        />
+        <Sidebar items={countries.map((country)=>country.name)} selectedItem={selectedCountry.name} onSelect={handleCountrySelect}/>
 
         <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
           <LiteraryWorldMap onCountrySelect={handleCountrySelect}/>
@@ -47,10 +43,12 @@ export default function App() {
           <LiteraryPlaces/>
         </main>
 
-        <WriterPanel
-          country={selectedCountry}
-          onWriterSelect={handleWriterSelect}
-        />
+        <WriterPanel country={selectedCountry} onWriterSelect={handleWriterSelect}/>
+      </div>
+
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px",padding:"14px"}}>
+        <QuoteOfDay countryName={selectedCountry.name}/>
+        <LiteraryCalendar countryName={selectedCountry.name}/>
       </div>
     </div>
   );
