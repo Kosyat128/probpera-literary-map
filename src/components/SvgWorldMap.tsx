@@ -40,9 +40,12 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: "2000 / 857",
+        height: "100%",
         overflow: "hidden",
-        borderRadius: "18px"
+        borderRadius: "18px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       }}
     >
       <img
@@ -53,7 +56,7 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
           inset: 0,
           width: "100%",
           height: "100%",
-          objectFit: "contain"
+          objectFit: "cover"
         }}
       />
 
