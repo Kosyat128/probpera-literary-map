@@ -1,40 +1,37 @@
-import { useState } from "react";
-import WriterPanel from "./WriterPanel";
 import GlobalWriterFilters from "./GlobalWriterFilters";
 import LiteraryGlobe from "./LiteraryGlobe";
-import { countries } from "../data/countries";
+import WriterCard from "./WriterCard";
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
-import WriterCard from "./WriterCard";
 
-interface Props { onCountrySelect?: (name:string)=>void; }
+interface Props {
+  selectedCountry?: Country | null;
+  selectedWriter?: WriterProfile | null;
+  onCountrySelect?: (name: string) => void;
+  onWriterSelect?: (writer: WriterProfile) => void;
+  filters: WriterFilterState;
+  onFiltersChange: (filters: WriterFilterState) => void;
+}
 
-export default function LiteraryWorldMap({onCountrySelect}:Props){
- const [selectedCountry,setSelectedCountry]=useState<Country|null>(countries[0] || null);
- const [selectedWriter,setSelectedWriter]=useState<WriterProfile|null>(null);
- const [filters,setFilters]=useState<WriterFilterState>({});
+export default function LiteraryWorldMap({
+  selectedCountry,
+  selectedWriter,
+  onCountrySelect,
+  onWriterSelect,
+  filters,
+  onFiltersChange,
+}: Props) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "minmax(700px,1fr) 340px", gap: 16, width: "100%", minHeight: 700, alignItems: "start" }}>
+      <main style={{ minWidth: 0 }}>
+        <div style={{ background: '#FFF8EE', borderRadius: 16, padding: 10, marginBottom: 12 }}>
+          <GlobalWriterFilters filters={filters} onChange={onFiltersChange} />
+        </div>
+        <LiteraryGlobe onCountrySelect={onCountrySelect} />
+        {selectedWriter && <WriterCard writer={selectedWriter} onClose={() => onWriterSelect?.(null as unknown as WriterProfile)} />}
+      </main>
 
- const selectCountry=(name:string)=>{
-  const country=countries.find(c=>c.name===name)||null;
-  setSelectedCountry(country);
-  setSelectedWriter(null);
-  onCountrySelect?.(name);
- };
-
- const selectWriter=(writer:WriterProfile)=>{
-  setSelectedWriter(writer);
-  if(writer.country) selectCountry(writer.country);
- };
-
- return <div style={{display:'grid',gridTemplateColumns:'minmax(700px,1fr) 340px',gap:16,width:'100%',minHeight:700,alignItems:'start'}}>
-   <main style={{minWidth:0}}>
-    <div style={{background:'#FFF8EE',borderRadius:16,padding:10,marginBottom:12}}>
-     <GlobalWriterFilters filters={filters} onChange={setFilters}/>
+      {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={onWriterSelect as unknown as (writer: any) => void} />}
     </div>
-    <LiteraryGlobe onCountrySelect={selectCountry}/>
-    {selectedWriter&&<WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>}
-   </main>
-
-   {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
-  </div>;
+  );
 }
