@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import SvgWorldMap from "./SvgWorldMap";
 import WriterPanel from "./WriterPanel";
+import GlobalWriterSearch from "./GlobalWriterSearch";
 import { countries } from "../data/countries";
 import type { Country } from "../data/countries/types";
 import WriterCard from "./WriterCard";
 import { getAllWriters } from "../filters/writerFilters";
-
 
 type LiteraryWorldMapProps = {
   onCountrySelect?: (name: string) => void;
@@ -26,15 +26,11 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
   return (
     <div style={{ display: "flex", gap: "20px", position: "relative" }}>
       <div style={{ flex: 1, position: "relative" }}>
+        <GlobalWriterSearch onWriterSelect={setSelectedWriter} />
+
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
 
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-          }}
-        >
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
           {allWriters.map((writer) => (
             <button
               key={writer.id}
