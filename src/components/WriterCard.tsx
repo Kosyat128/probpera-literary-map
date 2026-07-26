@@ -1,7 +1,7 @@
-import type { Writer } from "../data/writers";
+import type { WriterProfile } from "../data/countries/types";
 
 type Props = {
-  writer: Writer;
+  writer: WriterProfile;
   onClose: () => void;
 };
 
@@ -23,14 +23,14 @@ export default function WriterCard({ writer, onClose }: Props) {
       }}
     >
       <div style={{fontSize:"12px",opacity:.65,marginBottom:"6px"}}>Литературная карта мира</div>
-      <h2 style={{ marginTop: 0, color: "#1F103D" }}>{writer.name}</h2>
-      <p><b>Страна:</b> {writer.country}</p>
-      <p><b>Город:</b> {writer.city}</p>
-      <p><b>Годы жизни:</b> {writer.years}</p>
+      <h2 style={{ marginTop: 0, color: "#1F103D" }}>{writer.name || writer.fullName}</h2>
+      <p><b>Страна:</b> {writer.country || ""}</p>
+      <p><b>Место рождения:</b> {writer.birthPlace || ""}</p>
+      <p><b>Годы жизни:</b> {writer.years || ""}</p>
       <h3>Главные произведения</h3>
       <ul>
-        {writer.books.map((book) => (
-          <li key={book}>{book}</li>
+        {(writer.works || []).map((work) => (
+          <li key={work}>{work}</li>
         ))}
       </ul>
       <button
