@@ -240,9 +240,7 @@ export const egypt: Country = {
         "XX век"
       ],
       articleUrl: ""
-    }
-  ]
-};
+        },
     {
       id: "sonallah_ibrahim",
       name: "Суналлах Ибрахим",
