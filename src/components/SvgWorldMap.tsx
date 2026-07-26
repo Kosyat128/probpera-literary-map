@@ -9,7 +9,7 @@ type SvgWorldMapProps = {
   selectedCountry?: string;
 };
 
-export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWorldMapProps) {
+export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
   const [svgContent, setSvgContent] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -19,7 +19,7 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
       .then((svg) => {
         const fixedSvg = svg
           .replace(/fill="#ececec"/g, 'fill="transparent"')
-          .replace(/fill="black"/g, 'fill="transparent"');
+          .replace(/fill="#ffffff"/g, 'fill="transparent"');
         setSvgContent(fixedSvg);
       });
   }, []);
@@ -29,56 +29,67 @@ export default function SvgWorldMap({ onCountrySelect, selectedCountry }: SvgWor
     return target.getAttribute("id") || target.getAttribute("name");
   };
 
-  const handleSvgClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+  const selectCountry = (event: ReactMouseEvent<HTMLDivElement>) => {
     const id = getCountryId(event);
-    if (!id) return;
-
-    const country = literaryCountries[id as keyof typeof literaryCountries];
+    const country = id ? literaryCountries[id as keyof typeof literaryCountries] : null;
     if (country) onCountrySelect?.(country.name);
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", minHeight: "700px", borderRadius: "18px", overflow: "hidden" }}>
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "2000 / 857",
+        overflow: "hidden",
+        borderRadius: "18px"
+      }}
+    >
       <img
         src={mapBackground}
-        alt="Literary world map background"
+        alt="Literary world map"
         style={{
           position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
-          objectFit: "cover"
+          objectFit: "contain"
         }}
       />
 
       <div
-        onClick={handleSvgClick}
-        onMouseMove={(e) => {
-          const id = getCountryId(e);
+        onClick={selectCountry}
+        onMouseMove={(event) => {
+          const id = getCountryId(event);
           setHovered(id && literaryCountries[id as keyof typeof literaryCountries] ? id : null);
         }}
         onMouseLeave={() => setHovered(null)}
         dangerouslySetInnerHTML={{
-          __html: svgContent.replace(
-            /<path/g,
-            '<path style="fill:transparent;cursor:pointer;transition:0.3s"'
-          )
+          __html: svgContent.replace(/<path/g, '<path style="fill:transparent;cursor:pointer"')
         }}
         style={{
-          position: "relative",
+          position: "absolute",
+          inset: 0,
           zIndex: 1,
           width: "100%",
-          height: "100%",
-          transform: selectedCountry ? "scale(1.03)" : "scale(1)",
-          transition: ".4s"
+          height: "100%"
         }}
       />
 
       {hovered && literaryCountries[hovered as keyof typeof literaryCountries] && (
-        <div style={{ position: "absolute", zIndex: 2, top: 20, left: 20, background: "#FFF8EE", padding: "12px 18px", borderRadius: "12px", color: "#35205F" }}>
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 2,
+            top: 20,
+            left: 20,
+            background: "#FFF8EE",
+            padding: "12px 18px",
+            borderRadius: "12px",
+            color: "#35205F"
+          }}
+        >
           <b>{literaryCountries[hovered as keyof typeof literaryCountries].name}</b>
-          <br />
-          Писателей: {literaryCountries[hovered as keyof typeof literaryCountries].writers?.length || 0}
         </div>
       )}
     </div>
