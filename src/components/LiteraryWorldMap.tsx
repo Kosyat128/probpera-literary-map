@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import SvgWorldMap from "./SvgWorldMap";
 import WriterPanel from "./WriterPanel";
-import GlobalWriterSearch from "./GlobalWriterSearch";
 import GlobalWriterFilters from "./GlobalWriterFilters";
 import WriterClusters from "./WriterClusters";
 import { countries } from "../data/countries";
@@ -20,7 +19,10 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
   const [selectedWriter, setSelectedWriter] = useState<WriterProfile | null>(allWriters[0] ?? null);
   const [filters, setFilters] = useState<WriterFilterState>({});
 
-  const filteredWriters = useMemo(() => filterWriters(allWriters, filters), [allWriters, filters]);
+  const filteredWriters = useMemo(
+    () => filterWriters(allWriters, filters),
+    [allWriters, filters]
+  );
 
   const selectCountry = (name: string) => {
     const country = countries.find((item) => item.name === name);
@@ -34,18 +36,48 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
   };
 
   return (
-    <div style={{ display: "flex", gap: "20px", position: "relative" }}>
-      <div style={{ flex: 1, position: "relative" }}>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "minmax(0, 1fr) 360px",
+        gap: "20px",
+        position: "relative",
+        minHeight: "800px"
+      }}
+    >
+      <div style={{ position: "relative", minWidth: 0 }}>
         <GlobalWriterFilters filters={filters} onChange={setFilters} />
+
         <div style={{ color: "#35205F", margin: "10px 0", fontWeight: "bold" }}>
           Найдено авторов: {filteredWriters.length}
         </div>
-        <GlobalWriterSearch onWriterSelect={selectWriter} />
-        <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
-        <WriterClusters writers={filteredWriters} onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
+
+        <div style={{ position: "relative", width: "100%" }}>
+          <SvgWorldMap
+            onCountrySelect={selectCountry}
+            selectedCountry={selectedCountry?.id}
+          />
+          <WriterClusters
+            writers={filteredWriters}
+            onCountrySelect={selectCountry}
+            selectedCountry={selectedCountry?.id}
+          />
+        </div>
       </div>
-      {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={selectWriter} />}
-      {selectedWriter && <WriterCard writer={selectedWriter} onClose={() => setSelectedWriter(null)} />}
+
+      {selectedCountry && (
+        <WriterPanel
+          country={selectedCountry}
+          onWriterSelect={selectWriter}
+        />
+      )}
+
+      {selectedWriter && (
+        <WriterCard
+          writer={selectedWriter}
+          onClose={() => setSelectedWriter(null)}
+        />
+      )}
     </div>
   );
 }
