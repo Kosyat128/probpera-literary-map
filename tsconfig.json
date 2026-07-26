@@ -17,5 +17,12 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
+  "exclude": [
+    "src/data/writers/**",
+    "src/kyrgyzstan.ts",
+    "src/tajikistan.ts",
+    "src/turkmenistan.ts",
+    "src/uzbekistan.ts"
+  ],
   "references": []
 }
