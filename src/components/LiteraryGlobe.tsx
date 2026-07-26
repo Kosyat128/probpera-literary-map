@@ -9,21 +9,23 @@ import GlobeCountryFocus from "./GlobeCountryFocus";
 
 interface Props { onCountrySelect?: (name:string)=>void; }
 
+type CountryFocus = { name:string; coordinates:[number,number] } | null;
+
 function geoToSphere(lat:number,lng:number,radius=0.78):[number,number,number]{
  const phi=(90-lat)*Math.PI/180;
  const theta=(lng+180)*Math.PI/180;
  return [-radius*Math.sin(phi)*Math.cos(theta),radius*Math.cos(phi),radius*Math.sin(phi)*Math.sin(theta)];
 }
 
-function LiteraryMarkers({onCountrySelect}:Props){
+function LiteraryMarkers({onCountrySelect,onFocus}:{onCountrySelect?:Props["onCountrySelect"];onFocus:(focus:CountryFocus)=>void}){
  const [active,setActive]=useState<string|null>(null);
  const [hovered,setHovered]=useState<string|null>(null);
  const markers=useMemo(()=>countries.filter(c=>c.coordinates&&c.writers.length>0).map(c=>{
   const co=c.coordinates; const lat=Array.isArray(co)?co[0]:co?.lat; const lng=Array.isArray(co)?co[1]:co?.lng;
-  return {name:c.name,count:c.writers.length,position:geoToSphere(lat||0,lng||0),color:c.writers.length>=20?"#D66A1F":"#6B3FA0",size:.026+Math.min(c.writers.length/700,.038)};
+  return {name:c.name,count:c.writers.length,lat:lat||0,lng:lng||0,position:geoToSphere(lat||0,lng||0),color:c.writers.length>=20?"#D66A1F":"#6B3FA0",size:.026+Math.min(c.writers.length/700,.038)};
  }),[]);
  return <>{markers.map(p=>{const focus=active===p.name||hovered===p.name;return <group key={p.name} position={p.position}>
- <mesh onClick={()=>{setActive(p.name);onCountrySelect?.(p.name)}} onPointerOver={()=>setHovered(p.name)} onPointerOut={()=>setHovered(null)}><sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/><meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/></mesh>
+ <mesh onClick={()=>{setActive(p.name);onFocus({name:p.name,coordinates:[p.lat,p.lng]});onCountrySelect?.(p.name)}} onPointerOver={()=>setHovered(p.name)} onPointerOut={()=>setHovered(null)}><sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/><meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/></mesh>
  {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight:700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
  </group>})}</>;
 }
@@ -41,21 +43,18 @@ function AntiqueGlow(){return <Sphere args={[0.745,64,64]}><meshBasicMaterial co
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#35205F" transparent opacity={.12}/></Sphere>}
 
 export default function LiteraryGlobe({onCountrySelect}:Props){
+ const [selectedCountry,setSelectedCountry]=useState<CountryFocus>(null);
  useEffect(()=>{
-  fetch('/data/geo/countries.geojson')
-   .then(response=>response.json())
-   .then(data=>setWorldContours(parseWorldContours(data)))
-   .catch(()=>{});
+  fetch('/data/geo/countries.geojson').then(response=>response.json()).then(data=>setWorldContours(parseWorldContours(data))).catch(()=>{});
  },[]);
-
  return <div style={{width:'100%',height:'560px',background:'radial-gradient(circle,#35205F,#1F103D)',borderRadius:18,overflow:'hidden'}}>
  <Canvas camera={{position:[0,0,3.45],fov:35}}>
   <ambientLight intensity={2}/><directionalLight position={[4,3,4]} intensity={2.5}/>
   <AntiqueFrame/><AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><HistoricalMapLines/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
   <AntiqueContinentLayer features={worldContours}/>
-  <LiteraryMarkers onCountrySelect={onCountrySelect}/>
-  <GlobeCountryFocus />
-  <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
+  <LiteraryMarkers onCountrySelect={onCountrySelect} onFocus={setSelectedCountry}/>
+  <GlobeCountryFocus country={selectedCountry?.name} coordinates={selectedCountry?.coordinates}/>
+  <OrbitControls enableZoom enablePan={false} autoRotate={!selectedCountry} autoRotateSpeed={0.06}/>
  </Canvas>
  </div>
 }
