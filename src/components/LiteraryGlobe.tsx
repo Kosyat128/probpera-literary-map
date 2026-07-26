@@ -20,6 +20,7 @@ function geoToSphere(lat: number, lng: number, radius = 1.08) {
 
 function LiteraryMarkers({ onCountrySelect }: Props) {
   const [active, setActive] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const markers = useMemo(() => countries
     .filter((country) => country.coordinates && country.writers.length > 0)
@@ -38,36 +39,47 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
       };
     }), []);
 
-  return <>{markers.map((point) => (
-    <group key={point.name} position={point.position}>
-      <mesh onClick={() => {
-        setActive(point.name);
-        onCountrySelect?.(point.name);
-      }}>
-        <sphereGeometry args={[point.size, 32, 32]} />
-        <meshStandardMaterial
-          color={active === point.name ? "#F6B04A" : point.color}
-          emissive={point.color}
-          emissiveIntensity={active === point.name ? 1.8 : 1.2}
-        />
-      </mesh>
-      <Html distanceFactor={7} center>
-        <div style={{
-          background: "rgba(255,248,238,.97)",
-          color: "#35205F",
-          border: `2px solid ${point.color}`,
-          borderRadius: "16px",
-          padding: "6px 12px",
-          fontSize: "12px",
-          fontWeight: 700,
-          boxShadow: "0 8px 20px rgba(0,0,0,.3)",
-          whiteSpace: "nowrap"
-        }}>
-          🌐 {point.name}<br/>📚 {point.count} авторов
-        </div>
-      </Html>
-    </group>
-  ))}</>;
+  return <>{markers.map((point) => {
+    const isFocused = active === point.name || hovered === point.name;
+
+    return (
+      <group key={point.name} position={point.position}>
+        <mesh
+          onClick={() => {
+            setActive(point.name);
+            onCountrySelect?.(point.name);
+          }}
+          onPointerOver={() => setHovered(point.name)}
+          onPointerOut={() => setHovered(null)}
+        >
+          <sphereGeometry args={[isFocused ? point.size * 1.35 : point.size, 32, 32]} />
+          <meshStandardMaterial
+            color={isFocused ? "#F6B04A" : point.color}
+            emissive={point.color}
+            emissiveIntensity={isFocused ? 2 : 1.2}
+          />
+        </mesh>
+
+        {isFocused && (
+          <Html distanceFactor={6} center>
+            <div style={{
+              background: "#FFF8EE",
+              color: "#35205F",
+              border: `2px solid ${point.color}`,
+              borderRadius: "18px",
+              padding: "8px 14px",
+              fontSize: "13px",
+              fontWeight: 700,
+              boxShadow: "0 10px 25px rgba(0,0,0,.35)",
+              whiteSpace: "nowrap"
+            }}>
+              🌐 {point.name}<br/>📚 {point.count} авторов
+            </div>
+          </Html>
+        )}
+      </group>
+    );
+  })}</>;
 }
 
 function GlobeGrid() {
