@@ -17,6 +17,7 @@ export type WriterProfile = {
 
   country?: string;
   movement?: string;
+  literaryEra?: string;
 
   genres?: string[];
   languages?: string[];
@@ -43,6 +44,7 @@ export type WriterProfile = {
 
   relatedWriters?: string[];
   articleUrl?: string;
+  articles?: string[];
 
   [key: string]: unknown;
 };
