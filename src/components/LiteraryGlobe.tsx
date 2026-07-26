@@ -19,26 +19,25 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
     <>
       {points.map((point) => (
         <group key={point.name} position={[point.x, point.y, point.z]}>
-          <mesh
-            onClick={() => onCountrySelect?.(point.name)}
-          >
-            <sphereGeometry args={[0.07, 32, 32]} />
+          <mesh onClick={() => onCountrySelect?.(point.name)}>
+            <sphereGeometry args={[0.085, 32, 32]} />
             <meshStandardMaterial
               color={point.color}
               emissive={point.color}
-              emissiveIntensity={0.7}
+              emissiveIntensity={1}
             />
           </mesh>
-          <Html distanceFactor={7} center>
+          <Html distanceFactor={6} center>
             <div
               style={{
                 background: "#FFF8EE",
                 color: "#35205F",
                 border: `2px solid ${point.color}`,
-                borderRadius: "20px",
-                padding: "4px 8px",
-                fontSize: "12px",
+                borderRadius: "18px",
+                padding: "5px 10px",
+                fontSize: "13px",
                 fontWeight: 700,
+                boxShadow: "0 4px 14px rgba(0,0,0,.25)",
                 whiteSpace: "nowrap"
               }}
             >
@@ -48,6 +47,18 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
         </group>
       ))}
     </>
+  );
+}
+
+function GlobeAtmosphere() {
+  return (
+    <Sphere args={[1.03, 64, 64]}>
+      <meshStandardMaterial
+        color="#E7C98A"
+        transparent
+        opacity={0.12}
+      />
+    </Sphere>
   );
 }
 
@@ -63,15 +74,17 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
       }}
     >
       <Canvas camera={{ position: [0, 0, 3.2] }}>
-        <ambientLight intensity={1.4} />
+        <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 3]} intensity={2} />
 
-        <Sphere args={[1, 96, 96]}>
+        <Sphere args={[1, 128, 128]}>
           <meshStandardMaterial
             color="#C8A96A"
-            roughness={1}
+            roughness={0.95}
           />
         </Sphere>
+
+        <GlobeAtmosphere />
 
         <LiteraryMarkers onCountrySelect={onCountrySelect} />
 
@@ -79,7 +92,7 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
           enableZoom
           enablePan={false}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={0.35}
         />
       </Canvas>
     </div>
