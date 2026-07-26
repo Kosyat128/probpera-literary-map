@@ -15,6 +15,8 @@ export default function CountryStats({country}: Props){
 
   const metadata = getCountryMetadata(country.id);
 
+  const featuredWriters = country.writers.slice(0, 5);
+
   return (
     <div style={{
       background:"#FFF8EE",
@@ -49,6 +51,15 @@ export default function CountryStats({country}: Props){
           </div>
         </div>
       )}
+
+      <div style={{marginTop:"15px"}}>
+        ⭐ Главные авторы:
+        <ul>
+          {featuredWriters.map((writer) => (
+            <li key={writer.id}>{writer.fullName || writer.name}</li>
+          ))}
+        </ul>
+      </div>
 
       <p style={{marginTop:"15px"}}>
         Литературное влияние
