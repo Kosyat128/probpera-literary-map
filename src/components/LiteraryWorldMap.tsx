@@ -33,23 +33,25 @@ export default function LiteraryWorldMap() {
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "260px minmax(800px, 1fr) 340px",
-      gap: "12px",
+      gridTemplateColumns: "240px minmax(900px, 1fr) 320px",
+      gap: "14px",
       minHeight: "820px",
-      position: "relative"
+      position: "relative",
+      alignItems: "stretch"
     }}>
       <aside style={{
         background:"#1F103D",
         borderRadius:"16px",
-        padding:"16px",
+        padding:"14px",
         color:"white",
-        overflowY:"auto"
+        overflowY:"auto",
+        height:"760px"
       }}>
         <h2>🌍 Страны мира</h2>
         {countries.map(country => (
           <div key={country.id}
             onClick={()=>selectCountry(country.name)}
-            style={{padding:"8px",cursor:"pointer"}}>
+            style={{padding:"7px",cursor:"pointer"}}>
             🌐 {country.name}
             <span style={{float:"right",color:"#E97824"}}>
               {country.writers.length}
@@ -60,7 +62,7 @@ export default function LiteraryWorldMap() {
 
       <main style={{position:"relative",minWidth:0}}>
         {showFilters && (
-          <div style={{position:"absolute",top:10,left:10,zIndex:10}}>
+          <div style={{position:"absolute",top:15,left:15,zIndex:10}}>
             <GlobalWriterFilters filters={filters} onChange={setFilters}/>
           </div>
         )}
@@ -69,19 +71,22 @@ export default function LiteraryWorldMap() {
           onClick={()=>setShowFilters(!showFilters)}
           style={{
             position:"absolute",
-            right:15,
-            bottom:15,
+            right:20,
+            bottom:20,
             zIndex:10,
             background:"#FFF8EE",
+            color:"#35205F",
             border:"none",
             padding:"10px 16px",
-            borderRadius:"10px"
+            borderRadius:"12px",
+            cursor:"pointer"
           }}>
           ⚱ Фильтры
         </button>
 
         <div style={{
           height:"760px",
+          width:"100%",
           position:"relative",
           borderRadius:"18px",
           overflow:"hidden"
@@ -95,6 +100,7 @@ export default function LiteraryWorldMap() {
             onCountrySelect={selectCountry}
             selectedCountry={selectedCountry?.id}
           />
+
           {selectedWriter && (
             <WriterCard
               writer={selectedWriter}
