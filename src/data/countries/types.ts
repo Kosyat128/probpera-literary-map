@@ -52,7 +52,15 @@ export type Country = {
   name: string;
   code?: string;
   flag?: string;
+
   coordinates?: [number, number] | { lat: number; lng: number };
+
+  region?: string;
+  continent?: string;
+  officialLanguage?: string;
+  literaryPeriods?: string[];
+  literaryMovements?: string[];
+
   writers: WriterProfile[];
 
   [key: string]: unknown;
