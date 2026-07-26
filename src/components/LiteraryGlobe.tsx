@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls, Sphere } from "@react-three/drei";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { countries } from "../data/countries";
 
 interface Props {
@@ -19,6 +19,8 @@ function geoToSphere(lat: number, lng: number, radius = 1.08) {
 }
 
 function LiteraryMarkers({ onCountrySelect }: Props) {
+  const [active, setActive] = useState<string | null>(null);
+
   const markers = useMemo(() => countries
     .filter((country) => country.coordinates && country.writers.length > 0)
     .map((country) => {
@@ -38,13 +40,20 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
 
   return <>{markers.map((point) => (
     <group key={point.name} position={point.position}>
-      <mesh onClick={() => onCountrySelect?.(point.name)}>
+      <mesh onClick={() => {
+        setActive(point.name);
+        onCountrySelect?.(point.name);
+      }}>
         <sphereGeometry args={[point.size, 32, 32]} />
-        <meshStandardMaterial color={point.color} emissive={point.color} emissiveIntensity={1.2} />
+        <meshStandardMaterial
+          color={active === point.name ? "#F6B04A" : point.color}
+          emissive={point.color}
+          emissiveIntensity={active === point.name ? 1.8 : 1.2}
+        />
       </mesh>
       <Html distanceFactor={7} center>
         <div style={{
-          background: "rgba(255,248,238,.96)",
+          background: "rgba(255,248,238,.97)",
           color: "#35205F",
           border: `2px solid ${point.color}`,
           borderRadius: "16px",
@@ -85,15 +94,12 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
       <ambientLight intensity={1.4} />
       <directionalLight position={[3, 3, 3]} intensity={2.5} />
       <pointLight position={[-3, 2, 3]} intensity={1.7} />
-
       <Sphere args={[1, 128, 128]}>
         <meshStandardMaterial color="#C8A96A" roughness={0.9} metalness={0.05} />
       </Sphere>
-
       <GlobeGrid />
       <AntiqueGlow />
       <LiteraryMarkers onCountrySelect={onCountrySelect} />
-
       <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.25} />
     </Canvas>
   </div>;
