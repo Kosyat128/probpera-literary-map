@@ -18,6 +18,7 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
       .then((response) => response.text())
       .then((svg) => {
         const fixedSvg = svg
+          .replace(/<svg([^>]*)>/, '<svg$1 preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block;">')
           .replace(/fill="#ececec"/g, 'fill="transparent"')
           .replace(/fill="#ffffff"/g, 'fill="transparent"');
         setSvgContent(fixedSvg);
@@ -67,9 +68,7 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
           setHovered(id && literaryCountries[id as keyof typeof literaryCountries] ? id : null);
         }}
         onMouseLeave={() => setHovered(null)}
-        dangerouslySetInnerHTML={{
-          __html: svgContent.replace(/<path/g, '<path style="fill:transparent;cursor:pointer"')
-        }}
+        dangerouslySetInnerHTML={{ __html: svgContent }}
         style={{
           position: "absolute",
           inset: 0,
