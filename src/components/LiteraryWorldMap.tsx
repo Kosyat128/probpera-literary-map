@@ -1,47 +1,29 @@
-import GlobalWriterFilters from "./GlobalWriterFilters";
-import LiteraryGlobe from "./LiteraryGlobe";
-import WriterCard from "./WriterCard";
-import WriterPanel from "./WriterPanel";
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
+import LiteraryGlobe from "./LiteraryGlobe";
 
 interface Props {
+  countries: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
-  onCountrySelect?: (name: string) => void;
+  onCountrySelect?: (country: Country) => void;
   onWriterSelect?: (writer: WriterProfile | null) => void;
-  filters: WriterFilterState;
-  onFiltersChange: (filters: WriterFilterState) => void;
+  filters?: WriterFilterState;
+  onFiltersChange?: (filters: WriterFilterState) => void;
 }
 
 export default function LiteraryWorldMap({
+  countries,
   selectedCountry,
-  selectedWriter,
   onCountrySelect,
-  onWriterSelect,
-  filters,
-  onFiltersChange,
 }: Props) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(700px,1fr) 340px",
-        gap: 16,
-        width: "100%",
-        minHeight: 700,
-        alignItems: "start",
-      }}
-    >
-      <main style={{ minWidth: 0 }}>
-        <div style={{ background: "#FFF8EE", borderRadius: 16, padding: 10, marginBottom: 12 }}>
-          <GlobalWriterFilters filters={filters} onChange={onFiltersChange} />
-        </div>
-        <LiteraryGlobe onCountrySelect={onCountrySelect} />
-        {selectedWriter && <WriterCard writer={selectedWriter} onClose={() => onWriterSelect?.(null)} />}
-      </main>
-
-      {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={onWriterSelect as any} />}
-    </div>
+    <section className="world-map-stage" aria-label="Интерактивный литературный глобус">
+      <LiteraryGlobe
+        countries={countries}
+        selectedCountry={selectedCountry}
+        onCountrySelect={onCountrySelect}
+      />
+    </section>
   );
 }

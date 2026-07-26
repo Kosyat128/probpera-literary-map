@@ -16,16 +16,14 @@ function projectPoint(lat:number,lng:number,radius=0.742):[number,number,number]
   ];
 }
 
-function normalizeCoordinates(coords:number[][]|number[][][]){
+function normalizeCoordinates(coords:number[][]|number[][][]):number[][][]{
   if(!coords.length) return [];
 
-  // Polygon: берём внешний контур
   if(Array.isArray(coords[0]) && typeof coords[0][0] === "number") {
-    return coords as number[][];
+    return [coords as number[][]];
   }
 
-  // MultiPolygon: внешний контур каждого полигона
-  return (coords as number[][][]).map(polygon => polygon[0]).filter(Boolean);
+  return (coords as number[][][]).filter((line) => line.length > 0);
 }
 
 export default function AntiqueContinentLayer({features=[]}:Props){
@@ -33,27 +31,16 @@ export default function AntiqueContinentLayer({features=[]}:Props){
     {features.map((feature,index)=>{
       const normalized=normalizeCoordinates(feature.coordinates);
 
-      if(normalized.length && Array.isArray(normalized[0][0])){
-        return (normalized as number[][][]).map((line,i)=>(
-          <Line
-            key={`${index}-${i}`}
-            points={line.map(([lng,lat])=>projectPoint(lat,lng))}
-            color="#24150C"
-            lineWidth={1}
-            transparent
-            opacity={0.55}
-          />
-        ));
-      }
-
-      return <Line
-        key={index}
-        points={(normalized as number[][]).map(([lng,lat])=>projectPoint(lat,lng))}
-        color="#24150C"
-        lineWidth={1}
-        transparent
-        opacity={0.55}
-      />;
+      return normalized.map((line,i)=>(
+        <Line
+          key={`${index}-${i}`}
+          points={line.map(([lng,lat])=>projectPoint(lat,lng))}
+          color="#24150C"
+          lineWidth={1}
+          transparent
+          opacity={0.55}
+        />
+      ));
     })}
   </>;
 }

@@ -34,6 +34,9 @@ export type WriterProfile = {
   awards?: string[];
 
   nobelYear?: number;
+  nobel?: boolean;
+  isNobel?: boolean;
+  nobelPrize?: string | boolean;
 
   places?: string[];
 
@@ -62,6 +65,33 @@ export type Country = {
   officialLanguage?: string;
   literaryPeriods?: string[];
   literaryMovements?: string[];
+  periods?: string[];
+
+  capital?: string;
+  description?: string;
+  history?: string;
+  historicalNote?: string;
+  facts?: string[];
+  literaryPlaces?: string[];
+  timeline?: Array<
+    | string
+    | {
+        year?: string | number;
+        title?: string;
+        description?: string;
+      }
+  >;
+  chronology?: Array<
+    | string
+    | {
+        year?: string | number;
+        title?: string;
+        description?: string;
+      }
+  >;
+  nobel?: number;
+  places?: number;
+  influence?: number;
 
   writers: WriterProfile[];
 

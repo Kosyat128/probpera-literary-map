@@ -1,64 +1,213 @@
-import { useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 
-import Sidebar from "./components/Sidebar";
-import LiteraryWorldMap from "./components/LiteraryWorldMap";
-import WriterPanel from "./components/WriterPanel";
-import Timeline from "./components/Timeline";
-import LiteraryPlaces from "./components/LiteraryPlaces";
-import QuoteOfDay from "./components/QuoteOfDay";
-import LiteraryCalendar from "./components/LiteraryCalendar";
-
-import { countries } from "./data/countries";
 import type { Country, Writer } from "./data/countries";
 
+const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
+const WriterPanel = lazy(() => import("./components/WriterPanel"));
+
+const featuredCountryIds = [
+  "russia",
+  "france",
+  "england",
+  "germany",
+  "italy",
+  "japan",
+  "usa",
+  "india",
+];
+
+function normalizeSearch(value: string) {
+  return value.trim().toLocaleLowerCase("ru");
+}
+
 export default function App() {
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries[0] ?? null);
-  const [selectedWriter, setSelectedWriter] = useState<Writer | null>(countries[0]?.writers?.[0] ?? null);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
+  const [countryArchive, setCountryArchive] = useState<Country[]>([]);
+  const [search, setSearch] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  if (!selectedCountry) return <div>База стран не загружена</div>;
+  useEffect(() => {
+    let active = true;
+    import("./data/countries").then((module) => {
+      if (active) setCountryArchive(module.countries);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
-  const handleCountrySelect = (name: string) => {
-    const country = countries.find((item) => item.name === name);
-    if (country) {
-      setSelectedCountry(country);
-      setSelectedWriter(country.writers?.[0] ?? null);
+  const totalWriters = useMemo(
+    () => countryArchive.reduce((total, country) => total + country.writers.length, 0),
+    [countryArchive]
+  );
+
+  const searchResults = useMemo(() => {
+    const query = normalizeSearch(search);
+
+    if (!query) {
+      return featuredCountryIds
+        .map((id) => countryArchive.find((country) => country.id === id))
+        .filter((country): country is Country => Boolean(country));
     }
-  };
 
-  const handleWriterSelect = (writer: Writer) => setSelectedWriter(writer);
+    return countryArchive
+      .filter((country) =>
+        [country.name, country.id, country.code]
+          .filter(Boolean)
+          .some((value) => normalizeSearch(value!).includes(query))
+      )
+      .sort((first, second) => first.name.localeCompare(second.name, "ru"))
+      .slice(0, 9);
+  }, [countryArchive, search]);
 
-  const activeWriter = selectedWriter || selectedCountry.writers?.[0] || null;
+  const selectCountry = useCallback((country: Country) => {
+    setSelectedCountry(country);
+    setSelectedWriter(country.writers[0] ?? null);
+    setSearch("");
+    setSearchOpen(false);
+  }, []);
+
+  const closeCountry = useCallback(() => {
+    setSelectedCountry(null);
+    setSelectedWriter(null);
+  }, []);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F7EBDD", color: "#35205F", fontFamily: "Georgia, serif" }}>
-      <header style={{height:"72px",background:"#1F103D",color:"white",display:"flex",alignItems:"center",padding:"0 28px",fontSize:"28px",fontWeight:"bold",boxShadow:"0 10px 30px rgba(31,16,61,0.18)"}}>
-        LiteraryMap
-        <span style={{marginLeft:"20px",color:"#E97824",fontSize:"18px"}}>Литературная карта мира</span>
+    <div className="museum-app">
+      <header className="site-header">
+        <a className="brand" href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
+          <span className="brand-seal" aria-hidden="true">
+            ПП
+          </span>
+          <span>
+            <strong>Проба Пера</strong>
+            <small>Литературный атлас мира</small>
+          </span>
+        </a>
+
+        <div
+          className={`country-search${searchOpen ? " is-open" : ""}`}
+          onFocus={() => setSearchOpen(true)}
+          onBlur={() => window.setTimeout(() => setSearchOpen(false), 120)}
+        >
+          <label htmlFor="country-search">Найти страну</label>
+          <div className="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="country-search"
+              value={search}
+              placeholder={selectedCountry?.name || "Россия, Франция, Япония…"}
+              autoComplete="off"
+              aria-expanded={searchOpen}
+              aria-controls="country-results"
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") setSearchOpen(false);
+                if (event.key === "Enter" && searchResults[0]) {
+                  event.preventDefault();
+                  selectCountry(searchResults[0]);
+                }
+              }}
+            />
+            <kbd>↵</kbd>
+          </div>
+
+          {searchOpen && (
+            <div className="search-results" id="country-results">
+              <span className="search-caption">
+                {search ? "Результаты поиска" : "Избранные архивы"}
+              </span>
+              {searchResults.length > 0 ? (
+                searchResults.map((country) => (
+                  <button
+                    type="button"
+                    key={country.id}
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => selectCountry(country)}
+                  >
+                    <span>{country.name}</span>
+                    <small>{country.writers.length} авторов</small>
+                  </button>
+                ))
+              ) : (
+                <p>Страна не найдена в архиве.</p>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="archive-totals" aria-label="Объём энциклопедии">
+          <span>{countryArchive.length || "…"}</span>
+          <small>стран</small>
+          <i aria-hidden="true" />
+          <span>{totalWriters ? totalWriters.toLocaleString("ru-RU") : "…"}</span>
+          <small>автора</small>
+        </div>
       </header>
 
-      <div style={{display:"grid",gridTemplateColumns:"260px minmax(720px,1fr) 340px",gap:"14px",padding:"14px",alignItems:"start"}}>
-        <Sidebar items={countries.map((country)=>country.name)} selectedItem={selectedCountry.name} onSelect={handleCountrySelect}/>
+      <main className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
+        <section className="globe-column">
+          <div className="hero-copy">
+            <span className="eyebrow">Интерактивная энциклопедия</span>
+            <h1>
+              Мир, рассказанный
+              <br />
+              <em>голосами писателей</em>
+            </h1>
+            <p>
+              Вращайте старинный глобус и выберите страну, чтобы открыть её литературный архив.
+            </p>
+          </div>
 
-        <main style={{display:"flex",flexDirection:"column",gap:"14px"}}>
-          <QuoteOfDay countryName={selectedCountry.name} writer={activeWriter}/>
-          <LiteraryWorldMap
-            selectedCountry={selectedCountry}
-            selectedWriter={activeWriter as any}
-            onCountrySelect={handleCountrySelect}
-            onWriterSelect={handleWriterSelect as any}
-            filters={{}}
-            onFiltersChange={() => {}}
-          />
-          <Timeline name={activeWriter?.name || activeWriter?.fullName || selectedCountry.writers[0]?.name} years={activeWriter?.years || selectedCountry.writers[0]?.years}/>
-        </main>
+          {countryArchive.length > 0 ? (
+            <Suspense
+              fallback={
+                <div className="globe-loading" role="status">
+                  <span aria-hidden="true">✦</span>
+                  <p>Открываем мировой атлас…</p>
+                </div>
+              }
+            >
+              <LiteraryWorldMap
+                countries={countryArchive}
+                selectedCountry={selectedCountry}
+                onCountrySelect={selectCountry}
+              />
+            </Suspense>
+          ) : (
+            <div className="globe-loading" role="status">
+              <span aria-hidden="true">✦</span>
+              <p>Читаем каталог стран…</p>
+            </div>
+          )}
 
-        <WriterPanel country={selectedCountry} onWriterSelect={handleWriterSelect}/>
-      </div>
+          <div className="museum-note">
+            <span aria-hidden="true">✦</span>
+            <p>
+              Страны без подписей. Наведите на территорию, чтобы увидеть название и объём архива.
+            </p>
+          </div>
+        </section>
 
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px",padding:"14px"}}>
-        <LiteraryCalendar countryName={selectedCountry.name} writer={activeWriter}/>
-        <LiteraryPlaces/>
-      </div>
+        {selectedCountry && (
+          <Suspense fallback={<div className="country-panel panel-loading">Открываем архив…</div>}>
+            <WriterPanel
+              key={selectedCountry.id}
+              country={selectedCountry}
+              selectedWriter={selectedWriter}
+              onWriterSelect={setSelectedWriter}
+              onClose={closeCountry}
+            />
+          </Suspense>
+        )}
+      </main>
+
+      <footer className="site-footer">
+        <span>MMXXVI</span>
+        <p>Цифровая коллекция мировой литературы</p>
+        <span>Архив открыт</span>
+      </footer>
     </div>
   );
 }

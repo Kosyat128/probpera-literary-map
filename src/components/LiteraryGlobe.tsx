@@ -1,240 +1,477 @@
-import { Canvas } from "@react-three/fiber";
-import { Html, OrbitControls, Sphere } from "@react-three/drei";
-import { useEffect, useMemo, useState } from "react";
-import { countries } from "../data/countries";
-import { worldContours, setWorldContours } from "../data/worldContours";
-import { parseWorldContours } from "../data/loadWorldContours";
-import AntiqueContinentLayer from "./AntiqueContinentLayer";
-import GlobeCountryFocus from "./GlobeCountryFocus";
+import { Canvas, type ThreeEvent, useThree } from "@react-three/fiber";
+import { OrbitControls, Sparkles, Sphere } from "@react-three/drei";
+import { gsap } from "gsap";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import * as THREE from "three";
+import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
+
+import type { Country } from "../data/countries";
+import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
 
 interface Props {
-  onCountrySelect?: (name: string) => void;
+  countries: Country[];
+  selectedCountry?: Country | null;
+  onCountrySelect?: (country: Country) => void;
 }
 
-type CountryFocus = { name: string; coordinates: [number, number] } | null;
+type PointerOrigin = {
+  x: number;
+  y: number;
+};
 
-function geoToSphere(lat: number, lng: number, radius = 0.78): [number, number, number] {
-  const phi = (90 - lat) * Math.PI / 180;
-  const theta = (lng + 180) * Math.PI / 180;
-  return [
+function geoToCameraPosition(lat: number, lng: number, radius = 3.05) {
+  const phi = ((90 - lat) * Math.PI) / 180;
+  const theta = ((lng + 180) * Math.PI) / 180;
+
+  return new THREE.Vector3(
     -radius * Math.sin(phi) * Math.cos(theta),
     radius * Math.cos(phi),
-    radius * Math.sin(phi) * Math.sin(theta),
+    radius * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+function fallbackCountryCoordinates(country: Country): [number, number] | null {
+  if (Array.isArray(country.coordinates)) return country.coordinates;
+  if (country.coordinates) return [country.coordinates.lat, country.coordinates.lng];
+
+  const points = country.writers
+    .map((writer) => writer.coordinates)
+    .filter((coordinates): coordinates is { lat: number; lng: number } => Boolean(coordinates));
+  if (!points.length) return null;
+
+  const vector = points.reduce(
+    (sum, point) => {
+      const lat = THREE.MathUtils.degToRad(point.lat);
+      const lng = THREE.MathUtils.degToRad(point.lng);
+      sum.x += Math.cos(lat) * Math.cos(lng);
+      sum.y += Math.cos(lat) * Math.sin(lng);
+      sum.z += Math.sin(lat);
+      return sum;
+    },
+    new THREE.Vector3()
+  );
+  vector.normalize();
+
+  return [
+    THREE.MathUtils.radToDeg(Math.atan2(vector.z, Math.hypot(vector.x, vector.y))),
+    THREE.MathUtils.radToDeg(Math.atan2(vector.y, vector.x)),
   ];
 }
 
-function LiteraryMarkers({
-  onCountrySelect,
-  onFocus,
+function CameraFocus({
+  countryId,
+  coordinates,
+  controlsRef,
 }: {
-  onCountrySelect?: Props["onCountrySelect"];
-  onFocus: (focus: CountryFocus) => void;
+  countryId?: string | null;
+  coordinates?: [number, number] | null;
+  controlsRef: RefObject<OrbitControlsImpl>;
 }) {
-  const [active, setActive] = useState<string | null>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
+  const { camera } = useThree();
 
-  const markers = useMemo(
+  useEffect(() => {
+    const controls = controlsRef.current;
+
+    if (!countryId || !coordinates) {
+      if (controls) controls.autoRotate = true;
+      return;
+    }
+
+    const [lat, lng] = coordinates;
+    const destination = geoToCameraPosition(lat, lng);
+    if (controls) controls.autoRotate = false;
+
+    const cameraTween = gsap.to(camera.position, {
+      x: destination.x,
+      y: destination.y,
+      z: destination.z,
+      duration: 1.45,
+      ease: "power3.inOut",
+      overwrite: true,
+      onUpdate: () => {
+        camera.lookAt(0, 0, 0);
+        controls?.update();
+      },
+    });
+
+    const rotationResume = gsap.delayedCall(1.75, () => {
+      if (controlsRef.current) controlsRef.current.autoRotate = true;
+    });
+
+    return () => {
+      cameraTween.kill();
+      rotationResume.kill();
+    };
+  }, [camera, controlsRef, coordinates, countryId]);
+
+  return null;
+}
+
+function MuseumAtmosphere() {
+  const material = useMemo(
     () =>
-      countries
-        .filter((country) => country.coordinates && country.writers.length > 0)
-        .map((country) => {
-          const co = country.coordinates;
-          const lat = Array.isArray(co) ? co[0] : co?.lat;
-          const lng = Array.isArray(co) ? co[1] : co?.lng;
+      new THREE.ShaderMaterial({
+        transparent: true,
+        depthWrite: false,
+        side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
+        vertexShader: `
+          varying vec3 vWorldNormal;
+          varying vec3 vWorldPosition;
 
-          return {
-            name: country.name,
-            count: country.writers.length,
-            lat: lat || 0,
-            lng: lng || 0,
-            position: geoToSphere(lat || 0, lng || 0),
-            color: country.writers.length >= 20 ? "#D66A1F" : "#6B3FA0",
-            size: 0.024 + Math.min(country.writers.length / 750, 0.034),
-          };
-        }),
+          void main() {
+            vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+            vWorldPosition = worldPosition.xyz;
+            vWorldNormal = normalize(mat3(modelMatrix) * normal);
+            gl_Position = projectionMatrix * viewMatrix * worldPosition;
+          }
+        `,
+        fragmentShader: `
+          varying vec3 vWorldNormal;
+          varying vec3 vWorldPosition;
+
+          void main() {
+            vec3 viewDirection = normalize(cameraPosition - vWorldPosition);
+            float fresnel = 1.0 - max(0.0, dot(normalize(vWorldNormal), viewDirection));
+            float glow = pow(fresnel, 2.7);
+            gl_FragColor = vec4(0.91, 0.60, 0.24, glow * 0.42);
+          }
+        `,
+      }),
     []
   );
 
+  useEffect(() => () => material.dispose(), [material]);
+
   return (
-    <>
-      {markers.map((marker) => {
-        const focus = active === marker.name || hovered === marker.name;
+    <mesh scale={1.16}>
+      <sphereGeometry args={[1, 96, 96]} />
+      <primitive object={material} attach="material" />
+    </mesh>
+  );
+}
+
+function GlobeSurface({
+  atlas,
+  selectedCountry,
+  onCountrySelect,
+  onCountryHover,
+}: {
+  atlas: GlobeAtlas;
+  selectedCountry?: Country | null;
+  onCountrySelect?: (country: Country) => void;
+  onCountryHover: (country: Country | null) => void;
+}) {
+  const pointerOrigin = useRef<PointerOrigin | null>(null);
+  const hoveredCountryId = useRef<string | null>(null);
+
+  const countryFromEvent = (event: ThreeEvent<PointerEvent>) =>
+    event.uv ? atlas.countryAtUv(event.uv) : null;
+
+  const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    const country = countryFromEvent(event);
+    const nextId = country?.id ?? null;
+    if (hoveredCountryId.current === nextId) return;
+
+    hoveredCountryId.current = nextId;
+    onCountryHover(country);
+  };
+
+  const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    pointerOrigin.current = {
+      x: event.nativeEvent.clientX,
+      y: event.nativeEvent.clientY,
+    };
+  };
+
+  const handlePointerUp = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    const start = pointerOrigin.current;
+    pointerOrigin.current = null;
+    if (!start) return;
+
+    const distance = Math.hypot(
+      event.nativeEvent.clientX - start.x,
+      event.nativeEvent.clientY - start.y
+    );
+    if (distance > 7) return;
+
+    const country = countryFromEvent(event);
+    if (country) onCountrySelect?.(country);
+  };
+
+  return (
+    <group>
+      <Sphere
+        args={[1, 128, 128]}
+        onPointerMove={handlePointerMove}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerOut={() => {
+          hoveredCountryId.current = null;
+          onCountryHover(null);
+        }}
+      >
+        <meshPhysicalMaterial
+          map={atlas.mapTexture}
+          bumpMap={atlas.mapTexture}
+          bumpScale={0.018}
+          roughness={0.72}
+          metalness={0.04}
+          clearcoat={0.2}
+          clearcoatRoughness={0.66}
+          emissive="#2b160c"
+          emissiveIntensity={0.06}
+        />
+      </Sphere>
+
+      <Sphere args={[1.006, 128, 128]} raycast={() => null}>
+        <meshBasicMaterial
+          map={atlas.highlightTexture}
+          transparent
+          depthWrite={false}
+          toneMapped={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </Sphere>
+
+      <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
+        <torusGeometry args={[1.009, 0.0022, 8, 256]} />
+        <meshBasicMaterial
+          color="#e5b66a"
+          transparent
+          opacity={selectedCountry ? 0.18 : 0.11}
+          toneMapped={false}
+        />
+      </mesh>
+
+      <MuseumAtmosphere />
+    </group>
+  );
+}
+
+function MicrostateMarkers({
+  atlas,
+  countries,
+  selectedCountry,
+  onCountrySelect,
+  onCountryHover,
+}: {
+  atlas: GlobeAtlas;
+  countries: Country[];
+  selectedCountry?: Country | null;
+  onCountrySelect?: (country: Country) => void;
+  onCountryHover: (country: Country | null) => void;
+}) {
+  const microstates = useMemo(
+    () =>
+      countries
+        .filter((country) => !atlas.centroidForCountry(country.id))
+        .map((country) => ({
+          country,
+          coordinates: fallbackCountryCoordinates(country),
+        }))
+        .filter(
+          (
+            item
+          ): item is {
+            country: Country;
+            coordinates: [number, number];
+          } => Boolean(item.coordinates)
+        ),
+    [atlas, countries]
+  );
+
+  return (
+    <group>
+      {microstates.map(({ country, coordinates }) => {
+        const selected = selectedCountry?.id === country.id;
+        const position = geoToCameraPosition(coordinates[0], coordinates[1], 1.016);
 
         return (
-          <group key={marker.name} position={marker.position}>
-            <mesh
-              onClick={() => {
-                setActive(marker.name);
-                onFocus({ name: marker.name, coordinates: [marker.lat, marker.lng] });
-                onCountrySelect?.(marker.name);
-              }}
-              onPointerOver={() => setHovered(marker.name)}
-              onPointerOut={() => setHovered(null)}
-            >
-              <sphereGeometry args={[focus ? marker.size * 2.35 : marker.size, 32, 32]} />
-              <meshStandardMaterial
-                color={focus ? "#F3B24D" : marker.color}
-                emissive={marker.color}
-                emissiveIntensity={focus ? 4 : 1}
-              />
-            </mesh>
-
-            {focus && (
-              <Html center>
-                <div
-                  style={{
-                    background: "#F7EBD8",
-                    color: "#35205F",
-                    border: "2px solid #D66A1F",
-                    borderRadius: 12,
-                    padding: "10px 14px",
-                    fontWeight: 700,
-                    boxShadow: "0 12px 30px rgba(31,16,61,0.18)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  🌍 {marker.name}
-                  <br />
-                  📚 Авторов: {marker.count}
-                </div>
-              </Html>
-            )}
-          </group>
+          <mesh
+            key={country.id}
+            position={position}
+            onPointerOver={(event) => {
+              event.stopPropagation();
+              onCountryHover(country);
+            }}
+            onPointerOut={(event) => {
+              event.stopPropagation();
+              onCountryHover(null);
+            }}
+            onClick={(event) => {
+              event.stopPropagation();
+              onCountrySelect?.(country);
+            }}
+          >
+            <sphereGeometry args={[selected ? 0.019 : 0.012, 16, 16]} />
+            <meshStandardMaterial
+              color={selected ? "#ffe0a0" : "#d9a650"}
+              emissive="#d48a2e"
+              emissiveIntensity={selected ? 4.2 : 2.1}
+              roughness={0.45}
+              metalness={0.24}
+            />
+          </mesh>
         );
       })}
+    </group>
+  );
+}
+
+function GlobeScene({
+  atlas,
+  countries,
+  selectedCountry,
+  onCountrySelect,
+  onCountryHover,
+}: {
+  atlas: GlobeAtlas;
+  countries: Country[];
+  selectedCountry?: Country | null;
+  onCountrySelect?: (country: Country) => void;
+  onCountryHover: (country: Country | null) => void;
+}) {
+  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const coordinates = selectedCountry
+    ? atlas.centroidForCountry(selectedCountry.id) || fallbackCountryCoordinates(selectedCountry)
+    : null;
+
+  return (
+    <>
+      <ambientLight intensity={0.72} color="#f3d6a0" />
+      <hemisphereLight args={["#ffe1ad", "#160d08", 1.25]} />
+      <directionalLight position={[4.5, 3.4, 4]} intensity={2.7} color="#ffd9a0" />
+      <pointLight position={[-3.5, -0.7, 2]} intensity={18} distance={7} color="#b66832" />
+      <pointLight position={[0, 3.5, -3]} intensity={10} distance={7} color="#7c5a39" />
+
+      <GlobeSurface
+        atlas={atlas}
+        selectedCountry={selectedCountry}
+        onCountrySelect={onCountrySelect}
+        onCountryHover={onCountryHover}
+      />
+      <MicrostateMarkers
+        atlas={atlas}
+        countries={countries}
+        selectedCountry={selectedCountry}
+        onCountrySelect={onCountrySelect}
+        onCountryHover={onCountryHover}
+      />
+      <Sparkles
+        count={56}
+        scale={[4.8, 3.4, 3.6]}
+        size={1.1}
+        speed={0.12}
+        opacity={0.24}
+        color="#d9b36d"
+      />
+
+      <OrbitControls
+        ref={controlsRef}
+        makeDefault
+        enableDamping
+        dampingFactor={0.055}
+        enablePan={false}
+        enableZoom
+        minDistance={2.25}
+        maxDistance={4.6}
+        rotateSpeed={0.48}
+        zoomSpeed={0.75}
+        autoRotate
+        autoRotateSpeed={0.24}
+        onStart={() => {
+          if (controlsRef.current) controlsRef.current.autoRotate = false;
+        }}
+        onEnd={() => {
+          if (controlsRef.current) controlsRef.current.autoRotate = true;
+        }}
+      />
+      <CameraFocus
+        countryId={selectedCountry?.id}
+        coordinates={coordinates}
+        controlsRef={controlsRef}
+      />
     </>
   );
 }
 
-function AntiqueGlobe() {
-  return (
-    <Sphere args={[0.72, 128, 128]}>
-      <meshStandardMaterial color="#7A5A32" roughness={1} metalness={0.02} />
-    </Sphere>
-  );
-}
-
-function ParchmentSurface() {
-  return (
-    <Sphere args={[0.724, 128, 128]}>
-      <meshStandardMaterial color="#D2B47C" transparent opacity={0.22} roughness={1} metalness={0} />
-    </Sphere>
-  );
-}
-
-function OldAtlasInk() {
-  return (
-    <Sphere args={[0.728, 96, 96]}>
-      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.05} />
-    </Sphere>
-  );
-}
-
-function AntiqueContinents() {
-  return (
-    <Sphere args={[0.731, 128, 128]}>
-      <meshStandardMaterial color="#5A3B20" transparent opacity={0.13} roughness={1} metalness={0} />
-    </Sphere>
-  );
-}
-
-function ContinentInk() {
-  return (
-    <Sphere args={[0.733, 128, 128]}>
-      <meshBasicMaterial color="#24150C" transparent opacity={0.04} />
-    </Sphere>
-  );
-}
-
-function HistoricalMapLines() {
-  return (
-    <Sphere args={[0.735, 96, 96]}>
-      <meshBasicMaterial color="#4A2A16" wireframe transparent opacity={0.028} />
-    </Sphere>
-  );
-}
-
-function SeaRoutes() {
-  return (
-    <Sphere args={[0.737, 96, 96]}>
-      <meshStandardMaterial color="#D66A1F" wireframe transparent opacity={0.012} />
-    </Sphere>
-  );
-}
-
-function CompassLayer() {
-  return (
-    <Sphere args={[0.739, 64, 64]}>
-      <meshBasicMaterial color="#3D2412" wireframe transparent opacity={0.018} />
-    </Sphere>
-  );
-}
-
-function AntiqueGlow() {
-  return (
-    <Sphere args={[0.745, 64, 64]}>
-      <meshBasicMaterial color="#D66A1F" transparent opacity={0.015} />
-    </Sphere>
-  );
-}
-
-function Atmosphere() {
-  return (
-    <Sphere args={[0.82, 64, 64]}>
-      <meshBasicMaterial color="#35205F" transparent opacity={0.08} />
-    </Sphere>
-  );
-}
-
-export default function LiteraryGlobe({ onCountrySelect }: Props) {
-  const [selectedCountry, setSelectedCountry] = useState<CountryFocus>(null);
+export default function LiteraryGlobe({ countries, selectedCountry, onCountrySelect }: Props) {
+  const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
+  const [atlasError, setAtlasError] = useState(false);
+  const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
 
   useEffect(() => {
-    fetch("/data/geo/countries.geojson")
-      .then((response) => response.json())
-      .then((data) => setWorldContours(parseWorldContours(data)))
-      .catch(() => {});
-  }, []);
+    let disposed = false;
+    let createdAtlas: GlobeAtlas | null = null;
+
+    createGlobeAtlas(countries)
+      .then((nextAtlas) => {
+        createdAtlas = nextAtlas;
+        if (disposed) nextAtlas.dispose();
+        else setAtlas(nextAtlas);
+      })
+      .catch(() => {
+        if (!disposed) setAtlasError(true);
+      });
+
+    return () => {
+      disposed = true;
+      createdAtlas?.dispose();
+    };
+  }, [countries]);
+
+  useEffect(() => {
+    atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
+  }, [atlas, hoveredCountry?.id, selectedCountry?.id]);
+
+  if (!atlas) {
+    return (
+      <div className="globe-loading" role="status">
+        <span aria-hidden="true">✦</span>
+        <p>{atlasError ? "Карта временно недоступна" : "Проявляем старинную карту…"}</p>
+      </div>
+    );
+  }
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "560px",
-        background: "radial-gradient(circle at 50% 40%, #51307b 0%, #1F103D 58%, #0f081a 100%)",
-        borderRadius: 18,
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(31,16,61,0.32)",
-      }}
-    >
-      <Canvas camera={{ position: [0, 0, 3.45], fov: 35 }}>
-        <ambientLight intensity={2.15} />
-        <directionalLight position={[4, 3, 4]} intensity={2.5} />
-        <pointLight position={[-2, 1, 2]} intensity={1} />
-
-        <AntiqueGlobe />
-        <ParchmentSurface />
-        <AntiqueContinents />
-        <ContinentInk />
-        <HistoricalMapLines />
-        <OldAtlasInk />
-        <SeaRoutes />
-        <CompassLayer />
-        <AntiqueGlow />
-        <Atmosphere />
-
-        <AntiqueContinentLayer features={worldContours} />
-        <LiteraryMarkers onCountrySelect={onCountrySelect} onFocus={setSelectedCountry} />
-        <GlobeCountryFocus country={selectedCountry?.name} coordinates={selectedCountry?.coordinates} />
-        <OrbitControls
-          enableZoom
-          enablePan={false}
-          autoRotate={!selectedCountry}
-          autoRotateSpeed={0.05}
-          rotateSpeed={0.6}
-          zoomSpeed={0.7}
+    <div className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}>
+      <Canvas
+        camera={{ position: [0, 0.12, 3.35], fov: 34, near: 0.1, far: 100 }}
+        dpr={[1, 1.75]}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        }}
+      >
+        <GlobeScene
+          atlas={atlas}
+          countries={countries}
+          selectedCountry={selectedCountry}
+          onCountrySelect={onCountrySelect}
+          onCountryHover={setHoveredCountry}
         />
       </Canvas>
+
+      <div className="globe-vignette" aria-hidden="true" />
+      <div className="globe-shadow" aria-hidden="true" />
+
+      {hoveredCountry && (
+        <div className="globe-country-label" role="status">
+          <span>{hoveredCountry.name}</span>
+          <small>{hoveredCountry.writers.length} авторов в архиве</small>
+        </div>
+      )}
+
+      <div className="globe-instruction">
+        <span>Тяните, чтобы вращать</span>
+        <i aria-hidden="true" />
+        <span>Колесо — масштаб</span>
+      </div>
     </div>
   );
 }
