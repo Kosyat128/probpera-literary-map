@@ -31,21 +31,25 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
     onWriterSelect?.(writer);
   };
 
+  const eraLabel = country.periods?.length ? country.periods.join(" • ") : "Классическая и современная литература";
+  const mainAuthors = sortedWriters.slice(0, 3);
+  const nobelAuthors = sortedWriters.filter((writer) => writer.nobel || writer.isNobel || writer.nobelPrize).slice(0, 3);
+  const literaryPlaces = country.literaryPlaces?.slice(0, 4) || [];
+
   return (
     <aside style={{width:"340px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto",color:"#35205F"}}>
       <h2>🌍 {country.name}</h2>
 
       <div style={{background:"#F7EBDD",padding:"10px",borderRadius:"10px"}}>
         <p>✒️ Авторов: {writers.length}</p>
-        <p>📚 Литературная база: {writers.length ? "загружена" : "нет данных"}</p>
-        <p>🕰 Эпохи: классическая и современная литература</p>
+        <p>🕰 Эпохи: {eraLabel}</p>
       </div>
 
       <CountryStats country={country} onWriterSelect={chooseWriter}/>
 
       <h3>⭐ Главные авторы</h3>
-      {sortedWriters.slice(0,10).map(writer => (
-        <div key={writer.id || writer.name}
+      {mainAuthors.map(writer => (
+        <div key={writer.id || writer.name || writer.fullName}
           onClick={()=>chooseWriter(writer)}
           style={{padding:"10px",cursor:"pointer",background:selected?.id===writer.id?"#E6D5C0":"#F7EBDD",marginBottom:"8px",borderRadius:"10px"}}>
           <b>{writer.name || writer.fullName}</b><br/>
@@ -59,11 +63,23 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
           <button onClick={()=>setOpenProfile(!openProfile)}>
             {openProfile ? "Скрыть профиль" : "Открыть профиль"}
           </button>
-          {openProfile && <WriterProfile writer={selected}/>} 
+          {openProfile && <WriterProfile writer={selected}/>}
         </>
       )}
 
       <hr/>
+      <h3>🏆 Нобелевские</h3>
+      <div>
+        {nobelAuthors.length ? nobelAuthors.map(writer => (
+          <p key={writer.id || writer.name || writer.fullName}>• {writer.name || writer.fullName}</p>
+        )) : <p>Нет данных</p>}
+      </div>
+
+      <h3>📍 Литературные места</h3>
+      <div>
+        {literaryPlaces.length ? literaryPlaces.map((place) => <p key={place}>• {place}</p>) : <p>Нет данных</p>}
+      </div>
+
       <h3>Разделы страны</h3>
       <p>🏛 Литературные места</p>
       <p>🏆 Премии и награды</p>
