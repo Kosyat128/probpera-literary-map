@@ -17,13 +17,26 @@ export function filterWriters(
   return writers.filter((writer) => {
     const search = filters.search?.toLowerCase();
 
-    if (
-      search &&
-      !`${writer.name ?? ""} ${writer.fullName ?? ""}`
-        .toLowerCase()
-        .includes(search)
-    ) {
-      return false;
+    if (search) {
+      const searchableText = [
+        writer.name,
+        writer.fullName,
+        writer.country,
+        writer.language,
+        ...(writer.languages || []),
+        ...(writer.genres || []),
+        ...(writer.tags || []),
+        ...(writer.awards || []),
+        ...(writer.works || []),
+        writer.bio,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      if (!searchableText.includes(search)) {
+        return false;
+      }
     }
 
     if (filters.country && writer.country !== filters.country) {
