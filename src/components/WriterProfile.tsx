@@ -1,4 +1,5 @@
 import type { WriterProfile as Writer } from "../data/countries/types";
+import { formatDate } from "../utils/formatDate";
 
 type WriterProfileProps = {
   writer: Writer;
@@ -21,10 +22,13 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       )}
 
       <h1>{writer.fullName || writer.name}</h1>
-      <p>📅 {writer.years}</p>
+
+      {writer.birthDate && <p>🎂 Родился: {formatDate(writer.birthDate)}</p>}
+      {writer.deathDate && <p>⚰ Умер: {formatDate(writer.deathDate)}</p>}
+      {writer.years && <p>📅 Период жизни: {writer.years}</p>}
 
       {writer.birthPlace && <p>📍 Родился: {writer.birthPlace}</p>}
-      {writer.deathPlace && <p>⚰ Умер: {writer.deathPlace}</p>}
+      {writer.deathPlace && <p>⚰ Место смерти: {writer.deathPlace}</p>}
       {writer.movement && <p>📚 Направление: {writer.movement}</p>}
       {writer.languages && <p>🌐 Языки: {writer.languages.join(", ")}</p>}
       {writer.nobelYear && <p>🏆 Нобелевская премия по литературе: {writer.nobelYear}</p>}
