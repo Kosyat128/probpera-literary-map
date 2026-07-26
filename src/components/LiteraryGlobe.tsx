@@ -42,43 +42,40 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
   return <>{markers.map((point) => {
     const isFocused = active === point.name || hovered === point.name;
 
-    return (
-      <group key={point.name} position={point.position}>
-        <mesh
-          onClick={() => {
-            setActive(point.name);
-            onCountrySelect?.(point.name);
-          }}
-          onPointerOver={() => setHovered(point.name)}
-          onPointerOut={() => setHovered(null)}
-        >
-          <sphereGeometry args={[isFocused ? point.size * 1.35 : point.size, 32, 32]} />
-          <meshStandardMaterial
-            color={isFocused ? "#F6B04A" : point.color}
-            emissive={point.color}
-            emissiveIntensity={isFocused ? 2 : 1.2}
-          />
-        </mesh>
+    return <group key={point.name} position={point.position}>
+      <mesh
+        onClick={() => {
+          setActive(point.name);
+          onCountrySelect?.(point.name);
+        }}
+        onPointerOver={() => setHovered(point.name)}
+        onPointerOut={() => setHovered(null)}
+      >
+        <sphereGeometry args={[isFocused ? point.size * 1.45 : point.size, 40, 40]} />
+        <meshStandardMaterial
+          color={isFocused ? "#F6B04A" : point.color}
+          emissive={point.color}
+          emissiveIntensity={isFocused ? 2.4 : 1.2}
+        />
+      </mesh>
 
-        {isFocused && (
-          <Html distanceFactor={6} center>
-            <div style={{
-              background: "#FFF8EE",
-              color: "#35205F",
-              border: `2px solid ${point.color}`,
-              borderRadius: "18px",
-              padding: "8px 14px",
-              fontSize: "13px",
-              fontWeight: 700,
-              boxShadow: "0 10px 25px rgba(0,0,0,.35)",
-              whiteSpace: "nowrap"
-            }}>
-              🌐 {point.name}<br/>📚 {point.count} авторов
-            </div>
-          </Html>
-        )}
-      </group>
-    );
+      {isFocused && <Html distanceFactor={6} center>
+        <div style={{
+          background: "#FFF8EE",
+          color: "#35205F",
+          border: `2px solid ${point.color}`,
+          borderRadius: "18px",
+          padding: "10px 16px",
+          fontSize: "13px",
+          fontWeight: 700,
+          boxShadow: "0 12px 30px rgba(0,0,0,.35)",
+          whiteSpace: "nowrap"
+        }}>
+          {point.name}<br />
+          📚 {point.count} писателей
+        </div>
+      </Html>}
+    </group>;
   })}</>;
 }
 
