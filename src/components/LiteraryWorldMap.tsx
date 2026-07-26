@@ -3,6 +3,8 @@ import SvgWorldMap from "./SvgWorldMap";
 import WriterPanel from "./WriterPanel";
 import { countries } from "../data/countries";
 import type { Country } from "../data/countries/types";
+import { allWriters } from "../data/writersAll";
+import WriterCard from "./WriterCard";
 
 type LiteraryWorldMapProps = {
   onCountrySelect?: (name: string) => void;
@@ -10,6 +12,7 @@ type LiteraryWorldMapProps = {
 
 export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapProps) {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [selectedWriter, setSelectedWriter] = useState(allWriters[0] ?? null);
 
   const selectCountry = (name: string) => {
     const country = countries.find((item) => item.name === name);
@@ -18,11 +21,48 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
   };
 
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <div style={{ flex: 1 }}>
+    <div style={{ display: "flex", gap: "20px", position: "relative" }}>
+      <div style={{ flex: 1, position: "relative" }}>
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+          }}
+        >
+          {allWriters.map((writer) => (
+            <button
+              key={writer.id}
+              onClick={() => setSelectedWriter(writer)}
+              aria-label={writer.name}
+              style={{
+                position: "absolute",
+                left: `${writer.x}%`,
+                top: `${writer.y}%`,
+                width: "14px",
+                height: "14px",
+                borderRadius: "50%",
+                border: "2px solid #fff8ee",
+                background: "#E97824",
+                transform: "translate(-50%, -50%)",
+                cursor: "pointer",
+                pointerEvents: "auto",
+                padding: 0,
+              }}
+            />
+          ))}
+        </div>
       </div>
+
       {selectedCountry && <WriterPanel country={selectedCountry} />}
+      {selectedWriter && (
+        <WriterCard
+          writer={selectedWriter}
+          onClose={() => setSelectedWriter(null)}
+        />
+      )}
     </div>
   );
 }
