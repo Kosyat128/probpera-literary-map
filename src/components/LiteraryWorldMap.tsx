@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SvgWorldMap from "./SvgWorldMap";
 import WriterPanel from "./WriterPanel";
 import { countries } from "../data/countries";
 import type { Country } from "../data/countries/types";
-import { allWriters } from "../data/writersAll";
 import WriterCard from "./WriterCard";
+import { getAllWriters } from "../filters/writerFilters";
+
 
 type LiteraryWorldMapProps = {
   onCountrySelect?: (name: string) => void;
@@ -12,6 +13,8 @@ type LiteraryWorldMapProps = {
 
 export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapProps) {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+
+  const allWriters = useMemo(() => getAllWriters(countries), []);
   const [selectedWriter, setSelectedWriter] = useState(allWriters[0] ?? null);
 
   const selectCountry = (name: string) => {
@@ -39,8 +42,8 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
               aria-label={writer.name}
               style={{
                 position: "absolute",
-                left: `${writer.x}%`,
-                top: `${writer.y}%`,
+                left: `${writer.coordinates?.lng ?? 0}%`,
+                top: `${writer.coordinates?.lat ?? 0}%`,
                 width: "14px",
                 height: "14px",
                 borderRadius: "50%",
