@@ -11,11 +11,15 @@ import WriterCard from "./WriterCard";
 
 export default function LiteraryWorldMap() {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [selectedWriter, setSelectedWriter] = useState<WriterProfile | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
   const allWriters = useMemo(() => getAllWriters(countries), []);
-  const [selectedWriter, setSelectedWriter] = useState<WriterProfile | null>(allWriters[0] ?? null);
   const [filters, setFilters] = useState<WriterFilterState>({});
 
-  const filteredWriters = useMemo(() => filterWriters(allWriters, filters), [allWriters, filters]);
+  const filteredWriters = useMemo(
+    () => filterWriters(allWriters, filters),
+    [allWriters, filters]
+  );
 
   const selectCountry = (name: string) => {
     setSelectedCountry(countries.find((item) => item.name === name) || null);
@@ -29,33 +33,83 @@ export default function LiteraryWorldMap() {
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "260px minmax(0,1fr) 360px",
-      gap: "14px",
-      minHeight: "900px",
+      gridTemplateColumns: "260px minmax(800px, 1fr) 340px",
+      gap: "12px",
+      minHeight: "820px",
       position: "relative"
     }}>
-      <aside style={{background:"#1F103D",borderRadius:"18px",padding:"18px",color:"white"}}>
+      <aside style={{
+        background:"#1F103D",
+        borderRadius:"16px",
+        padding:"16px",
+        color:"white",
+        overflowY:"auto"
+      }}>
         <h2>🌍 Страны мира</h2>
-        {countries.slice(0,20).map(country => (
-          <div key={country.id} onClick={()=>selectCountry(country.name)} style={{padding:"10px",cursor:"pointer"}}>
-            🌐 {country.name} <span style={{float:"right",color:"#E97824"}}>{country.writers.length}</span>
+        {countries.map(country => (
+          <div key={country.id}
+            onClick={()=>selectCountry(country.name)}
+            style={{padding:"8px",cursor:"pointer"}}>
+            🌐 {country.name}
+            <span style={{float:"right",color:"#E97824"}}>
+              {country.writers.length}
+            </span>
           </div>
         ))}
       </aside>
 
       <main style={{position:"relative",minWidth:0}}>
-        <GlobalWriterFilters filters={filters} onChange={setFilters}/>
-        <div style={{margin:"10px 0",fontWeight:"bold",color:"#35205F"}}>
-          Найдено авторов: {filteredWriters.length}
-        </div>
-        <div style={{position:"relative",height:"700px"}}>
-          <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id}/>
-          <WriterClusters writers={filteredWriters} onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id}/>
-          {selectedWriter && <WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>} 
+        {showFilters && (
+          <div style={{position:"absolute",top:10,left:10,zIndex:10}}>
+            <GlobalWriterFilters filters={filters} onChange={setFilters}/>
+          </div>
+        )}
+
+        <button
+          onClick={()=>setShowFilters(!showFilters)}
+          style={{
+            position:"absolute",
+            right:15,
+            bottom:15,
+            zIndex:10,
+            background:"#FFF8EE",
+            border:"none",
+            padding:"10px 16px",
+            borderRadius:"10px"
+          }}>
+          ⚱ Фильтры
+        </button>
+
+        <div style={{
+          height:"760px",
+          position:"relative",
+          borderRadius:"18px",
+          overflow:"hidden"
+        }}>
+          <SvgWorldMap
+            onCountrySelect={selectCountry}
+            selectedCountry={selectedCountry?.id}
+          />
+          <WriterClusters
+            writers={filteredWriters}
+            onCountrySelect={selectCountry}
+            selectedCountry={selectedCountry?.id}
+          />
+          {selectedWriter && (
+            <WriterCard
+              writer={selectedWriter}
+              onClose={()=>setSelectedWriter(null)}
+            />
+          )}
         </div>
       </main>
 
-      {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
+      {selectedCountry && (
+        <WriterPanel
+          country={selectedCountry}
+          onWriterSelect={selectWriter}
+        />
+      )}
     </div>
   );
 }
