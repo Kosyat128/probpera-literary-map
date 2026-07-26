@@ -36,18 +36,16 @@ export default function App() {
 
       <div style={{display:"grid",gridTemplateColumns:"260px minmax(700px,1fr) 340px",gap:"14px",padding:"14px"}}>
         <Sidebar items={countries.map((country)=>country.name)} selectedItem={selectedCountry.name} onSelect={handleCountrySelect}/>
-
         <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
           <LiteraryWorldMap onCountrySelect={handleCountrySelect}/>
           <Timeline name={selectedCountry.writers[0]?.name} years={selectedCountry.writers[0]?.years}/>
           <LiteraryPlaces/>
         </main>
-
         <WriterPanel country={selectedCountry} onWriterSelect={handleWriterSelect}/>
       </div>
 
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px",padding:"14px"}}>
-        <QuoteOfDay countryName={selectedCountry.name}/>
+        <QuoteOfDay countryName={selectedCountry.name} writer={selectedWriter}/>
         <LiteraryCalendar countryName={selectedCountry.name}/>
       </div>
     </div>
