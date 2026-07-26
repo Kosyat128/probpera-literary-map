@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Country, Writer } from "../data/countries";
 import CountryStats from "./CountryStats";
 import WriterProfile from "./WriterProfile";
@@ -13,8 +13,15 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   const [selected, setSelected] = useState<Writer | null>(writers[0] || null);
   const [openProfile, setOpenProfile] = useState(false);
 
-  const sortedWriters = useMemo(() =>
-    [...writers].sort((a, b) => (a.name || a.fullName || "").localeCompare(b.name || b.fullName || "")),
+  useEffect(() => {
+    const firstWriter = country.writers?.[0] || null;
+    setSelected(firstWriter);
+    setOpenProfile(false);
+    if (firstWriter) onWriterSelect?.(firstWriter);
+  }, [country.id]);
+
+  const sortedWriters = useMemo(
+    () => [...writers].sort((a, b) => (a.name || a.fullName || "").localeCompare(b.name || b.fullName || "")),
     [writers]
   );
 
