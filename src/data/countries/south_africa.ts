@@ -266,13 +266,10 @@ export const southAfrica: Country = {
         "Нобелевская премия по литературе 2003"
       ],
       tags: ["XX век", "XXI век"],
-      articleUrl: ""
-    }
-
-  ]
-};
+           articleUrl: ""
+    },
     {
-      id: "sindiwe_magona",
+  id: "sindiwe_magona",
       name: "Синдиве Магона",
       fullName: "Sindiwe Magona",
       years: "1943–",
