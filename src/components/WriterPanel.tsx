@@ -11,12 +11,23 @@ type WriterPanelProps = {
 export default function WriterPanel({ country, onWriterSelect }: WriterPanelProps) {
   const writers = country.writers || [];
   const [query, setQuery] = useState("");
+  const [genre, setGenre] = useState("");
+  const [language, setLanguage] = useState("");
   const [selected, setSelected] = useState<Writer | null>(writers[0] || null);
   const [openProfile, setOpenProfile] = useState(false);
 
-  const filteredWriters = useMemo(() => writers.filter(writer =>
-    (writer.fullName || writer.name || "").toLowerCase().includes(query.toLowerCase())
-  ), [writers, query]);
+  const genres = [...new Set(writers.flatMap(writer => writer.genres || []))];
+  const languages = [...new Set(writers.flatMap(writer => writer.language ? [writer.language] : writer.languages || []))];
+
+  const filteredWriters = useMemo(() => writers.filter(writer => {
+    const name = (writer.fullName || writer.name || "").toLowerCase();
+
+    if (query && !name.includes(query.toLowerCase())) return false;
+    if (genre && !writer.genres?.includes(genre)) return false;
+    if (language && writer.language !== language && !writer.languages?.includes(language)) return false;
+
+    return true;
+  }), [writers, query, genre, language]);
 
   const chooseWriter = (writer: Writer) => {
     setSelected(writer);
@@ -27,7 +38,18 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   return <aside style={{width:"380px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto"}}>
     <h2 style={{color:"#35205F"}}>{country.name}</h2>
     <CountryStats country={country}/>
+
     <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="🔎 Найти писателя" style={{width:"100%",padding:"10px",margin:"15px 0"}}/>
+
+    <select value={genre} onChange={e=>setGenre(e.target.value)} style={{width:"100%",padding:"8px",marginBottom:"10px"}}>
+      <option value="">Все жанры</option>
+      {genres.map(item=><option key={item} value={item}>{item}</option>)}
+    </select>
+
+    <select value={language} onChange={e=>setLanguage(e.target.value)} style={{width:"100%",padding:"8px",marginBottom:"10px"}}>
+      <option value="">Все языки</option>
+      {languages.map(item=><option key={item} value={item}>{item}</option>)}
+    </select>
 
     {selected && !openProfile && <div>
       <h3>{selected.fullName || selected.name}</h3>
