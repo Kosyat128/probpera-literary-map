@@ -4,9 +4,10 @@ import { getAllWriters } from "../filters/writerFilters";
 
 type Props = {
   onCountrySelect?: (name: string) => void;
+  selectedCountry?: string;
 };
 
-export default function WriterClusters({ onCountrySelect }: Props) {
+export default function WriterClusters({ onCountrySelect, selectedCountry }: Props) {
   const clusters = useMemo(() => {
     const writers = getAllWriters(countries);
 
@@ -31,7 +32,10 @@ export default function WriterClusters({ onCountrySelect }: Props) {
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
       {clusters.map((cluster) => {
+        if (selectedCountry && selectedCountry !== cluster.id) return null;
+
         const size = Math.min(56, 24 + cluster.count * 2);
+
         return (
           <button
             key={cluster.id}
