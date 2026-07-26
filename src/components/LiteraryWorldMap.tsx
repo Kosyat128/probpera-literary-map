@@ -44,27 +44,32 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
 
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-          {allWriters.map((writer) => (
-            <button
-              key={writer.id}
-              onClick={() => selectWriter(writer)}
-              aria-label={writer.name}
-              style={{
-                position: "absolute",
-                left: `${writer.coordinates?.lng ?? 0}%`,
-                top: `${writer.coordinates?.lat ?? 0}%`,
-                width: "14px",
-                height: "14px",
-                borderRadius: "50%",
-                border: "2px solid #fff8ee",
-                background: "#E97824",
-                transform: "translate(-50%, -50%)",
-                cursor: "pointer",
-                pointerEvents: "auto",
-                padding: 0,
-              }}
-            />
-          ))}
+          {allWriters.map((writer) => {
+            const isSelected = selectedWriter?.id === writer.id;
+
+            return (
+              <button
+                key={writer.id}
+                onClick={() => selectWriter(writer)}
+                aria-label={writer.name}
+                style={{
+                  position: "absolute",
+                  left: `${writer.coordinates?.lng ?? 0}%`,
+                  top: `${writer.coordinates?.lat ?? 0}%`,
+                  width: isSelected ? "22px" : "14px",
+                  height: isSelected ? "22px" : "14px",
+                  borderRadius: "50%",
+                  border: isSelected ? "3px solid #35205F" : "2px solid #fff8ee",
+                  background: "#E97824",
+                  transform: "translate(-50%, -50%)",
+                  cursor: "pointer",
+                  pointerEvents: "auto",
+                  padding: 0,
+                  transition: "all .2s ease",
+                }}
+              />
+            );
+          })}
         </div>
       </div>
 
