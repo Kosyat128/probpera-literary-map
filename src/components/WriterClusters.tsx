@@ -2,7 +2,11 @@ import { useMemo } from "react";
 import { countries } from "../data/countries";
 import { getAllWriters } from "../filters/writerFilters";
 
-export default function WriterClusters() {
+type Props = {
+  onCountrySelect?: (name: string) => void;
+};
+
+export default function WriterClusters({ onCountrySelect }: Props) {
   const clusters = useMemo(() => {
     const writers = getAllWriters(countries);
 
@@ -18,33 +22,24 @@ export default function WriterClusters() {
 
   const getPosition = (coordinates: typeof clusters[number]["coordinates"]) => {
     if (!coordinates) return { left: "50%", top: "50%" };
-
     if (Array.isArray(coordinates)) {
-      return {
-        left: `${coordinates[1]}%`,
-        top: `${coordinates[0]}%`,
-      };
+      return { left: `${coordinates[1]}%`, top: `${coordinates[0]}%` };
     }
-
-    return {
-      left: `${coordinates.lng}%`,
-      top: `${coordinates.lat}%`,
-    };
+    return { left: `${coordinates.lng}%`, top: `${coordinates.lat}%` };
   };
 
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
       {clusters.map((cluster) => {
         const size = Math.min(56, 24 + cluster.count * 2);
-        const position = getPosition(cluster.coordinates);
-
         return (
           <button
             key={cluster.id}
             title={`${cluster.name}: ${cluster.count} писателей`}
+            onClick={() => onCountrySelect?.(cluster.name)}
             style={{
               position: "absolute",
-              ...position,
+              ...getPosition(cluster.coordinates),
               width: `${size}px`,
               height: `${size}px`,
               transform: "translate(-50%, -50%)",
