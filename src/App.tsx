@@ -21,14 +21,14 @@ export default function App() {
     const country = countries.find((item) => item.name === name);
     if (country) {
       setSelectedCountry(country);
-      setSelectedWriter(null);
+      setSelectedWriter(country.writers?.[0] ?? null);
     }
   };
 
   const handleWriterSelect = (writer: Writer) => setSelectedWriter(writer);
 
   return (
-    <div style={{ minHeight:"100vh", background:"#F7EBDD", color:"#35205F", fontFamily:"Georgia, serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F7EBDD", color: "#35205F", fontFamily: "Georgia, serif" }}>
       <header style={{height:"72px",background:"#1F103D",color:"white",display:"flex",alignItems:"center",padding:"0 28px",fontSize:"28px",fontWeight:"bold"}}>
         LiteraryMap
         <span style={{marginLeft:"20px",color:"#E97824",fontSize:"18px"}}>Литературная карта мира</span>
@@ -38,15 +38,15 @@ export default function App() {
         <Sidebar items={countries.map((country)=>country.name)} selectedItem={selectedCountry.name} onSelect={handleCountrySelect}/>
         <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
           <LiteraryWorldMap onCountrySelect={handleCountrySelect}/>
-          <Timeline name={selectedCountry.writers[0]?.name} years={selectedCountry.writers[0]?.years}/>
+          <Timeline name={selectedWriter?.name || selectedWriter?.fullName || selectedCountry.writers[0]?.name} years={selectedWriter?.years || selectedCountry.writers[0]?.years}/>
           <LiteraryPlaces/>
         </main>
         <WriterPanel country={selectedCountry} onWriterSelect={handleWriterSelect}/>
       </div>
 
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px",padding:"14px"}}>
-        <QuoteOfDay countryName={selectedCountry.name} writer={selectedWriter}/>
-        <LiteraryCalendar countryName={selectedCountry.name}/>
+        <QuoteOfDay countryName={selectedCountry.name} writer={selectedWriter || selectedCountry.writers[0] || null}/>
+        <LiteraryCalendar countryName={selectedCountry.name} writer={selectedWriter || selectedCountry.writers[0] || null}/>
       </div>
     </div>
   );
