@@ -24,18 +24,36 @@ export default function WriterClusters({ onCountrySelect, selectedCountry, write
 
   const getPosition = (coordinates: typeof clusters[number]["coordinates"]) => {
     if (!coordinates) return { left: "50%", top: "50%" };
+
     if (Array.isArray(coordinates)) {
-      return { left: `${coordinates[1]}%`, top: `${coordinates[0]}%` };
+      return {
+        left: `${coordinates[1]}%`,
+        top: `${coordinates[0]}%`,
+      };
     }
-    return { left: `${coordinates.lng}%`, top: `${coordinates.lat}%` };
+
+    return {
+      left: `${coordinates.lng}%`,
+      top: `${coordinates.lat}%`,
+    };
   };
 
   return (
-    <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        zIndex: 5,
+      }}
+    >
       {clusters.map((cluster) => {
         if (selectedCountry && selectedCountry !== cluster.id) return null;
 
-        const size = Math.min(64, Math.max(30, 26 + Math.log(cluster.count + 1) * 10));
+        const size = Math.min(62, Math.max(34, 28 + Math.log(cluster.count + 1) * 9));
+        const position = getPosition(cluster.coordinates);
 
         return (
           <button
@@ -45,17 +63,22 @@ export default function WriterClusters({ onCountrySelect, selectedCountry, write
             onClick={() => onCountrySelect?.(cluster.name)}
             style={{
               position: "absolute",
-              ...getPosition(cluster.coordinates),
+              left: position.left,
+              top: position.top,
+              transform: "translate(-50%, -50%)",
               width: `${size}px`,
               height: `${size}px`,
-              transform: "translate(-50%, -50%)",
               borderRadius: "50%",
               border: "3px solid #FFF8EE",
               background: "#E97824",
               color: "#FFF8EE",
-              fontWeight: "bold",
+              fontWeight: 700,
               cursor: "pointer",
               pointerEvents: "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 0,
             }}
           >
             {cluster.count}
