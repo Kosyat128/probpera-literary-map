@@ -5,7 +5,25 @@ type WriterProfileProps = {
   writer: Writer;
 };
 
+function calculateAge(birthDate?: string, deathDate?: string) {
+  if (!birthDate || !deathDate) return "";
+
+  const birth = new Date(birthDate);
+  const death = new Date(deathDate);
+
+  let age = death.getFullYear() - birth.getFullYear();
+  const monthDiff = death.getMonth() - birth.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && death.getDate() < birth.getDate())) {
+    age--;
+  }
+
+  return age > 0 ? `${age} лет` : "";
+}
+
 export default function WriterProfile({ writer }: WriterProfileProps) {
+  const age = calculateAge(writer.birthDate, writer.deathDate);
+
   return (
     <section style={{
       background: "#FFF8EE",
@@ -25,6 +43,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
 
       {writer.birthDate && <p>🎂 Родился: {formatDate(writer.birthDate)}</p>}
       {writer.deathDate && <p>⚰ Умер: {formatDate(writer.deathDate)}</p>}
+      {age && <p>⌛ Прожил: {age}</p>}
       {writer.years && <p>📅 Период жизни: {writer.years}</p>}
 
       {writer.birthPlace && <p>📍 Родился: {writer.birthPlace}</p>}
