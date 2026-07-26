@@ -71,8 +71,7 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
           boxShadow: "0 14px 35px rgba(0,0,0,.4)",
           whiteSpace: "nowrap"
         }}>
-          {point.name}<br />
-          📚 {point.count} писателей
+          {point.name}<br />📚 {point.count} писателей
         </div>
       </Html>}
     </group>;
@@ -81,19 +80,25 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
 
 function GlobeGrid() {
   return <Sphere args={[1.005, 64, 64]}>
-    <meshStandardMaterial color="#7A5420" wireframe transparent opacity={0.1} />
+    <meshStandardMaterial color="#7A5420" wireframe transparent opacity={0.08} />
   </Sphere>;
 }
 
 function AntiqueGlow() {
-  return <Sphere args={[1.07, 64, 64]}>
-    <meshStandardMaterial color="#F2D39A" transparent opacity={0.08} />
+  return <Sphere args={[1.06, 64, 64]}>
+    <meshStandardMaterial color="#F2D39A" transparent opacity={0.06} />
   </Sphere>;
 }
 
 function GlobeBase() {
   return <Sphere args={[1, 128, 128]}>
-    <meshStandardMaterial color="#C8A96A" roughness={0.9} metalness={0.05} />
+    <meshStandardMaterial color="#C8A96A" roughness={0.92} metalness={0.03} />
+  </Sphere>;
+}
+
+function OuterAtmosphere() {
+  return <Sphere args={[1.14, 64, 64]}>
+    <meshStandardMaterial color="#35205F" transparent opacity={0.08} />
   </Sphere>;
 }
 
@@ -113,6 +118,7 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
       <GlobeBase />
       <GlobeGrid />
       <AntiqueGlow />
+      <OuterAtmosphere />
       <LiteraryMarkers onCountrySelect={onCountrySelect} />
 
       <OrbitControls
