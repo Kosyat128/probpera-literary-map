@@ -1,4 +1,5 @@
 import type { Country } from "../data/types";
+import { getCountryMetadata } from "../data/countries/getCountryMetadata";
 
 type Props = {
   country: Country;
@@ -11,6 +12,8 @@ export default function CountryStats({country}: Props){
     influence?: number;
     flag?: string;
   };
+
+  const metadata = getCountryMetadata(country.id);
 
   return (
     <div style={{
@@ -26,6 +29,26 @@ export default function CountryStats({country}: Props){
       <div>✒️ Авторов: <b>{country.writers.length}</b></div>
       <div>🏅 Нобелевских лауреатов: <b>{data.nobel ?? 0}</b></div>
       <div>📍 Литературных мест: <b>{data.places ?? 0}</b></div>
+
+      {metadata && (
+        <div style={{marginTop:"15px"}}>
+          <div>🌍 Континент: <b>{metadata.continent}</b></div>
+          <div>🗺 Регион: <b>{metadata.region}</b></div>
+          <div>🗣 Язык: <b>{metadata.officialLanguage}</b></div>
+
+          <div style={{marginTop:"10px"}}>
+            📜 Эпохи:
+            <br />
+            {metadata.literaryPeriods.join(" • ")}
+          </div>
+
+          <div style={{marginTop:"10px"}}>
+            ✒️ Направления:
+            <br />
+            {metadata.literaryMovements.join(" • ")}
+          </div>
+        </div>
+      )}
 
       <p style={{marginTop:"15px"}}>
         Литературное влияние
