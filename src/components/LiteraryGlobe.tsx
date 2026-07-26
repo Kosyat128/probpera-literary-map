@@ -5,6 +5,7 @@ import { countries } from "../data/countries";
 import { worldContours, setWorldContours } from "../data/worldContours";
 import { parseWorldContours } from "../data/loadWorldContours";
 import AntiqueContinentLayer from "./AntiqueContinentLayer";
+import GlobeCountryFocus from "./GlobeCountryFocus";
 
 interface Props { onCountrySelect?: (name:string)=>void; }
 
@@ -23,7 +24,7 @@ function LiteraryMarkers({onCountrySelect}:Props){
  }),[]);
  return <>{markers.map(p=>{const focus=active===p.name||hovered===p.name;return <group key={p.name} position={p.position}>
  <mesh onClick={()=>{setActive(p.name);onCountrySelect?.(p.name)}} onPointerOver={()=>setHovered(p.name)} onPointerOut={()=>setHovered(null)}><sphereGeometry args={[focus?p.size*2.5:p.size,32,32]}/><meshStandardMaterial color={focus?"#F3B24D":p.color} emissive={p.color} emissiveIntensity={focus?4:1}/></mesh>
- {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight=700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
+ {focus&&<Html center><div style={{background:'#F7EBD8',color:'#35205F',border:'2px solid #D66A1F',borderRadius:12,padding:'10px 14px',fontWeight:700}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
  </group>})}</>;
 }
 
@@ -53,6 +54,7 @@ export default function LiteraryGlobe({onCountrySelect}:Props){
   <AntiqueFrame/><AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><HistoricalMapLines/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
   <AntiqueContinentLayer features={worldContours}/>
   <LiteraryMarkers onCountrySelect={onCountrySelect}/>
+  <GlobeCountryFocus />
   <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
  </Canvas>
  </div>
