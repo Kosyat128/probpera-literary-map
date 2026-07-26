@@ -4,12 +4,17 @@ import WriterPanel from "./WriterPanel";
 import { countries } from "../data/countries";
 import type { Country } from "../data/countries/types";
 
-export default function LiteraryWorldMap() {
+type LiteraryWorldMapProps = {
+  onCountrySelect?: (name: string) => void;
+};
+
+export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapProps) {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   const selectCountry = (name: string) => {
     const country = countries.find((item) => item.name === name);
     setSelectedCountry(country || null);
+    onCountrySelect?.(name);
   };
 
   return (
