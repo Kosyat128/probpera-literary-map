@@ -32,6 +32,7 @@ function ContinentInk(){return <Sphere args={[0.733,128,128]}><meshBasicMaterial
 function HistoricalMapLines(){return <Sphere args={[0.735,96,96]}><meshBasicMaterial color="#4A2A16" wireframe transparent opacity={.035}/></Sphere>}
 function SeaRoutes(){return <Sphere args={[0.737,96,96]}><meshStandardMaterial color="#D66A1F" wireframe transparent opacity={.02}/></Sphere>}
 function CompassLayer(){return <Sphere args={[0.739,64,64]}><meshBasicMaterial color="#3D2412" wireframe transparent opacity={.025}/></Sphere>}
+function AntiqueFrame(){return <Sphere args={[0.79,64,64]}><meshBasicMaterial color="#D66A1F" transparent opacity={.01}/></Sphere>}
 function AntiqueGlow(){return <Sphere args={[0.745,64,64]}><meshBasicMaterial color="#D66A1F" transparent opacity={.025}/></Sphere>}
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#35205F" transparent opacity={.12}/></Sphere>}
 
@@ -39,7 +40,7 @@ export default function LiteraryGlobe({onCountrySelect}:Props){
  return <div style={{width:'100%',height:'560px',background:'radial-gradient(circle,#35205F,#1F103D)',borderRadius:18,overflow:'hidden'}}>
  <Canvas camera={{position:[0,0,3.45],fov:35}}>
   <ambientLight intensity={2}/><directionalLight position={[4,3,4]} intensity={2.5}/>
-  <AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><HistoricalMapLines/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
+  <AntiqueFrame/><AntiqueGlow/><AntiqueGlobe/><ParchmentSurface/><AntiqueContinents/><ContinentInk/><HistoricalMapLines/><OldAtlasInk/><SeaRoutes/><CompassLayer/><Atmosphere/>
   <LiteraryMarkers onCountrySelect={onCountrySelect}/>
   <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.06}/>
  </Canvas>
