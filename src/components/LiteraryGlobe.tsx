@@ -26,25 +26,22 @@ function LiteraryMarkers({onCountrySelect}:Props){
    <sphereGeometry args={[focus?p.size*2.4:p.size,32,32]}/>
    <meshStandardMaterial color={focus?"#FFD166":p.color} emissive={p.color} emissiveIntensity={focus?5:1.5}/>
   </mesh>
-  {focus&&<Html distanceFactor={5} center>
-   <div style={{background:'#FFF8EE',color:'#35205F',border:'2px solid #E97824',borderRadius:16,padding:'10px 14px',fontWeight:700,whiteSpace:'nowrap',boxShadow:'0 0 30px rgba(233,120,36,.7)'}}>
-    🌍 {p.name}<br/>📚 Авторов: {p.count}
-   </div>
-  </Html>}
+  {focus&&<Html distanceFactor={5} center><div style={{background:'#FFF8EE',color:'#35205F',border:'2px solid #E97824',borderRadius:16,padding:'10px 14px',fontWeight:700,whiteSpace:'nowrap',boxShadow:'0 0 30px rgba(233,120,36,.7)'}}>🌍 {p.name}<br/>📚 Авторов: {p.count}</div></Html>}
  </group>})}</>;
 }
 
-function GlobeBase(){return <Sphere args={[0.72,128,128]}><meshStandardMaterial color="#24153F" roughness={.72}/></Sphere>}
-function GlobeGrid(){return <Sphere args={[0.724,96,96]}><meshStandardMaterial color="#E97824" wireframe transparent opacity={.08}/></Sphere>}
+function GlobeBase(){return <Sphere args={[0.72,128,128]}><meshStandardMaterial color="#17233B" roughness={.8} metalness={.15}/></Sphere>}
+function GlobeSurface(){return <Sphere args={[0.723,128,128]}><meshStandardMaterial color="#31476B" transparent opacity={.28} roughness={1}/></Sphere>}
+function GlobeGrid(){return <Sphere args={[0.726,96,96]}><meshStandardMaterial color="#E97824" wireframe transparent opacity={.06}/></Sphere>}
 function Atmosphere(){return <Sphere args={[0.82,64,64]}><meshBasicMaterial color="#8B5CF6" transparent opacity={.14}/></Sphere>}
-function Glow(){return <Sphere args={[0.88,64,64]}><meshBasicMaterial color="#E97824" transparent opacity={.04}/></Sphere>}
+function Glow(){return <Sphere args={[0.88,64,64]}><meshBasicMaterial color="#E97824" transparent opacity={.035}/></Sphere>}
 
 export default function LiteraryGlobe({onCountrySelect}:Props){
  return <div style={{width:'100%',height:'560px',background:'radial-gradient(circle,#35205F,#1F103D)',borderRadius:18,overflow:'hidden'}}>
   <Canvas camera={{position:[0,0,3.45],fov:35}}>
-   <ambientLight intensity={1.9}/>
-   <directionalLight position={[3,3,3]} intensity={3}/>
-   <Glow/><GlobeBase/><GlobeGrid/><Atmosphere/>
+   <ambientLight intensity={1.8}/>
+   <directionalLight position={[4,3,4]} intensity={3}/>
+   <Glow/><GlobeBase/><GlobeSurface/><GlobeGrid/><Atmosphere/>
    <LiteraryMarkers onCountrySelect={onCountrySelect}/>
    <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.1} minDistance={2.3} maxDistance={5}/>
   </Canvas>
