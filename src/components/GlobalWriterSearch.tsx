@@ -30,14 +30,23 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
 
   const hasFilters = Boolean(search || country || genre || language || period || award);
 
+  const clearFilters = () => {
+    setSearch("");
+    setCountry("");
+    setGenre("");
+    setLanguage("");
+    setPeriod("");
+    setAward("");
+  };
+
+  const getFlag = (name?: string) => {
+    const found = countries.find((item) => item.name === name) as typeof countries[number] & { flag?: string } | undefined;
+    return found?.flag || "🌍";
+  };
+
   return (
     <div style={{ padding: "15px", background: "#FFF8EE", borderRadius: "16px" }}>
-      <input
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-        placeholder="🔎 Найти писателя мира"
-        style={{ width: "100%", padding: "10px" }}
-      />
+      <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="🔎 Найти писателя мира" style={{ width: "100%", padding: "10px" }} />
 
       <select value={country} onChange={(event) => setCountry(event.target.value)}>
         <option value="">Все страны</option>
@@ -64,33 +73,17 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
         {awards.map((item) => <option key={item}>{item}</option>)}
       </select>
 
-      {hasFilters && (
-        <div style={{ marginTop: "12px", color: "#35205F", fontWeight: "bold" }}>
-          Найдено авторов: {results.length}
-        </div>
-      )}
+      {hasFilters && <button onClick={clearFilters} style={{ marginTop: "10px" }}>✖ Очистить фильтры</button>}
+
+      {hasFilters && <div style={{ marginTop: "12px", color: "#35205F", fontWeight: "bold" }}>Найдено авторов: {results.length}</div>}
 
       {hasFilters && (
         <div style={{ marginTop: "10px" }}>
           {results.slice(0, 20).map((writer) => (
-            <button
-              key={writer.id}
-              onClick={() => onWriterSelect?.(writer)}
-              style={{
-                display: "block",
-                width: "100%",
-                padding: "10px",
-                textAlign: "left",
-                marginBottom: "8px",
-                borderRadius: "10px"
-              }}
-            >
-              <b>✒️ {writer.fullName || writer.name}</b>
-              <br />
-              <small>🌍 {writer.country || ""}</small>
-              <br />
-              <small>📅 {writer.years || ""}</small>
-              <br />
+            <button key={writer.id} onClick={() => onWriterSelect?.(writer)} style={{ display: "block", width: "100%", padding: "10px", textAlign: "left", marginBottom: "8px", borderRadius: "10px" }}>
+              <b>✒️ {writer.fullName || writer.name}</b><br />
+              <small>{getFlag(writer.country)} {writer.country || ""}</small><br />
+              <small>📅 {writer.years || ""}</small><br />
               {writer.genres?.length ? <small>📚 {writer.genres.join(", ")}</small> : null}
             </button>
           ))}
