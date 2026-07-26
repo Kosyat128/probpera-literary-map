@@ -51,11 +51,11 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
         onPointerOver={() => setHovered(point.name)}
         onPointerOut={() => setHovered(null)}
       >
-        <sphereGeometry args={[isFocused ? point.size * 1.45 : point.size, 40, 40]} />
+        <sphereGeometry args={[isFocused ? point.size * 1.5 : point.size, 48, 48]} />
         <meshStandardMaterial
           color={isFocused ? "#F6B04A" : point.color}
           emissive={point.color}
-          emissiveIntensity={isFocused ? 2.4 : 1.2}
+          emissiveIntensity={isFocused ? 2.6 : 1.2}
         />
       </mesh>
 
@@ -64,11 +64,11 @@ function LiteraryMarkers({ onCountrySelect }: Props) {
           background: "#FFF8EE",
           color: "#35205F",
           border: `2px solid ${point.color}`,
-          borderRadius: "18px",
+          borderRadius: "20px",
           padding: "10px 16px",
           fontSize: "13px",
           fontWeight: 700,
-          boxShadow: "0 12px 30px rgba(0,0,0,.35)",
+          boxShadow: "0 14px 35px rgba(0,0,0,.4)",
           whiteSpace: "nowrap"
         }}>
           {point.name}<br />
@@ -91,6 +91,12 @@ function AntiqueGlow() {
   </Sphere>;
 }
 
+function GlobeBase() {
+  return <Sphere args={[1, 128, 128]}>
+    <meshStandardMaterial color="#C8A96A" roughness={0.9} metalness={0.05} />
+  </Sphere>;
+}
+
 export default function LiteraryGlobe({ onCountrySelect }: Props) {
   return <div style={{
     width: "100%",
@@ -99,17 +105,24 @@ export default function LiteraryGlobe({ onCountrySelect }: Props) {
     borderRadius: 18,
     overflow: "hidden"
   }}>
-    <Canvas camera={{ position: [0, 0, 3.2] }}>
+    <Canvas camera={{ position: [0, 0, 3.2], fov: 42 }}>
       <ambientLight intensity={1.4} />
       <directionalLight position={[3, 3, 3]} intensity={2.5} />
       <pointLight position={[-3, 2, 3]} intensity={1.7} />
-      <Sphere args={[1, 128, 128]}>
-        <meshStandardMaterial color="#C8A96A" roughness={0.9} metalness={0.05} />
-      </Sphere>
+
+      <GlobeBase />
       <GlobeGrid />
       <AntiqueGlow />
       <LiteraryMarkers onCountrySelect={onCountrySelect} />
-      <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.25} />
+
+      <OrbitControls
+        enableZoom
+        enablePan={false}
+        autoRotate
+        autoRotateSpeed={0.25}
+        minDistance={2.2}
+        maxDistance={5}
+      />
     </Canvas>
   </div>;
 }
