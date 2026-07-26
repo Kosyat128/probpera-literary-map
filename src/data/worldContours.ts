@@ -2,6 +2,15 @@ export interface WorldContourFeature {
   coordinates: number[][] | number[][][];
 }
 
-// Контуры мира будут подключены сюда из GeoJSON.
-// Формат подготовлен для AntiqueContinentLayer.
+export interface WorldContourCollection {
+  features: WorldContourFeature[];
+}
+
+// Подготовлено для подключения GeoJSON-контуров мира.
+// Формат совместим с AntiqueContinentLayer.
+// Реальные границы будут загружаться отдельным географическим файлом.
 export const worldContours: WorldContourFeature[] = [];
+
+export function setWorldContours(features: WorldContourFeature[]) {
+  worldContours.splice(0, worldContours.length, ...features);
+}
