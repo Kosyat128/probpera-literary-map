@@ -36,7 +36,11 @@ export default function WriterPanel({ country, onWriterSelect }: WriterPanelProp
   };
 
   return <aside style={{width:"380px",background:"#FFF8EE",borderRadius:"18px",padding:"20px",height:"620px",overflowY:"auto"}}>
-    <h2 style={{color:"#35205F"}}>{country.name}</h2>
+    <h2 style={{color:"#35205F",marginBottom:"5px"}}>{country.name}</h2>
+    <div style={{color:"#E97824",fontWeight:"bold",marginBottom:"12px"}}>
+      Литературных авторов: {writers.length}
+    </div>
+
     <CountryStats country={country}/>
 
     <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="🔎 Найти писателя" style={{width:"100%",padding:"10px",margin:"15px 0"}}/>
