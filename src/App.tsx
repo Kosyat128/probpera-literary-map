@@ -49,15 +49,19 @@ export default function App() {
 
         <main style={{display:"flex",flexDirection:"column",gap:"18px"}}>
           <LiteraryWorldMap onCountrySelect={handleCountrySelect}/>
-          {selectedWriter ? (
-            <WriterProfile writer={selectedWriter}/>
-          ) : (
-            <>
-              <Timeline name={selectedCountry.writers[0]?.name} years={selectedCountry.writers[0]?.years}/>
-              <LiteraryPlaces/>
-            </>
-          )}
+          <Timeline name={selectedCountry.writers[0]?.name} years={selectedCountry.writers[0]?.years}/>
+          <LiteraryPlaces/>
         </main>
+
+        <aside style={{background:"#FFF8EE",borderRadius:"18px",padding:"14px",overflowY:"auto"}}>
+          <h2>{selectedCountry.name}</h2>
+          {selectedCountry.writers.slice(0,5).map((writer)=> (
+            <button key={writer.id || writer.name} onClick={()=>handleWriterSelect(writer)} style={{display:"block",width:"100%",marginBottom:"8px"}}>
+              {writer.fullName || writer.name}
+            </button>
+          ))}
+          {selectedWriter && <WriterProfile writer={selectedWriter}/>} 
+        </aside>
       </div>
     </div>
   );
