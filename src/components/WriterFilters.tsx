@@ -23,7 +23,7 @@ export default function WriterFilters({
         <option value="asia">Азия</option>
         <option value="america">Америка</option>
         <option value="africa">Африка</option>
-        <option value="oceania">Океания</select>
+        <option value="oceania">Океания</option>
       </select>
       <select value={period} onChange={(e)=>onPeriodChange?.(e.target.value)}>
         <option value="">Все эпохи</option>
