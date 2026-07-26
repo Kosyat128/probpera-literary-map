@@ -25,63 +25,19 @@ export default function LiteraryWorldMap({ onCountrySelect }: LiteraryWorldMapPr
 
   const selectWriter = (writer: typeof selectedWriter) => {
     setSelectedWriter(writer);
-
-    if (writer?.country) {
-      const country = countries.find((item) => item.name === writer.country);
-      if (country) {
-        setSelectedCountry(country);
-        onCountrySelect?.(country.name);
-      }
-    }
+    if (writer?.country) selectCountry(writer.country);
   };
 
   return (
     <div style={{ display: "flex", gap: "20px", position: "relative" }}>
       <div style={{ flex: 1, position: "relative" }}>
         <GlobalWriterSearch onWriterSelect={selectWriter} />
-
         <SvgWorldMap onCountrySelect={selectCountry} selectedCountry={selectedCountry?.id} />
-
-        <WriterClusters />
-
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-          {allWriters.map((writer) => {
-            const isSelected = selectedWriter?.id === writer.id;
-
-            return (
-              <button
-                key={writer.id}
-                onClick={() => selectWriter(writer)}
-                aria-label={writer.name}
-                title={`${writer.name} ${writer.years || ""}`}
-                style={{
-                  position: "absolute",
-                  left: `${writer.coordinates?.lng ?? 0}%`,
-                  top: `${writer.coordinates?.lat ?? 0}%`,
-                  width: isSelected ? "22px" : "14px",
-                  height: isSelected ? "22px" : "14px",
-                  borderRadius: "50%",
-                  border: isSelected ? "3px solid #35205F" : "2px solid #fff8ee",
-                  background: "#E97824",
-                  transform: "translate(-50%, -50%)",
-                  cursor: "pointer",
-                  pointerEvents: "auto",
-                  padding: 0,
-                  transition: "all .2s ease",
-                }}
-              />
-            );
-          })}
-        </div>
+        <WriterClusters onCountrySelect={selectCountry} />
       </div>
 
       {selectedCountry && <WriterPanel country={selectedCountry} />}
-      {selectedWriter && (
-        <WriterCard
-          writer={selectedWriter}
-          onClose={() => setSelectedWriter(null)}
-        />
-      )}
+      {selectedWriter && <WriterCard writer={selectedWriter} onClose={() => setSelectedWriter(null)} />}
     </div>
   );
 }
