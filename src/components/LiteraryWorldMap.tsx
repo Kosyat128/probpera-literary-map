@@ -10,7 +10,7 @@ import WriterCard from "./WriterCard";
 interface Props { onCountrySelect?: (name:string)=>void; }
 
 export default function LiteraryWorldMap({onCountrySelect}:Props){
- const [selectedCountry,setSelectedCountry]=useState<Country|null>(null);
+ const [selectedCountry,setSelectedCountry]=useState<Country|null>(countries[0] || null);
  const [selectedWriter,setSelectedWriter]=useState<WriterProfile|null>(null);
  const [filters,setFilters]=useState<WriterFilterState>({});
 
@@ -32,9 +32,9 @@ export default function LiteraryWorldMap({onCountrySelect}:Props){
      <GlobalWriterFilters filters={filters} onChange={setFilters}/>
     </div>
     <LiteraryGlobe onCountrySelect={selectCountry}/>
-    {selectedWriter&&<WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>} 
+    {selectedWriter&&<WriterCard writer={selectedWriter} onClose={()=>setSelectedWriter(null)}/>}
    </main>
 
-   {selectedCountry&&<WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
+   {selectedCountry && <WriterPanel country={selectedCountry} onWriterSelect={selectWriter}/>} 
   </div>;
 }
