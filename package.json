@@ -10,6 +10,8 @@
     "content:crawl": "node scripts/crawl-probpera.mjs",
     "content:audit": "node scripts/audit-articles.mjs",
     "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
+    "content:normalize-titles": "node scripts/normalize-article-titles.mjs",
+    "media:audit": "node scripts/audit-section-media.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
     "covers:audit": "node scripts/audit-cover-rights.mjs"

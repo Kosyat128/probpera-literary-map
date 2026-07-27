@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { supabase } from "../lib/supabase";
+import { useReadingLibrary } from "../hooks/useReadingLibrary";
+import { articlePath } from "../utils/articleRoutes";
 import { useAuth } from "./AuthContext";
+import EditorialWorkbench from "./EditorialWorkbench";
 
 export type CommunityView = "account" | "forum" | "admin";
 
@@ -121,6 +124,8 @@ export default function CommunityHub({
   });
   const [moderationItems, setModerationItems] = useState<ModerationItem[]>([]);
   const [commentReports, setCommentReports] = useState<CommentReport[]>([]);
+  const { items: savedReadings, remove: removeSavedReading } =
+    useReadingLibrary();
 
   const isModerator = ["moderator", "editor", "admin"].includes(role);
 
@@ -632,6 +637,7 @@ export default function CommunityHub({
                 </div>
               )}
             </div>
+            {["editor", "admin"].includes(role) && <EditorialWorkbench />}
           </div>
         ) : view === "account" ? (
           <div className="account-view">
@@ -676,6 +682,39 @@ export default function CommunityHub({
                     <dd>Участник клуба читателей</dd>
                   </div>
                 </dl>
+                <section className="account-library">
+                  <header>
+                    <div>
+                      <span className="section-kicker">Моя библиотека</span>
+                      <h3>Сохранённые материалы</h3>
+                    </div>
+                    <strong>{savedReadings.length}</strong>
+                  </header>
+                  {savedReadings.length ? (
+                    <div>
+                      {savedReadings.slice(0, 6).map((item) => (
+                        <article key={item.id}>
+                          <a href={articlePath(item.id)}>
+                            <small>{item.sectionLabel}</small>
+                            <strong>{item.title}</strong>
+                          </a>
+                          <button
+                            type="button"
+                            onClick={() => removeSavedReading(item.id)}
+                            aria-label={`Удалить «${item.title}» из библиотеки`}
+                          >
+                            ×
+                          </button>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>
+                      Нажмите значок закладки в режиме чтения — статья появится
+                      здесь.
+                    </p>
+                  )}
+                </section>
                 <div className="account-actions">
                   <button type="button" onClick={() => setView("forum")}>
                     Перейти в форум

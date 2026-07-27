@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import ArticleEngagement from "../community/ArticleEngagement";
+import DisplayModeControl from "./DisplayModeControl";
 import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
 import ShareLinks from "../editorial/ShareLinks";
+import { useDisplayMode } from "../hooks/useDisplayMode";
+import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { articlePath } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 
@@ -27,8 +30,6 @@ type Props = {
   onOpen: (article: ArticleCatalogEntry) => void;
 };
 
-type ReadingTheme = "night" | "paper";
-
 function publicArticleUrl(articleId: string) {
   return `${import.meta.env.BASE_URL}articles/${articleId}.json`;
 }
@@ -48,7 +49,10 @@ export default function ArticleReader({
   const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fontScale, setFontScale] = useState(1);
-  const [theme, setTheme] = useState<ReadingTheme>("night");
+  const { mode } = useDisplayMode();
+  const { items: savedReadings, toggle: toggleSavedReading } =
+    useReadingLibrary();
+  const isSaved = savedReadings.some((item) => item.id === article.id);
 
   useEffect(() => {
     let active = true;
@@ -142,7 +146,7 @@ export default function ArticleReader({
   return (
     <div
       ref={dialogRef}
-      className={`article-reader is-${theme}`}
+      className={`article-reader is-${mode}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="article-reader-title"
@@ -179,12 +183,22 @@ export default function ArticleReader({
           >
             А+
           </button>
+          <DisplayModeControl compact />
           <button
             type="button"
-            aria-label={theme === "night" ? "Светлая тема" : "Тёмная тема"}
-            onClick={() => setTheme((value) => (value === "night" ? "paper" : "night"))}
+            className={isSaved ? "reader-save is-active" : "reader-save"}
+            aria-pressed={isSaved}
+            aria-label={isSaved ? "Удалить статью из библиотеки" : "Сохранить статью"}
+            title={isSaved ? "Сохранено в библиотеке" : "Сохранить на потом"}
+            onClick={() =>
+              toggleSavedReading({
+                id: article.id,
+                title: article.title,
+                sectionLabel: article.sectionLabel,
+              })
+            }
           >
-            {theme === "night" ? "☼" : "☾"}
+            {isSaved ? "◆" : "◇"}
           </button>
           <button className="reader-close" type="button" onClick={onClose} aria-label="Закрыть">
             ×
@@ -218,6 +232,13 @@ export default function ArticleReader({
             className="article-reader-paper"
             style={{ "--reader-scale": fontScale } as CSSProperties}
           >
+            {mode === "book" && (
+              <div className="book-mode-plaque" aria-hidden="true">
+                <span>Проба Пера</span>
+                <i>Режим печатной книги</i>
+                <span>MMXXVI</span>
+              </div>
+            )}
             <header className="article-reader-lead">
               <div>
                 <span>{article.sectionLabel}</span>

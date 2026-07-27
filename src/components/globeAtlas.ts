@@ -303,7 +303,6 @@ function drawAntiqueLabels(context: CanvasRenderingContext2D) {
     { text: "ASIA", lng: 87, lat: 46, size: 54, angle: -0.03 },
     { text: "AMERICA SEPTENTRIONALIS", lng: -108, lat: 48, size: 31, angle: -0.1 },
     { text: "AMERICA MERIDIONALIS", lng: -63, lat: -21, size: 28, angle: 0.12 },
-    { text: "TARTARIA", lng: 72, lat: 59, size: 24, angle: -0.06 },
     { text: "INDIA", lng: 79, lat: 23, size: 22, angle: 0.05 },
     { text: "OCEANVS ATLANTICVS", lng: -30, lat: 18, size: 24, angle: -0.18 },
     { text: "MARE PACIFICVM", lng: 155, lat: -12, size: 25, angle: 0.16 },

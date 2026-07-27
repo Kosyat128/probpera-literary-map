@@ -11,6 +11,7 @@ import {
 import ArticleEngagement from "./community/ArticleEngagement";
 import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
+import GlobalSearch from "./components/GlobalSearch";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
@@ -47,7 +48,8 @@ const editorialFeatures = [
     title: "Хантер С. Томпсон «Ангелы ада»",
     description:
       "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
-    image: "brand/series-1.webp",
+    image:
+      "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
     articleUrl: articlePath("page--article--page--books--22"),
     sectionUrl: journalPath("book-opinions"),
     readTime: "12 минут",
@@ -57,7 +59,8 @@ const editorialFeatures = [
     title: "Семь знаковых писателей Японии",
     description:
       "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.",
-    image: "brand/series-3.webp",
+    image:
+      "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
     articleUrl: articlePath("page--article--page--writers--world--4"),
     sectionUrl: journalPath("writers-world"),
     readTime: "15 минут",
@@ -67,7 +70,8 @@ const editorialFeatures = [
     title: "Редкие слова, которыми хочется пользоваться",
     description:
       "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.",
-    image: "brand/series-2.webp",
+    image:
+      "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
     articleUrl: "https://probpera.ru/read/page-words/",
     sectionUrl: journalPath("language"),
     readTime: "9 минут",
@@ -77,7 +81,8 @@ const editorialFeatures = [
     title: "Кем работали классики до литературной славы",
     description:
       "Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.",
-    image: "brand/series-4.webp",
+    image:
+      "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
     articleUrl: articlePath("page--article--first--profession--writers--2"),
     sectionUrl: journalPath("author-stories"),
     readTime: "11 минут",
@@ -90,56 +95,98 @@ const sectionLinks = [
     title: "Мнение о книге",
     copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
     href: journalPath("book-opinions"),
-    image: "brand/series-1.webp",
+    image:
+      "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
   },
   {
     number: "02",
-    title: "Книга vs экранизация",
+    title: "Книга и экранизация",
     copy: "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.",
     href: journalPath("screen-adaptations"),
-    image: "brand/magazine-cover.webp",
+    image:
+      "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
   },
   {
     number: "03",
     title: "Литературные премии",
     copy: "История крупнейших наград, лауреаты, произведения и культурный контекст.",
     href: journalPath("awards"),
-    image: "brand/section-prizes.webp",
+    image:
+      "https://static.tildacdn.com/tild6634-3234-4332-b438-663736316139/anastacia-dvi-HRPaX-.jpg",
   },
   {
     number: "04",
-    title: "Биографии классиков",
+    title: "Биографии и судьбы писателей",
     copy: "Тщательные человеческие биографии: судьба, время, характер и главные тексты автора.",
     href: journalPath("writers-world"),
-    image: "brand/series-3.webp",
+    image:
+      "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
   },
   {
     number: "05",
     title: "Литература народов мира",
     copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
     href: journalPath("writers-world"),
-    image: "brand/series-4.webp",
+    image:
+      "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
   },
   {
     number: "06",
     title: "Фольклор и мифология",
     copy: "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.",
     href: journalPath("folklore"),
-    image: "brand/editorial-paper.webp",
+    image:
+      "https://static.tildacdn.com/tild3635-3764-4636-a639-396366626632/___1.jpg",
   },
   {
     number: "07",
     title: "Язык и редкие слова",
     copy: "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.",
     href: journalPath("language"),
-    image: "brand/series-2.webp",
+    image:
+      "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
   },
   {
     number: "08",
     title: "Литературные истории",
     copy: "Необычные судьбы произведений, авторские замыслы, профессии писателей и культурные открытия.",
     href: journalPath("author-stories"),
-    image: "brand/series-1.webp",
+    image:
+      "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
+  },
+];
+
+const verifiedBookFacts = [
+  {
+    book: "«Алиса в Стране чудес»",
+    fact:
+      "Тираж первого издания 1865 года отозвали из-за качества печати иллюстраций Джона Тенниела. Из двух тысяч экземпляров успели раздать лишь около пятидесяти.",
+    sourceLabel: "Библиотека Конгресса",
+    sourceUrl:
+      "https://blogs.loc.gov/loc/2016/05/lcm-page-from-the-past-alices-adventures-in-the-library-of-congress/",
+  },
+  {
+    book: "«Разум и чувства»",
+    fact:
+      "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» — «Написано леди».",
+    sourceLabel: "Британская библиотека",
+    sourceUrl:
+      "https://www.bl.uk/stories/blogs/posts/jane-austen-names-and-notability",
+  },
+  {
+    book: "«Маленький принц»",
+    fact:
+      "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны — в 1946 году.",
+    sourceLabel: "Национальная библиотека Франции",
+    sourceUrl: "https://catalogue.bnf.fr/ark:/12148/cb11962706k",
+  },
+  {
+    book: "«Замок Отранто»",
+    fact:
+      "Роман Хораса Уолпола 1764 года, считающийся первым готическим романом, первоначально вышел анонимно и выдавался за найденную средневековую рукопись.",
+    sourceLabel: "Британская библиотека",
+    sourceUrl:
+      "https://www.bl.uk/stories/blogs/posts/spine-tingling-stories-in-the-blood-curdling-british-library",
   },
 ];
 
@@ -182,6 +229,10 @@ function assetUrl(path: string) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 }
 
+function mediaUrl(path: string) {
+  return /^https?:\/\//i.test(path) ? path : assetUrl(path);
+}
+
 export default function App() {
   const { user } = useAuth();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
@@ -191,6 +242,7 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>("all");
   const [communityOpen, setCommunityOpen] = useState(false);
+  const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
@@ -206,6 +258,22 @@ export default function App() {
       active = false;
       window.clearTimeout(timer);
     };
+  }, []);
+
+  useEffect(() => {
+    const openSearch = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (
+        event.key !== "/" ||
+        target?.matches("input, textarea, select, [contenteditable='true']")
+      ) {
+        return;
+      }
+      event.preventDefault();
+      setGlobalSearchOpen(true);
+    };
+    window.addEventListener("keydown", openSearch);
+    return () => window.removeEventListener("keydown", openSearch);
   }, []);
 
   const allWriters = useMemo(
@@ -328,6 +396,10 @@ export default function App() {
   const bookOfDayHasCover = Boolean(
     bookOfDay && isCoverDisplayAllowed(bookOfDay)
   );
+  const factOfDay = useMemo(() => {
+    const dayNumber = Math.floor(Date.now() / 86_400_000);
+    return verifiedBookFacts[dayNumber % verifiedBookFacts.length];
+  }, []);
 
   const selectCountry = useCallback(
     (country: Country, focusAtlas = false, writer?: Writer) => {
@@ -396,6 +468,16 @@ export default function App() {
         </nav>
 
         <div className="header-actions">
+          <button
+            className="global-search-trigger"
+            type="button"
+            onClick={() => setGlobalSearchOpen(true)}
+            aria-label="Открыть единый поиск"
+          >
+            <span aria-hidden="true">⌕</span>
+            <small>Поиск</small>
+            <kbd>/</kbd>
+          </button>
           <SocialLinks />
           <button
             className="reader-button"
@@ -417,6 +499,9 @@ export default function App() {
         <button type="button" onClick={() => openCommunity("forum")}>
           Форум
         </button>
+        <button type="button" onClick={() => setGlobalSearchOpen(true)}>
+          Поиск
+        </button>
       </nav>
 
       <main>
@@ -429,7 +514,9 @@ export default function App() {
               <em>это целый мир.</em>
             </h1>
             <p>
-              Статьи, биографии, редкие книги и первая интерактивная литературная
+              Статьи, биографии, редкие книги и первая{" "}
+              <br className="hero-mobile-break" />
+              интерактивная литературная
               энциклопедия стран — в одном редакционном пространстве.
             </p>
             <div className="hero-actions">
@@ -753,6 +840,25 @@ export default function App() {
               </li>
             </ul>
           </article>
+
+          <article className="book-fact-card">
+            <div className="book-fact-orbit" aria-hidden="true">
+              <span>✦</span>
+              <i />
+            </div>
+            <div>
+              <span className="section-kicker">Интересный факт о книге</span>
+              <h3>{factOfDay.book}</h3>
+              <p>{factOfDay.fact}</p>
+              <a
+                href={factOfDay.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Проверить источник · {factOfDay.sourceLabel} ↗
+              </a>
+            </div>
+          </article>
         </section>
 
         <Suspense
@@ -788,7 +894,11 @@ export default function App() {
               <article className={index === 0 ? "is-featured" : ""} key={feature.title}>
                 <a href={feature.articleUrl}>
                   <div className="article-image">
-                    <img src={assetUrl(feature.image)} alt="" loading="lazy" />
+                    <img
+                      src={mediaUrl(feature.image)}
+                      alt={`Иллюстрация к материалу «${feature.title}»`}
+                      loading="lazy"
+                    />
                     <span>{feature.tag}</span>
                   </div>
                   <div className="article-copy">
@@ -916,7 +1026,7 @@ export default function App() {
               <a
                 href={section.href}
                 key={section.title}
-                style={{ "--section-art": `url(${assetUrl(section.image)})` } as React.CSSProperties}
+                style={{ "--section-art": `url(${mediaUrl(section.image)})` } as React.CSSProperties}
               >
                 <div>
                   <span>{section.number}</span>
@@ -929,11 +1039,75 @@ export default function App() {
           </div>
         </section>
 
+        <section className="trust-center" id="editorial-policy">
+          <header className="section-heading">
+            <div>
+              <span className="section-kicker">Открытая редакция</span>
+              <h2>Как устроено доверие</h2>
+              <p>
+                Читатель видит не только готовый текст, но и правила, по
+                которым сведения попадают в энциклопедию.
+              </p>
+            </div>
+            <a href="mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале">
+              Сообщить об ошибке <span>→</span>
+            </a>
+          </header>
+          <div>
+            <details open>
+              <summary>
+                <span>01</span>
+                Редакционная политика
+              </summary>
+              <p>
+                Авторские статьи сохраняют индивидуальный голос. Фактические
+                утверждения, даты, имена и библиография проверяются отдельно;
+                спорные сведения помечаются, а не выдаются за установленные.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span>02</span>
+                Источники и фактчекинг
+              </summary>
+              <p>
+                Приоритет получают библиотеки, музеи, архивы, научные издания и
+                правообладатели. В карточках писателей и книг источник
+                показывается рядом с подтверждаемым сведением.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span>03</span>
+                Иллюстрации и права
+              </summary>
+              <p>
+                Портреты не генерируются. Используются документальные
+                изображения и легальные внешние превью; для обложек хранится
+                источник, статус лицензии и дата последней проверки.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span>04</span>
+                Исправления и обновления
+              </summary>
+              <p>
+                Существенные исправления проходят редакционную проверку.
+                Читатель может сообщить о неточности по почте, указав страницу,
+                фрагмент и надёжный источник.
+              </p>
+            </details>
+          </div>
+        </section>
+
         <section id="calendar" className="calendar-section painted-paper-section">
           <Suspense fallback={<div className="calendar-card">Собираем литературные даты…</div>}>
             <LiteraryCalendar
               countries={countryArchive}
-              onCountrySelect={(country) => selectCountry(country, true)}
+              onCountrySelect={(country, writer) =>
+                selectCountry(country, true, writer)
+              }
             />
           </Suspense>
         </section>
@@ -980,6 +1154,8 @@ export default function App() {
               <a href="#books">Книжный архив</a>
               <a href="#calendar">Календарь событий</a>
               <a href="#about">Редакционный стандарт</a>
+              <a href="#editorial-policy">Источники и фактчекинг</a>
+              <a href="#editorial-policy">Исправления и авторские права</a>
             </section>
             <section>
               <h2>Сообщество</h2>
@@ -1005,6 +1181,19 @@ export default function App() {
         open={communityOpen}
         initialView={communityView}
         onClose={() => setCommunityOpen(false)}
+      />
+
+      <GlobalSearch
+        open={globalSearchOpen}
+        countries={countryArchive}
+        books={bookArchive}
+        onClose={() => setGlobalSearchOpen(false)}
+        onCountrySelect={(country, writer) =>
+          selectCountry(country, true, writer)
+        }
+        onBookSelect={(book) =>
+          selectCountry(book.country, true, book.writer)
+        }
       />
     </div>
   );

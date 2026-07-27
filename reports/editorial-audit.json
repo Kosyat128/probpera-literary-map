@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T03:36:26.801Z",
+  "generatedAt": "2026-07-27T04:21:22.744Z",
   "note": "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
   "summary": {
     "articles": 157,
@@ -52,7 +52,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "wordCount": 1890,
       "issues": 6,
@@ -61,7 +61,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "wordCount": 1267,
       "issues": 6,
@@ -70,7 +70,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "wordCount": 908,
       "issues": 6,
@@ -79,7 +79,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "wordCount": 765,
       "issues": 6,
@@ -88,7 +88,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "wordCount": 1798,
       "issues": 6,
@@ -97,7 +97,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "wordCount": 1056,
       "issues": 6,
@@ -268,7 +268,7 @@
     },
     {
       "id": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "wordCount": 672,
       "issues": 6,
@@ -277,7 +277,7 @@
     },
     {
       "id": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "wordCount": 631,
       "issues": 6,
@@ -286,7 +286,7 @@
     },
     {
       "id": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "wordCount": 693,
       "issues": 6,
@@ -448,7 +448,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "wordCount": 802,
       "issues": 5,
@@ -457,7 +457,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "wordCount": 715,
       "issues": 5,
@@ -520,7 +520,7 @@
     },
     {
       "id": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "wordCount": 1005,
       "issues": 5,
@@ -556,7 +556,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--1",
-      "title": "Книга vs Экранизация. \"Облачный атлас\"",
+      "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
       "wordCount": 929,
       "issues": 4,
@@ -610,7 +610,7 @@
     },
     {
       "id": "page--article--page--writers--world--1",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Австралия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/1",
       "wordCount": 755,
       "issues": 4,
@@ -655,7 +655,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
+      "title": "Книга и экранизация: «Война миров»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
       "wordCount": 1305,
       "issues": 3,
@@ -664,7 +664,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--6",
-      "title": "Книга vs Экранизация. «Страх и ненависть в Лас-Вегасе»",
+      "title": "Книга и экранизация: «Страх и ненависть в Лас-Вегасе»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/6",
       "wordCount": 1015,
       "issues": 3,
@@ -727,7 +727,7 @@
     },
     {
       "id": "page--article--page--writers--world--5",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Бразилия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Бразилия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/5",
       "wordCount": 840,
       "issues": 3,
@@ -736,7 +736,7 @@
     },
     {
       "id": "page--article--page--writers--world--11",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Швеция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Швеция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/11",
       "wordCount": 724,
       "issues": 3,
@@ -745,7 +745,7 @@
     },
     {
       "id": "page--article--page--writers--world--10",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". ЮАР",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». ЮАР",
       "url": "https://probpera.ru/read/page-article/page-writers-world/10",
       "wordCount": 728,
       "issues": 3,
@@ -835,7 +835,7 @@
     },
     {
       "id": "page--article--page--bookvsmovie--2",
-      "title": "Книга vs Экранизация. \"Я-легенда\"",
+      "title": "Книга и экранизация: «Я-легенда»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/2",
       "wordCount": 1080,
       "issues": 2,
@@ -898,7 +898,7 @@
     },
     {
       "id": "page--article--page--writers--world--12",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Норвегия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Норвегия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/12",
       "wordCount": 691,
       "issues": 2,
@@ -997,7 +997,7 @@
     },
     {
       "id": "page--article--page--books--4",
-      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
+      "title": "Даниель Дефо «Всеобщая история пиратства»",
       "url": "https://probpera.ru/read/page-article/page-books/4",
       "wordCount": 1019,
       "issues": 1,
@@ -1060,7 +1060,7 @@
     },
     {
       "id": "page--article--page--writers--world--2",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Мексика",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Мексика",
       "url": "https://probpera.ru/read/page-article/page-writers-world/2",
       "wordCount": 832,
       "issues": 1,
@@ -1069,7 +1069,7 @@
     },
     {
       "id": "page--article--page--writers--world--4",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Япония",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Япония",
       "url": "https://probpera.ru/read/page-article/page-writers-world/4",
       "wordCount": 723,
       "issues": 1,
@@ -1132,7 +1132,7 @@
     },
     {
       "id": "page--article--famous--prizes--5",
-      "title": "Премия \"Мигель де Сервантес\"",
+      "title": "Премия «Мигель де Сервантес»",
       "url": "https://probpera.ru/read/page-article/famous_prizes/5",
       "wordCount": 431,
       "issues": 1,
@@ -1159,7 +1159,7 @@
     },
     {
       "id": "page--stories--1",
-      "title": "Эссе на тему: \"Моё первое знакомство с поэзией\"",
+      "title": "Эссе на тему: «Моё первое знакомство с поэзией»",
       "url": "https://probpera.ru/read/page-stories/1",
       "wordCount": 845,
       "issues": 1,
@@ -1195,7 +1195,7 @@
     },
     {
       "id": "page--article--page--books--2",
-      "title": "А.О. Эксвемелин \"Пираты Америки\"",
+      "title": "А.О. Эксвемелин «Пираты Америки»",
       "url": "https://probpera.ru/read/page-article/page-books/2",
       "wordCount": 1101,
       "issues": 0,
@@ -1249,7 +1249,7 @@
     },
     {
       "id": "page--article--page--writers--world--3",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Индия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Индия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/3",
       "wordCount": 939,
       "issues": 0,
@@ -1767,7 +1767,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1779,7 +1779,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1791,7 +1791,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1803,7 +1803,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1815,7 +1815,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1827,7 +1827,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1839,7 +1839,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
+      "title": "Книга и экранизация: «Война миров»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1851,7 +1851,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
+      "title": "Книга и экранизация: «Война миров»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1863,7 +1863,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
+      "title": "Книга и экранизация: «Война миров»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1875,7 +1875,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--1",
-      "title": "Книга vs Экранизация. \"Облачный атлас\"",
+      "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1887,7 +1887,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--1",
-      "title": "Книга vs Экранизация. \"Облачный атлас\"",
+      "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1899,7 +1899,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--1",
-      "title": "Книга vs Экранизация. \"Облачный атлас\"",
+      "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1911,7 +1911,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--1",
-      "title": "Книга vs Экранизация. \"Облачный атлас\"",
+      "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1923,7 +1923,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--2",
-      "title": "Книга vs Экранизация. \"Я-легенда\"",
+      "title": "Книга и экранизация: «Я-легенда»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/2",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1935,7 +1935,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--2",
-      "title": "Книга vs Экранизация. \"Я-легенда\"",
+      "title": "Книга и экранизация: «Я-легенда»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/2",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1947,7 +1947,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1959,7 +1959,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1971,7 +1971,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1983,7 +1983,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -1995,7 +1995,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2007,7 +2007,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--11",
-      "title": "Книга vs Экранизация. «1408»",
+      "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2019,7 +2019,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2031,7 +2031,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2043,7 +2043,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2055,7 +2055,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2067,7 +2067,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2079,7 +2079,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--7",
-      "title": "Книга vs Экранизация. «Бойцовский клуб»",
+      "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2091,7 +2091,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2103,7 +2103,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2115,7 +2115,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2127,7 +2127,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2139,7 +2139,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "title": "Книга и экранизация: «Гринч - похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2151,7 +2151,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2163,7 +2163,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2175,7 +2175,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2187,7 +2187,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2199,7 +2199,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2211,7 +2211,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--10",
-      "title": "Книга vs Экранизация. «О мышах и людях»",
+      "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2223,7 +2223,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2235,7 +2235,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2247,7 +2247,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2259,7 +2259,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2271,7 +2271,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2283,7 +2283,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--12",
-      "title": "Книга vs Экранизация. «Парк юрского периода»",
+      "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2295,7 +2295,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2307,7 +2307,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2319,7 +2319,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2331,7 +2331,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2343,7 +2343,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2355,7 +2355,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--8",
-      "title": "Книга vs Экранизация. «Старикам тут не место»",
+      "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2367,7 +2367,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--6",
-      "title": "Книга vs Экранизация. «Страх и ненависть в Лас-Вегасе»",
+      "title": "Книга и экранизация: «Страх и ненависть в Лас-Вегасе»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/6",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2379,7 +2379,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--6",
-      "title": "Книга vs Экранизация. «Страх и ненависть в Лас-Вегасе»",
+      "title": "Книга и экранизация: «Страх и ненависть в Лас-Вегасе»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/6",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2391,7 +2391,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--6",
-      "title": "Книга vs Экранизация. «Страх и ненависть в Лас-Вегасе»",
+      "title": "Книга и экранизация: «Страх и ненависть в Лас-Вегасе»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/6",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2403,7 +2403,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2415,7 +2415,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2427,7 +2427,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2439,7 +2439,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -2451,7 +2451,7 @@
     },
     {
       "articleId": "page--article--page--bookvsmovie--9",
-      "title": "Книга vs Экранизация. «Форрест Гамп»",
+      "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -3315,7 +3315,7 @@
     },
     {
       "articleId": "page--article--page--books--4",
-      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
+      "title": "Даниель Дефо «Всеобщая история пиратства»",
       "url": "https://probpera.ru/read/page-article/page-books/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4647,7 +4647,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--1",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Австралия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4659,7 +4659,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--1",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Австралия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4671,7 +4671,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--1",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Австралия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4683,7 +4683,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--1",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Австралия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4695,7 +4695,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--5",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Бразилия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Бразилия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4707,7 +4707,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--5",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Бразилия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Бразилия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4719,7 +4719,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--5",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Бразилия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Бразилия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4731,7 +4731,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4743,7 +4743,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4755,7 +4755,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4767,7 +4767,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4779,7 +4779,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4791,7 +4791,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--8",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Италия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/8",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4803,7 +4803,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4815,7 +4815,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4827,7 +4827,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4839,7 +4839,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4851,7 +4851,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4863,7 +4863,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--7",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Китай",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/read/page-article/page-writers-world/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4875,7 +4875,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--2",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Мексика",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Мексика",
       "url": "https://probpera.ru/read/page-article/page-writers-world/2",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4887,7 +4887,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--12",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Норвегия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Норвегия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4899,7 +4899,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--12",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Норвегия",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Норвегия",
       "url": "https://probpera.ru/read/page-article/page-writers-world/12",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4911,7 +4911,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4923,7 +4923,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4935,7 +4935,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4947,7 +4947,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4959,7 +4959,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4971,7 +4971,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--9",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Турция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/9",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4983,7 +4983,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--11",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Швеция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Швеция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -4995,7 +4995,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--11",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Швеция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Швеция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -5007,7 +5007,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--11",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Швеция",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Швеция",
       "url": "https://probpera.ru/read/page-article/page-writers-world/11",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -5019,7 +5019,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--10",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". ЮАР",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». ЮАР",
       "url": "https://probpera.ru/read/page-article/page-writers-world/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -5031,7 +5031,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--10",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". ЮАР",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». ЮАР",
       "url": "https://probpera.ru/read/page-article/page-writers-world/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -5043,7 +5043,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--10",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". ЮАР",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». ЮАР",
       "url": "https://probpera.ru/read/page-article/page-writers-world/10",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -5055,7 +5055,7 @@
     },
     {
       "articleId": "page--article--page--writers--world--4",
-      "title": "\"Литературная карта мира. 7 знаковых писателей, прославивших свою родину\". Япония",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Япония",
       "url": "https://probpera.ru/read/page-article/page-writers-world/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6027,7 +6027,7 @@
     },
     {
       "articleId": "page--article--famous--prizes--5",
-      "title": "Премия \"Мигель де Сервантес\"",
+      "title": "Премия «Мигель де Сервантес»",
       "url": "https://probpera.ru/read/page-article/famous_prizes/5",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6279,7 +6279,7 @@
     },
     {
       "articleId": "page--stories--1",
-      "title": "Эссе на тему: \"Моё первое знакомство с поэзией\"",
+      "title": "Эссе на тему: «Моё первое знакомство с поэзией»",
       "url": "https://probpera.ru/read/page-stories/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6891,7 +6891,7 @@
     },
     {
       "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6903,7 +6903,7 @@
     },
     {
       "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6915,7 +6915,7 @@
     },
     {
       "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6927,7 +6927,7 @@
     },
     {
       "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
@@ -6939,7 +6939,7 @@
     },
     {
       "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "title": "А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",

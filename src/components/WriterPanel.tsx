@@ -1,7 +1,9 @@
 import { gsap } from "gsap";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
+import { articleCatalog } from "../data/articles/catalog.generated";
 import type { Country, Writer } from "../data/countries";
+import { articlePath } from "../utils/articleRoutes";
 
 type WriterPanelProps = {
   country: Country;
@@ -57,6 +59,23 @@ function isNobelWriter(writer: Writer) {
 
 function uniqueValues(values: Array<string | undefined>) {
   return [...new Set(values.filter((value): value is string => Boolean(value?.trim())))];
+}
+
+function relatedArticlesFor(writer: Writer) {
+  const nameParts = getWriterName(writer)
+    .toLocaleLowerCase("ru")
+    .replace(/[^\p{L}\s-]/gu, " ")
+    .split(/\s+/)
+    .filter((part) => part.length >= 4);
+  const surname = nameParts[nameParts.length - 1];
+  if (!surname) return [];
+  return articleCatalog
+    .filter((article) =>
+      `${article.title} ${article.description}`
+        .toLocaleLowerCase("ru")
+        .includes(surname)
+    )
+    .slice(0, 4);
 }
 
 export default function WriterPanel({
@@ -129,6 +148,10 @@ export default function WriterPanel({
         .sort((first, second) => first.year - second.year)
         .slice(0, 6),
     [writers]
+  );
+  const relatedArticles = useMemo(
+    () => (activeWriter ? relatedArticlesFor(activeWriter) : []),
+    [activeWriter]
   );
 
   const nobelCount =
@@ -285,6 +308,18 @@ export default function WriterPanel({
                   <li key={work}>{work}</li>
                 ))}
               </ol>
+            </div>
+          )}
+
+          {relatedArticles.length > 0 && (
+            <div className="writer-articles">
+              <span>Материалы журнала</span>
+              {relatedArticles.map((article) => (
+                <a key={article.id} href={articlePath(article.id)}>
+                  <strong>{article.title}</strong>
+                  <small>{article.sectionLabel} · {article.readingMinutes} мин.</small>
+                </a>
+              ))}
             </div>
           )}
 
