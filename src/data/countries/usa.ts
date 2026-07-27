@@ -1242,6 +1242,12 @@ export const usa: Country = {
           description: "Роман Тони Моррисон о памяти рабства и его последствиях для семьи. Опубликован в 1987 году и удостоен Пулитцеровской премии за художественную книгу в 1988 году.",
           coverUrl: "https://covers.openlibrary.org/b/id/8261367-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL50548W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL50548W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://www.pulitzer.org/winners/toni-morrison",
           editorial: {
             status: "verified",

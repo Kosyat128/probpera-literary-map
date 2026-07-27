@@ -1,4 +1,5 @@
 import type { Country } from "./types";
+import { mergeGeneratedWriters } from "./generated";
 
 import { afghanistan } from "./afghanistan";
 import { albania } from "./albania";
@@ -220,7 +221,7 @@ import { yemen } from "./yemen";
 import { zimbabwe } from "./zimbabwe";
 
 
-export const countries: Country[] = [
+const curatedCountries: Country[] = [
   afghanistan,
   albania,
   algeria,
@@ -440,3 +441,5 @@ export const countries: Country[] = [
   yemen,
   zimbabwe,
 ];
+
+export const countries: Country[] = mergeGeneratedWriters(curatedCountries);

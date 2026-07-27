@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "content:crawl": "node scripts/crawl-probpera.mjs",
+    "content:audit": "node scripts/audit-articles.mjs",
+    "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
+    "countries:audit": "node scripts/audit-generated-writers.mjs",
+    "covers:audit": "node scripts/audit-cover-rights.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
@@ -25,6 +30,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "cheerio": "^1.1.2",
     "typescript": "^5.6.3",
     "vite": "^5.4.10"
   }

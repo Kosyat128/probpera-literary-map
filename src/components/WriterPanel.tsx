@@ -260,6 +260,14 @@ export default function WriterPanel({
           {activeWriter.editorial?.status === "verified" && (
             <span className="editorial-badge">Проверено редакцией</span>
           )}
+          {activeWriter.editorial?.status === "reviewed" && (
+            <span className="editorial-badge is-reviewed">Редакционная карточка</span>
+          )}
+          {activeWriter.editorial?.status === "draft" && (
+            <span className="editorial-badge is-draft">
+              Справочная карточка · требует расширения
+            </span>
+          )}
           <h4>{getWriterName(activeWriter)}</h4>
           <p className="writer-years">{activeWriter.years}</p>
           <p className="writer-bio">

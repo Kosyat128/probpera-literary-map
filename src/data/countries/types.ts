@@ -9,6 +9,21 @@ export type WorkProfile = {
   description?: string;
   coverUrl?: string;
   coverSourceUrl?: string;
+  coverRights?: {
+    status:
+      | "public-domain"
+      | "licensed"
+      | "permission"
+      | "external-preview"
+      | "unverified";
+    licenseName?: string;
+    licenseUrl?: string;
+    creator?: string;
+    rightsHolder?: string;
+    sourceUrl: string;
+    checkedAt?: string;
+    note?: string;
+  };
   sourceUrl?: string;
   editorial?: {
     status: "draft" | "reviewed" | "verified";

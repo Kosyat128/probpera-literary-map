@@ -238,6 +238,12 @@ export const england: Country = {
           description: "Трагедия о принце Датском, написанная приблизительно на рубеже XVI–XVII веков. Первое известное печатное издание появилось в 1603 году.",
           coverUrl: "https://covers.openlibrary.org/b/id/8281954-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL9170454W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL9170454W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://www.folger.edu/explore/shakespeares-works/hamlet/",
           editorial: {
             status: "verified",

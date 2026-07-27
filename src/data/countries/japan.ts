@@ -900,6 +900,12 @@ export const japan: Country = {
           description: "Роман о памяти, взрослении и переживании утраты, впервые изданный в Японии в 1987 году. Название отсылает к песне The Beatles Norwegian Wood.",
           coverUrl: "https://covers.openlibrary.org/b/id/2237620-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL2625457W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL2625457W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://www.shinchosha.co.jp/book/100154/",
           editorial: {
             status: "verified",

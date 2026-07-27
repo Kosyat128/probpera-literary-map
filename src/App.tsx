@@ -13,7 +13,7 @@ import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
-import { buildBookArchive } from "./data/bookArchive";
+import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 
@@ -22,6 +22,9 @@ const WriterPanel = lazy(() => import("./components/WriterPanel"));
 const LiteraryCalendar = lazy(() => import("./components/LiteraryCalendar"));
 const BookArchiveSection = lazy(
   () => import("./components/BookArchiveSection")
+);
+const ArticleLibrarySection = lazy(
+  () => import("./components/ArticleLibrarySection")
 );
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
@@ -282,7 +285,7 @@ export default function App() {
   const bookOfDay = useMemo(() => {
     const editorialBooks = bookArchive.filter(
       (book) =>
-        Boolean(book.coverUrl) &&
+        isCoverDisplayAllowed(book) &&
         ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
     const books = editorialBooks.length ? editorialBooks : bookArchive;
@@ -290,6 +293,9 @@ export default function App() {
     const dayNumber = Math.floor(Date.now() / 86_400_000);
     return books[dayNumber % books.length];
   }, [bookArchive]);
+  const bookOfDayHasCover = Boolean(
+    bookOfDay && isCoverDisplayAllowed(bookOfDay)
+  );
 
   const selectCountry = useCallback(
     (country: Country, focusAtlas = false, writer?: Writer) => {
@@ -369,6 +375,17 @@ export default function App() {
           </button>
         </div>
       </header>
+
+      <nav className="mobile-nav" aria-label="Быстрая навигация">
+        <a href="#atlas">Карта</a>
+        <a href="#journal">Статьи</a>
+        <a href="#books">Книги</a>
+        <a href="#sections">Разделы</a>
+        <a href="#calendar">Календарь</a>
+        <button type="button" onClick={() => openCommunity("forum")}>
+          Форум
+        </button>
+      </nav>
 
       <main>
         <section className="magazine-hero">
@@ -584,8 +601,8 @@ export default function App() {
 
         <section className="daily-grid" id="book-day">
           <article className="book-of-day">
-            <div className={`book-cover${bookOfDay?.coverUrl ? " has-image" : ""}`}>
-              {bookOfDay?.coverUrl ? (
+            <div className={`book-cover${bookOfDayHasCover ? " has-image" : ""}`}>
+              {bookOfDay && bookOfDayHasCover ? (
                 <a
                   href={bookOfDay.coverSourceUrl}
                   target="_blank"
@@ -687,7 +704,7 @@ export default function App() {
           />
         </Suspense>
 
-        <section className="editorial-section" id="journal">
+        <section className="editorial-section" id="featured-journal">
           <header className="section-heading">
             <div>
               <span className="section-kicker">Новые публикации</span>
@@ -740,6 +757,16 @@ export default function App() {
             />
           </div>
         </section>
+
+        <Suspense
+          fallback={
+            <section className="article-library is-loading">
+              <div className="article-library-empty">Собираем авторский архив…</div>
+            </section>
+          }
+        >
+          <ArticleLibrarySection />
+        </Suspense>
 
         <section className="community-section" id="community">
           <div className="community-illustration" aria-hidden="true" />

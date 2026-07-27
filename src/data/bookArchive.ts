@@ -13,6 +13,21 @@ export type BookArchiveEntry = WorkProfile & {
   country: Country;
 };
 
+const displayableCoverStatuses = new Set([
+  "public-domain",
+  "licensed",
+  "permission",
+  "external-preview",
+]);
+
+export function isCoverDisplayAllowed(work: WorkProfile) {
+  return Boolean(
+    work.coverUrl &&
+      work.coverRights &&
+      displayableCoverStatuses.has(work.coverRights.status)
+  );
+}
+
 function normalizeTitle(title: string) {
   return title
     .trim()

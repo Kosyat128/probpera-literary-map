@@ -1,7 +1,10 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 import ArticleEngagement from "../community/ArticleEngagement";
-import type { BookArchiveEntry } from "../data/bookArchive";
+import {
+  isCoverDisplayAllowed,
+  type BookArchiveEntry,
+} from "../data/bookArchive";
 
 type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
 
@@ -55,7 +58,7 @@ export default function BookArchiveSection({
           book.editorial?.status === "verified" ||
           book.editorial?.status === "reviewed"
       ).length,
-      covers: books.filter((book) => Boolean(book.coverUrl)).length,
+      covers: books.filter(isCoverDisplayAllowed).length,
       classic: books.filter(
         (book) =>
           typeof book.firstPublished === "number" &&
@@ -80,7 +83,7 @@ export default function BookArchiveSection({
         ) {
           return false;
         }
-        if (filter === "covers" && !book.coverUrl) return false;
+        if (filter === "covers" && !isCoverDisplayAllowed(book)) return false;
         if (
           filter === "classic" &&
           (!book.firstPublished || book.firstPublished > 1945)
@@ -110,8 +113,8 @@ export default function BookArchiveSection({
       .sort((first, second) => {
         const rankDifference = editorialRank(first) - editorialRank(second);
         if (rankDifference) return rankDifference;
-        if (Boolean(first.coverUrl) !== Boolean(second.coverUrl)) {
-          return first.coverUrl ? -1 : 1;
+        if (isCoverDisplayAllowed(first) !== isCoverDisplayAllowed(second)) {
+          return isCoverDisplayAllowed(first) ? -1 : 1;
         }
         return first.title.localeCompare(second.title, "ru");
       });
@@ -177,9 +180,9 @@ export default function BookArchiveSection({
             ×
           </button>
           <div
-            className={`book-detail-cover${selectedBook.coverUrl ? " has-image" : ""}`}
+            className={`book-detail-cover${isCoverDisplayAllowed(selectedBook) ? " has-image" : ""}`}
           >
-            {selectedBook.coverUrl ? (
+            {isCoverDisplayAllowed(selectedBook) ? (
               <img
                 src={selectedBook.coverUrl}
                 alt={`Обложка книги «${selectedBook.title}»`}
@@ -264,6 +267,14 @@ export default function BookArchiveSection({
                   Источник обложки
                 </a>
               )}
+              {selectedBook.coverRights && (
+                <span className="cover-rights-note">
+                  {selectedBook.coverRights.status === "external-preview"
+                    ? "Внешнее превью · файл не хранится на сайте"
+                    : selectedBook.coverRights.licenseName ||
+                      "Права на изображение проверены"}
+                </span>
+              )}
             </div>
           </div>
           <ArticleEngagement
@@ -277,8 +288,10 @@ export default function BookArchiveSection({
       <div className="book-archive-grid">
         {visibleBooks.map((book) => (
           <article className="archive-book-card" key={bookKey(book)}>
-            <div className={`archive-book-cover${book.coverUrl ? " has-image" : ""}`}>
-              {book.coverUrl ? (
+            <div
+              className={`archive-book-cover${isCoverDisplayAllowed(book) ? " has-image" : ""}`}
+            >
+              {isCoverDisplayAllowed(book) ? (
                 <img
                   src={book.coverUrl}
                   alt={`Обложка книги «${book.title}»`}

@@ -710,6 +710,12 @@ export const russia: Country = {
           description: "Роман о преступлении, самообмане и трудном возвращении к человеческой связи. Впервые публиковался по частям в журнале «Русский вестник» в 1866 году.",
           coverUrl: "https://covers.openlibrary.org/b/id/9411873-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL166894W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL166894W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://fedordostoevsky.ru/works/lifetime/crime/",
           editorial: {
             status: "verified",
@@ -775,6 +781,12 @@ export const russia: Country = {
           description: "Роман-эпопея о частной жизни и историческом времени. Отдельное книжное издание в шести томах вышло в 1868–1869 годах.",
           coverUrl: "https://covers.openlibrary.org/b/id/12621906-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL267171W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL267171W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://tolstoy.ru/creativity/90-volume-collection-of-the-works/",
           editorial: {
             status: "verified",
@@ -1057,6 +1069,12 @@ export const russia: Country = {
           description: "Главный роман Михаила Булгакова, над которым писатель работал в 1928–1940 годах. Первая журнальная публикация состоялась посмертно, с купюрами, в 1966–1967 годах.",
           coverUrl: "https://covers.openlibrary.org/b/id/15013644-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL36999384W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL36999384W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://bulgakovmuseum.ru/",
           editorial: {
             status: "reviewed",

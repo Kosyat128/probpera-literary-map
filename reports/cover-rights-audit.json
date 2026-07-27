@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-07-26T19:25:35.106Z",
+  "policy": "docs/COVER_RIGHTS_POLICY.md",
+  "summary": {
+    "covers": 8,
+    "displayAllowed": 8,
+    "blocked": 0,
+    "withIssues": 0
+  },
+  "covers": [
+    {
+      "file": "england.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/8281954-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL9170454W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL9170454W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/12721865-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL1063588W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL1063588W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/13151269-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL1230613W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL1230613W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "japan.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/2237620-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL2625457W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL2625457W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/9411873-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL166894W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL166894W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/12621906-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL267171W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL267171W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/15013644-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL36999384W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL36999384W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "https://covers.openlibrary.org/b/id/8261367-L.jpg",
+      "coverSourceUrl": "https://openlibrary.org/works/OL50548W",
+      "status": "external-preview",
+      "sourceUrl": "https://openlibrary.org/works/OL50548W",
+      "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    }
+  ]
+}

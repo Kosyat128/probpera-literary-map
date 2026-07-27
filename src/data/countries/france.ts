@@ -704,6 +704,12 @@ export const france: Country = {
           description: "Монументальный роман Виктора Гюго о законе, совести и возможности нравственного преображения, впервые опубликованный в 1862 году.",
           coverUrl: "https://covers.openlibrary.org/b/id/12721865-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL1063588W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL1063588W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://www.maisonsvictorhugo.paris.fr/",
           editorial: {
             status: "verified",
@@ -1139,6 +1145,12 @@ export const france: Country = {
           description: "Краткий роман Альбера Камю, опубликованный издательством Gallimard в 1942 году. История Мерсо стала одним из ключевых художественных выражений темы абсурда.",
           coverUrl: "https://covers.openlibrary.org/b/id/13151269-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL1230613W",
+          coverRights: {
+            status: "external-preview",
+            sourceUrl: "https://openlibrary.org/works/OL1230613W",
+            checkedAt: "2026-07-26",
+            note: "Внешнее превью Open Library; файл не хранится в проекте."
+          },
           sourceUrl: "https://www.gallimard.fr/catalogue/l-etranger/9782070360024",
           editorial: {
             status: "verified",
