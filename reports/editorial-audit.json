@@ -1,62 +1,19 @@
 {
-  "generatedAt": "2026-07-26T19:32:36.976Z",
+  "generatedAt": "2026-07-27T03:36:26.801Z",
   "note": "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
   "summary": {
     "articles": 157,
     "totalWords": 132619,
-    "findings": 548,
-    "affectedArticles": 138,
+    "findings": 507,
+    "affectedArticles": 131,
     "bySeverity": {
-      "low": 507,
-      "medium": 36,
-      "high": 4,
-      "critical": 1
+      "low": 507
     },
     "byCategory": {
-      "Типографика": 541,
-      "Пунктуация": 2,
-      "Согласование": 3,
-      "Управление": 1,
-      "Факт": 1
+      "Типографика": 507
     }
   },
   "articles": [
-    {
-      "id": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "wordCount": 1238,
-      "issues": 11,
-      "critical": 1,
-      "high": 4
-    },
-    {
-      "id": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
-      "wordCount": 1890,
-      "issues": 7,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--page--books--21",
-      "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
-      "url": "https://probpera.ru/read/page-article/page-books/21",
-      "wordCount": 824,
-      "issues": 7,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--first--profession--writers--2",
-      "title": "Зарубежные классики литературы и их профессии",
-      "url": "https://probpera.ru/read/page-article/first_profession_writers/2",
-      "wordCount": 2111,
-      "issues": 7,
-      "critical": 0,
-      "high": 0
-    },
     {
       "id": "page--article--sucsessful--cinema--adaptation--1",
       "title": "15 экранизаций классических романов, которые действительно удались",
@@ -94,10 +51,10 @@
       "high": 0
     },
     {
-      "id": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
-      "wordCount": 1305,
+      "id": "page--article--page--bookvsmovie--4",
+      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
+      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
+      "wordCount": 1890,
       "issues": 6,
       "critical": 0,
       "high": 0
@@ -116,15 +73,6 @@
       "title": "Книга vs Экранизация. «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
       "wordCount": 908,
-      "issues": 6,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
-      "wordCount": 802,
       "issues": 6,
       "critical": 0,
       "high": 0
@@ -224,6 +172,15 @@
       "title": "Мнение о книге «Остров» Олдоса Хаксли",
       "url": "https://probpera.ru/read/page-article/page-books/20",
       "wordCount": 1017,
+      "issues": 6,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--page--books--21",
+      "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
+      "url": "https://probpera.ru/read/page-article/page-books/21",
+      "wordCount": 824,
       "issues": 6,
       "critical": 0,
       "high": 0
@@ -337,6 +294,15 @@
       "high": 0
     },
     {
+      "id": "page--article--first--profession--writers--2",
+      "title": "Зарубежные классики литературы и их профессии",
+      "url": "https://probpera.ru/read/page-article/first_profession_writers/2",
+      "wordCount": 2111,
+      "issues": 6,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--first--profession--writers--4",
       "title": "Зарубежные классики литературы и их профессии (Часть 2)",
       "url": "https://probpera.ru/read/page-article/first_profession_writers/4",
@@ -445,15 +411,6 @@
       "high": 0
     },
     {
-      "id": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
-      "url": "https://probpera.ru/read/page-article/folklore/3",
-      "wordCount": 1005,
-      "issues": 6,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--folklore--characters--14",
       "title": "Берегиня",
       "url": "https://probpera.ru/read/page-article/folklore/characters/14",
@@ -467,15 +424,6 @@
       "title": "Вий",
       "url": "https://probpera.ru/read/page-article/folklore/characters/12",
       "wordCount": 824,
-      "issues": 6,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--folklore--1",
-      "title": "Красная Шапочка. Взаимосвязь сказки с устным и обрядовым фольклором",
-      "url": "https://probpera.ru/read/page-article/folklore/1",
-      "wordCount": 1577,
       "issues": 6,
       "critical": 0,
       "high": 0
@@ -499,6 +447,15 @@
       "high": 0
     },
     {
+      "id": "page--article--page--bookvsmovie--5",
+      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
+      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
+      "wordCount": 802,
+      "issues": 5,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--page--bookvsmovie--9",
       "title": "Книга vs Экранизация. «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
@@ -517,10 +474,10 @@
       "high": 0
     },
     {
-      "id": "page--article--page--books--1",
-      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
-      "url": "https://probpera.ru/read/page-article/page-books/1",
-      "wordCount": 977,
+      "id": "page--article--page--books--22",
+      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
+      "url": "https://probpera.ru/read/page-article/page-books/22",
+      "wordCount": 1238,
       "issues": 5,
       "critical": 0,
       "high": 0
@@ -530,15 +487,6 @@
       "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Джек Лондон",
       "url": "https://probpera.ru/read/page-article/topstories/6",
       "wordCount": 987,
-      "issues": 5,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--different--staff--1",
-      "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
-      "url": "https://probpera.ru/read/page-article/different-staff/1",
-      "wordCount": 2181,
       "issues": 5,
       "critical": 0,
       "high": 0
@@ -566,6 +514,24 @@
       "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 3)",
       "url": "https://probpera.ru/read/page-article/folklore/5",
       "wordCount": 1241,
+      "issues": 5,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--folklore--3",
+      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
+      "url": "https://probpera.ru/read/page-article/folklore/3",
+      "wordCount": 1005,
+      "issues": 5,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--folklore--1",
+      "title": "Красная Шапочка. Взаимосвязь сказки с устным и обрядовым фольклором",
+      "url": "https://probpera.ru/read/page-article/folklore/1",
+      "wordCount": 1577,
       "issues": 5,
       "critical": 0,
       "high": 0
@@ -634,24 +600,6 @@
       "high": 0
     },
     {
-      "id": "page--article--page--books--3",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/read/page-article/page-books/3",
-      "wordCount": 764,
-      "issues": 4,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--page--books--8",
-      "title": "Мнение о книге. Джек Лондон «Морской волк»",
-      "url": "https://probpera.ru/read/page-article/page-books/8",
-      "wordCount": 931,
-      "issues": 4,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--topstories--3",
       "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Марк Твен",
       "url": "https://probpera.ru/read/page-article/topstories/3",
@@ -697,20 +645,20 @@
       "high": 0
     },
     {
-      "id": "page--article--folklore--characters--6",
-      "title": "Домовой",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/6",
-      "wordCount": 459,
-      "issues": 4,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--folklore--characters--15",
       "title": "Соловей-разбойник. Образ персонажа в былинах и его взаимосвязь с фольклором и легендами древности",
       "url": "https://probpera.ru/read/page-article/folklore/characters/15",
       "wordCount": 994,
       "issues": 4,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--page--bookvsmovie--3",
+      "title": "Книга vs Экранизация. \"Война миров\"",
+      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
+      "wordCount": 1305,
+      "issues": 3,
       "critical": 0,
       "high": 0
     },
@@ -742,10 +690,19 @@
       "high": 0
     },
     {
-      "id": "page--article--page--books--4",
-      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
-      "url": "https://probpera.ru/read/page-article/page-books/4",
-      "wordCount": 1019,
+      "id": "page--article--page--books--8",
+      "title": "Мнение о книге. Джек Лондон «Морской волк»",
+      "url": "https://probpera.ru/read/page-article/page-books/8",
+      "wordCount": 931,
+      "issues": 3,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--page--books--1",
+      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
+      "url": "https://probpera.ru/read/page-article/page-books/1",
+      "wordCount": 977,
       "issues": 3,
       "critical": 0,
       "high": 0
@@ -832,15 +789,6 @@
       "high": 0
     },
     {
-      "id": "page--article--nobel--prize--1",
-      "title": "Нобелевская премия. История учреждения награды и примечательные факты",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/1",
-      "wordCount": 971,
-      "issues": 3,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--famous--prizes--13",
       "title": "Премия Георга Бюхнера",
       "url": "https://probpera.ru/read/page-article/famous_prizes/13",
@@ -877,19 +825,10 @@
       "high": 0
     },
     {
-      "id": "page--article--folklore--characters--2",
-      "title": "Змей Горыныч",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/2",
-      "wordCount": 1173,
-      "issues": 3,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--folklore--characters--1",
-      "title": "Леший",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/1",
-      "wordCount": 645,
+      "id": "page--article--folklore--characters--6",
+      "title": "Домовой",
+      "url": "https://probpera.ru/read/page-article/folklore/characters/6",
+      "wordCount": 459,
       "issues": 3,
       "critical": 0,
       "high": 0
@@ -931,24 +870,6 @@
       "high": 0
     },
     {
-      "id": "page--article--page--books--12",
-      "title": "Мнение о книге. Анри Барбюс «Огонь»",
-      "url": "https://probpera.ru/read/page-article/page-books/12",
-      "wordCount": 633,
-      "issues": 2,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--page--books--7",
-      "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
-      "url": "https://probpera.ru/read/page-article/page-books/7",
-      "wordCount": 1279,
-      "issues": 2,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--page--books--13",
       "title": "Мнение о книге. Марио Пьюзо «Шесть могил на пути в Мюнхен»",
       "url": "https://probpera.ru/read/page-article/page-books/13",
@@ -962,6 +883,15 @@
       "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Роальд Даль",
       "url": "https://probpera.ru/read/page-article/topstories/11",
       "wordCount": 756,
+      "issues": 2,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--different--staff--1",
+      "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
+      "url": "https://probpera.ru/read/page-article/different-staff/1",
+      "wordCount": 2181,
       "issues": 2,
       "critical": 0,
       "high": 0
@@ -1003,19 +933,10 @@
       "high": 0
     },
     {
-      "id": "page--article--famous--prizes--3",
-      "title": "Дублинская литературная премия",
-      "url": "https://probpera.ru/read/page-article/famous_prizes/3",
-      "wordCount": 455,
-      "issues": 2,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--famous--prizes--5",
-      "title": "Премия \"Мигель де Сервантес\"",
-      "url": "https://probpera.ru/read/page-article/famous_prizes/5",
-      "wordCount": 431,
+      "id": "page--article--nobel--prize--1",
+      "title": "Нобелевская премия. История учреждения награды и примечательные факты",
+      "url": "https://probpera.ru/read/page-article/nobel-prize/1",
+      "wordCount": 971,
       "issues": 2,
       "critical": 0,
       "high": 0
@@ -1039,6 +960,24 @@
       "high": 0
     },
     {
+      "id": "page--article--folklore--characters--2",
+      "title": "Змей Горыныч",
+      "url": "https://probpera.ru/read/page-article/folklore/characters/2",
+      "wordCount": 1173,
+      "issues": 2,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--folklore--characters--1",
+      "title": "Леший",
+      "url": "https://probpera.ru/read/page-article/folklore/characters/1",
+      "wordCount": 645,
+      "issues": 2,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--top--books--page--turners--3",
       "title": "Десять романов, которые читаются на одном дыхании (Часть 3)",
       "url": "https://probpera.ru/read/page-article/top-books-page-turners/3",
@@ -1057,6 +996,24 @@
       "high": 0
     },
     {
+      "id": "page--article--page--books--4",
+      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
+      "url": "https://probpera.ru/read/page-article/page-books/4",
+      "wordCount": 1019,
+      "issues": 1,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--page--books--12",
+      "title": "Мнение о книге. Анри Барбюс «Огонь»",
+      "url": "https://probpera.ru/read/page-article/page-books/12",
+      "wordCount": 633,
+      "issues": 1,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--page--books--11",
       "title": "Мнение о книге. Брэм Стокер «Дракула»",
       "url": "https://probpera.ru/read/page-article/page-books/11",
@@ -1066,10 +1023,10 @@
       "high": 0
     },
     {
-      "id": "page--article--page--books--9",
-      "title": "Мнение о книге. Джек Лондон «Белый Клык»",
-      "url": "https://probpera.ru/read/page-article/page-books/9",
-      "wordCount": 629,
+      "id": "page--article--page--books--7",
+      "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+      "url": "https://probpera.ru/read/page-article/page-books/7",
+      "wordCount": 1279,
       "issues": 1,
       "critical": 0,
       "high": 0
@@ -1147,15 +1104,6 @@
       "high": 0
     },
     {
-      "id": "page--article--nobel--prize--7",
-      "title": "1906 год. Джозуэ Кардуччи - лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/7",
-      "wordCount": 693,
-      "issues": 1,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--nobel--prize--8",
       "title": "1907 год. Редьярд Киплинг - лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/8",
@@ -1165,28 +1113,28 @@
       "high": 0
     },
     {
-      "id": "page--article--nobel--prize--13",
-      "title": "1912 год. Герхарт Гауптман – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/13",
-      "wordCount": 547,
-      "issues": 1,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--nobel--prize--14",
-      "title": "1913 год. Рабиндранат Тагор – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/14",
-      "wordCount": 616,
-      "issues": 1,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--nobel--prize--21",
       "title": "1922 год. Хасинто Бенавенте-и-Мартинес - лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/21",
       "wordCount": 374,
+      "issues": 1,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--famous--prizes--3",
+      "title": "Дублинская литературная премия",
+      "url": "https://probpera.ru/read/page-article/famous_prizes/3",
+      "wordCount": 455,
+      "issues": 1,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--famous--prizes--5",
+      "title": "Премия \"Мигель де Сервантес\"",
+      "url": "https://probpera.ru/read/page-article/famous_prizes/5",
+      "wordCount": 431,
       "issues": 1,
       "critical": 0,
       "high": 0
@@ -1237,28 +1185,10 @@
       "high": 0
     },
     {
-      "id": "page--article--folklore--characters--9",
-      "title": "Жар-птица",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/9",
-      "wordCount": 827,
-      "issues": 1,
-      "critical": 0,
-      "high": 0
-    },
-    {
       "id": "page--article--folklore--characters--5",
       "title": "Известные персонажи славянского фольклора. Кощей Бессмертный",
       "url": "https://probpera.ru/read/page-article/folklore/characters/5",
       "wordCount": 603,
-      "issues": 1,
-      "critical": 0,
-      "high": 0
-    },
-    {
-      "id": "page--article--folklore--characters--8",
-      "title": "Кикимора",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/8",
-      "wordCount": 948,
       "issues": 1,
       "critical": 0,
       "high": 0
@@ -1273,10 +1203,28 @@
       "high": 0
     },
     {
+      "id": "page--article--page--books--3",
+      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
+      "url": "https://probpera.ru/read/page-article/page-books/3",
+      "wordCount": 764,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--page--books--14",
       "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
       "url": "https://probpera.ru/read/page-article/page-books/14",
       "wordCount": 1024,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--page--books--9",
+      "title": "Мнение о книге. Джек Лондон «Белый Клык»",
+      "url": "https://probpera.ru/read/page-article/page-books/9",
+      "wordCount": 629,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1327,6 +1275,15 @@
       "high": 0
     },
     {
+      "id": "page--article--nobel--prize--7",
+      "title": "1906 год. Джозуэ Кардуччи - лауреат Нобелевской премии",
+      "url": "https://probpera.ru/read/page-article/nobel-prize/7",
+      "wordCount": 693,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
       "id": "page--article--nobel--prize--9",
       "title": "1908 год. Рудольф Эйкен - лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/9",
@@ -1358,6 +1315,24 @@
       "title": "1911 год. Морис Метерлинк - лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/12",
       "wordCount": 454,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--nobel--prize--13",
+      "title": "1912 год. Герхарт Гауптман – лауреат Нобелевской премии",
+      "url": "https://probpera.ru/read/page-article/nobel-prize/13",
+      "wordCount": 547,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--nobel--prize--14",
+      "title": "1913 год. Рабиндранат Тагор – лауреат Нобелевской премии",
+      "url": "https://probpera.ru/read/page-article/nobel-prize/14",
+      "wordCount": 616,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1430,6 +1405,24 @@
       "title": "Водяной",
       "url": "https://probpera.ru/read/page-article/folklore/characters/7",
       "wordCount": 673,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--folklore--characters--9",
+      "title": "Жар-птица",
+      "url": "https://probpera.ru/read/page-article/folklore/characters/9",
+      "wordCount": 827,
+      "issues": 0,
+      "critical": 0,
+      "high": 0
+    },
+    {
+      "id": "page--article--folklore--characters--8",
+      "title": "Кикимора",
+      "url": "https://probpera.ru/read/page-article/folklore/characters/8",
+      "wordCount": 948,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1776,24 +1769,12 @@
       "articleId": "page--article--page--bookvsmovie--4",
       "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 602,
-      "excerpt": "…тъемлемой частью этого стиля жизни и в попытках исследовать всю иллюзорность американской мечты : природу богатства и социального неравенства он издаёт своё первый роман «По эту сторону рая»,…"
-    },
-    {
-      "articleId": "page--article--page--bookvsmovie--4",
-      "title": "Книга vs Экранизация. \"Великий Гэтсби\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 960,
+      "index": 959,
       "excerpt": "…глушительному успеху. На протяжении века, было отснято с пол сотни экранизаций его произведений - пять кинофильмов было посвящено Гэтсби. Последняя экранизация «Великого Гэтсби» 2013 года, была…"
     },
     {
@@ -1805,7 +1786,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 2569,
+      "index": 2568,
       "excerpt": "…сцены в нечто необычное. Зелёный огонёк на причале у дома Дейзи — это символ непостижимой мечты - вечного стремления человека к тому, что недоступно, губительно. Те же пресловутые вечеринки Гэт…"
     },
     {
@@ -1817,7 +1798,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 3407,
+      "index": 3406,
       "excerpt": "…рает фигура Ника Каррауэя — не просто рассказчика, но и непосредственного участника тех событий - наблюдателя, чей меланхоличный субъективный голос задаёт тон всей книге. Именно Ник превращает…"
     },
     {
@@ -1829,7 +1810,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 6420,
+      "index": 6419,
       "excerpt": "…тся очень плачевно. Так, жизнь Джеймса Гэтсби – закоренелого мечтателя, направлена лишь на одно - на попытку «вернуть прошлое», что само собой в итоге оканчивается трагически. Писатель, словно…"
     },
     {
@@ -1841,7 +1822,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 6717,
+      "index": 6716,
       "excerpt": "…ем нелицеприятную правду.В фильме акценты смещены на эмоциональную историю любви Гэтсби и Дейзи - драму невозможного воссоединения. Режиссёр «Великого Гэтсби», в попытках сохранить идею Фицджер…"
     },
     {
@@ -1853,44 +1834,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 11564,
+      "index": 11563,
       "excerpt": "…уляций и т.д.В фильме Лурмана события фильма словно происходят то в 20-х XX века, то в наши дни - параллельно «Веку джаза», отражая современную культуру праздного глянца, роскоши, мимолетных св…"
-    },
-    {
-      "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 282,
-      "excerpt": "…иров» три раза и перед подготовкой к статье, прочитал её в четвёртый и всякий раз итог был один : я оставался в восторге и считаю эту книгу самым успешным творением великого англичанина, с глу…"
-    },
-    {
-      "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 1023,
-      "excerpt": "…ба объект, который вскоре оказывается живым существом, враждебно настроенным к человеку. Вскоре , писатель (имя которого мы так и не узнаем) становится невольным свидетелем технологически осна…"
-    },
-    {
-      "articleId": "page--article--page--bookvsmovie--3",
-      "title": "Книга vs Экранизация. \"Война миров\"",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 5196,
-      "excerpt": "…изни (мировоззрение солдата, сначала воодушевит главного героя, а затем также убедит в обратном : его совершенном безумии), другие, лишь защищают своих родных и близких, а кто-то и вовсе, не ж…"
     },
     {
       "articleId": "page--article--page--bookvsmovie--3",
@@ -1901,7 +1846,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 2664,
+      "index": 2662,
       "excerpt": "…Worlds) переносит действие из викторианской Англии в современную Америку. Главный герой фильма - рабочий-докер Рэй Фэрриер (Том Круз). Его бывшая жена уехала в Бостон и оставила ему двоих дете…"
     },
     {
@@ -1913,7 +1858,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 7019,
+      "index": 7016,
       "excerpt": "…, который высказывается о последствиях пережитых кошмаров, об не отпускающих рассказчика ужасах - призраках прошлого, которые будут преследовать его и миллионы других жителей острова всю оставш…"
     },
     {
@@ -1925,7 +1870,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 7425,
+      "index": 7422,
       "excerpt": "…художественный анализ фильма Режиссура Стивена Спилберга создаёт напряжённый, динамичный фильм - катастрофу с элементами реализма. Режиссёр отказывается от патетики и делает упор на субъективн…"
     },
     {
@@ -2143,18 +2088,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 4784,
       "excerpt": "…ет историю ещё более жёсткой и осязаемой. Кадр из фильма 5. Культурный контекстРоман Паланика - продукт 90-х, эпохи разочарования и кризиса «поколения X» В фильме Финчера вся история в универ…"
-    },
-    {
-      "articleId": "page--article--page--bookvsmovie--5",
-      "title": "Книга vs Экранизация. «Гринч - похититель Рождества»",
-      "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 5812,
-      "excerpt": "…е Рождества, а фильм превратил её в историю о социальной травме, одиночестве и принятии.Вердикт : Если произведение Доктора Сьюза подходит исключительно для детей дошкольного возраста (произве…"
     },
     {
       "articleId": "page--article--page--bookvsmovie--5",
@@ -3384,85 +3317,13 @@
       "articleId": "page--article--page--books--4",
       "title": "Даниель Дефо \"Всеобщая история пиратства\"",
       "url": "https://probpera.ru/read/page-article/page-books/4",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 374,
-      "excerpt": "…себе вопрос (что я делаю довольно часто – задаю себе вопросы и сам же пытаюсь на них ответить) : - Какая книга, по своей значимости и влиянию на формирование будущего жанра «романов о золотом…"
-    },
-    {
-      "articleId": "page--article--page--books--4",
-      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
-      "url": "https://probpera.ru/read/page-article/page-books/4",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2748,
-      "excerpt": "…их нравы, их порядки и правление с самого начала их появления и поселения на острове Провиденс , до настоящего времени\" была зарегистрирована на английского издателя – публициста и давнего др…"
-    },
-    {
-      "articleId": "page--article--page--books--4",
-      "title": "Даниель Дефо \"Всеобщая история пиратства\"",
-      "url": "https://probpera.ru/read/page-article/page-books/4",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 819,
+      "index": 818,
       "excerpt": "…тан Чарльз Джонсон, а во всех доступных источниках в интернете и в русских современных изданиях - Даниель Дефо. Очередная загадка авторства (которая, впрочем, по сей день не разгадана полностью…"
-    },
-    {
-      "articleId": "page--article--page--books--3",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/read/page-article/page-books/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3817,
-      "excerpt": "…о астронавта по жизни на Земле» может показаться одной из привеликих множеств мотивирующих книг , вроде : «Добейся всего сам» или «Отбрось свои страхи и начни жить дальше». И отчасти, это буде…"
-    },
-    {
-      "articleId": "page--article--page--books--3",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/read/page-article/page-books/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3825,
-      "excerpt": "…авта по жизни на Земле» может показаться одной из привеликих множеств мотивирующих книг , вроде : «Добейся всего сам» или «Отбрось свои страхи и начни жить дальше». И отчасти, это будет верно,…"
-    },
-    {
-      "articleId": "page--article--page--books--3",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/read/page-article/page-books/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 4120,
-      "excerpt": "…то эта книга \"совсем другой коленкор\". Автобиография Хэдфилда получилась как минимум любопытной : в чём то познавательной, в чём то забавной, ну а её ошеломительный успех в мире говорит сам за…"
-    },
-    {
-      "articleId": "page--article--page--books--3",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/read/page-article/page-books/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 4417,
-      "excerpt": "…при любых, даже самых опасных обстоятельствах, оставаться человеком. Не важно где ты находишься : на Земле, проводя по 12 часов в день за компьютером в офисе или бороздишь космическое полотно…"
     },
     {
       "articleId": "page--article--page--books--19",
@@ -3607,18 +3468,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 2647,
       "excerpt": "…ва острова, а также все инновации, за счёт которых паланское общество процветает.Сусила Макфейл - жительница Палы, вдова и невестка доктора Роберта. Она как бы становится негласным проводником…"
-    },
-    {
-      "articleId": "page--article--page--books--21",
-      "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
-      "url": "https://probpera.ru/read/page-article/page-books/21",
-      "ruleId": "book-of-course",
-      "category": "Пунктуация",
-      "severity": "medium",
-      "match": "Книга конечно же",
-      "suggestion": "Вводное сочетание следует обособить: «Книга, конечно же, …».",
-      "index": 6400,
-      "excerpt": "…антастики, а скорее как одно из самых точный литературных предсказаний о будущем человечества. Книга конечно же требует вдумчивого чтения, однако для поклонников Герберта Уэллса, социальной фантастики и фил…"
     },
     {
       "articleId": "page--article--page--books--21",
@@ -3840,72 +3689,12 @@
       "articleId": "page--article--page--books--22",
       "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
       "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "unusual-style",
-      "category": "Согласование",
-      "severity": "high",
-      "match": "необычный стил",
-      "suggestion": "Исправить на «необычный стиль».",
-      "index": 3303,
-      "excerpt": "…личного наблюдения.Автор проводит много времени рядом с байкерами, постепенно погружаясь в их необычный стил жизни. Он посещает их мероприятия, участвует в поездках и получает возможность увидеть повседн…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "facts-which",
-      "category": "Согласование",
-      "severity": "high",
-      "match": "фактами, который",
-      "suggestion": "Вероятно: «фактами, которые…».",
-      "index": 9201,
-      "excerpt": "…ересказа газетных публикаций Томпсон опирается сугубо на собственные наблюдения, подкрепляя их фактами, который он черпал из многочисленных бесед с участниками движения, очевидцами и органами правопорядка.…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "becomes-description",
-      "category": "Согласование",
-      "severity": "high",
-      "match": "становится в итоге описание",
-      "suggestion": "Нарушено согласование; вероятно: «становится описанием».",
-      "index": 2276,
-      "excerpt": "…ере развития повествования книга всё больше выходит за рамки рассказа о конкретном мотоклубе и становится в итоге описание всего американского общества того времени. Так, через историю «Ангелов ада» автор исследует бо…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "main-threat",
-      "category": "Управление",
-      "severity": "high",
-      "match": "главной грозой общественному порядку",
-      "suggestion": "Вероятно: «главной угрозой общественному порядку».",
-      "index": 709,
-      "excerpt": "…рых американская пресса того времени часто представляла как опасных преступников, маргиналов и главной грозой общественному порядку. Вместо того чтобы опираться на газетные публикации и слухи, Томпсон провёл около года рядом с…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "book-of-course",
-      "category": "Пунктуация",
-      "severity": "medium",
-      "match": "Книга конечно же",
-      "suggestion": "Вводное сочетание следует обособить: «Книга, конечно же, …».",
-      "index": 9665,
-      "excerpt": "…для всех читателей, интересующихся историей, журналистикой и исследованием социальных явлений. Книга конечно же требует вдумчивого чтения, однако способна стать действительно необычным и запоминающимся опыт…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 2543,
+      "index": 2545,
       "excerpt": "…мериканском обществе 1950-х и 1960-х годов Главные действующие персонажи книги Хантер Томпсон - автор книги и непосредственный участник описываемых событий. Через его наблюдения и беседы чита…"
     },
     {
@@ -3917,7 +3706,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 2698,
+      "index": 2700,
       "excerpt": "…ий. Через его наблюдения и беседы читатель знакомится с миром байкерского движения.Сонни Баргер - один из основателей оклендской чапты «Ангелов ада» и наиболее известный представитель клуба.Ост…"
     },
     {
@@ -3929,7 +3718,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 2845,
+      "index": 2847,
       "excerpt": "…» и наиболее известный представитель клуба.Остальные члены клуба «Ангелы ада», как один феномен - многочисленные участники байкерского сообщества, чьи истории, взгляды и образ жизни становятся…"
     },
     {
@@ -3941,7 +3730,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 4699,
+      "index": 4702,
       "excerpt": "…жизни того времени.По этой причине книга представляет интерес не только как рассказ о хулиганах - мотоциклистах, но и как своеобразный исторический документ.4. Отказ от идеализации героевВажным…"
     },
     {
@@ -3953,32 +3742,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 8567,
+      "index": 8570,
       "excerpt": "…й линии, однако в этом и есть её главный плюс. Перед читателем разворачивается нечто масштабное - исследование байкерского движения «Ангелы ада», его истории, внутренней организации и взаимоотн…"
-    },
-    {
-      "articleId": "page--article--page--books--22",
-      "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
-      "url": "https://probpera.ru/read/page-article/page-books/22",
-      "ruleId": "future-death-year",
-      "category": "Факт",
-      "severity": "critical",
-      "match": "(1937-2055)",
-      "suggestion": "Исправить дату смерти Хантера С. Томпсона на 2005 год и сверить источник.",
-      "index": 6396,
-      "excerpt": "…Томпсона и понять, как постепенно формировался его неповторимый стиль. Хантер Стоктон Томпсон (1937-2055) Что может не понравиться? Некоторым книга может показаться излишне реалистичной, особенно чи…"
-    },
-    {
-      "articleId": "page--article--page--books--12",
-      "title": "Мнение о книге. Анри Барбюс «Огонь»",
-      "url": "https://probpera.ru/read/page-article/page-books/12",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 662,
-      "excerpt": "…вий, а сосредотачивается на людях – обыкновенных солдатах, втянутых в беспощадные жернова войны : вынужденные переживать боль, страх, усталость, голод, бесконечные потери сослуживцев и близких…"
     },
     {
       "articleId": "page--article--page--books--12",
@@ -3989,7 +3754,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 1080,
+      "index": 1079,
       "excerpt": "…а пехотинцев, воюющих на передовых позициях. Бертран, Барлу, Парад, Клердон, Потёрло, Вальпатте - сослуживцы главного героя и такие разные люди, отличающиеся между собой и происхождением, и про…"
     },
     {
@@ -4077,30 +3842,6 @@
       "excerpt": "…ек. Даже в этом незатейливом деле автор остаётся верен себе: он не может просто упомянуть место - ему необходимо скурпулёзно изобразить его, используя при этом максимальное количество мелких де…"
     },
     {
-      "articleId": "page--article--page--books--9",
-      "title": "Мнение о книге. Джек Лондон «Белый Клык»",
-      "url": "https://probpera.ru/read/page-article/page-books/9",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3653,
-      "excerpt": "…боев, как он находит в себе силы подавить гнев и стать ручным, внутренняя борьба двух ипостасей : волка и собаки – все эти моменты повествования уникальны, любопытны и не имеют аналогов в лите…"
-    },
-    {
-      "articleId": "page--article--page--books--8",
-      "title": "Мнение о книге. Джек Лондон «Морской волк»",
-      "url": "https://probpera.ru/read/page-article/page-books/8",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 6522,
-      "excerpt": "…ы хотел уместной в данном контексте цитатой известного китайского мыслителя и философа Конфуция : \"Если в человеке естество затмит воспитанность, получится дикарь, в если воспитанность затмит…"
-    },
-    {
       "articleId": "page--article--page--books--8",
       "title": "Мнение о книге. Джек Лондон «Морской волк»",
       "url": "https://probpera.ru/read/page-article/page-books/8",
@@ -4140,24 +3881,12 @@
       "articleId": "page--article--page--books--7",
       "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-books/7",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3184,
-      "excerpt": "…льств, Фробишер ищет удачи в бельгийском городке Зедельгеме состроив в голове своеобразный план : он любой ценой добьётся работы у известного мирового светила – композитора Вивиана Эйраса, при…"
-    },
-    {
-      "articleId": "page--article--page--books--7",
-      "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
-      "url": "https://probpera.ru/read/page-article/page-books/7",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 5392,
+      "index": 5391,
       "excerpt": "…остоятельным человеком. Но удача продлилась недолго и вскоре к издателю являются братья Хоггинс - настоящие гангстеры, требующие от Тимоти значительную сумму.«Страшный суд Тимати Кавендиша» нап…"
     },
     {
@@ -4200,36 +3929,12 @@
       "articleId": "page--article--page--books--1",
       "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
       "url": "https://probpera.ru/read/page-article/page-books/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 188,
-      "excerpt": "…ществовании которой я раньше никогда не слышал. Произведение, в русском переводе имеет название : «Бюро заказных убийств» (англ. The Assassination Bureau, Ltd). Написано это произведение велик…"
-    },
-    {
-      "articleId": "page--article--page--books--1",
-      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
-      "url": "https://probpera.ru/read/page-article/page-books/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2728,
-      "excerpt": "…вил рукопись работы с планом завершения книги. Позже, она приложила руку к окончанию труда мужа : свой набросок Чармейн Лондон, вместе с основной рукпоисью, она передала Фишу, который взялся д…"
-    },
-    {
-      "articleId": "page--article--page--books--1",
-      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
-      "url": "https://probpera.ru/read/page-article/page-books/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 520,
+      "index": 519,
       "excerpt": "…Судя по обложке книги, именитый писатель имел со-автора, романиста в жанре детективных романов - Роберта Л. Фиша, который прославился в Америке благодаря роману «Немой свидетель» (англ. Mute W…"
     },
     {
@@ -4241,7 +3946,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 3201,
+      "index": 3199,
       "excerpt": "…м Ридом и Даяной Ригг в главных ролях. Оригинальная обложка книги The Assassination Bureau, Ltd - первой публикации романа Лондона, изданной в Нью-Йорке в 1963 году Нетривиальный захватывающий…"
     },
     {
@@ -4253,7 +3958,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 3360,
+      "index": 3358,
       "excerpt": "…году Нетривиальный захватывающий сюжетДействие романа происходит в начале 20 века. Винтер Холл - молодой и наивный идеалист, случайно узнает о существовании \"Бюро заказных убийств\" и в надежде…"
     },
     {
@@ -4920,48 +4625,12 @@
       "articleId": "page--article--different--staff--1",
       "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
       "url": "https://probpera.ru/read/page-article/different-staff/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2661,
-      "excerpt": "…аться об истинно важных вещах, таких как, любовь, дружба, предательство, ненавистью и т.д. Ведь , действительно, если в кино отсутствует этот самый сакральный стержень, оказывающий такой эффек…"
-    },
-    {
-      "articleId": "page--article--different--staff--1",
-      "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
-      "url": "https://probpera.ru/read/page-article/different-staff/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 8765,
-      "excerpt": "…и Бронте, которая лаконично описывает всю сущность коммерциализации в современной медиакультуре : «В этом, нет души, а значит и смысла, мы так откровенны, мы же часть механизма. и пусть в голо…"
-    },
-    {
-      "articleId": "page--article--different--staff--1",
-      "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
-      "url": "https://probpera.ru/read/page-article/different-staff/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 15299,
-      "excerpt": "…Ари Астера, «Дневник пастыря» Пола Шредера, «Восьмой класс» Бо Бернема, «Маяк» Роберта Эггерса , «Неогранённые драгоценности» Братьев Сафди, «Всё везде и сразу» Дэниела Шайнерта и Дэна Квана,…"
-    },
-    {
-      "articleId": "page--article--different--staff--1",
-      "title": "Упадок медиакультуры. Основные факторы деградации кино и игр",
-      "url": "https://probpera.ru/read/page-article/different-staff/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 12859,
+      "index": 12857,
       "excerpt": "…продукт, если можно пойти по наиболее простому варианту и переориентироваться на незамысловатые - бездушные проекты, что с точки зрения маркетинга, будет выглядеть вполне себе правильным ходом.…"
     },
     {
@@ -4973,7 +4642,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 13158,
+      "index": 13156,
       "excerpt": "…их порой культовые картины, так и не вставали на ноги и закрывались. Например, Carolco Pictures - студия, известная такими фильмами, как \"Терминатор 2\" и «Рэмбо: Первая кровь», потерпела крах п…"
     },
     {
@@ -5395,18 +5064,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 5568,
       "excerpt": "…ога. «Норвежский лес» стал безоговорочным международным бестселлером и открыл миру новую Японию - современную, урбанистическую и экзистенциальную."
-    },
-    {
-      "articleId": "page--article--first--profession--writers--2",
-      "title": "Зарубежные классики литературы и их профессии",
-      "url": "https://probpera.ru/read/page-article/first_profession_writers/2",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 9547,
-      "excerpt": "…рдо в Ливерпуль, а затем в Шотландию и по мотивам его странствий, он написал впоследствии роман : «Путешествие в Англию и Шотландию задом наперёд». Жюль Верн (1828–1905) Джордж Оруэлл - поли…"
     },
     {
       "articleId": "page--article--first--profession--writers--2",
@@ -6093,18 +5750,6 @@
       "excerpt": "…ассиками. За что же вручили премиюГенрик Сенкевич, как и наш многострадальный «вечный» номинант - великий писатель Лев Николаевич Толстой был номинирован каждый год начиная с года учреждения пр…"
     },
     {
-      "articleId": "page--article--nobel--prize--7",
-      "title": "1906 год. Джозуэ Кардуччи - лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/7",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3539,
-      "excerpt": "…я не смогу по состоянию здоровья. Награда была вручена итальянскому поэту с такой формулировкой : «не только в знак признания глубоких знаний и критичного ума, но, прежде всего, как дань творч…"
-    },
-    {
       "articleId": "page--article--nobel--prize--8",
       "title": "1907 год. Редьярд Киплинг - лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/8",
@@ -6115,30 +5760,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 3836,
       "excerpt": "…м аббатстве, Англия. ЗаключениеТаким образом, английский писатель, журналист, фольклорист, поэт - Джозеф Редьярд Киплинг, стал самым молодым лауреатом Нобелевской премии по литературе в 1907 го…"
-    },
-    {
-      "articleId": "page--article--nobel--prize--13",
-      "title": "1912 год. Герхарт Гауптман – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/13",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 1780,
-      "excerpt": "…ался о способности автора проникать в глубины человеческого духа, при этом проговорив следующее : «Реализм в пьесах Гауптмана неизбежно ведет к мечте о новой и лучшей жизни, к претворению этой…"
-    },
-    {
-      "articleId": "page--article--nobel--prize--14",
-      "title": "1913 год. Рабиндранат Тагор – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/14",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2951,
-      "excerpt": "…я живописью и музыкой.В тоже время писатель стал очень много путешествовать и объездил пол мира : США, Великобритания, Аргентина, СССР, Перу, Ирак читая при этом лекции в известнейших универси…"
     },
     {
       "articleId": "page--article--nobel--prize--17",
@@ -6336,18 +5957,6 @@
       "articleId": "page--article--famous--prizes--3",
       "title": "Дублинская литературная премия",
       "url": "https://probpera.ru/read/page-article/famous_prizes/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2717,
-      "excerpt": "…(за свой роман «Сердце-зверь»), писатель-прозаик Алистер Маклеод (за роман «Без особых потерь») , который кстати в финальном голосовании обошёл нашего отечественного «великана» Виктора Пелевин…"
-    },
-    {
-      "articleId": "page--article--famous--prizes--3",
-      "title": "Дублинская литературная премия",
-      "url": "https://probpera.ru/read/page-article/famous_prizes/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
@@ -6396,24 +6005,12 @@
       "articleId": "page--article--nobel--prize--1",
       "title": "Нобелевская премия. История учреждения награды и примечательные факты",
       "url": "https://probpera.ru/read/page-article/nobel-prize/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 4316,
-      "excerpt": "…знакомства с поэзией. Плеяда величайших писателей XX века (а возможно и всех времён), таких как : Синклер Льюис, Иван Бунин (наш первопроходец – нобелевский лауреат и во всех смыслах выдающийс…"
-    },
-    {
-      "articleId": "page--article--nobel--prize--1",
-      "title": "Нобелевская премия. История учреждения награды и примечательные факты",
-      "url": "https://probpera.ru/read/page-article/nobel-prize/1",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 4798,
+      "index": 4797,
       "excerpt": "…в области химии и первым лауреатам, удостоенным этой премии стал Якоб Хендрик (Хенри) Вант-Гофф - голландский химик, получивший премию «в знак признания огромной важности открытия законов химич…"
     },
     {
@@ -6425,20 +6022,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 5998,
+      "index": 5997,
       "excerpt": "…ель и общественный деятель, основатель Международного комитета Красного Креста и Фредерик Пасси - французский экономист и миротворец, призывавший к мирному урегулированию между Францией и Герма…"
-    },
-    {
-      "articleId": "page--article--famous--prizes--5",
-      "title": "Премия \"Мигель де Сервантес\"",
-      "url": "https://probpera.ru/read/page-article/famous_prizes/5",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 462,
-      "excerpt": "…тературы всех времён. Наследие автора (испанца по национальности) до сих пор живо на его родине : в его честь продолжают воздвигать памятники, называть его именем улицы и учебные заведения, а…"
     },
     {
       "articleId": "page--article--famous--prizes--5",
@@ -6449,7 +6034,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 3233,
+      "index": 3232,
       "excerpt": "…свой труд, вписав себя в анналы истории мировой литературы, как когда-то туда вошёл и их кумир - Мигель де Сервантес."
     },
     {
@@ -7308,18 +6893,6 @@
       "articleId": "page--article--folklore--3",
       "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
       "url": "https://probpera.ru/read/page-article/folklore/3",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 5096,
-      "excerpt": "…стрица» (очень почётная должность, когда родители с радостью отдавали своих детей в такие дома) , в обязанности которой входила работа по дому, уборка, готовка и т.д., а также обязанности супр…"
-    },
-    {
-      "articleId": "page--article--folklore--3",
-      "title": "А.С. Пушкин \"Сказка о мертвой царевне и семи богатырях\". Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.",
-      "url": "https://probpera.ru/read/page-article/folklore/3",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
@@ -7536,18 +7109,6 @@
       "articleId": "page--article--folklore--characters--6",
       "title": "Домовой",
       "url": "https://probpera.ru/read/page-article/folklore/characters/6",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 1773,
-      "excerpt": "…рстью;На вид преклонного возраста с длинной седой или рыжей бородой;Умение становится невидимым : домовой редко показывается людям в истинном обличии, а его присутствие в доме в основном опред…"
-    },
-    {
-      "articleId": "page--article--folklore--characters--6",
-      "title": "Домовой",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/6",
       "ruleId": "spaced-hyphen",
       "category": "Типографика",
       "severity": "low",
@@ -7579,30 +7140,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 904,
       "excerpt": "…дом, а суффикс «– овой» придаёт слову предметную принадлежность персонажа - хранителя к жилищу - домашнему очагу и семейному роду. В зависимости от местоположения, встречались различные синони…"
-    },
-    {
-      "articleId": "page--article--folklore--characters--9",
-      "title": "Жар-птица",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/9",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 5522,
-      "excerpt": "…но выделить несколько, довольно популярных мультфильмов, основанных на русских народных сказках : «Жар-птица» (1984), «Конёк-Горбунок» (1975), а также можно отметить киносказку «После дождичка…"
-    },
-    {
-      "articleId": "page--article--folklore--characters--2",
-      "title": "Змей Горыныч",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/2",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 3849,
-      "excerpt": "…а, распространённого на Руси в Пскове и Великом Новгороде, у которого к тому же было две головы : одна, как бы заглатывала Солнце, а вторая изрыгала его же на утреннее небо уже при помощи втор…"
     },
     {
       "articleId": "page--article--folklore--characters--2",
@@ -7639,30 +7176,6 @@
       "suggestion": "Проверить замену дефиса на тире: « — ».",
       "index": 661,
       "excerpt": "…ени «Кощей».1. От слова «кость», что наиболее очевидно и обозначает старость, дряхлость, худобу - человека, находящегося на грани жизни и смерти.2. От древнерусского слова «кощь», которое означ…"
-    },
-    {
-      "articleId": "page--article--folklore--characters--8",
-      "title": "Кикимора",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/8",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 2765,
-      "excerpt": "…отсутствуют дома. Ночью кикимора выходит из своего укрытия и начинает пакостить и проказничать : прядёт, ткет или перебирает коклюшки, но так неумело, что работа хозяйки оказывается испорченн…"
-    },
-    {
-      "articleId": "page--article--folklore--1",
-      "title": "Красная Шапочка. Взаимосвязь сказки с устным и обрядовым фольклором",
-      "url": "https://probpera.ru/read/page-article/folklore/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " :",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 5416,
-      "excerpt": "…скован до сих пор. В славянской мифологии существовали волки-оборотни, так называемые волколаки : околдованные прежде за какие-то провинности или преступления люди, которых колдун превратил в…"
     },
     {
       "articleId": "page--article--folklore--1",
@@ -7709,7 +7222,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 9656,
+      "index": 9655,
       "excerpt": "…напротив выхода из Грота. Принявшись в унисон, смеются и радоваться, как будто бы новой богине - светилу, которая ничем не хуже прежней. Так, хитрецы заставили Аматэрасу покинуть убежище и Рав…"
     },
     {
@@ -7721,20 +7234,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 10487,
+      "index": 10486,
       "excerpt": "…ворилось вначале, многие моменты со временем пересказывались, шлифовались. А образные спасители - дровосеки, которые в итоге и убили волка, олицетворяют божественную кару мириад богов Равнины В…"
-    },
-    {
-      "articleId": "page--article--folklore--characters--1",
-      "title": "Леший",
-      "url": "https://probpera.ru/read/page-article/folklore/characters/1",
-      "ruleId": "space-before-punctuation",
-      "category": "Типографика",
-      "severity": "medium",
-      "match": " ,",
-      "suggestion": "Убрать пробел перед знаком препинания.",
-      "index": 702,
-      "excerpt": "…попробуем разобраться в происхождении самого мифологического существа, этимологии слова «леший» , о малых народах и их интерпретациях этого божества в своём фольклоре и о свойствах, способност…"
     },
     {
       "articleId": "page--article--folklore--characters--1",
@@ -7745,7 +7246,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 1550,
+      "index": 1549,
       "excerpt": "…ествах – духах и зловещих монстрах, которые рассказывали их своим детям, в воспитательных целях - в попытке хотя бы как-то оградить малышей от посещения здешних мест по ночам или без присутстви…"
     },
     {
@@ -7757,7 +7258,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « — ».",
-      "index": 3755,
+      "index": 3754,
       "excerpt": "…риродном духе встречалась также и в карело-финской мифологии. Местные жители называли его Хийси - который являлся в образе ужасающего призрака величественных размеров повелителем леса и стихий.…"
     },
     {

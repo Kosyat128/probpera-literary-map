@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/build-article-pages.mjs",
     "preview": "vite preview",
     "content:crawl": "node scripts/crawl-probpera.mjs",
     "content:audit": "node scripts/audit-articles.mjs",
+    "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
     "covers:audit": "node scripts/audit-cover-rights.mjs"

@@ -62,10 +62,12 @@ function CameraFocus({
   countryId,
   coordinates,
   controlsRef,
+  reducedMotion,
 }: {
   countryId?: string | null;
   coordinates?: [number, number] | null;
   controlsRef: RefObject<OrbitControlsImpl>;
+  reducedMotion: boolean;
 }) {
   const { camera } = useThree();
 
@@ -73,7 +75,7 @@ function CameraFocus({
     const controls = controlsRef.current;
 
     if (!countryId || !coordinates) {
-      if (controls) controls.autoRotate = true;
+      if (controls) controls.autoRotate = !reducedMotion;
       return;
     }
 
@@ -85,7 +87,7 @@ function CameraFocus({
       x: destination.x,
       y: destination.y,
       z: destination.z,
-      duration: 1.45,
+      duration: reducedMotion ? 0.01 : 1.45,
       ease: "power3.inOut",
       overwrite: true,
       onUpdate: () => {
@@ -94,15 +96,15 @@ function CameraFocus({
       },
     });
 
-    const rotationResume = gsap.delayedCall(1.75, () => {
-      if (controlsRef.current) controlsRef.current.autoRotate = true;
+    const rotationResume = gsap.delayedCall(reducedMotion ? 0.02 : 1.75, () => {
+      if (controlsRef.current) controlsRef.current.autoRotate = !reducedMotion;
     });
 
     return () => {
       cameraTween.kill();
       rotationResume.kill();
     };
-  }, [camera, controlsRef, coordinates, countryId]);
+  }, [camera, controlsRef, coordinates, countryId, reducedMotion]);
 
   return null;
 }
@@ -379,12 +381,16 @@ function GlobeScene({
   selectedCountry,
   onCountrySelect,
   onCountryHover,
+  reducedMotion,
+  economical,
 }: {
   atlas: GlobeAtlas;
   countries: Country[];
   selectedCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
+  reducedMotion: boolean;
+  economical: boolean;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const coordinates = selectedCountry
@@ -414,10 +420,10 @@ function GlobeScene({
         onCountryHover={onCountryHover}
       />
       <Sparkles
-        count={56}
+        count={economical ? 24 : 56}
         scale={[4.8, 3.4, 3.6]}
         size={1.1}
-        speed={0.12}
+        speed={reducedMotion ? 0 : 0.12}
         opacity={0.24}
         color="#d9b36d"
       />
@@ -435,19 +441,22 @@ function GlobeScene({
         maxPolarAngle={2.62}
         rotateSpeed={0.48}
         zoomSpeed={0.75}
-        autoRotate
+        autoRotate={!reducedMotion}
         autoRotateSpeed={0.24}
         onStart={() => {
           if (controlsRef.current) controlsRef.current.autoRotate = false;
         }}
         onEnd={() => {
-          if (controlsRef.current) controlsRef.current.autoRotate = true;
+          if (controlsRef.current && !reducedMotion) {
+            controlsRef.current.autoRotate = true;
+          }
         }}
       />
       <CameraFocus
         countryId={selectedCountry?.id}
         coordinates={coordinates}
         controlsRef={controlsRef}
+        reducedMotion={reducedMotion}
       />
     </>
   );
@@ -457,6 +466,19 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const economical =
+    ((navigator as Navigator & { deviceMemory?: number }).deviceMemory || 8) <= 4 ||
+    window.innerWidth <= 680;
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReducedMotion(media.matches);
+    media.addEventListener("change", updatePreference);
+    return () => media.removeEventListener("change", updatePreference);
+  }, []);
 
   useEffect(() => {
     let disposed = false;
@@ -495,7 +517,13 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
     <div className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}>
       <Canvas
         camera={{ position: [0, 0.08, 3.55], fov: 43, near: 0.1, far: 100 }}
-        dpr={[1, 1.75]}
+        dpr={[1, economical ? 1.25 : 1.75]}
+        fallback={
+          <div className="globe-loading" role="status">
+            <span aria-hidden="true">✦</span>
+            <p>Используйте текстовый указатель стран ниже</p>
+          </div>
+        }
         gl={{
           antialias: true,
           alpha: true,
@@ -508,6 +536,8 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
           selectedCountry={selectedCountry}
           onCountrySelect={onCountrySelect}
           onCountryHover={setHoveredCountry}
+          reducedMotion={reducedMotion}
+          economical={economical}
         />
       </Canvas>
 

@@ -1,9 +1,14 @@
-import { lazy, Suspense, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 
 import {
   articleCatalog,
   type ArticleCatalogEntry,
 } from "../data/articles/catalog.generated";
+import {
+  articleIdFromPath,
+  articlePath,
+  journalPath,
+} from "../utils/articleRoutes";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -53,10 +58,25 @@ function publicationWord(count: number) {
 }
 
 export default function ArticleLibrarySection() {
-  const [sectionId, setSectionId] = useState("all");
+  const initialSection = new URLSearchParams(window.location.search).get("section");
+  const [sectionId, setSectionId] = useState(initialSection || "all");
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
-  const [selected, setSelected] = useState<ArticleCatalogEntry | null>(null);
+  const [selected, setSelected] = useState<ArticleCatalogEntry | null>(() => {
+    const articleId = articleIdFromPath();
+    return articleCatalog.find((article) => article.id === articleId) || null;
+  });
+
+  useEffect(() => {
+    const syncWithAddress = () => {
+      const articleId = articleIdFromPath();
+      setSelected(
+        articleCatalog.find((article) => article.id === articleId) || null
+      );
+    };
+    window.addEventListener("popstate", syncWithAddress);
+    return () => window.removeEventListener("popstate", syncWithAddress);
+  }, []);
 
   const sections = useMemo(() => {
     const grouped = new Map<string, { id: string; label: string; count: number }>();
@@ -99,6 +119,27 @@ export default function ArticleLibrarySection() {
   const changeSection = (value: string) => {
     setSectionId(value);
     setVisibleCount(12);
+    if (!selected) {
+      window.history.replaceState({}, "", journalPath(value));
+    }
+  };
+
+  const openArticle = (article: ArticleCatalogEntry) => {
+    window.history.pushState(
+      { probperaArticle: article.id },
+      "",
+      articlePath(article.id)
+    );
+    setSelected(article);
+  };
+
+  const closeArticle = () => {
+    if (window.history.state?.probperaArticle) {
+      window.history.back();
+      return;
+    }
+    window.history.replaceState({}, "", journalPath(sectionId));
+    setSelected(null);
   };
 
   return (
@@ -162,7 +203,13 @@ export default function ArticleLibrarySection() {
                 className={index === 0 && !search ? "is-lead" : ""}
                 key={article.id}
               >
-                <button type="button" onClick={() => setSelected(article)}>
+                <a
+                  href={articlePath(article.id)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    openArticle(article);
+                  }}
+                >
                   <div className="library-card-image">
                     {article.imageUrl ? (
                       <img src={article.imageUrl} alt="" loading="lazy" />
@@ -180,7 +227,7 @@ export default function ArticleLibrarySection() {
                     <p>{article.description}</p>
                     <strong>Читать в новом режиме <i>→</i></strong>
                   </div>
-                </button>
+                </a>
               </article>
             ))}
           </div>
@@ -231,8 +278,8 @@ export default function ArticleLibrarySection() {
                 ? articleCatalog[selectedIndex + 1]
                 : undefined
             }
-            onClose={() => setSelected(null)}
-            onOpen={setSelected}
+            onClose={closeArticle}
+            onOpen={openArticle}
           />
         </Suspense>
       )}

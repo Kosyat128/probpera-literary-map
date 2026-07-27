@@ -25,7 +25,9 @@ export function parseWorldContours(data:any): WorldContourFeature[] {
 }
 
 export async function loadWorldContoursFromFile(): Promise<WorldContourFeature[]> {
-  const response = await fetch("/data/geo/countries.geojson");
+  const response = await fetch(
+    `${import.meta.env.BASE_URL}data/geo/countries.geojson`
+  );
   const data = await response.json();
   return parseWorldContours(data);
 }

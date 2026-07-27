@@ -16,6 +16,7 @@ import type { Country, Writer } from "./data/countries";
 import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
+import { articlePath, journalPath } from "./utils/articleRoutes";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
@@ -47,8 +48,8 @@ const editorialFeatures = [
     description:
       "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
     image: "brand/series-1.webp",
-    articleUrl: "https://probpera.ru/read/page-article/page-books/22",
-    sectionUrl: "https://probpera.ru/read/page-article/page-books",
+    articleUrl: articlePath("page--article--page--books--22"),
+    sectionUrl: journalPath("book-opinions"),
     readTime: "12 минут",
   },
   {
@@ -57,8 +58,8 @@ const editorialFeatures = [
     description:
       "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.",
     image: "brand/series-3.webp",
-    articleUrl: "https://probpera.ru/read/page-article/page-writers-world/",
-    sectionUrl: "https://probpera.ru/read/page-article/page-writers-world/",
+    articleUrl: articlePath("page--article--page--writers--world--4"),
+    sectionUrl: journalPath("writers-world"),
     readTime: "15 минут",
   },
   {
@@ -68,7 +69,7 @@ const editorialFeatures = [
       "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.",
     image: "brand/series-2.webp",
     articleUrl: "https://probpera.ru/read/page-words/",
-    sectionUrl: "https://probpera.ru/read/page-words/",
+    sectionUrl: journalPath("language"),
     readTime: "9 минут",
   },
   {
@@ -77,8 +78,8 @@ const editorialFeatures = [
     description:
       "Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.",
     image: "brand/series-4.webp",
-    articleUrl: "https://probpera.ru/read/page-article/first_profession_writers/",
-    sectionUrl: "https://probpera.ru/read/page-article/first_profession_writers/",
+    articleUrl: articlePath("page--article--first--profession--writers--2"),
+    sectionUrl: journalPath("author-stories"),
     readTime: "11 минут",
   },
 ];
@@ -88,29 +89,57 @@ const sectionLinks = [
     number: "01",
     title: "Мнение о книге",
     copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
-    href: "https://probpera.ru/read/page-article/page-books",
+    href: journalPath("book-opinions"),
     image: "brand/series-1.webp",
   },
   {
     number: "02",
     title: "Книга vs экранизация",
     copy: "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.",
-    href: "https://probpera.ru/read/page-article/page-bookvsmovie",
+    href: journalPath("screen-adaptations"),
     image: "brand/magazine-cover.webp",
   },
   {
     number: "03",
     title: "Литературные премии",
     copy: "История крупнейших наград, лауреаты, произведения и культурный контекст.",
-    href: "https://probpera.ru/read/page-article/famous_prizes/",
+    href: journalPath("awards"),
     image: "brand/section-prizes.webp",
   },
   {
     number: "04",
     title: "Биографии классиков",
     copy: "Тщательные человеческие биографии: судьба, время, характер и главные тексты автора.",
-    href: "https://probpera.ru/read",
+    href: journalPath("writers-world"),
     image: "brand/series-3.webp",
+  },
+  {
+    number: "05",
+    title: "Литература народов мира",
+    copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
+    href: journalPath("writers-world"),
+    image: "brand/series-4.webp",
+  },
+  {
+    number: "06",
+    title: "Фольклор и мифология",
+    copy: "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.",
+    href: journalPath("folklore"),
+    image: "brand/editorial-paper.webp",
+  },
+  {
+    number: "07",
+    title: "Язык и редкие слова",
+    copy: "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.",
+    href: journalPath("language"),
+    image: "brand/series-2.webp",
+  },
+  {
+    number: "08",
+    title: "Литературные истории",
+    copy: "Необычные судьбы произведений, авторские замыслы, профессии писателей и культурные открытия.",
+    href: journalPath("author-stories"),
+    image: "brand/series-1.webp",
   },
 ];
 
@@ -168,11 +197,14 @@ export default function App() {
 
   useEffect(() => {
     let active = true;
-    import("./data/countries").then((module) => {
-      if (active) setCountryArchive(module.countries);
-    });
+    const timer = window.setTimeout(() => {
+      import("./data/countries").then((module) => {
+        if (active) setCountryArchive(module.countries);
+      });
+    }, 240);
     return () => {
       active = false;
+      window.clearTimeout(timer);
     };
   }, []);
 
@@ -559,6 +591,21 @@ export default function App() {
                   ])}
                 </p>
               </div>
+              <div className="atlas-ornaments" aria-hidden="true">
+                <span className="atlas-coordinate">
+                  <small>Архив мира</small>
+                  <strong>55°45′ N · 37°37′ E</strong>
+                </span>
+                <span className="atlas-compass">
+                  <i>С</i>
+                  <b>✦</b>
+                  <i>Ю</i>
+                </span>
+                <span className="atlas-edition">
+                  <small>Издание</small>
+                  <strong>MMXXVI</strong>
+                </span>
+              </div>
 
               {filteredCountries.length > 0 ? (
                 <Suspense
@@ -597,9 +644,30 @@ export default function App() {
               </Suspense>
             )}
           </div>
+          <details className="atlas-country-index">
+            <summary>
+              Текстовый указатель стран
+              <span>{filteredCountries.length}</span>
+            </summary>
+            <div>
+              {filteredCountries
+                .slice()
+                .sort((first, second) => first.name.localeCompare(second.name, "ru"))
+                .map((country) => (
+                  <button
+                    type="button"
+                    key={country.id}
+                    onClick={() => selectCountry(country, true)}
+                  >
+                    <span>{country.name}</span>
+                    <small>{country.writers.length} авторов</small>
+                  </button>
+                ))}
+            </div>
+          </details>
         </section>
 
-        <section className="daily-grid" id="book-day">
+        <section className="daily-grid painted-paper-section" id="book-day">
           <article className="book-of-day">
             <div className={`book-cover${bookOfDayHasCover ? " has-image" : ""}`}>
               {bookOfDay && bookOfDayHasCover ? (
@@ -718,7 +786,7 @@ export default function App() {
           <div className="editorial-grid">
             {editorialFeatures.map((feature, index) => (
               <article className={index === 0 ? "is-featured" : ""} key={feature.title}>
-                <a href={feature.articleUrl} target="_blank" rel="noreferrer">
+                <a href={feature.articleUrl}>
                   <div className="article-image">
                     <img src={assetUrl(feature.image)} alt="" loading="lazy" />
                     <span>{feature.tag}</span>
@@ -733,8 +801,6 @@ export default function App() {
                 <a
                   className="section-link"
                   href={feature.sectionUrl}
-                  target="_blank"
-                  rel="noreferrer"
                 >
                   Все материалы рубрики
                 </a>
@@ -796,7 +862,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="authors-section" id="authors">
+        <section className="authors-section painted-paper-section" id="authors">
           <header className="section-heading">
             <div>
               <span className="section-kicker">Лица мировой литературы</span>
@@ -841,13 +907,14 @@ export default function App() {
               <span className="section-kicker">Навигация по журналу</span>
               <h2>Основные разделы</h2>
             </div>
+            <a className="sections-all-button" href={journalPath()}>
+              Все разделы и публикации <span>→</span>
+            </a>
           </header>
           <div>
             {sectionLinks.map((section) => (
               <a
                 href={section.href}
-                target="_blank"
-                rel="noreferrer"
                 key={section.title}
                 style={{ "--section-art": `url(${assetUrl(section.image)})` } as React.CSSProperties}
               >
@@ -862,7 +929,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="calendar" className="calendar-section">
+        <section id="calendar" className="calendar-section painted-paper-section">
           <Suspense fallback={<div className="calendar-card">Собираем литературные даты…</div>}>
             <LiteraryCalendar
               countries={countryArchive}

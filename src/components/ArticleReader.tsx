@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 import ArticleEngagement from "../community/ArticleEngagement";
 import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
 import ShareLinks from "../editorial/ShareLinks";
+import { articlePath } from "../utils/articleRoutes";
+import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 
 type ArticleHeading = {
   id: string;
@@ -39,6 +41,8 @@ export default function ArticleReader({
   onClose,
   onOpen,
 }: Props) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [articleDocument, setArticleDocument] = useState<ArticleDocument | null>(null);
   const [error, setError] = useState(false);
@@ -70,14 +74,34 @@ export default function ArticleReader({
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = [
+        ...dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+        ),
+      ];
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", handleKeydown);
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeydown);
+      previouslyFocused?.focus();
     };
   }, [onClose]);
 
@@ -88,6 +112,13 @@ export default function ArticleReader({
 
   const headingItems = useMemo(
     () => (articleDocument?.headings || []).filter((heading) => heading.text.trim()),
+    [articleDocument]
+  );
+  const safeContentHtml = useMemo(
+    () =>
+      articleDocument
+        ? sanitizeArticleHtml(articleDocument.contentHtml)
+        : "",
     [articleDocument]
   );
 
@@ -110,15 +141,21 @@ export default function ArticleReader({
 
   return (
     <div
+      ref={dialogRef}
       className={`article-reader is-${theme}`}
       role="dialog"
       aria-modal="true"
-      aria-label={`Чтение статьи «${article.title}»`}
+      aria-labelledby="article-reader-title"
     >
       <div className="article-reader-progress" style={{ width: `${progress}%` }} />
 
       <header className="article-reader-bar">
-        <button className="reader-back" type="button" onClick={onClose}>
+          <button
+            ref={closeButtonRef}
+            className="reader-back"
+            type="button"
+            onClick={onClose}
+          >
           <span aria-hidden="true">←</span> К журналу
         </button>
         <div>
@@ -186,7 +223,7 @@ export default function ArticleReader({
                 <span>{article.sectionLabel}</span>
                 <small>{article.publishedLabel}</small>
               </div>
-              <h1>{article.title}</h1>
+              <h1 id="article-reader-title">{article.title}</h1>
               {article.description && <p>{article.description}</p>}
               <div className="article-byline">
                 <span>Авторская публикация журнала «Проба Пера»</span>
@@ -198,7 +235,10 @@ export default function ArticleReader({
 
             {article.imageUrl && (
               <figure className="article-reader-cover">
-                <img src={article.imageUrl} alt="" />
+                <img
+                  src={article.imageUrl}
+                  alt={`Иллюстрация к статье «${article.title}»`}
+                />
               </figure>
             )}
 
@@ -221,7 +261,7 @@ export default function ArticleReader({
             {articleDocument && (
               <div
                 className="article-reader-content"
-                dangerouslySetInnerHTML={{ __html: articleDocument.contentHtml }}
+                dangerouslySetInnerHTML={{ __html: safeContentHtml }}
               />
             )}
 
@@ -233,7 +273,10 @@ export default function ArticleReader({
                   Авторский текст сохранён в исходном виде. Замечания по фактам и языку
                   проходят отдельную редакционную проверку.
                 </p>
-                <ShareLinks url={article.url} title={article.title} />
+                <ShareLinks
+                  url={`${window.location.origin}${articlePath(article.id)}`}
+                  title={article.title}
+                />
                 <ArticleEngagement articleSlug={article.id} />
               </footer>
             )}

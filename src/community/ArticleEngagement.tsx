@@ -18,6 +18,16 @@ type Comment = {
   profiles?: { display_name?: string } | null;
 };
 
+function formatCommentDate(value: string) {
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(value));
+}
+
 export default function ArticleEngagement({
   articleSlug,
   subjectType = "article",
@@ -31,6 +41,7 @@ export default function ArticleEngagement({
   const [average, setAverage] = useState(0);
   const [userRating, setUserRating] = useState(0);
   const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
 
   const loadEngagement = useCallback(async () => {
     if (!supabase) return;
@@ -49,6 +60,11 @@ export default function ArticleEngagement({
       }),
     ]);
 
+    if (commentsResult.error || ratingResult.error) {
+      setMessage("Не удалось обновить обсуждение. Попробуйте ещё раз.");
+      return;
+    }
+
     setComments((commentsResult.data || []) as unknown as Comment[]);
     const summary = ratingResult.data?.[0];
     setRatingCount(Number(summary?.rating_count || 0));
@@ -59,18 +75,46 @@ export default function ArticleEngagement({
   useEffect(() => {
     if (!configured) return;
     void loadEngagement();
+    const channel = supabase
+      ?.channel(`article-engagement-${articleSlug}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "article_comments",
+          filter: `article_slug=eq.${articleSlug}`,
+        },
+        () => void loadEngagement()
+      )
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "ratings" },
+        () => void loadEngagement()
+      )
+      .subscribe();
+
+    return () => {
+      if (channel && supabase) void supabase.removeChannel(channel);
+    };
   }, [configured, loadEngagement]);
 
   const rate = async (score: number) => {
     if (!supabase) return;
     setBusy(true);
-    await supabase.rpc("rate_content", {
+    setMessage("");
+    const { error } = await supabase.rpc("rate_content", {
       p_subject_type: subjectType,
       p_subject_id: articleSlug,
       p_score: score,
       p_session_id: getCommunitySessionId(),
     });
     setBusy(false);
+    if (error) {
+      setMessage("Оценку не удалось сохранить. Попробуйте ещё раз.");
+      return;
+    }
+    setMessage("Спасибо — ваша оценка сохранена.");
     await loadEngagement();
   };
 
@@ -78,16 +122,63 @@ export default function ArticleEngagement({
     if (!supabase || !commentBody.trim()) return;
     if (!user && guestName.trim().length < 2) return;
     setBusy(true);
-    await supabase.from("article_comments").insert({
-      article_slug: articleSlug,
-      author_id: user?.id || null,
-      guest_name: user ? null : guestName.trim(),
-      session_id: getCommunitySessionId(),
-      body: commentBody.trim(),
-    });
-    setCommentBody("");
+    setMessage("");
+    const payload = {
+      p_article_slug: articleSlug,
+      p_session_id: getCommunitySessionId(),
+      p_body: commentBody.trim(),
+      p_guest_name: user ? null : guestName.trim(),
+      p_parent_id: null,
+    };
+    let { error } = await supabase.rpc("submit_article_comment", payload);
+
+    // Совместимость с базой, созданной до появления защищённой RPC-функции.
+    if (error?.code === "42883") {
+      const fallback = await supabase.from("article_comments").insert({
+        article_slug: articleSlug,
+        author_id: user?.id || null,
+        guest_name: user ? null : guestName.trim(),
+        session_id: getCommunitySessionId(),
+        body: commentBody.trim(),
+      });
+      error = fallback.error;
+    }
+
     setBusy(false);
+    if (error) {
+      setMessage(
+        error.message.includes("Too many comments")
+          ? "Слишком много сообщений подряд. Подождите несколько минут."
+          : "Комментарий не удалось опубликовать. Проверьте текст и повторите."
+      );
+      return;
+    }
+    if (!user) {
+      window.localStorage.setItem("probpera-guest-name", guestName.trim());
+    }
+    setCommentBody("");
+    setMessage("Комментарий опубликован.");
     await loadEngagement();
+  };
+
+  useEffect(() => {
+    if (user || guestName) return;
+    setGuestName(window.localStorage.getItem("probpera-guest-name") || "");
+  }, [guestName, user]);
+
+  const reportComment = async (commentId: string) => {
+    if (!supabase) return;
+    setMessage("");
+    const { error } = await supabase.rpc("report_article_comment", {
+      p_comment_id: commentId,
+      p_session_id: getCommunitySessionId(),
+      p_reason: "Проверить содержание комментария",
+    });
+    setMessage(
+      error
+        ? "Не удалось отправить жалобу."
+        : "Спасибо. Комментарий передан редакции на проверку."
+    );
   };
 
   if (!configured) {
@@ -104,6 +195,15 @@ export default function ArticleEngagement({
 
   return (
     <section className={`engagement-card${compact ? " is-compact" : ""}`}>
+      <header className="engagement-heading">
+        <div>
+          <span className="section-kicker">Обсуждение публикации</span>
+          <h3>Мнение читателей</h3>
+        </div>
+        <span>
+          {comments.length} {comments.length === 1 ? "комментарий" : "комментариев"}
+        </span>
+      </header>
       <div className="rating-summary">
         <span>
           <strong>{average ? average.toFixed(1) : "—"}</strong>
@@ -128,19 +228,28 @@ export default function ArticleEngagement({
       {!compact && (
         <div className="comment-form">
           {!user && (
-            <input
-              value={guestName}
-              onChange={(event) => setGuestName(event.target.value)}
-              placeholder="Ваше имя"
-              maxLength={80}
-            />
+            <label>
+              <span>Имя или никнейм</span>
+              <input
+                value={guestName}
+                onChange={(event) => setGuestName(event.target.value)}
+                placeholder="Как к вам обращаться"
+                minLength={2}
+                maxLength={80}
+              />
+            </label>
           )}
-          <textarea
-            value={commentBody}
-            onChange={(event) => setCommentBody(event.target.value)}
-            placeholder="Ваш комментарий к материалу"
-            maxLength={4000}
-          />
+          <label>
+            <span>Комментарий</span>
+            <textarea
+              value={commentBody}
+              onChange={(event) => setCommentBody(event.target.value)}
+              placeholder="Поделитесь впечатлением о материале"
+              minLength={2}
+              maxLength={4000}
+            />
+          </label>
+          <small>{commentBody.length} / 4000</small>
           <button
             type="button"
             disabled={
@@ -150,22 +259,50 @@ export default function ArticleEngagement({
             }
             onClick={() => void submitComment()}
           >
-            Опубликовать комментарий
+            {busy ? "Публикуем…" : "Опубликовать комментарий"}
           </button>
         </div>
       )}
 
+      {message && (
+        <p className="engagement-message" role="status">
+          {message}
+        </p>
+      )}
+
       <div className="comment-list">
-        {comments.map((comment) => (
-          <article key={comment.id}>
-            <strong>
-              {comment.profiles?.display_name ||
-                comment.guest_name ||
-                "Читатель"}
-            </strong>
-            <p>{comment.body}</p>
-          </article>
-        ))}
+        {comments.length ? (
+          comments.map((comment) => (
+            <article key={comment.id}>
+              <header>
+                <strong>
+                  {comment.profiles?.display_name ||
+                    comment.guest_name ||
+                    "Читатель"}
+                </strong>
+                <time dateTime={comment.created_at}>
+                  {formatCommentDate(comment.created_at)}
+                </time>
+              </header>
+              <p>{comment.body}</p>
+              {!compact && (
+                <button
+                  type="button"
+                  onClick={() => void reportComment(comment.id)}
+                >
+                  Пожаловаться редакции
+                </button>
+              )}
+            </article>
+          ))
+        ) : (
+          !compact && (
+            <div className="comment-empty">
+              <strong>Начните содержательный разговор</strong>
+              <p>Первый комментарий может оставить любой читатель.</p>
+            </div>
+          )
+        )}
       </div>
     </section>
   );

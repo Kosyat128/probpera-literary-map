@@ -22,7 +22,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 28 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 28 МАЯ 2026",
     "readingMinutes": 9,
     "wordCount": 1541,
     "headingCount": 16
@@ -35,7 +35,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 28 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 28 ИЮНЯ 2026",
     "readingMinutes": 12,
     "wordCount": 2227,
     "headingCount": 16
@@ -48,7 +48,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6631-3231-4335-b262-373462653263/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 22 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 22 АПРЕЛЯ 2026",
     "readingMinutes": 9,
     "wordCount": 1577,
     "headingCount": 10
@@ -61,7 +61,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3534-3066-4639-a233-356534313063/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 21 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 21 МАЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1277,
     "headingCount": 10
@@ -74,7 +74,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6163-3365-4464-b161-396264633362/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 27 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 27 ИЮНЯ 2026",
     "readingMinutes": 8,
     "wordCount": 1517,
     "headingCount": 10
@@ -87,7 +87,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3063-3664-4935-b762-626164376563/d29a4020-84fe-4bb8-9.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 07 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 07 ДЕКАБРЯ 2025",
     "readingMinutes": 10,
     "wordCount": 1890,
     "headingCount": 5
@@ -100,7 +100,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3664-3465-4465-a434-366132396136/_2.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 03 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 03 НОЯБРЯ 2025",
     "readingMinutes": 7,
     "wordCount": 1305,
     "headingCount": 6
@@ -113,7 +113,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3064-6332-4264-b232-353562646338/_2312.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 27 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 27 СЕНТЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 929,
     "headingCount": 5
@@ -126,7 +126,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6430-6436-4863-b638-366231646637/_vs_rybu.jpg",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 19 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 19 ОКТЯБРЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1080,
     "headingCount": 5
@@ -139,7 +139,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6166-6239-4136-a331-363163306565/4f4f0dae-ea9c-4dc2-b.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 04 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 04 ИЮНЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1267,
     "headingCount": 7
@@ -152,7 +152,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3534-6532-4266-a630-363233383231/85f1ba55-a365-45a4-a.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 22 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 22 ФЕВРАЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 908,
     "headingCount": 6
@@ -165,7 +165,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3832-3733-4130-b835-623764373538/7e402feb-00b3-4ed5-9.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 05 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 05 ЯНВАРЯ 2026",
     "readingMinutes": 5,
     "wordCount": 802,
     "headingCount": 5
@@ -178,7 +178,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6531-6336-4636-a563-643634643761/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 11 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 11 МАЯ 2026",
     "readingMinutes": 5,
     "wordCount": 765,
     "headingCount": 6
@@ -191,7 +191,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6165-3065-4163-b638-376166343462/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 16 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 16 ИЮЛЯ 2026",
     "readingMinutes": 10,
     "wordCount": 1798,
     "headingCount": 7
@@ -204,7 +204,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3832-3065-4732-a333-376165623631/9dead79b-38e6-4dc2-9.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 16 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 16 МАРТА 2026",
     "readingMinutes": 6,
     "wordCount": 1056,
     "headingCount": 6
@@ -217,7 +217,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3030-3765-4839-b536-363565386334/4e3ed6d5-3c6d-4204-a.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 26 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 26 ЯНВАРЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1015,
     "headingCount": 6
@@ -230,7 +230,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3638-6434-4435-b239-613437346436/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
-    "publishedLabel": "Опубликовано : 11 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 11 АПРЕЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 715,
     "headingCount": 7
@@ -243,7 +243,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3037-3130-4065-b839-653563653430/c471b0ab-eb22-48d7-8.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 06 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 06 ИЮЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1091,
     "headingCount": 12
@@ -256,7 +256,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3063-3361-4033-b239-336331383035/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 04 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 04 ИЮЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 777,
     "headingCount": 17
@@ -269,7 +269,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3639-6530-4762-b436-336233653565/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 01 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 01 ИЮЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 873,
     "headingCount": 10
@@ -282,7 +282,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3633-3034-4661-b035-346539326537/b55efe4f-1e32-435f-b.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 18 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 18 ФЕВРАЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 946,
     "headingCount": 11
@@ -295,7 +295,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3430-3266-4365-b538-633165663064/068be666-6d9d-402c-b.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 13 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 13 МАРТА 2026",
     "readingMinutes": 6,
     "wordCount": 1105,
     "headingCount": 11
@@ -308,7 +308,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6661-6638-4965-b637-336237623563/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 09 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 09 АПРЕЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 716,
     "headingCount": 10
@@ -321,7 +321,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6235-6365-4531-a133-656236313762/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 08 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 08 МАЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1020,
     "headingCount": 10
@@ -334,7 +334,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3834-6463-4065-a234-376237643463/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 31 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 31 МАЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1027,
     "headingCount": 11
@@ -347,7 +347,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3336-3536-4236-b733-336335656335/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 12 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 12 ИЮЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 956,
     "headingCount": 11
@@ -360,7 +360,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3061-3066-4566-b262-313666393864/_1.jpg",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 06 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 06 ДЕКАБРЯ 2025",
     "readingMinutes": 7,
     "wordCount": 1236,
     "headingCount": 8
@@ -373,7 +373,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6664-3931-4830-b734-393966303337/05be2c0c-cc5b-4fdf-9.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 28 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 28 ДЕКАБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 866,
     "headingCount": 8
@@ -386,7 +386,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3439-3635-4165-b637-653735383439/4c6dfa68-946f-4eef-8.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 24 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 24 ЯНВАРЯ 2026",
     "readingMinutes": 6,
     "wordCount": 980,
     "headingCount": 8
@@ -399,7 +399,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 20 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 20 ФЕВРАЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 956,
     "headingCount": 8
@@ -412,7 +412,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6139-6134-4530-b338-613031346331/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 15 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 15 МАРТА 2026",
     "readingMinutes": 5,
     "wordCount": 836,
     "headingCount": 8
@@ -425,7 +425,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3531-3664-4065-a363-346164343230/d29c4043-f03b-46cf-a.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 10 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 10 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 535,
     "headingCount": 8
@@ -438,7 +438,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3538-3933-4232-b930-383736656237/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 05 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 05 МАЯ 2026",
     "readingMinutes": 4,
     "wordCount": 639,
     "headingCount": 8
@@ -451,7 +451,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6130-3665-4362-b135-613263376466/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 01 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 01 ИЮНЯ 2026",
     "readingMinutes": 4,
     "wordCount": 683,
     "headingCount": 8
@@ -464,7 +464,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6536-3766-4539-a133-323332306262/image.png",
     "sectionId": "book-guides",
     "sectionLabel": "Книжный гид и подборки",
-    "publishedLabel": "Опубликовано : 13 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 13 ИЮЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 754,
     "headingCount": 8
@@ -477,7 +477,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 08 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 08 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1101,
     "headingCount": 0
@@ -490,7 +490,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6366-3433-4364-b739-316262333637/242-0.webp",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 07 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 07 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1019,
     "headingCount": 0
@@ -503,7 +503,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6566-6463-4830-b462-663663303266/nasa-Yj1M5riCKk4-uns.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 07 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 07 ИЮЛЯ 2025",
     "readingMinutes": 5,
     "wordCount": 764,
     "headingCount": 0
@@ -516,7 +516,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3732-3662-4739-a139-653566653234/252353.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 24 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 24 МАРТА 2026",
     "readingMinutes": 6,
     "wordCount": 1056,
     "headingCount": 7
@@ -529,7 +529,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6230-3664-4266-a562-383835346463/image.png",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 17 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 17 АПРЕЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1017,
     "headingCount": 7
@@ -542,7 +542,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 17 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 17 МАЯ 2026",
     "readingMinutes": 5,
     "wordCount": 824,
     "headingCount": 7
@@ -555,7 +555,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3438-6231-4837-b336-313232663631/23213.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 12 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 12 ДЕКАБРЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1024,
     "headingCount": 3
@@ -568,7 +568,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3933-3832-4536-b831-353861383232/234234.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 28 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 28 ФЕВРАЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1013,
     "headingCount": 6
@@ -581,7 +581,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6436-3566-4939-b938-633538313132/68e51cbd-213c-4d3d-b.png",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 21 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 21 ИЮЛЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1022,
     "headingCount": 7
@@ -594,7 +594,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 10 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 10 ИЮНЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1238,
     "headingCount": 7
@@ -607,7 +607,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6562-6566-4566-b562-346165313831/0_5b52428069a5323c81.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 23 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 23 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 633,
     "headingCount": 3
@@ -620,7 +620,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3662-3032-4632-b230-636466616366/2.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 23 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 23 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 702,
     "headingCount": 4
@@ -633,7 +633,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3431-3731-4562-a261-626164353764/_5.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 30 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 30 ДЕКАБРЯ 2025",
     "readingMinutes": 7,
     "wordCount": 1149,
     "headingCount": 5
@@ -646,7 +646,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6332-6466-4234-a335-336531653735/_.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 17 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 17 СЕНТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 629,
     "headingCount": 4
@@ -659,7 +659,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6462-3937-4833-b366-653538666637/_.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 02 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 02 СЕНТЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 931,
     "headingCount": 0
@@ -672,7 +672,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 17 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 17 АВГУСТА 2025",
     "readingMinutes": 7,
     "wordCount": 1279,
     "headingCount": 0
@@ -685,7 +685,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6130-6631-4233-a136-306462323931/IMG_0387__.JPEG",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 24 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 24 НОЯБРЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1068,
     "headingCount": 3
@@ -698,7 +698,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3339-3234-4564-b634-633130336564/121.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 05 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 05 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 637,
     "headingCount": 3
@@ -711,7 +711,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6265-3332-4762-b866-333336663663/cover.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 07 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 07 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 977,
     "headingCount": 0
@@ -724,7 +724,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3634-6632-4161-b166-343064613566/photo.webp",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 11 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 11 АВГУСТА 2025",
     "readingMinutes": 3,
     "wordCount": 563,
     "headingCount": 0
@@ -737,7 +737,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3666-6263-4162-b965-313765333365/photo.jpg",
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
-    "publishedLabel": "Опубликовано : 25 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 25 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1126,
     "headingCount": 0
@@ -750,7 +750,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3162-6534-4936-b966-633930633738/photo.jpg",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 21 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 21 АВГУСТА 2025",
     "readingMinutes": 5,
     "wordCount": 914,
     "headingCount": 0
@@ -763,7 +763,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3062-3766-4161-b633-366363373632/6bb15adb-25e2-4da3-b.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 31 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 31 ДЕКАБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 915,
     "headingCount": 11
@@ -776,7 +776,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 28 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 28 НОЯБРЯ 2025",
     "readingMinutes": 7,
     "wordCount": 1152,
     "headingCount": 8
@@ -789,7 +789,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6239-6636-4035-b639-643538396638/6890672564.jpg",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 27 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 27 ОКТЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 780,
     "headingCount": 8
@@ -802,7 +802,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3738-3536-4037-a135-343137383466/30_9b0a4429edf244c6a.jpg",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 10 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 708,
     "headingCount": 8
@@ -815,7 +815,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3665-3334-4632-b366-626463383531/111e8bde-f116-497a-a.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 16 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 16 ЯНВАРЯ 2026",
     "readingMinutes": 6,
     "wordCount": 987,
     "headingCount": 8
@@ -828,7 +828,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3139-6633-4338-a230-353363646635/8a420904-0305-4c85-a.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 08 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 08 ФЕВРАЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 721,
     "headingCount": 8
@@ -841,7 +841,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6166-6438-4135-b530-363433303239/photo.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 14 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 14 НОЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 950,
     "headingCount": 8
@@ -854,7 +854,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3665-6465-4832-a464-343133623333/image.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 15 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 15 ИЮНЯ 2026",
     "readingMinutes": 4,
     "wordCount": 756,
     "headingCount": 9
@@ -867,7 +867,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3265-3864-4531-b733-333233376239/photo.jpg",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 17 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 17 ДЕКАБРЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1129,
     "headingCount": 8
@@ -880,7 +880,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3737-3038-4435-b632-313339356439/image.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 05 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 05 МАРТА 2026",
     "readingMinutes": 6,
     "wordCount": 1014,
     "headingCount": 8
@@ -893,7 +893,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3366-6530-4130-a264-383737316464/image.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 25 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 25 АПРЕЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 880,
     "headingCount": 8
@@ -906,7 +906,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6430-3732-4135-a233-633137376132/9f7977e5-5dd1-4ca2-8.png",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 30 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 30 МАРТА 2026",
     "readingMinutes": 6,
     "wordCount": 1020,
     "headingCount": 8
@@ -919,7 +919,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3161-6334-4465-b961-333561373035/Image-Compressororg_.webp",
     "sectionId": "literary-essays",
     "sectionLabel": "О литературе и культуре",
-    "publishedLabel": "Опубликовано : 12 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 12 ИЮЛЯ 2025",
     "readingMinutes": 12,
     "wordCount": 2181,
     "headingCount": 0
@@ -932,7 +932,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6138-3239-4335-b166-643935623330/123231.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 27 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 27 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 755,
     "headingCount": 8
@@ -945,7 +945,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6530-6364-4064-b939-383338343330/123.jpg",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 22 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 22 МАРТА 2026",
     "readingMinutes": 5,
     "wordCount": 840,
     "headingCount": 8
@@ -958,7 +958,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6336-6532-4163-a237-623464396137/954ff661-2e91-40b5-9.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 11 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 11 ДЕКАБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 939,
     "headingCount": 8
@@ -971,7 +971,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3665-3937-4664-a637-316333333131/170ad3d8-3c85-4aa8-8.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 26 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 26 ФЕВРАЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 672,
     "headingCount": 8
@@ -984,7 +984,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6438-3935-4963-a561-386261366366/erewrew.jpg",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 01 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 01 ФЕВРАЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 631,
     "headingCount": 8
@@ -997,7 +997,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6335-3132-4734-b864-303939666165/photo.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 23 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 23 НОЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 832,
     "headingCount": 8
@@ -1010,7 +1010,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6333-3664-4363-b235-326334636131/a116992c-3839-4c30-b.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 19 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 19 ИЮЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 691,
     "headingCount": 9
@@ -1023,7 +1023,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3033-3531-4964-a238-356230386331/f3d6aa92-3f33-474d-b.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 14 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 14 АПРЕЛЯ 2026",
     "readingMinutes": 4,
     "wordCount": 693,
     "headingCount": 9
@@ -1036,7 +1036,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6433-3131-4563-b762-343561353262/e1a434cc-3f45-4fbe-8.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 09 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 09 ИЮНЯ 2026",
     "readingMinutes": 4,
     "wordCount": 724,
     "headingCount": 9
@@ -1049,7 +1049,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3630-3438-4438-a534-303132396363/3423.jpg",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 15 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 15 МАЯ 2026",
     "readingMinutes": 4,
     "wordCount": 728,
     "headingCount": 8
@@ -1062,7 +1062,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 8 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 8 ЯНВАРЯ 2026",
     "readingMinutes": 4,
     "wordCount": 723,
     "headingCount": 8
@@ -1075,7 +1075,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 03 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 03 ЯНВАРЯ 2026",
     "readingMinutes": 12,
     "wordCount": 2111,
     "headingCount": 17
@@ -1088,7 +1088,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3366-6538-4535-b064-613438353732/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 26 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 26 МАЯ 2026",
     "readingMinutes": 10,
     "wordCount": 1848,
     "headingCount": 17
@@ -1101,7 +1101,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6531-6165-4235-b465-323531316331/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 30 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 30 ИЮНЯ 2026",
     "readingMinutes": 10,
     "wordCount": 1714,
     "headingCount": 17
@@ -1114,7 +1114,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3964-3561-4134-b337-653639393934/photo.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 26 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 26 ДЕКАБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 675,
     "headingCount": 7
@@ -1127,7 +1127,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6666-3333-4563-b966-613335303633/be2fff4e-a797-4a61-b.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 06 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 06 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 555,
     "headingCount": 7
@@ -1140,7 +1140,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6530-3661-4261-a438-616366373438/___.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 23 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 23 ЯНВАРЯ 2026",
     "readingMinutes": 5,
     "wordCount": 776,
     "headingCount": 7
@@ -1153,7 +1153,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6666-3234-4239-b366-663938336139/_.jpg",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 06 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 06 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 524,
     "headingCount": 8
@@ -1166,7 +1166,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6562-6135-4735-a338-383534306636/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 22 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 22 ИЮЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 787,
     "headingCount": 9
@@ -1179,7 +1179,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3262-6430-4930-b564-303137333863/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 21 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 21 ИЮНЯ 2026",
     "readingMinutes": 4,
     "wordCount": 630,
     "headingCount": 8
@@ -1192,7 +1192,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 02 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 02 ЯНВАРЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1224,
     "headingCount": 17
@@ -1205,7 +1205,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6636-6566-4164-b563-353932366133/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
-    "publishedLabel": "Опубликовано : 23 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 23 МАЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1326,
     "headingCount": 17
@@ -1218,7 +1218,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6438-6538-4039-b333-383931303364/1.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 10 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ИЮЛЯ 2025",
     "readingMinutes": 4,
     "wordCount": 636,
     "headingCount": 0
@@ -1231,7 +1231,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6366-6135-4366-a237-336466643065/Image-Compressororg_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 10 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ИЮЛЯ 2025",
     "readingMinutes": 3,
     "wordCount": 421,
     "headingCount": 0
@@ -1244,7 +1244,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3331-3965-4561-b263-383934396637/203951.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 09 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 09 ИЮЛЯ 2025",
     "readingMinutes": 3,
     "wordCount": 566,
     "headingCount": 0
@@ -1257,7 +1257,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3865-3433-4230-b666-396233323664/photo.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 09 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 09 ИЮЛЯ 2025",
     "readingMinutes": 4,
     "wordCount": 724,
     "headingCount": 0
@@ -1270,7 +1270,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6366-3562-4736-b336-396537316238/1.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 06 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 06 АВГУСТА 2025",
     "readingMinutes": 3,
     "wordCount": 526,
     "headingCount": 0
@@ -1283,7 +1283,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3933-3563-4564-a438-653938393764/photo.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 06 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 06 АВГУСТА 2025",
     "readingMinutes": 4,
     "wordCount": 693,
     "headingCount": 0
@@ -1296,7 +1296,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3562-3638-4132-b131-363232613834/_1.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 01 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 01 СЕНТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 630,
     "headingCount": 0
@@ -1309,7 +1309,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6631-6664-4161-a337-653565336637/photo.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 16 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 16 СЕНТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 392,
     "headingCount": 4
@@ -1322,7 +1322,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3031-3036-4338-b734-333533633539/_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 03 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 03 ОКТЯБРЯ 2025",
     "readingMinutes": 2,
     "wordCount": 298,
     "headingCount": 4
@@ -1335,7 +1335,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3939-3537-4539-b036-363238633965/f2db9a8d-79cd-4d8d-9.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 21 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 21 ОКТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 447,
     "headingCount": 5
@@ -1348,7 +1348,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3131-3632-4333-b633-346563643365/ab3e1f15-2794-414c-8.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 06 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 06 НОЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 454,
     "headingCount": 6
@@ -1361,7 +1361,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6537-3932-4331-b761-663530613639/425678ac-9cbb-4b08-8.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 22 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 22 НОЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 547,
     "headingCount": 5
@@ -1374,7 +1374,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6531-3839-4832-a437-643563316333/8fb9af8d-5d5c-4d64-9.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 10 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ДЕКАБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 616,
     "headingCount": 5
@@ -1387,7 +1387,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3337-3739-4037-a162-663934333562/_1.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 7 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 7 ЯНВАРЯ 2026",
     "readingMinutes": 3,
     "wordCount": 554,
     "headingCount": 5
@@ -1400,7 +1400,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3631-3266-4566-b833-313266626431/943df3f2-4179-4a6a-8.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 01 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 01 ФЕВРАЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 426,
     "headingCount": 5
@@ -1413,7 +1413,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3337-3463-4064-a264-666563383635/image.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 24 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 24 ФЕВРАЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 452,
     "headingCount": 5
@@ -1426,7 +1426,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3364-6166-4465-a132-383330616438/6030374a-8b0f-4165-a.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 19 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 19 МАРТА 2026",
     "readingMinutes": 2,
     "wordCount": 369,
     "headingCount": 5
@@ -1439,7 +1439,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3638-6431-4230-b839-623833313039/817978d5-1211-43d3-b.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 13 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 13 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 488,
     "headingCount": 5
@@ -1452,7 +1452,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3631-6431-4234-b330-393263613136/503a70ad-123e-4f84-a.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 14 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 14 МАЯ 2026",
     "readingMinutes": 3,
     "wordCount": 401,
     "headingCount": 5
@@ -1465,7 +1465,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3165-3532-4333-b934-623231333831/cbd0a0b0-6d48-41f5-b.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 07 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 07 ИЮНЯ 2026",
     "readingMinutes": 2,
     "wordCount": 374,
     "headingCount": 5
@@ -1478,7 +1478,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3632-3030-4366-a631-393933643236/1e518762-16b8-460b-9.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 17 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 17 ИЮЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 476,
     "headingCount": 5
@@ -1491,7 +1491,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3634-3433-4363-b038-643930376239/_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 27 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 27 АВГУСТА 2025",
     "readingMinutes": 3,
     "wordCount": 455,
     "headingCount": 0
@@ -1504,7 +1504,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3037-3966-4761-a361-306262346332/__.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 30 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 30 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 497,
     "headingCount": 8
@@ -1517,7 +1517,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6634-3234-4332-b438-663736316139/anastacia-dvi-HRPaX-.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 10 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 971,
     "headingCount": 0
@@ -1530,7 +1530,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3961-3566-4864-b337-303966363332/_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 29 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 29 СЕНТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 431,
     "headingCount": 5
@@ -1543,7 +1543,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6266-3032-4334-b563-643432653735/cropped-cropped-hugo.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 12 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 12 АВГУСТА 2025",
     "readingMinutes": 3,
     "wordCount": 484,
     "headingCount": 0
@@ -1556,7 +1556,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6563-3236-4734-a564-366131663362/10__200_____.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 12 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 12 МАРТА 2026",
     "readingMinutes": 3,
     "wordCount": 568,
     "headingCount": 7
@@ -1569,7 +1569,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6332-3262-4536-a662-343031383030/photo.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 11 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 11 СЕНТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 433,
     "headingCount": 0
@@ -1582,7 +1582,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6138-3634-4465-a230-316432353939/629.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 21 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 21 ДЕКАБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 502,
     "headingCount": 7
@@ -1595,7 +1595,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3337-6235-4261-b866-653839363935/326359224_2783666988.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 17 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 17 НОЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 752,
     "headingCount": 7
@@ -1608,7 +1608,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6161-3961-4637-b139-326631353332/photo.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 14 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 14 ФЕВРАЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 508,
     "headingCount": 7
@@ -1621,7 +1621,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3835-3633-4264-b161-343231346165/cerrado-el-plazo-de-.webp",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 01 ДЕКАБРЯ 2025",
+    "publishedLabel": "Опубликовано: 01 ДЕКАБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 537,
     "headingCount": 7
@@ -1634,7 +1634,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3833-6234-4637-a636-306239323134/a5083056-95a5-4024-9.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 20 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 20 ЯНВАРЯ 2026",
     "readingMinutes": 3,
     "wordCount": 561,
     "headingCount": 7
@@ -1647,7 +1647,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6564-6461-4339-b233-343937363237/_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 30 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 30 ОКТЯБРЯ 2025",
     "readingMinutes": 2,
     "wordCount": 308,
     "headingCount": 5
@@ -1660,7 +1660,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6264-6662-4264-b063-383032313665/photo.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 15 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 15 ОКТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 398,
     "headingCount": 5
@@ -1673,7 +1673,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6334-3032-4161-a266-373163656535/dba11a54-5b63-4971-8.png",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 20 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 20 ИЮНЯ 2026",
     "readingMinutes": 3,
     "wordCount": 482,
     "headingCount": 8
@@ -1686,7 +1686,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3564-6535-4263-a363-666236393132/_.jpg",
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
-    "publishedLabel": "Опубликовано : 03 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 03 АВГУСТА 2025",
     "readingMinutes": 3,
     "wordCount": 478,
     "headingCount": 0
@@ -1699,7 +1699,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6232-3931-4262-b266-623733613939/23.jpg",
     "sectionId": "author-stories",
     "sectionLabel": "Рассказы и эссе",
-    "publishedLabel": "Опубликовано : 10 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 10 ИЮЛЯ 2025",
     "readingMinutes": 5,
     "wordCount": 845,
     "headingCount": 0
@@ -1712,7 +1712,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 11 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 11 ЯНВАРЯ 2026",
     "readingMinutes": 3,
     "wordCount": 393,
     "headingCount": 14
@@ -1725,7 +1725,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3562-6161-4137-a438-313131616161/e3e2d26c-28f6-42b1-8.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 14 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 14 ЯНВАРЯ 2026",
     "readingMinutes": 2,
     "wordCount": 253,
     "headingCount": 10
@@ -1738,7 +1738,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6133-3963-4432-b236-633261316138/photo.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 19 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 19 ЯНВАРЯ 2026",
     "readingMinutes": 2,
     "wordCount": 192,
     "headingCount": 9
@@ -1751,7 +1751,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6630-3936-4537-b834-303431643337/image.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 17 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 17 ФЕВРАЛЯ 2026",
     "readingMinutes": 1,
     "wordCount": 156,
     "headingCount": 7
@@ -1764,7 +1764,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3430-6335-4862-b437-386166626331/image.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 19 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 19 МАЯ 2026",
     "readingMinutes": 2,
     "wordCount": 262,
     "headingCount": 12
@@ -1777,7 +1777,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6134-6233-4432-b264-396330623238/image.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 24 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 24 ИЮНЯ 2026",
     "readingMinutes": 1,
     "wordCount": 171,
     "headingCount": 9
@@ -1790,7 +1790,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3266-6464-4564-b531-343937396536/image.png",
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
-    "publishedLabel": "Опубликовано : 03 ИЮЛЯ 2026",
+    "publishedLabel": "Опубликовано: 03 ИЮЛЯ 2026",
     "readingMinutes": 11,
     "wordCount": 2009,
     "headingCount": 17
@@ -1803,7 +1803,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6262-3936-4061-b465-623133623265/image.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 28 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 28 ЯНВАРЯ 2026",
     "readingMinutes": 6,
     "wordCount": 1062,
     "headingCount": 13
@@ -1816,7 +1816,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6363-3763-4161-b966-646564363364/image.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 25 МАЯ 2026",
+    "publishedLabel": "Опубликовано: 25 МАЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1156,
     "headingCount": 13
@@ -1829,7 +1829,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6235-3836-4234-a665-623236346262/image.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 29 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 29 ИЮНЯ 2026",
     "readingMinutes": 7,
     "wordCount": 1241,
     "headingCount": 13
@@ -1842,7 +1842,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6566-3234-4437-a334-613130323937/photo.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 31 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 31 ИЮЛЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1005,
     "headingCount": 0
@@ -1855,7 +1855,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6337-6235-4338-b965-313462356134/photo.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 25 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 25 СЕНТЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 809,
     "headingCount": 4
@@ -1868,7 +1868,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3438-3535-4638-b232-386162623464/2aaed4a9-42c8-4608-9.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 27 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 27 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 445,
     "headingCount": 5
@@ -1881,7 +1881,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3630-3835-4535-a434-356632396432/fc2a485b-c8a3-47c4-a.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 08 МАРТА 2026",
+    "publishedLabel": "Опубликовано: 08 МАРТА 2026",
     "readingMinutes": 5,
     "wordCount": 824,
     "headingCount": 5
@@ -1894,7 +1894,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3232-6136-4937-b339-346431366631/_5.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 15 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 15 НОЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 673,
     "headingCount": 5
@@ -1907,7 +1907,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6361-6166-4164-a133-316335613538/__1965.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 09 СЕНТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 09 СЕНТЯБРЯ 2025",
     "readingMinutes": 6,
     "wordCount": 1074,
     "headingCount": 0
@@ -1920,7 +1920,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6434-6663-4434-a262-643861303465/_2.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 28 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 28 ОКТЯБРЯ 2025",
     "readingMinutes": 3,
     "wordCount": 459,
     "headingCount": 5
@@ -1929,11 +1929,11 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "id": "page--article--folklore--characters--9",
     "url": "https://probpera.ru/read/page-article/folklore/characters/9",
     "title": "Жар-птица",
-    "description": "Этимология слова и его происхождение , функции персонажа в сказках, символика образа, а также связь с мифологическими и обрядовыми представлениями древних славян",
+    "description": "Этимология слова и его происхождение, функции персонажа в сказках, символика образа, а также связь с мифологическими и обрядовыми представлениями древних славян",
     "imageUrl": "https://static.tildacdn.com/tild3461-3834-4564-a462-623535396264/-_4.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 30 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 30 НОЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 827,
     "headingCount": 7
@@ -1946,7 +1946,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6165-3331-4638-b836-663037386137/_.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 23 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 23 АВГУСТА 2025",
     "readingMinutes": 7,
     "wordCount": 1173,
     "headingCount": 0
@@ -1959,7 +1959,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3635-3764-4636-a639-396366626632/___1.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 12 ОКТЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 12 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
     "wordCount": 603,
     "headingCount": 4
@@ -1972,7 +1972,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3366-3132-4662-b262-353165366339/__.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 30 НОЯБРЯ 2025",
+    "publishedLabel": "Опубликовано: 30 НОЯБРЯ 2025",
     "readingMinutes": 5,
     "wordCount": 948,
     "headingCount": 5
@@ -1985,7 +1985,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3639-3438-4431-a139-346135393136/__2.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 14 ИЮЛЯ 2025",
+    "publishedLabel": "Опубликовано: 14 ИЮЛЯ 2025",
     "readingMinutes": 9,
     "wordCount": 1577,
     "headingCount": 0
@@ -1998,7 +1998,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3264-3031-4334-a564-643761373836/12.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 09 АВГУСТА 2025",
+    "publishedLabel": "Опубликовано: 09 АВГУСТА 2025",
     "readingMinutes": 4,
     "wordCount": 645,
     "headingCount": 0
@@ -2011,7 +2011,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6138-6333-4266-b732-383362373439/bcd4c90c-09a0-46cc-9.png",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 18 ЯНВАРЯ 2026",
+    "publishedLabel": "Опубликовано: 18 ЯНВАРЯ 2026",
     "readingMinutes": 4,
     "wordCount": 723,
     "headingCount": 5
@@ -2024,7 +2024,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6633-3165-4433-b065-343934303130/1s5fuddxaq3x26hfqjj2.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 11 ФЕВРАЛЯ 2026",
+    "publishedLabel": "Опубликовано: 11 ФЕВРАЛЯ 2026",
     "readingMinutes": 5,
     "wordCount": 767,
     "headingCount": 5
@@ -2037,7 +2037,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild3761-3832-4539-b430-373462646566/31123.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 17 ИЮНЯ 2026",
+    "publishedLabel": "Опубликовано: 17 ИЮНЯ 2026",
     "readingMinutes": 6,
     "wordCount": 994,
     "headingCount": 6
@@ -2050,7 +2050,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "imageUrl": "https://static.tildacdn.com/tild6237-3636-4435-b265-643664323864/____.jpg",
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
-    "publishedLabel": "Опубликовано : 02 АПРЕЛЯ 2026",
+    "publishedLabel": "Опубликовано: 02 АПРЕЛЯ 2026",
     "readingMinutes": 3,
     "wordCount": 536,
     "headingCount": 5

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { supabase } from "../lib/supabase";
 import { useAuth } from "./AuthContext";
@@ -36,6 +36,7 @@ type DashboardCounts = {
   comments: number;
   ratings: number;
   views: number;
+  reports: number;
 };
 
 type ModerationItem = {
@@ -46,6 +47,20 @@ type ModerationItem = {
   status: "published" | "hidden" | "pending";
   created_at: string;
   profiles?: { display_name?: string } | null;
+};
+
+type CommentReport = {
+  id: string;
+  reason: string;
+  created_at: string;
+  article_comments?: {
+    id: string;
+    article_slug: string;
+    body: string;
+    status: string;
+    guest_name?: string | null;
+    profiles?: { display_name?: string } | null;
+  } | null;
 };
 
 const categories = [
@@ -69,6 +84,8 @@ export default function CommunityHub({
   initialView = "account",
   onClose,
 }: Props) {
+  const dialogRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {
     configured,
     loading,
@@ -81,6 +98,9 @@ export default function CommunityHub({
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [topics, setTopics] = useState<ForumTopic[]>([]);
@@ -97,8 +117,10 @@ export default function CommunityHub({
     comments: 0,
     ratings: 0,
     views: 0,
+    reports: 0,
   });
   const [moderationItems, setModerationItems] = useState<ModerationItem[]>([]);
+  const [commentReports, setCommentReports] = useState<CommentReport[]>([]);
 
   const isModerator = ["moderator", "editor", "admin"].includes(role);
 
@@ -110,11 +132,33 @@ export default function CommunityHub({
 
   useEffect(() => {
     if (!open) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = [
+        ...dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])'
+        ),
+      ];
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      previouslyFocused?.focus();
+    };
   }, [onClose, open]);
 
   useEffect(() => {
@@ -190,8 +234,10 @@ export default function CommunityHub({
       comments,
       ratings,
       views,
+      reports,
       recentTopics,
       recentComments,
+      recentReports,
     ] = await Promise.all([
       supabase.from("profiles").select("id", { count: "exact", head: true }),
       supabase.from("forum_topics").select("id", { count: "exact", head: true }),
@@ -203,6 +249,10 @@ export default function CommunityHub({
         .from("content_views")
         .select("id", { count: "exact", head: true }),
       supabase
+        .from("comment_reports")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "open"),
+      supabase
         .from("forum_topics")
         .select("id,title,body,status,created_at,profiles(display_name)")
         .order("created_at", { ascending: false })
@@ -212,6 +262,14 @@ export default function CommunityHub({
         .select("id,body,status,created_at,profiles(display_name)")
         .order("created_at", { ascending: false })
         .limit(12),
+      supabase
+        .from("comment_reports")
+        .select(
+          "id,reason,created_at,article_comments(id,article_slug,body,status,guest_name,profiles(display_name))"
+        )
+        .eq("status", "open")
+        .order("created_at", { ascending: false })
+        .limit(20),
     ]);
 
     setDashboardCounts({
@@ -220,6 +278,7 @@ export default function CommunityHub({
       comments: comments.count || 0,
       ratings: ratings.count || 0,
       views: views.count || 0,
+      reports: reports.count || 0,
     });
 
     setModerationItems(
@@ -240,6 +299,9 @@ export default function CommunityHub({
         )
         .slice(0, 18)
     );
+    setCommentReports(
+      (recentReports.data || []) as unknown as CommentReport[]
+    );
   }, [isModerator]);
 
   useEffect(() => {
@@ -259,7 +321,27 @@ export default function CommunityHub({
   if (!open) return null;
 
   const submitAuth = async () => {
-    if (!supabase) return;
+    if (!supabase) {
+      setMessage("Сервер сообщества ещё не подключён к этой сборке сайта.");
+      return;
+    }
+    if (
+      authMode === "signup" &&
+      !/^[\p{L}\p{N}][\p{L}\p{N} ._-]{1,31}$/u.test(displayName.trim())
+    ) {
+      setMessage(
+        "Никнейм должен содержать от 2 до 32 букв или цифр; допустимы пробел, точка, дефис и подчёркивание."
+      );
+      return;
+    }
+    if (authMode === "signup" && password !== confirmPassword) {
+      setMessage("Пароли не совпадают.");
+      return;
+    }
+    if (authMode === "signup" && !acceptedTerms) {
+      setMessage("Подтвердите согласие с правилами сообщества.");
+      return;
+    }
     setBusy(true);
     setMessage("");
 
@@ -282,6 +364,7 @@ export default function CommunityHub({
     }
 
     setPassword("");
+    setConfirmPassword("");
     setMessage(
       authMode === "signup"
         ? "Проверьте почту и подтвердите регистрацию."
@@ -343,10 +426,31 @@ export default function CommunityHub({
     await loadDashboard();
   };
 
+  const resolveReport = async (reportId: string, hideComment: boolean) => {
+    if (!supabase || !isModerator) return;
+    setBusy(true);
+    const { error } = await supabase.rpc("resolve_comment_report", {
+      p_report_id: reportId,
+      p_hide_comment: hideComment,
+    });
+    setBusy(false);
+    if (error) {
+      setMessage("Не удалось обработать жалобу.");
+      return;
+    }
+    setMessage(
+      hideComment
+        ? "Комментарий скрыт, жалоба закрыта."
+        : "Комментарий оставлен, жалоба закрыта."
+    );
+    await loadDashboard();
+  };
+
   return (
     <div className="community-overlay" role="presentation" onMouseDown={onClose}>
       <section
-        className="community-hub"
+        ref={dialogRef}
+        className={`community-hub${view === "account" ? " is-account" : ""}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="community-title"
@@ -363,7 +467,12 @@ export default function CommunityHub({
               <strong id="community-title">Говорилка «Проба Пера»</strong>
             </span>
           </div>
-          <button type="button" onClick={onClose} aria-label="Закрыть">
+          <button
+            ref={closeButtonRef}
+            type="button"
+            onClick={onClose}
+            aria-label="Закрыть"
+          >
             ×
           </button>
         </header>
@@ -394,7 +503,7 @@ export default function CommunityHub({
           )}
         </nav>
 
-        {!configured ? (
+        {view !== "account" && !configured ? (
           <div className="community-setup">
             <span aria-hidden="true">✦</span>
             <h2>Сообщество готово к подключению</h2>
@@ -405,7 +514,7 @@ export default function CommunityHub({
             </p>
             <small>До подключения формы не сохраняют персональные данные.</small>
           </div>
-        ) : loading ? (
+        ) : loading && configured ? (
           <div className="community-setup">Проверяем сессию…</div>
         ) : view === "admin" && isModerator ? (
           <div className="admin-view">
@@ -430,12 +539,60 @@ export default function CommunityHub({
                 ["Комментарии", dashboardCounts.comments],
                 ["Оценки", dashboardCounts.ratings],
                 ["Просмотры", dashboardCounts.views],
+                ["Открытые жалобы", dashboardCounts.reports],
               ].map(([label, value]) => (
                 <article key={label}>
                   <strong>{Number(value).toLocaleString("ru-RU")}</strong>
                   <span>{label}</span>
                 </article>
               ))}
+            </div>
+
+            <div className="report-queue">
+              <header>
+                <div>
+                  <span className="section-kicker">Требует решения</span>
+                  <h3>Жалобы читателей</h3>
+                </div>
+                <span>{commentReports.length}</span>
+              </header>
+              {commentReports.length ? (
+                commentReports.map((report) => (
+                  <article key={report.id}>
+                    <div>
+                      <small>
+                        {report.article_comments?.article_slug || "Публикация"} ·{" "}
+                        {formatDate(report.created_at)}
+                      </small>
+                      <strong>
+                        {report.article_comments?.profiles?.display_name ||
+                          report.article_comments?.guest_name ||
+                          "Читатель"}
+                      </strong>
+                      <p>{report.article_comments?.body}</p>
+                      <em>{report.reason}</em>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() => void resolveReport(report.id, false)}
+                      >
+                        Оставить
+                      </button>
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() => void resolveReport(report.id, true)}
+                      >
+                        Скрыть
+                      </button>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <p>Открытых жалоб нет.</p>
+              )}
             </div>
 
             <div className="moderation-list">
@@ -478,8 +635,31 @@ export default function CommunityHub({
           </div>
         ) : view === "account" ? (
           <div className="account-view">
-            {user ? (
-              <>
+            <aside className="account-story">
+              <div>
+                <span className="account-monogram" aria-hidden="true">
+                  ПП
+                </span>
+                <span className="section-kicker">Литературное сообщество</span>
+                <h2>Читайте глубже. Обсуждайте уважительно.</h2>
+                <p>
+                  Один профиль связывает ваши оценки, комментарии, форум и
+                  будущую личную библиотеку внутри «Пробы Пера».
+                </p>
+              </div>
+              <ul>
+                <li>Комментарии и рейтинги без сторонних виджетов</li>
+                <li>Обсуждения книг, статей и переводов</li>
+                <li>Спокойная редакционная модерация</li>
+              </ul>
+              <small>
+                Ваши данные не используются для рекламного профилирования.
+              </small>
+            </aside>
+
+            <div className="account-panel">
+              {user ? (
+                <>
                 <span className="section-kicker">Личный кабинет</span>
                 <h2>Здравствуйте, {readerName}</h2>
                 <p>
@@ -507,9 +687,9 @@ export default function CommunityHub({
                     Выйти
                   </button>
                 </div>
-              </>
-            ) : (
-              <>
+                </>
+              ) : (
+                <>
                 <span className="section-kicker">
                   {authMode === "signup" ? "Новый читатель" : "С возвращением"}
                 </span>
@@ -521,11 +701,14 @@ export default function CommunityHub({
 
                 {authMode === "signup" && (
                   <label>
-                    Имя в сообществе
+                    Никнейм в сообществе
                     <input
                       value={displayName}
                       onChange={(event) => setDisplayName(event.target.value)}
-                      autoComplete="name"
+                      autoComplete="nickname"
+                      minLength={2}
+                      maxLength={32}
+                      placeholder="Например, Читатель_ПП"
                     />
                   </label>
                 )}
@@ -540,20 +723,73 @@ export default function CommunityHub({
                 </label>
                 <label>
                   Пароль
-                  <input
-                    type="password"
-                    minLength={8}
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    autoComplete={
-                      authMode === "signup" ? "new-password" : "current-password"
-                    }
-                  />
+                  <span className="auth-password-field">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      minLength={10}
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                      autoComplete={
+                        authMode === "signup" ? "new-password" : "current-password"
+                      }
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((current) => !current)}
+                      aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
+                    >
+                      {showPassword ? "Скрыть" : "Показать"}
+                    </button>
+                  </span>
                 </label>
+                {authMode === "signup" && (
+                  <>
+                    <label>
+                      Повторите пароль
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        minLength={10}
+                        value={confirmPassword}
+                        onChange={(event) => setConfirmPassword(event.target.value)}
+                        autoComplete="new-password"
+                      />
+                    </label>
+                    <small className="password-hint">
+                      Не менее 10 символов. Не используйте пароль от почты или
+                      социальных сетей.
+                    </small>
+                    <label className="terms-check">
+                      <input
+                        type="checkbox"
+                        checked={acceptedTerms}
+                        onChange={(event) => setAcceptedTerms(event.target.checked)}
+                      />
+                      <span>
+                        Я принимаю правила уважительного общения и обработку
+                        данных, необходимых для работы профиля.
+                      </span>
+                    </label>
+                  </>
+                )}
+                {!configured && (
+                  <p className="auth-connection-note">
+                    Форма полностью готова. Регистрация включится после
+                    подключения серверных ключей проекта в GitHub Actions.
+                  </p>
+                )}
                 <button
                   className="community-primary"
                   type="button"
-                  disabled={busy || !email.trim() || password.length < 8}
+                  disabled={
+                    busy ||
+                    !configured ||
+                    !email.trim() ||
+                    password.length < 10 ||
+                    (authMode === "signup" &&
+                      (!displayName.trim() ||
+                        password !== confirmPassword ||
+                        !acceptedTerms))
+                  }
                   onClick={() => void submitAuth()}
                 >
                   {busy
@@ -575,8 +811,9 @@ export default function CommunityHub({
                     ? "Уже есть аккаунт — войти"
                     : "Нет аккаунта — зарегистрироваться"}
                 </button>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
         ) : (
           <div className="forum-view">
