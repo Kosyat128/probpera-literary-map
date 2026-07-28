@@ -20,6 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clone pinned public text corpus
+        run: git clone --depth 1 https://github.com/DanKertLit/dankertlit.github.io.git /tmp/dankertlit
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,6 +32,8 @@ jobs:
         run: pip install requests beautifulsoup4 python-docx
 
       - name: Build anthology
+        env:
+          DANKERTLIT_DIR: /tmp/dankertlit
         run: python tools/public_domain_anthology/build_public_domain_anthology.py
 
       - name: Upload anthology
