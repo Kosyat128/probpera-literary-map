@@ -12,6 +12,14 @@ const generatedPath = path.join(
   "generated",
   "writers.generated.json"
 );
+const metadataPath = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "countries",
+  "generated",
+  "metadata.generated.json"
+);
 const reportDirectory = path.join(projectRoot, "reports");
 const currentYear = new Date().getUTCFullYear();
 const literaryPattern =
@@ -67,6 +75,7 @@ function issuesForWriter(countryId, writer) {
 
 async function main() {
   const groups = JSON.parse(await readFile(generatedPath, "utf8"));
+  const metadata = JSON.parse(await readFile(metadataPath, "utf8"));
   const records = [];
   const duplicateCountryQids = [];
 
@@ -96,6 +105,9 @@ async function main() {
       countryGroups: Object.keys(groups).length,
       valid: records.filter((record) => record.issues.length === 0).length,
       withIssues: records.filter((record) => record.issues.length > 0).length,
+      editorialDrafts: Object.values(groups)
+        .flat()
+        .filter((writer) => writer.editorial?.status === "draft").length,
       duplicateCountryQids: duplicateCountryQids.length,
       russianFullNames: (groups.russia || []).filter(
         (writer) => writer.fullName?.split(/\s+/u).length >= 3
@@ -121,8 +133,9 @@ async function main() {
       "",
       `- Записей: ${report.summary.records}`,
       `- Стран: ${report.summary.countryGroups}`,
-      `- Без замечаний: ${report.summary.valid}`,
-      `- Требуют внимания: ${report.summary.withIssues}`,
+      `- Структурно корректных: ${report.summary.valid}`,
+      `- Со структурными замечаниями: ${report.summary.withIssues}`,
+      `- Ожидают ручной редакционной проверки: ${report.summary.editorialDrafts}`,
       `- Дубликатов QID внутри страны: ${report.summary.duplicateCountryQids}`,
       `- Российские записи с полным ФИО: ${report.summary.russianFullNames}/${report.summary.russianRecords}`,
       "",
@@ -144,10 +157,17 @@ async function main() {
   );
 
   console.log(
-    `Generated writers: ${report.summary.valid}/${report.summary.records} clean, ` +
-      `${report.summary.withIssues} require review.`
+    `Generated writers: ${report.summary.valid}/${report.summary.records} structurally valid; ` +
+      `${report.summary.editorialDrafts} held in the editorial queue.`
   );
   if (report.summary.records !== 2356) process.exitCode = 2;
+  if (
+    metadata.records !== report.summary.records ||
+    metadata.draftCount !== report.summary.editorialDrafts
+  ) {
+    console.error("Generated writer metadata is out of sync with the draft archive.");
+    process.exitCode = 1;
+  }
   if (report.summary.withIssues > 0 || duplicateCountryQids.length > 0) {
     process.exitCode = 1;
   }

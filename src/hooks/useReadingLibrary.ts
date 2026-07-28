@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 export type SavedReading = {
   id: string;
   title: string;
+  sectionId?: string;
   sectionLabel: string;
   addedAt: string;
 };

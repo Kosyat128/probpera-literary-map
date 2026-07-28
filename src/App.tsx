@@ -50,7 +50,11 @@ const editorialFeatures = [
       "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
     image:
       "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
-    articleUrl: articlePath("page--article--page--books--22"),
+    articleUrl: articlePath(
+      "page--article--page--books--22",
+      "Мнение о книге Хантера Томпсона «Ангелы ада»",
+      "book-opinions"
+    ),
     sectionUrl: journalPath("book-opinions"),
     readTime: "12 минут",
   },
@@ -61,13 +65,17 @@ const editorialFeatures = [
       "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.",
     image:
       "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
-    articleUrl: articlePath("page--article--page--writers--world--4"),
+    articleUrl: articlePath(
+      "page--article--page--writers--world--4",
+      "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Япония",
+      "writers-world"
+    ),
     sectionUrl: journalPath("writers-world"),
     readTime: "15 минут",
   },
   {
     tag: "Пополняем словарный запас",
-    title: "Редкие слова, которыми хочется пользоваться",
+    title: "Редкие слова, которые помогут вам расширить словарный запас",
     description:
       "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.",
     image:
@@ -83,7 +91,11 @@ const editorialFeatures = [
       "Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.",
     image:
       "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
-    articleUrl: articlePath("page--article--first--profession--writers--2"),
+    articleUrl: articlePath(
+      "page--article--first--profession--writers--2",
+      "Зарубежные классики литературы и их профессии",
+      "author-stories"
+    ),
     sectionUrl: journalPath("author-stories"),
     readTime: "11 минут",
   },
@@ -91,7 +103,6 @@ const editorialFeatures = [
 
 const sectionLinks = [
   {
-    number: "01",
     title: "Мнение о книге",
     copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
     href: journalPath("book-opinions"),
@@ -99,7 +110,6 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
   },
   {
-    number: "02",
     title: "Книга и экранизация",
     copy: "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.",
     href: journalPath("screen-adaptations"),
@@ -107,7 +117,13 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
   },
   {
-    number: "03",
+    title: "Книжный гид и подборки",
+    copy: "Тематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться.",
+    href: journalPath("book-guides"),
+    image:
+      "https://static.tildacdn.com/tild3037-3130-4065-b839-653563653430/c471b0ab-eb22-48d7-8.png",
+  },
+  {
     title: "Литературные премии",
     copy: "История крупнейших наград, лауреаты, произведения и культурный контекст.",
     href: journalPath("awards"),
@@ -115,7 +131,6 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6634-3234-4332-b438-663736316139/anastacia-dvi-HRPaX-.jpg",
   },
   {
-    number: "04",
     title: "Биографии и судьбы писателей",
     copy: "Тщательные человеческие биографии: судьба, время, характер и главные тексты автора.",
     href: journalPath("writers-world"),
@@ -123,23 +138,20 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
   },
   {
-    number: "05",
-    title: "Литература народов мира",
-    copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
-    href: journalPath("writers-world"),
+    title: "О литературе и культуре",
+    copy: "Большие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги.",
+    href: journalPath("literary-essays"),
     image:
-      "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
+      "https://static.tildacdn.com/tild3162-6534-4936-b966-633930633738/photo.jpg",
   },
   {
-    number: "06",
     title: "Фольклор и мифология",
     copy: "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.",
     href: journalPath("folklore"),
     image:
-      "https://static.tildacdn.com/tild3635-3764-4636-a639-396366626632/___1.jpg",
+      "https://static.tildacdn.com/tild6262-3936-4061-b465-623133623265/image.png",
   },
   {
-    number: "07",
     title: "Язык и редкие слова",
     copy: "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.",
     href: journalPath("language"),
@@ -147,12 +159,31 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
   },
   {
-    number: "08",
     title: "Литературные истории",
     copy: "Необычные судьбы произведений, авторские замыслы, профессии писателей и культурные открытия.",
     href: journalPath("author-stories"),
     image:
       "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
+  },
+  {
+    title: "Литературная карта мира",
+    copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
+    href: "#atlas",
+    image:
+      "https://static.tildacdn.com/tild6138-3239-4335-b166-643935623330/123231.png",
+  },
+  {
+    title: "Книжный архив",
+    copy: "Книги связаны с авторами, странами, эпохами и статьями журнала — с фильтрами и редакционной проверкой обложек.",
+    href: "#books",
+    image:
+      "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
+  },
+  {
+    title: "Литературный календарь",
+    copy: "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.",
+    href: "#calendar",
+    image: "brand/section-prizes.webp",
   },
 ];
 
@@ -238,6 +269,7 @@ export default function App() {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
+  const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>("all");
@@ -251,7 +283,10 @@ export default function App() {
     let active = true;
     const timer = window.setTimeout(() => {
       import("./data/countries").then((module) => {
-        if (active) setCountryArchive(module.countries);
+        if (active) {
+          setCountryArchive(module.countries);
+          setGeneratedEditorialQueue(module.generatedWriterDraftCount);
+        }
       });
     }, 240);
     return () => {
@@ -835,8 +870,9 @@ export default function App() {
                 без генерации лиц
               </li>
               <li>
-                Остальные {editorialAudit.recordsNeedingReview.toLocaleString("ru-RU")} записей
-                честно остаются в редакционной очереди
+                Ещё {(editorialAudit.recordsNeedingReview + generatedEditorialQueue).toLocaleString("ru-RU")} записей
+                остаются в редакционной очереди; автоматически собранные черновики
+                не публикуются до ручной проверки
               </li>
             </ul>
           </article>
@@ -1029,7 +1065,7 @@ export default function App() {
                 style={{ "--section-art": `url(${mediaUrl(section.image)})` } as React.CSSProperties}
               >
                 <div>
-                  <span>{section.number}</span>
+                  <span>Раздел журнала</span>
                   <h3>{section.title}</h3>
                   <p>{section.copy}</p>
                   <i>→</i>
@@ -1056,7 +1092,6 @@ export default function App() {
           <div>
             <details open>
               <summary>
-                <span>01</span>
                 Редакционная политика
               </summary>
               <p>
@@ -1067,7 +1102,6 @@ export default function App() {
             </details>
             <details>
               <summary>
-                <span>02</span>
                 Источники и фактчекинг
               </summary>
               <p>
@@ -1078,7 +1112,6 @@ export default function App() {
             </details>
             <details>
               <summary>
-                <span>03</span>
                 Иллюстрации и права
               </summary>
               <p>
@@ -1089,7 +1122,6 @@ export default function App() {
             </details>
             <details>
               <summary>
-                <span>04</span>
                 Исправления и обновления
               </summary>
               <p>
@@ -1171,7 +1203,7 @@ export default function App() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 «Проба Пера». Авторские публикации защищены законом.</p>
+          <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>
           <span>Независимый литературный журнал</span>
         </div>

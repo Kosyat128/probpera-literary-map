@@ -12,7 +12,7 @@ const socialLinks: SocialLink[] = [
   {
     id: "boosty",
     label: "Boosty",
-    url: import.meta.env.VITE_BOOSTY_URL || undefined,
+    url: import.meta.env.VITE_BOOSTY_URL || "https://boosty.to/probpera",
   },
 ];
 

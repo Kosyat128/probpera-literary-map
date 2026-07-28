@@ -1,5 +1,5 @@
 import type { Country } from "./types";
-import { mergeGeneratedWriters } from "./generated";
+import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
 
 import { afghanistan } from "./afghanistan";
 import { albania } from "./albania";
@@ -443,3 +443,4 @@ const curatedCountries: Country[] = [
 ];
 
 export const countries: Country[] = mergeGeneratedWriters(curatedCountries);
+export { generatedWriterDraftCount };

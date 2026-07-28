@@ -315,7 +315,7 @@ export default function WriterPanel({
             <div className="writer-articles">
               <span>Материалы журнала</span>
               {relatedArticles.map((article) => (
-                <a key={article.id} href={articlePath(article.id)}>
+                <a key={article.id} href={articlePath(article.id, article.title, article.sectionId)}>
                   <strong>{article.title}</strong>
                   <small>{article.sectionLabel} · {article.readingMinutes} мин.</small>
                 </a>

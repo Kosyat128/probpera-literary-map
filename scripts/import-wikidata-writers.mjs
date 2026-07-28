@@ -8,6 +8,7 @@ const countriesDirectory = path.join(projectRoot, "src", "data", "countries");
 const generatedDirectory = path.join(countriesDirectory, "generated");
 const cacheDirectory = path.join(scriptDirectory, ".cache", "wikidata-writers");
 const outputPath = path.join(generatedDirectory, "writers.generated.json");
+const metadataPath = path.join(generatedDirectory, "metadata.generated.json");
 const targetArgument = process.argv.find((argument) => argument.startsWith("--target="));
 const maxCountriesArgument = process.argv.find((argument) =>
   argument.startsWith("--max-countries=")
@@ -428,6 +429,11 @@ async function main() {
 
   if (needed === 0) {
     await writeFile(outputPath, "{}\n", "utf8");
+    await writeFile(
+      metadataPath,
+      `${JSON.stringify({ records: 0, draftCount: 0 }, null, 2)}\n`,
+      "utf8"
+    );
     return;
   }
 
@@ -499,6 +505,11 @@ async function main() {
   }
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+  await writeFile(
+    metadataPath,
+    `${JSON.stringify({ records: selectedCount, draftCount: selectedCount }, null, 2)}\n`,
+    "utf8"
+  );
   console.log(`Generated ${selectedCount} country-linked writer records.`);
   console.log(`Final archive size: ${curatedCount + selectedCount}.`);
   console.log(`Saved to ${outputPath}.`);
