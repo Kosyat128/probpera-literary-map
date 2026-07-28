@@ -52,7 +52,9 @@ export default function ArticleReader({
   const { mode } = useDisplayMode();
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
-  const isSaved = savedReadings.some((item) => item.id === article.id);
+  const isSaved = savedReadings.some(
+    (item) => item.kind === "article" && item.id === article.id
+  );
 
   useEffect(() => {
     let active = true;
@@ -193,9 +195,15 @@ export default function ArticleReader({
             onClick={() =>
               toggleSavedReading({
                 id: article.id,
+                kind: "article",
                 title: article.title,
                 sectionId: article.sectionId,
                 sectionLabel: article.sectionLabel,
+                href: articlePath(
+                  article.id,
+                  article.title,
+                  article.sectionId
+                ),
               })
             }
           >

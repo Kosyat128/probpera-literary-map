@@ -68,6 +68,19 @@ create table public.content_views (
   created_at timestamptz not null default now()
 );
 
+create table public.reader_favorites (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  item_type text not null check (item_type in ('article', 'book')),
+  item_id text not null check (char_length(item_id) between 1 and 240),
+  title text not null check (char_length(title) between 1 and 300),
+  section_id text check (char_length(section_id) <= 120),
+  section_label text not null check (char_length(section_label) between 1 and 240),
+  href text check (char_length(href) <= 500),
+  added_at timestamptz not null default now(),
+  unique (user_id, item_type, item_id)
+);
+
 create table public.comment_reports (
   id uuid primary key default gen_random_uuid(),
   comment_id uuid not null references public.article_comments(id) on delete cascade,
@@ -92,6 +105,8 @@ create unique index ratings_guest_unique_idx
   where user_id is null;
 create index content_views_created_idx on public.content_views(created_at desc);
 create index content_views_path_idx on public.content_views(path, created_at desc);
+create index reader_favorites_user_idx
+  on public.reader_favorites(user_id, added_at desc);
 create index comment_reports_created_idx on public.comment_reports(created_at desc);
 create unique index comment_reports_session_unique_idx
   on public.comment_reports(comment_id, session_id);
@@ -362,6 +377,9 @@ grant execute on function public.report_article_comment(uuid, uuid, text)
   to anon, authenticated;
 grant execute on function public.resolve_comment_report(uuid, boolean)
   to authenticated;
+grant select, insert, update, delete
+  on public.reader_favorites
+  to authenticated;
 
 alter table public.profiles enable row level security;
 alter table public.forum_topics enable row level security;
@@ -369,6 +387,7 @@ alter table public.forum_replies enable row level security;
 alter table public.article_comments enable row level security;
 alter table public.ratings enable row level security;
 alter table public.content_views enable row level security;
+alter table public.reader_favorites enable row level security;
 alter table public.comment_reports enable row level security;
 
 create policy "Public profiles are readable"
@@ -454,6 +473,27 @@ create policy "Editors read page views"
 on public.content_views for select
 to authenticated
 using (public.is_community_moderator());
+
+create policy "Readers view their own favorites"
+on public.reader_favorites for select
+to authenticated
+using (user_id = (select auth.uid()));
+
+create policy "Readers create their own favorites"
+on public.reader_favorites for insert
+to authenticated
+with check (user_id = (select auth.uid()));
+
+create policy "Readers update their own favorites"
+on public.reader_favorites for update
+to authenticated
+using (user_id = (select auth.uid()))
+with check (user_id = (select auth.uid()));
+
+create policy "Readers delete their own favorites"
+on public.reader_favorites for delete
+to authenticated
+using (user_id = (select auth.uid()));
 
 create policy "Editors read comment reports"
 on public.comment_reports for select

@@ -101,6 +101,27 @@ const rules = [
     suggestion: "Вводное сочетание следует обособить: «Книга, конечно же, …».",
   },
   {
+    id: "literary-adjective-typo",
+    category: "Орфография",
+    severity: "high",
+    pattern: /(?<!\p{L})литературныя(?!\p{L})/giu,
+    suggestion: "Исправить окончание прилагательного: «литературная».",
+  },
+  {
+    id: "geneva-case",
+    category: "Согласование",
+    severity: "high",
+    pattern: /(?<!\p{L})в\s+Женева(?!\p{L})/gu,
+    suggestion: "После предлога требуется форма «в Женеве».",
+  },
+  {
+    id: "truth-spelling",
+    category: "Орфография",
+    severity: "medium",
+    pattern: /(?<!\p{L})по\s+истине(?!\p{L})/giu,
+    suggestion: "Наречие пишется слитно: «поистине».",
+  },
+  {
     id: "space-before-punctuation",
     category: "Типографика",
     severity: "medium",
