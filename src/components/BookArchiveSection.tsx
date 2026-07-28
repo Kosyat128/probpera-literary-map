@@ -5,6 +5,7 @@ import {
   isCoverDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
+import { useReadingLibrary } from "../hooks/useReadingLibrary";
 
 type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
 
@@ -48,6 +49,8 @@ export default function BookArchiveSection({
   const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(
     null
   );
+  const { items: savedReadings, toggle: toggleSavedReading } =
+    useReadingLibrary();
   const deferredQuery = useDeferredValue(query);
 
   const counts = useMemo(
@@ -125,6 +128,19 @@ export default function BookArchiveSection({
   }, [deferredQuery, filter]);
 
   const visibleBooks = filteredBooks.slice(0, visibleCount);
+  const isBookSaved = (book: BookArchiveEntry) =>
+    savedReadings.some(
+      (item) => item.kind === "book" && item.id === bookKey(book)
+    );
+  const toggleBook = (book: BookArchiveEntry) =>
+    toggleSavedReading({
+      id: bookKey(book),
+      kind: "book",
+      title: book.title,
+      sectionId: book.countryId,
+      sectionLabel: `${book.writerName} · ${book.countryName}`,
+      href: "#books",
+    });
 
   return (
     <section className="book-archive-section" id="books">
@@ -245,6 +261,16 @@ export default function BookArchiveSection({
             <div className="book-detail-actions">
               <button
                 type="button"
+                className={isBookSaved(selectedBook) ? "is-saved" : ""}
+                aria-pressed={isBookSaved(selectedBook)}
+                onClick={() => toggleBook(selectedBook)}
+              >
+                {isBookSaved(selectedBook)
+                  ? "Сохранено в библиотеке"
+                  : "Добавить в мою библиотеку"}
+              </button>
+              <button
+                type="button"
                 onClick={() => onBookSelect(selectedBook)}
               >
                 Открыть автора и страну <span>→</span>
@@ -322,6 +348,28 @@ export default function BookArchiveSection({
                       ? "редакционная карточка"
                       : "в очереди"}
                 </span>
+                <button
+                  className={
+                    isBookSaved(book)
+                      ? "archive-book-save is-saved"
+                      : "archive-book-save"
+                  }
+                  type="button"
+                  aria-pressed={isBookSaved(book)}
+                  aria-label={
+                    isBookSaved(book)
+                      ? `Удалить «${book.title}» из библиотеки`
+                      : `Добавить «${book.title}» в библиотеку`
+                  }
+                  title={
+                    isBookSaved(book)
+                      ? "Сохранено в библиотеке"
+                      : "Сохранить книгу"
+                  }
+                  onClick={() => toggleBook(book)}
+                >
+                  {isBookSaved(book) ? "◆" : "◇"}
+                </button>
                 <button type="button" onClick={() => setSelectedBook(book)}>
                   О книге
                 </button>

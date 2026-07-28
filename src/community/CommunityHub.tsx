@@ -451,6 +451,50 @@ export default function CommunityHub({
     await loadDashboard();
   };
 
+  const readingLibrary = (
+    <section className="account-library">
+      <header>
+        <div>
+          <span className="section-kicker">Моя библиотека</span>
+          <h3>Сохранённые материалы</h3>
+        </div>
+        <strong>{savedReadings.length}</strong>
+      </header>
+      {savedReadings.length ? (
+        <div>
+          {savedReadings.map((item) => (
+            <article key={`${item.kind}:${item.id}`}>
+              <a
+                href={
+                  item.href ||
+                  articlePath(item.id, item.title, item.sectionId)
+                }
+                onClick={item.kind === "book" ? onClose : undefined}
+              >
+                <small>
+                  {item.kind === "book" ? "Книга · " : ""}
+                  {item.sectionLabel}
+                </small>
+                <strong>{item.title}</strong>
+              </a>
+              <button
+                type="button"
+                onClick={() => removeSavedReading(item.id, item.kind)}
+                aria-label={`Удалить «${item.title}» из библиотеки`}
+              >
+                ×
+              </button>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p>
+          Нажмите значок закладки у статьи или книги — материал появится здесь.
+        </p>
+      )}
+    </section>
+  );
+
   return (
     <div className="community-overlay" role="presentation" onMouseDown={onClose}>
       <section
@@ -469,7 +513,13 @@ export default function CommunityHub({
             />
             <span>
               <small>Клуб читателей</small>
-              <strong id="community-title">Говорилка «Проба Пера»</strong>
+              <strong id="community-title">
+                {view === "forum"
+                  ? "Говорилка — форум «Проба Пера»"
+                  : view === "admin"
+                    ? "Редакция «Пробы Пера»"
+                    : "Личный кабинет «Пробы Пера»"}
+              </strong>
             </span>
           </div>
           <button
@@ -644,13 +694,16 @@ export default function CommunityHub({
             <aside className="account-story">
               <div>
                 <span className="account-monogram" aria-hidden="true">
-                  ПП
+                  <img
+                    src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
+                    alt=""
+                  />
                 </span>
                 <span className="section-kicker">Литературное сообщество</span>
                 <h2>Читайте глубже. Обсуждайте уважительно.</h2>
                 <p>
                   Один профиль связывает ваши оценки, комментарии, форум и
-                  будущую личную библиотеку внутри «Пробы Пера».
+                  личную библиотеку внутри «Пробы Пера».
                 </p>
               </div>
               <ul>
@@ -682,39 +735,7 @@ export default function CommunityHub({
                     <dd>Участник клуба читателей</dd>
                   </div>
                 </dl>
-                <section className="account-library">
-                  <header>
-                    <div>
-                      <span className="section-kicker">Моя библиотека</span>
-                      <h3>Сохранённые материалы</h3>
-                    </div>
-                    <strong>{savedReadings.length}</strong>
-                  </header>
-                  {savedReadings.length ? (
-                    <div>
-                      {savedReadings.slice(0, 6).map((item) => (
-                        <article key={item.id}>
-                          <a href={articlePath(item.id, item.title, item.sectionId)}>
-                            <small>{item.sectionLabel}</small>
-                            <strong>{item.title}</strong>
-                          </a>
-                          <button
-                            type="button"
-                            onClick={() => removeSavedReading(item.id)}
-                            aria-label={`Удалить «${item.title}» из библиотеки`}
-                          >
-                            ×
-                          </button>
-                        </article>
-                      ))}
-                    </div>
-                  ) : (
-                    <p>
-                      Нажмите значок закладки в режиме чтения — статья появится
-                      здесь.
-                    </p>
-                  )}
-                </section>
+                {readingLibrary}
                 <div className="account-actions">
                   <button type="button" onClick={() => setView("forum")}>
                     Перейти в форум
@@ -737,6 +758,7 @@ export default function CommunityHub({
                     ? "Вступить в литературный клуб"
                     : "Войти в «Пробу Пера»"}
                 </h2>
+                {savedReadings.length > 0 && readingLibrary}
 
                 {authMode === "signup" && (
                   <label>

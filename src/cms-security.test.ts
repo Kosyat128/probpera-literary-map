@@ -5,6 +5,13 @@ const migration = readFileSync(
   new URL("../supabase/migrations/20260728_cms_foundation.sql", import.meta.url),
   "utf8"
 );
+const favoritesMigration = readFileSync(
+  new URL(
+    "../supabase/migrations/20260728_reader_favorites.sql",
+    import.meta.url
+  ),
+  "utf8"
+);
 
 describe("защита редакционной системы", () => {
   it("не позволяет читателю повысить себе роль", () => {
@@ -25,5 +32,15 @@ describe("защита редакционной системы", () => {
   it("не разрешает анонимное изменение CMS", () => {
     expect(migration).toContain("create policy \"Staff create articles\"");
     expect(migration).toContain("create policy \"Staff update articles\"");
+  });
+
+  it("хранит личную библиотеку отдельно для каждого читателя", () => {
+    expect(favoritesMigration).toContain(
+      "alter table public.reader_favorites enable row level security"
+    );
+    expect(favoritesMigration).toContain(
+      "user_id = (select auth.uid())"
+    );
+    expect(favoritesMigration).not.toContain("to anon");
   });
 });
