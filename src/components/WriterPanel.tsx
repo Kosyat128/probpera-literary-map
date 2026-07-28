@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { articleCatalog } from "../data/articles/catalog.generated";
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
+import { countryFlag } from "../utils/countryFlag";
 
 type WriterPanelProps = {
   country: Country;
@@ -13,7 +14,7 @@ type WriterPanelProps = {
 };
 
 function getWriterName(writer: Writer) {
-  return writer.fullName || writer.name || "Неизвестный автор";
+  return writer.name || writer.fullName || "Неизвестный автор";
 }
 
 function getInitials(writer: Writer) {
@@ -29,16 +30,6 @@ function resolvePortrait(source?: string) {
   if (!source) return "";
   if (/^(https?:|data:)/.test(source)) return source;
   return `${import.meta.env.BASE_URL}${source.replace(/^\/+/, "")}`;
-}
-
-function flagFromCode(code?: string) {
-  if (!code || code.length !== 2) return "◈";
-  return String.fromCodePoint(
-    ...code
-      .toUpperCase()
-      .split("")
-      .map((character) => character.charCodeAt(0) + 127397)
-  );
 }
 
 function getWriterYear(writer: Writer) {
@@ -59,6 +50,15 @@ function isNobelWriter(writer: Writer) {
 
 function uniqueValues(values: Array<string | undefined>) {
   return [...new Set(values.filter((value): value is string => Boolean(value?.trim())))];
+}
+
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
 }
 
 function relatedArticlesFor(writer: Writer) {
@@ -183,7 +183,7 @@ export default function WriterPanel({
 
       <header className="country-heading">
         <span className="country-flag" aria-hidden="true">
-          {flagFromCode(country.code)}
+          {country.flag || countryFlag(country.code)}
         </span>
         <div>
           <h2>{country.name}</h2>
@@ -196,22 +196,42 @@ export default function WriterPanel({
       <div className="country-metrics">
         <div>
           <strong>{writers.length}</strong>
-          <span>авторов</span>
+          <span>{pluralRu(writers.length, ["автор", "автора", "авторов"])}</span>
         </div>
         <div>
           <strong>{nobelCount}</strong>
-          <span>Нобелевских лауреатов</span>
+          <span>
+            {pluralRu(nobelCount, [
+              "Нобелевский лауреат",
+              "Нобелевских лауреата",
+              "Нобелевских лауреатов",
+            ])}
+          </span>
         </div>
         <div>
-          <strong>{uniqueValues(writers.flatMap((writer) => writer.works || [])).length}</strong>
-          <span>произведений</span>
+          {(() => {
+            const worksCount = uniqueValues(
+              writers.flatMap((writer) => writer.works || [])
+            ).length;
+            return (
+              <>
+                <strong>{worksCount}</strong>
+                <span>
+                  {pluralRu(worksCount, [
+                    "произведение",
+                    "произведения",
+                    "произведений",
+                  ])}
+                </span>
+              </>
+            );
+          })()}
         </div>
       </div>
 
       {periods.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <span>01</span>
             <h3>Эпохи и направления</h3>
           </div>
           <div className="tag-list">
@@ -227,7 +247,6 @@ export default function WriterPanel({
 
       <section className="archive-section">
         <div className="section-title">
-          <span>02</span>
           <h3>Писатели</h3>
         </div>
 
@@ -270,7 +289,6 @@ export default function WriterPanel({
       {activeWriter && (
         <section ref={detailRef} className="archive-section writer-detail">
           <div className="section-title">
-            <span>03</span>
             <h3>Карточка автора</h3>
           </div>
 
@@ -339,7 +357,6 @@ export default function WriterPanel({
       {timeline.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <span>04</span>
             <h3>Литературная хронология</h3>
           </div>
           <div className="country-timeline">
@@ -356,7 +373,6 @@ export default function WriterPanel({
       {country.facts && country.facts.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <span>05</span>
             <h3>Интересные факты</h3>
           </div>
           <ul className="fact-list">

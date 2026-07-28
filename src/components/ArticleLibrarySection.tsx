@@ -214,7 +214,13 @@ export default function ArticleLibrarySection() {
                     {article.imageUrl ? (
                       <img src={article.imageUrl} alt="" loading="lazy" />
                     ) : (
-                      <span aria-hidden="true">ПП</span>
+                      <span aria-hidden="true">
+                        <img
+                          className="brand-fallback-logo"
+                          src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
+                          alt=""
+                        />
+                      </span>
                     )}
                     <small>{article.sectionLabel}</small>
                   </div>

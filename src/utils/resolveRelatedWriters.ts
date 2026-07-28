@@ -6,5 +6,5 @@ export function resolveRelatedWriters(ids: string[] = []) {
   return ids
     .map((id) => writers.find((writer) => writer.id === id))
     .filter(Boolean)
-    .map((writer) => writer?.fullName || writer?.name || "");
+    .map((writer) => writer?.name || writer?.fullName || "");
 }

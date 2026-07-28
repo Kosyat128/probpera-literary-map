@@ -1,4 +1,8 @@
 {
   "records": 2356,
-  "draftCount": 2356
+  "draftCount": 2356,
+  "curatedCount": 1652,
+  "targetCount": 4000,
+  "finalCount": 4008,
+  "generatedAt": "2026-07-28T20:49:24.777Z"
 }

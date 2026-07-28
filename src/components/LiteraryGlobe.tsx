@@ -14,6 +14,15 @@ interface Props {
   onCountrySelect?: (country: Country) => void;
 }
 
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
+}
+
 type PointerOrigin = {
   x: number;
   y: number;
@@ -269,8 +278,8 @@ function GlobeSurface({
       >
         <meshPhysicalMaterial
           map={atlas.mapTexture}
-          bumpMap={atlas.mapTexture}
-          bumpScale={0.018}
+          bumpMap={atlas.reliefTexture}
+          bumpScale={0.042}
           roughness={0.72}
           metalness={0.04}
           clearcoat={0.2}
@@ -547,7 +556,10 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
       {hoveredCountry && (
         <div className="globe-country-label" role="status">
           <span>{hoveredCountry.name}</span>
-          <small>{hoveredCountry.writers.length} авторов в архиве</small>
+          <small>
+            {hoveredCountry.writers.length}{" "}
+            {pluralRu(hoveredCountry.writers.length, ["автор", "автора", "авторов"])} в архиве
+          </small>
         </div>
       )}
 

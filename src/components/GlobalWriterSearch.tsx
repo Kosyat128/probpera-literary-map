@@ -56,7 +56,7 @@ export default function GlobalWriterSearch({ onWriterSelect }: GlobalWriterSearc
       {hasFilters && <div>Найдено авторов: {results.length}</div>}
       {hasFilters && results.slice(0, 20).map((writer) => (
         <button key={writer.id} onClick={() => onWriterSelect?.(writer)}>
-          ✒️ {writer.fullName || writer.name} <br /> {getFlag(writer.country)} {writer.country || ""} <br /> 📅 {writer.years || ""}
+          ✒️ {writer.name || writer.fullName} <br /> {getFlag(writer.country)} {writer.country || ""} <br /> 📅 {writer.years || ""}
         </button>
       ))}
     </div>

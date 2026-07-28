@@ -10,6 +10,7 @@ import type { BookArchiveEntry } from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
 import { articlePath } from "../utils/articleRoutes";
+import { countryFlag } from "../utils/countryFlag";
 
 type Props = {
   open: boolean;
@@ -26,20 +27,48 @@ type WriterMatch = {
 };
 
 function writerName(writer: Writer) {
-  return writer.fullName || writer.name || "Автор";
+  return writer.name || writer.fullName || "Автор";
 }
 
 function normalize(value: string) {
   return value
     .toLocaleLowerCase("ru")
     .replace(/ё/g, "е")
-    .replace(/[«»"'.,:;!?()[\]{}]/g, " ")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
+function stem(token: string) {
+  if (token.length < 5) return token;
+  return token.replace(
+    /(иями|ями|ами|его|ого|ему|ому|иях|ах|ях|ию|ью|ия|ья|ие|ье|ий|ый|ой|ая|яя|ое|ее|ов|ев|ам|ям|ом|ем|у|ю|а|я|ы|и|е|о)$/u,
+    ""
+  );
+}
+
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
+}
+
 function matches(query: string, values: Array<string | undefined>) {
-  return values.some((value) => normalize(value || "").includes(query));
+  const queryTokens = normalize(query).split(" ").filter(Boolean).map(stem);
+  const valueTokens = normalize(values.filter(Boolean).join(" "))
+    .split(" ")
+    .filter(Boolean)
+    .map(stem);
+
+  return queryTokens.every((queryToken) =>
+    valueTokens.some(
+      (valueToken) =>
+        valueToken.includes(queryToken) || queryToken.includes(valueToken)
+    )
+  );
 }
 
 export default function GlobalSearch({
@@ -131,6 +160,14 @@ export default function GlobalSearch({
           country.capital,
           country.region,
           country.continent,
+          country.officialLanguage,
+          country.description,
+          country.history,
+          country.historicalNote,
+          ...(country.facts || []),
+          ...(country.literaryPlaces || []),
+          ...(country.literaryPeriods || []),
+          ...(country.periods || []),
           ...(country.literaryMovements || []),
         ])
       )
@@ -143,12 +180,20 @@ export default function GlobalSearch({
       .filter(({ writer }) =>
         matches(normalizedQuery, [
           writerName(writer),
+          writer.name,
+          writer.fullName,
           writer.years,
           writer.literaryEra,
           writer.movement,
+          writer.biography,
+          writer.bio,
+          writer.description,
           ...(writer.genres || []),
           ...(writer.tags || []),
           ...(writer.works || []),
+          ...(writer.awards || []),
+          ...(writer.languages || []),
+          ...(writer.places || []),
         ])
       )
       .slice(0, 7);
@@ -160,6 +205,8 @@ export default function GlobalSearch({
           book.originalTitle,
           book.writerName,
           book.countryName,
+          book.description,
+          book.originalLanguage,
           ...(book.genres || []),
           ...(book.tags || []),
         ])
@@ -265,9 +312,12 @@ export default function GlobalSearch({
                       onClose();
                     }}
                   >
-                    <span>{country.flag || country.code?.toUpperCase() || "◈"}</span>
+                    <span>{country.flag || countryFlag(country.code)}</span>
                     <strong>{country.name}</strong>
-                    <small>{country.writers.length} авторов</small>
+                    <small>
+                      {country.writers.length}{" "}
+                      {pluralRu(country.writers.length, ["автор", "автора", "авторов"])}
+                    </small>
                   </button>
                 ))}
               </section>
@@ -338,7 +388,7 @@ export default function GlobalSearch({
           <span>
             {articlesLoading
               ? "Подключаем редакционный архив…"
-              : `${countries.length} стран · ${books.length.toLocaleString("ru-RU")} произведений · ${articles.length || 157} статей`}
+              : `${countries.length} стран · ${books.length.toLocaleString("ru-RU")} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${articles.length || 157} ${pluralRu(articles.length || 157, ["статья", "статьи", "статей"])}`}
           </span>
           <small>Поиск выполняется внутри сайта</small>
         </footer>

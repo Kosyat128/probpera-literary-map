@@ -65,7 +65,7 @@ export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
         countryId: country.id,
         countryName: country.name,
         writerId: writer.id,
-        writerName: writer.fullName || writer.name || "Автор",
+        writerName: writer.name || writer.fullName || "Автор",
         writer,
         country,
       }));

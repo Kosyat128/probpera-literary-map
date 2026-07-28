@@ -160,10 +160,11 @@ async function main() {
     `Generated writers: ${report.summary.valid}/${report.summary.records} structurally valid; ` +
       `${report.summary.editorialDrafts} held in the editorial queue.`
   );
-  if (report.summary.records !== 2356) process.exitCode = 2;
   if (
     metadata.records !== report.summary.records ||
-    metadata.draftCount !== report.summary.editorialDrafts
+    metadata.draftCount !== report.summary.editorialDrafts ||
+    (metadata.targetCount &&
+      metadata.curatedCount + metadata.records < metadata.targetCount)
   ) {
     console.error("Generated writer metadata is out of sync with the draft archive.");
     process.exitCode = 1;
