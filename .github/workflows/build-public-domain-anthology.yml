@@ -1,0 +1,40 @@
+name: Build public-domain story anthology
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'tools/public_domain_anthology/**'
+      - '.github/workflows/build-public-domain-anthology.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 python-docx
+
+      - name: Build anthology
+        run: python tools/public_domain_anthology/build_public_domain_anthology.py
+
+      - name: Upload anthology
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-domain-story-anthology
+          path: output/
+          if-no-files-found: error
+          retention-days: 7
