@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
-import { articleCatalog } from "../data/articles/catalog.generated";
+import { articleCatalog } from "../data/articles/catalog";
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import { countryFlag } from "../utils/countryFlag";
@@ -333,7 +333,15 @@ export default function WriterPanel({
             <div className="writer-articles">
               <span>Материалы журнала</span>
               {relatedArticles.map((article) => (
-                <a key={article.id} href={articlePath(article.id, article.title, article.sectionId)}>
+                <a
+                  key={article.id}
+                  href={articlePath(
+                    article.id,
+                    article.title,
+                    article.sectionId,
+                    article.slug
+                  )}
+                >
                   <strong>{article.title}</strong>
                   <small>{article.sectionLabel} · {article.readingMinutes} мин.</small>
                 </a>

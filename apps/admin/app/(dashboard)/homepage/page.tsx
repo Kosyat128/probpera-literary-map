@@ -1,5 +1,11 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { createHomepageBlockAction, toggleHomepageBlockAction } from "./actions";
+import {
+  createHomepageBlockAction,
+  deleteHomepageBlockAction,
+  moveHomepageBlockAction,
+  toggleHomepageBlockAction,
+  updateHomepageBlockAction,
+} from "./actions";
 
 export const metadata = { title: "Главная страница" };
 
@@ -18,49 +24,260 @@ const blockLabels: Record<string, string> = {
   text: "Текстовый блок",
 };
 
+const backgroundLabels: Record<string, string> = {
+  violet: "Фиолетовый",
+  orange: "Оранжевый",
+  paper: "Бумага с мазками",
+  light: "Светлый",
+  transparent: "Прозрачный",
+};
+
+function settingsObject(value: unknown) {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function settingText(settings: Record<string, unknown>, key: string) {
+  const value = settings[key];
+  return typeof value === "string" ? value : "";
+}
+
+function articleIds(settings: Record<string, unknown>) {
+  const value = settings.articleIds;
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string").join("\n")
+    : "";
+}
+
+function BackgroundSelect({ value }: { value: string }) {
+  return (
+    <select name="background_style" defaultValue={value}>
+      {Object.entries(backgroundLabels).map(([optionValue, label]) => (
+        <option key={optionValue} value={optionValue}>
+          {label}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 export default async function HomepagePage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   const { data: blocksResult } =
-    (await supabase.from("homepage_blocks").select("*").order("display_order")) || {};
+    (await supabase
+      .from("homepage_blocks")
+      .select("*")
+      .order("display_order")) || {};
   const blocks = blocksResult || [];
+
   return (
     <>
       <header className="page-heading">
-        <div><span className="eyebrow">Витрина журнала</span><h1>Главная страница</h1>
-          <p>Блоки идут сверху вниз. Глобус остаётся центральным объектом, а статьи, календарь и книжные находки создают вокруг него редакционный ритм.</p>
+        <div>
+          <span className="eyebrow">Витрина журнала</span>
+          <h1>Главная страница</h1>
+          <p>
+            Здесь настраиваются опубликованные редакционные блоки. После
+            сохранения панель запускает безопасную пересборку сайта, а глобус и
+            основные разделы остаются постоянной частью главной.
+          </p>
         </div>
       </header>
-      <div className="dashboard-grid">
-        <section className="panel">
-          <h2>Порядок блоков</h2>
-          <div className="status-list">
-            {blocks.length ? blocks.map((block, index) => (
-              <div key={block.id}>
-                <span>{index + 1}. {block.title || blockLabels[block.block_type] || block.block_type}</span>
-                <form action={toggleHomepageBlockAction}>
+
+      {blocks.length ? (
+        <div className="module-grid">
+          {blocks.map((block, index) => {
+            const settings = settingsObject(block.settings);
+            return (
+              <article className="panel settings-stack" key={block.id}>
+                <div className="page-heading">
+                  <div>
+                    <span className="badge">
+                      {index + 1}.{" "}
+                      {blockLabels[block.block_type] || block.block_type}
+                    </span>
+                    <h2>{block.title || "Без заголовка"}</h2>
+                  </div>
+                  <div className="editor-actions">
+                    <form action={moveHomepageBlockAction}>
+                      <input type="hidden" name="id" value={block.id} />
+                      <button
+                        className="button-secondary"
+                        type="submit"
+                        name="direction"
+                        value="up"
+                        disabled={index === 0}
+                        aria-label="Поднять блок"
+                      >
+                        ↑
+                      </button>
+                    </form>
+                    <form action={moveHomepageBlockAction}>
+                      <input type="hidden" name="id" value={block.id} />
+                      <button
+                        className="button-secondary"
+                        type="submit"
+                        name="direction"
+                        value="down"
+                        disabled={index === blocks.length - 1}
+                        aria-label="Опустить блок"
+                      >
+                        ↓
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <form
+                  className="settings-stack"
+                  action={updateHomepageBlockAction}
+                >
                   <input type="hidden" name="id" value={block.id} />
-                  <input type="hidden" name="enabled" value={block.is_enabled ? "false" : "true"} />
-                  <button className="button-secondary" type="submit">{block.is_enabled ? "Скрыть" : "Показать"}</button>
+                  <label className="field">
+                    <span>Заголовок</span>
+                    <input name="title" defaultValue={block.title} />
+                  </label>
+                  <label className="field">
+                    <span>Надзаголовок</span>
+                    <input
+                      name="eyebrow"
+                      defaultValue={settingText(settings, "eyebrow")}
+                      placeholder="Например: Выбор редакции"
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Описание</span>
+                    <textarea
+                      name="description"
+                      defaultValue={
+                        settingText(settings, "description") ||
+                        settingText(settings, "copy")
+                      }
+                      placeholder="Короткий текст блока"
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Фон</span>
+                    <BackgroundSelect value={block.background_style} />
+                  </label>
+                  <div className="dashboard-grid">
+                    <label className="field">
+                      <span>Текст кнопки</span>
+                      <input
+                        name="button_text"
+                        defaultValue={settingText(settings, "buttonText")}
+                      />
+                    </label>
+                    <label className="field">
+                      <span>Ссылка кнопки</span>
+                      <input
+                        name="button_url"
+                        defaultValue={settingText(settings, "buttonUrl")}
+                        placeholder="#atlas или https://…"
+                      />
+                    </label>
+                  </div>
+                  <label className="field">
+                    <span>Статьи блока</span>
+                    <textarea
+                      name="article_ids"
+                      defaultValue={articleIds(settings)}
+                      placeholder="По одному ID статьи на строку. Если оставить пустым, сайт выберет свежие публикации."
+                    />
+                  </label>
+                  <button className="button" type="submit">
+                    Сохранить блок
+                  </button>
                 </form>
-              </div>
-            )) : <p>Конфигурация пока берётся из текущего сайта. Добавьте первый управляемый блок.</p>}
+
+                <div className="editor-actions">
+                  <form action={toggleHomepageBlockAction}>
+                    <input type="hidden" name="id" value={block.id} />
+                    <input
+                      type="hidden"
+                      name="enabled"
+                      value={block.is_enabled ? "false" : "true"}
+                    />
+                    <button className="button-secondary" type="submit">
+                      {block.is_enabled ? "Скрыть на сайте" : "Показать на сайте"}
+                    </button>
+                  </form>
+                  <form action={deleteHomepageBlockAction}>
+                    <input type="hidden" name="id" value={block.id} />
+                    <button className="button-secondary" type="submit">
+                      Удалить
+                    </button>
+                  </form>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <section className="panel empty-state">
+          <div>
+            <h2>Управляемых блоков пока нет</h2>
+            <p>
+              Текущая главная продолжает работать. Добавьте первый блок, чтобы
+              управлять дополнительной редакционной витриной из панели.
+            </p>
           </div>
         </section>
-        <form className="panel settings-stack" action={createHomepageBlockAction}>
-          <h2>Добавить блок</h2>
-          <label className="field"><span>Тип</span><select name="block_type">
-            {Object.entries(blockLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select></label>
-          <label className="field"><span>Заголовок</span><input name="title" /></label>
-          <label className="field"><span>Фон</span><select name="background_style">
-            <option value="violet">Фиолетовый</option><option value="orange">Оранжевый</option>
-            <option value="paper">Бумага с мазками</option><option value="light">Светлый</option>
-            <option value="transparent">Прозрачный</option>
-          </select></label>
-          <button className="button" type="submit">Добавить в конец</button>
-        </form>
-      </div>
+      )}
+
+      <form
+        className="panel settings-stack"
+        action={createHomepageBlockAction}
+      >
+        <h2>Добавить блок</h2>
+        <div className="dashboard-grid">
+          <label className="field">
+            <span>Тип</span>
+            <select name="block_type">
+              {Object.entries(blockLabels).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="field">
+            <span>Фон</span>
+            <BackgroundSelect value="paper" />
+          </label>
+        </div>
+        <label className="field">
+          <span>Заголовок</span>
+          <input name="title" />
+        </label>
+        <label className="field">
+          <span>Надзаголовок</span>
+          <input name="eyebrow" />
+        </label>
+        <label className="field">
+          <span>Описание</span>
+          <textarea name="description" />
+        </label>
+        <div className="dashboard-grid">
+          <label className="field">
+            <span>Текст кнопки</span>
+            <input name="button_text" />
+          </label>
+          <label className="field">
+            <span>Ссылка кнопки</span>
+            <input name="button_url" />
+          </label>
+        </div>
+        <label className="field">
+          <span>ID выбранных статей</span>
+          <textarea name="article_ids" />
+        </label>
+        <button className="button" type="submit">
+          Добавить в конец главной
+        </button>
+      </form>
     </>
   );
 }

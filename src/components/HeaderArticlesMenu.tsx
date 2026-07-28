@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 
-import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
+import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath, journalPath } from "../utils/articleRoutes";
 
 const russianMonths: Record<string, number> = {
@@ -33,7 +33,7 @@ export default function HeaderArticlesMenu() {
   const loadArticles = useCallback(() => {
     if (articles.length || loading) return;
     setLoading(true);
-    import("../data/articles/catalog.generated")
+    import("../data/articles/catalog")
       .then(({ articleCatalog }) => setArticles(articleCatalog))
       .finally(() => setLoading(false));
   }, [articles.length, loading]);
@@ -92,7 +92,8 @@ export default function HeaderArticlesMenu() {
               href={articlePath(
                 featured.lead.id,
                 featured.lead.title,
-                featured.lead.sectionId
+                featured.lead.sectionId,
+                featured.lead.slug
               )}
               onClick={(event) => closeMenu(event.currentTarget)}
             >
@@ -113,7 +114,12 @@ export default function HeaderArticlesMenu() {
             <section aria-label="Другие свежие статьи">
               {featured.more.map((article) => (
                 <a
-                  href={articlePath(article.id, article.title, article.sectionId)}
+                  href={articlePath(
+                    article.id,
+                    article.title,
+                    article.sectionId,
+                    article.slug
+                  )}
                   key={article.id}
                   onClick={(event) => closeMenu(event.currentTarget)}
                 >

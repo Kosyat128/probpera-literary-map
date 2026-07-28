@@ -13,6 +13,10 @@ import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import GlobalSearch from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
+import {
+  CmsHomepageBanners,
+  CmsNavigationLinks,
+} from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
@@ -32,6 +36,11 @@ const ArticleLibrarySection = lazy(
 );
 const SectionsDirectory = lazy(
   () => import("./components/SectionsDirectory")
+);
+const CmsHomepageBlocks = lazy(() =>
+  import("./components/CmsHomepageContent").then((module) => ({
+    default: module.CmsHomepageBlocks,
+  }))
 );
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
@@ -571,6 +580,7 @@ export default function App() {
             Форум
           </button>
           <a href="#about">О проекте</a>
+          <CmsNavigationLinks location="header" />
         </nav>
 
         <div className="header-actions">
@@ -617,6 +627,7 @@ export default function App() {
       </nav>
 
       <main>
+        <CmsHomepageBanners />
         <section className="magazine-hero">
           <div className="hero-editorial">
             <span className="section-kicker">Журнал о литературе и искусстве слова</span>
@@ -669,6 +680,10 @@ export default function App() {
             <span>Литературный журнал · с 2025 года</span>
           </div>
         </section>
+
+        <Suspense fallback={null}>
+          <CmsHomepageBlocks />
+        </Suspense>
 
         <section className="atlas-section" id="atlas" ref={atlasRef}>
           <header className="atlas-heading">
@@ -1299,6 +1314,7 @@ export default function App() {
               <a href="mailto:probperasite@yandex.ru">Связаться с редакцией</a>
               <a href="https://probpera.ru/contacts">Контакты</a>
             </section>
+            <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
         <div className="footer-bottom">

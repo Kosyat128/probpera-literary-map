@@ -279,11 +279,11 @@ function GlobeSurface({
         <meshPhysicalMaterial
           map={atlas.mapTexture}
           bumpMap={atlas.reliefTexture}
-          bumpScale={0.042}
-          roughness={0.72}
-          metalness={0.04}
-          clearcoat={0.2}
-          clearcoatRoughness={0.66}
+          bumpScale={0.022}
+          roughness={0.76}
+          metalness={0.025}
+          clearcoat={0.16}
+          clearcoatRoughness={0.7}
           emissive="#2b160c"
           emissiveIntensity={0.06}
         />

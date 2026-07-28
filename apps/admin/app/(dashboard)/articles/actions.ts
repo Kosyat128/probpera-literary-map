@@ -8,6 +8,7 @@ import { z } from "zod";
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
+import { triggerPublicBuild } from "@/lib/public-build";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -59,19 +60,6 @@ const allowedArticleHtml = {
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
   return text || null;
-}
-
-async function triggerPublicBuild() {
-  if (!adminEnv.deployHookUrl) return;
-  try {
-    await fetch(adminEnv.deployHookUrl, {
-      method: "POST",
-      cache: "no-store",
-      signal: AbortSignal.timeout(8_000),
-    });
-  } catch {
-    // Публикация не откатывается: неудача видна в журнале заданий.
-  }
 }
 
 export async function saveArticleAction(formData: FormData) {
@@ -235,7 +223,19 @@ export async function saveArticleAction(formData: FormData) {
     },
   });
 
-  if (parsed.data.status === "published") await triggerPublicBuild();
+  if (parsed.data.status === "published") {
+    const build = await triggerPublicBuild("article.published");
+    await supabase.from("admin_audit_log").insert({
+      actor_id: session.user.id,
+      action: build.ok ? "public_build.requested" : "public_build.failed",
+      entity_type: "article",
+      entity_id: articleId,
+      metadata: {
+        configured: build.configured,
+        error: build.ok ? null : build.error,
+      },
+    });
+  }
 
   revalidatePath("/dashboard");
   revalidatePath("/articles");
