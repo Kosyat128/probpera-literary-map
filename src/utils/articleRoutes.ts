@@ -51,15 +51,25 @@ export function articleSectionSlug(sectionId?: string) {
 export function articlePath(
   articleId: string,
   title: string,
-  sectionId?: string
+  sectionId?: string,
+  preferredSlug?: string
 ) {
+  const routeSlug =
+    preferredSlug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(preferredSlug)
+      ? preferredSlug
+      : articleSeoSlug(articleId, title);
   return `${basePath}/stati/${articleSectionSlug(sectionId)}/${encodeURIComponent(
-    articleSeoSlug(articleId, title)
+    routeSlug
   )}/`;
 }
 
 export function articleIdFromPath(
-  catalog: Array<{ id: string; title: string; sectionId?: string }>,
+  catalog: Array<{
+    id: string;
+    title: string;
+    sectionId?: string;
+    slug?: string;
+  }>,
   pathname = window.location.pathname
 ) {
   const normalizedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -75,6 +85,7 @@ export function articleIdFromPath(
   const article = catalog.find(
     (item) =>
       item.id === routeSegment ||
+      item.slug === routeSegment ||
       articleSeoSlug(item.id, item.title) === routeSegment
   );
   return article?.id || null;

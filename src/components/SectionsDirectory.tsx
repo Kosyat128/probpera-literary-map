@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { articleCatalog } from "../data/articles/catalog.generated";
+import { articleCatalog } from "../data/articles/catalog";
 
 export type SiteSectionLink = {
   id: string;

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import DisplayModeControl from "./DisplayModeControl";
-import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
+import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import ShareLinks from "../editorial/ShareLinks";
 import { useDisplayMode } from "../hooks/useDisplayMode";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
@@ -30,8 +30,10 @@ type Props = {
   onOpen: (article: ArticleCatalogEntry) => void;
 };
 
-function publicArticleUrl(articleId: string) {
-  return `${import.meta.env.BASE_URL}articles/${articleId}.json`;
+function publicArticleUrl(article: ArticleCatalogEntry) {
+  const documentPath =
+    article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
+  return `${import.meta.env.BASE_URL}${documentPath.replace(/^\/+/, "")}`;
 }
 
 export default function ArticleReader({
@@ -61,7 +63,7 @@ export default function ArticleReader({
     setArticleDocument(null);
     setError(false);
 
-    fetch(publicArticleUrl(article.id))
+    fetch(publicArticleUrl(article))
       .then((response) => {
         if (!response.ok) throw new Error(`Article ${article.id} not found`);
         return response.json() as Promise<ArticleDocument>;
@@ -202,7 +204,8 @@ export default function ArticleReader({
                 href: articlePath(
                   article.id,
                   article.title,
-                  article.sectionId
+                  article.sectionId,
+                  article.slug
                 ),
               })
             }
@@ -267,7 +270,10 @@ export default function ArticleReader({
               <figure className="article-reader-cover">
                 <img
                   src={article.imageUrl}
-                  alt={`Иллюстрация к статье «${article.title}»`}
+                  alt={
+                    article.imageAlt ||
+                    `Иллюстрация к статье «${article.title}»`
+                  }
                 />
               </figure>
             )}
@@ -304,7 +310,12 @@ export default function ArticleReader({
                   проходят отдельную редакционную проверку.
                 </p>
                 <ShareLinks
-                  url={`${window.location.origin}${articlePath(article.id, article.title, article.sectionId)}`}
+                  url={`${window.location.origin}${articlePath(
+                    article.id,
+                    article.title,
+                    article.sectionId,
+                    article.slug
+                  )}`}
                   title={article.title}
                 />
                 <ArticleEngagement articleSlug={article.id} />

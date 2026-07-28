@@ -195,6 +195,318 @@ img {
   cursor: pointer;
 }
 
+/* CMS publication surface. These blocks stay invisible until enabled in /admin. */
+.cms-banner,
+.cms-home-block {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cms-banner {
+  width: min(1540px, calc(100% - 40px));
+  min-height: 150px;
+  margin: 24px auto 0;
+  border: 1px solid rgba(255, 132, 33, 0.3);
+  border-radius: 24px;
+  background:
+    linear-gradient(110deg, rgba(51, 8, 87, 0.97), rgba(86, 16, 124, 0.92)),
+    #3b095e;
+  color: #fff;
+  box-shadow: 0 22px 52px rgba(32, 5, 55, 0.18);
+}
+
+.cms-banner picture,
+.cms-banner picture::after {
+  position: absolute;
+  inset: 0;
+}
+
+.cms-banner picture::after {
+  content: "";
+  background: linear-gradient(90deg, rgba(38, 5, 61, 0.96), rgba(38, 5, 61, 0.38));
+}
+
+.cms-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cms-banner > div {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 72%);
+  padding: 30px clamp(26px, 5vw, 76px);
+}
+
+.cms-banner strong {
+  display: block;
+  margin-top: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.5rem);
+  line-height: 1.06;
+}
+
+.cms-banner p {
+  max-width: 64ch;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+}
+
+.cms-banner a,
+.cms-home-text > a,
+.cms-home-callout > a {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: #ff7a18;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cms-homepage-region {
+  display: grid;
+  gap: 22px;
+  width: min(1540px, calc(100% - 40px));
+  margin: 26px auto;
+}
+
+.cms-home-block {
+  border: 1px solid rgba(75, 24, 107, 0.14);
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 54px);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    var(--cms-background-image, none) center / cover;
+  box-shadow: 0 22px 58px rgba(48, 16, 69, 0.1);
+}
+
+.cms-home-block.is-violet {
+  border-color: rgba(255, 151, 55, 0.26);
+  background:
+    linear-gradient(rgba(48, 7, 78, 0.93), rgba(72, 11, 106, 0.93)),
+    var(--cms-background-image, none) center / cover;
+  color: #fff;
+}
+
+.cms-home-block.is-orange {
+  background:
+    linear-gradient(rgba(255, 122, 24, 0.92), rgba(235, 91, 14, 0.92)),
+    var(--cms-background-image, none) center / cover;
+  color: #fff;
+}
+
+.cms-home-block.is-paper {
+  background:
+    linear-gradient(rgba(249, 241, 224, 0.94), rgba(255, 252, 245, 0.94)),
+    var(--cms-background-image, none) center / cover;
+}
+
+.cms-home-block > header,
+.cms-home-articles > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.cms-home-block h2 {
+  max-width: 860px;
+  margin: 6px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.98;
+}
+
+.cms-home-articles > header > a {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cms-home-articles > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cms-home-articles > div.is-carousel {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 34%);
+  grid-template-columns: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+.cms-home-articles article {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(69, 23, 97, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #271135;
+  scroll-snap-align: start;
+}
+
+.cms-home-articles article > a {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cms-home-articles img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cms-home-articles article span,
+.cms-home-articles article h3,
+.cms-home-articles article p,
+.cms-home-articles article small {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.cms-home-articles article span {
+  margin-top: 18px;
+  color: #dd6815;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cms-home-articles article h3 {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  line-height: 1.12;
+}
+
+.cms-home-articles article p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 10px;
+  color: #695d70;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.cms-home-articles article small {
+  margin-top: auto;
+  padding: 10px 0 20px;
+  color: #847889;
+}
+
+.cms-home-text {
+  text-align: center;
+}
+
+.cms-home-text > p,
+.cms-home-text > div,
+.cms-home-callout > p {
+  max-width: 820px;
+  margin: 18px auto 0;
+  font-size: 1.06rem;
+  line-height: 1.8;
+}
+
+.cms-home-categories > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cms-home-categories > div a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 64px;
+  padding: 14px 18px;
+  border: 1px solid rgba(80, 28, 107, 0.13);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cms-home-categories > div span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: #4d136a;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.cms-home-callout {
+  text-align: center;
+}
+
+.cms-footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 920px) {
+  .cms-home-articles > div,
+  .cms-home-categories > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cms-home-articles > div.is-carousel {
+    grid-auto-columns: minmax(260px, 72%);
+    grid-template-columns: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .cms-banner,
+  .cms-homepage-region {
+    width: min(100% - 20px, 1540px);
+  }
+
+  .cms-banner > div {
+    width: auto;
+    padding: 26px 22px;
+  }
+
+  .cms-home-block {
+    border-radius: 20px;
+    padding: 24px 20px;
+  }
+
+  .cms-home-block > header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .cms-home-articles > div,
+  .cms-home-categories > div {
+    grid-template-columns: 1fr;
+  }
+
+  .cms-home-articles > div.is-carousel {
+    grid-auto-columns: 88%;
+    grid-template-columns: none;
+  }
+}
+
 .site-header > nav > a::after,
 .site-header > nav > button::after,
 .sections-menu > summary::after,

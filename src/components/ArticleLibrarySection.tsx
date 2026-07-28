@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   articleCatalog,
   type ArticleCatalogEntry,
-} from "../data/articles/catalog.generated";
+} from "../data/articles/catalog";
 import {
   articleIdFromPath,
   articlePath,
@@ -128,7 +128,7 @@ export default function ArticleLibrarySection() {
     window.history.pushState(
       { probperaArticle: article.id },
       "",
-      articlePath(article.id, article.title, article.sectionId)
+      articlePath(article.id, article.title, article.sectionId, article.slug)
     );
     setSelected(article);
   };
@@ -204,7 +204,12 @@ export default function ArticleLibrarySection() {
                 key={article.id}
               >
                 <a
-                  href={articlePath(article.id, article.title, article.sectionId)}
+                  href={articlePath(
+                    article.id,
+                    article.title,
+                    article.sectionId,
+                    article.slug
+                  )}
                   onClick={(event) => {
                     event.preventDefault();
                     openArticle(article);
@@ -212,7 +217,11 @@ export default function ArticleLibrarySection() {
                 >
                   <div className="library-card-image">
                     {article.imageUrl ? (
-                      <img src={article.imageUrl} alt="" loading="lazy" />
+                      <img
+                        src={article.imageUrl}
+                        alt={article.imageAlt || ""}
+                        loading="lazy"
+                      />
                     ) : (
                       <span aria-hidden="true">
                         <img

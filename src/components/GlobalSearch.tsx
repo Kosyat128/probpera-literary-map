@@ -8,7 +8,7 @@ import {
 
 import type { BookArchiveEntry } from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
-import type { ArticleCatalogEntry } from "../data/articles/catalog.generated";
+import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath } from "../utils/articleRoutes";
 import { countryFlag } from "../utils/countryFlag";
 
@@ -91,7 +91,7 @@ export default function GlobalSearch({
     if (!open || articles.length || articlesLoading) return;
     let active = true;
     setArticlesLoading(true);
-    import("../data/articles/catalog.generated")
+    import("../data/articles/catalog")
       .then(({ articleCatalog }) => {
         if (active) setArticles(articleCatalog);
       })
@@ -369,7 +369,12 @@ export default function GlobalSearch({
                 {results.articles.map((article) => (
                   <a
                     key={article.id}
-                    href={articlePath(article.id, article.title, article.sectionId)}
+                    href={articlePath(
+                      article.id,
+                      article.title,
+                      article.sectionId,
+                      article.slug
+                    )}
                     onClick={onClose}
                   >
                     <span aria-hidden="true">¶</span>

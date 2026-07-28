@@ -44,6 +44,7 @@ const MAP_HEIGHT = 1536;
 const HIT_WIDTH = 1024;
 const HIT_HEIGHT = 512;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
+let antiqueMapPromise: Promise<HTMLImageElement> | null = null;
 
 function loadWorldGeoJson() {
   if (!geoJsonPromise) {
@@ -55,6 +56,24 @@ function loadWorldGeoJson() {
     });
   }
   return geoJsonPromise;
+}
+
+function loadAntiqueMap() {
+  if (!antiqueMapPromise) {
+    antiqueMapPromise = new Promise<HTMLImageElement>((resolve, reject) => {
+      const image = new Image();
+      const useCompactTexture =
+        window.innerWidth <= 900 || window.matchMedia("(max-resolution: 1.25dppx)").matches;
+      image.decoding = "async";
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error("Museum globe texture failed to load"));
+      image.src = `${import.meta.env.BASE_URL}textures/antique-world-1887${
+        useCompactTexture ? "-mobile" : ""
+      }.webp`;
+    });
+  }
+
+  return antiqueMapPromise;
 }
 
 function getPolygons(feature: GeoFeature): MultiPolygonCoordinates {
@@ -250,28 +269,6 @@ function drawGraticule(context: CanvasRenderingContext2D) {
   context.restore();
 }
 
-function drawSeaRoutes(context: CanvasRenderingContext2D) {
-  const routes = [
-    [0.48, 0.34, 0.32, 0.44, 0.2, 0.51],
-    [0.52, 0.38, 0.67, 0.31, 0.77, 0.43],
-    [0.72, 0.43, 0.82, 0.56, 0.9, 0.63],
-  ];
-
-  context.save();
-  context.strokeStyle = "rgba(57, 29, 12, 0.32)";
-  context.lineWidth = 1.6;
-  context.setLineDash([3, 8]);
-
-  routes.forEach(([x1, y1, cx, cy, x2, y2]) => {
-    context.beginPath();
-    context.moveTo(MAP_WIDTH * x1, MAP_HEIGHT * y1);
-    context.quadraticCurveTo(MAP_WIDTH * cx, MAP_HEIGHT * cy, MAP_WIDTH * x2, MAP_HEIGHT * y2);
-    context.stroke();
-  });
-
-  context.restore();
-}
-
 function featureColor(index: number, mapColor = 0) {
   const palette = [
     "#b77b3b",
@@ -288,449 +285,47 @@ function featureColor(index: number, mapColor = 0) {
   return palette[(index * 7 + mapColor * 3) % palette.length];
 }
 
-function mapPoint(lng: number, lat: number) {
-  return {
-    x: ((lng + 180) / 360) * MAP_WIDTH,
-    y: ((90 - lat) / 180) * MAP_HEIGHT,
-  };
-}
-
-function drawMountainRange(
-  context: CanvasRenderingContext2D,
-  lng: number,
-  lat: number,
-  width: number,
-  peaks: number,
-  angle = 0
-) {
-  const point = mapPoint(lng, lat);
-  const step = width / Math.max(peaks - 1, 1);
-  context.save();
-  context.translate(point.x, point.y);
-  context.rotate(angle);
-  context.lineJoin = "round";
-  context.lineCap = "round";
-
-  for (let index = 0; index < peaks; index += 1) {
-    const x = -width / 2 + step * index;
-    const height = 30 + ((index * 19 + peaks * 7) % 30);
-    const halfWidth = 18 + ((index * 11) % 13);
-    const y = ((index * 17) % 13) - 6;
-
-    context.beginPath();
-    context.moveTo(x - halfWidth, y + 17);
-    context.quadraticCurveTo(x - 8, y - height * 0.55, x, y - height);
-    context.quadraticCurveTo(x + 10, y - height * 0.42, x + halfWidth, y + 17);
-    context.closePath();
-    context.fillStyle = "rgba(71, 37, 16, 0.2)";
-    context.fill();
-    context.strokeStyle = "rgba(54, 28, 12, 0.62)";
-    context.lineWidth = 1.5;
-    context.stroke();
-
-    context.beginPath();
-    context.moveTo(x, y - height);
-    context.lineTo(x - 7, y - height * 0.64);
-    context.lineTo(x - 1, y - height * 0.71);
-    context.lineTo(x + 6, y - height * 0.56);
-    context.strokeStyle = "rgba(240, 199, 121, 0.42)";
-    context.lineWidth = 1.1;
-    context.stroke();
-
-    context.beginPath();
-    context.moveTo(x - halfWidth * 0.74, y + 13);
-    context.lineTo(x + halfWidth * 0.72, y + 13);
-    context.strokeStyle = "rgba(58, 30, 13, 0.24)";
-    context.lineWidth = 0.8;
-    context.stroke();
-  }
-
-  context.restore();
-}
-
-function drawForestCluster(
-  context: CanvasRenderingContext2D,
-  lng: number,
-  lat: number,
-  columns: number,
-  rows: number,
-  spacing = 18
-) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.strokeStyle = "rgba(49, 43, 19, 0.56)";
-  context.fillStyle = "rgba(62, 65, 27, 0.22)";
-  context.lineWidth = 1.1;
-
-  for (let row = 0; row < rows; row += 1) {
-    for (let column = 0; column < columns; column += 1) {
-      const x =
-        (column - (columns - 1) / 2) * spacing +
-        ((row * 13 + column * 7) % 7) -
-        3;
-      const y =
-        (row - (rows - 1) / 2) * spacing * 0.72 +
-        ((row * 5 + column * 3) % 5) -
-        2;
-      const size = 6 + ((row * 7 + column * 11) % 5);
-
-      context.beginPath();
-      context.moveTo(x, y - size);
-      context.lineTo(x - size * 0.7, y + size * 0.35);
-      context.lineTo(x + size * 0.7, y + size * 0.35);
-      context.closePath();
-      context.fill();
-      context.stroke();
-      context.beginPath();
-      context.moveTo(x, y + size * 0.25);
-      context.lineTo(x, y + size * 0.72);
-      context.stroke();
-    }
-  }
-
-  context.restore();
-}
-
-type MapAnimal = "elephant" | "camel" | "bison" | "llama" | "kangaroo" | "whale";
-
-function drawAnimal(
-  context: CanvasRenderingContext2D,
-  animal: MapAnimal,
-  lng: number,
-  lat: number,
-  scale = 1,
-  flip = false
-) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.scale(scale * (flip ? -1 : 1), scale);
-  context.strokeStyle = "rgba(46, 23, 10, 0.78)";
-  context.fillStyle = "rgba(75, 40, 17, 0.31)";
-  context.lineWidth = 1.7;
-  context.lineCap = "round";
-  context.lineJoin = "round";
-
-  if (animal === "elephant") {
-    context.beginPath();
-    context.ellipse(-2, 0, 18, 12, 0, 0, Math.PI * 2);
-    context.ellipse(16, 1, 8, 8, 0, 0, Math.PI * 2);
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(21, 4);
-    context.bezierCurveTo(29, 8, 23, 20, 29, 18);
-    context.moveTo(-11, 9);
-    context.lineTo(-12, 22);
-    context.moveTo(6, 9);
-    context.lineTo(7, 22);
-    context.moveTo(-19, -2);
-    context.quadraticCurveTo(-25, 3, -22, 9);
-    context.stroke();
-    context.beginPath();
-    context.arc(15, 1, 5, -1.6, 1.25);
-    context.stroke();
-  } else if (animal === "camel") {
-    context.beginPath();
-    context.moveTo(-20, 8);
-    context.quadraticCurveTo(-13, -8, -5, 1);
-    context.quadraticCurveTo(3, -13, 12, 1);
-    context.lineTo(18, -2);
-    context.quadraticCurveTo(17, -16, 24, -21);
-    context.lineTo(31, -18);
-    context.lineTo(26, -13);
-    context.lineTo(24, 7);
-    context.lineTo(-16, 11);
-    context.closePath();
-    context.fill();
-    context.stroke();
-    [-13, -4, 14, 22].forEach((x) => {
-      context.beginPath();
-      context.moveTo(x, 8);
-      context.lineTo(x + (x < 0 ? -2 : 2), 23);
-      context.stroke();
-    });
-  } else if (animal === "bison") {
-    context.beginPath();
-    context.ellipse(-4, 1, 20, 12, -0.08, 0, Math.PI * 2);
-    context.ellipse(16, 4, 9, 8, 0, 0, Math.PI * 2);
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(11, -2);
-    context.quadraticCurveTo(5, -13, -5, -10);
-    context.moveTo(19, -2);
-    context.quadraticCurveTo(27, -7, 29, -2);
-    context.moveTo(-13, 9);
-    context.lineTo(-14, 22);
-    context.moveTo(8, 10);
-    context.lineTo(10, 22);
-    context.stroke();
-  } else if (animal === "llama") {
-    context.beginPath();
-    context.ellipse(-5, 3, 17, 9, 0, 0, Math.PI * 2);
-    context.moveTo(8, 0);
-    context.lineTo(14, -23);
-    context.quadraticCurveTo(17, -31, 24, -27);
-    context.lineTo(27, -22);
-    context.lineTo(17, -18);
-    context.lineTo(15, 6);
-    context.closePath();
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(19, -28);
-    context.lineTo(18, -36);
-    context.moveTo(23, -27);
-    context.lineTo(25, -35);
-    context.moveTo(-14, 9);
-    context.lineTo(-15, 23);
-    context.moveTo(7, 9);
-    context.lineTo(8, 23);
-    context.stroke();
-  } else if (animal === "kangaroo") {
-    context.beginPath();
-    context.ellipse(2, 2, 11, 17, -0.25, 0, Math.PI * 2);
-    context.moveTo(-7, 7);
-    context.quadraticCurveTo(-27, 12, -35, 22);
-    context.quadraticCurveTo(-20, 19, -4, 14);
-    context.moveTo(7, -10);
-    context.lineTo(14, -27);
-    context.lineTo(21, -31);
-    context.lineTo(24, -25);
-    context.lineTo(15, -19);
-    context.lineTo(12, -5);
-    context.closePath();
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(18, -30);
-    context.lineTo(17, -39);
-    context.moveTo(22, -30);
-    context.lineTo(25, -38);
-    context.moveTo(4, 14);
-    context.lineTo(15, 28);
-    context.lineTo(25, 28);
-    context.moveTo(-2, 15);
-    context.lineTo(-8, 29);
-    context.lineTo(2, 29);
-    context.stroke();
-  } else {
-    context.beginPath();
-    context.ellipse(0, 0, 27, 10, -0.05, 0, Math.PI * 2);
-    context.moveTo(-25, -1);
-    context.lineTo(-38, -10);
-    context.lineTo(-35, 1);
-    context.lineTo(-39, 10);
-    context.closePath();
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(16, -6);
-    context.quadraticCurveTo(27, -15, 35, -8);
-    context.moveTo(23, -9);
-    context.quadraticCurveTo(28, -20, 31, -25);
-    context.moveTo(31, -25);
-    context.quadraticCurveTo(35, -31, 38, -24);
-    context.stroke();
-  }
-
-  context.restore();
-}
-
-function drawSailingShip(
-  context: CanvasRenderingContext2D,
-  lng: number,
-  lat: number,
-  scale = 1
-) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.scale(scale, scale);
-  context.strokeStyle = "rgba(47, 23, 10, 0.72)";
-  context.fillStyle = "rgba(76, 39, 16, 0.27)";
-  context.lineWidth = 1.6;
-  context.lineJoin = "round";
-
-  context.beginPath();
-  context.moveTo(-24, 10);
-  context.quadraticCurveTo(0, 22, 25, 8);
-  context.lineTo(18, 17);
-  context.lineTo(-18, 17);
-  context.closePath();
-  context.fill();
-  context.stroke();
-  context.beginPath();
-  context.moveTo(0, 10);
-  context.lineTo(0, -30);
-  context.moveTo(0, -27);
-  context.quadraticCurveTo(18, -18, 19, -2);
-  context.lineTo(2, -5);
-  context.closePath();
-  context.fill();
-  context.stroke();
-  context.beginPath();
-  context.moveTo(-20, 22);
-  context.quadraticCurveTo(-10, 18, 0, 22);
-  context.quadraticCurveTo(10, 26, 23, 21);
-  context.stroke();
-  context.restore();
-}
-
-function drawSeaSerpent(
-  context: CanvasRenderingContext2D,
-  lng: number,
-  lat: number,
-  scale = 1
-) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.scale(scale, scale);
-  context.strokeStyle = "rgba(47, 23, 10, 0.64)";
-  context.fillStyle = "rgba(73, 37, 15, 0.28)";
-  context.lineWidth = 3.2;
-  context.lineCap = "round";
-  context.beginPath();
-  context.moveTo(-35, 7);
-  context.bezierCurveTo(-24, -18, -8, 25, 8, 1);
-  context.bezierCurveTo(20, -16, 27, 8, 35, -5);
-  context.stroke();
-  context.beginPath();
-  context.ellipse(38, -7, 7, 5, -0.15, 0, Math.PI * 2);
-  context.fill();
-  context.stroke();
-  context.beginPath();
-  context.moveTo(33, -10);
-  context.lineTo(31, -18);
-  context.lineTo(39, -12);
-  context.stroke();
-  context.restore();
-}
-
-function drawCartographicRelief(context: CanvasRenderingContext2D) {
-  drawMountainRange(context, -72, -18, 360, 13, 1.43);
-  drawMountainRange(context, -112, 46, 270, 10, 1.34);
-  drawMountainRange(context, 83, 31, 390, 14, 0.02);
-  drawMountainRange(context, 59, 57, 220, 8, 1.48);
-  drawMountainRange(context, 10, 46, 130, 6, 0.03);
-  drawMountainRange(context, -5, 31, 150, 6, 0.06);
-  drawMountainRange(context, 38, 8, 185, 7, 1.2);
-  drawMountainRange(context, 146, -26, 210, 8, 1.36);
-
-  drawForestCluster(context, -105, 57, 8, 3, 20);
-  drawForestCluster(context, -62, -4, 8, 4, 19);
-  drawForestCluster(context, 22, 0, 7, 3, 18);
-  drawForestCluster(context, 93, 58, 11, 3, 19);
-  drawForestCluster(context, 104, 10, 7, 3, 17);
-
-  drawAnimal(context, "bison", -103, 40, 1.35);
-  drawAnimal(context, "llama", -68, -18, 1.28);
-  drawAnimal(context, "elephant", 23, 4, 1.45);
-  drawAnimal(context, "camel", 48, 27, 1.32);
-  drawAnimal(context, "kangaroo", 135, -25, 1.34);
-  drawAnimal(context, "whale", -143, -27, 1.25, true);
-  drawAnimal(context, "whale", 52, -44, 1.05);
-  drawSailingShip(context, -34, -14, 1.18);
-  drawSailingShip(context, 151, 9, 0.98);
-  drawSeaSerpent(context, -148, 16, 1.22);
-  drawSeaSerpent(context, 80, -34, 0.95);
-}
-
-function drawCompassRose(context: CanvasRenderingContext2D, lng: number, lat: number, radius: number) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.strokeStyle = "rgba(56, 27, 11, 0.56)";
-  context.fillStyle = "rgba(81, 40, 16, 0.42)";
-  context.lineWidth = 2;
-
-  for (let index = 0; index < 16; index += 1) {
-    const angle = (Math.PI * 2 * index) / 16;
-    const longRay = index % 4 === 0;
-    const outer = longRay ? radius : radius * 0.66;
-    context.beginPath();
-    context.moveTo(Math.cos(angle) * radius * 0.14, Math.sin(angle) * radius * 0.14);
-    context.lineTo(Math.cos(angle - 0.055) * outer, Math.sin(angle - 0.055) * outer);
-    context.lineTo(Math.cos(angle + 0.055) * outer, Math.sin(angle + 0.055) * outer);
-    context.closePath();
-    if (longRay) context.fill();
-    else context.stroke();
-  }
-
-  context.beginPath();
-  context.arc(0, 0, radius * 0.82, 0, Math.PI * 2);
-  context.stroke();
-  context.font = `600 ${radius * 0.32}px Georgia`;
-  context.textAlign = "center";
-  context.fillText("N", 0, -radius * 1.04);
-  context.restore();
-}
-
-function drawAntiqueLabels(context: CanvasRenderingContext2D) {
-  const labels = [
-    { text: "EUROPA", lng: 18, lat: 53, size: 40, angle: -0.08 },
-    { text: "AFRICA", lng: 19, lat: 8, size: 46, angle: 0.04 },
-    { text: "ASIA", lng: 87, lat: 46, size: 54, angle: -0.03 },
-    { text: "AMERICA SEPTENTRIONALIS", lng: -108, lat: 48, size: 31, angle: -0.1 },
-    { text: "AMERICA MERIDIONALIS", lng: -63, lat: -21, size: 28, angle: 0.12 },
-    { text: "INDIA", lng: 79, lat: 23, size: 22, angle: 0.05 },
-    { text: "OCEANVS ATLANTICVS", lng: -30, lat: 18, size: 24, angle: -0.18 },
-    { text: "MARE PACIFICVM", lng: 155, lat: -12, size: 25, angle: 0.16 },
-    { text: "OCEANIA", lng: 137, lat: -27, size: 26, angle: -0.08 },
-  ];
-
-  context.save();
-  context.textAlign = "center";
-  context.textBaseline = "middle";
-
-  labels.forEach(({ text, lng, lat, size, angle }) => {
-    const point = mapPoint(lng, lat);
-    context.save();
-    context.translate(point.x, point.y);
-    context.rotate(angle);
-    context.font = `600 ${size}px Georgia, serif`;
-    context.letterSpacing = `${Math.max(2, size * 0.1)}px`;
-    context.strokeStyle = "rgba(229, 178, 98, 0.18)";
-    context.lineWidth = 3;
-    context.strokeText(text, 0, 0);
-    context.fillStyle = "rgba(55, 28, 13, 0.7)";
-    context.fillText(text, 0, 0);
-    context.restore();
-  });
-
-  context.restore();
-  drawCompassRose(context, -42, -30, 62);
-  drawCompassRose(context, 151, 21, 48);
-}
-
-function makeMapCanvas(features: GeoFeature[]) {
+function makeMapCanvas(features: GeoFeature[], antiqueMap: HTMLImageElement | null) {
   const canvas = document.createElement("canvas");
   canvas.width = MAP_WIDTH;
   canvas.height = MAP_HEIGHT;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("Canvas 2D is unavailable");
 
-  drawParchmentBackground(context);
-  drawGraticule(context);
-  drawSeaRoutes(context);
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
 
-  features.forEach((feature, index) => {
+  if (antiqueMap) {
+    context.drawImage(antiqueMap, 0, 0, MAP_WIDTH, MAP_HEIGHT);
+  } else {
+    drawParchmentBackground(context);
+    drawGraticule(context);
+    features.forEach((feature, index) => {
+      drawFeature(
+        context,
+        feature,
+        MAP_WIDTH,
+        MAP_HEIGHT,
+        featureColor(index, feature.properties.MAPCOLOR13),
+        "rgba(46, 24, 11, 0.72)",
+        1.2
+      );
+    });
+  }
+
+  // Modern country geometry is retained only as a restrained interactive
+  // contour. The visible cartography itself comes from the museum scan.
+  features.forEach((feature) => {
     drawFeature(
       context,
       feature,
       MAP_WIDTH,
       MAP_HEIGHT,
-      featureColor(index, feature.properties.MAPCOLOR13),
-      "rgba(46, 24, 11, 0.78)",
-      1.5
+      "rgba(0, 0, 0, 0)",
+      "rgba(62, 30, 13, 0.24)",
+      0.86
     );
   });
-
-  drawCartographicRelief(context);
-  drawAntiqueLabels(context);
 
   const glaze = context.createRadialGradient(
     MAP_WIDTH * 0.46,
@@ -740,62 +335,13 @@ function makeMapCanvas(features: GeoFeature[]) {
     MAP_HEIGHT * 0.5,
     MAP_WIDTH * 0.62
   );
-  glaze.addColorStop(0, "rgba(255, 224, 154, 0.28)");
-  glaze.addColorStop(0.5, "rgba(105, 55, 20, 0)");
-  glaze.addColorStop(1, "rgba(37, 16, 8, 0.38)");
+  glaze.addColorStop(0, "rgba(255, 224, 154, 0.14)");
+  glaze.addColorStop(0.54, "rgba(105, 55, 20, 0)");
+  glaze.addColorStop(1, "rgba(37, 16, 8, 0.24)");
   context.fillStyle = glaze;
   context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
   return canvas;
-}
-
-const reliefRanges = [
-  { lng: -72, lat: -18, width: 360, peaks: 13, angle: 1.43 },
-  { lng: -112, lat: 46, width: 270, peaks: 10, angle: 1.34 },
-  { lng: 83, lat: 31, width: 390, peaks: 14, angle: 0.02 },
-  { lng: 59, lat: 57, width: 220, peaks: 8, angle: 1.48 },
-  { lng: 10, lat: 46, width: 130, peaks: 6, angle: 0.03 },
-  { lng: -5, lat: 31, width: 150, peaks: 6, angle: 0.06 },
-  { lng: 38, lat: 8, width: 185, peaks: 7, angle: 1.2 },
-  { lng: 146, lat: -26, width: 210, peaks: 8, angle: 1.36 },
-] as const;
-
-function drawReliefRange(
-  context: CanvasRenderingContext2D,
-  { lng, lat, width, peaks, angle }: (typeof reliefRanges)[number]
-) {
-  const point = mapPoint(lng, lat);
-  const step = width / Math.max(peaks - 1, 1);
-
-  context.save();
-  context.translate(point.x, point.y);
-  context.rotate(angle);
-  context.fillStyle = "#d8d8d8";
-  context.strokeStyle = "#f1f1f1";
-  context.lineWidth = 5;
-  context.lineCap = "round";
-  context.lineJoin = "round";
-  context.shadowColor = "rgba(255, 255, 255, 0.46)";
-  context.shadowBlur = 12;
-
-  context.beginPath();
-  for (let index = 0; index < peaks; index += 1) {
-    const x = -width / 2 + step * index;
-    const y = ((index * 17) % 13) - 6;
-    if (index === 0) context.moveTo(x, y);
-    else context.lineTo(x, y);
-  }
-  context.stroke();
-
-  for (let index = 0; index < peaks; index += 1) {
-    const x = -width / 2 + step * index;
-    const height = 24 + ((index * 19 + peaks * 7) % 27);
-    const y = ((index * 17) % 13) - 6;
-    context.beginPath();
-    context.ellipse(x, y, 15 + height * 0.35, 8 + height * 0.18, 0, 0, Math.PI * 2);
-    context.fill();
-  }
-  context.restore();
 }
 
 function makeReliefCanvas(features: GeoFeature[]) {
@@ -819,8 +365,6 @@ function makeReliefCanvas(features: GeoFeature[]) {
       1.2
     );
   });
-
-  reliefRanges.forEach((range) => drawReliefRange(context, range));
 
   let seed = 44119;
   for (let index = 0; index < 14000; index += 1) {
@@ -936,7 +480,10 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
 }
 
 export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas> {
-  const worldGeoJson = await loadWorldGeoJson();
+  const [worldGeoJson, antiqueMap] = await Promise.all([
+    loadWorldGeoJson(),
+    loadAntiqueMap().catch(() => null),
+  ]);
   const countriesByCode = new Map(
     countries
       .filter((country) => country.code)
@@ -967,7 +514,9 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   });
 
   const hitData = hitContext.getImageData(0, 0, HIT_WIDTH, HIT_HEIGHT).data;
-  const mapTexture = configureTexture(new THREE.CanvasTexture(makeMapCanvas(worldGeoJson.features)));
+  const mapTexture = configureTexture(
+    new THREE.CanvasTexture(makeMapCanvas(worldGeoJson.features, antiqueMap))
+  );
   const reliefTexture = configureReliefTexture(
     new THREE.CanvasTexture(makeReliefCanvas(worldGeoJson.features))
   );
