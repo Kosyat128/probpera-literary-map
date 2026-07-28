@@ -431,7 +431,18 @@ async function main() {
     await writeFile(outputPath, "{}\n", "utf8");
     await writeFile(
       metadataPath,
-      `${JSON.stringify({ records: 0, draftCount: 0 }, null, 2)}\n`,
+      `${JSON.stringify(
+        {
+          records: 0,
+          draftCount: 0,
+          curatedCount,
+          targetCount,
+          finalCount: curatedCount,
+          generatedAt: new Date().toISOString(),
+        },
+        null,
+        2
+      )}\n`,
       "utf8"
     );
     return;
@@ -507,7 +518,18 @@ async function main() {
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
   await writeFile(
     metadataPath,
-    `${JSON.stringify({ records: selectedCount, draftCount: selectedCount }, null, 2)}\n`,
+    `${JSON.stringify(
+      {
+        records: selectedCount,
+        draftCount: selectedCount,
+        curatedCount,
+        targetCount,
+        finalCount: curatedCount + selectedCount,
+        generatedAt: new Date().toISOString(),
+      },
+      null,
+      2
+    )}\n`,
     "utf8"
   );
   console.log(`Generated ${selectedCount} country-linked writer records.`);

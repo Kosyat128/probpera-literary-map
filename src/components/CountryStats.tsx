@@ -68,7 +68,7 @@ export default function CountryStats({ country, onWriterSelect }: Props){
                   fontWeight: "bold"
                 }}
               >
-                {writer.fullName || writer.name}
+                {writer.name || writer.fullName}
               </button>
             </li>
           ))}

@@ -1,40 +1,423 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { load } from "cheerio";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const outputDirectory = path.join(projectRoot, "public", "cms");
-const supabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "").replace(/\/+$/, "");
+const publicCmsDirectory = path.join(projectRoot, "public", "cms");
+const publicCmsArticlesDirectory = path.join(publicCmsDirectory, "articles");
+const articleCatalogModule = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "articles",
+  "cms.generated.ts"
+);
+const siteContentModule = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "cms",
+  "site.generated.ts"
+);
+
+const supabaseUrl = (
+  process.env.SUPABASE_URL ||
+  process.env.VITE_SUPABASE_URL ||
+  ""
+).replace(/\/+$/, "");
 const publicKey =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
   process.env.VITE_SUPABASE_ANON_KEY ||
   "";
+const siteOrigin = (
+  process.env.PUBLIC_SITE_URL ||
+  process.env.VITE_PUBLIC_SITE_URL ||
+  "https://probpera.ru"
+).replace(/\/+$/, "");
 
 if (!supabaseUrl || !publicKey) {
-  console.log("CMS export skipped: public Supabase variables are not configured. Existing article archive is preserved.");
+  console.log(
+    "CMS export skipped: public Supabase variables are not configured. Existing CMS snapshot is preserved."
+  );
   process.exit(0);
 }
 
-const response = await fetch(
-  `${supabaseUrl}/rest/v1/articles?select=id,title,subtitle,excerpt,content_html,cover_external_url,cover_alt,slug,legacy_path,published_at,seo_title,seo_description,canonical_url,categories(name,slug)&status=eq.published&deleted_at=is.null&order=published_at.desc`,
-  {
-    headers: {
-      apikey: publicKey,
-      Authorization: `Bearer ${publicKey}`,
-    },
+const categoryRouteSlugs = {
+  "book-opinions": "mnenie-o-knige",
+  "screen-adaptations": "kniga-i-ekranizatsiya",
+  "writers-world": "pisateli-mira",
+  "book-guides": "knizhnyy-gid",
+  awards: "literaturnye-premii",
+  folklore: "folklor-i-mifologiya",
+  language: "russkiy-yazyk",
+  "literary-essays": "o-literature",
+  "author-stories": "literaturnye-istorii",
+};
+
+function queryString(values) {
+  const params = new URLSearchParams();
+  Object.entries(values).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== "") {
+      params.set(key, String(value));
+    }
+  });
+  return params.toString();
+}
+
+async function fetchRows(table, query) {
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/${table}?${queryString(query)}`,
+    {
+      headers: {
+        apikey: publicKey,
+        Authorization: `Bearer ${publicKey}`,
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error(
+      `CMS export failed for ${table}: ${response.status} ${await response.text()}`
+    );
   }
+  return response.json();
+}
+
+function relationValue(value) {
+  return Array.isArray(value) ? value[0] || null : value || null;
+}
+
+function storageUrl(media) {
+  if (!media?.bucket || !media?.object_path) return "";
+  return `${supabaseUrl}/storage/v1/object/public/${encodeURIComponent(
+    media.bucket
+  )}/${media.object_path
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/")}`;
+}
+
+function headingSlug(value) {
+  return value
+    .toLocaleLowerCase("ru")
+    .replace(/ё/gu, "е")
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/gu, "")
+    .slice(0, 72);
+}
+
+function prepareArticleDocument(contentHtml) {
+  const $ = load(`<main id="cms-article-root">${contentHtml || ""}</main>`, {
+    decodeEntities: false,
+  });
+  const usedIds = new Set();
+  const headings = [];
+
+  $("#cms-article-root h2, #cms-article-root h3, #cms-article-root h4").each(
+    (index, element) => {
+      const text = $(element).text().replace(/\s+/gu, " ").trim();
+      if (!text) return;
+      const baseId =
+        $(element).attr("id") || headingSlug(text) || `section-${index + 1}`;
+      let id = baseId;
+      let suffix = 2;
+      while (usedIds.has(id)) {
+        id = `${baseId}-${suffix}`;
+        suffix += 1;
+      }
+      usedIds.add(id);
+      $(element).attr("id", id);
+      headings.push({
+        id,
+        level: Number(element.tagName.slice(1)),
+        text,
+      });
+    }
+  );
+
+  const plainText = $("#cms-article-root")
+    .text()
+    .replace(/\s+/gu, " ")
+    .trim();
+  return {
+    contentHtml: $("#cms-article-root").html() || "",
+    plainText,
+    headings,
+  };
+}
+
+function publicationLabel(value) {
+  const date = value ? new Date(value) : new Date();
+  const formatted = new Intl.DateTimeFormat("ru-RU", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Moscow",
+  })
+    .format(date)
+    .replace(/\s+г\.$/u, "");
+  return `Опубликовано: ${formatted}`;
+}
+
+function articleSectionSlug(categorySlug) {
+  return categoryRouteSlugs[categorySlug || ""] || "materialy";
+}
+
+function articlePublicPath(slug, categorySlug) {
+  return `/stati/${articleSectionSlug(categorySlug)}/${slug}`;
+}
+
+function mediaById(mediaLookup, id) {
+  return id ? mediaLookup.get(id) || null : null;
+}
+
+function normalizeSettings(value) {
+  return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+}
+
+function asGeneratedModule(variableName, value, comment) {
+  return `// Generated by scripts/export-published-content.mjs. Do not edit by hand.
+// ${comment}
+export const ${variableName} = ${JSON.stringify(value, null, 2)} as const;
+`;
+}
+
+const [
+  rawArticles,
+  mediaAssets,
+  rawHomepageBlocks,
+  rawBanners,
+  rawMenus,
+  rawNavigationItems,
+  rawPages,
+  rawRedirects,
+] = await Promise.all([
+  fetchRows("articles", {
+    select:
+      "id,legacy_id,title,subtitle,excerpt,content_html,cover_media_id,cover_external_url,cover_alt,slug,legacy_path,published_at,featured,show_on_homepage,pinned,seo_title,seo_description,canonical_url,allow_indexing,categories(name,slug)",
+    status: "eq.published",
+    deleted_at: "is.null",
+    order: "pinned.desc,featured.desc,published_at.desc",
+  }),
+  fetchRows("media_assets", {
+    select:
+      "id,bucket,object_path,alt_text,caption,creator,source_url,license_name,license_url,focus_x,focus_y",
+    deleted_at: "is.null",
+  }),
+  fetchRows("homepage_blocks", {
+    select:
+      "id,block_type,title,settings,display_order,background_style,background_media_id,updated_at",
+    is_enabled: "eq.true",
+    order: "display_order.asc",
+  }),
+  fetchRows("banners", {
+    select:
+      "id,name,title,description,target_url,button_text,desktop_media_id,tablet_media_id,mobile_media_id,page_patterns,display_order,starts_at,ends_at",
+    is_active: "eq.true",
+    order: "display_order.asc",
+  }),
+  fetchRows("navigation_menus", {
+    select: "id,name,location",
+    order: "location.asc",
+  }),
+  fetchRows("navigation_items", {
+    select:
+      "id,menu_id,parent_id,label,href,open_in_new_tab,display_order",
+    is_visible: "eq.true",
+    order: "display_order.asc",
+  }),
+  fetchRows("pages", {
+    select:
+      "id,title,slug,excerpt,content_html,seo_title,seo_description,canonical_url,allow_indexing,updated_at",
+    status: "eq.published",
+    deleted_at: "is.null",
+    order: "updated_at.desc",
+  }),
+  fetchRows("redirects", {
+    select: "source_path,destination_path,status_code",
+    is_active: "eq.true",
+    order: "source_path.asc",
+  }),
+]);
+
+const mediaLookup = new Map(mediaAssets.map((media) => [media.id, media]));
+const articleDocuments = [];
+
+const articles = rawArticles.map((article) => {
+  const category = relationValue(article.categories);
+  const sectionId = category?.slug || "literary-essays";
+  const sectionLabel = category?.name || "Материалы";
+  const document = prepareArticleDocument(article.content_html);
+  const wordCount = document.plainText
+    ? document.plainText.split(/\s+/gu).length
+    : 0;
+  const coverMedia = mediaById(mediaLookup, article.cover_media_id);
+  const imageUrl = article.cover_external_url || storageUrl(coverMedia) || undefined;
+  const id = `cms-${article.id}`;
+  const publicPath = articlePublicPath(article.slug, sectionId);
+  const canonicalUrl = article.canonical_url || `${siteOrigin}${publicPath}/`;
+  const legacyPath = article.legacy_path || null;
+  const description =
+    article.excerpt ||
+    article.subtitle ||
+    document.plainText.slice(0, 320);
+  const entry = {
+    id,
+    source: "cms",
+    legacyId: article.legacy_id || null,
+    legacyPath,
+    url: legacyPath ? `https://probpera.ru${legacyPath}` : canonicalUrl,
+    canonicalUrl,
+    slug: article.slug,
+    title: article.title,
+    description,
+    imageUrl,
+    imageAlt: article.cover_alt || coverMedia?.alt_text || "",
+    sectionId,
+    sectionLabel,
+    publishedLabel: publicationLabel(article.published_at),
+    publishedAt: article.published_at,
+    readingMinutes: Math.max(1, Math.ceil(wordCount / 180)),
+    wordCount,
+    headingCount: document.headings.length,
+    documentPath: `cms/articles/${id}.json`,
+    featured: Boolean(article.featured),
+    showOnHomepage: Boolean(article.show_on_homepage),
+    pinned: Boolean(article.pinned),
+    seoTitle: article.seo_title || article.title,
+    seoDescription: article.seo_description || description,
+    allowIndexing: article.allow_indexing !== false,
+  };
+  articleDocuments.push({
+    path: path.join(publicCmsArticlesDirectory, `${id}.json`),
+    payload: {
+      ...entry,
+      ...document,
+    },
+  });
+  return entry;
+});
+
+const homepageBlocks = rawHomepageBlocks.map((block) => ({
+  id: block.id,
+  type: block.block_type,
+  title: block.title,
+  settings: normalizeSettings(block.settings),
+  displayOrder: block.display_order,
+  backgroundStyle: block.background_style,
+  backgroundImageUrl: storageUrl(
+    mediaById(mediaLookup, block.background_media_id)
+  ),
+  updatedAt: block.updated_at,
+}));
+
+const banners = rawBanners.map((banner) => ({
+  id: banner.id,
+  name: banner.name,
+  title: banner.title,
+  description: banner.description,
+  targetUrl: banner.target_url,
+  buttonText: banner.button_text,
+  pagePatterns: banner.page_patterns || ["/"],
+  displayOrder: banner.display_order,
+  startsAt: banner.starts_at,
+  endsAt: banner.ends_at,
+  desktopImageUrl: storageUrl(mediaById(mediaLookup, banner.desktop_media_id)),
+  tabletImageUrl: storageUrl(mediaById(mediaLookup, banner.tablet_media_id)),
+  mobileImageUrl: storageUrl(mediaById(mediaLookup, banner.mobile_media_id)),
+}));
+
+const navigationMenus = rawMenus.map((menu) => ({
+  id: menu.id,
+  name: menu.name,
+  location: menu.location,
+  items: rawNavigationItems
+    .filter((item) => item.menu_id === menu.id)
+    .map((item) => ({
+      id: item.id,
+      parentId: item.parent_id,
+      label: item.label,
+      href: item.href,
+      openInNewTab: Boolean(item.open_in_new_tab),
+      displayOrder: item.display_order,
+    })),
+}));
+
+const pages = rawPages.map((page) => ({
+  id: page.id,
+  title: page.title,
+  slug: page.slug,
+  excerpt: page.excerpt,
+  contentHtml: page.content_html,
+  seoTitle: page.seo_title || page.title,
+  seoDescription: page.seo_description || page.excerpt,
+  canonicalUrl: page.canonical_url || `${siteOrigin}/${page.slug}/`,
+  allowIndexing: page.allow_indexing !== false,
+  updatedAt: page.updated_at,
+}));
+
+const redirects = rawRedirects.map((redirect) => ({
+  sourcePath: redirect.source_path,
+  destinationPath: redirect.destination_path,
+  statusCode: redirect.status_code,
+}));
+
+const generatedAt = new Date().toISOString();
+const siteContent = {
+  generatedAt,
+  homepageBlocks,
+  banners,
+  navigationMenus,
+  pages,
+  redirects,
+};
+const snapshot = {
+  version: 1,
+  generatedAt,
+  source: "Supabase CMS",
+  articles,
+  ...siteContent,
+};
+
+await fs.mkdir(publicCmsArticlesDirectory, { recursive: true });
+await fs.mkdir(path.dirname(articleCatalogModule), { recursive: true });
+await fs.mkdir(path.dirname(siteContentModule), { recursive: true });
+
+await Promise.all([
+  ...articleDocuments.map(({ path: outputPath, payload }) =>
+    fs.writeFile(outputPath, JSON.stringify(payload, null, 2), "utf8")
+  ),
+  fs.writeFile(
+    path.join(publicCmsDirectory, "published-content.json"),
+    JSON.stringify(snapshot, null, 2),
+    "utf8"
+  ),
+  fs.writeFile(
+    path.join(publicCmsDirectory, "published-articles.json"),
+    JSON.stringify({ generatedAt, source: "Supabase CMS", articles }, null, 2),
+    "utf8"
+  ),
+  fs.writeFile(
+    articleCatalogModule,
+    asGeneratedModule(
+      "cmsArticleCatalog",
+      articles,
+      "Public article metadata exported through read-only RLS policies."
+    ),
+    "utf8"
+  ),
+  fs.writeFile(
+    siteContentModule,
+    asGeneratedModule(
+      "cmsSiteContent",
+      siteContent,
+      "Public homepage, navigation and page metadata exported through read-only RLS policies."
+    ),
+    "utf8"
+  ),
+]);
+
+console.log(
+  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${banners.length} banners, ${pages.length} pages and ${navigationMenus.length} menus from CMS.`
 );
-if (!response.ok) throw new Error(`CMS export failed: ${response.status} ${await response.text()}`);
-const articles = await response.json();
-await fs.mkdir(outputDirectory, { recursive: true });
-await fs.writeFile(
-  path.join(outputDirectory, "published-articles.json"),
-  JSON.stringify({
-    generatedAt: new Date().toISOString(),
-    source: "Supabase CMS",
-    articles,
-  }, null, 2),
-  "utf8"
-);
-console.log(`Exported ${articles.length} published CMS articles.`);

@@ -5,6 +5,7 @@ import { load } from "cheerio";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDirectory = path.join(projectRoot, "dist");
+const publicDirectory = path.join(projectRoot, "public");
 const articleDirectory = path.join(projectRoot, "public", "articles");
 const siteOrigin = (process.env.PUBLIC_SITE_ORIGIN || "https://kosyat128.github.io").replace(/\/+$/, "");
 const configuredBase = process.env.PUBLIC_SITE_BASE_PATH ?? "/probpera-literary-map";
@@ -63,6 +64,9 @@ function humanSlug(value = "") {
 }
 
 function articleSlug(article) {
+  if (article.slug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(article.slug)) {
+    return article.slug;
+  }
   return `${humanSlug(article.title) || "material"}-${shortStableHash(article.id)}`;
 }
 
@@ -108,8 +112,75 @@ function redirectHtml(targetUrl) {
 <script>location.replace(${JSON.stringify(targetUrl)});</script></body></html>`;
 }
 
+async function readJsonIfExists(filePath, fallback) {
+  try {
+    return JSON.parse(await fs.readFile(filePath, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT") return fallback;
+    throw error;
+  }
+}
+
+function normalizedPath(value = "") {
+  if (!value) return "";
+  try {
+    return new URL(value, "https://probpera.ru").pathname.replace(/\/+$/, "") || "/";
+  } catch {
+    return value.split(/[?#]/u)[0].replace(/\/+$/, "") || "/";
+  }
+}
+
+function mergeCatalogs(legacyArticles, cmsArticles) {
+  const replacedIds = new Set(
+    cmsArticles.map((article) => article.legacyId).filter(Boolean)
+  );
+  const replacedPaths = new Set(
+    cmsArticles.map((article) => normalizedPath(article.legacyPath)).filter(Boolean)
+  );
+  return [
+    ...cmsArticles,
+    ...legacyArticles.filter(
+      (article) =>
+        !replacedIds.has(article.id) &&
+        !replacedPaths.has(normalizedPath(article.url))
+    ),
+  ];
+}
+
+async function writeRedirectPage(sourcePath, targetUrl) {
+  const normalized = normalizedPath(sourcePath);
+  const segments = normalized
+    .split("/")
+    .filter(Boolean)
+    .map((segment) => decodeURIComponent(segment));
+  if (segments.some((segment) => segment === "." || segment === "..")) return;
+
+  const finalSegment = segments.at(-1) || "";
+  if (/\.[a-z0-9]{1,8}$/iu.test(finalSegment)) {
+    const outputPath = path.join(distDirectory, ...segments);
+    await fs.mkdir(path.dirname(outputPath), { recursive: true });
+    await fs.writeFile(outputPath, redirectHtml(targetUrl), "utf8");
+    return;
+  }
+
+  const outputDirectory = path.join(distDirectory, ...segments);
+  await fs.mkdir(outputDirectory, { recursive: true });
+  await fs.writeFile(
+    path.join(outputDirectory, "index.html"),
+    redirectHtml(targetUrl),
+    "utf8"
+  );
+}
+
 const baseHtml = await fs.readFile(path.join(distDirectory, "index.html"), "utf8");
-const catalog = JSON.parse(await fs.readFile(path.join(articleDirectory, "index.json"), "utf8"));
+const legacyCatalog = JSON.parse(
+  await fs.readFile(path.join(articleDirectory, "index.json"), "utf8")
+);
+const cmsSnapshot = await readJsonIfExists(
+  path.join(publicDirectory, "cms", "published-content.json"),
+  { articles: [], redirects: [] }
+);
+const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
 const homeDocument = load(baseHtml, { decodeEntities: false });
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
@@ -136,19 +207,25 @@ const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
 const redirectRules = [];
 
 for (const article of catalog) {
+  const documentPath =
+    article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
   const document = JSON.parse(
-    await fs.readFile(path.join(articleDirectory, `${article.id}.json`), "utf8")
+    await fs.readFile(
+      path.join(publicDirectory, ...documentPath.split("/")),
+      "utf8"
+    )
   );
   const slug = articleSlug(article);
   const publicPath = articlePublicPath(article);
-  const canonicalUrl = `${siteUrl}${publicPath}/`;
+  const canonicalUrl = article.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = load(baseHtml, { decodeEntities: false });
   const description =
+    article.seoDescription?.trim() ||
     article.description?.trim() ||
     `Авторский материал литературного журнала «Проба Пера»: ${article.title}`;
   const imageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
 
-  $("title").text(`${article.title} — Проба Пера`);
+  $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
   $('meta[name="description"]').attr("content", description);
   $('meta[property="og:type"]').attr("content", "article");
   $('meta[property="og:title"]').attr("content", article.title);
@@ -158,6 +235,9 @@ for (const article of catalog) {
   $('meta[name="twitter:description"]').attr("content", description);
   $('meta[name="twitter:image"]').attr("content", imageUrl);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
+  if (article.allowIndexing === false) {
+    $('meta[name="robots"]').attr("content", "noindex,follow");
+  }
   $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
   $("head").append(
     `<script type="application/ld+json">${JSON.stringify([
@@ -169,6 +249,7 @@ for (const article of catalog) {
         image: [imageUrl],
         mainEntityOfPage: canonicalUrl,
         inLanguage: "ru-RU",
+        datePublished: article.publishedAt || undefined,
         wordCount: article.wordCount,
         articleSection: article.sectionLabel,
         isPartOf: {
@@ -236,6 +317,24 @@ for (const article of catalog) {
     destination: publicPath,
     permanent: true,
   });
+  if (article.legacyId) {
+    const legacyStaticDirectory = path.join(
+      distDirectory,
+      "articles",
+      article.legacyId
+    );
+    await fs.mkdir(legacyStaticDirectory, { recursive: true });
+    await fs.writeFile(
+      path.join(legacyStaticDirectory, "index.html"),
+      redirectHtml(canonicalUrl),
+      "utf8"
+    );
+    redirectRules.push({
+      source: `/articles/${article.legacyId}`,
+      destination: publicPath,
+      permanent: true,
+    });
+  }
   redirectRules.push({
     source: `/articles/${slug}`,
     destination: publicPath,
@@ -253,7 +352,26 @@ for (const article of catalog) {
   } catch {
     // У материала может не быть старого абсолютного адреса.
   }
+  if (article.legacyPath) {
+    redirectRules.push({
+      source: normalizedPath(article.legacyPath),
+      destination: publicPath,
+      permanent: true,
+    });
+  }
   sitemapEntries.push({ url: canonicalUrl, lastmod: buildDate });
+}
+
+for (const redirect of cmsSnapshot.redirects || []) {
+  const targetUrl = /^https:\/\//iu.test(redirect.destinationPath)
+    ? redirect.destinationPath
+    : `${siteUrl}${normalizedPath(redirect.destinationPath)}`;
+  redirectRules.push({
+    source: normalizedPath(redirect.sourcePath),
+    destination: redirect.destinationPath,
+    permanent: [301, 308].includes(redirect.statusCode),
+  });
+  await writeRedirectPage(redirect.sourcePath, targetUrl);
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -290,7 +408,16 @@ await fs.writeFile(
 );
 await fs.writeFile(
   path.join(distDirectory, "redirects.generated.json"),
-  JSON.stringify(redirectRules, null, 2),
+  JSON.stringify(
+    [...new Map(
+      redirectRules.map((redirect) => [
+        `${redirect.source}:${redirect.destination}`,
+        redirect,
+      ])
+    ).values()],
+    null,
+    2
+  ),
   "utf8"
 );
 

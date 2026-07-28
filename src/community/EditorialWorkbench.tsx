@@ -179,7 +179,13 @@ export default function EditorialWorkbench() {
           {draft.imageUrl ? (
             <img src={draft.imageUrl} alt="" />
           ) : (
-            <div aria-hidden="true">ПП</div>
+            <div aria-hidden="true">
+              <img
+                className="brand-fallback-logo"
+                src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
+                alt=""
+              />
+            </div>
           )}
           <small>{draft.section}</small>
           <h4>{draft.title || "Заголовок будущей публикации"}</h4>

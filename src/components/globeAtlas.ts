@@ -31,6 +31,7 @@ type GeoFeatureCollection = {
 
 export type GlobeAtlas = {
   mapTexture: THREE.CanvasTexture;
+  reliefTexture: THREE.CanvasTexture;
   highlightTexture: THREE.CanvasTexture;
   countryAtUv: (uv: THREE.Vector2) => Country | null;
   centroidForCountry: (countryId: string) => [number, number] | null;
@@ -43,6 +44,7 @@ const MAP_HEIGHT = 1536;
 const HIT_WIDTH = 1024;
 const HIT_HEIGHT = 512;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
+let antiqueMapPromise: Promise<HTMLImageElement> | null = null;
 
 function loadWorldGeoJson() {
   if (!geoJsonPromise) {
@@ -54,6 +56,24 @@ function loadWorldGeoJson() {
     });
   }
   return geoJsonPromise;
+}
+
+function loadAntiqueMap() {
+  if (!antiqueMapPromise) {
+    antiqueMapPromise = new Promise<HTMLImageElement>((resolve, reject) => {
+      const image = new Image();
+      const useCompactTexture =
+        window.innerWidth <= 900 || window.matchMedia("(max-resolution: 1.25dppx)").matches;
+      image.decoding = "async";
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error("Museum globe texture failed to load"));
+      image.src = `${import.meta.env.BASE_URL}textures/antique-world-1887${
+        useCompactTexture ? "-mobile" : ""
+      }.webp`;
+    });
+  }
+
+  return antiqueMapPromise;
 }
 
 function getPolygons(feature: GeoFeature): MultiPolygonCoordinates {
@@ -197,46 +217,52 @@ function drawParchmentBackground(context: CanvasRenderingContext2D) {
 
 function drawGraticule(context: CanvasRenderingContext2D) {
   context.save();
-  context.strokeStyle = "rgba(61, 34, 15, 0.22)";
-  context.lineWidth = 1.15;
-  context.setLineDash([3, 8]);
+  context.setLineDash([]);
 
-  for (let lng = -150; lng <= 150; lng += 30) {
+  for (let lng = -165; lng <= 165; lng += 15) {
     const x = ((lng + 180) / 360) * MAP_WIDTH;
+    const major = lng % 30 === 0;
     context.beginPath();
     context.moveTo(x, 0);
     context.lineTo(x, MAP_HEIGHT);
+    context.strokeStyle = major
+      ? "rgba(55, 29, 12, 0.31)"
+      : "rgba(246, 214, 151, 0.16)";
+    context.lineWidth = major ? 1.25 : 0.72;
     context.stroke();
   }
 
-  for (let lat = -60; lat <= 60; lat += 30) {
+  for (let lat = -75; lat <= 75; lat += 15) {
     const y = ((90 - lat) / 180) * MAP_HEIGHT;
+    const major = lat % 30 === 0;
     context.beginPath();
     context.moveTo(0, y);
     context.lineTo(MAP_WIDTH, y);
+    context.strokeStyle = major
+      ? "rgba(55, 29, 12, 0.31)"
+      : "rgba(246, 214, 151, 0.16)";
+    context.lineWidth = major ? 1.25 : 0.72;
     context.stroke();
   }
 
-  context.setLineDash([]);
-  context.restore();
-}
-
-function drawSeaRoutes(context: CanvasRenderingContext2D) {
-  const routes = [
-    [0.48, 0.34, 0.32, 0.44, 0.2, 0.51],
-    [0.52, 0.38, 0.67, 0.31, 0.77, 0.43],
-    [0.72, 0.43, 0.82, 0.56, 0.9, 0.63],
-  ];
-
-  context.save();
-  context.strokeStyle = "rgba(57, 29, 12, 0.32)";
+  const equatorY = MAP_HEIGHT / 2;
+  context.beginPath();
+  context.moveTo(0, equatorY - 3);
+  context.lineTo(MAP_WIDTH, equatorY - 3);
+  context.moveTo(0, equatorY + 3);
+  context.lineTo(MAP_WIDTH, equatorY + 3);
+  context.strokeStyle = "rgba(48, 24, 10, 0.48)";
   context.lineWidth = 1.6;
-  context.setLineDash([3, 8]);
+  context.stroke();
 
-  routes.forEach(([x1, y1, cx, cy, x2, y2]) => {
+  const tropicOffset = (23.436 / 180) * MAP_HEIGHT;
+  [equatorY - tropicOffset, equatorY + tropicOffset].forEach((y) => {
     context.beginPath();
-    context.moveTo(MAP_WIDTH * x1, MAP_HEIGHT * y1);
-    context.quadraticCurveTo(MAP_WIDTH * cx, MAP_HEIGHT * cy, MAP_WIDTH * x2, MAP_HEIGHT * y2);
+    context.moveTo(0, y);
+    context.lineTo(MAP_WIDTH, y);
+    context.strokeStyle = "rgba(67, 34, 13, 0.25)";
+    context.lineWidth = 1;
+    context.setLineDash([7, 6]);
     context.stroke();
   });
 
@@ -259,104 +285,47 @@ function featureColor(index: number, mapColor = 0) {
   return palette[(index * 7 + mapColor * 3) % palette.length];
 }
 
-function mapPoint(lng: number, lat: number) {
-  return {
-    x: ((lng + 180) / 360) * MAP_WIDTH,
-    y: ((90 - lat) / 180) * MAP_HEIGHT,
-  };
-}
-
-function drawCompassRose(context: CanvasRenderingContext2D, lng: number, lat: number, radius: number) {
-  const point = mapPoint(lng, lat);
-  context.save();
-  context.translate(point.x, point.y);
-  context.strokeStyle = "rgba(56, 27, 11, 0.56)";
-  context.fillStyle = "rgba(81, 40, 16, 0.42)";
-  context.lineWidth = 2;
-
-  for (let index = 0; index < 16; index += 1) {
-    const angle = (Math.PI * 2 * index) / 16;
-    const longRay = index % 4 === 0;
-    const outer = longRay ? radius : radius * 0.66;
-    context.beginPath();
-    context.moveTo(Math.cos(angle) * radius * 0.14, Math.sin(angle) * radius * 0.14);
-    context.lineTo(Math.cos(angle - 0.055) * outer, Math.sin(angle - 0.055) * outer);
-    context.lineTo(Math.cos(angle + 0.055) * outer, Math.sin(angle + 0.055) * outer);
-    context.closePath();
-    if (longRay) context.fill();
-    else context.stroke();
-  }
-
-  context.beginPath();
-  context.arc(0, 0, radius * 0.82, 0, Math.PI * 2);
-  context.stroke();
-  context.font = `600 ${radius * 0.32}px Georgia`;
-  context.textAlign = "center";
-  context.fillText("N", 0, -radius * 1.04);
-  context.restore();
-}
-
-function drawAntiqueLabels(context: CanvasRenderingContext2D) {
-  const labels = [
-    { text: "EUROPA", lng: 18, lat: 53, size: 40, angle: -0.08 },
-    { text: "AFRICA", lng: 19, lat: 8, size: 46, angle: 0.04 },
-    { text: "ASIA", lng: 87, lat: 46, size: 54, angle: -0.03 },
-    { text: "AMERICA SEPTENTRIONALIS", lng: -108, lat: 48, size: 31, angle: -0.1 },
-    { text: "AMERICA MERIDIONALIS", lng: -63, lat: -21, size: 28, angle: 0.12 },
-    { text: "INDIA", lng: 79, lat: 23, size: 22, angle: 0.05 },
-    { text: "OCEANVS ATLANTICVS", lng: -30, lat: 18, size: 24, angle: -0.18 },
-    { text: "MARE PACIFICVM", lng: 155, lat: -12, size: 25, angle: 0.16 },
-    { text: "OCEANIA", lng: 137, lat: -27, size: 26, angle: -0.08 },
-  ];
-
-  context.save();
-  context.textAlign = "center";
-  context.textBaseline = "middle";
-
-  labels.forEach(({ text, lng, lat, size, angle }) => {
-    const point = mapPoint(lng, lat);
-    context.save();
-    context.translate(point.x, point.y);
-    context.rotate(angle);
-    context.font = `600 ${size}px Georgia, serif`;
-    context.letterSpacing = `${Math.max(2, size * 0.1)}px`;
-    context.strokeStyle = "rgba(229, 178, 98, 0.18)";
-    context.lineWidth = 3;
-    context.strokeText(text, 0, 0);
-    context.fillStyle = "rgba(55, 28, 13, 0.7)";
-    context.fillText(text, 0, 0);
-    context.restore();
-  });
-
-  context.restore();
-  drawCompassRose(context, -42, -30, 62);
-  drawCompassRose(context, 151, 21, 48);
-}
-
-function makeMapCanvas(features: GeoFeature[]) {
+function makeMapCanvas(features: GeoFeature[], antiqueMap: HTMLImageElement | null) {
   const canvas = document.createElement("canvas");
   canvas.width = MAP_WIDTH;
   canvas.height = MAP_HEIGHT;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("Canvas 2D is unavailable");
 
-  drawParchmentBackground(context);
-  drawGraticule(context);
-  drawSeaRoutes(context);
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
 
-  features.forEach((feature, index) => {
+  if (antiqueMap) {
+    context.drawImage(antiqueMap, 0, 0, MAP_WIDTH, MAP_HEIGHT);
+  } else {
+    drawParchmentBackground(context);
+    drawGraticule(context);
+    features.forEach((feature, index) => {
+      drawFeature(
+        context,
+        feature,
+        MAP_WIDTH,
+        MAP_HEIGHT,
+        featureColor(index, feature.properties.MAPCOLOR13),
+        "rgba(46, 24, 11, 0.72)",
+        1.2
+      );
+    });
+  }
+
+  // Modern country geometry is retained only as a restrained interactive
+  // contour. The visible cartography itself comes from the museum scan.
+  features.forEach((feature) => {
     drawFeature(
       context,
       feature,
       MAP_WIDTH,
       MAP_HEIGHT,
-      featureColor(index, feature.properties.MAPCOLOR13),
-      "rgba(46, 24, 11, 0.78)",
-      1.5
+      "rgba(0, 0, 0, 0)",
+      "rgba(62, 30, 13, 0.24)",
+      0.86
     );
   });
-
-  drawAntiqueLabels(context);
 
   const glaze = context.createRadialGradient(
     MAP_WIDTH * 0.46,
@@ -366,11 +335,47 @@ function makeMapCanvas(features: GeoFeature[]) {
     MAP_HEIGHT * 0.5,
     MAP_WIDTH * 0.62
   );
-  glaze.addColorStop(0, "rgba(255, 224, 154, 0.28)");
-  glaze.addColorStop(0.5, "rgba(105, 55, 20, 0)");
-  glaze.addColorStop(1, "rgba(37, 16, 8, 0.38)");
+  glaze.addColorStop(0, "rgba(255, 224, 154, 0.14)");
+  glaze.addColorStop(0.54, "rgba(105, 55, 20, 0)");
+  glaze.addColorStop(1, "rgba(37, 16, 8, 0.24)");
   context.fillStyle = glaze;
   context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
+
+  return canvas;
+}
+
+function makeReliefCanvas(features: GeoFeature[]) {
+  const canvas = document.createElement("canvas");
+  canvas.width = MAP_WIDTH;
+  canvas.height = MAP_HEIGHT;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("Canvas 2D is unavailable");
+
+  context.fillStyle = "#353535";
+  context.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
+
+  features.forEach((feature) => {
+    drawFeature(
+      context,
+      feature,
+      MAP_WIDTH,
+      MAP_HEIGHT,
+      "#777777",
+      "#8d8d8d",
+      1.2
+    );
+  });
+
+  let seed = 44119;
+  for (let index = 0; index < 14000; index += 1) {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    const x = seed % MAP_WIDTH;
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    const y = seed % MAP_HEIGHT;
+    const light = 80 + (seed % 34);
+    context.fillStyle = `rgba(${light}, ${light}, ${light}, 0.16)`;
+    context.fillRect(x, y, 1.2, 1.2);
+  }
 
   return canvas;
 }
@@ -465,8 +470,20 @@ function configureTexture(texture: THREE.CanvasTexture) {
   return texture;
 }
 
+function configureReliefTexture(texture: THREE.CanvasTexture) {
+  texture.colorSpace = THREE.NoColorSpace;
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.anisotropy = 8;
+  texture.needsUpdate = true;
+  return texture;
+}
+
 export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas> {
-  const worldGeoJson = await loadWorldGeoJson();
+  const [worldGeoJson, antiqueMap] = await Promise.all([
+    loadWorldGeoJson(),
+    loadAntiqueMap().catch(() => null),
+  ]);
   const countriesByCode = new Map(
     countries
       .filter((country) => country.code)
@@ -497,7 +514,12 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   });
 
   const hitData = hitContext.getImageData(0, 0, HIT_WIDTH, HIT_HEIGHT).data;
-  const mapTexture = configureTexture(new THREE.CanvasTexture(makeMapCanvas(worldGeoJson.features)));
+  const mapTexture = configureTexture(
+    new THREE.CanvasTexture(makeMapCanvas(worldGeoJson.features, antiqueMap))
+  );
+  const reliefTexture = configureReliefTexture(
+    new THREE.CanvasTexture(makeReliefCanvas(worldGeoJson.features))
+  );
   const highlightCanvas = document.createElement("canvas");
   highlightCanvas.width = MAP_WIDTH;
   highlightCanvas.height = MAP_HEIGHT;
@@ -573,12 +595,14 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
 
   return {
     mapTexture,
+    reliefTexture,
     highlightTexture,
     countryAtUv,
     centroidForCountry,
     updateHighlight,
     dispose: () => {
       mapTexture.dispose();
+      reliefTexture.dispose();
       highlightTexture.dispose();
     },
   };

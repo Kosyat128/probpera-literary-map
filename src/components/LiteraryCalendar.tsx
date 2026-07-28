@@ -58,7 +58,7 @@ export function dateParts(value?: string) {
 }
 
 function writerName(writer: Writer) {
-  return writer.fullName || writer.name || "Автор";
+  return writer.name || writer.fullName || "Автор";
 }
 
 export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
@@ -179,7 +179,6 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
                 title={dayEvents.map((event) => event.title).join(", ")}
               >
                 {day}
-                {dayEvents.length > 0 && <i>{Math.min(dayEvents.length, 9)}</i>}
               </span>
             );
           })}

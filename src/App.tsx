@@ -12,12 +12,18 @@ import ArticleEngagement from "./community/ArticleEngagement";
 import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import GlobalSearch from "./components/GlobalSearch";
+import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
+import {
+  CmsHomepageBanners,
+  CmsNavigationLinks,
+} from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { articlePath, journalPath } from "./utils/articleRoutes";
+import { countryFlag } from "./utils/countryFlag";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
@@ -27,6 +33,14 @@ const BookArchiveSection = lazy(
 );
 const ArticleLibrarySection = lazy(
   () => import("./components/ArticleLibrarySection")
+);
+const SectionsDirectory = lazy(
+  () => import("./components/SectionsDirectory")
+);
+const CmsHomepageBlocks = lazy(() =>
+  import("./components/CmsHomepageContent").then((module) => ({
+    default: module.CmsHomepageBlocks,
+  }))
 );
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
@@ -103,6 +117,8 @@ const editorialFeatures = [
 
 const sectionLinks = [
   {
+    id: "book-opinions",
+    group: "Читать",
     title: "Мнение о книге",
     copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
     href: journalPath("book-opinions"),
@@ -110,6 +126,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
   },
   {
+    id: "screen-adaptations",
+    group: "Читать",
     title: "Книга и экранизация",
     copy: "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.",
     href: journalPath("screen-adaptations"),
@@ -117,6 +135,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
   },
   {
+    id: "book-guides",
+    group: "Читать",
     title: "Книжный гид и подборки",
     copy: "Тематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться.",
     href: journalPath("book-guides"),
@@ -124,6 +144,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3037-3130-4065-b839-653563653430/c471b0ab-eb22-48d7-8.png",
   },
   {
+    id: "awards",
+    group: "Энциклопедия",
     title: "Литературные премии",
     copy: "История крупнейших наград, лауреаты, произведения и культурный контекст.",
     href: journalPath("awards"),
@@ -131,6 +153,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6634-3234-4332-b438-663736316139/anastacia-dvi-HRPaX-.jpg",
   },
   {
+    id: "writers-world",
+    group: "Энциклопедия",
     title: "Биографии и судьбы писателей",
     copy: "Тщательные человеческие биографии: судьба, время, характер и главные тексты автора.",
     href: journalPath("writers-world"),
@@ -138,6 +162,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
   },
   {
+    id: "literary-essays",
+    group: "Культура и язык",
     title: "О литературе и культуре",
     copy: "Большие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги.",
     href: journalPath("literary-essays"),
@@ -145,6 +171,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3162-6534-4936-b966-633930633738/photo.jpg",
   },
   {
+    id: "folklore",
+    group: "Культура и язык",
     title: "Фольклор и мифология",
     copy: "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.",
     href: journalPath("folklore"),
@@ -152,6 +180,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6262-3936-4061-b465-623133623265/image.png",
   },
   {
+    id: "language",
+    group: "Культура и язык",
     title: "Язык и редкие слова",
     copy: "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.",
     href: journalPath("language"),
@@ -159,6 +189,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
   },
   {
+    id: "author-stories",
+    group: "Культура и язык",
     title: "Литературные истории",
     copy: "Необычные судьбы произведений, авторские замыслы, профессии писателей и культурные открытия.",
     href: journalPath("author-stories"),
@@ -166,6 +198,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
   },
   {
+    id: "atlas",
+    group: "Энциклопедия",
     title: "Литературная карта мира",
     copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
     href: "#atlas",
@@ -173,6 +207,8 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6138-3239-4335-b166-643935623330/123231.png",
   },
   {
+    id: "books",
+    group: "Энциклопедия",
     title: "Книжный архив",
     copy: "Книги связаны с авторами, странами, эпохами и статьями журнала — с фильтрами и редакционной проверкой обложек.",
     href: "#books",
@@ -180,12 +216,21 @@ const sectionLinks = [
       "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
   },
   {
+    id: "calendar",
+    group: "События",
     title: "Литературный календарь",
     copy: "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.",
     href: "#calendar",
     image: "brand/section-prizes.webp",
   },
 ];
+
+const sectionMenuGroups = ["Читать", "Энциклопедия", "Культура и язык", "События"].map(
+  (group) => ({
+    group,
+    sections: sectionLinks.filter((section) => section.group === group),
+  })
+);
 
 const verifiedBookFacts = [
   {
@@ -243,7 +288,7 @@ function pluralRu(count: number, forms: [string, string, string]) {
 }
 
 function writerName(writer: Writer) {
-  return writer.fullName || writer.name || "Автор";
+  return writer.name || writer.fullName || "Автор";
 }
 
 function hasNobel(writer: Writer) {
@@ -471,7 +516,7 @@ export default function App() {
     <div className="magazine-app">
       <div className="topline">
         <span>Литературный журнал и энциклопедия</span>
-        <p>Новый выпуск · 2026</p>
+        <p>Архив пополняется ежедневно</p>
         <div>
           <a href="https://t.me/probbaperra" target="_blank" rel="noreferrer">
             Telegram
@@ -493,13 +538,49 @@ export default function App() {
 
         <nav aria-label="Основная навигация">
           <a href="#atlas">Карта</a>
-          <a href="#journal">Статьи</a>
-          <a href="#sections">Разделы</a>
+          <HeaderArticlesMenu />
+          <details className="sections-menu">
+            <summary>
+              Разделы <span aria-hidden="true">⌄</span>
+            </summary>
+            <div className="sections-mega-menu">
+              <header>
+                <span>Навигация по «Пробе Пера»</span>
+                <strong>Все темы и разделы сайта</strong>
+                <p>От редакционных статей до мировой литературной энциклопедии.</p>
+              </header>
+              <div className="sections-mega-groups">
+                {sectionMenuGroups.map(({ group, sections }) => (
+                  <section key={group}>
+                    <h3>{group}</h3>
+                    {sections.map((section) => (
+                      <a
+                        href={section.href}
+                        key={section.id}
+                        onClick={(event) =>
+                          event.currentTarget.closest("details")?.removeAttribute("open")
+                        }
+                      >
+                        <strong>{section.title}</strong>
+                        <small>{section.copy}</small>
+                      </a>
+                    ))}
+                  </section>
+                ))}
+              </div>
+              <footer>
+                <a href="#sections">
+                  Открыть интерактивный каталог <span aria-hidden="true">→</span>
+                </a>
+              </footer>
+            </div>
+          </details>
           <a href="#calendar">Календарь</a>
           <button type="button" onClick={() => openCommunity("forum")}>
             Форум
           </button>
           <a href="#about">О проекте</a>
+          <CmsNavigationLinks location="header" />
         </nav>
 
         <div className="header-actions">
@@ -519,7 +600,13 @@ export default function App() {
             type="button"
             onClick={() => openCommunity("account")}
           >
-            <span>{readerName.slice(0, 1).toUpperCase() || "✦"}</span>
+            <span>
+              {readerName.slice(0, 1).toUpperCase() || (
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M12 12.3a4.15 4.15 0 1 0 0-8.3 4.15 4.15 0 0 0 0 8.3Zm-7 7.1c.8-3.3 3.45-5.15 7-5.15s6.2 1.85 7 5.15" />
+                </svg>
+              )}
+            </span>
             {readerName || "Войти"}
           </button>
         </div>
@@ -540,6 +627,7 @@ export default function App() {
       </nav>
 
       <main>
+        <CmsHomepageBanners />
         <section className="magazine-hero">
           <div className="hero-editorial">
             <span className="section-kicker">Журнал о литературе и искусстве слова</span>
@@ -589,9 +677,13 @@ export default function App() {
               width="1680"
               height="560"
             />
-            <span>№ 16 · Май 2026</span>
+            <span>Литературный журнал · с 2025 года</span>
           </div>
         </section>
+
+        <Suspense fallback={null}>
+          <CmsHomepageBlocks />
+        </Suspense>
 
         <section className="atlas-section" id="atlas" ref={atlasRef}>
           <header className="atlas-heading">
@@ -647,7 +739,12 @@ export default function App() {
                         }}
                         onClick={() => selectCountry(country)}
                       >
-                        <span>{country.name}</span>
+                        <span>
+                          <b className="country-result-flag" aria-hidden="true">
+                            {country.flag || countryFlag(country.code)}
+                          </b>
+                          {country.name}
+                        </span>
                         <small>
                           {country.writers.length}{" "}
                           {pluralRu(country.writers.length, [
@@ -690,9 +787,8 @@ export default function App() {
 
             <div className="atlas-ranking">
               <span>Крупнейшие архивы</span>
-              {topCountries.map((country, index) => (
+              {topCountries.map((country) => (
                 <button type="button" key={country.id} onClick={() => selectCountry(country)}>
-                  <i>{index + 1}</i>
                   {country.name}
                   <small>{country.writers.length}</small>
                 </button>
@@ -781,8 +877,16 @@ export default function App() {
                     key={country.id}
                     onClick={() => selectCountry(country, true)}
                   >
-                    <span>{country.name}</span>
-                    <small>{country.writers.length} авторов</small>
+                    <span>
+                      <b className="country-result-flag" aria-hidden="true">
+                        {country.flag || countryFlag(country.code)}
+                      </b>
+                      {country.name}
+                    </span>
+                    <small>
+                      {country.writers.length}{" "}
+                      {pluralRu(country.writers.length, ["автор", "автора", "авторов"])}
+                    </small>
                   </button>
                 ))}
             </div>
@@ -862,16 +966,35 @@ export default function App() {
             </p>
             <ul>
               <li>
-                {editorialAudit.verifiedWriters} карточки уже прошли проверку по
+                {editorialAudit.verifiedWriters}{" "}
+                {pluralRu(editorialAudit.verifiedWriters, [
+                  "карточка",
+                  "карточки",
+                  "карточек",
+                ])} уже{" "}
+                {editorialAudit.verifiedWriters === 1 ? "прошла" : "прошли"} проверку по
                 открытым музейным источникам
               </li>
               <li>
-                {editorialAudit.portraitedWriters} документальных портрета подключены
+                {editorialAudit.portraitedWriters}{" "}
+                {pluralRu(editorialAudit.portraitedWriters, [
+                  "документальный портрет",
+                  "документальных портрета",
+                  "документальных портретов",
+                ])}{" "}
+                {editorialAudit.portraitedWriters === 1 ? "подключён" : "подключены"}
                 без генерации лиц
               </li>
               <li>
-                Ещё {(editorialAudit.recordsNeedingReview + generatedEditorialQueue).toLocaleString("ru-RU")} записей
-                остаются в редакционной очереди; автоматически собранные черновики
+                Ещё {(editorialAudit.recordsNeedingReview + generatedEditorialQueue).toLocaleString("ru-RU")}{" "}
+                {pluralRu(editorialAudit.recordsNeedingReview + generatedEditorialQueue, [
+                  "запись",
+                  "записи",
+                  "записей",
+                ])}{" "}
+                {editorialAudit.recordsNeedingReview + generatedEditorialQueue === 1
+                  ? "остаётся"
+                  : "остаются"} в редакционной очереди; автоматически собранные черновики
                 не публикуются до ручной проверки
               </li>
             </ul>
@@ -1054,25 +1177,16 @@ export default function App() {
               <h2>Основные разделы</h2>
             </div>
             <a className="sections-all-button" href={journalPath()}>
-              Все разделы и публикации <span>→</span>
+              Полный архив публикаций <span>→</span>
             </a>
           </header>
-          <div>
-            {sectionLinks.map((section) => (
-              <a
-                href={section.href}
-                key={section.title}
-                style={{ "--section-art": `url(${mediaUrl(section.image)})` } as React.CSSProperties}
-              >
-                <div>
-                  <span>Раздел журнала</span>
-                  <h3>{section.title}</h3>
-                  <p>{section.copy}</p>
-                  <i>→</i>
-                </div>
-              </a>
-            ))}
-          </div>
+          <Suspense fallback={<div className="section-loading">Собираем каталог разделов…</div>}>
+            <SectionsDirectory
+              sections={sectionLinks}
+              countryCount={countryArchive.length}
+              bookCount={bookArchive.length}
+            />
+          </Suspense>
         </section>
 
         <section className="trust-center" id="editorial-policy">
@@ -1200,6 +1314,7 @@ export default function App() {
               <a href="mailto:probperasite@yandex.ru">Связаться с редакцией</a>
               <a href="https://probpera.ru/contacts">Контакты</a>
             </section>
+            <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
         <div className="footer-bottom">

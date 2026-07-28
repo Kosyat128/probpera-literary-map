@@ -1,5 +1,6 @@
 import type { Country } from "./types";
 import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
+import { countryFlag } from "../../utils/countryFlag";
 
 import { afghanistan } from "./afghanistan";
 import { albania } from "./albania";
@@ -78,6 +79,7 @@ import { greece } from "./greece";
 import { grenada } from "./grenada";
 import { guatemala } from "./guatemala";
 import { guinea } from "./guinea";
+import { guineaRepublic } from "./guinea_republic";
 import { guyana } from "./guyana";
 
 import { haiti } from "./haiti";
@@ -145,6 +147,7 @@ import { niger } from "./niger";
 import { nigeria } from "./nigeria";
 import { niue } from "./niue";
 import { northKorea } from "./north_korea";
+import { northMacedonia } from "./north_macedonia";
 import { norway } from "./norway";
 
 import { oman } from "./oman";
@@ -173,6 +176,7 @@ import { saintLucia } from "./saint_lucia";
 import { saintVincentAndTheGrenadines } from "./saint_vincent_and_the_grenadines";
 import { samoa } from "./samoa";
 import { sanMarino } from "./san_marino";
+import { saoTomeAndPrincipe } from "./sao_tome_and_principe";
 import { senegal } from "./senegal";
 import { serbia } from "./serbia";
 import { seychelles } from "./seychelles";
@@ -218,6 +222,7 @@ import { venezuela } from "./venezuela";
 import { vietnam } from "./vietnam";
 
 import { yemen } from "./yemen";
+import { zambia } from "./zambia";
 import { zimbabwe } from "./zimbabwe";
 
 
@@ -299,6 +304,7 @@ const curatedCountries: Country[] = [
   grenada,
   guatemala,
   guinea,
+  guineaRepublic,
   guyana,
 
   haiti,
@@ -366,6 +372,7 @@ const curatedCountries: Country[] = [
   nigeria,
   niue,
   northKorea,
+  northMacedonia,
   norway,
 
   oman,
@@ -394,6 +401,7 @@ const curatedCountries: Country[] = [
   saintVincentAndTheGrenadines,
   samoa,
   sanMarino,
+  saoTomeAndPrincipe,
   senegal,
   serbia,
   seychelles,
@@ -439,8 +447,14 @@ const curatedCountries: Country[] = [
   vietnam,
 
   yemen,
+  zambia,
   zimbabwe,
 ];
 
-export const countries: Country[] = mergeGeneratedWriters(curatedCountries);
+export const countries: Country[] = mergeGeneratedWriters(curatedCountries).map(
+  (country) => ({
+    ...country,
+    flag: country.flag || countryFlag(country.code),
+  })
+);
 export { generatedWriterDraftCount };

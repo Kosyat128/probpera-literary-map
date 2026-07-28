@@ -17,7 +17,7 @@ export const literaryCountries = Object.fromEntries(
       writersList: country.writers || [],
       authors: (country.writers || [])
         .slice(0, 5)
-        .map((writer) => writer.fullName || writer.name || ""),
+        .map((writer) => writer.name || writer.fullName || ""),
     },
   ])
 );

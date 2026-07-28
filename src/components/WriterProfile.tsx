@@ -34,11 +34,11 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       color: "#35205F"
     }}>
       {writer.portrait && (
-        <img src={writer.portrait} alt={writer.fullName || writer.name}
+        <img src={writer.portrait} alt={writer.name || writer.fullName}
           style={{ width: "220px", height: "280px", objectFit: "cover", borderRadius: "14px" }} />
       )}
 
-      <h1>{writer.fullName || writer.name}</h1>
+      <h1>{writer.name || writer.fullName}</h1>
 
       {writer.birthDate && <p>🎂 Родился: {formatDate(writer.birthDate)}</p>}
       {writer.deathDate && <p>⚰ Умер: {formatDate(writer.deathDate)}</p>}
