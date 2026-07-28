@@ -32,7 +32,7 @@ const monthNames = [
   "Декабрь",
 ];
 
-function dateParts(value?: string) {
+export function dateParts(value?: string) {
   if (!value) return null;
   const match = /^\+?(\d{4})-(\d{2})-(\d{2})$/.exec(value);
   if (!match) return null;
@@ -188,8 +188,8 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
         <div className="calendar-agenda">
           <span>
             {monthEvents.length
-              ? `${monthEvents.length} проверенных дат в архиве`
-              : "В этом месяце нет подтверждённых дат"}
+              ? `${monthEvents.length} точных дат в редакционном архиве`
+              : "В этом месяце нет дат с известными днём и месяцем"}
           </span>
           <div>
             {agendaDays.map(([day, dayEvents]) => (

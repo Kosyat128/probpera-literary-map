@@ -63,13 +63,13 @@ export default function ArticleLibrarySection() {
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
   const [selected, setSelected] = useState<ArticleCatalogEntry | null>(() => {
-    const articleId = articleIdFromPath();
+    const articleId = articleIdFromPath(articleCatalog);
     return articleCatalog.find((article) => article.id === articleId) || null;
   });
 
   useEffect(() => {
     const syncWithAddress = () => {
-      const articleId = articleIdFromPath();
+      const articleId = articleIdFromPath(articleCatalog);
       setSelected(
         articleCatalog.find((article) => article.id === articleId) || null
       );
@@ -128,7 +128,7 @@ export default function ArticleLibrarySection() {
     window.history.pushState(
       { probperaArticle: article.id },
       "",
-      articlePath(article.id)
+      articlePath(article.id, article.title, article.sectionId)
     );
     setSelected(article);
   };
@@ -204,7 +204,7 @@ export default function ArticleLibrarySection() {
                 key={article.id}
               >
                 <a
-                  href={articlePath(article.id)}
+                  href={articlePath(article.id, article.title, article.sectionId)}
                   onClick={(event) => {
                     event.preventDefault();
                     openArticle(article);

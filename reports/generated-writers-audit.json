@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-07-27T04:21:22.633Z",
+  "generatedAt": "2026-07-28T19:20:51.395Z",
   "summary": {
     "records": 2356,
     "countryGroups": 128,
     "valid": 2356,
     "withIssues": 0,
+    "editorialDrafts": 2356,
     "duplicateCountryQids": 0,
     "russianFullNames": 13,
     "russianRecords": 13

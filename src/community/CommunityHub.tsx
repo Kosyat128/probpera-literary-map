@@ -694,7 +694,7 @@ export default function CommunityHub({
                     <div>
                       {savedReadings.slice(0, 6).map((item) => (
                         <article key={item.id}>
-                          <a href={articlePath(item.id)}>
+                          <a href={articlePath(item.id, item.title, item.sectionId)}>
                             <small>{item.sectionLabel}</small>
                             <strong>{item.title}</strong>
                           </a>

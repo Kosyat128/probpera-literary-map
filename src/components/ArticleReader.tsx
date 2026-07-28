@@ -194,6 +194,7 @@ export default function ArticleReader({
               toggleSavedReading({
                 id: article.id,
                 title: article.title,
+                sectionId: article.sectionId,
                 sectionLabel: article.sectionLabel,
               })
             }
@@ -295,7 +296,7 @@ export default function ArticleReader({
                   проходят отдельную редакционную проверку.
                 </p>
                 <ShareLinks
-                  url={`${window.location.origin}${articlePath(article.id)}`}
+                  url={`${window.location.origin}${articlePath(article.id, article.title, article.sectionId)}`}
                   title={article.title}
                 />
                 <ArticleEngagement articleSlug={article.id} />

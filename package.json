@@ -3,14 +3,32 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "apps/admin"
+  ],
+  "overrides": {
+    "postcss": "8.5.24",
+    "sharp": "0.35.3"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node scripts/build-article-pages.mjs",
+    "build:all": "npm run build && npm run admin:build",
     "preview": "vite preview",
+    "admin:dev": "npm run dev --workspace @probpera/admin",
+    "admin:build": "npm run build --workspace @probpera/admin",
+    "admin:start": "npm run start --workspace @probpera/admin",
+    "lint": "npm run lint:public && npm run lint --workspace @probpera/admin",
+    "lint:public": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "content:crawl": "node scripts/crawl-probpera.mjs",
     "content:audit": "node scripts/audit-articles.mjs",
     "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
     "content:normalize-titles": "node scripts/normalize-article-titles.mjs",
+    "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
+    "content:export:cms": "node scripts/export-published-content.mjs",
+    "links:audit": "node scripts/audit-public-routes.mjs",
     "media:audit": "node scripts/audit-section-media.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
@@ -25,16 +43,17 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
-    "react-router-dom": "^6.28.0",
     "three": "^0.178.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.15",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
+    "@vitejs/plugin-react": "^5.1.4",
     "cheerio": "^1.1.2",
     "typescript": "^5.6.3",
-    "vite": "^5.4.10"
+    "vite": "^7.3.6",
+    "@types/node": "^24.10.1",
+    "vitest": "^4.1.10"
   }
 }

@@ -319,7 +319,7 @@ export default function GlobalSearch({
                 {results.articles.map((article) => (
                   <a
                     key={article.id}
-                    href={articlePath(article.id)}
+                    href={articlePath(article.id, article.title, article.sectionId)}
                     onClick={onClose}
                   >
                     <span aria-hidden="true">¶</span>

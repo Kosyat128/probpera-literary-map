@@ -124,16 +124,19 @@ const markdown = [
   `Высоких: ${counts.high || 0}.`,
   `Стилистических: ${counts.style || 0}.`,
   `На ручную проверку: ${counts.review || 0}.`,
-  "",
-  ...issues.map(
-    (issue) =>
-      `- **${issue.severity} · ${issue.type}** — ${issue.title} (${issue.articleId}): ${issue.note}`
-  ),
-  "",
+  ...(issues.length
+    ? [
+        "",
+        ...issues.map(
+          (issue) =>
+            `- **${issue.severity} · ${issue.type}** — ${issue.title} (${issue.articleId}): ${issue.note}`
+        ),
+      ]
+    : []),
 ];
 await fs.writeFile(
   path.join(reportDir, "section-media-audit.md"),
-  markdown.join("\n")
+  `${markdown.join("\n")}\n`
 );
 
 console.log(
