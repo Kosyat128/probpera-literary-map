@@ -18,7 +18,11 @@
 1. Создать резервную копию текущего проекта Supabase.
 2. Применить базовую схему `supabase/schema.sql`, миграцию безопасности
    `supabase/migrations/20260727_community_safety.sql`, затем
-   `supabase/migrations/20260728_cms_foundation.sql`.
+   `supabase/migrations/20260728_cms_foundation.sql`,
+   `supabase/migrations/20260728_reader_favorites.sql`,
+   `supabase/migrations/20260730_literary_archive.sql`,
+   `supabase/migrations/20260730_page_revision_history.sql` и
+   `supabase/migrations/20260730_staff_management.sql`.
 3. Скопировать `apps/admin/.env.example` в локальный `.env.local` панели и
    заполнить публичные параметры Supabase. Ключ `service_role` нельзя добавлять
    в переменные `NEXT_PUBLIC_*` и нельзя передавать браузеру.

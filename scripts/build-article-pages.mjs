@@ -78,6 +78,10 @@ function articlePublicPath(article) {
   return `/stati/${articleSectionSlug(article)}/${articleSlug(article)}`;
 }
 
+function pagePublicPath(page) {
+  return `/stranitsy/${page.slug}`;
+}
+
 function safeArticleHtml(contentHtml = "") {
   const $ = load(`<main id="article-source">${contentHtml}</main>`, {
     decodeEntities: false,
@@ -178,7 +182,7 @@ const legacyCatalog = JSON.parse(
 );
 const cmsSnapshot = await readJsonIfExists(
   path.join(publicDirectory, "cms", "published-content.json"),
-  { articles: [], redirects: [] }
+  { articles: [], pages: [], redirects: [] }
 );
 const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
 const homeDocument = load(baseHtml, { decodeEntities: false });
@@ -224,16 +228,24 @@ for (const article of catalog) {
     article.description?.trim() ||
     `Авторский материал литературного журнала «Проба Пера»: ${article.title}`;
   const imageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
+  const socialTitle = article.ogTitle || article.title;
+  const socialDescription = article.ogDescription || description;
+  const socialImageUrl = article.ogImageUrl || imageUrl;
 
   $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
   $('meta[name="description"]').attr("content", description);
+  if (article.seoKeywords?.length) {
+    $("head").append(
+      `<meta name="keywords" content="${xmlEscape(article.seoKeywords.join(", "))}">`
+    );
+  }
   $('meta[property="og:type"]').attr("content", "article");
-  $('meta[property="og:title"]').attr("content", article.title);
-  $('meta[property="og:description"]').attr("content", description);
-  $('meta[property="og:image"]').attr("content", imageUrl);
-  $('meta[name="twitter:title"]').attr("content", article.title);
-  $('meta[name="twitter:description"]').attr("content", description);
-  $('meta[name="twitter:image"]').attr("content", imageUrl);
+  $('meta[property="og:title"]').attr("content", socialTitle);
+  $('meta[property="og:description"]').attr("content", socialDescription);
+  $('meta[property="og:image"]').attr("content", socialImageUrl);
+  $('meta[name="twitter:title"]').attr("content", socialTitle);
+  $('meta[name="twitter:description"]').attr("content", socialDescription);
+  $('meta[name="twitter:image"]').attr("content", socialImageUrl);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   if (article.allowIndexing === false) {
     $('meta[name="robots"]').attr("content", "noindex,follow");
@@ -362,6 +374,75 @@ for (const article of catalog) {
   sitemapEntries.push({ url: canonicalUrl, lastmod: buildDate });
 }
 
+for (const page of cmsSnapshot.pages || []) {
+  if (!/^[a-z0-9][a-z0-9-]{1,119}$/u.test(page.slug || "")) continue;
+  const publicPath = pagePublicPath(page);
+  const canonicalUrl = page.canonicalUrl || `${siteUrl}${publicPath}/`;
+  const $ = load(baseHtml, { decodeEntities: false });
+  const description =
+    page.seoDescription?.trim() ||
+    page.excerpt?.trim() ||
+    `Страница литературного журнала «Проба Пера»: ${page.title}`;
+  $("title").text(`${page.seoTitle || page.title} — Проба Пера`);
+  $('meta[name="description"]').attr("content", description);
+  $('meta[property="og:type"]').attr("content", "website");
+  $('meta[property="og:title"]').attr(
+    "content",
+    page.seoTitle || page.title
+  );
+  $('meta[property="og:description"]').attr("content", description);
+  $('meta[name="twitter:title"]').attr(
+    "content",
+    page.seoTitle || page.title
+  );
+  $('meta[name="twitter:description"]').attr("content", description);
+  $('link[rel="canonical"]').attr("href", canonicalUrl);
+  $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
+  if (page.allowIndexing === false) {
+    $('meta[name="robots"]').attr("content", "noindex,follow");
+  }
+  $("head").append(
+    `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: page.title,
+      description,
+      url: canonicalUrl,
+      inLanguage: "ru-RU",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Проба Пера",
+        url: `${siteUrl}/`,
+      },
+      dateModified: page.updatedAt || undefined,
+    }).replaceAll("<", "\\u003c")}</script>`
+  );
+  $("#root").html(`
+    <main class="static-article-fallback">
+      <a href="${siteBasePath || ""}/">← На главную</a>
+      <article>
+        <span>Проба Пера</span>
+        <h1>${xmlEscape(page.title)}</h1>
+        ${page.excerpt ? `<p>${xmlEscape(page.excerpt)}</p>` : ""}
+        ${safeArticleHtml(page.contentHtml)}
+      </article>
+    </main>
+  `);
+  const targetDirectory = path.join(
+    distDirectory,
+    "stranitsy",
+    page.slug
+  );
+  await fs.mkdir(targetDirectory, { recursive: true });
+  await fs.writeFile(path.join(targetDirectory, "index.html"), $.html(), "utf8");
+  if (page.allowIndexing !== false) {
+    sitemapEntries.push({
+      url: canonicalUrl,
+      lastmod: (page.updatedAt || buildDate).slice(0, 10),
+    });
+  }
+}
+
 for (const redirect of cmsSnapshot.redirects || []) {
   const targetUrl = /^https:\/\//iu.test(redirect.destinationPath)
     ? redirect.destinationPath
@@ -422,5 +503,5 @@ await fs.writeFile(
 );
 
 console.log(
-  `Built ${catalog.length} article pages with human-readable URLs, ${redirectRules.length} redirects, sitemap and RSS for ${siteUrl}.`
+  `Built ${catalog.length} article pages, ${(cmsSnapshot.pages || []).length} CMS pages, ${redirectRules.length} redirects, sitemap and RSS for ${siteUrl}.`
 );

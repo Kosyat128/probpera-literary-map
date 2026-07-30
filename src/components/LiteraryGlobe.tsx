@@ -13,6 +13,7 @@ import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import type { Country } from "../data/countries";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
 
@@ -470,13 +471,14 @@ function MuseumStarfield({
   reducedMotion: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const count = economical ? 820 : 2400;
+  const count = economical ? 1100 : 3600;
   const geometry = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
     const phases = new Float32Array(count);
     const speeds = new Float32Array(count);
     const warmth = new Float32Array(count);
+    const brightness = new Float32Array(count);
     let seed = 0x51f15e;
 
     const random = () => {
@@ -514,10 +516,16 @@ function MuseumStarfield({
       positions[offset] = radius * x;
       positions[offset + 1] = radius * y;
       positions[offset + 2] = radius * z;
-      sizes[index] = 0.7 + random() * (index % 71 === 0 ? 1.8 : 0.72);
+      const brightStar = random() > 0.975;
+      sizes[index] = brightStar
+        ? 2.35 + random() * 1.65
+        : 0.82 + Math.pow(random(), 2.2) * 1.05;
       phases[index] = random() * Math.PI * 2;
-      speeds[index] = 0.18 + random() * 0.62;
+      speeds[index] = 0.28 + random() * 0.56;
       warmth[index] = random();
+      brightness[index] = brightStar
+        ? 0.86 + random() * 0.14
+        : 0.32 + Math.pow(random(), 2.4) * 0.48;
     }
 
     const nextGeometry = new THREE.BufferGeometry();
@@ -526,6 +534,10 @@ function MuseumStarfield({
     nextGeometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
     nextGeometry.setAttribute("aSpeed", new THREE.BufferAttribute(speeds, 1));
     nextGeometry.setAttribute("aWarmth", new THREE.BufferAttribute(warmth, 1));
+    nextGeometry.setAttribute(
+      "aBrightness",
+      new THREE.BufferAttribute(brightness, 1)
+    );
     nextGeometry.computeBoundingSphere();
     return nextGeometry;
   }, [count]);
@@ -559,34 +571,54 @@ function MuseumStarfield({
           attribute float aPhase;
           attribute float aSpeed;
           attribute float aWarmth;
+          attribute float aBrightness;
           varying float vTwinkle;
           varying float vWarmth;
+          varying float vBrightness;
           uniform float uTime;
           uniform float uMotion;
 
           void main() {
             vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
-            float pulse = 0.88 + 0.12 * sin(aPhase + uTime * aSpeed * uMotion);
-            float perspective = 8.0 / max(3.0, -viewPosition.z);
-            gl_PointSize = clamp(aSize * pulse * perspective, 0.55, 2.8);
+            float pulse = 0.94 + 0.06 * sin(aPhase + uTime * aSpeed * uMotion);
+            float perspective = 9.5 / max(3.0, -viewPosition.z);
+            gl_PointSize = clamp(aSize * pulse * perspective, 0.72, 4.2);
             gl_Position = projectionMatrix * viewPosition;
             vTwinkle = pulse;
             vWarmth = aWarmth;
+            vBrightness = aBrightness;
           }
         `}
         fragmentShader={`
           varying float vTwinkle;
           varying float vWarmth;
+          varying float vBrightness;
 
           void main() {
             vec2 centered = gl_PointCoord - vec2(0.5);
             float distanceFromCenter = length(centered);
-            float core = smoothstep(0.48, 0.07, distanceFromCenter);
-            float halo = smoothstep(0.5, 0.24, distanceFromCenter) * 0.18;
-            vec3 cool = vec3(0.73, 0.78, 1.0);
-            vec3 warm = vec3(1.0, 0.78, 0.48);
-            vec3 color = mix(cool, warm, smoothstep(0.54, 0.92, vWarmth));
-            gl_FragColor = vec4(color, (core + halo) * vTwinkle * 0.72);
+            float core = smoothstep(0.47, 0.055, distanceFromCenter);
+            float halo = smoothstep(0.5, 0.2, distanceFromCenter) * 0.24;
+            float horizontalRay =
+              smoothstep(0.08, 0.0, abs(centered.y)) *
+              smoothstep(0.48, 0.05, abs(centered.x));
+            float verticalRay =
+              smoothstep(0.08, 0.0, abs(centered.x)) *
+              smoothstep(0.48, 0.05, abs(centered.y));
+            float diffraction =
+              (horizontalRay + verticalRay) *
+              smoothstep(0.82, 0.98, vBrightness) *
+              0.18;
+            vec3 cool = vec3(0.74, 0.84, 1.0);
+            vec3 neutral = vec3(1.0, 0.97, 0.88);
+            vec3 warm = vec3(1.0, 0.76, 0.46);
+            vec3 color = mix(cool, neutral, smoothstep(0.15, 0.7, vWarmth));
+            color = mix(color, warm, smoothstep(0.87, 1.0, vWarmth));
+            float alpha =
+              (core + halo + diffraction) *
+              vTwinkle *
+              mix(0.58, 0.98, vBrightness);
+            gl_FragColor = vec4(color, alpha);
           }
         `}
       />
@@ -621,7 +653,7 @@ function MuseumSkyDome({
       <mesh scale={22} raycast={() => null} renderOrder={-100}>
         <sphereGeometry args={[1, 24, 16]} />
         <meshBasicMaterial
-          color="#0c0318"
+          color="#050914"
           side={THREE.BackSide}
           depthWrite={false}
           toneMapped={false}
@@ -690,14 +722,24 @@ function MuseumSkyDome({
             vec3 drift = vec3(uTime * uMotion, 0.0, -uTime * 0.42 * uMotion);
             float detail = nebulaNoise(direction * 3.15 + drift);
             vec3 galaxyNormal = normalize(vec3(0.05, 0.88, 0.47));
-            float galacticBand = pow(max(0.0, 1.0 - abs(dot(direction, galaxyNormal))), 4.8);
-            float cloud = smoothstep(0.43, 0.79, detail) * galacticBand;
-            float warmCloud = smoothstep(0.58, 0.88, detail) * pow(galacticBand, 2.0);
+            float broadBand = pow(
+              max(0.0, 1.0 - abs(dot(direction, galaxyNormal))),
+              2.35
+            );
+            float galacticBand = pow(broadBand, 1.72);
+            float cloud = smoothstep(0.39, 0.76, detail) * galacticBand;
+            float dustLane =
+              smoothstep(0.45, 0.73, 1.0 - detail) *
+              pow(galacticBand, 1.4);
+            float warmCloud =
+              smoothstep(0.67, 0.9, detail) *
+              pow(galacticBand, 2.2);
 
-            vec3 color = vec3(0.012, 0.0025, 0.022);
-            color += vec3(0.105, 0.025, 0.155) * cloud * 0.72;
-            color += vec3(0.035, 0.055, 0.12) * galacticBand * 0.26;
-            color += vec3(0.16, 0.052, 0.018) * warmCloud * 0.22;
+            vec3 color = vec3(0.0045, 0.0075, 0.017);
+            color += vec3(0.025, 0.035, 0.07) * broadBand * 0.58;
+            color += vec3(0.075, 0.07, 0.088) * cloud * 0.55;
+            color -= vec3(0.012, 0.013, 0.016) * dustLane * 0.35;
+            color += vec3(0.11, 0.055, 0.025) * warmCloud * 0.16;
             gl_FragColor = vec4(color, 1.0);
           }
         `}
@@ -1075,6 +1117,7 @@ function GlobeScene({
 }
 
 export default function LiteraryGlobe({ countries, selectedCountry, onCountrySelect }: Props) {
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
@@ -1120,7 +1163,11 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
     return (
       <div className="globe-loading" role="status">
         <span aria-hidden="true">✦</span>
-        <p>{atlasError ? "Карта временно недоступна" : "Проявляем старинную карту…"}</p>
+        <p>
+          {atlasError
+            ? t("Карта временно недоступна")
+            : t("Проявляем старинную карту…")}
+        </p>
       </div>
     );
   }
@@ -1133,7 +1180,7 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
         fallback={
           <div className="globe-loading" role="status">
             <span aria-hidden="true">✦</span>
-            <p>Используйте текстовый указатель стран ниже</p>
+            <p>{t("Используйте текстовый указатель стран ниже")}</p>
           </div>
         }
         gl={{
@@ -1159,18 +1206,24 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
 
       {hoveredCountry && (
         <div className="globe-country-label" role="status">
-          <span>{hoveredCountry.name}</span>
+          <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
           <small>
-            {hoveredCountry.writers.length}{" "}
-            {pluralRu(hoveredCountry.writers.length, ["автор", "автора", "авторов"])} в архиве
+            {number(hoveredCountry.writers.length)}{" "}
+            {language === "en"
+              ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
+              : `${pluralRu(hoveredCountry.writers.length, [
+                  "автор",
+                  "автора",
+                  "авторов",
+                ])} в архиве`}
           </small>
         </div>
       )}
 
       <div className="globe-instruction">
-        <span>Тяните, чтобы вращать</span>
+        <span>{t("Тяните, чтобы вращать")}</span>
         <i aria-hidden="true" />
-        <span>Колесо — масштаб</span>
+        <span>{t("Колесо — масштаб")}</span>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import {
   useDisplayMode,
   type DisplayMode,
 } from "../hooks/useDisplayMode";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type Props = {
   compact?: boolean;
@@ -20,12 +21,13 @@ const modes: Array<{
 
 export default function DisplayModeControl({ compact = false }: Props) {
   const { mode, setMode } = useDisplayMode();
+  const { t } = useInterfaceLanguage();
 
   return (
     <div
       className={`display-mode-control${compact ? " is-compact" : ""}`}
       role="group"
-      aria-label="Режим оформления"
+      aria-label={t("Режим оформления")}
     >
       {modes.map((item) => (
         <button
@@ -33,12 +35,12 @@ export default function DisplayModeControl({ compact = false }: Props) {
           key={item.id}
           className={mode === item.id ? "is-active" : ""}
           aria-pressed={mode === item.id}
-          aria-label={item.label}
-          title={item.label}
+          aria-label={t(item.label)}
+          title={t(item.label)}
           onClick={() => setMode(item.id)}
         >
           <span aria-hidden="true">{item.symbol}</span>
-          {!compact && <small>{item.shortLabel}</small>}
+          {!compact && <small>{t(item.shortLabel)}</small>}
         </button>
       ))}
     </div>

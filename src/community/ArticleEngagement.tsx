@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { supabase } from "../lib/supabase";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
 
@@ -18,8 +19,8 @@ type Comment = {
   profiles?: { display_name?: string } | null;
 };
 
-function formatCommentDate(value: string) {
-  return new Intl.DateTimeFormat("ru-RU", {
+function formatCommentDate(value: string, language: "ru" | "en") {
+  return new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -34,6 +35,8 @@ export default function ArticleEngagement({
   compact = false,
 }: Props) {
   const { configured, user } = useAuth();
+  const { language, t, number } = useInterfaceLanguage();
+  const isBook = subjectType === "book";
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentBody, setCommentBody] = useState("");
   const [guestName, setGuestName] = useState("");
@@ -61,7 +64,7 @@ export default function ArticleEngagement({
     ]);
 
     if (commentsResult.error || ratingResult.error) {
-      setMessage("Не удалось обновить обсуждение. Попробуйте ещё раз.");
+      setMessage(t("Не удалось обновить обсуждение. Попробуйте ещё раз."));
       return;
     }
 
@@ -70,7 +73,7 @@ export default function ArticleEngagement({
     setRatingCount(Number(summary?.rating_count || 0));
     setAverage(Number(summary?.average_score || 0));
     setUserRating(Number(summary?.my_score || 0));
-  }, [articleSlug, compact, subjectType]);
+  }, [articleSlug, compact, subjectType, t]);
 
   useEffect(() => {
     if (!configured) return;
@@ -111,10 +114,10 @@ export default function ArticleEngagement({
     });
     setBusy(false);
     if (error) {
-      setMessage("Оценку не удалось сохранить. Попробуйте ещё раз.");
+      setMessage(t("Оценку не удалось сохранить. Попробуйте ещё раз."));
       return;
     }
-    setMessage("Спасибо — ваша оценка сохранена.");
+    setMessage(t("Спасибо — ваша оценка сохранена."));
     await loadEngagement();
   };
 
@@ -148,8 +151,10 @@ export default function ArticleEngagement({
     if (error) {
       setMessage(
         error.message.includes("Too many comments")
-          ? "Слишком много сообщений подряд. Подождите несколько минут."
-          : "Комментарий не удалось опубликовать. Проверьте текст и повторите."
+          ? t("Слишком много сообщений подряд. Подождите несколько минут.")
+          : t(
+              "Комментарий не удалось опубликовать. Проверьте текст и повторите."
+            )
       );
       return;
     }
@@ -157,7 +162,7 @@ export default function ArticleEngagement({
       window.localStorage.setItem("probpera-guest-name", guestName.trim());
     }
     setCommentBody("");
-    setMessage("Комментарий опубликован.");
+    setMessage(t("Комментарий опубликован."));
     await loadEngagement();
   };
 
@@ -176,8 +181,8 @@ export default function ArticleEngagement({
     });
     setMessage(
       error
-        ? "Не удалось отправить жалобу."
-        : "Спасибо. Комментарий передан редакции на проверку."
+        ? t("Не удалось отправить жалобу.")
+        : t("Спасибо. Комментарий передан редакции на проверку.")
     );
   };
 
@@ -186,8 +191,9 @@ export default function ArticleEngagement({
       <div className="engagement-card is-pending">
         <span>★</span>
         <p>
-          Открытые рейтинги и встроенные комментарии готовы и включатся после
-          подключения серверной базы проекта.
+          {t(
+            "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта."
+          )}
         </p>
       </div>
     );
@@ -197,19 +203,35 @@ export default function ArticleEngagement({
     <section className={`engagement-card${compact ? " is-compact" : ""}`}>
       <header className="engagement-heading">
         <div>
-          <span className="section-kicker">Обсуждение публикации</span>
-          <h3>Мнение читателей</h3>
+          <span className="section-kicker">
+            {isBook ? t("Обсуждение книги") : t("Обсуждение публикации")}
+          </span>
+          <h3>{isBook ? t("Мнение о книге") : t("Мнение читателей")}</h3>
         </div>
         <span>
-          {comments.length} {comments.length === 1 ? "комментарий" : "комментариев"}
+          {number(comments.length)}{" "}
+          {language === "en"
+            ? comments.length === 1
+              ? "comment"
+              : "comments"
+            : comments.length === 1
+              ? "комментарий"
+              : "комментариев"}
         </span>
       </header>
       <div className="rating-summary">
         <span>
           <strong>{average ? average.toFixed(1) : "—"}</strong>
-          <small>{ratingCount} оценок</small>
+          <small>
+            {number(ratingCount)}{" "}
+            {language === "en"
+              ? ratingCount === 1
+                ? "rating"
+                : "ratings"
+              : "оценок"}
+          </small>
         </span>
-        <div aria-label="Оценить публикацию">
+        <div aria-label={isBook ? t("Оценить книгу") : t("Оценить публикацию")}>
           {[1, 2, 3, 4, 5].map((score) => (
             <button
               className={score <= userRating ? "is-active" : ""}
@@ -217,7 +239,9 @@ export default function ArticleEngagement({
               key={score}
               disabled={busy}
               onClick={() => void rate(score)}
-              aria-label={`${score} из 5`}
+              aria-label={
+                language === "en" ? `${score} out of 5` : `${score} из 5`
+              }
             >
               ★
             </button>
@@ -229,22 +253,26 @@ export default function ArticleEngagement({
         <div className="comment-form">
           {!user && (
             <label>
-              <span>Имя или никнейм</span>
+              <span>{t("Имя или никнейм")}</span>
               <input
                 value={guestName}
                 onChange={(event) => setGuestName(event.target.value)}
-                placeholder="Как к вам обращаться"
+                placeholder={t("Как к вам обращаться")}
                 minLength={2}
                 maxLength={80}
               />
             </label>
           )}
           <label>
-            <span>Комментарий</span>
+            <span>{t("Комментарий")}</span>
             <textarea
               value={commentBody}
               onChange={(event) => setCommentBody(event.target.value)}
-              placeholder="Поделитесь впечатлением о материале"
+              placeholder={
+                isBook
+                  ? t("Поделитесь впечатлением о книге")
+                  : t("Поделитесь впечатлением о материале")
+              }
               minLength={2}
               maxLength={4000}
             />
@@ -259,7 +287,7 @@ export default function ArticleEngagement({
             }
             onClick={() => void submitComment()}
           >
-            {busy ? "Публикуем…" : "Опубликовать комментарий"}
+            {busy ? t("Публикуем…") : t("Опубликовать комментарий")}
           </button>
         </div>
       )}
@@ -278,10 +306,10 @@ export default function ArticleEngagement({
                 <strong>
                   {comment.profiles?.display_name ||
                     comment.guest_name ||
-                    "Читатель"}
+                    t("Читатель")}
                 </strong>
                 <time dateTime={comment.created_at}>
-                  {formatCommentDate(comment.created_at)}
+                  {formatCommentDate(comment.created_at, language)}
                 </time>
               </header>
               <p>{comment.body}</p>
@@ -290,7 +318,7 @@ export default function ArticleEngagement({
                   type="button"
                   onClick={() => void reportComment(comment.id)}
                 >
-                  Пожаловаться редакции
+                  {t("Пожаловаться редакции")}
                 </button>
               )}
             </article>
@@ -298,8 +326,8 @@ export default function ArticleEngagement({
         ) : (
           !compact && (
             <div className="comment-empty">
-              <strong>Начните содержательный разговор</strong>
-              <p>Первый комментарий может оставить любой читатель.</p>
+              <strong>{t("Начните содержательный разговор")}</strong>
+              <p>{t("Первый комментарий может оставить любой читатель.")}</p>
             </div>
           )
         )}

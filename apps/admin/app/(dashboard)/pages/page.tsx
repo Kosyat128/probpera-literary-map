@@ -1,13 +1,18 @@
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { createPageAction } from "./actions";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+import {
+  changePageStatusAction,
+  createPageAction,
+  softDeletePageAction,
+} from "./actions";
 
 export const metadata = { title: "Страницы" };
 
 export default async function PagesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; saved?: string }>;
+  searchParams: Promise<{ error?: string; saved?: string; deleted?: string }>;
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
@@ -24,18 +29,54 @@ export default async function PagesPage({
         </div>
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && <p className="form-message form-success">Страница создана как черновик.</p>}
+      {query.saved && <p className="form-message form-success">Изменения сохранены.</p>}
+      {query.deleted && <p className="form-message form-success">Страница перемещена в корзину.</p>}
       <div className="dashboard-grid">
         <section className="panel">
           <h2>Все страницы</h2>
           {pages.length ? (
             <table className="data-table">
-              <thead><tr><th>Название</th><th>Статус</th><th>Обновлено</th></tr></thead>
+              <thead><tr><th>Название</th><th>Статус</th><th>Обновлено</th><th>Действия</th></tr></thead>
               <tbody>{pages.map((page) => (
                 <tr key={page.id}>
-                  <td className="data-title"><strong>{page.title}</strong><small>/{page.slug}</small></td>
-                  <td><span className="badge">{page.status === "published" ? "Опубликована" : "Черновик"}</span></td>
+                  <td className="data-title">
+                    <strong>{page.title}</strong>
+                    <small>/stranitsy/{page.slug}/</small>
+                  </td>
+                  <td>
+                    <span className="badge">
+                      {page.status === "published"
+                        ? "Опубликована"
+                        : page.status === "hidden"
+                          ? "Скрыта"
+                          : "Черновик"}
+                    </span>
+                  </td>
                   <td>{formatDate(page.updated_at, true)}</td>
+                  <td>
+                    <div className="table-actions">
+                      <a className="button-secondary" href={`/admin/pages/${page.id}`}>
+                        Редактировать
+                      </a>
+                      <form action={changePageStatusAction}>
+                        <input name="id" type="hidden" value={page.id} />
+                        <input
+                          name="status"
+                          type="hidden"
+                          value={page.status === "published" ? "draft" : "published"}
+                        />
+                        <button className="button-secondary" type="submit">
+                          {page.status === "published" ? "Снять" : "Опубликовать"}
+                        </button>
+                      </form>
+                      <form action={softDeletePageAction}>
+                        <input name="id" type="hidden" value={page.id} />
+                        <ConfirmSubmitButton message={`Переместить страницу «${page.title}» в корзину?`}>
+                          В корзину
+                        </ConfirmSubmitButton>
+                      </form>
+                    </div>
+                  </td>
                 </tr>
               ))}</tbody>
             </table>

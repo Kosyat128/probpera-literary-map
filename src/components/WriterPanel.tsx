@@ -6,6 +6,7 @@ import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import { getWriterWorkTitles } from "../data/bookArchive";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type WriterPanelProps = {
   country: Country;
@@ -85,6 +86,7 @@ export default function WriterPanel({
   onWriterSelect,
   onClose,
 }: WriterPanelProps) {
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const writers = country.writers || [];
@@ -154,6 +156,10 @@ export default function WriterPanel({
     () => (activeWriter ? relatedArticlesFor(activeWriter) : []),
     [activeWriter]
   );
+  const activeWriterWorks = useMemo(
+    () => (activeWriter ? getWriterWorkTitles(activeWriter) : []),
+    [activeWriter]
+  );
 
   const nobelCount =
     country.nobel ?? writers.reduce((count, writer) => count + Number(isNobelWriter(writer)), 0);
@@ -172,11 +178,16 @@ export default function WriterPanel({
     <aside ref={panelRef} className="country-panel" aria-live="polite">
       <div className="panel-topline">
         <div>
-          <span className="eyebrow">Литературный архив</span>
+          <span className="eyebrow">{t("Литературный архив")}</span>
           <span className="archive-code">{country.code?.toUpperCase()}</span>
         </div>
         {onClose && (
-          <button className="panel-close" type="button" onClick={onClose} aria-label="Закрыть панель">
+          <button
+            className="panel-close"
+            type="button"
+            onClick={onClose}
+            aria-label={t("Закрыть панель")}
+          >
             ×
           </button>
         )}
@@ -190,26 +201,47 @@ export default function WriterPanel({
           size={52}
         />
         <div>
-          <h2>{country.name}</h2>
-          <p>{country.capital ? `Столица: ${country.capital}` : "Литературное наследие страны"}</p>
+          <h2>{countryName(country.code, country.name)}</h2>
+          <p>
+            {country.capital
+              ? `${t("Столица")}: ${country.capital}`
+              : t("Литературное наследие страны")}
+          </p>
         </div>
       </header>
 
       <p className="country-description">{description}</p>
+      {language === "en" && (
+        <p className="archive-original-language">
+          {t(
+            "Справочные тексты энциклопедии представлены в оригинале на русском языке."
+          )}
+        </p>
+      )}
 
       <div className="country-metrics">
         <div>
-          <strong>{writers.length}</strong>
-          <span>{pluralRu(writers.length, ["автор", "автора", "авторов"])}</span>
+          <strong>{number(writers.length)}</strong>
+          <span>
+            {language === "en"
+              ? writers.length === 1
+                ? "writer"
+                : "writers"
+              : pluralRu(writers.length, ["автор", "автора", "авторов"])}
+          </span>
         </div>
         <div>
-          <strong>{nobelCount}</strong>
+          <strong>{number(nobelCount)}</strong>
           <span>
-            {pluralRu(nobelCount, [
-              "Нобелевский лауреат",
-              "Нобелевских лауреата",
-              "Нобелевских лауреатов",
-            ])}
+            {language === "en"
+              ? nobelCount === 1
+                ? "Nobel laureate"
+                : "Nobel laureates"
+              : pluralRu(nobelCount, [
+                  "Нобелевский лауреат",
+                  "Нобелевских лауреата",
+                  "Нобелевских лауреатов",
+                ])}
           </span>
         </div>
         <div>
@@ -219,13 +251,17 @@ export default function WriterPanel({
             ).length;
             return (
               <>
-                <strong>{worksCount}</strong>
+                <strong>{number(worksCount)}</strong>
                 <span>
-                  {pluralRu(worksCount, [
-                    "произведение",
-                    "произведения",
-                    "произведений",
-                  ])}
+                  {language === "en"
+                    ? worksCount === 1
+                      ? "work"
+                      : "works"
+                    : pluralRu(worksCount, [
+                        "произведение",
+                        "произведения",
+                        "произведений",
+                      ])}
                 </span>
               </>
             );
@@ -236,7 +272,7 @@ export default function WriterPanel({
       {periods.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <h3>Эпохи и направления</h3>
+            <h3>{t("Эпохи и направления")}</h3>
           </div>
           <div className="tag-list">
             {periods.map((period) => (
@@ -251,7 +287,7 @@ export default function WriterPanel({
 
       <section className="archive-section">
         <div className="section-title">
-          <h3>Писатели</h3>
+          <h3>{t("Писатели")}</h3>
         </div>
 
         <div className="writer-list">
@@ -279,7 +315,9 @@ export default function WriterPanel({
                 </span>
                 <span className="writer-copy">
                   <strong>{getWriterName(writer)}</strong>
-                  <small>{writer.years || writer.literaryEra || "Биография в архиве"}</small>
+                  <small>
+                    {writer.years || writer.literaryEra || t("Биография в архиве")}
+                  </small>
                 </span>
                 <span className="writer-arrow" aria-hidden="true">
                   ↗
@@ -293,24 +331,26 @@ export default function WriterPanel({
       {activeWriter && (
         <section ref={detailRef} className="archive-section writer-detail">
           <div className="section-title">
-            <h3>Карточка автора</h3>
+            <h3>{t("Карточка автора")}</h3>
           </div>
 
           <span className="writer-era">
             {activeWriter.literaryEra ||
               activeWriter.movement ||
               activeWriter.tags?.[0] ||
-              "Литературная традиция"}
+              t("Литературная традиция")}
           </span>
           {activeWriter.editorial?.status === "verified" && (
-            <span className="editorial-badge">Проверено редакцией</span>
+            <span className="editorial-badge">{t("Проверено редакцией")}</span>
           )}
           {activeWriter.editorial?.status === "reviewed" && (
-            <span className="editorial-badge is-reviewed">Редакционная карточка</span>
+            <span className="editorial-badge is-reviewed">
+              {t("Редакционная карточка")}
+            </span>
           )}
           {activeWriter.editorial?.status === "draft" && (
             <span className="editorial-badge is-draft">
-              Справочная карточка · требует расширения
+              {t("Справочная карточка · требует расширения")}
             </span>
           )}
           <h4>{getWriterName(activeWriter)}</h4>
@@ -319,14 +359,14 @@ export default function WriterPanel({
             {activeWriter.biography ||
               activeWriter.bio ||
               activeWriter.description ||
-              "Расширенная биография готовится для энциклопедии."}
+              t("Расширенная биография готовится для энциклопедии.")}
           </p>
 
-          {activeWriter.works && activeWriter.works.length > 0 && (
+          {activeWriterWorks.length > 0 && (
             <div className="works-block">
-              <span>Основные произведения</span>
+              <span>{t("Основные произведения")}</span>
               <ol>
-                {activeWriter.works.slice(0, 8).map((work) => (
+                {activeWriterWorks.slice(0, 8).map((work) => (
                   <li key={work}>{work}</li>
                 ))}
               </ol>
@@ -335,7 +375,7 @@ export default function WriterPanel({
 
           {relatedArticles.length > 0 && (
             <div className="writer-articles">
-              <span>Материалы журнала</span>
+              <span>{t("Материалы журнала")}</span>
               {relatedArticles.map((article) => (
                 <a
                   key={article.id}
@@ -347,7 +387,9 @@ export default function WriterPanel({
                   )}
                 >
                   <strong>{article.title}</strong>
-                  <small>{article.sectionLabel} · {article.readingMinutes} мин.</small>
+                  <small>
+                    {article.sectionLabel} · {article.readingMinutes} {t("мин.")}
+                  </small>
                 </a>
               ))}
             </div>
@@ -355,7 +397,7 @@ export default function WriterPanel({
 
           {activeWriter.editorial?.sources && activeWriter.editorial.sources.length > 0 && (
             <div className="source-block">
-              <span>Источники</span>
+              <span>{t("Источники")}</span>
               {activeWriter.editorial.sources.map((source) => (
                 <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
                   {source.publisher || source.title}
@@ -369,7 +411,7 @@ export default function WriterPanel({
       {timeline.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <h3>Литературная хронология</h3>
+            <h3>{t("Литературная хронология")}</h3>
           </div>
           <div className="country-timeline">
             {timeline.map(({ writer, year }) => (
@@ -385,7 +427,7 @@ export default function WriterPanel({
       {country.facts && country.facts.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
-            <h3>Интересные факты</h3>
+            <h3>{t("Интересные факты")}</h3>
           </div>
           <ul className="fact-list">
             {country.facts.map((fact) => (

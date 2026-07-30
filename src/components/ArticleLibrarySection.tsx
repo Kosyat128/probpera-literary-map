@@ -9,6 +9,7 @@ import {
   articlePath,
   journalPath,
 } from "../utils/articleRoutes";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -58,6 +59,7 @@ function publicationWord(count: number) {
 }
 
 export default function ArticleLibrarySection() {
+  const { language, t, number } = useInterfaceLanguage();
   const initialSection = new URLSearchParams(window.location.search).get("section");
   const [sectionId, setSectionId] = useState(initialSection || "all");
   const [search, setSearch] = useState("");
@@ -147,19 +149,22 @@ export default function ArticleLibrarySection() {
       <section className="article-library" id="journal">
         <header className="article-library-heading">
           <div>
-            <span className="section-kicker">Авторский архив · 157 материалов</span>
-            <h2>Журнал, выстроенный для чтения</h2>
+            <span className="section-kicker">
+              {t("Авторский архив · 157 материалов")}
+            </span>
+            <h2>{t("Журнал, выстроенный для чтения")}</h2>
             <p>
-              Мнения о книгах, литературные эссе, биографии, экранизации и
-              языковые наблюдения собраны в единую редакционную библиотеку.
+              {t(
+                "Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку."
+              )}
             </p>
           </div>
           <label>
-            <span>Поиск по публикациям</span>
+            <span>{t("Поиск по публикациям")}</span>
             <input
               type="search"
               value={search}
-              placeholder="Название, тема или рубрика…"
+              placeholder={t("Название, тема или рубрика…")}
               onChange={(event) => {
                 setSearch(event.target.value);
                 setVisibleCount(12);
@@ -168,13 +173,13 @@ export default function ArticleLibrarySection() {
           </label>
         </header>
 
-        <nav className="article-library-tabs" aria-label="Рубрики журнала">
+        <nav className="article-library-tabs" aria-label={t("Рубрики журнала")}>
           <button
             type="button"
             className={sectionId === "all" ? "is-active" : ""}
             onClick={() => changeSection("all")}
           >
-            Все материалы <span>{articleCatalog.length}</span>
+            {t("Все материалы")} <span>{number(articleCatalog.length)}</span>
           </button>
           {sections.map((section) => (
             <button
@@ -183,17 +188,26 @@ export default function ArticleLibrarySection() {
               className={sectionId === section.id ? "is-active" : ""}
               onClick={() => changeSection(section.id)}
             >
-              {section.label} <span>{section.count}</span>
+              {t(section.label)} <span>{number(section.count)}</span>
             </button>
           ))}
         </nav>
 
         <div className="article-library-summary">
           <p>
-            Найдено <strong>{filtered.length}</strong>{" "}
-            {publicationWord(filtered.length)}
+            {language === "en" ? (
+              <>
+                Found <strong>{number(filtered.length)}</strong>{" "}
+                {filtered.length === 1 ? "publication" : "publications"}
+              </>
+            ) : (
+              <>
+                Найдено <strong>{number(filtered.length)}</strong>{" "}
+                {publicationWord(filtered.length)}
+              </>
+            )}
           </p>
-          <span>Текст и заголовки сохранены из оригинальных материалов</span>
+          <span>{t("Текст и заголовки сохранены из оригинальных материалов")}</span>
         </div>
 
         {filtered.length > 0 ? (
@@ -236,11 +250,15 @@ export default function ArticleLibrarySection() {
                   <div className="library-card-copy">
                     <div>
                       <span>{article.publishedLabel.replace("Опубликовано :", "")}</span>
-                      <span>{article.readingMinutes} мин.</span>
+                      <span>
+                        {article.readingMinutes} {t("мин.")}
+                      </span>
                     </div>
                     <h3>{article.title}</h3>
                     <p>{article.description}</p>
-                    <strong>Читать в новом режиме <i>→</i></strong>
+                    <strong>
+                      {t("Читать в новом режиме")} <i>→</i>
+                    </strong>
                   </div>
                 </a>
               </article>
@@ -249,7 +267,7 @@ export default function ArticleLibrarySection() {
         ) : (
           <div className="article-library-empty">
             <span aria-hidden="true">⌕</span>
-            <h3>Материалов по этому запросу пока нет</h3>
+            <h3>{t("Материалов по этому запросу пока нет")}</h3>
             <button
               type="button"
               onClick={() => {
@@ -257,7 +275,7 @@ export default function ArticleLibrarySection() {
                 changeSection("all");
               }}
             >
-              Показать весь журнал
+              {t("Показать весь журнал")}
             </button>
           </div>
         )}
@@ -268,7 +286,7 @@ export default function ArticleLibrarySection() {
             type="button"
             onClick={() => setVisibleCount((value) => value + 12)}
           >
-            Показать ещё 12 материалов
+            {t("Показать ещё 12 материалов")}
             <span>
               {Math.min(visibleCount, filtered.length)} / {filtered.length}
             </span>
@@ -280,7 +298,7 @@ export default function ArticleLibrarySection() {
         <Suspense
           fallback={
             <div className="article-reader-suspense" role="status">
-              Открываем режим чтения…
+              {t("Открываем режим чтения…")}
             </div>
           }
         >

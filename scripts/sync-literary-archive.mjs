@@ -45,23 +45,32 @@ function asciiSlug(value) {
 async function sourceArchive() {
   await mkdir(cacheDirectory, { recursive: true });
   await build({
+    absWorkingDir: repositoryRoot,
     stdin: {
       contents: `
-        import { countries } from "../../src/data/countries/index.ts";
-        import { buildBookArchive } from "../../src/data/bookArchive.ts";
+        import { countries } from "./src/data/countries/index.ts";
+        import { buildBookArchive } from "./src/data/bookArchive.ts";
 
         export const archive = buildBookArchive(countries).map(
           ({ country, writer, ...entry }) => entry
         );
       `,
-      resolveDir: cacheDirectory,
+      resolveDir: repositoryRoot,
       sourcefile: "literary-archive-source.ts",
       loader: "ts",
     },
     bundle: true,
     platform: "node",
+    packages: "external",
     format: "esm",
     target: "node22",
+    tsconfigRaw: {
+      compilerOptions: {
+        module: "ESNext",
+        moduleResolution: "Bundler",
+        target: "ES2022",
+      },
+    },
     outfile: bundlePath,
     logLevel: "silent",
   });

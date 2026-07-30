@@ -5,7 +5,13 @@ import {
   isCoverDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
+import {
+  getBookArticleMentions,
+  type BookArticleMention,
+} from "../data/articles/bookMentions";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { articlePath } from "../utils/articleRoutes";
 
 type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
 
@@ -45,10 +51,6 @@ function resolveCoverUrl(url?: string) {
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
 }
 
-function isEditorialCover(book: BookArchiveEntry) {
-  return book.coverRights?.status === "editorial-original";
-}
-
 export default function BookArchiveSection({
   books,
   onBookSelect,
@@ -59,8 +61,13 @@ export default function BookArchiveSection({
   const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(
     null
   );
+  const [relatedArticles, setRelatedArticles] = useState<BookArticleMention[]>(
+    []
+  );
+  const [relatedArticlesLoading, setRelatedArticlesLoading] = useState(false);
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
 
   const counts = useMemo(
@@ -137,6 +144,34 @@ export default function BookArchiveSection({
     setVisibleCount(12);
   }, [deferredQuery, filter]);
 
+  useEffect(() => {
+    let active = true;
+    if (!selectedBook) {
+      setRelatedArticles([]);
+      setRelatedArticlesLoading(false);
+      return () => {
+        active = false;
+      };
+    }
+
+    setRelatedArticles([]);
+    setRelatedArticlesLoading(true);
+    getBookArticleMentions(bookKey(selectedBook))
+      .then((articles) => {
+        if (active) setRelatedArticles(articles);
+      })
+      .catch(() => {
+        if (active) setRelatedArticles([]);
+      })
+      .finally(() => {
+        if (active) setRelatedArticlesLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [selectedBook]);
+
   const visibleBooks = filteredBooks.slice(0, visibleCount);
   const isBookSaved = (book: BookArchiveEntry) =>
     savedReadings.some(
@@ -156,31 +191,34 @@ export default function BookArchiveSection({
     <section className="book-archive-section" id="books">
       <header className="book-archive-heading">
         <div>
-          <span className="section-kicker">Книги, авторы, страны</span>
-          <h2>Книжный архив</h2>
+          <span className="section-kicker">{t("Книги, авторы, страны")}</span>
+          <h2>{t("Книжный архив")}</h2>
           <p>
-            Произведения связаны с карточками писателей и литературными
-            традициями стран. Расширенные сведения публикуются только после
-            редакционной проверки.
+            {t(
+              "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
+            )}
           </p>
         </div>
         <div className="book-archive-total">
-          <strong>{books.length.toLocaleString("ru-RU")}</strong>
-          <span>произведений из единой базы стран</span>
+          <strong>{number(books.length)}</strong>
+          <span>{t("произведений из единой базы стран")}</span>
         </div>
       </header>
 
       <div className="book-archive-toolbar">
         <label>
-          <span>Поиск по книге, автору или стране</span>
+          <span>{t("Поиск по книге, автору или стране")}</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Например, Достоевский или Япония"
+            placeholder={t("Например, Достоевский или Япония")}
           />
         </label>
-        <div className="book-archive-filters" aria-label="Фильтры книжного архива">
+        <div
+          className="book-archive-filters"
+          aria-label={t("Фильтры книжного архива")}
+        >
           {archiveFilters.map((item) => (
             <button
               className={filter === item.id ? "is-active" : ""}
@@ -188,8 +226,8 @@ export default function BookArchiveSection({
               key={item.id}
               onClick={() => setFilter(item.id)}
             >
-              {item.label}
-              <span>{counts[item.id]}</span>
+              {t(item.label)}
+              <span>{number(counts[item.id])}</span>
             </button>
           ))}
         </div>
@@ -201,7 +239,7 @@ export default function BookArchiveSection({
             className="book-detail-close"
             type="button"
             onClick={() => setSelectedBook(null)}
-            aria-label="Закрыть карточку книги"
+            aria-label={t("Закрыть карточку книги")}
           >
             ×
           </button>
@@ -209,17 +247,10 @@ export default function BookArchiveSection({
             className={`book-detail-cover${isCoverDisplayAllowed(selectedBook) ? " has-image" : ""}`}
           >
             {isCoverDisplayAllowed(selectedBook) ? (
-              <>
-                <img
-                  src={resolveCoverUrl(selectedBook.coverUrl)}
-                  alt={`Редакционная обложка произведения «${selectedBook.title}»`}
-                />
-                {isEditorialCover(selectedBook) && (
-                  <span className="editorial-cover-badge">
-                    Серия «Проба Пера»
-                  </span>
-                )}
-              </>
+              <img
+                src={resolveCoverUrl(selectedBook.coverUrl)}
+                alt={`${t("Редакционная обложка произведения")} «${selectedBook.title}»`}
+              />
             ) : (
               <>
                 <small>Проба Пера</small>
@@ -231,10 +262,10 @@ export default function BookArchiveSection({
           <div className="book-detail-copy">
             <span className="section-kicker">
               {selectedBook.editorial?.status === "verified"
-                ? "Проверено редакцией"
+                ? t("Проверено редакцией")
                 : selectedBook.editorial?.status === "reviewed"
-                  ? "Редакционная карточка"
-                  : "Архивная запись"}
+                  ? t("Редакционная карточка")
+                  : t("Архивная запись")}
             </span>
             <h3>{selectedBook.title}</h3>
             {selectedBook.originalTitle && (
@@ -244,31 +275,38 @@ export default function BookArchiveSection({
             )}
             <dl>
               <div>
-                <dt>Автор</dt>
+                <dt>{t("Автор")}</dt>
                 <dd>{selectedBook.writerName}</dd>
               </div>
               <div>
-                <dt>Страна</dt>
-                <dd>{selectedBook.countryName}</dd>
+                <dt>{t("Страна")}</dt>
+                <dd>
+                  {countryName(
+                    selectedBook.country.code,
+                    selectedBook.countryName
+                  )}
+                </dd>
               </div>
               {selectedBook.firstPublished && (
                 <div>
-                  <dt>Первая публикация</dt>
+                  <dt>{t("Первая публикация")}</dt>
                   <dd>{selectedBook.firstPublished}</dd>
                 </div>
               )}
               {selectedBook.originalLanguage && (
                 <div>
-                  <dt>Язык оригинала</dt>
+                  <dt>{t("Язык оригинала")}</dt>
                   <dd>{selectedBook.originalLanguage}</dd>
                 </div>
               )}
             </dl>
             <p>
               {selectedBook.description ||
-                "Произведение уже связано с автором и страной. Расширенная аннотация, история публикации и библиография находятся в редакционной очереди — неподтверждённые сведения здесь не публикуются."}
+                t(
+                  "Произведение уже связано с автором и страной. Расширенная аннотация, история публикации и библиография находятся в редакционной очереди — неподтверждённые сведения здесь не публикуются."
+                )}
             </p>
-            <div className="book-tags" aria-label="Темы и жанры книги">
+            <div className="book-tags" aria-label={t("Темы и жанры книги")}>
               {[...(selectedBook.genres || []), ...(selectedBook.tags || [])]
                 .slice(0, 6)
                 .map((tag) => (
@@ -283,14 +321,14 @@ export default function BookArchiveSection({
                 onClick={() => toggleBook(selectedBook)}
               >
                 {isBookSaved(selectedBook)
-                  ? "Сохранено в библиотеке"
-                  : "Добавить в мою библиотеку"}
+                  ? t("Сохранено в библиотеке")
+                  : t("Добавить в мою библиотеку")}
               </button>
               <button
                 type="button"
                 onClick={() => onBookSelect(selectedBook)}
               >
-                Открыть автора и страну <span>→</span>
+                {t("Открыть автора и страну")} <span>→</span>
               </button>
               {selectedBook.sourceUrl && (
                 <a
@@ -298,7 +336,7 @@ export default function BookArchiveSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Источник сведений
+                  {t("Источник сведений")}
                 </a>
               )}
               {selectedBook.coverSourceUrl && (
@@ -307,25 +345,72 @@ export default function BookArchiveSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Источник обложки
+                  {t("Источник обложки")}
                 </a>
               )}
               {selectedBook.coverRights && (
                 <span className="cover-rights-note">
                   {selectedBook.coverRights.status === "external-preview"
-                    ? "Внешнее превью · файл не хранится на сайте"
+                    ? t("Внешнее превью · файл не хранится на сайте")
                     : selectedBook.coverRights.status === "editorial-original"
-                      ? "Редакционная обложка «Пробы Пера» · не является обложкой конкретного издания"
+                      ? t(
+                          "Редакционная обложка «Пробы Пера» · не является обложкой конкретного издания"
+                        )
                     : selectedBook.coverRights.licenseName ||
-                      "Права на изображение проверены"}
+                      t("Права на изображение проверены")}
                 </span>
               )}
             </div>
+            {(relatedArticlesLoading || relatedArticles.length > 0) && (
+              <section
+                className="book-journal-mentions"
+                aria-busy={relatedArticlesLoading}
+              >
+                <header>
+                  <div>
+                    <span>{t("Книга в журнале")}</span>
+                    <h4>{t("Статьи и упоминания")}</h4>
+                  </div>
+                  {!relatedArticlesLoading && (
+                    <strong>{number(relatedArticles.length)}</strong>
+                  )}
+                </header>
+                {relatedArticlesLoading ? (
+                  <p>{t("Ищем материалы о книге…")}</p>
+                ) : (
+                  <div>
+                    {relatedArticles.map((article) => (
+                      <a
+                        href={articlePath(
+                          article.id,
+                          article.title,
+                          article.sectionId,
+                          article.slug
+                        )}
+                        key={article.id}
+                      >
+                        <span>
+                          {article.kind === "review"
+                            ? t("Статья о книге")
+                            : article.kind === "feature"
+                              ? t("Материал о книге")
+                              : t("Книга упоминается")}
+                        </span>
+                        <strong>{article.title}</strong>
+                        <small>
+                          {article.sectionLabel} ·{" "}
+                          {number(article.readingMinutes)} {t("мин.")}
+                        </small>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </section>
+            )}
           </div>
           <ArticleEngagement
             articleSlug={`book:${bookKey(selectedBook)}`}
             subjectType="book"
-            compact
           />
         </article>
       )}
@@ -337,18 +422,11 @@ export default function BookArchiveSection({
               className={`archive-book-cover${isCoverDisplayAllowed(book) ? " has-image" : ""}`}
             >
               {isCoverDisplayAllowed(book) ? (
-                <>
-                  <img
-                    src={resolveCoverUrl(book.coverUrl)}
-                    alt={`Редакционная обложка произведения «${book.title}»`}
-                    loading="lazy"
-                  />
-                  {isEditorialCover(book) && (
-                    <span className="editorial-cover-badge">
-                      Серия «Проба Пера»
-                    </span>
-                  )}
-                </>
+                <img
+                  src={resolveCoverUrl(book.coverUrl)}
+                  alt={`${t("Редакционная обложка произведения")} «${book.title}»`}
+                  loading="lazy"
+                />
               ) : (
                 <>
                   <small>Проба Пера</small>
@@ -359,7 +437,7 @@ export default function BookArchiveSection({
             </div>
             <div className="archive-book-copy">
               <small>
-                {book.countryName}
+                {countryName(book.country.code, book.countryName)}
                 {book.firstPublished ? ` · ${book.firstPublished}` : ""}
               </small>
               <h3>{book.title}</h3>
@@ -369,10 +447,10 @@ export default function BookArchiveSection({
                   className={`editorial-state is-${book.editorial?.status || "draft"}`}
                 >
                   {book.editorial?.status === "verified"
-                    ? "проверено"
+                    ? t("проверено")
                     : book.editorial?.status === "reviewed"
-                      ? "редакционная карточка"
-                      : "в очереди"}
+                      ? t("редакционная карточка")
+                      : t("в очереди")}
                 </span>
                 <button
                   className={
@@ -389,15 +467,15 @@ export default function BookArchiveSection({
                   }
                   title={
                     isBookSaved(book)
-                      ? "Сохранено в библиотеке"
-                      : "Сохранить книгу"
+                      ? t("Сохранено в библиотеке")
+                      : t("Сохранить книгу")
                   }
                   onClick={() => toggleBook(book)}
                 >
                   {isBookSaved(book) ? "◆" : "◇"}
                 </button>
                 <button type="button" onClick={() => setSelectedBook(book)}>
-                  О книге
+                  {t("О книге")}
                 </button>
               </div>
             </div>
@@ -407,8 +485,8 @@ export default function BookArchiveSection({
 
       {filteredBooks.length === 0 && (
         <div className="book-archive-empty">
-          <strong>Ничего не найдено</strong>
-          <p>Попробуйте другое название, автора, страну или фильтр.</p>
+          <strong>{t("Ничего не найдено")}</strong>
+          <p>{t("Попробуйте другое название, автора, страну или фильтр.")}</p>
         </div>
       )}
 
@@ -418,9 +496,11 @@ export default function BookArchiveSection({
           type="button"
           onClick={() => setVisibleCount((current) => current + 12)}
         >
-          Показать ещё 12
+          {t("Показать ещё 12")}
           <span>
-            {visibleBooks.length} из {filteredBooks.length}
+            {language === "en"
+              ? `${number(visibleBooks.length)} of ${number(filteredBooks.length)}`
+              : `${number(visibleBooks.length)} из ${number(filteredBooks.length)}`}
           </span>
         </button>
       )}
