@@ -52,6 +52,116 @@ select {
   cursor: pointer;
 }
 
+.isbn-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.isbn-search .button {
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.editorial-note {
+  padding: 18px;
+  border: 1px solid rgba(255, 179, 109, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.editorial-note strong {
+  color: var(--orange-soft);
+}
+
+.editorial-note p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.isbn-candidate {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 52px);
+  align-items: start;
+}
+
+.isbn-candidate-cover {
+  display: grid;
+  overflow: hidden;
+  min-height: 360px;
+  place-items: center;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.isbn-candidate-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+}
+
+.isbn-candidate-copy h2 {
+  margin: 10px 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.edition-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin: 24px 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.edition-facts div {
+  padding: 14px;
+  background: var(--violet-900);
+}
+
+.edition-facts dt {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edition-facts dd {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.edition-save-form {
+  padding-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .isbn-search,
+  .isbn-candidate,
+  .edition-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .isbn-candidate-cover {
+    min-height: 280px;
+  }
+}
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,

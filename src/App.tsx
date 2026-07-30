@@ -20,7 +20,11 @@ import {
 } from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
-import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
+import {
+  buildBookArchive,
+  getWriterWorkTitles,
+  isCoverDisplayAllowed,
+} from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { articlePath, journalPath } from "./utils/articleRoutes";
@@ -372,7 +376,7 @@ export default function App() {
   );
   const totalWriters = allWriters.length;
   const totalWorks = useMemo(
-    () => new Set(allWriters.flatMap((writer) => writer.works || [])).size,
+    () => new Set(allWriters.flatMap(getWriterWorkTitles)).size,
     [allWriters]
   );
   const bookArchive = useMemo(

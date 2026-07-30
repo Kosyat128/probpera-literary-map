@@ -6,7 +6,10 @@ import {
   useState,
 } from "react";
 
-import type { BookArchiveEntry } from "../data/bookArchive";
+import {
+  getWriterWorkTitles,
+  type BookArchiveEntry,
+} from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath } from "../utils/articleRoutes";
@@ -190,7 +193,7 @@ export default function GlobalSearch({
           writer.description,
           ...(writer.genres || []),
           ...(writer.tags || []),
-          ...(writer.works || []),
+          ...getWriterWorkTitles(writer),
           ...(writer.awards || []),
           ...(writer.languages || []),
           ...(writer.places || []),

@@ -14,6 +14,7 @@ export type WorkProfile = {
       | "public-domain"
       | "licensed"
       | "permission"
+      | "editorial-original"
       | "external-preview"
       | "unverified";
     licenseName?: string;

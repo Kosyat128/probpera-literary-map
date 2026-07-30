@@ -5,6 +5,7 @@ import { articleCatalog } from "../data/articles/catalog";
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
+import { getWriterWorkTitles } from "../data/bookArchive";
 
 type WriterPanelProps = {
   country: Country;
@@ -214,7 +215,7 @@ export default function WriterPanel({
         <div>
           {(() => {
             const worksCount = uniqueValues(
-              writers.flatMap((writer) => writer.works || [])
+              writers.flatMap(getWriterWorkTitles)
             ).length;
             return (
               <>

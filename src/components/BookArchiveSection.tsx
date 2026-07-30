@@ -39,6 +39,16 @@ function bookKey(book: BookArchiveEntry) {
   return `${book.countryId}:${book.writerId}:${book.id}`;
 }
 
+function resolveCoverUrl(url?: string) {
+  if (!url) return "";
+  if (/^(?:https?:|data:|blob:)/i.test(url)) return url;
+  return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
+}
+
+function isEditorialCover(book: BookArchiveEntry) {
+  return book.coverRights?.status === "editorial-original";
+}
+
 export default function BookArchiveSection({
   books,
   onBookSelect,
@@ -199,10 +209,17 @@ export default function BookArchiveSection({
             className={`book-detail-cover${isCoverDisplayAllowed(selectedBook) ? " has-image" : ""}`}
           >
             {isCoverDisplayAllowed(selectedBook) ? (
-              <img
-                src={selectedBook.coverUrl}
-                alt={`Обложка книги «${selectedBook.title}»`}
-              />
+              <>
+                <img
+                  src={resolveCoverUrl(selectedBook.coverUrl)}
+                  alt={`Редакционная обложка произведения «${selectedBook.title}»`}
+                />
+                {isEditorialCover(selectedBook) && (
+                  <span className="editorial-cover-badge">
+                    Серия «Проба Пера»
+                  </span>
+                )}
+              </>
             ) : (
               <>
                 <small>Проба Пера</small>
@@ -286,7 +303,7 @@ export default function BookArchiveSection({
               )}
               {selectedBook.coverSourceUrl && (
                 <a
-                  href={selectedBook.coverSourceUrl}
+                  href={resolveCoverUrl(selectedBook.coverSourceUrl)}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -297,6 +314,8 @@ export default function BookArchiveSection({
                 <span className="cover-rights-note">
                   {selectedBook.coverRights.status === "external-preview"
                     ? "Внешнее превью · файл не хранится на сайте"
+                    : selectedBook.coverRights.status === "editorial-original"
+                      ? "Редакционная обложка «Пробы Пера» · не является обложкой конкретного издания"
                     : selectedBook.coverRights.licenseName ||
                       "Права на изображение проверены"}
                 </span>
@@ -318,11 +337,18 @@ export default function BookArchiveSection({
               className={`archive-book-cover${isCoverDisplayAllowed(book) ? " has-image" : ""}`}
             >
               {isCoverDisplayAllowed(book) ? (
-                <img
-                  src={book.coverUrl}
-                  alt={`Обложка книги «${book.title}»`}
-                  loading="lazy"
-                />
+                <>
+                  <img
+                    src={resolveCoverUrl(book.coverUrl)}
+                    alt={`Редакционная обложка произведения «${book.title}»`}
+                    loading="lazy"
+                  />
+                  {isEditorialCover(book) && (
+                    <span className="editorial-cover-badge">
+                      Серия «Проба Пера»
+                    </span>
+                  )}
+                </>
               ) : (
                 <>
                   <small>Проба Пера</small>

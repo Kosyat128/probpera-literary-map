@@ -689,7 +689,6 @@ export const france: Country = {
       bio: "Французский писатель, поэт и драматург, один из крупнейших представителей романтизма.",
       works: [
         "Собор Парижской Богоматери",
-        "Отверженные",
         "Человек, который смеётся"
       ],
       workDetails: [
@@ -747,9 +746,43 @@ export const france: Country = {
       portrait: "",
       bio: "Французский писатель и драматург, один из самых популярных авторов приключенческой литературы.",
       works: [
-        "Три мушкетёра",
         "Граф Монте-Кристо",
         "Королева Марго"
+      ],
+      workDetails: [
+        {
+          id: "three-musketeers",
+          title: "Три мушкетёра",
+          originalTitle: "Les Trois Mousquetaires",
+          firstPublished: 1844,
+          originalLanguage: "французский",
+          genres: [
+            "историко-приключенческий роман",
+            "роман-фельетон"
+          ],
+          tags: [
+            "Франция XVII века",
+            "дружба",
+            "честь",
+            "приключения"
+          ],
+          description: "Историко-приключенческий роман о молодом гасконце д’Артаньяне и трёх королевских мушкетёрах. Стремительный сюжет соединяет придворную интригу, поединки и размышление о дружбе, верности и личной чести.",
+          coverUrl: "brand/book-covers/three-musketeers-editorial.webp",
+          coverSourceUrl: "brand/book-covers/three-musketeers-editorial.webp",
+          coverRights: {
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/three-musketeers-editorial.webp",
+            checkedAt: "2026-07-30",
+            note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+          },
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-30"
+          }
+        }
       ],
       genres: [
         "приключенческий роман",
@@ -1128,7 +1161,6 @@ export const france: Country = {
       portrait: "",
       bio: "Французский писатель, философ и публицист, лауреат Нобелевской премии по литературе 1957 года. Один из крупнейших представителей литературы абсурда.",
       works: [
-        "Посторонний",
         "Чума",
         "Миф о Сизифе",
         "Падение"
