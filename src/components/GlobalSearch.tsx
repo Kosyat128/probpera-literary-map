@@ -10,7 +10,7 @@ import type { BookArchiveEntry } from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath } from "../utils/articleRoutes";
-import { countryFlag } from "../utils/countryFlag";
+import CountryFlagIcon from "./CountryFlagIcon";
 
 type Props = {
   open: boolean;
@@ -312,7 +312,14 @@ export default function GlobalSearch({
                       onClose();
                     }}
                   >
-                    <span>{country.flag || countryFlag(country.code)}</span>
+                    <span>
+                      <CountryFlagIcon
+                        code={country.code}
+                        countryName={country.name}
+                        size={28}
+                        decorative
+                      />
+                    </span>
                     <strong>{country.name}</strong>
                     <small>
                       {country.writers.length}{" "}

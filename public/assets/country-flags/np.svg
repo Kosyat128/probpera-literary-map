@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-np desc-np">
+  <title id="title-np">Непал — NP</title>
+  <desc id="desc-np">Круглая SVG-иконка флага страны «Непал».</desc>
+  <defs>
+    <clipPath id="clip-np"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-np)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.21352313 0 0 -0.21352313 -22.34163701 72.99644128)">
+      <path d="M395 178H226L395 7H114V377Z" fill="#22408B"/>
+      <path d="M356 192H193L356 21H128V346Z" fill="#DD2F45"/>
+      <path d="M203 106 216 100 203 94 212 83 197 84 199 70 187 78 181 65 175 78 164 70 165 84 151 83 159 94 146 100 159 106 151 118 165 116 164 131 175 122 181 135 187 122 199 131 197 116 212 118ZM181 208Q166 208 154.5 218.5Q143 229 142 244Q150 230 164 224L167 227L158 231L167 235L161 243L171 242L170 251L177 246L181 254L185 246L193 251L192 242L202 243L196 235L205 231L196 227L198 224Q213 230 221 244Q220 229 208.5 218.5Q197 208 182 208H181Z" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

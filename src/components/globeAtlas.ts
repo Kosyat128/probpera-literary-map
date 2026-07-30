@@ -2,6 +2,15 @@ import * as THREE from "three";
 
 import worldGeoJsonUrl from "../data/geo/countries.geojson?url";
 import type { Country } from "../data/countries/types";
+import {
+  buildSphericalOutlinePositions,
+  geometryContainsGeographicPoint,
+  GLOBE_TEXTURE_FLIP_Y,
+  longitudeToTextureX,
+  normalizeLongitude,
+  uvToGeographic,
+  type GlobeGeoGeometry,
+} from "./globeGeography";
 
 type Position = [number, number];
 type LinearRing = Position[];
@@ -18,10 +27,7 @@ type GeoFeature = {
     ADM0_A3?: string;
     MAPCOLOR13?: number;
   };
-  geometry: {
-    type: "Polygon" | "MultiPolygon";
-    coordinates: PolygonCoordinates | MultiPolygonCoordinates;
-  };
+  geometry: GlobeGeoGeometry;
 };
 
 type GeoFeatureCollection = {
@@ -34,15 +40,16 @@ export type GlobeAtlas = {
   reliefTexture: THREE.CanvasTexture;
   highlightTexture: THREE.CanvasTexture;
   countryAtUv: (uv: THREE.Vector2) => Country | null;
+  countryAtGeographicCoordinates: (longitude: number, latitude: number) => Country | null;
+  geographicCoordinatesAtUv: (uv: THREE.Vector2) => [longitude: number, latitude: number];
   centroidForCountry: (countryId: string) => [number, number] | null;
+  outlineGeometryForCountry: (countryId: string) => THREE.BufferGeometry | null;
   updateHighlight: (selectedCountryId?: string | null, hoveredCountryId?: string | null) => void;
   dispose: () => void;
 };
 
 const MAP_WIDTH = 3072;
 const MAP_HEIGHT = 1536;
-const HIT_WIDTH = 1024;
-const HIT_HEIGHT = 512;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
 let antiqueMapPromise: Promise<HTMLImageElement> | null = null;
 
@@ -114,7 +121,7 @@ function traceRing(
   const points = unwrapRing(ring);
 
   points.forEach(([lng, lat], index) => {
-    const x = ((lng + 180) / 360) * width + shift;
+    const x = longitudeToTextureX(lng, width) + shift;
     const y = ((90 - lat) / 180) * height;
 
     if (index === 0) context.moveTo(x, y);
@@ -380,13 +387,6 @@ function makeReliefCanvas(features: GeoFeature[]) {
   return canvas;
 }
 
-function encodeHitId(value: number) {
-  const red = value & 255;
-  const green = (value >> 8) & 255;
-  const blue = (value >> 16) & 255;
-  return `rgb(${red}, ${green}, ${blue})`;
-}
-
 function featureCountry(feature: GeoFeature, countriesByCode: Map<string, Country>) {
   const properties = feature.properties;
   const candidateCodes = [properties.ISO_A2, properties.WB_A2, properties.POSTAL]
@@ -436,10 +436,6 @@ function ringMetrics(ring: LinearRing) {
   };
 }
 
-function normalizeLongitude(value: number) {
-  return ((((value + 180) % 360) + 360) % 360) - 180;
-}
-
 function featureCentroid(features: GeoFeature[]): [number, number] | null {
   let largestArea = -1;
   let selected: Position | null = null;
@@ -465,7 +461,11 @@ function configureTexture(texture: THREE.CanvasTexture) {
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
-  texture.anisotropy = 8;
+  texture.flipY = GLOBE_TEXTURE_FLIP_Y;
+  texture.anisotropy = 16;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = true;
   texture.needsUpdate = true;
   return texture;
 }
@@ -474,7 +474,11 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
   texture.colorSpace = THREE.NoColorSpace;
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
-  texture.anisotropy = 8;
+  texture.flipY = GLOBE_TEXTURE_FLIP_Y;
+  texture.anisotropy = 16;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = true;
   texture.needsUpdate = true;
   return texture;
 }
@@ -490,30 +494,18 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
       .map((country) => [country.code!.toUpperCase(), country] as const)
   );
   const featuresByCountryId = new Map<string, GeoFeature[]>();
-  const hitCountryById = new Map<number, Country>();
-  const hitCanvas = document.createElement("canvas");
-  hitCanvas.width = HIT_WIDTH;
-  hitCanvas.height = HIT_HEIGHT;
-  const hitContext = hitCanvas.getContext("2d", { willReadFrequently: true });
-  if (!hitContext) throw new Error("Canvas 2D is unavailable");
+  const selectableFeatures: Array<{ feature: GeoFeature; country: Country }> = [];
 
-  hitContext.imageSmoothingEnabled = false;
-
-  worldGeoJson.features.forEach((feature, index) => {
+  worldGeoJson.features.forEach((feature) => {
     const country = featureCountry(feature, countriesByCode);
     if (!country) return;
 
     const countryFeatures = featuresByCountryId.get(country.id) ?? [];
     countryFeatures.push(feature);
     featuresByCountryId.set(country.id, countryFeatures);
-
-    const hitId = index + 1;
-    const color = encodeHitId(hitId);
-    hitCountryById.set(hitId, country);
-    drawFeature(hitContext, feature, HIT_WIDTH, HIT_HEIGHT, color, color, 2.5);
+    selectableFeatures.push({ feature, country });
   });
 
-  const hitData = hitContext.getImageData(0, 0, HIT_WIDTH, HIT_HEIGHT).data;
   const mapTexture = configureTexture(
     new THREE.CanvasTexture(makeMapCanvas(worldGeoJson.features, antiqueMap))
   );
@@ -527,24 +519,23 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   if (!highlightContext) throw new Error("Canvas 2D is unavailable");
   const highlightTexture = configureTexture(new THREE.CanvasTexture(highlightCanvas));
   const centroids = new Map<string, [number, number] | null>();
+  const outlineGeometries = new Map<string, THREE.BufferGeometry | null>();
 
-  const countryAtUv = (uv: THREE.Vector2) => {
-    const x = Math.max(0, Math.min(HIT_WIDTH - 1, Math.floor(uv.x * HIT_WIDTH)));
-    const y = Math.max(0, Math.min(HIT_HEIGHT - 1, Math.floor((1 - uv.y) * HIT_HEIGHT)));
-
-    for (let offsetY = -1; offsetY <= 1; offsetY += 1) {
-      for (let offsetX = -1; offsetX <= 1; offsetX += 1) {
-        const sampleX = Math.max(0, Math.min(HIT_WIDTH - 1, x + offsetX));
-        const sampleY = Math.max(0, Math.min(HIT_HEIGHT - 1, y + offsetY));
-        const pixelIndex = (sampleY * HIT_WIDTH + sampleX) * 4;
-        const hitId =
-          hitData[pixelIndex] + (hitData[pixelIndex + 1] << 8) + (hitData[pixelIndex + 2] << 16);
-        const country = hitCountryById.get(hitId);
-        if (country) return country;
+  const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
+    for (const { feature, country } of selectableFeatures) {
+      if (geometryContainsGeographicPoint(feature.geometry, longitude, latitude)) {
+        return country;
       }
     }
 
     return null;
+  };
+
+  const geographicCoordinatesAtUv = (uv: THREE.Vector2) => uvToGeographic(uv);
+
+  const countryAtUv = (uv: THREE.Vector2) => {
+    const [longitude, latitude] = geographicCoordinatesAtUv(uv);
+    return countryAtGeographicCoordinates(longitude, latitude);
   };
 
   const centroidForCountry = (countryId: string) => {
@@ -552,6 +543,26 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
       centroids.set(countryId, featureCentroid(featuresByCountryId.get(countryId) ?? []));
     }
     return centroids.get(countryId) ?? null;
+  };
+
+  const outlineGeometryForCountry = (countryId: string) => {
+    if (!outlineGeometries.has(countryId)) {
+      const features = featuresByCountryId.get(countryId) ?? [];
+      const positions = buildSphericalOutlinePositions(
+        features.map((feature) => feature.geometry)
+      );
+
+      if (!positions.length) {
+        outlineGeometries.set(countryId, null);
+      } else {
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        geometry.computeBoundingSphere();
+        outlineGeometries.set(countryId, geometry);
+      }
+    }
+
+    return outlineGeometries.get(countryId) ?? null;
   };
 
   const drawHighlight = (
@@ -598,12 +609,17 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     reliefTexture,
     highlightTexture,
     countryAtUv,
+    countryAtGeographicCoordinates,
+    geographicCoordinatesAtUv,
     centroidForCountry,
+    outlineGeometryForCountry,
     updateHighlight,
     dispose: () => {
       mapTexture.dispose();
       reliefTexture.dispose();
       highlightTexture.dispose();
+      outlineGeometries.forEach((geometry) => geometry?.dispose());
+      outlineGeometries.clear();
     },
   };
 }

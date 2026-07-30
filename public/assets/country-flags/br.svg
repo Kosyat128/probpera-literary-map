@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-br desc-br">
+  <title id="title-br">Бразилия — BR</title>
+  <desc id="desc-br">Круглая SVG-иконка флага страны «Бразилия».</desc>
+  <defs>
+    <clipPath id="clip-br"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-br)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#009B3A"/>
+      <path d="M465 192 256 34 47 192 256 350Z" fill="#FEDF01"/>
+      <path d="M256 285Q274 285 291.0 277.5Q308 270 320.5 258.0Q333 246 340.5 229.0Q348 212 348 193Q348 155 321.0 128.0Q294 101 256.0 101.0Q218 101 191.0 128.0Q164 155 164.0 193.0Q164 231 191.0 258.0Q218 285 256 285Z" fill="#002776"/>
+      <path d="M175 236Q218 236 266.5 218.0Q315 200 345 171Q341 155 332 142Q307 171 257.0 191.0Q207 211 165 208Q167 223 175 236Z" fill="#CBE9D4"/>
+      <path d="M171 189H185V174H171ZM185 160H199V146H185Z" fill="#88C9F9"/>
+      <path d="M213 189H228V174H213ZM242 174H256V160H242ZM299 146H313V132H299ZM256 132H270V118H256ZM299 217H313V203H299Z" fill="#55ACEE"/>
+      <path d="M270 160H284V146H270Z" fill="#3B88C3"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

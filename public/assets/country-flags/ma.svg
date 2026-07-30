@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-ma desc-ma">
+  <title id="title-ma">Марокко — MA</title>
+  <desc id="desc-ma">Круглая SVG-иконка флага страны «Марокко».</desc>
+  <defs>
+    <clipPath id="clip-ma"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-ma)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#C1272D"/>
+      <path d="M214 133 230 182 188 213H240L256 262L272 213H324L282 182L298 133L256 163ZM265 170 278 160 273 176ZM239 176 234 160 247 170ZM242 186 256 176 270 186 264 202H248ZM220 202 233 193 237 202ZM275 202 279 193 292 202ZM261 213 256 228 251 213Z" fill="#006233"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

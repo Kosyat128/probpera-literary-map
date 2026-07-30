@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { articleCatalog } from "../data/articles/catalog";
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
-import { countryFlag } from "../utils/countryFlag";
+import CountryFlagIcon from "./CountryFlagIcon";
 
 type WriterPanelProps = {
   country: Country;
@@ -182,9 +182,12 @@ export default function WriterPanel({
       </div>
 
       <header className="country-heading">
-        <span className="country-flag" aria-hidden="true">
-          {country.flag || countryFlag(country.code)}
-        </span>
+        <CountryFlagIcon
+          className="country-flag"
+          code={country.code}
+          countryName={country.name}
+          size={52}
+        />
         <div>
           <h2>{country.name}</h2>
           <p>{country.capital ? `Столица: ${country.capital}` : "Литературное наследие страны"}</p>

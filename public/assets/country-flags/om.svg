@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-om desc-om">
+  <title id="title-om">Оман — OM</title>
+  <desc id="desc-om">Круглая SVG-иконка флага страны «Оман».</desc>
+  <defs>
+    <clipPath id="clip-om"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-om)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M114 7V121H512V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#008000"/>
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V263H114V377Z" fill="#EEEEEE"/>
+      <path d="M512 263V121H128V7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H128V263Z" fill="#DB161B"/>
+      <path d="M52 328Q57 317 55 316Q54 315 53.0 316.0Q52 317 50.5 319.0Q49 321 47 325Q37 344 39 345Q40 346 44.0 340.0Q48 334 52 328ZM78 333Q82 339 85.0 343.0Q88 347 89 346Q91 345 83 330Q80 324 77.0 320.0Q74 316 73 317Q70 318 78 333ZM70 320H58L62 340Q59 341 59 343Q59 348 63.5 348.0Q68 348 68 343Q68 341 66 340Z" fill="#EEEEEE"/>
+      <path d="M95 281Q100 277 98 277Q95 276 89 279Q78 286 66 300Q64 297 61 297H57Q53 292 45.0 285.0Q37 278 33 278H28L30 280Q40 286 50 297Q44 297 39 299Q24 304 38 306L57 307V312H53V313H44V310H30V318H44V315H53H58V319H70V315H83V317H98V310H83V312H70Q70 309 69 305Q78 295 95 281Z" fill="#EEEEEE"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-tl desc-tl">
+  <title id="title-tl">Восточный Тимор — TL</title>
+  <desc id="desc-tl">Круглая SVG-иконка флага страны «Восточный Тимор».</desc>
+  <defs>
+    <clipPath id="clip-tl"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-tl)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#DC241F"/>
+      <path d="M228 192 18 362Q20 363 22 365L337 192L22 19Q20 21 18 22Z" fill="#FFC726"/>
+      <path d="M18 362 228 192 18 22Q0 39 0 64V320Q0 345 18 362Z" fill="#141414"/>
+      <path d="M68 178 21 185 63 206 56 253 89 219 131 240 110 199 143 165 96 173 75 131Z" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

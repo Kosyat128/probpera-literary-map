@@ -13,6 +13,7 @@ import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import GlobalSearch from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
+import CountryFlagIcon from "./components/CountryFlagIcon";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -23,7 +24,6 @@ import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { articlePath, journalPath } from "./utils/articleRoutes";
-import { countryFlag } from "./utils/countryFlag";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
@@ -323,6 +323,16 @@ export default function App() {
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
+  const sectionsMenuCloseTimer = useRef<number | null>(null);
+
+  const cancelSectionsMenuClose = useCallback(() => {
+    if (sectionsMenuCloseTimer.current !== null) {
+      window.clearTimeout(sectionsMenuCloseTimer.current);
+      sectionsMenuCloseTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => cancelSectionsMenuClose, [cancelSectionsMenuClose]);
 
   useEffect(() => {
     let active = true;
@@ -539,7 +549,24 @@ export default function App() {
         <nav aria-label="Основная навигация">
           <a href="#atlas">Карта</a>
           <HeaderArticlesMenu />
-          <details className="sections-menu">
+          <details
+            className="sections-menu"
+            onPointerEnter={cancelSectionsMenuClose}
+            onPointerLeave={(event) => {
+              if (event.pointerType !== "mouse") return;
+              const details = event.currentTarget;
+              cancelSectionsMenuClose();
+              sectionsMenuCloseTimer.current = window.setTimeout(() => {
+                if (!details.matches(":hover")) details.removeAttribute("open");
+                sectionsMenuCloseTimer.current = null;
+              }, 140);
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.removeAttribute("open");
+              }
+            }}
+          >
             <summary>
               Разделы <span aria-hidden="true">⌄</span>
             </summary>
@@ -569,7 +596,12 @@ export default function App() {
                 ))}
               </div>
               <footer>
-                <a href="#sections">
+                <a
+                  href="#sections"
+                  onClick={(event) =>
+                    event.currentTarget.closest("details")?.removeAttribute("open")
+                  }
+                >
                   Открыть интерактивный каталог <span aria-hidden="true">→</span>
                 </a>
               </footer>
@@ -675,7 +707,7 @@ export default function App() {
               src={assetUrl("brand/magazine-cover.webp")}
               alt="Журнал «Проба Пера»"
               width="1680"
-              height="560"
+              height="1260"
             />
             <span>Литературный журнал · с 2025 года</span>
           </div>
@@ -740,9 +772,13 @@ export default function App() {
                         onClick={() => selectCountry(country)}
                       >
                         <span>
-                          <b className="country-result-flag" aria-hidden="true">
-                            {country.flag || countryFlag(country.code)}
-                          </b>
+                          <CountryFlagIcon
+                            className="country-result-flag"
+                            code={country.code}
+                            countryName={country.name}
+                            size={24}
+                            decorative
+                          />
                           {country.name}
                         </span>
                         <small>
@@ -878,9 +914,13 @@ export default function App() {
                     onClick={() => selectCountry(country, true)}
                   >
                     <span>
-                      <b className="country-result-flag" aria-hidden="true">
-                        {country.flag || countryFlag(country.code)}
-                      </b>
+                      <CountryFlagIcon
+                        className="country-result-flag"
+                        code={country.code}
+                        countryName={country.name}
+                        size={24}
+                        decorative
+                      />
                       {country.name}
                     </span>
                     <small>
@@ -1317,6 +1357,26 @@ export default function App() {
             <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
+        <p className="graphics-attribution">
+          Иконки государственных флагов основаны на графике{" "}
+          <a
+            href="https://github.com/twitter/twemoji"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twemoji
+          </a>
+          . © Twitter, Inc. и другие участники. Графика используется по лицензии{" "}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="license noopener noreferrer"
+          >
+            Creative Commons Attribution 4.0 International
+          </a>
+          . Изменения: круглая обрезка, преобразование и упаковка в SVG,
+          добавление рамки, русских названий и метаданных.
+        </p>
         <div className="footer-bottom">
           <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>

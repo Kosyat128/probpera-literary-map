@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-pa desc-pa">
+  <title id="title-pa">Панама — PA</title>
+  <desc id="desc-pa">Круглая SVG-иконка флага страны «Панама».</desc>
+  <defs>
+    <clipPath id="clip-pa"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-pa)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M256 192H0V320Q0 344 16.5 360.5Q33 377 57 377H256ZM256 192H512V64Q512 40 495.5 23.5Q479 7 455 7H256Z" fill="#EEEEEE"/>
+      <path d="M256 192V7H57Q33 7 16.5 23.5Q0 40 0 64V192ZM138 298H169L144 279L153 250L128 268L103 250L112 279L87 298H118L128 327Z" fill="#005293"/>
+      <path d="M256 192V377H455Q479 377 495.5 360.5Q512 344 512 320V192ZM368 95 343 113H374L384 142L394 113H425L400 95L409 65L384 83L359 65Z" fill="#D21034"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

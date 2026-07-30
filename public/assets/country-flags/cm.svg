@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-cm desc-cm">
+  <title id="title-cm">Камерун — CM</title>
+  <desc id="desc-cm">Круглая SVG-иконка флага страны «Камерун».</desc>
+  <defs>
+    <clipPath id="clip-cm"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-cm)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M171 377H341V7H171ZM283 155 273 187 299 206H266L256 238L246 206H213L239 187L229 155L256 175Z" fill="#CC212D"/>
+      <path d="M57 377H171V7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#288541"/>
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H341V377ZM266 206H299L273 187L283 155L256 175L229 155L239 187L213 206H246L256 238Z" fill="#FEE833"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

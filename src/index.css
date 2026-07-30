@@ -1852,6 +1852,21 @@ img {
   box-shadow: 0 7px 22px rgba(56, 15, 76, 0.08);
 }
 
+.country-flag-icon {
+  display: block;
+  flex: 0 0 auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.country-flag-icon--fallback {
+  display: grid;
+  place-items: center;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  line-height: 1;
+}
+
 .country-heading h2 {
   margin: 0;
   color: #2c103c;
@@ -3755,11 +3770,11 @@ img {
 }
 
 .country-result-flag {
+  display: block;
   flex: 0 0 auto;
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 3px 7px rgba(51, 11, 68, 0.16));
 }
 
 .section-card-latest {
@@ -7385,6 +7400,20 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-map a:hover,
 .footer-map button:hover {
   color: #fff;
+}
+
+.graphics-attribution {
+  max-width: 1530px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 68px) 28px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.graphics-attribution a {
+  color: rgba(255, 190, 119, 0.72);
+  text-underline-offset: 2px;
 }
 
 .footer-bottom {

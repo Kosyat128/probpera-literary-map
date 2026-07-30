@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
 import { countries } from "./data/countries";
 import { countryFlag } from "./utils/countryFlag";
@@ -21,6 +23,20 @@ describe("country archive", () => {
         (country) =>
           country.flag === countryFlag(country.code) &&
           country.flag !== "◈"
+      )
+    ).toBe(true);
+  });
+
+  it("has a local SVG asset for every country without a CDN request", () => {
+    const flagDirectory = fileURLToPath(
+      new URL("../public/assets/country-flags/", import.meta.url)
+    );
+
+    expect(
+      countries.every((country) =>
+        existsSync(
+          `${flagDirectory}${country.code?.toLowerCase()}.svg`
+        )
       )
     ).toBe(true);
   });

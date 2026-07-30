@@ -33,7 +33,8 @@
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
     "covers:audit": "node scripts/audit-cover-rights.mjs",
-    "assets:globe": "node scripts/build-antique-globe-texture.mjs"
+    "assets:globe": "node scripts/build-antique-globe-texture.mjs",
+    "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",

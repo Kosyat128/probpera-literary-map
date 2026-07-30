@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath, journalPath } from "../utils/articleRoutes";
@@ -29,6 +29,16 @@ function publishedTime(label: string) {
 export default function HeaderArticlesMenu() {
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
   const [loading, setLoading] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
+  const cancelScheduledClose = useCallback(() => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => cancelScheduledClose, [cancelScheduledClose]);
 
   const loadArticles = useCallback(() => {
     if (articles.length || loading) return;
@@ -65,7 +75,24 @@ export default function HeaderArticlesMenu() {
   return (
     <details
       className="articles-menu"
-      onPointerEnter={loadArticles}
+      onPointerEnter={() => {
+        cancelScheduledClose();
+        loadArticles();
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType !== "mouse") return;
+        const details = event.currentTarget;
+        cancelScheduledClose();
+        closeTimer.current = window.setTimeout(() => {
+          if (!details.matches(":hover")) details.removeAttribute("open");
+          closeTimer.current = null;
+        }, 140);
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          event.currentTarget.removeAttribute("open");
+        }
+      }}
       onFocusCapture={loadArticles}
       onToggle={(event) => {
         if (event.currentTarget.open) loadArticles();

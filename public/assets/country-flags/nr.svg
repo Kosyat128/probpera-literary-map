@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-nr desc-nr">
+  <title id="title-nr">Науру — NR</title>
+  <desc id="desc-nr">Круглая SVG-иконка флага страны «Науру».</desc>
+  <defs>
+    <clipPath id="clip-nr"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-nr)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#002B7F"/>
+      <path d="M0 206H512V178H0Z" fill="#FFC61E"/>
+      <path d="M142 171 149 143 169 164 161 136 189 144 168 124 196 117 168 110 189 90 161 98 169 70 149 91 142 63 135 91 115 70 123 98 95 90 116 110 88 117 116 124 95 144 123 136 115 164 135 143Z" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

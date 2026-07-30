@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-az desc-az">
+  <title id="title-az">Азербайджан — AZ</title>
+  <desc id="desc-az">Круглая SVG-иконка флага страны «Азербайджан».</desc>
+  <defs>
+    <clipPath id="clip-az"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-az)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M0 263H512V121H0Z" fill="#E00034"/>
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V263H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#0098C3"/>
+      <path d="M254 145Q275 145 289 160Q272 135 242 135Q226 135 213.0 142.5Q200 150 192.5 163.5Q185 177 185 192Q185 216 201.5 232.5Q218 249 242 249Q272 249 289 224Q275 239 254 239Q241 239 230.0 233.0Q219 227 212.5 216.0Q206 205 206 192Q206 172 220.0 158.5Q234 145 254 145Z" fill="#FFFFFF"/>
+      <path d="M337 192 320 186 327 170 311 177 305 160 299 177 283 170 290 186 273 192 290 198 283 214 299 207 305 224 311 207 327 214 320 198Z" fill="#FFFFFF"/>
+      <path d="M57 7Q33 7 16.5 23.5Q0 40 0 64V121H512V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#00AE65"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>
