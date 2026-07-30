@@ -154,6 +154,67 @@ function drawFeature(
   });
 }
 
+function polygonTextureBounds(
+  polygon: PolygonCoordinates,
+  width: number,
+  height: number,
+  shift: number
+) {
+  const points = polygon.flatMap((ring) => unwrapRing(ring));
+  if (!points.length) return null;
+
+  const xs = points.map(
+    ([longitude]) => longitudeToTextureX(longitude, width) + shift
+  );
+  const ys = points.map(([, latitude]) => ((90 - latitude) / 180) * height);
+  return {
+    left: Math.min(...xs),
+    top: Math.min(...ys),
+    width: Math.max(1, Math.max(...xs) - Math.min(...xs)),
+    height: Math.max(1, Math.max(...ys) - Math.min(...ys)),
+  };
+}
+
+function drawFlagInsideFeature(
+  context: CanvasRenderingContext2D,
+  feature: GeoFeature,
+  flagImage: HTMLImageElement,
+  width: number,
+  height: number,
+  opacity: number
+) {
+  const imageWidth = Math.max(1, flagImage.naturalWidth || flagImage.width);
+  const imageHeight = Math.max(1, flagImage.naturalHeight || flagImage.height);
+
+  getPolygons(feature).forEach((polygon) => {
+    [-width, 0, width].forEach((shift) => {
+      const bounds = polygonTextureBounds(polygon, width, height, shift);
+      if (!bounds || bounds.width < 0.5 || bounds.height < 0.5) return;
+
+      context.save();
+      context.beginPath();
+      polygon.forEach((ring) => traceRing(context, ring, width, height, shift));
+      context.clip("evenodd");
+
+      const scale = Math.max(
+        bounds.width / imageWidth,
+        bounds.height / imageHeight
+      );
+      const drawWidth = imageWidth * scale;
+      const drawHeight = imageHeight * scale;
+      context.globalAlpha = opacity;
+      context.drawImage(
+        flagImage,
+        bounds.left + (bounds.width - drawWidth) / 2,
+        bounds.top + (bounds.height - drawHeight) / 2,
+        drawWidth,
+        drawHeight
+      );
+      context.restore();
+    });
+  });
+}
+
 function drawParchmentBackground(context: CanvasRenderingContext2D) {
   const gradient = context.createLinearGradient(0, 0, MAP_WIDTH, MAP_HEIGHT);
   gradient.addColorStop(0, "#9f682d");
@@ -493,6 +554,9 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
       .filter((country) => country.code)
       .map((country) => [country.code!.toUpperCase(), country] as const)
   );
+  const countriesById = new Map(
+    countries.map((country) => [country.id, country] as const)
+  );
   const featuresByCountryId = new Map<string, GeoFeature[]>();
   const selectableFeatures: Array<{ feature: GeoFeature; country: Country }> = [];
 
@@ -520,6 +584,11 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   const highlightTexture = configureTexture(new THREE.CanvasTexture(highlightCanvas));
   const centroids = new Map<string, [number, number] | null>();
   const outlineGeometries = new Map<string, THREE.BufferGeometry | null>();
+  const flagImages = new Map<string, HTMLImageElement>();
+  const pendingFlagImages = new Map<string, Promise<HTMLImageElement | null>>();
+  let activeSelectedCountryId: string | null = null;
+  let activeHoveredCountryId: string | null = null;
+  let disposed = false;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
     for (const { feature, country } of selectableFeatures) {
@@ -565,43 +634,121 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     return outlineGeometries.get(countryId) ?? null;
   };
 
-  const drawHighlight = (
+  const loadFlagImage = (countryId: string) => {
+    const loaded = flagImages.get(countryId);
+    if (loaded) return Promise.resolve(loaded);
+
+    const pending = pendingFlagImages.get(countryId);
+    if (pending) return pending;
+
+    const countryCode = countriesById.get(countryId)?.code?.trim().toLowerCase();
+    if (!countryCode || !/^[a-z]{2}$/.test(countryCode)) {
+      return Promise.resolve(null);
+    }
+
+    const promise = new Promise<HTMLImageElement | null>((resolve) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.onload = () => {
+        flagImages.set(countryId, image);
+        pendingFlagImages.delete(countryId);
+        resolve(image);
+      };
+      image.onerror = () => {
+        pendingFlagImages.delete(countryId);
+        resolve(null);
+      };
+      image.src = `${import.meta.env.BASE_URL}assets/country-flags/${countryCode}.svg`;
+    });
+    pendingFlagImages.set(countryId, promise);
+    return promise;
+  };
+
+  const drawFlagHighlight = (
     countryId: string,
-    fill: string,
+    opacity: number,
     stroke: string,
     lineWidth: number,
     glow: number
   ) => {
     const features = featuresByCountryId.get(countryId) ?? [];
+    const flagImage = flagImages.get(countryId);
+
     highlightContext.save();
     highlightContext.shadowColor = stroke;
     highlightContext.shadowBlur = glow;
     features.forEach((feature) => {
+      if (flagImage) {
+        drawFlagInsideFeature(
+          highlightContext,
+          feature,
+          flagImage,
+          MAP_WIDTH,
+          MAP_HEIGHT,
+          opacity
+        );
+      }
       drawFeature(
         highlightContext,
         feature,
         MAP_WIDTH,
         MAP_HEIGHT,
-        fill,
+        flagImage ? "rgba(255, 255, 255, 0.025)" : "rgba(255, 255, 255, 0.055)",
         stroke,
         lineWidth
       );
     });
     highlightContext.restore();
+
+    if (!flagImage) {
+      void loadFlagImage(countryId).then(() => {
+        if (
+          !disposed &&
+          (activeSelectedCountryId === countryId ||
+            activeHoveredCountryId === countryId)
+        ) {
+          redrawHighlights();
+        }
+      });
+    }
   };
 
-  const updateHighlight = (selectedCountryId?: string | null, hoveredCountryId?: string | null) => {
+  const redrawHighlights = () => {
     highlightContext.clearRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
-    if (selectedCountryId) {
-      drawHighlight(selectedCountryId, "rgba(255, 127, 22, 0.26)", "#ff9b2f", 3.2, 10);
+    if (activeSelectedCountryId) {
+      drawFlagHighlight(
+        activeSelectedCountryId,
+        0.3,
+        "#ff9b2f",
+        3.2,
+        10
+      );
     }
 
-    if (hoveredCountryId && hoveredCountryId !== selectedCountryId) {
-      drawHighlight(hoveredCountryId, "rgba(255, 171, 62, 0.16)", "#ffb24c", 2.2, 7);
+    if (
+      activeHoveredCountryId &&
+      activeHoveredCountryId !== activeSelectedCountryId
+    ) {
+      drawFlagHighlight(
+        activeHoveredCountryId,
+        0.22,
+        "#ffb24c",
+        2.2,
+        7
+      );
     }
 
     highlightTexture.needsUpdate = true;
+  };
+
+  const updateHighlight = (
+    selectedCountryId?: string | null,
+    hoveredCountryId?: string | null
+  ) => {
+    activeSelectedCountryId = selectedCountryId ?? null;
+    activeHoveredCountryId = hoveredCountryId ?? null;
+    redrawHighlights();
   };
 
   return {
@@ -615,6 +762,7 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     outlineGeometryForCountry,
     updateHighlight,
     dispose: () => {
+      disposed = true;
       mapTexture.dispose();
       reliefTexture.dispose();
       highlightTexture.dispose();

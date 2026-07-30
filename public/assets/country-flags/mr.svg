@@ -1,17 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-mr desc-mr">
-  <title id="title-mr">Мавритания — MR</title>
-  <desc id="desc-mr">Круглая SVG-иконка флага страны «Мавритания».</desc>
-  <defs>
-    <clipPath id="clip-mr"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-mr)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#CE2540"/>
-      <path d="M0 320H512V64H0Z" fill="#0F6433"/>
-      <path d="M212 268H246L256 300L266 268H300L273 248L283 217L256 236L229 217L239 248Z" fill="#FFC514"/>
-      <path d="M371 254Q375 238 375 223Q375 174 340.0 139.0Q305 104 256.0 104.0Q207 104 172.0 139.0Q137 174 137 223Q137 238 141 254Q141 223 156.5 196.5Q172 170 198.5 154.5Q225 139 256 139Q304 139 337.5 172.5Q371 206 371 254Z" fill="#FFC514"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-mr" viewBox="0 0 512 512">
+  <path fill="#cd2a3e" d="M0 0h512v512H0z"/>
+  <path fill="#006233" d="M0 76.8h512v358.4H0z"/>
+  <path fill="#ffc400" d="M416 164.9a160 160 0 0 1-320 0 165 165 0 0 0-5.4 41.8A165.4 165.4 0 1 0 416 165z" class="mr-st1"/>
+  <path fill="#ffc400" d="m256 100-14.4 44.3h-46.5l37.6 27.3-14.3 44.2 37.6-27.3 37.6 27.3-14.4-44.2 37.7-27.3h-46.5z"/>
 </svg>

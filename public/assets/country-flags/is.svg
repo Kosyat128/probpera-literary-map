@@ -1,16 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-is desc-is">
-  <title id="title-is">Исландия — IS</title>
-  <desc id="desc-is">Круглая SVG-иконка флага страны «Исландия».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-is" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-is"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="is-a">
+      <path fill-opacity=".7" d="M85.4 0h486v486h-486z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-is)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M142 377V235H0V320Q0 344 16.5 360.5Q33 377 57 377ZM455 377Q479 377 495.5 360.5Q512 344 512 320V235H228V377ZM142 7H57Q33 7 16.5 23.5Q0 40 0 64V149H142ZM455 7H228V149H512V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#003897"/>
-      <path d="M206 377V213H512V171H206V7H164V171H0V213H164V377Z" fill="#D72828"/>
-      <path d="M206 7V171H512V149H228V7ZM228 377V235H512V213H206V377ZM164 377V213H0V235H142V377ZM0 171H164V7H142V149H0Z" fill="#EEEEEE"/>
-    </g>
+  <g fill-rule="evenodd" stroke-width="0" clip-path="url(#is-a)" transform="translate(-90)scale(1.0535)">
+    <path fill="#003897" d="M0 0h675v486H0z"/>
+    <path fill="#fff" d="M0 189h189V0h108v189h378v108H297v189H189V297H0z"/>
+    <path fill="#d72828" d="M0 216h216V0h54v216h405v54H270v216h-54V270H0z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

@@ -1251,7 +1251,47 @@ export default function App() {
         </Suspense>
 
         <section className="community-section" id="community">
-          <div className="community-illustration" aria-hidden="true" />
+          <div className="community-illustration">
+            <div className="community-visual-seal" aria-hidden="true">
+              <svg viewBox="0 0 96 96">
+                <path d="M70 13c-18 5-34 20-41 40-3 8-3 16-1 23 6-16 17-27 34-35-13 9-22 20-28 34 11-3 21-10 29-19 11-13 16-29 15-44-2 0-5 0-8 1Z" />
+                <path d="M27 78c12-17 24-29 38-39" />
+              </svg>
+              <span>PP</span>
+            </div>
+            <blockquote>
+              {t(
+                "Чтение становится событием, когда мысль продолжается в разговоре."
+              )}
+            </blockquote>
+            <div className="community-visual-rule">
+              <span>{t("Редакционный принцип клуба")}</span>
+              <i aria-hidden="true" />
+            </div>
+            <div
+              className="community-visual-stats"
+              aria-label={t("Энциклопедия сообщества")}
+            >
+              <span>
+                <strong>
+                  {totalWriters ? number(totalWriters) : "—"}
+                </strong>
+                <small>{t("писателей")}</small>
+              </span>
+              <span>
+                <strong>
+                  {bookArchive.length ? number(bookArchive.length) : "—"}
+                </strong>
+                <small>{t("книг")}</small>
+              </span>
+              <span>
+                <strong>
+                  {countryArchive.length ? number(countryArchive.length) : "—"}
+                </strong>
+                <small>{t("стран")}</small>
+              </span>
+            </div>
+          </div>
           <div className="community-copy">
             <span className="section-kicker">{t("Литературное сообщество")}</span>
             <h2>{t("Клуб внимательных читателей")}</h2>
@@ -1480,26 +1520,6 @@ export default function App() {
             <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
-        <p className="graphics-attribution">
-          Иконки государственных флагов основаны на графике{" "}
-          <a
-            href="https://github.com/twitter/twemoji"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Twemoji
-          </a>
-          . © Twitter, Inc. и другие участники. Графика используется по лицензии{" "}
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/"
-            target="_blank"
-            rel="license noopener noreferrer"
-          >
-            Creative Commons Attribution 4.0 International
-          </a>
-          . Изменения: круглая обрезка, преобразование и упаковка в SVG,
-          добавление рамки, русских названий и метаданных.
-        </p>
         <div className="footer-bottom">
           <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>

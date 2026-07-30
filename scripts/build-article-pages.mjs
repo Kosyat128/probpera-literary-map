@@ -203,7 +203,7 @@ const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
 const homeDocument = load(baseHtml, { decodeEntities: false });
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
-homeDocument('meta[property="og:image"],meta[name="twitter:image"]').attr("content", `${siteUrl}/og-v3.webp`);
+homeDocument('meta[property="og:image"]').attr("content", `${siteUrl}/og-v3.webp`);
 homeDocument("head").append(`<meta property="og:url" content="${siteUrl}/">`);
 homeDocument("head").append(
   `<script type="application/ld+json">${JSON.stringify({
@@ -264,9 +264,6 @@ for (const article of catalog) {
   $('meta[property="og:title"]').attr("content", socialTitle);
   $('meta[property="og:description"]').attr("content", socialDescription);
   $('meta[property="og:image"]').attr("content", socialImageUrl);
-  $('meta[name="twitter:title"]').attr("content", socialTitle);
-  $('meta[name="twitter:description"]').attr("content", socialDescription);
-  $('meta[name="twitter:image"]').attr("content", socialImageUrl);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   if (article.allowIndexing === false) {
     $('meta[name="robots"]').attr("content", "noindex,follow");
@@ -414,11 +411,6 @@ for (const page of cmsSnapshot.pages || []) {
     page.seoTitle || page.title
   );
   $('meta[property="og:description"]').attr("content", description);
-  $('meta[name="twitter:title"]').attr(
-    "content",
-    page.seoTitle || page.title
-  );
-  $('meta[name="twitter:description"]').attr("content", description);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
   if (page.allowIndexing === false) {

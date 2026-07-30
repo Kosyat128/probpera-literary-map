@@ -1,18 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-sc desc-sc">
-  <title id="title-sc">Сейшельские о-ва — SC</title>
-  <desc id="desc-sc">Круглая SVG-иконка флага страны «Сейшельские о-ва».</desc>
-  <defs>
-    <clipPath id="clip-sc"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-sc)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V254L23 18Q19 21 16 24L344 377Z" fill="#D62828"/>
-      <path d="M11 31 171 377H344L16 24Q13 27 11 31Z" fill="#FCD856"/>
-      <path d="M171 377 11 31Q0 46 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#003F87"/>
-      <path d="M29 14Q26 16 23 18L512 254V130Z" fill="#EEEEEE"/>
-      <path d="M57 7Q42 7 29 14L512 130V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#007A3D"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sc" viewBox="0 0 512 512">
+  <path fill="#fff" d="M0 0h512v512H0Z"/>
+  <path fill="#d92223" d="M0 512V0h512v170.7z"/>
+  <path fill="#fcd955" d="M0 512V0h341.3z"/>
+  <path fill="#003d88" d="M0 512V0h170.7z"/>
+  <path fill="#007a39" d="m0 512 512-170.7V512Z"/>
 </svg>

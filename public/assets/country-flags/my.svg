@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-my desc-my">
-  <title id="title-my">Малайзия — MY</title>
-  <desc id="desc-my">Круглая SVG-иконка флага страны «Малайзия».</desc>
-  <defs>
-    <clipPath id="clip-my"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-my)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#DD2E44"/>
-      <path d="M8 36Q0 49 0 64H512Q512 49 504 36ZM0 121H512V92H0ZM0 178H512V149H0ZM0 235H512V206H0ZM0 292H512V263H0ZM8 348H504Q512 335 512 320H0Q0 335 8 348Z" fill="#EEEEEE"/>
-      <path d="M256 377V178H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#010066"/>
-      <path d="M136 203Q151 203 164 209Q142 192 114 192Q78 192 53.0 217.0Q28 242 28.0 277.5Q28 313 53.0 338.0Q78 363 114 363Q142 363 164 346Q150 352 136 352Q105 352 83.0 330.0Q61 308 61.0 277.5Q61 247 83.0 225.0Q105 203 136 203Z" fill="#FFCC4D"/>
-      <path d="M184 322 189 299 203 318 197 295 218 306 203 288H227L205 279L227 269H203L218 251L197 262L203 239L189 258L184 235L179 258L165 239L170 262L150 251L165 269H141L162 279L141 288H165L150 306L170 295L165 318L179 299Z" fill="#FFCC4D"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-my" viewBox="0 0 512 512">
+  <path fill="#C00" d="M0 0h512v36.6H0z"/>
+  <path fill="#fff" d="M0 36.6h512V73H0z"/>
+  <path fill="#C00" d="M0 73.1h512v36.6H0z"/>
+  <path fill="#fff" d="M0 109.7h512v36.6H0z"/>
+  <path fill="#C00" d="M0 146.3h512v36.6H0z"/>
+  <path fill="#fff" d="M0 182.9h512v36.5H0z"/>
+  <path fill="#C00" d="M0 219.4h512V256H0z"/>
+  <path fill="#fff" d="M0 256h512v36.6H0z"/>
+  <path fill="#C00" d="M0 292.6h512V329H0z"/>
+  <path fill="#fff" d="M0 329.1h512v36.6H0z"/>
+  <path fill="#C00" d="M0 365.7h512v36.6H0z"/>
+  <path fill="#fff" d="M0 402.3h512v36.6H0z"/>
+  <path fill="#C00" d="M0 438.9h512v36.5H0z"/>
+  <path fill="#fff" d="M0 475.4h512V512H0z"/>
+  <path fill="#006" d="M0 0h256v292.6H0z"/>
+  <path fill="#FC0" d="m166 93 4.8 32.5 18.4-27.2-10 31.3 28.5-16.6-22.5 24 32.8-2.6-30.7 11.9L218 158l-32.8-2.5 22.5 24-28.4-16.7 9.8 31.5-18.4-27.3-4.8 32.5-4.7-32.5-18.4 27.2 9.9-31.4-28.4 16.7 22.4-24-32.8 2.5 30.7-11.8-30.6-11.9 32.8 2.6-22.5-24 28.4 16.6-10-31.4 18.5 27.3 4.8-32.6Zm-26.7 1.3a57 57 0 0 0-73 24.9 57 57 0 0 0 45.5 83.8 57 57 0 0 0 27.5-4.7 64 64 0 1 1 0-104"/>
 </svg>

@@ -1,19 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-za desc-za">
-  <title id="title-za">Южно-Африканская Республика — ZA</title>
-  <desc id="desc-za">Круглая SVG-иконка флага страны «Южно-Африканская Республика».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-za" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-za"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="za-a">
+      <path fill-opacity=".7" d="M70.1 0h499.6v499.6H70.1z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-za)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V256H270L92 377Z" fill="#DE3830"/>
-      <path d="M92 7 270 128H512V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#002395"/>
-      <path d="M0 292 149 192 0 92Z" fill="#141414"/>
-      <path d="M0 320 192 192 0 64V92L149 192L0 292Z" fill="#FFB611"/>
-      <path d="M50 376 263 228H512V156H263L50 8Q29 10 14.5 26.0Q0 42 0 64L192 192L0 320Q0 342 14.5 358.0Q29 374 50 376Z" fill="#007A4D"/>
-      <path d="M92 377 270 256H512V228H263L50 376Q54 377 57 377ZM50 8 263 156H512V128H270L92 7H57Q54 7 50 8Z" fill="#EEEEEE"/>
+  <g clip-path="url(#za-a)" transform="translate(-71.9)scale(1.0248)">
+    <g fill-rule="evenodd" stroke-width="1pt">
+      <path fill="#000001" d="M0 397.9v-296l220.4 147.9z"/>
+      <path fill="#000c8a" d="m150.4 499.7 247.4-166.5h351.6v166.5z"/>
+      <path fill="#e1392d" d="M134.5 0h615v166.6H397.7S137.8-1.6 134.5 0"/>
+      <path fill="#ffb915" d="M0 62.5v39.3l220.4 148L0 397.8v39.4l277.6-187.4z"/>
+      <path fill="#007847" d="M0 62.5V0h92.6l294 199h362.8v101.7H386.6l-294 198.9H0v-62.4l277.6-187.4z"/>
+      <path fill="#fff" d="M92.6 0h57.8l247.4 166.6h351.6V199H386.6zm0 499.7h57.8l247.4-166.5h351.6v-32.4H386.6z"/>
     </g>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

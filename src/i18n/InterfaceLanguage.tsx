@@ -14,6 +14,11 @@ const STORAGE_KEY = "probpera-interface-language";
 const EVENT_NAME = "probpera:interface-language";
 
 const englishInterfaceText: Record<string, string> = {
+  "Чтение становится событием, когда мысль продолжается в разговоре.":
+    "Reading becomes an event when an idea continues through conversation.",
+  "Редакционный принцип клуба": "The club's editorial principle",
+  "Энциклопедия сообщества": "Community encyclopedia",
+  книг: "books",
   "Прогресс чтения": "Reading progress",
   "минут чтения": "minutes",
   "смысловых разделов": "sections",

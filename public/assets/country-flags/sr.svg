@@ -1,17 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-sr desc-sr">
-  <title id="title-sr">Суринам — SR</title>
-  <desc id="desc-sr">Круглая SVG-иконка флага страны «Суринам».</desc>
-  <defs>
-    <clipPath id="clip-sr"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-sr)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M0 64V78H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64ZM455 377Q479 377 495.5 360.5Q512 344 512 320V306H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#377E3F"/>
-      <path d="M0 121H512V78H0ZM0 306H512V263H0Z" fill="#EEEEEE"/>
-      <path d="M0 121V263H512V121ZM239 208H186L229 176L213 125L256 157L299 125L283 176L326 208H273L256 259Z" fill="#B40A2D"/>
-      <path d="M213 125 229 176 186 208H239L256 259L273 208H326L283 176L299 125L256 157Z" fill="#ECC81D"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sr" viewBox="0 0 512 512">
+  <path fill="#377e3f" d="M0 0h512v512H0z"/>
+  <path fill="#fff" d="M0 102.4h512v307.2H0z"/>
+  <path fill="#b40a2d" d="M0 153.6h512v204.8H0z"/>
+  <path fill="#ecc81d" d="m255.9 163.4 60.2 185.2-157.6-114.5h194.8L195.7 348.6z"/>
 </svg>

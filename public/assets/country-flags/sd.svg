@@ -1,17 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-sd desc-sd">
-  <title id="title-sd">Судан — SD</title>
-  <desc id="desc-sd">Круглая SVG-иконка флага страны «Судан».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sd" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-sd"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="sd-a">
+      <path fill-opacity=".7" d="M0 0h496v496H0z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-sd)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V256H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#D21034"/>
-      <path d="M0 64V128H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64Z" fill="#141414"/>
-      <path d="M0 256H512V128H0Z" fill="#EEEEEE"/>
-      <path d="M19 363 249 192 19 21Q0 38 0 64V320Q0 346 19 363Z" fill="#007229"/>
-    </g>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#sd-a)" transform="scale(1.0321)">
+    <path fill="#000001" d="M0 330.7h992.1v165.4H0z"/>
+    <path fill="#fff" d="M0 165.3h992.1v165.4H0z"/>
+    <path fill="red" d="M0 0h992.9v165.4H0z"/>
+    <path fill="#009a00" d="M0 0v496l330.7-248z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

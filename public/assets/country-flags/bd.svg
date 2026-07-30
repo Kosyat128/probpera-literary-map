@@ -1,15 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-bd desc-bd">
-  <title id="title-bd">Бангладеш — BD</title>
-  <desc id="desc-bd">Круглая SVG-иконка флага страны «Бангладеш».</desc>
-  <defs>
-    <clipPath id="clip-bd"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-bd)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#006A4D"/>
-      <path d="M157.0 129.0Q128 158 128.0 199.0Q128 240 157.0 269.5Q186 299 227.5 299.0Q269 299 298.0 269.5Q327 240 327.0 199.0Q327 158 298.0 129.0Q269 100 227.5 100.0Q186 100 157.0 129.0Z" fill="#F42A41"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-bd" viewBox="0 0 512 512">
+  <path fill="#006a4e" d="M0 0h512v512H0z"/>
+  <circle cx="230" cy="256" r="170.7" fill="#f42a41"/>
 </svg>

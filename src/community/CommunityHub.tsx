@@ -763,7 +763,6 @@ export default function CommunityHub({
                     ? "Вступить в литературный клуб"
                     : "Войти в «Пробу Пера»"}
                 </h2>
-                {savedReadings.length > 0 && readingLibrary}
 
                 {authMode === "signup" && (
                   <label>

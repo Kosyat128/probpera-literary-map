@@ -1,22 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-sb desc-sb">
-  <title id="title-sb">Соломоновы о-ва — SB</title>
-  <desc id="desc-sb">Круглая SVG-иконка флага страны «Соломоновы о-ва».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sb" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-sb"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="sb-a">
+      <path fill-opacity=".7" d="M0 0h496v496H0z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-sb)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M477 372 9 33Q0 47 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q467 377 477 372Z" fill="#0051BA"/>
-      <path d="M35 12 503 351Q512 337 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q45 7 35 12Z" fill="#215B33"/>
-      <path d="M9 33 477 372Q493 366 503 351L35 12Q19 18 9 33Z" fill="#FCD116"/>
-      <path d="M101 277 83 290H105L112 312L119 290H142L124 277L131 256L112 269L94 256Z" fill="#FFFFFF"/>
-      <path d="M124 277 142 290ZM101 277 82 290H83ZM94 256 112 269 131 256V255L112 269L94 255ZM38 331 20 344H43L50 366L57 344H79L61 331V330L68 309L50 323L31 309L38 330Z" fill="#FFFFFF"/>
-      <path d="M31 309 50 323 68 309 50 322ZM38 331 20 344ZM61 331 79 344H80ZM163 223V224L145 237H168L175 259L182 237H204L186 224V223L193 202L175 216L156 202Z" fill="#FFFFFF"/>
-      <path d="M186 223V224L204 237H205ZM163 223 145 237 163 224ZM156 202 175 216 193 202 175 215ZM38 223V224L20 237H43L50 259L57 237H79L61 224V223L68 202L50 216L31 202Z" fill="#FFFFFF"/>
-      <path d="M61 223V224L79 237H80ZM31 202 50 216 68 202 50 215ZM38 223 20 237 38 224ZM163 331 145 344H168L175 366L182 344H204L186 331V330L193 309L175 323L156 309L163 330Z" fill="#FFFFFF"/>
-      <path d="M163 331 145 344ZM186 331 204 344H205ZM156 309 175 323 193 309 175 322Z" fill="#FFFFFF"/>
-    </g>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#sb-a)" transform="scale(1.0321)">
+    <path fill="#0000d6" d="M0 491.4 956.7 0H0z"/>
+    <path fill="#006000" d="M992.1 0 26.3 496h965.8z"/>
+    <path fill="#fc0" d="M992.2 0H939L0 470.3V496h53.1l939-469.4V0z"/>
+    <path fill="#fff" d="m39 96.1 11.6-33.3-30.2-20.6h37.3L69.2 8.8l11.5 33.4h37.2L87.8 62.8 99.3 96 69.2 75.5zm185.2 0 11.6-33.3-30.2-20.6h37.3l11.5-33.4 11.5 33.4H303l-30 20.6L284.5 96l-30.1-20.6zm0 140 11.6-33.3-30.2-20.6h37.3l11.5-33.4 11.5 33.4H303l-30 20.6 11.6 33.3-30.1-20.6zm-92-69.2 11.5-33.3-30.1-20.6h37.2l11.5-33.3 11.5 33.3h37.3l-30.2 20.6 11.5 33.3-30-20.6zM39 236.1l11.6-33.3-30.2-20.6h37.3l11.5-33.4 11.5 33.4h37.2l-30.1 20.6L99.3 236l-30.1-20.6z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

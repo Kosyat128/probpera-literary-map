@@ -1,24 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-ke desc-ke">
-  <title id="title-ke">Кения — KE</title>
-  <desc id="desc-ke">Круглая SVG-иконка флага страны «Кения».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-ke" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-ke"><circle cx="32" cy="32" r="30"/></clipPath>
+    <path id="ke-a" stroke-miterlimit="10" d="m-28.6 47.5 1.8 1 46.7-81c2.7-.6 4.2-3.2 5.7-5.8 1-1.8 5-8.7 6.7-17.7a58 58 0 0 0-11.9 14.7c-1.5 2.6-3 5.2-2.3 7.9z"/>
   </defs>
-  <g clip-path="url(#clip-ke)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#006600"/>
-      <path d="M0 263H512V121H0Z" fill="#BB1600"/>
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V263H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#141414"/>
-      <path d="M0 263H512V249H0ZM0 135H512V121H0Z" fill="#EEEEEE"/>
-      <path d="M324 299Q320 289 318 283Q316 276 313.5 271.5Q311 267 307.5 263.5Q304 260 300 260L196 87Q196 86 195 86Q192 86 191 89Q191 89 191 90L294 264Q287 271 305 291Q310 296 317 303Q327 315 328.0 314.5Q329 314 324 299Z" fill="#141414"/>
-      <path d="M317 303Q326 313 327 313Q327 312 323 299Q319 289 317 284Q315 275 312.0 270.0Q309 265 306.0 262.5Q303 260 300 261L299 262V261L196 87H195Q193 87 192 89V90L295 264Q288 271 306 291Q311 296 317 303Z" fill="#FFFFFF"/>
-      <path d="M218 264 321 90Q321 89 321 89Q320 86 317 86Q316 86 316 87L212 261Q206 259 201.5 265.5Q197 272 194 283Q192 289 188 299Q183 314 184.0 314.5Q185 315 195 303Q202 297 207 291Q225 271 218 264Z" fill="#141414"/>
-      <path d="M217 264 320 90V89Q319 87 317 87H316L213 261H212Q207 260 203.0 265.5Q199 271 195 284Q193 288 189 299Q185 312 185 313Q186 313 195 303Q202 294 206 291Q224 271 217 264Z" fill="#FFFFFF"/>
-      <path d="M256 299Q309 260 309.0 192.5Q309 125 256 85Q203 125 203.0 192.5Q203 260 256 299Z" fill="#141414"/>
-      <path d="M297 248Q286 223 286.0 192.0Q286 161 297 136Q284 107 256 86Q228 107 215 136Q226 161 226.0 192.0Q226 223 215 248Q228 277 256 298Q284 277 297 248Z" fill="#BB1600"/>
-      <path d="M264.0 192.5Q264 179 256.0 179.0Q248 179 248.0 192.5Q248 206 256.0 206.0Q264 206 264.0 192.5ZM253 214Q242 230 242.0 254.5Q242 279 253 295ZM259 214V295Q270 279 270.0 254.5Q270 230 259 214ZM253 170V90Q242 106 242.0 130.5Q242 155 253 170ZM259 170Q270 155 270.0 130.5Q270 106 259 90Z" fill="#FFFFFF"/>
-    </g>
+  <path fill="#fff" d="M0 0h512v512H0z"/>
+  <path fill="#000001" d="M0 0h512v153.6H0z"/>
+  <path fill="#060" d="M0 358.4h512V512H0z"/>
+  <g id="ke-b" transform="matrix(3.2 0 0 3.2 255.8 256)">
+    <use xlink:href="#ke-a" width="100%" height="100%" stroke="#000"/>
+    <use xlink:href="#ke-a" width="100%" height="100%" fill="#fff"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+  <use xlink:href="#ke-b" width="100%" height="100%" transform="matrix(-1 0 0 1 511.7 0)"/>
+  <path fill="#b00" d="M255.8 102.4c-19.2 0-51.2 51.2-60.8 76.8H0v153.6h195c9.7 25.6 41.7 76.8 60.9 76.8s51.2-51.2 60.8-76.8H512V179.2H316.6c-9.6-25.6-41.6-76.8-60.8-76.8"/>
+  <path id="ke-c" d="M316.6 332.8a220 220 0 0 0 16-76.8 220 220 0 0 0-16-76.8 220 220 0 0 0-16 76.8 220 220 0 0 0 16 76.8"/>
+  <use xlink:href="#ke-c" width="100%" height="100%" transform="matrix(-1 0 0 1 511.7 0)"/>
+  <g fill="#fff" transform="matrix(3.2 0 0 3.2 255.8 256)">
+    <ellipse rx="4" ry="6"/>
+    <path id="ke-d" d="M1 5.8s4 8 4 21-4 21-4 21z"/>
+    <use xlink:href="#ke-d" width="100%" height="100%" transform="scale(-1)"/>
+    <use xlink:href="#ke-d" width="100%" height="100%" transform="scale(-1 1)"/>
+    <use xlink:href="#ke-d" width="100%" height="100%" transform="scale(1 -1)"/>
+  </g>
 </svg>

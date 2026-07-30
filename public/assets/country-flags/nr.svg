@@ -1,16 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-nr desc-nr">
-  <title id="title-nr">Науру — NR</title>
-  <desc id="desc-nr">Круглая SVG-иконка флага страны «Науру».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-nr" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-nr"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="nr-a">
+      <path fill-opacity=".7" d="M135.6 0h496.1v496h-496z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-nr)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#002B7F"/>
-      <path d="M0 206H512V178H0Z" fill="#FFC61E"/>
-      <path d="M142 171 149 143 169 164 161 136 189 144 168 124 196 117 168 110 189 90 161 98 169 70 149 91 142 63 135 91 115 70 123 98 95 90 116 110 88 117 116 124 95 144 123 136 115 164 135 143Z" fill="#FFFFFF"/>
-    </g>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#nr-a)" transform="translate(-140)scale(1.0321)">
+    <path fill="#002170" d="M0 0h992.1v496H0z"/>
+    <path fill="#ffb20d" d="M0 226.8h992.1v42.4H0z"/>
+    <path fill="#fff" d="m292.4 424.4-31.9-32-10.2 44-11.7-43.7-30.9 33 11.8-43.6-43.2 13 32-31.8-44-10.3 43.6-11.6-33-31 43.6 11.8-13-43.2 31.8 32 10.3-44 11.7 43.6 30.8-32.9-11.7 43.6 43.2-13-32 31.8 44 10.3L290 362l33 30.9-43.7-11.7z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-kr desc-kr">
-  <title id="title-kr">Республика Корея — KR</title>
-  <desc id="desc-kr">Круглая SVG-иконка флага страны «Республика Корея».</desc>
-  <defs>
-    <clipPath id="clip-kr"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-kr)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#EEEEEE"/>
-      <path d="M326 143Q336 158 333.0 175.0Q330 192 315.5 202.5Q301 213 283.5 209.5Q266 206 256.0 192.0Q246 178 228.5 174.5Q211 171 196.5 181.5Q182 192 179.0 209.0Q176 226 186 241Q206 270 241.0 276.0Q276 282 305.0 262.0Q334 242 340.0 207.0Q346 172 326 143Z" fill="#C60C30"/>
-      <path d="M326 143Q306 114 271.0 108.0Q236 102 207.0 122.0Q178 142 172.0 177.0Q166 212 186 241Q176 226 179.0 209.0Q182 192 196.5 181.5Q211 171 228.5 174.5Q246 178 256.0 192.0Q266 206 283.5 209.5Q301 213 315.5 202.5Q330 192 333.0 175.0Q336 158 326 143Z" fill="#003478"/>
-      <path d="M346 84 374 117 384 108 357 75ZM383 128 410 161 421 151 394 119ZM368 66 395 99 406 90 379 57ZM404 110 432 142 443 133 415 100ZM390 48 417 80 428 71 401 39ZM426 91 454 124 465 115 437 82ZM426 293 437 302 465 269 454 260ZM390 336 401 345 428 313 417 304ZM368 318 379 327 443 251 432 242ZM346 300 357 309 384 276 374 267ZM383 256 394 265 421 233 410 223ZM91 151 102 161 166 84 155 75ZM69 133 80 142 108 110 97 100ZM106 90 117 99 144 66 133 57ZM47 115 58 124 122 48 111 39ZM47 269 111 345 122 336 58 260ZM69 251 133 327 144 318 80 242ZM91 233 155 309 166 300 102 223Z" fill="#292F33"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-kr" viewBox="0 0 512 512">
+  <path fill="#fff" fill-rule="evenodd" d="M0 0h512v512H0Z"/>
+  <g fill-rule="evenodd" transform="rotate(-56.3 367.2 -111.2)scale(9.375)">
+    <g id="kr-b">
+      <path id="kr-a" fill="#000001" d="M-6-26H6v2H-6Zm0 3H6v2H-6Zm0 3H6v2H-6Z"/>
+      <use xlink:href="#kr-a" width="100%" height="100%" y="44"/>
     </g>
+    <path stroke="#fff" d="M0 17v10"/>
+    <path fill="#cd2e3a" d="M0-12a12 12 0 0 1 0 24Z"/>
+    <path fill="#0047a0" d="M0-12a12 12 0 0 0 0 24A6 6 0 0 0 0 0Z"/>
+    <circle cy="-6" r="6" fill="#cd2e3a"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+  <g fill-rule="evenodd" transform="rotate(-123.7 196.5 59.5)scale(9.375)">
+    <use xlink:href="#kr-b" width="100%" height="100%"/>
+    <path stroke="#fff" d="M0-23.5v3M0 17v3.5m0 3v3"/>
+  </g>
 </svg>

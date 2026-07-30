@@ -1,16 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-be desc-be">
-  <title id="title-be">Бельгия — BE</title>
-  <desc id="desc-be">Круглая SVG-иконка флага страны «Бельгия».</desc>
-  <defs>
-    <clipPath id="clip-be"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-be)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M100 377H185V7H100Q76 7 59.5 23.5Q43 40 43 64V320Q43 344 59.5 360.5Q76 377 100 377Z" fill="#141414"/>
-      <path d="M185 377H327V7H185Z" fill="#FDDA24"/>
-      <path d="M412 377Q436 377 452.5 360.5Q469 344 469 320V64Q469 40 452.5 23.5Q436 7 412 7H327V377Z" fill="#EF3340"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-be" viewBox="0 0 512 512">
+  <g fill-rule="evenodd" stroke-width="1pt">
+    <path fill="#000001" d="M0 0h170.7v512H0z"/>
+    <path fill="#ffd90c" d="M170.7 0h170.6v512H170.7z"/>
+    <path fill="#f31830" d="M341.3 0H512v512H341.3z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

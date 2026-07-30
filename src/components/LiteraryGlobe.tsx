@@ -14,6 +14,7 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import type { Country } from "../data/countries";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import CountryFlagIcon from "./CountryFlagIcon";
 import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
 
@@ -1206,17 +1207,26 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
 
       {hoveredCountry && (
         <div className="globe-country-label" role="status">
-          <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
-          <small>
-            {number(hoveredCountry.writers.length)}{" "}
-            {language === "en"
-              ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
-              : `${pluralRu(hoveredCountry.writers.length, [
-                  "автор",
-                  "автора",
-                  "авторов",
-                ])} в архиве`}
-          </small>
+          <CountryFlagIcon
+            code={hoveredCountry.code}
+            countryName={hoveredCountry.name}
+            className="globe-country-label-flag"
+            size={38}
+            decorative
+          />
+          <div>
+            <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
+            <small>
+              {number(hoveredCountry.writers.length)}{" "}
+              {language === "en"
+                ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
+                : `${pluralRu(hoveredCountry.writers.length, [
+                    "автор",
+                    "автора",
+                    "авторов",
+                  ])} в архиве`}
+            </small>
+          </div>
         </div>
       )}
 
