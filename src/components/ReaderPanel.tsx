@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import BrandCloseIcon from "./BrandCloseIcon";
+
 type ReaderProfile = {
   name: string;
   interest: string;
@@ -61,7 +63,7 @@ export default function ReaderPanel({ open, onClose, onProfileChange, profile }:
         onMouseDown={(event) => event.stopPropagation()}
       >
         <button className="reader-close" type="button" onClick={onClose} aria-label="Закрыть">
-          ×
+          <BrandCloseIcon />
         </button>
         <img src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`} alt="" />
         <span className="section-kicker">Клуб читателей</span>

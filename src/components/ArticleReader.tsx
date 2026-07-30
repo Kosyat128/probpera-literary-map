@@ -9,6 +9,9 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { articlePath } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
+import BrandHeartIcon from "./BrandHeartIcon";
+import BrandCloseIcon from "./BrandCloseIcon";
+import BrandArrowIcon from "./BrandArrowIcon";
 
 type ArticleHeading = {
   id: string;
@@ -63,6 +66,7 @@ export default function ArticleReader({
   const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fontScale, setFontScale] = useState(1);
+  const [activeHeadingId, setActiveHeadingId] = useState("");
   const { mode } = useDisplayMode();
   const { language, t, number } = useInterfaceLanguage();
   const { items: savedReadings, toggle: toggleSavedReading } =
@@ -129,6 +133,7 @@ export default function ArticleReader({
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
     setProgress(0);
+    setActiveHeadingId("");
   }, [article.id]);
 
   const headingItems = useMemo(
@@ -149,6 +154,48 @@ export default function ArticleReader({
     ],
     [articleDocument]
   );
+  const activeHeading = headingItems.find(
+    (heading) => heading.id === activeHeadingId
+  );
+
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root || !safeContentHtml || !headingItems.length) return;
+
+    let observer: IntersectionObserver | undefined;
+    const frame = window.requestAnimationFrame(() => {
+      const targets = headingItems
+        .map((heading) =>
+          root.querySelector<HTMLElement>(`#${CSS.escape(heading.id)}`)
+        )
+        .filter((target): target is HTMLElement => Boolean(target));
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (first, second) =>
+                first.boundingClientRect.top - second.boundingClientRect.top
+            );
+          const current = visible[0]?.target as HTMLElement | undefined;
+          if (current?.id) setActiveHeadingId(current.id);
+        },
+        {
+          root,
+          rootMargin: "-14% 0px -70% 0px",
+          threshold: [0, 1],
+        }
+      );
+
+      targets.forEach((target) => observer?.observe(target));
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+    };
+  }, [headingItems, safeContentHtml]);
 
   const handleScroll = () => {
     const element = scrollRef.current;
@@ -160,6 +207,7 @@ export default function ArticleReader({
   const jumpToHeading = (headingId: string) => {
     const root = scrollRef.current;
     const target = root?.querySelector<HTMLElement>(`#${CSS.escape(headingId)}`);
+    setActiveHeadingId(headingId);
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -175,7 +223,15 @@ export default function ArticleReader({
       aria-modal="true"
       aria-labelledby="article-reader-title"
     >
-      <div className="article-reader-progress" style={{ width: `${progress}%` }} />
+      <div
+        className="article-reader-progress"
+        role="progressbar"
+        aria-label={t("Прогресс чтения")}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(progress)}
+        style={{ width: `${progress}%` }}
+      />
 
       <header className="article-reader-bar">
           <button
@@ -184,11 +240,14 @@ export default function ArticleReader({
             type="button"
             onClick={onClose}
           >
-          <span aria-hidden="true">←</span> {t("К журналу")}
+          <span aria-hidden="true">
+            <BrandArrowIcon />
+          </span>{" "}
+          {t("К журналу")}
         </button>
         <div>
           <span>{article.sectionLabel}</span>
-          <strong>Проба Пера</strong>
+          <strong>{activeHeading?.text || t("Проба Пера")}</strong>
         </div>
         <nav aria-label={t("Настройки чтения")}>
           <button
@@ -236,7 +295,7 @@ export default function ArticleReader({
               })
             }
           >
-            {isSaved ? "◆" : "◇"}
+            <BrandHeartIcon filled={isSaved} />
           </button>
           <button
             className="reader-close"
@@ -244,7 +303,7 @@ export default function ArticleReader({
             onClick={onClose}
             aria-label={t("Закрыть")}
           >
-            ×
+            <BrandCloseIcon />
           </button>
         </nav>
       </header>
@@ -257,7 +316,16 @@ export default function ArticleReader({
               <ol>
                 {headingItems.map((heading) => (
                   <li key={heading.id} className={`level-${heading.level}`}>
-                    <button type="button" onClick={() => jumpToHeading(heading.id)}>
+                    <button
+                      type="button"
+                      className={
+                        activeHeadingId === heading.id ? "is-active" : undefined
+                      }
+                      aria-current={
+                        activeHeadingId === heading.id ? "location" : undefined
+                      }
+                      onClick={() => jumpToHeading(heading.id)}
+                    >
                       {heading.text}
                     </button>
                   </li>
@@ -295,6 +363,20 @@ export default function ArticleReader({
                 </span>
               )}
               {article.description && <p>{article.description}</p>}
+              <div className="article-reader-metrics">
+                <span>
+                  <strong>{number(article.readingMinutes)}</strong>
+                  {t("минут чтения")}
+                </span>
+                <span>
+                  <strong>{number(article.wordCount)}</strong>
+                  {t("слов")}
+                </span>
+                <span>
+                  <strong>{number(headingItems.length)}</strong>
+                  {t("смысловых разделов")}
+                </span>
+              </div>
               <div className="article-byline">
                 <span>{t("Авторская публикация журнала «Проба Пера»")}</span>
                 <a href={article.url} target="_blank" rel="noreferrer">
@@ -311,6 +393,9 @@ export default function ArticleReader({
                     article.imageAlt ||
                     `Иллюстрация к статье «${article.title}»`
                   }
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </figure>
             )}
@@ -376,11 +461,18 @@ export default function ArticleReader({
             <span>{t("Продолжить чтение")}</span>
             {related.slice(0, 3).map((item) => (
               <button type="button" key={item.id} onClick={() => openAnother(item)}>
-                <small>{item.sectionLabel}</small>
-                <strong>{item.title}</strong>
-                <em>
-                  {item.readingMinutes} {t("мин.")}
-                </em>
+                {item.imageUrl && (
+                  <span className="article-related-image" aria-hidden="true">
+                    <img src={item.imageUrl} alt="" loading="lazy" />
+                  </span>
+                )}
+                <span className="article-related-copy">
+                  <small>{item.sectionLabel}</small>
+                  <strong>{item.title}</strong>
+                  <em>
+                    {item.readingMinutes} {t("мин.")}
+                  </em>
+                </span>
               </button>
             ))}
           </aside>

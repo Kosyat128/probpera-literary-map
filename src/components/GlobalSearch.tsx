@@ -15,6 +15,7 @@ import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
+import BrandCloseIcon from "./BrandCloseIcon";
 
 type Props = {
   open: boolean;
@@ -262,7 +263,7 @@ export default function GlobalSearch({
             <h2 id="global-search-title">{t("Найти в «Пробе Пера»")}</h2>
           </div>
           <button type="button" onClick={onClose} aria-label={t("Закрыть поиск")}>
-            ×
+            <BrandCloseIcon />
           </button>
         </header>
 

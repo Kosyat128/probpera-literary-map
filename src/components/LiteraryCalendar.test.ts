@@ -40,4 +40,22 @@ describe("литературный календарь", () => {
       calendarWriterIdentity(americanEntry)
     );
   });
+
+  it("объединяет дубликат, даже если в одной карточке не заполнена дата смерти", () => {
+    const completeEntry = {
+      id: "mystery_complete",
+      name: "Рохинтон Мистри",
+      birthDate: "1952-07-03",
+      deathDate: "2025-01-01",
+    } as Writer;
+    const incompleteEntry = {
+      id: "mystery_incomplete",
+      name: "Рохинтон Мистри",
+      birthDate: "1952-07-03",
+    } as Writer;
+
+    expect(calendarWriterIdentity(completeEntry)).toBe(
+      calendarWriterIdentity(incompleteEntry)
+    );
+  });
 });

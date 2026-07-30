@@ -14,6 +14,9 @@ const STORAGE_KEY = "probpera-interface-language";
 const EVENT_NAME = "probpera:interface-language";
 
 const englishInterfaceText: Record<string, string> = {
+  "Прогресс чтения": "Reading progress",
+  "минут чтения": "minutes",
+  "смысловых разделов": "sections",
   "Литературный журнал и энциклопедия": "Literary journal and encyclopedia",
   "Архив пополняется ежедневно": "The archive grows every day",
   "Литературный журнал": "Literary journal",
@@ -84,6 +87,9 @@ const englishInterfaceText: Record<string, string> = {
   "материала в архиве": "publications in the archive",
   "материалов в архиве": "publications in the archive",
   Читать: "Read",
+  Исследовать: "Explore",
+  Смотреть: "View",
+  Открыть: "Open",
   Энциклопедия: "Encyclopedia",
   "Культура и язык": "Culture and language",
   События: "Events",
@@ -250,9 +256,19 @@ const englishInterfaceText: Record<string, string> = {
   "Справочные тексты энциклопедии представлены в оригинале на русском языке.":
     "Encyclopedia reference texts are presented in their original Russian.",
   "Живая энциклопедия": "A living encyclopedia",
+  "Даты рождения и памяти писателей складываются в живую историю мировой литературы.":
+    "Writers’ birthdays and memorial dates form a living history of world literature.",
   "Предыдущий месяц": "Previous month",
   "Следующий месяц": "Next month",
   Сегодня: "Today",
+  "Сводка месяца": "Month summary",
+  "точных дат": "exact dates",
+  "дней рождения": "birthdays",
+  "дней памяти": "memorial dates",
+  "Ближайшая дата": "Next date",
+  "Выбранный день": "Selected day",
+  "Хронология месяца": "Month chronology",
+  "Показать месяц": "Show month",
   "День рождения": "Birthday",
   "День памяти": "In memoriam",
   "В этом месяце нет дат с известными днём и месяцем":

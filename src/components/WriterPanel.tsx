@@ -7,6 +7,7 @@ import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import { getWriterWorkTitles } from "../data/bookArchive";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import BrandCloseIcon from "./BrandCloseIcon";
 
 type WriterPanelProps = {
   country: Country;
@@ -188,7 +189,7 @@ export default function WriterPanel({
             onClick={onClose}
             aria-label={t("Закрыть панель")}
           >
-            ×
+            <BrandCloseIcon />
           </button>
         )}
       </div>

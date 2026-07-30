@@ -12,6 +12,8 @@ import {
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
+import BrandHeartIcon from "./BrandHeartIcon";
+import BrandCloseIcon from "./BrandCloseIcon";
 
 type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
 
@@ -241,7 +243,7 @@ export default function BookArchiveSection({
             onClick={() => setSelectedBook(null)}
             aria-label={t("Закрыть карточку книги")}
           >
-            ×
+            <BrandCloseIcon />
           </button>
           <div
             className={`book-detail-cover${isCoverDisplayAllowed(selectedBook) ? " has-image" : ""}`}
@@ -320,6 +322,7 @@ export default function BookArchiveSection({
                 aria-pressed={isBookSaved(selectedBook)}
                 onClick={() => toggleBook(selectedBook)}
               >
+                <BrandHeartIcon filled={isBookSaved(selectedBook)} />
                 {isBookSaved(selectedBook)
                   ? t("Сохранено в библиотеке")
                   : t("Добавить в мою библиотеку")}
@@ -472,7 +475,7 @@ export default function BookArchiveSection({
                   }
                   onClick={() => toggleBook(book)}
                 >
-                  {isBookSaved(book) ? "◆" : "◇"}
+                  <BrandHeartIcon filled={isBookSaved(book)} />
                 </button>
                 <button type="button" onClick={() => setSelectedBook(book)}>
                   {t("О книге")}
