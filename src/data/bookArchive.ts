@@ -17,6 +17,7 @@ const displayableCoverStatuses = new Set([
   "public-domain",
   "licensed",
   "permission",
+  "editorial-original",
   "external-preview",
 ]);
 
@@ -33,6 +34,21 @@ function normalizeTitle(title: string) {
     .trim()
     .toLocaleLowerCase("ru")
     .replace(/[«»"'.,:;!?()[\]{}]/g, "");
+}
+
+export function getWriterWorkTitles(writer: WriterProfile) {
+  const titles = [
+    ...(writer.workDetails || []).map((work) => work.title),
+    ...(writer.works || []),
+  ];
+  const seen = new Set<string>();
+
+  return titles.filter((title) => {
+    const normalizedTitle = normalizeTitle(title);
+    if (!normalizedTitle || seen.has(normalizedTitle)) return false;
+    seen.add(normalizedTitle);
+    return true;
+  });
 }
 
 function legacyWorkId(writerId: string, title: string, index: number) {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-tr desc-tr">
+  <title id="title-tr">Турция — TR</title>
+  <desc id="desc-tr">Круглая SVG-иконка флага страны «Турция».</desc>
+  <defs>
+    <clipPath id="clip-tr"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-tr)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#E30917"/>
+      <path d="M228 107Q255 107 277 123Q246 87 199 87Q178 87 158.5 95.5Q139 104 125.0 118.0Q111 132 103.0 151.5Q95 171 95 192Q95 235 125.5 266.0Q156 297 199 297Q246 297 277 261Q255 277 228 277Q192 277 167.0 252.0Q142 227 142.0 192.0Q142 157 167.0 132.0Q192 107 228 107ZM283 189 316 203 313 238 336 211 369 225 351 195 374 168 339 176 321 145 318 181Z" fill="#EEEEEE"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

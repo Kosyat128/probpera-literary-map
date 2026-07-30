@@ -1,4 +1,5 @@
 import type { WriterProfile } from "../data/countries/types";
+import { getWriterWorkTitles } from "../data/bookArchive";
 
 type Props = { writer: WriterProfile; onClose: () => void };
 
@@ -33,7 +34,7 @@ export default function WriterCard({ writer, onClose }: Props) {
       <p>{writer.bio || ""}</p>
 
       <h3>Произведения</h3>
-      <ul>{(writer.works || []).map(w => <li key={w}>{w}</li>)}</ul>
+      <ul>{getWriterWorkTitles(writer).map(w => <li key={w}>{w}</li>)}</ul>
 
       <h3>Связанные авторы</h3>
       <p>{writer.relatedWriters?.join(", ") || "Нет данных"}</p>

@@ -10,6 +10,7 @@ import { logoutAction } from "@/app/(auth)/login/actions";
 const navigation = [
   ["⌂", "Обзор", "/dashboard"],
   ["✎", "Статьи", "/articles"],
+  ["▥", "Книжный архив", "/library"],
   ["▤", "Рубрики и теги", "/categories"],
   ["▧", "Медиатека", "/media"],
   ["◫", "Страницы", "/pages"],
@@ -47,7 +48,7 @@ export default function AdminShell({
         <nav className="admin-nav" aria-label="Разделы панели">
           {navigation.map(([icon, label, href], index) => (
             <span key={href}>
-              {index === 8 && <span className="nav-divider" aria-hidden="true" />}
+              {index === 9 && <span className="nav-divider" aria-hidden="true" />}
               <Link
                 href={href}
                 aria-current={pathname === `/admin${href}` || pathname.startsWith(`/admin${href}/`) ? "page" : undefined}

@@ -60,13 +60,14 @@ for (let y = 0; y < outputHeight; y += 1) {
 
   for (let x = 0; x < outputWidth; x += 1) {
     const longitude = ((x + 0.5) / outputWidth) * 360 - 180;
-    const targetGore = Math.min(11, Math.floor((longitude + 180) / 30));
-    const targetCenterLongitude = -165 + targetGore * 30;
-    const relativeLongitude = longitude - targetCenterLongitude;
-
-    // The scanned sheet starts at 15°E and continues eastward. The texture
-    // starts at 180°W, so the first six scanned gores move to the second half.
-    const sourceGore = (targetGore + 6) % 12;
+    // The scanned sheet starts with the gore centred on Greenwich (0°) and
+    // continues eastward in 30° steps. The equirectangular texture is cut at
+    // 180°, which runs through the middle of the opposite gore.
+    const sourceCenterLongitude = Math.round(longitude / 30) * 30;
+    const normalizedSourceCenter =
+      ((sourceCenterLongitude % 360) + 360) % 360;
+    const sourceGore = Math.round(normalizedSourceCenter / 30) % 12;
+    const relativeLongitude = longitude - sourceCenterLongitude;
     const sourceCenterX = firstGoreCenter + sourceGore * goreSpacing;
     const sourceX =
       sourceCenterX + (relativeLongitude / 15) * halfWidthAtLatitude;
@@ -97,12 +98,12 @@ const texture = sharp(output, {
 await Promise.all([
   texture
     .clone()
-    .webp({ quality: 84, effort: 6, smartSubsample: true })
+    .webp({ quality: 90, effort: 6, smartSubsample: true })
     .toFile(path.join(outputDirectory, "antique-world-1887.webp")),
   texture
     .clone()
     .resize(1536, 768, { fit: "fill", kernel: sharp.kernel.lanczos3 })
-    .webp({ quality: 78, effort: 6, smartSubsample: true })
+    .webp({ quality: 82, effort: 6, smartSubsample: true })
     .toFile(path.join(outputDirectory, "antique-world-1887-mobile.webp")),
 ]);
 

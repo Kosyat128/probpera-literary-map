@@ -13,17 +13,23 @@ import CommunityHub, { type CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import GlobalSearch from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
+import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
+import CountryFlagIcon from "./components/CountryFlagIcon";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
 } from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
-import { buildBookArchive, isCoverDisplayAllowed } from "./data/bookArchive";
+import {
+  buildBookArchive,
+  getWriterWorkTitles,
+  isCoverDisplayAllowed,
+} from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
+import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
 import { articlePath, journalPath } from "./utils/articleRoutes";
-import { countryFlag } from "./utils/countryFlag";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
@@ -311,6 +317,7 @@ function mediaUrl(path: string) {
 
 export default function App() {
   const { user } = useAuth();
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
@@ -323,6 +330,16 @@ export default function App() {
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
+  const sectionsMenuCloseTimer = useRef<number | null>(null);
+
+  const cancelSectionsMenuClose = useCallback(() => {
+    if (sectionsMenuCloseTimer.current !== null) {
+      window.clearTimeout(sectionsMenuCloseTimer.current);
+      sectionsMenuCloseTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => cancelSectionsMenuClose, [cancelSectionsMenuClose]);
 
   useEffect(() => {
     let active = true;
@@ -362,7 +379,7 @@ export default function App() {
   );
   const totalWriters = allWriters.length;
   const totalWorks = useMemo(
-    () => new Set(allWriters.flatMap((writer) => writer.works || [])).size,
+    () => new Set(allWriters.flatMap(getWriterWorkTitles)).size,
     [allWriters]
   );
   const bookArchive = useMemo(
@@ -435,13 +452,24 @@ export default function App() {
 
     return source
       .filter((country) =>
-        [country.name, country.id, country.code]
+        [
+          country.name,
+          countryName(country.code, country.name),
+          country.id,
+          country.code,
+        ]
           .filter(Boolean)
           .some((value) => normalizeSearch(value!).includes(query))
       )
       .sort((first, second) => first.name.localeCompare(second.name, "ru"))
       .slice(0, 9);
-  }, [atlasFilter, countryArchive, filteredCountries, search]);
+  }, [
+    atlasFilter,
+    countryArchive,
+    countryName,
+    filteredCountries,
+    search,
+  ]);
 
   const featuredAuthors = useMemo(() => {
     const requested = [
@@ -515,8 +543,8 @@ export default function App() {
   return (
     <div className="magazine-app">
       <div className="topline">
-        <span>Литературный журнал и энциклопедия</span>
-        <p>Архив пополняется ежедневно</p>
+        <span>{t("Литературный журнал и энциклопедия")}</span>
+        <p>{t("Архив пополняется ежедневно")}</p>
         <div>
           <a href="https://t.me/probbaperra" target="_blank" rel="noreferrer">
             Telegram
@@ -532,27 +560,48 @@ export default function App() {
           <img src={assetUrl("brand/probpera-logo.png")} alt="Проба Пера" />
           <span>
             <strong>Проба Пера</strong>
-            <small>Литературный журнал</small>
+            <small>{t("Литературный журнал")}</small>
           </span>
         </a>
 
-        <nav aria-label="Основная навигация">
-          <a href="#atlas">Карта</a>
-          <HeaderArticlesMenu />
-          <details className="sections-menu">
+        <nav aria-label={t("Основная навигация")}>
+          <a href="#atlas">{t("Карта")}</a>
+          <HeaderArticlesMenu language={language} />
+          <details
+            className="sections-menu"
+            onPointerEnter={cancelSectionsMenuClose}
+            onPointerLeave={(event) => {
+              if (event.pointerType !== "mouse") return;
+              const details = event.currentTarget;
+              cancelSectionsMenuClose();
+              sectionsMenuCloseTimer.current = window.setTimeout(() => {
+                if (!details.matches(":hover")) details.removeAttribute("open");
+                sectionsMenuCloseTimer.current = null;
+              }, 140);
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.removeAttribute("open");
+              }
+            }}
+          >
             <summary>
-              Разделы <span aria-hidden="true">⌄</span>
+              {t("Разделы")} <span aria-hidden="true">⌄</span>
             </summary>
             <div className="sections-mega-menu">
               <header>
-                <span>Навигация по «Пробе Пера»</span>
-                <strong>Все темы и разделы сайта</strong>
-                <p>От редакционных статей до мировой литературной энциклопедии.</p>
+                <span>{t("Навигация по «Пробе Пера»")}</span>
+                <strong>{t("Все темы и разделы сайта")}</strong>
+                <p>
+                  {t(
+                    "От редакционных статей до мировой литературной энциклопедии."
+                  )}
+                </p>
               </header>
               <div className="sections-mega-groups">
                 {sectionMenuGroups.map(({ group, sections }) => (
                   <section key={group}>
-                    <h3>{group}</h3>
+                    <h3>{t(group)}</h3>
                     {sections.map((section) => (
                       <a
                         href={section.href}
@@ -561,25 +610,31 @@ export default function App() {
                           event.currentTarget.closest("details")?.removeAttribute("open")
                         }
                       >
-                        <strong>{section.title}</strong>
-                        <small>{section.copy}</small>
+                        <strong>{t(section.title)}</strong>
+                        <small>{t(section.copy)}</small>
                       </a>
                     ))}
                   </section>
                 ))}
               </div>
               <footer>
-                <a href="#sections">
-                  Открыть интерактивный каталог <span aria-hidden="true">→</span>
+                <a
+                  href="#sections"
+                  onClick={(event) =>
+                    event.currentTarget.closest("details")?.removeAttribute("open")
+                  }
+                >
+                  {t("Открыть интерактивный каталог")}{" "}
+                  <span aria-hidden="true">→</span>
                 </a>
               </footer>
             </div>
           </details>
-          <a href="#calendar">Календарь</a>
+          <a href="#calendar">{t("Календарь")}</a>
           <button type="button" onClick={() => openCommunity("forum")}>
-            Форум
+            {t("Форум")}
           </button>
-          <a href="#about">О проекте</a>
+          <a href="#about">{t("О проекте")}</a>
           <CmsNavigationLinks location="header" />
         </nav>
 
@@ -588,12 +643,13 @@ export default function App() {
             className="global-search-trigger"
             type="button"
             onClick={() => setGlobalSearchOpen(true)}
-            aria-label="Открыть единый поиск"
+            aria-label={t("Открыть единый поиск")}
           >
             <span aria-hidden="true">⌕</span>
-            <small>Поиск</small>
+            <small>{t("Поиск")}</small>
             <kbd>/</kbd>
           </button>
+          <InterfaceLanguageControl />
           <SocialLinks />
           <button
             className="reader-button"
@@ -607,22 +663,22 @@ export default function App() {
                 </svg>
               )}
             </span>
-            {readerName || "Войти"}
+            {readerName || t("Войти")}
           </button>
         </div>
       </header>
 
-      <nav className="mobile-nav" aria-label="Быстрая навигация">
-        <a href="#atlas">Карта</a>
-        <a href="#journal">Статьи</a>
-        <a href="#books">Книги</a>
-        <a href="#sections">Разделы</a>
-        <a href="#calendar">Календарь</a>
+      <nav className="mobile-nav" aria-label={t("Быстрая навигация")}>
+        <a href="#atlas">{t("Карта")}</a>
+        <a href="#journal">{t("Статьи")}</a>
+        <a href="#books">{t("Книги")}</a>
+        <a href="#sections">{t("Разделы")}</a>
+        <a href="#calendar">{t("Календарь")}</a>
         <button type="button" onClick={() => openCommunity("forum")}>
-          Форум
+          {t("Форум")}
         </button>
         <button type="button" onClick={() => setGlobalSearchOpen(true)}>
-          Поиск
+          {t("Поиск")}
         </button>
       </nav>
 
@@ -630,21 +686,22 @@ export default function App() {
         <CmsHomepageBanners />
         <section className="magazine-hero">
           <div className="hero-editorial">
-            <span className="section-kicker">Журнал о литературе и искусстве слова</span>
+            <span className="section-kicker">
+              {t("Журнал о литературе и искусстве слова")}
+            </span>
             <h1>
-              Литература —
+              {t("Литература —")}
               <br />
-              <em>это целый мир.</em>
+              <em>{t("это целый мир.")}</em>
             </h1>
             <p>
-              Статьи, биографии, редкие книги и первая{" "}
-              <br className="hero-mobile-break" />
-              интерактивная литературная
-              энциклопедия стран — в одном редакционном пространстве.
+              {t(
+                "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве."
+              )}
             </p>
             <div className="hero-actions">
               <a className="primary-action" href="#atlas">
-                Открыть глобус <span>→</span>
+                {t("Открыть глобус")} <span>→</span>
               </a>
               <a
                 className="secondary-action"
@@ -652,20 +709,23 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Читать журнал
+                {t("Читать журнал")}
               </a>
             </div>
             <div className="hero-proof">
               <span>
-                <strong>{countryArchive.length || "…"}</strong> стран
+                <strong>
+                  {countryArchive.length ? number(countryArchive.length) : "…"}
+                </strong>{" "}
+                {t("стран")}
               </span>
               <span>
-                <strong>{totalWriters ? totalWriters.toLocaleString("ru-RU") : "…"}</strong>{" "}
-                писателей
+                <strong>{totalWriters ? number(totalWriters) : "…"}</strong>{" "}
+                {t("писателей")}
               </span>
               <span>
-                <strong>{totalWorks ? totalWorks.toLocaleString("ru-RU") : "…"}</strong>{" "}
-                произведений
+                <strong>{totalWorks ? number(totalWorks) : "…"}</strong>{" "}
+                {t("произведений")}
               </span>
             </div>
           </div>
@@ -673,11 +733,11 @@ export default function App() {
           <div className="hero-cover">
             <img
               src={assetUrl("brand/magazine-cover.webp")}
-              alt="Журнал «Проба Пера»"
+              alt={t("Журнал «Проба Пера»")}
               width="1680"
-              height="560"
+              height="1260"
             />
-            <span>Литературный журнал · с 2025 года</span>
+            <span>{t("Литературный журнал · с 2025 года")}</span>
           </div>
         </section>
 
@@ -688,11 +748,14 @@ export default function App() {
         <section className="atlas-section" id="atlas" ref={atlasRef}>
           <header className="atlas-heading">
             <div>
-              <span className="section-kicker">Интерактивная энциклопедия</span>
-              <h2>Литературная карта мира</h2>
+              <span className="section-kicker">
+                {t("Интерактивная энциклопедия")}
+              </span>
+              <h2>{t("Литературная карта мира")}</h2>
               <p>
-                Выберите страну на старинном глобусе — откроются писатели, произведения,
-                эпохи и проверенная редакционная справка.
+                {t(
+                  "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                )}
               </p>
             </div>
 
@@ -701,13 +764,17 @@ export default function App() {
               onFocus={() => setSearchOpen(true)}
               onBlur={() => window.setTimeout(() => setSearchOpen(false), 120)}
             >
-              <label htmlFor="country-search">Найти страну</label>
+              <label htmlFor="country-search">{t("Найти страну")}</label>
               <div className="search-field">
                 <span aria-hidden="true">⌕</span>
                 <input
                   id="country-search"
                   value={search}
-                  placeholder={selectedCountry?.name || "Россия, Франция, Япония…"}
+                  placeholder={
+                    selectedCountry
+                      ? countryName(selectedCountry.code, selectedCountry.name)
+                      : t("Россия, Франция, Япония…")
+                  }
                   autoComplete="off"
                   aria-expanded={searchOpen}
                   aria-controls="country-results"
@@ -727,7 +794,7 @@ export default function App() {
               {searchOpen && (
                 <div className="search-results" id="country-results">
                   <span className="search-caption">
-                    {search ? "Результаты поиска" : "Избранные архивы"}
+                    {search ? t("Результаты поиска") : t("Избранные архивы")}
                   </span>
                   {searchResults.length > 0 ? (
                     searchResults.map((country) => (
@@ -740,23 +807,31 @@ export default function App() {
                         onClick={() => selectCountry(country)}
                       >
                         <span>
-                          <b className="country-result-flag" aria-hidden="true">
-                            {country.flag || countryFlag(country.code)}
-                          </b>
-                          {country.name}
+                          <CountryFlagIcon
+                            className="country-result-flag"
+                            code={country.code}
+                            countryName={country.name}
+                            size={24}
+                            decorative
+                          />
+                          {countryName(country.code, country.name)}
                         </span>
                         <small>
-                          {country.writers.length}{" "}
-                          {pluralRu(country.writers.length, [
-                            "автор",
-                            "автора",
-                            "авторов",
-                          ])}
+                          {number(country.writers.length)}{" "}
+                          {language === "en"
+                            ? country.writers.length === 1
+                              ? "writer"
+                              : "writers"
+                            : pluralRu(country.writers.length, [
+                                "автор",
+                                "автора",
+                                "авторов",
+                              ])}
                         </small>
                       </button>
                     ))
                   ) : (
-                    <p>Страна не найдена в выбранной коллекции.</p>
+                    <p>{t("Страна не найдена в выбранной коллекции.")}</p>
                   )}
                 </div>
               )}
@@ -764,7 +839,7 @@ export default function App() {
           </header>
 
           <div className="atlas-toolbar">
-            <div className="atlas-filters" aria-label="Фильтры глобуса">
+            <div className="atlas-filters" aria-label={t("Фильтры глобуса")}>
               {(
                 [
                   ["all", "Все страны"],
@@ -780,17 +855,17 @@ export default function App() {
                   key={value}
                   onClick={() => setAtlasFilter(value)}
                 >
-                  {label} <span>{filterCounts[value]}</span>
+                  {t(label)} <span>{number(filterCounts[value])}</span>
                 </button>
               ))}
             </div>
 
             <div className="atlas-ranking">
-              <span>Крупнейшие архивы</span>
+              <span>{t("Крупнейшие архивы")}</span>
               {topCountries.map((country) => (
                 <button type="button" key={country.id} onClick={() => selectCountry(country)}>
-                  {country.name}
-                  <small>{country.writers.length}</small>
+                  {countryName(country.code, country.name)}
+                  <small>{number(country.writers.length)}</small>
                 </button>
               ))}
             </div>
@@ -799,14 +874,24 @@ export default function App() {
           <div className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
             <section className="globe-column" id="globe-stage">
               <div className="globe-copy">
-                <span>Музейный глобус · ручная навигация</span>
+                <span>{t("Музейный глобус · ручная навигация")}</span>
                 <p>
-                  В выбранной коллекции — {filteredCountries.length}{" "}
-                  {pluralRu(filteredCountries.length, [
-                    "страна",
-                    "страны",
-                    "стран",
-                  ])}
+                  {language === "en" ? (
+                    <>
+                      {number(filteredCountries.length)}{" "}
+                      {filteredCountries.length === 1 ? "country" : "countries"} in
+                      this collection
+                    </>
+                  ) : (
+                    <>
+                      В выбранной коллекции — {number(filteredCountries.length)}{" "}
+                      {pluralRu(filteredCountries.length, [
+                        "страна",
+                        "страны",
+                        "стран",
+                      ])}
+                    </>
+                  )}
                 </p>
               </div>
               <div className="atlas-ornaments" aria-hidden="true">
@@ -830,7 +915,7 @@ export default function App() {
                   fallback={
                     <div className="globe-loading" role="status">
                       <span aria-hidden="true">✦</span>
-                      <p>Открываем мировой атлас…</p>
+                      <p>{t("Открываем мировой атлас…")}</p>
                     </div>
                   }
                 >
@@ -843,14 +928,18 @@ export default function App() {
               ) : (
                 <div className="globe-loading" role="status">
                   <span aria-hidden="true">✦</span>
-                  <p>В этой коллекции пока нет стран</p>
+                  <p>{t("В этой коллекции пока нет стран")}</p>
                 </div>
               )}
             </section>
 
             {selectedCountry && (
               <Suspense
-                fallback={<div className="country-panel panel-loading">Открываем архив…</div>}
+                fallback={
+                  <div className="country-panel panel-loading">
+                    {t("Открываем архив…")}
+                  </div>
+                }
               >
                 <WriterPanel
                   key={selectedCountry.id}
@@ -864,8 +953,8 @@ export default function App() {
           </div>
           <details className="atlas-country-index">
             <summary>
-              Текстовый указатель стран
-              <span>{filteredCountries.length}</span>
+              {t("Текстовый указатель стран")}
+              <span>{number(filteredCountries.length)}</span>
             </summary>
             <div>
               {filteredCountries
@@ -878,14 +967,26 @@ export default function App() {
                     onClick={() => selectCountry(country, true)}
                   >
                     <span>
-                      <b className="country-result-flag" aria-hidden="true">
-                        {country.flag || countryFlag(country.code)}
-                      </b>
-                      {country.name}
+                      <CountryFlagIcon
+                        className="country-result-flag"
+                        code={country.code}
+                        countryName={country.name}
+                        size={24}
+                        decorative
+                      />
+                      {countryName(country.code, country.name)}
                     </span>
                     <small>
-                      {country.writers.length}{" "}
-                      {pluralRu(country.writers.length, ["автор", "автора", "авторов"])}
+                      {number(country.writers.length)}{" "}
+                      {language === "en"
+                        ? country.writers.length === 1
+                          ? "writer"
+                          : "writers"
+                        : pluralRu(country.writers.length, [
+                            "автор",
+                            "автора",
+                            "авторов",
+                          ])}
                     </small>
                   </button>
                 ))}
@@ -908,30 +1009,34 @@ export default function App() {
                     alt={`Обложка книги «${bookOfDay.title}»`}
                     loading="lazy"
                   />
-                  <small>Источник обложки</small>
+                  <small>{t("Источник обложки")}</small>
                 </a>
               ) : (
                 <>
                   <span>Проба Пера</span>
-                  <strong>{bookOfDay?.title || "Книга дня"}</strong>
+                  <strong>{bookOfDay?.title || t("Книга дня")}</strong>
                   <i>✦</i>
                 </>
               )}
             </div>
             <div>
-              <span className="section-kicker">Выбор энциклопедии</span>
-              <h3>Книга дня</h3>
-              <h4>{bookOfDay?.title || "Открываем библиотеку…"}</h4>
+              <span className="section-kicker">{t("Выбор энциклопедии")}</span>
+              <h3>{t("Книга дня")}</h3>
+              <h4>{bookOfDay?.title || t("Открываем библиотеку…")}</h4>
               <p>
                 {bookOfDay
                   ? `${writerName(bookOfDay.writer)} · ${bookOfDay.country.name}. ${
                       bookOfDay.description ||
-                      "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
+                      t(
+                        "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
+                      )
                     }`
-                  : "Каждый день энциклопедия выбирает новое произведение из единой базы стран."}
+                  : t(
+                      "Каждый день энциклопедия выбирает новое произведение из единой базы стран."
+                    )}
               </p>
               {bookOfDay?.tags && (
-                <div className="book-tags" aria-label="Темы книги">
+                <div className="book-tags" aria-label={t("Темы книги")}>
                   {bookOfDay.tags.slice(0, 4).map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
@@ -945,11 +1050,11 @@ export default function App() {
                       selectCountry(bookOfDay.country, true, bookOfDay.writer)
                     }
                   >
-                    Открыть автора и страну <span>→</span>
+                    {t("Открыть автора и страну")} <span>→</span>
                   </button>
                   {bookOfDay.sourceUrl && (
                     <a href={bookOfDay.sourceUrl} target="_blank" rel="noreferrer">
-                      Источник сведений
+                      {t("Источник сведений")}
                     </a>
                   )}
                 </div>
@@ -958,44 +1063,87 @@ export default function App() {
           </article>
 
           <article className="editorial-standard" id="about">
-            <span className="section-kicker">Редакционный стандарт</span>
-            <h3>Материал, которому можно доверять</h3>
+            <span className="section-kicker">{t("Редакционный стандарт")}</span>
+            <h3>{t("Материал, которому можно доверять")}</h3>
             <p>
-              Полное имя, проверяемые даты, человеческая биография, ключевые произведения и
-              открытые источники. Сомнительные сведения не маскируются уверенным тоном.
+              {t(
+                "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном."
+              )}
             </p>
             <ul>
               <li>
-                {editorialAudit.verifiedWriters}{" "}
-                {pluralRu(editorialAudit.verifiedWriters, [
-                  "карточка",
-                  "карточки",
-                  "карточек",
-                ])} уже{" "}
-                {editorialAudit.verifiedWriters === 1 ? "прошла" : "прошли"} проверку по
-                открытым музейным источникам
+                {language === "en" ? (
+                  <>
+                    {number(editorialAudit.verifiedWriters)} writer{" "}
+                    {editorialAudit.verifiedWriters === 1 ? "profile has" : "profiles have"}{" "}
+                    been checked against open museum sources
+                  </>
+                ) : (
+                  <>
+                    {number(editorialAudit.verifiedWriters)}{" "}
+                    {pluralRu(editorialAudit.verifiedWriters, [
+                      "карточка",
+                      "карточки",
+                      "карточек",
+                    ])} уже{" "}
+                    {editorialAudit.verifiedWriters === 1 ? "прошла" : "прошли"}{" "}
+                    проверку по открытым музейным источникам
+                  </>
+                )}
               </li>
               <li>
-                {editorialAudit.portraitedWriters}{" "}
-                {pluralRu(editorialAudit.portraitedWriters, [
-                  "документальный портрет",
-                  "документальных портрета",
-                  "документальных портретов",
-                ])}{" "}
-                {editorialAudit.portraitedWriters === 1 ? "подключён" : "подключены"}
-                без генерации лиц
+                {language === "en" ? (
+                  <>
+                    {number(editorialAudit.portraitedWriters)} documentary{" "}
+                    {editorialAudit.portraitedWriters === 1 ? "portrait is" : "portraits are"}{" "}
+                    connected without generated faces
+                  </>
+                ) : (
+                  <>
+                    {number(editorialAudit.portraitedWriters)}{" "}
+                    {pluralRu(editorialAudit.portraitedWriters, [
+                      "документальный портрет",
+                      "документальных портрета",
+                      "документальных портретов",
+                    ])}{" "}
+                    {editorialAudit.portraitedWriters === 1
+                      ? "подключён"
+                      : "подключены"}{" "}
+                    без генерации лиц
+                  </>
+                )}
               </li>
               <li>
-                Ещё {(editorialAudit.recordsNeedingReview + generatedEditorialQueue).toLocaleString("ru-RU")}{" "}
-                {pluralRu(editorialAudit.recordsNeedingReview + generatedEditorialQueue, [
-                  "запись",
-                  "записи",
-                  "записей",
-                ])}{" "}
-                {editorialAudit.recordsNeedingReview + generatedEditorialQueue === 1
-                  ? "остаётся"
-                  : "остаются"} в редакционной очереди; автоматически собранные черновики
-                не публикуются до ручной проверки
+                {language === "en" ? (
+                  <>
+                    {number(
+                      editorialAudit.recordsNeedingReview +
+                        generatedEditorialQueue
+                    )}{" "}
+                    records remain in editorial review; automatically assembled drafts
+                    are not published before manual verification
+                  </>
+                ) : (
+                  <>
+                    Ещё{" "}
+                    {number(
+                      editorialAudit.recordsNeedingReview +
+                        generatedEditorialQueue
+                    )}{" "}
+                    {pluralRu(
+                      editorialAudit.recordsNeedingReview +
+                        generatedEditorialQueue,
+                      ["запись", "записи", "записей"]
+                    )}{" "}
+                    {editorialAudit.recordsNeedingReview +
+                      generatedEditorialQueue ===
+                    1
+                      ? "остаётся"
+                      : "остаются"}{" "}
+                    в редакционной очереди; автоматически собранные черновики не
+                    публикуются до ручной проверки
+                  </>
+                )}
               </li>
             </ul>
           </article>
@@ -1006,7 +1154,7 @@ export default function App() {
               <i />
             </div>
             <div>
-              <span className="section-kicker">Интересный факт о книге</span>
+              <span className="section-kicker">{t("Интересный факт о книге")}</span>
               <h3>{factOfDay.book}</h3>
               <p>{factOfDay.fact}</p>
               <a
@@ -1014,7 +1162,7 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Проверить источник · {factOfDay.sourceLabel} ↗
+                {t("Проверить источник")} · {factOfDay.sourceLabel} ↗
               </a>
             </div>
           </article>
@@ -1024,7 +1172,7 @@ export default function App() {
           fallback={
             <section className="book-archive-section">
               <div className="book-archive-empty">
-                <strong>Собираем книжный архив…</strong>
+                <strong>{t("Собираем книжный архив…")}</strong>
               </div>
             </section>
           }
@@ -1040,11 +1188,11 @@ export default function App() {
         <section className="editorial-section" id="featured-journal">
           <header className="section-heading">
             <div>
-              <span className="section-kicker">Новые публикации</span>
-              <h2>Читать в «Пробе Пера»</h2>
+              <span className="section-kicker">{t("Новые публикации")}</span>
+              <h2>{t("Читать в «Пробе Пера»")}</h2>
             </div>
             <a href="https://probpera.ru/read" target="_blank" rel="noreferrer">
-              Все публикации <span>→</span>
+              {t("Все публикации")} <span>→</span>
             </a>
           </header>
 
@@ -1064,14 +1212,14 @@ export default function App() {
                     <small>{feature.readTime}</small>
                     <h3>{feature.title}</h3>
                     <p>{feature.description}</p>
-                    <strong>Читать статью →</strong>
+                    <strong>{t("Читать статью")} →</strong>
                   </div>
                 </a>
                 <a
                   className="section-link"
                   href={feature.sectionUrl}
                 >
-                  Все материалы рубрики
+                  {t("Все материалы рубрики")}
                 </a>
                 <ShareLinks url={feature.articleUrl} title={feature.title} />
               </article>
@@ -1079,11 +1227,12 @@ export default function App() {
           </div>
           <div className="journal-engagement">
             <div>
-              <span className="section-kicker">Обсуждение номера</span>
-              <h3>Статья заканчивается, разговор — продолжается</h3>
+              <span className="section-kicker">{t("Обсуждение номера")}</span>
+              <h3>{t("Статья заканчивается, разговор — продолжается")}</h3>
               <p>
-                Оценки и комментарии привязаны к конкретной публикации. Авторский
-                текст остаётся неизменным, а читательская дискуссия живёт отдельно.
+                {t(
+                  "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно."
+                )}
               </p>
             </div>
             <ArticleEngagement
@@ -1096,7 +1245,9 @@ export default function App() {
         <Suspense
           fallback={
             <section className="article-library is-loading">
-              <div className="article-library-empty">Собираем авторский архив…</div>
+              <div className="article-library-empty">
+                {t("Собираем авторский архив…")}
+              </div>
             </section>
           }
         >
@@ -1106,25 +1257,25 @@ export default function App() {
         <section className="community-section" id="community">
           <div className="community-illustration" aria-hidden="true" />
           <div className="community-copy">
-            <span className="section-kicker">Литературное сообщество</span>
-            <h2>Клуб внимательных читателей</h2>
+            <span className="section-kicker">{t("Литературное сообщество")}</span>
+            <h2>{t("Клуб внимательных читателей")}</h2>
             <p>
-              Форум для обстоятельного разговора о книгах, переводах и
-              экранизациях. Без случайных виджетов: единый профиль, содержательные
-              комментарии, рейтинги и редакционная модерация.
+              {t(
+                "Форум для обстоятельного разговора о книгах, переводах и экранизациях. Без случайных виджетов: единый профиль, содержательные комментарии, рейтинги и редакционная модерация."
+              )}
             </p>
             <ul>
-              <li>Обсуждения книг и публикаций журнала</li>
-              <li>Оценки материалов и произведений</li>
-              <li>Профиль читателя и история участия</li>
+              <li>{t("Обсуждения книг и публикаций журнала")}</li>
+              <li>{t("Оценки материалов и произведений")}</li>
+              <li>{t("Профиль читателя и история участия")}</li>
             </ul>
             <div>
               <button type="button" onClick={() => openCommunity("forum")}>
-                Открыть форум
+                {t("Открыть форум")}
               </button>
               {!user && (
                 <button type="button" onClick={() => openCommunity("account")}>
-                  Вступить в клуб
+                  {t("Вступить в клуб")}
                 </button>
               )}
             </div>
@@ -1134,8 +1285,8 @@ export default function App() {
         <section className="authors-section painted-paper-section" id="authors">
           <header className="section-heading">
             <div>
-              <span className="section-kicker">Лица мировой литературы</span>
-              <h2>Авторы, с которых можно начать</h2>
+              <span className="section-kicker">{t("Лица мировой литературы")}</span>
+              <h2>{t("Авторы, с которых можно начать")}</h2>
             </div>
           </header>
 
@@ -1152,7 +1303,7 @@ export default function App() {
                     loading="lazy"
                   />
                   <span>
-                    <small>{country.name}</small>
+                    <small>{countryName(country.code, country.name)}</small>
                     <strong>{writerName(writer)}</strong>
                     <em>{writer.years}</em>
                   </span>
@@ -1163,7 +1314,7 @@ export default function App() {
                   rel="noreferrer"
                   aria-label={`Источник портрета: ${writerName(writer)}`}
                 >
-                  Источник изображения
+                  {t("Источник изображения")}
                 </a>
               </article>
             ))}
@@ -1173,14 +1324,20 @@ export default function App() {
         <section className="sections-directory" id="sections">
           <header className="section-heading">
             <div>
-              <span className="section-kicker">Навигация по журналу</span>
-              <h2>Основные разделы</h2>
+              <span className="section-kicker">{t("Навигация по журналу")}</span>
+              <h2>{t("Основные разделы")}</h2>
             </div>
             <a className="sections-all-button" href={journalPath()}>
-              Полный архив публикаций <span>→</span>
+              {t("Полный архив публикаций")} <span>→</span>
             </a>
           </header>
-          <Suspense fallback={<div className="section-loading">Собираем каталог разделов…</div>}>
+          <Suspense
+            fallback={
+              <div className="section-loading">
+                {t("Собираем каталог разделов…")}
+              </div>
+            }
+          >
             <SectionsDirectory
               sections={sectionLinks}
               countryCount={countryArchive.length}
@@ -1192,63 +1349,70 @@ export default function App() {
         <section className="trust-center" id="editorial-policy">
           <header className="section-heading">
             <div>
-              <span className="section-kicker">Открытая редакция</span>
-              <h2>Как устроено доверие</h2>
+              <span className="section-kicker">{t("Открытая редакция")}</span>
+              <h2>{t("Как устроено доверие")}</h2>
               <p>
-                Читатель видит не только готовый текст, но и правила, по
-                которым сведения попадают в энциклопедию.
+                {t(
+                  "Читатель видит не только готовый текст, но и правила, по которым сведения попадают в энциклопедию."
+                )}
               </p>
             </div>
             <a href="mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале">
-              Сообщить об ошибке <span>→</span>
+              {t("Сообщить об ошибке")} <span>→</span>
             </a>
           </header>
           <div>
             <details open>
               <summary>
-                Редакционная политика
+                {t("Редакционная политика")}
               </summary>
               <p>
-                Авторские статьи сохраняют индивидуальный голос. Фактические
-                утверждения, даты, имена и библиография проверяются отдельно;
-                спорные сведения помечаются, а не выдаются за установленные.
+                {t(
+                  "Авторские статьи сохраняют индивидуальный голос. Фактические утверждения, даты, имена и библиография проверяются отдельно; спорные сведения помечаются, а не выдаются за установленные."
+                )}
               </p>
             </details>
             <details>
               <summary>
-                Источники и фактчекинг
+                {t("Источники и фактчекинг")}
               </summary>
               <p>
-                Приоритет получают библиотеки, музеи, архивы, научные издания и
-                правообладатели. В карточках писателей и книг источник
-                показывается рядом с подтверждаемым сведением.
+                {t(
+                  "Приоритет получают библиотеки, музеи, архивы, научные издания и правообладатели. В карточках писателей и книг источник показывается рядом с подтверждаемым сведением."
+                )}
               </p>
             </details>
             <details>
               <summary>
-                Иллюстрации и права
+                {t("Иллюстрации и права")}
               </summary>
               <p>
-                Портреты не генерируются. Используются документальные
-                изображения и легальные внешние превью; для обложек хранится
-                источник, статус лицензии и дата последней проверки.
+                {t(
+                  "Портреты не генерируются. Используются документальные изображения и легальные внешние превью; для обложек хранится источник, статус лицензии и дата последней проверки."
+                )}
               </p>
             </details>
             <details>
               <summary>
-                Исправления и обновления
+                {t("Исправления и обновления")}
               </summary>
               <p>
-                Существенные исправления проходят редакционную проверку.
-                Читатель может сообщить о неточности по почте, указав страницу,
-                фрагмент и надёжный источник.
+                {t(
+                  "Существенные исправления проходят редакционную проверку. Читатель может сообщить о неточности по почте, указав страницу, фрагмент и надёжный источник."
+                )}
               </p>
             </details>
           </div>
         </section>
 
         <section id="calendar" className="calendar-section painted-paper-section">
-          <Suspense fallback={<div className="calendar-card">Собираем литературные даты…</div>}>
+          <Suspense
+            fallback={
+              <div className="calendar-card">
+                {t("Собираем литературные даты…")}
+              </div>
+            }
+          >
             <LiteraryCalendar
               countries={countryArchive}
               onCountrySelect={(country, writer) =>
@@ -1266,61 +1430,84 @@ export default function App() {
               <img src={assetUrl("brand/probpera-logo.png")} alt="" />
               <span>
                 <strong>Проба Пера</strong>
-                <small>Литературный журнал и мировая энциклопедия</small>
+                <small>{t("Литературный журнал и мировая энциклопедия")}</small>
               </span>
             </a>
             <p>
-              Авторские статьи и единая интерактивная экосистема о мировой
-              литературе: страны, писатели, книги, эпохи и разговор читателей.
+              {t(
+                "Авторские статьи и единая интерактивная экосистема о мировой литературе: страны, писатели, книги, эпохи и разговор читателей."
+              )}
             </p>
             <SocialLinks />
           </section>
 
-          <nav className="footer-map" aria-label="Карта сайта">
+          <nav className="footer-map" aria-label={t("Карта сайта")}>
             <section>
-              <h2>Журнал</h2>
-              <a href="https://probpera.ru/read">Все публикации</a>
+              <h2>{t("Журнал")}</h2>
+              <a href="https://probpera.ru/read">{t("Все публикации")}</a>
               <a href="https://probpera.ru/read/page-article/page-books">
-                Мнение о книге
+                {t("Мнение о книге")}
               </a>
               <a href="https://probpera.ru/read/page-article/page-bookvsmovie">
-                Книга и экранизация
+                {t("Книга и экранизация")}
               </a>
               <a href="https://probpera.ru/read/page-words">
-                Редкие слова
+                {t("Редкие слова")}
               </a>
               <a href="https://probpera.ru/read/page-article/famous_prizes">
-                Литературные премии
+                {t("Литературные премии")}
               </a>
             </section>
             <section>
-              <h2>Энциклопедия</h2>
-              <a href="#atlas">Литературная карта</a>
-              <a href="#authors">Писатели</a>
-              <a href="#books">Книжный архив</a>
-              <a href="#calendar">Календарь событий</a>
-              <a href="#about">Редакционный стандарт</a>
-              <a href="#editorial-policy">Источники и фактчекинг</a>
-              <a href="#editorial-policy">Исправления и авторские права</a>
+              <h2>{t("Энциклопедия")}</h2>
+              <a href="#atlas">{t("Литературная карта")}</a>
+              <a href="#authors">{t("Писатели")}</a>
+              <a href="#books">{t("Книжный архив")}</a>
+              <a href="#calendar">{t("Календарь событий")}</a>
+              <a href="#about">{t("Редакционный стандарт")}</a>
+              <a href="#editorial-policy">{t("Источники и фактчекинг")}</a>
+              <a href="#editorial-policy">{t("Исправления и авторские права")}</a>
             </section>
             <section>
-              <h2>Сообщество</h2>
+              <h2>{t("Сообщество")}</h2>
               <button type="button" onClick={() => openCommunity("forum")}>
-                Форум читателей
+                {t("Форум читателей")}
               </button>
               <button type="button" onClick={() => openCommunity("account")}>
-                {user ? "Личный кабинет" : "Вход и регистрация"}
+                {user ? t("Личный кабинет") : t("Вход и регистрация")}
               </button>
-              <a href="mailto:probperasite@yandex.ru">Связаться с редакцией</a>
-              <a href="https://probpera.ru/contacts">Контакты</a>
+              <a href="mailto:probperasite@yandex.ru">
+                {t("Связаться с редакцией")}
+              </a>
+              <a href="https://probpera.ru/contacts">{t("Контакты")}</a>
             </section>
             <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
+        <p className="graphics-attribution">
+          Иконки государственных флагов основаны на графике{" "}
+          <a
+            href="https://github.com/twitter/twemoji"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twemoji
+          </a>
+          . © Twitter, Inc. и другие участники. Графика используется по лицензии{" "}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="license noopener noreferrer"
+          >
+            Creative Commons Attribution 4.0 International
+          </a>
+          . Изменения: круглая обрезка, преобразование и упаковка в SVG,
+          добавление рамки, русских названий и метаданных.
+        </p>
         <div className="footer-bottom">
           <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>
-          <span>Независимый литературный журнал</span>
+          <span>{t("Независимый литературный журнал")}</span>
         </div>
       </footer>
 

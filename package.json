@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run content:export:cms && tsc && vite build && node scripts/build-article-pages.mjs",
+    "build": "npm run content:export:cms && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs",
     "build:all": "npm run build && npm run admin:build",
     "preview": "vite preview",
     "admin:dev": "npm run dev --workspace @probpera/admin",
@@ -26,6 +26,7 @@
     "content:audit": "node scripts/audit-articles.mjs",
     "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
     "content:normalize-titles": "node scripts/normalize-article-titles.mjs",
+    "content:link-books": "node scripts/build-book-article-mentions.mjs",
     "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
     "content:export:cms": "node scripts/export-published-content.mjs",
     "links:audit": "node scripts/audit-public-routes.mjs",
@@ -33,7 +34,10 @@
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
     "covers:audit": "node scripts/audit-cover-rights.mjs",
-    "assets:globe": "node scripts/build-antique-globe-texture.mjs"
+    "books:sync": "node scripts/sync-literary-archive.mjs",
+    "books:sync:apply": "node scripts/sync-literary-archive.mjs --apply",
+    "assets:globe": "node scripts/build-antique-globe-texture.mjs",
+    "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",

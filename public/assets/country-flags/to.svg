@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-to desc-to">
+  <title id="title-to">Тонга — TO</title>
+  <desc id="desc-to">Круглая SVG-иконка флага страны «Тонга».</desc>
+  <defs>
+    <clipPath id="clip-to"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-to)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V192H213V377Z" fill="#C10000"/>
+      <path d="M213 377V192H0V320Q0 344 16.5 360.5Q33 377 57 377ZM171 263V306H128V348H85V306H43V263H85V220H128V263Z" fill="#EEEDED"/>
+      <path d="M128 348V306H171V263H128V220H85V263H43V306H85V348Z" fill="#C10000"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

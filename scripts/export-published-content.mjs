@@ -195,7 +195,7 @@ const [
 ] = await Promise.all([
   fetchRows("articles", {
     select:
-      "id,legacy_id,title,subtitle,excerpt,content_html,cover_media_id,cover_external_url,cover_alt,slug,legacy_path,published_at,featured,show_on_homepage,pinned,seo_title,seo_description,canonical_url,allow_indexing,categories(name,slug)",
+      "id,legacy_id,title,subtitle,excerpt,content_html,cover_media_id,cover_external_url,cover_alt,slug,legacy_path,published_at,featured,show_on_homepage,pinned,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,og_media_id,allow_indexing,categories(name,slug)",
     status: "eq.published",
     deleted_at: "is.null",
     order: "pinned.desc,featured.desc,published_at.desc",
@@ -254,6 +254,7 @@ const articles = rawArticles.map((article) => {
     : 0;
   const coverMedia = mediaById(mediaLookup, article.cover_media_id);
   const imageUrl = article.cover_external_url || storageUrl(coverMedia) || undefined;
+  const ogImageUrl = storageUrl(mediaById(mediaLookup, article.og_media_id)) || imageUrl;
   const id = `cms-${article.id}`;
   const publicPath = articlePublicPath(article.slug, sectionId);
   const canonicalUrl = article.canonical_url || `${siteOrigin}${publicPath}/`;
@@ -287,6 +288,11 @@ const articles = rawArticles.map((article) => {
     pinned: Boolean(article.pinned),
     seoTitle: article.seo_title || article.title,
     seoDescription: article.seo_description || description,
+    seoKeywords: article.seo_keywords || [],
+    ogTitle: article.og_title || article.seo_title || article.title,
+    ogDescription:
+      article.og_description || article.seo_description || description,
+    ogImageUrl,
     allowIndexing: article.allow_indexing !== false,
   };
   articleDocuments.push({
@@ -294,6 +300,8 @@ const articles = rawArticles.map((article) => {
     payload: {
       ...entry,
       ...document,
+      sources: article.sources || [],
+      bibliography: article.bibliography || [],
     },
   });
   return entry;
@@ -352,7 +360,8 @@ const pages = rawPages.map((page) => ({
   contentHtml: page.content_html,
   seoTitle: page.seo_title || page.title,
   seoDescription: page.seo_description || page.excerpt,
-  canonicalUrl: page.canonical_url || `${siteOrigin}/${page.slug}/`,
+  canonicalUrl:
+    page.canonical_url || `${siteOrigin}/stranitsy/${page.slug}/`,
   allowIndexing: page.allow_indexing !== false,
   updatedAt: page.updated_at,
 }));

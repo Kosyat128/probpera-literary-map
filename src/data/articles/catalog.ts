@@ -17,7 +17,11 @@ export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   showOnHomepage?: boolean;
   seoTitle?: string | null;
   seoDescription?: string | null;
+  seoKeywords?: readonly string[];
   canonicalUrl?: string | null;
+  ogTitle?: string | null;
+  ogDescription?: string | null;
+  ogImageUrl?: string | null;
   allowIndexing?: boolean;
 };
 

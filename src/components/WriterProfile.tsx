@@ -1,4 +1,5 @@
 import type { WriterProfile as Writer } from "../data/countries/types";
+import { getWriterWorkTitles } from "../data/bookArchive";
 import { formatDate } from "../utils/formatDate";
 import { resolveRelatedWriters } from "../utils/resolveRelatedWriters";
 
@@ -76,7 +77,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
 
       <h2>Главные произведения</h2>
       <ul>
-        {(writer.works || []).map((work) => <li key={work}>{work}</li>)}
+        {getWriterWorkTitles(writer).map((work) => <li key={work}>{work}</li>)}
       </ul>
     </section>
   );

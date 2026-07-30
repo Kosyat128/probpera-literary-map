@@ -3,6 +3,7 @@
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
+import { TableKit } from "@tiptap/extension-table";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -34,7 +35,46 @@ type Article = {
   featured?: boolean;
   show_on_homepage?: boolean;
   pinned?: boolean;
+  sources?: unknown;
+  bibliography?: unknown;
+  seo_keywords?: string[];
+  og_title?: string | null;
+  og_description?: string | null;
+  allow_indexing?: boolean;
 };
+
+const articleTemplates = [
+  {
+    label: "Мнение о книге",
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Почему эта книга заслуживает внимательного разговора.</p></aside><h2>История создания и публикации</h2><p></p><h2>О чём произведение</h2><p></p><h2>Темы, герои и художественный мир</h2><p></p><h2>Заключительное мнение о книге</h2><p></p><h2>Источники</h2><p></p>`,
+  },
+  {
+    label: "Биография писателя",
+    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Место писателя в литературе и причина обратиться к его судьбе.</p></aside><h2>Детство и образование</h2><p></p><h2>Начало литературного пути</h2><p></p><h2>Главные произведения</h2><p></p><h2>Личная судьба и время</h2><p></p><h2>Наследие</h2><p></p><h2>Источники и библиография</h2><p></p>`,
+  },
+  {
+    label: "Книга и экранизация",
+    html: `<aside class="article-lead"><p><strong>Книга против экранизации</strong></p><p>Что именно сравнивается и почему.</p></aside><h2>Литературный первоисточник</h2><p></p><h2>Экранная версия</h2><p></p><h2>Сюжет и композиция</h2><p></p><h2>Герои и актёрские работы</h2><p></p><h2>Что изменилось и что сохранилось</h2><p></p><h2>Вывод</h2><p></p>`,
+  },
+  {
+    label: "Большое эссе",
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Главный вопрос и редакционная позиция.</p></aside><h2>Контекст</h2><p></p><h2>Основная идея</h2><p></p><h2>Примеры и аргументы</h2><p></p><blockquote><p>Цитата с обязательным указанием источника.</p></blockquote><h2>Вывод</h2><p></p><h2>Источники</h2><p></p>`,
+  },
+] as const;
+
+function listValue(value: unknown) {
+  if (!Array.isArray(value)) return "";
+  return value
+    .map((item) =>
+      typeof item === "string"
+        ? item
+        : item && typeof item === "object" && "text" in item
+          ? String(item.text || "")
+          : ""
+    )
+    .filter(Boolean)
+    .join("\n");
+}
 
 function ToolbarButton({
   label,
@@ -89,11 +129,15 @@ export default function ArticleEditor({
     JSON.stringify(article.content_json || { type: "doc", content: [] })
   );
   const [savedLocallyAt, setSavedLocallyAt] = useState<string | null>(null);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
 
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
       StarterKit,
+      TableKit,
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
       Image.configure({ inline: false }),
@@ -107,6 +151,7 @@ export default function ArticleEditor({
     onUpdate({ editor: currentEditor }) {
       setContentHtml(currentEditor.getHTML());
       setContentJson(JSON.stringify(currentEditor.getJSON()));
+      setIsDirty(true);
     },
   });
 
@@ -127,6 +172,20 @@ export default function ArticleEditor({
   }, [canonicalEdited, generatedCanonical]);
 
   useEffect(() => {
+    const recoveryKey = `probpera-editor-${article.id || "new"}`;
+    setHasRecoveryCopy(Boolean(window.localStorage.getItem(recoveryKey)));
+  }, [article.id]);
+
+  useEffect(() => {
+    const protectDraft = (event: BeforeUnloadEvent) => {
+      if (!isDirty) return;
+      event.preventDefault();
+    };
+    window.addEventListener("beforeunload", protectDraft);
+    return () => window.removeEventListener("beforeunload", protectDraft);
+  }, [isDirty]);
+
+  useEffect(() => {
     const timer = window.setTimeout(() => {
       const recoveryKey = `probpera-editor-${article.id || "new"}`;
       window.localStorage.setItem(
@@ -140,6 +199,7 @@ export default function ArticleEditor({
           second: "2-digit",
         }).format(new Date())
       );
+      setHasRecoveryCopy(true);
     }, 900);
     return () => window.clearTimeout(timer);
   }, [article.id, contentHtml, contentJson, slug, title]);
@@ -162,8 +222,56 @@ export default function ArticleEditor({
     if (url && editor) editor.chain().focus().setImage({ src: url }).run();
   };
 
+  const applyTemplate = (html: string, label: string) => {
+    if (!editor) return;
+    if (
+      editor.getText().trim() &&
+      !window.confirm(
+        `Заменить текущий текст шаблоном «${label}»? Локальная резервная копия сохранится.`
+      )
+    ) {
+      return;
+    }
+    editor.commands.setContent(html);
+    setIsDirty(true);
+  };
+
+  const restoreLocalCopy = () => {
+    const stored = window.localStorage.getItem(
+      `probpera-editor-${article.id || "new"}`
+    );
+    if (!stored || !editor) return;
+    try {
+      const recovery = JSON.parse(stored) as {
+        title?: string;
+        slug?: string;
+        contentHtml?: string;
+      };
+      if (
+        !window.confirm(
+          "Восстановить локальную резервную копию? Текущий текст в редакторе будет заменён."
+        )
+      ) {
+        return;
+      }
+      if (recovery.title) setTitle(recovery.title);
+      if (recovery.slug) {
+        setSlugEdited(true);
+        setSlug(recovery.slug);
+      }
+      editor.commands.setContent(recovery.contentHtml || "");
+      setIsDirty(true);
+    } catch {
+      window.alert("Локальная копия повреждена и не может быть восстановлена.");
+    }
+  };
+
   return (
-    <form action={saveArticleAction}>
+    <form
+      action={saveArticleAction}
+      onSubmit={() => setIsDirty(false)}
+      className={isFullscreen ? "article-form is-fullscreen" : "article-form"}
+    >
       {article.id && <input type="hidden" name="id" value={article.id} />}
       <input type="hidden" name="content_html" value={contentHtml} />
       <input type="hidden" name="content_json" value={contentJson} />
@@ -204,21 +312,45 @@ export default function ArticleEditor({
           </section>
 
           <section className="panel editor-surface">
+            <div className="editor-template-bar">
+              <span>Начать с редакционного шаблона</span>
+              <div>
+                {articleTemplates.map((template) => (
+                  <button
+                    type="button"
+                    key={template.label}
+                    onClick={() => applyTemplate(template.html, template.label)}
+                  >
+                    {template.label}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="editor-toolbar" aria-label="Панель форматирования">
               <ToolbarButton label="Ж" active={editor?.isActive("bold")} onClick={() => editor?.chain().focus().toggleBold().run()} />
               <ToolbarButton label="К" active={editor?.isActive("italic")} onClick={() => editor?.chain().focus().toggleItalic().run()} />
               <ToolbarButton label="Ч" active={editor?.isActive("underline")} onClick={() => editor?.chain().focus().toggleUnderline().run()} />
+              <ToolbarButton label="Зачёркнутый" active={editor?.isActive("strike")} onClick={() => editor?.chain().focus().toggleStrike().run()} />
               <ToolbarButton label="H2" active={editor?.isActive("heading", { level: 2 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} />
               <ToolbarButton label="H3" active={editor?.isActive("heading", { level: 3 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} />
+              <ToolbarButton label="H4" active={editor?.isActive("heading", { level: 4 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 4 }).run()} />
               <ToolbarButton label="• Список" active={editor?.isActive("bulletList")} onClick={() => editor?.chain().focus().toggleBulletList().run()} />
               <ToolbarButton label="1. Список" active={editor?.isActive("orderedList")} onClick={() => editor?.chain().focus().toggleOrderedList().run()} />
               <ToolbarButton label="Цитата" active={editor?.isActive("blockquote")} onClick={() => editor?.chain().focus().toggleBlockquote().run()} />
+              <ToolbarButton label="Разделитель" onClick={() => editor?.chain().focus().setHorizontalRule().run()} />
+              <ToolbarButton label="Таблица" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
               <ToolbarButton label="Ссылка" active={editor?.isActive("link")} onClick={setLink} />
               <ToolbarButton label="Фото" onClick={addImage} />
               <ToolbarButton label="Слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
               <ToolbarButton label="Центр" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
+              <ToolbarButton label="Очистить формат" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
               <ToolbarButton label="↶" onClick={() => editor?.chain().focus().undo().run()} />
               <ToolbarButton label="↷" onClick={() => editor?.chain().focus().redo().run()} />
+              <ToolbarButton
+                label={isFullscreen ? "Свернуть редактор" : "На весь экран"}
+                active={isFullscreen}
+                onClick={() => setIsFullscreen((value) => !value)}
+              />
             </div>
             <EditorContent editor={editor} />
           </section>
@@ -329,6 +461,15 @@ export default function ArticleEditor({
               <textarea name="seo_description" defaultValue={article.seo_description || ""} maxLength={400} />
             </label>
             <label className="field">
+              <span>Ключевые слова</span>
+              <textarea
+                name="seo_keywords"
+                defaultValue={(article.seo_keywords || []).join(", ")}
+                maxLength={1000}
+                placeholder="литература, автор, название книги"
+              />
+            </label>
+            <label className="field">
               <span>Канонический адрес</span>
               <input
                 type="url"
@@ -341,6 +482,41 @@ export default function ArticleEditor({
                 placeholder={generatedCanonical}
               />
             </label>
+            <label className="field">
+              <span>Open Graph — заголовок</span>
+              <input name="og_title" defaultValue={article.og_title || ""} maxLength={180} />
+            </label>
+            <label className="field">
+              <span>Open Graph — описание</span>
+              <textarea name="og_description" defaultValue={article.og_description || ""} maxLength={400} />
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allow_indexing"
+                defaultChecked={article.allow_indexing !== false}
+              />{" "}
+              Разрешить индексацию поисковыми системами
+            </label>
+          </section>
+
+          <section className="panel settings-stack">
+            <h2>Источники и библиография</h2>
+            <label className="field">
+              <span>Источники — по одному на строку</span>
+              <textarea
+                name="sources"
+                defaultValue={listValue(article.sources)}
+                placeholder="Название — https://…"
+              />
+            </label>
+            <label className="field">
+              <span>Библиография — по одной записи на строку</span>
+              <textarea
+                name="bibliography"
+                defaultValue={listValue(article.bibliography)}
+              />
+            </label>
           </section>
         </aside>
       </div>
@@ -349,8 +525,28 @@ export default function ArticleEditor({
         <small>
           {wordCount.toLocaleString("ru-RU")} слов
           {savedLocallyAt ? ` · резервная копия ${savedLocallyAt}` : ""}
+          {isDirty ? " · есть несохранённые изменения" : ""}
         </small>
         <div className="editor-actions">
+          {hasRecoveryCopy && (
+            <button
+              className="button-secondary"
+              type="button"
+              onClick={restoreLocalCopy}
+            >
+              Восстановить локальную копию
+            </button>
+          )}
+          {article.id && (
+            <a
+              className="button-secondary"
+              href={`/admin/articles/${article.id}/preview`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Предпросмотр
+            </a>
+          )}
           <button className="button-secondary" type="submit" name="intent" value="save">
             Сохранить
           </button>

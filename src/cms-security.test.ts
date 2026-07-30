@@ -12,6 +12,17 @@ const favoritesMigration = readFileSync(
   ),
   "utf8"
 );
+const pageRevisionMigration = readFileSync(
+  new URL(
+    "../supabase/migrations/20260730_page_revision_history.sql",
+    import.meta.url
+  ),
+  "utf8"
+);
+const communitySchema = readFileSync(
+  new URL("../supabase/schema.sql", import.meta.url),
+  "utf8"
+);
 
 describe("защита редакционной системы", () => {
   it("не позволяет читателю повысить себе роль", () => {
@@ -42,5 +53,24 @@ describe("защита редакционной системы", () => {
       "user_id = (select auth.uid())"
     );
     expect(favoritesMigration).not.toContain("to anon");
+  });
+
+  it("сохраняет восстановимые версии постоянных страниц", () => {
+    expect(pageRevisionMigration).toContain(
+      "create or replace function public.capture_page_revision()"
+    );
+    expect(pageRevisionMigration).toContain(
+      "before update on public.pages"
+    );
+  });
+
+  it("разрешает отдельные рейтинги книг без регистрации", () => {
+    expect(communitySchema).toContain(
+      "subject_type text not null check (subject_type in ('article', 'book'))"
+    );
+    expect(communitySchema).toContain(
+      "grant execute on function public.rate_content(text, text, smallint, uuid)"
+    );
+    expect(communitySchema).toContain("to anon, authenticated");
   });
 });

@@ -1,6 +1,7 @@
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
 import LiteraryGlobe from "./LiteraryGlobe";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 interface Props {
   countries: Country[];
@@ -17,8 +18,13 @@ export default function LiteraryWorldMap({
   selectedCountry,
   onCountrySelect,
 }: Props) {
+  const { t } = useInterfaceLanguage();
+
   return (
-    <section className="world-map-stage" aria-label="Интерактивный литературный глобус">
+    <section
+      className="world-map-stage"
+      aria-label={t("Интерактивный литературный глобус")}
+    >
       <LiteraryGlobe
         countries={countries}
         selectedCountry={selectedCountry}

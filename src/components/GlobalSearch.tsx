@@ -6,11 +6,15 @@ import {
   useState,
 } from "react";
 
-import type { BookArchiveEntry } from "../data/bookArchive";
+import {
+  getWriterWorkTitles,
+  type BookArchiveEntry,
+} from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
-import { countryFlag } from "../utils/countryFlag";
+import CountryFlagIcon from "./CountryFlagIcon";
 
 type Props = {
   open: boolean;
@@ -84,6 +88,7 @@ export default function GlobalSearch({
   const [query, setQuery] = useState("");
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(false);
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalize(deferredQuery);
 
@@ -156,6 +161,7 @@ export default function GlobalSearch({
       .filter((country) =>
         matches(normalizedQuery, [
           country.name,
+          countryName(country.code, country.name),
           country.code,
           country.capital,
           country.region,
@@ -190,7 +196,7 @@ export default function GlobalSearch({
           writer.description,
           ...(writer.genres || []),
           ...(writer.tags || []),
-          ...(writer.works || []),
+          ...getWriterWorkTitles(writer),
           ...(writer.awards || []),
           ...(writer.languages || []),
           ...(writer.places || []),
@@ -205,6 +211,7 @@ export default function GlobalSearch({
           book.originalTitle,
           book.writerName,
           book.countryName,
+          countryName(book.country.code, book.countryName),
           book.description,
           book.originalLanguage,
           ...(book.genres || []),
@@ -229,7 +236,7 @@ export default function GlobalSearch({
       books: bookMatches,
       articles: articleMatches,
     };
-  }, [articles, books, countries, normalizedQuery]);
+  }, [articles, books, countries, countryName, normalizedQuery]);
 
   if (!open) return null;
 
@@ -251,10 +258,10 @@ export default function GlobalSearch({
       >
         <header>
           <div>
-            <span className="section-kicker">Единый каталог</span>
-            <h2 id="global-search-title">Найти в «Пробе Пера»</h2>
+            <span className="section-kicker">{t("Единый каталог")}</span>
+            <h2 id="global-search-title">{t("Найти в «Пробе Пера»")}</h2>
           </div>
-          <button type="button" onClick={onClose} aria-label="Закрыть поиск">
+          <button type="button" onClick={onClose} aria-label={t("Закрыть поиск")}>
             ×
           </button>
         </header>
@@ -266,7 +273,7 @@ export default function GlobalSearch({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Страна, писатель, книга, статья, эпоха…"
+            placeholder={t("Страна, писатель, книга, статья, эпоха…")}
             autoComplete="off"
           />
           <kbd>Esc</kbd>
@@ -275,15 +282,22 @@ export default function GlobalSearch({
         {normalizedQuery.length < 2 ? (
           <div className="global-search-intro">
             <p>
-              Поиск одновременно проверяет страны, писателей, произведения и
-              редакционные публикации.
+              {t(
+                "Поиск одновременно проверяет страны, писателей, произведения и редакционные публикации."
+              )}
             </p>
             <div>
-              <button type="button" onClick={() => setQuery("Достоевский")}>
-                Достоевский
+              <button
+                type="button"
+                onClick={() => setQuery("Достоевский")}
+              >
+                {language === "en" ? "Dostoevsky" : "Достоевский"}
               </button>
-              <button type="button" onClick={() => setQuery("Япония")}>
-                Япония
+              <button
+                type="button"
+                onClick={() => setQuery(language === "en" ? "Japan" : "Япония")}
+              >
+                {language === "en" ? "Japan" : "Япония"}
               </button>
               <button type="button" onClick={() => setQuery("экранизация")}>
                 Экранизации
@@ -295,14 +309,18 @@ export default function GlobalSearch({
           </div>
         ) : totalResults === 0 && !articlesLoading ? (
           <div className="global-search-empty">
-            <strong>Совпадений не найдено</strong>
-            <p>Попробуйте фамилию, название произведения или другую форму слова.</p>
+            <strong>{t("Совпадений не найдено")}</strong>
+            <p>
+              {t(
+                "Попробуйте фамилию, название произведения или другую форму слова."
+              )}
+            </p>
           </div>
         ) : (
           <div className="global-search-results" aria-live="polite">
             {results.countries.length > 0 && (
               <section>
-                <h3>Страны</h3>
+                <h3>{t("Страны")}</h3>
                 {results.countries.map((country) => (
                   <button
                     type="button"
@@ -312,11 +330,26 @@ export default function GlobalSearch({
                       onClose();
                     }}
                   >
-                    <span>{country.flag || countryFlag(country.code)}</span>
-                    <strong>{country.name}</strong>
+                    <span>
+                      <CountryFlagIcon
+                        code={country.code}
+                        countryName={country.name}
+                        size={28}
+                        decorative
+                      />
+                    </span>
+                    <strong>{countryName(country.code, country.name)}</strong>
                     <small>
-                      {country.writers.length}{" "}
-                      {pluralRu(country.writers.length, ["автор", "автора", "авторов"])}
+                      {number(country.writers.length)}{" "}
+                      {language === "en"
+                        ? country.writers.length === 1
+                          ? "writer"
+                          : "writers"
+                        : pluralRu(country.writers.length, [
+                            "автор",
+                            "автора",
+                            "авторов",
+                          ])}
                     </small>
                   </button>
                 ))}
@@ -325,7 +358,7 @@ export default function GlobalSearch({
 
             {results.writers.length > 0 && (
               <section>
-                <h3>Писатели</h3>
+                <h3>{t("Писатели")}</h3>
                 {results.writers.map(({ country, writer }) => (
                   <button
                     type="button"
@@ -337,7 +370,10 @@ export default function GlobalSearch({
                   >
                     <span aria-hidden="true">✦</span>
                     <strong>{writerName(writer)}</strong>
-                    <small>{country.name} · {writer.years || "карточка автора"}</small>
+                    <small>
+                      {countryName(country.code, country.name)} ·{" "}
+                      {writer.years || t("карточка автора")}
+                    </small>
                   </button>
                 ))}
               </section>
@@ -345,7 +381,7 @@ export default function GlobalSearch({
 
             {results.books.length > 0 && (
               <section>
-                <h3>Книги</h3>
+                <h3>{t("Книги")}</h3>
                 {results.books.map((book) => (
                   <button
                     type="button"
@@ -357,7 +393,10 @@ export default function GlobalSearch({
                   >
                     <span aria-hidden="true">▤</span>
                     <strong>{book.title}</strong>
-                    <small>{book.writerName} · {book.countryName}</small>
+                    <small>
+                      {book.writerName} ·{" "}
+                      {countryName(book.country.code, book.countryName)}
+                    </small>
                   </button>
                 ))}
               </section>
@@ -365,7 +404,7 @@ export default function GlobalSearch({
 
             {results.articles.length > 0 && (
               <section>
-                <h3>Статьи</h3>
+                <h3>{t("Статьи")}</h3>
                 {results.articles.map((article) => (
                   <a
                     key={article.id}
@@ -380,7 +419,7 @@ export default function GlobalSearch({
                     <span aria-hidden="true">¶</span>
                     <strong>{article.title}</strong>
                     <small>
-                      {article.sectionLabel} · {article.readingMinutes} мин.
+                      {article.sectionLabel} · {article.readingMinutes} {t("мин.")}
                     </small>
                   </a>
                 ))}
@@ -392,10 +431,12 @@ export default function GlobalSearch({
         <footer>
           <span>
             {articlesLoading
-              ? "Подключаем редакционный архив…"
-              : `${countries.length} стран · ${books.length.toLocaleString("ru-RU")} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${articles.length || 157} ${pluralRu(articles.length || 157, ["статья", "статьи", "статей"])}`}
+              ? t("Подключаем редакционный архив…")
+              : language === "en"
+                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articles.length || 157)} articles`
+                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articles.length || 157)} ${pluralRu(articles.length || 157, ["статья", "статьи", "статей"])}`}
           </span>
-          <small>Поиск выполняется внутри сайта</small>
+          <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>
       </div>
     </div>

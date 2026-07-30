@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-fm desc-fm">
+  <title id="title-fm">Микронезия — FM</title>
+  <desc id="desc-fm">Круглая SVG-иконка флага страны «Микронезия».</desc>
+  <defs>
+    <clipPath id="clip-fm"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-fm)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#75B2DD"/>
+      <path d="M260 340 269 314H295L274 299L282 273L260 289L239 273L247 299L225 314H252ZM383 200 408 192 383 184V157L367 179L341 170L357 192L341 214L367 205L383 227ZM274 85 295 70H269L260 44L252 70H225L247 85L239 111L260 95L282 111ZM154 205 179 214 163 192 179 170 154 179 138 157V184L112 192L138 200V227Z" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

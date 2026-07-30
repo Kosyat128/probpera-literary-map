@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-il desc-il">
+  <title id="title-il">Израиль — IL</title>
+  <desc id="desc-il">Круглая SVG-иконка флага страны «Израиль».</desc>
+  <defs>
+    <clipPath id="clip-il"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-il)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M294 178 301 166H287ZM256 141 249 152H263Z" fill="#EDECEC"/>
+      <path d="M0 92V292H512V92ZM4 341Q11 357 25.0 367.0Q39 377 57 377H455Q473 377 487.0 367.0Q501 357 508 341ZM4 43H508Q504 32 496.0 24.0Q488 16 477.5 11.5Q467 7 455 7H57Q39 7 25.0 17.0Q11 27 4 43Z" fill="#EEEEEE"/>
+      <path d="M301 218 294 206 287 218ZM225 218 218 206 211 218ZM271 166H241L226 192L241 218H271L286 192ZM218 178 225 166H211ZM256 243 263 232H249Z" fill="#EDECEC"/>
+      <path d="M4 341H508Q512 331 512 320V292H0V320Q0 331 4 341ZM4 43Q0 53 0 64V92H512V64Q512 53 508 43ZM233 152H187L210 192L187 232H233L256 272L279 232H325L302 192L325 152H279L256 112ZM256 141 263 152H249ZM301 218H287L294 206ZM294 178 287 166H301ZM256 243 249 232H263ZM241 218 226 192 241 166H271L286 192L271 218ZM225 218H211L218 206ZM218 178 211 166H225Z" fill="#0038B8"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

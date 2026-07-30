@@ -5,6 +5,7 @@ import DisplayModeControl from "./DisplayModeControl";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import ShareLinks from "../editorial/ShareLinks";
 import { useDisplayMode } from "../hooks/useDisplayMode";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { articlePath } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
@@ -19,6 +20,8 @@ type ArticleDocument = ArticleCatalogEntry & {
   headings: ArticleHeading[];
   contentHtml: string;
   plainText: string;
+  sources?: Array<string | { text?: string }>;
+  bibliography?: Array<string | { text?: string }>;
 };
 
 type Props = {
@@ -34,6 +37,15 @@ function publicArticleUrl(article: ArticleCatalogEntry) {
   const documentPath =
     article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
   return `${import.meta.env.BASE_URL}${documentPath.replace(/^\/+/, "")}`;
+}
+
+function sourceLines(
+  value?: Array<string | { text?: string }>
+) {
+  return (value || [])
+    .map((item) => (typeof item === "string" ? item : item.text || ""))
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 export default function ArticleReader({
@@ -52,6 +64,7 @@ export default function ArticleReader({
   const [progress, setProgress] = useState(0);
   const [fontScale, setFontScale] = useState(1);
   const { mode } = useDisplayMode();
+  const { language, t, number } = useInterfaceLanguage();
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
   const isSaved = savedReadings.some(
@@ -129,6 +142,13 @@ export default function ArticleReader({
         : "",
     [articleDocument]
   );
+  const sourceItems = useMemo(
+    () => [
+      ...sourceLines(articleDocument?.sources),
+      ...sourceLines(articleDocument?.bibliography),
+    ],
+    [articleDocument]
+  );
 
   const handleScroll = () => {
     const element = scrollRef.current;
@@ -164,16 +184,16 @@ export default function ArticleReader({
             type="button"
             onClick={onClose}
           >
-          <span aria-hidden="true">←</span> К журналу
+          <span aria-hidden="true">←</span> {t("К журналу")}
         </button>
         <div>
           <span>{article.sectionLabel}</span>
           <strong>Проба Пера</strong>
         </div>
-        <nav aria-label="Настройки чтения">
+        <nav aria-label={t("Настройки чтения")}>
           <button
             type="button"
-            aria-label="Уменьшить шрифт"
+            aria-label={t("Уменьшить шрифт")}
             disabled={fontScale <= 0.9}
             onClick={() => setFontScale((value) => Math.max(0.9, value - 0.1))}
           >
@@ -181,7 +201,7 @@ export default function ArticleReader({
           </button>
           <button
             type="button"
-            aria-label="Увеличить шрифт"
+            aria-label={t("Увеличить шрифт")}
             disabled={fontScale >= 1.3}
             onClick={() => setFontScale((value) => Math.min(1.3, value + 0.1))}
           >
@@ -192,8 +212,14 @@ export default function ArticleReader({
             type="button"
             className={isSaved ? "reader-save is-active" : "reader-save"}
             aria-pressed={isSaved}
-            aria-label={isSaved ? "Удалить статью из библиотеки" : "Сохранить статью"}
-            title={isSaved ? "Сохранено в библиотеке" : "Сохранить на потом"}
+            aria-label={
+              isSaved
+                ? t("Удалить статью из библиотеки")
+                : t("Сохранить статью")
+            }
+            title={
+              isSaved ? t("Сохранено в библиотеке") : t("Сохранить на потом")
+            }
             onClick={() =>
               toggleSavedReading({
                 id: article.id,
@@ -212,7 +238,12 @@ export default function ArticleReader({
           >
             {isSaved ? "◆" : "◇"}
           </button>
-          <button className="reader-close" type="button" onClick={onClose} aria-label="Закрыть">
+          <button
+            className="reader-close"
+            type="button"
+            onClick={onClose}
+            aria-label={t("Закрыть")}
+          >
             ×
           </button>
         </nav>
@@ -221,7 +252,7 @@ export default function ArticleReader({
       <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}>
         <main className="article-reader-layout">
           <aside className="article-reader-toc">
-            <span>В этом материале</span>
+            <span>{t("В этом материале")}</span>
             {headingItems.length > 0 ? (
               <ol>
                 {headingItems.map((heading) => (
@@ -233,10 +264,11 @@ export default function ArticleReader({
                 ))}
               </ol>
             ) : (
-              <p>Материал читается как единое эссе.</p>
+              <p>{t("Материал читается как единое эссе.")}</p>
             )}
             <small>
-              {article.readingMinutes} мин. чтения · {article.wordCount.toLocaleString("ru-RU")} слов
+              {article.readingMinutes} {t("мин. чтения")} ·{" "}
+              {number(article.wordCount)} {t("слов")}
             </small>
           </aside>
 
@@ -247,7 +279,7 @@ export default function ArticleReader({
             {mode === "book" && (
               <div className="book-mode-plaque" aria-hidden="true">
                 <span>Проба Пера</span>
-                <i>Режим печатной книги</i>
+                <i>{t("Режим печатной книги")}</i>
                 <span>MMXXVI</span>
               </div>
             )}
@@ -257,11 +289,16 @@ export default function ArticleReader({
                 <small>{article.publishedLabel}</small>
               </div>
               <h1 id="article-reader-title">{article.title}</h1>
+              {language === "en" && (
+                <span className="article-original-language">
+                  {t("Оригинал на русском языке")}
+                </span>
+              )}
               {article.description && <p>{article.description}</p>}
               <div className="article-byline">
-                <span>Авторская публикация журнала «Проба Пера»</span>
+                <span>{t("Авторская публикация журнала «Проба Пера»")}</span>
                 <a href={article.url} target="_blank" rel="noreferrer">
-                  Оригинал публикации ↗
+                  {t("Оригинал публикации ↗")}
                 </a>
               </div>
             </header>
@@ -280,9 +317,9 @@ export default function ArticleReader({
 
             {error && (
               <div className="article-reader-error">
-                <strong>Материал временно не открылся.</strong>
+                <strong>{t("Материал временно не открылся.")}</strong>
                 <a href={article.url} target="_blank" rel="noreferrer">
-                  Прочитать оригинал на probpera.ru
+                  {t("Прочитать оригинал на probpera.ru")}
                 </a>
               </div>
             )}
@@ -290,7 +327,7 @@ export default function ArticleReader({
             {!articleDocument && !error && (
               <div className="article-reader-loading" role="status">
                 <span aria-hidden="true">✦</span>
-                <p>Готовим материал к чтению…</p>
+                <p>{t("Готовим материал к чтению…")}</p>
               </div>
             )}
 
@@ -301,13 +338,25 @@ export default function ArticleReader({
               />
             )}
 
+            {sourceItems.length > 0 && (
+              <section className="article-reader-sources">
+                <span>{t("Источники и библиография")}</span>
+                <ol>
+                  {sourceItems.map((item, index) => (
+                    <li key={`${item}-${index}`}>{item}</li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
             {articleDocument && (
               <footer className="article-reader-finish">
-                <span>Конец материала</span>
-                <h2>Спасибо за внимательное прочтение статьи</h2>
+                <span>{t("Конец материала")}</span>
+                <h2>{t("Спасибо за внимательное прочтение статьи")}</h2>
                 <p>
-                  Авторский текст сохранён в исходном виде. Замечания по фактам и языку
-                  проходят отдельную редакционную проверку.
+                  {t(
+                    "Авторский текст сохранён в исходном виде. Замечания по фактам и языку проходят отдельную редакционную проверку."
+                  )}
                 </p>
                 <ShareLinks
                   url={`${window.location.origin}${articlePath(
@@ -324,21 +373,26 @@ export default function ArticleReader({
           </article>
 
           <aside className="article-reader-related">
-            <span>Продолжить чтение</span>
+            <span>{t("Продолжить чтение")}</span>
             {related.slice(0, 3).map((item) => (
               <button type="button" key={item.id} onClick={() => openAnother(item)}>
                 <small>{item.sectionLabel}</small>
                 <strong>{item.title}</strong>
-                <em>{item.readingMinutes} мин.</em>
+                <em>
+                  {item.readingMinutes} {t("мин.")}
+                </em>
               </button>
             ))}
           </aside>
         </main>
 
-        <nav className="article-reader-sequence" aria-label="Соседние публикации">
+        <nav
+          className="article-reader-sequence"
+          aria-label={t("Соседние публикации")}
+        >
           {previous ? (
             <button type="button" onClick={() => openAnother(previous)}>
-              <small>Предыдущий материал</small>
+              <small>{t("Предыдущий материал")}</small>
               <strong>← {previous.title}</strong>
             </button>
           ) : (
@@ -346,7 +400,7 @@ export default function ArticleReader({
           )}
           {next && (
             <button type="button" onClick={() => openAnother(next)}>
-              <small>Следующий материал</small>
+              <small>{t("Следующий материал")}</small>
               <strong>{next.title} →</strong>
             </button>
           )}

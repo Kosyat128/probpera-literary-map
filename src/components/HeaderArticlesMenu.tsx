@@ -1,7 +1,11 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articlePath, journalPath } from "../utils/articleRoutes";
+import {
+  translateInterfaceText,
+  type InterfaceLanguage,
+} from "../i18n/InterfaceLanguage";
 
 const russianMonths: Record<string, number> = {
   ЯНВАРЯ: 0,
@@ -26,9 +30,27 @@ function publishedTime(label: string) {
   return new Date(Number(match[3]), month, Number(match[1])).getTime();
 }
 
-export default function HeaderArticlesMenu() {
+type Props = {
+  language?: InterfaceLanguage;
+};
+
+export default function HeaderArticlesMenu({ language = "ru" }: Props) {
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
   const [loading, setLoading] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const t = useCallback(
+    (text: string) => translateInterfaceText(text, language),
+    [language]
+  );
+
+  const cancelScheduledClose = useCallback(() => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => cancelScheduledClose, [cancelScheduledClose]);
 
   const loadArticles = useCallback(() => {
     if (articles.length || loading) return;
@@ -65,23 +87,42 @@ export default function HeaderArticlesMenu() {
   return (
     <details
       className="articles-menu"
-      onPointerEnter={loadArticles}
+      onPointerEnter={() => {
+        cancelScheduledClose();
+        loadArticles();
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType !== "mouse") return;
+        const details = event.currentTarget;
+        cancelScheduledClose();
+        closeTimer.current = window.setTimeout(() => {
+          if (!details.matches(":hover")) details.removeAttribute("open");
+          closeTimer.current = null;
+        }, 140);
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          event.currentTarget.removeAttribute("open");
+        }
+      }}
       onFocusCapture={loadArticles}
       onToggle={(event) => {
         if (event.currentTarget.open) loadArticles();
       }}
     >
       <summary>
-        Статьи <span aria-hidden="true">⌄</span>
+        {t("Статьи")} <span aria-hidden="true">⌄</span>
       </summary>
       <div className="articles-mega-menu">
         <header>
           <div>
-            <span>Редакционная витрина</span>
-            <strong>Свежие публикации</strong>
+            <span>{t("Редакционная витрина")}</span>
+            <strong>{t("Свежие публикации")}</strong>
           </div>
           <p>
-            Авторские статьи, рецензии, литературные истории и материалы о языке.
+            {t(
+              "Авторские статьи, рецензии, литературные истории и материалы о языке."
+            )}
           </p>
         </header>
 
@@ -108,10 +149,12 @@ export default function HeaderArticlesMenu() {
                 <small>{featured.lead.sectionLabel}</small>
                 <strong>{featured.lead.title}</strong>
                 <p>{featured.lead.description}</p>
-                <em>{featured.lead.readingMinutes} мин. чтения</em>
+                <em>
+                  {featured.lead.readingMinutes} {t("мин. чтения")}
+                </em>
               </div>
             </a>
-            <section aria-label="Другие свежие статьи">
+            <section aria-label={t("Другие свежие статьи")}>
               {featured.more.map((article) => (
                 <a
                   href={articlePath(
@@ -125,21 +168,33 @@ export default function HeaderArticlesMenu() {
                 >
                   <small>{article.sectionLabel}</small>
                   <strong>{article.title}</strong>
-                  <span>{article.readingMinutes} мин.</span>
+                  <span>
+                    {article.readingMinutes} {t("мин.")}
+                  </span>
                 </a>
               ))}
             </section>
           </div>
         ) : (
           <div className="articles-mega-loading">
-            {loading ? "Подключаем редакционный архив…" : "Наведите, чтобы открыть публикации"}
+            {loading
+              ? t("Подключаем редакционный архив…")
+              : t("Наведите, чтобы открыть публикации")}
           </div>
         )}
 
         <footer>
-          <span>{articles.length ? `${articles.length} материалов в архиве` : "Полный архив журнала"}</span>
+          <span>
+            {articles.length
+              ? language === "en"
+                ? `${articles.length} ${
+                    articles.length === 1 ? "publication" : "publications"
+                  } in the archive`
+                : `${articles.length} материалов в архиве`
+              : t("Полный архив журнала")}
+          </span>
           <a href={journalPath()} onClick={(event) => closeMenu(event.currentTarget)}>
-            Все публикации <b aria-hidden="true">→</b>
+            {t("Все публикации")} <b aria-hidden="true">→</b>
           </a>
         </footer>
       </div>

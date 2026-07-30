@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-mw desc-mw">
+  <title id="title-mw">Малави — MW</title>
+  <desc id="desc-mw">Круглая SVG-иконка флага страны «Малави».</desc>
+  <defs>
+    <clipPath id="clip-mw"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-mw)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#77B255"/>
+      <path d="M0 263H512V121H0Z" fill="#DD2E44"/>
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V263H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#141414"/>
+      <path d="M330 277H182Q193 297 213.0 308.5Q233 320 256 320Q272 320 286.0 314.5Q300 309 311.0 299.5Q322 290 330 277ZM252 363H260L256 332ZM230 360 239 362 240 331ZM209 354 217 357 224 326ZM190 344 197 349 209 320ZM172 332 179 337 195 310ZM157 316 163 323 183 299ZM145 298 149 306 173 286ZM155 277H141L136 279L139 287ZM373 277H358L373 286L376 278ZM363 305 367 298 339 285ZM350 322 355 316 329 299ZM333 337 340 331 317 310ZM315 348 323 344 304 319ZM295 357 303 354 289 326ZM274 361 282 360 273 330Z" fill="#DD2E44"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

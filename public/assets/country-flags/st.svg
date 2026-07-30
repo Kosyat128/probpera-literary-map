@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-st desc-st">
+  <title id="title-st">Сан-Томе и Принсипи — ST</title>
+  <desc id="desc-st">Круглая SVG-иконка флага страны «Сан-Томе и Принсипи».</desc>
+  <defs>
+    <clipPath id="clip-st"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-st)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#12AD2B"/>
+      <path d="M116 256H512V128H116Z" fill="#FFCE00"/>
+      <path d="M16 360 178 192 16 24Q0 41 0 64V320Q0 343 16 360Z" fill="#D21034"/>
+      <path d="M256 158 265 186 242 202H270L279 230L288 202H317L293 186L302 158L279 175ZM391 158 400 186 377 202H405L414 230L423 202H452L429 186L437 158L414 175Z" fill="#000000"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

@@ -6,9 +6,10 @@ export const metadata = { title: "История изменений" };
 export default async function HistoryPage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
-  const [{ data: eventsResult }, { count: revisions }] = await Promise.all([
+  const [{ data: eventsResult }, { count: revisions }, { count: pageRevisions }] = await Promise.all([
     supabase.from("admin_audit_log").select("*").order("created_at", { ascending: false }).limit(250),
     supabase.from("article_revisions").select("*", { count: "exact", head: true }),
+    supabase.from("page_revisions").select("*", { count: "exact", head: true }),
   ]);
   const events = eventsResult || [];
   return (
@@ -17,6 +18,7 @@ export default async function HistoryPage() {
         <p>Кто, когда и что изменил. Перед каждой правкой статьи база автоматически сохраняет предыдущую версию.</p></div></header>
       <section className="stats-grid">
         <article className="stat-card"><span>Версий статей</span><strong>{revisions || 0}</strong><small>можно использовать для восстановления</small></article>
+        <article className="stat-card"><span>Версий страниц</span><strong>{pageRevisions || 0}</strong><small>постоянные материалы защищены</small></article>
         <article className="stat-card"><span>Событий журнала</span><strong>{events.length}</strong><small>последние 250 операций</small></article>
       </section>
       <section className="panel">

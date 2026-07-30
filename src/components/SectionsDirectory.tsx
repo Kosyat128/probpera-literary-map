@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 export type SiteSectionLink = {
   id: string;
@@ -66,6 +67,8 @@ export default function SectionsDirectory({
   countryCount,
   bookCount,
 }: Props) {
+  const { language, t, number } = useInterfaceLanguage();
+
   return (
     <div className="sections-directory-grid">
       {sections.map((section) => {
@@ -83,12 +86,22 @@ export default function SectionsDirectory({
         );
         const liveLabel =
           section.id === "atlas"
-            ? `${countryCount} стран`
+            ? language === "en"
+              ? `${number(countryCount)} countries`
+              : `${number(countryCount)} стран`
             : section.id === "books"
-              ? `${bookCount.toLocaleString("ru-RU")} книг и произведений`
+              ? language === "en"
+                ? `${number(bookCount)} books and works`
+                : `${number(bookCount)} книг и произведений`
               : section.id === "calendar"
-                ? "События на каждый день"
-                : publicationLabel(publications.length);
+                ? t("События на каждый день")
+                : language === "en"
+                  ? `${number(publications.length)} ${
+                      publications.length === 1
+                        ? "publication"
+                        : "publications"
+                    }`
+                  : publicationLabel(publications.length);
 
         return (
           <a
@@ -101,12 +114,12 @@ export default function SectionsDirectory({
             }
           >
             <div>
-              <span>{section.group} · {liveLabel}</span>
-              <h3>{section.title}</h3>
-              <p>{section.copy}</p>
+              <span>{t(section.group)} · {liveLabel}</span>
+              <h3>{t(section.title)}</h3>
+              <p>{t(section.copy)}</p>
               {latest && (
                 <small className="section-card-latest">
-                  Новое: {latest.title}
+                  {t("Новое")}: {latest.title}
                 </small>
               )}
               <i aria-hidden="true">→</i>

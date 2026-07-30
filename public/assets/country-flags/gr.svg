@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-gr desc-gr">
+  <title id="title-gr">Греция — GR</title>
+  <desc id="desc-gr">Круглая SVG-иконка флага страны «Греция».</desc>
+  <defs>
+    <clipPath id="clip-gr"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-gr)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M57 7Q42 7 29 14H483Q470 7 455 7Z" fill="#0D5EB0"/>
+      <path d="M121 171H199H512V135H0V171ZM0 64V92H512V64Q512 61 512 57H0Q0 61 0 64ZM199 249H512V213H199ZM199 327H512Q512 323 512 320V292H199Z" fill="#EEEEEE"/>
+      <path d="M199 292H512V249H199ZM0 135H512V92H0ZM29 14Q4 28 0 57H512Q508 28 483 14ZM0 249H78V171H0ZM199 213H512V171H121V249H199ZM483 370Q508 356 512 327H199V292H121V370H78V292H0V320Q0 323 0 327Q4 356 29 370Q42 377 57 377H455Q470 377 483 370Z" fill="#0D5EB0"/>
+      <path d="M121 292H199V249H121V171H78V249H0V292H78V377H121Z" fill="#EEEEEE"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

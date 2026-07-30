@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type Props = {
   countries: Country[];
@@ -16,21 +17,6 @@ type CalendarEvent = {
   country: Country;
   writer: Writer;
 };
-
-const monthNames = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
-];
 
 export function dateParts(value?: string) {
   if (!value) return null;
@@ -62,6 +48,7 @@ function writerName(writer: Writer) {
 }
 
 export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const today = new Date();
   const [visibleDate, setVisibleDate] = useState(
     () => new Date(today.getFullYear(), today.getMonth(), 1)
@@ -82,7 +69,7 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             day: birth.day,
             month: birth.month,
             title: writerName(writer),
-            detail: `День рождения · ${birth.year}`,
+            detail: `${t("День рождения")} · ${birth.year}`,
             kind: "birth",
             country,
             writer,
@@ -94,7 +81,7 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             day: death.day,
             month: death.month,
             title: writerName(writer),
-            detail: `День памяти · ${death.year}`,
+            detail: `${t("День памяти")} · ${death.year}`,
             kind: "memory",
             country,
             writer,
@@ -104,7 +91,28 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
     });
 
     return result.sort((first, second) => first.day - second.day || first.title.localeCompare(second.title, "ru"));
-  }, [countries]);
+  }, [countries, t]);
+
+  const monthLabel = useMemo(
+    () =>
+      new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
+        month: "long",
+      }).format(visibleDate),
+    [language, visibleDate]
+  );
+  const shortMonthLabel = useMemo(
+    () =>
+      new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
+        month: "short",
+      })
+        .format(visibleDate)
+        .replace(".", ""),
+    [language, visibleDate]
+  );
+  const weekdayLabels =
+    language === "en"
+      ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+      : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
   const monthEvents = useMemo(() => events.filter((event) => event.month === month), [events, month]);
   const eventsByDay = useMemo(() => {
@@ -142,26 +150,36 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
     <section className="calendar-card" aria-labelledby="calendar-title">
       <header className="calendar-heading">
         <div>
-          <span className="section-kicker">Живая энциклопедия</span>
-          <h3 id="calendar-title">Литературный календарь</h3>
+          <span className="section-kicker">{t("Живая энциклопедия")}</span>
+          <h3 id="calendar-title">{t("Литературный календарь")}</h3>
         </div>
         <div className="calendar-navigation">
-          <button type="button" onClick={() => moveMonth(-1)} aria-label="Предыдущий месяц">
+          <button
+            type="button"
+            onClick={() => moveMonth(-1)}
+            aria-label={t("Предыдущий месяц")}
+          >
             ←
           </button>
-          <strong>{monthNames[month]} {year}</strong>
-          <button type="button" onClick={() => moveMonth(1)} aria-label="Следующий месяц">
+          <strong>
+            {monthLabel} {year}
+          </strong>
+          <button
+            type="button"
+            onClick={() => moveMonth(1)}
+            aria-label={t("Следующий месяц")}
+          >
             →
           </button>
           <button className="calendar-today" type="button" onClick={returnToToday}>
-            Сегодня
+            {t("Сегодня")}
           </button>
         </div>
       </header>
 
       <div className="calendar-layout">
-        <div className="calendar-grid" aria-label={`${monthNames[month]} ${year}`}>
-          {["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"].map((weekday) => (
+        <div className="calendar-grid" aria-label={`${monthLabel} ${year}`}>
+          {weekdayLabels.map((weekday) => (
             <span className="weekday" key={weekday}>
               {weekday}
             </span>
@@ -187,15 +205,19 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
         <div className="calendar-agenda">
           <span>
             {monthEvents.length
-              ? `${monthEvents.length} точных дат в редакционном архиве`
-              : "В этом месяце нет дат с известными днём и месяцем"}
+              ? language === "en"
+                ? `${number(monthEvents.length)} verified ${
+                    monthEvents.length === 1 ? "date" : "dates"
+                  } in the editorial archive`
+                : `${number(monthEvents.length)} точных дат в редакционном архиве`
+              : t("В этом месяце нет дат с известными днём и месяцем")}
           </span>
           <div>
             {agendaDays.map(([day, dayEvents]) => (
               <article className="calendar-agenda-day" key={day}>
                 <time dateTime={`${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`}>
                   <strong>{String(day).padStart(2, "0")}</strong>
-                  <small>{monthNames[month].slice(0, 3)}</small>
+                  <small>{shortMonthLabel}</small>
                 </time>
                 <div>
                   {dayEvents.slice(0, 3).map((event) => (
@@ -205,19 +227,29 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
                       onClick={() => onCountrySelect?.(event.country, event.writer)}
                     >
                       <strong>{event.title}</strong>
-                      <small>{event.detail} · {event.country.name}</small>
+                      <small>
+                        {event.detail} ·{" "}
+                        {countryName(event.country.code, event.country.name)}
+                      </small>
                     </button>
                   ))}
                   {dayEvents.length > 3 && (
-                    <span>Ещё {dayEvents.length - 3} события</span>
+                    <span>
+                      {language === "en"
+                        ? `${number(dayEvents.length - 3)} more ${
+                            dayEvents.length - 3 === 1 ? "event" : "events"
+                          }`
+                        : `Ещё ${number(dayEvents.length - 3)} события`}
+                    </span>
                   )}
                 </div>
               </article>
             ))}
             {agendaDays.length === 0 && (
               <p className="calendar-empty">
-                Показаны только даты с известными днём и месяцем. Записи,
-                содержащие один год, больше не считаются событиями 1 января.
+                {t(
+                  "Показаны только даты с известными днём и месяцем. Записи, содержащие один год, больше не считаются событиями 1 января."
+                )}
               </p>
             )}
           </div>

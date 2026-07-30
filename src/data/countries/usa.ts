@@ -567,8 +567,42 @@ export const usa: Country = {
       works: [
         "Мартин Иден",
         "Белый клык",
-        "Зов предков",
-        "Морской волк"
+        "Зов предков"
+      ],
+      workDetails: [
+        {
+          id: "the-sea-wolf",
+          title: "Морской волк",
+          originalTitle: "The Sea-Wolf",
+          firstPublished: 1904,
+          originalLanguage: "английский",
+          genres: [
+            "приключенческий роман",
+            "морской роман"
+          ],
+          tags: [
+            "море",
+            "выживание",
+            "воля",
+            "нравственный выбор"
+          ],
+          description: "Роман о столкновении литературного критика Хэмфри ван Вейдена с капитаном Волком Ларсеном. Морское приключение становится спором о силе, свободе, сострадании и цене человеческого достоинства.",
+          coverUrl: "brand/book-covers/sea-wolf-editorial.webp",
+          coverSourceUrl: "brand/book-covers/sea-wolf-editorial.webp",
+          coverRights: {
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/sea-wolf-editorial.webp",
+            checkedAt: "2026-07-30",
+            note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+          },
+          editorial: {
+            status: "verified",
+            reviewedAt: "2026-07-30"
+          }
+        }
       ],
       genres: [
         "приключенческий роман",
@@ -1226,7 +1260,6 @@ export const usa: Country = {
       portrait: "",
       bio: "Американская писательница, лауреат Нобелевской премии по литературе 1993 года, одна из крупнейших авторов современной американской литературы.",
       works: [
-        "Возлюбленная",
         "Песнь Соломона",
         "Самые голубые глаза"
       ],

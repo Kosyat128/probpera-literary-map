@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-la desc-la">
+  <title id="title-la">Лаос — LA</title>
+  <desc id="desc-la">Круглая SVG-иконка флага страны «Лаос».</desc>
+  <defs>
+    <clipPath id="clip-la"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-la)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M0 64V107H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64ZM455 377Q479 377 495.5 360.5Q512 344 512 320V277H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#CE1126"/>
+      <path d="M0 107V277H512V107ZM306.0 242.0Q285 263 256.0 263.0Q227 263 206.0 242.0Q185 221 185.0 192.0Q185 163 206.0 142.0Q227 121 256.0 121.0Q285 121 306.0 142.0Q327 163 327.0 192.0Q327 221 306.0 242.0Z" fill="#002868"/>
+      <path d="M206.0 142.0Q185 163 185.0 192.0Q185 221 206.0 242.0Q227 263 256.0 263.0Q285 263 306.0 242.0Q327 221 327.0 192.0Q327 163 306.0 142.0Q285 121 256.0 121.0Q227 121 206.0 142.0Z" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

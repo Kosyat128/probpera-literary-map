@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-bb desc-bb">
+  <title id="title-bb">Барбадос — BB</title>
+  <desc id="desc-bb">Круглая SVG-иконка флага страны «Барбадос».</desc>
+  <defs>
+    <clipPath id="clip-bb"><circle cx="32" cy="32" r="30"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip-bb)">
+    <rect width="64" height="64" fill="#FFFFFF"/>
+    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
+      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#00267F"/>
+      <path d="M57 377H171V7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#00267F"/>
+      <path d="M171 377H341V7H171Z" fill="#FFC726"/>
+      <path d="M325 256Q291 205 289 159V156H264V122H249V156H223V165Q219 209 188 256Q210 256 228 235Q224 236 222.5 234.0Q221 232 222 229Q232 195 235 170H249V244L233 247L252 251L256 271L260 251L280 247L264 244V170H277Q280 195 290 229Q291 232 289.5 234.0Q288 236 284 235Q302 256 325 256Z" fill="#000000"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+</svg>

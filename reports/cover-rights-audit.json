@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-28T20:48:03.683Z",
+  "generatedAt": "2026-07-30T03:38:07.757Z",
   "policy": "docs/COVER_RIGHTS_POLICY.md",
   "summary": {
-    "covers": 8,
-    "displayAllowed": 8,
+    "covers": 14,
+    "displayAllowed": 14,
     "blocked": 0,
     "withIssues": 0
   },
@@ -19,12 +19,42 @@
       "issues": []
     },
     {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/hobbit-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/hobbit-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
+      "checkedAt": "2026-07-30",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "checkedAt": "2026-07-30",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
       "file": "france.ts",
       "coverUrl": "https://covers.openlibrary.org/b/id/12721865-L.jpg",
       "coverSourceUrl": "https://openlibrary.org/works/OL1063588W",
       "status": "external-preview",
       "sourceUrl": "https://openlibrary.org/works/OL1063588W",
       "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/three-musketeers-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/three-musketeers-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/three-musketeers-editorial.webp",
+      "checkedAt": "2026-07-30",
       "displayAllowed": true,
       "issues": []
     },
@@ -50,6 +80,16 @@
     },
     {
       "file": "russia.ts",
+      "coverUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
+      "checkedAt": "2026-07-30",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
       "coverUrl": "https://covers.openlibrary.org/b/id/9411873-L.jpg",
       "coverSourceUrl": "https://openlibrary.org/works/OL166894W",
       "status": "external-preview",
@@ -70,11 +110,31 @@
     },
     {
       "file": "russia.ts",
+      "coverUrl": "brand/book-covers/cherry-orchard-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
+      "checkedAt": "2026-07-30",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
       "coverUrl": "https://covers.openlibrary.org/b/id/15013644-L.jpg",
       "coverSourceUrl": "https://openlibrary.org/works/OL36999384W",
       "status": "external-preview",
       "sourceUrl": "https://openlibrary.org/works/OL36999384W",
       "checkedAt": "2026-07-26",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/sea-wolf-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
+      "checkedAt": "2026-07-30",
       "displayAllowed": true,
       "issues": []
     },
