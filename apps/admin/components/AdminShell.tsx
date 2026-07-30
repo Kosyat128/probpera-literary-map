@@ -34,6 +34,8 @@ export default function AdminShell({
   children: ReactNode;
 }) {
   const pathname = usePathname();
+  const normalizedPathname =
+    pathname.replace(/^\/admin(?=\/|$)/u, "") || "/";
 
   return (
     <div className="admin-layout">
@@ -51,7 +53,12 @@ export default function AdminShell({
               {index === 9 && <span className="nav-divider" aria-hidden="true" />}
               <Link
                 href={href}
-                aria-current={pathname === `/admin${href}` || pathname.startsWith(`/admin${href}/`) ? "page" : undefined}
+                aria-current={
+                  normalizedPathname === href ||
+                  normalizedPathname.startsWith(`${href}/`)
+                    ? "page"
+                    : undefined
+                }
               >
                 <span aria-hidden="true">{icon}</span>
                 <span>{label}</span>

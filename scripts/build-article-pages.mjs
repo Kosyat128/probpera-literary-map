@@ -12,7 +12,22 @@ const configuredBase = process.env.PUBLIC_SITE_BASE_PATH ?? "/probpera-literary-
 const siteBasePath =
   configuredBase === "/" ? "" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}`;
 const siteUrl = `${siteOrigin}${siteBasePath}`;
+const siteRootPath = `${siteBasePath || ""}/`;
 const buildDate = new Date().toISOString().slice(0, 10);
+const legacyLandingRedirects = [
+  ["/read", "/#journal"],
+  ["/read/page-article/page-books", "/?section=book-opinions#journal"],
+  ["/read/page-article/page-bookvsmovie", "/?section=screen-adaptations#journal"],
+  ["/read/page-article/page-writers-world", "/?section=writers-world#journal"],
+  ["/read/page-article/knigniy-gid", "/?section=book-guides#journal"],
+  ["/read/page-article/topbooks", "/?section=book-guides#journal"],
+  ["/read/page-article/famous_prizes", "/?section=awards#journal"],
+  ["/read/page-article/nobel-prize", "/?section=awards#journal"],
+  ["/read/page-article/folklore", "/?section=folklore#journal"],
+  ["/read/page-words", "/?section=language#journal"],
+  ["/read/page-stories", "/?section=author-stories#journal"],
+  ["/contacts", "/#about"],
+];
 
 const transliteration = {
   а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",
@@ -210,6 +225,12 @@ await fs.writeFile(path.join(distDirectory, "index.html"), homeDocument.html(), 
 const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
 const redirectRules = [];
 
+for (const [source, destination] of legacyLandingRedirects) {
+  const targetUrl = `${siteUrl}${destination}`;
+  redirectRules.push({ source, destination, permanent: true });
+  await writeRedirectPage(source, targetUrl);
+}
+
 for (const article of catalog) {
   const documentPath =
     article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
@@ -360,6 +381,7 @@ for (const article of catalog) {
         destination: publicPath,
         permanent: true,
       });
+      await writeRedirectPage(legacyUrl.pathname, canonicalUrl);
     }
   } catch {
     // У материала может не быть старого абсолютного адреса.
@@ -370,6 +392,7 @@ for (const article of catalog) {
       destination: publicPath,
       permanent: true,
     });
+    await writeRedirectPage(article.legacyPath, canonicalUrl);
   }
   sitemapEntries.push({ url: canonicalUrl, lastmod: buildDate });
 }
@@ -488,6 +511,35 @@ await fs.writeFile(
   "utf8"
 );
 await fs.writeFile(
+  path.join(distDirectory, "site.webmanifest"),
+  JSON.stringify(
+    {
+      name: "Проба Пера — литературный журнал",
+      short_name: "Проба Пера",
+      description:
+        "Статьи о книгах, литературная энциклопедия мира и интерактивный 3D-глобус.",
+      lang: "ru-RU",
+      id: siteRootPath,
+      start_url: siteRootPath,
+      scope: siteRootPath,
+      display: "standalone",
+      background_color: "#17001f",
+      theme_color: "#4b087c",
+      icons: [
+        {
+          src: `${siteBasePath || ""}/brand/probpera-logo.png`,
+          sizes: "500x500",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+      ],
+    },
+    null,
+    2
+  ),
+  "utf8"
+);
+await fs.writeFile(
   path.join(distDirectory, "redirects.generated.json"),
   JSON.stringify(
     [...new Map(
@@ -499,6 +551,49 @@ await fs.writeFile(
     null,
     2
   ),
+  "utf8"
+);
+const uniqueServerRedirects = [
+  ...new Map(
+    redirectRules.map((redirect) => [
+      normalizedPath(redirect.source),
+      {
+        source: normalizedPath(redirect.source),
+        destination: redirect.destination,
+      },
+    ])
+  ).values(),
+];
+await fs.writeFile(
+  path.join(distDirectory, "_redirects"),
+  `${uniqueServerRedirects
+    .map(({ source, destination }) => `${source} ${destination} 301`)
+    .join("\n")}\n`,
+  "utf8"
+);
+
+const notFoundDocument = load(baseHtml, { decodeEntities: false });
+notFoundDocument("title").text("Страница не найдена — Проба Пера");
+notFoundDocument('meta[name="description"]').attr(
+  "content",
+  "Запрошенная страница не найдена. Перейдите к журналу, книжному архиву или литературной карте мира."
+);
+notFoundDocument('meta[name="robots"]').attr("content", "noindex,follow");
+notFoundDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
+notFoundDocument('script[type="module"]').remove();
+notFoundDocument("#root").html(`
+  <main class="static-article-fallback">
+    <article>
+      <span>Ошибка 404</span>
+      <h1>Эта страница не найдена</h1>
+      <p>Возможно, адрес изменился при обновлении журнала. Все прежние статьи сохранены и получили постоянные адреса.</p>
+      <p><a href="${siteBasePath || ""}/#journal">Открыть журнал</a> · <a href="${siteBasePath || ""}/#atlas">Перейти к литературной карте</a></p>
+    </article>
+  </main>
+`);
+await fs.writeFile(
+  path.join(distDirectory, "404.html"),
+  notFoundDocument.html(),
   "utf8"
 );
 

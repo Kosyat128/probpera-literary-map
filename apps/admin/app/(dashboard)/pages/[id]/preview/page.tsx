@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { formatDate } from "@/lib/format";
@@ -31,9 +32,9 @@ export default async function PagePreview({
           <h1>Так страницу увидит читатель</h1>
           <p>Предпросмотр доступен только редакции и не индексируется.</p>
         </div>
-        <a className="button-secondary" href={`/admin/pages/${id}`}>
+        <Link className="button-secondary" href={`/pages/${id}`}>
           ← Вернуться в редактор
-        </a>
+        </Link>
       </header>
       <article className="admin-article-preview admin-page-preview">
         <header>

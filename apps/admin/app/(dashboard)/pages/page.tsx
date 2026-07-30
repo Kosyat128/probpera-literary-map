@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
@@ -55,9 +57,9 @@ export default async function PagesPage({
                   <td>{formatDate(page.updated_at, true)}</td>
                   <td>
                     <div className="table-actions">
-                      <a className="button-secondary" href={`/admin/pages/${page.id}`}>
+                      <Link className="button-secondary" href={`/pages/${page.id}`}>
                         Редактировать
-                      </a>
+                      </Link>
                       <form action={changePageStatusAction}>
                         <input name="id" type="hidden" value={page.id} />
                         <input

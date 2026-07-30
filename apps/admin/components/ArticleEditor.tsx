@@ -8,6 +8,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import { createSlug } from "@/lib/slug";
@@ -538,14 +539,14 @@ export default function ArticleEditor({
             </button>
           )}
           {article.id && (
-            <a
+            <NextLink
               className="button-secondary"
-              href={`/admin/articles/${article.id}/preview`}
+              href={`/articles/${article.id}/preview`}
               target="_blank"
               rel="noreferrer"
             >
               Предпросмотр
-            </a>
+            </NextLink>
           )}
           <button className="button-secondary" type="submit" name="intent" value="save">
             Сохранить

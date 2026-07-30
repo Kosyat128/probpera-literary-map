@@ -1,13 +1,29 @@
 import type { NextConfig } from "next";
 
+const configuredBasePath = process.env.ADMIN_BASE_PATH?.trim() ?? "/admin";
+const adminBasePath =
+  configuredBasePath === "/" || configuredBasePath === ""
+    ? ""
+    : `/${configuredBasePath.replace(/^\/+|\/+$/g, "")}`;
+const allowedOrigins = [
+  "probpera.ru",
+  "www.probpera.ru",
+  "admin.probpera.ru",
+  "localhost:3000",
+  ...(process.env.ADMIN_ALLOWED_ORIGINS || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+];
+
 const nextConfig: NextConfig = {
-  basePath: "/admin",
+  basePath: adminBasePath,
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
     serverActions: {
       bodySizeLimit: "12mb",
-      allowedOrigins: ["probpera.ru", "www.probpera.ru", "localhost:3000"],
+      allowedOrigins: [...new Set(allowedOrigins)],
     },
   },
   async headers() {

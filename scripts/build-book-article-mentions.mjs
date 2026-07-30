@@ -10,6 +10,7 @@ const repositoryRoot = path.resolve(
 );
 const cacheDirectory = path.join(repositoryRoot, "scripts", ".cache");
 const bundlePath = path.join(cacheDirectory, "book-mentions-source.mjs");
+const sourcePath = path.join(repositoryRoot, "scripts", "book-mentions-source.ts");
 const outputPath = path.join(
   repositoryRoot,
   "public",
@@ -43,19 +44,7 @@ async function sourceArchive() {
   await fs.mkdir(cacheDirectory, { recursive: true });
   await build({
     absWorkingDir: repositoryRoot,
-    stdin: {
-      contents: `
-        import { countries } from "./src/data/countries/index.ts";
-        import { buildBookArchive } from "./src/data/bookArchive.ts";
-
-        export const archive = buildBookArchive(countries).map(
-          ({ country, writer, ...entry }) => entry
-        );
-      `,
-      resolveDir: repositoryRoot,
-      sourcefile: "book-mentions-source.ts",
-      loader: "ts",
-    },
+    entryPoints: [sourcePath],
     bundle: true,
     platform: "node",
     packages: "external",

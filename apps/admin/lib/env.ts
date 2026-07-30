@@ -8,6 +8,9 @@ export const adminEnv = {
   publicSiteUrl:
     process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
     "https://probpera.ru",
+  adminSiteUrl:
+    process.env.NEXT_PUBLIC_ADMIN_URL?.trim().replace(/\/+$/, "") ||
+    "https://probpera.ru/admin",
   deployHookUrl: process.env.PUBLIC_SITE_DEPLOY_HOOK_URL?.trim() || "",
   deployHookToken: process.env.PUBLIC_SITE_DEPLOY_HOOK_TOKEN?.trim() || "",
   metrikaCounterId: process.env.YANDEX_METRIKA_COUNTER_ID?.trim() || "",

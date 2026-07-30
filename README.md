@@ -22,6 +22,8 @@ npm run dev
 npm run lint
 npm test
 npm run build:all
+npm run release:check
+npm run build:domain
 ```
 
 Публичная часть собирается в `dist`. Редакционная панель находится в
@@ -35,6 +37,7 @@ npm run build:all
 - [Миграции и импорт](MIGRATION_RU.md)
 - [Перенос домена](docs/DOMAIN_MIGRATION.md)
 - [Политика прав на обложки](docs/COVER_RIGHTS_POLICY.md)
+- [Финальная проверка перед переносом](FINAL_PRE_MIGRATION_CHECKLIST_RU.md)
 
 Перенос `probpera.ru` выполняется последним отдельным этапом, после проверки
 временного публичного адреса и панели.

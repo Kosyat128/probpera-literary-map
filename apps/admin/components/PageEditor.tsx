@@ -8,6 +8,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import NextLink from "next/link";
 import { useEffect, useState } from "react";
 
 import { savePageAction } from "@/app/(dashboard)/pages/actions";
@@ -308,14 +309,14 @@ export default function PageEditor({
               Опубликовать
             </button>
           </div>
-          <a
+          <NextLink
             className="button-secondary"
-            href={`/admin/pages/${page.id}/preview`}
+            href={`/pages/${page.id}/preview`}
             target="_blank"
             rel="noreferrer"
           >
             Предпросмотр ↗
-          </a>
+          </NextLink>
           <button
             className="button-secondary"
             type="button"

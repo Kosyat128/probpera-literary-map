@@ -47,6 +47,18 @@ function writerName(writer: Writer) {
   return writer.name || writer.fullName || "Автор";
 }
 
+export function calendarWriterIdentity(writer: Writer) {
+  const nameParts = writerName(writer)
+    .normalize("NFKC")
+    .toLocaleLowerCase("ru")
+    .replace(/[^\p{L}\p{N}\s-]+/gu, " ")
+    .split(/\s+/u)
+    .filter(Boolean);
+  const surname = nameParts[nameParts.length - 1] || writer.id;
+  if (!writer.birthDate || !writer.deathDate) return "";
+  return `${surname}|${writer.birthDate}|${writer.deathDate}`;
+}
+
 export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const today = new Date();
@@ -58,9 +70,24 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
 
   const events = useMemo(() => {
     const result: CalendarEvent[] = [];
+    const uniqueWriters = new Map<
+      string,
+      { country: Country; writer: Writer; score: number }
+    >();
 
     countries.forEach((country) => {
       country.writers.forEach((writer) => {
+        const identity =
+          calendarWriterIdentity(writer) || `${country.id}:${writer.id}`;
+        const score = writerName(writer).length;
+        const existing = uniqueWriters.get(identity);
+        if (!existing || score > existing.score) {
+          uniqueWriters.set(identity, { country, writer, score });
+        }
+      });
+    });
+
+    uniqueWriters.forEach(({ country, writer }) => {
         const birth = dateParts(writer.birthDate);
         const death = dateParts(writer.deathDate);
 
@@ -87,7 +114,6 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             writer,
           });
         }
-      });
     });
 
     return result.sort((first, second) => first.day - second.day || first.title.localeCompare(second.title, "ru"));

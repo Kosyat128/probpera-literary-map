@@ -100,7 +100,7 @@ const editorialFeatures = [
       "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.",
     image:
       "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
-    articleUrl: "https://probpera.ru/read/page-words/",
+    articleUrl: journalPath("language"),
     sectionUrl: journalPath("language"),
     readTime: "9 минут",
   },
@@ -703,12 +703,7 @@ export default function App() {
               <a className="primary-action" href="#atlas">
                 {t("Открыть глобус")} <span>→</span>
               </a>
-              <a
-                className="secondary-action"
-                href="https://probpera.ru/read"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="secondary-action" href={journalPath()}>
                 {t("Читать журнал")}
               </a>
             </div>
@@ -1191,7 +1186,7 @@ export default function App() {
               <span className="section-kicker">{t("Новые публикации")}</span>
               <h2>{t("Читать в «Пробе Пера»")}</h2>
             </div>
-            <a href="https://probpera.ru/read" target="_blank" rel="noreferrer">
+            <a href={journalPath()}>
               {t("Все публикации")} <span>→</span>
             </a>
           </header>
@@ -1444,17 +1439,17 @@ export default function App() {
           <nav className="footer-map" aria-label={t("Карта сайта")}>
             <section>
               <h2>{t("Журнал")}</h2>
-              <a href="https://probpera.ru/read">{t("Все публикации")}</a>
-              <a href="https://probpera.ru/read/page-article/page-books">
+              <a href={journalPath()}>{t("Все публикации")}</a>
+              <a href={journalPath("book-opinions")}>
                 {t("Мнение о книге")}
               </a>
-              <a href="https://probpera.ru/read/page-article/page-bookvsmovie">
+              <a href={journalPath("screen-adaptations")}>
                 {t("Книга и экранизация")}
               </a>
-              <a href="https://probpera.ru/read/page-words">
+              <a href={journalPath("language")}>
                 {t("Редкие слова")}
               </a>
-              <a href="https://probpera.ru/read/page-article/famous_prizes">
+              <a href={journalPath("awards")}>
                 {t("Литературные премии")}
               </a>
             </section>
@@ -1479,7 +1474,7 @@ export default function App() {
               <a href="mailto:probperasite@yandex.ru">
                 {t("Связаться с редакцией")}
               </a>
-              <a href="https://probpera.ru/contacts">{t("Контакты")}</a>
+              <a href="mailto:probperasite@yandex.ru">{t("Контакты")}</a>
             </section>
             <CmsNavigationLinks location="footer" withHeading />
           </nav>

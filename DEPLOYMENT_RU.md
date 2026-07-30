@@ -11,6 +11,7 @@ npm run countries:audit
 npm run covers:audit
 npm run assets:globe:qa
 npm run build:all
+npm run build:domain
 ```
 
 ## Публичный сайт
@@ -50,3 +51,7 @@ hook связывает публикацию в панели с новой пу�
 
 Переключение DNS не входит в обычную публикацию и выполняется только по
 отдельному решению владельца.
+
+`npm run build:domain` создаёт проверенный пакет `dist` для корня
+`https://probpera.ru`, но сам домен не переключает. Полная последовательность
+зафиксирована в `FINAL_PRE_MIGRATION_CHECKLIST_RU.md`.
