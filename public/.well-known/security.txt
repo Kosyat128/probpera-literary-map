@@ -1,0 +1,4 @@
+Contact: mailto:probperasite@yandex.ru
+Expires: 2027-07-30T23:59:59Z
+Preferred-Languages: ru, en
+Canonical: https://probpera.ru/.well-known/security.txt

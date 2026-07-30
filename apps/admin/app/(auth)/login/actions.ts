@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const loginSchema = z.object({
@@ -49,7 +50,7 @@ export async function resetPasswordAction(formData: FormData) {
   }
 
   await supabase.auth.resetPasswordForEmail(email.data, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://probpera.ru"}/admin/login`,
+    redirectTo: `${adminEnv.adminSiteUrl}/login`,
   });
   redirect(
     loginUrl(

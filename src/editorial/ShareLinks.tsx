@@ -7,16 +7,24 @@ type Props = {
 
 export default function ShareLinks({ url, title }: Props) {
   const [copied, setCopied] = useState(false);
-  const encodedUrl = encodeURIComponent(url);
+  const configuredOrigin = import.meta.env.VITE_PUBLIC_SITE_URL?.trim().replace(
+    /\/+$/,
+    ""
+  );
+  const publicOrigin =
+    configuredOrigin ||
+    (typeof window !== "undefined" ? window.location.origin : "https://probpera.ru");
+  const absoluteUrl = new URL(url, `${publicOrigin}/`).href;
+  const encodedUrl = encodeURIComponent(absoluteUrl);
   const encodedTitle = encodeURIComponent(title);
 
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(absoluteUrl);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.open(url, "_blank", "noopener,noreferrer");
+      window.open(absoluteUrl, "_blank", "noopener,noreferrer");
     }
   };
 

@@ -1332,7 +1332,7 @@ export const russia: Country = {
       name: "Владимир Владимирович Набоков",
       years: "1899–1977",
       birthDate: "1899-04-22",
-      deathDate: "1977-07-03",
+      deathDate: "1977-07-02",
       birthPlace: "Санкт-Петербург, Российская империя",
       deathPlace: "Монтрё, Швейцария",
       coordinates: {
