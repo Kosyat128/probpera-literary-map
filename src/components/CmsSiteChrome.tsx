@@ -25,7 +25,7 @@ type NavigationMenu = {
   id: string;
   name: string;
   location: "header" | "footer";
-  items: NavigationItem[];
+  items: readonly NavigationItem[];
 };
 
 function safeHref(value: unknown, fallback = "#journal") {
