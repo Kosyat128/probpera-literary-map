@@ -30,6 +30,7 @@ import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
 import { articlePath, journalPath } from "./utils/articleRoutes";
+import sectionPrizesImage from "./assets/brand/section-prizes.webp";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
@@ -227,7 +228,7 @@ const sectionLinks = [
     title: "Литературный календарь",
     copy: "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.",
     href: "#calendar",
-    image: "brand/section-prizes.webp",
+    image: sectionPrizesImage,
   },
 ];
 

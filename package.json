@@ -35,6 +35,7 @@
     "content:export:cms": "node scripts/export-published-content.mjs",
     "links:audit": "node scripts/audit-public-routes.mjs",
     "media:audit": "node scripts/audit-section-media.mjs",
+    "media:audit:legacy": "node scripts/audit-legacy-article-media.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
     "countries:audit": "node scripts/audit-generated-writers.mjs",
     "covers:audit": "node scripts/audit-cover-rights.mjs",

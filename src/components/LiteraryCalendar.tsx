@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import BrandArrowIcon from "./BrandArrowIcon";
 
 type Props = {
   countries: Country[];
@@ -55,8 +56,9 @@ export function calendarWriterIdentity(writer: Writer) {
     .split(/\s+/u)
     .filter(Boolean);
   const surname = nameParts[nameParts.length - 1] || writer.id;
-  if (!writer.birthDate || !writer.deathDate) return "";
-  return `${surname}|${writer.birthDate}|${writer.deathDate}`;
+  if (writer.birthDate) return `${surname}|${writer.birthDate}`;
+  if (writer.deathDate) return `${surname}|memory|${writer.deathDate}`;
+  return "";
 }
 
 export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
@@ -65,6 +67,7 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
   const [visibleDate, setVisibleDate] = useState(
     () => new Date(today.getFullYear(), today.getMonth(), 1)
   );
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const month = visibleDate.getMonth();
   const year = visibleDate.getFullYear();
 
@@ -154,9 +157,26 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
     () =>
       [...eventsByDay.entries()]
         .sort(([firstDay], [secondDay]) => firstDay - secondDay)
-        .slice(0, 7),
+        .slice(0, 6),
     [eventsByDay]
   );
+  const displayedAgendaDays = useMemo(() => {
+    if (selectedDay === null) return agendaDays;
+    const selectedEvents = eventsByDay.get(selectedDay);
+    return selectedEvents ? [[selectedDay, selectedEvents] as [number, CalendarEvent[]]] : agendaDays;
+  }, [agendaDays, eventsByDay, selectedDay]);
+  const birthCount = monthEvents.filter((event) => event.kind === "birth").length;
+  const memoryCount = monthEvents.length - birthCount;
+  const featuredEvent = useMemo(() => {
+    if (!monthEvents.length) return null;
+    const currentDay =
+      month === today.getMonth() && year === today.getFullYear()
+        ? today.getDate()
+        : 1;
+    return (
+      monthEvents.find((event) => event.day >= currentDay) || monthEvents[0]
+    );
+  }, [month, monthEvents, today, year]);
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7;
@@ -165,11 +185,13 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
   );
 
   const moveMonth = (direction: number) => {
+    setSelectedDay(null);
     setVisibleDate((current) => new Date(current.getFullYear(), current.getMonth() + direction, 1));
   };
 
   const returnToToday = () => {
     setVisibleDate(new Date(today.getFullYear(), today.getMonth(), 1));
+    setSelectedDay(today.getDate());
   };
 
   return (
@@ -178,6 +200,11 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
         <div>
           <span className="section-kicker">{t("Живая энциклопедия")}</span>
           <h3 id="calendar-title">{t("Литературный календарь")}</h3>
+          <p>
+            {t(
+              "Даты рождения и памяти писателей складываются в живую историю мировой литературы."
+            )}
+          </p>
         </div>
         <div className="calendar-navigation">
           <button
@@ -185,7 +212,9 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             onClick={() => moveMonth(-1)}
             aria-label={t("Предыдущий месяц")}
           >
-            ←
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m14.5 6-6 6 6 6" />
+            </svg>
           </button>
           <strong>
             {monthLabel} {year}
@@ -195,13 +224,55 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             onClick={() => moveMonth(1)}
             aria-label={t("Следующий месяц")}
           >
-            →
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9.5 6 6 6-6 6" />
+            </svg>
           </button>
           <button className="calendar-today" type="button" onClick={returnToToday}>
             {t("Сегодня")}
           </button>
         </div>
       </header>
+
+      <div className="calendar-summary" aria-label={t("Сводка месяца")}>
+        <div>
+          <strong>{number(monthEvents.length)}</strong>
+          <span>{t("точных дат")}</span>
+        </div>
+        <div>
+          <strong>{number(birthCount)}</strong>
+          <span>
+            <i className="is-birth" aria-hidden="true" />
+            {t("дней рождения")}
+          </span>
+        </div>
+        <div>
+          <strong>{number(memoryCount)}</strong>
+          <span>
+            <i className="is-memory" aria-hidden="true" />
+            {t("дней памяти")}
+          </span>
+        </div>
+        {featuredEvent && (
+          <button
+            className="calendar-featured"
+            type="button"
+            onClick={() =>
+              onCountrySelect?.(featuredEvent.country, featuredEvent.writer)
+            }
+          >
+            <span>{t("Ближайшая дата")}</span>
+            <strong>
+              {String(featuredEvent.day).padStart(2, "0")}{" "}
+              {shortMonthLabel}
+            </strong>
+            <small>{featuredEvent.title}</small>
+            <i aria-hidden="true">
+              <BrandArrowIcon />
+            </i>
+          </button>
+        )}
+      </div>
 
       <div className="calendar-layout">
         <div className="calendar-grid" aria-label={`${monthLabel} ${year}`}>
@@ -215,43 +286,66 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
             const dayEvents = eventsByDay.get(day) || [];
             const isToday =
               day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+            const isSelected = selectedDay === day;
 
             return (
-              <span
-                className={`calendar-day${isToday ? " is-today" : ""}${dayEvents.length ? " has-event" : ""}`}
+              <button
+                type="button"
+                className={`calendar-day${isToday ? " is-today" : ""}${dayEvents.length ? " has-event" : ""}${isSelected ? " is-selected" : ""}`}
                 key={day}
                 title={dayEvents.map((event) => event.title).join(", ")}
+                aria-pressed={isSelected}
+                aria-label={
+                  dayEvents.length
+                    ? `${day} ${monthLabel}: ${number(dayEvents.length)}`
+                    : `${day} ${monthLabel}`
+                }
+                disabled={!dayEvents.length}
+                onClick={() =>
+                  setSelectedDay((current) => (current === day ? null : day))
+                }
               >
-                {day}
-              </span>
+                <span>{day}</span>
+                {dayEvents.length > 0 && (
+                  <small aria-hidden="true">{number(dayEvents.length)}</small>
+                )}
+              </button>
             );
           })}
         </div>
 
         <div className="calendar-agenda">
-          <span>
-            {monthEvents.length
-              ? language === "en"
-                ? `${number(monthEvents.length)} verified ${
-                    monthEvents.length === 1 ? "date" : "dates"
-                  } in the editorial archive`
-                : `${number(monthEvents.length)} точных дат в редакционном архиве`
-              : t("В этом месяце нет дат с известными днём и месяцем")}
-          </span>
+          <header>
+            <div>
+              <span>{selectedDay ? t("Выбранный день") : t("Хронология месяца")}</span>
+              <strong>
+                {selectedDay
+                  ? `${String(selectedDay).padStart(2, "0")} ${shortMonthLabel}`
+                  : `${monthLabel} ${year}`}
+              </strong>
+            </div>
+            {selectedDay !== null && (
+              <button type="button" onClick={() => setSelectedDay(null)}>
+                {t("Показать месяц")}
+              </button>
+            )}
+          </header>
           <div>
-            {agendaDays.map(([day, dayEvents]) => (
+            {displayedAgendaDays.map(([day, dayEvents]) => (
               <article className="calendar-agenda-day" key={day}>
                 <time dateTime={`${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`}>
                   <strong>{String(day).padStart(2, "0")}</strong>
                   <small>{shortMonthLabel}</small>
                 </time>
                 <div>
-                  {dayEvents.slice(0, 3).map((event) => (
+                  {dayEvents.slice(0, selectedDay === day ? 8 : 3).map((event) => (
                     <button
                       type="button"
                       key={`${event.country.id}-${event.writer.id}-${event.kind}`}
+                      className={`is-${event.kind}`}
                       onClick={() => onCountrySelect?.(event.country, event.writer)}
                     >
+                      <i aria-hidden="true" />
                       <strong>{event.title}</strong>
                       <small>
                         {event.detail} ·{" "}
@@ -259,19 +353,19 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
                       </small>
                     </button>
                   ))}
-                  {dayEvents.length > 3 && (
+                  {dayEvents.length > (selectedDay === day ? 8 : 3) && (
                     <span>
                       {language === "en"
-                        ? `${number(dayEvents.length - 3)} more ${
-                            dayEvents.length - 3 === 1 ? "event" : "events"
+                        ? `${number(dayEvents.length - (selectedDay === day ? 8 : 3))} more ${
+                            dayEvents.length - (selectedDay === day ? 8 : 3) === 1 ? "event" : "events"
                           }`
-                        : `Ещё ${number(dayEvents.length - 3)} события`}
+                        : `Ещё ${number(dayEvents.length - (selectedDay === day ? 8 : 3))} события`}
                     </span>
                   )}
                 </div>
               </article>
             ))}
-            {agendaDays.length === 0 && (
+            {displayedAgendaDays.length === 0 && (
               <p className="calendar-empty">
                 {t(
                   "Показаны только даты с известными днём и месяцем. Записи, содержащие один год, больше не считаются событиями 1 января."

@@ -3,6 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { articlePath } from "../utils/articleRoutes";
+import BrandHeartIcon from "../components/BrandHeartIcon";
+import BrandCloseIcon from "../components/BrandCloseIcon";
 import { useAuth } from "./AuthContext";
 import EditorialWorkbench from "./EditorialWorkbench";
 
@@ -456,7 +458,10 @@ export default function CommunityHub({
       <header>
         <div>
           <span className="section-kicker">Моя библиотека</span>
-          <h3>Сохранённые материалы</h3>
+          <h3>
+            <BrandHeartIcon filled />
+            Сохранённые материалы
+          </h3>
         </div>
         <strong>{savedReadings.length}</strong>
       </header>
@@ -482,14 +487,14 @@ export default function CommunityHub({
                 onClick={() => removeSavedReading(item.id, item.kind)}
                 aria-label={`Удалить «${item.title}» из библиотеки`}
               >
-                ×
+                <BrandHeartIcon filled />
               </button>
             </article>
           ))}
         </div>
       ) : (
         <p>
-          Нажмите значок закладки у статьи или книги — материал появится здесь.
+          Нажмите оранжевое сердце у статьи или книги — материал появится здесь.
         </p>
       )}
     </section>
@@ -528,7 +533,7 @@ export default function CommunityHub({
             onClick={onClose}
             aria-label="Закрыть"
           >
-            ×
+            <BrandCloseIcon />
           </button>
         </header>
 

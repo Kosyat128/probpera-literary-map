@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import BrandArrowIcon from "./BrandArrowIcon";
 
 export type SiteSectionLink = {
   id: string;
@@ -102,6 +103,14 @@ export default function SectionsDirectory({
                         : "publications"
                     }`
                   : publicationLabel(publications.length);
+        const actionLabel =
+          publications.length > 0
+            ? t("Читать")
+            : section.id === "atlas"
+              ? t("Исследовать")
+              : section.id === "calendar"
+                ? t("Смотреть")
+                : t("Открыть");
 
         return (
           <a
@@ -114,15 +123,24 @@ export default function SectionsDirectory({
             }
           >
             <div>
-              <span>{t(section.group)} · {liveLabel}</span>
+              <span className="section-card-eyebrow">
+                {latest ? t("Новое") : t(section.group)}
+              </span>
               <h3>{t(section.title)}</h3>
               <p>{t(section.copy)}</p>
               {latest && (
                 <small className="section-card-latest">
-                  {t("Новое")}: {latest.title}
+                  {latest.title}
                 </small>
               )}
-              <i aria-hidden="true">→</i>
+              <footer className="section-card-action">
+                <strong>
+                  {actionLabel} <span aria-hidden="true">·</span> {liveLabel}
+                </strong>
+                <i aria-hidden="true">
+                  <BrandArrowIcon />
+                </i>
+              </footer>
             </div>
           </a>
         );
