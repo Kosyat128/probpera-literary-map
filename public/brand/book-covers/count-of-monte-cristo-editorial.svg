@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
+  <title id="title">Александр Дюма — Граф Монте-Кристо</title>
+  <desc id="desc">Фирменная редакционная обложка «Пробы Пера» в винтажном живописном стиле.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ead9aa"/>
+      <stop offset="0.48" stop-color="#f4e3b6"/>
+      <stop offset="1" stop-color="#d6b878"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d7c28f"/>
+      <stop offset="0.55" stop-color="#c8aa6a"/>
+      <stop offset="1" stop-color="#6d6f63"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#697b7a"/>
+      <stop offset="0.55" stop-color="#405c61"/>
+      <stop offset="1" stop-color="#243f46"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a7048"/>
+      <stop offset="0.45" stop-color="#574a36"/>
+      <stop offset="1" stop-color="#292c2b"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="31%" cy="48%" r="50%">
+      <stop offset="0" stop-color="#ffeab3" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#f3d28a" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#f3d28a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="paperTexture" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.032" numOctaves="4" seed="19" result="noise"/>
+      <feColorMatrix in="noise" values="0 0 0 0 0.38 0 0 0 0 0.30 0 0 0 0 0.18 0 0 0 .32 0" result="sepiaNoise"/>
+      <feBlend in="SourceGraphic" in2="sepiaNoise" mode="multiply"/>
+    </filter>
+    <filter id="paint" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.3" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#171c1d" flood-opacity="0.46"/>
+    </filter>
+    <clipPath id="sceneClip"><rect x="0" y="690" width="1024" height="846"/></clipPath>
+    <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3d3528" stop-opacity="0.38"/>
+      <stop offset="0.12" stop-color="#3d3528" stop-opacity="0"/>
+      <stop offset="0.88" stop-color="#3d3528" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3d3528" stop-opacity="0.38"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1536" fill="url(#paper)"/>
+  <rect width="1024" height="1536" fill="url(#paper)" filter="url(#paperTexture)" opacity="0.78"/>
+  <ellipse cx="305" cy="560" rx="430" ry="430" fill="url(#sunGlow)"/>
+
+  <!-- фирменное перо -->
+  <g transform="translate(506 105) rotate(-22)" fill="#dd5b00" stroke="#a83c00" stroke-width="2">
+    <path d="M-14 117 C-16 78 2 23 60 -19 C86 -38 115 -49 137 -47 C132 -18 115 14 91 42 C57 83 25 101 -14 117 Z"/>
+    <path d="M-12 117 C20 74 61 27 129 -42" fill="none" stroke="#f7d9a5" stroke-width="5" stroke-linecap="round"/>
+    <path d="M18 83 L3 46 M39 64 L25 25 M61 42 L50 5 M81 20 L75 -14 M31 91 L61 85 M51 70 L84 59 M71 47 L104 34 M91 22 L121 4" fill="none" stroke="#f7d9a5" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-14 117 L-31 137 L-22 109"/>
+  </g>
+
+  <g text-anchor="middle" fill="#102f4a" font-family="Georgia, 'Times New Roman', serif">
+    <text x="512" y="294" font-size="51" letter-spacing="0.4">Александр Дюма</text>
+    <text x="512" y="463" font-size="122">Граф</text>
+    <text x="512" y="584" font-size="108">Монте-Кристо</text>
+  </g>
+  <line x1="477" y1="642" x2="547" y2="642" stroke="#d65311" stroke-width="4"/>
+  <text x="512" y="716" text-anchor="middle" fill="#d65311" font-family="Georgia, 'Times New Roman', serif" font-size="51">1844</text>
+
+  <!-- живописная сцена -->
+  <g clip-path="url(#sceneClip)" filter="url(#paint)">
+    <rect x="0" y="690" width="1024" height="450" fill="url(#sky)"/>
+    <circle cx="273" cy="829" r="58" fill="#f6d992" opacity="0.66" filter="url(#softGlow)"/>
+    <circle cx="273" cy="829" r="30" fill="#f2d483" opacity="0.82"/>
+    <path d="M0 866 C136 828 246 842 360 873 C475 905 586 862 695 850 C818 837 920 860 1024 818 L1024 1110 L0 1110 Z" fill="#879084" opacity="0.45"/>
+    <rect x="0" y="940" width="1024" height="596" fill="url(#sea)"/>
+
+    <!-- остров и замок Иф -->
+    <path d="M567 1004 C620 933 672 914 736 912 C810 908 857 951 899 1031 C850 1066 797 1081 717 1084 C643 1086 600 1062 567 1004 Z" fill="url(#rock)" stroke="#2a2d2c" stroke-width="5"/>
+    <g fill="#5a513d" stroke="#2d302d" stroke-width="4" filter="url(#shadow)">
+      <path d="M645 941 L645 844 L701 808 L758 844 L758 946 Z"/>
+      <rect x="621" y="866" width="165" height="93" rx="2"/>
+      <path d="M611 866 L704 803 L796 866 Z"/>
+      <rect x="596" y="883" width="45" height="80"/>
+      <rect x="767" y="882" width="45" height="82"/>
+      <path d="M596 883 L618 849 L641 883 Z M767 882 L789 848 L812 882 Z"/>
+      <rect x="686" y="867" width="36" height="95"/>
+    </g>
+    <g fill="#d3b36f" opacity="0.58">
+      <rect x="620" y="905" width="12" height="17"/><rect x="776" y="904" width="12" height="17"/>
+      <rect x="665" y="878" width="13" height="18"/><rect x="734" y="878" width="13" height="18"/>
+      <rect x="698" y="892" width="12" height="18"/>
+    </g>
+
+    <!-- парусник -->
+    <g transform="translate(180 1005) scale(.82)" stroke="#242d30" stroke-width="4" fill="none">
+      <path d="M0 90 C54 113 119 114 168 88 C146 133 35 138 0 90 Z" fill="#493f31"/>
+      <path d="M84 91 L84 -86 M85 -63 L13 54 L84 52 Z M88 -69 L156 44 L88 48 Z" fill="#ddd0a7" opacity="0.8"/>
+      <path d="M17 54 L154 44 M84 -86 L84 91"/>
+      <path d="M84 -86 L111 -69 L85 -59 Z" fill="#c4511a" stroke="none"/>
+    </g>
+
+    <!-- волны -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M0 1035 C95 1007 165 1064 260 1033 C360 1001 426 1063 527 1034 C640 1003 716 1057 826 1027 C901 1007 962 1012 1024 1030" stroke="#d9c58e" stroke-width="8" opacity="0.58"/>
+      <path d="M-20 1104 C96 1072 180 1134 294 1100 C402 1068 488 1123 598 1095 C713 1065 802 1120 918 1088 C970 1074 1008 1076 1044 1086" stroke="#b9ad87" stroke-width="7" opacity="0.48"/>
+      <path d="M0 1184 C112 1154 210 1211 329 1174 C438 1141 525 1207 643 1171 C754 1138 870 1197 1024 1150" stroke="#e0c982" stroke-width="6" opacity="0.38"/>
+      <path d="M40 1260 C142 1237 233 1288 344 1255 M432 1260 C541 1229 632 1287 744 1253 M795 1264 C883 1237 944 1260 1017 1246" stroke="#c6b279" stroke-width="6" opacity="0.34"/>
+    </g>
+
+    <!-- передний скалистый берег -->
+    <path d="M0 1222 C95 1160 167 1177 247 1240 C304 1284 335 1327 387 1536 L0 1536 Z" fill="url(#rock)"/>
+    <path d="M1024 1250 C923 1191 855 1218 787 1295 C737 1351 701 1413 665 1536 L1024 1536 Z" fill="url(#rock)"/>
+    <path d="M0 1398 C138 1335 246 1361 355 1536 L0 1536 Z" fill="#2d312d" opacity="0.82"/>
+
+    <!-- Эдмон Дантес со спины -->
+    <g transform="translate(463 1110)" fill="#17282f" stroke="#111a1d" stroke-width="4" filter="url(#shadow)">
+      <ellipse cx="54" cy="45" rx="31" ry="37"/>
+      <path d="M22 72 C7 111 1 180 9 260 L101 260 C106 179 100 111 84 72 C65 61 43 61 22 72 Z"/>
+      <path d="M10 104 L-27 218 L4 229 L34 132 Z M98 104 L139 215 L111 229 L78 132 Z"/>
+      <path d="M19 258 L8 404 L43 407 L56 281 L69 407 L104 404 L91 258 Z"/>
+      <path d="M25 72 C38 89 70 89 84 72" fill="none" stroke="#8e7449" stroke-width="7"/>
+      <path d="M30 31 C38 5 67 1 80 30 C70 20 43 20 30 31 Z" fill="#2c2923"/>
+    </g>
+  </g>
+
+  <rect x="0" y="690" width="1024" height="846" fill="url(#vignette)" pointer-events="none"/>
+  <rect x="8" y="8" width="1008" height="1520" fill="none" stroke="#4b4230" stroke-opacity="0.18" stroke-width="16"/>
+</svg>
