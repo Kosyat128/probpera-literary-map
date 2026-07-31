@@ -1,0 +1,21 @@
+{
+  "id": "count-of-monte-cristo",
+  "author": "Александр Дюма",
+  "title": "Граф Монте-Кристо",
+  "firstPublished": 1844,
+  "dimensions": {
+    "width": 1024,
+    "height": 1536,
+    "ratio": "2:3"
+  },
+  "coverUrl": "brand/book-covers/count-of-monte-cristo-editorial.svg",
+  "coverRights": {
+    "status": "editorial-original",
+    "licenseName": "Редакционное оформление «Пробы Пера»",
+    "creator": "Редакция «Пробы Пера»",
+    "rightsHolder": "Проба Пера",
+    "sourceUrl": "brand/book-covers/count-of-monte-cristo-editorial.svg",
+    "checkedAt": "2026-07-31",
+    "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+  }
+}
