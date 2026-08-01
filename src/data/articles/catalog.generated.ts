@@ -44,40 +44,40 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--2",
     "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/2",
     "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 1)",
-    "description": "1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм показывает, как иллюзия быстрого счастья и наркозависимость оборачиваются",
+    "description": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм показывает, как иллюзия быстрого счастья и наркозависимость",
     "imageUrl": "https://static.tildacdn.com/tild6631-3231-4335-b262-373462653263/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 22 АПРЕЛЯ 2026",
     "readingMinutes": 9,
-    "wordCount": 1577,
-    "headingCount": 10
+    "wordCount": 1581,
+    "headingCount": 11
   },
   {
     "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--1",
     "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/1",
     "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 2)",
-    "description": "1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журналиста Микаэля Блумквиста. Вместе с татуированной девушкой-хакером Лисбет Сал",
+    "description": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журналиста Микаэля Блумквиста. Вместе с татуированной девушкой-хаке",
     "imageUrl": "https://static.tildacdn.com/tild3534-3066-4639-a233-356534313063/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 21 МАЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1277,
-    "headingCount": 10
+    "wordCount": 1281,
+    "headingCount": 11
   },
   {
     "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--3",
     "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/3",
     "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 3)",
-    "description": "1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы поддержки раковых больных и моментально понравились друг другу. Ребята отправля",
+    "description": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы поддержки раковых больных и моментально понравились друг другу. Р",
     "imageUrl": "https://static.tildacdn.com/tild6163-3365-4464-b161-396264633362/image.png",
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 27 ИЮНЯ 2026",
-    "readingMinutes": 8,
-    "wordCount": 1517,
-    "headingCount": 10
+    "readingMinutes": 9,
+    "wordCount": 1521,
+    "headingCount": 11
   },
   {
     "id": "page--article--page--bookvsmovie--4",
@@ -89,8 +89,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 07 ДЕКАБРЯ 2025",
     "readingMinutes": 10,
-    "wordCount": 1890,
-    "headingCount": 5
+    "wordCount": 1899,
+    "headingCount": 6
   },
   {
     "id": "page--article--page--bookvsmovie--3",
@@ -102,8 +102,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 03 НОЯБРЯ 2025",
     "readingMinutes": 7,
-    "wordCount": 1305,
-    "headingCount": 6
+    "wordCount": 1320,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--bookvsmovie--1",
@@ -114,9 +114,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 27 СЕНТЯБРЯ 2025",
-    "readingMinutes": 5,
-    "wordCount": 929,
-    "headingCount": 5
+    "readingMinutes": 6,
+    "wordCount": 1001,
+    "headingCount": 6
   },
   {
     "id": "page--article--page--bookvsmovie--2",
@@ -128,8 +128,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 19 ОКТЯБРЯ 2025",
     "readingMinutes": 6,
-    "wordCount": 1080,
-    "headingCount": 5
+    "wordCount": 1089,
+    "headingCount": 6
   },
   {
     "id": "page--article--page--bookvsmovie--11",
@@ -141,7 +141,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 04 ИЮНЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1267,
+    "wordCount": 1270,
     "headingCount": 7
   },
   {
@@ -154,8 +154,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 22 ФЕВРАЛЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 908,
-    "headingCount": 6
+    "wordCount": 929,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--bookvsmovie--5",
@@ -167,8 +167,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 05 ЯНВАРЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 802,
-    "headingCount": 5
+    "wordCount": 831,
+    "headingCount": 6
   },
   {
     "id": "page--article--page--bookvsmovie--10",
@@ -180,8 +180,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 11 МАЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 765,
-    "headingCount": 6
+    "wordCount": 776,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--bookvsmovie--12",
@@ -193,7 +193,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 16 ИЮЛЯ 2026",
     "readingMinutes": 10,
-    "wordCount": 1798,
+    "wordCount": 1801,
     "headingCount": 7
   },
   {
@@ -205,9 +205,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "screen-adaptations",
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 16 МАРТА 2026",
-    "readingMinutes": 6,
-    "wordCount": 1056,
-    "headingCount": 6
+    "readingMinutes": 7,
+    "wordCount": 1233,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--bookvsmovie--6",
@@ -219,8 +219,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 26 ЯНВАРЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 1015,
-    "headingCount": 6
+    "wordCount": 1040,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--bookvsmovie--9",
@@ -232,8 +232,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книга и экранизация",
     "publishedLabel": "Опубликовано: 11 АПРЕЛЯ 2026",
     "readingMinutes": 4,
-    "wordCount": 715,
-    "headingCount": 7
+    "wordCount": 732,
+    "headingCount": 8
   },
   {
     "id": "page--article--luchshie--bestselleri--21--veka--1",
@@ -271,8 +271,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книжный гид и подборки",
     "publishedLabel": "Опубликовано: 01 ИЮЛЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 873,
-    "headingCount": 10
+    "wordCount": 877,
+    "headingCount": 11
   },
   {
     "id": "page--article--top--books--page--turners--1",
@@ -284,8 +284,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книжный гид и подборки",
     "publishedLabel": "Опубликовано: 18 ФЕВРАЛЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 946,
-    "headingCount": 11
+    "wordCount": 947,
+    "headingCount": 12
   },
   {
     "id": "page--article--top--books--page--turners--2",
@@ -297,8 +297,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книжный гид и подборки",
     "publishedLabel": "Опубликовано: 13 МАРТА 2026",
     "readingMinutes": 6,
-    "wordCount": 1105,
-    "headingCount": 11
+    "wordCount": 1106,
+    "headingCount": 12
   },
   {
     "id": "page--article--top--books--page--turners--3",
@@ -310,8 +310,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книжный гид и подборки",
     "publishedLabel": "Опубликовано: 09 АПРЕЛЯ 2026",
     "readingMinutes": 4,
-    "wordCount": 716,
-    "headingCount": 10
+    "wordCount": 717,
+    "headingCount": 11
   },
   {
     "id": "page--article--top--books--page--turners--4",
@@ -323,8 +323,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Книжный гид и подборки",
     "publishedLabel": "Опубликовано: 08 МАЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 1020,
-    "headingCount": 10
+    "wordCount": 1021,
+    "headingCount": 11
   },
   {
     "id": "page--article--top--books--page--turners--5",
@@ -517,9 +517,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 24 МАРТА 2026",
-    "readingMinutes": 6,
-    "wordCount": 1056,
-    "headingCount": 7
+    "readingMinutes": 7,
+    "wordCount": 1198,
+    "headingCount": 8
   },
   {
     "id": "page--article--page--books--20",
@@ -530,9 +530,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 17 АПРЕЛЯ 2026",
-    "readingMinutes": 6,
-    "wordCount": 1017,
-    "headingCount": 7
+    "readingMinutes": 7,
+    "wordCount": 1153,
+    "headingCount": 8
   },
   {
     "id": "page--article--page--books--21",
@@ -543,9 +543,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 17 МАЯ 2026",
-    "readingMinutes": 5,
-    "wordCount": 824,
-    "headingCount": 7
+    "readingMinutes": 6,
+    "wordCount": 1011,
+    "headingCount": 8
   },
   {
     "id": "page--article--page--books--14",
@@ -556,9 +556,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 12 ДЕКАБРЯ 2025",
-    "readingMinutes": 6,
-    "wordCount": 1024,
-    "headingCount": 3
+    "readingMinutes": 7,
+    "wordCount": 1212,
+    "headingCount": 4
   },
   {
     "id": "page--article--page--books--18",
@@ -570,8 +570,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 28 ФЕВРАЛЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 1013,
-    "headingCount": 6
+    "wordCount": 1068,
+    "headingCount": 7
   },
   {
     "id": "page--article--page--books--23",
@@ -583,8 +583,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 21 ИЮЛЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 1022,
-    "headingCount": 7
+    "wordCount": 1103,
+    "headingCount": 8
   },
   {
     "id": "page--article--page--books--22",
@@ -595,9 +595,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 10 ИЮНЯ 2026",
-    "readingMinutes": 7,
-    "wordCount": 1238,
-    "headingCount": 7
+    "readingMinutes": 8,
+    "wordCount": 1460,
+    "headingCount": 8
   },
   {
     "id": "page--article--page--books--12",
@@ -608,9 +608,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 23 ОКТЯБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 633,
-    "headingCount": 3
+    "readingMinutes": 5,
+    "wordCount": 875,
+    "headingCount": 4
   },
   {
     "id": "page--article--page--books--11",
@@ -621,9 +621,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 23 ОКТЯБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 702,
-    "headingCount": 4
+    "readingMinutes": 5,
+    "wordCount": 891,
+    "headingCount": 5
   },
   {
     "id": "page--article--page--books--15",
@@ -635,8 +635,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 30 ДЕКАБРЯ 2025",
     "readingMinutes": 7,
-    "wordCount": 1149,
-    "headingCount": 5
+    "wordCount": 1325,
+    "headingCount": 6
   },
   {
     "id": "page--article--page--books--9",
@@ -648,7 +648,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 17 СЕНТЯБРЯ 2025",
     "readingMinutes": 4,
-    "wordCount": 629,
+    "wordCount": 732,
     "headingCount": 4
   },
   {
@@ -686,9 +686,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 24 НОЯБРЯ 2025",
-    "readingMinutes": 6,
-    "wordCount": 1068,
-    "headingCount": 3
+    "readingMinutes": 8,
+    "wordCount": 1371,
+    "headingCount": 4
   },
   {
     "id": "page--article--page--books--10",
@@ -699,9 +699,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "book-opinions",
     "sectionLabel": "Мнение о книге",
     "publishedLabel": "Опубликовано: 05 ОКТЯБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 637,
-    "headingCount": 3
+    "readingMinutes": 5,
+    "wordCount": 846,
+    "headingCount": 4
   },
   {
     "id": "page--article--page--books--1",
@@ -1077,7 +1077,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 03 ЯНВАРЯ 2026",
     "readingMinutes": 12,
-    "wordCount": 2111,
+    "wordCount": 2115,
     "headingCount": 17
   },
   {
@@ -1115,9 +1115,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 26 ДЕКАБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 675,
-    "headingCount": 7
+    "readingMinutes": 5,
+    "wordCount": 799,
+    "headingCount": 8
   },
   {
     "id": "page--article--unrecognized--writers--3",
@@ -1128,9 +1128,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 06 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 555,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 641,
+    "headingCount": 8
   },
   {
     "id": "page--article--unrecognized--writers--1",
@@ -1142,8 +1142,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 23 ЯНВАРЯ 2026",
     "readingMinutes": 5,
-    "wordCount": 776,
-    "headingCount": 7
+    "wordCount": 899,
+    "headingCount": 8
   },
   {
     "id": "page--article--unrecognized--writers--4",
@@ -1154,15 +1154,15 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 06 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 524,
-    "headingCount": 8
+    "readingMinutes": 4,
+    "wordCount": 622,
+    "headingCount": 9
   },
   {
     "id": "page--article--unrecognized--writers--6",
     "url": "https://probpera.ru/read/page-article/unrecognized-writers/6",
     "title": "Непризнанные современниками гении литературы. Фернанду Пессоа",
-    "description": "Фернанду Пессоа — должно быть, самая необычная и загадочная фигура мировой литературы XX века. На сегодняшний день его считают величайшим португальским поэтом XX века и одним из важнейших представителей европейского модернизма. Его произведения переведены на десятки языков, а созданная им система литературных личностей оказала значительное влияние на развитие современной литературы.",
+    "description": "Фернанду Пессоа — должно быть самая необычная и загадочная фигура мировой литературы XX века. На сегодняшний день его считают величайшим португальским поэтом XX века и одним из важнейших представителей европейского модернизма. Его произведения переведены на десятки языков, а созданная им система литературных личностей оказала значительное влияние на развитие современной литературы.",
     "imageUrl": "https://static.tildacdn.com/tild6562-6135-4735-a338-383534306636/image.png",
     "sectionId": "writers-world",
     "sectionLabel": "Писатели и литературная карта",
@@ -1181,8 +1181,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 21 ИЮНЯ 2026",
     "readingMinutes": 4,
-    "wordCount": 630,
-    "headingCount": 8
+    "wordCount": 632,
+    "headingCount": 9
   },
   {
     "id": "page--article--first--profession--writers--1",
@@ -1194,7 +1194,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 02 ЯНВАРЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1224,
+    "wordCount": 1227,
     "headingCount": 17
   },
   {
@@ -1207,7 +1207,7 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Писатели и литературная карта",
     "publishedLabel": "Опубликовано: 23 МАЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1326,
+    "wordCount": 1329,
     "headingCount": 17
   },
   {
@@ -1310,8 +1310,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 16 СЕНТЯБРЯ 2025",
-    "readingMinutes": 3,
-    "wordCount": 392,
+    "readingMinutes": 4,
+    "wordCount": 643,
     "headingCount": 4
   },
   {
@@ -1323,8 +1323,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 03 ОКТЯБРЯ 2025",
-    "readingMinutes": 2,
-    "wordCount": 298,
+    "readingMinutes": 3,
+    "wordCount": 501,
     "headingCount": 4
   },
   {
@@ -1337,8 +1337,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 21 ОКТЯБРЯ 2025",
     "readingMinutes": 3,
-    "wordCount": 447,
-    "headingCount": 5
+    "wordCount": 548,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--12",
@@ -1350,8 +1350,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 06 НОЯБРЯ 2025",
     "readingMinutes": 3,
-    "wordCount": 454,
-    "headingCount": 6
+    "wordCount": 533,
+    "headingCount": 7
   },
   {
     "id": "page--article--nobel--prize--13",
@@ -1362,9 +1362,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 22 НОЯБРЯ 2025",
-    "readingMinutes": 3,
-    "wordCount": 547,
-    "headingCount": 5
+    "readingMinutes": 5,
+    "wordCount": 794,
+    "headingCount": 7
   },
   {
     "id": "page--article--nobel--prize--14",
@@ -1375,9 +1375,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 10 ДЕКАБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 616,
-    "headingCount": 5
+    "readingMinutes": 5,
+    "wordCount": 855,
+    "headingCount": 7
   },
   {
     "id": "page--article--nobel--prize--15",
@@ -1388,9 +1388,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 7 ЯНВАРЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 554,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 749,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--16",
@@ -1401,9 +1401,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 01 ФЕВРАЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 426,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 604,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--17",
@@ -1414,9 +1414,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 24 ФЕВРАЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 452,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 717,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--18",
@@ -1427,9 +1427,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 19 МАРТА 2026",
-    "readingMinutes": 2,
-    "wordCount": 369,
-    "headingCount": 5
+    "readingMinutes": 3,
+    "wordCount": 556,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--19",
@@ -1440,9 +1440,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 13 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 488,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 638,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--20",
@@ -1454,8 +1454,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 14 МАЯ 2026",
     "readingMinutes": 3,
-    "wordCount": 401,
-    "headingCount": 5
+    "wordCount": 515,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--21",
@@ -1466,9 +1466,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 07 ИЮНЯ 2026",
-    "readingMinutes": 2,
-    "wordCount": 374,
-    "headingCount": 5
+    "readingMinutes": 3,
+    "wordCount": 551,
+    "headingCount": 6
   },
   {
     "id": "page--article--nobel--prize--22",
@@ -1479,9 +1479,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 17 ИЮЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 476,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 647,
+    "headingCount": 6
   },
   {
     "id": "page--article--famous--prizes--3",
@@ -1505,9 +1505,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 30 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 497,
-    "headingCount": 8
+    "readingMinutes": 4,
+    "wordCount": 621,
+    "headingCount": 9
   },
   {
     "id": "page--article--nobel--prize--1",
@@ -1532,8 +1532,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 29 СЕНТЯБРЯ 2025",
     "readingMinutes": 3,
-    "wordCount": 431,
-    "headingCount": 5
+    "wordCount": 527,
+    "headingCount": 6
   },
   {
     "id": "page--article--famous--prizes--2",
@@ -1557,9 +1557,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 12 МАРТА 2026",
-    "readingMinutes": 3,
-    "wordCount": 568,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 700,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--4",
@@ -1583,9 +1583,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 21 ДЕКАБРЯ 2025",
-    "readingMinutes": 3,
-    "wordCount": 502,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 622,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--8",
@@ -1596,9 +1596,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 17 НОЯБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 752,
-    "headingCount": 7
+    "readingMinutes": 5,
+    "wordCount": 805,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--12",
@@ -1609,9 +1609,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 14 ФЕВРАЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 508,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 631,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--9",
@@ -1622,9 +1622,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 01 ДЕКАБРЯ 2025",
-    "readingMinutes": 3,
-    "wordCount": 537,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 659,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--11",
@@ -1635,9 +1635,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 20 ЯНВАРЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 561,
-    "headingCount": 7
+    "readingMinutes": 4,
+    "wordCount": 667,
+    "headingCount": 8
   },
   {
     "id": "page--article--famous--prizes--7",
@@ -1648,9 +1648,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 30 ОКТЯБРЯ 2025",
-    "readingMinutes": 2,
-    "wordCount": 308,
-    "headingCount": 5
+    "readingMinutes": 3,
+    "wordCount": 406,
+    "headingCount": 6
   },
   {
     "id": "page--article--famous--prizes--6",
@@ -1662,8 +1662,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 15 ОКТЯБРЯ 2025",
     "readingMinutes": 3,
-    "wordCount": 398,
-    "headingCount": 5
+    "wordCount": 475,
+    "headingCount": 6
   },
   {
     "id": "page--article--famous--prizes--15",
@@ -1674,9 +1674,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "awards",
     "sectionLabel": "Премии и литературный процесс",
     "publishedLabel": "Опубликовано: 20 ИЮНЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 482,
-    "headingCount": 8
+    "readingMinutes": 4,
+    "wordCount": 604,
+    "headingCount": 9
   },
   {
     "id": "page--article--famous--prizes--1",
@@ -1714,8 +1714,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 11 ЯНВАРЯ 2026",
     "readingMinutes": 3,
-    "wordCount": 393,
-    "headingCount": 14
+    "wordCount": 479,
+    "headingCount": 26
   },
   {
     "id": "page--words--2",
@@ -1727,8 +1727,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 14 ЯНВАРЯ 2026",
     "readingMinutes": 2,
-    "wordCount": 253,
-    "headingCount": 10
+    "wordCount": 378,
+    "headingCount": 26
   },
   {
     "id": "page--words--3",
@@ -1740,8 +1740,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 19 ЯНВАРЯ 2026",
     "readingMinutes": 2,
-    "wordCount": 192,
-    "headingCount": 9
+    "wordCount": 312,
+    "headingCount": 26
   },
   {
     "id": "page--words--4",
@@ -1752,9 +1752,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 17 ФЕВРАЛЯ 2026",
-    "readingMinutes": 1,
-    "wordCount": 156,
-    "headingCount": 7
+    "readingMinutes": 2,
+    "wordCount": 322,
+    "headingCount": 26
   },
   {
     "id": "page--words--5",
@@ -1766,8 +1766,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 19 МАЯ 2026",
     "readingMinutes": 2,
-    "wordCount": 262,
-    "headingCount": 12
+    "wordCount": 362,
+    "headingCount": 26
   },
   {
     "id": "page--words--6",
@@ -1778,9 +1778,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "language",
     "sectionLabel": "Русский язык и выражения",
     "publishedLabel": "Опубликовано: 24 ИЮНЯ 2026",
-    "readingMinutes": 1,
-    "wordCount": 171,
-    "headingCount": 9
+    "readingMinutes": 2,
+    "wordCount": 323,
+    "headingCount": 26
   },
   {
     "id": "page--article--krilatie--virageniya--1",
@@ -1805,8 +1805,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 28 ЯНВАРЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 1062,
-    "headingCount": 13
+    "wordCount": 1063,
+    "headingCount": 14
   },
   {
     "id": "page--article--folklore--4",
@@ -1818,8 +1818,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 25 МАЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1156,
-    "headingCount": 13
+    "wordCount": 1157,
+    "headingCount": 14
   },
   {
     "id": "page--article--folklore--5",
@@ -1831,8 +1831,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 29 ИЮНЯ 2026",
     "readingMinutes": 7,
-    "wordCount": 1241,
-    "headingCount": 13
+    "wordCount": 1242,
+    "headingCount": 14
   },
   {
     "id": "page--article--folklore--3",
@@ -1856,9 +1856,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 25 СЕНТЯБРЯ 2025",
-    "readingMinutes": 5,
-    "wordCount": 809,
-    "headingCount": 4
+    "readingMinutes": 6,
+    "wordCount": 1133,
+    "headingCount": 6
   },
   {
     "id": "page--article--folklore--characters--14",
@@ -1869,9 +1869,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 27 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 445,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 591,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--characters--12",
@@ -1882,9 +1882,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 08 МАРТА 2026",
-    "readingMinutes": 5,
-    "wordCount": 824,
-    "headingCount": 5
+    "readingMinutes": 6,
+    "wordCount": 1041,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--characters--7",
@@ -1895,9 +1895,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 15 НОЯБРЯ 2025",
-    "readingMinutes": 4,
-    "wordCount": 673,
-    "headingCount": 5
+    "readingMinutes": 5,
+    "wordCount": 840,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--characters--3",
@@ -1921,9 +1921,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 28 ОКТЯБРЯ 2025",
-    "readingMinutes": 3,
-    "wordCount": 459,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 629,
+    "headingCount": 6
   },
   {
     "id": "page--article--folklore--characters--9",
@@ -1935,8 +1935,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 30 НОЯБРЯ 2025",
     "readingMinutes": 5,
-    "wordCount": 827,
-    "headingCount": 7
+    "wordCount": 877,
+    "headingCount": 8
   },
   {
     "id": "page--article--folklore--characters--2",
@@ -1961,8 +1961,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 12 ОКТЯБРЯ 2025",
     "readingMinutes": 4,
-    "wordCount": 603,
-    "headingCount": 4
+    "wordCount": 613,
+    "headingCount": 5
   },
   {
     "id": "page--article--folklore--characters--8",
@@ -1973,9 +1973,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 30 НОЯБРЯ 2025",
-    "readingMinutes": 5,
-    "wordCount": 948,
-    "headingCount": 5
+    "readingMinutes": 8,
+    "wordCount": 1440,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--1",
@@ -2012,9 +2012,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 18 ЯНВАРЯ 2026",
-    "readingMinutes": 4,
-    "wordCount": 723,
-    "headingCount": 5
+    "readingMinutes": 5,
+    "wordCount": 950,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--characters--11",
@@ -2025,9 +2025,9 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 11 ФЕВРАЛЯ 2026",
-    "readingMinutes": 5,
-    "wordCount": 767,
-    "headingCount": 5
+    "readingMinutes": 6,
+    "wordCount": 997,
+    "headingCount": 7
   },
   {
     "id": "page--article--folklore--characters--15",
@@ -2039,8 +2039,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 17 ИЮНЯ 2026",
     "readingMinutes": 6,
-    "wordCount": 994,
-    "headingCount": 6
+    "wordCount": 1135,
+    "headingCount": 8
   },
   {
     "id": "page--article--folklore--characters--13",
@@ -2051,8 +2051,8 @@ export const articleCatalog: ArticleCatalogEntry[] = [
     "sectionId": "folklore",
     "sectionLabel": "Фольклор и мифология",
     "publishedLabel": "Опубликовано: 02 АПРЕЛЯ 2026",
-    "readingMinutes": 3,
-    "wordCount": 536,
-    "headingCount": 5
+    "readingMinutes": 4,
+    "wordCount": 708,
+    "headingCount": 7
   }
 ];

@@ -37,7 +37,7 @@
     "media:audit": "node scripts/audit-section-media.mjs",
     "media:audit:legacy": "node scripts/audit-legacy-article-media.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
-    "countries:audit": "node scripts/audit-generated-writers.mjs",
+    "countries:audit": "node scripts/audit-generated-writers.mjs && vitest run src/countryArchive.test.ts src/data/countryDataQuality.test.ts",
     "covers:audit": "node scripts/audit-cover-rights.mjs",
     "books:sync": "node scripts/sync-literary-archive.mjs",
     "books:sync:apply": "node scripts/sync-literary-archive.mjs --apply",

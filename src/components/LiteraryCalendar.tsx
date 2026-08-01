@@ -19,6 +19,15 @@ type CalendarEvent = {
   writer: Writer;
 };
 
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
+}
+
 export function dateParts(value?: string) {
   if (!value) return null;
   const match = /^\+?(\d{4})-(\d{2})-(\d{2})$/.exec(value);
@@ -56,14 +65,16 @@ export function calendarWriterIdentity(writer: Writer) {
     .split(/\s+/u)
     .filter(Boolean);
   const surname = nameParts[nameParts.length - 1] || writer.id;
-  if (writer.birthDate) return `${surname}|${writer.birthDate}`;
-  if (writer.deathDate) return `${surname}|memory|${writer.deathDate}`;
+  const birthDate = writer.birthDate?.replace(/^\+/, "");
+  const deathDate = writer.deathDate?.replace(/^\+/, "");
+  if (birthDate) return `${surname}|${birthDate}`;
+  if (deathDate) return `${surname}|memory|${deathDate}`;
   return "";
 }
 
 export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
-  const today = new Date();
+  const today = useMemo(() => new Date(), []);
   const [visibleDate, setVisibleDate] = useState(
     () => new Date(today.getFullYear(), today.getMonth(), 1)
   );
@@ -359,7 +370,10 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
                         ? `${number(dayEvents.length - (selectedDay === day ? 8 : 3))} more ${
                             dayEvents.length - (selectedDay === day ? 8 : 3) === 1 ? "event" : "events"
                           }`
-                        : `Ещё ${number(dayEvents.length - (selectedDay === day ? 8 : 3))} события`}
+                        : `Ещё ${number(dayEvents.length - (selectedDay === day ? 8 : 3))} ${pluralRu(
+                            dayEvents.length - (selectedDay === day ? 8 : 3),
+                            ["событие", "события", "событий"]
+                          )}`}
                     </span>
                   )}
                 </div>

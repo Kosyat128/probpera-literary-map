@@ -6,6 +6,7 @@ import {
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import {
+  getBookMentionIndex,
   getBookArticleMentions,
   type BookArticleMention,
 } from "../data/articles/bookMentions";
@@ -20,6 +21,8 @@ type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
 type Props = {
   books: BookArchiveEntry[];
   onBookSelect: (book: BookArchiveEntry) => void;
+  requestedBook?: BookArchiveEntry | null;
+  onRequestedBookHandled?: () => void;
 };
 
 const archiveFilters: Array<{
@@ -53,9 +56,26 @@ function resolveCoverUrl(url?: string) {
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
 }
 
+function articleImageForBook(
+  book: BookArchiveEntry,
+  mentionsByBook: Record<string, BookArticleMention[]>
+) {
+  return mentionsByBook[bookKey(book)]?.find((article) => article.imageUrl)
+    ?.imageUrl;
+}
+
+function hasArchiveCover(
+  book: BookArchiveEntry,
+  mentionsByBook: Record<string, BookArticleMention[]>
+) {
+  return isCoverDisplayAllowed(book) || Boolean(articleImageForBook(book, mentionsByBook));
+}
+
 export default function BookArchiveSection({
   books,
   onBookSelect,
+  requestedBook,
+  onRequestedBookHandled,
 }: Props) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<ArchiveFilter>("all");
@@ -67,6 +87,9 @@ export default function BookArchiveSection({
     []
   );
   const [relatedArticlesLoading, setRelatedArticlesLoading] = useState(false);
+  const [mentionsByBook, setMentionsByBook] = useState<
+    Record<string, BookArticleMention[]>
+  >({});
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
   const { language, t, countryName, number } = useInterfaceLanguage();
@@ -80,7 +103,7 @@ export default function BookArchiveSection({
           book.editorial?.status === "verified" ||
           book.editorial?.status === "reviewed"
       ).length,
-      covers: books.filter(isCoverDisplayAllowed).length,
+      covers: books.filter((book) => hasArchiveCover(book, mentionsByBook)).length,
       classic: books.filter(
         (book) =>
           typeof book.firstPublished === "number" &&
@@ -92,7 +115,7 @@ export default function BookArchiveSection({
           book.firstPublished > 1945
       ).length,
     }),
-    [books]
+    [books, mentionsByBook]
   );
 
   const filteredBooks = useMemo(() => {
@@ -105,7 +128,9 @@ export default function BookArchiveSection({
         ) {
           return false;
         }
-        if (filter === "covers" && !isCoverDisplayAllowed(book)) return false;
+        if (filter === "covers" && !hasArchiveCover(book, mentionsByBook)) {
+          return false;
+        }
         if (
           filter === "classic" &&
           (!book.firstPublished || book.firstPublished > 1945)
@@ -123,6 +148,7 @@ export default function BookArchiveSection({
         const searchValues = [
           book.title,
           book.originalTitle,
+          ...(book.alternateTitles || []),
           book.writerName,
           book.countryName,
           ...(book.genres || []),
@@ -135,16 +161,45 @@ export default function BookArchiveSection({
       .sort((first, second) => {
         const rankDifference = editorialRank(first) - editorialRank(second);
         if (rankDifference) return rankDifference;
-        if (isCoverDisplayAllowed(first) !== isCoverDisplayAllowed(second)) {
-          return isCoverDisplayAllowed(first) ? -1 : 1;
+        if (
+          hasArchiveCover(first, mentionsByBook) !==
+          hasArchiveCover(second, mentionsByBook)
+        ) {
+          return hasArchiveCover(first, mentionsByBook) ? -1 : 1;
         }
         return first.title.localeCompare(second.title, "ru");
       });
-  }, [books, deferredQuery, filter]);
+  }, [books, deferredQuery, filter, mentionsByBook]);
+
+  useEffect(() => {
+    let active = true;
+    getBookMentionIndex()
+      .then((index) => {
+        if (active) setMentionsByBook(index.byBook);
+      })
+      .catch(() => {
+        if (active) setMentionsByBook({});
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     setVisibleCount(12);
   }, [deferredQuery, filter]);
+
+  useEffect(() => {
+    if (!requestedBook) return;
+    setSelectedBook(requestedBook);
+    onRequestedBookHandled?.();
+    window.requestAnimationFrame(() => {
+      document.getElementById("books")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }, [onRequestedBookHandled, requestedBook]);
 
   useEffect(() => {
     let active = true;
@@ -175,6 +230,14 @@ export default function BookArchiveSection({
   }, [selectedBook]);
 
   const visibleBooks = filteredBooks.slice(0, visibleCount);
+  const selectedArticleImage = selectedBook
+    ? articleImageForBook(selectedBook, mentionsByBook)
+    : undefined;
+  const selectedCoverUrl = selectedBook
+    ? isCoverDisplayAllowed(selectedBook)
+      ? selectedBook.coverUrl
+      : selectedArticleImage
+    : undefined;
   const isBookSaved = (book: BookArchiveEntry) =>
     savedReadings.some(
       (item) => item.kind === "book" && item.id === bookKey(book)
@@ -246,18 +309,29 @@ export default function BookArchiveSection({
             <BrandCloseIcon />
           </button>
           <div
-            className={`book-detail-cover${isCoverDisplayAllowed(selectedBook) ? " has-image" : ""}`}
+            className={`book-detail-cover${selectedCoverUrl ? " has-image" : ""}`}
           >
-            {isCoverDisplayAllowed(selectedBook) ? (
+            {selectedCoverUrl ? (
               <img
-                src={resolveCoverUrl(selectedBook.coverUrl)}
-                alt={`${t("Редакционная обложка произведения")} «${selectedBook.title}»`}
+                src={resolveCoverUrl(selectedCoverUrl)}
+                srcSet={
+                  isCoverDisplayAllowed(selectedBook) &&
+                  selectedBook.coverThumbnailUrl
+                    ? `${resolveCoverUrl(selectedBook.coverThumbnailUrl)} 400w, ${resolveCoverUrl(selectedBook.coverUrl)} 800w`
+                    : undefined
+                }
+                sizes="(max-width: 680px) 44vw, 360px"
+                alt={
+                  isCoverDisplayAllowed(selectedBook)
+                    ? `${t("Редакционная обложка произведения")} «${selectedBook.title}»`
+                    : `${t("Иллюстрация из статьи о произведении")} «${selectedBook.title}»`
+                }
               />
             ) : (
               <>
-                <small>Проба Пера</small>
+                <small>{selectedBook.writerName}</small>
                 <strong>{selectedBook.title}</strong>
-                <span>✦</span>
+                <span aria-hidden="true">✦</span>
               </>
             )}
           </div>
@@ -363,6 +437,13 @@ export default function BookArchiveSection({
                       t("Права на изображение проверены")}
                 </span>
               )}
+              {!selectedBook.coverRights && selectedArticleImage && (
+                <span className="cover-rights-note">
+                  {t(
+                    "Редакционная иллюстрация из связанной статьи · не является обложкой конкретного издания"
+                  )}
+                </span>
+              )}
             </div>
             {(relatedArticlesLoading || relatedArticles.length > 0) && (
               <section
@@ -419,22 +500,38 @@ export default function BookArchiveSection({
       )}
 
       <div className="book-archive-grid">
-        {visibleBooks.map((book) => (
+        {visibleBooks.map((book) => {
+          const articleImage = articleImageForBook(book, mentionsByBook);
+          const coverUrl = isCoverDisplayAllowed(book)
+            ? book.coverThumbnailUrl || book.coverUrl
+            : articleImage;
+          return (
           <article className="archive-book-card" key={bookKey(book)}>
             <div
-              className={`archive-book-cover${isCoverDisplayAllowed(book) ? " has-image" : ""}`}
+              className={`archive-book-cover${coverUrl ? " has-image" : ""}`}
             >
-              {isCoverDisplayAllowed(book) ? (
+              {coverUrl ? (
                 <img
-                  src={resolveCoverUrl(book.coverUrl)}
-                  alt={`${t("Редакционная обложка произведения")} «${book.title}»`}
+                  src={resolveCoverUrl(coverUrl)}
+                  srcSet={
+                    isCoverDisplayAllowed(book) && book.coverThumbnailUrl
+                      ? `${resolveCoverUrl(book.coverThumbnailUrl)} 400w, ${resolveCoverUrl(book.coverUrl)} 800w`
+                      : undefined
+                  }
+                  sizes="(max-width: 680px) 42vw, 190px"
+                  alt={
+                    isCoverDisplayAllowed(book)
+                      ? `${t("Редакционная обложка произведения")} «${book.title}»`
+                      : `${t("Иллюстрация из статьи о произведении")} «${book.title}»`
+                  }
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <>
-                  <small>Проба Пера</small>
+                  <small>{book.writerName}</small>
                   <strong>{book.title}</strong>
-                  <span>✦</span>
+                  <span aria-hidden="true">✦</span>
                 </>
               )}
             </div>
@@ -483,7 +580,8 @@ export default function BookArchiveSection({
               </div>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
 
       {filteredBooks.length === 0 && (

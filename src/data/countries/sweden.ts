@@ -7,6 +7,38 @@ export const sweden: Country = {
 
   writers: [
     {
+      id: "verner_von_heidenstam",
+      name: "Карл Густав Вернер фон Хейденстам",
+      fullName: "Carl Gustaf Verner von Heidenstam",
+      years: "1859–1940",
+      nobelYear: 1916,
+      birthDate: "1859-07-06",
+      deathDate: "1940-05-20",
+      birthPlace: "Ольсхаммар, Швеция",
+      coordinates: { lat: 58.75, lng: 14.78 },
+      portrait: "",
+      bio: "Шведский поэт и прозаик, одна из центральных фигур национального неоромантизма. В его произведениях историческая память, пейзаж и личное переживание образуют торжественную, но внутренне напряжённую картину Швеции.",
+      works: ["Паломничество и годы странствий", "Каролинцы", "Стихи"],
+      genres: ["поэзия", "историческая проза", "роман"],
+      language: "шведский",
+      nationality: "швед",
+      awards: ["Нобелевская премия по литературе 1916 года"],
+      tags: ["XIX век", "XX век", "неоромантизм", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1916",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1916/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "carl_michael_bellman",
       name: "Карл Михаэль Бельман",
       fullName: "Carl Michael Bellman",
@@ -148,6 +180,7 @@ export const sweden: Country = {
 
     {
       id: "selma_lagerlof",
+      nobelYear: 1909,
       name: "Сельма Лагерлёф",
       fullName: "Selma Lagerlöf",
 

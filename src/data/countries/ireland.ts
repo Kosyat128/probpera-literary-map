@@ -200,6 +200,7 @@ export const ireland: Country = {
 
     {
       id: "w_b_yeats",
+      nobelYear: 1923,
       name: "Уильям Батлер Йейтс",
       fullName: "William Butler Yeats",
 

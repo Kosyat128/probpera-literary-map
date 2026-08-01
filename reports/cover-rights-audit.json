@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T03:38:07.757Z",
+  "generatedAt": "2026-08-01T08:42:48.862Z",
   "policy": "docs/COVER_RIGHTS_POLICY.md",
   "summary": {
     "covers": 14,
@@ -10,11 +10,11 @@
   "covers": [
     {
       "file": "england.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/8281954-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL9170454W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL9170454W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/hamlet-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/hamlet-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
@@ -40,11 +40,11 @@
     },
     {
       "file": "france.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/12721865-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL1063588W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL1063588W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
@@ -60,21 +60,21 @@
     },
     {
       "file": "france.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/13151269-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL1230613W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL1230613W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
     {
       "file": "japan.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/2237620-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL2625457W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL2625457W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
@@ -90,21 +90,21 @@
     },
     {
       "file": "russia.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/9411873-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL166894W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL166894W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
     {
       "file": "russia.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/12621906-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL267171W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL267171W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     },
@@ -140,11 +140,11 @@
     },
     {
       "file": "usa.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/8261367-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL50548W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL50548W",
-      "checkedAt": "2026-07-26",
+      "coverUrl": "brand/book-covers/beloved-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/beloved-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/beloved-editorial.webp",
+      "checkedAt": "2026-08-01",
       "displayAllowed": true,
       "issues": []
     }

@@ -1,6 +1,6 @@
 # Аудит прав на обложки
 
-Сформирован: 2026-07-30T03:38:07.757Z
+Сформирован: 2026-08-01T08:42:48.862Z
 
 - Найдено обложек: 14
 - Разрешено к показу политикой проекта: 14
@@ -9,10 +9,10 @@
 
 ## england.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL9170454W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/hamlet-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## england.ts
@@ -33,10 +33,10 @@
 
 ## france.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL1063588W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/les-miserables-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## france.ts
@@ -49,18 +49,18 @@
 
 ## france.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL1230613W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/the-stranger-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## japan.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL2625457W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/norwegian-wood-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## russia.ts
@@ -73,18 +73,18 @@
 
 ## russia.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL166894W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/crime-and-punishment-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## russia.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL267171W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/war-and-peace-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет
 
 ## russia.ts
@@ -113,8 +113,8 @@
 
 ## usa.ts
 
-- Статус: external-preview
+- Статус: editorial-original
 - Показ: разрешён
-- Источник: https://openlibrary.org/works/OL50548W
-- Проверено: 2026-07-26
+- Источник: brand/book-covers/beloved-editorial.webp
+- Проверено: 2026-08-01
 - Замечаний нет

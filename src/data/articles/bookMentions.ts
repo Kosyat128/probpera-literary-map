@@ -7,10 +7,11 @@ export type BookArticleMention = {
   sectionLabel: string;
   readingMinutes: number;
   slug?: string;
+  imageUrl?: string;
   kind: BookArticleMentionKind;
 };
 
-type BookMentionIndex = {
+export type BookMentionIndex = {
   version: number;
   byBook: Record<string, BookArticleMention[]>;
 };
@@ -36,4 +37,8 @@ export function loadBookMentionIndex() {
 export async function getBookArticleMentions(bookKey: string) {
   const index = await loadBookMentionIndex();
   return index.byBook[bookKey] || [];
+}
+
+export async function getBookMentionIndex() {
+  return loadBookMentionIndex();
 }

@@ -54,52 +54,180 @@ function normalizeUrl(value, baseUrl) {
   }
 }
 
-function extractArticleFragment($) {
-  $("#t-header,#t-footer,.t890,.t704,.tolstoycomments-feed").remove();
-  const fragments = [];
+function mediaSource($, element) {
+  const node = $(element);
+  return (
+    node.attr("data-original") ||
+    node.attr("data-src") ||
+    node.attr("data-lazy-rule") ||
+    node.attr("src") ||
+    ""
+  ).trim();
+}
 
-  $(".ql-editor").each((_, element) => {
-    const node = $(element);
-    if (normalizeText(node.text()).length >= 80) {
-      fragments.push(node.html() || "");
+function pushUniqueImage(images, seen, value, baseUrl) {
+  const normalized = normalizeUrl(value, baseUrl);
+  if (!normalized || seen.has(normalized)) return;
+  seen.add(normalized);
+  images.push(normalized);
+}
+
+function dedupeSequence(values) {
+  const seen = new Set();
+  return values.filter((value) => {
+    if (!value || seen.has(value)) return false;
+    seen.add(value);
+    return true;
+  });
+}
+
+function normalizeHeading(value) {
+  return titleTokens(value).join(" ");
+}
+
+function headingsFromNode($, node) {
+  return node
+    .find("h2,h3")
+    .map((_, heading) => normalizeText($(heading).text()))
+    .get()
+    .filter(Boolean);
+}
+
+function extractLegacyStructure($, baseUrl) {
+  $("#t-header,#t-footer,.t890,.t704,.tolstoycomments-feed").remove();
+  const images = [];
+  const headings = [];
+  let sideLayouts = 0;
+  let galleries = 0;
+  let started = false;
+
+  $("#allrecords .t-rec").each((_, element) => {
+    const record = $(element);
+    const recordText = normalizeText(record.text());
+    const editors = record.find(".ql-editor");
+
+    if (started && /^Опубликовано\s*:/iu.test(recordText)) return false;
+    if (!started) {
+      const isArticleStart = editors.toArray().some((editor) => {
+        const node = $(editor);
+        return (
+          normalizeText(node.text()).length >= 80 ||
+          node.find("h2,h3,figure,img").length > 0
+        );
+      });
+      if (!isArticleStart) return;
+      started = true;
     }
+
+    if (editors.length) {
+      editors.each((__, editor) => {
+        const node = $(editor);
+        if (
+          !normalizeText(node.text()) &&
+          node.find("h2,h3,figure,img").length === 0
+        ) {
+          return;
+        }
+        headings.push(...headingsFromNode($, node));
+        node.find("img,[data-original],[data-src]").each((___, image) => {
+          const source = normalizeUrl(mediaSource($, image), baseUrl);
+          if (source) images.push(source);
+        });
+      });
+      return;
+    }
+
+    if (record.find(".t167").length) {
+      sideLayouts += 1;
+      const image = record.find(".t167__img").first();
+      const source = normalizeUrl(mediaSource($, image), baseUrl);
+      if (source) images.push(source);
+      headings.push(
+        ...headingsFromNode($, record.find(".t167__text").first())
+      );
+      return;
+    }
+
+    if (record.find(".t-slds").length) {
+      galleries += 1;
+      const seen = new Set();
+      record.find(".t-slds__item").each((__, slide) => {
+        const source = $(slide)
+          .find("[data-original],[data-src],img")
+          .toArray()
+          .map((node) => mediaSource($, node))
+          .find((value) => {
+            const normalized = normalizeUrl(value, baseUrl);
+            return normalized && !seen.has(normalized);
+          });
+        if (source) pushUniqueImage(images, seen, source, baseUrl);
+      });
+      return;
+    }
+
+    const seen = new Set();
+    record.find("img,[data-original],[data-src]").each((__, image) => {
+      pushUniqueImage(images, seen, mediaSource($, image), baseUrl);
+    });
+    if (seen.size > 1) galleries += 1;
   });
 
-  if (!fragments.length) {
-    $("#allrecords .t-text").each((_, element) => {
-      const node = $(element);
-      const text = normalizeText(node.text());
-      if (
-        text.length >= 120 &&
-        !/подпишитесь на нашу рассылку/i.test(text)
-      ) {
-        fragments.push(`<p>${node.html() || ""}</p>`);
-      }
-    });
-  }
+  return {
+    images: dedupeSequence(images),
+    headings,
+    sideLayouts,
+    galleries,
+  };
+}
 
-  return fragments.join("\n");
+function extractCurrentStructure(html, baseUrl) {
+  const $ = load(`<main id="audit-root">${html || ""}</main>`, null, false);
+  return {
+    images: dedupeSequence(
+      imageUrlsFromHtml($("#audit-root").html() || "", baseUrl)
+    ),
+    headings: headingsFromNode($, $("#audit-root")),
+    sideLayouts: $("#audit-root .article-media-split").length,
+    galleries: $("#audit-root .article-gallery").length,
+  };
 }
 
 function imageUrlsFromHtml(html, baseUrl) {
   const $ = load(`<main id="audit-root">${html || ""}</main>`, null, false);
-  return [
-    ...new Set(
-      $("#audit-root img")
-        .map((_, element) => {
-          const node = $(element);
-          return normalizeUrl(
-            node.attr("data-original") ||
-              node.attr("data-src") ||
-              node.attr("data-lazy-rule") ||
-              node.attr("src"),
-            baseUrl
-          );
-        })
-        .get()
-        .filter(Boolean)
-    ),
-  ];
+  return $("#audit-root img")
+    .map((_, element) => {
+      const node = $(element);
+      return normalizeUrl(
+        node.attr("data-original") ||
+          node.attr("data-src") ||
+          node.attr("data-lazy-rule") ||
+          node.attr("src"),
+        baseUrl
+      );
+    })
+    .get()
+    .filter(Boolean);
+}
+
+function occurrenceDifference(expected, actual) {
+  const remaining = new Map();
+  actual.forEach((value) => {
+    remaining.set(value, (remaining.get(value) || 0) + 1);
+  });
+
+  return expected.filter((value) => {
+    const count = remaining.get(value) || 0;
+    if (count <= 0) return true;
+    remaining.set(value, count - 1);
+    return false;
+  });
+}
+
+function orderedListsMatch(first, second) {
+  return (
+    first.length === second.length &&
+    first.every((value, index) => value === second[index])
+  );
 }
 
 async function fetchWithRetry(url, options = {}, attempts = 3) {
@@ -160,8 +288,19 @@ const articleChecks = await mapWithConcurrency(
       heroMatches: false,
       oldInlineCount: 0,
       currentInlineCount: 0,
+      inlineOrderMatches: false,
+      oldHeadingCount: 0,
+      currentHeadingCount: 0,
+      headingOrderMatches: false,
+      missingHeadings: [],
+      unexpectedHeadings: [],
+      oldSideLayoutCount: 0,
+      currentSideLayoutCount: 0,
+      oldGalleryCount: 0,
+      currentGalleryCount: 0,
       titleExactMatches: false,
       missingInlineImages: [],
+      unexpectedInlineImages: [],
       unavailableImages: [],
       notes: [],
     };
@@ -183,11 +322,13 @@ const articleChecks = await mapWithConcurrency(
         article.url
       );
       const currentHero = normalizeUrl(article.imageUrl, article.url);
-      const oldInline = imageUrlsFromHtml(extractArticleFragment($), article.url);
-      const currentInline = imageUrlsFromHtml(
+      const oldStructure = extractLegacyStructure($, article.url);
+      const currentStructure = extractCurrentStructure(
         currentArticle.contentHtml,
         article.url
       );
+      const oldInline = oldStructure.images;
+      const currentInline = currentStructure.images;
 
       result.oldTitle = oldTitle;
       result.oldHero = oldHero;
@@ -200,9 +341,29 @@ const articleChecks = await mapWithConcurrency(
       result.heroMatches = oldHero === currentHero;
       result.oldInlineCount = oldInline.length;
       result.currentInlineCount = currentInline.length;
-      result.missingInlineImages = oldInline.filter(
-        (imageUrl) => !currentInline.includes(imageUrl)
+      result.inlineOrderMatches = orderedListsMatch(oldInline, currentInline);
+      result.missingInlineImages = occurrenceDifference(oldInline, currentInline);
+      result.unexpectedInlineImages = occurrenceDifference(currentInline, oldInline);
+      const oldHeadingKeys = oldStructure.headings.map(normalizeHeading);
+      const currentHeadingKeys = currentStructure.headings.map(normalizeHeading);
+      result.oldHeadingCount = oldHeadingKeys.length;
+      result.currentHeadingCount = currentHeadingKeys.length;
+      result.headingOrderMatches = orderedListsMatch(
+        oldHeadingKeys,
+        currentHeadingKeys
       );
+      result.missingHeadings = occurrenceDifference(
+        oldHeadingKeys,
+        currentHeadingKeys
+      );
+      result.unexpectedHeadings = occurrenceDifference(
+        currentHeadingKeys,
+        oldHeadingKeys
+      );
+      result.oldSideLayoutCount = oldStructure.sideLayouts;
+      result.currentSideLayoutCount = currentStructure.sideLayouts;
+      result.oldGalleryCount = oldStructure.galleries;
+      result.currentGalleryCount = currentStructure.galleries;
 
       const urlsToCheck = [
         ...new Set([currentHero, ...currentInline].filter(Boolean)),
@@ -232,6 +393,25 @@ const articleChecks = await mapWithConcurrency(
       if (result.missingInlineImages.length) {
         result.notes.push("missing-inline-images");
       }
+      if (result.unexpectedInlineImages.length) {
+        result.notes.push("unexpected-inline-images");
+      }
+      if (!result.inlineOrderMatches) {
+        result.notes.push("inline-image-order-mismatch");
+      }
+      if (result.missingHeadings.length) result.notes.push("missing-headings");
+      if (result.unexpectedHeadings.length) {
+        result.notes.push("unexpected-headings");
+      }
+      if (!result.headingOrderMatches) {
+        result.notes.push("heading-order-mismatch");
+      }
+      if (result.oldSideLayoutCount !== result.currentSideLayoutCount) {
+        result.notes.push("side-layout-count-mismatch");
+      }
+      if (result.oldGalleryCount !== result.currentGalleryCount) {
+        result.notes.push("gallery-count-mismatch");
+      }
       if (result.unavailableImages.length) {
         result.notes.push("unavailable-current-images");
       }
@@ -252,6 +432,43 @@ const articleChecks = await mapWithConcurrency(
 
 process.stdout.write("\n");
 
+const failedImageUrls = [
+  ...new Set(
+    articleChecks.flatMap((article) =>
+      article.unavailableImages.map((item) => item.url)
+    )
+  ),
+];
+
+if (failedImageUrls.length) {
+  const recoveredImageUrls = new Set();
+  await mapWithConcurrency(failedImageUrls, 2, async (imageUrl, index) => {
+    await new Promise((resolve) => setTimeout(resolve, 350 + (index % 2) * 250));
+    try {
+      const response = await fetchWithRetry(
+        imageUrl,
+        { headers: { range: "bytes=0-0" } },
+        4
+      );
+      await response.body?.cancel();
+      recoveredImageUrls.add(imageUrl);
+    } catch {
+      // The original failure remains in the report.
+    }
+  });
+  articleChecks.forEach((article) => {
+    article.unavailableImages = article.unavailableImages.filter(
+      (item) => !recoveredImageUrls.has(item.url)
+    );
+    if (!article.unavailableImages.length) {
+      article.notes = article.notes.filter(
+        (note) => note !== "unavailable-current-images"
+      );
+      article.status = article.notes.length ? "review" : "ok";
+    }
+  });
+}
+
 const totals = articleChecks.reduce(
   (summary, article) => {
     summary[article.status] += 1;
@@ -260,7 +477,26 @@ const totals = articleChecks.reduce(
       summary.editorialTitleDifferences += 1;
     }
     if (!article.heroMatches) summary.heroMismatches += 1;
+    summary.oldInlineImages += article.oldInlineCount;
+    summary.currentInlineImages += article.currentInlineCount;
     summary.missingInlineImages += article.missingInlineImages.length;
+    summary.unexpectedInlineImages += article.unexpectedInlineImages.length;
+    if (!article.inlineOrderMatches) summary.inlineOrderMismatches += 1;
+    summary.oldHeadings += article.oldHeadingCount;
+    summary.currentHeadings += article.currentHeadingCount;
+    summary.missingHeadings += article.missingHeadings.length;
+    summary.unexpectedHeadings += article.unexpectedHeadings.length;
+    if (!article.headingOrderMatches) summary.headingOrderMismatches += 1;
+    summary.oldSideLayouts += article.oldSideLayoutCount;
+    summary.currentSideLayouts += article.currentSideLayoutCount;
+    summary.oldGalleries += article.oldGalleryCount;
+    summary.currentGalleries += article.currentGalleryCount;
+    if (article.oldSideLayoutCount !== article.currentSideLayoutCount) {
+      summary.sideLayoutMismatches += 1;
+    }
+    if (article.oldGalleryCount !== article.currentGalleryCount) {
+      summary.galleryMismatches += 1;
+    }
     summary.unavailableImages += article.unavailableImages.length;
     return summary;
   },
@@ -271,7 +507,22 @@ const totals = articleChecks.reduce(
     titleMismatches: 0,
     editorialTitleDifferences: 0,
     heroMismatches: 0,
+    oldInlineImages: 0,
+    currentInlineImages: 0,
     missingInlineImages: 0,
+    unexpectedInlineImages: 0,
+    inlineOrderMismatches: 0,
+    oldHeadings: 0,
+    currentHeadings: 0,
+    missingHeadings: 0,
+    unexpectedHeadings: 0,
+    headingOrderMismatches: 0,
+    oldSideLayouts: 0,
+    currentSideLayouts: 0,
+    sideLayoutMismatches: 0,
+    oldGalleries: 0,
+    currentGalleries: 0,
+    galleryMismatches: 0,
     unavailableImages: 0,
   }
 );
@@ -304,7 +555,20 @@ const markdown = [
   `Несовпадений заголовков: ${totals.titleMismatches}.`,
   `Редакционных различий в пунктуации и формулировке: ${totals.editorialTitleDifferences}.`,
   `Несовпадений главных изображений: ${totals.heroMismatches}.`,
+  `Изображений внутри старых текстов: ${totals.oldInlineImages}.`,
+  `Изображений внутри новых текстов: ${totals.currentInlineImages}.`,
   `Не перенесённых изображений внутри текста: ${totals.missingInlineImages}.`,
+  `Лишних изображений внутри текста: ${totals.unexpectedInlineImages}.`,
+  `Материалов с нарушенным порядком изображений: ${totals.inlineOrderMismatches}.`,
+  `Глав в старых статьях: ${totals.oldHeadings}.`,
+  `Глав в новых статьях: ${totals.currentHeadings}.`,
+  `Не перенесённых глав: ${totals.missingHeadings}.`,
+  `Лишних глав: ${totals.unexpectedHeadings}.`,
+  `Материалов с нарушенным порядком глав: ${totals.headingOrderMismatches}.`,
+  `Боковых фотоблоков: ${totals.oldSideLayouts} → ${totals.currentSideLayouts}.`,
+  `Материалов с расхождением боковых фотоблоков: ${totals.sideLayoutMismatches}.`,
+  `Галерей: ${totals.oldGalleries} → ${totals.currentGalleries}.`,
+  `Материалов с расхождением галерей: ${totals.galleryMismatches}.`,
   `Недоступных текущих изображений: ${totals.unavailableImages}.`,
   ...(reviewArticles.length
     ? [
@@ -334,6 +598,13 @@ if (
   totals.titleMismatches ||
   totals.heroMismatches ||
   totals.missingInlineImages ||
+  totals.unexpectedInlineImages ||
+  totals.inlineOrderMismatches ||
+  totals.missingHeadings ||
+  totals.unexpectedHeadings ||
+  totals.headingOrderMismatches ||
+  totals.sideLayoutMismatches ||
+  totals.galleryMismatches ||
   totals.unavailableImages
 ) {
   process.exitCode = 1;

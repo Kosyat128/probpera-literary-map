@@ -23,8 +23,8 @@ const texturePath = path.join(
 );
 const outputDirectory = path.join(repositoryRoot, "scripts", ".cache");
 const outputPath = path.join(outputDirectory, "globe-alignment-qa.png");
-const width = 3072;
-const height = 1536;
+const width = 4096;
+const height = 2048;
 const inspectedCodes = new Set(["BR", "FR", "JP", "AU", "RU"]);
 
 const atlas = JSON.parse(await readFile(atlasPath, "utf8"));

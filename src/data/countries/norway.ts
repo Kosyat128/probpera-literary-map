@@ -76,6 +76,7 @@ export const norway: Country = {
 
     {
       id: "bjornstjerne_bjornson",
+      nobelYear: 1903,
       name: "Бьёрнстьерне Бьёрнсон",
       fullName: "Bjørnstjerne Bjørnson",
       years: "1832–1910",
@@ -209,6 +210,7 @@ export const norway: Country = {
 
     {
       id: "knut_hamsun",
+      nobelYear: 1920,
       name: "Кнут Гамсун",
       fullName: "Knut Hamsun",
       years: "1859–1952",

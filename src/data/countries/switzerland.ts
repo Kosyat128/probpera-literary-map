@@ -7,6 +7,38 @@ export const switzerland: Country = {
 
   writers: [
     {
+      id: "carl_spitteler",
+      name: "Карл Фридрих Георг Шпиттелер",
+      fullName: "Carl Friedrich Georg Spitteler",
+      years: "1845–1924",
+      nobelYear: 1919,
+      birthDate: "1845-04-24",
+      deathDate: "1924-12-29",
+      birthPlace: "Листаль, Швейцария",
+      coordinates: { lat: 47.4845, lng: 7.735 },
+      portrait: "",
+      bio: "Швейцарский поэт и прозаик, создававший масштабные мифологические и аллегорические произведения на немецком языке. Его эпическая поэзия переосмысляет античные образы и ставит вопросы личной ответственности и духовной свободы.",
+      works: ["Олимпийская весна", "Прометей и Эпиметей", "Имаго"],
+      genres: ["поэзия", "эпос", "аллегорическая проза"],
+      language: "немецкий",
+      nationality: "швейцарец",
+      awards: ["Нобелевская премия по литературе 1919 года"],
+      tags: ["XIX век", "XX век", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1919",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1919/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "johann_kaspar_lavater",
       name: "Иоганн Каспар Лафатер",
       fullName: "Johann Kaspar Lavater",

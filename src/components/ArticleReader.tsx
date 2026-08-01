@@ -19,12 +19,22 @@ type ArticleHeading = {
   text: string;
 };
 
+type ArticleSource =
+  | string
+  | { text?: string; title?: string; label?: string; url?: string };
+
+type ArticleMediaItem = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 type ArticleDocument = ArticleCatalogEntry & {
   headings: ArticleHeading[];
   contentHtml: string;
   plainText: string;
-  sources?: Array<string | { text?: string }>;
-  bibliography?: Array<string | { text?: string }>;
+  sources?: ArticleSource[];
+  bibliography?: ArticleSource[];
 };
 
 type Props = {
@@ -42,13 +52,50 @@ function publicArticleUrl(article: ArticleCatalogEntry) {
   return `${import.meta.env.BASE_URL}${documentPath.replace(/^\/+/, "")}`;
 }
 
-function sourceLines(
-  value?: Array<string | { text?: string }>
-) {
+function sourceLines(value?: ArticleSource[]) {
   return (value || [])
-    .map((item) => (typeof item === "string" ? item : item.text || ""))
-    .map((item) => item.trim())
-    .filter(Boolean);
+    .map((item) => {
+      if (typeof item === "string") {
+        const text = item.trim();
+        const urlMatch = text.match(/https?:\/\/[^\s)\]]+/i);
+        return { text, url: urlMatch?.[0] || "" };
+      }
+      return {
+        text: (item.text || item.title || item.label || item.url || "").trim(),
+        url: (item.url || "").trim(),
+      };
+    })
+    .filter((item) => item.text);
+}
+
+function contentMediaItems(html: string, baseUrl: string): ArticleMediaItem[] {
+  if (!html || typeof DOMParser === "undefined") return [];
+  const documentNode = new DOMParser().parseFromString(html, "text/html");
+  return [...documentNode.querySelectorAll<HTMLImageElement>("img")]
+    .map((image) => {
+      const rawSource =
+        image.getAttribute("data-original") ||
+        image.getAttribute("data-src") ||
+        image.getAttribute("src") ||
+        image.currentSrc ||
+        image.src ||
+        "";
+      if (!rawSource) return null;
+      let src = rawSource;
+      try {
+        src = new URL(rawSource, baseUrl).href;
+      } catch {
+        // The browser will still attempt to resolve the original source.
+      }
+      const figure = image.closest("figure");
+      const caption = figure?.querySelector("figcaption")?.textContent?.trim() || "";
+      return {
+        src,
+        alt: image.alt.trim(),
+        caption,
+      };
+    })
+    .filter((item): item is ArticleMediaItem => Boolean(item));
 }
 
 export default function ArticleReader({
@@ -61,12 +108,15 @@ export default function ArticleReader({
 }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lightboxCloseButtonRef = useRef<HTMLButtonElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [articleDocument, setArticleDocument] = useState<ArticleDocument | null>(null);
   const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fontScale, setFontScale] = useState(1);
   const [activeHeadingId, setActiveHeadingId] = useState("");
+  const [activeMediaIndex, setActiveMediaIndex] = useState<number | null>(null);
   const { mode } = useDisplayMode();
   const { language, t, number } = useInterfaceLanguage();
   const { items: savedReadings, toggle: toggleSavedReading } =
@@ -102,7 +152,7 @@ export default function ArticleReader({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
     const handleKeydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape" && activeMediaIndex === null) onClose();
       if (event.key !== "Tab" || !dialogRef.current) return;
 
       const focusable = [
@@ -128,12 +178,13 @@ export default function ArticleReader({
       window.removeEventListener("keydown", handleKeydown);
       previouslyFocused?.focus();
     };
-  }, [onClose]);
+  }, [activeMediaIndex, onClose]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
     setProgress(0);
     setActiveHeadingId("");
+    setActiveMediaIndex(null);
   }, [article.id]);
 
   const headingItems = useMemo(
@@ -147,6 +198,18 @@ export default function ArticleReader({
         : "",
     [articleDocument]
   );
+  const mediaItems = useMemo(() => {
+    const inlineItems = contentMediaItems(safeContentHtml, article.url);
+    if (!article.imageUrl) return inlineItems;
+    return [
+      {
+        src: article.imageUrl,
+        alt: article.imageAlt || `Иллюстрация к статье «${article.title}»`,
+        caption: "",
+      },
+      ...inlineItems,
+    ];
+  }, [article.imageAlt, article.imageUrl, article.title, article.url, safeContentHtml]);
   const sourceItems = useMemo(
     () => [
       ...sourceLines(articleDocument?.sources),
@@ -157,6 +220,48 @@ export default function ArticleReader({
   const activeHeading = headingItems.find(
     (heading) => heading.id === activeHeadingId
   );
+
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root || !safeContentHtml) return;
+    const heroOffset = article.imageUrl ? 1 : 0;
+    root.querySelectorAll<HTMLImageElement>("img").forEach((image, index) => {
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute(
+        "aria-label",
+        image.alt
+          ? `Открыть изображение: ${image.alt}`
+          : `Открыть иллюстрацию ${index + 1}`
+      );
+      image.dataset.articleMediaIndex = String(index + heroOffset);
+    });
+  }, [article.imageUrl, safeContentHtml]);
+
+  useEffect(() => {
+    if (activeMediaIndex === null) return;
+    lightboxCloseButtonRef.current?.focus();
+    const handleLightboxKeys = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setActiveMediaIndex(null);
+      } else if (event.key === "ArrowRight" && mediaItems.length > 1) {
+        event.preventDefault();
+        setActiveMediaIndex((value) =>
+          value === null ? 0 : (value + 1) % mediaItems.length
+        );
+      } else if (event.key === "ArrowLeft" && mediaItems.length > 1) {
+        event.preventDefault();
+        setActiveMediaIndex((value) =>
+          value === null
+            ? 0
+            : (value - 1 + mediaItems.length) % mediaItems.length
+        );
+      }
+    };
+    window.addEventListener("keydown", handleLightboxKeys);
+    return () => window.removeEventListener("keydown", handleLightboxKeys);
+  }, [activeMediaIndex, mediaItems.length]);
 
   useEffect(() => {
     const root = scrollRef.current;
@@ -214,6 +319,16 @@ export default function ArticleReader({
   const openAnother = (target: ArticleCatalogEntry) => {
     onOpen(target);
   };
+
+  const openContentImage = (target: EventTarget | null) => {
+    const image = target instanceof Element ? target.closest<HTMLImageElement>("img") : null;
+    if (!image || !contentRef.current?.contains(image)) return;
+    const index = Number(image.dataset.articleMediaIndex);
+    if (Number.isInteger(index) && mediaItems[index]) setActiveMediaIndex(index);
+  };
+
+  const activeMedia =
+    activeMediaIndex === null ? undefined : mediaItems[activeMediaIndex];
 
   return (
     <div
@@ -348,7 +463,6 @@ export default function ArticleReader({
               <div className="book-mode-plaque" aria-hidden="true">
                 <span>Проба Пера</span>
                 <i>{t("Режим печатной книги")}</i>
-                <span>MMXXVI</span>
               </div>
             )}
             <header className="article-reader-lead">
@@ -376,6 +490,10 @@ export default function ArticleReader({
                   <strong>{number(headingItems.length)}</strong>
                   {t("смысловых разделов")}
                 </span>
+                <span>
+                  <strong>{number(mediaItems.length)}</strong>
+                  {t("иллюстраций")}
+                </span>
               </div>
               <div className="article-byline">
                 <span>{t("Авторская публикация журнала «Проба Пера»")}</span>
@@ -387,16 +505,24 @@ export default function ArticleReader({
 
             {article.imageUrl && (
               <figure className="article-reader-cover">
-                <img
-                  src={article.imageUrl}
-                  alt={
-                    article.imageAlt ||
-                    `Иллюстрация к статье «${article.title}»`
-                  }
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                />
+                <button
+                  className="article-reader-cover-button"
+                  type="button"
+                  onClick={() => setActiveMediaIndex(0)}
+                  aria-label={t("Открыть главное изображение")}
+                >
+                  <img
+                    src={article.imageUrl}
+                    alt={
+                      article.imageAlt ||
+                      `Иллюстрация к статье «${article.title}»`
+                    }
+                    loading="eager"
+                    decoding="async"
+                    {...({ fetchpriority: "high" } as Record<string, string>)}
+                  />
+                  <span aria-hidden="true">{t("Рассмотреть")}</span>
+                </button>
               </figure>
             )}
 
@@ -418,7 +544,19 @@ export default function ArticleReader({
 
             {articleDocument && (
               <div
+                ref={contentRef}
                 className="article-reader-content"
+                onClick={(event) => openContentImage(event.target)}
+                onKeyDown={(event) => {
+                  if (event.key !== "Enter" && event.key !== " ") return;
+                  const image =
+                    event.target instanceof Element
+                      ? event.target.closest<HTMLImageElement>("img")
+                      : null;
+                  if (!image) return;
+                  event.preventDefault();
+                  openContentImage(image);
+                }}
                 dangerouslySetInnerHTML={{ __html: safeContentHtml }}
               />
             )}
@@ -428,7 +566,15 @@ export default function ArticleReader({
                 <span>{t("Источники и библиография")}</span>
                 <ol>
                   {sourceItems.map((item, index) => (
-                    <li key={`${item}-${index}`}>{item}</li>
+                    <li key={`${item.text}-${index}`}>
+                      {item.url ? (
+                        <a href={item.url} target="_blank" rel="noreferrer">
+                          {item.text}
+                        </a>
+                      ) : (
+                        item.text
+                      )}
+                    </li>
                   ))}
                 </ol>
               </section>
@@ -498,6 +644,68 @@ export default function ArticleReader({
           )}
         </nav>
       </div>
+
+      {activeMedia && activeMediaIndex !== null && (
+        <div
+          className="article-media-viewer"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("Просмотр иллюстрации")}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActiveMediaIndex(null);
+          }}
+        >
+          <div className="article-media-viewer-frame">
+            <header>
+              <span>
+                {number(activeMediaIndex + 1)} / {number(mediaItems.length)}
+              </span>
+              <button
+                ref={lightboxCloseButtonRef}
+                type="button"
+                onClick={() => setActiveMediaIndex(null)}
+                aria-label={t("Закрыть изображение")}
+              >
+                <BrandCloseIcon />
+              </button>
+            </header>
+            <img
+              src={activeMedia.src}
+              alt={
+                activeMedia.alt ||
+                `Иллюстрация ${activeMediaIndex + 1} к статье «${article.title}»`
+              }
+            />
+            {(activeMedia.caption || activeMedia.alt) && (
+              <p>{activeMedia.caption || activeMedia.alt}</p>
+            )}
+            {mediaItems.length > 1 && (
+              <nav aria-label={t("Переключение иллюстраций")}> 
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveMediaIndex(
+                      (activeMediaIndex - 1 + mediaItems.length) % mediaItems.length
+                    )
+                  }
+                  aria-label={t("Предыдущее изображение")}
+                >
+                  <BrandArrowIcon />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveMediaIndex((activeMediaIndex + 1) % mediaItems.length)
+                  }
+                  aria-label={t("Следующее изображение")}
+                >
+                  <BrandArrowIcon />
+                </button>
+              </nav>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

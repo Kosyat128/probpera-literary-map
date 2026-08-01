@@ -11,12 +11,16 @@ export type SiteSectionLink = {
   copy: string;
   href: string;
   image: string;
+  action?: "forum" | "account";
+  metric?: "all-articles" | "writers" | "community" | "account" | "project";
 };
 
 type Props = {
   sections: SiteSectionLink[];
   countryCount: number;
   bookCount: number;
+  writerCount: number;
+  onAction?: (action: "forum" | "account") => void;
 };
 
 function mediaUrl(path: string) {
@@ -67,15 +71,18 @@ export default function SectionsDirectory({
   sections,
   countryCount,
   bookCount,
+  writerCount,
+  onAction,
 }: Props) {
   const { language, t, number } = useInterfaceLanguage();
 
   return (
     <div className="sections-directory-grid">
       {sections.map((section) => {
-        const publications = articleCatalog.filter(
-          (article) => article.sectionId === section.id
-        );
+        const publications =
+          section.metric === "all-articles"
+            ? articleCatalog
+            : articleCatalog.filter((article) => article.sectionId === section.id);
         const latest = publications.reduce<(typeof publications)[number] | undefined>(
           (current, article) =>
             !current ||
@@ -96,6 +103,16 @@ export default function SectionsDirectory({
                 : `${number(bookCount)} книг и произведений`
               : section.id === "calendar"
                 ? t("События на каждый день")
+                : section.metric === "writers"
+                  ? language === "en"
+                    ? `${number(writerCount)} writers`
+                    : `${number(writerCount)} авторов`
+                  : section.metric === "community"
+                    ? t("Форум, оценки и обсуждения")
+                    : section.metric === "account"
+                      ? t("Профиль и личная библиотека")
+                      : section.metric === "project"
+                        ? t("Редакция, источники и правила")
                 : language === "en"
                   ? `${number(publications.length)} ${
                       publications.length === 1
@@ -116,6 +133,11 @@ export default function SectionsDirectory({
           <a
             href={section.href}
             key={section.id}
+            onClick={(event) => {
+              if (!section.action) return;
+              event.preventDefault();
+              onAction?.(section.action);
+            }}
             style={
               {
                 "--section-art": `url(${mediaUrl(section.image)})`,

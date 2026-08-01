@@ -7,10 +7,15 @@ import sharp from "sharp";
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePath =
   process.argv[2] ??
-  path.join(repositoryRoot, "scripts", "assets", "rand-mcnally-globe-gores-1887.jpg");
+  path.join(
+    repositoryRoot,
+    "scripts",
+    "assets",
+    "rand-mcnally-globe-gores-1887-hires.jpg"
+  );
 const outputDirectory = path.join(repositoryRoot, "public", "textures");
-const outputWidth = 3072;
-const outputHeight = 1536;
+const outputWidth = 4096;
+const outputHeight = 2048;
 
 const { data: source, info } = await sharp(sourcePath)
   .removeAlpha()
@@ -93,17 +98,20 @@ const texture = sharp(output, {
     [0.025, 0.96, 0.0],
     [0.025, 0.075, 0.79],
   ])
-  .modulate({ brightness: 0.94, saturation: 0.9 });
+  .modulate({ brightness: 0.96, saturation: 0.91 })
+  // A restrained restoration pass brings back engraved lettering and
+  // hachures lost during the spherical reprojection without inventing detail.
+  .sharpen({ sigma: 0.72, m1: 0.75, m2: 1.45, x1: 2, y2: 10, y3: 20 });
 
 await Promise.all([
   texture
     .clone()
-    .webp({ quality: 90, effort: 6, smartSubsample: true })
+    .webp({ quality: 92, effort: 6, smartSubsample: true })
     .toFile(path.join(outputDirectory, "antique-world-1887.webp")),
   texture
     .clone()
-    .resize(1536, 768, { fit: "fill", kernel: sharp.kernel.lanczos3 })
-    .webp({ quality: 82, effort: 6, smartSubsample: true })
+    .resize(2048, 1024, { fit: "fill", kernel: sharp.kernel.lanczos3 })
+    .webp({ quality: 86, effort: 6, smartSubsample: true })
     .toFile(path.join(outputDirectory, "antique-world-1887-mobile.webp")),
 ]);
 

@@ -77,6 +77,8 @@ const englishInterfaceText: Record<string, string> = {
   "От редакционных статей до мировой литературной энциклопедии.":
     "From original essays to a world literary encyclopedia.",
   "Открыть интерактивный каталог": "Open the interactive directory",
+  "Проба Пера в цифрах": "Proba Pera in numbers",
+  публикаций: "publications",
   "Редакционная витрина": "Editorial selection",
   "Свежие публикации": "Latest publications",
   "Авторские статьи, рецензии, литературные истории и материалы о языке.":
@@ -98,6 +100,10 @@ const englishInterfaceText: Record<string, string> = {
   Энциклопедия: "Encyclopedia",
   "Культура и язык": "Culture and language",
   События: "Events",
+  "Сообщество и проект": "Community and project",
+  "Все публикации журнала": "All journal publications",
+  "Полный авторский архив: статьи, рецензии, эссе, литературные истории и тематические циклы.":
+    "The complete editorial archive: articles, reviews, essays, literary stories and thematic series.",
   "Мнение о книге": "Book reviews",
   "Книга и экранизация": "Books and screen adaptations",
   "Книжный гид и подборки": "Reading guides and selections",
@@ -107,8 +113,26 @@ const englishInterfaceText: Record<string, string> = {
   "Фольклор и мифология": "Folklore and mythology",
   "Язык и редкие слова": "Language and rare words",
   "Литературные истории": "Literary stories",
+  "Рассказы и литературные истории": "Stories and literary histories",
+  "Авторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия.":
+    "Original stories and essays, the lives of works, writers' ideas and cultural discoveries.",
   "Книжный архив": "Book archive",
   "Литературный календарь": "Literary calendar",
+  "Указатель писателей": "Writers index",
+  "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.":
+    "A direct route to biographies, works and literary connections across the encyclopedia.",
+  "Обсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей.":
+    "Discussions of books, articles, translations and adaptations with shared profiles and ratings.",
+  "Личный кабинет и библиотека": "Account and personal library",
+  "Сохранённые материалы, любимые книги, страны и писатели, оценки и история участия.":
+    "Saved publications, favourite books, countries and writers, ratings and participation history.",
+  "О проекте и редакции": "About the project and editors",
+  "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.":
+    "The mission of Proba Pera, editorial standards, sources, corrections and copyright.",
+  "Форум, оценки и обсуждения": "Forum, ratings and discussions",
+  "Профиль и личная библиотека": "Profile and personal library",
+  "Редакция, источники и правила": "Editors, sources and standards",
+  авторов: "writers",
   "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.":
     "Rare editions, classics and contemporary books — with context and without unnecessary spoilers.",
   "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.":
@@ -186,6 +210,9 @@ const englishInterfaceText: Record<string, string> = {
   "После 1945 года": "After 1945",
   "Закрыть карточку книги": "Close book details",
   "Редакционная обложка произведения": "Editorial cover for",
+  "Иллюстрация из статьи о произведении": "Illustration from an article about",
+  "Редакционная иллюстрация из связанной статьи · не является обложкой конкретного издания":
+    "Editorial image from a related article · not the cover of a specific edition",
   "Проверено редакцией": "Editorially verified",
   "Редакционная карточка": "Editorial record",
   "Архивная запись": "Archive record",
@@ -339,6 +366,9 @@ const englishInterfaceText: Record<string, string> = {
     "Ratings and comments belong to a specific publication. The author’s text remains unchanged while reader discussion lives alongside it.",
   "Собираем авторский архив…": "Building the editorial archive…",
   "Литературное сообщество": "Literary community",
+  "Разговор после чтения": "The conversation after reading",
+  "Выберите тему, продолжите мысль из статьи или предложите собственный маршрут чтения.":
+    "Choose a topic, continue an idea from an article or suggest your own reading route.",
   "Клуб внимательных читателей": "A club for attentive readers",
   "Форум для обстоятельного разговора о книгах, переводах и экранизациях. Без случайных виджетов: единый профиль, содержательные комментарии, рейтинги и редакционная модерация.":
     "A forum for thoughtful discussion of books, translations and adaptations. One profile, substantive comments, ratings and editorial moderation.",

@@ -143,6 +143,7 @@ export const belgium: Country = {
 
     {
       id: "maurice_maeterlinck",
+      nobelYear: 1911,
       name: "Морис Метерлинк",
       fullName: "Maurice Maeterlinck",
 

@@ -142,6 +142,7 @@ export const poland: Country = {
 
     {
       id: "henryk_sienkiewicz",
+      nobelYear: 1905,
       name: "Генрик Сенкевич",
       fullName: "Henryk Sienkiewicz",
       years: "1846–1916",

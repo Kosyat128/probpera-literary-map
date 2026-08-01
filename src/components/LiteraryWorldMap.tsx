@@ -9,6 +9,8 @@ interface Props {
   selectedWriter?: WriterProfile | null;
   onCountrySelect?: (country: Country) => void;
   onWriterSelect?: (writer: WriterProfile | null) => void;
+  showNobelLaureates?: boolean;
+  nobelCountryId?: string | null;
   filters?: WriterFilterState;
   onFiltersChange?: (filters: WriterFilterState) => void;
 }
@@ -16,7 +18,11 @@ interface Props {
 export default function LiteraryWorldMap({
   countries,
   selectedCountry,
+  selectedWriter,
   onCountrySelect,
+  onWriterSelect,
+  showNobelLaureates,
+  nobelCountryId,
 }: Props) {
   const { t } = useInterfaceLanguage();
 
@@ -28,7 +34,14 @@ export default function LiteraryWorldMap({
       <LiteraryGlobe
         countries={countries}
         selectedCountry={selectedCountry}
+        selectedWriter={selectedWriter}
         onCountrySelect={onCountrySelect}
+        onWriterSelect={(country, writer) => {
+          onCountrySelect?.(country);
+          onWriterSelect?.(writer);
+        }}
+        showNobelLaureates={showNobelLaureates}
+        nobelCountryId={nobelCountryId}
       />
     </section>
   );

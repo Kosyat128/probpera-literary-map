@@ -108,6 +108,7 @@ async function sourceArticles() {
       sectionLabel: article.sectionLabel || "Материалы",
       readingMinutes: Number(article.readingMinutes) || 1,
       slug: article.slug || "",
+      imageUrl: article.imageUrl || "",
       titleText,
       descriptionText,
       bodyText,
@@ -130,7 +131,13 @@ function writerSurname(writerName = "") {
 }
 
 function matchArticle(book, article) {
-  const aliases = [...new Set([book.title, book.originalTitle].filter(Boolean))]
+  const aliases = [
+    ...new Set(
+      [book.title, book.originalTitle, ...(book.alternateTitles || [])].filter(
+        Boolean
+      )
+    ),
+  ]
     .map(normalizeMentionText)
     .filter((alias) => alias.length >= 2);
   if (!aliases.length) return null;

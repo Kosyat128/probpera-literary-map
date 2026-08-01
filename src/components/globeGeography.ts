@@ -170,6 +170,50 @@ export function geometryContainsGeographicPoint(
   );
 }
 
+/**
+ * Splits a multi-territory geometry at an authoritative geographic anchor.
+ * This is useful for an overseas territory that has its own encyclopedia card
+ * while still remaining part of its sovereign country's complete outline.
+ */
+export function partitionGeometryAtGeographicPoint(
+  geometry: GlobeGeoGeometry,
+  longitude: number,
+  latitude: number
+): {
+  matching: GlobeGeoGeometry | null;
+  remainder: GlobeGeoGeometry | null;
+} {
+  const polygons =
+    geometry.type === "Polygon"
+      ? [geometry.coordinates as GeoPolygonCoordinates]
+      : (geometry.coordinates as GeoMultiPolygonCoordinates);
+  const matchingPolygons = polygons.filter((polygon) =>
+    pointInPolygon(normalizeLongitude(longitude), latitude, polygon)
+  );
+
+  if (!matchingPolygons.length) {
+    return { matching: null, remainder: geometry };
+  }
+
+  const remainingPolygons = polygons.filter(
+    (polygon) => !matchingPolygons.includes(polygon)
+  );
+  const toGeometry = (
+    source: GeoPolygonCoordinates[]
+  ): GlobeGeoGeometry | null => {
+    if (!source.length) return null;
+    if (source.length === 1) {
+      return { type: "Polygon", coordinates: source[0] };
+    }
+    return { type: "MultiPolygon", coordinates: source };
+  };
+
+  return {
+    matching: toGeometry(matchingPolygons),
+    remainder: toGeometry(remainingPolygons),
+  };
+}
+
 export function buildSphericalOutlinePositions(
   geometries: GlobeGeoGeometry[],
   radius = 1.009

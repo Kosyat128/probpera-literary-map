@@ -6,6 +6,70 @@ export const spain: Country = {
   code: "es",
   writers: [
     {
+      id: "jose_echegaray",
+      name: "Хосе Эчегарай-и-Эйсагирре",
+      fullName: "José Echegaray y Eizaguirre",
+      years: "1832–1916",
+      nobelYear: 1904,
+      birthDate: "1832-04-19",
+      deathDate: "1916-09-14",
+      birthPlace: "Мадрид, Испания",
+      coordinates: { lat: 40.4168, lng: -3.7038 },
+      portrait: "",
+      bio: "Испанский драматург, математик, инженер и государственный деятель. Его сценические произведения соединяют напряжённую интригу с нравственным конфликтом; премию 1904 года он разделил с Фредериком Мистралем.",
+      works: ["Великий Галеото", "Безумие или святость", "Сын Дон Жуана"],
+      genres: ["драма", "трагедия"],
+      language: "испанский",
+      nationality: "испанец",
+      awards: ["Нобелевская премия по литературе 1904 года"],
+      tags: ["XIX век", "испанская драма", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1904",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1904/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "jacinto_benavente",
+      name: "Хасинто Бенавенте-и-Мартинес",
+      fullName: "Jacinto Benavente y Martínez",
+      years: "1866–1954",
+      nobelYear: 1922,
+      birthDate: "1866-08-12",
+      deathDate: "1954-07-14",
+      birthPlace: "Мадрид, Испания",
+      coordinates: { lat: 40.4168, lng: -3.7038 },
+      portrait: "",
+      bio: "Испанский драматург, обновивший национальный театр наблюдательной комедией характеров и точным изображением общественных условностей. Его пьесы варьируются от сатиры до символической притчи.",
+      works: ["Игра интересов", "Нелюбимая", "Злорадство"],
+      genres: ["драма", "комедия", "сатира"],
+      language: "испанский",
+      nationality: "испанец",
+      awards: ["Нобелевская премия по литературе 1922 года"],
+      tags: ["XX век", "испанская драматургия", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1922",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1922/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "juan_ruiz",
       name: "Хуан Руис",
       years: "ок. 1283–ок. 1350",

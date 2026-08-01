@@ -2,6 +2,11 @@ import { gsap } from "gsap";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
+import {
+  findNobelArticle,
+  getNobelYear,
+  isNobelLaureate,
+} from "../data/articles/nobelArticles";
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
@@ -9,10 +14,14 @@ import { getWriterWorkTitles } from "../data/bookArchive";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandCloseIcon from "./BrandCloseIcon";
 
+const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
+
 type WriterPanelProps = {
   country: Country;
   selectedWriter?: Writer | null;
   onWriterSelect?: (writer: Writer) => void;
+  nobelSpotlightActive?: boolean;
+  onNobelSpotlightToggle?: () => void;
   onClose?: () => void;
 };
 
@@ -39,16 +48,6 @@ function getWriterYear(writer: Writer) {
   const source = writer.birthDate || writer.birth || writer.years || "";
   const match = source.match(/\d{3,4}/);
   return match ? Number(match[0]) : null;
-}
-
-function isNobelWriter(writer: Writer) {
-  return Boolean(
-    writer.nobel ||
-      writer.isNobel ||
-      writer.nobelYear ||
-      writer.nobelPrize ||
-      writer.awards?.some((award) => award.toLowerCase().includes("нобел"))
-  );
 }
 
 function uniqueValues(values: Array<string | undefined>) {
@@ -85,6 +84,8 @@ export default function WriterPanel({
   country,
   selectedWriter,
   onWriterSelect,
+  nobelSpotlightActive = false,
+  onNobelSpotlightToggle,
   onClose,
 }: WriterPanelProps) {
   const { language, t, countryName, number } = useInterfaceLanguage();
@@ -157,13 +158,20 @@ export default function WriterPanel({
     () => (activeWriter ? relatedArticlesFor(activeWriter) : []),
     [activeWriter]
   );
+  const activeNobelYear = activeWriter ? getNobelYear(activeWriter) : null;
+  const activeNobelArticle = activeWriter
+    ? findNobelArticle(activeWriter)
+    : null;
+  const otherRelatedArticles = activeNobelArticle
+    ? relatedArticles.filter((article) => article.id !== activeNobelArticle.id)
+    : relatedArticles;
   const activeWriterWorks = useMemo(
     () => (activeWriter ? getWriterWorkTitles(activeWriter) : []),
     [activeWriter]
   );
 
-  const nobelCount =
-    country.nobel ?? writers.reduce((count, writer) => count + Number(isNobelWriter(writer)), 0);
+  const nobelWriters = writers.filter(isNobelLaureate);
+  const nobelCount = nobelWriters.length;
   const description =
     country.description ||
     country.history ||
@@ -231,7 +239,18 @@ export default function WriterPanel({
               : pluralRu(writers.length, ["автор", "автора", "авторов"])}
           </span>
         </div>
-        <div>
+        <button
+          className={`country-metric-button${nobelSpotlightActive ? " is-active" : ""}`}
+          type="button"
+          disabled={!nobelWriters.length}
+          onClick={onNobelSpotlightToggle}
+          aria-pressed={nobelSpotlightActive}
+          title={t(
+            nobelSpotlightActive
+              ? "Скрыть метки Нобелевских лауреатов этой страны"
+              : "Показать всех Нобелевских лауреатов этой страны на глобусе"
+          )}
+        >
           <strong>{number(nobelCount)}</strong>
           <span>
             {language === "en"
@@ -244,7 +263,7 @@ export default function WriterPanel({
                   "Нобелевских лауреатов",
                 ])}
           </span>
-        </div>
+        </button>
         <div>
           {(() => {
             const worksCount = uniqueValues(
@@ -363,6 +382,49 @@ export default function WriterPanel({
               t("Расширенная биография готовится для энциклопедии.")}
           </p>
 
+          {activeNobelYear && (
+            <div className="writer-nobel-feature">
+              {activeNobelArticle ? (
+                <a
+                  className="writer-nobel-medal"
+                  href={articlePath(
+                    activeNobelArticle.id,
+                    activeNobelArticle.title,
+                    activeNobelArticle.sectionId,
+                    activeNobelArticle.slug
+                  )}
+                  aria-label={t("Открыть статью о лауреате")}
+                >
+                  <img src={nobelPortraitUrl} alt="" />
+                </a>
+              ) : (
+                <span className="writer-nobel-medal" aria-hidden="true">
+                  <img src={nobelPortraitUrl} alt="" />
+                </span>
+              )}
+              <div>
+                <small>{t("Нобелевский архив")}</small>
+                <strong>
+                  {t("Лауреат Нобелевской премии по литературе")} · {activeNobelYear}
+                </strong>
+                {activeNobelArticle ? (
+                  <a
+                    href={articlePath(
+                      activeNobelArticle.id,
+                      activeNobelArticle.title,
+                      activeNobelArticle.sectionId,
+                      activeNobelArticle.slug
+                    )}
+                  >
+                    {t("Читать редакционный материал года")} <span>→</span>
+                  </a>
+                ) : (
+                  <em>{t("Годовая статья готовится редакцией")}</em>
+                )}
+              </div>
+            </div>
+          )}
+
           {activeWriterWorks.length > 0 && (
             <div className="works-block">
               <span>{t("Основные произведения")}</span>
@@ -374,10 +436,10 @@ export default function WriterPanel({
             </div>
           )}
 
-          {relatedArticles.length > 0 && (
+          {otherRelatedArticles.length > 0 && (
             <div className="writer-articles">
               <span>{t("Материалы журнала")}</span>
-              {relatedArticles.map((article) => (
+              {otherRelatedArticles.map((article) => (
                 <a
                   key={article.id}
                   href={articlePath(

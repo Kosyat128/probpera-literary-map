@@ -2,6 +2,7 @@ const blockedElements =
   "script,style,iframe,object,embed,form,input,button,textarea,select,link,meta";
 const allowedAttributes = new Set([
   "alt",
+  "class",
   "height",
   "href",
   "id",
@@ -32,6 +33,14 @@ export function sanitizeArticleHtml(source: string) {
         element.removeAttribute(attribute.name);
       }
     });
+
+    if (element.hasAttribute("class")) {
+      const safeClasses = [...element.classList].filter((className) =>
+        ["article-media-split", "article-gallery"].includes(className)
+      );
+      if (safeClasses.length) element.className = safeClasses.join(" ");
+      else element.removeAttribute("class");
+    }
 
     for (const attributeName of ["href", "src"]) {
       const value = element.getAttribute(attributeName);

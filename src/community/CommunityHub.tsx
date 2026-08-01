@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { supabase } from "../lib/supabase";
+import type { Country } from "../data/countries";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { articlePath } from "../utils/articleRoutes";
 import BrandHeartIcon from "../components/BrandHeartIcon";
@@ -13,7 +14,14 @@ export type CommunityView = "account" | "forum" | "admin";
 type Props = {
   open: boolean;
   initialView?: CommunityView;
+  countries?: Country[];
   onClose: () => void;
+};
+
+type ForumProfile = {
+  display_name?: string;
+  avatar_url?: string | null;
+  reputation?: number;
 };
 
 type ForumTopic = {
@@ -23,7 +31,8 @@ type ForumTopic = {
   category: string;
   created_at: string;
   author_id: string;
-  profiles?: { display_name?: string } | null;
+  score?: number;
+  profiles?: ForumProfile | null;
   forum_replies?: Array<{ count: number }>;
 };
 
@@ -32,7 +41,8 @@ type ForumReply = {
   body: string;
   created_at: string;
   author_id: string;
-  profiles?: { display_name?: string } | null;
+  score?: number;
+  profiles?: ForumProfile | null;
 };
 
 type DashboardCounts = {
@@ -46,7 +56,7 @@ type DashboardCounts = {
 
 type ModerationItem = {
   id: string;
-  kind: "topic" | "comment";
+  kind: "topic" | "reply" | "comment";
   title?: string;
   body: string;
   status: "published" | "hidden" | "pending";
@@ -68,13 +78,70 @@ type CommentReport = {
   } | null;
 };
 
-const categories = [
-  "Обсуждение книги",
-  "Классика",
-  "Современная литература",
-  "Экранизации",
-  "Вопрос редакции",
+type ForumReport = {
+  id: string;
+  subject_type: "topic" | "reply";
+  subject_id: string;
+  subject_title: string;
+  subject_excerpt: string;
+  reason: string;
+  created_at: string;
+};
+
+const forumCategories = [
+  {
+    label: "Книжный клуб",
+    description: "Совместное чтение и обсуждение книги месяца",
+    symbol: "К",
+  },
+  {
+    label: "Обсуждение книги",
+    description: "Впечатления, вопросы и внимательный разбор текста",
+    symbol: "О",
+  },
+  {
+    label: "Классика",
+    description: "Произведения, выдержавшие проверку временем",
+    symbol: "К",
+  },
+  {
+    label: "Современная литература",
+    description: "Новые книги, авторы и литературные явления",
+    symbol: "С",
+  },
+  {
+    label: "Поэзия",
+    description: "Стихи, поэтика, чтения и переводы",
+    symbol: "П",
+  },
+  {
+    label: "Переводы",
+    description: "Сравнение переводов и разговор о языке",
+    symbol: "Я",
+  },
+  {
+    label: "Экранизации",
+    description: "Книга и экран: находки, потери и интерпретации",
+    symbol: "Э",
+  },
+  {
+    label: "Литературная карта",
+    description: "Страны, писатели и маршруты мировой литературы",
+    symbol: "М",
+  },
+  {
+    label: "Подборки читателей",
+    description: "Личные списки книг и тематические маршруты",
+    symbol: "Б",
+  },
+  {
+    label: "Вопрос редакции",
+    description: "Предложения, уточнения и темы для материалов",
+    symbol: "Р",
+  },
 ];
+
+const categories = forumCategories.map((category) => category.label);
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("ru-RU", {
@@ -84,9 +151,38 @@ function formatDate(value: string) {
   }).format(new Date(value));
 }
 
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
+}
+
+function ForumAuthor({ profile }: { profile?: ForumProfile | null }) {
+  const name = profile?.display_name || "Читатель";
+  return (
+    <span className="forum-author">
+      <span className="forum-author-avatar" aria-hidden="true">
+        {profile?.avatar_url ? (
+          <img src={profile.avatar_url} alt="" loading="lazy" />
+        ) : (
+          name.slice(0, 1).toLocaleUpperCase("ru")
+        )}
+      </span>
+      <span>
+        <strong>{name}</strong>
+        <small>{profile?.reputation || 0} репутации</small>
+      </span>
+    </span>
+  );
+}
+
 export default function CommunityHub({
   open,
   initialView = "account",
+  countries = [],
   onClose,
 }: Props) {
   const dialogRef = useRef<HTMLElement>(null);
@@ -114,8 +210,18 @@ export default function CommunityHub({
   const [topicTitle, setTopicTitle] = useState("");
   const [topicBody, setTopicBody] = useState("");
   const [topicCategory, setTopicCategory] = useState(categories[0]);
+  const [forumCategoryFilter, setForumCategoryFilter] = useState("all");
+  const [forumQuery, setForumQuery] = useState("");
+  const [forumSort, setForumSort] = useState<"new" | "popular" | "active">("new");
   const [replyBody, setReplyBody] = useState("");
   const [composeOpen, setComposeOpen] = useState(false);
+  const [profileBio, setProfileBio] = useState("");
+  const [profileAvatarUrl, setProfileAvatarUrl] = useState("");
+  const [profileReputation, setProfileReputation] = useState(0);
+  const [favoriteCountryCodes, setFavoriteCountryCodes] = useState<string[]>([]);
+  const [favoriteWriterIds, setFavoriteWriterIds] = useState<string[]>([]);
+  const [favoriteCountryDraft, setFavoriteCountryDraft] = useState("");
+  const [favoriteWriterDraft, setFavoriteWriterDraft] = useState("");
   const [dashboardCounts, setDashboardCounts] = useState<DashboardCounts>({
     readers: 0,
     topics: 0,
@@ -126,10 +232,49 @@ export default function CommunityHub({
   });
   const [moderationItems, setModerationItems] = useState<ModerationItem[]>([]);
   const [commentReports, setCommentReports] = useState<CommentReport[]>([]);
+  const [forumReports, setForumReports] = useState<ForumReport[]>([]);
   const { items: savedReadings, remove: removeSavedReading } =
     useReadingLibrary();
 
   const isModerator = ["moderator", "editor", "admin"].includes(role);
+
+  useEffect(() => {
+    const client = supabase;
+    if (!client || !user) {
+      setProfileBio("");
+      setProfileAvatarUrl("");
+      setProfileReputation(0);
+      setFavoriteCountryCodes([]);
+      setFavoriteWriterIds([]);
+      return;
+    }
+
+    let active = true;
+    const loadProfile = async () => {
+      const basic = await client
+        .from("profiles")
+        .select("avatar_url,bio")
+        .eq("id", user.id)
+        .single();
+      if (!active) return;
+      setProfileAvatarUrl(basic.data?.avatar_url || "");
+      setProfileBio(basic.data?.bio || "");
+
+      const extended = await client
+        .from("profiles")
+        .select("reputation,favorite_country_codes,favorite_writer_ids")
+        .eq("id", user.id)
+        .single();
+      if (!active || extended.error || !extended.data) return;
+      setProfileReputation(Number(extended.data.reputation || 0));
+      setFavoriteCountryCodes(extended.data.favorite_country_codes || []);
+      setFavoriteWriterIds(extended.data.favorite_writer_ids || []);
+    };
+    void loadProfile();
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   useEffect(() => {
     if (!open) return;
@@ -179,31 +324,63 @@ export default function CommunityHub({
 
   const loadTopics = useCallback(async () => {
     if (!supabase) return;
-    const { data, error } = await supabase
+    const modernResult = await supabase
       .from("forum_topics")
       .select(
-        "id,title,body,category,created_at,author_id,profiles(display_name),forum_replies(count)"
+        "id,title,body,category,created_at,author_id,score,profiles(display_name,avatar_url,reputation),forum_replies(count)"
       )
       .eq("status", "published")
       .order("created_at", { ascending: false })
       .limit(30);
+    let topicData: unknown = modernResult.data;
+    let topicError = modernResult.error;
 
-    if (error) {
+    if (topicError?.message.toLocaleLowerCase("ru").includes("score")) {
+      const legacyResult = await supabase
+        .from("forum_topics")
+        .select(
+          "id,title,body,category,created_at,author_id,profiles(display_name,avatar_url),forum_replies(count)"
+        )
+        .eq("status", "published")
+        .order("created_at", { ascending: false })
+        .limit(30);
+      topicData = legacyResult.data;
+      topicError = legacyResult.error;
+    }
+
+    if (topicError) {
       setMessage("Не удалось загрузить обсуждения. Проверьте схему сообщества.");
       return;
     }
-    setTopics((data || []) as unknown as ForumTopic[]);
+    setTopics((topicData || []) as ForumTopic[]);
   }, []);
 
   const loadReplies = useCallback(async (topicId: string) => {
     if (!supabase) return;
-    const { data } = await supabase
+    const modernResult = await supabase
       .from("forum_replies")
-      .select("id,body,created_at,author_id,profiles(display_name)")
+      .select("id,body,created_at,author_id,score,profiles(display_name,avatar_url,reputation)")
       .eq("topic_id", topicId)
       .eq("status", "published")
       .order("created_at", { ascending: true });
-    setReplies((data || []) as unknown as ForumReply[]);
+    let replyData: unknown = modernResult.data;
+    let replyError = modernResult.error;
+
+    if (replyError?.message.toLocaleLowerCase("ru").includes("score")) {
+      const legacyResult = await supabase
+        .from("forum_replies")
+        .select("id,body,created_at,author_id,profiles(display_name,avatar_url)")
+        .eq("topic_id", topicId)
+        .eq("status", "published")
+        .order("created_at", { ascending: true });
+      replyData = legacyResult.data;
+      replyError = legacyResult.error;
+    }
+    if (replyError) {
+      setMessage("Не удалось загрузить ответы.");
+      return;
+    }
+    setReplies((replyData || []) as ForumReply[]);
   }, []);
 
   useEffect(() => {
@@ -232,6 +409,29 @@ export default function CommunityHub({
     void loadReplies(selectedTopic.id);
   }, [loadReplies, selectedTopic]);
 
+  useEffect(() => {
+    if (!open || view !== "forum" || !configured || !selectedTopic || !supabase) {
+      return;
+    }
+    const client = supabase;
+    const channel = client
+      .channel(`forum-thread-${selectedTopic.id}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "forum_replies",
+          filter: `topic_id=eq.${selectedTopic.id}`,
+        },
+        () => void loadReplies(selectedTopic.id)
+      )
+      .subscribe();
+    return () => {
+      void client.removeChannel(channel);
+    };
+  }, [configured, loadReplies, open, selectedTopic, view]);
+
   const loadDashboard = useCallback(async () => {
     if (!supabase || !isModerator) return;
 
@@ -242,9 +442,12 @@ export default function CommunityHub({
       ratings,
       views,
       reports,
+      forumReportCount,
       recentTopics,
+      recentReplies,
       recentComments,
       recentReports,
+      recentForumReports,
     ] = await Promise.all([
       supabase.from("profiles").select("id", { count: "exact", head: true }),
       supabase.from("forum_topics").select("id", { count: "exact", head: true }),
@@ -260,8 +463,17 @@ export default function CommunityHub({
         .select("id", { count: "exact", head: true })
         .eq("status", "open"),
       supabase
+        .from("forum_reports")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "open"),
+      supabase
         .from("forum_topics")
         .select("id,title,body,status,created_at,profiles(display_name)")
+        .order("created_at", { ascending: false })
+        .limit(12),
+      supabase
+        .from("forum_replies")
+        .select("id,body,status,created_at,profiles(display_name)")
         .order("created_at", { ascending: false })
         .limit(12),
       supabase
@@ -277,6 +489,14 @@ export default function CommunityHub({
         .eq("status", "open")
         .order("created_at", { ascending: false })
         .limit(20),
+      supabase
+        .from("forum_reports")
+        .select(
+          "id,subject_type,subject_id,subject_title,subject_excerpt,reason,created_at"
+        )
+        .eq("status", "open")
+        .order("created_at", { ascending: false })
+        .limit(20),
     ]);
 
     setDashboardCounts({
@@ -285,7 +505,7 @@ export default function CommunityHub({
       comments: comments.count || 0,
       ratings: ratings.count || 0,
       views: views.count || 0,
-      reports: reports.count || 0,
+      reports: (reports.count || 0) + (forumReportCount.count || 0),
     });
 
     setModerationItems(
@@ -293,6 +513,10 @@ export default function CommunityHub({
         ...((recentTopics.data || []).map((item) => ({
           ...item,
           kind: "topic" as const,
+        })) as unknown as ModerationItem[]),
+        ...((recentReplies.data || []).map((item) => ({
+          ...item,
+          kind: "reply" as const,
         })) as unknown as ModerationItem[]),
         ...((recentComments.data || []).map((item) => ({
           ...item,
@@ -309,6 +533,9 @@ export default function CommunityHub({
     setCommentReports(
       (recentReports.data || []) as unknown as CommentReport[]
     );
+    setForumReports(
+      (recentForumReports.data || []) as unknown as ForumReport[]
+    );
   }, [isModerator]);
 
   useEffect(() => {
@@ -323,6 +550,85 @@ export default function CommunityHub({
       user?.email?.split("@")[0] ||
       "Читатель",
     [profileDisplayName, user]
+  );
+
+  const filteredTopics = useMemo(
+    () => {
+      const query = forumQuery.trim().toLocaleLowerCase("ru");
+      const result = topics.filter((topic) => {
+        const categoryMatches =
+          forumCategoryFilter === "all" || topic.category === forumCategoryFilter;
+        const queryMatches =
+          !query ||
+          `${topic.title} ${topic.body} ${topic.profiles?.display_name || ""}`
+            .toLocaleLowerCase("ru")
+            .includes(query);
+        return categoryMatches && queryMatches;
+      });
+      return [...result].sort((first, second) => {
+        if (forumSort === "popular") {
+          return (second.score || 0) - (first.score || 0);
+        }
+        if (forumSort === "active") {
+          return (
+            (second.forum_replies?.[0]?.count || 0) -
+            (first.forum_replies?.[0]?.count || 0)
+          );
+        }
+        return new Date(second.created_at).getTime() - new Date(first.created_at).getTime();
+      });
+    },
+    [forumCategoryFilter, forumQuery, forumSort, topics]
+  );
+
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    topics.forEach((topic) => {
+      counts.set(topic.category, (counts.get(topic.category) || 0) + 1);
+    });
+    return counts;
+  }, [topics]);
+
+  const favoriteWriterOptions = useMemo(() => {
+    const selectedCountry = countries.find(
+      (country) =>
+        (country.code || country.id) === favoriteCountryDraft ||
+        country.id === favoriteCountryDraft
+    );
+    if (!selectedCountry) return [];
+    return selectedCountry.writers
+      .map((writer) => ({
+        value: `${selectedCountry.id}:${writer.id}`,
+        label: writer.name || writer.fullName || "Автор",
+      }))
+      .sort((first, second) => first.label.localeCompare(second.label, "ru"));
+  }, [countries, favoriteCountryDraft]);
+
+  const countryOptions = useMemo(
+    () => [...countries].sort((first, second) => first.name.localeCompare(second.name, "ru")),
+    [countries]
+  );
+
+  const favoriteCountryLabel = useCallback(
+    (code: string) => {
+      const country = countries.find(
+        (item) => (item.code || item.id) === code || item.id === code
+      );
+      return country?.name || code;
+    },
+    [countries]
+  );
+
+  const favoriteWriterLabel = useCallback(
+    (identity: string) => {
+      const separator = identity.indexOf(":");
+      const countryId = separator >= 0 ? identity.slice(0, separator) : "";
+      const writerId = separator >= 0 ? identity.slice(separator + 1) : identity;
+      const country = countries.find((item) => item.id === countryId);
+      const writer = country?.writers.find((item) => item.id === writerId);
+      return writer?.name || writer?.fullName || writerId;
+    },
+    [countries]
   );
 
   if (!open) return null;
@@ -416,6 +722,147 @@ export default function CommunityHub({
     await loadReplies(selectedTopic.id);
   };
 
+  const voteForumItem = async (
+    subjectType: "topic" | "reply",
+    subjectId: string,
+    score: -1 | 1
+  ) => {
+    if (!supabase || !user) {
+      setView("account");
+      setMessage("Войдите, чтобы оценивать обсуждения.");
+      return;
+    }
+    setBusy(true);
+    setMessage("");
+    const result = await supabase.rpc("vote_forum_item", {
+      p_subject_type: subjectType,
+      p_subject_id: subjectId,
+      p_score: score,
+    });
+    setBusy(false);
+    if (result.error) {
+      setMessage(
+        result.error.code === "42883"
+          ? "Обновите схему сообщества: модуль оценок форума ещё не установлен."
+          : "Оценку не удалось сохранить. Попробуйте ещё раз."
+      );
+      return;
+    }
+    const nextScore = Number(result.data || 0);
+    if (subjectType === "topic") {
+      setSelectedTopic((current) =>
+        current?.id === subjectId ? { ...current, score: nextScore } : current
+      );
+      setTopics((current) =>
+        current.map((topic) =>
+          topic.id === subjectId ? { ...topic, score: nextScore } : topic
+        )
+      );
+    } else {
+      setReplies((current) =>
+        current.map((reply) =>
+          reply.id === subjectId ? { ...reply, score: nextScore } : reply
+        )
+      );
+    }
+  };
+
+  const uploadAvatar = async (file?: File) => {
+    if (!supabase || !user || !file) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setMessage("Используйте изображение JPG, PNG или WebP.");
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      setMessage("Размер аватара не должен превышать 2 МБ.");
+      return;
+    }
+    setBusy(true);
+    setMessage("");
+    const extension =
+      file.type === "image/png"
+        ? "png"
+        : file.type === "image/webp"
+          ? "webp"
+          : "jpg";
+    const path = `${user.id}/avatar.${extension}`;
+    const uploaded = await supabase.storage.from("avatars").upload(path, file, {
+      cacheControl: "3600",
+      contentType: file.type,
+      upsert: true,
+    });
+    if (uploaded.error) {
+      setBusy(false);
+      setMessage("Аватар не загрузился. Проверьте миграцию хранилища профилей.");
+      return;
+    }
+    const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data
+      .publicUrl;
+    const updated = await supabase
+      .from("profiles")
+      .update({ avatar_url: publicUrl, updated_at: new Date().toISOString() })
+      .eq("id", user.id);
+    setBusy(false);
+    if (updated.error) {
+      setMessage("Изображение загружено, но профиль не обновился.");
+      return;
+    }
+    setProfileAvatarUrl(`${publicUrl}?v=${Date.now()}`);
+    setMessage("Аватар обновлён.");
+  };
+
+  const saveReaderProfile = async () => {
+    if (!supabase || !user) return;
+    setBusy(true);
+    setMessage("");
+    const basic = await supabase
+      .from("profiles")
+      .update({
+        avatar_url: profileAvatarUrl.split("?v=")[0],
+        bio: profileBio.trim() || null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", user.id);
+    if (basic.error) {
+      setBusy(false);
+      setMessage("Профиль не удалось сохранить.");
+      return;
+    }
+    const extended = await supabase
+      .from("profiles")
+      .update({
+        favorite_country_codes: favoriteCountryCodes,
+        favorite_writer_ids: favoriteWriterIds,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", user.id);
+    setBusy(false);
+    setMessage(
+      extended.error
+        ? "Биография сохранена. Для подборок примените новую миграцию профиля."
+        : "Профиль и литературные интересы сохранены."
+    );
+  };
+
+  const addFavoriteCountry = () => {
+    if (!favoriteCountryDraft || favoriteCountryCodes.length >= 8) return;
+    setFavoriteCountryCodes((current) =>
+      current.includes(favoriteCountryDraft)
+        ? current
+        : [...current, favoriteCountryDraft]
+    );
+  };
+
+  const addFavoriteWriter = () => {
+    if (!favoriteWriterDraft || favoriteWriterIds.length >= 12) return;
+    setFavoriteWriterIds((current) =>
+      current.includes(favoriteWriterDraft)
+        ? current
+        : [...current, favoriteWriterDraft]
+    );
+    setFavoriteWriterDraft("");
+  };
+
   const moderate = async (
     item: ModerationItem,
     status: "published" | "hidden"
@@ -423,7 +870,11 @@ export default function CommunityHub({
     if (!supabase || !isModerator) return;
     setBusy(true);
     const table =
-      item.kind === "topic" ? "forum_topics" : "article_comments";
+      item.kind === "topic"
+        ? "forum_topics"
+        : item.kind === "reply"
+          ? "forum_replies"
+          : "article_comments";
     const { error } = await supabase.from(table).update({ status }).eq("id", item.id);
     setBusy(false);
     if (error) {
@@ -449,6 +900,50 @@ export default function CommunityHub({
       hideComment
         ? "Комментарий скрыт, жалоба закрыта."
         : "Комментарий оставлен, жалоба закрыта."
+    );
+    await loadDashboard();
+  };
+
+  const reportForumItem = async (
+    subjectType: "topic" | "reply",
+    subjectId: string
+  ) => {
+    if (!supabase || !user) {
+      setView("account");
+      setMessage("Войдите, чтобы передать публикацию модератору.");
+      return;
+    }
+    setBusy(true);
+    setMessage("");
+    const { error } = await supabase.rpc("report_forum_item", {
+      p_subject_type: subjectType,
+      p_subject_id: subjectId,
+      p_reason: "Пользователь просит редакцию проверить эту публикацию форума.",
+    });
+    setBusy(false);
+    setMessage(
+      error
+        ? "Жалобу не удалось отправить. Проверьте миграцию модерации форума."
+        : "Публикация передана редактору на проверку."
+    );
+  };
+
+  const resolveForumReport = async (reportId: string, hideItem: boolean) => {
+    if (!supabase || !isModerator) return;
+    setBusy(true);
+    const { error } = await supabase.rpc("resolve_forum_report", {
+      p_report_id: reportId,
+      p_hide_item: hideItem,
+    });
+    setBusy(false);
+    if (error) {
+      setMessage("Не удалось обработать жалобу форума.");
+      return;
+    }
+    setMessage(
+      hideItem
+        ? "Публикация форума скрыта, жалоба закрыта."
+        : "Публикация оставлена, жалоба закрыта."
     );
     await loadDashboard();
   };
@@ -655,6 +1150,49 @@ export default function CommunityHub({
               )}
             </div>
 
+            <div className="report-queue">
+              <header>
+                <div>
+                  <span className="section-kicker">Форум</span>
+                  <h3>Жалобы на темы и ответы</h3>
+                </div>
+                <span>{forumReports.length}</span>
+              </header>
+              {forumReports.length ? (
+                forumReports.map((report) => (
+                  <article key={report.id}>
+                    <div>
+                      <small>
+                        {report.subject_type === "topic" ? "Тема" : "Ответ"} ·{" "}
+                        {formatDate(report.created_at)}
+                      </small>
+                      <strong>{report.subject_title}</strong>
+                      <p>{report.subject_excerpt}</p>
+                      <em>{report.reason}</em>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() => void resolveForumReport(report.id, false)}
+                      >
+                        Оставить
+                      </button>
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() => void resolveForumReport(report.id, true)}
+                      >
+                        Скрыть
+                      </button>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <p>Открытых жалоб на форум нет.</p>
+              )}
+            </div>
+
             <div className="moderation-list">
               <header>
                 <h3>Последняя активность</h3>
@@ -665,7 +1203,11 @@ export default function CommunityHub({
                   <article key={`${item.kind}-${item.id}`}>
                     <div>
                       <small>
-                        {item.kind === "topic" ? "Форум" : "Комментарий"} ·{" "}
+                        {item.kind === "topic"
+                          ? "Тема форума"
+                          : item.kind === "reply"
+                            ? "Ответ форума"
+                            : "Комментарий"} ·{" "}
                         {item.profiles?.display_name || "Читатель"} ·{" "}
                         {formatDate(item.created_at)}
                       </small>
@@ -698,12 +1240,6 @@ export default function CommunityHub({
           <div className="account-view">
             <aside className="account-story">
               <div>
-                <span className="account-monogram" aria-hidden="true">
-                  <img
-                    src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
-                    alt=""
-                  />
-                </span>
                 <span className="section-kicker">Литературное сообщество</span>
                 <h2>Читайте глубже. Обсуждайте уважительно.</h2>
                 <p>
@@ -740,6 +1276,154 @@ export default function CommunityHub({
                     <dd>Участник клуба читателей</dd>
                   </div>
                 </dl>
+                <section className="reader-profile-editor">
+                  <header>
+                    <div className="reader-avatar">
+                      {profileAvatarUrl ? (
+                        <img src={profileAvatarUrl} alt={`Аватар ${readerName}`} />
+                      ) : (
+                        <span aria-hidden="true">
+                          {readerName.slice(0, 1).toLocaleUpperCase("ru")}
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <span className="section-kicker">Профиль читателя</span>
+                      <h3>{readerName}</h3>
+                      <small>Репутация в клубе · {profileReputation}</small>
+                    </div>
+                    <label className="reader-avatar-upload">
+                      <span>{busy ? "Загрузка…" : "Сменить аватар"}</span>
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        disabled={busy}
+                        onChange={(event) =>
+                          void uploadAvatar(event.target.files?.[0])
+                        }
+                      />
+                    </label>
+                  </header>
+                  <label>
+                    О себе
+                    <textarea
+                      value={profileBio}
+                      maxLength={1000}
+                      placeholder="Несколько слов о ваших читательских интересах"
+                      onChange={(event) => setProfileBio(event.target.value)}
+                    />
+                    <small>{profileBio.length} / 1000</small>
+                  </label>
+                  <div className="reader-preferences">
+                    <section>
+                      <span>Любимые литературные страны</span>
+                      <div>
+                        <select
+                          value={favoriteCountryDraft}
+                          onChange={(event) => {
+                            setFavoriteCountryDraft(event.target.value);
+                            setFavoriteWriterDraft("");
+                          }}
+                        >
+                          <option value="">Выберите страну</option>
+                          {countryOptions.map((country) => (
+                            <option
+                              value={country.code || country.id}
+                              key={country.id}
+                            >
+                              {country.name}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          disabled={
+                            !favoriteCountryDraft ||
+                            favoriteCountryCodes.includes(favoriteCountryDraft) ||
+                            favoriteCountryCodes.length >= 8
+                          }
+                          onClick={addFavoriteCountry}
+                        >
+                          Добавить
+                        </button>
+                      </div>
+                      <div className="reader-preference-chips">
+                        {favoriteCountryCodes.map((code) => (
+                          <button
+                            type="button"
+                            key={code}
+                            onClick={() =>
+                              setFavoriteCountryCodes((current) =>
+                                current.filter((item) => item !== code)
+                              )
+                            }
+                            title="Убрать из подборки"
+                          >
+                            {favoriteCountryLabel(code)} <span>×</span>
+                          </button>
+                        ))}
+                      </div>
+                    </section>
+                    <section>
+                      <span>Любимые писатели</span>
+                      <div>
+                        <select
+                          value={favoriteWriterDraft}
+                          disabled={!favoriteWriterOptions.length}
+                          onChange={(event) =>
+                            setFavoriteWriterDraft(event.target.value)
+                          }
+                        >
+                          <option value="">
+                            {favoriteCountryDraft
+                              ? "Выберите писателя"
+                              : "Сначала выберите страну"}
+                          </option>
+                          {favoriteWriterOptions.map((writer) => (
+                            <option value={writer.value} key={writer.value}>
+                              {writer.label}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          disabled={
+                            !favoriteWriterDraft ||
+                            favoriteWriterIds.includes(favoriteWriterDraft) ||
+                            favoriteWriterIds.length >= 12
+                          }
+                          onClick={addFavoriteWriter}
+                        >
+                          Добавить
+                        </button>
+                      </div>
+                      <div className="reader-preference-chips">
+                        {favoriteWriterIds.map((identity) => (
+                          <button
+                            type="button"
+                            key={identity}
+                            onClick={() =>
+                              setFavoriteWriterIds((current) =>
+                                current.filter((item) => item !== identity)
+                              )
+                            }
+                            title="Убрать из подборки"
+                          >
+                            {favoriteWriterLabel(identity)} <span>×</span>
+                          </button>
+                        ))}
+                      </div>
+                    </section>
+                  </div>
+                  <button
+                    className="reader-profile-save"
+                    type="button"
+                    disabled={busy}
+                    onClick={() => void saveReaderProfile()}
+                  >
+                    Сохранить профиль
+                  </button>
+                </section>
                 {readingLibrary}
                 <div className="account-actions">
                   <button type="button" onClick={() => setView("forum")}>
@@ -908,22 +1592,145 @@ export default function CommunityHub({
               )}
             </div>
 
+            {!selectedTopic && (
+              <>
+                <nav className="forum-categories" aria-label="Разделы форума">
+                  <button
+                    className={forumCategoryFilter === "all" ? "is-active" : ""}
+                    type="button"
+                    onClick={() => setForumCategoryFilter("all")}
+                  >
+                    <span aria-hidden="true">✦</span>
+                    <strong>Все обсуждения</strong>
+                    <small>{topics.length}</small>
+                  </button>
+                  {forumCategories.map((category) => (
+                    <button
+                      className={
+                        forumCategoryFilter === category.label ? "is-active" : ""
+                      }
+                      type="button"
+                      key={category.label}
+                      onClick={() => setForumCategoryFilter(category.label)}
+                    >
+                      <span aria-hidden="true">{category.symbol}</span>
+                      <strong>{category.label}</strong>
+                      <small>{categoryCounts.get(category.label) || 0}</small>
+                      <em>{category.description}</em>
+                    </button>
+                  ))}
+                </nav>
+                <div className="forum-discovery-controls">
+                  <label>
+                    <span>Найти обсуждение</span>
+                    <input
+                      type="search"
+                      value={forumQuery}
+                      placeholder="Книга, автор, тема или читатель"
+                      onChange={(event) => setForumQuery(event.target.value)}
+                    />
+                  </label>
+                  <label>
+                    <span>Порядок</span>
+                    <select
+                      value={forumSort}
+                      onChange={(event) =>
+                        setForumSort(event.target.value as typeof forumSort)
+                      }
+                    >
+                      <option value="new">Сначала новые</option>
+                      <option value="popular">По рейтингу</option>
+                      <option value="active">По числу ответов</option>
+                    </select>
+                  </label>
+                  <small>
+                    Найдено: {filteredTopics.length} из {topics.length}
+                  </small>
+                </div>
+              </>
+            )}
+
             {selectedTopic ? (
               <div className="topic-thread">
                 <article>
+                  <ForumAuthor profile={selectedTopic.profiles} />
                   <small>
                     {selectedTopic.category} · {formatDate(selectedTopic.created_at)}
                   </small>
                   <p>{selectedTopic.body}</p>
+                  <button
+                    className="forum-report-button"
+                    type="button"
+                    disabled={busy || user?.id === selectedTopic.author_id}
+                    onClick={() =>
+                      void reportForumItem("topic", selectedTopic.id)
+                    }
+                  >
+                    Передать модератору
+                  </button>
+                  <div className="forum-vote" aria-label="Оценка обсуждения">
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() =>
+                        void voteForumItem("topic", selectedTopic.id, 1)
+                      }
+                      aria-label="Поддержать обсуждение"
+                    >
+                      ↑
+                    </button>
+                    <strong>{selectedTopic.score || 0}</strong>
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() =>
+                        void voteForumItem("topic", selectedTopic.id, -1)
+                      }
+                      aria-label="Снизить оценку обсуждения"
+                    >
+                      ↓
+                    </button>
+                  </div>
                 </article>
                 <div className="thread-replies">
                   {replies.map((reply) => (
                     <article key={reply.id}>
-                      <strong>
-                        {reply.profiles?.display_name || "Читатель"}
-                      </strong>
-                      <small>{formatDate(reply.created_at)}</small>
+                      <header>
+                        <ForumAuthor profile={reply.profiles} />
+                        <small>{formatDate(reply.created_at)}</small>
+                      </header>
                       <p>{reply.body}</p>
+                      <button
+                        className="forum-report-button"
+                        type="button"
+                        disabled={busy || user?.id === reply.author_id}
+                        onClick={() => void reportForumItem("reply", reply.id)}
+                      >
+                        Передать модератору
+                      </button>
+                      <div className="forum-vote" aria-label="Оценка ответа">
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() =>
+                            void voteForumItem("reply", reply.id, 1)
+                          }
+                          aria-label="Полезный ответ"
+                        >
+                          ↑
+                        </button>
+                        <strong>{reply.score || 0}</strong>
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() =>
+                            void voteForumItem("reply", reply.id, -1)
+                          }
+                          aria-label="Снизить оценку ответа"
+                        >
+                          ↓
+                        </button>
+                      </div>
                     </article>
                   ))}
                 </div>
@@ -954,6 +1761,7 @@ export default function CommunityHub({
                 {composeOpen && (
                   <div className="topic-compose">
                     <select
+                      aria-label="Раздел форума"
                       value={topicCategory}
                       onChange={(event) => setTopicCategory(event.target.value)}
                     >
@@ -962,12 +1770,14 @@ export default function CommunityHub({
                       ))}
                     </select>
                     <input
+                      aria-label="Название обсуждения"
                       value={topicTitle}
                       onChange={(event) => setTopicTitle(event.target.value)}
                       placeholder="Название обсуждения"
                       maxLength={140}
                     />
                     <textarea
+                      aria-label="Текст обсуждения"
                       value={topicBody}
                       onChange={(event) => setTopicBody(event.target.value)}
                       placeholder="Сформулируйте вопрос или тему…"
@@ -985,8 +1795,8 @@ export default function CommunityHub({
                   </div>
                 )}
                 <div className="topic-list">
-                  {topics.length ? (
-                    topics.map((topic) => (
+                  {filteredTopics.length ? (
+                    filteredTopics.map((topic) => (
                       <button
                         type="button"
                         key={topic.id}
@@ -995,19 +1805,30 @@ export default function CommunityHub({
                         <span>{topic.category}</span>
                         <strong>{topic.title}</strong>
                         <p>{topic.body}</p>
-                        <small>
-                          {topic.profiles?.display_name || "Читатель"} ·{" "}
-                          {formatDate(topic.created_at)} ·{" "}
-                          {topic.forum_replies?.[0]?.count || 0} ответов
-                        </small>
+                        <footer>
+                          <ForumAuthor profile={topic.profiles} />
+                          <small>
+                            {formatDate(topic.created_at)} ·{" "}
+                            {topic.forum_replies?.[0]?.count || 0}{" "}
+                            {pluralRu(topic.forum_replies?.[0]?.count || 0, [
+                              "ответ",
+                              "ответа",
+                              "ответов",
+                            ])}{" "}
+                            · рейтинг {topic.score || 0}
+                          </small>
+                        </footer>
                       </button>
                     ))
                   ) : (
                     <div className="forum-empty">
                       <strong>Первое обсуждение ещё не открыто.</strong>
                       <p>
-                        Начните разговор о книге, авторе, переводе или
-                        экранизации.
+                        {forumCategoryFilter === "all"
+                          ? forumQuery.trim()
+                            ? "Измените запрос или выберите другой раздел форума."
+                            : "Начните разговор о книге, авторе, переводе или экранизации."
+                          : "В этой ветке пока нет тем. Откройте первое содержательное обсуждение."}
                       </p>
                     </div>
                   )}
@@ -1017,7 +1838,11 @@ export default function CommunityHub({
           </div>
         )}
 
-        {message && <p className="community-message">{message}</p>}
+        {message && (
+          <p className="community-message" role="status" aria-live="polite">
+            {message}
+          </p>
+        )}
       </section>
     </div>
   );

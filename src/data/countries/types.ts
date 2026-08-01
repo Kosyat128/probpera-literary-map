@@ -1,6 +1,7 @@
 export type WorkProfile = {
   id: string;
   title: string;
+  alternateTitles?: string[];
   originalTitle?: string;
   firstPublished?: number;
   originalLanguage?: string;
@@ -8,6 +9,7 @@ export type WorkProfile = {
   tags?: string[];
   description?: string;
   coverUrl?: string;
+  coverThumbnailUrl?: string;
   coverSourceUrl?: string;
   coverRights?: {
     status:
