@@ -75,6 +75,16 @@ jobs:
         if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v6
 
+      - name: Configure probpera.ru custom domain
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api --method PUT
+          "repos/${GITHUB_REPOSITORY}/pages"
+          -f cname=probpera.ru
+          -f build_type=workflow
+
       - name: Upload production artifact
         if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/upload-pages-artifact@v5
