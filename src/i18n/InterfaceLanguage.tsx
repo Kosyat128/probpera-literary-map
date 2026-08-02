@@ -438,6 +438,11 @@ const englishInterfaceText: Record<string, string> = {
   "Показать ещё 12 материалов": "Show 12 more publications",
   "Открываем режим чтения…": "Opening the reader…",
   Новое: "New",
+  "Статья по теме": "Related article",
+  "Редакционный маршрут": "Editorial reading route",
+  "Что читать дальше": "Continue reading",
+  "Материалы подобраны по рубрике, теме и смысловым связям этой публикации.":
+    "Recommendations are selected by section, subject and thematic links to this article.",
   "События на каждый день": "Events for every day",
 };
 

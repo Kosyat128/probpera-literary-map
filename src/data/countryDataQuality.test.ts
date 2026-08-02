@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import { buildBookArchive } from "./bookArchive";
+import { calculateArchiveStatistics } from "./archiveStatistics";
 import { countries } from "./countries";
 
 const currentYear = new Date().getUTCFullYear();
@@ -135,6 +136,31 @@ describe("качество основной базы стран", () => {
       ]);
 
     expect(missing).toEqual([]);
+  });
+
+  it("не публикует карточку писателя с отсутствующим локальным портретом", () => {
+    const missing = countries.flatMap((country) =>
+      country.writers
+        .filter(
+          (writer) =>
+            writer.portrait && !localPublicAssetExists(writer.portrait)
+        )
+        .map((writer) => `${country.id}:${writer.id}:${writer.portrait}`)
+    );
+
+    expect(missing).toEqual([]);
+  });
+
+  it("считает уникальных людей и произведения, а не повторные связи", () => {
+    const statistics = calculateArchiveStatistics(countries);
+
+    expect(statistics.countries).toBe(200);
+    expect(statistics.uniqueWriters).toBeLessThanOrEqual(
+      statistics.writerRecords
+    );
+    expect(statistics.uniqueWorks).toBeLessThanOrEqual(statistics.workRecords);
+    expect(statistics.uniqueWriters).toBeGreaterThan(0);
+    expect(statistics.uniqueWorks).toBeGreaterThan(0);
   });
 
   it("не помечает проверенной книгу без библиографического источника", () => {

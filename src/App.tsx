@@ -15,6 +15,7 @@ import GlobalSearch from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
+import WriterPortrait from "./components/WriterPortrait";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -24,10 +25,10 @@ import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
 import {
   buildBookArchive,
-  getWriterWorkTitles,
   isCoverDisplayAllowed,
   type BookArchiveEntry,
 } from "./data/bookArchive";
+import { calculateArchiveStatistics } from "./data/archiveStatistics";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
@@ -225,6 +226,7 @@ const sectionLinks = [
     href: "#atlas",
     image:
       "https://static.tildacdn.com/tild6138-3239-4335-b166-643935623330/123231.png",
+    articleSections: ["writers-world"] as const,
   },
   {
     id: "books",
@@ -234,6 +236,7 @@ const sectionLinks = [
     href: "#books",
     image:
       "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
+    articleSections: ["book-opinions", "book-guides"] as const,
   },
   {
     id: "calendar",
@@ -250,6 +253,7 @@ const sectionLinks = [
     copy: "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.",
     href: "#authors",
     image: "brand/chekhov.png",
+    articleSections: ["writers-world"] as const,
     metric: "writers" as const,
   },
   {
@@ -328,14 +332,6 @@ const verifiedBookFacts = [
       "https://www.bl.uk/stories/blogs/posts/spine-tingling-stories-in-the-blood-curdling-british-library",
   },
 ];
-
-const portraitSourceLinks: Record<string, string> = {
-  dostoevsky:
-    "https://commons.wikimedia.org/wiki/File:Fyodor_Dostoyevsky_(Laufert,_1872).jpg",
-  tolstoy: "https://commons.wikimedia.org/wiki/File:Leo_Tolstoj.jpg",
-  chekhov: "https://commons.wikimedia.org/wiki/File:Anton_Chekhov_1889.png",
-  william_shakespeare: "https://commons.wikimedia.org/wiki/File:Shakespeare.jpg",
-};
 
 function normalizeSearch(value: string) {
   return value.trim().toLocaleLowerCase("ru");
@@ -423,15 +419,12 @@ export default function App() {
     return () => window.removeEventListener("keydown", openSearch);
   }, []);
 
-  const allWriters = useMemo(
-    () => countryArchive.flatMap((country) => country.writers),
+  const archiveStatistics = useMemo(
+    () => calculateArchiveStatistics(countryArchive),
     [countryArchive]
   );
-  const totalWriters = allWriters.length;
-  const totalWorks = useMemo(
-    () => new Set(allWriters.flatMap(getWriterWorkTitles)).size,
-    [allWriters]
-  );
+  const totalWriters = archiveStatistics.uniqueWriters;
+  const totalWorks = archiveStatistics.uniqueWorks;
   const bookArchive = useMemo(
     () => buildBookArchive(countryArchive),
     [countryArchive]
@@ -629,7 +622,8 @@ export default function App() {
         <div aria-label={t("Проба Пера в цифрах")}>
           <span>{number(articleCatalog.length)} {t("публикаций")}</span>
           <span>
-            {countryArchive.length ? number(countryArchive.length) : "…"} {t("стран")}
+            {archiveStatistics.countries ? number(archiveStatistics.countries) : "…"}{" "}
+            {t("стран")}
           </span>
         </div>
       </div>
@@ -794,7 +788,9 @@ export default function App() {
             <div className="hero-proof">
               <span>
                 <strong>
-                  {countryArchive.length ? number(countryArchive.length) : "…"}
+                  {archiveStatistics.countries
+                    ? number(archiveStatistics.countries)
+                    : "…"}
                 </strong>{" "}
                 {t("стран")}
               </span>
@@ -1428,13 +1424,15 @@ export default function App() {
               </span>
               <span>
                 <strong>
-                  {bookArchive.length ? number(bookArchive.length) : "—"}
+                  {totalWorks ? number(totalWorks) : "—"}
                 </strong>
                 <small>{t("произведений в архиве")}</small>
               </span>
               <span>
                 <strong>
-                  {countryArchive.length ? number(countryArchive.length) : "—"}
+                  {archiveStatistics.countries
+                    ? number(archiveStatistics.countries)
+                    : "—"}
                 </strong>
                 <small>{t("стран на карте")}</small>
               </span>
@@ -1486,10 +1484,9 @@ export default function App() {
                   type="button"
                   onClick={() => selectCountry(country, true, writer)}
                 >
-                  <img
-                    src={assetUrl(writer.portrait || "")}
-                    alt={writerName(writer)}
-                    loading="lazy"
+                  <WriterPortrait
+                    writer={writer}
+                    className="author-showcase-portrait"
                   />
                   <span>
                     <small>{countryName(country.code, country.name)}</small>
@@ -1497,14 +1494,16 @@ export default function App() {
                     <em>{writer.years}</em>
                   </span>
                 </button>
-                <a
-                  href={portraitSourceLinks[writer.id]}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Источник портрета: ${writerName(writer)}`}
-                >
-                  {t("Источник изображения")}
-                </a>
+                {writer.portraitSourceUrl && (
+                  <a
+                    href={writer.portraitSourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Источник портрета: ${writerName(writer)}`}
+                  >
+                    {t("Источник изображения")}
+                  </a>
+                )}
               </article>
             ))}
           </div>
@@ -1529,8 +1528,8 @@ export default function App() {
           >
             <SectionsDirectory
               sections={sectionLinks}
-              countryCount={countryArchive.length}
-              bookCount={bookArchive.length}
+              countryCount={archiveStatistics.countries}
+              bookCount={totalWorks}
               writerCount={totalWriters}
               onAction={openCommunity}
             />

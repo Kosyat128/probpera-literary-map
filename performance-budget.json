@@ -1,7 +1,12 @@
 {
-  "distTotalBytes": 31457280,
-  "largestJavaScriptBytes": 1572864,
+  "distTotalBytes": 73400320,
+  "largestJavaScriptBytes": 2097152,
+  "largestJavaScriptGzipBytes": 409600,
   "mainJavaScriptBytes": 716800,
+  "mainJavaScriptGzipBytes": 225280,
   "globeTextureBytes": 3355443,
+  "writerPortraitTotalBytes": 37748736,
+  "writerPortraitAverageBytes": 36864,
+  "writerPortraitMaximumBytes": 153600,
   "individualImageBytes": 2621440
 }

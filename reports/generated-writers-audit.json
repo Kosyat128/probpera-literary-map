@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T09:15:42.888Z",
+  "generatedAt": "2026-08-02T17:08:16.993Z",
   "summary": {
     "records": 2356,
     "countryGroups": 128,
@@ -375,7 +375,7 @@
     {
       "countryId": "russia",
       "id": "wikidata-q118449",
-      "fullName": "Сергей Стефанович Сухинов",
+      "fullName": "Сухинов, Сергей Стефанович",
       "wikidataId": "Q118449",
       "sourceUrl": "https://www.wikidata.org/wiki/Q118449",
       "issues": []

@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -47,7 +48,33 @@ function issuesForWriter(countryId, writer) {
     issues.push("Источник не связан с редакционной карточкой");
   }
   if (writer.portrait) {
-    issues.push("Непроверенный портрет не должен публиковаться");
+    const portraitPath = String(writer.portrait);
+    const portraitRights = writer.portraitRights || {};
+    const isLocalWebp = /^assets\/writer-portraits\/[a-z0-9_-]+\.webp$/iu.test(
+      portraitPath
+    );
+    const portraitExists =
+      isLocalWebp && existsSync(path.join(projectRoot, "public", portraitPath));
+    const sourceIsCommons = /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/iu.test(
+      writer.portraitSourceUrl || ""
+    );
+    const rightsAreReviewed = ["public-domain", "licensed"].includes(
+      portraitRights.status
+    );
+    const sourceMatchesRights =
+      portraitRights.sourceUrl === writer.portraitSourceUrl;
+
+    if (
+      !portraitExists ||
+      !writer.portraitAlt ||
+      !sourceIsCommons ||
+      !rightsAreReviewed ||
+      !portraitRights.licenseName ||
+      !portraitRights.checkedAt ||
+      !sourceMatchesRights
+    ) {
+      issues.push("Портрет не прошёл локальную, лицензионную или атрибуционную проверку");
+    }
   }
   if (
     writer.portraitCandidateUrl &&

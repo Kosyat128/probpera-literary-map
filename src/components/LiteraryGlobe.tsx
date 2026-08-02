@@ -23,6 +23,7 @@ import {
 } from "../data/nobel";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import CountryFlagIcon from "./CountryFlagIcon";
+import WriterPortrait from "./WriterPortrait";
 import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
 
@@ -1541,9 +1542,11 @@ export default function LiteraryGlobe({
 
       {hoveredLaureate ? (
         <div className="globe-country-label globe-laureate-label" role="status">
-          <span className="globe-laureate-medal" aria-hidden="true">
-            ✦
-          </span>
+          <WriterPortrait
+            writer={hoveredLaureate.writer}
+            className="globe-laureate-portrait"
+            decorative
+          />
           <div>
             <span>{writerDisplayName(hoveredLaureate.writer)}</span>
             <small>
@@ -1571,6 +1574,7 @@ export default function LiteraryGlobe({
             className="globe-country-label-flag"
             size={38}
             decorative
+            priority
           />
           <div>
             <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>

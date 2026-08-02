@@ -725,7 +725,17 @@ export const russia: Country = {
         lat: 55.7558,
         lng: 37.6173
       },
-      portrait: "brand/dostoevsky.jpg",
+      portrait: "assets/writer-portraits/q991.webp",
+      portraitAlt: "Фёдор Михайлович Достоевский, фотография В. Я. Лауфферта, 1872 год",
+      portraitSourceUrl: "https://commons.wikimedia.org/wiki/File:Fyodor_Dostoyevsky_(Laufert,_1872).jpg",
+      portraitRights: {
+        status: "public-domain",
+        licenseName: "Public Domain Mark 1.0",
+        licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+        creator: "В. Я. Лауфферт",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Fyodor_Dostoyevsky_(Laufert,_1872).jpg",
+        checkedAt: "2026-08-02"
+      },
       bio: "Фёдор Достоевский пришёл в литературу как внимательный исследователь человека, оказавшегося перед нравственным выбором. После ареста по делу петрашевцев, инсценировки казни, каторги и ссылки его проза стала особенно напряжённым разговором о свободе, вере, вине и сострадании. В больших романах писателя сталкиваются не готовые ответы, а самостоятельные голоса героев — поэтому «Преступление и наказание», «Идиот» и «Братья Карамазовы» продолжают звучать современно и влиять на литературу, театр, философию и психологию.",
       works: [
         "Идиот",
@@ -799,7 +809,17 @@ export const russia: Country = {
         lat: 54.0746,
         lng: 37.5282
       },
-      portrait: "brand/tolstoy.jpg",
+      portrait: "assets/writer-portraits/q7243.webp",
+      portraitAlt: "Лев Николаевич Толстой, фотография 1897 года или ранее",
+      portraitSourceUrl: "https://commons.wikimedia.org/wiki/File:Leo_Tolstoj.jpg",
+      portraitRights: {
+        status: "public-domain",
+        licenseName: "Public Domain Mark 1.0",
+        licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+        creator: "Неизвестный фотограф",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Leo_Tolstoj.jpg",
+        checkedAt: "2026-08-02"
+      },
       bio: "Лев Толстой превратил семейную хронику и исторический роман в масштабное исследование человеческой жизни. В «Войне и мире» частная судьба существует внутри движения истории, а в «Анне Карениной» общественный порядок раскрывается через любовь, одиночество и цену личного выбора. После духовного кризиса писатель всё чаще обращался к вопросам веры, непротивления насилию и нравственной ответственности. Его художественная точность, внимание к внутренней речи и способность видеть человека в постоянном изменении повлияли на прозу всего XX века.",
       works: [
         "Анна Каренина",
@@ -874,7 +894,17 @@ export const russia: Country = {
         lat: 47.2362,
         lng: 38.8969
       },
-      portrait: "brand/chekhov.png",
+      portrait: "assets/writer-portraits/q5682.webp",
+      portraitAlt: "Антон Павлович Чехов, портрет работы Осипа Браза, 1898 год",
+      portraitSourceUrl: "https://commons.wikimedia.org/wiki/File:Chekhov_1898_by_Osip_Braz.jpg",
+      portraitRights: {
+        status: "public-domain",
+        licenseName: "Public Domain Mark 1.0",
+        licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+        creator: "Осип Эммануилович Браз",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Chekhov_1898_by_Osip_Braz.jpg",
+        checkedAt: "2026-08-02"
+      },
       bio: "Антон Чехов совмещал литературу с медициной и смотрел на человека без назидательности, но с редкой точностью и сочувствием. Он обновил короткий рассказ, научив его говорить через паузы, детали и недосказанность, а пьесы «Чайка», «Три сестры» и «Вишнёвый сад» изменили язык мирового театра. В Мелихове Чехов не только написал десятки произведений, но и бесплатно лечил крестьян, участвовал в борьбе с холерой и строил школы. За внешней простотой его прозы всегда скрывается сложная жизнь, в которой смешное соседствует с тревожным и трагическим.",
       works: [
         "Три сестры",

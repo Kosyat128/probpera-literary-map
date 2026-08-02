@@ -14,6 +14,7 @@ import { getWriterWorkTitles } from "../data/bookArchive";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useSubscriptions } from "../hooks/useSubscriptions";
 import BrandCloseIcon from "./BrandCloseIcon";
+import WriterPortrait from "./WriterPortrait";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
 
@@ -28,21 +29,6 @@ type WriterPanelProps = {
 
 function getWriterName(writer: Writer) {
   return writer.name || writer.fullName || "Неизвестный автор";
-}
-
-function getInitials(writer: Writer) {
-  return getWriterName(writer)
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
-function resolvePortrait(source?: string) {
-  if (!source) return "";
-  if (/^(https?:|data:)/.test(source)) return source;
-  return `${import.meta.env.BASE_URL}${source.replace(/^\/+/, "")}`;
 }
 
 function getWriterYear(writer: Writer) {
@@ -218,6 +204,7 @@ export default function WriterPanel({
           code={country.code}
           countryName={country.name}
           size={52}
+          priority
         />
         <div>
           <h2>{countryName(country.code, country.name)}</h2>
@@ -347,19 +334,11 @@ export default function WriterPanel({
                 type="button"
                 onClick={() => chooseWriter(writer)}
               >
-                <span className="writer-portrait">
-                  <span>{getInitials(writer)}</span>
-                  {writer.portrait && (
-                    <img
-                      src={resolvePortrait(writer.portrait)}
-                      alt=""
-                      loading="lazy"
-                      onError={(event) => {
-                        event.currentTarget.style.display = "none";
-                      }}
-                    />
-                  )}
-                </span>
+                <WriterPortrait
+                  writer={writer}
+                  className="writer-portrait"
+                  decorative
+                />
                 <span className="writer-copy">
                   <strong>{getWriterName(writer)}</strong>
                   <small>
@@ -381,27 +360,35 @@ export default function WriterPanel({
             <h3>{t("Карточка автора")}</h3>
           </div>
 
-          <span className="writer-era">
-            {activeWriter.literaryEra ||
-              activeWriter.movement ||
-              activeWriter.tags?.[0] ||
-              t("Литературная традиция")}
-          </span>
-          {activeWriter.editorial?.status === "verified" && (
-            <span className="editorial-badge">{t("Проверено редакцией")}</span>
-          )}
-          {activeWriter.editorial?.status === "reviewed" && (
-            <span className="editorial-badge is-reviewed">
-              {t("Редакционная карточка")}
-            </span>
-          )}
-          {activeWriter.editorial?.status === "draft" && (
-            <span className="editorial-badge is-draft">
-              {t("Справочная карточка · требует расширения")}
-            </span>
-          )}
-          <h4>{getWriterName(activeWriter)}</h4>
-          <p className="writer-years">{activeWriter.years}</p>
+          <div className="writer-detail-heading">
+            <WriterPortrait
+              writer={activeWriter}
+              className="writer-detail-portrait"
+            />
+            <div>
+              <span className="writer-era">
+                {activeWriter.literaryEra ||
+                  activeWriter.movement ||
+                  activeWriter.tags?.[0] ||
+                  t("Литературная традиция")}
+              </span>
+              {activeWriter.editorial?.status === "verified" && (
+                <span className="editorial-badge">{t("Проверено редакцией")}</span>
+              )}
+              {activeWriter.editorial?.status === "reviewed" && (
+                <span className="editorial-badge is-reviewed">
+                  {t("Редакционная карточка")}
+                </span>
+              )}
+              {activeWriter.editorial?.status === "draft" && (
+                <span className="editorial-badge is-draft">
+                  {t("Справочная карточка · требует расширения")}
+                </span>
+              )}
+              <h4>{getWriterName(activeWriter)}</h4>
+              <p className="writer-years">{activeWriter.years}</p>
+            </div>
+          </div>
           <button
             className={`archive-subscribe is-writer${activeWriterSubscribed ? " is-active" : ""}`}
             type="button"

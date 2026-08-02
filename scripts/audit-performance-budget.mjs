@@ -1,5 +1,6 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
+import { gzipSync } from "node:zlib";
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
@@ -30,6 +31,9 @@ const failures = [];
 const total = measured.reduce((sum, item) => sum + item.bytes, 0);
 const scripts = measured.filter((item) => item.relative.endsWith(".js"));
 const images = measured.filter((item) => /\.(?:avif|jpe?g|png|webp)$/iu.test(item.relative));
+const writerPortraits = images.filter((item) =>
+  item.relative.startsWith("assets/writer-portraits/")
+);
 const largestScript = scripts.toSorted((a, b) => b.bytes - a.bytes)[0];
 const mainScript = scripts
   .filter((item) => /^assets\/index-/u.test(item.relative))
@@ -43,6 +47,25 @@ const oversizedImages = images.filter(
     item.bytes > budget.individualImageBytes
 );
 
+async function compressedBytes(item) {
+  if (!item) return 0;
+  return gzipSync(await readFile(item.file), { level: 9 }).byteLength;
+}
+
+const writerPortraitTotal = writerPortraits.reduce(
+  (sum, item) => sum + item.bytes,
+  0
+);
+const writerPortraitAverage = writerPortraits.length
+  ? Math.ceil(writerPortraitTotal / writerPortraits.length)
+  : 0;
+const writerPortraitMaximum = writerPortraits.reduce(
+  (maximum, item) => Math.max(maximum, item.bytes),
+  0
+);
+const largestScriptGzip = await compressedBytes(largestScript);
+const mainScriptGzip = await compressedBytes(mainScript);
+
 function enforce(label, actual, limit) {
   const ok = actual <= limit;
   console.log(`${ok ? "PASS" : "FAIL"} ${label}: ${actual} / ${limit} bytes`);
@@ -51,8 +74,13 @@ function enforce(label, actual, limit) {
 
 enforce("dist total", total, budget.distTotalBytes);
 if (largestScript) enforce(`largest JS (${largestScript.relative})`, largestScript.bytes, budget.largestJavaScriptBytes);
+if (largestScript) enforce(`largest JS gzip (${largestScript.relative})`, largestScriptGzip, budget.largestJavaScriptGzipBytes);
 if (mainScript) enforce(`main JS (${mainScript.relative})`, mainScript.bytes, budget.mainJavaScriptBytes);
+if (mainScript) enforce(`main JS gzip (${mainScript.relative})`, mainScriptGzip, budget.mainJavaScriptGzipBytes);
 if (globeTexture) enforce("antique globe texture", globeTexture.bytes, budget.globeTextureBytes);
+enforce("writer portraits total", writerPortraitTotal, budget.writerPortraitTotalBytes);
+enforce("writer portrait average", writerPortraitAverage, budget.writerPortraitAverageBytes);
+enforce("writer portrait maximum", writerPortraitMaximum, budget.writerPortraitMaximumBytes);
 for (const image of oversizedImages) {
   failures.push(`oversized image ${image.relative}`);
   console.error(`FAIL oversized image ${image.relative}: ${image.bytes} bytes`);

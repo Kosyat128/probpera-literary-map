@@ -2,6 +2,7 @@ import type { WriterProfile as Writer } from "../data/countries/types";
 import { getWriterWorkTitles } from "../data/bookArchive";
 import { formatDate } from "../utils/formatDate";
 import { resolveRelatedWriters } from "../utils/resolveRelatedWriters";
+import WriterPortrait from "./WriterPortrait";
 
 type WriterProfileProps = {
   writer: Writer;
@@ -34,10 +35,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       padding: "24px",
       color: "#35205F"
     }}>
-      {writer.portrait && (
-        <img src={writer.portrait} alt={writer.name || writer.fullName}
-          style={{ width: "220px", height: "280px", objectFit: "cover", borderRadius: "14px" }} />
-      )}
+      <WriterPortrait writer={writer} className="writer-profile-portrait" />
 
       <h1>{writer.name || writer.fullName}</h1>
 

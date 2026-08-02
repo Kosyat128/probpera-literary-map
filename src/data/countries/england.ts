@@ -248,7 +248,17 @@ export const england: Country = {
         lat: 52.1917,
         lng: -1.708
       },
-      portrait: "brand/shakespeare.jpg",
+      portrait: "assets/writer-portraits/q692.webp",
+      portraitAlt: "Уильям Шекспир, Чандосский портрет",
+      portraitSourceUrl: "https://commons.wikimedia.org/wiki/File:Shakespeare.jpg",
+      portraitRights: {
+        status: "public-domain",
+        licenseName: "Public Domain Mark 1.0",
+        licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+        creator: "Неизвестный художник; Чандосский портрет",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Shakespeare.jpg",
+        checkedAt: "2026-08-02"
+      },
       bio: "Уильям Шекспир вырос в Стратфорде-на-Эйвоне, а профессиональную жизнь связал с лондонским театром — как актёр, драматург и совладелец ведущей труппы своего времени. Его пьесы соединяют сценическую энергию, поэтическую речь и необычайное понимание человеческих противоречий. Трагедии, комедии, исторические хроники и сонеты пережили свою эпоху не потому, что дают простые ответы, а потому, что каждый раз заново ставят вопросы о власти, любви, ревности, памяти и свободе.",
       works: [
         "Ромео и Джульетта",

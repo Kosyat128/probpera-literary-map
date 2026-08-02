@@ -712,6 +712,51 @@ export default function ArticleReader({
                 <ArticleEngagement articleSlug={article.id} />
               </footer>
             )}
+
+            {articleDocument && related.length > 0 && (
+              <section
+                className="article-reader-more"
+                aria-labelledby="article-reader-more-title"
+              >
+                <header>
+                  <div>
+                    <span>{t("Редакционный маршрут")}</span>
+                    <h2 id="article-reader-more-title">
+                      {t("Что читать дальше")}
+                    </h2>
+                  </div>
+                  <p>
+                    {t(
+                      "Материалы подобраны по рубрике, теме и смысловым связям этой публикации."
+                    )}
+                  </p>
+                </header>
+                <div>
+                  {related.slice(0, 6).map((item) => (
+                    <button
+                      type="button"
+                      key={item.id}
+                      onClick={() => openAnother(item)}
+                    >
+                      <span className="article-reader-more-image" aria-hidden="true">
+                        {item.imageUrl ? (
+                          <img src={item.imageUrl} alt="" loading="lazy" />
+                        ) : (
+                          <i>ПП</i>
+                        )}
+                      </span>
+                      <span className="article-reader-more-copy">
+                        <small>{item.sectionLabel}</small>
+                        <strong>{item.title}</strong>
+                        <em>
+                          {item.readingMinutes} {t("мин. чтения")}
+                        </em>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
           </article>
 
           <aside className="article-reader-related">

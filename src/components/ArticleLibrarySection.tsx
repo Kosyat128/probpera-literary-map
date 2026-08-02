@@ -25,6 +25,36 @@ const sectionOrder = [
   "author-stories",
 ];
 
+const relatedSections: Record<string, readonly string[]> = {
+  "book-opinions": ["book-guides", "screen-adaptations"],
+  "screen-adaptations": ["book-opinions", "book-guides"],
+  "book-guides": ["book-opinions", "literary-essays"],
+  "writers-world": ["awards", "literary-essays"],
+  awards: ["writers-world", "literary-essays"],
+  folklore: ["literary-essays", "language"],
+  language: ["literary-essays", "folklore"],
+  "literary-essays": ["language", "folklore", "writers-world"],
+  "author-stories": ["writers-world", "literary-essays"],
+};
+
+const recommendationStopWords = new Set([
+  "автор",
+  "была",
+  "были",
+  "книга",
+  "книги",
+  "который",
+  "литература",
+  "литературы",
+  "материал",
+  "роман",
+  "статья",
+  "сегодня",
+  "этого",
+  "этой",
+  "это",
+]);
+
 function normalize(value: string) {
   return value
     .toLocaleLowerCase("ru")
@@ -58,10 +88,47 @@ function publicationWord(count: number) {
   return "публикаций";
 }
 
+function recommendationTerms(article: ArticleCatalogEntry) {
+  return new Set(
+    normalize(`${article.title} ${article.description}`)
+      .split(/\s+/u)
+      .filter((word) => word.length >= 5 && !recommendationStopWords.has(word))
+  );
+}
+
+function recommendedArticles(article: ArticleCatalogEntry) {
+  const sourceTerms = recommendationTerms(article);
+  const affinity = relatedSections[article.sectionId] || [];
+  return articleCatalog
+    .filter((candidate) => candidate.id !== article.id)
+    .map((candidate, index) => {
+      const sharedTerms = [...recommendationTerms(candidate)].filter((term) =>
+        sourceTerms.has(term)
+      ).length;
+      const score =
+        (candidate.sectionId === article.sectionId ? 100 : 0) +
+        (affinity.includes(candidate.sectionId) ? 28 : 0) +
+        Math.min(sharedTerms, 8) * 7 +
+        (candidate.featured ? 5 : 0);
+      return { candidate, index, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((first, second) => second.score - first.score || first.index - second.index)
+    .slice(0, 8)
+    .map(({ candidate }) => candidate);
+}
+
+function sectionFromAddress() {
+  const requested = new URLSearchParams(window.location.search).get("section");
+  return requested &&
+    articleCatalog.some((article) => article.sectionId === requested)
+    ? requested
+    : "all";
+}
+
 export default function ArticleLibrarySection() {
   const { language, t, number } = useInterfaceLanguage();
-  const initialSection = new URLSearchParams(window.location.search).get("section");
-  const [sectionId, setSectionId] = useState(initialSection || "all");
+  const [sectionId, setSectionId] = useState(sectionFromAddress);
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
   const [selected, setSelected] = useState<ArticleCatalogEntry | null>(() => {
@@ -72,12 +139,20 @@ export default function ArticleLibrarySection() {
   useEffect(() => {
     const syncWithAddress = () => {
       const articleId = articleIdFromPath(articleCatalog);
-      setSelected(
-        articleCatalog.find((article) => article.id === articleId) || null
-      );
+      const addressedArticle =
+        articleCatalog.find((article) => article.id === articleId) || null;
+      setSelected(addressedArticle);
+      if (!addressedArticle) {
+        setSectionId(sectionFromAddress());
+        setVisibleCount(12);
+      }
     };
     window.addEventListener("popstate", syncWithAddress);
-    return () => window.removeEventListener("popstate", syncWithAddress);
+    window.addEventListener("probpera:navigation", syncWithAddress);
+    return () => {
+      window.removeEventListener("popstate", syncWithAddress);
+      window.removeEventListener("probpera:navigation", syncWithAddress);
+    };
   }, []);
 
   const sections = useMemo(() => {
@@ -111,12 +186,7 @@ export default function ArticleLibrarySection() {
   const selectedIndex = selected
     ? articleCatalog.findIndex((article) => article.id === selected.id)
     : -1;
-  const related = selected
-    ? articleCatalog.filter(
-        (article) =>
-          article.sectionId === selected.sectionId && article.id !== selected.id
-      )
-    : [];
+  const related = selected ? recommendedArticles(selected) : [];
 
   const changeSection = (value: string) => {
     setSectionId(value);
@@ -153,7 +223,11 @@ export default function ArticleLibrarySection() {
         <header className="article-library-heading">
           <div>
             <span className="section-kicker">
-              {t("Авторский архив · 157 материалов")}
+              {language === "en"
+                ? `Author archive · ${number(articleCatalog.length)} publications`
+                : `Авторский архив · ${number(articleCatalog.length)} ${publicationWord(
+                    articleCatalog.length
+                  )}`}
             </span>
             <h2>{t("Журнал, выстроенный для чтения")}</h2>
             <p>
@@ -180,6 +254,7 @@ export default function ArticleLibrarySection() {
           <button
             type="button"
             className={sectionId === "all" ? "is-active" : ""}
+            aria-pressed={sectionId === "all"}
             onClick={() => changeSection("all")}
           >
             {t("Все материалы")} <span>{number(articleCatalog.length)}</span>
@@ -189,6 +264,7 @@ export default function ArticleLibrarySection() {
               type="button"
               key={section.id}
               className={sectionId === section.id ? "is-active" : ""}
+              aria-pressed={sectionId === section.id}
               onClick={() => changeSection(section.id)}
             >
               {t(section.label)} <span>{number(section.count)}</span>
