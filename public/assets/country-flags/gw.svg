@@ -1,17 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-gw desc-gw">
-  <title id="title-gw">Гвинея-Бисау — GW</title>
-  <desc id="desc-gw">Круглая SVG-иконка флага страны «Гвинея-Бисау».</desc>
-  <defs>
-    <clipPath id="clip-gw"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-gw)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V192H213V377Z" fill="#FCD116"/>
-      <path d="M213 7V192H512V64Q512 40 495.5 23.5Q479 7 455 7Z" fill="#009E49"/>
-      <path d="M213 377V7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377ZM142 135 128 178 165 204H120L106 247L92 204H47L84 178L70 135L106 161Z" fill="#CE1126"/>
-      <path d="M120 204H165L128 178L142 135L106 161L70 135L84 178L47 204H92L106 247Z" fill="#000000"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-gw" viewBox="0 0 512 512">
+  <path fill="#ce1126" d="M0 0h160v512H0z"/>
+  <path fill="#fcd116" d="M160 0h352v256H160z"/>
+  <path fill="#009e49" d="M160 256h352v256H160z"/>
+  <g transform="translate(-46.2 72.8)scale(.7886)">
+    <g id="gw-b" transform="matrix(80 0 0 80 160 240)">
+      <path id="gw-a" fill="#000001" d="M0-1v1h.5" transform="rotate(18 0 -1)"/>
+      <use xlink:href="#gw-a" width="100%" height="100%" transform="scale(-1 1)"/>
     </g>
+    <use xlink:href="#gw-b" width="100%" height="100%" transform="rotate(72 160 240)"/>
+    <use xlink:href="#gw-b" width="100%" height="100%" transform="rotate(144 160 240)"/>
+    <use xlink:href="#gw-b" width="100%" height="100%" transform="rotate(-144 160 240)"/>
+    <use xlink:href="#gw-b" width="100%" height="100%" transform="rotate(-72 160 240)"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

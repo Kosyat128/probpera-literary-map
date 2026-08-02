@@ -6,6 +6,38 @@ export const england: Country = {
   code: "gb",
   writers: [
     {
+      id: "rudyard_kipling",
+      name: "Джозеф Редьярд Киплинг",
+      fullName: "Joseph Rudyard Kipling",
+      years: "1865–1936",
+      nobelYear: 1907,
+      birthDate: "1865-12-30",
+      deathDate: "1936-01-18",
+      birthPlace: "Бомбей, Британская Индия",
+      coordinates: { lat: 50.9974, lng: 0.3858 },
+      portrait: "",
+      bio: "Английский писатель и поэт, автор рассказов, стихотворений и книг для детей. Его произведения о Британской Индии отличаются энергичным повествованием, вниманием к устной речи и сложным взаимодействием культур имперской эпохи.",
+      works: ["Книга джунглей", "Ким", "Простые рассказы с гор"],
+      genres: ["рассказ", "роман", "поэзия", "детская литература"],
+      language: "английский",
+      nationality: "англичанин",
+      awards: ["Нобелевская премия по литературе 1907 года"],
+      tags: ["XIX век", "XX век", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1907",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1907/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "bede",
       name: "Беда Достопочтенный",
       years: "ок. 672–735",
@@ -235,13 +267,17 @@ export const england: Country = {
           genres: ["трагедия", "драма"],
           tags: ["месть", "власть", "сомнение", "театр Возрождения"],
           description: "Трагедия о принце Датском, написанная приблизительно на рубеже XVI–XVII веков. Первое известное печатное издание появилось в 1603 году.",
-          coverUrl: "https://covers.openlibrary.org/b/id/8281954-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL9170454W",
+          coverUrl: "brand/book-covers/hamlet-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/hamlet-editorial.webp",
+          coverSourceUrl: "brand/book-covers/hamlet-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL9170454W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/hamlet-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://www.folger.edu/explore/shakespeares-works/hamlet/",
           editorial: {
@@ -1341,6 +1377,7 @@ export const england: Country = {
           ],
           description: "История Бильбо Бэггинса, который покидает уютный дом и отправляется с отрядом гномов к Одинокой горе. Сказочное путешествие постепенно становится рассказом о взрослении, нравственном выборе и смелости, не зависящей от силы.",
           coverUrl: "brand/book-covers/hobbit-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/hobbit-editorial.webp",
           coverSourceUrl: "brand/book-covers/hobbit-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -1348,12 +1385,13 @@ export const england: Country = {
             creator: "Редакция «Пробы Пера»",
             rightsHolder: "Проба Пера",
             sourceUrl: "brand/book-covers/hobbit-editorial.webp",
-            checkedAt: "2026-07-30",
+            checkedAt: "2026-08-01",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://www.tolkienestate.com/writing/john-d-rateliff-the-hobbit/",
           editorial: {
             status: "verified",
-            reviewedAt: "2026-07-30"
+            reviewedAt: "2026-08-01"
           }
         }
       ],
@@ -1414,6 +1452,7 @@ export const england: Country = {
           ],
           description: "Антиутопический роман о мире, в котором власть стремится управлять не только поступками, но и языком, памятью и самой способностью человека различать правду и ложь.",
           coverUrl: "brand/book-covers/nineteen-eighty-four-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
           coverSourceUrl: "brand/book-covers/nineteen-eighty-four-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -1424,6 +1463,7 @@ export const england: Country = {
             checkedAt: "2026-07-30",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-30"

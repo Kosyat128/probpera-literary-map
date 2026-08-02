@@ -897,13 +897,17 @@ export const japan: Country = {
           genres: ["роман", "современная проза"],
           tags: ["память", "молодость", "утрата", "Токио"],
           description: "Роман о памяти, взрослении и переживании утраты, впервые изданный в Японии в 1987 году. Название отсылает к песне The Beatles Norwegian Wood.",
-          coverUrl: "https://covers.openlibrary.org/b/id/2237620-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL2625457W",
+          coverUrl: "brand/book-covers/norwegian-wood-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/norwegian-wood-editorial.webp",
+          coverSourceUrl: "brand/book-covers/norwegian-wood-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL2625457W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/norwegian-wood-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://www.shinchosha.co.jp/book/100154/",
           editorial: {

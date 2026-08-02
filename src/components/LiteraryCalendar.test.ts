@@ -58,4 +58,23 @@ describe("литературный календарь", () => {
       calendarWriterIdentity(incompleteEntry)
     );
   });
+
+  it("нормализует даты Wikidata перед поиском дубликатов", () => {
+    const curatedEntry = {
+      id: "joyce_curated",
+      name: "Джеймс Джойс",
+      birthDate: "1882-02-02",
+      deathDate: "1941-01-13",
+    } as Writer;
+    const generatedEntry = {
+      id: "joyce_generated",
+      name: "Джеймс Джойс",
+      birthDate: "+1882-02-02",
+      deathDate: "+1941-01-13",
+    } as Writer;
+
+    expect(calendarWriterIdentity(curatedEntry)).toBe(
+      calendarWriterIdentity(generatedEntry)
+    );
+  });
 });

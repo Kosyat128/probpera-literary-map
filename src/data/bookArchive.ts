@@ -3,6 +3,10 @@ import type {
   WorkProfile,
   WriterProfile,
 } from "./countries/types";
+import {
+  cmsBookEditionsByWorkId,
+  type CmsBookEdition,
+} from "./cms/bookEditions";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -17,7 +21,6 @@ const displayableCoverStatuses = new Set([
   "public-domain",
   "licensed",
   "permission",
-  "editorial-original",
   "external-preview",
 ]);
 
@@ -76,15 +79,47 @@ export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
           editorial: { status: "draft" as const },
         }));
 
-      return [...detailedWorks, ...legacyWorks].map((work) => ({
-        ...work,
-        countryId: country.id,
-        countryName: country.name,
-        writerId: writer.id,
-        writerName: writer.name || writer.fullName || "Автор",
-        writer,
-        country,
-      }));
+      return [...detailedWorks, ...legacyWorks].map((work) => {
+        const workId = `${country.id}:${writer.id}:${work.id}`;
+        const edition = (
+          cmsBookEditionsByWorkId as Record<string, CmsBookEdition>
+        )[workId];
+        return {
+          ...work,
+          ...(edition
+            ? {
+                coverUrl: edition.coverUrl,
+                coverThumbnailUrl: undefined,
+                coverSourceUrl: edition.coverSourceUrl,
+                coverRights: {
+                  status: edition.coverRightsStatus,
+                  licenseName: edition.licenseName || undefined,
+                  licenseUrl: edition.licenseUrl || undefined,
+                  creator: edition.creator || undefined,
+                  rightsHolder: edition.rightsHolder || undefined,
+                  sourceUrl: edition.sourceUrl || edition.coverSourceUrl,
+                  checkedAt: edition.rightsCheckedAt,
+                  note: "Точное издание связано редакцией по ISBN.",
+                },
+                edition: {
+                  title: edition.title,
+                  isbn10: edition.isbn10,
+                  isbn13: edition.isbn13,
+                  publisher: edition.publisher,
+                  publicationYear: edition.publicationYear,
+                  language: edition.language,
+                  sourceUrl: edition.sourceUrl,
+                },
+              }
+            : {}),
+          countryId: country.id,
+          countryName: country.name,
+          writerId: writer.id,
+          writerName: writer.name || writer.fullName || "Автор",
+          writer,
+          country,
+        };
+      });
     })
   );
 }

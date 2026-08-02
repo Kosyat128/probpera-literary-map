@@ -1,0 +1,53 @@
+import { formatDate } from "@/lib/format";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { setDiagnosticStatusAction } from "./actions";
+
+export const metadata = { title: "Состояние сайта" };
+
+type Diagnostic = {
+  id: number;
+  fingerprint: string;
+  message: string;
+  path: string;
+  source: string;
+  status: string;
+  created_at: string;
+};
+
+export default async function HealthPage() {
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) return null;
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  const [{ data }, { count: openCount }, { count: recentCount }] = await Promise.all([
+    supabase.from("client_errors").select("id,fingerprint,message,path,source,status,created_at").order("created_at", { ascending: false }).limit(500),
+    supabase.from("client_errors").select("id", { count: "exact", head: true }).eq("status", "open"),
+    supabase.from("client_errors").select("id", { count: "exact", head: true }).gte("created_at", since),
+  ]);
+  const grouped = new Map<string, { latest: Diagnostic; count: number }>();
+  for (const item of (data || []) as Diagnostic[]) {
+    const current = grouped.get(item.fingerprint);
+    if (current) current.count += 1;
+    else grouped.set(item.fingerprint, { latest: item, count: 1 });
+  }
+  const diagnostics = [...grouped.values()];
+
+  return <>
+    <header className="page-heading"><div><span className="eyebrow">Наблюдаемость</span><h1>Состояние сайта</h1><p>Ошибки интерфейса записываются внутри «Пробы Пера» без передачи сторонним системам.</p></div></header>
+    <section className="stat-grid">
+      <article className="stat-card"><span>Открыто</span><strong>{openCount || 0}</strong><small>требуют внимания</small></article>
+      <article className="stat-card"><span>За 24 часа</span><strong>{recentCount || 0}</strong><small>включая повторения</small></article>
+      <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
+    </section>
+    <section className="panel">
+      {diagnostics.length === 0 ? <div className="empty-state"><p>Клиентских ошибок пока не зарегистрировано.</p></div> :
+        <table className="data-table"><thead><tr><th>Ошибка</th><th>Путь и дата</th><th>Повторы</th><th>Статус</th></tr></thead><tbody>
+          {diagnostics.map(({ latest, count }) => <tr key={latest.fingerprint}>
+            <td className="data-title"><strong>{latest.message}</strong><small>{latest.source} · {latest.fingerprint}</small></td>
+            <td><strong>{latest.path}</strong><small>{formatDate(latest.created_at, true)}</small></td>
+            <td>{count}</td>
+            <td><form action={setDiagnosticStatusAction}><input type="hidden" name="fingerprint" value={latest.fingerprint}/><select name="status" defaultValue={latest.status}><option value="open">Открыта</option><option value="resolved">Исправлена</option><option value="ignored">Игнорировать</option></select><button className="button-secondary" type="submit">Сохранить</button></form></td>
+          </tr>)}
+        </tbody></table>}
+    </section>
+  </>;
+}

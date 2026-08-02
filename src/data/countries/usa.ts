@@ -588,6 +588,7 @@ export const usa: Country = {
           ],
           description: "Роман о столкновении литературного критика Хэмфри ван Вейдена с капитаном Волком Ларсеном. Морское приключение становится спором о силе, свободе, сострадании и цене человеческого достоинства.",
           coverUrl: "brand/book-covers/sea-wolf-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/sea-wolf-editorial.webp",
           coverSourceUrl: "brand/book-covers/sea-wolf-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -595,12 +596,13 @@ export const usa: Country = {
             creator: "Редакция «Пробы Пера»",
             rightsHolder: "Проба Пера",
             sourceUrl: "brand/book-covers/sea-wolf-editorial.webp",
-            checkedAt: "2026-07-30",
+            checkedAt: "2026-08-01",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://www.gutenberg.org/ebooks/1074",
           editorial: {
             status: "verified",
-            reviewedAt: "2026-07-30"
+            reviewedAt: "2026-08-01"
           }
         }
       ],
@@ -1273,13 +1275,17 @@ export const usa: Country = {
           genres: ["роман", "историческая проза"],
           tags: ["память", "рабство", "семья", "травма"],
           description: "Роман Тони Моррисон о памяти рабства и его последствиях для семьи. Опубликован в 1987 году и удостоен Пулитцеровской премии за художественную книгу в 1988 году.",
-          coverUrl: "https://covers.openlibrary.org/b/id/8261367-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL50548W",
+          coverUrl: "brand/book-covers/beloved-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/beloved-editorial.webp",
+          coverSourceUrl: "brand/book-covers/beloved-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL50548W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/beloved-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://www.pulitzer.org/winners/toni-morrison",
           editorial: {

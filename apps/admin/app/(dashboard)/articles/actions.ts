@@ -48,12 +48,13 @@ const allowedArticleHtml = {
     "figcaption",
     "mark",
     "aside",
+    "section",
   ],
   allowedAttributes: {
     ...sanitizeHtml.defaults.allowedAttributes,
     a: ["href", "name", "target", "rel"],
     img: ["src", "alt", "title", "width", "height", "loading"],
-    "*": ["class", "id"],
+    "*": ["class", "id", "data-editorial-block", "data-reveal"],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
@@ -92,6 +93,7 @@ export async function saveArticleAction(formData: FormData) {
   const intent = String(formData.get("intent") || "save");
   const requestedStatus =
     intent === "publish" ? "published" : String(formData.get("status") || "draft");
+  const previousStatus = String(formData.get("previous_status") || "draft");
   const title = String(formData.get("title") || "");
   const rawSlug = String(formData.get("slug") || "");
   const generatedSlug = createSlug(rawSlug || title) || `material-${Date.now()}`;
@@ -135,6 +137,30 @@ export async function saveArticleAction(formData: FormData) {
         parsed.error.issues[0]?.message || "Проверьте поля статьи."
       )}`
     );
+  }
+  const isNewRelease =
+    intent === "publish" ||
+    requestedStatus === "scheduled" ||
+    (requestedStatus === "published" && previousStatus !== "published");
+  if (isNewRelease) {
+    const plainText = sanitizeHtml(parsed.data.contentHtml, {
+      allowedTags: [],
+      allowedAttributes: {},
+    }).replace(/\s+/gu, " ").trim();
+    const releaseIssues = [
+      !parsed.data.categoryId && "выберите рубрику",
+      plainText.split(/\s+/u).filter(Boolean).length < 250 && "добавьте не менее 250 слов",
+      !/<h2(?:\s|>)/iu.test(parsed.data.contentHtml) && "добавьте смысловые подзаголовки H2",
+      parsed.data.excerpt.length < 80 && "расширьте описание карточки до 80 знаков",
+      (!parsed.data.coverExternalUrl || parsed.data.coverAlt.length < 10) && "добавьте обложку и её описание",
+      parsed.data.seoDescription.length < 80 && "расширьте SEO-описание до 80 знаков",
+      parsed.data.sources.length === 0 && "укажите хотя бы один источник",
+      formData.get("publication_ready") !== "yes" && "завершите контроль перед публикацией",
+    ].filter(Boolean) as string[];
+    if (releaseIssues.length) {
+      const failedArticleId = optionalText(formData.get("id")) || "new";
+      redirect(`/articles/${failedArticleId}?error=${encodeURIComponent(`Публикация остановлена: ${releaseIssues.join("; ")}.`)}`);
+    }
   }
   const savedSlug = parsed.data.slug || generatedSlug;
 

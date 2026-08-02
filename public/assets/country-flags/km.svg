@@ -1,20 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-km desc-km">
-  <title id="title-km">Коморы — KM</title>
-  <desc id="desc-km">Круглая SVG-иконка флага страны «Коморы».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-km" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-km"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="km-a">
+      <path fill-opacity=".7" d="M0 0h416.3v416.3H0z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-km)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M0 192H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64Z" fill="#3A75C4"/>
-      <path d="M512 192H0V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#FFC61E"/>
-      <path d="M0 192H512V100H0Z" fill="#CE1126"/>
-      <path d="M0 284H512V192H0Z" fill="#EEEEEE"/>
-      <path d="M19 363 249 192 19 21Q0 38 0 64V320Q0 346 19 363Z" fill="#3D8E33"/>
-      <path d="M117 115Q108 113 99 113Q67 113 44.0 136.0Q21 159 21.0 192.0Q21 225 44.0 248.0Q67 271 99 271Q108 271 117 269Q90 263 73.0 241.5Q56 220 56.0 192.0Q56 164 73.0 142.5Q90 121 117 115Z" fill="#FFFFFF"/>
-      <path d="M108 236 112 246 103 253H114L117 263L120 253H131L122 246L125 236L117 243ZM108 199 112 209 103 215H114L117 225L120 215H131L122 209L125 199L117 205ZM108 161 112 172 103 178H114L117 188L120 178H131L122 172L125 161L117 168ZM117 130 108 124 112 134 103 140H114L117 150L120 140H131L122 134L125 124Z" fill="#FFFFFF"/>
-    </g>
+  <g fill-rule="evenodd" clip-path="url(#km-a)" transform="scale(1.23)">
+    <path fill="#ff0" d="M0 0h625v104H0z"/>
+    <path fill="#fff" d="M0 104h625v104.1H0z"/>
+    <path fill="#be0027" d="M0 208.1h625v104H0z"/>
+    <path fill="#3b5aa3" d="M0 312.2h625v104H0z"/>
+    <path fill="#239e46" d="M0 0v416.2l310.4-207.5z"/>
+    <path fill="#fff" d="M127.8 115c-69.2-3.5-100.7 51.6-100.6 94.2-.2 50.4 47.6 92 91.7 89.4A100 100 0 0 1 65.8 209a98 98 0 0 1 62-94"/>
+    <path fill="#fff" d="m126.8 160.2-9.8-7.6-11.8 3.7 4.2-11.6-7.1-10.1 12.3.4 7.4-10 3.4 12 11.8 3.9-10.3 7zm-.2 42.3-9.8-7.6-11.8 3.7 4.2-11.6-7.2-10.1 12.4.4 7.4-10 3.4 12 11.8 4-10.3 6.9zm.2 42.8-9.8-7.6-11.8 3.7 4.2-11.7-7.1-10 12.3.4 7.4-10 3.4 12 11.8 3.9-10.3 6.9zm-.2 43.1-9.8-7.6-11.8 3.7 4.2-11.6-7.2-10.1 12.4.4 7.4-10 3.4 12 11.8 4-10.3 6.9z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

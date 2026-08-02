@@ -1,17 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-gb desc-gb">
-  <title id="title-gb">Великобритания — GB</title>
-  <desc id="desc-gb">Круглая SVG-иконка флага страны «Великобритания».</desc>
-  <defs>
-    <clipPath id="clip-gb"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-gb)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M0 319 80 263H0ZM66 7 185 90V7ZM327 90 446 7H327ZM0 121H80L0 65ZM446 377 327 294V377ZM512 65 432 121H512ZM512 263H432L512 319ZM185 377V294L66 377Z" fill="#00247D"/>
-      <path d="M358 121H407L510 49Q506 34 496 24ZM185 121V107L44 9Q28 13 16 24L154 121ZM327 263V277L468 375Q484 371 496 360L358 263ZM154 263H105L2 335Q6 350 16 360Z" fill="#CF1B2B"/>
-      <path d="M512 149V121H432L512 65V64Q512 57 510 49L407 121H358L496 24Q479 7 455 7H446L327 90V7H299V149ZM0 149H213V7H185V90L66 7H57Q51 7 44 9L185 107V121H154L16 24Q0 41 0 64V65L80 121H0ZM512 320V319L432 263H512V235H299V377H327V294L446 377H455Q461 377 468 375L327 277V263H358L496 360Q512 343 512 320ZM185 377H213V235H0V263H80L0 319V320Q0 327 2 335L105 263H154L16 360Q33 377 57 377H66L185 294Z" fill="#EEEEEE"/>
-      <path d="M299 235H512V149H299V7H213V149H0V235H213V377H299Z" fill="#CF1B2B"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-gb" viewBox="0 0 512 512">
+  <path fill="#012169" d="M0 0h512v512H0z"/>
+  <path fill="#FFF" d="M512 0v64L322 256l190 187v69h-67L254 324 68 512H0v-68l186-187L0 74V0h62l192 188L440 0z"/>
+  <path fill="#C8102E" d="m184 324 11 34L42 512H0v-3zm124-12 54 8 150 147v45zM512 0 320 196l-4-44L466 0zM0 1l193 189-59-8L0 49z"/>
+  <path fill="#FFF" d="M176 0v512h160V0zM0 176v160h512V176z"/>
+  <path fill="#C8102E" d="M0 208v96h512v-96zM208 0v512h96V0z"/>
 </svg>

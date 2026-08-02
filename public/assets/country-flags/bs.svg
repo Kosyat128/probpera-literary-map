@@ -1,16 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-bs desc-bs">
-  <title id="title-bs">Багамы — BS</title>
-  <desc id="desc-bs">Круглая SVG-иконка флага страны «Багамы».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-bs" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-bs"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="bs-a">
+      <path fill-opacity=".7" d="M56.6 26.4H537v480.3H56.6z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-bs)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M19 22 163 128H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q36 7 19 22ZM455 377Q479 377 495.5 360.5Q512 344 512 320V256H163L19 362Q36 377 57 377Z" fill="#00ABC9"/>
-      <path d="M249 192 163 256H512V128H163Z" fill="#FAE042"/>
-      <path d="M249 192 163 128 19 22Q0 39 0 64V320Q0 345 19 362L163 256Z" fill="#141414"/>
-    </g>
+  <g fill-rule="evenodd" clip-path="url(#bs-a)" transform="matrix(1.066 0 0 1.067 -60.4 -28.1)">
+    <path fill="#fff" d="M990 506.2H9.4V27.6H990z"/>
+    <path fill="#ffe900" d="M990 370.6H9.4V169.2H990z"/>
+    <path fill="#08ced6" d="M990 506.2H9.4V346.7H990zm0-319H9.4V27.9H990z"/>
+    <path fill="#000001" d="M9 25.9c2.1 0 392.3 237 392.3 237L7.8 505.3z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

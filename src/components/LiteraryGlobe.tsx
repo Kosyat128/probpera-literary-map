@@ -1,5 +1,5 @@
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, useTexture } from "@react-three/drei";
 import { gsap } from "gsap";
 import {
   useCallback,
@@ -12,15 +12,28 @@ import {
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-import type { Country } from "../data/countries";
+import type { Country, Writer } from "../data/countries";
+import {
+  findNobelArticle,
+  getNobelYear,
+} from "../data/articles/nobelArticles";
+import {
+  collectCountryNobelLaureates,
+  collectNobelLaureates,
+} from "../data/nobel";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import CountryFlagIcon from "./CountryFlagIcon";
 import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
 
 interface Props {
   countries: Country[];
   selectedCountry?: Country | null;
+  selectedWriter?: Writer | null;
   onCountrySelect?: (country: Country) => void;
+  onWriterSelect?: (country: Country, writer: Writer) => void;
+  showNobelLaureates?: boolean;
+  nobelCountryId?: string | null;
 }
 
 function pluralRu(count: number, forms: [string, string, string]) {
@@ -68,6 +81,15 @@ function fallbackCountryCoordinates(country: Country): [number, number] | null {
     THREE.MathUtils.radToDeg(Math.atan2(vector.y, vector.x)),
   ];
 }
+
+function writerDisplayName(writer: Writer) {
+  return writer.name || writer.fullName || "Автор";
+}
+
+type HoveredLaureate = {
+  writer: Writer;
+  country: Country;
+};
 
 function CameraFocus({
   countryId,
@@ -158,7 +180,7 @@ function MuseumAtmosphere() {
 
   return (
     <mesh scale={1.09}>
-      <sphereGeometry args={[1, 96, 96]} />
+      <sphereGeometry args={[1, 64, 48]} />
       <primitive object={material} attach="material" />
     </mesh>
   );
@@ -471,7 +493,7 @@ function MuseumStarfield({
   reducedMotion: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const count = economical ? 1100 : 3600;
+  const count = economical ? 900 : 2400;
   const geometry = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
@@ -819,12 +841,14 @@ function GlobeSurface({
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
+  economical,
 }: {
   atlas: GlobeAtlas;
   selectedCountry?: Country | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
+  economical: boolean;
 }) {
   const { camera, gl } = useThree();
   const globeMesh = useRef<THREE.Mesh>(null);
@@ -832,6 +856,15 @@ function GlobeSurface({
   const normalizedPointer = useMemo(() => new THREE.Vector2(), []);
   const pointerOrigin = useRef<PointerOrigin | null>(null);
   const hoveredCountryId = useRef<string | null>(null);
+  const pointerFrame = useRef(0);
+  const latestPointer = useRef<PointerOrigin | null>(null);
+
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(pointerFrame.current);
+    },
+    []
+  );
 
   const countryFromPointer = useCallback(
     (clientX: number, clientY: number) => {
@@ -856,15 +889,23 @@ function GlobeSurface({
 
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    const country = countryFromPointer(
-      event.nativeEvent.clientX,
-      event.nativeEvent.clientY
-    );
-    const nextId = country?.id ?? null;
-    if (hoveredCountryId.current === nextId) return;
+    latestPointer.current = {
+      x: event.nativeEvent.clientX,
+      y: event.nativeEvent.clientY,
+    };
+    if (pointerFrame.current) return;
 
-    hoveredCountryId.current = nextId;
-    onCountryHover(country);
+    pointerFrame.current = requestAnimationFrame(() => {
+      pointerFrame.current = 0;
+      const pointer = latestPointer.current;
+      if (!pointer) return;
+      const country = countryFromPointer(pointer.x, pointer.y);
+      const nextId = country?.id ?? null;
+      if (hoveredCountryId.current === nextId) return;
+
+      hoveredCountryId.current = nextId;
+      onCountryHover(country);
+    });
   };
 
   const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
@@ -902,11 +943,14 @@ function GlobeSurface({
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
         onPointerOut={() => {
+          cancelAnimationFrame(pointerFrame.current);
+          pointerFrame.current = 0;
+          latestPointer.current = null;
           hoveredCountryId.current = null;
           onCountryHover(null);
         }}
       >
-        <sphereGeometry args={[1, 160, 112]} />
+        <sphereGeometry args={[1, economical ? 112 : 144, economical ? 72 : 96]} />
         <meshPhysicalMaterial
           map={atlas.mapTexture}
           bumpMap={atlas.reliefTexture}
@@ -920,7 +964,7 @@ function GlobeSurface({
         />
 
         <mesh raycast={() => null}>
-          <sphereGeometry args={[1.006, 144, 104]} />
+          <sphereGeometry args={[1.006, economical ? 96 : 112, economical ? 64 : 72]} />
           <meshBasicMaterial
             map={atlas.highlightTexture}
             transparent
@@ -937,7 +981,7 @@ function GlobeSurface({
         <CountrySphericalOutline atlas={atlas} country={selectedCountry} selected />
 
         <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
-          <torusGeometry args={[1.009, 0.0022, 8, 256]} />
+          <torusGeometry args={[1.009, 0.0022, 8, economical ? 144 : 192]} />
           <meshBasicMaterial
             color="#e5b66a"
             transparent
@@ -1022,24 +1066,214 @@ function MicrostateMarkers({
   );
 }
 
+function NobelLaureateMarker({
+  country,
+  writer,
+  position,
+  selected,
+  reducedMotion,
+  texture,
+  onSelect,
+  onHover,
+}: {
+  country: Country;
+  writer: Writer;
+  position: THREE.Vector3;
+  selected: boolean;
+  reducedMotion: boolean;
+  texture: THREE.Texture;
+  onSelect: (country: Country, writer: Writer) => void;
+  onHover: (laureate: HoveredLaureate | null) => void;
+}) {
+  const marker = useRef<THREE.Group>(null);
+
+  useFrame(({ clock }) => {
+    if (!marker.current || reducedMotion) return;
+    const pulse = 1 + Math.sin(clock.elapsedTime * 2.1 + position.x * 4) * 0.1;
+    marker.current.scale.setScalar(pulse);
+  });
+
+  return (
+    <group
+      ref={marker}
+      position={position}
+      onPointerOver={(event) => {
+        event.stopPropagation();
+        onHover({ country, writer });
+      }}
+      onPointerOut={(event) => {
+        event.stopPropagation();
+        onHover(null);
+      }}
+      onClick={(event) => {
+        event.stopPropagation();
+        onSelect(country, writer);
+      }}
+    >
+      <sprite scale={selected ? [0.1, 0.1, 1] : [0.072, 0.072, 1]}>
+        <spriteMaterial
+          map={texture}
+          color={selected ? "#fff4c4" : "#ffffff"}
+          transparent
+          alphaTest={0.025}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </sprite>
+    </group>
+  );
+}
+
+function NobelLaureateMarkers({
+  atlas,
+  countries,
+  nobelCountryId,
+  selectedWriter,
+  reducedMotion,
+  onSelect,
+  onHover,
+}: {
+  atlas: GlobeAtlas;
+  countries: Country[];
+  nobelCountryId?: string | null;
+  selectedWriter?: Writer | null;
+  reducedMotion: boolean;
+  onSelect: (country: Country, writer: Writer) => void;
+  onHover: (laureate: HoveredLaureate | null) => void;
+}) {
+  const medalTexture = useTexture(
+    `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`
+  );
+  medalTexture.colorSpace = THREE.SRGBColorSpace;
+
+  const laureates = useMemo(() => {
+    const entries = nobelCountryId
+      ? collectCountryNobelLaureates(countries, nobelCountryId)
+      : collectNobelLaureates(countries);
+    const source = entries
+      .flatMap(({ country, writer }) => {
+        const countryCentroid = atlas.centroidForCountry(country.id);
+        const fallback = countryCentroid
+          ? { lat: countryCentroid[0], lng: countryCentroid[1] }
+          : null;
+
+        return [
+          {
+            country,
+            writer,
+            coordinates: writer.coordinates || fallback,
+          },
+        ]
+          .filter(
+            (
+              item
+            ): item is {
+              country: Country;
+              writer: Writer;
+              coordinates: { lat: number; lng: number };
+            } => Boolean(item.coordinates)
+          );
+      });
+
+    const placed: typeof source = [];
+    const distance = (
+      first: { lat: number; lng: number },
+      second: { lat: number; lng: number }
+    ) => {
+      const meanLatitude = THREE.MathUtils.degToRad((first.lat + second.lat) / 2);
+      const longitudeDistance =
+        (first.lng - second.lng) * Math.max(0.3, Math.cos(meanLatitude));
+      return Math.hypot(first.lat - second.lat, longitudeDistance);
+    };
+
+    for (const [index, laureate] of source.entries()) {
+      let coordinates = laureate.coordinates;
+      let attempt = 0;
+
+      while (
+        placed.some(
+          (candidate) =>
+            candidate.country.id === laureate.country.id &&
+            distance(candidate.coordinates, coordinates) < 2.15
+        ) &&
+        attempt < 18
+      ) {
+        attempt += 1;
+        const ring = 1.55 + Math.floor((attempt - 1) / 6) * 1.05;
+        const angle = index * 2.3999632297 + attempt * (Math.PI / 3);
+        const longitudeScale = Math.max(
+          0.32,
+          Math.cos(THREE.MathUtils.degToRad(laureate.coordinates.lat))
+        );
+        coordinates = {
+          lat: THREE.MathUtils.clamp(
+            laureate.coordinates.lat + Math.sin(angle) * ring,
+            -89.5,
+            89.5
+          ),
+          lng:
+            laureate.coordinates.lng +
+            (Math.cos(angle) * ring) / longitudeScale,
+        };
+      }
+
+      placed.push({ ...laureate, coordinates });
+    }
+
+    return placed;
+  }, [atlas, countries, nobelCountryId]);
+
+  return (
+    <group>
+      {laureates.map(({ country, writer, coordinates }) => (
+        <NobelLaureateMarker
+          key={`${country.id}:${writer.id}`}
+          country={country}
+          writer={writer}
+          position={geographicToSphere(
+            coordinates.lng,
+            coordinates.lat,
+            1.026
+          )}
+          selected={selectedWriter?.id === writer.id}
+          reducedMotion={reducedMotion}
+          texture={medalTexture}
+          onSelect={onSelect}
+          onHover={onHover}
+        />
+      ))}
+    </group>
+  );
+}
+
 function GlobeScene({
   atlas,
   countries,
   selectedCountry,
+  selectedWriter,
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
   reducedMotion,
   economical,
+  showNobelLaureates,
+  nobelCountryId,
+  onWriterSelect,
+  onLaureateHover,
 }: {
   atlas: GlobeAtlas;
   countries: Country[];
   selectedCountry?: Country | null;
+  selectedWriter?: Writer | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   reducedMotion: boolean;
   economical: boolean;
+  showNobelLaureates: boolean;
+  nobelCountryId?: string | null;
+  onWriterSelect?: (country: Country, writer: Writer) => void;
+  onLaureateHover: (laureate: HoveredLaureate | null) => void;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const coordinates = selectedCountry
@@ -1073,6 +1307,7 @@ function GlobeScene({
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
+        economical={economical}
       />
       <MythicGlobeFrame />
       <MicrostateMarkers
@@ -1082,6 +1317,20 @@ function GlobeScene({
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
       />
+      {showNobelLaureates && (
+        <NobelLaureateMarkers
+          atlas={atlas}
+          countries={countries}
+          nobelCountryId={nobelCountryId}
+          selectedWriter={selectedWriter}
+          reducedMotion={reducedMotion}
+          onSelect={(country, writer) => {
+            if (onWriterSelect) onWriterSelect(country, writer);
+            else onCountrySelect?.(country);
+          }}
+          onHover={onLaureateHover}
+        />
+      )}
       <OrbitControls
         ref={controlsRef}
         makeDefault
@@ -1116,17 +1365,67 @@ function GlobeScene({
   );
 }
 
-export default function LiteraryGlobe({ countries, selectedCountry, onCountrySelect }: Props) {
+export default function LiteraryGlobe({
+  countries,
+  selectedCountry,
+  selectedWriter,
+  onCountrySelect,
+  onWriterSelect,
+  showNobelLaureates = false,
+  nobelCountryId,
+}: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
+  const [hoveredLaureate, setHoveredLaureate] =
+    useState<HoveredLaureate | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [globeActive, setGlobeActive] = useState(false);
+  const [atlasRequested, setAtlasRequested] = useState(false);
+  const hoveredNobelYear = hoveredLaureate
+    ? getNobelYear(hoveredLaureate.writer)
+    : null;
+  const hoveredNobelArticle = hoveredLaureate
+    ? findNobelArticle(hoveredLaureate.writer)
+    : null;
+  const visibleNobelCount = useMemo(
+    () =>
+      nobelCountryId
+        ? collectCountryNobelLaureates(countries, nobelCountryId).length
+        : collectNobelLaureates(countries).length,
+    [countries, nobelCountryId]
+  );
   const [reducedMotion, setReducedMotion] = useState(() =>
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const economical =
     ((navigator as Navigator & { deviceMemory?: number }).deviceMemory || 8) <= 4 ||
+    navigator.hardwareConcurrency <= 4 ||
+    window.devicePixelRatio >= 2.5 ||
     window.innerWidth <= 680;
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let intersects = true;
+    const update = () =>
+      setGlobeActive(intersects && document.visibilityState !== "hidden");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        intersects = Boolean(entry?.isIntersecting);
+        if (intersects) setAtlasRequested(true);
+        update();
+      },
+      { rootMargin: "160px", threshold: 0.01 }
+    );
+    observer.observe(container);
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", update);
+    };
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -1136,6 +1435,7 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
   }, []);
 
   useEffect(() => {
+    if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
 
@@ -1153,7 +1453,7 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
       disposed = true;
       createdAtlas?.dispose();
     };
-  }, [countries]);
+  }, [atlasRequested, countries]);
 
   useEffect(() => {
     atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
@@ -1161,22 +1461,28 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
 
   if (!atlas) {
     return (
-      <div className="globe-loading" role="status">
-        <span aria-hidden="true">✦</span>
-        <p>
-          {atlasError
-            ? t("Карта временно недоступна")
-            : t("Проявляем старинную карту…")}
-        </p>
+      <div ref={containerRef} className="literary-globe is-loading">
+        <div className="globe-loading" role="status">
+          <span aria-hidden="true">✦</span>
+          <p>
+            {atlasError
+              ? t("Карта временно недоступна")
+              : t("Проявляем старинную карту…")}
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}>
+    <div
+      ref={containerRef}
+      className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
+    >
       <Canvas
         camera={{ position: [0, 0.08, 3.55], fov: 43, near: 0.1, far: 100 }}
-        dpr={[1, economical ? 1.25 : 1.75]}
+        dpr={[1, economical ? 1.1 : 1.5]}
+        frameloop={globeActive ? "always" : "never"}
         fallback={
           <div className="globe-loading" role="status">
             <span aria-hidden="true">✦</span>
@@ -1184,7 +1490,7 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
           </div>
         }
         gl={{
-          antialias: true,
+          antialias: !economical,
           alpha: true,
           powerPreference: "high-performance",
         }}
@@ -1193,32 +1499,94 @@ export default function LiteraryGlobe({ countries, selectedCountry, onCountrySel
           atlas={atlas}
           countries={countries}
           selectedCountry={selectedCountry}
+          selectedWriter={selectedWriter}
           hoveredCountry={hoveredCountry}
           onCountrySelect={onCountrySelect}
           onCountryHover={setHoveredCountry}
           reducedMotion={reducedMotion}
           economical={economical}
+          showNobelLaureates={showNobelLaureates}
+          nobelCountryId={nobelCountryId}
+          onWriterSelect={onWriterSelect}
+          onLaureateHover={setHoveredLaureate}
         />
       </Canvas>
 
       <div className="globe-vignette" aria-hidden="true" />
       <div className="globe-shadow" aria-hidden="true" />
 
-      {hoveredCountry && (
-        <div className="globe-country-label" role="status">
-          <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
-          <small>
-            {number(hoveredCountry.writers.length)}{" "}
-            {language === "en"
-              ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
-              : `${pluralRu(hoveredCountry.writers.length, [
-                  "автор",
-                  "автора",
-                  "авторов",
-                ])} в архиве`}
-          </small>
+      {showNobelLaureates && visibleNobelCount > 0 && (
+        <div className="globe-nobel-status" role="status" aria-live="polite">
+          <img
+            src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
+            alt=""
+            aria-hidden="true"
+          />
+          <div>
+            <strong>{number(visibleNobelCount)}</strong>
+            <span>
+              {language === "en"
+                ? visibleNobelCount === 1
+                  ? "laureate on the globe"
+                  : "laureates on the globe"
+                : `${pluralRu(visibleNobelCount, [
+                    "лауреат",
+                    "лауреата",
+                    "лауреатов",
+                  ])} на глобусе`}
+            </span>
+          </div>
         </div>
       )}
+
+      {hoveredLaureate ? (
+        <div className="globe-country-label globe-laureate-label" role="status">
+          <span className="globe-laureate-medal" aria-hidden="true">
+            ✦
+          </span>
+          <div>
+            <span>{writerDisplayName(hoveredLaureate.writer)}</span>
+            <small>
+              {t("Нобелевский лауреат")}
+              {hoveredNobelYear
+                ? ` · ${hoveredNobelYear}`
+                : ""}
+              {` · ${countryName(
+                hoveredLaureate.country.code,
+                hoveredLaureate.country.name
+              )}`}
+            </small>
+            <em>
+              {hoveredNobelArticle
+                ? t("Нажмите на метку — откроется статья о лауреате")
+                : t("Нажмите на метку — откроется карточка лауреата")}
+            </em>
+          </div>
+        </div>
+      ) : hoveredCountry ? (
+        <div className="globe-country-label" role="status">
+          <CountryFlagIcon
+            code={hoveredCountry.code}
+            countryName={hoveredCountry.name}
+            className="globe-country-label-flag"
+            size={38}
+            decorative
+          />
+          <div>
+            <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
+            <small>
+              {number(hoveredCountry.writers.length)}{" "}
+              {language === "en"
+                ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
+                : `${pluralRu(hoveredCountry.writers.length, [
+                    "автор",
+                    "автора",
+                    "авторов",
+                  ])} в архиве`}
+            </small>
+          </div>
+        </div>
+      ) : null}
 
       <div className="globe-instruction">
         <span>{t("Тяните, чтобы вращать")}</span>

@@ -6,6 +6,102 @@ export const france: Country = {
   code: "fr",
   writers: [
     {
+      id: "sully_prudhomme",
+      name: "Рене Франсуа Арман Сюлли-Прюдом",
+      fullName: "René François Armand Sully Prudhomme",
+      years: "1839–1907",
+      nobelYear: 1901,
+      birthDate: "1839-03-16",
+      deathDate: "1907-09-06",
+      birthPlace: "Париж, Франция",
+      coordinates: { lat: 48.8566, lng: 2.3522 },
+      portrait: "",
+      bio: "Французский поэт и эссеист, первый лауреат Нобелевской премии по литературе. В его поэзии классическая ясность формы соединяется с философским размышлением о знании, нравственности и человеческой уязвимости.",
+      works: ["Стансы и поэмы", "Счастье", "Одиночества"],
+      genres: ["поэзия", "эссе", "философская лирика"],
+      language: "французский",
+      nationality: "француз",
+      awards: ["Нобелевская премия по литературе 1901 года"],
+      tags: ["XIX век", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1901",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1901/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "frederic_mistral",
+      name: "Фредерик Мистраль",
+      fullName: "Frédéric Mistral",
+      years: "1830–1914",
+      nobelYear: 1904,
+      birthDate: "1830-09-08",
+      deathDate: "1914-03-25",
+      birthPlace: "Майан, Франция",
+      coordinates: { lat: 43.8321, lng: 4.7817 },
+      portrait: "",
+      bio: "Провансальский поэт, лексикограф и деятель движения фелибров. Писал на окситанском языке и посвятил жизнь сохранению языка и культуры Прованса; Нобелевскую премию 1904 года разделил с Хосе Эчегараем.",
+      works: ["Мирейо", "Календау", "Сокровищница фелибров"],
+      genres: ["поэзия", "эпос", "лексикография"],
+      language: "окситанский",
+      nationality: "француз",
+      awards: ["Нобелевская премия по литературе 1904 года"],
+      tags: ["XIX век", "окситанская литература", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1904",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1904/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "romain_rolland",
+      name: "Ромен Роллан",
+      fullName: "Romain Rolland",
+      years: "1866–1944",
+      nobelYear: 1915,
+      birthDate: "1866-01-29",
+      deathDate: "1944-12-30",
+      birthPlace: "Кламси, Франция",
+      coordinates: { lat: 47.4596, lng: 3.5196 },
+      portrait: "",
+      bio: "Французский писатель, драматург, музыковед и убеждённый гуманист. Центральное место в его наследии занимает роман-эпопея «Жан-Кристоф», исследующий становление художника и духовную связь европейских культур.",
+      works: ["Жан-Кристоф", "Кола Брюньон", "Очарованная душа"],
+      genres: ["роман", "драма", "биография", "эссе"],
+      language: "французский",
+      nationality: "француз",
+      awards: ["Нобелевская премия по литературе 1915 года"],
+      tags: ["XX век", "гуманизм", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1915",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1915/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "chretien_de_troyes",
       name: "Кретьен де Труа",
       years: "ок. 1135–ок. 1185",
@@ -701,13 +797,17 @@ export const france: Country = {
           genres: ["роман", "социальная проза"],
           tags: ["справедливость", "милосердие", "Париж", "романтизм"],
           description: "Монументальный роман Виктора Гюго о законе, совести и возможности нравственного преображения, впервые опубликованный в 1862 году.",
-          coverUrl: "https://covers.openlibrary.org/b/id/12721865-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL1063588W",
+          coverUrl: "brand/book-covers/les-miserables-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/les-miserables-editorial.webp",
+          coverSourceUrl: "brand/book-covers/les-miserables-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL1063588W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/les-miserables-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://www.maisonsvictorhugo.paris.fr/",
           editorial: {
@@ -768,6 +868,7 @@ export const france: Country = {
           ],
           description: "Историко-приключенческий роман о молодом гасконце д’Артаньяне и трёх королевских мушкетёрах. Стремительный сюжет соединяет придворную интригу, поединки и размышление о дружбе, верности и личной чести.",
           coverUrl: "brand/book-covers/three-musketeers-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/three-musketeers-editorial.webp",
           coverSourceUrl: "brand/book-covers/three-musketeers-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -778,6 +879,7 @@ export const france: Country = {
             checkedAt: "2026-07-30",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://catalogue.bnf.fr/ark:/12148/cb47239021j",
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-30"
@@ -1009,6 +1111,7 @@ export const france: Country = {
     },
     {
       id: "anatole_france",
+      nobelYear: 1921,
       name: "Анатоль Франс",
       years: "1844–1924",
       birthDate: "1844-04-16",
@@ -1175,13 +1278,17 @@ export const france: Country = {
           genres: ["роман", "философская проза"],
           tags: ["абсурд", "отчуждение", "Алжир", "XX век"],
           description: "Краткий роман Альбера Камю, опубликованный издательством Gallimard в 1942 году. История Мерсо стала одним из ключевых художественных выражений темы абсурда.",
-          coverUrl: "https://covers.openlibrary.org/b/id/13151269-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL1230613W",
+          coverUrl: "brand/book-covers/the-stranger-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/the-stranger-editorial.webp",
+          coverSourceUrl: "brand/book-covers/the-stranger-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL1230613W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/the-stranger-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://www.gallimard.fr/catalogue/l-etranger/9782070360024",
           editorial: {

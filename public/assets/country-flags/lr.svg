@@ -1,17 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-lr desc-lr">
-  <title id="title-lr">Либерия — LR</title>
-  <desc id="desc-lr">Круглая SVG-иконка флага страны «Либерия».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-lr" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-lr"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="lr-a">
+      <path fill-opacity=".7" d="M0 0h512v512H0z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-lr)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M508 42Q501 26 487.0 16.5Q473 7 455 7H57Q39 7 25.0 16.5Q11 26 4 42ZM0 109H512V73H0ZM164 311H512V275H164ZM508 342H164V377H455Q473 377 487.0 367.5Q501 358 508 342ZM164 244H512V207H164ZM0 177H512V140H0Z" fill="#BF0A30"/>
-      <path d="M164 275H512V244H164ZM0 207H171H512V177H0ZM164 342H508Q512 331 512 320V311H164ZM0 140H512V109H0ZM0 64V73H512V64Q512 53 508 42H4Q0 53 0 64Z" fill="#EEEEEE"/>
-      <path d="M57 377H171V207H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#002868"/>
-      <path d="M97 302H133L104 281L115 246L85 268L56 246L67 281L38 302H74L85 337Z" fill="#FFFFFF"/>
-    </g>
+  <g fill-rule="evenodd" clip-path="url(#lr-a)">
+    <path fill="#fff" d="M0 0h767.9v512H0z"/>
+    <path fill="#006" d="M0 0h232.7v232.8H0z"/>
+    <path fill="#c00" d="M0 464.9h767.9V512H0z"/>
+    <path fill="#c00" d="M0 465.4h767.9V512H0zm0-92.9h767.9v46.2H0zm0-93.2h766V326H0zM232.7 0h535.1v46.5H232.7zm0 186h535.1v46.8H232.7zm0-92.7h535.1v46.5H232.7z"/>
+    <path fill="#fff" d="m166.3 177.5-50.7-31-50.4 31.3 18.7-50.9-50.3-31.4 62.3-.4 19.3-50.7L135 95h62.3l-50.1 31.7z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

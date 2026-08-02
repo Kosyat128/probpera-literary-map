@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import ArticleEditor from "@/components/ArticleEditor";
+import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminEnv } from "@/lib/env";
 import { formatDate } from "@/lib/format";
@@ -28,6 +28,8 @@ export default async function EditArticlePage({
     { data: article },
     { data: categoriesResult },
     { data: revisionsResult },
+    { data: templatesResult },
+    { data: authResult },
   ] = await Promise.all([
     supabase.from("articles").select("*").eq("id", id).maybeSingle(),
     supabase
@@ -41,9 +43,22 @@ export default async function EditArticlePage({
       .eq("article_id", id)
       .order("revision_number", { ascending: false })
       .limit(12),
+    supabase
+      .from("editor_templates")
+      .select("id,label,content_html,visibility,owner_id")
+      .order("updated_at", { ascending: false })
+      .limit(60),
+    supabase.auth.getUser(),
   ]);
   const categories = categoriesResult || [];
   const revisions = revisionsResult || [];
+  const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
+    id: template.id,
+    label: template.label,
+    html: template.content_html,
+    visibility: template.visibility as "personal" | "shared",
+    canDelete: template.owner_id === authResult.user?.id,
+  }));
 
   if (!article) notFound();
 
@@ -62,6 +77,7 @@ export default async function EditArticlePage({
         article={article}
         categories={categories}
         publicSiteUrl={adminEnv.publicSiteUrl}
+        templates={templates}
       />
       <div className="dashboard-grid article-maintenance">
         <section className="panel">

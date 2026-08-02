@@ -1,20 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-nz desc-nz">
-  <title id="title-nz">Новая Зеландия — NZ</title>
-  <desc id="desc-nz">Круглая SVG-иконка флага страны «Новая Зеландия».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-nz" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-nz"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-nz)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 337 9 351H48V376Q52 377 57 377Z" fill="#00247D"/>
-      <path d="M415 313 408 307 401 301 404 293 408 282 398 289 391 294 384 289 375 282 379 293 381 301 375 307 367 313H385L388 321L391 331L394 321L397 313ZM415 82 408 75 401 70 404 62 408 50 398 58 391 63 384 58 375 50 379 62 381 70 375 75 367 82H385L388 90L391 100L394 90L397 82ZM472 256 464 250 458 244 461 236 464 225 455 232 448 237 441 232 432 225 435 236 438 244 432 250 424 256H442L445 264L448 274L451 264L454 256ZM358 228 351 221 344 216 347 207 351 196 341 203 334 209 327 203 318 196 322 207 324 216 318 221 310 228H328L331 236L334 246L338 236L340 228Z" fill="#EEEDED"/>
-      <path d="M391 320 395 309H405L397 302L400 292L391 299L382 292L385 302L377 309H388ZM391 89 395 78H405L397 71L400 60L391 68L382 60L385 71L377 78H388ZM448 263 452 252H462L454 245L457 235L448 242L439 235L442 245L434 252H444ZM334 235 338 224H348L340 217L343 206L334 213L325 206L329 217L320 224H331Z" fill="#CF1B2B"/>
-      <path d="M270 192H0V320Q0 335 8 348L9 351H48V376Q52 377 57 377H270Z" fill="#00247D"/>
-      <path d="M270 377V348L230 320H270V249H230L270 221V192H237L171 238V192H100V229L47 192H0V210L55 249H0V320H54L9 351Q11 354 14 357L67 320H91L25 367Q35 374 48 376L100 340V377H171V330L237 377Z" fill="#EEEEEE"/>
-      <path d="M156 377V306H270V263H156V192H114V263H0V306H114V377Z" fill="#CF1B2B"/>
-      <path d="M270 377V374L193 320H171V322L249 377ZM25 367 91 320H67L14 357Q19 363 25 367ZM92 249H100V237L35 192H10ZM270 195 193 249H218L270 212Z" fill="#CF1B2B"/>
+    <g id="nz-b">
+      <g id="nz-a">
+        <path d="M0-.3v.5l1-.5z"/>
+        <path d="M.2.3 0-.1l1-.2z"/>
+      </g>
+      <use xlink:href="#nz-a" transform="scale(-1 1)"/>
+      <use xlink:href="#nz-a" transform="rotate(72 0 0)"/>
+      <use xlink:href="#nz-a" transform="rotate(-72 0 0)"/>
+      <use xlink:href="#nz-a" transform="scale(-1 1)rotate(72)"/>
     </g>
+  </defs>
+  <path fill="#00247d" fill-rule="evenodd" d="M0 0h512v512H0z"/>
+  <g transform="translate(-148.7 90.5)scale(.60566)">
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#fff" transform="translate(900 120)scale(45.4)"/>
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#cc142b" transform="matrix(30 0 0 30 900 120)"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+  <g transform="rotate(82 418.7 105.1)scale(.60566)">
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#fff" transform="rotate(-82 519 -457.7)scale(40.4)"/>
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#cc142b" transform="rotate(-82 519 -457.7)scale(25)"/>
+  </g>
+  <g transform="rotate(82 418.7 105.1)scale(.60566)">
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#fff" transform="rotate(-82 668.6 -327.7)scale(45.4)"/>
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#cc142b" transform="rotate(-82 668.6 -327.7)scale(30)"/>
+  </g>
+  <g transform="translate(-148.7 90.5)scale(.60566)">
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#fff" transform="translate(900 480)scale(50.4)"/>
+    <use xlink:href="#nz-b" width="100%" height="100%" fill="#cc142b" transform="matrix(35 0 0 35 900 480)"/>
+  </g>
+  <path fill="#012169" d="M0 0h256v256H0z"/>
+  <path fill="#fff" d="M256 0v32l-95 96 95 93.5V256h-33.5L127 162l-93 94H0v-34l93-93.5L0 37V0h31l96 94 93-94z"/>
+  <path fill="#c8102e" d="m92 162 5.5 17L21 256H0v-1.5zm62-6 27 4 75 73.5V256zM256 0l-96 98-2-22 75-76zM0 .5 96.5 95 67 91 0 24.5z"/>
+  <path fill="#fff" d="M88 0v256h80V0zM0 88v80h256V88z"/>
+  <path fill="#c8102e" d="M0 104v48h256v-48zM104 0v256h48V0z"/>
 </svg>

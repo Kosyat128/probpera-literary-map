@@ -1,0 +1,41 @@
+FROM node:24-alpine AS dependencies
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY apps/admin/package.json ./apps/admin/package.json
+RUN npm ci
+
+FROM dependencies AS builder
+WORKDIR /app
+COPY apps/admin ./apps/admin
+
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+ARG NEXT_PUBLIC_SITE_URL=https://probpera.ru
+ARG NEXT_PUBLIC_ADMIN_URL=https://admin.probpera.ru
+ARG ADMIN_BASE_PATH=/
+ARG ADMIN_ALLOWED_ORIGINS=admin.probpera.ru,probpera.ru,www.probpera.ru
+
+ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
+ENV NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_ADMIN_URL=$NEXT_PUBLIC_ADMIN_URL
+ENV ADMIN_BASE_PATH=$ADMIN_BASE_PATH
+ENV ADMIN_ALLOWED_ORIGINS=$ADMIN_ALLOWED_ORIGINS
+
+RUN npm run admin:build
+
+FROM node:24-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:nodejs /app/apps/admin/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/admin/.next/static ./apps/admin/.next/static
+
+USER nextjs
+EXPOSE 3000
+CMD ["node", "apps/admin/server.js"]

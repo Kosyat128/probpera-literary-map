@@ -1,17 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-kp desc-kp">
-  <title id="title-kp">КНДР — KP</title>
-  <desc id="desc-kp">Круглая SVG-иконка флага страны «КНДР».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-kp" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-kp"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="kp-a">
+      <path fill-opacity=".7" d="M92.2 7.8h593.6v485.5H92.2z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-kp)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#024FA2"/>
-      <path d="M0 320H512V306H0ZM0 78H512V64H0Z" fill="#EEEEEE"/>
-      <path d="M0 306H512V78H0Z" fill="#ED1C27"/>
-      <path d="M247.0 134.0Q223 110 189.0 110.0Q155 110 131.0 134.0Q107 158 107.0 192.0Q107 226 131.0 250.0Q155 274 189.0 274.0Q223 274 247.0 250.0Q271 226 271.0 192.0Q271 158 247.0 134.0ZM171 217H113L160 183L142 128L189 162L236 128L218 183L265 217H207L189 272Z" fill="#FFFFFF"/>
-    </g>
+  <g fill-rule="evenodd" clip-path="url(#kp-a)" transform="matrix(.86254 0 0 1.0546 -79.5 -8.3)">
+    <path fill="#fff" stroke="#000" stroke-width="1.1" d="M991.8 492.9H4.2V8.4h987.6z"/>
+    <path fill="#3e5698" d="M991.8 405.2H4.2V493h987.6z"/>
+    <path fill="#c60000" d="M991.8 384.9H4.2V116.4h987.6z"/>
+    <path fill="#3e5698" d="M991.8 8.4H4.2V96h987.6z"/>
+    <path fill="#fff" d="M473 250.7c0 60.1-61.5 108.9-137.4 108.9S198 310.8 198 250.6c0-60.1 61.6-108.9 137.6-108.9S473 190.5 473 250.7"/>
+    <path fill="#c40000" d="m402.9 326.8-66.1-38.6-67.1 39 26.3-62.8-66.1-38.5 82.4-.3 26.2-63 24.5 62.8 82.4-.4-67.2 39z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

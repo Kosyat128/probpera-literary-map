@@ -19,6 +19,12 @@ const sitemapArgument = process.argv.find((argument) =>
 const sitemapPath = sitemapArgument
   ? path.resolve(projectRoot, sitemapArgument.split("=").slice(1).join("="))
   : null;
+const directUrlArgument = process.argv.find((argument) =>
+  argument.startsWith("--url=")
+);
+const directUrl = directUrlArgument
+  ? directUrlArgument.split("=").slice(1).join("=").trim()
+  : null;
 
 const sectionDefinitions = [
   {
@@ -145,6 +151,7 @@ function cleanContent(html) {
           "height",
           "loading",
           "id",
+          "class",
         ].includes(attribute)
       ) {
         node.removeAttr(attribute);
@@ -153,6 +160,15 @@ function cleanContent(html) {
 
     if (element.tagName === "img") {
       node.attr("loading", "lazy");
+    }
+    if (node.attr("class")) {
+      const safeClasses = (node.attr("class") || "")
+        .split(/\s+/u)
+        .filter((value) =>
+          ["article-media-split", "article-gallery"].includes(value)
+        );
+      if (safeClasses.length) node.attr("class", safeClasses.join(" "));
+      else node.removeAttr("class");
     }
     if (element.tagName === "a") {
       const href = node.attr("href");
@@ -182,15 +198,137 @@ function cleanContent(html) {
   };
 }
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function mediaSource($, element) {
+  const node = $(element);
+  return (
+    node.attr("data-original") ||
+    node.attr("data-src") ||
+    node.attr("data-lazy-rule") ||
+    node.attr("src") ||
+    ""
+  ).trim();
+}
+
+function imageFigure(source, caption = "") {
+  if (!source) return "";
+  const normalizedCaption = normalizeText(caption);
+  return `<figure><img src="${escapeHtml(source)}" alt="${escapeHtml(
+    normalizedCaption
+  )}" loading="lazy">${
+    normalizedCaption
+      ? `<figcaption>${escapeHtml(normalizedCaption)}</figcaption>`
+      : ""
+  }</figure>`;
+}
+
+function extractRichRecord($, element) {
+  const record = $(element);
+
+  if (record.find(".t167").length) {
+    const image = record.find(".t167__img").first();
+    const source = mediaSource($, image);
+    const caption = normalizeText(record.find(".t167__imgdescr").first().text());
+    const text = record.find(".t167__text").first().html() || "";
+    if (source || normalizeText(record.find(".t167__text").first().text())) {
+      return `<section class="article-media-split">${imageFigure(
+        source,
+        caption
+      )}<div>${text}</div></section>`;
+    }
+  }
+
+  if (record.find(".t-slds").length) {
+    const captions = record
+      .find(".t-slds__caption .t-slds__descr")
+      .map((_, node) => normalizeText($(node).text()))
+      .get();
+    const seen = new Set();
+    const figures = [];
+    record.find(".t-slds__item").each((index, slide) => {
+      const media = $(slide)
+        .find("[data-original],[data-src],img")
+        .toArray()
+        .map((node) => mediaSource($, node))
+        .find((source) => source && !seen.has(source));
+      if (!media) return;
+      seen.add(media);
+      figures.push(imageFigure(media, captions[index] || ""));
+    });
+    if (figures.length) {
+      return `<div class="article-gallery">${figures.join("")}</div>`;
+    }
+  }
+
+  const seen = new Set();
+  const figures = [];
+  record.find("img,[data-original],[data-src]").each((_, node) => {
+    const source = mediaSource($, node);
+    if (!source || seen.has(source)) return;
+    seen.add(source);
+    const figure = $(node).closest("figure");
+    const caption = normalizeText(
+      figure.find("figcaption").first().text() ||
+        $(node).closest("[class*=imgblock]").find("[class*=imgdescr]").first().text()
+    );
+    figures.push(imageFigure(source, caption));
+  });
+  if (figures.length) {
+    return figures.length === 1
+      ? figures[0]
+      : `<div class="article-gallery">${figures.join("")}</div>`;
+  }
+
+  return "";
+}
+
 function selectArticleContent($) {
   $("#t-header,#t-footer,.t890,.t704,.tolstoycomments-feed").remove();
   const fragments = [];
+  let started = false;
 
-  $(".ql-editor").each((_, element) => {
-    const node = $(element);
-    if (normalizeText(node.text()).length >= 80) {
-      fragments.push(node.html() || "");
+  $("#allrecords .t-rec").each((_, element) => {
+    const record = $(element);
+    const recordText = normalizeText(record.text());
+    const editors = record.find(".ql-editor");
+
+    if (started && /^Опубликовано\s*:/iu.test(recordText)) return false;
+    if (!started) {
+      const isArticleStart = editors
+        .toArray()
+        .some((editor) => {
+          const node = $(editor);
+          return (
+            normalizeText(node.text()).length >= 80 ||
+            node.find("h2,h3,figure,img").length > 0
+          );
+        });
+      if (!isArticleStart) return;
+      started = true;
     }
+
+    if (editors.length) {
+      editors.each((__, editor) => {
+        const node = $(editor);
+        if (
+          normalizeText(node.text()) ||
+          node.find("h2,h3,figure,img").length > 0
+        ) {
+          fragments.push(node.html() || "");
+        }
+      });
+      return;
+    }
+
+    const richRecord = extractRichRecord($, element);
+    if (richRecord) fragments.push(richRecord);
   });
 
   if (!fragments.length) {
@@ -338,17 +476,28 @@ export const articleCatalog: ArticleCatalogEntry[] = ${JSON.stringify(
 await mkdir(outputDirectory, { recursive: true });
 await mkdir(path.dirname(catalogPath), { recursive: true });
 
-const sitemap = await loadSitemap();
-const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/gisu)]
-  .map((match) => match[1].trim())
-  .filter((url) => /\/read\/(?:page-article\/.+|page-words|page-stories)\/\d+$/u.test(url))
-  .sort((first, second) => first.localeCompare(second, "ru", { numeric: true }));
+const sitemap = directUrl ? "" : await loadSitemap();
+const urls = directUrl
+  ? [directUrl]
+  : [...sitemap.matchAll(/<loc>(.*?)<\/loc>/gisu)]
+      .map((match) => match[1].trim())
+      .filter((url) =>
+        /\/read\/(?:page-article\/.+|page-words|page-stories)\/\d+$/u.test(url)
+      )
+      .sort((first, second) =>
+        first.localeCompare(second, "ru", { numeric: true })
+      );
 
 console.log(`Found ${urls.length} article pages.`);
 const articles = await mapWithConcurrency(urls, 5, (url, index) =>
   crawlArticle(url, index, urls.length)
 );
 console.log();
+
+if (directUrl) {
+  console.log(`Saved the selected article document without rebuilding the catalog.`);
+  process.exit(0);
+}
 
 articles.sort((first, second) => {
   const sectionDifference = first.sectionLabel.localeCompare(

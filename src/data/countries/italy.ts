@@ -6,6 +6,38 @@ export const italy: Country = {
   code: "it",
   writers: [
     {
+      id: "giosue_carducci",
+      name: "Джозуэ Кардуччи",
+      fullName: "Giosuè Carducci",
+      years: "1835–1907",
+      nobelYear: 1906,
+      birthDate: "1835-07-27",
+      deathDate: "1907-02-16",
+      birthPlace: "Вальдикастелло, Италия",
+      coordinates: { lat: 43.9762, lng: 10.2337 },
+      portrait: "",
+      bio: "Итальянский поэт, литературовед и педагог, связавший гражданскую поэзию эпохи Рисорджименто с вниманием к античной метрике и классической форме. Его творчество стало важной частью формирования культурного языка объединённой Италии.",
+      works: ["Варварские оды", "Новые стихи", "Рифмы и ритмы"],
+      genres: ["поэзия", "литературная критика", "эссе"],
+      language: "итальянский",
+      nationality: "итальянец",
+      awards: ["Нобелевская премия по литературе 1906 года"],
+      tags: ["XIX век", "Рисорджименто", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1906",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1906/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "dante_alighieri",
       name: "Данте Алигьери",
       years: "1265–1321",

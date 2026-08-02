@@ -11,5 +11,8 @@ The globe uses a restored spherical projection derived from:
 The Library of Congress describes the item as free to use and reuse. The scan
 is a public-domain reproduction of a work published in 1887.
 
-`antique-world-1887.webp` is the 3072 × 1536 desktop texture.
-`antique-world-1887-mobile.webp` is the 1536 × 768 compact texture.
+The production texture is rebuilt from the official 6152 × 3006 IIIF scan so
+that engraved place names and hachured relief survive the reprojection.
+
+`antique-world-1887.webp` is the 4096 × 2048 desktop texture.
+`antique-world-1887-mobile.webp` is the 2048 × 1024 compact texture.

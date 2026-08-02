@@ -1,22 +1,24 @@
 {
-  "generatedAt": "2026-07-30T03:38:07.757Z",
+  "generatedAt": "2026-08-02T09:15:47.494Z",
   "policy": "docs/COVER_RIGHTS_POLICY.md",
   "summary": {
     "covers": 14,
-    "displayAllowed": 14,
-    "blocked": 0,
-    "withIssues": 0
+    "displayAllowed": 1,
+    "blocked": 13,
+    "withIssues": 13
   },
   "covers": [
     {
       "file": "england.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/8281954-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL9170454W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL9170454W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/hamlet-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/hamlet-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "england.ts",
@@ -24,9 +26,11 @@
       "coverSourceUrl": "brand/book-covers/hobbit-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "england.ts",
@@ -35,18 +39,22 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/12721865-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL1063588W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL1063588W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
@@ -55,28 +63,34 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/three-musketeers-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/13151269-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL1230613W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL1230613W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "japan.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/2237620-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL2625457W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL2625457W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -84,29 +98,35 @@
       "coverSourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/9411873-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL166894W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL166894W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/12621906-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL267171W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL267171W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -114,9 +134,11 @@
       "coverSourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -134,19 +156,23 @@
       "coverSourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "usa.ts",
-      "coverUrl": "https://covers.openlibrary.org/b/id/8261367-L.jpg",
-      "coverSourceUrl": "https://openlibrary.org/works/OL50548W",
-      "status": "external-preview",
-      "sourceUrl": "https://openlibrary.org/works/OL50548W",
-      "checkedAt": "2026-07-26",
-      "displayAllowed": true,
-      "issues": []
+      "coverUrl": "brand/book-covers/beloved-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/beloved-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/beloved-editorial.webp",
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     }
   ]
 }

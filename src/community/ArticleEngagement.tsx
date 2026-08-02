@@ -19,6 +19,15 @@ type Comment = {
   profiles?: { display_name?: string } | null;
 };
 
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
+}
+
 function formatCommentDate(value: string, language: "ru" | "en") {
   return new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
     day: "numeric",
@@ -214,9 +223,11 @@ export default function ArticleEngagement({
             ? comments.length === 1
               ? "comment"
               : "comments"
-            : comments.length === 1
-              ? "комментарий"
-              : "комментариев"}
+            : pluralRu(comments.length, [
+                "комментарий",
+                "комментария",
+                "комментариев",
+              ])}
         </span>
       </header>
       <div className="rating-summary">
@@ -228,7 +239,7 @@ export default function ArticleEngagement({
               ? ratingCount === 1
                 ? "rating"
                 : "ratings"
-              : "оценок"}
+              : pluralRu(ratingCount, ["оценка", "оценки", "оценок"])}
           </small>
         </span>
         <div aria-label={isBook ? t("Оценить книгу") : t("Оценить публикацию")}>

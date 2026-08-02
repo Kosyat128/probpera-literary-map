@@ -1,18 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-cf desc-cf">
-  <title id="title-cf">Центральноафриканская Республика — CF</title>
-  <desc id="desc-cf">Круглая SVG-иконка флага страны «Центральноафриканская Республика».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-cf" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-cf"><circle cx="32" cy="32" r="30"/></clipPath>
+    <clipPath id="cf-a">
+      <path fill-opacity=".7" d="M0 0h512v512H0z"/>
+    </clipPath>
   </defs>
-  <g clip-path="url(#clip-cf)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V284H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#003082"/>
-      <path d="M0 284H512V192H0Z" fill="#EEEEEE"/>
-      <path d="M0 192H512V100H0Z" fill="#289728"/>
-      <path d="M0 100H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64ZM98 340H129L104 321L113 292L88 310L63 292L72 321L47 340H78L88 370Z" fill="#FFCE00"/>
-      <path d="M213 377H299V7H213Z" fill="#D21034"/>
-    </g>
+  <g fill-rule="evenodd" clip-path="url(#cf-a)">
+    <path fill="#00f" d="M-52-.5h768v127H-52z"/>
+    <path fill="#ff0" d="M-52 383.5h768V512H-52z"/>
+    <path fill="#009a00" d="M-52 255h768v128.5H-52z"/>
+    <path fill="#fff" d="M-52 126.5h768V255H-52z"/>
+    <path fill="red" d="M268 0h128v512H268z"/>
+    <path fill="#ff0" d="M109.5 112.3 75.9 89.1l-33.4 23.4 11.6-39.2-32.5-24.6 40.7-1L75.7 8.8l13.5 38.6 40.8.8L97.6 73"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

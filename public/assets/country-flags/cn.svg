@@ -1,15 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-cn desc-cn">
-  <title id="title-cn">Китай — CN</title>
-  <desc id="desc-cn">Круглая SVG-иконка флага страны «Китай».</desc>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-cn" viewBox="0 0 512 512">
   <defs>
-    <clipPath id="clip-cn"><circle cx="32" cy="32" r="30"/></clipPath>
+    <path id="cn-a" fill="#ff0" d="M1-.3-.7.8 0-1 .6.8-1-.3z"/>
   </defs>
-  <g clip-path="url(#clip-cn)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#DE2910"/>
-      <path d="M158 320 169 315 177 323 176 312 186 306 174 304 172 293 167 303 155 301 163 310ZM225 278 220 268 228 260 216 261 211 251 209 262 197 264 207 270 206 281 214 273ZM211 225 215 214H227L217 207L221 195L211 202L202 195L205 207L196 214H207ZM158 178 169 173 177 181 176 170 186 164 174 162 172 151 167 161 155 159 163 168ZM100 292 113 254 153 253 121 229 133 191 100 214 67 191 78 229 46 253 86 254Z" fill="#FFDE02"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+  <path fill="#ee1c25" d="M0 0h512v512H0z"/>
+  <use xlink:href="#cn-a" width="30" height="20" transform="translate(128 128)scale(76.8)"/>
+  <use xlink:href="#cn-a" width="30" height="20" transform="rotate(-121 142.6 -47)scale(25.5827)"/>
+  <use xlink:href="#cn-a" width="30" height="20" transform="rotate(-98.1 198 -82)scale(25.6)"/>
+  <use xlink:href="#cn-a" width="30" height="20" transform="rotate(-74 272.4 -114)scale(25.6137)"/>
+  <use xlink:href="#cn-a" width="30" height="20" transform="matrix(16 -19.968 19.968 16 256 230.4)"/>
 </svg>

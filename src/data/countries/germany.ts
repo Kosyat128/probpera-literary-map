@@ -6,6 +6,102 @@ export const germany: Country = {
   code: "de",
   writers: [
     {
+      id: "theodor_mommsen",
+      name: "Кристиан Маттиас Теодор Моммзен",
+      fullName: "Christian Matthias Theodor Mommsen",
+      years: "1817–1903",
+      nobelYear: 1902,
+      birthDate: "1817-11-30",
+      deathDate: "1903-11-01",
+      birthPlace: "Гардинг, Германия",
+      coordinates: { lat: 54.3306, lng: 8.7808 },
+      portrait: "",
+      bio: "Немецкий историк античности, правовед и автор монументальной «Римской истории». Его труды объединили источниковедческую строгость с выразительным историческим повествованием и заметно повлияли на представление Европы о Древнем Риме.",
+      works: ["Римская история", "Римское государственное право", "Римское уголовное право"],
+      genres: ["историческая проза", "историография", "эссе"],
+      language: "немецкий",
+      nationality: "немец",
+      awards: ["Нобелевская премия по литературе 1902 года"],
+      tags: ["XIX век", "античность", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1902",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1902/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "rudolf_eucken",
+      name: "Рудольф Кристоф Эйкен",
+      fullName: "Rudolf Christoph Eucken",
+      years: "1846–1926",
+      nobelYear: 1908,
+      birthDate: "1846-01-05",
+      deathDate: "1926-09-15",
+      birthPlace: "Аурих, Германия",
+      coordinates: { lat: 53.4692, lng: 7.4823 },
+      portrait: "",
+      bio: "Немецкий философ и автор трудов о духовной жизни, этике и месте человека в современной культуре. Его публицистическая проза стремилась соединить философскую систему с нравственной практикой.",
+      works: ["Смысл и ценность жизни", "Основные течения современной мысли", "Борьба за духовное содержание жизни"],
+      genres: ["философская проза", "эссе", "публицистика"],
+      language: "немецкий",
+      nationality: "немец",
+      awards: ["Нобелевская премия по литературе 1908 года"],
+      tags: ["XIX век", "XX век", "философия", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1908",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1908/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "paul_heyse",
+      name: "Пауль Йохан Людвиг фон Хейзе",
+      fullName: "Paul Johann Ludwig von Heyse",
+      years: "1830–1914",
+      nobelYear: 1910,
+      birthDate: "1830-03-15",
+      deathDate: "1914-04-02",
+      birthPlace: "Берлин, Германия",
+      coordinates: { lat: 52.52, lng: 13.405 },
+      portrait: "",
+      bio: "Немецкий прозаик, поэт и драматург, мастер психологической новеллы. Хейзе также переводил итальянскую литературу и поддерживал связи между немецкой и средиземноморской культурными традициями.",
+      works: ["Л’Арраббьята", "Дети мира", "В раю"],
+      genres: ["новелла", "роман", "драма", "поэзия"],
+      language: "немецкий",
+      nationality: "немец",
+      awards: ["Нобелевская премия по литературе 1910 года"],
+      tags: ["XIX век", "немецкая новелла", "Нобелевская премия"],
+      relatedWriters: [],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1910",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1910/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "walther_von_der_vogelweide",
       name: "Вальтер фон дер Фогельвейде",
       years: "ок. 1170–1230",
@@ -587,6 +683,7 @@ export const germany: Country = {
     },
     {
       id: "gerhart_hauptmann",
+      nobelYear: 1912,
       name: "Герхарт Гауптман",
       years: "1862–1946",
       birthDate: "1862-11-15",

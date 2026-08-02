@@ -17,6 +17,8 @@ const allowedOrigins = [
 ];
 
 const nextConfig: NextConfig = {
+  output: "standalone",
+  outputFileTracingRoot: process.cwd().replace(/[\\/]apps[\\/]admin$/, ""),
   basePath: adminBasePath,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -33,6 +35,9 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-DNS-Prefetch-Control", value: "off" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Strict-Transport-Security", value: "max-age=31536000" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
             key: "Permissions-Policy",

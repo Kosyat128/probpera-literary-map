@@ -1,16 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-jm desc-jm">
-  <title id="title-jm">Ямайка — JM</title>
-  <desc id="desc-jm">Круглая SVG-иконка флага страны «Ямайка».</desc>
-  <defs>
-    <clipPath id="clip-jm"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-jm)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#009B3A"/>
-      <path d="M509 45 305 192 509 339Q512 330 512 320V64Q512 54 509 45ZM207 192 3 45Q0 54 0 64V320Q0 330 3 339Z" fill="#141414"/>
-      <path d="M463 376Q497 372 509 339L305 192L509 45Q497 12 463 8L256 157L49 8Q15 12 3 45L207 192L3 339Q15 372 49 376L256 227Z" fill="#FFD202"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-jm" viewBox="0 0 512 512">
+  <g fill-rule="evenodd">
+    <path fill="#000001" d="m0 0 256 256L0 512zm512 0L256 256l256 256z"/>
+    <path fill="#090" d="m0 0 256 256L512 0zm0 512 256-256 256 256z"/>
+    <path fill="#fc0" d="M512 0h-47.7L0 464.3V512h47.7L512 47.7z"/>
+    <path fill="#fc0" d="M0 0v47.7L464.3 512H512v-47.7L47.7 0z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

@@ -6,6 +6,7 @@ import {
   geometryContainsGeographicPoint,
   geographicToSphere,
   GLOBE_LONGITUDE_OFFSET_DEGREES,
+  partitionGeometryAtGeographicPoint,
   uvToGeographic,
   type GlobeGeoGeometry,
 } from "./globeGeography";
@@ -137,4 +138,27 @@ describe("география интерактивного глобуса", () =>
       ).toBe(true);
     }
   );
+
+  it("отделяет Французскую Гвиану для выбора, не исключая её из контура Франции", () => {
+    const france = featureByCode("FR");
+    expect(france).toBeDefined();
+
+    const { matching, remainder } = partitionGeometryAtGeographicPoint(
+      france!.geometry,
+      -52.3135,
+      4.9224
+    );
+
+    expect(matching).not.toBeNull();
+    expect(remainder).not.toBeNull();
+    expect(
+      geometryContainsGeographicPoint(matching!, -52.3135, 4.9224)
+    ).toBe(true);
+    expect(
+      geometryContainsGeographicPoint(remainder!, -52.3135, 4.9224)
+    ).toBe(false);
+    expect(
+      geometryContainsGeographicPoint(remainder!, 2.3522, 48.8566)
+    ).toBe(true);
+  });
 });

@@ -20,6 +20,13 @@ const siteContentModule = path.join(
   "cms",
   "site.generated.ts"
 );
+const bookEditionsModule = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "cms",
+  "bookEditions.generated.ts"
+);
 
 const supabaseUrl = (
   process.env.SUPABASE_URL ||
@@ -192,6 +199,8 @@ const [
   rawNavigationItems,
   rawPages,
   rawRedirects,
+  rawLiteraryWorks,
+  rawBookEditions,
 ] = await Promise.all([
   fetchRows("articles", {
     select:
@@ -238,6 +247,20 @@ const [
     select: "source_path,destination_path,status_code",
     is_active: "eq.true",
     order: "source_path.asc",
+  }),
+  fetchRows("literary_works", {
+    select: "id,legacy_id,editorial_status",
+    editorial_status: "in.(reviewed,verified)",
+    order: "legacy_id.asc",
+  }),
+  fetchRows("book_editions", {
+    select:
+      "id,work_id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_source_url,cover_rights_status,license_name,license_url,creator,rights_holder,rights_checked_at,source_url,is_primary,updated_at",
+    cover_url: "not.is.null",
+    cover_source_url: "not.is.null",
+    rights_checked_at: "not.is.null",
+    cover_rights_status: "in.(public-domain,licensed,permission,external-preview)",
+    order: "is_primary.desc,updated_at.desc",
   }),
 ]);
 
@@ -372,6 +395,32 @@ const redirects = rawRedirects.map((redirect) => ({
   statusCode: redirect.status_code,
 }));
 
+const workLegacyIds = new Map(
+  rawLiteraryWorks.map((work) => [work.id, work.legacy_id])
+);
+const bookEditionsByWorkId = {};
+for (const edition of rawBookEditions) {
+  const legacyWorkId = workLegacyIds.get(edition.work_id);
+  if (!legacyWorkId || bookEditionsByWorkId[legacyWorkId]) continue;
+  bookEditionsByWorkId[legacyWorkId] = {
+    title: edition.title || "",
+    isbn10: edition.isbn_10 || null,
+    isbn13: edition.isbn_13 || null,
+    publisher: edition.publisher || "",
+    publicationYear: edition.publication_year || null,
+    language: edition.language || "",
+    coverUrl: edition.cover_url,
+    coverSourceUrl: edition.cover_source_url,
+    coverRightsStatus: edition.cover_rights_status,
+    licenseName: edition.license_name || "",
+    licenseUrl: edition.license_url || null,
+    creator: edition.creator || "",
+    rightsHolder: edition.rights_holder || "",
+    rightsCheckedAt: edition.rights_checked_at,
+    sourceUrl: edition.source_url || edition.cover_source_url,
+  };
+}
+
 const generatedAt = new Date().toISOString();
 const siteContent = {
   generatedAt,
@@ -380,6 +429,7 @@ const siteContent = {
   navigationMenus,
   pages,
   redirects,
+  bookEditionsByWorkId,
 };
 const snapshot = {
   version: 1,
@@ -408,6 +458,15 @@ await Promise.all([
     "utf8"
   ),
   fs.writeFile(
+    path.join(publicCmsDirectory, "book-editions.json"),
+    JSON.stringify(
+      { generatedAt, editions: bookEditionsByWorkId },
+      null,
+      2
+    ),
+    "utf8"
+  ),
+  fs.writeFile(
     articleCatalogModule,
     asGeneratedModule(
       "cmsArticleCatalog",
@@ -425,8 +484,17 @@ await Promise.all([
     ),
     "utf8"
   ),
+  fs.writeFile(
+    bookEditionsModule,
+    asGeneratedModule(
+      "cmsBookEditionsByWorkId",
+      bookEditionsByWorkId,
+      "Verified exact-edition covers exported from the normalized library."
+    ),
+    "utf8"
+  ),
 ]);
 
 console.log(
-  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${banners.length} banners, ${pages.length} pages and ${navigationMenus.length} menus from CMS.`
+  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers from CMS.`
 );

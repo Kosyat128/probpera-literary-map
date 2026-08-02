@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { isValidIsbn, normalizeIsbn } from "@/lib/isbn";
+import { triggerPublicBuild } from "@/lib/public-build";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const editionSchema = z.object({
@@ -126,6 +127,8 @@ export async function saveBookEditionAction(formData: FormData) {
     );
   }
 
+  const build = await triggerPublicBuild("book_edition.upserted");
+
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "book_edition.upserted",
@@ -135,6 +138,9 @@ export async function saveBookEditionAction(formData: FormData) {
       isbn10: parsed.data.isbn10,
       isbn13: parsed.data.isbn13,
       workId: parsed.data.workId,
+      publicBuildRequested: build.ok,
+      publicBuildConfigured: build.configured,
+      publicBuildError: build.ok ? null : build.error,
     },
   });
 

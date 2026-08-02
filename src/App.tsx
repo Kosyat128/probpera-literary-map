@@ -21,18 +21,22 @@ import {
 } from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
+import { isNobelLaureate } from "./data/nobel";
 import {
   buildBookArchive,
   getWriterWorkTitles,
   isCoverDisplayAllowed,
+  type BookArchiveEntry,
 } from "./data/bookArchive";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
 import { articlePath, journalPath } from "./utils/articleRoutes";
 import sectionPrizesImage from "./assets/brand/section-prizes.webp";
+import { articleCatalog } from "./data/articles/catalog";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
+const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
 const LiteraryCalendar = lazy(() => import("./components/LiteraryCalendar"));
 const BookArchiveSection = lazy(
@@ -124,6 +128,15 @@ const editorialFeatures = [
 
 const sectionLinks = [
   {
+    id: "journal",
+    group: "Читать",
+    title: "Все публикации журнала",
+    copy: "Полный авторский архив: статьи, рецензии, эссе, литературные истории и тематические циклы.",
+    href: journalPath(),
+    image: "brand/magazine-cover.webp",
+    metric: "all-articles" as const,
+  },
+  {
     id: "book-opinions",
     group: "Читать",
     title: "Мнение о книге",
@@ -197,9 +210,9 @@ const sectionLinks = [
   },
   {
     id: "author-stories",
-    group: "Культура и язык",
-    title: "Литературные истории",
-    copy: "Необычные судьбы произведений, авторские замыслы, профессии писателей и культурные открытия.",
+    group: "Читать",
+    title: "Рассказы и литературные истории",
+    copy: "Авторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия.",
     href: journalPath("author-stories"),
     image:
       "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
@@ -224,15 +237,58 @@ const sectionLinks = [
   },
   {
     id: "calendar",
-    group: "События",
+    group: "Сообщество и проект",
     title: "Литературный календарь",
     copy: "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.",
     href: "#calendar",
     image: sectionPrizesImage,
   },
+  {
+    id: "authors",
+    group: "Сообщество и проект",
+    title: "Указатель писателей",
+    copy: "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.",
+    href: "#authors",
+    image: "brand/chekhov.png",
+    metric: "writers" as const,
+  },
+  {
+    id: "community",
+    group: "Сообщество и проект",
+    title: "Форум читателей",
+    copy: "Обсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей.",
+    href: "#community",
+    image: "brand/editorial-paper.webp",
+    action: "forum" as const,
+    metric: "community" as const,
+  },
+  {
+    id: "account",
+    group: "Сообщество и проект",
+    title: "Личный кабинет и библиотека",
+    copy: "Сохранённые материалы, любимые книги, страны и писатели, оценки и история участия.",
+    href: "#community",
+    image: "brand/series-2.webp",
+    action: "account" as const,
+    metric: "account" as const,
+  },
+  {
+    id: "about",
+    group: "Сообщество и проект",
+    title: "О проекте и редакции",
+    copy: "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.",
+    href: "#about",
+    image: "brand/section-prizes.webp",
+    metric: "project" as const,
+  },
 ];
 
-const sectionMenuGroups = ["Читать", "Энциклопедия", "Культура и язык", "События"].map(
+const sectionMenuGroups = [
+  "Читать",
+  "Энциклопедия",
+  "Культура и язык",
+  "Сообщество и проект",
+].map(
   (group) => ({
     group,
     sections: sectionLinks.filter((section) => section.group === group),
@@ -298,16 +354,6 @@ function writerName(writer: Writer) {
   return writer.name || writer.fullName || "Автор";
 }
 
-function hasNobel(writer: Writer) {
-  return Boolean(
-    writer.nobel ||
-      writer.isNobel ||
-      writer.nobelYear ||
-      writer.nobelPrize ||
-      (writer.awards || []).some((award) => /нобел/i.test(award))
-  );
-}
-
 function assetUrl(path: string) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 }
@@ -326,8 +372,11 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>("all");
+  const [nobelSpotlightCountryId, setNobelSpotlightCountryId] = useState<string | null>(null);
   const [communityOpen, setCommunityOpen] = useState(false);
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+  const [requestedBook, setRequestedBook] =
+    useState<BookArchiveEntry | null>(null);
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
@@ -395,7 +444,9 @@ export default function App() {
   const filteredCountries = useMemo(() => {
     if (atlasFilter === "all") return countryArchive;
     if (atlasFilter === "nobel") {
-      return countryArchive.filter((country) => country.writers.some(hasNobel));
+      return countryArchive.filter((country) =>
+        country.writers.some(isNobelLaureate)
+      );
     }
     if (atlasFilter === "rich") {
       return countryArchive.filter((country) => country.writers.length >= 10);
@@ -419,7 +470,9 @@ export default function App() {
   const filterCounts = useMemo(
     () => ({
       all: countryArchive.length,
-      nobel: countryArchive.filter((country) => country.writers.some(hasNobel)).length,
+      nobel: countryArchive.filter((country) =>
+        country.writers.some(isNobelLaureate)
+      ).length,
       rich: countryArchive.filter((country) => country.writers.length >= 10).length,
       portrait: countryArchive.filter((country) =>
         country.writers.some((writer) => writer.portrait)
@@ -492,15 +545,34 @@ export default function App() {
   }, [countryArchive]);
 
   const bookOfDay = useMemo(() => {
-    const editorialBooks = bookArchive.filter(
+    const premiumBooks = bookArchive.filter(
       (book) =>
         isCoverDisplayAllowed(book) &&
+        Boolean(book.description) &&
         ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
-    const books = editorialBooks.length ? editorialBooks : bookArchive;
+    const editorialBooks = bookArchive.filter((book) =>
+      ["verified", "reviewed"].includes(book.editorial?.status || "")
+    );
+    const describedBooks = bookArchive.filter((book) => Boolean(book.description));
+    const books = [
+      ...(premiumBooks.length
+        ? premiumBooks
+        : editorialBooks.length
+          ? editorialBooks
+          : describedBooks.length
+            ? describedBooks
+            : bookArchive),
+    ].sort((first, second) =>
+      `${first.countryId}:${first.writerId}:${first.id}`.localeCompare(
+        `${second.countryId}:${second.writerId}:${second.id}`
+      )
+    );
     if (!books.length) return null;
-    const dayNumber = Math.floor(Date.now() / 86_400_000);
-    return books[dayNumber % books.length];
+    const today = new Date();
+    const localDayKey =
+      today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
+    return books[localDayKey % books.length];
   }, [bookArchive]);
   const bookOfDayHasCover = Boolean(
     bookOfDay && isCoverDisplayAllowed(bookOfDay)
@@ -510,10 +582,17 @@ export default function App() {
     return verifiedBookFacts[dayNumber % verifiedBookFacts.length];
   }, []);
 
+  const openBook = useCallback((book: BookArchiveEntry) => {
+    setRequestedBook(book);
+  }, []);
+
   const selectCountry = useCallback(
     (country: Country, focusAtlas = false, writer?: Writer) => {
       setSelectedCountry(country);
       setSelectedWriter(writer ?? country.writers[0] ?? null);
+      setNobelSpotlightCountryId((current) =>
+        current && current !== country.id ? null : current
+      );
       setSearch("");
       setSearchOpen(false);
       if (focusAtlas) {
@@ -531,6 +610,7 @@ export default function App() {
   const closeCountry = useCallback(() => {
     setSelectedCountry(null);
     setSelectedWriter(null);
+    setNobelSpotlightCountryId(null);
   }, []);
 
   const openCommunity = useCallback((view: CommunityView) => {
@@ -546,13 +626,11 @@ export default function App() {
       <div className="topline">
         <span>{t("Литературный журнал и энциклопедия")}</span>
         <p>{t("Архив пополняется ежедневно")}</p>
-        <div>
-          <a href="https://t.me/probbaperra" target="_blank" rel="noreferrer">
-            Telegram
-          </a>
-          <a href="https://vk.com/probperaru" target="_blank" rel="noreferrer">
-            VK
-          </a>
+        <div aria-label={t("Проба Пера в цифрах")}>
+          <span>{number(articleCatalog.length)} {t("публикаций")}</span>
+          <span>
+            {countryArchive.length ? number(countryArchive.length) : "…"} {t("стран")}
+          </span>
         </div>
       </div>
 
@@ -607,9 +685,14 @@ export default function App() {
                       <a
                         href={section.href}
                         key={section.id}
-                        onClick={(event) =>
-                          event.currentTarget.closest("details")?.removeAttribute("open")
-                        }
+                        onClick={(event) => {
+                          event.currentTarget
+                            .closest("details")
+                            ?.removeAttribute("open");
+                          if (!section.action) return;
+                          event.preventDefault();
+                          openCommunity(section.action);
+                        }}
                       >
                         <strong>{t(section.title)}</strong>
                         <small>{t(section.copy)}</small>
@@ -765,6 +848,7 @@ export default function App() {
                 <span aria-hidden="true">⌕</span>
                 <input
                   id="country-search"
+                  role="combobox"
                   value={search}
                   placeholder={
                     selectedCountry
@@ -772,6 +856,8 @@ export default function App() {
                       : t("Россия, Франция, Япония…")
                   }
                   autoComplete="off"
+                  aria-autocomplete="list"
+                  aria-haspopup="listbox"
                   aria-expanded={searchOpen}
                   aria-controls="country-results"
                   onClick={() => setSearchOpen(true)}
@@ -788,7 +874,7 @@ export default function App() {
               </div>
 
               {searchOpen && (
-                <div className="search-results" id="country-results">
+                <div className="search-results" id="country-results" role="listbox">
                   <span className="search-caption">
                     {search ? t("Результаты поиска") : t("Избранные архивы")}
                   </span>
@@ -796,6 +882,8 @@ export default function App() {
                     searchResults.map((country) => (
                       <button
                         type="button"
+                        role="option"
+                        aria-selected={selectedCountry?.id === country.id}
                         key={country.id}
                         onPointerDown={(event) => {
                           event.preventDefault();
@@ -849,6 +937,8 @@ export default function App() {
                   className={atlasFilter === value ? "is-active" : ""}
                   type="button"
                   key={value}
+                  data-atlas-filter={value}
+                  aria-pressed={atlasFilter === value}
                   onClick={() => setAtlasFilter(value)}
                 >
                   {t(label)} <span>{number(filterCounts[value])}</span>
@@ -866,6 +956,17 @@ export default function App() {
               ))}
             </div>
           </div>
+
+          {atlasFilter === "nobel" && (
+            <Suspense fallback={null}>
+              <NobelArchiveStrip
+                countries={countryArchive}
+                onLaureateSelect={(country, writer) =>
+                  selectCountry(country, true, writer)
+                }
+              />
+            </Suspense>
+          )}
 
           <div className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
             <section className="globe-column" id="globe-stage">
@@ -900,10 +1001,6 @@ export default function App() {
                   <b>✦</b>
                   <i>Ю</i>
                 </span>
-                <span className="atlas-edition">
-                  <small>Издание</small>
-                  <strong>MMXXVI</strong>
-                </span>
               </div>
 
               {filteredCountries.length > 0 ? (
@@ -918,7 +1015,16 @@ export default function App() {
                   <LiteraryWorldMap
                     countries={filteredCountries}
                     selectedCountry={selectedCountry}
+                    selectedWriter={selectedWriter}
                     onCountrySelect={selectCountry}
+                    onWriterSelect={setSelectedWriter}
+                    showNobelLaureates={
+                      atlasFilter === "nobel" ||
+                      nobelSpotlightCountryId === selectedCountry?.id
+                    }
+                    nobelCountryId={
+                      atlasFilter === "nobel" ? null : nobelSpotlightCountryId
+                    }
                   />
                 </Suspense>
               ) : (
@@ -942,6 +1048,14 @@ export default function App() {
                   country={selectedCountry}
                   selectedWriter={selectedWriter}
                   onWriterSelect={setSelectedWriter}
+                  nobelSpotlightActive={
+                    nobelSpotlightCountryId === selectedCountry.id
+                  }
+                  onNobelSpotlightToggle={() =>
+                    setNobelSpotlightCountryId((current) =>
+                      current === selectedCountry.id ? null : selectedCountry.id
+                    )
+                  }
                   onClose={closeCountry}
                 />
               </Suspense>
@@ -1009,7 +1123,11 @@ export default function App() {
                 </a>
               ) : (
                 <>
-                  <span>Проба Пера</span>
+                  <span>
+                    {bookOfDay
+                      ? writerName(bookOfDay.writer)
+                      : t("Книжный архив")}
+                  </span>
                   <strong>{bookOfDay?.title || t("Книга дня")}</strong>
                   <i>✦</i>
                 </>
@@ -1040,6 +1158,9 @@ export default function App() {
               )}
               {bookOfDay && (
                 <div className="book-actions">
+                  <button type="button" onClick={() => openBook(bookOfDay)}>
+                    {t("О книге")} <span>→</span>
+                  </button>
                   <button
                     type="button"
                     onClick={() =>
@@ -1175,6 +1296,8 @@ export default function App() {
         >
           <BookArchiveSection
             books={bookArchive}
+            requestedBook={requestedBook}
+            onRequestedBookHandled={() => setRequestedBook(null)}
             onBookSelect={(book) =>
               selectCountry(book.country, true, book.writer)
             }
@@ -1251,19 +1374,89 @@ export default function App() {
         </Suspense>
 
         <section className="community-section" id="community">
-          <div className="community-illustration" aria-hidden="true" />
+          <div className="community-illustration">
+            <div className="community-visual-intro">
+              <span className="section-kicker">{t("Разговор после чтения")}</span>
+              <blockquote>
+                {t(
+                  "Чтение становится событием, когда мысль продолжается в разговоре."
+                )}
+              </blockquote>
+              <p>
+                {t(
+                  "Выберите тему, продолжите мысль из статьи или предложите собственный маршрут чтения."
+                )}
+              </p>
+              <div className="community-visual-rule">
+                <span>{t("Редакционный принцип клуба")}</span>
+                <i aria-hidden="true" />
+              </div>
+            </div>
+            <div className="community-reading-notes" aria-label={t("Темы для разговора")}>
+              <span>{t("С чего начать разговор")}</span>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">01</i>
+                <span>
+                  <small>{t("Читательский дневник")}</small>
+                  <strong>{t("Какая книга не отпускает вас сейчас?")}</strong>
+                </span>
+              </button>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">02</i>
+                <span>
+                  <small>{t("Искусство перевода")}</small>
+                  <strong>{t("Когда перевод становится новой книгой")}</strong>
+                </span>
+              </button>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">03</i>
+                <span>
+                  <small>{t("Литературная карта")}</small>
+                  <strong>{t("Соберите собственный маршрут чтения")}</strong>
+                </span>
+              </button>
+            </div>
+            <div
+              className="community-visual-stats"
+              aria-label={t("Энциклопедия сообщества")}
+            >
+              <span>
+                <strong>
+                  {totalWriters ? number(totalWriters) : "—"}
+                </strong>
+                <small>{t("авторов в энциклопедии")}</small>
+              </span>
+              <span>
+                <strong>
+                  {bookArchive.length ? number(bookArchive.length) : "—"}
+                </strong>
+                <small>{t("произведений в архиве")}</small>
+              </span>
+              <span>
+                <strong>
+                  {countryArchive.length ? number(countryArchive.length) : "—"}
+                </strong>
+                <small>{t("стран на карте")}</small>
+              </span>
+            </div>
+          </div>
           <div className="community-copy">
             <span className="section-kicker">{t("Литературное сообщество")}</span>
             <h2>{t("Клуб внимательных читателей")}</h2>
             <p>
               {t(
-                "Форум для обстоятельного разговора о книгах, переводах и экранизациях. Без случайных виджетов: единый профиль, содержательные комментарии, рейтинги и редакционная модерация."
+                "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
+              )}
+            </p>
+            <p className="community-copy-note">
+              {t(
+                "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки."
               )}
             </p>
             <ul>
-              <li>{t("Обсуждения книг и публикаций журнала")}</li>
-              <li>{t("Оценки материалов и произведений")}</li>
-              <li>{t("Профиль читателя и история участия")}</li>
+              <li>{t("Разговоры о книгах, статьях, переводах и экранизациях")}</li>
+              <li>{t("Оценки, комментарии и тематические подборки читателей")}</li>
+              <li>{t("Личная библиотека, любимые авторы, страны и история участия")}</li>
             </ul>
             <div>
               <button type="button" onClick={() => openCommunity("forum")}>
@@ -1338,6 +1531,8 @@ export default function App() {
               sections={sectionLinks}
               countryCount={countryArchive.length}
               bookCount={bookArchive.length}
+              writerCount={totalWriters}
+              onAction={openCommunity}
             />
           </Suspense>
         </section>
@@ -1480,26 +1675,6 @@ export default function App() {
             <CmsNavigationLinks location="footer" withHeading />
           </nav>
         </div>
-        <p className="graphics-attribution">
-          Иконки государственных флагов основаны на графике{" "}
-          <a
-            href="https://github.com/twitter/twemoji"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Twemoji
-          </a>
-          . © Twitter, Inc. и другие участники. Графика используется по лицензии{" "}
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/"
-            target="_blank"
-            rel="license noopener noreferrer"
-          >
-            Creative Commons Attribution 4.0 International
-          </a>
-          . Изменения: круглая обрезка, преобразование и упаковка в SVG,
-          добавление рамки, русских названий и метаданных.
-        </p>
         <div className="footer-bottom">
           <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>
@@ -1510,6 +1685,7 @@ export default function App() {
       <CommunityHub
         open={communityOpen}
         initialView={communityView}
+        countries={countryArchive}
         onClose={() => setCommunityOpen(false)}
       />
 
@@ -1517,13 +1693,12 @@ export default function App() {
         open={globalSearchOpen}
         countries={countryArchive}
         books={bookArchive}
+        articleCount={articleCatalog.length}
         onClose={() => setGlobalSearchOpen(false)}
         onCountrySelect={(country, writer) =>
           selectCountry(country, true, writer)
         }
-        onBookSelect={(book) =>
-          selectCountry(book.country, true, book.writer)
-        }
+        onBookSelect={openBook}
       />
     </div>
   );

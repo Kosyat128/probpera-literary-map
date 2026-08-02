@@ -1,0 +1,79 @@
+name: Encrypted Supabase backup
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 2 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Verify backup secrets
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          test -n "$SUPABASE_DB_URL"
+          test -n "$SUPABASE_URL"
+          test -n "$SUPABASE_SERVICE_ROLE_KEY"
+          test -n "$BACKUP_ENCRYPTION_KEY"
+
+      - name: Create database and storage backup
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          BACKUP_OUTPUT_DIR: backup/storage
+        run: |
+          mkdir -p backup/database
+          pg_dump "$SUPABASE_DB_URL" --format=custom --no-owner --no-privileges --file=backup/database/probpera.dump
+          npm run backup:storage
+
+      - name: Encrypt and verify archive
+        id: archive
+        env:
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+          archive="probpera-backup-${stamp}.tar.gz.enc"
+          tar -czf backup.tar.gz backup
+          openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -in backup.tar.gz -out "$archive" -pass env:BACKUP_ENCRYPTION_KEY
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in "$archive" -out verify.tar.gz -pass env:BACKUP_ENCRYPTION_KEY
+          tar -xOf verify.tar.gz backup/database/probpera.dump > verify.dump
+          pg_restore --list verify.dump > /dev/null
+          sha256sum "$archive" > "${archive}.sha256"
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+          if [[ "$(date -u +%d)" == "01" ]]; then echo "retention=90" >> "$GITHUB_OUTPUT"; else echo "retention=30" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Upload encrypted backup
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.archive.outputs.archive }}
+          path: |
+            ${{ steps.archive.outputs.archive }}
+            ${{ steps.archive.outputs.archive }}.sha256
+          retention-days: ${{ steps.archive.outputs.retention }}
+          if-no-files-found: error

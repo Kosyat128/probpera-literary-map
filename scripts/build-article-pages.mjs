@@ -203,7 +203,7 @@ const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
 const homeDocument = load(baseHtml, { decodeEntities: false });
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
-homeDocument('meta[property="og:image"],meta[name="twitter:image"]').attr("content", `${siteUrl}/og-v3.webp`);
+homeDocument('meta[property="og:image"]').attr("content", `${siteUrl}/og-v3.webp`);
 homeDocument("head").append(`<meta property="og:url" content="${siteUrl}/">`);
 homeDocument("head").append(
   `<script type="application/ld+json">${JSON.stringify({
@@ -264,9 +264,6 @@ for (const article of catalog) {
   $('meta[property="og:title"]').attr("content", socialTitle);
   $('meta[property="og:description"]').attr("content", socialDescription);
   $('meta[property="og:image"]').attr("content", socialImageUrl);
-  $('meta[name="twitter:title"]').attr("content", socialTitle);
-  $('meta[name="twitter:description"]').attr("content", socialDescription);
-  $('meta[name="twitter:image"]').attr("content", socialImageUrl);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   if (article.allowIndexing === false) {
     $('meta[name="robots"]').attr("content", "noindex,follow");
@@ -414,11 +411,6 @@ for (const page of cmsSnapshot.pages || []) {
     page.seoTitle || page.title
   );
   $('meta[property="og:description"]').attr("content", description);
-  $('meta[name="twitter:title"]').attr(
-    "content",
-    page.seoTitle || page.title
-  );
-  $('meta[name="twitter:description"]').attr("content", description);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
   if (page.allowIndexing === false) {
@@ -523,8 +515,27 @@ await fs.writeFile(
       start_url: siteRootPath,
       scope: siteRootPath,
       display: "standalone",
+      orientation: "any",
       background_color: "#17001f",
       theme_color: "#4b087c",
+      categories: ["books", "education", "magazines"],
+      shortcuts: [
+        {
+          name: "Литературная карта",
+          short_name: "Карта",
+          url: `${siteRootPath}#atlas`,
+        },
+        {
+          name: "Статьи журнала",
+          short_name: "Статьи",
+          url: `${siteRootPath}#featured-journal`,
+        },
+        {
+          name: "Литературный календарь",
+          short_name: "Календарь",
+          url: `${siteRootPath}#calendar`,
+        },
+      ],
       icons: [
         {
           src: `${siteBasePath || ""}/brand/probpera-logo.png`,
@@ -569,6 +580,28 @@ await fs.writeFile(
   `${uniqueServerRedirects
     .map(({ source, destination }) => `${source} ${destination} 301`)
     .join("\n")}\n`,
+  "utf8"
+);
+await fs.writeFile(
+  path.join(distDirectory, "_headers"),
+  `/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/textures/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/brand/*
+  Cache-Control: public, max-age=2592000
+`,
   "utf8"
 );
 

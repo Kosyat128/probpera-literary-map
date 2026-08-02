@@ -1,16 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-cz desc-cz">
-  <title id="title-cz">Чехия — CZ</title>
-  <desc id="desc-cz">Круглая SVG-иконка флага страны «Чехия».</desc>
-  <defs>
-    <clipPath id="clip-cz"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-cz)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M20 22 249 192H512V71Q512 43 495.5 25.0Q479 7 455 7H57Q35 7 20 22Z" fill="#D7141A"/>
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V192H249L19 363Q35 377 57 377Z" fill="#EEEEEE"/>
-      <path d="M20 22Q0 40 0 71V320Q0 346 19 363L249 192Z" fill="#11457E"/>
-    </g>
-  </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-cz" viewBox="0 0 512 512">
+  <path fill="#fff" d="M0 0h512v256H0z"/>
+  <path fill="#d7141a" d="M0 256h512v256H0z"/>
+  <path fill="#11457e" d="M300 256 0 56v400z"/>
 </svg>

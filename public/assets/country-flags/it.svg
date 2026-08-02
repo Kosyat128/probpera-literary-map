@@ -1,16 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-it desc-it">
-  <title id="title-it">Италия — IT</title>
-  <desc id="desc-it">Круглая SVG-иконка флага страны «Италия».</desc>
-  <defs>
-    <clipPath id="clip-it"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-it)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H341V377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#CE2B37"/>
-      <path d="M57 377H171V7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#009246"/>
-      <path d="M171 377H341V7H171Z" fill="#EEEEEE"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-it" viewBox="0 0 512 512">
+  <g fill-rule="evenodd" stroke-width="1pt">
+    <path fill="#fff" d="M0 0h512v512H0z"/>
+    <path fill="#009246" d="M0 0h170.7v512H0z"/>
+    <path fill="#ce2b37" d="M341.3 0H512v512H341.3z"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

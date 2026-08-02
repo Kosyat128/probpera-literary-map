@@ -1,19 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-rw desc-rw">
-  <title id="title-rw">Руанда — RW</title>
-  <desc id="desc-rw">Круглая SVG-иконка флага страны «Руанда».</desc>
-  <defs>
-    <clipPath id="clip-rw"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-rw)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M512 64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64V320Q0 344 16.5 360.5Q33 377 57 377H455Q479 377 495.5 360.5Q512 344 512 320Z" fill="#20603D"/>
-      <path d="M0 178H512V78H0Z" fill="#FAD201"/>
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V149H0V320Q0 344 16.5 360.5Q33 377 57 377Z" fill="#00A1DE"/>
-      <path d="M370 377 377 320 399 373 392 316 427 362 404 308 450 344 415 298 468 320 422 285 480 293 426 271 484 263 426 256 480 234 422 241 468 206 415 228 450 183 404 218 427 165 392 211 399 153 377 207 370 149 362 207 340 153 348 211 313 165 335 218 289 183 325 228 271 206 317 241 260 234 313 256 256 263 313 271 260 293 317 285 271 320 325 298 289 344 335 308 313 362 348 316 340 373 362 320Z" fill="#FAD201"/>
-      <path d="M427 263Q427 248 419.0 234.5Q411 221 398.0 213.5Q385 206 370 206Q346 206 329.5 223.0Q313 240 313.0 263.5Q313 287 329.5 303.5Q346 320 369.5 320.0Q393 320 410.0 303.5Q427 287 427 263Z" fill="#00A1DE"/>
-      <path d="M339.5 232.5Q327 245 327.0 263.0Q327 281 339.5 293.5Q352 306 369.5 306.0Q387 306 399.5 293.5Q412 281 412.0 263.0Q412 245 399.5 232.5Q387 220 369.5 220.0Q352 220 339.5 232.5Z" fill="#FAD201"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-rw" viewBox="0 0 512 512">
+  <path fill="#20603d" d="M0 0h512v512H0z"/>
+  <path fill="#fad201" d="M0 0h512v384H0z"/>
+  <path fill="#00a1de" d="M0 0h512v256H0z"/>
+  <g transform="translate(374.4 133.8)scale(.7111)">
+    <g id="rw-b">
+      <path id="rw-a" fill="#e5be01" d="M116.1 0 35.7 4.7l76.4 25.4-78.8-16.3L100.6 58l-72-36.2L82 82.1 21.9 28.6l36.2 72-44.3-67.3L30 112 4.7 35.7 0 116.1-1-1z"/>
+      <use xlink:href="#rw-a" width="100%" height="100%" transform="scale(1 -1)"/>
     </g>
+    <use xlink:href="#rw-b" width="100%" height="100%" transform="scale(-1 1)"/>
+    <circle r="34.3" fill="#e5be01" stroke="#00a1de" stroke-width="3.4"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
 </svg>

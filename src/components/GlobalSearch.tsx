@@ -21,6 +21,7 @@ type Props = {
   open: boolean;
   countries: Country[];
   books: BookArchiveEntry[];
+  articleCount: number;
   onClose: () => void;
   onCountrySelect: (country: Country, writer?: Writer) => void;
   onBookSelect: (book: BookArchiveEntry) => void;
@@ -39,6 +40,7 @@ function normalize(value: string) {
   return value
     .toLocaleLowerCase("ru")
     .replace(/ё/g, "е")
+    .replace(/°/g, " градус ")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -76,10 +78,55 @@ function matches(query: string, values: Array<string | undefined>) {
   );
 }
 
+function matchScore(
+  query: string,
+  primaryValues: Array<string | undefined>,
+  secondaryValues: Array<string | undefined>
+) {
+  const normalizedQuery = normalize(query);
+  const primary = primaryValues.filter(Boolean).map((value) => normalize(value!));
+  const secondary = secondaryValues
+    .filter(Boolean)
+    .map((value) => normalize(value!));
+  if (!matches(normalizedQuery, [...primaryValues, ...secondaryValues])) {
+    return null;
+  }
+  if (primary.some((value) => value === normalizedQuery)) return 0;
+  if (primary.some((value) => value.startsWith(normalizedQuery))) return 1;
+  if (primary.some((value) => value.includes(normalizedQuery))) return 2;
+  if (secondary.some((value) => value.startsWith(normalizedQuery))) return 3;
+  if (secondary.some((value) => value.includes(normalizedQuery))) return 4;
+  return 5;
+}
+
+function rankMatches<T>(
+  items: T[],
+  query: string,
+  primaryValues: (item: T) => Array<string | undefined>,
+  secondaryValues: (item: T) => Array<string | undefined>,
+  label: (item: T) => string
+) {
+  return items
+    .map((item) => ({
+      item,
+      score: matchScore(query, primaryValues(item), secondaryValues(item)),
+    }))
+    .filter(
+      (entry): entry is { item: T; score: number } => entry.score !== null
+    )
+    .sort(
+      (first, second) =>
+        first.score - second.score ||
+        label(first.item).localeCompare(label(second.item), "ru")
+    )
+    .map((entry) => entry.item);
+}
+
 export default function GlobalSearch({
   open,
   countries,
   books,
+  articleCount,
   onClose,
   onCountrySelect,
   onBookSelect,
@@ -158,13 +205,16 @@ export default function GlobalSearch({
       };
     }
 
-    const countryMatches = countries
-      .filter((country) =>
-        matches(normalizedQuery, [
+    const countryMatches = rankMatches(
+      countries,
+      normalizedQuery,
+      (country) => [
           country.name,
           countryName(country.code, country.name),
           country.code,
           country.capital,
+      ],
+      (country) => [
           country.region,
           country.continent,
           country.officialLanguage,
@@ -176,19 +226,22 @@ export default function GlobalSearch({
           ...(country.literaryPeriods || []),
           ...(country.periods || []),
           ...(country.literaryMovements || []),
-        ])
-      )
-      .slice(0, 5);
+      ],
+      (country) => countryName(country.code, country.name)
+    ).slice(0, 5);
 
-    const writerMatches = countries
-      .flatMap((country) =>
+    const writerMatches = rankMatches(
+      countries.flatMap((country) =>
         country.writers.map((writer) => ({ country, writer }))
-      )
-      .filter(({ writer }) =>
-        matches(normalizedQuery, [
+      ),
+      normalizedQuery,
+      ({ writer }) => [
           writerName(writer),
           writer.name,
           writer.fullName,
+          ...getWriterWorkTitles(writer),
+      ],
+      ({ writer }) => [
           writer.years,
           writer.literaryEra,
           writer.movement,
@@ -197,39 +250,44 @@ export default function GlobalSearch({
           writer.description,
           ...(writer.genres || []),
           ...(writer.tags || []),
-          ...getWriterWorkTitles(writer),
           ...(writer.awards || []),
           ...(writer.languages || []),
           ...(writer.places || []),
-        ])
-      )
-      .slice(0, 7);
+      ],
+      ({ writer }) => writerName(writer)
+    ).slice(0, 7);
 
-    const bookMatches = books
-      .filter((book) =>
-        matches(normalizedQuery, [
+    const bookMatches = rankMatches(
+      books,
+      normalizedQuery,
+      (book) => [
           book.title,
           book.originalTitle,
+          ...(book.alternateTitles || []),
           book.writerName,
+      ],
+      (book) => [
           book.countryName,
           countryName(book.country.code, book.countryName),
           book.description,
           book.originalLanguage,
           ...(book.genres || []),
           ...(book.tags || []),
-        ])
-      )
-      .slice(0, 6);
+      ],
+      (book) => book.title
+    ).slice(0, 6);
 
-    const articleMatches = articles
-      .filter((article) =>
-        matches(normalizedQuery, [
+    const articleMatches = rankMatches(
+      articles,
+      normalizedQuery,
+      (article) => [article.title],
+      (article) => [
           article.title,
           article.description,
           article.sectionLabel,
-        ])
-      )
-      .slice(0, 7);
+      ],
+      (article) => article.title
+    ).slice(0, 7);
 
     return {
       countries: countryMatches,
@@ -434,8 +492,8 @@ export default function GlobalSearch({
             {articlesLoading
               ? t("Подключаем редакционный архив…")
               : language === "en"
-                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articles.length || 157)} articles`
-                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articles.length || 157)} ${pluralRu(articles.length || 157, ["статья", "статьи", "статей"])}`}
+                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articleCount)} articles`
+                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articleCount)} ${pluralRu(articleCount, ["статья", "статьи", "статей"])}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

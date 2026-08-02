@@ -581,6 +581,7 @@ export const russia: Country = {
           ],
           description: "Роман о столкновении поколений и мировоззрений в России накануне великих общественных перемен. В центре повествования — Евгений Базаров, чья уверенность в отрицании всех авторитетов проходит испытание дружбой, любовью и самой жизнью.",
           coverUrl: "brand/book-covers/fathers-and-sons-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/fathers-and-sons-editorial.webp",
           coverSourceUrl: "brand/book-covers/fathers-and-sons-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -588,12 +589,13 @@ export const russia: Country = {
             creator: "Редакция «Пробы Пера»",
             rightsHolder: "Проба Пера",
             sourceUrl: "brand/book-covers/fathers-and-sons-editorial.webp",
-            checkedAt: "2026-07-30",
+            checkedAt: "2026-08-01",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://www.culture.ru/materials/258142/otcy-i-deti-glavnoe-o-romane",
           editorial: {
             status: "verified",
-            reviewedAt: "2026-07-30"
+            reviewedAt: "2026-08-01"
           }
         }
       ],
@@ -740,13 +742,17 @@ export const russia: Country = {
           genres: ["роман", "психологическая проза"],
           tags: ["вина", "нравственный выбор", "Петербург", "реализм"],
           description: "Роман о преступлении, самообмане и трудном возвращении к человеческой связи. Впервые публиковался по частям в журнале «Русский вестник» в 1866 году.",
-          coverUrl: "https://covers.openlibrary.org/b/id/9411873-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL166894W",
+          coverUrl: "brand/book-covers/crime-and-punishment-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+          coverSourceUrl: "brand/book-covers/crime-and-punishment-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL166894W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/crime-and-punishment-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://fedordostoevsky.ru/works/lifetime/crime/",
           editorial: {
@@ -810,13 +816,17 @@ export const russia: Country = {
           genres: ["роман-эпопея", "исторический роман"],
           tags: ["наполеоновские войны", "семья", "история", "реализм"],
           description: "Роман-эпопея о частной жизни и историческом времени. Отдельное книжное издание в шести томах вышло в 1868–1869 годах.",
-          coverUrl: "https://covers.openlibrary.org/b/id/12621906-L.jpg",
-          coverSourceUrl: "https://openlibrary.org/works/OL267171W",
+          coverUrl: "brand/book-covers/war-and-peace-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/war-and-peace-editorial.webp",
+          coverSourceUrl: "brand/book-covers/war-and-peace-editorial.webp",
           coverRights: {
-            status: "external-preview",
-            sourceUrl: "https://openlibrary.org/works/OL267171W",
-            checkedAt: "2026-07-26",
-            note: "Внешнее превью Open Library; файл не хранится в проекте."
+            status: "editorial-original",
+            licenseName: "Редакционное оформление «Пробы Пера»",
+            creator: "Редакция «Пробы Пера»",
+            rightsHolder: "Проба Пера",
+            sourceUrl: "brand/book-covers/war-and-peace-editorial.webp",
+            checkedAt: "2026-08-01",
+            note: "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
           },
           sourceUrl: "https://tolstoy.ru/creativity/90-volume-collection-of-the-works/",
           editorial: {
@@ -889,6 +899,7 @@ export const russia: Country = {
           ],
           description: "Последняя пьеса Чехова о семье, которая возвращается в родовое имение накануне его продажи. За будничными разговорами и комическими паузами раскрывается болезненный разрыв между прошлым, настоящим и ещё не наступившим будущим.",
           coverUrl: "brand/book-covers/cherry-orchard-editorial.webp",
+          coverThumbnailUrl: "brand/book-covers/thumbs/cherry-orchard-editorial.webp",
           coverSourceUrl: "brand/book-covers/cherry-orchard-editorial.webp",
           coverRights: {
             status: "editorial-original",
@@ -896,12 +907,13 @@ export const russia: Country = {
             creator: "Редакция «Пробы Пера»",
             rightsHolder: "Проба Пера",
             sourceUrl: "brand/book-covers/cherry-orchard-editorial.webp",
-            checkedAt: "2026-07-30",
+            checkedAt: "2026-08-01",
             note: "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
           },
+          sourceUrl: "https://www.culture.ru/materials/253776/kak-chitat-vishnevyi-sad-chekhova",
           editorial: {
             status: "verified",
-            reviewedAt: "2026-07-30"
+            reviewedAt: "2026-08-01"
           }
         }
       ],

@@ -1,5 +1,7 @@
 import type { Country } from "./types";
 import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
+import { mergeNobelLaureates } from "./nobelLaureatesSupplement";
+import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { countryFlag } from "../../utils/countryFlag";
 
 import { afghanistan } from "./afghanistan";
@@ -451,7 +453,9 @@ const curatedCountries: Country[] = [
   zimbabwe,
 ];
 
-export const countries: Country[] = mergeGeneratedWriters(curatedCountries).map(
+export const countries: Country[] = mergeArticleReferencedBooks(
+  mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+).map(
   (country) => ({
     ...country,
     flag: country.flag || countryFlag(country.code),

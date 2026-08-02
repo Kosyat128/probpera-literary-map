@@ -7,6 +7,70 @@ export const denmark: Country = {
 
   writers: [
     {
+      id: "karl_gjellerup",
+      name: "Карл Адольф Гьеллеруп",
+      fullName: "Karl Adolph Gjellerup",
+      years: "1857–1919",
+      nobelYear: 1917,
+      birthDate: "1857-06-02",
+      deathDate: "1919-10-11",
+      birthPlace: "Рохольте, Дания",
+      coordinates: { lat: 55.1809, lng: 12.0925 },
+      portrait: "",
+      bio: "Датский поэт и прозаик, писавший также по-немецки. Его творчество прошло путь от натурализма к философской прозе, в которой европейские мотивы соединяются с интересом к буддийской мысли.",
+      works: ["Пилигрим Каманита", "Мельница", "Минна"],
+      genres: ["роман", "поэзия", "философская проза"],
+      language: "датский",
+      nationality: "датчанин",
+      awards: ["Нобелевская премия по литературе 1917 года"],
+      tags: ["XIX век", "XX век", "Нобелевская премия"],
+      relatedWriters: ["henrik_pontoppidan"],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1917",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1917/summary/"
+          }
+        ]
+      }
+    },
+    {
+      id: "henrik_pontoppidan",
+      name: "Хенрик Понтоппидан",
+      fullName: "Henrik Pontoppidan",
+      years: "1857–1943",
+      nobelYear: 1917,
+      birthDate: "1857-07-24",
+      deathDate: "1943-08-21",
+      birthPlace: "Фредерисия, Дания",
+      coordinates: { lat: 55.5657, lng: 9.7526 },
+      portrait: "",
+      bio: "Датский писатель-реалист, внимательно исследовавший социальные перемены, религиозную среду и цену личного самоопределения. Его крупные романы создают широкую панораму датского общества конца XIX — начала XX века.",
+      works: ["Счастливчик Пер", "Земля обетованная", "Царство мёртвых"],
+      genres: ["роман", "реализм", "социальная проза"],
+      language: "датский",
+      nationality: "датчанин",
+      awards: ["Нобелевская премия по литературе 1917 года"],
+      tags: ["XIX век", "XX век", "реализм", "Нобелевская премия"],
+      relatedWriters: ["karl_gjellerup"],
+      articleUrl: "",
+      editorial: {
+        status: "verified",
+        reviewedAt: "2026-08-01",
+        sources: [
+          {
+            title: "The Nobel Prize in Literature 1917",
+            publisher: "Nobel Prize",
+            url: "https://www.nobelprize.org/prizes/literature/1917/summary/"
+          }
+        ]
+      }
+    },
+    {
       id: "ludvig_holberg",
       name: "Людвиг Хольберг",
       fullName: "Ludvig Holberg",

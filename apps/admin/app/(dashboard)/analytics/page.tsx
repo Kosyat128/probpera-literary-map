@@ -6,11 +6,27 @@ export default async function AnalyticsPage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-  const [{ data: viewsResult }, { data: ratingsResult }, { count: commentsCount }] =
+  const [
+    { data: viewsResult, count: viewsCount },
+    { data: ratingsResult, count: ratingsCount },
+    { count: commentsCount },
+  ] =
     await Promise.all([
-      supabase.from("content_views").select("path,referrer_host,created_at").gte("created_at", since).limit(10_000),
-      supabase.from("ratings").select("subject_type,subject_id,score").limit(10_000),
-      supabase.from("article_comments").select("*", { count: "exact", head: true }).gte("created_at", since),
+      supabase
+        .from("content_views")
+        .select("path,referrer_host,created_at", { count: "exact" })
+        .gte("created_at", since)
+        .order("created_at", { ascending: false })
+        .limit(10_000),
+      supabase
+        .from("ratings")
+        .select("subject_type,subject_id,score", { count: "exact" })
+        .gte("created_at", since)
+        .limit(10_000),
+      supabase
+        .from("article_comments")
+        .select("id", { count: "exact", head: true })
+        .gte("created_at", since),
     ]);
   const views = viewsResult || [];
   const ratings = ratingsResult || [];
@@ -33,9 +49,9 @@ export default async function AnalyticsPage() {
       <header className="page-heading"><div><span className="eyebrow">Собственные данные сайта</span><h1>Статистика</h1>
         <p>Просмотры, источники переходов, рейтинги и комментарии без посреднического виджета. Персональные тексты и адреса пользователей здесь не собираются.</p></div></header>
       <section className="stats-grid">
-        <article className="stat-card"><span>Просмотры за 30 дней</span><strong>{views.length.toLocaleString("ru-RU")}</strong><small>внутренняя аналитика</small></article>
+        <article className="stat-card"><span>Просмотры за 30 дней</span><strong>{(viewsCount || 0).toLocaleString("ru-RU")}</strong><small>точный автоматический счётчик</small></article>
         <article className="stat-card"><span>Уникальных страниц</span><strong>{pathCounts.size.toLocaleString("ru-RU")}</strong><small>с зарегистрированными просмотрами</small></article>
-        <article className="stat-card"><span>Средняя оценка</span><strong>{averageRating ? averageRating.toFixed(2) : "—"}</strong><small>{ratings.length} оценок</small></article>
+        <article className="stat-card"><span>Средняя оценка</span><strong>{averageRating ? averageRating.toFixed(2) : "—"}</strong><small>{ratingsCount || 0} оценок за 30 дней</small></article>
         <article className="stat-card"><span>Новые комментарии</span><strong>{(commentsCount || 0).toLocaleString("ru-RU")}</strong><small>за 30 дней</small></article>
       </section>
       <div className="dashboard-grid">

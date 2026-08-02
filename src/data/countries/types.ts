@@ -1,6 +1,7 @@
 export type WorkProfile = {
   id: string;
   title: string;
+  alternateTitles?: string[];
   originalTitle?: string;
   firstPublished?: number;
   originalLanguage?: string;
@@ -8,6 +9,7 @@ export type WorkProfile = {
   tags?: string[];
   description?: string;
   coverUrl?: string;
+  coverThumbnailUrl?: string;
   coverSourceUrl?: string;
   coverRights?: {
     status:
@@ -26,6 +28,15 @@ export type WorkProfile = {
     note?: string;
   };
   sourceUrl?: string;
+  edition?: {
+    title: string;
+    isbn10?: string | null;
+    isbn13?: string | null;
+    publisher?: string;
+    publicationYear?: number | null;
+    language?: string;
+    sourceUrl?: string;
+  };
   editorial?: {
     status: "draft" | "reviewed" | "verified";
     reviewedAt?: string;

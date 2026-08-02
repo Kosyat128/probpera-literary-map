@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title-hn desc-hn">
-  <title id="title-hn">Гондурас — HN</title>
-  <desc id="desc-hn">Круглая SVG-иконка флага страны «Гондурас».</desc>
-  <defs>
-    <clipPath id="clip-hn"><circle cx="32" cy="32" r="30"/></clipPath>
-  </defs>
-  <g clip-path="url(#clip-hn)">
-    <rect width="64" height="64" fill="#FFFFFF"/>
-    <g transform="matrix(0.16216216 0 0 -0.16216216 -9.51351351 63.13513514)">
-      <path d="M0 249H512V135H0Z" fill="#EEEEEE"/>
-      <path d="M455 377Q479 377 495.5 360.5Q512 344 512 320V249H0V320Q0 344 16.5 360.5Q33 377 57 377ZM0 64V135H512V64Q512 40 495.5 23.5Q479 7 455 7H57Q33 7 16.5 23.5Q0 40 0 64Z" fill="#0156A3"/>
-      <path d="M260 195H271L262 189L266 178L256 185L247 178L250 189L241 195H253L256 206ZM336 160 326 167H338L341 178L345 167H356L347 160L351 149L341 156L332 149ZM345 224H356L347 217L351 206L341 213L332 206L336 217L326 224H338L341 235ZM164 160 155 167H166L170 178L173 167H185L176 160L179 149L170 156L161 149ZM173 224H185L176 217L179 206L170 213L161 206L164 217L155 224H166L170 235Z" fill="#2657A7"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-hn" viewBox="0 0 512 512">
+  <path fill="#18c3df" d="M0 0h512v512H0z"/>
+  <path fill="#fff" d="M0 170.7h512v170.6H0z"/>
+  <g id="hn-c" fill="#18c3df" transform="translate(256 256)scale(28.44446)">
+    <g id="hn-b">
+      <path id="hn-a" d="m0-1-.3 1 .5.1z"/>
+      <use xlink:href="#hn-a" width="100%" height="100%" transform="scale(-1 1)"/>
     </g>
+    <use xlink:href="#hn-b" width="100%" height="100%" transform="rotate(72)"/>
+    <use xlink:href="#hn-b" width="100%" height="100%" transform="rotate(-72)"/>
+    <use xlink:href="#hn-b" width="100%" height="100%" transform="rotate(144)"/>
+    <use xlink:href="#hn-b" width="100%" height="100%" transform="rotate(-144)"/>
   </g>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#DCCFC7" stroke-width="1.5"/>
+  <use xlink:href="#hn-c" width="100%" height="100%" transform="translate(142.2 -45.5)"/>
+  <use xlink:href="#hn-c" width="100%" height="100%" transform="translate(142.2 39.8)"/>
+  <use xlink:href="#hn-c" width="100%" height="100%" transform="translate(-142.2 -45.5)"/>
+  <use xlink:href="#hn-c" width="100%" height="100%" transform="translate(-142.2 39.8)"/>
 </svg>

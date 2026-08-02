@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -46,10 +46,30 @@ jobs:
         run: npm run links:audit
 
       - name: Audit encyclopedia and media
-        run: npm run countries:audit && npm run media:audit && npm run covers:audit
+        run: npm run countries:audit && npm run media:audit && npm run media:audit:legacy && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
 
       - name: Build public site and admin
         run: npm run build:all
+
+      - name: Enforce production performance budget
+        run: npm run performance:audit
+
+      - name: Install browser quality tools
+        run: npm install --no-save --ignore-scripts @playwright/test@1.60.0 @axe-core/playwright@4.11.3 && npx playwright install --with-deps chromium
+
+      - name: Run browser, mobile and accessibility checks
+        run: npm run test:e2e
+
+      - name: Upload browser diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: browser-quality-report
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Check production dependencies
         run: npm audit --omit=dev --audit-level=high

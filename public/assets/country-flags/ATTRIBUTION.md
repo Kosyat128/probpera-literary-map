@@ -1,12 +1,11 @@
 # Attribution and license notice
 
-The country flag artwork in this package is based on Twemoji graphics.
+The country flag artwork in this package comes from the open-source
+[`flag-icons`](https://github.com/lipis/flag-icons) collection.
 
-- Copyright Twitter, Inc. and other contributors.
-- Graphics licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
-- Source project: https://github.com/twitter/twemoji
-- License: https://creativecommons.org/licenses/by/4.0/
+- Copyright (c) 2013 Panayiotis Lipiridis.
+- Licensed under the MIT License.
+- Source release: `flag-icons` 7.5.0.
+- Variant used: square (`1x1`) SVG flags.
 
-Modifications in this package: extraction from the Twemoji COLR/CPAL font, circular cropping, SVG repackaging, accessible Russian metadata, filenames and manifests for Probpera.ru.
-
-Keep this notice in the website repository when the icons are used.
+The complete MIT license text is included in `LICENSE.flag-icons.txt`.

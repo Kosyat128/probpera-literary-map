@@ -1,4 +1,4 @@
-import ArticleEditor from "@/components/ArticleEditor";
+import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
 import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -12,13 +12,31 @@ export default async function NewArticlePage({
   const { error } = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
-  const { data: categoriesResult } =
-    (await supabase
+  const [
+    { data: categoriesResult },
+    { data: templatesResult },
+    { data: authResult },
+  ] = await Promise.all([
+    supabase
       .from("categories")
       .select("id,name,slug")
       .eq("is_visible", true)
-      .order("display_order")) || {};
+      .order("display_order"),
+    supabase
+      .from("editor_templates")
+      .select("id,label,content_html,visibility,owner_id")
+      .order("updated_at", { ascending: false })
+      .limit(60),
+    supabase.auth.getUser(),
+  ]);
   const categories = categoriesResult || [];
+  const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
+    id: template.id,
+    label: template.label,
+    html: template.content_html,
+    visibility: template.visibility as "personal" | "shared",
+    canDelete: template.owner_id === authResult.user?.id,
+  }));
 
   return (
     <>
@@ -34,6 +52,7 @@ export default async function NewArticlePage({
         article={{ status: "draft" }}
         categories={categories}
         publicSiteUrl={adminEnv.publicSiteUrl}
+        templates={templates}
       />
     </>
   );

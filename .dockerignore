@@ -1,0 +1,14 @@
+.git
+.github
+.codex-runtime
+.npm-cache
+dist
+node_modules
+apps/admin/.next
+reports
+tests
+*.log
+.env
+.env.*
+!.env.example
+!apps/admin/.env.example

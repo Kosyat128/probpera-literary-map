@@ -9,11 +9,21 @@ import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 
 import { createSlug } from "@/lib/slug";
 import { saveArticleAction } from "@/app/(dashboard)/articles/actions";
+import {
+  deleteEditorTemplateAction,
+  saveEditorTemplateAction,
+} from "@/app/(dashboard)/articles/template-actions";
 import { articlePublicPath } from "@/lib/article-route";
+import {
+  EditorialBlock,
+  insertEditorialBlock,
+  insertEditorialGallery,
+  setEditorialBlockReveal,
+} from "@/components/EditorialBlock";
 
 type Category = { id: string; name: string; slug: string };
 type Article = {
@@ -63,6 +73,16 @@ const articleTemplates = [
   },
 ] as const;
 
+const LEGACY_TEMPLATES_KEY = "probpera-editor-custom-templates";
+export type CustomTemplate = {
+  id: string;
+  label: string;
+  html: string;
+  visibility?: "personal" | "shared";
+  canDelete?: boolean;
+  localOnly?: boolean;
+};
+
 function listValue(value: unknown) {
   if (!Array.isArray(value)) return "";
   return value
@@ -103,10 +123,12 @@ export default function ArticleEditor({
   article,
   categories,
   publicSiteUrl,
+  templates = [],
 }: {
   article: Article;
   categories: Category[];
   publicSiteUrl: string;
+  templates?: CustomTemplate[];
 }) {
   const [title, setTitle] = useState(article.title || "");
   const [slug, setSlug] = useState(article.slug || "");
@@ -133,11 +155,21 @@ export default function ArticleEditor({
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
+  const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
+  const [templateMessage, setTemplateMessage] = useState("");
+  const [templatePending, startTemplateTransition] = useTransition();
+  const [excerpt, setExcerpt] = useState(article.excerpt || "");
+  const [status, setStatus] = useState(article.status || "draft");
+  const [coverUrl, setCoverUrl] = useState(article.cover_external_url || "");
+  const [coverAlt, setCoverAlt] = useState(article.cover_alt || "");
+  const [seoDescription, setSeoDescription] = useState(article.seo_description || "");
+  const [sourceText, setSourceText] = useState(listValue(article.sources));
 
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
       StarterKit,
+      EditorialBlock,
       TableKit,
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
@@ -178,6 +210,30 @@ export default function ArticleEditor({
   }, [article.id]);
 
   useEffect(() => {
+    try {
+      const stored = JSON.parse(
+        window.localStorage.getItem(LEGACY_TEMPLATES_KEY) || "[]"
+      );
+      if (Array.isArray(stored) && stored.length) {
+        const legacy = stored.slice(0, 12).map((template: CustomTemplate) => ({
+          ...template,
+          id: `local-${template.id}`,
+          localOnly: true,
+          canDelete: true,
+        }));
+        setCustomTemplates((current) => [
+          ...current,
+          ...legacy.filter((item: CustomTemplate) =>
+            !current.some((saved) => saved.label.toLocaleLowerCase("ru") === item.label.toLocaleLowerCase("ru"))
+          ),
+        ]);
+      }
+    } catch {
+      window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
     const protectDraft = (event: BeforeUnloadEvent) => {
       if (!isDirty) return;
       event.preventDefault();
@@ -210,6 +266,18 @@ export default function ArticleEditor({
     return text ? text.split(/\s+/u).length : 0;
   }, [contentHtml, editor]);
 
+  const publicationChecks = useMemo(() => [
+    { label: "Заголовок и постоянный адрес", ok: title.trim().length >= 3 && slug.length >= 2 },
+    { label: "Рубрика выбрана", ok: Boolean(categoryId) },
+    { label: "Не менее 250 слов", ok: wordCount >= 250 },
+    { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
+    { label: "Описание карточки — от 80 знаков", ok: excerpt.trim().length >= 80 },
+    { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
+    { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
+    { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
+  ], [categoryId, contentHtml, coverAlt, coverUrl, excerpt, seoDescription, slug, sourceText, title, wordCount]);
+  const publicationReady = publicationChecks.every((item) => item.ok);
+
   const setLink = () => {
     const previousUrl = editor?.getAttributes("link").href || "";
     const url = window.prompt("Адрес ссылки", previousUrl);
@@ -221,6 +289,22 @@ export default function ArticleEditor({
   const addImage = () => {
     const url = window.prompt("Адрес изображения из медиатеки");
     if (url && editor) editor.chain().focus().setImage({ src: url }).run();
+  };
+
+  const addGallery = () => {
+    const value = window.prompt(
+      "HTTPS-адреса изображений из медиатеки — по одному в строке (до 6)"
+    );
+    if (!value) return;
+    const urls = value
+      .split(/\r?\n/u)
+      .map((item) => item.trim())
+      .filter((item) => /^https:\/\//iu.test(item));
+    if (!urls.length) {
+      window.alert("Добавьте хотя бы один корректный HTTPS-адрес.");
+      return;
+    }
+    insertEditorialGallery(editor, urls);
   };
 
   const applyTemplate = (html: string, label: string) => {
@@ -235,6 +319,48 @@ export default function ArticleEditor({
     }
     editor.commands.setContent(html);
     setIsDirty(true);
+  };
+
+  const saveCustomTemplate = () => {
+    if (!editor || !editor.getText().trim()) {
+      window.alert("Сначала подготовьте структуру материала в редакторе.");
+      return;
+    }
+    const label = window.prompt("Название собственного шаблона")?.trim();
+    if (!label) return;
+    const visibility = window.confirm("Сделать шаблон общим для всей редакции?") ? "shared" : "personal";
+    setTemplateMessage("");
+    startTemplateTransition(async () => {
+      const result = await saveEditorTemplateAction({
+        label: label.slice(0, 80),
+        html: editor.getHTML(),
+        json: editor.getJSON(),
+        visibility,
+      });
+      if (result.error || !result.template) {
+        setTemplateMessage(result.error || "Шаблон не сохранён.");
+        return;
+      }
+      setCustomTemplates((current) => [
+        ...current.filter((template) => template.label.toLocaleLowerCase("ru") !== result.template!.label.toLocaleLowerCase("ru")),
+        result.template as CustomTemplate,
+      ]);
+      const legacy = customTemplates.filter((item) => item.localOnly && item.label !== result.template!.label);
+      window.localStorage.setItem(LEGACY_TEMPLATES_KEY, JSON.stringify(legacy));
+      setTemplateMessage("Шаблон сохранён в редакционной базе.");
+    });
+  };
+
+  const clearCustomTemplates = () => {
+    if (!customTemplates.length || !window.confirm("Удалить доступные собственные шаблоны? Общие шаблоны других редакторов сохранятся.")) return;
+    startTemplateTransition(async () => {
+      const deletable = customTemplates.filter((template) => template.canDelete && !template.localOnly);
+      const results = await Promise.all(deletable.map((template) => deleteEditorTemplateAction(template.id)));
+      const failedIds = new Set(deletable.filter((_, index) => results[index]?.error).map((item) => item.id));
+      setCustomTemplates((current) => current.filter((template) => !template.localOnly && (!template.canDelete || failedIds.has(template.id))));
+      window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
+      setTemplateMessage(failedIds.size ? "Часть шаблонов не удалось удалить." : "Собственные шаблоны удалены.");
+    });
   };
 
   const restoreLocalCopy = () => {
@@ -274,6 +400,7 @@ export default function ArticleEditor({
       className={isFullscreen ? "article-form is-fullscreen" : "article-form"}
     >
       {article.id && <input type="hidden" name="id" value={article.id} />}
+      <input type="hidden" name="previous_status" value={article.status || "draft"} />
       <input type="hidden" name="content_html" value={contentHtml} />
       <input type="hidden" name="content_json" value={contentJson} />
 
@@ -305,7 +432,8 @@ export default function ArticleEditor({
               <span>Краткое описание</span>
               <textarea
                 name="excerpt"
-                defaultValue={article.excerpt}
+                value={excerpt}
+                onChange={(event) => setExcerpt(event.target.value)}
                 maxLength={700}
                 placeholder="Для карточек, поиска и социальных сетей"
               />
@@ -325,7 +453,26 @@ export default function ArticleEditor({
                     {template.label}
                   </button>
                 ))}
+                {customTemplates.map((template) => (
+                  <button
+                    type="button"
+                    key={template.id}
+                    onClick={() => applyTemplate(template.html, template.label)}
+                    title={template.localOnly ? "Локальный шаблон — сохраните его заново, чтобы перенести в базу" : template.visibility === "shared" ? "Общий шаблон редакции" : "Личный шаблон"}
+                  >
+                    {template.visibility === "shared" ? "◆" : "★"} {template.label}{template.localOnly ? " · локальный" : ""}
+                  </button>
+                ))}
+                <button type="button" onClick={saveCustomTemplate} disabled={templatePending}>
+                  ＋ Сохранить как шаблон
+                </button>
+                {customTemplates.length > 0 && (
+                  <button type="button" onClick={clearCustomTemplates} disabled={templatePending}>
+                    Удалить мои шаблоны
+                  </button>
+                )}
               </div>
+              {templateMessage && <small role="status">{templateMessage}</small>}
             </div>
             <div className="editor-toolbar" aria-label="Панель форматирования">
               <ToolbarButton label="Ж" active={editor?.isActive("bold")} onClick={() => editor?.chain().focus().toggleBold().run()} />
@@ -339,9 +486,20 @@ export default function ArticleEditor({
               <ToolbarButton label="1. Список" active={editor?.isActive("orderedList")} onClick={() => editor?.chain().focus().toggleOrderedList().run()} />
               <ToolbarButton label="Цитата" active={editor?.isActive("blockquote")} onClick={() => editor?.chain().focus().toggleBlockquote().run()} />
               <ToolbarButton label="Разделитель" onClick={() => editor?.chain().focus().setHorizontalRule().run()} />
+              <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
+              <ToolbarButton label="Акцент" onClick={() => insertEditorialBlock(editor, "accent")} />
+              <ToolbarButton label="2 колонки" onClick={() => insertEditorialBlock(editor, "columns")} />
+              <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
+              <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
+              <ToolbarButton label="Фигура-разделитель" onClick={() => insertEditorialBlock(editor, "ornament")} />
+              <ToolbarButton label="Появление ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
+              <ToolbarButton label="Появление ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
+              <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
+              <ToolbarButton label="Без анимации" onClick={() => setEditorialBlockReveal(editor, "none")} />
               <ToolbarButton label="Таблица" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
               <ToolbarButton label="Ссылка" active={editor?.isActive("link")} onClick={setLink} />
               <ToolbarButton label="Фото" onClick={addImage} />
+              <ToolbarButton label="Галерея" onClick={addGallery} />
               <ToolbarButton label="Слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
               <ToolbarButton label="Центр" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
               <ToolbarButton label="Очистить формат" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
@@ -362,7 +520,7 @@ export default function ArticleEditor({
             <h2>Публикация</h2>
             <label className="field">
               <span>Статус</span>
-              <select name="status" defaultValue={article.status || "draft"}>
+              <select name="status" value={status} onChange={(event) => setStatus(event.target.value)}>
                 <option value="draft">Черновик</option>
                 <option value="review">На проверке</option>
                 <option value="scheduled">По расписанию</option>
@@ -408,7 +566,8 @@ export default function ArticleEditor({
               <input
                 type="url"
                 name="cover_external_url"
-                defaultValue={article.cover_external_url || ""}
+                value={coverUrl}
+                onChange={(event) => setCoverUrl(event.target.value)}
                 placeholder="https://…"
               />
             </label>
@@ -416,7 +575,8 @@ export default function ArticleEditor({
               <span>Описание изображения</span>
               <textarea
                 name="cover_alt"
-                defaultValue={article.cover_alt}
+                value={coverAlt}
+                onChange={(event) => setCoverAlt(event.target.value)}
                 maxLength={500}
                 placeholder="Что изображено — для доступности и поиска"
               />
@@ -459,7 +619,7 @@ export default function ArticleEditor({
             </label>
             <label className="field">
               <span>Описание для поиска</span>
-              <textarea name="seo_description" defaultValue={article.seo_description || ""} maxLength={400} />
+              <textarea name="seo_description" value={seoDescription} onChange={(event) => setSeoDescription(event.target.value)} maxLength={400} />
             </label>
             <label className="field">
               <span>Ключевые слова</span>
@@ -501,13 +661,27 @@ export default function ArticleEditor({
             </label>
           </section>
 
+          <section className="panel settings-stack publication-checklist" aria-labelledby="publication-checklist-title">
+            <h2 id="publication-checklist-title">Контроль перед публикацией</h2>
+            <ul>
+              {publicationChecks.map((item) => (
+                <li className={item.ok ? "is-ready" : "is-missing"} key={item.label}>
+                  <span aria-hidden="true">{item.ok ? "✓" : "○"}</span>{item.label}
+                </li>
+              ))}
+            </ul>
+            <p>{publicationReady ? "Материал готов к выпуску." : "Черновик можно сохранять. Для выпуска завершите отмеченные пункты."}</p>
+            <input type="hidden" name="publication_ready" value={publicationReady ? "yes" : "no"} />
+          </section>
+
           <section className="panel settings-stack">
             <h2>Источники и библиография</h2>
             <label className="field">
               <span>Источники — по одному на строку</span>
               <textarea
                 name="sources"
-                defaultValue={listValue(article.sources)}
+                value={sourceText}
+                onChange={(event) => setSourceText(event.target.value)}
                 placeholder="Название — https://…"
               />
             </label>
@@ -551,7 +725,7 @@ export default function ArticleEditor({
           <button className="button-secondary" type="submit" name="intent" value="save">
             Сохранить
           </button>
-          <button className="button" type="submit" name="intent" value="publish">
+          <button className="button" type="submit" name="intent" value="publish" disabled={!publicationReady} title={publicationReady ? "Опубликовать материал" : "Завершите редакционную проверку"}>
             Опубликовать
           </button>
         </div>

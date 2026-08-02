@@ -428,6 +428,7 @@ export const india: Country = {
     },
         {
       id: "rabindranath_tagore",
+      nobelYear: 1913,
       name: "Рабиндранат Тагор",
       years: "1861–1941",
       birthDate: "1861-05-07",
