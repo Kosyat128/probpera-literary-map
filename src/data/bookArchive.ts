@@ -17,18 +17,35 @@ export type BookArchiveEntry = WorkProfile & {
   country: Country;
 };
 
-const displayableCoverStatuses = new Set([
+const editionCoverStatuses = new Set([
   "public-domain",
   "licensed",
   "permission",
   "external-preview",
 ]);
 
+const displayableArtworkStatuses = new Set([
+  ...editionCoverStatuses,
+  "editorial-original",
+]);
+
 export function isCoverDisplayAllowed(work: WorkProfile) {
   return Boolean(
     work.coverUrl &&
       work.coverRights &&
-      displayableCoverStatuses.has(work.coverRights.status)
+      editionCoverStatuses.has(work.coverRights.status)
+  );
+}
+
+/**
+ * Includes clearly labelled editorial artwork. Unlike isCoverDisplayAllowed,
+ * this helper must never be used for counters of real publisher editions.
+ */
+export function isCoverArtworkDisplayAllowed(work: WorkProfile) {
+  return Boolean(
+    work.coverUrl &&
+      work.coverRights &&
+      displayableArtworkStatuses.has(work.coverRights.status)
   );
 }
 
@@ -37,6 +54,10 @@ function normalizeTitle(title: string) {
     .trim()
     .toLocaleLowerCase("ru")
     .replace(/[«»"'.,:;!?()[\]{}]/g, "");
+}
+
+export function isEditorialCover(work: WorkProfile) {
+  return work.coverRights?.status === "editorial-original";
 }
 
 export function getWriterWorkTitles(writer: WriterProfile) {

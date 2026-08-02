@@ -256,8 +256,49 @@ export const poland: Country = {
 
       bio: "Один из крупнейших польских писателей-фантастов XX века.",
 
+      workDetails: [
+
+        {
+
+          "id": "solaris-editorial",
+
+          "title": "Солярис",
+
+          "coverUrl": "brand/book-covers/solaris-editorial.webp",
+
+          "coverThumbnailUrl": "brand/book-covers/thumbs/solaris-editorial.webp",
+
+          "coverSourceUrl": "brand/book-covers/solaris-editorial.webp",
+
+          "coverRights": {
+
+            "status": "editorial-original",
+
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+
+            "creator": "Редакция «Пробы Пера»",
+
+            "rightsHolder": "Проба Пера",
+
+            "sourceUrl": "brand/book-covers/solaris-editorial.webp",
+
+            "checkedAt": "2026-08-02",
+
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+
+          },
+
+          "editorial": {
+
+            "status": "draft"
+
+          }
+
+        }
+
+      ],
+
       works: [
-        "Солярис",
         "Футурологический конгресс"
       ],
 

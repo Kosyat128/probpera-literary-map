@@ -2341,19 +2341,17 @@
         "kind": "mention"
       }
     ],
-    "england:charles_dickens:article-series-1tdjfsi": [
+    "england:charles_dickens:great-expectations-editorial": [
       {
-        "id": "page--article--topbooks--1",
-        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 1)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 7,
+        "id": "page--article--sucsessful--cinema--adaptation--2",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 12,
         "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3061-3066-4566-b262-313666393864/_1.jpg",
+        "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
         "kind": "mention"
-      }
-    ],
-    "england:charles_dickens:article-series-cyoupj": [
+      },
       {
         "id": "page--article--topbooks--7",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 7)",
@@ -2365,7 +2363,7 @@
         "kind": "mention"
       }
     ],
-    "england:charles_dickens:legacy-charles_dickens-оливер-твист": [
+    "england:charles_dickens:oliver-twist-editorial": [
       {
         "id": "page--article--first--profession--writers--2",
         "title": "Зарубежные классики литературы и их профессии",
@@ -2387,17 +2385,19 @@
         "kind": "mention"
       }
     ],
-    "england:charles_dickens:legacy-charles_dickens-большие-надежды": [
+    "england:charles_dickens:article-series-1tdjfsi": [
       {
-        "id": "page--article--sucsessful--cinema--adaptation--2",
-        "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
-        "sectionId": "screen-adaptations",
-        "sectionLabel": "Книга и экранизация",
-        "readingMinutes": 12,
+        "id": "page--article--topbooks--1",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 1)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 7,
         "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
+        "imageUrl": "https://static.tildacdn.com/tild3061-3066-4566-b262-313666393864/_1.jpg",
         "kind": "mention"
-      },
+      }
+    ],
+    "england:charles_dickens:article-series-cyoupj": [
       {
         "id": "page--article--topbooks--7",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 7)",
@@ -2532,6 +2532,38 @@
         "readingMinutes": 6,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3430-3266-4365-b538-633165663064/068be666-6d9d-402c-b.png",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:invisible-man-editorial": [
+      {
+        "id": "page--article--page--books--21",
+        "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
+        "kind": "feature"
+      },
+      {
+        "id": "page--article--first--profession--writers--2",
+        "title": "Зарубежные классики литературы и их профессии",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели и литературная карта",
+        "readingMinutes": 12,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--topstories--1",
+        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Герберт Уэллс",
+        "sectionId": "literary-essays",
+        "sectionLabel": "О литературе и культуре",
+        "readingMinutes": 4,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3738-3536-4037-a135-343137383466/30_9b0a4429edf244c6a.jpg",
         "kind": "mention"
       }
     ],
@@ -2727,38 +2759,6 @@
         "kind": "mention"
       }
     ],
-    "england:h_g_wells:legacy-h_g_wells-человек-невидимка": [
-      {
-        "id": "page--article--page--books--21",
-        "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
-        "kind": "feature"
-      },
-      {
-        "id": "page--article--first--profession--writers--2",
-        "title": "Зарубежные классики литературы и их профессии",
-        "sectionId": "writers-world",
-        "sectionLabel": "Писатели и литературная карта",
-        "readingMinutes": 12,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
-        "kind": "mention"
-      },
-      {
-        "id": "page--article--topstories--1",
-        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Герберт Уэллс",
-        "sectionId": "literary-essays",
-        "sectionLabel": "О литературе и культуре",
-        "readingMinutes": 4,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3738-3536-4037-a135-343137383466/30_9b0a4429edf244c6a.jpg",
-        "kind": "mention"
-      }
-    ],
     "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро": [
       {
         "id": "page--article--page--books--21",
@@ -2803,7 +2803,7 @@
         "kind": "mention"
       }
     ],
-    "england:aldous_huxley:legacy-aldous_huxley-о-дивный-новый-мир": [
+    "england:aldous_huxley:brave-new-world-editorial": [
       {
         "id": "page--article--page--books--20",
         "title": "Мнение о книге «Остров» Олдоса Хаксли",
@@ -4117,7 +4117,7 @@
         "kind": "feature"
       }
     ],
-    "france:stendhal:legacy-stendhal-красное-и-чёрное": [
+    "france:stendhal:the-red-and-the-black-editorial": [
       {
         "id": "page--article--unrecognized--writers--1",
         "title": "Непризнанные современниками гении литературы. Стендаль",
@@ -4817,6 +4817,18 @@
         "kind": "mention"
       }
     ],
+    "germany:thomas_mann:buddenbrooks-editorial": [
+      {
+        "id": "page--article--topbooks--5",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 5)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 5,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6139-6134-4530-b338-613031346331/image.png",
+        "kind": "mention"
+      }
+    ],
     "germany:thomas_mann:article-series-g9ifi6": [
       {
         "id": "page--article--topbooks--2",
@@ -4826,18 +4838,6 @@
         "readingMinutes": 5,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild6664-3931-4830-b734-393966303337/05be2c0c-cc5b-4fdf-9.png",
-        "kind": "mention"
-      }
-    ],
-    "germany:thomas_mann:legacy-thomas_mann-будденброки": [
-      {
-        "id": "page--article--topbooks--5",
-        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 5)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 5,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6139-6134-4530-b338-613031346331/image.png",
         "kind": "mention"
       }
     ],
@@ -5015,19 +5015,7 @@
         "kind": "mention"
       }
     ],
-    "germany:erich_maria_remarque:article-catalog-rdkl2z": [
-      {
-        "id": "page--article--top--books--page--turners--6",
-        "title": "Десять романов, которые читаются на одном дыхании (Часть 6)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3336-3536-4236-b733-336335656335/image.png",
-        "kind": "mention"
-      }
-    ],
-    "germany:erich_maria_remarque:legacy-erich_maria_remarque-на-западном-фронте-без-перемен": [
+    "germany:erich_maria_remarque:all-quiet-on-the-western-front-editorial": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--2",
         "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
@@ -5046,6 +5034,18 @@
         "readingMinutes": 10,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3366-6538-4535-b064-613438353732/image.png",
+        "kind": "mention"
+      }
+    ],
+    "germany:erich_maria_remarque:article-catalog-rdkl2z": [
+      {
+        "id": "page--article--top--books--page--turners--6",
+        "title": "Десять романов, которые читаются на одном дыхании (Часть 6)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3336-3536-4236-b733-336335656335/image.png",
         "kind": "mention"
       }
     ],
@@ -5679,7 +5679,7 @@
         "kind": "mention"
       }
     ],
-    "italy:umberto_eco:legacy-umberto_eco-имя-розы": [
+    "italy:umberto_eco:the-name-of-the-rose-editorial": [
       {
         "id": "page--article--page--writers--world--8",
         "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
@@ -9289,7 +9289,7 @@
         "kind": "review"
       }
     ],
-    "russia:lermontov:legacy-lermontov-герой-нашего-времени": [
+    "russia:lermontov:a-hero-of-our-time-editorial": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--2",
         "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
@@ -9310,6 +9310,18 @@
         "readingMinutes": 12,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
+        "kind": "mention"
+      }
+    ],
+    "russia:dostoevsky:the-brothers-karamazov-editorial": [
+      {
+        "id": "page--words--1",
+        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
+        "sectionId": "language",
+        "sectionLabel": "Русский язык и выражения",
+        "readingMinutes": 3,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
         "kind": "mention"
       }
     ],
@@ -9367,18 +9379,6 @@
         "kind": "mention"
       }
     ],
-    "russia:dostoevsky:legacy-dostoevsky-братья-карамазовы": [
-      {
-        "id": "page--words--1",
-        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
-        "sectionId": "language",
-        "sectionLabel": "Русский язык и выражения",
-        "readingMinutes": 3,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
-        "kind": "mention"
-      }
-    ],
     "russia:tolstoy:war-and-peace": [
       {
         "id": "page--article--topstories--8",
@@ -9409,6 +9409,18 @@
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
         "kind": "mention"
+      }
+    ],
+    "russia:tolstoy:anna-karenina-editorial": [
+      {
+        "id": "page--article--topstories--8",
+        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Л.Н. Толстой",
+        "sectionId": "literary-essays",
+        "sectionLabel": "О литературе и культуре",
+        "readingMinutes": 4,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3139-6633-4338-a230-353363646635/8a420904-0305-4c85-a.png",
+        "kind": "feature"
       }
     ],
     "russia:tolstoy:article-series-k1mlo9": [
@@ -9505,18 +9517,6 @@
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3139-6633-4338-a230-353363646635/8a420904-0305-4c85-a.png",
         "kind": "mention"
-      }
-    ],
-    "russia:tolstoy:legacy-tolstoy-анна-каренина": [
-      {
-        "id": "page--article--topstories--8",
-        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Л.Н. Толстой",
-        "sectionId": "literary-essays",
-        "sectionLabel": "О литературе и культуре",
-        "readingMinutes": 4,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3139-6633-4338-a230-353363646635/8a420904-0305-4c85-a.png",
-        "kind": "feature"
       }
     ],
     "russia:tolstoy:legacy-tolstoy-воскресение": [
@@ -9703,19 +9703,7 @@
         "kind": "mention"
       }
     ],
-    "russia:bulgakov:legacy-bulgakov-собачье-сердце": [
-      {
-        "id": "page--article--sucsessful--cinema--adaptation--2",
-        "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
-        "sectionId": "screen-adaptations",
-        "sectionLabel": "Книга и экранизация",
-        "readingMinutes": 12,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
-        "kind": "mention"
-      }
-    ],
-    "russia:bulgakov:legacy-bulgakov-белая-гвардия": [
+    "russia:bulgakov:the-white-guard-editorial": [
       {
         "id": "page--article--topbooks--4",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
@@ -9724,6 +9712,18 @@
         "readingMinutes": 6,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
+        "kind": "mention"
+      }
+    ],
+    "russia:bulgakov:heart-of-a-dog-editorial": [
+      {
+        "id": "page--article--sucsessful--cinema--adaptation--2",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 12,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
         "kind": "mention"
       }
     ],
@@ -11345,6 +11345,18 @@
         "kind": "mention"
       }
     ],
+    "usa:edgar_allan_poe:the-fall-of-the-house-of-usher-editorial": [
+      {
+        "id": "page--article--topstories--10",
+        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эдгар Аллан По",
+        "sectionId": "literary-essays",
+        "sectionLabel": "О литературе и культуре",
+        "readingMinutes": 5,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3366-6530-4130-a264-383737316464/image.png",
+        "kind": "mention"
+      }
+    ],
     "usa:edgar_allan_poe:article-series-ohfoyy": [
       {
         "id": "page--article--topstories--10",
@@ -11406,18 +11418,6 @@
       }
     ],
     "usa:edgar_allan_poe:article-series-6o8c6r": [
-      {
-        "id": "page--article--topstories--10",
-        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эдгар Аллан По",
-        "sectionId": "literary-essays",
-        "sectionLabel": "О литературе и культуре",
-        "readingMinutes": 5,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3366-6530-4130-a264-383737316464/image.png",
-        "kind": "mention"
-      }
-    ],
-    "usa:edgar_allan_poe:legacy-edgar_allan_poe-падение-дома-ашеров": [
       {
         "id": "page--article--topstories--10",
         "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эдгар Аллан По",
@@ -11737,7 +11737,7 @@
         "kind": "mention"
       }
     ],
-    "usa:henry_james:article-series-178obr6": [
+    "usa:henry_james:the-turn-of-the-screw-editorial": [
       {
         "id": "page--article--topbooks--6",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 6)",
@@ -11749,7 +11749,7 @@
         "kind": "mention"
       }
     ],
-    "usa:henry_james:legacy-henry_james-поворот-винта": [
+    "usa:henry_james:article-series-178obr6": [
       {
         "id": "page--article--topbooks--6",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 6)",
@@ -11800,6 +11800,38 @@
         "readingMinutes": 4,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild6332-6466-4234-a335-336531653735/_.jpg",
+        "kind": "mention"
+      }
+    ],
+    "usa:jack_london:white-fang-editorial": [
+      {
+        "id": "page--article--page--books--9",
+        "title": "Мнение о книге. Джек Лондон «Белый Клык»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 4,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6332-6466-4234-a335-336531653735/_.jpg",
+        "kind": "review"
+      },
+      {
+        "id": "page--article--nobel--prize--7",
+        "title": "1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии",
+        "sectionId": "awards",
+        "sectionLabel": "Премии и литературный процесс",
+        "readingMinutes": 4,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3933-3563-4564-a438-653938393764/photo.jpg",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--luchshie--knigi--pisateley--1",
+        "title": "Десять лучших книг Джека Лондона",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 5,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3639-6530-4762-b436-336233653565/image.png",
         "kind": "mention"
       }
     ],
@@ -12043,38 +12075,6 @@
         "kind": "mention"
       }
     ],
-    "usa:jack_london:legacy-jack_london-белый-клык": [
-      {
-        "id": "page--article--page--books--9",
-        "title": "Мнение о книге. Джек Лондон «Белый Клык»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 4,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6332-6466-4234-a335-336531653735/_.jpg",
-        "kind": "review"
-      },
-      {
-        "id": "page--article--nobel--prize--7",
-        "title": "1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии",
-        "sectionId": "awards",
-        "sectionLabel": "Премии и литературный процесс",
-        "readingMinutes": 4,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3933-3563-4564-a438-653938393764/photo.jpg",
-        "kind": "mention"
-      },
-      {
-        "id": "page--article--luchshie--knigi--pisateley--1",
-        "title": "Десять лучших книг Джека Лондона",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 5,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3639-6530-4762-b436-336233653565/image.png",
-        "kind": "mention"
-      }
-    ],
     "usa:jack_london:legacy-jack_london-зов-предков": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--1",
@@ -12128,6 +12128,18 @@
         "readingMinutes": 6,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild6436-3566-4939-b938-633538313132/68e51cbd-213c-4d3d-b.png",
+        "kind": "mention"
+      }
+    ],
+    "usa:francis_scott_fitzgerald:tender-is-the-night-editorial": [
+      {
+        "id": "page--article--page--books--5",
+        "title": "Сборник рассказов Фрэнсиса Скотта Фицджеральда «Прибрежный пират»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3666-6263-4162-b965-313765333365/photo.jpg",
         "kind": "mention"
       }
     ],
@@ -12207,18 +12219,6 @@
         "kind": "mention"
       }
     ],
-    "usa:francis_scott_fitzgerald:legacy-francis_scott_fitzgerald-ночь-нежна": [
-      {
-        "id": "page--article--page--books--5",
-        "title": "Сборник рассказов Фрэнсиса Скотта Фицджеральда «Прибрежный пират»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild3666-6263-4162-b965-313765333365/photo.jpg",
-        "kind": "mention"
-      }
-    ],
     "usa:francis_scott_fitzgerald:legacy-francis_scott_fitzgerald-по-эту-сторону-рая": [
       {
         "id": "page--article--first--profession--writers--2",
@@ -12248,6 +12248,28 @@
         "readingMinutes": 6,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3666-6263-4162-b965-313765333365/photo.jpg",
+        "kind": "mention"
+      }
+    ],
+    "usa:ernest_hemingway:for-whom-the-bell-tolls-editorial": [
+      {
+        "id": "page--article--topstories--9",
+        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эрнест Хемингуэй",
+        "sectionId": "literary-essays",
+        "sectionLabel": "О литературе и культуре",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6430-3732-4135-a233-633137376132/9f7977e5-5dd1-4ca2-8.png",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--topbooks--9",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 9)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 4,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6536-3766-4539-a133-323332306262/image.png",
         "kind": "mention"
       }
     ],
@@ -12393,28 +12415,6 @@
         "kind": "mention"
       }
     ],
-    "usa:ernest_hemingway:legacy-ernest_hemingway-по-ком-звонит-колокол": [
-      {
-        "id": "page--article--topstories--9",
-        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эрнест Хемингуэй",
-        "sectionId": "literary-essays",
-        "sectionLabel": "О литературе и культуре",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6430-3732-4135-a233-633137376132/9f7977e5-5dd1-4ca2-8.png",
-        "kind": "mention"
-      },
-      {
-        "id": "page--article--topbooks--9",
-        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 9)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 4,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6536-3766-4539-a133-323332306262/image.png",
-        "kind": "mention"
-      }
-    ],
     "usa:ernest_hemingway:legacy-ernest_hemingway-и-восходит-солнце": [
       {
         "id": "page--article--topstories--9",
@@ -12424,6 +12424,18 @@
         "readingMinutes": 6,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild6430-3732-4135-a233-633137376132/9f7977e5-5dd1-4ca2-8.png",
+        "kind": "mention"
+      }
+    ],
+    "usa:william_faulkner:the-sound-and-the-fury-editorial": [
+      {
+        "id": "page--article--topbooks--4",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
         "kind": "mention"
       }
     ],
@@ -12461,7 +12473,7 @@
         "kind": "mention"
       }
     ],
-    "usa:william_faulkner:legacy-william_faulkner-шум-и-ярость": [
+    "usa:john_steinbeck:the-grapes-of-wrath-editorial": [
       {
         "id": "page--article--topbooks--4",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
@@ -12482,18 +12494,6 @@
         "readingMinutes": 5,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3063-3361-4033-b239-336331383035/image.png",
-        "kind": "mention"
-      }
-    ],
-    "usa:john_steinbeck:legacy-john_steinbeck-гроздья-гнева": [
-      {
-        "id": "page--article--topbooks--4",
-        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
         "kind": "mention"
       }
     ],
@@ -12649,7 +12649,19 @@
         "kind": "feature"
       }
     ],
-    "usa:ray_bradbury:legacy-ray_bradbury-451-по-фаренгейту": [
+    "usa:ray_bradbury:dandelion-wine-editorial": [
+      {
+        "id": "page--article--topbooks--4",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
+        "kind": "mention"
+      }
+    ],
+    "usa:ray_bradbury:fahrenheit-451-editorial": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--2",
         "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
@@ -12690,18 +12702,6 @@
         "imageUrl": "https://static.tildacdn.com/tild6266-3032-4334-b563-643432653735/cropped-cropped-hugo.jpg",
         "kind": "mention"
       },
-      {
-        "id": "page--article--topbooks--4",
-        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
-        "sectionId": "book-guides",
-        "sectionLabel": "Книжный гид и подборки",
-        "readingMinutes": 6,
-        "slug": "",
-        "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
-        "kind": "mention"
-      }
-    ],
-    "usa:ray_bradbury:legacy-ray_bradbury-вино-из-одуванчиков": [
       {
         "id": "page--article--topbooks--4",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",

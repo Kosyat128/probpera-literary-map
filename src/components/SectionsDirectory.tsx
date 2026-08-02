@@ -1,8 +1,17 @@
-import type { CSSProperties, MouseEvent } from "react";
+import { useMemo, type CSSProperties, type MouseEvent } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
-import { articlePath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  journalPath,
+  navigateToJournal,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
+import {
+  articleSeriesId,
+  articleSeriesLabel,
+} from "../utils/articleSeries";
 import BrandArrowIcon from "./BrandArrowIcon";
 
 export type SiteSectionLink = {
@@ -77,26 +86,50 @@ export default function SectionsDirectory({
   onAction,
 }: Props) {
   const { language, t, number } = useInterfaceLanguage();
+  const sectionCards = useMemo(() => {
+    const usedRecommendations = new Set<string>();
+
+    return sections.map((section) => {
+      const articleSectionIds = section.articleSections || [section.id];
+      const publications =
+        section.metric === "all-articles"
+          ? articleCatalog
+          : articleCatalog.filter((article) =>
+              articleSectionIds.includes(article.sectionId)
+            );
+      const sorted = [...publications].sort(
+        (first, second) =>
+          publicationTime(second.publishedLabel) -
+          publicationTime(first.publishedLabel)
+      );
+      const latest =
+        sorted.find((article) => !usedRecommendations.has(article.id)) ||
+        sorted[0];
+      if (latest) usedRecommendations.add(latest.id);
+      const series =
+        section.metric === "all-articles"
+          ? []
+          : [
+              ...new Map(
+                publications.map((article) => {
+                  const id = articleSeriesId(article);
+                  return [
+                    id,
+                    {
+                      id,
+                      label: articleSeriesLabel(id, article.sectionLabel),
+                    },
+                  ];
+                })
+              ).values(),
+            ];
+      return { section, publications, latest, series };
+    });
+  }, [sections]);
 
   return (
     <div className="sections-directory-grid">
-      {sections.map((section) => {
-        const articleSectionIds = section.articleSections || [section.id];
-        const publications =
-          section.metric === "all-articles"
-            ? articleCatalog
-            : articleCatalog.filter((article) =>
-                articleSectionIds.includes(article.sectionId)
-              );
-        const latest = publications.reduce<(typeof publications)[number] | undefined>(
-          (current, article) =>
-            !current ||
-            publicationTime(article.publishedLabel) >
-              publicationTime(current.publishedLabel)
-              ? article
-              : current,
-          undefined
-        );
+      {sectionCards.map(({ section, publications, latest, series }) => {
         const liveLabel =
           section.id === "atlas"
             ? language === "en"
@@ -137,9 +170,18 @@ export default function SectionsDirectory({
         const handleSectionClick = (
           event: MouseEvent<HTMLAnchorElement>
         ) => {
-          if (!section.action) return;
-          event.preventDefault();
-          onAction?.(section.action);
+          if (section.action) {
+            event.preventDefault();
+            onAction?.(section.action);
+            return;
+          }
+          if (
+            section.href.includes("#journal") &&
+            shouldUseClientNavigation(event)
+          ) {
+            event.preventDefault();
+            navigateToJournal(section.id === "journal" ? "all" : section.id);
+          }
         };
 
         return (
@@ -162,6 +204,26 @@ export default function SectionsDirectory({
                 </a>
               </h3>
               <p>{t(section.copy)}</p>
+              {series.length > 1 && (
+                <nav
+                  className="section-card-series"
+                  aria-label={`${t("Рубрики")}: ${t(section.title)}`}
+                >
+                  {series.map((item) => (
+                    <a
+                      key={item.id}
+                      href={journalPath(section.id, item.id)}
+                      onClick={(event) => {
+                        if (!shouldUseClientNavigation(event)) return;
+                        event.preventDefault();
+                        navigateToJournal(section.id, false, item.id);
+                      }}
+                    >
+                      {t(item.label)}
+                    </a>
+                  ))}
+                </nav>
+              )}
               {latest && (
                 <a
                   className="section-card-latest"

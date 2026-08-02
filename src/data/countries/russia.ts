@@ -445,9 +445,47 @@ export const russia: Country = {
       },
       portrait: "",
       bio: "Великий русский поэт, драматург и прозаик, основоположник современного русского литературного языка.",
+      workDetails: [
+        {
+          "id": "eugene-onegin-editorial",
+          "title": "Евгений Онегин",
+          "coverUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/eugene-onegin-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "the-captains-daughter-editorial",
+          "title": "Капитанская дочка",
+          "coverUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-captains-daughter-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Евгений Онегин",
-        "Капитанская дочка",
         "Борис Годунов",
         "Повести Белкина"
       ],
@@ -484,8 +522,28 @@ export const russia: Country = {
       },
       portrait: "",
       bio: "Русский поэт, прозаик и драматург, один из крупнейших представителей русского романтизма.",
+      workDetails: [
+        {
+          "id": "a-hero-of-our-time-editorial",
+          "title": "Герой нашего времени",
+          "coverUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/a-hero-of-our-time-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Герой нашего времени",
         "Мцыри",
         "Демон",
         "Бородино"
@@ -628,8 +686,28 @@ export const russia: Country = {
       },
       portrait: "",
       bio: "Русский писатель и литературный критик, автор одного из главных романов русской литературы XIX века.",
+      workDetails: [
+        {
+          "id": "oblomov-editorial",
+          "title": "Обломов",
+          "coverUrl": "brand/book-covers/oblomov-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/oblomov-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/oblomov-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/oblomov-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Обломов",
         "Обыкновенная история",
         "Обрыв"
       ],
@@ -739,8 +817,6 @@ export const russia: Country = {
       bio: "Фёдор Достоевский пришёл в литературу как внимательный исследователь человека, оказавшегося перед нравственным выбором. После ареста по делу петрашевцев, инсценировки казни, каторги и ссылки его проза стала особенно напряжённым разговором о свободе, вере, вине и сострадании. В больших романах писателя сталкиваются не готовые ответы, а самостоятельные голоса героев — поэтому «Преступление и наказание», «Идиот» и «Братья Карамазовы» продолжают звучать современно и влиять на литературу, театр, философию и психологию.",
       works: [
         "Идиот",
-        "Братья Карамазовы",
-        "Бесы"
       ],
       workDetails: [
         {
@@ -768,6 +844,45 @@ export const russia: Country = {
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-26"
+          }
+        }
+      ,
+        {
+          "id": "the-brothers-karamazov-editorial",
+          "title": "Братья Карамазовы",
+          "coverUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-brothers-karamazov-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "demons-editorial",
+          "title": "Бесы",
+          "coverUrl": "brand/book-covers/demons-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/demons-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/demons-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/demons-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
@@ -822,7 +937,6 @@ export const russia: Country = {
       },
       bio: "Лев Толстой превратил семейную хронику и исторический роман в масштабное исследование человеческой жизни. В «Войне и мире» частная судьба существует внутри движения истории, а в «Анне Карениной» общественный порядок раскрывается через любовь, одиночество и цену личного выбора. После духовного кризиса писатель всё чаще обращался к вопросам веры, непротивления насилию и нравственной ответственности. Его художественная точность, внимание к внутренней речи и способность видеть человека в постоянном изменении повлияли на прозу всего XX века.",
       works: [
-        "Анна Каренина",
         "Воскресение",
         "Смерть Ивана Ильича"
       ],
@@ -852,6 +966,26 @@ export const russia: Country = {
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-26"
+          }
+        }
+      ,
+        {
+          "id": "anna-karenina-editorial",
+          "title": "Анна Каренина",
+          "coverUrl": "brand/book-covers/anna-karenina-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/anna-karenina-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/anna-karenina-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/anna-karenina-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
@@ -1159,8 +1293,6 @@ export const russia: Country = {
       portrait: "",
       bio: "Русский писатель и драматург, автор одного из самых известных романов XX века.",
       works: [
-        "Собачье сердце",
-        "Белая гвардия"
       ],
       workDetails: [
         {
@@ -1184,6 +1316,45 @@ export const russia: Country = {
           editorial: {
             status: "reviewed",
             reviewedAt: "2026-07-26"
+          }
+        }
+      ,
+        {
+          "id": "the-white-guard-editorial",
+          "title": "Белая гвардия",
+          "coverUrl": "brand/book-covers/the-white-guard-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-white-guard-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-white-guard-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-white-guard-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "heart-of-a-dog-editorial",
+          "title": "Собачье сердце",
+          "coverUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/heart-of-a-dog-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
@@ -1349,8 +1520,28 @@ export const russia: Country = {
       },
       portrait: "",
       bio: "Русский поэт и писатель, лауреат Нобелевской премии по литературе 1958 года.",
+      workDetails: [
+        {
+          "id": "doctor-zhivago-editorial",
+          "title": "Доктор Живаго",
+          "coverUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/doctor-zhivago-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Доктор Живаго",
         "Сестра моя — жизнь"
       ],
       genres: [
@@ -1416,8 +1607,28 @@ export const russia: Country = {
       },
       portrait: "",
       bio: "Русский советский писатель, лауреат Нобелевской премии по литературе 1965 года.",
+      workDetails: [
+        {
+          "id": "and-quiet-flows-the-don-editorial",
+          "title": "Тихий Дон",
+          "coverUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/and-quiet-flows-the-don-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Тихий Дон",
         "Поднятая целина"
       ],
       genres: [

@@ -269,8 +269,49 @@ export const ireland: Country = {
 
       bio: "Один из крупнейших писателей модернизма XX века.",
 
+      workDetails: [
+
+        {
+
+          "id": "ulysses-editorial",
+
+          "title": "Улисс",
+
+          "coverUrl": "brand/book-covers/ulysses-editorial.webp",
+
+          "coverThumbnailUrl": "brand/book-covers/thumbs/ulysses-editorial.webp",
+
+          "coverSourceUrl": "brand/book-covers/ulysses-editorial.webp",
+
+          "coverRights": {
+
+            "status": "editorial-original",
+
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+
+            "creator": "Редакция «Пробы Пера»",
+
+            "rightsHolder": "Проба Пера",
+
+            "sourceUrl": "brand/book-covers/ulysses-editorial.webp",
+
+            "checkedAt": "2026-08-02",
+
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+
+          },
+
+          "editorial": {
+
+            "status": "draft"
+
+          }
+
+        }
+
+      ],
+
       works: [
-        "Улисс",
         "Дублинцы",
         "Портрет художника в юности"
       ],

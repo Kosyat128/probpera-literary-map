@@ -475,8 +475,28 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель, журналист и публицист, один из основоположников английского романа.",
+      workDetails: [
+        {
+          "id": "robinson-crusoe-editorial",
+          "title": "Робинзон Крузо",
+          "coverUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/robinson-crusoe-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Робинзон Крузо",
         "Молль Флендерс",
         "Дневник чумного года"
       ],
@@ -920,10 +940,66 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель, один из величайших романистов XIX века, мастер социального романа.",
+      workDetails: [
+        {
+          "id": "great-expectations-editorial",
+          "title": "Большие надежды",
+          "coverUrl": "brand/book-covers/great-expectations-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/great-expectations-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/great-expectations-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/great-expectations-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "oliver-twist-editorial",
+          "title": "Оливер Твист",
+          "coverUrl": "brand/book-covers/oliver-twist-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/oliver-twist-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/oliver-twist-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/oliver-twist-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "david-copperfield-editorial",
+          "title": "Дэвид Копперфильд",
+          "coverUrl": "brand/book-covers/david-copperfield-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/david-copperfield-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/david-copperfield-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/david-copperfield-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Оливер Твист",
-        "Дэвид Копперфильд",
-        "Большие надежды",
         "Повесть о двух городах",
         "Рождественская песнь"
       ],
@@ -992,8 +1068,28 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английская писательница, автор одного из самых известных романов XIX века.",
+      workDetails: [
+        {
+          "id": "jane-eyre-editorial",
+          "title": "Джейн Эйр",
+          "coverUrl": "brand/book-covers/jane-eyre-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/jane-eyre-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/jane-eyre-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/jane-eyre-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Джейн Эйр",
         "Шерли",
         "Городок"
       ],
@@ -1130,8 +1226,28 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель и поэт, один из крупнейших авторов поздней викторианской эпохи.",
+      workDetails: [
+        {
+          "id": "tess-of-the-durbervilles-editorial",
+          "title": "Тэсс из рода д'Эрбервиллей",
+          "coverUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/tess-of-the-durbervilles-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Тэсс из рода д'Эрбервиллей",
         "Мэр Кэстербриджа",
         "Вдали от обезумевшей толпы"
       ],
@@ -1262,10 +1378,30 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель и публицист, один из основателей научной фантастики.",
+      workDetails: [
+        {
+          "id": "invisible-man-editorial",
+          "title": "Человек-невидимка",
+          "coverUrl": "brand/book-covers/invisible-man-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/invisible-man-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/invisible-man-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/invisible-man-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Машина времени",
         "Война миров",
-        "Человек-невидимка",
         "Остров доктора Моро"
       ],
       genres: [
@@ -1296,9 +1432,29 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английская писательница, литературный критик и одна из главных фигур модернизма XX века.",
+      workDetails: [
+        {
+          "id": "to-the-lighthouse-editorial",
+          "title": "На маяк",
+          "coverUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/to-the-lighthouse-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Миссис Дэллоуэй",
-        "На маяк",
         "Орландо"
       ],
       genres: [
@@ -1329,8 +1485,28 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель и философ, автор одного из самых известных антиутопических романов XX века.",
+      workDetails: [
+        {
+          "id": "brave-new-world-editorial",
+          "title": "О дивный новый мир",
+          "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "О дивный новый мир",
         "Остров",
         "Контрапункт"
       ],
@@ -1440,7 +1616,6 @@ export const england: Country = {
       portrait: "",
       bio: "Английский писатель и публицист, автор знаменитых антиутопий XX века.",
       works: [
-        "Скотный двор",
         "Дань Каталонии"
       ],
       workDetails: [
@@ -1479,6 +1654,26 @@ export const england: Country = {
             reviewedAt: "2026-07-30"
           }
         }
+      ,
+        {
+          "id": "animal-farm-editorial",
+          "title": "Скотный двор",
+          "coverUrl": "brand/book-covers/animal-farm-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/animal-farm-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
       ],
       genres: [
         "антиутопия",
@@ -1510,8 +1705,28 @@ export const england: Country = {
       },
       portrait: "",
       bio: "Английский писатель, лауреат Нобелевской премии по литературе 1983 года.",
+      workDetails: [
+        {
+          "id": "lord-of-the-flies-editorial",
+          "title": "Повелитель мух",
+          "coverUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/lord-of-the-flies-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Повелитель мух",
         "Шпиль"
       ],
       genres: [

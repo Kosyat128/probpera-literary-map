@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T14:09:19.693Z",
+  "generatedAt": "2026-08-02T23:34:52.863Z",
   "source": "https://www.wikidata.org/w/api.php",
   "summary": {
     "records": 2356,
@@ -2000,7 +2000,7 @@
       "countryId": "russia",
       "id": "wikidata-q118449",
       "wikidataId": "Q118449",
-      "fullName": "Сергей Стефанович Сухинов",
+      "fullName": "Сухинов, Сергей Стефанович",
       "status": "source-confirmed",
       "issues": [],
       "warnings": [],

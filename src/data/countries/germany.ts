@@ -732,8 +732,28 @@ export const germany: Country = {
       },
       portrait: "",
       bio: "Немецкий писатель и эссеист, лауреат Нобелевской премии по литературе 1929 года, один из крупнейших романистов XX века.",
+      workDetails: [
+        {
+          "id": "buddenbrooks-editorial",
+          "title": "Будденброки",
+          "coverUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Будденброки",
         "Волшебная гора",
         "Доктор Фаустус",
         "Смерть в Венеции"
@@ -915,10 +935,48 @@ export const germany: Country = {
       },
       portrait: "",
       bio: "Немецкий писатель, один из наиболее известных авторов литературы о войне и «потерянном поколении».",
+      workDetails: [
+        {
+          "id": "all-quiet-on-the-western-front-editorial",
+          "title": "На Западном фронте без перемен",
+          "coverUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/all-quiet-on-the-western-front-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "arch-of-triumph-editorial",
+          "title": "Триумфальная арка",
+          "coverUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/arch-of-triumph-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "На Западном фронте без перемен",
         "Три товарища",
-        "Триумфальная арка",
         "Жизнь взаймы"
       ],
       genres: [

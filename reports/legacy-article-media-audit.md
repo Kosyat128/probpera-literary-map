@@ -1,24 +1,184 @@
 # Проверка переноса статей и изображений
 
 Проверено материалов: 157.
-Полностью совпадают: 157.
-Требуют проверки: 0.
+Полностью совпадают: 0.
+Требуют проверки: 157.
 Не удалось проверить: 0.
-Несовпадений заголовков: 0.
-Редакционных различий в пунктуации и формулировке: 49.
-Несовпадений главных изображений: 0.
-Изображений внутри старых текстов: 1427.
+Несовпадений заголовков: 157.
+Редакционных различий в пунктуации и формулировке: 0.
+Несовпадений главных изображений: 157.
+Изображений внутри старых текстов: 0.
 Изображений внутри новых текстов: 1427.
 Не перенесённых изображений внутри текста: 0.
-Лишних изображений внутри текста: 0.
-Материалов с нарушенным порядком изображений: 0.
-Глав в старых статьях: 1193.
+Лишних изображений внутри текста: 1427.
+Материалов с нарушенным порядком изображений: 129.
+Глав в старых статьях: 0.
 Глав в новых статьях: 1193.
 Не перенесённых глав: 0.
-Лишних глав: 0.
-Материалов с нарушенным порядком глав: 0.
-Боковых фотоблоков: 54 → 54.
-Материалов с расхождением боковых фотоблоков: 0.
-Галерей: 72 → 72.
-Материалов с расхождением галерей: 0.
+Лишних глав: 1193.
+Материалов с нарушенным порядком глав: 129.
+Боковых фотоблоков: 0 → 54.
+Материалов с расхождением боковых фотоблоков: 53.
+Галерей: 0 → 72.
+Материалов с расхождением галерей: 51.
 Недоступных текущих изображений: 0.
+
+## Материалы, требующие внимания
+
+- **15 экранизаций классических романов, которые действительно удались** (page--article--sucsessful--cinema--adaptation--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **15 экранизаций классических романов, которые действительно удались (Часть 2)** (page--article--sucsessful--cinema--adaptation--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 1)** (page--article--luchshie--ekranizacii--bestsellerov--21--veka--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 2)** (page--article--luchshie--ekranizacii--bestsellerov--21--veka--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 3)** (page--article--luchshie--ekranizacii--bestsellerov--21--veka--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Книга и экранизация: «Великий Гэтсби»** (page--article--page--bookvsmovie--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Книга и экранизация: «Война миров»** (page--article--page--bookvsmovie--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Облачный атлас»** (page--article--page--bookvsmovie--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Я-легенда»** (page--article--page--bookvsmovie--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «1408»** (page--article--page--bookvsmovie--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Бойцовский клуб»** (page--article--page--bookvsmovie--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Гринч — похититель Рождества»** (page--article--page--bookvsmovie--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «О мышах и людях»** (page--article--page--bookvsmovie--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Парк юрского периода»** (page--article--page--bookvsmovie--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Старикам тут не место»** (page--article--page--bookvsmovie--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Страх и ненависть в Лас-Вегасе»** (page--article--page--bookvsmovie--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Книга и экранизация: «Форрест Гамп»** (page--article--page--bookvsmovie--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **10 выдающихся книг XXI века, оставивших след в мировой литературе** (page--article--luchshie--bestselleri--21--veka--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **15 лучших художественных книг о пиратах** (page--article--knigniy--gid--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять лучших книг Джека Лондона** (page--article--luchshie--knigi--pisateley--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании** (page--article--top--books--page--turners--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании (Часть 2)** (page--article--top--books--page--turners--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании (Часть 3)** (page--article--top--books--page--turners--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании (Часть 4)** (page--article--top--books--page--turners--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании (Часть 5)** (page--article--top--books--page--turners--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Десять романов, которые читаются на одном дыхании (Часть 6)** (page--article--top--books--page--turners--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 1)** (page--article--topbooks--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 2)** (page--article--topbooks--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 3)** (page--article--topbooks--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)** (page--article--topbooks--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 5)** (page--article--topbooks--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 6)** (page--article--topbooks--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 7)** (page--article--topbooks--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 8)** (page--article--topbooks--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 9)** (page--article--topbooks--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **А.О. Эксвемелин «Пираты Америки»** (page--article--page--books--2): title-mismatch, hero-mismatch
+- **Даниель Дефо «Всеобщая история пиратства»** (page--article--page--books--4): title-mismatch, hero-mismatch
+- **Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»** (page--article--page--books--3): title-mismatch, hero-mismatch
+- **Мнение о книге «Куда приводят мечты» Ричарда Матесона** (page--article--page--books--19): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге «Остров» Олдоса Хаксли** (page--article--page--books--20): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге Герберта Уэллса «Война в воздухе»** (page--article--page--books--21): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»** (page--article--page--books--14): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге Дэвида Митчелла «Утопия — Авеню»** (page--article--page--books--18): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге Лорана Гунеля «Бог путешествует инкогнито»** (page--article--page--books--23): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Мнение о книге Хантера Томпсона «Ангелы ада»** (page--article--page--books--22): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Анри Барбюс «Огонь»** (page--article--page--books--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Брэм Стокер «Дракула»** (page--article--page--books--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Дж. Р. Р. Толкин «Письма Рождественского деда»** (page--article--page--books--15): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Джек Лондон «Белый Клык»** (page--article--page--books--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Джек Лондон «Морской волк»** (page--article--page--books--8): title-mismatch, hero-mismatch
+- **Мнение о книге. Дэвид Митчелл «Облачный атлас»** (page--article--page--books--7): title-mismatch, hero-mismatch
+- **Мнение о книге. Марио Пьюзо «Шесть могил на пути в Мюнхен»** (page--article--page--books--13): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Мнение о книге. Харуки Мураками «Норвежский Лес»** (page--article--page--books--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Последний роман Джека Лондона «Бюро заказных убийств»** (page--article--page--books--1): title-mismatch, hero-mismatch
+- **С.И. Ожегов «Толковый словарь русского языка»** (page--article--page--books--6): title-mismatch, hero-mismatch
+- **Сборник рассказов Фрэнсиса Скотта Фицджеральда «Прибрежный пират»** (page--article--page--books--5): title-mismatch, hero-mismatch
+- **Библиотека будущего. Произведения именитых авторов, которые увидят свет лишь через 100 лет** (page--article--different--staff--2): title-mismatch, hero-mismatch
+- **Десять книг, которые определённо подарят вам новогоднее и рождественское настроение** (page--article--different--staff--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! А.П. Чехов** (page--article--topstories--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Анри Барбюс** (page--article--topstories--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Герберт Уэллс** (page--article--topstories--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Джек Лондон** (page--article--topstories--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Л.Н. Толстой** (page--article--topstories--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Марк Твен** (page--article--topstories--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Роальд Даль** (page--article--topstories--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Синклер Льюис** (page--article--topstories--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Хорхе Луис Борхес** (page--article--topstories--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эдгар Аллан По** (page--article--topstories--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Эрнест Хемингуэй** (page--article--topstories--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Упадок медиакультуры. Основные факторы деградации кино и игр** (page--article--different--staff--1): title-mismatch, hero-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия** (page--article--page--writers--world--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Бразилия** (page--article--page--writers--world--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Индия** (page--article--page--writers--world--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия** (page--article--page--writers--world--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай** (page--article--page--writers--world--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Мексика** (page--article--page--writers--world--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Норвегия** (page--article--page--writers--world--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Турция** (page--article--page--writers--world--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Швеция** (page--article--page--writers--world--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». ЮАР** (page--article--page--writers--world--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Япония** (page--article--page--writers--world--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Зарубежные классики литературы и их профессии** (page--article--first--profession--writers--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Зарубежные классики литературы и их профессии (Часть 2)** (page--article--first--profession--writers--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Зарубежные классики литературы и их профессии (Часть 3)** (page--article--first--profession--writers--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Непризнанные современниками гении литературы. Герман Мелвилл** (page--article--unrecognized--writers--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Непризнанные современниками гении литературы. Марсель Пруст** (page--article--unrecognized--writers--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Непризнанные современниками гении литературы. Стендаль** (page--article--unrecognized--writers--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Непризнанные современниками гении литературы. Уолт Уитмен** (page--article--unrecognized--writers--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Непризнанные современниками гении литературы. Фернанду Пессоа** (page--article--unrecognized--writers--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Непризнанные современниками гении литературы. Эмили Дикинсон** (page--article--unrecognized--writers--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Русские классики и их профессии** (page--article--first--profession--writers--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **Русские классики и их профессии (Часть 2)** (page--article--first--profession--writers--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **1901 год. Рене Сюлли-Прюдом — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--2): title-mismatch, hero-mismatch
+- **1902 год. Теодор Моммзен лауреат — Нобелевской премии по литературе** (page--article--nobel--prize--3): title-mismatch, hero-mismatch
+- **1903 год. Бьёрнстьерне Бьёрнсон — лауреат Нобелевской премии** (page--article--nobel--prize--4): title-mismatch, hero-mismatch
+- **1904 год. Хосе Эчегарае-и-Эйсагирре и Фредерик Мистраль – лауреаты Нобелевской премии** (page--article--nobel--prize--5): title-mismatch, hero-mismatch
+- **1905 год. Генрик Сенкевич — лауреат Нобелевской премии** (page--article--nobel--prize--6): title-mismatch, hero-mismatch
+- **1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии** (page--article--nobel--prize--7): title-mismatch, hero-mismatch
+- **1907 год. Редьярд Киплинг — лауреат Нобелевской премии** (page--article--nobel--prize--8): title-mismatch, hero-mismatch
+- **1908 год. Рудольф Эйкен — лауреат Нобелевской премии** (page--article--nobel--prize--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **1909 год. Сельма Лагерлёф — лауреат Нобелевской премии** (page--article--nobel--prize--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **1910 год. Пауль Йохан Людвиг фон Хейзе — лауреат Нобелевской премии** (page--article--nobel--prize--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1911 год. Морис Метерлинк — лауреат Нобелевской премии** (page--article--nobel--prize--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1912 год. Герхарт Гауптман – лауреат Нобелевской премии** (page--article--nobel--prize--13): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1913 год. Рабиндранат Тагор – лауреат Нобелевской премии** (page--article--nobel--prize--14): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1915 год. Ромен Роллан – лауреат Нобелевской премии** (page--article--nobel--prize--15): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии** (page--article--nobel--prize--16): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **1917 год. Карл Адольф Гьеллеруп и Хенрик Понтоппидан — лауреаты Нобелевской премии по литературе** (page--article--nobel--prize--17): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **1919 год. Карл Фридрих Георг Шпиттелер — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--18): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **1920 год. Кнут Гамсун — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--19): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1921 год. Анатоль Франс — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--20): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1922 год. Хасинто Бенавенте-и-Мартинес — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--21): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **1923 год. Уильям Батлер Йейтс — лауреат Нобелевской премии по литературе** (page--article--nobel--prize--22): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Дублинская литературная премия** (page--article--famous--prizes--3): title-mismatch, hero-mismatch
+- **Национальная книжная премия США** (page--article--famous--prizes--14): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Нобелевская премия. История учреждения награды и примечательные факты** (page--article--nobel--prize--1): title-mismatch, hero-mismatch
+- **Премия «Мигель де Сервантес»** (page--article--famous--prizes--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия «Хьюго»** (page--article--famous--prizes--2): title-mismatch, hero-mismatch
+- **Премия Георга Бюхнера** (page--article--famous--prizes--13): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия имени Ганса Христиана Андерсена** (page--article--famous--prizes--4): title-mismatch, hero-mismatch
+- **Премия Камоэнса** (page--article--famous--prizes--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия Нойштадта** (page--article--famous--prizes--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия ПЕН/Фолкнера** (page--article--famous--prizes--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия принцессы Астурийской** (page--article--famous--prizes--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия Ренодо** (page--article--famous--prizes--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия Стрега** (page--article--famous--prizes--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия Франца Кафки** (page--article--famous--prizes--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Премия Эдгара Аллана По** (page--article--famous--prizes--15): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Пулитцеровская премия** (page--article--famous--prizes--1): title-mismatch, hero-mismatch
+- **Эссе на тему: «Моё первое знакомство с поэзией»** (page--stories--1): title-mismatch, hero-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»** (page--words--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Б»** (page--words--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «В»** (page--words--3): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Г»** (page--words--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Д»** (page--words--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Е-Ж»** (page--words--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **15 крылатых выражений, пришедших к нам из древнегреческой мифологии** (page--article--krilatie--virageniya--1): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок!** (page--article--folklore--2): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 2)** (page--article--folklore--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 3)** (page--article--folklore--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch
+- **А.С. Пушкин «Сказка о мертвой царевне и семи богатырях». Корни сказки и взаимосвязь с обрядовым фольклором и мифологией.** (page--article--folklore--3): title-mismatch, hero-mismatch
+- **Баба-яга** (page--article--folklore--characters--4): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Берегиня** (page--article--folklore--characters--14): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Вий** (page--article--folklore--characters--12): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Водяной** (page--article--folklore--characters--7): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Дед Мороз** (page--article--folklore--characters--3): title-mismatch, hero-mismatch
+- **Домовой** (page--article--folklore--characters--6): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Жар-птица** (page--article--folklore--characters--9): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Змей Горыныч** (page--article--folklore--characters--2): title-mismatch, hero-mismatch
+- **Известные персонажи славянского фольклора. Кощей Бессмертный** (page--article--folklore--characters--5): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, gallery-count-mismatch
+- **Кикимора** (page--article--folklore--characters--8): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch, gallery-count-mismatch
+- **Красная Шапочка. Взаимосвязь сказки с устным и обрядовым фольклором** (page--article--folklore--1): title-mismatch, hero-mismatch
+- **Леший** (page--article--folklore--characters--1): title-mismatch, hero-mismatch
+- **Полудница** (page--article--folklore--characters--10): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Русалка** (page--article--folklore--characters--11): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Соловей-разбойник. Образ персонажа в былинах и его взаимосвязь с фольклором и легендами древности** (page--article--folklore--characters--15): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch
+- **Упырь** (page--article--folklore--characters--13): title-mismatch, hero-mismatch, unexpected-inline-images, inline-image-order-mismatch, unexpected-headings, heading-order-mismatch, side-layout-count-mismatch

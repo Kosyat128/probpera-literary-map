@@ -8,14 +8,20 @@ import {
 
 import {
   getWriterWorkTitles,
+  isCoverDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
-import { articlePath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  navigateToArticle,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
+import WriterPortrait from "./WriterPortrait";
 
 type Props = {
   open: boolean;
@@ -49,7 +55,7 @@ function normalize(value: string) {
 function stem(token: string) {
   if (token.length < 5) return token;
   return token.replace(
-    /(иями|ями|ами|его|ого|ему|ому|иях|ах|ях|ию|ью|ия|ья|ие|ье|ий|ый|ой|ая|яя|ое|ее|ов|ев|ам|ям|ом|ем|у|ю|а|я|ы|и|е|о)$/u,
+    /(ателями|ителей|ателей|ениями|иями|ями|ами|его|ого|ему|ому|иях|ах|ях|ию|ью|ия|ья|ие|ье|ий|ый|ой|ая|яя|ое|ее|ей|ов|ев|ам|ям|ом|ем|у|ю|а|я|ы|и|е|о)$/u,
     ""
   );
 }
@@ -63,25 +69,60 @@ function pluralRu(count: number, forms: [string, string, string]) {
   return forms[2];
 }
 
-function matches(query: string, values: Array<string | undefined>) {
-  const queryTokens = normalize(query).split(" ").filter(Boolean).map(stem);
-  const valueTokens = normalize(values.filter(Boolean).join(" "))
-    .split(" ")
-    .filter(Boolean)
-    .map(stem);
+type SearchValue = string | null | undefined;
+
+export function matches(query: string, values: SearchValue[]) {
+  const queryTokens = searchTokens(query);
+  const valueTokens = searchTokens(values.filter(Boolean).join(" "));
+  if (!queryTokens.length || !valueTokens.length) return false;
 
   return queryTokens.every((queryToken) =>
     valueTokens.some(
       (valueToken) =>
-        valueToken.includes(queryToken) || queryToken.includes(valueToken)
+        valueToken === queryToken ||
+        valueToken.startsWith(queryToken) ||
+        queryToken.startsWith(valueToken) ||
+        (queryToken.length >= 5 && valueToken.includes(queryToken))
     )
   );
 }
 
+function resolvePublicAsset(url?: string) {
+  if (!url) return "";
+  if (/^(?:https?:|data:|blob:)/iu.test(url)) return url;
+  return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
+}
+
+const searchStopWords = new Set([
+  "а",
+  "без",
+  "в",
+  "для",
+  "и",
+  "из",
+  "к",
+  "на",
+  "о",
+  "об",
+  "от",
+  "по",
+  "с",
+  "со",
+]);
+
+function searchTokens(value: string) {
+  return normalize(value)
+    .split(" ")
+    .filter(Boolean)
+    .filter((token) => !searchStopWords.has(token))
+    .map(stem)
+    .filter((token) => token.length >= 2);
+}
+
 function matchScore(
   query: string,
-  primaryValues: Array<string | undefined>,
-  secondaryValues: Array<string | undefined>
+  primaryValues: SearchValue[],
+  secondaryValues: SearchValue[]
 ) {
   const normalizedQuery = normalize(query);
   const primary = primaryValues.filter(Boolean).map((value) => normalize(value!));
@@ -102,8 +143,8 @@ function matchScore(
 function rankMatches<T>(
   items: T[],
   query: string,
-  primaryValues: (item: T) => Array<string | undefined>,
-  secondaryValues: (item: T) => Array<string | undefined>,
+  primaryValues: (item: T) => SearchValue[],
+  secondaryValues: (item: T) => SearchValue[],
   label: (item: T) => string
 ) {
   return items
@@ -285,6 +326,9 @@ export default function GlobalSearch({
           article.title,
           article.description,
           article.sectionLabel,
+          article.seoTitle,
+          article.seoDescription,
+          ...(article.seoKeywords || []),
       ],
       (article) => article.title
     ).slice(0, 7);
@@ -366,7 +410,13 @@ export default function GlobalSearch({
               </button>
             </div>
           </div>
-        ) : totalResults === 0 && !articlesLoading ? (
+        ) : totalResults === 0 && articlesLoading ? (
+          <div className="global-search-empty is-loading" role="status">
+            <span className="global-search-loader" aria-hidden="true" />
+            <strong>{t("Ищем во всём архиве…")}</strong>
+            <p>{t("Подключаем статьи, книги, писателей и страны.")}</p>
+          </div>
+        ) : totalResults === 0 ? (
           <div className="global-search-empty">
             <strong>{t("Совпадений не найдено")}</strong>
             <p>
@@ -427,7 +477,11 @@ export default function GlobalSearch({
                       onClose();
                     }}
                   >
-                    <span aria-hidden="true">✦</span>
+                    <WriterPortrait
+                      writer={writer}
+                      className="global-search-writer-portrait"
+                      decorative
+                    />
                     <strong>{writerName(writer)}</strong>
                     <small>
                       {countryName(country.code, country.name)} ·{" "}
@@ -450,7 +504,20 @@ export default function GlobalSearch({
                       onClose();
                     }}
                   >
-                    <span aria-hidden="true">▤</span>
+                    <span className="global-search-book-cover" aria-hidden="true">
+                      {isCoverDisplayAllowed(book) ? (
+                        <img
+                          src={resolvePublicAsset(
+                            book.coverThumbnailUrl || book.coverUrl
+                          )}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span>▤</span>
+                      )}
+                    </span>
                     <strong>{book.title}</strong>
                     <small>
                       {book.writerName} ·{" "}
@@ -473,7 +540,12 @@ export default function GlobalSearch({
                       article.sectionId,
                       article.slug
                     )}
-                    onClick={onClose}
+                    onClick={(event) => {
+                      onClose();
+                      if (!shouldUseClientNavigation(event)) return;
+                      event.preventDefault();
+                      navigateToArticle(article);
+                    }}
                   >
                     <span aria-hidden="true">¶</span>
                     <strong>{article.title}</strong>

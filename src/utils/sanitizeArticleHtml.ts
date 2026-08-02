@@ -42,6 +42,7 @@ export function sanitizeArticleHtml(source: string) {
           "article-media-split",
           "article-gallery",
           "article-design-block",
+          "article-leading-label",
           "is-fact",
           "is-accent",
           "is-columns",
@@ -70,6 +71,22 @@ export function sanitizeArticleHtml(source: string) {
       element.decoding = "async";
     }
   });
+
+  // Legacy articles sometimes store a short section label (for example,
+  // “Предисловие”) as the first <strong> inside an ordinary paragraph.
+  // Mark it explicitly so the reader can style it as a heading instead of
+  // turning its first letter into an accidental decorative drop cap.
+  const firstParagraph = document.body.querySelector("p:first-of-type");
+  const firstElement = firstParagraph?.firstElementChild;
+  if (
+    firstParagraph instanceof HTMLParagraphElement &&
+    firstElement instanceof HTMLElement &&
+    firstElement.tagName === "STRONG" &&
+    (firstElement.textContent || "").trim().length > 0 &&
+    (firstElement.textContent || "").trim().length <= 48
+  ) {
+    firstParagraph.classList.add("article-leading-label");
+  }
 
   return document.body.innerHTML;
 }

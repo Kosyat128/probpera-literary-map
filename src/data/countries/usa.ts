@@ -252,9 +252,29 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, поэт и литературный критик, один из основателей жанров детектива и психологического хоррора.",
+      workDetails: [
+        {
+          "id": "the-fall-of-the-house-of-usher-editorial",
+          "title": "Падение дома Ашеров",
+          "coverUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-fall-of-the-house-of-usher-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Ворон",
-        "Падение дома Ашеров",
         "Убийства на улице Морг",
         "Чёрный кот"
       ],
@@ -531,9 +551,29 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, один из крупнейших мастеров психологического романа.",
+      workDetails: [
+        {
+          "id": "the-turn-of-the-screw-editorial",
+          "title": "Поворот винта",
+          "coverUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-turn-of-the-screw-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Портрет леди",
-        "Поворот винта",
         "Вашингтонская площадь"
       ],
       genres: [
@@ -566,7 +606,6 @@ export const usa: Country = {
       bio: "Американский писатель и журналист, автор приключенческих и социально-философских произведений.",
       works: [
         "Мартин Иден",
-        "Белый клык",
         "Зов предков"
       ],
       workDetails: [
@@ -603,6 +642,26 @@ export const usa: Country = {
           editorial: {
             status: "verified",
             reviewedAt: "2026-08-01"
+          }
+        }
+      ,
+        {
+          "id": "white-fang-editorial",
+          "title": "Белый клык",
+          "coverUrl": "brand/book-covers/white-fang-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/white-fang-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/white-fang-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/white-fang-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
@@ -669,9 +728,29 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель и журналист, один из крупнейших представителей американского натурализма.",
+      workDetails: [
+        {
+          "id": "an-american-tragedy-editorial",
+          "title": "Американская трагедия",
+          "coverUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/an-american-tragedy-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Сестра Керри",
-        "Американская трагедия",
         "Финансист"
       ],
       genres: [
@@ -702,9 +781,29 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, один из главных представителей «потерянного поколения», автор романов о поколении эпохи джаза.",
+      workDetails: [
+        {
+          "id": "tender-is-the-night-editorial",
+          "title": "Ночь нежна",
+          "coverUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/tender-is-the-night-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Великий Гэтсби",
-        "Ночь нежна",
         "По эту сторону рая"
       ],
       genres: [
@@ -738,10 +837,30 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель и журналист, лауреат Нобелевской премии по литературе 1954 года, один из крупнейших авторов XX века.",
+      workDetails: [
+        {
+          "id": "for-whom-the-bell-tolls-editorial",
+          "title": "По ком звонит колокол",
+          "coverUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/for-whom-the-bell-tolls-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Старик и море",
         "Прощай, оружие!",
-        "По ком звонит колокол",
         "И восходит солнце"
       ],
       genres: [
@@ -779,8 +898,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, лауреат Нобелевской премии по литературе 1949 года, один из крупнейших представителей модернизма.",
+      workDetails: [
+        {
+          "id": "the-sound-and-the-fury-editorial",
+          "title": "Шум и ярость",
+          "coverUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-sound-and-the-fury-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Шум и ярость",
         "Когда я умирала",
         "Свет в августе",
         "Авессалом, Авессалом!"
@@ -851,8 +990,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, лауреат Нобелевской премии по литературе 1962 года, известный произведениями о простых людях и социальной несправедливости.",
+      workDetails: [
+        {
+          "id": "the-grapes-of-wrath-editorial",
+          "title": "Гроздья гнева",
+          "coverUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-grapes-of-wrath-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Гроздья гнева",
         "О мышах и людях",
         "К востоку от Эдема"
       ],
@@ -988,10 +1147,48 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель-фантаст, один из самых известных авторов научной фантастики XX века.",
+      workDetails: [
+        {
+          "id": "dandelion-wine-editorial",
+          "title": "Вино из одуванчиков",
+          "coverUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/dandelion-wine-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        },
+        {
+          "id": "fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "coverUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "451° по Фаренгейту",
         "Марсианские хроники",
-        "Вино из одуванчиков"
       ],
       genres: [
         "научная фантастика",
@@ -1059,8 +1256,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, известный сатирической и антиутопической прозой.",
+      workDetails: [
+        {
+          "id": "slaughterhouse-five-editorial",
+          "title": "Бойня номер пять",
+          "coverUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/slaughterhouse-five-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Бойня номер пять",
         "Колыбель для кошки",
         "Сирены Титана"
       ],
@@ -1095,8 +1312,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американский писатель, наиболее известный романом о подростковом взрослении.",
+      workDetails: [
+        {
+          "id": "the-catcher-in-the-rye-editorial",
+          "title": "Над пропастью во ржи",
+          "coverUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Над пропастью во ржи",
         "Девять рассказов"
       ],
       genres: [
@@ -1160,8 +1397,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Американская писательница, автор одного из самых известных романов американской литературы XX века.",
+      workDetails: [
+        {
+          "id": "to-kill-a-mockingbird-editorial",
+          "title": "Убить пересмешника",
+          "coverUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Убить пересмешника",
         "Пойди, поставь сторожа"
       ],
       genres: [
@@ -1226,8 +1483,28 @@ export const usa: Country = {
       },
       portrait: "",
       bio: "Русско-американский писатель, поэт и литературовед, один из крупнейших мастеров прозы XX века.",
+      workDetails: [
+        {
+          "id": "lolita-editorial",
+          "title": "Лолита",
+          "coverUrl": "brand/book-covers/lolita-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/lolita-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/lolita-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/lolita-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Лолита",
         "Дар",
         "Приглашение на казнь",
         "Защита Лужина"

@@ -1,7 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
-import { articlePath, journalPath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  journalPath,
+  navigateToArticle,
+  navigateToJournal,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
 import {
   translateInterfaceText,
   type InterfaceLanguage,
@@ -136,7 +142,12 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 featured.lead.sectionId,
                 featured.lead.slug
               )}
-              onClick={(event) => closeMenu(event.currentTarget)}
+              onClick={(event) => {
+                closeMenu(event.currentTarget);
+                if (!shouldUseClientNavigation(event)) return;
+                event.preventDefault();
+                navigateToArticle(featured.lead);
+              }}
             >
               <span
                 style={
@@ -164,7 +175,12 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                     article.slug
                   )}
                   key={article.id}
-                  onClick={(event) => closeMenu(event.currentTarget)}
+                  onClick={(event) => {
+                    closeMenu(event.currentTarget);
+                    if (!shouldUseClientNavigation(event)) return;
+                    event.preventDefault();
+                    navigateToArticle(article);
+                  }}
                 >
                   <small>{article.sectionLabel}</small>
                   <strong>{article.title}</strong>
@@ -193,7 +209,15 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 : `${articles.length} материалов в архиве`
               : t("Полный архив журнала")}
           </span>
-          <a href={journalPath()} onClick={(event) => closeMenu(event.currentTarget)}>
+          <a
+            href={journalPath()}
+            onClick={(event) => {
+              closeMenu(event.currentTarget);
+              if (!shouldUseClientNavigation(event)) return;
+              event.preventDefault();
+              navigateToJournal();
+            }}
+          >
             {t("Все публикации")} <b aria-hidden="true">→</b>
           </a>
         </footer>
