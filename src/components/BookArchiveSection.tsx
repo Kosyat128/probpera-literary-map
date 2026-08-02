@@ -2,7 +2,8 @@ import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import {
-  isCoverDisplayAllowed,
+  isEditorialCover,
+  isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import {
@@ -27,12 +28,33 @@ type Props = {
 const archiveFilters: Array<{
   id: ArchiveFilter;
   label: string;
+  description: string;
 }> = [
-  { id: "all", label: "Весь архив" },
-  { id: "verified", label: "Проверено" },
-  { id: "covers", label: "С обложками" },
-  { id: "classic", label: "До 1945 года" },
-  { id: "modern", label: "После 1945 года" },
+  {
+    id: "all",
+    label: "Весь архив",
+    description: "Все связанные произведения",
+  },
+  {
+    id: "verified",
+    label: "Проверено редакцией",
+    description: "Карточки с подтверждёнными данными",
+  },
+  {
+    id: "covers",
+    label: "С обложками",
+    description: "Изображения с указанным источником",
+  },
+  {
+    id: "classic",
+    label: "Опубликовано до 1945",
+    description: "Ранние издания и классика",
+  },
+  {
+    id: "modern",
+    label: "Опубликовано после 1945",
+    description: "Литература второй половины XX–XXI века",
+  },
 ];
 
 function normalize(value: string) {
@@ -63,7 +85,7 @@ function resolveCoverUrl(url?: string) {
 }
 
 function hasArchiveCover(book: BookArchiveEntry) {
-  return isCoverDisplayAllowed(book);
+  return isCoverArtworkDisplayAllowed(book);
 }
 
 export default function BookArchiveSection({
@@ -208,7 +230,7 @@ export default function BookArchiveSection({
 
   const visibleBooks = filteredBooks.slice(0, visibleCount);
   const selectedCoverUrl = selectedBook
-    ? isCoverDisplayAllowed(selectedBook)
+    ? isCoverArtworkDisplayAllowed(selectedBook)
       ? selectedBook.coverUrl
       : undefined
     : undefined;
@@ -254,21 +276,33 @@ export default function BookArchiveSection({
             placeholder={t("Например, Достоевский или Япония")}
           />
         </label>
-        <div
-          className="book-archive-filters"
-          aria-label={t("Фильтры книжного архива")}
-        >
-          {archiveFilters.map((item) => (
-            <button
-              className={filter === item.id ? "is-active" : ""}
-              type="button"
-              key={item.id}
-              onClick={() => setFilter(item.id)}
-            >
-              {t(item.label)}
-              <span>{number(counts[item.id])}</span>
-            </button>
-          ))}
+        <div className="book-filter-panel">
+          <div className="book-filter-heading">
+            <span>{t("Отбор архива")}</span>
+            <small aria-live="polite">
+              {number(filteredBooks.length)} {t("результатов")}
+            </small>
+          </div>
+          <div
+            className="book-archive-filters"
+            aria-label={t("Фильтры книжного архива")}
+          >
+            {archiveFilters.map((item) => (
+              <button
+                className={filter === item.id ? "is-active" : ""}
+                type="button"
+                key={item.id}
+                onClick={() => setFilter(item.id)}
+                aria-pressed={filter === item.id}
+              >
+                <span className="book-filter-copy">
+                  <strong>{t(item.label)}</strong>
+                  <small>{t(item.description)}</small>
+                </span>
+                <span className="book-filter-count">{number(counts[item.id])}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -289,14 +323,16 @@ export default function BookArchiveSection({
               <img
                 src={resolveCoverUrl(selectedCoverUrl)}
                 srcSet={
-                  isCoverDisplayAllowed(selectedBook) &&
+                  isCoverArtworkDisplayAllowed(selectedBook) &&
                   selectedBook.coverThumbnailUrl
                     ? `${resolveCoverUrl(selectedBook.coverThumbnailUrl)} 400w, ${resolveCoverUrl(selectedBook.coverUrl)} 800w`
                     : undefined
                 }
                 sizes="(max-width: 680px) 44vw, 360px"
                 alt={
-                    `${t("Обложка конкретного издания")} «${selectedBook.title}»`
+                  isEditorialCover(selectedBook)
+                    ? `${t("Редакционная обложка")} «${selectedBook.title}»`
+                    : `${t("Обложка конкретного издания")} «${selectedBook.title}»`
                 }
               />
             ) : (
@@ -388,7 +424,11 @@ export default function BookArchiveSection({
                   {t("Источник сведений")}
                 </a>
               )}
-              {selectedBook.coverSourceUrl && (
+              {isEditorialCover(selectedBook) ? (
+                <span className="book-cover-credit">
+                  {t("Редакционная обложка «Пробы Пера»")}
+                </span>
+              ) : selectedBook.coverSourceUrl ? (
                 <a
                   href={resolveCoverUrl(selectedBook.coverSourceUrl)}
                   target="_blank"
@@ -396,7 +436,7 @@ export default function BookArchiveSection({
                 >
                   {t("Источник обложки")}
                 </a>
-              )}
+              ) : null}
               {selectedBook.coverRights && (
                 <span className="cover-rights-note">
                   {selectedBook.coverRights.status === "external-preview"
@@ -485,7 +525,7 @@ export default function BookArchiveSection({
 
       <div className="book-archive-grid">
         {visibleBooks.map((book) => {
-          const coverUrl = isCoverDisplayAllowed(book)
+          const coverUrl = isCoverArtworkDisplayAllowed(book)
             ? book.coverThumbnailUrl || book.coverUrl
             : undefined;
           return (
@@ -497,13 +537,15 @@ export default function BookArchiveSection({
                 <img
                   src={resolveCoverUrl(coverUrl)}
                   srcSet={
-                    isCoverDisplayAllowed(book) && book.coverThumbnailUrl
+                    isCoverArtworkDisplayAllowed(book) && book.coverThumbnailUrl
                       ? `${resolveCoverUrl(book.coverThumbnailUrl)} 400w, ${resolveCoverUrl(book.coverUrl)} 800w`
                       : undefined
                   }
                   sizes="(max-width: 680px) 42vw, 190px"
                   alt={
-                    `${t("Обложка конкретного издания")} «${book.title}»`
+                    isEditorialCover(book)
+                      ? `${t("Редакционная обложка")} «${book.title}»`
+                      : `${t("Обложка конкретного издания")} «${book.title}»`
                   }
                   loading="lazy"
                   decoding="async"

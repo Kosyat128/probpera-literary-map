@@ -1,5 +1,12 @@
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
 import {
@@ -17,6 +24,18 @@ import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
+
+function FollowBellIcon({ active = false }: { active?: boolean }) {
+  return (
+    <span className="archive-subscribe-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.4 10.2c0-3.1 1.8-5.1 4.6-5.1s4.6 2 4.6 5.1v3.1l1.6 2.2H5.8l1.6-2.2v-3.1Z" />
+        <path d="M10 18.2c.5.8 1.1 1.2 2 1.2s1.5-.4 2-1.2" />
+        {active ? <path d="m9.5 11.1 1.6 1.6 3.5-3.7" /> : <path d="M12 2.6v1.1" />}
+      </svg>
+    </span>
+  );
+}
 
 type WriterPanelProps = {
   country: Country;
@@ -78,7 +97,8 @@ export default function WriterPanel({
   const { language, t, countryName, number } = useInterfaceLanguage();
   const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
-  const detailRef = useRef<HTMLDivElement>(null);
+  const detailRef = useRef<HTMLElement>(null);
+  const requestedWriterId = useRef<string | null>(null);
   const writers = country.writers || [];
   const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);
 
@@ -89,6 +109,22 @@ export default function WriterPanel({
   }, [country.id, country.writers, onWriterSelect, selectedWriter]);
 
   const activeWriter = selectedWriter ?? localSelected ?? writers[0] ?? null;
+
+  const scrollToWriterDetail = useCallback(() => {
+    const detail = detailRef.current;
+    if (!detail) return;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    detail.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+    window.setTimeout(
+      () => detail.focus({ preventScroll: true }),
+      reducedMotion ? 0 : 420
+    );
+  }, []);
 
   useLayoutEffect(() => {
     if (!panelRef.current) return;
@@ -104,15 +140,26 @@ export default function WriterPanel({
 
   useLayoutEffect(() => {
     if (!detailRef.current || !activeWriter) return;
+    const detail = detailRef.current;
     const animation = gsap.fromTo(
-      detailRef.current,
+      detail,
       { autoAlpha: 0, y: 12 },
       { autoAlpha: 1, y: 0, duration: 0.42, ease: "power2.out" }
     );
+    if (requestedWriterId.current === activeWriter.id) {
+      requestedWriterId.current = null;
+      const frame = window.requestAnimationFrame(() => {
+        scrollToWriterDetail();
+      });
+      return () => {
+        animation.kill();
+        window.cancelAnimationFrame(frame);
+      };
+    }
     return () => {
       animation.kill();
     };
-  }, [activeWriter?.id]);
+  }, [activeWriter?.id, scrollToWriterDetail]);
 
   const sortedWriters = useMemo(
     () =>
@@ -175,9 +222,16 @@ export default function WriterPanel({
     `Архив объединяет ${writers.length} авторов и ключевые произведения литературной традиции страны.`;
 
   const chooseWriter = (writer: Writer) => {
+    if (activeWriter?.id === writer.id) {
+      scrollToWriterDetail();
+      return;
+    }
+    requestedWriterId.current = writer.id;
     setLocalSelected(writer);
     onWriterSelect?.(writer);
   };
+
+  const writerDetailId = `writer-biography-${country.id}`;
 
   return (
     <aside ref={panelRef} className="country-panel" aria-live="polite">
@@ -229,7 +283,7 @@ export default function WriterPanel({
           })
         }
       >
-        <span aria-hidden="true">✦</span>
+        <FollowBellIcon active={countrySubscribed} />
         {countrySubscribed
           ? t("Вы следите за архивом страны")
           : t("Следить за новыми материалами страны")}
@@ -333,6 +387,9 @@ export default function WriterPanel({
                 className={`writer-row${active ? " is-active" : ""}`}
                 type="button"
                 onClick={() => chooseWriter(writer)}
+                aria-pressed={active}
+                aria-controls={writerDetailId}
+                aria-label={`${t("Открыть биографию")}: ${getWriterName(writer)}`}
               >
                 <WriterPortrait
                   writer={writer}
@@ -355,7 +412,12 @@ export default function WriterPanel({
       </section>
 
       {activeWriter && (
-        <section ref={detailRef} className="archive-section writer-detail">
+        <section
+          ref={detailRef}
+          id={writerDetailId}
+          className="archive-section writer-detail"
+          tabIndex={-1}
+        >
           <div className="section-title">
             <h3>{t("Карточка автора")}</h3>
           </div>
@@ -401,7 +463,7 @@ export default function WriterPanel({
               })
             }
           >
-            <span aria-hidden="true">✦</span>
+            <FollowBellIcon active={activeWriterSubscribed} />
             {activeWriterSubscribed
               ? t("Вы следите за автором")
               : t("Следить за новыми материалами автора")}

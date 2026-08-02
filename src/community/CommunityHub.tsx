@@ -655,6 +655,14 @@ export default function CommunityHub({
       );
       return;
     }
+    if (!/^\S+@\S+\.\S+$/u.test(email.trim())) {
+      setMessage("Введите действующий адрес электронной почты.");
+      return;
+    }
+    if (password.length < 10) {
+      setMessage("Пароль должен содержать не менее 10 символов.");
+      return;
+    }
     if (authMode === "signup" && password !== confirmPassword) {
       setMessage("Пароли не совпадают.");
       return;
@@ -666,31 +674,53 @@ export default function CommunityHub({
     setBusy(true);
     setMessage("");
 
-    const result =
-      authMode === "signup"
-        ? await supabase.auth.signUp({
-            email: email.trim(),
-            password,
-            options: { data: { display_name: displayName.trim() || "Читатель" } },
-          })
-        : await supabase.auth.signInWithPassword({
-            email: email.trim(),
-            password,
-          });
+    try {
+      const result =
+        authMode === "signup"
+          ? await supabase.auth.signUp({
+              email: email.trim(),
+              password,
+              options: {
+                data: { display_name: displayName.trim() || "Читатель" },
+                emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
+              },
+            })
+          : await supabase.auth.signInWithPassword({
+              email: email.trim(),
+              password,
+            });
 
-    setBusy(false);
-    if (result.error) {
-      setMessage(result.error.message);
-      return;
+      if (result.error) {
+        const normalized = result.error.message.toLocaleLowerCase("en");
+        setMessage(
+          normalized.includes("already registered") ||
+            normalized.includes("already been registered")
+            ? "Этот адрес уже зарегистрирован. Переключитесь на вход."
+            : normalized.includes("invalid login credentials")
+              ? "Почта или пароль указаны неверно."
+              : normalized.includes("email rate limit")
+                ? "Письмо уже отправлялось недавно. Подождите немного и повторите попытку."
+                : normalized.includes("password")
+                  ? "Пароль не соответствует требованиям безопасности."
+                  : `Не удалось выполнить запрос: ${result.error.message}`
+        );
+        return;
+      }
+
+      setPassword("");
+      setConfirmPassword("");
+      setMessage(
+        authMode === "signup"
+          ? "Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти."
+          : "Вы вошли в клуб читателей."
+      );
+    } catch {
+      setMessage(
+        "Не удалось связаться с сервером. Проверьте интернет и повторите попытку."
+      );
+    } finally {
+      setBusy(false);
     }
-
-    setPassword("");
-    setConfirmPassword("");
-    setMessage(
-      authMode === "signup"
-        ? "Проверьте почту и подтвердите регистрацию."
-        : "Вы вошли в клуб читателей."
-    );
   };
 
   const createTopic = async () => {
@@ -1530,6 +1560,7 @@ export default function CommunityHub({
                       minLength={2}
                       maxLength={32}
                       placeholder="Например, Читатель_ПП"
+                      required
                     />
                   </label>
                 )}
@@ -1540,6 +1571,8 @@ export default function CommunityHub({
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     autoComplete="email"
+                    inputMode="email"
+                    required
                   />
                 </label>
                 <label>
@@ -1553,6 +1586,7 @@ export default function CommunityHub({
                       autoComplete={
                         authMode === "signup" ? "new-password" : "current-password"
                       }
+                      required
                     />
                     <button
                       type="button"
@@ -1573,6 +1607,7 @@ export default function CommunityHub({
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
                         autoComplete="new-password"
+                        required
                       />
                     </label>
                     <small className="password-hint">
@@ -1598,19 +1633,19 @@ export default function CommunityHub({
                     подключения серверных ключей проекта в GitHub Actions.
                   </p>
                 )}
+                {message && (
+                  <p
+                    className="auth-inline-message"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {message}
+                  </p>
+                )}
                 <button
                   className="community-primary"
                   type="submit"
-                  disabled={
-                    busy ||
-                    !configured ||
-                    !email.trim() ||
-                    password.length < 10 ||
-                    (authMode === "signup" &&
-                      (!displayName.trim() ||
-                        password !== confirmPassword ||
-                        !acceptedTerms))
-                  }
+                  disabled={busy || !configured}
                 >
                   {busy
                     ? "Подождите…"
@@ -1621,11 +1656,12 @@ export default function CommunityHub({
                 <button
                   className="auth-switch"
                   type="button"
-                  onClick={() =>
+                  onClick={() => {
+                    setMessage("");
                     setAuthMode((current) =>
                       current === "signup" ? "signin" : "signup"
-                    )
-                  }
+                    );
+                  }}
                 >
                   {authMode === "signup"
                     ? "Уже есть аккаунт — войти"
@@ -1909,7 +1945,7 @@ export default function CommunityHub({
           </div>
         )}
 
-        {message && (
+        {message && !(view === "account" && !user) && (
           <p className="community-message" role="status" aria-live="polite">
             {message}
           </p>

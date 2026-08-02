@@ -10,12 +10,13 @@ const allowedStatuses = new Set([
   "public-domain",
   "licensed",
   "permission",
+  "editorial-original",
   "external-preview",
 ]);
 
 function field(block, name) {
   return (
-    block.match(new RegExp(`\\b${name}:\\s*["']([^"']+)["']`, "u"))?.[1] || ""
+    block.match(new RegExp(`["']?${name}["']?\\s*:\\s*["']([^"']+)["']`, "u"))?.[1] || ""
   );
 }
 
@@ -27,7 +28,7 @@ async function main() {
 
   for (const file of files) {
     const source = await readFile(path.join(countriesDirectory, file), "utf8");
-    for (const match of source.matchAll(/\bcoverUrl:\s*["']([^"']+)["']/gu)) {
+    for (const match of source.matchAll(/["']?coverUrl["']?\s*:\s*["']([^"']+)["']/gu)) {
       const block = source.slice(match.index, match.index + 900);
       const status = field(block, "status");
       const sourceUrl = field(block, "sourceUrl");

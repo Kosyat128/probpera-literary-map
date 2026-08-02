@@ -285,8 +285,28 @@ export const colombia: Country = {
       },
       portrait: "",
       bio: "Колумбийский писатель, журналист и лауреат Нобелевской премии по литературе 1982 года. Один из величайших авторов XX века и главный представитель магического реализма. Его творчество оказало огромное влияние на мировую литературу.",
+      workDetails: [
+        {
+          "id": "one-hundred-years-of-solitude-editorial",
+          "title": "Сто лет одиночества",
+          "coverUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/one-hundred-years-of-solitude-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Сто лет одиночества",
         "Любовь во время чумы",
         "Осень патриарха",
         "Полковнику никто не пишет",

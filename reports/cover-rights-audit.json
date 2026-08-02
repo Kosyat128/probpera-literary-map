@@ -1,13 +1,33 @@
 {
-  "generatedAt": "2026-08-02T17:08:21.862Z",
+  "generatedAt": "2026-08-02T23:23:07.254Z",
   "policy": "docs/COVER_RIGHTS_POLICY.md",
   "summary": {
-    "covers": 14,
-    "displayAllowed": 1,
-    "blocked": 13,
-    "withIssues": 13
+    "covers": 65,
+    "displayAllowed": 65,
+    "blocked": 0,
+    "withIssues": 0
   },
   "covers": [
+    {
+      "file": "austria.ts",
+      "coverUrl": "brand/book-covers/the-castle-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-castle-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-castle-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "colombia.ts",
+      "coverUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
     {
       "file": "england.ts",
       "coverUrl": "brand/book-covers/hamlet-editorial.webp",
@@ -15,10 +35,98 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/great-expectations-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/great-expectations-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/great-expectations-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/oliver-twist-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/oliver-twist-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/oliver-twist-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/david-copperfield-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/david-copperfield-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/david-copperfield-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/jane-eyre-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/jane-eyre-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/jane-eyre-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/invisible-man-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/invisible-man-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/invisible-man-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "england.ts",
@@ -27,10 +135,8 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "england.ts",
@@ -39,10 +145,38 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/animal-farm-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "england.ts",
+      "coverUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "france.ts",
@@ -51,10 +185,18 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "france.ts",
@@ -63,10 +205,48 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/three-musketeers-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/madame-bovary-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/germinal-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/germinal-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/germinal-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/night-flight-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/night-flight-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/night-flight-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "france.ts",
@@ -75,10 +255,68 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/the-stranger-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "france.ts",
+      "coverUrl": "brand/book-covers/the-plague-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-plague-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-plague-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "germany.ts",
+      "coverUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "germany.ts",
+      "coverUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "germany.ts",
+      "coverUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "ireland.ts",
+      "coverUrl": "brand/book-covers/ulysses-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/ulysses-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/ulysses-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "italy.ts",
+      "coverUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "japan.ts",
@@ -87,10 +325,48 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "poland.ts",
+      "coverUrl": "brand/book-covers/solaris-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/solaris-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/solaris-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "russia.ts",
@@ -99,10 +375,18 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/oblomov-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/oblomov-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/oblomov-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "russia.ts",
@@ -111,10 +395,28 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/demons-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/demons-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/demons-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "russia.ts",
@@ -123,10 +425,18 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/anna-karenina-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/anna-karenina-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/anna-karenina-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "russia.ts",
@@ -135,10 +445,8 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "russia.ts",
@@ -151,16 +459,194 @@
       "issues": []
     },
     {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/the-white-guard-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-white-guard-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-white-guard-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "russia.ts",
+      "coverUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
       "file": "usa.ts",
       "coverUrl": "brand/book-covers/sea-wolf-editorial.webp",
       "coverSourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/white-fang-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/white-fang-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/white-fang-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
+    },
+    {
+      "file": "usa.ts",
+      "coverUrl": "brand/book-covers/lolita-editorial.webp",
+      "coverSourceUrl": "brand/book-covers/lolita-editorial.webp",
+      "status": "editorial-original",
+      "sourceUrl": "brand/book-covers/lolita-editorial.webp",
+      "checkedAt": "2026-08-02",
+      "displayAllowed": true,
+      "issues": []
     },
     {
       "file": "usa.ts",
@@ -169,10 +655,8 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/beloved-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": false,
-      "issues": [
-        "Изображение не разрешено к показу"
-      ]
+      "displayAllowed": true,
+      "issues": []
     }
   ]
 }

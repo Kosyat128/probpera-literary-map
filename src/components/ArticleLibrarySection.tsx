@@ -8,8 +8,14 @@ import {
   articleIdFromPath,
   articlePath,
   journalPath,
+  navigateToArticle,
+  navigateToJournal,
 } from "../utils/articleRoutes";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import {
+  articleSeriesId,
+  articleSeriesLabel,
+} from "../utils/articleSeries";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -99,7 +105,7 @@ function recommendationTerms(article: ArticleCatalogEntry) {
 function recommendedArticles(article: ArticleCatalogEntry) {
   const sourceTerms = recommendationTerms(article);
   const affinity = relatedSections[article.sectionId] || [];
-  return articleCatalog
+  const ranked = articleCatalog
     .filter((candidate) => candidate.id !== article.id)
     .map((candidate, index) => {
       const sharedTerms = [...recommendationTerms(candidate)].filter((term) =>
@@ -114,8 +120,16 @@ function recommendedArticles(article: ArticleCatalogEntry) {
     })
     .filter(({ score }) => score > 0)
     .sort((first, second) => second.score - first.score || first.index - second.index)
-    .slice(0, 8)
     .map(({ candidate }) => candidate);
+  const used = new Set<string>();
+  return ranked
+    .filter((candidate) => {
+      const identity = `${candidate.id}:${normalize(candidate.title)}`;
+      if (used.has(identity)) return false;
+      used.add(identity);
+      return true;
+    })
+    .slice(0, 8);
 }
 
 function sectionFromAddress() {
@@ -126,9 +140,15 @@ function sectionFromAddress() {
     : "all";
 }
 
+function seriesFromAddress() {
+  const requested = new URLSearchParams(window.location.search).get("series");
+  return requested || "all";
+}
+
 export default function ArticleLibrarySection() {
   const { language, t, number } = useInterfaceLanguage();
   const [sectionId, setSectionId] = useState(sectionFromAddress);
+  const [seriesId, setSeriesId] = useState(seriesFromAddress);
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
   const [selected, setSelected] = useState<ArticleCatalogEntry | null>(() => {
@@ -144,13 +164,16 @@ export default function ArticleLibrarySection() {
       setSelected(addressedArticle);
       if (!addressedArticle) {
         setSectionId(sectionFromAddress());
+        setSeriesId(seriesFromAddress());
         setVisibleCount(12);
       }
     };
     window.addEventListener("popstate", syncWithAddress);
+    window.addEventListener("hashchange", syncWithAddress);
     window.addEventListener("probpera:navigation", syncWithAddress);
     return () => {
       window.removeEventListener("popstate", syncWithAddress);
+      window.removeEventListener("hashchange", syncWithAddress);
       window.removeEventListener("probpera:navigation", syncWithAddress);
     };
   }, []);
@@ -175,13 +198,38 @@ export default function ArticleLibrarySection() {
     const query = normalize(search);
     return articleCatalog.filter((article) => {
       if (sectionId !== "all" && article.sectionId !== sectionId) return false;
+      if (seriesId !== "all" && articleSeriesId(article) !== seriesId) return false;
       if (!query) return true;
       return matchesSearch(
         `${article.title} ${article.description} ${article.sectionLabel}`,
         query
       );
     });
-  }, [search, sectionId]);
+  }, [search, sectionId, seriesId]);
+
+  const series = useMemo(() => {
+    if (sectionId === "all") return [];
+    const records = articleCatalog.filter(
+      (article) => article.sectionId === sectionId
+    );
+    return [
+      ...new Map(
+        records.map((article) => {
+          const id = articleSeriesId(article);
+          return [
+            id,
+            {
+              id,
+              label: articleSeriesLabel(id, article.sectionLabel),
+              count: records.filter(
+                (candidate) => articleSeriesId(candidate) === id
+              ).length,
+            },
+          ];
+        })
+      ).values(),
+    ];
+  }, [sectionId]);
 
   const selectedIndex = selected
     ? articleCatalog.findIndex((article) => article.id === selected.id)
@@ -190,20 +238,21 @@ export default function ArticleLibrarySection() {
 
   const changeSection = (value: string) => {
     setSectionId(value);
+    setSeriesId("all");
     setVisibleCount(12);
     if (!selected) {
-      window.history.replaceState({}, "", journalPath(value));
-      window.dispatchEvent(new Event("probpera:navigation"));
+      navigateToJournal(value, true);
     }
   };
 
+  const changeSeries = (value: string) => {
+    setSeriesId(value);
+    setVisibleCount(12);
+    navigateToJournal(sectionId, true, value === "all" ? undefined : value);
+  };
+
   const openArticle = (article: ArticleCatalogEntry) => {
-    window.history.pushState(
-      { probperaArticle: article.id },
-      "",
-      articlePath(article.id, article.title, article.sectionId, article.slug)
-    );
-    window.dispatchEvent(new Event("probpera:navigation"));
+    navigateToArticle(article);
     setSelected(article);
   };
 
@@ -271,6 +320,34 @@ export default function ArticleLibrarySection() {
             </button>
           ))}
         </nav>
+
+        {series.length > 1 && (
+          <nav
+            className="article-library-series"
+            aria-label={t("Тематические серии выбранного раздела")}
+          >
+            <span>{t("Серии")}</span>
+            <button
+              type="button"
+              className={seriesId === "all" ? "is-active" : ""}
+              aria-pressed={seriesId === "all"}
+              onClick={() => changeSeries("all")}
+            >
+              {t("Все")}
+            </button>
+            {series.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={seriesId === item.id ? "is-active" : ""}
+                aria-pressed={seriesId === item.id}
+                onClick={() => changeSeries(item.id)}
+              >
+                {t(item.label)} <small>{number(item.count)}</small>
+              </button>
+            ))}
+          </nav>
+        )}
 
         <div className="article-library-summary">
           <p>
@@ -351,6 +428,7 @@ export default function ArticleLibrarySection() {
               type="button"
               onClick={() => {
                 setSearch("");
+                setSeriesId("all");
                 changeSection("all");
               }}
             >

@@ -316,7 +316,7 @@ const markdown = [
       `- ${result.author} — «${result.title}» · ${result.countryId || "страна не найдена"}/${result.writerId || "автор не найден"} · ${result.articleUrl}`
   ),
   "",
-].join("\n");
+].join("\n").trimEnd() + "\n";
 await fs.writeFile(
   path.join(reportDirectory, "article-book-coverage.md"),
   markdown,

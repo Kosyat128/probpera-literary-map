@@ -187,10 +187,30 @@ export const austria: Country = {
       },
       portrait: "",
       bio: "Немецкоязычный писатель Австро-Венгрии, один из крупнейших представителей модернизма.",
+      workDetails: [
+        {
+          "id": "the-castle-editorial",
+          "title": "Замок",
+          "coverUrl": "brand/book-covers/the-castle-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-castle-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-castle-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-castle-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Превращение",
         "Процесс",
-        "Замок"
       ],
       genres: [
         "роман",

@@ -23,16 +23,24 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
+import { findNobelArticle } from "./data/articles/nobelArticles";
 import {
   buildBookArchive,
-  isCoverDisplayAllowed,
+  isEditorialCover,
+  isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "./data/bookArchive";
 import { calculateArchiveStatistics } from "./data/archiveStatistics";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
-import { articlePath, journalPath } from "./utils/articleRoutes";
+import {
+  articlePath,
+  journalPath,
+  navigateToArticle,
+  navigateToJournal,
+  shouldUseClientNavigation,
+} from "./utils/articleRoutes";
 import sectionPrizesImage from "./assets/brand/section-prizes.webp";
 import { articleCatalog } from "./data/articles/catalog";
 
@@ -424,11 +432,14 @@ export default function App() {
     [countryArchive]
   );
   const totalWriters = archiveStatistics.uniqueWriters;
-  const totalWorks = archiveStatistics.uniqueWorks;
   const bookArchive = useMemo(
     () => buildBookArchive(countryArchive),
     [countryArchive]
   );
+  // The public counter must match the number of cards a visitor can actually
+  // open in the archive. `uniqueWorks` is kept for editorial deduplication,
+  // while the catalogue can legitimately contain country-specific records.
+  const totalWorks = bookArchive.length;
   const editorialAudit = useMemo(
     () => auditCountryArchive(countryArchive),
     [countryArchive]
@@ -540,7 +551,7 @@ export default function App() {
   const bookOfDay = useMemo(() => {
     const premiumBooks = bookArchive.filter(
       (book) =>
-        isCoverDisplayAllowed(book) &&
+        isCoverArtworkDisplayAllowed(book) &&
         Boolean(book.description) &&
         ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
@@ -568,7 +579,7 @@ export default function App() {
     return books[localDayKey % books.length];
   }, [bookArchive]);
   const bookOfDayHasCover = Boolean(
-    bookOfDay && isCoverDisplayAllowed(bookOfDay)
+    bookOfDay && isCoverArtworkDisplayAllowed(bookOfDay)
   );
   const factOfDay = useMemo(() => {
     const dayNumber = Math.floor(Date.now() / 86_400_000);
@@ -604,6 +615,28 @@ export default function App() {
     setSelectedCountry(null);
     setSelectedWriter(null);
     setNobelSpotlightCountryId(null);
+  }, []);
+
+  const selectGlobeWriter = useCallback((writer: Writer | null) => {
+    if (!writer) {
+      setSelectedWriter(null);
+      return;
+    }
+    const article = findNobelArticle(writer);
+    if (article) {
+      navigateToArticle(article);
+      return;
+    }
+    setSelectedWriter(writer);
+    window.setTimeout(() => {
+      document.querySelector<HTMLElement>(".country-panel .writer-detail")
+        ?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+    }, 80);
   }, []);
 
   const openCommunity = useCallback((view: CommunityView) => {
@@ -683,9 +716,20 @@ export default function App() {
                           event.currentTarget
                             .closest("details")
                             ?.removeAttribute("open");
-                          if (!section.action) return;
-                          event.preventDefault();
-                          openCommunity(section.action);
+                          if (section.action) {
+                            event.preventDefault();
+                            openCommunity(section.action);
+                            return;
+                          }
+                          if (
+                            section.href.includes("#journal") &&
+                            shouldUseClientNavigation(event)
+                          ) {
+                            event.preventDefault();
+                            navigateToJournal(
+                              section.id === "journal" ? "all" : section.id
+                            );
+                          }
                         }}
                       >
                         <strong>{t(section.title)}</strong>
@@ -806,12 +850,21 @@ export default function App() {
           </div>
 
           <div className="hero-cover">
-            <img
-              src={assetUrl("brand/magazine-cover.webp")}
-              alt={t("Журнал «Проба Пера»")}
-              width="1680"
-              height="1260"
-            />
+            <picture>
+              <source
+                media="(max-width: 680px)"
+                srcSet={assetUrl("brand/magazine-hero-mobile.webp")}
+              />
+              <img
+                src={assetUrl("brand/magazine-hero-wide.webp")}
+                alt={t("Журнал «Проба Пера» — полноформатное редакционное издание")}
+                width="1672"
+                height="941"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
             <span>{t("Литературный журнал · с 2025 года")}</span>
           </div>
         </section>
@@ -1013,7 +1066,7 @@ export default function App() {
                     selectedCountry={selectedCountry}
                     selectedWriter={selectedWriter}
                     onCountrySelect={selectCountry}
-                    onWriterSelect={setSelectedWriter}
+                    onWriterSelect={selectGlobeWriter}
                     showNobelLaureates={
                       atlasFilter === "nobel" ||
                       nobelSpotlightCountryId === selectedCountry?.id
@@ -1104,19 +1157,32 @@ export default function App() {
           <article className="book-of-day">
             <div className={`book-cover${bookOfDayHasCover ? " has-image" : ""}`}>
               {bookOfDay && bookOfDayHasCover ? (
-                <a
-                  href={bookOfDay.coverSourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Источник обложки «${bookOfDay.title}»`}
-                >
+                isEditorialCover(bookOfDay) ? (
+                  <div className="book-cover-art">
+                    <img
+                      src={bookOfDay.coverUrl}
+                      alt={`${t("Редакционная обложка")} «${bookOfDay.title}»`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <small>{t("Редакционная обложка «Пробы Пера»")}</small>
+                  </div>
+                ) : (
+                  <a
+                    href={bookOfDay.coverSourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Источник обложки «${bookOfDay.title}»`}
+                  >
                   <img
                     src={bookOfDay.coverUrl}
                     alt={`Обложка книги «${bookOfDay.title}»`}
                     loading="lazy"
+                    decoding="async"
                   />
                   <small>{t("Источник обложки")}</small>
-                </a>
+                  </a>
+                )
               ) : (
                 <>
                   <span>
@@ -1515,7 +1581,15 @@ export default function App() {
               <span className="section-kicker">{t("Навигация по журналу")}</span>
               <h2>{t("Основные разделы")}</h2>
             </div>
-            <a className="sections-all-button" href={journalPath()}>
+            <a
+              className="sections-all-button"
+              href={journalPath()}
+              onClick={(event) => {
+                if (!shouldUseClientNavigation(event)) return;
+                event.preventDefault();
+                navigateToJournal();
+              }}
+            >
               {t("Полный архив публикаций")} <span>→</span>
             </a>
           </header>

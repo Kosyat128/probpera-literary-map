@@ -91,10 +91,71 @@ export function articleIdFromPath(
   return article?.id || null;
 }
 
-export function journalPath(sectionId?: string) {
-  const query =
-    sectionId && sectionId !== "all"
-      ? `?section=${encodeURIComponent(sectionId)}`
-      : "";
-  return `${basePath || "/"}${query}#journal`;
+export function journalPath(sectionId?: string, seriesId?: string) {
+  const params = new URLSearchParams();
+  if (sectionId && sectionId !== "all") params.set("section", sectionId);
+  if (seriesId) params.set("series", seriesId);
+  const query = params.size ? `?${params.toString()}` : "";
+  const rootPath = basePath ? `${basePath}/` : "/";
+  return `${rootPath}${query}#journal`;
+}
+
+type ArticleRouteTarget = {
+  id: string;
+  title: string;
+  sectionId?: string;
+  slug?: string;
+};
+
+function reducedMotionPreferred() {
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+}
+
+function scrollToReadingSurface(id: "journal" | "atlas") {
+  window.requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: reducedMotionPreferred() ? "auto" : "smooth",
+      block: "start",
+    });
+  });
+}
+
+export function navigateToJournal(
+  sectionId?: string,
+  replace = false,
+  seriesId?: string
+) {
+  const href = journalPath(sectionId, seriesId);
+  if (replace) window.history.replaceState({}, "", href);
+  else window.history.pushState({}, "", href);
+  window.dispatchEvent(new Event("probpera:navigation"));
+  scrollToReadingSurface("journal");
+}
+
+export function navigateToArticle(article: ArticleRouteTarget) {
+  window.history.pushState(
+    { probperaArticle: article.id },
+    "",
+    articlePath(article.id, article.title, article.sectionId, article.slug)
+  );
+  window.dispatchEvent(new Event("probpera:navigation"));
+  scrollToReadingSurface("journal");
+}
+
+export function shouldUseClientNavigation(event: {
+  button: number;
+  defaultPrevented: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+}) {
+  return (
+    !event.defaultPrevented &&
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey
+  );
 }

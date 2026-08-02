@@ -1021,8 +1021,28 @@ export const italy: Country = {
       },
       portrait: "",
       bio: "Итальянский писатель, философ, семиотик и учёный, автор интеллектуальных романов.",
+      workDetails: [
+        {
+          "id": "the-name-of-the-rose-editorial",
+          "title": "Имя розы",
+          "coverUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-name-of-the-rose-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Имя розы",
         "Маятник Фуко",
         "Остров накануне",
         "Пражское кладбище"

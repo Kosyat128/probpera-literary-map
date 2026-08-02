@@ -716,8 +716,28 @@ export const france: Country = {
       },
       portrait: "",
       bio: "Французский писатель, один из основоположников реалистического романа XIX века.",
+      workDetails: [
+        {
+          "id": "the-red-and-the-black-editorial",
+          "title": "Красное и чёрное",
+          "coverUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-red-and-the-black-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Красное и чёрное",
         "Пармская обитель"
       ],
       genres: [
@@ -784,7 +804,6 @@ export const france: Country = {
       portrait: "",
       bio: "Французский писатель, поэт и драматург, один из крупнейших представителей романтизма.",
       works: [
-        "Собор Парижской Богоматери",
         "Человек, который смеётся"
       ],
       workDetails: [
@@ -813,6 +832,26 @@ export const france: Country = {
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-26"
+          }
+        }
+      ,
+        {
+          "id": "the-hunchback-of-notre-dame-editorial",
+          "title": "Собор Парижской Богоматери",
+          "coverUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-hunchback-of-notre-dame-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
@@ -983,8 +1022,28 @@ export const france: Country = {
       },
       portrait: "",
       bio: "Французский писатель, один из крупнейших мастеров реализма XIX века, известный точностью литературного стиля.",
+      workDetails: [
+        {
+          "id": "madame-bovary-editorial",
+          "title": "Госпожа Бовари",
+          "coverUrl": "brand/book-covers/madame-bovary-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/madame-bovary-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
-        "Госпожа Бовари",
         "Воспитание чувств",
         "Саламбо"
       ],
@@ -1019,9 +1078,29 @@ export const france: Country = {
       },
       portrait: "",
       bio: "Французский писатель, критик и публицист, основатель и главный представитель литературного натурализма.",
+      workDetails: [
+        {
+          "id": "germinal-editorial",
+          "title": "Жерминаль",
+          "coverUrl": "brand/book-covers/germinal-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/germinal-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/germinal-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/germinal-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Ругон-Маккары",
-        "Жерминаль",
         "Чрево Парижа"
       ],
       genres: [
@@ -1089,10 +1168,30 @@ export const france: Country = {
       },
       portrait: "",
       bio: "Французский писатель, один из основателей научно-фантастической литературы.",
+      workDetails: [
+        {
+          "id": "the-mysterious-island-editorial",
+          "title": "Таинственный остров",
+          "coverUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-mysterious-island-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Двадцать тысяч лье под водой",
         "Путешествие к центру Земли",
-        "Таинственный остров",
         "Вокруг света за 80 дней"
       ],
       genres: [
@@ -1229,9 +1328,29 @@ export const france: Country = {
       },
       portrait: "",
       bio: "Французский писатель, поэт и лётчик, автор одного из самых известных произведений мировой литературы.",
+      workDetails: [
+        {
+          "id": "night-flight-editorial",
+          "title": "Ночной полёт",
+          "coverUrl": "brand/book-covers/night-flight-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/night-flight-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/night-flight-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/night-flight-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
+          }
+        }
+      ],
       works: [
         "Маленький принц",
-        "Ночной полёт",
         "Планета людей"
       ],
       genres: [
@@ -1264,7 +1383,6 @@ export const france: Country = {
       portrait: "",
       bio: "Французский писатель, философ и публицист, лауреат Нобелевской премии по литературе 1957 года. Один из крупнейших представителей литературы абсурда.",
       works: [
-        "Чума",
         "Миф о Сизифе",
         "Падение"
       ],
@@ -1294,6 +1412,26 @@ export const france: Country = {
           editorial: {
             status: "verified",
             reviewedAt: "2026-07-26"
+          }
+        }
+      ,
+        {
+          "id": "the-plague-editorial",
+          "title": "Чума",
+          "coverUrl": "brand/book-covers/the-plague-editorial.webp",
+          "coverThumbnailUrl": "brand/book-covers/thumbs/the-plague-editorial.webp",
+          "coverSourceUrl": "brand/book-covers/the-plague-editorial.webp",
+          "coverRights": {
+            "status": "editorial-original",
+            "licenseName": "Редакционное оформление «Пробы Пера»",
+            "creator": "Редакция «Пробы Пера»",
+            "rightsHolder": "Проба Пера",
+            "sourceUrl": "brand/book-covers/the-plague-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+          },
+          "editorial": {
+            "status": "draft"
           }
         }
       ],
