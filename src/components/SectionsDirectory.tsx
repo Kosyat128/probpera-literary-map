@@ -1,7 +1,8 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { articlePath } from "../utils/articleRoutes";
 import BrandArrowIcon from "./BrandArrowIcon";
 
 export type SiteSectionLink = {
@@ -11,6 +12,7 @@ export type SiteSectionLink = {
   copy: string;
   href: string;
   image: string;
+  articleSections?: readonly string[];
   action?: "forum" | "account";
   metric?: "all-articles" | "writers" | "community" | "account" | "project";
 };
@@ -79,10 +81,13 @@ export default function SectionsDirectory({
   return (
     <div className="sections-directory-grid">
       {sections.map((section) => {
+        const articleSectionIds = section.articleSections || [section.id];
         const publications =
           section.metric === "all-articles"
             ? articleCatalog
-            : articleCatalog.filter((article) => article.sectionId === section.id);
+            : articleCatalog.filter((article) =>
+                articleSectionIds.includes(article.sectionId)
+              );
         const latest = publications.reduce<(typeof publications)[number] | undefined>(
           (current, article) =>
             !current ||
@@ -129,15 +134,18 @@ export default function SectionsDirectory({
                 ? t("Смотреть")
                 : t("Открыть");
 
+        const handleSectionClick = (
+          event: MouseEvent<HTMLAnchorElement>
+        ) => {
+          if (!section.action) return;
+          event.preventDefault();
+          onAction?.(section.action);
+        };
+
         return (
-          <a
-            href={section.href}
+          <article
+            className="section-directory-card"
             key={section.id}
-            onClick={(event) => {
-              if (!section.action) return;
-              event.preventDefault();
-              onAction?.(section.action);
-            }}
             style={
               {
                 "--section-art": `url(${mediaUrl(section.image)})`,
@@ -148,23 +156,39 @@ export default function SectionsDirectory({
               <span className="section-card-eyebrow">
                 {latest ? t("Новое") : t(section.group)}
               </span>
-              <h3>{t(section.title)}</h3>
+              <h3>
+                <a href={section.href} onClick={handleSectionClick}>
+                  {t(section.title)}
+                </a>
+              </h3>
               <p>{t(section.copy)}</p>
               {latest && (
-                <small className="section-card-latest">
-                  {latest.title}
-                </small>
+                <a
+                  className="section-card-latest"
+                  href={articlePath(
+                    latest.id,
+                    latest.title,
+                    latest.sectionId,
+                    latest.slug
+                  )}
+                  aria-label={`${t("Статья по теме")}: ${latest.title}`}
+                >
+                  <span>{t("Статья по теме")}</span>
+                  <strong>{latest.title}</strong>
+                </a>
               )}
               <footer className="section-card-action">
-                <strong>
-                  {actionLabel} <span aria-hidden="true">·</span> {liveLabel}
-                </strong>
-                <i aria-hidden="true">
-                  <BrandArrowIcon />
-                </i>
+                <a href={section.href} onClick={handleSectionClick}>
+                  <strong>
+                    {actionLabel} <span aria-hidden="true">·</span> {liveLabel}
+                  </strong>
+                  <i aria-hidden="true">
+                    <BrandArrowIcon />
+                  </i>
+                </a>
               </footer>
             </div>
-          </a>
+          </article>
         );
       })}
     </div>

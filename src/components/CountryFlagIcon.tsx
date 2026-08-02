@@ -8,6 +8,7 @@ type Props = {
   className?: string;
   size?: number;
   decorative?: boolean;
+  priority?: boolean;
 };
 
 export function countryFlagAssetPath(code?: string) {
@@ -22,6 +23,7 @@ export default function CountryFlagIcon({
   className = "",
   size = 52,
   decorative = false,
+  priority = false,
 }: Props) {
   const source = useMemo(() => countryFlagAssetPath(code), [code]);
   const [failed, setFailed] = useState(false);
@@ -49,7 +51,8 @@ export default function CountryFlagIcon({
       alt={decorative ? "" : `Флаг: ${countryName}`}
       width={size}
       height={size}
-      loading="lazy"
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
       decoding="async"
       onError={() => setFailed(true)}
     />

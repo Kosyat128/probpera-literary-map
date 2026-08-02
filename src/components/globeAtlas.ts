@@ -649,6 +649,7 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   let activeSelectedCountryId: string | null = null;
   let activeHoveredCountryId: string | null = null;
   let disposed = false;
+  let flagPreloadTimer: number | null = null;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
     for (const { feature, country } of selectableFeatures) {
@@ -709,6 +710,7 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     const promise = new Promise<HTMLImageElement | null>((resolve) => {
       const image = new Image();
       image.decoding = "async";
+      image.fetchPriority = "low";
       image.onload = () => {
         flagImages.set(countryId, image);
         pendingFlagImages.delete(countryId);
@@ -723,6 +725,25 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     pendingFlagImages.set(countryId, promise);
     return promise;
   };
+
+  const flagPreloadQueue = [
+    ...new Set(selectableFeatures.map(({ country }) => country.id)),
+  ];
+  let flagPreloadCursor = 0;
+  const preloadFlagBatch = async () => {
+    if (disposed || flagPreloadCursor >= flagPreloadQueue.length) return;
+    const batch = flagPreloadQueue.slice(flagPreloadCursor, flagPreloadCursor + 8);
+    flagPreloadCursor += batch.length;
+    await Promise.all(batch.map((countryId) => loadFlagImage(countryId)));
+    if (!disposed && flagPreloadCursor < flagPreloadQueue.length) {
+      flagPreloadTimer = window.setTimeout(() => {
+        void preloadFlagBatch();
+      }, 180);
+    }
+  };
+  flagPreloadTimer = window.setTimeout(() => {
+    void preloadFlagBatch();
+  }, 900);
 
   const drawFlagHighlight = (
     countryId: string,
@@ -823,6 +844,7 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     updateHighlight,
     dispose: () => {
       disposed = true;
+      if (flagPreloadTimer !== null) window.clearTimeout(flagPreloadTimer);
       mapTexture.dispose();
       reliefTexture.dispose();
       highlightTexture.dispose();

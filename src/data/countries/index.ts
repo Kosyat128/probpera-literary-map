@@ -1,5 +1,6 @@
 import type { Country } from "./types";
 import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
+import { mergeWriterPortraits } from "./generated/writerPortraits";
 import { mergeNobelLaureates } from "./nobelLaureatesSupplement";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { countryFlag } from "../../utils/countryFlag";
@@ -453,8 +454,10 @@ const curatedCountries: Country[] = [
   zimbabwe,
 ];
 
-export const countries: Country[] = mergeArticleReferencedBooks(
-  mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+export const countries: Country[] = mergeWriterPortraits(
+  mergeArticleReferencedBooks(
+    mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+  )
 ).map(
   (country) => ({
     ...country,

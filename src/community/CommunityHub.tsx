@@ -1504,7 +1504,13 @@ export default function CommunityHub({
                 </div>
                 </>
               ) : (
-                <>
+                <form
+                  className="auth-form"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    void submitAuth();
+                  }}
+                >
                 <span className="section-kicker">
                   {authMode === "signup" ? "Новый читатель" : "С возвращением"}
                 </span>
@@ -1594,7 +1600,7 @@ export default function CommunityHub({
                 )}
                 <button
                   className="community-primary"
-                  type="button"
+                  type="submit"
                   disabled={
                     busy ||
                     !configured ||
@@ -1605,7 +1611,6 @@ export default function CommunityHub({
                         password !== confirmPassword ||
                         !acceptedTerms))
                   }
-                  onClick={() => void submitAuth()}
                 >
                   {busy
                     ? "Подождите…"
@@ -1626,7 +1631,7 @@ export default function CommunityHub({
                     ? "Уже есть аккаунт — войти"
                     : "Нет аккаунта — зарегистрироваться"}
                 </button>
-                </>
+                </form>
               )}
             </div>
           </div>

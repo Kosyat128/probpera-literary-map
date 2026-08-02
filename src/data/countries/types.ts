@@ -59,6 +59,16 @@ export type WriterProfile = {
   deathPlace?: string;
 
   portrait?: string;
+  portraitAlt?: string;
+  portraitSourceUrl?: string;
+  portraitRights?: {
+    status: "public-domain" | "licensed" | "permission" | "unverified";
+    licenseName?: string;
+    licenseUrl?: string;
+    creator?: string;
+    sourceUrl: string;
+    checkedAt?: string;
+  };
 
   country?: string;
   movement?: string;
