@@ -23,6 +23,7 @@ export function normalizeMentionText(value = "") {
     .normalize("NFKC")
     .toLocaleLowerCase("ru")
     .replace(/ё/gu, "е")
+    .replace(/°/gu, " градус ")
     .replace(/<[^>]*>/gu, " ")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .replace(/\s+/gu, " ")

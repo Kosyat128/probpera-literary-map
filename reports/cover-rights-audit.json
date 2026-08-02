@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-01T08:42:48.862Z",
+  "generatedAt": "2026-08-02T09:15:47.494Z",
   "policy": "docs/COVER_RIGHTS_POLICY.md",
   "summary": {
     "covers": 14,
-    "displayAllowed": 14,
-    "blocked": 0,
-    "withIssues": 0
+    "displayAllowed": 1,
+    "blocked": 13,
+    "withIssues": 13
   },
   "covers": [
     {
@@ -15,8 +15,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "england.ts",
@@ -24,9 +26,11 @@
       "coverSourceUrl": "brand/book-covers/hobbit-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "england.ts",
@@ -35,8 +39,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
@@ -45,8 +51,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
@@ -55,8 +63,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/three-musketeers-editorial.webp",
       "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "france.ts",
@@ -65,8 +75,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/the-stranger-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "japan.ts",
@@ -75,8 +87,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/norwegian-wood-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -84,9 +98,11 @@
       "coverSourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -95,8 +111,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -105,8 +123,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -114,9 +134,11 @@
       "coverSourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/cherry-orchard-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "russia.ts",
@@ -134,9 +156,11 @@
       "coverSourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/sea-wolf-editorial.webp",
-      "checkedAt": "2026-07-30",
-      "displayAllowed": true,
-      "issues": []
+      "checkedAt": "2026-08-01",
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     },
     {
       "file": "usa.ts",
@@ -145,8 +169,10 @@
       "status": "editorial-original",
       "sourceUrl": "brand/book-covers/beloved-editorial.webp",
       "checkedAt": "2026-08-01",
-      "displayAllowed": true,
-      "issues": []
+      "displayAllowed": false,
+      "issues": [
+        "Изображение не разрешено к показу"
+      ]
     }
   ]
 }

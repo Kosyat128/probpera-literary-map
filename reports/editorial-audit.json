@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-01T11:04:41.466Z",
+  "generatedAt": "2026-08-02T09:14:50.670Z",
   "note": "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
   "summary": {
     "articles": 157,
-    "totalWords": 132619,
+    "totalWords": 142534,
     "findings": 0,
     "affectedArticles": 0,
     "bySeverity": {},
@@ -32,7 +32,7 @@
       "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--2",
       "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 1)",
       "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/2",
-      "wordCount": 1577,
+      "wordCount": 1581,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -41,7 +41,7 @@
       "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--1",
       "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 2)",
       "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/1",
-      "wordCount": 1277,
+      "wordCount": 1281,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -50,7 +50,7 @@
       "id": "page--article--luchshie--ekranizacii--bestsellerov--21--veka--3",
       "title": "Десять лучших фильмов XXI века — экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 3)",
       "url": "https://probpera.ru/read/page-article/luchshie-ekranizacii-bestsellerov-21-veka/3",
-      "wordCount": 1517,
+      "wordCount": 1521,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -59,7 +59,7 @@
       "id": "page--article--page--bookvsmovie--4",
       "title": "Книга и экранизация: «Великий Гэтсби»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/4",
-      "wordCount": 1890,
+      "wordCount": 1899,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -68,7 +68,7 @@
       "id": "page--article--page--bookvsmovie--3",
       "title": "Книга и экранизация: «Война миров»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/3",
-      "wordCount": 1305,
+      "wordCount": 1320,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -77,7 +77,7 @@
       "id": "page--article--page--bookvsmovie--1",
       "title": "Книга и экранизация: «Облачный атлас»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/1",
-      "wordCount": 929,
+      "wordCount": 1001,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -86,7 +86,7 @@
       "id": "page--article--page--bookvsmovie--2",
       "title": "Книга и экранизация: «Я-легенда»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/2",
-      "wordCount": 1080,
+      "wordCount": 1089,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -95,7 +95,7 @@
       "id": "page--article--page--bookvsmovie--11",
       "title": "Книга и экранизация: «1408»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/11",
-      "wordCount": 1267,
+      "wordCount": 1270,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -104,7 +104,7 @@
       "id": "page--article--page--bookvsmovie--7",
       "title": "Книга и экранизация: «Бойцовский клуб»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/7",
-      "wordCount": 908,
+      "wordCount": 929,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -113,7 +113,7 @@
       "id": "page--article--page--bookvsmovie--5",
       "title": "Книга и экранизация: «Гринч — похититель Рождества»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/5",
-      "wordCount": 802,
+      "wordCount": 831,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -122,7 +122,7 @@
       "id": "page--article--page--bookvsmovie--10",
       "title": "Книга и экранизация: «О мышах и людях»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/10",
-      "wordCount": 765,
+      "wordCount": 776,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -131,7 +131,7 @@
       "id": "page--article--page--bookvsmovie--12",
       "title": "Книга и экранизация: «Парк юрского периода»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/12",
-      "wordCount": 1798,
+      "wordCount": 1801,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -140,7 +140,7 @@
       "id": "page--article--page--bookvsmovie--8",
       "title": "Книга и экранизация: «Старикам тут не место»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/8",
-      "wordCount": 1056,
+      "wordCount": 1233,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -149,7 +149,7 @@
       "id": "page--article--page--bookvsmovie--6",
       "title": "Книга и экранизация: «Страх и ненависть в Лас-Вегасе»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/6",
-      "wordCount": 1015,
+      "wordCount": 1040,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -158,7 +158,7 @@
       "id": "page--article--page--bookvsmovie--9",
       "title": "Книга и экранизация: «Форрест Гамп»",
       "url": "https://probpera.ru/read/page-article/page-bookvsmovie/9",
-      "wordCount": 715,
+      "wordCount": 732,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -185,7 +185,7 @@
       "id": "page--article--luchshie--knigi--pisateley--1",
       "title": "Десять лучших книг Джека Лондона",
       "url": "https://probpera.ru/read/page-article/luchshie-knigi-pisateley/1",
-      "wordCount": 873,
+      "wordCount": 877,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -194,7 +194,7 @@
       "id": "page--article--top--books--page--turners--1",
       "title": "Десять романов, которые читаются на одном дыхании",
       "url": "https://probpera.ru/read/page-article/top-books-page-turners/1",
-      "wordCount": 946,
+      "wordCount": 947,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -203,7 +203,7 @@
       "id": "page--article--top--books--page--turners--2",
       "title": "Десять романов, которые читаются на одном дыхании (Часть 2)",
       "url": "https://probpera.ru/read/page-article/top-books-page-turners/2",
-      "wordCount": 1105,
+      "wordCount": 1106,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -212,7 +212,7 @@
       "id": "page--article--top--books--page--turners--3",
       "title": "Десять романов, которые читаются на одном дыхании (Часть 3)",
       "url": "https://probpera.ru/read/page-article/top-books-page-turners/3",
-      "wordCount": 716,
+      "wordCount": 717,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -221,7 +221,7 @@
       "id": "page--article--top--books--page--turners--4",
       "title": "Десять романов, которые читаются на одном дыхании (Часть 4)",
       "url": "https://probpera.ru/read/page-article/top-books-page-turners/4",
-      "wordCount": 1020,
+      "wordCount": 1021,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -356,7 +356,7 @@
       "id": "page--article--page--books--19",
       "title": "Мнение о книге «Куда приводят мечты» Ричарда Матесона",
       "url": "https://probpera.ru/read/page-article/page-books/19",
-      "wordCount": 1056,
+      "wordCount": 1198,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -365,7 +365,7 @@
       "id": "page--article--page--books--20",
       "title": "Мнение о книге «Остров» Олдоса Хаксли",
       "url": "https://probpera.ru/read/page-article/page-books/20",
-      "wordCount": 1017,
+      "wordCount": 1153,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -374,7 +374,7 @@
       "id": "page--article--page--books--21",
       "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
       "url": "https://probpera.ru/read/page-article/page-books/21",
-      "wordCount": 824,
+      "wordCount": 1011,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -383,7 +383,7 @@
       "id": "page--article--page--books--14",
       "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
       "url": "https://probpera.ru/read/page-article/page-books/14",
-      "wordCount": 1024,
+      "wordCount": 1212,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -392,7 +392,7 @@
       "id": "page--article--page--books--18",
       "title": "Мнение о книге Дэвида Митчелла «Утопия — Авеню»",
       "url": "https://probpera.ru/read/page-article/page-books/18",
-      "wordCount": 1013,
+      "wordCount": 1068,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -401,7 +401,7 @@
       "id": "page--article--page--books--23",
       "title": "Мнение о книге Лорана Гунеля «Бог путешествует инкогнито»",
       "url": "https://probpera.ru/read/page-article/page-books/23",
-      "wordCount": 1022,
+      "wordCount": 1103,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -410,7 +410,7 @@
       "id": "page--article--page--books--22",
       "title": "Мнение о книге Хантера Томпсона «Ангелы ада»",
       "url": "https://probpera.ru/read/page-article/page-books/22",
-      "wordCount": 1238,
+      "wordCount": 1460,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -419,7 +419,7 @@
       "id": "page--article--page--books--12",
       "title": "Мнение о книге. Анри Барбюс «Огонь»",
       "url": "https://probpera.ru/read/page-article/page-books/12",
-      "wordCount": 633,
+      "wordCount": 875,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -428,7 +428,7 @@
       "id": "page--article--page--books--11",
       "title": "Мнение о книге. Брэм Стокер «Дракула»",
       "url": "https://probpera.ru/read/page-article/page-books/11",
-      "wordCount": 702,
+      "wordCount": 891,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -437,7 +437,7 @@
       "id": "page--article--page--books--15",
       "title": "Мнение о книге. Дж. Р. Р. Толкин «Письма Рождественского деда»",
       "url": "https://probpera.ru/read/page-article/page-books/15",
-      "wordCount": 1149,
+      "wordCount": 1325,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -446,7 +446,7 @@
       "id": "page--article--page--books--9",
       "title": "Мнение о книге. Джек Лондон «Белый Клык»",
       "url": "https://probpera.ru/read/page-article/page-books/9",
-      "wordCount": 629,
+      "wordCount": 732,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -473,7 +473,7 @@
       "id": "page--article--page--books--13",
       "title": "Мнение о книге. Марио Пьюзо «Шесть могил на пути в Мюнхен»",
       "url": "https://probpera.ru/read/page-article/page-books/13",
-      "wordCount": 1068,
+      "wordCount": 1371,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -482,7 +482,7 @@
       "id": "page--article--page--books--10",
       "title": "Мнение о книге. Харуки Мураками «Норвежский Лес»",
       "url": "https://probpera.ru/read/page-article/page-books/10",
-      "wordCount": 637,
+      "wordCount": 846,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -743,7 +743,7 @@
       "id": "page--article--first--profession--writers--2",
       "title": "Зарубежные классики литературы и их профессии",
       "url": "https://probpera.ru/read/page-article/first_profession_writers/2",
-      "wordCount": 2111,
+      "wordCount": 2115,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -770,7 +770,7 @@
       "id": "page--article--unrecognized--writers--2",
       "title": "Непризнанные современниками гении литературы. Герман Мелвилл",
       "url": "https://probpera.ru/read/page-article/unrecognized-writers/2",
-      "wordCount": 675,
+      "wordCount": 799,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -779,7 +779,7 @@
       "id": "page--article--unrecognized--writers--3",
       "title": "Непризнанные современниками гении литературы. Марсель Пруст",
       "url": "https://probpera.ru/read/page-article/unrecognized-writers/3",
-      "wordCount": 555,
+      "wordCount": 641,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -788,7 +788,7 @@
       "id": "page--article--unrecognized--writers--1",
       "title": "Непризнанные современниками гении литературы. Стендаль",
       "url": "https://probpera.ru/read/page-article/unrecognized-writers/1",
-      "wordCount": 776,
+      "wordCount": 899,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -797,7 +797,7 @@
       "id": "page--article--unrecognized--writers--4",
       "title": "Непризнанные современниками гении литературы. Уолт Уитмен",
       "url": "https://probpera.ru/read/page-article/unrecognized-writers/4",
-      "wordCount": 524,
+      "wordCount": 622,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -815,7 +815,7 @@
       "id": "page--article--unrecognized--writers--5",
       "title": "Непризнанные современниками гении литературы. Эмили Дикинсон",
       "url": "https://probpera.ru/read/page-article/unrecognized-writers/5",
-      "wordCount": 630,
+      "wordCount": 632,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -824,7 +824,7 @@
       "id": "page--article--first--profession--writers--1",
       "title": "Русские классики и их профессии",
       "url": "https://probpera.ru/read/page-article/first_profession_writers/1",
-      "wordCount": 1224,
+      "wordCount": 1227,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -833,7 +833,7 @@
       "id": "page--article--first--profession--writers--3",
       "title": "Русские классики и их профессии (Часть 2)",
       "url": "https://probpera.ru/read/page-article/first_profession_writers/3",
-      "wordCount": 1326,
+      "wordCount": 1329,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -905,7 +905,7 @@
       "id": "page--article--nobel--prize--9",
       "title": "1908 год. Рудольф Эйкен — лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/9",
-      "wordCount": 392,
+      "wordCount": 643,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -914,7 +914,7 @@
       "id": "page--article--nobel--prize--10",
       "title": "1909 год. Сельма Лагерлёф — лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/10",
-      "wordCount": 298,
+      "wordCount": 501,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -923,7 +923,7 @@
       "id": "page--article--nobel--prize--11",
       "title": "1910 год. Пауль Йохан Людвиг фон Хейзе — лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/11",
-      "wordCount": 447,
+      "wordCount": 548,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -932,7 +932,7 @@
       "id": "page--article--nobel--prize--12",
       "title": "1911 год. Морис Метерлинк — лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/12",
-      "wordCount": 454,
+      "wordCount": 533,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -941,7 +941,7 @@
       "id": "page--article--nobel--prize--13",
       "title": "1912 год. Герхарт Гауптман – лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/13",
-      "wordCount": 547,
+      "wordCount": 794,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -950,7 +950,7 @@
       "id": "page--article--nobel--prize--14",
       "title": "1913 год. Рабиндранат Тагор – лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/14",
-      "wordCount": 616,
+      "wordCount": 855,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -959,7 +959,7 @@
       "id": "page--article--nobel--prize--15",
       "title": "1915 год. Ромен Роллан – лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/15",
-      "wordCount": 554,
+      "wordCount": 749,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -968,7 +968,7 @@
       "id": "page--article--nobel--prize--16",
       "title": "1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии",
       "url": "https://probpera.ru/read/page-article/nobel-prize/16",
-      "wordCount": 426,
+      "wordCount": 604,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -977,7 +977,7 @@
       "id": "page--article--nobel--prize--17",
       "title": "1917 год. Карл Адольф Гьеллеруп и Хенрик Понтоппидан — лауреаты Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/17",
-      "wordCount": 452,
+      "wordCount": 717,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -986,7 +986,7 @@
       "id": "page--article--nobel--prize--18",
       "title": "1919 год. Карл Фридрих Георг Шпиттелер — лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/18",
-      "wordCount": 369,
+      "wordCount": 556,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -995,7 +995,7 @@
       "id": "page--article--nobel--prize--19",
       "title": "1920 год. Кнут Гамсун — лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/19",
-      "wordCount": 488,
+      "wordCount": 638,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1004,7 +1004,7 @@
       "id": "page--article--nobel--prize--20",
       "title": "1921 год. Анатоль Франс — лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/20",
-      "wordCount": 401,
+      "wordCount": 515,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1013,7 +1013,7 @@
       "id": "page--article--nobel--prize--21",
       "title": "1922 год. Хасинто Бенавенте-и-Мартинес — лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/21",
-      "wordCount": 374,
+      "wordCount": 551,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1022,7 +1022,7 @@
       "id": "page--article--nobel--prize--22",
       "title": "1923 год. Уильям Батлер Йейтс — лауреат Нобелевской премии по литературе",
       "url": "https://probpera.ru/read/page-article/nobel-prize/22",
-      "wordCount": 476,
+      "wordCount": 647,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1040,7 +1040,7 @@
       "id": "page--article--famous--prizes--14",
       "title": "Национальная книжная премия США",
       "url": "https://probpera.ru/read/page-article/famous_prizes/14",
-      "wordCount": 497,
+      "wordCount": 621,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1058,7 +1058,7 @@
       "id": "page--article--famous--prizes--5",
       "title": "Премия «Мигель де Сервантес»",
       "url": "https://probpera.ru/read/page-article/famous_prizes/5",
-      "wordCount": 431,
+      "wordCount": 527,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1076,7 +1076,7 @@
       "id": "page--article--famous--prizes--13",
       "title": "Премия Георга Бюхнера",
       "url": "https://probpera.ru/read/page-article/famous_prizes/13",
-      "wordCount": 568,
+      "wordCount": 700,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1094,7 +1094,7 @@
       "id": "page--article--famous--prizes--10",
       "title": "Премия Камоэнса",
       "url": "https://probpera.ru/read/page-article/famous_prizes/10",
-      "wordCount": 502,
+      "wordCount": 622,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1103,7 +1103,7 @@
       "id": "page--article--famous--prizes--8",
       "title": "Премия Нойштадта",
       "url": "https://probpera.ru/read/page-article/famous_prizes/8",
-      "wordCount": 752,
+      "wordCount": 805,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1112,7 +1112,7 @@
       "id": "page--article--famous--prizes--12",
       "title": "Премия ПЕН/Фолкнера",
       "url": "https://probpera.ru/read/page-article/famous_prizes/12",
-      "wordCount": 508,
+      "wordCount": 631,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1121,7 +1121,7 @@
       "id": "page--article--famous--prizes--9",
       "title": "Премия принцессы Астурийской",
       "url": "https://probpera.ru/read/page-article/famous_prizes/9",
-      "wordCount": 537,
+      "wordCount": 659,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1130,7 +1130,7 @@
       "id": "page--article--famous--prizes--11",
       "title": "Премия Ренодо",
       "url": "https://probpera.ru/read/page-article/famous_prizes/11",
-      "wordCount": 561,
+      "wordCount": 667,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1139,7 +1139,7 @@
       "id": "page--article--famous--prizes--7",
       "title": "Премия Стрега",
       "url": "https://probpera.ru/read/page-article/famous_prizes/7",
-      "wordCount": 308,
+      "wordCount": 406,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1148,7 +1148,7 @@
       "id": "page--article--famous--prizes--6",
       "title": "Премия Франца Кафки",
       "url": "https://probpera.ru/read/page-article/famous_prizes/6",
-      "wordCount": 398,
+      "wordCount": 475,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1157,7 +1157,7 @@
       "id": "page--article--famous--prizes--15",
       "title": "Премия Эдгара Аллана По",
       "url": "https://probpera.ru/read/page-article/famous_prizes/15",
-      "wordCount": 482,
+      "wordCount": 604,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1184,7 +1184,7 @@
       "id": "page--words--1",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
       "url": "https://probpera.ru/read/page-words/1",
-      "wordCount": 393,
+      "wordCount": 479,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1193,7 +1193,7 @@
       "id": "page--words--2",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Б»",
       "url": "https://probpera.ru/read/page-words/2",
-      "wordCount": 253,
+      "wordCount": 378,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1202,7 +1202,7 @@
       "id": "page--words--3",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «В»",
       "url": "https://probpera.ru/read/page-words/3",
-      "wordCount": 192,
+      "wordCount": 312,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1211,7 +1211,7 @@
       "id": "page--words--4",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Г»",
       "url": "https://probpera.ru/read/page-words/4",
-      "wordCount": 156,
+      "wordCount": 322,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1220,7 +1220,7 @@
       "id": "page--words--5",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Д»",
       "url": "https://probpera.ru/read/page-words/5",
-      "wordCount": 262,
+      "wordCount": 362,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1229,7 +1229,7 @@
       "id": "page--words--6",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Е-Ж»",
       "url": "https://probpera.ru/read/page-words/6",
-      "wordCount": 171,
+      "wordCount": 323,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1247,7 +1247,7 @@
       "id": "page--article--folklore--2",
       "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок!",
       "url": "https://probpera.ru/read/page-article/folklore/2",
-      "wordCount": 1062,
+      "wordCount": 1063,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1256,7 +1256,7 @@
       "id": "page--article--folklore--4",
       "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 2)",
       "url": "https://probpera.ru/read/page-article/folklore/4",
-      "wordCount": 1156,
+      "wordCount": 1157,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1265,7 +1265,7 @@
       "id": "page--article--folklore--5",
       "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 3)",
       "url": "https://probpera.ru/read/page-article/folklore/5",
-      "wordCount": 1241,
+      "wordCount": 1242,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1283,7 +1283,7 @@
       "id": "page--article--folklore--characters--4",
       "title": "Баба-яга",
       "url": "https://probpera.ru/read/page-article/folklore/characters/4",
-      "wordCount": 809,
+      "wordCount": 1133,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1292,7 +1292,7 @@
       "id": "page--article--folklore--characters--14",
       "title": "Берегиня",
       "url": "https://probpera.ru/read/page-article/folklore/characters/14",
-      "wordCount": 445,
+      "wordCount": 591,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1301,7 +1301,7 @@
       "id": "page--article--folklore--characters--12",
       "title": "Вий",
       "url": "https://probpera.ru/read/page-article/folklore/characters/12",
-      "wordCount": 824,
+      "wordCount": 1041,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1310,7 +1310,7 @@
       "id": "page--article--folklore--characters--7",
       "title": "Водяной",
       "url": "https://probpera.ru/read/page-article/folklore/characters/7",
-      "wordCount": 673,
+      "wordCount": 840,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1328,7 +1328,7 @@
       "id": "page--article--folklore--characters--6",
       "title": "Домовой",
       "url": "https://probpera.ru/read/page-article/folklore/characters/6",
-      "wordCount": 459,
+      "wordCount": 629,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1337,7 +1337,7 @@
       "id": "page--article--folklore--characters--9",
       "title": "Жар-птица",
       "url": "https://probpera.ru/read/page-article/folklore/characters/9",
-      "wordCount": 827,
+      "wordCount": 877,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1355,7 +1355,7 @@
       "id": "page--article--folklore--characters--5",
       "title": "Известные персонажи славянского фольклора. Кощей Бессмертный",
       "url": "https://probpera.ru/read/page-article/folklore/characters/5",
-      "wordCount": 603,
+      "wordCount": 613,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1364,7 +1364,7 @@
       "id": "page--article--folklore--characters--8",
       "title": "Кикимора",
       "url": "https://probpera.ru/read/page-article/folklore/characters/8",
-      "wordCount": 948,
+      "wordCount": 1440,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1391,7 +1391,7 @@
       "id": "page--article--folklore--characters--10",
       "title": "Полудница",
       "url": "https://probpera.ru/read/page-article/folklore/characters/10",
-      "wordCount": 723,
+      "wordCount": 950,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1400,7 +1400,7 @@
       "id": "page--article--folklore--characters--11",
       "title": "Русалка",
       "url": "https://probpera.ru/read/page-article/folklore/characters/11",
-      "wordCount": 767,
+      "wordCount": 997,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1409,7 +1409,7 @@
       "id": "page--article--folklore--characters--15",
       "title": "Соловей-разбойник. Образ персонажа в былинах и его взаимосвязь с фольклором и легендами древности",
       "url": "https://probpera.ru/read/page-article/folklore/characters/15",
-      "wordCount": 994,
+      "wordCount": 1135,
       "issues": 0,
       "critical": 0,
       "high": 0
@@ -1418,7 +1418,7 @@
       "id": "page--article--folklore--characters--13",
       "title": "Упырь",
       "url": "https://probpera.ru/read/page-article/folklore/characters/13",
-      "wordCount": 536,
+      "wordCount": 708,
       "issues": 0,
       "critical": 0,
       "high": 0

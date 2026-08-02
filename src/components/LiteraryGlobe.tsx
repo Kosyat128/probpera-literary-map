@@ -180,7 +180,7 @@ function MuseumAtmosphere() {
 
   return (
     <mesh scale={1.09}>
-      <sphereGeometry args={[1, 96, 96]} />
+      <sphereGeometry args={[1, 64, 48]} />
       <primitive object={material} attach="material" />
     </mesh>
   );
@@ -493,7 +493,7 @@ function MuseumStarfield({
   reducedMotion: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const count = economical ? 1100 : 3600;
+  const count = economical ? 900 : 2400;
   const geometry = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
@@ -841,12 +841,14 @@ function GlobeSurface({
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
+  economical,
 }: {
   atlas: GlobeAtlas;
   selectedCountry?: Country | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
+  economical: boolean;
 }) {
   const { camera, gl } = useThree();
   const globeMesh = useRef<THREE.Mesh>(null);
@@ -854,6 +856,15 @@ function GlobeSurface({
   const normalizedPointer = useMemo(() => new THREE.Vector2(), []);
   const pointerOrigin = useRef<PointerOrigin | null>(null);
   const hoveredCountryId = useRef<string | null>(null);
+  const pointerFrame = useRef(0);
+  const latestPointer = useRef<PointerOrigin | null>(null);
+
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(pointerFrame.current);
+    },
+    []
+  );
 
   const countryFromPointer = useCallback(
     (clientX: number, clientY: number) => {
@@ -878,15 +889,23 @@ function GlobeSurface({
 
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    const country = countryFromPointer(
-      event.nativeEvent.clientX,
-      event.nativeEvent.clientY
-    );
-    const nextId = country?.id ?? null;
-    if (hoveredCountryId.current === nextId) return;
+    latestPointer.current = {
+      x: event.nativeEvent.clientX,
+      y: event.nativeEvent.clientY,
+    };
+    if (pointerFrame.current) return;
 
-    hoveredCountryId.current = nextId;
-    onCountryHover(country);
+    pointerFrame.current = requestAnimationFrame(() => {
+      pointerFrame.current = 0;
+      const pointer = latestPointer.current;
+      if (!pointer) return;
+      const country = countryFromPointer(pointer.x, pointer.y);
+      const nextId = country?.id ?? null;
+      if (hoveredCountryId.current === nextId) return;
+
+      hoveredCountryId.current = nextId;
+      onCountryHover(country);
+    });
   };
 
   const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
@@ -924,11 +943,14 @@ function GlobeSurface({
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
         onPointerOut={() => {
+          cancelAnimationFrame(pointerFrame.current);
+          pointerFrame.current = 0;
+          latestPointer.current = null;
           hoveredCountryId.current = null;
           onCountryHover(null);
         }}
       >
-        <sphereGeometry args={[1, 160, 112]} />
+        <sphereGeometry args={[1, economical ? 112 : 144, economical ? 72 : 96]} />
         <meshPhysicalMaterial
           map={atlas.mapTexture}
           bumpMap={atlas.reliefTexture}
@@ -942,7 +964,7 @@ function GlobeSurface({
         />
 
         <mesh raycast={() => null}>
-          <sphereGeometry args={[1.006, 144, 104]} />
+          <sphereGeometry args={[1.006, economical ? 96 : 112, economical ? 64 : 72]} />
           <meshBasicMaterial
             map={atlas.highlightTexture}
             transparent
@@ -959,7 +981,7 @@ function GlobeSurface({
         <CountrySphericalOutline atlas={atlas} country={selectedCountry} selected />
 
         <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
-          <torusGeometry args={[1.009, 0.0022, 8, 256]} />
+          <torusGeometry args={[1.009, 0.0022, 8, economical ? 144 : 192]} />
           <meshBasicMaterial
             color="#e5b66a"
             transparent
@@ -1285,6 +1307,7 @@ function GlobeScene({
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
+        economical={economical}
       />
       <MythicGlobeFrame />
       <MicrostateMarkers
@@ -1357,6 +1380,9 @@ export default function LiteraryGlobe({
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const [hoveredLaureate, setHoveredLaureate] =
     useState<HoveredLaureate | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [globeActive, setGlobeActive] = useState(false);
+  const [atlasRequested, setAtlasRequested] = useState(false);
   const hoveredNobelYear = hoveredLaureate
     ? getNobelYear(hoveredLaureate.writer)
     : null;
@@ -1375,7 +1401,31 @@ export default function LiteraryGlobe({
   );
   const economical =
     ((navigator as Navigator & { deviceMemory?: number }).deviceMemory || 8) <= 4 ||
+    navigator.hardwareConcurrency <= 4 ||
+    window.devicePixelRatio >= 2.5 ||
     window.innerWidth <= 680;
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let intersects = true;
+    const update = () =>
+      setGlobeActive(intersects && document.visibilityState !== "hidden");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        intersects = Boolean(entry?.isIntersecting);
+        if (intersects) setAtlasRequested(true);
+        update();
+      },
+      { rootMargin: "160px", threshold: 0.01 }
+    );
+    observer.observe(container);
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", update);
+    };
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -1385,6 +1435,7 @@ export default function LiteraryGlobe({
   }, []);
 
   useEffect(() => {
+    if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
 
@@ -1402,7 +1453,7 @@ export default function LiteraryGlobe({
       disposed = true;
       createdAtlas?.dispose();
     };
-  }, [countries]);
+  }, [atlasRequested, countries]);
 
   useEffect(() => {
     atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
@@ -1410,22 +1461,28 @@ export default function LiteraryGlobe({
 
   if (!atlas) {
     return (
-      <div className="globe-loading" role="status">
-        <span aria-hidden="true">✦</span>
-        <p>
-          {atlasError
-            ? t("Карта временно недоступна")
-            : t("Проявляем старинную карту…")}
-        </p>
+      <div ref={containerRef} className="literary-globe is-loading">
+        <div className="globe-loading" role="status">
+          <span aria-hidden="true">✦</span>
+          <p>
+            {atlasError
+              ? t("Карта временно недоступна")
+              : t("Проявляем старинную карту…")}
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}>
+    <div
+      ref={containerRef}
+      className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
+    >
       <Canvas
         camera={{ position: [0, 0.08, 3.55], fov: 43, near: 0.1, far: 100 }}
-        dpr={[1, economical ? 1.25 : 1.75]}
+        dpr={[1, economical ? 1.1 : 1.5]}
+        frameloop={globeActive ? "always" : "never"}
         fallback={
           <div className="globe-loading" role="status">
             <span aria-hidden="true">✦</span>
@@ -1433,7 +1490,7 @@ export default function LiteraryGlobe({
           </div>
         }
         gl={{
-          antialias: true,
+          antialias: !economical,
           alpha: true,
           powerPreference: "high-performance",
         }}

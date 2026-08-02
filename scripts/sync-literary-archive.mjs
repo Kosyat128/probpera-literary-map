@@ -110,6 +110,16 @@ function workRows(archive) {
 
 function editionRow(book, workId) {
   if (!book.coverUrl || !book.coverRights) return null;
+  if (
+    ![
+      "public-domain",
+      "licensed",
+      "permission",
+      "external-preview",
+    ].includes(book.coverRights.status)
+  ) {
+    return null;
+  }
 
   const legacyWorkId = `${book.countryId}:${book.writerId}:${book.id}`;
   const rights = book.coverRights;
@@ -117,10 +127,7 @@ function editionRow(book, workId) {
   return {
     legacy_id: `${legacyWorkId}:cover:${stableHash(book.coverUrl)}`,
     work_id: workId,
-    title:
-      rights.status === "editorial-original"
-        ? "Редакционное оформление «Пробы Пера»"
-        : "Издание по источнику обложки",
+    title: "Издание по источнику обложки",
     language: book.originalLanguage || "",
     cover_url: book.coverUrl,
     cover_source_url:
@@ -148,7 +155,15 @@ async function inBatches(items, size, callback) {
 
 const archive = await sourceArchive();
 const works = workRows(archive);
-const covers = archive.filter((book) => book.coverUrl && book.coverRights);
+const covers = archive.filter((book) =>
+  Boolean(
+    book.coverUrl &&
+      book.coverRights &&
+      ["public-domain", "licensed", "permission", "external-preview"].includes(
+        book.coverRights.status
+      )
+  )
+);
 
 console.log(
   `Источник countries: ${works.length} произведений, ${covers.length} проверенных обложек.`

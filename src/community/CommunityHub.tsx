@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../lib/supabase";
 import type { Country } from "../data/countries";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
+import { useSubscriptions } from "../hooks/useSubscriptions";
 import { articlePath } from "../utils/articleRoutes";
 import BrandHeartIcon from "../components/BrandHeartIcon";
 import BrandCloseIcon from "../components/BrandCloseIcon";
@@ -233,8 +234,15 @@ export default function CommunityHub({
   const [moderationItems, setModerationItems] = useState<ModerationItem[]>([]);
   const [commentReports, setCommentReports] = useState<CommentReport[]>([]);
   const [forumReports, setForumReports] = useState<ForumReport[]>([]);
-  const { items: savedReadings, remove: removeSavedReading } =
-    useReadingLibrary();
+  const {
+    items: savedReadings,
+    remove: removeSavedReading,
+    setStatus: setReadingStatus,
+  } = useReadingLibrary();
+  const {
+    items: subscriptions,
+    toggle: toggleSubscription,
+  } = useSubscriptions();
 
   const isModerator = ["moderator", "editor", "admin"].includes(role);
 
@@ -977,13 +985,33 @@ export default function CommunityHub({
                 </small>
                 <strong>{item.title}</strong>
               </a>
-              <button
-                type="button"
-                onClick={() => removeSavedReading(item.id, item.kind)}
-                aria-label={`Удалить «${item.title}» из библиотеки`}
-              >
-                <BrandHeartIcon filled />
-              </button>
+              <div className="library-actions">
+                <label>
+                  <span className="sr-only">Статус «{item.title}»</span>
+                  <select
+                    value={item.status}
+                    aria-label={`Статус чтения «${item.title}»`}
+                    onChange={(event) =>
+                      setReadingStatus(
+                        item.id,
+                        item.kind,
+                        event.target.value as typeof item.status
+                      )
+                    }
+                  >
+                    <option value="saved">Хочу прочитать</option>
+                    <option value="reading">Читаю</option>
+                    <option value="finished">Прочитано</option>
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeSavedReading(item.id, item.kind)}
+                  aria-label={`Удалить «${item.title}» из библиотеки`}
+                >
+                  <BrandHeartIcon filled />
+                </button>
+              </div>
             </article>
           ))}
         </div>
@@ -992,6 +1020,44 @@ export default function CommunityHub({
           Нажмите оранжевое сердце у статьи или книги — материал появится здесь.
         </p>
       )}
+      <aside className="subscription-summary">
+        <header>
+          <span className="section-kicker">Литературная траектория</span>
+          <strong>{subscriptions.length}</strong>
+        </header>
+        <p>
+          Страны и писатели, новые материалы о которых вы хотите отслеживать.
+        </p>
+        {subscriptions.length ? (
+          <div>
+            {subscriptions.map((item) => (
+              <button
+                key={`${item.type}:${item.id}`}
+                type="button"
+                title={`Отменить подписку «${item.label}»`}
+                onClick={() =>
+                  toggleSubscription({
+                    type: item.type,
+                    id: item.id,
+                    label: item.label,
+                  })
+                }
+              >
+                <span>
+                  {item.type === "country"
+                    ? "Страна"
+                    : item.type === "writer"
+                      ? "Писатель"
+                      : "Раздел"}
+                </span>
+                {item.label} <i aria-hidden="true">×</i>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <small>Подписки добавляются в карточках стран и писателей.</small>
+        )}
+      </aside>
     </section>
   );
 

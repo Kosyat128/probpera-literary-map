@@ -995,6 +995,18 @@ function normalizedTitle(value = "") {
   return value.trim().toLocaleLowerCase("ru").replace(/[«»"'.,:;!?()[\]{}]/g, "");
 }
 
+function dedupeWriterWorkStorage(writer: WriterProfile): WriterProfile {
+  const detailedTitles = new Set(
+    (writer.workDetails || []).map((work) => normalizedTitle(work.title))
+  );
+  return {
+    ...writer,
+    works: (writer.works || []).filter(
+      (title) => !detailedTitles.has(normalizedTitle(title))
+    ),
+  };
+}
+
 function mergeWriter(existing: WriterProfile, supplement: WriterProfile) {
   const currentDetails = existing.workDetails || [];
   const supplementalDetails = supplement.workDetails || [];
@@ -1031,7 +1043,7 @@ function mergeWriter(existing: WriterProfile, supplement: WriterProfile) {
     if (!currentTitles.has(normalizedTitle(title))) works.push(title);
   }
 
-  return {
+  return dedupeWriterWorkStorage({
     ...supplement,
     ...existing,
     works,
@@ -1040,7 +1052,7 @@ function mergeWriter(existing: WriterProfile, supplement: WriterProfile) {
       ...new Set([...(existing.articles || []), ...(supplement.articles || [])]),
     ],
     articleUrl: existing.articleUrl || supplement.articleUrl,
-  };
+  });
 }
 
 export function mergeArticleReferencedBooks(countries: Country[]): Country[] {
@@ -1054,7 +1066,9 @@ export function mergeArticleReferencedBooks(countries: Country[]): Country[] {
       const current = supplementsById.get(supplement.id);
       supplementsById.set(
         supplement.id,
-        current ? mergeWriter(current, supplement) : supplement
+        current
+          ? mergeWriter(current, supplement)
+          : dedupeWriterWorkStorage(supplement)
       );
     }
     const supplements = [...supplementsById.values()];

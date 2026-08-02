@@ -529,7 +529,7 @@ function configureTexture(texture: THREE.CanvasTexture) {
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
   texture.flipY = GLOBE_TEXTURE_FLIP_Y;
-  texture.anisotropy = 16;
+  texture.anisotropy = 8;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.generateMipmaps = true;
@@ -542,7 +542,7 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
   texture.flipY = GLOBE_TEXTURE_FLIP_Y;
-  texture.anisotropy = 16;
+  texture.anisotropy = 8;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.generateMipmaps = true;
@@ -627,12 +627,18 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
       makeMapCanvas(worldGeoJson.features, antiqueMap, mapWidth, mapHeight)
     )
   );
+  const reliefWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
+  const reliefHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
   const reliefTexture = configureReliefTexture(
-    new THREE.CanvasTexture(makeReliefCanvas(worldGeoJson.features, mapWidth, mapHeight))
+    new THREE.CanvasTexture(
+      makeReliefCanvas(worldGeoJson.features, reliefWidth, reliefHeight)
+    )
   );
   const highlightCanvas = document.createElement("canvas");
-  highlightCanvas.width = mapWidth;
-  highlightCanvas.height = mapHeight;
+  const highlightWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
+  const highlightHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
+  highlightCanvas.width = highlightWidth;
+  highlightCanvas.height = highlightHeight;
   const highlightContext = highlightCanvas.getContext("2d");
   if (!highlightContext) throw new Error("Canvas 2D is unavailable");
   const highlightTexture = configureTexture(new THREE.CanvasTexture(highlightCanvas));
@@ -737,16 +743,16 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
           highlightContext,
           feature,
           flagImage,
-          mapWidth,
-          mapHeight,
+          highlightWidth,
+          highlightHeight,
           opacity
         );
       }
       drawFeature(
         highlightContext,
         feature,
-        mapWidth,
-        mapHeight,
+        highlightWidth,
+        highlightHeight,
         flagImage ? "rgba(255, 255, 255, 0.025)" : "rgba(255, 255, 255, 0.055)",
         stroke,
         lineWidth
@@ -768,7 +774,7 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   };
 
   const redrawHighlights = () => {
-    highlightContext.clearRect(0, 0, mapWidth, mapHeight);
+    highlightContext.clearRect(0, 0, highlightWidth, highlightHeight);
 
     if (activeSelectedCountryId) {
       drawFlagHighlight(

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-01T15:20:57.103Z",
+  "generatedAt": "2026-08-02T09:15:42.411Z",
   "totals": {
     "candidates": 259,
-    "covered": 258,
-    "missing": 1,
+    "covered": 259,
+    "missing": 0,
     "matchedWriter": 259,
     "unmatchedWriter": 0,
     "ambiguousWriter": 0
@@ -1056,7 +1056,7 @@
       "articleId": "page--article--top--books--page--turners--2",
       "articleTitle": "Десять романов, которые читаются на одном дыхании (Часть 2)",
       "articleUrl": "https://probpera.ru/read/page-article/top-books-page-turners/2",
-      "covered": false,
+      "covered": true,
       "countryId": "usa",
       "writerId": "ray_bradbury",
       "writerName": "Рэй Брэдбери",

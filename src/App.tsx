@@ -1688,6 +1688,7 @@ export default function App() {
         open={globalSearchOpen}
         countries={countryArchive}
         books={bookArchive}
+        articleCount={articleCatalog.length}
         onClose={() => setGlobalSearchOpen(false)}
         onCountrySelect={(country, writer) =>
           selectCountry(country, true, writer)

@@ -21,6 +21,7 @@ type Props = {
   open: boolean;
   countries: Country[];
   books: BookArchiveEntry[];
+  articleCount: number;
   onClose: () => void;
   onCountrySelect: (country: Country, writer?: Writer) => void;
   onBookSelect: (book: BookArchiveEntry) => void;
@@ -39,6 +40,7 @@ function normalize(value: string) {
   return value
     .toLocaleLowerCase("ru")
     .replace(/ё/g, "е")
+    .replace(/°/g, " градус ")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -124,6 +126,7 @@ export default function GlobalSearch({
   open,
   countries,
   books,
+  articleCount,
   onClose,
   onCountrySelect,
   onBookSelect,
@@ -489,8 +492,8 @@ export default function GlobalSearch({
             {articlesLoading
               ? t("Подключаем редакционный архив…")
               : language === "en"
-                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articles.length || 157)} articles`
-                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articles.length || 157)} ${pluralRu(articles.length || 157, ["статья", "статьи", "статей"])}`}
+                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articleCount)} articles`
+                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articleCount)} ${pluralRu(articleCount, ["статья", "статьи", "статей"])}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

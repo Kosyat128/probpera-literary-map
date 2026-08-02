@@ -33,12 +33,13 @@ const allowedPageHtml = {
     "figcaption",
     "mark",
     "aside",
+    "section",
   ],
   allowedAttributes: {
     ...sanitizeHtml.defaults.allowedAttributes,
     a: ["href", "name", "target", "rel"],
     img: ["src", "alt", "title", "width", "height", "loading"],
-    "*": ["class", "id"],
+    "*": ["class", "id", "data-editorial-block", "data-reveal"],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {

@@ -123,6 +123,7 @@ export default function ArticleLibrarySection() {
     setVisibleCount(12);
     if (!selected) {
       window.history.replaceState({}, "", journalPath(value));
+      window.dispatchEvent(new Event("probpera:navigation"));
     }
   };
 
@@ -132,6 +133,7 @@ export default function ArticleLibrarySection() {
       "",
       articlePath(article.id, article.title, article.sectionId, article.slug)
     );
+    window.dispatchEvent(new Event("probpera:navigation"));
     setSelected(article);
   };
 
@@ -141,6 +143,7 @@ export default function ArticleLibrarySection() {
       return;
     }
     window.history.replaceState({}, "", journalPath(sectionId));
+    window.dispatchEvent(new Event("probpera:navigation"));
     setSelected(null);
   };
 

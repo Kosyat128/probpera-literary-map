@@ -4,14 +4,9 @@
 
 ```text
 npm ci
-npm run lint
-npm test
-npm run links:audit
-npm run countries:audit
-npm run covers:audit
-npm run assets:globe:qa
-npm run build:all
+npm run release:check
 npm run build:domain
+npm run domain:audit
 ```
 
 ## Публичный сайт
@@ -31,8 +26,9 @@ PUBLIC_SITE_BASE_PATH=/probpera-literary-map
 
 `apps/admin` — серверное Next.js-приложение. GitHub Pages не запускает сервер,
 поэтому панель разворачивается отдельно на Vercel или другом Node.js-хостинге.
-Конфигурация уже использует `basePath: /admin`, защитные заголовки и запрет
-индексации.
+Конфигурация использует standalone-сборку, защитные заголовки и запрет
+индексации. Переносимый контейнер и точная приёмка описаны в
+`docs/ADMIN_HOSTING_RU.md`.
 
 Обязательные серверные переменные перечислены в `.env.example`. Deployment
 hook связывает публикацию в панели с новой публичной сборкой.
@@ -48,6 +44,10 @@ hook связывает публикацию в панели с новой пу�
 5. панель на телефоне и компьютере;
 6. `sitemap.xml`, `robots.txt`, RSS, canonical и Open Graph;
 7. старые URL и отсутствие цепочек редиректов.
+8. service worker: обновление оболочки, офлайн-открытие уже посещённой статьи
+   и отсутствие кэширования запросов Supabase;
+9. сохранение прогресса статьи, статусы «хочу прочитать / читаю / прочитано» и
+   синхронизация подписок читателя.
 
 Переключение DNS не входит в обычную публикацию и выполняется только по
 отдельному решению владельца.

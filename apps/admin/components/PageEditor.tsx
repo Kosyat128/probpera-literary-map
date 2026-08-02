@@ -13,6 +13,11 @@ import { useEffect, useState } from "react";
 
 import { savePageAction } from "@/app/(dashboard)/pages/actions";
 import { createSlug } from "@/lib/slug";
+import {
+  EditorialBlock,
+  insertEditorialBlock,
+  setEditorialBlockReveal,
+} from "@/components/EditorialBlock";
 
 type PageRecord = {
   id: string;
@@ -79,6 +84,7 @@ export default function PageEditor({
     immediatelyRender: false,
     extensions: [
       StarterKit,
+      EditorialBlock,
       TableKit,
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
@@ -256,6 +262,15 @@ export default function PageEditor({
             label="Цитата"
             onClick={() => editor?.chain().focus().toggleBlockquote().run()}
           />
+          <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
+          <ToolbarButton label="Акцент" onClick={() => insertEditorialBlock(editor, "accent")} />
+          <ToolbarButton label="2 колонки" onClick={() => insertEditorialBlock(editor, "columns")} />
+          <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
+          <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
+          <ToolbarButton label="Фигура-разделитель" onClick={() => insertEditorialBlock(editor, "ornament")} />
+          <ToolbarButton label="Анимация ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
+          <ToolbarButton label="Анимация ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
+          <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
           <ToolbarButton label="Ссылка" onClick={setLink} />
           <ToolbarButton label="Изображение" onClick={addImage} />
           <ToolbarButton

@@ -3,7 +3,7 @@
   "bookCount": 3429,
   "articleCount": 157,
   "linkedBookCount": 627,
-  "relationCount": 1251,
+  "relationCount": 1255,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
       {
@@ -12658,6 +12658,46 @@
         "readingMinutes": 12,
         "slug": "",
         "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--top--books--page--turners--2",
+        "title": "Десять романов, которые читаются на одном дыхании (Часть 2)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3430-3266-4365-b538-633165663064/068be666-6d9d-402c-b.png",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--first--profession--writers--4",
+        "title": "Зарубежные классики литературы и их профессии (Часть 2)",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели и литературная карта",
+        "readingMinutes": 10,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild3366-6538-4535-b064-613438353732/image.png",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--famous--prizes--2",
+        "title": "Премия «Хьюго»",
+        "sectionId": "awards",
+        "sectionLabel": "Премии и литературный процесс",
+        "readingMinutes": 3,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6266-3032-4334-b563-643432653735/cropped-cropped-hugo.jpg",
+        "kind": "mention"
+      },
+      {
+        "id": "page--article--topbooks--4",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "",
+        "imageUrl": "https://static.tildacdn.com/tild6532-6263-4166-a266-316463356561/123224.jpg",
         "kind": "mention"
       }
     ],

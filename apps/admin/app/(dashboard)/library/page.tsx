@@ -24,27 +24,40 @@ export default async function LibraryPage({
   if (!supabase) return null;
 
   const [
-    { data: worksResult, error: worksError },
-    { data: editionsResult, error: editionsError },
+    { data: worksResult, error: worksError, count: worksCount },
+    { data: editionsResult, error: editionsError, count: editionsCount },
+    { count: verifiedCoversCount, error: coversError },
   ] = await Promise.all([
     supabase
       .from("literary_works")
       .select(
-        "id,title,original_title,writer_id,country_id,editorial_status,metadata"
+        "id,title,original_title,writer_id,country_id,editorial_status,metadata",
+        { count: "exact" }
       )
       .order("title")
       .limit(5000),
     supabase
       .from("book_editions")
       .select(
-        "id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_rights_status,is_primary,literary_works(title,metadata)"
+        "id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_rights_status,is_primary,literary_works(title,metadata)",
+        { count: "exact" }
       )
       .order("updated_at", { ascending: false })
       .limit(100),
+    supabase
+      .from("book_editions")
+      .select("id", { count: "exact", head: true })
+      .not("cover_url", "is", null)
+      .in("cover_rights_status", [
+        "public-domain",
+        "licensed",
+        "permission",
+        "external-preview",
+      ]),
   ]);
   const works = worksResult || [];
   const editions = editionsResult || [];
-  const schemaError = worksError || editionsError;
+  const schemaError = worksError || editionsError || coversError;
 
   return (
     <>
@@ -74,25 +87,17 @@ export default async function LibraryPage({
       <section className="stats-grid">
         <article className="stat-card">
           <span>Произведения</span>
-          <strong>{works.length}</strong>
+          <strong>{(worksCount || 0).toLocaleString("ru-RU")}</strong>
           <small>из единой структуры countries</small>
         </article>
         <article className="stat-card">
           <span>Точные издания</span>
-          <strong>{editions.length}</strong>
+          <strong>{(editionsCount || 0).toLocaleString("ru-RU")}</strong>
           <small>с отдельными ISBN</small>
         </article>
         <article className="stat-card">
           <span>Проверенные обложки</span>
-          <strong>
-            {
-              editions.filter(
-                (edition) =>
-                  edition.cover_url &&
-                  edition.cover_rights_status !== "unverified"
-              ).length
-            }
-          </strong>
+          <strong>{(verifiedCoversCount || 0).toLocaleString("ru-RU")}</strong>
           <small>источник и права заполнены</small>
         </article>
         <article className="stat-card">
@@ -144,8 +149,8 @@ export default async function LibraryPage({
           <h2>Редакционная политика обложек</h2>
           <div className="status-list">
             <div>
-              <span>Собственная серия «Пробы Пера»</span>
-              <strong>Разрешена</strong>
+              <span>Редакционная иллюстрация «Пробы Пера»</span>
+              <strong>Не считается обложкой издания</strong>
             </div>
             <div>
               <span>Open Library по точному ISBN</span>

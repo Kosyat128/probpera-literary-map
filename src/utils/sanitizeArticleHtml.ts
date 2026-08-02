@@ -10,6 +10,8 @@ const allowedAttributes = new Set([
   "src",
   "title",
   "width",
+  "data-editorial-block",
+  "data-reveal",
 ]);
 
 function isSafeUrl(value: string) {
@@ -36,7 +38,18 @@ export function sanitizeArticleHtml(source: string) {
 
     if (element.hasAttribute("class")) {
       const safeClasses = [...element.classList].filter((className) =>
-        ["article-media-split", "article-gallery"].includes(className)
+        [
+          "article-media-split",
+          "article-gallery",
+          "article-design-block",
+          "is-fact",
+          "is-accent",
+          "is-columns",
+          "is-timeline",
+          "is-metrics",
+          "is-ornament",
+          "is-gallery",
+        ].includes(className)
       );
       if (safeClasses.length) element.className = safeClasses.join(" ");
       else element.removeAttribute("class");

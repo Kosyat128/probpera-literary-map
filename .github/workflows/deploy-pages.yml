@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: read
@@ -12,16 +14,19 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.release_gate.outputs.should_deploy }}
+      scheduled_ids: ${{ steps.scheduled.outputs.ids }}
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -32,25 +37,52 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify public site
-        run: npm run lint:public && npm test && npm run links:audit
+      - name: Publish due scheduled articles
+        id: scheduled
+        if: github.event_name == 'schedule'
+        run: npm run content:publish-scheduled
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Decide whether a release is needed
+        id: release_gate
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" != "schedule" || "${{ steps.scheduled.outputs.published }}" != "0" ]]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify public site and editorial archive
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run lint:public && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run media:audit:legacy && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
 
       - name: Build production site
+        if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run build
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           VITE_BOOSTY_URL: ${{ vars.VITE_BOOSTY_URL }}
 
+      - name: Enforce production performance budget
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run performance:audit
+
       - name: Configure GitHub Pages
+        if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v6
 
       - name: Upload production artifact
+        if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
   deploy:
+    if: needs.build.outputs.should_deploy == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -61,3 +93,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Checkout publication finalizer
+        if: needs.build.outputs.scheduled_ids != ''
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js for publication finalizer
+        if: needs.build.outputs.scheduled_ids != ''
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Finalize scheduled publications
+        if: needs.build.outputs.scheduled_ids != ''
+        run: node scripts/publish-scheduled-content.mjs --finalize=${{ needs.build.outputs.scheduled_ids }}
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

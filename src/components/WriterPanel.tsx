@@ -12,6 +12,7 @@ import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import { getWriterWorkTitles } from "../data/bookArchive";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { useSubscriptions } from "../hooks/useSubscriptions";
 import BrandCloseIcon from "./BrandCloseIcon";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
@@ -89,6 +90,7 @@ export default function WriterPanel({
   onClose,
 }: WriterPanelProps) {
   const { language, t, countryName, number } = useInterfaceLanguage();
+  const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const writers = country.writers || [];
@@ -169,6 +171,14 @@ export default function WriterPanel({
     () => (activeWriter ? getWriterWorkTitles(activeWriter) : []),
     [activeWriter]
   );
+  const countryLabel = countryName(country.code, country.name);
+  const countrySubscribed = isSubscribed("country", country.id);
+  const activeWriterSubscriptionId = activeWriter
+    ? `${country.id}:${activeWriter.id}`
+    : "";
+  const activeWriterSubscribed = activeWriter
+    ? isSubscribed("writer", activeWriterSubscriptionId)
+    : false;
 
   const nobelWriters = writers.filter(isNobelLaureate);
   const nobelCount = nobelWriters.length;
@@ -220,6 +230,23 @@ export default function WriterPanel({
       </header>
 
       <p className="country-description">{description}</p>
+      <button
+        className={`archive-subscribe${countrySubscribed ? " is-active" : ""}`}
+        type="button"
+        aria-pressed={countrySubscribed}
+        onClick={() =>
+          toggleSubscription({
+            type: "country",
+            id: country.id,
+            label: countryLabel,
+          })
+        }
+      >
+        <span aria-hidden="true">✦</span>
+        {countrySubscribed
+          ? t("Вы следите за архивом страны")
+          : t("Следить за новыми материалами страны")}
+      </button>
       {language === "en" && (
         <p className="archive-original-language">
           {t(
@@ -375,6 +402,23 @@ export default function WriterPanel({
           )}
           <h4>{getWriterName(activeWriter)}</h4>
           <p className="writer-years">{activeWriter.years}</p>
+          <button
+            className={`archive-subscribe is-writer${activeWriterSubscribed ? " is-active" : ""}`}
+            type="button"
+            aria-pressed={activeWriterSubscribed}
+            onClick={() =>
+              toggleSubscription({
+                type: "writer",
+                id: activeWriterSubscriptionId,
+                label: getWriterName(activeWriter),
+              })
+            }
+          >
+            <span aria-hidden="true">✦</span>
+            {activeWriterSubscribed
+              ? t("Вы следите за автором")
+              : t("Следить за новыми материалами автора")}
+          </button>
           <p className="writer-bio">
             {activeWriter.biography ||
               activeWriter.bio ||

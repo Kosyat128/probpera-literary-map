@@ -28,6 +28,15 @@ export type WorkProfile = {
     note?: string;
   };
   sourceUrl?: string;
+  edition?: {
+    title: string;
+    isbn10?: string | null;
+    isbn13?: string | null;
+    publisher?: string;
+    publicationYear?: number | null;
+    language?: string;
+    sourceUrl?: string;
+  };
   editorial?: {
     status: "draft" | "reviewed" | "verified";
     reviewedAt?: string;

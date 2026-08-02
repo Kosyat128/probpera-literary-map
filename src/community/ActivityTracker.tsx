@@ -5,6 +5,7 @@ import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
 
 const viewedKey = "probpera-viewed-paths";
+const VIEW_COOLDOWN_MS = 30 * 60 * 1000;
 
 export default function ActivityTracker() {
   const { configured, user } = useAuth();
@@ -15,12 +16,21 @@ export default function ActivityTracker() {
 
     const track = () => {
       const path = `${window.location.pathname}${window.location.hash}`;
-      const viewed = new Set(
-        JSON.parse(window.sessionStorage.getItem(viewedKey) || "[]") as string[]
-      );
-      if (viewed.has(path)) return;
-      viewed.add(path);
-      window.sessionStorage.setItem(viewedKey, JSON.stringify([...viewed]));
+      let viewed: Record<string, number> = {};
+      try {
+        const stored = JSON.parse(
+          window.sessionStorage.getItem(viewedKey) || "{}"
+        );
+        viewed = Array.isArray(stored)
+          ? Object.fromEntries(stored.map((item) => [String(item), 0]))
+          : stored;
+      } catch {
+        viewed = {};
+      }
+      const now = Date.now();
+      if (now - (viewed[path] || 0) < VIEW_COOLDOWN_MS) return;
+      viewed[path] = now;
+      window.sessionStorage.setItem(viewedKey, JSON.stringify(viewed));
 
       void client.from("content_views").insert({
         path,
@@ -34,7 +44,13 @@ export default function ActivityTracker() {
 
     track();
     window.addEventListener("hashchange", track);
-    return () => window.removeEventListener("hashchange", track);
+    window.addEventListener("popstate", track);
+    window.addEventListener("probpera:navigation", track);
+    return () => {
+      window.removeEventListener("hashchange", track);
+      window.removeEventListener("popstate", track);
+      window.removeEventListener("probpera:navigation", track);
+    };
   }, [configured, user?.id]);
 
   return null;

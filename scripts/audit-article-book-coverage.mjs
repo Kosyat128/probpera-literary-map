@@ -20,6 +20,7 @@ function normalize(value = "") {
     .normalize("NFKC")
     .toLocaleLowerCase("ru")
     .replace(/ё/gu, "е")
+    .replace(/°/gu, " градус ")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .trim();
 }

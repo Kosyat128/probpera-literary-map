@@ -10,7 +10,6 @@ const allowedStatuses = new Set([
   "public-domain",
   "licensed",
   "permission",
-  "editorial-original",
   "external-preview",
 ]);
 

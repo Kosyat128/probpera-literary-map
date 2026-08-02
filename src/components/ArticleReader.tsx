@@ -7,6 +7,7 @@ import ShareLinks from "../editorial/ShareLinks";
 import { useDisplayMode } from "../hooks/useDisplayMode";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
+import { useReadingProgress } from "../hooks/useReadingProgress";
 import { articlePath } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import BrandHeartIcon from "./BrandHeartIcon";
@@ -111,18 +112,28 @@ export default function ArticleReader({
   const lightboxCloseButtonRef = useRef<HTMLButtonElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const restoredArticleRef = useRef("");
   const [articleDocument, setArticleDocument] = useState<ArticleDocument | null>(null);
   const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fontScale, setFontScale] = useState(1);
   const [activeHeadingId, setActiveHeadingId] = useState("");
   const [activeMediaIndex, setActiveMediaIndex] = useState<number | null>(null);
+  const [resumedFrom, setResumedFrom] = useState<number | null>(null);
   const { mode } = useDisplayMode();
   const { language, t, number } = useInterfaceLanguage();
-  const { items: savedReadings, toggle: toggleSavedReading } =
-    useReadingLibrary();
-  const isSaved = savedReadings.some(
+  const {
+    items: savedReadings,
+    toggle: toggleSavedReading,
+    setStatus: setReadingStatus,
+  } = useReadingLibrary();
+  const savedArticle = savedReadings.find(
     (item) => item.kind === "article" && item.id === article.id
+  );
+  const isSaved = Boolean(savedArticle);
+  const { restoredProgress, saveProgress, markCompleted } = useReadingProgress(
+    "article",
+    article.id
   );
 
   useEffect(() => {
@@ -185,6 +196,8 @@ export default function ArticleReader({
     setProgress(0);
     setActiveHeadingId("");
     setActiveMediaIndex(null);
+    setResumedFrom(null);
+    restoredArticleRef.current = "";
   }, [article.id]);
 
   const headingItems = useMemo(
@@ -302,11 +315,92 @@ export default function ArticleReader({
     };
   }, [headingItems, safeContentHtml]);
 
+  useEffect(() => {
+    const root = scrollRef.current;
+    const content = contentRef.current;
+    if (!root || !content || !safeContentHtml) return;
+    const targets = [
+      ...content.querySelectorAll<HTMLElement>(
+        ".article-design-block[data-reveal]:not([data-reveal='none'])"
+      ),
+    ];
+    if (!targets.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((target) => target.classList.add("is-revealed"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          (entry.target as HTMLElement).classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      },
+      { root, rootMargin: "0px 0px -10%", threshold: 0.12 }
+    );
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, [safeContentHtml]);
+
+  useEffect(() => {
+    const element = scrollRef.current;
+    if (
+      !element ||
+      !articleDocument ||
+      restoredProgress === null ||
+      restoredProgress < 3 ||
+      restoredProgress >= 96 ||
+      restoredArticleRef.current === article.id
+    ) {
+      return;
+    }
+
+    restoredArticleRef.current = article.id;
+    const frame = window.requestAnimationFrame(() => {
+      const available = element.scrollHeight - element.clientHeight;
+      if (available <= 0) return;
+      element.scrollTo({
+        top: available * (restoredProgress / 100),
+        behavior: "auto",
+      });
+      setProgress(restoredProgress);
+      setResumedFrom(restoredProgress);
+      if (savedArticle?.status === "saved") {
+        setReadingStatus(article.id, "article", "reading");
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [
+    article.id,
+    articleDocument,
+    restoredProgress,
+    savedArticle?.status,
+    setReadingStatus,
+  ]);
+
   const handleScroll = () => {
     const element = scrollRef.current;
     if (!element) return;
     const available = element.scrollHeight - element.clientHeight;
-    setProgress(available > 0 ? Math.min(100, (element.scrollTop / available) * 100) : 0);
+    const next =
+      available > 0
+        ? Math.min(100, (element.scrollTop / available) * 100)
+        : 0;
+    setProgress(next);
+    if (next >= 96) {
+      markCompleted(activeHeadingId || undefined);
+      if (savedArticle && savedArticle.status !== "finished") {
+        setReadingStatus(article.id, "article", "finished");
+      }
+    } else {
+      saveProgress(next, activeHeadingId || undefined);
+      if (next >= 3 && savedArticle?.status === "saved") {
+        setReadingStatus(article.id, "article", "reading");
+      }
+    }
   };
 
   const jumpToHeading = (headingId: string) => {
@@ -501,6 +595,23 @@ export default function ArticleReader({
                   {t("Оригинал публикации ↗")}
                 </a>
               </div>
+              {resumedFrom !== null && (
+                <div className="article-resume-note" role="status">
+                  <span>
+                    {t("Продолжено с места остановки")} · {Math.round(resumedFrom)}%
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+                      setResumedFrom(null);
+                      saveProgress(0);
+                    }}
+                  >
+                    {t("Начать сначала")}
+                  </button>
+                </div>
+              )}
             </header>
 
             {article.imageUrl && (
