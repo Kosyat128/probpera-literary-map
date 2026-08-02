@@ -91,6 +91,30 @@ async function fetchRows(table, query) {
   return response.json();
 }
 
+async function fetchOptionalRows(table, query) {
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/${table}?${queryString(query)}`,
+    {
+      headers: {
+        apikey: publicKey,
+        Authorization: `Bearer ${publicKey}`,
+      },
+    }
+  );
+  if (response.ok) return response.json();
+
+  const body = await response.text();
+  if (response.status === 404 && body.includes("PGRST205")) {
+    console.warn(
+      `Optional CMS table ${table} is not provisioned yet; preserving an empty public snapshot.`
+    );
+    return [];
+  }
+  throw new Error(
+    `CMS export failed for ${table}: ${response.status} ${body}`
+  );
+}
+
 function relationValue(value) {
   return Array.isArray(value) ? value[0] || null : value || null;
 }
@@ -248,12 +272,12 @@ const [
     is_active: "eq.true",
     order: "source_path.asc",
   }),
-  fetchRows("literary_works", {
+  fetchOptionalRows("literary_works", {
     select: "id,legacy_id,editorial_status",
     editorial_status: "in.(reviewed,verified)",
     order: "legacy_id.asc",
   }),
-  fetchRows("book_editions", {
+  fetchOptionalRows("book_editions", {
     select:
       "id,work_id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_source_url,cover_rights_status,license_name,license_url,creator,rights_holder,rights_checked_at,source_url,is_primary,updated_at",
     cover_url: "not.is.null",
