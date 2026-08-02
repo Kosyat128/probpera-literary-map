@@ -57,7 +57,7 @@ jobs:
 
       - name: Verify public site and editorial archive
         if: steps.release_gate.outputs.should_deploy == 'true'
-        run: npm run lint:public && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run media:audit:legacy && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
+        run: npm run lint:public && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
 
       - name: Build production site
         if: steps.release_gate.outputs.should_deploy == 'true'

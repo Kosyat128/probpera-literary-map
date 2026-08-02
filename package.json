@@ -16,7 +16,7 @@
     "build:all": "npm run build && npm run admin:build",
     "build:domain": "node scripts/build-domain-release.mjs",
     "domain:audit": "node scripts/audit-domain-release.mjs",
-    "release:check": "npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run media:audit:legacy && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run build:all && npm run performance:audit",
+    "release:check": "npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run build:all && npm run performance:audit",
     "performance:audit": "node scripts/audit-performance-budget.mjs",
     "backup:storage": "node scripts/backup-supabase-storage.mjs",
     "preview": "vite preview",

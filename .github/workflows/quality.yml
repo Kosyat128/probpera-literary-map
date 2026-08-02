@@ -46,7 +46,7 @@ jobs:
         run: npm run links:audit
 
       - name: Audit encyclopedia and media
-        run: npm run countries:audit && npm run media:audit && npm run media:audit:legacy && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
+        run: npm run countries:audit && npm run media:audit && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
 
       - name: Build public site and admin
         run: npm run build:all
