@@ -61,7 +61,7 @@ jobs:
 
       - name: Build production site
         if: steps.release_gate.outputs.should_deploy == 'true'
-        run: npm run build
+        run: npm run build:domain
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
