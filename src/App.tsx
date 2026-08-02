@@ -848,6 +848,7 @@ export default function App() {
                 <span aria-hidden="true">⌕</span>
                 <input
                   id="country-search"
+                  role="combobox"
                   value={search}
                   placeholder={
                     selectedCountry
@@ -855,6 +856,8 @@ export default function App() {
                       : t("Россия, Франция, Япония…")
                   }
                   autoComplete="off"
+                  aria-autocomplete="list"
+                  aria-haspopup="listbox"
                   aria-expanded={searchOpen}
                   aria-controls="country-results"
                   onClick={() => setSearchOpen(true)}
@@ -871,7 +874,7 @@ export default function App() {
               </div>
 
               {searchOpen && (
-                <div className="search-results" id="country-results">
+                <div className="search-results" id="country-results" role="listbox">
                   <span className="search-caption">
                     {search ? t("Результаты поиска") : t("Избранные архивы")}
                   </span>
@@ -879,6 +882,8 @@ export default function App() {
                     searchResults.map((country) => (
                       <button
                         type="button"
+                        role="option"
+                        aria-selected={selectedCountry?.id === country.id}
                         key={country.id}
                         onPointerDown={(event) => {
                           event.preventDefault();

@@ -27,7 +27,16 @@ test("главная не содержит критических нарушен
 });
 
 test("статья из карты сайта открывается и имеет корректную структуру", async ({ page, request, baseURL }) => {
-  const sitemap = await (await request.get("/sitemap.xml")).text();
+  const sitemapCandidates = ["/sitemap.xml", "/probpera-literary-map/sitemap.xml"];
+  let sitemap = "";
+  for (const candidate of sitemapCandidates) {
+    const response = await request.get(new URL(candidate, baseURL).toString());
+    const body = await response.text();
+    if (response.ok() && body.includes("<urlset")) {
+      sitemap = body;
+      break;
+    }
+  }
   const articleUrl = sitemap.match(/<loc>([^<]+\/stati\/[^<]+)<\/loc>/u)?.[1];
   expect(articleUrl).toBeTruthy();
   const articlePath = new URL(articleUrl).pathname;
