@@ -30,9 +30,12 @@ docker compose -f docker-compose.admin.yml up -d
 
 - `NEXT_PUBLIC_SUPABASE_URL` и `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` могут
   присутствовать в клиентской части;
-- `SUPABASE_SERVICE_ROLE_KEY` — только серверная переменная контейнера;
 - deployment hook — только серверная переменная;
 - ни один приватный ключ не должен иметь префикс `NEXT_PUBLIC_` или `VITE_`.
+
+`SUPABASE_SERVICE_ROLE_KEY` не передаётся контейнеру панели. Он допустим только
+в отдельном доверенном процессе импорта или резервного копирования и никогда
+не нужен для обычного входа редактора.
 
 Для поддомена сборка использует `ADMIN_BASE_PATH=/`. Если панель размещается
 за общим прокси в `https://probpera.ru/admin`, контейнер необходимо собрать с

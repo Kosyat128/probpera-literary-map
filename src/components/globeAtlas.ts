@@ -177,34 +177,50 @@ function polygonTextureBounds(
   };
 }
 
-function drawFlagInsideFeature(
+function drawFlagInsideFeatures(
   context: CanvasRenderingContext2D,
-  feature: GeoFeature,
+  features: GeoFeature[],
   flagImage: HTMLImageElement,
   width: number,
   height: number,
   opacity: number
 ) {
-  getPolygons(feature).forEach((polygon) => {
-    [-width, 0, width].forEach((shift) => {
-      const bounds = polygonTextureBounds(polygon, width, height, shift);
-      if (!bounds || bounds.width < 0.5 || bounds.height < 0.5) return;
+  const polygons = features.flatMap((feature) => getPolygons(feature));
+  const principalPolygon = polygons.reduce<PolygonCoordinates | null>(
+    (largest, polygon) => {
+      if (!polygon[0]?.length) return largest;
+      if (!largest?.[0]?.length) return polygon;
+      return ringMetrics(polygon[0]).area > ringMetrics(largest[0]).area
+        ? polygon
+        : largest;
+    },
+    null
+  );
+  if (!principalPolygon) return;
 
-      context.save();
-      context.beginPath();
+  [-width, 0, width].forEach((shift) => {
+    const bounds = polygonTextureBounds(principalPolygon, width, height, shift);
+    if (!bounds || bounds.width < 0.5 || bounds.height < 0.5) return;
+
+    context.save();
+    context.beginPath();
+    polygons.forEach((polygon) => {
       polygon.forEach((ring) => traceRing(context, ring, width, height, shift));
-      context.clip("evenodd");
-
-      context.globalAlpha = opacity;
-      context.drawImage(
-        flagImage,
-        bounds.left,
-        bounds.top,
-        bounds.width,
-        bounds.height
-      );
-      context.restore();
     });
+    context.clip("evenodd");
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    const pixelArea = bounds.width * bounds.height;
+    context.globalAlpha =
+      pixelArea < 260 ? Math.min(0.64, opacity * 1.55) : opacity;
+    context.drawImage(
+      flagImage,
+      bounds.left,
+      bounds.top,
+      bounds.width,
+      bounds.height
+    );
+    context.restore();
   });
 }
 
@@ -758,17 +774,17 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     highlightContext.save();
     highlightContext.shadowColor = stroke;
     highlightContext.shadowBlur = glow;
+    if (flagImage) {
+      drawFlagInsideFeatures(
+        highlightContext,
+        features,
+        flagImage,
+        highlightWidth,
+        highlightHeight,
+        opacity
+      );
+    }
     features.forEach((feature) => {
-      if (flagImage) {
-        drawFlagInsideFeature(
-          highlightContext,
-          feature,
-          flagImage,
-          highlightWidth,
-          highlightHeight,
-          opacity
-        );
-      }
       drawFeature(
         highlightContext,
         feature,

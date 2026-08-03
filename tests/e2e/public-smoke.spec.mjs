@@ -62,3 +62,33 @@ test("глобус загружается только после приближ
   }
   expect(errors).toEqual([]);
 });
+
+test("поиск глобуса находит книгу по одному названию и открывает карточку", async ({ page }) => {
+  await page.goto("/#atlas");
+  const search = page.locator("#country-search");
+  await search.fill("Морской волк");
+  const result = page.getByRole("option", { name: /^Морской волк/u });
+  await expect(result).toBeVisible();
+  await result.click();
+  await expect(page.locator(".book-detail-copy h3")).toHaveText("Морской волк");
+});
+
+test("режим чтения не имеет горизонтального разрыва и не повторяет рекомендации", async ({ page }) => {
+  await page.goto("/#journal");
+  await page.locator(".article-library-grid article a").first().click();
+  const reader = page.locator(".article-reader");
+  await expect(reader).toBeVisible();
+  await expect(reader.locator(".article-reader-lead h1")).toBeVisible();
+
+  const overflow = await reader.evaluate(
+    (element) => element.scrollWidth - element.clientWidth
+  );
+  expect(overflow).toBeLessThanOrEqual(2);
+
+  const visibleRecommendations = await reader
+    .locator(
+      ".article-reader-related button:visible strong, .article-reader-more button:visible strong"
+    )
+    .allTextContents();
+  expect(new Set(visibleRecommendations).size).toBe(visibleRecommendations.length);
+});

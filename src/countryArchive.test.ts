@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import { countries } from "./data/countries";
@@ -39,6 +39,26 @@ describe("country archive", () => {
         )
       )
     ).toBe(true);
+  });
+
+  it("keeps every flag SVG self-contained and renderable on the globe", () => {
+    const flagDirectory = fileURLToPath(
+      new URL("../public/assets/country-flags/", import.meta.url)
+    );
+
+    countries.forEach((country) => {
+      const file = `${flagDirectory}${country.code?.toLowerCase()}.svg`;
+      const source = readFileSync(file, "utf8");
+      const viewBox = source.match(
+        /viewBox=["']\s*([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)\s*["']/i
+      );
+
+      expect(source).toMatch(/^<svg\b/i);
+      expect(source).not.toMatch(/(?:href|src)=["']https?:\/\//i);
+      expect(viewBox, `${country.name}: SVG без корректного viewBox`).not.toBeNull();
+      expect(Number(viewBox?.[3])).toBeGreaterThan(0);
+      expect(Number(viewBox?.[4])).toBeGreaterThan(0);
+    });
   });
 
   it("keeps a stable writers collection on every country card", () => {

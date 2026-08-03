@@ -105,6 +105,10 @@ create unique index ratings_guest_unique_idx
   where user_id is null;
 create index content_views_created_idx on public.content_views(created_at desc);
 create index content_views_path_idx on public.content_views(path, created_at desc);
+create index content_views_normalized_path_idx
+  on public.content_views (
+    (split_part(split_part(path, '#', 1), '?', 1))
+  );
 create index reader_favorites_user_idx
   on public.reader_favorites(user_id, added_at desc);
 create index comment_reports_created_idx on public.comment_reports(created_at desc);
@@ -222,6 +226,18 @@ as $$
   from public.ratings
   where subject_type = p_subject_type
     and subject_id = p_subject_id;
+$$;
+
+create or replace function public.get_content_view_count(p_paths text[])
+returns bigint
+language sql
+stable
+security definer set search_path = ''
+as $$
+  select count(*)
+  from public.content_views
+  where split_part(split_part(path, '#', 1), '?', 1)
+    = any (p_paths[1:16]);
 $$;
 
 create or replace function public.submit_article_comment(
@@ -370,6 +386,8 @@ $$;
 grant execute on function public.rate_content(text, text, smallint, uuid)
   to anon, authenticated;
 grant execute on function public.get_rating_summary(text, text, uuid)
+  to anon, authenticated;
+grant execute on function public.get_content_view_count(text[])
   to anon, authenticated;
 grant execute on function public.submit_article_comment(text, uuid, text, text, uuid)
   to anon, authenticated;

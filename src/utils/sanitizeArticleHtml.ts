@@ -12,6 +12,8 @@ const allowedAttributes = new Set([
   "width",
   "data-editorial-block",
   "data-reveal",
+  "data-image-layout",
+  "data-caption",
 ]);
 
 function isSafeUrl(value: string) {
@@ -50,6 +52,13 @@ export function sanitizeArticleHtml(source: string) {
           "is-metrics",
           "is-ornament",
           "is-gallery",
+          "is-slider",
+          "article-image",
+          "article-inline-image",
+          "is-wide",
+          "is-normal",
+          "is-left",
+          "is-right",
         ].includes(className)
       );
       if (safeClasses.length) element.className = safeClasses.join(" ");
@@ -69,6 +78,27 @@ export function sanitizeArticleHtml(source: string) {
     if (element instanceof HTMLImageElement) {
       element.loading = "lazy";
       element.decoding = "async";
+      const layout = ["wide", "normal", "left", "right"].includes(
+        element.dataset.imageLayout || ""
+      )
+        ? element.dataset.imageLayout || "wide"
+        : "wide";
+      element.classList.add("article-image", `is-${layout}`);
+      const inCollection = element.closest(
+        ".article-design-block.is-gallery, .article-design-block.is-slider"
+      );
+      if (!inCollection && element.parentElement?.tagName !== "FIGURE") {
+        const figure = document.createElement("figure");
+        figure.className = `article-inline-image is-${layout}`;
+        const caption = (element.dataset.caption || "").trim();
+        element.replaceWith(figure);
+        figure.append(element);
+        if (caption) {
+          const captionElement = document.createElement("figcaption");
+          captionElement.textContent = caption;
+          figure.append(captionElement);
+        }
+      }
     }
   });
 

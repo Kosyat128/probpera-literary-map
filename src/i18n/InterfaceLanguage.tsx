@@ -55,7 +55,9 @@ const englishInterfaceText: Record<string, string> = {
   "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
     "Choose a country on the antique globe to discover its writers, works, periods and editor-reviewed literary history.",
   "Найти страну": "Find a country",
+  "Найти страну, писателя или книгу": "Find a country, writer or book",
   "Россия, Франция, Япония…": "Russia, France, Japan…",
+  "Россия, Достоевский, «Моби Дик»…": "Russia, Dostoevsky, Moby-Dick…",
   "Результаты поиска": "Search results",
   "Избранные архивы": "Featured archives",
   "Страна не найдена в выбранной коллекции.":
@@ -65,7 +67,9 @@ const englishInterfaceText: Record<string, string> = {
   "Нобелевские лауреаты": "Nobel laureates",
   "10+ авторов": "10+ writers",
   "С портретами": "With portraits",
+  "С реальными портретами": "With real portraits",
   Проверено: "Reviewed",
+  "Есть проверенные карточки": "With verified records",
   "Крупнейшие архивы": "Largest archives",
   "Музейный глобус · ручная навигация": "Museum globe · manual navigation",
   "В этой коллекции пока нет стран": "There are no countries in this collection yet",
@@ -170,12 +174,15 @@ const englishInterfaceText: Record<string, string> = {
   "Материал читается как единое эссе.":
     "This publication is structured as a continuous essay.",
   слов: "words",
+  просмотров: "views",
   "Режим печатной книги": "Printed book mode",
   "Авторская публикация журнала «Проба Пера»":
     "An original publication by Proba Pera",
   "Оригинал публикации ↗": "Original publication ↗",
+  "Постоянная ссылка ↗": "Permanent link ↗",
   "Материал временно не открылся.": "This publication is temporarily unavailable.",
   "Прочитать оригинал на probpera.ru": "Read the original on probpera.ru",
+  "Открыть постоянную ссылку": "Open the permanent link",
   "Готовим материал к чтению…": "Preparing the article…",
   "Конец материала": "End of article",
   "Источники и библиография": "Sources and bibliography",
@@ -217,6 +224,10 @@ const englishInterfaceText: Record<string, string> = {
   "После 1945 года": "After 1945",
   "Опубликовано после 1945": "Published after 1945",
   "Литература второй половины XX–XXI века": "Literature from the late 20th and 21st centuries",
+  "Классика до середины XX века": "Classics through the mid-20th century",
+  "Первое издание — не позднее 1945 года": "First published no later than 1945",
+  "Послевоенная и современная литература": "Postwar and contemporary literature",
+  "Первое издание — с 1946 года по настоящее время": "First published from 1946 to the present",
   "Закрыть карточку книги": "Close book details",
   "Редакционная обложка": "Editorial cover for",
   "Редакционная обложка «Пробы Пера»": "Proba Pera editorial cover",
@@ -270,6 +281,9 @@ const englishInterfaceText: Record<string, string> = {
     "Try a surname, a work title or another form of the word.",
   Страны: "Countries",
   Писатели: "Writers",
+  Писатель: "Writer",
+  "Ничего не найдено в выбранной коллекции.":
+    "Nothing was found in the selected collection.",
   "карточка автора": "writer profile",
   "Поиск выполняется внутри сайта": "Search stays within this website",
   "Интерактивный литературный глобус": "Interactive literary globe",
@@ -352,12 +366,15 @@ const englishInterfaceText: Record<string, string> = {
   "Первый комментарий может оставить любой читатель.":
     "Any reader can leave the first comment.",
   "Книга дня": "Book of the day",
+  "Книга месяца": "Book of the month",
   "Выбор энциклопедии": "Encyclopedia selection",
   "Открываем библиотеку…": "Opening the library…",
   "Начните литературное путешествие с одного из ключевых произведений национальной традиции.":
     "Begin a literary journey with a defining work from this national tradition.",
   "Каждый день энциклопедия выбирает новое произведение из единой базы стран.":
     "Each day the encyclopedia selects a new work from the unified country archive.",
+  "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран.":
+    "Each month the encyclopedia selects a new work from the unified country archive.",
   "Темы книги": "Book subjects",
   "Редакционный стандарт": "Editorial standard",
   "Материал, которому можно доверять": "Material you can trust",

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import { TableKit } from "@tiptap/extension-table";
@@ -18,6 +17,7 @@ import {
   insertEditorialBlock,
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
+import { EditorialImage } from "@/components/EditorialImage";
 
 type PageRecord = {
   id: string;
@@ -83,12 +83,15 @@ export default function PageEditor({
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        link: false,
+        underline: false,
+      }),
       EditorialBlock,
       TableKit,
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
-      Image.configure({ inline: false }),
+      EditorialImage,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({
         placeholder:

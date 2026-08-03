@@ -9,7 +9,7 @@ import {
 } from "react";
 
 import ArticleEngagement from "./community/ArticleEngagement";
-import CommunityHub, { type CommunityView } from "./community/CommunityHub";
+import type { CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import GlobalSearch from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
@@ -23,7 +23,6 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
-import { findNobelArticle } from "./data/articles/nobelArticles";
 import {
   buildBookArchive,
   isEditorialCover,
@@ -41,10 +40,18 @@ import {
   navigateToJournal,
   shouldUseClientNavigation,
 } from "./utils/articleRoutes";
+import {
+  getLocalMonthKey,
+  getMonthlySelectionIndex,
+} from "./utils/monthlySelection";
+import {
+  literarySearchScore,
+  normalizeLiterarySearch,
+} from "./utils/literarySearch";
 import sectionPrizesImage from "./assets/brand/section-prizes.webp";
-import { articleCatalog } from "./data/articles/catalog";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
+const CommunityHub = lazy(() => import("./community/CommunityHub"));
 const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
 const LiteraryCalendar = lazy(() => import("./components/LiteraryCalendar"));
@@ -64,6 +71,11 @@ const CmsHomepageBlocks = lazy(() =>
 );
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
+
+type AtlasSearchResult =
+  | { type: "country"; key: string; country: Country; label: string; searchText: string }
+  | { type: "writer"; key: string; country: Country; writer: Writer; label: string; searchText: string }
+  | { type: "book"; key: string; country: Country; writer: Writer; book: BookArchiveEntry; label: string; searchText: string };
 
 const featuredCountryIds = [
   "russia",
@@ -341,10 +353,6 @@ const verifiedBookFacts = [
   },
 ];
 
-function normalizeSearch(value: string) {
-  return value.trim().toLocaleLowerCase("ru");
-}
-
 function pluralRu(count: number, forms: [string, string, string]) {
   const lastTwo = count % 100;
   const last = count % 10;
@@ -372,6 +380,7 @@ export default function App() {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
+  const [articleCount, setArticleCount] = useState(0);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -488,6 +497,86 @@ export default function App() {
     [countryArchive]
   );
 
+  const atlasSearchIndex = useMemo<AtlasSearchResult[]>(() => {
+    const results: AtlasSearchResult[] = [];
+
+    for (const country of countryArchive) {
+      const localizedCountryName = countryName(country.code, country.name);
+      results.push({
+        type: "country",
+        key: `country:${country.id}`,
+        country,
+        label: localizedCountryName,
+        searchText: normalizeLiterarySearch(
+          [
+            country.name,
+            localizedCountryName,
+            country.id,
+            country.code,
+            country.region,
+            country.continent,
+            country.officialLanguage,
+            ...(country.literaryPeriods || country.periods || []),
+            ...(country.literaryMovements || []),
+          ]
+            .filter(Boolean)
+            .join(" ")
+        ),
+      });
+
+      for (const writer of country.writers) {
+        const label = writerName(writer);
+        results.push({
+          type: "writer",
+          key: `writer:${country.id}:${writer.id}`,
+          country,
+          writer,
+          label,
+          searchText: normalizeLiterarySearch(
+            [
+              label,
+              writer.name,
+              writer.fullName,
+              writer.movement,
+              writer.literaryEra,
+              writer.nationality,
+              ...(writer.genres || []),
+              ...(writer.tags || []),
+            ]
+              .filter(Boolean)
+              .join(" ")
+          ),
+        });
+      }
+    }
+
+    for (const book of bookArchive) {
+      results.push({
+        type: "book",
+        key: `book:${book.countryId}:${book.writerId}:${book.id}`,
+        country: book.country,
+        writer: book.writer,
+        book,
+        label: book.title,
+        searchText: normalizeLiterarySearch(
+          [
+            book.title,
+            book.originalTitle,
+            ...(book.alternateTitles || []),
+            book.writerName,
+            book.countryName,
+            ...(book.genres || []),
+            ...(book.tags || []),
+          ]
+            .filter(Boolean)
+            .join(" ")
+        ),
+      });
+    }
+
+    return results;
+  }, [bookArchive, countryArchive, countryName]);
+
   useEffect(() => {
     if (
       selectedCountry &&
@@ -499,29 +588,40 @@ export default function App() {
   }, [filteredCountries, selectedCountry]);
 
   const searchResults = useMemo(() => {
-    const query = normalizeSearch(search);
+    const query = normalizeLiterarySearch(search);
     const source = atlasFilter === "all" ? countryArchive : filteredCountries;
 
     if (!query) {
       return featuredCountryIds
         .map((id) => source.find((country) => country.id === id))
-        .filter((country): country is Country => Boolean(country));
+        .filter((country): country is Country => Boolean(country))
+        .map<AtlasSearchResult>((country) => ({
+          type: "country",
+          key: `country:${country.id}`,
+          country,
+          label: countryName(country.code, country.name),
+          searchText: normalizeLiterarySearch(country.name),
+        }));
     }
 
-    return source
-      .filter((country) =>
-        [
-          country.name,
-          countryName(country.code, country.name),
-          country.id,
-          country.code,
-        ]
-          .filter(Boolean)
-          .some((value) => normalizeSearch(value!).includes(query))
+    const allowedIds = new Set(source.map((country) => country.id));
+    return atlasSearchIndex
+      .filter(({ country, searchText }) =>
+        allowedIds.has(country.id) && searchText.includes(query)
       )
-      .sort((first, second) => first.name.localeCompare(second.name, "ru"))
-      .slice(0, 9);
+      .map((result) => {
+        const score = literarySearchScore(result.label, query);
+        return { result, score };
+      })
+      .sort(
+        (first, second) =>
+          first.score - second.score ||
+          first.result.label.localeCompare(second.result.label, "ru")
+      )
+      .map(({ result }) => result)
+      .slice(0, 12);
   }, [
+    atlasSearchIndex,
     atlasFilter,
     countryArchive,
     countryName,
@@ -548,7 +648,27 @@ export default function App() {
       );
   }, [countryArchive]);
 
-  const bookOfDay = useMemo(() => {
+  const [selectionMonthKey, setSelectionMonthKey] = useState(() =>
+    getLocalMonthKey()
+  );
+
+  useEffect(() => {
+    const refreshMonth = () => setSelectionMonthKey(getLocalMonthKey());
+    const intervalId = window.setInterval(refreshMonth, 60 * 60 * 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    import("./data/articles/catalog").then(({ articleCatalog }) => {
+      if (active) setArticleCount(articleCatalog.length);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const bookOfMonth = useMemo(() => {
     const premiumBooks = bookArchive.filter(
       (book) =>
         isCoverArtworkDisplayAllowed(book) &&
@@ -573,13 +693,10 @@ export default function App() {
       )
     );
     if (!books.length) return null;
-    const today = new Date();
-    const localDayKey =
-      today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
-    return books[localDayKey % books.length];
-  }, [bookArchive]);
-  const bookOfDayHasCover = Boolean(
-    bookOfDay && isCoverArtworkDisplayAllowed(bookOfDay)
+    return books[getMonthlySelectionIndex(books.length, selectionMonthKey)];
+  }, [bookArchive, selectionMonthKey]);
+  const bookOfMonthHasCover = Boolean(
+    bookOfMonth && isCoverArtworkDisplayAllowed(bookOfMonth)
   );
   const factOfDay = useMemo(() => {
     const dayNumber = Math.floor(Date.now() / 86_400_000);
@@ -611,21 +728,40 @@ export default function App() {
     []
   );
 
+  const selectAtlasSearchResult = useCallback(
+    (result: AtlasSearchResult) => {
+      if (result.type === "book") {
+        selectCountry(result.country, false, result.writer);
+        openBook(result.book);
+        return;
+      }
+      if (result.type === "writer") {
+        selectCountry(result.country, false, result.writer);
+        return;
+      }
+      selectCountry(result.country);
+    },
+    [openBook, selectCountry]
+  );
+
   const closeCountry = useCallback(() => {
     setSelectedCountry(null);
     setSelectedWriter(null);
     setNobelSpotlightCountryId(null);
   }, []);
 
-  const selectGlobeWriter = useCallback((writer: Writer | null) => {
+  const selectGlobeWriter = useCallback(async (writer: Writer | null) => {
     if (!writer) {
       setSelectedWriter(null);
       return;
     }
-    const article = findNobelArticle(writer);
-    if (article) {
-      navigateToArticle(article);
-      return;
+    if (isNobelLaureate(writer)) {
+      const { findNobelArticle } = await import("./data/articles/nobelArticles");
+      const article = findNobelArticle(writer);
+      if (article) {
+        navigateToArticle(article);
+        return;
+      }
     }
     setSelectedWriter(writer);
     window.setTimeout(() => {
@@ -653,7 +789,7 @@ export default function App() {
         <span>{t("Литературный журнал и энциклопедия")}</span>
         <p>{t("Архив пополняется ежедневно")}</p>
         <div aria-label={t("Проба Пера в цифрах")}>
-          <span>{number(articleCatalog.length)} {t("публикаций")}</span>
+          <span>{articleCount ? number(articleCount) : "…"} {t("публикаций")}</span>
           <span>
             {archiveStatistics.countries ? number(archiveStatistics.countries) : "…"}{" "}
             {t("стран")}
@@ -892,7 +1028,7 @@ export default function App() {
               onFocus={() => setSearchOpen(true)}
               onBlur={() => window.setTimeout(() => setSearchOpen(false), 120)}
             >
-              <label htmlFor="country-search">{t("Найти страну")}</label>
+              <label htmlFor="country-search">{t("Найти страну, писателя или книгу")}</label>
               <div className="search-field">
                 <span aria-hidden="true">⌕</span>
                 <input
@@ -902,7 +1038,7 @@ export default function App() {
                   placeholder={
                     selectedCountry
                       ? countryName(selectedCountry.code, selectedCountry.name)
-                      : t("Россия, Франция, Япония…")
+                      : t("Россия, Достоевский, «Моби Дик»…")
                   }
                   autoComplete="off"
                   aria-autocomplete="list"
@@ -915,7 +1051,7 @@ export default function App() {
                     if (event.key === "Escape") setSearchOpen(false);
                     if (event.key === "Enter" && searchResults[0]) {
                       event.preventDefault();
-                      selectCountry(searchResults[0]);
+                      selectAtlasSearchResult(searchResults[0]);
                     }
                   }}
                 />
@@ -928,43 +1064,61 @@ export default function App() {
                     {search ? t("Результаты поиска") : t("Избранные архивы")}
                   </span>
                   {searchResults.length > 0 ? (
-                    searchResults.map((country) => (
+                    searchResults.map((result) => (
                       <button
                         type="button"
                         role="option"
-                        aria-selected={selectedCountry?.id === country.id}
-                        key={country.id}
+                        aria-selected={
+                          selectedCountry?.id === result.country.id &&
+                          (result.type !== "writer" || selectedWriter?.id === result.writer.id)
+                        }
+                        key={result.key}
                         onPointerDown={(event) => {
                           event.preventDefault();
                         }}
-                        onClick={() => selectCountry(country)}
+                        onClick={() => selectAtlasSearchResult(result)}
                       >
                         <span>
-                          <CountryFlagIcon
-                            className="country-result-flag"
-                            code={country.code}
-                            countryName={country.name}
-                            size={24}
-                            decorative
-                          />
-                          {countryName(country.code, country.name)}
+                          {result.type === "country" ? (
+                            <CountryFlagIcon
+                              className="country-result-flag"
+                              code={result.country.code}
+                              countryName={result.country.name}
+                              size={24}
+                              decorative
+                            />
+                          ) : result.type === "writer" ? (
+                            <WriterPortrait
+                              writer={result.writer}
+                              className="country-result-portrait"
+                              decorative
+                            />
+                          ) : (
+                            <span className="country-result-book" aria-hidden="true">▤</span>
+                          )}
+                          {result.label}
                         </span>
                         <small>
-                          {number(country.writers.length)}{" "}
-                          {language === "en"
-                            ? country.writers.length === 1
-                              ? "writer"
-                              : "writers"
-                            : pluralRu(country.writers.length, [
-                                "автор",
-                                "автора",
-                                "авторов",
-                              ])}
+                          {result.type === "country"
+                            ? `${number(result.country.writers.length)} ${
+                                language === "en"
+                                  ? result.country.writers.length === 1
+                                    ? "writer"
+                                    : "writers"
+                                  : pluralRu(result.country.writers.length, [
+                                      "автор",
+                                      "автора",
+                                      "авторов",
+                                    ])
+                              }`
+                            : result.type === "writer"
+                              ? `${t("Писатель")} · ${countryName(result.country.code, result.country.name)}`
+                              : `${t("Книга")} · ${result.book.writerName}`}
                         </small>
                       </button>
                     ))
                   ) : (
-                    <p>{t("Страна не найдена в выбранной коллекции.")}</p>
+                    <p>{t("Ничего не найдено в выбранной коллекции.")}</p>
                   )}
                 </div>
               )}
@@ -978,8 +1132,8 @@ export default function App() {
                   ["all", "Все страны"],
                   ["nobel", "Нобелевские лауреаты"],
                   ["rich", "10+ авторов"],
-                  ["portrait", "С портретами"],
-                  ["verified", "Проверено"],
+                  ["portrait", "С реальными портретами"],
+                  ["verified", "Есть проверенные карточки"],
                 ] as Array<[AtlasFilter, string]>
               ).map(([value, label]) => (
                 <button
@@ -1155,13 +1309,13 @@ export default function App() {
 
         <section className="daily-grid painted-paper-section" id="book-day">
           <article className="book-of-day">
-            <div className={`book-cover${bookOfDayHasCover ? " has-image" : ""}`}>
-              {bookOfDay && bookOfDayHasCover ? (
-                isEditorialCover(bookOfDay) ? (
+            <div className={`book-cover${bookOfMonthHasCover ? " has-image" : ""}`}>
+              {bookOfMonth && bookOfMonthHasCover ? (
+                isEditorialCover(bookOfMonth) ? (
                   <div className="book-cover-art">
                     <img
-                      src={bookOfDay.coverUrl}
-                      alt={`${t("Редакционная обложка")} «${bookOfDay.title}»`}
+                      src={bookOfMonth.coverUrl}
+                      alt={`${t("Редакционная обложка")} «${bookOfMonth.title}»`}
                       loading="lazy"
                       decoding="async"
                     />
@@ -1169,14 +1323,14 @@ export default function App() {
                   </div>
                 ) : (
                   <a
-                    href={bookOfDay.coverSourceUrl}
+                    href={bookOfMonth.coverSourceUrl}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Источник обложки «${bookOfDay.title}»`}
+                    aria-label={`Источник обложки «${bookOfMonth.title}»`}
                   >
                   <img
-                    src={bookOfDay.coverUrl}
-                    alt={`Обложка книги «${bookOfDay.title}»`}
+                    src={bookOfMonth.coverUrl}
+                    alt={`Обложка книги «${bookOfMonth.title}»`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -1186,53 +1340,53 @@ export default function App() {
               ) : (
                 <>
                   <span>
-                    {bookOfDay
-                      ? writerName(bookOfDay.writer)
+                    {bookOfMonth
+                      ? writerName(bookOfMonth.writer)
                       : t("Книжный архив")}
                   </span>
-                  <strong>{bookOfDay?.title || t("Книга дня")}</strong>
+                  <strong>{bookOfMonth?.title || t("Книга месяца")}</strong>
                   <i>✦</i>
                 </>
               )}
             </div>
             <div>
               <span className="section-kicker">{t("Выбор энциклопедии")}</span>
-              <h3>{t("Книга дня")}</h3>
-              <h4>{bookOfDay?.title || t("Открываем библиотеку…")}</h4>
+              <h3>{t("Книга месяца")}</h3>
+              <h4>{bookOfMonth?.title || t("Открываем библиотеку…")}</h4>
               <p>
-                {bookOfDay
-                  ? `${writerName(bookOfDay.writer)} · ${bookOfDay.country.name}. ${
-                      bookOfDay.description ||
+                {bookOfMonth
+                  ? `${writerName(bookOfMonth.writer)} · ${bookOfMonth.country.name}. ${
+                      bookOfMonth.description ||
                       t(
                         "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
                       )
                     }`
                   : t(
-                      "Каждый день энциклопедия выбирает новое произведение из единой базы стран."
+                      "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран."
                     )}
               </p>
-              {bookOfDay?.tags && (
+              {bookOfMonth?.tags && (
                 <div className="book-tags" aria-label={t("Темы книги")}>
-                  {bookOfDay.tags.slice(0, 4).map((tag) => (
+                  {bookOfMonth.tags.slice(0, 4).map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
               )}
-              {bookOfDay && (
+              {bookOfMonth && (
                 <div className="book-actions">
-                  <button type="button" onClick={() => openBook(bookOfDay)}>
+                  <button type="button" onClick={() => openBook(bookOfMonth)}>
                     {t("О книге")} <span>→</span>
                   </button>
                   <button
                     type="button"
                     onClick={() =>
-                      selectCountry(bookOfDay.country, true, bookOfDay.writer)
+                      selectCountry(bookOfMonth.country, true, bookOfMonth.writer)
                     }
                   >
                     {t("Открыть автора и страну")} <span>→</span>
                   </button>
-                  {bookOfDay.sourceUrl && (
-                    <a href={bookOfDay.sourceUrl} target="_blank" rel="noreferrer">
+                  {bookOfMonth.sourceUrl && (
+                    <a href={bookOfMonth.sourceUrl} target="_blank" rel="noreferrer">
                       {t("Источник сведений")}
                     </a>
                   )}
@@ -1755,18 +1909,22 @@ export default function App() {
         </div>
       </footer>
 
-      <CommunityHub
-        open={communityOpen}
-        initialView={communityView}
-        countries={countryArchive}
-        onClose={() => setCommunityOpen(false)}
-      />
+      {communityOpen ? (
+        <Suspense fallback={null}>
+          <CommunityHub
+            open
+            initialView={communityView}
+            countries={countryArchive}
+            onClose={() => setCommunityOpen(false)}
+          />
+        </Suspense>
+      ) : null}
 
       <GlobalSearch
         open={globalSearchOpen}
         countries={countryArchive}
         books={bookArchive}
-        articleCount={articleCatalog.length}
+        articleCount={articleCount}
         onClose={() => setGlobalSearchOpen(false)}
         onCountrySelect={(country, writer) =>
           selectCountry(country, true, writer)

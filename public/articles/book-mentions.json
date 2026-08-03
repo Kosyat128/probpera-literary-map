@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "bookCount": 3429,
+  "bookCount": 3431,
   "articleCount": 157,
   "linkedBookCount": 627,
   "relationCount": 1255,
@@ -2287,7 +2287,7 @@
         "kind": "mention"
       }
     ],
-    "england:jane_austen:legacy-jane_austen-гордость-и-предубеждение": [
+    "england:jane_austen:pride-and-prejudice": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--1",
         "title": "15 экранизаций классических романов, которые действительно удались",
@@ -2341,7 +2341,7 @@
         "kind": "mention"
       }
     ],
-    "england:charles_dickens:great-expectations-editorial": [
+    "england:charles_dickens:great-expectations": [
       {
         "id": "page--article--sucsessful--cinema--adaptation--2",
         "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
@@ -5679,7 +5679,7 @@
         "kind": "mention"
       }
     ],
-    "italy:umberto_eco:the-name-of-the-rose-editorial": [
+    "italy:umberto_eco:the-name-of-the-rose": [
       {
         "id": "page--article--page--writers--world--8",
         "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Италия",
@@ -5893,7 +5893,7 @@
         "kind": "mention"
       }
     ],
-    "japan:haruki_murakami:legacy-haruki_murakami-кафка-на-пляже": [
+    "japan:haruki_murakami:kafka-on-the-shore": [
       {
         "id": "page--article--famous--prizes--9",
         "title": "Премия принцессы Астурийской",
@@ -11549,7 +11549,7 @@
         "kind": "mention"
       }
     ],
-    "usa:herman_melville:legacy-herman_melville-моби-дик": [
+    "usa:herman_melville:moby-dick": [
       {
         "id": "page--article--unrecognized--writers--2",
         "title": "Непризнанные современниками гении литературы. Герман Мелвилл",
@@ -12131,7 +12131,7 @@
         "kind": "mention"
       }
     ],
-    "usa:francis_scott_fitzgerald:tender-is-the-night-editorial": [
+    "usa:francis_scott_fitzgerald:tender-is-the-night": [
       {
         "id": "page--article--page--books--5",
         "title": "Сборник рассказов Фрэнсиса Скотта Фицджеральда «Прибрежный пират»",
@@ -12177,7 +12177,7 @@
         "kind": "mention"
       }
     ],
-    "usa:francis_scott_fitzgerald:legacy-francis_scott_fitzgerald-великий-гэтсби": [
+    "usa:francis_scott_fitzgerald:the-great-gatsby": [
       {
         "id": "page--article--page--bookvsmovie--4",
         "title": "Книга и экранизация: «Великий Гэтсби»",

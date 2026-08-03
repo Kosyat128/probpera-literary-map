@@ -1,15 +1,15 @@
 "use client";
 
-import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import { TableKit } from "@tiptap/extension-table";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
+import type { JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 
 import { createSlug } from "@/lib/slug";
 import { saveArticleAction } from "@/app/(dashboard)/articles/actions";
@@ -22,10 +22,21 @@ import {
   EditorialBlock,
   insertEditorialBlock,
   insertEditorialGallery,
+  insertEditorialSlider,
+  replaceSelectedMediaSlot,
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
+import {
+  EditorialImage,
+  type EditorialImageLayout,
+} from "@/components/EditorialImage";
 
 type Category = { id: string; name: string; slug: string };
+type ImageUploadTarget = "article" | "cover";
+type ImageSelectionContext = {
+  selectedImage: boolean;
+  attributes: Record<string, unknown>;
+};
 type Article = {
   id?: string;
   title?: string;
@@ -54,22 +65,43 @@ type Article = {
   allow_indexing?: boolean;
 };
 
+function mediaSlot(label: string, hint: string) {
+  return `<section class="article-design-block is-media" data-editorial-block="media" data-reveal="fade-up"><h3>${label}</h3><p>${hint}</p></section>`;
+}
+
+function suggestedAltText(file: File) {
+  const label = file.name
+    .replace(/\.[^.]+$/u, "")
+    .replace(/[_-]+/gu, " ")
+    .replace(/\s+/gu, " ")
+    .trim();
+  return label.length >= 3 ? label.slice(0, 500) : "Иллюстрация к статье";
+}
+
+function adminApiPath(path: string) {
+  if (typeof window === "undefined") return path;
+  const hasAdminPrefix =
+    window.location.pathname === "/admin" ||
+    window.location.pathname.startsWith("/admin/");
+  return `${hasAdminPrefix ? "/admin" : ""}${path}`;
+}
+
 const articleTemplates = [
   {
     label: "Мнение о книге",
-    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Почему эта книга заслуживает внимательного разговора.</p></aside><h2>История создания и публикации</h2><p></p><h2>О чём произведение</h2><p></p><h2>Темы, герои и художественный мир</h2><p></p><h2>Заключительное мнение о книге</h2><p></p><h2>Источники</h2><p></p>`,
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Замените этот текст своим вступлением: почему книга заслуживает внимательного разговора.</p></aside>${mediaSlot("Обложка или главное изображение", "Поставьте курсор сюда и нажмите «Заменить место для фото».")}<h2>История создания и публикации</h2><p>Вставьте подготовленный текст раздела.</p><h2>О чём произведение</h2><p>Расскажите о завязке без лишних спойлеров.</p>${mediaSlot("Иллюстрация к сюжету", "Выберите изображение из медиатеки и добавьте точное описание.")}<h2>Темы, герои и художественный мир</h2><p>Вставьте основной разбор произведения.</p><section class="article-design-block is-accent" data-editorial-block="accent" data-reveal="fade-up"><h3>Ключевая мысль</h3><p>Замените этот текст главным редакционным выводом.</p></section><h2>Заключительное мнение о книге</h2><p>Сформулируйте итоговую оценку.</p><h2>Источники</h2><p>Источники также указываются в отдельном поле справа.</p>`,
   },
   {
     label: "Биография писателя",
-    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Место писателя в литературе и причина обратиться к его судьбе.</p></aside><h2>Детство и образование</h2><p></p><h2>Начало литературного пути</h2><p></p><h2>Главные произведения</h2><p></p><h2>Личная судьба и время</h2><p></p><h2>Наследие</h2><p></p><h2>Источники и библиография</h2><p></p>`,
+    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Замените текст: место писателя в литературе и причина обратиться к его судьбе.</p></aside>${mediaSlot("Портрет писателя", "Используйте проверенный портрет с понятным источником и лицензией.")}<h2>Детство и образование</h2><p>Вставьте текст раздела.</p><h2>Начало литературного пути</h2><p>Вставьте текст раздела.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>Хронология</h3><p>Год — важное событие.</p><p>Год — важное событие.</p></section><h2>Главные произведения</h2><p>Вставьте текст раздела.</p>${mediaSlot("Архивное изображение или рукопись", "Замените место изображением и добавьте содержательную подпись в медиатеке.")}<h2>Личная судьба и время</h2><p>Вставьте текст раздела.</p><h2>Наследие</h2><p>Сформулируйте взвешенный редакционный вывод.</p><h2>Источники и библиография</h2><p>Укажите проверяемые источники.</p>`,
   },
   {
     label: "Книга и экранизация",
-    html: `<aside class="article-lead"><p><strong>Книга против экранизации</strong></p><p>Что именно сравнивается и почему.</p></aside><h2>Литературный первоисточник</h2><p></p><h2>Экранная версия</h2><p></p><h2>Сюжет и композиция</h2><p></p><h2>Герои и актёрские работы</h2><p></p><h2>Что изменилось и что сохранилось</h2><p></p><h2>Вывод</h2><p></p>`,
+    html: `<aside class="article-lead"><p><strong>Книга и её экранная версия</strong></p><p>Замените текст: что именно сравнивается и почему.</p></aside>${mediaSlot("Обложка литературного первоисточника", "Поставьте курсор сюда и замените место изображением.")}<h2>Литературный первоисточник</h2><p>Вставьте текст о книге.</p>${mediaSlot("Кадр или официальный постер экранизации", "Добавляйте только изображение с проверенным основанием использования.")}<h2>Экранная версия</h2><p>Вставьте текст об экранизации.</p><h2>Сюжет и композиция</h2><p>Сопоставьте решения книги и фильма.</p><section class="article-design-block is-columns" data-editorial-block="columns" data-reveal="fade-up"><h3>Книга и экран</h3><p>Книга: замените этот текст.</p><p>Экранизация: замените этот текст.</p></section><h2>Герои и актёрские работы</h2><p>Вставьте текст раздела.</p><h2>Что изменилось и что сохранилось</h2><p>Вставьте выводы сравнения.</p><h2>Итог</h2><p>Сформулируйте редакционную оценку.</p>`,
   },
   {
     label: "Большое эссе",
-    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Главный вопрос и редакционная позиция.</p></aside><h2>Контекст</h2><p></p><h2>Основная идея</h2><p></p><h2>Примеры и аргументы</h2><p></p><blockquote><p>Цитата с обязательным указанием источника.</p></blockquote><h2>Вывод</h2><p></p><h2>Источники</h2><p></p>`,
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Замените текст главным вопросом и редакционной позицией.</p></aside>${mediaSlot("Главное изображение эссе", "Поставьте курсор сюда и нажмите «Заменить место для фото».")}<h2>Контекст</h2><p>Вставьте текст раздела.</p><h2>Основная идея</h2><p>Разверните центральный тезис.</p><h2>Примеры и аргументы</h2><p>Вставьте основную часть эссе.</p><blockquote><p>Замените цитату и обязательно укажите источник.</p></blockquote>${mediaSlot("Вторая иллюстрация", "Используйте изображение как смысловую паузу, а не как украшение.")}<h2>Вывод</h2><p>Сформулируйте итог.</p><h2>Источники</h2><p>Укажите проверяемые источники.</p>`,
   },
 ] as const;
 
@@ -95,6 +127,11 @@ function listValue(value: unknown) {
     )
     .filter(Boolean)
     .join("\n");
+}
+
+function hasStructuredContent(value: unknown): value is JSONContent {
+  if (!value || typeof value !== "object" || !("content" in value)) return false;
+  return Array.isArray(value.content) && value.content.length > 0;
 }
 
 function ToolbarButton({
@@ -141,11 +178,9 @@ export default function ArticleEditor({
     initialCategorySlug
   )}`;
   const [canonicalUrl, setCanonicalUrl] = useState(
-    article.canonical_url || initialCanonical
+    initialCanonical
   );
-  const [canonicalEdited, setCanonicalEdited] = useState(
-    Boolean(article.canonical_url && article.canonical_url !== initialCanonical)
-  );
+  const [canonicalEdited, setCanonicalEdited] = useState(false);
   const [slugEdited, setSlugEdited] = useState(Boolean(article.id));
   const [contentHtml, setContentHtml] = useState(article.content_html || "");
   const [contentJson, setContentJson] = useState(
@@ -157,30 +192,50 @@ export default function ArticleEditor({
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
   const [templateMessage, setTemplateMessage] = useState("");
+  const [mediaComposerKind, setMediaComposerKind] = useState<
+    "gallery" | "slider" | null
+  >(null);
+  const [mediaComposerValue, setMediaComposerValue] = useState("");
+  const [mediaComposerError, setMediaComposerError] = useState("");
   const [templatePending, startTemplateTransition] = useTransition();
   const [excerpt, setExcerpt] = useState(article.excerpt || "");
   const [status, setStatus] = useState(article.status || "draft");
   const [coverUrl, setCoverUrl] = useState(article.cover_external_url || "");
   const [coverAlt, setCoverAlt] = useState(article.cover_alt || "");
+  const [imageUploadTarget, setImageUploadTarget] = useState<ImageUploadTarget | null>(null);
+  const [imageUploadMessage, setImageUploadMessage] = useState("");
+  const [imageUploadError, setImageUploadError] = useState("");
+  const articleFileInputRef = useRef<HTMLInputElement>(null);
+  const coverFileInputRef = useRef<HTMLInputElement>(null);
+  const imageSelectionRef = useRef<ImageSelectionContext>({
+    selectedImage: false,
+    attributes: {},
+  });
   const [seoDescription, setSeoDescription] = useState(article.seo_description || "");
   const [sourceText, setSourceText] = useState(listValue(article.sources));
+  const initialEditorContent = hasStructuredContent(article.content_json)
+    ? article.content_json
+    : article.content_html || "";
 
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        link: false,
+        underline: false,
+      }),
       EditorialBlock,
       TableKit,
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
-      Image.configure({ inline: false }),
+      EditorialImage,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({
         placeholder:
           "Начните писать. Для большого материала используйте подзаголовки — из них автоматически соберётся оглавление.",
       }),
     ],
-    content: article.content_json || article.content_html || "",
+    content: initialEditorContent,
     onUpdate({ editor: currentEditor }) {
       setContentHtml(currentEditor.getHTML());
       setContentJson(JSON.stringify(currentEditor.getJSON()));
@@ -275,6 +330,7 @@ export default function ArticleEditor({
     { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
     { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
     { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
+    { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
   ], [categoryId, contentHtml, coverAlt, coverUrl, excerpt, seoDescription, slug, sourceText, title, wordCount]);
   const publicationReady = publicationChecks.every((item) => item.ok);
 
@@ -287,24 +343,208 @@ export default function ArticleEditor({
   };
 
   const addImage = () => {
-    const url = window.prompt("Адрес изображения из медиатеки");
-    if (url && editor) editor.chain().focus().setImage({ src: url }).run();
-  };
-
-  const addGallery = () => {
-    const value = window.prompt(
-      "HTTPS-адреса изображений из медиатеки — по одному в строке (до 6)"
+    if (!editor) return;
+    const selectedImage = editor.isActive("image")
+      ? editor.getAttributes("image")
+      : {};
+    const url = window.prompt(
+      editor.isActive("image")
+        ? "Новый адрес выбранного изображения"
+        : "Адрес изображения из медиатеки",
+      typeof selectedImage.src === "string" ? selectedImage.src : ""
     );
-    if (!value) return;
-    const urls = value
-      .split(/\r?\n/u)
-      .map((item) => item.trim())
-      .filter((item) => /^https:\/\//iu.test(item));
-    if (!urls.length) {
-      window.alert("Добавьте хотя бы один корректный HTTPS-адрес.");
+    if (!url || !editor) return;
+    const alt = window.prompt(
+      "Кратко опишите изображение для читателей и поисковых систем",
+      typeof selectedImage.alt === "string" ? selectedImage.alt : ""
+    );
+    if (alt === null) return;
+    const caption = window.prompt(
+      "Подпись под изображением (необязательно)",
+      typeof selectedImage.caption === "string" ? selectedImage.caption : ""
+    );
+    if (caption === null) return;
+    const attributes = {
+      src: url,
+      alt: alt.trim(),
+      caption: caption.trim(),
+      layout:
+        typeof selectedImage.layout === "string"
+          ? (selectedImage.layout as EditorialImageLayout)
+          : "wide",
+    };
+    if (editor.isActive("image")) {
+      editor.chain().focus().updateAttributes("image", attributes).run();
+      setTemplateMessage("Выбранное изображение заменено.");
       return;
     }
-    insertEditorialGallery(editor, urls);
+    if (replaceSelectedMediaSlot(editor, attributes)) {
+      setTemplateMessage("Место для изображения заполнено.");
+      return;
+    }
+    editor.chain().focus().setImage(attributes).run();
+    setTemplateMessage("Изображение вставлено в материал.");
+  };
+
+  const rememberImageSelection = () => {
+    const selectedImage = Boolean(editor?.isActive("image"));
+    imageSelectionRef.current = {
+      selectedImage,
+      attributes: selectedImage ? editor?.getAttributes("image") || {} : {},
+    };
+  };
+
+  const openImagePicker = (target: ImageUploadTarget) => {
+    setImageUploadError("");
+    setImageUploadMessage("");
+    if (target === "article") {
+      rememberImageSelection();
+      articleFileInputRef.current?.click();
+      return;
+    }
+    coverFileInputRef.current?.click();
+  };
+
+  const uploadImageFile = async (file: File, target: ImageUploadTarget) => {
+    const acceptedTypes = new Set([
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/avif",
+    ]);
+    if (!acceptedTypes.has(file.type)) {
+      setImageUploadError("Выберите изображение JPEG, PNG, WebP или AVIF.");
+      return;
+    }
+    if (file.size <= 0 || file.size > 12 * 1024 * 1024) {
+      setImageUploadError("Размер изображения должен быть не больше 12 МБ.");
+      return;
+    }
+
+    const selection = imageSelectionRef.current;
+    const currentAlt =
+      target === "cover"
+        ? coverAlt.trim()
+        : typeof selection.attributes.alt === "string"
+          ? selection.attributes.alt.trim()
+          : "";
+    const altText = currentAlt.length >= 3 ? currentAlt : suggestedAltText(file);
+    const caption =
+      target === "article" && typeof selection.attributes.caption === "string"
+        ? selection.attributes.caption.trim()
+        : "";
+    const formData = new FormData();
+    formData.set("file", file);
+    formData.set("alt_text", altText);
+    formData.set("caption", caption);
+    formData.set("creator", "");
+    formData.set("source_url", "");
+    formData.set("license_name", "");
+    formData.set("license_url", "");
+    formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
+
+    setImageUploadTarget(target);
+    setImageUploadError("");
+    setImageUploadMessage("Изображение загружается и оптимизируется…");
+    try {
+      const response = await fetch(adminApiPath("/api/media/upload"), {
+        method: "POST",
+        body: formData,
+      });
+      const result = (await response.json().catch(() => ({}))) as {
+        ok?: boolean;
+        url?: string;
+        error?: string;
+      };
+      if (!response.ok || !result.ok || !result.url) {
+        throw new Error(result.error || "Не удалось загрузить изображение.");
+      }
+
+      if (target === "cover") {
+        setCoverUrl(result.url);
+        if (!coverAlt.trim()) setCoverAlt(altText);
+        setImageUploadMessage("Обложка загружена, оптимизирована в WebP и установлена.");
+        setIsDirty(true);
+        return;
+      }
+
+      if (!editor) throw new Error("Редактор ещё не готов. Повторите загрузку.");
+      const attributes = {
+        src: result.url,
+        alt: altText,
+        caption,
+        layout:
+          typeof selection.attributes.layout === "string"
+            ? (selection.attributes.layout as EditorialImageLayout)
+            : "wide",
+      };
+      if (selection.selectedImage) {
+        editor.chain().focus().updateAttributes("image", attributes).run();
+        setImageUploadMessage("Выбранное изображение заменено файлом с компьютера.");
+      } else if (replaceSelectedMediaSlot(editor, attributes)) {
+        setImageUploadMessage("Место для фотографии заполнено загруженным изображением.");
+      } else {
+        editor.chain().focus().setImage(attributes).run();
+        setImageUploadMessage("Изображение загружено и вставлено в статью.");
+      }
+      setTemplateMessage("Изображение готово. При необходимости выберите его и измените расположение.");
+      setIsDirty(true);
+    } catch (error) {
+      setImageUploadMessage("");
+      setImageUploadError(
+        error instanceof Error ? error.message : "Не удалось загрузить изображение."
+      );
+    } finally {
+      setImageUploadTarget(null);
+      if (articleFileInputRef.current) articleFileInputRef.current.value = "";
+      if (coverFileInputRef.current) coverFileInputRef.current.value = "";
+    }
+  };
+
+  const setImageLayout = (layout: EditorialImageLayout) => {
+    if (!editor?.isActive("image")) {
+      setTemplateMessage(
+        "Сначала щёлкните по изображению в тексте, затем выберите его положение."
+      );
+      return;
+    }
+    editor.chain().focus().updateAttributes("image", { layout }).run();
+    const labels: Record<EditorialImageLayout, string> = {
+      wide: "на всю ширину",
+      normal: "по центру",
+      left: "слева с обтеканием",
+      right: "справа с обтеканием",
+    };
+    setTemplateMessage(`Изображение расположено ${labels[layout]}.`);
+  };
+
+  const addMediaCollection = (kind: "gallery" | "slider") => {
+    setMediaComposerKind(kind);
+    setMediaComposerValue("");
+    setMediaComposerError("");
+  };
+
+  const confirmMediaCollection = () => {
+    if (!mediaComposerKind) return;
+    const urls = mediaComposerValue
+      .split(/\r?\n/u)
+      .map((item) => item.trim())
+      .filter((item) => /^https:\/\//iu.test(item))
+      .slice(0, 8);
+    if (!urls.length) {
+      setMediaComposerError("Добавьте хотя бы один корректный HTTPS-адрес.");
+      return;
+    }
+    if (mediaComposerKind === "slider") insertEditorialSlider(editor, urls);
+    else insertEditorialGallery(editor, urls);
+    setTemplateMessage(
+      mediaComposerKind === "slider"
+        ? "Слайдер вставлен: на сайте появятся стрелки, точки и свайп."
+        : "Галерея вставлена в материал."
+    );
+    setMediaComposerKind(null);
+    setMediaComposerValue("");
+    setMediaComposerError("");
   };
 
   const applyTemplate = (html: string, label: string) => {
@@ -317,8 +557,25 @@ export default function ArticleEditor({
     ) {
       return;
     }
+    const recoveryKey = `probpera-editor-${article.id || "new"}`;
+    window.localStorage.setItem(
+      recoveryKey,
+      JSON.stringify({
+        title,
+        slug,
+        contentHtml: editor.getHTML(),
+        contentJson: JSON.stringify(editor.getJSON()),
+        savedAt: Date.now(),
+        reason: `before-template:${label}`,
+      })
+    );
     editor.commands.setContent(html);
+    editor.chain().focus("start").run();
     setIsDirty(true);
+    setHasRecoveryCopy(true);
+    setTemplateMessage(
+      `Шаблон «${label}» вставлен. Замените редакционные подсказки своим текстом и изображениями.`
+    );
   };
 
   const saveCustomTemplate = () => {
@@ -414,7 +671,10 @@ export default function ArticleEditor({
                 name="title"
                 value={title}
                 maxLength={240}
-                onChange={(event) => setTitle(event.target.value)}
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                  setIsDirty(true);
+                }}
                 placeholder="Заголовок материала"
                 required
               />
@@ -443,6 +703,10 @@ export default function ArticleEditor({
           <section className="panel editor-surface">
             <div className="editor-template-bar">
               <span>Начать с редакционного шаблона</span>
+              <small>
+                Выберите структуру — она сразу появится в редакторе. Затем
+                замените подсказки своим текстом, фотографиями и галереями.
+              </small>
               <div>
                 {articleTemplates.map((template) => (
                   <button
@@ -466,6 +730,9 @@ export default function ArticleEditor({
                 <button type="button" onClick={saveCustomTemplate} disabled={templatePending}>
                   ＋ Сохранить как шаблон
                 </button>
+                <NextLink className="editor-template-link" href="/media" target="_blank">
+                  Медиатека ↗
+                </NextLink>
                 {customTemplates.length > 0 && (
                   <button type="button" onClick={clearCustomTemplates} disabled={templatePending}>
                     Удалить мои шаблоны
@@ -492,14 +759,25 @@ export default function ArticleEditor({
               <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
               <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
               <ToolbarButton label="Фигура-разделитель" onClick={() => insertEditorialBlock(editor, "ornament")} />
+              <ToolbarButton label="Место для фото" onClick={() => insertEditorialBlock(editor, "media")} />
               <ToolbarButton label="Появление ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
               <ToolbarButton label="Появление ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
               <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
               <ToolbarButton label="Без анимации" onClick={() => setEditorialBlockReveal(editor, "none")} />
               <ToolbarButton label="Таблица" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
               <ToolbarButton label="Ссылка" active={editor?.isActive("link")} onClick={setLink} />
-              <ToolbarButton label="Фото" onClick={addImage} />
-              <ToolbarButton label="Галерея" onClick={addGallery} />
+              <ToolbarButton
+                label={imageUploadTarget === "article" ? "Загрузка…" : "Загрузить фото"}
+                active={imageUploadTarget === "article"}
+                onClick={() => openImagePicker("article")}
+              />
+              <ToolbarButton label="Фото / заменить" active={editor?.isActive("image")} onClick={addImage} />
+              <ToolbarButton label="Фото широко" onClick={() => setImageLayout("wide")} />
+              <ToolbarButton label="Фото центр" onClick={() => setImageLayout("normal")} />
+              <ToolbarButton label="Фото слева" onClick={() => setImageLayout("left")} />
+              <ToolbarButton label="Фото справа" onClick={() => setImageLayout("right")} />
+              <ToolbarButton label="Галерея" onClick={() => addMediaCollection("gallery")} />
+              <ToolbarButton label="Слайдер" onClick={() => addMediaCollection("slider")} />
               <ToolbarButton label="Слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
               <ToolbarButton label="Центр" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
               <ToolbarButton label="Очистить формат" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
@@ -511,6 +789,49 @@ export default function ArticleEditor({
                 onClick={() => setIsFullscreen((value) => !value)}
               />
             </div>
+            <input
+              ref={articleFileInputRef}
+              className="visually-hidden-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/avif"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                if (file) void uploadImageFile(file, "article");
+              }}
+            />
+            <button
+              className={
+                imageUploadTarget === "article"
+                  ? "editor-direct-upload is-uploading"
+                  : "editor-direct-upload"
+              }
+              type="button"
+              onClick={() => openImagePicker("article")}
+              onDragEnter={rememberImageSelection}
+              onDragOver={(event) => event.preventDefault()}
+              onDrop={(event) => {
+                event.preventDefault();
+                const file = event.dataTransfer.files?.[0];
+                if (file) void uploadImageFile(file, "article");
+              }}
+              disabled={imageUploadTarget !== null}
+            >
+              <strong>
+                {imageUploadTarget === "article"
+                  ? "Оптимизируем изображение…"
+                  : "Нажмите или перетащите фотографию сюда"}
+              </strong>
+              <span>
+                Она загрузится с компьютера, преобразуется в WebP и появится в месте курсора.
+                Если выбрана старая фотография, новая заменит её.
+              </span>
+            </button>
+            {imageUploadMessage && (
+              <p className="upload-feedback is-success" role="status">{imageUploadMessage}</p>
+            )}
+            {imageUploadError && (
+              <p className="upload-feedback is-error" role="alert">{imageUploadError}</p>
+            )}
             <EditorContent editor={editor} />
           </section>
         </div>
@@ -561,6 +882,46 @@ export default function ArticleEditor({
 
           <section className="panel settings-stack">
             <h2>Обложка</h2>
+            <input
+              ref={coverFileInputRef}
+              className="visually-hidden-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/avif"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                if (file) void uploadImageFile(file, "cover");
+              }}
+            />
+            <button
+              className={
+                imageUploadTarget === "cover"
+                  ? "cover-upload-zone is-uploading"
+                  : "cover-upload-zone"
+              }
+              type="button"
+              onClick={() => openImagePicker("cover")}
+              onDragOver={(event) => event.preventDefault()}
+              onDrop={(event) => {
+                event.preventDefault();
+                const file = event.dataTransfer.files?.[0];
+                if (file) void uploadImageFile(file, "cover");
+              }}
+              disabled={imageUploadTarget !== null}
+            >
+              {coverUrl ? (
+                <img src={coverUrl} alt={coverAlt || "Предпросмотр обложки статьи"} />
+              ) : (
+                <span className="cover-upload-mark" aria-hidden="true">＋</span>
+              )}
+              <strong>
+                {imageUploadTarget === "cover"
+                  ? "Загружаем обложку…"
+                  : coverUrl
+                    ? "Нажмите, чтобы заменить обложку"
+                    : "Выбрать обложку с компьютера"}
+              </strong>
+              <small>JPEG, PNG, WebP или AVIF · до 12 МБ</small>
+            </button>
             <label className="field">
               <span>Адрес изображения</span>
               <input
@@ -596,6 +957,25 @@ export default function ArticleEditor({
                 }}
                 required
               />
+              <span className="slug-control-row">
+                <small>
+                  {!slugEdited
+                    ? "Адрес автоматически меняется вместе с заголовком."
+                    : "Адрес закреплён вручную и больше не изменится от заголовка."}
+                </small>
+                <button
+                  className="text-button"
+                  type="button"
+                  onClick={() => {
+                    setSlugEdited(false);
+                    setSlug(createSlug(title));
+                    setCanonicalEdited(false);
+                    setIsDirty(true);
+                  }}
+                >
+                  Создавать из заголовка
+                </button>
+              </span>
               <small>
                 {publicSiteUrl}
                 {articlePublicPath(
@@ -605,13 +985,16 @@ export default function ArticleEditor({
               </small>
             </label>
             <label className="field">
-              <span>Старый адрес</span>
+              <span>Старый адрес — только совместимость</span>
               <input
                 name="legacy_path"
                 defaultValue={article.legacy_path || ""}
                 placeholder="/read/page-article/…"
               />
-              <small>Оставляем для постоянного 301‑перехода.</small>
+              <small>
+                Не показывается читателям и не используется в новых ссылках.
+                Нужен только для бесшовного 301‑перехода со старых публикаций.
+              </small>
             </label>
             <label className="field">
               <span>SEO-заголовок</span>
@@ -631,17 +1014,18 @@ export default function ArticleEditor({
               />
             </label>
             <label className="field">
-              <span>Канонический адрес</span>
+              <span>Текущий постоянный адрес</span>
               <input
                 type="url"
                 name="canonical_url"
                 value={canonicalUrl}
-                onChange={(event) => {
-                  setCanonicalEdited(true);
-                  setCanonicalUrl(event.target.value);
-                }}
+                readOnly
                 placeholder={generatedCanonical}
               />
+              <small>
+                Строится автоматически из рубрики и названия. Новые публикации
+                всегда используют этот понятный адрес.
+              </small>
             </label>
             <label className="field">
               <span>Open Graph — заголовок</span>
@@ -695,6 +1079,94 @@ export default function ArticleEditor({
           </section>
         </aside>
       </div>
+
+      {mediaComposerKind && (
+        <div
+          className="editor-media-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setMediaComposerKind(null);
+          }}
+        >
+          <section
+            className="editor-media-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editor-media-modal-title"
+          >
+            <div className="editor-media-modal-heading">
+              <div>
+                <span>Изображения статьи</span>
+                <h2 id="editor-media-modal-title">
+                  {mediaComposerKind === "slider"
+                    ? "Собрать слайдер"
+                    : "Собрать галерею"}
+                </h2>
+              </div>
+              <button
+                type="button"
+                aria-label="Закрыть окно"
+                onClick={() => setMediaComposerKind(null)}
+              >
+                ×
+              </button>
+            </div>
+            <p>
+              Вставьте до восьми HTTPS-адресов — по одному в строке. Изображения
+              останутся одним блоком; порядок строк станет порядком кадров.
+              После вставки выберите каждый кадр и уточните его описание через
+              «Фото / заменить».
+            </p>
+            <textarea
+              autoFocus
+              value={mediaComposerValue}
+              onChange={(event) => {
+                setMediaComposerValue(event.target.value);
+                setMediaComposerError("");
+              }}
+              rows={9}
+              placeholder={
+                "https://…/image-1.webp\nhttps://…/image-2.webp\nhttps://…/image-3.webp"
+              }
+              aria-label="Адреса изображений"
+            />
+            <div className="editor-media-modal-summary">
+              <span>
+                {
+                  mediaComposerValue
+                    .split(/\r?\n/u)
+                    .map((item) => item.trim())
+                    .filter((item) => /^https:\/\//iu.test(item))
+                    .slice(0, 8).length
+                }{" "}
+                из 8 изображений
+              </span>
+              <NextLink href="/media" target="_blank">
+                Открыть медиатеку ↗
+              </NextLink>
+            </div>
+            {mediaComposerError && (
+              <p className="editor-media-modal-error" role="alert">
+                {mediaComposerError}
+              </p>
+            )}
+            <div className="editor-media-modal-actions">
+              <button
+                className="button-secondary"
+                type="button"
+                onClick={() => setMediaComposerKind(null)}
+              >
+                Отмена
+              </button>
+              <button className="button" type="button" onClick={confirmMediaCollection}>
+                {mediaComposerKind === "slider"
+                  ? "Вставить слайдер"
+                  : "Вставить галерею"}
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
 
       <footer className="editor-footer">
         <small>

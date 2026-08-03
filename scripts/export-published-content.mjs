@@ -304,7 +304,7 @@ const articles = rawArticles.map((article) => {
   const ogImageUrl = storageUrl(mediaById(mediaLookup, article.og_media_id)) || imageUrl;
   const id = `cms-${article.id}`;
   const publicPath = articlePublicPath(article.slug, sectionId);
-  const canonicalUrl = article.canonical_url || `${siteOrigin}${publicPath}/`;
+  const canonicalUrl = `${siteOrigin}${publicPath}/`;
   const legacyPath = article.legacy_path || null;
   const description =
     article.excerpt ||
@@ -315,7 +315,7 @@ const articles = rawArticles.map((article) => {
     source: "cms",
     legacyId: article.legacy_id || null,
     legacyPath,
-    url: legacyPath ? `https://probpera.ru${legacyPath}` : canonicalUrl,
+    url: canonicalUrl,
     canonicalUrl,
     slug: article.slug,
     title: article.title,

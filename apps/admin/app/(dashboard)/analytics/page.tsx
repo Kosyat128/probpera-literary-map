@@ -1,4 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { articlePublicPath } from "@/lib/article-route";
+import { normalizeViewPath } from "@/lib/view-path";
 
 export const metadata = { title: "Статистика" };
 
@@ -10,6 +12,7 @@ export default async function AnalyticsPage() {
     { data: viewsResult, count: viewsCount },
     { data: ratingsResult, count: ratingsCount },
     { count: commentsCount },
+    { data: articlesResult },
   ] =
     await Promise.all([
       supabase
@@ -27,14 +30,35 @@ export default async function AnalyticsPage() {
         .from("article_comments")
         .select("id", { count: "exact", head: true })
         .gte("created_at", since),
+      supabase
+        .from("articles")
+        .select("slug,legacy_path,categories(slug)")
+        .eq("status", "published")
+        .is("deleted_at", null),
     ]);
   const views = viewsResult || [];
   const ratings = ratingsResult || [];
 
+  const currentPathByAlias = new Map<string, string>();
+  for (const article of articlesResult || []) {
+    const category = Array.isArray(article.categories)
+      ? article.categories[0]
+      : article.categories;
+    const currentPath = normalizeViewPath(
+      articlePublicPath(article.slug, category?.slug)
+    );
+    currentPathByAlias.set(currentPath, currentPath);
+    if (article.legacy_path) {
+      currentPathByAlias.set(normalizeViewPath(article.legacy_path), currentPath);
+    }
+  }
+
   const pathCounts = new Map<string, number>();
   const sourceCounts = new Map<string, number>();
   for (const view of views) {
-    pathCounts.set(view.path, (pathCounts.get(view.path) || 0) + 1);
+    const normalizedPath = normalizeViewPath(view.path);
+    const path = currentPathByAlias.get(normalizedPath) || normalizedPath;
+    pathCounts.set(path, (pathCounts.get(path) || 0) + 1);
     const source = view.referrer_host || "Прямой переход";
     sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
   }

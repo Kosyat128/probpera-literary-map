@@ -1,4 +1,11 @@
+import Link from "next/link";
+
+import HomepageMediaField, {
+  type HomepageMediaOption,
+} from "@/components/HomepageMediaField";
+import HomepageVisualPreview from "@/components/HomepageVisualPreview";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { adminEnv } from "@/lib/env";
 import {
   createHomepageBlockAction,
   deleteHomepageBlockAction,
@@ -65,12 +72,23 @@ function BackgroundSelect({ value }: { value: string }) {
 export default async function HomepagePage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
-  const { data: blocksResult } =
-    (await supabase
-      .from("homepage_blocks")
-      .select("*")
-      .order("display_order")) || {};
+  const [{ data: blocksResult }, { data: mediaResult }] = await Promise.all([
+    supabase.from("homepage_blocks").select("*").order("display_order"),
+    supabase
+      .from("media_assets")
+      .select("id,bucket,object_path,alt_text,collection_name")
+      .is("deleted_at", null)
+      .order("created_at", { ascending: false })
+      .limit(240),
+  ]);
   const blocks = blocksResult || [];
+  const media: HomepageMediaOption[] = (mediaResult || []).map((asset) => ({
+    id: asset.id,
+    label:
+      asset.alt_text || asset.collection_name || asset.object_path.split("/").pop() || "Изображение",
+    publicUrl: supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path).data.publicUrl,
+  }));
+  const mediaById = new Map(media.map((asset) => [asset.id, asset]));
 
   return (
     <>
@@ -84,7 +102,22 @@ export default async function HomepagePage() {
             основные разделы остаются постоянной частью главной.
           </p>
         </div>
+        <div className="editor-actions">
+          <Link className="button-secondary" href="/media">
+            Открыть медиатеку
+          </Link>
+          <a
+            className="button"
+            href={adminEnv.publicSiteUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Посмотреть главную ↗
+          </a>
+        </div>
       </header>
+
+      <HomepageVisualPreview url={adminEnv.publicSiteUrl} />
 
       {blocks.length ? (
         <div className="module-grid">
@@ -162,6 +195,21 @@ export default async function HomepagePage() {
                     <span>Фон</span>
                     <BackgroundSelect value={block.background_style} />
                   </label>
+                  <div className="field">
+                    <span>Фоновое изображение из медиатеки</span>
+                    <HomepageMediaField value={block.background_media_id} media={media} />
+                    <small>
+                      Изображение применяется на всю ширину блока и адаптируется
+                      для мобильного экрана.
+                    </small>
+                  </div>
+                  {block.background_media_id && mediaById.get(block.background_media_id) && (
+                    <img
+                      className="homepage-block-preview"
+                      src={mediaById.get(block.background_media_id)!.publicUrl}
+                      alt="Предпросмотр фонового изображения блока"
+                    />
+                  )}
                   <div className="dashboard-grid">
                     <label className="field">
                       <span>Текст кнопки</span>
@@ -247,6 +295,10 @@ export default async function HomepagePage() {
             <span>Фон</span>
             <BackgroundSelect value="paper" />
           </label>
+          <div className="field">
+            <span>Фоновое изображение</span>
+            <HomepageMediaField media={media} />
+          </div>
         </div>
         <label className="field">
           <span>Заголовок</span>

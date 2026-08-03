@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { articleEditPath } from "@/lib/admin-routes";
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -33,7 +34,7 @@ export default async function ArticlePreviewPage({
           <h1>Так материал увидит читатель</h1>
           <p>Страница доступна только редакции и не индексируется.</p>
         </div>
-        <Link className="button-secondary" href={`/articles/${id}`}>
+        <Link className="button-secondary" href={articleEditPath(id)}>
           ← Вернуться в редактор
         </Link>
       </header>

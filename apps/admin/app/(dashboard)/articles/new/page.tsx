@@ -1,4 +1,7 @@
 import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
+import ArticleCopyPicker, {
+  type CopyableArticle,
+} from "@/components/ArticleCopyPicker";
 import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -16,6 +19,7 @@ export default async function NewArticlePage({
     { data: categoriesResult },
     { data: templatesResult },
     { data: authResult },
+    { data: articlesResult },
   ] = await Promise.all([
     supabase
       .from("categories")
@@ -28,6 +32,12 @@ export default async function NewArticlePage({
       .order("updated_at", { ascending: false })
       .limit(60),
     supabase.auth.getUser(),
+    supabase
+      .from("articles")
+      .select("id,title,status,updated_at")
+      .is("deleted_at", null)
+      .order("updated_at", { ascending: false })
+      .limit(500),
   ]);
   const categories = categoriesResult || [];
   const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
@@ -37,6 +47,14 @@ export default async function NewArticlePage({
     visibility: template.visibility as "personal" | "shared",
     canDelete: template.owner_id === authResult.user?.id,
   }));
+  const copyableArticles: CopyableArticle[] = (articlesResult || []).map(
+    (item) => ({
+      id: item.id,
+      title: item.title,
+      status: item.status,
+      updatedAt: item.updated_at,
+    })
+  );
 
   return (
     <>
@@ -48,6 +66,7 @@ export default async function NewArticlePage({
         </div>
       </header>
       {error && <p className="form-message">{error}</p>}
+      <ArticleCopyPicker articles={copyableArticles} />
       <ArticleEditor
         article={{ status: "draft" }}
         categories={categories}

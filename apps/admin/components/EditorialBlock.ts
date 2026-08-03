@@ -8,6 +8,8 @@ const blockKinds = new Set([
   "metrics",
   "ornament",
   "gallery",
+  "slider",
+  "media",
 ]);
 const revealKinds = new Set(["none", "fade-up", "slide-left", "zoom-in"]);
 
@@ -69,6 +71,10 @@ const blockCopy = {
   timeline: ["Хронология", "Год — событие.", "Год — событие."],
   metrics: ["В цифрах", "00 — пояснение показателя.", "00 — пояснение показателя."],
   ornament: ["Новая глава", "Короткая вводная строка к следующей части."],
+  media: [
+    "Место для изображения",
+    "Поставьте курсор в этот блок и нажмите «Заменить место для фото» на панели.",
+  ],
 } as const;
 
 export type EditorialBlockKind = keyof typeof blockCopy;
@@ -105,24 +111,77 @@ export function setEditorialBlockReveal(
 }
 
 export function insertEditorialGallery(editor: Editor | null, urls: string[]) {
+  insertEditorialMediaCollection(editor, urls, "gallery");
+}
+
+export function insertEditorialSlider(editor: Editor | null, urls: string[]) {
+  insertEditorialMediaCollection(editor, urls, "slider");
+}
+
+function insertEditorialMediaCollection(
+  editor: Editor | null,
+  urls: string[],
+  kind: "gallery" | "slider"
+) {
   if (!editor || !urls.length) return;
   editor
     .chain()
     .focus()
     .insertContent({
       type: "editorialBlock",
-      attrs: { kind: "gallery", reveal: "fade-up" },
+      attrs: { kind, reveal: "fade-up" },
       content: [
         {
           type: "heading",
           attrs: { level: 3 },
-          content: [{ type: "text", text: "Галерея" }],
+          content: [
+            {
+              type: "text",
+              text: kind === "slider" ? "Слайдер изображений" : "Галерея",
+            },
+          ],
         },
-        ...urls.slice(0, 6).map((src) => ({
+        ...urls.slice(0, 8).map((src, index) => ({
           type: "image",
-          attrs: { src, alt: "" },
+          attrs: {
+            src,
+            alt: `Иллюстрация к статье — изображение ${index + 1}`,
+          },
         })),
       ],
     })
     .run();
+}
+
+export function replaceSelectedMediaSlot(
+  editor: Editor | null,
+  attributes: {
+    src: string;
+    alt: string;
+    caption?: string;
+    layout?: "wide" | "normal" | "left" | "right";
+  }
+) {
+  if (!editor) return false;
+  const { $from } = editor.state.selection;
+  for (let depth = $from.depth; depth > 0; depth -= 1) {
+    const node = $from.node(depth);
+    if (
+      node.type.name === "editorialBlock" &&
+      node.attrs.kind === "media"
+    ) {
+      const imageType = editor.state.schema.nodes.image;
+      if (!imageType) return false;
+      const from = $from.before(depth);
+      const to = $from.after(depth);
+      editor.view.dispatch(
+        editor.state.tr
+          .replaceWith(from, to, imageType.create(attributes))
+          .scrollIntoView()
+      );
+      editor.commands.focus();
+      return true;
+    }
+  }
+  return false;
 }

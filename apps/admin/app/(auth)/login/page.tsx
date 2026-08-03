@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { getStaffSession } from "@/lib/auth";
-import { loginAction, resetPasswordAction } from "./actions";
+import { loginAction, logoutAction, resetPasswordAction } from "./actions";
 
 export default async function LoginPage({
   searchParams,
@@ -36,10 +36,30 @@ export default async function LoginPage({
           Используйте редакционную учётную запись. Обычная регистрация
           читателя не открывает доступ к панели.
         </p>
+        {!session.configured && (
+          <p className="form-message">
+            Панель собрана, но подключение к Supabase ещё не задано на сервере.
+            Заполните переменные окружения перед первым входом.
+          </p>
+        )}
+        {session.user && !session.role && (
+          <p className="form-message">
+            Учётная запись {session.user.email} подтверждена, но редакционная
+            роль ей не назначена. Выйдите и войдите под учётной записью
+            владельца либо добавьте пользователя в команду редакции.
+          </p>
+        )}
         {query.error && <p className="form-message">{query.error}</p>}
         {query.success && (
           <p className="form-message form-success">{query.success}</p>
         )}
+        {session.user ? (
+          <form className="form-stack" action={logoutAction}>
+            <button className="button-secondary" type="submit">
+              Выйти из этой учётной записи
+            </button>
+          </form>
+        ) : (
         <form className="form-stack" action={loginAction}>
           <label className="field">
             <span>Электронная почта</span>
@@ -71,6 +91,7 @@ export default async function LoginPage({
             Восстановить пароль по почте
           </button>
         </form>
+        )}
       </section>
     </main>
   );

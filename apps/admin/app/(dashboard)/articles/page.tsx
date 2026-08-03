@@ -1,12 +1,15 @@
 import Link from "next/link";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
 import { articleStatusLabels, formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { viewPathVariants } from "@/lib/view-path";
 import {
   changeArticleStatusAction,
   duplicateArticleAction,
+  importLegacyArticlesAction,
   softDeleteArticleAction,
 } from "./actions";
 
@@ -40,6 +43,9 @@ export default async function ArticlesPage({
     to?: string;
     sort?: string;
     page?: string;
+    imported?: string;
+    skipped?: string;
+    error?: string;
   }>;
 }) {
   const values = await searchParams;
@@ -99,26 +105,32 @@ export default async function ArticlesPage({
   const [
     { data: articlesResult, error, count },
     { data: categoriesResult },
-    { data: viewsResult },
   ] = await Promise.all([
     request,
     supabase
       .from("categories")
       .select("id,name")
       .order("display_order"),
-    supabase
-      .from("content_views")
-      .select("path")
-      .order("created_at", { ascending: false })
-      .limit(10_000),
   ]);
   const articles = articlesResult || [];
   const categories = categoriesResult || [];
-  const viewCounts = new Map<string, number>();
-  for (const view of viewsResult || []) {
-    const path = String(view.path || "").replace(/\/+$/u, "");
-    viewCounts.set(path, (viewCounts.get(path) || 0) + 1);
-  }
+  const articleViewCounts = new Map<string, number>();
+  await Promise.all(
+    articles.map(async (article) => {
+      const articleCategory = relationValue<{ slug?: string }>(article.categories);
+      const currentPath = articlePublicPath(
+        article.slug,
+        articleCategory?.slug
+      );
+      const { data: articleViews } = await supabase.rpc(
+        "get_content_view_count",
+        {
+          p_paths: viewPathVariants(currentPath, article.legacy_path),
+        }
+      );
+      articleViewCounts.set(article.id, Number(articleViews || 0));
+    })
+  );
   const authorIds = [
     ...new Set(articles.map((article) => article.author_id).filter(Boolean)),
   ];
@@ -146,8 +158,23 @@ export default async function ArticlesPage({
             дублирование, публикация и история версий.
           </p>
         </div>
-        <Link className="button" href="/articles/new">＋ Новая статья</Link>
+        <div className="editor-actions">
+          <form action={importLegacyArticlesAction}>
+            <ConfirmSubmitButton message="Перенести в редактор только отсутствующие статьи из публичного архива? Уже отредактированные материалы не будут перезаписаны.">
+              Перенести старый архив
+            </ConfirmSubmitButton>
+          </form>
+          <Link className="button" href="/articles/new">＋ Новая статья</Link>
+        </div>
       </header>
+
+      {values.error && <p className="form-message">{values.error}</p>}
+      {values.imported !== undefined && (
+        <p className="form-message form-success">
+          Архив синхронизирован: добавлено {Number(values.imported) || 0}, уже
+          находилось в редакторе {Number(values.skipped) || 0}.
+        </p>
+      )}
 
       <section className="panel">
         <form className="toolbar article-filter-toolbar">
@@ -212,19 +239,15 @@ export default async function ArticlesPage({
                   name?: string;
                   slug?: string;
                 }>(article.categories);
-                const publicPath = articlePublicPath(
-                  article.slug,
-                  articleCategory?.slug
-                ).replace(/\/+$/u, "");
-                const views = [...viewCounts].reduce(
-                  (sum, [path, pathCount]) =>
-                    path.endsWith(publicPath) ? sum + pathCount : sum,
-                  0
-                );
+                const views = articleViewCounts.get(article.id) || 0;
                 return (
                   <tr key={article.id}>
                     <td>
-                      <span className="article-list-title">
+                      <Link
+                        className="article-list-title"
+                        href={articleEditPath(article.id)}
+                        aria-label={`Открыть статью «${article.title}» в редакторе`}
+                      >
                         {article.cover_external_url ? (
                           <img src={article.cover_external_url} alt="" />
                         ) : (
@@ -234,7 +257,7 @@ export default async function ArticlesPage({
                           <strong>{article.title}</strong>
                           <small>/{article.slug}</small>
                         </span>
-                      </span>
+                      </Link>
                     </td>
                     <td>
                       <span className="data-title">
@@ -262,15 +285,15 @@ export default async function ArticlesPage({
                     <td>{views.toLocaleString("ru-RU")}</td>
                     <td>
                       <div className="row-actions">
-                        <Link className="button-secondary" href={`/articles/${article.id}`}>
-                          Редактор
+                        <Link className="button article-edit-action" href={articleEditPath(article.id)}>
+                          Редактировать
                         </Link>
                         <Link className="button-secondary" href={`/articles/${article.id}/preview`}>
                           Просмотр
                         </Link>
                         <form action={duplicateArticleAction}>
                           <input type="hidden" name="id" value={article.id} />
-                          <button className="button-secondary" type="submit">Копия</button>
+                          <button className="button-secondary" type="submit">Создать копию</button>
                         </form>
                         {article.status === "published" && (
                           <form action={changeArticleStatusAction}>

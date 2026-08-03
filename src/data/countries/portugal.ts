@@ -462,28 +462,30 @@ export const portugal: Country = {
     {
       id: "walter_hugo_mae",
       name: "Валтер Угу Маи",
+      fullName: "Валтер Угу Лемуш",
       years: "1971–",
-      birthDate: "1971-09-12",
-      birthPlace: "Са-Томе и Принсипи",
+      birthDate: "1971-09-25",
+      birthPlace: "Сауримо (тогда Энрике-ди-Карвалью), Ангола",
       coordinates: {
-        lat: 0.3365,
-        lng: 6.7273
+        lat: -9.6608,
+        lng: 20.3916
       },
       portrait: "",
-      bio: "Португалоязычный писатель ангольского происхождения, получивший известность благодаря эмоциональной и философской прозе.",
+      bio: "Португальский писатель и поэт, родившийся в Анголе под именем Валтер Угу Лемуш. В прозе исследует память, одиночество, старение и человеческую близость; пишет под литературным именем Валтер Угу Маи.",
       works: [
-        "Машина Жозе Сарамамо",
-        "Сын тысячи отцов",
-        "Апокалипсис чувств"
+        "o remorso de baltazar serapião",
+        "a máquina de fazer espanhóis",
+        "o filho de mil homens",
+        "o apocalipse dos trabalhadores"
       ],
       genres: [
         "роман",
         "философская проза"
       ],
       language: "португальский",
-      nationality: "португалоязычный писатель",
+      nationality: "португалец",
       awards: [
-        "Премия Жозе Сарамаго 2007 года"
+        "Литературная премия Жозе Сарамаго 2007 года"
       ],
       relatedWriters: [
         "jose_saramago",
@@ -493,7 +495,23 @@ export const portugal: Country = {
         "XXI век",
         "португалоязычная литература"
       ],
-      articleUrl: ""
+      articleUrl: "",
+      editorial: {
+        status: "reviewed",
+        reviewedAt: "2026-08-03",
+        sources: [
+          {
+            title: "Автобиография Валтера Угу Маи",
+            url: "https://www.valterhugomae.com/",
+            publisher: "Официальный сайт писателя"
+          },
+          {
+            title: "Valter Hugo Mãe — биография",
+            url: "https://livro.dglab.gov.pt/sites/DGLB/Portugues/autores/Paginas/PesquisaAutores1.aspx?AutorId=10976",
+            publisher: "Direção-Geral do Livro, dos Arquivos e das Bibliotecas"
+          }
+        ]
+      }
     },
     {
       id: "lidia_jorge",
@@ -785,49 +803,14 @@ export const portugal: Country = {
       articleUrl: ""
     },
     {
-      id: "valter_hugo_mae_modern",
-      name: "Валтер Угу Маи",
-      years: "1971–",
-      birthDate: "1971-09-12",
-      birthPlace: "Са-Томе и Принсипи",
-      coordinates: {
-        lat: 0.3365,
-        lng: 6.7273
-      },
-      portrait: "",
-      bio: "Современный португалоязычный писатель, известный эмоциональной прозой о человеческих отношениях, памяти и одиночестве.",
-      works: [
-        "Апокалипсис чувств",
-        "Сын тысячи отцов"
-      ],
-      genres: [
-        "роман",
-        "философская проза"
-      ],
-      language: "португальский",
-      nationality: "португалоязычный писатель",
-      awards: [
-        "Премия Жозе Сарамаго 2007 года"
-      ],
-      relatedWriters: [
-        "jose_saramago",
-        "goncalo_m_tavares"
-      ],
-      tags: [
-        "XXI век",
-        "современная литература"
-      ],
-      articleUrl: ""
-    },
-    {
-      id: "valter_hugo_mae",
+      id: "jose_rodrigues_dos_santos",
       name: "Жозе Родригеш душ Сантуш",
       years: "1964–",
       birthDate: "1964-04-01",
-      birthPlace: "Бобадела, Мозамбик",
+      birthPlace: "Бейра, Мозамбик",
       coordinates: {
-        lat: -25.9653,
-        lng: 32.5892
+        lat: -19.8333,
+        lng: 34.85
       },
       portrait: "",
       bio: "Португалоязычный писатель, журналист и автор исторических и интеллектуальных романов, один из самых читаемых современных авторов португалоязычного мира.",
@@ -852,7 +835,18 @@ export const portugal: Country = {
         "XXI век",
         "популярная литература"
       ],
-      articleUrl: ""
+      articleUrl: "",
+      editorial: {
+        status: "reviewed",
+        reviewedAt: "2026-08-03",
+        sources: [
+          {
+            title: "José Rodrigues dos Santos — биография",
+            url: "https://joserodriguesdossantos.com/o-autor/",
+            publisher: "Официальный сайт писателя"
+          }
+        ]
+      }
     }
   ]
 };

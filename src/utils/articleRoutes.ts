@@ -48,7 +48,7 @@ export function articleSectionSlug(sectionId?: string) {
   return articleSectionSlugs[sectionId || ""] || "materialy";
 }
 
-export function articlePath(
+export function articlePublicPath(
   articleId: string,
   title: string,
   sectionId?: string,
@@ -58,9 +58,23 @@ export function articlePath(
     preferredSlug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(preferredSlug)
       ? preferredSlug
       : articleSeoSlug(articleId, title);
-  return `${basePath}/stati/${articleSectionSlug(sectionId)}/${encodeURIComponent(
+  return `/stati/${articleSectionSlug(sectionId)}/${encodeURIComponent(
     routeSlug
   )}/`;
+}
+
+export function articlePath(
+  articleId: string,
+  title: string,
+  sectionId?: string,
+  preferredSlug?: string
+) {
+  return `${basePath}${articlePublicPath(
+    articleId,
+    title,
+    sectionId,
+    preferredSlug
+  )}`;
 }
 
 export function articleIdFromPath(

@@ -3,6 +3,7 @@ import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
 import { mergeWriterPortraits } from "./generated/writerPortraits";
 import { mergeNobelLaureates } from "./nobelLaureatesSupplement";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
+import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
 import { countryFlag } from "../../utils/countryFlag";
 
 import { afghanistan } from "./afghanistan";
@@ -455,8 +456,10 @@ const curatedCountries: Country[] = [
 ];
 
 export const countries: Country[] = mergeWriterPortraits(
-  mergeArticleReferencedBooks(
-    mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+  mergeVerifiedBookSupplements(
+    mergeArticleReferencedBooks(
+      mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+    )
   )
 ).map(
   (country) => ({

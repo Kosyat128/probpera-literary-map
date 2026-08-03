@@ -1,11 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { redirect } from "@/lib/navigation";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
+import { articleEditPath } from "@/lib/admin-routes";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
 import { triggerPublicBuild } from "@/lib/public-build";
@@ -54,7 +55,14 @@ const allowedArticleHtml = {
     ...sanitizeHtml.defaults.allowedAttributes,
     a: ["href", "name", "target", "rel"],
     img: ["src", "alt", "title", "width", "height", "loading"],
-    "*": ["class", "id", "data-editorial-block", "data-reveal"],
+    "*": [
+      "class",
+      "id",
+      "data-editorial-block",
+      "data-reveal",
+      "data-image-layout",
+      "data-caption",
+    ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
@@ -84,6 +92,192 @@ function lineItems(value: FormDataEntryValue | null) {
     .filter(Boolean)
     .slice(0, 100)
     .map((text) => ({ text }));
+}
+
+type LegacyArticleCatalogItem = {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  sectionId?: string;
+  publishedLabel?: string;
+  url?: string;
+};
+
+type LegacyArticleDocument = {
+  contentHtml?: string;
+};
+
+const legacyCategoryBySection: Record<string, string> = {
+  "book-opinions": "book-opinions",
+  "screen-adaptations": "screen-adaptations",
+  "writers-world": "writers-world",
+  "book-guides": "book-guides",
+  awards: "awards",
+  folklore: "folklore",
+  language: "language",
+  "literary-essays": "literary-essays",
+  "author-stories": "author-stories",
+};
+
+const russianMonthIndex: Record<string, number> = {
+  января: 0,
+  февраля: 1,
+  марта: 2,
+  апреля: 3,
+  мая: 4,
+  июня: 5,
+  июля: 6,
+  августа: 7,
+  сентября: 8,
+  октября: 9,
+  ноября: 10,
+  декабря: 11,
+};
+
+function legacyPublishedAt(label?: string) {
+  const match = String(label || "")
+    .toLocaleLowerCase("ru")
+    .match(/(\d{1,2})\s+([а-яё]+)\s+(\d{4})/u);
+  if (!match || !(match[2] in russianMonthIndex)) return null;
+  return new Date(
+    Date.UTC(Number(match[3]), russianMonthIndex[match[2]], Number(match[1]), 9)
+  ).toISOString();
+}
+
+function stableSuffix(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36).slice(0, 6);
+}
+
+function legacyPath(value?: string) {
+  if (!value) return null;
+  try {
+    const parsed = new URL(value, adminEnv.publicSiteUrl);
+    return parsed.hostname === new URL(adminEnv.publicSiteUrl).hostname
+      ? parsed.pathname
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
+  if (!response.ok) {
+    throw new Error(`Источник архива ответил ${response.status}.`);
+  }
+  return (await response.json()) as T;
+}
+
+export async function importLegacyArticlesAction() {
+  const session = await requireStaff(["owner", "admin"]);
+  if (!session?.user) redirect("/login");
+  const userId = session.user.id;
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect("/articles?error=База данных не подключена");
+
+  let catalog: LegacyArticleCatalogItem[];
+  try {
+    catalog = await fetchJson<LegacyArticleCatalogItem[]>(
+      `${adminEnv.publicSiteUrl}/articles/index.json`
+    );
+  } catch (error) {
+    redirect(
+      `/articles?error=${encodeURIComponent(
+        error instanceof Error ? error.message : "Не удалось прочитать архив статей."
+      )}`
+    );
+  }
+
+  const [{ data: existingRows }, { data: categoryRows }] = await Promise.all([
+    supabase.from("articles").select("legacy_id").not("legacy_id", "is", null),
+    supabase.from("categories").select("id,slug"),
+  ]);
+  const existingIds = new Set(
+    (existingRows || []).map((article) => String(article.legacy_id || ""))
+  );
+  const categoryIds = new Map(
+    (categoryRows || []).map((category) => [category.slug, category.id])
+  );
+  const missing = catalog.filter(
+    (article) => article.id && article.title && !existingIds.has(article.id)
+  );
+
+  let imported = 0;
+  for (let offset = 0; offset < missing.length; offset += 12) {
+    const batch = missing.slice(offset, offset + 12);
+    const documents = await Promise.all(
+      batch.map(async (article) => {
+        try {
+          return await fetchJson<LegacyArticleDocument>(
+            `${adminEnv.publicSiteUrl}/articles/${encodeURIComponent(article.id)}.json`
+          );
+        } catch {
+          return { contentHtml: "" };
+        }
+      })
+    );
+    const payload = batch.map((article, index) => {
+      const categorySlug = legacyCategoryBySection[article.sectionId || ""];
+      const slug = `${createSlug(article.title) || "material"}-${stableSuffix(article.id)}`;
+      const path = legacyPath(article.url);
+      return {
+        legacy_id: article.id,
+        title: article.title.trim(),
+        excerpt: String(article.description || "").trim().slice(0, 700),
+        content_json: { type: "doc", content: [] },
+        content_html: sanitizeHtml(documents[index]?.contentHtml || "", allowedArticleHtml),
+        cover_external_url: article.imageUrl || null,
+        cover_alt:
+          article.imageAlt ||
+          (article.imageUrl ? `Иллюстрация к статье «${article.title}»` : ""),
+        category_id: categorySlug ? categoryIds.get(categorySlug) || null : null,
+        author_id: userId,
+        status: "published",
+        slug,
+        legacy_path: path,
+        published_at: legacyPublishedAt(article.publishedLabel) || new Date().toISOString(),
+        seo_title: article.title.trim(),
+        seo_description:
+          String(article.description || "").trim().slice(0, 400) ||
+          `Авторский материал журнала «Проба Пера»: ${article.title}`,
+        canonical_url: `${adminEnv.publicSiteUrl}${articlePublicPath(slug, categorySlug)}`,
+        allow_indexing: true,
+        created_by: userId,
+        updated_by: userId,
+      };
+    });
+    const { error } = await supabase.from("articles").insert(payload);
+    if (error) {
+      redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+    }
+    imported += payload.length;
+  }
+
+  await supabase.from("admin_audit_log").insert({
+    actor_id: userId,
+    action: "articles.legacy_imported",
+    entity_type: "article",
+    metadata: {
+      imported,
+      skipped: catalog.length - missing.length,
+      source: `${adminEnv.publicSiteUrl}/articles/index.json`,
+    },
+  });
+  revalidatePath("/articles");
+  revalidatePath("/dashboard");
+  redirect(
+    `/articles?imported=${imported}&skipped=${catalog.length - missing.length}`
+  );
 }
 
 export async function saveArticleAction(formData: FormData) {
@@ -132,10 +326,11 @@ export async function saveArticleAction(formData: FormData) {
 
   if (!parsed.success) {
     const failedArticleId = optionalText(formData.get("id")) || "new";
+    const errorMessage = parsed.error.issues[0]?.message || "Проверьте поля статьи.";
     redirect(
-      `/articles/${failedArticleId}?error=${encodeURIComponent(
-        parsed.error.issues[0]?.message || "Проверьте поля статьи."
-      )}`
+      failedArticleId === "new"
+        ? `/articles/new?error=${encodeURIComponent(errorMessage)}`
+        : articleEditPath(failedArticleId, { error: errorMessage })
     );
   }
   const isNewRelease =
@@ -155,11 +350,18 @@ export async function saveArticleAction(formData: FormData) {
       (!parsed.data.coverExternalUrl || parsed.data.coverAlt.length < 10) && "добавьте обложку и её описание",
       parsed.data.seoDescription.length < 80 && "расширьте SEO-описание до 80 знаков",
       parsed.data.sources.length === 0 && "укажите хотя бы один источник",
+      /data-editorial-block=["']media["']/iu.test(parsed.data.contentHtml) &&
+        "замените все места для изображений настоящими файлами",
       formData.get("publication_ready") !== "yes" && "завершите контроль перед публикацией",
     ].filter(Boolean) as string[];
     if (releaseIssues.length) {
       const failedArticleId = optionalText(formData.get("id")) || "new";
-      redirect(`/articles/${failedArticleId}?error=${encodeURIComponent(`Публикация остановлена: ${releaseIssues.join("; ")}.`)}`);
+      const errorMessage = `Публикация остановлена: ${releaseIssues.join("; ")}.`;
+      redirect(
+        failedArticleId === "new"
+          ? `/articles/new?error=${encodeURIComponent(errorMessage)}`
+          : articleEditPath(failedArticleId, { error: errorMessage })
+      );
     }
   }
   const savedSlug = parsed.data.slug || generatedSlug;
@@ -223,7 +425,6 @@ export async function saveArticleAction(formData: FormData) {
     seo_description: parsed.data.seoDescription || parsed.data.excerpt,
     seo_keywords: parsed.data.seoKeywords,
     canonical_url:
-      parsed.data.canonicalUrl ||
       `${adminEnv.publicSiteUrl}${articlePublicPath(savedSlug, categorySlug)}`,
     og_title: parsed.data.ogTitle || parsed.data.seoTitle || parsed.data.title,
     og_description:
@@ -242,7 +443,7 @@ export async function saveArticleAction(formData: FormData) {
   if (articleId) {
     const { error } = await supabase.from("articles").update(payload).eq("id", articleId);
     if (error) {
-      redirect(`/articles/${articleId}?error=${encodeURIComponent(error.message)}`);
+      redirect(articleEditPath(articleId, { error: error.message }));
     }
   } else {
     const { data, error } = await supabase
@@ -257,6 +458,10 @@ export async function saveArticleAction(formData: FormData) {
       redirect(`/articles/new?error=${encodeURIComponent(error?.message || "Статья не создана")}`);
     }
     articleId = data.id;
+  }
+
+  if (!articleId) {
+    redirect("/articles?error=Не удалось определить сохранённую статью");
   }
 
   if (
@@ -303,7 +508,7 @@ export async function saveArticleAction(formData: FormData) {
 
   revalidatePath("/dashboard");
   revalidatePath("/articles");
-  redirect(`/articles/${articleId}?saved=1`);
+  redirect(articleEditPath(articleId, { saved: 1 }));
 }
 
 function articleIdFromForm(formData: FormData) {
@@ -392,7 +597,7 @@ export async function duplicateArticleAction(formData: FormData) {
     metadata: { sourceId: id },
   });
   revalidatePath("/articles");
-  redirect(`/articles/${copy.id}?saved=1`);
+  redirect(articleEditPath(copy.id, { saved: 1 }));
 }
 
 export async function changeArticleStatusAction(formData: FormData) {
@@ -435,7 +640,7 @@ export async function changeArticleStatusAction(formData: FormData) {
     await triggerPublicBuild(`article.status.${statusValue}`);
   }
   revalidatePath("/articles");
-  revalidatePath(`/articles/${id}`);
+  revalidatePath(articleEditPath(id));
 }
 
 export async function softDeleteArticleAction(formData: FormData) {
@@ -483,7 +688,9 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     .eq("article_id", articleId)
     .single();
   if (revisionError || !revision?.snapshot) {
-    redirect(`/articles/${articleId}?error=${encodeURIComponent(revisionError?.message || "Версия не найдена")}`);
+    redirect(articleEditPath(articleId, {
+      error: revisionError?.message || "Версия не найдена",
+    }));
   }
 
   const snapshot = revision.snapshot as Record<string, unknown>;
@@ -527,7 +734,7 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     .update({ ...payload, updated_by: session.user.id })
     .eq("id", articleId);
   if (error) {
-    redirect(`/articles/${articleId}?error=${encodeURIComponent(error.message)}`);
+    redirect(articleEditPath(articleId, { error: error.message }));
   }
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
@@ -536,6 +743,6 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     entity_id: articleId,
     metadata: { revisionNumber: revision.revision_number },
   });
-  revalidatePath(`/articles/${articleId}`);
-  redirect(`/articles/${articleId}?saved=1`);
+  revalidatePath(articleEditPath(articleId));
+  redirect(articleEditPath(articleId, { saved: 1 }));
 }

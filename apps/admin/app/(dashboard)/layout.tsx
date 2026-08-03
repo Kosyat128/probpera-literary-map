@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
 import AdminShell from "@/components/AdminShell";
+import { logoutAction } from "@/app/(auth)/login/actions";
 import { getStaffSession } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 
@@ -43,6 +44,11 @@ export default async function DashboardLayout({
             Владелец сайта должен добавить его в команду как редактора,
             администратора или владельца.
           </p>
+          <form action={logoutAction}>
+            <button className="button-secondary" type="submit">
+              Выйти и сменить учётную запись
+            </button>
+          </form>
         </section>
       </main>
     );

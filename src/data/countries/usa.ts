@@ -1551,7 +1551,7 @@ export const usa: Country = {
           originalLanguage: "английский",
           genres: ["роман", "историческая проза"],
           tags: ["память", "рабство", "семья", "травма"],
-          description: "Роман Тони Моррисон о памяти рабства и его последствиях для семьи. Опубликован в 1987 году и удостоен Пулитцеровской премии за художественную книгу в 1988 году.",
+          description: "В центре романа — Сэти, бывшая рабыня, и травматическая память, преследующая её семью. Книга вышла в 1987 году и получила Пулитцеровскую премию за художественную литературу в 1988 году.",
           coverUrl: "brand/book-covers/beloved-editorial.webp",
           coverThumbnailUrl: "brand/book-covers/thumbs/beloved-editorial.webp",
           coverSourceUrl: "brand/book-covers/beloved-editorial.webp",

@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { redirect } from "@/lib/navigation";
 
 import { requireStaff } from "@/lib/auth";
 import { triggerPublicBuild } from "@/lib/public-build";
@@ -31,6 +31,15 @@ const backgroundStyles = new Set([
 
 function text(formData: FormData, key: string, maxLength: number) {
   return String(formData.get(key) || "").trim().slice(0, maxLength);
+}
+
+function optionalUuid(formData: FormData, key: string) {
+  const value = text(formData, key, 80);
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(
+    value
+  )
+    ? value
+    : null;
 }
 
 function settingsFromForm(formData: FormData) {
@@ -92,6 +101,7 @@ export async function createHomepageBlockAction(formData: FormData) {
       settings: settingsFromForm(formData),
       display_order: (lastBlock?.display_order || 0) + 10,
       background_style: backgroundStyle,
+      background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
     })
     .select("id")
@@ -129,6 +139,7 @@ export async function updateHomepageBlockAction(formData: FormData) {
       title: text(formData, "title", 240),
       settings: settingsFromForm(formData),
       background_style: backgroundStyle,
+      background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
     })
     .eq("id", id);

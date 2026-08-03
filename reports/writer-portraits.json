@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T23:35:26.664Z",
+  "generatedAt": "2026-08-03T00:14:39.986Z",
   "policy": {
     "identity": "exact normalized name + birth year + unique Wikidata QID",
     "licenses": "Public domain, CC0, CC BY and CC BY-SA from Wikimedia Commons only",

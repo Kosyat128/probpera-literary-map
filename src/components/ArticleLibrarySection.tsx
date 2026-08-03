@@ -124,7 +124,10 @@ function recommendedArticles(article: ArticleCatalogEntry) {
   const used = new Set<string>();
   return ranked
     .filter((candidate) => {
-      const identity = `${candidate.id}:${normalize(candidate.title)}`;
+      // The legacy archive occasionally contains the same publication under
+      // different source ids. Readers should never see duplicate titles in a
+      // recommendation route.
+      const identity = normalize(candidate.title);
       if (used.has(identity)) return false;
       used.add(identity);
       return true;

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  articleCatalog,
   mergeArticleCatalog,
   type ArticleCatalogEntry,
 } from "./catalog";
@@ -56,5 +57,15 @@ describe("mergeArticleCatalog", () => {
 
     expect(mergeArticleCatalog(legacy, cms)).toHaveLength(1);
     expect(mergeArticleCatalog(legacy, cms)[0]?.id).toBe("cms-1");
+  });
+
+  it("uses clear current addresses and keeps the old path only as compatibility metadata", () => {
+    const legacy = articleCatalog.find((item) => item.source === "legacy");
+
+    expect(legacy?.url).toMatch(
+      /^https:\/\/probpera\.ru\/stati\/[a-z0-9-]+\/[a-z0-9-]+\/$/u
+    );
+    expect(legacy?.canonicalUrl).toBe(legacy?.url);
+    expect(legacy?.legacyPath).toMatch(/^\/read\//u);
   });
 });

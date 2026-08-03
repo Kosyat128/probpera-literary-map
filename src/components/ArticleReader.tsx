@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import ArticleEngagement from "../community/ArticleEngagement";
+import ArticleViewCount from "../community/ArticleViewCount";
 import DisplayModeControl from "./DisplayModeControl";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import ShareLinks from "../editorial/ShareLinks";
@@ -212,7 +213,10 @@ export default function ArticleReader({
     [articleDocument]
   );
   const mediaItems = useMemo(() => {
-    const inlineItems = contentMediaItems(safeContentHtml, article.url);
+    const contentBaseUrl = article.legacyPath
+      ? new URL(article.legacyPath, "https://probpera.ru").href
+      : article.url;
+    const inlineItems = contentMediaItems(safeContentHtml, contentBaseUrl);
     if (!article.imageUrl) return inlineItems;
     return [
       {
@@ -222,7 +226,14 @@ export default function ArticleReader({
       },
       ...inlineItems,
     ];
-  }, [article.imageAlt, article.imageUrl, article.title, article.url, safeContentHtml]);
+  }, [
+    article.imageAlt,
+    article.imageUrl,
+    article.legacyPath,
+    article.title,
+    article.url,
+    safeContentHtml,
+  ]);
   const sourceItems = useMemo(
     () => [
       ...sourceLines(articleDocument?.sources),
@@ -250,6 +261,143 @@ export default function ArticleReader({
       image.dataset.articleMediaIndex = String(index + heroOffset);
     });
   }, [article.imageUrl, safeContentHtml]);
+
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root || !safeContentHtml) return;
+
+    const cleanups: Array<() => void> = [];
+    root
+      .querySelectorAll<HTMLElement>(".article-design-block.is-slider")
+      .forEach((slider, sliderIndex) => {
+        const images = Array.from(
+          slider.querySelectorAll<HTMLImageElement>(":scope > img")
+        );
+        if (!images.length) return;
+
+        slider.classList.add("is-interactive");
+        slider.tabIndex = 0;
+        slider.setAttribute("role", "region");
+        slider.setAttribute(
+          "aria-label",
+          `Галерея статьи ${sliderIndex + 1}: ${images.length} изображений`
+        );
+
+        let activeIndex = 0;
+        let touchStartX: number | null = null;
+        const controls = document.createElement("div");
+        controls.className = "article-slider-controls";
+
+        const previousButton = document.createElement("button");
+        previousButton.type = "button";
+        previousButton.className = "article-slider-arrow is-previous";
+        previousButton.setAttribute("aria-label", "Предыдущее изображение");
+        previousButton.textContent = "←";
+
+        const dots = document.createElement("div");
+        dots.className = "article-slider-dots";
+        dots.setAttribute("role", "group");
+        dots.setAttribute("aria-label", "Выбор изображения");
+
+        const nextButton = document.createElement("button");
+        nextButton.type = "button";
+        nextButton.className = "article-slider-arrow is-next";
+        nextButton.setAttribute("aria-label", "Следующее изображение");
+        nextButton.textContent = "→";
+
+        const dotButtons = images.map((_, imageIndex) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "article-slider-dot";
+          button.setAttribute(
+            "aria-label",
+            `Показать изображение ${imageIndex + 1} из ${images.length}`
+          );
+          dots.append(button);
+          return button;
+        });
+
+        controls.append(previousButton, dots, nextButton);
+        slider.append(controls);
+
+        const update = (nextIndex: number) => {
+          activeIndex = (nextIndex + images.length) % images.length;
+          images.forEach((image, imageIndex) => {
+            const isActive = imageIndex === activeIndex;
+            image.classList.toggle("is-active", isActive);
+            image.setAttribute("aria-hidden", String(!isActive));
+            image.tabIndex = isActive ? 0 : -1;
+          });
+          dotButtons.forEach((button, imageIndex) => {
+            const isActive = imageIndex === activeIndex;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-current", isActive ? "true" : "false");
+          });
+        };
+
+        const showPrevious = (event?: Event) => {
+          event?.preventDefault();
+          event?.stopPropagation();
+          update(activeIndex - 1);
+        };
+        const showNext = (event?: Event) => {
+          event?.preventDefault();
+          event?.stopPropagation();
+          update(activeIndex + 1);
+        };
+        const handleKeydown = (event: KeyboardEvent) => {
+          if (event.key === "ArrowLeft") showPrevious(event);
+          if (event.key === "ArrowRight") showNext(event);
+        };
+        const handleTouchStart = (event: TouchEvent) => {
+          touchStartX = event.changedTouches[0]?.clientX ?? null;
+        };
+        const handleTouchEnd = (event: TouchEvent) => {
+          const touchEndX = event.changedTouches[0]?.clientX;
+          if (touchStartX === null || touchEndX === undefined) return;
+          const distance = touchEndX - touchStartX;
+          touchStartX = null;
+          if (Math.abs(distance) < 42) return;
+          if (distance > 0) showPrevious(event);
+          else showNext(event);
+        };
+
+        previousButton.addEventListener("click", showPrevious);
+        nextButton.addEventListener("click", showNext);
+        dotButtons.forEach((button, imageIndex) => {
+          const handler = (event: MouseEvent) => {
+            event.preventDefault();
+            event.stopPropagation();
+            update(imageIndex);
+          };
+          button.addEventListener("click", handler);
+          cleanups.push(() => button.removeEventListener("click", handler));
+        });
+        slider.addEventListener("keydown", handleKeydown);
+        slider.addEventListener("touchstart", handleTouchStart, { passive: true });
+        slider.addEventListener("touchend", handleTouchEnd, { passive: false });
+        update(0);
+
+        cleanups.push(() => {
+          previousButton.removeEventListener("click", showPrevious);
+          nextButton.removeEventListener("click", showNext);
+          slider.removeEventListener("keydown", handleKeydown);
+          slider.removeEventListener("touchstart", handleTouchStart);
+          slider.removeEventListener("touchend", handleTouchEnd);
+          controls.remove();
+          slider.classList.remove("is-interactive");
+          slider.removeAttribute("role");
+          slider.removeAttribute("aria-label");
+          slider.removeAttribute("tabindex");
+          images.forEach((image) => {
+            image.classList.remove("is-active");
+            image.removeAttribute("aria-hidden");
+          });
+        });
+      });
+
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, [safeContentHtml]);
 
   useEffect(() => {
     if (activeMediaIndex === null) return;
@@ -423,6 +571,8 @@ export default function ArticleReader({
 
   const activeMedia =
     activeMediaIndex === null ? undefined : mediaItems[activeMediaIndex];
+  const sidebarRecommendations = related.slice(0, 3);
+  const continuingRecommendations = related.slice(0, 9);
 
   return (
     <div
@@ -564,7 +714,18 @@ export default function ArticleReader({
                 <span>{article.sectionLabel}</span>
                 <small>{article.publishedLabel}</small>
               </div>
-              <h1 id="article-reader-title">{article.title}</h1>
+              <h1
+                id="article-reader-title"
+                className={
+                  article.title.length > 70
+                    ? "is-long-title"
+                    : article.title.length > 44
+                      ? "is-medium-title"
+                      : undefined
+                }
+              >
+                {article.title}
+              </h1>
               {language === "en" && (
                 <span className="article-original-language">
                   {t("Оригинал на русском языке")}
@@ -572,6 +733,15 @@ export default function ArticleReader({
               )}
               {article.description && <p>{article.description}</p>}
               <div className="article-reader-metrics">
+                <ArticleViewCount
+                  currentPath={articlePath(
+                    article.id,
+                    article.title,
+                    article.sectionId,
+                    article.slug
+                  )}
+                  legacyPath={article.legacyPath}
+                />
                 <span>
                   <strong>{number(article.readingMinutes)}</strong>
                   {t("минут чтения")}
@@ -592,7 +762,7 @@ export default function ArticleReader({
               <div className="article-byline">
                 <span>{t("Авторская публикация журнала «Проба Пера»")}</span>
                 <a href={article.url} target="_blank" rel="noreferrer">
-                  {t("Оригинал публикации ↗")}
+                  {t("Постоянная ссылка ↗")}
                 </a>
               </div>
               {resumedFrom !== null && (
@@ -641,7 +811,7 @@ export default function ArticleReader({
               <div className="article-reader-error">
                 <strong>{t("Материал временно не открылся.")}</strong>
                 <a href={article.url} target="_blank" rel="noreferrer">
-                  {t("Прочитать оригинал на probpera.ru")}
+                  {t("Открыть постоянную ссылку")}
                 </a>
               </div>
             )}
@@ -713,7 +883,7 @@ export default function ArticleReader({
               </footer>
             )}
 
-            {articleDocument && related.length > 0 && (
+            {articleDocument && continuingRecommendations.length > 0 && (
               <section
                 className="article-reader-more"
                 aria-labelledby="article-reader-more-title"
@@ -732,7 +902,7 @@ export default function ArticleReader({
                   </p>
                 </header>
                 <div>
-                  {related.slice(0, 6).map((item) => (
+                  {continuingRecommendations.map((item) => (
                     <button
                       type="button"
                       key={item.id}
@@ -761,7 +931,7 @@ export default function ArticleReader({
 
           <aside className="article-reader-related">
             <span>{t("Продолжить чтение")}</span>
-            {related.slice(0, 3).map((item) => (
+            {sidebarRecommendations.map((item) => (
               <button type="button" key={item.id} onClick={() => openAnother(item)}>
                 {item.imageUrl && (
                   <span className="article-related-image" aria-hidden="true">

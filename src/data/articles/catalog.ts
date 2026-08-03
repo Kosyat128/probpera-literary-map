@@ -3,6 +3,7 @@ import {
   type ArticleCatalogEntry as LegacyArticleCatalogEntry,
 } from "./catalog.generated";
 import { cmsArticleCatalog } from "./cms.generated";
+import { articlePublicPath } from "../../utils/articleRoutes";
 
 export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   source?: "legacy" | "cms";
@@ -66,17 +67,46 @@ export function mergeArticleCatalog(
   const retainedLegacy = legacyEntries.filter(
     (article) =>
       !replacedLegacyIds.has(article.id) &&
-      !replacedLegacyPaths.has(normalizedPath(article.url))
+      !replacedLegacyPaths.has(
+        normalizedPath(article.legacyPath || article.url)
+      )
   );
 
   return [...normalizedCms, ...retainedLegacy];
 }
 
-const legacyEntries: ArticleCatalogEntry[] = legacyArticleCatalog.map(
-  (article) => ({ ...article, source: "legacy" })
+function withCurrentPublicAddress(
+  article: ArticleCatalogEntry,
+  source: "legacy" | "cms"
+): ArticleCatalogEntry {
+  const legacyPath =
+    article.legacyPath || (source === "legacy" ? normalizedPath(article.url) : null);
+  const currentPath = articlePublicPath(
+    article.id,
+    article.title,
+    article.sectionId,
+    article.slug
+  );
+  const canonicalUrl = new URL(currentPath, "https://probpera.ru").href;
+
+  return {
+    ...article,
+    source,
+    legacyPath,
+    url: canonicalUrl,
+    canonicalUrl,
+  };
+}
+
+const legacyEntries: ArticleCatalogEntry[] = legacyArticleCatalog.map((article) =>
+  withCurrentPublicAddress(article, "legacy")
+);
+
+const cmsEntries = (cmsArticleCatalog as unknown as readonly ArticleCatalogEntry[]).map(
+  (article) => withCurrentPublicAddress(article, "cms")
 );
 
 export const articleCatalog = mergeArticleCatalog(
   legacyEntries,
-  cmsArticleCatalog as unknown as readonly ArticleCatalogEntry[]
+  cmsEntries
 );

@@ -10,6 +10,7 @@ const allowedOrigins = [
   "www.probpera.ru",
   "admin.probpera.ru",
   "localhost:3000",
+  "127.0.0.1:3000",
   ...(process.env.ADMIN_ALLOWED_ORIGINS || "")
     .split(",")
     .map((origin) => origin.trim())
@@ -18,6 +19,16 @@ const allowedOrigins = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // Keep the Supabase server packages outside the webpack server bundle.
+  // Next 16 on Windows can otherwise reference an unwritten
+  // `.next/dev/server/vendor-chunks/@supabase.js` after a route reload.
+  serverExternalPackages: [
+    "@supabase/ssr",
+    "@supabase/supabase-js",
+    "sanitize-html",
+    "zod",
+  ],
+  allowedDevOrigins: ["127.0.0.1"],
   outputFileTracingRoot: process.cwd().replace(/[\\/]apps[\\/]admin$/, ""),
   basePath: adminBasePath,
   poweredByHeader: false,

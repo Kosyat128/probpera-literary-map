@@ -59,6 +59,13 @@ jobs:
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
 
+      - name: Verify registration and forum configuration
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run community:config:check -- --require-env
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+
       - name: Build production site
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run build:domain

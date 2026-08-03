@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "next/navigation";
+import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { adminEnv } from "@/lib/env";

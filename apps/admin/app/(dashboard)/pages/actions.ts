@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { redirect } from "@/lib/navigation";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
@@ -38,8 +38,24 @@ const allowedPageHtml = {
   allowedAttributes: {
     ...sanitizeHtml.defaults.allowedAttributes,
     a: ["href", "name", "target", "rel"],
-    img: ["src", "alt", "title", "width", "height", "loading"],
-    "*": ["class", "id", "data-editorial-block", "data-reveal"],
+      img: [
+        "src",
+        "alt",
+        "title",
+        "width",
+        "height",
+        "loading",
+        "data-image-layout",
+        "data-caption",
+      ],
+      "*": [
+        "class",
+        "id",
+        "data-editorial-block",
+        "data-reveal",
+        "data-image-layout",
+        "data-caption",
+      ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {

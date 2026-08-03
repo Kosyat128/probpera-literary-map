@@ -15,7 +15,9 @@ export default function ActivityTracker() {
     const client = supabase;
 
     const track = () => {
-      const path = `${window.location.pathname}${window.location.hash}`;
+      // Просмотр относится к странице целиком: якоря оглавления не должны
+      // превращать один визит в несколько разных адресов и счётчиков.
+      const path = window.location.pathname;
       let viewed: Record<string, number> = {};
       try {
         const stored = JSON.parse(
@@ -32,14 +34,21 @@ export default function ActivityTracker() {
       viewed[path] = now;
       window.sessionStorage.setItem(viewedKey, JSON.stringify(viewed));
 
-      void client.from("content_views").insert({
-        path,
-        session_id: getCommunitySessionId(),
-        user_id: user?.id || null,
-        referrer_host: document.referrer
-          ? new URL(document.referrer).hostname.slice(0, 180)
-          : null,
-      });
+      void client
+        .from("content_views")
+        .insert({
+          path,
+          session_id: getCommunitySessionId(),
+          user_id: user?.id || null,
+          referrer_host: document.referrer
+            ? new URL(document.referrer).hostname.slice(0, 180)
+            : null,
+        })
+        .then(({ error }) => {
+          if (!error) {
+            window.dispatchEvent(new Event("probpera:page-view-recorded"));
+          }
+        });
     };
 
     track();
