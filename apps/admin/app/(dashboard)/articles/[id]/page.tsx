@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminEnv } from "@/lib/env";
+import { articlePublicPath } from "@/lib/article-route";
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
@@ -18,7 +19,12 @@ export default async function EditArticlePage({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ error?: string; saved?: string }>;
+  searchParams: Promise<{
+    error?: string;
+    saved?: string;
+    publish?: string;
+    replaced?: string;
+  }>;
 }) {
   const { id } = await params;
   const query = await searchParams;
@@ -61,6 +67,13 @@ export default async function EditArticlePage({
   }));
 
   if (!article) notFound();
+  const categorySlug = categories.find(
+    (category) => category.id === article.category_id
+  )?.slug;
+  const publicArticleUrl = `${adminEnv.publicSiteUrl}${articlePublicPath(
+    article.slug,
+    categorySlug
+  )}`;
 
   return (
     <>
@@ -72,7 +85,37 @@ export default async function EditArticlePage({
         </div>
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && <p className="form-message form-success">Изменения сохранены.</p>}
+      {query.saved && !query.publish && (
+        <p className="form-message form-success">Изменения сохранены.</p>
+      )}
+      {query.publish === "started" && (
+        <p className="form-message form-success publication-result">
+          Статья опубликована. Обновление публичного сайта запущено. {" "}
+          <a href={publicArticleUrl} target="_blank" rel="noreferrer">
+            Постоянный адрес материала ↗
+          </a>
+        </p>
+      )}
+      {query.publish === "queued" && (
+        <p className="form-message form-success publication-result">
+          Статья опубликована в редакционной базе и поставлена в очередь обновления сайта.
+          Обычно новая версия появляется в течение 5–10 минут. {" "}
+          <a href={publicArticleUrl} target="_blank" rel="noreferrer">
+            Постоянный адрес материала ↗
+          </a>
+        </p>
+      )}
+      {query.publish === "queue-error" && (
+        <p className="form-message" role="alert">
+          Статья сохранена как опубликованная, но запрос на обновление сайта записать не
+          удалось. Не закрывайте материал и повторите публикацию.
+        </p>
+      )}
+      {Number(query.replaced || 0) > 0 && (
+        <p className="form-message form-success">
+          На главной новая публикация заменила предыдущий материал этой рубрики.
+        </p>
+      )}
       <ArticleEditor
         article={article}
         categories={categories}

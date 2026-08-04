@@ -49,6 +49,8 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
             alt=""
             width="58"
             height="58"
+            loading="eager"
+            decoding="async"
           />
           <span>
             <strong>Проба Пера</strong>

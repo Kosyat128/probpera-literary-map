@@ -22,9 +22,11 @@ describe("Nobel article links", () => {
   });
 
   it("connects the 1905 laureate to the existing annual article", () => {
-    expect(findNobelArticle(sienkiewicz)?.id).toBe(
-      "page--article--nobel--prize--6"
-    );
+    const article = findNobelArticle(sienkiewicz);
+
+    expect(article?.title).toMatch(/1905/u);
+    expect(article?.sectionId).toBe("awards");
+    expect(article?.url).toMatch(/^https:\/\/probpera\.ru\/stati\//u);
   });
 
   it("keeps the annual archive chronological and without empty years", () => {

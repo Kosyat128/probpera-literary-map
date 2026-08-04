@@ -377,6 +377,9 @@ function mediaUrl(path: string) {
 export default function App() {
   const { user } = useAuth();
   const { language, t, countryName, number } = useInterfaceLanguage();
+  const directArticleRoute =
+    typeof window !== "undefined" &&
+    /\/(?:stati|articles)\//iu.test(window.location.pathname);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
@@ -405,6 +408,7 @@ export default function App() {
   useEffect(() => cancelSectionsMenuClose, [cancelSectionsMenuClose]);
 
   useEffect(() => {
+    if (directArticleRoute) return undefined;
     let active = true;
     const timer = window.setTimeout(() => {
       import("./data/countries").then((module) => {
@@ -418,7 +422,7 @@ export default function App() {
       active = false;
       window.clearTimeout(timer);
     };
-  }, []);
+  }, [directArticleRoute]);
 
   useEffect(() => {
     const openSearch = (event: KeyboardEvent) => {
@@ -659,6 +663,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (directArticleRoute) return undefined;
     let active = true;
     import("./data/articles/catalog").then(({ articleCatalog }) => {
       if (active) setArticleCount(articleCatalog.length);
@@ -666,7 +671,7 @@ export default function App() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [directArticleRoute]);
 
   const bookOfMonth = useMemo(() => {
     const premiumBooks = bookArchive.filter(
@@ -783,6 +788,22 @@ export default function App() {
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
 
+  if (directArticleRoute) {
+    return (
+      <div className="magazine-app article-route-shell">
+        <Suspense
+          fallback={
+            <div className="article-reader-suspense" role="status">
+              {t("Открываем режим чтения…")}
+            </div>
+          }
+        >
+          <ArticleLibrarySection readerOnly />
+        </Suspense>
+      </div>
+    );
+  }
+
   return (
     <div className="magazine-app">
       <div className="topline">
@@ -799,7 +820,14 @@ export default function App() {
 
       <header className="site-header">
         <a className="brand" href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
-          <img src={assetUrl("brand/probpera-logo.png")} alt="Проба Пера" />
+          <img
+            src={assetUrl("brand/probpera-logo.png")}
+            alt="Проба Пера"
+            width="68"
+            height="68"
+            loading="eager"
+            decoding="async"
+          />
           <span>
             <strong>Проба Пера</strong>
             <small>{t("Литературный журнал")}</small>
@@ -1309,17 +1337,23 @@ export default function App() {
 
         <section className="daily-grid painted-paper-section" id="book-day">
           <article className="book-of-day">
-            <div className={`book-cover${bookOfMonthHasCover ? " has-image" : ""}`}>
+            <div
+              className={`book-cover${bookOfMonthHasCover ? " has-image" : ""}`}
+              style={
+                bookOfMonth && bookOfMonthHasCover
+                  ? { backgroundImage: `url("${bookOfMonth.coverThumbnailUrl || bookOfMonth.coverUrl}")` }
+                  : undefined
+              }
+            >
               {bookOfMonth && bookOfMonthHasCover ? (
                 isEditorialCover(bookOfMonth) ? (
                   <div className="book-cover-art">
                     <img
                       src={bookOfMonth.coverUrl}
-                      alt={`${t("Редакционная обложка")} «${bookOfMonth.title}»`}
+                      alt={`${t("Обложка книги")} «${bookOfMonth.title}»`}
                       loading="lazy"
                       decoding="async"
                     />
-                    <small>{t("Редакционная обложка «Пробы Пера»")}</small>
                   </div>
                 ) : (
                   <a
@@ -1537,9 +1571,28 @@ export default function App() {
                 <a href={feature.articleUrl}>
                   <div className="article-image">
                     <img
+                      className="article-image-backdrop"
+                      src={mediaUrl(feature.image)}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                      onError={(event) => {
+                        event.currentTarget.hidden = true;
+                      }}
+                    />
+                    <img
                       src={mediaUrl(feature.image)}
                       alt={`Иллюстрация к материалу «${feature.title}»`}
                       loading="lazy"
+                      decoding="async"
+                      onError={(event) => {
+                        if (event.currentTarget.dataset.fallbackApplied === "true") return;
+                        event.currentTarget.dataset.fallbackApplied = "true";
+                        event.currentTarget.classList.add("is-fallback");
+                        event.currentTarget.alt = `Фирменная обложка материала «${feature.title}»`;
+                        event.currentTarget.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
+                      }}
                     />
                     <span>{feature.tag}</span>
                   </div>
@@ -1845,7 +1898,14 @@ export default function App() {
         <div className="footer-main">
           <section className="footer-brand">
             <a href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
-              <img src={assetUrl("brand/probpera-logo.png")} alt="" />
+              <img
+                src={assetUrl("brand/probpera-logo.png")}
+                alt=""
+                width="68"
+                height="68"
+                loading="lazy"
+                decoding="async"
+              />
               <span>
                 <strong>Проба Пера</strong>
                 <small>{t("Литературный журнал и мировая энциклопедия")}</small>

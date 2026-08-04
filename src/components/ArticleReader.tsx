@@ -100,6 +100,14 @@ function contentMediaItems(html: string, baseUrl: string): ArticleMediaItem[] {
     .filter((item): item is ArticleMediaItem => Boolean(item));
 }
 
+function applyBrandImageFallback(image: HTMLImageElement, title: string) {
+  if (image.dataset.fallbackApplied === "true") return;
+  image.dataset.fallbackApplied = "true";
+  image.classList.add("is-fallback");
+  image.alt = `Фирменная обложка материала «${title}»`;
+  image.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
+}
+
 export default function ArticleReader({
   article,
   related,
@@ -250,6 +258,17 @@ export default function ArticleReader({
     if (!root || !safeContentHtml) return;
     const heroOffset = article.imageUrl ? 1 : 0;
     root.querySelectorAll<HTMLImageElement>("img").forEach((image, index) => {
+      const caption = image
+        .closest("figure")
+        ?.querySelector("figcaption")
+        ?.textContent?.trim();
+      if (!image.alt.trim()) {
+        image.alt =
+          caption || `Иллюстрация ${index + 1} к статье «${article.title}»`;
+      }
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.setAttribute("fetchpriority", "low");
       image.tabIndex = 0;
       image.setAttribute("role", "button");
       image.setAttribute(
@@ -260,7 +279,7 @@ export default function ArticleReader({
       );
       image.dataset.articleMediaIndex = String(index + heroOffset);
     });
-  }, [article.imageUrl, safeContentHtml]);
+  }, [article.imageUrl, article.title, safeContentHtml]);
 
   useEffect(() => {
     const root = contentRef.current;
@@ -767,25 +786,56 @@ export default function ArticleReader({
               </div>
               {resumedFrom !== null && (
                 <div className="article-resume-note" role="status">
-                  <span>
-                    {t("Продолжено с места остановки")} · {Math.round(resumedFrom)}%
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-                      setResumedFrom(null);
-                      saveProgress(0);
-                    }}
-                  >
-                    {t("Начать сначала")}
-                  </button>
+                  <div className="article-resume-copy">
+                    <span className="article-resume-mark" aria-hidden="true">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M7 4.8h10a1.2 1.2 0 0 1 1.2 1.2v13l-6.2-3.7L5.8 19V6A1.2 1.2 0 0 1 7 4.8Z" />
+                        <path d="M9 9h6" />
+                      </svg>
+                    </span>
+                    <span>
+                      <strong>{t("Продолжено с места остановки")}</strong>
+                      <small>
+                        {Math.round(resumedFrom)}% {t("статьи прочитано")}
+                      </small>
+                    </span>
+                  </div>
+                  <div className="article-resume-actions">
+                    <span
+                      className="article-resume-progress"
+                      aria-hidden="true"
+                      style={
+                        {
+                          "--resume-progress": `${Math.round(resumedFrom)}%`,
+                        } as CSSProperties
+                      }
+                    >
+                      <i />
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+                        setResumedFrom(null);
+                        saveProgress(0);
+                      }}
+                    >
+                      <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M7.2 8.1H3.8V4.7" />
+                        <path d="M4.1 8.2A8.2 8.2 0 1 1 4.8 17" />
+                      </svg>
+                      {t("Начать сначала")}
+                    </button>
+                  </div>
                 </div>
               )}
             </header>
 
             {article.imageUrl && (
-              <figure className="article-reader-cover">
+              <figure
+                className="article-reader-cover"
+                style={{ backgroundImage: `url("${article.imageUrl}")` }}
+              >
                 <button
                   className="article-reader-cover-button"
                   type="button"
@@ -801,6 +851,9 @@ export default function ArticleReader({
                     loading="eager"
                     decoding="async"
                     {...({ fetchpriority: "high" } as Record<string, string>)}
+                    onError={(event) =>
+                      applyBrandImageFallback(event.currentTarget, article.title)
+                    }
                   />
                   <span aria-hidden="true">{t("Рассмотреть")}</span>
                 </button>
@@ -908,9 +961,25 @@ export default function ArticleReader({
                       key={item.id}
                       onClick={() => openAnother(item)}
                     >
-                      <span className="article-reader-more-image" aria-hidden="true">
+                      <span
+                        className="article-reader-more-image"
+                        aria-hidden="true"
+                        style={
+                          item.imageUrl
+                            ? { backgroundImage: `url("${item.imageUrl}")` }
+                            : undefined
+                        }
+                      >
                         {item.imageUrl ? (
-                          <img src={item.imageUrl} alt="" loading="lazy" />
+                          <img
+                            src={item.imageUrl}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            onError={(event) =>
+                              applyBrandImageFallback(event.currentTarget, item.title)
+                            }
+                          />
                         ) : (
                           <i>ПП</i>
                         )}
@@ -934,8 +1003,20 @@ export default function ArticleReader({
             {sidebarRecommendations.map((item) => (
               <button type="button" key={item.id} onClick={() => openAnother(item)}>
                 {item.imageUrl && (
-                  <span className="article-related-image" aria-hidden="true">
-                    <img src={item.imageUrl} alt="" loading="lazy" />
+                  <span
+                    className="article-related-image"
+                    aria-hidden="true"
+                    style={{ backgroundImage: `url("${item.imageUrl}")` }}
+                  >
+                    <img
+                      src={item.imageUrl}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      onError={(event) =>
+                        applyBrandImageFallback(event.currentTarget, item.title)
+                      }
+                    />
                   </span>
                 )}
                 <span className="article-related-copy">
@@ -1001,6 +1082,7 @@ export default function ArticleReader({
                 activeMedia.alt ||
                 `Иллюстрация ${activeMediaIndex + 1} к статье «${article.title}»`
               }
+              decoding="async"
             />
             {(activeMedia.caption || activeMedia.alt) && (
               <p>{activeMedia.caption || activeMedia.alt}</p>

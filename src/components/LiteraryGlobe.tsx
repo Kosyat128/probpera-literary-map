@@ -1547,6 +1547,8 @@ export default function LiteraryGlobe({
             src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
           />
           <div>
             <strong>{number(visibleNobelCount)}</strong>

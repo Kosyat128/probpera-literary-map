@@ -95,6 +95,7 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
                   src={article.imageUrl}
                   alt={article.imageAlt || ""}
                   loading="lazy"
+                  decoding="async"
                 />
               )}
               <span>{article.sectionLabel}</span>

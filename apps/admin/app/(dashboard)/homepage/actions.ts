@@ -133,11 +133,32 @@ export async function updateHomepageBlockAction(formData: FormData) {
   }
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
+  const { data: existing, error: existingError } = await supabase
+    .from("homepage_blocks")
+    .select("settings")
+    .eq("id", id)
+    .single();
+  if (existingError || !existing) {
+    redirect(
+      `/homepage?error=${encodeURIComponent(
+        existingError?.message || "Блок не найден"
+      )}`
+    );
+  }
+  const existingSettings =
+    existing.settings &&
+    typeof existing.settings === "object" &&
+    !Array.isArray(existing.settings)
+      ? (existing.settings as Record<string, unknown>)
+      : {};
   const { error } = await supabase
     .from("homepage_blocks")
     .update({
       title: text(formData, "title", 240),
-      settings: settingsFromForm(formData),
+      settings: {
+        ...existingSettings,
+        ...settingsFromForm(formData),
+      },
       background_style: backgroundStyle,
       background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
@@ -178,6 +199,7 @@ export async function toggleHomepageBlockAction(formData: FormData) {
     enabled ? "homepage.block.enabled" : "homepage.block.disabled"
   );
   revalidatePath("/homepage");
+  redirect("/homepage?saved=1");
 }
 
 export async function moveHomepageBlockAction(formData: FormData) {
@@ -199,22 +221,47 @@ export async function moveHomepageBlockAction(formData: FormData) {
   if (index < 0 || targetIndex < 0 || targetIndex >= blocks.length) return;
   const target = blocks[targetIndex];
   const current = blocks[index];
-  await Promise.all([
-    supabase
+  const temporaryOrder =
+    Math.min(...blocks.map((block) => block.display_order || 0), 0) - 10;
+  const { error: holdError } = await supabase
+    .from("homepage_blocks")
+    .update({ display_order: temporaryOrder, updated_by: session.user.id })
+    .eq("id", current.id);
+  if (holdError) {
+    redirect(`/homepage?error=${encodeURIComponent(holdError.message)}`);
+  }
+  const { error: targetError } = await supabase
+    .from("homepage_blocks")
+    .update({
+      display_order: current.display_order,
+      updated_by: session.user.id,
+    })
+    .eq("id", target.id);
+  if (targetError) {
+    await supabase
       .from("homepage_blocks")
-      .update({
-        display_order: target.display_order,
-        updated_by: session.user.id,
-      })
-      .eq("id", current.id),
-    supabase
+      .update({ display_order: current.display_order })
+      .eq("id", current.id);
+    redirect(`/homepage?error=${encodeURIComponent(targetError.message)}`);
+  }
+  const { error: currentError } = await supabase
+    .from("homepage_blocks")
+    .update({
+      display_order: target.display_order,
+      updated_by: session.user.id,
+    })
+    .eq("id", current.id);
+  if (currentError) {
+    await supabase
       .from("homepage_blocks")
-      .update({
-        display_order: current.display_order,
-        updated_by: session.user.id,
-      })
-      .eq("id", target.id),
-  ]);
+      .update({ display_order: target.display_order })
+      .eq("id", target.id);
+    await supabase
+      .from("homepage_blocks")
+      .update({ display_order: current.display_order })
+      .eq("id", current.id);
+    redirect(`/homepage?error=${encodeURIComponent(currentError.message)}`);
+  }
   await recordBuildRequest(
     supabase,
     session.user.id,
@@ -222,6 +269,7 @@ export async function moveHomepageBlockAction(formData: FormData) {
     "homepage.block.moved"
   );
   revalidatePath("/homepage");
+  redirect("/homepage?saved=1");
 }
 
 export async function deleteHomepageBlockAction(formData: FormData) {

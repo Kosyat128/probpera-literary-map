@@ -11,15 +11,17 @@ export default async function EditArticleByQueryPage({
     id?: string;
     error?: string;
     saved?: string;
+    publish?: string;
+    replaced?: string;
   }>;
 }) {
-  const { id, error, saved } = await searchParams;
+  const { id, error, saved, publish, replaced } = await searchParams;
   const articleId = id?.trim();
 
   if (!articleId) notFound();
 
   return EditArticlePage({
     params: Promise.resolve({ id: articleId }),
-    searchParams: Promise.resolve({ error, saved }),
+    searchParams: Promise.resolve({ error, saved, publish, replaced }),
   });
 }

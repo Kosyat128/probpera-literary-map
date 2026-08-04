@@ -66,6 +66,7 @@ export default function HomepageMediaField({
     formData.set("license_name", "");
     formData.set("license_url", "");
     formData.set("collection_name", "Главная страница");
+    formData.set("image_usage", "hero");
 
     setUploading(true);
     setError("");

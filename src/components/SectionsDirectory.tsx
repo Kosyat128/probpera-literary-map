@@ -204,41 +204,45 @@ export default function SectionsDirectory({
                 </a>
               </h3>
               <p>{t(section.copy)}</p>
-              {series.length > 1 && (
-                <nav
-                  className="section-card-series"
-                  aria-label={`${t("Рубрики")}: ${t(section.title)}`}
-                >
-                  {series.map((item) => (
-                    <a
-                      key={item.id}
-                      href={journalPath(section.id, item.id)}
-                      onClick={(event) => {
-                        if (!shouldUseClientNavigation(event)) return;
-                        event.preventDefault();
-                        navigateToJournal(section.id, false, item.id);
-                      }}
-                    >
-                      {t(item.label)}
-                    </a>
-                  ))}
-                </nav>
-              )}
-              {latest && (
-                <a
-                  className="section-card-latest"
-                  href={articlePath(
-                    latest.id,
-                    latest.title,
-                    latest.sectionId,
-                    latest.slug
-                  )}
-                  aria-label={`${t("Статья по теме")}: ${latest.title}`}
-                >
-                  <span>{t("Статья по теме")}</span>
-                  <strong>{latest.title}</strong>
-                </a>
-              )}
+              <div className="section-card-series-slot">
+                {series.length > 1 && (
+                  <nav
+                    className="section-card-series"
+                    aria-label={`${t("Рубрики")}: ${t(section.title)}`}
+                  >
+                    {series.map((item) => (
+                      <a
+                        key={item.id}
+                        href={journalPath(section.id, item.id)}
+                        onClick={(event) => {
+                          if (!shouldUseClientNavigation(event)) return;
+                          event.preventDefault();
+                          navigateToJournal(section.id, false, item.id);
+                        }}
+                      >
+                        {t(item.label)}
+                      </a>
+                    ))}
+                  </nav>
+                )}
+              </div>
+              <div className="section-card-latest-slot">
+                {latest && (
+                  <a
+                    className="section-card-latest"
+                    href={articlePath(
+                      latest.id,
+                      latest.title,
+                      latest.sectionId,
+                      latest.slug
+                    )}
+                    aria-label={`${t("Статья по теме")}: ${latest.title}`}
+                  >
+                    <span>{t("Статья по теме")}</span>
+                    <strong>{latest.title}</strong>
+                  </a>
+                )}
+              </div>
               <footer className="section-card-action">
                 <a href={section.href} onClick={handleSectionClick}>
                   <strong>

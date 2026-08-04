@@ -66,7 +66,12 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
     <section className="nobel-archive-strip" aria-label={t("Нобелевский архив")}>
       <header>
         <span className="nobel-archive-medal" aria-hidden="true">
-          <img src={nobelPortraitUrl} alt="" />
+          <img
+            src={nobelPortraitUrl}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </span>
         <div>
           <small>{t("Редакционная серия")}</small>

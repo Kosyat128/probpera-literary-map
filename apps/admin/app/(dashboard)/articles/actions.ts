@@ -492,23 +492,63 @@ export async function saveArticleAction(formData: FormData) {
     },
   });
 
+  let homepageReplaced = 0;
+  if (
+    parsed.data.status === "published" &&
+    parsed.data.showOnHomepage &&
+    parsed.data.categoryId
+  ) {
+    const { data: replacedArticles, error: replacementError } = await supabase
+      .from("articles")
+      .update({
+        show_on_homepage: false,
+        updated_by: session.user.id,
+      })
+      .eq("category_id", parsed.data.categoryId)
+      .eq("status", "published")
+      .eq("show_on_homepage", true)
+      .neq("id", articleId)
+      .select("id");
+
+    if (replacementError) {
+      await supabase.from("admin_audit_log").insert({
+        actor_id: session.user.id,
+        action: "homepage.article_replacement_failed",
+        entity_type: "article",
+        entity_id: articleId,
+        metadata: { error: replacementError.message },
+      });
+    } else {
+      homepageReplaced = replacedArticles?.length || 0;
+    }
+  }
+
+  let publicationState: "started" | "queued" | "queue-error" | null = null;
   if (parsed.data.status === "published") {
     const build = await triggerPublicBuild("article.published");
-    await supabase.from("admin_audit_log").insert({
+    const { error: queueError } = await supabase.from("admin_audit_log").insert({
       actor_id: session.user.id,
-      action: build.ok ? "public_build.requested" : "public_build.failed",
+      action: build.ok ? "public_build.dispatched" : "public_build.requested",
       entity_type: "article",
       entity_id: articleId,
       metadata: {
-        configured: build.configured,
-        error: build.ok ? null : build.error,
+        delivery: build.ok ? "deploy-hook" : "github-actions-queue",
+        hook_configured: build.configured,
+        hook_error: build.ok ? null : build.error,
       },
     });
+    publicationState = build.ok ? "started" : queueError ? "queue-error" : "queued";
   }
 
   revalidatePath("/dashboard");
   revalidatePath("/articles");
-  redirect(articleEditPath(articleId, { saved: 1 }));
+  redirect(
+    articleEditPath(articleId, {
+      saved: 1,
+      publish: publicationState,
+      replaced: homepageReplaced || null,
+    })
+  );
 }
 
 function articleIdFromForm(formData: FormData) {

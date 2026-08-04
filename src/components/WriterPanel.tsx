@@ -284,9 +284,11 @@ export default function WriterPanel({
         }
       >
         <FollowBellIcon active={countrySubscribed} />
-        {countrySubscribed
-          ? t("Вы следите за архивом страны")
-          : t("Следить за новыми материалами страны")}
+        <span className="archive-subscribe-label">
+          {countrySubscribed
+            ? t("Вы следите за архивом страны")
+            : t("Следить за новыми материалами страны")}
+        </span>
       </button>
       {language === "en" && (
         <p className="archive-original-language">
@@ -464,9 +466,11 @@ export default function WriterPanel({
             }
           >
             <FollowBellIcon active={activeWriterSubscribed} />
-            {activeWriterSubscribed
-              ? t("Вы следите за автором")
-              : t("Следить за новыми материалами автора")}
+            <span className="archive-subscribe-label">
+              {activeWriterSubscribed
+                ? t("Вы следите за автором")
+                : t("Следить за новыми материалами автора")}
+            </span>
           </button>
           <p className="writer-bio">
             {activeWriter.biography ||
@@ -488,11 +492,21 @@ export default function WriterPanel({
                   )}
                   aria-label={t("Открыть статью о лауреате")}
                 >
-                  <img src={nobelPortraitUrl} alt="" />
+                  <img
+                    src={nobelPortraitUrl}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </a>
               ) : (
                 <span className="writer-nobel-medal" aria-hidden="true">
-                  <img src={nobelPortraitUrl} alt="" />
+                  <img
+                    src={nobelPortraitUrl}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </span>
               )}
               <div>

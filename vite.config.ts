@@ -9,6 +9,30 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            const moduleId = id.replaceAll("\\\\", "/");
+            if (moduleId.includes("/books.generated.json")) return "book-catalog";
+            if (
+              moduleId.includes("/node_modules/three/") ||
+              moduleId.includes("/node_modules/@react-three/")
+            ) {
+              return "three-vendor";
+            }
+            if (moduleId.includes("/node_modules/gsap/")) return "motion-vendor";
+            if (
+              moduleId.includes("/node_modules/react/") ||
+              moduleId.includes("/node_modules/react-dom/") ||
+              moduleId.includes("/node_modules/scheduler/")
+            ) {
+              return "react-vendor";
+            }
+          },
+        },
+      },
+    },
     server: {
       port: 5173,
       open: true

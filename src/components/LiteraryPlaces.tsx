@@ -200,6 +200,10 @@ export default function LiteraryPlaces() {
 
               alt={place.name}
 
+              loading="lazy"
+
+              decoding="async"
+
               style={{
 
                 width:"100%",

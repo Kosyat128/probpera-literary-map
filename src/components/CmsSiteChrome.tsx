@@ -63,6 +63,8 @@ export function CmsHomepageBanners() {
               banner.mobileImageUrl
             }
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </picture>
       )}

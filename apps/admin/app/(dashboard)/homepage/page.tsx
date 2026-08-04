@@ -69,7 +69,12 @@ function BackgroundSelect({ value }: { value: string }) {
   );
 }
 
-export default async function HomepagePage() {
+export default async function HomepagePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; saved?: string; deleted?: string }>;
+}) {
+  const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   const [{ data: blocksResult }, { data: mediaResult }] = await Promise.all([
@@ -116,6 +121,19 @@ export default async function HomepagePage() {
           </a>
         </div>
       </header>
+
+      {query.error && <p className="form-message">{query.error}</p>}
+      {query.saved && (
+        <p className="form-message form-success">
+          Изменения сохранены и поставлены в очередь публикации. Публичная
+          версия обновится после безопасной пересборки.
+        </p>
+      )}
+      {query.deleted && (
+        <p className="form-message form-success">
+          Блок удалён и изменение поставлено в очередь публикации.
+        </p>
+      )}
 
       <HomepageVisualPreview url={adminEnv.publicSiteUrl} />
 

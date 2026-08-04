@@ -167,7 +167,12 @@ function ForumAuthor({ profile }: { profile?: ForumProfile | null }) {
     <span className="forum-author">
       <span className="forum-author-avatar" aria-hidden="true">
         {profile?.avatar_url ? (
-          <img src={profile.avatar_url} alt="" loading="lazy" />
+          <img
+            src={profile.avatar_url}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         ) : (
           name.slice(0, 1).toLocaleUpperCase("ru")
         )}
@@ -1000,8 +1005,11 @@ export default function CommunityHub({
       </header>
       {savedReadings.length ? (
         <div>
-          {savedReadings.map((item) => (
-            <article key={`${item.kind}:${item.id}`}>
+          {savedReadings.map((item, index) => (
+            <article className="account-library-item" key={`${item.kind}:${item.id}`}>
+              <span className="account-library-index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <a
                 href={
                   item.href ||
@@ -1017,7 +1025,7 @@ export default function CommunityHub({
               </a>
               <div className="library-actions">
                 <label>
-                  <span className="sr-only">Статус «{item.title}»</span>
+                  <span className="library-status-label">Статус чтения</span>
                   <select
                     value={item.status}
                     aria-label={`Статус чтения «${item.title}»`}
@@ -1106,6 +1114,10 @@ export default function CommunityHub({
             <img
               src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
               alt=""
+              width="68"
+              height="68"
+              loading="lazy"
+              decoding="async"
             />
             <span>
               <small>Клуб читателей</small>
@@ -1376,7 +1388,12 @@ export default function CommunityHub({
                   <header>
                     <div className="reader-avatar">
                       {profileAvatarUrl ? (
-                        <img src={profileAvatarUrl} alt={`Аватар ${readerName}`} />
+                        <img
+                          src={profileAvatarUrl}
+                          alt={`Аватар ${readerName}`}
+                          loading="lazy"
+                          decoding="async"
+                        />
                       ) : (
                         <span aria-hidden="true">
                           {readerName.slice(0, 1).toLocaleUpperCase("ru")}

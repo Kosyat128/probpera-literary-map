@@ -52,6 +52,10 @@ const requiredSql = new Map([
     "supabase/migrations/20260803_public_article_view_counts.sql",
     ["get_content_view_count", "grant execute"],
   ],
+  [
+    "supabase/migrations/20260804_content_analytics.sql",
+    ["previous_path", "navigation_source", "utm_source"],
+  ],
 ]);
 
 const failures = [];

@@ -36,6 +36,7 @@
     "community:config:check": "node scripts/audit-community-config.mjs",
     "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
     "content:normalize-titles": "node scripts/normalize-article-titles.mjs",
+    "content:normalize-book-titles": "node scripts/normalize-generated-book-titles.mjs",
     "content:link-books": "node scripts/build-book-article-mentions.mjs",
     "content:publish-scheduled": "node scripts/publish-scheduled-content.mjs",
     "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
@@ -55,6 +56,10 @@
     "books:audit": "node scripts/audit-book-database.mjs && node scripts/audit-article-book-coverage.mjs",
     "books:sync": "node scripts/sync-literary-archive.mjs",
     "books:sync:apply": "node scripts/sync-literary-archive.mjs --apply",
+    "books:import:wikidata": "node scripts/import-wikidata-books.mjs --target=10000",
+    "books:import:wikidata:apply": "node scripts/import-wikidata-books.mjs --target=10000 --apply",
+    "books:import:openlibrary": "node scripts/import-openlibrary-books.mjs --target=10000",
+    "books:import:openlibrary:apply": "node scripts/import-openlibrary-books.mjs --target=10000 --apply",
     "assets:globe": "node scripts/build-antique-globe-texture.mjs",
     "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
   },

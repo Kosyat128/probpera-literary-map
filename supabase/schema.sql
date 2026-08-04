@@ -65,6 +65,13 @@ create table public.content_views (
   session_id uuid not null,
   user_id uuid references public.profiles(id) on delete set null,
   referrer_host text check (char_length(referrer_host) <= 180),
+  previous_path text check (char_length(previous_path) between 1 and 320),
+  navigation_source text not null default 'direct' check (
+    navigation_source in ('direct', 'internal', 'external', 'campaign')
+  ),
+  utm_source text check (char_length(utm_source) <= 120),
+  utm_medium text check (char_length(utm_medium) <= 80),
+  utm_campaign text check (char_length(utm_campaign) <= 180),
   created_at timestamptz not null default now()
 );
 

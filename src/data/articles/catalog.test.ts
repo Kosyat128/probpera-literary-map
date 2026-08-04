@@ -60,12 +60,12 @@ describe("mergeArticleCatalog", () => {
   });
 
   it("uses clear current addresses and keeps the old path only as compatibility metadata", () => {
-    const legacy = articleCatalog.find((item) => item.source === "legacy");
+    const migrated = articleCatalog.find((item) => item.legacyPath?.startsWith("/read/"));
 
-    expect(legacy?.url).toMatch(
+    expect(migrated?.url).toMatch(
       /^https:\/\/probpera\.ru\/stati\/[a-z0-9-]+\/[a-z0-9-]+\/$/u
     );
-    expect(legacy?.canonicalUrl).toBe(legacy?.url);
-    expect(legacy?.legacyPath).toMatch(/^\/read\//u);
+    expect(migrated?.canonicalUrl).toBe(migrated?.url);
+    expect(migrated?.legacyPath).toMatch(/^\/read\//u);
   });
 });

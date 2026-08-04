@@ -26,6 +26,12 @@ const acceptedTypes = new Set([
   "image/avif",
 ]);
 const maxFileSize = 12 * 1024 * 1024;
+const resizePresets = {
+  cover: { width: 1800, height: 2700 },
+  hero: { width: 2400, height: 1600 },
+  gallery: { width: 2000, height: 2000 },
+  inline: { width: 2000, height: 2000 },
+} as const;
 
 function optionalUrl(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
@@ -77,10 +83,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Не удалось прочитать изображение." }, { status: 422 });
     }
 
+    const requestedUsage = String(formData.get("image_usage") || "inline");
+    const imageUsage =
+      requestedUsage in resizePresets
+        ? (requestedUsage as keyof typeof resizePresets)
+        : "inline";
+    const resize = resizePresets[imageUsage];
+
     const optimized = await image
       .resize({
-        width: 2400,
-        height: 2400,
+        width: resize.width,
+        height: resize.height,
         fit: "inside",
         withoutEnlargement: true,
       })
@@ -140,6 +153,11 @@ export async function POST(request: Request) {
         original_name: file.name,
         object_path: objectPath,
         optimized_size: optimized.byteLength,
+        image_usage: imageUsage,
+        source_dimensions: {
+          width: imageMetadata.width,
+          height: imageMetadata.height,
+        },
       },
     });
 

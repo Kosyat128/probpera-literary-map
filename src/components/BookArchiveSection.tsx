@@ -318,6 +318,15 @@ export default function BookArchiveSection({
           </button>
           <div
             className={`book-detail-cover${selectedCoverUrl ? " has-image" : ""}`}
+            style={
+              selectedCoverUrl
+                ? {
+                    backgroundImage: `url("${resolveCoverUrl(
+                      selectedBook.coverThumbnailUrl || selectedCoverUrl
+                    )}")`,
+                  }
+                : undefined
+            }
           >
             {selectedCoverUrl ? (
               <img
@@ -334,6 +343,7 @@ export default function BookArchiveSection({
                     ? `${t("Редакционная обложка")} «${selectedBook.title}»`
                     : `${t("Обложка конкретного издания")} «${selectedBook.title}»`
                 }
+                decoding="async"
               />
             ) : (
               <>
@@ -534,22 +544,32 @@ export default function BookArchiveSection({
               className={`archive-book-cover${coverUrl ? " has-image" : ""}`}
             >
               {coverUrl ? (
-                <img
-                  src={resolveCoverUrl(coverUrl)}
-                  srcSet={
-                    isCoverArtworkDisplayAllowed(book) && book.coverThumbnailUrl
-                      ? `${resolveCoverUrl(book.coverThumbnailUrl)} 400w, ${resolveCoverUrl(book.coverUrl)} 800w`
-                      : undefined
-                  }
-                  sizes="(max-width: 680px) 42vw, 190px"
-                  alt={
-                    isEditorialCover(book)
-                      ? `${t("Редакционная обложка")} «${book.title}»`
-                      : `${t("Обложка конкретного издания")} «${book.title}»`
-                  }
-                  loading="lazy"
-                  decoding="async"
-                />
+                <>
+                  <img
+                    className="archive-book-cover-backdrop"
+                    src={resolveCoverUrl(coverUrl)}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src={resolveCoverUrl(coverUrl)}
+                    srcSet={
+                      isCoverArtworkDisplayAllowed(book) && book.coverThumbnailUrl
+                        ? `${resolveCoverUrl(book.coverThumbnailUrl)} 400w, ${resolveCoverUrl(book.coverUrl)} 800w`
+                        : undefined
+                    }
+                    sizes="(max-width: 680px) 42vw, 190px"
+                    alt={
+                      isEditorialCover(book)
+                        ? `${t("Редакционная обложка")} «${book.title}»`
+                        : `${t("Обложка конкретного издания")} «${book.title}»`
+                    }
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </>
               ) : (
                 <>
                   <small>{book.writerName}</small>

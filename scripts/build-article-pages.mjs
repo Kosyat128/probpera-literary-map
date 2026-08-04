@@ -372,18 +372,25 @@ for (const article of catalog) {
   });
   try {
     const legacyUrl = new URL(article.url);
-    if (legacyUrl.hostname.endsWith("probpera.ru")) {
+    const legacySource = legacyUrl.pathname.replace(/\/+$/, "") || "/";
+    if (
+      legacyUrl.hostname.endsWith("probpera.ru") &&
+      normalizedPath(legacySource) !== normalizedPath(publicPath)
+    ) {
       redirectRules.push({
-        source: legacyUrl.pathname.replace(/\/+$/, "") || "/",
+        source: legacySource,
         destination: publicPath,
         permanent: true,
       });
-      await writeRedirectPage(legacyUrl.pathname, canonicalUrl);
+      await writeRedirectPage(legacySource, canonicalUrl);
     }
   } catch {
     // У материала может не быть старого абсолютного адреса.
   }
-  if (article.legacyPath) {
+  if (
+    article.legacyPath &&
+    normalizedPath(article.legacyPath) !== normalizedPath(publicPath)
+  ) {
     redirectRules.push({
       source: normalizedPath(article.legacyPath),
       destination: publicPath,
@@ -459,11 +466,14 @@ for (const page of cmsSnapshot.pages || []) {
 }
 
 for (const redirect of cmsSnapshot.redirects || []) {
+  const sourcePath = normalizedPath(redirect.sourcePath);
+  const destinationPath = normalizedPath(redirect.destinationPath);
+  if (sourcePath === destinationPath) continue;
   const targetUrl = /^https:\/\//iu.test(redirect.destinationPath)
     ? redirect.destinationPath
     : `${siteUrl}${normalizedPath(redirect.destinationPath)}`;
   redirectRules.push({
-    source: normalizedPath(redirect.sourcePath),
+    source: sourcePath,
     destination: redirect.destinationPath,
     permanent: [301, 308].includes(redirect.statusCode),
   });
@@ -554,7 +564,10 @@ await fs.writeFile(
   path.join(distDirectory, "redirects.generated.json"),
   JSON.stringify(
     [...new Map(
-      redirectRules.map((redirect) => [
+      redirectRules.filter(
+        (redirect) =>
+          normalizedPath(redirect.source) !== normalizedPath(redirect.destination)
+      ).map((redirect) => [
         `${redirect.source}:${redirect.destination}`,
         redirect,
       ])
@@ -566,7 +579,10 @@ await fs.writeFile(
 );
 const uniqueServerRedirects = [
   ...new Map(
-    redirectRules.map((redirect) => [
+    redirectRules.filter(
+      (redirect) =>
+        normalizedPath(redirect.source) !== normalizedPath(redirect.destination)
+    ).map((redirect) => [
       normalizedPath(redirect.source),
       {
         source: normalizedPath(redirect.source),

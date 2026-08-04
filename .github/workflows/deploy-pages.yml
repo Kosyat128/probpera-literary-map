@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: read
@@ -23,6 +23,7 @@ jobs:
     outputs:
       should_deploy: ${{ steps.release_gate.outputs.should_deploy }}
       scheduled_ids: ${{ steps.scheduled.outputs.ids }}
+      rebuild_max_id: ${{ steps.rebuild.outputs.max_id }}
 
     steps:
       - name: Checkout repository
@@ -45,11 +46,19 @@ jobs:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
+      - name: Check pending public rebuild requests
+        id: rebuild
+        if: github.event_name == 'schedule'
+        run: node scripts/check-public-build-requests.mjs
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
       - name: Decide whether a release is needed
         id: release_gate
         shell: bash
         run: |
-          if [[ "${{ github.event_name }}" != "schedule" || "${{ steps.scheduled.outputs.published }}" != "0" ]]; then
+          if [[ "${{ github.event_name }}" != "schedule" || "${{ steps.scheduled.outputs.published }}" != "0" || "${{ steps.rebuild.outputs.requested }}" == "1" ]]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
@@ -102,11 +111,11 @@ jobs:
         uses: actions/deploy-pages@v5
 
       - name: Checkout publication finalizer
-        if: needs.build.outputs.scheduled_ids != ''
+        if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
         uses: actions/checkout@v6
 
       - name: Set up Node.js for publication finalizer
-        if: needs.build.outputs.scheduled_ids != ''
+        if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
         uses: actions/setup-node@v7
         with:
           node-version: 24
@@ -114,6 +123,13 @@ jobs:
       - name: Finalize scheduled publications
         if: needs.build.outputs.scheduled_ids != ''
         run: node scripts/publish-scheduled-content.mjs --finalize=${{ needs.build.outputs.scheduled_ids }}
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Finalize public rebuild requests
+        if: needs.build.outputs.rebuild_max_id != ''
+        run: node scripts/check-public-build-requests.mjs --finalize=${{ needs.build.outputs.rebuild_max_id }}
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

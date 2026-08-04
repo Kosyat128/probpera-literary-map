@@ -9,6 +9,7 @@ import type { JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
+import type { DragEvent as ReactDragEvent } from "react";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 
 import { createSlug } from "@/lib/slug";
@@ -36,6 +37,7 @@ type ImageUploadTarget = "article" | "cover";
 type ImageSelectionContext = {
   selectedImage: boolean;
   attributes: Record<string, unknown>;
+  insertionPos?: number;
 };
 type Article = {
   id?: string;
@@ -205,6 +207,7 @@ export default function ArticleEditor({
   const [imageUploadTarget, setImageUploadTarget] = useState<ImageUploadTarget | null>(null);
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
+  const [isImageDraggingOverEditor, setIsImageDraggingOverEditor] = useState(false);
   const articleFileInputRef = useRef<HTMLInputElement>(null);
   const coverFileInputRef = useRef<HTMLInputElement>(null);
   const imageSelectionRef = useRef<ImageSelectionContext>({
@@ -391,7 +394,29 @@ export default function ArticleEditor({
     imageSelectionRef.current = {
       selectedImage,
       attributes: selectedImage ? editor?.getAttributes("image") || {} : {},
+      insertionPos: undefined,
     };
+  };
+
+  const handleEditorImageDrop = (event: ReactDragEvent<HTMLDivElement>) => {
+    const file = Array.from(event.dataTransfer.files || []).find((item) =>
+      item.type.startsWith("image/")
+    );
+    if (!file || !editor) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    const coordinates = editor.view.posAtCoords({
+      left: event.clientX,
+      top: event.clientY,
+    });
+    imageSelectionRef.current = {
+      selectedImage: false,
+      attributes: {},
+      insertionPos: coordinates?.pos,
+    };
+    setIsImageDraggingOverEditor(false);
+    void uploadImageFile(file, "article");
   };
 
   const openImagePicker = (target: ImageUploadTarget) => {
@@ -442,6 +467,7 @@ export default function ArticleEditor({
     formData.set("license_name", "");
     formData.set("license_url", "");
     formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
+    formData.set("image_usage", target);
 
     setImageUploadTarget(target);
     setImageUploadError("");
@@ -481,6 +507,17 @@ export default function ArticleEditor({
       if (selection.selectedImage) {
         editor.chain().focus().updateAttributes("image", attributes).run();
         setImageUploadMessage("Выбранное изображение заменено файлом с компьютера.");
+      } else if (typeof selection.insertionPos === "number") {
+        const insertionPos = Math.max(
+          0,
+          Math.min(selection.insertionPos, editor.state.doc.content.size)
+        );
+        editor
+          .chain()
+          .focus()
+          .insertContentAt(insertionPos, { type: "image", attrs: attributes })
+          .run();
+        setImageUploadMessage("Изображение вставлено точно в выбранное место текста.");
       } else if (replaceSelectedMediaSlot(editor, attributes)) {
         setImageUploadMessage("Место для фотографии заполнено загруженным изображением.");
       } else {
@@ -832,7 +869,41 @@ export default function ArticleEditor({
             {imageUploadError && (
               <p className="upload-feedback is-error" role="alert">{imageUploadError}</p>
             )}
-            <EditorContent editor={editor} />
+            <div
+              className={
+                isImageDraggingOverEditor
+                  ? "editor-content-drop-target is-dragging"
+                  : "editor-content-drop-target"
+              }
+              onDragEnterCapture={(event) => {
+                if (Array.from(event.dataTransfer.items || []).some(
+                  (item) => item.kind === "file" && item.type.startsWith("image/")
+                )) {
+                  setIsImageDraggingOverEditor(true);
+                }
+              }}
+              onDragOverCapture={(event) => {
+                if (Array.from(event.dataTransfer.items || []).some(
+                  (item) => item.kind === "file" && item.type.startsWith("image/")
+                )) {
+                  event.preventDefault();
+                  event.dataTransfer.dropEffect = "copy";
+                }
+              }}
+              onDragLeave={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setIsImageDraggingOverEditor(false);
+                }
+              }}
+              onDropCapture={handleEditorImageDrop}
+            >
+              <EditorContent editor={editor} />
+              {isImageDraggingOverEditor && (
+                <span className="editor-drop-hint" aria-hidden="true">
+                  Отпустите изображение — оно появится в этом месте статьи
+                </span>
+              )}
+            </div>
           </section>
         </div>
 
@@ -920,7 +991,9 @@ export default function ArticleEditor({
                     ? "Нажмите, чтобы заменить обложку"
                     : "Выбрать обложку с компьютера"}
               </strong>
-              <small>JPEG, PNG, WebP или AVIF · до 12 МБ</small>
+              <small>
+                Автоподгонка без обрезки · JPEG, PNG, WebP или AVIF · до 12 МБ
+              </small>
             </button>
             <label className="field">
               <span>Адрес изображения</span>

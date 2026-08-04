@@ -7,6 +7,7 @@ import {
   cmsBookEditionsByWorkId,
   type CmsBookEdition,
 } from "./cms/bookEditions";
+import { generatedBooksForWriter } from "./countries/generated/generatedBooks";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -86,7 +87,20 @@ function legacyWorkId(writerId: string, title: string, index: number) {
 export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
   return countries.flatMap((country) =>
     country.writers.flatMap((writer) => {
-      const detailedWorks = writer.workDetails || [];
+      const detailedWorks = [
+        ...(writer.workDetails || []),
+        ...generatedBooksForWriter(country.id, writer.id),
+      ].filter((work, index, works) => {
+        const normalized = normalizeTitle(work.title);
+        return (
+          normalized &&
+          works.findIndex(
+            (candidate) =>
+              candidate.id === work.id ||
+              normalizeTitle(candidate.title) === normalized
+          ) === index
+        );
+      });
       const detailedTitles = new Set(
         detailedWorks.map((work) => normalizeTitle(work.title))
       );

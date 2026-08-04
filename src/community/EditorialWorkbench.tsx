@@ -177,13 +177,15 @@ export default function EditorialWorkbench() {
         <aside className="editorial-workbench-preview">
           <span>Предпросмотр карточки</span>
           {draft.imageUrl ? (
-            <img src={draft.imageUrl} alt="" />
+            <img src={draft.imageUrl} alt="" loading="lazy" decoding="async" />
           ) : (
             <div aria-hidden="true">
               <img
                 className="brand-fallback-logo"
                 src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
                 alt=""
+                loading="lazy"
+                decoding="async"
               />
             </div>
           )}

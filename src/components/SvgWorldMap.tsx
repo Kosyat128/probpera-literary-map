@@ -52,6 +52,8 @@ export default function SvgWorldMap({ onCountrySelect }: SvgWorldMapProps) {
       <img
         src={mapBackground}
         alt="Literary world map"
+        loading="lazy"
+        decoding="async"
         style={{
           position: "absolute",
           inset: 0,

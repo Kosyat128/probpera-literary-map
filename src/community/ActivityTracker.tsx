@@ -5,7 +5,40 @@ import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
 
 const viewedKey = "probpera-viewed-paths";
+const previousPathKey = "probpera-previous-view-path";
 const VIEW_COOLDOWN_MS = 30 * 60 * 1000;
+
+const trackedHomeSections = new Set([
+  "atlas",
+  "journal",
+  "calendar",
+  "community",
+  "archive",
+  "sections",
+  "about",
+  "search",
+]);
+
+function currentViewPath() {
+  const pathname = window.location.pathname.replace(/\/+$/u, "") || "/";
+  const hash = window.location.hash.replace(/^#/u, "").split(/[?&]/u)[0];
+  if (pathname === "/" && hash && trackedHomeSections.has(hash)) {
+    return `/#${hash}`;
+  }
+  return pathname;
+}
+
+function externalReferrerHost() {
+  if (!document.referrer) return null;
+  try {
+    const referrer = new URL(document.referrer);
+    return referrer.hostname === window.location.hostname
+      ? null
+      : referrer.hostname.slice(0, 180);
+  } catch {
+    return null;
+  }
+}
 
 export default function ActivityTracker() {
   const { configured, user } = useAuth();
@@ -14,10 +47,9 @@ export default function ActivityTracker() {
     if (!configured || !supabase) return;
     const client = supabase;
 
-    const track = () => {
-      // Просмотр относится к странице целиком: якоря оглавления не должны
-      // превращать один визит в несколько разных адресов и счётчиков.
-      const path = window.location.pathname;
+    const track = async () => {
+      if ((document as Document & { prerendering?: boolean }).prerendering) return;
+      const path = currentViewPath();
       let viewed: Record<string, number> = {};
       try {
         const stored = JSON.parse(
@@ -29,36 +61,57 @@ export default function ActivityTracker() {
       } catch {
         viewed = {};
       }
+
       const now = Date.now();
       if (now - (viewed[path] || 0) < VIEW_COOLDOWN_MS) return;
+
+      const previousPath = window.sessionStorage.getItem(previousPathKey);
+      const params = new URLSearchParams(window.location.search);
+      const utmSource = params.get("utm_source")?.slice(0, 120) || null;
+      const referrerHost = externalReferrerHost();
+      const navigationSource = utmSource
+        ? "campaign"
+        : previousPath && previousPath !== path
+          ? "internal"
+          : referrerHost
+            ? "external"
+            : "direct";
+      const commonPayload = {
+        path,
+        session_id: getCommunitySessionId(),
+        user_id: user?.id || null,
+        referrer_host: referrerHost,
+      };
+      const extendedPayload = {
+        ...commonPayload,
+        previous_path: previousPath && previousPath !== path ? previousPath : null,
+        navigation_source: navigationSource,
+        utm_source: utmSource,
+        utm_medium: params.get("utm_medium")?.slice(0, 80) || null,
+        utm_campaign: params.get("utm_campaign")?.slice(0, 180) || null,
+      };
+
+      let { error } = await client.from("content_views").insert(extendedPayload);
+      if (error && /previous_path|navigation_source|utm_/iu.test(error.message)) {
+        ({ error } = await client.from("content_views").insert(commonPayload));
+      }
+      if (error) return;
+
       viewed[path] = now;
       window.sessionStorage.setItem(viewedKey, JSON.stringify(viewed));
-
-      void client
-        .from("content_views")
-        .insert({
-          path,
-          session_id: getCommunitySessionId(),
-          user_id: user?.id || null,
-          referrer_host: document.referrer
-            ? new URL(document.referrer).hostname.slice(0, 180)
-            : null,
-        })
-        .then(({ error }) => {
-          if (!error) {
-            window.dispatchEvent(new Event("probpera:page-view-recorded"));
-          }
-        });
+      window.sessionStorage.setItem(previousPathKey, path);
+      window.dispatchEvent(new Event("probpera:page-view-recorded"));
     };
 
-    track();
-    window.addEventListener("hashchange", track);
-    window.addEventListener("popstate", track);
-    window.addEventListener("probpera:navigation", track);
+    void track();
+    const handleNavigation = () => void track();
+    window.addEventListener("hashchange", handleNavigation);
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener("probpera:navigation", handleNavigation);
     return () => {
-      window.removeEventListener("hashchange", track);
-      window.removeEventListener("popstate", track);
-      window.removeEventListener("probpera:navigation", track);
+      window.removeEventListener("hashchange", handleNavigation);
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener("probpera:navigation", handleNavigation);
     };
   }, [configured, user?.id]);
 

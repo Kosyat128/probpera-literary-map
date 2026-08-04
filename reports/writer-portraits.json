@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-03T00:14:39.986Z",
+  "generatedAt": "2026-08-04T05:17:46.986Z",
   "policy": {
     "identity": "exact normalized name + birth year + unique Wikidata QID",
     "licenses": "Public domain, CC0, CC BY and CC BY-SA from Wikimedia Commons only",
     "output": "384x480 WebP, quality 82, attention crop"
   },
   "summary": {
-    "publicWriterRecords": 1767,
+    "publicWriterRecords": 1766,
     "uniquePublicWriters": 1749,
     "existingPublicPortraits": 1066,
     "matchedPublicWriters": 219,
     "publicRealPortraits": 1066,
-    "publicPlaceholders": 701,
+    "publicPlaceholders": 700,
     "generatedPortraitCandidates": 2250,
     "allowedUniquePortraits": 2202,
     "publicPortraitCandidates": 0,
@@ -2086,13 +2086,7 @@
     },
     {
       "countryId": "portugal",
-      "writerId": "valter_hugo_mae_modern",
-      "name": "Валтер Угу Маи",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "portugal",
-      "writerId": "valter_hugo_mae",
+      "writerId": "jose_rodrigues_dos_santos",
       "name": "Жозе Родригеш душ Сантуш",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },

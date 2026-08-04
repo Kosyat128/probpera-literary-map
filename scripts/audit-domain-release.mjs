@@ -116,13 +116,18 @@ for (const [source, destinations] of redirectBySource) {
 }
 
 for (const article of catalog) {
-  const legacyPath = normalizedPath(article.url);
+  const currentPath = normalizedPath(article.canonicalUrl || article.url);
+  const articleFile = `${currentPath.replace(/^\/+/u, "")}/index.html`;
+  check(await exists(articleFile), `новая страница статьи существует: ${currentPath}`);
+
+  const legacyValue = article.legacyPath ||
+    (article.source === "legacy" ? article.url : "");
+  if (!legacyValue) continue;
+  const legacyPath = normalizedPath(legacyValue);
+  if (legacyPath === currentPath) continue;
   const destinations = redirectBySource.get(legacyPath);
   check(Boolean(destinations?.size), `старый адрес статьи сохранён: ${legacyPath}`);
   if (!destinations?.size) continue;
-  const [destination] = destinations;
-  const articleFile = `${destination.replace(/^\/+/u, "")}/index.html`;
-  check(await exists(articleFile), `новая страница статьи существует: ${destination}`);
   const legacyFile = `${legacyPath.replace(/^\/+/u, "")}/index.html`;
   check(await exists(legacyFile), `страница перехода существует: ${legacyPath}`);
 }

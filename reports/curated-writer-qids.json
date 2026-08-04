@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-02T15:25:11.494Z",
+  "generatedAt": "2026-08-04T05:18:34.684Z",
   "summary": {
-    "writerRecords": 1767,
-    "uniqueLabels": 2764,
+    "writerRecords": 1766,
+    "uniqueLabels": 2765,
     "resolved": 1278,
     "resolvedWithPortrait": 1074,
-    "manualReview": 489,
-    "cachedLabels": 2764,
+    "manualReview": 488,
+    "cachedLabels": 2765,
     "failedBatches": 0
   },
   "manualReview": [
@@ -2455,14 +2455,7 @@
     },
     {
       "countryId": "portugal",
-      "writerId": "valter_hugo_mae_modern",
-      "name": "Валтер Угу Маи",
-      "birthYear": "1971",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "portugal",
-      "writerId": "valter_hugo_mae",
+      "writerId": "jose_rodrigues_dos_santos",
       "name": "Жозе Родригеш душ Сантуш",
       "birthYear": "1964",
       "reason": "exact-label-not-found"

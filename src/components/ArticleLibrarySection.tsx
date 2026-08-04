@@ -94,6 +94,14 @@ function publicationWord(count: number) {
   return "публикаций";
 }
 
+function applyBrandImageFallback(image: HTMLImageElement, title: string) {
+  if (image.dataset.fallbackApplied === "true") return;
+  image.dataset.fallbackApplied = "true";
+  image.classList.add("is-fallback");
+  image.alt = `Фирменная обложка материала «${title}»`;
+  image.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
+}
+
 function recommendationTerms(article: ArticleCatalogEntry) {
   return new Set(
     normalize(`${article.title} ${article.description}`)
@@ -148,7 +156,13 @@ function seriesFromAddress() {
   return requested || "all";
 }
 
-export default function ArticleLibrarySection() {
+type ArticleLibrarySectionProps = {
+  readerOnly?: boolean;
+};
+
+export default function ArticleLibrarySection({
+  readerOnly = false,
+}: ArticleLibrarySectionProps) {
   const { language, t, number } = useInterfaceLanguage();
   const [sectionId, setSectionId] = useState(sectionFromAddress);
   const [seriesId, setSeriesId] = useState(seriesFromAddress);
@@ -268,6 +282,31 @@ export default function ArticleLibrarySection() {
     window.dispatchEvent(new Event("probpera:navigation"));
     setSelected(null);
   };
+
+  if (readerOnly && selected) {
+    return (
+      <Suspense
+        fallback={
+          <div className="article-reader-suspense" role="status">
+            {t("Открываем режим чтения…")}
+          </div>
+        }
+      >
+        <ArticleReader
+          article={selected}
+          related={related}
+          previous={selectedIndex > 0 ? articleCatalog[selectedIndex - 1] : undefined}
+          next={
+            selectedIndex >= 0 && selectedIndex < articleCatalog.length - 1
+              ? articleCatalog[selectedIndex + 1]
+              : undefined
+          }
+          onClose={closeArticle}
+          onOpen={openArticle}
+        />
+      </Suspense>
+    );
+  }
 
   return (
     <>
@@ -390,17 +429,39 @@ export default function ArticleLibrarySection() {
                 >
                   <div className="library-card-image">
                     {article.imageUrl ? (
-                      <img
-                        src={article.imageUrl}
-                        alt={article.imageAlt || ""}
-                        loading="lazy"
-                      />
+                      <>
+                        <img
+                          className="library-card-image-backdrop"
+                          src={article.imageUrl}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                          decoding="async"
+                          onError={(event) => {
+                            event.currentTarget.hidden = true;
+                          }}
+                        />
+                        <img
+                          src={article.imageUrl}
+                          alt={
+                            article.imageAlt ||
+                            `Иллюстрация к материалу «${article.title}»`
+                          }
+                          loading="lazy"
+                          decoding="async"
+                          onError={(event) =>
+                            applyBrandImageFallback(event.currentTarget, article.title)
+                          }
+                        />
+                      </>
                     ) : (
                       <span aria-hidden="true">
                         <img
                           className="brand-fallback-logo"
                           src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
                           alt=""
+                          loading="lazy"
+                          decoding="async"
                         />
                       </span>
                     )}

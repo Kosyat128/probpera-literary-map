@@ -1086,6 +1086,7 @@ img {
   position: relative;
   display: grid;
   place-items: center;
+  box-sizing: border-box;
   width: 31px;
   height: 31px;
   padding: 0;
@@ -1139,12 +1140,14 @@ img {
 }
 
 .header-socials svg {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   display: block;
   flex: 0 0 auto;
   width: 16px;
   height: 16px;
+  margin: auto;
   overflow: visible;
   fill: currentColor;
   transform-origin: 50% 50%;
@@ -1224,20 +1227,29 @@ img {
   }
 }
 
-.header-socials .is-vk svg {
+.header-socials .is-vk svg,
+.share-links .is-vk svg {
+  transform: scale(0.92);
+}
+
+.header-socials .is-telegram svg,
+.share-links .is-telegram svg {
   transform: scale(0.94);
 }
 
-.header-socials .is-telegram svg {
-  transform: translate(-0.35px, 0.2px) scale(0.96);
+.header-socials .is-dzen svg,
+.share-links .is-dzen svg {
+  transform: scale(0.88);
 }
 
-.header-socials .is-ok svg {
-  transform: translateY(0.2px) scale(0.91);
+.header-socials .is-ok svg,
+.share-links .is-ok svg {
+  transform: scale(0.89);
 }
 
-.header-socials .is-boosty svg {
-  transform: translate(0.5px, 0.15px) scale(0.91);
+.header-socials .is-boosty svg,
+.share-links .is-boosty svg {
+  transform: scale(0.89);
 }
 
 .header-socials > span.is-disabled {
@@ -2520,24 +2532,24 @@ img {
 .archive-subscribe {
   position: relative;
   display: inline-flex;
-  gap: 10px;
+  gap: 9px;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  max-width: min(100%, 320px);
+  max-width: min(100%, 282px);
   min-height: 40px;
   margin: -3px 0 22px;
-  padding: 7px 15px 7px 8px;
+  padding: 6px 14px 6px 7px;
   overflow: hidden;
   color: #fff9f3;
   font-family: var(--sans);
-  font-size: clamp(10px, 1.15vw, 11px);
+  font-size: clamp(9.25px, 0.82vw, 10px);
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
-  font-weight: 650;
-  line-height: 1.35;
-  letter-spacing: 0.018em;
+  font-weight: 700;
+  line-height: 1.32;
+  letter-spacing: 0;
   text-transform: none;
   text-align: center;
   background:
@@ -2573,8 +2585,8 @@ img {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   color: #fff;
   background: rgba(74, 8, 98, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.42);
@@ -2583,8 +2595,8 @@ img {
 
 .archive-subscribe-icon svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   overflow: visible;
   fill: none;
   stroke: currentColor;
@@ -3257,10 +3269,23 @@ a.writer-nobel-medal:focus-visible {
   overflow: hidden;
   padding: 0;
   background: #261033;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
 }
 
 .book-cover.has-image::after {
   display: none;
+}
+
+.book-cover.has-image::before {
+  position: absolute;
+  inset: -14px;
+  z-index: 0;
+  content: "";
+  background: inherit;
+  filter: blur(18px) saturate(0.78) brightness(0.58);
+  transform: scale(1.08);
 }
 
 .book-cover.has-image > a,
@@ -3273,13 +3298,16 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .book-cover.has-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .book-cover.has-image small {
   position: absolute;
+  z-index: 2;
   right: 8px;
   bottom: 8px;
   left: 8px;
@@ -3573,6 +3601,12 @@ a.writer-nobel-medal:focus-visible {
   gap: 8px;
 }
 
+.archive-subscribe-label {
+  display: block;
+  max-width: 208px;
+  text-wrap: pretty;
+}
+
 .book-cover-credit {
   display: inline-flex;
   align-items: center;
@@ -3722,14 +3756,30 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .archive-book-cover.has-image {
+  overflow: hidden;
   padding: 0;
   background: #d9d2bb;
+  background-position: center;
+  background-size: cover;
+}
+
+.archive-book-cover-backdrop {
+  position: absolute !important;
+  inset: -12px;
+  z-index: 0 !important;
+  width: calc(100% + 24px) !important;
+  height: calc(100% + 24px) !important;
+  object-fit: cover !important;
+  filter: blur(16px) saturate(0.78) brightness(0.64);
+  transform: scale(1.08);
 }
 
 .archive-book-cover img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .archive-book-cover small {
@@ -3971,12 +4021,27 @@ a.writer-nobel-medal:focus-visible {
   overflow: hidden;
   padding: 0;
   aspect-ratio: 2 / 3;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.book-detail-cover.has-image::before {
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+  content: "";
+  background: inherit;
+  filter: blur(20px) saturate(0.78) brightness(0.62);
+  transform: scale(1.08);
 }
 
 .book-detail-cover img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .book-detail-cover small {
@@ -4336,29 +4401,61 @@ a.writer-nobel-medal:focus-visible {
 
 .article-image {
   position: relative;
-  min-height: 180px;
+  display: grid;
+  min-height: 0;
   overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background-color: #2b0c3d;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
 }
 
 .is-featured .article-image {
-  min-height: 330px;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.article-image-backdrop {
+  position: absolute !important;
+  inset: -16px;
+  z-index: 0 !important;
+  width: calc(100% + 32px) !important;
+  height: calc(100% + 32px) !important;
+  object-fit: cover !important;
+  filter: blur(22px) saturate(0.76) brightness(0.55);
+  transform: scale(1.08);
 }
 
 .article-image::after {
   position: absolute;
   inset: 0;
+  z-index: 2;
   content: "";
   background: linear-gradient(0deg, rgba(24, 4, 36, 0.52), transparent 55%);
 }
 
 .article-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 500ms ease;
 }
 
-.editorial-grid article:hover .article-image img {
+.article-image img.is-fallback,
+.library-card-image img.is-fallback {
+  align-self: center;
+  justify-self: center;
+  width: clamp(72px, 23%, 118px);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(18, 3, 29, 0.34);
+}
+
+.editorial-grid article:hover .article-image img:not(.article-image-backdrop) {
   transform: scale(1.035);
 }
 
@@ -4480,6 +4577,7 @@ a.writer-nobel-medal:focus-visible {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
+  box-sizing: border-box;
   width: 34px;
   min-width: 34px;
   height: 34px;
@@ -4523,10 +4621,12 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .share-links svg {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 16px;
   height: 16px;
-  margin: 0;
+  margin: auto;
   overflow: visible;
   fill: currentColor;
   transform: none;
@@ -5284,6 +5384,7 @@ a.writer-nobel-medal:focus-visible {
   position: relative;
   z-index: 2;
   display: grid;
+  grid-template-rows: auto minmax(2.08em, auto) minmax(4.74em, auto) 90px 66px auto;
   align-content: end;
   min-height: 100%;
   padding: 30px 62px 30px 30px;
@@ -5319,7 +5420,8 @@ a.writer-nobel-medal:focus-visible {
   display: -webkit-box;
   min-height: 2.08em;
   overflow: hidden;
-  margin: 74px 0 14px;
+  align-self: end;
+  margin: 18px 0 14px;
   font-family: var(--serif);
   font-size: 29px;
   font-weight: 400;
@@ -5384,7 +5486,8 @@ a.writer-nobel-medal:focus-visible {
   display: grid;
   gap: 4px;
   min-height: 48px;
-  margin-top: 16px;
+  width: 100%;
+  margin-top: 0;
   padding: 8px 10px 8px 14px;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.86);
@@ -6172,9 +6275,24 @@ a.writer-nobel-medal:focus-visible {
 
 .library-card-image {
   position: relative;
+  display: grid;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: linear-gradient(145deg, #5a1e4f, #f06e1c);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.library-card-image-backdrop {
+  position: absolute !important;
+  inset: -14px;
+  z-index: 0 !important;
+  width: calc(100% + 28px) !important;
+  height: calc(100% + 28px) !important;
+  object-fit: cover !important;
+  filter: blur(18px) saturate(0.8) brightness(0.62);
+  transform: scale(1.08);
 }
 
 .is-lead .library-card-image {
@@ -6184,18 +6302,21 @@ a.writer-nobel-medal:focus-visible {
 .library-card-image::after {
   position: absolute;
   inset: 0;
+  z-index: 2;
   content: "";
   background: linear-gradient(to top, rgba(13, 3, 22, 0.78), transparent 60%);
 }
 
 .library-card-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.article-library-grid article:hover .library-card-image img {
+.article-library-grid article:hover .library-card-image img:not(.library-card-image-backdrop) {
   transform: scale(1.035);
 }
 
@@ -6221,7 +6342,7 @@ a.writer-nobel-medal:focus-visible {
 
 .library-card-image small {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   right: 13px;
   bottom: 12px;
   left: 13px;
@@ -6714,27 +6835,144 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .article-resume-note {
-  display: flex;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding: 11px 14px;
+  margin-top: 22px;
+  padding: 14px 16px;
+  overflow: hidden;
   color: var(--reader-muted);
-  font: 700 10px/1.4 var(--sans);
-  background: color-mix(in srgb, var(--orange) 8%, var(--reader-paper));
+  font-family: var(--sans);
+  background:
+    radial-gradient(
+      circle at 0 0,
+      color-mix(in srgb, var(--orange) 16%, transparent),
+      transparent 42%
+    ),
+    color-mix(in srgb, var(--orange) 5%, var(--reader-paper));
   border: 1px solid color-mix(in srgb, var(--orange) 32%, transparent);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--reader-ink) 8%, transparent);
+}
+
+.article-resume-copy,
+.article-resume-actions,
+.article-resume-note button {
+  display: flex;
+  align-items: center;
+}
+
+.article-resume-copy {
+  gap: 12px;
+  min-width: 0;
+}
+
+.article-resume-copy > span:last-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.article-resume-copy strong {
+  overflow: hidden;
+  color: var(--reader-ink);
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article-resume-copy small {
+  color: var(--reader-muted);
+  font-size: 9px;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: 0.045em;
+}
+
+.article-resume-mark {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #fffaf3;
+  background: linear-gradient(145deg, var(--orange), var(--orange-deep));
+  border: 1px solid color-mix(in srgb, #fff 34%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--orange-deep) 24%, transparent);
+}
+
+.article-resume-mark svg,
+.article-resume-note button svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.article-resume-actions {
+  gap: 12px;
+}
+
+.article-resume-progress {
+  width: 82px;
+  height: 3px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--reader-muted) 16%, transparent);
+  border-radius: 999px;
+}
+
+.article-resume-progress i {
+  display: block;
+  width: var(--resume-progress);
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange-deep), var(--orange));
+  border-radius: inherit;
 }
 
 .article-resume-note button {
-  padding: 0;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 11px;
   color: var(--orange-deep);
-  font: inherit;
-  background: transparent;
-  border: 0;
+  font: 750 9px/1 var(--sans);
+  letter-spacing: 0.025em;
+  background: color-mix(in srgb, var(--orange) 7%, var(--reader-paper));
+  border: 1px solid color-mix(in srgb, var(--orange) 30%, transparent);
+  border-radius: 999px;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.article-resume-note button:hover,
+.article-resume-note button:focus-visible {
+  color: #fff;
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .article-resume-note {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .article-resume-actions {
+    justify-content: space-between;
+  }
+
+  .article-resume-progress {
+    flex: 1 1 auto;
+  }
 }
 
 .article-reader-cover {
@@ -6743,21 +6981,44 @@ a.writer-nobel-medal:focus-visible {
   margin: 38px 0 55px;
   aspect-ratio: 16 / 8.3;
   background: #2e143d;
+  background-position: center;
+  background-size: cover;
   border: 1px solid var(--reader-line);
   border-radius: 5px;
   box-shadow: 0 24px 60px color-mix(in srgb, var(--reader-bg) 48%, transparent);
 }
 
+.article-reader-cover::before {
+  position: absolute;
+  inset: -18px;
+  content: "";
+  background: inherit;
+  filter: blur(24px) saturate(0.78) brightness(0.54);
+  transform: scale(1.08);
+}
+
 .article-reader-cover img {
+  position: relative;
+  z-index: 3;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.article-reader-cover img.is-fallback {
+  width: clamp(96px, 18vw, 176px);
+  height: auto;
+  margin: auto;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(15, 3, 24, 0.45);
 }
 
 .article-reader-cover-button {
   position: relative;
-  display: block;
+  display: grid;
+  place-items: center;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -6954,6 +7215,8 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-content figure.article-inline-image {
   box-sizing: border-box;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
 }
 
 .article-reader-content figure.article-inline-image.is-wide {
@@ -7734,19 +7997,36 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .article-reader-more-image {
+  position: relative;
   display: grid;
   place-items: center;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   color: #fff;
   background: linear-gradient(145deg, #4f096f, #e85d0d);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.article-reader-more-image::before,
+.article-related-image::before {
+  position: absolute;
+  z-index: 0;
+  inset: -12px;
+  content: "";
+  background: inherit;
+  filter: blur(16px) saturate(0.76) brightness(0.58);
+  transform: scale(1.08);
 }
 
 .article-reader-more-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.86;
+  object-fit: contain;
+  opacity: 0.96;
   transition:
     opacity 220ms ease,
     transform 520ms ease;
@@ -7830,17 +8110,24 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .article-related-image {
-  display: block;
+  position: relative;
+  display: grid;
+  place-items: center;
   height: 86px;
   overflow: hidden;
   background: var(--reader-paper);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
 }
 
 .article-related-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.82;
+  object-fit: contain;
+  opacity: 0.94;
   transition:
     opacity 240ms ease,
     transform 500ms ease;
@@ -7923,6 +8210,17 @@ a.writer-nobel-medal:focus-visible {
   .article-reader-related {
     display: none;
   }
+}
+
+.article-reader-more-image img.is-fallback,
+.article-related-image img.is-fallback {
+  align-self: center;
+  justify-self: center;
+  width: 58px;
+  height: 58px;
+  margin: auto;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 @media (max-width: 1180px) {
@@ -9211,7 +9509,9 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .account-panel .account-library {
-  background: rgba(255, 255, 255, 0.035);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(246, 117, 24, 0.1), transparent 34%),
+    rgba(255, 255, 255, 0.035);
   border-color: rgba(255, 255, 255, 0.11);
 }
 
@@ -9221,7 +9521,13 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .account-panel .account-library article {
+  background: rgba(255, 255, 255, 0.025);
   border-color: rgba(255, 255, 255, 0.09);
+  border-left-color: rgba(246, 117, 24, 0.72);
+}
+
+.account-panel .account-library article:hover {
+  background-color: rgba(255, 255, 255, 0.055);
 }
 
 .account-panel .account-library > p {
@@ -10593,9 +10899,12 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .account-library {
   margin-top: 25px;
-  padding: 20px;
-  background: rgba(76, 15, 111, 0.045);
+  padding: clamp(20px, 3vw, 30px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(246, 117, 24, 0.08), transparent 34%),
+    rgba(76, 15, 111, 0.045);
   border: 1px solid rgba(76, 15, 111, 0.12);
+  border-radius: 4px;
 }
 
 .account-library > header {
@@ -10623,28 +10932,61 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .account-library > header > strong {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
   color: var(--orange-deep);
   font-family: var(--serif);
-  font-size: 27px;
+  font-size: 22px;
+  border: 1px solid rgba(246, 117, 24, 0.24);
+  border-radius: 50%;
+  background: rgba(246, 117, 24, 0.07);
 }
 
 .account-library > div {
   display: grid;
-  gap: 5px;
+  gap: 10px;
   max-height: 330px;
-  margin-top: 15px;
+  margin-top: 20px;
   overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 7px;
   scrollbar-color: rgba(246, 117, 24, 0.45) transparent;
 }
 
 .account-library article {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 11px;
-  align-items: stretch;
-  padding: 13px 0;
-  border-bottom: 1px solid rgba(76, 15, 111, 0.1);
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px 16px;
+  align-items: start;
+  min-height: 118px;
+  padding: 15px 16px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(76, 15, 111, 0.1);
+  border-left: 2px solid rgba(246, 117, 24, 0.58);
+  border-radius: 3px;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.account-library article:hover {
+  border-color: rgba(246, 117, 24, 0.34);
+  background-color: rgba(255, 255, 255, 0.72);
+  transform: translateY(-1px);
+}
+
+.account-library-index {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: color-mix(in srgb, var(--orange-deep) 82%, transparent);
+  font: 750 10px/1 var(--sans);
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(246, 117, 24, 0.18);
+  border-radius: 50%;
 }
 
 .account-library article a {
@@ -10653,6 +10995,11 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 5px;
   color: #351642;
   text-decoration: none;
+}
+
+.account-library article a:hover strong,
+.account-library article a:focus-visible strong {
+  color: var(--orange-deep);
 }
 
 .account-library article small {
@@ -10664,8 +11011,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .account-library article strong {
   font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.3;
+  font-size: clamp(15px, 1.45vw, 18px);
+  line-height: 1.28;
   overflow-wrap: anywhere;
 }
 
@@ -11641,8 +11988,8 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .subscription-summary {
-  margin-top: 18px;
-  padding-top: 16px;
+  margin-top: 24px;
+  padding-top: 22px;
   border-top: 1px solid rgba(76, 15, 111, 0.1);
 }
 
@@ -11653,23 +12000,49 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .subscription-summary > header strong {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
   color: var(--orange-deep);
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 18px;
+  border: 1px solid rgba(246, 117, 24, 0.2);
+  border-radius: 50%;
 }
 
 .subscription-summary > p,
 .subscription-summary > small {
   color: #826f87;
-  font-family: var(--serif);
-  font-size: 11px;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .subscription-summary > div {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.section-card-series-slot,
+.section-card-latest-slot {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+
+.section-card-series-slot {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 14px;
+  overflow: hidden;
+}
+
+.section-card-latest-slot {
+  display: flex;
+  align-items: flex-end;
 }
 
 .subscription-summary button {
@@ -11678,9 +12051,10 @@ html[data-theme="book"] .calendar-heading h3 {
   align-items: center;
   width: auto;
   height: auto;
-  padding: 7px 9px;
+  min-height: 36px;
+  padding: 8px 12px;
   color: #563064;
-  font: 700 9px/1 var(--sans);
+  font: 700 10px/1 var(--sans);
   background: rgba(255, 255, 255, 0.68);
   border: 1px solid rgba(76, 15, 111, 0.14);
   border-radius: 16px;
@@ -11699,31 +12073,61 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .account-library .library-actions {
-  display: flex;
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: minmax(0, 176px) 32px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 10px;
+  width: 100%;
   min-width: 0;
 }
 
 .account-library .library-actions label {
-  display: block;
+  display: grid;
+  gap: 5px;
   min-width: 0;
-  flex: 1 1 auto;
+}
+
+.library-status-label {
+  color: rgba(76, 15, 111, 0.58);
+  font: 750 7px/1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.account-panel .library-status-label {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.account-panel .subscription-summary > p,
+.account-panel .subscription-summary > small {
+  color: rgba(255, 255, 255, 0.52);
 }
 
 .account-library .library-actions select {
-  width: min(100%, 190px);
+  width: 100%;
   max-width: 100%;
   height: 32px;
   padding: 0 30px 0 11px;
-  color: #563064;
-  font: 800 9px/1 var(--sans);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.65);
+  color: #3c1b49;
+  font: 720 10px/1 var(--sans);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  background: #fff9f1;
   border: 1px solid rgba(76, 15, 111, 0.14);
   border-radius: 16px;
+}
+
+@media (max-width: 760px) {
+  .account-library article {
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .account-library .library-actions {
+    grid-column: 2;
+    grid-template-columns: minmax(0, 176px) 32px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -11737,6 +12141,24 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .account-library .library-actions select {
     width: 100%;
+  }
+
+  .account-library {
+    padding: 16px;
+  }
+
+  .account-library article {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .account-library-index {
+    display: none;
+  }
+
+  .account-library .library-actions {
+    grid-column: 1;
+    grid-template-columns: minmax(0, 1fr) 32px;
   }
 }
 
@@ -12913,7 +13335,8 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .is-featured .article-image {
-    min-height: 250px;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
   }
 
   .author-showcase {
@@ -12932,6 +13355,16 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .section-directory-card {
     min-height: 245px;
+  }
+
+  .section-directory-card > div {
+    grid-template-rows: repeat(6, auto);
+    padding: 26px 24px;
+  }
+
+  .section-card-series-slot:empty,
+  .section-card-latest-slot:empty {
+    display: none;
   }
 
   .calendar-heading {
