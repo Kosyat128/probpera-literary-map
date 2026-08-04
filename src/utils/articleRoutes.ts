@@ -40,8 +40,13 @@ export function humanSlug(value: string) {
     .slice(0, 115);
 }
 
-export function articleSeoSlug(articleId: string, title: string) {
+function legacyArticleSeoSlug(articleId: string, title: string) {
   return `${humanSlug(title) || "material"}-${shortStableHash(articleId)}`;
+}
+
+export function articleSeoSlug(articleId: string, title: string) {
+  void articleId;
+  return humanSlug(title) || "material";
 }
 
 export function articleSectionSlug(sectionId?: string) {
@@ -100,7 +105,8 @@ export function articleIdFromPath(
     (item) =>
       item.id === routeSegment ||
       item.slug === routeSegment ||
-      articleSeoSlug(item.id, item.title) === routeSegment
+      articleSeoSlug(item.id, item.title) === routeSegment ||
+      legacyArticleSeoSlug(item.id, item.title) === routeSegment
   );
   return article?.id || null;
 }

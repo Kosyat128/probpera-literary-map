@@ -146,15 +146,6 @@ function legacyPublishedAt(label?: string) {
   ).toISOString();
 }
 
-function stableSuffix(value: string) {
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return (hash >>> 0).toString(36).slice(0, 6);
-}
-
 function legacyPath(value?: string) {
   if (!value) return null;
   try {
@@ -228,7 +219,7 @@ export async function importLegacyArticlesAction() {
     );
     const payload = batch.map((article, index) => {
       const categorySlug = legacyCategoryBySection[article.sectionId || ""];
-      const slug = `${createSlug(article.title) || "material"}-${stableSuffix(article.id)}`;
+      const slug = createSlug(article.title) || "material";
       const path = legacyPath(article.url);
       return {
         legacy_id: article.id,
@@ -606,9 +597,20 @@ export async function duplicateArticleAction(formData: FormData) {
     redirect(`/articles?error=${encodeURIComponent(sourceError?.message || "Статья не найдена")}`);
   }
 
-  const copySlug = createSlug(
-    `${source.slug}-kopiya-${Date.now().toString(36).slice(-5)}`
-  ).slice(0, 179);
+  const copySlugBase = createSlug(`${source.slug}-kopiya`).slice(0, 170);
+  const { data: existingCopies } = await supabase
+    .from("articles")
+    .select("slug")
+    .like("slug", `${copySlugBase}%`);
+  const usedCopySlugs = new Set(
+    (existingCopies || []).map((article) => String(article.slug || ""))
+  );
+  let copySlug = copySlugBase;
+  let copyNumber = 2;
+  while (usedCopySlugs.has(copySlug)) {
+    copySlug = `${copySlugBase}-${copyNumber}`;
+    copyNumber += 1;
+  }
   const { data: copy, error } = await supabase
     .from("articles")
     .insert({

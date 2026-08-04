@@ -52,15 +52,6 @@ function slugify(value) {
     .join("").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 170);
 }
 
-function shortStableHash(value) {
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return (hash >>> 0).toString(36).slice(0, 6);
-}
-
 function parsePublishedLabel(label = "") {
   const match = label.match(/(\d{1,2})\s+([А-ЯЁ]+)\s+(\d{4})/u);
   if (!match || !(match[2] in months)) return null;
@@ -109,7 +100,7 @@ for (const article of selected) {
     cover_external_url: article.imageUrl || null,
     cover_alt: article.imageUrl ? `Иллюстрация к статье «${article.title}»` : "",
     status: "published",
-    slug: `${slugify(article.title) || "material"}-${shortStableHash(article.id)}`,
+    slug: slugify(article.title) || "material",
     legacy_path: legacyPath,
     published_at: parsePublishedLabel(article.publishedLabel) || new Date().toISOString(),
     seo_title: article.title,

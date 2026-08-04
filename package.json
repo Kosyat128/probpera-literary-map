@@ -43,6 +43,7 @@
     "content:social:preview": "node scripts/publish-social-content.mjs --dry-run",
     "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
     "content:export:cms": "node scripts/export-published-content.mjs",
+    "content:normalize:cms": "node scripts/normalize-cms-publications.mjs",
     "links:audit": "node scripts/audit-public-routes.mjs",
     "media:audit": "node scripts/audit-section-media.mjs",
     "media:audit:legacy": "node scripts/audit-legacy-article-media.mjs",

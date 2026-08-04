@@ -62,15 +62,6 @@ function cdata(value = "") {
   return `<![CDATA[${String(value).replaceAll("]]>", "]]]]><![CDATA[>")}]]>`;
 }
 
-function shortStableHash(value) {
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return (hash >>> 0).toString(36).slice(0, 6);
-}
-
 function humanSlug(value = "") {
   return value
     .toLocaleLowerCase("ru")
@@ -86,7 +77,7 @@ function articleSlug(article) {
   if (article.slug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(article.slug)) {
     return article.slug;
   }
-  return `${humanSlug(article.title) || "material"}-${shortStableHash(article.id)}`;
+  return humanSlug(article.title) || "material";
 }
 
 function articleSectionSlug(article) {
@@ -383,6 +374,15 @@ for (const article of catalog) {
     destination: publicPath,
     permanent: true,
   });
+  if (article.sourceSlug && article.sourceSlug !== slug) {
+    const previousPublicPath = `/stati/${articleSectionSlug(article)}/${article.sourceSlug}`;
+    redirectRules.push({
+      source: previousPublicPath,
+      destination: publicPath,
+      permanent: true,
+    });
+    await writeRedirectPage(previousPublicPath, canonicalUrl);
+  }
   try {
     const legacyUrl = new URL(article.url);
     const legacySource = legacyUrl.pathname.replace(/\/+$/, "") || "/";

@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
+import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -138,10 +139,66 @@ function headingSlug(value) {
     .slice(0, 72);
 }
 
-function prepareArticleDocument(contentHtml) {
+function shortStableHash(value = "") {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36).slice(0, 6);
+}
+
+function publicArticleSlug(article) {
+  const sourceSlug = String(article.slug || "").trim();
+  if (article.legacy_id) {
+    const technicalSuffix = `-${shortStableHash(String(article.legacy_id))}`;
+    if (sourceSlug.endsWith(technicalSuffix)) {
+      return sourceSlug.slice(0, -technicalSuffix.length);
+    }
+  }
+  return sourceSlug.replace(/-kopiya-[a-z0-9]{5}$/u, "-kopiya");
+}
+
+function imageAltLooksTechnical(value = "") {
+  const normalized = String(value).replace(/\s+/gu, " ").trim();
+  return (
+    !normalized ||
+    /^[a-f0-9]{8}(?:[\s-][a-f0-9]{4}){3}[\s-][a-f0-9]{12}$/iu.test(
+      normalized
+    ) ||
+    /^(?:img|image|photo|upload)[-_\s]*\d+/iu.test(normalized)
+  );
+}
+
+function prepareArticleDocument(contentHtml, articleTitle = "") {
   const $ = load(`<main id="cms-article-root">${contentHtml || ""}</main>`, {
     decodeEntities: false,
   });
+
+  $("#cms-article-root h2, #cms-article-root h3, #cms-article-root h4, #cms-article-root p").each(
+    (_index, element) => {
+      const text = $(element).text().replace(/\u00a0/gu, " ").trim();
+      if (!text && $(element).find("img").length === 0) $(element).remove();
+    }
+  );
+
+  $("#cms-article-root p").each((_index, element) => {
+    const current = $(element);
+    const next = current.next("p");
+    if (!next.length) return;
+    const leftText = current.text().trim();
+    const rightText = next.text().trim();
+    const shortBrokenWord = leftText.match(/^([\p{L}]{1,4})$/u)?.[1];
+    if (
+      shortBrokenWord &&
+      /^[\p{Ll}]/u.test(rightText) &&
+      !/[.!?…:;»)]$/u.test(leftText)
+    ) {
+      current.html(`${current.html() || ""}${next.html() || ""}`);
+      next.remove();
+    }
+  });
+
   const usedIds = new Set();
   const headings = [];
 
@@ -166,6 +223,26 @@ function prepareArticleDocument(contentHtml) {
       });
     }
   );
+
+  $("#cms-article-root img").each((index, element) => {
+    const image = $(element);
+    const currentAlt = image.attr("alt") || "";
+    if (imageAltLooksTechnical(currentAlt)) {
+      const sectionTitle = image
+        .prevAll("h2, h3, h4")
+        .first()
+        .text()
+        .replace(/\s+/gu, " ")
+        .trim();
+      image.attr(
+        "alt",
+        sectionTitle
+          ? `Иллюстрация к разделу «${sectionTitle}»`
+          : `Иллюстрация ${index + 1} к статье «${articleTitle}»`
+      );
+    }
+    if (!image.attr("loading")) image.attr("loading", "lazy");
+  });
 
   const plainText = $("#cms-article-root")
     .text()
@@ -291,11 +368,14 @@ const [
 const mediaLookup = new Map(mediaAssets.map((media) => [media.id, media]));
 const articleDocuments = [];
 
-const articles = rawArticles.map((article) => {
+const articles = rawArticles.map((rawArticle) => {
+  const article = applyEditorialPublicationFix(rawArticle);
   const category = relationValue(article.categories);
   const sectionId = category?.slug || "literary-essays";
   const sectionLabel = category?.name || "Материалы";
-  const document = prepareArticleDocument(article.content_html);
+  const sourceSlug = article.slug;
+  const slug = publicArticleSlug(article);
+  const document = prepareArticleDocument(article.content_html, article.title);
   const wordCount = document.plainText
     ? document.plainText.split(/\s+/gu).length
     : 0;
@@ -303,7 +383,7 @@ const articles = rawArticles.map((article) => {
   const imageUrl = article.cover_external_url || storageUrl(coverMedia) || undefined;
   const ogImageUrl = storageUrl(mediaById(mediaLookup, article.og_media_id)) || imageUrl;
   const id = `cms-${article.id}`;
-  const publicPath = articlePublicPath(article.slug, sectionId);
+  const publicPath = articlePublicPath(slug, sectionId);
   const canonicalUrl = `${siteOrigin}${publicPath}/`;
   const legacyPath = article.legacy_path || null;
   const description =
@@ -317,11 +397,14 @@ const articles = rawArticles.map((article) => {
     legacyPath,
     url: canonicalUrl,
     canonicalUrl,
-    slug: article.slug,
+    slug,
+    sourceSlug: sourceSlug !== slug ? sourceSlug : undefined,
     title: article.title,
     description,
     imageUrl,
-    imageAlt: article.cover_alt || coverMedia?.alt_text || "",
+    imageAlt: imageAltLooksTechnical(article.cover_alt || coverMedia?.alt_text)
+      ? `Иллюстрация к статье «${article.title}»`
+      : article.cover_alt || coverMedia?.alt_text || "",
     sectionId,
     sectionLabel,
     publishedLabel: publicationLabel(article.published_at),

@@ -8,6 +8,7 @@ import { articlePublicPath } from "../../utils/articleRoutes";
 export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   source?: "legacy" | "cms";
   slug?: string;
+  sourceSlug?: string;
   legacyId?: string | null;
   legacyPath?: string | null;
   documentPath?: string;
