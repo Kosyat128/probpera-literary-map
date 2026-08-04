@@ -39,6 +39,8 @@
     "content:normalize-book-titles": "node scripts/normalize-generated-book-titles.mjs",
     "content:link-books": "node scripts/build-book-article-mentions.mjs",
     "content:publish-scheduled": "node scripts/publish-scheduled-content.mjs",
+    "content:social:publish": "node scripts/publish-social-content.mjs",
+    "content:social:preview": "node scripts/publish-social-content.mjs --dry-run",
     "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
     "content:export:cms": "node scripts/export-published-content.mjs",
     "links:audit": "node scripts/audit-public-routes.mjs",

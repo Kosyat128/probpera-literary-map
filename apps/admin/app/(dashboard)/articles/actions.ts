@@ -525,6 +525,21 @@ export async function saveArticleAction(formData: FormData) {
 
   let publicationState: "started" | "queued" | "queue-error" | null = null;
   if (parsed.data.status === "published") {
+    if (isNewRelease) {
+      await supabase.from("admin_audit_log").insert({
+        actor_id: session.user.id,
+        action: "social_publish.requested",
+        entity_type: "article",
+        entity_id: articleId,
+        metadata: {
+          article_id: articleId,
+          title: parsed.data.title,
+          slug: savedSlug,
+          platforms: ["vk", "ok", "dzen"],
+          requested_at: now,
+        },
+      });
+    }
     const build = await triggerPublicBuild("article.published");
     const { error: queueError } = await supabase.from("admin_audit_log").insert({
       actor_id: session.user.id,

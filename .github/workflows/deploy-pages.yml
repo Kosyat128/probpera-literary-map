@@ -133,3 +133,37 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+  distribute:
+    name: Distribute published articles
+    if: needs.build.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - deploy
+
+    steps:
+      - name: Checkout social publisher
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js for social publishing
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Publish pending articles to VK, OK and Dzen feed
+        continue-on-error: true
+        run: npm run content:social:publish
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          PUBLIC_SITE_URL: https://probpera.ru
+          SOCIAL_REQUIRED_PLATFORMS: vk,ok,dzen
+          SOCIAL_BOOTSTRAP_LATEST: "true"
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
+          OK_GROUP_ID: ${{ secrets.OK_GROUP_ID }}
+          OK_APPLICATION_KEY: ${{ secrets.OK_APPLICATION_KEY }}
+          OK_ACCESS_TOKEN: ${{ secrets.OK_ACCESS_TOKEN }}
+          OK_SESSION_SECRET_KEY: ${{ secrets.OK_SESSION_SECRET_KEY }}
+          DZEN_RSS_URL: https://probpera.ru/rss.xml

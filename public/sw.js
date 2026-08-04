@@ -1,5 +1,5 @@
 /* Proba Pera first-party offline shell. Editorial data remains network-first. */
-const CACHE_VERSION = "probpera-v1";
+const CACHE_VERSION = "probpera-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const scopeUrl = new URL(self.registration.scope);
@@ -12,7 +12,6 @@ self.addEventListener("install", (event) => {
       .open(STATIC_CACHE)
       .then((cache) =>
         Promise.allSettled([
-          cache.add(scoped("/")),
           cache.add(scoped("/site.webmanifest")),
           cache.add(scoped("/brand/probpera-logo.png")),
         ])
@@ -45,7 +44,6 @@ async function networkFirst(request) {
   } catch {
     return (
       (await cache.match(request)) ||
-      (await caches.match(scoped("/"))) ||
       Response.error()
     );
   }

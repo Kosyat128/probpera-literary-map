@@ -58,6 +58,10 @@ function xmlEscape(value = "") {
     .replaceAll("'", "&apos;");
 }
 
+function cdata(value = "") {
+  return `<![CDATA[${String(value).replaceAll("]]>", "]]]]><![CDATA[>")}]]>`;
+}
+
 function shortStableHash(value) {
   let hash = 2166136261;
   for (let index = 0; index < value.length; index += 1) {
@@ -224,6 +228,7 @@ await fs.writeFile(path.join(distDirectory, "index.html"), homeDocument.html(), 
 
 const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
 const redirectRules = [];
+const rssEntries = [];
 
 for (const [source, destination] of legacyLandingRedirects) {
   const targetUrl = `${siteUrl}${destination}`;
@@ -252,6 +257,14 @@ for (const article of catalog) {
   const socialTitle = article.ogTitle || article.title;
   const socialDescription = article.ogDescription || description;
   const socialImageUrl = article.ogImageUrl || imageUrl;
+
+  rssEntries.push({
+    ...article,
+    articleUrl: canonicalUrl,
+    description,
+    imageUrl: socialImageUrl,
+    contentHtml: safeArticleHtml(document.contentHtml),
+  });
 
   $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
   $('meta[name="description"]').attr("content", description);
@@ -490,17 +503,32 @@ ${sitemapEntries
 await fs.writeFile(path.join(distDirectory, "sitemap.xml"), sitemap, "utf8");
 
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Проба Пера — литературный журнал</title>
   <link>${siteUrl}/</link>
+  <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
   <description>Авторские статьи о книгах, писателях и мировой литературе.</description>
   <language>ru</language>
-${catalog.slice(0, 40).map((article) => {
-  const articleUrl = `${siteUrl}${articlePublicPath(article)}/`;
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${rssEntries.slice(0, 40).map((article) => {
+  const publishedAt = article.publishedAt
+    ? new Date(article.publishedAt).toUTCString()
+    : new Date().toUTCString();
+  const contentHtml = `${
+    article.imageUrl
+      ? `<figure><img src="${xmlEscape(article.imageUrl)}" alt="${xmlEscape(article.imageAlt || article.title)}"></figure>`
+      : ""
+  }${article.contentHtml}`;
   return `  <item>
-    <title>${xmlEscape(article.title)}</title><link>${articleUrl}</link>
-    <guid isPermaLink="true">${articleUrl}</guid>
+    <title>${xmlEscape(article.title)}</title><link>${article.articleUrl}</link>
+    <guid isPermaLink="true">${article.articleUrl}</guid>
+    <pubDate>${publishedAt}</pubDate>
     <description>${xmlEscape(article.description || "")}</description>
+    <content:encoded>${cdata(contentHtml)}</content:encoded>
+    ${article.imageUrl ? `<media:content url="${xmlEscape(article.imageUrl)}" medium="image" />` : ""}
     <category>${xmlEscape(article.sectionLabel)}</category>
   </item>`;
 }).join("\n")}
