@@ -1,18 +1,26 @@
 import { redirect as nextRedirect } from "next/navigation";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
-const configuredBasePath = process.env.ADMIN_BASE_PATH?.trim() ?? "/admin";
-
-export const adminBasePath =
-  configuredBasePath === "" || configuredBasePath === "/"
-    ? ""
-    : `/${configuredBasePath.replace(/^\/+|\/+$/gu, "")}`;
+export const adminBasePath = getAdminBasePathFromEnv(
+  process.env.ADMIN_BASE_PATH
+);
 
 export function withAdminBasePath(destination: string) {
-  // Next applies `basePath` to internal redirects itself. Prefixing it here
-  // produces `/admin/admin/...` after Server Actions.
-  return destination;
+  if (!destination) return destination;
+
+  const normalized = destination.trim();
+  if (
+    normalized.startsWith("http://") ||
+    normalized.startsWith("https://") ||
+    normalized.startsWith("mailto:") ||
+    normalized.startsWith("#")
+  ) {
+    return normalized;
+  }
+
+  return normalized;
 }
 
 export function redirect(destination: string): never {
-  nextRedirect(destination);
+  nextRedirect(withAdminBasePath(destination));
 }

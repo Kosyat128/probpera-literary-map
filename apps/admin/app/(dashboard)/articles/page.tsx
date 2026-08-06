@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { articleEditPath } from "@/lib/admin-routes";
@@ -13,7 +13,7 @@ import {
   softDeleteArticleAction,
 } from "./actions";
 
-export const metadata = { title: "Статьи" };
+export const metadata = { title: "РЎС‚Р°С‚СЊРё" };
 
 const PAGE_SIZE = 40;
 
@@ -34,7 +34,7 @@ function relationValue<T>(value: unknown) {
 
 export default async function ArticlesPage({
   searchParams,
-}: {
+  }: {
   searchParams: Promise<{
     q?: string;
     status?: string;
@@ -46,6 +46,7 @@ export default async function ArticlesPage({
     imported?: string;
     skipped?: string;
     error?: string;
+    published?: string;
   }>;
 }) {
   const values = await searchParams;
@@ -151,28 +152,38 @@ export default async function ArticlesPage({
     <>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">Редакционный архив</span>
-          <h1>Статьи</h1>
+          <span className="eyebrow">Р РµРґР°РєС†РёРѕРЅРЅС‹Р№ Р°СЂС…РёРІ</span>
+          <h1>РЎС‚Р°С‚СЊРё</h1>
           <p>
-            Поиск по тексту, фильтры, реальные просмотры, предпросмотр,
-            дублирование, публикация и история версий.
+            РџРѕРёСЃРє РїРѕ С‚РµРєСЃС‚Сѓ, С„РёР»СЊС‚СЂС‹, СЂРµР°Р»СЊРЅС‹Рµ РїСЂРѕСЃРјРѕС‚СЂС‹, РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ,
+            РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ, РїСѓР±Р»РёРєР°С†РёСЏ Рё РёСЃС‚РѕСЂРёСЏ РІРµСЂСЃРёР№.
           </p>
         </div>
         <div className="editor-actions">
           <form action={importLegacyArticlesAction}>
-            <ConfirmSubmitButton message="Перенести в редактор только отсутствующие статьи из публичного архива? Уже отредактированные материалы не будут перезаписаны.">
-              Перенести старый архив
+            <ConfirmSubmitButton message="РџРµСЂРµРЅРµСЃС‚Рё РІ СЂРµРґР°РєС‚РѕСЂ С‚РѕР»СЊРєРѕ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РёРµ СЃС‚Р°С‚СЊРё РёР· РїСѓР±Р»РёС‡РЅРѕРіРѕ Р°СЂС…РёРІР°? РЈР¶Рµ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅС‹Рµ РјР°С‚РµСЂРёР°Р»С‹ РЅРµ Р±СѓРґСѓС‚ РїРµСЂРµР·Р°РїРёСЃР°РЅС‹.">
+              РџРµСЂРµРЅРµСЃС‚Рё СЃС‚Р°СЂС‹Р№ Р°СЂС…РёРІ
             </ConfirmSubmitButton>
           </form>
-          <Link className="button" href="/articles/new">＋ Новая статья</Link>
+          <Link className="button" href="/articles/new">пј‹ РќРѕРІР°СЏ СЃС‚Р°С‚СЊСЏ</Link>
         </div>
       </header>
 
       {values.error && <p className="form-message">{values.error}</p>}
       {values.imported !== undefined && (
         <p className="form-message form-success">
-          Архив синхронизирован: добавлено {Number(values.imported) || 0}, уже
-          находилось в редакторе {Number(values.skipped) || 0}.
+          РђСЂС…РёРІ СЃРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°РЅ: РґРѕР±Р°РІР»РµРЅРѕ {Number(values.imported) || 0}, СѓР¶Рµ
+          РЅР°С…РѕРґРёР»РѕСЃСЊ РІ СЂРµРґР°РєС‚РѕСЂРµ {Number(values.skipped) || 0}.
+        </p>
+      )}
+      {values.published === "started" && (
+        <p className="form-message form-success">
+          Публикация запущена. Изменения отправлены на публикацию.
+        </p>
+      )}
+      {values.published === "queue-error" && (
+        <p className="form-message form-error">
+          Публикация поставлена в очередь вручную.
         </p>
       )}
 
@@ -183,54 +194,54 @@ export default async function ArticlesPage({
             type="search"
             name="q"
             defaultValue={q}
-            placeholder="Поиск по заголовку и тексту…"
-            aria-label="Поиск статей"
+            placeholder="РџРѕРёСЃРє РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ Рё С‚РµРєСЃС‚СѓвЂ¦"
+            aria-label="РџРѕРёСЃРє СЃС‚Р°С‚РµР№"
           />
-          <select name="status" defaultValue={status} aria-label="Статус">
-            <option value="">Все статусы</option>
+          <select name="status" defaultValue={status} aria-label="РЎС‚Р°С‚СѓСЃ">
+            <option value="">Р’СЃРµ СЃС‚Р°С‚СѓСЃС‹</option>
             {Object.entries(articleStatusLabels).map(([value, label]) => (
               <option key={value} value={value}>{label}</option>
             ))}
           </select>
-          <select name="category" defaultValue={category} aria-label="Рубрика">
-            <option value="">Все рубрики</option>
+          <select name="category" defaultValue={category} aria-label="Р СѓР±СЂРёРєР°">
+            <option value="">Р’СЃРµ СЂСѓР±СЂРёРєРё</option>
             {categories.map((item) => (
               <option key={item.id} value={item.id}>{item.name}</option>
             ))}
           </select>
-          <input type="date" name="from" defaultValue={from} aria-label="Дата от" />
-          <input type="date" name="to" defaultValue={to} aria-label="Дата до" />
-          <select name="sort" defaultValue={sort} aria-label="Сортировка">
-            <option value="updated">Недавно изменённые</option>
-            <option value="published">По дате публикации</option>
-            <option value="title">По заголовку</option>
+          <input type="date" name="from" defaultValue={from} aria-label="Р”Р°С‚Р° РѕС‚" />
+          <input type="date" name="to" defaultValue={to} aria-label="Р”Р°С‚Р° РґРѕ" />
+          <select name="sort" defaultValue={sort} aria-label="РЎРѕСЂС‚РёСЂРѕРІРєР°">
+            <option value="updated">РќРµРґР°РІРЅРѕ РёР·РјРµРЅС‘РЅРЅС‹Рµ</option>
+            <option value="published">РџРѕ РґР°С‚Рµ РїСѓР±Р»РёРєР°С†РёРё</option>
+            <option value="title">РџРѕ Р·Р°РіРѕР»РѕРІРєСѓ</option>
           </select>
-          <button className="button-secondary" type="submit">Применить</button>
-          <Link className="button-secondary" href="/articles">Сбросить</Link>
+          <button className="button-secondary" type="submit">РџСЂРёРјРµРЅРёС‚СЊ</button>
+          <Link className="button-secondary" href="/articles">РЎР±СЂРѕСЃРёС‚СЊ</Link>
         </form>
 
         <div className="table-summary">
-          <span>Найдено: {total.toLocaleString("ru-RU")}</span>
-          <span>Страница {currentPage} из {totalPages}</span>
+          <span>РќР°Р№РґРµРЅРѕ: {total.toLocaleString("ru-RU")}</span>
+          <span>РЎС‚СЂР°РЅРёС†Р° {currentPage} РёР· {totalPages}</span>
         </div>
-        {error && <p className="form-message">Не удалось загрузить список: {error.message}</p>}
+        {error && <p className="form-message">РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ СЃРїРёСЃРѕРє: {error.message}</p>}
         {!error && articles.length === 0 ? (
           <div className="empty-state">
             <div>
-              <p>Материалы с такими условиями не найдены.</p>
-              <Link className="button-secondary" href="/articles">Сбросить фильтры</Link>
+              <p>РњР°С‚РµСЂРёР°Р»С‹ СЃ С‚Р°РєРёРјРё СѓСЃР»РѕРІРёСЏРјРё РЅРµ РЅР°Р№РґРµРЅС‹.</p>
+              <Link className="button-secondary" href="/articles">РЎР±СЂРѕСЃРёС‚СЊ С„РёР»СЊС‚СЂС‹</Link>
             </div>
           </div>
         ) : (
           <table className="data-table article-table">
             <thead>
               <tr>
-                <th>Материал</th>
-                <th>Рубрика и автор</th>
-                <th>Статус</th>
-                <th>Даты</th>
-                <th>Просмотры</th>
-                <th>Действия</th>
+                <th>РњР°С‚РµСЂРёР°Р»</th>
+                <th>Р СѓР±СЂРёРєР° Рё Р°РІС‚РѕСЂ</th>
+                <th>РЎС‚Р°С‚СѓСЃ</th>
+                <th>Р”Р°С‚С‹</th>
+                <th>РџСЂРѕСЃРјРѕС‚СЂС‹</th>
+                <th>Р”РµР№СЃС‚РІРёСЏ</th>
               </tr>
             </thead>
             <tbody>
@@ -246,12 +257,12 @@ export default async function ArticlesPage({
                       <Link
                         className="article-list-title"
                         href={articleEditPath(article.id)}
-                        aria-label={`Открыть статью «${article.title}» в редакторе`}
+                        aria-label={`РћС‚РєСЂС‹С‚СЊ СЃС‚Р°С‚СЊСЋ В«${article.title}В» РІ СЂРµРґР°РєС‚РѕСЂРµ`}
                       >
                         {article.cover_external_url ? (
                           <img src={article.cover_external_url} alt="" />
                         ) : (
-                          <span aria-hidden="true">П</span>
+                          <span aria-hidden="true">Рџ</span>
                         )}
                         <span className="data-title">
                           <strong>{article.title}</strong>
@@ -261,9 +272,9 @@ export default async function ArticlesPage({
                     </td>
                     <td>
                       <span className="data-title">
-                        <strong>{articleCategory?.name || "Без рубрики"}</strong>
+                        <strong>{articleCategory?.name || "Р‘РµР· СЂСѓР±СЂРёРєРё"}</strong>
                         <small>
-                          {profileNames.get(article.author_id) || "Редакция «Пробы Пера»"}
+                          {profileNames.get(article.author_id) || "Р РµРґР°РєС†РёСЏ В«РџСЂРѕР±С‹ РџРµСЂР°В»"}
                         </small>
                       </span>
                     </td>
@@ -277,8 +288,8 @@ export default async function ArticlesPage({
                         <strong>{formatDate(article.updated_at, true)}</strong>
                         <small>
                           {article.published_at
-                            ? `опубликована ${formatDate(article.published_at)}`
-                            : `создана ${formatDate(article.created_at)}`}
+                            ? `РѕРїСѓР±Р»РёРєРѕРІР°РЅР° ${formatDate(article.published_at)}`
+                            : `СЃРѕР·РґР°РЅР° ${formatDate(article.created_at)}`}
                         </small>
                       </span>
                     </td>
@@ -286,28 +297,37 @@ export default async function ArticlesPage({
                     <td>
                       <div className="row-actions">
                         <Link className="button article-edit-action" href={articleEditPath(article.id)}>
-                          Редактировать
+                          Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ
                         </Link>
                         <Link className="button-secondary" href={`/articles/${article.id}/preview`}>
-                          Просмотр
+                          РџСЂРѕСЃРјРѕС‚СЂ
                         </Link>
                         <form action={duplicateArticleAction}>
                           <input type="hidden" name="id" value={article.id} />
-                          <button className="button-secondary" type="submit">Создать копию</button>
+                          <button className="button-secondary" type="submit">РЎРѕР·РґР°С‚СЊ РєРѕРїРёСЋ</button>
                         </form>
+                        {article.status !== "published" && (
+                          <form action={changeArticleStatusAction}>
+                            <input type="hidden" name="id" value={article.id} />
+                            <input type="hidden" name="status" value="published" />
+                            <button className="button" type="submit">
+                              Опубликовать
+                            </button>
+                          </form>
+                        )}
                         {article.status === "published" && (
                           <form action={changeArticleStatusAction}>
                             <input type="hidden" name="id" value={article.id} />
                             <input type="hidden" name="status" value="hidden" />
-                            <ConfirmSubmitButton message="Снять статью с публикации? Адрес и история сохранятся.">
-                              Снять
+                            <ConfirmSubmitButton message="РЎРЅСЏС‚СЊ СЃС‚Р°С‚СЊСЋ СЃ РїСѓР±Р»РёРєР°С†РёРё? РђРґСЂРµСЃ Рё РёСЃС‚РѕСЂРёСЏ СЃРѕС…СЂР°РЅСЏС‚СЃСЏ.">
+                              РЎРЅСЏС‚СЊ
                             </ConfirmSubmitButton>
                           </form>
                         )}
                         <form action={softDeleteArticleAction}>
                           <input type="hidden" name="id" value={article.id} />
-                          <ConfirmSubmitButton message="Переместить статью в корзину? Данные останутся восстановимыми.">
-                            В корзину
+                          <ConfirmSubmitButton message="РџРµСЂРµРјРµСЃС‚РёС‚СЊ СЃС‚Р°С‚СЊСЋ РІ РєРѕСЂР·РёРЅСѓ? Р”Р°РЅРЅС‹Рµ РѕСЃС‚Р°РЅСѓС‚СЃСЏ РІРѕСЃСЃС‚Р°РЅРѕРІРёРјС‹РјРё.">
+                            Р’ РєРѕСЂР·РёРЅСѓ
                           </ConfirmSubmitButton>
                         </form>
                       </div>
@@ -319,13 +339,13 @@ export default async function ArticlesPage({
           </table>
         )}
         {totalPages > 1 && (
-          <nav className="pagination" aria-label="Страницы списка">
+          <nav className="pagination" aria-label="РЎС‚СЂР°РЅРёС†С‹ СЃРїРёСЃРєР°">
             {currentPage > 1 && (
-              <Link href={pageLink(linkValues, currentPage - 1)}>← Назад</Link>
+              <Link href={pageLink(linkValues, currentPage - 1)}>в†ђ РќР°Р·Р°Рґ</Link>
             )}
             <span>{currentPage} / {totalPages}</span>
             {currentPage < totalPages && (
-              <Link href={pageLink(linkValues, currentPage + 1)}>Вперёд →</Link>
+              <Link href={pageLink(linkValues, currentPage + 1)}>Р’РїРµСЂС‘Рґ в†’</Link>
             )}
           </nav>
         )}

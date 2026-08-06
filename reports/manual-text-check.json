@@ -1,0 +1,2604 @@
+{
+  "generatedAt": "2026-08-05T04:34:44.946223Z",
+  "scope": {
+    "json_files": 166,
+    "ts_files": 284
+  },
+  "summary": {
+    "html_entity": 16,
+    "too_many_spaces": 150,
+    "double_space": 132,
+    "leading_trailing_space": 6,
+    "too_short": 13,
+    "mojibake": 7,
+    "empty": 39,
+    "placeholder": 4
+  },
+  "items": {
+    "html_entity": [
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-04270881-bde0-4833-82bf-aeeaffec152f.json",
+        "context": "cms:cms-04270881-bde0-4833-82bf-aeeaffec152f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Предисловие</strong><br><br>1901 год для Нобелевской премии стал первым в своей истории. Та, самая перва номинация по литературе, вызывает не мало споров до сих пор, в особенности после того, как нашего велича",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json",
+        "context": "cms:cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Баба-яга – одна из популярнейших сказочных персонажей не только в нашей стране, но и в мире. В самом деле, кто не читал сказок о дряхлой колдунье, летающей на",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-67892186-c9dd-49f2-895e-ee6e4cfcca88.json",
+        "context": "cms:cms-67892186-c9dd-49f2-895e-ee6e4cfcca88.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Водяной — один из наиболее ярких и таинственных духов славянской мифологии, олицетворяющий власть водной стихии, её непредсказуемость, глубину и изменчивость.",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6cd590f0-bcca-4fc7-b32c-312f1a3855bf.json",
+        "context": "cms:cms-6cd590f0-bcca-4fc7-b32c-312f1a3855bf.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Предисловие</strong><br><br>Нобелевская премия – безоговорочно самая престижная международная премия, присуждаемая ежегодно за инновационные изобретения, за крупный вклад в культуру, в развитие общества и миро",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-78382bfd-16f7-4e93-a407-529b4412209f.json",
+        "context": "cms:cms-78382bfd-16f7-4e93-a407-529b4412209f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>1908 год стал для литературного мира довольно богатым на знаковые произведения известных классиков мировой литературы. В этот год были опубликованы романы: «Дуна",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json",
+        "context": "cms:cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Имя Дэвида Митчелла чаще всего связывают с его головоломным, многослойным романом «Облачный атлас», о которым мы уже ни раз упоминали ранее и даже делали на него <a href",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7f6a35a0-bca4-4315-a1c1-7982188643a1.json",
+        "context": "cms:cms-7f6a35a0-bca4-4315-a1c1-7982188643a1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Научно-фантастический роман Майкла Крайтона «Парк юрского периода» был опубликован в 1990 году. Книга очень быстро стала мировым бестселлером благодаря необычному ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json",
+        "context": "cms:cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение<br><br></h2> <div>Жар-птица — очень узнаваемый и один из самых символически насыщенных образов славянского фольклора. В сказках Жар-птица предстает как дивное существо, сияющее огненн",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-853e776d-8af9-4eee-ae90-2430a568d4ad.json",
+        "context": "cms:cms-853e776d-8af9-4eee-ae90-2430a568d4ad.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Предисловие</strong><br><br>Леший – довольно популярный сказочный персонаж, различные интерпретации образа которого находят место в произведениях классических известных авторов, таких как И.П. Тургенев, П.А. В",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-950430de-f001-4de4-8b8f-854d0703750a.json",
+        "context": "cms:cms-950430de-f001-4de4-8b8f-854d0703750a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Домовой – один из древнейших персонажей славянской мифологии. Архаические представления о духах предков рождали у людей потребность в создании образа существа",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b869fd35-ef6d-4b2f-b9d2-66768e52c7b3.json",
+        "context": "cms:cms-b869fd35-ef6d-4b2f-b9d2-66768e52c7b3.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Введение</strong><br><br>Джек Лондон – по-настоящему удивительный автор. За относительно короткую жизнь (умер Лондон в 40), он написал и издал более 40 книг (включающих 200+ рассказов и 20+ романов и повестей)",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-dcbb3d16-6817-4016-8715-e6c7a42f3f33.json",
+        "context": "cms:cms-dcbb3d16-6817-4016-8715-e6c7a42f3f33.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Предисловие</strong><br><br>После прочтения творения А.О. Эксвемелина «Пираты Америки» и работы над статьёй, которую я опубликовал ранее на сайте, в какой-то момент я вспомнил о классических историях о морских",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-df0e0863-989f-4361-92bb-067b81bd80ab.json",
+        "context": "cms:cms-df0e0863-989f-4361-92bb-067b81bd80ab.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Кикимора – довольно известная в славянском фольклоре фигура, являющаяся воплощением беспорядка и хаоса. Стоит только вспомнить пугающий образ кикиморы в мультфил",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f46301a6-7a47-430a-945b-f5f57e9c3a8f.json",
+        "context": "cms:cms-f46301a6-7a47-430a-945b-f5f57e9c3a8f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p><strong>Предисловие</strong><br><br>Сформировавшийся в 30-е годы прошлого века на территории СССР образ современного Деда Мороза со своей неизменной спутницей — внучкой Снегурочкой для многих является символом праздни",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f5f4a78c-c63e-47ca-9fed-a86ca98aead7.json",
+        "context": "cms:cms-f5f4a78c-c63e-47ca-9fed-a86ca98aead7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<p>Одним сентябрьским солнечным днём, я, по обыкновению, не спеша прогуливался по парку после занятий в университете. Череда пышно-растущих кустов сирени и гортензии, создающие своеобразную живую изгородь, еще пахли лето",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json",
+        "context": "cms:cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Совсем недавно мы поговорили о популярном романе Джека Лондона под названием «Морской волк», в основе которой лежали личные впечатления автора от работы на промы",
+        "line": null
+      }
+    ],
+    "too_many_spaces": [
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0683d7e5-ce88-4ead-8169-ac8cd6c2ac44.json",
+        "context": "cms:cms-0683d7e5-ce88-4ead-8169-ac8cd6c2ac44.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Иногда произведения, которые не стали сильно популярными у читателей, оказываются особенно интересными для понимания творчества писателя. В таких работах автор нер",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-06db011a-c3ba-42f7-bd2d-3f23c1efd5a2.json",
+        "context": "cms:cms-06db011a-c3ba-42f7-bd2d-3f23c1efd5a2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Продолжение рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой сегодня мы расскажем о знаковых писателях Мексики, прославивши",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0743e614-19bc-4c3d-8eba-7d43fac78d58.json",
+        "context": "cms:cms-0743e614-19bc-4c3d-8eba-7d43fac78d58.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1922 – год постепенного восстановления Европы после потрясений Первой мировой войны. Несмотря на сохранявшиеся политические и экономические трудности, культурная жиз",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0dbf557e-7ae8-44e4-9162-3fba1171ad46.json",
+        "context": "cms:cms-0dbf557e-7ae8-44e4-9162-3fba1171ad46.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild3737-3939-4430-b030-376363363033/photo.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «Десять лучших книг Джека Лондо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json",
+        "context": "cms:cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Чем наш словарный запас богаче, тем точнее мы выражаем свои мысли и глубже понимаем собеседников. Мы продолжаем вместе открывать редкие, выразительные и незаслужен",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-13723645-4457-4386-9d66-8b94f4b90743.json",
+        "context": "cms:cms-13723645-4457-4386-9d66-8b94f4b90743.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild3432-3531-4166-a135-353431386564/image.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «13 по-настоящему жутких сказок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-13fcac96-6673-4722-abaf-b94e8b74bce9.json",
+        "context": "cms:cms-13fcac96-6673-4722-abaf-b94e8b74bce9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Эдгара Аллана По является одной из самых престижных и известных литературных наград в мире детективной, криминальной и мистической литературы. Она при",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-16f91094-24da-43cc-a327-a42d159f1273.json",
+        "context": "cms:cms-16f91094-24da-43cc-a327-a42d159f1273.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Герберт Уэллс – английский писатель и публицист, известный своими научно-фантастическими романами вроде «Война миров», «Человек – невидимка», «Остров доктора Моро»",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7.json",
+        "context": "cms:cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославившие свою родину» и сегодня поговорим о Китае — одной из древнейших цивилизаций мира,",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-192bc665-3461-422c-adee-d25fb394385c.json",
+        "context": "cms:cms-192bc665-3461-422c-adee-d25fb394385c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><strong></strong><br>Так повелось, что среднестатистический читатель во все времена воспринимал и запоминал в основном только наиболее знаковые, яркие, удобные, легко ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1a4545ba-b530-4865-a042-db321e0c0bfe.json",
+        "context": "cms:cms-1a4545ba-b530-4865-a042-db321e0c0bfe.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>«Бог путешествует инкогнито» — широко известное произведение французского писателя Лорана Гунеля. В отличие от многих классических психологических романов, произведе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1deff1a9-02ba-46f7-a8e9-1128b8cfeb16.json",
+        "context": "cms:cms-1deff1a9-02ba-46f7-a8e9-1128b8cfeb16.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Пауль Йохан Людвиг фон Хейзе – писатель, который стал первым и единственным немецким автором XIX века, получившим признание от Комитета Нобелевской премии за своё тв",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc.json",
+        "context": "cms:cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><strong></strong><br>Цикл романов «В поисках утраченного времени» Марселя Пруста стал одним из самых грандиозных событий в искусстве XX века. Однако литературный путь пи",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1fd8b11b-d3db-41c8-9e31-f84e7a15f7df.json",
+        "context": "cms:cms-1fd8b11b-d3db-41c8-9e31-f84e7a15f7df.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-мужик-и-чёрт-2\"><br>1. Мужик и чёрт</h2> <div><br>Однажды мужик обнаруживает на своём поле груду раскалённых углей, а на них — маленького чёрта, охраняю",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-21687156-2b33-46cc-ae07-2e5b057e8bfb.json",
+        "context": "cms:cms-21687156-2b33-46cc-ae07-2e5b057e8bfb.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Уолт Уитмен — один из ключевых поэтов XIX века, оказавший значительное влияние на развитие не только американской, но и мировой литературы. Его творчество стало пово",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2191b0d7-0682-4277-97dc-1550e1fefb6c.json",
+        "context": "cms:cms-2191b0d7-0682-4277-97dc-1550e1fefb6c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Относительно недавно, мы поговорили о книге Дэвида Митчелла «Облачный атлас», придя в итоге к выводу, что роман получился более, чем достойным чтивом. В обзоре м",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-22c7eab8-cf9d-4824-8311-3680a4d88714.json",
+        "context": "cms:cms-22c7eab8-cf9d-4824-8311-3680a4d88714.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Сюжет книги Мигеля де Сервантеса «Хитроумный идальго Дон Кихот Ламанчский» или просто «Дон Кихота» вкратце знают даже те, кто никогда не притрагивался к сему произве",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-258c48f5-693d-482c-a9af-ddb7582c20e8.json",
+        "context": "cms:cms-258c48f5-693d-482c-a9af-ddb7582c20e8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Хорхе Луиса Борхеса, чаще всего вспоминают за его самые знаменитые тексты, вроде «Алеф», «Библиотека Вавилона» или «Тлён, Укбар, Орбис Терциус». Однако за пределам",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2755ab7e-79b5-455d-960c-927f113deab6.json",
+        "context": "cms:cms-2755ab7e-79b5-455d-960c-927f113deab6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1917 год пришёлся на один из самых тяжёлых периодов Первой мировой войны. Европа продолжала жить в условиях военного истощения, политической нестабильности и глубоко",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-28e0b1ca-0589-4308-8f1d-37bc556adf7f.json",
+        "context": "cms:cms-28e0b1ca-0589-4308-8f1d-37bc556adf7f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века стало временем активного культурного обмена, духовных поисков и стремления объединить разные культурные традиции. Европейская литература переживала в ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2aa1069c-1650-4e51-b05a-dd95020c63fc.json",
+        "context": "cms:cms-2aa1069c-1650-4e51-b05a-dd95020c63fc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Синклер Льюис – один из величайших прозаиков XX века, удостоенный в 1930 году Нобелевской премии за свой грандиозный вклад в мировую литературу – шедевральный рома",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2b448602-1854-4e2b-8834-d4357b87d39e.json",
+        "context": "cms:cms-2b448602-1854-4e2b-8834-d4357b87d39e.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Анри Бейль (известный всему миру под псевдонимом Стендаль) — человек, имя которого прочно связано с формированием европейского психологического реализма. Все его про",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2c74fe14-83b3-4e0f-b785-91f388253141.json",
+        "context": "cms:cms-2c74fe14-83b3-4e0f-b785-91f388253141.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Адаптация литературной классики на экраны — довольно непростая задача для кинематографистов. Одни режиссёры стремятся максимально точно следовать первоисточнику, д",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2ddfc4f0-3ed5-4977-9a9b-755084de8007.json",
+        "context": "cms:cms-2ddfc4f0-3ed5-4977-9a9b-755084de8007.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Кощей Бессмертный – один из центральных персонажей славянской мифологии и русских сказок. Ужасающий костлявый старикан, который нагонял страх на детей, встав ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-325c4f5f-fa01-4a12-a8bc-4fc821e643a9.json",
+        "context": "cms:cms-325c4f5f-fa01-4a12-a8bc-4fc821e643a9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1920 год стал более светлым и стабильным годом в Европе после разрушительной Первой Мировой войны. И несмотря на значительные сложности в политическом и экономическо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45.json",
+        "context": "cms:cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века в Европе стало временем не только художественных открытий, но и глубоких духовных и нравственных кризисов. Внезапно разразившаяся Первая мировая война",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-38b8fd02-517b-46bc-8856-3b01029df49a.json",
+        "context": "cms:cms-38b8fd02-517b-46bc-8856-3b01029df49a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Роман «Война миров» — одно из самых известных произведений научной фантастики конца XIX века, которое до сих пор является эталоном жанра. Признаюсь, что лично пр",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90.json",
+        "context": "cms:cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Русский язык хранит в себе тысячи удивительных слов, которые со временем выходят из повседневного употребления. Некоторые исчезают из повседневной речи почти полно",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4027fa55-2fe1-47e6-9ba7-25d989d35773.json",
+        "context": "cms:cms-4027fa55-2fe1-47e6-9ba7-25d989d35773.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века стало временем глубоких социальных изменений, напряжённых общественных дискуссий и переоценки художественных ценностей. В литературе Европы стремитель",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4299dd33-ed9a-43de-a516-9b51f748f654.json",
+        "context": "cms:cms-4299dd33-ed9a-43de-a516-9b51f748f654.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Фернанду Пессоа — должно быть самая необычная и загадочная фигура мировой литературы XX века. На сегодняшний день его считают величайшим португальским поэтом XX века",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace.json",
+        "context": "cms:cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Анри Барбюс — прославленный французский писатель, журналист, общественный деятель, лауреат Гонкурской премии, который обрёл мировую популярность благодаря романам ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-434a6065-f94b-454b-9aef-74a7899110be.json",
+        "context": "cms:cms-434a6065-f94b-454b-9aef-74a7899110be.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Чехов, Достоевский, Толстой, Пушкин, Лермонтов – имена этих великих мэтров литературного ремесла известны всем от мала до велика. Но всегда ли они мечтали быть пис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-441c0ade-da86-44a7-a633-c64e78fa3cfc.json",
+        "context": "cms:cms-441c0ade-da86-44a7-a633-c64e78fa3cfc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\"><br>Предисловие</h2> \n <h2 id=\"chapter-1-темная-материя-блейк-крауч-2\"><br>1. «Темная материя», Блейк Крауч</h2> <div><br>Физик Джейсон Дессен оказывается похищен бандой неизвестных людей и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json",
+        "context": "cms:cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Баба-яга – одна из популярнейших сказочных персонажей не только в нашей стране, но и в мире. В самом деле, кто не читал сказок о дряхлой колдунье, летающей на",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json",
+        "context": "cms:cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Наследие Антона Павловича Чехова, в виде его коротких рассказов, занимает и по сей день особое место в русской литературе, сочетая в себе удивительную правдивость ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json",
+        "context": "cms:cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Вий стал известным персонажем благодаря одноимённой повести писателя Николая Васильевича Гоголя, однако литературная интерпретация лишь частично опирается на нар",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4d91ec58-4818-4d85-8dc4-a57d41b09a74.json",
+        "context": "cms:cms-4d91ec58-4818-4d85-8dc4-a57d41b09a74.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня обращаемся к Японии – Стране восходящего солнца, где литера",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4ffabfeb-6944-424f-ad27-bc8294f752f1.json",
+        "context": "cms:cms-4ffabfeb-6944-424f-ad27-bc8294f752f1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Русские писатели и поэты известны прежде всего своими литературными произведениями, однако многие из них до начала творческой деятельности или параллельно с ней ра",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5025240c-26c0-44fb-9a8a-be0805b9a07d.json",
+        "context": "cms:cms-5025240c-26c0-44fb-9a8a-be0805b9a07d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Язык — это не просто средство общения, а инструмент влияния, убеждения и самовыражения. Чем точнее и богаче вы подбираете слова, тем убедительнее звучит ваша мысль",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5319a440-63c2-4a53-b450-37e70fad86e5.json",
+        "context": "cms:cms-5319a440-63c2-4a53-b450-37e70fad86e5.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Сегодня в новом выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы расскажем о выдающихся писателях из Швеции — страны, подар",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-54405e9a-a00f-46b3-9c97-11d9b1bd0122.json",
+        "context": "cms:cms-54405e9a-a00f-46b3-9c97-11d9b1bd0122.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Роман «Куда приводят мечты» — по-настоящему особенное произведение в творчестве американского писателя Ричард Матесона. В отличие от его намного более известного п",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-55abaca9-3f74-4d63-af93-1c2239f2166d.json",
+        "context": "cms:cms-55abaca9-3f74-4d63-af93-1c2239f2166d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня обращаемся к Японии – Стране восходящего солнца, где литера",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5c2d5330-2150-4eaa-a0bf-8dfb2f1c6364.json",
+        "context": "cms:cms-5c2d5330-2150-4eaa-a0bf-8dfb2f1c6364.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия ПЕН/Фолкнера — авторитетная независимая литературная награда в США, присуждаемая за достижения в области художественной прозы. Она занимает особое мес",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-61e757ca-2604-43a2-a5c4-e0010be8234a.json",
+        "context": "cms:cms-61e757ca-2604-43a2-a5c4-e0010be8234a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие<br><br></h2> <div><br>Большинство героев русского эпоса возникли не на пустом месте. Как и персонажи сказок, они вобрали в себя представления древних людей о мире, опасностях пр",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        "context": "cms:cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«О мышах и людях» — популярная повесть американского писателя Джона Стейнбека, впервые опубликованная в 1937 году. В произведении автор обращается к темам одиночес",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-632e6175-8dc4-42e0-9646-a7123ffb2f8d.json",
+        "context": "cms:cms-632e6175-8dc4-42e0-9646-a7123ffb2f8d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\"><br>Предисловие</h2> \n <h2 id=\"chapter-1-кладбище-домашних-животных-стивен-кинг-2\"><br>1. «Кладбище домашних животных», Стивен Кинг</h2> <div><br>Молодой врач Луис Крид вместе с семьёй пере",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-63a2015a-5364-4caa-b5e3-578897905b18.json",
+        "context": "cms:cms-63a2015a-5364-4caa-b5e3-578897905b18.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Многие знают имя Марио Пьюзо в связи с его эпохальным трудом «Крёстный отец» и продолжением «Сицилиец», в основе которых лежат первые две части трилогии Фрэнсиса Форда К",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-66b0d0e8-9a08-4f7e-bec4-9130c40f96d1.json",
+        "context": "cms:cms-66b0d0e8-9a08-4f7e-bec4-9130c40f96d1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>«Берегиня» — персонаж, перешедший к нам из славянского фольклора, многозначный образ которой, напрямую связан с представлениями о защите, покровительстве и охран",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-67892186-c9dd-49f2-895e-ee6e4cfcca88.json",
+        "context": "cms:cms-67892186-c9dd-49f2-895e-ee6e4cfcca88.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Водяной — один из наиболее ярких и таинственных духов славянской мифологии, олицетворяющий власть водной стихии, её непредсказуемость, глубину и изменчивость.",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae.json",
+        "context": "cms:cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Литературная слава редко бывает справедливой. История знает множество случаев, когда имя писателя намертво срастается с одним-двумя произведениями, превращаясь в с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-69fbc12b-0b39-46a7-b1f2-d9fe229442ea.json",
+        "context": "cms:cms-69fbc12b-0b39-46a7-b1f2-d9fe229442ea.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Бойцовский клуб» — культовый роман американского писателя Чака Паланика, опубликованный в 1996 году, который закономерно стал бестселлером. Книга Паланика высмеив",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d.json",
+        "context": "cms:cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Произведение «Остров» — последняя по-настоящему крупная работа английского писателя Олдоса Хаксли. Автор известен прежде всего благодаря другого культового романа ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6e8f5f8d-bb53-4c6e-b2e8-9bb8e0a7e2d1.json",
+        "context": "cms:cms-6e8f5f8d-bb53-4c6e-b2e8-9bb8e0a7e2d1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\"><br>Предисловие</h2> \n <h2 id=\"chapter-1-исчезнувшая-гиллиан-флинн-2\"><br>1. «Исчезнувшая» — Гиллиан Флинн</h2> <div><br>В день пятой годовщины свадьбы внезапно исчезает Эми Данн. В их доме",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-75067054-81b1-40e7-8bd4-3ac1b8296c02.json",
+        "context": "cms:cms-75067054-81b1-40e7-8bd4-3ac1b8296c02.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Сэр Вальтер Скотт, Артур Конан Дойл, Джек Лондон, Чарльз Диккенс, Ярослав Гашек — имена этих прославленных авторов уже давно стали неотъемлемой частью мировой куль",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
+        "context": "cms:cms-766846e2-a653-465e-a4b4-ce327a22696f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Когда мы говорим о Льве Николаевиче Толстом, то чаще всего в памяти всплывает его великие романы — «Война и мир» и «Анна Каренина». Но сила Толстого заключается не",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json",
+        "context": "cms:cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Упырь — архаичный устойчивый образ в славянской мифологии, тесно связанный с представлениями древних славян о смерти и посмертном существовании человека. В народ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json",
+        "context": "cms:cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Порой за судьбоносными, во всех смыслах прорывными произведениями гениального классика стоят не менее сильные работы, которые по ряду причин были довольно прохладн",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-78382bfd-16f7-4e93-a407-529b4412209f.json",
+        "context": "cms:cms-78382bfd-16f7-4e93-a407-529b4412209f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>1908 год стал для литературного мира довольно богатым на знаковые произведения известных классиков мировой литературы. В этот год были опубликованы романы: «Дуна",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-78a20eb3-a2f7-48c2-984d-26767eeacfb1.json",
+        "context": "cms:cms-78a20eb3-a2f7-48c2-984d-26767eeacfb1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild6431-6634-4365-a464-663933356538/image.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «13 по-настоящему жутких сказок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json",
+        "context": "cms:cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Имя Дэвида Митчелла чаще всего связывают с его головоломным, многослойным романом «Облачный атлас», о которым мы уже ни раз упоминали ранее и даже делали на него <a href",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7e0e0028-3f6a-45df-9aae-86f53dd9faa0.json",
+        "context": "cms:cms-7e0e0028-3f6a-45df-9aae-86f53dd9faa0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Эдгар Аллан По — именитый американский прозаик и поэт, которого многие запомнили за такие произведения, как «Ворона», «Падение дома Ашеров» или «Чёрный кот», напис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7fec1de9-7485-4e31-b4c1-16b67cb6bcad.json",
+        "context": "cms:cms-7fec1de9-7485-4e31-b4c1-16b67cb6bcad.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Премия принцессы Астурийской — это одна из наиболее значимых и уважаемых международных наград, присуждаемая ежегодно с 1981 года в Испании. Она была задумана как",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json",
+        "context": "cms:cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение<br><br></h2> <div>Жар-птица — очень узнаваемый и один из самых символически насыщенных образов славянского фольклора. В сказках Жар-птица предстает как дивное существо, сияющее огненн",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-82ca7464-9016-47cd-bffe-255c20987c05.json",
+        "context": "cms:cms-82ca7464-9016-47cd-bffe-255c20987c05.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1923 год стал временем постепенной стабилизации Европы после ужасов Первой мировой войны. Многие государства переживали период политических преобразований, а культур",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-87b4b7aa-de05-4849-9c44-e77622bb9dff.json",
+        "context": "cms:cms-87b4b7aa-de05-4849-9c44-e77622bb9dff.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div>Шведская писательница – Сельма Лагерлёф, подарившая нам сказочную повесть «Чудесное путешествие Нильса с дикими гусями» была широко известна, как в Европе, так и в СССР ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-897f7c9f-2c81-43fc-a238-d06a7d29db81.json",
+        "context": "cms:cms-897f7c9f-2c81-43fc-a238-d06a7d29db81.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1916 год пришёлся на самый разгар Первой мировой войны. Весь мир, по сути, находился в состоянии глубокого кризиса: многие писатели принимали участие в военных дейст",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8a73a389-5d53-40ca-8408-b42330369dc4.json",
+        "context": "cms:cms-8a73a389-5d53-40ca-8408-b42330369dc4.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8afa91cd-124a-4525-98f0-3f354374da86.json",
+        "context": "cms:cms-8afa91cd-124a-4525-98f0-3f354374da86.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Первая часть подборки из 25 уникальных слов закономерно вызвала интерес у аудитории и привлекла новых пользователей. И это неудивительно: целенаправленное расширен",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8d18ef3c-98b6-4728-8c83-857cea4e8df2.json",
+        "context": "cms:cms-8d18ef3c-98b6-4728-8c83-857cea4e8df2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», сегодня мы отправимся в Турцию — страну, находящуюся на границе Европы",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc.json",
+        "context": "cms:cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», и сегодня обращаемся к Индии — стране древней культуры, эпосов, филосо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8e74cc38-1e16-4661-961a-d6df5fd5e41a.json",
+        "context": "cms:cms-8e74cc38-1e16-4661-961a-d6df5fd5e41a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Как известно, слава и публикация многих трудов австрийского писателя чешского и еврейского происхождения Франца Кафки пришли для автора только после его смерти. До 2",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8fa390e5-db2d-450b-89c9-8db574179cfa.json",
+        "context": "cms:cms-8fa390e5-db2d-450b-89c9-8db574179cfa.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Древнегреческая мифология давно перестала быть лишь частью истории античного мира. Уже более двух тысяч лет её сюжеты вдохновляют писателей, художников, философов ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-94114f87-aeb3-4551-9150-d73c9c6a8774.json",
+        "context": "cms:cms-94114f87-aeb3-4551-9150-d73c9c6a8774.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы отправляемся в Италию — страну, без которой невозможно представить ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-950430de-f001-4de4-8b8f-854d0703750a.json",
+        "context": "cms:cms-950430de-f001-4de4-8b8f-854d0703750a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Домовой – один из древнейших персонажей славянской мифологии. Архаические представления о духах предков рождали у людей потребность в создании образа существа",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        "context": "cms:cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        "context": "cms:cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        "context": "cms:cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        "context": "cms:cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-виноваты-звезды-сша-2014-2\"><br>1. «Виноваты звезды» (США, 2014)<br><br></h2> <figure>  <img src=\"https://static.tildacdn.com/tild6165-6463-4661-b236-37",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-98d247c6-8e50-4959-8dab-3a44aa01b3ce.json",
+        "context": "cms:cms-98d247c6-8e50-4959-8dab-3a44aa01b3ce.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Книга «Ангелы ада» — одно из самых известных произведений американского писателя и журналиста Хантера С. Томпсона. Большинство читателей знают этого автора благодаря",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d.json",
+        "context": "cms:cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Недавно мы говорили о «Толковом словаре русского языка» С.И. Ожегова, о его фундаментальном значении и о влиянии словаря на развитие русского языка в стране в цело",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-9f6ef90b-c89d-45d4-97ee-e73908405013.json",
+        "context": "cms:cms-9f6ef90b-c89d-45d4-97ee-e73908405013.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Конец года – это всегда очень особенная, волшебная пора. Город вдруг наполняется огнями гирлянд и фонарей, в воздухе появляется ощущение ожидания чуда, а привычная",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a1285abc-3c95-45c7-b573-56860d5b2be6.json",
+        "context": "cms:cms-a1285abc-3c95-45c7-b573-56860d5b2be6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Эрнест Хемингуэй — классик американской и мировой литературы XX века, лауреат Нобелевской и Пулитцеровской премий, известный такими работами, как: «Старик и море»,",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        "context": "cms:cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        "context": "cms:cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        "context": "cms:cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        "context": "cms:cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-реквием-по-мечте-сша-2000-2\"><br>1. Реквием по мечте (США, 2000)<br><br></h2> <figure>  <img src=\"https://static.tildacdn.com/tild3539-3131-4430-b531-36",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json",
+        "context": "cms:cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Премия «Стрега» — одна из наиболее престижных и влиятельных литературных наград в Италии. Учреждённая в послевоенные годы, она сыграла важную роль в возрождении ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a834a7a4-2ba1-4818-8a56-7f6a393d63eb.json",
+        "context": "cms:cms-a834a7a4-2ba1-4818-8a56-7f6a393d63eb.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Даже самые знаменитые писатели оставили после себя произведения, которым не досталось той славы, что выпала их главным книгам. Одни оказались слишком необычными дл",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a842e019-25b3-464b-a084-64cb6a5357cf.json",
+        "context": "cms:cms-a842e019-25b3-464b-a084-64cb6a5357cf.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-код-да-винчи-дэн-браун-2\"><br>1. «Код да Винчи» — Дэн Браун</h2> <div><br>Роман рассказывает о профессоре Роберте Лэнгдоне, который оказывается втянут в",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ab81ed5a-e3fc-47df-a102-b77a79cfd32f.json",
+        "context": "cms:cms-ab81ed5a-e3fc-47df-a102-b77a79cfd32f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>XXI век подарил читателям множество выдающихся произведений, которые уже сегодня называют современной классикой. Многие из них были удостоены самых престижных лите",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b31b2773-5e92-4b45-b7d8-64fd6dd1ab7f.json",
+        "context": "cms:cms-b31b2773-5e92-4b45-b7d8-64fd6dd1ab7f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В свежем выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы познакомимся с выдающимися писателями Норвегии — страны велич",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b8976be2-9164-44b2-a420-3708fe58456b.json",
+        "context": "cms:cms-b8976be2-9164-44b2-a420-3708fe58456b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Книга «Как Гринч украл Рождество», опубликованная в 1957 году, по праву считается одной из самых знаковых рождественских историй в американской культуре. Её авто",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b9dda0bc-2aee-4c18-a600-3da88712dad3.json",
+        "context": "cms:cms-b9dda0bc-2aee-4c18-a600-3da88712dad3.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Международная премия Нойштадта — очень авторитетная и одна из наиболее влиятельных литературных наград в мире, учреждённая в далёком 1969 году, которая славится ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-bb2f17f3-e28c-4685-9170-d88dab8c4780.json",
+        "context": "cms:cms-bb2f17f3-e28c-4685-9170-d88dab8c4780.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Джек Лондон известен прежде всего как автор «Морского волка», «Мартина Идена», «Белого Клыка» и «Зова предков». Не секрет, что автор писал в жанре приключенческой ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-bfab93bb-8b92-406e-97a6-36e747da2184.json",
+        "context": "cms:cms-bfab93bb-8b92-406e-97a6-36e747da2184.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Полудница – одна из наиболее интересных персонажей в славянской мифологии. Действительно, в отличие от многих духов, связанных с ночью, лесом или водой, полудниц",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-c3f69185-8b67-4e01-9cfb-5e07c675d5b6.json",
+        "context": "cms:cms-c3f69185-8b67-4e01-9cfb-5e07c675d5b6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Георга Бюхнера — престижная и невероятно значимая для немецкоязычного мира литературная награда. Она присуждается писателям, создающим произведения ис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-c9e6011b-2214-4f5e-9cb3-8e86ae283604.json",
+        "context": "cms:cms-c9e6011b-2214-4f5e-9cb3-8e86ae283604.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Русалка в славянской мифологии занимает особенное место. В народном сознании русалка считалась не просто воплощением водяной девы (примерно так интерпретируют пе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cb93763f-3fe6-42ec-aefa-f58287922352.json",
+        "context": "cms:cms-cb93763f-3fe6-42ec-aefa-f58287922352.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Герман Мелвилл вписан в историю литературы, но не как успешный автор безоговорочного шедевра своего времени, а как один из самых трагических примеров позднего призна",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cb99e537-e502-4a9e-818d-b92a621a40f7.json",
+        "context": "cms:cms-cb99e537-e502-4a9e-818d-b92a621a40f7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1919 год стал временем серьёзных перемен для Европы. Первая мировая война завершилась в ноябре 1918 года, старые империи распались, а политическая карта континента н",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cc37237c-e70e-4edf-93ae-100494a4755c.json",
+        "context": "cms:cms-cc37237c-e70e-4edf-93ae-100494a4755c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Морис Полидор Мари Бернар Метерлинк – писатель, который в 1911 году стал первым бельгийским автором, удостоенным престижной награды Нобеля, внеся значительный вклад ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ccc8ef31-8506-4edb-90ba-31530c0a8433.json",
+        "context": "cms:cms-ccc8ef31-8506-4edb-90ba-31530c0a8433.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Ренодо (Prix Renaudot) – очень авторитетная и одна из престижнейших литературных наград Франции. Она традиционно присуждается французским писателям за",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cd7a575d-8930-4ef0-938d-e77179970554.json",
+        "context": "cms:cms-cd7a575d-8930-4ef0-938d-e77179970554.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Новый год и Рождество – по-настоящему особенный период. Это время чуда, внутреннего поворота, надежды и возвращения к самому важному: дому, любви, состраданию. В раз",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cd982a45-4204-4783-83e4-7b37d26541e7.json",
+        "context": "cms:cms-cd982a45-4204-4783-83e4-7b37d26541e7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В богатстве языка скрывается сила мысли, оттенки эмоций и неповторимость стиля. Чем шире наш словарный запас, тем точнее мы можем выражать идеи, передавать настрое",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cf79f627-e3cb-4a1e-acae-ec598821d892.json",
+        "context": "cms:cms-cf79f627-e3cb-4a1e-acae-ec598821d892.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Литературный канон зачастую формируется не только благодаря художественной силе произведения, но и по воле случая. Также немало важно угодить вкусу эпохи, да и уда",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d04ab831-977b-4c67-85c9-45b5dbff1876.json",
+        "context": "cms:cms-d04ab831-977b-4c67-85c9-45b5dbff1876.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Некоторые книги сразу же с первых страниц увлекают необычным сюжетом, напряжённой интригой и яркими героями, заставляя снова и снова откладывать все свои дела ради",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d3a561f0-a8d7-40e8-af97-85d9313ff30f.json",
+        "context": "cms:cms-d3a561f0-a8d7-40e8-af97-85d9313ff30f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Книга Ричарда Мэтисона «Я-легенда» вышедшая в далёком 1954 году произвела впечатление на многих, в том числе повлияла на именитых писателей, вроде Рэя Брэдбери и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6.json",
+        "context": "cms:cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Новая рубрика «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой мы расскажем о знаковых писателях со всех уголков земного шара, об и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d9ea37e8-720c-4c62-aa8c-dd93742049a9.json",
+        "context": "cms:cms-d9ea37e8-720c-4c62-aa8c-dd93742049a9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Утопия — Авеню» занимает в творчестве писателя Дэвида Митчелла по-настоящему особенное место. В отличии от «Облачного атласа» — интеллектуально выстроенного, мног",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86.json",
+        "context": "cms:cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Так бывает, что в тени великих и канонических романов прославленных классиков остаются произведения, которые по художественной силе ничуть им не уступают. Однако и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-df0e0863-989f-4361-92bb-067b81bd80ab.json",
+        "context": "cms:cms-df0e0863-989f-4361-92bb-067b81bd80ab.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Кикимора – довольно известная в славянском фольклоре фигура, являющаяся воплощением беспорядка и хаоса. Стоит только вспомнить пугающий образ кикиморы в мультфил",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e11799b3-a972-47d9-b5ee-3e94ce35ef14.json",
+        "context": "cms:cms-e11799b3-a972-47d9-b5ee-3e94ce35ef14.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Имя писателя Марка Твена знают все от мала до велика. Его гениальная книжка о приключениях Тома Сойера и верного товарища Гека Финна пестрит юморесками, перемежающ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b.json",
+        "context": "cms:cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>\"Форрест Гамп\" — роман американского писателя Уинстона Грума, впервые опубликованный в 1986 году. Это ироничная и местами откровенно абсурдная история о человеке с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e430f98c-666b-4aad-ac06-89285d5ec935.json",
+        "context": "cms:cms-e430f98c-666b-4aad-ac06-89285d5ec935.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1921 год стал временем постепенного восстановления Европы после разрушительных последствий Первой мировой войны. Несмотря на еще сохранявшиеся экономические трудност",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        "context": "cms:cms-e4bf2314-4621-48c4-9587-b4e88131412f.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        "context": "cms:cms-e4bf2314-4621-48c4-9587-b4e88131412f.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        "context": "cms:cms-e4bf2314-4621-48c4-9587-b4e88131412f.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        "context": "cms:cms-e4bf2314-4621-48c4-9587-b4e88131412f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-девушка-с-татуировкой-дракона-сша-швеция-2011-2\"><br>1. «Девушка с татуировкой дракона» (США, Швеция, 2011)<br><br></h2> <figure>  <img src=\"https://sta",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e55ff47c-b4dd-46d4-ab1c-a9ec3e36449b.json",
+        "context": "cms:cms-e55ff47c-b4dd-46d4-ab1c-a9ec3e36449b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Национальная книжная премия США — очень престижная и популярная литературная награда в Соединённых Штатах Америки, охватывающая широкий спектр литературных ж",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e74fbb1f-8298-46e3-b10e-8430883e851b.json",
+        "context": "cms:cms-e74fbb1f-8298-46e3-b10e-8430883e851b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Анри Барбюс – прославленный французский писатель, журналист и общественный деятель, опубликовавший свой во всех смыслах прорывной роман «Огонь» в самый разгар Первой мир",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e922551a-afd3-40e0-bcaf-17379de6bd9b.json",
+        "context": "cms:cms-e922551a-afd3-40e0-bcaf-17379de6bd9b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Роман «Война в воздухе» — одно из самых недооцененных и непопулярных произведений английского писателя Герберта Уэллса. Многие знают этого автора, благодаря таким ку",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2.json",
+        "context": "cms:cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Роман Фрэнсиса Скотта Фицджеральда «Великий Гэтсби», впервые был опубликован в 1925 году (примерно за 4 года до начала Великой депрессии в США) и до сих пор явля",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        "context": "cms:cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Старикам тут не место» — мрачный философский роман американского писателя Кормака Маккарти, впервые опубликованный в 2005 году. Это одно из двух наиболее известны",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f0dbc3cc-8e8a-4525-a566-b4ba84f23144.json",
+        "context": "cms:cms-f0dbc3cc-8e8a-4525-a566-b4ba84f23144.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Камоэнса — главная и наиболее престижная литературная награда португалоязычного мира. Она присуждается авторам, пишущим на португальском языке, и объе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json",
+        "context": "cms:cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Совсем недавно мы поговорили о популярном романе Джека Лондона под названием «Морской волк», в основе которой лежали личные впечатления автора от работы на промы",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json",
+        "context": "cms:cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В истории мировой литературы нередко случается так, что писатель становится известным благодаря одному — двум произведениям, которые в итоге становятся канонически",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f7db4224-c6ce-4c59-982e-5e5b0c1fa9fe.json",
+        "context": "cms:cms-f7db4224-c6ce-4c59-982e-5e5b0c1fa9fe.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Благородные корсары, беспощадные флибустьеры, внушающие ужас морские капитаны и храбрые искатели сокровищ вдохновляли писателей на протяжении нескольких столетий. ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ffbb6aef-f5f6-4643-a98c-a846b0b56f6f.json",
+        "context": "cms:cms-ffbb6aef-f5f6-4643-a98c-a846b0b56f6f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Страх и отвращение в Лас-Вегасе. Дикое путешествие в сердце Американской мечты» (в русском варианте звучит проще «Страх и ненависть в Лас-Вегасе») – скандальный р",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ffd09d2f-e6bc-4844-b71c-3c292c1c69af.json",
+        "context": "cms:cms-ffd09d2f-e6bc-4844-b71c-3c292c1c69af.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>В сегодняшнем выпуске «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы расскажем о выдающихся писателях из Южно-Африканской Республики — с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Виноваты звезды» (США, 2014) История любви двух смертельно больных подростков, основанная на одноимённом романе Джона Грина. Хейзел Грейс Ланкастер и Огастус Уотерс познакомились на встрече группы подде",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. «Девушка с татуировкой дракона» (США, Швеция, 2011) Киноадаптация романа-бестселлера, снятая по мотивам одноимённого произведения шведского писателя Стига Ларссона, рассказывает историю опального журнали",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:description",
+        "field": "description",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Предисловие \n 1. Реквием по мечте (США, 2000) Экранизация одноимённого романа Хьюберта Селби Младшего, рассказывающая о четырёх людях, чьи мечты и стремления постепенно разрушаются под влиянием тяжелых наркотиков. Фильм ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Strange Case of Dr Jekyll and Mr Hyde\r\n            \r\n                Collins Classics",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Le Dernier Jour DUn Condamne\r\n            \r\n                Librio Litterature",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Hunchback of NotreDame\r\n            \r\n                Tor Classics",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Divine Comedy\r\n            \r\n                Penguin Classics Deluxe Editio",
+        "line": null
+      }
+    ],
+    "double_space": [
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-06db011a-c3ba-42f7-bd2d-3f23c1efd5a2.json",
+        "context": "cms:cms-06db011a-c3ba-42f7-bd2d-3f23c1efd5a2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Продолжение рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой сегодня мы расскажем о знаковых писателях Мексики, прославивши",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0743e614-19bc-4c3d-8eba-7d43fac78d58.json",
+        "context": "cms:cms-0743e614-19bc-4c3d-8eba-7d43fac78d58.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1922 – год постепенного восстановления Европы после потрясений Первой мировой войны. Несмотря на сохранявшиеся политические и экономические трудности, культурная жиз",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0dbf557e-7ae8-44e4-9162-3fba1171ad46.json",
+        "context": "cms:cms-0dbf557e-7ae8-44e4-9162-3fba1171ad46.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild3737-3939-4430-b030-376363363033/photo.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «Десять лучших книг Джека Лондо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json",
+        "context": "cms:cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Чем наш словарный запас богаче, тем точнее мы выражаем свои мысли и глубже понимаем собеседников. Мы продолжаем вместе открывать редкие, выразительные и незаслужен",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-13723645-4457-4386-9d66-8b94f4b90743.json",
+        "context": "cms:cms-13723645-4457-4386-9d66-8b94f4b90743.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild3432-3531-4166-a135-353431386564/image.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «13 по-настоящему жутких сказок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-13fcac96-6673-4722-abaf-b94e8b74bce9.json",
+        "context": "cms:cms-13fcac96-6673-4722-abaf-b94e8b74bce9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Эдгара Аллана По является одной из самых престижных и известных литературных наград в мире детективной, криминальной и мистической литературы. Она при",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-16f91094-24da-43cc-a327-a42d159f1273.json",
+        "context": "cms:cms-16f91094-24da-43cc-a327-a42d159f1273.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Герберт Уэллс – английский писатель и публицист, известный своими научно-фантастическими романами вроде «Война миров», «Человек – невидимка», «Остров доктора Моро»",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7.json",
+        "context": "cms:cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославившие свою родину» и сегодня поговорим о Китае — одной из древнейших цивилизаций мира,",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-192bc665-3461-422c-adee-d25fb394385c.json",
+        "context": "cms:cms-192bc665-3461-422c-adee-d25fb394385c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><strong></strong><br>Так повелось, что среднестатистический читатель во все времена воспринимал и запоминал в основном только наиболее знаковые, яркие, удобные, легко ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1a4545ba-b530-4865-a042-db321e0c0bfe.json",
+        "context": "cms:cms-1a4545ba-b530-4865-a042-db321e0c0bfe.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>«Бог путешествует инкогнито» — широко известное произведение французского писателя Лорана Гунеля. В отличие от многих классических психологических романов, произведе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1deff1a9-02ba-46f7-a8e9-1128b8cfeb16.json",
+        "context": "cms:cms-1deff1a9-02ba-46f7-a8e9-1128b8cfeb16.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Пауль Йохан Людвиг фон Хейзе – писатель, который стал первым и единственным немецким автором XIX века, получившим признание от Комитета Нобелевской премии за своё тв",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc.json",
+        "context": "cms:cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><strong></strong><br>Цикл романов «В поисках утраченного времени» Марселя Пруста стал одним из самых грандиозных событий в искусстве XX века. Однако литературный путь пи",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-1fd8b11b-d3db-41c8-9e31-f84e7a15f7df.json",
+        "context": "cms:cms-1fd8b11b-d3db-41c8-9e31-f84e7a15f7df.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-мужик-и-чёрт-2\"><br>1. Мужик и чёрт</h2> <div><br>Однажды мужик обнаруживает на своём поле груду раскалённых углей, а на них — маленького чёрта, охраняю",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-21687156-2b33-46cc-ae07-2e5b057e8bfb.json",
+        "context": "cms:cms-21687156-2b33-46cc-ae07-2e5b057e8bfb.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Уолт Уитмен — один из ключевых поэтов XIX века, оказавший значительное влияние на развитие не только американской, но и мировой литературы. Его творчество стало пово",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2191b0d7-0682-4277-97dc-1550e1fefb6c.json",
+        "context": "cms:cms-2191b0d7-0682-4277-97dc-1550e1fefb6c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Относительно недавно, мы поговорили о книге Дэвида Митчелла «Облачный атлас», придя в итоге к выводу, что роман получился более, чем достойным чтивом. В обзоре м",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-258c48f5-693d-482c-a9af-ddb7582c20e8.json",
+        "context": "cms:cms-258c48f5-693d-482c-a9af-ddb7582c20e8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Хорхе Луиса Борхеса, чаще всего вспоминают за его самые знаменитые тексты, вроде «Алеф», «Библиотека Вавилона» или «Тлён, Укбар, Орбис Терциус». Однако за пределам",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2755ab7e-79b5-455d-960c-927f113deab6.json",
+        "context": "cms:cms-2755ab7e-79b5-455d-960c-927f113deab6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1917 год пришёлся на один из самых тяжёлых периодов Первой мировой войны. Европа продолжала жить в условиях военного истощения, политической нестабильности и глубоко",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-28e0b1ca-0589-4308-8f1d-37bc556adf7f.json",
+        "context": "cms:cms-28e0b1ca-0589-4308-8f1d-37bc556adf7f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века стало временем активного культурного обмена, духовных поисков и стремления объединить разные культурные традиции. Европейская литература переживала в ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2aa1069c-1650-4e51-b05a-dd95020c63fc.json",
+        "context": "cms:cms-2aa1069c-1650-4e51-b05a-dd95020c63fc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Синклер Льюис – один из величайших прозаиков XX века, удостоенный в 1930 году Нобелевской премии за свой грандиозный вклад в мировую литературу – шедевральный рома",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2b448602-1854-4e2b-8834-d4357b87d39e.json",
+        "context": "cms:cms-2b448602-1854-4e2b-8834-d4357b87d39e.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Анри Бейль (известный всему миру под псевдонимом Стендаль) — человек, имя которого прочно связано с формированием европейского психологического реализма. Все его про",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2c74fe14-83b3-4e0f-b785-91f388253141.json",
+        "context": "cms:cms-2c74fe14-83b3-4e0f-b785-91f388253141.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Адаптация литературной классики на экраны — довольно непростая задача для кинематографистов. Одни режиссёры стремятся максимально точно следовать первоисточнику, д",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-2ddfc4f0-3ed5-4977-9a9b-755084de8007.json",
+        "context": "cms:cms-2ddfc4f0-3ed5-4977-9a9b-755084de8007.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Кощей Бессмертный – один из центральных персонажей славянской мифологии и русских сказок. Ужасающий костлявый старикан, который нагонял страх на детей, встав ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-325c4f5f-fa01-4a12-a8bc-4fc821e643a9.json",
+        "context": "cms:cms-325c4f5f-fa01-4a12-a8bc-4fc821e643a9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1920 год стал более светлым и стабильным годом в Европе после разрушительной Первой Мировой войны. И несмотря на значительные сложности в политическом и экономическо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45.json",
+        "context": "cms:cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века в Европе стало временем не только художественных открытий, но и глубоких духовных и нравственных кризисов. Внезапно разразившаяся Первая мировая война",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-38b8fd02-517b-46bc-8856-3b01029df49a.json",
+        "context": "cms:cms-38b8fd02-517b-46bc-8856-3b01029df49a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Роман «Война миров» — одно из самых известных произведений научной фантастики конца XIX века, которое до сих пор является эталоном жанра. Признаюсь, что лично пр",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90.json",
+        "context": "cms:cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Русский язык хранит в себе тысячи удивительных слов, которые со временем выходят из повседневного употребления. Некоторые исчезают из повседневной речи почти полно",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4027fa55-2fe1-47e6-9ba7-25d989d35773.json",
+        "context": "cms:cms-4027fa55-2fe1-47e6-9ba7-25d989d35773.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Начало XX века стало временем глубоких социальных изменений, напряжённых общественных дискуссий и переоценки художественных ценностей. В литературе Европы стремитель",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4299dd33-ed9a-43de-a516-9b51f748f654.json",
+        "context": "cms:cms-4299dd33-ed9a-43de-a516-9b51f748f654.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Фернанду Пессоа — должно быть самая необычная и загадочная фигура мировой литературы XX века. На сегодняшний день его считают величайшим португальским поэтом XX века",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace.json",
+        "context": "cms:cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Анри Барбюс — прославленный французский писатель, журналист, общественный деятель, лауреат Гонкурской премии, который обрёл мировую популярность благодаря романам ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-434a6065-f94b-454b-9aef-74a7899110be.json",
+        "context": "cms:cms-434a6065-f94b-454b-9aef-74a7899110be.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Чехов, Достоевский, Толстой, Пушкин, Лермонтов – имена этих великих мэтров литературного ремесла известны всем от мала до велика. Но всегда ли они мечтали быть пис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-43d3b8dd-0604-4f35-9025-879815b43827.json",
+        "context": "cms:cms-43d3b8dd-0604-4f35-9025-879815b43827.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Роальд Даль — британский писатель норвежского происхождения, известный всему миру преимущественно своими детскими книгами «Чарли и шоколадная фабрика», «Матильда» ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json",
+        "context": "cms:cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Баба-яга – одна из популярнейших сказочных персонажей не только в нашей стране, но и в мире. В самом деле, кто не читал сказок о дряхлой колдунье, летающей на",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json",
+        "context": "cms:cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Наследие Антона Павловича Чехова, в виде его коротких рассказов, занимает и по сей день особое место в русской литературе, сочетая в себе удивительную правдивость ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json",
+        "context": "cms:cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Вий стал известным персонажем благодаря одноимённой повести писателя Николая Васильевича Гоголя, однако литературная интерпретация лишь частично опирается на нар",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4d91ec58-4818-4d85-8dc4-a57d41b09a74.json",
+        "context": "cms:cms-4d91ec58-4818-4d85-8dc4-a57d41b09a74.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня обращаемся к Японии – Стране восходящего солнца, где литера",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-4ffabfeb-6944-424f-ad27-bc8294f752f1.json",
+        "context": "cms:cms-4ffabfeb-6944-424f-ad27-bc8294f752f1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Русские писатели и поэты известны прежде всего своими литературными произведениями, однако многие из них до начала творческой деятельности или параллельно с ней ра",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5025240c-26c0-44fb-9a8a-be0805b9a07d.json",
+        "context": "cms:cms-5025240c-26c0-44fb-9a8a-be0805b9a07d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Язык — это не просто средство общения, а инструмент влияния, убеждения и самовыражения. Чем точнее и богаче вы подбираете слова, тем убедительнее звучит ваша мысль",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5319a440-63c2-4a53-b450-37e70fad86e5.json",
+        "context": "cms:cms-5319a440-63c2-4a53-b450-37e70fad86e5.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Сегодня в новом выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы расскажем о выдающихся писателях из Швеции — страны, подар",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-543d1ce5-570b-44dc-8718-6340c7dcbcc7.json",
+        "context": "cms:cms-543d1ce5-570b-44dc-8718-6340c7dcbcc7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Буквально у каждого великого писателя есть произведения, которые оказались в тени их главных хитов. Иногда они были слишком сложными для современников, иногда усту",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-54405e9a-a00f-46b3-9c97-11d9b1bd0122.json",
+        "context": "cms:cms-54405e9a-a00f-46b3-9c97-11d9b1bd0122.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Роман «Куда приводят мечты» — по-настоящему особенное произведение в творчестве американского писателя Ричард Матесона. В отличие от его намного более известного п",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-55abaca9-3f74-4d63-af93-1c2239f2166d.json",
+        "context": "cms:cms-55abaca9-3f74-4d63-af93-1c2239f2166d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня обращаемся к Японии – Стране восходящего солнца, где литера",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-5c2d5330-2150-4eaa-a0bf-8dfb2f1c6364.json",
+        "context": "cms:cms-5c2d5330-2150-4eaa-a0bf-8dfb2f1c6364.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия ПЕН/Фолкнера — авторитетная независимая литературная награда в США, присуждаемая за достижения в области художественной прозы. Она занимает особое мес",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-61e757ca-2604-43a2-a5c4-e0010be8234a.json",
+        "context": "cms:cms-61e757ca-2604-43a2-a5c4-e0010be8234a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие<br><br></h2> <div><br>Большинство героев русского эпоса возникли не на пустом месте. Как и персонажи сказок, они вобрали в себя представления древних людей о мире, опасностях пр",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        "context": "cms:cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«О мышах и людях» — популярная повесть американского писателя Джона Стейнбека, впервые опубликованная в 1937 году. В произведении автор обращается к темам одиночес",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-63a2015a-5364-4caa-b5e3-578897905b18.json",
+        "context": "cms:cms-63a2015a-5364-4caa-b5e3-578897905b18.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Многие знают имя Марио Пьюзо в связи с его эпохальным трудом «Крёстный отец» и продолжением «Сицилиец», в основе которых лежат первые две части трилогии Фрэнсиса Форда К",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-66b0d0e8-9a08-4f7e-bec4-9130c40f96d1.json",
+        "context": "cms:cms-66b0d0e8-9a08-4f7e-bec4-9130c40f96d1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>«Берегиня» — персонаж, перешедший к нам из славянского фольклора, многозначный образ которой, напрямую связан с представлениями о защите, покровительстве и охран",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae.json",
+        "context": "cms:cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Литературная слава редко бывает справедливой. История знает множество случаев, когда имя писателя намертво срастается с одним-двумя произведениями, превращаясь в с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-69fbc12b-0b39-46a7-b1f2-d9fe229442ea.json",
+        "context": "cms:cms-69fbc12b-0b39-46a7-b1f2-d9fe229442ea.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Бойцовский клуб» — культовый роман американского писателя Чака Паланика, опубликованный в 1996 году, который закономерно стал бестселлером. Книга Паланика высмеив",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d.json",
+        "context": "cms:cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Произведение «Остров» — последняя по-настоящему крупная работа английского писателя Олдоса Хаксли. Автор известен прежде всего благодаря другого культового романа ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-75067054-81b1-40e7-8bd4-3ac1b8296c02.json",
+        "context": "cms:cms-75067054-81b1-40e7-8bd4-3ac1b8296c02.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Сэр Вальтер Скотт, Артур Конан Дойл, Джек Лондон, Чарльз Диккенс, Ярослав Гашек — имена этих прославленных авторов уже давно стали неотъемлемой частью мировой куль",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
+        "context": "cms:cms-766846e2-a653-465e-a4b4-ce327a22696f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Когда мы говорим о Льве Николаевиче Толстом, то чаще всего в памяти всплывает его великие романы — «Война и мир» и «Анна Каренина». Но сила Толстого заключается не",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json",
+        "context": "cms:cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Упырь — архаичный устойчивый образ в славянской мифологии, тесно связанный с представлениями древних славян о смерти и посмертном существовании человека. В народ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json",
+        "context": "cms:cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Порой за судьбоносными, во всех смыслах прорывными произведениями гениального классика стоят не менее сильные работы, которые по ряду причин были довольно прохладн",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-78382bfd-16f7-4e93-a407-529b4412209f.json",
+        "context": "cms:cms-78382bfd-16f7-4e93-a407-529b4412209f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>1908 год стал для литературного мира довольно богатым на знаковые произведения известных классиков мировой литературы. В этот год были опубликованы романы: «Дуна",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-78a20eb3-a2f7-48c2-984d-26767eeacfb1.json",
+        "context": "cms:cms-78a20eb3-a2f7-48c2-984d-26767eeacfb1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <figure>  <img src=\"https://static.tildacdn.com/tild6431-6634-4365-a464-663933356538/image.png\" loading=\"lazy\" alt=\"Иллюстрация 1 к статье «13 по-настоящему жутких сказок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json",
+        "context": "cms:cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Имя Дэвида Митчелла чаще всего связывают с его головоломным, многослойным романом «Облачный атлас», о которым мы уже ни раз упоминали ранее и даже делали на него <a href",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7e0e0028-3f6a-45df-9aae-86f53dd9faa0.json",
+        "context": "cms:cms-7e0e0028-3f6a-45df-9aae-86f53dd9faa0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Эдгар Аллан По — именитый американский прозаик и поэт, которого многие запомнили за такие произведения, как «Ворона», «Падение дома Ашеров» или «Чёрный кот», напис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7f6a35a0-bca4-4315-a1c1-7982188643a1.json",
+        "context": "cms:cms-7f6a35a0-bca4-4315-a1c1-7982188643a1.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Научно-фантастический роман Майкла Крайтона «Парк юрского периода» был опубликован в 1990 году. Книга очень быстро стала мировым бестселлером благодаря необычному ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-7fec1de9-7485-4e31-b4c1-16b67cb6bcad.json",
+        "context": "cms:cms-7fec1de9-7485-4e31-b4c1-16b67cb6bcad.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Премия принцессы Астурийской — это одна из наиболее значимых и уважаемых международных наград, присуждаемая ежегодно с 1981 года в Испании. Она была задумана как",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json",
+        "context": "cms:cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение<br><br></h2> <div>Жар-птица — очень узнаваемый и один из самых символически насыщенных образов славянского фольклора. В сказках Жар-птица предстает как дивное существо, сияющее огненн",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-82ca7464-9016-47cd-bffe-255c20987c05.json",
+        "context": "cms:cms-82ca7464-9016-47cd-bffe-255c20987c05.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1923 год стал временем постепенной стабилизации Европы после ужасов Первой мировой войны. Многие государства переживали период политических преобразований, а культур",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-85a32626-6954-4090-bd8b-d290fee08241.json",
+        "context": "cms:cms-85a32626-6954-4090-bd8b-d290fee08241.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\"><br>Предисловие</h2> <div><br>Не каждая хорошая книга заставляет забыть о времени. Но есть произведения, которые обладают особой магией: открываешь первую главу, собираясь почитать всего по",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-87b4b7aa-de05-4849-9c44-e77622bb9dff.json",
+        "context": "cms:cms-87b4b7aa-de05-4849-9c44-e77622bb9dff.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div>Шведская писательница – Сельма Лагерлёф, подарившая нам сказочную повесть «Чудесное путешествие Нильса с дикими гусями» была широко известна, как в Европе, так и в СССР ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-897f7c9f-2c81-43fc-a238-d06a7d29db81.json",
+        "context": "cms:cms-897f7c9f-2c81-43fc-a238-d06a7d29db81.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1916 год пришёлся на самый разгар Первой мировой войны. Весь мир, по сути, находился в состоянии глубокого кризиса: многие писатели принимали участие в военных дейст",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8a73a389-5d53-40ca-8408-b42330369dc4.json",
+        "context": "cms:cms-8a73a389-5d53-40ca-8408-b42330369dc4.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8afa91cd-124a-4525-98f0-3f354374da86.json",
+        "context": "cms:cms-8afa91cd-124a-4525-98f0-3f354374da86.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Первая часть подборки из 25 уникальных слов закономерно вызвала интерес у аудитории и привлекла новых пользователей. И это неудивительно: целенаправленное расширен",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8d18ef3c-98b6-4728-8c83-857cea4e8df2.json",
+        "context": "cms:cms-8d18ef3c-98b6-4728-8c83-857cea4e8df2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», сегодня мы отправимся в Турцию — страну, находящуюся на границе Европы",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc.json",
+        "context": "cms:cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», и сегодня обращаемся к Индии — стране древней культуры, эпосов, филосо",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8fa390e5-db2d-450b-89c9-8db574179cfa.json",
+        "context": "cms:cms-8fa390e5-db2d-450b-89c9-8db574179cfa.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Древнегреческая мифология давно перестала быть лишь частью истории античного мира. Уже более двух тысяч лет её сюжеты вдохновляют писателей, художников, философов ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-94114f87-aeb3-4551-9150-d73c9c6a8774.json",
+        "context": "cms:cms-94114f87-aeb3-4551-9150-d73c9c6a8774.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы отправляемся в Италию — страну, без которой невозможно представить ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-950430de-f001-4de4-8b8f-854d0703750a.json",
+        "context": "cms:cms-950430de-f001-4de4-8b8f-854d0703750a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие <br><br></h2> <div>Домовой – один из древнейших персонажей славянской мифологии. Архаические представления о духах предков рождали у людей потребность в создании образа существа",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        "context": "cms:cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-виноваты-звезды-сша-2014-2\"><br>1. «Виноваты звезды» (США, 2014)<br><br></h2> <figure>  <img src=\"https://static.tildacdn.com/tild6165-6463-4661-b236-37",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-98d247c6-8e50-4959-8dab-3a44aa01b3ce.json",
+        "context": "cms:cms-98d247c6-8e50-4959-8dab-3a44aa01b3ce.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Книга «Ангелы ада» — одно из самых известных произведений американского писателя и журналиста Хантера С. Томпсона. Большинство читателей знают этого автора благодаря",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d.json",
+        "context": "cms:cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Недавно мы говорили о «Толковом словаре русского языка» С.И. Ожегова, о его фундаментальном значении и о влиянии словаря на развитие русского языка в стране в цело",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-9f6ef90b-c89d-45d4-97ee-e73908405013.json",
+        "context": "cms:cms-9f6ef90b-c89d-45d4-97ee-e73908405013.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Конец года – это всегда очень особенная, волшебная пора. Город вдруг наполняется огнями гирлянд и фонарей, в воздухе появляется ощущение ожидания чуда, а привычная",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a1285abc-3c95-45c7-b573-56860d5b2be6.json",
+        "context": "cms:cms-a1285abc-3c95-45c7-b573-56860d5b2be6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Эрнест Хемингуэй — классик американской и мировой литературы XX века, лауреат Нобелевской и Пулитцеровской премий, известный такими работами, как: «Старик и море»,",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        "context": "cms:cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-реквием-по-мечте-сша-2000-2\"><br>1. Реквием по мечте (США, 2000)<br><br></h2> <figure>  <img src=\"https://static.tildacdn.com/tild3539-3131-4430-b531-36",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a5d63a02-72bb-46bb-ba7d-9c0c9b3225b7.json",
+        "context": "cms:cms-a5d63a02-72bb-46bb-ba7d-9c0c9b3225b7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Харуки Мураками – выдающийся японский писатель, творчество которого – это концентрация реализма, психоанализа и мистицизма (порой такая смесь доходит до абсурда, что всё",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json",
+        "context": "cms:cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Премия «Стрега» — одна из наиболее престижных и влиятельных литературных наград в Италии. Учреждённая в послевоенные годы, она сыграла важную роль в возрождении ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-a842e019-25b3-464b-a084-64cb6a5357cf.json",
+        "context": "cms:cms-a842e019-25b3-464b-a084-64cb6a5357cf.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-код-да-винчи-дэн-браун-2\"><br>1. «Код да Винчи» — Дэн Браун</h2> <div><br>Роман рассказывает о профессоре Роберте Лэнгдоне, который оказывается втянут в",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ab1f28d9-a4df-419f-89ea-9caf11029343.json",
+        "context": "cms:cms-ab1f28d9-a4df-419f-89ea-9caf11029343.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«1408» — очень популярный рассказ Стивена Кинга, написанный в жанре психологического хоррора. Впервые история появилась в аудиокниге «Кровь и дым» в 1999 году, а п",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b31b2773-5e92-4b45-b7d8-64fd6dd1ab7f.json",
+        "context": "cms:cms-b31b2773-5e92-4b45-b7d8-64fd6dd1ab7f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В свежем выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы познакомимся с выдающимися писателями Норвегии — страны велич",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b8976be2-9164-44b2-a420-3708fe58456b.json",
+        "context": "cms:cms-b8976be2-9164-44b2-a420-3708fe58456b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Книга «Как Гринч украл Рождество», опубликованная в 1957 году, по праву считается одной из самых знаковых рождественских историй в американской культуре. Её авто",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-b9dda0bc-2aee-4c18-a600-3da88712dad3.json",
+        "context": "cms:cms-b9dda0bc-2aee-4c18-a600-3da88712dad3.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Международная премия Нойштадта — очень авторитетная и одна из наиболее влиятельных литературных наград в мире, учреждённая в далёком 1969 году, которая славится ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-bb2f17f3-e28c-4685-9170-d88dab8c4780.json",
+        "context": "cms:cms-bb2f17f3-e28c-4685-9170-d88dab8c4780.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Джек Лондон известен прежде всего как автор «Морского волка», «Мартина Идена», «Белого Клыка» и «Зова предков». Не секрет, что автор писал в жанре приключенческой ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-bfab93bb-8b92-406e-97a6-36e747da2184.json",
+        "context": "cms:cms-bfab93bb-8b92-406e-97a6-36e747da2184.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Полудница – одна из наиболее интересных персонажей в славянской мифологии. Действительно, в отличие от многих духов, связанных с ночью, лесом или водой, полудниц",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-c3f69185-8b67-4e01-9cfb-5e07c675d5b6.json",
+        "context": "cms:cms-c3f69185-8b67-4e01-9cfb-5e07c675d5b6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Георга Бюхнера — престижная и невероятно значимая для немецкоязычного мира литературная награда. Она присуждается писателям, создающим произведения ис",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-c4f0f1be-b108-4d78-8fa2-324bebbc7f06.json",
+        "context": "cms:cms-c4f0f1be-b108-4d78-8fa2-324bebbc7f06.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Путь писателя к мировой славе обычно является долгим и непростым процессом. Прежде чем произведения многих классиков вошли в историю мировой культуры, они проходил",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-c9e6011b-2214-4f5e-9cb3-8e86ae283604.json",
+        "context": "cms:cms-c9e6011b-2214-4f5e-9cb3-8e86ae283604.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Русалка в славянской мифологии занимает особенное место. В народном сознании русалка считалась не просто воплощением водяной девы (примерно так интерпретируют пе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cb93763f-3fe6-42ec-aefa-f58287922352.json",
+        "context": "cms:cms-cb93763f-3fe6-42ec-aefa-f58287922352.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Герман Мелвилл вписан в историю литературы, но не как успешный автор безоговорочного шедевра своего времени, а как один из самых трагических примеров позднего призна",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cb99e537-e502-4a9e-818d-b92a621a40f7.json",
+        "context": "cms:cms-cb99e537-e502-4a9e-818d-b92a621a40f7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1919 год стал временем серьёзных перемен для Европы. Первая мировая война завершилась в ноябре 1918 года, старые империи распались, а политическая карта континента н",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cc37237c-e70e-4edf-93ae-100494a4755c.json",
+        "context": "cms:cms-cc37237c-e70e-4edf-93ae-100494a4755c.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Морис Полидор Мари Бернар Метерлинк – писатель, который в 1911 году стал первым бельгийским автором, удостоенным престижной награды Нобеля, внеся значительный вклад ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ccc8ef31-8506-4edb-90ba-31530c0a8433.json",
+        "context": "cms:cms-ccc8ef31-8506-4edb-90ba-31530c0a8433.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Ренодо (Prix Renaudot) – очень авторитетная и одна из престижнейших литературных наград Франции. Она традиционно присуждается французским писателям за",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cd7a575d-8930-4ef0-938d-e77179970554.json",
+        "context": "cms:cms-cd7a575d-8930-4ef0-938d-e77179970554.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Новый год и Рождество – по-настоящему особенный период. Это время чуда, внутреннего поворота, надежды и возвращения к самому важному: дому, любви, состраданию. В раз",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-cd982a45-4204-4783-83e4-7b37d26541e7.json",
+        "context": "cms:cms-cd982a45-4204-4783-83e4-7b37d26541e7.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В богатстве языка скрывается сила мысли, оттенки эмоций и неповторимость стиля. Чем шире наш словарный запас, тем точнее мы можем выражать идеи, передавать настрое",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d37e5f07-4733-4e3c-a42e-2c5728484b21.json",
+        "context": "cms:cms-d37e5f07-4733-4e3c-a42e-2c5728484b21.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Не секрет, что киностудии довольно часто адаптируют бестселлеры в кинокартины и зарабатывают огромные кассы лишь на популярности книги, давно ставшей классикой мир",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d3a561f0-a8d7-40e8-af97-85d9313ff30f.json",
+        "context": "cms:cms-d3a561f0-a8d7-40e8-af97-85d9313ff30f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Книга Ричарда Мэтисона «Я-легенда» вышедшая в далёком 1954 году произвела впечатление на многих, в том числе повлияла на именитых писателей, вроде Рэя Брэдбери и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6.json",
+        "context": "cms:cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>Новая рубрика «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой мы расскажем о знаковых писателях со всех уголков земного шара, об и",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d5fdbc40-dd61-4f15-84df-9bfd7b334d6a.json",
+        "context": "cms:cms-d5fdbc40-dd61-4f15-84df-9bfd7b334d6a.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>За страницами всемирно известных произведений нередко скрываются удивительные человеческие судьбы. Прежде чем стать признанными мастерами пера, многие писатели усп",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-d9ea37e8-720c-4c62-aa8c-dd93742049a9.json",
+        "context": "cms:cms-d9ea37e8-720c-4c62-aa8c-dd93742049a9.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Утопия — Авеню» занимает в творчестве писателя Дэвида Митчелла по-настоящему особенное место. В отличии от «Облачного атласа» — интеллектуально выстроенного, мног",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-df0e0863-989f-4361-92bb-067b81bd80ab.json",
+        "context": "cms:cms-df0e0863-989f-4361-92bb-067b81bd80ab.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Кикимора – довольно известная в славянском фольклоре фигура, являющаяся воплощением беспорядка и хаоса. Стоит только вспомнить пугающий образ кикиморы в мультфил",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e11799b3-a972-47d9-b5ee-3e94ce35ef14.json",
+        "context": "cms:cms-e11799b3-a972-47d9-b5ee-3e94ce35ef14.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>Имя писателя Марка Твена знают все от мала до велика. Его гениальная книжка о приключениях Тома Сойера и верного товарища Гека Финна пестрит юморесками, перемежающ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b.json",
+        "context": "cms:cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>\"Форрест Гамп\" — роман американского писателя Уинстона Грума, впервые опубликованный в 1986 году. Это ироничная и местами откровенно абсурдная история о человеке с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e430f98c-666b-4aad-ac06-89285d5ec935.json",
+        "context": "cms:cms-e430f98c-666b-4aad-ac06-89285d5ec935.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>1921 год стал временем постепенного восстановления Европы после разрушительных последствий Первой мировой войны. Несмотря на еще сохранявшиеся экономические трудност",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        "context": "cms:cms-e4bf2314-4621-48c4-9587-b4e88131412f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> \n <h2 id=\"chapter-1-девушка-с-татуировкой-дракона-сша-швеция-2011-2\"><br>1. «Девушка с татуировкой дракона» (США, Швеция, 2011)<br><br></h2> <figure>  <img src=\"https://sta",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e55ff47c-b4dd-46d4-ab1c-a9ec3e36449b.json",
+        "context": "cms:cms-e55ff47c-b4dd-46d4-ab1c-a9ec3e36449b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Национальная книжная премия США — очень престижная и популярная литературная награда в Соединённых Штатах Америки, охватывающая широкий спектр литературных ж",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e74fbb1f-8298-46e3-b10e-8430883e851b.json",
+        "context": "cms:cms-e74fbb1f-8298-46e3-b10e-8430883e851b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Анри Барбюс – прославленный французский писатель, журналист и общественный деятель, опубликовавший свой во всех смыслах прорывной роман «Огонь» в самый разгар Первой мир",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-e922551a-afd3-40e0-bcaf-17379de6bd9b.json",
+        "context": "cms:cms-e922551a-afd3-40e0-bcaf-17379de6bd9b.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление</h2> <div><br>Роман «Война в воздухе» — одно из самых недооцененных и непопулярных произведений английского писателя Герберта Уэллса. Многие знают этого автора, благодаря таким ку",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-eb60b099-f6de-40c7-a260-4ca8612005bf.json",
+        "context": "cms:cms-eb60b099-f6de-40c7-a260-4ca8612005bf.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-введение-1\">Введение</h2> <div><br>Роман «Дракула» — одно из самых значимых произведений мировой готической литературы. Безумно популярный зловещий антагонист – трансильванский вампир Влад Дракула и вовсе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2.json",
+        "context": "cms:cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Роман Фрэнсиса Скотта Фицджеральда «Великий Гэтсби», впервые был опубликован в 1925 году (примерно за 4 года до начала Великой депрессии в США) и до сих пор явля",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        "context": "cms:cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Старикам тут не место» — мрачный философский роман американского писателя Кормака Маккарти, впервые опубликованный в 2005 году. Это одно из двух наиболее известны",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f0dbc3cc-8e8a-4525-a566-b4ba84f23144.json",
+        "context": "cms:cms-f0dbc3cc-8e8a-4525-a566-b4ba84f23144.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\"><br>Вступление<br><br></h2> <div>Премия Камоэнса — главная и наиболее престижная литературная награда португалоязычного мира. Она присуждается авторам, пишущим на португальском языке, и объе",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json",
+        "context": "cms:cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-вступление-1\">Вступление<br><br></h2> <div>Совсем недавно мы поговорили о популярном романе Джека Лондона под названием «Морской волк», в основе которой лежали личные впечатления автора от работы на промы",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json",
+        "context": "cms:cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>В истории мировой литературы нередко случается так, что писатель становится известным благодаря одному — двум произведениям, которые в итоге становятся канонически",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ffbb6aef-f5f6-4643-a98c-a846b0b56f6f.json",
+        "context": "cms:cms-ffbb6aef-f5f6-4643-a98c-a846b0b56f6f.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div><br>«Страх и отвращение в Лас-Вегасе. Дикое путешествие в сердце Американской мечты» (в русском варианте звучит проще «Страх и ненависть в Лас-Вегасе») – скандальный р",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-ffd09d2f-e6bc-4844-b71c-3c292c1c69af.json",
+        "context": "cms:cms-ffd09d2f-e6bc-4844-b71c-3c292c1c69af.json:contentHtml",
+        "field": "contentHtml",
+        "sample": "<h2 id=\"chapter-предисловие-1\">Предисловие</h2> <div>В сегодняшнем выпуске «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы расскажем о выдающихся писателях из Южно-Африканской Республики — с",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The crack-up, with other uncollected pieces, note-books and unpublished letters, together with letters to Fitzgerald from Gertrude Stein, Edith Wharton, T.S. Eliot, Thomas Wolfe and John Dos Passos, and essays and poems ",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The  wrecker",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The  suicide club",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Strange Case of Dr Jekyll and Mr Hyde\r\n            \r\n                Collins Classics",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The  ebb-tide",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Im Westen Nights Neues  (All Quite On The Western FRont)",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Le Dernier Jour DUn Condamne\r\n            \r\n                Librio Litterature",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Hunchback of NotreDame\r\n            \r\n                Tor Classics",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Walden, or, Life in the Woods  / On the Duty of Civil Disobedience",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "The Divine Comedy\r\n            \r\n                Penguin Classics Deluxe Editio",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "In Search of Lost Time  New Ed  Vol 1",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Pan Michael  An historical novel",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "La  palabra mágica",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "容疑者Xの献身  (Yōgisha X no kenshin)",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Encyclopedia of Religion.  16 Volume Set",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Two Crocodiles (Cocodrilo  / Крокодил)",
+        "line": null
+      }
+    ],
+    "leading_trailing_space": [
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8a73a389-5d53-40ca-8408-b42330369dc4.json",
+        "context": "cms:cms-8a73a389-5d53-40ca-8408-b42330369dc4.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\articles\\cms-8a73a389-5d53-40ca-8408-b42330369dc4.json",
+        "context": "cms:cms-8a73a389-5d53-40ca-8408-b42330369dc4.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-articles.json",
+        "context": "cms:published-articles.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:seoDescription",
+        "field": "seoDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\public\\cms\\published-content.json",
+        "context": "cms:published-content.json:ogDescription",
+        "field": "ogDescription",
+        "sample": "Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало значительное влияние на развитие не только американской, но и мировой поэзии. Оригинальный поэтический стиль, глубок",
+        "line": null
+      }
+    ],
+    "too_short": [
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "It",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "흰",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "F",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "NP",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "MR",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Ja",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Si",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "真鶴",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Du",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Wa",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writerPortraits.generated.json",
+        "context": "countries:writerPortraits.generated.json:creator",
+        "field": "creator",
+        "sample": "н.",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writerPortraits.generated.json",
+        "context": "countries:writerPortraits.generated.json:creator",
+        "field": "creator",
+        "sample": "JP",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:creator",
+        "field": "creator",
+        "sample": "未知",
+        "line": null
+      }
+    ],
+    "mojibake": [
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "¿Fue él?",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Vem ska trösta Knyttet?",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "¿Quién mató a Palomino Molero?",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "Quo Vadis? Powieść z czasów Nerona",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+        "context": "countries:books.generated.json:title",
+        "field": "title",
+        "sample": "¿Qué es filosofía?",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writerPortraits.generated.json",
+        "context": "countries:writerPortraits.generated.json:creator",
+        "field": "creator",
+        "sample": "possibly by Herman Anderson (1856−?)",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:creator",
+        "field": "creator",
+        "sample": "possibly by Herman Anderson (1856−?)",
+        "line": null
+      }
+    ],
+    "empty": [
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:years",
+        "field": "years",
+        "sample": "",
+        "line": null
+      }
+    ],
+    "placeholder": [
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:fullName",
+        "field": "fullName",
+        "sample": "Manuel José XXX Arce Leal",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:title",
+        "field": "title",
+        "sample": "VIAF: Manuel José XXX Arce Leal",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:title",
+        "field": "title",
+        "sample": "Library of Congress Name Authority: Manuel José XXX Arce Leal",
+        "line": null
+      },
+      {
+        "path": "work\\probpera-literary-map\\src\\data\\countries\\generated\\writers.generated.json",
+        "context": "countries:writers.generated.json:title",
+        "field": "title",
+        "sample": "Catalogue général BnF: Manuel José XXX Arce Leal",
+        "line": null
+      }
+    ]
+  }
+}

@@ -328,6 +328,7 @@ export async function saveArticleAction(formData: FormData) {
     intent === "publish" ||
     requestedStatus === "scheduled" ||
     (requestedStatus === "published" && previousStatus !== "published");
+  const publicationOverride = formData.get("publication_override") === "1";
   if (isNewRelease) {
     const plainText = sanitizeHtml(parsed.data.contentHtml, {
       allowedTags: [],
@@ -343,7 +344,9 @@ export async function saveArticleAction(formData: FormData) {
       parsed.data.sources.length === 0 && "укажите хотя бы один источник",
       /data-editorial-block=["']media["']/iu.test(parsed.data.contentHtml) &&
         "замените все места для изображений настоящими файлами",
-      formData.get("publication_ready") !== "yes" && "завершите контроль перед публикацией",
+      !publicationOverride &&
+        formData.get("publication_ready") !== "yes" &&
+        "завершите контроль перед публикацией",
     ].filter(Boolean) as string[];
     if (releaseIssues.length) {
       const failedArticleId = optionalText(formData.get("id")) || "new";
@@ -663,6 +666,7 @@ export async function changeArticleStatusAction(formData: FormData) {
   const allowedStatuses = new Set([
     "draft",
     "review",
+    "scheduled",
     "published",
     "hidden",
     "archived",
@@ -675,12 +679,17 @@ export async function changeArticleStatusAction(formData: FormData) {
     id,
     { status: statusValue }
   );
+  const buildStart = async () => {
+    const build = await triggerPublicBuild(`article.status.${statusValue}`);
+    return build.ok ? "started" : "queue-error";
+  };
   const { error } = await supabase
     .from("articles")
     .update({
       status: statusValue,
-      published_at:
-        statusValue === "published" ? new Date().toISOString() : undefined,
+      ...(statusValue === "published"
+        ? { published_at: new Date().toISOString() }
+        : {}),
       updated_by: userId,
     })
     .eq("id", id);
@@ -693,11 +702,17 @@ export async function changeArticleStatusAction(formData: FormData) {
     entity_type: "article",
     entity_id: id,
   });
-  if (["published", "hidden", "archived"].includes(statusValue)) {
+  const publishState =
+    statusValue === "published" ? await buildStart() : undefined;
+  if (["hidden", "archived", "draft", "review", "scheduled"].includes(statusValue)) {
     await triggerPublicBuild(`article.status.${statusValue}`);
   }
   revalidatePath("/articles");
   revalidatePath(articleEditPath(id));
+  if (publishState) {
+    redirect(`/articles?published=${publishState}`);
+  }
+  redirect("/articles?saved=1");
 }
 
 export async function softDeleteArticleAction(formData: FormData) {

@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-08-05T04:47:19.728464+00:00",
+  "total_issues": 3,
+  "auto_fixes_applied": true,
+  "manual_items_count": 3,
+  "manual_items": [
+    {
+      "file": "C:\\Users\\User\\Documents\\Codex\\2026-07-26\\new-chat\\work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+      "path": "works.south_korea:han_kang[2].title",
+      "key": "title",
+      "issue": "too_short",
+      "value": "흰"
+    },
+    {
+      "file": "C:\\Users\\User\\Documents\\Codex\\2026-07-26\\new-chat\\work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+      "path": "works.south_korea:han_kang[2].title",
+      "key": "title",
+      "issue": "contains_surrogate_like_char",
+      "value": "흰"
+    },
+    {
+      "file": "C:\\Users\\User\\Documents\\Codex\\2026-07-26\\new-chat\\work\\probpera-literary-map\\src\\data\\countries\\generated\\books.generated.json",
+      "path": "works.austria:daniel_kehlmann[7].title",
+      "key": "title",
+      "issue": "too_short",
+      "value": "F"
+    }
+  ],
+  "notes": [
+    "Resolve entries marked too_short/contains_surrogate_like_char manually by replacing with verified titles from sources.",
+    "All other text issues are currently fixed automatically."
+  ]
+}

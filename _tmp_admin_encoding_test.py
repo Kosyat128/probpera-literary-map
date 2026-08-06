@@ -1,0 +1,10 @@
+from pathlib import Path
+p=Path('apps/admin/components/ArticleEditor.tsx')
+text=p.read_text(encoding='utf-8')
+conv=text.encode('cp1251', errors='ignore').decode('utf-8', errors='ignore')
+print('converted',len(text),len(conv))
+print('old head',repr(text[:140]))
+print('new head',repr(conv[:140]))
+print('old has c3', 'A' in text)
+print('new has c3', 'A' in conv)
+print('changes',sum(1 for a,b in zip(text,conv) if a!=b))

@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { redirect } from "@/lib/navigation";
 
 import { getStaffSession } from "@/lib/auth";
 import { loginAction, logoutAction, resetPasswordAction } from "./actions";

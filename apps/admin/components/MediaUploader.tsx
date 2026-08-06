@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { withClientAdminPath } from "@/lib/admin-path";
 
 export default function MediaUploader() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function MediaUploader() {
     setPending(true);
     setMessage("");
     try {
-      const response = await fetch("/admin/api/media/upload", {
+      const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
         body: formData,
       });

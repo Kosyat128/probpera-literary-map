@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "@/lib/navigation";
+import { redirect, withAdminBasePath } from "@/lib/navigation";
 import { z } from "zod";
 
 import { adminEnv } from "@/lib/env";
@@ -12,7 +12,7 @@ const loginSchema = z.object({
 });
 
 function loginUrl(message: string, kind: "error" | "success" = "error") {
-  return `/login?${kind}=${encodeURIComponent(message)}`;
+  return `${withAdminBasePath("/login")}?${kind}=${encodeURIComponent(message)}`;
 }
 
 export async function loginAction(formData: FormData) {
@@ -35,7 +35,7 @@ export async function loginAction(formData: FormData) {
     redirect(loginUrl("Неверная почта или пароль."));
   }
 
-  redirect("/dashboard");
+  redirect(withAdminBasePath("/dashboard"));
 }
 
 export async function resetPasswordAction(formData: FormData) {
@@ -63,5 +63,5 @@ export async function resetPasswordAction(formData: FormData) {
 export async function logoutAction() {
   const supabase = await createServerSupabaseClient();
   await supabase?.auth.signOut();
-  redirect("/login");
+  redirect(withAdminBasePath("/login"));
 }

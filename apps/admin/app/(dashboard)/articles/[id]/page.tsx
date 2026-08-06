@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
@@ -56,6 +57,7 @@ export default async function EditArticlePage({
       .limit(60),
     supabase.auth.getUser(),
   ]);
+
   const categories = categoriesResult || [];
   const revisions = revisionsResult || [];
   const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
@@ -79,9 +81,9 @@ export default async function EditArticlePage({
     <>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">Редактирование</span>
-          <h1>Редактор статьи</h1>
-          <p>Изменения фиксируются в истории версий автоматически.</p>
+          <span className="eyebrow">Админка</span>
+          <h1>Редактирование статьи</h1>
+          <p>Изменяйте текст, структуру и медиа прямо в редакторе.</p>
         </div>
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
@@ -90,30 +92,29 @@ export default async function EditArticlePage({
       )}
       {query.publish === "started" && (
         <p className="form-message form-success publication-result">
-          Статья опубликована. Обновление публичного сайта запущено. {" "}
+          Статья опубликована. Проверка доставки в очередь выполнена.{" "}
           <a href={publicArticleUrl} target="_blank" rel="noreferrer">
-            Постоянный адрес материала ↗
+            Публичный адрес статьи →
           </a>
         </p>
       )}
       {query.publish === "queued" && (
         <p className="form-message form-success publication-result">
-          Статья опубликована в редакционной базе и поставлена в очередь обновления сайта.
-          Обычно новая версия появляется в течение 5–10 минут. {" "}
+          Статья поставлена в очередь публикации. Обновление обычно занимает 5–10 минут.{" "}
           <a href={publicArticleUrl} target="_blank" rel="noreferrer">
-            Постоянный адрес материала ↗
+            Публичный адрес статьи →
           </a>
         </p>
       )}
       {query.publish === "queue-error" && (
         <p className="form-message" role="alert">
-          Статья сохранена как опубликованная, но запрос на обновление сайта записать не
-          удалось. Не закрывайте материал и повторите публикацию.
+          Статья сохранена, но не удалось отправить в очередь публикации. Проверьте
+          консоль и повторите позже.
         </p>
       )}
       {Number(query.replaced || 0) > 0 && (
         <p className="form-message form-success">
-          На главной новая публикация заменила предыдущий материал этой рубрики.
+          На главную в выбранной секции была заменена старая статья.
         </p>
       )}
       <ArticleEditor
@@ -122,16 +123,17 @@ export default async function EditArticlePage({
         publicSiteUrl={adminEnv.publicSiteUrl}
         templates={templates}
       />
+
       <div className="dashboard-grid article-maintenance">
         <section className="panel">
-          <h2>История версий</h2>
+          <h2>История версии</h2>
           {revisions.length ? (
             <table className="data-table">
               <thead>
                 <tr>
                   <th>Версия</th>
-                  <th>Сохранена</th>
-                  <th>Действие</th>
+                  <th>Событие</th>
+                  <th>Дата</th>
                 </tr>
               </thead>
               <tbody>
@@ -140,15 +142,18 @@ export default async function EditArticlePage({
                     <td>
                       <span className="data-title">
                         <strong>Версия {revision.revision_number}</strong>
-                        <small>{revision.change_summary || "Автоматическая копия перед изменением"}</small>
+                        <small>{revision.change_summary || "Нет заметки к сохранению"}</small>
                       </span>
                     </td>
+                    <td>{revision.changed_by || "Система"}</td>
                     <td>{formatDate(revision.created_at, true)}</td>
                     <td>
                       <form action={restoreArticleRevisionAction}>
                         <input type="hidden" name="id" value={id} />
                         <input type="hidden" name="revision_id" value={revision.id} />
-                        <ConfirmSubmitButton message={`Восстановить версию ${revision.revision_number}? Текущее состояние тоже сохранится в истории.`}>
+                        <ConfirmSubmitButton
+                          message={`Восстановить версию ${revision.revision_number}? Это заменит текущий текст.`}
+                        >
                           Восстановить
                         </ConfirmSubmitButton>
                       </form>
@@ -158,21 +163,24 @@ export default async function EditArticlePage({
               </tbody>
             </table>
           ) : (
-            <p>Предыдущие версии появятся после первого изменения статьи.</p>
+            <p>Нет сохранённых версий для этой статьи.</p>
           )}
         </section>
         <aside className="panel settings-stack">
           <h2>Дополнительные действия</h2>
+          <Link className="button-secondary" href={`/articles/new?copyFrom=${id}`}>
+            Открыть в новом черновике
+          </Link>
           <form action={duplicateArticleAction}>
             <input type="hidden" name="id" value={id} />
             <button className="button-secondary" type="submit">
-              Создать копию-черновик
+              Скопировать в черновик-реплику
             </button>
           </form>
           <form action={softDeleteArticleAction}>
             <input type="hidden" name="id" value={id} />
-            <ConfirmSubmitButton message="Переместить статью в корзину? Опубликованный материал исчезнет с сайта, но останется восстановимым в базе.">
-              Переместить в корзину
+            <ConfirmSubmitButton message="Перенести статью в архив? После этого её не будет в общем списке статей, но в личном архиве она останется.">
+              Архивировать
             </ConfirmSubmitButton>
           </form>
         </aside>

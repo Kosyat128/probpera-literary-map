@@ -289,3 +289,29 @@ export async function deleteHomepageBlockAction(formData: FormData) {
   revalidatePath("/homepage");
   redirect("/homepage?deleted=1");
 }
+
+export async function republishHomepageAction() {
+  const session = await requireStaff(["owner", "admin"]);
+  if (!session?.user) redirect("/login");
+
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect("/homepage?error=Ошибка доступа к БД");
+
+  const build = await triggerPublicBuild("homepage.manual_republish");
+  await supabase.from("admin_audit_log").insert({
+    actor_id: session.user.id,
+    action: build.ok ? "public_build.requested" : "public_build.failed",
+    entity_type: "homepage",
+    entity_id: "manual_publish",
+    metadata: {
+      configured: build.configured,
+      error: build.ok ? null : build.error,
+      source: "admin_manual_republish",
+    },
+  });
+
+  revalidatePath("/homepage");
+  redirect(
+    `/homepage?published=${build.ok ? "started" : build.configured ? "queue-error" : "disabled"}`
+  );
+}

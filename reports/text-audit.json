@@ -1,0 +1,1691 @@
+{
+  "meta": {
+    "root": "C:\\Users\\User\\Documents\\Codex\\2026-07-26\\new-chat\\work\\probpera-literary-map",
+    "files_scanned": 1189,
+    "issues_total": 1376
+  },
+  "summary": {
+    "space_before_punct": 1148,
+    "mixed_script": 27,
+    "weird_year": 1,
+    "placeholder": 5,
+    "double_space": 195
+  },
+  "samples": {
+    "space_before_punct": [
+      [
+        "src/community/ActivityTracker.tsx",
+        36,
+        "? null"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        37,
+        ": referrer.hostname.slice(0, 180);"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        47,
+        "if (!configured || !supabase) return;"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        59,
+        "? Object.fromEntries(stored.map((item) => [String(item), 0]))"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        60,
+        ": stored;"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        73,
+        "? \"campaign\""
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        74,
+        ": previousPath && previousPath !== path"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        75,
+        "? \"internal\""
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        76,
+        ": referrerHost"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        77,
+        "? \"external\""
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        78,
+        ": \"direct\";"
+      ],
+      [
+        "src/community/ActivityTracker.tsx",
+        87,
+        "previous_path: previousPath && previousPath !== path ? previousPath : null,"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        32,
+        "return new Intl.DateTimeFormat(language === \"ru\" ? \"ru-RU\" : \"en-GB\", {"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        67,
+        ".limit(compact ? 3 : 50),"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        91,
+        "?.channel(`article-engagement-${articleSlug}`)"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        134,
+        "if (!supabase || !commentBody.trim()) return;"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        142,
+        "p_guest_name: user ? null : guestName.trim(),"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        152,
+        "guest_name: user ? null : guestName.trim(),"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        163,
+        "? t(\"Слишком много сообщений подряд. Подождите несколько минут.\")"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        164,
+        ": t("
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        193,
+        "? t(\"Не удалось отправить жалобу.\")"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        194,
+        ": t(\"Спасибо. Комментарий передан редакции на проверку.\")"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        212,
+        "<section className={`engagement-card${compact ? \" is-compact\" : \"\"}`}>"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        216,
+        "{isBook ? t(\"Обсуждение книги\") : t(\"Обсуждение публикации\")}"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        218,
+        "<h3>{isBook ? t(\"Мнение о книге\") : t(\"Мнение читателей\")}</h3>"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        223,
+        "? comments.length === 1"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        224,
+        "? \"comment\""
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        225,
+        ": \"comments\""
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        226,
+        ": pluralRu(comments.length, ["
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        235,
+        "<strong>{average ? average.toFixed(1) : \"—\"}</strong>"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        239,
+        "? ratingCount === 1"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        240,
+        "? \"rating\""
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        241,
+        ": \"ratings\""
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        242,
+        ": pluralRu(ratingCount, [\"оценка\", \"оценки\", \"оценок\"])}"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        245,
+        "<div aria-label={isBook ? t(\"Оценить книгу\") : t(\"Оценить публикацию\")}>"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        248,
+        "className={score <= userRating ? \"is-active\" : \"\"}"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        254,
+        "language === \"en\" ? `${score} out of 5` : `${score} из 5`"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        284,
+        "? t(\"Поделитесь впечатлением о книге\")"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        285,
+        ": t(\"Поделитесь впечатлением о материале\")"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        296,
+        "!commentBody.trim() ||"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        301,
+        "{busy ? t(\"Публикуем…\") : t(\"Опубликовать комментарий\")}"
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        313,
+        "{comments.length ? ("
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        337,
+        ") : ("
+      ],
+      [
+        "src/community/ArticleEngagement.tsx",
+        338,
+        "!compact && ("
+      ],
+      [
+        "src/community/ArticleViewCount.tsx",
+        68,
+        "<strong>{views === null ? \"—\" : number(views)}</strong>"
+      ],
+      [
+        "src/community/AuthContext.tsx",
+        63,
+        "if (!supabase || !session?.user) {"
+      ],
+      [
+        "src/community/AuthContext.tsx",
+        76,
+        "if (!active || !data) return;"
+      ],
+      [
+        "src/community/AuthContext.tsx",
+        91,
+        "user: session?.user ?? null,"
+      ],
+      [
+        "src/community/ClientDiagnostics.tsx",
+        8,
+        "reportClientError(event.error || event.message, event.error ? \"runtime\" : \"resource\", {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        169,
+        "{profile?.avatar_url ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        176,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        256,
+        "if (!client || !user) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        281,
+        "if (!active || extended.error || !extended.data) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        303,
+        "if (event.key !== \"Tab\" || !dialogRef.current) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        400,
+        "if (!open || view !== \"forum\" || !configured) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        404,
+        "?.channel(\"forum-home\")"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        426,
+        "if (!open || view !== \"forum\" || !configured || !selectedTopic || !supabase) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        449,
+        "if (!supabase || !isModerator) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        555,
+        "if (!open || view !== \"admin\" || !configured || !isModerator) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        575,
+        "!query ||"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        656,
+        "!/^[\\p{L}\\p{N}][\\p{L}\\p{N} ._-]{1,31}$/u.test(displayName.trim())"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        671,
+        "if (authMode === \"signup\" && password !== confirmPassword) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        675,
+        "if (authMode === \"signup\" && !acceptedTerms) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        685,
+        "? await supabase.auth.signUp({"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        693,
+        ": await supabase.auth.signInWithPassword({"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        703,
+        "? \"Этот адрес уже зарегистрирован. Переключитесь на вход.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        704,
+        ": normalized.includes(\"invalid login credentials\")"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        705,
+        "? \"Почта или пароль указаны неверно.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        706,
+        ": normalized.includes(\"email rate limit\")"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        707,
+        "? \"Письмо уже отправлялось недавно. Подождите немного и повторите попытку.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        708,
+        ": normalized.includes(\"password\")"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        709,
+        "? \"Пароль не соответствует требованиям безопасности.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        710,
+        ": `Не удалось выполнить запрос: ${result.error.message}`"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        719,
+        "? \"Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        720,
+        ": \"Вы вошли в клуб читателей.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        732,
+        "if (!supabase || !user || !topicTitle.trim() || !topicBody.trim()) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        752,
+        "if (!supabase || !user || !selectedTopic || !replyBody.trim()) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        773,
+        "if (!supabase || !user) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        789,
+        "? \"Обновите схему сообщества: модуль оценок форума ещё не установлен.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        790,
+        ": \"Оценку не удалось сохранить. Попробуйте ещё раз.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        797,
+        "current?.id === subjectId ? { ...current, score: nextScore } : current"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        801,
+        "topic.id === subjectId ? { ...topic, score: nextScore } : topic"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        807,
+        "reply.id === subjectId ? { ...reply, score: nextScore } : reply"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        814,
+        "if (!supabase || !user || !file) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        827,
+        "? \"png\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        828,
+        ": file.type === \"image/webp\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        829,
+        "? \"webp\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        830,
+        ": \"jpg\";"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        858,
+        "if (!supabase || !user) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        885,
+        "? \"Биография сохранена. Для подборок примените новую миграцию профиля.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        886,
+        ": \"Профиль и литературные интересы сохранены.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        894,
+        "? current"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        895,
+        ": [...current, favoriteCountryDraft]"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        903,
+        "? current"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        904,
+        ": [...current, favoriteWriterDraft]"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        913,
+        "if (!supabase || !isModerator) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        917,
+        "? \"forum_topics\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        918,
+        ": item.kind === \"reply\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        919,
+        "? \"forum_replies\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        920,
+        ": \"article_comments\";"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        931,
+        "if (!supabase || !isModerator) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        944,
+        "? \"Комментарий скрыт, жалоба закрыта.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        945,
+        ": \"Комментарий оставлен, жалоба закрыта.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        954,
+        "if (!supabase || !user) {"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        969,
+        "? \"Жалобу не удалось отправить. Проверьте миграцию модерации форума.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        970,
+        ": \"Публикация передана редактору на проверку.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        975,
+        "if (!supabase || !isModerator) return;"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        988,
+        "? \"Публикация форума скрыта, жалоба закрыта.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        989,
+        ": \"Публикация оставлена, жалоба закрыта.\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1006,
+        "{savedReadings.length ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1018,
+        "onClick={item.kind === \"book\" ? onClose : undefined}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1021,
+        "{item.kind === \"book\" ? \"Книга · \" : \"\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1056,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1069,
+        "{subscriptions.length ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1086,
+        "? \"Страна\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1087,
+        ": item.type === \"writer\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1088,
+        "? \"Писатель\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1089,
+        ": \"Раздел\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1095,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1106,
+        "className={`community-hub${view === \"account\" ? \" is-account\" : \"\"}`}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1126,
+        "? \"Говорилка — форум «Проба Пера»\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1127,
+        ": view === \"admin\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1128,
+        "? \"Редакция «Пробы Пера»\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1129,
+        ": \"Личный кабинет «Пробы Пера»\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1145,
+        "className={view === \"account\" ? \"is-active\" : \"\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1149,
+        "{user ? \"Профиль\" : \"Вход и регистрация\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1152,
+        "className={view === \"forum\" ? \"is-active\" : \"\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1160,
+        "className={view === \"admin\" ? \"is-active\" : \"\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1169,
+        "{view !== \"account\" && !configured ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1180,
+        ") : loading && configured ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1182,
+        ") : view === \"admin\" && isModerator ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1222,
+        "{commentReports.length ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1256,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1269,
+        "{forumReports.length ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1274,
+        "{report.subject_type === \"topic\" ? \"Тема\" : \"Ответ\"} ·{\" \"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1299,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1309,
+        "{moderationItems.length ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1315,
+        "? \"Тема форума\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1316,
+        ": item.kind === \"reply\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1317,
+        "? \"Ответ форума\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1318,
+        ": \"Комментарий\"} ·{\" \"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1331,
+        "item.status === \"hidden\" ? \"published\" : \"hidden\""
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1335,
+        "{item.status === \"hidden\" ? \"Вернуть\" : \"Скрыть\"}"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1339,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1347,
+        ") : view === \"account\" ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1369,
+        "{user ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1390,
+        "{profileAvatarUrl ? ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1397,
+        ") : ("
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1409,
+        "<span>{busy ? \"Загрузка…\" : \"Сменить аватар\"}</span>"
+      ],
+      [
+        "src/community/CommunityHub.tsx",
+        1454,
+        "!favoriteCountryDraft ||"
+      ]
+    ],
+    "mixed_script": [
+      [
+        "src/community/EditorialWorkbench.tsx",
+        38,
+        ".replace(/[^a-zа-я0-9]+/giu, \"-\")"
+      ],
+      [
+        "src/data/bookArchive.ts",
+        81,
+        ".replace(/[^a-zа-яё0-9]+/giu, \"-\")"
+      ],
+      [
+        "src/data/nobel.ts",
+        54,
+        ".replace(/[^a-zа-яё0-9]+/giu, \" \")"
+      ],
+      [
+        "src/utils/slug.ts",
+        5,
+        ".replace(/[^a-zа-я0-9]+/gi,\"-\")"
+      ],
+      [
+        "src/data/countries/costa_rica.ts",
+        14,
+        "birthPlace: \"Деспампарados, Коста-Рика\","
+      ],
+      [
+        "src/data/countries/latvia.ts",
+        65,
+        "birthPlace: \"Варкавa\","
+      ],
+      [
+        "src/data/countries/lithuania.ts",
+        284,
+        "name: \"Балиc Сруога\","
+      ],
+      [
+        "src/data/countries/peru.ts",
+        60,
+        "\"Апологетический курc\","
+      ],
+      [
+        "src/data/countries/peru.ts",
+        383,
+        "\"Премия Лас Амерicas 2014 года\""
+      ],
+      [
+        "src/data/world/writers/swaziland.ts",
+        4,
+        "{id:\"benedict-wallet-vilakazi\",fullName:\"Бенедикт Вилakazi\",country:\"Эсватини / Южная Африка\",birth:\"1906\",movement:\"Южноафриканская литература\",works:[\"Поэзия\"]},"
+      ],
+      [
+        "src/data/countries/generated/writerPortraits.generated.json",
+        7808,
+        "\"portraitAlt\": \"Портрет: Балиc Сруога\","
+      ],
+      [
+        "public/cms/articles/cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json",
+        33,
+        "\"plainText\": \"Вступление Вий стал известным персонажем благодаря одноимённой повести писателя Николая Васильевича Гоголя, однако литературная интерпретация лишь частично опирается "
+      ],
+      [
+        "public/cms/articles/cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        33,
+        "\"plainText\": \"Предисловие «О мышах и людях» — популярная повесть американского писателя Джона Стейнбека, впервые опубликованная в 1937 году. В произведении автор обращается к темам"
+      ],
+      [
+        "public/cms/articles/cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        51,
+        "\"id\": \"chapter-cинопсис-экранизации-4\","
+      ],
+      [
+        "public/cms/articles/cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        53,
+        "\"text\": \"Cинопсис экранизации\""
+      ],
+      [
+        "public/cms/articles/cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json",
+        33,
+        "\"plainText\": \"Вступление Упырь — архаичный устойчивый образ в славянской мифологии, тесно связанный с представлениями древних славян о смерти и посмертном существовании человека. В"
+      ],
+      [
+        "public/cms/articles/cms-8003f738-fe78-4d80-b3d1-e930de32090a.json",
+        32,
+        "\"contentHtml\": \"<p><strong>Вступление</strong><br><br>Генрик Сенкевич – писатель и один из самых ярких представителей польских реалистов XIX века. Сенкевич прошёл тернистый путь от"
+      ],
+      [
+        "public/cms/articles/cms-8003f738-fe78-4d80-b3d1-e930de32090a.json",
+        33,
+        "\"plainText\": \"ВступлениеГенрик Сенкевич – писатель и один из самых ярких представителей польских реалистов XIX века. Сенкевич прошёл тернистый путь от деревенского мальчишки – бедн"
+      ],
+      [
+        "public/cms/articles/cms-853e776d-8af9-4eee-ae90-2430a568d4ad.json",
+        32,
+        "\"contentHtml\": \"<p><strong>Предисловие</strong><br><br>Леший – довольно популярный сказочный персонаж, различные интерпретации образа которого находят место в произведениях классич"
+      ],
+      [
+        "public/cms/articles/cms-853e776d-8af9-4eee-ae90-2430a568d4ad.json",
+        33,
+        "\"plainText\": \"ПредисловиеЛеший – довольно популярный сказочный персонаж, различные интерпретации образа которого находят место в произведениях классических известных авторов, таких"
+      ],
+      [
+        "public/cms/articles/cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json",
+        33,
+        "\"plainText\": \"Вступление Премия «Стрега» — одна из наиболее престижных и влиятельных литературных наград в Италии. Учреждённая в послевоенные годы, она сыграла важную роль в возрож"
+      ],
+      [
+        "public/cms/articles/cms-a7a52368-9462-4d9e-9984-779d095d8150.json",
+        32,
+        "\"contentHtml\": \"<p><strong>Предисловие</strong><br><br>Сказка «Про Добрыню Никитича и Змея Горыныча» известна чуть ли не каждому. Художники, режиссёры и мультипликаторы часто испол"
+      ],
+      [
+        "public/cms/articles/cms-a7a52368-9462-4d9e-9984-779d095d8150.json",
+        33,
+        "\"plainText\": \"ПредисловиеСказка «Про Добрыню Никитича и Змея Горыныча» известна чуть ли не каждому. Художники, режиссёры и мультипликаторы часто используют образ известного фолькло"
+      ],
+      [
+        "public/cms/articles/cms-df0e0863-989f-4361-92bb-067b81bd80ab.json",
+        33,
+        "\"plainText\": \"Вступление Кикимора – довольно известная в славянском фольклоре фигура, являющаяся воплощением беспорядка и хаоса. Стоит только вспомнить пугающий образ кикиморы в му"
+      ],
+      [
+        "public/cms/articles/cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        33,
+        "\"plainText\": \"Предисловие «Старикам тут не место» — мрачный философский роман американского писателя Кормака Маккарти, впервые опубликованный в 2005 году. Это одно из двух наиболее"
+      ],
+      [
+        "public/cms/articles/cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        41,
+        "\"id\": \"chapter-cинопсис-романа-2\","
+      ],
+      [
+        "public/cms/articles/cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        43,
+        "\"text\": \"Cинопсис романа\""
+      ]
+    ],
+    "weird_year": [
+      [
+        "src/components/SocialLinks.tsx",
+        29,
+        "<path d=\"m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.0"
+      ]
+    ],
+    "placeholder": [
+      [
+        "src/components/WriterPortrait.tsx",
+        64,
+        "? `Фирменная заглушка портрета: ${name}`"
+      ],
+      [
+        "src/data/countries/generated/writers.generated.json",
+        111037,
+        "\"fullName\": \"Manuel José XXX Arce Leal\","
+      ],
+      [
+        "src/data/countries/generated/writers.generated.json",
+        111059,
+        "\"title\": \"VIAF: Manuel José XXX Arce Leal\","
+      ],
+      [
+        "src/data/countries/generated/writers.generated.json",
+        111064,
+        "\"title\": \"Library of Congress Name Authority: Manuel José XXX Arce Leal\","
+      ],
+      [
+        "src/data/countries/generated/writers.generated.json",
+        111069,
+        "\"title\": \"Catalogue général BnF: Manuel José XXX Arce Leal\","
+      ]
+    ],
+    "double_space": [
+      [
+        "src/utils/literarySearch.test.ts",
+        10,
+        "expect(normalizeLiterarySearch(\"  «Вишнёвый САД»  \")).toBe("
+      ],
+      [
+        "src/data/writers/README.md",
+        8,
+        "│   ├── lev-tolstoy/"
+      ],
+      [
+        "src/data/writers/README.md",
+        9,
+        "│   │   └── biography.ts"
+      ],
+      [
+        "src/data/writers/README.md",
+        10,
+        "│   └── fyodor-dostoevsky/"
+      ],
+      [
+        "src/data/writers/README.md",
+        11,
+        "│       └── biography.ts"
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        8236,
+        "\"title\": \"The crack-up, with other uncollected pieces, note-books and unpublished letters, together with letters to Fitzgerald from Gertrude Stein, Edith Wharton, T.S. Eliot, Thoma"
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        14305,
+        "\"title\": \"The  wrecker\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        14465,
+        "\"title\": \"The  suicide club\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        14497,
+        "\"title\": \"The Strange Case of Dr Jekyll and Mr Hyde\\r\\n            \\r\\n                Collins Classics\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        14513,
+        "\"title\": \"The  ebb-tide\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        20808,
+        "\"title\": \"Im Westen Nights Neues  (All Quite On The Western FRont)\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        27627,
+        "\"title\": \"Le Dernier Jour DUn Condamne\\r\\n            \\r\\n                Librio Litterature\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        27690,
+        "\"title\": \"The Hunchback of NotreDame\\r\\n            \\r\\n                Tor Classics\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        36581,
+        "\"title\": \"Walden, or, Life in the Woods  / On the Duty of Civil Disobedience\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        38624,
+        "\"title\": \"The Divine Comedy\\r\\n            \\r\\n                Penguin Classics Deluxe Editio\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        48915,
+        "\"title\": \"In Search of Lost Time  New Ed  Vol 1\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        61597,
+        "\"title\": \"Pan Michael  An historical novel\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        85854,
+        "\"title\": \"La  palabra mágica\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        89482,
+        "\"title\": \"容疑者Xの献身  (Yōgisha X no kenshin)\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        92142,
+        "\"title\": \"Encyclopedia of Religion.  16 Volume Set\","
+      ],
+      [
+        "src/data/countries/generated/books.generated.json",
+        104421,
+        "\"title\": \"Two Crocodiles (Cocodrilo  / Крокодил)\","
+      ],
+      [
+        "public/cms/articles/cms-06db011a-c3ba-42f7-bd2d-3f23c1efd5a2.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div>Продолжение рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой сего"
+      ],
+      [
+        "public/cms/articles/cms-0743e614-19bc-4c3d-8eba-7d43fac78d58.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1922 – год постепенного восстановления Европы после потрясений Первой мировой войны. Несмотря на сохранявши"
+      ],
+      [
+        "public/cms/articles/cms-0dbf557e-7ae8-44e4-9162-3fba1171ad46.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <figure>  <img src=\\\"https://static.tildacdn.com/tild3737-3939-4430-b030-376363363033/photo.png\\\" loading=\\\"laz"
+      ],
+      [
+        "public/cms/articles/cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Чем наш словарный запас богаче, тем точнее мы выражаем свои мысли и глубже понимаем собеседников. Мы прод"
+      ],
+      [
+        "public/cms/articles/cms-13723645-4457-4386-9d66-8b94f4b90743.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <figure>  <img src=\\\"https://static.tildacdn.com/tild3432-3531-4166-a135-353431386564/image.png\\\" loading=\\\"laz"
+      ],
+      [
+        "public/cms/articles/cms-13fcac96-6673-4722-abaf-b94e8b74bce9.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Премия Эдгара Аллана По является одной из самых престижных и известных литературных наград в мире д"
+      ],
+      [
+        "public/cms/articles/cms-16f91094-24da-43cc-a327-a42d159f1273.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Герберт Уэллс – английский писатель и публицист, известный своими научно-фантастическими романами вроде «"
+      ],
+      [
+        "public/cms/articles/cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославившие свою родину» и сегодня"
+      ],
+      [
+        "public/cms/articles/cms-192bc665-3461-422c-adee-d25fb394385c.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><strong></strong><br>Так повелось, что среднестатистический читатель во все времена воспринимал и запоминал в"
+      ],
+      [
+        "public/cms/articles/cms-1a4545ba-b530-4865-a042-db321e0c0bfe.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>«Бог путешествует инкогнито» — широко известное произведение французского писателя Лорана Гунеля. В отличие"
+      ],
+      [
+        "public/cms/articles/cms-1deff1a9-02ba-46f7-a8e9-1128b8cfeb16.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Пауль Йохан Людвиг фон Хейзе – писатель, который стал первым и единственным немецким автором XIX века, полу"
+      ],
+      [
+        "public/cms/articles/cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><strong></strong><br>Цикл романов «В поисках утраченного времени» Марселя Пруста стал одним из самых грандиозны"
+      ],
+      [
+        "public/cms/articles/cms-1fd8b11b-d3db-41c8-9e31-f84e7a15f7df.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <h2 id=\\\"chapter-1-мужик-и-чёрт-2\\\"><br>1. Мужик и чёрт</h2> <div><br>Однажды мужик обнаруживает на своём поле "
+      ],
+      [
+        "public/cms/articles/cms-21687156-2b33-46cc-ae07-2e5b057e8bfb.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Уолт Уитмен — один из ключевых поэтов XIX века, оказавший значительное влияние на развитие не только америк"
+      ],
+      [
+        "public/cms/articles/cms-2191b0d7-0682-4277-97dc-1550e1fefb6c.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Относительно недавно, мы поговорили о книге Дэвида Митчелла «Облачный атлас», придя в итоге к выводу, ч"
+      ],
+      [
+        "public/cms/articles/cms-258c48f5-693d-482c-a9af-ddb7582c20e8.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Хорхе Луиса Борхеса, чаще всего вспоминают за его самые знаменитые тексты, вроде «Алеф», «Библиотека Вави"
+      ],
+      [
+        "public/cms/articles/cms-2755ab7e-79b5-455d-960c-927f113deab6.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1917 год пришёлся на один из самых тяжёлых периодов Первой мировой войны. Европа продолжала жить в условиях"
+      ],
+      [
+        "public/cms/articles/cms-28e0b1ca-0589-4308-8f1d-37bc556adf7f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Начало XX века стало временем активного культурного обмена, духовных поисков и стремления объединить разные"
+      ],
+      [
+        "public/cms/articles/cms-2aa1069c-1650-4e51-b05a-dd95020c63fc.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Синклер Льюис – один из величайших прозаиков XX века, удостоенный в 1930 году Нобелевской премии за свой "
+      ],
+      [
+        "public/cms/articles/cms-2b448602-1854-4e2b-8834-d4357b87d39e.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Анри Бейль (известный всему миру под псевдонимом Стендаль) — человек, имя которого прочно связано с формиро"
+      ],
+      [
+        "public/cms/articles/cms-2c74fe14-83b3-4e0f-b785-91f388253141.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Адаптация литературной классики на экраны — довольно непростая задача для кинематографистов. Одни режиссё"
+      ],
+      [
+        "public/cms/articles/cms-2ddfc4f0-3ed5-4977-9a9b-755084de8007.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие <br><br></h2> <div>Кощей Бессмертный – один из центральных персонажей славянской мифологии и русских сказок. Ужасающий "
+      ],
+      [
+        "public/cms/articles/cms-325c4f5f-fa01-4a12-a8bc-4fc821e643a9.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1920 год стал более светлым и стабильным годом в Европе после разрушительной Первой Мировой войны. И несмот"
+      ],
+      [
+        "public/cms/articles/cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Начало XX века в Европе стало временем не только художественных открытий, но и глубоких духовных и нравстве"
+      ],
+      [
+        "public/cms/articles/cms-38b8fd02-517b-46bc-8856-3b01029df49a.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Роман «Война миров» — одно из самых известных произведений научной фантастики конца XIX века, которое д"
+      ],
+      [
+        "public/cms/articles/cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Русский язык хранит в себе тысячи удивительных слов, которые со временем выходят из повседневного употреб"
+      ],
+      [
+        "public/cms/articles/cms-4027fa55-2fe1-47e6-9ba7-25d989d35773.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Начало XX века стало временем глубоких социальных изменений, напряжённых общественных дискуссий и переоценк"
+      ],
+      [
+        "public/cms/articles/cms-4299dd33-ed9a-43de-a516-9b51f748f654.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Фернанду Пессоа — должно быть самая необычная и загадочная фигура мировой литературы XX века. На сегодняшни"
+      ],
+      [
+        "public/cms/articles/cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Анри Барбюс — прославленный французский писатель, журналист, общественный деятель, лауреат Гонкурской пре"
+      ],
+      [
+        "public/cms/articles/cms-434a6065-f94b-454b-9aef-74a7899110be.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Чехов, Достоевский, Толстой, Пушкин, Лермонтов – имена этих великих мэтров литературного ремесла известны"
+      ],
+      [
+        "public/cms/articles/cms-43d3b8dd-0604-4f35-9025-879815b43827.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Роальд Даль — британский писатель норвежского происхождения, известный всему миру преимущественно своими "
+      ],
+      [
+        "public/cms/articles/cms-463bb2dc-d897-4db1-a5f4-9944c3360ab8.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие <br><br></h2> <div>Баба-яга – одна из популярнейших сказочных персонажей не только в нашей стране, но и в мире. В самом"
+      ],
+      [
+        "public/cms/articles/cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Наследие Антона Павловича Чехова, в виде его коротких рассказов, занимает и по сей день особое место в ру"
+      ],
+      [
+        "public/cms/articles/cms-4785d97b-00cd-45f9-801b-fea89dc33ce7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Вий стал известным персонажем благодаря одноимённой повести писателя Николая Васильевича Гоголя, однако"
+      ],
+      [
+        "public/cms/articles/cms-4d91ec58-4818-4d85-8dc4-a57d41b09a74.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня о"
+      ],
+      [
+        "public/cms/articles/cms-4ffabfeb-6944-424f-ad27-bc8294f752f1.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Русские писатели и поэты известны прежде всего своими литературными произведениями, однако многие из них "
+      ],
+      [
+        "public/cms/articles/cms-5025240c-26c0-44fb-9a8a-be0805b9a07d.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Язык — это не просто средство общения, а инструмент влияния, убеждения и самовыражения. Чем точнее и бога"
+      ],
+      [
+        "public/cms/articles/cms-5319a440-63c2-4a53-b450-37e70fad86e5.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div>Сегодня в новом выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы "
+      ],
+      [
+        "public/cms/articles/cms-543d1ce5-570b-44dc-8718-6340c7dcbcc7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Буквально у каждого великого писателя есть произведения, которые оказались в тени их главных хитов. Иногд"
+      ],
+      [
+        "public/cms/articles/cms-54405e9a-a00f-46b3-9c97-11d9b1bd0122.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Роман «Куда приводят мечты» — по-настоящему особенное произведение в творчестве американского писателя Ри"
+      ],
+      [
+        "public/cms/articles/cms-55abaca9-3f74-4d63-af93-1c2239f2166d.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Мы продолжаем рубрику «Литературная карта мира. Знаковые писатели, прославившие свою родину», и сегодня о"
+      ],
+      [
+        "public/cms/articles/cms-5c2d5330-2150-4eaa-a0bf-8dfb2f1c6364.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Премия ПЕН/Фолкнера — авторитетная независимая литературная награда в США, присуждаемая за достижен"
+      ],
+      [
+        "public/cms/articles/cms-61e757ca-2604-43a2-a5c4-e0010be8234a.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие<br><br></h2> <div><br>Большинство героев русского эпоса возникли не на пустом месте. Как и персонажи сказок, они вобрал"
+      ],
+      [
+        "public/cms/articles/cms-6243b6f9-69bb-4445-a88f-50593acaf6f8.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«О мышах и людях» — популярная повесть американского писателя Джона Стейнбека, впервые опубликованная в 1"
+      ],
+      [
+        "public/cms/articles/cms-63a2015a-5364-4caa-b5e3-578897905b18.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение</h2> <div><br>Многие знают имя Марио Пьюзо в связи с его эпохальным трудом «Крёстный отец» и продолжением «Сицилиец», в основ"
+      ],
+      [
+        "public/cms/articles/cms-66b0d0e8-9a08-4f7e-bec4-9130c40f96d1.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>«Берегиня» — персонаж, перешедший к нам из славянского фольклора, многозначный образ которой, напрямую "
+      ],
+      [
+        "public/cms/articles/cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Литературная слава редко бывает справедливой. История знает множество случаев, когда имя писателя намертв"
+      ],
+      [
+        "public/cms/articles/cms-69fbc12b-0b39-46a7-b1f2-d9fe229442ea.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«Бойцовский клуб» — культовый роман американского писателя Чака Паланика, опубликованный в 1996 году, кот"
+      ],
+      [
+        "public/cms/articles/cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Произведение «Остров» — последняя по-настоящему крупная работа английского писателя Олдоса Хаксли. Автор "
+      ],
+      [
+        "public/cms/articles/cms-75067054-81b1-40e7-8bd4-3ac1b8296c02.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Сэр Вальтер Скотт, Артур Конан Дойл, Джек Лондон, Чарльз Диккенс, Ярослав Гашек — имена этих прославленны"
+      ],
+      [
+        "public/cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Когда мы говорим о Льве Николаевиче Толстом, то чаще всего в памяти всплывает его великие романы — «Война"
+      ],
+      [
+        "public/cms/articles/cms-77d17eb5-68d7-47f1-b639-2bda523e6050.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Упырь — архаичный устойчивый образ в славянской мифологии, тесно связанный с представлениями древних сл"
+      ],
+      [
+        "public/cms/articles/cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Порой за судьбоносными, во всех смыслах прорывными произведениями гениального классика стоят не менее сил"
+      ],
+      [
+        "public/cms/articles/cms-78382bfd-16f7-4e93-a407-529b4412209f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>1908 год стал для литературного мира довольно богатым на знаковые произведения известных классиков миро"
+      ],
+      [
+        "public/cms/articles/cms-78a20eb3-a2f7-48c2-984d-26767eeacfb1.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <figure>  <img src=\\\"https://static.tildacdn.com/tild6431-6634-4365-a464-663933356538/image.png\\\" loading=\\\"laz"
+      ],
+      [
+        "public/cms/articles/cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение</h2> <div><br>Имя Дэвида Митчелла чаще всего связывают с его головоломным, многослойным романом «Облачный атлас», о которым м"
+      ],
+      [
+        "public/cms/articles/cms-7e0e0028-3f6a-45df-9aae-86f53dd9faa0.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Эдгар Аллан По — именитый американский прозаик и поэт, которого многие запомнили за такие произведения, к"
+      ],
+      [
+        "public/cms/articles/cms-7f6a35a0-bca4-4315-a1c1-7982188643a1.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Научно-фантастический роман Майкла Крайтона «Парк юрского периода» был опубликован в 1990 году. Книга оче"
+      ],
+      [
+        "public/cms/articles/cms-7fec1de9-7485-4e31-b4c1-16b67cb6bcad.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Премия принцессы Астурийской — это одна из наиболее значимых и уважаемых международных наград, присужда"
+      ],
+      [
+        "public/cms/articles/cms-817ab901-ead2-4a33-9f92-aecfbe84e260.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение<br><br></h2> <div>Жар-птица — очень узнаваемый и один из самых символически насыщенных образов славянского фольклора. В сказк"
+      ],
+      [
+        "public/cms/articles/cms-82ca7464-9016-47cd-bffe-255c20987c05.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1923 год стал временем постепенной стабилизации Европы после ужасов Первой мировой войны. Многие государств"
+      ],
+      [
+        "public/cms/articles/cms-85a32626-6954-4090-bd8b-d290fee08241.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\"><br>Предисловие</h2> <div><br>Не каждая хорошая книга заставляет забыть о времени. Но есть произведения, которые обладают особой ма"
+      ],
+      [
+        "public/cms/articles/cms-87b4b7aa-de05-4849-9c44-e77622bb9dff.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div>Шведская писательница – Сельма Лагерлёф, подарившая нам сказочную повесть «Чудесное путешествие Нильса с дикими"
+      ],
+      [
+        "public/cms/articles/cms-897f7c9f-2c81-43fc-a238-d06a7d29db81.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1916 год пришёлся на самый разгар Первой мировой войны. Весь мир, по сути, находился в состоянии глубокого "
+      ],
+      [
+        "public/cms/articles/cms-8a73a389-5d53-40ca-8408-b42330369dc4.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Эмили Дикинсон по праву считается одной из величайших поэтесс мировой литературы. Её творчество оказало зна"
+      ],
+      [
+        "public/cms/articles/cms-8afa91cd-124a-4525-98f0-3f354374da86.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Первая часть подборки из 25 уникальных слов закономерно вызвала интерес у аудитории и привлекла новых пол"
+      ],
+      [
+        "public/cms/articles/cms-8d18ef3c-98b6-4728-8c83-857cea4e8df2.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», сегодня мы о"
+      ],
+      [
+        "public/cms/articles/cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div>Мы продолжаем рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», и сегодня об"
+      ],
+      [
+        "public/cms/articles/cms-8fa390e5-db2d-450b-89c9-8db574179cfa.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Древнегреческая мифология давно перестала быть лишь частью истории античного мира. Уже более двух тысяч л"
+      ],
+      [
+        "public/cms/articles/cms-94114f87-aeb3-4551-9150-d73c9c6a8774.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Продолжая рубрику «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы отправляе"
+      ],
+      [
+        "public/cms/articles/cms-950430de-f001-4de4-8b8f-854d0703750a.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие <br><br></h2> <div>Домовой – один из древнейших персонажей славянской мифологии. Архаические представления о духах пред"
+      ],
+      [
+        "public/cms/articles/cms-97031a6a-1533-41ac-8a53-1443ea6e616d.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <h2 id=\\\"chapter-1-виноваты-звезды-сша-2014-2\\\"><br>1. «Виноваты звезды» (США, 2014)<br><br></h2> <figure>  <im"
+      ],
+      [
+        "public/cms/articles/cms-98d247c6-8e50-4959-8dab-3a44aa01b3ce.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Книга «Ангелы ада» — одно из самых известных произведений американского писателя и журналиста Хантера С. То"
+      ],
+      [
+        "public/cms/articles/cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Недавно мы говорили о «Толковом словаре русского языка» С.И. Ожегова, о его фундаментальном значении и о "
+      ],
+      [
+        "public/cms/articles/cms-9f6ef90b-c89d-45d4-97ee-e73908405013.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Конец года – это всегда очень особенная, волшебная пора. Город вдруг наполняется огнями гирлянд и фонарей"
+      ],
+      [
+        "public/cms/articles/cms-a1285abc-3c95-45c7-b573-56860d5b2be6.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Эрнест Хемингуэй — классик американской и мировой литературы XX века, лауреат Нобелевской и Пулитцеровско"
+      ],
+      [
+        "public/cms/articles/cms-a4f8427b-a60e-485f-a766-c9c6785c2cf8.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <h2 id=\\\"chapter-1-реквием-по-мечте-сша-2000-2\\\"><br>1. Реквием по мечте (США, 2000)<br><br></h2> <figure>  <im"
+      ],
+      [
+        "public/cms/articles/cms-a5d63a02-72bb-46bb-ba7d-9c0c9b3225b7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение</h2> <div><br>Харуки Мураками – выдающийся японский писатель, творчество которого – это концентрация реализма, психоанализа и"
+      ],
+      [
+        "public/cms/articles/cms-a74cfd03-9a7e-4f5b-81eb-81ac974d594b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Премия «Стрега» — одна из наиболее престижных и влиятельных литературных наград в Италии. Учреждённая в"
+      ],
+      [
+        "public/cms/articles/cms-a842e019-25b3-464b-a084-64cb6a5357cf.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <h2 id=\\\"chapter-1-код-да-винчи-дэн-браун-2\\\"><br>1. «Код да Винчи» — Дэн Браун</h2> <div><br>Роман рассказывае"
+      ],
+      [
+        "public/cms/articles/cms-ab1f28d9-a4df-419f-89ea-9caf11029343.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«1408» — очень популярный рассказ Стивена Кинга, написанный в жанре психологического хоррора. Впервые ист"
+      ],
+      [
+        "public/cms/articles/cms-b31b2773-5e92-4b45-b7d8-64fd6dd1ab7f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>В свежем выпуске рубрики «Литературная карта мира. 7 знаковых писателей, прославивших свою родину» мы поз"
+      ],
+      [
+        "public/cms/articles/cms-b8976be2-9164-44b2-a420-3708fe58456b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Книга «Как Гринч украл Рождество», опубликованная в 1957 году, по праву считается одной из самых знаков"
+      ],
+      [
+        "public/cms/articles/cms-b9dda0bc-2aee-4c18-a600-3da88712dad3.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Международная премия Нойштадта — очень авторитетная и одна из наиболее влиятельных литературных наград "
+      ],
+      [
+        "public/cms/articles/cms-bb2f17f3-e28c-4685-9170-d88dab8c4780.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Джек Лондон известен прежде всего как автор «Морского волка», «Мартина Идена», «Белого Клыка» и «Зова пре"
+      ],
+      [
+        "public/cms/articles/cms-bfab93bb-8b92-406e-97a6-36e747da2184.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Полудница – одна из наиболее интересных персонажей в славянской мифологии. Действительно, в отличие от "
+      ],
+      [
+        "public/cms/articles/cms-c3f69185-8b67-4e01-9cfb-5e07c675d5b6.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Премия Георга Бюхнера — престижная и невероятно значимая для немецкоязычного мира литературная нагр"
+      ],
+      [
+        "public/cms/articles/cms-c4f0f1be-b108-4d78-8fa2-324bebbc7f06.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Путь писателя к мировой славе обычно является долгим и непростым процессом. Прежде чем произведения многи"
+      ],
+      [
+        "public/cms/articles/cms-c9e6011b-2214-4f5e-9cb3-8e86ae283604.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Русалка в славянской мифологии занимает особенное место. В народном сознании русалка считалась не прост"
+      ],
+      [
+        "public/cms/articles/cms-cb93763f-3fe6-42ec-aefa-f58287922352.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Герман Мелвилл вписан в историю литературы, но не как успешный автор безоговорочного шедевра своего времени"
+      ],
+      [
+        "public/cms/articles/cms-cb99e537-e502-4a9e-818d-b92a621a40f7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1919 год стал временем серьёзных перемен для Европы. Первая мировая война завершилась в ноябре 1918 года, с"
+      ],
+      [
+        "public/cms/articles/cms-cc37237c-e70e-4edf-93ae-100494a4755c.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Морис Полидор Мари Бернар Метерлинк – писатель, который в 1911 году стал первым бельгийским автором, удосто"
+      ],
+      [
+        "public/cms/articles/cms-ccc8ef31-8506-4edb-90ba-31530c0a8433.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Премия Ренодо (Prix Renaudot) – очень авторитетная и одна из престижнейших литературных наград Фран"
+      ],
+      [
+        "public/cms/articles/cms-cd7a575d-8930-4ef0-938d-e77179970554.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Новый год и Рождество – по-настоящему особенный период. Это время чуда, внутреннего поворота, надежды и воз"
+      ],
+      [
+        "public/cms/articles/cms-cd982a45-4204-4783-83e4-7b37d26541e7.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>В богатстве языка скрывается сила мысли, оттенки эмоций и неповторимость стиля. Чем шире наш словарный за"
+      ],
+      [
+        "public/cms/articles/cms-d37e5f07-4733-4e3c-a42e-2c5728484b21.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Не секрет, что киностудии довольно часто адаптируют бестселлеры в кинокартины и зарабатывают огромные кас"
+      ],
+      [
+        "public/cms/articles/cms-d3a561f0-a8d7-40e8-af97-85d9313ff30f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Книга Ричарда Мэтисона «Я-легенда» вышедшая в далёком 1954 году произвела впечатление на многих, в том "
+      ],
+      [
+        "public/cms/articles/cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div>Новая рубрика «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», в которой мы расскаж"
+      ],
+      [
+        "public/cms/articles/cms-d5fdbc40-dd61-4f15-84df-9bfd7b334d6a.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>За страницами всемирно известных произведений нередко скрываются удивительные человеческие судьбы. Прежде"
+      ],
+      [
+        "public/cms/articles/cms-d9ea37e8-720c-4c62-aa8c-dd93742049a9.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«Утопия — Авеню» занимает в творчестве писателя Дэвида Митчелла по-настоящему особенное место. В отличии "
+      ],
+      [
+        "public/cms/articles/cms-df0e0863-989f-4361-92bb-067b81bd80ab.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Кикимора – довольно известная в славянском фольклоре фигура, являющаяся воплощением беспорядка и хаоса."
+      ],
+      [
+        "public/cms/articles/cms-e11799b3-a972-47d9-b5ee-3e94ce35ef14.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>Имя писателя Марка Твена знают все от мала до велика. Его гениальная книжка о приключениях Тома Сойера и "
+      ],
+      [
+        "public/cms/articles/cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>\\\"Форрест Гамп\\\" — роман американского писателя Уинстона Грума, впервые опубликованный в 1986 году. Это и"
+      ],
+      [
+        "public/cms/articles/cms-e430f98c-666b-4aad-ac06-89285d5ec935.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>1921 год стал временем постепенного восстановления Европы после разрушительных последствий Первой мировой в"
+      ],
+      [
+        "public/cms/articles/cms-e4bf2314-4621-48c4-9587-b4e88131412f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> \\n <h2 id=\\\"chapter-1-девушка-с-татуировкой-дракона-сша-швеция-2011-2\\\"><br>1. «Девушка с татуировкой дракона» (СШ"
+      ],
+      [
+        "public/cms/articles/cms-e55ff47c-b4dd-46d4-ab1c-a9ec3e36449b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Национальная книжная премия США — очень престижная и популярная литературная награда в Соединённых "
+      ],
+      [
+        "public/cms/articles/cms-e74fbb1f-8298-46e3-b10e-8430883e851b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение</h2> <div><br>Анри Барбюс – прославленный французский писатель, журналист и общественный деятель, опубликовавший свой во всех"
+      ],
+      [
+        "public/cms/articles/cms-e922551a-afd3-40e0-bcaf-17379de6bd9b.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление</h2> <div><br>Роман «Война в воздухе» — одно из самых недооцененных и непопулярных произведений английского писателя Герб"
+      ],
+      [
+        "public/cms/articles/cms-eb60b099-f6de-40c7-a260-4ca8612005bf.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-введение-1\\\">Введение</h2> <div><br>Роман «Дракула» — одно из самых значимых произведений мировой готической литературы. Безумно популярный зловещи"
+      ],
+      [
+        "public/cms/articles/cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Роман Фрэнсиса Скотта Фицджеральда «Великий Гэтсби», впервые был опубликован в 1925 году (примерно за 4"
+      ],
+      [
+        "public/cms/articles/cms-eea1fd69-1eec-41ec-9db5-3fcb142087e0.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«Старикам тут не место» — мрачный философский роман американского писателя Кормака Маккарти, впервые опуб"
+      ],
+      [
+        "public/cms/articles/cms-f0dbc3cc-8e8a-4525-a566-b4ba84f23144.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\"><br>Вступление<br><br></h2> <div>Премия Камоэнса — главная и наиболее престижная литературная награда португалоязычного мира. Она пр"
+      ],
+      [
+        "public/cms/articles/cms-f613cf8b-7c84-4cc5-94cc-83a7fdac3483.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-вступление-1\\\">Вступление<br><br></h2> <div>Совсем недавно мы поговорили о популярном романе Джека Лондона под названием «Морской волк», в основе к"
+      ],
+      [
+        "public/cms/articles/cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>В истории мировой литературы нередко случается так, что писатель становится известным благодаря одному — "
+      ],
+      [
+        "public/cms/articles/cms-ffbb6aef-f5f6-4643-a98c-a846b0b56f6f.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div><br>«Страх и отвращение в Лас-Вегасе. Дикое путешествие в сердце Американской мечты» (в русском варианте звуч"
+      ],
+      [
+        "public/cms/articles/cms-ffd09d2f-e6bc-4844-b71c-3c292c1c69af.json",
+        32,
+        "\"contentHtml\": \"<h2 id=\\\"chapter-предисловие-1\\\">Предисловие</h2> <div>В сегодняшнем выпуске «Литературная карта мира. 7 знаковых писателей, прославивших свою родину», мы расскажем"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        17,
+        "*   stale:      300 seconds (5 minutes)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        18,
+        "*   revalidate: 900 seconds (15 minutes)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        19,
+        "*   expire:     never"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        31,
+        "*   stale:      30 seconds"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        32,
+        "*   revalidate: 1 seconds"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        33,
+        "*   expire:     60 seconds (1 minute)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        45,
+        "*   stale:      300 seconds (5 minutes)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        46,
+        "*   revalidate: 60 seconds (1 minute)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        47,
+        "*   expire:     3600 seconds (1 hour)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        59,
+        "*   stale:      300 seconds (5 minutes)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        60,
+        "*   revalidate: 3600 seconds (1 hour)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        61,
+        "*   expire:     86400 seconds (1 day)"
+      ],
+      [
+        "apps/admin/.next/types/cache-life.d.ts",
+        73,
+        "*   stale:      300 seconds (5 minutes)"
+      ]
+    ]
+  }
+}

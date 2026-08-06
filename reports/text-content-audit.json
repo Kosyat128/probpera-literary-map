@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "root": "C:\\Users\\User\\Documents\\Codex\\2026-07-26\\new-chat\\work\\probpera-literary-map",
+    "files_scanned": 898
+  },
+  "summary": {
+    "placeholder_token": 14,
+    "double_space_in_text": 1
+  },
+  "items": {
+    "placeholder_token": [
+      [
+        "src\\App.tsx",
+        381,
+        "undefined"
+      ],
+      [
+        "src\\cms-security.test.ts",
+        69,
+        "subject_type text not null check (subject_type in ('article', 'book'))"
+      ],
+      [
+        "src\\community\\EditorialWorkbench.tsx",
+        25,
+        "null"
+      ],
+      [
+        "src\\community\\sessionIdentity.ts",
+        5,
+        "undefined"
+      ],
+      [
+        "src\\components\\ArticleReader.tsx",
+        74,
+        "undefined"
+      ],
+      [
+        "src\\editorial\\ShareLinks.tsx",
+        18,
+        "undefined"
+      ],
+      [
+        "src\\hooks\\useDisplayMode.ts",
+        13,
+        "undefined"
+      ],
+      [
+        "src\\hooks\\useReadingLibrary.ts",
+        23,
+        "undefined"
+      ],
+      [
+        "src\\hooks\\useReadingProgress.ts",
+        22,
+        "undefined"
+      ],
+      [
+        "src\\hooks\\useSubscriptions.ts",
+        21,
+        "undefined"
+      ],
+      [
+        "src\\i18n\\InterfaceLanguage.tsx",
+        482,
+        "undefined"
+      ],
+      [
+        "src\\i18n\\InterfaceLanguage.tsx",
+        549,
+        "undefined"
+      ],
+      [
+        "src\\mobile\\offlineDatabase.ts",
+        8,
+        "undefined"
+      ],
+      [
+        "src\\pages\\WritersPage.tsx",
+        9,
+        "undefined"
+      ]
+    ],
+    "double_space_in_text": [
+      [
+        "src\\utils\\literarySearch.test.ts",
+        10,
+        "  «Вишнёвый САД»  "
+      ]
+    ]
+  }
+}

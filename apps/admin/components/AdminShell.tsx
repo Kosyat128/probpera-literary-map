@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 import type { StaffSession } from "@/lib/auth";
+import { adminBasePath, withAdminBasePath } from "@/lib/navigation";
 import { logoutAction } from "@/app/(auth)/login/actions";
 
 const navigation = [
@@ -36,12 +37,15 @@ export default function AdminShell({
 }) {
   const pathname = usePathname();
   const normalizedPathname =
-    pathname.replace(/^\/admin(?=\/|$)/u, "") || "/";
+    adminBasePath === ""
+      ? pathname
+      : pathname.replace(new RegExp(`^${adminBasePath.replace("/", "\\/")}(?=/|$)`, "u"), "") ||
+        "/";
 
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <Link className="admin-brand" href="/dashboard">
+              <Link className="admin-brand" href={withAdminBasePath("/dashboard")}>
           <span className="brand-mark" aria-hidden="true">П</span>
           <span>
             <strong>Проба Пера</strong>
@@ -53,7 +57,7 @@ export default function AdminShell({
             <span key={href}>
               {index === 9 && <span className="nav-divider" aria-hidden="true" />}
               <Link
-                href={href}
+                href={withAdminBasePath(href)}
                 aria-current={
                   normalizedPathname === href ||
                   normalizedPathname.startsWith(`${href}/`)

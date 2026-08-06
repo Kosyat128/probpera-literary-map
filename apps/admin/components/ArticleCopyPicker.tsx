@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { duplicateArticleAction } from "@/app/(dashboard)/articles/actions";
@@ -13,8 +14,8 @@ export type CopyableArticle = {
 
 const statusLabels: Record<string, string> = {
   draft: "Черновик",
-  review: "На проверке",
-  scheduled: "Запланирована",
+  review: "На редактировании",
+  scheduled: "К расписанию",
   published: "Опубликована",
   hidden: "Скрыта",
   archived: "В архиве",
@@ -47,40 +48,48 @@ export default function ArticleCopyPicker({
     <section className="panel article-copy-picker" aria-labelledby="article-copy-title">
       <div className="article-copy-heading">
         <div>
-          <span className="eyebrow">Самый быстрый способ</span>
-          <h2 id="article-copy-title">Скопировать старую статью</h2>
+          <span className="eyebrow">Удобный и быстрый старт</span>
+          <h2 id="article-copy-title">Скопировать для редактирования</h2>
           <p>
-            Найдите готовый материал. Кабинет создаст отдельный черновик со
-            всей структурой, текстом и изображениями — оригинал не изменится.
+            Выберите уже существующую статью — можно сразу вставлять в новый черновик,
+            затем заменить тему, текст и картинки.
           </p>
         </div>
-        <strong>{articles.length} материалов</strong>
+        <strong>{articles.length} статей</strong>
       </div>
       <label className="field article-copy-search">
-        <span>Название статьи</span>
+        <span>Поиск статьи</span>
         <input
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Например: Морской волк"
+          placeholder="Например: Морфий"
           autoComplete="off"
         />
       </label>
       <div className="article-copy-results" role="list">
         {matches.map((article) => (
-          <form action={duplicateArticleAction} key={article.id} role="listitem">
-            <input type="hidden" name="id" value={article.id} />
-            <button type="submit">
-              <span>
-                <strong>{article.title}</strong>
-                <small>{statusLabels[article.status] || article.status}</small>
-              </span>
-              <b>Создать копию →</b>
-            </button>
-          </form>
+          <article className="article-copy-item" key={article.id}>
+            <div>
+              <strong>{article.title}</strong>
+              <small>{statusLabels[article.status] || article.status}</small>
+            </div>
+            <div className="article-copy-actions">
+              <form action={duplicateArticleAction}>
+                <input type="hidden" name="id" value={article.id} />
+                <button type="submit">Скопировать как черновик</button>
+              </form>
+              <Link
+                className="button-secondary"
+                href={`/articles/new?copyFrom=${encodeURIComponent(article.id)}`}
+              >
+                Открыть для переписывания
+              </Link>
+            </div>
+          </article>
         ))}
         {!matches.length && (
-          <p className="article-copy-empty">По этому названию статьи не найдены.</p>
+          <p className="article-copy-empty">По вашему запросу статей не найдено.</p>
         )}
       </div>
     </section>

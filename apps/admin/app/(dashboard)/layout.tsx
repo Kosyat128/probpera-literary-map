@@ -1,10 +1,10 @@
-import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
 import AdminShell from "@/components/AdminShell";
 import { logoutAction } from "@/app/(auth)/login/actions";
 import { getStaffSession } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
+import { redirect as adminRedirect } from "@/lib/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +31,7 @@ export default async function DashboardLayout({
     );
   }
 
-  if (!session.user) redirect("/login");
+  if (!session.user) adminRedirect("/login");
 
   if (!session.role) {
     return (

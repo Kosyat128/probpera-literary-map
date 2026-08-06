@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
-    "start": "node scripts/prepare-standalone.mjs && node .next/standalone/apps/admin/server.js",
+    "start": "node scripts/prepare-standalone.mjs && node scripts/start-admin.mjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

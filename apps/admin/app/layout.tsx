@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "./globals.css";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
 export const metadata: Metadata = {
   title: {
@@ -19,9 +20,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const adminBasePath = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH);
+
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body data-admin-base-path={adminBasePath || undefined}>{children}</body>
     </html>
   );
 }

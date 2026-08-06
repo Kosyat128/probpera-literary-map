@@ -1,20 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { withClientAdminPath } from "@/lib/admin-path";
 
 export type HomepageMediaOption = {
   id: string;
   label: string;
   publicUrl: string;
 };
-
-function apiPath(path: string) {
-  if (typeof window === "undefined") return path;
-  const hasAdminPrefix =
-    window.location.pathname === "/admin" ||
-    window.location.pathname.startsWith("/admin/");
-  return `${hasAdminPrefix ? "/admin" : ""}${path}`;
-}
 
 function fileLabel(file: File) {
   const value = file.name
@@ -72,7 +65,7 @@ export default function HomepageMediaField({
     setError("");
     setMessage("Загружаем и оптимизируем изображение…");
     try {
-      const response = await fetch(apiPath("/api/media/upload"), {
+      const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
         body: formData,
       });

@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-04T05:16:44.701Z",
+  "generatedAt": "2026-08-05T09:31:06.037Z",
   "source": "https://www.wikidata.org/w/api.php",
   "summary": {
     "records": 2356,
     "uniqueQids": 2326,
-    "sourceConfirmed": 2339,
-    "reviewRequired": 15,
+    "sourceConfirmed": 2338,
+    "reviewRequired": 16,
     "rejected": 2,
     "withWarnings": 181,
     "withPortraitCandidate": 1407,
@@ -64532,9 +64532,11 @@
       "countryId": "guatemala",
       "id": "wikidata-q967978",
       "wikidataId": "Q967978",
-      "fullName": "Manuel José XXX Arce Leal",
-      "status": "source-confirmed",
-      "issues": [],
+      "fullName": "Manuel José Arce Leal",
+      "status": "review-required",
+      "issues": [
+        "Имя изменилось: «Manuel José Arce Leal» → «Manuel José XXX Arce Leal»"
+      ],
       "warnings": [],
       "live": {
         "fullName": "Manuel José XXX Arce Leal",

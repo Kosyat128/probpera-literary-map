@@ -1,10 +1,33 @@
 import type { NextConfig } from "next";
 
+const LEGACY_PREFIX = "admin";
+
+function normalizeBasePath(rawValue: string | undefined): string {
+  const configured = rawValue?.trim() ?? "/admin";
+
+  if (configured === "/" || configured === "") {
+    return "";
+  }
+
+  const normalized = configured
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/\/{2,}/g, "/");
+
+  if (!normalized) {
+    return "";
+  }
+
+  const segments = normalized.split("/").filter(Boolean);
+
+  while (segments[0]?.toLowerCase() === LEGACY_PREFIX && segments[1]?.toLowerCase() === LEGACY_PREFIX) {
+    segments.shift();
+  }
+
+  return segments.length ? `/${segments.join("/")}` : "";
+}
+
 const configuredBasePath = process.env.ADMIN_BASE_PATH?.trim() ?? "/admin";
-const adminBasePath =
-  configuredBasePath === "/" || configuredBasePath === ""
-    ? ""
-    : `/${configuredBasePath.replace(/^\/+|\/+$/g, "")}`;
+const adminBasePath = normalizeBasePath(configuredBasePath);
 const allowedOrigins = [
   "probpera.ru",
   "www.probpera.ru",
@@ -19,15 +42,6 @@ const allowedOrigins = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  // Keep the Supabase server packages outside the webpack server bundle.
-  // Next 16 on Windows can otherwise reference an unwritten
-  // `.next/dev/server/vendor-chunks/@supabase.js` after a route reload.
-  serverExternalPackages: [
-    "@supabase/ssr",
-    "@supabase/supabase-js",
-    "sanitize-html",
-    "zod",
-  ],
   allowedDevOrigins: ["127.0.0.1"],
   outputFileTracingRoot: process.cwd().replace(/[\\/]apps[\\/]admin$/, ""),
   basePath: adminBasePath,

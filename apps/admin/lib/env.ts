@@ -1,19 +1,50 @@
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || "";
+const getEnvValue = (keys: string[]) =>
+  keys
+    .map((key) => process.env[key]?.trim())
+    .find((value) => Boolean(value)) || "";
+
+const supabaseUrl =
+  getEnvValue(["NEXT_PUBLIC_SUPABASE_URL", "VITE_SUPABASE_URL"]);
 const supabasePublishableKey =
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim() || "";
+  getEnvValue([
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+    "VITE_SUPABASE_PUBLISHABLE_KEY",
+  ]);
 
 export const adminEnv = {
   supabaseUrl,
   supabasePublishableKey,
   publicSiteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
-    "https://probpera.ru",
+    getEnvValue([
+      "NEXT_PUBLIC_SITE_URL",
+      "VITE_PUBLIC_SITE_URL",
+      "PUBLIC_SITE_ORIGIN",
+    ]).replace(/\/+$/, "") || "https://probpera.ru",
   adminSiteUrl:
-    process.env.NEXT_PUBLIC_ADMIN_URL?.trim().replace(/\/+$/, "") ||
+    getEnvValue([
+      "NEXT_PUBLIC_ADMIN_URL",
+      "VITE_PUBLIC_ADMIN_URL",
+      "PUBLIC_ADMIN_URL",
+    ]).replace(/\/+$/, "") ||
     "https://probpera.ru/admin",
-  deployHookUrl: process.env.PUBLIC_SITE_DEPLOY_HOOK_URL?.trim() || "",
-  deployHookToken: process.env.PUBLIC_SITE_DEPLOY_HOOK_TOKEN?.trim() || "",
-  metrikaCounterId: process.env.YANDEX_METRIKA_COUNTER_ID?.trim() || "",
+  deployHookUrl:
+    getEnvValue([
+      "PUBLIC_SITE_DEPLOY_HOOK_URL",
+      "VITE_PUBLIC_SITE_DEPLOY_HOOK_URL",
+      "PUBLIC_DEPLOY_HOOK_URL",
+    ]) || "",
+  deployHookToken:
+    getEnvValue([
+      "PUBLIC_SITE_DEPLOY_HOOK_TOKEN",
+      "VITE_PUBLIC_SITE_DEPLOY_HOOK_TOKEN",
+      "PUBLIC_DEPLOY_HOOK_TOKEN",
+    ]) || "",
+  metrikaCounterId:
+    getEnvValue([
+      "YANDEX_METRIKA_COUNTER_ID",
+      "VITE_YANDEX_METRIKA_COUNTER_ID",
+      "PUBLIC_YANDEX_METRIKA_COUNTER_ID",
+    ]) || "",
 };
 
 export const isSupabaseConfigured = Boolean(

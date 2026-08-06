@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import HomepageMediaField, {
   type HomepageMediaOption,
@@ -10,33 +10,34 @@ import {
   createHomepageBlockAction,
   deleteHomepageBlockAction,
   moveHomepageBlockAction,
+  republishHomepageAction,
   toggleHomepageBlockAction,
   updateHomepageBlockAction,
 } from "./actions";
 
-export const metadata = { title: "Главная страница" };
+export const metadata = { title: "Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°" };
 
 const blockLabels: Record<string, string> = {
-  hero: "Первый экран",
-  "article-grid": "Сетка статей",
-  carousel: "Карусель",
-  "editors-choice": "Выбор редакции",
-  popular: "Популярное",
-  latest: "Новое",
-  categories: "Разделы",
-  "book-vs-screen": "Книга и экранизация",
-  "literary-map": "Литературная карта",
-  awards: "Премии",
-  subscription: "Подписка",
-  text: "Текстовый блок",
+  hero: "РџРµСЂРІС‹Р№ СЌРєСЂР°РЅ",
+  "article-grid": "РЎРµС‚РєР° СЃС‚Р°С‚РµР№",
+  carousel: "РљР°СЂСѓСЃРµР»СЊ",
+  "editors-choice": "Р’С‹Р±РѕСЂ СЂРµРґР°РєС†РёРё",
+  popular: "РџРѕРїСѓР»СЏСЂРЅРѕРµ",
+  latest: "РќРѕРІРѕРµ",
+  categories: "Р Р°Р·РґРµР»С‹",
+  "book-vs-screen": "РљРЅРёРіР° Рё СЌРєСЂР°РЅРёР·Р°С†РёСЏ",
+  "literary-map": "Р›РёС‚РµСЂР°С‚СѓСЂРЅР°СЏ РєР°СЂС‚Р°",
+  awards: "РџСЂРµРјРёРё",
+  subscription: "РџРѕРґРїРёСЃРєР°",
+  text: "РўРµРєСЃС‚РѕРІС‹Р№ Р±Р»РѕРє",
 };
 
 const backgroundLabels: Record<string, string> = {
-  violet: "Фиолетовый",
-  orange: "Оранжевый",
-  paper: "Бумага с мазками",
-  light: "Светлый",
-  transparent: "Прозрачный",
+  violet: "Р¤РёРѕР»РµС‚РѕРІС‹Р№",
+  orange: "РћСЂР°РЅР¶РµРІС‹Р№",
+  paper: "Р‘СѓРјР°РіР° СЃ РјР°Р·РєР°РјРё",
+  light: "РЎРІРµС‚Р»С‹Р№",
+  transparent: "РџСЂРѕР·СЂР°С‡РЅС‹Р№",
 };
 
 function settingsObject(value: unknown) {
@@ -72,7 +73,12 @@ function BackgroundSelect({ value }: { value: string }) {
 export default async function HomepagePage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; saved?: string; deleted?: string }>;
+  searchParams: Promise<{
+    error?: string;
+    saved?: string;
+    deleted?: string;
+    published?: string;
+  }>;
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
@@ -90,7 +96,7 @@ export default async function HomepagePage({
   const media: HomepageMediaOption[] = (mediaResult || []).map((asset) => ({
     id: asset.id,
     label:
-      asset.alt_text || asset.collection_name || asset.object_path.split("/").pop() || "Изображение",
+      asset.alt_text || asset.collection_name || asset.object_path.split("/").pop() || "РР·РѕР±СЂР°Р¶РµРЅРёРµ",
     publicUrl: supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path).data.publicUrl,
   }));
   const mediaById = new Map(media.map((asset) => [asset.id, asset]));
@@ -99,25 +105,30 @@ export default async function HomepagePage({
     <>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">Витрина журнала</span>
-          <h1>Главная страница</h1>
+          <span className="eyebrow">Р’РёС‚СЂРёРЅР° Р¶СѓСЂРЅР°Р»Р°</span>
+          <h1>Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</h1>
           <p>
-            Здесь настраиваются опубликованные редакционные блоки. После
-            сохранения панель запускает безопасную пересборку сайта, а глобус и
-            основные разделы остаются постоянной частью главной.
+            Р—РґРµСЃСЊ РЅР°СЃС‚СЂР°РёРІР°СЋС‚СЃСЏ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ СЂРµРґР°РєС†РёРѕРЅРЅС‹Рµ Р±Р»РѕРєРё. РџРѕСЃР»Рµ
+            СЃРѕС…СЂР°РЅРµРЅРёСЏ РїР°РЅРµР»СЊ Р·Р°РїСѓСЃРєР°РµС‚ Р±РµР·РѕРїР°СЃРЅСѓСЋ РїРµСЂРµСЃР±РѕСЂРєСѓ СЃР°Р№С‚Р°, Р° РіР»РѕР±СѓСЃ Рё
+            РѕСЃРЅРѕРІРЅС‹Рµ СЂР°Р·РґРµР»С‹ РѕСЃС‚Р°СЋС‚СЃСЏ РїРѕСЃС‚РѕСЏРЅРЅРѕР№ С‡Р°СЃС‚СЊСЋ РіР»Р°РІРЅРѕР№.
           </p>
         </div>
         <div className="editor-actions">
           <Link className="button-secondary" href="/media">
-            Открыть медиатеку
+            РћС‚РєСЂС‹С‚СЊ РјРµРґРёР°С‚РµРєСѓ
           </Link>
+          <form action={republishHomepageAction}>
+            <button className="button-secondary" type="submit">
+              Republish homepage
+            </button>
+          </form>
           <a
             className="button"
             href={adminEnv.publicSiteUrl}
             target="_blank"
             rel="noreferrer"
           >
-            Посмотреть главную ↗
+            РџРѕСЃРјРѕС‚СЂРµС‚СЊ РіР»Р°РІРЅСѓСЋ в†—
           </a>
         </div>
       </header>
@@ -125,13 +136,29 @@ export default async function HomepagePage({
       {query.error && <p className="form-message">{query.error}</p>}
       {query.saved && (
         <p className="form-message form-success">
-          Изменения сохранены и поставлены в очередь публикации. Публичная
-          версия обновится после безопасной пересборки.
+          РР·РјРµРЅРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅС‹ Рё РїРѕСЃС‚Р°РІР»РµРЅС‹ РІ РѕС‡РµСЂРµРґСЊ РїСѓР±Р»РёРєР°С†РёРё. РџСѓР±Р»РёС‡РЅР°СЏ
+          РІРµСЂСЃРёСЏ РѕР±РЅРѕРІРёС‚СЃСЏ РїРѕСЃР»Рµ Р±РµР·РѕРїР°СЃРЅРѕР№ РїРµСЂРµСЃР±РѕСЂРєРё.
         </p>
       )}
+      {query.published === "started" && (
+        <p className="form-message form-success">
+          Publication publish started. Changes are queued for deploy.
+        </p>
+      )}
+      {query.published === "queue-error" && (
+        <p className="form-message form-success">
+          Queue request rejected. The system will retry automatically.
+        </p>
+      )}
+      {query.published === "disabled" && (
+        <p className="form-message form-error">
+          Publish is currently unavailable. Please check build hook settings.
+        </p>
+      )}
+
       {query.deleted && (
         <p className="form-message form-success">
-          Блок удалён и изменение поставлено в очередь публикации.
+          Р‘Р»РѕРє СѓРґР°Р»С‘РЅ Рё РёР·РјРµРЅРµРЅРёРµ РїРѕСЃС‚Р°РІР»РµРЅРѕ РІ РѕС‡РµСЂРµРґСЊ РїСѓР±Р»РёРєР°С†РёРё.
         </p>
       )}
 
@@ -149,7 +176,7 @@ export default async function HomepagePage({
                       {index + 1}.{" "}
                       {blockLabels[block.block_type] || block.block_type}
                     </span>
-                    <h2>{block.title || "Без заголовка"}</h2>
+                    <h2>{block.title || "Р‘РµР· Р·Р°РіРѕР»РѕРІРєР°"}</h2>
                   </div>
                   <div className="editor-actions">
                     <form action={moveHomepageBlockAction}>
@@ -160,9 +187,9 @@ export default async function HomepagePage({
                         name="direction"
                         value="up"
                         disabled={index === 0}
-                        aria-label="Поднять блок"
+                        aria-label="РџРѕРґРЅСЏС‚СЊ Р±Р»РѕРє"
                       >
-                        ↑
+                        в†‘
                       </button>
                     </form>
                     <form action={moveHomepageBlockAction}>
@@ -173,9 +200,9 @@ export default async function HomepagePage({
                         name="direction"
                         value="down"
                         disabled={index === blocks.length - 1}
-                        aria-label="Опустить блок"
+                        aria-label="РћРїСѓСЃС‚РёС‚СЊ Р±Р»РѕРє"
                       >
-                        ↓
+                        в†“
                       </button>
                     </form>
                   </div>
@@ -187,74 +214,74 @@ export default async function HomepagePage({
                 >
                   <input type="hidden" name="id" value={block.id} />
                   <label className="field">
-                    <span>Заголовок</span>
+                    <span>Р—Р°РіРѕР»РѕРІРѕРє</span>
                     <input name="title" defaultValue={block.title} />
                   </label>
                   <label className="field">
-                    <span>Надзаголовок</span>
+                    <span>РќР°РґР·Р°РіРѕР»РѕРІРѕРє</span>
                     <input
                       name="eyebrow"
                       defaultValue={settingText(settings, "eyebrow")}
-                      placeholder="Например: Выбор редакции"
+                      placeholder="РќР°РїСЂРёРјРµСЂ: Р’С‹Р±РѕСЂ СЂРµРґР°РєС†РёРё"
                     />
                   </label>
                   <label className="field">
-                    <span>Описание</span>
+                    <span>РћРїРёСЃР°РЅРёРµ</span>
                     <textarea
                       name="description"
                       defaultValue={
                         settingText(settings, "description") ||
                         settingText(settings, "copy")
                       }
-                      placeholder="Короткий текст блока"
+                      placeholder="РљРѕСЂРѕС‚РєРёР№ С‚РµРєСЃС‚ Р±Р»РѕРєР°"
                     />
                   </label>
                   <label className="field">
-                    <span>Фон</span>
+                    <span>Р¤РѕРЅ</span>
                     <BackgroundSelect value={block.background_style} />
                   </label>
                   <div className="field">
-                    <span>Фоновое изображение из медиатеки</span>
+                    <span>Р¤РѕРЅРѕРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РёР· РјРµРґРёР°С‚РµРєРё</span>
                     <HomepageMediaField value={block.background_media_id} media={media} />
                     <small>
-                      Изображение применяется на всю ширину блока и адаптируется
-                      для мобильного экрана.
+                      РР·РѕР±СЂР°Р¶РµРЅРёРµ РїСЂРёРјРµРЅСЏРµС‚СЃСЏ РЅР° РІСЃСЋ С€РёСЂРёРЅСѓ Р±Р»РѕРєР° Рё Р°РґР°РїС‚РёСЂСѓРµС‚СЃСЏ
+                      РґР»СЏ РјРѕР±РёР»СЊРЅРѕРіРѕ СЌРєСЂР°РЅР°.
                     </small>
                   </div>
                   {block.background_media_id && mediaById.get(block.background_media_id) && (
                     <img
                       className="homepage-block-preview"
                       src={mediaById.get(block.background_media_id)!.publicUrl}
-                      alt="Предпросмотр фонового изображения блока"
+                      alt="РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ С„РѕРЅРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ Р±Р»РѕРєР°"
                     />
                   )}
                   <div className="dashboard-grid">
                     <label className="field">
-                      <span>Текст кнопки</span>
+                      <span>РўРµРєСЃС‚ РєРЅРѕРїРєРё</span>
                       <input
                         name="button_text"
                         defaultValue={settingText(settings, "buttonText")}
                       />
                     </label>
                     <label className="field">
-                      <span>Ссылка кнопки</span>
+                      <span>РЎСЃС‹Р»РєР° РєРЅРѕРїРєРё</span>
                       <input
                         name="button_url"
                         defaultValue={settingText(settings, "buttonUrl")}
-                        placeholder="#atlas или https://…"
+                        placeholder="#atlas РёР»Рё https://вЂ¦"
                       />
                     </label>
                   </div>
                   <label className="field">
-                    <span>Статьи блока</span>
+                    <span>РЎС‚Р°С‚СЊРё Р±Р»РѕРєР°</span>
                     <textarea
                       name="article_ids"
                       defaultValue={articleIds(settings)}
-                      placeholder="По одному ID статьи на строку. Если оставить пустым, сайт выберет свежие публикации."
+                      placeholder="РџРѕ РѕРґРЅРѕРјСѓ ID СЃС‚Р°С‚СЊРё РЅР° СЃС‚СЂРѕРєСѓ. Р•СЃР»Рё РѕСЃС‚Р°РІРёС‚СЊ РїСѓСЃС‚С‹Рј, СЃР°Р№С‚ РІС‹Р±РµСЂРµС‚ СЃРІРµР¶РёРµ РїСѓР±Р»РёРєР°С†РёРё."
                     />
                   </label>
                   <button className="button" type="submit">
-                    Сохранить блок
+                    РЎРѕС…СЂР°РЅРёС‚СЊ Р±Р»РѕРє
                   </button>
                 </form>
 
@@ -267,13 +294,13 @@ export default async function HomepagePage({
                       value={block.is_enabled ? "false" : "true"}
                     />
                     <button className="button-secondary" type="submit">
-                      {block.is_enabled ? "Скрыть на сайте" : "Показать на сайте"}
+                      {block.is_enabled ? "РЎРєСЂС‹С‚СЊ РЅР° СЃР°Р№С‚Рµ" : "РџРѕРєР°Р·Р°С‚СЊ РЅР° СЃР°Р№С‚Рµ"}
                     </button>
                   </form>
                   <form action={deleteHomepageBlockAction}>
                     <input type="hidden" name="id" value={block.id} />
                     <button className="button-secondary" type="submit">
-                      Удалить
+                      РЈРґР°Р»РёС‚СЊ
                     </button>
                   </form>
                 </div>
@@ -284,10 +311,10 @@ export default async function HomepagePage({
       ) : (
         <section className="panel empty-state">
           <div>
-            <h2>Управляемых блоков пока нет</h2>
+            <h2>РЈРїСЂР°РІР»СЏРµРјС‹С… Р±Р»РѕРєРѕРІ РїРѕРєР° РЅРµС‚</h2>
             <p>
-              Текущая главная продолжает работать. Добавьте первый блок, чтобы
-              управлять дополнительной редакционной витриной из панели.
+              РўРµРєСѓС‰Р°СЏ РіР»Р°РІРЅР°СЏ РїСЂРѕРґРѕР»Р¶Р°РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ. Р”РѕР±Р°РІСЊС‚Рµ РїРµСЂРІС‹Р№ Р±Р»РѕРє, С‡С‚РѕР±С‹
+              СѓРїСЂР°РІР»СЏС‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ СЂРµРґР°РєС†РёРѕРЅРЅРѕР№ РІРёС‚СЂРёРЅРѕР№ РёР· РїР°РЅРµР»Рё.
             </p>
           </div>
         </section>
@@ -297,10 +324,10 @@ export default async function HomepagePage({
         className="panel settings-stack"
         action={createHomepageBlockAction}
       >
-        <h2>Добавить блок</h2>
+        <h2>Р”РѕР±Р°РІРёС‚СЊ Р±Р»РѕРє</h2>
         <div className="dashboard-grid">
           <label className="field">
-            <span>Тип</span>
+            <span>РўРёРї</span>
             <select name="block_type">
               {Object.entries(blockLabels).map(([value, label]) => (
                 <option key={value} value={value}>
@@ -310,42 +337,42 @@ export default async function HomepagePage({
             </select>
           </label>
           <label className="field">
-            <span>Фон</span>
+            <span>Р¤РѕРЅ</span>
             <BackgroundSelect value="paper" />
           </label>
           <div className="field">
-            <span>Фоновое изображение</span>
+            <span>Р¤РѕРЅРѕРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ</span>
             <HomepageMediaField media={media} />
           </div>
         </div>
         <label className="field">
-          <span>Заголовок</span>
+          <span>Р—Р°РіРѕР»РѕРІРѕРє</span>
           <input name="title" />
         </label>
         <label className="field">
-          <span>Надзаголовок</span>
+          <span>РќР°РґР·Р°РіРѕР»РѕРІРѕРє</span>
           <input name="eyebrow" />
         </label>
         <label className="field">
-          <span>Описание</span>
+          <span>РћРїРёСЃР°РЅРёРµ</span>
           <textarea name="description" />
         </label>
         <div className="dashboard-grid">
           <label className="field">
-            <span>Текст кнопки</span>
+            <span>РўРµРєСЃС‚ РєРЅРѕРїРєРё</span>
             <input name="button_text" />
           </label>
           <label className="field">
-            <span>Ссылка кнопки</span>
+            <span>РЎСЃС‹Р»РєР° РєРЅРѕРїРєРё</span>
             <input name="button_url" />
           </label>
         </div>
         <label className="field">
-          <span>ID выбранных статей</span>
+          <span>ID РІС‹Р±СЂР°РЅРЅС‹С… СЃС‚Р°С‚РµР№</span>
           <textarea name="article_ids" />
         </label>
         <button className="button" type="submit">
-          Добавить в конец главной
+          Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕРЅРµС† РіР»Р°РІРЅРѕР№
         </button>
       </form>
     </>
