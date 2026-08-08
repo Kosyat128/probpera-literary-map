@@ -94,7 +94,10 @@ export default async function EditArticlePage({
         .order("created_at", { ascending: true })
     : { data: [] };
   const socialResults = socialResultRows || [];
-  const channelState = new Map<string, { action: string; state: string }>();
+  const channelState = new Map<
+    string,
+    { action: string; state: string; error: string }
+  >();
   socialResults.forEach((result) => {
     const metadata =
       result.metadata && typeof result.metadata === "object"
@@ -105,25 +108,36 @@ export default async function EditArticlePage({
     channelState.set(platform, {
       action: result.action,
       state: typeof metadata.state === "string" ? metadata.state : "",
+      error:
+        typeof metadata.error === "string"
+          ? metadata.error.slice(0, 180)
+          : "",
     });
   });
   const socialChannels = [
     { id: "vk", label: "ВКонтакте" },
-    { id: "ok", label: "Одноклассники" },
+    { id: "ok", label: "Одноклассники", optional: true },
     { id: "dzen", label: "Дзен" },
   ].map((channel) => {
     const result = channelState.get(channel.id);
     if (!socialRequest) return { ...channel, tone: "idle", status: "Не отправлялось" };
+    if (!result && channel.optional) {
+      return { ...channel, tone: "idle", status: "Подключается позже" };
+    }
     if (!result) return { ...channel, tone: "waiting", status: "Ожидает отправки" };
     if (result.action === "social_publish.succeeded") {
       return {
         ...channel,
         tone: "success",
-        status: result.state === "rss-ready" ? "RSS подключён" : "Опубликовано",
+        status: result.state === "rss-ready" ? "RSS готов" : "Опубликовано",
       };
     }
     if (result.action === "social_publish.failed") {
-      return { ...channel, tone: "error", status: "Ошибка доставки" };
+      return {
+        ...channel,
+        tone: "error",
+        status: result.error ? `Ошибка: ${result.error}` : "Ошибка доставки",
+      };
     }
     return {
       ...channel,
@@ -182,7 +196,12 @@ export default async function EditArticlePage({
       )}
       {query.social === "requested" && (
         <p className="form-message form-success">
-          Отправка во «ВКонтакте», «Одноклассники» и Дзен поставлена в очередь.
+          Отправка во «ВКонтакте» и RSS Дзена поставлена в очередь.
+        </p>
+      )}
+      {query.social === "retrying" && (
+        <p className="form-message form-success">
+          Незавершённая отправка возобновлена без создания дубликата.
         </p>
       )}
 
@@ -199,7 +218,7 @@ export default async function EditArticlePage({
           {article.status === "published" && (
             <form action={requestSocialPublicationAction}>
               <input type="hidden" name="id" value={article.id} />
-              <ConfirmSubmitButton message="Повторно поставить статью в очередь автопостинга? В уже подключённых соцсетях может появиться новая публикация.">
+              <ConfirmSubmitButton message="Повторить только незавершённую отправку? Если прежняя доставка уже полностью завершена, будет создана новая публикация.">
                 Повторить отправку
               </ConfirmSubmitButton>
             </form>
@@ -215,8 +234,9 @@ export default async function EditArticlePage({
           ))}
         </div>
         <small className="social-publication-note">
-          Для Дзена используется официальный RSS-канал журнала; «ВКонтакте» и
-          «Одноклассники» получают текст, ссылку и обложку через свои API.
+          Для Дзена формируется RSS-канал журнала. VK получает текст и ссылку от
+          имени сообщества; обложка прикрепляется при наличии пользовательского
+          токена администратора. «Одноклассники» будут подключены отдельным этапом.
         </small>
       </section>
       <ArticleEditor

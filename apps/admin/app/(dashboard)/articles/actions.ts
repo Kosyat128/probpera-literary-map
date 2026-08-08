@@ -529,7 +529,7 @@ export async function saveArticleAction(formData: FormData) {
           article_id: articleId,
           title: parsed.data.title,
           slug: savedSlug,
-          platforms: ["vk", "ok", "dzen"],
+          platforms: ["vk", "dzen"],
           requested_at: now,
         },
       });
@@ -588,22 +588,51 @@ export async function requestSocialPublicationAction(formData: FormData) {
     );
   }
 
-  const { error: queueError } = await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "social_publish.requested",
-    entity_type: "article",
-    entity_id: article.id,
-    metadata: {
-      article_id: article.id,
-      title: article.title,
-      slug: article.slug,
-      platforms: ["vk", "ok", "dzen"],
-      requested_at: new Date().toISOString(),
-      reason: "manual-editor-request",
-    },
-  });
-  if (queueError) {
-    redirect(articleEditPath(id, { error: queueError.message }));
+  const { data: latestRequests, error: latestRequestError } = await supabase
+    .from("admin_audit_log")
+    .select("id")
+    .eq("action", "social_publish.requested")
+    .eq("entity_type", "article")
+    .eq("entity_id", article.id)
+    .order("created_at", { ascending: false })
+    .limit(1);
+  if (latestRequestError) {
+    redirect(articleEditPath(id, { error: latestRequestError.message }));
+  }
+
+  const latestRequest = latestRequests?.[0] || null;
+  const { data: completedRows, error: completionError } = latestRequest
+    ? await supabase
+        .from("admin_audit_log")
+        .select("id")
+        .eq("action", "social_publish.completed")
+        .eq("entity_type", "social_publication")
+        .eq("entity_id", String(latestRequest.id))
+        .limit(1)
+    : { data: [], error: null };
+  if (completionError) {
+    redirect(articleEditPath(id, { error: completionError.message }));
+  }
+
+  const resumedPendingRequest = Boolean(latestRequest && !completedRows?.length);
+  if (!resumedPendingRequest) {
+    const { error: queueError } = await supabase.from("admin_audit_log").insert({
+      actor_id: session.user.id,
+      action: "social_publish.requested",
+      entity_type: "article",
+      entity_id: article.id,
+      metadata: {
+        article_id: article.id,
+        title: article.title,
+        slug: article.slug,
+        platforms: ["vk", "dzen"],
+        requested_at: new Date().toISOString(),
+        reason: "manual-editor-request",
+      },
+    });
+    if (queueError) {
+      redirect(articleEditPath(id, { error: queueError.message }));
+    }
   }
 
   const publication = await requestPublicBuild({
@@ -616,7 +645,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
   revalidatePath(articleEditPath(id));
   redirect(
     articleEditPath(id, {
-      social: "requested",
+      social: resumedPendingRequest ? "retrying" : "requested",
       publish: publication.state,
     })
   );
