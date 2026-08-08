@@ -5,6 +5,33 @@ import {
 import { cmsArticleCatalog } from "./cms.generated";
 import { articlePublicPath } from "../../utils/articleRoutes";
 
+export type ArticleTranslationStatus = "approved" | "published";
+
+export type ArticleCatalogTranslation = {
+  locale: "en";
+  title: string;
+  description: string;
+  imageAlt?: string;
+  sectionLabel: string;
+  publishedLabel: string;
+  publishedAt?: string | null;
+  readingMinutes: number;
+  wordCount: number;
+  headingCount: number;
+  slug?: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoKeywords?: readonly string[];
+  canonicalUrl?: string | null;
+  ogTitle?: string | null;
+  ogDescription?: string | null;
+  translationStatus: ArticleTranslationStatus;
+  sourceContentHash?: string | null;
+  sourceArticleUpdatedAt?: string | null;
+  approvedAt?: string | null;
+  translationPublishedAt?: string | null;
+};
+
 export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   source?: "legacy" | "cms";
   slug?: string;
@@ -25,6 +52,9 @@ export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   ogDescription?: string | null;
   ogImageUrl?: string | null;
   allowIndexing?: boolean;
+  translations?: Readonly<{
+    en?: ArticleCatalogTranslation;
+  }>;
 };
 
 function normalizedPath(value?: string | null) {

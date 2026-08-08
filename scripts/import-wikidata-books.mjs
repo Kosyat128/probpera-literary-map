@@ -15,7 +15,11 @@ const generatedDirectory = path.join(
   "generated"
 );
 const cacheDirectory = path.join(scriptDirectory, ".cache", "wikidata-books");
-const outputPath = path.join(generatedDirectory, "books.generated.json");
+const publishedOutputPath = path.join(generatedDirectory, "books.generated.json");
+const stagingOutputPath = path.join(
+  generatedDirectory,
+  "books.wikidata.candidates.json"
+);
 const qidsPath = path.join(
   generatedDirectory,
   "curatedWriterQids.generated.json"
@@ -25,7 +29,7 @@ const targetArgument = process.argv.find((value) => value.startsWith("--target="
 const maxAuthorsArgument = process.argv.find((value) =>
   value.startsWith("--max-authors=")
 );
-const targetArchiveSize = Number(targetArgument?.split("=")[1] || 10_000);
+const candidateLimit = Number(targetArgument?.split("=")[1] || 10_000);
 const maxAuthors = Number(maxAuthorsArgument?.split("=")[1] || Infinity);
 const applyChanges = process.argv.includes("--apply");
 const batchSize = 24;
@@ -236,7 +240,7 @@ await mkdir(cacheDirectory, { recursive: true });
 const [{ archiveBooks }, qidPayload, previousPayload] = await Promise.all([
   sourceArchive(),
   readFile(qidsPath, "utf8").then(JSON.parse),
-  readFile(outputPath, "utf8").then(JSON.parse),
+  readFile(publishedOutputPath, "utf8").then(JSON.parse),
 ]);
 
 const mappings = Object.entries(qidPayload.writers || {})
@@ -244,19 +248,19 @@ const mappings = Object.entries(qidPayload.writers || {})
   .filter((entry) => /^Q\d+$/u.test(entry.qid))
   .slice(0, maxAuthors);
 const keyByQid = new Map(mappings.map((entry) => [entry.qid, entry.key]));
+const previousGeneratedKeys = new Set(
+  Object.entries(previousPayload.works || {}).flatMap(([writerKey, works]) =>
+    works.map((work) => `${writerKey}:${work.id}`)
+  )
+);
 const existingByWriter = new Map();
 for (const book of archiveBooks) {
   const key = `${book.countryId}:${book.writerId}`;
+  if (previousGeneratedKeys.has(`${key}:${book.id}`)) continue;
   if (!existingByWriter.has(key)) existingByWriter.set(key, new Set());
   existingByWriter.get(key).add(normalizeTitle(book.title));
 }
 
-const previousCount = Object.values(previousPayload.works || {}).reduce(
-  (sum, works) => sum + works.length,
-  0
-);
-const currentWithoutGenerated = Math.max(0, archiveBooks.length - previousCount);
-const needed = Math.max(0, targetArchiveSize - currentWithoutGenerated);
 const candidates = [];
 
 for (let index = 0; index < mappings.length; index += batchSize) {
@@ -278,7 +282,7 @@ candidates.sort(
 const works = {};
 const acceptedIdentities = new Set();
 for (const candidate of candidates) {
-  if (acceptedIdentities.size >= needed) break;
+  if (acceptedIdentities.size >= candidateLimit) break;
   const key = keyByQid.get(candidate.authorQid);
   if (!key) continue;
   const normalized = normalizeTitle(candidate.title);
@@ -309,28 +313,38 @@ for (const candidate of candidates) {
 }
 
 const output = {
+  schemaVersion: 2,
   generatedAt: new Date().toISOString(),
-  targetArchiveSize,
-  source: "Wikidata (CC0); известность ранжирована по числу языковых разделов",
+  publicationPolicy:
+    "Staging only. Promotion requires reviewed RU/EN descriptions and field-level provenance.",
+  source: {
+    provider: "Wikidata",
+    url: "https://www.wikidata.org/wiki/Wikidata:Data_access",
+    license: "CC0",
+    licenseUrl: "https://www.wikidata.org/wiki/Wikidata:Licensing",
+    usage: "structured-candidate-discovery-only",
+  },
   works,
 };
 
 const summary = {
-  currentWithoutGenerated,
-  requestedTarget: targetArchiveSize,
+  publicationFileUntouched: path.relative(projectRoot, publishedOutputPath),
+  stagingFile: path.relative(projectRoot, stagingOutputPath),
+  candidateLimit,
   mappedAuthors: mappings.length,
   candidates: candidates.length,
   acceptedDrafts: acceptedIdentities.size,
-  resultingArchiveSize: currentWithoutGenerated + acceptedIdentities.size,
   applyChanges,
 };
 console.log(JSON.stringify(summary, null, 2));
 
 if (applyChanges) {
-  await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  console.log(`Сохранено: ${path.relative(projectRoot, outputPath)}`);
+  await writeFile(
+    stagingOutputPath,
+    `${JSON.stringify(output, null, 2)}\n`,
+    "utf8"
+  );
+  console.log(`Сохранён staging: ${path.relative(projectRoot, stagingOutputPath)}`);
 } else {
   console.log("Проверочный режим: файл не изменён. Для записи добавьте --apply.");
 }
-
-if (summary.resultingArchiveSize < targetArchiveSize) process.exitCode = 2;

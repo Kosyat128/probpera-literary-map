@@ -1,4 +1,5 @@
 import { cmsSiteContent } from "../data/cms/site.generated";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import { CmsNavigationLinks } from "./CmsSiteChrome";
 
@@ -32,8 +33,9 @@ export function currentCmsPage() {
 }
 
 export default function CmsPageReader({ page }: { page: CmsPage }) {
+  const { language, t } = useInterfaceLanguage();
   const updatedAt = page.updatedAt
-    ? new Intl.DateTimeFormat("ru-RU", {
+    ? new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -53,43 +55,57 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
             decoding="async"
           />
           <span>
-            <strong>Проба Пера</strong>
-            <small>Литературный журнал и энциклопедия</small>
+            <strong>{t("Проба Пера")}</strong>
+            <small>{t("Литературный журнал и энциклопедия")}</small>
           </span>
         </a>
-        <nav aria-label="Основная навигация">
-          <a href={publicPath("#atlas")}>Карта</a>
-          <a href={publicPath("#journal")}>Статьи</a>
-          <a href={publicPath("#books")}>Книги</a>
+        <nav aria-label={t("Основная навигация")}>
+          <a href={publicPath("#atlas")}>{t("Карта")}</a>
+          <a href={publicPath("#journal")}>{t("Статьи")}</a>
+          <a href={publicPath("#books")}>{t("Книги")}</a>
           <CmsNavigationLinks location="header" />
         </nav>
       </header>
       <main className="cms-page-main">
         <a className="cms-page-back" href={publicPath("")}>
-          ← На главную
+          ← {t("На главную")}
         </a>
-        <article>
-          <header>
-            <span className="section-kicker">Проба Пера</span>
-            <h1>{page.title}</h1>
-            {page.excerpt && <p>{page.excerpt}</p>}
-            {updatedAt && <small>Обновлено {updatedAt}</small>}
-          </header>
-          <div
-            className="cms-page-prose"
-            dangerouslySetInnerHTML={{
-              __html: sanitizeArticleHtml(page.contentHtml),
-            }}
-          />
-        </article>
+        {language === "en" ? (
+          <article>
+            <header>
+              <span className="section-kicker">{t("Проба Пера")}</span>
+              <h1>{t("Эта страница пока недоступна на английском языке")}</h1>
+              <p>
+                {t(
+                  "Редакция готовит проверенный перевод. Русский оригинал не выдаётся за английскую версию."
+                )}
+              </p>
+            </header>
+          </article>
+        ) : (
+          <article>
+            <header>
+              <span className="section-kicker">{t("Проба Пера")}</span>
+              <h1>{page.title}</h1>
+              {page.excerpt && <p>{page.excerpt}</p>}
+              {updatedAt && <small>{t("Обновлено")} {updatedAt}</small>}
+            </header>
+            <div
+              className="cms-page-prose"
+              dangerouslySetInnerHTML={{
+                __html: sanitizeArticleHtml(page.contentHtml),
+              }}
+            />
+          </article>
+        )}
       </main>
       <footer className="cms-page-footer">
         <div>
-          <strong>Проба Пера</strong>
-          <p>Литературная экосистема, где страна, автор, книга и статья связаны.</p>
+          <strong>{t("Проба Пера")}</strong>
+          <p>{t("Литературная экосистема, где страна, автор, книга и статья связаны.")}</p>
         </div>
         <CmsNavigationLinks location="footer" withHeading />
-        <a href={publicPath("")}>Вернуться на главную →</a>
+        <a href={publicPath("")}>{t("Вернуться на главную")} →</a>
       </footer>
     </div>
   );

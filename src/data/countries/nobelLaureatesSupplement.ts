@@ -10,6 +10,19 @@ const checkedAt = "2026-08-01";
 
 function verifiedLaureate(laureate: LaureateDraft): WriterProfile {
   const { nobelId, nobelSlug, nobelYear, ...profile } = laureate;
+  const sources = [
+    {
+      title: `Nobel Prize in Literature ${nobelYear}`,
+      url: `https://www.nobelprize.org/prizes/literature/${nobelYear}/${nobelSlug}/facts/`,
+      publisher: "Nobel Prize Outreach",
+    },
+    {
+      title: "Nobel Prize API — laureate record",
+      url: `https://api.nobelprize.org/2/laureate/${nobelId}`,
+      publisher: "Nobel Prize Outreach",
+    },
+  ];
+  const russianBiography = profile.biography || profile.bio || profile.description;
   return {
     ...profile,
     nobel: true,
@@ -20,21 +33,30 @@ function verifiedLaureate(laureate: LaureateDraft): WriterProfile {
     ],
     tags: ["Нобелевская премия", ...(profile.tags || [])],
     articleUrl: profile.articleUrl || "",
+    biographyTranslations: russianBiography
+      ? {
+          ru: {
+            locale: "ru",
+            text: russianBiography,
+            sourceLanguage: "ru",
+            status: "verified",
+            method: "editorial-original",
+            reviewedAt: checkedAt,
+            sources: sources.map((source) => ({
+              provider: source.publisher,
+              title: source.title,
+              url: source.url,
+              fields: ["identity", "life-dates", "awards", "works"],
+              usage: "fact-check",
+              retrievedAt: checkedAt,
+            })),
+          },
+        }
+      : undefined,
     editorial: {
       status: "verified",
       reviewedAt: checkedAt,
-      sources: [
-        {
-          title: `Nobel Prize in Literature ${nobelYear}`,
-          url: `https://www.nobelprize.org/prizes/literature/${nobelYear}/${nobelSlug}/facts/`,
-          publisher: "Nobel Prize Outreach",
-        },
-        {
-          title: "Nobel Prize API — laureate record",
-          url: `https://api.nobelprize.org/2/laureate/${nobelId}`,
-          publisher: "Nobel Prize Outreach",
-        },
-      ],
+      sources,
     },
   };
 }

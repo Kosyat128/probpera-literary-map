@@ -2,11 +2,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { supabase } from "../lib/supabase";
 import type { Country } from "../data/countries";
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useSubscriptions } from "../hooks/useSubscriptions";
 import { articlePath } from "../utils/articleRoutes";
 import BrandHeartIcon from "../components/BrandHeartIcon";
 import BrandCloseIcon from "../components/BrandCloseIcon";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useAuth } from "./AuthContext";
 import EditorialWorkbench from "./EditorialWorkbench";
 
@@ -144,8 +146,8 @@ const forumCategories = [
 
 const categories = forumCategories.map((category) => category.label);
 
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat("ru-RU", {
+function formatDate(value: string, language: "ru" | "en") {
+  return new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -162,7 +164,8 @@ function pluralRu(count: number, forms: [string, string, string]) {
 }
 
 function ForumAuthor({ profile }: { profile?: ForumProfile | null }) {
-  const name = profile?.display_name || "Читатель";
+  const { t, number } = useInterfaceLanguage();
+  const name = profile?.display_name || t("Читатель");
   return (
     <span className="forum-author">
       <span className="forum-author-avatar" aria-hidden="true">
@@ -179,7 +182,7 @@ function ForumAuthor({ profile }: { profile?: ForumProfile | null }) {
       </span>
       <span>
         <strong>{name}</strong>
-        <small>{profile?.reputation || 0} репутации</small>
+        <small>{number(profile?.reputation || 0)} {t("репутации")}</small>
       </span>
     </span>
   );
@@ -191,6 +194,7 @@ export default function CommunityHub({
   countries = [],
   onClose,
 }: Props) {
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {
@@ -362,11 +366,11 @@ export default function CommunityHub({
     }
 
     if (topicError) {
-      setMessage("Не удалось загрузить обсуждения. Проверьте схему сообщества.");
+      setMessage(t("Не удалось загрузить обсуждения. Проверьте схему сообщества."));
       return;
     }
     setTopics((topicData || []) as ForumTopic[]);
-  }, []);
+  }, [t]);
 
   const loadReplies = useCallback(async (topicId: string) => {
     if (!supabase) return;
@@ -390,11 +394,11 @@ export default function CommunityHub({
       replyError = legacyResult.error;
     }
     if (replyError) {
-      setMessage("Не удалось загрузить ответы.");
+      setMessage(t("Не удалось загрузить ответы."));
       return;
     }
     setReplies((replyData || []) as ForumReply[]);
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (!open || view !== "forum" || !configured) return;
@@ -561,8 +565,8 @@ export default function CommunityHub({
       user?.user_metadata?.display_name ||
       profileDisplayName ||
       user?.email?.split("@")[0] ||
-      "Читатель",
-    [profileDisplayName, user]
+      t("Читатель"),
+    [profileDisplayName, t, user]
   );
 
   const filteredTopics = useMemo(
@@ -612,14 +616,20 @@ export default function CommunityHub({
     return selectedCountry.writers
       .map((writer) => ({
         value: `${selectedCountry.id}:${writer.id}`,
-        label: writer.name || writer.fullName || "Автор",
+        label: selectWriterDisplayName(writer, language, t("Автор")),
       }))
       .sort((first, second) => first.label.localeCompare(second.label, "ru"));
-  }, [countries, favoriteCountryDraft]);
+  }, [countries, favoriteCountryDraft, language, t]);
 
   const countryOptions = useMemo(
-    () => [...countries].sort((first, second) => first.name.localeCompare(second.name, "ru")),
-    [countries]
+    () =>
+      [...countries].sort((first, second) =>
+        countryName(first.code, first.name).localeCompare(
+          countryName(second.code, second.name),
+          language
+        )
+      ),
+    [countries, countryName, language]
   );
 
   const favoriteCountryLabel = useCallback(
@@ -627,9 +637,9 @@ export default function CommunityHub({
       const country = countries.find(
         (item) => (item.code || item.id) === code || item.id === code
       );
-      return country?.name || code;
+      return country ? countryName(country.code, country.name) : code;
     },
-    [countries]
+    [countries, countryName]
   );
 
   const favoriteWriterLabel = useCallback(
@@ -639,16 +649,18 @@ export default function CommunityHub({
       const writerId = separator >= 0 ? identity.slice(separator + 1) : identity;
       const country = countries.find((item) => item.id === countryId);
       const writer = country?.writers.find((item) => item.id === writerId);
-      return writer?.name || writer?.fullName || writerId;
+      return writer
+        ? selectWriterDisplayName(writer, language, writerId)
+        : writerId;
     },
-    [countries]
+    [countries, language]
   );
 
   if (!open) return null;
 
   const submitAuth = async () => {
     if (!supabase) {
-      setMessage("Сервер сообщества ещё не подключён к этой сборке сайта.");
+      setMessage(t("Сервер сообщества ещё не подключён к этой сборке сайта."));
       return;
     }
     if (
@@ -656,24 +668,26 @@ export default function CommunityHub({
       !/^[\p{L}\p{N}][\p{L}\p{N} ._-]{1,31}$/u.test(displayName.trim())
     ) {
       setMessage(
-        "Никнейм должен содержать от 2 до 32 букв или цифр; допустимы пробел, точка, дефис и подчёркивание."
+        t(
+          "Никнейм должен содержать от 2 до 32 букв или цифр; допустимы пробел, точка, дефис и подчёркивание."
+        )
       );
       return;
     }
     if (!/^\S+@\S+\.\S+$/u.test(email.trim())) {
-      setMessage("Введите действующий адрес электронной почты.");
+      setMessage(t("Введите действующий адрес электронной почты."));
       return;
     }
     if (password.length < 10) {
-      setMessage("Пароль должен содержать не менее 10 символов.");
+      setMessage(t("Пароль должен содержать не менее 10 символов."));
       return;
     }
     if (authMode === "signup" && password !== confirmPassword) {
-      setMessage("Пароли не совпадают.");
+      setMessage(t("Пароли не совпадают."));
       return;
     }
     if (authMode === "signup" && !acceptedTerms) {
-      setMessage("Подтвердите согласие с правилами сообщества.");
+      setMessage(t("Подтвердите согласие с правилами сообщества."));
       return;
     }
     setBusy(true);
@@ -686,7 +700,7 @@ export default function CommunityHub({
               email: email.trim(),
               password,
               options: {
-                data: { display_name: displayName.trim() || "Читатель" },
+                data: { display_name: displayName.trim() || t("Читатель") },
                 emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
               },
             })
@@ -700,14 +714,14 @@ export default function CommunityHub({
         setMessage(
           normalized.includes("already registered") ||
             normalized.includes("already been registered")
-            ? "Этот адрес уже зарегистрирован. Переключитесь на вход."
+            ? t("Этот адрес уже зарегистрирован. Переключитесь на вход.")
             : normalized.includes("invalid login credentials")
-              ? "Почта или пароль указаны неверно."
+              ? t("Почта или пароль указаны неверно.")
               : normalized.includes("email rate limit")
-                ? "Письмо уже отправлялось недавно. Подождите немного и повторите попытку."
+                ? t("Письмо уже отправлялось недавно. Подождите немного и повторите попытку.")
                 : normalized.includes("password")
-                  ? "Пароль не соответствует требованиям безопасности."
-                  : `Не удалось выполнить запрос: ${result.error.message}`
+                  ? t("Пароль не соответствует требованиям безопасности.")
+                  : `${t("Не удалось выполнить запрос")}: ${result.error.message}`
         );
         return;
       }
@@ -716,12 +730,12 @@ export default function CommunityHub({
       setConfirmPassword("");
       setMessage(
         authMode === "signup"
-          ? "Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти."
-          : "Вы вошли в клуб читателей."
+          ? t("Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти.")
+          : t("Вы вошли в клуб читателей.")
       );
     } catch {
       setMessage(
-        "Не удалось связаться с сервером. Проверьте интернет и повторите попытку."
+        t("Не удалось связаться с сервером. Проверьте интернет и повторите попытку.")
       );
     } finally {
       setBusy(false);
@@ -772,7 +786,7 @@ export default function CommunityHub({
   ) => {
     if (!supabase || !user) {
       setView("account");
-      setMessage("Войдите, чтобы оценивать обсуждения.");
+      setMessage(t("Войдите, чтобы оценивать обсуждения."));
       return;
     }
     setBusy(true);
@@ -786,8 +800,8 @@ export default function CommunityHub({
     if (result.error) {
       setMessage(
         result.error.code === "42883"
-          ? "Обновите схему сообщества: модуль оценок форума ещё не установлен."
-          : "Оценку не удалось сохранить. Попробуйте ещё раз."
+          ? t("Обновите схему сообщества: модуль оценок форума ещё не установлен.")
+          : t("Оценку не удалось сохранить. Попробуйте ещё раз.")
       );
       return;
     }
@@ -813,11 +827,11 @@ export default function CommunityHub({
   const uploadAvatar = async (file?: File) => {
     if (!supabase || !user || !file) return;
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-      setMessage("Используйте изображение JPG, PNG или WebP.");
+      setMessage(t("Используйте изображение JPG, PNG или WebP."));
       return;
     }
     if (file.size > 2 * 1024 * 1024) {
-      setMessage("Размер аватара не должен превышать 2 МБ.");
+      setMessage(t("Размер аватара не должен превышать 2 МБ."));
       return;
     }
     setBusy(true);
@@ -836,7 +850,7 @@ export default function CommunityHub({
     });
     if (uploaded.error) {
       setBusy(false);
-      setMessage("Аватар не загрузился. Проверьте миграцию хранилища профилей.");
+      setMessage(t("Аватар не загрузился. Проверьте миграцию хранилища профилей."));
       return;
     }
     const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data
@@ -847,11 +861,11 @@ export default function CommunityHub({
       .eq("id", user.id);
     setBusy(false);
     if (updated.error) {
-      setMessage("Изображение загружено, но профиль не обновился.");
+      setMessage(t("Изображение загружено, но профиль не обновился."));
       return;
     }
     setProfileAvatarUrl(`${publicUrl}?v=${Date.now()}`);
-    setMessage("Аватар обновлён.");
+    setMessage(t("Аватар обновлён."));
   };
 
   const saveReaderProfile = async () => {
@@ -868,7 +882,7 @@ export default function CommunityHub({
       .eq("id", user.id);
     if (basic.error) {
       setBusy(false);
-      setMessage("Профиль не удалось сохранить.");
+      setMessage(t("Профиль не удалось сохранить."));
       return;
     }
     const extended = await supabase
@@ -882,8 +896,8 @@ export default function CommunityHub({
     setBusy(false);
     setMessage(
       extended.error
-        ? "Биография сохранена. Для подборок примените новую миграцию профиля."
-        : "Профиль и литературные интересы сохранены."
+        ? t("Биография сохранена. Для подборок примените новую миграцию профиля.")
+        : t("Профиль и литературные интересы сохранены.")
     );
   };
 
@@ -936,13 +950,13 @@ export default function CommunityHub({
     });
     setBusy(false);
     if (error) {
-      setMessage("Не удалось обработать жалобу.");
+      setMessage(t("Не удалось обработать жалобу."));
       return;
     }
     setMessage(
       hideComment
-        ? "Комментарий скрыт, жалоба закрыта."
-        : "Комментарий оставлен, жалоба закрыта."
+        ? t("Комментарий скрыт, жалоба закрыта.")
+        : t("Комментарий оставлен, жалоба закрыта.")
     );
     await loadDashboard();
   };
@@ -953,7 +967,7 @@ export default function CommunityHub({
   ) => {
     if (!supabase || !user) {
       setView("account");
-      setMessage("Войдите, чтобы передать публикацию модератору.");
+      setMessage(t("Войдите, чтобы передать публикацию модератору."));
       return;
     }
     setBusy(true);
@@ -961,13 +975,13 @@ export default function CommunityHub({
     const { error } = await supabase.rpc("report_forum_item", {
       p_subject_type: subjectType,
       p_subject_id: subjectId,
-      p_reason: "Пользователь просит редакцию проверить эту публикацию форума.",
+      p_reason: t("Пользователь просит редакцию проверить эту публикацию форума."),
     });
     setBusy(false);
     setMessage(
       error
-        ? "Жалобу не удалось отправить. Проверьте миграцию модерации форума."
-        : "Публикация передана редактору на проверку."
+        ? t("Жалобу не удалось отправить. Проверьте миграцию модерации форума.")
+        : t("Публикация передана редактору на проверку.")
     );
   };
 
@@ -980,13 +994,13 @@ export default function CommunityHub({
     });
     setBusy(false);
     if (error) {
-      setMessage("Не удалось обработать жалобу форума.");
+      setMessage(t("Не удалось обработать жалобу форума."));
       return;
     }
     setMessage(
       hideItem
-        ? "Публикация форума скрыта, жалоба закрыта."
-        : "Публикация оставлена, жалоба закрыта."
+        ? t("Публикация форума скрыта, жалоба закрыта.")
+        : t("Публикация оставлена, жалоба закрыта.")
     );
     await loadDashboard();
   };
@@ -995,13 +1009,13 @@ export default function CommunityHub({
     <section className="account-library">
       <header>
         <div>
-          <span className="section-kicker">Моя библиотека</span>
+          <span className="section-kicker">{t("Моя библиотека")}</span>
           <h3>
             <BrandHeartIcon filled />
-            Сохранённые материалы
+            {t("Сохранённые материалы")}
           </h3>
         </div>
-        <strong>{savedReadings.length}</strong>
+        <strong>{number(savedReadings.length)}</strong>
       </header>
       {savedReadings.length ? (
         <div>
@@ -1018,17 +1032,19 @@ export default function CommunityHub({
                 onClick={item.kind === "book" ? onClose : undefined}
               >
                 <small>
-                  {item.kind === "book" ? "Книга · " : ""}
-                  {item.sectionLabel}
+                  {item.kind === "book" ? `${t("Книга")} · ` : ""}
+                  {language === "en"
+                    ? t("Сохранённый материал")
+                    : item.sectionLabel}
                 </small>
                 <strong>{item.title}</strong>
               </a>
               <div className="library-actions">
                 <label>
-                  <span className="library-status-label">Статус чтения</span>
+                  <span className="library-status-label">{t("Статус чтения")}</span>
                   <select
                     value={item.status}
-                    aria-label={`Статус чтения «${item.title}»`}
+                    aria-label={`${t("Статус чтения")} “${item.title}”`}
                     onChange={(event) =>
                       setReadingStatus(
                         item.id,
@@ -1037,15 +1053,15 @@ export default function CommunityHub({
                       )
                     }
                   >
-                    <option value="saved">Хочу прочитать</option>
-                    <option value="reading">Читаю</option>
-                    <option value="finished">Прочитано</option>
+                    <option value="saved">{t("Хочу прочитать")}</option>
+                    <option value="reading">{t("Читаю")}</option>
+                    <option value="finished">{t("Прочитано")}</option>
                   </select>
                 </label>
                 <button
                   type="button"
                   onClick={() => removeSavedReading(item.id, item.kind)}
-                  aria-label={`Удалить «${item.title}» из библиотеки`}
+                  aria-label={`${t("Удалить из библиотеки")}: “${item.title}”`}
                 >
                   <BrandHeartIcon filled />
                 </button>
@@ -1055,16 +1071,16 @@ export default function CommunityHub({
         </div>
       ) : (
         <p>
-          Нажмите оранжевое сердце у статьи или книги — материал появится здесь.
+          {t("Нажмите оранжевое сердце у статьи или книги — материал появится здесь.")}
         </p>
       )}
       <aside className="subscription-summary">
         <header>
-          <span className="section-kicker">Литературная траектория</span>
-          <strong>{subscriptions.length}</strong>
+          <span className="section-kicker">{t("Литературная траектория")}</span>
+          <strong>{number(subscriptions.length)}</strong>
         </header>
         <p>
-          Страны и писатели, новые материалы о которых вы хотите отслеживать.
+          {t("Страны и писатели, новые материалы о которых вы хотите отслеживать.")}
         </p>
         {subscriptions.length ? (
           <div>
@@ -1072,7 +1088,7 @@ export default function CommunityHub({
               <button
                 key={`${item.type}:${item.id}`}
                 type="button"
-                title={`Отменить подписку «${item.label}»`}
+                title={`${t("Отменить подписку")} “${item.label}”`}
                 onClick={() =>
                   toggleSubscription({
                     type: item.type,
@@ -1083,17 +1099,17 @@ export default function CommunityHub({
               >
                 <span>
                   {item.type === "country"
-                    ? "Страна"
+                    ? t("Страна")
                     : item.type === "writer"
-                      ? "Писатель"
-                      : "Раздел"}
+                      ? t("Писатель")
+                      : t("Раздел")}
                 </span>
                 {item.label} <i aria-hidden="true">×</i>
               </button>
             ))}
           </div>
         ) : (
-          <small>Подписки добавляются в карточках стран и писателей.</small>
+          <small>{t("Подписки добавляются в карточках стран и писателей.")}</small>
         )}
       </aside>
     </section>
@@ -1120,13 +1136,13 @@ export default function CommunityHub({
               decoding="async"
             />
             <span>
-              <small>Клуб читателей</small>
+              <small>{t("Клуб читателей")}</small>
               <strong id="community-title">
                 {view === "forum"
-                  ? "Говорилка — форум «Проба Пера»"
+                  ? t("Говорилка — форум «Проба Пера»")
                   : view === "admin"
-                    ? "Редакция «Пробы Пера»"
-                    : "Личный кабинет «Пробы Пера»"}
+                    ? t("Редакция «Пробы Пера»")
+                    : t("Личный кабинет «Пробы Пера»")}
               </strong>
             </span>
           </div>
@@ -1134,26 +1150,26 @@ export default function CommunityHub({
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            aria-label="Закрыть"
+            aria-label={t("Закрыть")}
           >
             <BrandCloseIcon />
           </button>
         </header>
 
-        <nav className="community-tabs" aria-label="Разделы сообщества">
+        <nav className="community-tabs" aria-label={t("Разделы сообщества")}>
           <button
             className={view === "account" ? "is-active" : ""}
             type="button"
             onClick={() => setView("account")}
           >
-            {user ? "Профиль" : "Вход и регистрация"}
+            {user ? t("Профиль") : t("Вход и регистрация")}
           </button>
           <button
             className={view === "forum" ? "is-active" : ""}
             type="button"
             onClick={() => setView("forum")}
           >
-            Форум
+            {t("Форум")}
           </button>
           {isModerator && (
             <button
@@ -1161,7 +1177,7 @@ export default function CommunityHub({
               type="button"
               onClick={() => setView("admin")}
             >
-              Панель редакции
+              {t("Панель редакции")}
             </button>
           )}
         </nav>
@@ -1169,29 +1185,30 @@ export default function CommunityHub({
         {view !== "account" && !configured ? (
           <div className="community-setup">
             <span aria-hidden="true">✦</span>
-            <h2>Сообщество готово к подключению</h2>
+            <h2>{t("Сообщество готово к подключению")}</h2>
             <p>
-              Интерфейс, защищённая схема профилей, форума, комментариев и
-              рейтингов уже подготовлены. Для общей работы пользователей нужно
-              указать публичные параметры проекта Supabase.
+              {t(
+                "Интерфейс, защищённая схема профилей, форума, комментариев и рейтингов уже подготовлены. Для общей работы пользователей нужно указать публичные параметры проекта Supabase."
+              )}
             </p>
-            <small>До подключения формы не сохраняют персональные данные.</small>
+            <small>{t("До подключения формы не сохраняют персональные данные.")}</small>
           </div>
         ) : loading && configured ? (
-          <div className="community-setup">Проверяем сессию…</div>
+          <div className="community-setup">{t("Проверяем сессию…")}</div>
         ) : view === "admin" && isModerator ? (
           <div className="admin-view">
             <div className="admin-heading">
               <div>
-                <span className="section-kicker">Только для редакции</span>
-                <h2>Панель сообщества</h2>
+                <span className="section-kicker">{t("Только для редакции")}</span>
+                <h2>{t("Панель сообщества")}</h2>
                 <p>
-                  Внутренняя статистика и очередь модерации без рекламных
-                  счётчиков и сторонних комментариев.
+                  {t(
+                    "Внутренняя статистика и очередь модерации без рекламных счётчиков и сторонних комментариев."
+                  )}
                 </p>
               </div>
               <button type="button" onClick={() => void loadDashboard()}>
-                Обновить
+                {t("Обновить")}
               </button>
             </div>
 
@@ -1205,8 +1222,8 @@ export default function CommunityHub({
                 ["Открытые жалобы", dashboardCounts.reports],
               ].map(([label, value]) => (
                 <article key={label}>
-                  <strong>{Number(value).toLocaleString("ru-RU")}</strong>
-                  <span>{label}</span>
+                  <strong>{number(Number(value))}</strong>
+                  <span>{t(String(label))}</span>
                 </article>
               ))}
             </div>
@@ -1214,8 +1231,8 @@ export default function CommunityHub({
             <div className="report-queue">
               <header>
                 <div>
-                  <span className="section-kicker">Требует решения</span>
-                  <h3>Жалобы читателей</h3>
+                  <span className="section-kicker">{t("Требует решения")}</span>
+                  <h3>{t("Жалобы читателей")}</h3>
                 </div>
                 <span>{commentReports.length}</span>
               </header>
@@ -1224,13 +1241,13 @@ export default function CommunityHub({
                   <article key={report.id}>
                     <div>
                       <small>
-                        {report.article_comments?.article_slug || "Публикация"} ·{" "}
-                        {formatDate(report.created_at)}
+                        {report.article_comments?.article_slug || t("Публикация")} ·{" "}
+                        {formatDate(report.created_at, language)}
                       </small>
                       <strong>
                         {report.article_comments?.profiles?.display_name ||
                           report.article_comments?.guest_name ||
-                          "Читатель"}
+                          t("Читатель")}
                       </strong>
                       <p>{report.article_comments?.body}</p>
                       <em>{report.reason}</em>
@@ -1241,28 +1258,28 @@ export default function CommunityHub({
                         disabled={busy}
                         onClick={() => void resolveReport(report.id, false)}
                       >
-                        Оставить
+                        {t("Оставить")}
                       </button>
                       <button
                         type="button"
                         disabled={busy}
                         onClick={() => void resolveReport(report.id, true)}
                       >
-                        Скрыть
+                        {t("Скрыть")}
                       </button>
                     </div>
                   </article>
                 ))
               ) : (
-                <p>Открытых жалоб нет.</p>
+                <p>{t("Открытых жалоб нет.")}</p>
               )}
             </div>
 
             <div className="report-queue">
               <header>
                 <div>
-                  <span className="section-kicker">Форум</span>
-                  <h3>Жалобы на темы и ответы</h3>
+                  <span className="section-kicker">{t("Форум")}</span>
+                  <h3>{t("Жалобы на темы и ответы")}</h3>
                 </div>
                 <span>{forumReports.length}</span>
               </header>
@@ -1271,8 +1288,8 @@ export default function CommunityHub({
                   <article key={report.id}>
                     <div>
                       <small>
-                        {report.subject_type === "topic" ? "Тема" : "Ответ"} ·{" "}
-                        {formatDate(report.created_at)}
+                        {report.subject_type === "topic" ? t("Тема") : t("Ответ")} ·{" "}
+                        {formatDate(report.created_at, language)}
                       </small>
                       <strong>{report.subject_title}</strong>
                       <p>{report.subject_excerpt}</p>
@@ -1284,27 +1301,27 @@ export default function CommunityHub({
                         disabled={busy}
                         onClick={() => void resolveForumReport(report.id, false)}
                       >
-                        Оставить
+                        {t("Оставить")}
                       </button>
                       <button
                         type="button"
                         disabled={busy}
                         onClick={() => void resolveForumReport(report.id, true)}
                       >
-                        Скрыть
+                        {t("Скрыть")}
                       </button>
                     </div>
                   </article>
                 ))
               ) : (
-                <p>Открытых жалоб на форум нет.</p>
+                <p>{t("Открытых жалоб на форум нет.")}</p>
               )}
             </div>
 
             <div className="moderation-list">
               <header>
-                <h3>Последняя активность</h3>
-                <span>{moderationItems.length} записей</span>
+                <h3>{t("Последняя активность")}</h3>
+                <span>{number(moderationItems.length)} {t("записей")}</span>
               </header>
               {moderationItems.length ? (
                 moderationItems.map((item) => (
@@ -1312,12 +1329,12 @@ export default function CommunityHub({
                     <div>
                       <small>
                         {item.kind === "topic"
-                          ? "Тема форума"
+                          ? t("Тема форума")
                           : item.kind === "reply"
-                            ? "Ответ форума"
-                            : "Комментарий"} ·{" "}
-                        {item.profiles?.display_name || "Читатель"} ·{" "}
-                        {formatDate(item.created_at)}
+                            ? t("Ответ форума")
+                            : t("Комментарий")} ·{" "}
+                        {item.profiles?.display_name || t("Читатель")} ·{" "}
+                        {formatDate(item.created_at, language)}
                       </small>
                       {item.title && <strong>{item.title}</strong>}
                       <p>{item.body}</p>
@@ -1332,13 +1349,13 @@ export default function CommunityHub({
                         )
                       }
                     >
-                      {item.status === "hidden" ? "Вернуть" : "Скрыть"}
+                      {item.status === "hidden" ? t("Вернуть") : t("Скрыть")}
                     </button>
                   </article>
                 ))
               ) : (
                 <div className="forum-empty">
-                  <strong>Активность появится после запуска сообщества.</strong>
+                  <strong>{t("Активность появится после запуска сообщества.")}</strong>
                 </div>
               )}
             </div>
@@ -1348,40 +1365,42 @@ export default function CommunityHub({
           <div className="account-view">
             <aside className="account-story">
               <div>
-                <span className="section-kicker">Литературное сообщество</span>
-                <h2>Читайте глубже. Обсуждайте уважительно.</h2>
+                <span className="section-kicker">{t("Литературное сообщество")}</span>
+                <h2>{t("Читайте глубже. Обсуждайте уважительно.")}</h2>
                 <p>
-                  Один профиль связывает ваши оценки, комментарии, форум и
-                  личную библиотеку внутри «Пробы Пера».
+                  {t(
+                    "Один профиль связывает ваши оценки, комментарии, форум и личную библиотеку внутри «Пробы Пера»."
+                  )}
                 </p>
               </div>
               <ul>
-                <li>Комментарии и рейтинги без сторонних виджетов</li>
-                <li>Обсуждения книг, статей и переводов</li>
-                <li>Спокойная редакционная модерация</li>
+                <li>{t("Комментарии и рейтинги без сторонних виджетов")}</li>
+                <li>{t("Обсуждения книг, статей и переводов")}</li>
+                <li>{t("Спокойная редакционная модерация")}</li>
               </ul>
               <small>
-                Ваши данные не используются для рекламного профилирования.
+                {t("Ваши данные не используются для рекламного профилирования.")}
               </small>
             </aside>
 
             <div className="account-panel">
               {user ? (
                 <>
-                <span className="section-kicker">Личный кабинет</span>
-                <h2>Здравствуйте, {readerName}</h2>
+                <span className="section-kicker">{t("Личный кабинет")}</span>
+                <h2>{t("Здравствуйте")}, {readerName}</h2>
                 <p>
-                  Теперь можно участвовать в обсуждениях, оценивать публикации
-                  и книги, сохранять историю комментариев.
+                  {t(
+                    "Теперь можно участвовать в обсуждениях, оценивать публикации и книги, сохранять историю комментариев."
+                  )}
                 </p>
                 <dl>
                   <div>
-                    <dt>Почта</dt>
+                    <dt>{t("Почта")}</dt>
                     <dd>{user.email}</dd>
                   </div>
                   <div>
-                    <dt>Статус</dt>
-                    <dd>Участник клуба читателей</dd>
+                    <dt>{t("Статус")}</dt>
+                    <dd>{t("Участник клуба читателей")}</dd>
                   </div>
                 </dl>
                 <section className="reader-profile-editor">
@@ -1390,7 +1409,7 @@ export default function CommunityHub({
                       {profileAvatarUrl ? (
                         <img
                           src={profileAvatarUrl}
-                          alt={`Аватар ${readerName}`}
+                          alt={`${t("Аватар")} ${readerName}`}
                           loading="lazy"
                           decoding="async"
                         />
@@ -1401,12 +1420,12 @@ export default function CommunityHub({
                       )}
                     </div>
                     <div>
-                      <span className="section-kicker">Профиль читателя</span>
+                      <span className="section-kicker">{t("Профиль читателя")}</span>
                       <h3>{readerName}</h3>
-                      <small>Репутация в клубе · {profileReputation}</small>
+                      <small>{t("Репутация в клубе")} · {number(profileReputation)}</small>
                     </div>
                     <label className="reader-avatar-upload">
-                      <span>{busy ? "Загрузка…" : "Сменить аватар"}</span>
+                      <span>{busy ? t("Загрузка…") : t("Сменить аватар")}</span>
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/webp"
@@ -1418,18 +1437,18 @@ export default function CommunityHub({
                     </label>
                   </header>
                   <label>
-                    О себе
+                    {t("О себе")}
                     <textarea
                       value={profileBio}
                       maxLength={1000}
-                      placeholder="Несколько слов о ваших читательских интересах"
+                      placeholder={t("Несколько слов о ваших читательских интересах")}
                       onChange={(event) => setProfileBio(event.target.value)}
                     />
                     <small>{profileBio.length} / 1000</small>
                   </label>
                   <div className="reader-preferences">
                     <section>
-                      <span>Любимые литературные страны</span>
+                      <span>{t("Любимые литературные страны")}</span>
                       <div>
                         <select
                           value={favoriteCountryDraft}
@@ -1438,13 +1457,13 @@ export default function CommunityHub({
                             setFavoriteWriterDraft("");
                           }}
                         >
-                          <option value="">Выберите страну</option>
+                          <option value="">{t("Выберите страну")}</option>
                           {countryOptions.map((country) => (
                             <option
                               value={country.code || country.id}
                               key={country.id}
                             >
-                              {country.name}
+                              {countryName(country.code, country.name)}
                             </option>
                           ))}
                         </select>
@@ -1457,7 +1476,7 @@ export default function CommunityHub({
                           }
                           onClick={addFavoriteCountry}
                         >
-                          Добавить
+                          {t("Добавить")}
                         </button>
                       </div>
                       <div className="reader-preference-chips">
@@ -1470,7 +1489,7 @@ export default function CommunityHub({
                                 current.filter((item) => item !== code)
                               )
                             }
-                            title="Убрать из подборки"
+                            title={t("Убрать из подборки")}
                           >
                             {favoriteCountryLabel(code)} <span>×</span>
                           </button>
@@ -1478,7 +1497,7 @@ export default function CommunityHub({
                       </div>
                     </section>
                     <section>
-                      <span>Любимые писатели</span>
+                      <span>{t("Любимые писатели")}</span>
                       <div>
                         <select
                           value={favoriteWriterDraft}
@@ -1489,8 +1508,8 @@ export default function CommunityHub({
                         >
                           <option value="">
                             {favoriteCountryDraft
-                              ? "Выберите писателя"
-                              : "Сначала выберите страну"}
+                              ? t("Выберите писателя")
+                              : t("Сначала выберите страну")}
                           </option>
                           {favoriteWriterOptions.map((writer) => (
                             <option value={writer.value} key={writer.value}>
@@ -1507,7 +1526,7 @@ export default function CommunityHub({
                           }
                           onClick={addFavoriteWriter}
                         >
-                          Добавить
+                          {t("Добавить")}
                         </button>
                       </div>
                       <div className="reader-preference-chips">
@@ -1520,7 +1539,7 @@ export default function CommunityHub({
                                 current.filter((item) => item !== identity)
                               )
                             }
-                            title="Убрать из подборки"
+                            title={t("Убрать из подборки")}
                           >
                             {favoriteWriterLabel(identity)} <span>×</span>
                           </button>
@@ -1534,19 +1553,19 @@ export default function CommunityHub({
                     disabled={busy}
                     onClick={() => void saveReaderProfile()}
                   >
-                    Сохранить профиль
+                    {t("Сохранить профиль")}
                   </button>
                 </section>
                 {readingLibrary}
                 <div className="account-actions">
                   <button type="button" onClick={() => setView("forum")}>
-                    Перейти в форум
+                    {t("Перейти в форум")}
                   </button>
                   <button
                     type="button"
                     onClick={() => void supabase?.auth.signOut()}
                   >
-                    Выйти
+                    {t("Выйти")}
                   </button>
                 </div>
                 </>
@@ -1559,30 +1578,30 @@ export default function CommunityHub({
                   }}
                 >
                 <span className="section-kicker">
-                  {authMode === "signup" ? "Новый читатель" : "С возвращением"}
+                  {authMode === "signup" ? t("Новый читатель") : t("С возвращением")}
                 </span>
                 <h2>
                   {authMode === "signup"
-                    ? "Вступить в литературный клуб"
-                    : "Войти в «Пробу Пера»"}
+                    ? t("Вступить в литературный клуб")
+                    : t("Войти в «Пробу Пера»")}
                 </h2>
 
                 {authMode === "signup" && (
                   <label>
-                    Никнейм в сообществе
+                    {t("Никнейм в сообществе")}
                     <input
                       value={displayName}
                       onChange={(event) => setDisplayName(event.target.value)}
                       autoComplete="nickname"
                       minLength={2}
                       maxLength={32}
-                      placeholder="Например, Читатель_ПП"
+                      placeholder={t("Например, Читатель_ПП")}
                       required
                     />
                   </label>
                 )}
                 <label>
-                  Электронная почта
+                  {t("Электронная почта")}
                   <input
                     type="email"
                     value={email}
@@ -1593,7 +1612,7 @@ export default function CommunityHub({
                   />
                 </label>
                 <label>
-                  Пароль
+                  {t("Пароль")}
                   <span className="auth-password-field">
                     <input
                       type={showPassword ? "text" : "password"}
@@ -1608,16 +1627,16 @@ export default function CommunityHub({
                     <button
                       type="button"
                       onClick={() => setShowPassword((current) => !current)}
-                      aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
+                      aria-label={showPassword ? t("Скрыть пароль") : t("Показать пароль")}
                     >
-                      {showPassword ? "Скрыть" : "Показать"}
+                      {showPassword ? t("Скрыть") : t("Показать")}
                     </button>
                   </span>
                 </label>
                 {authMode === "signup" && (
                   <>
                     <label>
-                      Повторите пароль
+                      {t("Повторите пароль")}
                       <input
                         type={showPassword ? "text" : "password"}
                         minLength={10}
@@ -1628,8 +1647,9 @@ export default function CommunityHub({
                       />
                     </label>
                     <small className="password-hint">
-                      Не менее 10 символов. Не используйте пароль от почты или
-                      социальных сетей.
+                      {t(
+                        "Не менее 10 символов. Не используйте пароль от почты или социальных сетей."
+                      )}
                     </small>
                     <label className="terms-check">
                       <input
@@ -1638,16 +1658,18 @@ export default function CommunityHub({
                         onChange={(event) => setAcceptedTerms(event.target.checked)}
                       />
                       <span>
-                        Я принимаю правила уважительного общения и обработку
-                        данных, необходимых для работы профиля.
+                        {t(
+                          "Я принимаю правила уважительного общения и обработку данных, необходимых для работы профиля."
+                        )}
                       </span>
                     </label>
                   </>
                 )}
                 {!configured && (
                   <p className="auth-connection-note">
-                    Форма полностью готова. Регистрация включится после
-                    подключения серверных ключей проекта в GitHub Actions.
+                    {t(
+                      "Форма полностью готова. Регистрация включится после подключения серверных ключей проекта в GitHub Actions."
+                    )}
                   </p>
                 )}
                 {message && (
@@ -1665,10 +1687,10 @@ export default function CommunityHub({
                   disabled={busy || !configured}
                 >
                   {busy
-                    ? "Подождите…"
+                    ? t("Подождите…")
                     : authMode === "signup"
-                      ? "Зарегистрироваться"
-                      : "Войти"}
+                      ? t("Зарегистрироваться")
+                      : t("Войти")}
                 </button>
                 <button
                   className="auth-switch"
@@ -1681,8 +1703,8 @@ export default function CommunityHub({
                   }}
                 >
                   {authMode === "signup"
-                    ? "Уже есть аккаунт — войти"
-                    : "Нет аккаунта — зарегистрироваться"}
+                    ? t("Уже есть аккаунт — войти")
+                    : t("Нет аккаунта — зарегистрироваться")}
                 </button>
                 </form>
               )}
@@ -1692,12 +1714,12 @@ export default function CommunityHub({
           <div className="forum-view">
             <div className="forum-toolbar">
               <div>
-                <span className="section-kicker">Разговор о литературе</span>
-                <h2>{selectedTopic ? selectedTopic.title : "Форум читателей"}</h2>
+                <span className="section-kicker">{t("Разговор о литературе")}</span>
+                <h2>{selectedTopic ? selectedTopic.title : t("Форум читателей")}</h2>
               </div>
               {selectedTopic ? (
                 <button type="button" onClick={() => setSelectedTopic(null)}>
-                  ← Все темы
+                  ← {t("Все темы")}
                 </button>
               ) : (
                 <button
@@ -1705,28 +1727,28 @@ export default function CommunityHub({
                   onClick={() => {
                     if (!user) {
                       setView("account");
-                      setMessage("Войдите, чтобы открыть новую тему.");
+                      setMessage(t("Войдите, чтобы открыть новую тему."));
                     } else {
                       setComposeOpen((current) => !current);
                     }
                   }}
                 >
-                  + Новая тема
+                  + {t("Новая тема")}
                 </button>
               )}
             </div>
 
             {!selectedTopic && (
               <>
-                <nav className="forum-categories" aria-label="Разделы форума">
+                <nav className="forum-categories" aria-label={t("Разделы форума")}>
                   <button
                     className={forumCategoryFilter === "all" ? "is-active" : ""}
                     type="button"
                     onClick={() => setForumCategoryFilter("all")}
                   >
                     <span aria-hidden="true">✦</span>
-                    <strong>Все обсуждения</strong>
-                    <small>{topics.length}</small>
+                    <strong>{t("Все обсуждения")}</strong>
+                    <small>{number(topics.length)}</small>
                   </button>
                   {forumCategories.map((category) => (
                     <button
@@ -1737,38 +1759,40 @@ export default function CommunityHub({
                       key={category.label}
                       onClick={() => setForumCategoryFilter(category.label)}
                     >
-                      <span aria-hidden="true">{category.symbol}</span>
-                      <strong>{category.label}</strong>
-                      <small>{categoryCounts.get(category.label) || 0}</small>
-                      <em>{category.description}</em>
+                      <span aria-hidden="true">
+                        {language === "en" ? t(category.label).slice(0, 1) : category.symbol}
+                      </span>
+                      <strong>{t(category.label)}</strong>
+                      <small>{number(categoryCounts.get(category.label) || 0)}</small>
+                      <em>{t(category.description)}</em>
                     </button>
                   ))}
                 </nav>
                 <div className="forum-discovery-controls">
                   <label>
-                    <span>Найти обсуждение</span>
+                    <span>{t("Найти обсуждение")}</span>
                     <input
                       type="search"
                       value={forumQuery}
-                      placeholder="Книга, автор, тема или читатель"
+                      placeholder={t("Книга, автор, тема или читатель")}
                       onChange={(event) => setForumQuery(event.target.value)}
                     />
                   </label>
                   <label>
-                    <span>Порядок</span>
+                    <span>{t("Порядок")}</span>
                     <select
                       value={forumSort}
                       onChange={(event) =>
                         setForumSort(event.target.value as typeof forumSort)
                       }
                     >
-                      <option value="new">Сначала новые</option>
-                      <option value="popular">По рейтингу</option>
-                      <option value="active">По числу ответов</option>
+                      <option value="new">{t("Сначала новые")}</option>
+                      <option value="popular">{t("По рейтингу")}</option>
+                      <option value="active">{t("По числу ответов")}</option>
                     </select>
                   </label>
                   <small>
-                    Найдено: {filteredTopics.length} из {topics.length}
+                    {t("Найдено")}: {number(filteredTopics.length)} {t("из")} {number(topics.length)}
                   </small>
                 </div>
               </>
@@ -1779,7 +1803,7 @@ export default function CommunityHub({
                 <article>
                   <ForumAuthor profile={selectedTopic.profiles} />
                   <small>
-                    {selectedTopic.category} · {formatDate(selectedTopic.created_at)}
+                    {t(selectedTopic.category)} · {formatDate(selectedTopic.created_at, language)}
                   </small>
                   <p>{selectedTopic.body}</p>
                   <button
@@ -1790,16 +1814,16 @@ export default function CommunityHub({
                       void reportForumItem("topic", selectedTopic.id)
                     }
                   >
-                    Передать модератору
+                    {t("Передать модератору")}
                   </button>
-                  <div className="forum-vote" aria-label="Оценка обсуждения">
+                  <div className="forum-vote" aria-label={t("Оценка обсуждения")}>
                     <button
                       type="button"
                       disabled={busy}
                       onClick={() =>
                         void voteForumItem("topic", selectedTopic.id, 1)
                       }
-                      aria-label="Поддержать обсуждение"
+                      aria-label={t("Поддержать обсуждение")}
                     >
                       ↑
                     </button>
@@ -1810,7 +1834,7 @@ export default function CommunityHub({
                       onClick={() =>
                         void voteForumItem("topic", selectedTopic.id, -1)
                       }
-                      aria-label="Снизить оценку обсуждения"
+                      aria-label={t("Снизить оценку обсуждения")}
                     >
                       ↓
                     </button>
@@ -1821,7 +1845,7 @@ export default function CommunityHub({
                     <article key={reply.id}>
                       <header>
                         <ForumAuthor profile={reply.profiles} />
-                        <small>{formatDate(reply.created_at)}</small>
+                        <small>{formatDate(reply.created_at, language)}</small>
                       </header>
                       <p>{reply.body}</p>
                       <button
@@ -1830,16 +1854,16 @@ export default function CommunityHub({
                         disabled={busy || user?.id === reply.author_id}
                         onClick={() => void reportForumItem("reply", reply.id)}
                       >
-                        Передать модератору
+                        {t("Передать модератору")}
                       </button>
-                      <div className="forum-vote" aria-label="Оценка ответа">
+                      <div className="forum-vote" aria-label={t("Оценка ответа")}>
                         <button
                           type="button"
                           disabled={busy}
                           onClick={() =>
                             void voteForumItem("reply", reply.id, 1)
                           }
-                          aria-label="Полезный ответ"
+                          aria-label={t("Полезный ответ")}
                         >
                           ↑
                         </button>
@@ -1850,7 +1874,7 @@ export default function CommunityHub({
                           onClick={() =>
                             void voteForumItem("reply", reply.id, -1)
                           }
-                          aria-label="Снизить оценку ответа"
+                          aria-label={t("Снизить оценку ответа")}
                         >
                           ↓
                         </button>
@@ -1863,7 +1887,7 @@ export default function CommunityHub({
                     <textarea
                       value={replyBody}
                       onChange={(event) => setReplyBody(event.target.value)}
-                      placeholder="Ответить по существу…"
+                      placeholder={t("Ответить по существу…")}
                       maxLength={4000}
                     />
                     <button
@@ -1871,12 +1895,12 @@ export default function CommunityHub({
                       disabled={busy || !replyBody.trim()}
                       onClick={() => void createReply()}
                     >
-                      Отправить ответ
+                      {t("Отправить ответ")}
                     </button>
                   </div>
                 ) : (
                   <button type="button" onClick={() => setView("account")}>
-                    Войдите, чтобы ответить
+                    {t("Войдите, чтобы ответить")}
                   </button>
                 )}
               </div>
@@ -1885,26 +1909,26 @@ export default function CommunityHub({
                 {composeOpen && (
                   <div className="topic-compose">
                     <select
-                      aria-label="Раздел форума"
+                      aria-label={t("Раздел форума")}
                       value={topicCategory}
                       onChange={(event) => setTopicCategory(event.target.value)}
                     >
                       {categories.map((category) => (
-                        <option key={category}>{category}</option>
+                        <option key={category}>{t(category)}</option>
                       ))}
                     </select>
                     <input
-                      aria-label="Название обсуждения"
+                      aria-label={t("Название обсуждения")}
                       value={topicTitle}
                       onChange={(event) => setTopicTitle(event.target.value)}
-                      placeholder="Название обсуждения"
+                      placeholder={t("Название обсуждения")}
                       maxLength={140}
                     />
                     <textarea
-                      aria-label="Текст обсуждения"
+                      aria-label={t("Текст обсуждения")}
                       value={topicBody}
                       onChange={(event) => setTopicBody(event.target.value)}
-                      placeholder="Сформулируйте вопрос или тему…"
+                      placeholder={t("Сформулируйте вопрос или тему…")}
                       maxLength={8000}
                     />
                     <button
@@ -1914,7 +1938,7 @@ export default function CommunityHub({
                       }
                       onClick={() => void createTopic()}
                     >
-                      Опубликовать тему
+                      {t("Опубликовать тему")}
                     </button>
                   </div>
                 )}
@@ -1926,33 +1950,37 @@ export default function CommunityHub({
                         key={topic.id}
                         onClick={() => setSelectedTopic(topic)}
                       >
-                        <span>{topic.category}</span>
+                        <span>{t(topic.category)}</span>
                         <strong>{topic.title}</strong>
                         <p>{topic.body}</p>
                         <footer>
                           <ForumAuthor profile={topic.profiles} />
                           <small>
-                            {formatDate(topic.created_at)} ·{" "}
-                            {topic.forum_replies?.[0]?.count || 0}{" "}
-                            {pluralRu(topic.forum_replies?.[0]?.count || 0, [
-                              "ответ",
-                              "ответа",
-                              "ответов",
-                            ])}{" "}
-                            · рейтинг {topic.score || 0}
+                            {formatDate(topic.created_at, language)} ·{" "}
+                            {number(topic.forum_replies?.[0]?.count || 0)}{" "}
+                            {language === "en"
+                              ? (topic.forum_replies?.[0]?.count || 0) === 1
+                                ? "reply"
+                                : "replies"
+                              : pluralRu(topic.forum_replies?.[0]?.count || 0, [
+                                  "ответ",
+                                  "ответа",
+                                  "ответов",
+                                ])}{" "}
+                            · {t("рейтинг")} {number(topic.score || 0)}
                           </small>
                         </footer>
                       </button>
                     ))
                   ) : (
                     <div className="forum-empty">
-                      <strong>Первое обсуждение ещё не открыто.</strong>
+                      <strong>{t("Первое обсуждение ещё не открыто.")}</strong>
                       <p>
                         {forumCategoryFilter === "all"
                           ? forumQuery.trim()
-                            ? "Измените запрос или выберите другой раздел форума."
-                            : "Начните разговор о книге, авторе, переводе или экранизации."
-                          : "В этой ветке пока нет тем. Откройте первое содержательное обсуждение."}
+                            ? t("Измените запрос или выберите другой раздел форума.")
+                            : t("Начните разговор о книге, авторе, переводе или экранизации.")
+                          : t("В этой ветке пока нет тем. Откройте первое содержательное обсуждение.")}
                       </p>
                     </div>
                   )}

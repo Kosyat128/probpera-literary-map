@@ -1,4 +1,8 @@
 import Image from "@tiptap/extension-image";
+import type { Editor } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+
+import EditorialImageView from "./EditorialImageView";
 
 export type EditorialImageLayout = "wide" | "normal" | "left" | "right";
 
@@ -37,7 +41,35 @@ export const EditorialImage = Image.extend({
       },
     };
   },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(EditorialImageView);
+  },
 }).configure({
   inline: false,
   allowBase64: false,
 });
+
+export function updateEditorialImageAt(
+  editor: Editor | null,
+  position: number,
+  attributes: Record<string, unknown>,
+  expectedSrc?: string
+) {
+  if (!editor || !Number.isInteger(position) || position < 0) return false;
+  const image = editor.state.doc.nodeAt(position);
+  if (!image || image.type.name !== "image") return false;
+  const currentSrc =
+    typeof image.attrs.src === "string" ? image.attrs.src : "";
+  if (expectedSrc !== undefined && currentSrc !== expectedSrc) return false;
+  editor.view.dispatch(
+    editor.state.tr
+      .setNodeMarkup(position, undefined, {
+        ...image.attrs,
+        ...attributes,
+      })
+      .scrollIntoView()
+  );
+  editor.commands.setNodeSelection(position);
+  return true;
+}

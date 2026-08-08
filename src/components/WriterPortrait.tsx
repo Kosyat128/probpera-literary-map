@@ -1,6 +1,8 @@
 import { useEffect, useState, type CSSProperties } from "react";
 
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import type { WriterProfile } from "../data/countries/types";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type WriterPortraitProps = {
   writer: WriterProfile;
@@ -10,12 +12,18 @@ type WriterPortraitProps = {
   style?: CSSProperties;
 };
 
-export function writerDisplayName(writer: WriterProfile) {
-  return writer.name || writer.fullName || "Автор";
+export function writerDisplayName(
+  writer: WriterProfile,
+  language: "ru" | "en" = "ru"
+) {
+  return selectWriterDisplayName(writer, language);
 }
 
-export function writerInitials(writer: WriterProfile) {
-  const parts = writerDisplayName(writer)
+export function writerInitials(
+  writer: WriterProfile,
+  language: "ru" | "en" = "ru"
+) {
+  const parts = writerDisplayName(writer, language)
     .replace(/[^\p{L}\p{N}\s-]/gu, " ")
     .split(/\s+/u)
     .filter(Boolean);
@@ -44,10 +52,16 @@ export default function WriterPortrait({
   loading = "lazy",
   style,
 }: WriterPortraitProps) {
+  const { language, t } = useInterfaceLanguage();
   const source = portraitUrl(writer.portrait);
   const [failed, setFailed] = useState(false);
-  const name = writerDisplayName(writer);
+  const name = writerDisplayName(writer, language);
   const hasPortrait = Boolean(source && !failed);
+  const storedAlt = writer.portraitAlt?.trim() || "";
+  const localizedAlt =
+    language === "en" && /\p{Script=Cyrillic}/u.test(storedAlt)
+      ? ""
+      : storedAlt;
 
   useEffect(() => setFailed(false), [source]);
 
@@ -61,17 +75,17 @@ export default function WriterPortrait({
       role={!decorative && !hasPortrait ? "img" : undefined}
       aria-label={
         !decorative && !hasPortrait
-          ? `Фирменная заглушка портрета: ${name}`
+          ? `${t("Фирменная заглушка портрета")}: ${name}`
           : undefined
       }
     >
       <span className="writer-portrait-initials" aria-hidden="true">
-        {writerInitials(writer)}
+        {writerInitials(writer, language)}
       </span>
       {hasPortrait && (
         <img
           src={source}
-          alt={decorative ? "" : writer.portraitAlt || `Портрет: ${name}`}
+          alt={decorative ? "" : localizedAlt || `${t("Портрет")}: ${name}`}
           loading={loading}
           decoding="async"
           onError={() => setFailed(true)}

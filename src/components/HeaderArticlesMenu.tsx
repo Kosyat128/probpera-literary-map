@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import {
   articlePath,
   journalPath,
@@ -36,6 +37,15 @@ function publishedTime(label: string) {
   return new Date(Number(match[3]), month, Number(match[1])).getTime();
 }
 
+function articlePublishedTime(article: ArticleCatalogEntry) {
+  const machineTime = article.publishedAt
+    ? new Date(article.publishedAt).getTime()
+    : Number.NaN;
+  return Number.isFinite(machineTime)
+    ? machineTime
+    : publishedTime(article.publishedLabel);
+}
+
 type Props = {
   language?: InterfaceLanguage;
 };
@@ -66,10 +76,19 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
       .finally(() => setLoading(false));
   }, [articles.length, loading]);
 
+  const localizedArticles = useMemo(
+    () =>
+      articles.flatMap((article) => {
+        const localized = articleCatalogEntryForLanguage(article, language);
+        return localized ? [localized] : [];
+      }),
+    [articles, language]
+  );
+
   const featured = useMemo(() => {
-    const sorted = [...articles].sort(
+    const sorted = [...localizedArticles].sort(
       (first, second) =>
-        publishedTime(second.publishedLabel) - publishedTime(first.publishedLabel)
+        articlePublishedTime(second) - articlePublishedTime(first)
     );
     const lead = sorted[0];
     const usedSections = new Set(lead ? [lead.sectionId] : []);
@@ -84,7 +103,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
         !varied.some((candidate) => candidate.id === article.id)
     );
     return { lead, more: [...varied, ...remaining].slice(0, 6) };
-  }, [articles]);
+  }, [localizedArticles]);
 
   const closeMenu = (target: HTMLElement) => {
     target.closest("details")?.removeAttribute("open");
@@ -149,13 +168,21 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 navigateToArticle(featured.lead);
               }}
             >
-              <span
-                style={
-                  featured.lead.imageUrl
-                    ? { backgroundImage: `url(${featured.lead.imageUrl})` }
-                    : undefined
-                }
-              />
+              {featured.lead.imageUrl && (
+                <span className="articles-mega-lead-media" aria-hidden="true">
+                  <span
+                    style={{
+                      backgroundImage: `url(${featured.lead.imageUrl})`,
+                    }}
+                  />
+                  <img
+                    src={featured.lead.imageUrl}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              )}
               <div>
                 <small>{featured.lead.sectionLabel}</small>
                 <strong>{featured.lead.title}</strong>
@@ -195,18 +222,20 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
           <div className="articles-mega-loading">
             {loading
               ? t("Подключаем редакционный архив…")
-              : t("Наведите, чтобы открыть публикации")}
+              : language === "en" && articles.length > 0
+                ? t("Пока нет опубликованных переводов на английский язык")
+                : t("Наведите, чтобы открыть публикации")}
           </div>
         )}
 
         <footer>
           <span>
-            {articles.length
+            {localizedArticles.length
               ? language === "en"
-                ? `${articles.length} ${
-                    articles.length === 1 ? "publication" : "publications"
+                ? `${localizedArticles.length} ${
+                    localizedArticles.length === 1 ? "publication" : "publications"
                   } in the archive`
-                : `${articles.length} материалов в архиве`
+                : `${localizedArticles.length} материалов в архиве`
               : t("Полный архив журнала")}
           </span>
           <a

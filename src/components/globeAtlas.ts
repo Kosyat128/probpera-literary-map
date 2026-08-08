@@ -36,6 +36,25 @@ type GeoFeatureCollection = {
   features: GeoFeature[];
 };
 
+export const GLOBE_VISUAL_STYLES = ["antique", "earth", "modern"] as const;
+
+export type GlobeVisualStyle = (typeof GLOBE_VISUAL_STYLES)[number];
+
+export function isGlobeVisualStyle(value: unknown): value is GlobeVisualStyle {
+  return GLOBE_VISUAL_STYLES.some((style) => style === value);
+}
+
+export function globeTextureAssetName(
+  style: GlobeVisualStyle,
+  compact: boolean
+): string | null {
+  if (style === "modern") return null;
+
+  const basename =
+    style === "earth" ? "earth-blue-marble" : "antique-world-1887";
+  return `textures/${basename}${compact ? "-mobile" : ""}.webp`;
+}
+
 export type GlobeAtlas = {
   mapTexture: THREE.CanvasTexture;
   reliefTexture: THREE.CanvasTexture;
@@ -46,6 +65,7 @@ export type GlobeAtlas = {
   centroidForCountry: (countryId: string) => [number, number] | null;
   outlineGeometryForCountry: (countryId: string) => THREE.BufferGeometry | null;
   updateHighlight: (selectedCountryId?: string | null, hoveredCountryId?: string | null) => void;
+  setVisualStyle: (style: GlobeVisualStyle) => Promise<void>;
   dispose: () => void;
 };
 
@@ -54,7 +74,7 @@ const DESKTOP_MAP_HEIGHT = 2048;
 const COMPACT_MAP_WIDTH = 2048;
 const COMPACT_MAP_HEIGHT = 1024;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
-let antiqueMapPromise: Promise<HTMLImageElement> | null = null;
+const globeMapPromises = new Map<string, Promise<HTMLImageElement>>();
 
 function loadWorldGeoJson() {
   if (!geoJsonPromise) {
@@ -68,21 +88,29 @@ function loadWorldGeoJson() {
   return geoJsonPromise;
 }
 
-function loadAntiqueMap() {
-  if (!antiqueMapPromise) {
-    antiqueMapPromise = new Promise<HTMLImageElement>((resolve, reject) => {
+function loadGlobeMap(style: GlobeVisualStyle, compact: boolean) {
+  const assetName = globeTextureAssetName(style, compact);
+  if (!assetName) return Promise.resolve<HTMLImageElement | null>(null);
+
+  let pendingImage = globeMapPromises.get(assetName);
+  if (!pendingImage) {
+    pendingImage = new Promise<HTMLImageElement>((resolve, reject) => {
       const image = new Image();
-      const useCompactTexture = window.innerWidth <= 900;
       image.decoding = "async";
-      image.onload = () => resolve(image);
-      image.onerror = () => reject(new Error("Museum globe texture failed to load"));
-      image.src = `${import.meta.env.BASE_URL}textures/antique-world-1887${
-        useCompactTexture ? "-mobile" : ""
-      }.webp`;
+      image.onload = () => {
+        globeMapPromises.delete(assetName);
+        resolve(image);
+      };
+      image.onerror = () => {
+        globeMapPromises.delete(assetName);
+        reject(new Error(`Globe texture failed to load: ${assetName}`));
+      };
+      image.src = `${import.meta.env.BASE_URL}${assetName}`;
     });
+    globeMapPromises.set(assetName, pendingImage);
   }
 
-  return antiqueMapPromise;
+  return pendingImage;
 }
 
 function getPolygons(feature: GeoFeature): MultiPolygonCoordinates {
@@ -370,23 +398,138 @@ function featureColor(index: number, mapColor = 0) {
   return palette[(index * 7 + mapColor * 3) % palette.length];
 }
 
-function makeMapCanvas(
-  features: GeoFeature[],
-  antiqueMap: HTMLImageElement | null,
+function modernFeatureColor(index: number, mapColor = 0) {
+  const palette = [
+    "#2d4f88",
+    "#56367f",
+    "#256478",
+    "#71365f",
+    "#364a91",
+    "#6b4b79",
+    "#2f607e",
+    "#683f88",
+  ];
+  return palette[(index * 5 + mapColor * 3) % palette.length];
+}
+
+function drawModernBackground(
+  context: CanvasRenderingContext2D,
   width: number,
   height: number
 ) {
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
+  const background = context.createLinearGradient(0, 0, width, height);
+  background.addColorStop(0, "#050817");
+  background.addColorStop(0.42, "#11143a");
+  background.addColorStop(0.76, "#260b3d");
+  background.addColorStop(1, "#070719");
+  context.fillStyle = background;
+  context.fillRect(0, 0, width, height);
+
+  const glow = context.createRadialGradient(
+    width * 0.7,
+    height * 0.32,
+    0,
+    width * 0.7,
+    height * 0.32,
+    width * 0.58
+  );
+  glow.addColorStop(0, "rgba(110, 72, 220, 0.28)");
+  glow.addColorStop(0.48, "rgba(54, 32, 126, 0.11)");
+  glow.addColorStop(1, "rgba(4, 7, 24, 0)");
+  context.fillStyle = glow;
+  context.fillRect(0, 0, width, height);
+}
+
+function drawModernGraticule(
+  context: CanvasRenderingContext2D,
+  width: number,
+  height: number
+) {
+  context.save();
+  context.setLineDash([]);
+
+  for (let longitude = -165; longitude <= 165; longitude += 15) {
+    const x = longitudeToTextureX(longitude, width);
+    const major = longitude % 45 === 0;
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x, height);
+    context.strokeStyle = major
+      ? "rgba(120, 177, 255, 0.2)"
+      : "rgba(157, 119, 255, 0.085)";
+    context.lineWidth = major ? 1.2 : 0.7;
+    context.stroke();
+  }
+
+  for (let latitude = -75; latitude <= 75; latitude += 15) {
+    const y = ((90 - latitude) / 180) * height;
+    const major = latitude % 45 === 0;
+    context.beginPath();
+    context.moveTo(0, y);
+    context.lineTo(width, y);
+    context.strokeStyle = major
+      ? "rgba(120, 177, 255, 0.2)"
+      : "rgba(157, 119, 255, 0.085)";
+    context.lineWidth = major ? 1.2 : 0.7;
+    context.stroke();
+  }
+
+  context.beginPath();
+  context.moveTo(0, height / 2);
+  context.lineTo(width, height / 2);
+  context.strokeStyle = "rgba(255, 137, 83, 0.36)";
+  context.lineWidth = 1.6;
+  context.stroke();
+  context.restore();
+}
+
+function drawMapCanvas(
+  canvas: HTMLCanvasElement,
+  features: GeoFeature[],
+  style: GlobeVisualStyle,
+  sourceMap: HTMLImageElement | null
+) {
+  const { width, height } = canvas;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("Canvas 2D is unavailable");
 
+  context.clearRect(0, 0, width, height);
   context.imageSmoothingEnabled = true;
   context.imageSmoothingQuality = "high";
 
-  if (antiqueMap) {
-    context.drawImage(antiqueMap, 0, 0, width, height);
+  if (style === "modern") {
+    drawModernBackground(context, width, height);
+    drawModernGraticule(context, width, height);
+    features.forEach((feature, index) => {
+      drawFeature(
+        context,
+        feature,
+        width,
+        height,
+        modernFeatureColor(index, feature.properties.MAPCOLOR13),
+        "rgba(151, 202, 255, 0.48)",
+        1.05
+      );
+    });
+
+    const glaze = context.createRadialGradient(
+      width * 0.46,
+      height * 0.36,
+      width * 0.04,
+      width * 0.5,
+      height * 0.5,
+      width * 0.64
+    );
+    glaze.addColorStop(0, "rgba(146, 122, 255, 0.15)");
+    glaze.addColorStop(0.58, "rgba(43, 27, 95, 0)");
+    glaze.addColorStop(1, "rgba(1, 4, 17, 0.34)");
+    context.fillStyle = glaze;
+    context.fillRect(0, 0, width, height);
+    return;
+  }
+
+  if (sourceMap) {
+    context.drawImage(sourceMap, 0, 0, width, height);
   } else {
     drawParchmentBackground(context, width, height);
     drawGraticule(context, width, height);
@@ -403,8 +546,7 @@ function makeMapCanvas(
     });
   }
 
-  // Modern country geometry is retained only as a restrained interactive
-  // contour. The visible cartography itself comes from the museum scan.
+  const isEarth = style === "earth";
   features.forEach((feature) => {
     drawFeature(
       context,
@@ -412,8 +554,8 @@ function makeMapCanvas(
       width,
       height,
       "rgba(0, 0, 0, 0)",
-      "rgba(62, 30, 13, 0.24)",
-      0.86
+      isEarth ? "rgba(145, 207, 232, 0.14)" : "rgba(62, 30, 13, 0.24)",
+      isEarth ? 0.68 : 0.86
     );
   });
 
@@ -425,12 +567,30 @@ function makeMapCanvas(
     height * 0.5,
     width * 0.62
   );
-  glaze.addColorStop(0, "rgba(255, 224, 154, 0.14)");
-  glaze.addColorStop(0.54, "rgba(105, 55, 20, 0)");
-  glaze.addColorStop(1, "rgba(37, 16, 8, 0.24)");
+  if (isEarth) {
+    glaze.addColorStop(0, "rgba(130, 198, 230, 0.055)");
+    glaze.addColorStop(0.6, "rgba(12, 49, 83, 0)");
+    glaze.addColorStop(1, "rgba(0, 8, 22, 0.15)");
+  } else {
+    glaze.addColorStop(0, "rgba(255, 224, 154, 0.14)");
+    glaze.addColorStop(0.54, "rgba(105, 55, 20, 0)");
+    glaze.addColorStop(1, "rgba(37, 16, 8, 0.24)");
+  }
   context.fillStyle = glaze;
   context.fillRect(0, 0, width, height);
+}
 
+function makeMapCanvas(
+  features: GeoFeature[],
+  style: GlobeVisualStyle,
+  sourceMap: HTMLImageElement | null,
+  width: number,
+  height: number
+) {
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  drawMapCanvas(canvas, features, style, sourceMap);
   return canvas;
 }
 
@@ -566,10 +726,28 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
   return texture;
 }
 
-export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas> {
-  const [worldGeoJson, antiqueMap] = await Promise.all([
+async function loadVisualStyleMap(
+  style: GlobeVisualStyle,
+  compact: boolean
+) {
+  try {
+    return await loadGlobeMap(style, compact);
+  } catch (error) {
+    // The original museum view has a procedural parchment fallback. Earth must
+    // never silently masquerade as another surface when its asset is missing.
+    if (style === "antique") return null;
+    throw error;
+  }
+}
+
+export async function createGlobeAtlas(
+  countries: Country[],
+  initialVisualStyle: GlobeVisualStyle = "antique"
+): Promise<GlobeAtlas> {
+  const compact = window.innerWidth <= 900;
+  const [worldGeoJson, sourceMap] = await Promise.all([
     loadWorldGeoJson(),
-    loadAntiqueMap().catch(() => null),
+    loadVisualStyleMap(initialVisualStyle, compact),
   ]);
   const countriesByCode = new Map(
     countries
@@ -577,11 +755,11 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
       .map((country) => [country.code!.toUpperCase(), country] as const)
   );
   const mapWidth =
-    antiqueMap?.naturalWidth ||
-    (window.innerWidth <= 900 ? COMPACT_MAP_WIDTH : DESKTOP_MAP_WIDTH);
+    sourceMap?.naturalWidth ||
+    (compact ? COMPACT_MAP_WIDTH : DESKTOP_MAP_WIDTH);
   const mapHeight =
-    antiqueMap?.naturalHeight ||
-    (window.innerWidth <= 900 ? COMPACT_MAP_HEIGHT : DESKTOP_MAP_HEIGHT);
+    sourceMap?.naturalHeight ||
+    (compact ? COMPACT_MAP_HEIGHT : DESKTOP_MAP_HEIGHT);
   const countriesById = new Map(
     countries.map((country) => [country.id, country] as const)
   );
@@ -638,11 +816,14 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     selectableFeatures.push({ feature, country });
   });
 
-  const mapTexture = configureTexture(
-    new THREE.CanvasTexture(
-      makeMapCanvas(worldGeoJson.features, antiqueMap, mapWidth, mapHeight)
-    )
+  const mapCanvas = makeMapCanvas(
+    worldGeoJson.features,
+    initialVisualStyle,
+    sourceMap,
+    mapWidth,
+    mapHeight
   );
+  const mapTexture = configureTexture(new THREE.CanvasTexture(mapCanvas));
   const reliefWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
   const reliefHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
   const reliefTexture = configureReliefTexture(
@@ -666,6 +847,8 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
   let activeHoveredCountryId: string | null = null;
   let disposed = false;
   let flagPreloadTimer: number | null = null;
+  let activeVisualStyle = initialVisualStyle;
+  let visualStyleRequest = 0;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
     for (const { feature, country } of selectableFeatures) {
@@ -848,6 +1031,18 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     redrawHighlights();
   };
 
+  const setVisualStyle = async (style: GlobeVisualStyle) => {
+    const request = ++visualStyleRequest;
+    if (style === activeVisualStyle) return;
+
+    const nextMap = await loadVisualStyleMap(style, compact);
+    if (disposed || request !== visualStyleRequest) return;
+
+    drawMapCanvas(mapCanvas, worldGeoJson.features, style, nextMap);
+    activeVisualStyle = style;
+    mapTexture.needsUpdate = true;
+  };
+
   return {
     mapTexture,
     reliefTexture,
@@ -858,8 +1053,10 @@ export async function createGlobeAtlas(countries: Country[]): Promise<GlobeAtlas
     centroidForCountry,
     outlineGeometryForCountry,
     updateHighlight,
+    setVisualStyle,
     dispose: () => {
       disposed = true;
+      visualStyleRequest += 1;
       if (flagPreloadTimer !== null) window.clearTimeout(flagPreloadTimer);
       mapTexture.dispose();
       reliefTexture.dispose();

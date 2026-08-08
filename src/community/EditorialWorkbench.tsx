@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+
 const STORAGE_KEY = "probpera-editorial-draft";
 
 type Draft = {
@@ -41,6 +43,7 @@ function slugify(value: string) {
 }
 
 export default function EditorialWorkbench() {
+  const { t, number } = useInterfaceLanguage();
   const [draft, setDraft] = useState<Draft>(readDraft);
   const [message, setMessage] = useState("");
   const slug = useMemo(() => slugify(draft.title), [draft.title]);
@@ -56,7 +59,7 @@ export default function EditorialWorkbench() {
 
   const update = (field: keyof Draft, value: string) => {
     setDraft((current) => ({ ...current, [field]: value }));
-    setMessage("Черновик сохранён на этом устройстве.");
+    setMessage(t("Черновик сохранён на этом устройстве."));
   };
 
   const exportDraft = () => {
@@ -79,16 +82,18 @@ export default function EditorialWorkbench() {
     anchor.download = `${payload.id}.json`;
     anchor.click();
     URL.revokeObjectURL(url);
-    setMessage("Редакционный JSON подготовлен.");
+    setMessage(t("Редакционный JSON подготовлен."));
   };
 
   const copySocialCard = async () => {
     const text = `${draft.title}\n\n${draft.description}\n\n#ПробаПера #литература`;
     try {
       await navigator.clipboard.writeText(text);
-      setMessage("Анонс для социальных сетей скопирован.");
+      setMessage(t("Анонс для социальных сетей скопирован."));
     } catch {
-      setMessage("Не удалось скопировать автоматически — выделите текст вручную.");
+      setMessage(
+        t("Не удалось скопировать автоматически — выделите текст вручную.")
+      );
     }
   };
 
@@ -96,57 +101,58 @@ export default function EditorialWorkbench() {
     <section className="editorial-workbench">
       <header>
         <div>
-          <span className="section-kicker">Редакционная мастерская</span>
-          <h3>Черновик новой публикации</h3>
+          <span className="section-kicker">{t("Редакционная мастерская")}</span>
+          <h3>{t("Черновик новой публикации")}</h3>
           <p>
-            Форма сохраняет материал локально, проверяет обязательные поля и
-            подготавливает JSON для публикационного архива.
+            {t(
+              "Форма сохраняет материал локально, проверяет обязательные поля и подготавливает JSON для публикационного архива."
+            )}
           </p>
         </div>
         <div>
-          <strong>{words.toLocaleString("ru-RU")}</strong>
-          <span>слов</span>
+          <strong>{number(words)}</strong>
+          <span>{t("слов")}</span>
         </div>
       </header>
 
       <div className="editorial-workbench-grid">
         <div className="editorial-workbench-form">
           <label>
-            Заголовок
+            {t("Заголовок")}
             <input
               value={draft.title}
               maxLength={160}
               onChange={(event) => update("title", event.target.value)}
-              placeholder="Точный редакционный заголовок"
+              placeholder={t("Точный редакционный заголовок")}
             />
           </label>
           <label>
-            Раздел
+            {t("Раздел")}
             <select
               value={draft.section}
               onChange={(event) => update("section", event.target.value)}
             >
-              <option value="book-opinions">Мнение о книге</option>
-              <option value="screen-adaptations">Книга и экранизация</option>
-              <option value="writers-world">Писатели мира</option>
-              <option value="awards">Литературные премии</option>
-              <option value="folklore">Фольклор и мифология</option>
-              <option value="language">Русский язык</option>
-              <option value="literary-essays">О литературе и культуре</option>
+              <option value="book-opinions">{t("Мнение о книге")}</option>
+              <option value="screen-adaptations">{t("Книга и экранизация")}</option>
+              <option value="writers-world">{t("Писатели мира")}</option>
+              <option value="awards">{t("Литературные премии")}</option>
+              <option value="folklore">{t("Фольклор и мифология")}</option>
+              <option value="language">{t("Русский язык")}</option>
+              <option value="literary-essays">{t("О литературе и культуре")}</option>
             </select>
           </label>
           <label>
-            Краткое описание
+            {t("Краткое описание")}
             <textarea
               value={draft.description}
               maxLength={320}
               rows={3}
               onChange={(event) => update("description", event.target.value)}
-              placeholder="Для карточки, поиска и социальных сетей"
+              placeholder={t("Для карточки, поиска и социальных сетей")}
             />
           </label>
           <label>
-            Изображение и источник
+            {t("Изображение и источник")}
             <input
               type="url"
               value={draft.imageUrl}
@@ -155,27 +161,29 @@ export default function EditorialWorkbench() {
             />
           </label>
           <label>
-            Источники и редакционные заметки
+            {t("Источники и редакционные заметки")}
             <textarea
               value={draft.sourceNotes}
               rows={4}
               onChange={(event) => update("sourceNotes", event.target.value)}
-              placeholder="Название источника, ссылка, что именно подтверждает"
+              placeholder={t(
+                "Название источника, ссылка, что именно подтверждает"
+              )}
             />
           </label>
           <label>
-            Текст статьи
+            {t("Текст статьи")}
             <textarea
               value={draft.contentHtml}
               rows={14}
               onChange={(event) => update("contentHtml", event.target.value)}
-              placeholder="<h2>Вступление</h2><p>Текст…</p>"
+              placeholder={t("<h2>Вступление</h2><p>Текст…</p>")}
             />
           </label>
         </div>
 
         <aside className="editorial-workbench-preview">
-          <span>Предпросмотр карточки</span>
+          <span>{t("Предпросмотр карточки")}</span>
           {draft.imageUrl ? (
             <img src={draft.imageUrl} alt="" loading="lazy" decoding="async" />
           ) : (
@@ -190,27 +198,27 @@ export default function EditorialWorkbench() {
             </div>
           )}
           <small>{draft.section}</small>
-          <h4>{draft.title || "Заголовок будущей публикации"}</h4>
+          <h4>{draft.title || t("Заголовок будущей публикации")}</h4>
           <p>
             {draft.description ||
-              "Краткое описание поможет читателю понять тему материала."}
+              t("Краткое описание поможет читателю понять тему материала.")}
           </p>
           <code>/articles/{slug || "novaya-statya"}/</code>
           <ul>
             <li className={draft.title.length >= 12 ? "is-ready" : ""}>
-              Содержательный заголовок
+              {t("Содержательный заголовок")}
             </li>
             <li className={draft.description.length >= 80 ? "is-ready" : ""}>
-              SEO-описание не короче 80 знаков
+              {t("SEO-описание не короче 80 знаков")}
             </li>
             <li className={draft.imageUrl ? "is-ready" : ""}>
-              Указана иллюстрация
+              {t("Указана иллюстрация")}
             </li>
             <li className={draft.sourceNotes.length >= 20 ? "is-ready" : ""}>
-              Зафиксированы источники
+              {t("Зафиксированы источники")}
             </li>
             <li className={words >= 500 ? "is-ready" : ""}>
-              Основной текст готов
+              {t("Основной текст готов")}
             </li>
           </ul>
           <div>
@@ -219,14 +227,14 @@ export default function EditorialWorkbench() {
               disabled={!draft.title || words < 50}
               onClick={exportDraft}
             >
-              Экспортировать JSON
+              {t("Экспортировать JSON")}
             </button>
             <button
               type="button"
               disabled={!draft.title || !draft.description}
               onClick={() => void copySocialCard()}
             >
-              Скопировать анонс
+              {t("Скопировать анонс")}
             </button>
           </div>
           {message && <output>{message}</output>}

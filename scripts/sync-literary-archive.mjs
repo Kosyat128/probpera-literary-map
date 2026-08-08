@@ -103,9 +103,76 @@ function workRows(archive) {
       metadata: {
         countryName: book.countryName,
         writerName: book.writerName,
+        distinctions: book.distinctions || [],
       },
     };
   });
+}
+
+function translationRows(archive, workIds) {
+  return archive.flatMap((book) => {
+    const workId = workIds.get(`${book.countryId}:${book.writerId}:${book.id}`);
+    if (!workId) return [];
+    return Object.values(book.translations || {}).map((translation) => ({
+      work_id: workId,
+      locale: translation.locale,
+      title: translation.title,
+      description: translation.description,
+      source_language: translation.sourceLanguage,
+      translation_method: translation.method,
+      editorial_status: translation.status,
+      source_urls: translation.sourceUrls,
+      reviewed_at: translation.reviewedAt || null,
+      metadata: {},
+    }));
+  });
+}
+
+function sourceRows(archive, workIds) {
+  return archive.flatMap((book) => {
+    const workId = workIds.get(`${book.countryId}:${book.writerId}:${book.id}`);
+    if (!workId) return [];
+    return (book.sources || []).map((source) => ({
+      work_id: workId,
+      provider: source.provider,
+      source_url: source.url,
+      field_names: source.fields,
+      license_name: source.license || null,
+      usage: source.usage,
+      retrieved_at: source.retrievedAt,
+      metadata: {},
+    }));
+  });
+}
+
+function externalIdRows(archive, workIds) {
+  return archive.flatMap((book) => {
+    const workId = workIds.get(`${book.countryId}:${book.writerId}:${book.id}`);
+    if (!workId) return [];
+    return (book.externalIds || []).map((externalId) => ({
+      work_id: workId,
+      scheme: externalId.scheme,
+      external_id: externalId.value,
+      source_url: externalId.sourceUrl,
+    }));
+  });
+}
+
+function globalExternalIdConflicts(archive) {
+  const owners = new Map();
+  for (const book of archive) {
+    const workKey = `${book.countryId}:${book.writerId}:${book.id}`;
+    for (const externalId of book.externalIds || []) {
+      const key = `${externalId.scheme}:${externalId.value}`.toLocaleLowerCase(
+        "en"
+      );
+      if (!owners.has(key)) owners.set(key, new Set());
+      owners.get(key).add(workKey);
+    }
+  }
+  return [...owners.entries()]
+    .filter(([, works]) => works.size > 1)
+    .map(([externalId, works]) => ({ externalId, works: [...works] }));
 }
 
 function editionRow(book, workId) {
@@ -164,9 +231,22 @@ const covers = archive.filter((book) =>
       )
   )
 );
+const translationCount = archive.reduce(
+  (total, book) => total + Object.keys(book.translations || {}).length,
+  0
+);
+const sourceCount = archive.reduce(
+  (total, book) => total + (book.sources || []).length,
+  0
+);
+const externalIdCount = archive.reduce(
+  (total, book) => total + (book.externalIds || []).length,
+  0
+);
+const externalIdConflicts = globalExternalIdConflicts(archive);
 
 console.log(
-  `Источник countries: ${works.length} произведений, ${covers.length} проверенных обложек.`
+  `Источник countries: ${works.length} произведений, ${translationCount} RU/EN-переводов, ${sourceCount} записей provenance, ${externalIdCount} внешних идентификаторов, ${externalIdConflicts.length} конфликтов внешних идентификаторов и ${covers.length} проверенных обложек.`
 );
 
 if (!applyChanges) {
@@ -184,6 +264,12 @@ const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 if (!supabaseUrl || !serviceRoleKey) {
   throw new Error(
     "Для синхронизации нужны NEXT_PUBLIC_SUPABASE_URL и SUPABASE_SERVICE_ROLE_KEY."
+  );
+}
+
+if (externalIdConflicts.length) {
+  throw new Error(
+    `Синхронизация остановлена: ${externalIdConflicts.length} глобальных конфликтов внешних идентификаторов.`
   );
 }
 
@@ -206,6 +292,36 @@ await inBatches(works, 250, async (batch, number) => {
   console.log(`Произведения: пакет ${number} сохранён.`);
 });
 
+const translations = translationRows(archive, workIds);
+await inBatches(translations, 200, async (batch, number) => {
+  const { error } = await supabase
+    .from("literary_work_translations")
+    .upsert(batch, { onConflict: "work_id,locale" });
+  if (error) throw error;
+  console.log(`Переводы произведений: пакет ${number} сохранён.`);
+});
+
+const sources = sourceRows(archive, workIds);
+await inBatches(sources, 200, async (batch, number) => {
+  const { error } = await supabase
+    .from("literary_work_sources")
+    .upsert(batch, { onConflict: "work_id,provider,source_url" });
+  if (error) throw error;
+  console.log(`Источники произведений: пакет ${number} сохранён.`);
+});
+
+const externalIds = externalIdRows(archive, workIds);
+await inBatches(externalIds, 200, async (batch, number) => {
+  const { error } = await supabase
+    .from("literary_work_external_ids")
+    .upsert(batch, {
+      onConflict: "scheme,external_id",
+      ignoreDuplicates: true,
+    });
+  if (error) throw error;
+  console.log(`Внешние идентификаторы: пакет ${number} сохранён.`);
+});
+
 const editions = archive
   .map((book) => {
     const workId = workIds.get(`${book.countryId}:${book.writerId}:${book.id}`);
@@ -223,5 +339,5 @@ await inBatches(editions, 200, async (batch, number) => {
 });
 
 console.log(
-  `Синхронизация завершена: ${works.length} произведений и ${editions.length} изданий.`
+  `Синхронизация завершена: ${works.length} произведений, ${translations.length} переводов, ${sources.length} источников, ${externalIds.length} внешних идентификаторов и ${editions.length} изданий.`
 );

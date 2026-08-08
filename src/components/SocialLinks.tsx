@@ -1,3 +1,5 @@
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+
 export type SocialMarkId = "vk" | "telegram" | "dzen" | "ok" | "boosty";
 
 type SocialLink = {
@@ -48,8 +50,9 @@ export function SocialMark({ id }: { id: SocialMarkId }) {
 }
 
 export default function SocialLinks() {
+  const { t } = useInterfaceLanguage();
   return (
-    <nav className="header-socials" aria-label="Социальные сети">
+    <nav className="header-socials" aria-label={t("Социальные сети")}>
       {socialLinks.map((item) =>
         item.url ? (
           <a
@@ -57,8 +60,8 @@ export default function SocialLinks() {
             href={item.url}
             target="_blank"
             rel="noreferrer"
-            aria-label={item.label}
-            title={item.label}
+            aria-label={t(item.label)}
+            title={t(item.label)}
             key={item.id}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -68,8 +71,8 @@ export default function SocialLinks() {
         ) : (
           <span
             className={`social-link is-${item.id} is-disabled`}
-            aria-label={`${item.label}: адрес ожидает подключения`}
-            title="Укажите адрес вашей страницы Boosty"
+            aria-label={`${t(item.label)}: ${t("адрес ожидает подключения")}`}
+            title={t("Укажите адрес вашей страницы Boosty")}
             key={item.id}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">

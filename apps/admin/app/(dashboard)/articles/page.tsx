@@ -304,7 +304,7 @@ export default async function ArticlesPage({
                         </Link>
                         <form action={duplicateArticleAction}>
                           <input type="hidden" name="id" value={article.id} />
-                          <button className="button-secondary" type="submit">Создать копию</button>
+                          <button className="button-secondary" type="submit">Копировать и редактировать</button>
                         </form>
                         {article.status !== "published" && (
                           <form action={changeArticleStatusAction}>

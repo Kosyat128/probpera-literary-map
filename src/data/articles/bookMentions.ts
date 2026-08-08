@@ -11,9 +11,29 @@ export type BookArticleMention = {
   kind: BookArticleMentionKind;
 };
 
+export type ArticleBookMentionLocalization = {
+  title: string;
+  writerName: string;
+};
+
+export type ArticleBookMention = {
+  key: string;
+  countryId: string;
+  writerId: string;
+  bookId: string;
+  firstPublished?: number;
+  coverUrl?: string;
+  kind: BookArticleMentionKind;
+  localizations: {
+    ru: ArticleBookMentionLocalization;
+    en: ArticleBookMentionLocalization;
+  };
+};
+
 export type BookMentionIndex = {
   version: number;
   byBook: Record<string, BookArticleMention[]>;
+  byArticle: Record<string, ArticleBookMention[]>;
 };
 
 let mentionIndexPromise: Promise<BookMentionIndex> | null = null;
@@ -37,6 +57,11 @@ export function loadBookMentionIndex() {
 export async function getBookArticleMentions(bookKey: string) {
   const index = await loadBookMentionIndex();
   return index.byBook[bookKey] || [];
+}
+
+export async function getArticleBookMentions(articleId: string) {
+  const index = await loadBookMentionIndex();
+  return index.byArticle?.[articleId] || [];
 }
 
 export async function getBookMentionIndex() {

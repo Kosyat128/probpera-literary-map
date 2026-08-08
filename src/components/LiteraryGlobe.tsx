@@ -22,9 +22,16 @@ import {
   collectNobelLaureates,
 } from "../data/nobel";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import CountryFlagIcon from "./CountryFlagIcon";
 import WriterPortrait from "./WriterPortrait";
-import { createGlobeAtlas, type GlobeAtlas } from "./globeAtlas";
+import {
+  createGlobeAtlas,
+  GLOBE_VISUAL_STYLES,
+  isGlobeVisualStyle,
+  type GlobeAtlas,
+  type GlobeVisualStyle,
+} from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
 
 interface Props {
@@ -35,6 +42,145 @@ interface Props {
   onWriterSelect?: (country: Country, writer: Writer) => void;
   showNobelLaureates?: boolean;
   nobelCountryId?: string | null;
+}
+
+const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
+
+const globeStylePalette: Record<
+  GlobeVisualStyle,
+  {
+    atmosphere: string;
+    atmosphereStrength: number;
+    ambient: string;
+    ambientIntensity: number;
+    hemisphereSky: string;
+    hemisphereGround: string;
+    hemisphereIntensity: number;
+    directional: string;
+    directionalIntensity: number;
+    sideLight: string;
+    sideLightIntensity: number;
+    lowerLight: string;
+    lowerLightIntensity: number;
+    rearLight: string;
+    upperLight: string;
+    spotLight: string;
+    spotIntensity: number;
+  }
+> = {
+  antique: {
+    atmosphere: "#e88c33",
+    atmosphereStrength: 0.21,
+    ambient: "#f7d29a",
+    ambientIntensity: 0.66,
+    hemisphereSky: "#ffe2ab",
+    hemisphereGround: "#170620",
+    hemisphereIntensity: 1.12,
+    directional: "#ffd6a0",
+    directionalIntensity: 2.35,
+    sideLight: "#c45b24",
+    sideLightIntensity: 13,
+    lowerLight: "#e89a5d",
+    lowerLightIntensity: 9.5,
+    rearLight: "#7b3c91",
+    upperLight: "#6f2b8d",
+    spotLight: "#ffe3b1",
+    spotIntensity: 7.5,
+  },
+  earth: {
+    atmosphere: "#54b8ff",
+    atmosphereStrength: 0.34,
+    ambient: "#a7cbe0",
+    ambientIntensity: 0.5,
+    hemisphereSky: "#bce7ff",
+    hemisphereGround: "#020713",
+    hemisphereIntensity: 0.92,
+    directional: "#fff6df",
+    directionalIntensity: 2.72,
+    sideLight: "#287fc2",
+    sideLightIntensity: 8.2,
+    lowerLight: "#76c9ec",
+    lowerLightIntensity: 5.2,
+    rearLight: "#17427d",
+    upperLight: "#245c91",
+    spotLight: "#eaf8ff",
+    spotIntensity: 6.4,
+  },
+  modern: {
+    atmosphere: "#a171ff",
+    atmosphereStrength: 0.29,
+    ambient: "#b6a8ff",
+    ambientIntensity: 0.54,
+    hemisphereSky: "#b7d3ff",
+    hemisphereGround: "#150523",
+    hemisphereIntensity: 0.98,
+    directional: "#d7e4ff",
+    directionalIntensity: 2.18,
+    sideLight: "#ff6e42",
+    sideLightIntensity: 10.5,
+    lowerLight: "#ff9b62",
+    lowerLightIntensity: 6.8,
+    rearLight: "#6945d9",
+    upperLight: "#9c5ef2",
+    spotLight: "#c8d8ff",
+    spotIntensity: 6.9,
+  },
+};
+
+const globeSurfaceMaterials: Record<
+  GlobeVisualStyle,
+  {
+    bumpScale: number;
+    roughness: number;
+    metalness: number;
+    clearcoat: number;
+    clearcoatRoughness: number;
+    emissive: string;
+    emissiveIntensity: number;
+    equator: string;
+  }
+> = {
+  antique: {
+    bumpScale: 0.028,
+    roughness: 0.68,
+    metalness: 0.035,
+    clearcoat: 0.24,
+    clearcoatRoughness: 0.58,
+    emissive: "#2b160c",
+    emissiveIntensity: 0.045,
+    equator: "#e5b66a",
+  },
+  earth: {
+    bumpScale: 0.016,
+    roughness: 0.56,
+    metalness: 0.018,
+    clearcoat: 0.34,
+    clearcoatRoughness: 0.46,
+    emissive: "#03111c",
+    emissiveIntensity: 0.034,
+    equator: "#79cfff",
+  },
+  modern: {
+    bumpScale: 0.012,
+    roughness: 0.5,
+    metalness: 0.12,
+    clearcoat: 0.48,
+    clearcoatRoughness: 0.3,
+    emissive: "#16092b",
+    emissiveIntensity: 0.11,
+    equator: "#ff8a55",
+  },
+};
+
+function storedGlobeVisualStyle(): GlobeVisualStyle {
+  if (typeof window === "undefined") return "antique";
+
+  try {
+    const stored = window.localStorage.getItem(GLOBE_STYLE_STORAGE_KEY);
+    return isGlobeVisualStyle(stored) ? stored : "antique";
+  } catch {
+    return "antique";
+  }
 }
 
 function pluralRu(count: number, forms: [string, string, string]) {
@@ -83,8 +229,12 @@ function fallbackCountryCoordinates(country: Country): [number, number] | null {
   ];
 }
 
-function writerDisplayName(writer: Writer) {
-  return writer.name || writer.fullName || "Автор";
+function writerDisplayName(
+  writer: Writer,
+  fallback = "Автор",
+  language: "ru" | "en" = "ru"
+) {
+  return selectWriterDisplayName(writer, language, fallback);
 }
 
 type HoveredLaureate = {
@@ -143,14 +293,19 @@ function CameraFocus({
   return null;
 }
 
-function MuseumAtmosphere() {
+function MuseumAtmosphere({ visualStyle }: { visualStyle: GlobeVisualStyle }) {
   const material = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
+    () => {
+      const palette = globeStylePalette[visualStyle];
+      return new THREE.ShaderMaterial({
         transparent: true,
         depthWrite: false,
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
+        uniforms: {
+          glowColor: { value: new THREE.Color(palette.atmosphere) },
+          glowStrength: { value: palette.atmosphereStrength },
+        },
         vertexShader: `
           varying vec3 vWorldNormal;
           varying vec3 vWorldPosition;
@@ -163,6 +318,8 @@ function MuseumAtmosphere() {
           }
         `,
         fragmentShader: `
+          uniform vec3 glowColor;
+          uniform float glowStrength;
           varying vec3 vWorldNormal;
           varying vec3 vWorldPosition;
 
@@ -170,11 +327,12 @@ function MuseumAtmosphere() {
             vec3 viewDirection = normalize(cameraPosition - vWorldPosition);
             float fresnel = 1.0 - max(0.0, dot(normalize(vWorldNormal), viewDirection));
             float glow = pow(fresnel, 2.7);
-            gl_FragColor = vec4(0.91, 0.55, 0.20, glow * 0.21);
+            gl_FragColor = vec4(glowColor, glow * glowStrength);
           }
         `,
-      }),
-    []
+      });
+    },
+    [visualStyle]
   );
 
   useEffect(() => () => material.dispose(), [material]);
@@ -476,6 +634,80 @@ function MythicGlobeFrame() {
             color={index === 0 ? "#f29548" : "#8b4ba5"}
             transparent
             opacity={0.2 - index * 0.035}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function ContemporaryGlobeFrame({
+  visualStyle,
+  economical,
+}: {
+  visualStyle: Exclude<GlobeVisualStyle, "antique">;
+  economical: boolean;
+}) {
+  const earth = visualStyle === "earth";
+  const primary = earth ? "#8dc9e8" : "#9b72ff";
+  const secondary = earth ? "#d7edf6" : "#ff8354";
+  const emissive = earth ? "#123c56" : "#34166b";
+  const segments = economical ? 128 : 192;
+
+  return (
+    <group>
+      <mesh raycast={() => null}>
+        <torusGeometry args={[1.075, 0.0085, 12, segments]} />
+        <meshPhysicalMaterial
+          color={primary}
+          emissive={emissive}
+          emissiveIntensity={earth ? 0.26 : 0.48}
+          roughness={earth ? 0.32 : 0.24}
+          metalness={0.72}
+          clearcoat={0.58}
+          clearcoatRoughness={0.24}
+        />
+      </mesh>
+
+      <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
+        <torusGeometry args={[1.035, 0.0055, 10, segments]} />
+        <meshPhysicalMaterial
+          color={secondary}
+          emissive={earth ? "#174b68" : "#6f2518"}
+          emissiveIntensity={earth ? 0.18 : 0.42}
+          roughness={0.3}
+          metalness={0.68}
+          clearcoat={0.5}
+        />
+      </mesh>
+
+      <mesh rotation={[0, Math.PI / 2, 0]} raycast={() => null}>
+        <torusGeometry args={[1.035, 0.0035, 8, segments]} />
+        <meshBasicMaterial
+          color={primary}
+          transparent
+          opacity={earth ? 0.34 : 0.5}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </mesh>
+
+      {[0.7, 1.05].map((radius, index) => (
+        <mesh
+          key={radius}
+          position={[0, -1.27 - index * 0.015, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          raycast={() => null}
+        >
+          <torusGeometry args={[radius, 0.003, 6, economical ? 96 : 144]} />
+          <meshBasicMaterial
+            color={index === 0 ? primary : secondary}
+            transparent
+            opacity={earth ? 0.18 - index * 0.04 : 0.28 - index * 0.05}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
             toneMapped={false}
@@ -838,6 +1070,7 @@ function CountrySphericalOutline({
 
 function GlobeSurface({
   atlas,
+  visualStyle,
   selectedCountry,
   hoveredCountry,
   onCountrySelect,
@@ -845,12 +1078,14 @@ function GlobeSurface({
   economical,
 }: {
   atlas: GlobeAtlas;
+  visualStyle: GlobeVisualStyle;
   selectedCountry?: Country | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   economical: boolean;
 }) {
+  const surfaceMaterial = globeSurfaceMaterials[visualStyle];
   const { camera, gl } = useThree();
   const globeMesh = useRef<THREE.Mesh>(null);
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
@@ -955,13 +1190,13 @@ function GlobeSurface({
         <meshPhysicalMaterial
           map={atlas.mapTexture}
           bumpMap={atlas.reliefTexture}
-          bumpScale={0.028}
-          roughness={0.68}
-          metalness={0.035}
-          clearcoat={0.24}
-          clearcoatRoughness={0.58}
-          emissive="#2b160c"
-          emissiveIntensity={0.045}
+          bumpScale={surfaceMaterial.bumpScale}
+          roughness={surfaceMaterial.roughness}
+          metalness={surfaceMaterial.metalness}
+          clearcoat={surfaceMaterial.clearcoat}
+          clearcoatRoughness={surfaceMaterial.clearcoatRoughness}
+          emissive={surfaceMaterial.emissive}
+          emissiveIntensity={surfaceMaterial.emissiveIntensity}
         />
 
         <mesh raycast={() => null}>
@@ -984,7 +1219,7 @@ function GlobeSurface({
         <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
           <torusGeometry args={[1.009, 0.0022, 8, economical ? 144 : 192]} />
           <meshBasicMaterial
-            color="#e5b66a"
+            color={surfaceMaterial.equator}
             transparent
             opacity={selectedCountry ? 0.2 : 0.11}
             toneMapped={false}
@@ -992,7 +1227,7 @@ function GlobeSurface({
         </mesh>
       </mesh>
 
-      <MuseumAtmosphere />
+      <MuseumAtmosphere visualStyle={visualStyle} />
     </group>
   );
 }
@@ -1249,6 +1484,7 @@ function NobelLaureateMarkers({
 
 function GlobeScene({
   atlas,
+  visualStyle,
   countries,
   selectedCountry,
   selectedWriter,
@@ -1263,6 +1499,7 @@ function GlobeScene({
   onLaureateHover,
 }: {
   atlas: GlobeAtlas;
+  visualStyle: GlobeVisualStyle;
   countries: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
@@ -1277,6 +1514,7 @@ function GlobeScene({
   onLaureateHover: (laureate: HoveredLaureate | null) => void;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
+  const palette = globeStylePalette[visualStyle];
   const coordinates = selectedCountry
     ? atlas.centroidForCountry(selectedCountry.id) || fallbackCountryCoordinates(selectedCountry)
     : null;
@@ -1286,31 +1524,69 @@ function GlobeScene({
       <RendererResizeSync />
       <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
       <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
-      <ambientLight intensity={0.66} color="#f7d29a" />
-      <hemisphereLight args={["#ffe2ab", "#170620", 1.12]} />
-      <directionalLight position={[4.5, 3.4, 4]} intensity={2.35} color="#ffd6a0" />
-      <pointLight position={[-3.5, -0.7, 2]} intensity={13} distance={7} color="#c45b24" />
-      <pointLight position={[0, -1.55, 2.35]} intensity={9.5} distance={4.8} color="#e89a5d" />
-      <pointLight position={[0, -1.2, -2.4]} intensity={6.5} distance={4.6} color="#7b3c91" />
-      <pointLight position={[0, 3.5, -3]} intensity={8} distance={7} color="#6f2b8d" />
+      <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
+      <hemisphereLight
+        args={[
+          palette.hemisphereSky,
+          palette.hemisphereGround,
+          palette.hemisphereIntensity,
+        ]}
+      />
+      <directionalLight
+        position={[4.5, 3.4, 4]}
+        intensity={palette.directionalIntensity}
+        color={palette.directional}
+      />
+      <pointLight
+        position={[-3.5, -0.7, 2]}
+        intensity={palette.sideLightIntensity}
+        distance={7}
+        color={palette.sideLight}
+      />
+      <pointLight
+        position={[0, -1.55, 2.35]}
+        intensity={palette.lowerLightIntensity}
+        distance={4.8}
+        color={palette.lowerLight}
+      />
+      <pointLight
+        position={[0, -1.2, -2.4]}
+        intensity={visualStyle === "antique" ? 6.5 : 5.2}
+        distance={4.6}
+        color={palette.rearLight}
+      />
+      <pointLight
+        position={[0, 3.5, -3]}
+        intensity={visualStyle === "modern" ? 9 : 8}
+        distance={7}
+        color={palette.upperLight}
+      />
       <spotLight
         position={[0.4, 4.2, 3.2]}
         angle={0.42}
         penumbra={0.82}
-        intensity={7.5}
+        intensity={palette.spotIntensity}
         distance={9}
-        color="#ffe3b1"
+        color={palette.spotLight}
       />
 
       <GlobeSurface
         atlas={atlas}
+        visualStyle={visualStyle}
         selectedCountry={selectedCountry}
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
         economical={economical}
       />
-      <MythicGlobeFrame />
+      {visualStyle === "antique" ? (
+        <MythicGlobeFrame />
+      ) : (
+        <ContemporaryGlobeFrame
+          visualStyle={visualStyle}
+          economical={economical}
+        />
+      )}
       <MicrostateMarkers
         atlas={atlas}
         countries={countries}
@@ -1377,6 +1653,15 @@ export default function LiteraryGlobe({
   nobelCountryId,
 }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
+  const [visualStyle, setVisualStyle] = useState<GlobeVisualStyle>(
+    storedGlobeVisualStyle
+  );
+  const initialVisualStyle = useRef(visualStyle);
+  const [renderedVisualStyle, setRenderedVisualStyle] =
+    useState<GlobeVisualStyle>(visualStyle);
+  const [pendingVisualStyle, setPendingVisualStyle] =
+    useState<GlobeVisualStyle | null>(null);
+  const [visualStyleError, setVisualStyleError] = useState(false);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
@@ -1406,6 +1691,14 @@ export default function LiteraryGlobe({
     navigator.hardwareConcurrency <= 4 ||
     window.devicePixelRatio >= 2.5 ||
     window.innerWidth <= 680;
+  const visualStyleLabels: Record<GlobeVisualStyle, string> =
+    language === "en"
+      ? { antique: "Antique", earth: "Earth", modern: "Modern" }
+      : { antique: "Старинный", earth: "Земля", modern: "Современный" };
+  const compactVisualStyleLabels: Record<GlobeVisualStyle, string> =
+    language === "en"
+      ? { antique: "Antique", earth: "Earth", modern: "Modern" }
+      : { antique: "Ретро", earth: "Земля", modern: "Модерн" };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1440,12 +1733,32 @@ export default function LiteraryGlobe({
     if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
+    const requestedInitialStyle = initialVisualStyle.current;
 
-    createGlobeAtlas(countries)
+    createGlobeAtlas(countries, requestedInitialStyle)
+      .catch(async (error: unknown) => {
+        if (requestedInitialStyle === "antique") throw error;
+
+        const fallbackAtlas = await createGlobeAtlas(countries, "antique");
+        initialVisualStyle.current = "antique";
+        if (!disposed) {
+          setVisualStyleError(true);
+          setVisualStyle("antique");
+          try {
+            window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, "antique");
+          } catch {
+            // The in-session fallback is sufficient when storage is blocked.
+          }
+        }
+        return fallbackAtlas;
+      })
       .then((nextAtlas) => {
         createdAtlas = nextAtlas;
         if (disposed) nextAtlas.dispose();
-        else setAtlas(nextAtlas);
+        else {
+          setRenderedVisualStyle(initialVisualStyle.current);
+          setAtlas(nextAtlas);
+        }
       })
       .catch(() => {
         if (!disposed) setAtlasError(true);
@@ -1460,6 +1773,36 @@ export default function LiteraryGlobe({
   useEffect(() => {
     atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
   }, [atlas, hoveredCountry?.id, selectedCountry?.id]);
+
+  useEffect(() => {
+    if (!atlas) return;
+    let cancelled = false;
+    setPendingVisualStyle(visualStyle);
+
+    atlas
+      .setVisualStyle(visualStyle)
+      .then(() => {
+        if (cancelled) return;
+        setRenderedVisualStyle(visualStyle);
+        setPendingVisualStyle(null);
+        try {
+          window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, visualStyle);
+        } catch {
+          // Storage can be unavailable in strict privacy modes; the switch
+          // still works for the current session.
+        }
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setPendingVisualStyle(null);
+        setVisualStyleError(true);
+        setVisualStyle("antique");
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [atlas, visualStyle]);
 
   if (!atlas) {
     return (
@@ -1480,6 +1823,7 @@ export default function LiteraryGlobe({
     <div
       ref={containerRef}
       className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
+      data-globe-style={renderedVisualStyle}
     >
       <Canvas
         camera={{ position: [0, 0.08, 4.9], fov: 43, near: 0.1, far: 100 }}
@@ -1499,6 +1843,7 @@ export default function LiteraryGlobe({
       >
         <GlobeScene
           atlas={atlas}
+          visualStyle={renderedVisualStyle}
           countries={countries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
@@ -1513,6 +1858,46 @@ export default function LiteraryGlobe({
           onLaureateHover={setHoveredLaureate}
         />
       </Canvas>
+
+      <div
+        className="globe-style-switch"
+        role="group"
+        aria-label={t("Стиль глобуса")}
+      >
+        {GLOBE_VISUAL_STYLES.map((style) => (
+          <button
+            key={style}
+            type="button"
+            className={visualStyle === style ? "is-active" : undefined}
+            data-globe-style-option={style}
+            aria-pressed={visualStyle === style}
+            aria-busy={pendingVisualStyle === style || undefined}
+            aria-label={visualStyleLabels[style]}
+            onClick={() => {
+              setVisualStyleError(false);
+              setVisualStyle(style);
+            }}
+          >
+            <span className="globe-style-label-full">
+              {visualStyleLabels[style]}
+            </span>
+            <span className="globe-style-label-compact" aria-hidden="true">
+              {compactVisualStyleLabels[style]}
+            </span>
+          </button>
+        ))}
+        <span className="globe-style-status" role="status" aria-live="polite">
+          {visualStyleError
+            ? language === "en"
+              ? "Earth texture could not be loaded. Antique style restored."
+              : "Текстуру Земли не удалось загрузить. Возвращён старинный стиль."
+            : pendingVisualStyle
+              ? language === "en"
+                ? `Loading ${visualStyleLabels[pendingVisualStyle]} style`
+                : `Загружается стиль «${visualStyleLabels[pendingVisualStyle]}»`
+              : ""}
+        </span>
+      </div>
 
       <div className="globe-vignette" aria-hidden="true" />
       <div className="globe-shadow" aria-hidden="true" />
@@ -1551,7 +1936,13 @@ export default function LiteraryGlobe({
             decorative
           />
           <div>
-            <span>{writerDisplayName(hoveredLaureate.writer)}</span>
+            <span>
+              {writerDisplayName(
+                hoveredLaureate.writer,
+                t("Автор"),
+                language
+              )}
+            </span>
             <small>
               {t("Нобелевский лауреат")}
               {hoveredNobelYear

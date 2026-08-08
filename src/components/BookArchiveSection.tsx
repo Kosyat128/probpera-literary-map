@@ -1,22 +1,46 @@
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import {
+  bookArchiveKey,
   isEditorialCover,
   isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import {
+  classifyBookArchiveQueue,
+  presentBookArchiveEntry,
+  presentBookArchiveQueueItem,
+  type BookArchiveQueueItem,
+} from "../data/bookArchiveQueue";
+import {
+  selectBookMetadataLabels,
+  selectBookOriginalLanguage,
+  selectBookWriterName,
+} from "../data/bookLocalization";
+import {
   getBookArticleMentions,
   type BookArticleMention,
 } from "../data/articles/bookMentions";
+import { articleCatalog } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
+import {
+  literarySearchMatches,
+  normalizeLiterarySearch,
+} from "../utils/literarySearch";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 
-type ArchiveFilter = "all" | "verified" | "covers" | "classic" | "modern";
+type ArchiveFilter = "all" | "verified" | "pending" | "classic" | "modern";
 
 type Props = {
   books: BookArchiveEntry[];
@@ -41,9 +65,9 @@ const archiveFilters: Array<{
     description: "Карточки с подтверждёнными данными",
   },
   {
-    id: "covers",
-    label: "С обложками",
-    description: "Изображения с указанным источником",
+    id: "pending",
+    label: "Непроверенные",
+    description: "Карточки в редакционной очереди",
   },
   {
     id: "classic",
@@ -57,25 +81,48 @@ const archiveFilters: Array<{
   },
 ];
 
-function normalize(value: string) {
-  return value
-    .trim()
-    .toLocaleLowerCase("ru")
-    .replace(/ё/g, "е")
-    .replace(/°/g, " градус ")
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function editorialRank(book: BookArchiveEntry) {
-  if (book.editorial?.status === "verified") return 0;
-  if (book.editorial?.status === "reviewed") return 1;
-  return 2;
+function editorialRank(item: BookArchiveQueueItem) {
+  return item.status === "verified" ? 0 : 1;
 }
 
 function bookKey(book: BookArchiveEntry) {
-  return `${book.countryId}:${book.writerId}:${book.id}`;
+  return bookArchiveKey(book.countryId, book.writerId, book.id);
+}
+
+export function resolveRequestedBook(
+  books: BookArchiveEntry[],
+  key: string | null
+) {
+  if (!key) return { status: "none" } as const;
+  if (!books.length) return { status: "pending" } as const;
+  const book = books.find((candidate) => bookKey(candidate) === key);
+  return book
+    ? ({ status: "found", book } as const)
+    : ({ status: "missing" } as const);
+}
+
+export function requestedBookKey(search: string) {
+  const key = new URLSearchParams(search).get("book")?.trim() || "";
+  const parts = key.split(":");
+  return parts.length === 3 && parts.every((part) => part.length > 0)
+    ? key
+    : null;
+}
+
+function replaceBookLocation(key: string | null) {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (key) {
+    url.searchParams.set("book", key);
+    url.hash = "books";
+  } else {
+    url.searchParams.delete("book");
+  }
+  window.history.replaceState(
+    window.history.state,
+    "",
+    `${url.pathname}${url.search}${url.hash}`
+  );
 }
 
 function resolveCoverUrl(url?: string) {
@@ -108,89 +155,141 @@ export default function BookArchiveSection({
     useReadingLibrary();
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
+  const queue = useMemo(() => classifyBookArchiveQueue(books), [books]);
+  const openBookDetail = useCallback((book: BookArchiveEntry) => {
+    setSelectedBook(book);
+    replaceBookLocation(bookKey(book));
+  }, []);
+  const closeBookDetail = useCallback(() => {
+    setSelectedBook(null);
+    replaceBookLocation(null);
+  }, []);
 
   const counts = useMemo(
     () => ({
-      all: books.length,
-      verified: books.filter(
-        (book) =>
-          book.editorial?.status === "verified" ||
-          book.editorial?.status === "reviewed"
+      all: queue.counts.total,
+      verified: queue.counts.verified,
+      pending: queue.counts.pending,
+      classic: queue.verified.filter(
+        ({ book }) =>
+          typeof book.firstPublished === "number" && book.firstPublished <= 1945
       ).length,
-      covers: books.filter(hasArchiveCover).length,
-      classic: books.filter(
-        (book) =>
-          typeof book.firstPublished === "number" &&
-          book.firstPublished <= 1945
-      ).length,
-      modern: books.filter(
-        (book) =>
-          typeof book.firstPublished === "number" &&
-          book.firstPublished > 1945
+      modern: queue.verified.filter(
+        ({ book }) =>
+          typeof book.firstPublished === "number" && book.firstPublished > 1945
       ).length,
     }),
-    [books]
+    [queue]
   );
 
-  const filteredBooks = useMemo(() => {
-    const normalizedQuery = normalize(deferredQuery);
-    return books
-      .filter((book) => {
-        if (
-          filter === "verified" &&
-          !["verified", "reviewed"].includes(book.editorial?.status || "")
-        ) {
-          return false;
-        }
-        if (filter === "covers" && !hasArchiveCover(book)) {
-          return false;
-        }
+  const indexedItems = useMemo(
+    () =>
+      queue.all.map((item) => {
+        const { book } = item;
+        const displayedBook = presentBookArchiveQueueItem(item, language);
+        return {
+          item,
+          displayedBook,
+          searchValues: [
+            displayedBook.title,
+            book.originalTitle,
+            ...(book.alternateTitles || []),
+            selectBookWriterName(book, language, t("Автор")),
+            countryName(book.country.code, book.countryName),
+            ...(item.status === "verified"
+              ? [
+                  displayedBook.description,
+                  selectBookOriginalLanguage(book, language),
+                  ...selectBookMetadataLabels(book, language, t),
+                ]
+              : []),
+          ],
+        };
+      }),
+    [countryName, language, queue, t]
+  );
+
+  const filteredItems = useMemo(() => {
+    const normalizedQuery = normalizeLiterarySearch(deferredQuery);
+    return indexedItems
+      .filter(({ item, searchValues }) => {
+        const { book } = item;
+        if (filter === "verified" && item.status !== "verified") return false;
+        if (filter === "pending" && item.status !== "pending") return false;
         if (
           filter === "classic" &&
-          (!book.firstPublished || book.firstPublished > 1945)
+          (item.status !== "verified" ||
+            !book.firstPublished ||
+            book.firstPublished > 1945)
         ) {
           return false;
         }
         if (
           filter === "modern" &&
-          (!book.firstPublished || book.firstPublished <= 1945)
+          (item.status !== "verified" ||
+            !book.firstPublished ||
+            book.firstPublished <= 1945)
         ) {
           return false;
         }
         if (!normalizedQuery) return true;
-
-        const searchValues = [
-          book.title,
-          book.originalTitle,
-          ...(book.alternateTitles || []),
-          book.writerName,
-          book.countryName,
-          ...(book.genres || []),
-          ...(book.tags || []),
-        ];
-        return searchValues.some((value) =>
-          normalize(value || "").includes(normalizedQuery)
-        );
+        return literarySearchMatches(normalizedQuery, searchValues);
       })
       .sort((first, second) => {
-        const rankDifference = editorialRank(first) - editorialRank(second);
+        const rankDifference =
+          editorialRank(first.item) - editorialRank(second.item);
         if (rankDifference) return rankDifference;
         if (
-          hasArchiveCover(first) !== hasArchiveCover(second)
+          hasArchiveCover(first.item.book) !== hasArchiveCover(second.item.book)
         ) {
-          return hasArchiveCover(first) ? -1 : 1;
+          return hasArchiveCover(first.item.book) ? -1 : 1;
         }
-        return first.title.localeCompare(second.title, "ru");
-      });
-  }, [books, deferredQuery, filter]);
+        return first.displayedBook.title.localeCompare(
+          second.displayedBook.title,
+          language
+        );
+      })
+      .map(({ item }) => item);
+  }, [deferredQuery, filter, indexedItems, language]);
 
   useEffect(() => {
     setVisibleCount(12);
   }, [deferredQuery, filter]);
 
   useEffect(() => {
+    const openFromLocation = () => {
+      const key = requestedBookKey(window.location.search);
+      const resolution = resolveRequestedBook(books, key);
+      if (resolution.status === "none") {
+        setSelectedBook(null);
+        return;
+      }
+      if (resolution.status === "pending") return;
+      if (resolution.status === "missing") {
+        setSelectedBook(null);
+        replaceBookLocation(null);
+        return;
+      }
+      setSelectedBook(resolution.book);
+      replaceBookLocation(key);
+      window.requestAnimationFrame(() => {
+        document.getElementById("books")?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+      });
+    };
+
+    openFromLocation();
+    window.addEventListener("popstate", openFromLocation);
+    return () => window.removeEventListener("popstate", openFromLocation);
+  }, [books]);
+
+  useEffect(() => {
     if (!requestedBook) return;
-    setSelectedBook(requestedBook);
+    openBookDetail(requestedBook);
     onRequestedBookHandled?.();
     window.requestAnimationFrame(() => {
       document.getElementById("books")?.scrollIntoView({
@@ -198,7 +297,7 @@ export default function BookArchiveSection({
         block: "start",
       });
     });
-  }, [onRequestedBookHandled, requestedBook]);
+  }, [onRequestedBookHandled, openBookDetail, requestedBook]);
 
   useEffect(() => {
     let active = true;
@@ -214,7 +313,27 @@ export default function BookArchiveSection({
     setRelatedArticlesLoading(true);
     getBookArticleMentions(bookKey(selectedBook))
       .then((articles) => {
-        if (active) setRelatedArticles(articles);
+        if (!active) return;
+        setRelatedArticles(
+          articles.flatMap((mention) => {
+            const source = articleCatalog.find(
+              (article) => article.id === mention.id
+            );
+            if (!source) return language === "ru" ? [mention] : [];
+            const localized = articleCatalogEntryForLanguage(source, language);
+            return localized
+              ? [
+                  {
+                    ...mention,
+                    title: localized.title,
+                    sectionLabel: localized.sectionLabel,
+                    slug: localized.slug || mention.slug,
+                    readingMinutes: localized.readingMinutes,
+                  },
+                ]
+              : [];
+          })
+        );
       })
       .catch(() => {
         if (active) setRelatedArticles([]);
@@ -226,14 +345,33 @@ export default function BookArchiveSection({
     return () => {
       active = false;
     };
-  }, [selectedBook]);
+  }, [language, selectedBook]);
 
-  const visibleBooks = filteredBooks.slice(0, visibleCount);
+  const visibleItems = filteredItems.slice(0, visibleCount);
+  const queueByKey = useMemo(
+    () => new Map(queue.all.map((item) => [item.key, item])),
+    [queue]
+  );
+  const selectedItem = selectedBook
+    ? queueByKey.get(bookKey(selectedBook)) || null
+    : null;
   const selectedCoverUrl = selectedBook
     ? isCoverArtworkDisplayAllowed(selectedBook)
       ? selectedBook.coverUrl
       : undefined
     : undefined;
+  const selectedBookText = selectedItem
+    ? presentBookArchiveQueueItem(selectedItem, language)
+    : null;
+  const selectedWriterName = selectedBook
+    ? selectBookWriterName(selectedBook, language, t("Автор"))
+    : "";
+  const selectedOriginalLanguage = selectedBook && selectedItem?.status === "verified"
+    ? selectBookOriginalLanguage(selectedBook, language)
+    : "";
+  const selectedMetadataLabels = selectedBook && selectedItem?.status === "verified"
+    ? selectBookMetadataLabels(selectedBook, language, t)
+    : [];
   const isBookSaved = (book: BookArchiveEntry) =>
     savedReadings.some(
       (item) => item.kind === "book" && item.id === bookKey(book)
@@ -242,9 +380,12 @@ export default function BookArchiveSection({
     toggleSavedReading({
       id: bookKey(book),
       kind: "book",
-      title: book.title,
+      title: presentBookArchiveEntry(book, language).title,
       sectionId: book.countryId,
-      sectionLabel: `${book.writerName} · ${book.countryName}`,
+      sectionLabel: `${selectBookWriterName(book, language, t("Автор"))} · ${countryName(
+        book.country.code,
+        book.countryName
+      )}`,
       href: "#books",
     });
 
@@ -261,7 +402,7 @@ export default function BookArchiveSection({
           </p>
         </div>
         <div className="book-archive-total">
-          <strong>{number(books.length)}</strong>
+          <strong>{number(queue.counts.total)}</strong>
           <span>{t("произведений из единой базы стран")}</span>
         </div>
       </header>
@@ -280,7 +421,7 @@ export default function BookArchiveSection({
           <div className="book-filter-heading">
             <span>{t("Отбор архива")}</span>
             <small aria-live="polite">
-              {number(filteredBooks.length)} {t("результатов")}
+              {number(filteredItems.length)} {t("результатов")}
             </small>
           </div>
           <div
@@ -311,7 +452,7 @@ export default function BookArchiveSection({
           <button
             className="book-detail-close"
             type="button"
-            onClick={() => setSelectedBook(null)}
+            onClick={closeBookDetail}
             aria-label={t("Закрыть карточку книги")}
           >
             <BrandCloseIcon />
@@ -340,29 +481,27 @@ export default function BookArchiveSection({
                 sizes="(max-width: 680px) 44vw, 360px"
                 alt={
                   isEditorialCover(selectedBook)
-                    ? `${t("Редакционная обложка")} «${selectedBook.title}»`
-                    : `${t("Обложка конкретного издания")} «${selectedBook.title}»`
+                    ? `${t("Редакционная обложка")} «${selectedBookText?.title}»`
+                    : `${t("Обложка конкретного издания")} «${selectedBookText?.title}»`
                 }
                 decoding="async"
               />
             ) : (
               <>
-                <small>{selectedBook.writerName}</small>
-                <strong>{selectedBook.title}</strong>
+                <small>{selectedWriterName}</small>
+                <strong>{selectedBookText?.title}</strong>
                 <span aria-hidden="true">✦</span>
               </>
             )}
           </div>
           <div className="book-detail-copy">
             <span className="section-kicker">
-              {selectedBook.editorial?.status === "verified"
+              {selectedItem?.status === "verified"
                 ? t("Проверено редакцией")
-                : selectedBook.editorial?.status === "reviewed"
-                  ? t("Редакционная карточка")
-                  : t("Архивная запись")}
+                : t("Не проверено")}
             </span>
-            <h3>{selectedBook.title}</h3>
-            {selectedBook.originalTitle && (
+            <h3>{selectedBookText?.title}</h3>
+            {selectedItem?.status === "verified" && selectedBook.originalTitle && (
               <p className="book-original-title">
                 {selectedBook.originalTitle}
               </p>
@@ -370,7 +509,7 @@ export default function BookArchiveSection({
             <dl>
               <div>
                 <dt>{t("Автор")}</dt>
-                <dd>{selectedBook.writerName}</dd>
+                <dd>{selectedWriterName}</dd>
               </div>
               <div>
                 <dt>{t("Страна")}</dt>
@@ -381,32 +520,30 @@ export default function BookArchiveSection({
                   )}
                 </dd>
               </div>
-              {selectedBook.firstPublished && (
+              {selectedItem?.status === "verified" &&
+                selectedBook.firstPublished && (
                 <div>
                   <dt>{t("Первая публикация")}</dt>
                   <dd>{selectedBook.firstPublished}</dd>
                 </div>
               )}
-              {selectedBook.originalLanguage && (
+              {selectedOriginalLanguage && (
                 <div>
                   <dt>{t("Язык оригинала")}</dt>
-                  <dd>{selectedBook.originalLanguage}</dd>
+                  <dd>{selectedOriginalLanguage}</dd>
                 </div>
               )}
             </dl>
-            <p>
-              {selectedBook.description ||
-                t(
-                  "Произведение уже связано с автором и страной. Расширенная аннотация, история публикации и библиография находятся в редакционной очереди — неподтверждённые сведения здесь не публикуются."
-                )}
-            </p>
-            <div className="book-tags" aria-label={t("Темы и жанры книги")}>
-              {[...(selectedBook.genres || []), ...(selectedBook.tags || [])]
-                .slice(0, 6)
-                .map((tag) => (
+            {selectedBookText?.description && (
+              <p>{selectedBookText.description}</p>
+            )}
+            {selectedMetadataLabels.length > 0 && (
+              <div className="book-tags" aria-label={t("Темы и жанры книги")}>
+                {selectedMetadataLabels.slice(0, 6).map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
-            </div>
+              </div>
+            )}
             <div className="book-detail-actions">
               <button
                 type="button"
@@ -431,7 +568,9 @@ export default function BookArchiveSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {t("Источник сведений")}
+                  {selectedItem?.status === "verified"
+                    ? t("Источник сведений")
+                    : t("Исходная запись кандидата")}
                 </a>
               )}
               {isEditorialCover(selectedBook) ? (
@@ -459,7 +598,8 @@ export default function BookArchiveSection({
                       t("Права на изображение проверены")}
                 </span>
               )}
-              {selectedBook.edition?.publisher && (
+              {selectedItem?.status === "verified" &&
+                selectedBook.edition?.publisher && (
                 <div className="book-edition-meta">
                   <span>{t("Издание на обложке")}</span>
                   <strong>
@@ -470,7 +610,8 @@ export default function BookArchiveSection({
                   </strong>
                 </div>
               )}
-              {(selectedBook.edition?.isbn13 || selectedBook.edition?.isbn10) && (
+              {selectedItem?.status === "verified" &&
+                (selectedBook.edition?.isbn13 || selectedBook.edition?.isbn10) && (
                 <div className="book-edition-meta">
                   <span>ISBN</span>
                   <strong>
@@ -534,7 +675,9 @@ export default function BookArchiveSection({
       )}
 
       <div className="book-archive-grid">
-        {visibleBooks.map((book) => {
+        {visibleItems.map((item) => {
+          const { book } = item;
+          const localizedBook = presentBookArchiveQueueItem(item, language);
           const coverUrl = isCoverArtworkDisplayAllowed(book)
             ? book.coverThumbnailUrl || book.coverUrl
             : undefined;
@@ -563,8 +706,8 @@ export default function BookArchiveSection({
                     sizes="(max-width: 680px) 42vw, 190px"
                     alt={
                       isEditorialCover(book)
-                        ? `${t("Редакционная обложка")} «${book.title}»`
-                        : `${t("Обложка конкретного издания")} «${book.title}»`
+                        ? `${t("Редакционная обложка")} «${localizedBook.title}»`
+                        : `${t("Обложка конкретного издания")} «${localizedBook.title}»`
                     }
                     loading="lazy"
                     decoding="async"
@@ -572,8 +715,10 @@ export default function BookArchiveSection({
                 </>
               ) : (
                 <>
-                  <small>{book.writerName}</small>
-                  <strong>{book.title}</strong>
+                  <small>
+                    {selectBookWriterName(book, language, t("Автор"))}
+                  </small>
+                  <strong>{localizedBook.title}</strong>
                   <span aria-hidden="true">✦</span>
                 </>
               )}
@@ -581,19 +726,19 @@ export default function BookArchiveSection({
             <div className="archive-book-copy">
               <small>
                 {countryName(book.country.code, book.countryName)}
-                {book.firstPublished ? ` · ${book.firstPublished}` : ""}
+                {item.status === "verified" && book.firstPublished
+                  ? ` · ${book.firstPublished}`
+                  : ""}
               </small>
-              <h3>{book.title}</h3>
-              <p>{book.writerName}</p>
+              <h3>{localizedBook.title}</h3>
+              <p>{selectBookWriterName(book, language, t("Автор"))}</p>
               <div>
                 <span
-                  className={`editorial-state is-${book.editorial?.status || "draft"}`}
+                  className={`editorial-state is-${item.status === "verified" ? "verified" : "draft"}`}
                 >
-                  {book.editorial?.status === "verified"
+                  {item.status === "verified"
                     ? t("проверено")
-                    : book.editorial?.status === "reviewed"
-                      ? t("редакционная карточка")
-                      : t("в очереди")}
+                    : t("Не проверено")}
                 </span>
                 <button
                   className={
@@ -605,8 +750,8 @@ export default function BookArchiveSection({
                   aria-pressed={isBookSaved(book)}
                   aria-label={
                     isBookSaved(book)
-                      ? `Удалить «${book.title}» из библиотеки`
-                      : `Добавить «${book.title}» в библиотеку`
+                      ? `${t("Удалить")} «${localizedBook.title}» ${t("из библиотеки")}`
+                      : `${t("Добавить")} «${localizedBook.title}» ${t("в библиотеку")}`
                   }
                   title={
                     isBookSaved(book)
@@ -617,7 +762,7 @@ export default function BookArchiveSection({
                 >
                   <BrandHeartIcon filled={isBookSaved(book)} />
                 </button>
-                <button type="button" onClick={() => setSelectedBook(book)}>
+                <button type="button" onClick={() => openBookDetail(book)}>
                   {t("О книге")}
                 </button>
               </div>
@@ -627,14 +772,14 @@ export default function BookArchiveSection({
         })}
       </div>
 
-      {filteredBooks.length === 0 && (
+      {filteredItems.length === 0 && (
         <div className="book-archive-empty">
           <strong>{t("Ничего не найдено")}</strong>
           <p>{t("Попробуйте другое название, автора, страну или фильтр.")}</p>
         </div>
       )}
 
-      {visibleCount < filteredBooks.length && (
+      {visibleCount < filteredItems.length && (
         <button
           className="book-archive-more"
           type="button"
@@ -643,8 +788,8 @@ export default function BookArchiveSection({
           {t("Показать ещё 12")}
           <span>
             {language === "en"
-              ? `${number(visibleBooks.length)} of ${number(filteredBooks.length)}`
-              : `${number(visibleBooks.length)} из ${number(filteredBooks.length)}`}
+              ? `${number(visibleItems.length)} of ${number(filteredItems.length)}`
+              : `${number(visibleItems.length)} из ${number(filteredItems.length)}`}
           </span>
         </button>
       )}

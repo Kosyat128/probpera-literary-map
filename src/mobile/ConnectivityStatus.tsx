@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+
 export default function ConnectivityStatus() {
+  const { t } = useInterfaceLanguage();
   const [online, setOnline] = useState(() => navigator.onLine);
   const [updateReady, setUpdateReady] = useState(false);
 
@@ -23,12 +26,12 @@ export default function ConnectivityStatus() {
   return (
     <div className="connectivity-status" role="status">
       {!online ? (
-        <span>Нет сети — доступны уже открытые материалы</span>
+        <span>{t("Нет сети — доступны уже открытые материалы")}</span>
       ) : (
         <>
-          <span>Доступна новая версия журнала</span>
+          <span>{t("Доступна новая версия журнала")}</span>
           <button type="button" onClick={() => window.location.reload()}>
-            Обновить
+            {t("Обновить")}
           </button>
         </>
       )}

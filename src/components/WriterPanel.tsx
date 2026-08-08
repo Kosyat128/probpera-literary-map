@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import {
   findNobelArticle,
   getNobelYear,
@@ -17,7 +18,12 @@ import {
 import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
-import { getWriterWorkTitles } from "../data/bookArchive";
+import { getPublicWriterWorkTitles } from "../data/bookArchive";
+import { selectWriterBiography } from "../data/writerBiography";
+import {
+  selectWriterDisplayName,
+  selectWriterYears,
+} from "../data/bookLocalization";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useSubscriptions } from "../hooks/useSubscriptions";
 import BrandCloseIcon from "./BrandCloseIcon";
@@ -40,14 +46,23 @@ function FollowBellIcon({ active = false }: { active?: boolean }) {
 type WriterPanelProps = {
   country: Country;
   selectedWriter?: Writer | null;
+  focusRequestId?: number;
   onWriterSelect?: (writer: Writer) => void;
   nobelSpotlightActive?: boolean;
   onNobelSpotlightToggle?: () => void;
   onClose?: () => void;
 };
 
-function getWriterName(writer: Writer) {
-  return writer.name || writer.fullName || "Неизвестный автор";
+function getWriterName(
+  writer: Writer,
+  fallback = "Неизвестный автор",
+  language: "ru" | "en" = "ru"
+) {
+  return selectWriterDisplayName(writer, language, fallback);
+}
+
+function getWriterYears(writer: Writer, language: "ru" | "en") {
+  return selectWriterYears(writer, language);
 }
 
 function getWriterYear(writer: Writer) {
@@ -69,7 +84,7 @@ function pluralRu(count: number, forms: [string, string, string]) {
   return forms[2];
 }
 
-function relatedArticlesFor(writer: Writer) {
+function relatedArticlesFor(writer: Writer, language: "ru" | "en") {
   const nameParts = getWriterName(writer)
     .toLocaleLowerCase("ru")
     .replace(/[^\p{L}\s-]/gu, " ")
@@ -83,12 +98,17 @@ function relatedArticlesFor(writer: Writer) {
         .toLocaleLowerCase("ru")
         .includes(surname)
     )
+    .flatMap((article) => {
+      const localizedArticle = articleCatalogEntryForLanguage(article, language);
+      return localizedArticle ? [localizedArticle] : [];
+    })
     .slice(0, 4);
 }
 
 export default function WriterPanel({
   country,
   selectedWriter,
+  focusRequestId,
   onWriterSelect,
   nobelSpotlightActive = false,
   onNobelSpotlightToggle,
@@ -99,6 +119,7 @@ export default function WriterPanel({
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLElement>(null);
   const requestedWriterId = useRef<string | null>(null);
+  const handledFocusRequest = useRef<number | null>(null);
   const writers = country.writers || [];
   const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);
 
@@ -161,6 +182,21 @@ export default function WriterPanel({
     };
   }, [activeWriter?.id, scrollToWriterDetail]);
 
+  useLayoutEffect(() => {
+    if (
+      focusRequestId === undefined ||
+      handledFocusRequest.current === focusRequestId ||
+      !activeWriter
+    ) {
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      handledFocusRequest.current = focusRequestId;
+      scrollToWriterDetail();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeWriter, focusRequestId, scrollToWriterDetail]);
+
   const sortedWriters = useMemo(
     () =>
       [...writers].sort((first, second) =>
@@ -170,15 +206,17 @@ export default function WriterPanel({
   );
 
   const periods = useMemo(() => {
+    if (language === "en") return [];
     const stored = country.literaryPeriods || country.periods;
     if (stored?.length) return stored.slice(0, 7);
     return uniqueValues(writers.flatMap((writer) => writer.tags || [])).slice(0, 7);
-  }, [country.literaryPeriods, country.periods, writers]);
+  }, [country.literaryPeriods, country.periods, language, writers]);
 
   const movements = useMemo(() => {
+    if (language === "en") return [];
     if (country.literaryMovements?.length) return country.literaryMovements.slice(0, 7);
     return uniqueValues(writers.flatMap((writer) => writer.genres || [])).slice(0, 7);
-  }, [country.literaryMovements, writers]);
+  }, [country.literaryMovements, language, writers]);
 
   const timeline = useMemo(
     () =>
@@ -190,19 +228,27 @@ export default function WriterPanel({
     [writers]
   );
   const relatedArticles = useMemo(
-    () => (activeWriter ? relatedArticlesFor(activeWriter) : []),
-    [activeWriter]
+    () => (activeWriter ? relatedArticlesFor(activeWriter, language) : []),
+    [activeWriter, language]
   );
   const activeNobelYear = activeWriter ? getNobelYear(activeWriter) : null;
-  const activeNobelArticle = activeWriter
+  const activeNobelArticleSource = activeWriter
     ? findNobelArticle(activeWriter)
+    : null;
+  const activeNobelArticle = activeNobelArticleSource
+    ? articleCatalogEntryForLanguage(activeNobelArticleSource, language)
     : null;
   const otherRelatedArticles = activeNobelArticle
     ? relatedArticles.filter((article) => article.id !== activeNobelArticle.id)
     : relatedArticles;
   const activeWriterWorks = useMemo(
-    () => (activeWriter ? getWriterWorkTitles(activeWriter) : []),
-    [activeWriter]
+    () => (activeWriter ? getPublicWriterWorkTitles(activeWriter, language) : []),
+    [activeWriter, language]
+  );
+  const activeWriterBiography = useMemo(
+    () =>
+      activeWriter ? selectWriterBiography(activeWriter, language) : null,
+    [activeWriter, language]
   );
   const countryLabel = countryName(country.code, country.name);
   const countrySubscribed = isSubscribed("country", country.id);
@@ -216,10 +262,16 @@ export default function WriterPanel({
   const nobelWriters = writers.filter(isNobelLaureate);
   const nobelCount = nobelWriters.length;
   const description =
-    country.description ||
-    country.history ||
-    country.historicalNote ||
-    `Архив объединяет ${writers.length} авторов и ключевые произведения литературной традиции страны.`;
+    language === "en"
+      ? t("Проверенный английский перевод справки о стране ещё готовится.")
+      : country.description ||
+        country.history ||
+        country.historicalNote ||
+        `Архив объединяет ${number(writers.length)} ${pluralRu(writers.length, [
+          "автора",
+          "авторов",
+          "авторов",
+        ])} и ключевые произведения литературной традиции страны.`;
 
   const chooseWriter = (writer: Writer) => {
     if (activeWriter?.id === writer.id) {
@@ -293,7 +345,7 @@ export default function WriterPanel({
       {language === "en" && (
         <p className="archive-original-language">
           {t(
-            "Справочные тексты энциклопедии представлены в оригинале на русском языке."
+            "Тексты без проверенного перевода скрыты в английской версии."
           )}
         </p>
       )}
@@ -337,7 +389,9 @@ export default function WriterPanel({
         <div>
           {(() => {
             const worksCount = uniqueValues(
-              writers.flatMap(getWriterWorkTitles)
+              writers.flatMap((writer) =>
+                getPublicWriterWorkTitles(writer, language)
+              )
             ).length;
             return (
               <>
@@ -391,7 +445,11 @@ export default function WriterPanel({
                 onClick={() => chooseWriter(writer)}
                 aria-pressed={active}
                 aria-controls={writerDetailId}
-                aria-label={`${t("Открыть биографию")}: ${getWriterName(writer)}`}
+                aria-label={`${t("Открыть биографию")}: ${getWriterName(
+                  writer,
+                  t("Неизвестный автор"),
+                  language
+                )}`}
               >
                 <WriterPortrait
                   writer={writer}
@@ -399,9 +457,13 @@ export default function WriterPanel({
                   decorative
                 />
                 <span className="writer-copy">
-                  <strong>{getWriterName(writer)}</strong>
+                  <strong>
+                    {getWriterName(writer, t("Неизвестный автор"), language)}
+                  </strong>
                   <small>
-                    {writer.years || writer.literaryEra || t("Биография в архиве")}
+                    {getWriterYears(writer, language) ||
+                      (language === "ru" ? writer.literaryEra : undefined) ||
+                      t("Биография в архиве")}
                   </small>
                 </span>
                 <span className="writer-arrow" aria-hidden="true">
@@ -431,10 +493,12 @@ export default function WriterPanel({
             />
             <div>
               <span className="writer-era">
-                {activeWriter.literaryEra ||
-                  activeWriter.movement ||
-                  activeWriter.tags?.[0] ||
-                  t("Литературная традиция")}
+                {language === "ru"
+                  ? activeWriter.literaryEra ||
+                    activeWriter.movement ||
+                    activeWriter.tags?.[0] ||
+                    t("Литературная традиция")
+                  : t("Литературная традиция")}
               </span>
               {activeWriter.editorial?.status === "verified" && (
                 <span className="editorial-badge">{t("Проверено редакцией")}</span>
@@ -449,8 +513,16 @@ export default function WriterPanel({
                   {t("Справочная карточка · требует расширения")}
                 </span>
               )}
-              <h4>{getWriterName(activeWriter)}</h4>
-              <p className="writer-years">{activeWriter.years}</p>
+              <h4>
+                {getWriterName(
+                  activeWriter,
+                  t("Неизвестный автор"),
+                  language
+                )}
+              </h4>
+              <p className="writer-years">
+                {getWriterYears(activeWriter, language)}
+              </p>
             </div>
           </div>
           <button
@@ -461,7 +533,11 @@ export default function WriterPanel({
               toggleSubscription({
                 type: "writer",
                 id: activeWriterSubscriptionId,
-                label: getWriterName(activeWriter),
+                label: getWriterName(
+                  activeWriter,
+                  t("Неизвестный автор"),
+                  language
+                ),
               })
             }
           >
@@ -473,10 +549,10 @@ export default function WriterPanel({
             </span>
           </button>
           <p className="writer-bio">
-            {activeWriter.biography ||
-              activeWriter.bio ||
-              activeWriter.description ||
-              t("Расширенная биография готовится для энциклопедии.")}
+            {activeWriterBiography?.text ||
+              (language === "en"
+                ? t("Проверенный английский перевод биографии ещё готовится.")
+                : t("Расширенная биография готовится для энциклопедии."))}
           </p>
 
           {activeNobelYear && (
@@ -565,13 +641,25 @@ export default function WriterPanel({
             </div>
           )}
 
-          {activeWriter.editorial?.sources && activeWriter.editorial.sources.length > 0 && (
+          {activeWriterBiography?.sources && activeWriterBiography.sources.length > 0 && (
             <div className="source-block">
               <span>{t("Источники")}</span>
-              {activeWriter.editorial.sources.map((source) => (
-                <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
-                  {source.publisher || source.title}
-                </a>
+              {activeWriterBiography.sources.map((source) => (
+                <div key={source.url}>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    {source.author ? `${source.author} — ` : ""}
+                    {source.title || source.provider}
+                  </a>
+                  {source.licenseUrl && source.licenseName ? (
+                    <a
+                      href={source.licenseUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {source.licenseName}
+                    </a>
+                  ) : null}
+                </div>
               ))}
             </div>
           )}
@@ -587,14 +675,16 @@ export default function WriterPanel({
             {timeline.map(({ writer, year }) => (
               <div key={`${writer.id}-${year}`}>
                 <time>{year}</time>
-                <span>{getWriterName(writer)}</span>
+                <span>
+                  {getWriterName(writer, t("Неизвестный автор"), language)}
+                </span>
               </div>
             ))}
           </div>
         </section>
       )}
 
-      {country.facts && country.facts.length > 0 && (
+      {language === "ru" && country.facts && country.facts.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
             <h3>{t("Интересные факты")}</h3>

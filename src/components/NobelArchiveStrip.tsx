@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import { articleCatalog } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { nobelYearArticles } from "../data/articles/nobelArticles";
 import { collectNobelLaureates } from "../data/nobel";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
@@ -21,22 +23,41 @@ type ArchiveYear = {
 const NO_AWARD_YEARS = [1914, 1918, 1935, 1940, 1941, 1942, 1943];
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
 
-function laureateName(writer: Writer) {
-  return writer.name || writer.fullName || "Лауреат";
+function laureateName(
+  writer: Writer,
+  fallback = "Лауреат",
+  language: "ru" | "en" = "ru"
+) {
+  return selectWriterDisplayName(writer, language, fallback);
+}
+
+function pluralRu(count: number, forms: [string, string, string]) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
 }
 
 export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props) {
-  const { t } = useInterfaceLanguage();
+  const { language, t, countryName, number } = useInterfaceLanguage();
   const [activeDecade, setActiveDecade] = useState<number | "all">("all");
-  const introduction = articleCatalog.find(
+  const introductionSource = articleCatalog.find(
     (article) => article.id === "page--article--nobel--prize--1"
   );
+  const introduction = introductionSource
+    ? articleCatalogEntryForLanguage(introductionSource, language)
+    : null;
 
   const laureates = useMemo(() => collectNobelLaureates(countries), [countries]);
   const archiveYears = useMemo(() => {
     const byYear = new Map<number, ArchiveYear>();
     const articles = new Map(
-      nobelYearArticles.map(({ article, year }) => [year, article])
+      nobelYearArticles.flatMap(({ article, year }) => {
+        const localized = articleCatalogEntryForLanguage(article, language);
+        return localized ? [[year, localized] as const] : [];
+      })
     );
 
     for (const laureate of laureates) {
@@ -50,7 +71,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
     }
 
     return [...byYear.values()].sort((first, second) => first.year - second.year);
-  }, [laureates]);
+  }, [language, laureates]);
   const decades = useMemo(
     () => [...new Set(archiveYears.map(({ year }) => Math.floor(year / 10) * 10))],
     [archiveYears]
@@ -77,9 +98,20 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
           <small>{t("Редакционная серия")}</small>
           <strong>{t("Лауреаты Нобелевской премии · 1901–2025")}</strong>
           <p>
-            {t(
-              `${laureates.length} лауреата, ${archiveYears.length} присуждений. Годы с готовыми материалами ведут к статье журнала; остальные имена открывают биографию в энциклопедии.`
-            )}
+            {language === "en"
+              ? `${number(laureates.length)} ${
+                  laureates.length === 1 ? "laureate" : "laureates"
+                }, ${number(archiveYears.length)} ${
+                  archiveYears.length === 1 ? "award" : "awards"
+                }. Years with completed features link to a magazine article; all other names open a biography in the encyclopedia.`
+              : `${number(laureates.length)} ${pluralRu(laureates.length, [
+                  "лауреат",
+                  "лауреата",
+                  "лауреатов",
+                ])}, ${number(archiveYears.length)} ${pluralRu(
+                  archiveYears.length,
+                  ["присуждение", "присуждения", "присуждений"]
+                )}. Годы с готовыми материалами ведут к статье журнала; остальные имена открывают биографию в энциклопедии.`}
           </p>
         </div>
         {introduction && (
@@ -112,7 +144,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
             key={decade}
             onClick={() => setActiveDecade(decade)}
           >
-            {decade}-е
+            {decade}{language === "en" ? "s" : "-е"}
           </button>
         ))}
       </div>
@@ -145,11 +177,20 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
                 <button
                   type="button"
                   key={`${country.id}:${writer.id}`}
-                  title={`${laureateName(writer)} · ${country.name}`}
+                  title={`${laureateName(
+                    writer,
+                    t("Лауреат"),
+                    language
+                  )} · ${countryName(
+                    country.code,
+                    country.name
+                  )}`}
                   onClick={() => onLaureateSelect(country, writer)}
                 >
-                  <span>{laureateName(writer)}</span>
-                  <small>{country.name}</small>
+                  <span>
+                    {laureateName(writer, t("Лауреат"), language)}
+                  </span>
+                  <small>{countryName(country.code, country.name)}</small>
                 </button>
               ))}
             </div>

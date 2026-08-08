@@ -7,6 +7,8 @@ function nobelSources(writer: Writer) {
   return [
     typeof writer.nobelPrize === "string" ? writer.nobelPrize : "",
     ...(writer.awards || []),
+    // These fields are inspected only to derive a structured Nobel flag/year;
+    // the prose itself is never rendered and remains behind the biography gate.
     writer.biography || "",
     writer.bio || "",
     writer.description || "",

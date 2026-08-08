@@ -1,5 +1,6 @@
 import type {
   Country,
+  WorkLocale,
   WorkProfile,
   WriterProfile,
 } from "./countries/types";
@@ -7,7 +8,13 @@ import {
   cmsBookEditionsByWorkId,
   type CmsBookEdition,
 } from "./cms/bookEditions";
-import { generatedBooksForWriter } from "./countries/generated/generatedBooks";
+import {
+  rawGeneratedBooksForWriter,
+  reviewedBooksForWriter,
+} from "./countries/generated/generatedBooks";
+import enrichmentActionsJson from "./countries/generated/books.enrichment-actions.json";
+import { isPublicBook } from "./bookQuality";
+import { selectBookText } from "./bookLocalization";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -76,6 +83,22 @@ export function getWriterWorkTitles(writer: WriterProfile) {
   });
 }
 
+export function getPublicWriterWorkTitles(
+  writer: WriterProfile,
+  locale: WorkLocale = "ru"
+) {
+  const seen = new Set<string>();
+  return (writer.workDetails || [])
+    .filter(isPublicBook)
+    .map((work) => selectBookText(work, locale).title)
+    .filter((title) => {
+      const normalizedTitle = normalizeTitle(title);
+      if (!normalizedTitle || seen.has(normalizedTitle)) return false;
+      seen.add(normalizedTitle);
+      return true;
+    });
+}
+
 function legacyWorkId(writerId: string, title: string, index: number) {
   const titlePart = normalizeTitle(title)
     .replace(/[^a-zа-яё0-9]+/giu, "-")
@@ -84,23 +107,184 @@ function legacyWorkId(writerId: string, title: string, index: number) {
   return `legacy-${writerId}-${titlePart || index}`;
 }
 
-export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
+export type BuildBookArchiveOptions = {
+  includeReviewedGenerated?: boolean;
+  applyEnrichmentActions?: boolean;
+};
+
+export type BookEnrichmentActionsPayload = {
+  generatedAt: string;
+  sourceManifestFingerprint: string;
+  source: string;
+  rejects: Array<{ recordKey: string; reasonCodes: string[] }>;
+  merges: Array<{
+    from: string;
+    into: string;
+    basis: string;
+    preserveWriterRelation: boolean;
+  }>;
+};
+
+const enrichmentActions =
+  enrichmentActionsJson as BookEnrichmentActionsPayload;
+
+/**
+ * Deduplicates by stable ID or normalized title. Earlier candidates have
+ * editorial precedence; later candidates only fill fields they do not carry
+ * (notably an existing cover on a reviewed overlay).
+ */
+export function mergeWriterWorkCandidates(
+  candidateGroups: WorkProfile[][]
+): WorkProfile[] {
+  const merged: WorkProfile[] = [];
+  for (const candidate of candidateGroups.flat()) {
+    const normalized = normalizeTitle(candidate.title);
+    if (!normalized) continue;
+    const existingIndex = merged.findIndex(
+      (existing) =>
+        existing.id === candidate.id ||
+        normalizeTitle(existing.title) === normalized
+    );
+    if (existingIndex === -1) {
+      merged.push(candidate);
+      continue;
+    }
+    merged[existingIndex] = { ...candidate, ...merged[existingIndex] };
+  }
+  return merged;
+}
+
+export function bookArchiveKey(
+  countryId: string,
+  writerId: string,
+  workId: string
+) {
+  return `${countryId}:${writerId}:${workId}`;
+}
+
+export function filterRejectedBookCandidates(
+  countryId: string,
+  writerId: string,
+  works: WorkProfile[],
+  actions: BookEnrichmentActionsPayload = enrichmentActions
+) {
+  const rejected = new Set(actions.rejects.map((action) => action.recordKey));
+  return works.filter(
+    (work) =>
+      !rejected.has(bookArchiveKey(countryId, writerId, work.id))
+  );
+}
+
+/**
+ * Applies generated high-confidence decisions to the canonical archive while
+ * leaving the raw/staging inputs untouched and recoverable.
+ */
+export function applyBookEnrichmentActions(
+  countryId: string,
+  writerId: string,
+  works: WorkProfile[],
+  actions: BookEnrichmentActionsPayload = enrichmentActions
+) {
+  const writerPrefix = `${countryId}:${writerId}:`;
+  const rejected = new Set(
+    actions.rejects
+      .map((action) => action.recordKey)
+      .filter((key) => key.startsWith(writerPrefix))
+  );
+  const mergeTargets = new Map(
+    actions.merges
+      .filter(
+        (action) =>
+          action.from.startsWith(writerPrefix) &&
+          (action.into.startsWith(writerPrefix) ||
+            action.preserveWriterRelation === false)
+      )
+      .map((action) => [action.from, action.into])
+  );
+  const reviewedCrossWriterMergeSources = new Set(
+    actions.merges
+      .filter(
+        (action) =>
+          action.from.startsWith(writerPrefix) &&
+          !action.into.startsWith(writerPrefix) &&
+          action.preserveWriterRelation === false &&
+          action.basis ===
+            "curated-reviewed-cross-writer-authorship-correction"
+      )
+      .map((action) => action.from)
+  );
+  const workByKey = new Map(
+    works.map((work) => [
+      bookArchiveKey(countryId, writerId, work.id),
+      work,
+    ])
+  );
+
+  function terminalKey(startKey: string) {
+    const seen = new Set<string>();
+    let currentKey = startKey;
+    while (mergeTargets.has(currentKey) && !seen.has(currentKey)) {
+      seen.add(currentKey);
+      currentKey = mergeTargets.get(currentKey)!;
+    }
+    return workByKey.has(currentKey) ||
+      reviewedCrossWriterMergeSources.has(startKey)
+      ? currentKey
+      : startKey;
+  }
+
+  const fallbacksByTarget = new Map<string, WorkProfile[]>();
+  for (const work of works) {
+    const key = bookArchiveKey(countryId, writerId, work.id);
+    if (rejected.has(key)) continue;
+    const targetKey = terminalKey(key);
+    if (targetKey === key) continue;
+    if (!workByKey.has(targetKey)) continue;
+    if (!fallbacksByTarget.has(targetKey)) {
+      fallbacksByTarget.set(targetKey, []);
+    }
+    fallbacksByTarget.get(targetKey)!.push(work);
+  }
+
+  return works
+    .filter((work) => {
+      const key = bookArchiveKey(countryId, writerId, work.id);
+      return !rejected.has(key) && terminalKey(key) === key;
+    })
+    .map((canonical) => {
+      const key = bookArchiveKey(countryId, writerId, canonical.id);
+      return {
+        ...(fallbacksByTarget.get(key) || []).reduce(
+          (combined, fallback) => ({ ...combined, ...fallback }),
+          {} as WorkProfile
+        ),
+        ...canonical,
+      };
+    });
+}
+
+export function buildBookArchive(
+  countries: Country[],
+  options: BuildBookArchiveOptions = {}
+): BookArchiveEntry[] {
+  const includeReviewedGenerated = options.includeReviewedGenerated !== false;
+  const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;
   return countries.flatMap((country) =>
     country.writers.flatMap((writer) => {
-      const detailedWorks = [
-        ...(writer.workDetails || []),
-        ...generatedBooksForWriter(country.id, writer.id),
-      ].filter((work, index, works) => {
-        const normalized = normalizeTitle(work.title);
-        return (
-          normalized &&
-          works.findIndex(
-            (candidate) =>
-              candidate.id === work.id ||
-              normalizeTitle(candidate.title) === normalized
-          ) === index
-        );
-      });
+      const candidateGroups = [
+        includeReviewedGenerated
+          ? reviewedBooksForWriter(country.id, writer.id)
+          : [],
+        writer.workDetails || [],
+        rawGeneratedBooksForWriter(country.id, writer.id),
+      ];
+      const detailedWorks = mergeWriterWorkCandidates(
+        shouldApplyEnrichmentActions
+          ? candidateGroups.map((works) =>
+              filterRejectedBookCandidates(country.id, writer.id, works)
+            )
+          : candidateGroups
+      );
       const detailedTitles = new Set(
         detailedWorks.map((work) => normalizeTitle(work.title))
       );
@@ -114,7 +298,14 @@ export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
           editorial: { status: "draft" as const },
         }));
 
-      return [...detailedWorks, ...legacyWorks].map((work) => {
+      const canonicalWorks = shouldApplyEnrichmentActions
+        ? applyBookEnrichmentActions(country.id, writer.id, [
+            ...detailedWorks,
+            ...legacyWorks,
+          ])
+        : [...detailedWorks, ...legacyWorks];
+
+      return canonicalWorks.map((work) => {
         const workId = `${country.id}:${writer.id}:${work.id}`;
         const edition = (
           cmsBookEditionsByWorkId as Record<string, CmsBookEdition>
@@ -157,4 +348,8 @@ export function buildBookArchive(countries: Country[]): BookArchiveEntry[] {
       });
     })
   );
+}
+
+export function buildPublicBookArchive(countries: Country[]): BookArchiveEntry[] {
+  return buildBookArchive(countries).filter(isPublicBook);
 }

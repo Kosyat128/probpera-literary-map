@@ -5,6 +5,7 @@ import {
   articlePath,
   articleSeoSlug,
   humanSlug,
+  isDirectArticlePath,
 } from "./articleRoutes";
 
 describe("SEO-адреса статей", () => {
@@ -33,5 +34,35 @@ describe("SEO-адреса статей", () => {
     expect(
       articleIdFromPath(catalog, "/articles/article-1/")
     ).toBe("article-1");
+  });
+
+  it("resolves an approved English slug from a localized catalogue", () => {
+    const catalog = [
+      {
+        id: "article-1",
+        title: "An approved English title",
+        sectionId: "literary-essays",
+        slug: "approved-english-title",
+      },
+    ];
+
+    expect(
+      articleIdFromPath(
+        catalog,
+        "/stati/o-literature/approved-english-title/"
+      )
+    ).toBe("article-1");
+  });
+
+  it("distinguishes article routes from the journal homepage", () => {
+    expect(
+      isDirectArticlePath(
+        "/probpera-literary-map/stati/mnenie-o-knige/o-knige/"
+      )
+    ).toBe(true);
+    expect(
+      isDirectArticlePath("/probpera-literary-map/articles/article-1/")
+    ).toBe(true);
+    expect(isDirectArticlePath("/probpera-literary-map/#journal")).toBe(false);
   });
 });

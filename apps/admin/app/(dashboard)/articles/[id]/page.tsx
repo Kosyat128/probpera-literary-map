@@ -35,12 +35,19 @@ export default async function EditArticlePage({
   if (!supabase) notFound();
   const [
     { data: article },
+    { data: englishTranslation },
     { data: categoriesResult },
     { data: revisionsResult },
     { data: templatesResult },
     { data: authResult },
   ] = await Promise.all([
     supabase.from("articles").select("*").eq("id", id).maybeSingle(),
+    supabase
+      .from("article_translations")
+      .select("*")
+      .eq("article_id", id)
+      .eq("locale", "en")
+      .maybeSingle(),
     supabase
       .from("categories")
       .select("id,name,slug")
@@ -241,6 +248,7 @@ export default async function EditArticlePage({
       </section>
       <ArticleEditor
         article={article}
+        englishTranslation={englishTranslation || undefined}
         categories={categories}
         publicSiteUrl={adminEnv.publicSiteUrl}
         templates={templates}
@@ -290,15 +298,15 @@ export default async function EditArticlePage({
         </section>
         <aside className="panel settings-stack">
           <h2>Дополнительные действия</h2>
-          <Link className="button-secondary" href={`/articles/new?copyFrom=${id}`}>
-            Открыть в новом черновике
-          </Link>
           <form action={duplicateArticleAction}>
             <input type="hidden" name="id" value={id} />
-            <button className="button-secondary" type="submit">
-              Скопировать в черновик-реплику
+            <button className="button" type="submit">
+              Создать копию и редактировать
             </button>
           </form>
+          <Link className="button-secondary" href={`/articles/new?copyFrom=${id}`}>
+            Открыть без создания копии
+          </Link>
           <form action={softDeleteArticleAction}>
             <input type="hidden" name="id" value={id} />
             <ConfirmSubmitButton message="Перенести статью в архив? После этого её не будет в общем списке статей, но в личном архиве она останется.">
