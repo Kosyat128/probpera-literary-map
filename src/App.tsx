@@ -1167,13 +1167,13 @@ export default function App() {
               {!coreHero?.backgroundImageUrl && (
                 <source
                   media="(max-width: 680px)"
-                  srcSet={assetUrl("brand/magazine-hero-mobile.webp")}
+                  srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260808")}
                 />
               )}
               <img
                 src={
                   coreHero?.backgroundImageUrl ||
-                  assetUrl("brand/magazine-hero-wide.webp")
+                  assetUrl("brand/magazine-hero-wide.webp?v=20260808")
                 }
                 alt={t("Журнал «Проба Пера» — полноформатное редакционное издание")}
                 width={coreHero?.backgroundImageUrl ? undefined : 1915}
