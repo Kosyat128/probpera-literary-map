@@ -165,6 +165,9 @@ jobs:
     name: Distribute published articles
     if: needs.build.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
+    concurrency:
+      group: social-publication
+      cancel-in-progress: false
     needs:
       - build
       - deploy
@@ -178,19 +181,37 @@ jobs:
         with:
           node-version: 24
 
-      - name: Publish pending articles to VK, OK and Dzen feed
-        continue-on-error: true
+      - name: Publish pending articles to VK and Dzen feed
+        id: social_publish
         run: npm run content:social:publish
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           PUBLIC_SITE_URL: https://probpera.ru
-          SOCIAL_REQUIRED_PLATFORMS: vk,ok,dzen
+          SOCIAL_REQUIRED_PLATFORMS: vk,dzen
           SOCIAL_BOOTSTRAP_LATEST: "true"
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
           VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
+          VK_GROUP_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
+          VK_USER_ACCESS_TOKEN: ${{ secrets.VK_USER_ACCESS_TOKEN }}
           OK_GROUP_ID: ${{ secrets.OK_GROUP_ID }}
           OK_APPLICATION_KEY: ${{ secrets.OK_APPLICATION_KEY }}
           OK_ACCESS_TOKEN: ${{ secrets.OK_ACCESS_TOKEN }}
           OK_SESSION_SECRET_KEY: ${{ secrets.OK_SESSION_SECRET_KEY }}
           DZEN_RSS_URL: https://probpera.ru/rss.xml
+
+      - name: Summarize social distribution
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Автопубликация материалов"
+            echo
+            if [[ "${{ steps.social_publish.outcome }}" == "success" ]]; then
+              echo "✅ Обязательные каналы (ВКонтакте и RSS Дзена) обработаны успешно."
+            else
+              echo "❌ Не все обязательные каналы обработаны. Незавершённые задания повторит отдельный social workflow."
+            fi
+            echo
+            echo "Одноклассники пока не являются обязательным каналом и не блокируют выпуск до настройки доступов."
+          } >> "$GITHUB_STEP_SUMMARY"

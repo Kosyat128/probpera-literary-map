@@ -19,6 +19,75 @@ const requiredPlatforms = new Set(
 );
 const bootstrapLatest = process.env.SOCIAL_BOOTSTRAP_LATEST === "true";
 const dryRun = process.argv.includes("--dry-run");
+const vkApiVersion = "5.199";
+const pendingBatchSize = 25;
+const pendingPageSize = 100;
+
+class VkApiError extends Error {
+  constructor(method, error = {}, response = {}) {
+    const code = Number.isFinite(Number(error.error_code))
+      ? Number(error.error_code)
+      : null;
+    const subcode = Number.isFinite(Number(error.error_subcode))
+      ? Number(error.error_subcode)
+      : null;
+    const message = String(error.error_msg || "VK API request failed").trim();
+    super(`${method}: ${code === null ? "VK API" : `VK ${code}`} — ${message}`);
+    this.name = "VkApiError";
+    this.method = method;
+    this.code = code;
+    this.subcode = subcode;
+    this.requestId = String(error.request_id || response.request_id || "").trim() || null;
+    this.coverError = null;
+  }
+}
+
+function cleanErrorMessage(error) {
+  const message = error instanceof Error ? error.message : String(error || "Unknown error");
+  const knownVkTokens = [
+    process.env.VK_USER_ACCESS_TOKEN,
+    process.env.VK_GROUP_ACCESS_TOKEN,
+    process.env.VK_ACCESS_TOKEN,
+  ]
+    .map((value) => String(value || "").trim())
+    .filter((value) => value.length >= 8);
+  let cleaned = message;
+  for (const token of knownVkTokens) {
+    cleaned = cleaned.split(token).join("[redacted]");
+  }
+  return cleaned
+    .replace(/access_token=[^&\s]+/giu, "access_token=[redacted]")
+    .replace(/Bearer\s+[^\s]+/giu, "Bearer [redacted]")
+    .replace(/\bvk[12]\.[a-z]\.[a-z0-9._-]+/giu, "[redacted]")
+    .slice(0, 1000);
+}
+
+function sanitizeVkError(error) {
+  if (error instanceof VkApiError) {
+    return {
+      provider: "vk",
+      method: error.method,
+      code: error.code,
+      subcode: error.subcode,
+      request_id: error.requestId,
+      message: cleanErrorMessage(error),
+      ...(error.coverError ? { cover_error: error.coverError } : {}),
+    };
+  }
+
+  return {
+    provider: "vk",
+    method: "unknown",
+    code: null,
+    subcode: null,
+    request_id: null,
+    message: cleanErrorMessage(error),
+  };
+}
+
+function logSanitizedError(label, details) {
+  console.error(`${label}: ${JSON.stringify(details)}`);
+}
 
 const categoryRoutes = {
   "book-opinions": "mnenie-o-knige",
@@ -72,6 +141,86 @@ async function apiRequest(resource, options = {}) {
     throw new Error(`HTTP ${response.status}: ${String(body).slice(0, 500)}`);
   }
   return parsed;
+}
+
+async function vkApiRequest(method, parameters, token) {
+  const body = new URLSearchParams({
+    ...parameters,
+    access_token: token,
+    v: vkApiVersion,
+  });
+  let response;
+  try {
+    response = await fetch(`https://api.vk.com/method/${method}`, {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body,
+      signal: AbortSignal.timeout(30_000),
+    });
+  } catch (error) {
+    throw new VkApiError(method, {
+      error_msg: `Network request failed: ${cleanErrorMessage(error)}`,
+    });
+  }
+
+  let payload = null;
+  try {
+    payload = JSON.parse(await response.text());
+  } catch {
+    throw new VkApiError(method, {
+      error_msg: `VK returned an invalid response (HTTP ${response.status}).`,
+    });
+  }
+
+  if (!response.ok) {
+    throw new VkApiError(
+      method,
+      payload?.error || { error_msg: `VK returned HTTP ${response.status}.` },
+      payload
+    );
+  }
+  if (payload?.error) {
+    throw new VkApiError(method, payload.error, payload);
+  }
+  return payload?.response;
+}
+
+async function uploadVkPhoto(uploadUrl, form) {
+  let response;
+  try {
+    response = await fetch(uploadUrl, {
+      method: "POST",
+      body: form,
+      signal: AbortSignal.timeout(30_000),
+    });
+  } catch (error) {
+    throw new VkApiError("photos.uploadWallPhoto", {
+      error_msg: `Upload request failed: ${cleanErrorMessage(error)}`,
+    });
+  }
+
+  let payload = null;
+  try {
+    payload = JSON.parse(await response.text());
+  } catch {
+    throw new VkApiError("photos.uploadWallPhoto", {
+      error_msg: `VK upload server returned an invalid response (HTTP ${response.status}).`,
+    });
+  }
+
+  if (!response.ok || payload?.error) {
+    throw new VkApiError(
+      "photos.uploadWallPhoto",
+      payload?.error || { error_msg: `VK upload server returned HTTP ${response.status}.` },
+      payload
+    );
+  }
+  if (!payload?.server || !payload?.photo || !payload?.hash) {
+    throw new VkApiError("photos.uploadWallPhoto", {
+      error_msg: "VK upload server response is incomplete.",
+    });
+  }
+  return payload;
 }
 
 function supabaseHeaders(prefer) {
@@ -150,104 +299,153 @@ async function bootstrapLatestRequest() {
 }
 
 async function pendingRequests() {
-  const query = new URLSearchParams({
-    select: "id,entity_id,metadata,created_at",
-    action: "eq.social_publish.requested",
-    order: "id.asc",
-    limit: "25",
-  });
-  const requests = await selectAuditLog(query);
   const pending = [];
-  for (const request of requests) {
+  let offset = 0;
+
+  while (pending.length < pendingBatchSize) {
+    const query = new URLSearchParams({
+      select: "id,entity_id,metadata,created_at",
+      action: "eq.social_publish.requested",
+      order: "id.asc",
+      limit: String(pendingPageSize),
+      offset: String(offset),
+    });
+    const requests = await selectAuditLog(query);
+    if (!requests.length) break;
+
+    const requestIds = requests.map((request) => String(request.id));
     const resultQuery = new URLSearchParams({
-      select: "id,action,metadata",
-      entity_id: `eq.${request.id}`,
+      select: "id,entity_id,action,metadata",
+      entity_id: `in.(${requestIds.join(",")})`,
       action: "in.(social_publish.succeeded,social_publish.completed)",
       order: "id.asc",
-      limit: "20",
+      limit: String(pendingPageSize * 20),
     });
-    const results = await selectAuditLog(resultQuery);
-    if (!results.some((result) => result.action === "social_publish.completed")) {
-      pending.push({ request, results });
+    const pageResults = await selectAuditLog(resultQuery);
+    const requestResults = requests.map((request) => ({
+      request,
+      results: pageResults.filter(
+        (result) => String(result.entity_id) === String(request.id)
+      ),
+    }));
+
+    for (const item of requestResults) {
+      if (!item.results.some((result) => result.action === "social_publish.completed")) {
+        pending.push(item);
+        if (pending.length >= pendingBatchSize) break;
+      }
     }
+
+    offset += requests.length;
+    if (requests.length < pendingPageSize) break;
   }
+
   return pending;
 }
 
-async function uploadVkCover(imageUrl, groupId, token) {
+async function uploadVkCover(imageUrl, groupId, userToken) {
   if (!imageUrl) return "";
-  try {
-    const serverParams = new URLSearchParams({
-      group_id: groupId,
-      access_token: token,
-      v: "5.199",
+  const server = await vkApiRequest(
+    "photos.getWallUploadServer",
+    { group_id: groupId },
+    userToken
+  );
+  if (!server?.upload_url) {
+    throw new VkApiError("photos.getWallUploadServer", {
+      error_msg: "VK did not return a wall photo upload URL.",
     });
-    const server = await apiRequest(
-      `https://api.vk.com/method/photos.getWallUploadServer?${serverParams}`,
-      { method: "POST" }
-    );
-    if (server.error) throw new Error(server.error.error_msg || "VK upload server error");
+  }
 
-    const imageResponse = await fetch(imageUrl, { signal: AbortSignal.timeout(30_000) });
-    if (!imageResponse.ok) throw new Error(`Cover HTTP ${imageResponse.status}`);
-    const form = new FormData();
-    form.append(
-      "photo",
-      await imageResponse.blob(),
-      new URL(imageUrl).pathname.split("/").at(-1) || "cover.webp"
-    );
-    const uploaded = await apiRequest(server.response.upload_url, {
-      method: "POST",
-      body: form,
+  let imageResponse;
+  try {
+    imageResponse = await fetch(imageUrl, { signal: AbortSignal.timeout(30_000) });
+  } catch (error) {
+    throw new VkApiError("photos.fetchCover", {
+      error_msg: `Cover request failed: ${cleanErrorMessage(error)}`,
     });
-    const saveParams = new URLSearchParams({
+  }
+  if (!imageResponse.ok) {
+    throw new VkApiError("photos.fetchCover", {
+      error_msg: `Cover returned HTTP ${imageResponse.status}.`,
+    });
+  }
+
+  const form = new FormData();
+  form.append(
+    "photo",
+    await imageResponse.blob(),
+    new URL(imageUrl).pathname.split("/").at(-1) || "cover.webp"
+  );
+  const uploaded = await uploadVkPhoto(server.upload_url, form);
+  const saved = await vkApiRequest(
+    "photos.saveWallPhoto",
+    {
       group_id: groupId,
       server: String(uploaded.server),
       photo: String(uploaded.photo),
       hash: String(uploaded.hash),
-      access_token: token,
-      v: "5.199",
-    });
-    const saved = await apiRequest(
-      `https://api.vk.com/method/photos.saveWallPhoto?${saveParams}`,
-      { method: "POST" }
-    );
-    if (saved.error) throw new Error(saved.error.error_msg || "VK save photo error");
-    const photo = saved.response?.[0];
-    return photo ? `photo${photo.owner_id}_${photo.id}` : "";
-  } catch (error) {
-    console.warn(`VK cover upload skipped: ${error instanceof Error ? error.message : error}`);
-    return "";
-  }
+    },
+    userToken
+  );
+  const photo = saved?.[0];
+  return photo ? `photo${photo.owner_id}_${photo.id}` : "";
 }
 
-async function publishVk(article) {
-  const token = (process.env.VK_ACCESS_TOKEN || "").trim();
+async function publishVk(article, context = {}) {
+  const groupToken =
+    (process.env.VK_GROUP_ACCESS_TOKEN || "").trim() ||
+    (process.env.VK_ACCESS_TOKEN || "").trim();
+  const userToken = (process.env.VK_USER_ACCESS_TOKEN || "").trim();
   const groupId = (process.env.VK_GROUP_ID || "").trim().replace(/^-/, "");
-  if (!token || !groupId) {
-    return { ok: false, state: "not-configured", message: "VK_ACCESS_TOKEN/VK_GROUP_ID" };
+  const wallToken = userToken || groupToken;
+  if (!wallToken || !groupId) {
+    return {
+      ok: false,
+      state: "not-configured",
+      message: "VK_USER_ACCESS_TOKEN or VK_GROUP_ACCESS_TOKEN/VK_ACCESS_TOKEN, and VK_GROUP_ID",
+    };
   }
-  const attachment = await uploadVkCover(article.cover_external_url, groupId, token);
-  const params = new URLSearchParams({
+
+  let attachment = "";
+  let coverError = null;
+  let coverState = article.cover_external_url ? "skipped-no-user-token" : "not-provided";
+  if (userToken && article.cover_external_url) {
+    try {
+      attachment = await uploadVkCover(article.cover_external_url, groupId, userToken);
+      coverState = attachment ? "attached" : "not-returned";
+    } catch (error) {
+      coverError = sanitizeVkError(error);
+      coverState = "failed";
+      logSanitizedError("VK cover upload skipped", coverError);
+    }
+  }
+
+  const parameters = {
     owner_id: `-${groupId}`,
     from_group: "1",
     message: socialText(article),
-    attachments: [attachment, articleUrl(article)].filter(Boolean).join(","),
-    access_token: token,
-    v: "5.199",
-  });
-  const result = await apiRequest("https://api.vk.com/method/wall.post", {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
-    body: params,
-  });
-  if (result.error) throw new Error(result.error.error_msg || "VK API error");
-  return {
-    ok: true,
-    state: "published",
-    remoteId: result.response?.post_id ? String(result.response.post_id) : null,
-    coverAttached: Boolean(attachment),
+    guid: md5(`probpera:vk:${String(context.requestId || article.id)}`),
+    ...(userToken
+      ? { attachments: [attachment, articleUrl(article)].filter(Boolean).join(",") }
+      : {}),
   };
+  try {
+    const result = await vkApiRequest("wall.post", parameters, wallToken);
+    return {
+      ok: true,
+      state: "published",
+      remoteId: result?.post_id ? String(result.post_id) : null,
+      authMode: userToken ? "user" : "group",
+      coverAttached: Boolean(attachment),
+      coverState,
+      ...(coverError ? { cover_error: coverError } : {}),
+    };
+  } catch (error) {
+    if (error instanceof VkApiError && coverError) {
+      error.coverError = coverError;
+    }
+    throw error;
+  }
 }
 
 async function publishOk(article) {
@@ -340,9 +538,10 @@ async function main() {
     return;
   }
   if (!supabaseUrl || !serviceKey) {
-    console.warn(
+    console.error(
       "Social publishing is pending: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required."
     );
+    process.exitCode = 1;
     return;
   }
 
@@ -353,13 +552,22 @@ async function main() {
     return;
   }
 
+  let hasRealFailure = false;
   for (const { request, results } of jobs) {
     const articleId = request.metadata?.article_id || request.entity_id;
     const article = await fetchArticle(articleId);
     if (!article) {
+      const errorDetails = {
+        provider: "content",
+        code: "published-article-not-found",
+        message: "Published article was not found for the social publication request.",
+      };
+      hasRealFailure = true;
+      logSanitizedError("Social publication failed", errorDetails);
       await appendAuditLog("social_publish.failed", request.id, {
         platform: "all",
         error: "published-article-not-found",
+        error_details: errorDetails,
       });
       continue;
     }
@@ -379,11 +587,35 @@ async function main() {
       const publisher = publishers[platform];
       if (!publisher) {
         states[platform] = "unsupported";
+        hasRealFailure = true;
+        const errorDetails = {
+          provider: platform,
+          code: "unsupported-platform",
+          message: `Social publisher is not implemented for platform: ${platform}`,
+        };
+        logSanitizedError("Social publication failed", errorDetails);
+        await appendAuditLog("social_publish.failed", request.id, {
+          article_id: article.id,
+          platform,
+          error: errorDetails.message,
+          error_details: errorDetails,
+        });
         continue;
       }
       try {
-        const result = await publisher(article);
+        const result = await publisher(article, {
+          requestId: request.id,
+          request,
+        });
         states[platform] = result.state;
+        if (!result.ok) {
+          hasRealFailure = true;
+          logSanitizedError("Social publication is not configured", {
+            provider: platform,
+            code: result.state || "not-configured",
+            message: cleanErrorMessage(result.message || "Required social channel is not configured."),
+          });
+        }
         await appendAuditLog(
           result.ok ? "social_publish.succeeded" : "social_publish.pending",
           request.id,
@@ -394,12 +626,21 @@ async function main() {
           }
         );
       } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
+        const errorDetails =
+          platform === "vk"
+            ? sanitizeVkError(error)
+            : {
+                provider: platform,
+                message: cleanErrorMessage(error),
+              };
+        hasRealFailure = true;
         states[platform] = "failed";
+        logSanitizedError("Social publication failed", errorDetails);
         await appendAuditLog("social_publish.failed", request.id, {
           article_id: article.id,
           platform,
-          error: message.slice(0, 1000),
+          error: errorDetails.message,
+          error_details: errorDetails,
         });
       }
     }
@@ -414,6 +655,10 @@ async function main() {
       });
     }
     console.log(`${article.title}: ${JSON.stringify(states)}`);
+  }
+
+  if (hasRealFailure) {
+    process.exitCode = 1;
   }
 }
 
