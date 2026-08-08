@@ -115,6 +115,29 @@ test("архив разделяет 31 проверенную книгу и 9 68
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );
+
+  const actionAlignment = await page
+    .locator(".archive-book-actions")
+    .first()
+    .evaluate((element) => {
+      const row = element.getBoundingClientRect();
+      const status = element.querySelector(".editorial-state")?.getBoundingClientRect();
+      const save = element.querySelector(".archive-book-save")?.getBoundingClientRect();
+      const detail = element.querySelector(".archive-book-detail")?.getBoundingClientRect();
+      if (!status || !save || !detail) return null;
+      const centerX = (box) => box.left + box.width / 2;
+      const centerY = (box) => box.top + box.height / 2;
+      return {
+        saveFromRowCenter: Math.abs(centerX(save) - centerX(row)),
+        statusFromSaveBaseline: Math.abs(centerY(status) - centerY(save)),
+        detailFromSaveBaseline: Math.abs(centerY(detail) - centerY(save)),
+      };
+    });
+
+  expect(actionAlignment).not.toBeNull();
+  expect(actionAlignment.saveFromRowCenter).toBeLessThanOrEqual(1);
+  expect(actionAlignment.statusFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(actionAlignment.detailFromSaveBaseline).toBeLessThanOrEqual(1);
 });
 
 test("на мобильном архив и изображения не растягиваются", async ({
@@ -122,6 +145,7 @@ test("на мобильном архив и изображения не раст
   isMobile,
 }) => {
   test.skip(!isMobile, "Mobile media contract");
+  await page.setViewportSize({ width: 360, height: 800 });
   await page.goto("/#books");
   const grid = page.locator(".book-archive-grid");
   await expect(grid).toBeVisible({ timeout: 20_000 });
@@ -130,6 +154,41 @@ test("на мобильном архив и изображения не раст
       getComputedStyle(element).gridTemplateColumns.split(" ").filter(Boolean).length
     )
   ).toBe(1);
+
+  await page
+    .locator(".book-archive-filters")
+    .getByRole("button", { name: /Проверено редакцией/u })
+    .click();
+  const mobileActions = await page
+    .locator(".archive-book-actions")
+    .first()
+    .evaluate((element) => {
+      const row = element.getBoundingClientRect();
+      const statusElement = element.querySelector(".editorial-state");
+      const saveElement = element.querySelector(".archive-book-save");
+      const detailElement = element.querySelector(".archive-book-detail");
+      const status = statusElement?.getBoundingClientRect();
+      const save = saveElement?.getBoundingClientRect();
+      const detail = detailElement?.getBoundingClientRect();
+      if (!statusElement || !saveElement || !detailElement || !status || !save || !detail) {
+        return null;
+      }
+      const centerX = (box) => box.left + box.width / 2;
+      const centerY = (box) => box.top + box.height / 2;
+      return {
+        statusFits: statusElement.scrollWidth <= statusElement.clientWidth,
+        detailFits: detailElement.scrollWidth <= detailElement.clientWidth,
+        saveFromRowCenter: Math.abs(centerX(save) - centerX(row)),
+        statusFromSaveBaseline: Math.abs(centerY(status) - centerY(save)),
+        detailFromSaveBaseline: Math.abs(centerY(detail) - centerY(save)),
+      };
+    });
+  expect(mobileActions).not.toBeNull();
+  expect(mobileActions.statusFits).toBe(true);
+  expect(mobileActions.detailFits).toBe(true);
+  expect(mobileActions.saveFromRowCenter).toBeLessThanOrEqual(1);
+  expect(mobileActions.statusFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(mobileActions.detailFromSaveBaseline).toBeLessThanOrEqual(1);
 
   await page.locator("#authors").scrollIntoViewIfNeeded();
   const portrait = page.locator(".author-showcase-portrait img").first();

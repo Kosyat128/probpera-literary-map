@@ -1329,12 +1329,27 @@ img {
   font-family: var(--serif);
   font-size: clamp(53px, 6vw, 94px);
   font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.058em;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.hero-editorial h1 .hero-title-lead,
+.hero-editorial h1 .hero-title-accent {
+  display: block;
+}
+
+.hero-editorial h1 .hero-title-accent-line {
+  display: block;
+}
+
+.hero-editorial h1 .hero-title-accent-line:first-child {
+  font-size: 0.92em;
+  white-space: nowrap;
 }
 
 .hero-editorial h1 em {
   color: #ffb576;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -2319,9 +2334,14 @@ img {
 
 @media (max-width: 680px) {
   .literary-globe .globe-style-switch {
-    top: 14px;
+    top: 56px;
     right: 14px;
-    width: min(310px, calc(100% - 116px));
+    left: 14px;
+    grid-template-columns:
+      minmax(0, 0.75fr)
+      minmax(0, 1.5fr)
+      minmax(0, 0.75fr);
+    width: auto;
   }
 
   .literary-globe .globe-style-switch button {
@@ -2336,6 +2356,11 @@ img {
 
   .literary-globe .globe-style-label-compact {
     display: inline;
+  }
+
+  .literary-globe .globe-style-switch button[data-globe-style-option="earth"] {
+    padding-inline: 2px;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -4025,16 +4050,21 @@ a.writer-nobel-medal:focus-visible {
   line-height: 1.45;
 }
 
-.archive-book-copy > div {
+.archive-book-actions {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 27px auto;
+  grid-template-columns: minmax(0, 1fr) 27px minmax(0, 1fr);
   gap: 8px;
   align-items: center;
+  min-height: 29px;
   margin-top: auto;
   padding-top: 13px;
 }
 
 .editorial-state {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: 27px;
   min-width: 0;
   overflow: hidden;
   color: #78657e;
@@ -4066,6 +4096,16 @@ a.writer-nobel-medal:focus-visible {
   cursor: pointer;
 }
 
+.archive-book-actions .archive-book-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  min-height: 27px;
+  padding-bottom: 0;
+  line-height: 1;
+}
+
 .archive-book-copy button:hover {
   color: var(--orange-deep);
   border-color: var(--orange);
@@ -4074,6 +4114,7 @@ a.writer-nobel-medal:focus-visible {
 .archive-book-copy .archive-book-save {
   display: grid;
   flex: 0 0 auto;
+  justify-self: center;
   place-items: center;
   width: 27px;
   height: 27px;
