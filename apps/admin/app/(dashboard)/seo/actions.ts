@@ -5,7 +5,7 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const redirectSchema = z.object({
@@ -56,7 +56,6 @@ export async function createRedirectAction(formData: FormData) {
       `/seo?error=${encodeURIComponent(error?.message || "Переадресация не создана")}`
     );
   }
-  const build = await triggerPublicBuild("redirect.created");
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "redirect.created",
@@ -65,8 +64,14 @@ export async function createRedirectAction(formData: FormData) {
     metadata: {
       sourcePath: parsed.data.sourcePath,
       destinationPath: parsed.data.destinationPath,
-      publicBuildRequested: build.ok,
     },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "redirect",
+    entityId: data.id,
+    reason: "redirect.created",
   });
   revalidatePath("/seo");
   redirect("/seo?saved=1");
@@ -81,13 +86,18 @@ export async function deleteRedirectAction(formData: FormData) {
   if (!supabase) redirect("/seo?error=База данных не подключена");
   const { error } = await supabase.from("redirects").delete().eq("id", id.data);
   if (error) redirect(`/seo?error=${encodeURIComponent(error.message)}`);
-  const build = await triggerPublicBuild("redirect.deleted");
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "redirect.deleted",
     entity_type: "redirect",
     entity_id: id.data,
-    metadata: { publicBuildRequested: build.ok },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "redirect",
+    entityId: id.data,
+    reason: "redirect.deleted",
   });
   revalidatePath("/seo");
   redirect("/seo?deleted=1");

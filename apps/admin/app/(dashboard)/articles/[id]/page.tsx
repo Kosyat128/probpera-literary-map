@@ -9,6 +9,7 @@ import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   duplicateArticleAction,
+  requestSocialPublicationAction,
   restoreArticleRevisionAction,
   softDeleteArticleAction,
 } from "../actions";
@@ -25,6 +26,7 @@ export default async function EditArticlePage({
     saved?: string;
     publish?: string;
     replaced?: string;
+    social?: string;
   }>;
 }) {
   const { id } = await params;
@@ -69,6 +71,67 @@ export default async function EditArticlePage({
   }));
 
   if (!article) notFound();
+  const { data: socialRequests } = await supabase
+    .from("admin_audit_log")
+    .select("id,created_at,metadata")
+    .eq("action", "social_publish.requested")
+    .contains("metadata", { article_id: id })
+    .order("created_at", { ascending: false })
+    .limit(1);
+  const socialRequest = socialRequests?.[0] || null;
+  const { data: socialResultRows } = socialRequest
+    ? await supabase
+        .from("admin_audit_log")
+        .select("action,created_at,metadata")
+        .eq("entity_type", "social_publication")
+        .eq("entity_id", String(socialRequest.id))
+        .in("action", [
+          "social_publish.succeeded",
+          "social_publish.pending",
+          "social_publish.failed",
+          "social_publish.completed",
+        ])
+        .order("created_at", { ascending: true })
+    : { data: [] };
+  const socialResults = socialResultRows || [];
+  const channelState = new Map<string, { action: string; state: string }>();
+  socialResults.forEach((result) => {
+    const metadata =
+      result.metadata && typeof result.metadata === "object"
+        ? (result.metadata as Record<string, unknown>)
+        : {};
+    const platform = typeof metadata.platform === "string" ? metadata.platform : "";
+    if (!platform) return;
+    channelState.set(platform, {
+      action: result.action,
+      state: typeof metadata.state === "string" ? metadata.state : "",
+    });
+  });
+  const socialChannels = [
+    { id: "vk", label: "ВКонтакте" },
+    { id: "ok", label: "Одноклассники" },
+    { id: "dzen", label: "Дзен" },
+  ].map((channel) => {
+    const result = channelState.get(channel.id);
+    if (!socialRequest) return { ...channel, tone: "idle", status: "Не отправлялось" };
+    if (!result) return { ...channel, tone: "waiting", status: "Ожидает отправки" };
+    if (result.action === "social_publish.succeeded") {
+      return {
+        ...channel,
+        tone: "success",
+        status: result.state === "rss-ready" ? "RSS подключён" : "Опубликовано",
+      };
+    }
+    if (result.action === "social_publish.failed") {
+      return { ...channel, tone: "error", status: "Ошибка доставки" };
+    }
+    return {
+      ...channel,
+      tone: result.state === "not-configured" ? "error" : "waiting",
+      status:
+        result.state === "not-configured" ? "Нужны доступы" : "Повторная попытка",
+    };
+  });
   const categorySlug = categories.find(
     (category) => category.id === article.category_id
   )?.slug;
@@ -117,6 +180,45 @@ export default async function EditArticlePage({
           На главную в выбранной секции была заменена старая статья.
         </p>
       )}
+      {query.social === "requested" && (
+        <p className="form-message form-success">
+          Отправка во «ВКонтакте», «Одноклассники» и Дзен поставлена в очередь.
+        </p>
+      )}
+
+      <section className="panel social-publication-card" aria-labelledby="social-publication-title">
+        <header>
+          <div>
+            <span className="eyebrow">Распространение</span>
+            <h2 id="social-publication-title">Автопостинг публикации</h2>
+            <p>
+              После публикации сайт сам передаёт материал в подключённые каналы,
+              фиксирует результат и повторяет временно неудавшиеся попытки.
+            </p>
+          </div>
+          {article.status === "published" && (
+            <form action={requestSocialPublicationAction}>
+              <input type="hidden" name="id" value={article.id} />
+              <ConfirmSubmitButton message="Повторно поставить статью в очередь автопостинга? В уже подключённых соцсетях может появиться новая публикация.">
+                Повторить отправку
+              </ConfirmSubmitButton>
+            </form>
+          )}
+        </header>
+        <div className="social-channel-list">
+          {socialChannels.map((channel) => (
+            <div className={`social-channel is-${channel.tone}`} key={channel.id}>
+              <span aria-hidden="true" />
+              <strong>{channel.label}</strong>
+              <small>{channel.status}</small>
+            </div>
+          ))}
+        </div>
+        <small className="social-publication-note">
+          Для Дзена используется официальный RSS-канал журнала; «ВКонтакте» и
+          «Одноклассники» получают текст, ссылку и обложку через свои API.
+        </small>
+      </section>
       <ArticleEditor
         article={article}
         categories={categories}

@@ -31,6 +31,11 @@ import {
 } from "./data/bookArchive";
 import { calculateArchiveStatistics } from "./data/archiveStatistics";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
+import {
+  coreHomepageSectionClass,
+  coreHomepageSectionStyle,
+  getCoreHomepageSection,
+} from "./data/cms/homepage";
 import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
 import {
@@ -372,6 +377,10 @@ function assetUrl(path: string) {
 
 function mediaUrl(path: string) {
   return /^https?:\/\//i.test(path) ? path : assetUrl(path);
+}
+
+function safeHomepageHref(value: string, fallback: string) {
+  return /^(https:\/\/|mailto:|\/|#)/iu.test(value) ? value : fallback;
 }
 
 export default function App() {
@@ -787,6 +796,20 @@ export default function App() {
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
+  const coreHero = getCoreHomepageSection("hero");
+  const coreAtlas = getCoreHomepageSection("atlas");
+  const coreBookMonth = getCoreHomepageSection("book-month");
+  const coreEditorialStandard = getCoreHomepageSection("editorial-standard");
+  const coreFeaturedJournal = getCoreHomepageSection("featured-journal");
+  const coreCommunity = getCoreHomepageSection("community");
+  const coreAuthors = getCoreHomepageSection("authors");
+  const coreSections = getCoreHomepageSection("sections");
+  const coreTrust = getCoreHomepageSection("trust");
+  const coreCalendar = getCoreHomepageSection("calendar");
+  const coreSectionsHref = safeHomepageHref(
+    coreSections?.buttonUrl || journalPath(),
+    journalPath()
+  );
 
   if (directArticleRoute) {
     return (
@@ -973,21 +996,37 @@ export default function App() {
         <section className="magazine-hero">
           <div className="hero-editorial">
             <span className="section-kicker">
-              {t("Журнал о литературе и искусстве слова")}
+              {language === "ru" && coreHero?.eyebrow
+                ? coreHero.eyebrow
+                : t("Журнал о литературе и искусстве слова")}
             </span>
             <h1>
-              {t("Литература —")}
-              <br />
-              <em>{t("это целый мир.")}</em>
+              {language === "ru" && coreHero?.title ? (
+                coreHero.title
+              ) : (
+                <>
+                  {t("Литература —")}
+                  <br />
+                  <em>{t("это целый мир.")}</em>
+                </>
+              )}
             </h1>
             <p>
-              {t(
-                "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве."
-              )}
+              {language === "ru" && coreHero?.description
+                ? coreHero.description
+                : t(
+                    "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве."
+                  )}
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="#atlas">
-                {t("Открыть глобус")} <span>→</span>
+              <a
+                className="primary-action"
+                href={safeHomepageHref(coreHero?.buttonUrl || "#atlas", "#atlas")}
+              >
+                {language === "ru" && coreHero?.buttonText
+                  ? coreHero.buttonText
+                  : t("Открыть глобус")} {" "}
+                <span>→</span>
               </a>
               <a className="secondary-action" href={journalPath()}>
                 {t("Читать журнал")}
@@ -1015,12 +1054,17 @@ export default function App() {
 
           <div className="hero-cover">
             <picture>
-              <source
-                media="(max-width: 680px)"
-                srcSet={assetUrl("brand/magazine-hero-mobile.webp")}
-              />
+              {!coreHero?.backgroundImageUrl && (
+                <source
+                  media="(max-width: 680px)"
+                  srcSet={assetUrl("brand/magazine-hero-mobile.webp")}
+                />
+              )}
               <img
-                src={assetUrl("brand/magazine-hero-wide.webp")}
+                src={
+                  coreHero?.backgroundImageUrl ||
+                  assetUrl("brand/magazine-hero-wide.webp")
+                }
                 alt={t("Журнал «Проба Пера» — полноформатное редакционное издание")}
                 width="1672"
                 height="941"
@@ -1037,17 +1081,30 @@ export default function App() {
           <CmsHomepageBlocks />
         </Suspense>
 
-        <section className="atlas-section" id="atlas" ref={atlasRef}>
+        <section
+          className={`atlas-section${coreHomepageSectionClass(coreAtlas)}`}
+          id="atlas"
+          ref={atlasRef}
+          style={coreHomepageSectionStyle(coreAtlas)}
+        >
           <header className="atlas-heading">
             <div>
               <span className="section-kicker">
-                {t("Интерактивная энциклопедия")}
+                {language === "ru" && coreAtlas?.eyebrow
+                  ? coreAtlas.eyebrow
+                  : t("Интерактивная энциклопедия")}
               </span>
-              <h2>{t("Литературная карта мира")}</h2>
+              <h2>
+                {language === "ru" && coreAtlas?.title
+                  ? coreAtlas.title
+                  : t("Литературная карта мира")}
+              </h2>
               <p>
-                {t(
-                  "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
-                )}
+                {language === "ru" && coreAtlas?.description
+                  ? coreAtlas.description
+                  : t(
+                      "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                    )}
               </p>
             </div>
 
@@ -1335,7 +1392,11 @@ export default function App() {
           </details>
         </section>
 
-        <section className="daily-grid painted-paper-section" id="book-day">
+        <section
+          className={`daily-grid painted-paper-section${coreHomepageSectionClass(coreBookMonth)}`}
+          id="book-day"
+          style={coreHomepageSectionStyle(coreBookMonth)}
+        >
           <article className="book-of-day">
             <div
               className={`book-cover${bookOfMonthHasCover ? " has-image" : ""}`}
@@ -1384,8 +1445,16 @@ export default function App() {
               )}
             </div>
             <div>
-              <span className="section-kicker">{t("Выбор энциклопедии")}</span>
-              <h3>{t("Книга месяца")}</h3>
+              <span className="section-kicker">
+                {language === "ru" && coreBookMonth?.eyebrow
+                  ? coreBookMonth.eyebrow
+                  : t("Выбор энциклопедии")}
+              </span>
+              <h3>
+                {language === "ru" && coreBookMonth?.title
+                  ? coreBookMonth.title
+                  : t("Книга месяца")}
+              </h3>
               <h4>{bookOfMonth?.title || t("Открываем библиотеку…")}</h4>
               <p>
                 {bookOfMonth
@@ -1395,9 +1464,11 @@ export default function App() {
                         "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
                       )
                     }`
-                  : t(
-                      "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран."
-                    )}
+                  : language === "ru" && coreBookMonth?.description
+                    ? coreBookMonth.description
+                    : t(
+                        "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран."
+                      )}
               </p>
               {bookOfMonth?.tags && (
                 <div className="book-tags" aria-label={t("Темы книги")}>
@@ -1409,7 +1480,10 @@ export default function App() {
               {bookOfMonth && (
                 <div className="book-actions">
                   <button type="button" onClick={() => openBook(bookOfMonth)}>
-                    {t("О книге")} <span>→</span>
+                    {language === "ru" && coreBookMonth?.buttonText
+                      ? coreBookMonth.buttonText
+                      : t("О книге")} {" "}
+                    <span>→</span>
                   </button>
                   <button
                     type="button"
@@ -1429,13 +1503,27 @@ export default function App() {
             </div>
           </article>
 
-          <article className="editorial-standard" id="about">
-            <span className="section-kicker">{t("Редакционный стандарт")}</span>
-            <h3>{t("Материал, которому можно доверять")}</h3>
+          <article
+            className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
+            id="about"
+            style={coreHomepageSectionStyle(coreEditorialStandard)}
+          >
+            <span className="section-kicker">
+              {language === "ru" && coreEditorialStandard?.eyebrow
+                ? coreEditorialStandard.eyebrow
+                : t("Редакционный стандарт")}
+            </span>
+            <h3>
+              {language === "ru" && coreEditorialStandard?.title
+                ? coreEditorialStandard.title
+                : t("Материал, которому можно доверять")}
+            </h3>
             <p>
-              {t(
-                "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном."
-              )}
+              {language === "ru" && coreEditorialStandard?.description
+                ? coreEditorialStandard.description
+                : t(
+                    "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном."
+                  )}
             </p>
             <ul>
               <li>
@@ -1554,14 +1642,37 @@ export default function App() {
           />
         </Suspense>
 
-        <section className="editorial-section" id="featured-journal">
+        <section
+          className={`editorial-section${coreHomepageSectionClass(coreFeaturedJournal)}`}
+          id="featured-journal"
+          style={coreHomepageSectionStyle(coreFeaturedJournal)}
+        >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">{t("Новые публикации")}</span>
-              <h2>{t("Читать в «Пробе Пера»")}</h2>
+              <span className="section-kicker">
+                {language === "ru" && coreFeaturedJournal?.eyebrow
+                  ? coreFeaturedJournal.eyebrow
+                  : t("Новые публикации")}
+              </span>
+              <h2>
+                {language === "ru" && coreFeaturedJournal?.title
+                  ? coreFeaturedJournal.title
+                  : t("Читать в «Пробе Пера»")}
+              </h2>
+              {language === "ru" && coreFeaturedJournal?.description && (
+                <p>{coreFeaturedJournal.description}</p>
+              )}
             </div>
-            <a href={journalPath()}>
-              {t("Все публикации")} <span>→</span>
+            <a
+              href={safeHomepageHref(
+                coreFeaturedJournal?.buttonUrl || journalPath(),
+                journalPath()
+              )}
+            >
+              {language === "ru" && coreFeaturedJournal?.buttonText
+                ? coreFeaturedJournal.buttonText
+                : t("Все публикации")} {" "}
+              <span>→</span>
             </a>
           </header>
 
@@ -1642,7 +1753,11 @@ export default function App() {
           <ArticleLibrarySection />
         </Suspense>
 
-        <section className="community-section" id="community">
+        <section
+          className={`community-section${coreHomepageSectionClass(coreCommunity)}`}
+          id="community"
+          style={coreHomepageSectionStyle(coreCommunity)}
+        >
           <div className="community-illustration">
             <div className="community-visual-intro">
               <span className="section-kicker">{t("Разговор после чтения")}</span>
@@ -1712,12 +1827,22 @@ export default function App() {
             </div>
           </div>
           <div className="community-copy">
-            <span className="section-kicker">{t("Литературное сообщество")}</span>
-            <h2>{t("Клуб внимательных читателей")}</h2>
+            <span className="section-kicker">
+              {language === "ru" && coreCommunity?.eyebrow
+                ? coreCommunity.eyebrow
+                : t("Литературное сообщество")}
+            </span>
+            <h2>
+              {language === "ru" && coreCommunity?.title
+                ? coreCommunity.title
+                : t("Клуб внимательных читателей")}
+            </h2>
             <p>
-              {t(
-                "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
-              )}
+              {language === "ru" && coreCommunity?.description
+                ? coreCommunity.description
+                : t(
+                    "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
+                  )}
             </p>
             <p className="community-copy-note">
               {t(
@@ -1731,7 +1856,9 @@ export default function App() {
             </ul>
             <div>
               <button type="button" onClick={() => openCommunity("forum")}>
-                {t("Открыть форум")}
+                {language === "ru" && coreCommunity?.buttonText
+                  ? coreCommunity.buttonText
+                  : t("Открыть форум")}
               </button>
               {!user && (
                 <button type="button" onClick={() => openCommunity("account")}>
@@ -1742,11 +1869,26 @@ export default function App() {
           </div>
         </section>
 
-        <section className="authors-section painted-paper-section" id="authors">
+        <section
+          className={`authors-section painted-paper-section${coreHomepageSectionClass(coreAuthors)}`}
+          id="authors"
+          style={coreHomepageSectionStyle(coreAuthors)}
+        >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">{t("Лица мировой литературы")}</span>
-              <h2>{t("Авторы, с которых можно начать")}</h2>
+              <span className="section-kicker">
+                {language === "ru" && coreAuthors?.eyebrow
+                  ? coreAuthors.eyebrow
+                  : t("Лица мировой литературы")}
+              </span>
+              <h2>
+                {language === "ru" && coreAuthors?.title
+                  ? coreAuthors.title
+                  : t("Авторы, с которых можно начать")}
+              </h2>
+              {language === "ru" && coreAuthors?.description && (
+                <p>{coreAuthors.description}</p>
+              )}
             </div>
           </header>
 
@@ -1782,22 +1924,41 @@ export default function App() {
           </div>
         </section>
 
-        <section className="sections-directory" id="sections">
+        <section
+          className={`sections-directory${coreHomepageSectionClass(coreSections)}`}
+          id="sections"
+          style={coreHomepageSectionStyle(coreSections)}
+        >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">{t("Навигация по журналу")}</span>
-              <h2>{t("Основные разделы")}</h2>
+              <span className="section-kicker">
+                {language === "ru" && coreSections?.eyebrow
+                  ? coreSections.eyebrow
+                  : t("Навигация по журналу")}
+              </span>
+              <h2>
+                {language === "ru" && coreSections?.title
+                  ? coreSections.title
+                  : t("Основные разделы")}
+              </h2>
+              {language === "ru" && coreSections?.description && (
+                <p>{coreSections.description}</p>
+              )}
             </div>
             <a
               className="sections-all-button"
-              href={journalPath()}
+              href={coreSectionsHref}
               onClick={(event) => {
+                if (coreSectionsHref !== journalPath()) return;
                 if (!shouldUseClientNavigation(event)) return;
                 event.preventDefault();
                 navigateToJournal();
               }}
             >
-              {t("Полный архив публикаций")} <span>→</span>
+              {language === "ru" && coreSections?.buttonText
+                ? coreSections.buttonText
+                : t("Полный архив публикаций")} {" "}
+              <span>→</span>
             </a>
           </header>
           <Suspense
@@ -1817,19 +1978,42 @@ export default function App() {
           </Suspense>
         </section>
 
-        <section className="trust-center" id="editorial-policy">
+        <section
+          className={`trust-center${coreHomepageSectionClass(coreTrust)}`}
+          id="editorial-policy"
+          style={coreHomepageSectionStyle(coreTrust)}
+        >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">{t("Открытая редакция")}</span>
-              <h2>{t("Как устроено доверие")}</h2>
+              <span className="section-kicker">
+                {language === "ru" && coreTrust?.eyebrow
+                  ? coreTrust.eyebrow
+                  : t("Открытая редакция")}
+              </span>
+              <h2>
+                {language === "ru" && coreTrust?.title
+                  ? coreTrust.title
+                  : t("Как устроено доверие")}
+              </h2>
               <p>
-                {t(
-                  "Читатель видит не только готовый текст, но и правила, по которым сведения попадают в энциклопедию."
-                )}
+                {language === "ru" && coreTrust?.description
+                  ? coreTrust.description
+                  : t(
+                      "Читатель видит не только готовый текст, но и правила, по которым сведения попадают в энциклопедию."
+                    )}
               </p>
             </div>
-            <a href="mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале">
-              {t("Сообщить об ошибке")} <span>→</span>
+            <a
+              href={safeHomepageHref(
+                coreTrust?.buttonUrl ||
+                  "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале",
+                "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале"
+              )}
+            >
+              {language === "ru" && coreTrust?.buttonText
+                ? coreTrust.buttonText
+                : t("Сообщить об ошибке")} {" "}
+              <span>→</span>
             </a>
           </header>
           <div>
@@ -1876,7 +2060,11 @@ export default function App() {
           </div>
         </section>
 
-        <section id="calendar" className="calendar-section painted-paper-section">
+        <section
+          id="calendar"
+          className={`calendar-section painted-paper-section${coreHomepageSectionClass(coreCalendar)}`}
+          style={coreHomepageSectionStyle(coreCalendar)}
+        >
           <Suspense
             fallback={
               <div className="calendar-card">
@@ -1886,6 +2074,9 @@ export default function App() {
           >
             <LiteraryCalendar
               countries={countryArchive}
+              eyebrow={coreCalendar?.eyebrow}
+              title={coreCalendar?.title}
+              description={coreCalendar?.description}
               onCountrySelect={(country, writer) =>
                 selectCountry(country, true, writer)
               }

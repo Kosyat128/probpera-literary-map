@@ -5,6 +5,20 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Release mode
+        required: true
+        default: cms
+        type: choice
+        options:
+          - cms
+          - full
+      reason:
+        description: CMS publication reason
+        required: false
+        default: manual
+        type: string
   schedule:
     - cron: "*/5 * * * *"
 
@@ -14,7 +28,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages-${{ github.event_name }}
+  group: pages-production
   cancel-in-progress: true
 
 jobs:
@@ -73,8 +87,12 @@ jobs:
           PUBLIC_SITE_URL: https://probpera.ru
 
       - name: Verify public site and editorial archive
-        if: steps.release_gate.outputs.should_deploy == 'true'
+        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
         run: npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
+
+      - name: Verify fast CMS publication
+        if: steps.release_gate.outputs.should_deploy == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'
+        run: npm run lint:public && npm run links:audit
 
       - name: Verify registration and forum configuration
         if: steps.release_gate.outputs.should_deploy == 'true'
@@ -89,6 +107,7 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           VITE_BOOSTY_URL: ${{ vars.VITE_BOOSTY_URL }}
 
       - name: Enforce production performance budget

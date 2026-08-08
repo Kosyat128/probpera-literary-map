@@ -78,25 +78,25 @@ function suggestedAltText(file: File) {
     .replace(/[_-]+/gu, " ")
     .replace(/\s+/gu, " ")
     .trim();
-  return label.length >= 3 ? label.slice(0, 500) : "РР»Р»СЋСЃС‚СЂР°С†РёСЏ Рє СЃС‚Р°С‚СЊРµ";
+  return label.length >= 3 ? label.slice(0, 500) : "Иллюстрация к статье";
 }
 
 const articleTemplates = [
   {
-    label: "РњРЅРµРЅРёРµ Рѕ РєРЅРёРіРµ",
-    html: `<aside class="article-lead"><p><strong>РџСЂРµРґРёСЃР»РѕРІРёРµ</strong></p><p>Р—Р°РјРµРЅРёС‚Рµ СЌС‚РѕС‚ С‚РµРєСЃС‚ СЃРІРѕРёРј РІСЃС‚СѓРїР»РµРЅРёРµРј: РїРѕС‡РµРјСѓ РєРЅРёРіР° Р·Р°СЃР»СѓР¶РёРІР°РµС‚ РІРЅРёРјР°С‚РµР»СЊРЅРѕРіРѕ СЂР°Р·РіРѕРІРѕСЂР°.</p></aside>${mediaSlot("РћР±Р»РѕР¶РєР° РёР»Рё РіР»Р°РІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ", "РџРѕСЃС‚Р°РІСЊС‚Рµ РєСѓСЂСЃРѕСЂ СЃСЋРґР° Рё РЅР°Р¶РјРёС‚Рµ В«Р—Р°РјРµРЅРёС‚СЊ РјРµСЃС‚Рѕ РґР»СЏ С„РѕС‚РѕВ».")}<h2>РСЃС‚РѕСЂРёСЏ СЃРѕР·РґР°РЅРёСЏ Рё РїСѓР±Р»РёРєР°С†РёРё</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ РїРѕРґРіРѕС‚РѕРІР»РµРЅРЅС‹Р№ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><h2>Рћ С‡С‘Рј РїСЂРѕРёР·РІРµРґРµРЅРёРµ</h2><p>Р Р°СЃСЃРєР°Р¶РёС‚Рµ Рѕ Р·Р°РІСЏР·РєРµ Р±РµР· Р»РёС€РЅРёС… СЃРїРѕР№Р»РµСЂРѕРІ.</p>${mediaSlot("РР»Р»СЋСЃС‚СЂР°С†РёСЏ Рє СЃСЋР¶РµС‚Сѓ", "Р’С‹Р±РµСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РёР· РјРµРґРёР°С‚РµРєРё Рё РґРѕР±Р°РІСЊС‚Рµ С‚РѕС‡РЅРѕРµ РѕРїРёСЃР°РЅРёРµ.")}<h2>РўРµРјС‹, РіРµСЂРѕРё Рё С…СѓРґРѕР¶РµСЃС‚РІРµРЅРЅС‹Р№ РјРёСЂ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ РѕСЃРЅРѕРІРЅРѕР№ СЂР°Р·Р±РѕСЂ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ.</p><section class="article-design-block is-accent" data-editorial-block="accent" data-reveal="fade-up"><h3>РљР»СЋС‡РµРІР°СЏ РјС‹СЃР»СЊ</h3><p>Р—Р°РјРµРЅРёС‚Рµ СЌС‚РѕС‚ С‚РµРєСЃС‚ РіР»Р°РІРЅС‹Рј СЂРµРґР°РєС†РёРѕРЅРЅС‹Рј РІС‹РІРѕРґРѕРј.</p></section><h2>Р—Р°РєР»СЋС‡РёС‚РµР»СЊРЅРѕРµ РјРЅРµРЅРёРµ Рѕ РєРЅРёРіРµ</h2><p>РЎС„РѕСЂРјСѓР»РёСЂСѓР№С‚Рµ РёС‚РѕРіРѕРІСѓСЋ РѕС†РµРЅРєСѓ.</p><h2>РСЃС‚РѕС‡РЅРёРєРё</h2><p>РСЃС‚РѕС‡РЅРёРєРё С‚Р°РєР¶Рµ СѓРєР°Р·С‹РІР°СЋС‚СЃСЏ РІ РѕС‚РґРµР»СЊРЅРѕРј РїРѕР»Рµ СЃРїСЂР°РІР°.</p>`,
+    label: "Мнение о книге",
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Замените этот текст своим вступлением: почему книга заслуживает внимательного разговора.</p></aside>${mediaSlot("Обложка или главное изображение", "Поставьте курсор сюда и нажмите «Заменить место для фото».")}<h2>История создания и публикации</h2><p>Вставьте подготовленный текст раздела.</p><h2>О чём произведение</h2><p>Расскажите о завязке без лишних спойлеров.</p>${mediaSlot("Иллюстрация к сюжету", "Выберите изображение из медиатеки и добавьте точное описание.")}<h2>Темы, герои и художественный мир</h2><p>Вставьте основной разбор произведения.</p><section class="article-design-block is-accent" data-editorial-block="accent" data-reveal="fade-up"><h3>Ключевая мысль</h3><p>Замените этот текст главным редакционным выводом.</p></section><h2>Заключительное мнение о книге</h2><p>Сформулируйте итоговую оценку.</p><h2>Источники</h2><p>Источники также указываются в отдельном поле справа.</p>`,
   },
   {
-    label: "Р‘РёРѕРіСЂР°С„РёСЏ РїРёСЃР°С‚РµР»СЏ",
-    html: `<aside class="article-lead"><p><strong>Р РµРґР°РєС†РёРѕРЅРЅРѕРµ РІРІРµРґРµРЅРёРµ</strong></p><p>Р—Р°РјРµРЅРёС‚Рµ С‚РµРєСЃС‚: РјРµСЃС‚Рѕ РїРёСЃР°С‚РµР»СЏ РІ Р»РёС‚РµСЂР°С‚СѓСЂРµ Рё РїСЂРёС‡РёРЅР° РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє РµРіРѕ СЃСѓРґСЊР±Рµ.</p></aside>${mediaSlot("РџРѕСЂС‚СЂРµС‚ РїРёСЃР°С‚РµР»СЏ", "РСЃРїРѕР»СЊР·СѓР№С‚Рµ РїСЂРѕРІРµСЂРµРЅРЅС‹Р№ РїРѕСЂС‚СЂРµС‚ СЃ РїРѕРЅСЏС‚РЅС‹Рј РёСЃС‚РѕС‡РЅРёРєРѕРј Рё Р»РёС†РµРЅР·РёРµР№.")}<h2>Р”РµС‚СЃС‚РІРѕ Рё РѕР±СЂР°Р·РѕРІР°РЅРёРµ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><h2>РќР°С‡Р°Р»Рѕ Р»РёС‚РµСЂР°С‚СѓСЂРЅРѕРіРѕ РїСѓС‚Рё</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>РҐСЂРѕРЅРѕР»РѕРіРёСЏ</h3><p>Р“РѕРґ вЂ” РІР°Р¶РЅРѕРµ СЃРѕР±С‹С‚РёРµ.</p><p>Р“РѕРґ вЂ” РІР°Р¶РЅРѕРµ СЃРѕР±С‹С‚РёРµ.</p></section><h2>Р“Р»Р°РІРЅС‹Рµ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p>${mediaSlot("РђСЂС…РёРІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РёР»Рё СЂСѓРєРѕРїРёСЃСЊ", "Р—Р°РјРµРЅРёС‚Рµ РјРµСЃС‚Рѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј Рё РґРѕР±Р°РІСЊС‚Рµ СЃРѕРґРµСЂР¶Р°С‚РµР»СЊРЅСѓСЋ РїРѕРґРїРёСЃСЊ РІ РјРµРґРёР°С‚РµРєРµ.")}<h2>Р›РёС‡РЅР°СЏ СЃСѓРґСЊР±Р° Рё РІСЂРµРјСЏ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><h2>РќР°СЃР»РµРґРёРµ</h2><p>РЎС„РѕСЂРјСѓР»РёСЂСѓР№С‚Рµ РІР·РІРµС€РµРЅРЅС‹Р№ СЂРµРґР°РєС†РёРѕРЅРЅС‹Р№ РІС‹РІРѕРґ.</p><h2>РСЃС‚РѕС‡РЅРёРєРё Рё Р±РёР±Р»РёРѕРіСЂР°С„РёСЏ</h2><p>РЈРєР°Р¶РёС‚Рµ РїСЂРѕРІРµСЂСЏРµРјС‹Рµ РёСЃС‚РѕС‡РЅРёРєРё.</p>`,
+    label: "Биография писателя",
+    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Замените текст: место писателя в литературе и причина обратиться к его судьбе.</p></aside>${mediaSlot("Портрет писателя", "Используйте проверенный портрет с понятным источником и лицензией.")}<h2>Детство и образование</h2><p>Вставьте текст раздела.</p><h2>Начало литературного пути</h2><p>Вставьте текст раздела.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>Хронология</h3><p>Год — важное событие.</p><p>Год — важное событие.</p></section><h2>Главные произведения</h2><p>Вставьте текст раздела.</p>${mediaSlot("Архивное изображение или рукопись", "Замените место изображением и добавьте содержательную подпись в медиатеке.")}<h2>Личная судьба и время</h2><p>Вставьте текст раздела.</p><h2>Наследие</h2><p>Сформулируйте взвешенный редакционный вывод.</p><h2>Источники и библиография</h2><p>Укажите проверяемые источники.</p>`,
   },
   {
-    label: "РљРЅРёРіР° Рё СЌРєСЂР°РЅРёР·Р°С†РёСЏ",
-    html: `<aside class="article-lead"><p><strong>РљРЅРёРіР° Рё РµС‘ СЌРєСЂР°РЅРЅР°СЏ РІРµСЂСЃРёСЏ</strong></p><p>Р—Р°РјРµРЅРёС‚Рµ С‚РµРєСЃС‚: С‡С‚Рѕ РёРјРµРЅРЅРѕ СЃСЂР°РІРЅРёРІР°РµС‚СЃСЏ Рё РїРѕС‡РµРјСѓ.</p></aside>${mediaSlot("РћР±Р»РѕР¶РєР° Р»РёС‚РµСЂР°С‚СѓСЂРЅРѕРіРѕ РїРµСЂРІРѕРёСЃС‚РѕС‡РЅРёРєР°", "РџРѕСЃС‚Р°РІСЊС‚Рµ РєСѓСЂСЃРѕСЂ СЃСЋРґР° Рё Р·Р°РјРµРЅРёС‚Рµ РјРµСЃС‚Рѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј.")}<h2>Р›РёС‚РµСЂР°С‚СѓСЂРЅС‹Р№ РїРµСЂРІРѕРёСЃС‚РѕС‡РЅРёРє</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ Рѕ РєРЅРёРіРµ.</p>${mediaSlot("РљР°РґСЂ РёР»Рё РѕС„РёС†РёР°Р»СЊРЅС‹Р№ РїРѕСЃС‚РµСЂ СЌРєСЂР°РЅРёР·Р°С†РёРё", "Р”РѕР±Р°РІР»СЏР№С‚Рµ С‚РѕР»СЊРєРѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЃ РїСЂРѕРІРµСЂРµРЅРЅС‹Рј РѕСЃРЅРѕРІР°РЅРёРµРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ.")}<h2>Р­РєСЂР°РЅРЅР°СЏ РІРµСЂСЃРёСЏ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ РѕР± СЌРєСЂР°РЅРёР·Р°С†РёРё.</p><h2>РЎСЋР¶РµС‚ Рё РєРѕРјРїРѕР·РёС†РёСЏ</h2><p>РЎРѕРїРѕСЃС‚Р°РІСЊС‚Рµ СЂРµС€РµРЅРёСЏ РєРЅРёРіРё Рё С„РёР»СЊРјР°.</p><section class="article-design-block is-columns" data-editorial-block="columns" data-reveal="fade-up"><h3>РљРЅРёРіР° Рё СЌРєСЂР°РЅ</h3><p>РљРЅРёРіР°: Р·Р°РјРµРЅРёС‚Рµ СЌС‚РѕС‚ С‚РµРєСЃС‚.</p><p>Р­РєСЂР°РЅРёР·Р°С†РёСЏ: Р·Р°РјРµРЅРёС‚Рµ СЌС‚РѕС‚ С‚РµРєСЃС‚.</p></section><h2>Р“РµСЂРѕРё Рё Р°РєС‚С‘СЂСЃРєРёРµ СЂР°Р±РѕС‚С‹</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><h2>Р§С‚Рѕ РёР·РјРµРЅРёР»РѕСЃСЊ Рё С‡С‚Рѕ СЃРѕС…СЂР°РЅРёР»РѕСЃСЊ</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ РІС‹РІРѕРґС‹ СЃСЂР°РІРЅРµРЅРёСЏ.</p><h2>РС‚РѕРі</h2><p>РЎС„РѕСЂРјСѓР»РёСЂСѓР№С‚Рµ СЂРµРґР°РєС†РёРѕРЅРЅСѓСЋ РѕС†РµРЅРєСѓ.</p>`,
+    label: "Книга и экранизация",
+    html: `<aside class="article-lead"><p><strong>Книга и её экранная версия</strong></p><p>Замените текст: что именно сравнивается и почему.</p></aside>${mediaSlot("Обложка литературного первоисточника", "Поставьте курсор сюда и замените место изображением.")}<h2>Литературный первоисточник</h2><p>Вставьте текст о книге.</p>${mediaSlot("Кадр или официальный постер экранизации", "Добавляйте только изображение с проверенным основанием использования.")}<h2>Экранная версия</h2><p>Вставьте текст об экранизации.</p><h2>Сюжет и композиция</h2><p>Сопоставьте решения книги и фильма.</p><section class="article-design-block is-columns" data-editorial-block="columns" data-reveal="fade-up"><h3>Книга и экран</h3><p>Книга: замените этот текст.</p><p>Экранизация: замените этот текст.</p></section><h2>Герои и актёрские работы</h2><p>Вставьте текст раздела.</p><h2>Что изменилось и что сохранилось</h2><p>Вставьте выводы сравнения.</p><h2>Итог</h2><p>Сформулируйте редакционную оценку.</p>`,
   },
   {
-    label: "Р‘РѕР»СЊС€РѕРµ СЌСЃСЃРµ",
-    html: `<aside class="article-lead"><p><strong>РџСЂРµРґРёСЃР»РѕРІРёРµ</strong></p><p>Р—Р°РјРµРЅРёС‚Рµ С‚РµРєСЃС‚ РіР»Р°РІРЅС‹Рј РІРѕРїСЂРѕСЃРѕРј Рё СЂРµРґР°РєС†РёРѕРЅРЅРѕР№ РїРѕР·РёС†РёРµР№.</p></aside>${mediaSlot("Р“Р»Р°РІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЌСЃСЃРµ", "РџРѕСЃС‚Р°РІСЊС‚Рµ РєСѓСЂСЃРѕСЂ СЃСЋРґР° Рё РЅР°Р¶РјРёС‚Рµ В«Р—Р°РјРµРЅРёС‚СЊ РјРµСЃС‚Рѕ РґР»СЏ С„РѕС‚РѕВ».")}<h2>РљРѕРЅС‚РµРєСЃС‚</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ СЂР°Р·РґРµР»Р°.</p><h2>РћСЃРЅРѕРІРЅР°СЏ РёРґРµСЏ</h2><p>Р Р°Р·РІРµСЂРЅРёС‚Рµ С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ С‚РµР·РёСЃ.</p><h2>РџСЂРёРјРµСЂС‹ Рё Р°СЂРіСѓРјРµРЅС‚С‹</h2><p>Р’СЃС‚Р°РІСЊС‚Рµ РѕСЃРЅРѕРІРЅСѓСЋ С‡Р°СЃС‚СЊ СЌСЃСЃРµ.</p><blockquote><p>Р—Р°РјРµРЅРёС‚Рµ С†РёС‚Р°С‚Сѓ Рё РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ РёСЃС‚РѕС‡РЅРёРє.</p></blockquote>${mediaSlot("Р’С‚РѕСЂР°СЏ РёР»Р»СЋСЃС‚СЂР°С†РёСЏ", "РСЃРїРѕР»СЊР·СѓР№С‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РєР°Рє СЃРјС‹СЃР»РѕРІСѓСЋ РїР°СѓР·Сѓ, Р° РЅРµ РєР°Рє СѓРєСЂР°С€РµРЅРёРµ.")}<h2>Р’С‹РІРѕРґ</h2><p>РЎС„РѕСЂРјСѓР»РёСЂСѓР№С‚Рµ РёС‚РѕРі.</p><h2>РСЃС‚РѕС‡РЅРёРєРё</h2><p>РЈРєР°Р¶РёС‚Рµ РїСЂРѕРІРµСЂСЏРµРјС‹Рµ РёСЃС‚РѕС‡РЅРёРєРё.</p>`,
+    label: "Большое эссе",
+    html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Замените текст главным вопросом и редакционной позицией.</p></aside>${mediaSlot("Главное изображение эссе", "Поставьте курсор сюда и нажмите «Заменить место для фото».")}<h2>Контекст</h2><p>Вставьте текст раздела.</p><h2>Основная идея</h2><p>Разверните центральный тезис.</p><h2>Примеры и аргументы</h2><p>Вставьте основную часть эссе.</p><blockquote><p>Замените цитату и обязательно укажите источник.</p></blockquote>${mediaSlot("Вторая иллюстрация", "Используйте изображение как смысловую паузу, а не как украшение.")}<h2>Вывод</h2><p>Сформулируйте итог.</p><h2>Источники</h2><p>Укажите проверяемые источники.</p>`,
   },
 ] as const;
 
@@ -228,7 +228,7 @@ export default function ArticleEditor({
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({
         placeholder:
-          "РќР°С‡РЅРёС‚Рµ РїРёСЃР°С‚СЊ. Р”Р»СЏ Р±РѕР»СЊС€РѕРіРѕ РјР°С‚РµСЂРёР°Р»Р° РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РїРѕРґР·Р°РіРѕР»РѕРІРєРё вЂ” РёР· РЅРёС… Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР±РµСЂС‘С‚СЃСЏ РѕРіР»Р°РІР»РµРЅРёРµ.",
+          "Начните писать. Для большого материала используйте подзаголовки — из них автоматически соберётся оглавление.",
       }),
     ],
     content: initialEditorContent,
@@ -318,21 +318,21 @@ export default function ArticleEditor({
   }, [contentHtml, editor]);
 
   const publicationChecks = useMemo(() => [
-    { label: "Р—Р°РіРѕР»РѕРІРѕРє Рё РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ Р°РґСЂРµСЃ", ok: title.trim().length >= 3 && slug.length >= 2 },
-    { label: "Р СѓР±СЂРёРєР° РІС‹Р±СЂР°РЅР°", ok: Boolean(categoryId) },
-    { label: "РќРµ РјРµРЅРµРµ 250 СЃР»РѕРІ", ok: wordCount >= 250 },
-    { label: "Р•СЃС‚СЊ СЃРјС‹СЃР»РѕРІС‹Рµ РїРѕРґР·Р°РіРѕР»РѕРІРєРё H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
-    { label: "РћРїРёСЃР°РЅРёРµ РєР°СЂС‚РѕС‡РєРё вЂ” РѕС‚ 80 Р·РЅР°РєРѕРІ", ok: excerpt.trim().length >= 80 },
-    { label: "РћР±Р»РѕР¶РєР° Рё РµС‘ РѕРїРёСЃР°РЅРёРµ", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
-    { label: "SEO-РѕРїРёСЃР°РЅРёРµ вЂ” РѕС‚ 80 Р·РЅР°РєРѕРІ", ok: seoDescription.trim().length >= 80 },
-    { label: "РЈРєР°Р·Р°РЅ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ РёСЃС‚РѕС‡РЅРёРє", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
-    { label: "Р’СЃРµ РјРµСЃС‚Р° РґР»СЏ РёР·РѕР±СЂР°Р¶РµРЅРёР№ Р·Р°РјРµРЅРµРЅС‹", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
+    { label: "Заголовок и постоянный адрес", ok: title.trim().length >= 3 && slug.length >= 2 },
+    { label: "Рубрика выбрана", ok: Boolean(categoryId) },
+    { label: "Не менее 250 слов", ok: wordCount >= 250 },
+    { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
+    { label: "Описание карточки — от 80 знаков", ok: excerpt.trim().length >= 80 },
+    { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
+    { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
+    { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
+    { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
   ], [categoryId, contentHtml, coverAlt, coverUrl, excerpt, seoDescription, slug, sourceText, title, wordCount]);
   const publicationReady = publicationChecks.every((item) => item.ok);
 
   const setLink = () => {
     const previousUrl = editor?.getAttributes("link").href || "";
-    const url = window.prompt("РђРґСЂРµСЃ СЃСЃС‹Р»РєРё", previousUrl);
+    const url = window.prompt("Адрес ссылки", previousUrl);
     if (url === null || !editor) return;
     if (!url) editor.chain().focus().extendMarkRange("link").unsetLink().run();
     else editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
@@ -345,18 +345,18 @@ export default function ArticleEditor({
       : {};
     const url = window.prompt(
       editor.isActive("image")
-        ? "РќРѕРІС‹Р№ Р°РґСЂРµСЃ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ"
-        : "РђРґСЂРµСЃ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РёР· РјРµРґРёР°С‚РµРєРё",
+        ? "Новый адрес выбранного изображения"
+        : "Адрес изображения из медиатеки",
       typeof selectedImage.src === "string" ? selectedImage.src : ""
     );
     if (!url || !editor) return;
     const alt = window.prompt(
-      "РљСЂР°С‚РєРѕ РѕРїРёС€РёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґР»СЏ С‡РёС‚Р°С‚РµР»РµР№ Рё РїРѕРёСЃРєРѕРІС‹С… СЃРёСЃС‚РµРј",
+      "Кратко опишите изображение для читателей и поисковых систем",
       typeof selectedImage.alt === "string" ? selectedImage.alt : ""
     );
     if (alt === null) return;
     const caption = window.prompt(
-      "РџРѕРґРїРёСЃСЊ РїРѕРґ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)",
+      "Подпись под изображением (необязательно)",
       typeof selectedImage.caption === "string" ? selectedImage.caption : ""
     );
     if (caption === null) return;
@@ -371,15 +371,15 @@ export default function ArticleEditor({
     };
     if (editor.isActive("image")) {
       editor.chain().focus().updateAttributes("image", attributes).run();
-      setTemplateMessage("Р’С‹Р±СЂР°РЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ Р·Р°РјРµРЅРµРЅРѕ.");
+      setTemplateMessage("Выбранное изображение заменено.");
       return;
     }
     if (replaceSelectedMediaSlot(editor, attributes)) {
-      setTemplateMessage("РњРµСЃС‚Рѕ РґР»СЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ Р·Р°РїРѕР»РЅРµРЅРѕ.");
+      setTemplateMessage("Место для изображения заполнено.");
       return;
     }
     editor.chain().focus().setImage(attributes).run();
-    setTemplateMessage("РР·РѕР±СЂР°Р¶РµРЅРёРµ РІСЃС‚Р°РІР»РµРЅРѕ РІ РјР°С‚РµСЂРёР°Р».");
+    setTemplateMessage("Изображение вставлено в материал.");
   };
 
   const rememberImageSelection = () => {
@@ -431,11 +431,11 @@ export default function ArticleEditor({
       "image/avif",
     ]);
     if (!acceptedTypes.has(file.type)) {
-      setImageUploadError("Р’С‹Р±РµСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ JPEG, PNG, WebP РёР»Рё AVIF.");
+      setImageUploadError("Выберите изображение JPEG, PNG, WebP или AVIF.");
       return;
     }
     if (file.size <= 0 || file.size > 12 * 1024 * 1024) {
-      setImageUploadError("Р Р°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ Р±РѕР»СЊС€Рµ 12 РњР‘.");
+      setImageUploadError("Размер изображения должен быть не больше 12 МБ.");
       return;
     }
 
@@ -459,12 +459,12 @@ export default function ArticleEditor({
     formData.set("source_url", "");
     formData.set("license_name", "");
     formData.set("license_url", "");
-    formData.set("collection_name", target === "cover" ? "РћР±Р»РѕР¶РєРё СЃС‚Р°С‚РµР№" : "РЎС‚Р°С‚СЊРё");
+    formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
     formData.set("image_usage", target);
 
     setImageUploadTarget(target);
     setImageUploadError("");
-    setImageUploadMessage("РР·РѕР±СЂР°Р¶РµРЅРёРµ Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ Рё РѕРїС‚РёРјРёР·РёСЂСѓРµС‚СЃСЏвЂ¦");
+    setImageUploadMessage("Изображение загружается и оптимизируется…");
     try {
       const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
@@ -476,18 +476,18 @@ export default function ArticleEditor({
         error?: string;
       };
       if (!response.ok || !result.ok || !result.url) {
-        throw new Error(result.error || "РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ.");
+        throw new Error(result.error || "Не удалось загрузить изображение.");
       }
 
       if (target === "cover") {
         setCoverUrl(result.url);
         if (!coverAlt.trim()) setCoverAlt(altText);
-        setImageUploadMessage("РћР±Р»РѕР¶РєР° Р·Р°РіСЂСѓР¶РµРЅР°, РѕРїС‚РёРјРёР·РёСЂРѕРІР°РЅР° РІ WebP Рё СѓСЃС‚Р°РЅРѕРІР»РµРЅР°.");
+        setImageUploadMessage("Обложка загружена, оптимизирована в WebP и установлена.");
         setIsDirty(true);
         return;
       }
 
-      if (!editor) throw new Error("Р РµРґР°РєС‚РѕСЂ РµС‰С‘ РЅРµ РіРѕС‚РѕРІ. РџРѕРІС‚РѕСЂРёС‚Рµ Р·Р°РіСЂСѓР·РєСѓ.");
+      if (!editor) throw new Error("Редактор ещё не готов. Повторите загрузку.");
       const attributes = {
         src: result.url,
         alt: altText,
@@ -499,7 +499,7 @@ export default function ArticleEditor({
       };
       if (selection.selectedImage) {
         editor.chain().focus().updateAttributes("image", attributes).run();
-        setImageUploadMessage("Р’С‹Р±СЂР°РЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ Р·Р°РјРµРЅРµРЅРѕ С„Р°Р№Р»РѕРј СЃ РєРѕРјРїСЊСЋС‚РµСЂР°.");
+        setImageUploadMessage("Выбранное изображение заменено файлом с компьютера.");
       } else if (typeof selection.insertionPos === "number") {
         const insertionPos = Math.max(
           0,
@@ -510,19 +510,19 @@ export default function ArticleEditor({
           .focus()
           .insertContentAt(insertionPos, { type: "image", attrs: attributes })
           .run();
-        setImageUploadMessage("РР·РѕР±СЂР°Р¶РµРЅРёРµ РІСЃС‚Р°РІР»РµРЅРѕ С‚РѕС‡РЅРѕ РІ РІС‹Р±СЂР°РЅРЅРѕРµ РјРµСЃС‚Рѕ С‚РµРєСЃС‚Р°.");
+        setImageUploadMessage("Изображение вставлено точно в выбранное место текста.");
       } else if (replaceSelectedMediaSlot(editor, attributes)) {
-        setImageUploadMessage("РњРµСЃС‚Рѕ РґР»СЏ С„РѕС‚РѕРіСЂР°С„РёРё Р·Р°РїРѕР»РЅРµРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рј РёР·РѕР±СЂР°Р¶РµРЅРёРµРј.");
+        setImageUploadMessage("Место для фотографии заполнено загруженным изображением.");
       } else {
         editor.chain().focus().setImage(attributes).run();
-        setImageUploadMessage("РР·РѕР±СЂР°Р¶РµРЅРёРµ Р·Р°РіСЂСѓР¶РµРЅРѕ Рё РІСЃС‚Р°РІР»РµРЅРѕ РІ СЃС‚Р°С‚СЊСЋ.");
+        setImageUploadMessage("Изображение загружено и вставлено в статью.");
       }
-      setTemplateMessage("РР·РѕР±СЂР°Р¶РµРЅРёРµ РіРѕС‚РѕРІРѕ. РџСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РІС‹Р±РµСЂРёС‚Рµ РµРіРѕ Рё РёР·РјРµРЅРёС‚Рµ СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ.");
+      setTemplateMessage("Изображение готово. При необходимости выберите его и измените расположение.");
       setIsDirty(true);
     } catch (error) {
       setImageUploadMessage("");
       setImageUploadError(
-        error instanceof Error ? error.message : "РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ."
+        error instanceof Error ? error.message : "Не удалось загрузить изображение."
       );
     } finally {
       setImageUploadTarget(null);
@@ -534,18 +534,18 @@ export default function ArticleEditor({
   const setImageLayout = (layout: EditorialImageLayout) => {
     if (!editor?.isActive("image")) {
       setTemplateMessage(
-        "РЎРЅР°С‡Р°Р»Р° С‰С‘Р»РєРЅРёС‚Рµ РїРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЋ РІ С‚РµРєСЃС‚Рµ, Р·Р°С‚РµРј РІС‹Р±РµСЂРёС‚Рµ РµРіРѕ РїРѕР»РѕР¶РµРЅРёРµ."
+        "Сначала щёлкните по изображению в тексте, затем выберите его положение."
       );
       return;
     }
     editor.chain().focus().updateAttributes("image", { layout }).run();
     const labels: Record<EditorialImageLayout, string> = {
-      wide: "РЅР° РІСЃСЋ С€РёСЂРёРЅСѓ",
-      normal: "РїРѕ С†РµРЅС‚СЂСѓ",
-      left: "СЃР»РµРІР° СЃ РѕР±С‚РµРєР°РЅРёРµРј",
-      right: "СЃРїСЂР°РІР° СЃ РѕР±С‚РµРєР°РЅРёРµРј",
+      wide: "на всю ширину",
+      normal: "по центру",
+      left: "слева с обтеканием",
+      right: "справа с обтеканием",
     };
-    setTemplateMessage(`РР·РѕР±СЂР°Р¶РµРЅРёРµ СЂР°СЃРїРѕР»РѕР¶РµРЅРѕ ${labels[layout]}.`);
+    setTemplateMessage(`Изображение расположено ${labels[layout]}.`);
   };
 
   const addMediaCollection = (kind: "gallery" | "slider") => {
@@ -562,15 +562,15 @@ export default function ArticleEditor({
       .filter((item) => /^https:\/\//iu.test(item))
       .slice(0, 8);
     if (!urls.length) {
-      setMediaComposerError("Р”РѕР±Р°РІСЊС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ РєРѕСЂСЂРµРєС‚РЅС‹Р№ HTTPS-Р°РґСЂРµСЃ.");
+      setMediaComposerError("Добавьте хотя бы один корректный HTTPS-адрес.");
       return;
     }
     if (mediaComposerKind === "slider") insertEditorialSlider(editor, urls);
     else insertEditorialGallery(editor, urls);
     setTemplateMessage(
       mediaComposerKind === "slider"
-        ? "РЎР»Р°Р№РґРµСЂ РІСЃС‚Р°РІР»РµРЅ: РЅР° СЃР°Р№С‚Рµ РїРѕСЏРІСЏС‚СЃСЏ СЃС‚СЂРµР»РєРё, С‚РѕС‡РєРё Рё СЃРІР°Р№Рї."
-        : "Р“Р°Р»РµСЂРµСЏ РІСЃС‚Р°РІР»РµРЅР° РІ РјР°С‚РµСЂРёР°Р»."
+        ? "Слайдер вставлен: на сайте появятся стрелки, точки и свайп."
+        : "Галерея вставлена в материал."
     );
     setMediaComposerKind(null);
     setMediaComposerValue("");
@@ -582,7 +582,7 @@ export default function ArticleEditor({
     if (
       editor.getText().trim() &&
       !window.confirm(
-        `Р—Р°РјРµРЅРёС‚СЊ С‚РµРєСѓС‰РёР№ С‚РµРєСЃС‚ С€Р°Р±Р»РѕРЅРѕРј В«${label}В»? Р›РѕРєР°Р»СЊРЅР°СЏ СЂРµР·РµСЂРІРЅР°СЏ РєРѕРїРёСЏ СЃРѕС…СЂР°РЅРёС‚СЃСЏ.`
+        `Заменить текущий текст шаблоном «${label}»? Локальная резервная копия сохранится.`
       )
     ) {
       return;
@@ -604,18 +604,18 @@ export default function ArticleEditor({
     setIsDirty(true);
     setHasRecoveryCopy(true);
     setTemplateMessage(
-      `РЁР°Р±Р»РѕРЅ В«${label}В» РІСЃС‚Р°РІР»РµРЅ. Р—Р°РјРµРЅРёС‚Рµ СЂРµРґР°РєС†РёРѕРЅРЅС‹Рµ РїРѕРґСЃРєР°Р·РєРё СЃРІРѕРёРј С‚РµРєСЃС‚РѕРј Рё РёР·РѕР±СЂР°Р¶РµРЅРёСЏРјРё.`
+      `Шаблон «${label}» вставлен. Замените редакционные подсказки своим текстом и изображениями.`
     );
   };
 
   const saveCustomTemplate = () => {
     if (!editor || !editor.getText().trim()) {
-      window.alert("РЎРЅР°С‡Р°Р»Р° РїРѕРґРіРѕС‚РѕРІСЊС‚Рµ СЃС‚СЂСѓРєС‚СѓСЂСѓ РјР°С‚РµСЂРёР°Р»Р° РІ СЂРµРґР°РєС‚РѕСЂРµ.");
+      window.alert("Сначала подготовьте структуру материала в редакторе.");
       return;
     }
-    const label = window.prompt("РќР°Р·РІР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРѕРіРѕ С€Р°Р±Р»РѕРЅР°")?.trim();
+    const label = window.prompt("Название собственного шаблона")?.trim();
     if (!label) return;
-    const visibility = window.confirm("РЎРґРµР»Р°С‚СЊ С€Р°Р±Р»РѕРЅ РѕР±С‰РёРј РґР»СЏ РІСЃРµР№ СЂРµРґР°РєС†РёРё?") ? "shared" : "personal";
+    const visibility = window.confirm("Сделать шаблон общим для всей редакции?") ? "shared" : "personal";
     setTemplateMessage("");
     startTemplateTransition(async () => {
       const result = await saveEditorTemplateAction({
@@ -625,7 +625,7 @@ export default function ArticleEditor({
         visibility,
       });
       if (result.error || !result.template) {
-        setTemplateMessage(result.error || "РЁР°Р±Р»РѕРЅ РЅРµ СЃРѕС…СЂР°РЅС‘РЅ.");
+        setTemplateMessage(result.error || "Шаблон не сохранён.");
         return;
       }
       setCustomTemplates((current) => [
@@ -634,19 +634,19 @@ export default function ArticleEditor({
       ]);
       const legacy = customTemplates.filter((item) => item.localOnly && item.label !== result.template!.label);
       window.localStorage.setItem(LEGACY_TEMPLATES_KEY, JSON.stringify(legacy));
-      setTemplateMessage("РЁР°Р±Р»РѕРЅ СЃРѕС…СЂР°РЅС‘РЅ РІ СЂРµРґР°РєС†РёРѕРЅРЅРѕР№ Р±Р°Р·Рµ.");
+      setTemplateMessage("Шаблон сохранён в редакционной базе.");
     });
   };
 
   const clearCustomTemplates = () => {
-    if (!customTemplates.length || !window.confirm("РЈРґР°Р»РёС‚СЊ РґРѕСЃС‚СѓРїРЅС‹Рµ СЃРѕР±СЃС‚РІРµРЅРЅС‹Рµ С€Р°Р±Р»РѕРЅС‹? РћР±С‰РёРµ С€Р°Р±Р»РѕРЅС‹ РґСЂСѓРіРёС… СЂРµРґР°РєС‚РѕСЂРѕРІ СЃРѕС…СЂР°РЅСЏС‚СЃСЏ.")) return;
+    if (!customTemplates.length || !window.confirm("Удалить доступные собственные шаблоны? Общие шаблоны других редакторов сохранятся.")) return;
     startTemplateTransition(async () => {
       const deletable = customTemplates.filter((template) => template.canDelete && !template.localOnly);
       const results = await Promise.all(deletable.map((template) => deleteEditorTemplateAction(template.id)));
       const failedIds = new Set(deletable.filter((_, index) => results[index]?.error).map((item) => item.id));
       setCustomTemplates((current) => current.filter((template) => !template.localOnly && (!template.canDelete || failedIds.has(template.id))));
       window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
-      setTemplateMessage(failedIds.size ? "Р§Р°СЃС‚СЊ С€Р°Р±Р»РѕРЅРѕРІ РЅРµ СѓРґР°Р»РѕСЃСЊ СѓРґР°Р»РёС‚СЊ." : "РЎРѕР±СЃС‚РІРµРЅРЅС‹Рµ С€Р°Р±Р»РѕРЅС‹ СѓРґР°Р»РµРЅС‹.");
+      setTemplateMessage(failedIds.size ? "Часть шаблонов не удалось удалить." : "Собственные шаблоны удалены.");
     });
   };
 
@@ -663,7 +663,7 @@ export default function ArticleEditor({
       };
       if (
         !window.confirm(
-          "Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р»РѕРєР°Р»СЊРЅСѓСЋ СЂРµР·РµСЂРІРЅСѓСЋ РєРѕРїРёСЋ? РўРµРєСѓС‰РёР№ С‚РµРєСЃС‚ РІ СЂРµРґР°РєС‚РѕСЂРµ Р±СѓРґРµС‚ Р·Р°РјРµРЅС‘РЅ."
+          "Восстановить локальную резервную копию? Текущий текст в редакторе будет заменён."
         )
       ) {
         return;
@@ -676,7 +676,7 @@ export default function ArticleEditor({
       editor.commands.setContent(recovery.contentHtml || "");
       setIsDirty(true);
     } catch {
-      window.alert("Р›РѕРєР°Р»СЊРЅР°СЏ РєРѕРїРёСЏ РїРѕРІСЂРµР¶РґРµРЅР° Рё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅР°.");
+      window.alert("Локальная копия повреждена и не может быть восстановлена.");
     }
   };
 
@@ -696,7 +696,7 @@ export default function ArticleEditor({
         <div className="editor-main">
           <section className="panel">
             <label className="field">
-              <span>Р—Р°РіРѕР»РѕРІРѕРє</span>
+              <span>Заголовок</span>
               <input
                 className="editor-title"
                 name="title"
@@ -706,37 +706,37 @@ export default function ArticleEditor({
                   setTitle(event.target.value);
                   setIsDirty(true);
                 }}
-                placeholder="Р—Р°РіРѕР»РѕРІРѕРє РјР°С‚РµСЂРёР°Р»Р°"
+                placeholder="Заголовок материала"
                 required
               />
             </label>
             <label className="field">
-              <span>РџРѕРґР·Р°РіРѕР»РѕРІРѕРє</span>
+              <span>Подзаголовок</span>
               <input
                 name="subtitle"
                 defaultValue={article.subtitle}
                 maxLength={360}
-                placeholder="РќРµРѕР±СЏР·Р°С‚РµР»СЊРЅР°СЏ СЃС‚СЂРѕРєР° РїРѕРґ Р·Р°РіРѕР»РѕРІРєРѕРј"
+                placeholder="Необязательная строка под заголовком"
               />
             </label>
             <label className="field">
-              <span>РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ</span>
+              <span>Краткое описание</span>
               <textarea
                 name="excerpt"
                 value={excerpt}
                 onChange={(event) => setExcerpt(event.target.value)}
                 maxLength={700}
-                placeholder="Р”Р»СЏ РєР°СЂС‚РѕС‡РµРє, РїРѕРёСЃРєР° Рё СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚РµР№"
+                placeholder="Для карточек, поиска и социальных сетей"
               />
             </label>
           </section>
 
           <section className="panel editor-surface">
             <div className="editor-template-bar">
-              <span>РќР°С‡Р°С‚СЊ СЃ СЂРµРґР°РєС†РёРѕРЅРЅРѕРіРѕ С€Р°Р±Р»РѕРЅР°</span>
+              <span>Начать с редакционного шаблона</span>
               <small>
-                Р’С‹Р±РµСЂРёС‚Рµ СЃС‚СЂСѓРєС‚СѓСЂСѓ вЂ” РѕРЅР° СЃСЂР°Р·Сѓ РїРѕСЏРІРёС‚СЃСЏ РІ СЂРµРґР°РєС‚РѕСЂРµ. Р—Р°С‚РµРј
-                Р·Р°РјРµРЅРёС‚Рµ РїРѕРґСЃРєР°Р·РєРё СЃРІРѕРёРј С‚РµРєСЃС‚РѕРј, С„РѕС‚РѕРіСЂР°С„РёСЏРјРё Рё РіР°Р»РµСЂРµСЏРјРё.
+                Выберите структуру — она сразу появится в редакторе. Затем
+                замените подсказки своим текстом, фотографиями и галереями.
               </small>
               <div>
                 {articleTemplates.map((template) => (
@@ -753,73 +753,73 @@ export default function ArticleEditor({
                     type="button"
                     key={template.id}
                     onClick={() => applyTemplate(template.html, template.label)}
-                    title={template.localOnly ? "Р›РѕРєР°Р»СЊРЅС‹Р№ С€Р°Р±Р»РѕРЅ вЂ” СЃРѕС…СЂР°РЅРёС‚Рµ РµРіРѕ Р·Р°РЅРѕРІРѕ, С‡С‚РѕР±С‹ РїРµСЂРµРЅРµСЃС‚Рё РІ Р±Р°Р·Сѓ" : template.visibility === "shared" ? "РћР±С‰РёР№ С€Р°Р±Р»РѕРЅ СЂРµРґР°РєС†РёРё" : "Р›РёС‡РЅС‹Р№ С€Р°Р±Р»РѕРЅ"}
+                    title={template.localOnly ? "Локальный шаблон — сохраните его заново, чтобы перенести в базу" : template.visibility === "shared" ? "Общий шаблон редакции" : "Личный шаблон"}
                   >
-                    {template.visibility === "shared" ? "в—†" : "в…"} {template.label}{template.localOnly ? " В· Р»РѕРєР°Р»СЊРЅС‹Р№" : ""}
+                    {template.visibility === "shared" ? "◆" : "★"} {template.label}{template.localOnly ? " · локальный" : ""}
                   </button>
                 ))}
                 <button type="button" onClick={saveCustomTemplate} disabled={templatePending}>
-                  пј‹ РЎРѕС…СЂР°РЅРёС‚СЊ РєР°Рє С€Р°Р±Р»РѕРЅ
+                  ＋ Сохранить как шаблон
                 </button>
                 <NextLink
                   className="editor-template-link"
-                  href={withClientAdminPath("/media")}
+                  href="/media"
                   target="_blank"
                 >
-                  РњРµРґРёР°С‚РµРєР° в†—
+                  Медиатека ↗
                 </NextLink>
                 {customTemplates.length > 0 && (
                   <button type="button" onClick={clearCustomTemplates} disabled={templatePending}>
-                    РЈРґР°Р»РёС‚СЊ РјРѕРё С€Р°Р±Р»РѕРЅС‹
+                    Удалить мои шаблоны
                   </button>
                 )}
               </div>
               {templateMessage && <small role="status">{templateMessage}</small>}
             </div>
-            <div className="editor-toolbar" aria-label="РџР°РЅРµР»СЊ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ">
-              <ToolbarButton label="Р–" active={editor?.isActive("bold")} onClick={() => editor?.chain().focus().toggleBold().run()} />
-              <ToolbarButton label="Рљ" active={editor?.isActive("italic")} onClick={() => editor?.chain().focus().toggleItalic().run()} />
-              <ToolbarButton label="Р§" active={editor?.isActive("underline")} onClick={() => editor?.chain().focus().toggleUnderline().run()} />
-              <ToolbarButton label="Р—Р°С‡С‘СЂРєРЅСѓС‚С‹Р№" active={editor?.isActive("strike")} onClick={() => editor?.chain().focus().toggleStrike().run()} />
+            <div className="editor-toolbar" aria-label="Панель форматирования">
+              <ToolbarButton label="Ж" active={editor?.isActive("bold")} onClick={() => editor?.chain().focus().toggleBold().run()} />
+              <ToolbarButton label="К" active={editor?.isActive("italic")} onClick={() => editor?.chain().focus().toggleItalic().run()} />
+              <ToolbarButton label="Ч" active={editor?.isActive("underline")} onClick={() => editor?.chain().focus().toggleUnderline().run()} />
+              <ToolbarButton label="Зачёркнутый" active={editor?.isActive("strike")} onClick={() => editor?.chain().focus().toggleStrike().run()} />
               <ToolbarButton label="H2" active={editor?.isActive("heading", { level: 2 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} />
               <ToolbarButton label="H3" active={editor?.isActive("heading", { level: 3 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} />
               <ToolbarButton label="H4" active={editor?.isActive("heading", { level: 4 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 4 }).run()} />
-              <ToolbarButton label="вЂў РЎРїРёСЃРѕРє" active={editor?.isActive("bulletList")} onClick={() => editor?.chain().focus().toggleBulletList().run()} />
-              <ToolbarButton label="1. РЎРїРёСЃРѕРє" active={editor?.isActive("orderedList")} onClick={() => editor?.chain().focus().toggleOrderedList().run()} />
-              <ToolbarButton label="Р¦РёС‚Р°С‚Р°" active={editor?.isActive("blockquote")} onClick={() => editor?.chain().focus().toggleBlockquote().run()} />
-              <ToolbarButton label="Р Р°Р·РґРµР»РёС‚РµР»СЊ" onClick={() => editor?.chain().focus().setHorizontalRule().run()} />
-              <ToolbarButton label="Р¤Р°РєС‚" onClick={() => insertEditorialBlock(editor, "fact")} />
-              <ToolbarButton label="РђРєС†РµРЅС‚" onClick={() => insertEditorialBlock(editor, "accent")} />
-              <ToolbarButton label="2 РєРѕР»РѕРЅРєРё" onClick={() => insertEditorialBlock(editor, "columns")} />
-              <ToolbarButton label="РҐСЂРѕРЅРѕР»РѕРіРёСЏ" onClick={() => insertEditorialBlock(editor, "timeline")} />
-              <ToolbarButton label="Р¦РёС„СЂС‹" onClick={() => insertEditorialBlock(editor, "metrics")} />
-              <ToolbarButton label="Р¤РёРіСѓСЂР°-СЂР°Р·РґРµР»РёС‚РµР»СЊ" onClick={() => insertEditorialBlock(editor, "ornament")} />
-              <ToolbarButton label="РњРµСЃС‚Рѕ РґР»СЏ С„РѕС‚Рѕ" onClick={() => insertEditorialBlock(editor, "media")} />
-              <ToolbarButton label="РџРѕСЏРІР»РµРЅРёРµ в†‘" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
-              <ToolbarButton label="РџРѕСЏРІР»РµРЅРёРµ в†ђ" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
-              <ToolbarButton label="РњР°СЃС€С‚Р°Р±" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
-              <ToolbarButton label="Р‘РµР· Р°РЅРёРјР°С†РёРё" onClick={() => setEditorialBlockReveal(editor, "none")} />
-              <ToolbarButton label="РўР°Р±Р»РёС†Р°" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
-              <ToolbarButton label="РЎСЃС‹Р»РєР°" active={editor?.isActive("link")} onClick={setLink} />
+              <ToolbarButton label="• Список" active={editor?.isActive("bulletList")} onClick={() => editor?.chain().focus().toggleBulletList().run()} />
+              <ToolbarButton label="1. Список" active={editor?.isActive("orderedList")} onClick={() => editor?.chain().focus().toggleOrderedList().run()} />
+              <ToolbarButton label="Цитата" active={editor?.isActive("blockquote")} onClick={() => editor?.chain().focus().toggleBlockquote().run()} />
+              <ToolbarButton label="Разделитель" onClick={() => editor?.chain().focus().setHorizontalRule().run()} />
+              <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
+              <ToolbarButton label="Акцент" onClick={() => insertEditorialBlock(editor, "accent")} />
+              <ToolbarButton label="2 колонки" onClick={() => insertEditorialBlock(editor, "columns")} />
+              <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
+              <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
+              <ToolbarButton label="Фигура-разделитель" onClick={() => insertEditorialBlock(editor, "ornament")} />
+              <ToolbarButton label="Место для фото" onClick={() => insertEditorialBlock(editor, "media")} />
+              <ToolbarButton label="Появление ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
+              <ToolbarButton label="Появление ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
+              <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
+              <ToolbarButton label="Без анимации" onClick={() => setEditorialBlockReveal(editor, "none")} />
+              <ToolbarButton label="Таблица" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
+              <ToolbarButton label="Ссылка" active={editor?.isActive("link")} onClick={setLink} />
               <ToolbarButton
-                label={imageUploadTarget === "article" ? "Р—Р°РіСЂСѓР·РєР°вЂ¦" : "Р—Р°РіСЂСѓР·РёС‚СЊ С„РѕС‚Рѕ"}
+                label={imageUploadTarget === "article" ? "Загрузка…" : "Загрузить фото"}
                 active={imageUploadTarget === "article"}
                 onClick={() => openImagePicker("article")}
               />
-              <ToolbarButton label="Р¤РѕС‚Рѕ / Р·Р°РјРµРЅРёС‚СЊ" active={editor?.isActive("image")} onClick={addImage} />
-              <ToolbarButton label="Р¤РѕС‚Рѕ С€РёСЂРѕРєРѕ" onClick={() => setImageLayout("wide")} />
-              <ToolbarButton label="Р¤РѕС‚Рѕ С†РµРЅС‚СЂ" onClick={() => setImageLayout("normal")} />
-              <ToolbarButton label="Р¤РѕС‚Рѕ СЃР»РµРІР°" onClick={() => setImageLayout("left")} />
-              <ToolbarButton label="Р¤РѕС‚Рѕ СЃРїСЂР°РІР°" onClick={() => setImageLayout("right")} />
-              <ToolbarButton label="Р“Р°Р»РµСЂРµСЏ" onClick={() => addMediaCollection("gallery")} />
-              <ToolbarButton label="РЎР»Р°Р№РґРµСЂ" onClick={() => addMediaCollection("slider")} />
-              <ToolbarButton label="РЎР»РµРІР°" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
-              <ToolbarButton label="Р¦РµРЅС‚СЂ" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
-              <ToolbarButton label="РћС‡РёСЃС‚РёС‚СЊ С„РѕСЂРјР°С‚" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
-              <ToolbarButton label="в†¶" onClick={() => editor?.chain().focus().undo().run()} />
-              <ToolbarButton label="в†·" onClick={() => editor?.chain().focus().redo().run()} />
+              <ToolbarButton label="Фото / заменить" active={editor?.isActive("image")} onClick={addImage} />
+              <ToolbarButton label="Фото широко" onClick={() => setImageLayout("wide")} />
+              <ToolbarButton label="Фото центр" onClick={() => setImageLayout("normal")} />
+              <ToolbarButton label="Фото слева" onClick={() => setImageLayout("left")} />
+              <ToolbarButton label="Фото справа" onClick={() => setImageLayout("right")} />
+              <ToolbarButton label="Галерея" onClick={() => addMediaCollection("gallery")} />
+              <ToolbarButton label="Слайдер" onClick={() => addMediaCollection("slider")} />
+              <ToolbarButton label="Слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
+              <ToolbarButton label="Центр" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
+              <ToolbarButton label="Очистить формат" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
+              <ToolbarButton label="↶" onClick={() => editor?.chain().focus().undo().run()} />
+              <ToolbarButton label="↷" onClick={() => editor?.chain().focus().redo().run()} />
               <ToolbarButton
-                label={isFullscreen ? "РЎРІРµСЂРЅСѓС‚СЊ СЂРµРґР°РєС‚РѕСЂ" : "РќР° РІРµСЃСЊ СЌРєСЂР°РЅ"}
+                label={isFullscreen ? "Свернуть редактор" : "На весь экран"}
                 active={isFullscreen}
                 onClick={() => setIsFullscreen((value) => !value)}
               />
@@ -853,12 +853,12 @@ export default function ArticleEditor({
             >
               <strong>
                 {imageUploadTarget === "article"
-                  ? "РћРїС‚РёРјРёР·РёСЂСѓРµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµвЂ¦"
-                  : "РќР°Р¶РјРёС‚Рµ РёР»Рё РїРµСЂРµС‚Р°С‰РёС‚Рµ С„РѕС‚РѕРіСЂР°С„РёСЋ СЃСЋРґР°"}
+                  ? "Оптимизируем изображение…"
+                  : "Нажмите или перетащите фотографию сюда"}
               </strong>
               <span>
-                РћРЅР° Р·Р°РіСЂСѓР·РёС‚СЃСЏ СЃ РєРѕРјРїСЊСЋС‚РµСЂР°, РїСЂРµРѕР±СЂР°Р·СѓРµС‚СЃСЏ РІ WebP Рё РїРѕСЏРІРёС‚СЃСЏ РІ РјРµСЃС‚Рµ РєСѓСЂСЃРѕСЂР°.
-                Р•СЃР»Рё РІС‹Р±СЂР°РЅР° СЃС‚Р°СЂР°СЏ С„РѕС‚РѕРіСЂР°С„РёСЏ, РЅРѕРІР°СЏ Р·Р°РјРµРЅРёС‚ РµС‘.
+                Она загрузится с компьютера, преобразуется в WebP и появится в месте курсора.
+                Если выбрана старая фотография, новая заменит её.
               </span>
             </button>
             {imageUploadMessage && (
@@ -898,7 +898,7 @@ export default function ArticleEditor({
               <EditorContent editor={editor} />
               {isImageDraggingOverEditor && (
                 <span className="editor-drop-hint" aria-hidden="true">
-                  РћС‚РїСѓСЃС‚РёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ вЂ” РѕРЅРѕ РїРѕСЏРІРёС‚СЃСЏ РІ СЌС‚РѕРј РјРµСЃС‚Рµ СЃС‚Р°С‚СЊРё
+                  Отпустите изображение — оно появится в этом месте статьи
                 </span>
               )}
             </div>
@@ -907,41 +907,41 @@ export default function ArticleEditor({
 
         <aside className="editor-side">
           <section className="panel settings-stack">
-            <h2>РџСѓР±Р»РёРєР°С†РёСЏ</h2>
+            <h2>Публикация</h2>
             <label className="field">
-              <span>РЎС‚Р°С‚СѓСЃ</span>
+              <span>Статус</span>
               <select name="status" value={status} onChange={(event) => setStatus(event.target.value)}>
-                <option value="draft">Р§РµСЂРЅРѕРІРёРє</option>
-                <option value="review">РќР° РїСЂРѕРІРµСЂРєРµ</option>
-                <option value="scheduled">РџРѕ СЂР°СЃРїРёСЃР°РЅРёСЋ</option>
-                <option value="published">РћРїСѓР±Р»РёРєРѕРІР°РЅР°</option>
-                <option value="hidden">РЎРєСЂС‹С‚Р°</option>
-                <option value="archived">Р’ Р°СЂС…РёРІРµ</option>
+                <option value="draft">Черновик</option>
+                <option value="review">На проверке</option>
+                <option value="scheduled">По расписанию</option>
+                <option value="published">Опубликована</option>
+                <option value="hidden">Скрыта</option>
+                <option value="archived">В архиве</option>
               </select>
             </label>
             <label className="field">
-              <span>Р”Р°С‚Р° Рё РІСЂРµРјСЏ РїСѓР±Р»РёРєР°С†РёРё</span>
+              <span>Дата и время публикации</span>
               <input
                 type="datetime-local"
                 name="scheduled_at"
                 defaultValue={article.scheduled_at?.slice(0, 16) || ""}
               />
             </label>
-            <label><input type="checkbox" name="featured" defaultChecked={article.featured} /> Р’С‹Р±РѕСЂ СЂРµРґР°РєС†РёРё</label>
-            <label><input type="checkbox" name="show_on_homepage" defaultChecked={article.show_on_homepage} /> РџРѕРєР°Р·С‹РІР°С‚СЊ РЅР° РіР»Р°РІРЅРѕР№</label>
-            <label><input type="checkbox" name="pinned" defaultChecked={article.pinned} /> Р—Р°РєСЂРµРїРёС‚СЊ</label>
+            <label><input type="checkbox" name="featured" defaultChecked={article.featured} /> Выбор редакции</label>
+            <label><input type="checkbox" name="show_on_homepage" defaultChecked={article.show_on_homepage} /> Показывать на главной</label>
+            <label><input type="checkbox" name="pinned" defaultChecked={article.pinned} /> Закрепить</label>
           </section>
 
           <section className="panel settings-stack">
-            <h2>Р СѓР±СЂРёРєР°</h2>
+            <h2>Рубрика</h2>
             <label className="field">
-              <span>РћСЃРЅРѕРІРЅР°СЏ СЂСѓР±СЂРёРєР°</span>
+              <span>Основная рубрика</span>
               <select
                 name="category_id"
                 value={categoryId}
                 onChange={(event) => setCategoryId(event.target.value)}
               >
-                <option value="">Р‘РµР· СЂСѓР±СЂРёРєРё</option>
+                <option value="">Без рубрики</option>
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>{category.name}</option>
                 ))}
@@ -950,7 +950,7 @@ export default function ArticleEditor({
           </section>
 
           <section className="panel settings-stack">
-            <h2>РћР±Р»РѕР¶РєР°</h2>
+            <h2>Обложка</h2>
             <input
               ref={coverFileInputRef}
               className="visually-hidden-file"
@@ -978,47 +978,47 @@ export default function ArticleEditor({
               disabled={imageUploadTarget !== null}
             >
               {coverUrl ? (
-                <img src={coverUrl} alt={coverAlt || "РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ РѕР±Р»РѕР¶РєРё СЃС‚Р°С‚СЊРё"} />
+                <img src={coverUrl} alt={coverAlt || "Предпросмотр обложки статьи"} />
               ) : (
-                <span className="cover-upload-mark" aria-hidden="true">пј‹</span>
+                <span className="cover-upload-mark" aria-hidden="true">＋</span>
               )}
               <strong>
                 {imageUploadTarget === "cover"
-                  ? "Р—Р°РіСЂСѓР¶Р°РµРј РѕР±Р»РѕР¶РєСѓвЂ¦"
+                  ? "Загружаем обложку…"
                   : coverUrl
-                    ? "РќР°Р¶РјРёС‚Рµ, С‡С‚РѕР±С‹ Р·Р°РјРµРЅРёС‚СЊ РѕР±Р»РѕР¶РєСѓ"
-                    : "Р’С‹Р±СЂР°С‚СЊ РѕР±Р»РѕР¶РєСѓ СЃ РєРѕРјРїСЊСЋС‚РµСЂР°"}
+                    ? "Нажмите, чтобы заменить обложку"
+                    : "Выбрать обложку с компьютера"}
               </strong>
               <small>
-                РђРІС‚РѕРїРѕРґРіРѕРЅРєР° Р±РµР· РѕР±СЂРµР·РєРё В· JPEG, PNG, WebP РёР»Рё AVIF В· РґРѕ 12 РњР‘
+                Автоподгонка без обрезки · JPEG, PNG, WebP или AVIF · до 12 МБ
               </small>
             </button>
             <label className="field">
-              <span>РђРґСЂРµСЃ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ</span>
+              <span>Адрес изображения</span>
               <input
                 type="url"
                 name="cover_external_url"
                 value={coverUrl}
                 onChange={(event) => setCoverUrl(event.target.value)}
-                placeholder="https://вЂ¦"
+                placeholder="https://…"
               />
             </label>
             <label className="field">
-              <span>РћРїРёСЃР°РЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ</span>
+              <span>Описание изображения</span>
               <textarea
                 name="cover_alt"
                 value={coverAlt}
                 onChange={(event) => setCoverAlt(event.target.value)}
                 maxLength={500}
-                placeholder="Р§С‚Рѕ РёР·РѕР±СЂР°Р¶РµРЅРѕ вЂ” РґР»СЏ РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё Рё РїРѕРёСЃРєР°"
+                placeholder="Что изображено — для доступности и поиска"
               />
             </label>
           </section>
 
           <section className="panel settings-stack">
-            <h2>РђРґСЂРµСЃ Рё SEO</h2>
+            <h2>Адрес и SEO</h2>
             <label className="field">
-              <span>РђРґСЂРµСЃ СЃС‚Р°С‚СЊРё</span>
+              <span>Адрес статьи</span>
               <input
                 name="slug"
                 value={slug}
@@ -1031,8 +1031,8 @@ export default function ArticleEditor({
               <span className="slug-control-row">
                 <small>
                   {!slugEdited
-                    ? "РђРґСЂРµСЃ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РјРµРЅСЏРµС‚СЃСЏ РІРјРµСЃС‚Рµ СЃ Р·Р°РіРѕР»РѕРІРєРѕРј."
-                    : "РђРґСЂРµСЃ Р·Р°РєСЂРµРїР»С‘РЅ РІСЂСѓС‡РЅСѓСЋ Рё Р±РѕР»СЊС€Рµ РЅРµ РёР·РјРµРЅРёС‚СЃСЏ РѕС‚ Р·Р°РіРѕР»РѕРІРєР°."}
+                    ? "Адрес автоматически меняется вместе с заголовком."
+                    : "Адрес закреплён вручную и больше не изменится от заголовка."}
                 </small>
                 <button
                   className="text-button"
@@ -1044,7 +1044,7 @@ export default function ArticleEditor({
                     setIsDirty(true);
                   }}
                 >
-                  РЎРѕР·РґР°РІР°С‚СЊ РёР· Р·Р°РіРѕР»РѕРІРєР°
+                  Создавать из заголовка
                 </button>
               </span>
               <small>
@@ -1056,36 +1056,36 @@ export default function ArticleEditor({
               </small>
             </label>
             <label className="field">
-              <span>РЎС‚Р°СЂС‹Р№ Р°РґСЂРµСЃ вЂ” С‚РѕР»СЊРєРѕ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚СЊ</span>
+              <span>Старый адрес — только совместимость</span>
               <input
                 name="legacy_path"
                 defaultValue={article.legacy_path || ""}
-                placeholder="/read/page-article/вЂ¦"
+                placeholder="/read/page-article/…"
               />
               <small>
-                РќРµ РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ С‡РёС‚Р°С‚РµР»СЏРј Рё РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РЅРѕРІС‹С… СЃСЃС‹Р»РєР°С….
-                РќСѓР¶РµРЅ С‚РѕР»СЊРєРѕ РґР»СЏ Р±РµСЃС€РѕРІРЅРѕРіРѕ 301вЂ‘РїРµСЂРµС…РѕРґР° СЃРѕ СЃС‚Р°СЂС‹С… РїСѓР±Р»РёРєР°С†РёР№.
+                Не показывается читателям и не используется в новых ссылках.
+                Нужен только для бесшовного 301‑перехода со старых публикаций.
               </small>
             </label>
             <label className="field">
-              <span>SEO-Р·Р°РіРѕР»РѕРІРѕРє</span>
+              <span>SEO-заголовок</span>
               <input name="seo_title" defaultValue={article.seo_title || ""} maxLength={180} />
             </label>
             <label className="field">
-              <span>РћРїРёСЃР°РЅРёРµ РґР»СЏ РїРѕРёСЃРєР°</span>
+              <span>Описание для поиска</span>
               <textarea name="seo_description" value={seoDescription} onChange={(event) => setSeoDescription(event.target.value)} maxLength={400} />
             </label>
             <label className="field">
-              <span>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°</span>
+              <span>Ключевые слова</span>
               <textarea
                 name="seo_keywords"
                 defaultValue={(article.seo_keywords || []).join(", ")}
                 maxLength={1000}
-                placeholder="Р»РёС‚РµСЂР°С‚СѓСЂР°, Р°РІС‚РѕСЂ, РЅР°Р·РІР°РЅРёРµ РєРЅРёРіРё"
+                placeholder="литература, автор, название книги"
               />
             </label>
             <label className="field">
-              <span>РўРµРєСѓС‰РёР№ РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ Р°РґСЂРµСЃ</span>
+              <span>Текущий постоянный адрес</span>
               <input
                 type="url"
                 name="canonical_url"
@@ -1094,16 +1094,16 @@ export default function ArticleEditor({
                 placeholder={generatedCanonical}
               />
               <small>
-                РЎС‚СЂРѕРёС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РёР· СЂСѓР±СЂРёРєРё Рё РЅР°Р·РІР°РЅРёСЏ. РќРѕРІС‹Рµ РїСѓР±Р»РёРєР°С†РёРё
-                РІСЃРµРіРґР° РёСЃРїРѕР»СЊР·СѓСЋС‚ СЌС‚РѕС‚ РїРѕРЅСЏС‚РЅС‹Р№ Р°РґСЂРµСЃ.
+                Строится автоматически из рубрики и названия. Новые публикации
+                всегда используют этот понятный адрес.
               </small>
             </label>
             <label className="field">
-              <span>Open Graph вЂ” Р·Р°РіРѕР»РѕРІРѕРє</span>
+              <span>Open Graph — заголовок</span>
               <input name="og_title" defaultValue={article.og_title || ""} maxLength={180} />
             </label>
             <label className="field">
-              <span>Open Graph вЂ” РѕРїРёСЃР°РЅРёРµ</span>
+              <span>Open Graph — описание</span>
               <textarea name="og_description" defaultValue={article.og_description || ""} maxLength={400} />
             </label>
             <label>
@@ -1112,36 +1112,36 @@ export default function ArticleEditor({
                 name="allow_indexing"
                 defaultChecked={article.allow_indexing !== false}
               />{" "}
-              Р Р°Р·СЂРµС€РёС‚СЊ РёРЅРґРµРєСЃР°С†РёСЋ РїРѕРёСЃРєРѕРІС‹РјРё СЃРёСЃС‚РµРјР°РјРё
+              Разрешить индексацию поисковыми системами
             </label>
           </section>
 
           <section className="panel settings-stack publication-checklist" aria-labelledby="publication-checklist-title">
-            <h2 id="publication-checklist-title">РљРѕРЅС‚СЂРѕР»СЊ РїРµСЂРµРґ РїСѓР±Р»РёРєР°С†РёРµР№</h2>
+            <h2 id="publication-checklist-title">Контроль перед публикацией</h2>
             <ul>
               {publicationChecks.map((item) => (
                 <li className={item.ok ? "is-ready" : "is-missing"} key={item.label}>
-                  <span aria-hidden="true">{item.ok ? "вњ“" : "в—‹"}</span>{item.label}
+                  <span aria-hidden="true">{item.ok ? "✓" : "○"}</span>{item.label}
                 </li>
               ))}
             </ul>
-            <p>{publicationReady ? "РњР°С‚РµСЂРёР°Р» РіРѕС‚РѕРІ Рє РІС‹РїСѓСЃРєСѓ." : "Р§РµСЂРЅРѕРІРёРє РјРѕР¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ. Р”Р»СЏ РІС‹РїСѓСЃРєР° Р·Р°РІРµСЂС€РёС‚Рµ РѕС‚РјРµС‡РµРЅРЅС‹Рµ РїСѓРЅРєС‚С‹."}</p>
+            <p>{publicationReady ? "Материал готов к выпуску." : "Черновик можно сохранять. Для выпуска завершите отмеченные пункты."}</p>
             <input type="hidden" name="publication_ready" value={publicationReady ? "yes" : "no"} />
           </section>
 
           <section className="panel settings-stack">
-            <h2>РСЃС‚РѕС‡РЅРёРєРё Рё Р±РёР±Р»РёРѕРіСЂР°С„РёСЏ</h2>
+            <h2>Источники и библиография</h2>
             <label className="field">
-              <span>РСЃС‚РѕС‡РЅРёРєРё вЂ” РїРѕ РѕРґРЅРѕРјСѓ РЅР° СЃС‚СЂРѕРєСѓ</span>
+              <span>Источники — по одному на строку</span>
               <textarea
                 name="sources"
                 value={sourceText}
                 onChange={(event) => setSourceText(event.target.value)}
-                placeholder="РќР°Р·РІР°РЅРёРµ вЂ” https://вЂ¦"
+                placeholder="Название — https://…"
               />
             </label>
             <label className="field">
-              <span>Р‘РёР±Р»РёРѕРіСЂР°С„РёСЏ вЂ” РїРѕ РѕРґРЅРѕР№ Р·Р°РїРёСЃРё РЅР° СЃС‚СЂРѕРєСѓ</span>
+              <span>Библиография — по одной записи на строку</span>
               <textarea
                 name="bibliography"
                 defaultValue={listValue(article.bibliography)}
@@ -1167,26 +1167,26 @@ export default function ArticleEditor({
           >
             <div className="editor-media-modal-heading">
               <div>
-                <span>РР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚Р°С‚СЊРё</span>
+                <span>Изображения статьи</span>
                 <h2 id="editor-media-modal-title">
                   {mediaComposerKind === "slider"
-                    ? "РЎРѕР±СЂР°С‚СЊ СЃР»Р°Р№РґРµСЂ"
-                    : "РЎРѕР±СЂР°С‚СЊ РіР°Р»РµСЂРµСЋ"}
+                    ? "Собрать слайдер"
+                    : "Собрать галерею"}
                 </h2>
               </div>
               <button
                 type="button"
-                aria-label="Р—Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ"
+                aria-label="Закрыть окно"
                 onClick={() => setMediaComposerKind(null)}
               >
-                Г—
+                ×
               </button>
             </div>
             <p>
-              Р’СЃС‚Р°РІСЊС‚Рµ РґРѕ РІРѕСЃСЊРјРё HTTPS-Р°РґСЂРµСЃРѕРІ вЂ” РїРѕ РѕРґРЅРѕРјСѓ РІ СЃС‚СЂРѕРєРµ. РР·РѕР±СЂР°Р¶РµРЅРёСЏ
-              РѕСЃС‚Р°РЅСѓС‚СЃСЏ РѕРґРЅРёРј Р±Р»РѕРєРѕРј; РїРѕСЂСЏРґРѕРє СЃС‚СЂРѕРє СЃС‚Р°РЅРµС‚ РїРѕСЂСЏРґРєРѕРј РєР°РґСЂРѕРІ.
-              РџРѕСЃР»Рµ РІСЃС‚Р°РІРєРё РІС‹Р±РµСЂРёС‚Рµ РєР°Р¶РґС‹Р№ РєР°РґСЂ Рё СѓС‚РѕС‡РЅРёС‚Рµ РµРіРѕ РѕРїРёСЃР°РЅРёРµ С‡РµСЂРµР·
-              В«Р¤РѕС‚Рѕ / Р·Р°РјРµРЅРёС‚СЊВ».
+              Вставьте до восьми HTTPS-адресов — по одному в строке. Изображения
+              останутся одним блоком; порядок строк станет порядком кадров.
+              После вставки выберите каждый кадр и уточните его описание через
+              «Фото / заменить».
             </p>
             <textarea
               autoFocus
@@ -1197,9 +1197,9 @@ export default function ArticleEditor({
               }}
               rows={9}
               placeholder={
-                "https://вЂ¦/image-1.webp\nhttps://вЂ¦/image-2.webp\nhttps://вЂ¦/image-3.webp"
+                "https://…/image-1.webp\nhttps://…/image-2.webp\nhttps://…/image-3.webp"
               }
-              aria-label="РђРґСЂРµСЃР° РёР·РѕР±СЂР°Р¶РµРЅРёР№"
+              aria-label="Адреса изображений"
             />
             <div className="editor-media-modal-summary">
               <span>
@@ -1210,13 +1210,13 @@ export default function ArticleEditor({
                     .filter((item) => /^https:\/\//iu.test(item))
                     .slice(0, 8).length
                 }{" "}
-                РёР· 8 РёР·РѕР±СЂР°Р¶РµРЅРёР№
+                из 8 изображений
               </span>
             <NextLink
-              href={withClientAdminPath("/media")}
+              href="/media"
               target="_blank"
             >
-              РћС‚РєСЂС‹С‚СЊ РјРµРґРёР°С‚РµРєСѓ в†—
+              Открыть медиатеку ↗
             </NextLink>
             </div>
             {mediaComposerError && (
@@ -1230,12 +1230,12 @@ export default function ArticleEditor({
                 type="button"
                 onClick={() => setMediaComposerKind(null)}
               >
-                РћС‚РјРµРЅР°
+                Отмена
               </button>
               <button className="button" type="button" onClick={confirmMediaCollection}>
                 {mediaComposerKind === "slider"
-                  ? "Р’СЃС‚Р°РІРёС‚СЊ СЃР»Р°Р№РґРµСЂ"
-                  : "Р’СЃС‚Р°РІРёС‚СЊ РіР°Р»РµСЂРµСЋ"}
+                  ? "Вставить слайдер"
+                  : "Вставить галерею"}
               </button>
             </div>
           </section>
@@ -1244,9 +1244,9 @@ export default function ArticleEditor({
 
       <footer className="editor-footer">
         <small>
-          {wordCount.toLocaleString("ru-RU")} СЃР»РѕРІ
-          {savedLocallyAt ? ` В· СЂРµР·РµСЂРІРЅР°СЏ РєРѕРїРёСЏ ${savedLocallyAt}` : ""}
-          {isDirty ? " В· РµСЃС‚СЊ РЅРµСЃРѕС…СЂР°РЅС‘РЅРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ" : ""}
+          {wordCount.toLocaleString("ru-RU")} слов
+          {savedLocallyAt ? ` · резервная копия ${savedLocallyAt}` : ""}
+          {isDirty ? " · есть несохранённые изменения" : ""}
         </small>
         <div className="editor-actions">
           {hasRecoveryCopy && (
@@ -1255,21 +1255,21 @@ export default function ArticleEditor({
               type="button"
               onClick={restoreLocalCopy}
             >
-              Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р»РѕРєР°Р»СЊРЅСѓСЋ РєРѕРїРёСЋ
+              Восстановить локальную копию
             </button>
           )}
           {article.id && (
             <NextLink
               className="button-secondary"
-              href={withClientAdminPath(`/articles/${article.id}/preview`)}
+              href={`/articles/${article.id}/preview`}
               target="_blank"
               rel="noreferrer"
             >
-              РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ
+              Предпросмотр
             </NextLink>
           )}
           <button className="button-secondary" type="submit" name="intent" value="save">
-            РЎРѕС…СЂР°РЅРёС‚СЊ
+            Сохранить
           </button>
           <button className="button" type="submit" name="intent" value="publish" disabled={!publicationReady} title={publicationReady ? "Опубликовать материал" : "Заполните требования чеклиста"}>
             Опубликовать

@@ -5,7 +5,7 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const mediaSchema = z.object({
@@ -60,7 +60,6 @@ export async function updateMediaMetadataAction(formData: FormData) {
     })
     .eq("id", parsed.data.id);
   if (error) redirect(`/media?error=${encodeURIComponent(error.message)}`);
-  const build = await triggerPublicBuild("media.updated");
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "media.updated",
@@ -68,8 +67,14 @@ export async function updateMediaMetadataAction(formData: FormData) {
     entity_id: parsed.data.id,
     metadata: {
       license: parsed.data.licenseName,
-      publicBuildRequested: build.ok,
     },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "media",
+    entityId: parsed.data.id,
+    reason: "media.updated",
   });
   revalidatePath("/media");
   redirect("/media?saved=1");

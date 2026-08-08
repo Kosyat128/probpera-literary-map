@@ -202,7 +202,11 @@ function CalloutBlock({ block }: { block: HomepageBlock }) {
 export function CmsHomepageBlocks() {
   const blocks = [
     ...(cmsSiteContent.homepageBlocks as readonly HomepageBlock[]),
-  ].sort((first, second) => first.displayOrder - second.displayOrder);
+  ]
+    .filter(
+      (block) => !settingText(block.settings, "coreSectionKey")
+    )
+    .sort((first, second) => first.displayOrder - second.displayOrder);
   if (!blocks.length) return null;
 
   return (

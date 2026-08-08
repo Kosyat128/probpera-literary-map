@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "@/lib/navigation";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const blockTypes = new Set([
@@ -28,6 +28,19 @@ const backgroundStyles = new Set([
   "paper",
   "transparent",
 ]);
+const coreSectionTypes: Record<string, string> = {
+  hero: "hero",
+  atlas: "literary-map",
+  "book-month": "book-vs-screen",
+  "editorial-standard": "text",
+  "featured-journal": "article-grid",
+  community: "subscription",
+  authors: "carousel",
+  sections: "categories",
+  trust: "text",
+  calendar: "text",
+};
+const coreSectionOrder = Object.keys(coreSectionTypes);
 
 function text(formData: FormData, key: string, maxLength: number) {
   return String(formData.get(key) || "").trim().slice(0, maxLength);
@@ -63,16 +76,12 @@ async function recordBuildRequest(
   entityId: string,
   reason: string
 ) {
-  const build = await triggerPublicBuild(reason);
-  await supabase.from("admin_audit_log").insert({
-    actor_id: actorId,
-    action: build.ok ? "public_build.requested" : "public_build.failed",
-    entity_type: "homepage",
-    entity_id: entityId,
-    metadata: {
-      configured: build.configured,
-      error: build.ok ? null : build.error,
-    },
+  return requestPublicBuild({
+    supabase,
+    actorId,
+    entityType: "homepage",
+    entityId,
+    reason,
   });
 }
 
@@ -113,14 +122,14 @@ export async function createHomepageBlockAction(formData: FormData) {
       )}`
     );
   }
-  await recordBuildRequest(
+  const publication = await recordBuildRequest(
     supabase,
     session.user.id,
     data.id,
     "homepage.block.created"
   );
   revalidatePath("/homepage");
-  redirect("/homepage?saved=1");
+  redirect(`/homepage?saved=1&published=${publication.state}`);
 }
 
 export async function updateHomepageBlockAction(formData: FormData) {
@@ -167,14 +176,14 @@ export async function updateHomepageBlockAction(formData: FormData) {
   if (error) {
     redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
   }
-  await recordBuildRequest(
+  const publication = await recordBuildRequest(
     supabase,
     session.user.id,
     id,
     "homepage.block.updated"
   );
   revalidatePath("/homepage");
-  redirect("/homepage?saved=1");
+  redirect(`/homepage?saved=1&published=${publication.state}`);
 }
 
 export async function toggleHomepageBlockAction(formData: FormData) {
@@ -192,14 +201,14 @@ export async function toggleHomepageBlockAction(formData: FormData) {
     })
     .eq("id", id);
   if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
-  await recordBuildRequest(
+  const publication = await recordBuildRequest(
     supabase,
     session.user.id,
     id,
     enabled ? "homepage.block.enabled" : "homepage.block.disabled"
   );
   revalidatePath("/homepage");
-  redirect("/homepage?saved=1");
+  redirect(`/homepage?saved=1&published=${publication.state}`);
 }
 
 export async function moveHomepageBlockAction(formData: FormData) {
@@ -262,14 +271,14 @@ export async function moveHomepageBlockAction(formData: FormData) {
       .eq("id", current.id);
     redirect(`/homepage?error=${encodeURIComponent(currentError.message)}`);
   }
-  await recordBuildRequest(
+  const publication = await recordBuildRequest(
     supabase,
     session.user.id,
     id,
     "homepage.block.moved"
   );
   revalidatePath("/homepage");
-  redirect("/homepage?saved=1");
+  redirect(`/homepage?saved=1&published=${publication.state}`);
 }
 
 export async function deleteHomepageBlockAction(formData: FormData) {
@@ -280,14 +289,14 @@ export async function deleteHomepageBlockAction(formData: FormData) {
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { error } = await supabase.from("homepage_blocks").delete().eq("id", id);
   if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
-  await recordBuildRequest(
+  const publication = await recordBuildRequest(
     supabase,
     session.user.id,
     id,
     "homepage.block.deleted"
   );
   revalidatePath("/homepage");
-  redirect("/homepage?deleted=1");
+  redirect(`/homepage?deleted=1&published=${publication.state}`);
 }
 
 export async function republishHomepageAction() {
@@ -297,21 +306,94 @@ export async function republishHomepageAction() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=Ошибка доступа к БД");
 
-  const build = await triggerPublicBuild("homepage.manual_republish");
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: build.ok ? "public_build.requested" : "public_build.failed",
-    entity_type: "homepage",
-    entity_id: "manual_publish",
-    metadata: {
-      configured: build.configured,
-      error: build.ok ? null : build.error,
-      source: "admin_manual_republish",
-    },
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "homepage",
+    entityId: "manual_publish",
+    reason: "homepage.manual_republish",
+    metadata: { source: "admin_manual_republish" },
   });
 
   revalidatePath("/homepage");
   redirect(
-    `/homepage?published=${build.ok ? "started" : build.configured ? "queue-error" : "disabled"}`
+    `/homepage?published=${publication.state}`
   );
+}
+
+export async function saveCoreHomepageSectionAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  const coreSectionKey = text(formData, "core_section_key", 80);
+  const blockType = coreSectionTypes[coreSectionKey];
+  const backgroundStyle = text(formData, "background_style", 40);
+  if (!blockType || !backgroundStyles.has(backgroundStyle)) {
+    redirect("/homepage?error=Некорректный основной блок");
+  }
+
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect("/homepage?error=База данных не подключена");
+  const { data: existing, error: existingError } = await supabase
+    .from("homepage_blocks")
+    .select("id,settings")
+    .contains("settings", { coreSectionKey })
+    .limit(1)
+    .maybeSingle();
+  if (existingError) {
+    redirect(`/homepage?error=${encodeURIComponent(existingError.message)}`);
+  }
+
+  const existingSettings =
+    existing?.settings &&
+    typeof existing.settings === "object" &&
+    !Array.isArray(existing.settings)
+      ? (existing.settings as Record<string, unknown>)
+      : {};
+  const payload = {
+    block_type: blockType,
+    title: text(formData, "title", 240),
+    settings: {
+      ...existingSettings,
+      ...settingsFromForm(formData),
+      coreSectionKey,
+    },
+    display_order: (coreSectionOrder.indexOf(coreSectionKey) + 1) * 10,
+    is_enabled: true,
+    background_style: backgroundStyle,
+    background_media_id: optionalUuid(formData, "background_media_id"),
+    updated_by: session.user.id,
+  };
+
+  let blockId = existing?.id;
+  if (blockId) {
+    const { error } = await supabase
+      .from("homepage_blocks")
+      .update(payload)
+      .eq("id", blockId);
+    if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+  } else {
+    const { data, error } = await supabase
+      .from("homepage_blocks")
+      .insert(payload)
+      .select("id")
+      .single();
+    if (error || !data) {
+      redirect(
+        `/homepage?error=${encodeURIComponent(
+          error?.message || "Не удалось подключить основной блок"
+        )}`
+      );
+    }
+    blockId = data.id;
+  }
+  if (!blockId) redirect("/homepage?error=Не удалось определить основной блок");
+
+  const publication = await recordBuildRequest(
+    supabase,
+    session.user.id,
+    blockId,
+    `homepage.core.${coreSectionKey}.updated`
+  );
+  revalidatePath("/homepage");
+  redirect(`/homepage?saved=1&published=${publication.state}#core-${coreSectionKey}`);
 }

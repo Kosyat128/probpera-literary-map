@@ -22,7 +22,9 @@ ENV NEXT_PUBLIC_ADMIN_URL=$NEXT_PUBLIC_ADMIN_URL
 ENV ADMIN_BASE_PATH=$ADMIN_BASE_PATH
 ENV ADMIN_ALLOWED_ORIGINS=$ADMIN_ALLOWED_ORIGINS
 
-RUN npm run admin:build
+RUN npm run admin:build \
+  && cd apps/admin \
+  && node scripts/prepare-standalone.mjs
 
 FROM node:24-alpine AS runner
 WORKDIR /app

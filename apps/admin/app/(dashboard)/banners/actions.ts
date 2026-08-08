@@ -5,7 +5,7 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
@@ -45,16 +45,18 @@ async function saveAuditAndBuild(
 ) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return;
-  const build = await triggerPublicBuild(action);
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
     entity_type: "banner",
     entity_id: bannerId,
-    metadata: {
-      publicBuildRequested: build.ok,
-      publicBuildConfigured: build.configured,
-    },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId,
+    entityType: "banner",
+    entityId: bannerId,
+    reason: action,
   });
 }
 

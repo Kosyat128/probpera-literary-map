@@ -39,6 +39,15 @@ export const adminEnv = {
       "VITE_PUBLIC_SITE_DEPLOY_HOOK_TOKEN",
       "PUBLIC_DEPLOY_HOOK_TOKEN",
     ]) || "",
+  githubDeployToken:
+    getEnvValue(["GITHUB_DEPLOY_TOKEN", "PUBLIC_GITHUB_DEPLOY_TOKEN"]) || "",
+  githubRepository:
+    getEnvValue(["GITHUB_DEPLOY_REPOSITORY", "GITHUB_REPOSITORY"]) ||
+    "Kosyat128/probpera-literary-map",
+  githubDeployWorkflow:
+    getEnvValue(["GITHUB_DEPLOY_WORKFLOW"]) || "deploy-pages.yml",
+  githubDeployRef:
+    getEnvValue(["GITHUB_DEPLOY_REF"]) || "main",
   metrikaCounterId:
     getEnvValue([
       "YANDEX_METRIKA_COUNTER_ID",

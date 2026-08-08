@@ -13580,3 +13580,21 @@ html[data-theme="book"] .calendar-heading h3 {
   border: 0;
   cursor: pointer;
 }
+/* CMS backgrounds preserve the existing section layout while allowing the
+   editor to replace its visual layer without touching React code. */
+.cms-core-editable.has-cms-background {
+  background-image:
+    linear-gradient(135deg, rgba(255, 250, 242, 0.9), rgba(255, 255, 255, 0.8)),
+    var(--cms-core-background) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.atlas-section.cms-core-editable.has-cms-background,
+.community-section.cms-core-editable.has-cms-background,
+.trust-center.cms-core-editable.has-cms-background {
+  background-image:
+    linear-gradient(135deg, rgba(36, 11, 51, 0.88), rgba(74, 25, 79, 0.76)),
+    var(--cms-core-background) !important;
+}
