@@ -7,7 +7,7 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -78,7 +78,6 @@ async function auditPage(
 ) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return;
-  const build = await triggerPublicBuild(action);
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
@@ -86,9 +85,15 @@ async function auditPage(
     entity_id: pageId,
     metadata: {
       ...metadata,
-      publicBuildRequested: build.ok,
-      publicBuildConfigured: build.configured,
     },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId,
+    entityType: "page",
+    entityId: pageId,
+    reason: action,
+    metadata,
   });
 }
 

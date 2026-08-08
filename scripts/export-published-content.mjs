@@ -34,7 +34,8 @@ const supabaseUrl = (
   process.env.VITE_SUPABASE_URL ||
   ""
 ).replace(/\/+$/, "");
-const publicKey =
+const apiKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
   process.env.VITE_SUPABASE_ANON_KEY ||
@@ -45,7 +46,7 @@ const siteOrigin = (
   "https://probpera.ru"
 ).replace(/\/+$/, "");
 
-if (!supabaseUrl || !publicKey) {
+if (!supabaseUrl || !apiKey) {
   console.log(
     "CMS export skipped: public Supabase variables are not configured. Existing CMS snapshot is preserved."
   );
@@ -79,8 +80,8 @@ async function fetchRows(table, query) {
     `${supabaseUrl}/rest/v1/${table}?${queryString(query)}`,
     {
       headers: {
-        apikey: publicKey,
-        Authorization: `Bearer ${publicKey}`,
+          apikey: apiKey,
+          Authorization: `Bearer ${apiKey}`,
       },
     }
   );
@@ -97,8 +98,8 @@ async function fetchOptionalRows(table, query) {
     `${supabaseUrl}/rest/v1/${table}?${queryString(query)}`,
     {
       headers: {
-        apikey: publicKey,
-        Authorization: `Bearer ${publicKey}`,
+        apikey: apiKey,
+        Authorization: `Bearer ${apiKey}`,
       },
     }
   );

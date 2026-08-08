@@ -72,8 +72,29 @@ export default async function NewArticlePage({
   const sourceArticle = sourceArticleResult || null;
   const copiedArticle = sourceArticle
     ? {
-        ...sourceArticle,
+        title: sourceArticle.title,
+        subtitle: sourceArticle.subtitle,
+        excerpt: sourceArticle.excerpt,
+        content_html: sourceArticle.content_html,
+        content_json: sourceArticle.content_json,
+        category_id: sourceArticle.category_id,
+        cover_external_url: sourceArticle.cover_external_url,
+        cover_alt: sourceArticle.cover_alt,
+        cover_media_id: sourceArticle.cover_media_id,
+        sources: sourceArticle.sources,
+        bibliography: sourceArticle.bibliography,
+        seo_title: sourceArticle.seo_title,
+        seo_description: sourceArticle.seo_description,
+        seo_keywords: sourceArticle.seo_keywords,
+        og_title: sourceArticle.og_title,
+        og_description: sourceArticle.og_description,
+        allow_indexing: sourceArticle.allow_indexing,
+        slug: "",
+        legacy_path: null,
         status: "draft",
+        featured: false,
+        show_on_homepage: false,
+        pinned: false,
       }
     : null;
 
@@ -94,11 +115,7 @@ export default async function NewArticlePage({
       <ArticleEditor
         article={
           copiedArticle
-            ? {
-                ...copiedArticle,
-                status: "draft",
-                legacy_path: copiedArticle.legacy_path || null,
-              }
+            ? copiedArticle
             : { status: "draft" }
         }
         categories={categories}

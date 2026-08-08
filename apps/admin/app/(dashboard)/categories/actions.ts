@@ -5,7 +5,7 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -46,6 +46,13 @@ export async function createTaxonomyItemAction(formData: FormData) {
     action: `${kind}.created`,
     entity_type: kind,
     metadata: { name: parsed.data.name, slug },
+  });
+  await requestPublicBuild({
+    supabase: supabase!,
+    actorId: session.user.id,
+    entityType: kind,
+    entityId: slug,
+    reason: `${kind}.created`,
   });
   revalidatePath("/categories");
   redirect("/categories?saved=1");
@@ -95,7 +102,13 @@ export async function updateTaxonomyItemAction(formData: FormData) {
     entity_id: id.data,
     metadata: { name: parsed.data.name, slug },
   });
-  await triggerPublicBuild(`${kind}.updated`);
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: kind,
+    entityId: id.data,
+    reason: `${kind}.updated`,
+  });
   revalidatePath("/categories");
   redirect("/categories?saved=1");
 }
@@ -117,7 +130,13 @@ export async function deleteTaxonomyItemAction(formData: FormData) {
     entity_type: kind,
     entity_id: id.data,
   });
-  await triggerPublicBuild(`${kind}.deleted`);
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: kind,
+    entityId: id.data,
+    reason: `${kind}.deleted`,
+  });
   revalidatePath("/categories");
   redirect("/categories?deleted=1");
 }

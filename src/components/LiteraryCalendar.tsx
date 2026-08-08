@@ -7,6 +7,9 @@ import BrandArrowIcon from "./BrandArrowIcon";
 type Props = {
   countries: Country[];
   onCountrySelect?: (country: Country, writer?: Writer) => void;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 };
 
 type CalendarEvent = {
@@ -72,7 +75,13 @@ export function calendarWriterIdentity(writer: Writer) {
   return "";
 }
 
-export default function LiteraryCalendar({ countries, onCountrySelect }: Props) {
+export default function LiteraryCalendar({
+  countries,
+  onCountrySelect,
+  eyebrow,
+  title,
+  description,
+}: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const today = useMemo(() => new Date(), []);
   const [visibleDate, setVisibleDate] = useState(
@@ -209,12 +218,18 @@ export default function LiteraryCalendar({ countries, onCountrySelect }: Props) 
     <section className="calendar-card" aria-labelledby="calendar-title">
       <header className="calendar-heading">
         <div>
-          <span className="section-kicker">{t("Живая энциклопедия")}</span>
-          <h3 id="calendar-title">{t("Литературный календарь")}</h3>
+          <span className="section-kicker">
+            {language === "ru" && eyebrow ? eyebrow : t("Живая энциклопедия")}
+          </span>
+          <h3 id="calendar-title">
+            {language === "ru" && title ? title : t("Литературный календарь")}
+          </h3>
           <p>
-            {t(
-              "Даты рождения и памяти писателей складываются в живую историю мировой литературы."
-            )}
+            {language === "ru" && description
+              ? description
+              : t(
+                  "Даты рождения и памяти писателей складываются в живую историю мировой литературы."
+                )}
           </p>
         </div>
         <div className="calendar-navigation">

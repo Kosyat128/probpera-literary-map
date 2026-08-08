@@ -5,7 +5,7 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
@@ -27,13 +27,18 @@ async function finishNavigationAction(
 ) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return;
-  const build = await triggerPublicBuild(action);
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
     entity_type: "navigation_item",
     entity_id: itemId,
-    metadata: { publicBuildRequested: build.ok },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId,
+    entityType: "navigation_item",
+    entityId: itemId,
+    reason: action,
   });
   revalidatePath("/menus");
 }

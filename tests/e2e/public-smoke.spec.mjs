@@ -29,18 +29,24 @@ test("главная не содержит критических нарушен
 test("статья из карты сайта открывается и имеет корректную структуру", async ({ page, request, baseURL }) => {
   const sitemapCandidates = ["/sitemap.xml", "/probpera-literary-map/sitemap.xml"];
   let sitemap = "";
+  let previewBasePath = "";
   for (const candidate of sitemapCandidates) {
     const response = await request.get(new URL(candidate, baseURL).toString());
     const body = await response.text();
     if (response.ok() && body.includes("<urlset")) {
       sitemap = body;
+      previewBasePath = candidate.replace(/\/sitemap\.xml$/u, "");
       break;
     }
   }
   const articleUrl = sitemap.match(/<loc>([^<]+\/stati\/[^<]+)<\/loc>/u)?.[1];
   expect(articleUrl).toBeTruthy();
   const articlePath = new URL(articleUrl).pathname;
-  await page.goto(new URL(articlePath, baseURL).toString());
+  const previewArticlePath =
+    previewBasePath && !articlePath.startsWith(`${previewBasePath}/`)
+      ? `${previewBasePath}${articlePath}`
+      : articlePath;
+  await page.goto(new URL(previewArticlePath, baseURL).toString());
   await expect(page.locator("h1").first()).toBeVisible();
   await expect(page.locator("article").first()).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index/u);

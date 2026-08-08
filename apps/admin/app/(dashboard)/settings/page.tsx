@@ -24,7 +24,11 @@ export default async function SettingsPage({
   const checks = [
     ["Supabase", Boolean(adminEnv.supabaseUrl && adminEnv.supabasePublishableKey)],
     ["Публичный домен", adminEnv.publicSiteUrl === "https://probpera.ru"],
-    ["Автопересборка после публикации", Boolean(adminEnv.deployHookUrl)],
+    [
+      "Мгновенный запуск публикации",
+      Boolean(adminEnv.deployHookUrl || adminEnv.githubDeployToken),
+    ],
+    ["Резервная очередь публикации", Boolean(adminEnv.supabaseUrl)],
     ["Яндекс.Метрика", Boolean(adminEnv.metrikaCounterId)],
   ] as const;
   return (

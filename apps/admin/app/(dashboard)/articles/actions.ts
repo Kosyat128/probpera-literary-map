@@ -9,7 +9,7 @@ import { requireStaff } from "@/lib/auth";
 import { articleEditPath } from "@/lib/admin-routes";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
-import { triggerPublicBuild } from "@/lib/public-build";
+import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -534,19 +534,14 @@ export async function saveArticleAction(formData: FormData) {
         },
       });
     }
-    const build = await triggerPublicBuild("article.published");
-    const { error: queueError } = await supabase.from("admin_audit_log").insert({
-      actor_id: session.user.id,
-      action: build.ok ? "public_build.dispatched" : "public_build.requested",
-      entity_type: "article",
-      entity_id: articleId,
-      metadata: {
-        delivery: build.ok ? "deploy-hook" : "github-actions-queue",
-        hook_configured: build.configured,
-        hook_error: build.ok ? null : build.error,
-      },
+    const publication = await requestPublicBuild({
+      supabase,
+      actorId: session.user.id,
+      entityType: "article",
+      entityId: articleId,
+      reason: "article.published",
     });
-    publicationState = build.ok ? "started" : queueError ? "queue-error" : "queued";
+    publicationState = publication.state;
   }
 
   revalidatePath("/dashboard");
@@ -563,6 +558,68 @@ export async function saveArticleAction(formData: FormData) {
 function articleIdFromForm(formData: FormData) {
   const parsed = z.string().uuid().safeParse(formData.get("id"));
   return parsed.success ? parsed.data : null;
+}
+
+export async function requestSocialPublicationAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  const id = articleIdFromForm(formData);
+  if (!id) redirect("/articles?error=Некорректный идентификатор статьи");
+
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(articleEditPath(id, { error: "База данных не подключена" }));
+  const { data: article, error } = await supabase
+    .from("articles")
+    .select("id,title,slug,status")
+    .eq("id", id)
+    .maybeSingle();
+  if (error || !article) {
+    redirect(
+      articleEditPath(id, {
+        error: error?.message || "Статья не найдена",
+      })
+    );
+  }
+  if (article.status !== "published") {
+    redirect(
+      articleEditPath(id, {
+        error: "Автопостинг доступен только для опубликованной статьи",
+      })
+    );
+  }
+
+  const { error: queueError } = await supabase.from("admin_audit_log").insert({
+    actor_id: session.user.id,
+    action: "social_publish.requested",
+    entity_type: "article",
+    entity_id: article.id,
+    metadata: {
+      article_id: article.id,
+      title: article.title,
+      slug: article.slug,
+      platforms: ["vk", "ok", "dzen"],
+      requested_at: new Date().toISOString(),
+      reason: "manual-editor-request",
+    },
+  });
+  if (queueError) {
+    redirect(articleEditPath(id, { error: queueError.message }));
+  }
+
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "article",
+    entityId: article.id,
+    reason: "article.social-publication.requested",
+  });
+  revalidatePath(articleEditPath(id));
+  redirect(
+    articleEditPath(id, {
+      social: "requested",
+      publish: publication.state,
+    })
+  );
 }
 
 async function auditArticleAction(
@@ -679,10 +736,6 @@ export async function changeArticleStatusAction(formData: FormData) {
     id,
     { status: statusValue }
   );
-  const buildStart = async () => {
-    const build = await triggerPublicBuild(`article.status.${statusValue}`);
-    return build.ok ? "started" : "queue-error";
-  };
   const { error } = await supabase
     .from("articles")
     .update({
@@ -702,11 +755,14 @@ export async function changeArticleStatusAction(formData: FormData) {
     entity_type: "article",
     entity_id: id,
   });
-  const publishState =
-    statusValue === "published" ? await buildStart() : undefined;
-  if (["hidden", "archived", "draft", "review", "scheduled"].includes(statusValue)) {
-    await triggerPublicBuild(`article.status.${statusValue}`);
-  }
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId: userId,
+    entityType: "article",
+    entityId: id,
+    reason: `article.status.${statusValue}`,
+  });
+  const publishState = statusValue === "published" ? publication.state : undefined;
   revalidatePath("/articles");
   revalidatePath(articleEditPath(id));
   if (publishState) {
@@ -737,7 +793,13 @@ export async function softDeleteArticleAction(formData: FormData) {
     entity_type: "article",
     entity_id: id,
   });
-  await triggerPublicBuild("article.soft_deleted");
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "article",
+    entityId: id,
+    reason: "article.soft_deleted",
+  });
   revalidatePath("/articles");
 }
 
@@ -814,6 +876,13 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     entity_type: "article",
     entity_id: articleId,
     metadata: { revisionNumber: revision.revision_number },
+  });
+  await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "article",
+    entityId: articleId,
+    reason: "article.revision.restored",
   });
   revalidatePath(articleEditPath(articleId));
   redirect(articleEditPath(articleId, { saved: 1 }));
