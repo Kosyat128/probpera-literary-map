@@ -2157,7 +2157,7 @@ export default function ArticleEditor({
               />
               <small>
                 {activeLocale === "en"
-                  ? "Uses the current shared article route until a dedicated English route is introduced."
+                  ? "Generated automatically from the English article slug and used as its dedicated public address."
                   : "Строится автоматически из рубрики и названия. Новые публикации всегда используют этот понятный адрес."}
               </small>
             </label>
