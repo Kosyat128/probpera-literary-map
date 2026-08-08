@@ -1693,12 +1693,12 @@ export default function LiteraryGlobe({
     window.innerWidth <= 680;
   const visualStyleLabels: Record<GlobeVisualStyle, string> =
     language === "en"
-      ? { antique: "Antique", earth: "Earth", modern: "Modern" }
-      : { antique: "Старинный", earth: "Земля", modern: "Современный" };
+      ? { antique: "Antique", earth: "Classic", modern: "Modern" }
+      : { antique: "Старинный", earth: "Классический", modern: "Современный" };
   const compactVisualStyleLabels: Record<GlobeVisualStyle, string> =
     language === "en"
-      ? { antique: "Antique", earth: "Earth", modern: "Modern" }
-      : { antique: "Ретро", earth: "Земля", modern: "Модерн" };
+      ? { antique: "Antique", earth: "Classic", modern: "Modern" }
+      : { antique: "Ретро", earth: "Классический", modern: "Модерн" };
 
   useEffect(() => {
     const container = containerRef.current;

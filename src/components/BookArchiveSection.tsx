@@ -732,7 +732,7 @@ export default function BookArchiveSection({
               </small>
               <h3>{localizedBook.title}</h3>
               <p>{selectBookWriterName(book, language, t("Автор"))}</p>
-              <div>
+              <div className="archive-book-actions">
                 <span
                   className={`editorial-state is-${item.status === "verified" ? "verified" : "draft"}`}
                 >
@@ -762,7 +762,11 @@ export default function BookArchiveSection({
                 >
                   <BrandHeartIcon filled={isBookSaved(book)} />
                 </button>
-                <button type="button" onClick={() => openBookDetail(book)}>
+                <button
+                  className="archive-book-detail"
+                  type="button"
+                  onClick={() => openBookDetail(book)}
+                >
                   {t("О книге")}
                 </button>
               </div>

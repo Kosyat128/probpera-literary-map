@@ -64,7 +64,6 @@ import {
   literarySearchScore,
   normalizeLiterarySearch,
 } from "./utils/literarySearch";
-import sectionPrizesImage from "./assets/brand/section-prizes.webp";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
@@ -286,7 +285,7 @@ const sectionLinks = [
     title: "Литературный календарь",
     copy: "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.",
     href: "#calendar",
-    image: sectionPrizesImage,
+    image: "brand/sections/literary-calendar.webp",
   },
   {
     id: "authors",
@@ -304,7 +303,7 @@ const sectionLinks = [
     title: "Форум читателей",
     copy: "Обсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей.",
     href: "#community",
-    image: "brand/editorial-paper.webp",
+    image: "brand/sections/readers-forum.webp",
     action: "forum" as const,
     metric: "community" as const,
   },
@@ -324,7 +323,7 @@ const sectionLinks = [
     title: "О проекте и редакции",
     copy: "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.",
     href: "#about",
-    image: "brand/section-prizes.webp",
+    image: "brand/sections/about-editorial.webp",
     metric: "project" as const,
   },
 ];
@@ -873,6 +872,21 @@ export default function App() {
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
   const coreHero = getCoreHomepageSection("hero");
+  const customHeroTitle =
+    language === "ru" && coreHero?.title ? coreHero.title.trim() : "";
+  const customHeroTitleParts = customHeroTitle.match(
+    /^(.+?)\s+[—–-]\s+(.+)$/u
+  );
+  const structuredHeroLead = customHeroTitleParts
+    ? customHeroTitleParts[1].trim()
+    : t("Литература —").replace(/\s*[—–-]\s*$/u, "").trim();
+  const structuredHeroAccent = customHeroTitleParts
+    ? customHeroTitleParts[2].trim()
+    : t("это целый мир.").trim();
+  const structuredHeroAccentParts = structuredHeroAccent.match(
+    /^(.+\S)\s+(\S+)$/u
+  );
+  const structuredHeroDash = language === "ru" ? "— " : "";
   const coreAtlas = getCoreHomepageSection("atlas");
   const coreBookMonth = getCoreHomepageSection("book-month");
   const coreEditorialStandard = getCoreHomepageSection("editorial-standard");
@@ -1081,13 +1095,29 @@ export default function App() {
                 : t("Журнал о литературе и искусстве слова")}
             </span>
             <h1>
-              {language === "ru" && coreHero?.title ? (
-                coreHero.title
+              {customHeroTitle && !customHeroTitleParts ? (
+                customHeroTitle
               ) : (
                 <>
-                  {t("Литература —")}
-                  <br />
-                  <em>{t("это целый мир.")}</em>
+                  <span className="hero-title-lead">{structuredHeroLead}</span>
+                  <em className="hero-title-accent">
+                    {structuredHeroAccentParts ? (
+                      <>
+                        <span className="hero-title-accent-line">
+                          {structuredHeroDash}
+                          {structuredHeroAccentParts[1]}
+                        </span>
+                        <span className="hero-title-accent-line">
+                          {structuredHeroAccentParts[2]}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        {structuredHeroDash}
+                        {structuredHeroAccent}
+                      </>
+                    )}
+                  </em>
                 </>
               )}
             </h1>
@@ -1146,8 +1176,8 @@ export default function App() {
                   assetUrl("brand/magazine-hero-wide.webp")
                 }
                 alt={t("Журнал «Проба Пера» — полноформатное редакционное издание")}
-                width="1672"
-                height="941"
+                width={coreHero?.backgroundImageUrl ? undefined : 1915}
+                height={coreHero?.backgroundImageUrl ? undefined : 821}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"

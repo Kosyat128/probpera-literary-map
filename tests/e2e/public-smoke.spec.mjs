@@ -61,6 +61,77 @@ test("главная загружается без критических оши
   expect(errors).toEqual([]);
 });
 
+test("обложка и заголовок героя сохраняют редакционный макет", async ({
+  page,
+  isMobile,
+}) => {
+  await page.goto("/");
+  const heading = page.locator(".hero-editorial h1");
+  const lead = heading.locator(".hero-title-lead");
+  const accent = heading.locator(".hero-title-accent");
+  const accentLines = accent.locator(".hero-title-accent-line");
+  const cover = page.locator(".hero-cover img");
+
+  await expect(lead).toBeVisible();
+  await expect(lead).not.toContainText("—");
+  await expect(accent).toBeVisible();
+  await expect(accentLines).toHaveCount(2);
+  await expect(accentLines.first()).toContainText("—");
+  await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
+  expect(
+    await heading.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return Number.parseFloat(style.lineHeight) / Number.parseFloat(style.fontSize);
+    })
+  ).toBeGreaterThanOrEqual(0.99);
+  await expect
+    .poll(() =>
+      cover.evaluate((image) => ({
+        complete: image.complete,
+        width: image.naturalWidth,
+        height: image.naturalHeight,
+      }))
+    )
+    .toEqual(
+      isMobile
+        ? { complete: true, width: 768, height: 1024 }
+        : { complete: true, width: 1915, height: 821 }
+    );
+
+  const englishButton = page
+    .locator(".site-header .interface-language-control")
+    .getByRole("button", { name: /Английский язык|English/iu });
+  await englishButton.click();
+  await expect(heading).not.toContainText("is —");
+  await expect(accentLines.first()).not.toContainText("—");
+});
+
+test("календарь, форум и редакция используют разные заставки", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const titles = [
+    "Литературный календарь",
+    "Форум читателей",
+    "О проекте и редакции",
+  ];
+  const backgrounds = [];
+
+  for (const title of titles) {
+    const card = page
+      .locator(".section-directory-card")
+      .filter({ has: page.getByRole("heading", { name: title }) });
+    await expect(card).toBeVisible();
+    const background = await card.evaluate(
+      (element) => getComputedStyle(element).backgroundImage
+    );
+    expect(background).toContain("brand/sections/");
+    backgrounds.push(background);
+  }
+
+  expect(new Set(backgrounds).size).toBe(3);
+});
+
 test("главная не содержит критических нарушений доступности", async ({ page }) => {
   await page.goto("/");
   const result = await new AxeBuilder({ page })
@@ -229,10 +300,28 @@ test("лайтбокс удерживает Tab, закрывается по Esc
   await expect(trigger).toBeFocused();
 });
 
-test("глобус загружается только после приближения к атласу и принимает управление", async ({ page }) => {
+test("глобус загружается только после приближения к атласу и принимает управление", async ({
+  page,
+  isMobile,
+}) => {
   const errors = watchErrors(page);
+  if (isMobile) await page.setViewportSize({ width: 320, height: 820 });
   await page.goto("/");
   await page.locator("#atlas").scrollIntoViewIfNeeded();
+  const classicButton = page
+    .locator(".globe-style-switch")
+    .getByRole("button", { name: "Классический" });
+  await expect(classicButton).toBeVisible({ timeout: 30_000 });
+  if (isMobile) {
+    for (const width of [320, 360]) {
+      await page.setViewportSize({ width, height: 820 });
+      expect(
+        await classicButton.evaluate(
+          (element) => element.scrollWidth <= element.clientWidth
+        )
+      ).toBe(true);
+    }
+  }
   const canvas = page.locator("#atlas canvas").first();
   await expect(canvas).toBeVisible({ timeout: 30_000 });
   const box = await canvas.boundingBox();
