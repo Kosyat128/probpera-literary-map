@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { withClientAdminPath } from "@/lib/admin-path";
+import { prepareClientImage } from "@/lib/client-image-upload";
 
 export type HomepageMediaOption = {
   id: string;
@@ -34,37 +35,27 @@ export default function HomepageMediaField({
   const selected = options.find((asset) => asset.id === selectedId);
 
   const upload = async (file: File) => {
-    const acceptedTypes = new Set([
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-      "image/avif",
-    ]);
-    if (!acceptedTypes.has(file.type)) {
-      setError("Выберите JPEG, PNG, WebP или AVIF.");
-      return;
-    }
-    if (file.size <= 0 || file.size > 12 * 1024 * 1024) {
-      setError("Размер файла должен быть не больше 12 МБ.");
-      return;
-    }
-
     const altText = fileLabel(file);
-    const formData = new FormData();
-    formData.set("file", file);
-    formData.set("alt_text", altText);
-    formData.set("caption", "");
-    formData.set("creator", "");
-    formData.set("source_url", "");
-    formData.set("license_name", "");
-    formData.set("license_url", "");
-    formData.set("collection_name", "Главная страница");
-    formData.set("image_usage", "hero");
 
     setUploading(true);
     setError("");
-    setMessage("Загружаем и оптимизируем изображение…");
+    setMessage("Подготавливаем фон без обрезки…");
     try {
+      const prepared = await prepareClientImage(file, "hero");
+      const formData = new FormData();
+      formData.set("file", prepared.file);
+      formData.set("alt_text", altText);
+      formData.set("caption", "");
+      formData.set("creator", "");
+      formData.set("source_url", "");
+      formData.set("license_name", "");
+      formData.set("license_url", "");
+      formData.set("collection_name", "Главная страница");
+      formData.set("image_usage", "hero");
+      formData.set("client_width", String(prepared.width));
+      formData.set("client_height", String(prepared.height));
+      setMessage("Загружаем подготовленный фон…");
+
       const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
         body: formData,
@@ -139,7 +130,7 @@ export default function HomepageMediaField({
           <span aria-hidden="true">＋</span>
         )}
         <strong>{uploading ? "Оптимизируем…" : "Загрузить фон с компьютера"}</strong>
-        <small>Нажмите или перетащите изображение · до 12 МБ</small>
+        <small>Нажмите или перетащите изображение · исходник до 20 МБ</small>
       </button>
       {message && <small className="is-success" role="status">{message}</small>}
       {error && <small className="is-error" role="alert">{error}</small>}

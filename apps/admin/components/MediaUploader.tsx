@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { withClientAdminPath } from "@/lib/admin-path";
+import { prepareClientImage } from "@/lib/client-image-upload";
 
 export default function MediaUploader() {
   const router = useRouter();
@@ -11,13 +12,24 @@ export default function MediaUploader() {
 
   async function upload(formData: FormData) {
     setPending(true);
-    setMessage("");
+    setMessage("Подготавливаем изображение без обрезки…");
     try {
+      const sourceFile = formData.get("file");
+      if (!(sourceFile instanceof File)) {
+        throw new Error("Выберите изображение для загрузки.");
+      }
+      const prepared = await prepareClientImage(sourceFile, "inline");
+      formData.set("file", prepared.file);
+      formData.set("image_usage", "inline");
+      formData.set("client_width", String(prepared.width));
+      formData.set("client_height", String(prepared.height));
+      setMessage("Загружаем подготовленное изображение…");
+
       const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
         body: formData,
       });
-      const result = (await response.json()) as { error?: string };
+      const result = (await response.json().catch(() => ({}))) as { error?: string };
       if (!response.ok) throw new Error(result.error || "Файл не загружен.");
       setMessage("Изображение оптимизировано и добавлено в медиатеку.");
       router.refresh();
@@ -34,7 +46,7 @@ export default function MediaUploader() {
       <label className="upload-zone">
         <input name="file" type="file" accept="image/jpeg,image/png,image/webp,image/avif" required />
         <strong>JPEG, PNG, WebP или AVIF</strong>
-        <p>До 12 МБ. Файл будет очищен от метаданных, уменьшен и сохранён в WebP.</p>
+        <p>Исходник до 20 МБ. Он будет подогнан без обрезки, очищен от метаданных и сохранён в WebP.</p>
       </label>
       <label className="field">
         <span>Описание для незрячих читателей *</span>

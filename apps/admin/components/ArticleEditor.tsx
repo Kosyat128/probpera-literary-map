@@ -20,6 +20,7 @@ import {
 } from "@/app/(dashboard)/articles/template-actions";
 import { articlePublicPath } from "@/lib/article-route";
 import { withClientAdminPath } from "@/lib/admin-path";
+import { prepareClientImage } from "@/lib/client-image-upload";
 import {
   EditorialBlock,
   insertEditorialBlock,
@@ -424,21 +425,6 @@ export default function ArticleEditor({
   };
 
   const uploadImageFile = async (file: File, target: ImageUploadTarget) => {
-    const acceptedTypes = new Set([
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-      "image/avif",
-    ]);
-    if (!acceptedTypes.has(file.type)) {
-      setImageUploadError("Выберите изображение JPEG, PNG, WebP или AVIF.");
-      return;
-    }
-    if (file.size <= 0 || file.size > 12 * 1024 * 1024) {
-      setImageUploadError("Размер изображения должен быть не больше 12 МБ.");
-      return;
-    }
-
     const selection = imageSelectionRef.current;
     const currentAlt =
       target === "cover"
@@ -451,21 +437,29 @@ export default function ArticleEditor({
       target === "article" && typeof selection.attributes.caption === "string"
         ? selection.attributes.caption.trim()
         : "";
-    const formData = new FormData();
-    formData.set("file", file);
-    formData.set("alt_text", altText);
-    formData.set("caption", caption);
-    formData.set("creator", "");
-    formData.set("source_url", "");
-    formData.set("license_name", "");
-    formData.set("license_url", "");
-    formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
-    formData.set("image_usage", target);
 
     setImageUploadTarget(target);
     setImageUploadError("");
-    setImageUploadMessage("Изображение загружается и оптимизируется…");
+    setImageUploadMessage("Подготавливаем изображение без обрезки…");
     try {
+      const prepared = await prepareClientImage(
+        file,
+        target === "cover" ? "cover" : "inline"
+      );
+      const formData = new FormData();
+      formData.set("file", prepared.file);
+      formData.set("alt_text", altText);
+      formData.set("caption", caption);
+      formData.set("creator", "");
+      formData.set("source_url", "");
+      formData.set("license_name", "");
+      formData.set("license_url", "");
+      formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
+      formData.set("image_usage", target === "cover" ? "cover" : "inline");
+      formData.set("client_width", String(prepared.width));
+      formData.set("client_height", String(prepared.height));
+      setImageUploadMessage("Загружаем подготовленное изображение…");
+
       const response = await fetch(withClientAdminPath("/api/media/upload"), {
         method: "POST",
         body: formData,
@@ -990,7 +984,7 @@ export default function ArticleEditor({
                     : "Выбрать обложку с компьютера"}
               </strong>
               <small>
-                Автоподгонка без обрезки · JPEG, PNG, WebP или AVIF · до 12 МБ
+                Автоподгонка без обрезки · JPEG, PNG, WebP или AVIF · исходник до 20 МБ
               </small>
             </button>
             <label className="field">

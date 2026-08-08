@@ -1,9 +1,7 @@
 import { existsSync } from "node:fs";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
+import { spawn } from "node:child_process";
 import path from "node:path";
 
-const execFileAsync = promisify(execFile);
 const appRoot = process.cwd();
 const nextBinary = path.join(appRoot, "..", "..", "node_modules", "next", "dist", "bin", "next");
 const serverPathCandidates = [
@@ -39,6 +37,31 @@ function getFallbackNextBinary() {
   return fallbackCandidates.find((candidate) => existsSync(candidate)) ?? nextBinary;
 }
 
+function run(command, args, options = {}) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, {
+      stdio: "inherit",
+      ...options,
+    });
+
+    child.once("error", reject);
+    child.once("exit", (code, signal) => {
+      if (code === 0) {
+        resolve();
+        return;
+      }
+
+      reject(
+        new Error(
+          signal
+            ? `Admin server stopped by signal ${signal}.`
+            : `Admin server exited with code ${code ?? "unknown"}.`,
+        ),
+      );
+    });
+  });
+}
+
 try {
   const serverEntrypoint = selectServerEntrypoint();
   const nodePath = `${standaloneModules}${path.delimiter}${process.env.NODE_PATH || ""}`.replace(
@@ -47,8 +70,7 @@ try {
   );
 
   if (serverEntrypoint && hasRequiredModules()) {
-    await execFileAsync(process.execPath, [serverEntrypoint], {
-      stdio: "inherit",
+    await run(process.execPath, [serverEntrypoint], {
       env: { ...process.env, NODE_PATH: nodePath },
     });
   } else {
@@ -65,5 +87,5 @@ try {
     );
   }
   const nextStartBinary = getFallbackNextBinary();
-  await execFileAsync(process.execPath, [nextStartBinary, "start"], { stdio: "inherit" });
+  await run(process.execPath, [nextStartBinary, "start"]);
 }
