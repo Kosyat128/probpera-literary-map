@@ -50,7 +50,7 @@ export async function resetPasswordAction(formData: FormData) {
   }
 
   await supabase.auth.resetPasswordForEmail(email.data, {
-    redirectTo: `${adminEnv.adminSiteUrl}/login`,
+    redirectTo: `${adminEnv.adminSiteUrl}/auth/callback?next=${encodeURIComponent("/reset-password")}`,
   });
   redirect(
     loginUrl(

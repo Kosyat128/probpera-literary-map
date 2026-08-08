@@ -29,11 +29,10 @@ function normalizeBasePath(rawValue: string | undefined): string {
 const configuredBasePath = process.env.ADMIN_BASE_PATH?.trim() ?? "/admin";
 const adminBasePath = normalizeBasePath(configuredBasePath);
 const allowedOrigins = [
-  "probpera.ru",
-  "www.probpera.ru",
   "admin.probpera.ru",
-  "localhost:3000",
-  "127.0.0.1:3000",
+  ...(process.env.NODE_ENV === "production"
+    ? []
+    : ["localhost:3000", "127.0.0.1:3000"]),
   ...(process.env.ADMIN_ALLOWED_ORIGINS || "")
     .split(",")
     .map((origin) => origin.trim())
@@ -49,7 +48,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
     serverActions: {
-      bodySizeLimit: "12mb",
+      bodySizeLimit: "4mb",
       allowedOrigins: [...new Set(allowedOrigins)],
     },
   },

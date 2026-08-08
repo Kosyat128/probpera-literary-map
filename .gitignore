@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .next/
+apps/admin/.open-next/
+apps/admin/.wrangler/
+apps/admin/.wrangler-dry-run/
 *.tsbuildinfo
 .npm-cache/
 .env
