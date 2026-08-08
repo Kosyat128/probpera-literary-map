@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
 
 import { build } from "esbuild";
+import { aliasCanIdentifyWork } from "./lib/book-article-mention-policy.mjs";
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -41,7 +42,7 @@ function bookKey(book) {
   return `${book.countryId}:${book.writerId}:${book.id}`;
 }
 
-async function sourceArchive() {
+async function sourceData() {
   await fs.mkdir(cacheDirectory, { recursive: true });
   await build({
     absWorkingDir: repositoryRoot,
@@ -64,7 +65,10 @@ async function sourceArchive() {
 
   const moduleUrl = `${pathToFileURL(bundlePath).href}?v=${Date.now()}`;
   const module = await import(moduleUrl);
-  return module.archive;
+  return {
+    archive: module.archive,
+    articles: module.articles,
+  };
 }
 
 async function jsonFiles(directory) {
@@ -84,42 +88,52 @@ async function jsonFiles(directory) {
   }
 }
 
-async function sourceArticles() {
+async function sourceArticles(canonicalCatalog) {
   const files = [
     ...(await jsonFiles(path.join(repositoryRoot, "public", "articles"))),
     ...(await jsonFiles(
       path.join(repositoryRoot, "public", "cms", "articles")
     )),
   ];
-  const byId = new Map();
+  const documentsById = new Map();
 
   for (const file of files) {
     const article = JSON.parse(await fs.readFile(file, "utf8"));
     if (!article?.id || !article?.title) continue;
-
-    const titleText = normalizeMentionText(article.title);
-    const descriptionText = normalizeMentionText(article.description);
-    const bodyText = normalizeMentionText(
-      article.plainText || article.contentHtml
-    );
-    byId.set(article.id, {
-      id: article.id,
-      title: article.title,
-      sectionId: article.sectionId || "literary-essays",
-      sectionLabel: article.sectionLabel || "Материалы",
-      readingMinutes: Number(article.readingMinutes) || 1,
-      slug: article.slug || "",
-      imageUrl: article.imageUrl || "",
-      titleText,
-      descriptionText,
-      bodyText,
-      fullText: `${titleText} ${descriptionText} ${bodyText}`,
-    });
+    documentsById.set(article.id, article);
   }
 
-  return [...byId.values()].sort((first, second) =>
-    first.title.localeCompare(second.title, "ru")
-  );
+  return canonicalCatalog
+    .map((metadata) => {
+      const document =
+        documentsById.get(metadata.id) ||
+        (metadata.legacyId ? documentsById.get(metadata.legacyId) : null) ||
+        {};
+      const title = metadata.title || document.title || "";
+      if (!metadata.id || !title) return null;
+
+      const description = metadata.description || document.description || "";
+      const titleText = normalizeMentionText(title);
+      const descriptionText = normalizeMentionText(description);
+      const bodyText = normalizeMentionText(
+        document.plainText || document.contentHtml
+      );
+      return {
+        id: metadata.id,
+        title,
+        sectionId: metadata.sectionId || "literary-essays",
+        sectionLabel: metadata.sectionLabel || "Материалы",
+        readingMinutes: Number(metadata.readingMinutes) || 1,
+        slug: metadata.slug || "",
+        imageUrl: metadata.imageUrl || "",
+        titleText,
+        descriptionText,
+        bodyText,
+        fullText: `${titleText} ${descriptionText} ${bodyText}`,
+      };
+    })
+    .filter(Boolean)
+    .sort((first, second) => first.title.localeCompare(second.title, "ru"));
 }
 
 function writerSurname(writerName = "") {
@@ -143,8 +157,16 @@ function matchArticle(book, article) {
     .filter((alias) => alias.length >= 2);
   if (!aliases.length) return null;
 
-  const titleMatch = aliases.some((alias) =>
-    containsPhrase(article.titleText, alias)
+  const surname = writerSurname(book.writerName);
+  const authorPresent =
+    surname.length >= 4 && containsPhrase(article.fullText, surname);
+
+  const titleMatch = aliases.some(
+    (alias) =>
+      aliasCanIdentifyWork(alias, {
+        authorPresent,
+        exactTitle: article.titleText === alias,
+      }) && containsPhrase(article.titleText, alias)
   );
   if (titleMatch) {
     return article.sectionId === "book-opinions" ? "review" : "feature";
@@ -153,27 +175,25 @@ function matchArticle(book, article) {
   const descriptionMatch = aliases.some(
     (alias) =>
       alias.length >= 4 &&
+      aliasCanIdentifyWork(alias, { authorPresent }) &&
       containsPhrase(article.descriptionText, alias)
   );
   if (descriptionMatch) return "feature";
 
-  const surname = writerSurname(book.writerName);
-  const authorPresent =
-    surname.length >= 4 && containsPhrase(article.fullText, surname);
   const bodyMatch = aliases.some((alias) => {
-    const wordCount = alias.split(" ").length;
     if (alias.length < 5) return false;
-    if (wordCount === 1 && alias.length < 7 && !authorPresent) return false;
-    if (/^\d+$/u.test(alias) && !authorPresent) return false;
+    if (!aliasCanIdentifyWork(alias, { authorPresent })) return false;
     return containsPhrase(article.bodyText, alias);
   });
 
   return bodyMatch ? "mention" : null;
 }
 
-const archive = await sourceArchive();
-const articles = await sourceArticles();
+const source = await sourceData();
+const archive = source.archive;
+const articles = await sourceArticles(source.articles);
 const byBook = {};
+const reverseRelations = {};
 let relationCount = 0;
 
 for (const book of archive) {
@@ -202,15 +222,58 @@ for (const book of archive) {
   if (!relations.length) continue;
   byBook[bookKey(book)] = relations;
   relationCount += relations.length;
+
+  const recommendation = book.recommendation;
+  if (
+    !recommendation?.key ||
+    !recommendation.localizations?.ru?.title ||
+    !recommendation.localizations?.en?.title
+  ) {
+    continue;
+  }
+
+  for (const article of relations) {
+    const articleRelations = (reverseRelations[article.id] ||= []);
+    if (articleRelations.some((item) => item.key === recommendation.key)) continue;
+    articleRelations.push({
+      ...recommendation,
+      kind: article.kind,
+    });
+  }
 }
 
+const relationRank = { review: 0, feature: 1, mention: 2 };
+const byArticle = Object.fromEntries(
+  Object.entries(reverseRelations).map(([articleId, books]) => [
+    articleId,
+    books
+      .sort(
+        (first, second) =>
+          relationRank[first.kind] - relationRank[second.kind] ||
+          Number(Boolean(second.coverUrl)) - Number(Boolean(first.coverUrl)) ||
+          first.localizations.ru.title.localeCompare(
+            second.localizations.ru.title,
+            "ru"
+          )
+      )
+      .slice(0, 6),
+  ])
+);
+const articleBookRelationCount = Object.values(byArticle).reduce(
+  (sum, books) => sum + books.length,
+  0
+);
+
 const payload = {
-  version: 1,
+  version: 2,
   bookCount: archive.length,
   articleCount: articles.length,
   linkedBookCount: Object.keys(byBook).length,
+  linkedArticleCount: Object.keys(byArticle).length,
   relationCount,
+  articleBookRelationCount,
   byBook,
+  byArticle,
 };
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
@@ -227,5 +290,8 @@ const seaWolfLinks = seaWolfKey ? byBook[seaWolfKey]?.length || 0 : 0;
 
 console.log(
   `Связи книг и журнала: ${relationCount} связей, ${Object.keys(byBook).length} книг, ${articles.length} статей.`
+);
+console.log(
+  `Рекомендации в статьях: ${articleBookRelationCount} карточек для ${Object.keys(byArticle).length} статей.`
 );
 console.log(`«Морской волк»: ${seaWolfLinks} связанных материалов.`);

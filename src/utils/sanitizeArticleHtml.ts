@@ -53,7 +53,6 @@ export function sanitizeArticleHtml(source: string) {
           "is-ornament",
           "is-gallery",
           "is-slider",
-          "article-image",
           "article-inline-image",
           "is-wide",
           "is-normal",
@@ -83,7 +82,10 @@ export function sanitizeArticleHtml(source: string) {
       )
         ? element.dataset.imageLayout || "wide"
         : "wide";
-      element.classList.add("article-image", `is-${layout}`);
+      // `article-image` belongs to homepage cards and carries a fixed 16:10
+      // frame. Never reuse it for editorial images with their own proportions.
+      element.classList.remove("article-image");
+      element.classList.add(`is-${layout}`);
       const inCollection = element.closest(
         ".article-design-block.is-gallery, .article-design-block.is-slider"
       );

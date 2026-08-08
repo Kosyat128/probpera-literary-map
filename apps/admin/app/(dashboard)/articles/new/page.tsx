@@ -1,11 +1,21 @@
-import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
+import ArticleEditor, {
+  type ArticleTranslation,
+  type CustomTemplate,
+} from "@/components/ArticleEditor";
 import ArticleCopyPicker, {
   type CopyableArticle,
 } from "@/components/ArticleCopyPicker";
 import { adminEnv } from "@/lib/env";
+import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = { title: "Новая статья" };
+
+function copiedDraftSlug(sourceSlug: string, copyToken: string) {
+  const base = createSlug(sourceSlug) || "material";
+  const suffix = `copy-${copyToken}`;
+  return `${base.slice(0, Math.max(2, 179 - suffix.length))}-${suffix}`;
+}
 
 export default async function NewArticlePage({
   searchParams,
@@ -25,6 +35,10 @@ export default async function NewArticlePage({
     { data: authResult },
     { data: articlesResult },
     { data: sourceArticleResult },
+    {
+      data: sourceEnglishTranslationResult,
+      error: sourceEnglishTranslationError,
+    },
   ] = await Promise.all([
     supabase
       .from("categories")
@@ -51,7 +65,18 @@ export default async function NewArticlePage({
           )
           .eq("id", copyFromId)
           .maybeSingle()
-      : Promise.resolve({ data: null }),
+      : Promise.resolve({ data: null, error: null }),
+    copyFromId
+      ? supabase
+          .from("article_translations")
+          .select(
+            "title,subtitle,excerpt,slug,content_html,content_json,cover_alt,sources,bibliography,seo_title,seo_description,seo_keywords,og_title,og_description"
+          )
+          .eq("article_id", copyFromId)
+          .eq("locale", "en")
+          .is("deleted_at", null)
+          .maybeSingle()
+      : Promise.resolve({ data: null, error: null }),
   ]);
 
   const categories = categoriesResult || [];
@@ -70,6 +95,9 @@ export default async function NewArticlePage({
   }));
 
   const sourceArticle = sourceArticleResult || null;
+  const copyToken = copyFromId
+    ? `${copyFromId.slice(0, 8)}-${crypto.randomUUID().slice(0, 8)}`
+    : null;
   const copiedArticle = sourceArticle
     ? {
         title: sourceArticle.title,
@@ -89,7 +117,8 @@ export default async function NewArticlePage({
         og_title: sourceArticle.og_title,
         og_description: sourceArticle.og_description,
         allow_indexing: sourceArticle.allow_indexing,
-        slug: "",
+        slug: copiedDraftSlug(sourceArticle.slug, copyToken || "draft"),
+        canonical_url: null,
         legacy_path: null,
         status: "draft",
         featured: false,
@@ -97,6 +126,35 @@ export default async function NewArticlePage({
         pinned: false,
       }
     : null;
+  const copiedEnglishTranslation: ArticleTranslation | undefined =
+    sourceArticle && sourceEnglishTranslationResult
+      ? {
+          locale: "en",
+          title: sourceEnglishTranslationResult.title,
+          subtitle: sourceEnglishTranslationResult.subtitle,
+          excerpt: sourceEnglishTranslationResult.excerpt,
+          content_html: sourceEnglishTranslationResult.content_html,
+          content_json: sourceEnglishTranslationResult.content_json,
+          cover_alt: sourceEnglishTranslationResult.cover_alt,
+          sources: sourceEnglishTranslationResult.sources,
+          bibliography: sourceEnglishTranslationResult.bibliography,
+          seo_title: sourceEnglishTranslationResult.seo_title,
+          seo_description: sourceEnglishTranslationResult.seo_description,
+          seo_keywords: sourceEnglishTranslationResult.seo_keywords,
+          og_title: sourceEnglishTranslationResult.og_title,
+          og_description: sourceEnglishTranslationResult.og_description,
+          status: "draft",
+          slug: copiedDraftSlug(
+            sourceEnglishTranslationResult.slug,
+            copyToken || "draft-en"
+          ),
+          canonical_url: null,
+        }
+      : undefined;
+  const copyLoadError =
+    copyFromId && sourceEnglishTranslationError
+      ? `Не удалось загрузить английскую версию исходной статьи: ${sourceEnglishTranslationError.message}`
+      : null;
 
   return (
     <>
@@ -110,18 +168,20 @@ export default async function NewArticlePage({
           </p>
         </div>
       </header>
-      {error && <p className="form-message">{error}</p>}
+      {(error || copyLoadError) && (
+        <p className="form-message">{error || copyLoadError}</p>
+      )}
       <ArticleCopyPicker articles={copyableArticles} />
-      <ArticleEditor
-        article={
-          copiedArticle
-            ? copiedArticle
-            : { status: "draft" }
-        }
-        categories={categories}
-        publicSiteUrl={adminEnv.publicSiteUrl}
-        templates={templates}
-      />
+      {!copyLoadError && (
+        <ArticleEditor
+          article={copiedArticle ? copiedArticle : { status: "draft" }}
+          englishTranslation={copiedEnglishTranslation}
+          categories={categories}
+          publicSiteUrl={adminEnv.publicSiteUrl}
+          templates={templates}
+          draftKey={copyFromId ? `copy-${copyFromId}` : undefined}
+        />
+      )}
     </>
   );
 }

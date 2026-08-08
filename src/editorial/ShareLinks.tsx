@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { SocialMark, type SocialMarkId } from "../components/SocialLinks";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type Props = {
   url: string;
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export default function ShareLinks({ url, title }: Props) {
+  const { t } = useInterfaceLanguage();
   const [copied, setCopied] = useState(false);
   const configuredOrigin = import.meta.env.VITE_PUBLIC_SITE_URL?.trim().replace(
     /\/+$/,
@@ -26,17 +28,17 @@ export default function ShareLinks({ url, title }: Props) {
   }> = [
     {
       id: "vk",
-      label: "Поделиться во ВКонтакте",
+      label: t("Поделиться во ВКонтакте"),
       href: `https://vk.com/share.php?url=${encodedUrl}&title=${encodedTitle}`,
     },
     {
       id: "telegram",
-      label: "Поделиться в Telegram",
+      label: t("Поделиться в Telegram"),
       href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
       id: "ok",
-      label: "Поделиться в Одноклассниках",
+      label: t("Поделиться в Одноклассниках"),
       href: `https://connect.ok.ru/offer?url=${encodedUrl}&title=${encodedTitle}`,
     },
   ];
@@ -52,8 +54,8 @@ export default function ShareLinks({ url, title }: Props) {
   };
 
   return (
-    <div className="share-links" aria-label={`Поделиться материалом «${title}»`}>
-      <span>Поделиться</span>
+    <div className="share-links" aria-label={`${t("Поделиться материалом")} “${title}”`}>
+      <span>{t("Поделиться")}</span>
       {shareItems.map((item) => (
         <a
           className={`share-icon is-${item.id}`}
@@ -73,8 +75,8 @@ export default function ShareLinks({ url, title }: Props) {
         className={`share-icon is-copy${copied ? " is-copied" : ""}`}
         type="button"
         onClick={() => void copyLink()}
-        aria-label={copied ? "Ссылка скопирована" : "Копировать ссылку"}
-        title={copied ? "Ссылка скопирована" : "Копировать ссылку"}
+        aria-label={copied ? t("Ссылка скопирована") : t("Копировать ссылку")}
+        title={copied ? t("Ссылка скопирована") : t("Копировать ссылку")}
       >
         {copied ? (
           <svg viewBox="0 0 24 24" aria-hidden="true">

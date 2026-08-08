@@ -1,0 +1,1953 @@
+{
+  "generatedAt": "2026-08-08T00:00:00.000Z",
+  "sourceManifestFingerprint": "ee1a7091e66e7f5d4269ef3e0128ea1166f84afa43878ae5d5713b600a190b45",
+  "source": "Validated book-enrichment-curated-batch files; raw imports remain unchanged",
+  "works": {
+    "austria:franz_kafka": [
+      {
+        "id": "openlibrary-works-ol498556w",
+        "title": "Превращение",
+        "alternateTitles": [
+          "Metamorphosis",
+          "The Metamorphosis",
+          "Die Verwandlung"
+        ],
+        "originalTitle": "Die Verwandlung",
+        "firstPublished": 1915,
+        "originalLanguage": "немецкий",
+        "genres": [
+          "повесть",
+          "модернизм"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Коммивояжёр Грегор Замза просыпается в теле огромного насекомого и внезапно теряет возможность работать и поддерживать семью. По мере того как забота близких сменяется раздражением и жестокостью, кафкианская повесть обнажает одиночество человека, чью ценность окружающие измеряют пользой и способностью подчиняться привычному порядку.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Превращение",
+            "description": "Коммивояжёр Грегор Замза просыпается в теле огромного насекомого и внезапно теряет возможность работать и поддерживать семью. По мере того как забота близких сменяется раздражением и жестокостью, кафкианская повесть обнажает одиночество человека, чью ценность окружающие измеряют пользой и способностью подчиняться привычному порядку.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL498556W",
+              "https://www.franzkafka.de/werk/saemtliche-titel/die-verwandlung",
+              "https://www.dhm.de/lemo/biografie/franz-kafka",
+              "https://catalogue.bnf.fr/ark:/12148/cb12215943z"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Metamorphosis",
+            "description": "Traveling salesman Gregor Samsa wakes in the body of a giant insect and abruptly loses his ability to work and support his family. As his relatives' care gives way to resentment and cruelty, Kafka's novella exposes the isolation of a person whose worth is measured by usefulness and obedience to ordinary expectations.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL498556W",
+              "https://www.franzkafka.de/werk/saemtliche-titel/die-verwandlung",
+              "https://www.dhm.de/lemo/biografie/franz-kafka",
+              "https://catalogue.bnf.fr/ark:/12148/cb12215943z"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL498556W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Franz Kafka author portal (S. Fischer)",
+            "url": "https://www.franzkafka.de/werk/saemtliche-titel/die-verwandlung",
+            "fields": [
+              "identity",
+              "authorship",
+              "original-title",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Deutsches Historisches Museum",
+            "url": "https://www.dhm.de/lemo/biografie/franz-kafka",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb12215943z",
+            "fields": [
+              "identity",
+              "authorship",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [
+          {
+            "scheme": "openlibrary",
+            "value": "OL498556W",
+            "sourceUrl": "https://openlibrary.org/works/OL498556W"
+          }
+        ],
+        "sourceUrl": "https://openlibrary.org/works/OL498556W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "canada:margaret_atwood": [
+      {
+        "id": "openlibrary-works-ol675783w",
+        "title": "Рассказ служанки",
+        "alternateTitles": [
+          "The Handmaid's Tale"
+        ],
+        "originalTitle": "The Handmaid's Tale",
+        "firstPublished": 1985,
+        "originalLanguage": "английский",
+        "genres": [
+          "антиутопия",
+          "спекулятивная проза"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "В теократической Республике Галаад Фредову лишают имени, семьи и телесной автономии, принуждая рожать детей для правящей элиты. Фрагменты её воспоминаний и осторожного сопротивления показывают, как режим закрепляет насилие через ритуал и язык, но не может полностью уничтожить личную память и желание свободы.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Рассказ служанки",
+            "description": "В теократической Республике Галаад Фредову лишают имени, семьи и телесной автономии, принуждая рожать детей для правящей элиты. Фрагменты её воспоминаний и осторожного сопротивления показывают, как режим закрепляет насилие через ритуал и язык, но не может полностью уничтожить личную память и желание свободы.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL675783W",
+              "https://www.themorgan.org/printed-books/386585",
+              "https://catalogue.bnf.fr/ark:/12148/cb349199350"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Handmaid's Tale",
+            "description": "In the theocratic Republic of Gilead, Offred is stripped of her name, family, and bodily autonomy and forced to bear children for the ruling elite. Fragments of memory and guarded resistance show how the regime enforces violence through ritual and language without entirely extinguishing private identity or the desire for freedom.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL675783W",
+              "https://www.themorgan.org/printed-books/386585",
+              "https://catalogue.bnf.fr/ark:/12148/cb349199350"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL675783W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "The Morgan Library & Museum",
+            "url": "https://www.themorgan.org/printed-books/386585",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb349199350",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [
+          {
+            "scheme": "openlibrary",
+            "value": "OL675783W",
+            "sourceUrl": "https://openlibrary.org/works/OL675783W"
+          }
+        ],
+        "sourceUrl": "https://openlibrary.org/works/OL675783W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "england:aldous_huxley": [
+      {
+        "id": "brave-new-world-editorial",
+        "title": "О дивный новый мир",
+        "alternateTitles": [
+          "Brave New World"
+        ],
+        "originalTitle": "Brave New World",
+        "firstPublished": 1932,
+        "originalLanguage": "английский",
+        "genres": [
+          "антиутопия",
+          "научная фантастика"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "В Мировом Государстве людей выращивают по кастам, заранее программируют на потребление и успокаивают наркотиком сомой, чтобы исключить боль и конфликт. Появление Джона, выросшего вне этой системы, обнаруживает цену всеобщей стабильности и ставит вопрос, возможны ли свобода, любовь и смысл без права на страдание и несогласие.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "О дивный новый мир",
+            "description": "В Мировом Государстве людей выращивают по кастам, заранее программируют на потребление и успокаивают наркотиком сомой, чтобы исключить боль и конфликт. Появление Джона, выросшего вне этой системы, обнаруживает цену всеобщей стабильности и ставит вопрос, возможны ли свобода, любовь и смысл без права на страдание и несогласие.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL64365W",
+              "https://www.harperacademic.com/book/9780061767647/brave-new-world/",
+              "https://catalogue.bnf.fr/ark:/12148/cb119472943"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Brave New World",
+            "description": "The World State breeds people into castes, conditions them for consumption, and pacifies distress with soma in order to eliminate pain and conflict. The arrival of John, raised beyond that system, exposes the price of universal stability and asks whether freedom, love, and meaning can survive without the right to suffer or dissent.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL64365W",
+              "https://www.harperacademic.com/book/9780061767647/brave-new-world/",
+              "https://catalogue.bnf.fr/ark:/12148/cb119472943"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL64365W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "HarperAcademic",
+            "url": "https://www.harperacademic.com/book/9780061767647/brave-new-world/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "description"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb119472943",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL64365W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "england:george_orwell": [
+      {
+        "id": "animal-farm-editorial",
+        "title": "Скотный двор",
+        "alternateTitles": [
+          "Animal Farm"
+        ],
+        "originalTitle": "Animal Farm",
+        "firstPublished": 1945,
+        "originalLanguage": "английский",
+        "genres": [
+          "политическая сатира",
+          "аллегорическая повесть"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Животные фермы свергают хозяина, надеясь построить равное сообщество, но свиньи постепенно присваивают власть и привилегии. Через изменяемые заповеди, переписанную историю и язык лозунгов Оруэлл показывает, как освободительная революция может выродиться в авторитарный порядок, похожий на тот, который она обещала уничтожить.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Скотный двор",
+            "description": "Животные фермы свергают хозяина, надеясь построить равное сообщество, но свиньи постепенно присваивают власть и привилегии. Через изменяемые заповеди, переписанную историю и язык лозунгов Оруэлл показывает, как освободительная революция может выродиться в авторитарный порядок, похожий на тот, который она обещала уничтожить.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1168007W",
+              "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/animal-farm/",
+              "https://www.penguin.co.uk/books/364892/animal-farm-by-george-orwell/9781787301078",
+              "https://catalogue.bnf.fr/ark:/12148/cb11985856j"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Animal Farm",
+            "description": "Farm animals overthrow their owner in the hope of building an equal community, but the pigs gradually seize authority and privilege. Through altered commandments, rewritten history, and political slogans, Orwell shows how a liberating revolution can harden into an authoritarian order resembling the system it promised to destroy.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1168007W",
+              "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/animal-farm/",
+              "https://www.penguin.co.uk/books/364892/animal-farm-by-george-orwell/9781787301078",
+              "https://catalogue.bnf.fr/ark:/12148/cb11985856j"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL1168007W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "The Orwell Foundation",
+            "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/animal-farm/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Penguin Books",
+            "url": "https://www.penguin.co.uk/books/364892/animal-farm-by-george-orwell/9781787301078",
+            "fields": [
+              "identity",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11985856j",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL1168007W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      },
+      {
+        "id": "nineteen-eighty-four",
+        "title": "1984",
+        "alternateTitles": [
+          "Nineteen Eighty-Four"
+        ],
+        "originalTitle": "Nineteen Eighty-Four",
+        "firstPublished": 1949,
+        "originalLanguage": "английский",
+        "genres": [
+          "антиутопия",
+          "политический роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Уинстон Смит служит тоталитарной Партии, ежедневно исправляя прошлое в документах, но втайне пытается сохранить собственную память и способность любить. Его бунт показывает, как постоянная слежка, управляемый язык и подмена фактов позволяют власти вторгаться не только в поступки, но и в само представление человека о реальности.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "1984",
+            "description": "Уинстон Смит служит тоталитарной Партии, ежедневно исправляя прошлое в документах, но втайне пытается сохранить собственную память и способность любить. Его бунт показывает, как постоянная слежка, управляемый язык и подмена фактов позволяют власти вторгаться не только в поступки, но и в само представление человека о реальности.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1168083W",
+              "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
+              "https://catalogue.bnf.fr/ark:/12148/cb119437788"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Nineteen Eighty-Four",
+            "description": "Winston Smith serves the totalitarian Party by rewriting the documentary past, yet secretly tries to preserve his own memory and capacity for love. His rebellion reveals how permanent surveillance, controlled language, and manufactured facts let power invade not only conduct but a person's very sense of reality.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1168083W",
+              "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
+              "https://catalogue.bnf.fr/ark:/12148/cb119437788"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL1168083W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "The Orwell Foundation",
+            "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb119437788",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL1168083W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "england:j_r_r_tolkien": [
+      {
+        "id": "openlibrary-works-ol27448w",
+        "title": "Властелин колец",
+        "alternateTitles": [
+          "The Lord of the Rings"
+        ],
+        "originalTitle": "The Lord of the Rings",
+        "firstPublished": 1954,
+        "originalLanguage": "английский",
+        "genres": [
+          "эпическое фэнтези",
+          "приключенческий роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Хоббит Фродо получает Кольцо Всевластия и отправляется к Роковой горе, чтобы уничтожить его прежде, чем Саурон подчинит Средиземье. После распада Братства частный поход перерастает в историю народов, объединившихся перед общей угрозой, а испытания героев раскрывают темы власти, милосердия, верности и свободно принятой ответственности.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Властелин колец",
+            "description": "Хоббит Фродо получает Кольцо Всевластия и отправляется к Роковой горе, чтобы уничтожить его прежде, чем Саурон подчинит Средиземье. После распада Братства частный поход перерастает в историю народов, объединившихся перед общей угрозой, а испытания героев раскрывают темы власти, милосердия, верности и свободно принятой ответственности.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL27448W",
+              "https://www.tolkienestate.com/es/escribir/el-senor-de-los-anillos/",
+              "https://www.tolkienestate.com/life/timeline-1950-2018/"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Lord of the Rings",
+            "description": "The hobbit Frodo inherits the One Ring and sets out for Mount Doom to destroy it before Sauron can dominate Middle-earth. As the Fellowship breaks apart, the quest widens into the story of peoples uniting against a common enemy, while the heroes' trials explore power, pity, loyalty, and freely chosen responsibility.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL27448W",
+              "https://www.tolkienestate.com/es/escribir/el-senor-de-los-anillos/",
+              "https://www.tolkienestate.com/life/timeline-1950-2018/"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL27448W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Tolkien Estate",
+            "url": "https://www.tolkienestate.com/es/escribir/el-senor-de-los-anillos/",
+            "fields": [
+              "identity",
+              "authorship",
+              "language",
+              "genre"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Tolkien Estate",
+            "url": "https://www.tolkienestate.com/life/timeline-1950-2018/",
+            "fields": [
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [
+          {
+            "scheme": "openlibrary",
+            "value": "OL27448W",
+            "sourceUrl": "https://openlibrary.org/works/OL27448W"
+          }
+        ],
+        "sourceUrl": "https://openlibrary.org/works/OL27448W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      },
+      {
+        "id": "the-hobbit",
+        "title": "Хоббит, или Туда и обратно",
+        "alternateTitles": [
+          "The Hobbit, or There and Back Again"
+        ],
+        "originalTitle": "The Hobbit, or There and Back Again",
+        "firstPublished": 1937,
+        "originalLanguage": "английский",
+        "genres": [
+          "фэнтези",
+          "приключенческая повесть"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Домосед Бильбо Бэггинс неожиданно присоединяется к тринадцати гномам и волшебнику Гэндальфу, чтобы вернуть сокровища, захваченные драконом Смаугом. В дороге его спасают не сила и воинская слава, а находчивость, растущая смелость и милосердие, благодаря которым уютный обыватель становится самостоятельным участником большого приключения.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Хоббит, или Туда и обратно",
+            "description": "Домосед Бильбо Бэггинс неожиданно присоединяется к тринадцати гномам и волшебнику Гэндальфу, чтобы вернуть сокровища, захваченные драконом Смаугом. В дороге его спасают не сила и воинская слава, а находчивость, растущая смелость и милосердие, благодаря которым уютный обыватель становится самостоятельным участником большого приключения.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL27482W",
+              "https://www.tolkienestate.com/writing/john-d-rateliff-the-hobbit/",
+              "https://www.tolkienestate.com/life/timeline-1892-1949/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12545196g.public"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Hobbit, or There and Back Again",
+            "description": "Home-loving Bilbo Baggins unexpectedly joins thirteen dwarves and the wizard Gandalf on a quest to recover treasure seized by the dragon Smaug. Wit, growing courage, and mercy serve him better than force or martial glory, allowing a comfort-minded outsider to become an independent participant in a much larger adventure.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL27482W",
+              "https://www.tolkienestate.com/writing/john-d-rateliff-the-hobbit/",
+              "https://www.tolkienestate.com/life/timeline-1892-1949/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12545196g.public"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL27482W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Tolkien Estate",
+            "url": "https://www.tolkienestate.com/writing/john-d-rateliff-the-hobbit/",
+            "fields": [
+              "identity",
+              "authorship",
+              "genre"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Tolkien Estate",
+            "url": "https://www.tolkienestate.com/life/timeline-1892-1949/",
+            "fields": [
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb12545196g.public",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL27482W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "england:jane_austen": [
+      {
+        "id": "pride-and-prejudice",
+        "title": "Гордость и предубеждение",
+        "alternateTitles": [
+          "Pride and Prejudice"
+        ],
+        "originalTitle": "Pride and Prejudice",
+        "firstPublished": 1813,
+        "originalLanguage": "английский",
+        "genres": [
+          "роман нравов",
+          "любовный роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Элизабет Беннет и Фицуильям Дарси быстро составляют друг о друге уверенные, но неполные суждения, которые меняются после череды неловких встреч и открытий. Остроумный роман соединяет историю взаимного взросления с точным наблюдением за браком, деньгами и общественным рангом, показывая ценность самокритики перед лицом чувства.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Гордость и предубеждение",
+            "description": "Элизабет Беннет и Фицуильям Дарси быстро составляют друг о друге уверенные, но неполные суждения, которые меняются после череды неловких встреч и открытий. Остроумный роман соединяет историю взаимного взросления с точным наблюдением за браком, деньгами и общественным рангом, показывая ценность самокритики перед лицом чувства.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL66554W",
+              "https://janeaustens.house/object/pride-and-prejudice-first-edition/",
+              "https://janeaustens.house/jane-austen/novels/pride-and-prejudice/",
+              "https://catalogue.bnf.fr/ark:/12148/cb11960594n"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Pride and Prejudice",
+            "description": "Elizabeth Bennet and Fitzwilliam Darcy form confident but incomplete judgments of one another that change through a series of awkward encounters and discoveries. Austen's wit joins their mutual maturation to a precise study of marriage, money, and rank, showing how honest self-correction can become a condition of love.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL66554W",
+              "https://janeaustens.house/object/pride-and-prejudice-first-edition/",
+              "https://janeaustens.house/jane-austen/novels/pride-and-prejudice/",
+              "https://catalogue.bnf.fr/ark:/12148/cb11960594n"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL66554W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Jane Austen's House",
+            "url": "https://janeaustens.house/object/pride-and-prejudice-first-edition/",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Jane Austen's House",
+            "url": "https://janeaustens.house/jane-austen/novels/pride-and-prejudice/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11960594n",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL66554W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "england:william_shakespeare": [
+      {
+        "id": "hamlet",
+        "title": "Гамлет",
+        "alternateTitles": [
+          "Hamlet"
+        ],
+        "originalTitle": "Hamlet",
+        "firstPublished": 1603,
+        "originalLanguage": "английский",
+        "genres": [
+          "трагедия",
+          "драма"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Принц Гамлет возвращается в Данию после смерти отца и узнаёт от его призрака, что короля убил собственный брат, занявший трон. Попытка проверить обвинение и совершить возмездие превращает двор в пространство слежки и обмана, а трагедию — в исследование совести, истины и цены действия.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Гамлет",
+            "description": "Принц Гамлет возвращается в Данию после смерти отца и узнаёт от его призрака, что короля убил собственный брат, занявший трон. Попытка проверить обвинение и совершить возмездие превращает двор в пространство слежки и обмана, а трагедию — в исследование совести, истины и цены действия.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL9170454W",
+              "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+              "https://catalogue.bnf.fr/ark:/12148/cb11936813g"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Hamlet",
+            "description": "Prince Hamlet returns to Denmark after his father's death and learns from his father's ghost that his uncle, now king, committed the murder. His attempt to test the accusation and exact revenge turns the court into a maze of surveillance and deceit, while the tragedy probes conscience, truth, and the cost of action.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL9170454W",
+              "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+              "https://catalogue.bnf.fr/ark:/12148/cb11936813g"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL9170454W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Folger Shakespeare Library",
+            "url": "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11936813g",
+            "fields": [
+              "identity",
+              "language",
+              "genre"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL9170454W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "france:flaubert": [
+      {
+        "id": "madame-bovary",
+        "title": "Госпожа Бовари",
+        "alternateTitles": [
+          "Madame Bovary"
+        ],
+        "originalTitle": "Madame Bovary",
+        "firstPublished": 1857,
+        "originalLanguage": "французский",
+        "genres": [
+          "реалистический роман",
+          "психологический роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Эмма Бовари, воспитанная на романтических книгах, тяготится провинциальным браком и ищет обещанную ими полноту жизни в любовных связях и покупках. Ирония Флобера и меняющаяся близость к сознанию героини показывают, как неудовлетворённое желание, социальная теснота и потребительская фантазия ведут её к долгам и саморазрушению.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Госпожа Бовари",
+            "description": "Эмма Бовари, воспитанная на романтических книгах, тяготится провинциальным браком и ищет обещанную ими полноту жизни в любовных связях и покупках. Ирония Флобера и меняющаяся близость к сознанию героини показывают, как неудовлетворённое желание, социальная теснота и потребительская фантазия ведут её к долгам и саморазрушению.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL893707W",
+              "https://catalogue.bnf.fr/ark:/12148/cb11938746n",
+              "https://catalogue.bnf.fr/ark:/12148/cb35284670v"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Madame Bovary",
+            "description": "Emma Bovary, educated by romantic books, finds provincial marriage intolerably narrow and seeks their promised fullness of life in affairs and consumption. Flaubert's irony and shifting closeness to her mind reveal how frustrated desire, social confinement, and consumer fantasy draw her into debt and self-destruction.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL893707W",
+              "https://catalogue.bnf.fr/ark:/12148/cb11938746n",
+              "https://catalogue.bnf.fr/ark:/12148/cb35284670v"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL893707W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11938746n",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb35284670v",
+            "fields": [
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL893707W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "france:saint_exupery": [
+      {
+        "id": "openlibrary-works-ol10263w",
+        "title": "Маленький принц",
+        "alternateTitles": [
+          "Le petit prince",
+          "The Little Prince",
+          "Le Petit Prince"
+        ],
+        "originalTitle": "Le Petit Prince",
+        "firstPublished": 1943,
+        "originalLanguage": "французский",
+        "genres": [
+          "философская сказка",
+          "детская литература"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Потерпевший аварию лётчик встречает в пустыне маленького путешественника, который рассказывает о своей розе и странных взрослых на далёких планетах. Его разговоры с лисом и пилотом превращают простую сказку в размышление о дружбе, утрате, воображении и ответственности за тех, кого мы сделали близкими.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Маленький принц",
+            "description": "Потерпевший аварию лётчик встречает в пустыне маленького путешественника, который рассказывает о своей розе и странных взрослых на далёких планетах. Его разговоры с лисом и пилотом превращают простую сказку в размышление о дружбе, утрате, воображении и ответственности за тех, кого мы сделали близкими.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL10263W",
+              "https://catalogue.bnf.fr/ark:/12148/cb11962706k",
+              "https://catalogue.bnf.fr/ark:/12148/cb352855250"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Little Prince",
+            "description": "A pilot stranded in the desert meets a young traveler who describes his rose and the bewildering adults encountered on distant planets. The child's conversations with the fox and the pilot turn a spare fable into a meditation on friendship, loss, imagination, and responsibility for those we allow to become dear to us.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL10263W",
+              "https://catalogue.bnf.fr/ark:/12148/cb11962706k",
+              "https://catalogue.bnf.fr/ark:/12148/cb352855250"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL10263W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11962706k",
+            "fields": [
+              "identity",
+              "authorship",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb352855250",
+            "fields": [
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [
+          {
+            "scheme": "openlibrary",
+            "value": "OL10263W",
+            "sourceUrl": "https://openlibrary.org/works/OL10263W"
+          }
+        ],
+        "sourceUrl": "https://openlibrary.org/works/OL10263W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "france:victor_hugo": [
+      {
+        "id": "les-miserables",
+        "title": "Отверженные",
+        "alternateTitles": [
+          "Les Misérables"
+        ],
+        "originalTitle": "Les Misérables",
+        "firstPublished": 1862,
+        "originalLanguage": "французский",
+        "genres": [
+          "социальный роман",
+          "исторический роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Бывший каторжник Жан Вальжан пытается начать честную жизнь, но инспектор Жавер годами преследует его как нарушителя закона. Переплетая судьбы Фантины, Козетты, Мариуса и участников парижского восстания, Гюго противопоставляет милосердие формальной справедливости и показывает, как бедность калечит человеческую жизнь.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Отверженные",
+            "description": "Бывший каторжник Жан Вальжан пытается начать честную жизнь, но инспектор Жавер годами преследует его как нарушителя закона. Переплетая судьбы Фантины, Козетты, Мариуса и участников парижского восстания, Гюго противопоставляет милосердие формальной справедливости и показывает, как бедность калечит человеческую жизнь.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1063588W",
+              "https://catalogue.bnf.fr/ark:/12148/cb13516296h"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Les Misérables",
+            "description": "Former convict Jean Valjean tries to build an honest life, yet Inspector Javert pursues him for years as an offender who must never escape the law. Interweaving the lives of Fantine, Cosette, Marius, and the Paris insurgents, Hugo sets mercy against rigid justice and shows how poverty deforms human possibility.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL1063588W",
+              "https://catalogue.bnf.fr/ark:/12148/cb13516296h"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL1063588W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb13516296h",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL1063588W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "russia:dostoevsky": [
+      {
+        "id": "crime-and-punishment",
+        "title": "Преступление и наказание",
+        "alternateTitles": [
+          "Crime and Punishment"
+        ],
+        "originalTitle": "Преступление и наказание",
+        "firstPublished": 1866,
+        "originalLanguage": "русский",
+        "genres": [
+          "психологический роман",
+          "философский роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Бедный петербургский студент Родион Раскольников решается на убийство, пытаясь доказать себе право исключительной личности переступить нравственный закон. Следствие, чувство вины и встреча с Соней разрушают его теорию, превращая роман в напряжённый разговор об ответственности, сострадании и возможности духовного возрождения.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Преступление и наказание",
+            "description": "Бедный петербургский студент Родион Раскольников решается на убийство, пытаясь доказать себе право исключительной личности переступить нравственный закон. Следствие, чувство вины и встреча с Соней разрушают его теорию, превращая роман в напряжённый разговор об ответственности, сострадании и возможности духовного возрождения.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL21062236W",
+              "https://www.loc.gov/exhibits/empire/chronology.html",
+              "https://catalogue.bnf.fr/ark:/12148/cb11936242d"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Crime and Punishment",
+            "description": "Impoverished Saint Petersburg student Rodion Raskolnikov commits murder in an attempt to prove that an exceptional person may step beyond moral law. Investigation, guilt, and his bond with Sonya dismantle that theory, turning the novel into an intense inquiry into responsibility, compassion, and the possibility of spiritual renewal.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL21062236W",
+              "https://www.loc.gov/exhibits/empire/chronology.html",
+              "https://catalogue.bnf.fr/ark:/12148/cb11936242d"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL21062236W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://www.loc.gov/exhibits/empire/chronology.html",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11936242d",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL21062236W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "russia:tolstoy": [
+      {
+        "id": "war-and-peace",
+        "title": "Война и мир",
+        "alternateTitles": [
+          "War and Peace"
+        ],
+        "originalTitle": "Война и мир",
+        "firstPublished": 1869,
+        "originalLanguage": "русский",
+        "genres": [
+          "роман-эпопея",
+          "исторический роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Судьбы нескольких дворянских семей разворачиваются на фоне войн с Наполеоном, от салонов Петербурга до Бородинского поля и пожара Москвы. Соединяя семейную хронику, батальные сцены и философские отступления, Толстой исследует любовь, взросление и спор между личной свободой и ходом истории.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Война и мир",
+            "description": "Судьбы нескольких дворянских семей разворачиваются на фоне войн с Наполеоном, от салонов Петербурга до Бородинского поля и пожара Москвы. Соединяя семейную хронику, батальные сцены и философские отступления, Толстой исследует любовь, взросление и спор между личной свободой и ходом истории.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL267171W",
+              "https://tolstoy.ru/online/90/16/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12166053w"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "War and Peace",
+            "description": "The fortunes of several aristocratic families unfold during the Napoleonic wars, moving from Saint Petersburg salons to Borodino and the burning of Moscow. By joining domestic chronicle, battle scenes, and philosophical reflection, Tolstoy examines love, maturation, and the tension between personal freedom and historical forces.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL267171W",
+              "https://tolstoy.ru/online/90/16/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12166053w"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL267171W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Государственный музей Л. Н. Толстого",
+            "url": "https://tolstoy.ru/online/90/16/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb12166053w",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL267171W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "spain:miguel_de_cervantes": [
+      {
+        "id": "openlibrary-works-ol15272537w",
+        "title": "Дон Кихот",
+        "alternateTitles": [
+          "The ingenious hidalgo Don Quixote de la Mancha",
+          "Don Quixote",
+          "El ingenioso hidalgo don Quijote de la Mancha"
+        ],
+        "originalTitle": "El ingenioso hidalgo don Quijote de la Mancha",
+        "firstPublished": 1605,
+        "originalLanguage": "испанский",
+        "genres": [
+          "роман",
+          "сатира"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Начитавшийся рыцарских романов идальго принимает имя Дон Кихот и отправляется защищать справедливость вместе с практичным оруженосцем Санчо Пансой. Комические столкновения мечты с действительностью постепенно складываются в сложный разговор о чтении, свободе воображения, достоинстве и способности человека создавать собственный образ мира.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Дон Кихот",
+            "description": "Начитавшийся рыцарских романов идальго принимает имя Дон Кихот и отправляется защищать справедливость вместе с практичным оруженосцем Санчо Пансой. Комические столкновения мечты с действительностью постепенно складываются в сложный разговор о чтении, свободе воображения, достоинстве и способности человека создавать собственный образ мира.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL15272537W",
+              "https://www.bne.es/es/quijote/",
+              "https://www.bne.es/es/colecciones/cervantes/ingenioso-hidalgo-don-quixote-mancha",
+              "https://catalogue.bnf.fr/ark:/12148/cb11937284k"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Don Quixote",
+            "description": "After reading too many chivalric romances, a country gentleman renames himself Don Quixote and rides out to defend justice with the practical Sancho Panza. Their comic collisions between fantasy and ordinary life deepen into an inquiry about reading, imaginative freedom, dignity, and the human urge to construct a world worth inhabiting.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL15272537W",
+              "https://www.bne.es/es/quijote/",
+              "https://www.bne.es/es/colecciones/cervantes/ingenioso-hidalgo-don-quixote-mancha",
+              "https://catalogue.bnf.fr/ark:/12148/cb11937284k"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL15272537W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Biblioteca Nacional de España",
+            "url": "https://www.bne.es/es/quijote/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Biblioteca Nacional de España",
+            "url": "https://www.bne.es/es/colecciones/cervantes/ingenioso-hidalgo-don-quixote-mancha",
+            "fields": [
+              "identity",
+              "authorship"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb11937284k",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [
+          {
+            "scheme": "openlibrary",
+            "value": "OL15272537W",
+            "sourceUrl": "https://openlibrary.org/works/OL15272537W"
+          }
+        ],
+        "sourceUrl": "https://openlibrary.org/works/OL15272537W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "usa:harper_lee": [
+      {
+        "id": "to-kill-a-mockingbird-editorial",
+        "title": "Убить пересмешника",
+        "alternateTitles": [
+          "To Kill a Mockingbird"
+        ],
+        "originalTitle": "To Kill a Mockingbird",
+        "firstPublished": 1960,
+        "originalLanguage": "английский",
+        "genres": [
+          "роман воспитания",
+          "социальный роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Девочка Скаут Финч наблюдает, как её отец Аттикус защищает в суде чернокожего мужчину, ложно обвинённого в преступлении в сегрегированной Алабаме. Детский взгляд постепенно раскрывает повседневную природу предрассудка, значение нравственного мужества и болезненный разрыв между обещанием закона и реальной справедливостью.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Убить пересмешника",
+            "description": "Девочка Скаут Финч наблюдает, как её отец Аттикус защищает в суде чернокожего мужчину, ложно обвинённого в преступлении в сегрегированной Алабаме. Детский взгляд постепенно раскрывает повседневную природу предрассудка, значение нравственного мужества и болезненный разрыв между обещанием закона и реальной справедливостью.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL3140822W",
+              "https://authorities.loc.gov/authority/n89106565?searchFields=lccn",
+              "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html?loclr=fbloc",
+              "https://www.neh.gov/humanities/2010/mayjune/statement/fifty-years-kill-mockingbird",
+              "https://catalogue.bnf.fr/ark:/12148/cb40045275z"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "To Kill a Mockingbird",
+            "description": "Young Scout Finch watches her father Atticus defend a Black man falsely accused of a crime in segregated Alabama. Her child's perspective gradually exposes the everyday workings of prejudice, the demands of moral courage, and the painful gap between the law's promise and the justice a community is willing to deliver.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL3140822W",
+              "https://authorities.loc.gov/authority/n89106565?searchFields=lccn",
+              "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html?loclr=fbloc",
+              "https://www.neh.gov/humanities/2010/mayjune/statement/fifty-years-kill-mockingbird",
+              "https://catalogue.bnf.fr/ark:/12148/cb40045275z"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL3140822W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress Authorities",
+            "url": "https://authorities.loc.gov/authority/n89106565?searchFields=lccn",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html?loclr=fbloc",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "description"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "National Endowment for the Humanities",
+            "url": "https://www.neh.gov/humanities/2010/mayjune/statement/fifty-years-kill-mockingbird",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb40045275z",
+            "fields": [
+              "identity",
+              "authorship",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL3140822W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "usa:herman_melville": [
+      {
+        "id": "moby-dick",
+        "title": "Моби Дик, или Белый кит",
+        "alternateTitles": [
+          "Моби Дик",
+          "Moby-Dick; or, The Whale"
+        ],
+        "originalTitle": "Moby-Dick; or, The Whale",
+        "firstPublished": 1851,
+        "originalLanguage": "английский",
+        "genres": [
+          "приключенческий роман",
+          "философский роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Рассказчик Измаил нанимается на китобойное судно «Пекод» и вскоре понимает, что капитан Ахав ведёт команду не на обычный промысел, а в личную погоню за белым китом Моби Диком. Морское приключение соединяется с энциклопедией китобойного дела, сменой голосов и философскими отступлениями, превращая одержимость Ахава в исследование власти, судьбы и непостижимости мира.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Моби Дик, или Белый кит",
+            "description": "Рассказчик Измаил нанимается на китобойное судно «Пекод» и вскоре понимает, что капитан Ахав ведёт команду не на обычный промысел, а в личную погоню за белым китом Моби Диком. Морское приключение соединяется с энциклопедией китобойного дела, сменой голосов и философскими отступлениями, превращая одержимость Ахава в исследование власти, судьбы и непостижимости мира.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL102749W",
+              "https://www.loc.gov/exhibits/america-reads/1750-to-1899.html",
+              "https://www.loc.gov/nls/new-materials/book-lists/best-american-fiction-early-period/",
+              "https://catalogue.bnf.fr/ark:/12148/cb120108674"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Moby-Dick; or, The Whale",
+            "description": "Narrator Ishmael joins the whaling ship Pequod and soon discovers that Captain Ahab is leading the crew not on an ordinary voyage but on a private hunt for the white whale Moby Dick. Maritime adventure merges with technical lore, shifting voices, and philosophical digression, making Ahab's obsession an inquiry into authority, fate, and a world that resists human mastery.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL102749W",
+              "https://www.loc.gov/exhibits/america-reads/1750-to-1899.html",
+              "https://www.loc.gov/nls/new-materials/book-lists/best-american-fiction-early-period/",
+              "https://catalogue.bnf.fr/ark:/12148/cb120108674"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL102749W",
+            "fields": [
+              "identity",
+              "language"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://www.loc.gov/exhibits/america-reads/1750-to-1899.html",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress National Library Service",
+            "url": "https://www.loc.gov/nls/new-materials/book-lists/best-american-fiction-early-period/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb120108674",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language",
+              "original-title"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL102749W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "usa:jerome_david_salinger": [
+      {
+        "id": "the-catcher-in-the-rye-editorial",
+        "title": "Над пропастью во ржи",
+        "alternateTitles": [
+          "The Catcher in the Rye"
+        ],
+        "originalTitle": "The Catcher in the Rye",
+        "firstPublished": 1951,
+        "originalLanguage": "английский",
+        "genres": [
+          "роман воспитания",
+          "подростковая проза"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "После исключения из школы Холден Колфилд несколько дней бродит по зимнему Нью-Йорку, откладывая возвращение домой и резко судя о встречных людях. За его насмешливым голосом постепенно открываются горе, одиночество и страх перед взрослением, а мечта защитить детей от падения становится попыткой удержать утраченную невинность.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Над пропастью во ржи",
+            "description": "После исключения из школы Холден Колфилд несколько дней бродит по зимнему Нью-Йорку, откладывая возвращение домой и резко судя о встречных людях. За его насмешливым голосом постепенно открываются горе, одиночество и страх перед взрослением, а мечта защитить детей от падения становится попыткой удержать утраченную невинность.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL3335245W",
+              "https://www.hachettebookgroup.com/titles/j-d-salinger/the-catcher-in-the-rye/9780316769532/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12229013q"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "The Catcher in the Rye",
+            "description": "After being expelled from school, Holden Caulfield wanders through wintertime New York for several days, postponing his return home and judging nearly everyone he meets. Beneath his sarcastic voice lie grief, loneliness, and fear of adulthood, while his fantasy of saving children from a fall becomes an attempt to preserve lost innocence.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL3335245W",
+              "https://www.hachettebookgroup.com/titles/j-d-salinger/the-catcher-in-the-rye/9780316769532/",
+              "https://catalogue.bnf.fr/ark:/12148/cb12229013q"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL3335245W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Little, Brown and Company",
+            "url": "https://www.hachettebookgroup.com/titles/j-d-salinger/the-catcher-in-the-rye/9780316769532/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb12229013q",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL3335245W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "usa:ray_bradbury": [
+      {
+        "id": "fahrenheit-451-editorial",
+        "title": "451° по Фаренгейту",
+        "alternateTitles": [
+          "Fahrenheit 451"
+        ],
+        "originalTitle": "Fahrenheit 451",
+        "firstPublished": 1953,
+        "originalLanguage": "английский",
+        "genres": [
+          "антиутопия",
+          "научная фантастика"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Пожарный Гай Монтэг служит обществу, где книги сжигают, а непрерывные развлечения вытесняют размышление, пока случайные встречи не заставляют его усомниться в своей работе. Его пробуждение и бегство превращают последующую погоню в спор о цензуре, добровольном отказе от сложности и хрупкой способности литературы сохранять человеческий опыт.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "451° по Фаренгейту",
+            "description": "Пожарный Гай Монтэг служит обществу, где книги сжигают, а непрерывные развлечения вытесняют размышление, пока случайные встречи не заставляют его усомниться в своей работе. Его пробуждение и бегство превращают последующую погоню в спор о цензуре, добровольном отказе от сложности и хрупкой способности литературы сохранять человеческий опыт.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL103123W",
+              "https://www.loc.gov/item/n79139258/ray-bradbury/",
+              "https://catalogue.bnf.fr/ark:/12148/cb150707007"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Fahrenheit 451",
+            "description": "Fireman Guy Montag serves a society that burns books and replaces reflection with constant entertainment until a series of encounters makes him question his work. His awakening and flight turn the ensuing chase into an argument about censorship, the willing surrender of complexity, and literature's fragile power to preserve human experience.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL103123W",
+              "https://www.loc.gov/item/n79139258/ray-bradbury/",
+              "https://catalogue.bnf.fr/ark:/12148/cb150707007"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL103123W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://www.loc.gov/item/n79139258/ray-bradbury/",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/ark:/12148/cb150707007",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL103123W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ],
+    "usa:vladimir_nabokov": [
+      {
+        "id": "lolita-editorial",
+        "title": "Лолита",
+        "alternateTitles": [
+          "Lolita"
+        ],
+        "originalTitle": "Lolita",
+        "firstPublished": 1955,
+        "originalLanguage": "английский",
+        "genres": [
+          "психологический роман",
+          "дорожный роман"
+        ],
+        "tags": [
+          "редакционно проверено",
+          "двуязычная карточка"
+        ],
+        "description": "Ненадёжный рассказчик Гумберт Гумберт пытается придать литературный блеск тому, как он преследует, похищает и подвергает насилию двенадцатилетнюю Долорес Гейз. Изощрённая речь героя не оправдывает его, а проверяет внимательность читателя, которому приходится различать манипуляцию взрослого и почти стёртую из его повествования личность ребёнка.",
+        "translations": {
+          "ru": {
+            "locale": "ru",
+            "title": "Лолита",
+            "description": "Ненадёжный рассказчик Гумберт Гумберт пытается придать литературный блеск тому, как он преследует, похищает и подвергает насилию двенадцатилетнюю Долорес Гейз. Изощрённая речь героя не оправдывает его, а проверяет внимательность читателя, которому приходится различать манипуляцию взрослого и почти стёртую из его повествования личность ребёнка.",
+            "sourceLanguage": "ru",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL627084W",
+              "https://findingaids.loc.gov/repositories/19/resources/2037",
+              "https://www.loc.gov/loc/lcib/09078/nabokov.html",
+              "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917330&typeNotice=p"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          },
+          "en": {
+            "locale": "en",
+            "title": "Lolita",
+            "description": "The unreliable narrator Humbert Humbert tries to give literary glamour to his stalking, abduction, and abuse of twelve-year-old Dolores Haze. His elaborate voice does not excuse him but tests the reader's attention, requiring us to distinguish an adult's manipulation from the child's personhood that his account repeatedly suppresses.",
+            "sourceLanguage": "en",
+            "status": "reviewed",
+            "sourceUrls": [
+              "https://openlibrary.org/works/OL627084W",
+              "https://findingaids.loc.gov/repositories/19/resources/2037",
+              "https://www.loc.gov/loc/lcib/09078/nabokov.html",
+              "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917330&typeNotice=p"
+            ],
+            "method": "editorial-original",
+            "reviewedAt": "2026-08-08"
+          }
+        },
+        "sources": [
+          {
+            "provider": "Open Library",
+            "url": "https://openlibrary.org/works/OL627084W",
+            "fields": [
+              "identity"
+            ],
+            "usage": "structured-data",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://findingaids.loc.gov/repositories/19/resources/2037",
+            "fields": [
+              "identity",
+              "authorship",
+              "publication-year"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Library of Congress",
+            "url": "https://www.loc.gov/loc/lcib/09078/nabokov.html",
+            "fields": [
+              "publication-year",
+              "language",
+              "authorship"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          },
+          {
+            "provider": "Bibliothèque nationale de France",
+            "url": "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917330&typeNotice=p",
+            "fields": [
+              "identity",
+              "publication-year",
+              "language"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-08-08"
+          }
+        ],
+        "externalIds": [],
+        "sourceUrl": "https://openlibrary.org/works/OL627084W",
+        "editorial": {
+          "status": "reviewed",
+          "reviewedAt": "2026-08-08"
+        }
+      }
+    ]
+  }
+}

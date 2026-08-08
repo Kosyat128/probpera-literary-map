@@ -7,13 +7,29 @@ import {
 } from "react";
 
 import {
-  getWriterWorkTitles,
-  isCoverDisplayAllowed,
+  getPublicWriterWorkTitles,
+  isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
+import { presentBookArchiveEntry } from "../data/bookArchiveQueue";
+import { isPublicBook } from "../data/bookQuality";
+import {
+  selectBookMetadataLabels,
+  selectBookOriginalLanguage,
+  selectBookWriterName,
+  selectWriterDisplayName,
+} from "../data/bookLocalization";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
+import { writerBiographyText } from "../data/writerBiography";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import {
+  literarySearchMatches,
+  literarySearchMatchScore,
+  normalizeLiterarySearch,
+  type LiterarySearchValue,
+} from "../utils/literarySearch";
 import {
   articlePath,
   navigateToArticle,
@@ -38,26 +54,20 @@ type WriterMatch = {
   writer: Writer;
 };
 
-function writerName(writer: Writer) {
-  return writer.name || writer.fullName || "Автор";
-}
-
-function normalize(value: string) {
-  return value
-    .toLocaleLowerCase("ru")
-    .replace(/ё/g, "е")
-    .replace(/°/g, " градус ")
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function stem(token: string) {
-  if (token.length < 5) return token;
-  return token.replace(
-    /(ателями|ителей|ателей|ениями|иями|ями|ами|его|ого|ему|ому|иях|ах|ях|ию|ью|ия|ья|ие|ье|ий|ый|ой|ая|яя|ое|ее|ей|ов|ев|ам|ям|ом|ем|у|ю|а|я|ы|и|е|о)$/u,
-    ""
-  );
+export function writerSearchLabel(
+  writer: Writer,
+  language: "ru" | "en"
+) {
+  const label = selectWriterDisplayName(writer, language, "").trim();
+  if (!label) return null;
+  if (
+    language === "en" &&
+    (label.toLocaleLowerCase("en") === "author" ||
+      /\p{Script=Cyrillic}/u.test(label))
+  ) {
+    return null;
+  }
+  return label;
 }
 
 function pluralRu(count: number, forms: [string, string, string]) {
@@ -69,22 +79,8 @@ function pluralRu(count: number, forms: [string, string, string]) {
   return forms[2];
 }
 
-type SearchValue = string | null | undefined;
-
-export function matches(query: string, values: SearchValue[]) {
-  const queryTokens = searchTokens(query);
-  const valueTokens = searchTokens(values.filter(Boolean).join(" "));
-  if (!queryTokens.length || !valueTokens.length) return false;
-
-  return queryTokens.every((queryToken) =>
-    valueTokens.some(
-      (valueToken) =>
-        valueToken === queryToken ||
-        valueToken.startsWith(queryToken) ||
-        queryToken.startsWith(valueToken) ||
-        (queryToken.length >= 5 && valueToken.includes(queryToken))
-    )
-  );
+export function matches(query: string, values: LiterarySearchValue[]) {
+  return literarySearchMatches(query, values);
 }
 
 function resolvePublicAsset(url?: string) {
@@ -93,58 +89,19 @@ function resolvePublicAsset(url?: string) {
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
 }
 
-const searchStopWords = new Set([
-  "а",
-  "без",
-  "в",
-  "для",
-  "и",
-  "из",
-  "к",
-  "на",
-  "о",
-  "об",
-  "от",
-  "по",
-  "с",
-  "со",
-]);
-
-function searchTokens(value: string) {
-  return normalize(value)
-    .split(" ")
-    .filter(Boolean)
-    .filter((token) => !searchStopWords.has(token))
-    .map(stem)
-    .filter((token) => token.length >= 2);
-}
-
 function matchScore(
   query: string,
-  primaryValues: SearchValue[],
-  secondaryValues: SearchValue[]
+  primaryValues: LiterarySearchValue[],
+  secondaryValues: LiterarySearchValue[]
 ) {
-  const normalizedQuery = normalize(query);
-  const primary = primaryValues.filter(Boolean).map((value) => normalize(value!));
-  const secondary = secondaryValues
-    .filter(Boolean)
-    .map((value) => normalize(value!));
-  if (!matches(normalizedQuery, [...primaryValues, ...secondaryValues])) {
-    return null;
-  }
-  if (primary.some((value) => value === normalizedQuery)) return 0;
-  if (primary.some((value) => value.startsWith(normalizedQuery))) return 1;
-  if (primary.some((value) => value.includes(normalizedQuery))) return 2;
-  if (secondary.some((value) => value.startsWith(normalizedQuery))) return 3;
-  if (secondary.some((value) => value.includes(normalizedQuery))) return 4;
-  return 5;
+  return literarySearchMatchScore(query, primaryValues, secondaryValues);
 }
 
 function rankMatches<T>(
   items: T[],
   query: string,
-  primaryValues: (item: T) => SearchValue[],
-  secondaryValues: (item: T) => SearchValue[],
+  primaryValues: (item: T) => LiterarySearchValue[],
+  secondaryValues: (item: T) => LiterarySearchValue[],
   label: (item: T) => string
 ) {
   return items
@@ -179,23 +136,61 @@ export default function GlobalSearch({
   const [articlesLoading, setArticlesLoading] = useState(false);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
-  const normalizedQuery = normalize(deferredQuery);
+  const normalizedQuery = normalizeLiterarySearch(deferredQuery);
+  const localizedArticles = useMemo(
+    () =>
+      articles.flatMap((article) => {
+        const localized = articleCatalogEntryForLanguage(article, language);
+        return localized ? [localized] : [];
+      }),
+    [articles, language]
+  );
+  const bookSearchDocuments = useMemo(
+    () =>
+      books.map((book) => {
+        const displayedBook = presentBookArchiveEntry(book, language);
+        const verified = isPublicBook(book);
+        return {
+          book,
+          label: displayedBook.title,
+          primaryValues: [
+            displayedBook.title,
+            book.originalTitle,
+            selectBookWriterName(book, language, t("Автор")),
+          ],
+          secondaryValues: [
+            countryName(book.country.code, book.countryName),
+            ...(book.alternateTitles || []),
+            ...(verified
+              ? [
+                  displayedBook.description,
+                  selectBookOriginalLanguage(book, language),
+                  ...selectBookMetadataLabels(book, language, t),
+                ]
+              : []),
+          ],
+        };
+      }),
+    [books, countryName, language, t]
+  );
 
   useEffect(() => {
-    if (!open || articles.length || articlesLoading) return;
+    if (!open || articles.length) return;
     let active = true;
     setArticlesLoading(true);
     import("../data/articles/catalog")
       .then(({ articleCatalog }) => {
-        if (active) setArticles(articleCatalog);
+        if (!active) return;
+        setArticles(articleCatalog);
+        setArticlesLoading(false);
       })
-      .finally(() => {
+      .catch(() => {
         if (active) setArticlesLoading(false);
       });
     return () => {
       active = false;
     };
-  }, [articles.length, articlesLoading, open]);
+  }, [articles.length, open]);
 
   useEffect(() => {
     if (!open) return;
@@ -271,55 +266,53 @@ export default function GlobalSearch({
       (country) => countryName(country.code, country.name)
     ).slice(0, 5);
 
+    const writerCandidates = countries.flatMap((country) =>
+      country.writers.flatMap((writer) =>
+        writerSearchLabel(writer, language) ? [{ country, writer }] : []
+      )
+    );
     const writerMatches = rankMatches(
-      countries.flatMap((country) =>
-        country.writers.map((writer) => ({ country, writer }))
-      ),
+      writerCandidates,
       normalizedQuery,
       ({ writer }) => [
-          writerName(writer),
+          writerSearchLabel(writer, language),
           writer.name,
           writer.fullName,
-          ...getWriterWorkTitles(writer),
+          ...getPublicWriterWorkTitles(writer, language),
       ],
-      ({ writer }) => [
+      ({ country, writer }) => [
           writer.years,
           writer.literaryEra,
+          writer.literaryEra ? t(writer.literaryEra) : "",
           writer.movement,
-          writer.biography,
-          writer.bio,
-          writer.description,
+          writer.movement ? t(writer.movement) : "",
+          writerBiographyText(writer, language),
           ...(writer.genres || []),
+          ...(writer.genres || []).map((genre) => t(genre)),
           ...(writer.tags || []),
+          ...(writer.tags || []).map((tag) => t(tag)),
           ...(writer.awards || []),
           ...(writer.languages || []),
           ...(writer.places || []),
+          country.name,
+          countryName(country.code, country.name),
+          country.code,
       ],
-      ({ writer }) => writerName(writer)
+      ({ writer }) => writerSearchLabel(writer, language) || ""
     ).slice(0, 7);
 
     const bookMatches = rankMatches(
-      books,
+      bookSearchDocuments,
       normalizedQuery,
-      (book) => [
-          book.title,
-          book.originalTitle,
-          ...(book.alternateTitles || []),
-          book.writerName,
-      ],
-      (book) => [
-          book.countryName,
-          countryName(book.country.code, book.countryName),
-          book.description,
-          book.originalLanguage,
-          ...(book.genres || []),
-          ...(book.tags || []),
-      ],
-      (book) => book.title
-    ).slice(0, 6);
+      (document) => document.primaryValues,
+      (document) => document.secondaryValues,
+      (document) => document.label
+    )
+      .slice(0, 6)
+      .map((document) => document.book);
 
     const articleMatches = rankMatches(
-      articles,
+      localizedArticles,
       normalizedQuery,
       (article) => [article.title],
       (article) => [
@@ -339,7 +332,15 @@ export default function GlobalSearch({
       books: bookMatches,
       articles: articleMatches,
     };
-  }, [articles, books, countries, countryName, normalizedQuery]);
+  }, [
+    bookSearchDocuments,
+    countries,
+    countryName,
+    language,
+    localizedArticles,
+    normalizedQuery,
+    t,
+  ]);
 
   if (!open) return null;
 
@@ -377,6 +378,7 @@ export default function GlobalSearch({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("Страна, писатель, книга, статья, эпоха…")}
+            aria-label={t("Страна, писатель, книга, статья, эпоха…")}
             autoComplete="off"
           />
           <kbd>Esc</kbd>
@@ -392,7 +394,9 @@ export default function GlobalSearch({
             <div>
               <button
                 type="button"
-                onClick={() => setQuery("Достоевский")}
+                onClick={() =>
+                  setQuery(language === "en" ? "Dostoevsky" : "Достоевский")
+                }
               >
                 {language === "en" ? "Dostoevsky" : "Достоевский"}
               </button>
@@ -402,11 +406,21 @@ export default function GlobalSearch({
               >
                 {language === "en" ? "Japan" : "Япония"}
               </button>
-              <button type="button" onClick={() => setQuery("экранизация")}>
-                Экранизации
+              <button
+                type="button"
+                onClick={() =>
+                  setQuery(language === "en" ? "adaptation" : "экранизация")
+                }
+              >
+                {t("Экранизации")}
               </button>
-              <button type="button" onClick={() => setQuery("фольклор")}>
-                Фольклор
+              <button
+                type="button"
+                onClick={() =>
+                  setQuery(language === "en" ? "folklore" : "фольклор")
+                }
+              >
+                {t("Фольклор")}
               </button>
             </div>
           </div>
@@ -482,10 +496,13 @@ export default function GlobalSearch({
                       className="global-search-writer-portrait"
                       decorative
                     />
-                    <strong>{writerName(writer)}</strong>
+                    <strong>{writerSearchLabel(writer, language)}</strong>
                     <small>
                       {countryName(country.code, country.name)} ·{" "}
-                      {writer.years || t("карточка автора")}
+                      {language === "en" &&
+                      /\p{Script=Cyrillic}/u.test(writer.years || "")
+                        ? t("карточка автора")
+                        : writer.years || t("карточка автора")}
                     </small>
                   </button>
                 ))}
@@ -505,7 +522,7 @@ export default function GlobalSearch({
                     }}
                   >
                     <span className="global-search-book-cover" aria-hidden="true">
-                      {isCoverDisplayAllowed(book) ? (
+                      {isCoverArtworkDisplayAllowed(book) ? (
                         <img
                           src={resolvePublicAsset(
                             book.coverThumbnailUrl || book.coverUrl
@@ -518,10 +535,13 @@ export default function GlobalSearch({
                         <span>▤</span>
                       )}
                     </span>
-                    <strong>{book.title}</strong>
+                    <strong>{presentBookArchiveEntry(book, language).title}</strong>
                     <small>
-                      {book.writerName} ·{" "}
-                      {countryName(book.country.code, book.countryName)}
+                      {selectBookWriterName(book, language, t("Автор"))} ·{" "}
+                      {countryName(book.country.code, book.countryName)} ·{" "}
+                      {isPublicBook(book)
+                        ? t("проверено")
+                        : t("Не проверено")}
                     </small>
                   </button>
                 ))}
@@ -564,7 +584,7 @@ export default function GlobalSearch({
             {articlesLoading
               ? t("Подключаем редакционный архив…")
               : language === "en"
-                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(articleCount)} articles`
+                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(localizedArticles.length)} articles`
                 : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articleCount)} ${pluralRu(articleCount, ["статья", "статьи", "статей"])}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>

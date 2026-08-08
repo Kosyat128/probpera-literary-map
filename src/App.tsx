@@ -11,7 +11,7 @@ import {
 import ArticleEngagement from "./community/ArticleEngagement";
 import type { CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
-import GlobalSearch from "./components/GlobalSearch";
+import GlobalSearch, { writerSearchLabel } from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
@@ -29,7 +29,16 @@ import {
   isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "./data/bookArchive";
+import { presentBookArchiveEntry } from "./data/bookArchiveQueue";
+import { isPublicBook } from "./data/bookQuality";
+import {
+  selectBookMetadataLabels,
+  selectBookText,
+  selectBookWriterName,
+  selectWriterDisplayName,
+} from "./data/bookLocalization";
 import { calculateArchiveStatistics } from "./data/archiveStatistics";
+import { articleCatalogEntryForLanguage } from "./data/articles/localization";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -40,6 +49,7 @@ import ShareLinks from "./editorial/ShareLinks";
 import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
 import {
   articlePath,
+  isDirectArticlePath,
   journalPath,
   navigateToArticle,
   navigateToJournal,
@@ -50,6 +60,7 @@ import {
   getMonthlySelectionIndex,
 } from "./utils/monthlySelection";
 import {
+  literarySearchMatches,
   literarySearchScore,
   normalizeLiterarySearch,
 } from "./utils/literarySearch";
@@ -76,6 +87,12 @@ const CmsHomepageBlocks = lazy(() =>
 );
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
+
+type WriterFocusRequest = {
+  countryId: string;
+  writerId: string;
+  token: number;
+};
 
 type AtlasSearchResult =
   | { type: "country"; key: string; country: Country; label: string; searchText: string }
@@ -367,8 +384,12 @@ function pluralRu(count: number, forms: [string, string, string]) {
   return forms[2];
 }
 
-function writerName(writer: Writer) {
-  return writer.name || writer.fullName || "Автор";
+function writerName(
+  writer: Writer,
+  fallback = "Автор",
+  language: "ru" | "en" = "ru"
+) {
+  return selectWriterDisplayName(writer, language, fallback);
 }
 
 function assetUrl(path: string) {
@@ -386,11 +407,14 @@ function safeHomepageHref(value: string, fallback: string) {
 export default function App() {
   const { user } = useAuth();
   const { language, t, countryName, number } = useInterfaceLanguage();
-  const directArticleRoute =
-    typeof window !== "undefined" &&
-    /\/(?:stati|articles)\//iu.test(window.location.pathname);
+  const [currentPathname, setCurrentPathname] = useState(() =>
+    typeof window === "undefined" ? "" : window.location.pathname
+  );
+  const directArticleRoute = isDirectArticlePath(currentPathname);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
+  const [writerFocusRequest, setWriterFocusRequest] =
+    useState<WriterFocusRequest | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
   const [articleCount, setArticleCount] = useState(0);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
@@ -406,6 +430,18 @@ export default function App() {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    const syncRoute = () => setCurrentPathname(window.location.pathname);
+    window.addEventListener("popstate", syncRoute);
+    window.addEventListener("hashchange", syncRoute);
+    window.addEventListener("probpera:navigation", syncRoute);
+    return () => {
+      window.removeEventListener("popstate", syncRoute);
+      window.removeEventListener("hashchange", syncRoute);
+      window.removeEventListener("probpera:navigation", syncRoute);
+    };
+  }, []);
 
   const cancelSectionsMenuClose = useCallback(() => {
     if (sectionsMenuCloseTimer.current !== null) {
@@ -458,9 +494,13 @@ export default function App() {
     () => buildBookArchive(countryArchive),
     [countryArchive]
   );
-  // The public counter must match the number of cards a visitor can actually
-  // open in the archive. `uniqueWorks` is kept for editorial deduplication,
-  // while the catalogue can legitimately contain country-specific records.
+  const verifiedBookArchive = useMemo(
+    () => bookArchive.filter(isPublicBook),
+    [bookArchive]
+  );
+  // The archive counter includes both the 31 fully verified records and the
+  // canonical editorial queue. Stable keys promote a record in place rather
+  // than adding a second card for the same country/writer/work relation.
   const totalWorks = bookArchive.length;
   const editorialAudit = useMemo(
     () => auditCountryArchive(countryArchive),
@@ -538,7 +578,8 @@ export default function App() {
       });
 
       for (const writer of country.writers) {
-        const label = writerName(writer);
+        const label = writerSearchLabel(writer, language);
+        if (!label) continue;
         results.push({
           type: "writer",
           key: `writer:${country.id}:${writer.id}`,
@@ -553,6 +594,9 @@ export default function App() {
               writer.movement,
               writer.literaryEra,
               writer.nationality,
+              country.name,
+              localizedCountryName,
+              country.code,
               ...(writer.genres || []),
               ...(writer.tags || []),
             ]
@@ -564,22 +608,28 @@ export default function App() {
     }
 
     for (const book of bookArchive) {
+      const displayedBook = presentBookArchiveEntry(book, language);
+      const verified = isPublicBook(book);
       results.push({
         type: "book",
         key: `book:${book.countryId}:${book.writerId}:${book.id}`,
         country: book.country,
         writer: book.writer,
         book,
-        label: book.title,
+        label: displayedBook.title,
         searchText: normalizeLiterarySearch(
           [
-            book.title,
+            displayedBook.title,
             book.originalTitle,
             ...(book.alternateTitles || []),
-            book.writerName,
-            book.countryName,
-            ...(book.genres || []),
-            ...(book.tags || []),
+            selectBookWriterName(book, language, t("Автор")),
+            countryName(book.country.code, book.countryName),
+            ...(verified
+              ? [
+                  displayedBook.description,
+                  ...selectBookMetadataLabels(book, language, t),
+                ]
+              : []),
           ]
             .filter(Boolean)
             .join(" ")
@@ -588,7 +638,7 @@ export default function App() {
     }
 
     return results;
-  }, [bookArchive, countryArchive, countryName]);
+  }, [bookArchive, countryArchive, countryName, language, t]);
 
   useEffect(() => {
     if (
@@ -619,8 +669,10 @@ export default function App() {
 
     const allowedIds = new Set(source.map((country) => country.id));
     return atlasSearchIndex
-      .filter(({ country, searchText }) =>
-        allowedIds.has(country.id) && searchText.includes(query)
+      .filter(
+        ({ country, searchText }) =>
+          allowedIds.has(country.id) &&
+          literarySearchMatches(query, [searchText])
       )
       .map((result) => {
         const score = literarySearchScore(result.label, query);
@@ -675,24 +727,32 @@ export default function App() {
     if (directArticleRoute) return undefined;
     let active = true;
     import("./data/articles/catalog").then(({ articleCatalog }) => {
-      if (active) setArticleCount(articleCatalog.length);
+      if (active) {
+        setArticleCount(
+          articleCatalog.filter((article) =>
+            articleCatalogEntryForLanguage(article, language)
+          ).length
+        );
+      }
     });
     return () => {
       active = false;
     };
-  }, [directArticleRoute]);
+  }, [directArticleRoute, language]);
 
   const bookOfMonth = useMemo(() => {
-    const premiumBooks = bookArchive.filter(
+    const premiumBooks = verifiedBookArchive.filter(
       (book) =>
         isCoverArtworkDisplayAllowed(book) &&
-        Boolean(book.description) &&
+        Boolean(selectBookText(book, language).description) &&
         ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
-    const editorialBooks = bookArchive.filter((book) =>
+    const editorialBooks = verifiedBookArchive.filter((book) =>
       ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
-    const describedBooks = bookArchive.filter((book) => Boolean(book.description));
+    const describedBooks = verifiedBookArchive.filter((book) =>
+      Boolean(selectBookText(book, language).description)
+    );
     const books = [
       ...(premiumBooks.length
         ? premiumBooks
@@ -700,7 +760,7 @@ export default function App() {
           ? editorialBooks
           : describedBooks.length
             ? describedBooks
-            : bookArchive),
+            : verifiedBookArchive),
     ].sort((first, second) =>
       `${first.countryId}:${first.writerId}:${first.id}`.localeCompare(
         `${second.countryId}:${second.writerId}:${second.id}`
@@ -708,7 +768,10 @@ export default function App() {
     );
     if (!books.length) return null;
     return books[getMonthlySelectionIndex(books.length, selectionMonthKey)];
-  }, [bookArchive, selectionMonthKey]);
+  }, [language, selectionMonthKey, verifiedBookArchive]);
+  const bookOfMonthText = bookOfMonth
+    ? selectBookText(bookOfMonth, language)
+    : null;
   const bookOfMonthHasCover = Boolean(
     bookOfMonth && isCoverArtworkDisplayAllowed(bookOfMonth)
   );
@@ -742,6 +805,18 @@ export default function App() {
     []
   );
 
+  const selectWriterAndFocus = useCallback(
+    (country: Country, writer: Writer) => {
+      selectCountry(country, false, writer);
+      setWriterFocusRequest((current) => ({
+        countryId: country.id,
+        writerId: writer.id,
+        token: (current?.token || 0) + 1,
+      }));
+    },
+    [selectCountry]
+  );
+
   const selectAtlasSearchResult = useCallback(
     (result: AtlasSearchResult) => {
       if (result.type === "book") {
@@ -750,17 +825,18 @@ export default function App() {
         return;
       }
       if (result.type === "writer") {
-        selectCountry(result.country, false, result.writer);
+        selectWriterAndFocus(result.country, result.writer);
         return;
       }
       selectCountry(result.country);
     },
-    [openBook, selectCountry]
+    [openBook, selectCountry, selectWriterAndFocus]
   );
 
   const closeCountry = useCallback(() => {
     setSelectedCountry(null);
     setSelectedWriter(null);
+    setWriterFocusRequest(null);
     setNobelSpotlightCountryId(null);
   }, []);
 
@@ -842,17 +918,21 @@ export default function App() {
       </div>
 
       <header className="site-header">
-        <a className="brand" href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
+        <a
+          className="brand"
+          href={import.meta.env.BASE_URL}
+          aria-label={t("Проба Пера — главная")}
+        >
           <img
             src={assetUrl("brand/probpera-logo.png")}
-            alt="Проба Пера"
+            alt={t("Проба Пера")}
             width="68"
             height="68"
             loading="eager"
             decoding="async"
           />
           <span>
-            <strong>Проба Пера</strong>
+            <strong>{t("Проба Пера")}</strong>
             <small>{t("Литературный журнал")}</small>
           </span>
         </a>
@@ -1198,7 +1278,15 @@ export default function App() {
                               }`
                             : result.type === "writer"
                               ? `${t("Писатель")} · ${countryName(result.country.code, result.country.name)}`
-                              : `${t("Книга")} · ${result.book.writerName}`}
+                              : `${t("Книга")} · ${selectBookWriterName(
+                                  result.book,
+                                  language,
+                                  t("Автор")
+                                )} · ${
+                                  isPublicBook(result.book)
+                                    ? t("проверено")
+                                    : t("Не проверено")
+                                }`}
                         </small>
                       </button>
                     ))
@@ -1281,13 +1369,13 @@ export default function App() {
               </div>
               <div className="atlas-ornaments" aria-hidden="true">
                 <span className="atlas-coordinate">
-                  <small>Архив мира</small>
+                  <small>{t("Архив мира")}</small>
                   <strong>55°45′ N · 37°37′ E</strong>
                 </span>
                 <span className="atlas-compass">
-                  <i>С</i>
+                  <i>{language === "en" ? "N" : "С"}</i>
                   <b>✦</b>
-                  <i>Ю</i>
+                  <i>{language === "en" ? "S" : "Ю"}</i>
                 </span>
               </div>
 
@@ -1335,6 +1423,12 @@ export default function App() {
                   key={selectedCountry.id}
                   country={selectedCountry}
                   selectedWriter={selectedWriter}
+                  focusRequestId={
+                    writerFocusRequest?.countryId === selectedCountry.id &&
+                    writerFocusRequest.writerId === selectedWriter?.id
+                      ? writerFocusRequest.token
+                      : undefined
+                  }
                   onWriterSelect={setSelectedWriter}
                   nobelSpotlightActive={
                     nobelSpotlightCountryId === selectedCountry.id
@@ -1411,7 +1505,7 @@ export default function App() {
                   <div className="book-cover-art">
                     <img
                       src={bookOfMonth.coverUrl}
-                      alt={`${t("Обложка книги")} «${bookOfMonth.title}»`}
+                      alt={`${t("Обложка книги")} «${bookOfMonthText?.title}»`}
                       loading="lazy"
                       decoding="async"
                     />
@@ -1421,11 +1515,11 @@ export default function App() {
                     href={bookOfMonth.coverSourceUrl}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Источник обложки «${bookOfMonth.title}»`}
+                    aria-label={`${t("Источник обложки")} “${bookOfMonthText?.title}”`}
                   >
                   <img
                     src={bookOfMonth.coverUrl}
-                    alt={`Обложка книги «${bookOfMonth.title}»`}
+                    alt={`${t("Обложка книги")} “${bookOfMonthText?.title}”`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -1436,10 +1530,10 @@ export default function App() {
                 <>
                   <span>
                     {bookOfMonth
-                      ? writerName(bookOfMonth.writer)
+                      ? writerName(bookOfMonth.writer, t("Автор"), language)
                       : t("Книжный архив")}
                   </span>
-                  <strong>{bookOfMonth?.title || t("Книга месяца")}</strong>
+                  <strong>{bookOfMonthText?.title || t("Книга месяца")}</strong>
                   <i>✦</i>
                 </>
               )}
@@ -1455,11 +1549,14 @@ export default function App() {
                   ? coreBookMonth.title
                   : t("Книга месяца")}
               </h3>
-              <h4>{bookOfMonth?.title || t("Открываем библиотеку…")}</h4>
+              <h4>{bookOfMonthText?.title || t("Открываем библиотеку…")}</h4>
               <p>
                 {bookOfMonth
-                  ? `${writerName(bookOfMonth.writer)} · ${bookOfMonth.country.name}. ${
-                      bookOfMonth.description ||
+                  ? `${writerName(bookOfMonth.writer, t("Автор"), language)} · ${countryName(
+                      bookOfMonth.country.code,
+                      bookOfMonth.country.name
+                    )}. ${
+                      bookOfMonthText?.description ||
                       t(
                         "Начните литературное путешествие с одного из ключевых произведений национальной традиции."
                       )
@@ -1470,11 +1567,14 @@ export default function App() {
                         "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран."
                       )}
               </p>
-              {bookOfMonth?.tags && (
+              {bookOfMonth &&
+                selectBookMetadataLabels(bookOfMonth, language, t).length > 0 && (
                 <div className="book-tags" aria-label={t("Темы книги")}>
-                  {bookOfMonth.tags.slice(0, 4).map((tag) => (
+                  {selectBookMetadataLabels(bookOfMonth, language, t)
+                    .slice(0, 4)
+                    .map((tag) => (
                     <span key={tag}>{tag}</span>
-                  ))}
+                    ))}
                 </div>
               )}
               {bookOfMonth && (
@@ -1529,20 +1629,26 @@ export default function App() {
               <li>
                 {language === "en" ? (
                   <>
-                    {number(editorialAudit.verifiedWriters)} writer{" "}
-                    {editorialAudit.verifiedWriters === 1 ? "profile has" : "profiles have"}{" "}
-                    been checked against open museum sources
+                    {number(editorialAudit.englishBiographiesReady)} writer{" "}
+                    {editorialAudit.englishBiographiesReady === 1
+                      ? "profile has"
+                      : "profiles have"}{" "}
+                    passed the publication gate against open authoritative sources
                   </>
                 ) : (
                   <>
-                    {number(editorialAudit.verifiedWriters)}{" "}
-                    {pluralRu(editorialAudit.verifiedWriters, [
+                    {number(editorialAudit.russianBiographiesReady)}{" "}
+                    {pluralRu(editorialAudit.russianBiographiesReady, [
                       "карточка",
                       "карточки",
                       "карточек",
                     ])} уже{" "}
-                    {editorialAudit.verifiedWriters === 1 ? "прошла" : "прошли"}{" "}
-                    проверку по открытым музейным источникам
+                    {editorialAudit.russianBiographiesReady === 1
+                      ? "прошла"
+                      : "прошли"}{" "}
+                    {t(
+                      "публикационную проверку по открытым авторитетным источникам"
+                    )}
                   </>
                 )}
               </li>
@@ -1610,14 +1716,14 @@ export default function App() {
             </div>
             <div>
               <span className="section-kicker">{t("Интересный факт о книге")}</span>
-              <h3>{factOfDay.book}</h3>
-              <p>{factOfDay.fact}</p>
+              <h3>{t(factOfDay.book)}</h3>
+              <p>{t(factOfDay.fact)}</p>
               <a
                 href={factOfDay.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                {t("Проверить источник")} · {factOfDay.sourceLabel} ↗
+                {t("Проверить источник")} · {t(factOfDay.sourceLabel)} ↗
               </a>
             </div>
           </article>
@@ -1694,23 +1800,25 @@ export default function App() {
                     />
                     <img
                       src={mediaUrl(feature.image)}
-                      alt={`Иллюстрация к материалу «${feature.title}»`}
+                      alt={`${t("Иллюстрация к материалу")} “${t(feature.title)}”`}
                       loading="lazy"
                       decoding="async"
                       onError={(event) => {
                         if (event.currentTarget.dataset.fallbackApplied === "true") return;
                         event.currentTarget.dataset.fallbackApplied = "true";
                         event.currentTarget.classList.add("is-fallback");
-                        event.currentTarget.alt = `Фирменная обложка материала «${feature.title}»`;
+                        event.currentTarget.alt = `${t(
+                          "Фирменная обложка материала"
+                        )} “${t(feature.title)}”`;
                         event.currentTarget.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
                       }}
                     />
-                    <span>{feature.tag}</span>
+                    <span>{t(feature.tag)}</span>
                   </div>
                   <div className="article-copy">
-                    <small>{feature.readTime}</small>
-                    <h3>{feature.title}</h3>
-                    <p>{feature.description}</p>
+                    <small>{t(feature.readTime)}</small>
+                    <h3>{t(feature.title)}</h3>
+                    <p>{t(feature.description)}</p>
                     <strong>{t("Читать статью")} →</strong>
                   </div>
                 </a>
@@ -1720,7 +1828,7 @@ export default function App() {
                 >
                   {t("Все материалы рубрики")}
                 </a>
-                <ShareLinks url={feature.articleUrl} title={feature.title} />
+                <ShareLinks url={feature.articleUrl} title={t(feature.title)} />
               </article>
             ))}
           </div>
@@ -1897,15 +2005,15 @@ export default function App() {
               <article key={`${country.id}-${writer.id}`}>
                 <button
                   type="button"
-                  onClick={() => selectCountry(country, true, writer)}
+                  onClick={() => selectWriterAndFocus(country, writer)}
                 >
                   <WriterPortrait
                     writer={writer}
                     className="author-showcase-portrait"
                   />
-                  <span>
+                  <span className="author-showcase-copy">
                     <small>{countryName(country.code, country.name)}</small>
-                    <strong>{writerName(writer)}</strong>
+                    <strong>{writerName(writer, t("Автор"), language)}</strong>
                     <em>{writer.years}</em>
                   </span>
                 </button>
@@ -1914,7 +2022,11 @@ export default function App() {
                     href={writer.portraitSourceUrl}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Источник портрета: ${writerName(writer)}`}
+                    aria-label={`${t("Источник портрета")}: ${writerName(
+                      writer,
+                      t("Автор"),
+                      language
+                    )}`}
                   >
                     {t("Источник изображения")}
                   </a>
@@ -2078,7 +2190,9 @@ export default function App() {
               title={coreCalendar?.title}
               description={coreCalendar?.description}
               onCountrySelect={(country, writer) =>
-                selectCountry(country, true, writer)
+                writer
+                  ? selectWriterAndFocus(country, writer)
+                  : selectCountry(country, true)
               }
             />
           </Suspense>
@@ -2088,7 +2202,10 @@ export default function App() {
       <footer className="site-footer">
         <div className="footer-main">
           <section className="footer-brand">
-            <a href={import.meta.env.BASE_URL} aria-label="Проба Пера — главная">
+            <a
+              href={import.meta.env.BASE_URL}
+              aria-label={t("Проба Пера — главная")}
+            >
               <img
                 src={assetUrl("brand/probpera-logo.png")}
                 alt=""
@@ -2098,7 +2215,7 @@ export default function App() {
                 decoding="async"
               />
               <span>
-                <strong>Проба Пера</strong>
+                <strong>{t("Проба Пера")}</strong>
                 <small>{t("Литературный журнал и мировая энциклопедия")}</small>
               </span>
             </a>
@@ -2154,7 +2271,10 @@ export default function App() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <p>© 2025–2026 «Проба Пера». Авторские публикации защищены законом.</p>
+          <p>
+            © 2025–2026 {language === "en" ? "Proba Pera" : "«Проба Пера»"}.{" "}
+            {t("Авторские публикации защищены законом.")}
+          </p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>
           <span>{t("Независимый литературный журнал")}</span>
         </div>
@@ -2178,7 +2298,9 @@ export default function App() {
         articleCount={articleCount}
         onClose={() => setGlobalSearchOpen(false)}
         onCountrySelect={(country, writer) =>
-          selectCountry(country, true, writer)
+          writer
+            ? selectWriterAndFocus(country, writer)
+            : selectCountry(country, true)
         }
         onBookSelect={openBook}
       />

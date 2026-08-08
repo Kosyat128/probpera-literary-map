@@ -1,4 +1,5 @@
 import { cmsSiteContent } from "../data/cms/site.generated";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 type Banner = {
   id: string;
@@ -35,6 +36,7 @@ function safeHref(value: unknown, fallback = "#journal") {
 }
 
 export function CmsHomepageBanners() {
+  const { language, t } = useInterfaceLanguage();
   const banners = cmsSiteContent.banners as readonly Banner[];
   const banner = banners.find(
     (item) =>
@@ -42,7 +44,7 @@ export function CmsHomepageBanners() {
       item.pagePatterns.includes("/") ||
       item.pagePatterns.includes("*")
   );
-  if (!banner) return null;
+  if (!banner || language === "en") return null;
   const hasImage = Boolean(
     banner.desktopImageUrl || banner.tabletImageUrl || banner.mobileImageUrl
   );
@@ -69,12 +71,12 @@ export function CmsHomepageBanners() {
         </picture>
       )}
       <div>
-        <span className="section-kicker">Объявление редакции</span>
+        <span className="section-kicker">{t("Объявление редакции")}</span>
         <strong>{banner.title}</strong>
         {banner.description && <p>{banner.description}</p>}
         {banner.targetUrl && (
           <a href={safeHref(banner.targetUrl)}>
-            {banner.buttonText || "Подробнее"} →
+            {banner.buttonText || t("Подробнее")} →
           </a>
         )}
       </div>
@@ -89,12 +91,13 @@ export function CmsNavigationLinks({
   location: "header" | "footer";
   withHeading?: boolean;
 }) {
+  const { language, t } = useInterfaceLanguage();
   const menus = cmsSiteContent.navigationMenus as readonly NavigationMenu[];
   const menu = menus.find((item) => item.location === location);
   const items = menu?.items
     .filter((item) => !item.parentId)
     .sort((first, second) => first.displayOrder - second.displayOrder);
-  if (!items?.length) return null;
+  if (!items?.length || language === "en") return null;
 
   const links = items.map((item) => (
     <a
@@ -108,7 +111,7 @@ export function CmsNavigationLinks({
   ));
   return withHeading ? (
     <section className="cms-footer-links">
-      <h2>{menu?.name || "Дополнительно"}</h2>
+      <h2>{menu?.name || t("Дополнительно")}</h2>
       {links}
     </section>
   ) : (

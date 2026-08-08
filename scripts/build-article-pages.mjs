@@ -3,7 +3,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
+  ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
+  : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDirectory = path.join(projectRoot, "dist");
 const publicDirectory = path.join(projectRoot, "public");
 const articleDirectory = path.join(projectRoot, "public", "articles");
@@ -338,6 +340,153 @@ for (const article of catalog) {
   );
   await fs.mkdir(targetDirectory, { recursive: true });
   await fs.writeFile(path.join(targetDirectory, "index.html"), $.html(), "utf8");
+
+  const englishTranslation = article.translations?.en;
+  const englishDocument = document.translations?.en;
+  const englishIsReleased =
+    englishTranslation &&
+    englishDocument &&
+    ["approved", "published"].includes(englishTranslation.translationStatus) &&
+    String(englishTranslation.title || "").trim() &&
+    String(englishDocument.contentHtml || "").trim() &&
+    !/[\u0400-\u052f]/u.test(
+      [
+        englishTranslation.title,
+        englishTranslation.description,
+        englishDocument.contentHtml,
+        englishDocument.plainText,
+      ].join(" ")
+    );
+
+  if (englishIsReleased) {
+    const englishRouteArticle = {
+      ...article,
+      title: englishTranslation.title,
+      slug: englishTranslation.slug,
+    };
+    const englishSlug = articleSlug(englishRouteArticle);
+
+    if (englishSlug !== slug) {
+      const englishPublicPath = articlePublicPath(englishRouteArticle);
+      const englishRouteUrl = `${siteUrl}${englishPublicPath}/`;
+      const englishCanonicalUrl =
+        englishTranslation.canonicalUrl || englishRouteUrl;
+      const englishDescription =
+        englishTranslation.seoDescription?.trim() ||
+        englishTranslation.description?.trim() ||
+        englishDocument.plainText.slice(0, 320);
+      const englishImageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
+      const englishSocialTitle =
+        englishTranslation.ogTitle ||
+        englishTranslation.seoTitle ||
+        englishTranslation.title;
+      const englishSocialDescription =
+        englishTranslation.ogDescription || englishDescription;
+      const englishDocumentPage = load(baseHtml, { decodeEntities: false });
+
+      englishDocumentPage("html")
+        .attr("lang", "en")
+        .attr("data-route-language", "en");
+      englishDocumentPage("title").text(
+        `${englishTranslation.seoTitle || englishTranslation.title} — PROBA PERA`
+      );
+      englishDocumentPage('meta[name="description"]').attr(
+        "content",
+        englishDescription
+      );
+      englishDocumentPage('meta[property="og:type"]').attr("content", "article");
+      englishDocumentPage('meta[property="og:title"]').attr(
+        "content",
+        englishSocialTitle
+      );
+      englishDocumentPage('meta[property="og:description"]').attr(
+        "content",
+        englishSocialDescription
+      );
+      englishDocumentPage('meta[property="og:image"]').attr(
+        "content",
+        article.ogImageUrl || englishImageUrl
+      );
+      englishDocumentPage('link[rel="canonical"]').attr(
+        "href",
+        englishCanonicalUrl
+      );
+      englishDocumentPage("head").append(
+        `<meta property="og:url" content="${englishRouteUrl}">`
+      );
+      if (englishTranslation.seoKeywords?.length) {
+        englishDocumentPage("head").append(
+          `<meta name="keywords" content="${xmlEscape(
+            englishTranslation.seoKeywords.join(", ")
+          )}">`
+        );
+      }
+      if (article.allowIndexing === false) {
+        englishDocumentPage('meta[name="robots"]').attr(
+          "content",
+          "noindex,follow"
+        );
+      }
+      englishDocumentPage("head").append(
+        `<script type="application/ld+json">${JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: englishTranslation.title,
+          description: englishDescription,
+          image: [englishImageUrl],
+          mainEntityOfPage: englishCanonicalUrl,
+          inLanguage: "en",
+          datePublished: englishTranslation.publishedAt || article.publishedAt || undefined,
+          wordCount: englishTranslation.wordCount,
+          articleSection: englishTranslation.sectionLabel,
+          isPartOf: {
+            "@type": "Periodical",
+            name: "PROBA PERA",
+            url: `${siteUrl}/`,
+          },
+        }).replaceAll("<", "\\u003c")}</script>`
+      );
+      englishDocumentPage("#root").html(`
+        <main class="static-article-fallback">
+          <a href="${siteBasePath || ""}/#journal">← PROBA PERA journal</a>
+          <article>
+            <span>${xmlEscape(englishTranslation.sectionLabel || "Article")}</span>
+            <h1>${xmlEscape(englishTranslation.title)}</h1>
+            <p>${xmlEscape(englishDescription)}</p>
+            ${safeArticleHtml(englishDocument.contentHtml)}
+          </article>
+        </main>
+      `);
+
+      const englishTargetDirectory = path.join(
+        distDirectory,
+        "stati",
+        articleSectionSlug(englishRouteArticle),
+        englishSlug
+      );
+      await fs.mkdir(englishTargetDirectory, { recursive: true });
+      await fs.writeFile(
+        path.join(englishTargetDirectory, "index.html"),
+        englishDocumentPage.html(),
+        "utf8"
+      );
+
+      if (
+        article.allowIndexing !== false &&
+        normalizedPath(englishCanonicalUrl) === normalizedPath(englishPublicPath)
+      ) {
+        sitemapEntries.push({
+          url: englishRouteUrl,
+          lastmod: (
+            englishTranslation.translationPublishedAt ||
+            englishTranslation.approvedAt ||
+            article.publishedAt ||
+            buildDate
+          ).slice(0, 10),
+        });
+      }
+    }
+  }
 
   const oldStaticDirectory = path.join(distDirectory, "articles", article.id);
   await fs.mkdir(oldStaticDirectory, { recursive: true });

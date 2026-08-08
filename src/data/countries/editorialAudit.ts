@@ -1,4 +1,5 @@
 import type { Country, WriterProfile } from "./types";
+import { selectWriterBiography } from "../writerBiography";
 
 export type EditorialAuditSummary = {
   totalWriters: number;
@@ -6,6 +7,10 @@ export type EditorialAuditSummary = {
   sourcedWriters: number;
   portraitedWriters: number;
   expandedBiographies: number;
+  russianBiographiesReady: number;
+  russianBiographiesWithheld: number;
+  englishBiographiesReady: number;
+  englishBiographiesWithheld: number;
   recordsNeedingReview: number;
 };
 
@@ -34,6 +39,13 @@ export function auditCountryArchive(countries: Country[]): EditorialAuditSummary
       Boolean(writer.editorial.sources?.length)
   ).length;
 
+  const russianBiographiesReady = writers.filter((writer) =>
+    selectWriterBiography(writer, "ru")
+  ).length;
+  const englishBiographiesReady = writers.filter((writer) =>
+    selectWriterBiography(writer, "en")
+  ).length;
+
   return {
     totalWriters: writers.length,
     verifiedWriters,
@@ -41,6 +53,10 @@ export function auditCountryArchive(countries: Country[]): EditorialAuditSummary
       .length,
     portraitedWriters: writers.filter((writer) => Boolean(writer.portrait?.trim())).length,
     expandedBiographies: writers.filter(isExpandedProfile).length,
+    russianBiographiesReady,
+    russianBiographiesWithheld: writers.length - russianBiographiesReady,
+    englishBiographiesReady,
+    englishBiographiesWithheld: writers.length - englishBiographiesReady,
     recordsNeedingReview: writers.length - verifiedWriters,
   };
 }

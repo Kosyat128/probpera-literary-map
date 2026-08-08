@@ -1,10 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
+import { sanitizeEditorTemplateHtml } from "@/lib/editor-template-html";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const templateSchema = z.object({
@@ -13,17 +13,6 @@ const templateSchema = z.object({
   json: z.unknown(),
   visibility: z.enum(["personal", "shared"]),
 });
-
-const safeTemplateHtml = {
-  allowedTags: [...sanitizeHtml.defaults.allowedTags, "img", "figure", "figcaption", "mark", "aside", "section"],
-  allowedAttributes: {
-    ...sanitizeHtml.defaults.allowedAttributes,
-    a: ["href", "name", "target", "rel"],
-    img: ["src", "alt", "title", "width", "height", "loading"],
-    "*": ["class", "id", "data-editorial-block", "data-reveal"],
-  },
-  allowedSchemes: ["http", "https", "mailto"],
-};
 
 export async function saveEditorTemplateAction(input: unknown) {
   const session = await requireStaff();
@@ -37,7 +26,7 @@ export async function saveEditorTemplateAction(input: unknown) {
     .upsert({
       owner_id: session.user.id,
       label: parsed.data.label,
-      content_html: sanitizeHtml(parsed.data.html, safeTemplateHtml),
+      content_html: sanitizeEditorTemplateHtml(parsed.data.html),
       content_json: parsed.data.json,
       visibility: parsed.data.visibility,
     }, { onConflict: "owner_id,label" })

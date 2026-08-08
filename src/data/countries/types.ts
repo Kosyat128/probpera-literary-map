@@ -1,3 +1,88 @@
+export type WorkLocale = "ru" | "en";
+
+export type WriterBiographyLocale = "ru" | "en";
+
+export type WriterBiographyEditorialStatus = "draft" | "reviewed" | "verified";
+
+export type WriterBiographySourceProfile = {
+  provider: string;
+  url: string;
+  fields: Array<"identity" | "life-dates" | "biography-facts" | "awards" | "works">;
+  usage: "structured-data" | "fact-check" | "licensed-copy";
+  retrievedAt: string;
+  author?: string;
+  title?: string;
+  licenseName?: string;
+  licenseUrl?: string;
+};
+
+export type WriterBiographyTranslationProfile = {
+  locale: WriterBiographyLocale;
+  text: string;
+  sourceLanguage: string;
+  status: WriterBiographyEditorialStatus;
+  method: "editorial-original" | "human-translation" | "licensed-source";
+  reviewedAt?: string;
+  reviewer?: string;
+  translatedFromLocale?: WriterBiographyLocale;
+  sourceTextRights?:
+    | "project-original"
+    | "public-domain"
+    | "licensed"
+    | "permission";
+  sources: WriterBiographySourceProfile[];
+};
+
+export type WorkEditorialStatus = "draft" | "reviewed" | "verified";
+
+export type WorkTranslationProfile = {
+  locale: WorkLocale;
+  title: string;
+  description: string;
+  sourceLanguage: string;
+  status: WorkEditorialStatus;
+  sourceUrls: string[];
+  method: "editorial-original" | "human-translation" | "licensed-source";
+  reviewedAt?: string;
+};
+
+export type WorkSourceProfile = {
+  provider: string;
+  url: string;
+  fields: Array<
+    | "identity"
+    | "authorship"
+    | "title"
+    | "original-title"
+    | "publication-year"
+    | "language"
+    | "genre"
+    | "description"
+    | "award-criterion"
+    | "bestseller-evidence"
+    | "market"
+    | "period"
+    | "measurement"
+  >;
+  license?: string;
+  usage: "structured-data" | "reference-only" | "licensed-copy";
+  retrievedAt: string;
+};
+
+export type WorkExternalId = {
+  scheme: "wikidata" | "openlibrary" | "isbn-10" | "isbn-13" | "other";
+  value: string;
+  sourceUrl: string;
+};
+
+export type WorkDistinction = {
+  criterion: "award-cited-work" | "editorial-landmark" | "bestseller-evidence";
+  label: string;
+  organization: string;
+  year?: number;
+  sourceUrl: string;
+};
+
 export type WorkProfile = {
   id: string;
   title: string;
@@ -8,6 +93,10 @@ export type WorkProfile = {
   genres?: string[];
   tags?: string[];
   description?: string;
+  translations?: Partial<Record<WorkLocale, WorkTranslationProfile>>;
+  sources?: WorkSourceProfile[];
+  externalIds?: WorkExternalId[];
+  distinctions?: WorkDistinction[];
   coverUrl?: string;
   coverThumbnailUrl?: string;
   coverSourceUrl?: string;
@@ -38,7 +127,7 @@ export type WorkProfile = {
     sourceUrl?: string;
   };
   editorial?: {
-    status: "draft" | "reviewed" | "verified";
+    status: WorkEditorialStatus;
     reviewedAt?: string;
   };
 };
@@ -84,6 +173,9 @@ export type WriterProfile = {
   bio?: string;
   biography?: string;
   description?: string;
+  biographyTranslations?: Partial<
+    Record<WriterBiographyLocale, WriterBiographyTranslationProfile>
+  >;
 
   works?: string[];
   workDetails?: WorkProfile[];

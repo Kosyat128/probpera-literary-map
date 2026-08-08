@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandArrowIcon from "./BrandArrowIcon";
 
@@ -56,8 +57,12 @@ export function dateParts(value?: string) {
   return { year, month: month - 1, day };
 }
 
-function writerName(writer: Writer) {
-  return writer.name || writer.fullName || "Автор";
+function writerName(
+  writer: Writer,
+  language: "ru" | "en" = "ru",
+  fallback = language === "en" ? "Author" : "Автор"
+) {
+  return selectWriterDisplayName(writer, language, fallback);
 }
 
 export function calendarWriterIdentity(writer: Writer) {
@@ -118,7 +123,7 @@ export default function LiteraryCalendar({
           result.push({
             day: birth.day,
             month: birth.month,
-            title: writerName(writer),
+            title: writerName(writer, language, t("Автор")),
             detail: `${t("День рождения")} · ${birth.year}`,
             kind: "birth",
             country,
@@ -130,7 +135,7 @@ export default function LiteraryCalendar({
           result.push({
             day: death.day,
             month: death.month,
-            title: writerName(writer),
+            title: writerName(writer, language, t("Автор")),
             detail: `${t("День памяти")} · ${death.year}`,
             kind: "memory",
             country,
@@ -140,7 +145,7 @@ export default function LiteraryCalendar({
     });
 
     return result.sort((first, second) => first.day - second.day || first.title.localeCompare(second.title, "ru"));
-  }, [countries, t]);
+  }, [countries, language, t]);
 
   const monthLabel = useMemo(
     () =>

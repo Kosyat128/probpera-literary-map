@@ -1,4 +1,7 @@
 import { mergeAttributes, Node, type Editor } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+
+import EditorialBlockView from "./EditorialBlockView";
 
 const blockKinds = new Set([
   "fact",
@@ -62,6 +65,10 @@ export const EditorialBlock = Node.create({
       0,
     ];
   },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(EditorialBlockView);
+  },
 });
 
 const blockCopy = {
@@ -73,7 +80,7 @@ const blockCopy = {
   ornament: ["Новая глава", "Короткая вводная строка к следующей части."],
   media: [
     "Место для изображения",
-    "Поставьте курсор в этот блок и нажмите «Заменить место для фото» на панели.",
+    "Нажмите на квадрат и выберите файл с компьютера или перетащите его сюда.",
   ],
 } as const;
 
@@ -173,15 +180,42 @@ export function replaceSelectedMediaSlot(
       const imageType = editor.state.schema.nodes.image;
       if (!imageType) return false;
       const from = $from.before(depth);
-      const to = $from.after(depth);
-      editor.view.dispatch(
-        editor.state.tr
-          .replaceWith(from, to, imageType.create(attributes))
-          .scrollIntoView()
-      );
-      editor.commands.focus();
-      return true;
+      return replaceMediaSlotAt(editor, from, attributes);
     }
   }
   return false;
+}
+
+export function replaceMediaSlotAt(
+  editor: Editor | null,
+  position: number,
+  attributes: {
+    src: string;
+    alt: string;
+    caption?: string;
+    layout?: "wide" | "normal" | "left" | "right";
+  }
+) {
+  if (!editor || !Number.isInteger(position) || position < 0) return false;
+  const slot = editor.state.doc.nodeAt(position);
+  const imageType = editor.state.schema.nodes.image;
+  if (
+    !slot ||
+    slot.type.name !== "editorialBlock" ||
+    slot.attrs.kind !== "media" ||
+    !imageType
+  ) {
+    return false;
+  }
+  editor.view.dispatch(
+    editor.state.tr
+      .replaceWith(
+        position,
+        position + slot.nodeSize,
+        imageType.create(attributes)
+      )
+      .scrollIntoView()
+  );
+  editor.commands.focus();
+  return true;
 }

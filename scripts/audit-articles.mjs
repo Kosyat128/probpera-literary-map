@@ -4,7 +4,9 @@ import { fileURLToPath } from "node:url";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
-const articleDirectory = path.join(projectRoot, "public", "articles");
+const publicDirectory = path.join(projectRoot, "public");
+const legacyArticleDirectory = path.join(publicDirectory, "articles");
+const cmsDirectory = path.join(publicDirectory, "cms");
 const reportDirectory = path.join(projectRoot, "reports");
 const currentYear = new Date().getUTCFullYear();
 
@@ -209,17 +211,148 @@ function brokenLinkFindings(article) {
   return findings;
 }
 
-async function main() {
-  const catalog = JSON.parse(
-    await readFile(path.join(articleDirectory, "index.json"), "utf8")
+function englishTranslationFindings(article) {
+  const translation = article.translations?.en;
+  if (!translation) {
+    return [
+      {
+        ruleId: "missing-approved-english-translation",
+        category: "Локализация",
+        severity: "high",
+        match: "translations.en",
+        suggestion:
+          "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+        index: 0,
+        excerpt: "Английская версия не опубликована.",
+      },
+    ];
+  }
+
+  const findings = [];
+  const status = String(translation.translationStatus || "");
+  if (!new Set(["approved", "published"]).has(status)) {
+    findings.push({
+      ruleId: "english-translation-not-approved",
+      category: "Локализация",
+      severity: "high",
+      match: status || "missing status",
+      suggestion: "Английская версия должна пройти редакционное утверждение.",
+      index: 0,
+      excerpt: `Статус перевода: ${status || "не указан"}.`,
+    });
+  }
+
+  const plainText = String(translation.plainText || "").replace(/\s+/gu, " ").trim();
+  if (!String(translation.title || "").trim() || !plainText) {
+    findings.push({
+      ruleId: "incomplete-english-translation",
+      category: "Локализация",
+      severity: "high",
+      match: "empty required field",
+      suggestion: "Заполнить английский заголовок и полный текст статьи.",
+      index: 0,
+      excerpt: "Обязательное английское поле пусто.",
+    });
+    return findings;
+  }
+
+  const letters = plainText.match(/\p{L}/gu)?.length || 0;
+  const cyrillic = plainText.match(/[А-Яа-яЁё]/gu)?.length || 0;
+  if (letters && cyrillic / letters > 0.02) {
+    findings.push({
+      ruleId: "untranslated-cyrillic-fragment",
+      category: "Локализация",
+      severity: "high",
+      match: `${Math.round((cyrillic / letters) * 100)}% Cyrillic`,
+      suggestion:
+        "Проверить английскую версию: в ней остался значительный русский фрагмент.",
+      index: 0,
+      excerpt: plainText.slice(0, 220),
+    });
+  }
+
+  const sourceWords = Number(article.wordCount || 0);
+  const translatedWords = Number(translation.wordCount || 0);
+  const lengthRatio = sourceWords ? translatedWords / sourceWords : 1;
+  if (sourceWords >= 100 && (lengthRatio < 0.55 || lengthRatio > 1.8)) {
+    findings.push({
+      ruleId: "english-translation-length-mismatch",
+      category: "Локализация",
+      severity: "medium",
+      match: `${translatedWords}/${sourceWords} words`,
+      suggestion:
+        "Сверить полноту английской версии с русским оригиналом: объём заметно отличается.",
+      index: 0,
+      excerpt: `RU: ${sourceWords}; EN: ${translatedWords}.`,
+    });
+  }
+  return findings;
+}
+
+function normalizedPath(value = "") {
+  try {
+    return new URL(String(value), "https://probpera.ru").pathname.replace(/\/+$/u, "") || "/";
+  } catch {
+    return String(value).split(/[?#]/u)[0].replace(/\/+$/u, "") || "/";
+  }
+}
+
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, "utf8"));
+}
+
+async function loadPublishedArticles() {
+  const legacyCatalog = await readJson(
+    path.join(legacyArticleDirectory, "index.json")
   );
+  const legacyArticles = await Promise.all(
+    legacyCatalog.map(async (entry) => ({
+      ...(await readJson(path.join(legacyArticleDirectory, `${entry.id}.json`))),
+      auditSource: "legacy",
+    }))
+  );
+
+  let cmsEntries = [];
+  try {
+    const snapshot = await readJson(path.join(cmsDirectory, "published-content.json"));
+    cmsEntries = Array.isArray(snapshot.articles) ? snapshot.articles : [];
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
+  const cmsArticles = await Promise.all(
+    cmsEntries.map(async (entry) => {
+      const relativeDocumentPath =
+        entry.documentPath || `cms/articles/${entry.id}.json`;
+      return {
+        ...(await readJson(path.join(publicDirectory, relativeDocumentPath))),
+        auditSource: "cms",
+      };
+    })
+  );
+  const replacedLegacyIds = new Set(
+    cmsArticles.map((article) => article.legacyId).filter(Boolean)
+  );
+  const replacedLegacyPaths = new Set(
+    cmsArticles
+      .map((article) => normalizedPath(article.legacyPath))
+      .filter((value) => value && value !== "/")
+  );
+  const retainedLegacy = legacyArticles.filter(
+    (article) =>
+      !replacedLegacyIds.has(article.id) &&
+      !replacedLegacyPaths.has(normalizedPath(article.legacyPath || article.url))
+  );
+
+  return [...cmsArticles, ...retainedLegacy];
+}
+
+async function main() {
+  const articles = await loadPublishedArticles();
   const findings = [];
   const articleStats = [];
 
-  for (const entry of catalog) {
-    const article = JSON.parse(
-      await readFile(path.join(articleDirectory, `${entry.id}.json`), "utf8")
-    );
+  for (const article of articles) {
     const articleFindings = [];
 
     for (const rule of rules) {
@@ -255,6 +388,12 @@ async function main() {
         title: article.title,
         url: article.url,
         ...finding,
+      })),
+      ...englishTranslationFindings(article).map((finding) => ({
+        articleId: article.id,
+        title: article.title,
+        url: article.url,
+        ...finding,
       }))
     );
 
@@ -263,6 +402,9 @@ async function main() {
       id: article.id,
       title: article.title,
       url: article.url,
+      source: article.auditSource,
+      englishTranslationStatus:
+        article.translations?.en?.translationStatus || "missing",
       wordCount: article.wordCount,
       issues: articleFindings.length,
       critical: articleFindings.filter((item) => item.severity === "critical").length,
@@ -281,8 +423,23 @@ async function main() {
     note:
       "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
     summary: {
-      articles: catalog.length,
-      totalWords: catalog.reduce((sum, article) => sum + article.wordCount, 0),
+      articles: articles.length,
+      totalWords: articles.reduce(
+        (sum, article) => sum + Number(article.wordCount || 0),
+        0
+      ),
+      bySource: {
+        cms: articles.filter((article) => article.auditSource === "cms").length,
+        legacy: articles.filter((article) => article.auditSource === "legacy").length,
+      },
+      englishTranslations: {
+        released: articles.filter((article) =>
+          ["approved", "published"].includes(
+            article.translations?.en?.translationStatus
+          )
+        ).length,
+        missing: articles.filter((article) => !article.translations?.en).length,
+      },
       findings: findings.length,
       affectedArticles: new Set(findings.map((finding) => finding.articleId)).size,
       bySeverity: counts("severity"),

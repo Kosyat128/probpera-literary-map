@@ -17,3 +17,39 @@ export function articleSectionSlug(categorySlug?: string | null) {
 export function articlePublicPath(slug: string, categorySlug?: string | null) {
   return `/stati/${articleSectionSlug(categorySlug)}/${slug}`;
 }
+
+export function articleCanonicalUrl(
+  publicSiteUrl: string,
+  slug: string,
+  categorySlug?: string | null
+) {
+  return `${publicSiteUrl.replace(/\/+$/u, "")}${articlePublicPath(
+    slug,
+    categorySlug
+  )}`;
+}
+
+function normalizedCanonicalUrl(value: string) {
+  return value.trim().replace(/\/+$/u, "");
+}
+
+export function initialEnglishCanonicalState(input: {
+  persistedCanonical?: string | null;
+  russianCanonical: string;
+  generatedEnglishCanonical: string;
+}) {
+  const persistedCanonical = input.persistedCanonical?.trim() || "";
+  const isLegacyRussianCanonical =
+    Boolean(persistedCanonical) &&
+    normalizedCanonicalUrl(persistedCanonical) ===
+      normalizedCanonicalUrl(input.russianCanonical);
+  const useGeneratedEnglishCanonical =
+    !persistedCanonical || isLegacyRussianCanonical;
+
+  return {
+    canonicalUrl: useGeneratedEnglishCanonical
+      ? input.generatedEnglishCanonical
+      : persistedCanonical,
+    isEdited: !useGeneratedEnglishCanonical,
+  };
+}

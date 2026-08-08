@@ -4,6 +4,7 @@ import {
   articleCatalog,
   type ArticleCatalogEntry,
 } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import {
   articleIdFromPath,
   articlePath,
@@ -94,11 +95,52 @@ function publicationWord(count: number) {
   return "публикаций";
 }
 
-function applyBrandImageFallback(image: HTMLImageElement, title: string) {
+const publishedLabelMonths: Record<string, number> = {
+  января: 0,
+  февраля: 1,
+  марта: 2,
+  апреля: 3,
+  мая: 4,
+  июня: 5,
+  июля: 6,
+  августа: 7,
+  сентября: 8,
+  октября: 9,
+  ноября: 10,
+  декабря: 11,
+};
+
+function formatPublishedLabel(
+  publishedLabel: string,
+  language: "ru" | "en"
+) {
+  const cleanLabel = publishedLabel
+    .replace(/^Опубликовано\s*:\s*/iu, "")
+    .replace(/^Published\s*:\s*/iu, "");
+  if (language === "ru") return cleanLabel;
+  const match = cleanLabel
+    .toLocaleLowerCase("ru")
+    .match(/^(\d{1,2})\s+([а-яё]+)\s+(\d{4})$/u);
+  if (!match) return cleanLabel;
+  const month = publishedLabelMonths[match[2]];
+  if (month === undefined) return cleanLabel;
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(Number(match[3]), month, Number(match[1]))));
+}
+
+function applyBrandImageFallback(
+  image: HTMLImageElement,
+  title: string,
+  altPrefix: string
+) {
   if (image.dataset.fallbackApplied === "true") return;
   image.dataset.fallbackApplied = "true";
   image.classList.add("is-fallback");
-  image.alt = `Фирменная обложка материала «${title}»`;
+  image.alt = `${altPrefix} “${title}”`;
   image.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
 }
 
@@ -110,10 +152,13 @@ function recommendationTerms(article: ArticleCatalogEntry) {
   );
 }
 
-function recommendedArticles(article: ArticleCatalogEntry) {
+function recommendedArticles(
+  article: ArticleCatalogEntry,
+  catalog: readonly ArticleCatalogEntry[]
+) {
   const sourceTerms = recommendationTerms(article);
   const affinity = relatedSections[article.sectionId] || [];
-  const ranked = articleCatalog
+  const ranked = catalog
     .filter((candidate) => candidate.id !== article.id)
     .map((candidate, index) => {
       const sharedTerms = [...recommendationTerms(candidate)].filter((term) =>
@@ -164,22 +209,33 @@ export default function ArticleLibrarySection({
   readerOnly = false,
 }: ArticleLibrarySectionProps) {
   const { language, t, number } = useInterfaceLanguage();
+  const localizedArticleCatalog = useMemo(
+    () =>
+      articleCatalog.flatMap((article) => {
+        const localized = articleCatalogEntryForLanguage(article, language);
+        return localized ? [localized] : [];
+      }),
+    [language]
+  );
   const [sectionId, setSectionId] = useState(sectionFromAddress);
   const [seriesId, setSeriesId] = useState(seriesFromAddress);
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
-  const [selected, setSelected] = useState<ArticleCatalogEntry | null>(() => {
-    const articleId = articleIdFromPath(articleCatalog);
-    return articleCatalog.find((article) => article.id === articleId) || null;
-  });
+  const [selectedId, setSelectedId] = useState<string | null>(() =>
+    articleIdFromPath(articleCatalog)
+  );
+  const selectedBase = selectedId
+    ? articleCatalog.find((article) => article.id === selectedId) || null
+    : null;
+  const selected = selectedBase
+    ? articleCatalogEntryForLanguage(selectedBase, language)
+    : null;
 
   useEffect(() => {
     const syncWithAddress = () => {
       const articleId = articleIdFromPath(articleCatalog);
-      const addressedArticle =
-        articleCatalog.find((article) => article.id === articleId) || null;
-      setSelected(addressedArticle);
-      if (!addressedArticle) {
+      setSelectedId(articleId);
+      if (!articleId) {
         setSectionId(sectionFromAddress());
         setSeriesId(seriesFromAddress());
         setVisibleCount(12);
@@ -197,7 +253,7 @@ export default function ArticleLibrarySection({
 
   const sections = useMemo(() => {
     const grouped = new Map<string, { id: string; label: string; count: number }>();
-    articleCatalog.forEach((article) => {
+    localizedArticleCatalog.forEach((article) => {
       const current = grouped.get(article.sectionId);
       grouped.set(article.sectionId, {
         id: article.sectionId,
@@ -209,11 +265,11 @@ export default function ArticleLibrarySection({
       (first, second) =>
         sectionOrder.indexOf(first.id) - sectionOrder.indexOf(second.id)
     );
-  }, []);
+  }, [localizedArticleCatalog]);
 
   const filtered = useMemo(() => {
     const query = normalize(search);
-    return articleCatalog.filter((article) => {
+    return localizedArticleCatalog.filter((article) => {
       if (sectionId !== "all" && article.sectionId !== sectionId) return false;
       if (seriesId !== "all" && articleSeriesId(article) !== seriesId) return false;
       if (!query) return true;
@@ -222,11 +278,11 @@ export default function ArticleLibrarySection({
         query
       );
     });
-  }, [search, sectionId, seriesId]);
+  }, [localizedArticleCatalog, search, sectionId, seriesId]);
 
   const series = useMemo(() => {
     if (sectionId === "all") return [];
-    const records = articleCatalog.filter(
+    const records = localizedArticleCatalog.filter(
       (article) => article.sectionId === sectionId
     );
     return [
@@ -237,7 +293,7 @@ export default function ArticleLibrarySection({
             id,
             {
               id,
-              label: articleSeriesLabel(id, article.sectionLabel),
+              label: articleSeriesLabel(id, article.sectionLabel, language),
               count: records.filter(
                 (candidate) => articleSeriesId(candidate) === id
               ).length,
@@ -246,18 +302,20 @@ export default function ArticleLibrarySection({
         })
       ).values(),
     ];
-  }, [sectionId]);
+  }, [language, localizedArticleCatalog, sectionId]);
 
   const selectedIndex = selected
-    ? articleCatalog.findIndex((article) => article.id === selected.id)
+    ? localizedArticleCatalog.findIndex((article) => article.id === selected.id)
     : -1;
-  const related = selected ? recommendedArticles(selected) : [];
+  const related = selected
+    ? recommendedArticles(selected, localizedArticleCatalog)
+    : [];
 
   const changeSection = (value: string) => {
     setSectionId(value);
     setSeriesId("all");
     setVisibleCount(12);
-    if (!selected) {
+    if (!selectedId) {
       navigateToJournal(value, true);
     }
   };
@@ -270,7 +328,7 @@ export default function ArticleLibrarySection({
 
   const openArticle = (article: ArticleCatalogEntry) => {
     navigateToArticle(article);
-    setSelected(article);
+    setSelectedId(article.id);
   };
 
   const closeArticle = () => {
@@ -280,10 +338,23 @@ export default function ArticleLibrarySection({
     }
     window.history.replaceState({}, "", journalPath(sectionId));
     window.dispatchEvent(new Event("probpera:navigation"));
-    setSelected(null);
+    setSelectedId(null);
   };
 
-  if (readerOnly && selected) {
+  const previousBase =
+    selectedIndex > 0
+      ? articleCatalog.find(
+          (article) => article.id === localizedArticleCatalog[selectedIndex - 1]?.id
+        )
+      : undefined;
+  const nextBase =
+    selectedIndex >= 0 && selectedIndex < localizedArticleCatalog.length - 1
+      ? articleCatalog.find(
+          (article) => article.id === localizedArticleCatalog[selectedIndex + 1]?.id
+        )
+      : undefined;
+
+  if (readerOnly && selectedBase) {
     return (
       <Suspense
         fallback={
@@ -293,14 +364,10 @@ export default function ArticleLibrarySection({
         }
       >
         <ArticleReader
-          article={selected}
+          article={selectedBase}
           related={related}
-          previous={selectedIndex > 0 ? articleCatalog[selectedIndex - 1] : undefined}
-          next={
-            selectedIndex >= 0 && selectedIndex < articleCatalog.length - 1
-              ? articleCatalog[selectedIndex + 1]
-              : undefined
-          }
+          previous={previousBase}
+          next={nextBase}
           onClose={closeArticle}
           onOpen={openArticle}
         />
@@ -315,9 +382,9 @@ export default function ArticleLibrarySection({
           <div>
             <span className="section-kicker">
               {language === "en"
-                ? `Author archive · ${number(articleCatalog.length)} publications`
-                : `Авторский архив · ${number(articleCatalog.length)} ${publicationWord(
-                    articleCatalog.length
+                ? `Author archive · ${number(localizedArticleCatalog.length)} publications`
+                : `Авторский архив · ${number(localizedArticleCatalog.length)} ${publicationWord(
+                    localizedArticleCatalog.length
                   )}`}
             </span>
             <h2>{t("Журнал, выстроенный для чтения")}</h2>
@@ -348,7 +415,7 @@ export default function ArticleLibrarySection({
             aria-pressed={sectionId === "all"}
             onClick={() => changeSection("all")}
           >
-            {t("Все материалы")} <span>{number(articleCatalog.length)}</span>
+            {t("Все материалы")} <span>{number(localizedArticleCatalog.length)}</span>
           </button>
           {sections.map((section) => (
             <button
@@ -358,7 +425,7 @@ export default function ArticleLibrarySection({
               aria-pressed={sectionId === section.id}
               onClick={() => changeSection(section.id)}
             >
-              {t(section.label)} <span>{number(section.count)}</span>
+              {section.label} <span>{number(section.count)}</span>
             </button>
           ))}
         </nav>
@@ -385,7 +452,7 @@ export default function ArticleLibrarySection({
                 aria-pressed={seriesId === item.id}
                 onClick={() => changeSeries(item.id)}
               >
-                {t(item.label)} <small>{number(item.count)}</small>
+                {item.label} <small>{number(item.count)}</small>
               </button>
             ))}
           </nav>
@@ -445,12 +512,16 @@ export default function ArticleLibrarySection({
                           src={article.imageUrl}
                           alt={
                             article.imageAlt ||
-                            `Иллюстрация к материалу «${article.title}»`
+                            `${t("Иллюстрация к материалу")} “${article.title}”`
                           }
                           loading="lazy"
                           decoding="async"
                           onError={(event) =>
-                            applyBrandImageFallback(event.currentTarget, article.title)
+                            applyBrandImageFallback(
+                              event.currentTarget,
+                              article.title,
+                              t("Фирменная обложка материала")
+                            )
                           }
                         />
                       </>
@@ -469,7 +540,7 @@ export default function ArticleLibrarySection({
                   </div>
                   <div className="library-card-copy">
                     <div>
-                      <span>{article.publishedLabel.replace("Опубликовано :", "")}</span>
+                      <span>{formatPublishedLabel(article.publishedLabel, language)}</span>
                       <span>
                         {article.readingMinutes} {t("мин.")}
                       </span>
@@ -487,7 +558,11 @@ export default function ArticleLibrarySection({
         ) : (
           <div className="article-library-empty">
             <span aria-hidden="true">⌕</span>
-            <h3>{t("Материалов по этому запросу пока нет")}</h3>
+            <h3>
+              {language === "en" && localizedArticleCatalog.length === 0
+                ? t("Пока нет опубликованных переводов на английский язык")
+                : t("Материалов по этому запросу пока нет")}
+            </h3>
             <button
               type="button"
               onClick={() => {
@@ -515,7 +590,7 @@ export default function ArticleLibrarySection({
         )}
       </section>
 
-      {selected && (
+      {selectedBase && (
         <Suspense
           fallback={
             <div className="article-reader-suspense" role="status">
@@ -524,14 +599,10 @@ export default function ArticleLibrarySection({
           }
         >
           <ArticleReader
-            article={selected}
+            article={selectedBase}
             related={related}
-            previous={selectedIndex > 0 ? articleCatalog[selectedIndex - 1] : undefined}
-            next={
-              selectedIndex >= 0 && selectedIndex < articleCatalog.length - 1
-                ? articleCatalog[selectedIndex + 1]
-                : undefined
-            }
+            previous={previousBase}
+            next={nextBase}
             onClose={closeArticle}
             onOpen={openArticle}
           />

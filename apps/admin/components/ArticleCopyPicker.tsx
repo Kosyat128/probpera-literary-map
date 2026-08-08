@@ -48,11 +48,11 @@ export default function ArticleCopyPicker({
     <section className="panel article-copy-picker" aria-labelledby="article-copy-title">
       <div className="article-copy-heading">
         <div>
-          <span className="eyebrow">Удобный и быстрый старт</span>
-          <h2 id="article-copy-title">Скопировать для редактирования</h2>
+          <span className="eyebrow">Готовая структура статьи</span>
+          <h2 id="article-copy-title">Начать с готовой статьи</h2>
           <p>
-            Выберите уже существующую статью — можно сразу вставлять в новый черновик,
-            затем заменить тему, текст и картинки.
+            Создайте отдельную черновую копию: заголовки, текст, изображения,
+            подписи и расположение сохранятся, а исходная статья не изменится.
           </p>
         </div>
         <strong>{articles.length} статей</strong>
@@ -77,13 +77,13 @@ export default function ArticleCopyPicker({
             <div className="article-copy-actions">
               <form action={duplicateArticleAction}>
                 <input type="hidden" name="id" value={article.id} />
-                <button type="submit">Скопировать как черновик</button>
+                <button type="submit">Создать копию и редактировать</button>
               </form>
               <Link
                 className="button-secondary"
                 href={`/articles/new?copyFrom=${encodeURIComponent(article.id)}`}
               >
-                Открыть для переписывания
+                Открыть без создания копии
               </Link>
             </div>
           </article>

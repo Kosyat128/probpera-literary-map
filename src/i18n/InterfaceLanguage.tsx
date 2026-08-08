@@ -216,6 +216,8 @@ const englishInterfaceText: Record<string, string> = {
   "Все связанные произведения": "All linked works",
   "Весь архив": "Complete archive",
   "Карточки с подтверждёнными данными": "Records with verified metadata",
+  "Непроверенные": "Not verified",
+  "Карточки в редакционной очереди": "Records in the editorial queue",
   "С обложками": "With covers",
   "Изображения с указанным источником": "Images with documented sources",
   "До 1945 года": "Before 1945",
@@ -236,6 +238,7 @@ const englishInterfaceText: Record<string, string> = {
   "Редакционная иллюстрация из связанной статьи · не является обложкой конкретного издания":
     "Editorial image from a related article · not the cover of a specific edition",
   "Проверено редакцией": "Editorially verified",
+  "Не проверено": "Not verified",
   "Редакционная карточка": "Editorial record",
   "Архивная запись": "Archive record",
   Автор: "Writer",
@@ -248,6 +251,7 @@ const englishInterfaceText: Record<string, string> = {
   "Добавить в мою библиотеку": "Add to my library",
   "Открыть автора и страну": "Open writer and country",
   "Источник сведений": "Information source",
+  "Исходная запись кандидата": "Candidate source record",
   "Источник обложки": "Cover source",
   "Внешнее превью · файл не хранится на сайте":
     "External preview · the file is not stored on this website",
@@ -378,6 +382,9 @@ const englishInterfaceText: Record<string, string> = {
   "Темы книги": "Book subjects",
   "Редакционный стандарт": "Editorial standard",
   "Материал, которому можно доверять": "Material you can trust",
+  "публикационную проверку по открытым авторитетным источникам":
+    "the publication gate against open authoritative sources",
+  "Стиль глобуса": "Globe style",
   "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.":
     "Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.",
   "Интересный факт о книге": "A notable book fact",
@@ -410,6 +417,8 @@ const englishInterfaceText: Record<string, string> = {
   "Лица мировой литературы": "Faces of world literature",
   "Авторы, с которых можно начать": "Writers to begin with",
   "Источник изображения": "Image source",
+  "Фирменная заглушка портрета": "Branded portrait placeholder",
+  Портрет: "Portrait",
   "Навигация по журналу": "Journal navigation",
   "Основные разделы": "Main sections",
   "Полный архив публикаций": "Complete publication archive",
@@ -472,16 +481,542 @@ const englishInterfaceText: Record<string, string> = {
   "Материалы подобраны по рубрике, теме и смысловым связям этой публикации.":
     "Recommendations are selected by section, subject and thematic links to this article.",
   "События на каждый день": "Events for every day",
+  "Журнал «Проба Пера» — полноформатное редакционное издание":
+    "Proba Pera magazine — a full-size editorial publication",
+  "Обложка книги": "Book cover",
+  "Обложка конкретного издания": "Cover of a specific edition",
+  "Издание на обложке": "Edition shown on the cover",
+  "Темы для разговора": "Conversation topics",
+  "С чего начать разговор": "Where to begin",
+  "Читательский дневник": "Reader's journal",
+  "Какая книга не отпускает вас сейчас?":
+    "Which book can’t you put down right now?",
+  "Искусство перевода": "The art of translation",
+  "Когда перевод становится новой книгой":
+    "When does a translation become a new book?",
+  "Соберите собственный маршрут чтения":
+    "Create your own reading route",
+  "авторов в энциклопедии": "writers in the encyclopedia",
+  "произведений в архиве": "works in the archive",
+  "стран на карте": "countries on the map",
+  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.":
+    "A place for calm, substantive conversation about books, without noise or random recommendations. Continue an idea from an article, discuss a translation, build a reading route and preserve the history of your reading.",
+  "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.":
+    "Anyone can read the discussions. A profile is needed only to join the conversation, rate publications and use a personal library.",
+  "Разговоры о книгах, статьях, переводах и экранизациях":
+    "Conversations about books, articles, translations and adaptations",
+  "Оценки, комментарии и тематические подборки читателей":
+    "Reader ratings, comments and thematic collections",
+  "Личная библиотека, любимые авторы, страны и история участия":
+    "A personal library, favourite writers and countries, and participation history",
+  "Тематические серии выбранного раздела":
+    "Thematic series in the selected section",
+  Серии: "Series",
+  Все: "All",
+  "Проба Пера": "Proba Pera",
+  "Проба Пера — главная": "Proba Pera — home",
+  иллюстраций: "illustrations",
+  "Продолжено с места остановки": "Resumed where you left off",
+  "статьи прочитано": "of article read",
+  "Начать сначала": "Start over",
+  "Открыть главное изображение": "Open the main image",
+  "Открыть изображение": "Open image",
+  "Открыть иллюстрацию": "Open illustration",
+  "Галерея статьи": "Article gallery",
+  изображений: "images",
+  "Выбор изображения": "Image selection",
+  "Показать изображение": "Show image",
+  Рассмотреть: "View image",
+  "Просмотр иллюстрации": "Image viewer",
+  "Закрыть изображение": "Close image",
+  "Переключение иллюстраций": "Image navigation",
+  "Предыдущее изображение": "Previous image",
+  "Следующее изображение": "Next image",
+  "Ищем во всём архиве…": "Searching the complete archive…",
+  "Подключаем статьи, книги, писателей и страны.":
+    "Loading articles, books, writers and countries.",
+  "Нобелевский лауреат": "Nobel laureate",
+  "Нажмите на метку — откроется статья о лауреате":
+    "Select the marker to open an article about the laureate",
+  "Нажмите на метку — откроется карточка лауреата":
+    "Select the marker to open the laureate’s profile",
+  "Нобелевский архив": "Nobel archive",
+  "Редакционная серия": "Editorial series",
+  "Лауреаты Нобелевской премии · 1901–2025":
+    "Nobel Prize laureates · 1901–2025",
+  "История премии": "History of the prize",
+  "Период архива": "Archive period",
+  "Все годы": "All years",
+  "Лауреаты по годам": "Laureates by year",
+  "Статья журнала": "Magazine article",
+  "Премия не присуждалась: ": "No prize was awarded in: ",
+  "Сверено с официальным архивом": "Verified against the official archive",
+  Рубрики: "Sections",
+  "Вы следите за архивом страны": "You follow this country archive",
+  "Следить за новыми материалами страны":
+    "Follow new publications about this country",
+  "Скрыть метки Нобелевских лауреатов этой страны":
+    "Hide this country’s Nobel laureate markers",
+  "Показать всех Нобелевских лауреатов этой страны на глобусе":
+    "Show all of this country’s Nobel laureates on the globe",
+  "Открыть биографию": "Open biography",
+  "Вы следите за автором": "You follow this writer",
+  "Следить за новыми материалами автора":
+    "Follow new publications about this writer",
+  "Открыть статью о лауреате": "Open the article about this laureate",
+  "Лауреат Нобелевской премии по литературе":
+    "Nobel Prize laureate in Literature",
+  "Читать редакционный материал года": "Read the editorial article for this year",
+  "Годовая статья готовится редакцией":
+    "The editorial article for this year is in preparation",
+  "Неизвестный автор": "Unknown writer",
+  Лауреат: "Laureate",
+  "Архив объединяет авторов и ключевые произведения литературной традиции страны.":
+    "The archive brings together writers and defining works from this country’s literary tradition.",
+  "Архив мира": "World archive",
+  "Иллюстрация к материалу": "Illustration for",
+  "Фирменная обложка материала": "Branded cover for",
+  "Источник портрета": "Portrait source",
+  "Авторские публикации защищены законом.":
+    "Original publications are protected by law.",
+  "Пополняем словарный запас": "Expanding your vocabulary",
+  "Профессии писателей": "Writers’ professions",
+  Экранизации: "Adaptations",
+  Фольклор: "Folklore",
+  "Хантер С. Томпсон «Ангелы ада»":
+    "Hunter S. Thompson, Hell’s Angels",
+  "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.":
+    "The first major work by the founder of gonzo journalism: its origins, context and an honest response after reading.",
+  "Семь знаковых писателей Японии": "Seven landmark writers from Japan",
+  "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.":
+    "A route from the classical tradition to contemporary fiction through the writers who brought Japanese literature worldwide recognition.",
+  "Редкие слова, которые помогут вам расширить словарный запас":
+    "Rare words to expand your vocabulary",
+  "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.":
+    "Living meanings, origins and examples of usage presented with editorial clarity, rather than a dictionary for its own sake.",
+  "Кем работали классики до литературной славы":
+    "What classic writers did before literary fame",
+  "Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.":
+    "The unexpected professions of international writers and how lived experience entered their future books.",
+  "12 минут": "12 min read",
+  "15 минут": "15 min read",
+  "9 минут": "9 min read",
+  "11 минут": "11 min read",
+  "«Алиса в Стране чудес»": "Alice’s Adventures in Wonderland",
+  "Тираж первого издания 1865 года отозвали из-за качества печати иллюстраций Джона Тенниела. Из двух тысяч экземпляров успели раздать лишь около пятидесяти.":
+    "The 1865 first edition was recalled because of the printing quality of John Tenniel’s illustrations. Only about fifty of the two thousand copies had been distributed.",
+  "Библиотека Конгресса": "Library of Congress",
+  "«Разум и чувства»": "Sense and Sensibility",
+  "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» — «Написано леди».":
+    "Jane Austen’s first novel was published in 1811 without her name: the title page identified its author only as “By a Lady.”",
+  "Британская библиотека": "British Library",
+  "«Маленький принц»": "The Little Prince",
+  "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны — в 1946 году.":
+    "The novella was first published in New York on 6 April 1943 in French and English at the same time. A French edition appeared after the war, in 1946.",
+  "Национальная библиотека Франции": "National Library of France",
+  "«Замок Отранто»": "The Castle of Otranto",
+  "Роман Хораса Уолпола 1764 года, считающийся первым готическим романом, первоначально вышел анонимно и выдавался за найденную средневековую рукопись.":
+    "Horace Walpole’s 1764 novel, widely regarded as the first Gothic novel, was initially published anonymously and presented as a discovered medieval manuscript.",
+  "Писатели мира": "Writers of the world",
+  "Лауреаты Нобелевской премии": "Nobel Prize laureates",
+  "Истории литературных премий": "Stories of literary prizes",
+  "Мировой фольклор и мифология": "World folklore and mythology",
+  "Истории из мира литературы": "Stories from the literary world",
+  "Лучшие книги и подборки": "Best books and reading lists",
+  "Непризнанные современниками": "Unrecognised by their contemporaries",
+  "Книги, от которых не оторваться": "Unputdownable books",
+  "Экранизации бестселлеров XXI века":
+    "Screen adaptations of 21st-century bestsellers",
+  "Удачные экранизации классики": "Successful adaptations of classics",
+  "Литературные факты и явления": "Literary facts and phenomena",
+  "Крылатые выражения": "Famous expressions",
+  "Бестселлеры XXI века": "21st-century bestsellers",
+  "Лучшие книги писателей": "Writers’ best books",
+  "Новые материалы редакции": "New editorial publications",
+  "Отдельные редакционные материалы": "Standalone editorial publications",
+  "Редакционные материалы": "Editorial publications",
+  репутации: "reputation",
+  "Не удалось загрузить обсуждения. Проверьте схему сообщества.":
+    "Discussions could not be loaded. Check the community database schema.",
+  "Не удалось загрузить ответы.": "Replies could not be loaded.",
+  "Сервер сообщества ещё не подключён к этой сборке сайта.":
+    "The community server is not connected to this site build yet.",
+  "Никнейм должен содержать от 2 до 32 букв или цифр; допустимы пробел, точка, дефис и подчёркивание.":
+    "Your nickname must be 2–32 letters or digits long; spaces, full stops, hyphens and underscores are allowed.",
+  "Введите действующий адрес электронной почты.": "Enter a valid email address.",
+  "Пароль должен содержать не менее 10 символов.":
+    "Your password must contain at least 10 characters.",
+  "Пароли не совпадают.": "The passwords do not match.",
+  "Подтвердите согласие с правилами сообщества.":
+    "Confirm that you agree to the community rules.",
+  "Этот адрес уже зарегистрирован. Переключитесь на вход.":
+    "This address is already registered. Switch to sign-in.",
+  "Почта или пароль указаны неверно.": "The email address or password is incorrect.",
+  "Письмо уже отправлялось недавно. Подождите немного и повторите попытку.":
+    "An email was sent recently. Wait a moment and try again.",
+  "Пароль не соответствует требованиям безопасности.":
+    "The password does not meet the security requirements.",
+  "Не удалось выполнить запрос": "The request could not be completed",
+  "Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти.":
+    "Your registration has been received. Check your email and confirm the address before signing in.",
+  "Вы вошли в клуб читателей.": "You are now signed in to the readers’ club.",
+  "Не удалось связаться с сервером. Проверьте интернет и повторите попытку.":
+    "The server could not be reached. Check your connection and try again.",
+  "Войдите, чтобы оценивать обсуждения.": "Sign in to rate discussions.",
+  "Обновите схему сообщества: модуль оценок форума ещё не установлен.":
+    "Update the community schema: the forum ratings module is not installed yet.",
+  "Используйте изображение JPG, PNG или WebP.": "Use a JPG, PNG or WebP image.",
+  "Размер аватара не должен превышать 2 МБ.": "Your avatar must not exceed 2 MB.",
+  "Аватар не загрузился. Проверьте миграцию хранилища профилей.":
+    "The avatar could not be uploaded. Check the profile-storage migration.",
+  "Изображение загружено, но профиль не обновился.":
+    "The image was uploaded, but the profile could not be updated.",
+  "Аватар обновлён.": "Avatar updated.",
+  "Профиль не удалось сохранить.": "The profile could not be saved.",
+  "Биография сохранена. Для подборок примените новую миграцию профиля.":
+    "Your biography has been saved. Apply the new profile migration to enable reading lists.",
+  "Профиль и литературные интересы сохранены.":
+    "Your profile and literary interests have been saved.",
+  "Не удалось обработать жалобу.": "The report could not be processed.",
+  "Комментарий скрыт, жалоба закрыта.": "The comment was hidden and the report closed.",
+  "Комментарий оставлен, жалоба закрыта.": "The comment was retained and the report closed.",
+  "Войдите, чтобы передать публикацию модератору.": "Sign in to send a post to a moderator.",
+  "Пользователь просит редакцию проверить эту публикацию форума.":
+    "A user has asked the editorial team to review this forum post.",
+  "Жалобу не удалось отправить. Проверьте миграцию модерации форума.":
+    "The report could not be sent. Check the forum-moderation migration.",
+  "Публикация передана редактору на проверку.": "The post has been sent to an editor for review.",
+  "Не удалось обработать жалобу форума.": "The forum report could not be processed.",
+  "Публикация форума скрыта, жалоба закрыта.": "The forum post was hidden and the report closed.",
+  "Публикация оставлена, жалоба закрыта.": "The post was retained and the report closed.",
+  "Моя библиотека": "My library",
+  "Сохранённые материалы": "Saved items",
+  "Сохранённый материал": "Saved item",
+  "Статус чтения": "Reading status",
+  "Хочу прочитать": "Want to read",
+  Читаю: "Reading",
+  Прочитано: "Finished",
+  "Удалить из библиотеки": "Remove from library",
+  "Нажмите оранжевое сердце у статьи или книги — материал появится здесь.":
+    "Select the orange heart beside an article or book to save it here.",
+  "Литературная траектория": "Your literary journey",
+  "Страны и писатели, новые материалы о которых вы хотите отслеживать.":
+    "Countries and writers whose new publications you want to follow.",
+  "Отменить подписку": "Unfollow",
+  Раздел: "Section",
+  "Подписки добавляются в карточках стран и писателей.":
+    "Follow countries and writers from their profile cards.",
+  "Клуб читателей": "Readers’ club",
+  "Говорилка — форум «Проба Пера»": "The Proba Pera forum",
+  "Редакция «Пробы Пера»": "Proba Pera editorial team",
+  "Личный кабинет «Пробы Пера»": "Your Proba Pera account",
+  "Разделы сообщества": "Community sections",
+  Профиль: "Profile",
+  "Панель редакции": "Editorial dashboard",
+  "Сообщество готово к подключению": "The community is ready to connect",
+  "Интерфейс, защищённая схема профилей, форума, комментариев и рейтингов уже подготовлены. Для общей работы пользователей нужно указать публичные параметры проекта Supabase.":
+    "The interface and secure schemas for profiles, the forum, comments and ratings are ready. Add the project’s public Supabase settings to enable shared community features.",
+  "До подключения формы не сохраняют персональные данные.":
+    "Forms do not store personal data until the connection is enabled.",
+  "Проверяем сессию…": "Checking your session…",
+  "Только для редакции": "Editorial access only",
+  "Панель сообщества": "Community dashboard",
+  "Внутренняя статистика и очередь модерации без рекламных счётчиков и сторонних комментариев.":
+    "Internal statistics and the moderation queue, with no advertising trackers or third-party comments.",
+  Обновить: "Refresh",
+  "Требует решения": "Needs a decision",
+  "Жалобы читателей": "Reader reports",
+  Публикация: "Post",
+  Оставить: "Keep",
+  Скрыть: "Hide",
+  "Открытых жалоб нет.": "There are no open reports.",
+  "Жалобы на темы и ответы": "Reports on topics and replies",
+  Тема: "Topic",
+  Ответ: "Reply",
+  "Открытых жалоб на форум нет.": "There are no open forum reports.",
+  "Последняя активность": "Recent activity",
+  записей: "entries",
+  "Тема форума": "Forum topic",
+  "Ответ форума": "Forum reply",
+  Вернуть: "Restore",
+  "Активность появится после запуска сообщества.": "Activity will appear after the community launches.",
+  "Читайте глубже. Обсуждайте уважительно.": "Read deeply. Discuss respectfully.",
+  "Один профиль связывает ваши оценки, комментарии, форум и личную библиотеку внутри «Пробы Пера».":
+    "One profile connects your ratings, comments, forum activity and personal library across Proba Pera.",
+  "Комментарии и рейтинги без сторонних виджетов": "Comments and ratings without third-party widgets",
+  "Обсуждения книг, статей и переводов": "Discussions about books, articles and translations",
+  "Спокойная редакционная модерация": "Considered editorial moderation",
+  "Ваши данные не используются для рекламного профилирования.":
+    "Your data is not used for advertising profiles.",
+  Здравствуйте: "Hello",
+  "Теперь можно участвовать в обсуждениях, оценивать публикации и книги, сохранять историю комментариев.":
+    "You can now join discussions, rate publications and books, and keep your comment history.",
+  Почта: "Email",
+  Статус: "Status",
+  "Участник клуба читателей": "Readers’ club member",
+  Аватар: "Avatar",
+  "Профиль читателя": "Reader profile",
+  "Репутация в клубе": "Club reputation",
+  "Загрузка…": "Uploading…",
+  "Сменить аватар": "Change avatar",
+  "О себе": "About you",
+  "Несколько слов о ваших читательских интересах": "A few words about your reading interests",
+  "Любимые литературные страны": "Favourite literary countries",
+  "Выберите страну": "Choose a country",
+  Добавить: "Add",
+  "Убрать из подборки": "Remove from selection",
+  "Любимые писатели": "Favourite writers",
+  "Выберите писателя": "Choose a writer",
+  "Сначала выберите страну": "Choose a country first",
+  "Сохранить профиль": "Save profile",
+  "Перейти в форум": "Open forum",
+  Выйти: "Sign out",
+  "Новый читатель": "New reader",
+  "С возвращением": "Welcome back",
+  "Вступить в литературный клуб": "Join the literary club",
+  "Войти в «Пробу Пера»": "Sign in to Proba Pera",
+  "Никнейм в сообществе": "Community nickname",
+  "Например, Читатель_ПП": "For example, Booklover_PP",
+  "Электронная почта": "Email address",
+  Пароль: "Password",
+  "Скрыть пароль": "Hide password",
+  "Показать пароль": "Show password",
+  Показать: "Show",
+  "Повторите пароль": "Repeat password",
+  "Не менее 10 символов. Не используйте пароль от почты или социальных сетей.":
+    "Use at least 10 characters. Do not reuse your email or social-media password.",
+  "Я принимаю правила уважительного общения и обработку данных, необходимых для работы профиля.":
+    "I accept the respectful-conduct rules and the processing of data required for my profile.",
+  "Форма полностью готова. Регистрация включится после подключения серверных ключей проекта в GitHub Actions.":
+    "The form is ready. Registration will be enabled after the project’s server keys are connected in GitHub Actions.",
+  "Подождите…": "Please wait…",
+  Зарегистрироваться: "Register",
+  "Уже есть аккаунт — войти": "Already have an account? Sign in",
+  "Нет аккаунта — зарегистрироваться": "No account yet? Register",
+  "Разговор о литературе": "A conversation about literature",
+  "Все темы": "All topics",
+  "Войдите, чтобы открыть новую тему.": "Sign in to start a new topic.",
+  "Новая тема": "New topic",
+  "Разделы форума": "Forum sections",
+  "Все обсуждения": "All discussions",
+  "Найти обсуждение": "Find a discussion",
+  "Книга, автор, тема или читатель": "Book, writer, subject or reader",
+  Порядок: "Sort order",
+  "Сначала новые": "Newest first",
+  "По рейтингу": "By rating",
+  "По числу ответов": "By reply count",
+  Найдено: "Found",
+  из: "of",
+  "Передать модератору": "Report to a moderator",
+  "Оценка обсуждения": "Discussion score",
+  "Поддержать обсуждение": "Upvote discussion",
+  "Снизить оценку обсуждения": "Downvote discussion",
+  "Оценка ответа": "Reply score",
+  "Полезный ответ": "Upvote reply",
+  "Снизить оценку ответа": "Downvote reply",
+  "Ответить по существу…": "Write a substantive reply…",
+  "Отправить ответ": "Post reply",
+  "Войдите, чтобы ответить": "Sign in to reply",
+  "Раздел форума": "Forum section",
+  "Название обсуждения": "Discussion title",
+  "Текст обсуждения": "Discussion text",
+  "Сформулируйте вопрос или тему…": "State your question or topic…",
+  "Опубликовать тему": "Publish topic",
+  рейтинг: "score",
+  "Первое обсуждение ещё не открыто.": "No discussions have been started yet.",
+  "Измените запрос или выберите другой раздел форума.": "Change your search or choose another forum section.",
+  "Начните разговор о книге, авторе, переводе или экранизации.":
+    "Start a conversation about a book, writer, translation or screen adaptation.",
+  "В этой ветке пока нет тем. Откройте первое содержательное обсуждение.":
+    "There are no topics in this section yet. Start the first thoughtful discussion.",
+  "Книжный клуб": "Book club",
+  "Совместное чтение и обсуждение книги месяца": "Read and discuss the book of the month together",
+  "Впечатления, вопросы и внимательный разбор текста": "Impressions, questions and close reading",
+  Классика: "Classics",
+  "Произведения, выдержавшие проверку временем": "Works that have stood the test of time",
+  "Современная литература": "Contemporary literature",
+  "Новые книги, авторы и литературные явления": "New books, writers and literary developments",
+  Поэзия: "Poetry",
+  "Стихи, поэтика, чтения и переводы": "Poems, poetics, readings and translations",
+  Переводы: "Translations",
+  "Сравнение переводов и разговор о языке": "Comparing translations and discussing language",
+  "Книга и экран: находки, потери и интерпретации": "Books on screen: discoveries, losses and interpretations",
+  "Страны, писатели и маршруты мировой литературы": "Countries, writers and journeys through world literature",
+  "Подборки читателей": "Readers’ lists",
+  "Личные списки книг и тематические маршруты": "Personal book lists and thematic reading paths",
+  "Вопрос редакции": "Ask the editors",
+  "Предложения, уточнения и темы для материалов": "Suggestions, corrections and ideas for future publications",
+  Читатели: "Readers",
+  "Темы форума": "Forum topics",
+  Комментарии: "Comments",
+  Оценки: "Ratings",
+  Просмотры: "Views",
+  "Открытые жалобы": "Open reports",
+  "Черновик сохранён на этом устройстве.": "Draft saved on this device.",
+  "Редакционный JSON подготовлен.": "Editorial JSON prepared.",
+  "Анонс для социальных сетей скопирован.": "Social-media summary copied.",
+  "Не удалось скопировать автоматически — выделите текст вручную.":
+    "Automatic copying failed. Select and copy the text manually.",
+  "Редакционная мастерская": "Editorial workspace",
+  "Черновик новой публикации": "New publication draft",
+  "Форма сохраняет материал локально, проверяет обязательные поля и подготавливает JSON для публикационного архива.":
+    "The form saves material locally, checks required fields and prepares JSON for the publication archive.",
+  Заголовок: "Title",
+  "Точный редакционный заголовок": "Final editorial title",
+  "Краткое описание": "Short description",
+  "Для карточки, поиска и социальных сетей": "For cards, search and social media",
+  "Изображение и источник": "Image and source",
+  "Источники и редакционные заметки": "Sources and editorial notes",
+  "Название источника, ссылка, что именно подтверждает":
+    "Source title, link and the claim it supports",
+  "Текст статьи": "Article text",
+  "<h2>Вступление</h2><p>Текст…</p>": "<h2>Introduction</h2><p>Text…</p>",
+  "Предпросмотр карточки": "Card preview",
+  "Заголовок будущей публикации": "Future publication title",
+  "Краткое описание поможет читателю понять тему материала.":
+    "A short description helps readers understand the subject.",
+  "Содержательный заголовок": "Descriptive title",
+  "SEO-описание не короче 80 знаков": "SEO description is at least 80 characters",
+  "Указана иллюстрация": "Image provided",
+  "Зафиксированы источники": "Sources recorded",
+  "Основной текст готов": "Main text ready",
+  "Экспортировать JSON": "Export JSON",
+  "Скопировать анонс": "Copy summary",
+  "Проба Пера · восстановление": "Proba Pera · recovery",
+  "Страница столкнулась с ошибкой": "This page encountered an error",
+  "Состояние сохранено в журнале редакции. Обновите страницу — публикации и ваша библиотека не пострадали.":
+    "The error has been recorded in the editorial log. Refresh the page; your publications and library are safe.",
+  "Обновить страницу": "Refresh page",
+  "Пока нет опубликованных переводов на английский язык": "No English translations have been published yet",
+  Удалить: "Remove",
+  "из библиотеки": "from library",
+  "в библиотеку": "to library",
+  "Выбор редакции": "Editors’ picks",
+  "Весь журнал": "Explore the journal",
+  "Темы и разделы": "Topics and sections",
+  "Специальный проект": "Special project",
+  "Редакционные блоки": "Editorial blocks",
+  "На главную": "Home",
+  "Эта страница пока недоступна на английском языке": "This page is not available in English yet",
+  "Редакция готовит проверенный перевод. Русский оригинал не выдаётся за английскую версию.":
+    "The editorial team is preparing a reviewed translation. The Russian original is never presented as English.",
+  Обновлено: "Updated",
+  "Литературная экосистема, где страна, автор, книга и статья связаны.":
+    "A literary ecosystem connecting countries, writers, books and articles.",
+  "Вернуться на главную": "Return home",
+  "Объявление редакции": "Editorial announcement",
+  Подробнее: "Learn more",
+  Дополнительно: "More",
+  "Социальные сети": "Social media",
+  "адрес ожидает подключения": "link not configured",
+  "Укажите адрес вашей страницы Boosty": "Add the URL of your Boosty page",
+  "ВКонтакте": "VK",
+  Дзен: "Dzen",
+  Одноклассники: "Odnoklassniki",
+  "Проверенный английский перевод справки о стране ещё готовится.":
+    "A reviewed English translation of this country profile is being prepared.",
+  "Тексты без проверенного перевода скрыты в английской версии.":
+    "Text without a reviewed translation is hidden in the English version.",
+  "Проверенный английский перевод биографии ещё готовится.":
+    "A reviewed English translation of this biography is being prepared.",
+  "Поделиться во ВКонтакте": "Share on VK",
+  "Поделиться в Telegram": "Share on Telegram",
+  "Поделиться в Одноклассниках": "Share on Odnoklassniki",
+  "Поделиться материалом": "Share this publication",
+  Поделиться: "Share",
+  "Ссылка скопирована": "Link copied",
+  "Копировать ссылку": "Copy link",
+  "Нет сети — доступны уже открытые материалы": "Offline — previously opened publications remain available",
+  "Доступна новая версия журнала": "A new version of the journal is available",
+  "Дата рождения": "Date of birth",
+  "Дата смерти": "Date of death",
+  Прожил: "Lived",
+  лет: "years",
+  "Период жизни": "Lifetime",
+  "Место рождения": "Place of birth",
+  "Место смерти": "Place of death",
+  Направление: "Movement",
+  "Литературная эпоха": "Literary period",
+  Языки: "Languages",
+  "Связанные авторы": "Related writers",
+  "Статьи на сайте ПРОБА ПЕРА": "Articles on PROBA PERA",
+  "Нобелевская премия по литературе": "Nobel Prize in Literature",
+  Биография: "Biography",
+  "Главные произведения": "Major works",
+  "Годы жизни": "Years lived",
+  "Информация уточняется": "Details are being verified",
+  "О писателе": "About the writer",
+  Произведения: "Works",
+  "Нет данных": "No data",
+  "Статьи ПРОБА ПЕРА": "PROBA PERA articles",
+  "Есть статья": "Article available",
+  Готовится: "In preparation",
+  "Писатель не найден": "Writer not found",
 };
+
+export type InterfaceTranslationAudit = {
+  registered: number;
+  missingRussian: string[];
+  missingEnglish: string[];
+};
+
+export function auditInterfaceTranslations(): InterfaceTranslationAudit {
+  const entries = Object.entries(englishInterfaceText);
+  return {
+    registered: entries.length,
+    missingRussian: entries
+      .filter(([russianText]) => !russianText.trim())
+      .map(([russianText]) => russianText),
+    missingEnglish: entries
+      .filter(([, englishText]) => !englishText.trim())
+      .map(([russianText]) => russianText),
+  };
+}
+
+export function assertInterfaceTranslationsComplete() {
+  const audit = auditInterfaceTranslations();
+  if (!audit.missingRussian.length && !audit.missingEnglish.length) return audit;
+  throw new Error(
+    `Incomplete interface translations: ${[
+      ...audit.missingRussian.map((text) => `missing Russian key: ${text}`),
+      ...audit.missingEnglish.map((text) => `missing English text: ${text}`),
+    ].join(", ")}`
+  );
+}
+
+export function hasInterfaceTranslation(russianText: string) {
+  return Object.prototype.hasOwnProperty.call(englishInterfaceText, russianText);
+}
+
+function registeredEnglishText(russianText: string) {
+  if (!hasInterfaceTranslation(russianText)) return null;
+  const englishText = englishInterfaceText[russianText];
+  if (!englishText.trim()) {
+    throw new Error(`Missing English interface translation for: ${russianText}`);
+  }
+  return englishText;
+}
+
+assertInterfaceTranslationsComplete();
 
 function isInterfaceLanguage(value: unknown): value is InterfaceLanguage {
   return value === "ru" || value === "en";
 }
 
+export function resolveInitialInterfaceLanguage(
+  storedLanguage: unknown,
+  routeLanguage: unknown
+): InterfaceLanguage {
+  if (isInterfaceLanguage(routeLanguage)) return routeLanguage;
+  return isInterfaceLanguage(storedLanguage) ? storedLanguage : "ru";
+}
+
 function initialLanguage(): InterfaceLanguage {
   if (typeof window === "undefined") return "ru";
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return isInterfaceLanguage(stored) ? stored : "ru";
+  return resolveInitialInterfaceLanguage(
+    window.localStorage.getItem(STORAGE_KEY),
+    document.documentElement.dataset.routeLanguage
+  );
 }
 
 function applyLanguage(language: InterfaceLanguage) {
@@ -538,10 +1073,10 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
   }, []);
 
   const t = useCallback(
-    (russianText: string) =>
-      language === "en"
-        ? englishInterfaceText[russianText] || russianText
-        : russianText,
+    (russianText: string) => {
+      if (language === "ru") return russianText;
+      return registeredEnglishText(russianText) ?? russianText;
+    },
     [language]
   );
 
@@ -597,7 +1132,6 @@ export function translateInterfaceText(
   russianText: string,
   language: InterfaceLanguage
 ) {
-  return language === "en"
-    ? englishInterfaceText[russianText] || russianText
-    : russianText;
+  if (language === "ru") return russianText;
+  return registeredEnglishText(russianText) ?? russianText;
 }

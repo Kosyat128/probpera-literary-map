@@ -29,6 +29,30 @@ const seriesLabels: Record<string, string> = {
   standalone: "Отдельные редакционные материалы",
 };
 
+const englishSeriesLabels: Record<string, string> = {
+  "nobel-prize": "Nobel Prize laureates",
+  famous_prizes: "Stories of literary prizes",
+  "page-books": "Book opinion",
+  folklore: "World folklore and mythology",
+  "page-bookvsmovie": "Book and screen adaptation",
+  topstories: "Stories from the literary world",
+  "page-writers-world": "World literary map",
+  topbooks: "Best books and reading lists",
+  "unrecognized-writers": "Unrecognized in their lifetime",
+  "top-books-page-turners": "Page-turners",
+  first_profession_writers: "Writers' professions",
+  "luchshie-ekranizacii-bestsellerov-21-veka":
+    "21st-century bestseller adaptations",
+  "sucsessful-cinema-adaptation": "Successful adaptations of classics",
+  "different-staff": "Literary facts and phenomena",
+  "krilatie-virageniya": "Famous expressions",
+  "luchshie-bestselleri-21-veka": "21st-century bestsellers",
+  "knigniy-gid": "Book guide",
+  "luchshie-knigi-pisateley": "Best books by authors",
+  cms: "New editorial publications",
+  standalone: "Standalone editorial publications",
+};
+
 export function articleSeriesId(article: ArticleSeriesSource) {
   if (article.source === "cms") return "cms";
   const source = article.legacyPath || article.url || "";
@@ -43,7 +67,8 @@ export function articleSeriesId(article: ArticleSeriesSource) {
 
 export function articleSeriesLabel(
   seriesId: string,
-  fallback = "Редакционные материалы"
+  fallback = "Редакционные материалы",
+  locale: "ru" | "en" = "ru"
 ) {
-  return seriesLabels[seriesId] || fallback;
+  return (locale === "en" ? englishSeriesLabels : seriesLabels)[seriesId] || fallback;
 }

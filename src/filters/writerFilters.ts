@@ -1,4 +1,5 @@
 import type { Country, WriterProfile } from "../data/countries/types";
+import { writerBiographyText } from "../data/writerBiography";
 import type { WriterFilterState } from "./filterTypes";
 
 export function getAllWriters(countries: Country[]): WriterProfile[] {
@@ -28,7 +29,8 @@ export function filterWriters(
         ...(writer.tags || []),
         ...(writer.awards || []),
         ...(writer.works || []),
-        writer.bio,
+        writerBiographyText(writer, "ru"),
+        writerBiographyText(writer, "en"),
       ]
         .filter(Boolean)
         .join(" ")

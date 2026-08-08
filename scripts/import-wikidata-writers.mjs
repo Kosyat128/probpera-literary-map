@@ -7,8 +7,12 @@ const projectRoot = path.resolve(scriptDirectory, "..");
 const countriesDirectory = path.join(projectRoot, "src", "data", "countries");
 const generatedDirectory = path.join(countriesDirectory, "generated");
 const cacheDirectory = path.join(scriptDirectory, ".cache", "wikidata-writers");
-const outputPath = path.join(generatedDirectory, "writers.generated.json");
-const metadataPath = path.join(generatedDirectory, "metadata.generated.json");
+const outputPath = path.join(generatedDirectory, "writers.candidates.json");
+const metadataPath = path.join(
+  generatedDirectory,
+  "writers.candidates.metadata.json"
+);
+const apply = process.argv.includes("--apply");
 const targetArgument = process.argv.find((argument) => argument.startsWith("--target="));
 const maxCountriesArgument = process.argv.find((argument) =>
   argument.startsWith("--max-countries=")
@@ -342,9 +346,9 @@ function writerFromEntity(entity, country) {
     birthDate: birthDate || undefined,
     deathDate: deathDate || undefined,
     country: country.name,
-    biography:
-      description ||
-      `${fullName} — автор, связанный с литературной традицией страны «${country.name}».`,
+    // A Wikidata description helps classify a candidate, but it is not a
+    // biography and must never be copied into a visitor-facing prose field.
+    sourceDescriptionCandidate: description || undefined,
     works: [],
     tags: ["Справочный каталог", "Редакционная очередь"],
     articleUrl: articleUrl || undefined,
@@ -352,6 +356,8 @@ function writerFromEntity(entity, country) {
     sourceUrl: `https://www.wikidata.org/wiki/${wikidataId}`,
     portraitCandidateUrl: candidatePortrait || undefined,
     portraitRightsStatus: candidatePortrait ? "review-required" : undefined,
+    candidateOnly: true,
+    candidateStatus: "review-required",
     sitelinks: Object.keys(entity.sitelinks || {}).length,
     occupationIds,
     editorial: {
@@ -380,9 +386,10 @@ function isLiteraryCandidate(writer) {
   );
   if (!hasNarrowLiteraryOccupation && !hasBroadWriterOccupation) return false;
 
-  const literaryMatch = literaryDescriptionPattern.exec(writer.biography);
+  const sourceDescription = writer.sourceDescriptionCandidate || "";
+  const literaryMatch = literaryDescriptionPattern.exec(sourceDescription);
   if (!literaryMatch) return false;
-  const nonLiteraryMatch = nonLiteraryProfessionPattern.exec(writer.biography);
+  const nonLiteraryMatch = nonLiteraryProfessionPattern.exec(sourceDescription);
 
   // A writer may also be a musician, historian or public figure. Keep the
   // record only when the source describes the literary identity first.
@@ -425,25 +432,32 @@ async function main() {
   console.log(
     `Curated country archive: ${curatedCount} writers in ${allCountries.length} countries.`
   );
-  console.log(`Target: ${targetCount}; verified candidates needed: ${needed}.`);
+  console.log(`Target: ${targetCount}; staging candidates needed: ${needed}.`);
 
   if (needed === 0) {
-    await writeFile(outputPath, "{}\n", "utf8");
-    await writeFile(
-      metadataPath,
-      `${JSON.stringify(
-        {
-          records: 0,
-          draftCount: 0,
-          curatedCount,
-          targetCount,
-          finalCount: curatedCount,
-          generatedAt: new Date().toISOString(),
-        },
-        null,
-        2
-      )}\n`,
-      "utf8"
+    if (apply) {
+      await writeFile(outputPath, "{}\n", "utf8");
+      await writeFile(
+        metadataPath,
+        `${JSON.stringify(
+          {
+            records: 0,
+            candidateCount: 0,
+            curatedCount,
+            targetCount,
+            publicRecordsAdded: 0,
+            generatedAt: new Date().toISOString(),
+          },
+          null,
+          2
+        )}\n`,
+        "utf8"
+      );
+    }
+    console.log(
+      apply
+        ? `Staging queue cleared at ${outputPath}.`
+        : "Dry run: no staging files changed."
     );
     return;
   }
@@ -515,26 +529,30 @@ async function main() {
     );
   }
 
-  await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  await writeFile(
-    metadataPath,
-    `${JSON.stringify(
-      {
-        records: selectedCount,
-        draftCount: selectedCount,
-        curatedCount,
-        targetCount,
-        finalCount: curatedCount + selectedCount,
-        generatedAt: new Date().toISOString(),
-      },
-      null,
-      2
-    )}\n`,
-    "utf8"
-  );
-  console.log(`Generated ${selectedCount} country-linked writer records.`);
-  console.log(`Final archive size: ${curatedCount + selectedCount}.`);
-  console.log(`Saved to ${outputPath}.`);
+  if (apply) {
+    await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+    await writeFile(
+      metadataPath,
+      `${JSON.stringify(
+        {
+          records: selectedCount,
+          candidateCount: selectedCount,
+          curatedCount,
+          targetCount,
+          publicRecordsAdded: 0,
+          generatedAt: new Date().toISOString(),
+        },
+        null,
+        2
+      )}\n`,
+      "utf8"
+    );
+    console.log(`Saved ${selectedCount} candidate-only records to ${outputPath}.`);
+  } else {
+    console.log(`Dry run found ${selectedCount} candidate-only records.`);
+    console.log("No public or staging files changed; pass --apply to save the queue.");
+  }
+  console.log("Public archive records added: 0.");
 }
 
 await main();

@@ -65,6 +65,18 @@ const categoryRouteSlugs = {
   "author-stories": "literaturnye-istorii",
 };
 
+const categoryEnglishLabels = {
+  "book-opinions": "Book reviews",
+  "screen-adaptations": "Books and screen adaptations",
+  "writers-world": "Writers of the world",
+  "book-guides": "Book guides",
+  awards: "Literary awards",
+  folklore: "Folklore and mythology",
+  language: "Language",
+  "literary-essays": "Literature and culture",
+  "author-stories": "Literary stories",
+};
+
 function queryString(values) {
   const params = new URLSearchParams();
   Object.entries(values).forEach(([key, value]) => {
@@ -171,7 +183,7 @@ function imageAltLooksTechnical(value = "") {
   );
 }
 
-function prepareArticleDocument(contentHtml, articleTitle = "") {
+function prepareArticleDocument(contentHtml, articleTitle = "", locale = "ru") {
   const $ = load(`<main id="cms-article-root">${contentHtml || ""}</main>`, {
     decodeEntities: false,
   });
@@ -237,9 +249,13 @@ function prepareArticleDocument(contentHtml, articleTitle = "") {
         .trim();
       image.attr(
         "alt",
-        sectionTitle
-          ? `Иллюстрация к разделу «${sectionTitle}»`
-          : `Иллюстрация ${index + 1} к статье «${articleTitle}»`
+        locale === "en"
+          ? sectionTitle
+            ? `Illustration for the section "${sectionTitle}"`
+            : `Illustration ${index + 1} for the article "${articleTitle}"`
+          : sectionTitle
+            ? `Иллюстрация к разделу «${sectionTitle}»`
+            : `Иллюстрация ${index + 1} к статье «${articleTitle}»`
       );
     }
     if (!image.attr("loading")) image.attr("loading", "lazy");
@@ -269,6 +285,17 @@ function publicationLabel(value) {
   return `Опубликовано: ${formatted}`;
 }
 
+function englishPublicationLabel(value) {
+  const date = value ? new Date(value) : new Date();
+  const formatted = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Moscow",
+  }).format(date);
+  return `Published: ${formatted}`;
+}
+
 function articleSectionSlug(categorySlug) {
   return categoryRouteSlugs[categorySlug || ""] || "materialy";
 }
@@ -294,6 +321,7 @@ export const ${variableName} = ${JSON.stringify(value, null, 2)} as const;
 
 const [
   rawArticles,
+  rawArticleTranslations,
   mediaAssets,
   rawHomepageBlocks,
   rawBanners,
@@ -310,6 +338,14 @@ const [
     status: "eq.published",
     deleted_at: "is.null",
     order: "pinned.desc,featured.desc,published_at.desc",
+  }),
+  fetchOptionalRows("article_translations", {
+    select:
+      "article_id,locale,title,subtitle,excerpt,content_html,cover_alt,slug,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,status,source_content_hash,source_article_updated_at,approved_at,published_at,updated_at",
+    locale: "eq.en",
+    status: "in.(approved,published)",
+    deleted_at: "is.null",
+    order: "updated_at.desc",
   }),
   fetchRows("media_assets", {
     select:
@@ -367,6 +403,16 @@ const [
 ]);
 
 const mediaLookup = new Map(mediaAssets.map((media) => [media.id, media]));
+const englishTranslationByArticleId = new Map();
+rawArticleTranslations.forEach((translation) => {
+  if (
+    !englishTranslationByArticleId.has(translation.article_id) &&
+    String(translation.title || "").trim() &&
+    String(translation.content_html || "").trim()
+  ) {
+    englishTranslationByArticleId.set(translation.article_id, translation);
+  }
+});
 const articleDocuments = [];
 
 const articles = rawArticles.map((rawArticle) => {
@@ -391,6 +437,59 @@ const articles = rawArticles.map((rawArticle) => {
     article.excerpt ||
     article.subtitle ||
     document.plainText.slice(0, 320);
+  const englishTranslation = englishTranslationByArticleId.get(article.id);
+  const englishDocument = englishTranslation
+    ? prepareArticleDocument(
+        englishTranslation.content_html,
+        englishTranslation.title,
+        "en"
+      )
+    : null;
+  const englishWordCount = englishDocument?.plainText
+    ? englishDocument.plainText.split(/\s+/gu).length
+    : 0;
+  const englishDescription = englishTranslation
+    ? englishTranslation.excerpt ||
+      englishTranslation.subtitle ||
+      englishDocument?.plainText.slice(0, 320) ||
+      ""
+    : "";
+  const englishEntry = englishTranslation
+    ? {
+        locale: "en",
+        title: englishTranslation.title,
+        description: englishDescription,
+        imageAlt: imageAltLooksTechnical(englishTranslation.cover_alt)
+          ? `Illustration for the article "${englishTranslation.title}"`
+          : englishTranslation.cover_alt,
+        sectionLabel: categoryEnglishLabels[sectionId] || "Article",
+        publishedLabel: englishPublicationLabel(article.published_at),
+        publishedAt: article.published_at,
+        readingMinutes: Math.max(1, Math.ceil(englishWordCount / 180)),
+        wordCount: englishWordCount,
+        headingCount: englishDocument?.headings.length || 0,
+        slug: englishTranslation.slug,
+        seoTitle: englishTranslation.seo_title || englishTranslation.title,
+        seoDescription:
+          englishTranslation.seo_description || englishDescription,
+        seoKeywords: englishTranslation.seo_keywords || [],
+        canonicalUrl: englishTranslation.canonical_url || null,
+        ogTitle:
+          englishTranslation.og_title ||
+          englishTranslation.seo_title ||
+          englishTranslation.title,
+        ogDescription:
+          englishTranslation.og_description ||
+          englishTranslation.seo_description ||
+          englishDescription,
+        translationStatus: englishTranslation.status,
+        sourceContentHash: englishTranslation.source_content_hash || null,
+        sourceArticleUpdatedAt:
+          englishTranslation.source_article_updated_at || null,
+        approvedAt: englishTranslation.approved_at || null,
+        translationPublishedAt: englishTranslation.published_at || null,
+      }
+    : null;
   const entry = {
     id,
     source: "cms",
@@ -425,6 +524,7 @@ const articles = rawArticles.map((rawArticle) => {
       article.og_description || article.seo_description || description,
     ogImageUrl,
     allowIndexing: article.allow_indexing !== false,
+    translations: englishEntry ? { en: englishEntry } : undefined,
   };
   articleDocuments.push({
     path: path.join(publicCmsArticlesDirectory, `${id}.json`),
@@ -433,6 +533,17 @@ const articles = rawArticles.map((rawArticle) => {
       ...document,
       sources: article.sources || [],
       bibliography: article.bibliography || [],
+      translations:
+        englishEntry && englishDocument
+          ? {
+              en: {
+                ...englishEntry,
+                ...englishDocument,
+                sources: englishTranslation.sources || [],
+                bibliography: englishTranslation.bibliography || [],
+              },
+            }
+          : undefined,
     },
   });
   return entry;

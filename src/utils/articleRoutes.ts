@@ -82,12 +82,24 @@ export function articlePath(
   )}`;
 }
 
+export function isDirectArticlePath(pathname: string) {
+  return /\/(?:stati|articles)\//iu.test(pathname);
+}
+
 export function articleIdFromPath(
   catalog: Array<{
     id: string;
     title: string;
     sectionId?: string;
     slug?: string;
+    sourceSlug?: string;
+    translations?: Readonly<{
+      en?: {
+        title: string;
+        slug?: string;
+        translationStatus?: string;
+      };
+    }>;
   }>,
   pathname = window.location.pathname
 ) {
@@ -101,13 +113,22 @@ export function articleIdFromPath(
     );
   if (!match) return null;
   const routeSegment = decodeURIComponent(match[1]);
-  const article = catalog.find(
-    (item) =>
+  const article = catalog.find((item) => {
+    const englishTranslation = item.translations?.en;
+    const englishIsReleased =
+      englishTranslation?.translationStatus === "approved" ||
+      englishTranslation?.translationStatus === "published";
+    return (
       item.id === routeSegment ||
       item.slug === routeSegment ||
+      item.sourceSlug === routeSegment ||
       articleSeoSlug(item.id, item.title) === routeSegment ||
-      legacyArticleSeoSlug(item.id, item.title) === routeSegment
-  );
+      legacyArticleSeoSlug(item.id, item.title) === routeSegment ||
+      (englishIsReleased &&
+        (englishTranslation.slug === routeSegment ||
+          articleSeoSlug(item.id, englishTranslation.title) === routeSegment))
+    );
+  });
   return article?.id || null;
 }
 

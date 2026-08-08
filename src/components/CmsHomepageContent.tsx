@@ -4,8 +4,10 @@ import {
   articleCatalog,
   type ArticleCatalogEntry,
 } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { cmsSiteContent } from "../data/cms/site.generated";
 import { articlePath, journalPath } from "../utils/articleRoutes";
+import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 
 type HomepageBlock = {
@@ -66,7 +68,11 @@ function selectBlockArticles(block: HomepageBlock) {
 }
 
 function ArticleBlock({ block }: { block: HomepageBlock }) {
-  const articles = selectBlockArticles(block);
+  const { language, t } = useInterfaceLanguage();
+  const articles = selectBlockArticles(block).flatMap((article) => {
+    const localized = articleCatalogEntryForLanguage(article, language);
+    return localized ? [localized] : [];
+  });
   if (!articles.length) return null;
   return (
     <section
@@ -81,10 +87,14 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
     >
       <header>
         <div>
-          <span className="section-kicker">Выбор редакции</span>
-          <h2>{block.title || "Новые публикации"}</h2>
+          <span className="section-kicker">{t("Выбор редакции")}</span>
+          <h2>
+            {language === "ru" && block.title
+              ? block.title
+              : t("Новые публикации")}
+          </h2>
         </div>
-        <a href={journalPath()}>Весь журнал →</a>
+        <a href={journalPath()}>{t("Весь журнал")} →</a>
       </header>
       <div className={block.type === "carousel" ? "is-carousel" : ""}>
         {articles.map((article) => (
@@ -101,7 +111,7 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
               <span>{article.sectionLabel}</span>
               <h3>{article.title}</h3>
               <p>{article.description}</p>
-              <small>{article.readingMinutes} мин. чтения</small>
+              <small>{article.readingMinutes} {t("мин. чтения")}</small>
             </a>
           </article>
         ))}
@@ -111,10 +121,12 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
 }
 
 function TextBlock({ block }: { block: HomepageBlock }) {
+  const { language, t } = useInterfaceLanguage();
   const html = settingText(block.settings, "html");
   const copy =
     settingText(block.settings, "copy") ||
     settingText(block.settings, "description");
+  if (language === "en") return null;
   return (
     <section
       className={`cms-home-block cms-home-text is-${block.backgroundStyle}`}
@@ -127,7 +139,7 @@ function TextBlock({ block }: { block: HomepageBlock }) {
       }
     >
       <span className="section-kicker">
-        {settingText(block.settings, "eyebrow") || "Проба Пера"}
+        {settingText(block.settings, "eyebrow") || t("Проба Пера")}
       </span>
       <h2>{block.title}</h2>
       {html ? (
@@ -147,11 +159,14 @@ function TextBlock({ block }: { block: HomepageBlock }) {
 }
 
 function CategoryBlock({ block }: { block: HomepageBlock }) {
+  const { language, t, number } = useInterfaceLanguage();
   const sections = new Map<string, { label: string; count: number }>();
   articleCatalog.forEach((article) => {
-    const current = sections.get(article.sectionId);
-    sections.set(article.sectionId, {
-      label: article.sectionLabel,
+    const localized = articleCatalogEntryForLanguage(article, language);
+    if (!localized) return;
+    const current = sections.get(localized.sectionId);
+    sections.set(localized.sectionId, {
+      label: localized.sectionLabel,
       count: (current?.count || 0) + 1,
     });
   });
@@ -160,14 +175,18 @@ function CategoryBlock({ block }: { block: HomepageBlock }) {
       className={`cms-home-block cms-home-categories is-${block.backgroundStyle}`}
     >
       <header>
-        <span className="section-kicker">Навигация по журналу</span>
-        <h2>{block.title || "Темы и разделы"}</h2>
+        <span className="section-kicker">{t("Навигация по журналу")}</span>
+        <h2>
+          {language === "ru" && block.title
+            ? block.title
+            : t("Темы и разделы")}
+        </h2>
       </header>
       <div>
         {[...sections.entries()].map(([id, section]) => (
           <a href={journalPath(id)} key={id}>
             <strong>{section.label}</strong>
-            <span>{section.count}</span>
+            <span>{number(section.count)}</span>
           </a>
         ))}
       </div>
@@ -176,6 +195,7 @@ function CategoryBlock({ block }: { block: HomepageBlock }) {
 }
 
 function CalloutBlock({ block }: { block: HomepageBlock }) {
+  const { language, t } = useInterfaceLanguage();
   const copy =
     settingText(block.settings, "copy") ||
     settingText(block.settings, "description");
@@ -185,21 +205,23 @@ function CalloutBlock({ block }: { block: HomepageBlock }) {
       : block.type === "awards"
         ? journalPath("awards")
         : "#journal";
+  if (language === "en") return null;
   return (
     <section
       className={`cms-home-block cms-home-callout is-${block.backgroundStyle}`}
     >
-      <span className="section-kicker">Специальный проект</span>
+      <span className="section-kicker">{t("Специальный проект")}</span>
       <h2>{block.title}</h2>
       {copy && <p>{copy}</p>}
       <a href={safeHref(block.settings.buttonUrl, defaultTarget)}>
-        {settingText(block.settings, "buttonText") || "Открыть"} →
+        {settingText(block.settings, "buttonText") || t("Открыть")} →
       </a>
     </section>
   );
 }
 
 export function CmsHomepageBlocks() {
+  const { t } = useInterfaceLanguage();
   const blocks = [
     ...(cmsSiteContent.homepageBlocks as readonly HomepageBlock[]),
   ]
@@ -210,7 +232,7 @@ export function CmsHomepageBlocks() {
   if (!blocks.length) return null;
 
   return (
-    <div className="cms-homepage-region" aria-label="Редакционные блоки">
+    <div className="cms-homepage-region" aria-label={t("Редакционные блоки")}>
       {blocks.map((block) => {
         if (
           [

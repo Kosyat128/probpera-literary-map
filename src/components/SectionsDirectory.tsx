@@ -1,6 +1,7 @@
 import { useMemo, type CSSProperties, type MouseEvent } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
+import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   articlePath,
@@ -54,6 +55,20 @@ function publicationLabel(count: number) {
   return `${count} ${form}`;
 }
 
+function workLabel(count: number) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+  const form =
+    lastTwo >= 11 && lastTwo <= 14
+      ? "произведений"
+      : last === 1
+        ? "произведение"
+        : last >= 2 && last <= 4
+          ? "произведения"
+          : "произведений";
+  return `${count} ${form} в архиве`;
+}
+
 const russianMonths: Record<string, number> = {
   ЯНВАРЯ: 0,
   ФЕВРАЛЯ: 1,
@@ -88,19 +103,27 @@ export default function SectionsDirectory({
   const { language, t, number } = useInterfaceLanguage();
   const sectionCards = useMemo(() => {
     const usedRecommendations = new Set<string>();
+    const localizedCatalog = articleCatalog.flatMap((article) => {
+      const localized = articleCatalogEntryForLanguage(article, language);
+      return localized ? [localized] : [];
+    });
 
     return sections.map((section) => {
       const articleSectionIds = section.articleSections || [section.id];
       const publications =
         section.metric === "all-articles"
-          ? articleCatalog
-          : articleCatalog.filter((article) =>
+          ? localizedCatalog
+          : localizedCatalog.filter((article) =>
               articleSectionIds.includes(article.sectionId)
             );
       const sorted = [...publications].sort(
         (first, second) =>
-          publicationTime(second.publishedLabel) -
-          publicationTime(first.publishedLabel)
+          (second.publishedAt
+            ? new Date(second.publishedAt).getTime()
+            : publicationTime(second.publishedLabel)) -
+          (first.publishedAt
+            ? new Date(first.publishedAt).getTime()
+            : publicationTime(first.publishedLabel))
       );
       const latest =
         sorted.find((article) => !usedRecommendations.has(article.id)) ||
@@ -125,7 +148,7 @@ export default function SectionsDirectory({
             ];
       return { section, publications, latest, series };
     });
-  }, [sections]);
+  }, [language, sections]);
 
   return (
     <div className="sections-directory-grid">
@@ -137,8 +160,8 @@ export default function SectionsDirectory({
               : `${number(countryCount)} стран`
             : section.id === "books"
               ? language === "en"
-                ? `${number(bookCount)} books and works`
-                : `${number(bookCount)} книг и произведений`
+                ? `${number(bookCount)} works in the archive`
+                : workLabel(bookCount)
               : section.id === "calendar"
                 ? t("События на каждый день")
                 : section.metric === "writers"
