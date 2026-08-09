@@ -61,10 +61,10 @@ export const bahrain: Country = {
       name: "Али Абдулла Халифа",
       fullName: "Ali Abdullah Khalifa",
 
-      years: "1944–",
+      years: "1944–2026",
 
-      birthDate: "1944",
-      deathDate: "",
+      birthDate: "1944-03-04",
+      deathDate: "2026-06-22",
 
       birthPlace: "Бахрейн",
 

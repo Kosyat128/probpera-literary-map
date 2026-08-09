@@ -52,7 +52,7 @@ export function getCoreHomepageSection(
     if (settings.coreSectionKey !== key) continue;
     return {
       key,
-      title: textValue(block.title),
+      title: key === "atlas" ? "Литературная планета" : textValue(block.title),
       eyebrow: textValue(settings.eyebrow),
       description:
         textValue(settings.description) || textValue(settings.copy),

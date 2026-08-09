@@ -455,6 +455,7 @@ export default function GlobalSearch({
                   >
                     <span>
                       <CountryFlagIcon
+                        className="global-search-country-flag country-flag-icon--round"
                         code={country.code}
                         countryName={country.name}
                         size={28}

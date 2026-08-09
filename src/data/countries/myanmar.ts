@@ -174,7 +174,7 @@ export const myanmar: Country = {
 
       years: "1917–1982",
 
-      birthDate: "1917-04-06",
+      birthDate: "1917-04-13",
 
       deathDate: "1982-04-06",
 

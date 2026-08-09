@@ -1,0 +1,634 @@
+{
+  "batch": "12",
+  "generatedAt": "2026-08-09",
+  "summary": {
+    "records": 20,
+    "unchanged": 10,
+    "corrected": 8,
+    "held": 2
+  },
+  "records": [
+    {
+      "key": "austria:thomas_bernhard",
+      "originalSha256": "bc539a269c4c956306e7eda11cd769a6637f28fd826cc8c596e89a55c0922ed1",
+      "reviewedTextRu": "Австрийский писатель и драматург XX века.",
+      "claims": [
+        {
+          "textRu": "Томас Бернхард был австрийским писателем и драматургом XX века.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://arc.onb.ac.at/bibliothek/sammlungen/literatur/bestaende/personen/bernhard-thomas-1931-1989",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архивная страница фиксирует годы жизни 1931–1989 и литературную работу Бернхарда в прозе и драматургии."
+            },
+            {
+              "provider": "Австрийское национальное туристическое ведомство",
+              "url": "https://www.austria.info/en-us/profiles/thomas-bernhard/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль Австрии называет Бернхарда писателем и автором романов, пьес и рассказов и подтверждает даты 9 февраля 1931 года — 12 февраля 1989 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходный текст полностью подтверждён. Identity audit однозначно соответствует Томасу Бернхарду. Рекомендация — сохранить birthDate 1931-02-09 и deathDate 1989-02-12: точные даты подтверждены двумя австрийскими институциональными источниками. Shared country files не изменялись.",
+      "applicableTextRu": "Австрийский писатель и драматург XX века."
+    },
+    {
+      "key": "azerbaijan:chingiz_abdullayev",
+      "originalSha256": "ad67fb5f311f3e8d728016d1b70aa7aa2f9c513f131abc2915d36a806955b63f",
+      "reviewedTextRu": "Современный азербайджанский писатель, автор многочисленных детективных романов.",
+      "claims": [
+        {
+          "textRu": "Чингиз Абдуллаев — современный азербайджанский писатель, опубликовавший многочисленные детективные романы.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Союз писателей Азербайджана",
+              "url": "https://www.ayb.az/index.php/4xeber/2857-%C3%A7ingiz-abdullayev-55.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль Союза писателей характеризует Абдуллаева как азербайджанского прозаика и автора большого числа произведений детективного жанра и подтверждает дату рождения 7 апреля 1959 года."
+            },
+            {
+              "provider": "Азербайджанская национальная библиотека",
+              "url": "https://www.anl.az/down/meqale/elmi_inkisaf/2019/01/683273%28meqale%29.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Материал Национальной библиотеки рассматривает творчество Чингиза Абдуллаева в азербайджанской детективной прозе и подтверждает его библиографию."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходная формулировка подтверждена без оценочного ранжирования. Identity audit corroborated. Рекомендация — сохранить birthDate 1959-04-07; обе институциональные публикации подтверждают дату. Shared country files не изменялись.",
+      "applicableTextRu": "Современный азербайджанский писатель, автор многочисленных детективных романов."
+    },
+    {
+      "key": "azerbaijan:mirza_alakbar_sabir",
+      "originalSha256": "71b8cc7c729b97749639c68d1098545e7c60dbbd798110a1d7e0ec122bdb531a",
+      "reviewedTextRu": "Азербайджанский поэт-сатирик и педагог, автор сборника «Хопхопнаме». В 1906–1911 годах публиковал сатирические стихи в журнале «Молла Насреддин».",
+      "claims": [
+        {
+          "textRu": "Недоказанный сравнительный ранг заменён подтверждёнными занятиями Сабира, сборником «Хопхопнаме» и его публикациями в журнале «Молла Насреддин».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Дом-музей Мирзы Алекпера Сабира",
+              "url": "https://sabirmuseum.az/en/life-and-activities/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музейная биография называет Сабира азербайджанским поэтом-сатириком и педагогом, связывает его с Hophopname и публикациями в Molla Nasraddin в 1906–1911 годах."
+            },
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/en/historical/page/P9fqhJ6",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография подтверждает сатирическую поэзию, преподавание, работу с журналом Molla Nasraddin, сборник Hophopnama и даты жизни 30 мая 1862 года — 12 июля 1911 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Суперлатив и неподтверждённая сравнительная формула сняты. Identity audit соответствует Мирзе Алекперу Сабиру. Рекомендация — сохранить birthDate 1862-05-30 и deathDate 1911-07-12; даты подтверждены Президентской библиотекой. Shared country files не изменялись.",
+      "applicableTextRu": "Азербайджанский поэт-сатирик и педагог, автор сборника «Хопхопнаме». В 1906–1911 годах публиковал сатирические стихи в журнале «Молла Насреддин»."
+    },
+    {
+      "key": "azerbaijan:muhammad_fuzuli",
+      "originalSha256": "e02c5d2352db72be8756ac965fe08520b0e9b6d60758c6b7468cb4944bab2abd",
+      "reviewedTextRu": "Азербайджанский поэт и мыслитель XVI века, представитель диванной поэзии. Его лирическое наследие включает газели, касыды и рубаи.",
+      "claims": [
+        {
+          "textRu": "Недоказанный сравнительный ранг заменён установленной ролью Физули в диванной поэзии и конкретными жанрами его лирики.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/en/eprojects/muhammadfuzuli",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный проект представляет Мухаммеда Физули как азербайджанского поэта и мыслителя XVI века и документирует его диванное наследие."
+            },
+            {
+              "provider": "UNESCO Memory of the World — номинационное досье НАН Азербайджана",
+              "url": "https://media.unesco.org/sites/default/files/webform/mow001/azerbaijan_fuzuli_eng.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Досье UNESCO, подготовленное Национальной академией наук Азербайджана, описывает Физули как азербайджанского поэта диванной традиции и перечисляет газели, касыды и рубаи в его наследии."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Суперлатив снят; национально-литературная принадлежность и жанры подтверждены институционально. Identity registry требует отдельного QID review. Доказанная рекомендация: заменить placeholder birthDate 1483-01-01 на годовой 1494 и deathDate 1556-01-01 на годовой 1556; UNESCO и Президентская библиотека не подтверждают фиктивную точность 1 января. Shared country files не изменялись.",
+      "applicableTextRu": "Азербайджанский поэт и мыслитель XVI века, представитель диванной поэзии. Его лирическое наследие включает газели, касыды и рубаи."
+    },
+    {
+      "key": "bahamas:cyril_bray",
+      "originalSha256": "cfa621c0f890a901232af0c1d84b69bc8bd19738791d6f706190057865f3bb22",
+      "reviewedTextRu": "Заявленная карточкой идентичность багамского писателя Сирила Д. Б. Брея не установлена по доступным авторитетным каталогам.",
+      "claims": [
+        {
+          "textRu": "Личность Сирила Д. Б. Брея как багамского писателя не удалось установить; исходные роли и тематические характеристики нельзя публиковать как факт.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Library of Congress Online Catalog",
+              "url": "https://catalog.loc.gov/vwebv/search?searchArg=Cyril+Bray&searchCode=GKEY%5E*&searchType=0&recCount=25",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Поиск по точному имени не выявил авторитетной записи, которую можно надёжно связать с заявленным багамским писателем."
+            },
+            {
+              "provider": "WorldCat — OCLC",
+              "url": "https://search.worldcat.org/search?q=%22Cyril%20Bray%22%20Bahamas",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиографический поиск по имени и стране не выявил изданий или authority identity, подтверждающих исходную карточку."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "held",
+      "notes": "Held: отсутствие совпадений в двух каталогах само по себе не доказывает несуществование автора, поэтому текст не исправляется догадкой и не применяется публично. Identity registry: not-mapped; reliable staging identity отсутствует. Дат в карточке нет. Shared country files не изменялись.",
+      "applicableTextRu": null
+    },
+    {
+      "key": "bahamas:wallace_whitfield",
+      "originalSha256": "9ac684c7119567d7a3eac19d27194c360cbbd4744bc7a5f511d22ca10b17c4ce",
+      "reviewedTextRu": "Заявленная карточкой идентичность багамского писателя Уоллеса Уитфилда не установлена по доступным авторитетным каталогам.",
+      "claims": [
+        {
+          "textRu": "Личность Уоллеса Уитфилда как багамского писателя не установлена; исходные литературные роли и языковая характеристика не имеют достаточной опоры.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Library of Congress Online Catalog",
+              "url": "https://catalog.loc.gov/vwebv/search?searchArg=Wallace+Whitfield&searchCode=GKEY%5E*&searchType=0&recCount=25",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Поиск по точному имени не дал authority-записи, совместимой с заявленной идентичностью багамского писателя."
+            },
+            {
+              "provider": "WorldCat — OCLC",
+              "url": "https://search.worldcat.org/search?q=%22Wallace%20Whitfield%22%20Bahamas",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Поиск по имени и стране не выявил библиографического корпуса, подтверждающего заявленные занятия писателя и поэта."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "held",
+      "notes": "Held: доступные результаты смешивают имя с другими лицами, прежде всего с политическим деятелем Cecil Wallace-Whitfield; безопасное литературное identity не установлено. Identity registry: not-mapped. Дат в карточке нет. Shared country files не изменялись.",
+      "applicableTextRu": null
+    },
+    {
+      "key": "bahrain:ali_abdullah_khalifa",
+      "originalSha256": "6a02601390c4b0ff915c730455a05aa160e4090938e02e50c7d748dead6ee268",
+      "reviewedTextRu": "Бахрейнский поэт и исследователь народной культуры.",
+      "claims": [
+        {
+          "textRu": "Али Абдулла Халифа был бахрейнским поэтом и исследователем народной культуры.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Официальный сайт Али Абдуллы Халифы",
+              "url": "https://alikhalifa.com/the-poets-biography/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторская биография подтверждает занятия поэта и исследователя народной культуры и дату рождения 4 марта 1944 года."
+            },
+            {
+              "provider": "International Organization of Folk Art",
+              "url": "https://iov.world/chair/ali-abdullah-khalifa/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль международной организации называет Халифу бахрейнским поэтом, писателем и исследователем фольклора."
+            },
+            {
+              "provider": "Министерство информации Бахрейна — некролог в Al Ayam",
+              "url": "https://amp.alayam.com/online/local/1136855/amp.html?amp=1",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Опубликованный 22 июня 2026 года некролог министерства подтверждает смерть поэта и его работу в поэзии и исследовании культурного наследия."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходный текст подтверждён. Identity registry gap не мешает институционально установленной личности. Доказанная рекомендация: уточнить birthDate с 1944 до 1944-03-04 и добавить deathDate 2026-06-22; дата рождения дана авторским сайтом, смерть подтверждена некрологом Министерства информации Бахрейна. Shared country files не изменялись.",
+      "applicableTextRu": "Бахрейнский поэт и исследователь народной культуры."
+    },
+    {
+      "key": "bahrain:amin_saleh",
+      "originalSha256": "a5586b60483e0353ee4db3d74206e89ef8dc15d3f791b8e6909dc5c99d430ded",
+      "reviewedTextRu": "Бахрейнский писатель, сценарист, переводчик и кинокритик. Написал сюжет и сценарий первого полнометражного фильма Бахрейна «Барьер» (Al Hajiz).",
+      "claims": [
+        {
+          "textRu": "Неподтверждённая роль литературного критика заменена документированными занятиями кинокритика и сценариста и работой над фильмом Al Hajiz.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Michigan — Michigan Quarterly Review",
+              "url": "https://sites.lsa.umich.edu/mqr/author/amin-saleh/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский профиль называет Амина Салиха бахрейнским писателем, сценаристом, переводчиком и кинокритиком и подтверждает его работу над первым полнометражным фильмом страны."
+            },
+            {
+              "provider": "Sultan Bin Ali Al Owais Cultural Foundation",
+              "url": "https://www.alowais.com/en/amin-saleh/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль культурного фонда перечисляет литературную, переводческую, сценарную и кинокритическую работу Салиха и связывает его с фильмом Al Hajiz."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Роль уточнена с литературного до кинокритика; конкретная работа над фильмом подтверждена двумя источниками. Identity candidate требует отдельного registry review. Рекомендация — сохранить годовой birthDate 1949: University of Michigan подтверждает 1949, а независимого основания для точного дня нет. Shared country files не изменялись.",
+      "applicableTextRu": "Бахрейнский писатель, сценарист, переводчик и кинокритик. Написал сюжет и сценарий первого полнометражного фильма Бахрейна «Барьер» (Al Hajiz)."
+    },
+    {
+      "key": "bangladesh:jibanananda_das",
+      "originalSha256": "fa4ac0a70ecc29411993826f1283b7a2c37de1e08b4675dc2ca8e682885c5292",
+      "reviewedTextRu": "Бенгальский поэт и педагог, автор сборников «Баналата Сен» и «Прекрасная Бенгалия» (Rupasi Bangla). Его поэзия соединяет образы сельской Бенгалии с опытом современной городской жизни.",
+      "claims": [
+        {
+          "textRu": "Суперлатив и широкая оценка влияния заменены занятиями Джибанананды Даса, двумя сборниками и документированным соединением сельских и городских образов.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Banglapedia — Asiatic Society of Bangladesh",
+              "url": "https://en.banglapedia.org/index.php?title=Das%2C_Jibanananda",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия называет Даса поэтом и педагогом, перечисляет Banalata Sen и Rupasi Bangla и описывает сочетание сельской Бенгалии с современной городской жизнью."
+            },
+            {
+              "provider": "Teachers Portal — Government of Bangladesh",
+              "url": "https://teachers.gov.bd/content/details/812501?das-jibanananda=&page=710",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный образовательный портал подтверждает занятия поэта и преподавателя, книги Banalata Sen и Ruposi Bangla и переход от сельской традиции к реалиям современного города."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Недоказанный ранг снят; широкая формула влияния не перенесена. Identity audit corroborated. Рекомендация — сохранить birthDate 1899-02-17 и deathDate 1954-10-22; Banglapedia подтверждает обе даты. Shared country files не изменялись.",
+      "applicableTextRu": "Бенгальский поэт и педагог, автор сборников «Баналата Сен» и «Прекрасная Бенгалия» (Rupasi Bangla). Его поэзия соединяет образы сельской Бенгалии с опытом современной городской жизни."
+    },
+    {
+      "key": "bangladesh:selina_hossain",
+      "originalSha256": "32beffd5ea95a166e03a618fa22ef3cc986b6c62824f70550a04821fdfe863de",
+      "reviewedTextRu": "Бангладешская писательница, автор романов и рассказов о национальной истории и судьбах людей.",
+      "claims": [
+        {
+          "textRu": "Селина Хоссейн — бангладешская писательница, чьи романы и рассказы обращаются к национальной истории и человеческим судьбам.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Banglapedia — Asiatic Society of Bangladesh",
+              "url": "https://en.banglapedia.org/index.php/Women",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия связывает романы Селины Хоссейн с Освободительной войной, языковым движением 1952 года и историей Бенгалии до раздела 1947 года."
+            },
+            {
+              "provider": "Bangla Academy",
+              "url": "https://banglaacademy.gov.bd/pages/news/6922d95c933eb65569dfe6e9",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Материал национальной академии представляет Селину Хоссейн как автора художественной прозы и подтверждает её 75-летие 14 июня 2022 года."
+            },
+            {
+              "provider": "Bangla Academy — годовой отчёт",
+              "url": "https://banglaacademy.gov.bd/sites/default/files/files/banglaacademy.portal.gov.bd/annual_reports/4c8085bc_1f62_464c_867e_3e5acbd73a19/Barshik%20Protibadon-18-19.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский отчёт Академии фиксирует публикацию Selected Short Stories of Selina Hossain и других её книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходный краткий текст подтверждён. Identity audit corroborated. Рекомендация — сохранить birthDate 1947-06-14: 75-летие 14 июня 2022 года подтверждает точную дату. Shared country files не изменялись.",
+      "applicableTextRu": "Бангладешская писательница, автор романов и рассказов о национальной истории и судьбах людей."
+    },
+    {
+      "key": "bangladesh:tahmima_anam",
+      "originalSha256": "1ab6a27eb05712a4006eeaa843fb6d768dcb95b8b837f7c18ae8c57b71fc62f5",
+      "reviewedTextRu": "Писательница бангладешского происхождения, автор романов «Золотой век» и «Добрый мусульманин». Действие «Золотого века» связано с войной за независимость Бангладеш и судьбой одной семьи.",
+      "claims": [
+        {
+          "textRu": "Размытая оценка известности заменена двумя документированными романами и конкретной исторической и семейной основой «Золотого века».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Canongate Books",
+              "url": "https://canongate.co.uk/books/1273-a-golden-age/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский профиль подтверждает рождение Тахмимы Анам в Дакке, авторство A Golden Age и The Good Muslim и сюжет первого романа о семье во время войны за независимость Бангладеш."
+            },
+            {
+              "provider": "National Library of Australia",
+              "url": "https://catalogue.nla.gov.au/catalog/4266975",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный библиотечный каталог подтверждает авторство A Golden Age, год рождения 1975 и сюжет об одной семье в войне за независимость Бангладеш 1971 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Временная метка «современная» и оценка известности сняты; языковая характеристика не вынесена без второй прямой опоры. Identity audit corroborated. Источники подтверждают 1975 год, но не дают независимого основания корректировать точный birthDate 1975-10-08; рекомендация — пока сохранить. Shared country files не изменялись.",
+      "applicableTextRu": "Писательница бангладешского происхождения, автор романов «Золотой век» и «Добрый мусульманин». Действие «Золотого века» связано с войной за независимость Бангладеш и судьбой одной семьи."
+    },
+    {
+      "key": "barbados:austin_clarke",
+      "originalSha256": "a029fd3ec5753df8751c9baca40627c2bdf52eb60fed57db59b1921d168a10ee",
+      "reviewedTextRu": "Писатель барбадосского происхождения. Автор романов, рассказов и эссе о жизни карибской диаспоры, миграции и культурной памяти.",
+      "claims": [
+        {
+          "textRu": "Остин Кларк был писателем барбадосского происхождения и писал романы, рассказы и эссе о карибской миграции и опыте диаспоры.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Athabasca University — English-Canadian Writers",
+              "url": "https://canadian-writers.athabascau.ca/english/writers/aclarke/aclarke.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский профиль подтверждает рождение на Барбадосе, переезд в Канаду и корпус романов и рассказов о жизни карибских иммигрантов."
+            },
+            {
+              "provider": "University of Toronto Magazine",
+              "url": "https://magazine.utoronto.ca/people/alumni-donors/remembering-austin-clarke-u-of-t-alumnus/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский мемориальный материал подтверждает барбадосское происхождение и работу Кларка в романах, рассказах, мемуарах и поэзии о расе, миграции и повседневной жизни Торонто."
+            },
+            {
+              "provider": "McMaster University Libraries",
+              "url": "https://library.mcmaster.ca/news/legacy-austin-clarke",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская библиотека подтверждает рождение Кларка на Барбадосе 26 июля 1934 года, его прозу о карибских иммигрантах и архив литературных рукописей."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходный текст подтверждён. Identity audit corroborated. Доказанная рекомендация: исправить birthDate 1934-11-26 на 1934-07-26; библиотека McMaster прямо фиксирует 26 июля 1934 года, и это corroborated authority data. deathDate 2016-06-26 сохранить — U of T подтверждает 26 июня 2016 года. Shared country files не изменялись.",
+      "applicableTextRu": "Писатель барбадосского происхождения. Автор романов, рассказов и эссе о жизни карибской диаспоры, миграции и культурной памяти."
+    },
+    {
+      "key": "barbados:george_lamming",
+      "originalSha256": "3669958203dc1862235ddc9db1e43537925f399dc7f640c5125709fbd4da1647",
+      "reviewedTextRu": "Барбадосский писатель, поэт и эссеист, автор романов «В замке моей кожи» и «Эмигранты». Его произведения посвящены колониализму, миграции и культурной идентичности Карибского региона.",
+      "claims": [
+        {
+          "textRu": "Сравнительный ранг заменён литературными ролями Джорджа Лэмминга, двумя романами и документированными темами колониализма, миграции и карибской идентичности.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "National Cultural Foundation of Barbados",
+              "url": "https://ncf.bb/team-members/george-lamming/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный культурный фонд представляет Лэмминга как барбадосского писателя, автора In the Castle of My Skin, и связывает его прозу с колониальным опытом Карибского региона."
+            },
+            {
+              "provider": "The University of the West Indies",
+              "url": "https://sta.uwi.edu/uwitoday/archive/july_2022/article2.asp",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский мемориальный материал подтверждает романы In the Castle of My Skin и The Emigrants и рассматривает в его творчестве колониализм, миграцию и идентичность."
+            },
+            {
+              "provider": "The University of the West Indies — некролог",
+              "url": "https://sta.uwi.edu/news/releases/release.asp?id=22457",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный некролог университета подтверждает смерть Лэмминга 4 июня 2022 года и его вклад в карибскую литературу."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Субъективная сравнительная формула снята. Identity registry gap не препятствует однозначной институциональной идентификации. Рекомендация — сохранить birthDate 1927-06-08 и deathDate 2022-06-04; дата смерти подтверждена UWI, дата рождения — NCF/UWI. Shared country files не изменялись.",
+      "applicableTextRu": "Барбадосский писатель, поэт и эссеист, автор романов «В замке моей кожи» и «Эмигранты». Его произведения посвящены колониализму, миграции и культурной идентичности Карибского региона."
+    },
+    {
+      "key": "belarus:ales_adamovich",
+      "originalSha256": "64f009835bea50354de04d9216abd01748fd08369563be04df9783e6cc5b08e0",
+      "reviewedTextRu": "Белорусский писатель, сценарист и исследователь литературы.",
+      "claims": [
+        {
+          "textRu": "Алесь Адамович был белорусским писателем, сценаристом и исследователем литературы.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/1799819",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия называет Адамовича белорусским писателем, литературоведом и сценаристом и подтверждает даты жизни 3 сентября 1927 года — 26 января 1994 года."
+            },
+            {
+              "provider": "Российская государственная библиотека для слепых",
+              "url": "https://rgbs.ru/news/3-sentyabrya-95-let-so-dnya-rozhdeniya-alesya-adamovicha/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечный материал подтверждает белорусскую литературную и сценарную работу Адамовича и дату рождения 3 сентября 1927 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходный краткий текст полностью подтверждён; расширение карточки без необходимости не выполнялось. Identity audit corroborated. Рекомендация — сохранить birthDate 1927-09-03 и deathDate 1994-01-26; БРЭ подтверждает обе даты. Shared country files не изменялись.",
+      "applicableTextRu": "Белорусский писатель, сценарист и исследователь литературы."
+    },
+    {
+      "key": "belarus:svetlana_alexievich",
+      "originalSha256": "9f6d0d7f40fca782d337af7a4820b44f6380aed6405f41dad93ab2d3a0244295",
+      "reviewedTextRu": "Белорусская русскоязычная писательница, создавшая полифоническую документальную прозу из свидетельств людей, переживших войну, советский быт, Афганистан и Чернобыль. Её книги сохраняют индивидуальные голоса там, где официальная история склонна говорить безлично.",
+      "claims": [
+        {
+          "textRu": "Светлана Алексиевич — белорусская русскоязычная писательница; её документальная полифоническая проза построена из свидетельств о войне, советской жизни, Афганистане и Чернобыле.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Нобелевский фонд",
+              "url": "https://www.nobelprize.org/prizes/literature/2015/alexievich/biographical/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография описывает белорусскую писательницу, пишущую по-русски, и её документальный метод — монтаж множества человеческих голосов в книгах о войне, Афганистане, Чернобыле и советской жизни."
+            },
+            {
+              "provider": "Официальный сайт Светланы Алексиевич",
+              "url": "https://alexievich.info/en/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторский сайт документирует книги о войне, советском человеке, Афганистане и Чернобыле и определяет их как историю человеческих чувств и индивидуальных свидетельств."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/339/svetlana-alexievich/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский профиль подтверждает белорусскую биографию и хоровой документальный метод Алексиевич, основанный на голосах свидетелей."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходная профессиональная проза подтверждена; оценочных суперлативов нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1948-05-31; Нобелевский фонд подтверждает дату. Shared country files не изменялись.",
+      "applicableTextRu": "Белорусская русскоязычная писательница, создавшая полифоническую документальную прозу из свидетельств людей, переживших войну, советский быт, Афганистан и Чернобыль. Её книги сохраняют индивидуальные голоса там, где официальная история склонна говорить безлично."
+    },
+    {
+      "key": "belarus:symeon_polotsky",
+      "originalSha256": "a701da0d87667507db414e3ddbe05af17b4aaf8e08035d25658bd8660750c831",
+      "reviewedTextRu": "Поэт, писатель и просветитель XVII века, представитель восточнославянской литературной традиции.",
+      "claims": [
+        {
+          "textRu": "Симеон Полоцкий был поэтом, писателем и просветителем XVII века, чьё наследие относится к белорусской и русской восточнославянской литературе.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Президентская библиотека имени Б. Н. Ельцина",
+              "url": "https://www.prlib.ru/section/2117156",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечная коллекция характеризует Симеона Полоцкого как духовного писателя, поэта, педагога и просветителя XVII века."
+            },
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://bigenc.ru/c/simeon-polotskii-edbe16",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия называет его белорусским и русским поэтом, проповедником и деятелем культуры и подтверждает годы жизни 1629–1680."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Исходная обобщающая формулировка подтверждена белорусской и русской литературной принадлежностью. Identity audit corroborated. Текущие birthDate 1629-12-12 и deathDate 1680-08-25 соответствуют старому стилю в БРЭ; рекомендация — не переводить их автоматически без единой календарной политики продукта. Shared country files не изменялись.",
+      "applicableTextRu": "Поэт, писатель и просветитель XVII века, представитель восточнославянской литературной традиции."
+    },
+    {
+      "key": "belarus:yakub_kolas",
+      "originalSha256": "d4f38684704bddd7eb53574a6d0370d1e0bbd67989204f35a2011311751b9f42",
+      "reviewedTextRu": "Классик белорусской литературы, поэт и прозаик.",
+      "claims": [
+        {
+          "textRu": "Якуб Колас признан классиком белорусской литературы и работал как поэт и прозаик.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственный литературно-мемориальный музей Якуба Коласа",
+              "url": "https://yakubkolas.by/spadchyna/biyagrafiya-yakuba-kolasa/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография музея представляет Коласа как классика белорусской литературы, поэта и прозаика и подтверждает даты 3 ноября 1882 года — 13 августа 1956 года."
+            },
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/2079915",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия характеризует Коласа как белорусского писателя, поэта и прозаика и фиксирует точные даты жизни."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Слово «классик» прямо поддержано профильным государственным музеем; субъективного сравнительного ранга нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1882-11-03 и deathDate 1956-08-13. Shared country files не изменялись.",
+      "applicableTextRu": "Классик белорусской литературы, поэт и прозаик."
+    },
+    {
+      "key": "belarus:yanka_kupala",
+      "originalSha256": "67ac7930b712c0eed9094de1adee3dba2a299becc4a45447d32f98589661f752",
+      "reviewedTextRu": "Национальный поэт Беларуси, классик белорусской литературы.",
+      "claims": [
+        {
+          "textRu": "Янка Купала имеет официальное звание народного поэта Беларуси и признан классиком белорусской литературы.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственный литературный музей Янки Купалы",
+              "url": "https://kupala-museum.by/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный музей представляет Купалу как народного поэта и классика белорусской национальной литературы."
+            },
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/2122299",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия называет Купалу белорусским писателем и народным поэтом БССР и подтверждает даты жизни 7 июля 1882 года — 28 июня 1942 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "unchanged",
+      "notes": "Статус подтверждён официальным музеем и энциклопедией; сравнительного суперлатива нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1882-07-07 и deathDate 1942-06-28. Shared country files не изменялись.",
+      "applicableTextRu": "Национальный поэт Беларуси, классик белорусской литературы."
+    },
+    {
+      "key": "belgium:amelie_nothomb",
+      "originalSha256": "f12b161a13d8423418b6d59d69cccc00c6dba6d6afc7f6ec2aadae274f7726fc",
+      "reviewedTextRu": "Бельгийская франкоязычная писательница, автор романов «Гигиена убийцы» и «Страх и трепет». С 2015 года — член Королевской академии французского языка и литературы Бельгии.",
+      "claims": [
+        {
+          "textRu": "Неопределённая характеристика «интеллектуальной прозы» заменена языком, двумя романами и подтверждённым членством Амели Нотомб в Королевской академии Бельгии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Académie royale de langue et de littérature françaises de Belgique",
+              "url": "https://www.arllfb.be/composition/membres/nothomba.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль называет Нотомб бельгийской франкоязычной писательницей, перечисляет Hygiène de l'assassin и Stupeur et tremblements и фиксирует избрание в Академию в 2015 году."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://www.bnf.fr/fr/amelie-nothomb-bibliographie",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека подтверждает бельгийскую литературную идентичность, библиографию романов и избрание в Королевскую академию Бельгии в 2015 году."
+            },
+            {
+              "provider": "Официальный сайт Амели Нотомб",
+              "url": "https://www.amelie-nothomb.com/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Публичная авторская биография указывает Кобе и 1967 год, что фиксирует расхождение с authority-записями Академии и BnF, а не основание для автоматической замены даты."
+            },
+            {
+              "provider": "Éditions Albin Michel",
+              "url": "https://www.albin-michel.fr/amelie-nothomb",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль издателя также приводит версию рождения в Кобе в 1967 году и тем самым независимо подтверждает наличие публичного расхождения дат."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Субъективная жанровая характеристика снята и заменена проверяемыми фактами. Identity audit corroborated. Рекомендация — сохранить birthDate 1966-07-09 по authority-записям Королевской академии и BnF; официальный авторский сайт и издатель указывают иную публичную версию (Кобе, 1967), поэтому расхождение нужно оставить явно документированным и не менять автоматически. Shared country files не изменялись.",
+      "applicableTextRu": "Бельгийская франкоязычная писательница, автор романов «Гигиена убийцы» и «Страх и трепет». С 2015 года — член Королевской академии французского языка и литературы Бельгии."
+    },
+    {
+      "key": "belgium:georges_rodenbach",
+      "originalSha256": "910f83ad0d80f80365978f6e0cc107bf098eed9e28eb8cb35534ec328b225fe2",
+      "reviewedTextRu": "Бельгийский франкоязычный поэт и прозаик-символист, автор романа «Мёртвый Брюгге» (Bruges-la-Morte, 1892).",
+      "claims": [
+        {
+          "textRu": "Оценка известности заменена языком, литературными ролями, направлением и точным названием и годом романа Жоржа Роденбаха.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "KBR — Королевская библиотека Бельгии",
+              "url": "https://opac.kbr.be/Library/detailstatic.aspx?RSC_BASE=SYRACUSE&RSC_DOCID=16747848&TITLE=bruges-la-morte&_lg=fr-BE",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный каталог характеризует Роденбаха как бельгийского поэта и романиста-символиста и подтверждает Bruges-la-Morte и годы жизни 1855–1898."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://pret.bnf.fr/resources/631f3aa5ee368700016ce8a1",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека представляет Роденбаха как бельгийского франкоязычного поэта и романиста и датирует Bruges-la-Morte 1892 годом."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 12",
+      "decision": "corrected",
+      "notes": "Оценочное слово «знаменитого» снято; символизм и библиография подтверждены двумя национальными библиотеками. Identity audit corroborated. Рекомендация — сохранить birthDate 1855-07-16 и deathDate 1898-12-25; authority records подтверждают даты. Shared country files не изменялись.",
+      "applicableTextRu": "Бельгийский франкоязычный поэт и прозаик-символист, автор романа «Мёртвый Брюгге» (Bruges-la-Morte, 1892)."
+    }
+  ]
+}

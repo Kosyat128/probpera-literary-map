@@ -6,9 +6,9 @@ import {
   presentBookArchiveQueueItem,
 } from "./bookArchiveQueue";
 import { isPublicBook } from "./bookQuality";
-import { countries } from "./countries";
+import { bookArchiveCountries } from "./countries";
 
-const canonicalArchive = buildBookArchive(countries);
+const canonicalArchive = buildBookArchive(bookArchiveCountries);
 
 describe("book archive editorial queue", () => {
   it("classifies every canonical book exactly once", () => {

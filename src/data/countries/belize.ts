@@ -9,8 +9,8 @@ export const belize: Country = {
       id: "zee_edgell",
       name: "Зи Эдгелл",
       years: "1940–2020",
-      birthDate: "1940-01-21",
-      deathDate: "2020-01-01",
+      birthDate: "1940-10-21",
+      deathDate: "2020-12-20",
       birthPlace: "Белиз",
       coordinates: {
         lat: 17.251,
@@ -79,9 +79,10 @@ export const belize: Country = {
 
     {
       id: "glen_godfrey",
-      name: "Глен Годфри",
-      years: "1954–",
-      birthDate: "1954-01-01",
+      name: "Гленн Д. Годфри",
+      fullName: "Glenn D. Godfrey",
+      years: "",
+      birthDate: "",
       birthPlace: "Белиз",
       coordinates: {
         lat: 17.251,

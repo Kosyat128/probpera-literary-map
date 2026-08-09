@@ -48,10 +48,10 @@ async function sourceArchive() {
     absWorkingDir: repositoryRoot,
     stdin: {
       contents: `
-        import { countries } from "./src/data/countries/index.ts";
+        import { bookArchiveCountries } from "./src/data/countries/index.ts";
         import { buildBookArchive } from "./src/data/bookArchive.ts";
 
-        export const archive = buildBookArchive(countries).map(
+        export const archive = buildBookArchive(bookArchiveCountries).map(
           ({ country, writer, ...entry }) => entry
         );
       `,

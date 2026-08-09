@@ -148,6 +148,30 @@ export const mozambique: Country = {
     },
 
     {
+      id: "virgilio_de_lemos",
+      name: "Виржилиу де Лемуш",
+      fullName: "Virgílio de Lemos",
+      years: "1929–2013",
+      birthDate: "1929-11-27",
+      deathDate: "2013-01-10",
+      birthPlace: "остров Ибо, Мозамбик",
+      portrait: "",
+      bio: "Мозамбикский поэт и журналист Виржилиу де Лемуш, публиковавшийся также под именем Дуарте Галван. Среди его книг — «Poemas do Tempo Presente», «Negra Azul» и «Eroticus Mozambicanus».",
+      works: [],
+      genres: [
+        "поэзия"
+      ],
+      language: "португальский",
+      nationality: "мозамбикец",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
       id: "eduardo_white",
       name: "Эдуарду Уайт",
       fullName: "Eduardo White",

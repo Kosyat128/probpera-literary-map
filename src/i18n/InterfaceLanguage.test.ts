@@ -56,6 +56,10 @@ function registeredStaticInterfacePhrases() {
 describe("interface language", () => {
   it("translates the main navigation into English", () => {
     expect(translateInterfaceText("Карта", "en")).toBe("Map");
+    expect(translateInterfaceText("Планета", "en")).toBe("Planet");
+    expect(translateInterfaceText("Литературная карта мира", "en")).toBe(
+      "Literary map of the world"
+    );
     expect(translateInterfaceText("Статьи", "en")).toBe("Articles");
     expect(translateInterfaceText("Книжный архив", "en")).toBe(
       "Book archive"

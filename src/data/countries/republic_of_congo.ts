@@ -33,6 +33,32 @@ export const republicOfCongo: Country = {
     },
 
     {
+      id: "sylvain_bemba",
+      name: "Сильвен Бемба",
+      fullName: "Sylvain Bemba",
+      years: "1934–1995",
+      birthDate: "1934",
+      deathDate: "1995",
+      birthPlace: "Сибити, Республика Конго",
+      portrait: "",
+      bio: "Сильвен Бемба — писатель, драматург, журналист и музыковед из Республики Конго. Среди его произведений — роман «Le Soleil est parti à M’Pemba» и пьеса «L’Homme qui tua le crocodile».",
+      // The reviewed works are attached after the immutable book source is
+      // captured, so moving this writer cannot create new draft book cards.
+      works: [],
+      genres: [
+        "роман",
+        "драма"
+      ],
+      language: "французский",
+      nationality: "конголезец",
+      awards: [],
+      tags: [
+        "XX век"
+      ],
+      articleUrl: ""
+    },
+
+    {
       id: "sony_labou_tansi",
       name: "Сони Лабу Танси",
       fullName: "Sony Labou Tansi",

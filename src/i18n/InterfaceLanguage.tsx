@@ -27,6 +27,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал": "Literary journal",
   "Основная навигация": "Main navigation",
   Карта: "Map",
+  Планета: "Planet",
   Статьи: "Articles",
   Разделы: "Sections",
   Календарь: "Calendar",
@@ -39,8 +40,8 @@ const englishInterfaceText: Record<string, string> = {
   Книги: "Books",
   "Журнал о литературе и искусстве слова":
     "A journal about literature and the art of language",
-  "Литература —": "Literature is",
-  "это целый мир.": "a world of its own.",
+  "Литература –": "Literature is",
+  "это целый мир!": "a world of its own!",
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
@@ -52,8 +53,9 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал · с 2025 года": "Literary journal · since 2025",
   "Интерактивная энциклопедия": "Interactive encyclopedia",
   "Литературная карта мира": "Literary map of the world",
-  "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
-    "Choose a country on the antique globe to discover its writers, works, periods and editor-reviewed literary history.",
+  "Литературная планета": "Literary Planet",
+  "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
+    "Choose a country on the interactive globe to discover its writers, works, periods and editor-reviewed literary history.",
   "Найти страну": "Find a country",
   "Найти страну, писателя или книгу": "Find a country, writer or book",
   "Россия, Франция, Япония…": "Russia, France, Japan…",
@@ -71,9 +73,10 @@ const englishInterfaceText: Record<string, string> = {
   Проверено: "Reviewed",
   "Есть проверенные карточки": "With verified records",
   "Крупнейшие архивы": "Largest archives",
-  "Музейный глобус · ручная навигация": "Museum globe · manual navigation",
+  "Интерактивный глобус · ручная навигация":
+    "Interactive globe · manual navigation",
   "В этой коллекции пока нет стран": "There are no countries in this collection yet",
-  "Открываем мировой атлас…": "Opening the world atlas…",
+  "Открываем «Литературную планету»…": "Opening Literary Planet…",
   "Открываем архив…": "Opening the archive…",
   "Текстовый указатель стран": "Text index of countries",
   "Навигация по «Пробе Пера»": "Explore Proba Pera",
@@ -291,8 +294,9 @@ const englishInterfaceText: Record<string, string> = {
   "карточка автора": "writer profile",
   "Поиск выполняется внутри сайта": "Search stays within this website",
   "Интерактивный литературный глобус": "Interactive literary globe",
-  "Карта временно недоступна": "The map is temporarily unavailable",
-  "Проявляем старинную карту…": "Revealing the antique map…",
+  "Литературная планета временно недоступна":
+    "Literary Planet is temporarily unavailable",
+  "Готовим интерактивный глобус…": "Preparing the interactive globe…",
   "Используйте текстовый указатель стран ниже":
     "Use the country text index below",
   "Тяните, чтобы вращать": "Drag to rotate",

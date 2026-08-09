@@ -83,6 +83,23 @@ export type WorkDistinction = {
   sourceUrl: string;
 };
 
+export type NobelLiteratureAwardProfile = {
+  category: "literature";
+  year: number;
+  laureateId: number;
+  portion: "1" | "1/2";
+  verifiedAt: string;
+  specialStatus?:
+    | "declined"
+    | "accepted-then-forced-to-decline"
+    | "posthumous";
+  sources: Array<{
+    title: string;
+    url: string;
+    publisher: "Nobel Prize Outreach";
+  }>;
+};
+
 export type WorkProfile = {
   id: string;
   title: string;
@@ -185,6 +202,7 @@ export type WriterProfile = {
   nobel?: boolean;
   isNobel?: boolean;
   nobelPrize?: string | boolean;
+  nobelAward?: NobelLiteratureAwardProfile;
 
   places?: string[];
 

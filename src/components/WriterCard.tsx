@@ -4,14 +4,15 @@ import {
   selectWriterYears,
 } from "../data/bookLocalization";
 import { getPublicWriterWorkTitles } from "../data/bookArchive";
-import { selectWriterBiography } from "../data/writerBiography";
+import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { formatWriterDate } from "../utils/writerDates";
 
 type Props = { writer: WriterProfile; onClose: () => void };
 
 export default function WriterCard({ writer, onClose }: Props) {
   const { language, t } = useInterfaceLanguage();
-  const biography = selectWriterBiography(writer, language);
+  const biography = selectWriterBiographyForDisplay(writer, language);
   const writerName = selectWriterDisplayName(writer, language, t("Автор"));
 
   return (
@@ -30,11 +31,15 @@ export default function WriterCard({ writer, onClose }: Props) {
       boxShadow:"0 12px 35px rgba(31,16,61,.3)",
       fontFamily:"Georgia, serif"
     }}>
-      <small>{t("Литературная карта мира")}</small>
+      <small>{t("Литературная планета")}</small>
       <h2>{writerName}</h2>
       {language === "ru" && writer.country && <p><b>{t("Страна")}:</b> {writer.country}</p>}
       <p><b>{t("Годы жизни")}:</b> {selectWriterYears(writer, language) || t("Информация уточняется")}</p>
-      {writer.birthDate && <p><b>{t("Дата рождения")}:</b> {writer.birthDate}</p>}
+      {writer.birthDate && (
+        <p>
+          <b>{t("Дата рождения")}:</b> {formatWriterDate(writer.birthDate, language)}
+        </p>
+      )}
       {language === "ru" && writer.birthPlace && <p><b>{t("Место рождения")}:</b> {writer.birthPlace}</p>}
 
       {language === "ru" && (

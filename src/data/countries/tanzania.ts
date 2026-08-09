@@ -140,6 +140,35 @@ export const tanzania: Country = {
     },
 
     {
+      id: "said_ahmed_mohamed",
+      name: "Саид Ахмед Мохамед Хамис",
+      fullName: "Said Ahmed Mohamed Khamis",
+      years: "1947–",
+      birthDate: "1947-12-12",
+      birthPlace: "Занзибар, Танзания",
+      coordinates: {
+        lat: -6.1659,
+        lng: 39.2026
+      },
+      portrait: "",
+      bio: "Саид Ахмед Мохамед Хамис — танзанийский писатель и исследователь суахилийской литературы, родившийся на Занзибаре 12 декабря 1947 года. Автор романов на суахили «Asali Chungu», «Utengano» и «Dunia Yao».",
+      // The book archive is deliberately unchanged in this writer-only pass.
+      works: [],
+      genres: [
+        "роман",
+        "литературоведение"
+      ],
+      language: "суахили",
+      nationality: "танзаниец",
+      awards: [],
+      tags: [
+        "XX век",
+        "XXI век"
+      ],
+      articleUrl: ""
+    },
+
+    {
       id: "abdulrazak_gurnah",
       name: "Абдулразак Гурна",
       fullName: "Abdulrazak Gurnah",

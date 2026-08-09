@@ -1,0 +1,731 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH09_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 09";
+
+export type WriterBiographyFactReviewDecision =
+  "unchanged" | "corrected" | "held";
+
+export type WriterBiographyClaimVerdict =
+  "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH09_REVIEWER;
+const checkedAt = "2026-08-09";
+
+function evidence(
+  provider: string,
+  url: string,
+  findingRu: string,
+): WriterBiographyClaimEvidence {
+  return { provider, url, checkedAt, findingRu };
+}
+
+const writerBiographyFactReviewBatch09Base: readonly Omit<
+  WriterBiographyFactReviewRecord,
+  "applicableTextRu"
+>[] = [
+  {
+    key: "dominican_republic:pedro_henriquez_urena",
+    originalSha256:
+      "e0c2c3df8318e90f9590cd7313a045101d377acc23572f8ce6ef0d1d287e5932",
+    reviewedTextRu:
+      "Доминиканский филолог, литературный критик, эссеист и преподаватель. Исследовал испанский язык в Америке и литературу Латинской Америки.",
+    claims: [
+      {
+        textRu:
+          "Недоказанный суперлатив заменён конкретными занятиями Педро Энрикеса Уреньи и направлениями его филологических и литературоведческих исследований.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Доминиканская академия языка",
+            "https://academia.org.do/2019/09/09/pedro-henriquez-urena-critico-literario/",
+            "Академический материал характеризует Энрикеса Уренью как литературного критика и исследователя испаноязычной литературы; также подтверждает дату рождения 29 июня 1884 года.",
+          ),
+          evidence(
+            "Universidad Autónoma de Santo Domingo",
+            "https://revistas.uasd.edu.do/index.php/ecos/article/download/142/255/259",
+            "Университетское исследование документирует его работу как доминиканского филолога, критика и исследователя языка и литературы Испанской Америки.",
+          ),
+          evidence(
+            "Доминиканская академия языка",
+            "https://academia.org.do/2020/09/04/influencia-de-hostos-en-pedro-henriquez-urena/",
+            "Публикация академии подтверждает педагогическую и эссеистическую деятельность, а также даты 29 июня 1884 года и 11 мая 1946 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят. Identity audit: Q1153831 соответствует Педро Энрикесу Уренье. Рекомендация — сохранить birthDate 1884-06-29 и deathDate 1946-05-11: две публикации Доминиканской академии подтверждают 29 июня, тогда как единичное 20 июня на другой странице академии является внутренним расхождением. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:abdon_ubidia",
+    originalSha256:
+      "2fe6b9e5c114d6d4eed861464635add2ff8067beb382a36d9772503c3ffb192c",
+    reviewedTextRu:
+      "Эквадорский писатель и литературный критик. В его прозе заметное место занимает современный Кито, а в исследованиях — устная словесность Эквадора.",
+    claims: [
+      {
+        textRu:
+          "Сравнительная оценка известности заменена подтверждёнными занятиями Абдона Убидии и тематическими направлениями его прозы и исследований.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/uasb_agenda/abdon-ubidia-en-conversaciones-fuera-de-catedra/",
+            "Университетский профиль называет Убидию прозаиком и критиком, перечисляет его романы и работы об устной словесности Эквадора.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=8293",
+            "Национальная библиотечная авторитетная запись подтверждает идентичность эквадорского автора Абдона Убидии и год рождения 1944.",
+          ),
+          evidence(
+            "Universidad Andina Simón Bolívar, Kipus",
+            "https://revistas.uasb.edu.ec/index.php/kipus/article/download/4233/4162?inline=1",
+            "Академическое исследование показывает центральное место современного Кито и городской культуры в повествовательной прозе Убидии.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят; журналистская работа не вынесена в итог без второй независимой опоры. Identity registry gap: институциональные источники подтверждают автора 1944 года рождения, но QID mapping требует отдельного registry review. Точный день birthDate 1944-12-30 не менялся и отдельно не рекомендован. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:alfredo_pareja_diezcanseco",
+    originalSha256:
+      "6a76a931bd764d1b76fd78dd2ec3744be8a385fba7ccd876e81f68549a1390b3",
+    reviewedTextRu:
+      "Эквадорский писатель, историк и дипломат, участник группы Гуаякиля. Его романное и историко-биографическое наследие связано с общественной историей Эквадора XX века.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён установленными ролями Альфредо Парехи Диескансеко, участием в группе Гуаякиля и документированной связью его прозы с историей Эквадора.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar, Kipus",
+            "https://revistas.uasb.edu.ec/index.php/kipus/article/view/4927",
+            "Академическая публикация называет Пареху эквадорским романистом, историком и политическим деятелем и рассматривает историческую основу его прозы.",
+          ),
+          evidence(
+            "Министерство иностранных дел Эквадора",
+            "https://www.cancilleria.gob.ec/2019/03/26/cancilleria-publica-libro-que-recoge-los-acontecimientos-relevantes-de-la-relacion-entre-ecuador-y-japon/",
+            "Официальный материал называет Пареху писателем и бывшим министром иностранных дел Эквадора и отмечает его работу с историческим архивом ведомства.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=6014",
+            "Авторитетная запись национальной библиотеки подтверждает идентичность Alfredo Pareja Diezcanseco и годы жизни 1908–1993.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Оценочная формула снята; членство в группе Гуаякиля подтверждено академическим исследованием UASB. Identity registry gap требует отдельного QID review. Текущие birthDate 1908-11-12 и deathDate 1993-05-03 не изменялись; доказанной рекомендации по их коррекции нет. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:arturo_borja",
+    originalSha256:
+      "88710316409b495dc7abaab84341db606053b474f182c8506389bfe0d64296ec",
+    reviewedTextRu:
+      "Эквадорский поэт-модернист. Его стихи были собраны посмертно в книге «Ониксовая флейта» (La flauta de ónix), изданной в 1920 году.",
+    claims: [
+      {
+        textRu:
+          "Широкая оценка влияния заменена проверяемыми сведениями о модернистской поэзии Артуро Борхи и посмертном издании La flauta de ónix.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/investigacion/el-modernismo-de-la-capital-arturo-borja-y-su-dialogo-con-la-lirica-portuaria/",
+            "Университетский проект рассматривает Борху как эквадорского поэта-модерниста и исследует его место в столичной модернистской лирике.",
+          ),
+          evidence(
+            "Эквадорская академия языка",
+            "https://www.academiaecuatorianadelalengua.org/tres-consideraciones-sobre-el-modernismo/",
+            "Академический материал относит Артуро Борху к ключевым участникам эквадорского модернизма.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana",
+            "https://casadelacultura.gob.ec/wp-content/uploads/2020/11/casapalabras42.pdf",
+            "Издание учреждения сообщает, что стихи Борхи были собраны в книге La flauta de ónix, выпущенной посмертно в 1920 году, и подтверждает смерть 13 ноября 1912 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Субъективная формула о масштабе влияния снята. Identity audit: Q5707138 соответствует Артуро Борхе. Date queue: сохранить birthDate 1892-09-15 и deathDate 1912-11-13; институциональные источники не дают основания для изменения, а смерть 13 ноября подтверждена Casa de la Cultura. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:eliecer_cardenas",
+    originalSha256:
+      "02e6d887cd49a6ad9cb0db66a10f5c95873f3b91f860ccae3fffb9976c8a547a",
+    reviewedTextRu:
+      "Эквадорский писатель, драматург и журналист, член-корреспондент Эквадорской академии языка. Автор романа «Прах и пепел» (Polvo y ceniza).",
+    claims: [
+      {
+        textRu:
+          "Оценка известности заменена документированными занятиями Элиэсера Карденаса, его членством в академии и авторством романа Polvo y ceniza.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Эквадорская академия языка",
+            "https://www.academiaecuatorianadelalengua.org/eliecer-cardenas-espinosa/",
+            "Официальный профиль подтверждает рождение 10 декабря 1950 года, работу писателем, эссеистом и журналистом и статус члена-корреспондента академии.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana",
+            "https://casadelacultura.gob.ec/2025.php/postpublicaciones/trilogia-bandolera/",
+            "Государственное культурное учреждение называет Карденаса прозаиком и драматургом и указывает роман Polvo y ceniza среди его произведений.",
+          ),
+          evidence(
+            "Эквадорская академия языка — реестр умерших членов",
+            "https://www.academiaecuatorianadelalengua.org/fallecidos/",
+            "Официальный реестр фиксирует даты 10 декабря 1950 года и 26 сентября 2021 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Identity registry gap требует отдельного QID review. Доказанная date recommendation: birthDate 1950-12-10 сохранить; ошибочную deathDate 2021-09-01 заменить на 2021-09-26. Дату 26 сентября прямо подтверждают официальный реестр Эквадорской академии языка и её некролог, опубликованный в день смерти. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:javier_vasconez",
+    originalSha256:
+      "4f5522dc5bf4ed7c070d26452c84344cce0fa8d1b04e98b268c52ac235f3e436",
+    reviewedTextRu:
+      "Эквадорский прозаик, автор сборников рассказов «Далёкий город» (Ciudad lejana) и «Почётные гости» (Invitados de honor). Значительная часть его прозы связана с городской средой.",
+    claims: [
+      {
+        textRu:
+          "Сравнительная оценка известности и неподтверждённая общая ссылка на европейскую традицию заменены конкретными книгами Хавьера Васконеса и документированной городской проблематикой.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "https://biblioteca.casadelacultura.gob.ec/bib/40708",
+            "Национальный библиотечный каталог подтверждает авторство Хавьера Васконеса и библиографические данные сборника Ciudad lejana.",
+          ),
+          evidence(
+            "Universidad Andina Simón Bolívar, Kipus",
+            "https://revistas.uasb.edu.ec/index.php/kipus/article/download/4233/4162?inline=1",
+            "Академическое исследование относит Васконеса к эквадорской городской прозе и анализирует городское пространство в его повествовании.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-ISBDdetail.pl?biblionumber=62926",
+            "Каталожная запись подтверждает авторство сборника Invitados de honor.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят; психологизм и европейская традиция не перенесены без второй независимой прямой опоры. Identity registry gap требует отдельного QID review. Точный день birthDate 1946-12-06 не менялся и отдельно не рекомендован. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:jorge_carrera_andrade",
+    originalSha256:
+      "94ef76f59fc4a1d8f76db4d549181f51c8f48e2ee6951e848d4248515d72dd8d",
+    reviewedTextRu:
+      "Эквадорский поэт, переводчик и дипломат. В его поэзии особое место занимают образы повседневных предметов, природы и связи человека с миром.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён подтверждёнными занятиями Хорхе Карреры Андраде и характерными образами его поэзии.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Эквадорская академия языка",
+            "https://www.academiaecuatorianadelalengua.org/discurso-incorporacion-maria-eugenia-moscoso-correspondiente/",
+            "Академический доклад характеризует Карреру Андраде как поэта, прозаика, переводчика и дипломата и отмечает предметы и природу как устойчивые образы его лирики.",
+          ),
+          evidence(
+            "Министерство иностранных дел Эквадора",
+            "https://www.cancilleria.gob.ec/2019/03/26/cancilleria-publica-libro-que-recoge-los-acontecimientos-relevantes-de-la-relacion-entre-ecuador-y-japon/",
+            "Официальный материал называет Карреру Андраде писателем, бывшим министром иностранных дел и первым консулом Эквадора в Иокогаме.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный сравнительный ранг снят. Identity audit: Q1703787 соответствует Хорхе Каррере Андраде; годы и текущие точные даты не обнаружили доказанного конфликта. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:jorge_icaza",
+    originalSha256:
+      "e463ca1cfeae25f733d91dc64d19bab2838a4fcf06676df6e5233ab3861f6da1",
+    reviewedTextRu:
+      "Эквадорский писатель и драматург, автор романов «Уасипунго» (1934) и «Чулья Ромеро и Флорес». Его проза связана с индихенистской и социальной проблематикой.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён конкретными произведениями Хорхе Икасы и подтверждённой индихенистской и социальной проблематикой его прозы.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/publicacion/jorge-icaza-y-pablo-palacio-edicion-conmemorativa/",
+            "Университетское издание представляет Икасу как эквадорского писателя и называет Huasipungo и El chulla Romero y Flores основными произведениями.",
+          ),
+          evidence(
+            "Biblioteca Virtual Miguel de Cervantes",
+            "https://www.cervantesvirtual.com/obra-visor/de-nuestras-lenguas-y-otros-discursos--0/html/ff525200-82b1-11df-acc7-002185ce6064_15.html",
+            "Академическая библиотека датирует Huasipungo 1934 годом, относит роман к индихенизму и описывает его социальный и классовый конфликт.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Широкая сравнительная оценка снята; исходная индихенистская и социальная характеристика сохранена в проверяемой форме. Identity registry gap требует отдельного QID review. Доказанной рекомендации менять birthDate 1906-06-10 или deathDate 1978-05-26 нет. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:maria_fernanda_ampuero",
+    originalSha256:
+      "29450cda4dfc4ac3de51fabacc4a37da9f3437682cb3a261fafc9b4a258bda21",
+    reviewedTextRu:
+      "Эквадорская писательница и журналистка, автор сборника рассказов «Петушиный бой» (Pelea de gallos). Её проза обращается к насилию, власти и семейным отношениям.",
+    claims: [
+      {
+        textRu:
+          "Сравнительный ранг Марии Фернанды Ампуэро заменён конкретной книгой и подтверждёнными темами её прозы.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Penguin Random House Grupo Editorial",
+            "https://www.penguinlibros.com/es/7933-maria-fernanda-ampuero",
+            "Официальный издательский профиль называет Ампуэро эквадорской писательницей и журналисткой и подтверждает авторство сборника Pelea de gallos.",
+          ),
+          evidence(
+            "Hay Festival",
+            "https://www.hayfestival.com/artist.aspx?artistid=9738",
+            "Профиль международного литературного фестиваля подтверждает происхождение, журналистскую и литературную деятельность Ампуэро и её книгу Pelea de gallos.",
+          ),
+          evidence(
+            "Hay Festival Querétaro",
+            "https://www.hayfestival.com/Uploads/Media/Quer%C3%A9taro/pdfS/HAY%20FESTIVAL%20QUER%C3%89TARO%202019%20%28en%29.pdf?cmsotmediahandler=9cf2d6f2-403f-4384-a43c-b90a95f54f1d",
+            "Программа фестиваля описывает обращение её рассказов к дому, семье, власти, насилию и злоупотреблению.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанная формула «одна из самых заметных» снята; темы изложены без оценочного усиления. Identity registry gap требует отдельного QID review. Институциональные профили подтверждают 1976 год, но не дали достаточной опоры для отдельной рекомендации по точному birthDate 1976-04-14. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:pablo_palacio",
+    originalSha256:
+      "3003f5641037ead9ef8cd9803b69a7a0fb1aa92a2cddc6b17c3f03e8214a336f",
+    reviewedTextRu:
+      "Эквадорский писатель и юрист, представитель авангардной прозы. Автор сборника «Человек, убитый пинками» (Un hombre muerto a puntapiés) и романа «Дебора» (Débora).",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён установленной принадлежностью Пабло Паласио к авангардной прозе и двумя конкретными произведениями.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/publicacion/jorge-icaza-pablo-palacio-vanguardia-y-modernidad/",
+            "Университетское издание рассматривает Пабло Паласио в контексте эквадорского авангарда, экспериментальной формы и городской литературы.",
+          ),
+          evidence(
+            "Эквадорская академия языка",
+            "https://www.academiaecuatorianadelalengua.org/pablo-palacio-y-su-aliteratura-anticipatoria-por-francisco-proano-arandi/",
+            "Академическое исследование подтверждает авангардный и экспериментальный характер прозы Паласио и разбирает его основные тексты.",
+          ),
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/alicia-ortega-participa-en-edicion-de-cuentos-de-pablo-palacio/",
+            "Материал университета подтверждает сборник Un hombre muerto a puntapiés и роман Débora в библиографии автора.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Оценочный ранг снят; новаторство выражено через проверяемую принадлежность к авангарду и конкретные книги. Identity audit: Q1650875 соответствует Пабло Паласио. Доказанной рекомендации менять даты 1906-01-25 и 1947-01-07 нет. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:santiago_paez",
+    originalSha256:
+      "d97d7565eb89ed85f31e7199ee05dfc4fa4d399f092adf53fa0f8d04244e486f",
+    reviewedTextRu:
+      "Эквадорский писатель и преподаватель. Среди его научно-фантастических произведений — «В глубине галактики» (Profundo en la galaxia) и «О шаманах и королях» (De shamanes y reyes).",
+    claims: [
+      {
+        textRu:
+          "Оценка известности заменена занятиями Сантьяго Паэса и двумя документированными научно-фантастическими произведениями.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad Andina Simón Bolívar, Kipus",
+            "https://revistas.uasb.edu.ec/index.php/kipus/article/view/1095",
+            "Академическая статья называет Паэса эквадорским писателем и исследует De shamanes y reyes как произведение научной фантастики.",
+          ),
+          evidence(
+            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=29691",
+            "Национальный библиотечный каталог подтверждает авторство книги Profundo en la galaxia и год рождения 1958.",
+          ),
+          evidence(
+            "Universidad Andina Simón Bolívar",
+            "https://www.uasb.edu.ec/uasb_agenda/presentacion-del-libro-arcanos-mayores/",
+            "Университетский анонс представляет Паэса как писателя и преподавателя университета.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят; детективная проза не вынесена без второй независимой прямой опоры. Identity registry gap требует отдельного QID review. Источники подтверждают 1958 год, но не дают отдельного основания менять точный birthDate 1958-12-12. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:ahmed_khaled_towfik",
+    originalSha256:
+      "2877386cf23c76461abcef42559a090ac25d7bb4293114a30db491829124e943",
+    reviewedTextRu:
+      "Египетский врач и писатель, автор циклов «Паранормальное» (Ma Wara al-Tabia), «Сафари» и «Фантазия». Работал в жанрах хоррора, фэнтези и научной фантастики.",
+    claims: [
+      {
+        textRu:
+          "Оценка популярности заменена медицинской и литературной деятельностью Ахмеда Халеда Тауфика, его циклами и установленными жанрами.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Tanta University",
+            "https://tanta.edu.eg/EN/Celebrities.aspx",
+            "Официальная страница университета называет Тауфика врачом, автором и романистом, перечисляет серии Beyond Nature, Safari и Fantasia и связывает его с фэнтези и научной фантастикой.",
+          ),
+          evidence(
+            "Al-Ahram",
+            "https://gate.ahram.org.eg/News/1860153.aspx",
+            "Государственное издание подтверждает работу врача и писателя в хорроре, фэнтези и научной фантастике, а также даты 10 июня 1962 года и 2 апреля 2018 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный суперлатив популярности снят. Identity audit: Q4695887 соответствует Ахмеду Халеду Тауфику. Доказанная date recommendation: годовые значения обогатить до birthDate 1962-06-10 и deathDate 2018-04-02; обе даты подтверждены государственным изданием и университетским некрологом. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:bahaa_taher",
+    originalSha256:
+      "0c8bdd97a1567b884e69bf1a828fefe85e1f7fc5aaee5ccd7c7331fa926a1abb",
+    reviewedTextRu:
+      "Египетский писатель и переводчик, автор романов «Любовь в изгнании» и «Оазис заката». «Оазис заката» получил первую Международную премию арабской литературы (IPAF) в 2008 году.",
+    claims: [
+      {
+        textRu:
+          "Оценка известности заменена занятиями Бахаа Тахера, двумя романами и проверяемой наградой за Sunset Oasis.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "International Prize for Arabic Fiction",
+            "https://archive.arabicfiction.org/en/Bahaa-Taher-nadwa2014",
+            "Официальный профиль премии называет Тахера египетским писателем и переводчиком и подтверждает, что Sunset Oasis получил первую IPAF в 2008 году.",
+          ),
+          evidence(
+            "The American University in Cairo Press",
+            "https://aucpress.com/author/bahaa-taher/",
+            "Университетское издательство подтверждает авторство Love in Exile и Sunset Oasis и победу последнего романа в первом присуждении IPAF.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят и заменён конкретной премией. Identity audit: Q800187 соответствует Бахаа Тахеру. Доказанная date recommendation: годовые значения обогатить до birthDate 1935-01-13 и deathDate 2022-10-27; даты подтверждают Al-Ahram и мемориальное издание AUC Press. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:naguib_mahfouz",
+    originalSha256:
+      "0124a4bcf7de394112bf70d715bf581146fd601c87cb2b3f338b22dd62d28e74",
+    reviewedTextRu:
+      "Египетский писатель, лауреат Нобелевской премии по литературе 1988 года.",
+    claims: [
+      {
+        textRu:
+          "Нагиб Махфуз был египетским писателем и получил Нобелевскую премию по литературе в 1988 году.",
+        verdict: "supported",
+        evidence: [
+          evidence(
+            "Нобелевский фонд",
+            "https://www.nobelprize.org/laureate/665",
+            "Официальная страница лауреата подтверждает египетскую принадлежность Махфуза, премию по литературе 1988 года и даты 11 декабря 1911 года — 30 августа 2006 года.",
+          ),
+          evidence(
+            "The American University in Cairo Press",
+            "https://aucpress.com/author/naguib-mahfouz/",
+            "Университетское издательство называет Махфуза египетским романистом и лауреатом Нобелевской премии по литературе 1988 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "unchanged",
+    notes:
+      "Исходный текст полностью подтверждён. Identity audit: Q7176 соответствует Нагибу Махфузу. Доказанная date recommendation: годовые значения обогатить до birthDate 1911-12-11 и deathDate 2006-08-30 по официальной странице Нобелевского фонда. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:rifaa_al_tahtawi",
+    originalSha256:
+      "fd254094fedf7e02de24c5f0325a1460da01b576fbb866263b2720f1e506d275",
+    reviewedTextRu:
+      "Египетский просветитель, переводчик и педагог. Основал в Каире Школу языков и участвовал в развитии переводческого дела и современного образования в Египте.",
+    claims: [
+      {
+        textRu:
+          "Широкая формула об основании современной арабской культуры заменена конкретной просветительской, переводческой и образовательной деятельностью Рифаа ат-Тахтави.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Bibliotheca Alexandrina",
+            "https://www.bibalex.org/news/details?documentid=3580&page=565",
+            "Национальная библиотека характеризует ат-Тахтави как египетского просветителя и пионера переводческого движения и связывает с ним первую египетскую школу перевода.",
+          ),
+          evidence(
+            "State Information Service of Egypt",
+            "https://sis.gov.eg/en/egypt/society/education/education-in-egypt/",
+            "Государственный обзор истории образования называет ат-Тахтави одним из пионеров современного образования в Египте.",
+          ),
+          evidence(
+            "Cambridge University Press",
+            "https://assets.cambridge.org/97805218/98072/frontmatter/9780521898072_frontmatter.pdf",
+            "Академическая хронология фиксирует основание ат-Тахтави Школы языков в 1835 году.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив и широкое причинное утверждение сняты. Identity audit: Q981929 соответствует Рифаа ат-Тахтави. Доказанная рекомендация — обогатить birthDate до 1801-10-15 по государственному архиву SIS; deathDate оставить на уровне 1873, поскольку точное 1873-05-27 не получило двух независимых институциональных подтверждений. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:salah_abdel_sabour",
+    originalSha256:
+      "1c3f7d8af22357b7d4b2ebe86c77d8942c3d30d94883aa7ef90a4ebb2f57dbcb",
+    reviewedTextRu:
+      "Египетский поэт, драматург и литературный критик, участник обновления арабской поэзии. Автор сборника «Люди моей страны» и пьесы «Трагедия аль-Халладжа».",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён документированной ролью Салаха Абдель Сабура в обновлении арабской поэзии и конкретными произведениями.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Bibliotheca Alexandrina",
+            "https://www.bibalex.org/libraries/Presentation/Static/Abdelsabur_eng_1105_ed2.pdf",
+            "Национальная библиотека называет Абдель Сабура поэтом, драматургом и критиком, связывает его с движением современной арабской поэзии и перечисляет People in My Country и The Tragedy of Al-Hallaj.",
+          ),
+          evidence(
+            "State Information Service of Egypt",
+            "https://sis.gov.eg/ar/%D9%85%D8%B5%D8%B1/%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9/%D8%A3%D8%B9%D9%84%D8%A7%D9%85-%D9%88%D8%B4%D8%AE%D8%B5%D9%8A%D8%A7%D8%AA-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/%D8%B5%D9%84%D8%A7%D8%AD-%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B5%D8%A8%D9%88%D8%B1/",
+            "Государственная биография подтверждает поэтическую и драматургическую деятельность и основные книги и пьесы автора.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Оценочный ранг снят. Identity audit: Q2988864 соответствует Салаху Абдель Сабуру. Доказанная recommendation: годовые значения обогатить до birthDate 1931-05-03 и deathDate 1981-08-14; Bibliotheca Alexandrina и SIS поддерживают 14 августа, при этом в Al-Ahram встречается конфликтующее 13 августа, что отмечено для отдельного date review. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:sonallah_ibrahim",
+    originalSha256:
+      "35e049ac3f5492b19e3d05d7fbc387680a3e9592293bce297a9be34c9725b77e",
+    reviewedTextRu:
+      "Египетский писатель, автор романов «Комитет» и «Зат». Его проза соединяет художественное повествование с документальными материалами и общественно-политической проблематикой.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён конкретными романами Соналлы Ибрахима и документированной особенностью его прозы — соединением вымысла, документов и общественной проблематики.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "The American University in Cairo Press",
+            "https://aucpress.com/author/sonallah-ibrahim/",
+            "Университетское издательство подтверждает авторство романов The Committee и Zaat и характеризует писательскую биографию Ибрахима.",
+          ),
+          evidence(
+            "State Information Service of Egypt",
+            "https://sis.gov.eg/en/media-center/news/pm-mourns-the-great-egyptian-writer-sonallah-ibrahim/",
+            "Официальный некролог кабинета министров называет Ибрахима египетским романистом, отмечает общественную проблематику его наследия и фиксирует смерть 13 августа 2025 года.",
+          ),
+          evidence(
+            "Al-Ahram",
+            "https://gate.ahram.org.eg/News/5266179.aspx",
+            "Государственное издание подтверждает смерть писателя 13 августа 2025 года и перечисляет его литературные произведения.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Субъективный ранг снят. Identity audit: Q3053937 соответствует Соналле Ибрахиму. Доказанная recommendation: добавить deathDate 2025-08-13. BirthDate оставить годовым 1937: Wikidata приводит 1937-08-03 по паспортным данным, а материалы Al-Ahram — 1937-02-24; до отдельного identity/date review точный день не применять. Shared country files не изменялись.",
+  },
+  {
+    key: "egypt:taha_hussein",
+    originalSha256:
+      "ad30b0081233b4388dbd8eb9bf11f4ecb296678e7cd56213ae0263406bb5b05c",
+    reviewedTextRu:
+      "Египетский писатель, литературный критик и реформатор образования, автор автобиографической книги «Дни». В 1950–1952 годах занимал пост министра образования Египта.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён установленными ролями Тахи Хусейна, книгой «Дни» и его работой министром образования Египта.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "The American University in Cairo Press",
+            "https://aucpress.com/author/taha-hussein/",
+            "Университетское издательство характеризует Хусейна как египетского интеллектуала и реформатора образования, подтверждает книгу The Days и работу министром образования.",
+          ),
+          evidence(
+            "State Information Service of Egypt",
+            "https://sis.gov.eg/es/egipto/figuras/taha-hussien/",
+            "Государственная биография называет Хусейна писателем, мыслителем и литературным критиком, перечисляет The Days и фиксирует даты 14 ноября 1889 года — 28 октября 1973 года.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Сравнительный ранг снят и заменён конкретной общественной ролью. Identity audit: Q328765 соответствует Тахе Хусейну. Доказанная date recommendation: годовые значения обогатить до birthDate 1889-11-14 и deathDate 1973-10-28 по государственной биографии SIS. Shared country files не изменялись.",
+  },
+  {
+    key: "el_salvador:roque_dalton",
+    originalSha256:
+      "82579ea122a1e9e67e3cf6e782e923724cf02e5b00aa886eb08fd063f4bdc50a",
+    reviewedTextRu:
+      "Сальвадорский поэт, журналист и эссеист, автор книги «Таверна и другие места» (Taberna y otros lugares), получившей премию Casa de las Américas в 1969 году. Его поэзия сочетает социальную проблематику, разговорную интонацию и иронию.",
+    claims: [
+      {
+        textRu:
+          "Сравнительный ранг Роке Дальтона заменён конкретной книгой и наградой; исходная социальная характеристика уточнена через документированные черты его поэзии.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Universidad de El Salvador — El Universitario",
+            "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/",
+            "Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года — 10 мая 1975 года, премию Casa de las Américas 1969 года и сочетание протеста, разговорной речи и иронии в его поэзии.",
+          ),
+          evidence(
+            "Museo de la Palabra y la Imagen",
+            "https://museo.com.sv/wp-content/uploads/2022/04/Trasmallo_8-Roque-Dalton.pdf",
+            "Музейное издание подтверждает занятия поэта, журналиста и эссеиста, даты жизни и получение премии Casa de las Américas в 1969 году.",
+          ),
+          evidence(
+            "Министерство культуры Сальвадора",
+            "https://www.cultura.gob.sv/ministerio-de-cultura-celebro-el-dia-nacional-de-la-poesia/",
+            "Официальный материал подтверждает рождение 14 мая 1935 года и национальное признание литературной работы Дальтона.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанная широкая сравнительная формула снята; социальная и стилистическая характеристика сохранена в источниковой форме. Identity audit: Q539461 соответствует Роке Дальтону. Рекомендация — сохранить birthDate 1935-05-14 и deathDate 1975-05-10; обе даты подтверждены UES и MUPI. Shared country files не изменялись.",
+  },
+  {
+    key: "el_salvador:salvador_salarre",
+    originalSha256:
+      "1832400b426e8d63c8bc7178d0be364bc3ca1f42bd6dc6bd5aaa2a72b6731479",
+    reviewedTextRu:
+      "Сальвадорский писатель, художник и культурный атташе, публиковавшийся под именем Саларруэ. Автор сборников Cuentos de barro и Cuentos de cipotes, в которых использованы сельские сюжеты и особенности сальвадорской разговорной речи.",
+    claims: [
+      {
+        textRu:
+          "Суперлатив заменён документированными занятиями Сальвадора Саласара Арруэ, его псевдонимом, двумя сборниками и конкретной языковой и сельской основой рассказов.",
+        verdict: "corrected",
+        evidence: [
+          evidence(
+            "Министерство культуры Сальвадора",
+            "https://www.cultura.gob.sv/estudiantes-conmemoraron-el-natalicio-del-escritor-salvador-salazar-arrue/",
+            "Официальный материал подтверждает имя Сальвадора Саласара Арруэ, псевдоним Саларруэ, литературную и художественную деятельность, дату рождения 22 октября 1899 года и книги Cuentos de barro и Cuentos de cipotes.",
+          ),
+          evidence(
+            "Universidad Centroamericana José Simeón Cañas — Colecciones Virtuales",
+            "https://coleccion.uca.edu.sv/s/salvador-salazar-arrue-salarrue/page/semblanza",
+            "Университетская коллекция подтверждает литературную и художественную биографию Саларруэ, годы жизни 1899–1975 и обучение живописи.",
+          ),
+          evidence(
+            "Universidad de El Salvador",
+            "https://repositorio.ues.edu.sv/items/1426e132-a62d-4ff4-a7be-74dd2900c56a",
+            "Университетское исследование описывает Cuentos de barro как рассказы на сельском материале с использованием сальвадорской народной речи.",
+          ),
+          evidence(
+            "Universidad Centroamericana José Simeón Cañas — хронология Саларруэ",
+            "https://coleccion.uca.edu.sv/files/original/a4c30db19d25081e8877fb6b1a95830e6044479d.pdf",
+            "Документированная хронология фиксирует назначение Саларруэ культурным атташе посольства Сальвадора в Вашингтоне, точные даты жизни и издания Cuentos de barro и Cuentos de cipotes.",
+          ),
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Оценочный ранг снят; дипломатическая роль уточнена до документированной должности культурного атташе. Identity registry gap: институциональные источники однозначно устанавливают Salvador Efraín Salazar Arrué / Salarrué, но QID mapping требует отдельного review. Рекомендация — сохранить birthDate 1899-10-22 и deathDate 1975-11-27; точные даты подтверждены UES и хронологией UCA. Shared country files не изменялись.",
+  },
+];
+
+function finalizeReviewRecord(
+  record: Omit<WriterBiographyFactReviewRecord, "applicableTextRu">,
+): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu: record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch09: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch09Base.map(finalizeReviewRecord);

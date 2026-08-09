@@ -86,7 +86,7 @@ export const barbados: Country = {
       id: "austin_clarke",
       name: "Остин Кларк",
       years: "1934–2016",
-      birthDate: "1934-11-26",
+      birthDate: "1934-07-26",
       deathDate: "2016-06-26",
       birthPlace: "Сент-Майкл, Барбадос",
       deathPlace: "Торонто, Канада",

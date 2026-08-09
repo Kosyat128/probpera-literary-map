@@ -16,7 +16,7 @@ export const samoa: Country = {
 
       years: "1939–",
 
-      birthDate: "1939-10-08",
+      birthDate: "1939-10-27",
 
       deathDate: "",
 

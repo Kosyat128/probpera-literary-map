@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-09T11:30:33.491Z",
+  "legacyMappingCount": 1278,
+  "source": {
+    "name": "Wikidata",
+    "endpoint": "https://www.wikidata.org/w/api.php",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+    "checkedAt": "2026-08-09"
+  },
+  "repairedMappings": [
+    {
+      "key": "australia:les_murray",
+      "oldQid": "Q6529770",
+      "newQid": "Q259841",
+      "reason": "The old item describes an Australian sports journalist born in 1945; the corrected item describes the poet Les Murray born in 1938."
+    },
+    {
+      "key": "dominican_republic:juan_bosch",
+      "oldQid": "Q1710380",
+      "newQid": "Q439980",
+      "reason": "The old item describes a Spanish film director born in 1926; the corrected item describes the Dominican writer and president born in 1909."
+    },
+    {
+      "key": "england:t_s_eliot",
+      "oldQid": "Q3261882",
+      "newQid": "Q37767",
+      "reason": "The old item is Louis Favre (1910–1944); the corrected item is the poet T. S. Eliot (1888–1965)."
+    },
+    {
+      "key": "myanmar:ma_ma_lay",
+      "oldQid": "Q56254273",
+      "newQid": "Q6273845",
+      "reason": "The old item describes a Burmese politician born in 1962; the corrected item describes the Burmese writer born in 1917."
+    },
+    {
+      "key": "sweden:hjalmar_soderberg",
+      "oldQid": "Q49099212",
+      "newQid": "Q331845",
+      "reason": "The old item describes a Swedish painter born in 1859; the corrected item describes the Swedish writer born in 1869."
+    },
+    {
+      "key": "finland:fredrika_bremer",
+      "oldQid": "Q465687",
+      "newQid": "Q262145",
+      "reason": "The old item describes Fredrika Runeberg (1807–1879); the corrected item describes Swedish writer Fredrika Bremer (1801–1865)."
+    }
+  ],
+  "removedMappings": [
+    {
+      "key": "antigua_and_barbuda:alison_hughes",
+      "oldQid": "Q3611840",
+      "reason": "The item describes a British tennis umpire born in 1970, not the literary card born in 1962; no safe replacement item was established."
+    },
+    {
+      "key": "eritrea:khaled_abdalla",
+      "oldQid": "Q55389631",
+      "reason": "The item describes an Egyptian freestyle wrestler born in 1996, not the literary card born in 1960; no safe replacement item was established."
+    },
+    {
+      "key": "liberia:sylvester_williams",
+      "oldQid": "Q7660842",
+      "reason": "The item describes an American football player born in 1988, not the literary card born in 1940; no safe replacement item was established."
+    },
+    {
+      "key": "maldives:abdulla_sodiq",
+      "oldQid": "Q17198026",
+      "reason": "The item describes a Maldivian politician born in 1969, not the literary card born in 1946; no safe replacement item was established."
+    },
+    {
+      "key": "cameroon:jean_roger_essomba",
+      "oldQid": "Q95950701",
+      "reason": "The item describes Jean-Roger Essombe Edimo, not the Cameroonian writer and publisher Jean-Roger Essomba born in 1962; no safe replacement item was established."
+    },
+    {
+      "key": "chad:ahmat_taboye",
+      "oldQid": "Q3656879",
+      "reason": "The item uses the unverified Ahmat spelling and has no birth-date claim; institutional sources support writer Ahmad Taboye, but the authority identity is not yet strong enough to retain this mapping."
+    },
+    {
+      "key": "fiji:satendra_nandan",
+      "oldQid": "Q7426104",
+      "reason": "The item has an unsupported 1939 birth year and no literary occupation; institutional sources establish the writer Satendra Nandan with a 1944 birth date, but do not safely establish this Wikidata item as the same person."
+    }
+  ],
+  "stalePortraitKeys": [
+    "antigua_and_barbuda:alison_hughes",
+    "australia:les_murray",
+    "cameroon:jean_roger_essomba",
+    "chad:ahmat_taboye",
+    "dominican_republic:juan_bosch",
+    "england:t_s_eliot",
+    "eritrea:khaled_abdalla",
+    "fiji:satendra_nandan",
+    "finland:fredrika_bremer",
+    "liberia:sylvester_williams",
+    "maldives:abdulla_sodiq",
+    "myanmar:ma_ma_lay",
+    "sweden:hjalmar_soderberg"
+  ]
+}

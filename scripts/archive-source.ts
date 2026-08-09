@@ -1,4 +1,7 @@
-import { countries } from "../src/data/countries/index";
+import {
+  bookArchiveCountries,
+  countries,
+} from "../src/data/countries/index";
 import { calculateArchiveStatistics } from "../src/data/archiveStatistics";
 import { buildBookArchive } from "../src/data/bookArchive";
 import { auditCountryArchive } from "../src/data/countries/editorialAudit";
@@ -19,10 +22,15 @@ import {
   writerBiographyResearchDraftIssues,
 } from "../src/data/countries/writerBiographyResearch";
 import { writerBiographyResearchDrafts } from "../src/data/countries/writerBiographyResearchBatches";
+import {
+  quarantinedWriterIdentities,
+  writerBiographyLegacyCorrections,
+  writerIdentityCorrections,
+} from "../src/data/countries/writerBiographyLegacyCorrections";
 
 export const archiveCountries = countries;
-export const archiveBooks = buildBookArchive(countries);
-export const archiveRawBooks = buildBookArchive(countries, {
+export const archiveBooks = buildBookArchive(bookArchiveCountries);
+export const archiveRawBooks = buildBookArchive(bookArchiveCountries, {
   includeReviewedGenerated: false,
   applyEnrichmentActions: false,
 });
@@ -41,3 +49,8 @@ export {
   writerBiographyQualityIssues,
 };
 export { writerBiographyResearchDrafts };
+export {
+  quarantinedWriterIdentities,
+  writerBiographyLegacyCorrections,
+  writerIdentityCorrections,
+};

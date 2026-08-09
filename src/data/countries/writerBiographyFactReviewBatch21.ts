@@ -1,0 +1,367 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH21_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 21";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH21_REVIEWER;
+const checkedAt = "2026-08-09";
+
+type ReviewBase = Omit<WriterBiographyFactReviewRecord, "applicableTextRu">;
+
+const writerBiographyFactReviewBatch21Base = [
+  {
+    key: "democratic_republic_of_congo:sylvain_bemba",
+    originalSha256: "16126e659bdebf4d240400b51637bb062399913732f166f142b38f232f45d5da",
+    reviewedTextRu: "Сильвен Бемба — писатель, драматург, журналист и музыковед из Республики Конго. Среди его произведений — роман «Le Soleil est parti à M’Pemba» и пьеса «L’Homme qui tua le crocodile».",
+    claims: [{
+      textRu: "Сильвен Бемба был писателем, драматургом, журналистом и музыковедом из Республики Конго и написал Le Soleil est parti à M’Pemba и L’Homme qui tua le crocodile.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Bibliothèque nationale de France", url: "https://data.bnf.fr/11891126/sylvain_bemba/fr.pdf", checkedAt, findingRu: "Национальная библиотека идентифицирует Бембу как родившегося в Сибити в Республике Конго романиста и музыковеда и включает Le Soleil est parti à M’Pemba в перечень его произведений." },
+        { provider: "OpenEdition Books — EuroPhilosophie Éditions", url: "https://books.openedition.org/europhilosophie/1892", checkedAt, findingRu: "Институциональное издание определяет Бембу как романиста, драматурга, журналиста и музыковеда из Конго и атрибутирует ему пьесу L’Homme qui tua le crocodile." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Country/place recommendation: карточка ошибочно помещена в Democratic Republic of the Congo и указывает Kinshasa; автор родился в Sibiti, Republic of the Congo. Shared work «Лев и его жена» выбранными источниками не подтверждён; заменить документированными произведениями. Shared country files не изменялись.",
+  },
+  {
+    key: "democratic_republic_of_congo:tshibumba_kanda_matulu",
+    originalSha256: "88e068b8e3e63ae03cfc461a86d19efc348faec39593e6d79939e906200ab6b9",
+    reviewedTextRu: "Тшибумба Канда-Матулу — художник из Демократической Республики Конго, работавший в Лубумбаши. В 1970-х годах он создал цикл примерно из ста картин, представляющий историю Конго средствами популярной живописи.",
+    claims: [{
+      textRu: "Тшибумба Канда-Матулу был конголезским художником из Лубумбаши и в 1970-х годах создал цикл примерно из ста картин об истории Конго.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Smithsonian National Museum of African Art", url: "https://www.si.edu/object/nmafa_2007-3-3", checkedAt, findingRu: "Музейная запись определяет Канда-Матулу как художника ДР Конго, работавшего в Лубумбаши, и сообщает о завершённом в 1974–1976 годах цикле из ста картин." },
+        { provider: "University of Cape Town — Open Books", url: "https://openbooks.uct.ac.za/uct/catalog/download/70/80/2692?inline=1", checkedAt, findingRu: "Университетское издание независимо описывает его как художника и историка и связывает с серией History of Zaire, состоящей более чем из ста работ." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Role/work recommendation: заменить shared роль «автор» на художник; «История Заира» является живописным циклом, а не литературным произведением. Smithsonian датирует жизнь 1947 — около 1981 года, поэтому точный shared deathDate 1981 следует отображать как приблизительный. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:hans_christian_andersen",
+    originalSha256: "3ae0c2d7e89a6e94d72d5b05a91b1181833241c465b9d603fc8f290d4cfd39ef",
+    reviewedTextRu: "Ханс Кристиан Андерсен — датский писатель, создававший сказки, романы, пьесы, стихи и путевые книги. Среди его литературных сказок — «Русалочка», «Новое платье короля» и «Гадкий утёнок».",
+    claims: [{
+      textRu: "Ханс Кристиан Андерсен был датским автором сказок, романов, пьес, стихов и путевых книг и написал Русалочку, Новое платье короля и Гадкого утёнка.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/H.C._Andersen", checkedAt, findingRu: "Датская национальная энциклопедия подтверждает литературные жанры Андерсена и его авторство названных сказок." },
+        { provider: "Hans Christian Andersen Centre — University of Southern Denmark", url: "https://andersen.sdu.dk/liv/", checkedAt, findingRu: "Университетский центр документирует биографию и многожанровое наследие Андерсена, включая литературные сказки, романы, драматургию, поэзию и путевые книги." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Субъективная формула «всемирно известный» заменена жанрами и тремя документированными сказками. Shared dates 1805-04-02 и 1875-08-04 соответствуют авторитетным источникам. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:henrik_pontoppidan",
+    originalSha256: "8ced5ecfc7453337b946568d4fd93f0bd278213eafaf1dd07987d49ac73bc8c7",
+    reviewedTextRu: "Хенрик Понтоппидан — датский писатель, лауреат Нобелевской премии по литературе 1917 года. Его романные циклы «Земля обетованная», «Счастливчик Пер» и «Царство мёртвых» изображают общественные, религиозные и политические конфликты Дании рубежа XIX–XX веков.",
+    claims: [{
+      textRu: "Хенрик Понтоппидан был датским писателем и лауреатом Нобелевской премии 1917 года; Земля обетованная, Счастливчик Пер и Царство мёртвых относятся к его крупным романным циклам о датском обществе.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nobel Prize Outreach", url: "https://www.nobelprize.org/prizes/literature/1917/pontoppidan/facts/", checkedAt, findingRu: "Официальная запись подтверждает датскую принадлежность, Нобелевскую премию 1917 года и общественную проблематику прозы Понтоппидана." },
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/Henrik_Pontoppidan", checkedAt, findingRu: "Национальная энциклопедия описывает три названных романных цикла и их социальный, религиозный и политический контекст." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Интерпретация о «цене личного самоопределения» заменена Нобелевской премией, названиями циклов и документированной тематикой. Shared dates и произведения подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:jacob_paludan",
+    originalSha256: "21fa279885b5aae8ec17f383a284072de9e8f51af81f4fe69786e4b849d5ac6a",
+    reviewedTextRu: "Якоб Палудан — датский прозаик и эссеист. Он написал романы «Fugle omkring Fyret», «Markerne modnes» и двухтомный «Jørgen Stein», посвящённый поколению, взрослевшему во время Первой мировой войны.",
+    claims: [{
+      textRu: "Якоб Палудан был датским прозаиком и эссеистом и написал Fugle omkring Fyret, Markerne modnes и двухтомный Jørgen Stein о поколении Первой мировой войны.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/Jacob_Paludan", checkedAt, findingRu: "Национальная энциклопедия подтверждает роли Палудана, три романа и поколенческий контекст Jørgen Stein." },
+        { provider: "Det Danske Akademi", url: "https://www.danskeakademi.dk/medlem/jacob-paludan/", checkedAt, findingRu: "Датская академия независимо подтверждает авторскую идентичность Якоба Палудана и его место в датской литературе XX века." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Work recommendation: удалить shared «Жюль Верн», ошибочно приписанный Якобу Палудану; заменить тремя документированными романами. Shared dates 1896-02-07 и 1975-09-26 подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:johannes_v_jensen",
+    originalSha256: "607903faee6296052e8044b1df8a855792240f1de0389c06f289c7a8c09303f0",
+    reviewedTextRu: "Йоханнес В. Йенсен — датский прозаик, поэт и эссеист, лауреат Нобелевской премии по литературе 1944 года. Его цикл «Долгое путешествие» посвящён эволюции человечества; к другим произведениям относятся роман «Падение короля» и цикл «Мифы».",
+    claims: [{
+      textRu: "Йоханнес В. Йенсен был датским прозаиком, поэтом и эссеистом, получил Нобелевскую премию 1944 года и написал Долгое путешествие, Падение короля и Мифы.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nobel Prize Outreach", url: "https://www.nobelprize.org/prizes/literature/1944/jensen/facts/", checkedAt, findingRu: "Официальная запись подтверждает литературные роли, премию 1944 года, эволюционную тему Den lange rejse и атрибуцию Kongens Fald и Myter." },
+        { provider: "Lex — Dansk Biografisk Leksikon", url: "https://biografiskleksikon.lex.dk/Johannes_V._Jensen", checkedAt, findingRu: "Датский биографический словарь независимо подтверждает автора и рассматривает Den lange Rejse, Kongens Fald и Myter в его наследии." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Неопределённая интерпретация об истории североевропейского человека заменена точной темой эволюции человечества, премией и произведениями. Shared dates и works подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:karen_blixen",
+    originalSha256: "be7b0073d24b88f1fbe8ddfdfe5761c45244c4e7f8b15025c8f3e538ecf85aa8",
+    reviewedTextRu: "Карен Бликсен — датская писательница, публиковавшаяся также под именем Исак Динесен. Она написала сборник «Seven Gothic Tales» и автобиографическую книгу «Out of Africa», основанную на годах жизни на кофейной ферме в Кении.",
+    claims: [{
+      textRu: "Карен Бликсен была датской писательницей, использовала имя Исак Динесен и написала Seven Gothic Tales и автобиографическую Out of Africa о годах на ферме в Кении.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Royal Danish Library", url: "https://www.kb.dk/en/inspiration/book-festival-royal-danish-library/out-africa-blixens-autobiographical-work", checkedAt, findingRu: "Королевская библиотека подтверждает авторство Seven Gothic Tales и Out of Africa, псевдоним Isak Dinesen и связь второй книги с кофейной фермой в Кении." },
+        { provider: "Lex — Dansk Kvindebiografisk Leksikon", url: "https://kvindebiografiskleksikon.lex.dk/Karen_Blixen", checkedAt, findingRu: "Датский биографический словарь независимо идентифицирует Бликсен как датскую писательницу, связывает её с Isak Dinesen и двумя названными книгами." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочная формула «выдающаяся» и широкое жанровое определение заменены псевдонимом и двумя произведениями. Shared dates 1885-04-17 и 1962-09-07 подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:karl_gjellerup",
+    originalSha256: "d91228294acddbc855858f90219b54099294b5ec87ec30e0f559514ecf361cef",
+    reviewedTextRu: "Карл Адольф Гьеллеруп — датский поэт, драматург и романист, лауреат Нобелевской премии по литературе 1917 года. После 1900 года он писал преимущественно по-немецки; буддийская тематика представлена в романе «Пилигрим Каманита».",
+    claims: [{
+      textRu: "Карл Адольф Гьеллеруп был датским поэтом, драматургом и романистом, получил Нобелевскую премию 1917 года, после 1900 года писал по-немецки и создал буддийский роман Пилигрим Каманита.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nobel Prize Outreach", url: "https://www.nobelprize.org/prizes/literature/1917/gjellerup/facts/", checkedAt, findingRu: "Официальная запись подтверждает премию, датское происхождение, переход к немецкому языку и буддийскую тему The Pilgrim Kamanita." },
+        { provider: "Lex — Dansk Biografisk Leksikon", url: "https://biografiskleksikon.lex.dk/Karl_Gjellerup", checkedAt, findingRu: "Датский биографический словарь независимо подтверждает жанровые роли, Нобелевскую премию и буддийскую проблематику Pilgrimen Kamanita." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Общая схема творческой эволюции заменена премией, языком и одним документированным романом. Shared dates 1857-06-02 и 1919-10-11 подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:martin_andersen_nexo",
+    originalSha256: "0b162c90230eebe08be5293a9bd47274897b8ffc57f5275ad19ee1dda983b905",
+    reviewedTextRu: "Мартин Андерсен-Нексё — датский прозаик, связанный с рабочей литературой. Его романные циклы «Пелле-завоеватель» и «Дитте — дитя человеческое» посвящены судьбам людей из низших социальных слоёв.",
+    claims: [{
+      textRu: "Мартин Андерсен-Нексё был датским прозаиком рабочей литературы и написал циклы Пелле-завоеватель и Дитте — дитя человеческое о людях из низших социальных слоёв.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/Martin_Andersen_Nex%C3%B8", checkedAt, findingRu: "Национальная энциклопедия связывает Нексё с рабочей литературой и рассматривает Pelle Erobreren и Ditte Menneskebarn как основные романные циклы." },
+        { provider: "Royal Danish Library", url: "https://www.kb.dk/e-mat/dod/130025952449-color.pdf", checkedAt, findingRu: "Оцифрованное библиотечное исследование независимо атрибутирует Нексё оба цикла и описывает Дитте как ребёнка из низшего социального слоя." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказательный ранг «крупный» заменён литературным направлением и двумя романными циклами. Shared dates 1869-06-26 и 1954-06-01 подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:peter_hoeg",
+    originalSha256: "9d3c6ea146ac18fb3840982aee789cd2c6beacc3d9cb7796e3b8ac09cd59795b",
+    reviewedTextRu: "Петер Хёг — датский писатель, дебютировавший в 1988 году романом «Представление о двадцатом веке». Среди его книг — «Смилла и её чувство снега», «Условно пригодные» и «Женщина и обезьяна».",
+    claims: [{
+      textRu: "Петер Хёг — датский писатель, дебютировавший в 1988 году романом Представление о двадцатом веке и написавший Смиллу и её чувство снега, Условно пригодных и Женщину и обезьяну.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Gyldendal", url: "https://www.gyldendal.dk/forfattere/peter-hoeg-f24702", checkedAt, findingRu: "Официальная издательская биография фиксирует дебют 1988 года и перечисляет Forestilling om det tyvende århundrede, Frøken Smillas fornemmelse for sne, De måske egnede и Kvinden og aben." },
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/Peter_H%C3%B8eg", checkedAt, findingRu: "Национальная энциклопедия независимо подтверждает датскую идентичность Хёга, дебютный роман и три последующих произведения." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Имя приведено к русской форме «Петер Хёг»; расплывчатое определение интеллектуальной прозы заменено дебютом и четырьмя романами. Shared birthDate 1957-05-17 выбранные источники подтверждают только на уровне года; точную дату не меняли. Shared country files не изменялись.",
+  },
+  {
+    key: "denmark:soren_kierkegaard",
+    originalSha256: "3c0de836b087229bb6bc1259abe1d53bb3f4fc3f443ce5ee9b9c4edf448bb5a2",
+    reviewedTextRu: "Сёрен Кьеркегор — датский теолог, философ и писатель, значительную часть сочинений публиковавший под псевдонимами. К его произведениям относятся «Или — или», «Страх и трепет» и «Понятие страха».",
+    claims: [{
+      textRu: "Сёрен Кьеркегор был датским теологом, философом и писателем, широко использовал псевдонимы и написал Или — или, Страх и трепет и Понятие страха.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Søren Kierkegaard Research Centre — University of Copenhagen", url: "https://teol.ku.dk/skc/om-soeren-kierkegaard/soeren-kierkegaard-den-globale-dansker/soeren-kierkegaards-forfatterskab-vaerker-litteraturoversigt/", checkedAt, findingRu: "Университетский центр определяет Кьеркегора как теолога, философа и писателя, объясняет систему псевдонимов и перечисляет Enten — Eller, Frygt og Bæven и Begrebet Angest." },
+        { provider: "Lex — National Encyclopedia of Denmark", url: "https://lex.dk/S%C3%B8ren_Kierkegaard", checkedAt, findingRu: "Национальная энциклопедия независимо подтверждает авторскую идентичность, псевдонимные издания и три названных произведения." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Однострочное определение заменено точными ролями, особенностью псевдонимной публикации и тремя книгами. Shared dates и birthplace подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "djibouti:abdourahman_h_yama",
+    originalSha256: "c43c3f18ae05bde3f7ae004a0822297460a8793cf707b60b7a1ade45866e105f",
+    reviewedTextRu: "Имя «Абдулкадир Хирси Яма» не удалось связать с документированным джибутийским писателем или поэтом. Национальные и университетские каталоги не подтверждают личность, дату рождения и литературные произведения этой карточки.",
+    claims: [{
+      textRu: "Не удалось установить литературную личность Abdourahman H. Yama или Abdulkadir Hirsi Yama как джибутийского писателя 1958 года рождения и найти документированную библиографию.",
+      verdict: "not-established",
+      evidence: [
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/rechercher.do?motRecherche=Abdulkadir+Hirsi+Yama&critereRecherche=0&depart=0&facetteModifiee=ok", checkedAt, findingRu: "Поиск точного имени в национальном библиотечном каталоге не выявил authority record или библиографии джибутийского писателя, соответствующего карточке." },
+        { provider: "IdRef — ABES", url: "https://www.idref.fr/Search?q=Abdulkadir%20Hirsi%20Yama", checkedAt, findingRu: "Поиск во французской университетской сети авторитетных данных не дал идентифицируемой записи автора с указанными именем, страной и годом рождения." },
+      ],
+    }],
+    reviewer,
+    decision: "held",
+    notes: "Quarantine recommendation: удерживать карточку; key/fullName Abdourahman H. Yama не соответствует displayedName «Абдулкадир Хирси Яма», а институциональная литературная личность не установлена. Не смешивать с Abdourahman A. Waberi или другими джибутийскими авторами. Shared country files не изменялись.",
+  },
+  {
+    key: "djibouti:aden_robleh_awaleh",
+    originalSha256: "27f573d220ad1cb18fd6596e385fe717120c573c8a55a91cec0d3aeae707c392",
+    reviewedTextRu: "Аден Робле Авале — джибутийский политический деятель и участник движения за независимость, возглавлявший Национально-демократическую партию. Он также написал книгу «Djibouti, clef de la mer Rouge» о политической истории и международном положении Джибути.",
+    claims: [{
+      textRu: "Аден Робле Авале был джибутийским политиком и участником движения за независимость, возглавлял Национально-демократическую партию и написал Djibouti, clef de la mer Rouge.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "La Nation — République de Djibouti", url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/", checkedAt, findingRu: "Официальная газета Джибути подтверждает политическую биографию, участие в истории независимости, рождение в Али-Сабие в 1941 году и смерть 31 октября 2014 года." },
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g", checkedAt, findingRu: "Национальный библиотечный каталог атрибутирует Адену Робле Авале книгу Djibouti, clef de la mer Rouge 1986 года и фиксирует её политико-историческую тематику." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Identity/date/place recommendation: candidate Q967740 подтверждён совпадением полного имени и официальной биографией. Заменить shared birthDate 1940 на 1941, birthPlace Djibouti на Ali Sabieh и добавить deathDate 2014-10-31. Основная документированная роль — политик, не литературный писатель. Shared country files не изменялись.",
+  },
+  {
+    key: "dominican_republic:julia_alvarez",
+    originalSha256: "3e65bf3dbdc388b5d7ef16facf7e789bcc6f7c6ec3d5089f6877ee0b688854da",
+    reviewedTextRu: "Джулия Альварес — американская писательница доминиканского происхождения, создающая прозу, поэзию и книги для юных читателей. Среди её романов — «Как девочки Гарсиа потеряли акцент» и «Время бабочек», связанные с историей Доминиканской Республики и опытом миграции.",
+    claims: [{
+      textRu: "Джулия Альварес — американская писательница доминиканского происхождения, автор прозы, поэзии и книг для юных читателей, включая Как девочки Гарсиа потеряли акцент и Время бабочек.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Middlebury College", url: "https://www.middlebury.edu/stories/archive/2016/03/alvarez-and-danticat-celebrate-power-story", checkedAt, findingRu: "Колледж подтверждает доминиканско-американскую идентичность Альварес, её литературную и преподавательскую работу и связь прозы с миграционным опытом." },
+        { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/476/julia-alvarez/", checkedAt, findingRu: "Официальная издательская биография подтверждает жанры автора и атрибутирует ей How the García Girls Lost Their Accents и In the Time of the Butterflies." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Имя приведено к общеупотребительной русской форме «Джулия Альварес»; широкая тематическая формула конкретизирована жанрами и двумя романами. Shared birthDate 1950-03-27 и birthplace New York подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "dominican_republic:junot_diaz",
+    originalSha256: "89e854836eccb3e2f76405cc6d0e160e6c75137123e523eb002ce60e7dbc1866",
+    reviewedTextRu: "Джуно Диас — американский писатель доминиканского происхождения, родившийся в Санто-Доминго и выросший в Нью-Джерси. Он написал сборники «Drown» и «This Is How You Lose Her»; роман «Короткая фантастическая жизнь Оскара Вау» получил Пулитцеровскую премию 2008 года.",
+    claims: [{
+      textRu: "Джуно Диас — американский писатель доминиканского происхождения, родившийся в Санто-Доминго и выросший в Нью-Джерси, автор Drown, This Is How You Lose Her и получившего Пулитцеровскую премию 2008 года романа The Brief Wondrous Life of Oscar Wao.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "The Pulitzer Prizes", url: "https://www.pulitzer.org/winners/junot-diaz", checkedAt, findingRu: "Официальная запись премии подтверждает автора, роман The Brief Wondrous Life of Oscar Wao и победу в категории Fiction в 2008 году." },
+        { provider: "Library of Congress", url: "https://www.loc.gov/static/programs/national-book-festival/history/past-festivals/documents/NBF12-Program.pdf", checkedAt, findingRu: "Программа Национального книжного фестиваля атрибутирует Диасу Drown, The Brief Wondrous Life of Oscar Wao и This Is How You Lose Her и подтверждает Пулитцеровскую премию." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Редакционный placeholder полностью заменён фактической биографией без status markers. Точные даты в shared card отсутствуют; выбранные источники позволяют добавить 1968-12-31 только после отдельной проверки authority record, поэтому date recommendation не выносится. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:demetrio_aguilera_malta",
+    originalSha256: "cc824750d83fee521b820fc6590824fd7c8386419583d615631cd68cc450ea4f",
+    reviewedTextRu: "Деметрио Агилера Мальта — эквадорский писатель, драматург, художник, кинематографист и дипломат, участник литературной группы Гуаякиля. В романах «Дон Гойо» и «Семь лун и семь змей» он обращался к жизни и культуре прибрежного Эквадора.",
+    claims: [{
+      textRu: "Деметрио Агилера Мальта был эквадорским писателем, драматургом, художником, кинематографистом и дипломатом группы Гуаякиля и написал Дон Гойо и Семь лун и семь змей о прибрежном Эквадоре.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Academia Ecuatoriana de la Lengua", url: "https://www.academiaecuatorianadelalengua.org/wp-content/uploads/2024/02/boletin-la-alegria-de-la-palabra-06.pdf", checkedAt, findingRu: "Эквадорская академия подтверждает литературную, художественную, кинематографическую и дипломатическую деятельность, прибрежную тематику и два названных романа." },
+        { provider: "Asociación de Funcionarios y Empleados del Servicio Exterior Ecuatoriano", url: "https://afese.com/img/revistas/revista55/aguileramalta.pdf", checkedAt, findingRu: "Издание дипломатической ассоциации независимо подтверждает идентичность Агилеры Мальты, его литературную и дипломатическую работу и связь с эквадорским побережьем." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Имя исправлено с shared «Агилар» на «Агилера». Date caution: институциональные публикации расходятся в дне и месяце рождения 1909 года, поэтому shared 1909-05-24 не следует считать окончательно установленной без первичного документа. Shared deathDate 1981-12-28 подтверждается. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:ernesto_noboa_caamano",
+    originalSha256: "770ce264e8a320bc4830e0ab8c131458b39224d2f4ce32dac1898dff2e52eae3",
+    reviewedTextRu: "Эрнесто Нобоа-и-Кааманьо — эквадорский поэт-модернист, относимый к так называемому «обезглавленному поколению». Его стихи, испытавшие влияние французского символизма, собраны в книге «Romanza de las horas»; к известным произведениям относится «Emoción vesperal».",
+    claims: [{
+      textRu: "Эрнесто Нобоа-и-Кааманьо был эквадорским поэтом-модернистом «обезглавленного поколения»; его поэзия испытала влияние французского символизма, а произведения включают Romanza de las horas и Emoción vesperal.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Ministerio de Educación del Ecuador", url: "https://adistancia.educacion.gob.ec/wp-content/uploads/2023/11/Guia-de-Estudios-C12-Lengua-y-Literatura-3ro-BGU.pdf", checkedAt, findingRu: "Учебное издание министерства подтверждает модернизм, принадлежность к «обезглавленному поколению», влияние французских символистов, Romanza de las horas и Emoción vesperal." },
+        { provider: "Universidad Andina Simón Bolívar", url: "https://repositorio.uasb.edu.ec/items/5c7a91ef-af0a-4cb9-9873-5c0a2e5d1fc8", checkedAt, findingRu: "Университетское исследование независимо рассматривает Нобоа-и-Кааманьо как эквадорского поэта-модерниста и документирует его публикации и литературный круг." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Shared works «Романтический вечер» и «Оригинальные стихи» заменены документированными Romanza de las horas и Emoción vesperal. Date caution: институциональные источники расходятся между 1889 и 1891 годами рождения; exact shared 1891-08-11 не следует считать окончательно установленной без первичного документа. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:juan_bautista_aguirre",
+    originalSha256: "e8a728fd0158f5f9965207f8a436fa959478f8c713c3aa30b28016ff1dfdfb84",
+    reviewedTextRu: "Хуан Баутиста Агирре — поэт, философ, богослов и священник-иезуит XVIII века, родившийся в Даула на территории нынешнего Эквадора. Его сохранившееся наследие включает барочную поэзию, ораторскую прозу и философские труды.",
+    claims: [{
+      textRu: "Хуан Баутиста Агирре был родившимся в Даула поэтом, философом, богословом и иезуитом XVIII века, оставившим барочную поэзию, ораторскую прозу и философские труды.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Biblioteca Virtual Miguel de Cervantes", url: "https://www.cervantesvirtual.com/portales/aecid/autor/6660/Aguirre%2C%20Juan%20Bautista%2C%201725-1786", checkedAt, findingRu: "Институциональный авторский портал подтверждает идентичность, годы жизни и корпус поэтических, философских и религиозных сочинений Агирре." },
+        { provider: "Academia Ecuatoriana de la Lengua", url: "https://www.academiaecuatorianadelalengua.org/mistica-y-poesia-en-ecuador-por-don-eduardo-mora-anda/", checkedAt, findingRu: "Эквадорская академия независимо связывает иезуита Агирре с поэзией колониального барокко, философией и богословием на территории нынешнего Эквадора." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказательный ранг «один из первых крупных авторов» снят; сохранены документированные роли, эпоха и виды наследия. Shared dates 1725-04-11 и 1786-06-15 выбранные источники подтверждают только на уровне годов; точные день и месяц не менялись. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:juan_leon_mera",
+    originalSha256: "e849af9521c0c2ccaa45fd93f2a6a65f6f33d1d3a59d0f1ea934f34be299ee9b",
+    reviewedTextRu: "Хуан Леон Мера — эквадорский писатель, политический деятель и художник. Он написал роман «Куманда» и текст государственного гимна Эквадора, а также участвовал в основании Эквадорской академии языка.",
+    claims: [{
+      textRu: "Хуан Леон Мера был эквадорским писателем, политиком и художником, написал Куманду и текст государственного гимна и участвовал в основании Эквадорской академии языка.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana", url: "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=5082", checkedAt, findingRu: "Национальный культурный каталог подтверждает роли Меры, даты, роман Cumandá и авторство текста гимна Эквадора." },
+        { provider: "Biblioteca Virtual Miguel de Cervantes", url: "https://www.cervantesvirtual.com/portales/juan_leon_mera/", checkedAt, findingRu: "Институциональный авторский портал независимо подтверждает Cumandá, текст гимна, литературную и политическую деятельность и участие в основании Эквадорской академии языка." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное место Куманды в истории романа заменено точными ролями, произведением, гимном и академической деятельностью. Shared dates 1832-06-28 и 1894-12-13 и birthplace Ambato подтверждены. Shared country files не изменялись.",
+  },
+  {
+    key: "ecuador:juan_montalvo",
+    originalSha256: "7a73f2a446d10f67876b0871ea756787382d93d9bc6ec77a24edde99d53b9742",
+    reviewedTextRu: "Хуан Монтальво — эквадорский эссеист и публицист XIX века, выступавший против правительств Габриэля Гарсиа Морено и Игнасио де Вейнтемильи. Среди его произведений — «Семь трактатов», «Катилинарии» и «Главы, которые забыл Сервантес».",
+    claims: [{
+      textRu: "Хуан Монтальво был эквадорским эссеистом и публицистом XIX века, оппонентом Гарсиа Морено и Вейнтемильи и автором Семи трактатов, Катилинарий и Глав, которые забыл Сервантес.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana", url: "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=5242", checkedAt, findingRu: "Авторитетная запись подтверждает даты и роли Монтальво, его противостояние Гарсиа Морено и Вейнтемилье и атрибутирует ему три названных произведения." },
+        { provider: "Ministerio de Educación del Ecuador", url: "https://educacion.gob.ec/wp-content/uploads/downloads/2017/07/Libro-Catedra-Montalvina.pdf", checkedAt, findingRu: "Официальное учебное издание независимо рассматривает Монтальво как эквадорского эссеиста и документирует Siete tratados, Las Catilinarias и Capítulos que se le olvidaron a Cervantes." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив «один из величайших мыслителей» снят; вместо него даны жанры, политический контекст и три произведения. Shared work «Космополитическая геометрия» не соответствует документированному названию Geometría moral и требует отдельной правки. Shared dates и birthplace подтверждены. Shared country files не изменялись.",
+  },
+] satisfies readonly ReviewBase[];
+
+function finalizeReviewRecord(record: ReviewBase): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu: record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch21: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch21Base.map(finalizeReviewRecord);

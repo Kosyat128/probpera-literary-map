@@ -1,0 +1,658 @@
+{
+  "batch": "04",
+  "generatedAt": "2026-08-09",
+  "summary": {
+    "records": 20,
+    "unchanged": 1,
+    "corrected": 19,
+    "held": 0
+  },
+  "records": [
+    {
+      "key": "azerbaijan:nizami_ganjavi",
+      "originalSha256": "e8563afb9b304e637900a0d8b158d4559e19a4e7049ba4ab4fbc6822064f8ed5",
+      "reviewedTextRu": "Персоязычный поэт XII века, родившийся и живший в Гяндже. Автор цикла из пяти поэм «Хамсе».",
+      "claims": [
+        {
+          "textRu": "Низами был персоязычным поэтом XII века, связанным с Гянджой, и создал «Хамсе» — цикл из пяти поэм.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "url": "https://www.iranicaonline.org/articles/iran-viii2-classical-persian-literature/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическая энциклопедия относит Низами Гянджеви к классической персидской литературе, связывает его жизнь с Гянджой и датирует её примерно 1141–1209 годами."
+            },
+            {
+              "provider": "Encyclopaedia Iranica",
+              "url": "https://www.iranicaonline.org/articles/kamsa-of-nezami/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Специальная статья определяет «Хамсе» Низами как квинтет из пяти повествовательных поэм."
+            },
+            {
+              "provider": "UNESCO Memory of the World",
+              "url": "https://www.unesco.org/en/memory-world/collection-nezamis-panj-ganj",
+              "checkedAt": "2026-08-09",
+              "findingRu": "ЮНЕСКО описывает «Пандж Гандж», или «Хамсе», как собрание пяти длинных поэм на персидском языке."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Сняты оценочные слова «великий» и «один из крупнейших»; оставлены литературная традиция, связь с Гянджой и проверяемый состав «Хамсе».",
+      "applicableTextRu": "Персоязычный поэт XII века, родившийся и живший в Гяндже. Автор цикла из пяти поэм «Хамсе»."
+    },
+    {
+      "key": "azerbaijan:samed_vurgun",
+      "originalSha256": "553dab624944e784bc9abc59e67d1b1ff33c9d69b5eb64e494bd21f6500ca863",
+      "reviewedTextRu": "Азербайджанский поэт и драматург, народный поэт Азербайджана. Автор поэтической драмы «Вагиф».",
+      "claims": [
+        {
+          "textRu": "Самед Вургун был азербайджанским поэтом и драматургом, носил звание народного поэта Азербайджана и написал поэтическую драму «Вагиф».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/en/historical/page/yq1KTCc",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография называет Вургуна поэтом, народным поэтом Азербайджана и сообщает о создании стихотворной драмы «Вагиф» в 1937 году."
+            },
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/en/virtual/books/NsAGoHq",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Виртуальная выставка документирует биографию и литературное наследие Вургуна, включая драму «Вагиф»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Субъективная известность заменена официальным званием и конкретным произведением; два подтверждения принадлежат одной институциональной семье.",
+      "applicableTextRu": "Азербайджанский поэт и драматург, народный поэт Азербайджана. Автор поэтической драмы «Вагиф»."
+    },
+    {
+      "key": "bahrain:ibrahim_al_arrayed",
+      "originalSha256": "f1380c141075719deb300123ef116046a668ca6e98b6dab707db175249854674",
+      "reviewedTextRu": "Бахрейнский поэт и переводчик, чьё литературное наследие включает переводы произведений Омара Хайяма.",
+      "claims": [
+        {
+          "textRu": "Ибрахим аль-Аррайед был бахрейнским поэтом и переводчиком; среди его работ — переводы произведений Омара Хайяма.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bahrain Authority for Culture and Antiquities",
+              "url": "https://culture.gov.bh/en/visitingbahrain/CulturalTourism/Destinations/Name%2C14796%2Cen.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственное культурное ведомство представляет аль-Аррайеда как центральную фигуру поэзии и литературы Бахрейна."
+            },
+            {
+              "provider": "Shaikh Ebrahim Center for Culture and Research",
+              "url": "https://shaikhebrahimcenter.org/en/house/house-of-poetry/?from_pagination=1&mode=next",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Культурный центр называет аль-Аррайеда бахрейнским поэтом, отмечает переводческую работу и переводы Хайяма."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Непроверяемая формула об основателе современной литературы заменена документированными ролями и примером переводческого наследия.",
+      "applicableTextRu": "Бахрейнский поэт и переводчик, чьё литературное наследие включает переводы произведений Омара Хайяма."
+    },
+    {
+      "key": "bahrain:qassim_haddad",
+      "originalSha256": "8e11427d5d01d001920213f3c90cd490749533ff4f08ca845d5aa0a5eaf2e79c",
+      "reviewedTextRu": "Бахрейнский поэт, один из основателей Ассоциации писателей Бахрейна. Его первый поэтический сборник «Аль-Бишара» вышел в 1970 году.",
+      "claims": [
+        {
+          "textRu": "Касим Хаддад — бахрейнский поэт, сооснователь Ассоциации писателей Бахрейна; его первый сборник «Аль-Бишара» вышел в 1970 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Sultan Bin Ali Al Owais Cultural Foundation",
+              "url": "https://www.alowais.com/en/qassim-haddad/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Культурный фонд подтверждает рождение поэта в Бахрейне, участие в основании Bahrain Writers Association в 1969 году и библиографию."
+            },
+            {
+              "provider": "Lyrikline / Haus für Poesie",
+              "url": "https://www.lyrikline.org/en/authors/qassim-haddad",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институциональный архив указывает Бахрейн, соучреждение писательской ассоциации и первый сборник Al-Bishara 1970 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Суперлатив о месте в современной арабской поэзии заменён двумя датированными биографическими фактами.",
+      "applicableTextRu": "Бахрейнский поэт, один из основателей Ассоциации писателей Бахрейна. Его первый поэтический сборник «Аль-Бишара» вышел в 1970 году."
+    },
+    {
+      "key": "bangladesh:humayun_ahmed",
+      "originalSha256": "623a1997f7d42e46af35d8b62bd13797f3d656a4084266476830a3d839126cc7",
+      "reviewedTextRu": "Бангладешский писатель, драматург и кинорежиссёр. Его дебютный роман «Nondito Naroke» был опубликован в 1972 году.",
+      "claims": [
+        {
+          "textRu": "Хумаюн Ахмед был бангладешским писателем, драматургом и кинорежиссёром; его дебютный роман «Nondito Naroke» опубликован в 1972 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Banglapedia, Asiatic Society of Bangladesh",
+              "url": "https://en.banglapedia.org/index.php?title=Ahmed%2C_Humayun",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия называет Ахмеда прозаиком, драматургом и кинематографистом и датирует публикацию первого романа Nondito Naroke 1972 годом."
+            },
+            {
+              "provider": "University of Dhaka",
+              "url": "https://du.ac.bd/notableAlumni/2/240",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский профиль подтверждает его работу романиста, драматурга, сценариста и кинорежиссёра Бангладеш."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Популярность не ранжируется; вместо неё указаны подтверждённые виды деятельности и дебютный роман.",
+      "applicableTextRu": "Бангладешский писатель, драматург и кинорежиссёр. Его дебютный роман «Nondito Naroke» был опубликован в 1972 году."
+    },
+    {
+      "key": "bangladesh:kazi_nazrul_islam",
+      "originalSha256": "41dae27c65b5927f6716f5c93533387a1bb26f9eafee0aee6ab1875a3cc70523",
+      "reviewedTextRu": "Национальный поэт Бангладеш, также работавший как композитор и журналист. В своих произведениях и общественной деятельности выступал против колониального господства и угнетения.",
+      "claims": [
+        {
+          "textRu": "Кази Назрул Ислам — национальный поэт Бангладеш, композитор и журналист; его творчество и общественная деятельность были направлены против колониального господства и угнетения.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Banglapedia, Asiatic Society of Bangladesh",
+              "url": "https://en.banglapedia.org/index.php/Islam%2C_Kazi_Nazrul",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия подтверждает статус национального поэта, работу в музыке и журналистике, сопротивление колониальному правлению и эксплуатации."
+            },
+            {
+              "provider": "Kabi Nazrul Institute, Ministry of Cultural Affairs",
+              "url": "https://nazrulinstitute.gov.bd/site/page/80f39d07-dad8-47eb-b79a-6943891ba70d/%E0%A6%87%E0%A6%A4%E0%A6%BF%E0%A6%B9%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B2%E0%A6%BF",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный институт называет Назрула национальным поэтом Бангладеш и фиксирует вклад в поэзию и музыку."
+            },
+            {
+              "provider": "University of Dhaka, Bangla Department Journal",
+              "url": "https://journal.bangla.du.ac.bd/article/view/995/908",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская публикация рассматривает противостояние несправедливости, угнетению и иностранному владычеству в его поэзии."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Оценочный суперлатив снят; сохранён официальный национальный статус и конкретизирована общественная направленность творчества.",
+      "applicableTextRu": "Национальный поэт Бангладеш, также работавший как композитор и журналист. В своих произведениях и общественной деятельности выступал против колониального господства и угнетения."
+    },
+    {
+      "key": "bangladesh:syed_waliullah",
+      "originalSha256": "edd23357ebba90f4bbb48b29911941eadf426817cb2012bbb86184092cd63c35",
+      "reviewedTextRu": "Бангладешский романист, автор рассказов и пьес. Его первый роман «Лалсалу» был опубликован в 1948 году.",
+      "claims": [
+        {
+          "textRu": "Сайед Валиулла был бангладешским романистом, автором рассказов и пьес; его первый роман «Лалсалу» вышел в 1948 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Banglapedia, Asiatic Society of Bangladesh",
+              "url": "https://en.banglapedia.org/index.php?title=Waliullah%2C_Syed",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия определяет Валиуллу как романиста, автора рассказов и драматурга и датирует первый роман Lalsalu 1948 годом."
+            },
+            {
+              "provider": "Banglapedia, статья «Novel»",
+              "url": "https://en.banglapedia.org/index.php?title=Novel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Обзор истории бенгальского романа фиксирует Lalsalu Валиуллы и дату 1948."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Субъективный литературный ранг заменён жанровыми ролями и первым романом. Два подтверждения получены из разных статей одной национальной энциклопедии.",
+      "applicableTextRu": "Бангладешский романист, автор рассказов и пьес. Его первый роман «Лалсалу» был опубликован в 1948 году."
+    },
+    {
+      "key": "barbados:kamau_brathwaite",
+      "originalSha256": "656c68619c99e1adb5ee2891047c8090036d2fc1c30ecca8230340098189efeb",
+      "reviewedTextRu": "Барбадосский поэт и историк, один из основателей Caribbean Artists Movement. Его поэзия обращается к постколониальной истории и карибской языковой традиции.",
+      "claims": [
+        {
+          "textRu": "Камау Брэтуэйт был барбадосским поэтом и историком, сооснователем Caribbean Artists Movement; его поэзия связана с постколониальной историей и карибской языковой традицией.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Griffin Poetry Prize Trust",
+              "url": "https://griffinpoetryprize.com/news/gpp2006-winners.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Справка фонда подтверждает барбадосское происхождение, работу поэта и историка и участие в основании Caribbean Artists Movement."
+            },
+            {
+              "provider": "The University of the West Indies",
+              "url": "https://sta.uwi.edu/uwitoday/archive/february_2020/article3.asp",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский очерк называет Брэтуэйта барбадосским поэтом и историком и отмечает работу с афро-карибской речью и культурной идентичностью."
+            },
+            {
+              "provider": "Poetry Archive",
+              "url": "https://poetryarchive.org/poet/kamau-brathwaite/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архив связывает его поэзию с историей колониализма, постколониальными идентичностями и карибскими речевыми формами."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Снят региональный суперлатив; идея самостоятельной традиции выражена через документированные организационные и поэтические практики.",
+      "applicableTextRu": "Барбадосский поэт и историк, один из основателей Caribbean Artists Movement. Его поэзия обращается к постколониальной истории и карибской языковой традиции."
+    },
+    {
+      "key": "belarus:francisak_bahushevich",
+      "originalSha256": "3cc27046ba7f726372fd4113c4a5a0271882fa99c728552dcfae6deca7b50e3f",
+      "reviewedTextRu": "Белорусский поэт и прозаик, автор сборников «Дудка белорусская» и «Смычок белорусский». В публицистике защищал белорусский язык и культуру.",
+      "claims": [
+        {
+          "textRu": "Франтишек Богушевич был белорусским поэтом и прозаиком, написал сборники «Дудка белорусская» и «Смычок белорусский» и выступал в защиту белорусского языка и культуры.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Visuotinė lietuvių enciklopedija",
+              "url": "https://www.vle.lt/straipsnis/francisak-bahusevic/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия Литвы называет Богушевича белорусским писателем, перечисляет оба сборника и отмечает защиту белорусской культуры."
+            },
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/1869171",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия подтверждает поэзию и прозу на белорусском языке, названия двух сборников и роль автора в развитии белорусской литературы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Формула «один из основоположников» заменена конкретными произведениями и документированной языковой позицией.",
+      "applicableTextRu": "Белорусский поэт и прозаик, автор сборников «Дудка белорусская» и «Смычок белорусский». В публицистике защищал белорусский язык и культуру."
+    },
+    {
+      "key": "belarus:francysk_skaryna",
+      "originalSha256": "00adeb65374fb5c733df9e03a9cd4f232e2b56d347ad7dbc6843e35093a17301",
+      "reviewedTextRu": "Гуманист, переводчик, врач и первопечатник из Полоцка. В 1517 году в Праге издал Псалтирь, считающуюся первой печатной белорусской книгой.",
+      "claims": [
+        {
+          "textRu": "Франциск Скорина был гуманистом, переводчиком, врачом и первопечатником из Полоцка; в 1517 году он издал в Праге Псалтирь, считающуюся первой печатной белорусской книгой.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Francis Skaryna Belarusian Library and Museum",
+              "url": "https://skaryna.org/about-us/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль учреждения называет Скорину учёным-гуманистом, врачом и первопечатником и связывает пражские издания 1517 года с началом белорусского книгопечатания."
+            },
+            {
+              "provider": "National Library of Russia",
+              "url": "https://expositions.nlr.ru/eng/faust/skorina.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека сообщает, что Псалтирь Скорина напечатал в Праге в 1517 году, и называет её первой печатной белорусской книгой."
+            },
+            {
+              "provider": "Wroblewski Library of the Lithuanian Academy of Sciences",
+              "url": "https://web1.mab.lt/skorina/en/skaryna/biography/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическая библиотека подтверждает происхождение из Полоцка, образование врача, переводческую и издательскую деятельность; датирует рождение временем до 1490 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Очередь identity review: соответствие belarus:francysk_skaryna записи Q435320 можно принять по совпадающим личности и деятельности. Дату рождения 1486 из Wikidata переносить нельзя: институциональные источники дают «ок. 1470», «до 1490» и «ок. 1490». Приблизительные даты следует сохранить до отдельного согласования; общий файл страны не изменён.",
+      "applicableTextRu": "Гуманист, переводчик, врач и первопечатник из Полоцка. В 1517 году в Праге издал Псалтирь, считающуюся первой печатной белорусской книгой."
+    },
+    {
+      "key": "belarus:maksim_bahdanovic",
+      "originalSha256": "7153a432b5055d5fe8f3a598b96a7e5be5bfec8b9ac6901ca08898aafa59da9c",
+      "reviewedTextRu": "Белорусский поэт, переводчик и литературовед. Автор сборника «Вянок» — единственной книги стихов, изданной при его жизни.",
+      "claims": [
+        {
+          "textRu": "Максим Богданович был белорусским поэтом, переводчиком и литературоведом; «Вянок» стал единственной книгой его стихов, опубликованной при жизни.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Visuotinė lietuvių enciklopedija",
+              "url": "https://www.vle.lt/straipsnis/maksim-bahdanovic/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия Литвы определяет Богдановича как белорусского поэта, переводчика и литературоведа и фиксирует сборник Vianok 1913 года."
+            },
+            {
+              "provider": "Francis Skaryna Belarusian Library and Museum",
+              "url": "https://skaryna.org/collections/library/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека описывает «Вянок» как единственную книгу стихов Богдановича, изданную при его жизни."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён профессиональными ролями и точным библиографическим фактом.",
+      "applicableTextRu": "Белорусский поэт, переводчик и литературовед. Автор сборника «Вянок» — единственной книги стихов, изданной при его жизни."
+    },
+    {
+      "key": "belarus:uladzimir_karatkevich",
+      "originalSha256": "bb70423dfa5772fa5e82cf851abaa4885f0d056ba8b5270897628c384a3ac2a9",
+      "reviewedTextRu": "Белорусский писатель, поэт и драматург, автор исторической прозы. Среди его произведений — романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский».",
+      "claims": [
+        {
+          "textRu": "Владимир Короткевич был белорусским писателем, поэтом и драматургом, работал с исторической прозой и написал романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Visuotinė lietuvių enciklopedija",
+              "url": "https://www.vle.lt/straipsnis/vladzimir-karatkevic/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия Литвы называет Короткевича белорусским писателем, описывает историческую прозу и перечисляет оба романа."
+            },
+            {
+              "provider": "University of Białystok Repository",
+              "url": "https://repozytorium.uwb.edu.pl/jspui/handle/11320/5455",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская публикация характеризует Короткевича как белорусского писателя, автора исторических романов, поэта и драматурга."
+            },
+            {
+              "provider": "Glagoslav Publications",
+              "url": "https://glagoslav.com/author/uladzimir-karatkevich/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская биография подтверждает жанровые роли автора и его работу с историческим романом, включая The Black Castle."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Безусловный суперлатив снят; описание построено на жанре и двух конкретных романах.",
+      "applicableTextRu": "Белорусский писатель, поэт и драматург, автор исторической прозы. Среди его произведений — романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский»."
+    },
+    {
+      "key": "belarus:vasil_bykau",
+      "originalSha256": "a9474e838f53a6f68b41de65c6f0f0935c1dca576f04ce72a1147b077e292fbb",
+      "reviewedTextRu": "Белорусский писатель, автор прозы о Второй мировой войне. Его герои нередко оказываются перед нравственным выбором в условиях войны.",
+      "claims": [
+        {
+          "textRu": "Василь Быков был белорусским писателем, чья проза о Второй мировой войне исследует нравственный выбор человека в военных обстоятельствах.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Store norske leksikon",
+              "url": "https://snl.no/Vasil_Bykaw",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная норвежская энциклопедия называет Быкова белорусским писателем, связывает его прозу с опытом Второй мировой войны и подчёркивает нравственные выборы героев."
+            },
+            {
+              "provider": "Cambridge University Press",
+              "url": "https://www.cambridge.org/core/books/abs/refocus-the-films-of-larisa-shepitko/ordeal-and-the-ascent/FE8A175B2D9E0FE5C291F632888C6B55",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическое исследование повести «Сотников» рассматривает противопоставленные моральные позиции персонажей в условиях Второй мировой войны."
+            },
+            {
+              "provider": "Deutsch-Belarussische Gesellschaft",
+              "url": "https://www.dbg-online.org/belarusen-in-deutschland/vasil-bykau-ein-grosser-belarusischer-schriftsteller-dessen-leben-auch-mit-deutschland-verbunden-war/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль общества подтверждает центральность войны, нравственных конфликтов и решений совести в прозе Быкова."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён тематической и этической характеристикой, подтверждённой энциклопедическим и академическим источниками.",
+      "applicableTextRu": "Белорусский писатель, автор прозы о Второй мировой войне. Его герои нередко оказываются перед нравственным выбором в условиях войны."
+    },
+    {
+      "key": "belarus:vintsent_dunin_martsinkevich",
+      "originalSha256": "08e53ca95f517a6c0c3ec1573416edbf420c35b3d03e7b7178d6e080b1e746e0",
+      "reviewedTextRu": "Белорусский драматург и поэт, писавший на белорусском и польском языках. Его пьесы заложили основу белорусского национального театрального репертуара.",
+      "claims": [
+        {
+          "textRu": "Винцент Дунин-Марцинкевич был белорусским драматургом и поэтом, писал по-белорусски и по-польски; его пьесы заложили основу национального белорусского театрального репертуара.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/1970385",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия определяет Дунина-Марцинкевича как белорусского драматурга и поэта, фиксирует два языка творчества и указывает, что его пьесы стали основой национального репертуара."
+            },
+            {
+              "provider": "Muzeum Pamięci Sybiru",
+              "url": "https://swiatsybiru.pl/en/vincent-vincuk-dunin-marcinkiewicz/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музейная биография подтверждает создание поэм, прозы и пьес на белорусском и польском языках и значение автора для белорусской литературы и театра."
+            },
+            {
+              "provider": "Institute of Literary Research, Polish Academy of Sciences",
+              "url": "https://rcin.org.pl/ibl/dlibra/publication/275838/edition/240168?language=pl",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Каталог академического института фиксирует исследование Дунина-Марцинкевича как польско-белорусского поэта."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Формула об основателе литературы заменена конкретными языками работы и документированным вкладом в театральный репертуар.",
+      "applicableTextRu": "Белорусский драматург и поэт, писавший на белорусском и польском языках. Его пьесы заложили основу белорусского национального театрального репертуара."
+    },
+    {
+      "key": "belgium:charles_de_coster",
+      "originalSha256": "c057d3665cf45d2b7d290c438c7ca2a9c3031cfbaf591ebb37c336afe070ded4",
+      "reviewedTextRu": "Бельгийский франкоязычный романист и эссеист. Автор романа «Легенда об Уленшпигеле».",
+      "claims": [
+        {
+          "textRu": "Шарль де Костер был бельгийским франкоязычным романистом и эссеистом и написал «Легенду об Уленшпигеле».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb11898881h",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторитетная запись BnF указывает Бельгию, французский язык и роли романиста и эссеиста."
+            },
+            {
+              "provider": "KBR — Royal Library of Belgium",
+              "url": "https://opac.kbr.be/Library/detailstatic.aspx?RSC_BASE=SYRACUSE&RSC_DOCID=13331878&TITLE=la-legende-et-les-aventures-heroiques-joyeuses-et-glorieuses-d-ulenspiegel-et-de-lamme-goedzak-au-pa&_lg=en-GB",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Каталог Королевской библиотеки Бельгии связывает де Костера с полным французским заглавием «Легенды об Уленшпигеле» и подтверждает авторство."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Формула об основателе национальной литературы заменена языком творчества, жанровыми ролями и главным романом.",
+      "applicableTextRu": "Бельгийский франкоязычный романист и эссеист. Автор романа «Легенда об Уленшпигеле»."
+    },
+    {
+      "key": "belgium:emile_verhaeren",
+      "originalSha256": "b2eef6925a928a4963f7f65e7c6bf3b1d425331dd69bebea6568978f1bea204e",
+      "reviewedTextRu": "Бельгийский франкоязычный поэт и художественный критик, связанный с символистским движением.",
+      "claims": [
+        {
+          "textRu": "Эмиль Верхарн был бельгийским франкоязычным поэтом и художественным критиком, связанным с символизмом.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Emile Verhaeren Museum",
+              "url": "https://emileverhaeren.be/fr/biographie/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музейная биография представляет Верхарна как бельгийского франкоязычного поэта и участника символистской литературной среды."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb11927975b",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторитетная запись BnF подтверждает бельгийское происхождение, французский язык и роль поэта."
+            },
+            {
+              "provider": "Museum of Fine Arts Ghent",
+              "url": "https://www.mskgent.be/en/exhibitions/verhaeren-revealed",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музей называет Верхарна поэтом и художественным критиком и описывает его поддержку символистских течений."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Суперлатив снят; сохранены подтверждённые профессии, язык и связь с символизмом.",
+      "applicableTextRu": "Бельгийский франкоязычный поэт и художественный критик, связанный с символистским движением."
+    },
+    {
+      "key": "belgium:felix_timmermans",
+      "originalSha256": "a874f2c9a7e654772fb150d6db5671578801c7cce8e70077e891f775cae0d7d6",
+      "reviewedTextRu": "Фламандский нидерландоязычный писатель и художник, автор романа «Pallieter».",
+      "claims": [
+        {
+          "textRu": "Феликс Тиммерманс был фламандским нидерландоязычным писателем и художником и написал роман «Pallieter».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb13091677x",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторитетная запись BnF указывает Бельгию, нидерландский язык, литературные роли, а также работу иллюстратора и художника."
+            },
+            {
+              "provider": "Letterenhuis",
+              "url": "https://letterenhuis.be/nl/content/felix-timmermans-pallieter-1916",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Фламандский литературный архив определяет Pallieter как роман Феликса Тиммерманса и датирует издание 1916 годом."
+            },
+            {
+              "provider": "KBR — Royal Library of Belgium",
+              "url": "https://opac.kbr.be/Library/doc/SYRACUSE/13650062/pallieter",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Каталог Королевской библиотеки Бельгии подтверждает авторство романа Pallieter."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Субъективное место в бельгийской литературе заменено языком, видами деятельности и конкретным романом.",
+      "applicableTextRu": "Фламандский нидерландоязычный писатель и художник, автор романа «Pallieter»."
+    },
+    {
+      "key": "belgium:georges_simenon",
+      "originalSha256": "259e529aa805c6ff59651ba7a730ae2edc14c39a2b7712e0bce26ba617332cad",
+      "reviewedTextRu": "Бельгийский франкоязычный писатель, автор цикла романов о комиссаре Мегрэ.",
+      "claims": [
+        {
+          "textRu": "Жорж Сименон был бельгийским франкоязычным писателем и автором цикла романов о комиссаре Мегрэ.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb119247961",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторитетная запись BnF подтверждает бельгийское происхождение, французский язык и работу романиста."
+            },
+            {
+              "provider": "Université de Liège",
+              "url": "https://culture.uliege.be/jcms/prod_609142/fr/georges-simenon",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский профиль связывает родившегося в Льеже Сименона со 192 романами, в том числе 75 произведениями о Мегрэ."
+            },
+            {
+              "provider": "Université de Liège",
+              "url": "https://culture.uliege.be/jcms/prod_63142/en/les-humeurs-de-maigret",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Материал университета прямо называет Сименона создателем персонажа Мегрэ и описывает книжный цикл."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Субъективная известность заменена языком творчества и документированным циклом о Мегрэ.",
+      "applicableTextRu": "Бельгийский франкоязычный писатель, автор цикла романов о комиссаре Мегрэ."
+    },
+    {
+      "key": "belgium:hugo_claus",
+      "originalSha256": "61b89c798bd55dee4fe475810750e27f60cdc51ca12bbb131dea9b0b37f29fee",
+      "reviewedTextRu": "Фламандский нидерландоязычный писатель, поэт и драматург. Автор романа «Печаль Бельгии».",
+      "claims": [
+        {
+          "textRu": "Хюго Клаус был фламандским нидерландоязычным писателем, поэтом и драматургом; среди его романов — «Печаль Бельгии».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Letterenhuis",
+              "url": "https://letterenhuis.be/nl/pagina/wie-was-hugo-claus",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Фламандский литературный архив сообщает о рождении Клауса в Брюгге, его поэзии, прозе и пьесах и называет роман Het verdriet van België 1983 года."
+            },
+            {
+              "provider": "Digitale Bibliotheek voor de Nederlandse Letteren",
+              "url": "https://www.dbnl.org/tekst/bork001schr01_01/bork001schr01_01_0196.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературная библиотека характеризует Клауса как фламандского поэта, прозаика и драматурга и включает Het verdriet van België в библиографию."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb35216432s",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиографическая запись BnF фиксирует перевод пьесы Клауса с нидерландского языка."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "corrected",
+      "notes": "Безусловный суперлатив снят; добавлены виды литературы и конкретный роман, подтверждённые фламандским архивом и литературной библиотекой.",
+      "applicableTextRu": "Фламандский нидерландоязычный писатель, поэт и драматург. Автор романа «Печаль Бельгии»."
+    },
+    {
+      "key": "belgium:maurice_maeterlinck",
+      "originalSha256": "3d29c2040d0c3d18ac1787c1b6a0108ec493b770a31c00d1e87a6a4c44a4c7e0",
+      "reviewedTextRu": "Бельгийский драматург и поэт, лауреат Нобелевской премии по литературе 1911 года.",
+      "claims": [
+        {
+          "textRu": "Морис Метерлинк был бельгийским драматургом и поэтом и получил Нобелевскую премию по литературе в 1911 году.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Nobel Prize",
+              "url": "https://www.nobelprize.org/prizes/literature/1911/maeterlinck/facts/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная страница премии указывает Бельгию, работу в драме и поэзии и Нобелевскую премию по литературе 1911 года."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb11913865k",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторитетная запись BnF подтверждает бельгийское происхождение, литературные роли и Нобелевскую премию 1911 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 04",
+      "decision": "unchanged",
+      "notes": "Исходный краткий текст полностью подтверждён двумя независимыми институциональными источниками; изменений не требуется.",
+      "applicableTextRu": "Бельгийский драматург и поэт, лауреат Нобелевской премии по литературе 1911 года."
+    }
+  ]
+}

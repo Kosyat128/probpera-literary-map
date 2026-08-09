@@ -1,0 +1,420 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH07_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 07";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH07_REVIEWER;
+const checkedAt = "2026-08-09";
+
+type ReviewBase = Omit<WriterBiographyFactReviewRecord, "applicableTextRu">;
+
+const writerBiographyFactReviewBatch07Base = [
+  {
+    key: "colombia:german_espinosa",
+    originalSha256: "cbcdbfea58d8991d0588daa5dcfffbf683392ac13a60efc1817803657f43a0b9",
+    reviewedTextRu: "Колумбийский писатель, поэт и эссеист. Его роман «La tejedora de coronas» (1982) обращается к колониальной истории Картахены и относится к новой исторической прозе.",
+    claims: [{
+      textRu: "Герман Эспиноса был колумбийским писателем, поэтом и эссеистом; роман «La tejedora de coronas» 1982 года представляет историческую прозу о колониальной Картахене.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Banco de la República de Colombia, Enciclopedia Banrepcultural", url: "https://enciclopedia.banrepcultural.org/index.php/Germ%C3%A1n_Espinosa", checkedAt, findingRu: "Национальная культурная сеть подтверждает колумбийскую принадлежность Эспиносы, его работу в поэзии и прозе и публикацию романа La tejedora de coronas в 1982 году." },
+        { provider: "Universidad Autónoma de Bucaramanga", url: "https://repository.unab.edu.co/handle/20.500.12749/16423", checkedAt, findingRu: "Университетское исследование датирует роман 1982 годом, относит его к новой исторической прозе и описывает колониальную Картахену как часть его исторического материала." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Субъективный литературный ранг снят; сохранены виды работы и конкретный исторический роман. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:jairo_anibal_nino",
+    originalSha256: "c1a624c083a1759658e682265b2cb7f3efbcdee9787520c68d72e6895c6354f7",
+    reviewedTextRu: "Колумбийский писатель и драматург, работавший также для детской аудитории. Автор пьесы «El monte calvo»; в 1988 году возглавлял Национальную библиотеку Колумбии.",
+    claims: [{
+      textRu: "Хайро Анибаль Ниньо был колумбийским писателем и драматургом, писал для детей, создал пьесу «El monte calvo» и в 1988 году руководил Национальной библиотекой Колумбии.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Banco de la República de Colombia, Enciclopedia Banrepcultural", url: "https://enciclopedia.banrepcultural.org/index.php?title=Jairo_An%C3%ADbal_Ni%C3%B1o", checkedAt, findingRu: "Биографическая статья подтверждает писательскую и драматургическую работу Ниньо, детскую литературу, пьесу El monte calvo и руководство Национальной библиотекой." },
+        { provider: "Biblioteca Nacional de Colombia", url: "https://www.bibliotecanacional.gov.co/es-co/Footer/SiteAssets/biblioteca-nacional-de-colombia/quienes-somos/organigrama/directores_bnc_historico.pdf", checkedAt, findingRu: "Официальный список руководителей фиксирует Хайро Анибаля Ниньо как директора Национальной библиотеки в 1988 году." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценка известности заменена жанровыми ролями, произведением и документированной должностью. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:jose_asuncion_silva",
+    originalSha256: "b1e224debd978448ebe5e3946f4b7ce79852441dd020f818564cf64374785a9a",
+    reviewedTextRu: "Колумбийский поэт, связанный со становлением модернизма в литературе Колумбии. Среди его произведений — «Nocturno» и роман «De sobremesa».",
+    claims: [{
+      textRu: "Хосе Асунсьон Сильва был колумбийским поэтом раннего модернизма; к его произведениям относятся «Nocturno» и роман «De sobremesa».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Banco de la República de Colombia, Enciclopedia Banrepcultural", url: "https://enciclopedia.banrepcultural.org/index.php?title=Jos%C3%A9_Asunci%C3%B3n_Silva", checkedAt, findingRu: "Национальная культурная энциклопедия связывает Сильву с началом модернизма в Колумбии и перечисляет его поэтическую и прозаическую работу." },
+        { provider: "Biblioteca Virtual Miguel de Cervantes", url: "https://www.cervantesvirtual.com/portales/asuncion_silva/apunte_biobibliografico/", checkedAt, findingRu: "Академическая авторская библиотека относит Сильву к модернизму и разбирает Nocturno и роман De sobremesa как центральные тексты его наследия." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Широкое утверждение об основании всего испаноязычного модернизма уточнено до документированной колумбийской традиции; оценка влияния снята. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:juan_gabriel_vasquez",
+    originalSha256: "99a0909dc9e98b1904975bd23a52ae9248f6893eec75dd5325f6d402e24cca97",
+    reviewedTextRu: "Колумбийский писатель, автор романов «Шум падающих вещей» и «Форма руин». Роман «Шум падающих вещей» получил Международную Дублинскую литературную премию.",
+    claims: [{
+      textRu: "Хуан Габриэль Васкес — колумбийский писатель и автор романов «Шум падающих вещей» и «Форма руин»; первый из них отмечен Международной Дублинской литературной премией.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Library of Congress", url: "https://www.loc.gov/item/no2001088845/juan-gabriel-vasquez-colombia-1973/", checkedAt, findingRu: "Библиотека Конгресса подтверждает колумбийскую идентичность автора, оба романа и International Dublin Award среди его наград." },
+        { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/books/578142/el-ruido-de-las-cosas-al-caer--the-sound-of-things-falling-by-juan-gabriel-vasquez/9786073137515/", checkedAt, findingRu: "Издательская карточка фиксирует авторство романа El ruido de las cosas al caer и его победу в International IMPAC Dublin Literary Award 2014 года." },
+        { provider: "Dublin Literary Award", url: "https://dublinliteraryaward.ie/wp-content/uploads/2023/05/Dublin-Literary-Award-Winner-Media-Release.pdf", checkedAt, findingRu: "Официальный материал премии включает The Sound of Things Falling Хуана Габриэля Васкеса в перечень победителей." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценка места среди современных авторов и широкое тематическое обобщение заменены двумя романами и проверяемой наградой. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:manuel_mejia_vallejo",
+    originalSha256: "b36e72ca6797182f7e5164411a45a7f72e65463c31a16c1b536208136ae8f38b",
+    reviewedTextRu: "Колумбийский писатель и журналист. Романы «El día señalado» и «La casa de las dos palmas» отмечены соответственно премиями Надаля и Ромуло Гальегоса.",
+    claims: [{
+      textRu: "Мануэль Мехия Вальехо был колумбийским писателем и журналистом; El día señalado получил премию Надаля, а La casa de las dos palmas — Международную премию Ромуло Гальегоса.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Universidad Nacional de Colombia", url: "https://redcultural.medellin.unal.edu.co/redcultural2/noticias/275-manuel-mej%C3%ADa-vallejo%2C-100-a%C3%B1os-de-historia-y-legado.html", checkedAt, findingRu: "Университетский материал называет Мехию Вальехо писателем и журналистом и связывает оба романа с соответствующими премиями." },
+        { provider: "Editorial Planeta / Seix Barral", url: "https://www.planetadelibros.com/libro-la-casa-de-las-dos-palmas/378569", checkedAt, findingRu: "Издательская биография подтверждает журналистскую работу автора, премию Надаля 1963 года за El día señalado и премию Ромуло Гальегоса 1989 года за La casa de las dos palmas." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив и недоказанное тематическое обобщение заменены профессиями, произведениями и наградами. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:mario_mendoza",
+    originalSha256: "db95cf196fe970f2df243e6cf97547c5a59fdc9ff8aa5e7264ceb92d0b7c9434",
+    reviewedTextRu: "Колумбийский писатель, автор романа «Satanás». Этот роман получил премию Biblioteca Breve 2002 года.",
+    claims: [{
+      textRu: "Марио Мендоса — колумбийский писатель; его роман «Satanás» получил премию Biblioteca Breve 2002 года.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Editorial Planeta / Seix Barral", url: "https://www.planetadelibros.com/premios/premio-biblioteca-breve/edicion/150", checkedAt, findingRu: "Официальная страница издательской премии называет Satanás Марио Мендосы победителем Biblioteca Breve 2002 года." },
+        { provider: "Pontificia Universidad Javeriana, Cuadernos de Literatura", url: "https://revistas.javeriana.edu.co/index.php/cualit/article/download/8023/6369", checkedAt, findingRu: "Университетская публикация подтверждает авторство романа и получение премии Biblioteca Breve издательства Seix Barral в 2002 году." },
+        { provider: "Universidad Nacional de Colombia", url: "https://television.unal.edu.co/detalle/satanas", checkedAt, findingRu: "Университетский культурный ресурс представляет Satanás как роман Марио Мендосы о событиях в Боготе." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Непроверяемая популярность и интерпретационные темы сняты; оставлены авторство и точная премия. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:rafael_pombo",
+    originalSha256: "bb743cfed36544b3cf22b93d92bfb085efaaa2b0283610f0f86cdbec89a61e9b",
+    reviewedTextRu: "Колумбийский поэт и переводчик. В его наследие входят стихи и басни для детей, в том числе «El renacuajo paseador» и «La pobre viejecita».",
+    claims: [
+      {
+        textRu: "Рафаэль Помбо был колумбийским поэтом и переводчиком и написал детские тексты «El renacuajo paseador» и «La pobre viejecita».",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Banco de la República de Colombia, Enciclopedia Banrepcultural", url: "https://enciclopedia.banrepcultural.org/Rafael_Pombo", checkedAt, findingRu: "Национальная культурная энциклопедия подтверждает работу Помбо как поэта и переводчика и документирует корпус его детских стихов и басен." },
+          { provider: "Instituto Caro y Cuervo", url: "https://bibliotecadigital.caroycuervo.gov.co/580/1/TH_35_003_072_0.pdf", checkedAt, findingRu: "Академический архив называет El renacuajo paseador и La pobre viejecita среди широко известных детских произведений Помбо и отмечает его переводческую работу." },
+          { provider: "Banco de la República de Colombia, Colecciones", url: "https://colecciones.banrepcultural.org/document/navidad-1980/63a069165d96b8790f349988?pgn=0&pos=3&q=caim%C3%A1n", checkedAt, findingRu: "Музейная запись связывает оба названия с Рафаэлем Помбо и подтверждает его роли поэта, переводчика и автора басен." },
+        ],
+      },
+      {
+        textRu: "Рекомендация по метаданным: сохранить deathDate 1912-05-05, а противоречащее значение 1912-05-15 не применять.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Banco de la República de Colombia, Enciclopedia Banrepcultural", url: "https://enciclopedia.banrepcultural.org/Rafael_Pombo", checkedAt, findingRu: "Биография и структурированное поле даты смерти независимо внутри национального ресурса указывают 5 мая 1912 года." },
+          { provider: "Banco de la República de Colombia, Biblioteca Virtual", url: "https://babel.banrepcultural.org/digital/api/collection/p17054coll10/id/2771/download", checkedAt, findingRu: "Библиографические заметки о поэтах Колумбии фиксируют смерть Помбо в Боготе 5 мая 1912 года." },
+          { provider: "Instituto Caro y Cuervo", url: "https://bibliotecadigital.caroycuervo.gov.co/id/eprint/1237/1/TH_20_002_222_0.pdf", checkedAt, findingRu: "Академический материал Института Каро-и-Куэрво также датирует смерть 5 мая 1912 года." },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив и широкая классификация романтизма заменены ролями и произведениями. Date discrepancy queue: сохранить 1912-05-05; значение 1912-05-15 отвергнуто тремя институциональными подтверждениями. Shared country files не изменялись.",
+  },
+  {
+    key: "colombia:santiago_gamboa",
+    originalSha256: "6d426276d7d259a520c111f67ad4599f182ef1600ab177c0497692f68716684a",
+    reviewedTextRu: "Колумбийский романист, автор рассказов и журналист. Среди его книг — «Necrópolis» и «Plegarias nocturnas».",
+    claims: [
+      {
+        textRu: "Сантьяго Гамбоа — колумбийский романист, автор рассказов и журналист; он написал Necrópolis и Plegarias nocturnas.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/lyon/es/Santiago-Gamboa/185167", checkedAt, findingRu: "Институт Сервантеса подтверждает колумбийскую идентичность, журналистскую работу и роман Necrópolis среди основных книг автора." },
+          { provider: "Europa Editions", url: "https://www.europaeditions.com/author/119/santiago-gamboa", checkedAt, findingRu: "Издательский профиль называет Гамбоа колумбийским романистом, автором рассказов и журналистом и перечисляет Necropolis и Night Prayers, английское издание Plegarias nocturnas." },
+        ],
+      },
+      {
+        textRu: "Рекомендация по метаданным: заменить birthDate 1965-12-02 на 1965-12-30; Q2420039 идентифицирует того же автора, но его конфликтный 1962 год не использовать, а портрет сохранить.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/lyon/es/Santiago-Gamboa/185167", checkedAt, findingRu: "Авторитетная биография приводит полную дату рождения Сантьяго Гамбоа: 30 декабря 1965 года." },
+          { provider: "Penguin Libros", url: "https://www.penguinlibros.com/co/17205-santiago-gamboa", checkedAt, findingRu: "Издательская биография подтверждает Боготу и 1965 год рождения, согласуясь с идентичностью и годом в записи Института Сервантеса." },
+          { provider: "Europa Editions", url: "https://www.europaeditions.com/author/119/santiago-gamboa", checkedAt, findingRu: "Независимый издатель также идентифицирует того же колумбийского писателя и указывает 1965 год рождения." },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив и жанровая интерпретация заменены ролями и книгами. Дата 1965-12-30 подтверждена Институтом Сервантеса; Q2420039 и портрет относятся к тому же автору, но ошибочный год 1962 из Wikidata не используется.",
+  },
+  {
+    key: "costa_rica:ana_istarus",
+    originalSha256: "92865e9dd1ece8e8823ab0f9f83fdb5574459c6bc78741d9d012deb21eaf48bc",
+    reviewedTextRu: "Коста-риканская поэтесса, драматург и актриса. Автор поэтического сборника «La estación de fiebre» и пьесы «Madre nuestra que estás en la tierra».",
+    claims: [{
+      textRu: "Ана Истару — коста-риканская поэтесса, драматург и актриса; ей принадлежат La estación de fiebre и пьеса Madre nuestra que estás en la tierra.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Editorial Costa Rica", url: "https://www.editorialcostarica.com/escritor/1000", checkedAt, findingRu: "Национальное издательство подтверждает коста-риканскую идентичность, поэзию, драматургию и актёрскую работу Истару и называет La estación de fiebre." },
+        { provider: "Universidad de Costa Rica", url: "https://www.ucr.ac.cr/noticias/2010/4/09/teatro-universitario-estreno-obra-de-ana-istaru.html", checkedAt, findingRu: "Университетский театр документирует авторство Истару пьесы Madre nuestra que estás en la tierra и её актёрскую деятельность." },
+        { provider: "Universidad Nacional de Costa Rica", url: "https://www.revistas.una.ac.cr/index.php/letras/article/view/5205", checkedAt, findingRu: "Университетская публикация рассматривает поэзию Аны Истару и сборник La estación de fiebre." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценка известности снята; оставлены роли и два конкретных произведения. Shared country files не изменялись.",
+  },
+  {
+    key: "costa_rica:carlos_luis_fallas",
+    originalSha256: "efebf212aef72d3a37a90ed403a16c791b216905856b5cd8294216daa7961c4b",
+    reviewedTextRu: "Коста-риканский писатель и политический деятель. В романе «Mamita Yunai» он обратился к условиям труда и борьбе рабочих банановых плантаций.",
+    claims: [
+      {
+        textRu: "Карлос Луис Фальяс был коста-риканским писателем и политическим деятелем; роман Mamita Yunai посвящён положению рабочих банановых плантаций.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Dirección de Cultura de Costa Rica", url: "https://www.dircultura.go.cr/premios-nacionales/cultura/1965-01-01/carlos-luis-fallas-sibaja", checkedAt, findingRu: "Государственная культурная служба подтверждает писательскую и политическую деятельность Фальяса и социальную проблематику Mamita Yunai, связанную с рабочими United Fruit Company." },
+          { provider: "Universidad Estatal a Distancia de Costa Rica", url: "https://multimedia.uned.ac.cr/pem/libros/galeriadeproceres/chapter/carlos-luis-fallas-sibaja/", checkedAt, findingRu: "Университетская биография называет Фальяса писателем и политиком и связывает Mamita Yunai с рабочей жизнью в банановом анклаве." },
+          { provider: "Universidad de Costa Rica", url: "https://aurol.ucr.ac.cr/gentes-gentecillas-calufa", checkedAt, findingRu: "Архив УCR документирует общественную деятельность Фальяса и социально-критическую направленность его прозы." },
+        ],
+      },
+      {
+        textRu: "Рекомендация по метаданным: заменить birthDate 1909-05-21 на 1909-01-21.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Dirección de Cultura de Costa Rica", url: "https://www.dircultura.go.cr/premios-nacionales/cultura/1965-01-01/carlos-luis-fallas-sibaja", checkedAt, findingRu: "Официальный профиль и его структурированное поле даты рождения указывают 21 января 1909 года." },
+          { provider: "Universidad de Costa Rica", url: "https://aurol.ucr.ac.cr/gentes-gentecillas-calufa", checkedAt, findingRu: "Университетский архив независимо датирует рождение Фальяса 21 января 1909 года." },
+          { provider: "Universidad Estatal a Distancia de Costa Rica", url: "https://multimedia.uned.ac.cr/pem/libros/galeriadeproceres/chapter/carlos-luis-fallas-sibaja/", checkedAt, findingRu: "Университетская биография подтверждает ту же календарную дату рождения." },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив заменён проверяемыми ролями и конкретной социальной темой романа. Date discrepancy queue: рекомендована замена 1909-05-21 на 1909-01-21. Shared country files не изменялись.",
+  },
+  {
+    key: "costa_rica:carmen_lyra",
+    originalSha256: "4d9f9674b72fabc91965840d925b12324d1823a1b38b490e2d42cc5cda74cdf4",
+    reviewedTextRu: "Коста-риканская писательница, педагог и политическая деятельница. Автор книги «Cuentos de mi tía Panchita»; в её прозе также представлены социальные темы.",
+    claims: [
+      {
+        textRu: "Кармен Лира — псевдоним коста-риканской писательницы, педагога и политической деятельницы Марии Исабель Карвахаль; она написала Cuentos de mi tía Panchita и социальную прозу.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Sistema Nacional de Bibliotecas de Costa Rica", url: "https://www.sinabi.go.cr/diccionariobiografico/biografias/151.html", checkedAt, findingRu: "Национальный биографический словарь связывает псевдоним с Марией Исабель Карвахаль, подтверждает литературную, педагогическую и политическую работу, книгу Cuentos de mi tía Panchita и социальное направление прозы." },
+          { provider: "Asamblea Legislativa de Costa Rica", url: "https://www.asamblea.go.cr/p/Lists/Noticias/DispForm.aspx?ContentTypeId=0x0100AEFFC8C3B152B24EB8D5FA5DE427D586&ID=7276", checkedAt, findingRu: "Официальное сообщение парламента идентифицирует Кармен Лиру как Марию Исабель Карвахаль, писательницу и общественно-политическую деятельницу, и датирует публикацию Cuentos de mi tía Panchita 1920 годом." },
+          { provider: "Universidad de Costa Rica", url: "https://vinv.ucr.ac.cr/es/node/12712", checkedAt, findingRu: "Университетский проект описывает корпус её социально-реалистических рассказов и их критику общественных и экономических несправедливостей." },
+        ],
+      },
+      {
+        textRu: "Рекомендация по identity/date queues: Q2939620 оставить кандидатом до отдельной проверки authority ID; birthDate 1888-01-15 сохранить и не заменять на 1887-01-15.",
+        verdict: "corrected",
+        evidence: [
+          { provider: "Sistema Nacional de Bibliotecas de Costa Rica", url: "https://www.sinabi.go.cr/exhibiciones/Cien%20novelas%20costarricenses/Biografias/Lyra%2C%20Carmen.pdf", checkedAt, findingRu: "Национальная библиотечная биография идентифицирует Кармен Лиру как Марию Исабель Карвахаль и указывает 1888 год рождения." },
+          { provider: "Asamblea Legislativa de Costa Rica", url: "https://www.asamblea.go.cr/p/Lists/Noticias/DispForm.aspx?ContentTypeId=0x0100AEFFC8C3B152B24EB8D5FA5DE427D586&ID=7276", checkedAt, findingRu: "Официальная парламентская биография приводит полную дату 15 января 1888 года и то же гражданское имя." },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes: "Широкая формула об основании национальной традиции заменена документированными ролями, книгой и направлением прозы. Identity queue: Q2939620 по имени и ролям согласуется с Кармен Лирой, но без связанного authority ID остаётся кандидатом. Date queue: сохранить 1888-01-15; институциональные источники не поддерживают замену на 1887-01-15. Shared country files не изменялись.",
+  },
+  {
+    key: "costa_rica:joaquin_garcia_monje",
+    originalSha256: "826662bcd6f5e9b2b6cb71d0f6aa9378b2db239b1915038bb709787157538039",
+    reviewedTextRu: "Коста-риканский писатель, педагог и редактор. Основал и с 1919 по 1958 год издавал журнал «Repertorio Americano», служивший площадкой международного интеллектуального обмена.",
+    claims: [{
+      textRu: "Хоакин Гарсия Монхе был коста-риканским писателем, педагогом и редактором; он основал Repertorio Americano и издавал журнал с 1919 по 1958 год как международную площадку обмена.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Sistema Nacional de Bibliotecas de Costa Rica", url: "https://www.sinabi.go.cr/DiccionarioBiograficoDetail/biografia/147", checkedAt, findingRu: "Национальный биографический словарь подтверждает роли писателя, педагога и редактора и сообщает, что Гарсия Монхе руководил Repertorio Americano около полувека." },
+        { provider: "Universidad Nacional de Costa Rica, Repertorio Americano", url: "https://www.revistas.una.ac.cr/index.php/repertorio/about", checkedAt, findingRu: "Официальная история журнала указывает, что Гарсия Монхе выпускал Repertorio Americano с 1919 по 1958 год и создал через него международные интеллектуальные связи." },
+        { provider: "Editorial Universidad Nacional de Costa Rica", url: "https://euna.una.ac.cr/index.php/EUNA/announcement/view/20", checkedAt, findingRu: "Университетское издательство описывает журнал как региональную и международную сеть обсуждения литературы, искусства, политики и образования под редакцией Гарсии Монхе." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Субъективный ранг журнала заменён периодом издания и документированной функцией интеллектуального обмена. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:ahmadou_kourouma",
+    originalSha256: "200336c7e40868067ad5443770d81562e179801b615b454f44ed4e5618cf497b",
+    reviewedTextRu: "Ивуарийский романист, автор книг «Солнца независимости» и «Аллах не обязан». В его прозе французский язык взаимодействует с ритмом и образностью языка малинке.",
+    claims: [{
+      textRu: "Ахмаду Курума был ивуарийским романистом, написал «Солнца независимости» и «Аллах не обязан» и создавал гибридную прозу, в которой французский язык преобразован под влиянием малинке.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Larousse, Dictionnaire mondial des littératures", url: "https://www.larousse.fr/encyclopedie/litterature/Ahmadou_Kourouma/174585", checkedAt, findingRu: "Литературная энциклопедия называет Куруму ивуарийским писателем, перечисляет оба романа и описывает подчинение французской фразы ритму и перспективе малинке." },
+        { provider: "CNRS Éditions", url: "https://www.cnrseditions.fr/catalogue/arts-et-essais-litteraires/les-soleils-des-independances-dahmadou-kourouma/", checkedAt, findingRu: "Академическое издательство рассматривает Les Soleils des indépendances как историко-политический роман и подчёркивает гибридную языковую эстетику Курумы." },
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb16555410h", checkedAt, findingRu: "Авторитетная запись BnF подтверждает авторство Курумы, французский язык и роман Allah n'est pas obligé 2000 года." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив заменён национальной принадлежностью, двумя романами и точной языковой особенностью. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:bernard_binlin_dadie",
+    originalSha256: "98401e7cefaacad3ef6e3870ae2a13d6fee57cb4d45a7245ddca8998333de2e4",
+    reviewedTextRu: "Ивуарийский писатель и общественный деятель, работавший в прозе, поэзии и драматургии. В 2015 году получил премию UNESCO–UNAM имени Хайме Торреса Бодета.",
+    claims: [{
+      textRu: "Бернар Бинлин Дадье был ивуарийским прозаиком, поэтом, драматургом и общественным деятелем; в 2015 году он получил премию UNESCO–UNAM имени Хайме Торреса Бодета.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "UNESCO", url: "https://www.unesco.org/fr/prizes/jaime-torres-bodet/laureates", checkedAt, findingRu: "Официальный реестр премии называет Дадье лауреатом 2015 года, ивуарийским эссеистом, романистом, драматургом, поэтом и общественным деятелем." },
+        { provider: "ASCAD — Académie des Sciences, des Arts, des Cultures d’Afrique et des Diasporas Africaines", url: "https://www.ascad.ci/web/membreascad/monsieur-binlin-bernard-dadi059/2", checkedAt, findingRu: "Национальная академия Кот-д’Ивуара документирует писательскую и государственную деятельность Дадье и его публикации в театре, поэзии, романах и хрониках." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Формула об основателе современной литературы заменена жанровыми ролями и официальной международной наградой. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:august_senoa",
+    originalSha256: "49ec198d81070e160f08c3d4b3785fadd844c3d5fd2be71db8c969a14b1ddce5",
+    reviewedTextRu: "Хорватский прозаик, поэт и драматург. Его исторические романы, включая «Zlatarovo zlato», способствовали утверждению жанра романа в хорватской литературе.",
+    claims: [{
+      textRu: "Август Шеноа был хорватским прозаиком, поэтом и драматургом; его исторический роман Zlatarovo zlato связан с утверждением романа как жанра в хорватской литературе.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija, Leksikografski zavod Miroslav Krleža", url: "https://www.enciklopedija.hr/clanak/senoa-august", checkedAt, findingRu: "Национальная энциклопедия перечисляет жанровые роли Шеноа, называет Zlatarovo zlato историческим романом и связывает его прозу с канонизацией жанра романа." },
+        { provider: "Matica hrvatska", url: "https://web.matica.hr/knjige/autor/24/", checkedAt, findingRu: "Национальное культурное издательство называет Шеноа хорватским прозаиком, поэтом и драматургом, отмечает утверждение им жанра романа и перечисляет Zlatarovo zlato." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Категоричное «основатель» заменено более точной ролью в утверждении жанра, подтверждённой двумя хорватскими институциями. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:ivan_gundulic",
+    originalSha256: "e6e0c6f6e497c04a58b63146f7748cf8177a3851f3502f36793eb344575cec51",
+    reviewedTextRu: "Хорватский поэт и драматург эпохи барокко. Автор эпической поэмы «Osman» и пасторальной драмы «Dubravka».",
+    claims: [{
+      textRu: "Иван Гундулич был хорватским поэтом и драматургом барокко и написал эпическую поэму Osman и пасторальную драму Dubravka.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija, Leksikografski zavod Miroslav Krleža", url: "https://enciklopedija.hr/clanak/gundulic-ivan", checkedAt, findingRu: "Национальная энциклопедия относит творчество Гундулича к барокко, определяет Osman как эпос и Dubravka как пасторальную драму." },
+        { provider: "Matica hrvatska", url: "https://www.matica.hr/knjige/1175/", checkedAt, findingRu: "Издательский профиль Matica hrvatska представляет Гундулича как хорватского классика барокко и подтверждает его авторство поэмы Osman." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Безусловный суперлатив снят; оставлены эпоха, жанры и два произведения. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:marko_marulic",
+    originalSha256: "fd33bd119c62fa16fca6e9d33d03efca858620918ae3e0f5466367fc5842c1f6",
+    reviewedTextRu: "Хорватский гуманист, поэт и прозаик эпохи Возрождения. Его «Judita», завершённая в 1501 и напечатанная в 1521 году, считается первым художественным эпосом на хорватском языке.",
+    claims: [{
+      textRu: "Марко Марулич был хорватским гуманистом, поэтом и прозаиком Возрождения; Judita завершена в 1501, напечатана в 1521 году и является первым художественным эпосом хорватской литературы на хорватском языке.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija, Leksikografski zavod Miroslav Krleža", url: "https://www.enciklopedija.hr/clanak/marulic-marko", checkedAt, findingRu: "Национальная энциклопедия подтверждает гуманистическую и литературную деятельность Марулича, даты Judita и её статус первого художественного эпоса на хорватском языке." },
+        { provider: "Nacionalna i sveučilišna knjižnica u Zagrebu", url: "https://nsk.hr/blog/dan-hrvatske-knjige-dan-kada-je-dovrsena-maruliceva-judita/", checkedAt, findingRu: "Национальная библиотека независимо указывает завершение в 1501 году, печать в 1521-м и жанровое первенство Judita в хорватской литературе." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Расплывчатая формула об основании традиции заменена проверяемыми ролями, датами и жанровым статусом Judita. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:miroslav_krleza",
+    originalSha256: "cefb1a30cf6e25917d1b500aea27b4fcdb0d2435423e0e238ec84b406ad98512",
+    reviewedTextRu: "Хорватский писатель, работавший в драме, прозе, поэзии и эссеистике. Среди его произведений — драма «Господа Глембаи» и роман «Возвращение Филипа Латиновича».",
+    claims: [{
+      textRu: "Мирослав Крлежа был хорватским драматургом, прозаиком, поэтом и эссеистом; он написал «Господа Глембаи» и «Возвращение Филипа Латиновича».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija, Leksikografski zavod Miroslav Krleža", url: "https://www.enciklopedija.hr/Clanak/krleza-miroslav?handler=ButtonSnimi", checkedAt, findingRu: "Национальная энциклопедия документирует работу Крлежи в нескольких жанрах и разбирает цикл о Глембаях и роман Povratak Filipa Latinovicza." },
+        { provider: "Matica hrvatska", url: "https://www.matica.hr/knjige/povratak-filipa-latinovicza-881/", checkedAt, findingRu: "Национальное культурное издательство фиксирует Мирослава Крлежу как автора романа Povratak Filipa Latinovicza." },
+        { provider: "Hrvatsko narodno kazalište u Zagrebu", url: "https://www.hnk.hr/hr/drama/predstave/gospoda-glembajevi/", checkedAt, findingRu: "Национальный театр подтверждает авторство Крлежи и жанр драмы Gospoda Glembajevi, впервые поставленной в 1929 году." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Суперлатив заменён жанровым диапазоном и двумя конкретными произведениями, подтверждёнными энциклопедией, издательством и национальным театром. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:vesna_parun",
+    originalSha256: "0ce7e263109c9b16a62d687bb7ffbdb1f95f8a1ee6b183e29b6068cf2d680575",
+    reviewedTextRu: "Хорватская поэтесса и переводчица. Автор сборников «Zore i vihori» и «Crna maslina»; важное место в её поэзии занимают любовь и природа.",
+    claims: [{
+      textRu: "Весна Парун была хорватской поэтессой и переводчицей, написала сборники Zore i vihori и Crna maslina и неоднократно обращалась в лирике к любви и природе.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija, Leksikografski zavod Miroslav Krleža", url: "https://enciklopedija.hr/clanak/parun-vesna", checkedAt, findingRu: "Национальная энциклопедия подтверждает роли поэтессы и переводчицы, оба сборника и устойчивые мотивы любви и природы в её поэзии." },
+        { provider: "Matica hrvatska", url: "https://www.matica.hr/knjige/izabrana-djela-i-1408/", checkedAt, findingRu: "Национальное культурное издательство включает Zore i vihori и Crna maslina в корпус её поэзии и характеризует любовную лирику Парун." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Сравнительный суперлатив снят; оставлены профессии, книги и подтверждённые мотивы. Shared country files не изменялись.",
+  },
+  {
+    key: "cuba:alejo_carpentier",
+    originalSha256: "a6bd924c281630e98f54d3cbe4afa7f0b61607e0f92df64ed65f1237251e9821",
+    reviewedTextRu: "Кубинский писатель, журналист и музыковед. В прологе к роману «Царство земное» он сформулировал концепцию «чудесной реальности» — lo real maravilloso.",
+    claims: [{
+      textRu: "Алехо Карпентьер был кубинским писателем, журналистом и музыковедом и сформулировал концепцию lo real maravilloso в прологе к роману «Царство земное».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Instituto Cervantes", url: "https://www.cervantes.es/bibliotecas_documentacion_espanol/creadores/argel_alejo_carpentier.htm", checkedAt, findingRu: "Институт Сервантеса подтверждает кубинскую писательскую, журналистскую и музыковедческую работу Карпентьера и называет El reino de este mundo его зрелым романом." },
+        { provider: "Universidad Complutense de Madrid, Anales de Literatura Hispanoamericana", url: "https://revistas.ucm.es/index.php/ALHI/en/article/view/ALHI0808110035A", checkedAt, findingRu: "Рецензируемое исследование прямо связывает формулировку lo real maravilloso с прологом Карпентьера к El reino de este mundo." },
+        { provider: "Centro Virtual Cervantes", url: "https://cvc.cervantes.es/el_rinconete/anteriores/noviembre_05/24112005_01.htm", checkedAt, findingRu: "Материал Сервантеса датирует первое изложение концепции lo real maravilloso americano прологом к роману 1949 года." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказанное основательство латиноамериканского бума и смешение lo real maravilloso с общим магическим реализмом устранены; оставлена точная авторская концепция и место её формулировки. Институциональные источники расходятся в дне смерти (24/25 апреля 1980), но запись не находится в date queue, поэтому рекомендация по shared data не даётся. Shared country files не изменялись.",
+  },
+] satisfies readonly ReviewBase[];
+
+function finalizeReviewRecord(record: ReviewBase): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu: record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch07: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch07Base.map(finalizeReviewRecord);

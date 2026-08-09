@@ -1,0 +1,934 @@
+{
+  "batch": "03",
+  "generatedAt": "2026-08-09",
+  "summary": {
+    "records": 20,
+    "unchanged": 3,
+    "corrected": 17,
+    "held": 0
+  },
+  "records": [
+    {
+      "key": "australia:gregory_david_roberts",
+      "originalSha256": "2a2d593c8c4209b0ebc8e0cf9fa39e3207582d5f2584d7dd38a5ace7d3657b46",
+      "reviewedTextRu": "Австралийский писатель, композитор и художник, автор романов «Шантарам» и «Тень горы».",
+      "claims": [
+        {
+          "textRu": "Грегори Дэвид Робертс — австралийский писатель, композитор и художник.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Hachette UK",
+              "url": "https://www.hachette.co.uk/contributor/gregory-david-roberts/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский профиль называет Робертса автором, композитором и художником."
+            },
+            {
+              "provider": "Macmillan",
+              "url": "https://us.macmillan.com/author/gregorydavidroberts",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль издателя подтверждает, что Робертс родился в Мельбурне и является профессиональным писателем."
+            }
+          ]
+        },
+        {
+          "textRu": "Субъективная формула «наиболее известный роман» заменена проверяемым авторством романов «Шантарам» и «Тень горы».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Hachette UK",
+              "url": "https://www.hachette.co.uk/contributor/gregory-david-roberts/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель перечисляет «Шантарам» и его продолжение The Mountain Shadow среди книг Робертса."
+            },
+            {
+              "provider": "Macmillan",
+              "url": "https://us.macmillan.com/author/gregorydavidroberts",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Macmillan прямо называет Робертса автором Shantaram и продолжения The Mountain Shadow."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Identity queue: имя, мельбурнское происхождение и обе книги подтверждают, что кандидат Q1370495 относится к нужному автору; рекомендация — сохранить mapping. В публичной карточке нет дат рождения или смерти; авторитетные издательские профили полной даты не приводят, поэтому даты следует оставить незаполненными. Shared country files не изменялись.",
+      "applicableTextRu": "Австралийский писатель, композитор и художник, автор романов «Шантарам» и «Тень горы»."
+    },
+    {
+      "key": "australia:henry_lawson",
+      "originalSha256": "b15eb14d10b8a8c83cb5e45d910e5c24fdefbe60de50bfcaac8431d24a0eb3bd",
+      "reviewedTextRu": "Австралийский писатель, поэт и автор рассказов. Его проза обращена к повседневности рабочих и жителей австралийского буша, включая суровые стороны этой жизни.",
+      "claims": [
+        {
+          "textRu": "Генри Лоусон — австралийский писатель, поэт и автор рассказов.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/lawson-henry-7118",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный биографический словарь описывает Лоусона как поэта и автора рассказов."
+            },
+            {
+              "provider": "State Library of New South Wales",
+              "url": "https://www.sl.nsw.gov.au/stories/henry-lawson-poet-people",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечная справка подтверждает его работу в поэзии и прозе."
+            }
+          ]
+        },
+        {
+          "textRu": "Недоказанная формула об «одном из основателей» снята; сохранена подтверждённая тема рабочих и суровой повседневности австралийского буша.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "State Library of New South Wales",
+              "url": "https://www.sl.nsw.gov.au/stories/henry-lawson-poet-people/young-author",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека связывает рассказы Лоусона с рабочими буша, городской беднотой и рабочим классом."
+            },
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/lawson-henry-7118",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Биография отмечает документальную конкретность и реалистическое изображение тяжёлой жизни в буше."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Сравнительная роль в основании национальной прозы не была сохранена без двух прямых институциональных подтверждений; авторская тематическая связка сохранена.",
+      "applicableTextRu": "Австралийский писатель, поэт и автор рассказов. Его проза обращена к повседневности рабочих и жителей австралийского буша, включая суровые стороны этой жизни."
+    },
+    {
+      "key": "australia:joseph_furphy",
+      "originalSha256": "dd40079c0049b9a939a327a0f465a9609aaeb397c00fc9c1a6f538128c5990a3",
+      "reviewedTextRu": "Австралийский писатель, автор романа «Такова жизнь» (Such Is Life), основанного на наблюдениях за бытом и обычаями колониальной Австралии.",
+      "claims": [
+        {
+          "textRu": "Джозеф Фёрфи — австралийский писатель и автор романа «Такова жизнь» (Such Is Life).",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/furphy-joseph-6261",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Словарь подтверждает профессию романиста и публикацию Such Is Life в 1903 году."
+            },
+            {
+              "provider": "University of Queensland",
+              "url": "https://communication-arts.uq.edu.au/node/90",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский проект архива Фёрфи подтверждает авторство и текстовую историю Such Is Life."
+            }
+          ]
+        },
+        {
+          "textRu": "Недоказанное утверждение об основании австралийского романа заменено подтверждённой связью Such Is Life с опытом и обычаями колониальной Австралии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/furphy-joseph-6261",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Биография связывает материал романа с опытом Фёрфи как погонщика и его наблюдениями за колониальным бытом."
+            },
+            {
+              "provider": "James Cook University Research Repository",
+              "url": "https://researchonline.jcu.edu.au/69774/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская запись исследования описывает Such Is Life как австралийский роман, связанный с национальной историей и культурой."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Суперлатив об основании жанра снят; название и документированная основа романа сохранены.",
+      "applicableTextRu": "Австралийский писатель, автор романа «Такова жизнь» (Such Is Life), основанного на наблюдениях за бытом и обычаями колониальной Австралии."
+    },
+    {
+      "key": "australia:judith_wright",
+      "originalSha256": "832c484656a9dcb948732c5802563afcc773e2536654c2061eb8db1b7eaeec84",
+      "reviewedTextRu": "Австралийская поэтесса и общественная деятельница. В её поэзии важное место занимают природа, австралийский ландшафт и связь человека с землёй.",
+      "claims": [
+        {
+          "textRu": "Джудит Райт — австралийская поэтесса и общественная деятельница.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/wright-judith-arundell-34325",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Словарь характеризует Райт как поэта, автора и активистку."
+            },
+            {
+              "provider": "National Library of Australia",
+              "url": "https://www.library.gov.au/discover/nla-publishing/birds",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека называет Райт поэтом, эссеистом, природоохранной активисткой и защитницей прав аборигенов."
+            }
+          ]
+        },
+        {
+          "textRu": "Суперлатив снят; подтверждена центральная роль природы, австралийского ландшафта и связи с землёй в её поэзии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/wright-judith-arundell-34325",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Биография прямо связывает поэтическое мышление Райт с австралийским ландшафтом и природоохранной деятельностью."
+            },
+            {
+              "provider": "National Portrait Gallery of Australia",
+              "url": "https://www.portrait.gov.au/people/judith-wright-1915",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственная галерея подтверждает её поэтическую и природоохранную работу и связь стихов с австралийской природой."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Недоказанный рейтинг удалён; слово «культура» заменено на документированную связь поэзии с ландшафтом и землёй.",
+      "applicableTextRu": "Австралийская поэтесса и общественная деятельница. В её поэзии важное место занимают природа, австралийский ландшафт и связь человека с землёй."
+    },
+    {
+      "key": "australia:les_murray",
+      "originalSha256": "1a6d0fcef8e14675f373101efa1c3028a739fe86074bd853bf88752f75cd26ca",
+      "reviewedTextRu": "Австралийский поэт, лауреат премии Т. С. Элиота и обладатель Золотой медали королевы за поэзию.",
+      "claims": [
+        {
+          "textRu": "Лес Мюррей — австралийский поэт.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "National Portrait Gallery of Australia",
+              "url": "https://www.portrait.gov.au/people/les-murray-1938",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственная галерея идентифицирует Лесли Аллана «Леса» Мюррея (1938–2019) как австралийского поэта."
+            },
+            {
+              "provider": "Academy of American Poets",
+              "url": "https://poets.org/poet/les-murray",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академический профиль подтверждает полное имя, дату рождения, австралийское происхождение и поэтическую деятельность."
+            }
+          ]
+        },
+        {
+          "textRu": "Сравнительный рейтинг заменён проверяемыми наградами: премией Т. С. Элиота и Золотой медалью королевы за поэзию.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Poetry Archive",
+              "url": "https://poetryarchive.org/poet/les-murray/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архив перечисляет победу в T. S. Eliot Prize и Queen's Gold Medal for Poetry."
+            },
+            {
+              "provider": "National Portrait Gallery of Australia",
+              "url": "https://www.portrait.gov.au/people/les-murray-1938",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный профиль независимо перечисляет обе награды."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Identity queue: исправленный mapping Q259841 соответствует поэту Leslie Allan Murray; варианты русской передачи «Мюррей/Маррей» не означают другую личность. Даты карточки 1938-10-17 и 2019-04-29 совпадают с Academy of American Poets; рекомендация — сохранить mapping и даты. Shared country files не изменялись.",
+      "applicableTextRu": "Австралийский поэт, лауреат премии Т. С. Элиота и обладатель Золотой медали королевы за поэзию."
+    },
+    {
+      "key": "australia:nevil_shute",
+      "originalSha256": "9371baf324bc877e2dd772cde7249b49cc532ebded3469be0d8b46b475c52657",
+      "reviewedTextRu": "Англо-австралийский писатель и авиационный инженер, публиковавшийся под именем Невил Шют. В его романах инженерный опыт соединяется с темами человеческих отношений и последствий технологического развития.",
+      "claims": [
+        {
+          "textRu": "Невил Шют Норуэй — англо-австралийский писатель и авиационный инженер, публиковавшийся под именем Невил Шют.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Nevil Shute Norway Foundation / Dictionary of National Biography",
+              "url": "https://www.nevilshute.org/Biography/dictionarynationalbio.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Биографическая статья подтверждает полное имя, литературный псевдоним, британское происхождение, инженерную профессию и эмиграцию в Австралию."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/28278/nevil-shute/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский профиль подтверждает сочетание карьеры авиационного инженера и романиста."
+            }
+          ]
+        },
+        {
+          "textRu": "Недоказанный рейтинг популярности и расплывчатое «научное прогнозирование» заменены подтверждённой связью инженерного опыта с человеческими отношениями и последствиями технологий.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Nevil Shute Norway Foundation / Dictionary of National Biography",
+              "url": "https://www.nevilshute.org/Biography/dictionarynationalbio.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Статья связывает техническое знание автора с сюжетами о людях, машинах, авиации и угрозе глобального уничтожения в On the Beach."
+            },
+            {
+              "provider": "Nevil Shute Norway Foundation",
+              "url": "https://www.nevilshute.org/Biography/alanbesterbio.php",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Фонд подробно документирует инженерную карьеру Шюта и её отражение в романах."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Date discrepancy queue: Dictionary of National Biography фиксирует смерть 12 января 1960 года. В текущем рабочем дереве публичная карточка уже показывает 1960-01-12 и годы 1899–1960; рекомендация — сохранить эти значения и считать старое значение 1961-01-12 в QA-очереди устаревшим. Shared country files не изменялись.",
+      "applicableTextRu": "Англо-австралийский писатель и авиационный инженер, публиковавшийся под именем Невил Шют. В его романах инженерный опыт соединяется с темами человеческих отношений и последствий технологического развития."
+    },
+    {
+      "key": "australia:oodgeroo_noonuccal",
+      "originalSha256": "aff1a7ed64257a361b5e2459c4f13a5bd2150e7d6fb32b28c8a2f61ec3b246e2",
+      "reviewedTextRu": "Австралийская поэтесса, художница и правозащитница из клана нунуццал народа куандамока. Её сборник «We Are Going» стал первой поэтической книгой, опубликованной автором — представителем коренных народов Австралии.",
+      "claims": [
+        {
+          "textRu": "Уджеру Нунуккал — австралийская поэтесса, художница и правозащитница из клана нунуццал народа куандамока, а не из народа нунгари.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "State Library of Queensland",
+              "url": "https://www.slq.qld.gov.au/blog/oodgeroo-noonuccal-remembrance-day-2024",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека указывает, что её отец был мужчиной народа Quandamooka из клана Noonuccal на Минджеррибе."
+            },
+            {
+              "provider": "State Library of Queensland",
+              "url": "https://www.slq.qld.gov.au/blog/bancroft-traeger-proposed-new-electorates-honour-significant-contributions-queensland",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечная справка подтверждает роли поэтессы, художницы, политической активистки и защитницы прав аборигенов."
+            },
+            {
+              "provider": "National Portrait Gallery of Australia",
+              "url": "https://www.portrait.gov.au/people/oodgeroo-noonuccal-1920",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственная галерея идентифицирует Уджеру как женщину народа Quandamooka, поэта и активистку."
+            }
+          ]
+        },
+        {
+          "textRu": "«We Are Going» стала первой поэтической публикацией в виде книги, созданной представителем коренных народов Австралии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Australian Dictionary of Biography",
+              "url": "https://adb.anu.edu.au/biography/noonuccal-oodgeroo-18057",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный биографический словарь прямо называет издание 1964 года первой поэтической публикацией Aboriginal Australian."
+            },
+            {
+              "provider": "National Portrait Gallery of Australia",
+              "url": "https://www.portrait.gov.au/people/oodgeroo-noonuccal-1920",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный профиль независимо подтверждает первенство сборника We Are Going."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Исправлена существенная этнокультурная ошибка: Noongar/нунгари — другой народ Западной Австралии; Уджеру принадлежала к клану Noonuccal народа Quandamooka.",
+      "applicableTextRu": "Австралийская поэтесса, художница и правозащитница из клана нунуццал народа куандамока. Её сборник «We Are Going» стал первой поэтической книгой, опубликованной автором — представителем коренных народов Австралии."
+    },
+    {
+      "key": "australia:patrick_white",
+      "originalSha256": "103f1a16f1eab0888f4ea705f046e082049d1bab9208bf3193e7e225791ae68d",
+      "reviewedTextRu": "Австралийский писатель, лауреат Нобелевской премии по литературе 1973 года. В его романах эпическое повествование соединяется с психологическим исследованием человека.",
+      "claims": [
+        {
+          "textRu": "Патрик Уайт — австралийский писатель и лауреат Нобелевской премии по литературе 1973 года.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/1973/white/facts/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная страница фиксирует лауреата, страну и год премии."
+            },
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/1973/white/press-release/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальное сообщение подтверждает присуждение премии Уайту в 1973 году."
+            }
+          ]
+        },
+        {
+          "textRu": "Суперлатив снят; характеристика прозы уточнена как соединение эпического повествования с психологическим исследованием человека.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/1973/white/press-release/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Формулировка премии отмечает эпическое и психологическое повествовательное искусство Уайта."
+            },
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/1973/white/article/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Нобелевский очерк рассматривает психологическое измерение и эпический масштаб его романов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Недоказанный национальный рейтинг удалён; награда и характеристика повествования сохранены в проверяемой форме.",
+      "applicableTextRu": "Австралийский писатель, лауреат Нобелевской премии по литературе 1973 года. В его романах эпическое повествование соединяется с психологическим исследованием человека."
+    },
+    {
+      "key": "australia:peter_carey",
+      "originalSha256": "42725b0261db6243eb59da35cafb78075ae2262eb0b95f372df71b5b85770fd9",
+      "reviewedTextRu": "Австралийский писатель, дважды лауреат Букеровской премии — за романы «Оскар и Люсинда» и «Истинная история шайки Келли».",
+      "claims": [
+        {
+          "textRu": "Питер Кэри — австралийский писатель.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/peter-carey",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль премии называет Кэри австралийским автором."
+            },
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/authors/peter-carey",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский каталог подтверждает авторство его романов и австралийскую литературную карьеру."
+            }
+          ]
+        },
+        {
+          "textRu": "Суперлативы и широкая стилевая оценка заменены точным фактом: Кэри дважды получил Букеровскую премию — за «Оскара и Люсинду» и «Истинную историю шайки Келли».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/peter-carey",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль перечисляет обе победы Кэри и названия романов."
+            },
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/books/oscar-and-lucinda",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Карточка романа подтверждает победу Oscar and Lucinda в 1988 году и вторую победу автора за True History of the Kelly Gang."
+            },
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/books/lists/peter-carey-re-jacketed",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель независимо перечисляет две Букеровские премии и соответствующие романы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Оценочные формулы заменены двумя конкретными наградами; принят общеупотребительный русский заголовок «Истинная история шайки Келли».",
+      "applicableTextRu": "Австралийский писатель, дважды лауреат Букеровской премии — за романы «Оскар и Люсинда» и «Истинная история шайки Келли»."
+    },
+    {
+      "key": "australia:richard_flanagan",
+      "originalSha256": "8c4dfad2590fdfa681c03a7c32bae9bfdc2f91cfcd0ea9e2ac9f104bfaf81018",
+      "reviewedTextRu": "Австралийский писатель, историк и кинорежиссёр, лауреат Букеровской премии 2014 года за роман «Узкая дорога на дальний север».",
+      "claims": [
+        {
+          "textRu": "Ричард Флэнаган — австралийский писатель, историк и кинорежиссёр; исходное «сценарист» заменено документированной профессией.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/richard-flanagan",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль называет Флэнагана романистом, историком и кинорежиссёром из Тасмании."
+            },
+            {
+              "provider": "Pan Macmillan",
+              "url": "https://www.panmacmillan.com/authors/richard-flanagan/1835",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель независимо подтверждает роли автора, историка и кинорежиссёра."
+            }
+          ]
+        },
+        {
+          "textRu": "Флэнаган получил Букеровскую премию 2014 года за роман «Узкая дорога на дальний север».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/richard-flanagan",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный реестр указывает год победы и роман."
+            },
+            {
+              "provider": "Booker Prize Foundation",
+              "url": "https://thebookerprizes.com/the-booker-library/books/the-narrow-road-to-the-deep-north",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Карточка книги фиксирует победу в Booker Prize 2014."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Профессия уточнена по двум профилям; расплывчатая тематическая фраза заменена точным названием награждённого романа.",
+      "applicableTextRu": "Австралийский писатель, историк и кинорежиссёр, лауреат Букеровской премии 2014 года за роман «Узкая дорога на дальний север»."
+    },
+    {
+      "key": "australia:tim_winton",
+      "originalSha256": "dc86e4a5a5935719f119a163cd879a7cb16cfd97ec4ef80e63f37c5e27144266",
+      "reviewedTextRu": "Австралийский писатель, четырежды лауреат премии Майлза Франклина. В его произведениях природа, море и жизнь побережья Западной Австралии становятся частью человеческих историй.",
+      "claims": [
+        {
+          "textRu": "Субъективная оценка лидерства заменена точным фактом: Тим Уинтон — австралийский писатель, четырежды лауреат премии Майлза Франклина.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "State Library of Western Australia",
+              "url": "https://slwa.wa.gov.au/whats-on/awards-fellowships/western-australian-writers-hall-fame/tim-winton",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека называет Уинтона западноавстралийским автором и перечисляет четыре победы в Miles Franklin Award."
+            },
+            {
+              "provider": "Simon & Schuster",
+              "url": "https://www.simonandschuster.com/authors/tim-winton/698930",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательский профиль независимо подтверждает четыре победы."
+            }
+          ]
+        },
+        {
+          "textRu": "Природа, море и побережье Западной Австралии являются устойчивыми темами и местом действия произведений Уинтона.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "State Library of Western Australia",
+              "url": "https://slwa.wa.gov.au/whats-on/awards-fellowships/western-australian-writers-hall-fame/tim-winton",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека отмечает роль ландшафта и частое действие историй в Западной Австралии."
+            },
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/books/lands-edge-a-coastal-memoir-9780143785972",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Описание Land's Edge связывает море, берег и прибрежную жизнь с биографией и романами автора."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "«Один из ведущих» заменено точной наградной формулой; исходные темы сохранены и географически уточнены.",
+      "applicableTextRu": "Австралийский писатель, четырежды лауреат премии Майлза Франклина. В его произведениях природа, море и жизнь побережья Западной Австралии становятся частью человеческих историй."
+    },
+    {
+      "key": "austria:elfriede_jelinek",
+      "originalSha256": "1ee2a1ca6da4fcb8dd7b2ed6c787ec5e3f55a8e284a5f44071e8ac85abcb61cd",
+      "reviewedTextRu": "Австрийская писательница, лауреат Нобелевской премии по литературе 2004 года.",
+      "claims": [
+        {
+          "textRu": "Эльфрида Елинек — австрийская писательница и лауреат Нобелевской премии по литературе 2004 года.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/2004/press-release/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальное сообщение называет Елинек австрийской писательницей и лауреатом 2004 года."
+            },
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/2004/bio-bibliography/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биобиблиография подтверждает происхождение и литературную деятельность."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "unchanged",
+      "notes": "Краткая исходная формулировка полностью подтверждена Нобелевским комитетом.",
+      "applicableTextRu": "Австрийская писательница, лауреат Нобелевской премии по литературе 2004 года."
+    },
+    {
+      "key": "austria:franz_kafka",
+      "originalSha256": "d0c0b4d14b0b781820f0f082ad2aadebf0e3d0e53cecacb9b0e352ababe8d76d",
+      "reviewedTextRu": "Немецкоязычный писатель из Праги, один из основоположников литературного модернизма.",
+      "claims": [
+        {
+          "textRu": "Франц Кафка — немецкоязычный писатель из Праги.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Franz Kafka Museum",
+              "url": "https://kafkamuseum.cz/en/biography",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музейная биография фиксирует рождение и литературную жизнь Кафки в Праге и его принадлежность к пражской немецкой литературе."
+            },
+            {
+              "provider": "Goethe-Institut Czech Republic",
+              "url": "https://www.goethe.de/ins/cz/en/kul/the/kfk/25322516.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институт прямо характеризует Кафку как немецкоязычного писателя Праги."
+            }
+          ]
+        },
+        {
+          "textRu": "Субъективный рейтинг заменён институционально подтверждённой ролью одного из основоположников литературного модернизма.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Goethe-Institut Czech Republic",
+              "url": "https://www.goethe.de/ins/cz/de/kul/the/kfk/25323158.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Материал Института называет Кафку одним из основателей литературного модернизма."
+            },
+            {
+              "provider": "Franz Kafka Museum",
+              "url": "https://kafkamuseum.cz/en/biography",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль музея подтверждает его место в немецкоязычной прозе XX века."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Широкая государственная атрибуция «писатель Австро-Венгрии» заменена точной языково-городской формулой; сравнительный суперлатив снят.",
+      "applicableTextRu": "Немецкоязычный писатель из Праги, один из основоположников литературного модернизма."
+    },
+    {
+      "key": "austria:hugo_von_hofmannsthal",
+      "originalSha256": "a42a4c08a7bdf266af85f7689a39c9efe3ccf0af8b24645b24b244a0d8751f60",
+      "reviewedTextRu": "Австрийский поэт, драматург и один из основателей Зальцбургского фестиваля.",
+      "claims": [
+        {
+          "textRu": "Гуго фон Гофмансталь — австрийский поэт и драматург.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Hugo von Hofmannsthal-Gesellschaft",
+              "url": "https://gesellschaft.hofmannsthal.de/biographie/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профильное общество документирует поэтические и драматургические произведения Гофмансталя и его венское происхождение."
+            },
+            {
+              "provider": "Salzburg Festival",
+              "url": "https://www.salzburgerfestspiele.at/en/about-us",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный сайт фестиваля называет Гофмансталя австрийским поэтом."
+            }
+          ]
+        },
+        {
+          "textRu": "Гофмансталь был одним из основателей Зальцбургского фестиваля.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Salzburg Festival",
+              "url": "https://www.salzburgerfestspiele.at/en/about-us",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная история относит Гофмансталя к основателям вместе с Максом Рейнхардтом и Рихардом Штраусом."
+            },
+            {
+              "provider": "Hugo von Hofmannsthal-Gesellschaft",
+              "url": "https://gesellschaft.hofmannsthal.de/biographie/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профильное общество подтверждает, что Гофмансталь и Рейнхардт основали фестиваль в 1920-е годы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "unchanged",
+      "notes": "Обе части исходного предложения подтверждены двумя профильными институциями.",
+      "applicableTextRu": "Австрийский поэт, драматург и один из основателей Зальцбургского фестиваля."
+    },
+    {
+      "key": "austria:peter_handke",
+      "originalSha256": "e0461100692366702f41179253eefab17431a51066cf54612033cdb01f71b5ac",
+      "reviewedTextRu": "Австрийский писатель, лауреат Нобелевской премии по литературе 2019 года.",
+      "claims": [
+        {
+          "textRu": "Петер Хандке — австрийский писатель и лауреат Нобелевской премии по литературе 2019 года.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/prizes/literature/2019/handke/facts/-/?gallery_style=page",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная карточка фиксирует лауреата и год премии."
+            },
+            {
+              "provider": "Nobel Prize Outreach",
+              "url": "https://www.nobelprize.org/uploads/2019/10/biobibliography-literatureprize2019.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биобиблиография подтверждает рождение Хандке в Каринтии и его литературную карьеру."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "unchanged",
+      "notes": "Краткая исходная формулировка подтверждена официальными материалами Нобелевской премии.",
+      "applicableTextRu": "Австрийский писатель, лауреат Нобелевской премии по литературе 2019 года."
+    },
+    {
+      "key": "azerbaijan:anar_rzayev",
+      "originalSha256": "b31e227208f1ba74caec6031077652c761476b194cc00c3656fddf2ed938bdf4",
+      "reviewedTextRu": "Азербайджанский писатель, драматург и сценарист, автор повести «Белая пристань».",
+      "claims": [
+        {
+          "textRu": "Анар Рзаев — азербайджанский писатель, драматург и сценарист.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/94",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный литературный обзор называет Анара прозаиком, драматургом и киносценаристом."
+            },
+            {
+              "provider": "Национальная библиотека Азербайджана",
+              "url": "https://anl.az/down/anar70.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный библиографический указатель документирует литературную, драматургическую и сценарную деятельность Анара."
+            }
+          ]
+        },
+        {
+          "textRu": "Субъективный рейтинг заменён проверяемым фактом: Анар — автор повести «Белая пристань».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/94",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный обзор называет «Белую пристань» (1967) одним из ранних произведений Анара."
+            },
+            {
+              "provider": "Национальная библиотека Азербайджана",
+              "url": "https://anl.az/down/anar70.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиография включает повесть «Ağ liman» в корпус произведений автора."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Суперлатив снят; вместо него сохранены профессиональные роли и конкретное произведение.",
+      "applicableTextRu": "Азербайджанский писатель, драматург и сценарист, автор повести «Белая пристань»."
+    },
+    {
+      "key": "azerbaijan:huseyn_javid",
+      "originalSha256": "aacced383a0228118ef0809731204584b427bf353999ecb64c212ee73167d2e1",
+      "reviewedTextRu": "Азербайджанский поэт и драматург, один из основоположников азербайджанского романтизма XX века.",
+      "claims": [
+        {
+          "textRu": "Гусейн Джавид — азербайджанский поэт и драматург.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/97",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный профиль прямо называет Джавида поэтом и драматургом Азербайджана."
+            },
+            {
+              "provider": "Официальный сайт Президента Азербайджана",
+              "url": "https://president.az/ru/articles/view/57353",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Распоряжение о юбилее подтверждает его поэтическую и драматургическую деятельность."
+            }
+          ]
+        },
+        {
+          "textRu": "Сравнительная оценка «один из крупнейших» заменена документированной ролью одного из основоположников азербайджанского романтизма XX века.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/97",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный литературный профиль прямо относит Джавида к основоположникам азербайджанского романтизма XX века."
+            },
+            {
+              "provider": "Национальная библиотека Азербайджана",
+              "url": "https://anl.az/down/H.Cavid.bib.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиография документирует романтическую поэзию и стихотворную драматургию Джавида."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Субъективный суперлатив заменён точной историко-литературной ролью, прямо зафиксированной официальным источником.",
+      "applicableTextRu": "Азербайджанский поэт и драматург, один из основоположников азербайджанского романтизма XX века."
+    },
+    {
+      "key": "azerbaijan:imadaddin_nasimi",
+      "originalSha256": "20f0814e625df93b29adc612a087f474bd581ac566fc3154cf5d5232260e9dea",
+      "reviewedTextRu": "Азербайджанский поэт и мыслитель, чьё творчество стало особым этапом в истории азербайджанской литературы и обогатило поэзию гуманистическими идеями.",
+      "claims": [
+        {
+          "textRu": "Имадеддин Насими — азербайджанский поэт и мыслитель.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный сайт Президента Азербайджана",
+              "url": "https://president.az/ru/articles/view/30722",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Юбилейное распоряжение прямо называет Насими азербайджанским поэтом и мыслителем."
+            },
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/253",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный обзор помещает Насими в историю азербайджанской литературы и гуманистической мысли."
+            }
+          ]
+        },
+        {
+          "textRu": "Широкие суперлативы и спорная формула об основании традиции заменены подтверждённой ролью творчества Насими в истории литературы и развитии гуманистической поэзии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный сайт Президента Азербайджана",
+              "url": "https://president.az/ru/articles/view/30722",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный текст называет наследие Насими особым этапом истории азербайджанской литературы и отмечает обогащение поэзии гуманистическими идеями."
+            },
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/92",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный обзор средневековой литературы связывает творчество Насими с гуманизмом и защитой достоинства человека."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Нейтрализованы оценочные и историографически широкие формулы; сохранены две прямо подтверждённые характеристики.",
+      "applicableTextRu": "Азербайджанский поэт и мыслитель, чьё творчество стало особым этапом в истории азербайджанской литературы и обогатило поэзию гуманистическими идеями."
+    },
+    {
+      "key": "azerbaijan:jalil_mammadguluzadeh",
+      "originalSha256": "123ef7ca70b92073e02842fda5e47e9956fa64e347b2087762ccab76ebc3bbbf",
+      "reviewedTextRu": "Азербайджанский писатель, драматург и сатирик, создатель литературной школы критического реализма и учредитель журнала «Молла Насреддин».",
+      "claims": [
+        {
+          "textRu": "Джалил Мамедкулизаде — азербайджанский писатель, драматург и сатирик.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный сайт Президента Азербайджана",
+              "url": "https://president.az/ru/articles/view/31565",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Юбилейное распоряжение подтверждает его писательскую, драматургическую, публицистическую и сатирическую деятельность."
+            },
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/97",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный литературный профиль называет Мамедкулизаде писателем, драматургом и журналистом-новатором."
+            }
+          ]
+        },
+        {
+          "textRu": "Расплывчатая формула об основании современной прозы заменена точными фактами: Мамедкулизаде создал школу критического реализма и учредил журнал «Молла Насреддин».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/97",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный профиль прямо фиксирует обе роли — основателя школы критического реализма и учредителя журнала."
+            },
+            {
+              "provider": "Официальный сайт Президента Азербайджана",
+              "url": "https://president.az/ru/articles/view/31565",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Распоряжение подтверждает центральную роль писателя в критическом реализме и создании сатирического журнала."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Слово «крупный» снято; литературно-историческая роль изложена через две конкретные институции.",
+      "applicableTextRu": "Азербайджанский писатель, драматург и сатирик, создатель литературной школы критического реализма и учредитель журнала «Молла Насреддин»."
+    },
+    {
+      "key": "azerbaijan:mirza_fatali_akhundov",
+      "originalSha256": "80841a5d3c4927611a1940094686a7b4d035228033e6bcb8a6315e6a31b5c0c8",
+      "reviewedTextRu": "Азербайджанский писатель, драматург и просветитель, заложивший своими комедиями 1850-х годов основы национальной драматургии.",
+      "claims": [
+        {
+          "textRu": "Мирза Фатали Ахундов — азербайджанский писатель, драматург и просветитель.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/1842787",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Энциклопедия подтверждает писательскую, драматургическую, общественную и просветительскую деятельность Ахундова."
+            },
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/ru/historical/page/Mf23E9Q",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечная биография называет его писателем-драматургом, философом и общественным деятелем."
+            }
+          ]
+        },
+        {
+          "textRu": "Суперлатив снят; подтверждена роль комедий 1850-х годов в формировании национальной драматургии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Большая российская энциклопедия",
+              "url": "https://old.bigenc.ru/literature/text/1842787",
+              "checkedAt": "2026-08-09",
+              "findingRu": "БРЭ прямо сообщает, что Ахундов заложил основы азербайджанской национальной драматургии пьесами 1850–1855 годов."
+            },
+            {
+              "provider": "Официальный портал Азербайджана",
+              "url": "https://azerbaijan.az/ru/related-information/97",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный профиль связывает шесть комедий 1850-х годов с основанием национальной драматургии."
+            },
+            {
+              "provider": "Президентская библиотека Азербайджана",
+              "url": "https://www.preslib.az/ru/historical/page/Mf23E9Q",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека подтверждает, что комедии 1850–1855 годов заложили основу драматургии."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 03",
+      "decision": "corrected",
+      "notes": "Date discrepancy queue: БРЭ даёт 30.6(12.7).1812 и 26.2(10.3).1878. Рекомендация для публичной карточки — заменить birthDate 1812-07-30 на 1812-07-12 и deathDate 1878-03-09 на 1878-03-10 (новый стиль); years 1812–1878 оставить. Shared country files в этом batch не изменялись.",
+      "applicableTextRu": "Азербайджанский писатель, драматург и просветитель, заложивший своими комедиями 1850-х годов основы национальной драматургии."
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { WorkProfile } from "./countries/types";
 import { buildBookArchive } from "./bookArchive";
-import { countries } from "./countries";
+import { bookArchiveCountries } from "./countries";
 import {
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
@@ -42,7 +42,7 @@ const book: WorkProfile = {
 
 describe("локализация книжной карточки", () => {
   it("даёт каждой видимой книге профессиональное имя автора на английском", () => {
-    const archiveBooks = buildBookArchive(countries);
+    const archiveBooks = buildBookArchive(bookArchiveCountries);
     const invalidWriterNames = archiveBooks
       .map((publicBook) => ({
         book: `${publicBook.countryId}:${publicBook.writerId}:${publicBook.id}`,

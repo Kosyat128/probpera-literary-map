@@ -63,7 +63,7 @@ export const taiwan: Country = {
       name: "Ли Ан",
       fullName: "Li Ang",
       years: "1952–",
-      birthDate: "1952-04-05",
+      birthDate: "1952-04-07",
       deathDate: "",
       birthPlace: "Луган, Тайвань",
       portrait: "",

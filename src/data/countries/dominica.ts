@@ -48,7 +48,7 @@ export const dominica: Country = {
       name: "Филлис Шанд Олфри",
       years: "1908–1986",
       birthDate: "1908-10-24",
-      deathDate: "1986-02-31",
+      deathDate: "1986",
       birthPlace: "Розо, Доминика",
       deathPlace: "Доминика",
       coordinates: {

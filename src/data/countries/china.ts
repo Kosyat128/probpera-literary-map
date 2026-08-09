@@ -421,9 +421,9 @@ export const china: Country = {
         {
       id: "cao_xueqin",
       name: "Цао Сюэцинь",
-      years: "1715/1724–1763",
-      birthDate: "1715 или 1724",
-      deathDate: "1763",
+      years: "ок. 1715 — ок. 1763",
+      birthDate: "ок. 1715",
+      deathDate: "ок. 1763",
       birthPlace: "Нанкин, Китай",
       deathPlace: "Пекин, Китай",
       coordinates: {
@@ -892,7 +892,7 @@ export const china: Country = {
       id: "su_tong",
       name: "Су Тун",
       years: "1963–",
-      birthDate: "1963-01-01",
+      birthDate: "1963-01-23",
       birthPlace: "Сучжоу, Китай",
       coordinates: {
         lat: 31.2989,
@@ -1030,9 +1030,10 @@ export const china: Country = {
         {
       id: "chi_ziqiang",
       name: "Чи Цзыцянь",
-      years: "1948–",
-      birthDate: "1948",
-      birthPlace: "Китай",
+      fullName: "Chi Zijian",
+      years: "1964–",
+      birthDate: "1964",
+      birthPlace: "Мохэ, Хэйлунцзян, Китай",
       coordinates: {
         lat: 39.9042,
         lng: 116.4074
@@ -1040,7 +1041,7 @@ export const china: Country = {
       portrait: "",
       bio: "Современный китайский писатель и представитель китайской интеллектуальной прозы второй половины XX века.",
       works: [
-        "Рассказы и эссе"
+        "Правый берег Аргуни"
       ],
       genres: [
         "проза",
@@ -1100,6 +1101,7 @@ export const china: Country = {
     {
       id: "chiang_sheng_tao",
       name: "Чжоу Цзожэнь",
+      fullName: "Zhou Zuoren",
       years: "1885–1967",
       birthDate: "1885-01-16",
       deathDate: "1967-05-06",
@@ -1167,7 +1169,7 @@ export const china: Country = {
       name: "Чжан Лин",
       years: "1957–",
       birthDate: "1957",
-      birthPlace: "Шанхай, Китай",
+      birthPlace: "Ханчжоу, Чжэцзян, Китай",
       coordinates: {
         lat: 31.2304,
         lng: 121.4737

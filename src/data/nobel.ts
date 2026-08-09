@@ -1,38 +1,28 @@
 import type { Country, Writer } from "./countries";
 
 const NOBEL_SIGNAL = /нобел|nobel/iu;
-const YEAR_PATTERN = /\b(18|19|20)\d{2}\b/u;
 
-function nobelSources(writer: Writer) {
+function legacyAwardSignals(writer: Writer) {
   return [
     typeof writer.nobelPrize === "string" ? writer.nobelPrize : "",
     ...(writer.awards || []),
-    // These fields are inspected only to derive a structured Nobel flag/year;
-    // the prose itself is never rendered and remains behind the biography gate.
-    writer.biography || "",
-    writer.bio || "",
-    writer.description || "",
   ].filter((value) => NOBEL_SIGNAL.test(value));
 }
 
 export function getNobelYear(writer: Writer): number | null {
-  if (writer.nobelYear) return writer.nobelYear;
-
-  for (const source of nobelSources(writer)) {
-    const match = source.match(YEAR_PATTERN);
-    if (match) return Number(match[0]);
-  }
-
-  return null;
+  return writer.nobelAward?.year || writer.nobelYear || null;
 }
 
 export function isNobelLaureate(writer: Writer) {
+  const year = getNobelYear(writer);
   return Boolean(
-    writer.nobel ||
-      writer.isNobel ||
-      writer.nobelYear ||
-      writer.nobelPrize ||
-      nobelSources(writer).length
+    year &&
+      (writer.nobelAward?.category === "literature" ||
+        writer.nobel === true ||
+        writer.isNobel === true ||
+        writer.nobelYear === year ||
+        Boolean(writer.nobelPrize) ||
+        legacyAwardSignals(writer).length > 0)
   );
 }
 
@@ -49,6 +39,9 @@ export type CountryNobelLaureateEntry = {
 };
 
 function laureateIdentity(writer: Writer) {
+  if (writer.nobelAward?.laureateId) {
+    return `official:${writer.nobelAward.laureateId}`;
+  }
   return (writer.name || writer.fullName || writer.id)
     .toLocaleLowerCase("ru-RU")
     .normalize("NFKD")

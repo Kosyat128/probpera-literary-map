@@ -22,7 +22,6 @@ import {
   collectNobelLaureates,
 } from "../data/nobel";
 import {
-  type InterfaceLanguage,
   useInterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
 import { selectWriterDisplayName } from "../data/bookLocalization";
@@ -31,7 +30,6 @@ import WriterPortrait from "./WriterPortrait";
 import {
   createGlobeAtlas,
   GLOBE_VISUAL_STYLES,
-  globeTextureAssetName,
   isGlobeVisualStyle,
   type GlobeAtlas,
   type GlobeVisualStyle,
@@ -49,23 +47,6 @@ interface Props {
 }
 
 const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
-
-function preloadModernGlobeTexture(language: InterfaceLanguage) {
-  if (typeof document === "undefined") return;
-  const compact = window.innerWidth <= 900;
-  const assetName = globeTextureAssetName("modern", compact, language);
-  if (!assetName) return;
-  const marker = `modern-${language}-${compact ? "compact" : "desktop"}`;
-  if (document.head.querySelector(`link[data-globe-preload="${marker}"]`)) return;
-
-  const link = document.createElement("link");
-  link.rel = "preload";
-  link.as = "image";
-  link.href = `${import.meta.env.BASE_URL}${assetName}`;
-  link.fetchPriority = "high";
-  link.dataset.globePreload = marker;
-  document.head.append(link);
-}
 
 const globeStylePalette: Record<
   GlobeVisualStyle,
@@ -1809,21 +1790,30 @@ export default function LiteraryGlobe({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    let intersects = true;
+    let intersectsViewport = false;
     const update = () =>
-      setGlobeActive(intersects && document.visibilityState !== "hidden");
-    const observer = new IntersectionObserver(
+      setGlobeActive(
+        intersectsViewport && document.visibilityState !== "hidden"
+      );
+    const preloadObserver = new IntersectionObserver(
       ([entry]) => {
-        intersects = Boolean(entry?.isIntersecting);
-        if (intersects) setAtlasRequested(true);
-        update();
+        if (entry?.isIntersecting) setAtlasRequested(true);
       },
       { rootMargin: "160px", threshold: 0.01 }
     );
-    observer.observe(container);
+    const activityObserver = new IntersectionObserver(
+      ([entry]) => {
+        intersectsViewport = Boolean(entry?.isIntersecting);
+        update();
+      },
+      { threshold: 0.01 }
+    );
+    preloadObserver.observe(container);
+    activityObserver.observe(container);
     document.addEventListener("visibilitychange", update);
     return () => {
-      observer.disconnect();
+      preloadObserver.disconnect();
+      activityObserver.disconnect();
       document.removeEventListener("visibilitychange", update);
     };
   }, []);
@@ -1839,16 +1829,21 @@ export default function LiteraryGlobe({
     if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
+    const controller = new AbortController();
     const requestedInitialStyle = initialVisualStyle.current;
 
-    createGlobeAtlas(countries, requestedInitialStyle, initialLanguage.current)
+    createGlobeAtlas(countries, requestedInitialStyle, initialLanguage.current, {
+      signal: controller.signal,
+    })
       .catch(async (error: unknown) => {
+        if (controller.signal.aborted) throw error;
         if (requestedInitialStyle === "antique") throw error;
 
         const fallbackAtlas = await createGlobeAtlas(
           countries,
           "antique",
-          initialLanguage.current
+          initialLanguage.current,
+          { signal: controller.signal }
         );
         initialVisualStyle.current = "antique";
         if (!disposed) {
@@ -1876,6 +1871,7 @@ export default function LiteraryGlobe({
 
     return () => {
       disposed = true;
+      controller.abort();
       createdAtlas?.dispose();
     };
   }, [atlasRequested, countries]);
@@ -1921,8 +1917,8 @@ export default function LiteraryGlobe({
           <span aria-hidden="true">✦</span>
           <p>
             {atlasError
-              ? t("Карта временно недоступна")
-              : t("Проявляем старинную карту…")}
+              ? t("Литературная планета временно недоступна")
+              : t("Готовим интерактивный глобус…")}
           </p>
         </div>
       </div>
@@ -1934,6 +1930,7 @@ export default function LiteraryGlobe({
       ref={containerRef}
       className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
       data-globe-style={renderedVisualStyle}
+      data-globe-render-loop={globeActive ? "active" : "paused"}
     >
       <Canvas
         camera={{ position: [0, 0.08, 4.9], fov: 43, near: 0.1, far: 100 }}
@@ -1984,10 +1981,19 @@ export default function LiteraryGlobe({
             aria-busy={pendingVisualStyle === style || undefined}
             aria-label={visualStyleLabels[style]}
             onPointerEnter={() => {
-              if (style === "modern") preloadModernGlobeTexture(language);
+              if (style !== renderedVisualStyle) {
+                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
+              }
             }}
             onFocus={() => {
-              if (style === "modern") preloadModernGlobeTexture(language);
+              if (style !== renderedVisualStyle) {
+                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
+              }
+            }}
+            onPointerDown={() => {
+              if (style !== renderedVisualStyle) {
+                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
+              }
             }}
             onClick={() => {
               setVisualStyleError(false);
@@ -2096,8 +2102,8 @@ export default function LiteraryGlobe({
           <CountryFlagIcon
             code={hoveredCountry.code}
             countryName={hoveredCountry.name}
-            className="globe-country-label-flag"
-            size={38}
+            className="globe-country-label-flag country-flag-icon--round"
+            size={30}
             decorative
             priority
           />

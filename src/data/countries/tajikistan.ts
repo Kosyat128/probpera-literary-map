@@ -405,9 +405,9 @@ export const tajikistan: Country = {
       name: "Мухаммаджан Шакури",
       fullName: "Muhammadjon Shakuri",
 
-      years: "1926–2012",
+      years: "1925–2012",
 
-      birthDate: "1926-10-30",
+      birthDate: "1925-02",
       deathDate: "2012-09-16",
 
       birthPlace: "Бухара",

@@ -158,7 +158,7 @@ export const iraq: Country = {
 
       years: "1926–1964",
 
-      birthDate: "1926-12-25",
+      birthDate: "1926-12-24",
       deathDate: "1964-12-24",
 
       birthPlace: "Джейкур",

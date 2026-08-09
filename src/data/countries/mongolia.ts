@@ -258,8 +258,8 @@ export const mongolia: Country = {
 
       years: "1917–1970",
 
-      birthDate: "1917-03-10",
-      deathDate: "1970-06-20",
+      birthDate: "1917-08-20",
+      deathDate: "1970-01-11",
 
       birthPlace: "Монголия",
 

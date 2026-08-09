@@ -2,18 +2,18 @@ import { describe, expect, it } from "vitest";
 
 import { articleCatalog } from "./articles/catalog";
 import { buildBookArchive, isCoverDisplayAllowed } from "./bookArchive";
-import { countries } from "./countries";
+import { bookArchiveCountries, countries } from "./countries";
 
 describe("automatic site counters", () => {
   const writers = countries.flatMap((country) => country.writers);
-  const books = buildBookArchive(countries);
+  const books = buildBookArchive(bookArchiveCountries);
 
   it("derives all encyclopedia totals from countries", () => {
     expect(countries).toHaveLength(200);
     expect(writers.length).toBeGreaterThan(100);
     expect(books.length).toBeGreaterThan(100);
     expect(books.length).toBe(
-      countries.reduce(
+      bookArchiveCountries.reduce(
         (total, country) =>
           total + buildBookArchive([country]).length,
         0

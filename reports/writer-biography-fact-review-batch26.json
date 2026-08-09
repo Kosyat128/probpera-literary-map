@@ -1,0 +1,611 @@
+{
+  "batch": "26",
+  "generatedAt": "2026-08-09",
+  "selectionSnapshot": {
+    "reviewQueue": 1720,
+    "assignedRecords": 500,
+    "assignedUnique": 500,
+    "quarantine": 49,
+    "eligibleAfterAssignedAndQuarantine": 1240,
+    "reservedForGapFill": 28,
+    "eligibleAfterReservations": 1212,
+    "boundary": 20,
+    "boundaryUnique": 20,
+    "overlapAssigned": 0,
+    "overlapQuarantine": 0
+  },
+  "summary": {
+    "records": 20,
+    "unchanged": 2,
+    "corrected": 17,
+    "held": 1
+  },
+  "records": [
+    {
+      "key": "england:william_golding",
+      "originalSha256": "c16b35fe6318820f5c062f3345611cd68933202b1b21d7b185e8d2c9d81c6272",
+      "reviewedTextRu": "Английский писатель, лауреат Нобелевской премии по литературе 1983 года.",
+      "claims": [
+        {
+          "textRu": "Уильям Голдинг был английским писателем и получил Нобелевскую премию по литературе в 1983 году.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "The Nobel Prize",
+              "url": "https://www.nobelprize.org/nobel_prizes/literature/laureates/1983/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная страница Нобелевской премии подтверждает присуждение Голдингу премии по литературе 1983 года и определяет его как английского автора."
+            },
+            {
+              "provider": "Faber & Faber",
+              "url": "https://www.faber.co.uk/author/william-golding/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская биография независимо называет Голдинга писателем и подтверждает получение Нобелевской премии по литературе в 1983 году."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "unchanged",
+      "notes": "Все конкретные утверждения исходного краткого текста подтверждены официальной премиальной страницей и издателем; текст сохранён дословно. Shared country files не изменялись.",
+      "applicableTextRu": "Английский писатель, лауреат Нобелевской премии по литературе 1983 года."
+    },
+    {
+      "key": "england:william_wordsworth",
+      "originalSha256": "1eb41924dafe1dd8f37c0fd87ebc699932a00e116307e5758cb19420a4703276",
+      "reviewedTextRu": "Английский поэт эпохи романтизма, вместе с Сэмюэлом Тейлором Кольриджем создавший сборник «Лирические баллады».",
+      "claims": [
+        {
+          "textRu": "Уильям Вордсворт был английским поэтом-романтиком и вместе с Сэмюэлом Тейлором Кольриджем создал «Лирические баллады».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Wordsworth Grasmere",
+              "url": "https://wordsworth.org.uk/blog/2014/08/13/a-new-species-of-poetry-the-making-of-lyrical-ballads/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Музей и исследовательский центр Вордсворта называет Lyrical Ballads совместным литературным начинанием Вордсворта и Кольриджа и пионерским произведением английского романтизма."
+            },
+            {
+              "provider": "National Portrait Gallery, London",
+              "url": "https://www.npg.org.uk/collections/search/person/mp04931/william-wordsworth",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная портретная галерея определяет Вордсворта как одну из фигур-основателей английской романтической поэзии и подтверждает совместное создание Lyrical Ballads с Кольриджем."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Широкая формула «один из основателей» заменена точной характеристикой эпохи и документированным соавторством сборника. Shared country files не изменялись.",
+      "applicableTextRu": "Английский поэт эпохи романтизма, вместе с Сэмюэлом Тейлором Кольриджем создавший сборник «Лирические баллады»."
+    },
+    {
+      "key": "england:winston_churchill",
+      "originalSha256": "c3cb1048149c619084b4793154fdbecfb45f029928a549b48806498aa52f102b",
+      "reviewedTextRu": "Британский государственный деятель и автор масштабных историко-мемуарных трудов. Нобелевская премия по литературе 1953 года была присуждена за мастерство исторического и биографического описания и за блестящее ораторское искусство в защиту высоких человеческих ценностей.",
+      "claims": [
+        {
+          "textRu": "Уинстон Черчилль был британским государственным деятелем и автором историко-мемуарных трудов; Нобелевскую премию по литературе 1953 года он получил за историческое и биографическое описание и ораторское искусство в защиту высоких человеческих ценностей.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "The Nobel Prize",
+              "url": "https://www.nobelprize.org/prizes/literature/1953/churchill/facts/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная премиальная запись подтверждает 1953 год, статус государственного деятеля и историка и приводит соответствующую формулировку мотивации награды."
+            },
+            {
+              "provider": "Government of the United Kingdom",
+              "url": "https://www.gov.uk/government/history/past-prime-ministers/winston-churchill",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Правительственная биография независимо характеризует Черчилля как государственного деятеля, писателя и оратора и подтверждает Нобелевскую премию по литературе 1953 года за опубликованные труды."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "unchanged",
+      "notes": "Роли, год премии и её официальная мотивация подтверждены Нобелевским комитетом и правительственной биографией; исходный текст сохранён дословно. Shared country files не изменялись.",
+      "applicableTextRu": "Британский государственный деятель и автор масштабных историко-мемуарных трудов. Нобелевская премия по литературе 1953 года была присуждена за мастерство исторического и биографического описания и за блестящее ораторское искусство в защиту высоких человеческих ценностей."
+    },
+    {
+      "key": "equatorial_guinea:donato_ndongo_bidyogo",
+      "originalSha256": "201751176b601dd96e068c8d5e61d303750a5ec034a5b1f8eafcfd08392cc0ef",
+      "reviewedTextRu": "Экватогвинейский писатель, журналист и исследователь, автор романов «Las tinieblas de tu memoria negra» и «Los poderes de la tempestad».",
+      "claims": [
+        {
+          "textRu": "Донато Ндонго-Бидиого — экватогвинейский писатель, журналист и исследователь, написавший романы Las tinieblas de tu memoria negra и Los poderes de la tempestad.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Casa África",
+              "url": "https://www.casafrica.es/es/persona/donato-ndongo",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный культурный институт Испании называет Ндонго писателем и журналистом, фиксирует его исследовательскую работу и атрибутирует ему оба романа."
+            },
+            {
+              "provider": "Instituto Cervantes — Centro Virtual Cervantes",
+              "url": "https://cvc.cervantes.es/lengua/africa_subsahariana/eas_2026/capitulo24.htm",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институт Сервантеса независимо рассматривает Ндонго как центрального автора литературы Экваториальной Гвинеи и подтверждает авторство и последовательность двух названных романов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Ранговая формула «один из основателей современной литературы» заменена проверяемыми ролями и двумя конкретными романами. Shared country files не изменялись.",
+      "applicableTextRu": "Экватогвинейский писатель, журналист и исследователь, автор романов «Las tinieblas de tu memoria negra» и «Los poderes de la tempestad»."
+    },
+    {
+      "key": "equatorial_guinea:juan_tomas_avila_laurel",
+      "originalSha256": "7e501fb5f178e05af2a0edbe35e1fbb21cf7295b2b549ddfa831c2217d70b7bf",
+      "reviewedTextRu": "Экватогвинейский писатель, автор романов «Arde el monte de noche» и «Avión de ricos, ladrón de cerdos».",
+      "claims": [
+        {
+          "textRu": "Хуан Томас Авила Лаурель — экватогвинейский писатель и автор романов Arde el monte de noche и Avión de ricos, ladrón de cerdos.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Casa África",
+              "url": "https://www.casafrica.es/es/persona/juan-tomas-avila-laurel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный культурный институт Испании подтверждает экватогвинейское происхождение, писательскую деятельность и авторство обоих романов."
+            },
+            {
+              "provider": "And Other Stories",
+              "url": "https://www.andotherstories.org/authors/juan-tomas-avila-laurel/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Независимый издательский профиль подтверждает, что Авила Лаурель родился в Экваториальной Гвинее и работает как романист и эссеист; By Night the Mountain Burns является английским изданием Arde el monte de noche."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Сняты субъективные ранги известности; оставлены страна, литературная роль и два документированных романа. Shared country files не изменялись.",
+      "applicableTextRu": "Экватогвинейский писатель, автор романов «Arde el monte de noche» и «Avión de ricos, ladrón de cerdos»."
+    },
+    {
+      "key": "eritrea:sebhat_gebregziabher",
+      "originalSha256": "bf0ad3e717ba85ada5084660ee623919871c31fdce3dbefe2b3992d48a9bc32c",
+      "reviewedTextRu": "Исходная карточка объединяет несовместимые имена и биографические сведения: писатель Сибхат Гебре-Эгзиабхер и эритрейский государственный деятель Себхат Эфрем являются разными людьми.",
+      "claims": [
+        {
+          "textRu": "Литературная личность «Себхат Эфрем» с биографией из карточки не установлена: в ней смешаны писатель Сибхат Гебре-Эгзиабхер и государственный деятель Себхат Эфрем.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Bahir Dar University — Ethiopian Journal of Language, Culture and Communication",
+              "url": "https://journals.bdu.edu.et/index.php/EJLCC/article/view/3181?articlesBySimilarityPage=3",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетское исследование атрибутирует писателю Sibhat Gebre-Egziabher романы Sebategnaw Meleak и Tikusat; имя Sebhat Ephrem и заявленная в карточке эритрейско-тигриньяская биография не фигурируют."
+            },
+            {
+              "provider": "Eritrea Ministry of Information",
+              "url": "https://shabait.com/2011/10/25/eritrean-youths-accomplishing-development-tasks-of-pride-to-future-generations-gen-sebhat-ephrem/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальное сообщение Эритреи идентифицирует генерала Себхата Эфрема как министра обороны, а не как писателя, что подтверждает столкновение двух разных персон в карточке."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "held",
+      "notes": "Identity recommendation: поместить всю карточку в карантин. Key/fullName указывают на писателя Sibhat Gebre-Egziabher, display name — на эритрейского генерала Sebhat Ephrem; годы 1936–2012, страна, язык тигринья, произведение «Колена Сатаны» и литературная роль не образуют подтверждённой единой личности. Shared country files не изменялись.",
+      "applicableTextRu": null
+    },
+    {
+      "key": "estonia:anton_hansen_tammsaare",
+      "originalSha256": "9ddcfb0bbe5e4707bcf7abbac03a00083039bba344dbcc942e4a10dd6b2143af",
+      "reviewedTextRu": "Эстонский прозаик, драматург и эссеист, автор пенталогии «Правда и справедливость» («Tõde ja õigus»).",
+      "claims": [
+        {
+          "textRu": "Антон Хансен Таммсааре был эстонским прозаиком, драматургом и эссеистом и написал пенталогию Tõde ja õigus.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/t/tammsaare/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь определяет Таммсааре как прозаика, драматурга и эссеиста и называет Tõde ja õigus эпической пенталогией."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://kreutzwald.kirmus.ee/et/lisamaterjalid/ajatelje_materjalid?item_id=53&table=Persons",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Эстонский литературный музей независимо атрибутирует Таммсааре романную эпопею Tõde ja õigus в пяти частях и подтверждает его место в эстонской прозе."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Недоказуемый суперлатив заменён жанровыми ролями и главным документированным произведением. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский прозаик, драматург и эссеист, автор пенталогии «Правда и справедливость» («Tõde ja õigus»)."
+    },
+    {
+      "key": "estonia:eduard_vilde",
+      "originalSha256": "7a9cc9accb044c4f13596fb0bbe2a68fbe2a2a2b72c474307305950537c863d1",
+      "reviewedTextRu": "Эстонский писатель и драматург, представитель реализма; автор романа «Молочник из Мяэкюла» («Mäeküla piimamees»).",
+      "claims": [
+        {
+          "textRu": "Эдуард Вильде был эстонским писателем и драматургом, работал в русле реализма и написал роман Mäeküla piimamees.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/v/eduardvilde/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь документирует прозу и драматургию Вильде, его переход к критическому реализму и роман Mäeküla piimamees 1916 года."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://galerii.kirmus.ee/erni/autor/vild_b.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо характеризует Вильде как прозаика, драматурга и журналиста, связывает его с критическим реализмом и атрибутирует ему Mäeküla piimamees."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Спорная формула об основании эстонского реалистического романа заменена ролями, направлением и конкретным произведением. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский писатель и драматург, представитель реализма; автор романа «Молочник из Мяэкюла» («Mäeküla piimamees»)."
+    },
+    {
+      "key": "estonia:friedebert_tuglas",
+      "originalSha256": "d8975bd7284a8d508c9f33840c9f8437bb6f35fc2986509524b10615a57d70d6",
+      "reviewedTextRu": "Эстонский писатель, литературный критик, исследователь и переводчик, автор романа «Феликс Ормуссон».",
+      "claims": [
+        {
+          "textRu": "Фридеберт Туглас был эстонским писателем, литературным критиком, исследователем и переводчиком и написал роман Felix Ormusson.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/t/friedeberttuglas/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь подтверждает работу Тугласа как прозаика, критика, исследователя и переводчика и атрибутирует ему Felix Ormusson."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://kreutzwald.kirmus.ee/et/lisamaterjalid/ajatelje_materjalid?item_id=57&table=Persons",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо документирует литературную и организационную деятельность Тугласа и роман Felix Ormusson 1915 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Недостаточно определённое утверждение об основании модернизма заменено точными ролями и романом. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский писатель, литературный критик, исследователь и переводчик, автор романа «Феликс Ормуссон»."
+    },
+    {
+      "key": "estonia:friedrich_reinhold_kreutzwald",
+      "originalSha256": "dc6b1e0d848d0bad2af8e3c9c97eba3ba8a72dbb249df39903f47122efa3752c",
+      "reviewedTextRu": "Эстонский поэт и прозаик, создатель литературной версии национального эпоса «Калевипоэг».",
+      "claims": [
+        {
+          "textRu": "Фридрих Рейнгольд Крейцвальд был эстонским поэтом и прозаиком и создал литературную версию эпоса Kalevipoeg.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/k/kreutzwald/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь определяет Крейцвальда как поэта и прозаика и подробно документирует составление им литературного эпоса Kalevipoeg."
+            },
+            {
+              "provider": "Estonian Literature Centre",
+              "url": "https://api.estlit.ee/uploads/publications/Kataloog_2007_sisu.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Эстонский литературный центр независимо называет Крейцвальда автором эстонского эпоса Kalevipoeg и связывает его с развитием национальной литературы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Широкая формула «один из основателей» заменена точными литературными ролями и атрибуцией эпоса. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский поэт и прозаик, создатель литературной версии национального эпоса «Калевипоэг»."
+    },
+    {
+      "key": "estonia:jaan_kross",
+      "originalSha256": "f8e6b0c863a693a528b01dd8e27ec5bdacd643cd08f5db7902a576d1155f2cdf",
+      "reviewedTextRu": "Эстонский прозаик, поэт, эссеист и переводчик, автор исторического романа «Императорский безумец» («Keisri hull»).",
+      "claims": [
+        {
+          "textRu": "Яан Кросс был эстонским прозаиком, поэтом, эссеистом и переводчиком и написал исторический роман Keisri hull.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/k/jaankross/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь подтверждает все четыре литературные роли Кросса и атрибутирует ему биографический исторический роман Keisri hull 1978 года."
+            },
+            {
+              "provider": "Estonian Literature Centre",
+              "url": "https://api.estlit.ee/uploads/publications/estonian_evergreen_books_2016.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный центр независимо описывает историческую прозу Кросса и документирует роман The Czar's Madman / Keisri hull."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Суперлатив «крупнейший» заменён жанровыми ролями и конкретным историческим романом. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский прозаик, поэт, эссеист и переводчик, автор исторического романа «Императорский безумец» («Keisri hull»)."
+    },
+    {
+      "key": "estonia:kristjan_jaak_peterson",
+      "originalSha256": "b6afc910cfd1dba528af3b408a11c7ec7a3c0740da249f00f5396e377bccc2d7",
+      "reviewedTextRu": "Эстонский поэт и литературный деятель; его стихи на эстонском языке относятся к раннему этапу национальной поэзии.",
+      "claims": [
+        {
+          "textRu": "Кристьян Яак Петерсон был поэтом и литературным деятелем, писавшим ранние стихи на эстонском языке.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/p/kristianjaak/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь характеризует Петерсона как поэта и литературного деятеля и документирует его эстонские стихотворения и дневник."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://kreutzwald.kirmus.ee/et/lisamaterjalid/ajatelje_materjalid?item_id=5&table=Persons",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо описывает ранние эстонские стихи Петерсона, его эстоноязычный дневник и литературно-языковую деятельность."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Ранговая формула «один из основателей» заменена осторожной историко-литературной характеристикой, подтверждённой двумя институциональными источниками. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонский поэт и литературный деятель; его стихи на эстонском языке относятся к раннему этапу национальной поэзии."
+    },
+    {
+      "key": "estonia:lydia_koidula",
+      "originalSha256": "21c516af69ff2ab33ff60c56bec5912282f59b6338785d440cc9e69a3c4026e6",
+      "reviewedTextRu": "Эстонская поэтесса, драматург и прозаик, участница национального пробуждения XIX века.",
+      "claims": [
+        {
+          "textRu": "Лидия Койдула была эстонской поэтессой, драматургом и прозаиком и участвовала в национальном пробуждении XIX века.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/k/koidula/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь подтверждает поэтическую, драматургическую и прозаическую работу Койдулы и её участие в эстонском национальном движении."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://kreutzwald.kirmus.ee/et/lisamaterjalid/ajatelje_materjalid?item_id=18&table=Persons",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо называет Койдулу поэтессой, прозаиком и драматургом и символической фигурой национального движения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Недоказанная уникальность «первая известная поэтесса» заменена точными жанровыми ролями и историческим контекстом. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонская поэтесса, драматург и прозаик, участница национального пробуждения XIX века."
+    },
+    {
+      "key": "estonia:marie_under",
+      "originalSha256": "bb8da08adb66cd7214b98e11314cec91a64c07c9cce9f33eb285044504ad1d2b",
+      "reviewedTextRu": "Эстонская поэтесса и переводчица, участница литературной группы «Сиуру».",
+      "claims": [
+        {
+          "textRu": "Марие Ундер была эстонской поэтессой и переводчицей и входила в литературную группу Siuru.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "url": "https://ewod.ut.ee/u/under/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский словарь определяет Ундер как поэтессу и переводчицу и документирует её участие в группе Siuru."
+            },
+            {
+              "provider": "Estonian Literary Museum",
+              "url": "https://kreutzwald.kirmus.ee/no/collections/timeline_makings?item_id=55&page_start=&table=Persons",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо описывает поэтическую и переводческую работу Ундер и её роль в группе Siuru."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Субъективный суперлатив заменён литературными ролями и проверяемым участием в группе. Shared country files не изменялись.",
+      "applicableTextRu": "Эстонская поэтесса и переводчица, участница литературной группы «Сиуру»."
+    },
+    {
+      "key": "ethiopia:haddis_alemayehu",
+      "originalSha256": "f6ebfefa8aa76949524980dd6dca91bd1a0d103b04ad40be041c073310bacddd",
+      "reviewedTextRu": "Эфиопский писатель, автор амхарского романа «Любовь до гроба» («Fikir Eske Mekabir»).",
+      "claims": [
+        {
+          "textRu": "Хаддис Алемайеху был эфиопским писателем и написал амхарский роман Fikir Eske Mekabir, издаваемый в переводе как «Любовь до гроба».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Gondar — Ethiopian Renaissance Journal of Social Sciences and the Humanities",
+              "url": "https://erjssh.uog.edu.et/index.php/ERJSSH/article/download/1008/235",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетское исследование называет Хаддиса эфиопским романистом и атрибутирует ему Fikir Eske Mekabir."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb46906780q",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека Франции атрибутирует Хаддису Алемайеху амхарский оригинал Feqer eskä mäqaber и его французское издание L'amour jusqu'au tombeau."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Субъективный ранг заменён национальной принадлежностью, ролью и конкретным амхарским романом. Shared country files не изменялись.",
+      "applicableTextRu": "Эфиопский писатель, автор амхарского романа «Любовь до гроба» («Fikir Eske Mekabir»)."
+    },
+    {
+      "key": "fiji:epeli_hauofa",
+      "originalSha256": "160256c9e72e87fb208e05277aedd07322f5650d3d30d166a89ba1d1e2ed2c2d",
+      "reviewedTextRu": "Писатель и исследователь тихоокеанского региона, работавший в Университете Южного Тихого океана; автор эссе «Our Sea of Islands».",
+      "claims": [
+        {
+          "textRu": "Эпели Хауофа был писателем и исследователем тихоокеанского региона, работал в Университете Южного Тихого океана и написал эссе Our Sea of Islands.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "The University of the South Pacific",
+              "url": "https://www.usp.ac.fj/news/remembering-the-legacy-of-the-late-epeli-hauofa/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университет характеризует Хауофу как поэта, писателя и учёного, связывает его работу с университетом и его Центром Океании."
+            },
+            {
+              "provider": "Australian National University Archives",
+              "url": "https://archives.anu.edu.au/exhibitions/people-pacific-resources/our-sea-islands",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архив Австралийского национального университета независимо называет Хауофу тихоокеанским учёным и атрибутирует ему работу Our Sea of Islands 1993 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Сняты неподкреплённые суперлативы и расплывчатая оценка влияния; оставлены роли, институциональная связь и конкретное эссе. Shared country files не изменялись.",
+      "applicableTextRu": "Писатель и исследователь тихоокеанского региона, работавший в Университете Южного Тихого океана; автор эссе «Our Sea of Islands»."
+    },
+    {
+      "key": "fiji:satendra_nandan",
+      "originalSha256": "55afbf4848f106fe8fc2ba316264a1a15242a776a46c2252a07fc3ae351c8e31",
+      "reviewedTextRu": "Фиджийский писатель и преподаватель творческого письма, автор книг «Gandhianjali» и «Life Journeys: Love & Grief».",
+      "claims": [
+        {
+          "textRu": "Сатендра Нандан — родившийся на Фиджи писатель и преподаватель творческого письма, автор Gandhianjali и Life Journeys: Love & Grief.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Australian National University",
+              "url": "https://www.anu.edu.au/events/works-that-shaped-the-world-gandhis-religion",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Австралийский национальный университет подтверждает рождение Нандана на Фиджи, его авторство Gandhianjali и Life Journeys: Love & Grief и статус почётного профессора."
+            },
+            {
+              "provider": "University of Canberra",
+              "url": "https://www.canberra.edu.au/about-uc/learning-at-uc/uc-book/uc-book-of-the-year-room/panel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университет Канберры независимо характеризует Сатендру Нандана как писателя и учёного, перечисляет его книги и подтверждает профессорскую работу в области творческого письма."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Субъективный ранг и недоказанная жанровая формула заменены ролями и двумя книгами. Date/QID recommendation: evidence подтверждает литературную личность Satendra Nandan, но не точную дату рождения 1944-09-22; Q7426104 содержит неподкреплённый 1939 год и не имеет литературной occupation-связки. Сохранить QID и birthDate в карантине до отдельной авторитетной идентификации. Shared country files не изменялись.",
+      "applicableTextRu": "Фиджийский писатель и преподаватель творческого письма, автор книг «Gandhianjali» и «Life Journeys: Love & Grief»."
+    },
+    {
+      "key": "fiji:subramani",
+      "originalSha256": "64d83d14bef5b71593f7bcd9b817a43607822d2904eca3af7f37b530a3bfa889",
+      "reviewedTextRu": "Фиджийский писатель, автор сборника рассказов «The Fantasy Eaters» и романа на фиджийском хинди «Dauka Puran».",
+      "claims": [
+        {
+          "textRu": "Писатель Субрамани связан с литературой Фиджи и написал сборник The Fantasy Eaters и роман на фиджийском хинди Dauka Puran.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of the South Pacific Research Repository",
+              "url": "https://repository.usp.ac.fj/id/eprint/13951/1/16-FijiHindiAheritagelanguage%20copy.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетское исследование атрибутирует Субрамани роман Dauka Puran и определяет его язык как Fiji Hindi."
+            },
+            {
+              "provider": "University of Canterbury Library",
+              "url": "https://libcat.canterbury.ac.nz/Record/275593",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский каталог атрибутирует автору, публикующемуся как Subramani, сборник The Fantasy Eaters: Stories from Fiji и классифицирует его как фиджийскую и индо-фиджийскую прозу."
+            },
+            {
+              "provider": "Fiji National University",
+              "url": "https://www.fnu.ac.fj/blog/news/fnu-academic-prasad-pens-his-first-book/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный университет Фиджи независимо называет профессора Субрамани писателем и учёным Университета Фиджи."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Субъективный ранг и широкая тематическая интерпретация заменены двумя документированными произведениями. Identity/date recommendation: институциональные источники используют авторское имя Subramani; shared fullName «Subramani Ramaswamy», birthDate 1949-04-01 и произведение «Dina» требуют отдельной проверки и не должны автоматически переноситься в публичный текст. Shared country files не изменялись.",
+      "applicableTextRu": "Фиджийский писатель, автор сборника рассказов «The Fantasy Eaters» и романа на фиджийском хинди «Dauka Puran»."
+    },
+    {
+      "key": "finland:aleksis_kivi",
+      "originalSha256": "a4e3ac34cb95f9c905c1df0f85b4e67c5e4f24ce8f4e0a13ff6c6c1122cd40fd",
+      "reviewedTextRu": "Финский писатель и драматург, автор романа «Семеро братьев» («Seitsemän veljestä»).",
+      "claims": [
+        {
+          "textRu": "Алексис Киви был финским писателем и драматургом и написал роман Seitsemän veljestä.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "National Biography of Finland",
+              "url": "https://kansallisbiografia.fi//kansallisbiografia/henkilo/2826",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биография Финляндии определяет Киви как писателя и документирует его пьесы, стихи и роман Seitsemän veljestä."
+            },
+            {
+              "provider": "National Library of Finland",
+              "url": "https://kansalliskirjasto.finna.fi/Record/doria.10024_103133",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека независимо характеризует Киви как классика финноязычной литературы и атрибутирует ему роман Seitsemän veljestä 1870 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Оценочные формулы «национальный писатель» и «основатель литературы» заменены ролями и конкретным романом. Shared country files не изменялись.",
+      "applicableTextRu": "Финский писатель и драматург, автор романа «Семеро братьев» («Seitsemän veljestä»)."
+    },
+    {
+      "key": "finland:eino_leino",
+      "originalSha256": "8e2e9a19daa1061f41bf84f762e045a1f913107c7374a819eea425afff916ce2",
+      "reviewedTextRu": "Финский поэт, прозаик и переводчик, автор поэтического сборника «Helkavirsiä».",
+      "claims": [
+        {
+          "textRu": "Эйно Лейно был финским поэтом, прозаиком и переводчиком и написал поэтический сборник Helkavirsiä.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Helsinki — 375 Humanists",
+              "url": "https://375humanistia.helsinki.fi/humanistit/eino-leino",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университет Хельсинки определяет Лейно как поэта, писателя и переводчика и подтверждает его работу в поэзии, прозе и переводе."
+            },
+            {
+              "provider": "Finnish Literature Society — Finnish Literature in Translation",
+              "url": "https://dbgw.finlit.fi/kaannokset/teos.php?asc=1&id=1893&lang=FIN&order=lang&page=2",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиографическая база Общества финской литературы атрибутирует Лейно Helkavirsiä, фиксирует оригинальное издание 1903 года и жанр поэзии."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 26",
+      "decision": "corrected",
+      "notes": "Субъективный суперлатив заменён точными литературными ролями и конкретным поэтическим сборником. Shared country files не изменялись.",
+      "applicableTextRu": "Финский поэт, прозаик и переводчик, автор поэтического сборника «Helkavirsiä»."
+    }
+  ]
+}

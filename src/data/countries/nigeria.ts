@@ -175,7 +175,7 @@ export const nigeria: Country = {
       name: "Бучи Эмечета",
       fullName: "Buchi Emecheta",
       years: "1944–2017",
-      birthDate: "1944-08-21",
+      birthDate: "1944-07-21",
       deathDate: "2017-01-25",
       birthPlace: "Лагос",
       coordinates: {
@@ -243,9 +243,9 @@ export const nigeria: Country = {
       name: "Хелон Хабила",
       fullName: "Helon Habila",
       years: "1967–",
-      birthDate: "1967-11-25",
+      birthDate: "1967-11",
       deathDate: "",
-      birthPlace: "Кфи",
+      birthPlace: "Калтунго, Нигерия",
       coordinates: {
         lat: 7.85,
         lng: 8.78

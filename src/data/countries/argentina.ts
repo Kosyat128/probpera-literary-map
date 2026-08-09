@@ -465,7 +465,7 @@ export const argentina: Country = {
       id: "rodrigo_fresan",
       name: "Родриго Фресан",
       years: "1963–",
-      birthDate: "1963-11-17",
+      birthDate: "1963-07-18",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
         lat: -34.6037,
@@ -500,7 +500,7 @@ export const argentina: Country = {
       id: "samanta_schweblin",
       name: "Саманта Швеблин",
       years: "1978–",
-      birthDate: "1978-04-19",
+      birthDate: "1978-03-08",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
         lat: -34.6037,
@@ -613,7 +613,7 @@ export const argentina: Country = {
       id: "mariana_enriquez",
       name: "Мариана Энрикес",
       years: "1973–",
-      birthDate: "1973-12-08",
+      birthDate: "1973-12-06",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
         lat: -34.6037,

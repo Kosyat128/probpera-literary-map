@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { buildBookArchive, buildPublicBookArchive } from "./bookArchive";
 import { bookPublicationIssues, isPublicBook } from "./bookQuality";
-import { countries } from "./countries";
+import { bookArchiveCountries } from "./countries";
 import {
   verifiedBestsellerEvidenceTitles,
   verifiedBilingualLandmarkTitles,
@@ -10,7 +10,7 @@ import {
 } from "./countries/verifiedBookSupplements";
 
 describe("проверенное ядро книжной базы", () => {
-  const books = buildBookArchive(countries);
+  const books = buildBookArchive(bookArchiveCountries);
 
   it.each(verifiedBookSupplementTitles)(
     "хранит для «%s» год, язык, описание и источник",
@@ -32,7 +32,7 @@ describe("проверенное ядро книжной базы", () => {
   );
 
   it("не оставляет проверенные книги одновременно в кратком legacy-списке", () => {
-    const duplicates = countries.flatMap((country) =>
+    const duplicates = bookArchiveCountries.flatMap((country) =>
       country.writers.flatMap((writer) => {
         const legacyTitles = new Set(
           (writer.works || []).map((title) => title.toLocaleLowerCase("ru"))
@@ -131,7 +131,7 @@ describe("проверенное ядро книжной базы", () => {
   );
 
   it("не отдаёт посетителю legacy и ручные черновики", () => {
-    const publicBooks = buildPublicBookArchive(countries);
+    const publicBooks = buildPublicBookArchive(bookArchiveCountries);
 
     expect(books.length).toBeGreaterThan(publicBooks.length);
     expect(publicBooks.length).toBeGreaterThanOrEqual(

@@ -1,4 +1,13 @@
-import type { Country, WriterProfile } from "./types";
+import {
+  officialNobelLiteratureRecordForWriterKey,
+  officialNobelLiteratureSnapshot,
+  type OfficialNobelLiteratureRecord,
+} from "./nobelLiteratureRegistry";
+import type {
+  Country,
+  NobelLiteratureAwardProfile,
+  WriterProfile,
+} from "./types";
 
 type LaureateDraft = WriterProfile & {
   nobelYear: number;
@@ -7,6 +16,82 @@ type LaureateDraft = WriterProfile & {
 };
 
 const checkedAt = "2026-08-01";
+const nobelMetadataVerifiedAt = officialNobelLiteratureSnapshot.retrievedAt;
+const nobelSignal = /нобел|nobel/iu;
+
+const specialStatusByLaureateId: Partial<
+  Record<number, NobelLiteratureAwardProfile["specialStatus"]>
+> = {
+  604: "posthumous",
+  629: "accepted-then-forced-to-decline",
+  637: "declined",
+};
+
+const specialStatusSourceByLaureateId: Partial<Record<number, string>> = {
+  604: "https://www.nobelprize.org/prizes/literature/1931/karlfeldt/facts/",
+  629: "https://www.nobelprize.org/prizes/literature/1958/pasternak/facts/",
+  637: "https://www.nobelprize.org/prizes/literature/1964/sartre/facts/",
+};
+
+function officialAwardSources(record: OfficialNobelLiteratureRecord) {
+  const sources = [
+    {
+      title: `Nobel Prize API — ${record.name}`,
+      url: record.apiUrl,
+      publisher: "Nobel Prize Outreach" as const,
+    },
+    {
+      title: `${record.name} — Nobel Prize laureate record`,
+      url: record.htmlUrl,
+      publisher: "Nobel Prize Outreach" as const,
+    },
+  ];
+  const specialStatusSource = specialStatusSourceByLaureateId[record.id];
+  return specialStatusSource
+    ? [
+        ...sources,
+        {
+          title: `${record.name} — Nobel Prize facts`,
+          url: specialStatusSource,
+          publisher: "Nobel Prize Outreach" as const,
+        },
+      ]
+    : sources;
+}
+
+export function enrichNobelLiteratureWriter(
+  writer: WriterProfile,
+  record: OfficialNobelLiteratureRecord
+): WriterProfile {
+  const canonicalAward = `Нобелевская премия по литературе ${record.year} года`;
+  const existingAwards = writer.awards || [];
+  const hasCorrectYearAward = existingAwards.some(
+    (award) => nobelSignal.test(award) && award.includes(String(record.year))
+  );
+  const tags = writer.tags || [];
+
+  return {
+    ...writer,
+    nobel: true,
+    nobelYear: record.year,
+    nobelPrize: canonicalAward,
+    nobelAward: {
+      category: "literature",
+      year: record.year,
+      laureateId: record.id,
+      portion: record.portion,
+      verifiedAt: nobelMetadataVerifiedAt,
+      specialStatus: specialStatusByLaureateId[record.id],
+      sources: officialAwardSources(record),
+    },
+    awards: hasCorrectYearAward
+      ? existingAwards
+      : [canonicalAward, ...existingAwards],
+    tags: tags.includes("Нобелевская премия")
+      ? tags
+      : ["Нобелевская премия", ...tags],
+  };
+}
 
 function verifiedLaureate(laureate: LaureateDraft): WriterProfile {
   const { nobelId, nobelSlug, nobelYear, ...profile } = laureate;
@@ -537,15 +622,23 @@ const laureatesByCountryCode: Record<string, LaureateDraft[]> = {
 export function mergeNobelLaureates(countries: Country[]): Country[] {
   return countries.map((country) => {
     const additions = laureatesByCountryCode[country.code || country.id] || [];
-    if (!additions.length) return country;
-
     const knownIds = new Set(country.writers.map((writer) => writer.id));
     const missing = additions
       .filter((writer) => !knownIds.has(writer.id))
       .map(verifiedLaureate);
+    const writers = [...country.writers, ...missing];
+    let enriched = false;
+    const reconciledWriters = writers.map((writer) => {
+      const officialRecord = officialNobelLiteratureRecordForWriterKey(
+        `${country.id}:${writer.id}`
+      );
+      if (!officialRecord) return writer;
+      enriched = true;
+      return enrichNobelLiteratureWriter(writer, officialRecord);
+    });
 
-    return missing.length
-      ? { ...country, writers: [...country.writers, ...missing] }
+    return missing.length || enriched
+      ? { ...country, writers: reconciledWriters }
       : country;
   });
 }

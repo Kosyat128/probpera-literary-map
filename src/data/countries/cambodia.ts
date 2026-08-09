@@ -106,8 +106,8 @@ export const cambodia: Country = {
 
       years: "1911–1959",
 
-      birthDate: "1911",
-      deathDate: "1959",
+      birthDate: "1911-11-08",
+      deathDate: "1959-01-27",
 
       birthPlace: "Камбоджа",
 

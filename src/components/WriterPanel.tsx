@@ -19,7 +19,7 @@ import type { Country, Writer } from "../data/countries";
 import { articlePath } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import { getPublicWriterWorkTitles } from "../data/bookArchive";
-import { selectWriterBiography } from "../data/writerBiography";
+import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
 import {
   selectWriterDisplayName,
   selectWriterYears,
@@ -247,7 +247,9 @@ export default function WriterPanel({
   );
   const activeWriterBiography = useMemo(
     () =>
-      activeWriter ? selectWriterBiography(activeWriter, language) : null,
+      activeWriter
+        ? selectWriterBiographyForDisplay(activeWriter, language)
+        : null,
     [activeWriter, language]
   );
   const countryLabel = countryName(country.code, country.name);
@@ -500,19 +502,6 @@ export default function WriterPanel({
                     t("Литературная традиция")
                   : t("Литературная традиция")}
               </span>
-              {activeWriter.editorial?.status === "verified" && (
-                <span className="editorial-badge">{t("Проверено редакцией")}</span>
-              )}
-              {activeWriter.editorial?.status === "reviewed" && (
-                <span className="editorial-badge is-reviewed">
-                  {t("Редакционная карточка")}
-                </span>
-              )}
-              {activeWriter.editorial?.status === "draft" && (
-                <span className="editorial-badge is-draft">
-                  {t("Справочная карточка · требует расширения")}
-                </span>
-              )}
               <h4>
                 {getWriterName(
                   activeWriter,
@@ -641,7 +630,8 @@ export default function WriterPanel({
             </div>
           )}
 
-          {activeWriterBiography?.sources && activeWriterBiography.sources.length > 0 && (
+          {activeWriterBiography?.kind === "published" &&
+            activeWriterBiography.sources.length > 0 && (
             <div className="source-block">
               <span>{t("Источники")}</span>
               {activeWriterBiography.sources.map((source) => (

@@ -351,11 +351,11 @@ export const australia: Country = {
 
       fullName: "Nevil Shute Norway",
 
-      years: "1899–1961",
+      years: "1899–1960",
 
       birthDate: "1899-01-17",
 
-      deathDate: "1961-01-12",
+      deathDate: "1960-01-12",
 
       birthPlace: "Илинг, Лондон, Великобритания",
 
@@ -465,7 +465,7 @@ export const australia: Country = {
 
       years: "1917–2010",
 
-      birthDate: "1917-08-04",
+      birthDate: "1917-08-24",
 
       deathDate: "2010-12-14",
 
@@ -745,7 +745,7 @@ export const australia: Country = {
     {
       id: "markus_zusak",
 
-      name: "Маркос Зусак",
+      name: "Маркус Зусак",
 
       fullName: "Markus Frank Zusak",
 

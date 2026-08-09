@@ -13,7 +13,7 @@ export const democraticRepublicOfCongo: Country = {
       years: "1913–2002",
       birthDate: "1913",
       deathDate: "2002",
-      birthPlace: "Басанкусу",
+      birthPlace: "Бома, Демократическая Республика Конго",
       portrait: "",
       bio: "Конголезский писатель и поэт, один из первых крупных авторов современной литературы Конго.",
       works: [
@@ -33,11 +33,11 @@ export const democraticRepublicOfCongo: Country = {
 
     {
       id: "v_y_mudimbe",
-      name: "Венцеслас Мудимбе",
+      name: "Валантен-Ив Мудимбе",
       fullName: "Valentin-Yves Mudimbe",
-      years: "1941–2021",
+      years: "1941–2025",
       birthDate: "1941",
-      deathDate: "2021",
+      deathDate: "2025-04-21",
       birthPlace: "Ликаси",
       portrait: "",
       bio: "Конголезский философ, писатель и один из наиболее известных африканских интеллектуалов.",
@@ -130,7 +130,7 @@ export const democraticRepublicOfCongo: Country = {
       language: "французский",
       nationality: "конголезец",
       awards: [
-        "Премия Франца Кафки"
+        "Международная литературная премия HKW 2017 года"
       ],
       tags: [
         "XXI век"
@@ -145,7 +145,7 @@ export const democraticRepublicOfCongo: Country = {
       years: "1952–",
       birthDate: "1952",
       deathDate: "",
-      birthPlace: "Лубумбаши",
+      birthPlace: "Луэбо, Демократическая Республика Конго",
       portrait: "",
       bio: "Конголезский поэт, писатель и автор исторической прозы.",
       works: [

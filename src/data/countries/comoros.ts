@@ -13,7 +13,7 @@ export const comoros: Country = {
       years: "1972–2015",
       birthDate: "1972-06-20",
       deathDate: "2015-03-31",
-      birthPlace: "Коморы",
+      birthPlace: "Хахайя, Нгазиджа, Коморы",
       portrait: "",
       bio: "Коморский писатель франкоязычной литературы, автор романов, рассказов и детских произведений.",
       works: [

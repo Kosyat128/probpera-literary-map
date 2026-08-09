@@ -1,0 +1,808 @@
+{
+  "batch": "11",
+  "generatedAt": "2026-08-09",
+  "summary": {
+    "records": 20,
+    "unchanged": 5,
+    "corrected": 15,
+    "held": 0
+  },
+  "records": [
+    {
+      "key": "armenia:grigor_narekatsi",
+      "originalSha256": "406c809b4679958bed19d2b81551f4c09ff97cc80f848900cfd0693d7e90e133",
+      "reviewedTextRu": "Армянский поэт, богослов и христианский мистик X века. Автор «Книги скорбных песнопений».",
+      "applicableTextRu": "Армянский поэт, богослов и христианский мистик X века. Автор «Книги скорбных песнопений».",
+      "claims": [
+        {
+          "textRu": "Григор Нарекаци был армянским поэтом, богословом и христианским мистиком X века.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Первопрестольный Святой Эчмиадзин",
+              "url": "https://www.armenianchurch.org/en/news/new-publication-27/10806",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная публикация Армянской апостольской церкви подтверждает авторство Григора Нарекаци и название «Книги скорбных песнопений» («Книги плача»)."
+            },
+            {
+              "provider": "Святой Престол",
+              "url": "https://www.vatican.va/news_services/liturgy/libretti/2015/20150412-libretto-messa-armeni.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Ватиканская справка характеризует Григора Нарекаци как армянского монаха, поэта, богослова и мистика и атрибутирует ему «Книгу скорбных песнопений»."
+            }
+          ]
+        },
+        {
+          "textRu": "Нарекаци — автор «Книги скорбных песнопений».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Первопрестольный Святой Эчмиадзин",
+              "url": "https://www.armenianchurch.org/en/news/new-publication-27/10806",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная публикация Армянской апостольской церкви подтверждает авторство Григора Нарекаци и название «Книги скорбных песнопений» («Книги плача»)."
+            },
+            {
+              "provider": "Святой Престол",
+              "url": "https://www.vatican.va/news_services/liturgy/libretti/2015/20150412-libretto-messa-armeni.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Ватиканская справка характеризует Григора Нарекаци как армянского монаха, поэта, богослова и мистика и атрибутирует ему «Книгу скорбных песнопений»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Суперлатив и сравнительная оценка произведения заменены профессиональными ролями, эпохой и подтверждённым названием книги."
+    },
+    {
+      "key": "armenia:hovhannes_tumanyan",
+      "originalSha256": "8f24bf59f0a85a27eb303fe98f044d0d933ba5a989cd096940456c6191fadecb",
+      "reviewedTextRu": "Армянский поэт и прозаик, автор поэм, баллад, сказок и рассказов.",
+      "applicableTextRu": "Армянский поэт и прозаик, автор поэм, баллад, сказок и рассказов.",
+      "claims": [
+        {
+          "textRu": "Ованес Туманян был армянским поэтом и прозаиком и писал поэмы, баллады, сказки и рассказы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "ЮНЕСКО",
+              "url": "https://www.unesco.org/en/articles/hovhannes-tumanyan-passion-storytelling",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Материал ЮНЕСКО подтверждает армянское происхождение Туманяна и его работу в поэзии, сказке и прозаическом повествовании."
+            },
+            {
+              "provider": "Центральный банк Армении",
+              "url": "https://www.cba.am/en/collector-coins/303/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная памятная справка перечисляет поэмы, баллады, сказки и рассказы Туманяна."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Неоформленный титул «национальный поэт» заменён институционально подтверждёнными ролями и жанрами."
+    },
+    {
+      "key": "armenia:narine_abgaryan",
+      "originalSha256": "31b800052b944af185697289b7f7157aa572def47e8536ad10b8db4c87a0b6f2",
+      "reviewedTextRu": "Российская писательница армянского происхождения, автор цикла «Манюня» и романа «С неба упали три яблока».",
+      "applicableTextRu": "Российская писательница армянского происхождения, автор цикла «Манюня» и романа «С неба упали три яблока».",
+      "claims": [
+        {
+          "textRu": "Наринэ Абгарян — российская писательница армянского происхождения, автор цикла «Манюня» и романа «С неба упали три яблока».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Национальная литературная премия «Большая книга»",
+              "url": "https://bigbook.ru/person/abgaryan-narine",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Премиальная справка подтверждает место и дату рождения Наринэ Абгарян и библиографию, включая цикл «Манюня» и роман «С неба упали три яблока»."
+            },
+            {
+              "provider": "Издательство АСТ",
+              "url": "https://ast.ru/book/s-neba-upali-tri-yabloka-832813/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель называет Абгарян современной российской писательницей армянского происхождения и подтверждает авторство указанных книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Расплывчатое тематическое описание заменено точной литературной принадлежностью и двумя подтверждёнными произведениями."
+    },
+    {
+      "key": "armenia:sayat_nova",
+      "originalSha256": "8785c640f4020a5d0b8ee33b29dd6676a98cec20681ef1bdcc0a693bd33f3e91",
+      "reviewedTextRu": "Армянский поэт и ашуг XVIII века. Писал и исполнял песни на армянском, грузинском и азербайджанском языках.",
+      "applicableTextRu": "Армянский поэт и ашуг XVIII века. Писал и исполнял песни на армянском, грузинском и азербайджанском языках.",
+      "claims": [
+        {
+          "textRu": "Саят-Нова был армянским поэтом и ашугом XVIII века.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Первопрестольный Святой Эчмиадзин",
+              "url": "https://www.armenianchurch.org/en/videos/vardaton-in-the-armenian-diocese-of-georgia/597",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Армянская апостольская церковь подтверждает армянскую поэтическую и ашугскую традицию Саят-Новы."
+            },
+            {
+              "provider": "Национальная парламентская библиотека Грузии",
+              "url": "https://dspace.nplg.gov.ge/bitstream/1234/352385/1/Armenian_Georgian_Relations.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институциональное издание документирует песни Саят-Новы на армянском, грузинском и азербайджанском языках."
+            }
+          ]
+        },
+        {
+          "textRu": "Он писал и исполнял песни на армянском, грузинском и азербайджанском языках.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Первопрестольный Святой Эчмиадзин",
+              "url": "https://www.armenianchurch.org/en/videos/vardaton-in-the-armenian-diocese-of-georgia/597",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Армянская апостольская церковь подтверждает армянскую поэтическую и ашугскую традицию Саят-Новы."
+            },
+            {
+              "provider": "Национальная парламентская библиотека Грузии",
+              "url": "https://dspace.nplg.gov.ge/bitstream/1234/352385/1/Armenian_Georgian_Relations.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институциональное издание документирует песни Саят-Новы на армянском, грузинском и азербайджанском языках."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Суперлатив снят; профессиональная роль, эпоха и три языка творчества сохранены и подтверждены."
+    },
+    {
+      "key": "australia:alexis_wright",
+      "originalSha256": "bc14006ac8732e1ce2d27af39f42f7059b505a6c481326f748d3377697ff0c30",
+      "reviewedTextRu": "Австралийская писательница народа вааньи, автор романов «Карпентария» и «Praiseworthy». Оба романа получили премию Майлз Франклин.",
+      "applicableTextRu": "Австралийская писательница народа вааньи, автор романов «Карпентария» и «Praiseworthy». Оба романа получили премию Майлз Франклин.",
+      "claims": [
+        {
+          "textRu": "Алексис Райт — австралийская писательница народа вааньи и автор романов «Карпентария» и «Praiseworthy».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Мельбурнский университет",
+              "url": "https://www.unimelb.edu.au/newsroom/news/2024/august/university-of-melbourne-confers-honorary-doctorate-to-waanyi-writer-dr-alexis-wright",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университет подтверждает принадлежность Алексис Райт к народу вааньи, авторство «Карпентарии» и «Praiseworthy» и получение обоими романами премии Майлз Франклин."
+            },
+            {
+              "provider": "Университет Западного Сиднея",
+              "url": "https://www.westernsydney.edu.au/news-centre/stories/2023/internationally-acclaimed-author-alexis-wright-releases-ground-breaking-new-novel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская справка независимо подтверждает идентичность писательницы, принадлежность к народу вааньи и библиографию романов."
+            }
+          ]
+        },
+        {
+          "textRu": "Оба названных романа получили премию Майлз Франклин.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Мельбурнский университет",
+              "url": "https://www.unimelb.edu.au/newsroom/news/2024/august/university-of-melbourne-confers-honorary-doctorate-to-waanyi-writer-dr-alexis-wright",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университет подтверждает принадлежность Алексис Райт к народу вааньи, авторство «Карпентарии» и «Praiseworthy» и получение обоими романами премии Майлз Франклин."
+            },
+            {
+              "provider": "Университет Западного Сиднея",
+              "url": "https://www.westernsydney.edu.au/news-centre/stories/2023/internationally-acclaimed-author-alexis-wright-releases-ground-breaking-new-novel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская справка независимо подтверждает идентичность писательницы, принадлежность к народу вааньи и библиографию романов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Обобщённые темы заменены двумя произведениями и официально подтверждёнными наградами."
+    },
+    {
+      "key": "australia:banjo_paterson",
+      "originalSha256": "549049b842c1c32c99999a3a69a8d3f2801d9f522e6e65571c45cd43bc5b2aa5",
+      "reviewedTextRu": "Австралийский поэт, прозаик и журналист, автор баллады «Человек со Снежной реки» и текста песни «Вальсирующая Матильда».",
+      "applicableTextRu": "Австралийский поэт, прозаик и журналист, автор баллады «Человек со Снежной реки» и текста песни «Вальсирующая Матильда».",
+      "claims": [
+        {
+          "textRu": "Банджо Патерсон был австралийским поэтом, прозаиком и журналистом и написал «Человека со Снежной реки» и текст «Вальсирующей Матильды».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Австралийский биографический словарь, Австралийский национальный университет",
+              "url": "https://adb.anu.edu.au/biography/tucker-thomas-george-8869/paterson-andrew-barton-banjo-7972",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биографическая статья подтверждает работу Патерсона поэтом, прозаиком и журналистом и авторство «The Man from Snowy River» и «Waltzing Matilda»."
+            },
+            {
+              "provider": "Национальная библиотека Австралии",
+              "url": "https://catalogue.nla.gov.au/catalog/3546045",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Каталог национальной библиотеки атрибутирует текст «Waltzing Matilda» Эндрю Бартону Патерсону."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Оценка символического статуса и широкое наследие заменены профессиональными ролями и двумя конкретными произведениями."
+    },
+    {
+      "key": "australia:bruce_pascoe",
+      "originalSha256": "bcb6ccdd282d0f986885e356e547c1a5f9118a92a4997923923d4672b543b74f",
+      "reviewedTextRu": "Австралийский писатель, работающий в художественной и документальной прозе, поэзии и детской литературе. Автор книг «Dark Emu» и «Young Dark Emu».",
+      "applicableTextRu": "Австралийский писатель, работающий в художественной и документальной прозе, поэзии и детской литературе. Автор книг «Dark Emu» и «Young Dark Emu».",
+      "claims": [
+        {
+          "textRu": "Брюс Паско — австралийский писатель, работающий в художественной и документальной прозе, поэзии и детской литературе.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Австралийский национальный университет",
+              "url": "https://www.anu.edu.au/events/meet-the-author-bruce-pascoe",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская справка подтверждает писательскую деятельность Брюса Паско и библиографию, включая «Dark Emu» и «Young Dark Emu»."
+            },
+            {
+              "provider": "Magabala Books",
+              "url": "https://www.magabala.com/products/young-dark-emu-a-truer-history",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает работу Паско в художественной и документальной прозе, поэзии, эссеистике и детской литературе и авторство обеих книг."
+            }
+          ]
+        },
+        {
+          "textRu": "Паско — автор книг «Dark Emu» и «Young Dark Emu».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австралийский национальный университет",
+              "url": "https://www.anu.edu.au/events/meet-the-author-bruce-pascoe",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетская справка подтверждает писательскую деятельность Брюса Паско и библиографию, включая «Dark Emu» и «Young Dark Emu»."
+            },
+            {
+              "provider": "Magabala Books",
+              "url": "https://www.magabala.com/products/young-dark-emu-a-truer-history",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает работу Паско в художественной и документальной прозе, поэзии, эссеистике и детской литературе и авторство обеих книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Неоднозначные обозначения «историк» и «исследователь культуры» заменены подтверждёнными жанрами и книгами."
+    },
+    {
+      "key": "australia:christina_stead",
+      "originalSha256": "562dbd9444cfcad5d6e1c7730c541da240d414448f383c5b068d1d7d182761ff",
+      "reviewedTextRu": "Австралийская писательница, автор романов и рассказов. Её роман «Человек, который любил детей» вышел в 1940 году.",
+      "applicableTextRu": "Австралийская писательница, автор романов и рассказов. Её роман «Человек, который любил детей» вышел в 1940 году.",
+      "claims": [
+        {
+          "textRu": "Кристина Стед была австралийской писательницей и автором романов и рассказов.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Австралийский биографический словарь, Австралийский национальный университет",
+              "url": "https://adb.anu.edu.au/biography/stead-christina-ellen-15545",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биографическая статья подтверждает австралийскую идентичность Кристины Стед и её работу в романах и рассказах."
+            },
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://www.sl.nsw.gov.au/awards/nsw-literary-awards/christina-stead-prize-fiction",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека подтверждает, что Стед была австралийской романисткой и автором рассказов, и атрибутирует ей роман «Человек, который любил детей» 1940 года."
+            }
+          ]
+        },
+        {
+          "textRu": "Роман Стед «Человек, который любил детей» вышел в 1940 году.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австралийский биографический словарь, Австралийский национальный университет",
+              "url": "https://adb.anu.edu.au/biography/stead-christina-ellen-15545",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биографическая статья подтверждает австралийскую идентичность Кристины Стед и её работу в романах и рассказах."
+            },
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://www.sl.nsw.gov.au/awards/nsw-literary-awards/christina-stead-prize-fiction",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека подтверждает, что Стед была австралийской романисткой и автором рассказов, и атрибутирует ей роман «Человек, который любил детей» 1940 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Непроверяемые оценки интеллектуальности и глубины прозы заменены жанрами и конкретным романом."
+    },
+    {
+      "key": "australia:james_clavell",
+      "originalSha256": "bb96efd3e22c24e073de937764a85ee4610bb604aaa05b8727369f2255d1563e",
+      "reviewedTextRu": "Родившийся в Сиднее писатель, сценарист, режиссёр и продюсер. Автор цикла исторических романов «Азиатская сага», в который входит «Сёгун».",
+      "applicableTextRu": "Родившийся в Сиднее писатель, сценарист, режиссёр и продюсер. Автор цикла исторических романов «Азиатская сага», в который входит «Сёгун».",
+      "claims": [
+        {
+          "textRu": "Джеймс Клавелл родился в Сиднее и работал писателем, сценаристом, режиссёром и продюсером.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/5096/james-clavell/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает рождение Джеймса Клавелла в Сиднее, его работу романистом, сценаристом, режиссёром и продюсером и цикл «Азиатская сага»."
+            },
+            {
+              "provider": "Американская телевизионная академия",
+              "url": "https://www.televisionacademy.com/bios/james-clavell",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная премиальная запись подтверждает роль Клавелла как исполнительного продюсера экранизации «Сёгуна» и связь произведения с его именем."
+            }
+          ]
+        },
+        {
+          "textRu": "Клавелл — автор цикла исторических романов «Азиатская сага», включающего «Сёгуна».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/5096/james-clavell/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает рождение Джеймса Клавелла в Сиднее, его работу романистом, сценаристом, режиссёром и продюсером и цикл «Азиатская сага»."
+            },
+            {
+              "provider": "Американская телевизионная академия",
+              "url": "https://www.televisionacademy.com/bios/james-clavell",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная премиальная запись подтверждает роль Клавелла как исполнительного продюсера экранизации «Сёгуна» и связь произведения с его именем."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Формула о всемирной известности заменена местом рождения, профессиональными ролями и проверяемой библиографией."
+    },
+    {
+      "key": "australia:kate_grenville",
+      "originalSha256": "57d0d916feaef8945aed82c30a0e48d9411bb4e8acfbe7fea830055758092191",
+      "reviewedTextRu": "Австралийская писательница, известная историческими романами и произведениями о колониальном прошлом Австралии.",
+      "applicableTextRu": "Австралийская писательница, известная историческими романами и произведениями о колониальном прошлом Австралии.",
+      "claims": [
+        {
+          "textRu": "Кейт Гренвилл — австралийская писательница, известная историческими произведениями о колониальном прошлом Австралии.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://archival.sl.nsw.gov.au/Details/archive/110332353",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архивная опись подтверждает австралийскую идентичность Кейт Гренвилл и документирует исследование и создание исторического романа «Тайная река»."
+            },
+            {
+              "provider": "Text Publishing",
+              "url": "https://www.textpublishing.com.au/authors/kategrenville",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает авторство Гренвилл исторических романов о колониальной Австралии, включая «Тайную реку», «Лейтенанта» и «Комнату из листьев»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "unchanged",
+      "notes": "Текст сохранён дословно: профессиональная роль, жанр и связь произведений с колониальным прошлым подтверждены архивом и издателем."
+    },
+    {
+      "key": "australia:markus_zusak",
+      "originalSha256": "1221fdd05ce3a03e5ebb693b3e3412b86ccaafb18d50ab067371615562092d4d",
+      "reviewedTextRu": "Австралийский писатель, получивший мировую известность благодаря роману «Книжный вор». Его произведения переведены на десятки языков.",
+      "applicableTextRu": "Австралийский писатель, получивший мировую известность благодаря роману «Книжный вор». Его произведения переведены на десятки языков.",
+      "claims": [
+        {
+          "textRu": "Маркус Зусак — австралийский писатель, получивший международную известность благодаря «Книжному вору».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://www.sl.nsw.gov.au/whats/recorded-events/author-talks/nicole-abadee-conversation-markus-zusak",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека подтверждает австралийскую писательскую идентичность Маркуса Зусака, международный успех «Книжного вора» и переводы более чем на пятьдесят языков."
+            },
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/authors/markus-zusak",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель независимо атрибутирует Маркусу Зусаку роман «Книжный вор» и другие книги."
+            }
+          ]
+        },
+        {
+          "textRu": "Книги Зусака переведены на десятки языков.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://www.sl.nsw.gov.au/whats/recorded-events/author-talks/nicole-abadee-conversation-markus-zusak",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека подтверждает австралийскую писательскую идентичность Маркуса Зусака, международный успех «Книжного вора» и переводы более чем на пятьдесят языков."
+            },
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/authors/markus-zusak",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель независимо атрибутирует Маркусу Зусаку роман «Книжный вор» и другие книги."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "unchanged",
+      "notes": "Текст сохранён дословно. Рекомендация: исправить displayName «Маркос Зусак» на нормативное «Маркус Зусак»; общий файл не изменён."
+    },
+    {
+      "key": "australia:miles_franklin",
+      "originalSha256": "112a3be0cfdd451e85d792ec406f637d0f34330743eb5d187ec936faa23c1bb1",
+      "reviewedTextRu": "Австралийская писательница, автор романа «Моя блестящая карьера». В её честь названа одна из главных литературных премий Австралии.",
+      "applicableTextRu": "Австралийская писательница, автор романа «Моя блестящая карьера». В её честь названа одна из главных литературных премий Австралии.",
+      "claims": [
+        {
+          "textRu": "Майлз Франклин была австралийской писательницей и автором романа «Моя блестящая карьера».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австралийский биографический словарь, Австралийский национальный университет",
+              "url": "https://adb.anu.edu.au/biography/franklin-miles-6235",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биографическая статья подтверждает, что Майлз Франклин была австралийской писательницей и автором «Моей блестящей карьеры»."
+            },
+            {
+              "provider": "Премия Майлз Франклин",
+              "url": "https://cms-prd.milesfranklin.com.au/globalassets/_au-site-media/01-documents/03-wealth-management/03-campaign/mfla/2024/2024-award-guidelines.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальные правила премии подтверждают её учреждение по завещанию писательницы Стеллы Марии Сары Майлз Франклин, автора «Моей блестящей карьеры»."
+            }
+          ]
+        },
+        {
+          "textRu": "Премия Майлз Франклин учреждена по завещанию писательницы и носит её имя.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австралийский биографический словарь, Австралийский национальный университет",
+              "url": "https://adb.anu.edu.au/biography/franklin-miles-6235",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная биографическая статья подтверждает, что Майлз Франклин была австралийской писательницей и автором «Моей блестящей карьеры»."
+            },
+            {
+              "provider": "Премия Майлз Франклин",
+              "url": "https://cms-prd.milesfranklin.com.au/globalassets/_au-site-media/01-documents/03-wealth-management/03-campaign/mfla/2024/2024-award-guidelines.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальные правила премии подтверждают её учреждение по завещанию писательницы Стеллы Марии Сары Майлз Франклин, автора «Моей блестящей карьеры»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "unchanged",
+      "notes": "Текст сохранён дословно: авторство романа и происхождение одной из главных литературных премий Австралии подтверждены независимо."
+    },
+    {
+      "key": "australia:ruth_park",
+      "originalSha256": "9a5b970eb7fd2eeecd6fea1a6c97facd7f2e0083cc6617357ab3ac2c9206d4ad",
+      "reviewedTextRu": "Родившаяся в Новой Зеландии австралийская писательница и журналистка. Автор романа «Южная арфа», действие которого происходит в Сиднее.",
+      "applicableTextRu": "Родившаяся в Новой Зеландии австралийская писательница и журналистка. Автор романа «Южная арфа», действие которого происходит в Сиднее.",
+      "claims": [
+        {
+          "textRu": "Рут Парк родилась в Новой Зеландии и стала австралийской писательницей и журналисткой.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://archival.sl.nsw.gov.au/Details/archive/110328426",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архивная опись фиксирует рождение Рут Парк 24 августа 1917 года в Окленде, её писательскую работу и создание романа «The Harp in the South» о Сиднее."
+            },
+            {
+              "provider": "Te Ara — Энциклопедия Новой Зеландии",
+              "url": "https://teara.govt.nz/mi/1966/expatriates-biographies/page-3",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия независимо подтверждает дату и место рождения Парк, её журналистскую карьеру и работу романисткой."
+            }
+          ]
+        },
+        {
+          "textRu": "Парк — автор романа «Южная арфа», действие которого происходит в Сиднее.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Государственная библиотека Нового Южного Уэльса",
+              "url": "https://archival.sl.nsw.gov.au/Details/archive/110328426",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архивная опись фиксирует рождение Рут Парк 24 августа 1917 года в Окленде, её писательскую работу и создание романа «The Harp in the South» о Сиднее."
+            },
+            {
+              "provider": "Te Ara — Энциклопедия Новой Зеландии",
+              "url": "https://teara.govt.nz/mi/1966/expatriates-biographies/page-3",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная энциклопедия независимо подтверждает дату и место рождения Парк, её журналистскую карьеру и работу романисткой."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Обобщение о проблемах мигрантов заменено конкретным романом. Рекомендация: заменить birthDate 1917-08-04 на подтверждённую двумя национальными источниками 1917-08-24; общий файл не изменён."
+    },
+    {
+      "key": "australia:terry_hayes",
+      "originalSha256": "e725671683349cccea6f453e542dd6bef115e3cbd691d2c96dd6ba2c92b16b0c",
+      "reviewedTextRu": "Терри Хейс — писатель и сценарист. Он написал шпионский роман «Я — Пилигрим» и участвовал в создании сценария фильма «Безумный Макс 2: Воин дороги».",
+      "applicableTextRu": "Терри Хейс — писатель и сценарист. Он написал шпионский роман «Я — Пилигрим» и участвовал в создании сценария фильма «Безумный Макс 2: Воин дороги».",
+      "claims": [
+        {
+          "textRu": "Терри Хейс — писатель и сценарист, автор романа «Я — Пилигрим».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/authors/terry-hayes",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает работу Терри Хейса писателем и сценаристом, авторство «Я — Пилигрим» и его участие в сценарии фильма «Безумный Макс 2»."
+            },
+            {
+              "provider": "ACMI — Австралийский музей экранной культуры",
+              "url": "https://www.acmi.net.au/stories-and-ideas/how-they-filmed-road-warriors-chase-scene/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный музей экранной культуры независимо идентифицирует Хейса как журналиста и сценариста, работавшего с Джорджем Миллером над «Безумным Максом 2»."
+            }
+          ]
+        },
+        {
+          "textRu": "Хейс участвовал в создании сценария фильма «Безумный Макс 2: Воин дороги».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Penguin Books Australia",
+              "url": "https://www.penguin.com.au/authors/terry-hayes",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает работу Терри Хейса писателем и сценаристом, авторство «Я — Пилигрим» и его участие в сценарии фильма «Безумный Макс 2»."
+            },
+            {
+              "provider": "ACMI — Австралийский музей экранной культуры",
+              "url": "https://www.acmi.net.au/stories-and-ideas/how-they-filmed-road-warriors-chase-scene/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный музей экранной культуры независимо идентифицирует Хейса как журналиста и сценариста, работавшего с Джорджем Миллером над «Безумным Максом 2»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Роль продюсера убрана из краткой формулы, а сценарная работа уточнена конкретным фильмом. Издатель и ACMI подтверждают одну личность Терри Хейса; ключ сохраняется, точная birthDate институционально не установлена."
+    },
+    {
+      "key": "austria:arthur_schnitzler",
+      "originalSha256": "c9ce4aa9ecda634fc64c8553788c814ed629e949536eb700dbe8442b48eb3b2c",
+      "reviewedTextRu": "Австрийский писатель и драматург эпохи модернизма.",
+      "applicableTextRu": "Австрийский писатель и драматург эпохи модернизма.",
+      "claims": [
+        {
+          "textRu": "Артур Шницлер был австрийским писателем и драматургом эпохи модернизма.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://data.onb.ac.at/nlv_lex/perslex/Sch/Schnitzler_Arthur.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный архив подтверждает, что Артур Шницлер был австрийским писателем и драматургом венской эпохи модерна."
+            },
+            {
+              "provider": "Австрийская академия наук",
+              "url": "https://www.oeaw.ac.at/acdh/oebl/biographien-des-monats/2022/mai",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическая биография независимо связывает Шницлера с литературным модернизмом и документирует его прозу и драматургию."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "unchanged",
+      "notes": "Текст сохранён дословно: национальная принадлежность, профессиональные роли и литературная эпоха подтверждены австрийскими институциями."
+    },
+    {
+      "key": "austria:daniel_kehlmann",
+      "originalSha256": "bf4c335e85f95126049846735667fccc14390b9315ad05a2af00f48a0237d6da",
+      "reviewedTextRu": "Немецкоязычный австрийско-немецкий писатель, автор романов «Измеряя мир» и «Тиль».",
+      "applicableTextRu": "Немецкоязычный австрийско-немецкий писатель, автор романов «Измеряя мир» и «Тиль».",
+      "claims": [
+        {
+          "textRu": "Даниэль Кельман — немецкоязычный австрийско-немецкий писатель и автор романов «Измеряя мир» и «Тиль».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Rowohlt Verlag",
+              "url": "https://www.rowohlt.de/autor/daniel-kehlmann-1390",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издатель подтверждает идентичность Даниэля Кельмана и его романы «Die Vermessung der Welt» и «Tyll»."
+            },
+            {
+              "provider": "Goethe-Institut",
+              "url": "https://www.goethe.de/ins/in/en/kul/lak/art/27002128.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Гёте-Институт характеризует Кельмана как немецко-австрийского автора и подтверждает авторство «Измеряя мир»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Расплывчатая формула о литературной традиции заменена точной писательской идентичностью и двумя романами."
+    },
+    {
+      "key": "austria:elias_canetti",
+      "originalSha256": "37d0a25d04264372786e9b682b80b539c22a3013e35f279c0cb54b5ba57ed68b",
+      "reviewedTextRu": "Немецкоязычный писатель и эссеист сефардского происхождения. Автор романа «Ослепление» и исследования «Масса и власть»; лауреат Нобелевской премии по литературе 1981 года.",
+      "applicableTextRu": "Немецкоязычный писатель и эссеист сефардского происхождения. Автор романа «Ослепление» и исследования «Масса и власть»; лауреат Нобелевской премии по литературе 1981 года.",
+      "claims": [
+        {
+          "textRu": "Элиас Канетти был немецкоязычным писателем и эссеистом сефардского происхождения.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Нобелевская премия",
+              "url": "https://www.nobelprize.org/prizes/literature/1981/canetti/biographical/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография подтверждает немецкоязычные произведения «Ослепление» и «Масса и власть» и Нобелевскую премию 1981 года."
+            },
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://www.onb.ac.at/museen/literaturmuseum/kalender/elias-canetti-fuer-die-gegenwart",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо подтверждает писательскую и эссеистическую работу Канетти, указанные произведения и статус нобелевского лауреата."
+            }
+          ]
+        },
+        {
+          "textRu": "Канетти — автор «Ослепления» и «Массы и власти» и лауреат Нобелевской премии по литературе 1981 года.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Нобелевская премия",
+              "url": "https://www.nobelprize.org/prizes/literature/1981/canetti/biographical/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография подтверждает немецкоязычные произведения «Ослепление» и «Масса и власть» и Нобелевскую премию 1981 года."
+            },
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://www.onb.ac.at/museen/literaturmuseum/kalender/elias-canetti-fuer-die-gegenwart",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный музей независимо подтверждает писательскую и эссеистическую работу Канетти, указанные произведения и статус нобелевского лауреата."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Интерпретация тем и длинная географическая формула заменены произведениями и наградой. Пересечение с Нобелевским реестром намеренное: exact gap-fill Batch11 требует отдельной claim-by-claim проверки, а Nobel Prize дополнен независимой Австрийской национальной библиотекой."
+    },
+    {
+      "key": "austria:rainer_maria_rilke",
+      "originalSha256": "759c6ad453d18084fcb78448f9e8519a18bbf3895d081d1ca436c1de6fb1b0df",
+      "reviewedTextRu": "Немецкоязычный поэт и прозаик, родившийся в Праге. Автор цикла «Дуинские элегии» и романа «Записки Мальте Лауридса Бригге».",
+      "applicableTextRu": "Немецкоязычный поэт и прозаик, родившийся в Праге. Автор цикла «Дуинские элегии» и романа «Записки Мальте Лауридса Бригге».",
+      "claims": [
+        {
+          "textRu": "Райнер Мария Рильке был немецкоязычным поэтом и прозаиком и родился в Праге.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Fondation Rilke",
+              "url": "https://www.fondationrilke.ch/en/decouvrir",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Фонд наследия подтверждает рождение Рильке в Праге, его поэтическую и прозаическую работу, «Дуинские элегии» и «Записки Мальте Лауридса Бригге»."
+            },
+            {
+              "provider": "Goethe-Institut",
+              "url": "https://www.goethe.de/ins/ee/de/kul/ser/uak/per.cfm?personId=637",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Гёте-Институт независимо определяет Рильке как немецкоязычного писателя и поэта и атрибутирует ему оба произведения."
+            }
+          ]
+        },
+        {
+          "textRu": "Рильке — автор «Дуинских элегий» и романа «Записки Мальте Лауридса Бригге».",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Fondation Rilke",
+              "url": "https://www.fondationrilke.ch/en/decouvrir",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Фонд наследия подтверждает рождение Рильке в Праге, его поэтическую и прозаическую работу, «Дуинские элегии» и «Записки Мальте Лауридса Бригге»."
+            },
+            {
+              "provider": "Goethe-Institut",
+              "url": "https://www.goethe.de/ins/ee/de/kul/ser/uak/per.cfm?personId=637",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Гёте-Институт независимо определяет Рильке как немецкоязычного писателя и поэта и атрибутирует ему оба произведения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Неясная формула «австро-центральноевропейская традиция» заменена местом рождения, жанрами и двумя произведениями."
+    },
+    {
+      "key": "austria:robert_musil",
+      "originalSha256": "d9bfdd05559350841b76d9b77c314e6a4cd90dd71c1ed97f9e32079769a1093a",
+      "reviewedTextRu": "Австрийский писатель и эссеист, автор незавершённого романа «Человек без свойств».",
+      "applicableTextRu": "Австрийский писатель и эссеист, автор незавершённого романа «Человек без свойств».",
+      "claims": [
+        {
+          "textRu": "Роберт Музиль был австрийским писателем и эссеистом и автором незавершённого романа «Человек без свойств».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://data.onb.ac.at/nlv_lex/perslex/M/Musil_Robert.htm",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный архив подтверждает работу Роберта Музиля австрийским писателем и эссеистом и незавершённость романа «Человек без свойств»."
+            },
+            {
+              "provider": "Университет Клагенфурта, Институт Роберта Музиля",
+              "url": "https://www.aau.at/musil/literaturforschung/musilforschung/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профиль специализированного института независимо подтверждает авторство и незавершённый статус «Человека без свойств»."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "corrected",
+      "notes": "Недоказанный рейтинг романа заменён профессиональными ролями, названием и документированным незавершённым статусом произведения."
+    },
+    {
+      "key": "austria:stefan_zweig",
+      "originalSha256": "96b43aae4ddb6b68b9f75603dedd867b09b8f2536d578ab6a03a0df35dd3d31a",
+      "reviewedTextRu": "Австрийский писатель, биограф и эссеист.",
+      "applicableTextRu": "Австрийский писатель, биограф и эссеист.",
+      "claims": [
+        {
+          "textRu": "Стефан Цвейг был австрийским писателем, биографом и эссеистом.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://data.onb.ac.at/nlv_lex/perslex/XZ/Zweig_Stefan.htm",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Литературный архив подтверждает, что Стефан Цвейг был австрийским писателем и автором эссе и биографических произведений."
+            },
+            {
+              "provider": "Центр Стефана Цвейга Зальцбургского университета",
+              "url": "https://stefan-zweig-zentrum.at/stefan-zweig/leben-werke",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный центр наследия независимо документирует новеллы, эссе и исторические биографии Цвейга."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 11",
+      "decision": "unchanged",
+      "notes": "Текст сохранён дословно: все три профессиональные роли подтверждены национальным архивом и центром наследия."
+    }
+  ]
+}

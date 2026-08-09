@@ -964,7 +964,7 @@ export const newZealand: Country = {
 
       years: "1955–",
 
-      birthDate: "1955-05-23",
+      birthDate: "1955-03-23",
 
       deathDate: "",
 

@@ -647,7 +647,7 @@ export const ecuador: Country = {
       name: "Элиэсер Карденас",
       years: "1950–2021",
       birthDate: "1950-12-10",
-      deathDate: "2021-09-01",
+      deathDate: "2021-09-26",
       birthPlace: "Каньяр, Эквадор",
       deathPlace: "Куэнка, Эквадор",
       coordinates: {

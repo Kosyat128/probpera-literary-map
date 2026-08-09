@@ -3,9 +3,11 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import {
+  geometryLatitudeBounds,
   geometryContainsGeographicPoint,
   geographicToSphere,
   GLOBE_LONGITUDE_OFFSET_DEGREES,
+  latitudeBoundsContain,
   partitionGeometryAtGeographicPoint,
   uvToGeographic,
   type GlobeGeoGeometry,
@@ -160,5 +162,62 @@ describe("география интерактивного глобуса", () =>
     expect(
       geometryContainsGeographicPoint(remainder!, 2.3522, 48.8566)
     ).toBe(true);
+  });
+
+  it("keeps the latitude broad phase exactly equivalent to full polygon picking", () => {
+    const indexed = worldAtlas.features.map((feature) => ({
+      feature,
+      bounds: geometryLatitudeBounds(feature.geometry),
+    }));
+    let baselineExactChecks = 0;
+    let indexedExactChecks = 0;
+
+    for (let latitude = -85; latitude <= 85; latitude += 10) {
+      for (let longitude = -175; longitude <= 175; longitude += 10) {
+        const baseline = worldAtlas.features.findIndex((feature) => {
+          baselineExactChecks += 1;
+          return geometryContainsGeographicPoint(
+            feature.geometry,
+            longitude,
+            latitude
+          );
+        });
+        const optimized = indexed.findIndex(({ feature, bounds }) => {
+          if (!latitudeBoundsContain(bounds, latitude)) return false;
+          indexedExactChecks += 1;
+          return geometryContainsGeographicPoint(
+            feature.geometry,
+            longitude,
+            latitude
+          );
+        });
+
+        expect(optimized).toBe(baseline);
+      }
+    }
+
+    expect(indexedExactChecks / baselineExactChecks).toBeLessThan(0.06);
+  });
+
+  it("bounds every coordinate without reducing the reviewed 177-feature atlas", () => {
+    const collectLatitudes = (value: unknown): number[] => {
+      if (!Array.isArray(value)) return [];
+      if (
+        value.length >= 2 &&
+        typeof value[0] === "number" &&
+        typeof value[1] === "number"
+      ) {
+        return [value[1]];
+      }
+      return value.flatMap(collectLatitudes);
+    };
+
+    expect(worldAtlas.features).toHaveLength(177);
+    worldAtlas.features.forEach((feature) => {
+      const bounds = geometryLatitudeBounds(feature.geometry);
+      collectLatitudes(feature.geometry.coordinates).forEach((latitude) => {
+        expect(latitudeBoundsContain(bounds, latitude)).toBe(true);
+      });
+    });
   });
 });

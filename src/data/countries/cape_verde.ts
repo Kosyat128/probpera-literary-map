@@ -140,8 +140,8 @@ export const capeVerde: Country = {
       name: "Овидиу Мартинш",
       fullName: "Ovídio Martins",
       years: "1928–1999",
-      birthDate: "1928-08-17",
-      deathDate: "1999-01-01",
+      birthDate: "1928-09-17",
+      deathDate: "1999-04-29",
       birthPlace: "Сан-Висенте",
       coordinates: {
         lat: 16.88,

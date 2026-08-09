@@ -4,47 +4,24 @@ import {
   selectWriterYears,
 } from "../data/bookLocalization";
 import { getPublicWriterWorkTitles } from "../data/bookArchive";
-import { selectWriterBiography } from "../data/writerBiography";
+import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { resolveRelatedWriters } from "../utils/resolveRelatedWriters";
+import {
+  calculateWriterLifespanAge,
+  formatWriterDate,
+} from "../utils/writerDates";
 import WriterPortrait from "./WriterPortrait";
 
 type WriterProfileProps = {
   writer: Writer;
 };
 
-function calculateAge(birthDate?: string, deathDate?: string) {
-  if (!birthDate || !deathDate) return null;
-
-  const birth = new Date(birthDate);
-  const death = new Date(deathDate);
-
-  let age = death.getFullYear() - birth.getFullYear();
-  const monthDiff = death.getMonth() - birth.getMonth();
-
-  if (monthDiff < 0 || (monthDiff === 0 && death.getDate() < birth.getDate())) {
-    age--;
-  }
-
-  return age > 0 ? age : null;
-}
-
-function localizedDate(value: string, language: "ru" | "en") {
-  const date = new Date(`${value}T12:00:00Z`);
-  if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(date);
-}
-
 export default function WriterProfile({ writer }: WriterProfileProps) {
   const { language, t } = useInterfaceLanguage();
-  const age = calculateAge(writer.birthDate, writer.deathDate);
+  const age = calculateWriterLifespanAge(writer.birthDate, writer.deathDate);
   const relatedNames = resolveRelatedWriters(writer.relatedWriters || []);
-  const biography = selectWriterBiography(writer, language);
+  const biography = selectWriterBiographyForDisplay(writer, language);
   const writerName = selectWriterDisplayName(writer, language, t("Автор"));
 
   return (
@@ -59,10 +36,10 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
       <h1>{writerName}</h1>
 
       {writer.birthDate && (
-        <p>🎂 {t("Дата рождения")}: {localizedDate(writer.birthDate, language)}</p>
+        <p>🎂 {t("Дата рождения")}: {formatWriterDate(writer.birthDate, language)}</p>
       )}
       {writer.deathDate && (
-        <p>⚰ {t("Дата смерти")}: {localizedDate(writer.deathDate, language)}</p>
+        <p>⚰ {t("Дата смерти")}: {formatWriterDate(writer.deathDate, language)}</p>
       )}
       {age && <p>⌛ {t("Прожил")}: {age} {t("лет")}</p>}
       {selectWriterYears(writer, language) && (
@@ -102,7 +79,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
             ? t("Проверенный английский перевод биографии ещё готовится.")
             : t("Расширенная биография готовится для энциклопедии."))}
       </p>
-      {biography?.sources.length ? (
+      {biography?.kind === "published" && biography.sources.length ? (
         <p>
           {t("Источники")}: {biography.sources.map((source, index) => (
             <span key={source.url}>

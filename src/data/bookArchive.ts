@@ -25,6 +25,25 @@ export type BookArchiveEntry = WorkProfile & {
   country: Country;
 };
 
+/**
+ * Resolves a book relation back into the public writer/globe corpus. Book
+ * entries may intentionally survive a writer quarantine, so their embedded
+ * pre-quarantine writer object must never be passed to public writer views.
+ */
+export function resolveBookArchivePublicTarget(
+  publicCountries: Country[],
+  book: Pick<BookArchiveEntry, "countryId" | "writerId">
+) {
+  const country = publicCountries.find((item) => item.id === book.countryId);
+  if (!country) return null;
+  const writer = country.writers.find((item) => item.id === book.writerId);
+  if (!writer) return null;
+  return {
+    country,
+    writer,
+  };
+}
+
 const editionCoverStatuses = new Set([
   "public-domain",
   "licensed",

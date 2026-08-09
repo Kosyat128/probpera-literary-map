@@ -11,7 +11,7 @@ export const burundi: Country = {
       name: "Ролан Ругеро",
       fullName: "Roland Rugero",
       years: "1986–",
-      birthDate: "1986",
+      birthDate: "1986-02-22",
       deathDate: "",
       birthPlace: "Бурунди",
       portrait: "",

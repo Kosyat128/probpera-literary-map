@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "deterministic": true,
+  "sourceFingerprint": "sha256:6bd88a3ed2771875dc04dabfceb4482c2b2ba3afe5f9a8890d30a23d794c0d5e",
+  "officialSource": {
+    "retrievedAt": "2026-08-09",
+    "throughYear": 2025,
+    "apiUrl": "https://api.nobelprize.org/2.1/laureates?nobelPrizeCategory=lit&nobelPrizeYearFrom=1901&nobelPrizeYearTo=2025&limit=200",
+    "developerDocumentation": "https://www.nobelprize.org/about/developer-zone/"
+  },
+  "scope": {
+    "biographyTextChanged": false,
+    "editorialStatusesChanged": false,
+    "articlesChanged": false,
+    "productionArchiveRequiresStructuredMetadata": true
+  },
+  "summary": {
+    "officialLaureates": 122,
+    "officialAwardYears": 118,
+    "localCardRepresentations": 125,
+    "uniqueStructuredOfficialIds": 122,
+    "duplicatePeopleWithCountryCards": 3,
+    "biographyNobelMentions": 98,
+    "biographyClaimsWithExplicitYear": 94,
+    "biographyClaimsWithoutExplicitYear": 4,
+    "biographyYearContradictions": 0,
+    "officialCardsWithoutBiographyMention": 27,
+    "previouslyUnstructuredCards": 77,
+    "previouslyUnstructuredCardsResolved": 77,
+    "productionArchiveEntriesUsingProseFallback": 0,
+    "unregisteredBiographyMentions": 0,
+    "unregisteredStructuredSignals": 0,
+    "blockingIssues": 0
+  },
+  "sharedAwards": [
+    {
+      "id": 573,
+      "name": "Frédéric Mistral",
+      "year": 1904,
+      "portion": "1/2"
+    },
+    {
+      "id": 574,
+      "name": "José Echegaray",
+      "year": 1904,
+      "portion": "1/2"
+    },
+    {
+      "id": 586,
+      "name": "Karl Gjellerup",
+      "year": 1917,
+      "portion": "1/2"
+    },
+    {
+      "id": 587,
+      "name": "Henrik Pontoppidan",
+      "year": 1917,
+      "portion": "1/2"
+    },
+    {
+      "id": 639,
+      "name": "Shmuel Agnon",
+      "year": 1966,
+      "portion": "1/2"
+    },
+    {
+      "id": 640,
+      "name": "Nelly Sachs",
+      "year": 1966,
+      "portion": "1/2"
+    },
+    {
+      "id": 649,
+      "name": "Eyvind Johnson",
+      "year": 1974,
+      "portion": "1/2"
+    },
+    {
+      "id": 650,
+      "name": "Harry Martinson",
+      "year": 1974,
+      "portion": "1/2"
+    }
+  ],
+  "specialCases": [
+    {
+      "laureateId": 604,
+      "name": "Erik Axel Karlfeldt",
+      "status": "posthumous",
+      "writerKeys": [
+        "sweden:erik_axel_karlfeldt"
+      ]
+    },
+    {
+      "laureateId": 629,
+      "name": "Boris Pasternak",
+      "status": "accepted-then-forced-to-decline",
+      "writerKeys": [
+        "russia:pasternak"
+      ]
+    },
+    {
+      "laureateId": 637,
+      "name": "Jean-Paul Sartre",
+      "status": "declined",
+      "writerKeys": [
+        "france:jean_paul_sartre"
+      ]
+    }
+  ],
+  "duplicatePeople": [
+    {
+      "laureateId": 617,
+      "name": "Hermann Hesse",
+      "writerKeys": [
+        "germany:hermann_hesse",
+        "switzerland:hermann_hesse"
+      ]
+    },
+    {
+      "laureateId": 747,
+      "name": "V. S. Naipaul",
+      "writerKeys": [
+        "india:v_s_naipaul",
+        "trinidad_and_tobago:vs_naipaul"
+      ]
+    },
+    {
+      "laureateId": 817,
+      "name": "Doris Lessing",
+      "writerKeys": [
+        "england:doris_lessing",
+        "zimbabwe:doris_lessing"
+      ]
+    }
+  ],
+  "biographyClaimsWithoutYear": [
+    {
+      "key": "france:sully_prudhomme",
+      "name": "Рене Франсуа Арман Сюлли-Прюдом",
+      "years": [],
+      "officialYear": 1901
+    },
+    {
+      "key": "india:rabindranath_tagore",
+      "name": "Рабиндранат Тагор",
+      "years": [],
+      "officialYear": 1913
+    },
+    {
+      "key": "sweden:selma_lagerlof",
+      "name": "Сельма Лагерлёф",
+      "years": [],
+      "officialYear": 1909
+    },
+    {
+      "key": "usa:sinclair_lewis",
+      "name": "Синклер Льюис",
+      "years": [],
+      "officialYear": 1930
+    }
+  ],
+  "unresolvedFormerGaps": [],
+  "unregisteredBiographyMentions": [],
+  "unregisteredStructuredSignals": [],
+  "blockingIssues": []
+}

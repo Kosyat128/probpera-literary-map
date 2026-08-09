@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { buildBookArchive } from "./bookArchive";
 import { calculateArchiveStatistics } from "./archiveStatistics";
-import { countries } from "./countries";
+import { bookArchiveCountries, countries } from "./countries";
 
 const currentYear = new Date().getUTCFullYear();
 
@@ -110,7 +110,7 @@ describe("качество основной базы стран", () => {
   });
 
   it("не содержит повторяющихся подробных карточек книг", () => {
-    const archive = buildBookArchive(countries);
+    const archive = buildBookArchive(bookArchiveCountries);
     const seen = new Set<string>();
     const duplicates: string[] = [];
 
@@ -124,7 +124,7 @@ describe("качество основной базы стран", () => {
   });
 
   it("не публикует карточку с отсутствующей локальной обложкой", () => {
-    const missing = buildBookArchive(countries)
+    const missing = buildBookArchive(bookArchiveCountries)
       .filter((book) => book.coverUrl || book.coverThumbnailUrl)
       .flatMap((book) => [
         ...(!localPublicAssetExists(book.coverUrl)
@@ -164,7 +164,7 @@ describe("качество основной базы стран", () => {
   });
 
   it("не помечает проверенной книгу без библиографического источника", () => {
-    const unsourced = buildBookArchive(countries)
+    const unsourced = buildBookArchive(bookArchiveCountries)
       .filter((book) => book.editorial?.status === "verified" && !book.sourceUrl)
       .map((book) => `${book.countryId}:${book.writerId}:${book.id}`);
 

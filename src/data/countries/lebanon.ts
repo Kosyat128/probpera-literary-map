@@ -64,7 +64,7 @@ export const lebanon: Country = {
 
       years: "1889–1988",
 
-      birthDate: "1889-11-17",
+      birthDate: "1889-11-22",
       deathDate: "1988-02-28",
 
       birthPlace: "Баскинта, Ливан",

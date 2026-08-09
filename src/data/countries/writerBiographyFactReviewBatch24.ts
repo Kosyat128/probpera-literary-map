@@ -1,0 +1,368 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH24_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 24";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH24_REVIEWER;
+const checkedAt = "2026-08-09";
+
+type ReviewBase = Omit<WriterBiographyFactReviewRecord, "applicableTextRu">;
+
+const writerBiographyFactReviewBatch24Base = [
+  {
+    key: "england:george_eliot",
+    originalSha256: "6a213a5612a751ec1c12d3cd1794609f949573cea53119bd00cb1e2641e33524",
+    reviewedTextRu: "Джордж Элиот — литературный псевдоним английской писательницы Мэри Энн Эванс. К её романам относятся «Миддлмарч», «Мельница на Флоссе» и «Дэниел Деронда».",
+    claims: [{
+      textRu: "Джордж Элиот — псевдоним английской писательницы Мэри Энн Эванс, написавшей романы «Миддлмарч», «Мельница на Флоссе» и «Дэниел Деронда».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp01124/george-eliot-mary-ann-cross-nee-evans", checkedAt, findingRu: "Национальная портретная галерея подтверждает настоящее имя, литературный псевдоним, профессию и атрибуцию названных романов." },
+        { provider: "British Library Archives and Manuscripts", url: "https://searcharchives.bl.uk/?f%5Brelated_names_ssim%5D%5B%5D=Cross%2C+Mary+Ann%2C+novelist%2C+pen+name+George+Eliot%2C+1819-1880&per_page=20&search_field=all_fields", checkedAt, findingRu: "Архивный авторитетный заголовок Британской библиотеки независимо связывает Мэри Энн Эванс с псевдонимом George Eliot и её рукописным наследием." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное «одна из крупнейших» заменено именем, псевдонимом и проверяемой библиографией. Shared country files не изменялись.",
+  },
+  {
+    key: "england:george_orwell",
+    originalSha256: "1a1a3d581631292b559547d44f68404eb13cf257b4da4b88e16c9ae52c4510a8",
+    reviewedTextRu: "Джордж Оруэлл — литературный псевдоним английского писателя, эссеиста и журналиста Эрика Артура Блэра. Он написал политическую сатиру «Скотный двор» и роман-антиутопию «1984».",
+    claims: [{
+      textRu: "Эрик Артур Блэр публиковался под именем Джордж Оруэлл, работал как писатель, эссеист и журналист и написал «Скотный двор» и «1984».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "The Orwell Foundation", url: "https://www.orwellfoundation.com/the-orwell-foundation/orwell/biography/", checkedAt, findingRu: "Фонд Оруэлла подтверждает настоящее имя, псевдоним, журналистскую и литературную деятельность, а также авторство Animal Farm и Nineteen Eighty-Four." },
+        { provider: "University College London", url: "https://www.ucl.ac.uk/news/2017/nov/orwell-statue-unveiled-bbc-hq", checkedAt, findingRu: "Университетский материал независимо идентифицирует Джорджа Оруэлла как Эрика Блэра и связывает его с двумя названными книгами." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Общее упоминание «знаменитых антиутопий» заменено точным именем, ролями, жанровой характеристикой и двумя произведениями. Shared country files не изменялись.",
+  },
+  {
+    key: "england:graham_greene",
+    originalSha256: "90c784152a62774a48dcfee666771d4924ae0d814d86a9caa9a7261cd020b6de",
+    reviewedTextRu: "Грэм Грин — английский романист, рассказчик, драматург и журналист. Он написал романы «Сила и слава», «Суть дела» и «Тихий американец».",
+    claims: [{
+      textRu: "Грэм Грин работал как английский романист, рассказчик, драматург и журналист и написал «Силу и славу», «Суть дела» и «Тихого американца».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp01892/graham-greene", checkedAt, findingRu: "Национальная портретная галерея подтверждает литературные и журналистскую роли Грина и перечисляет его основные романы." },
+        { provider: "Penguin Books", url: "https://www.penguin.co.uk/books/355456/the-quiet-american-by-graham-greene/9780099478393", checkedAt, findingRu: "Издательская страница независимо атрибутирует Грину «Тихого американца» и описывает его работу как романиста и журналиста." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Расплывчатая тематическая характеристика заменена подтверждёнными литературными ролями и названиями романов. Shared country files не изменялись.",
+  },
+  {
+    key: "england:h_g_wells",
+    originalSha256: "4355ae6552ab168b5c9f77d15737eb545122ed715dfcebf9153dd7143173b6ad",
+    reviewedTextRu: "Герберт Джордж Уэллс — английский писатель, работавший в художественной прозе, истории и общественно-политической публицистике. К его научно-фантастическим романам относятся «Машина времени», «Человек-невидимка» и «Война миров».",
+    claims: [{
+      textRu: "Герберт Джордж Уэллс писал художественную, историческую и общественно-политическую прозу; он является автором «Машины времени», «Человека-невидимки» и «Войны миров».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Ohio University Libraries", url: "https://www.ohio.edu/library/physical-collections/archives-special-collections/rare-books/author-collections/hg-wells", checkedAt, findingRu: "Университетская библиотека документирует широкий круг работ Уэллса и атрибутирует ему названные научно-фантастические романы." },
+        { provider: "Syracuse University Libraries", url: "https://library.syracuse.edu/digital/guides/w/wells_coll.htm", checkedAt, findingRu: "Архивное описание Сиракузского университета независимо подтверждает писательские области Уэллса и состав его литературного наследия." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказательный статус «одного из основателей» заменён жанрами деятельности и конкретными романами. Shared country files не изменялись.",
+  },
+  {
+    key: "england:harold_pinter",
+    originalSha256: "a421a1b2e924c68c25a2555025a74495c2e207be8c68db2c15741495cefa7dd9",
+    reviewedTextRu: "Гарольд Пинтер — английский драматург, сценарист, режиссёр, актёр и поэт, лауреат Нобелевской премии по литературе 2005 года. Среди его пьес — «День рождения», «Сторож», «Возвращение домой» и «Предательство».",
+    claims: [{
+      textRu: "Гарольд Пинтер работал как английский драматург, сценарист, режиссёр, актёр и поэт, получил Нобелевскую премию по литературе 2005 года и написал четыре названные пьесы.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/2005/bio-bibliography/?print=1", checkedAt, findingRu: "Официальная Нобелевская биобиблиография подтверждает премию 2005 года, профессиональные роли Пинтера и атрибуцию пьес." },
+        { provider: "The Harold Pinter Official Website", url: "https://www.haroldpinter.org/home/index.shtml", checkedAt, findingRu: "Официальный авторский ресурс независимо перечисляет работу Пинтера в театре и кино и каталог его пьес, включая названные произведения." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Исходная верная нобелевская атрибуция дополнена проверенными ролями и произведениями; оценочные формулы не добавлялись. Shared country files не изменялись.",
+  },
+  {
+    key: "england:henry_fielding",
+    originalSha256: "6b1514fbb3f50bb123dae06e3ed779bcfed2148276ab77fa3a1e3f194344c40d",
+    reviewedTextRu: "Генри Филдинг — английский писатель и драматург XVIII века. Он написал романы «Джозеф Эндрюс» и «История Тома Джонса, найдёныша».",
+    claims: [{
+      textRu: "Генри Филдинг был английским писателем и драматургом XVIII века и написал романы «Джозеф Эндрюс» и «История Тома Джонса, найдёныша».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp60021/henry-fielding", checkedAt, findingRu: "Национальная портретная галерея подтверждает годы жизни, писательскую и драматургическую деятельность Филдинга и его романы." },
+        { provider: "Folger Shakespeare Library", url: "https://catalog.folger.edu/record/101571", checkedAt, findingRu: "Библиотечный каталог Фолджера независимо атрибутирует Филдингу «Историю Тома Джонса, найдёныша»." },
+        { provider: "The British Museum", url: "https://www.britishmuseum.org/collection/object/P_1852-1116-451-452", checkedAt, findingRu: "Музейная запись независимо связывает Генри Филдинга и персонажей романа Tom Jones." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказательный статус «одного из основателей» заменён верифицируемыми ролями, эпохой и библиографией. Shared country files не изменялись.",
+  },
+  {
+    key: "england:hilary_mantel",
+    originalSha256: "21ee178593bbefa613e81495daa875bc3d35089f3ba81feeee9a751bf2f36622",
+    reviewedTextRu: "Хилари Мантел — английская писательница, автор исторических романов, рассказов и эссе. Романы «Wolf Hall» и «Bring Up the Bodies», первые две части её трилогии о Томасе Кромвеле, получили Букеровскую премию в 2009 и 2012 годах.",
+    claims: [{
+      textRu: "Хилари Мантел писала исторические романы, рассказы и эссе; Wolf Hall и Bring Up the Bodies являются первыми частями трилогии о Томасе Кромвеле и получили Букеровскую премию в 2009 и 2012 годах.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "The Booker Prizes", url: "https://thebookerprizes.com/the-booker-library/authors/hilary-mantel", checkedAt, findingRu: "Официальный архив Букеровской премии подтверждает авторство, жанры, структуру трилогии и победы двух романов в 2009 и 2012 годах." },
+        { provider: "Macmillan", url: "https://us.macmillan.com/author/hilarymantel/", checkedAt, findingRu: "Издательский профиль независимо подтверждает литературные жанры Мантел, названия романов и их место в трилогии о Кромвеле." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён фактической биографией. Identity recommendation: Q465700 подтверждён; для shared-профиля рекомендуются birthDate 1952-07-06 и deathDate 2022-09-22. Shared country files не изменялись.",
+  },
+  {
+    key: "england:ian_mcewan",
+    originalSha256: "62554679df32c1b3efa63d39c2e40f4fec9398503cfbbad422ff4834a5d8ab5a",
+    reviewedTextRu: "Иэн Макьюэн — английский писатель, автор романов и рассказов. Его роман «Амстердам» получил Букеровскую премию 1998 года; к другим книгам относятся «Искупление», «Суббота» и «На берегу».",
+    claims: [{
+      textRu: "Иэн Макьюэн пишет романы и рассказы; «Амстердам» получил Букеровскую премию 1998 года, а «Искупление», «Суббота» и «На берегу» входят в его библиографию.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "The Booker Prizes", url: "https://thebookerprizes.com/the-booker-library/authors/ian-mcewan", checkedAt, findingRu: "Официальный архив премии подтверждает литературные жанры Макьюэна, победу «Амстердама» в 1998 году и библиографию автора." },
+        { provider: "Ian McEwan — official website", url: "https://www.ianmcewan.com/books/amsterdam.html", checkedAt, findingRu: "Официальный сайт автора независимо атрибутирует ему «Амстердам» и фиксирует присуждение книге Букеровской премии." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён проверенной краткой биографией. Identity recommendation: Q190379 подтверждён; для shared-профиля рекомендуется birthDate 1948-06-21. Shared country files не изменялись.",
+  },
+  {
+    key: "england:j_r_r_tolkien",
+    originalSha256: "598ed7c7e6c8844fbd844884acd38514f3991761268b50d6643b8591d4b9378d",
+    reviewedTextRu: "Джон Рональд Руэл Толкин — английский писатель и филолог, много лет преподававший английский язык и средневековую литературу в Оксфордском университете. Он написал «Хоббита» и «Властелина колец», а из оставленных им текстов Кристофер Толкин подготовил к публикации «Сильмариллион».",
+    claims: [{
+      textRu: "Джон Рональд Руэл Толкин был английским писателем, филологом и оксфордским преподавателем, написал «Хоббита» и «Властелина колец», а «Сильмариллион» после его смерти подготовил к публикации Кристофер Толкин.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "The Tolkien Estate", url: "https://www.tolkienestate.com/life/biography/", checkedAt, findingRu: "Официальный архив наследия подтверждает полное имя, академическую карьеру Толкина и авторство «Хоббита» и «Властелина колец»." },
+        { provider: "University of Oxford GLAM", url: "https://www.glam.ox.ac.uk/article/editor-and-scholar-christopher-tolkien-awarded-bodley-medal", checkedAt, findingRu: "Оксфордский университет независимо подтверждает филологическую работу Толкина и редакционную подготовку «Сильмариллиона» Кристофером Толкином." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Длинное исходное описание сокращено до двух предложений; сохранены подтверждённые академические и библиографические факты без оценок влияния. Shared country files не изменялись.",
+  },
+  {
+    key: "england:jane_austen",
+    originalSha256: "a81f6cbd0e51cdec54fc0cc5e656578409ff0111e5294306fea10f34ee705585",
+    reviewedTextRu: "Джейн Остин — английская писательница, автор шести завершённых романов. К ним относятся «Гордость и предубеждение» и «Эмма»; четыре романа вышли при её жизни анонимно, ещё два — после смерти.",
+    claims: [{
+      textRu: "Джейн Остин написала шесть завершённых романов, включая «Гордость и предубеждение» и «Эмму»; четыре вышли при её жизни анонимно, два — посмертно.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp00179/jane-austen", checkedAt, findingRu: "Национальная портретная галерея подтверждает профессию Остин, шесть завершённых романов и их издательскую хронологию." },
+        { provider: "Jane Austen's House", url: "https://janeaustens.house/online-exhibition/the-making-of-pride-and-prejudice/the-making-of-pride-and-prejudice-1/", checkedAt, findingRu: "Музей писательницы независимо документирует авторство и анонимную публикацию «Гордости и предубеждения» в контексте её романов." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Субъективное «одна из крупнейших» заменено количеством завершённых романов и точными сведениями об их публикации. Shared country files не изменялись.",
+  },
+  {
+    key: "england:joanne_harris",
+    originalSha256: "6512e8afc7f32ee6f1aef52f22d3ab58d13ee3771d618ebbc93d141a08734ebf",
+    reviewedTextRu: "Джоанн Харрис — британская писательница англо-французского происхождения, работающая в прозе разных жанров. Она написала роман «Шоколад», экранизированный в 2000 году, а также «Ежевичное вино» и «Пять четвертинок апельсина».",
+    claims: [{
+      textRu: "Джоанн Харрис — британская писательница англо-французского происхождения; она написала «Шоколад», «Ежевичное вино» и «Пять четвертинок апельсина», а «Шоколад» был экранизирован в 2000 году.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Joanne Harris — official website", url: "https://www.joanne-harris.co.uk/about/", checkedAt, findingRu: "Официальная биография подтверждает происхождение, литературную деятельность, библиографию и экранизацию «Шоколада»." },
+        { provider: "Hachette UK", url: "https://www.hachette.co.uk/contributor/joanne-harris/", checkedAt, findingRu: "Издательский профиль независимо подтверждает англо-французское происхождение Харрис и атрибуцию названных романов." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён фактической биографией. Identity recommendation: Q234718 подтверждён; авторитетные источники подтверждают birthYear 1964, но не дают основания для точного birthDate. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_bunyan",
+    originalSha256: "ed6cbd0879af358c6f5d892381e4d263d94fb292be6b0280b777ec6c728e4377",
+    reviewedTextRu: "Джон Баньян — английский проповедник-нонконформист и религиозный писатель. В заключении он начал аллегорию «Путь паломника», первая часть которой вышла в 1678 году.",
+    claims: [{
+      textRu: "Джон Баньян был английским проповедником-нонконформистом и религиозным писателем; в заключении он начал «Путь паломника», впервые опубликованный в 1678 году.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Bunyan Meeting and Museum", url: "https://www.bunyanmeeting.co.uk/about-john-bunyan", checkedAt, findingRu: "Профильный музей подтверждает проповедническую деятельность Баньяна, заключение, работу над «Путём паломника» и публикацию первой части в 1678 году." },
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp00636/john-bunyan", checkedAt, findingRu: "Национальная портретная галерея независимо идентифицирует Баньяна как проповедника и автора «Пути паломника»." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное «одно из самых известных» заменено обстоятельствами создания и датой первой публикации произведения. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_donne",
+    originalSha256: "ef0eaf0f13c3ad4f5f119d71582ca416a81b3a1430313296a25bb909e7c22250",
+    reviewedTextRu: "Джон Донн — английский поэт и англиканский священнослужитель, в 1621 году ставший настоятелем собора Святого Павла. Его поэтическое наследие включает любовную лирику и религиозный цикл «Священные сонеты».",
+    claims: [{
+      textRu: "Джон Донн был английским поэтом и англиканским священнослужителем, с 1621 года — настоятелем собора Святого Павла; он писал любовную лирику и «Священные сонеты».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/john-donne", checkedAt, findingRu: "Профиль поэта подтверждает церковную карьеру Донна, должность настоятеля с 1621 года и состав его любовной и религиозной поэзии." },
+        { provider: "St Paul's Cathedral", url: "https://www.stpauls.co.uk/our-timeline", checkedAt, findingRu: "Официальная хронология собора независимо фиксирует назначение Джона Донна настоятелем в 1621 году и его литературное наследие." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное место в «метафизической школе» заменено церковной должностью и проверяемыми жанрами поэзии. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_fowles",
+    originalSha256: "5d0e636a5159f470588fcdcf67ea7e75b786dc47e1a6be1e5dff60078acdd001",
+    reviewedTextRu: "Джон Фаулз — английский писатель, дебютировавший в печати романом «Коллекционер» в 1963 году. Он также написал «Волхва» и «Женщину французского лейтенанта».",
+    claims: [{
+      textRu: "Джон Фаулз был английским писателем; его первым опубликованным романом стал «Коллекционер» в 1963 году, а в библиографию входят «Волхв» и «Женщина французского лейтенанта».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Penguin Books", url: "https://www.penguin.co.uk/books/358599/the-french-lieutenants-woman-by-john-fowles/9781409059011", checkedAt, findingRu: "Издательская биография подтверждает британскую литературную деятельность Фаулза, дебют «Коллекционера» в 1963 году и названные романы." },
+        { provider: "Harry Ransom Center, University of Texas", url: "https://norman.hrc.utexas.edu/fasearch/findingAid.cfm?eadid=00040", checkedAt, findingRu: "Университетское архивное описание независимо фиксирует писательскую карьеру Фаулза и его основные романы." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён проверенной краткой биографией с датой печатного дебюта. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_galsworthy",
+    originalSha256: "36106e63dc5cef10dcb80abcce232ed084c049c9c84d5b62014b652a8d847604",
+    reviewedTextRu: "Джон Голсуорси — английский романист и драматург, лауреат Нобелевской премии по литературе 1932 года. Он написал цикл «Сага о Форсайтах», а также пьесы «Серебряная коробка» и «Правосудие».",
+    claims: [{
+      textRu: "Джон Голсуорси был английским романистом и драматургом, получил Нобелевскую премию по литературе 1932 года и написал «Сагу о Форсайтах», «Серебряную коробку» и «Правосудие».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1932/summary/-/", checkedAt, findingRu: "Официальный Нобелевский архив подтверждает присуждение Голсуорси премии по литературе 1932 года и его литературную деятельность." },
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp01713/john-galsworthy", checkedAt, findingRu: "Национальная портретная галерея независимо подтверждает роли романиста и драматурга и атрибуцию «Саги о Форсайтах» и пьес." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Субъективные характеристики стиля и влияния заменены точным названием премии и проверяемой библиографией. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_keats",
+    originalSha256: "9417e3caafdedcc1c277bcdd58c0b8d17d755f254d0a0485484d398380b1401d",
+    reviewedTextRu: "Джон Китс — английский поэт-романтик, умерший в 1821 году в возрасте двадцати пяти лет. Он написал поэму «Эндимион» и оды 1819 года, включая «Оду к соловью» и «Оду к греческой вазе».",
+    claims: [{
+      textRu: "Джон Китс был английским поэтом-романтиком, умер в 1821 году в двадцать пять лет и написал «Эндимион», «Оду к соловью» и «Оду к греческой вазе».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/john-keats", checkedAt, findingRu: "Профиль подтверждает литературное направление, годы жизни, возраст Китса при смерти и атрибуцию поэмы и од." },
+        { provider: "City of London — Keats House", url: "https://www.cityoflondon.gov.uk/things-to-do/attractions-museums-entertainment/keats-house/visit-keats-house", checkedAt, findingRu: "Муниципальный музей поэта независимо подтверждает его биографию, романтическую поэзию и авторство «Оды к соловью»." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное ранжирование заменено биографическим фактом и конкретными произведениями 1819 года. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_le_carre",
+    originalSha256: "8e434b6d90717234085d0729213da24d77aab8ee0d970c5fcd255108628a0b61",
+    reviewedTextRu: "Джон ле Карре — литературный псевдоним британского писателя Дэвида Джона Мура Корнуэлла, служившего в британских спецслужбах. Он написал шпионские романы «Шпион, пришедший с холода» и «Шпион, выйди вон!», а персонаж Джордж Смайли появляется в нескольких книгах автора.",
+    claims: [{
+      textRu: "Джон ле Карре — псевдоним британского писателя и бывшего сотрудника спецслужб Дэвида Джона Мура Корнуэлла; он написал два названных шпионских романа и цикл произведений с Джорджем Смайли.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "John le Carré — official website", url: "https://johnlecarre.com/biography/", checkedAt, findingRu: "Официальная биография подтверждает настоящее имя, псевдоним, службу Корнуэлла в MI5 и MI6, а также авторство романов о Джордже Смайли." },
+        { provider: "Bodleian Libraries, University of Oxford", url: "https://archives.bodleian.ox.ac.uk/repositories/2/resources/14397", checkedAt, findingRu: "Архивное описание Бодлианской библиотеки независимо подтверждает идентичность автора, годы жизни, карьеру и состав рукописного наследия." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён фактической биографией. Identity recommendation: Q209641 подтверждён; для shared-профиля рекомендуются birthDate 1931-10-19 и deathDate 2020-12-12. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_marrs",
+    originalSha256: "cfed816004cecc2425d0ad0bbd205c6155d15cf2ad895f66cd4077bbe1dc013b",
+    reviewedTextRu: "Джон Маррс — британский писатель и бывший журналист, автор психологических триллеров и спекулятивной прозы. К его романам относятся «The One», «The Passengers» и «The Marriage Act»; «The One» был экранизирован как сериал.",
+    claims: [{
+      textRu: "Джон Маррс — британский писатель и бывший журналист, написавший The One, The Passengers и The Marriage Act; The One был экранизирован как телесериал.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "John Marrs — official website", url: "https://www.johnmarrsauthor.com/about", checkedAt, findingRu: "Официальная биография подтверждает прежнюю журналистскую работу, жанры, библиографию Маррса и телевизионную адаптацию The One." },
+        { provider: "Pan Macmillan", url: "https://www.panmacmillan.com/authors/john-marrs/42734", checkedAt, findingRu: "Издательский профиль независимо идентифицирует британского автора и подтверждает названные романы и их жанровую принадлежность." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Служебный текст заменён фактической биографией. Identity recommendation: Q64014274 подтверждён; authoritative birthDate не установлен и не рекомендован. Shared country files не изменялись.",
+  },
+  {
+    key: "england:john_milton",
+    originalSha256: "398a5e2d7ab9fe6ce4354c548f93156fcb871bf47a463f959abb580cd2bfc09e",
+    reviewedTextRu: "Джон Мильтон — английский поэт и политический публицист, служивший секретарём иностранных языков при Государственном совете Английской республики. Он написал эпическую поэму «Потерянный рай», а позднее опубликовал «Возвращённый рай» и драматическую поэму «Самсон-борец».",
+    claims: [{
+      textRu: "Джон Мильтон был английским поэтом, политическим публицистом и секретарём иностранных языков при Государственном совете; он написал «Потерянный рай», «Возвращённый рай» и «Самсона-борца».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/john-milton", checkedAt, findingRu: "Профиль подтверждает политическую службу Мильтона, его публицистику и авторство трёх названных поэм." },
+        { provider: "Christ's College, University of Cambridge", url: "https://www.christs.cam.ac.uk/late-works", checkedAt, findingRu: "Колледж Мильтона независимо документирует публикацию поздних произведений Paradise Lost, Paradise Regained и Samson Agonistes." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Оценочное «одна из величайших» заменено государственной должностью и точной библиографией. Указанная в shared-профиле deathDate 1674-11-08 согласуется с институциональными источниками; изменения не рекомендованы. Shared country files не изменялись.",
+  },
+  {
+    key: "england:jonathan_swift",
+    originalSha256: "550400efd5e8b850acb16a031254b7ad76ee373ae64a694918bab321a4f70446",
+    reviewedTextRu: "Джонатан Свифт — англо-ирландский писатель, сатирик и англиканский священнослужитель, занимавший должность настоятеля собора Святого Патрика в Дублине. Он написал «Путешествия Гулливера», «Сказку бочки» и сатирический памфлет «Скромное предложение».",
+    claims: [{
+      textRu: "Джонатан Свифт был англо-ирландским писателем, сатириком и настоятелем собора Святого Патрика; он написал «Путешествия Гулливера», «Сказку бочки» и «Скромное предложение».",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Trinity College Dublin — Trinity Writers", url: "https://www.tcd.ie/trinitywriters/draft/assets/pdf/Swift%2C%20Trinity%20Writers.pdf", checkedAt, findingRu: "Университетский профиль подтверждает англо-ирландскую идентичность, церковную должность Свифта и авторство трёх названных произведений." },
+        { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/portrait?LinkID=mp07167&mkey=mw06171&rNo=3", checkedAt, findingRu: "Национальная портретная галерея независимо идентифицирует Свифта как автора и настоятеля собора Святого Патрика." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Общее «знаменитого романа» заменено церковной должностью, литературными ролями и проверяемой библиографией. Shared country files не изменялись.",
+  },
+] satisfies readonly ReviewBase[];
+
+function finalizeReviewRecord(record: ReviewBase): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu: record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch24: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch24Base.map(finalizeReviewRecord);

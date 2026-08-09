@@ -7,7 +7,7 @@ import {
   selectBookText,
   selectBookWriterName,
 } from "../src/data/bookLocalization";
-import { countries } from "../src/data/countries";
+import { bookArchiveCountries } from "../src/data/countries";
 import { articleCatalog as legacyArticleCatalog } from "../src/data/articles/catalog.generated";
 import { cmsArticleCatalog } from "../src/data/articles/cms.generated";
 
@@ -51,13 +51,13 @@ export const articles = [
 }));
 
 const publicArchive = new Map(
-  buildPublicBookArchive(countries).map((entry) => [
+  buildPublicBookArchive(bookArchiveCountries).map((entry) => [
     `${entry.countryId}:${entry.writerId}:${entry.id}`,
     entry,
   ])
 );
 
-export const archive = buildBookArchive(countries).map((entry) => {
+export const archive = buildBookArchive(bookArchiveCountries).map((entry) => {
   const { country, writer, ...work } = entry;
   const key = `${entry.countryId}:${entry.writerId}:${entry.id}`;
   const publicEntry = publicArchive.get(key);

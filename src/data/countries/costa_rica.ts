@@ -84,7 +84,7 @@ export const costaRica: Country = {
       id: "carlos_luis_fallas",
       name: "Карлос Луис Фальяс",
       years: "1909–1966",
-      birthDate: "1909-05-21",
+      birthDate: "1909-01-21",
       deathDate: "1966-05-07",
       birthPlace: "Алахуэла, Коста-Рика",
       deathPlace: "Сан-Хосе, Коста-Рика",

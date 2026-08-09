@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { buildBookArchive } from "./bookArchive";
-import { countries } from "./countries";
+import { bookArchiveCountries } from "./countries";
 
 const expectedBooks = [
   ["beloved", "Возлюбленная", "Тони Моррисон", 1987, "usa", "beloved-editorial"],
@@ -18,7 +18,7 @@ const expectedBooks = [
 ] as const;
 
 describe("редакционные обложки книжного архива", () => {
-  const archive = buildBookArchive(countries);
+  const archive = buildBookArchive(bookArchiveCountries);
 
   it.each(expectedBooks)(
     "%s: книга, автор, год и страна согласованы",

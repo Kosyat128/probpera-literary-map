@@ -56,20 +56,100 @@ function publicArticleUrl(article: ArticleCatalogEntry) {
   return `${import.meta.env.BASE_URL}${documentPath.replace(/^\/+/, "")}`;
 }
 
-function sourceLines(value?: ArticleContentSource[]) {
+export type ArticleReaderSourceItem = {
+  text: string;
+  fullText: string;
+  url: string;
+  kind: "reference" | "image-credit";
+};
+
+function embeddedSourceUrl(text: string) {
+  const match = text.match(/https?:\/\/[^\s<>"']+/iu)?.[0] || "";
+  return match.replace(/[\]),.;:!?]+$/u, "");
+}
+
+function isImageCredit(text: string, url: string) {
+  let hostname = "";
+  let pathname = "";
+  try {
+    const parsedUrl = new URL(url);
+    hostname = parsedUrl.hostname;
+    pathname = parsedUrl.pathname;
+  } catch {
+    // A malformed legacy URL is still rendered, but never used for classification.
+  }
+
+  return (
+    (/\bcommons\.wikimedia\.org$/iu.test(hostname) &&
+      /\/(?:wiki\/)?(?:File|Category):|\/wiki\/Special:Redirect\/file\//iu.test(
+        pathname
+      )) ||
+    /(?:wikimedia\s+commons|источник\s+(?:изображения|иллюстрации|фотографии)|фото(?:графия)?\s*:|image\s+(?:credit|source)|photo\s+(?:credit|source)|иллюстраци[яи]\s*:)/iu.test(
+      `${text} ${url}`
+    )
+  );
+}
+
+function compactSourceText(
+  text: string,
+  url: string,
+  kind: ArticleReaderSourceItem["kind"]
+) {
+  const withoutUrl = url ? text.replace(url, " ") : text;
+  const prose = withoutUrl
+    .replace(/\s*(?:[—–-]\s*)?(?:url|ссылка)?\s*[:—–-]?\s*[\]),.;:!?]*$/iu, "")
+    .replace(/\s{2,}/gu, " ")
+    .trim();
+  if (prose && !/^https?:\/\//iu.test(prose)) return prose;
+  if (!url) return text;
+
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname.replace(/^www\./iu, "");
+    if (kind === "image-credit") {
+      const rawFileName = parsedUrl.pathname.split("/").pop() || "";
+      const fileName = decodeURIComponent(rawFileName)
+        .replace(/^File:/iu, "")
+        .replace(/_/gu, " ");
+      return fileName ? `Wikimedia Commons — ${fileName}` : "Wikimedia Commons";
+    }
+    return hostname;
+  } catch {
+    return url;
+  }
+}
+
+export function articleReaderSourceItems(value?: ArticleContentSource[]) {
   return (value || [])
     .map((item) => {
       if (typeof item === "string") {
-        const text = item.trim();
-        const urlMatch = text.match(/https?:\/\/[^\s)\]]+/i);
-        return { text, url: urlMatch?.[0] || "" };
+        const fullText = item.trim();
+        const url = embeddedSourceUrl(fullText);
+        const kind = isImageCredit(fullText, url) ? "image-credit" : "reference";
+        return {
+          text: compactSourceText(fullText, url, kind),
+          fullText,
+          url,
+          kind,
+        } satisfies ArticleReaderSourceItem;
       }
+      const fullText = (
+        item.text ||
+        item.title ||
+        item.label ||
+        item.url ||
+        ""
+      ).trim();
+      const url = (item.url || embeddedSourceUrl(fullText)).trim();
+      const kind = isImageCredit(fullText, url) ? "image-credit" : "reference";
       return {
-        text: (item.text || item.title || item.label || item.url || "").trim(),
-        url: (item.url || "").trim(),
-      };
+        text: compactSourceText(fullText, url, kind),
+        fullText,
+        url,
+        kind,
+      } satisfies ArticleReaderSourceItem;
     })
-    .filter((item) => item.text);
+    .filter((item) => item.text && item.fullText);
 }
 
 function contentMediaItems(html: string, baseUrl: string): ArticleMediaItem[] {
@@ -344,10 +424,16 @@ export default function ArticleReader({
   ]);
   const sourceItems = useMemo(
     () => [
-      ...sourceLines(articleDocument?.sources),
-      ...sourceLines(articleDocument?.bibliography),
+      ...articleReaderSourceItems(articleDocument?.sources),
+      ...articleReaderSourceItems(articleDocument?.bibliography),
     ],
     [articleDocument]
+  );
+  const bibliographyItems = sourceItems.filter(
+    (item) => item.kind === "reference"
+  );
+  const imageCreditItems = sourceItems.filter(
+    (item) => item.kind === "image-credit"
   );
   const activeHeading = headingItems.find(
     (heading) => heading.id === activeHeadingId
@@ -1088,21 +1174,69 @@ export default function ArticleReader({
             )}
 
             {sourceItems.length > 0 && (
-              <section className="article-reader-sources">
-                <span>{t("Источники и библиография")}</span>
-                <ol>
-                  {sourceItems.map((item, index) => (
-                    <li key={`${item.text}-${index}`}>
-                      {item.url ? (
-                        <a href={item.url} target="_blank" rel="noreferrer">
-                          {item.text}
-                        </a>
-                      ) : (
-                        item.text
-                      )}
-                    </li>
-                  ))}
-                </ol>
+              <section
+                className="article-reader-sources"
+                aria-labelledby="article-reader-sources-title"
+              >
+                <h2 id="article-reader-sources-title">
+                  {t("Источники и библиография")}
+                </h2>
+                {bibliographyItems.length > 0 && (
+                  <ol>
+                    {bibliographyItems.map((item, index) => (
+                      <li key={`${item.fullText}-${index}`}>
+                        {item.url ? (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={
+                              item.fullText !== item.text
+                                ? item.fullText
+                                : undefined
+                            }
+                          >
+                            {item.text}
+                          </a>
+                        ) : (
+                          item.text
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                {imageCreditItems.length > 0 && (
+                  <details className="article-reader-image-credits">
+                    <summary>
+                      {language === "en"
+                        ? "Illustration sources"
+                        : "Источники иллюстраций"}
+                      <span>{number(imageCreditItems.length)}</span>
+                    </summary>
+                    <ul>
+                      {imageCreditItems.map((item, index) => (
+                        <li key={`${item.fullText}-${index}`}>
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              title={
+                                item.fullText !== item.text
+                                  ? item.fullText
+                                  : undefined
+                              }
+                            >
+                              {item.text}
+                            </a>
+                          ) : (
+                            item.text
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
               </section>
             )}
 

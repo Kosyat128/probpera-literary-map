@@ -1,30 +1,30 @@
 # Аудит качества и происхождения биографий писателей
 
-Сформирован: 2026-08-08T17:11:25.656Z
+Сформирован: 2026-08-09T14:30:48.726Z
 
 > `rightsUnproven` означает отсутствие достаточной записи о происхождении текста в репозитории, а не юридический вывод о нарушении.
 
-- Карточек писателей: 1766
+- Карточек писателей: 1723
 - Готовых русских биографий: 45
-- Скрыто до проверки (RU): 1721
+- Скрыто до проверки (RU): 1678
 - Готовых английских биографий: 20
-- Скрыто до проверки (EN): 1746
+- Скрыто до проверки (EN): 1703
 - Curated research-черновиков RU+EN: 20
 - Валидных research-черновиков: 20
 - Ожидают независимого QA: 0
 - Одобрено для deterministic promotion: 20
-- Осталось без research-черновика: 1721
+- Осталось без research-черновика: 1678
 - Дубли ключей research: 0; отсутствуют в archive: 0
-- Старых строк без структурированной provenance: 1721
-- Коротких: 1288; шаблонных/служебных: 61
-- Повторяющихся записей: 6 в 3 группах
-- Без пригодной provenance: 1721
+- Старых строк без структурированной provenance: 1678
+- Коротких: 1223; шаблонных/служебных: 0
+- Повторяющихся записей: 4 в 2 группах
+- Без пригодной provenance: 1678
 - Licensed-copy без лицензии/URL: 0
 - Старая staging-выгрузка Wikidata: 2356; с prose-полями: 2356; публичное слияние отключено
 
 ## Измеримый workflow
 
-- source-research: 1721
+- source-research: 1678
 - rights-review: 0
 - editorial-rewrite: 0
 - fact-check: 0
@@ -37,7 +37,7 @@ Research-черновики не считаются опубликованным
 
 ## Очередь русских биографий
 
-Ниже первые 250 из 1721; полная очередь находится в JSON-отчёте.
+Ниже первые 250 из 1678; полная очередь находится в JSON-отчёте.
 
 - **Рабия Балхи** (afghanistan/rabia_balkhi): нет биографии ru
 - **Махмуд Тарзи** (afghanistan/mahmud_tarzi): нет биографии ru
@@ -62,7 +62,6 @@ Research-черновики не считаются опубликованным
 - **Антони Морель и Мора** (andorra/antoni_morell_i_mora): нет биографии ru
 - **Альберт Сальвадó** (andorra/albert_salvado): нет биографии ru
 - **Жоан Перуга** (andorra/joan_peruga): нет биографии ru
-- **Жозеп Фонбернат** (andorra/josep_fonbernat): нет биографии ru
 - **Агостинью Нету** (angola/agostinho_neto): нет биографии ru
 - **Жозе Луандино Виейра** (angola/jose_luandino_vieira): нет биографии ru
 - **Пепетела** (angola/pepetela): нет биографии ru
@@ -70,7 +69,6 @@ Research-черновики не считаются опубликованным
 - **Ана Паулина Тавареш** (angola/ana_paula_tavares): нет биографии ru
 - **Онжани** (angola/ondjaki): нет биографии ru
 - **Джамейка Кинкейд** (antigua_and_barbuda/jamaica_kincaid): нет биографии ru
-- **Элисон Хьюз** (antigua_and_barbuda/alison_hughes): нет биографии ru
 - **Доминго Фаустино Сармьенто** (argentina/domingo_faustino_sarmiento): нет биографии ru
 - **Эстебан Эчеверрия** (argentina/esteban_echeverria): нет биографии ru
 - **Хосе Эрнандес** (argentina/jose_hernandez): нет биографии ru
@@ -89,10 +87,8 @@ Research-черновики не считаются опубликованным
 - **Альберто Мангель** (argentina/alberto_manguel): нет биографии ru
 - **Мариана Энрикес** (argentina/mariana_enriquez): нет биографии ru
 - **Клаудия Пиньейро** (argentina/claudia_pineiro): нет биографии ru
-- **Адельфо Биой Касарес (дополнительная связь)** (argentina/adolfo_perez_zelas): нет биографии ru
 - **Леопольдо Маречаль** (argentina/leopoldo_marechal): нет биографии ru
 - **Хуан Хельман** (argentina/juan_gelman): нет биографии ru
-- **Альфредо Брис Эченике** (argentina/alfredo_bryce_echenique): нет биографии ru
 - **Месроп Маштоц** (armenia/mesrop_mashtots): нет биографии ru
 - **Григор Нарекаци** (armenia/grigor_narekatsi): нет биографии ru
 - **Саят-Нова** (armenia/sayat_nova): нет биографии ru
@@ -115,7 +111,7 @@ Research-черновики не считаются опубликованным
 - **Тим Уинтон** (australia/tim_winton): нет биографии ru
 - **Ричард Флэнаган** (australia/richard_flanagan): нет биографии ru
 - **Кейт Гренвилл** (australia/kate_grenville): нет биографии ru
-- **Маркос Зусак** (australia/markus_zusak): нет биографии ru
+- **Маркус Зусак** (australia/markus_zusak): нет биографии ru
 - **Кристос Циолкас** (australia/christos_tsiolkas): нет биографии ru
 - **Джудит Райт** (australia/judith_wright): нет биографии ru
 - **Лес Мюррей** (australia/les_murray): нет биографии ru
@@ -146,8 +142,6 @@ Research-черновики не считаются опубликованным
 - **Самед Вургун** (azerbaijan/samed_vurgun): нет биографии ru
 - **Анар Рзаев** (azerbaijan/anar_rzayev): нет биографии ru
 - **Чингиз Абдуллаев** (azerbaijan/chingiz_abdullayev): нет биографии ru
-- **Сирил Д. Б. Брей** (bahamas/cyril_bray): нет биографии ru
-- **Уоллес Уитфилд** (bahamas/wallace_whitfield): нет биографии ru
 - **Ибрахим аль-Урайд** (bahrain/ibrahim_al_arrayed): нет биографии ru
 - **Али Абдулла Халифа** (bahrain/ali_abdullah_khalifa): нет биографии ru
 - **Касим Хаддад** (bahrain/qassim_haddad): нет биографии ru
@@ -181,7 +175,7 @@ Research-черновики не считаются опубликованным
 - **Амели Нотомб** (belgium/amelie_nothomb): нет биографии ru
 - **Зи Эдгелл** (belize/zee_edgell): нет биографии ru
 - **Колвилл Янг** (belize/colville_young): нет биографии ru
-- **Глен Годфри** (belize/glen_godfrey): нет биографии ru
+- **Гленн Д. Годфри** (belize/glen_godfrey): нет биографии ru
 - **Пема Лингпа** (bhutan/pema_lingpa): нет биографии ru
 - **Друкпа Кюнле** (bhutan/drukpa_kunley): нет биографии ru
 - **Жабдрунг Нгаванг Намгьял** (bhutan/ngawang_namgyal): нет биографии ru
@@ -198,7 +192,7 @@ Research-черновики не считаются опубликованным
 - **Хайме Саэнс** (bolivia/jaime_saenz): нет биографии ru
 - **Марсело Кирога Санта-Крус** (bolivia/marcelo_quiroga_santa_cruz): нет биографии ru
 - **Хильда Мунди** (bolivia/hilda_mundy): нет биографии ru
-- **Вильма Тапиа Анда** (bolivia/vilma_tapia_anda): нет биографии ru
+- **Вильма Тапиа Анайя** (bolivia/vilma_tapia_anda): нет биографии ru
 - **Эдмундо Пас Солдан** (bolivia/edmundo_paz_soldan): нет биографии ru
 - **Аугусто Сеспедес** (bolivia/augusto_cespedes): нет биографии ru
 - **Гастон Суарес** (bolivia/gaston_suarez): нет биографии ru
@@ -213,7 +207,6 @@ Research-черновики не считаются опубликованным
 - **Бесси Хед** (botswana/bessie_head): нет биографии ru
 - **Юнити Доу** (botswana/unity_dow): нет биографии ru
 - **Лори Кубуитсиле** (botswana/laurie_kubuitsile): нет биографии ru
-- **Моше Моше** (botswana/moshe_motshegwa): нет биографии ru
 - **Гонсалвес Диас** (brazil/goncalves_dias): нет биографии ru
 - **Жозе де Аленкар** (brazil/jose_de_alencar): нет биографии ru
 - **Машаду де Ассис** (brazil/machado_de_assis): нет биографии ru
@@ -224,10 +217,6 @@ Research-черновики не считаются опубликованным
 - **Клариси Лиспектор** (brazil/clarice_lispector): нет биографии ru
 - **Мануэл де Баррос** (brazil/manoel_de_barros): нет биографии ru
 - **Пауло Коэльо** (brazil/paulo_coelho): нет биографии ru
-- **Масури Масруни** (brunei/masuri_masrun): нет биографии ru
-- **Аванг Мохаммад Яссин** (brunei/awang_mohammad_yassin): нет биографии ru
-- **Али Хаджи Ахмад** (brunei/ali_haji_ahmad): нет биографии ru
-- **Хаджи Мухаммад Джафар** (brunei/haji_muhammad_jaafar): нет биографии ru
 - **Паисий Хилендарский** (bulgaria/paisius_hilendar): нет биографии ru
 - **Христо Ботев** (bulgaria/hristo_botev): нет биографии ru
 - **Иван Вазов** (bulgaria/ivan_vazov): нет биографии ru
@@ -237,30 +226,22 @@ Research-черновики не считаются опубликованным
 - **Гео Милев** (bulgaria/geo_milev): нет биографии ru
 - **Блага Димитрова** (bulgaria/blaga_dimitrova): нет биографии ru
 - **Фредерик Титинга Пакере** (burkina_faso/frederic_titinga_pacere): нет биографии ru
-- **Патрик-Ив Ильбудо** (burkina_faso/patrick_ilboudo): нет биографии ru
+- **Патрик Гомдаого Ильбудо** (burkina_faso/patrick_ilboudo): нет биографии ru
 - **Моник Ильбудо** (burkina_faso/monique_ilboudo): нет биографии ru
 - **Норберт Зонго** (burkina_faso/norbert_zongo): нет биографии ru
 - **Жан-Пьер Гингане** (burkina_faso/jean_pierre_guingane): нет биографии ru
 - **Ролан Ругеро** (burundi/roland_rugero): нет биографии ru
-- **Жан-Пьер Хатунгимана** (burundi/jean_pierre_hatungimana): нет биографии ru
-- **Кристоф Нкезабахизи** (burundi/christophe_nkezabahizi): нет биографии ru
-- **Гаэтан Мушимиимана** (burundi/gaetan_muschimyimana): нет биографии ru
 - **Анг Дуонг** (cambodia/ang_duong): нет биографии ru
 - **Крам Нгэ** (cambodia/kram_ngoy): нет биографии ru
 - **Рим Кин** (cambodia/rim_kin): нет биографии ru
 - **Ноу Хач** (cambodia/nou_hach): нет биографии ru
 - **Сот Полин** (cambodia/soth_polin): нет биографии ru
-- **Маэ Кхем** (cambodia/mae_khem): нет биографии ru
-- **Кео На** (cambodia/keo_na): нет биографии ru
-- **Камбо Вонг** (cambodia/kambo_vong): нет биографии ru
 - **Монго Бети** (cameroon/mongo_beti): нет биографии ru
 - **Фердинан Ойоно** (cameroon/ferdinand_oyono): нет биографии ru
 - **Каликст Бейала** (cameroon/calixthe_beyala): нет биографии ru
 - **Леонора Миано** (cameroon/leonora_miano): нет биографии ru
 - **Патрис Нгананг** (cameroon/patrice_nganang): нет биографии ru
 - **Рене Филомб** (cameroon/rene_philombe): нет биографии ru
-- **Этьен Гойемиде** (cameroon/etienne_goyemide): нет биографии ru
-- **Эммануэль Донгала** (cameroon/emmanuel_dongala): нет биографии ru
 - **Жан-Роже Эссомба** (cameroon/jean_roger_essomba): нет биографии ru
 - **Поль Дакейо** (cameroon/paul_dakeyo): нет биографии ru
 - **Веревер Ликинг** (cameroon/werewere_liking): нет биографии ru
@@ -282,13 +263,32 @@ Research-черновики не считаются опубликованным
 - **Бальтазар Лопеш** (cape_verde/baltasar_lopes): нет биографии ru
 - **Мануэл Лопеш** (cape_verde/manuel_lopes): нет биографии ru
 - **Овидиу Мартинш** (cape_verde/ovidio_martins): нет биографии ru
-- **Виржилиу де Лемуш** (cape_verde/virgilio_de_lemos): нет биографии ru
 - **Мануэл де Новас** (cape_verde/manuel_de_novas): нет биографии ru
 - **Армениу Виейра** (cape_verde/armenio_vieira): нет биографии ru
 - **Жерману Алмейда** (cape_verde/germano_almeida): нет биографии ru
 - **Этьен Гойемиде** (central_african_republic/etienne_goyemide): нет биографии ru
-- **Бенуа Ньимба** (central_african_republic/benoit_ndemba): нет биографии ru
 - **Нимрод** (chad/nimrod): нет биографии ru
+- **Кульси Ламко** (chad/koulsy_lamko): нет биографии ru
+- **Ахмад Табойе** (chad/ahmat_taboye): нет биографии ru
+- **Альберто Блест Гана** (chile/alberto_blest_gana): нет биографии ru
+- **Бальдомеро Лильо** (chile/baldomero_lillo): нет биографии ru
+- **Висенте Уидобро** (chile/vicente_huidobro): нет биографии ru
+- **Габриэла Мистраль** (chile/gabriela_mistral): нет биографии ru
+- **Пабло Неруда** (chile/pablo_neruda): нет биографии ru
+- **Никанор Парра** (chile/nicanor_parra): нет биографии ru
+- **Хосе Доносо** (chile/jose_donoso): нет биографии ru
+- **Исабель Альенде** (chile/isabel_allende): нет биографии ru
+- **Луис Сепульведа** (chile/luis_sepúlveda): нет биографии ru
+- **Диамела Эльтит** (chile/diamela_eltit): нет биографии ru
+- **Роберто Боланьо** (chile/roberto_bolano): нет биографии ru
+- **Алехандро Самбра** (chile/alejandro_zambra): нет биографии ru
+- **Лина Меруане** (chile/lina_meruane): нет биографии ru
+- **Рауль Сурита** (chile/raul_zurita): нет биографии ru
+- **Эрнан Ривера Летельер** (chile/hernan_rivera_letelier): нет биографии ru
+- **Алехандра Костаманья** (chile/alejandra_costamagna): нет биографии ru
+- **Марта Брунет** (chile/marta_brunet): нет биографии ru
+- **Хосе Мигель Варас** (chile/jose_miguel_varas): нет биографии ru
+- **Марцела Серрано** (chile/marcela_serrano): нет биографии ru
 
 ## Политика
 

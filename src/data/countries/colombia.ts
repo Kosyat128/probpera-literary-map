@@ -379,7 +379,7 @@ export const colombia: Country = {
       id: "laura_restrepo",
       name: "Лаура Рестрепо",
       years: "1950–",
-      birthDate: "1950-01-01",
+      birthDate: "1950",
       birthPlace: "Богота, Колумбия",
       coordinates: {
         lat: 4.711,
@@ -492,7 +492,7 @@ export const colombia: Country = {
       id: "santiago_gamboa",
       name: "Сантьяго Гамбоа",
       years: "1965–",
-      birthDate: "1965-12-02",
+      birthDate: "1965-12-30",
       birthPlace: "Богота, Колумбия",
       coordinates: {
         lat: 4.711,
@@ -640,7 +640,7 @@ export const colombia: Country = {
       name: "Эктор Рохас Эрасо",
       years: "1921–2002",
       birthDate: "1921-08-12",
-      deathDate: "2002-04-19",
+      deathDate: "2002-04-11",
       birthPlace: "Толу, Колумбия",
       deathPlace: "Богота, Колумбия",
       coordinates: {
@@ -780,7 +780,7 @@ export const colombia: Country = {
       id: "juan_carlos_botero",
       name: "Хуан Карлос Ботеро",
       years: "1960–",
-      birthDate: "1960-05-01",
+      birthDate: "1960",
       birthPlace: "Богота, Колумбия",
       coordinates: {
         lat: 4.711,
@@ -814,7 +814,7 @@ export const colombia: Country = {
       id: "ricardo_silva_romero",
       name: "Рикардо Сильва Ромеро",
       years: "1975–",
-      birthDate: "1975-02-14",
+      birthDate: "1975-08-14",
       birthPlace: "Богота, Колумбия",
       coordinates: {
         lat: 4.711,

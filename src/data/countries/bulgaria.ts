@@ -204,7 +204,7 @@ export const bulgaria: Country = {
 
       years: "1878–1914",
 
-      birthDate: "1878-01-01",
+      birthDate: "1878-01-13",
       deathDate: "1914-10-29",
 
       birthPlace: "Чирпан",

@@ -23,7 +23,7 @@ export default function MapStatistics() {
         fontFamily: "Georgia, serif",
       }}
     >
-      <div><b>Литературный атлас мира</b></div>
+      <div><b>Литературная планета</b></div>
       <div>Стран: {countries.length}</div>
       <div>Писателей: {writers.length}</div>
       <div>Языков: {languages.size}</div>

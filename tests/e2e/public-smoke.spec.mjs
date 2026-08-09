@@ -73,10 +73,10 @@ test("обложка и заголовок героя сохраняют ред�
   const cover = page.locator(".hero-cover img");
 
   await expect(lead).toBeVisible();
-  await expect(lead).not.toContainText("—");
+  await expect(lead).not.toContainText("–");
   await expect(accent).toBeVisible();
   await expect(accentLines).toHaveCount(2);
-  await expect(accentLines.first()).toContainText("—");
+  await expect(accentLines.first()).toContainText("–");
   await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
   await expect
     .poll(() => cover.evaluate((image) => image.currentSrc))
@@ -105,8 +105,8 @@ test("обложка и заголовок героя сохраняют ред�
     .locator(".site-header .interface-language-control")
     .getByRole("button", { name: /Английский язык|English/iu });
   await englishButton.click();
-  await expect(heading).not.toContainText("is —");
-  await expect(accentLines.first()).not.toContainText("—");
+  await expect(heading).not.toContainText("is –");
+  await expect(accentLines.first()).not.toContainText("–");
 });
 
 test("календарь, форум и редакция используют разные заставки", async ({
@@ -149,6 +149,97 @@ test("статья из карты сайта открывается и имее
   await expect(page.locator("h1").first()).toBeVisible();
   await expect(page.locator("article").first()).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index/u);
+});
+
+test("длинные источники остаются внутри листа статьи", async ({
+  page,
+  request,
+  baseURL,
+  isMobile,
+}) => {
+  if (!isMobile) await page.setViewportSize({ width: 1720, height: 1000 });
+  await page.goto(await articleFromSitemap(request, baseURL));
+
+  const paper = page.locator(".article-reader-paper");
+  await expect(paper).toBeVisible();
+  await expect(paper.locator(".article-reader-content")).toBeVisible();
+  await paper.evaluate((element) => {
+    const section = document.createElement("section");
+    section.className = "article-reader-sources";
+    section.setAttribute("aria-labelledby", "e2e-long-sources-title");
+    section.innerHTML = `
+      <h2 id="e2e-long-sources-title">Источники и библиография</h2>
+      <ol>
+        <li>
+          <a href="https://example.org" target="_blank" rel="noreferrer">
+            https://example.org/archive/${"long_unbroken_bibliographic_identifier_".repeat(9)}publication
+          </a>
+        </li>
+      </ol>
+      <details class="article-reader-image-credits" open>
+        <summary>Источники иллюстраций <span>1</span></summary>
+        <ul>
+          <li>
+            <a href="https://commons.wikimedia.org" target="_blank" rel="noreferrer">
+              ${"Wikimedia_Commons_image_attribution_without_breaks_".repeat(8)}.jpg
+            </a>
+          </li>
+        </ul>
+      </details>
+    `;
+    element.append(section);
+  });
+
+  const source = paper.locator(".article-reader-sources").last();
+  const sourceLink = source.locator("a");
+  await source.scrollIntoViewIfNeeded();
+  await expect(source.getByRole("heading", { level: 2 })).toBeVisible();
+  await expect(sourceLink.first()).toHaveCSS("overflow-wrap", "anywhere");
+  if (!isMobile) await expect(page.locator(".article-reader-related")).toBeVisible();
+
+  const desktopWidths = isMobile ? [null] : [1720, 1920];
+  for (const width of desktopWidths) {
+    if (width) await page.setViewportSize({ width, height: 1000 });
+    await source.scrollIntoViewIfNeeded();
+    const containment = await source.evaluate((element) => {
+      const paperElement = element.closest(".article-reader-paper");
+      const scroll = element.closest(".article-reader-scroll");
+      const layout = element.closest(".article-reader-layout");
+      const rail = layout?.querySelector(".article-reader-related");
+      const articleContent = paperElement?.querySelector(".article-reader-content");
+      const links = Array.from(element.querySelectorAll("a"));
+      const sourceBox = element.getBoundingClientRect();
+      const paperBox = paperElement?.getBoundingClientRect();
+      const railBox = rail?.getBoundingClientRect();
+      const contentBox = articleContent?.getBoundingClientRect();
+      const linksInsideSource = links.every((link) =>
+        Array.from(link.getClientRects()).every(
+          (rect) => rect.left >= sourceBox.left - 1 && rect.right <= sourceBox.right + 1
+        )
+      );
+      return {
+        sourceOverflow: element.scrollWidth - element.clientWidth,
+        scrollOverflow: scroll ? scroll.scrollWidth - scroll.clientWidth : 0,
+        linksInsideSource,
+        sourceLeftDelta:
+          contentBox
+            ? Math.abs(sourceBox.left - contentBox.left)
+            : Number.POSITIVE_INFINITY,
+        insidePaper:
+          Boolean(paperBox) &&
+          sourceBox.left >= paperBox.left - 1 &&
+          sourceBox.right <= paperBox.right + 1,
+        beforeRail: !railBox || railBox.width === 0 || sourceBox.right < railBox.left,
+      };
+    });
+
+    expect(containment.sourceOverflow, `source overflow at ${width || "mobile"}`).toBeLessThanOrEqual(1);
+    expect(containment.scrollOverflow, `reader overflow at ${width || "mobile"}`).toBeLessThanOrEqual(2);
+    expect(containment.linksInsideSource).toBe(true);
+    expect(containment.sourceLeftDelta).toBeLessThanOrEqual(1);
+    expect(containment.insidePaper).toBe(true);
+    expect(containment.beforeRail).toBe(true);
+  }
 });
 
 test("прямой URL статьи возвращает к полному журналу", async ({ page, request, baseURL }) => {

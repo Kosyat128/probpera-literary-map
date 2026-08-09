@@ -8,9 +8,9 @@ export const bolivia: Country = {
     {
       id: "bartolome_arsans_de_orsua_y_vela",
       name: "Бартоломе Арсанс де Орсуа и Вела",
-      years: "1579–1636",
-      birthDate: "1579",
-      deathDate: "1636",
+      years: "1676–1736",
+      birthDate: "1676",
+      deathDate: "1736",
       birthPlace: "Потоси, Верхнее Перу",
       deathPlace: "Потоси, Верхнее Перу",
       coordinates: {
@@ -280,7 +280,7 @@ export const bolivia: Country = {
       id: "oscar_cerruto",
       name: "Оскар Серруто",
       years: "1912–1981",
-      birthDate: "1912-10-13",
+      birthDate: "1912-06-13",
       deathDate: "1981-04-10",
       birthPlace: "Ла-Пас, Боливия",
       deathPlace: "Ла-Пас, Боливия",
@@ -319,7 +319,7 @@ export const bolivia: Country = {
       name: "Хайме Саэнс",
       years: "1921–1986",
       birthDate: "1921-10-08",
-      deathDate: "1986-08-29",
+      deathDate: "1986-08-16",
       birthPlace: "Ла-Пас, Боливия",
       deathPlace: "Ла-Пас, Боливия",
       coordinates: {
@@ -432,9 +432,10 @@ export const bolivia: Country = {
 
     {
       id: "vilma_tapia_anda",
-      name: "Вильма Тапиа Анда",
-      years: "1950–",
-      birthDate: "1950-10-25",
+      name: "Вильма Тапиа Анайя",
+      fullName: "Vilma Tapia Anaya",
+      years: "1960–",
+      birthDate: "1960",
       birthPlace: "Ла-Пас, Боливия",
       coordinates: {
         lat: -16.4897,
@@ -583,8 +584,8 @@ export const bolivia: Country = {
     {
       id: "yolanda_bedregal",
       name: "Йоланда Бедрегаль",
-      years: "1916–1999",
-      birthDate: "1916-09-21",
+      years: "1913–1999",
+      birthDate: "1913-09-21",
       deathDate: "1999-05-21",
       birthPlace: "Ла-Пас, Боливия",
       deathPlace: "Ла-Пас, Боливия",

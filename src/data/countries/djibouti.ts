@@ -8,7 +8,7 @@ export const djibouti: Country = {
   writers: [
     {
       id: "abdourahman_waberi",
-      name: "Абдурахман Али Варсама",
+      name: "Абдурахман Али Вабери",
       fullName: "Abdourahman A. Waberi",
       years: "1965–",
       birthDate: "1965-07-20",

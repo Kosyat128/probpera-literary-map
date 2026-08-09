@@ -364,7 +364,7 @@ export const georgia: Country = {
       years: "1933–2009",
 
       birthDate: "1933-03-20",
-      deathDate: "2009-10-08",
+      deathDate: "2009-10-01",
 
       birthPlace: "Сигнахи, Грузия",
 

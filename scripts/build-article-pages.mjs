@@ -708,8 +708,8 @@ await fs.writeFile(
       categories: ["books", "education", "magazines"],
       shortcuts: [
         {
-          name: "Литературная карта",
-          short_name: "Карта",
+          name: "Литературная планета",
+          short_name: "Планета",
           url: `${siteRootPath}#atlas`,
         },
         {
@@ -802,7 +802,7 @@ const notFoundDocument = load(baseHtml, { decodeEntities: false });
 notFoundDocument("title").text("Страница не найдена — Проба Пера");
 notFoundDocument('meta[name="description"]').attr(
   "content",
-  "Запрошенная страница не найдена. Перейдите к журналу, книжному архиву или литературной карте мира."
+  "Запрошенная страница не найдена. Перейдите к журналу, книжному архиву или «Литературной планете»."
 );
 notFoundDocument('meta[name="robots"]').attr("content", "noindex,follow");
 notFoundDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
@@ -813,7 +813,7 @@ notFoundDocument("#root").html(`
       <span>Ошибка 404</span>
       <h1>Эта страница не найдена</h1>
       <p>Возможно, адрес изменился при обновлении журнала. Все прежние статьи сохранены и получили постоянные адреса.</p>
-      <p><a href="${siteBasePath || ""}/#journal">Открыть журнал</a> · <a href="${siteBasePath || ""}/#atlas">Перейти к литературной карте</a></p>
+      <p><a href="${siteBasePath || ""}/#journal">Открыть журнал</a> · <a href="${siteBasePath || ""}/#atlas">Перейти к «Литературной планете»</a></p>
     </article>
   </main>
 `);

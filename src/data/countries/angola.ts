@@ -99,7 +99,7 @@ export const angola: Country = {
       fullName: "Artur Carlos Maurício Pestana dos Santos",
       years: "1941–",
 
-      birthDate: "1941-10-29",
+      birthDate: "1941-10-19",
       deathDate: "",
 
       birthPlace: "Бенгела",

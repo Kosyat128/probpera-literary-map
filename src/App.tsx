@@ -27,6 +27,7 @@ import {
   buildBookArchive,
   isEditorialCover,
   isCoverArtworkDisplayAllowed,
+  resolveBookArchivePublicTarget,
   type BookArchiveEntry,
 } from "./data/bookArchive";
 import { presentBookArchiveEntry } from "./data/bookArchiveQueue";
@@ -262,7 +263,7 @@ const sectionLinks = [
   {
     id: "atlas",
     group: "Энциклопедия",
-    title: "Литературная карта мира",
+    title: "Литературная планета",
     copy: "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
     href: "#atlas",
     image:
@@ -415,6 +416,9 @@ export default function App() {
   const [writerFocusRequest, setWriterFocusRequest] =
     useState<WriterFocusRequest | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
+  const [bookArchiveCountries, setBookArchiveCountries] = useState<Country[]>(
+    []
+  );
   const [articleCount, setArticleCount] = useState(0);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
@@ -458,6 +462,7 @@ export default function App() {
       import("./data/countries").then((module) => {
         if (active) {
           setCountryArchive(module.countries);
+          setBookArchiveCountries(module.bookArchiveCountries);
           setGeneratedEditorialQueue(module.generatedWriterDraftCount);
         }
       });
@@ -490,8 +495,8 @@ export default function App() {
   );
   const totalWriters = archiveStatistics.uniqueWriters;
   const bookArchive = useMemo(
-    () => buildBookArchive(countryArchive),
-    [countryArchive]
+    () => buildBookArchive(bookArchiveCountries),
+    [bookArchiveCountries]
   );
   const verifiedBookArchive = useMemo(
     () => bookArchive.filter(isPublicBook),
@@ -816,10 +821,19 @@ export default function App() {
     [selectCountry]
   );
 
+  const selectBookWriterAndCountry = useCallback(
+    (book: BookArchiveEntry, focusAtlas = true) => {
+      const target = resolveBookArchivePublicTarget(countryArchive, book);
+      if (!target) return;
+      selectCountry(target.country, focusAtlas, target.writer);
+    },
+    [countryArchive, selectCountry]
+  );
+
   const selectAtlasSearchResult = useCallback(
     (result: AtlasSearchResult) => {
       if (result.type === "book") {
-        selectCountry(result.country, false, result.writer);
+        selectBookWriterAndCountry(result.book, false);
         openBook(result.book);
         return;
       }
@@ -829,7 +843,7 @@ export default function App() {
       }
       selectCountry(result.country);
     },
-    [openBook, selectCountry, selectWriterAndFocus]
+    [openBook, selectBookWriterAndCountry, selectCountry, selectWriterAndFocus]
   );
 
   const closeCountry = useCallback(() => {
@@ -873,20 +887,27 @@ export default function App() {
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
   const coreHero = getCoreHomepageSection("hero");
   const customHeroTitle =
-    language === "ru" && coreHero?.title ? coreHero.title.trim() : "";
+    language === "ru" && coreHero?.title
+      ? coreHero.title
+          .trim()
+          .replace(
+            /^Литература\s+[—–-]\s+это целый мир[.!]?$/iu,
+            "Литература – это целый мир!"
+          )
+      : "";
   const customHeroTitleParts = customHeroTitle.match(
     /^(.+?)\s+[—–-]\s+(.+)$/u
   );
   const structuredHeroLead = customHeroTitleParts
     ? customHeroTitleParts[1].trim()
-    : t("Литература —").replace(/\s*[—–-]\s*$/u, "").trim();
+    : t("Литература –").replace(/\s*[—–-]\s*$/u, "").trim();
   const structuredHeroAccent = customHeroTitleParts
     ? customHeroTitleParts[2].trim()
-    : t("это целый мир.").trim();
+    : t("это целый мир!").trim();
   const structuredHeroAccentParts = structuredHeroAccent.match(
     /^(.+\S)\s+(\S+)$/u
   );
-  const structuredHeroDash = language === "ru" ? "— " : "";
+  const structuredHeroDash = language === "ru" ? "– " : "";
   const coreAtlas = getCoreHomepageSection("atlas");
   const coreBookMonth = getCoreHomepageSection("book-month");
   const coreEditorialStandard = getCoreHomepageSection("editorial-standard");
@@ -952,7 +973,7 @@ export default function App() {
         </a>
 
         <nav aria-label={t("Основная навигация")}>
-          <a href="#atlas">{t("Карта")}</a>
+          <a href="#atlas">{t("Планета")}</a>
           <HeaderArticlesMenu language={language} />
           <details
             className="sections-menu"
@@ -1072,7 +1093,7 @@ export default function App() {
       </header>
 
       <nav className="mobile-nav" aria-label={t("Быстрая навигация")}>
-        <a href="#atlas">{t("Карта")}</a>
+        <a href="#atlas">{t("Планета")}</a>
         <a href="#journal">{t("Статьи")}</a>
         <a href="#books">{t("Книги")}</a>
         <a href="#sections">{t("Разделы")}</a>
@@ -1207,13 +1228,13 @@ export default function App() {
               <h2>
                 {language === "ru" && coreAtlas?.title
                   ? coreAtlas.title
-                  : t("Литературная карта мира")}
+                  : t("Литературная планета")}
               </h2>
               <p>
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
-                      "Выберите страну на старинном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
                     )}
               </p>
             </div>
@@ -1276,7 +1297,7 @@ export default function App() {
                         <span>
                           {result.type === "country" ? (
                             <CountryFlagIcon
-                              className="country-result-flag"
+                              className="country-result-flag country-flag-icon--round"
                               code={result.country.code}
                               countryName={result.country.name}
                               size={24}
@@ -1377,7 +1398,7 @@ export default function App() {
           <div className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
             <section className="globe-column" id="globe-stage">
               <div className="globe-copy">
-                <span>{t("Музейный глобус · ручная навигация")}</span>
+                <span>{t("Интерактивный глобус · ручная навигация")}</span>
                 <p>
                   {language === "en" ? (
                     <>
@@ -1414,7 +1435,7 @@ export default function App() {
                   fallback={
                     <div className="globe-loading" role="status">
                       <span aria-hidden="true">✦</span>
-                      <p>{t("Открываем мировой атлас…")}</p>
+                      <p>{t("Открываем «Литературную планету»…")}</p>
                     </div>
                   }
                 >
@@ -1490,7 +1511,7 @@ export default function App() {
                   >
                     <span>
                       <CountryFlagIcon
-                        className="country-result-flag"
+                        className="country-result-flag country-flag-icon--round"
                         code={country.code}
                         countryName={country.name}
                         size={24}
@@ -1772,9 +1793,7 @@ export default function App() {
             books={bookArchive}
             requestedBook={requestedBook}
             onRequestedBookHandled={() => setRequestedBook(null)}
-            onBookSelect={(book) =>
-              selectCountry(book.country, true, book.writer)
-            }
+            onBookSelect={selectBookWriterAndCountry}
           />
         </Suspense>
 
@@ -1933,7 +1952,7 @@ export default function App() {
               <button type="button" onClick={() => openCommunity("forum")}>
                 <i aria-hidden="true">03</i>
                 <span>
-                  <small>{t("Литературная карта")}</small>
+                  <small>{t("Литературная планета")}</small>
                   <strong>{t("Соберите собственный маршрут чтения")}</strong>
                 </span>
               </button>
@@ -2276,7 +2295,7 @@ export default function App() {
             </section>
             <section>
               <h2>{t("Энциклопедия")}</h2>
-              <a href="#atlas">{t("Литературная карта")}</a>
+              <a href="#atlas">{t("Литературная планета")}</a>
               <a href="#authors">{t("Писатели")}</a>
               <a href="#books">{t("Книжный архив")}</a>
               <a href="#calendar">{t("Календарь событий")}</a>

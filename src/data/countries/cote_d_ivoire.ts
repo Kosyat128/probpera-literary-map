@@ -64,7 +64,7 @@ export const coteDIvoire: Country = {
 
     {
       id: "jean_marie_adiaffi",
-      name: "Жан-Мари Адеми",
+      name: "Жан-Мари Адиаффи",
       fullName: "Jean-Marie Adiaffi",
       years: "1941–1999",
       birthDate: "1941",

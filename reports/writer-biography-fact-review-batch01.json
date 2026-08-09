@@ -1,0 +1,1510 @@
+{
+  "generatedAt": "2026-08-09T00:00:00+03:00",
+  "scope": "Isolated claim-by-claim review; no runtime wiring",
+  "summary": {
+    "total": 20,
+    "unchanged": 3,
+    "corrected": 17,
+    "held": 0
+  },
+  "queueCrossCheck": {
+    "wikidataIdentityReviewQueueMatches": 0,
+    "wikidataDateDiscrepancyQueueMatches": 0,
+    "recommendation": "Дополнительных рекомендаций по отображаемым датам или идентичности для этой партии нет; shared country files не изменялись."
+  },
+  "records": [
+    {
+      "key": "afghanistan:atiq_rahimi",
+      "originalSha256": "91a4302d3b48159b170cacd20e61bf559d110b5c572fa2039cfae8178075f307",
+      "originalTextRu": "Афганский писатель и режиссёр. Получил международное признание благодаря романам о войне, памяти и человеческом достоинстве.",
+      "reviewedTextRu": "Афганский писатель и режиссёр. Получил международное признание благодаря романам о войне, памяти и человеческом достоинстве.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Атик Рахими — писатель и режиссёр.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb13579642n",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Festival de Cannes",
+              "sourceFamily": "international-film-institution",
+              "url": "https://www.festival-cannes.com/en/p/atiq-rahimi-3/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Автор связан с Афганистаном и афганской литературой.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb13579642n",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Festival de Cannes",
+              "sourceFamily": "international-film-institution",
+              "url": "https://www.festival-cannes.com/en/p/atiq-rahimi-3/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "reception-influence",
+          "claimRu": "Его книги получили международное признание.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Festival de Cannes",
+              "sourceFamily": "international-film-institution",
+              "url": "https://www.festival-cannes.com/en/p/atiq-rahimi-3/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Académie Goncourt",
+              "sourceFamily": "official-prize-body",
+              "url": "https://www.academiegoncourt.com/tous-les-laureats-prix-goncourt",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "В его романах представлены война, память и человеческое достоинство.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Éditions P.O.L",
+              "sourceFamily": "publisher",
+              "url": "https://www.pol-editeur.com/index.php?ISBN=2-84682-045-7&spec=livre",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Éditions P.O.L",
+              "sourceFamily": "publisher",
+              "url": "https://www.pol-editeur.com/index.php?ISBN=978-2-84682-277-0&spec=livre",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "unchanged",
+      "notes": [
+        "Формулировка сохранена: все конкретные утверждения подтверждены независимыми институциональными и издательскими источниками."
+      ]
+    },
+    {
+      "key": "afghanistan:khalilullah_khalili",
+      "originalSha256": "bde202fe9e4bd8ea9808604fa535faaa6099461b2b4fc0b66048e05bb7ecc841",
+      "originalTextRu": "Величайший афганский поэт XX века, один из последних крупных представителей классической персидской поэтической традиции.",
+      "reviewedTextRu": "Афганский поэт XX века, писавший в классической персидской традиции.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Халилулла Халили — афганский поэт XX века.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Library of Congress",
+              "sourceFamily": "national-library",
+              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он принадлежит персоязычной литературе Афганистана.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Library of Congress",
+              "sourceFamily": "national-library",
+              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценочный суперлатив заменён проверяемым описанием поэтической традиции.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Library of Congress",
+              "sourceFamily": "national-library",
+              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективные определения «величайший» и «крупный» удалены; роль, эпоха и поэтическая традиция сохранены по двум независимым источникам."
+      ]
+    },
+    {
+      "key": "afghanistan:mahmud_tarzi",
+      "originalSha256": "3b6e67133b6d9a09116b62b6b04801a114981aeac62de2a84a374cd6ee84107e",
+      "originalTextRu": "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
+      "reviewedTextRu": "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Махмуд Тарзи — писатель, журналист и мыслитель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его деятельность относится к Афганистану.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Тарзи стоял у истоков современной афганской журналистики и новых литературных форм.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "unchanged",
+      "notes": [
+        "Iranica прямо называет Тарзи отцом журналистики и описывает введённые им новые жанры прозы."
+      ]
+    },
+    {
+      "key": "albania:ismail_kadare",
+      "originalSha256": "349b44b054dcf21e80a5dd73324ba89ddccc9b5c7d5bf72fb4cb39eb413acb74",
+      "originalTextRu": "Крупнейший албанский писатель XX–XXI веков.",
+      "reviewedTextRu": "Албанский писатель, лауреат Международной Букеровской премии 2005 года.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Исмаил Кадаре — албанский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Booker Prize Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/ismail-kadare",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2024/02/I.Kadare.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он является центральной фигурой албанской литературы.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2024/02/I.Kadare.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценочный суперлатив заменён документированным международным признанием.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2024/02/I.Kadare.pdf",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Booker Prize Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/ismail-kadare",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "awards",
+          "claimRu": "Кадаре получил Международную Букеровскую премию 2005 года.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Booker Prize Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/ismail-kadare",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективное слово «крупнейший» заменено точным фактом из официального архива Букеровской премии."
+      ]
+    },
+    {
+      "key": "albania:jeronim_de_rada",
+      "originalSha256": "0357849bd0cc91a6da0beaa5aed9a45f77b162aed3436a632b0eeade60fc2101",
+      "originalTextRu": "Албанский поэт арберешской традиции, один из основателей албанского национального литературного движения.",
+      "reviewedTextRu": "Албанский поэт арберешской традиции, один из инициаторов арберешского культурного движения XIX века.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Джеронимо де Рада — албанский поэт арберешской традиции.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Treccani",
+              "sourceFamily": "national-encyclopedia",
+              "url": "https://www.treccani.it/enciclopedia/girolamo-de-rada_%28Enciclopedia-Italiana%29/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его творчество связано с албанским языком и культурой арберешей Италии.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Treccani",
+              "sourceFamily": "national-encyclopedia",
+              "url": "https://www.treccani.it/enciclopedia/girolamo-de-rada_%28Enciclopedia-Italiana%29/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/04/Buletini-Mars-2026_compressed.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Он был одним из двух главных инициаторов итало-албанского, или арберешского, культурного движения второй половины XIX века.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/04/Buletini-Mars-2026_compressed.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Широкое выражение «основатель албанского национального литературного движения» заменено точной формулировкой национальной академии об арберешском культурном движении."
+      ]
+    },
+    {
+      "key": "albania:mitrush_kuteli",
+      "originalSha256": "31cba6ce2ff25f56b3e08a4d35158da2d4ee02adfa1761353302f81bcf772395",
+      "originalTextRu": "Албанский писатель, поэт и переводчик, один из крупнейших авторов албанской прозы XX века.",
+      "reviewedTextRu": "Албанский писатель, поэт и переводчик, один из основоположников современной албанской прозы.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Митруш Кутели — писатель, поэт и переводчик.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Municipality of Pogradec / Academy of Sciences of Albania",
+              "sourceFamily": "government-and-national-academy",
+              "url": "https://bashkiapogradec.gov.al/publikime/aktivitete-4/akademia-e-shkencave-akrodon-titull-per-mitrush-kutelin-ne-115-vjetorin-e-lindjes--267/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его творчество принадлежит албанской литературе.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Municipality of Pogradec / Academy of Sciences of Albania",
+              "sourceFamily": "government-and-national-academy",
+              "url": "https://bashkiapogradec.gov.al/publikime/aktivitete-4/akademia-e-shkencave-akrodon-titull-per-mitrush-kutelin-ne-115-vjetorin-e-lindjes--267/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Centre for Books and Reading of Albania",
+              "sourceFamily": "national-book-center",
+              "url": "https://qkll.gov.al/?p=6938",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Оценочный суперлатив заменён подтверждённой историко-литературной ролью Кутели в становлении современной албанской прозы.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "National Centre for Books and Reading of Albania",
+              "sourceFamily": "national-book-center",
+              "url": "https://qkll.gov.al/?p=6938",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Municipality of Pogradec / Academy of Sciences of Albania",
+              "sourceFamily": "government-and-national-academy",
+              "url": "https://bashkiapogradec.gov.al/publikime/aktivitete-4/akademia-e-shkencave-akrodon-titull-per-mitrush-kutelin-ne-115-vjetorin-e-lindjes--267/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективное выражение «один из крупнейших» заменено подтверждённой ролью в становлении современной албанской прозы."
+      ]
+    },
+    {
+      "key": "albania:naim_frasheri",
+      "originalSha256": "3d6927567079d32257cee2438403075eef1b38880c6c9628f1460704dbc9318d",
+      "originalTextRu": "Величайший албанский поэт эпохи национального возрождения.",
+      "reviewedTextRu": "Албанский национальный поэт эпохи Возрождения, один из основоположников современной албанской литературы.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Наим Фрашери — поэт албанского национального Возрождения.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/06/Maj-2026-Final_compressed.pdf",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2025/11/Buletini-tetor-2025.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он является национальным поэтом Албании.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/06/Maj-2026-Final_compressed.pdf",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2025/11/Buletini-tetor-2025.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Он относится к основоположникам современной албанской литературы.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Academy of Sciences of Albania",
+              "sourceFamily": "national-academy",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/06/Maj-2026-Final_compressed.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Абсолютный суперлатив заменён точными институциональными определениями: национальный поэт и один из основоположников современной албанской литературы."
+      ]
+    },
+    {
+      "key": "algeria:assia_djebar",
+      "originalSha256": "3565baa2fcbb08c29a954a1515aa14d819879da18ffae9b22f0a00dc90b91bf0",
+      "originalTextRu": "Алжирская писательница, историк и режиссёр, одна из самых известных франкоязычных авторов XX века.",
+      "reviewedTextRu": "Алжирская писательница и режиссёр, писавшая по-французски; она изучала и преподавала историю Магриба.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Ассия Джебар — писательница и режиссёр; историю она изучала и преподавала.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb11900279p",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Её литературные произведения написаны по-французски.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb11900279p",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Она — алжирская писательница.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb11900279p",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Её международный статус подтверждают избрание во Французскую академию и переводы произведений на 23 языка.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Профессиональное обозначение «историк» заменено проверяемой формулировкой об историческом образовании и преподавании; расплывчатый рейтинг удалён."
+      ]
+    },
+    {
+      "key": "algeria:kateb_yacine",
+      "originalSha256": "119f961f8339b10765f6430db26b20b86df8f7b588e4b596556baf2afd767f74",
+      "originalTextRu": "Алжирский писатель и драматург, один из крупнейших представителей франкоязычной литературы Магриба.",
+      "reviewedTextRu": "Алжирский писатель и драматург, значительная часть литературного наследия которого написана по-французски.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Катеб Ясин — писатель и драматург.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/agenda/rencontres-et-debats/rencontre-debat-lectures-kateb-yacine",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он является крупной фигурой литературы Алжира.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/agenda/rencontres-et-debats/rencontre-debat-lectures-kateb-yacine",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Значительная часть его литературного наследия написана по-французски.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/rechercher.do?motRecherche=Kateb+Yacine",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/agenda/rencontres-et-debats/rencontre-debat-lectures-kateb-yacine",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Институциональный источник характеризует его как крупную фигуру алжирской словесности.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/agenda/rencontres-et-debats/rencontre-debat-lectures-kateb-yacine",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Региональный суперлатив удалён; сохранены подтверждённые роль, национальная связь и язык значительной части наследия."
+      ]
+    },
+    {
+      "key": "algeria:mohammed_dib",
+      "originalSha256": "c89fecc68fea1cb5735bd383386de4028c0ddb0338c0c6b8d44e76badb5a6450",
+      "originalTextRu": "Один из основателей современной алжирской литературы, автор романов о жизни Алжира периода колониализма.",
+      "reviewedTextRu": "Алжирский писатель, писавший по-французски; его «алжирская трилогия» посвящена жизни страны в колониальный период.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Мохаммед Диб — алжирский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/agenda/mohammed-dib",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/selection-de-dons-faits-la-bnf-en-2012",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он относится к франкоязычной литературе Алжира.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/agenda/mohammed-dib",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Он является ключевой фигурой, но утверждение об «основателе» не было найдено в выбранных авторитетных источниках.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/agenda/mohammed-dib",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/selection-de-dons-faits-la-bnf-en-2012",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Его алжирская трилогия изображает Алжир 1950-х годов и нищету колониального периода.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/rapports-sur-les-grands-prix-et-discours-sur-letat-de-la-langue-0",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/selection-de-dons-faits-la-bnf-en-2012",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Неподтверждённое слово «основатель» и оценочная замена удалены; язык и содержание трилогии подтверждены BnF и Французской академией."
+      ]
+    },
+    {
+      "key": "algeria:moufdi_zakaria",
+      "originalSha256": "bdd962eced62dfcc08261fe3af49c45b096f578bc2d55d313282ec20499b8363",
+      "originalTextRu": "Алжирский поэт, один из крупнейших представителей арабоязычной литературы Алжира, автор текста государственного гимна страны.",
+      "reviewedTextRu": "Алжирский арабоязычный поэт, известный как поэт Алжирской революции. Автор текста государственного гимна «Кассаман».",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Муфди Закария — алжирский поэт.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/30780",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Он писал стихи на арабском языке.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/30780",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb158269504",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его наследие принадлежит литературе Алжира.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/30780",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb158269504",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Он известен как поэт Алжирской революции.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/30780",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Он написал текст государственного гимна «Кассаман».",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/30780",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Общий суперлатив заменён официально употребляемой и предметной характеристикой «поэт Революции»; название гимна добавлено по APS."
+      ]
+    },
+    {
+      "key": "algeria:mouloud_feraoun",
+      "originalSha256": "d4a761c0afbce22547d4137005c66133fb7f28f0787f98513faadfc4dc92c1e8",
+      "originalTextRu": "Алжирский писатель кабильского происхождения, один из крупнейших авторов франкоязычной литературы Алжира.",
+      "reviewedTextRu": "Алжирский писатель кабильского происхождения, писавший по-французски.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Мулуд Фераун — алжирский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/hommage-ecrivain-algerien-mouloud-feraoun-28-septembre-2013",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb13091444d",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он родился в Кабилии и сохранял связь с кабильскими корнями.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/hommage-ecrivain-algerien-mouloud-feraoun-28-septembre-2013",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Он писал по-французски.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb13091444d",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/hommage-ecrivain-algerien-mouloud-feraoun-28-septembre-2013",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценочный рейтинг удалён; происхождение, роль и язык автора подтверждены институциональными источниками.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/hommage-ecrivain-algerien-mouloud-feraoun-28-septembre-2013",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективное выражение «один из крупнейших» удалено; сохранены проверяемые происхождение, роль и язык."
+      ]
+    },
+    {
+      "key": "algeria:rachid_boudjedra",
+      "originalSha256": "6485117ac6f24a65f13e757184582154a0ec6edcae47a9505df822efccb891cc",
+      "originalTextRu": "Современный алжирский писатель и один из наиболее известных авторов франкоязычной прозы.",
+      "reviewedTextRu": "Современный алжирский писатель и романист, писавший по-французски.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Рашид Буджедра — алжирский писатель и романист.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb118932046",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/73262",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его творчество относится к литературе Алжира.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb118932046",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/chaire-ima-rend-hommage-naget-belkaid-khadda",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Он писал по-французски.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb118932046",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/chaire-ima-rend-hommage-naget-belkaid-khadda",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценка известности заменена проверяемыми сведениями о роли и языке автора.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/chaire-ima-rend-hommage-naget-belkaid-khadda",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Radio Algérienne / Algérie Presse Service",
+              "sourceFamily": "state-news-agency",
+              "url": "https://news.radioalgerie.dz/fr/node/73262",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективная оценка известности удалена; роль и язык подтверждены независимыми институциональными источниками."
+      ]
+    },
+    {
+      "key": "andorra:antoni_morell_i_mora",
+      "originalSha256": "789857c81cfb0efdb000ea21dab5fadd62d65c4b08f1f2823e9acdab93decf05",
+      "originalTextRu": "Андоррский писатель, один из наиболее известных представителей литературы страны.",
+      "reviewedTextRu": "Андоррский писатель и гуманист, чьё творчество сосредоточено на Андорре и её жителях.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Антони Морель-и-Мора — андоррский писатель и гуманист.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Government of Andorra",
+              "sourceFamily": "government-publication",
+              "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Правительственная публикация относит его к важнейшим интеллектуалам страны, но исходное «один из наиболее известных» заменено предметным описанием.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Government of Andorra",
+              "sourceFamily": "government-publication",
+              "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "themes-style",
+          "claimRu": "Его романы, эссе, исторические и журналистские тексты размышляют об Андорре и её жителях.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Andorra",
+              "sourceFamily": "government-publication",
+              "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Расплывчатая известность заменена содержательной характеристикой из официального правительственного издания."
+      ]
+    },
+    {
+      "key": "angola:agostinho_neto",
+      "originalSha256": "52a9e0993288e95d4813a8bdce553f3fb94f01471df99f9ba87e9593cd3870dd",
+      "originalTextRu": "Ангольский поэт, общественный деятель и первый президент независимой Анголы.",
+      "reviewedTextRu": "Ангольский поэт, общественный деятель и первый президент независимой Анголы.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Агостиньо Нето — ангольский поэт и общественный деятель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://governo.gov.ao/noticias/2940/cultura/homenagem-a-agostinho-neto/abertas-candidaturas-do-premio-literario-sagrada-esperanca-2026",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://governo.gov.ao/noticias/92/sociedade/executivo-lanca-programa-do-centenario-de-agostinho-neto/o-ministro-de-estado-e-chefe-da-casa-civil-do-presidente-da-republica-adao-de-almeida-considerou-justo-merecido-e-necessario-celebrar-o-centenario-de-agostinho-neto",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Он был первым президентом Республики Ангола после провозглашения независимости.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://governo.gov.ao/noticias/2940/cultura/homenagem-a-agostinho-neto/abertas-candidaturas-do-premio-literario-sagrada-esperanca-2026",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://governo.gov.ao/noticias/92/sociedade/executivo-lanca-programa-do-centenario-de-agostinho-neto/o-ministro-de-estado-e-chefe-da-casa-civil-do-presidente-da-republica-adao-de-almeida-considerou-justo-merecido-e-necessario-celebrar-o-centenario-de-agostinho-neto",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "unchanged",
+      "notes": [
+        "Обе части биографии прямо подтверждены официальными публикациями правительства Анголы."
+      ]
+    },
+    {
+      "key": "angola:jose_luandino_vieira",
+      "originalSha256": "bae1a7088104357cad14649243d4eeb90137fa84be7a62983ccac4a62c400fda",
+      "originalTextRu": "Один из крупнейших ангольских писателей XX века, автор прозы о колониальном периоде.",
+      "reviewedTextRu": "Ангольский писатель, автор прозы о жизни при колониальном режиме и антиколониальном опыте.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Жозе Луандину Виейра — ангольский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/sites/default/files/a_literatura_angolana.pdf",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценочный суперлатив заменён проверяемым описанием тематики прозы.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/sites/default/files/a_literatura_angolana.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Его проза изображает жизнь при колониальном режиме и антиколониальный опыт.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://sys.portais.gov.ao/uploads/News_Letter_Mirempet_Edicao_69_31_12_2024_28c9e40d5a.pdf",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективное выражение «один из крупнейших» удалено; национальная связь и тематика прозы сохранены по институциональным источникам."
+      ]
+    },
+    {
+      "key": "angola:ondjaki",
+      "originalSha256": "ae1e208a49036f871714eed8b40148a01d6c324554f761a063a85124b684f5a5",
+      "originalTextRu": "Современный ангольский писатель, один из наиболее известных авторов португалоязычной Африки.",
+      "reviewedTextRu": "Современный ангольский писатель, лауреат премии Жозе Сарамаго за роман «Прозрачные».",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Онджаки — современный ангольский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Он публикует произведения на португальском языке.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Широкий региональный рейтинг заменён проверяемым литературным достижением.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "awards",
+          "claimRu": "Роман «Прозрачные» получил премию Жозе Сарамаго 2013 года.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Неформализуемый рейтинг по всей португалоязычной Африке заменён точным фактом о премии и произведении."
+      ]
+    },
+    {
+      "key": "angola:pepetela",
+      "originalSha256": "f95c3f3336c3466f706aa255acf42ff62bdcb4d06dd9d0495fa3f1a066843e74",
+      "originalTextRu": "Крупнейший ангольский романист, один из главных представителей португалоязычной африканской литературы.",
+      "reviewedTextRu": "Ангольский романист, лауреат премии Камоэнса. Среди его произведений — «Майомбе» и «Поколение утопии».",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Пепетела — ангольский романист.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Institute for Qualification in Education of Angola",
+              "sourceFamily": "government-education-institute",
+              "url": "https://infqe.gov.ao/documentos/baixar/12",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Он относится к португалоязычной литературе Анголы.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/premio-camoes-atribuido-escritora-brasileira-adelia-prado",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Institute for Qualification in Education of Angola",
+              "sourceFamily": "government-education-institute",
+              "url": "https://infqe.gov.ao/documentos/baixar/12",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Общий суперлатив заменён документированными достижениями и произведениями.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/premio-camoes-atribuido-escritora-brasileira-adelia-prado",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "awards",
+          "claimRu": "Пепетела получил премию Камоэнса 1997 года.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/premio-camoes-atribuido-escritora-brasileira-adelia-prado",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "«Майомбе» и «Поколение утопии» входят в библиографию Пепетелы.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "National Institute for Qualification in Education of Angola",
+              "sourceFamily": "government-education-institute",
+              "url": "https://infqe.gov.ao/documentos/baixar/12",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективный рейтинг заменён устойчивой короткой биографией с официально подтверждённой премией и двумя произведениями."
+      ]
+    },
+    {
+      "key": "antigua_and_barbuda:jamaica_kincaid",
+      "originalSha256": "2d77da0de507bf6ab706ed98a30d889db31e4e52c6e746c7fd955277a35e6b60",
+      "originalTextRu": "Антигуанская писательница и эссеистка, одна из наиболее известных представительниц современной англоязычной литературы Карибского региона. В её произведениях исследуются темы колониального наследия, семьи, памяти и личной идентичности.",
+      "reviewedTextRu": "Антигуанская писательница и эссеистка, представительница англоязычной карибской литературы. В её произведениях исследуются темы колониального наследия, семьи, памяти и личной идентичности.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Джамайка Кинкейд — писательница и эссеистка.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Harvard University Department of English",
+              "sourceFamily": "university",
+              "url": "https://english.fas.harvard.edu/news/jamaica-kincaids-encyclopedia-gardening-colored-children",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Book Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://www.nationalbook.org/people/jamaica-kincaid/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Она родилась на Антигуа и связана с карибской литературой.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Harvard University Department of English",
+              "sourceFamily": "university",
+              "url": "https://english.fas.harvard.edu/news/jamaica-kincaids-encyclopedia-gardening-colored-children",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Book Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://www.nationalbook.org/people/jamaica-kincaid/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Она является англоязычной писательницей.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Harvard University Department of English",
+              "sourceFamily": "university",
+              "url": "https://english.fas.harvard.edu/news/jamaica-kincaids-encyclopedia-gardening-colored-children",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Book Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://www.nationalbook.org/people/jamaica-kincaid/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценка известности удалена; литературная роль и тематический круг сохранены.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Harvard University Department of English",
+              "sourceFamily": "university",
+              "url": "https://english.fas.harvard.edu/news/jamaica-kincaids-encyclopedia-gardening-colored-children",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "themes-style",
+          "claimRu": "В её произведениях представлены колониализм, идентичность и семейные отношения.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Harvard Gazette",
+              "sourceFamily": "university",
+              "url": "https://news.harvard.edu/gazette/story/2024/07/visiting-jamaica-kincaids-vermont-garden/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Её библиография включает художественную прозу и эссе.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Harvard Gazette",
+              "sourceFamily": "university",
+              "url": "https://news.harvard.edu/gazette/story/2024/07/visiting-jamaica-kincaids-vermont-garden/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Book Foundation",
+              "sourceFamily": "official-prize-body",
+              "url": "https://www.nationalbook.org/people/jamaica-kincaid/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективная оценка известности удалена; происхождение, язык, литературная роль и темы подтверждены двумя независимыми источниками."
+      ]
+    },
+    {
+      "key": "argentina:adolfo_bioy_casares",
+      "originalSha256": "10f6e62067a6a79e4a13dbba2cbef4eb3438468ad4aff4fc7fa08454dded6491",
+      "originalTextRu": "Аргентинский писатель, один из крупнейших мастеров фантастической литературы XX века. Близкий друг и литературный соратник Хорхе Луиса Борхеса.",
+      "reviewedTextRu": "Аргентинский писатель, автор рассказов и фантастической прозы. Близкий друг и литературный соратник Хорхе Луиса Борхеса.",
+      "claimEvidence": [
+        {
+          "field": "identity-role",
+          "claimRu": "Адольфо Биой Касарес — аргентинский писатель.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Instituto Cervantes",
+              "sourceFamily": "national-cultural-institution",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/cairo_adolfo_bioy_casares.htm",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Он принадлежит аргентинской литературе.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Instituto Cervantes",
+              "sourceFamily": "national-cultural-institution",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/cairo_adolfo_bioy_casares.htm",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Argentina Ministry of Culture",
+              "sourceFamily": "government-cultural-institution",
+              "url": "https://www.cultura.gob.ar/los-ultimos-dias-de-borges-por-adolfo-bioy-casares-9121/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "critical-ranking",
+          "claimRu": "Оценочный суперлатив заменён проверяемым описанием жанров его прозы.",
+          "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Instituto Cervantes",
+              "sourceFamily": "national-cultural-institution",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/cairo_adolfo_bioy_casares.htm",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "reception-influence",
+          "claimRu": "Его связывала с Борхесом пожизненная личная и литературная дружба, включавшая совместные книги.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Instituto Cervantes",
+              "sourceFamily": "national-cultural-institution",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/cairo_adolfo_bioy_casares.htm",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Argentina Ministry of Culture",
+              "sourceFamily": "government-cultural-institution",
+              "url": "https://www.cultura.gob.ar/los-ultimos-dias-de-borges-por-adolfo-bioy-casares-9121/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        }
+      ],
+      "reviewer": "OpenAI Codex / writer_claim_review_batch01",
+      "decision": "corrected",
+      "notes": [
+        "Субъективное выражение «один из крупнейших мастеров» удалено; жанровая характеристика и отношения с Борхесом подтверждены государственными культурными источниками."
+      ]
+    }
+  ]
+}

@@ -115,10 +115,10 @@ export const azerbaijan: Country = {
       name: "Мухаммед Физули",
       fullName: "Muhammad Fuzuli",
 
-      years: "ок. 1483–1556",
+      years: "1494–1556",
 
-      birthDate: "1483-01-01",
-      deathDate: "1556-01-01",
+      birthDate: "1494",
+      deathDate: "1556",
 
       birthPlace: "Кербела",
 
@@ -168,8 +168,8 @@ export const azerbaijan: Country = {
 
       years: "1812–1878",
 
-      birthDate: "1812-07-30",
-      deathDate: "1878-03-09",
+      birthDate: "1812-07-12",
+      deathDate: "1878-03-10",
 
       birthPlace: "Нуха",
 

@@ -1,0 +1,1019 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH05_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 05";
+
+export type WriterBiographyFactReviewDecision =
+  | "unchanged"
+  | "corrected"
+  | "held";
+
+export type WriterBiographyClaimVerdict =
+  | "supported"
+  | "corrected"
+  | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH05_REVIEWER;
+const checkedAt = "2026-08-09";
+
+const writerBiographyFactReviewBatch05Base = [
+  {
+    key: "bhutan:drukpa_kunley",
+    originalSha256:
+      "85032f7f712e7591e3769ed67ca38849e5ee4c24a631a4ba55649d107950913c",
+    reviewedTextRu:
+      "Тибетский буддийский мастер, почитаемый в Бутане как религиозная, историческая и культурная фигура.",
+    claims: [
+      {
+        textRu:
+          "Друкпа Кюнле был тибетским буддийским мастером, чьё наследие почитается в Бутане.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Официальный туристический портал Бутана",
+            url: "https://bhutan.travel/journal/editorial/a-winter-s-tale",
+            checkedAt,
+            findingRu:
+              "Государственный туристический портал называет Друкпу Кюнле тибетским буддийским мастером и связывает с ним религиозную традицию Бутана.",
+          },
+          {
+            provider: "Администрация дзонгхага Пунакха",
+            url: "https://punakha.gov.bt/tourism/chimi-lhakhang/",
+            checkedAt,
+            findingRu:
+              "Официальная страница Чими-лакханга фиксирует почитание Друкпы Кюнле и связь святыни с его деятельностью.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Неподтверждённое авторство «духовных историй» и оценочный рейтинг заменены институционально подтверждённой культурной ролью.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Королевская комиссия государственной службы Бутана",
+            url: "https://rcsc.gov.bt/wp-content/uploads/2025/02/Paper-III-2015.pdf",
+            checkedAt,
+            findingRu:
+              "Материал комиссии характеризует Друкпу Кюнле как религиозную и историческую фигуру и культурного героя Бутана.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Сняты неподтверждённое утверждение об авторстве и сравнительная оценка известности; сохранена доказуемая религиозно-культурная роль.",
+  },
+  {
+    key: "bhutan:ngawang_namgyal",
+    originalSha256:
+      "cb9c20303bb6779cf1f08fb834133eca9f7fbc0f253fad19cc060d62d539f460",
+    reviewedTextRu:
+      "Бутанский религиозный и государственный деятель XVII века. Объединил страну и учредил двойственную систему светского и духовного управления.",
+    claims: [
+      {
+        textRu:
+          "Шабдрунг Нгаванг Намгьял был религиозным и государственным деятелем XVII века, объединившим Бутан.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Официальный туристический портал Бутана",
+            url: "https://bhutan.travel/experiences-culture",
+            checkedAt,
+            findingRu:
+              "Государственный портал сообщает о прибытии Шабдрунга в 1616 году и объединении им Бутана в единое государство.",
+          },
+          {
+            provider: "Агентство государственных технологий Бутана",
+            url: "https://tech.gov.bt/2025/05/",
+            checkedAt,
+            findingRu:
+              "Государственная публикация называет Нгаванга Намгьяла духовным лидером, объединившим страну и сформировавшим её национальную идентичность.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Нгаванг Намгьял учредил систему двойственного светского и духовного управления; неподтверждённое авторство трудов из текста удалено.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Совет по вопросам образования Бутана",
+            url: "https://rec.gov.bt/download/905/social-studies/5238/v-textbook-2024-5.pdf",
+            checkedAt,
+            findingRu:
+              "Государственный учебник связывает с Шабдрунгом Нгавангом Намгьялом введение двойственной системы управления.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Формула «основатель государства» уточнена через подтверждённое объединение страны; неподтверждённое авторство буддийских трудов не перенесено.",
+  },
+  {
+    key: "bolivia:adela_zamudio",
+    originalSha256:
+      "526e9203f6e820071f5ce32bd8d87329252dd9d9795260b453e0fe91c63ea69e",
+    reviewedTextRu:
+      "Боливийская писательница, поэтесса и педагог. Её просветительская деятельность и выступления за права женщин сделали её одной из пионерок боливийского феминизма.",
+    claims: [
+      {
+        textRu: "Адела Самудио была боливийской писательницей, поэтессой и педагогом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Культурный фонд Центрального банка Боливии",
+            url: "https://www.fundacionculturalbcb.gob.bo/documentos/boletin-cultural/2021/boletin_12_2021.pdf",
+            checkedAt,
+            findingRu:
+              "Государственный культурный фонд подтверждает литературную, поэтическую и педагогическую деятельность Самудио.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Сравнительный литературный рейтинг заменён подтверждённой ролью Самудио в просвещении и защите прав женщин.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Культурный фонд Центрального банка Боливии",
+            url: "https://www.fundacionculturalbcb.gob.bo/documentos/boletin-cultural/2021/boletin_12_2021.pdf",
+            checkedAt,
+            findingRu:
+              "Фонд связывает её педагогическую работу и стихотворение «Nacer hombre» с пионерской ролью в боливийском феминизме.",
+          },
+          {
+            provider: "Культурный фонд Центрального банка Боливии",
+            url: "https://www.fundacionculturalbcb.gob.bo/documentos/boletin-cultural/2021/boletin_14_2021.pdf",
+            checkedAt,
+            findingRu:
+              "Второй выпуск фонда документирует значение наследия Самудио для борьбы за права женщин в Боливии.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный рейтинг в национальной литературе снят; профессиональные роли и пионерская общественная деятельность подтверждены.",
+  },
+  {
+    key: "bolivia:alcides_arguedas",
+    originalSha256:
+      "6044724fb92346d44f7dc6e535200de9dbd960bfbb7f2c53e61c90458f86a4bd",
+    reviewedTextRu:
+      "Боливийский писатель, историк, журналист и дипломат. Автор романа «Raza de bronce» и трудов по истории Боливии.",
+    claims: [
+      {
+        textRu:
+          "Альсидес Аргедас был боливийским писателем, историком, журналистом и дипломатом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Портал боливийской литературы BPB",
+            url: "https://www.boliviabpb.org/spip.php?id_autor=5&page=autor_boliviano",
+            checkedAt,
+            findingRu:
+              "Институциональная авторская справка перечисляет его работу романиста, историка, журналиста и дипломата.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Оценка места среди интеллектуалов заменена проверяемыми произведениями: романом «Raza de bronce» и историческими трудами.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Портал боливийской литературы BPB",
+            url: "https://www.boliviabpb.org/spip.php?id_autor=5&page=autor_boliviano",
+            checkedAt,
+            findingRu:
+              "Библиография фиксирует роман «Raza de bronce» и многотомные исследования истории Боливии.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив заменён конкретными профессиональными ролями и библиографическими фактами; широкий тематический пересказ сужен.",
+  },
+  {
+    key: "bolivia:augusto_cespedes",
+    originalSha256:
+      "35c7338a5fe5cc9029b7856854e429f296e73c731a0acd1cd7fed5127eabe8a7",
+    reviewedTextRu:
+      "Боливийский писатель и журналист. Опыт войны в Чако стал основой сборника «Sangre de mestizos», а его проза и очерки обращены к политической истории Боливии.",
+    claims: [
+      {
+        textRu: "Аугусто Сеспедес был боливийским писателем и журналистом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Портал боливийской литературы BPB",
+            url: "https://www.boliviabpb.org/spip.php?id_autor=108&page=autor_boliviano",
+            checkedAt,
+            findingRu:
+              "Авторская справка подтверждает писательскую и журналистскую деятельность Сеспедеса.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив заменён связью сборника «Sangre de mestizos» с войной в Чако и подтверждённой политико-исторической тематикой.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Портал боливийской литературы BPB",
+            url: "https://www.boliviabpb.org/spip.php?id_autor=108&page=autor_boliviano",
+            checkedAt,
+            findingRu:
+              "Справка связывает рассказы сборника с личным опытом войны в Чако и перечисляет историко-политические произведения автора.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Для deathDate сохранено значение 1997-05-11; кандидат Wikidata 1997-05-09 отвергнут.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Портал боливийской литературы BPB",
+            url: "https://www.boliviabpb.org/spip.php?id_autor=108&page=autor_boliviano",
+            checkedAt,
+            findingRu:
+              "Институциональная биографическая справка указывает смерть 11 мая 1997 года.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят. Рекомендация по очереди дат: оставить deathDate 1997-05-11, а не кандидат 1997-05-09; общий файл не изменён.",
+  },
+  {
+    key: "bolivia:edmundo_paz_soldan",
+    originalSha256:
+      "373c062925f51609b260d7cc8ede30c4f8e405f037de34b9a407e08b9034c88e",
+    reviewedTextRu:
+      "Боливийский писатель, литературовед и преподаватель Корнеллского университета. Его проза обращается к политике, обществу, массовой культуре и технологиям.",
+    claims: [
+      {
+        textRu:
+          "Эдмундо Пас Сольдан — боливийский писатель, литературовед и преподаватель Корнеллского университета.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Корнеллский университет",
+            url: "https://as.cornell.edu/people/edmundo-paz-soldan",
+            checkedAt,
+            findingRu:
+              "Официальный профиль подтверждает боливийское происхождение, литературную работу, исследования и преподавательскую должность.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Субъективная оценка известности заменена подтверждённым тематическим диапазоном прозы: политика, общество, массовая культура и технологии.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Корнеллский университет",
+            url: "https://as.cornell.edu/news/conference-spain-work-edmundo-paz-soldan",
+            checkedAt,
+            findingRu:
+              "Университетская публикация связывает его прозу с политикой, обществом и массовой культурой.",
+          },
+          {
+            provider: "Корнеллский университет",
+            url: "https://as.cornell.edu/people/edmundo-paz-soldan",
+            checkedAt,
+            findingRu:
+              "Профиль перечисляет книги и исследования автора, в которых рассматриваются технологии и цифровая культура.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив известности удалён; профессиональный статус и тематический диапазон подтверждены университетом.",
+  },
+  {
+    key: "bolivia:francisco_javier_del_granado",
+    originalSha256:
+      "51edafb9d424095622854713cdfcc0f7b421ebf565b176612c68eb84261a659b",
+    reviewedTextRu:
+      "Боливийский поэт XX века, автор сборника «Rosas pálidas» и поэмы «La parábola del águila».",
+    claims: [
+      {
+        textRu: "Франсиско Хавьер дель Гранадо был боливийским поэтом XX века.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Муниципальный секретариат культуры Санта-Крус-де-ла-Сьерра",
+            url: "https://cultura.gmsantacruz.gob.bo/pdf/leamos-puej/indice/1700001353-6266.pdf",
+            checkedAt,
+            findingRu:
+              "Муниципальное издание включает дель Гранадо в биографический обзор боливийских поэтов и фиксирует годы жизни 1913–1996.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Сравнительный рейтинг и широкий тематический пересказ заменены двумя документированными произведениями.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Архив и Национальная библиотека Боливии",
+            url: "https://www.archivoybibliotecanacionales.org.bo/images/Contenido/biblioteca/CP-HCK-MON.pdf",
+            checkedAt,
+            findingRu:
+              "Официальный библиотечный каталог фиксирует издания «Rosas pálidas» и «La parábola del águila».",
+          },
+          {
+            provider: "Архив и Национальная библиотека Боливии",
+            url: "https://mail.archivoybibliotecanacionales.org.bo/images/Contenido/biblioteca/CP-MG-MON.pdf",
+            checkedAt,
+            findingRu:
+              "Второй каталог национального собрания независимо подтверждает библиографическую запись «La parábola del águila».",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный суперлатив и обобщённое описание тем заменены проверяемыми библиографическими данными.",
+  },
+  {
+    key: "bolivia:gabriel_rene_moreno",
+    originalSha256:
+      "781643f1c3e20c653b3925ca3b9cee96e19472e6f8639ba78d514e2c10237547",
+    reviewedTextRu:
+      "Боливийский историк, литературный критик и библиограф. Собрал и систематизировал «Библиотеку Боливиана», которая хранится в Архиве и Национальной библиотеке Боливии.",
+    claims: [
+      {
+        textRu:
+          "Габриэль Рене Морено был боливийским историком, литературным критиком и библиографом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Архив и Национальная библиотека Боливии",
+            url: "https://www.archivoybibliotecanacionales.org.bo/index.php/component/content/category/noticias?Itemid=0&start=40",
+            checkedAt,
+            findingRu:
+              "Национальное учреждение характеризует Морено как историка, исследователя литературы и библиографа.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Расплывчатая формула об основании научного изучения заменена документированной работой над «Библиотекой Боливиана».",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Архив и Национальная библиотека Боливии",
+            url: "https://www.archivoybibliotecanacionales.org.bo/index.php/component/content/category/noticias?Itemid=0&start=40",
+            checkedAt,
+            findingRu:
+              "Учреждение сообщает, что Морено собрал, классифицировал и организовал коллекцию, позднее приобретённую государством и хранящуюся в национальном архиве и библиотеке.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Неизмеримое утверждение об «одном из основателей» заменено конкретным вкладом в национальную библиотечную коллекцию.",
+  },
+  {
+    key: "bolivia:jaime_saenz",
+    originalSha256:
+      "6004289516333a79c5be666bdb243bab8ff2db62631093a46c40fcc530625ce0",
+    reviewedTextRu:
+      "Боливийский поэт, прозаик и эссеист. Роман «Felipe Delgado» обращён к ночному Ла-Пасу, философскому поиску и экспериментам с формой.",
+    claims: [
+      {
+        textRu: "Хайме Саэнс был боливийским поэтом, прозаиком и эссеистом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Репозиторий Университета Диего Порталеса",
+            url: "https://repositoriobiblioteca.udp.cl/PT4272.pdf",
+            checkedAt,
+            findingRu:
+              "Университетское исследование подтверждает поэтическую, прозаическую и эссеистическую работу Саэнса.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив и неподтверждённый перечень тем заменены институциональным разбором романа «Felipe Delgado».",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Вице-президентство Боливии",
+            url: "https://www.vicepresidencia.gob.bo/IMG/pdf/migrana-05.pdf",
+            checkedAt,
+            findingRu:
+              "Государственное издание рассматривает роман через образ ночного Ла-Паса, философский поиск и экспериментальную повествовательную форму.",
+          },
+          {
+            provider: "Архив и Национальная библиотека Боливии",
+            url: "https://www.archivoybibliotecanacionales.org.bo/images/Contenido/biblioteca/bibliografia-boliviana/BibliografiaBoliviana2013.pdf",
+            checkedAt,
+            findingRu:
+              "Национальная библиография фиксирует издание романа «Felipe Delgado» и авторство Саэнса.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Для birthDate следует сохранить 1921-10-08; deathDate следует заменить с 1986-08-29 на 1986-08-16.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Репозиторий Университета Диего Порталеса",
+            url: "https://repositoriobiblioteca.udp.cl/PT4272.pdf",
+            checkedAt,
+            findingRu:
+              "Университетское издание указывает рождение 8 октября 1921 года и смерть 16 августа 1986 года.",
+          },
+          {
+            provider: "Архив газеты La Razón",
+            url: "https://hemeroteca.larazon.bo/la-revista/2011/07/16/mondacca-presenta-a-un-f-delgado-desmontable/",
+            checkedAt,
+            findingRu:
+              "Боливийский газетный архив независимо приводит те же полные даты жизни Саэнса.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят. Рекомендация по очереди дат: оставить birthDate 1921-10-08 вместо кандидата 1921-10-29; заменить deathDate 1986-08-29 на 1986-08-16. Общий файл не изменён.",
+  },
+  {
+    key: "bosnia:abdulah_sidran",
+    originalSha256:
+      "4d7fe50a9ec30034cea5d39f33fd0bb2a23c501a082a6a6fa413e268a0210fc5",
+    reviewedTextRu:
+      "Боснийский поэт, прозаик и сценарист. Был действительным членом Академии наук и искусств Боснии и Герцеговины.",
+    claims: [
+      {
+        textRu: "Абдулах Сидран был боснийским поэтом, прозаиком и сценаристом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Академия наук и искусств Боснии и Герцеговины",
+            url: "https://www.anubih.ba/abdulah-sidran-1944-2024/",
+            checkedAt,
+            findingRu:
+              "Официальный некролог академии подтверждает его поэзию, прозу и работу над киносценариями.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Субъективный литературный рейтинг заменён проверяемым членством Сидрана в национальной академии.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Академия наук и искусств Боснии и Герцеговины",
+            url: "https://www.anubih.ba/abdulah-sidran-1944-2024/",
+            checkedAt,
+            findingRu:
+              "Академия фиксирует избрание Сидрана действительным членом в 2008 году.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный суперлатив заменён профессиональными ролями и официальным статусом в академии.",
+  },
+  {
+    key: "bosnia:alexa_santic",
+    originalSha256:
+      "da0b37b9bd82b773948774a457e8b8579e5c3cafe04cef97ce69d689e8f2b810",
+    reviewedTextRu:
+      "Поэт, драматург и переводчик, чья жизнь и литературная деятельность были тесно связаны с Мостаром.",
+    claims: [
+      {
+        textRu: "Алекса Шантич был поэтом, драматургом и переводчиком.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Музей Герцеговины в Мостаре",
+            url: "https://www.muzejhercegovine.com/en/140-years-of-aleksa-santic/",
+            checkedAt,
+            findingRu:
+              "Музейная биографическая справка подтверждает его деятельность как поэта, драматурга и переводчика.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Оценочный рейтинг заменён проверяемой связью жизни и литературной деятельности Шантича с Мостаром.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Музей Герцеговины в Мостаре",
+            url: "https://www.muzejhercegovine.com/en/140-years-of-aleksa-santic/",
+            checkedAt,
+            findingRu:
+              "Музей характеризует жизнь и творчество Шантича как неотделимые от Мостара.",
+          },
+          {
+            provider: "Музей Герцеговины в Мостаре",
+            url: "https://www.muzejhercegovine.com/spomen-kuca-svetozara-corovica/",
+            checkedAt,
+            findingRu:
+              "Постоянная экспозиция музея в Мостаре посвящена жизни и творчеству Алексы Шантича.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят; роли и связь с Мостаром подтверждены профильным музеем.",
+  },
+  {
+    key: "bosnia:branko_copic",
+    originalSha256:
+      "0debc50a9f2060fb5bdfc246a8086a70bcf23ac90207c61614cddd1e58006a66",
+    reviewedTextRu:
+      "Югославский писатель, уроженец Боснийской Краины. Писал романы, рассказы, стихи и произведения для детей; был действительным членом Сербской академии наук и искусств.",
+    claims: [
+      {
+        textRu: "Бранко Чопич был югославским писателем, родившимся в Боснийской Краине.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Сербская академия наук и искусств",
+            url: "https://www.sanu.ac.rs/clan/copic-branko/",
+            checkedAt,
+            findingRu:
+              "Официальная академическая биография указывает профессию писателя и рождение в Хашани в Боснийской Краине.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив заменён жанрами произведений и подтверждённым статусом действительного члена академии.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Сербская академия наук и искусств",
+            url: "https://www.sanu.ac.rs/clan/copic-branko/",
+            checkedAt,
+            findingRu:
+              "Профиль перечисляет романы, рассказы, стихи и книги для детей и фиксирует избрание действительным членом академии в 1968 году.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанная сравнительная оценка заменена географическим, жанровым и академическим фактами.",
+  },
+  {
+    key: "botswana:bessie_head",
+    originalSha256:
+      "7518e708b7d6b47a93cbf7762f4f9a003e1f01d8736ce665846acf4a8a6dead8",
+    reviewedTextRu:
+      "Южноафриканская и ботсванская писательница, автор романов и рассказов. В её прозе рассматриваются расовые предрассудки, общественные отношения и духовный опыт.",
+    claims: [
+      {
+        textRu:
+          "Бесси Хед была южноафриканской писательницей, жившей и работавшей в Ботсване и писавшей романы и рассказы.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Правительство Ботсваны, DailyNews",
+            url: "https://dailynews.gov.bw/news-detail/3414",
+            checkedAt,
+            findingRu:
+              "Государственная публикация подтверждает рождение в Южной Африке, переезд в Ботсвану и её романы и рассказы.",
+          },
+          {
+            provider: "Университет Ботсваны",
+            url: "https://www.ub.bw/programmes/humanities/english/bachelor-arts-degree-english",
+            checkedAt,
+            findingRu:
+              "Университетская программа рассматривает Бесси Хед как писательницу, связанную с литературой Ботсваны и Африки.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив заменён подтверждёнными темами прозы: расовыми предрассудками, общественными отношениями и духовным опытом.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Правительство Ботсваны, DailyNews",
+            url: "https://dailynews.gov.bw/news-detail/3414",
+            checkedAt,
+            findingRu:
+              "Государственный очерк связывает романы Хед с расовыми предрассудками, психологическими конфликтами и устройством общества.",
+          },
+          {
+            provider: "Правительство Ботсваны, DailyNews",
+            url: "https://dailynews.gov.bw/news-detail/77018",
+            checkedAt,
+            findingRu:
+              "Вторая публикация подчёркивает общественную и духовную проблематику её прозы.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Суперлатив снят; биографическая связь с двумя странами, жанры и темы подтверждены государственными и университетскими материалами.",
+  },
+  {
+    key: "brazil:clarice_lispector",
+    originalSha256:
+      "903088e89a707805658346cfd0710fc54223e450608d5f1d9335ce7d8f513d31",
+    reviewedTextRu:
+      "Бразильская писательница и журналистка, автор романов, рассказов, хроник и книг для детей.",
+    claims: [
+      {
+        textRu: "Клариси Лиспектор была бразильской писательницей и журналисткой.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://bndigital.bn.gov.br/clarice-lispector/",
+            checkedAt,
+            findingRu:
+              "Официальная биографическая страница подтверждает её литературную и журналистскую деятельность в Бразилии.",
+          },
+          {
+            provider: "Национальный архив Бразилии",
+            url: "https://www.gov.br/arquivonacional/pt-br/canais_atendimento/imprensa/copy_of_noticias/100-anos-de-clarice-lispector",
+            checkedAt,
+            findingRu:
+              "Государственный архив документирует биографию и работу Лиспектор как писательницы и журналистки.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Субъективный рейтинг заменён подтверждённым перечнем жанров: романы, рассказы, хроники и книги для детей.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Институт Морейры Саллеса, архив Клариси Лиспектор",
+            url: "https://site.claricelispector.ims.com.br/",
+            checkedAt,
+            findingRu:
+              "Профиль архива перечисляет романы, рассказы, детские книги и газетные хроники Лиспектор.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Оценочный суперлатив заменён профессиональными ролями и библиографически подтверждёнными жанрами.",
+  },
+  {
+    key: "brazil:goncalves_dias",
+    originalSha256:
+      "ca0dd84a0a19b09156df43f5dfa36588d5aa39e8202f54aab25e87bf9076614c",
+    reviewedTextRu:
+      "Бразильский поэт, драматург и этнолог, представитель романтизма. В поэзии и исследованиях обращался к природе, истории и языкам коренных народов Бразилии.",
+    claims: [
+      {
+        textRu:
+          "Гонсалвис Диас был бразильским поэтом, драматургом и этнологом эпохи романтизма.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Бразильская академия литературы",
+            url: "https://www.academia.org.br/academicos/goncalves-dias/biografia",
+            checkedAt,
+            findingRu:
+              "Официальная академическая биография подтверждает его поэтическую, драматургическую и этнологическую деятельность и принадлежность к романтизму.",
+          },
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://www.gov.br/bn/pt-br/atuacao/colecoes-e-servicos-aos-leitores/manuscritos/artigos-manuscritos/colecoes-da-secao-de-manuscritos-goncalves-dias/",
+            checkedAt,
+            findingRu:
+              "Национальная библиотека перечисляет те же профессиональные роли и характеризует Диаса как романтика.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив заменён документированными направлениями его поэзии и этнологических исследований.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://www.gov.br/bn/pt-br/atuacao/colecoes-e-servicos-aos-leitores/manuscritos/artigos-manuscritos/colecoes-da-secao-de-manuscritos-goncalves-dias/",
+            checkedAt,
+            findingRu:
+              "Библиотечная справка связывает его наследие с бразильской природой, историей, индейской тематикой и изучением языка тупи.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Сравнительная оценка убрана; литературное направление, роли и тематические области подтверждены академией и национальной библиотекой.",
+  },
+  {
+    key: "brazil:graciliano_ramos",
+    originalSha256:
+      "9b3ae3797a15afec51dafa70fd4152d94a90125308cd49a6b37e0b036a1b037e",
+    reviewedTextRu:
+      "Бразильский писатель, мемуарист, критик и журналист, представитель «романа 1930-х годов». Его проза обращена к жизни северо-востока Бразилии и социальным противоречиям.",
+    claims: [
+      {
+        textRu:
+          "Грасилиану Рамус был бразильским писателем, мемуаристом, критиком и журналистом, связанным с «романом 1930-х годов».",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Институт бразильских исследований Университета Сан-Паулу",
+            url: "https://www.ieb.usp.br/graciliano-ramos/",
+            checkedAt,
+            findingRu:
+              "Университетский архив подтверждает его работу писателя, мемуариста, критика и журналиста.",
+          },
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://bndigital.bn.gov.br/graciliano-ramos/",
+            checkedAt,
+            findingRu:
+              "Национальная библиотека относит Рамуса к литературному явлению «романа 1930-х годов».",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив и широкая жанровая этикетка заменены географической и социальной проблематикой прозы Рамуса.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Институт Морейры Саллеса, архив Грасилиану Рамуса",
+            url: "https://correio.ims.com.br/perfil/graciliano-ramos/",
+            checkedAt,
+            findingRu:
+              "Архивный профиль связывает прозу Рамуса с северо-востоком Бразилии, сертаном и социальной несправедливостью.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанный рейтинг заменён профессиональными ролями, литературно-историческим контекстом и подтверждённой проблематикой.",
+  },
+  {
+    key: "brazil:joao_guimaraes_rosa",
+    originalSha256:
+      "d73b8b1165085d45f3ab44b1f9818e31641b2bb07ecc4e188d86a9928eb514fd",
+    reviewedTextRu:
+      "Бразильский писатель, дипломат и врач. В прозе обращался к бразильскому сертану и экспериментировал с лексикой, синтаксисом и повествовательной формой.",
+    claims: [
+      {
+        textRu: "Жуан Гимарайнс Роза был бразильским писателем, дипломатом и врачом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Бразильская академия литературы",
+            url: "https://www.academia.org.br/academicos/joao-guimaraes-rosa/biografia",
+            checkedAt,
+            findingRu:
+              "Официальная академическая биография подтверждает литературную, дипломатическую и медицинскую деятельность автора.",
+          },
+          {
+            provider: "Институт бразильских исследований Университета Сан-Паулу",
+            url: "https://www.ieb.usp.br/joao-guimaraes-rosa/",
+            checkedAt,
+            findingRu:
+              "Университетский архив независимо перечисляет те же профессиональные роли.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Суперлатив заменён подтверждёнными особенностями прозы: образом сертана и языковыми экспериментами.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Бразильская академия литературы",
+            url: "https://www.academia.org.br/academicos/joao-guimaraes-rosa/biografia",
+            checkedAt,
+            findingRu:
+              "Академия отмечает использование материала бразильского сертана, обновление лексики и синтаксиса и эксперименты с повествованием.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Недоказанная оценка мастерства заменена ролями, географическим материалом и формальными особенностями прозы.",
+  },
+  {
+    key: "brazil:jorge_amado",
+    originalSha256:
+      "c38cc4e42641bea1616ccba5951bf8c1af1d5b15c2c599112f80184bb3a8932e",
+    reviewedTextRu:
+      "Бразильский писатель из Баии. В романах изображал общество, культуру и повседневную жизнь Баии; его книги переведены на десятки языков.",
+    claims: [
+      {
+        textRu: "Жоржи Амаду был бразильским писателем из Баии.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Фонд «Дом Жоржи Амаду»",
+            url: "https://jorgeamado.org.br/jorge-amado/",
+            checkedAt,
+            findingRu:
+              "Официальный фонд наследия подтверждает его происхождение из Баии и писательскую деятельность.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Оценка мировой известности заменена подтверждённым изображением Баии в романах и переводами книг на десятки языков.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias/jorge-amado-uma-exposicao-na-biblioteca-nacional",
+            checkedAt,
+            findingRu:
+              "Национальная библиотека связывает книги Амаду с людьми, обществом и культурой Баии XX века.",
+          },
+          {
+            provider: "Фонд «Дом Жоржи Амаду»",
+            url: "https://jorgeamado.org.br/jorge-amado/",
+            checkedAt,
+            findingRu:
+              "Фонд сообщает о переводах произведений Амаду на 49 языков.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Субъективная формула мировой известности заменена географически конкретной тематикой и измеримым распространением переводов.",
+  },
+  {
+    key: "brazil:jose_de_alencar",
+    originalSha256:
+      "5bdadacea53a7003e7572160f0e28d66dba77bcbeb09fed77e90c183299aa00b",
+    reviewedTextRu:
+      "Бразильский романист, драматург и журналист, представитель романтизма. Писал индейские, исторические, городские и региональные романы.",
+    claims: [
+      {
+        textRu:
+          "Жозе ди Аленкар был бразильским романистом, драматургом и журналистом эпохи романтизма.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Бразильская академия литературы",
+            url: "https://www.academia.org.br/academicos/jose-de-alencar/biografia",
+            checkedAt,
+            findingRu:
+              "Официальная академическая биография подтверждает романтическое направление и работу Аленкара в прозе, драматургии и журналистике.",
+          },
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://bndigital.bn.gov.br/jose-de-alencar/",
+            checkedAt,
+            findingRu:
+              "Национальная библиотека подтверждает литературные и журналистские роли и основные произведения автора.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Недоказанные формулы «основатель» и «крупнейший» заменены подтверждённой типологией романов Аленкара.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Бразильская академия литературы",
+            url: "https://www.academia.org.br/academicos/jose-de-alencar/biografia",
+            checkedAt,
+            findingRu:
+              "Академическая биография разделяет его романы на индейские, исторические, городские и региональные.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Абсолютная формула об основании национального романа и сравнительный суперлатив удалены; направление, роли и типология произведений подтверждены.",
+  },
+  {
+    key: "brazil:machado_de_assis",
+    originalSha256:
+      "d0573ae2720985326c8a70b9f643830ba913a2d1d5eda04c5556b96b523e6010",
+    reviewedTextRu:
+      "Бразильский романист, новеллист, хронист, поэт и драматург. Был одним из основателей и первым президентом Бразильской академии литературы.",
+    claims: [
+      {
+        textRu:
+          "Машаду ди Ассис был бразильским романистом, новеллистом, хронистом, поэтом и драматургом.",
+        verdict: "supported",
+        evidence: [
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://bndigital.bn.gov.br/machado-de-assis-2/",
+            checkedAt,
+            findingRu:
+              "Официальная биографическая страница перечисляет его работу в романе, короткой прозе, хронике, поэзии и драматургии.",
+          },
+          {
+            provider: "Институт бразильских исследований Университета Сан-Паулу",
+            url: "https://www.ieb.usp.br/machado-de-assis/",
+            checkedAt,
+            findingRu:
+              "Университетский архив подтверждает широкий жанровый диапазон его наследия.",
+          },
+        ],
+      },
+      {
+        textRu:
+          "Абсолютный суперлатив и спорная формула об основании реализма заменены документированными ролями в Бразильской академии литературы.",
+        verdict: "corrected",
+        evidence: [
+          {
+            provider: "Национальная библиотека Бразилии",
+            url: "https://bndigital.bn.gov.br/machado-de-assis-2/",
+            checkedAt,
+            findingRu:
+              "Национальная библиотека называет Машаду ди Ассиса одним из основателей и первым президентом академии.",
+          },
+          {
+            provider: "Министерство образования Бразилии, портал Машаду ди Ассиса",
+            url: "https://machado.mec.gov.br/",
+            checkedAt,
+            findingRu:
+              "Государственный портал подтверждает его избрание первым президентом академии в 1897 году.",
+          },
+        ],
+      },
+    ],
+    reviewer,
+    decision: "corrected",
+    notes:
+      "Абсолютная оценка и упрощённая литературно-историческая формула заменены жанровыми и институциональными фактами.",
+  },
+] as const;
+
+function finalizeReviewRecord(
+  record: Omit<WriterBiographyFactReviewRecord, "applicableTextRu">
+): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu:
+      record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch05: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch05Base.map(finalizeReviewRecord);

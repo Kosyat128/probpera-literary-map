@@ -70,7 +70,7 @@ export const nepal: Country = {
 
       years: "1909–1959",
 
-      birthDate: "1909-11-13",
+      birthDate: "1909-11-12",
 
       deathDate: "1959-09-14",
 

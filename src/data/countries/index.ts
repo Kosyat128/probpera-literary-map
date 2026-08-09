@@ -4,6 +4,8 @@ import { mergeWriterPortraits } from "./generated/writerPortraits";
 import { mergeNobelLaureates } from "./nobelLaureatesSupplement";
 import { mergeReviewedWriterBiographyDrafts } from "./writerBiographyResearch";
 import { writerBiographyResearchDrafts } from "./writerBiographyResearchBatches";
+import { mergeWriterBiographyLegacyCorrections } from "./writerBiographyLegacyCorrections";
+import { mergeWriterBiographyFactReviews } from "./writerBiographyFactReviews";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
 import { countryFlag } from "../../utils/countryFlag";
@@ -457,19 +459,42 @@ const curatedCountries: Country[] = [
   zimbabwe,
 ];
 
-export const countries: Country[] = mergeReviewedWriterBiographyDrafts(
-  mergeWriterPortraits(
-    mergeVerifiedBookSupplements(
-      mergeArticleReferencedBooks(
-        mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+const countriesBeforeWriterBiographyCorrections: Country[] =
+  mergeReviewedWriterBiographyDrafts(
+    mergeWriterPortraits(
+      mergeVerifiedBookSupplements(
+        mergeArticleReferencedBooks(
+          mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+        )
       )
-    )
-  ),
-  writerBiographyResearchDrafts
-).map(
-  (country) => ({
+    ),
+    writerBiographyResearchDrafts
+  ).map((country) => ({
     ...country,
     flag: country.flag || countryFlag(country.code),
-  })
+  }));
+
+/**
+ * Immutable source for the book archive. Writer-only biography and identity
+ * quarantine must not remove or rename pending book cards: those records stay
+ * in the editorial queue until the books themselves are reviewed.
+ */
+export const bookArchiveCountries: Country[] =
+  countriesBeforeWriterBiographyCorrections;
+
+/** Stable pre-review source used by SHA-pinned claim-review tests. */
+export const writerBiographyFactReviewSourceCountries: Country[] =
+  mergeWriterBiographyLegacyCorrections(
+    countriesBeforeWriterBiographyCorrections,
+    { preserveQuarantined: true }
+  );
+
+const publicWriterCountries = mergeWriterBiographyLegacyCorrections(
+  countriesBeforeWriterBiographyCorrections
+);
+
+/** Public globe/writer corpus after writer-only corrections and fact review. */
+export const countries: Country[] = mergeWriterBiographyFactReviews(
+  publicWriterCountries
 );
 export { generatedWriterDraftCount };

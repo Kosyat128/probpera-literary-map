@@ -174,7 +174,7 @@ export const israel: Country = {
       name: "Цруя Шалев",
       fullName: "Zeruya Shalev",
       years: "1959–",
-      birthDate: "1959-06-13",
+      birthDate: "1959-04-13",
       deathDate: "",
       birthPlace: "Кибуц Кинерет",
       portrait: "",

@@ -10,10 +10,10 @@ import {
   type BookEnrichmentActionsPayload,
 } from "./bookArchive";
 import { isPublicBook } from "./bookQuality";
-import { countries } from "./countries";
+import { bookArchiveCountries } from "./countries";
 import type { WorkProfile } from "./countries/types";
 
-const archive = buildBookArchive(countries);
+const archive = buildBookArchive(bookArchiveCountries);
 const editorialSeries = [
   ["Три мушкетёра", 1844, "verified"],
   ["Вишнёвый сад", 1904, "verified"],
@@ -43,7 +43,7 @@ describe("редакционная серия книжного архива", ()
   );
 
   it("не хранит названия подробных карточек второй раз в legacy-списках", () => {
-    const duplicates = countries.flatMap((country) =>
+    const duplicates = bookArchiveCountries.flatMap((country) =>
       country.writers.flatMap((writer) => {
         const legacyTitles = new Set(
           (writer.works || []).map((title) => title.toLocaleLowerCase("ru"))

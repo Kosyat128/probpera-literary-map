@@ -65,8 +65,8 @@ export const chad: Country = {
 
     {
       id: "ahmat_taboye",
-      name: "Ахмат Табойе",
-      fullName: "Ahmat Taboye",
+      name: "Ахмад Табойе",
+      fullName: "Ahmad Taboye",
       years: "1959–",
       birthDate: "1959",
       deathDate: "",

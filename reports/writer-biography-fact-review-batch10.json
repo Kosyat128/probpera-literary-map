@@ -1,0 +1,598 @@
+{
+  "batch": "10",
+  "generatedAt": "2026-08-09",
+  "summary": {
+    "records": 20,
+    "unchanged": 0,
+    "corrected": 18,
+    "held": 2
+  },
+  "records": [
+    {
+      "key": "afghanistan:bahauddin_majrooh",
+      "originalSha256": "c38ce0aed25ffca6a2f6953dd8d72327475817267dcb323055e46e3ff3ae8159",
+      "reviewedTextRu": "Афганский философ, поэт и университетский преподаватель. Автор философской поэтической аллегории «The Ego Monster» («Azhdaha-i Khudi»), в которой осмысляются тирания и идеология.",
+      "claims": [
+        {
+          "textRu": "Бахауддин Маджрух был афганским философом, поэтом и преподавателем Кабульского университета; ему принадлежит философская поэтическая аллегория «The Ego Monster» («Azhdaha-i Khudi») о власти тирании и идеологии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "UCLA Asia Pacific Center",
+              "url": "https://www.international.ucla.edu/apc/article/113546",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский материал идентифицирует Сайеда Бахауддина Маджруха как афганского философа и бывшего преподавателя Кабульского университета и называет его автором The Ego Monster."
+            },
+            {
+              "provider": "University of California Press / eScholarship",
+              "url": "https://publishing.cdlib.org/ucpressebooks/view?anchor.id=0&brand=eschol&chunk.id=d0e3371&doc.view=content&docId=ft3p30056w&toc.depth=1",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическое издание характеризует Маджруха как преподавателя и декана Кабульского университета, суфийского поэта и автора расширенной поэтической аллегории The Ego Monster о тирании."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Широкая формула о восточной философии и свободе заменена документированными профессиями и конкретным произведением. Shared country files не изменялись.",
+      "applicableTextRu": "Афганский философ, поэт и университетский преподаватель. Автор философской поэтической аллегории «The Ego Monster» («Azhdaha-i Khudi»), в которой осмысляются тирания и идеология."
+    },
+    {
+      "key": "afghanistan:khaled_hosseini",
+      "originalSha256": "75c117a7d4e42b7e08619df0e94d87339bcc05449f0b054aac0a400a5ab35a90",
+      "reviewedTextRu": "Афгано-американский писатель, родившийся в Кабуле и переехавший в США. Автор романов «The Kite Runner», «A Thousand Splendid Suns» и «And the Mountains Echoed».",
+      "claims": [
+        {
+          "textRu": "Халед Хоссейни родился в Кабуле, живёт в США и написал романы «The Kite Runner», «A Thousand Splendid Suns» и «And the Mountains Echoed».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Khaled Hosseini, официальный сайт автора",
+              "url": "https://khaledhosseini.com/bio/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография фиксирует рождение в Кабуле, переезд семьи в США и перечисляет три романа автора."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/53251/khaled-hosseini/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская карточка подтверждает афганское происхождение, жизнь автора в Северной Калифорнии и авторство трёх названных романов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Непроверяемое обобщение о миллионах читателей заменено биографическими фактами и библиографией. Shared country files не изменялись.",
+      "applicableTextRu": "Афгано-американский писатель, родившийся в Кабуле и переехавший в США. Автор романов «The Kite Runner», «A Thousand Splendid Suns» и «And the Mountains Echoed»."
+    },
+    {
+      "key": "afghanistan:rabia_balkhi",
+      "originalSha256": "a664ff8cdc92c31dc707f13e6ae9787a04d1d7bf14bc837b2b591fb8020d3751",
+      "reviewedTextRu": "Персидоязычная поэтесса, связанная с Балхом и традиционно относимая к X веку. Её стихи известны по средневековым антологиям и позднейшей литературной традиции, тогда как многие подробности биографии имеют легендарный характер.",
+      "claims": [
+        {
+          "textRu": "Рабиа Балхи — персидоязычная поэтесса, традиционно связанная с Балхом и X веком; её корпус передан антологиями, а биографическое предание нельзя полностью принимать как документированную историю.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Encyclopaedia Iranica, Women Poets Iranica",
+              "url": "https://poets.iranicaonline.org/article/rabi%EA%9C%A5ah-quzdari-the-vanguard-of-womens-poetry/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Научная энциклопедия рассматривает Рабиа как раннюю персидскую поэтессу, объясняет антологическую передачу стихов и разграничивает текстовые свидетельства и легенду."
+            },
+            {
+              "provider": "Cambridge University Press",
+              "url": "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/unearthing-rabias-grave-placemaking-shrines-and-contested-traditions-in-balkh-afghanistan/C60CAA3E6681F3233D0F8211212C7CA5",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Рецензируемое исследование связывает традицию о Рабиа с Балхом и подчёркивает спорность и позднее формирование многих биографических подробностей."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Категорическое первенство снято; хронология, связь с Балхом и легендарность биографии сформулированы осторожно. Shared country files не изменялись.",
+      "applicableTextRu": "Персидоязычная поэтесса, связанная с Балхом и традиционно относимая к X веку. Её стихи известны по средневековым антологиям и позднейшей литературной традиции, тогда как многие подробности биографии имеют легендарный характер."
+    },
+    {
+      "key": "albania:andon_zako_cajupi",
+      "originalSha256": "2dbe7f265d7e1bc781f9910f38d63cd387c1904c89467a4136de4f12ad4f8f7b",
+      "reviewedTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений — поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër».",
+      "claims": [
+        {
+          "textRu": "Андон Зако Чаюпи был албанским поэтом и драматургом национального возрождения и написал «Baba-Tomorri» и стихотворную комедию «Katërmbëdhjetë vjeç dhëndër».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Академия наук Албании",
+              "url": "https://akad.gov.al/wp-content/uploads/2026/04/Buletini-Mars-2026_compressed.pdf",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Бюллетень Академии называет Чаюпи поэтом, драматургом и деятелем национального возрождения и фиксирует издание Baba Tomorri в 1902 году."
+            },
+            {
+              "provider": "Национальная библиотека Албании",
+              "url": "https://bksh.al/cgi-bin/alis/opac-MARCdetail.pl?biblionumber=51696",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальный библиотечный каталог атрибутирует Чаюпи произведение Katërmbëdhjetë vjeç dhëndër и определяет его как стихотворную комедию."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Исходная точная характеристика дополнена двумя документированными произведениями; оценочные ранги не добавлялись. Shared country files не изменялись.",
+      "applicableTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений — поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër»."
+    },
+    {
+      "key": "albania:besnik_mustafaj",
+      "originalSha256": "1b196e039d37b2974c7c82faf6a37bb7b26445cab18aad8c77dea77fafb50a1b",
+      "reviewedTextRu": "Албанский писатель, поэт и переводчик, работавший также дипломатом. Автор романа «Vera pa kthim», а также книг прозы, стихов и эссе.",
+      "claims": [
+        {
+          "textRu": "Бесник Мустафай — албанский писатель, поэт, переводчик и бывший дипломат; роман «Vera pa kthim» входит в его библиографию.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Botimet Toena",
+              "url": "https://toena.al/autoret/detajet?id=4",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Албанский издатель подтверждает писательскую, поэтическую, переводческую и дипломатическую деятельность Мустафая и перечисляет Vera pa kthim среди его книг."
+            },
+            {
+              "provider": "Éditions Albin Michel",
+              "url": "https://www.albin-michel.fr/besnik-mustafaj",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Французский издатель идентифицирует Бесника Мустафая как албанского автора и публикует его авторскую библиографию, подтверждая литературную идентичность карточки."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Расплывчатое «современный» заменено конкретными литературными ролями, дипломатической работой и произведением. Shared country files не изменялись.",
+      "applicableTextRu": "Албанский писатель, поэт и переводчик, работавший также дипломатом. Автор романа «Vera pa kthim», а также книг прозы, стихов и эссе."
+    },
+    {
+      "key": "albania:fan_noli",
+      "originalSha256": "ad070f4f4a3a3a512b87d610e5f3bd38d3e60942cbd9561f963b379775512180",
+      "reviewedTextRu": "Албанский писатель, поэт, переводчик, историк и общественно-политический деятель. Переводил на албанский произведения Шекспира и других авторов и написал исследования об истории Скандербега.",
+      "claims": [
+        {
+          "textRu": "Фан Ноли работал как албанский поэт, переводчик, историк и политический деятель; его наследие включает переводы Шекспира и исторические труды о Скандербеге.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Albanian Literature, архив Роберта Элси",
+              "url": "https://www.albanianliterature.net/authors/classical/noli/index.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Специализированный архив описывает Ноли как поэта, историка и переводчика, перечисляет переводы и обе версии его исследования о Скандербеге."
+            },
+            {
+              "provider": "Store norske leksikon",
+              "url": "https://snl.no/Fan_Noli",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная норвежская энциклопедия независимо подтверждает писательскую, переводческую, историческую и политическую деятельность Ноли и его переводы Шекспира."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Сохранены исходные роли и добавлены только подтверждённые переводческая и историческая работы. Shared country files не изменялись.",
+      "applicableTextRu": "Албанский писатель, поэт, переводчик, историк и общественно-политический деятель. Переводил на албанский произведения Шекспира и других авторов и написал исследования об истории Скандербега."
+    },
+    {
+      "key": "algeria:boualem_sansal",
+      "originalSha256": "2830f175754fce203100131902e6b765ed27d3255b4342d5a84185b44aaf406e",
+      "reviewedTextRu": "Алжирский франкоязычный писатель и эссеист. Автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde».",
+      "claims": [
+        {
+          "textRu": "Буалем Сансаль — родившийся в Алжире франкоязычный писатель и эссеист, автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Académie française",
+              "url": "https://www.academie-francaise.fr/les-immortels/boualem-sansal",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография и библиография Академии подтверждают место рождения, писательскую деятельность и три указанных романа."
+            },
+            {
+              "provider": "Société des gens de lettres",
+              "url": "https://www.sgdl.org/sgdl-accueil/les-prix/archives/prix-baudelaire?catid=223&id=2021%3Apresent-biographie-de-boualem-sansal&view=article",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профессиональная писательская организация характеризует Сансаля как алжирского франкоязычного романиста и эссеиста и перечисляет его основные произведения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Обобщённая тематика заменена проверяемыми жанрами и названиями книг; сравнительные оценки исключены. Shared country files не изменялись.",
+      "applicableTextRu": "Алжирский франкоязычный писатель и эссеист. Автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde»."
+    },
+    {
+      "key": "andorra:albert_salvado",
+      "originalSha256": "9a0b7e474f116c8a1ce90d825f4a6c3a820093b1c54f36ab5f7fbe56a1488e0e",
+      "reviewedTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений — трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году.",
+      "claims": [
+        {
+          "textRu": "Альберт Сальвадо был андоррским писателем исторической прозы, автором трилогий «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; «Els ulls d’Anníbal» получил премию Carlemany 2002 года.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Govern d’Andorra",
+              "url": "https://www.govern.ad/ca/w/el-govern-i-el-consell-general-homenatgen-a-albert-salvado-i-la-seva-novel-la-historica-1",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Правительство Андорры посвящает материал исторической прозе Сальвадо и подтверждает его андоррскую литературную идентичность и произведения."
+            },
+            {
+              "provider": "Associació d’Escriptors en Llengua Catalana",
+              "url": "https://www.escriptors.cat/autors/salvadoa/portic",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Профессиональная ассоциация фиксирует рождение автора в Андорре, специализацию на исторических романах, обе трилогии и премию Carlemany за Els ulls d’Anníbal."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Краткая исходная формула конкретизирована двумя циклами и документированной премией без оценочного ранжирования. Shared country files не изменялись.",
+      "applicableTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений — трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году."
+    },
+    {
+      "key": "andorra:joan_peruga",
+      "originalSha256": "93664e979979c79cf50b9f5e2e92c2b9b75ebcec10779999f6e0f23cb28add93",
+      "reviewedTextRu": "Андоррский писатель, историк и преподаватель, пишущий на каталонском языке. Его роман «Últim estiu a Ordino» обращается к истории семьи Арень-Пландолит и переменам в Андорре конца XIX века.",
+      "claims": [
+        {
+          "textRu": "Жоан Перуга — андоррский писатель, историк и преподаватель; в романе «Últim estiu a Ordino» он обращается к семье Арень-Пландолит и истории Андорры конца XIX века.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Govern d’Andorra",
+              "url": "https://www.govern.ad/ca/w/nova-versio-d-autor-de-l-obra-ultim-estiu-a-ordino-1",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Правительственный материал называет Перугу андоррским автором и преподавателем и связывает действие романа с домом Арень-Пландолит."
+            },
+            {
+              "provider": "Editors d’Andorra",
+              "url": "https://editorsandorra.com/publicacio/ultim-estiu-a-ordino/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская карточка подтверждает авторство, каталонский язык и историческую канву романа о семье Арень-Пландолит и Андорре конца XIX века."
+            },
+            {
+              "provider": "Joan Peruga, официальный сайт автора",
+              "url": "https://www.joanperuga.com/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Авторская биография прямо определяет Перугу как историка и писателя, сообщает о его преподавательской работе и называет Últim estiu a Ordino переходом от истории к художественной прозе."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Общее указание на современную литературу заменено профессиями, языком и содержанием конкретного романа. Shared country files не изменялись.",
+      "applicableTextRu": "Андоррский писатель, историк и преподаватель, пишущий на каталонском языке. Его роман «Últim estiu a Ordino» обращается к истории семьи Арень-Пландолит и переменам в Андорре конца XIX века."
+    },
+    {
+      "key": "andorra:josep_fonbernat",
+      "originalSha256": "bb8888a1f34436bf962838ddf4c097a838cf3ba7ab08073012cf384bf7555a3e",
+      "reviewedTextRu": "Идентичность современного андоррского автора «Josep Fonbernat» 1955 года рождения по авторитетным источникам не установлена. Доступные архивы относятся к другому лицу — каталонскому музыканту, политику и автору Josep Fontbernat i Verdaguer, жившему в 1896–1977 годах.",
+      "claims": [
+        {
+          "textRu": "Публичную литературную личность «Josep Fonbernat» 1955 года рождения установить не удалось; найденный в институциональных архивах Josep Fontbernat i Verdaguer — другое историческое лицо.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Govern d’Andorra, Arxiu Nacional",
+              "url": "https://www.govern.ad/ca/l/4517901",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Архив Андорры описывает фонд Josep Fontbernat i Verdaguer — музыканта и политического деятеля иной эпохи; совпадения с современной карточкой нет."
+            },
+            {
+              "provider": "Parlament de Catalunya",
+              "url": "https://www.parlament.cat/document/intrade/23155896",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Парламентский биографический материал датирует жизнь Josep Fontbernat i Verdaguer 1896–1977 годами и подтверждает, что это не заявленный автор 1955 года рождения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "held",
+      "notes": "Quarantine recommendation: не публиковать и не подменять карточку историческим Josep Fontbernat i Verdaguer; требуется новая идентификация с национальным либо библиотечным authority ID. Shared country files не изменялись.",
+      "applicableTextRu": null
+    },
+    {
+      "key": "angola:ana_paula_tavares",
+      "originalSha256": "d56dbf34f58569d97543405e18da0344d7ddb4b9617e91b98c4319cf568175cb",
+      "reviewedTextRu": "Ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году. Автор сборников «Ritos de Passagem» и «O Lago da Lua»; её исследовательская работа связана с историей и культурным наследием Анголы.",
+      "claims": [
+        {
+          "textRu": "Ана Паула Тавареш — ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году; она написала «Ritos de Passagem» и «O Lago da Lua» и исследовала культурное наследие Анголы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Universidade de Lisboa, CESA Literature Archive",
+              "url": "https://cesa.rc.iseg.ulisboa.pt/nevis/publication/view/50/1/2/11",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Университетский архив подтверждает рождение в Лубанго в 1952 году, профессии поэтессы и историка, обе книги и исследования культурного наследия."
+            },
+            {
+              "provider": "Universidade NOVA de Lisboa",
+              "url": "https://novaresearch.unl.pt/en/publications/ana-paula-tavares-ritos-de-passagem/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академическая запись независимо называет Тавареш ангольской поэтессой, историком и преподавателем, указывает 1952 год и книгу Ritos de Passagem."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "В wikidataIdentityReviewQueue Q59186426 остаётся лишь кандидатом: у элемента нет сопоставимой даты рождения и литературной профессии; связывать его без authority ID не рекомендуется. Shared country files не изменялись.",
+      "applicableTextRu": "Ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году. Автор сборников «Ritos de Passagem» и «O Lago da Lua»; её исследовательская работа связана с историей и культурным наследием Анголы."
+    },
+    {
+      "key": "angola:manuel_rui",
+      "originalSha256": "136f908b6c0014b3d6d964d14bac7433d0b3257a21f2388c75364bb633acc5bc",
+      "reviewedTextRu": "Ангольский писатель и поэт. Автор повести «Quem me dera ser onda» и текста государственного гимна Анголы «Angola Avante».",
+      "claims": [
+        {
+          "textRu": "Мануэл Руй — ангольский писатель и поэт, автор «Quem me dera ser onda» и слов государственного гимна «Angola Avante».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Centro Cultural Manuel Rui, Governo de Angola",
+              "url": "https://ccmr.gov.ao/web/noticias/quem-e-manuel-rui",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Государственный культурный центр подтверждает литературные роли Мануэла Руя, авторство Quem me dera ser onda и текста гимна Angola Avante."
+            },
+            {
+              "provider": "Universidade Federal de Santa Maria",
+              "url": "https://periodicos.ufsm.br/LA/article/view/23420",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Рецензируемая университетская публикация идентифицирует Мануэла Руя как ангольского автора и рассматривает Quem me dera ser onda как его произведение."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Неподтверждённая в доступных источниках роль сценариста снята; сохранены поэзия, проза и документированное авторство текста гимна. Shared country files не изменялись.",
+      "applicableTextRu": "Ангольский писатель и поэт. Автор повести «Quem me dera ser onda» и текста государственного гимна Анголы «Angola Avante»."
+    },
+    {
+      "key": "antigua_and_barbuda:alison_hughes",
+      "originalSha256": "8a9fd52fc32b83e54dbb92c7b4c56a0f9d9060043318b912740dfd480e462b2f",
+      "reviewedTextRu": "Личность писательницы из Антигуа и Барбуды по имени Alison Hughes с указанными в карточке биографией и произведениями по авторитетным источникам не установлена. Надёжные издательские источники относятся к канадской детской писательнице Элисон Хьюз из Эдмонтона и не подтверждают сведения этой карточки.",
+      "claims": [
+        {
+          "textRu": "Карточку Alison Hughes нельзя связать с установленной писательницей Антигуа и Барбуды; доступные издательские биографии описывают другую, канадскую авторку детских книг.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Hachette Book Group",
+              "url": "https://www.hachettebookgroup.com/contributor/alison-hughes/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская биография относит писательницу Alison Hughes к Канаде и перечисляет иной корпус детских книг, не совпадающий с карточкой Антигуа и Барбуды."
+            },
+            {
+              "provider": "Orca Book Publishers",
+              "url": "https://blog.orcabook.com/author-feature-alison-hughes/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Независимый издатель идентифицирует Элисон Хьюз как автора из Эдмонтона, Альберта; заявленные в карточке национальность, дата и произведения не подтверждаются."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "held",
+      "notes": "Quarantine recommendation: оставить applicableTextRu=null, не восстанавливать удалённый ложный Q3611840 и не использовать связанный портрет; требуется новая институциональная идентификация автора карточки. Shared country files не изменялись.",
+      "applicableTextRu": null
+    },
+    {
+      "key": "argentina:alberto_manguel",
+      "originalSha256": "61501da44e8a6e0eb4a842f5fc11a0a242379eabc14388371c443e4328bbed45",
+      "reviewedTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг — «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places».",
+      "claims": [
+        {
+          "textRu": "Альберто Мангель — аргентинско-канадский писатель, переводчик и редактор, автор «A History of Reading» и «The Library at Night» и соавтор «The Dictionary of Imaginary Places».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Instituto Cervantes",
+              "url": "https://cultura.cervantes.es/varsovia/es/Alberto-Manguel%2C-bibliotecario-por-un-d%C3%ADa/181613",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институт Сервантеса подтверждает аргентинско-канадскую идентичность, писательскую и переводческую работу Мангеля и его книги о чтении и библиотеках."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinlibros.com/es/1198-alberto-manguel",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская биография подтверждает профессии автора и перечисляет A History of Reading, The Library at Night и совместный с Джанни Гуадалупи Dictionary of Imaginary Places."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Общая формула о трудах по истории литературы заменена конкретными ролями и библиографией. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг — «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places»."
+    },
+    {
+      "key": "argentina:jose_hernandez",
+      "originalSha256": "ebd49b286ad3413ef29a47d034aaa4c0649bde2dff91bc87aa07ffd318b385b5",
+      "reviewedTextRu": "Аргентинский поэт, журналист и политик. Автор поэмы «El gaucho Martín Fierro» и её продолжения «La vuelta de Martín Fierro», относящихся к гауческой литературе.",
+      "claims": [
+        {
+          "textRu": "Хосе Эрнандес был аргентинским поэтом, журналистом и политиком и написал «El gaucho Martín Fierro» и продолжение «La vuelta de Martín Fierro», произведения гауческой литературы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Biblioteca Nacional Mariano Moreno",
+              "url": "https://fierro.bn.gov.ar/noticias/10-de-noviembre-de-1834-nace-jose-hernandez",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека подтверждает роли Эрнандеса, его авторство обеих частей Martín Fierro и их место в гауческой литературе."
+            },
+            {
+              "provider": "Biblioteca del Congreso de la Nación Argentina",
+              "url": "https://bcn.gob.ar/literatura-y-narrativa/publicacion-martin-fierro",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотека Конгресса документирует публикацию El gaucho Martín Fierro в 1872 году и La vuelta de Martín Fierro в 1879 году и атрибутирует их Хосе Эрнандесу."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Оценочное обозначение «национальный эпос» заменено точным жанром, двумя названиями и литературной традицией. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский поэт, журналист и политик. Автор поэмы «El gaucho Martín Fierro» и её продолжения «La vuelta de Martín Fierro», относящихся к гауческой литературе."
+    },
+    {
+      "key": "argentina:juan_gelman",
+      "originalSha256": "fe45376d1539780ac25fb19ed89bd82b1ec4014312052e62df4c796bc4abe109",
+      "reviewedTextRu": "Аргентинский поэт, переводчик и журналист. Автор сборников «Violín y otras cuestiones» и «Gotán»; в 2007 году получил премию Сервантеса.",
+      "claims": [
+        {
+          "textRu": "Хуан Хельман был аргентинским поэтом, переводчиком и журналистом, написал «Violín y otras cuestiones» и «Gotán» и получил премию Сервантеса в 2007 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Instituto Cervantes",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/viena_juan_gelman.htm",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальная биография подтверждает профессии Хельмана, ранние сборники Violín y otras cuestiones и Gotán и премию Сервантеса 2007 года."
+            },
+            {
+              "provider": "Biblioteca Nacional Mariano Moreno",
+              "url": "https://www.bn.gov.ar/noticias/3-de-mayo-de-1930-nace-juan-gelman",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека независимо подтверждает работу Хельмана как поэта, переводчика и журналиста, перечисляет Violín y otras cuestiones и Gotán и отмечает премию Сервантеса."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Сравнительный ранг среди поэтов снят; оставлены профессии, две книги и официальная награда. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский поэт, переводчик и журналист. Автор сборников «Violín y otras cuestiones» и «Gotán»; в 2007 году получил премию Сервантеса."
+    },
+    {
+      "key": "argentina:leopoldo_lugones",
+      "originalSha256": "4a8ea8eee46fee6469cca0e7f667f7d89860868326a19d66651a7eec755e1fbf",
+      "reviewedTextRu": "Аргентинский поэт, прозаик, эссеист и журналист, связанный с испаноязычным модернизмом. Автор поэтических книг «Las montañas del oro» и «Lunario sentimental», а также сборника рассказов «Las fuerzas extrañas».",
+      "claims": [
+        {
+          "textRu": "Леопольдо Лугонес был аргентинским поэтом, прозаиком, эссеистом и журналистом модернизма и написал «Las montañas del oro», «Lunario sentimental» и «Las fuerzas extrañas».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Biblioteca Nacional Mariano Moreno",
+              "url": "https://www.bn.gov.ar/noticias/13-de-junio-de-1874-nace-leopoldo-lugones",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека подтверждает жанровые роли Лугонеса, его связь с модернизмом и указанные книги."
+            },
+            {
+              "provider": "Biblioteca Virtual Miguel de Cervantes",
+              "url": "https://www.cervantesvirtual.com/obra-visor/la-prosa-modernista/html/a0bca6cd-24c3-4835-8a90-47ddfc0c950d_3.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Академический ресурс рассматривает прозу Лугонеса в контексте испаноязычного модернизма и подтверждает принадлежность ему сборника Las fuerzas extrañas."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Субъективное «один из важнейших» заменено жанровыми ролями, направлением и тремя произведениями. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский поэт, прозаик, эссеист и журналист, связанный с испаноязычным модернизмом. Автор поэтических книг «Las montañas del oro» и «Lunario sentimental», а также сборника рассказов «Las fuerzas extrañas»."
+    },
+    {
+      "key": "argentina:leopoldo_marechal",
+      "originalSha256": "9248d0818412121976751d32b5623cef5318071403c07e4626f8e9825c2602c6",
+      "reviewedTextRu": "Аргентинский поэт, романист, драматург и эссеист. Автор романа «Adán Buenosayres» и пьесы «Antígona Vélez».",
+      "claims": [
+        {
+          "textRu": "Леопольдо Маречаль был аргентинским поэтом, романистом, драматургом и эссеистом и написал роман «Adán Buenosayres» и пьесу «Antígona Vélez».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Biblioteca Nacional Mariano Moreno",
+              "url": "https://www.bn.gov.ar/agenda-cultural/adan-buenosayres-al-compas-de-una-pasion",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека атрибутирует Маречалю роман Adán Buenosayres и рассматривает его поэтическое и прозаическое наследие."
+            },
+            {
+              "provider": "Academia Argentina de Letras / Biblioteca Virtual Miguel de Cervantes",
+              "url": "https://www.cervantesvirtual.com/obra-visor/boletin-de-la-academia-argentina-de-letras--6/html/0275a3ba-82b2-11df-acc7-002185ce6064_25.html",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Бюллетень Аргентинской академии словесности подтверждает работу Маречаля в поэзии, романе, драме и эссеистике и обсуждает Antígona Vélez."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Оценка места в авангарде заменена проверяемыми жанровыми ролями и двумя произведениями. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский поэт, романист, драматург и эссеист. Автор романа «Adán Buenosayres» и пьесы «Antígona Vélez»."
+    },
+    {
+      "key": "argentina:ricardo_guiraldes",
+      "originalSha256": "a0536c6eed1fd8f9f8c3ac4c1a1d03d5dbdbaa772af6f4a459794ce339730ce0",
+      "reviewedTextRu": "Аргентинский писатель и поэт, связанный с гауческой литературой. Автор романов «Raucho» и «Don Segundo Sombra»; второй был опубликован в 1926 году и посвящён миру аргентинской пампы.",
+      "claims": [
+        {
+          "textRu": "Рикардо Гуиральдес был аргентинским писателем и поэтом гауческой традиции и написал романы «Raucho» и «Don Segundo Sombra», опубликованный в 1926 году и связанный с жизнью аргентинской пампы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Biblioteca Nacional Mariano Moreno",
+              "url": "https://www.bn.gov.ar/noticias/1o-de-julio-de-1926-aparece-don-segundo-sombra",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Национальная библиотека подтверждает авторство, год публикации Don Segundo Sombra и его связь с фигурой гаучо и пампой."
+            },
+            {
+              "provider": "Argentina.gob.ar, Cultura",
+              "url": "https://www.argentina.gob.ar/node/455580",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Официальный культурный ресурс идентифицирует Гуиральдеса как писателя и поэта, перечисляет Raucho и Don Segundo Sombra и связывает его прозу с гауческим миром."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Сравнительное «один из главных» и оценка «классика» сняты; сохранены литературная традиция, две книги, дата и тема. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский писатель и поэт, связанный с гауческой литературой. Автор романов «Raucho» и «Don Segundo Sombra»; второй был опубликован в 1926 году и посвящён миру аргентинской пампы."
+    },
+    {
+      "key": "argentina:rodrigo_fresan",
+      "originalSha256": "c3cf86d4d3db492632ccf96a78a3307d2e0113f982ae7b5bb862db7e53781639",
+      "reviewedTextRu": "Аргентинский писатель, переводчик и журналист. Автор книг «Historia argentina», «Jardines de Kensington» и трилогии, начатой романом «La parte inventada».",
+      "claims": [
+        {
+          "textRu": "Родриго Фресан — аргентинский писатель, переводчик и журналист, автор «Historia argentina», «Jardines de Kensington» и трилогии, открытой романом «La parte inventada».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México, Fundación para las Letras Mexicanas",
+              "url": "https://www.elem.mx/autor/datos/116839",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Институциональная энциклопедия подтверждает профессии, аргентинское происхождение и библиографию Фресана; дата рождения указана как 18 июля 1963 года."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinrandomhouse.com/authors/2273415/rodrigo-fresan/",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Издательская биография подтверждает писательскую и журналистскую работу, Historia argentina, Kensington Gardens и трилогию, начатую The Invented Part."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 10",
+      "decision": "corrected",
+      "notes": "Date queue recommendation: заменить shared birthDate 1963-11-17 на 1963-07-18 по ELEM; значение 1963-11-30 также не подтверждено. Shared country files не изменялись.",
+      "applicableTextRu": "Аргентинский писатель, переводчик и журналист. Автор книг «Historia argentina», «Jardines de Kensington» и трилогии, начатой романом «La parte inventada»."
+    }
+  ]
+}

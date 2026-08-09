@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T15:25:11.494Z",
+  "generatedAt": "2026-08-09T11:30:33.491Z",
   "writers": {
     "afghanistan:mahmud_tarzi": {
       "wikidataId": "Q153640",
@@ -155,13 +155,6 @@
       "wikidataId": "Q59186426",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q59186426",
-      "checkedAt": "2026-08-02"
-    },
-    "antigua_and_barbuda:alison_hughes": {
-      "wikidataId": "Q3611840",
-      "portraitFilename": "Flickr - Carine06 - In charge.jpg",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q3611840",
       "checkedAt": "2026-08-02"
     },
     "argentina:domingo_faustino_sarmiento": {
@@ -442,11 +435,11 @@
       "checkedAt": "2026-08-02"
     },
     "australia:les_murray": {
-      "wikidataId": "Q6529770",
-      "portraitFilename": "Harmony Day Pollies vs Professionals soccer match 28th February 2011 (cropped).jpg",
+      "wikidataId": "Q259841",
+      "portraitFilename": "Lesmurray.jpg",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q6529770",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q259841",
+      "checkedAt": "2026-08-09"
     },
     "australia:greg_egan": {
       "wikidataId": "Q316785",
@@ -1132,12 +1125,6 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q2707390",
       "checkedAt": "2026-08-02"
     },
-    "cameroon:jean_roger_essomba": {
-      "wikidataId": "Q95950701",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q95950701",
-      "checkedAt": "2026-08-02"
-    },
     "cameroon:paul_dakeyo": {
       "wikidataId": "Q3327513",
       "portraitFilename": "Image - Colloque Josué Guébo 1445 03.jpg",
@@ -1260,7 +1247,7 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q327180",
       "checkedAt": "2026-08-02"
     },
-    "cape_verde:virgilio_de_lemos": {
+    "mozambique:virgilio_de_lemos": {
       "wikidataId": "Q63711389",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q63711389",
@@ -1305,12 +1292,6 @@
       "portraitFilename": "Koulsy Lamko.jpg",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q1154316",
-      "checkedAt": "2026-08-02"
-    },
-    "chad:ahmat_taboye": {
-      "wikidataId": "Q3656879",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q3656879",
       "checkedAt": "2026-08-02"
     },
     "chile:alberto_blest_gana": {
@@ -1681,7 +1662,7 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q3469780",
       "checkedAt": "2026-08-02"
     },
-    "comoros:said_ahmed_mohamed": {
+    "tanzania:said_ahmed_mohamed": {
       "wikidataId": "Q16678223",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q16678223",
@@ -1921,7 +1902,7 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q2853564",
       "checkedAt": "2026-08-02"
     },
-    "democratic_republic_of_congo:sylvain_bemba": {
+    "republic_of_congo:sylvain_bemba": {
       "wikidataId": "Q2373966",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q2373966",
@@ -2038,10 +2019,10 @@
       "checkedAt": "2026-08-02"
     },
     "dominican_republic:juan_bosch": {
-      "wikidataId": "Q1710380",
+      "wikidataId": "Q439980",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q1710380",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q439980",
+      "checkedAt": "2026-08-09"
     },
     "dominican_republic:pedro_henriquez_urena": {
       "wikidataId": "Q1153831",
@@ -2529,11 +2510,11 @@
       "checkedAt": "2026-08-02"
     },
     "england:t_s_eliot": {
-      "wikidataId": "Q3261882",
-      "portraitFilename": "Louis Favre (1910-1944).jpg",
+      "wikidataId": "Q37767",
+      "portraitFilename": "Thomas Stearns Eliot by Lady Ottoline Morrell (1934).jpg",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q3261882",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q37767",
+      "checkedAt": "2026-08-09"
     },
     "england:evelyn_waugh": {
       "wikidataId": "Q107002",
@@ -2677,12 +2658,6 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q55991620",
       "checkedAt": "2026-08-02"
     },
-    "eritrea:khaled_abdalla": {
-      "wikidataId": "Q55389631",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q55389631",
-      "checkedAt": "2026-08-02"
-    },
     "estonia:kristjan_jaak_peterson": {
       "wikidataId": "Q553307",
       "portraitFilename": "Kristjan Jaak Peterson.jpg",
@@ -2780,12 +2755,6 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q3841903",
       "checkedAt": "2026-08-02"
     },
-    "fiji:satendra_nandan": {
-      "wikidataId": "Q7426104",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7426104",
-      "checkedAt": "2026-08-02"
-    },
     "fiji:brij_lal": {
       "wikidataId": "Q2925538",
       "portraitFilename": "Brij V Lal.png",
@@ -2808,11 +2777,10 @@
       "checkedAt": "2026-08-02"
     },
     "finland:fredrika_bremer": {
-      "wikidataId": "Q465687",
-      "portraitFilename": "Fredrika Runeberg 1846, Society of Swedish Literature in Finland, Runebergbibliotekets bildsamling, slsa1160 587 (cropped).jpg",
+      "wikidataId": "Q262145",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q465687",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q262145",
+      "checkedAt": "2026-08-09"
     },
     "finland:aleksis_kivi": {
       "wikidataId": "Q216904",
@@ -4883,13 +4851,6 @@
       "sourceUrl": "https://www.wikidata.org/wiki/Q4843149",
       "checkedAt": "2026-08-02"
     },
-    "liberia:sylvester_williams": {
-      "wikidataId": "Q7660842",
-      "portraitFilename": "Sylvester Williams (American football).JPG",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7660842",
-      "checkedAt": "2026-08-02"
-    },
     "libya:ahmed_fagih": {
       "wikidataId": "Q12178483",
       "portraitFilename": "PSX 20190509 191255.jpg",
@@ -5134,13 +5095,6 @@
       "wikidataId": "Q7662663",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q7662663",
-      "checkedAt": "2026-08-02"
-    },
-    "maldives:abdulla_sodiq": {
-      "wikidataId": "Q17198026",
-      "portraitFilename": "Sobe Mayor AdduCity.jpg",
-      "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q17198026",
       "checkedAt": "2026-08-02"
     },
     "mali:amadou_hampate_ba": {
@@ -5590,10 +5544,10 @@
       "checkedAt": "2026-08-02"
     },
     "myanmar:ma_ma_lay": {
-      "wikidataId": "Q56254273",
+      "wikidataId": "Q6273845",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q56254273",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6273845",
+      "checkedAt": "2026-08-09"
     },
     "myanmar:theippan_maung_wa": {
       "wikidataId": "Q7777816",
@@ -7595,11 +7549,10 @@
       "checkedAt": "2026-08-02"
     },
     "sweden:hjalmar_soderberg": {
-      "wikidataId": "Q49099212",
-      "portraitFilename": "Fabrikör Hjalmar Söderberg.png",
+      "wikidataId": "Q331845",
       "identityRule": "exact-label-and-birth-year",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q49099212",
-      "checkedAt": "2026-08-02"
+      "sourceUrl": "https://www.wikidata.org/wiki/Q331845",
+      "checkedAt": "2026-08-09"
     },
     "sweden:par_lagerkvist": {
       "wikidataId": "Q93137",

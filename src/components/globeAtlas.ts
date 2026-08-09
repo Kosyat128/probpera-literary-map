@@ -3,10 +3,13 @@ import * as THREE from "three";
 import worldGeoJsonUrl from "../data/geo/countries.geojson?url";
 import type { Country } from "../data/countries/types";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { GlobeTextureImageCache } from "./globeAssetCache";
 import {
   buildSphericalOutlinePositions,
+  geometryLatitudeBounds,
   geometryContainsGeographicPoint,
   GLOBE_TEXTURE_FLIP_Y,
+  latitudeBoundsContain,
   longitudeToTextureX,
   normalizeLongitude,
   partitionGeometryAtGeographicPoint,
@@ -82,7 +85,16 @@ export type GlobeAtlas = {
     style: GlobeVisualStyle,
     language?: InterfaceLanguage
   ) => Promise<void>;
+  preloadVisualStyle: (
+    style: GlobeVisualStyle,
+    language?: InterfaceLanguage
+  ) => Promise<void>;
   dispose: () => void;
+};
+
+export type CreateGlobeAtlasOptions = {
+  compact?: boolean;
+  signal?: AbortSignal;
 };
 
 const DESKTOP_MAP_WIDTH = 4096;
@@ -90,16 +102,22 @@ const DESKTOP_MAP_HEIGHT = 2048;
 const COMPACT_MAP_WIDTH = 2048;
 const COMPACT_MAP_HEIGHT = 1024;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
-const globeMapPromises = new Map<string, Promise<HTMLImageElement>>();
+const globeMapCache = new GlobeTextureImageCache({ maxEntries: 2 });
 
 function loadWorldGeoJson() {
   if (!geoJsonPromise) {
-    geoJsonPromise = fetch(worldGeoJsonUrl).then(async (response) => {
-      if (!response.ok) {
-        throw new Error(`World atlas failed to load: ${response.status}`);
-      }
-      return (await response.json()) as GeoFeatureCollection;
-    });
+    geoJsonPromise = fetch(worldGeoJsonUrl)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`World atlas failed to load: ${response.status}`);
+        }
+        return (await response.json()) as GeoFeatureCollection;
+      })
+      .catch((error: unknown) => {
+        // A transient first request must not poison every later atlas mount.
+        geoJsonPromise = null;
+        throw error;
+      });
   }
   return geoJsonPromise;
 }
@@ -111,27 +129,10 @@ function loadGlobeMap(
 ) {
   const assetName = globeTextureAssetName(style, compact, language);
   if (!assetName) return Promise.resolve<HTMLImageElement | null>(null);
-
-  let pendingImage = globeMapPromises.get(assetName);
-  if (!pendingImage) {
-    pendingImage = new Promise<HTMLImageElement>((resolve, reject) => {
-      const image = new Image();
-      image.decoding = "async";
-      image.fetchPriority = "high";
-      image.onload = () => {
-        globeMapPromises.delete(assetName);
-        resolve(image);
-      };
-      image.onerror = () => {
-        globeMapPromises.delete(assetName);
-        reject(new Error(`Globe texture failed to load: ${assetName}`));
-      };
-      image.src = `${import.meta.env.BASE_URL}${assetName}`;
-    });
-    globeMapPromises.set(assetName, pendingImage);
-  }
-
-  return pendingImage;
+  return globeMapCache.load(
+    assetName,
+    `${import.meta.env.BASE_URL}${assetName}`
+  );
 }
 
 function getPolygons(feature: GeoFeature): MultiPolygonCoordinates {
@@ -808,16 +809,30 @@ async function loadVisualStyleMap(
   }
 }
 
+function throwIfAtlasCreationAborted(signal?: AbortSignal) {
+  if (!signal?.aborted) return;
+  if (signal.reason instanceof Error) throw signal.reason;
+  const error = new Error("Globe atlas creation was aborted");
+  error.name = "AbortError";
+  throw error;
+}
+
 export async function createGlobeAtlas(
   countries: Country[],
   initialVisualStyle: GlobeVisualStyle = "antique",
-  initialLanguage: InterfaceLanguage = "ru"
+  initialLanguage: InterfaceLanguage = "ru",
+  options: CreateGlobeAtlasOptions = {}
 ): Promise<GlobeAtlas> {
-  const compact = window.innerWidth <= 900;
+  const { signal } = options;
+  throwIfAtlasCreationAborted(signal);
+  const compact = options.compact ?? window.innerWidth <= 900;
   const [worldGeoJson, sourceMap] = await Promise.all([
     loadWorldGeoJson(),
     loadVisualStyleMap(initialVisualStyle, compact, initialLanguage),
   ]);
+  // React StrictMode intentionally cancels the first effect. Stop before the
+  // three large 2D canvases are allocated and painted for that stale mount.
+  throwIfAtlasCreationAborted(signal);
   const countriesByCode = new Map(
     countries
       .filter((country) => country.code)
@@ -833,7 +848,18 @@ export async function createGlobeAtlas(
     countries.map((country) => [country.id, country] as const)
   );
   const featuresByCountryId = new Map<string, GeoFeature[]>();
-  const selectableFeatures: Array<{ feature: GeoFeature; country: Country }> = [];
+  const selectableFeatures: Array<{
+    feature: GeoFeature;
+    country: Country;
+    latitudeBounds: ReturnType<typeof geometryLatitudeBounds>;
+  }> = [];
+  const addSelectableFeature = (feature: GeoFeature, country: Country) => {
+    selectableFeatures.push({
+      feature,
+      country,
+      latitudeBounds: geometryLatitudeBounds(feature.geometry),
+    });
+  };
 
   worldGeoJson.features.forEach((feature) => {
     const country = featureCountry(feature, countriesByCode);
@@ -867,23 +893,19 @@ export async function createGlobeAtlas(
           geometry: matching,
         };
         featuresByCountryId.set(frenchGuiana.id, [frenchGuianaFeature]);
-        selectableFeatures.push({
-          feature: frenchGuianaFeature,
-          country: frenchGuiana,
-        });
+        addSelectableFeature(frenchGuianaFeature, frenchGuiana);
       }
 
       if (remainder) {
-        selectableFeatures.push({
-          feature: { ...feature, geometry: remainder },
-          country,
-        });
+        addSelectableFeature({ ...feature, geometry: remainder }, country);
       }
       return;
     }
 
-    selectableFeatures.push({ feature, country });
+    addSelectableFeature(feature, country);
   });
+
+  throwIfAtlasCreationAborted(signal);
 
   const mapCanvas = makeMapCanvas(
     worldGeoJson.features,
@@ -921,7 +943,8 @@ export async function createGlobeAtlas(
   let visualStyleRequest = 0;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
-    for (const { feature, country } of selectableFeatures) {
+    for (const { feature, country, latitudeBounds } of selectableFeatures) {
+      if (!latitudeBoundsContain(latitudeBounds, latitude)) continue;
       if (geometryContainsGeographicPoint(feature.geometry, longitude, latitude)) {
         return country;
       }
@@ -1168,6 +1191,14 @@ export async function createGlobeAtlas(
     redrawHighlights();
   };
 
+  const preloadVisualStyle = async (
+    style: GlobeVisualStyle,
+    language: InterfaceLanguage = activeLanguage
+  ) => {
+    if (disposed) return;
+    await loadVisualStyleMap(style, compact, language);
+  };
+
   return {
     mapTexture,
     reliefTexture,
@@ -1179,6 +1210,7 @@ export async function createGlobeAtlas(
     outlineGeometryForCountry,
     updateHighlight,
     setVisualStyle,
+    preloadVisualStyle,
     dispose: () => {
       disposed = true;
       visualStyleRequest += 1;

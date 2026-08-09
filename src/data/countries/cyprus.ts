@@ -13,7 +13,7 @@ export const cyprus: Country = {
       years: "1849–1917",
 
       birthDate: "1849",
-      deathDate: "1917-12-08",
+      deathDate: "1917-12-18",
 
       birthPlace: "Лефконико",
 
@@ -59,10 +59,10 @@ export const cyprus: Country = {
 
       years: "1884–1956",
 
-      birthDate: "1884-10-09",
-      deathDate: "1956-01-24",
+      birthDate: "1884",
+      deathDate: "1956",
 
-      birthPlace: "Лимасол",
+      birthPlace: "Никосия, Кипр",
 
       coordinates: {
         lat: 34.68,
@@ -106,10 +106,10 @@ export const cyprus: Country = {
 
       years: "1903–1968",
 
-      birthDate: "1903-02-24",
-      deathDate: "1968-05-15",
+      birthDate: "1903-04-03",
+      deathDate: "1968-11-08",
 
-      birthPlace: "Като Дрис",
+      birthPlace: "Контеа, Кипр",
 
       coordinates: {
         lat: 34.87,
@@ -152,7 +152,7 @@ export const cyprus: Country = {
 
       years: "1914–2004",
 
-      birthDate: "1914-03-18",
+      birthDate: "1914-02-18",
       deathDate: "2004-03-01",
 
       birthPlace: "Фамагуста",
@@ -196,12 +196,12 @@ export const cyprus: Country = {
       name: "Пантелис Миханикос",
       fullName: "Pantelis Michanikos",
 
-      years: "1939–1979",
+      years: "1926–1979",
 
-      birthDate: "1939-01-10",
-      deathDate: "1979-07-15",
+      birthDate: "1926-07-30",
+      deathDate: "1979-01-20",
 
-      birthPlace: "Лимасол",
+      birthPlace: "Лимния, Фамагуста, Кипр",
 
       coordinates: {
         lat: 34.68,
@@ -239,15 +239,15 @@ export const cyprus: Country = {
 
     {
       id: "kyriakos_charalambous",
-      name: "Кириакос Хариламбус",
-      fullName: "Kyriakos Charalambous",
+      name: "Кириакос Хараламбидис",
+      fullName: "Kyriakos Charalambides",
 
       years: "1940–",
 
-      birthDate: "1940-01-25",
+      birthDate: "1940-01-31",
       deathDate: "",
 
-      birthPlace: "Фамагуста",
+      birthPlace: "Ахна, Кипр",
 
       coordinates: {
         lat: 35.12,

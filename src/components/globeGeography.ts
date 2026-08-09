@@ -17,8 +17,52 @@ export type GlobeGeoGeometry = {
 export const GLOBE_LONGITUDE_OFFSET_DEGREES = 0;
 export const GLOBE_TEXTURE_FLIP_Y = true;
 
+export type GeographicLatitudeBounds = {
+  minimum: number;
+  maximum: number;
+};
+
 export function normalizeLongitude(value: number) {
   return ((((value + 180) % 360) + 360) % 360) - 180;
+}
+
+/**
+ * A lossless broad-phase bound for pointer picking. Longitude needs special
+ * antimeridian handling, while latitude is monotonic in GeoJSON coordinates;
+ * filtering only by latitude therefore cannot change the exact polygon result.
+ */
+export function geometryLatitudeBounds(
+  geometry: GlobeGeoGeometry
+): GeographicLatitudeBounds {
+  const polygons =
+    geometry.type === "Polygon"
+      ? [geometry.coordinates as GeoPolygonCoordinates]
+      : (geometry.coordinates as GeoMultiPolygonCoordinates);
+  let minimum = Number.POSITIVE_INFINITY;
+  let maximum = Number.NEGATIVE_INFINITY;
+
+  polygons.forEach((polygon) => {
+    polygon.forEach((ring) => {
+      ring.forEach(([, latitude]) => {
+        minimum = Math.min(minimum, latitude);
+        maximum = Math.max(maximum, latitude);
+      });
+    });
+  });
+
+  // Empty geometries remain eligible for the exact predicate, avoiding false
+  // negatives if a future reviewed atlas contains an empty coordinate array.
+  if (!Number.isFinite(minimum) || !Number.isFinite(maximum)) {
+    return { minimum: -90, maximum: 90 };
+  }
+  return { minimum, maximum };
+}
+
+export function latitudeBoundsContain(
+  bounds: GeographicLatitudeBounds,
+  latitude: number
+) {
+  return latitude >= bounds.minimum && latitude <= bounds.maximum;
 }
 
 export function uvToGeographic(uv: Pick<THREE.Vector2, "x" | "y">): GeoPosition {

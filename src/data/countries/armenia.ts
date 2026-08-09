@@ -406,7 +406,7 @@ export const armenia: Country = {
 
       years: "1971–",
 
-      birthDate: "1971-01-01",
+      birthDate: "1971-01-14",
       deathDate: "",
 
       birthPlace: "Берд, Армения",

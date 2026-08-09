@@ -1,0 +1,1108 @@
+{
+  "version": 1,
+  "category": "Literature",
+  "throughYear": 2025,
+  "retrievedAt": "2026-08-09",
+  "officialApiUrl": "https://api.nobelprize.org/2.1/laureates?nobelPrizeCategory=lit&nobelPrizeYearFrom=1901&nobelPrizeYearTo=2025&limit=200",
+  "officialDeveloperDocumentation": "https://www.nobelprize.org/about/developer-zone/",
+  "laureates": [
+    {
+      "id": 569,
+      "name": "Sully Prudhomme",
+      "year": 1901,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/569",
+      "htmlUrl": "https://www.nobelprize.org/laureate/569"
+    },
+    {
+      "id": 571,
+      "name": "Theodor Mommsen",
+      "year": 1902,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/571",
+      "htmlUrl": "https://www.nobelprize.org/laureate/571"
+    },
+    {
+      "id": 572,
+      "name": "Bjørnstjerne Bjørnson",
+      "year": 1903,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/572",
+      "htmlUrl": "https://www.nobelprize.org/laureate/572"
+    },
+    {
+      "id": 573,
+      "name": "Frédéric Mistral",
+      "year": 1904,
+      "portion": "1/2",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/573",
+      "htmlUrl": "https://www.nobelprize.org/laureate/573"
+    },
+    {
+      "id": 574,
+      "name": "José Echegaray",
+      "year": 1904,
+      "portion": "1/2",
+      "sortOrder": 2,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/574",
+      "htmlUrl": "https://www.nobelprize.org/laureate/574"
+    },
+    {
+      "id": 575,
+      "name": "Henryk Sienkiewicz",
+      "year": 1905,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/575",
+      "htmlUrl": "https://www.nobelprize.org/laureate/575"
+    },
+    {
+      "id": 576,
+      "name": "Giosuè Carducci",
+      "year": 1906,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/576",
+      "htmlUrl": "https://www.nobelprize.org/laureate/576"
+    },
+    {
+      "id": 577,
+      "name": "Rudyard Kipling",
+      "year": 1907,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/577",
+      "htmlUrl": "https://www.nobelprize.org/laureate/577"
+    },
+    {
+      "id": 578,
+      "name": "Rudolf Eucken",
+      "year": 1908,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/578",
+      "htmlUrl": "https://www.nobelprize.org/laureate/578"
+    },
+    {
+      "id": 579,
+      "name": "Selma Lagerlöf",
+      "year": 1909,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/579",
+      "htmlUrl": "https://www.nobelprize.org/laureate/579"
+    },
+    {
+      "id": 580,
+      "name": "Paul Heyse",
+      "year": 1910,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/580",
+      "htmlUrl": "https://www.nobelprize.org/laureate/580"
+    },
+    {
+      "id": 581,
+      "name": "Maurice Maeterlinck",
+      "year": 1911,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/581",
+      "htmlUrl": "https://www.nobelprize.org/laureate/581"
+    },
+    {
+      "id": 582,
+      "name": "Gerhart Hauptmann",
+      "year": 1912,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/582",
+      "htmlUrl": "https://www.nobelprize.org/laureate/582"
+    },
+    {
+      "id": 583,
+      "name": "Rabindranath Tagore",
+      "year": 1913,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/583",
+      "htmlUrl": "https://www.nobelprize.org/laureate/583"
+    },
+    {
+      "id": 584,
+      "name": "Romain Rolland",
+      "year": 1915,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/584",
+      "htmlUrl": "https://www.nobelprize.org/laureate/584"
+    },
+    {
+      "id": 585,
+      "name": "Verner von Heidenstam",
+      "year": 1916,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/585",
+      "htmlUrl": "https://www.nobelprize.org/laureate/585"
+    },
+    {
+      "id": 586,
+      "name": "Karl Gjellerup",
+      "year": 1917,
+      "portion": "1/2",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/586",
+      "htmlUrl": "https://www.nobelprize.org/laureate/586"
+    },
+    {
+      "id": 587,
+      "name": "Henrik Pontoppidan",
+      "year": 1917,
+      "portion": "1/2",
+      "sortOrder": 2,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/587",
+      "htmlUrl": "https://www.nobelprize.org/laureate/587"
+    },
+    {
+      "id": 588,
+      "name": "Carl Spitteler",
+      "year": 1919,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/588",
+      "htmlUrl": "https://www.nobelprize.org/laureate/588"
+    },
+    {
+      "id": 589,
+      "name": "Knut Hamsun",
+      "year": 1920,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/589",
+      "htmlUrl": "https://www.nobelprize.org/laureate/589"
+    },
+    {
+      "id": 590,
+      "name": "Anatole France",
+      "year": 1921,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/590",
+      "htmlUrl": "https://www.nobelprize.org/laureate/590"
+    },
+    {
+      "id": 592,
+      "name": "Jacinto Benavente",
+      "year": 1922,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/592",
+      "htmlUrl": "https://www.nobelprize.org/laureate/592"
+    },
+    {
+      "id": 593,
+      "name": "William Butler Yeats",
+      "year": 1923,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/593",
+      "htmlUrl": "https://www.nobelprize.org/laureate/593"
+    },
+    {
+      "id": 594,
+      "name": "Władysław Reymont",
+      "year": 1924,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/594",
+      "htmlUrl": "https://www.nobelprize.org/laureate/594"
+    },
+    {
+      "id": 596,
+      "name": "George Bernard Shaw",
+      "year": 1925,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/596",
+      "htmlUrl": "https://www.nobelprize.org/laureate/596"
+    },
+    {
+      "id": 597,
+      "name": "Grazia Deledda",
+      "year": 1926,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/597",
+      "htmlUrl": "https://www.nobelprize.org/laureate/597"
+    },
+    {
+      "id": 600,
+      "name": "Henri Bergson",
+      "year": 1927,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/600",
+      "htmlUrl": "https://www.nobelprize.org/laureate/600"
+    },
+    {
+      "id": 601,
+      "name": "Sigrid Undset",
+      "year": 1928,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/601",
+      "htmlUrl": "https://www.nobelprize.org/laureate/601"
+    },
+    {
+      "id": 602,
+      "name": "Thomas Mann",
+      "year": 1929,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/602",
+      "htmlUrl": "https://www.nobelprize.org/laureate/602"
+    },
+    {
+      "id": 603,
+      "name": "Sinclair Lewis",
+      "year": 1930,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/603",
+      "htmlUrl": "https://www.nobelprize.org/laureate/603"
+    },
+    {
+      "id": 604,
+      "name": "Erik Axel Karlfeldt",
+      "year": 1931,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/604",
+      "htmlUrl": "https://www.nobelprize.org/laureate/604"
+    },
+    {
+      "id": 605,
+      "name": "John Galsworthy",
+      "year": 1932,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/605",
+      "htmlUrl": "https://www.nobelprize.org/laureate/605"
+    },
+    {
+      "id": 606,
+      "name": "Ivan Bunin",
+      "year": 1933,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/606",
+      "htmlUrl": "https://www.nobelprize.org/laureate/606"
+    },
+    {
+      "id": 607,
+      "name": "Luigi Pirandello",
+      "year": 1934,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/607",
+      "htmlUrl": "https://www.nobelprize.org/laureate/607"
+    },
+    {
+      "id": 608,
+      "name": "Eugene O'Neill",
+      "year": 1936,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/608",
+      "htmlUrl": "https://www.nobelprize.org/laureate/608"
+    },
+    {
+      "id": 609,
+      "name": "Roger Martin du Gard",
+      "year": 1937,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/609",
+      "htmlUrl": "https://www.nobelprize.org/laureate/609"
+    },
+    {
+      "id": 610,
+      "name": "Pearl Buck",
+      "year": 1938,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/610",
+      "htmlUrl": "https://www.nobelprize.org/laureate/610"
+    },
+    {
+      "id": 613,
+      "name": "Frans Eemil Sillanpää",
+      "year": 1939,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/613",
+      "htmlUrl": "https://www.nobelprize.org/laureate/613"
+    },
+    {
+      "id": 614,
+      "name": "Johannes V. Jensen",
+      "year": 1944,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/614",
+      "htmlUrl": "https://www.nobelprize.org/laureate/614"
+    },
+    {
+      "id": 615,
+      "name": "Gabriela Mistral",
+      "year": 1945,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/615",
+      "htmlUrl": "https://www.nobelprize.org/laureate/615"
+    },
+    {
+      "id": 617,
+      "name": "Hermann Hesse",
+      "year": 1946,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/617",
+      "htmlUrl": "https://www.nobelprize.org/laureate/617"
+    },
+    {
+      "id": 618,
+      "name": "André Gide",
+      "year": 1947,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/618",
+      "htmlUrl": "https://www.nobelprize.org/laureate/618"
+    },
+    {
+      "id": 619,
+      "name": "T.S. Eliot",
+      "year": 1948,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/619",
+      "htmlUrl": "https://www.nobelprize.org/laureate/619"
+    },
+    {
+      "id": 620,
+      "name": "William Faulkner",
+      "year": 1949,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/620",
+      "htmlUrl": "https://www.nobelprize.org/laureate/620"
+    },
+    {
+      "id": 621,
+      "name": "Bertrand Russell",
+      "year": 1950,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/621",
+      "htmlUrl": "https://www.nobelprize.org/laureate/621"
+    },
+    {
+      "id": 622,
+      "name": "Pär Lagerkvist",
+      "year": 1951,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/622",
+      "htmlUrl": "https://www.nobelprize.org/laureate/622"
+    },
+    {
+      "id": 623,
+      "name": "François Mauriac",
+      "year": 1952,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/623",
+      "htmlUrl": "https://www.nobelprize.org/laureate/623"
+    },
+    {
+      "id": 624,
+      "name": "Winston Churchill",
+      "year": 1953,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/624",
+      "htmlUrl": "https://www.nobelprize.org/laureate/624"
+    },
+    {
+      "id": 625,
+      "name": "Ernest Hemingway",
+      "year": 1954,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/625",
+      "htmlUrl": "https://www.nobelprize.org/laureate/625"
+    },
+    {
+      "id": 626,
+      "name": "Halldór Laxness",
+      "year": 1955,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/626",
+      "htmlUrl": "https://www.nobelprize.org/laureate/626"
+    },
+    {
+      "id": 627,
+      "name": "Juan Ramón Jiménez",
+      "year": 1956,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/627",
+      "htmlUrl": "https://www.nobelprize.org/laureate/627"
+    },
+    {
+      "id": 628,
+      "name": "Albert Camus",
+      "year": 1957,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/628",
+      "htmlUrl": "https://www.nobelprize.org/laureate/628"
+    },
+    {
+      "id": 629,
+      "name": "Boris Pasternak",
+      "year": 1958,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/629",
+      "htmlUrl": "https://www.nobelprize.org/laureate/629"
+    },
+    {
+      "id": 630,
+      "name": "Salvatore Quasimodo",
+      "year": 1959,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/630",
+      "htmlUrl": "https://www.nobelprize.org/laureate/630"
+    },
+    {
+      "id": 631,
+      "name": "Saint-John Perse",
+      "year": 1960,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/631",
+      "htmlUrl": "https://www.nobelprize.org/laureate/631"
+    },
+    {
+      "id": 633,
+      "name": "Ivo Andrić",
+      "year": 1961,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/633",
+      "htmlUrl": "https://www.nobelprize.org/laureate/633"
+    },
+    {
+      "id": 634,
+      "name": "John Steinbeck",
+      "year": 1962,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/634",
+      "htmlUrl": "https://www.nobelprize.org/laureate/634"
+    },
+    {
+      "id": 635,
+      "name": "Giorgos Seferis",
+      "year": 1963,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/635",
+      "htmlUrl": "https://www.nobelprize.org/laureate/635"
+    },
+    {
+      "id": 637,
+      "name": "Jean-Paul Sartre",
+      "year": 1964,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/637",
+      "htmlUrl": "https://www.nobelprize.org/laureate/637"
+    },
+    {
+      "id": 638,
+      "name": "Mikhail Sholokhov",
+      "year": 1965,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/638",
+      "htmlUrl": "https://www.nobelprize.org/laureate/638"
+    },
+    {
+      "id": 639,
+      "name": "Shmuel Agnon",
+      "year": 1966,
+      "portion": "1/2",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/639",
+      "htmlUrl": "https://www.nobelprize.org/laureate/639"
+    },
+    {
+      "id": 640,
+      "name": "Nelly Sachs",
+      "year": 1966,
+      "portion": "1/2",
+      "sortOrder": 2,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/640",
+      "htmlUrl": "https://www.nobelprize.org/laureate/640"
+    },
+    {
+      "id": 641,
+      "name": "Miguel Angel Asturias",
+      "year": 1967,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/641",
+      "htmlUrl": "https://www.nobelprize.org/laureate/641"
+    },
+    {
+      "id": 642,
+      "name": "Yasunari Kawabata",
+      "year": 1968,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/642",
+      "htmlUrl": "https://www.nobelprize.org/laureate/642"
+    },
+    {
+      "id": 643,
+      "name": "Samuel Beckett",
+      "year": 1969,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/643",
+      "htmlUrl": "https://www.nobelprize.org/laureate/643"
+    },
+    {
+      "id": 644,
+      "name": "Aleksandr Solzhenitsyn",
+      "year": 1970,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/644",
+      "htmlUrl": "https://www.nobelprize.org/laureate/644"
+    },
+    {
+      "id": 645,
+      "name": "Pablo Neruda",
+      "year": 1971,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/645",
+      "htmlUrl": "https://www.nobelprize.org/laureate/645"
+    },
+    {
+      "id": 647,
+      "name": "Heinrich Böll",
+      "year": 1972,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/647",
+      "htmlUrl": "https://www.nobelprize.org/laureate/647"
+    },
+    {
+      "id": 648,
+      "name": "Patrick White",
+      "year": 1973,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/648",
+      "htmlUrl": "https://www.nobelprize.org/laureate/648"
+    },
+    {
+      "id": 649,
+      "name": "Eyvind Johnson",
+      "year": 1974,
+      "portion": "1/2",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/649",
+      "htmlUrl": "https://www.nobelprize.org/laureate/649"
+    },
+    {
+      "id": 650,
+      "name": "Harry Martinson",
+      "year": 1974,
+      "portion": "1/2",
+      "sortOrder": 2,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/650",
+      "htmlUrl": "https://www.nobelprize.org/laureate/650"
+    },
+    {
+      "id": 651,
+      "name": "Eugenio Montale",
+      "year": 1975,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/651",
+      "htmlUrl": "https://www.nobelprize.org/laureate/651"
+    },
+    {
+      "id": 652,
+      "name": "Saul Bellow",
+      "year": 1976,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/652",
+      "htmlUrl": "https://www.nobelprize.org/laureate/652"
+    },
+    {
+      "id": 653,
+      "name": "Vicente Aleixandre",
+      "year": 1977,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/653",
+      "htmlUrl": "https://www.nobelprize.org/laureate/653"
+    },
+    {
+      "id": 654,
+      "name": "Isaac Bashevis Singer",
+      "year": 1978,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/654",
+      "htmlUrl": "https://www.nobelprize.org/laureate/654"
+    },
+    {
+      "id": 655,
+      "name": "Odysseus Elytis",
+      "year": 1979,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/655",
+      "htmlUrl": "https://www.nobelprize.org/laureate/655"
+    },
+    {
+      "id": 657,
+      "name": "Czesław Miłosz",
+      "year": 1980,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/657",
+      "htmlUrl": "https://www.nobelprize.org/laureate/657"
+    },
+    {
+      "id": 658,
+      "name": "Elias Canetti",
+      "year": 1981,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/658",
+      "htmlUrl": "https://www.nobelprize.org/laureate/658"
+    },
+    {
+      "id": 659,
+      "name": "Gabriel García Márquez",
+      "year": 1982,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/659",
+      "htmlUrl": "https://www.nobelprize.org/laureate/659"
+    },
+    {
+      "id": 660,
+      "name": "William Golding",
+      "year": 1983,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/660",
+      "htmlUrl": "https://www.nobelprize.org/laureate/660"
+    },
+    {
+      "id": 661,
+      "name": "Jaroslav Seifert",
+      "year": 1984,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/661",
+      "htmlUrl": "https://www.nobelprize.org/laureate/661"
+    },
+    {
+      "id": 662,
+      "name": "Claude Simon",
+      "year": 1985,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/662",
+      "htmlUrl": "https://www.nobelprize.org/laureate/662"
+    },
+    {
+      "id": 663,
+      "name": "Wole Soyinka",
+      "year": 1986,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/663",
+      "htmlUrl": "https://www.nobelprize.org/laureate/663"
+    },
+    {
+      "id": 664,
+      "name": "Joseph Brodsky",
+      "year": 1987,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/664",
+      "htmlUrl": "https://www.nobelprize.org/laureate/664"
+    },
+    {
+      "id": 665,
+      "name": "Naguib Mahfouz",
+      "year": 1988,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/665",
+      "htmlUrl": "https://www.nobelprize.org/laureate/665"
+    },
+    {
+      "id": 666,
+      "name": "Camilo José Cela",
+      "year": 1989,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/666",
+      "htmlUrl": "https://www.nobelprize.org/laureate/666"
+    },
+    {
+      "id": 667,
+      "name": "Octavio Paz",
+      "year": 1990,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/667",
+      "htmlUrl": "https://www.nobelprize.org/laureate/667"
+    },
+    {
+      "id": 668,
+      "name": "Nadine Gordimer",
+      "year": 1991,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/668",
+      "htmlUrl": "https://www.nobelprize.org/laureate/668"
+    },
+    {
+      "id": 669,
+      "name": "Derek Walcott",
+      "year": 1992,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/669",
+      "htmlUrl": "https://www.nobelprize.org/laureate/669"
+    },
+    {
+      "id": 670,
+      "name": "Toni Morrison",
+      "year": 1993,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/670",
+      "htmlUrl": "https://www.nobelprize.org/laureate/670"
+    },
+    {
+      "id": 671,
+      "name": "Kenzaburo Oe",
+      "year": 1994,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/671",
+      "htmlUrl": "https://www.nobelprize.org/laureate/671"
+    },
+    {
+      "id": 672,
+      "name": "Seamus Heaney",
+      "year": 1995,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/672",
+      "htmlUrl": "https://www.nobelprize.org/laureate/672"
+    },
+    {
+      "id": 673,
+      "name": "Wisława Szymborska",
+      "year": 1996,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/673",
+      "htmlUrl": "https://www.nobelprize.org/laureate/673"
+    },
+    {
+      "id": 674,
+      "name": "Dario Fo",
+      "year": 1997,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/674",
+      "htmlUrl": "https://www.nobelprize.org/laureate/674"
+    },
+    {
+      "id": 675,
+      "name": "José Saramago",
+      "year": 1998,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/675",
+      "htmlUrl": "https://www.nobelprize.org/laureate/675"
+    },
+    {
+      "id": 676,
+      "name": "Günter Grass",
+      "year": 1999,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/676",
+      "htmlUrl": "https://www.nobelprize.org/laureate/676"
+    },
+    {
+      "id": 734,
+      "name": "Gao Xingjian",
+      "year": 2000,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/734",
+      "htmlUrl": "https://www.nobelprize.org/laureate/734"
+    },
+    {
+      "id": 747,
+      "name": "V. S. Naipaul",
+      "year": 2001,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/747",
+      "htmlUrl": "https://www.nobelprize.org/laureate/747"
+    },
+    {
+      "id": 761,
+      "name": "Imre Kertész",
+      "year": 2002,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/761",
+      "htmlUrl": "https://www.nobelprize.org/laureate/761"
+    },
+    {
+      "id": 763,
+      "name": "J. M. Coetzee",
+      "year": 2003,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/763",
+      "htmlUrl": "https://www.nobelprize.org/laureate/763"
+    },
+    {
+      "id": 782,
+      "name": "Elfriede Jelinek",
+      "year": 2004,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/782",
+      "htmlUrl": "https://www.nobelprize.org/laureate/782"
+    },
+    {
+      "id": 801,
+      "name": "Harold Pinter",
+      "year": 2005,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/801",
+      "htmlUrl": "https://www.nobelprize.org/laureate/801"
+    },
+    {
+      "id": 808,
+      "name": "Orhan Pamuk",
+      "year": 2006,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/808",
+      "htmlUrl": "https://www.nobelprize.org/laureate/808"
+    },
+    {
+      "id": 817,
+      "name": "Doris Lessing",
+      "year": 2007,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/817",
+      "htmlUrl": "https://www.nobelprize.org/laureate/817"
+    },
+    {
+      "id": 832,
+      "name": "Jean-Marie Gustave Le Clézio",
+      "year": 2008,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/832",
+      "htmlUrl": "https://www.nobelprize.org/laureate/832"
+    },
+    {
+      "id": 844,
+      "name": "Herta Müller",
+      "year": 2009,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/844",
+      "htmlUrl": "https://www.nobelprize.org/laureate/844"
+    },
+    {
+      "id": 854,
+      "name": "Mario Vargas Llosa",
+      "year": 2010,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/854",
+      "htmlUrl": "https://www.nobelprize.org/laureate/854"
+    },
+    {
+      "id": 868,
+      "name": "Tomas Tranströmer",
+      "year": 2011,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/868",
+      "htmlUrl": "https://www.nobelprize.org/laureate/868"
+    },
+    {
+      "id": 880,
+      "name": "Mo Yan",
+      "year": 2012,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/880",
+      "htmlUrl": "https://www.nobelprize.org/laureate/880"
+    },
+    {
+      "id": 892,
+      "name": "Alice Munro",
+      "year": 2013,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/892",
+      "htmlUrl": "https://www.nobelprize.org/laureate/892"
+    },
+    {
+      "id": 912,
+      "name": "Patrick Modiano",
+      "year": 2014,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/912",
+      "htmlUrl": "https://www.nobelprize.org/laureate/912"
+    },
+    {
+      "id": 924,
+      "name": "Svetlana Alexievich",
+      "year": 2015,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/924",
+      "htmlUrl": "https://www.nobelprize.org/laureate/924"
+    },
+    {
+      "id": 937,
+      "name": "Bob Dylan",
+      "year": 2016,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/937",
+      "htmlUrl": "https://www.nobelprize.org/laureate/937"
+    },
+    {
+      "id": 947,
+      "name": "Kazuo Ishiguro",
+      "year": 2017,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/947",
+      "htmlUrl": "https://www.nobelprize.org/laureate/947"
+    },
+    {
+      "id": 979,
+      "name": "Olga Tokarczuk",
+      "year": 2018,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/979",
+      "htmlUrl": "https://www.nobelprize.org/laureate/979"
+    },
+    {
+      "id": 980,
+      "name": "Peter Handke",
+      "year": 2019,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/980",
+      "htmlUrl": "https://www.nobelprize.org/laureate/980"
+    },
+    {
+      "id": 993,
+      "name": "Louise Glück",
+      "year": 2020,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/993",
+      "htmlUrl": "https://www.nobelprize.org/laureate/993"
+    },
+    {
+      "id": 1004,
+      "name": "Abdulrazak Gurnah",
+      "year": 2021,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/1004",
+      "htmlUrl": "https://www.nobelprize.org/laureate/1004"
+    },
+    {
+      "id": 1017,
+      "name": "Annie Ernaux",
+      "year": 2022,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/1017",
+      "htmlUrl": "https://www.nobelprize.org/laureate/1017"
+    },
+    {
+      "id": 1032,
+      "name": "Jon Fosse",
+      "year": 2023,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/1032",
+      "htmlUrl": "https://www.nobelprize.org/laureate/1032"
+    },
+    {
+      "id": 1042,
+      "name": "Han Kang",
+      "year": 2024,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/1042",
+      "htmlUrl": "https://www.nobelprize.org/laureate/1042"
+    },
+    {
+      "id": 1056,
+      "name": "László Krasznahorkai",
+      "year": 2025,
+      "portion": "1",
+      "sortOrder": 1,
+      "apiUrl": "https://api.nobelprize.org/2/laureate/1056",
+      "htmlUrl": "https://www.nobelprize.org/laureate/1056"
+    }
+  ]
+}

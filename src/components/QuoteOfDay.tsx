@@ -13,7 +13,7 @@ export default function QuoteOfDay({ countryName, writer }: Props) {
         <span style={{fontSize:'12px',color:'#E97824',fontWeight:700}}>LIVE</span>
       </div>
       <p style={{fontSize:'18px',lineHeight:1.6,margin:'8px 0 12px'}}>{quote || (name ? `Цитата автора ${name}` : '«Литература — это отражение человеческой души и времени»')}</p>
-      <small>{name || countryName || 'Литературная карта мира'}</small>
+      <small>{name || countryName || 'Литературная планета'}</small>
     </section>
   );
 }

@@ -1,0 +1,367 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH20_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 20";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH20_REVIEWER;
+const checkedAt = "2026-08-09";
+
+type ReviewBase = Omit<WriterBiographyFactReviewRecord, "applicableTextRu">;
+
+const writerBiographyFactReviewBatch20Base = [
+  {
+    key: "cook_islands:sir_thomas_davis",
+    originalSha256: "17f440a60079349f1c9da076c43d3bf9c9576a181af56408119896104bfc147e",
+    reviewedTextRu: "Сэр Томас Дэвис — врач, исследователь, писатель и государственный деятель Островов Кука, занимавший пост премьер-министра. Он написал автобиографию «Island Boy».",
+    claims: [{
+      textRu: "Сэр Томас Дэвис работал врачом и исследователем, был писателем и премьер-министром Островов Кука и написал автобиографию Island Boy.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "University of Canterbury — Macmillan Brown Centre for Pacific Studies", url: "https://digitalvoyages.canterbury.ac.nz/omeka-s/files/original/14dc14b26985560970a9ababfc53409af9211a8e.pdf", checkedAt, findingRu: "Университетское издание об Island Boy характеризует Дэвиса как врача, исследователя, писателя и государственного деятеля Островов Кука и связывает с ним эту автобиографию." },
+        { provider: "Brigham Young University–Hawaii — Pacific Studies", url: "https://lir.byuh.edu/index.php/pacific/article/download/2428/2354/4624", checkedAt, findingRu: "Рецензия университетского журнала на Island Boy независимо называет Дэвиса врачом, исследователем, писателем, государственным деятелем и премьер-министром Островов Кука." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Широкая формула о книгах по культуре и истории заменена подтверждёнными ролями, государственной должностью и точно атрибутированной автобиографией. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:jean_marie_adiaffi",
+    originalSha256: "be28b05c2e3f0cc2d973a5e62aa1e3e5b12506fb6f2d4a49ad09c92e9c5b08d0",
+    reviewedTextRu: "Жан-Мари Адиаффи (1941–1999) — ивуарийский писатель, поэт и деятель кино. Среди его произведений — роман «La Carte d’identité» и поэма «D’éclairs et de foudres».",
+    claims: [{
+      textRu: "Жан-Мари Адиаффи жил в 1941–1999 годах, работал в литературе и кино и написал La Carte d’identité и D’éclairs et de foudres.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb11885572s", checkedAt, findingRu: "Авторитетная запись BnF подтверждает форму имени Jean-Marie Adiaffi, годы жизни, связь с литературой и аудиовизуальной сферой и библиографию автора." },
+        { provider: "INSAAC — Revue ivoirienne des arts et de la culture", url: "https://insaac.edu.ci/revue_sankofa/SANKOFA_N_21_DECEMBRE_2021.pdf", checkedAt, findingRu: "Научный журнал государственного института искусств Кот-д’Ивуара атрибутирует Жан-Мари Адиаффи роман La Carte d’identité и рассматривает его литературное творчество." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Identity/name recommendation: заменить ошибочное отображаемое имя «Жан-Мари Адеми» на «Жан-Мари Адиаффи»; форму имени подтверждает BnF. Добавлены проверяемые годы и произведения. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:maurice_bandaman",
+    originalSha256: "92577b1342ad39c1821d1bc998bc346f4513302f80cbdb3a5d67e0ff8f949fd0",
+    reviewedTextRu: "Морис Бандаман — ивуарийский писатель, драматург и государственный деятель. Его роман «Le Fils de-la-femme-mâle» получил Grand Prix littéraire d’Afrique noire в 1993 году.",
+    claims: [{
+      textRu: "Морис Бандаман — ивуарийский писатель, драматург и государственный деятель; его роман Le Fils de-la-femme-mâle получил Grand Prix littéraire d’Afrique noire 1993 года.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Éditions L’Harmattan", url: "https://www.editions-harmattan.fr/catalogue/livre/le-fils-de-la-femme-male/2100", checkedAt, findingRu: "Издательская страница идентифицирует Бандамана как ивуарийского писателя, драматурга и политика, атрибутирует ему роман и указывает полученную им премию." },
+        { provider: "Association des écrivains de langue française", url: "https://adelf.info/historique-grand-prix-afrique/", checkedAt, findingRu: "Официальная история премии фиксирует награждение Мориса Бандамана в 1993 году за Le Fils de-la-femme-mâle." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Неопределённое слово «современный» заменено документированными ролями, названием романа и официально подтверждённой премией. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:tanella_boni",
+    originalSha256: "f6625a78f94a577851313b9bb41fbc023cee337ad21a98ff9eddb2208eff20b9",
+    reviewedTextRu: "Танелла Бони — ивуарийская писательница, поэтесса и профессор философии. Её сборник «Là où il fait si clair en moi» был отмечен премией Теофиля Готье Французской академии в 2018 году.",
+    claims: [{
+      textRu: "Танелла Бони — ивуарийская писательница, поэтесса и профессор философии; Là où il fait si clair en moi получил премию Теофиля Готье 2018 года.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Académie française", url: "https://www.academie-francaise.fr/tanella-boni", checkedAt, findingRu: "Официальная страница Французской академии определяет Бони как ивуарийскую поэтессу, романистку, эссеистку и философа и фиксирует премию 2018 года за названный сборник." },
+        { provider: "Institut français", url: "https://site.cdn.institutfrancais.com/files/imported/programme_heriter_du_futur.pdf", checkedAt, findingRu: "Программа Французского института независимо подтверждает ивуарийскую принадлежность Бони, её литературную, поэтическую, исследовательскую и преподавательскую деятельность в философии." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "К исходным корректным ролям добавлены подтверждённая академическая должность, конкретный сборник и официальная премия. Shared country files не изменялись.",
+  },
+  {
+    key: "cote_d_ivoire:veronique_tadjo",
+    originalSha256: "7a214b8d469ee40041b0ad90f97c78bc2c92596b6e96802b13b5a1b97fa1e57c",
+    reviewedTextRu: "Вероник Таджо — ивуарийская писательница, поэтесса и художница, также создающая и иллюстрирующая книги для детей. Среди её произведений — «Reine Pokou» и «L’Ombre d’Imana».",
+    claims: [{
+      textRu: "Вероник Таджо — ивуарийская писательница, поэтесса, художница и автор-иллюстратор детских книг; она написала Reine Pokou и L’Ombre d’Imana.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "University of Iowa — International Writing Program", url: "https://iwp.uiowa.edu/writers/2006-resident/veronique-tadjo", checkedAt, findingRu: "Университетская биография подтверждает литературную, поэтическую и художественную работу Таджо, создание детских книг и атрибуцию названных произведений." },
+        { provider: "Casa África", url: "https://www.casafrica.es/es/persona/veronique-tadjo", checkedAt, findingRu: "Испанская государственная культурная институция независимо описывает Таджо как писательницу, поэтессу, художницу и автора детской литературы и приводит её библиографию." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Исходные роли сохранены и конкретизированы работой над детскими книгами и двумя подтверждёнными произведениями. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:antun_matos",
+    originalSha256: "2dbafc95cdfbd85af1bc3830c8f49e11cad1a462fc6cedac5bf3207be3352e98",
+    reviewedTextRu: "Антун Густав Матош (1873–1914) — хорватский писатель, поэт, критик и публицист, связанный с хорватским модернизмом. Среди его прозаических сборников — «Iverje», «Novo iverje» и «Umorne priče».",
+    claims: [{
+      textRu: "Антун Густав Матош жил в 1873–1914 годах, был хорватским писателем, поэтом, критиком и публицистом модернистского направления и издал Iverje, Novo iverje и Umorne priče.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija — Leksikografski zavod Miroslav Krleža", url: "https://enciklopedija.hr/clanak/matos-antun-gustav", checkedAt, findingRu: "Хорватская национальная энциклопедия подтверждает даты, литературные и критические роли Матоша, его связь с модернистскими течениями и три названных сборника." },
+        { provider: "Nacionalna i sveučilišna knjižnica u Zagrebu", url: "https://virtualna.nsk.hr/agm/1909/02/", checkedAt, findingRu: "Виртуальная выставка Национальной и университетской библиотеки Загреба независимо документирует биографию Матоша, его разножанровую работу и издание Umorne priče." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Сохранена корректная связь с модернизмом; добавлены полное имя, проверенные годы жизни и три прозаических сборника. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:dubravka_ugresic",
+    originalSha256: "10a4555522e03c4e58bc52da3a38d1558bfb15f495934dab79c91f77142c3808",
+    reviewedTextRu: "Дубравка Угрешич (1949–2023) — писательница, эссеистка и переводчица, работавшая в Институте теории литературы Загребского университета. Среди её книг — «Muzej bezuvjetne predaje» и «Ministarstvo boli».",
+    claims: [{
+      textRu: "Дубравка Угрешич жила в 1949–2023 годах, была писательницей, эссеисткой и переводчицей, работала в Институте теории литературы Загребского университета и написала Muzej bezuvjetne predaje и Ministarstvo boli.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Hrvatska enciklopedija — Leksikografski zavod Miroslav Krleža", url: "https://enciklopedija.hr/clanak/ugresic-dubravka", checkedAt, findingRu: "Национальная энциклопедия подтверждает годы жизни, литературную и переводческую деятельность, работу в университетском институте и две названные книги." },
+        { provider: "Dubravka Ugrešić Foundation", url: "https://www.dubravkaugresic.com/about/", checkedAt, findingRu: "Официальный фонд наследия независимо подтверждает писательскую, эссеистическую и научную работу Угрешич, её связь с Институтом теории литературы и смерть в 2023 году." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Устаревшее слово «современная» снято после смерти автора; национальная формула нейтрализована с учётом её документированной постнациональной самоидентификации. Shared country files не изменялись.",
+  },
+  {
+    key: "croatia:ivana_brlic_mazuranic",
+    originalSha256: "5c8f7d3a997462d5e16e2cb5a3a240c4d2a556d0dc0908fb6e2c3b41a957de36",
+    reviewedTextRu: "Ивана Брлич-Мажуранич (1874–1938) — хорватская писательница, работавшая прежде всего для детей. Она написала роман «Čudnovate zgode šegrta Hlapića» и сборник сказок «Priče iz davnine».",
+    claims: [{
+      textRu: "Ивана Брлич-Мажуранич жила в 1874–1938 годах, была хорватской детской писательницей и написала Čudnovate zgode šegrta Hlapića и Priče iz davnine.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Nacionalna i sveučilišna knjižnica u Zagrebu", url: "https://nsk.hr/blog/kako-je-ivana-trazila-istinu-o-sebi-put-do-njezine-vidljivosti-2/", checkedAt, findingRu: "Национальная библиотека подтверждает годы жизни, место автора в хорватской детской литературе и атрибутирует ей обе названные книги." },
+        { provider: "University of Zagreb — National Repository", url: "https://zir.nsk.hr/theses/ufzg%3A215/download?file_number=0", checkedAt, findingRu: "Университетское исследование независимо рассматривает Брлич-Мажуранич как хорватскую детскую писательницу и документирует Čudnovate zgode šegrta Hlapića и Priče iz davnine." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Неопределённое «известных» заменено годами жизни, точным жанровым профилем и двумя названными произведениями. Shared country files не изменялись.",
+  },
+  {
+    key: "cyprus:alex_michaelides",
+    originalSha256: "aad9b3a9114ee511ead2191d4f7d9477b48fc4dbec1a9c0700f8cfb8a63bf954",
+    reviewedTextRu: "Алекс Михаэлидес — писатель и сценарист. Его дебютный роман — психологический триллер «Безмолвный пациент».",
+    claims: [{
+      textRu: "Алекс Михаэлидес — писатель и сценарист; «Безмолвный пациент» — его дебютный психологический триллер.",
+      verdict: "supported",
+      evidence: [
+        { provider: "Macmillan", url: "https://us.macmillan.com/author/alexmichaelides", checkedAt, findingRu: "Официальная издательская биография подтверждает авторство и то, что The Silent Patient был первым романом Михаэлидеса; жанровая страница издателя определяет книгу как психологический триллер." },
+        { provider: "Trinity College Cambridge", url: "https://www.trin.cam.ac.uk/alumni-interview/alex-michaelides/", checkedAt, findingRu: "Интервью колледжа независимо подтверждает литературную и сценарную работу Михаэлидеса и статус The Silent Patient как его первого романа." },
+      ],
+    }],
+    reviewer,
+    decision: "unchanged",
+    notes: "Исходный русский текст нейтрален и полностью подтверждён. Identity recommendation: Q62071397 соответствует Алексу Михаэлидесу. Год рождения 1977 выбранные авторитетные источники не подтверждают; при пустой дате его не следует импортировать только из агрегатора. Shared country files не изменялись.",
+  },
+  {
+    key: "cyprus:kyriakos_charalambous",
+    originalSha256: "ac637ba1c510374c335601883224148bed650d6819243fcfd4918105dc0e08f9",
+    reviewedTextRu: "Кириакос Хараламбидис — кипрский поэт, родившийся в 1940 году в Ахне. Среди его сборников — «Famagusta Regina» и «Metahistory».",
+    claims: [{
+      textRu: "Кириакос Хараламбидис — кипрский поэт, родившийся в Ахне в 1940 году и издавший сборники Famagusta Regina и Metahistory.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "University of Cyprus Library — Lekythos", url: "https://lekythos.library.ucy.ac.cy/archive/item/171321", checkedAt, findingRu: "Университетская авторитетная запись подтверждает форму имени Charalambides, поэтическую идентичность, рождение 31 января 1940 года в Ахне и библиографические связи." },
+        { provider: "Columbia University — Hellenic Studies", url: "https://www.columbia.edu/cu/hellenicstudies/Kyriakos%20C.pdf", checkedAt, findingRu: "Университетская справка независимо подтверждает рождение поэта в Ахне в 1940 году и атрибутирует ему Famagusta Regina и Metahistory." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Identity/name/date/place recommendation: заменить «Кириакос Хариламбус» / Kyriakos Charalambous на «Кириакос Хараламбидис» / Kyriakos Charalambides; birthDate 1940-01-25 на 1940-01-31; birthPlace Famagusta на Achna. Shared country files не изменялись.",
+  },
+  {
+    key: "cyprus:nikos_nikolaidis",
+    originalSha256: "a69183e71963d48e0aa1e741933429651db89f6a80c912be664b2bdb776b6437",
+    reviewedTextRu: "Никос Николаидис (1884–1956) — кипрский прозаик и художник, занимавшийся также театром. Среди его рассказов — «Oi Iperetes» и «Metathanato».",
+    claims: [{
+      textRu: "Никос Николаидис жил в 1884–1956 годах, был кипрским прозаиком и художником, работал в театре и написал рассказы Oi Iperetes и Metathanato.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Cyprus Ministry of Education and Culture", url: "https://archeia.moec.gov.cy/mc/605/annual_report_2007_en.pdf", checkedAt, findingRu: "Годовой отчёт министерства подтверждает литературную личность Nicos Nicolaides the Cypriot и годы жизни 1884–1956, зафиксированные в государственном издании о его творчестве." },
+        { provider: "Centre for the Greek Language", url: "https://www.greek-language.gr/greekLang/literature/anthologies/library/ndx01.html?mode=pdf", checkedAt, findingRu: "Государственный центр греческого языка документирует литературную и художественную деятельность Николаидиса и атрибутирует ему рассказы Oi Iperetes и Metathanato." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Date/place recommendation: shared birthDate 1884-10-09, deathDate 1956-01-24 и birthPlace Limassol не подтверждаются. Институциональные источники уверенно дают 1884–1956 и связывают рождение с Никосией; точный день смерти расходится в справочниках, поэтому до архивного подтверждения рекомендуется хранить годы и Nicosia. Shared country files не изменялись.",
+  },
+  {
+    key: "cyprus:pantelis_michanikos",
+    originalSha256: "a5b3e35db4909ceb62e1f8a215cc6f97b5c02c4946eab2220bd9262a5aafbe3b",
+    reviewedTextRu: "Пантелис Миханикос (1926–1979) — кипрский поэт. Он выпустил сборники «Parekliseis», «Ta dyo vouna» и «Katathesi».",
+    claims: [{
+      textRu: "Пантелис Миханикос был кипрским поэтом 1926–1979 годов и издал сборники Parekliseis, Ta dyo vouna и Katathesi.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Cyprus Ministry of Education and Culture", url: "https://enimerosi.moec.gov.cy/archeia/1/ypp3062b", checkedAt, findingRu: "Официальная библиография к 90-летию со дня рождения подтверждает 1926 год и три поэтических сборника Миханикоса." },
+        { provider: "Great Cyprus Encyclopedia — Polignosi", url: "https://www.polignosi.com/cgibin/hweb?-A=7404&-V=limmata", checkedAt, findingRu: "Кипрская энциклопедия независимо подтверждает роль поэта, даты 30 июля 1926 — 20 января 1979 и названия трёх сборников." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Identity/date/place recommendation: Q97691644 соответствует Пантелису Миханикосу и bad-QID flag следует снять; заменить годы 1939–1979, birthDate 1939-01-10, deathDate 1979-07-15 и Limassol на 1926–1979, 1926-07-30, 1979-01-20 и Limnia, Famagusta. Shared country files не изменялись.",
+  },
+  {
+    key: "cyprus:tefkros_anthias",
+    originalSha256: "94372bcdf146fc132bdcddfd2f54cb26bf3ac69235545cefb202c074eb271deb",
+    reviewedTextRu: "Тефкрос Анфияс (1903–1968) — литературный псевдоним кипрского поэта и журналиста Андреаса Павлу. Среди его книг — сборник «Ta sfyrigmata tou aliti» и «Cyprus Village Tales».",
+    claims: [{
+      textRu: "Тефкрос Анфияс — псевдоним кипрского поэта и журналиста Андреаса Павлу, жившего в 1903–1968 годах и написавшего Ta sfyrigmata tou aliti и Cyprus Village Tales.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "University of Cyprus Library — Lekythos", url: "https://lekythos.library.ucy.ac.cy/archive/item/173470", checkedAt, findingRu: "Университетская authority-запись подтверждает псевдоним, настоящее имя Andreas Pavlou, точные даты, кипрскую поэтическую идентичность и сборник Ta sfyrigmata tou aliti." },
+        { provider: "Cyprus University of Technology — Apsida", url: "https://apsida.cut.ac.cy/items/show/13799", checkedAt, findingRu: "Государственный цифровой архив независимо описывает Анфияса как кипрского поэта, писателя и журналиста и документирует его книжное наследие, включая Cyprus Village Tales." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Date/place recommendation: заменить birthDate 1903-02-24 на 1903-04-03, deathDate 1968-05-15 на 1968-11-08 и birthPlace Kato Dryss на Kontea. Настоящее имя и псевдоним подтверждены authority-записью. Shared country files не изменялись.",
+  },
+  {
+    key: "czechia:alois_jirasek",
+    originalSha256: "abd5a8d9bbb7a304df1bc2be64466571633bd916bb8fd0f59570aaf0820d1e4a",
+    reviewedTextRu: "Алоис Ирасек (1851–1930) — чешский писатель и драматург, обращавшийся к истории Чехии. Среди его произведений — «Staré pověsti české», «Psohlavci» и «F. L. Věk».",
+    claims: [{
+      textRu: "Алоис Ирасек жил в 1851–1930 годах, был чешским писателем и драматургом исторической тематики и написал Staré pověsti české, Psohlavci и F. L. Věk.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Městská knihovna v Praze", url: "https://search.mlp.cz/cz/osoba/jirasek-alois/11030/", checkedAt, findingRu: "Муниципальная библиотека Праги подтверждает биографические годы, писательскую и драматургическую деятельность Ирасека и каталогизирует названные произведения." },
+        { provider: "Národní knihovna České republiky", url: "https://www.nkp.cz/file/a5d55192e56d269592439a70de1dfa89/10435/tz_kosmas900_zari2025.pdf?dl=", checkedAt, findingRu: "Материал Национальной библиотеки Чехии независимо рассматривает Ирасека как автора исторической прозы и документирует его сочинения, включая Staré pověsti české." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Исходная характеристика исторического романиста уточнена также драматургической ролью, годами жизни и тремя произведениями. Shared country files не изменялись.",
+  },
+  {
+    key: "czechia:jan_amos_komensky",
+    originalSha256: "756acc6c2f4883ff80a0d24f80753535cb532903d8834583467d354c93dc638d",
+    reviewedTextRu: "Ян Амос Коменский (1592–1670) — чешский мыслитель, писатель и педагог. Среди его трудов — «Didactica magna», «Orbis pictus» и «Labyrint světa a ráj srdce».",
+    claims: [{
+      textRu: "Ян Амос Коменский жил в 1592–1670 годах, был чешским мыслителем, писателем и педагогом и создал Didactica magna, Orbis pictus и Labyrint světa a ráj srdce.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Museum of John Amos Comenius — life, work, legacy", url: "https://komensky.mjakub.cz/works", checkedAt, findingRu: "Музейный проект документирует жизнь и многожанровое наследие Коменского и атрибутирует ему Didactica magna, Orbis pictus и Labyrint světa a ráj srdce." },
+        { provider: "Ministerio de Educación de España — Biblioteca de Educación", url: "https://www.educacionfpydeportes.gob.es/biblioteca-central/blog/2025/octubre/didactica-magna.html", checkedAt, findingRu: "Государственная библиотека образования независимо подтверждает рождение Коменского в 1592 году, его философскую и педагогическую деятельность и авторство Didactica magna и Orbis pictus." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Исходная корректная формула дополнена проверенными годами, педагогической ролью и тремя конкретными трудами. Shared country files не изменялись.",
+  },
+  {
+    key: "czechia:jaroslav_hasek",
+    originalSha256: "ea2a2ea56f357dc4a3358d013ae3ef04a7b7fada8841909c498cc944721a57f7",
+    reviewedTextRu: "Ярослав Гашек (1883–1923) — чешский писатель, юморист, сатирик и журналист. Он написал незавершённый роман «Osudy dobrého vojáka Švejka za světové války».",
+    claims: [{
+      textRu: "Ярослав Гашек жил в 1883–1923 годах, был чешским писателем, юмористом, сатириком и журналистом и написал незавершённый роман Osudy dobrého vojáka Švejka za světové války.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Ministry of Foreign Affairs of the Czech Republic", url: "https://mzv.gov.cz/manchester/cz/x100_let_od_umrti_jaroslava_haska.html", checkedAt, findingRu: "Официальная чешская биографическая справка подтверждает даты, писательскую, публицистическую и журналистскую работу Гашека и авторство романа о Швейке." },
+        { provider: "Library of Congress", url: "https://blogs.loc.gov/international-collections/2018/03/the-good-soldier-vejk/", checkedAt, findingRu: "Библиотека Конгресса независимо подтверждает чешскую идентичность Гашека, его сатирическую прозу и незавершённость романа о бравом солдате Швейке." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Обобщённое «роман о Швейке» заменено полным оригинальным названием; добавлены годы и проверенные литературно-журналистские роли. Shared country files не изменялись.",
+  },
+  {
+    key: "democratic_republic_of_congo:antoine_roger_bolamba",
+    originalSha256: "d26557ff9aaa7305c55315b214b75f213d84eebe4ee4b70e07d775d61c482805",
+    reviewedTextRu: "Антуан-Роже Боламба (1913–2002) — конголезский журналист, поэт и эссеист. Он редактировал журнал «La Voix du Congolais» и написал сборник «Esanzo: chants pour mon pays».",
+    claims: [{
+      textRu: "Антуан-Роже Боламба жил в 1913–2002 годах, был конголезским журналистом, поэтом и эссеистом, редактировал La Voix du Congolais и написал Esanzo: chants pour mon pays.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb127844111", checkedAt, findingRu: "Авторитетная запись BnF подтверждает годы жизни, литературные и журналистскую роли Боламбы, редакторскую связь с La Voix du Congolais и библиографию." },
+        { provider: "University of California eScholarship", url: "https://escholarship.org/content/qt1bz4s6qq/qt1bz4s6qq_noSplash_d1098a473934c903dd1073dad24587d6.pdf?t=rdb69z", checkedAt, findingRu: "Университетское исследование независимо подтверждает годы, редакторскую и поэтическую деятельность Боламбы и атрибуцию Esanzo: chants pour mon pays." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Недоказательный ранг «один из первых крупных» снят. Place recommendation: заменить shared birthPlace Basankusu на Boma, прямо указанную BnF. Shared country files не изменялись.",
+  },
+  {
+    key: "democratic_republic_of_congo:fiston_mwanza_mujila",
+    originalSha256: "afa5eb29e8861d437af9d894ec8c91576fb17c04d3a5903b56d520f9d93dc7d8",
+    reviewedTextRu: "Фистон Мванза Муджила — конголезский писатель, родившийся в 1981 году в Лубумбаши; он пишет прозу, поэзию и пьесы. Его роман «Tram 83» получил Международную литературную премию Дома культур мира в 2017 году.",
+    claims: [{
+      textRu: "Фистон Мванза Муджила родился в Лубумбаши в 1981 году, пишет прозу, поэзию и пьесы, а его Tram 83 получил Международную литературную премию HKW в 2017 году.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Haus der Kulturen der Welt", url: "https://www.hkw.de/en/programme/contributors/fiston-mwanza-mujila", checkedAt, findingRu: "Официальная биография HKW подтверждает происхождение и литературные жанры Муджилы, роман Tram 83 и присуждение Международной литературной премии 2017 года." },
+        { provider: "University of Graz — Franz Nabl Institute", url: "https://static.uni-graz.at/fileadmin/gewi-institute/Franz-Nabl-Institut/Bilder/LHG_Symposium_GRAZ2000___WEB.pdf", checkedAt, findingRu: "Университетский материал независимо идентифицирует Фистона Мванзу Муджилу как конголезского автора, связанного с Грацем; биографическая программа фиксирует его литературную деятельность." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Неопределённое «современный» заменено местом и годом рождения, жанрами, романом и официальной премией. Award recommendation: shared «Премия Франца Кафки» не подтверждается и должна быть удалена; документирована Международная литературная премия HKW 2017 года. Shared country files не изменялись.",
+  },
+  {
+    key: "democratic_republic_of_congo:kama_sywor_kamanda",
+    originalSha256: "d0ee4543549ca292f3ff3461e3ff3bbb666d0a60ca5e99780a46da459a5ec144",
+    reviewedTextRu: "Кама Сивор Каманда — конголезский поэт, прозаик и драматург, родившийся в 1952 году в Луэбо. Его книги «Chants de brumes» и «L’Exil des songes» отмечены премиями Французской академии.",
+    claims: [{
+      textRu: "Кама Сивор Каманда родился в Луэбо в 1952 году, является конголезским поэтом, прозаиком и драматургом, а Chants de brumes и L’Exil des songes отмечены премиями Французской академии.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Académie française", url: "https://www.academie-francaise.fr/kama-sywor-kamanda", checkedAt, findingRu: "Официальная страница Академии подтверждает конголезскую поэтическую и прозаическую деятельность Каманды и премии за Chants de brumes и L’Exil des songes." },
+        { provider: "African Studies Centre Leiden", url: "https://www.ascleiden.nl/content/library-weekly/kama-sywor-kamanda", checkedAt, findingRu: "Университетский центр африканистики независимо подтверждает рождение Каманды в Луэбо в 1952 году и его роли поэта, романиста и драматурга." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Неподтверждённая специализация на исторической прозе заменена документированными жанрами и двумя официально отмеченными книгами. Place recommendation: заменить shared birthPlace Lubumbashi на Luebo. Источники расходятся в точном ноябрьском дне рождения, поэтому текст сохраняет только 1952 год. Shared country files не изменялись.",
+  },
+  {
+    key: "democratic_republic_of_congo:pie_tshibanda",
+    originalSha256: "798155b5360ebf9da463c0ac06da5a21609db461cf80d8c4b3238fbfb2a083dd",
+    reviewedTextRu: "Пье Тшибанда — конголезский писатель, психолог и рассказчик, живущий в Бельгии с 1995 года. Он создал автобиографическую книгу и моноспектакль «Un fou noir au pays des Blancs».",
+    claims: [{
+      textRu: "Пье Тшибанда — конголезский писатель, психолог и рассказчик, переехавший в Бельгию в 1995 году и создавший книгу и моноспектакль Un fou noir au pays des Blancs.",
+      verdict: "corrected",
+      evidence: [
+        { provider: "Takam Tikou — Bibliothèque nationale de France", url: "https://takamtikou.bnf.fr/sites/default/files/d6/Bibliographie_Afrique_novembre_2011.pdf", checkedAt, findingRu: "Библиографическое издание BnF называет Тшибанду конголезским писателем, рассказчиком и психологом и связывает его роман с постановкой Un fou noir au pays des Blancs." },
+        { provider: "Université de Lorraine — Écritures", url: "https://ecritures.univ-lorraine.fr/sites/default/files/users/documents/livres/lmc_afr_04_bambara_entier.pdf", checkedAt, findingRu: "Университетское исследование независимо документирует переезд Тшибанды в Бельгию, книгу 1999 года и созданный на её основе моноспектакль." },
+      ],
+    }],
+    reviewer,
+    decision: "corrected",
+    notes: "Роли исходного текста сохранены и дополнены проверяемой миграционной датой и главным автобиографическим проектом. Work recommendation: shared название «Я не чёрный, я человек» не подтверждено; использовать оригинальное «Un fou noir au pays des Blancs» до установления легального русского издания. Shared country files не изменялись.",
+  },
+] satisfies readonly ReviewBase[];
+
+function finalizeReviewRecord(record: ReviewBase): WriterBiographyFactReviewRecord {
+  return {
+    ...record,
+    applicableTextRu: record.decision === "held" ? null : record.reviewedTextRu,
+  };
+}
+
+export const writerBiographyFactReviewBatch20: readonly WriterBiographyFactReviewRecord[] =
+  writerBiographyFactReviewBatch20Base.map(finalizeReviewRecord);
