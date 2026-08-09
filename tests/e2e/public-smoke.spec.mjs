@@ -307,6 +307,10 @@ test("глобус загружается только после приближ
   page,
   isMobile,
 }) => {
+  // The test intentionally decodes both full-resolution localized textures before
+  // exercising WebGL controls. Cold CI runners can need more than the suite's
+  // default 45 seconds without indicating a loading or interaction failure.
+  test.setTimeout(90_000);
   const errors = watchErrors(page);
   if (isMobile) await page.setViewportSize({ width: 320, height: 820 });
   await page.goto("/");
@@ -314,19 +318,86 @@ test("глобус загружается только после приближ
   const classicButton = page
     .locator(".globe-style-switch")
     .getByRole("button", { name: "Классический" });
+  const modernButton = page
+    .locator(".globe-style-switch")
+    .getByRole("button", { name: "Современный" });
   await expect(classicButton).toBeVisible({ timeout: 30_000 });
-  if (isMobile) {
-    for (const width of [320, 360]) {
-      await page.setViewportSize({ width, height: 820 });
+  await expect(modernButton).toBeVisible({ timeout: 30_000 });
+  const initialViewport = page.viewportSize();
+  const checkedWidths = isMobile ? [320, 360] : [initialViewport?.width ?? 1280, 700];
+  for (const width of checkedWidths) {
+    await page.setViewportSize({ width, height: isMobile ? 820 : 900 });
+    const styleButtons = page.locator(".globe-style-switch button");
+    for (let index = 0; index < (await styleButtons.count()); index += 1) {
       expect(
-        await classicButton.evaluate(
+        await styleButtons.nth(index).evaluate(
           (element) => element.scrollWidth <= element.clientWidth
         )
       ).toBe(true);
     }
   }
+  if (initialViewport) await page.setViewportSize(initialViewport);
   const canvas = page.locator("#atlas canvas").first();
   await expect(canvas).toBeVisible({ timeout: 30_000 });
+  const russianFilename = isMobile
+    ? "modern-atlas-2026-ru-mobile.webp"
+    : "modern-atlas-2026-ru.webp";
+  const russianTextureResponse = page.waitForResponse(
+    (response) =>
+      response.url().endsWith(`/textures/${russianFilename}`) &&
+      response.status() === 200
+  );
+  await modernButton.click();
+  const loadedRussianTexture = await russianTextureResponse;
+  expect(loadedRussianTexture.ok()).toBe(true);
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-style",
+    "modern"
+  );
+  await expect(page.locator(".globe-modern-badge")).toContainText(
+    "Современное оформление · 2026"
+  );
+  await expect(page.locator("#atlas canvas")).toHaveCount(1);
+  const russianTextureDimensions = await page.evaluate(async (textureUrl) => {
+    const image = new Image();
+    image.src = textureUrl;
+    await image.decode();
+    return { width: image.naturalWidth, height: image.naturalHeight };
+  }, loadedRussianTexture.url());
+  expect(russianTextureDimensions).toEqual(
+    isMobile ? { width: 2048, height: 1024 } : { width: 4096, height: 2048 }
+  );
+
+  const englishFilename = isMobile
+    ? "modern-atlas-2026-en-mobile.webp"
+    : "modern-atlas-2026-en.webp";
+  const englishTextureResponse = page.waitForResponse(
+    (response) =>
+      response.url().endsWith(`/textures/${englishFilename}`) &&
+      response.status() === 200
+  );
+  await page
+    .locator(".site-header .interface-language-control")
+    .getByRole("button", { name: /Английский язык|English/iu })
+    .click();
+  const loadedEnglishTexture = await englishTextureResponse;
+  expect(loadedEnglishTexture.ok()).toBe(true);
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-style",
+    "modern"
+  );
+  await expect(page.locator(".globe-modern-badge")).toContainText(
+    "Modern edition · 2026"
+  );
+  const englishTextureDimensions = await page.evaluate(async (textureUrl) => {
+    const image = new Image();
+    image.src = textureUrl;
+    await image.decode();
+    return { width: image.naturalWidth, height: image.naturalHeight };
+  }, loadedEnglishTexture.url());
+  expect(englishTextureDimensions).toEqual(
+    isMobile ? { width: 2048, height: 1024 } : { width: 4096, height: 2048 }
+  );
   const box = await canvas.boundingBox();
   expect(box).toBeTruthy();
   if (box) {

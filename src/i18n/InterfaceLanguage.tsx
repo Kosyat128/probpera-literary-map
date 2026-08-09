@@ -385,6 +385,8 @@ const englishInterfaceText: Record<string, string> = {
   "публикационную проверку по открытым авторитетным источникам":
     "the publication gate against open authoritative sources",
   "Стиль глобуса": "Globe style",
+  "Современная визуальная редакция 2026 года. Картография: Natural Earth.":
+    "Modern visual edition, 2026. Cartography: Natural Earth.",
   "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.":
     "Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.",
   "Интересный факт о книге": "A notable book fact",

@@ -1,0 +1,156 @@
+{
+  "dataset": "Natural Earth Admin 0 – Countries",
+  "version": "5.1.2",
+  "repositoryVersion": "5.1.2",
+  "themeVersion": "5.1.1",
+  "scale": "1:110m",
+  "featureCount": 177,
+  "retrievedAt": "2026-08-09",
+  "sourceUrl": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+  "releaseUrl": "https://github.com/nvkelso/natural-earth-vector/releases/tag/v5.1.2",
+  "themeUrl": "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
+  "rawSha256": "6866C877D39CBA9C357620878839B336D569F8C662D3CFAB4CB1DBE2D39C977F",
+  "localSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+  "license": "Public domain",
+  "termsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "viewpoint": "Natural Earth default",
+  "boundariesDisclaimer": "Country boundaries and classifications reflect the Natural Earth v5.1.2 default cartographic viewpoint. They are provided for literary navigation and do not constitute a legal or political determination.",
+  "rasterBase": {
+    "dataset": "Natural Earth I with Shaded Relief and Water",
+    "catalogUrl": "https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/10m-natural-earth-1-with-shaded-relief-and-water/",
+    "downloadUrl": "https://naturalearth.s3.amazonaws.com/10m_raster/NE1_LR_LC_SR_W.zip",
+    "catalogVersion": "3.2.0",
+    "embeddedVersion": "2.0.0",
+    "originalDimensions": "16200x8100",
+    "archiveSha256": "8E30C15D49BC73223A36EAEFFC07FD49998E658E373A5498F276F5D26BFD1D0A",
+    "tiffSha256": "539906DC5F2CC83BE551AEB2A4E7D2E168A6FDD573207A4477C69E923FF95DBB",
+    "preparedSourcePath": "scripts/assets/natural-earth-i-relief-source.webp",
+    "preparedSourceSha256": "67075D803D345CC48B8715D851FE94096F53E114A94DC3B69D234EF2DCAF02AD",
+    "preparedSourceDimensions": "4096x2048",
+    "license": "Public domain"
+  },
+  "renderedAssets": [
+    {
+      "path": "/textures/modern-atlas-2026-ru.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 1456296,
+      "locale": "ru",
+      "density": "desktop",
+      "countryLabelCount": 69,
+      "sha256": "9402B0C7ACE874FA4AD7288B2D9935F54EF85B2F300BFBE7BAC5EFE059F5BD2E"
+    },
+    {
+      "path": "/textures/modern-atlas-2026-ru-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 379626,
+      "locale": "ru",
+      "density": "mobile",
+      "countryLabelCount": 30,
+      "sha256": "D2D4C5F20DFECC514D537E2FEACC798C193394D0A74379BF6C4A0D5310001149"
+    },
+    {
+      "path": "/textures/modern-atlas-2026-en.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 1443294,
+      "locale": "en",
+      "density": "desktop",
+      "countryLabelCount": 68,
+      "sha256": "15A2617C5BD81AC14A67EBDF64BDD387FE29A649F3DB86EEB30AAFDD3E710AFC"
+    },
+    {
+      "path": "/textures/modern-atlas-2026-en-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 376330,
+      "locale": "en",
+      "density": "mobile",
+      "countryLabelCount": 30,
+      "sha256": "384F01288FE4DDC6443B9C026EFF798F85C1474F9135E6B218A9A238879E553D"
+    }
+  ],
+  "alignment": "Both raster assets combine the equirectangular Natural Earth I physical base with boundaries rendered from countries.geojson. The bundled GeoJSON remains the source for country hit testing, outlines, centroids, and the procedural fallback.",
+  "editionNote": "2026 identifies the site's modern visual edition, not the date or legal status of the country boundaries.",
+  "labels": {
+    "source": "Natural Earth Admin 0 – Countries",
+    "sourceSha256": "6866C877D39CBA9C357620878839B336D569F8C662D3CFAB4CB1DBE2D39C977F",
+    "fields": [
+      "NAME_RU",
+      "NAME_EN",
+      "LABEL_X",
+      "LABEL_Y",
+      "LABELRANK",
+      "scalerank"
+    ],
+    "featureCount": 177,
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "placement": "Official LABEL_X/LABEL_Y positions; LABELRANK and scalerank control responsive density.",
+    "densityPolicy": {
+      "desktop": {
+        "maxLabelRank": 3,
+        "countryLabelCounts": {
+          "ru": 69,
+          "en": 68
+        }
+      },
+      "mobile": {
+        "maxLabelRank": 2,
+        "countryLabelCounts": {
+          "ru": 30,
+          "en": 30
+        }
+      }
+    },
+    "shortLabelOverrides": {
+      "CHN": {
+        "ru": "Китай",
+        "en": "China"
+      },
+      "COD": {
+        "ru": "ДР Конго",
+        "en": "DR Congo"
+      },
+      "USA": {
+        "ru": "США",
+        "en": "United States"
+      }
+    },
+    "oceanLabels": [
+      {
+        "longitude": -145,
+        "latitude": -8,
+        "ru": "Тихий океан",
+        "en": "Pacific Ocean"
+      },
+      {
+        "longitude": -32,
+        "latitude": 5,
+        "ru": "Атлантический океан",
+        "en": "Atlantic Ocean"
+      },
+      {
+        "longitude": 79,
+        "latitude": -26,
+        "ru": "Индийский океан",
+        "en": "Indian Ocean"
+      },
+      {
+        "longitude": 5,
+        "latitude": 77,
+        "ru": "Северный Ледовитый океан",
+        "en": "Arctic Ocean"
+      },
+      {
+        "longitude": 8,
+        "latitude": -61,
+        "ru": "Южный океан",
+        "en": "Southern Ocean"
+      }
+    ]
+  }
+}
