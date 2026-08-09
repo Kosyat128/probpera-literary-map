@@ -54,10 +54,74 @@ style is selected (including a previously saved visitor preference).
 
 ## Modern surface
 
-The modern option has no raster source. It is drawn locally at runtime from
-`src/data/geo/countries.geojson`, the same Natural Earth geometry used for
-country hit testing, outlines, and centroids. This keeps visual and interactive
-geometry aligned and avoids an additional download.
+The modern option's 2026 visual edition recreates the appearance of a current
+physical relief globe. Its locally rendered 2:1 equirectangular surface blends
+Natural Earth I's satellite-derived land cover, shaded relief, and ocean water
+with the reviewed country boundaries in `src/data/geo/countries.geojson`. The
+year identifies the site's visual edition, not the date or legal status of the
+country boundaries.
 
-Natural Earth raster and vector map data are public domain:
-https://www.naturalearthdata.com/about/terms-of-use/.
+Physical raster base:
+
+- Natural Earth I with Shaded Relief and Water, 16,200 × 8,100 GeoTIFF.
+- Catalog: https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/10m-natural-earth-1-with-shaded-relief-and-water/
+- Official archive: https://naturalearth.s3.amazonaws.com/10m_raster/NE1_LR_LC_SR_W.zip
+- Catalog version: 3.2.0; the downloaded archive's embedded version file is
+  2.0.0. Both are recorded rather than silently conflated.
+- Archive SHA-256:
+  `8E30C15D49BC73223A36EAEFFC07FD49998E658E373A5498F276F5D26BFD1D0A`.
+- Extracted GeoTIFF SHA-256:
+  `539906DC5F2CC83BE551AEB2A4E7D2E168A6FDD573207A4477C69E923FF95DBB`.
+- The checked-in 4096 × 2048 preparation source is
+  `scripts/assets/natural-earth-i-relief-source.webp`, SHA-256
+  `67075D803D345CC48B8715D851FE94096F53E114A94DC3B69D234EF2DCAF02AD`.
+
+The same vector geometry is used for the visible borders, country hit testing,
+outlines, centroids, and localized labels. Russian and English country names,
+label points, and priorities come from the official `NAME_RU`, `NAME_EN`,
+`LABEL_X`, `LABEL_Y`, `LABELRANK`, and `scalerank` fields. A deterministic
+collision pass retains 68–69 labels on desktop and 30 on compact textures. The
+three longest sovereign names use restrained atlas forms (`Китай`/`China`,
+`ДР Конго`/`DR Congo`, and `США`/`United States`); their official source names
+remain unchanged in the GeoJSON. Five subdued ocean labels use documented
+static geographic positions. No city layer is invented without a city dataset.
+
+The runtime requests only the active interface language and viewport density,
+after the modern style is selected. A live RU/EN switch replaces the texture
+without recreating the globe. The procedural surface remains the local fallback.
+
+- `modern-atlas-2026-ru.webp`: 4096 × 2048 Russian desktop texture, SHA-256
+  `9402B0C7ACE874FA4AD7288B2D9935F54EF85B2F300BFBE7BAC5EFE059F5BD2E`.
+- `modern-atlas-2026-ru-mobile.webp`: 2048 × 1024 Russian compact texture,
+  SHA-256 `D2D4C5F20DFECC514D537E2FEACC798C193394D0A74379BF6C4A0D5310001149`.
+- `modern-atlas-2026-en.webp`: 4096 × 2048 English desktop texture, SHA-256
+  `15A2617C5BD81AC14A67EBDF64BDD387FE29A649F3DB86EEB30AAFDD3E710AFC`.
+- `modern-atlas-2026-en-mobile.webp`: 2048 × 1024 English compact texture,
+  SHA-256 `384F01288FE4DDC6443B9C026EFF798F85C1474F9135E6B218A9A238879E553D`.
+
+To refresh label metadata from a reviewed official download, run
+`npm run assets:globe:modern:labels -- <admin-0.geojson>`, then
+`npm run assets:globe:modern`. The renderer always reads the tracked,
+checksummed relief source; it does not accept an arbitrary raster override.
+
+The bundled geometry comes from the official Natural Earth Admin 0 – Countries
+GeoJSON in repository release `v5.1.2`, retrieved on 2026-08-09. Natural
+Earth's theme page currently labels the 110m Admin 0 theme `v5.1.1`; both
+identifiers are recorded to avoid conflating the repository and theme versions:
+
+- Source: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson
+- Release: https://github.com/nvkelso/natural-earth-vector/releases/tag/v5.1.2
+- Theme page: https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/
+- Raw source SHA-256:
+  `6866C877D39CBA9C357620878839B336D569F8C662D3CFAB4CB1DBE2D39C977F`.
+- Compact local GeoJSON SHA-256:
+  `1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC`.
+- Local feature count: 177.
+- Machine-readable provenance: `src/data/geo/countries.provenance.json`.
+
+Natural Earth raster and vector map data are public domain under its published
+terms: https://www.naturalearthdata.com/about/terms-of-use/.
+
+Country boundaries and classifications follow the default cartographic
+viewpoint in the cited Natural Earth release. They support literary navigation
+and do not constitute a legal or political determination.

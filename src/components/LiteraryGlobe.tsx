@@ -21,13 +21,17 @@ import {
   collectCountryNobelLaureates,
   collectNobelLaureates,
 } from "../data/nobel";
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import {
+  type InterfaceLanguage,
+  useInterfaceLanguage,
+} from "../i18n/InterfaceLanguage";
 import { selectWriterDisplayName } from "../data/bookLocalization";
 import CountryFlagIcon from "./CountryFlagIcon";
 import WriterPortrait from "./WriterPortrait";
 import {
   createGlobeAtlas,
   GLOBE_VISUAL_STYLES,
+  globeTextureAssetName,
   isGlobeVisualStyle,
   type GlobeAtlas,
   type GlobeVisualStyle,
@@ -45,6 +49,23 @@ interface Props {
 }
 
 const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
+
+function preloadModernGlobeTexture(language: InterfaceLanguage) {
+  if (typeof document === "undefined") return;
+  const compact = window.innerWidth <= 900;
+  const assetName = globeTextureAssetName("modern", compact, language);
+  if (!assetName) return;
+  const marker = `modern-${language}-${compact ? "compact" : "desktop"}`;
+  if (document.head.querySelector(`link[data-globe-preload="${marker}"]`)) return;
+
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.as = "image";
+  link.href = `${import.meta.env.BASE_URL}${assetName}`;
+  link.fetchPriority = "high";
+  link.dataset.globePreload = marker;
+  document.head.append(link);
+}
 
 const globeStylePalette: Record<
   GlobeVisualStyle,
@@ -107,23 +128,23 @@ const globeStylePalette: Record<
     spotIntensity: 6.4,
   },
   modern: {
-    atmosphere: "#a171ff",
-    atmosphereStrength: 0.29,
-    ambient: "#b6a8ff",
-    ambientIntensity: 0.54,
-    hemisphereSky: "#b7d3ff",
-    hemisphereGround: "#150523",
-    hemisphereIntensity: 0.98,
-    directional: "#d7e4ff",
-    directionalIntensity: 2.18,
-    sideLight: "#ff6e42",
-    sideLightIntensity: 10.5,
-    lowerLight: "#ff9b62",
-    lowerLightIntensity: 6.8,
-    rearLight: "#6945d9",
-    upperLight: "#9c5ef2",
-    spotLight: "#c8d8ff",
-    spotIntensity: 6.9,
+    atmosphere: "#72cfff",
+    atmosphereStrength: 0.23,
+    ambient: "#dce9ec",
+    ambientIntensity: 0.56,
+    hemisphereSky: "#f2fbff",
+    hemisphereGround: "#07141d",
+    hemisphereIntensity: 0.9,
+    directional: "#fffdf4",
+    directionalIntensity: 2.32,
+    sideLight: "#67bce5",
+    sideLightIntensity: 4.8,
+    lowerLight: "#73c8e9",
+    lowerLightIntensity: 3.5,
+    rearLight: "#2b6788",
+    upperLight: "#9fdcf2",
+    spotLight: "#ffffff",
+    spotIntensity: 5.4,
   },
 };
 
@@ -161,14 +182,14 @@ const globeSurfaceMaterials: Record<
     equator: "#79cfff",
   },
   modern: {
-    bumpScale: 0.012,
-    roughness: 0.5,
-    metalness: 0.12,
-    clearcoat: 0.48,
-    clearcoatRoughness: 0.3,
-    emissive: "#16092b",
-    emissiveIntensity: 0.11,
-    equator: "#ff8a55",
+    bumpScale: 0.014,
+    roughness: 0.48,
+    metalness: 0.012,
+    clearcoat: 0.34,
+    clearcoatRoughness: 0.42,
+    emissive: "#06151d",
+    emissiveIntensity: 0.022,
+    equator: "#b5483e",
   },
 };
 
@@ -714,6 +735,82 @@ function ContemporaryGlobeFrame({
           />
         </mesh>
       ))}
+    </group>
+  );
+}
+
+function ModernGlobeFrame({ economical }: { economical: boolean }) {
+  const meridianRef = useRef<THREE.Group>(null);
+  const segments = economical ? 112 : 176;
+  const ticks = Array.from({ length: 13 }, (_, index) => {
+    const angle = -Math.PI / 2 + (index / 12) * Math.PI;
+    return { angle, x: Math.cos(angle) * 1.105, y: Math.sin(angle) * 1.105 };
+  });
+
+  useFrame(({ camera }) => {
+    if (!meridianRef.current) return;
+    meridianRef.current.rotation.y = Math.atan2(
+      camera.position.x,
+      camera.position.z
+    );
+  });
+
+  return (
+    <group>
+      <group ref={meridianRef}>
+        <group rotation={[0, 0, -0.16]}>
+          <mesh rotation={[0, 0, -Math.PI / 2]} raycast={() => null}>
+            <torusGeometry args={[1.105, 0.017, 14, segments, Math.PI]} />
+            <meshPhysicalMaterial
+              color="#11171b"
+              roughness={0.34}
+              metalness={0.78}
+              clearcoat={0.42}
+              clearcoatRoughness={0.28}
+            />
+          </mesh>
+
+          {ticks.map(({ angle, x, y }, index) => (
+            <mesh
+              key={index}
+              position={[x, y, 0.018]}
+              rotation={[0, 0, angle]}
+              raycast={() => null}
+            >
+              <boxGeometry args={[index % 3 === 0 ? 0.032 : 0.022, 0.005, 0.004]} />
+              <meshBasicMaterial color="#61717a" toneMapped={false} />
+            </mesh>
+          ))}
+        </group>
+      </group>
+
+      <mesh position={[0, -1.15, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.065, 0.092, 0.3, 32]} />
+        <meshPhysicalMaterial
+          color="#11171b"
+          roughness={0.36}
+          metalness={0.76}
+          clearcoat={0.4}
+        />
+      </mesh>
+      <mesh position={[0, -1.32, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.12, 0.22, 0.14, 40]} />
+        <meshPhysicalMaterial
+          color="#0d1215"
+          roughness={0.4}
+          metalness={0.72}
+          clearcoat={0.36}
+        />
+      </mesh>
+      <mesh position={[0, -1.445, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.31, 0.38, 0.11, 48]} />
+        <meshPhysicalMaterial
+          color="#0b0f12"
+          roughness={0.42}
+          metalness={0.7}
+          clearcoat={0.32}
+        />
+      </mesh>
     </group>
   );
 }
@@ -1522,8 +1619,12 @@ function GlobeScene({
   return (
     <>
       <RendererResizeSync />
-      <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
-      <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
+      {visualStyle !== "modern" && (
+        <>
+          <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
+          <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
+        </>
+      )}
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight
         args={[
@@ -1551,13 +1652,15 @@ function GlobeScene({
       />
       <pointLight
         position={[0, -1.2, -2.4]}
-        intensity={visualStyle === "antique" ? 6.5 : 5.2}
+        intensity={
+          visualStyle === "antique" ? 6.5 : visualStyle === "modern" ? 3.4 : 5.2
+        }
         distance={4.6}
         color={palette.rearLight}
       />
       <pointLight
         position={[0, 3.5, -3]}
-        intensity={visualStyle === "modern" ? 9 : 8}
+        intensity={visualStyle === "modern" ? 4.8 : 8}
         distance={7}
         color={palette.upperLight}
       />
@@ -1581,6 +1684,8 @@ function GlobeScene({
       />
       {visualStyle === "antique" ? (
         <MythicGlobeFrame />
+      ) : visualStyle === "modern" ? (
+        <ModernGlobeFrame economical={economical} />
       ) : (
         <ContemporaryGlobeFrame
           visualStyle={visualStyle}
@@ -1657,6 +1762,7 @@ export default function LiteraryGlobe({
     storedGlobeVisualStyle
   );
   const initialVisualStyle = useRef(visualStyle);
+  const initialLanguage = useRef(language);
   const [renderedVisualStyle, setRenderedVisualStyle] =
     useState<GlobeVisualStyle>(visualStyle);
   const [pendingVisualStyle, setPendingVisualStyle] =
@@ -1735,11 +1841,15 @@ export default function LiteraryGlobe({
     let createdAtlas: GlobeAtlas | null = null;
     const requestedInitialStyle = initialVisualStyle.current;
 
-    createGlobeAtlas(countries, requestedInitialStyle)
+    createGlobeAtlas(countries, requestedInitialStyle, initialLanguage.current)
       .catch(async (error: unknown) => {
         if (requestedInitialStyle === "antique") throw error;
 
-        const fallbackAtlas = await createGlobeAtlas(countries, "antique");
+        const fallbackAtlas = await createGlobeAtlas(
+          countries,
+          "antique",
+          initialLanguage.current
+        );
         initialVisualStyle.current = "antique";
         if (!disposed) {
           setVisualStyleError(true);
@@ -1780,7 +1890,7 @@ export default function LiteraryGlobe({
     setPendingVisualStyle(visualStyle);
 
     atlas
-      .setVisualStyle(visualStyle)
+      .setVisualStyle(visualStyle, language)
       .then(() => {
         if (cancelled) return;
         setRenderedVisualStyle(visualStyle);
@@ -1802,7 +1912,7 @@ export default function LiteraryGlobe({
     return () => {
       cancelled = true;
     };
-  }, [atlas, visualStyle]);
+  }, [atlas, language, visualStyle]);
 
   if (!atlas) {
     return (
@@ -1873,6 +1983,12 @@ export default function LiteraryGlobe({
             aria-pressed={visualStyle === style}
             aria-busy={pendingVisualStyle === style || undefined}
             aria-label={visualStyleLabels[style]}
+            onPointerEnter={() => {
+              if (style === "modern") preloadModernGlobeTexture(language);
+            }}
+            onFocus={() => {
+              if (style === "modern") preloadModernGlobeTexture(language);
+            }}
             onClick={() => {
               setVisualStyleError(false);
               setVisualStyle(style);
@@ -1898,6 +2014,21 @@ export default function LiteraryGlobe({
               : ""}
         </span>
       </div>
+
+      {renderedVisualStyle === "modern" && (
+        <div
+          className="globe-modern-badge"
+          role="status"
+          aria-live="polite"
+          title={t(
+            "Современная визуальная редакция 2026 года. Картография: Natural Earth."
+          )}
+        >
+          {language === "en"
+            ? "Modern edition · 2026"
+            : "Современное оформление · 2026"}
+        </div>
+      )}
 
       <div className="globe-vignette" aria-hidden="true" />
       <div className="globe-shadow" aria-hidden="true" />

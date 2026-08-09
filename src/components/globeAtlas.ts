@@ -2,6 +2,7 @@ import * as THREE from "three";
 
 import worldGeoJsonUrl from "../data/geo/countries.geojson?url";
 import type { Country } from "../data/countries/types";
+import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   buildSphericalOutlinePositions,
   geometryContainsGeographicPoint,
@@ -31,6 +32,8 @@ type GeoFeature = {
   geometry: GlobeGeoGeometry;
 };
 
+type GeoFeatureProperties = GeoFeature["properties"];
+
 type GeoFeatureCollection = {
   type: "FeatureCollection";
   features: GeoFeature[];
@@ -40,15 +43,25 @@ export const GLOBE_VISUAL_STYLES = ["antique", "earth", "modern"] as const;
 
 export type GlobeVisualStyle = (typeof GLOBE_VISUAL_STYLES)[number];
 
+export const MODERN_GLOBE_EDITION = {
+  year: 2026,
+  source: "Natural Earth",
+  sourceVersion: "5.1.2",
+  scale: "1:110m",
+} as const;
+
 export function isGlobeVisualStyle(value: unknown): value is GlobeVisualStyle {
   return GLOBE_VISUAL_STYLES.some((style) => style === value);
 }
 
 export function globeTextureAssetName(
   style: GlobeVisualStyle,
-  compact: boolean
+  compact: boolean,
+  language: InterfaceLanguage = "ru"
 ): string | null {
-  if (style === "modern") return null;
+  if (style === "modern") {
+    return `textures/modern-atlas-2026-${language}${compact ? "-mobile" : ""}.webp`;
+  }
 
   const basename =
     style === "earth" ? "earth-blue-marble" : "antique-world-1887";
@@ -65,7 +78,10 @@ export type GlobeAtlas = {
   centroidForCountry: (countryId: string) => [number, number] | null;
   outlineGeometryForCountry: (countryId: string) => THREE.BufferGeometry | null;
   updateHighlight: (selectedCountryId?: string | null, hoveredCountryId?: string | null) => void;
-  setVisualStyle: (style: GlobeVisualStyle) => Promise<void>;
+  setVisualStyle: (
+    style: GlobeVisualStyle,
+    language?: InterfaceLanguage
+  ) => Promise<void>;
   dispose: () => void;
 };
 
@@ -88,8 +104,12 @@ function loadWorldGeoJson() {
   return geoJsonPromise;
 }
 
-function loadGlobeMap(style: GlobeVisualStyle, compact: boolean) {
-  const assetName = globeTextureAssetName(style, compact);
+function loadGlobeMap(
+  style: GlobeVisualStyle,
+  compact: boolean,
+  language: InterfaceLanguage
+) {
+  const assetName = globeTextureAssetName(style, compact, language);
   if (!assetName) return Promise.resolve<HTMLImageElement | null>(null);
 
   let pendingImage = globeMapPromises.get(assetName);
@@ -97,6 +117,7 @@ function loadGlobeMap(style: GlobeVisualStyle, compact: boolean) {
     pendingImage = new Promise<HTMLImageElement>((resolve, reject) => {
       const image = new Image();
       image.decoding = "async";
+      image.fetchPriority = "high";
       image.onload = () => {
         globeMapPromises.delete(assetName);
         resolve(image);
@@ -398,18 +419,26 @@ function featureColor(index: number, mapColor = 0) {
   return palette[(index * 7 + mapColor * 3) % palette.length];
 }
 
-function modernFeatureColor(index: number, mapColor = 0) {
+export function modernFeatureColor(mapColor = 0, index = 0) {
   const palette = [
-    "#2d4f88",
-    "#56367f",
-    "#256478",
-    "#71365f",
-    "#364a91",
-    "#6b4b79",
-    "#2f607e",
-    "#683f88",
+    "#d4df86",
+    "#9fd08d",
+    "#e7c36f",
+    "#d7976b",
+    "#84c5aa",
+    "#b7acd0",
+    "#b6d27e",
+    "#7fb9c5",
+    "#e3b36c",
+    "#a8c68b",
+    "#c49fc1",
+    "#8fc4a0",
+    "#d5cc7b",
   ];
-  return palette[(index * 5 + mapColor * 3) % palette.length];
+  const mapColorIndex = Number.isFinite(mapColor) && mapColor > 0
+    ? Math.floor(mapColor) - 1
+    : index;
+  return palette[((mapColorIndex % palette.length) + palette.length) % palette.length];
 }
 
 function drawModernBackground(
@@ -418,24 +447,24 @@ function drawModernBackground(
   height: number
 ) {
   const background = context.createLinearGradient(0, 0, width, height);
-  background.addColorStop(0, "#050817");
-  background.addColorStop(0.42, "#11143a");
-  background.addColorStop(0.76, "#260b3d");
-  background.addColorStop(1, "#070719");
+  background.addColorStop(0, "#2aa5d5");
+  background.addColorStop(0.42, "#168fc7");
+  background.addColorStop(0.72, "#0c78b2");
+  background.addColorStop(1, "#176d9d");
   context.fillStyle = background;
   context.fillRect(0, 0, width, height);
 
   const glow = context.createRadialGradient(
-    width * 0.7,
-    height * 0.32,
+    width * 0.61,
+    height * 0.38,
     0,
-    width * 0.7,
-    height * 0.32,
-    width * 0.58
+    width * 0.61,
+    height * 0.38,
+    width * 0.54
   );
-  glow.addColorStop(0, "rgba(110, 72, 220, 0.28)");
-  glow.addColorStop(0.48, "rgba(54, 32, 126, 0.11)");
-  glow.addColorStop(1, "rgba(4, 7, 24, 0)");
+  glow.addColorStop(0, "rgba(224, 249, 255, 0.16)");
+  glow.addColorStop(0.52, "rgba(114, 205, 238, 0.06)");
+  glow.addColorStop(1, "rgba(6, 67, 101, 0)");
   context.fillStyle = glow;
   context.fillRect(0, 0, width, height);
 }
@@ -447,39 +476,62 @@ function drawModernGraticule(
 ) {
   context.save();
   context.setLineDash([]);
+  const scale = width / DESKTOP_MAP_WIDTH;
+  const minorWidth = Math.max(0.55, 0.82 * scale);
+  const majorWidth = Math.max(0.78, 1.16 * scale);
 
-  for (let longitude = -165; longitude <= 165; longitude += 15) {
+  for (let longitude = -150; longitude <= 150; longitude += 30) {
     const x = longitudeToTextureX(longitude, width);
-    const major = longitude % 45 === 0;
+    const major = longitude % 90 === 0;
     context.beginPath();
     context.moveTo(x, 0);
     context.lineTo(x, height);
     context.strokeStyle = major
-      ? "rgba(120, 177, 255, 0.2)"
-      : "rgba(157, 119, 255, 0.085)";
-    context.lineWidth = major ? 1.2 : 0.7;
+      ? "rgba(49, 92, 120, 0.26)"
+      : "rgba(47, 96, 126, 0.14)";
+    context.lineWidth = major ? majorWidth : minorWidth;
     context.stroke();
   }
 
-  for (let latitude = -75; latitude <= 75; latitude += 15) {
+  for (let latitude = -60; latitude <= 60; latitude += 30) {
     const y = ((90 - latitude) / 180) * height;
-    const major = latitude % 45 === 0;
+    const major = latitude % 90 === 0;
     context.beginPath();
     context.moveTo(0, y);
     context.lineTo(width, y);
     context.strokeStyle = major
-      ? "rgba(120, 177, 255, 0.2)"
-      : "rgba(157, 119, 255, 0.085)";
-    context.lineWidth = major ? 1.2 : 0.7;
+      ? "rgba(49, 92, 120, 0.26)"
+      : "rgba(47, 96, 126, 0.14)";
+    context.lineWidth = major ? majorWidth : minorWidth;
     context.stroke();
   }
 
+  const accent = "rgba(181, 72, 62, 0.54)";
   context.beginPath();
   context.moveTo(0, height / 2);
   context.lineTo(width, height / 2);
-  context.strokeStyle = "rgba(255, 137, 83, 0.36)";
-  context.lineWidth = 1.6;
+  context.strokeStyle = accent;
+  context.lineWidth = Math.max(0.9, 1.4 * scale);
   context.stroke();
+
+  const primeMeridianX = longitudeToTextureX(0, width);
+  context.beginPath();
+  context.moveTo(primeMeridianX, 0);
+  context.lineTo(primeMeridianX, height);
+  context.strokeStyle = accent;
+  context.lineWidth = Math.max(0.72, 1.05 * scale);
+  context.stroke();
+
+  context.setLineDash([Math.max(5, 10 * scale), Math.max(5, 9 * scale)]);
+  for (const latitude of [-66.562, -23.436, 23.436, 66.562]) {
+    const y = ((90 - latitude) / 180) * height;
+    context.beginPath();
+    context.moveTo(0, y);
+    context.lineTo(width, y);
+    context.strokeStyle = "rgba(69, 111, 131, 0.18)";
+    context.lineWidth = minorWidth;
+    context.stroke();
+  }
   context.restore();
 }
 
@@ -498,17 +550,23 @@ function drawMapCanvas(
   context.imageSmoothingQuality = "high";
 
   if (style === "modern") {
+    if (sourceMap) {
+      context.drawImage(sourceMap, 0, 0, width, height);
+      return;
+    }
+
     drawModernBackground(context, width, height);
     drawModernGraticule(context, width, height);
+    const borderWidth = width >= DESKTOP_MAP_WIDTH ? 1.7 : 1.05;
     features.forEach((feature, index) => {
       drawFeature(
         context,
         feature,
         width,
         height,
-        modernFeatureColor(index, feature.properties.MAPCOLOR13),
-        "rgba(151, 202, 255, 0.48)",
-        1.05
+        modernFeatureColor(feature.properties.MAPCOLOR13, index),
+        "rgba(41, 76, 99, 0.72)",
+        borderWidth
       );
     });
 
@@ -520,9 +578,9 @@ function drawMapCanvas(
       height * 0.5,
       width * 0.64
     );
-    glaze.addColorStop(0, "rgba(146, 122, 255, 0.15)");
-    glaze.addColorStop(0.58, "rgba(43, 27, 95, 0)");
-    glaze.addColorStop(1, "rgba(1, 4, 17, 0.34)");
+    glaze.addColorStop(0, "rgba(255, 255, 245, 0.08)");
+    glaze.addColorStop(0.58, "rgba(130, 201, 224, 0)");
+    glaze.addColorStop(1, "rgba(3, 45, 69, 0.16)");
     context.fillStyle = glaze;
     context.fillRect(0, 0, width, height);
     return;
@@ -630,13 +688,21 @@ function makeReliefCanvas(features: GeoFeature[], width: number, height: number)
   return canvas;
 }
 
-function featureCountry(feature: GeoFeature, countriesByCode: Map<string, Country>) {
-  const properties = feature.properties;
-  const candidateCodes = [properties.ISO_A2, properties.WB_A2, properties.POSTAL]
+export function featureCountryCodeCandidates(
+  properties: GeoFeatureProperties
+): string[] {
+  const candidateCodes = [properties.ISO_A2, properties.WB_A2]
     .filter((value): value is string => Boolean(value && value !== "-99" && value.length === 2))
     .map((value) => value.toUpperCase());
 
   if (properties.ADM0_A3 === "NOR") candidateCodes.push("NO");
+  if (properties.ADM0_A3 === "KOS") candidateCodes.push("XK");
+
+  return [...new Set(candidateCodes)];
+}
+
+function featureCountry(feature: GeoFeature, countriesByCode: Map<string, Country>) {
+  const candidateCodes = featureCountryCodeCandidates(feature.properties);
 
   for (const code of candidateCodes) {
     const country = countriesByCode.get(code);
@@ -728,26 +794,29 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
 
 async function loadVisualStyleMap(
   style: GlobeVisualStyle,
-  compact: boolean
+  compact: boolean,
+  language: InterfaceLanguage
 ) {
   try {
-    return await loadGlobeMap(style, compact);
+    return await loadGlobeMap(style, compact, language);
   } catch (error) {
-    // The original museum view has a procedural parchment fallback. Earth must
-    // never silently masquerade as another surface when its asset is missing.
-    if (style === "antique") return null;
+    // Antique and Modern both have deterministic procedural fallbacks. Earth
+    // must never silently masquerade as another surface when its NASA asset is
+    // missing.
+    if (style === "antique" || style === "modern") return null;
     throw error;
   }
 }
 
 export async function createGlobeAtlas(
   countries: Country[],
-  initialVisualStyle: GlobeVisualStyle = "antique"
+  initialVisualStyle: GlobeVisualStyle = "antique",
+  initialLanguage: InterfaceLanguage = "ru"
 ): Promise<GlobeAtlas> {
   const compact = window.innerWidth <= 900;
   const [worldGeoJson, sourceMap] = await Promise.all([
     loadWorldGeoJson(),
-    loadVisualStyleMap(initialVisualStyle, compact),
+    loadVisualStyleMap(initialVisualStyle, compact, initialLanguage),
   ]);
   const countriesByCode = new Map(
     countries
@@ -848,6 +917,7 @@ export async function createGlobeAtlas(
   let disposed = false;
   let flagPreloadTimer: number | null = null;
   let activeVisualStyle = initialVisualStyle;
+  let activeLanguage = initialLanguage;
   let visualStyleRequest = 0;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
@@ -993,30 +1063,75 @@ export async function createGlobeAtlas(
     }
   };
 
+  const drawModernHighlight = (
+    countryId: string,
+    fill: string,
+    stroke: string,
+    lineWidth: number,
+    glow: number
+  ) => {
+    const features = featuresByCountryId.get(countryId) ?? [];
+    highlightContext.save();
+    highlightContext.shadowColor = stroke;
+    highlightContext.shadowBlur = glow;
+    features.forEach((feature) => {
+      drawFeature(
+        highlightContext,
+        feature,
+        highlightWidth,
+        highlightHeight,
+        fill,
+        stroke,
+        lineWidth
+      );
+    });
+    highlightContext.restore();
+  };
+
   const redrawHighlights = () => {
     highlightContext.clearRect(0, 0, highlightWidth, highlightHeight);
 
     if (activeSelectedCountryId) {
-      drawFlagHighlight(
-        activeSelectedCountryId,
-        0.42,
-        "#ff9b2f",
-        3.2,
-        10
-      );
+      if (activeVisualStyle === "modern") {
+        drawModernHighlight(
+          activeSelectedCountryId,
+          "rgba(246, 145, 77, 0.28)",
+          "#ffb177",
+          3,
+          9
+        );
+      } else {
+        drawFlagHighlight(
+          activeSelectedCountryId,
+          0.42,
+          "#ff9b2f",
+          3.2,
+          10
+        );
+      }
     }
 
     if (
       activeHoveredCountryId &&
       activeHoveredCountryId !== activeSelectedCountryId
     ) {
-      drawFlagHighlight(
-        activeHoveredCountryId,
-        0.28,
-        "#ffb24c",
-        2.2,
-        7
-      );
+      if (activeVisualStyle === "modern") {
+        drawModernHighlight(
+          activeHoveredCountryId,
+          "rgba(100, 217, 199, 0.16)",
+          "#91e8da",
+          2.2,
+          6
+        );
+      } else {
+        drawFlagHighlight(
+          activeHoveredCountryId,
+          0.28,
+          "#ffb24c",
+          2.2,
+          7
+        );
+      }
     }
 
     highlightTexture.needsUpdate = true;
@@ -1031,16 +1146,26 @@ export async function createGlobeAtlas(
     redrawHighlights();
   };
 
-  const setVisualStyle = async (style: GlobeVisualStyle) => {
+  const setVisualStyle = async (
+    style: GlobeVisualStyle,
+    language: InterfaceLanguage = activeLanguage
+  ) => {
     const request = ++visualStyleRequest;
-    if (style === activeVisualStyle) return;
+    if (
+      style === activeVisualStyle &&
+      (style !== "modern" || language === activeLanguage)
+    ) {
+      return;
+    }
 
-    const nextMap = await loadVisualStyleMap(style, compact);
+    const nextMap = await loadVisualStyleMap(style, compact, language);
     if (disposed || request !== visualStyleRequest) return;
 
     drawMapCanvas(mapCanvas, worldGeoJson.features, style, nextMap);
     activeVisualStyle = style;
+    activeLanguage = language;
     mapTexture.needsUpdate = true;
+    redrawHighlights();
   };
 
   return {

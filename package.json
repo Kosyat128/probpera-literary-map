@@ -75,6 +75,9 @@
     "books:import:openlibrary": "node scripts/import-openlibrary-books.mjs --target=10000",
     "books:import:openlibrary:apply": "node scripts/import-openlibrary-books.mjs --target=10000 --apply",
     "assets:globe": "node scripts/build-antique-globe-texture.mjs",
+    "assets:globe:modern:source": "node scripts/prepare-modern-globe-source.mjs",
+    "assets:globe:modern:labels": "node scripts/sync-modern-globe-labels.mjs",
+    "assets:globe:modern": "node scripts/build-modern-globe-texture.mjs",
     "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
   },
   "dependencies": {
