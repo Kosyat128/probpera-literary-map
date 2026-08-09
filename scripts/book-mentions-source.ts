@@ -92,7 +92,7 @@ export const archive = buildBookArchive(bookArchiveCountries).map((entry) => {
   };
 });
 
-export const writers = countries.flatMap((country) =>
+export const writers = bookArchiveCountries.flatMap((country) =>
   country.writers.map((writer) => ({
     countryId: country.id,
     writerId: writer.id,
