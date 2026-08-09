@@ -307,6 +307,10 @@ test("глобус загружается только после приближ
   page,
   isMobile,
 }) => {
+  // The test intentionally decodes both full-resolution localized textures before
+  // exercising WebGL controls. Cold CI runners can need more than the suite's
+  // default 45 seconds without indicating a loading or interaction failure.
+  test.setTimeout(90_000);
   const errors = watchErrors(page);
   if (isMobile) await page.setViewportSize({ width: 320, height: 820 });
   await page.goto("/");
