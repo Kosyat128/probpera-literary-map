@@ -18,6 +18,15 @@ import {
   writerBiographyPublicProfileFactCorrectionsBatch32,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch32";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch33,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch33";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch34,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch34";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch35,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch35";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -30,16 +39,19 @@ function key(countryId: string, writerId: string) {
 }
 
 describe("legacy writer biography curation", () => {
-  it("keeps detailed Batch32 reviews outside the public profile runtime boundary", () => {
+  it("keeps detailed fact reviews outside the public profile runtime boundary", () => {
     const runtimeSources = [
       "writerBiographyPublicProfileFactCorrectionsBatch32.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch33.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch34.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch35.ts",
       "writerBiographyLegacyCorrections.ts",
     ].map((fileName) =>
       readFileSync(new URL(fileName, import.meta.url), "utf8")
     );
 
     for (const source of runtimeSources) {
-      expect(source).not.toContain("writerBiographyFactReviewBatch32");
+      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35)/);
     }
   });
 
@@ -47,8 +59,11 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
     expect(quarantinedWriterIdentities).toHaveLength(64);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(85);
+    expect(writerPublicProfileFactCorrections).toHaveLength(148);
     expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch33).toHaveLength(14);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch34).toHaveLength(17);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch35).toHaveLength(32);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -400,6 +415,51 @@ describe("legacy writer biography curation", () => {
       years: "ок. 940–1020",
       birthDate: "0940-01-01",
       deathDate: "1020-01-01",
+    });
+  });
+
+  it("publishes compact source-backed profile patches for batches 33–35", () => {
+    const publicWriters = new Map(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+    const corrections = [
+      ...writerBiographyPublicProfileFactCorrectionsBatch33,
+      ...writerBiographyPublicProfileFactCorrectionsBatch34,
+      ...writerBiographyPublicProfileFactCorrectionsBatch35,
+    ];
+    const correctionKeys = corrections.map((item) =>
+      key(item.countryId, item.writerId)
+    );
+
+    expect(corrections).toHaveLength(63);
+    expect(new Set(correctionKeys).size).toBe(correctionKeys.length);
+    for (const item of corrections) {
+      const itemKey = key(item.countryId, item.writerId);
+      const hosts = new Set(
+        item.evidence.map((source) => new URL(source.url).host)
+      );
+      expect(item.evidence.length, itemKey).toBeGreaterThanOrEqual(2);
+      expect(hosts.size, itemKey).toBeGreaterThanOrEqual(2);
+      expect(
+        item.evidence.every(
+          (source) =>
+            source.checkedAt === "2026-08-11" &&
+            source.url.startsWith("https://")
+        ),
+        itemKey
+      ).toBe(true);
+      expect(publicWriters.get(itemKey), itemKey).toMatchObject(item.patch);
+    }
+
+    expect(publicWriters.get("iran:shahrnush_parsipur")).toMatchObject({
+      years: "1946–2026",
+      deathDate: "2026-07-03",
+    });
+    expect(publicWriters.get("japan:keigo_higashino")).toMatchObject({
+      years: "1958–2026",
+      deathDate: "2026-07-23",
     });
   });
 

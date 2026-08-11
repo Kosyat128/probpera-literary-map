@@ -2,6 +2,15 @@ import type { Country, WriterProfile } from "./types";
 import {
   writerBiographyPublicProfileFactCorrectionsBatch32,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch32";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch33,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch33";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch34,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch34";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch35,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch35";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1628,6 +1637,9 @@ export const writerPublicProfileFactCorrections = [
     note: "Corrects the declined and misspelled Russian display name and records the university's Latin-script authority form.",
   },
   ...writerBiographyPublicProfileFactCorrectionsBatch32,
+  ...writerBiographyPublicProfileFactCorrectionsBatch33,
+  ...writerBiographyPublicProfileFactCorrectionsBatch34,
+  ...writerBiographyPublicProfileFactCorrectionsBatch35,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
