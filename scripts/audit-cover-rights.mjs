@@ -6,6 +6,11 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
 const countriesDirectory = path.join(projectRoot, "src", "data", "countries");
 const reportDirectory = path.join(projectRoot, "reports");
+const userSuppliedCoverManifestPath = path.join(
+  countriesDirectory,
+  "generated",
+  "userSuppliedBookCovers.generated.json"
+);
 const allowedStatuses = new Set([
   "public-domain",
   "licensed",
@@ -21,9 +26,12 @@ function field(block, name) {
 }
 
 async function main() {
-  const files = (await readdir(countriesDirectory)).filter((file) =>
-    file.endsWith(".ts")
+  const userSuppliedCoverManifest = JSON.parse(
+    await readFile(userSuppliedCoverManifestPath, "utf8")
   );
+  const files = (await readdir(countriesDirectory))
+    .filter((file) => file.endsWith(".ts"))
+    .sort((left, right) => left.localeCompare(right, "en"));
   const covers = [];
 
   for (const file of files) {
@@ -34,6 +42,7 @@ async function main() {
       const sourceUrl = field(block, "sourceUrl");
       const checkedAt = field(block, "checkedAt");
       const coverSourceUrl = field(block, "coverSourceUrl");
+      const note = field(block, "note");
       covers.push({
         file,
         coverUrl: match[1],
@@ -41,6 +50,7 @@ async function main() {
         status: status || "missing",
         sourceUrl,
         checkedAt,
+        note,
         displayAllowed:
           allowedStatuses.has(status) && Boolean(sourceUrl || coverSourceUrl),
         issues: [
@@ -56,11 +66,43 @@ async function main() {
     }
   }
 
+  const existingCoverUrls = new Set(covers.map(({ coverUrl }) => coverUrl));
+  const manifestCheckedAt = userSuppliedCoverManifest.generatedAt.slice(0, 10);
+  for (const entry of userSuppliedCoverManifest.entries) {
+    if (existingCoverUrls.has(entry.coverUrl)) continue;
+    covers.push({
+      file: "generated/userSuppliedBookCovers.generated.json",
+      coverUrl: entry.coverUrl,
+      coverSourceUrl: entry.coverUrl,
+      status: "editorial-original",
+      sourceUrl: entry.coverUrl,
+      checkedAt: manifestCheckedAt,
+      provenance: entry.provenance,
+      note: entry.provenance.note,
+      displayAllowed: true,
+      issues: [
+        ...(entry.provenance?.kind !== "user-supplied"
+          ? ["Некорректный provenance пользовательской обложки"]
+          : []),
+        ...(!entry.provenance?.archiveSha256 || !entry.provenance?.imageSha256
+          ? ["Нет SHA-256 архива или исходного изображения"]
+          : []),
+      ],
+    });
+    existingCoverUrls.add(entry.coverUrl);
+  }
+
   const report = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: userSuppliedCoverManifest.generatedAt,
     policy: "docs/COVER_RIGHTS_POLICY.md",
     summary: {
       covers: covers.length,
+      countryCovers: covers.filter(
+        (cover) => cover.file !== "generated/userSuppliedBookCovers.generated.json"
+      ).length,
+      userSuppliedCovers: covers.filter(
+        (cover) => cover.file === "generated/userSuppliedBookCovers.generated.json"
+      ).length,
       displayAllowed: covers.filter((cover) => cover.displayAllowed).length,
       blocked: covers.filter((cover) => !cover.displayAllowed).length,
       withIssues: covers.filter((cover) => cover.issues.length > 0).length,
@@ -82,6 +124,8 @@ async function main() {
       `Сформирован: ${report.generatedAt}`,
       "",
       `- Найдено обложек: ${report.summary.covers}`,
+      `- В country-файлах: ${report.summary.countryCovers}`,
+      `- Из пользовательского manifest-overlay: ${report.summary.userSuppliedCovers}`,
       `- Разрешено к показу политикой проекта: ${report.summary.displayAllowed}`,
       `- Заблокировано до проверки: ${report.summary.blocked}`,
       `- Записей с замечаниями: ${report.summary.withIssues}`,
@@ -93,6 +137,12 @@ async function main() {
         `- Показ: ${cover.displayAllowed ? "разрешён" : "заблокирован"}`,
         `- Источник: ${cover.sourceUrl || cover.coverSourceUrl || "не указан"}`,
         `- Проверено: ${cover.checkedAt || "не указано"}`,
+        ...(cover.note ? [`- Примечание: ${cover.note}`] : []),
+        ...(cover.provenance
+          ? [
+              `- Provenance: ${cover.provenance.kind}; archive SHA-256: ${cover.provenance.archiveSha256}; image SHA-256: ${cover.provenance.imageSha256}`,
+            ]
+          : []),
         ...(cover.issues.length
           ? cover.issues.map((issue) => `- Замечание: ${issue}`)
           : ["- Замечаний нет"]),

@@ -15,6 +15,7 @@ import {
 import enrichmentActionsJson from "./countries/generated/books.enrichment-actions.json";
 import { isPublicBook } from "./bookQuality";
 import { selectBookText } from "./bookLocalization";
+import { applyUserSuppliedBookCover } from "./userSuppliedBookCovers";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -129,6 +130,7 @@ function legacyWorkId(writerId: string, title: string, index: number) {
 export type BuildBookArchiveOptions = {
   includeReviewedGenerated?: boolean;
   applyEnrichmentActions?: boolean;
+  includeUserSuppliedCovers?: boolean;
 };
 
 export type BookEnrichmentActionsPayload = {
@@ -288,7 +290,8 @@ export function buildBookArchive(
 ): BookArchiveEntry[] {
   const includeReviewedGenerated = options.includeReviewedGenerated !== false;
   const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;
-  return countries.flatMap((country) =>
+  const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;
+  const archive = countries.flatMap((country) =>
     country.writers.flatMap((writer) => {
       const candidateGroups = [
         includeReviewedGenerated
@@ -367,6 +370,20 @@ export function buildBookArchive(
       });
     })
   );
+
+  if (!includeUserSuppliedCovers) return archive;
+
+  const protectedWorkKeys = new Set(
+    archive
+      .filter((work) => work.coverUrl || work.coverRights || work.edition)
+      .map((work) => bookArchiveKey(work.countryId, work.writerId, work.id))
+  );
+
+  return archive.map((work) => {
+    const workKey = bookArchiveKey(work.countryId, work.writerId, work.id);
+    return applyUserSuppliedBookCover(workKey, work, protectedWorkKeys) as
+      BookArchiveEntry;
+  });
 }
 
 export function buildPublicBookArchive(countries: Country[]): BookArchiveEntry[] {

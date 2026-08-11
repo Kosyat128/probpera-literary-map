@@ -1,8 +1,8 @@
 import {
   buildBookArchive,
-  buildPublicBookArchive,
   isCoverArtworkDisplayAllowed,
 } from "../src/data/bookArchive";
+import { isPublicBook } from "../src/data/bookQuality";
 import {
   selectBookText,
   selectBookWriterName,
@@ -50,14 +50,20 @@ export const articles = [
   imageUrl: article.imageUrl || "",
 }));
 
+// Article payloads are immutable unless article work is explicitly requested.
+// User-supplied archive covers therefore stay out of the generated mention index.
+const articleBookArchive = buildBookArchive(bookArchiveCountries, {
+  includeUserSuppliedCovers: false,
+});
+
 const publicArchive = new Map(
-  buildPublicBookArchive(bookArchiveCountries).map((entry) => [
+  articleBookArchive.filter(isPublicBook).map((entry) => [
     `${entry.countryId}:${entry.writerId}:${entry.id}`,
     entry,
   ])
 );
 
-export const archive = buildBookArchive(bookArchiveCountries).map((entry) => {
+export const archive = articleBookArchive.map((entry) => {
   const { country, writer, ...work } = entry;
   const key = `${entry.countryId}:${entry.writerId}:${entry.id}`;
   const publicEntry = publicArchive.get(key);

@@ -33,6 +33,7 @@ export const archiveBooks = buildBookArchive(bookArchiveCountries);
 export const archiveRawBooks = buildBookArchive(bookArchiveCountries, {
   includeReviewedGenerated: false,
   applyEnrichmentActions: false,
+  includeUserSuppliedCovers: false,
 });
 export const archiveStatistics = calculateArchiveStatistics(countries);
 export const countryEditorialAudit = auditCountryArchive(countries);
