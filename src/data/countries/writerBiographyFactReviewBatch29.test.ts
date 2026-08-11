@@ -105,6 +105,12 @@ describe("writer biography claim review batch 29", () => {
     const reviewQueueKeys = factQa.reviewQueue.map((item) => item.key);
     const reviewQueueSet = new Set(reviewQueueKeys);
     const keys = writerBiographyFactReviewBatch29.map((record) => record.key);
+    const heldKeys = writerBiographyFactReviewBatch29
+      .filter((record) => record.decision === "held")
+      .map((record) => record.key);
+    const applicableKeys = writerBiographyFactReviewBatch29
+      .filter((record) => record.decision !== "held")
+      .map((record) => record.key);
 
     // The report freezes the 1720-key allocation snapshot. The live QA queue is
     // intentionally allowed to shrink as earlier frozen batches are integrated.
@@ -119,10 +125,11 @@ describe("writer biography claim review batch 29", () => {
     expect(quarantineKeys.length).toBeGreaterThanOrEqual(49);
     expect(quarantineKeys).toHaveLength(new Set(quarantineKeys).size);
     expect(keys).toEqual(expectedKeys);
-    expect(keys.every((key) => reviewQueueSet.has(key))).toBe(true);
+    expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
     expect(new Set(keys).size).toBe(40);
     expect(keys.some((key) => assignedKeys.includes(key))).toBe(false);
-    expect(keys.some((key) => quarantineKeys.includes(key))).toBe(false);
+    expect(heldKeys.every((key) => quarantineKeys.includes(key))).toBe(true);
+    expect(applicableKeys.some((key) => quarantineKeys.includes(key))).toBe(false);
     expect([...keys].sort((a, b) => a.localeCompare(b, "en"))).toEqual(keys);
   });
 
@@ -186,12 +193,24 @@ describe("writer biography claim review batch 29", () => {
     expect(writerBiographyFactReviewBatch29.filter((record) => record.decision === "held")).toHaveLength(3);
   });
 
-  it("records exact identity and date recommendations and remains disconnected", () => {
+  it("records exact resolved identity and date recommendations in the build-only registry", () => {
     const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
       wikidataIdentityReviewQueue: Array<{ key: string; qid: string }>;
       wikidataDateDiscrepancyQueue: Array<{ key: string; field: string }>;
       badQidIdentityQueue: Array<{ key: string; qid: string }>;
       calendarOrSourceDiscrepancyQueue: Array<{ key: string }>;
+      records: Array<{
+        key: string;
+        manualResolutions: Array<{
+          field: string;
+          cardValue: string;
+          decision: string;
+        }>;
+        wikidataEvidence: {
+          identityValidationStatus?: string;
+          manualIdentityConfirmation?: { qid: string } | null;
+        };
+      }>;
     };
     const batchKeys = new Set<string>(expectedKeys);
     const byKey = new Map(writerBiographyFactReviewBatch29.map((record) => [record.key, record]));
@@ -218,10 +237,28 @@ describe("writer biography claim review batch 29", () => {
       "utf8"
     );
 
-    expect(identityItems).toEqual([{ key: "georgia:shota_rustaveli", qid: "Q132984" }]);
-    expect(dateItems).toEqual([{ key: "georgia:galaktion_tabidze", field: "birthDate" }]);
+    const shotaQa = factQa.records.find(
+      (record) => record.key === "georgia:shota_rustaveli"
+    );
+    const galaktionQa = factQa.records.find(
+      (record) => record.key === "georgia:galaktion_tabidze"
+    );
+
+    expect(identityItems).toEqual([]);
+    expect(dateItems).toEqual([]);
     expect(badQidItems).toEqual([]);
     expect(calendarItems).toEqual([]);
+    expect(shotaQa?.wikidataEvidence).toMatchObject({
+      identityValidationStatus: "identity-corroborated",
+      manualIdentityConfirmation: { qid: "Q132984" },
+    });
+    expect(galaktionQa?.manualResolutions).toEqual([
+      expect.objectContaining({
+        field: "birthDate",
+        cardValue: "1891-11-17",
+        decision: "corrected-card",
+      }),
+    ]);
     expect(byKey.get("georgia:shota_rustaveli")?.notes).toContain("Q132984");
     expect(byKey.get("georgia:galaktion_tabidze")?.notes).toContain("1892-11-17");
     expect(byKey.get("georgia:galaktion_tabidze")?.notes).toContain("1891-11-17");
@@ -232,7 +269,7 @@ describe("writer biography claim review batch 29", () => {
     expect(byKey.get("gambia:baaba_jobarteh")?.notes).toContain("Identity held");
     expect(runtimeIndex).not.toContain("writerBiographyFactReviewBatch29");
     expect(runtimeAggregator).not.toContain("writerBiographyFactReviewBatch29");
-    expect(buildSource).not.toContain("writerBiographyFactReviewBatch29");
+    expect(buildSource).toContain("writerBiographyFactReviewBatch29");
   });
 
   it("keeps strict UTF-8 and JSON/Markdown reports synchronized", () => {

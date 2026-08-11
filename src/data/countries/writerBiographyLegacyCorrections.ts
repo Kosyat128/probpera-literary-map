@@ -1155,6 +1155,222 @@ export const writerPublicProfileFactCorrections = [
     ],
     note: "Displays the documented 1483/1494 birth-year uncertainty instead of presenting circa 1494 as the only chronology; the birthplace remains explicitly approximate.",
   },
+  {
+    countryId: "french_guiana",
+    writerId: "leon_gontran_damas",
+    patch: {
+      name: "Леон-Гонтран Дамас",
+    },
+    evidence: [
+      {
+        provider: "Assemblée nationale",
+        url: "https://www.assemblee-nationale.fr/histoire/Damas.asp",
+        checkedAt,
+      },
+      {
+        provider: "Bibliothèque nationale de France",
+        url: "https://catalogue.bnf.fr/ark%3A/12148/cb11898508m",
+        checkedAt,
+      },
+    ],
+    note: "Corrects the omitted letter r in the Russian rendering of the documented middle name Gontran without changing the immutable book-review source.",
+  },
+  {
+    countryId: "georgia",
+    writerId: "galaktion_tabidze",
+    patch: {
+      years: "1891–1959",
+      birthDate: "1891-11-17",
+    },
+    evidence: [
+      {
+        provider: "National Archives of Georgia",
+        url: "https://www.archive.gov.ge/en/galaktioni-1",
+        checkedAt,
+      },
+      {
+        provider: "Bibliothèque nationale de France",
+        url: "https://catalogue.bnf.fr/ark%3A/12148/cb13522161t",
+        checkedAt,
+      },
+    ],
+    note: "Corrects the birth year and stores 17 November 1891 as the Gregorian equivalent of the archival 5 November Old Style date, while preserving the documented 1959 death year.",
+  },
+  {
+    countryId: "ghana",
+    writerId: "ama_ata_aidoo",
+    patch: {
+      name: "Ама Ата Айду",
+    },
+    evidence: [
+      {
+        provider: "University of Ghana",
+        url: "https://ar.ug.edu.gh/ama-atta-aidoo",
+        checkedAt,
+      },
+      {
+        provider: "Bloomsbury Publishing",
+        url: "https://www.bloomsbury.com/CA/author/ama-ata-aidoo/",
+        checkedAt,
+      },
+    ],
+    note: "Corrects the Russian rendering of Ama Ata Aidoo's name only; the public dates remain unchanged because the checked institutional sources disagree between 1942 and 1943.",
+  },
+  {
+    countryId: "ghana",
+    writerId: "joseph_casely_hayford",
+    patch: {
+      name: "Джозеф Эфраим Кейсли-Хейфорд",
+      birthDate: "1866",
+      deathDate: "1930-08-11",
+    },
+    evidence: [
+      {
+        provider: "Inner Temple",
+        url: "https://www.innertemple.org.uk/celebrating-diversity-at-the-bar/joseph-ephraim-casely-hayford/",
+        checkedAt,
+      },
+      {
+        provider: "University of Ghana Repository",
+        url: "https://ugspace.ug.edu.gh/bitstreams/7aadd045-ffa2-4c3b-84f1-6ce21d73d895/download",
+        checkedAt,
+      },
+      {
+        provider: "Encyclopaedia Africana",
+        url: "https://encyclopaediaafricana.com/hayford-j-e-casely/",
+        checkedAt,
+      },
+    ],
+    note: "Corrects the Russian name, reduces the conflicting 28/29 September 1866 birth dates to year precision, and uses Encyclopaedia Africana alone for the exact death date 11 August 1930.",
+  },
+  {
+    countryId: "germany",
+    writerId: "sebastian_brant",
+    patch: {
+      years: "1458–1521",
+      birthDate: "1458",
+    },
+    evidence: [
+      {
+        provider: "Deutsche Biographie",
+        url: "https://www.deutsche-biographie.de/gnd118514474.html",
+        checkedAt,
+      },
+      {
+        provider: "Deutsche Nationalbibliothek",
+        url: "https://d-nb.info/gnd/118514474",
+        checkedAt,
+      },
+    ],
+    note: "Corrects the unsupported 1457 birth year to the institutionally documented 1458 while preserving the documented 1521 death year.",
+  },
+  {
+    countryId: "ghana",
+    writerId: "martin_egblewogbe",
+    patch: {
+      birthDate: "1975",
+    },
+    evidence: [
+      {
+        provider: "Writers Project of Ghana",
+        url: "https://www.writersprojectghana.com/megblewogbe/",
+        checkedAt,
+      },
+      {
+        provider: "Cambridge University Press",
+        url: "https://www.cambridge.org/core/books/decolonizing-the-english-literary-curriculum/against-ethnography/B3D295B83E9DE2EEE9F559DA4E34568B",
+        checkedAt,
+      },
+      {
+        provider: "CiNii Books",
+        url: "https://ci.nii.ac.jp/ncid/BD00490608",
+        checkedAt,
+      },
+    ],
+    note: "Removes the first-of-year placeholder; the Batch30 profiles establish the identity and bibliography but no month or day, so the existing 1975 year is retained without added precision.",
+  },
+  {
+    countryId: "ghana",
+    writerId: "nii_ayikwei_parkes",
+    patch: {
+      birthDate: "1974",
+    },
+    evidence: [
+      {
+        provider: "Peepal Tree Press",
+        url: "https://www.peepaltreepress.com/authors/nii-ayikwei-parkes",
+        checkedAt,
+      },
+      {
+        provider: "Nii Ayikwei Parkes — official site",
+        url: "https://niiparkes.com/open/profile/cv/?aid=235&sa=0",
+        checkedAt,
+      },
+    ],
+    note: "Removes the first-of-year placeholder; the Batch30 profiles establish the identity but not either candidate day, so the existing 1974 year is retained without promoting 1 January or 1 April.",
+  },
+  {
+    countryId: "greece",
+    writerId: "andreas_kalvos",
+    patch: {
+      birthDate: "1792",
+    },
+    evidence: [
+      {
+        provider: "Capodistrias Museum",
+        url: "https://www.capodistriasmuseum.gr/en/persons/andreas-kalvos/",
+        checkedAt,
+      },
+      {
+        provider: "Ionian University — POLYSEMi",
+        url: "https://polysemi.di.ionio.gr/index.php/2019/08/29/andreas-kalvos-2/",
+        checkedAt,
+      },
+    ],
+    note: "Removes the false 1 May precision and publishes only the year 1792; the checked sources establish April but not a day.",
+  },
+  {
+    countryId: "grenada",
+    writerId: "george_brizan",
+    patch: {
+      birthDate: "1942-10-31",
+      deathDate: "2012",
+    },
+    evidence: [
+      {
+        provider: "CARICOM",
+        url: "https://caricom.org/caricom-remembers-rt-hon-george-brizan/",
+        checkedAt,
+      },
+      {
+        provider: "National Democratic Congress of Grenada",
+        url: "https://www.ndcgrenada.org/past-leaders/",
+        checkedAt,
+      },
+    ],
+    note: "Replaces the birth placeholder with the party biography's exact 31 October 1942 date and reduces the unsupported death placeholder to CARICOM's documented 2012 year.",
+  },
+  {
+    countryId: "guatemala",
+    writerId: "francisco_alejandro_mendez",
+    patch: {
+      years: "1964–2026",
+      deathDate: "2026-03-28",
+    },
+    evidence: [
+      {
+        provider: "Academia Guatemalteca de la Lengua",
+        url: "https://agl.org.gt/academicos/francisco-alejandro-mendez-castaneda/",
+        checkedAt,
+      },
+      {
+        provider: "Prensa Libre",
+        url: "https://www.prensalibre.com/vida/escenario/fallece-francisco-alejandro-mendez-premio-nacional-de-literatura-2017/",
+        checkedAt,
+      },
+    ],
+    note: "Adds the source-confirmed death date 28 March 2026 and closes the public life-year display without changing the immutable book source.",
+  },
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1234,6 +1450,10 @@ export const quarantinedWriterIdentities = [
   ["laos", "douangchandra_souphanouvong", "identity-not-established", "The Russian name conflicts with the Latin name/id and no authoritative literary identity is recorded."],
   ["timor_leste", "jorge_barretto_xavier", "identity-not-established", "No authoritative literary identity or named work is recorded."],
   ["vanuatu", "nicolas_tewes", "identity-not-established", "No authoritative literary identity or named work is recorded."],
+  ["gabon", "florentin_moussavou_nzigu", "identity-not-established", "The exact literary identity, Nzigu name component and attributed bibliography are not established; checked institutional sources instead document a Gabonese public official with a similar name."],
+  ["gabon", "juste_auguste_kotto", "identity-not-established", "No authoritative literary identity or attributable bibliography was established in the checked BnF and WorldCat catalogs."],
+  ["gambia", "baaba_jobarteh", "identity-not-established", "The card appears to conflate names from West African musical traditions; no authoritative literary identity or attributable bibliography was established."],
+  ["grenada", "julian_fedon", "identity-not-established", "Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

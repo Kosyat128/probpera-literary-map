@@ -578,6 +578,76 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
       },
     ],
   },
+  "georgia:shota_rustaveli": {
+    qid: "Q132984",
+    note: "The Georgian Encyclopedia and UNESCO identify Shota Rustaveli as the Georgian court poet associated with The Knight in the Panther's Skin, establishing the exact curated entity without promoting disputed exact life dates.",
+    sources: [
+      {
+        title: "Shota Rustaveli — Georgian Encyclopedia",
+        url: "https://www.georgianencyclopedia.ge/en/form_eng/903",
+      },
+      {
+        title: "Shota Rustaveli manuscript collection — UNESCO Memory of the World",
+        url: "https://www.unesco.org/en/memory-world/manuscript-collection-shota-rustavelis-poem-knight-panthers-skin",
+      },
+    ],
+  },
+  "germany:hartmann_von_aue": {
+    qid: "Q75852",
+    note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify the medieval German poet and knight Hartmann von Aue and document Erec, Iwein, Gregorius and Der arme Heinrich; the chronology remains deliberately approximate.",
+    sources: [
+      {
+        title: "Hartmann von Aue — Deutsche Biographie",
+        url: "https://www.deutsche-biographie.de/sfz26217.html",
+      },
+      {
+        title: "Hartmann von Aue — Deutsche Nationalbibliothek",
+        url: "https://d-nb.info/gnd/118546228",
+      },
+    ],
+  },
+  "germany:sebastian_brant": {
+    qid: "Q60351",
+    note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify Sebastian Brant, his 1458–1521 chronology and his authorship of Das Narrenschiff, establishing the exact curated entity.",
+    sources: [
+      {
+        title: "Sebastian Brant — Deutsche Biographie",
+        url: "https://www.deutsche-biographie.de/gnd118514474.html",
+      },
+      {
+        title: "Sebastian Brant — Deutsche Nationalbibliothek",
+        url: "https://d-nb.info/gnd/118514474",
+      },
+    ],
+  },
+  "germany:walther_von_der_vogelweide": {
+    qid: "Q44385",
+    note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify Walther von der Vogelweide as the medieval German lyric poet associated with Minnesang and the surviving manuscript tradition; approximate dates remain approximate.",
+    sources: [
+      {
+        title: "Walther von der Vogelweide — Deutsche Biographie",
+        url: "https://www.deutsche-biographie.de/sfz84442.html",
+      },
+      {
+        title: "Walther von der Vogelweide — Deutsche Nationalbibliothek",
+        url: "https://d-nb.info/gnd/118628976",
+      },
+    ],
+  },
+  "germany:wolfram_von_eschenbach": {
+    qid: "Q18821",
+    note: "Deutsche Biographie and Heidelberg University Library identify Wolfram von Eschenbach as the medieval German poet responsible for Parzival and Willehalm; approximate dates remain approximate.",
+    sources: [
+      {
+        title: "Wolfram von Eschenbach — Deutsche Biographie",
+        url: "https://www.deutsche-biographie.de/sfz98512.html",
+      },
+      {
+        title: "Parzival manuscript — Universitätsbibliothek Heidelberg",
+        url: "https://digi.ub.uni-heidelberg.de/diglit/cpg339i",
+      },
+    ],
+  },
 });
 
 /**
@@ -1176,6 +1246,21 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       ],
     },
   ],
+  "georgia:galaktion_tabidze": [
+    {
+      field: "birthDate",
+      cardValue: "1891-11-17",
+      stagingValue: "",
+      decision: "corrected-card",
+      note: "The National Archives of Georgia records 5 November 1891 Old Style, equivalent to 17 November 1891 in the Gregorian calendar; the unsupported 1892 card year was corrected.",
+      sources: [
+        {
+          title: "Galaktion Tabidze — National Archives of Georgia",
+          url: "https://www.archive.gov.ge/en/galaktioni-1",
+        },
+      ],
+    },
+  ],
   "georgia:otar_chiladze": [
     {
       field: "deathDate",
@@ -1659,6 +1744,165 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
         {
           title: "Одил Ёқубов — Muzaffar.uz",
           url: "https://muzaffar.uz/mashhurlar-hayotidan/2644-odil-yoqubov.html",
+        },
+      ],
+    },
+  ],
+  "germany:sebastian_brant": [
+    {
+      field: "birthDate",
+      cardValue: "1458",
+      stagingValue: "",
+      decision: "corrected-card",
+      note: "The unsupported 1457 card year was corrected to the 1458 year established by Deutsche Biographie and independently recorded by the Deutsche Nationalbibliothek.",
+      sources: [
+        {
+          title: "Sebastian Brant — Deutsche Biographie",
+          url: "https://www.deutsche-biographie.de/gnd118514474.html",
+        },
+        {
+          title: "Sebastian Brant — Deutsche Nationalbibliothek",
+          url: "https://d-nb.info/gnd/118514474",
+        },
+      ],
+    },
+  ],
+  "ghana:joseph_casely_hayford": [
+    {
+      field: "birthDate",
+      cardValue: "1866",
+      stagingValue: "",
+      decision: "reduced-conflicting-day-precision",
+      note: "The false 24 May value was removed. Inner Temple gives 29 September 1866 while Encyclopaedia Africana gives 28 September 1866, so the public profile publishes only their shared year.",
+      sources: [
+        {
+          title: "Joseph Ephraim Casely Hayford — Inner Temple",
+          url: "https://www.innertemple.org.uk/celebrating-diversity-at-the-bar/joseph-ephraim-casely-hayford/",
+        },
+        {
+          title: "J. E. Casely Hayford — Encyclopaedia Africana",
+          url: "https://encyclopaediaafricana.com/hayford-j-e-casely/",
+        },
+      ],
+    },
+    {
+      field: "deathDate",
+      cardValue: "1930-08-11",
+      stagingValue: "",
+      decision: "corrected-card",
+      note: "The false 15 January value was replaced with 11 August 1930; this exact day is attributed only to Encyclopaedia Africana, while Inner Temple supports the year alone.",
+      sources: [
+        {
+          title: "J. E. Casely Hayford — Encyclopaedia Africana",
+          url: "https://encyclopaediaafricana.com/hayford-j-e-casely/",
+        },
+      ],
+    },
+  ],
+  "ghana:martin_egblewogbe": [
+    {
+      field: "birthDate",
+      cardValue: "1975",
+      stagingValue: "",
+      decision: "reduced-unsupported-precision",
+      note: "The Batch30 institutional profiles establish Martin Egblewogbe and his bibliography but do not establish a month or day; the first-of-year placeholder is therefore reduced to the existing 1975 year.",
+      sources: [
+        {
+          title: "Martin Egblewogbe — Writers Project of Ghana",
+          url: "https://www.writersprojectghana.com/megblewogbe/",
+        },
+        {
+          title: "Against Ethnography — Cambridge University Press",
+          url: "https://www.cambridge.org/core/books/decolonizing-the-english-literary-curriculum/against-ethnography/B3D295B83E9DE2EEE9F559DA4E34568B",
+        },
+        {
+          title: "The Waiting — CiNii Books",
+          url: "https://ci.nii.ac.jp/ncid/BD00490608",
+        },
+      ],
+    },
+  ],
+  "ghana:nii_ayikwei_parkes": [
+    {
+      field: "birthDate",
+      cardValue: "1974",
+      stagingValue: "",
+      decision: "reduced-unsupported-precision",
+      note: "The Batch30 publisher and official-author profiles establish the exact writer identity but do not substantiate either 1 January or the candidate 1 April; the public profile retains only the shared 1974 year.",
+      sources: [
+        {
+          title: "Nii Ayikwei Parkes — Peepal Tree Press",
+          url: "https://www.peepaltreepress.com/authors/nii-ayikwei-parkes",
+        },
+        {
+          title: "Nii Ayikwei Parkes — official curriculum vitae",
+          url: "https://niiparkes.com/open/profile/cv/?aid=235&sa=0",
+        },
+      ],
+    },
+  ],
+  "greece:andreas_kalvos": [
+    {
+      field: "birthDate",
+      cardValue: "1792",
+      stagingValue: "",
+      decision: "reduced-unsupported-precision",
+      note: "The false 1 May value was removed. Both Batch30 institutional sources establish April 1792 but not a day, and the public profile conservatively keeps year precision only.",
+      sources: [
+        {
+          title: "Andreas Kalvos — Capodistrias Museum",
+          url: "https://www.capodistriasmuseum.gr/en/persons/andreas-kalvos/",
+        },
+        {
+          title: "Andreas Kalvos — Ionian University POLYSEMi",
+          url: "https://polysemi.di.ionio.gr/index.php/2019/08/29/andreas-kalvos-2/",
+        },
+      ],
+    },
+  ],
+  "grenada:george_brizan": [
+    {
+      field: "birthDate",
+      cardValue: "1942-10-31",
+      stagingValue: "",
+      decision: "corrected-card",
+      note: "The first-of-year placeholder was replaced with 31 October 1942, the exact birth date recorded by the National Democratic Congress of Grenada biography.",
+      sources: [
+        {
+          title: "George Brizan — National Democratic Congress of Grenada",
+          url: "https://www.ndcgrenada.org/past-leaders/",
+        },
+      ],
+    },
+    {
+      field: "deathDate",
+      cardValue: "2012",
+      stagingValue: "",
+      decision: "reduced-unsupported-precision",
+      note: "The unsupported 1 January placeholder was removed; the CARICOM obituary establishes the 2012 death year, so no month or day is published.",
+      sources: [
+        {
+          title: "George Brizan — CARICOM",
+          url: "https://caricom.org/caricom-remembers-rt-hon-george-brizan/",
+        },
+      ],
+    },
+  ],
+  "guatemala:francisco_alejandro_mendez": [
+    {
+      field: "deathDate",
+      cardValue: "2026-03-28",
+      stagingValue: "",
+      decision: "added-source-confirmed-date",
+      note: "The public profile now records 28 March 2026, the exact death date reported by Prensa Libre and consistent with the 1964–2026 life years in the Guatemalan language-academy biography.",
+      sources: [
+        {
+          title: "Francisco Alejandro Méndez — Prensa Libre",
+          url: "https://www.prensalibre.com/vida/escenario/fallece-francisco-alejandro-mendez-premio-nacional-de-literatura-2017/",
+        },
+        {
+          title: "Francisco Alejandro Méndez Castañeda — Academia Guatemalteca de la Lengua",
+          url: "https://agl.org.gt/academicos/francisco-alejandro-mendez-castaneda/",
         },
       ],
     },

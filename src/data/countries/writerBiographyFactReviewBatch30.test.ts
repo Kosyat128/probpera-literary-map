@@ -3,7 +3,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { legacyWriterBiography } from "../writerBiography";
-import { writerBiographyFactReviewSourceCountries as countries } from "./index";
+import {
+  countries as publicCountries,
+  writerBiographyFactReviewSourceCountries as countries,
+} from "./index";
 import { quarantinedWriterIdentities } from "./writerBiographyLegacyCorrections";
 import {
   WRITER_BIOGRAPHY_FACT_REVIEW_BATCH30_REVIEWER,
@@ -203,27 +206,35 @@ describe("writer biography claim review batch 30", () => {
     const quarantineKeys = quarantinedWriterIdentities.map(
       (item) => `${item.countryId}:${item.writerId}`
     );
-    const quarantineSet = new Set(quarantineKeys);
-    const eligible = [...new Set(factQa.reviewQueue.map((item) => item.key))]
-      .filter((key) => !priorAssignedSet.has(key) && !quarantineSet.has(key))
-      .sort((a, b) => a.localeCompare(b, "en"))
-      .slice(0, 40);
+    const reviewQueueKeys = factQa.reviewQueue.map((item) => item.key);
+    const reviewQueueSet = new Set(reviewQueueKeys);
     const keys = writerBiographyFactReviewBatch30.map((record) => record.key);
+    const heldKeys = writerBiographyFactReviewBatch30
+      .filter((record) => record.decision === "held")
+      .map((record) => record.key);
+    const applicableKeys = writerBiographyFactReviewBatch30
+      .filter((record) => record.decision !== "held")
+      .map((record) => record.key);
 
-    // The boundary was frozen at 1719/50. Batch27's eight held identities were
-    // quarantined later, so the live queue is now 1711/58 without changing this slice.
-    expect(factQa.reviewQueue).toHaveLength(1711);
-    expect(new Set(factQa.reviewQueue.map((item) => item.key)).size).toBe(1711);
+    // The report freezes the 1719/50 allocation snapshot. Integrating held
+    // identities may shrink the live queue without changing this frozen slice.
+    expect(reviewQueueKeys).toHaveLength(1707);
+    expect(reviewQueueSet.size).toBe(1707);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(priorAssigned).toHaveLength(640);
     expect(priorAssignedSet.size).toBe(640);
-    expect(quarantineKeys).toHaveLength(58);
+    expect(quarantineKeys).toHaveLength(62);
+    expect(new Set(quarantineKeys).size).toBe(62);
     expect(keys).toEqual(expectedKeys);
-    expect(eligible).toEqual(expectedKeys);
+    expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
     expect(new Set(keys).size).toBe(40);
     expect(keys.some((key) => priorAssignedSet.has(key))).toBe(false);
-    expect(keys.some((key) => quarantineSet.has(key))).toBe(false);
+    expect(heldKeys).toEqual(["grenada:julian_fedon"]);
+    expect(heldKeys.every((key) => quarantineKeys.includes(key))).toBe(true);
+    expect(applicableKeys.some((key) => quarantineKeys.includes(key))).toBe(
+      false
+    );
     expect([...keys].sort((a, b) => a.localeCompare(b, "en"))).toEqual(keys);
   });
 
@@ -301,12 +312,25 @@ describe("writer biography claim review batch 30", () => {
     expect(decisions.filter((decision) => decision === "held")).toHaveLength(1);
   });
 
-  it("records identity and date recommendations and stays disconnected", () => {
+  it("integrates source-backed identities and dates through the build-only registry", () => {
     const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
       wikidataIdentityReviewQueue: Array<{ key: string; qid: string }>;
       wikidataDateDiscrepancyQueue: Array<{ key: string; field: string }>;
       badQidIdentityQueue: Array<{ key: string; qid: string }>;
       calendarOrSourceDiscrepancyQueue: Array<{ key: string }>;
+      records: Array<{
+        key: string;
+        manualResolutions: Array<{
+          field: string;
+          cardValue: string;
+          decision: string;
+          sources: Array<{ url: string }>;
+        }>;
+        wikidataEvidence: {
+          identityValidationStatus?: string;
+          manualIdentityConfirmation?: { qid: string } | null;
+        };
+      }>;
     };
     const batchKeys = new Set<string>(expectedKeys);
     const byKey = new Map(
@@ -324,6 +348,7 @@ describe("writer biography claim review batch 30", () => {
     const calendarItems = factQa.calendarOrSourceDiscrepancyQueue.filter((item) =>
       batchKeys.has(item.key)
     );
+    const qaByKey = new Map(factQa.records.map((record) => [record.key, record]));
     const runtimeIndex = fs.readFileSync(
       path.resolve(process.cwd(), "src/data/countries/index.ts"),
       "utf8"
@@ -332,33 +357,145 @@ describe("writer biography claim review batch 30", () => {
       path.resolve(process.cwd(), "src/data/countries/writerBiographyFactReviews.ts"),
       "utf8"
     );
+    const buildSource = fs.readFileSync(
+      path.resolve(process.cwd(), "scripts/writer-biography-review-source.ts"),
+      "utf8"
+    );
 
-    expect(identityItems).toEqual([
-      { key: "germany:hartmann_von_aue", qid: "Q75852" },
-      { key: "germany:sebastian_brant", qid: "Q60351" },
-      { key: "germany:walther_von_der_vogelweide", qid: "Q44385" },
-      { key: "germany:wolfram_von_eschenbach", qid: "Q18821" },
-    ]);
-    expect(dateItems).toEqual([
-      { key: "germany:sebastian_brant", field: "birthDate" },
-      { key: "ghana:nii_ayikwei_parkes", field: "birthDate" },
-    ]);
+    expect(identityItems).toEqual([]);
+    expect(dateItems).toEqual([]);
     expect(badQidItems).toEqual([]);
     expect(calendarItems).toEqual([]);
+    for (const [key, qid] of [
+      ["germany:hartmann_von_aue", "Q75852"],
+      ["germany:sebastian_brant", "Q60351"],
+      ["germany:walther_von_der_vogelweide", "Q44385"],
+      ["germany:wolfram_von_eschenbach", "Q18821"],
+    ] as const) {
+      expect(qaByKey.get(key)?.wikidataEvidence).toMatchObject({
+        identityValidationStatus: "identity-corroborated",
+        manualIdentityConfirmation: { qid },
+      });
+    }
+    const expectedManualDateResolutions = {
+      "germany:sebastian_brant": [
+        ["birthDate", "1458", "corrected-card"],
+      ],
+      "ghana:joseph_casely_hayford": [
+        ["birthDate", "1866", "reduced-conflicting-day-precision"],
+        ["deathDate", "1930-08-11", "corrected-card"],
+      ],
+      "ghana:martin_egblewogbe": [
+        ["birthDate", "1975", "reduced-unsupported-precision"],
+      ],
+      "ghana:nii_ayikwei_parkes": [
+        ["birthDate", "1974", "reduced-unsupported-precision"],
+      ],
+      "greece:andreas_kalvos": [
+        ["birthDate", "1792", "reduced-unsupported-precision"],
+      ],
+      "grenada:george_brizan": [
+        ["birthDate", "1942-10-31", "corrected-card"],
+        ["deathDate", "2012", "reduced-unsupported-precision"],
+      ],
+      "guatemala:francisco_alejandro_mendez": [
+        ["deathDate", "2026-03-28", "added-source-confirmed-date"],
+      ],
+    } as const;
+    for (const [key, expected] of Object.entries(
+      expectedManualDateResolutions
+    )) {
+      const actual = qaByKey
+        .get(key)
+        ?.manualResolutions.map((item) => [
+          item.field,
+          item.cardValue,
+          item.decision,
+        ]);
+      expect(actual, key).toEqual(expected);
+      expect(
+        qaByKey
+          .get(key)
+          ?.manualResolutions.every(
+            (item) =>
+              item.sources.length > 0 &&
+              item.sources.every((source) => /^https:\/\//u.test(source.url))
+          )
+      ).toBe(true);
+    }
+    expect(qaByKey.get("germany:rudolf_eucken")?.manualResolutions).toEqual([]);
+    expect(qaByKey.get("greece:giannis_ritsos")?.manualResolutions).toEqual([]);
     expect(byKey.get("germany:sebastian_brant")?.notes).toContain("1458");
+    expect(byKey.get("germany:hartmann_von_aue")?.reviewedTextRu).toContain(
+      "ок. 1160 — начало XIII века"
+    );
+    expect(byKey.get("germany:hartmann_von_aue")?.reviewedTextRu).not.toContain(
+      "после 1210"
+    );
     expect(byKey.get("germany:rudolf_eucken")?.notes).toContain("1926-09-14");
     expect(byKey.get("germany:rudolf_eucken")?.notes).toContain("1926-09-15");
+    expect(byKey.get("ghana:joseph_casely_hayford")?.reviewedTextRu).toContain(
+      "Джозеф Эфраим Кейсли-Хейфорд"
+    );
     expect(byKey.get("ghana:joseph_casely_hayford")?.notes).toContain("1930-08-11");
+    expect(
+      byKey
+        .get("ghana:joseph_casely_hayford")
+        ?.claims[0]?.evidence.find((item) => item.provider === "Inner Temple")
+        ?.url
+    ).toBe(
+      "https://www.innertemple.org.uk/celebrating-diversity-at-the-bar/joseph-ephraim-casely-hayford/"
+    );
+    expect(
+      byKey
+        .get("ghana:joseph_casely_hayford")
+        ?.claims[0]?.evidence.find((item) => item.provider === "Inner Temple")
+        ?.findingRu
+    ).not.toContain("11 августа 1930");
+    expect(
+      byKey
+        .get("ghana:joseph_casely_hayford")
+        ?.claims[0]?.evidence.find(
+          (item) => item.provider === "Encyclopaedia Africana"
+        )?.findingRu
+    ).toContain("11 августа 1930");
+    expect(
+      byKey
+        .get("greece:homer")
+        ?.claims[0]?.evidence.find(
+          (item) => item.provider === "University College London"
+        )?.url
+    ).toBe(
+      "https://www.ucl.ac.uk/arts-humanities/classics/events/classical-play/past-productions/2021-homers-odyssey/2021-homers-odyssey-study-guide"
+    );
+    expect(
+      byKey
+        .get("greece:sappho")
+        ?.claims[0]?.evidence.find(
+          (item) => item.provider === "Cambridge University Press"
+        )?.url
+    ).toBe(
+      "https://www.cambridge.org/highereducation/books/sappho/6AA37FEF8D846985479CF107B2E6CD16"
+    );
     expect(byKey.get("ghana:nii_ayikwei_parkes")?.notes).toContain("1974-04-01");
     expect(byKey.get("greece:andreas_kalvos")?.notes).toContain("1792-04");
     expect(byKey.get("greece:giannis_ritsos")?.notes).toContain("1/14 мая 1909");
     expect(byKey.get("grenada:george_brizan")?.notes).toContain("1942-10-31");
     expect(byKey.get("guatemala:francisco_alejandro_mendez")?.notes).toContain("2026-03-28");
     expect(byKey.get("grenada:julian_fedon")?.decision).toBe("held");
+    const publicKeys = new Set(
+      publicCountries.flatMap((country) =>
+        country.writers.map((writer) => `${country.id}:${writer.id}`)
+      )
+    );
+    expect(publicKeys.has("grenada:julian_fedon")).toBe(false);
+    expect(publicKeys.has("germany:robert_musil")).toBe(true);
+    expect(publicKeys.has("germany:stefan_zweig")).toBe(true);
     expect(runtimeIndex).not.toContain("writerBiographyFactReviewBatch30");
     expect(runtimeReviewAggregator).not.toContain(
       "writerBiographyFactReviewBatch30"
     );
+    expect(buildSource).toContain("writerBiographyFactReviewBatch30");
   });
 
   it("keeps strict UTF-8 and JSON/Markdown reports synchronized", () => {

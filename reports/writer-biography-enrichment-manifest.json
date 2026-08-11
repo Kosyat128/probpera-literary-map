@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T14:30:48.726Z",
+  "generatedAt": "2026-08-11T15:16:04.907Z",
   "policyDocument": "docs/WRITER_BIOGRAPHY_SOURCES_POLICY_RU.md",
   "proseGeneration": "disabled",
   "progress": {
-    "total": 1723,
+    "total": 1707,
     "ready": 45,
-    "remaining": 1678,
+    "remaining": 1662,
     "researchDrafts": 20,
     "validResearchDrafts": 20,
     "awaitingIndependentReview": 0,
     "approvedForPromotion": 20,
-    "remainingWithoutResearchDraft": 1678,
+    "remainingWithoutResearchDraft": 1662,
     "workflowStates": {
-      "source-research": 1678,
+      "source-research": 1662,
       "rights-review": 0,
       "editorial-rewrite": 0,
       "fact-check": 0,
@@ -11970,7 +11970,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 175,
+        "textLength": 138,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12072,11 +12072,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 135,
+        "textLength": 98,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -12123,7 +12123,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 124,
+        "textLength": 169,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12276,7 +12276,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 138,
+        "textLength": 189,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12378,7 +12378,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 182,
+        "textLength": 150,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12480,11 +12480,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 114,
+        "textLength": 174,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -12531,7 +12531,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 157,
+        "textLength": 167,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12684,7 +12684,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 231,
+        "textLength": 200,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12786,7 +12786,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 174,
+        "textLength": 181,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -12888,8 +12888,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 176,
-        "sentenceCount": 2,
+        "textLength": 167,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -12939,7 +12939,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
+        "textLength": 129,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -12990,11 +12990,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 205,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -13041,7 +13041,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
+        "textLength": 70,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13092,7 +13092,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 112,
+        "textLength": 57,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13143,7 +13143,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
+        "textLength": 49,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13194,7 +13194,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 173,
+        "textLength": 137,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -13245,11 +13245,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 107,
-        "sentenceCount": 1,
+        "textLength": 123,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -13296,7 +13296,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
+        "textLength": 105,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13347,7 +13347,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 98,
+        "textLength": 96,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13398,7 +13398,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
+        "textLength": 84,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13449,7 +13449,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 120,
+        "textLength": 92,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13500,11 +13500,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 128,
-        "sentenceCount": 1,
+        "textLength": 154,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -13551,7 +13551,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
+        "textLength": 106,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13602,7 +13602,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 124,
+        "textLength": 51,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13704,11 +13704,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 142,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -13755,7 +13755,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
+        "textLength": 70,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13806,7 +13806,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 126,
+        "textLength": 83,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -13857,11 +13857,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 121,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -13908,11 +13908,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 116,
-        "sentenceCount": 1,
+        "textLength": 189,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14010,11 +14010,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 131,
-        "sentenceCount": 2,
+        "textLength": 102,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14061,7 +14061,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 119,
+        "textLength": 52,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -14112,7 +14112,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 97,
+        "textLength": 99,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -14163,7 +14163,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 115,
+        "textLength": 84,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -14265,11 +14265,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 123,
-        "sentenceCount": 1,
+        "textLength": 155,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14316,7 +14316,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 111,
+        "textLength": 72,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -14367,11 +14367,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
-        "sentenceCount": 1,
+        "textLength": 144,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14418,7 +14418,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 134,
+        "textLength": 63,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -14469,11 +14469,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 134,
-        "sentenceCount": 1,
+        "textLength": 167,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14520,11 +14520,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 175,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14571,11 +14571,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 119,
-        "sentenceCount": 1,
+        "textLength": 160,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -14622,7 +14622,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 154,
+        "textLength": 123,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -14775,7 +14775,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 193,
+        "textLength": 162,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -14928,7 +14928,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 194,
+        "textLength": 191,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -14979,8 +14979,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 230,
-        "sentenceCount": 3,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -15030,7 +15030,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 144,
+        "textLength": 194,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -15081,11 +15081,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 135,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15183,7 +15183,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 191,
+        "textLength": 170,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -15285,7 +15285,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 125,
+        "textLength": 126,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -15336,7 +15336,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 170,
+        "textLength": 185,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -15387,11 +15387,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 148,
-        "sentenceCount": 1,
+        "textLength": 150,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15438,7 +15438,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 149,
+        "textLength": 160,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -15540,11 +15540,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 173,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15642,11 +15642,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 113,
+        "textLength": 156,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15693,11 +15693,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 114,
-        "sentenceCount": 1,
+        "textLength": 178,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15744,113 +15744,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 220,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "comoros:said_ahmed_mohamed",
-      "writerId": "said_ahmed_mohamed",
-      "name": "Саид Ахмед Мохамед",
-      "countryId": "comoros",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 82,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "comoros:mahmoud_said_ahmed",
-      "writerId": "mahmoud_said_ahmed",
-      "name": "Махамуд Саид Ахмед",
-      "countryId": "comoros",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 39,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -15897,11 +15795,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 113,
+        "textLength": 161,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16224,7 +16122,7 @@
     {
       "key": "cote_d_ivoire:jean_marie_adiaffi",
       "writerId": "jean_marie_adiaffi",
-      "name": "Жан-Мари Адеми",
+      "name": "Жан-Мари Адиаффи",
       "countryId": "cote_d_ivoire",
       "workflow": {
         "state": "source-research",
@@ -16254,11 +16152,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 39,
-        "sentenceCount": 1,
+        "textLength": 161,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16305,11 +16203,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 47,
-        "sentenceCount": 1,
+        "textLength": 172,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16356,11 +16254,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16407,11 +16305,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 49,
-        "sentenceCount": 1,
+        "textLength": 171,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16611,11 +16509,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16662,11 +16560,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 184,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -16815,11 +16713,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 202,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17172,11 +17070,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 40,
-        "sentenceCount": 1,
+        "textLength": 140,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17223,11 +17121,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 26,
-        "sentenceCount": 1,
+        "textLength": 173,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17325,8 +17223,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 38,
-        "sentenceCount": 1,
+        "textLength": 113,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -17346,7 +17244,7 @@
     {
       "key": "cyprus:kyriakos_charalambous",
       "writerId": "kyriakos_charalambous",
-      "name": "Кириакос Хариламбус",
+      "name": "Кириакос Хараламбидис",
       "countryId": "cyprus",
       "workflow": {
         "state": "source-research",
@@ -17376,11 +17274,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 26,
-        "sentenceCount": 1,
+        "textLength": 127,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17484,11 +17382,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 155,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17637,11 +17535,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 161,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17688,11 +17586,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 154,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17841,11 +17739,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 169,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -17911,108 +17809,6 @@
       }
     },
     {
-      "key": "democratic_republic_of_congo:sylvain_bemba",
-      "writerId": "sylvain_bemba",
-      "name": "Сильвен Бемба",
-      "countryId": "democratic_republic_of_congo",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "democratic_republic_of_congo:tshibumba_kanda_matulu",
-      "writerId": "tshibumba_kanda_matulu",
-      "name": "Тшибумба Канда-Матулу",
-      "countryId": "democratic_republic_of_congo",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 71,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
       "key": "democratic_republic_of_congo:fiston_mwanza_mujila",
       "writerId": "fiston_mwanza_mujila",
       "name": "Фистон Мванза Муджила",
@@ -18045,11 +17841,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 41,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18096,11 +17892,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 55,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18147,11 +17943,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 176,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18270,7 +18066,7 @@
     {
       "key": "denmark:hans_christian_andersen",
       "writerId": "hans_christian_andersen",
-      "name": "Ганс Христиан Андерсен",
+      "name": "Ханс Кристиан Андерсен",
       "countryId": "denmark",
       "workflow": {
         "state": "source-research",
@@ -18300,11 +18096,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 186,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18351,11 +18147,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 56,
-        "sentenceCount": 1,
+        "textLength": 194,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18402,11 +18198,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 32,
-        "sentenceCount": 1,
+        "textLength": 194,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18453,11 +18249,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 82,
-        "sentenceCount": 1,
+        "textLength": 223,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18478,7 +18274,7 @@
       "countryId": "denmark",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -18504,11 +18300,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 36,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18576,7 +18372,7 @@
     {
       "key": "denmark:peter_hoeg",
       "writerId": "peter_hoeg",
-      "name": "Питер Хёг",
+      "name": "Петер Хёг",
       "countryId": "denmark",
       "workflow": {
         "state": "source-research",
@@ -18606,11 +18402,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 188,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -18676,60 +18472,9 @@
       }
     },
     {
-      "key": "djibouti:abdourahman_h_yama",
-      "writerId": "abdourahman_h_yama",
-      "name": "Абдулкадир Хирси Яма",
-      "countryId": "djibouti",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 29,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
       "key": "djibouti:aden_robleh_awaleh",
       "writerId": "aden_robleh_awaleh",
-      "name": "Аден Роблех Авале",
+      "name": "Аден Робле Авале",
       "countryId": "djibouti",
       "workflow": {
         "state": "source-research",
@@ -18759,11 +18504,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 254,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -19035,7 +18780,7 @@
     {
       "key": "dominican_republic:julia_alvarez",
       "writerId": "julia_alvarez",
-      "name": "Хулия Альварес",
+      "name": "Джулия Альварес",
       "countryId": "dominican_republic",
       "workflow": {
         "state": "source-research",
@@ -19065,7 +18810,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 155,
+        "textLength": 265,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19122,7 +18867,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 170,
+        "textLength": 264,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19173,7 +18918,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 176,
+        "textLength": 221,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19224,7 +18969,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 160,
+        "textLength": 232,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19275,7 +19020,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 178,
+        "textLength": 198,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19326,11 +19071,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 180,
-        "sentenceCount": 2,
+        "textLength": 130,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -19377,7 +19122,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 140,
+        "textLength": 262,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19602,7 +19347,7 @@
     {
       "key": "ecuador:demetrio_aguilera_malta",
       "writerId": "demetrio_aguilera_malta",
-      "name": "Деметрио Агилар Мальта",
+      "name": "Деметрио Агилера Мальта",
       "countryId": "ecuador",
       "workflow": {
         "state": "source-research",
@@ -19632,7 +19377,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 187,
+        "textLength": 235,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -19836,11 +19581,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 191,
-        "sentenceCount": 2,
+        "textLength": 112,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -19989,11 +19734,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 168,
-        "sentenceCount": 2,
+        "textLength": 106,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -20091,7 +19836,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 79,
+        "textLength": 84,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20193,7 +19938,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
+        "textLength": 77,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20295,7 +20040,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 40,
+        "textLength": 51,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20397,7 +20142,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 61,
+        "textLength": 50,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20448,7 +20193,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 57,
+        "textLength": 59,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20601,7 +20346,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 54,
+        "textLength": 82,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20703,7 +20448,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 65,
+        "textLength": 74,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20856,7 +20601,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 83,
+        "textLength": 48,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -20958,7 +20703,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
+        "textLength": 94,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -21009,7 +20754,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 78,
+        "textLength": 112,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -21162,11 +20907,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 132,
-        "sentenceCount": 2,
+        "textLength": 60,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21213,11 +20958,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 142,
-        "sentenceCount": 2,
+        "textLength": 138,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21264,8 +21009,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 133,
-        "sentenceCount": 2,
+        "textLength": 140,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -21315,11 +21060,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
-        "sentenceCount": 2,
+        "textLength": 149,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21468,11 +21213,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 170,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21519,11 +21264,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 140,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21576,8 +21321,8 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 470,
-        "sentenceCount": 3,
+        "textLength": 156,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -21678,11 +21423,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 204,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21729,11 +21474,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 270,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21780,11 +21525,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 164,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21837,11 +21582,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 129,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21888,11 +21633,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
-        "sentenceCount": 1,
+        "textLength": 249,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21939,11 +21684,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 129,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -21990,8 +21735,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 116,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -22041,11 +21786,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 176,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22092,11 +21837,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 62,
-        "sentenceCount": 1,
+        "textLength": 144,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22143,7 +21888,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 60,
+        "textLength": 111,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -22194,11 +21939,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 203,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22245,7 +21990,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
+        "textLength": 129,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -22296,11 +22041,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 62,
-        "sentenceCount": 1,
+        "textLength": 156,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22347,11 +22092,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
-        "sentenceCount": 1,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22398,11 +22143,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 191,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22455,8 +22200,8 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 118,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -22506,11 +22251,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 162,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22557,11 +22302,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 50,
-        "sentenceCount": 1,
+        "textLength": 128,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22608,11 +22353,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 140,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22659,11 +22404,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 168,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22710,11 +22455,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 50,
-        "sentenceCount": 1,
+        "textLength": 152,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22761,11 +22506,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 154,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22812,11 +22557,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 123,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22863,11 +22608,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 175,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22914,11 +22659,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -22971,11 +22716,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 150,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23022,11 +22767,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 228,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23073,11 +22818,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 158,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23124,7 +22869,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
+        "textLength": 76,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -23175,8 +22920,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 507,
-        "sentenceCount": 4,
+        "textLength": 281,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -23226,11 +22971,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 175,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23328,11 +23073,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 135,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23379,11 +23124,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 208,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23481,11 +23226,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 162,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -23532,7 +23277,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 171,
+        "textLength": 183,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23589,7 +23334,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 250,
+        "textLength": 140,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23646,7 +23391,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 248,
+        "textLength": 157,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23703,7 +23448,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 214,
+        "textLength": 155,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23760,7 +23505,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 224,
+        "textLength": 181,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23931,7 +23676,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 147,
+        "textLength": 180,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -23988,11 +23733,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
+        "textLength": 186,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24045,7 +23790,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 126,
+        "textLength": 227,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -24102,11 +23847,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 117,
+        "textLength": 224,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24159,11 +23904,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 111,
+        "textLength": 146,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24216,7 +23961,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 127,
+        "textLength": 157,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -24273,7 +24018,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 126,
+        "textLength": 221,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -24444,11 +24189,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
+        "textLength": 133,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24615,7 +24360,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 123,
+        "textLength": 166,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -24672,11 +24417,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 112,
+        "textLength": 156,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24786,7 +24531,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 145,
+        "textLength": 268,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -24837,11 +24582,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 146,
-        "sentenceCount": 2,
+        "textLength": 136,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24888,11 +24633,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 81,
-        "sentenceCount": 1,
+        "textLength": 180,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -24939,58 +24684,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 132,
-        "sentenceCount": 2,
-        "flags": {
-          "missing": false,
-          "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eritrea:sebhat_gebregziabher",
-      "writerId": "sebhat_gebregziabher",
-      "name": "Себхат Эфрем",
-      "countryId": "eritrea",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 85,
+        "textLength": 103,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25011,7 +24705,7 @@
     {
       "key": "eritrea:alemseged_tesfai",
       "writerId": "alemseged_tesfai",
-      "name": "Алемсегед Тесфайе",
+      "name": "Алемсегед Тесфай",
       "countryId": "eritrea",
       "workflow": {
         "state": "source-research",
@@ -25041,164 +24735,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 67,
-        "sentenceCount": 1,
+        "textLength": 164,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eritrea:rebkah_haile",
-      "writerId": "rebkah_haile",
-      "name": "Ребках Хайле",
-      "countryId": "eritrea",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 37,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eritrea:hadish_haile",
-      "writerId": "hadish_haile",
-      "name": "Хадиш Хайле",
-      "countryId": "eritrea",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eritrea:khaled_abdalla",
-      "writerId": "khaled_abdalla",
-      "name": "Халед Абдалла",
-      "countryId": "eritrea",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 49,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -25245,7 +24786,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 50,
+        "textLength": 114,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25296,11 +24837,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -25347,7 +24888,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 87,
+        "textLength": 89,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25398,7 +24939,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 78,
+        "textLength": 86,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25449,7 +24990,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 54,
+        "textLength": 113,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25500,7 +25041,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 38,
+        "textLength": 101,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25551,7 +25092,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 75,
+        "textLength": 100,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25602,7 +25143,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
+        "textLength": 72,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25653,11 +25194,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 44,
-        "sentenceCount": 1,
+        "textLength": 149,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -25704,7 +25245,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
+        "textLength": 114,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -25755,215 +25296,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 42,
-        "sentenceCount": 1,
+        "textLength": 167,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eswatini:sarah_mlotshwa",
-      "writerId": "sarah_mlotshwa",
-      "name": "Сара Млотшва",
-      "countryId": "eswatini",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eswatini:stanley_madwe",
-      "writerId": "stanley_madwe",
-      "name": "Стенли Мадуве",
-      "countryId": "eswatini",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 25,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eswatini:gladys_lobola",
-      "writerId": "gladys_lobola",
-      "name": "Глэдис Лобола",
-      "countryId": "eswatini",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 29,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "eswatini:albert_ncube",
-      "writerId": "albert_ncube",
-      "name": "Альберт Нкубэ",
-      "countryId": "eswatini",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 75,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26010,7 +25347,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 48,
+        "textLength": 85,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -26061,11 +25398,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 39,
-        "sentenceCount": 1,
+        "textLength": 153,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26112,11 +25449,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 127,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26163,11 +25500,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 31,
-        "sentenceCount": 1,
+        "textLength": 150,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26214,11 +25551,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 47,
-        "sentenceCount": 1,
+        "textLength": 199,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26265,11 +25602,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 28,
-        "sentenceCount": 1,
+        "textLength": 200,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26316,62 +25653,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 37,
-        "sentenceCount": 1,
+        "textLength": 131,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "ethiopia:hirut_kefele",
-      "writerId": "hirut_kefele",
-      "name": "Хируит Кефеле",
-      "countryId": "ethiopia",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 35,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26418,11 +25704,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 196,
-        "sentenceCount": 2,
+        "textLength": 110,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26443,7 +25729,7 @@
       "countryId": "fiji",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -26469,11 +25755,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 166,
-        "sentenceCount": 2,
+        "textLength": 114,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26520,7 +25806,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 150,
+        "textLength": 171,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -26622,7 +25908,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 124,
+        "textLength": 190,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -26673,11 +25959,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 187,
-        "sentenceCount": 2,
+        "textLength": 129,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26724,11 +26010,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 172,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26775,11 +26061,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 55,
-        "sentenceCount": 1,
+        "textLength": 157,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26826,11 +26112,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 143,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26877,7 +26163,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 63,
+        "textLength": 83,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -26928,11 +26214,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 184,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -26979,7 +26265,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 34,
+        "textLength": 78,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -27030,11 +26316,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 150,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27081,11 +26367,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 163,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27132,11 +26418,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 124,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27183,7 +26469,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 191,
+        "textLength": 256,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -27234,11 +26520,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 222,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27285,11 +26571,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 210,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27336,7 +26622,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 132,
+        "textLength": 198,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -27387,11 +26673,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 235,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27438,11 +26724,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 158,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27489,11 +26775,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27540,11 +26826,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 86,
-        "sentenceCount": 1,
+        "textLength": 120,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27591,11 +26877,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 169,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27642,11 +26928,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 113,
+        "textLength": 183,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27693,11 +26979,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 197,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27744,11 +27030,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 249,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27795,7 +27081,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 106,
+        "textLength": 94,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -27846,11 +27132,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
-        "sentenceCount": 1,
+        "textLength": 215,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27897,11 +27183,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 225,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27948,11 +27234,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 212,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -27999,11 +27285,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 200,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28050,11 +27336,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28101,7 +27387,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 79,
+        "textLength": 76,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -28152,11 +27438,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 198,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28203,7 +27489,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
+        "textLength": 98,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -28254,11 +27540,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 135,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28305,11 +27591,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 187,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28356,11 +27642,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 200,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28407,11 +27693,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 109,
-        "sentenceCount": 1,
+        "textLength": 141,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28458,11 +27744,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 231,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28509,11 +27795,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 161,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28560,11 +27846,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 255,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28611,11 +27897,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 68,
-        "sentenceCount": 1,
+        "textLength": 205,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28713,11 +27999,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 215,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28770,7 +28056,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 148,
+        "textLength": 157,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -28821,11 +28107,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 231,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28872,7 +28158,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 108,
+        "textLength": 82,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -28923,11 +28209,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 102,
-        "sentenceCount": 1,
+        "textLength": 189,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -28974,11 +28260,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 73,
-        "sentenceCount": 1,
+        "textLength": 209,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -29076,11 +28362,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 206,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -29127,7 +28413,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 185,
+        "textLength": 195,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -29178,7 +28464,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 180,
+        "textLength": 272,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -29235,7 +28521,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 282,
+        "textLength": 223,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -29292,11 +28578,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 100,
+        "textLength": 152,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -29313,7 +28599,7 @@
     {
       "key": "french_guiana:leon_gontran_damas",
       "writerId": "leon_gontran_damas",
-      "name": "Леон-Гонтан Дамас",
+      "name": "Леон-Гонтран Дамас",
       "countryId": "french_guiana",
       "workflow": {
         "state": "source-research",
@@ -29343,11 +28629,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 302,
-        "sentenceCount": 3,
+        "textLength": 93,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -29394,7 +28680,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 70,
+        "textLength": 77,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29445,7 +28731,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 78,
+        "textLength": 66,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29496,109 +28782,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 35,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "gabon:juste_auguste_kotto",
-      "writerId": "juste_auguste_kotto",
-      "name": "Жюстен-Огюст Котти",
-      "countryId": "gabon",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 46,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "gabon:florentin_moussavou_nzigu",
-      "writerId": "florentin_moussavou_nzigu",
-      "name": "Флорентин Мвуэ Нзигу",
-      "countryId": "gabon",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 31,
+        "textLength": 113,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29649,7 +28833,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
+        "textLength": 83,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29700,7 +28884,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 63,
+        "textLength": 94,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29751,58 +28935,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 43,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "gambia:baaba_jobarteh",
-      "writerId": "baaba_jobarteh",
-      "name": "Бааба Джобе",
-      "countryId": "gambia",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 85,
+        "textLength": 114,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29853,7 +28986,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
+        "textLength": 88,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -29904,8 +29037,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 2,
+        "textLength": 60,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
           "short": true,
@@ -29955,7 +29088,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 46,
+        "textLength": 95,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30006,7 +29139,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 62,
+        "textLength": 106,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30057,7 +29190,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
+        "textLength": 85,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30108,7 +29241,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 49,
+        "textLength": 61,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30159,7 +29292,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 102,
+        "textLength": 84,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30210,7 +29343,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 46,
+        "textLength": 64,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30261,7 +29394,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
+        "textLength": 104,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30318,7 +29451,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 190,
+        "textLength": 143,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -30375,7 +29508,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 191,
+        "textLength": 153,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -30426,11 +29559,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 179,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -30477,11 +29610,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 132,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -30528,11 +29661,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 174,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -30630,8 +29763,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 82,
-        "sentenceCount": 1,
+        "textLength": 115,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -30681,7 +29814,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 109,
+        "textLength": 74,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30732,7 +29865,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
+        "textLength": 80,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30783,7 +29916,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 86,
+        "textLength": 63,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30834,11 +29967,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 111,
-        "sentenceCount": 1,
+        "textLength": 152,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -30885,7 +30018,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
+        "textLength": 87,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -30987,11 +30120,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 125,
-        "sentenceCount": 1,
+        "textLength": 159,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31038,7 +30171,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
+        "textLength": 84,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31089,11 +30222,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 125,
-        "sentenceCount": 1,
+        "textLength": 148,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31140,8 +30273,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 117,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -31191,7 +30324,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
+        "textLength": 92,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31242,11 +30375,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 138,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31293,11 +30426,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 119,
-        "sentenceCount": 1,
+        "textLength": 158,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31395,7 +30528,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
+        "textLength": 81,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31446,7 +30579,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
+        "textLength": 78,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31497,11 +30630,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 112,
-        "sentenceCount": 1,
+        "textLength": 142,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31554,7 +30687,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 98,
+        "textLength": 83,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31605,7 +30738,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 81,
+        "textLength": 62,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -31656,11 +30789,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 149,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31758,11 +30891,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 143,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31911,11 +31044,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 127,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -31962,7 +31095,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
+        "textLength": 88,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -32064,7 +31197,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
+        "textLength": 57,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -32085,7 +31218,7 @@
     {
       "key": "ghana:joseph_casely_hayford",
       "writerId": "joseph_casely_hayford",
-      "name": "Джозеф Эфуа Кейсели Хейфорд",
+      "name": "Джозеф Эфраим Кейсли-Хейфорд",
       "countryId": "ghana",
       "workflow": {
         "state": "source-research",
@@ -32115,11 +31248,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 174,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32187,7 +31320,7 @@
     {
       "key": "ghana:ama_ata_aidoo",
       "writerId": "ama_ata_aidoo",
-      "name": "Амма Ата Айду",
+      "name": "Ама Ата Айду",
       "countryId": "ghana",
       "workflow": {
         "state": "source-research",
@@ -32217,8 +31350,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 65,
-        "sentenceCount": 1,
+        "textLength": 112,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -32268,11 +31401,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 162,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32319,11 +31452,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 148,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32370,11 +31503,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 177,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32472,11 +31605,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 163,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32523,11 +31656,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 24,
-        "sentenceCount": 1,
+        "textLength": 128,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32625,11 +31758,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 38,
-        "sentenceCount": 1,
+        "textLength": 135,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32727,8 +31860,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 44,
-        "sentenceCount": 1,
+        "textLength": 98,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -32829,58 +31962,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 197,
-        "sentenceCount": 3,
-        "flags": {
-          "missing": false,
-          "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "grenada:julian_fedon",
-      "writerId": "julian_fedon",
-      "name": "Джулиан Федон",
-      "countryId": "grenada",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 153,
+        "textLength": 129,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -32982,8 +32064,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 201,
-        "sentenceCount": 3,
+        "textLength": 229,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -33033,8 +32115,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 252,
-        "sentenceCount": 3,
+        "textLength": 171,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -33135,8 +32217,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 187,
-        "sentenceCount": 3,
+        "textLength": 199,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -62814,6 +61896,57 @@
       }
     },
     {
+      "key": "republic_of_congo:sylvain_bemba",
+      "writerId": "sylvain_bemba",
+      "name": "Сильвен Бемба",
+      "countryId": "republic_of_congo",
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "sourceCandidates": [],
+      "audit": {
+        "legacyTextPresent": true,
+        "textLength": 182,
+        "sentenceCount": 2,
+        "flags": {
+          "missing": false,
+          "short": false,
+          "overlyLong": false,
+          "generic": false,
+          "duplicate": false,
+          "unsourced": true,
+          "rightsUnproven": true,
+          "licensedMetadataMissing": false,
+          "humanTranslationRightsMissing": false
+        },
+        "publicationIssues": [
+          "нет биографии ru"
+        ]
+      }
+    },
+    {
       "key": "republic_of_congo:sony_labou_tansi",
       "writerId": "sony_labou_tansi",
       "name": "Сони Лабу Танси",
@@ -76227,6 +75360,57 @@
         "flags": {
           "missing": false,
           "short": true,
+          "overlyLong": false,
+          "generic": false,
+          "duplicate": false,
+          "unsourced": true,
+          "rightsUnproven": true,
+          "licensedMetadataMissing": false,
+          "humanTranslationRightsMissing": false
+        },
+        "publicationIssues": [
+          "нет биографии ru"
+        ]
+      }
+    },
+    {
+      "key": "tanzania:said_ahmed_mohamed",
+      "writerId": "said_ahmed_mohamed",
+      "name": "Саид Ахмед Мохамед Хамис",
+      "countryId": "tanzania",
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "sourceCandidates": [],
+      "audit": {
+        "legacyTextPresent": true,
+        "textLength": 202,
+        "sentenceCount": 2,
+        "flags": {
+          "missing": false,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,

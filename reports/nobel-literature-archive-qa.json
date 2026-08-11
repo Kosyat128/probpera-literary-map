@@ -1,7 +1,7 @@
 {
   "version": 1,
   "deterministic": true,
-  "sourceFingerprint": "sha256:f947ee99fe951b7717cacde711f963d4f83f33a3d0ae4b5e8f804a9cd674a5c4",
+  "sourceFingerprint": "sha256:7fc6e3356bf10942abbcb9aa60022bfbe821e686dc1940a2c662d7e656495bd9",
   "officialSource": {
     "retrievedAt": "2026-08-09",
     "throughYear": 2025,
@@ -20,11 +20,11 @@
     "localCardRepresentations": 125,
     "uniqueStructuredOfficialIds": 122,
     "duplicatePeopleWithCountryCards": 3,
-    "biographyNobelMentions": 105,
-    "biographyClaimsWithExplicitYear": 101,
-    "biographyClaimsWithoutExplicitYear": 4,
+    "biographyNobelMentions": 108,
+    "biographyClaimsWithExplicitYear": 105,
+    "biographyClaimsWithoutExplicitYear": 3,
     "biographyYearContradictions": 0,
-    "officialCardsWithoutBiographyMention": 20,
+    "officialCardsWithoutBiographyMention": 17,
     "previouslyUnstructuredCards": 77,
     "previouslyUnstructuredCardsResolved": 77,
     "productionArchiveEntriesUsingProseFallback": 0,
@@ -135,12 +135,6 @@
     }
   ],
   "biographyClaimsWithoutYear": [
-    {
-      "key": "france:sully_prudhomme",
-      "name": "Рене Франсуа Арман Сюлли-Прюдом",
-      "years": [],
-      "officialYear": 1901
-    },
     {
       "key": "india:rabindranath_tagore",
       "name": "Рабиндранат Тагор",

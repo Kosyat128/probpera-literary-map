@@ -28,9 +28,9 @@ function key(countryId: string, writerId: string) {
 describe("legacy writer biography curation", () => {
   it("keeps the manually sourced correction queue exact and auditable", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
-    expect(quarantinedWriterIdentities).toHaveLength(58);
+    expect(quarantinedWriterIdentities).toHaveLength(62);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(29);
+    expect(writerPublicProfileFactCorrections).toHaveLength(39);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -90,6 +90,108 @@ describe("legacy writer biography curation", () => {
     for (const item of quarantinedWriterIdentities) {
       expect(publicRecords.has(key(item.countryId, item.writerId))).toBe(false);
     }
+  });
+
+  it("publishes the source-backed batch 29 profile corrections only on writer cards", () => {
+    const publicDamas = countries
+      .find((country) => country.id === "french_guiana")
+      ?.writers.find((writer) => writer.id === "leon_gontran_damas");
+    const publicTabidze = countries
+      .find((country) => country.id === "georgia")
+      ?.writers.find((writer) => writer.id === "galaktion_tabidze");
+    const bookDamas = bookArchiveCountries
+      .find((country) => country.id === "french_guiana")
+      ?.writers.find((writer) => writer.id === "leon_gontran_damas");
+    const bookTabidze = bookArchiveCountries
+      .find((country) => country.id === "georgia")
+      ?.writers.find((writer) => writer.id === "galaktion_tabidze");
+
+    expect(publicDamas?.name).toBe("Леон-Гонтран Дамас");
+    expect(publicTabidze).toMatchObject({
+      years: "1891–1959",
+      birthDate: "1891-11-17",
+    });
+    expect(bookDamas?.name).toBe("Леон-Гонтан Дамас");
+    expect(bookTabidze).toMatchObject({
+      years: "1892–1959",
+      birthDate: "1892-11-17",
+    });
+  });
+
+  it("publishes batch 30 profile facts only on writer cards and preserves the book source", () => {
+    const publicWriters = new Map(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+    const bookWriters = new Map(
+      bookArchiveCountries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+
+    expect(publicWriters.get("ghana:ama_ata_aidoo")).toMatchObject({
+      name: "Ама Ата Айду",
+      birthDate: "1942-03-23",
+    });
+    expect(publicWriters.get("ghana:joseph_casely_hayford")).toMatchObject({
+      name: "Джозеф Эфраим Кейсли-Хейфорд",
+      birthDate: "1866",
+      deathDate: "1930-08-11",
+    });
+    expect(publicWriters.get("germany:sebastian_brant")).toMatchObject({
+      years: "1458–1521",
+      birthDate: "1458",
+    });
+    expect(publicWriters.get("ghana:martin_egblewogbe")?.birthDate).toBe(
+      "1975"
+    );
+    expect(publicWriters.get("ghana:nii_ayikwei_parkes")?.birthDate).toBe(
+      "1974"
+    );
+    expect(publicWriters.get("greece:andreas_kalvos")?.birthDate).toBe("1792");
+    expect(publicWriters.get("grenada:george_brizan")).toMatchObject({
+      birthDate: "1942-10-31",
+      deathDate: "2012",
+    });
+    expect(
+      publicWriters.get("guatemala:francisco_alejandro_mendez")
+    ).toMatchObject({
+      years: "1964–2026",
+      deathDate: "2026-03-28",
+    });
+
+    expect(bookWriters.get("ghana:ama_ata_aidoo")?.name).toBe(
+      "Амма Ата Айду"
+    );
+    expect(bookWriters.get("ghana:joseph_casely_hayford")).toMatchObject({
+      name: "Джозеф Эфуа Кейсели Хейфорд",
+      birthDate: "1866-05-24",
+      deathDate: "1930-01-15",
+    });
+    expect(bookWriters.get("germany:sebastian_brant")).toMatchObject({
+      years: "1457–1521",
+      birthDate: "1457",
+    });
+    expect(bookWriters.get("ghana:martin_egblewogbe")?.birthDate).toBe(
+      "1975-01-01"
+    );
+    expect(bookWriters.get("ghana:nii_ayikwei_parkes")?.birthDate).toBe(
+      "1974-01-01"
+    );
+    expect(bookWriters.get("greece:andreas_kalvos")?.birthDate).toBe(
+      "1792-05-01"
+    );
+    expect(bookWriters.get("grenada:george_brizan")).toMatchObject({
+      birthDate: "1942-01-01",
+      deathDate: "2012-01-01",
+    });
+    expect(bookWriters.get("guatemala:francisco_alejandro_mendez")).toMatchObject({
+      years: "1964–",
+    });
+    expect(
+      bookWriters.get("guatemala:francisco_alejandro_mendez")?.deathDate
+    ).toBeUndefined();
   });
 
   it("changes only bio on a corrected writer and does not promote its status", () => {
@@ -216,11 +318,11 @@ describe("legacy writer biography curation", () => {
     expect(archive).toHaveLength(9_712);
     expect(publicArchive).toHaveLength(31);
     expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
-    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(40);
+    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(41);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true
     );
-    expect(publicTargets.filter((target) => !target)).toHaveLength(40);
+    expect(publicTargets.filter((target) => !target)).toHaveLength(41);
     expect(
       publicTargets
         .filter((target) => target)

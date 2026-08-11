@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-08T17:11:28.862Z",
+  "generatedAt": "2026-08-11T15:16:03.811Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
     "uniqueCountryCodes": 200,
-    "cardsWithWriters": 198,
+    "cardsWithWriters": 194,
     "cardsWithCoordinates": 5,
     "cardsWithDescription": 5,
     "cardsWithHistory": 5,
@@ -12,18 +12,18 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1766,
-    "uniqueWriters": 1749,
-    "workRecords": 3431,
-    "uniqueWorks": 3411,
+    "writerRecords": 1707,
+    "uniqueWriters": 1694,
+    "workRecords": 3399,
+    "uniqueWorks": 3381,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 10,
+    "expandedBiographies": 9,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1721,
+    "russianBiographiesWithheld": 1662,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1746,
-    "portraitedWriters": 1066,
+    "englishBiographiesWithheld": 1687,
+    "portraitedWriters": 1059,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
     "cardsInEditorialQueue": 200
@@ -97,7 +97,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "angola",
@@ -131,7 +131,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "argentina",
@@ -148,7 +148,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 22
+      "writers": 20
     },
     {
       "id": "armenia",
@@ -233,7 +233,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 0
     },
     {
       "id": "bahrain",
@@ -403,7 +403,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "brazil",
@@ -437,7 +437,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 0
     },
     {
       "id": "bulgaria",
@@ -488,7 +488,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 1
     },
     {
       "id": "cambodia",
@@ -505,7 +505,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 8
+      "writers": 5
     },
     {
       "id": "cameroon",
@@ -522,7 +522,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 11
+      "writers": 9
     },
     {
       "id": "canada",
@@ -556,7 +556,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 9
+      "writers": 8
     },
     {
       "id": "central_african_republic",
@@ -573,7 +573,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "chad",
@@ -590,7 +590,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "chile",
@@ -607,7 +607,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 21
+      "writers": 20
     },
     {
       "id": "china",
@@ -658,7 +658,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 1
     },
     {
       "id": "cook_islands",
@@ -794,7 +794,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 7
+      "writers": 5
     },
     {
       "id": "denmark",
@@ -828,7 +828,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "dominica",
@@ -964,7 +964,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 1
     },
     {
       "id": "estonia",
@@ -998,7 +998,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 0
     },
     {
       "id": "ethiopia",
@@ -1015,7 +1015,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 8
+      "writers": 7
     },
     {
       "id": "fiji",
@@ -1095,7 +1095,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 3
     },
     {
       "id": "gambia",
@@ -1112,7 +1112,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "georgia",
@@ -1197,7 +1197,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "guatemala",
@@ -1631,7 +1631,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 6
+      "writers": 3
     },
     {
       "id": "latvia",
@@ -1682,7 +1682,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 4
     },
     {
       "id": "liberia",
@@ -1784,7 +1784,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "madagascar",
@@ -1954,7 +1954,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 26
+      "writers": 25
     },
     {
       "id": "micronesia",
@@ -1971,7 +1971,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 0
     },
     {
       "id": "moldova",
@@ -2073,7 +2073,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 6
+      "writers": 7
     },
     {
       "id": "myanmar",
@@ -2388,7 +2388,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 2
     },
     {
       "id": "paraguay",
@@ -2405,7 +2405,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 14
+      "writers": 12
     },
     {
       "id": "peru",
@@ -2422,7 +2422,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 20
+      "writers": 18
     },
     {
       "id": "philippines",
@@ -2524,7 +2524,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 8
+      "writers": 9
     },
     {
       "id": "romania",
@@ -2941,7 +2941,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "sweden",
@@ -3043,7 +3043,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 6
     },
     {
       "id": "thailand",
@@ -3077,7 +3077,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "tonga",
@@ -3247,7 +3247,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 17
+      "writers": 14
     },
     {
       "id": "usa",
@@ -3298,7 +3298,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "vatican",
@@ -3332,7 +3332,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 14
+      "writers": 13
     },
     {
       "id": "vietnam",
