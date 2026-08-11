@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:125b228d09ebc5ffd808d447edba4938eff758fcfa2674f2cf55ddeb74b52e85`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:d15d58e7f0d3b5ab0fe32b753ca8bdc173eb9b85ab5c9623f6539538b1e832e4`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1707; bio присутствует: 1707.
+- Карточек и русских bio проверено алгоритмом: 1705; bio присутствует: 1705.
 - Надёжных identity-match с локальным staging: 231.
 - Из них source-confirmed structured cross-check: 230 (13.5%).
 - Offline Wikidata snapshot содержит candidate QID для 1268 карточек, но label+birth-year identity corroborated только у 1196 (70.1% корпуса); identity-discrepant: 14, требуют дополнительной identity-проверки: 58.
-- Сопоставлено полей дат со snapshot: 2108; exact Gregorian: 1620; совместимы при общей precision: 168; несовместимых строк после curated resolutions: 104. Из них 34 сначала требуют identity repair, а 45 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Сопоставлено полей дат со snapshot: 2108; exact Gregorian: 1623; совместимы при общей precision: 167; несовместимых строк после curated resolutions: 102. Из них 34 сначала требуют identity repair, а 42 — современные referenced-противоречия для проверки по авторитетному источнику.
 - Ручных source-resolution с сохранёнными доказательствами: 72 в 58 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 0 карточек, 0 полей.
-- Metadata gaps (это не доказанные ошибки): 210.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1677.
+- Metadata gaps (это не доказанные ошибки): 221.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1675.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 137
-- `critical-ranking`: 347
-- `identity-role`: 1660
-- `language`: 168
-- `life-dates`: 94
+- `awards`: 135
+- `critical-ranking`: 328
+- `identity-role`: 1658
+- `language`: 169
+- `life-dates`: 118
 - `movement-era`: 92
-- `national-cultural-affiliation`: 1045
+- `national-cultural-affiliation`: 1051
 - `nobel`: 108
-- `places`: 12
+- `places`: 15
 - `priority-claim`: 161
-- `reception-influence`: 61
+- `reception-influence`: 59
 - `themes-style`: 240
-- `works`: 829
+- `works`: 849
 
 ## High-confidence противоречия
 
@@ -142,10 +142,8 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `colombia:rafael_pombo` | Рафаэль Помбо | `Q1661285` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1912-05-05` | 1912-05-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1661285 |
 | `costa_rica:carmen_lyra` | Кармен Лира | `Q2939620` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1888-01-15` | 1887-01-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2939620 |
 | `guatemala:luis_cardoza_y_aragon` | Луис Кардоса-и-Арагон | `Q6700406` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1901-06-21` | 1904-06-21 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q6700406 |
-| `guatemala:rodrigo_rey_rosa` | Родриго Рей Роса | `Q4392560` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1958-02-04` | 1958-11-04 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q4392560 |
 | `guyana:edgar_mittelholzer` | Эдгар Миттельхольцер | `Q181618` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1965-05-05` | 1965-05-06 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q181618 |
-| `haiti:franketienne` | Франкетьен | `Q162778` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2024-02-20` | 2025-02-20 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q162778 |
-| `hong_kong:xi_xi` | Сянь Юй | `Q8044053` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1937-10-08` | 1937-10-07 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q8044053 |
+| `hungary:imre_madach` | Имре Мадач | `Q366331` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1823-01-20` | 1823-01-21 (day, Q1985727, preferred, refs:4) | https://www.wikidata.org/wiki/Q366331 |
 | `india:jaishankar_prasad` | Джайшанкар Прасад | `Q1193180` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1937-01-15` | 1937-01-14 (day, Q1985727, normal, refs:1); 1937-11-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1193180 |
 | `india:surdas` | Сурдас | `Q1325652` | c: likely-bad-qid-mapping-or-identity | `deathDate` | `1583` | 1563 (year, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q1325652 |
 | `iran:forugh_farrokhzad` | Форуг Фаррохзад | `Q464394` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1934-01-05` | 1935-01-05 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q464394 |
@@ -467,7 +465,18 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `ghana:nii_ayikwei_parkes` | Нии Айквей Паркс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Makings of You"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `greece:andreas_kalvos` | Андреас Калвос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Лира"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `greece:giannis_ritsos` | Яннис Рицос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Эпитафий"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
-| `iceland:snorri_sturluson` | Снорри Стурлусон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Младшей Эдды"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `guatemala:miguel_angel_asturias` | Мигель Анхель Астуриас | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Легенды Гватемалы"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `guinea_republic:camara_laye` | Камара Лайе | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Чёрного ребёнка"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `guyana:martin_carter` | Мартин Картер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Poems of Resistance from British Guiana"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `guyana:wilson_harris` | Уилсон Харрис | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Palace of the Peacock"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `haiti:edwidge_danticat` | Эдвидж Дантикат | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Breath, Eyes, Memory"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `haiti:edwidge_danticat` | Эдвидж Дантикат | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Krik? Krak!"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `haiti:franketienne` | Франкетьен | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Dézafi"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `haiti:jacques_stephen_alexis` | Жак Стивен Алексис | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Compère général soleil"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `hungary:endre_ady` | Эндре Ади | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Новые стихи"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `iceland:arnaldur_indridason` | Арнальдур Индридасон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Сыны праха"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `iceland:gudmundur_kamban` | Гвюдмюндюр Камбан | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Скаульхольт"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `iceland:gudmundur_kamban` | Гвюдмюндюр Камбан | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Хадда Падда"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `indonesia:achdiyat_karta_mihardja` | Ахдиат Карта Михарджа | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Атеист"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `italy:giovanni_boccaccio` | Джованни Боккаччо | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Декамерона"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `japan:murasaki_shikibu` | Мурасаки Сикибу | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Повести о Гэндзи"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |

@@ -28,9 +28,9 @@ function key(countryId: string, writerId: string) {
 describe("legacy writer biography curation", () => {
   it("keeps the manually sourced correction queue exact and auditable", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
-    expect(quarantinedWriterIdentities).toHaveLength(62);
+    expect(quarantinedWriterIdentities).toHaveLength(64);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(39);
+    expect(writerPublicProfileFactCorrections).toHaveLength(51);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -194,6 +194,99 @@ describe("legacy writer biography curation", () => {
     ).toBeUndefined();
   });
 
+  it("publishes batch 31 profile facts only on writer cards and quarantines unresolved identities", () => {
+    const publicWriters = new Map(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+    const bookWriters = new Map(
+      bookArchiveCountries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+
+    expect(publicWriters.get("guatemala:luis_cardoza_y_aragon")?.birthPlace).toBe(
+      "Антигуа-Гватемала, Гватемала"
+    );
+    expect(publicWriters.get("guatemala:rodrigo_rey_rosa")?.birthDate).toBe(
+      "1958-11-04"
+    );
+    expect(publicWriters.get("guinea_bissau:abdulai_sila")).toMatchObject({
+      birthDate: "1958-04-01",
+      birthPlace: "Катио, Гвинея-Бисау",
+    });
+    expect(publicWriters.get("guyana:cyril_dabydeen")?.birthDate).toBe("1945");
+    expect(publicWriters.get("guyana:wilson_harris")?.deathPlace).toBe(
+      "Челмсфорд, Англия"
+    );
+    expect(publicWriters.get("haiti:franketienne")).toMatchObject({
+      years: "1936–2025",
+      deathDate: "2025-02-20",
+      birthPlace: "Равин-Сеш, Артибонит, Гаити",
+      deathPlace: "Дельма, Гаити",
+    });
+    expect(publicWriters.get("haiti:jacques_stephen_alexis")).toMatchObject({
+      deathDate: "1961",
+      birthPlace: "Гонаив, Гаити",
+    });
+    expect(publicWriters.get("honduras:juan_ramon_molina")?.birthPlace).toBe(
+      "Комаягуэла, Гондурас"
+    );
+    expect(publicWriters.get("hong_kong:xi_xi")).toMatchObject({
+      name: "Си Си",
+      birthDate: "1937-10-07",
+    });
+    expect(publicWriters.get("hungary:imre_madach")?.birthDate).toBe(
+      "1823-01-20"
+    );
+    expect(publicWriters.get("iceland:steinn_steinarr")?.birthPlace).toBe(
+      "Лёйгаланд, близ Кальдалона, Исландия"
+    );
+    expect(publicWriters.get("india:amit_chaudhuri")).toMatchObject({
+      name: "Амит Чаудхури",
+      fullName: "Amit Chaudhuri",
+    });
+    expect(publicWriters.has("guinea_bissau:antonio_aurelio_gomes")).toBe(false);
+    expect(publicWriters.has("guyana:roshni_kempadoo")).toBe(false);
+
+    expect(bookWriters.get("guatemala:luis_cardoza_y_aragon")?.birthPlace).toBe(
+      "Гватемала, Гватемала"
+    );
+    expect(bookWriters.get("guatemala:rodrigo_rey_rosa")?.birthDate).toBe(
+      "1958-02-04"
+    );
+    expect(bookWriters.get("guinea_bissau:abdulai_sila")).toMatchObject({
+      birthDate: "1958",
+      birthPlace: "Бисау, Гвинея-Бисау",
+    });
+    expect(bookWriters.get("guyana:cyril_dabydeen")?.birthDate).toBe(
+      "1945-09-05"
+    );
+    expect(bookWriters.get("guyana:wilson_harris")?.deathPlace).toBe(
+      "Уорикшир, Великобритания"
+    );
+    expect(bookWriters.get("haiti:franketienne")).toMatchObject({
+      years: "1936–2024",
+      deathDate: "2024-02-20",
+      birthPlace: "Розо, Гаити",
+      deathPlace: "Порт-о-Пренс, Гаити",
+    });
+    expect(bookWriters.get("haiti:jacques_stephen_alexis")).toMatchObject({
+      deathDate: "1961-04-22",
+      birthPlace: "Гонав, Гаити",
+    });
+    expect(bookWriters.get("hong_kong:xi_xi")).toMatchObject({
+      name: "Сянь Юй",
+      birthDate: "1937-10-08",
+    });
+    expect(bookWriters.get("hungary:imre_madach")?.birthDate).toBe(
+      "1823-01-21"
+    );
+    expect(bookWriters.get("iceland:steinn_steinarr")?.birthPlace).toBe("Олвюсау");
+    expect(bookWriters.get("india:amit_chaudhuri")?.name).toBe("Амита Чоудхури");
+  });
+
   it("changes only bio on a corrected writer and does not promote its status", () => {
     const fixture: Country[] = [
       {
@@ -318,11 +411,11 @@ describe("legacy writer biography curation", () => {
     expect(archive).toHaveLength(9_712);
     expect(publicArchive).toHaveLength(31);
     expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
-    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(41);
+    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(43);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true
     );
-    expect(publicTargets.filter((target) => !target)).toHaveLength(41);
+    expect(publicTargets.filter((target) => !target)).toHaveLength(43);
     expect(
       publicTargets
         .filter((target) => target)

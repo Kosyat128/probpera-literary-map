@@ -1,0 +1,536 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH31_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 31";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH31_REVIEWER;
+const checkedAt = "2026-08-11";
+
+type EvidenceSeed = readonly [provider: string, url: string, findingRu: string];
+
+interface ReviewSeed {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly evidence: readonly EvidenceSeed[];
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const seeds = [
+  {
+    key: "guatemala:luis_cardoza_y_aragon",
+    originalSha256: "5713c2349a22df960426c738b791ac1a8a73f30f887eb0f1cabb63f350aca677",
+    reviewedTextRu: "Луис Кардоса-и-Арагон (1901–1992) — гватемальский поэт, эссеист, дипломат и художественный критик. Значительную часть жизни он провёл в политическом изгнании в Мексике; среди его книг — «Guatemala, las líneas de su mano».",
+    evidence: [
+      ["Registro Nacional de las Personas de Guatemala", "https://www.renap.gob.gt/sites/default/files/publicaciones-renap/luis-cardoza-y-aragon-web.pdf", "Государственное биографическое издание подтверждает личность, годы жизни, литературные и дипломатические роли Кардосы-и-Арагона, его изгнание в Мексике и названную книгу."],
+      ["Ministerio de Cultura y Deportes de Guatemala", "https://mcd.gob.gt/wp-content/uploads/2022/05/7-Poesi%E2%95%A0ua-de-Luis-Cardoza-y-Arago%E2%95%A0un-Lecturas-Bicentenarias.pdf", "Издание министерства культуры независимо подтверждает годы жизни, профессиональные роли, жизнь в Мексике и библиографию Кардосы-и-Арагона."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён проверяемыми ролями, биографическим маршрутом и произведением. Официальные источники Гватемалы указывают 1901 год рождения; расхождение с отдельными литературными справочниками отмечено без повышения точности.",
+  },
+  {
+    key: "guatemala:miguel_angel_asturias",
+    originalSha256: "1ed106e8bdc26900a7a38da5e63b4ee1516d0b4d6fdfc11a3135a35abddf19ca",
+    reviewedTextRu: "Мигель Анхель Астуриас (1899–1974) — гватемальский писатель и дипломат, лауреат Нобелевской премии по литературе 1967 года. В его книгах «Легенды Гватемалы», «Господин Президент» и «Люди из кукурузы» обращение к культуре майя сочетается с критикой диктатуры и социальной проблематикой.",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/1967/asturias/facts/", "Официальная страница Нобелевской премии подтверждает годы жизни Астуриаса, гватемальскую писательскую и дипломатическую деятельность и награду 1967 года."],
+      ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark:/12148/cb11889334n", "Национальная библиотека Франции независимо фиксирует личность, годы жизни, литературную и дипломатическую деятельность и библиографию Астуриаса."],
+      ["Centro Virtual Cervantes", "https://cvc.cervantes.es/artes/ciudades_patrimonio/antigua/personalidades/asturias.htm", "Институт Сервантеса подтверждает биографию, произведения Астуриаса и связь его прозы с культурой майя, диктатурой и социальной проблематикой."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена годами жизни, профессиональными ролями, Нобелевской премией и тремя произведениями с документированными темами. Nobel overlap перепроверен claim-by-claim.",
+  },
+  {
+    key: "guatemala:rodrigo_rey_rosa",
+    originalSha256: "3c01298da4a7365c3ea8b2d0b2152015a433ef6674ee7403d114e7e0ae00488a",
+    reviewedTextRu: "Родриго Рей Роса (род. 4 ноября 1958) — гватемальский писатель и переводчик. Среди его книг — «Cárcel de árboles», «La orilla africana» и «El material humano»; он переводил на испанский произведения Пола Боулза.",
+    evidence: [
+      ["Editorial Anagrama", "https://www.anagrama-ed.es/autor/rey-rosa-rodrigo-1237", "Издательство подтверждает дату рождения, гватемальскую писательскую деятельность Рей Росы и его библиографию."],
+      ["New Directions", "https://www.ndbooks.com/author/rodrigo-rey-rosa/", "Литературное издательство независимо подтверждает деятельность Рей Росы как писателя и переводчика Пола Боулза и перечисляет его книги."],
+      ["Enciclopedia de la Literatura en México", "https://www.elem.mx/autor/datos/116526", "Национальная литературная энциклопедия подтверждает дату рождения, профессиональные роли и библиографию Рей Росы."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена точной датой рождения, ролями, произведениями и переводческой работой. BirthDate рекомендуется исправить на 1958-11-04; shared country files не изменялись.",
+  },
+  {
+    key: "guinea_bissau:abdulai_sila",
+    originalSha256: "fe0b8854f2eae685e29592fee2da059a1d183cfba2267eeed1fd346d2f62d4c8",
+    reviewedTextRu: "Абдулай Сила (род. 1 апреля 1958) — писатель из Гвинеи-Бисау, а также инженер и исследователь. Его «Eterna Paixão» (1994) считается первым романом Гвинеи-Бисау; позднее он опубликовал «A Última Tragédia» и «Mistida».",
+    evidence: [
+      ["UFMG Literafro", "https://www.letras.ufmg.br/literafro/literafricas/literatura-da-guine-bissau/1581-wellington-marcal-de-carvalho-abdulai-sila", "Университетский литературный ресурс подтверждает дату рождения, писательскую, инженерную и исследовательскую деятельность Силы, а также место Eterna Paixão в литературе Гвинеи-Бисау."],
+      ["Pallas Editora", "https://pallaseditora.com.br/autor/abdulai-sila-3/", "Издательский профиль независимо подтверждает биографические данные, профессиональные роли и библиографию Силы."],
+    ],
+    decision: "corrected",
+    notes: "Краткая общая биография расширена точными профессиональными ролями и последовательностью первых романов на основании двух независимых институциональных источников.",
+  },
+  {
+    key: "guinea_bissau:antonio_aurelio_gomes",
+    originalSha256: "610b666b90237f94bb55416706f1713c263719a23100ace7498acb88fc4dac3f",
+    reviewedTextRu: "Карточка требует повторной идентификации: институциональные источники не подтверждают писателя Гвинеи-Бисау по имени Антониу Аурелиу Гомеш, родившегося в 1960 году.",
+    evidence: [
+      ["Ministério da Educação de Cabo Verde", "https://minedu.gov.cv/media/manuais/2020/10/19/Programa_de_Portugu%C3%AAs_-_Area_Human%C3%ADstica.pdf", "Официальная учебная программа Кабо-Верде относит Антониу Аурелиу Гонсалвеша к кабо-вердианским писателям и отдельно перечисляет авторов Гвинеи-Бисау."],
+      ["UFMG Literafro", "https://www.letras.ufmg.br/literafro/literafricas/literatura-cabo-verdiana/1558-", "Университетский литературный ресурс представляет Антониу Аурелиу Гонсалвеша как кабо-вердианского прозаика и не подтверждает карточечную личность Антониу Аурелиу Гомеша."],
+    ],
+    decision: "held",
+    notes: "Вероятно, в карточке смешаны имя, фамилия, страна и дата с Антониу Аурелиу Гонсалвешем (1901–1984). applicableTextRu оставлен null; портрет и биографию нельзя публиковать до повторной идентификации.",
+  },
+  {
+    key: "guinea_bissau:odete_semedo",
+    originalSha256: "b14ac0920c7661c72c7e25ad2c063f165a8d795f5d02b2e010a8b78b6872cde2",
+    reviewedTextRu: "Одети Семеду — писательница и исследовательница из Гвинеи-Бисау, автор поэтических и прозаических книг на португальском и гвинейско-бисауском креольском языках. Она занимается литературой, устной традицией и культурой страны и работает старшей исследовательницей Национального института исследований и изучения Гвинеи-Бисау (INEP).",
+    evidence: [
+      ["Centro de Estudos Sociais da Universidade de Coimbra", "https://ces.uc.pt/pt/ces/pessoas/investigadoras-es-colaboradoras-es/odete-semedo", "Университетский профиль подтверждает писательскую и исследовательскую деятельность Семеду, докторскую степень и работу старшей исследовательницей INEP."],
+      ["NOVA FCSH WomenLit", "https://womenlit.fcsh.unl.pt/detail.aspx?bid=57&cid=73&lang=pt&pid=14", "Исследовательский проект университета подтверждает полное имя, рождение в Бисау в 1959 году, поэзию, прозу и культурную деятельность Семеду."],
+      ["Universidade Federal do Rio de Janeiro", "https://revistas.ufrj.br/index.php/mulemba/article/view/31266", "Университетский журнал подтверждает принадлежность Семеду к литературе Гвинеи-Бисау и её поэтические и прозаические тексты на португальском и гвинейско-бисауском креольском."],
+    ],
+    decision: "corrected",
+    notes: "Общая характеристика расширена подтверждёнными языками, исследовательской специализацией и должностью. Источники позволяют отдельно уточнить fullName до Maria Odete da Costa Soares Semedo; shared country files не изменялись.",
+  },
+  {
+    key: "guinea_republic:camara_laye",
+    originalSha256: "abdcb45406c160c7fb9bf55b0c490a8e00fa1c25738592fa90b6766c47d7b5c7",
+    reviewedTextRu: "Камара Лайе (1928–1980) — гвинейский франкоязычный романист, автор «Чёрного ребёнка» и «Взгляда короля». В «Чёрном ребёнке» он обратился к воспоминаниям о детстве и традиционной жизни в Гвинее.",
+    evidence: [
+      ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb11894907d", "Национальная библиотека Франции подтверждает годы жизни, гвинейское происхождение, франкоязычную писательскую деятельность и библиографию Камары Лайе."],
+      ["Macmillan", "https://us.macmillan.com/author/camaralaye", "Издательский профиль независимо подтверждает авторство «Чёрного ребёнка» и «Взгляда короля» и автобиографическую основу первой книги."],
+      ["University of Nebraska Press", "https://www.nebraskapress.unl.edu/nebraska/9780803227521/rereading-camara-laye/", "Университетское издательство подтверждает место Камары Лайе во франкоязычной литературе Гвинеи и документирует дискуссию вокруг атрибуции его книг."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён годами жизни, языком, жанром и двумя произведениями. Спор об атрибуции учтён нейтрально: биография фиксирует опубликованное авторство без категоричных выводов о дискуссии.",
+  },
+  {
+    key: "guinea_republic:tierno_monenembo",
+    originalSha256: "aeacf36678eedfa75f82dcdac49ad296f7addc50d0c265bfe9dd86819472a866",
+    reviewedTextRu: "Гвинейский писатель, чья проза исследует изгнание, историческую память и движение человека между культурами. Покинув Гвинею в конце 1960-х годов, он жил в разных странах Африки и Европы; этот опыт странствия стал одной из ключевых тем его романов.",
+    evidence: [
+      ["Académie française", "https://www.academie-francaise.fr/discours-sur-les-prix-litteraires-2017", "Французская академия подтверждает рождение Моненембо в Гвинее в 1947 году, отъезд из страны в 1969 году, жизнь в Африке и Европе и темы изгнания и идентичности в его прозе."],
+      ["Éditions du Seuil", "https://www.seuil.com/auteur/tierno-monenembo/4494", "Издательский профиль независимо подтверждает писательскую деятельность Моненембо, его романы и международный биографический маршрут."],
+    ],
+    decision: "unchanged",
+    notes: "Все утверждения исходного текста подтверждены двумя независимыми институциональными источниками; текст сохранён дословно. Источники подтверждают 1947 год, но не дают основания повышать точность даты рождения.",
+  },
+  {
+    key: "guyana:cyril_dabydeen",
+    originalSha256: "9ee5ee3f39fc7f7525d0b7e2cc2a20b08eca0973cd4c4159c0f3e013fd1d7d77",
+    reviewedTextRu: "Сирил Дабидин (род. 1945) — родившийся в Гайане канадский поэт и прозаик, преподававший творческое письмо в Университете Оттавы. Среди его книг — романы «The Wizard Swami» и «Dark Swirl», а также сборники поэзии и рассказов.",
+    evidence: [
+      ["Peepal Tree Press", "https://www.peepaltreepress.com/authors/cyril-dabydeen", "Профильное карибское издательство подтверждает рождение Дабидина в Гайане в 1945 году, канадскую литературную деятельность, преподавание и многожанровую библиографию."],
+      ["Toronto Metropolitan University Library", "https://library.torontomu.ca/asianheritage/authors/dabydeen/", "Университетская библиотека независимо подтверждает биографический маршрут, преподавательскую работу и названные романы Дабидина."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена подтверждёнными странами биографии, жанрами, преподавательской работой и произведениями. Точная карточечная дата 1945-09-05 не получила достаточного институционального подтверждения; сохранён только год.",
+  },
+  {
+    key: "guyana:edgar_mittelholzer",
+    originalSha256: "f93c551dc07a6af4d30fd2177cc44ad704fe21a32b031cc1e25c1a36f35a3496",
+    reviewedTextRu: "Эдгар Миттельхольцер — гайанский романист, родившийся в Британской Гвиане; он написал более двадцати романов и позднее жил в Англии. Его проза обращается к истории, обществу и культурным противоречиям Карибского региона.",
+    evidence: [
+      ["Peepal Tree Press", "https://www.peepaltreepress.com/authors/edgar-mittelholzer", "Профильное карибское издательство подтверждает рождение Миттельхольцера в Британской Гвиане в 1909 году, авторство более двадцати романов, жизнь в Англии и смерть в 1965 году."],
+      ["British Library Archives", "https://searcharchives.bl.uk/?f%5Bcollection_area_ssi%5D%5B%5D=Western+Manuscripts&f%5Blevel_ssi%5D%5B%5D=%5B32%5D+Fonds&f%5Bmaterial_type_si%5D%5B%5D=Archives+and+Manuscripts&f%5Bproject_collections_ssim%5D%5B%5D=Additional+Manuscripts&f%5Burl_non_blank_si%5D%5B%5D=No&page=297&per_page=50&sort=hierarchy", "Архив национальной библиотеки независимо идентифицирует Эдгара Миттельхольцера, годы его жизни 1909–1965 и сохранившуюся корреспонденцию писателя."],
+      ["Parliament of Guyana", "https://parliament.gov.gy/documents/hansards/72nd_sitting_-_tenth_parliament.pdf", "Парламентская стенограмма Гайаны документирует литературное значение Миттельхольцера и событие 5 мая 1965 года, предшествовавшее его смерти."],
+    ],
+    decision: "corrected",
+    notes: "Недоказуемый суперлатив заменён биографическими данными и характеристикой корпуса. Точные deathDate и deathPlace требуют отдельной authority-проверки: источники расходятся между событием 5 мая и смертью после госпитализации 6 мая.",
+  },
+  {
+    key: "guyana:martin_carter",
+    originalSha256: "38c5ef354d6177a953b024135931c77262d75364f5aad570b4eeeb2e970ee738",
+    reviewedTextRu: "Мартин Картер (1927–1997) — гайанский поэт и политический деятель. Его сборник «Poems of Resistance from British Guiana» (1954), часть текстов которого была написана во время заключения, связан с антиколониальной борьбой в Британской Гвиане.",
+    evidence: [
+      ["Poetry Foundation", "https://www.poetryfoundation.org/poets/martin-carter", "Литературная организация подтверждает годы жизни, гайанскую поэтическую и политическую деятельность Картера, заключение и сборник Poems of Resistance from British Guiana."],
+      ["Bloodaxe Books", "https://www.bloodaxebooks.com/ecs/category/martin-carter", "Профильное поэтическое издательство независимо подтверждает биографию Картера, его антиколониальный контекст и произведения, созданные в заключении."],
+      ["Stabroek News", "https://www.stabroeknews.com/2009/06/27/news/guyana/students-in-tribute-to-martin-carter/", "Гайанская национальная газета документирует общественную память о Картере как поэте и политическом деятеле и связь его творчества с борьбой за независимость."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён годами жизни, двумя ролями, конкретным сборником и проверяемым историческим контекстом его создания.",
+  },
+  {
+    key: "guyana:roshni_kempadoo",
+    originalSha256: "3576ddb2862ec0bc63d3148573198008c573c3ab286ecc0f26912de0c2fba93c",
+    reviewedTextRu: "Рошини Кемпадоо — британская фотографка, медиахудожница и исследовательница визуальной культуры гайанского происхождения; её работы посвящены архивам, памяти и наследию колониализма.",
+    evidence: [
+      ["University of Westminster", "https://www.westminster.ac.uk/about-us/our-people/directory/kempadoo-roshini", "Университетский профиль подтверждает работу Рошини Кемпадоо как профессора, фотографа, медиахудожницы и исследовательницы архивов и колониального наследия, но не как романистки."],
+      ["British Academy", "https://www.thebritishacademy.ac.uk/fellows/profiles/roshini-kempadoo-fba/", "Британская академия независимо представляет Кемпадоо как профессора фотографии и визуальной культуры, медиахудожницу и фотографа."],
+      ["Macmillan", "https://us.macmillan.com/author/oonyakempadoo", "Издательство подтверждает, что романы Buxton Spice и Tide Running написала Ония Кемпадоо, а не Рошини Кемпадоо."],
+      ["iniva", "https://iniva.org/library/digital-archive/people/k/kempadoo-roshini", "Архив Института международного визуального искусства подтверждает рождение Рошини Кемпадоо в Англии в 1959 году и её деятельность фотографа, мультимедийной художницы, писательницы и преподавательницы."],
+    ],
+    decision: "held",
+    notes: "Карточка смешивает Рошини Кемпадоо с романисткой Онией Кемпадоо: книги Buxton Spice и Tide Running принадлежат Онии. Год 1969 и точное место Лондон не подтверждены; applicableTextRu оставлен null до разведения идентичностей.",
+  },
+  {
+    key: "guyana:wilson_harris",
+    originalSha256: "4de7cb3e1fd9245f9ecbf953c845d367fed3fc2d417f20443f4b58745ba3fae7",
+    reviewedTextRu: "Уилсон Харрис (1921–2018) — гайанский писатель, начавший литературную карьеру как поэт и затем сосредоточившийся на прозе. Его первый роман «Palace of the Peacock» (1960) открыл цикл, позднее изданный как «The Guyana Quartet».",
+    evidence: [
+      ["University of Guyana", "https://uog.edu.gy/newsletters/homage-late-wilson-harris", "Университет Гайаны подтверждает годы жизни Харриса, его поэтическое начало, последующую прозаическую работу и место Guyana Quartet в его наследии."],
+      ["The Guardian", "https://www.theguardian.com/books/2018/mar/09/sir-wilson-harris-obituary", "Редакционный некролог независимо подтверждает биографию Харриса, переход от поэзии к романам и публикацию Palace of the Peacock в 1960 году."],
+      ["Royal Society of Literature", "https://rsliterature.org/fellows/sir-wilson-harris/", "Королевское литературное общество подтверждает писательскую деятельность Харриса и его библиографию."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная характеристика заменена биографической траекторией и точными сведениями о первом романе и цикле Guyana Quartet.",
+  },
+  {
+    key: "haiti:edwidge_danticat",
+    originalSha256: "2d29118f88721b118f69b70fe4c6a1c21beee06cf57248428bf6628997bca826",
+    reviewedTextRu: "Эдвидж Дантикат (род. 19 января 1969) — гаитянско-американская писательница, автор романа «Breath, Eyes, Memory», сборника «Krik? Krak!» и мемуаров «Brother, I’m Dying». В её прозе и эссе рассматриваются история Гаити, миграция, семья и жизнь диаспоры.",
+    evidence: [
+      ["Embassy of Haiti", "https://www.haiti.org/dt_team/edwidge-danticat/", "Официальный профиль посольства подтверждает дату рождения, гаитянско-американскую идентичность, писательскую деятельность, библиографию и основные темы Дантикат."],
+      ["MacArthur Foundation", "https://www.macfound.org/fellows/class-of-2009/edwidge-danticat", "Фонд Макартуров независимо подтверждает литературные жанры, названные книги и обращение Дантикат к истории Гаити, миграции и диаспоре."],
+      ["Library of Congress", "https://lccn.loc.gov/n93100617", "Национальная библиотека США фиксирует authority-запись Дантикат, дату рождения и её литературную деятельность."],
+    ],
+    decision: "corrected",
+    notes: "Общая тематическая формула заменена точной датой, идентичностью, тремя произведениями и подтверждённым кругом тем.",
+  },
+  {
+    key: "haiti:franketienne",
+    originalSha256: "aa6b792f19cc55679762609995a547369a19b2372acdddbc3e4b27a548cd53c2",
+    reviewedTextRu: "Франкетьен (1936–2025) — гаитянский писатель, поэт, драматург и художник, писавший на французском и гаитянском креольском языках. Его роман «Dézafi» (1975) стал первым романом, опубликованным на гаитянском креольском языке.",
+    evidence: [
+      ["Ministère de la Communication d’Haïti", "https://communication.gouv.ht/communiques/le-mcc-rend-hommage-a-jean-pierre-basilic-dantor-franck-etienne-dargent-dit-franketienne/", "Официальный некролог правительства Гаити подтверждает полное имя, годы жизни, литературные и художественные роли Франкетьена и его языки."],
+      ["UNESCO", "https://www.unesco.org/fr/articles/franketienne-1936-2025-un-defenseur-infatigable-de-la-culture-haitienne-et-artiste-de-la-paix-de", "ЮНЕСКО независимо подтверждает годы жизни, многожанровую деятельность и вклад Франкетьена в литературу на французском и гаитянском креольском."],
+      ["University of Virginia Press", "https://upress.virginia.edu/title/5164/", "Университетское издательство подтверждает публикацию Dézafi в 1975 году и его статус первого романа на гаитянском креольском языке."],
+    ],
+    decision: "corrected",
+    notes: "Устаревшая открытая датировка и общая оценка заменены подтверждёнными годами жизни, ролями, языками и историей публикации Dézafi.",
+  },
+  {
+    key: "haiti:jacques_roumain",
+    originalSha256: "7f356acf6088ff4f565f8b5296033527056ebcd229a5ee9e1be784cae3f866cf",
+    reviewedTextRu: "Жак Румен (1907–1944) — гаитянский писатель и общественный деятель, основатель журнала La Revue indigène и один из основателей Коммунистической партии Гаити; позднее он служил дипломатом в Мексике. Его роман «Хозяева росы» (Gouverneurs de la rosée), опубликованный в 1944 году, вошёл в классический корпус гаитянской литературы.",
+    evidence: [
+      ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark:/12148/cb11922838n", "Национальная библиотека Франции подтверждает даты и место жизни Румена, его писательскую деятельность, участие в La Revue indigène, основании Коммунистической партии Гаити и дипломатической работе в Мексике."],
+      ["University of Miami Libraries", "https://scholar.library.miami.edu/emancipation/culture3.htm", "Университетская библиотека независимо представляет роман Gouverneurs de la rosée 1944 года как классику гаитянской литературы и описывает его основные социальные мотивы."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён документированными общественными ролями и главным романом. Карточечные даты подтверждены; названия произведений «Государство секвоев» и «Гиганты» требуют отдельного библиографического аудита.",
+  },
+  {
+    key: "haiti:jacques_stephen_alexis",
+    originalSha256: "3231ab04195c29fd69f3aeff8c661ee017cba3124e8f1204e90a9f48bae95a5b",
+    reviewedTextRu: "Жак Стивен Алексис — гаитянский писатель, врач и политический деятель, родившийся 22 апреля 1922 года в Гонаиве. Автор романов «Compère général soleil», «Les Arbres musiciens» и «L’Espace d’un cillement» исчез после тайного возвращения на Гаити в апреле 1961 года; обстоятельства его гибели точно не установлены.",
+    evidence: [
+      ["Bibliothèque nationale de France", "https://www.bnf.fr/fr/jacques-stephen-alexis-bibliographie", "Национальная библиотека Франции подтверждает деятельность Алексиса как писателя, врача и политического активиста, библиографию 1955–1960 годов и исчезновение после возвращения на Гаити в 1961 году."],
+      ["University of Miami Libraries", "https://scholar.library.miami.edu/digital/exhibits/show/haitian-literature/biographical-timeline", "Университетская библиотека независимо подтверждает рождение Алексиса 22 апреля 1922 года в Гонаиве, его литературную, медицинскую и политическую деятельность и исчезновение в апреле 1961 года."],
+    ],
+    decision: "corrected",
+    notes: "Точное место рождения исправлено на Гонаив. Карточечная deathDate 1961-04-22 не подтверждена: надёжно установлены только апрель 1961 года и исчезновение; обстоятельства смерти остаются неопределёнными.",
+  },
+  {
+    key: "honduras:juan_ramon_molina",
+    originalSha256: "98ca36161fb39dc4c1b083eabe0fc170e86ee95599a773dbc72f1b8ab2aebed6",
+    reviewedTextRu: "Хуан Рамон Молина (1875–1908) — гондурасский поэт, прозаик и журналист поколения модернизма. Его поэзия составляет основную часть литературного наследия, а проза включает рассказы «El Chele» и «Mr. Black».",
+    evidence: [
+      ["Universidad Nacional Autónoma de Honduras", "https://blogs.unah.edu.hn/cac/armanda-lara-y-los-poemas-de-ramon-molina/", "Национальный университет Гондураса подтверждает рождение Молины в Комаягуэле в 1875 году, смерть в Сан-Сальвадоре в 1908 году и его принадлежность к центральноамериканскому модернизму."],
+      ["UNAH Recursos de Aprendizaje", "https://micrositios-cv.unah.edu.hn/die/die_rri_fhum/EG011/ura_unidad2tema3_17294/index.html", "Учебный ресурс университета независимо подтверждает деятельность Молины как гондурасского поэта и автора рассказов поколения модернизма и центральное место поэзии в его творчестве."],
+      ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/obras/materia-autoridad/molina-juan-ramon-1875-1908-57859", "Академическая библиотека фиксирует authority-запись Хуана Рамона Молины с годами жизни 1875–1908 и корпус относящихся к нему материалов."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён ролями, литературным направлением и произведениями. BirthPlace следует исправить с Комаягуа на Комаягуэлу; источники расходятся в точном дне смерти, поэтому подтверждён только 1908 год.",
+  },
+  {
+    key: "honduras:julio_escoto",
+    originalSha256: "fdd60df6e5903a9c54ddc712849c8597f456534ba380b24bd35f355afdc5e447",
+    reviewedTextRu: "Хулио Эското (род. 1944) — гондурасский романист, новеллист, эссеист и литературный критик. Среди его книг — «Los guerreros de Hibueras», «El árbol de los pañuelos» и «Rey del albor. Madrugada».",
+    evidence: [
+      ["Inter-American Development Bank", "https://publications.iadb.org/es/publicacion/16795/downtown-paraiso-reflexiones-sobre-identidad-en-centroamerica", "Межамериканский банк развития представляет Хулио Эското как гондурасского романиста 1944 года рождения и приводит его авторскую биографию и награды."],
+      ["Editorial Universitaria UNAH", "https://editorial.unah.edu.hn/dmsdocument/15476-altoparlante-n3-octubre-2023", "Университетское издательство независимо подтверждает деятельность Эското как романиста, новеллиста, эссеиста и критика и перечисляет названные книги."],
+    ],
+    decision: "corrected",
+    notes: "Расплывчатая характеристика заменена точными жанровыми ролями и библиографией. Карточечные произведения «Герои и могилы» и «Современные романы» неверны; институциональные источники этого набора подтверждают год рождения, но не его точный день.",
+  },
+  {
+    key: "honduras:ramon_amaya_amador",
+    originalSha256: "5631cc877723952438f019b19da9b709ea120534c17b8cbda4f38287a63d00c3",
+    reviewedTextRu: "Рамон Амайя Амадор (1916–1966) — гондурасский романист, рассказчик и журналист. В «Prisión verde» и других произведениях он писал об эксплуатации рабочих, социальном неравенстве и жизни обездоленных.",
+    evidence: [
+      ["Universidad Nacional Autónoma de Honduras", "https://cac.unah.edu.hn/gavia/exposiciones/permanentes/rostros-literarios-de-honduras/", "Национальный университет Гондураса подтверждает годы жизни Амайи Амадора, его деятельность романиста, рассказчика и журналиста, социальные темы и роман Prisión verde."],
+      ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=12120190", "Национальная библиотека Франции независимо фиксирует authority-запись Рамона Амайи Амадора с годами жизни 1916–1966 и библиографию, включая Prisión verde и Cipotes."],
+      ["Secretaría de las Culturas, las Artes y los Patrimonios de Honduras", "https://secapph.gob.hn/wp-content/uploads/2025/07/RESENA-LITERARIA-CLUB-DE-LECTURA.pdf", "Министерский литературный материал подтверждает, что Prisión verde посвящён эксплуатации рабочих банановых плантаций и социальному неравенству."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена профессиональными ролями, романом и его тематикой. Произведения «Господин Президент» и «Великая банановая компания» не соответствуют подтверждённой библиографии; источники расходятся в точном дне рождения.",
+  },
+  {
+    key: "honduras:roberto_sosa",
+    originalSha256: "576536849b47bce67e79ef3b9828007056a4d8cfa145d1a6e4b15ab81b20d20c",
+    reviewedTextRu: "Роберто Соса (1930–2011) — гондурасский поэт, редактор литературного журнала и преподаватель литературы.",
+    evidence: [
+      ["Poetry Foundation", "https://www.poetryfoundation.org/people/roberto-sosa", "Литературная организация подтверждает годы жизни Сосы, его поэтическую деятельность, редакторскую работу в журнале Presente и преподавание литературы."],
+      ["Northwestern University Press", "https://nupress.northwestern.edu/9781880684238/the-common-grief/", "Университетское издательство независимо подтверждает точные даты жизни и профессиональные роли Роберто Сосы."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив и широкая тематическая оценка заменены годами жизни и тремя документированными профессиональными ролями.",
+  },
+  {
+    key: "hong_kong:xi_xi",
+    originalSha256: "e2e8127492956ca071005e89e1213b133d3f5163476d9f86078cd19c7b106440",
+    reviewedTextRu: "Си Си (1937–2022; настоящее имя Чжан Янь) — гонконгская писательница и поэтесса.",
+    evidence: [
+      ["Chinese University of Hong Kong Library", "https://hklit.lib.cuhk.edu.hk/writers_xixi_about/", "Университетская библиотека подтверждает псевдоним Си Си, настоящее имя Чжан Янь, дату рождения 7 октября 1937 года и литературную деятельность."],
+      ["Education Bureau of Hong Kong", "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/J10.pdf", "Официальный образовательный материал независимо подтверждает годы жизни 1937–2022, гонконгскую идентичность и писательскую и поэтическую деятельность Си Си."],
+      ["Hong Kong Government", "https://www.news.gov.hk/chi/2022/12/20221218/20221218_125914_979.html", "Официальное сообщение правительства Гонконга подтверждает личность писательницы и её смерть в 2022 году."],
+    ],
+    decision: "corrected",
+    notes: "Исправлены русская форма имени, годы жизни и настоящее имя; оценочная формула заменена точными литературными ролями.",
+  },
+  {
+    key: "hungary:antal_szerb",
+    originalSha256: "fa9dcfb9d5060ef145a26422d11cf8e556af8421aa7ffcac3206f25d90b06318",
+    reviewedTextRu: "Венгерский писатель и историк литературы.",
+    evidence: [
+      ["Petőfi Literary Museum", "https://opac-nevter.pim.hu/record/-/record/PIM71500/solr", "Национальный литературный музей Венгрии подтверждает личность и деятельность Антала Серба как писателя и историка литературы."],
+      ["National Széchényi Library", "https://mek.oszk.hu/00000/00017/html/f20.htm", "Национальная библиотека Венгрии независимо документирует литературную и литературоведческую деятельность Антала Серба."],
+    ],
+    decision: "unchanged",
+    notes: "Оба конкретных утверждения исходного краткого текста подтверждены независимыми национальными институциями; текст сохранён дословно.",
+  },
+  {
+    key: "hungary:endre_ady",
+    originalSha256: "49d519d129e177efe5922273708d4a1367c4b170033b3288a9ca8e71d2fe778a",
+    reviewedTextRu: "Эндре Ади (1877–1919) — венгерский поэт, прозаик и журналист, автор сборников «Новые стихи» и «Кровь и золото».",
+    evidence: [
+      ["Petőfi Literary Museum", "https://archivum.pim.hu/pim.hu/2024/pim.hu/en/node/2193387.html", "Национальный литературный музей подтверждает годы жизни, венгерскую литературную и журналистскую деятельность и библиографию Эндре Ади."],
+      ["National Széchényi Library", "https://mek.oszk.hu/00500/00588/fulszoveg.html", "Национальная библиотека Венгрии независимо подтверждает поэтические и прозаические работы Ади и сборник «Новые стихи»."],
+      ["Hungarian Electronic Library", "https://mek.oszk.hu/02200/02228/html/05/48.html", "Национальная электронная библиотека документирует биографию Ади и сборник «Кровь и золото»."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная характеристика заменена годами жизни, профессиональными ролями и двумя конкретными поэтическими сборниками.",
+  },
+  {
+    key: "hungary:imre_kertesz",
+    originalSha256: "50a51903856a008f70bc1d2a4be341ab21c95b969ad8b543844614e8938cab0d",
+    reviewedTextRu: "Венгерский писатель, лауреат Нобелевской премии по литературе 2002 года.",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/2002/press-release/", "Официальное сообщение Нобелевской премии подтверждает венгерскую писательскую деятельность Имре Кертеса и награду 2002 года."],
+      ["Petőfi Literary Museum", "https://pim.hu/en/node/3343/s/biography", "Национальный литературный музей Венгрии независимо подтверждает биографию, писательскую деятельность и Нобелевскую премию Кертеса."],
+    ],
+    decision: "unchanged",
+    notes: "Все утверждения исходного краткого текста подтверждены двумя независимыми институциональными источниками; текст сохранён дословно. Nobel overlap перепроверен claim-by-claim.",
+  },
+  {
+    key: "hungary:imre_madach",
+    originalSha256: "1e9f4a2d88907a5abb1e19c7fe7f705e5efc106e31c3590dc44316dfe88c0699",
+    reviewedTextRu: "Имре Мадач (1823–1864) — венгерский драматург и поэт, автор драматической поэмы «Трагедия человека».",
+    evidence: [
+      ["Petőfi Literary Museum", "https://archivum.pim.hu/pim.hu/2024/pim.hu/hu/dia/dia-tagjai/madach-imre.html", "Национальный литературный музей подтверждает годы жизни, драматургическую и поэтическую деятельность Мадача и авторство «Трагедии человека»."],
+      ["National Széchényi Library", "https://epa.oszk.hu/02000/02055/00015/pdf/EPA02055_nemzeti_evforduloink_2023.pdf", "Национальная библиотека Венгрии независимо подтверждает рождение Имре Мадача 20 января 1823 года, его биографию и главное произведение."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена точными ролями и главным произведением. BirthDate рекомендуется исправить на 1823-01-20; shared country files не изменялись.",
+  },
+  {
+    key: "hungary:laszlo_krasznahorkai",
+    originalSha256: "cdae6e6da8edf269bada80dd42b4653a27b434c129de79b1c9adbde6f02df0fa",
+    reviewedTextRu: "Ласло Краснахоркаи (род. 1954) — венгерский прозаик, чьи произведения отличаются длинными синтаксическими периодами и обращением к мотивам распада и апокалипсиса. В 2025 году он получил Нобелевскую премию по литературе; формулировка Нобелевского комитета отмечает его визионерское творчество, утверждающее силу искусства перед лицом апокалиптического ужаса.",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/2025/krasznahorkai/facts/", "Официальная страница Нобелевской премии подтверждает биографию Краснахоркаи, награду 2025 года и цитируемую формулировку комитета."],
+      ["Petőfi Literary Museum", "https://pim.hu/en/node/3821/s/biography", "Национальный литературный музей Венгрии независимо подтверждает год рождения, прозаическую деятельность, библиографию и особенности письма Краснахоркаи."],
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/laszlo-krasznahorkai", "Официальный архив Букеровской премии подтверждает биографию, стиль и тематический круг произведений Краснахоркаи."],
+    ],
+    decision: "corrected",
+    notes: "Широкая оценка заменена документированными особенностями стиля и тематики и актуализирована подтверждённой Нобелевской премией 2025 года. Nobel overlap перепроверен claim-by-claim.",
+  },
+  {
+    key: "hungary:miklos_radnoti",
+    originalSha256: "49d519d129e177efe5922273708d4a1367c4b170033b3288a9ca8e71d2fe778a",
+    reviewedTextRu: "Миклош Радноти (1909–1944) — венгерский поэт и переводчик. В 1944 году его отправили на принудительные работы; он был убит во время эвакуационного марша, а записную книжку с последними стихами нашли при эксгумации.",
+    evidence: [
+      ["Poetry Foundation", "https://www.poetryfoundation.org/poets/miklos-radnoti", "Литературная организация подтверждает годы жизни, поэтическую и переводческую деятельность Радноти, принудительные работы, гибель и обнаружение записной книжки."],
+      ["Petőfi Literary Museum", "https://opac-nevter.pim.hu/record/-/record/PIM68392", "Национальный литературный музей Венгрии независимо фиксирует личность, годы жизни и литературные роли Радноти."],
+      ["National Széchényi Library", "https://mek.oszk.hu/02200/02228/html/06/273.html", "Национальная библиотека Венгрии документирует биографию Радноти, обстоятельства последних месяцев жизни и судьбу его последних стихов."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена точными литературными ролями и подтверждёнными обстоятельствами создания и обнаружения последних стихов.",
+  },
+  {
+    key: "hungary:mor_jokai",
+    originalSha256: "2001a2ff6a866bc3b006d8a9eb17a5a17199990e37f409c5b1f37ac83e1a87ba",
+    reviewedTextRu: "Мор Йокаи (1825–1904) — венгерский романист, журналист и редактор, представитель романтической прозы; среди его произведений — роман «Сыновья человека с каменным сердцем».",
+    evidence: [
+      ["Petőfi Literary Museum", "https://archivum.pim.hu/pim.hu/2024/pim.hu/en/node/2193390.html", "Национальный литературный музей подтверждает годы жизни, писательскую, журналистскую и редакторскую деятельность Йокаи и его место в венгерской романтической прозе."],
+      ["National Széchényi Library", "https://mek.oszk.hu/05500/05585/html/index.htm", "Национальная библиотека Венгрии независимо подтверждает авторство Йокаи и библиографические сведения о романе «Сыновья человека с каменным сердцем»."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён годами жизни, профессиональными ролями, литературным направлением и конкретным романом.",
+  },
+  {
+    key: "hungary:sandor_petofi",
+    originalSha256: "dea5a139d44f406041292b67e4aff62617e9784ef138406f320861b13856b12d",
+    reviewedTextRu: "Шандор Петефи (1823–1849; настоящее имя Шандор Петрович) — венгерский поэт и журналист, участник революции и войны за независимость 1848–1849 годов; среди его произведений — поэма «Апостол».",
+    evidence: [
+      ["Petőfi Literary Museum", "https://archivum.pim.hu/pim.hu/2024/pim.hu/hu/dia/dia-tagjai/petofi-sandor.html", "Национальный литературный музей подтверждает годы жизни, настоящее имя, поэтическую и журналистскую деятельность Петефи и его участие в революции."],
+      ["National Széchényi Library", "https://mek.oszk.hu/02200/02228/html/03/467.html", "Национальная библиотека Венгрии независимо документирует биографию Петефи, события 1848–1849 годов и его произведения."],
+      ["Hungarian Electronic Library", "https://mek.oszk.hu/02100/02139/html/sz20/231.html", "Национальная электронная библиотека подтверждает библиографические сведения о поэме «Апостол»."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена точными биографическими и профессиональными сведениями, исторической ролью и конкретным произведением.",
+  },
+  {
+    key: "hungary:zsigmond_moricz",
+    originalSha256: "2928e9783d2dbdb5c83bee5d971c63ef0b8e92c9d6f44b34e7f4533cee445279",
+    reviewedTextRu: "Жигмонд Мориц (1879–1942) — венгерский писатель, журналист и редактор. Его литературный успех начался с рассказа «Семь крейцеров»; позднее он редактировал журналы Nyugat и Kelet Népe.",
+    evidence: [
+      ["National Heritage Institute of Hungary", "https://www.nekb.gov.hu/nemzeti-sirkert/budapest/fiumei-uti-sirkert/moricz-zsigmond", "Государственный институт национального наследия подтверждает годы жизни, писательскую и журналистскую деятельность Морица и основные этапы его карьеры."],
+      ["Digital Literary Academy", "https://dia.hu/en/node/2193607/s/biography", "Национальная цифровая литературная академия независимо подтверждает биографию Морица, успех рассказа «Семь крейцеров» и редакторскую работу в журналах Nyugat и Kelet Népe."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён годами жизни, профессиональными ролями и документированными этапами литературной и редакторской карьеры.",
+  },
+  {
+    key: "iceland:arnaldur_indridason",
+    originalSha256: "76f0fd09fbcc442d49cdbfdc3e6ad7703d8b5172ef09033f2c5785c3c7c8e387",
+    reviewedTextRu: "Арнальдур Индридасон (род. 1961) — исландский писатель, автор детективных романов. Его цикл об инспекторе Эрлендуре начался романом «Сыны праха» в 1997 году.",
+    evidence: [
+      ["Icelandic Literature Center", "https://www.islit.is/en/promotion-and-translations/icelandic-literature/interviews-with-icelandic-authors/nr/3175", "Национальный литературный центр Исландии подтверждает год рождения, детективную прозу Индридасона и начало цикла об Эрлендуре романом 1997 года."],
+      ["Treccani", "https://www.treccani.it/enciclopedia/arnaldur-indridason/", "Национальная энциклопедия Италии независимо подтверждает биографию Индридасона, жанр его романов и библиографию цикла об Эрлендуре."],
+    ],
+    decision: "corrected",
+    notes: "Общая известность заменена годом рождения, жанром и точным началом центрального детективного цикла.",
+  },
+  {
+    key: "iceland:grimur_thomsen",
+    originalSha256: "856bee4d819878da195a61d8c2eb60e6580e807b1967737f8b50538b1b2635a7",
+    reviewedTextRu: "Гримур Томсен (1820–1896) — исландский поэт, переводчик и автор работ о литературе. Он служил в датском министерстве иностранных дел, а после возвращения в Исландию был депутатом альтинга.",
+    evidence: [
+      ["Alþingi", "https://www.althingi.is/altext/cv/is/?nfaerslunr=171", "Официальная биографическая база парламента Исландии подтверждает годы жизни Томсена, дипломатическую службу и депутатскую деятельность в альтинге."],
+      ["National and University Library of Iceland", "https://lbsrafhladan20.landsbokasafn.is/bitstream/handle/10802/13257/Frimerki_islenska_lydveldisins_bok_1_vefutgafa_laest_jan_2018.pdf?sequence=2", "Национальная библиотека Исландии независимо подтверждает поэтическую, переводческую и литературоведческую деятельность Томсена и его государственную службу."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена годами жизни, литературными ролями и подтверждённой дипломатической и парламентской службой.",
+  },
+  {
+    key: "iceland:gudmundur_kamban",
+    originalSha256: "e07ba2861306d81f2aabad648e931d21dd5b6c173ea90bb13f900af9c6ca547a",
+    reviewedTextRu: "Гвюдмюндюр Камбан (1888–1945) — исландский драматург и прозаик. Он писал на исландском и датском языках; среди его произведений — пьеса «Хадда Падда» и исторический роман «Скаульхольт».",
+    evidence: [
+      ["Icelandic Theatre Museum", "https://leikminjasafn.is/news/25/7/Gu%C3%B0mundur-Kamban/d%2CNews_events", "Национальный театральный музей Исландии подтверждает годы жизни, драматургическую и прозаическую деятельность Камбана, языки и названные произведения."],
+      ["Store norske leksikon", "https://snl.no/Gu%C3%B0mundur_Kamban", "Норвежская национальная энциклопедия независимо подтверждает биографию Камбана, его работу на исландском и датском и библиографию."],
+    ],
+    decision: "corrected",
+    notes: "Общая характеристика заменена годами жизни, жанровыми ролями, языками и двумя конкретными произведениями.",
+  },
+  {
+    key: "iceland:gunnar_gunnarsson",
+    originalSha256: "09db5904232d3119bf9855c9b59796fa3e133e0616ad0808c99df6c47a6608bb",
+    reviewedTextRu: "Гуннар Гуннарссон (1889–1975) — исландский писатель, значительную часть произведений создававший на датском языке. Среди его книг — семейная сага «История рода Боргов» и повесть «Адвент».",
+    evidence: [
+      ["Icelandic Literature Center", "https://islit.is/hofundar/gunnar-gunnarsson/", "Национальный литературный центр Исландии подтверждает годы жизни, писательскую деятельность Гуннарссона, датский язык значительной части корпуса и названные книги."],
+      ["Gunnarsstofnun", "https://www.skriduklaustur.is/is/skaldid/um-skaldid", "Официальный институт наследия Гуннара Гуннарссона независимо подтверждает его биографию, языковой выбор и библиографию."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён годами жизни, проверяемой языковой характеристикой и двумя произведениями разных жанров.",
+  },
+  {
+    key: "iceland:halldor_laxness",
+    originalSha256: "5630a262568683bb81397453ac36d8b51b48b12dccf4f94d6f0b16224298f5c4",
+    reviewedTextRu: "Халлдор Лакснесс (1902–1998) — исландский писатель, автор романов, рассказов, эссе, пьес и стихотворений. В 1955 году он получил Нобелевскую премию по литературе.",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/1955/laxness/facts/", "Официальная страница Нобелевской премии подтверждает годы жизни, исландскую писательскую деятельность, многожанровый корпус и награду 1955 года."],
+      ["Gljúfrasteinn — Laxness Museum", "https://www.gljufrasteinn.is/en/halldor_laxness_en/", "Государственный дом-музей Лакснесса независимо подтверждает его биографию, литературные жанры и Нобелевскую премию."],
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена годами жизни, перечнем документированных жанров и Нобелевской премией 1955 года. Nobel overlap перепроверен claim-by-claim.",
+  },
+  {
+    key: "iceland:jon_arnason",
+    originalSha256: "1aa576fde2742c8c94ef6ca60a44716407d4162c172bf7116cd2a4f1bbdc7100",
+    reviewedTextRu: "Йоун Арнасон (1819–1888) — исландский библиотекарь и собиратель фольклора. Он подготовил собрание «Исландские народные сказания и сказки», изданное в 1862–1864 годах.",
+    evidence: [
+      ["University of Iceland", "https://www.english.hi.is/research/nation/legends/grimm-and-jon-arnason", "Университет Исландии подтверждает годы жизни, библиотечную и фольклористическую деятельность Арнасона и издание его собрания в 1862–1864 годах."],
+      ["Árni Magnússon Institute", "https://www.arnastofnun.is/is/utgafa-og-gagnasofn/pistlar/spassiukrot-i-handritum-jons-arnasonar", "Национальный институт исландских исследований независимо документирует рукописи Йоуна Арнасона, его собирательскую работу и фольклорное собрание."],
+    ],
+    decision: "corrected",
+    notes: "Общее определение заменено годами жизни, точными профессиональными ролями и названием и датами главного фольклорного собрания.",
+  },
+  {
+    key: "iceland:snorri_sturluson",
+    originalSha256: "9dc8ff59f9cddf69c84bd4827bc2e47b2374679b325704a6d4111dbfd0a89f54",
+    reviewedTextRu: "Снорри Стурлусон (1179–1241) — исландский поэт, историк и политический деятель. Его авторство «Младшей Эдды» подтверждается рукописной традицией; «Круг земной» традиционно связывают с его именем.",
+    evidence: [
+      ["Snorrastofa", "https://www.snorrastofa.is/en/snorri-sturluson", "Официальный научно-культурный центр наследия Снорри подтверждает годы жизни, литературные, исторические и политические роли и традиционную атрибуцию его трудов."],
+      ["Árni Magnússon Institute", "https://www.arnastofnun.is/is/hinn-norraeni-godsagnaheimur", "Национальный институт рукописей независимо подтверждает связь Снорри с Младшей Эддой на основании рукописной традиции и осторожную атрибуцию других текстов."],
+    ],
+    decision: "corrected",
+    notes: "Категоричные атрибуции заменены источниковедчески осторожной формулировкой: авторство Младшей Эдды опирается на рукописную традицию, а Heimskringla традиционно связывается со Снорри.",
+  },
+  {
+    key: "iceland:steinn_steinarr",
+    originalSha256: "d27645fa2bfca47f8409e8f197bbe600ef3b2efaed834477353a670a38b9a638",
+    reviewedTextRu: "Стейнн Стейннар (1908–1958) — исландский поэт и один из участников становления модернизма в исландской поэзии. Его цикл «Время и вода» вышел в 1948 году.",
+    evidence: [
+      ["University of Iceland — Ritið", "https://ritid.hi.is/index.php/ritid/article/view/220", "Рецензируемый журнал Университета Исландии подтверждает годы жизни Стейннара, его роль в развитии исландского модернизма и значение цикла «Время и вода»."],
+      ["Árni Magnússon Institute", "https://arnastofnun.is/sites/default/files/2023-01/Iceland%20and%20Icelanders.pdf", "Национальный институт исландских исследований независимо подтверждает биографию Стейннара, модернистский контекст и публикацию «Времени и воды» в 1948 году."],
+    ],
+    decision: "corrected",
+    notes: "Суперлатив заменён нейтральной ролью в становлении модернизма и точными сведениями о центральном поэтическом цикле.",
+  },
+  {
+    key: "india:amit_chaudhuri",
+    originalSha256: "81d6eb6ad5b67e15e54998cd557f73f33a4bbe2507d74d235c3c26e49535e363",
+    reviewedTextRu: "Амит Чаудхури (род. 1962) — индийский писатель, поэт, эссеист, литературный критик и музыкант. Он преподаёт литературное творчество в Университете Ашока и руководит Центром творческого и критического письма.",
+    evidence: [
+      ["Ashoka University", "https://www.ashoka.edu.in/profile/amit-chaudhuri/", "Университетский профиль подтверждает год рождения, индийскую писательскую, поэтическую, эссеистическую, критическую и музыкальную деятельность Чаудхури, преподавание и руководство центром."],
+      ["Sahitya Akademi", "https://sahitya-akademi.gov.in/library/meettheauthor/amit_chaudhuri.pdf", "Национальная литературная академия Индии независимо подтверждает биографию, профессиональные роли и литературную деятельность Амита Чаудхури."],
+    ],
+    decision: "corrected",
+    notes: "Общая оценка заменена подтверждёнными многопрофильными ролями и актуальными академическими должностями.",
+  },
+] satisfies readonly ReviewSeed[];
+
+function finalizeReviewRecord(seed: ReviewSeed): WriterBiographyFactReviewRecord {
+  const verdict: WriterBiographyClaimVerdict =
+    seed.decision === "held"
+      ? "not-established"
+      : seed.decision === "unchanged"
+        ? "supported"
+        : "corrected";
+
+  return {
+    key: seed.key,
+    originalSha256: seed.originalSha256,
+    reviewedTextRu: seed.reviewedTextRu,
+    applicableTextRu: seed.decision === "held" ? null : seed.reviewedTextRu,
+    claims: [{
+      textRu: seed.reviewedTextRu,
+      verdict,
+      evidence: seed.evidence.map(([provider, url, findingRu]) => ({
+        provider,
+        url,
+        checkedAt,
+        findingRu,
+      })),
+    }],
+    reviewer,
+    decision: seed.decision,
+    notes: seed.notes,
+  };
+}
+
+export const writerBiographyFactReviewBatch31: readonly WriterBiographyFactReviewRecord[] =
+  seeds.map(finalizeReviewRecord);

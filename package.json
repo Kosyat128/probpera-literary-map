@@ -63,6 +63,7 @@
     "writers:biographies:facts:qa": "node scripts/audit-writer-biography-facts.mjs && vitest run scripts/lib/writer-biography-fact-qa.test.mjs scripts/lib/wikidata-writer-facts.test.mjs src/data/countries/writerFactCorrections.test.ts",
     "writers:biographies:reviews:build": "node scripts/build-writer-biography-fact-review-overlay.mjs --write",
     "writers:biographies:reviews:check": "node scripts/build-writer-biography-fact-review-overlay.mjs --check && vitest run src/data/countries/writerBiographyFactReviews.test.ts",
+    "writers:biographies:reviews:report": "node --experimental-strip-types scripts/generate-writer-biography-fact-review-report.ts",
     "writers:wikidata:facts:refresh": "node scripts/refresh-wikidata-writer-facts.mjs --write",
     "writers:wikidata:facts:check": "node scripts/refresh-wikidata-writer-facts.mjs --check && vitest run scripts/lib/wikidata-writer-facts.test.mjs",
     "writers:identities:audit": "node scripts/audit-curated-writer-identities.mjs",
