@@ -1,0 +1,534 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH32_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 32";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH32_REVIEWER;
+const checkedAt = "2026-08-11";
+
+type EvidenceSeed = readonly [provider: string, url: string, findingRu: string];
+
+interface ReviewSeed {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly evidence: readonly EvidenceSeed[];
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const seeds = [
+  {
+    key: "india:amitav_ghosh",
+    originalSha256: "6787247fc0256631e3982562163bcaaa3f7a6c714f82a887640f8249d2baf04d",
+    reviewedTextRu: "Амитав Гош (род. 1956) — индийский писатель и эссеист, автор романов «Стеклянный дворец», «Маковое море» и Ибисской трилогии. В 2018 году он получил премию Джнянпитх.",
+    evidence: [
+      ["Bharatiya Jnanpith", "https://www.jnanpith.net/media_image/announcement/54th%20Jnanpith%20Award%20goes%20to%20Amitav%20Ghosh.pdf", "Родился в Калькутте в 1956 году; англоязычный индийский прозаик; получил 54-ю премию Джнянпитх за 2018 год; перечислены The Glass Palace, Sea of Poppies и Ибисская трилогия."],
+      ["Penguin Random House India", "https://www.penguin.co.in/book_author/amitav-ghosh/", "Подтверждает Калькутту и 1956 год, основные книги, Sea of Poppies как начало Ибисской трилогии и премию Джнянпитх 2018 года."],
+    ],
+    decision: "corrected",
+    notes: "Точный день рождения выбранными источниками не подтверждён. «Остров Павлина» не удалось сопоставить с библиографией автора; не заменять догадкой.",
+  },
+  {
+    key: "india:anil_menon",
+    originalSha256: "c5b9efa2acf8929ad5ff8d04397a923be4e567c3464fa0512090a0eb3995286f",
+    reviewedTextRu: "Анил Менон — индийский англоязычный писатель, работающий с научной и спекулятивной фантастикой. Он написал романы «The Beast with Nine Billion Feet» и «Half of What I Say» и вместе с Ванданой Сингх составил антологию «Breaking the Bow».",
+    evidence: [
+      ["Simon & Schuster", "https://www.simonandschuster.com/authors/Anil-Menon/186511004", "Подтверждает рассказы и романы The Beast with Nine Billion Feet и Half of What I Say, а также совместное редактирование Breaking the Bow с Ванданой Сингх."],
+      ["Официальный сайт Анила Менона", "https://anilmenon.com/about/", "Подтверждает оба романа, работу с короткой прозой и совместное редактирование антологии."],
+    ],
+    decision: "corrected",
+    notes: "Год 1970 и место рождения не подтверждены найденными authoritative-профилями.",
+  },
+  {
+    key: "india:anita_desai",
+    originalSha256: "ad49e0661027726271edd77ce73a9ae2dbc0ed6b02991db2af6d956ec25061f9",
+    reviewedTextRu: "Анита Десаи (род. 1937) — индийская писательница, автор романов «Огонь на горе», «Чистый свет дня» и «In Custody». За «Огонь на горе» она получила премию Академии Сахитья 1978 года; позднее преподавала литературное творчество в MIT.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/anita-desai", "Родилась в Массури; автор Clear Light of Day и In Custody; трижды входила в короткий список; professor emerita MIT."],
+      ["Sahitya Akademi", "https://www.sahitya-akademi.gov.in/awards/akademi%20samman_suchi.jsp", "В официальном перечне за 1978 год указаны Fire on the Mountain и Anita Desai."],
+      ["MIT Libraries", "https://digital-exhibits.libraries.mit.edu/s/south-asia-and-mit/page/Anita-Desai", "Подтверждает преподавательскую работу и статус emerita, книги Clear Light of Day и In Custody и награду за Fire on the Mountain."],
+    ],
+    decision: "corrected",
+    notes: "Точный день 24 июня выбранными источниками не подтверждён; «Хранительница урожая» не является установленным названием In Custody.",
+  },
+  {
+    key: "india:aravind_adiga",
+    originalSha256: "26f99be3ef0791d137af610f58d051d968c876f17dc8a16e8367675c2ad2bf3a",
+    reviewedTextRu: "Аравинд Адига (род. 23 октября 1974) — индийский писатель и бывший журналист. Его дебютный роман «Белый тигр» получил Букеровскую премию 2008 года; позднее он опубликовал «Между убийствами» и «Последнего человека в башне».",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/aravind-adiga", "Подтверждает дату рождения 23 октября 1974 года, дебютный роман The White Tiger и победу в 2008 году, последующие романы и журналистскую работу."],
+      ["Penguin Random House", "https://www.penguinrandomhouse.com/authors/119893/aravind-adiga/", "Перечисляет The White Tiger, Last Man in Tower и Between the Assassinations; сообщает о работе корреспондентом Time и рождении в Индии."],
+    ],
+    decision: "corrected",
+    notes: "Ченнаи как место рождения этими профилями не подтверждён; Booker сообщает только, что автор вырос в Мангалуру.",
+  },
+  {
+    key: "india:arundhati_roy",
+    originalSha256: "2e781028c8ad81c32c417882c21a4e76dc38c83a7f006922a13751660b39d16e",
+    reviewedTextRu: "Арундати Рой — индийская писательница и эссеистка. Её дебютный роман «Бог мелочей» получил Букеровскую премию 1997 года; второй роман, «Министерство наивысшего счастья», был опубликован в 2017 году.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/books/the-god-of-small-things", "«Бог мелочей» указан как дебютный роман Рой и победитель Букеровской премии 1997 года."],
+      ["Penguin UK", "https://www.penguin.co.uk/books/305323/the-ministry-of-utmost-happiness-by-roy-arundhati/9780241980767", "Подтверждает авторство обоих романов, Booker 1997 и публикацию The Ministry of Utmost Happiness в 2017 году."],
+    ],
+    decision: "corrected",
+    notes: "Точная дата и место рождения не подтверждены этим набором; устаревшая страница Library of Congress даёт конфликтующий 1959 год, поэтому автоматическое изменение недопустимо.",
+  },
+  {
+    key: "india:bankim_chandra_chatterjee",
+    originalSha256: "fd27e59e4bd93f648253570b53914ec40483324aefa6fde18308b9d31aafd3b8",
+    reviewedTextRu: "Банким Чандра Чаттопадхьяй (1838–1894) — бенгальский писатель, чьи романы сыграли важную роль в становлении современной прозы на бенгальском языке. Среди его книг — «Капалакундала», «Анандаматх» и «Деви Чаудхурани».",
+    evidence: [
+      ["Banglapedia", "https://en.banglapedia.org/index.php?title=Novel", "Подтверждает годы 1838–1894, роль в формировании современного бенгальского романа и книги Kapalkundala, Anandamath и Devi Chaudhurani."],
+      ["Oxford Academic / Oxford Reference", "https://academic.oup.com/reference/62357/reference-article-abstract/554514050", "Bankim Chandra Chattopadhyaya (1838–1894), развитие современной бенгальской прозы и роман Anandamath 1882 года."],
+      ["Cambridge University Press", "https://www.cambridge.org/core/journals/victorian-literature-and-culture/article/abs/troubling-conjugal-loyalties-the-first-indian-novel-in-english-and-the-transimperial-framework-of-sensation/342EC9A48586EC6FEA382810DB56FD9E", "Подтверждает годы 1838–1894, корпус из четырнадцати романов на бенгальском и Rajmohan’s Wife."],
+    ],
+    decision: "corrected",
+    notes: "Точные дни и места жизни выбранными источниками не подтверждены.",
+  },
+  {
+    key: "india:bhartrihari",
+    originalSha256: "f1c122100e1043fb9ed73808c7b6d2bce2458a8e47c29330934a59f797219ae0",
+    reviewedTextRu: "Имя Бхартрихари связывают с санскритским циклом «Шатакатрая», объединяющим стихотворения о любви, житейской мудрости и отречении. Вопрос о том, был ли этот поэт тем же человеком, что философ и грамматик Бхартрихари V века, остаётся дискуссионным.",
+    evidence: [
+      ["Internet Encyclopedia of Philosophy / University of Tennessee at Martin", "https://iep.utm.edu/bhartrihari/", "Философ и грамматик датируется приблизительно 450–510 годами; биография почти неизвестна; литературные тексты приписываются ему лишь частью исследователей; основное философское сочинение — Vākyapadīya."],
+      ["Presses universitaires de Strasbourg / OpenEdition", "https://books.openedition.org/pus/40516", "Поэту приписывают три сотни стихов о любви, житейской мудрости и отречении; исследователи расходятся, был ли поэт тем же лицом, что грамматик."],
+    ],
+    decision: "corrected",
+    notes: "Текущая карточка сливает две спорно тождественные личности.",
+  },
+  {
+    key: "india:bhavabhuti",
+    originalSha256: "25cfc661fe6abe162c226363dc092f4bc56c636fc120fe4611a4439e764b47ac",
+    reviewedTextRu: "Бхавабхути — санскритский драматург, живший приблизительно в VIII веке. Сохранились три приписываемые ему пьесы: «Махавирачарита», «Малатимадхава» и «Уттарарамачарита».",
+    evidence: [
+      ["University of Toronto Libraries, Jackson Bibliography", "https://jacksonbibliography.library.utoronto.ca/author/details/bhavabhuti/22250", "Датировка приблизительно 700–800; поэт и учёный; сохранились три пьесы с указанными названиями."],
+      ["Library of Congress", "https://www.loc.gov/resource/gdc.00542322354/?st=list", "Authority-описание Bhavabhūti как автора, деятельность в VIII веке; Uttara Rama charita."],
+      ["Treccani", "https://www.treccani.it/enciclopedia/bhavabhuti_%28Enciclopedia-Italiana%29/", "Подтверждает VIII век и три пьесы."],
+    ],
+    decision: "corrected",
+    notes: "Точные даты рождения и смерти неизвестны; сравнение с Калидасой было оценочным.",
+  },
+  {
+    key: "india:chetan_bhagat",
+    originalSha256: "eb72ad82244dd04d75d374b5dbc2bdaade588229b6126f926f1960bf620cb601",
+    reviewedTextRu: "Четан Бхагат — индийский писатель, колумнист и сценарист, работающий на английском языке. Среди его романов — «Five Point Someone», «The 3 Mistakes of My Life» и «2 States».",
+    evidence: [
+      ["Официальный сайт Четана Бхагата", "https://www.chetanbhagat.com/about-2/", "Автор книг, колумнист и сценарист; приведены библиография и исходные названия романов."],
+      ["Indian Institute of Management Ahmedabad", "https://www.iima.ac.in/news/its-not-simple-be-simple-chetan-bhagat-iima-students", "Подтверждает, что Бхагат — писатель, колумнист и сценарист, а также выпускник IIMA."],
+    ],
+    decision: "corrected",
+    notes: "Точная дата рождения и Нью-Дели выбранными источниками не подтверждены; существующие русские названия выглядят буквальными и требуют библиографической проверки.",
+  },
+  {
+    key: "india:geetanjali_shree",
+    originalSha256: "74936481bcc2404f7ed278fcd54f67a763418ae2b7f8e47b05129d633cfd02f1",
+    reviewedTextRu: "Гитанджали Шри (род. 1957) — индийская писательница, создающая романы и рассказы на хинди. Её роман «Могила из песка» в переводе Дейзи Рокуэлл получил Международную Букеровскую премию 2022 года.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/geetanjali-shree", "Родилась в Майнпури в 1957 году; автор романов и рассказов; Tomb of Sand в переводе Дейзи Рокуэлл — победитель 2022 года."],
+      ["Tilted Axis Press", "https://www.tiltedaxispress.com/geetanjali-shree/", "Автор Ret Samadhi/Tomb of Sand, четырёх других романов и пяти сборников рассказов; International Booker 2022."],
+    ],
+    decision: "corrected",
+    notes: "«Манипури» — ошибочное место рождения; точный день 12 июня не подтверждён.",
+  },
+  {
+    key: "india:jaishankar_prasad",
+    originalSha256: "e3b6e99fb8aa0195cb34ada9be6c50dc8f575b5912e90a394917f2a3a055ed2d",
+    reviewedTextRu: "Джайшанкар Прасад (1889–1937) — индийский поэт, прозаик и драматург, писавший на хинди и связанный с направлением чхаявад. Среди его произведений — поэма «Камаяни» и пьесы «Скандгупта» и «Чандрагупта».",
+    evidence: [
+      ["Hindwi / Rekhta Foundation", "https://www.hindwi.org/poets/jaishankar-prasad/profile", "Профиль поэта, прозаика и драматурга; Варанаси; 30 января и 15 ноября 1937 года; перечисляет ключевые произведения. Страница содержит внутреннее расхождение 1889/1890 в годе рождения."],
+      ["Government of India, Department of Official Language", "https://rajbhasha.gov.in/sites/default/files/jan-jaishankar.pdf", "Приводит 30 января 1890 — 15 ноября 1937, деятельность в литературе на хинди и произведения «Камаяни» и «Чандрагупта»."],
+      ["Правительство Махараштры, Vishwakosh", "https://vishwakosh.marathi.gov.in/27354/", "Приводит 1889 — 15 ноября 1937; определяет Прасада как поэта чхаявада, драматурга, рассказчика и романиста."],
+    ],
+    decision: "corrected",
+    notes: "Год рождения расходится между 1889 и 1890 даже в институциональных источниках; дата смерти согласованно указывает на 15 ноября.",
+  },
+  {
+    key: "india:jeet_thayil",
+    originalSha256: "cafbe8a4be2e431d6616e4bbfcb80ab6d836173fe8294df99dd2f9a836da5804",
+    reviewedTextRu: "Джит Тхайил (род. 1959) — индийский поэт, прозаик и музыкант. Его первый роман «Наркополис» вошёл в короткий список Букеровской премии 2012 года и получил премию DSC за литературу Южной Азии.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/books/narcopolis", "Narcopolis — первый роман Тхайила и финалист Букеровской премии 2012 года; также указаны четыре поэтических сборника."],
+      ["Faber", "https://www.faber.co.uk/author/jeet-thayil/", "Родился в Керале в 1959 году; поэт, автор песен и гитарист; приведена библиография."],
+      ["Poetry Archive", "https://poetryarchive.org/poet/jeet-thayil/", "Керала, 1959; поэзия и романы; Narcopolis получил DSC Prize 2013 и вошёл в Booker shortlist."],
+    ],
+    decision: "corrected",
+    notes: "Точный день 13 октября не подтверждён; «Стихи» не является идентифицируемым библиографическим заглавием.",
+  },
+  {
+    key: "india:jhumpa_lahiri",
+    originalSha256: "87fc5b3604ddbdd27b9e99281c2b596ae2a52201a230ec3624b8ebbe8bde4d74",
+    reviewedTextRu: "Джумпа Лахири (род. 1967) — американская писательница индийского происхождения, родившаяся в Лондоне и выросшая в Род-Айленде. Её дебютный сборник «Толкователь болезней» получил Пулитцеровскую премию 2000 года; среди последующих книг — роман «Тёзка».",
+    evidence: [
+      ["The Pulitzer Prizes", "https://www.pulitzer.org/winners/jhumpa-lahiri", "Interpreter of Maladies получил премию; Лахири родилась в Лондоне в 1967 году, выросла в Род-Айленде, её родители родом из Индии; это дебютный сборник."],
+      ["Obama Presidential Library / National Archives", "https://obama.artifacts.archives.gov/people/21532/jhumpa-lahiri", "Американская писательница, родилась в Лондоне в 1967 году; Пулитцеровская премия 2000 года."],
+    ],
+    decision: "corrected",
+    notes: "Точный день 11 июля выбранными источниками не подтверждён.",
+  },
+  {
+    key: "india:kabir",
+    originalSha256: "5b0939fa8285d1bc06f4687f3b61a78b5682c5a5f58f8191212182d6d6bb74e6",
+    reviewedTextRu: "Кабир — североиндийский поэт-мистик XV века, связанный с традицией бхакти и критикой религиозных разграничений. Его стихи долго передавались устно, а часть приписываемых ему произведений вошла в «Ади Грантх».",
+    evidence: [
+      ["Poetry Foundation", "https://www.poetryfoundation.org/poets/kabir", "Биографические сведения скудны; 1440–1518 и рождение близ Бенареса представлены как традиция; стихи включены в Adi Granth."],
+      ["The Metropolitan Museum of Art, Heilbrunn Timeline", "https://82nd-and-fifth.metmuseum.org/toah/ht/08/ssa.html", "Кабир помещён среди североиндийских поэтов-святых бхакти; традиция критиковала кастовые и брахманические разграничения."],
+      ["Poetry Foundation, translator’s notes", "https://www.poetryfoundation.org/poetrymagazine/articles/145886/translator39s-notes-i-won39t-come-by-kabir", "Фактов мало, легенд много; XV век; устная передача и подвижная атрибуция корпуса."],
+    ],
+    decision: "corrected",
+    notes: "Даты 1440–1518 и места Варанаси/Магхар относятся к традиции, а не к надёжно документированной биографии.",
+  },
+  {
+    key: "india:kalidasa",
+    originalSha256: "e46f6c7066754c6c5a08fc272f00d819a3dd3d5e208b3385303efa4224291344",
+    reviewedTextRu: "Калидаса — классик санскритской поэзии и драмы, которому традиционно приписывают «Абхиджняна-Шакунталу», «Мегхадуту», «Кумарасамбхаву» и «Рагхувамшу». Достоверных сведений о его жизни мало, а датировка остаётся предметом споров; обычно его относят примерно к IV–V векам.",
+    evidence: [
+      ["Indira Gandhi National Centre for the Arts (IGNCA)", "https://ignca.gov.in/poetic-culture-of-kalidasa/", "IGNCA перечисляет семь традиционно признаваемых произведений Калидасы, включая Abhijnanashakuntala, Meghaduta, Kumarasambhava и Raghuvamsha."],
+      ["Karnataka Sanskrit University", "https://ksu.ac.in/assets/slides/kc.pdf", "Университетский материал относит Калидасу предположительно к IV–V векам и подчёркивает недостаток надёжных сведений о его жизни."],
+      ["Penguin Random House India", "https://www.penguin.co.in/the-river-of-evergreen-classics-is-revived/", "Издатель отмечает, что даты жизни Калидасы окончательно не установлены, и называет Sakuntala, Meghadutam и Rtusamharam."],
+    ],
+    decision: "corrected",
+    notes: "Текущие works поддержаны; birthDate «IV–V век», deathDate «V век» и места жизни создают ложное впечатление установленной биографии. Сохранить только приблизительный years и убрать субъективный суперлатив.",
+  },
+  {
+    key: "india:khushwant_singh",
+    originalSha256: "3306d40ca60b17a6298126a613f07ce30c2f6038829f954e45caf39741022ca3",
+    reviewedTextRu: "Хушвант Сингх — индийский писатель, журналист и историк, автор романа «Поезд в Пакистан» и двухтомной «Истории сикхов». Его публицистическая и литературная работа стала заметной частью англоязычной культуры Индии XX века.",
+    evidence: [
+      ["Rajya Sabha, Parliament of India", "https://cms.rajyasabha.nic.in/documents/Members/1628692669169.02_s.pdf", "Официальная парламентская справка фиксирует дату рождения 2 февраля 1915 года и литературно-журналистскую деятельность Сингха."],
+      ["Rajya Sabha, Parliament of India", "https://cms.rajyasabha.nic.in/UploadedFiles/Synopsis/SynopsisUpload/231/09062014.pdf", "Официальное сообщение подтверждает смерть 20 марта 2014 года и его роль писателя и журналиста."],
+      ["Penguin Random House India", "https://www.penguin.co.in/book_author/khushwant-singh/", "Профиль перечисляет Train to Pakistan и A History of the Sikhs и сообщает о Padma Vibhushan 2007 года."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, даты, места и works поддержаны. Padma Bhushan 1974 верна, но список наград неполон; отдельно можно отметить, что автор вернул эту награду в 1984 году.",
+  },
+  {
+    key: "india:kiran_desai",
+    originalSha256: "7d471986b3567ffdaa3baf5fdaf16a54c0a2614937be5bef2b1f915240a5398a",
+    reviewedTextRu: "Киран Десаи — родившаяся в Нью-Дели индийская писательница, автор романов «Hullabaloo in the Guava Orchard» и «Наследие потерь». За «Наследие потерь» она получила Букеровскую премию 2006 года.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/kiran-desai", "Официальный профиль подтверждает рождение в Нью-Дели, два романа и Букеровскую премию 2006 года."],
+      ["Penguin Random House", "https://www.penguinrandomhouse.com/authors/6912/kiran-desai/", "Издатель перечисляет Hullabaloo in the Guava Orchard, The Inheritance of Loss и The Loneliness of Sonia and Sunny; «Туристического города» в библиографии нет."],
+      ["Columbia Magazine, Columbia University", "https://www.magazine.columbia.edu/article/proud-inheritance", "Университетская публикация указывает 1971 год рождения и первые четырнадцать лет жизни преимущественно в Нью-Дели."],
+    ],
+    decision: "corrected",
+    notes: "Точная дата 1971-09-03 не подтверждена выбранными авторитетными профилями, поэтому допустима только точность до года. «Туристический город» — ошибочное название.",
+  },
+  {
+    key: "india:mirabai",
+    originalSha256: "9da6aeb9fd375f81d5608676ce0281b9fdd24ea84b729054c793f51d74089a0b",
+    reviewedTextRu: "Мирабаи — поэтесса-мистик традиции бхакти, чьи песни выражают преданность Кришне. Её биография известна главным образом по позднейшим преданиям, поэтому точные даты жизни и авторство отдельных бхаджанов остаются предметом научной осторожности.",
+    evidence: [
+      ["Poetry Foundation", "https://www.poetryfoundation.org/poets/mirabai", "Профиль характеризует Мирабаи как поэтессу-мистика и почитательницу Кришны и подчёркивает трудность проверки биографических сведений и атрибуции песен."],
+      ["UCLA South Asia Institute / MANAS", "https://southasia.ucla.edu/religions/gurus-saints/mirabai/", "Университетская справка отмечает разногласия о точных деталях жизни; рождение обычно относят примерно к 1498 году около Мерты."],
+    ],
+    decision: "corrected",
+    notes: "«Святыня» — лексическая ошибка; deathDate 1547 и deathPlace Дварка не должны подаваться как точно установленные. «Бхаджи» нужно исправить на бхаджаны с оговоркой об атрибуции.",
+  },
+  {
+    key: "india:mulk_raj_anand",
+    originalSha256: "7b627e00a23f8063d93e339473515fdca4e2c522517cf0d7dfeab0d6bf80fd61",
+    reviewedTextRu: "Мулк Радж Ананд — индийский англоязычный писатель, автор социальных романов «Неприкасаемый», «Кули» и «Деревня». Его проза обращена к кастовому неравенству, бедности и положению людей, исключённых из общественной жизни.",
+    evidence: [
+      ["South Asian Britain, The Open University", "https://southasianbritain.org/people/mulk-raj-anand/", "Академический профиль подтверждает даты 12 декабря 1905 — 28 сентября 2004, рождение в Пешаваре и смерть в Пуне."],
+      ["Sahitya Akademi", "https://sahitya-akademi.gov.in/library/fellowship_pdf/Mulk%20Raj%20Anand.pdf", "Материал национальной литературной академии подтверждает литературную деятельность Ананда и место романа Untouchable в его творчестве."],
+      ["Government of India, Padma Awards", "https://dashboard-padmaawards.gov.in/?Year=1967-1967", "Официальный реестр подтверждает Padma Bhushan 1967 года."],
+    ],
+    decision: "corrected",
+    notes: "Структурированные даты, места, works и award поддержаны. Исправляется только двусмысленное «англо-индийская литература» на «индийская литература на английском языке».",
+  },
+  {
+    key: "india:munshi_premchand",
+    originalSha256: "24a56735215960100648c5af0edf03e2327375d7d545ca45fb9f27d7208b8196",
+    reviewedTextRu: "Мунши Премчанд (Дханпат Рай Шривастав) — писатель на хинди и урду, чьи романы и рассказы обращены к жизни деревни, бедности, социальному неравенству и положению женщин. Среди его основных романов — «Годан», «Габан», «Нирмала» и «Севасадан».",
+    evidence: [
+      ["Press Information Bureau / New India Samachar, Government of India", "https://newindiasamachar.pib.gov.in/WriteReadData/Magazine/2024/Jul/M202407161.pdf", "Государственная публикация подтверждает рождение 31 июля 1880 года в Ламхи близ Варанаси, имя Дханпат Рай, смерть 8 октября 1936 года и основные романы."],
+      ["Rekhta Foundation", "https://www.rekhta.org/artists/premchand/profile", "Профиль подтверждает имя Dhanpat Rai Srivastava, даты жизни, работу на хинди и урду и основные произведения."],
+      ["IIT Delhi Library", "https://library.iitd.ac.in/pathFinder/Premchand202510.pdf", "Библиографический путеводитель подтверждает даты, Ламхи/Варанаси и романы Sevasadana, Rangabhumi, Gaban и Godan."],
+    ],
+    decision: "corrected",
+    notes: "«Базарная площадь» не является надёжным каноническим названием в этой записи; заменить на явно аттестованные романы. Места нормализовать исторически.",
+  },
+  {
+    key: "india:perumal_murugan",
+    originalSha256: "4e7c95b9b84a6777b1f3ef352de56b42e0869d7617d058c7bc65de4015671747",
+    reviewedTextRu: "Перумал Муруган — тамильский писатель, поэт и исследователь литературы, родившийся 15 октября 1966 года в сельской местности штата Тамилнад. Среди его известных романов — «One Part Woman», «Poonachi, or The Story of a Black Goat», «Pyre» и удостоенный премии JCB роман «Fire Bird».",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/perumal-murugan", "Официальный профиль указывает дату 15 октября 1966 года, рождение в сельском Тамилнаде, преподавание тамильской литературы и ключевые книги."],
+      ["Penguin Random House India", "https://www.penguin.co.in/book_author/perumal-murugan/", "Издатель подтверждает, что Муруган — тамильский автор и исследователь, и перечисляет его основные романы."],
+      ["JCB Literature Foundation", "https://www.jcbliteraturefoundation.org/", "Официальный сайт премии называет Fire Bird Перумала Муругана победителем 2023 года."],
+    ],
+    decision: "corrected",
+    notes: "Namakkal не подтверждён выбранными профилями, поэтому место следует расширить до Тамилнада. «Пылинка» не аттестована; JCB 2020 ошибочно, верно 2023.",
+  },
+  {
+    key: "india:r_k_narayan",
+    originalSha256: "76988aae0c454c439578643224624c1708471a9b5f30556367fba8cbfad56861",
+    reviewedTextRu: "Расипурам Кришнасвами Нараян — индийский англоязычный писатель, создавший цикл произведений о вымышленном городе Малгуди. К его основным книгам относятся «Свами и его друзья», «Дни Мальгуди» и «Гид»; за «Гида» он получил премию Сахитья Академи в 1960 году.",
+    evidence: [
+      ["INFLIBNET / UGC MOOCs", "https://ugcmoocs.inflibnet.ac.in/assets/uploads/1/94/2875/et/R200225111102023131.pdf", "Материал фиксирует даты 10 октября 1906 — 13 мая 2001, полное имя и рождение в Purasawalkam, Madras."],
+      ["Sahitya Akademi", "https://www.sahitya-akademi.gov.in/awards/akademi%20samman_suchi.jsp", "Официальный список английской секции: 1960 — The Guide (Novel) — R. K. Narayan."],
+      ["Penguin Random House India", "https://www.penguin.co.in/book_author/r-k-narayan/", "Издатель перечисляет Swami and Friends и Malgudi Days и подтверждает смерть в 2001 году."],
+    ],
+    decision: "corrected",
+    notes: "BirthPlace должен быть Madras, а не anachronistic Chennai. «Малгуди» — место действия, не название книги. Год Sahitya Akademi исправить 1958→1960.",
+  },
+  {
+    key: "india:rabindranath_tagore",
+    originalSha256: "d3124536eda282e7f6ec04c06f1d70d452e5231da64b1adfa55b96f835a6f5fd",
+    reviewedTextRu: "Индийский писатель, поэт, философ и общественный деятель. Первый представитель азиатской литературы, получивший Нобелевскую премию по литературе.",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/", "Официальная биография подтверждает годы 1861–1941, смерть 7 августа 1941 года, творческие роли и произведения Gitanjali, Gora и The Home and the World."],
+      ["Poetry Foundation", "https://www.poetryfoundation.org/poets/rabindranath-tagore", "Независимый литературный профиль подтверждает годы жизни, многожанровую работу и Нобелевскую премию 1913 года."],
+    ],
+    decision: "unchanged",
+    notes: "Идентичность, даты, места, works и Nobel 1913 поддержаны. Reviewed text лишь точнее формулирует «первый азиатский лауреат».",
+  },
+  {
+    key: "india:rohinton_mistry",
+    originalSha256: "df07f30fcceb78df990da4488ab7d06454975fbe0f35eb580bfb8559e2b86c04",
+    reviewedTextRu: "Рохинтон Мистри — канадский писатель индийского происхождения, родившийся в Бомбее в парсийской семье и переехавший в Канаду в 1975 году. Его романы «Such a Long Journey», «A Fine Balance» и «Family Matters» посвящены частной жизни людей на фоне общественных и политических перемен в Индии.",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/rohinton-mistry", "Профиль подтверждает рождение в Бомбее, переезд в Канаду в 1975 году и три романа Such a Long Journey, A Fine Balance и Family Matters."],
+      ["University of Toronto Alumni", "https://alumni.utoronto.ca/news/featured-alumni/rohinton-mistry", "Университетская справка подтверждает рождение в Бомбее в 1952 году, переезд в Канаду и те же три романа."],
+      ["Library of Congress", "https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/20/71/52/43/2020715243/2020715243.pdf", "Хранящаяся в Библиотеке Конгресса научная монография указывает точную дату рождения 3 июля 1952 года в Бомбее."],
+      ["Canada Council for the Arts", "https://canadacouncil.ca/-/media/Files/CCA/Funding/Prizes/Laureates/Prizes_Laureates_GovernorGeneralLiteraryAwards.pdf", "Официальный список фиксирует премию генерал-губернатора 1991 года за Such a Long Journey."],
+    ],
+    decision: "corrected",
+    notes: "Текущий title «Баланс» неполон; использовать каноническое A Fine Balance до проверки конкретного русского издания. Award можно уточнить годом и произведением.",
+  },
+  {
+    key: "india:ruskin_bond",
+    originalSha256: "3ecb9dcaaeefd8f7ac3dc5cb9f0d61c8a75812549001661a4b1d01e712823c3a",
+    reviewedTextRu: "Раскин Бонд — индийский англоязычный писатель, автор прозы для детей и взрослых, родившийся 19 мая 1934 года в Касаули. Среди его известных книг и рассказов — «The Room on the Roof», «The Blue Umbrella» и «The Night Train at Deoli».",
+    evidence: [
+      ["Penguin Random House India", "https://www.penguin.co.in/book_author/ruskin-bond/", "Профиль подтверждает рождение в Касаули в 1934 году, The Room on the Roof и награды Sahitya Akademi 1992, Padma Shri 1999 и Padma Bhushan 2014."],
+      ["DD News / Prasar Bharati", "https://www.newsonair.gov.in/bulletins-detail/aaj-savere-70/", "Государственный вещатель указывает дату рождения 19 мая 1934 года и место Касаули."],
+      ["NCERT", "https://ejournals.ncert.gov.in/index.php/tpt/article/view/564", "Публикация Национального совета по образованию характеризует Бонда как индийского писателя и подтверждает 1934 год рождения."],
+    ],
+    decision: "corrected",
+    notes: "Основные поля и награды поддержаны. «Ночные поезда» — неточное множественное название; заменить на The Night Train at Deoli.",
+  },
+  {
+    key: "india:salman_rushdie",
+    originalSha256: "200368b1a389e67ecd259c409389ffecb73cee0bc94b7657057500e20fdc40c9",
+    reviewedTextRu: "Салман Рушди — родившийся в Бомбее британский писатель и эссеист, чья проза соединяет историю, миф и элементы магического реализма. Роман «Дети полуночи» получил Букеровскую премию 1981 года; к его основным книгам также относятся «Сатанинские стихи», «Последний вздох мавра» и «Земля под её ногами».",
+    evidence: [
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/authors/salman-rushdie", "Официальный профиль указывает рождение 19 июня 1947 года в Бомбее, основные романы и победу «Детей полуночи» в 1981 году."],
+      ["Penguin Random House", "https://www.penguinrandomhouse.com/authors/26491/salman-rushdie/", "Издательский профиль подтверждает основные произведения и писательскую/эссеистическую деятельность Рушди."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, exact date/place, works и Booker 1981 поддержаны. Reviewed text только удаляет субъективное ранжирование.",
+  },
+  {
+    key: "india:sharat_chandra_chattopadhyay",
+    originalSha256: "d7138898605c93e29a181489207ca965acb1991615ce616e5be454259dd5d87b",
+    reviewedTextRu: "Сарат Чандра Чаттопадхай — бенгальский прозаик, чьи романы обращены к семейным отношениям, общественным ограничениям и положению женщин. К его основным произведениям относятся «Девдас», «Шриканта» и «Паринита».",
+    evidence: [
+      ["Banglapedia, Asiatic Society of Bangladesh", "https://en.banglapedia.org/index.php?title=Chattopadhyay%2C_Sharat_Chandra", "Энциклопедия подтверждает даты 15 сентября 1876 — 16 января 1938, Дебанандапур/Калькутту и произведения Devdas, Srikanta, Parinita и Pather Dabi."],
+      ["Rekhta Foundation", "https://www.rekhta.org/authors/sarat-chandra-chatterjee/profile", "Архив подтверждает имя Sarat Chandra Chattopadhyay, даты/места жизни и ключевые романы."],
+    ],
+    decision: "corrected",
+    notes: "«Путь обители» не сопоставляется надёжно с авторитетными библиографиями; заменить на «Паринита». Варианты русской транслитерации имени решать единообразно для всего проекта, не ad hoc.",
+  },
+  {
+    key: "india:subramania_bharati",
+    originalSha256: "698885ce2885928ece3e81e59efbe07a9de4f1f7bfb0df819d0373eb1a7b7ad2",
+    reviewedTextRu: "Субрамания Бхарати (1882–1921) — тамильский поэт, журналист, участник движения за независимость и социальный реформатор. Он обновил язык современной тамильской поэзии; к его известным произведениям относятся «Каннан патту», «Куйил патту» и «Панчали сапатам».",
+    evidence: [
+      ["Department of Art and Culture, Government of Puducherry", "https://art.py.gov.in/mahakavi-bharathiyar-museum", "Официальная музейная справка подтверждает даты 11 декабря 1882 — 11 сентября 1921, Эттайяпур и Ченнаи, а также работу Бхарати с периодикой."],
+      ["Press Information Bureau, Government of India", "https://www.pib.gov.in/newsite/printrelease.aspx?lang=2&reg=3&relid=148927", "Правительственная публикация характеризует Бхарати как поэта, журналиста, борца за независимость и социального реформатора и перечисляет Kannan Pattu, Kuyil Pattu и Panchali Sabatam."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность и точные даты подтверждены. «Канны» — ошибочно усечённое название; оценочный суперлатив заменён проверяемыми сведениями.",
+  },
+  {
+    key: "india:surdas",
+    originalSha256: "d9e9674e45460b2ba17dbd4d354d732061bf4011402776677175f49c025a1a49",
+    reviewedTextRu: "Сурдас — североиндийский поэт традиции бхакти XVI века, писавший на брадже стихи о Кришне. Корпус «Сурсагара» сложился в широкой устной традиции: точные годы жизни поэта и авторство отдельных текстов достоверно не установлены.",
+    evidence: [
+      ["National Endowment for the Humanities", "https://www.neh.gov/humanities/2015/mayjune/curio/murty-classical-library-india-sheds-light-sixteenth-century-lyrical-po", "NEH относит Сурдаса к североиндийской поэзии XVI века, описывает стихи о Кришне и сложную историю формирования корпуса «Сурсагара»."],
+      ["Lakshmi Mittal and Family South Asia Institute, Harvard University", "https://mittalsouthasiainstitute.harvard.edu/2015/01/murty-classical-library-of-india-introduces-indian-literature-to-a-new-generation/", "Гарвардская справка связывает Сурдаса с браджской религиозной лирикой конца XVI века и отмечает массовое приписывание ему стихов в устной традиции."],
+    ],
+    decision: "corrected",
+    notes: "QA помечает идентичность и даты как рискованные: для связанного QID встречаются несовместимые годы рождения и смерти. Интервал ок. 1478–1583 нельзя подавать как установленный факт.",
+  },
+  {
+    key: "india:tulsidas",
+    originalSha256: "e730d18ec56129c41202ad630a69dddc4e6286530e46c6e0144db875df02bcbe",
+    reviewedTextRu: "Тулсидас — североиндийский поэт традиции бхакти XVI — начала XVII века, автор «Рамачаритманаса» на языке авадхи и «Виная-патрики». Его биография известна главным образом по поздним житиям и устной традиции, поэтому год рождения остаётся спорным; смерть обычно датируют 1623 годом.",
+    evidence: [
+      ["Encyclopedia of Religion via Encyclopedia.com", "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/tulsidas", "Энциклопедическая статья подчёркивает отсутствие надёжной биографии, спорность года рождения и общепринятую датировку смерти 1623 годом."],
+      ["State Council of Educational Research and Training, Telangana", "https://scert.telangana.gov.in/pdf/publication/ebooks2019/7th%20social%20part2%202022-23.pdf", "Государственный учебный материал подтверждает, что «Рамачаритманас» Тулсидаса написан на авадхи и имеет литературное и религиозное значение."],
+    ],
+    decision: "corrected",
+    notes: "1532 год допустим только как традиционная современная реконструкция, а не бесспорная дата. Название языка «аватхи» следует исправить на «авадхи».",
+  },
+  {
+    key: "india:v_s_naipaul",
+    originalSha256: "82a0fe9128ac60590b6d32476c422085d5a6a88f554c06dde7032df580629a75",
+    reviewedTextRu: "Видиадхар Сураджпрасад Найпол (1932–2018) — родившийся в Тринидаде британский романист и автор документальной прозы, лауреат Нобелевской премии по литературе 2001 года. Его книга «Вольное государство» получила Букеровскую премию 1971 года; среди главных романов — «Дом для мистера Бисваса» и «Излучина реки».",
+    evidence: [
+      ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/2001/naipaul/biographical/", "Официальная биография подтверждает даты 17 августа 1932 — 11 августа 2018, рождение в Тринидаде, происхождение семьи, Нобелевскую премию и основные произведения."],
+      ["The Booker Prizes", "https://thebookerprizes.com/the-booker-library/books/in-a-free-state", "Официальная страница подтверждает авторство и победу «In a Free State» в 1971 году и указывает, что Найпол родился в Тринидаде, учился в Оксфорде и работал в Лондоне."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, даты и книги подтверждены. Тематическое обобщение исходной биографии заменено конкретными биографическими и премиальными фактами.",
+  },
+  {
+    key: "india:valmiki",
+    originalSha256: "e0a08e73e7d70a83c47cfcd51aa4eb9cea86e8d75efd967d96787899946bc11c",
+    reviewedTextRu: "Вальмики — легендарный древнеиндийский мудрец и поэт, которому литературная традиция приписывает санскритскую «Рамаяну». Исторические даты его жизни не установлены: датировки относятся к формированию текста эпоса, а не к достоверной биографии автора.",
+    evidence: [
+      ["Valmiki Ramayanam Project, IIT Kanpur", "https://www.valmiki.iitk.ac.in/introduction", "Университетский проект излагает традиционное представление о Вальмики как первом поэте и создателе «Рамаяны»."],
+      ["Michael C. Carlos Museum, Emory University", "https://digitalprojects.carlos.emory.edu/exhibits/show/ramayana/ramayana-intro", "Музейная академическая справка говорит, что ранняя санскритская версия «Рамаяны» приписывается Вальмики и складывалась около начала нашей эры."],
+    ],
+    decision: "corrected",
+    notes: "Интервал V–I веков до н. э. смешивает предполагаемую датировку текста с биографией легендарного автора; точные даты не устанавливать.",
+  },
+  {
+    key: "india:vikram_seth",
+    originalSha256: "dc2493c49bd567dc2b9b5eac8829e28fb7289c290b8981be51ca826e455ff1a6",
+    reviewedTextRu: "Викрам Сет (род. 1952) — индийский поэт и романист, пишущий на английском языке. Среди его книг — роман в стихах «Золотые ворота», отмеченный премией Sahitya Akademi в 1988 году, и роман «Подходящий мальчик».",
+    evidence: [
+      ["Stanford Magazine, Stanford University", "https://web.stanford.edu/~clh/articles/poetic_License.html", "Университетский профиль подтверждает 1952 год рождения и авторство The Golden Gate, A Suitable Boy, An Equal Music, поэтических сборников и переводов."],
+      ["Sahitya Akademi, Government of India", "https://www.sahitya-akademi.gov.in/awards/akademi%20samman_suchi.jsp", "Официальный список фиксирует премию 1988 года Викраму Сету за The Golden Gate и определяет книгу как роман в стихах."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, год рождения и основные произведения поддержаны. Точный день рождения не опровергнут, но выбранные институциональные источники прямо подтверждают только год; суперлатив удалён.",
+  },
+  {
+    key: "india:vyasa",
+    originalSha256: "fb6c9bab0b1ce67d28f9f9fcd8cf75e761f8a5a40386c61dca4143febe47b582",
+    reviewedTextRu: "Вьяса (Кришна Двайпаяна) — легендарный древнеиндийский мудрец, которому традиция приписывает составление «Махабхараты» и собраний Вед и Пуран. Эти тексты формировались в разные эпохи, поэтому Вьясу следует представлять как фигуру литературно-религиозной традиции, а не как автора с установленной исторической биографией.",
+    evidence: [
+      ["Большая российская энциклопедия", "https://old.bigenc.ru/religious_studies/text/2380511", "БРЭ определяет Вьясу как легендарного мудреца, считавшегося составителем Вед и Пуран и автором «Махабхараты», и приводит имя Кришна Двайпаяна."],
+      ["Treccani, Enciclopedia Italiana", "https://www.treccani.it/enciclopedia/vyasa_%28Enciclopedia-Italiana%29/", "Treccani называет Вьясу мифическим мудрецом и подчёркивает, что традиционно приписанные ему произведения разделены многими столетиями."],
+    ],
+    decision: "corrected",
+    notes: "Даты жизни отсутствуют по существу, а «Бхагавата-пурана» допустима только как часть традиционной атрибуции Пуран, не как доказанное индивидуальное авторство.",
+  },
+  {
+    key: "indonesia:achdiyat_karta_mihardja",
+    originalSha256: "a7549ab04a4b920e95e91e89fa7ba4f1a69ccc89ea2076c60d19e13141256400",
+    reviewedTextRu: "Ахдиат Карта Михарджа (1911–2010) — индонезийский прозаик, драматург и редактор. Его роман «Атеист» (Atheis) впервые вышел в 1949 году.",
+    evidence: [
+      ["Ensiklopedia Sastra Indonesia, Ministry of Education and Culture of Indonesia", "https://ensiklopedia.kemdikbud.go.id/sastra/artikel/Achdiat_Karta_Mihardja", "Официальная энциклопедия подтверждает даты 6 марта 1911 — 8 июля 2010, рождение в Чибату, Гаруте, редакторскую и преподавательскую работу и первое издание Atheis в 1949 году."],
+      ["University of Indonesia Library", "https://lib.ui.ac.id/detail.jsp?id=20237803", "Университетский каталог связывает роман Atheis с Ахдиатом Карта Михарджей и фиксирует годы автора 1911–2010."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, даты и произведение подтверждены. Субъективное «одно из важнейших» заменено проверяемым годом первого издания.",
+  },
+  {
+    key: "indonesia:ayu_utami",
+    originalSha256: "99fd00602ef23eb7392871a494869f7cb97e43520badeae3590169daf81c246b",
+    reviewedTextRu: "Аю Утами (род. 1968) — индонезийская писательница, журналистка и участница движения за свободу печати. Её дебютный роман «Саман» получил премию Джакартского совета искусств в 1998 году; продолжением стал роман «Ларунг».",
+    evidence: [
+      ["Ensiklopedia Sastra Indonesia, Ministry of Education of Indonesia", "https://ensiklopedia.kemendikdasmen.go.id/sastra/artikel/Ayu_Utami", "Официальная энциклопедия подтверждает рождение 21 ноября 1968 года в Богоре, журналистскую работу, участие в Alliance of Independent Journalists, победу Saman в конкурсе 1998 года и Larung."],
+      ["Prince Claus Fund", "https://princeclausfund.nl/awardees/ayu-utami", "Профиль лауреата 2000 года характеризует Утами как индонезийскую романистку и называет Saman, Larung и Manjali dan Cakrabirawa."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, точная дата и книги подтверждены; субъективное «одна из ведущих фигур» заменено конкретными фактами.",
+  },
+  {
+    key: "indonesia:goenawan_mohamad",
+    originalSha256: "9527228732b900508a0b54fad8775185b97bc93e597156cadbe41e65d0c82167",
+    reviewedTextRu: "Гунаван Мохамад (род. 1941) — индонезийский поэт, эссеист и журналист, один из основателей журнала Tempo. Он опубликовал сборники «Париксит» (Pariksit) и «Интерлюдия» (Interlude) и в 2006 году получил премию Дэна Дэвида за многолетнюю работу в защиту свободы печати.",
+    evidence: [
+      ["Ensiklopedia Sastra Indonesia, Ministry of Education of Indonesia", "https://ensiklopedia.kemendikdasmen.go.id/sastra/artikel/Goenawan_Mohamad", "Официальная энциклопедия подтверждает полное имя Goenawan Susatyo Mohamad, рождение 29 июля 1941 года в Батангe и сборники Parikesit 1971 года и Interlude 1973 года."],
+      ["Dan David Prize", "https://dandavidprize.org/laureates/goenawan-mohamad/", "Официальный профиль премии подтверждает работу Мохамада как поэта, писателя и журналиста, защиту свободы прессы и награду 2006 года."],
+    ],
+    decision: "corrected",
+    notes: "Русское имя «Гоэнтаджара Мохамад» ошибочно и не соответствует Goenawan Mohamad. В исходном works «Pariksit» допустимо; в описании источника министерства встречается написание Parikesit, а отдельная карточка произведения использует Pariksit.",
+  },
+  {
+    key: "indonesia:hamka",
+    originalSha256: "e67e8fb9e133f513f3dfd3d4a591f427c85d51bbfefa62684de47da2d36e578e",
+    reviewedTextRu: "Хамка (Хаджи Абдул Малик Карим Амрулла; 1908–1981) — индонезийский писатель, исламский богослов и общественный деятель. Он написал романы «Под защитой Каабы» и «Гибель корабля „Ван дер Вейк“» и был первым председателем Совета улемов Индонезии.",
+    evidence: [
+      ["Badan Pengembangan dan Pembinaan Bahasa, Ministry of Education of Indonesia", "https://bahasa-dev.kemendikdasmen.go.id/tokoh-detail/3349/hamka", "Официальная биография подтверждает полное имя, рождение 16 февраля 1908 года, смерть 24 июля 1981 года, литературную и богословскую деятельность и оба романа."],
+      ["Majelis Ulama Indonesia", "https://mui.or.id/public/index.php/baca/berita/halal-tourism-hub-buya-hamka-ikon-pariwisata-ramah-muslim", "Совет улемов подтверждает рождение 16 февраля 1908 года, называет Хамку писателем и богословом, перечисляет его романы и отмечает, что он был первым председателем MUI."],
+    ],
+    decision: "corrected",
+    notes: "Текущий birthDate 1908-02-17 расходится с двумя институциональными индонезийскими источниками, указывающими 16 февраля; смерть 24 июля подтверждена.",
+  },
+  {
+    key: "indonesia:pramoedya_ananta_toer",
+    originalSha256: "9c23a035ca63be5057b22399efcc0e80b4c9a221cd754726de5e172ab1e0081b",
+    reviewedTextRu: "Прамудья Ананта Тур (1925–2006) — индонезийский писатель, автор тетралогии Буру о становлении национального самосознания в колониальной Индонезии. В цикл входят романы «Мир человеческий», «Дитя всех народов», «Следы» и «Стеклянный дом»; в 1995 году писатель получил премию Рамона Магсайсая.",
+    evidence: [
+      ["Ensiklopedia Sastra Indonesia, Ministry of Education of Indonesia", "https://ensiklopedia.kemendikdasmen.go.id/sastra/artikel/Pramoedya_Ananta_Toer", "Официальная энциклопедия подтверждает даты 6 февраля 1925 — 30 апреля 2006, заключение на острове Буру, четыре романа цикла и премию Магсайсая 1995 года."],
+      ["Ramon Magsaysay Award Foundation", "https://rmaward.asia/rmawardees/pramoedya-ananta-toer/", "Официальная страница премии называет This Earth of Mankind первой книгой тетралогии Буру из четырёх связанных романов о пробуждении индонезийского национального сознания."],
+    ],
+    decision: "corrected",
+    notes: "Идентичность, точные даты и состав тетралогии подтверждены; субъективный суперлатив заменён конкретным описанием цикла и награды.",
+  },
+  {
+    key: "iran:ferdowsi",
+    originalSha256: "6b4e0fe8b97d9879fb2502bc6428e31b13d47da4eec5bfd75eefcf0679277390",
+    reviewedTextRu: "Фирдоуси (ок. 940 — ок. 1020) — персидский поэт, создатель монументальной эпической поэмы «Шахнаме» («Книга царей»). Год его рождения реконструируется приблизительно, а источники расходятся и о годе смерти; точные календарные дни не установлены.",
+    evidence: [
+      ["Encyclopaedia Iranica", "https://www.iranicaonline.org/articles/ferdowsi-i/", "Академическая энциклопедия выводит рождение примерно в 940 году из авторских указаний и приводит конкурирующие даты смерти 1020 и 1025 годов, подчёркивая ограниченность надёжных биографических сведений."],
+      ["Library of Congress", "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/epic-of-shahnameh.html", "Выставка Библиотеки Конгресса связывает Фирдоуси с «Шахнаме», указывает ориентировочные годы 940–1020 и завершение поэмы в 1010 году."],
+    ],
+    decision: "corrected",
+    notes: "QA считает 1 января лишь совместимым заполнителем, а не доказанной датой; его необходимо удалить. Даже год смерти имеет варианты 1020/1025, поэтому формулировка должна сохранять неопределённость.",
+  },
+] satisfies readonly ReviewSeed[];
+
+function finalizeReviewRecord(seed: ReviewSeed): WriterBiographyFactReviewRecord {
+  const verdict: WriterBiographyClaimVerdict =
+    seed.decision === "held"
+      ? "not-established"
+      : seed.decision === "unchanged"
+        ? "supported"
+        : "corrected";
+
+  return {
+    key: seed.key,
+    originalSha256: seed.originalSha256,
+    reviewedTextRu: seed.reviewedTextRu,
+    applicableTextRu: seed.decision === "held" ? null : seed.reviewedTextRu,
+    claims: [{
+      textRu: seed.reviewedTextRu,
+      verdict,
+      evidence: seed.evidence.map(([provider, url, findingRu]) => ({
+        provider,
+        url,
+        checkedAt,
+        findingRu,
+      })),
+    }],
+    reviewer,
+    decision: seed.decision,
+    notes: seed.notes,
+  };
+}
+
+export const writerBiographyFactReviewBatch32: readonly WriterBiographyFactReviewRecord[] =
+  seeds.map(finalizeReviewRecord);

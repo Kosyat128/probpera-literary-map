@@ -1,4 +1,7 @@
 import type { Country, WriterProfile } from "./types";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch32,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch32";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1624,6 +1627,7 @@ export const writerPublicProfileFactCorrections = [
     ],
     note: "Corrects the declined and misspelled Russian display name and records the university's Latin-script authority form.",
   },
+  ...writerBiographyPublicProfileFactCorrectionsBatch32,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {

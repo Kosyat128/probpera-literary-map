@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import {
@@ -14,6 +15,9 @@ import {
 } from "./index";
 import type { Country } from "./types";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch32,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch32";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -26,11 +30,25 @@ function key(countryId: string, writerId: string) {
 }
 
 describe("legacy writer biography curation", () => {
+  it("keeps detailed Batch32 reviews outside the public profile runtime boundary", () => {
+    const runtimeSources = [
+      "writerBiographyPublicProfileFactCorrectionsBatch32.ts",
+      "writerBiographyLegacyCorrections.ts",
+    ].map((fileName) =>
+      readFileSync(new URL(fileName, import.meta.url), "utf8")
+    );
+
+    for (const source of runtimeSources) {
+      expect(source).not.toContain("writerBiographyFactReviewBatch32");
+    }
+  });
+
   it("keeps the manually sourced correction queue exact and auditable", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
     expect(quarantinedWriterIdentities).toHaveLength(64);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(51);
+    expect(writerPublicProfileFactCorrections).toHaveLength(85);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -285,6 +303,104 @@ describe("legacy writer biography curation", () => {
     );
     expect(bookWriters.get("iceland:steinn_steinarr")?.birthPlace).toBe("Олвюсау");
     expect(bookWriters.get("india:amit_chaudhuri")?.name).toBe("Амита Чоудхури");
+  });
+
+  it("publishes compact source-backed batch 32 profile patches without mutating the book source", () => {
+    const publicWriters = new Map(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+    const bookWriters = new Map(
+      bookArchiveCountries.flatMap((country) =>
+        country.writers.map((writer) => [key(country.id, writer.id), writer])
+      )
+    );
+    const batchKeys = writerBiographyPublicProfileFactCorrectionsBatch32.map(
+      (item) => key(item.countryId, item.writerId)
+    );
+
+    expect(new Set(batchKeys).size).toBe(batchKeys.length);
+    for (const item of writerBiographyPublicProfileFactCorrectionsBatch32) {
+      const itemKey = key(item.countryId, item.writerId);
+      const hosts = new Set(
+        item.evidence.map((source) => new URL(source.url).host)
+      );
+      expect(item.evidence.length, itemKey).toBeGreaterThanOrEqual(2);
+      expect(hosts.size, itemKey).toBeGreaterThanOrEqual(2);
+      expect(
+        item.evidence.every(
+          (source) =>
+            source.checkedAt === "2026-08-11" &&
+            source.url.startsWith("https://")
+        ),
+        itemKey
+      ).toBe(true);
+    }
+
+    for (const item of writerBiographyPublicProfileFactCorrectionsBatch32) {
+      expect(publicWriters.get(key(item.countryId, item.writerId))).toMatchObject(
+        item.patch
+      );
+    }
+
+    expect(publicWriters.get("india:anil_menon")).toMatchObject({
+      years: "",
+      birthDate: "",
+      birthPlace: "",
+      works: ["The Beast with Nine Billion Feet", "Half of What I Say"],
+    });
+    expect(publicWriters.get("india:geetanjali_shree")).toMatchObject({
+      birthDate: "1957",
+      birthPlace: "Майнпури, Уттар-Прадеш, Индия",
+      coordinates: undefined,
+    });
+    expect(publicWriters.get("india:kalidasa")).toMatchObject({
+      years: "ок. IV–V век",
+      birthDate: "",
+      deathDate: "",
+      birthPlace: "",
+      deathPlace: "",
+    });
+    expect(publicWriters.get("india:r_k_narayan")).toMatchObject({
+      fullName: "Rasipuram Krishnaswami Narayan",
+      birthPlace: "Мадрас (ныне Ченнаи), Британская Индия",
+      works: ["Свами и его друзья", "Дни Мальгуди", "Гид"],
+      awards: ["Премия Сахитья Академи 1960 года за роман «Гид»"],
+    });
+    expect(publicWriters.get("iran:ferdowsi")).toMatchObject({
+      years: "ок. 940 — ок. 1020",
+      birthDate: "ок. 940",
+      deathDate: "ок. 1020",
+    });
+
+    expect(bookWriters.get("india:anil_menon")).toMatchObject({
+      years: "1970–",
+      birthDate: "1970",
+      birthPlace: "Индия",
+      works: ["The Beast With Nine Billion Feet", "Half of What I Say"],
+    });
+    expect(bookWriters.get("india:geetanjali_shree")).toMatchObject({
+      birthDate: "1957-06-12",
+      birthPlace: "Манипури, Индия",
+      coordinates: { lat: 26.8467, lng: 80.9462 },
+    });
+    expect(bookWriters.get("india:kalidasa")).toMatchObject({
+      birthDate: "IV–V век",
+      deathDate: "V век",
+      birthPlace: "Индия",
+      deathPlace: "Индия",
+    });
+    expect(bookWriters.get("india:r_k_narayan")).toMatchObject({
+      birthPlace: "Ченнаи, Индия",
+      works: ["Свами и его друзья", "Малгуди", "Гид"],
+      awards: ["Премия Сахитья Академи 1958 года"],
+    });
+    expect(bookWriters.get("iran:ferdowsi")).toMatchObject({
+      years: "ок. 940–1020",
+      birthDate: "0940-01-01",
+      deathDate: "1020-01-01",
+    });
   });
 
   it("changes only bio on a corrected writer and does not promote its status", () => {
