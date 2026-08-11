@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T15:16:03.811Z",
+  "generatedAt": "2026-08-11T19:07:07.288Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1707,
-    "uniqueWriters": 1694,
-    "workRecords": 3399,
-    "uniqueWorks": 3381,
+    "writerRecords": 1705,
+    "uniqueWriters": 1692,
+    "workRecords": 3397,
+    "uniqueWorks": 3379,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 9,
+    "expandedBiographies": 10,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1662,
+    "russianBiographiesWithheld": 1660,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1687,
+    "englishBiographiesWithheld": 1685,
     "portraitedWriters": 1059,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -1231,7 +1231,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "guinea_republic",
@@ -1257,7 +1257,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 4
     },
     {
       "id": "haiti",

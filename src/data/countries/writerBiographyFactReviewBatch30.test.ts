@@ -218,14 +218,14 @@ describe("writer biography claim review batch 30", () => {
 
     // The report freezes the 1719/50 allocation snapshot. Integrating held
     // identities may shrink the live queue without changing this frozen slice.
-    expect(reviewQueueKeys).toHaveLength(1707);
-    expect(reviewQueueSet.size).toBe(1707);
+    expect(reviewQueueKeys).toHaveLength(1705);
+    expect(reviewQueueSet.size).toBe(1705);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(priorAssigned).toHaveLength(640);
     expect(priorAssignedSet.size).toBe(640);
-    expect(quarantineKeys).toHaveLength(62);
-    expect(new Set(quarantineKeys).size).toBe(62);
+    expect(quarantineKeys).toHaveLength(64);
+    expect(new Set(quarantineKeys).size).toBe(64);
     expect(keys).toEqual(expectedKeys);
     expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
     expect(new Set(keys).size).toBe(40);

@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-08-11T15:16:04.907Z",
+  "generatedAt": "2026-08-11T19:07:08.082Z",
   "summary": {
-    "writerRecords": 1707,
+    "writerRecords": 1705,
     "russianReady": 45,
-    "russianWithheld": 1662,
+    "russianWithheld": 1660,
     "englishReady": 20,
-    "englishWithheld": 1687,
-    "legacyRussianTextPresent": 1707,
+    "englishWithheld": 1685,
+    "legacyRussianTextPresent": 1705,
     "structuredRussianBiographyPresent": 45,
     "missingBiography": 0,
-    "shortBiography": 1073,
+    "shortBiography": 1058,
     "overlyLongBiography": 0,
     "genericBiography": 0,
-    "duplicateBiographyRecords": 4,
-    "duplicateBiographyGroups": 2,
-    "unsourcedBiography": 1662,
-    "rightsUnproven": 1662,
+    "duplicateBiographyRecords": 2,
+    "duplicateBiographyGroups": 1,
+    "unsourcedBiography": 1660,
+    "rightsUnproven": 1660,
     "licensedCopyMissingMetadata": 0,
     "humanTranslationRightsMissing": 0,
     "researchDrafts": 20,
@@ -25,7 +25,7 @@
     "researchDraftsApprovedForPromotion": 20,
     "duplicateResearchDraftKeys": 0,
     "orphanResearchDrafts": 0,
-    "withheldWithoutResearchDraft": 1662,
+    "withheldWithoutResearchDraft": 1660,
     "stagingRecords": 2356,
     "stagingRecordsWithLegacyProse": 2356
   },
@@ -40,21 +40,6 @@
     "legalCaution": "rightsUnproven means that this repository does not record enough evidence for publication; it is not a legal finding of infringement."
   },
   "duplicateBiographyGroups": [
-    {
-      "normalizedText": "один из крупнейших венгерских поэтов xx века",
-      "records": [
-        {
-          "id": "endre_ady",
-          "name": "Эндре Ади",
-          "countryId": "hungary"
-        },
-        {
-          "id": "miklos_radnoti",
-          "name": "Миклош Радноти",
-          "countryId": "hungary"
-        }
-      ]
-    },
     {
       "normalizedText": "современный монгольский поэт и писатель",
       "records": [
@@ -40790,8 +40775,8 @@
       "countryName": "Гватемала",
       "russian": {
         "ready": false,
-        "textLength": 257,
-        "sentenceCount": 3,
+        "textLength": 285,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -40976,8 +40961,8 @@
       "countryName": "Гватемала",
       "russian": {
         "ready": false,
-        "textLength": 229,
-        "sentenceCount": 3,
+        "textLength": 221,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41100,7 +41085,7 @@
       "countryName": "Гватемала",
       "russian": {
         "ready": false,
-        "textLength": 249,
+        "textLength": 211,
         "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -41162,8 +41147,8 @@
       "countryName": "Гвинея-Бисау",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 216,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41181,7 +41166,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -41224,8 +41209,8 @@
       "countryName": "Гвинея-Бисау",
       "russian": {
         "ready": false,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 331,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41243,69 +41228,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
-      "countryId": "guinea_bissau",
-      "countryName": "Гвинея-Бисау",
-      "russian": {
-        "ready": false,
-        "textLength": 41,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -41348,7 +41271,7 @@
       "countryName": "Гвинея",
       "russian": {
         "ready": false,
-        "textLength": 283,
+        "textLength": 193,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -41494,7 +41417,7 @@
       "countryName": "Гайана",
       "russian": {
         "ready": false,
-        "textLength": 216,
+        "textLength": 220,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -41556,7 +41479,7 @@
       "countryName": "Гайана",
       "russian": {
         "ready": false,
-        "textLength": 180,
+        "textLength": 226,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -41618,7 +41541,7 @@
       "countryName": "Гайана",
       "russian": {
         "ready": false,
-        "textLength": 176,
+        "textLength": 241,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -41680,8 +41603,8 @@
       "countryName": "Гайана",
       "russian": {
         "ready": false,
-        "textLength": 218,
-        "sentenceCount": 2,
+        "textLength": 224,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41736,76 +41659,14 @@
       "sourceCandidates": []
     },
     {
-      "id": "roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
-      "countryId": "guyana",
-      "countryName": "Гайана",
-      "russian": {
-        "ready": false,
-        "textLength": 168,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": false,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
       "id": "jacques_roumain",
       "name": "Жак Румен",
       "countryId": "haiti",
       "countryName": "Гаити",
       "russian": {
         "ready": false,
-        "textLength": 219,
-        "sentenceCount": 3,
+        "textLength": 328,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41866,8 +41727,8 @@
       "countryName": "Гаити",
       "russian": {
         "ready": false,
-        "textLength": 165,
-        "sentenceCount": 3,
+        "textLength": 223,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41928,8 +41789,8 @@
       "countryName": "Гаити",
       "russian": {
         "ready": false,
-        "textLength": 177,
-        "sentenceCount": 3,
+        "textLength": 312,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -41990,8 +41851,8 @@
       "countryName": "Гаити",
       "russian": {
         "ready": false,
-        "textLength": 193,
-        "sentenceCount": 3,
+        "textLength": 252,
+        "sentenceCount": 4,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42052,7 +41913,7 @@
       "countryName": "Гондурас",
       "russian": {
         "ready": false,
-        "textLength": 200,
+        "textLength": 199,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42114,7 +41975,69 @@
       "countryName": "Гондурас",
       "russian": {
         "ready": false,
-        "textLength": 144,
+        "textLength": 205,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "roberto_sosa",
+      "name": "Роберто Соса",
+      "countryId": "honduras",
+      "countryName": "Гондурас",
+      "russian": {
+        "ready": false,
+        "textLength": 104,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42170,14 +42093,14 @@
       "sourceCandidates": []
     },
     {
-      "id": "roberto_sosa",
-      "name": "Роберто Соса",
+      "id": "julio_escoto",
+      "name": "Хулио Эското",
       "countryId": "honduras",
       "countryName": "Гондурас",
       "russian": {
         "ready": false,
-        "textLength": 183,
-        "sentenceCount": 2,
+        "textLength": 194,
+        "sentenceCount": 4,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42232,75 +42155,13 @@
       "sourceCandidates": []
     },
     {
-      "id": "julio_escoto",
-      "name": "Хулио Эското",
-      "countryId": "honduras",
-      "countryName": "Гондурас",
-      "russian": {
-        "ready": false,
-        "textLength": 92,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
       "id": "xi_xi",
-      "name": "Сянь Юй",
+      "name": "Си Си",
       "countryId": "hong_kong",
       "countryName": "Гонконг",
       "russian": {
         "ready": false,
-        "textLength": 67,
+        "textLength": 80,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42362,7 +42223,7 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 71,
+        "textLength": 190,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42424,7 +42285,7 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 66,
+        "textLength": 100,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42486,7 +42347,7 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 50,
+        "textLength": 171,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42548,7 +42409,7 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 45,
+        "textLength": 111,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -42570,7 +42431,7 @@
         "short": true,
         "overlyLong": false,
         "generic": false,
-        "duplicate": true,
+        "duplicate": false,
         "unsourced": true,
         "rightsUnproven": true,
         "licensedMetadataMissing": false,
@@ -42610,8 +42471,8 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 40,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42629,7 +42490,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -42734,8 +42595,8 @@
       "countryName": "Венгрия",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 214,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42753,10 +42614,10 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
-        "duplicate": true,
+        "duplicate": false,
         "unsourced": true,
         "rightsUnproven": true,
         "licensedMetadataMissing": false,
@@ -42858,8 +42719,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 195,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42877,7 +42738,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -42920,8 +42781,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 51,
-        "sentenceCount": 1,
+        "textLength": 166,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -42939,7 +42800,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -42982,8 +42843,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 38,
-        "sentenceCount": 1,
+        "textLength": 188,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43001,7 +42862,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43044,8 +42905,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 187,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43063,7 +42924,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43106,8 +42967,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 40,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43125,7 +42986,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43168,8 +43029,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 162,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43187,7 +43048,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43230,8 +43091,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 153,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43249,7 +43110,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43292,8 +43153,8 @@
       "countryName": "Исландия",
       "russian": {
         "ready": false,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 157,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43311,7 +43172,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45085,13 +44946,13 @@
     },
     {
       "id": "amit_chaudhuri",
-      "name": "Амита Чоудхури",
+      "name": "Амит Чаудхури",
       "countryId": "india",
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 119,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45109,7 +44970,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,

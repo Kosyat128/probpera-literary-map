@@ -1,10 +1,10 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:125b228d09ebc5ffd808d447edba4938eff758fcfa2674f2cf55ddeb74b52e85",
+  "sourceFingerprint": "sha256:d15d58e7f0d3b5ab0fe32b753ca8bdc173eb9b85ab5c9623f6539538b1e832e4",
   "scope": {
     "corpus": "stored short Russian writer biographies",
-    "cardsAudited": 1707,
+    "cardsAudited": 1705,
     "uiChanged": false,
     "statusesChanged": false,
     "biographyTextChanged": false,
@@ -12,22 +12,22 @@
     "statement": "This report inventories every biography and detects local contradictions. It does not certify the corpus as fact-checked."
   },
   "summary": {
-    "writerCards": 1707,
-    "biographiesPresent": 1707,
+    "writerCards": 1705,
+    "biographiesPresent": 1705,
     "claimTypeCounts": {
-      "awards": 137,
-      "critical-ranking": 347,
-      "identity-role": 1660,
-      "language": 168,
-      "life-dates": 94,
+      "awards": 135,
+      "critical-ranking": 328,
+      "identity-role": 1658,
+      "language": 169,
+      "life-dates": 118,
       "movement-era": 92,
-      "national-cultural-affiliation": 1045,
+      "national-cultural-affiliation": 1051,
       "nobel": 108,
-      "places": 12,
+      "places": 15,
       "priority-claim": 161,
-      "reception-influence": 61,
+      "reception-influence": 59,
       "themes-style": 240,
-      "works": 829
+      "works": 849
     },
     "reliableStagingIdentityMatches": 231,
     "sourceConfirmedStructuredCrossChecks": 230,
@@ -38,18 +38,18 @@
     "wikidataIdentityReviewRequiredRecords": 58,
     "wikidataStructuredTriageCoveragePercent": 70.1,
     "wikidataDateFieldsCompared": 2108,
-    "wikidataExactGregorianDateMatches": 1620,
-    "wikidataSharedPrecisionMatches": 168,
+    "wikidataExactGregorianDateMatches": 1623,
+    "wikidataSharedPrecisionMatches": 167,
     "wikidataCalendarUnresolvedMatches": 79,
     "wikidataAlternateRankMatches": 34,
-    "wikidataUnresolvedDateDiscrepancies": 104,
-    "wikidataModernReferencedDateContradictions": 45,
+    "wikidataUnresolvedDateDiscrepancies": 102,
+    "wikidataModernReferencedDateContradictions": 42,
     "wikidataLikelyBadQidOrIdentityDateRows": 34,
     "wikidataTriageClassificationCounts": {
       "a:calendar-equivalent": 88,
-      "b:lower-precision-compatible": 168,
+      "b:lower-precision-compatible": 167,
       "c:likely-bad-qid-mapping-or-identity": 34,
-      "d:date-contradiction-requiring-authoritative-source": 70
+      "d:date-contradiction-requiring-authoritative-source": 68
     },
     "wikidataLiteraryOccupationCorroborations": 1245,
     "manuallyResolvedRecords": 58,
@@ -58,19 +58,19 @@
     "concreteContradictionIssues": 0,
     "calendarOrSourceDiscrepancyRecords": 0,
     "calendarOrSourceDiscrepancyIssues": 0,
-    "metadataGapIssues": 210,
-    "recordsNeedingHumanClaimSources": 1677,
+    "metadataGapIssues": 221,
+    "recordsNeedingHumanClaimSources": 1675,
     "priorityCounts": {
-      "P1": 629,
-      "P2": 123,
-      "P3": 955
+      "P1": 612,
+      "P2": 125,
+      "P3": 968
     },
     "matchMethodCounts": {
       "curated-key-to-wikidata-id": 229,
       "unique-name-and-birth-year": 2
     },
     "issueCodeCounts": {
-      "named-work-not-in-structured-list": 210
+      "named-work-not-in-structured-list": 221
     }
   },
   "automationBoundary": {
@@ -105,14 +105,14 @@
       "P800"
     ],
     "publicCardsWithCuratedQid": 1268,
-    "publicCorpusCoveragePercent": 74.3,
+    "publicCorpusCoveragePercent": 74.4,
     "curatedCardsAlreadyPresentInStaging": 229,
     "publicCardsWithSnapshotEntity": 1268,
     "identityCorroboratedPublicCards": 1196,
     "identityDiscrepantPublicCards": 14,
     "identityReviewRequiredPublicCards": 58,
     "curatedCardsMissingCompactSnapshot": 0,
-    "publicCardsWithoutCuratedQid": 439,
+    "publicCardsWithoutCuratedQid": 437,
     "implementationStatus": "checked-in-offline-snapshot-active",
     "safetyBoundary": "Wikidata expands structured discrepancy triage only. It does not certify prose claims, resolve conflicting sources, rewrite biographies, or change publication status automatically."
   },
@@ -1705,42 +1705,6 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "guatemala:rodrigo_rey_rosa",
-      "name": "Родриго Рей Роса",
-      "qid": "Q4392560",
-      "field": "birthDate",
-      "cardValue": "1958-02-04",
-      "bestRankClaims": [
-        {
-          "value": "1958-11-04",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "Q4392560$6995A814-A82B-4652-9F9C-D5F01DC05808"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q4392560",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Rodrigo Rey Rosa",
-        "ru": "Родриго Рей Роса"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
       "key": "guyana:edgar_mittelholzer",
       "name": "Эдгар Миттельхольцер",
       "qid": "Q181618",
@@ -1777,74 +1741,38 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "haiti:franketienne",
-      "name": "Франкетьен",
-      "qid": "Q162778",
-      "field": "deathDate",
-      "cardValue": "2024-02-20",
-      "bestRankClaims": [
-        {
-          "value": "2025-02-20",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q162778$b51fc1a1-4201-3811-58fa-fbca2852cb28"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q162778",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": true,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Frankétienne",
-        "ru": "Франкетьен"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 1,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "hong_kong:xi_xi",
-      "name": "Сянь Юй",
-      "qid": "Q8044053",
+      "key": "hungary:imre_madach",
+      "name": "Имре Мадач",
+      "qid": "Q366331",
       "field": "birthDate",
-      "cardValue": "1937-10-08",
+      "cardValue": "1823-01-20",
       "bestRankClaims": [
         {
-          "value": "1937-10-07",
+          "value": "1823-01-21",
           "precision": "day",
           "calendarId": "Q1985727",
-          "rank": "normal",
+          "rank": "preferred",
           "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q8044053$884a8017-49bf-d8e1-5998-f463fbb861a8"
+          "referenceCount": 4,
+          "claimId": "Q366331$7F4989D4-0784-482F-AAF0-EB49EBED27CF"
         }
       ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q8044053",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q366331",
       "classificationCode": "d",
       "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
+      "classificationConfidence": "review-required",
       "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
       "yearConflict": false,
       "identityValidationStatus": "identity-corroborated",
       "entityLabels": {
-        "en": "Xi Xi",
-        "ru": "Си Си"
+        "en": "Imre Madách",
+        "ru": "Имре Мадач"
       },
       "labelIdentityMatch": true,
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": true,
-      "modern": true,
+      "modern": false,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
@@ -6746,16 +6674,6 @@
       "classification": "lower-precision-compatible"
     },
     {
-      "key": "guinea_bissau:abdulai_sila",
-      "name": "Абдулай Сила",
-      "qid": "Q4665779",
-      "field": "birthDate",
-      "cardValue": "1958",
-      "snapshotValue": "1958-04-01",
-      "classificationCode": "b",
-      "classification": "lower-precision-compatible"
-    },
-    {
       "key": "guinea_bissau:odete_semedo",
       "name": "Одети Семеду",
       "qid": "Q10340236",
@@ -9202,42 +9120,6 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "guatemala:rodrigo_rey_rosa",
-      "name": "Родриго Рей Роса",
-      "qid": "Q4392560",
-      "field": "birthDate",
-      "cardValue": "1958-02-04",
-      "bestRankClaims": [
-        {
-          "value": "1958-11-04",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "Q4392560$6995A814-A82B-4652-9F9C-D5F01DC05808"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q4392560",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Rodrigo Rey Rosa",
-        "ru": "Родриго Рей Роса"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
       "key": "guyana:edgar_mittelholzer",
       "name": "Эдгар Миттельхольцер",
       "qid": "Q181618",
@@ -9274,74 +9156,38 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "haiti:franketienne",
-      "name": "Франкетьен",
-      "qid": "Q162778",
-      "field": "deathDate",
-      "cardValue": "2024-02-20",
-      "bestRankClaims": [
-        {
-          "value": "2025-02-20",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q162778$b51fc1a1-4201-3811-58fa-fbca2852cb28"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q162778",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": true,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Frankétienne",
-        "ru": "Франкетьен"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 1,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "hong_kong:xi_xi",
-      "name": "Сянь Юй",
-      "qid": "Q8044053",
+      "key": "hungary:imre_madach",
+      "name": "Имре Мадач",
+      "qid": "Q366331",
       "field": "birthDate",
-      "cardValue": "1937-10-08",
+      "cardValue": "1823-01-20",
       "bestRankClaims": [
         {
-          "value": "1937-10-07",
+          "value": "1823-01-21",
           "precision": "day",
           "calendarId": "Q1985727",
-          "rank": "normal",
+          "rank": "preferred",
           "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q8044053$884a8017-49bf-d8e1-5998-f463fbb861a8"
+          "referenceCount": 4,
+          "claimId": "Q366331$7F4989D4-0784-482F-AAF0-EB49EBED27CF"
         }
       ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q8044053",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q366331",
       "classificationCode": "d",
       "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
+      "classificationConfidence": "review-required",
       "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
       "yearConflict": false,
       "identityValidationStatus": "identity-corroborated",
       "entityLabels": {
-        "en": "Xi Xi",
-        "ru": "Си Си"
+        "en": "Imre Madách",
+        "ru": "Имре Мадач"
       },
       "labelIdentityMatch": true,
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": true,
-      "modern": true,
+      "modern": false,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
@@ -16934,13 +16780,145 @@
       "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
     },
     {
-      "key": "iceland:snorri_sturluson",
-      "name": "Снорри Стурлусон",
+      "key": "guatemala:miguel_angel_asturias",
+      "name": "Мигель Анхель Астуриас",
       "code": "named-work-not-in-structured-list",
       "severity": "metadata-gap",
       "field": "biography/works",
       "values": {
-        "biographyTitle": "Младшей Эдды"
+        "biographyTitle": "Легенды Гватемалы"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "guinea_republic:camara_laye",
+      "name": "Камара Лайе",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Чёрного ребёнка"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "guyana:martin_carter",
+      "name": "Мартин Картер",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Poems of Resistance from British Guiana"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "guyana:wilson_harris",
+      "name": "Уилсон Харрис",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Palace of the Peacock"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "name": "Эдвидж Дантикат",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Breath, Eyes, Memory"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "name": "Эдвидж Дантикат",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Krik? Krak!"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "haiti:franketienne",
+      "name": "Франкетьен",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Dézafi"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "haiti:jacques_stephen_alexis",
+      "name": "Жак Стивен Алексис",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Compère général soleil"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "hungary:endre_ady",
+      "name": "Эндре Ади",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Новые стихи"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "iceland:arnaldur_indridason",
+      "name": "Арнальдур Индридасон",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Сыны праха"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "iceland:gudmundur_kamban",
+      "name": "Гвюдмюндюр Камбан",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Скаульхольт"
+      },
+      "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+      "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+    },
+    {
+      "key": "iceland:gudmundur_kamban",
+      "name": "Гвюдмюндюр Камбан",
+      "code": "named-work-not-in-structured-list",
+      "severity": "metadata-gap",
+      "field": "biography/works",
+      "values": {
+        "biographyTitle": "Хадда Падда"
       },
       "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
       "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
@@ -18886,31 +18864,16 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "guatemala:luis_cardoza_y_aragon",
-      "name": "Луис Кардоса-и-Арагон",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-discrepant"
-    },
-    {
       "key": "guatemala:miguel_angel_asturias",
       "name": "Мигель Анхель Астуриас",
       "priority": "P1",
-      "issueCodes": [],
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
       "claimsRequiringHumanSources": [
         "awards",
-        "critical-ranking",
         "identity-role",
-        "movement-era",
-        "national-cultural-affiliation",
+        "life-dates",
         "nobel",
         "themes-style",
         "works"
@@ -18920,189 +18883,34 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "guatemala:rodrigo_rey_rosa",
-      "name": "Родриго Рей Роса",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "reception-influence",
-        "themes-style",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "guinea_bissau:abdulai_sila",
-      "name": "Абдулай Сила",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "guinea_republic:camara_laye",
-      "name": "Камара Лайе",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "language",
-        "priority-claim",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "guyana:cyril_dabydeen",
-      "name": "Сирил Дабидин",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "guyana:martin_carter",
-      "name": "Мартин Картер",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "language",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
       "key": "guyana:wilson_harris",
       "name": "Уилсон Харрис",
       "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
+      "issueCodes": [
+        "named-work-not-in-structured-list"
       ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "haiti:edwidge_danticat",
-      "name": "Эдвидж Дантикат",
-      "priority": "P1",
-      "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
         "identity-role",
+        "life-dates",
+        "priority-claim",
         "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "haiti:franketienne",
-      "name": "Франкетьен",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "language",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "haiti:jacques_stephen_alexis",
-      "name": "Жак Стивен Алексис",
+      "key": "haiti:jacques_roumain",
+      "name": "Жак Румен",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
         "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "honduras:juan_ramon_molina",
-      "name": "Хуан Рамон Молина",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "language",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "honduras:roberto_sosa",
-      "name": "Роберто Соса",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "hong_kong:xi_xi",
-      "name": "Сянь Юй",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
+        "life-dates",
+        "places",
+        "priority-claim",
         "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "hungary:endre_ady",
-      "name": "Эндре Ади",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -19128,65 +18936,13 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "national-cultural-affiliation",
         "nobel",
-        "themes-style"
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "hungary:miklos_radnoti",
-      "name": "Миклош Радноти",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "hungary:mor_jokai",
-      "name": "Мор Йокаи",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "iceland:arnaldur_indridason",
-      "name": "Арнальдур Индридасон",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "iceland:gunnar_gunnarsson",
-      "name": "Гуннар Гуннарссон",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
@@ -19195,25 +18951,11 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
-        "critical-ranking",
-        "nobel"
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "iceland:steinn_steinarr",
-      "name": "Стейнн Стейннар",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
@@ -27058,7 +26800,34 @@
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "movement-era",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "iceland:arnaldur_indridason",
+      "name": "Арнальдур Индридасон",
+      "priority": "P2",
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "iceland:gunnar_gunnarsson",
+      "name": "Гуннар Гуннарссон",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "language",
         "national-cultural-affiliation",
         "works"
       ],
@@ -34316,16 +34085,47 @@
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "guinea_bissau:antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
+      "key": "guatemala:luis_cardoza_y_aragon",
+      "name": "Луис Кардоса-и-Арагон",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
+      "wikidataIdentityValidationStatus": "identity-discrepant"
+    },
+    {
+      "key": "guatemala:rodrigo_rey_rosa",
+      "name": "Родриго Рей Роса",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "guinea_bissau:abdulai_sila",
+      "name": "Абдулай Сила",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "guinea_bissau:odete_semedo",
@@ -34333,7 +34133,28 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "language",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "guinea_republic:camara_laye",
+      "name": "Камара Лайе",
+      "priority": "P3",
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34355,13 +34176,30 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
+      "key": "guyana:cyril_dabydeen",
+      "name": "Сирил Дабидин",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
       "key": "guyana:edgar_mittelholzer",
       "name": "Эдгар Миттельхольцер",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "reception-influence",
+        "national-cultural-affiliation",
+        "places",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -34369,26 +34207,83 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "guyana:roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
+      "key": "guyana:martin_carter",
+      "name": "Мартин Картер",
       "priority": "P3",
-      "issueCodes": [],
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "themes-style"
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "name": "Эдвидж Дантикат",
+      "priority": "P3",
+      "issueCodes": [
+        "named-work-not-in-structured-list",
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "haiti:jacques_roumain",
-      "name": "Жак Румен",
+      "key": "haiti:franketienne",
+      "name": "Франкетьен",
+      "priority": "P3",
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "haiti:jacques_stephen_alexis",
+      "name": "Жак Стивен Алексис",
+      "priority": "P3",
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "honduras:juan_ramon_molina",
+      "name": "Хуан Рамон Молина",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "themes-style"
+        "life-dates",
+        "movement-era",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34400,7 +34295,8 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34413,7 +34309,34 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "honduras:roberto_sosa",
+      "name": "Роберто Соса",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "hong_kong:xi_xi",
+      "name": "Си Си",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34433,12 +34356,60 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
+      "key": "hungary:endre_ady",
+      "name": "Эндре Ади",
+      "priority": "P3",
+      "issueCodes": [
+        "named-work-not-in-structured-list"
+      ],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "hungary:imre_madach",
       "name": "Имре Мадач",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "hungary:miklos_radnoti",
+      "name": "Миклош Радноти",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "hungary:mor_jokai",
+      "name": "Мор Йокаи",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -34452,7 +34423,10 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "national-cultural-affiliation"
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34464,7 +34438,10 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "places"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34474,9 +34451,17 @@
       "key": "iceland:gudmundur_kamban",
       "name": "Гвюдмюндюр Камбан",
       "priority": "P3",
-      "issueCodes": [],
+      "issueCodes": [
+        "named-work-not-in-structured-list",
+        "named-work-not-in-structured-list"
+      ],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "language",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34488,7 +34473,8 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -34498,11 +34484,26 @@
       "key": "iceland:snorri_sturluson",
       "name": "Снорри Стурлусон",
       "priority": "P3",
-      "issueCodes": [
-        "named-work-not-in-structured-list"
-      ],
+      "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "iceland:steinn_steinarr",
+      "name": "Стейнн Стейннар",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "movement-era",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -34511,12 +34512,13 @@
     },
     {
       "key": "india:amit_chaudhuri",
-      "name": "Амита Чоудхури",
+      "name": "Амит Чаудхури",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "themes-style"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -123830,27 +123832,33 @@
       "name": "Луис Кардоса-и-Арагон",
       "biography": {
         "present": true,
-        "sha256": "5713c2349a22df960426c738b791ac1a8a73f30f887eb0f1cabb63f350aca677",
-        "characters": 229,
-        "sentenceCount": 3
+        "sha256": "e91dc39aed3a4533399ddd6d7710216392b134c95758ab71dbf555b15fe7ceca",
+        "characters": 221,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
-          "themes-style"
+          "life-dates",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1901,
+            "deathYear": 1992,
+            "text": "1901–1992"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
-          "themes-style"
+          "life-dates",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -123945,7 +123953,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -123964,17 +123972,15 @@
       "name": "Мигель Анхель Астуриас",
       "biography": {
         "present": true,
-        "sha256": "1ed106e8bdc26900a7a38da5e63b4ee1516d0b4d6fdfc11a3135a35abddf19ca",
-        "characters": 257,
-        "sentenceCount": 3
+        "sha256": "0140137ef5f2f089cc327d9b4d2a13534e724a7c79024e2b4a779223fd35889e",
+        "characters": 285,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "awards",
-          "critical-ranking",
           "identity-role",
-          "movement-era",
-          "national-cultural-affiliation",
+          "life-dates",
           "nobel",
           "themes-style",
           "works"
@@ -123982,16 +123988,22 @@
         "nobelYears": [
           1967
         ],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Легенды Гватемалы"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1899,
+            "deathYear": 1974,
+            "text": "1899–1974"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "awards",
-          "critical-ranking",
           "identity-role",
-          "movement-era",
-          "national-cultural-affiliation",
+          "life-dates",
           "nobel",
           "themes-style",
           "works"
@@ -124096,7 +124108,18 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Легенды Гватемалы"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
       "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
@@ -124116,29 +124139,25 @@
       "name": "Родриго Рей Роса",
       "biography": {
         "present": true,
-        "sha256": "3c01298da4a7365c3ea8b2d0b2152015a433ef6674ee7403d114e7e0ae00488a",
-        "characters": 249,
+        "sha256": "e5a5b428fa6a59f205f22c554f8d8e0e5d6bfb0cc76ddbda8fa74d7151a75860",
+        "characters": 211,
         "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence",
           "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence",
           "themes-style",
           "works"
         ]
@@ -124189,8 +124208,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1958-02-04",
+            "status": "exact-gregorian-match",
+            "cardValue": "1958-11-04",
+            "matchedClaim": {
+              "value": "1958-11-04",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 3,
+              "claimId": "Q4392560$6995A814-A82B-4652-9F9C-D5F01DC05808"
+            },
             "bestRankClaims": [
               {
                 "value": "1958-11-04",
@@ -124213,7 +124241,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -124232,23 +124260,23 @@
       "name": "Абдулай Сила",
       "biography": {
         "present": true,
-        "sha256": "fe0b8854f2eae685e29592fee2da059a1d183cfba2267eeed1fd346d2f62d4c8",
-        "characters": 91,
-        "sentenceCount": 1
+        "sha256": "55dfecc5e09a59afcb2b0da87723bef4b709d884bf8370eaa55534b21817320f",
+        "characters": 216,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "priority-claim"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "priority-claim"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -124298,8 +124326,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "compatible-at-shared-precision",
-            "cardValue": "1958",
+            "status": "exact-gregorian-match",
+            "cardValue": "1958-04-01",
             "matchedClaim": {
               "value": "1958-04-01",
               "precision": "day",
@@ -124331,67 +124359,13 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": true,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "guinea_bissau:antonio_aurelio_gomes",
-      "countryId": "guinea_bissau",
-      "countryName": "Гвинея-Бисау",
-      "writerId": "antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
-      "biography": {
-        "present": true,
-        "sha256": "610b666b90237f94bb55416706f1713c263719a23100ace7498acb88fc4dac3f",
-        "characters": 41,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
       "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
         "reliableStagingIdentity": false,
         "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
+        "wikidataStructuredTriage": true,
         "manualSourceResolutionApplied": false,
         "completeClaimLevelFactCheck": false
       }
@@ -124404,13 +124378,17 @@
       "name": "Одети Семеду",
       "biography": {
         "present": true,
-        "sha256": "b14ac0920c7661c72c7e25ad2c063f165a8d795f5d02b2e010a8b78b6872cde2",
-        "characters": 72,
-        "sentenceCount": 1
+        "sha256": "4f7b070ce84cd185aea442e49bd8d23450ce823d6842e63ee35f110aafc73fad",
+        "characters": 331,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
@@ -124418,7 +124396,11 @@
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -124519,26 +124501,34 @@
       "name": "Камара Лайе",
       "biography": {
         "present": true,
-        "sha256": "abdcb45406c160c7fb9bf55b0c490a8e00fa1c25738592fa90b6766c47d7b5c7",
-        "characters": 283,
+        "sha256": "6c4a0b481d25320077725138f00ad7d4c3a4ab7dccf83e0ff5199d17ccfc6d32",
+        "characters": 193,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
           "language",
-          "priority-claim",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Чёрного ребёнка"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1928,
+            "deathYear": 1980,
+            "text": "1928–1980"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "language",
-          "priority-claim",
+          "life-dates",
           "works"
         ]
       },
@@ -124649,8 +124639,19 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Чёрного ребёнка"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -124790,25 +124791,29 @@
       "name": "Сирил Дабидин",
       "biography": {
         "present": true,
-        "sha256": "9ee5ee3f39fc7f7525d0b7e2cc2a20b08eca0973cd4c4159c0f3e013fd1d7d77",
-        "characters": 218,
-        "sentenceCount": 2
+        "sha256": "7a04666c861caca42261e85193a88d453aedaaa86bd4544180ba5de7ab4b8544",
+        "characters": 224,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "The Wizard Swami"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -124829,7 +124834,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -124848,14 +124853,16 @@
       "name": "Эдгар Миттельхольцер",
       "biography": {
         "present": true,
-        "sha256": "f93c551dc07a6af4d30fd2177cc44ad704fe21a32b031cc1e25c1a36f35a3496",
-        "characters": 216,
+        "sha256": "e73ea2d8c17d637059ea4896feec8d4db9979390cca069566ac21563a01f3eba",
+        "characters": 220,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "reception-influence",
+          "national-cultural-affiliation",
+          "places",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
@@ -124865,7 +124872,9 @@
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "reception-influence",
+          "national-cultural-affiliation",
+          "places",
+          "themes-style",
           "works"
         ]
       },
@@ -124978,27 +124987,35 @@
       "name": "Мартин Картер",
       "biography": {
         "present": true,
-        "sha256": "38c5ef354d6177a953b024135931c77262d75364f5aad570b4eeeb2e970ee738",
-        "characters": 176,
+        "sha256": "ec3f8e1903bc46d567e08d0600edc6b0c739ebfae94826157b9684a2f92b8642",
+        "characters": 241,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "language",
-          "themes-style"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Poems of Resistance from British Guiana"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1927,
+            "deathYear": 1997,
+            "text": "1927–1997"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "language",
-          "themes-style"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125100,70 +125117,25 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": true,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "guyana:roshni_kempadoo",
-      "countryId": "guyana",
-      "countryName": "Гайана",
-      "writerId": "roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
-      "biography": {
-        "present": true,
-        "sha256": "3576ddb2862ec0bc63d3148573198008c573c3ab286ecc0f26912de0c2fba93c",
-        "characters": 168,
-        "sentenceCount": 2
-      },
-      "claims": {
-        "types": [
-          "identity-role",
-          "themes-style"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role",
-          "themes-style"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Poems of Resistance from British Guiana"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
       "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
         "reliableStagingIdentity": false,
         "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
+        "wikidataStructuredTriage": true,
         "manualSourceResolutionApplied": false,
         "completeClaimLevelFactCheck": false
       }
@@ -125176,25 +125148,37 @@
       "name": "Уилсон Харрис",
       "biography": {
         "present": true,
-        "sha256": "4de7cb3e1fd9245f9ecbf953c845d367fed3fc2d417f20443f4b58745ba3fae7",
-        "characters": 180,
+        "sha256": "52474eba98e8fcfd35562de2740d0c6592e2ee4b59b37612aa59c914bc6a24ee",
+        "characters": 226,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "priority-claim",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Palace of the Peacock"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1921,
+            "deathYear": 2018,
+            "text": "1921–2018"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "priority-claim",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125297,7 +125281,18 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Palace of the Peacock"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
       "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
@@ -125317,26 +125312,27 @@
       "name": "Эдвидж Дантикат",
       "biography": {
         "present": true,
-        "sha256": "2d29118f88721b118f69b70fe4c6a1c21beee06cf57248428bf6628997bca826",
-        "characters": 193,
-        "sentenceCount": 3
+        "sha256": "2c93d21a9a81e7f8183deba337257be087e3c496e7e6f4df5792fd9fa244dbda",
+        "characters": 252,
+        "sentenceCount": 5
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style",
+          "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Breath, Eyes, Memory",
+          "Krik? Krak!"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style",
+          "national-cultural-affiliation",
           "works"
         ]
       },
@@ -125357,8 +125353,29 @@
         "dates": {}
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Breath, Eyes, Memory"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        },
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Krik? Krak!"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -125377,27 +125394,37 @@
       "name": "Франкетьен",
       "biography": {
         "present": true,
-        "sha256": "aa6b792f19cc55679762609995a547369a19b2372acdddbc3e4b27a548cd53c2",
-        "characters": 165,
-        "sentenceCount": 3
+        "sha256": "58bd7f556536340332704d45879e1b4c7ae865804e16f54861e1f084d85971b7",
+        "characters": 223,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "language",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Dézafi"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1936,
+            "deathYear": 2025,
+            "text": "1936–2025"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "language",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125474,8 +125501,17 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "2024-02-20",
+            "status": "exact-gregorian-match",
+            "cardValue": "2025-02-20",
+            "matchedClaim": {
+              "value": "2025-02-20",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q162778$b51fc1a1-4201-3811-58fa-fbca2852cb28"
+            },
             "bestRankClaims": [
               {
                 "value": "2025-02-20",
@@ -125492,8 +125528,19 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Dézafi"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -125512,23 +125559,37 @@
       "name": "Жак Румен",
       "biography": {
         "present": true,
-        "sha256": "7f356acf6088ff4f565f8b5296033527056ebcd229a5ee9e1be784cae3f866cf",
-        "characters": 219,
-        "sentenceCount": 3
+        "sha256": "139314bb73ee90e761fcde13078c5c6e81f36d003a8ca02c8e29395fac06afc0",
+        "characters": 328,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "places",
+          "priority-claim",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Хозяева росы"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1907,
+            "deathYear": 1944,
+            "text": "1907–1944"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "places",
+          "priority-claim",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125631,7 +125692,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -125650,25 +125711,25 @@
       "name": "Жак Стивен Алексис",
       "biography": {
         "present": true,
-        "sha256": "3231ab04195c29fd69f3aeff8c661ee017cba3124e8f1204e90a9f48bae95a5b",
-        "characters": 177,
-        "sentenceCount": 3
+        "sha256": "c9c2f38b82aa75b5db1781d9ff1d98991df25a9d710d91dfd10fdbccae0cebc8",
+        "characters": 312,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Compère général soleil"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125688,8 +125749,19 @@
         "dates": {}
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Compère général soleil"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -125708,27 +125780,35 @@
       "name": "Хуан Рамон Молина",
       "biography": {
         "present": true,
-        "sha256": "98ca36161fb39dc4c1b083eabe0fc170e86ee95599a773dbc72f1b8ab2aebed6",
-        "characters": 144,
-        "sentenceCount": 1
+        "sha256": "15fe8bd017392bf4d465186f9231fea07f79a81384320e09cabc74aa2e2b9b66",
+        "characters": 205,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "language",
-          "themes-style"
+          "life-dates",
+          "movement-era",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1875,
+            "deathYear": 1908,
+            "text": "1875–1908"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "language",
-          "themes-style"
+          "life-dates",
+          "movement-era",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125830,7 +125910,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -125849,21 +125929,23 @@
       "name": "Хулио Эското",
       "biography": {
         "present": true,
-        "sha256": "fdd60df6e5903a9c54ddc712849c8597f456534ba380b24bd35f355afdc5e447",
-        "characters": 92,
-        "sentenceCount": 2
+        "sha256": "0418ad3a83808a634c349046995e5dae5b821639efe33ab5dbc96ce628816fbf",
+        "characters": 194,
+        "sentenceCount": 4
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -125903,22 +125985,30 @@
       "name": "Рамон Амайя Амадор",
       "biography": {
         "present": true,
-        "sha256": "5631cc877723952438f019b19da9b709ea120534c17b8cbda4f38287a63d00c3",
-        "characters": 200,
+        "sha256": "97b8c614162e6f88aa23f0d9ed22544e91caca75f8135ca5e45e3b644b1dd76b",
+        "characters": 199,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1916,
+            "deathYear": 1966,
+            "text": "1916–1966"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -126040,25 +126130,29 @@
       "name": "Роберто Соса",
       "biography": {
         "present": true,
-        "sha256": "576536849b47bce67e79ef3b9828007056a4d8cfa145d1a6e4b15ab81b20d20c",
-        "characters": 183,
-        "sentenceCount": 2
+        "sha256": "b20065cc46283f30c01266e156996fc1491f4d9311950b5f9013ad2b0980587d",
+        "characters": 104,
+        "sentenceCount": 1
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1930,
+            "deathYear": 2011,
+            "text": "1930–2011"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -126161,7 +126255,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -126177,18 +126271,17 @@
       "countryId": "hong_kong",
       "countryName": "Гонконг",
       "writerId": "xi_xi",
-      "name": "Сянь Юй",
+      "name": "Си Си",
       "biography": {
         "present": true,
-        "sha256": "e2e8127492956ca071005e89e1213b133d3f5163476d9f86078cd19c7b106440",
-        "characters": 67,
+        "sha256": "64ca7222fe0ee412ab2c719910901eec84705cda37b9cf1dfa5df81ca073fe36",
+        "characters": 80,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "works"
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
@@ -126196,9 +126289,8 @@
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "works"
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -126248,8 +126340,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1937-10-08",
+            "status": "exact-gregorian-match",
+            "cardValue": "1937-10-07",
+            "matchedClaim": {
+              "value": "1937-10-07",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q8044053$884a8017-49bf-d8e1-5998-f463fbb861a8"
+            },
             "bestRankClaims": [
               {
                 "value": "1937-10-07",
@@ -126292,7 +126393,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -126450,25 +126551,37 @@
       "name": "Эндре Ади",
       "biography": {
         "present": true,
-        "sha256": "49d519d129e177efe5922273708d4a1367c4b170033b3288a9ca8e71d2fe778a",
-        "characters": 45,
+        "sha256": "3481cadc976137736a785cb6e449dc7fb7537b78c697af8cd366bb27c92d80d1",
+        "characters": 111,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Новые стихи"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1877,
+            "deathYear": 1919,
+            "text": "1877–1919"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -126570,8 +126683,19 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Новые стихи"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -126754,13 +126878,14 @@
       "name": "Имре Мадач",
       "biography": {
         "present": true,
-        "sha256": "1e9f4a2d88907a5abb1e19c7fe7f705e5efc106e31c3590dc44316dfe88c0699",
-        "characters": 66,
+        "sha256": "5ab4c8f314aab2ff3a9348db7b8f77ca4088935906663e447f7b466e24c172fa",
+        "characters": 100,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
@@ -126769,10 +126894,17 @@
         "namedWorkTitles": [
           "Трагедия человека"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1823,
+            "deathYear": 1864,
+            "text": "1823–1864"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -126826,17 +126958,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1823-01-21",
-            "matchedClaim": {
-              "value": "1823-01-21",
-              "precision": "day",
-              "calendarId": "Q1985727",
-              "rank": "preferred",
-              "referenced": true,
-              "referenceCount": 4,
-              "claimId": "Q366331$7F4989D4-0784-482F-AAF0-EB49EBED27CF"
-            },
+            "status": "wikidata-date-discrepancy",
+            "cardValue": "1823-01-20",
             "bestRankClaims": [
               {
                 "value": "1823-01-21",
@@ -126898,16 +127021,16 @@
       "name": "Ласло Краснахоркаи",
       "biography": {
         "present": true,
-        "sha256": "cdae6e6da8edf269bada80dd42b4653a27b434c129de79b1c9adbde6f02df0fa",
-        "characters": 271,
-        "sentenceCount": 2
+        "sha256": "b7596d5a020cb35a78a940a132a2419e7bafa018f752c547980b2df1b745d7bd",
+        "characters": 357,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "awards",
           "national-cultural-affiliation",
           "nobel",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [
           2025
@@ -126917,10 +127040,10 @@
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "awards",
           "national-cultural-affiliation",
           "nobel",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -127022,24 +127145,30 @@
       "name": "Миклош Радноти",
       "biography": {
         "present": true,
-        "sha256": "49d519d129e177efe5922273708d4a1367c4b170033b3288a9ca8e71d2fe778a",
-        "characters": 45,
-        "sentenceCount": 1
+        "sha256": "606f0388d6f38a33913c82a84b51f86bbba6f1cfce22769b251b2c39c7b188c9",
+        "characters": 214,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1909,
+            "deathYear": 1944,
+            "text": "1909–1944"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation"
         ]
       },
@@ -127161,7 +127290,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -127180,25 +127309,35 @@
       "name": "Мор Йокаи",
       "biography": {
         "present": true,
-        "sha256": "2001a2ff6a866bc3b006d8a9eb17a5a17199990e37f409c5b1f37ac83e1a87ba",
-        "characters": 50,
+        "sha256": "a5058d1195137e9dd2b22eee8f7b88f7dad86abd8f3e1535d60b717c0889463d",
+        "characters": 171,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Сыновья человека с каменным сердцем"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1825,
+            "deathYear": 1904,
+            "text": "1825–1904"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -127301,7 +127440,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -127320,20 +127459,22 @@
       "name": "Шандор Петефи",
       "biography": {
         "present": true,
-        "sha256": "dea5a139d44f406041292b67e4aff62617e9784ef138406f320861b13856b12d",
-        "characters": 71,
+        "sha256": "ecfa13b681c604198b0e5fc6d0383036d57b00933840e5de68446e2b586410cf",
+        "characters": 190,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
           "identity-role",
-          "movement-era",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Апостол"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -127341,7 +127482,6 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "movement-era",
           "national-cultural-affiliation",
           "works"
         ]
@@ -127481,21 +127621,33 @@
       "name": "Жигмонд Мориц",
       "biography": {
         "present": true,
-        "sha256": "2928e9783d2dbdb5c83bee5d971c63ef0b8e92c9d6f44b34e7f4533cee445279",
-        "characters": 40,
-        "sentenceCount": 1
+        "sha256": "149f5ff8d3eeb2a656cbebe50be534d75a94baf2320e9445830b644fb83553eb",
+        "characters": 183,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "national-cultural-affiliation"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1879,
+            "deathYear": 1942,
+            "text": "1879–1942"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "national-cultural-affiliation"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -127618,18 +127770,20 @@
       "name": "Арнальдур Индридасон",
       "biography": {
         "present": true,
-        "sha256": "76f0fd09fbcc442d49cdbfdc3e6ad7703d8b5172ef09033f2c5785c3c7c8e387",
-        "characters": 90,
-        "sentenceCount": 1
+        "sha256": "bec1b08c3eee9c3e328d7ef6bf6512be3a7d6edc55355fba2e0b84d3bc0ee8b9",
+        "characters": 157,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Сыны праха"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -127637,7 +127791,7 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -127734,8 +127888,19 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Сыны праха"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -127754,21 +127919,33 @@
       "name": "Гримур Томсен",
       "biography": {
         "present": true,
-        "sha256": "856bee4d819878da195a61d8c2eb60e6580e807b1967737f8b50538b1b2635a7",
-        "characters": 38,
-        "sentenceCount": 1
+        "sha256": "a68cdb7173797d72db3b385a6bdfda86dbcf807913a4d7479fbb1cc6b8704049",
+        "characters": 188,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "places"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1820,
+            "deathYear": 1896,
+            "text": "1820–1896"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "places"
         ]
       },
       "stagingEvidence": {
@@ -127890,21 +128067,40 @@
       "name": "Гвюдмюндюр Камбан",
       "biography": {
         "present": true,
-        "sha256": "e07ba2861306d81f2aabad648e931d21dd5b6c173ea90bb13f900af9c6ca547a",
-        "characters": 40,
-        "sentenceCount": 1
+        "sha256": "910b2432249d81199ee66d7218275ceaf684e8a0de5ecee94dc79bca442d1816",
+        "characters": 185,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Скаульхольт",
+          "Хадда Падда"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1888,
+            "deathYear": 1945,
+            "text": "1888–1945"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -128006,7 +128202,28 @@
         }
       },
       "manualResolutions": [],
-      "issues": [],
+      "issues": [
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Скаульхольт"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        },
+        {
+          "code": "named-work-not-in-structured-list",
+          "severity": "metadata-gap",
+          "field": "biography/works",
+          "values": {
+            "biographyTitle": "Хадда Падда"
+          },
+          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
+          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
+        }
+      ],
       "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
@@ -128026,26 +128243,37 @@
       "name": "Гуннар Гуннарссон",
       "biography": {
         "present": true,
-        "sha256": "09db5904232d3119bf9855c9b59796fa3e133e0616ad0808c99df6c47a6608bb",
-        "characters": 54,
-        "sentenceCount": 1
+        "sha256": "e2ff44738e768c8bd7677c35e4cb4edf98509d196f569a17cdd26d722f7401c7",
+        "characters": 187,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1889,
+            "deathYear": 1975,
+            "text": "1889–1975"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking"
+          "language",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -128164,7 +128392,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -128183,32 +128411,37 @@
       "name": "Халлдор Лакснесс",
       "biography": {
         "present": true,
-        "sha256": "5630a262568683bb81397453ac36d8b51b48b12dccf4f94d6f0b16224298f5c4",
-        "characters": 91,
-        "sentenceCount": 1
+        "sha256": "a376071ff2890a6af960e9f18db8a9be79b85537840cc863edc4a9fd3c7cc8ff",
+        "characters": 162,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
-          "critical-ranking",
           "identity-role",
-          "nobel"
+          "life-dates",
+          "nobel",
+          "works"
         ],
         "nobelYears": [
           1955
         ],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1902,
+            "deathYear": 1998,
+            "text": "1902–1998"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
-          "critical-ranking",
-          "nobel"
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -128348,21 +128581,29 @@
       "name": "Йоун Арнасон",
       "biography": {
         "present": true,
-        "sha256": "1aa576fde2742c8c94ef6ca60a44716407d4162c172bf7116cd2a4f1bbdc7100",
-        "characters": 51,
-        "sentenceCount": 1
+        "sha256": "8f528976869fa222ed0d4e103585506844bcc5e9660a817d072ad6b9bcc78858",
+        "characters": 166,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1819,
+            "deathYear": 1888,
+            "text": "1819–1888"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -128483,24 +128724,30 @@
       "name": "Снорри Стурлусон",
       "biography": {
         "present": true,
-        "sha256": "9dc8ff59f9cddf69c84bd4827bc2e47b2374679b325704a6d4111dbfd0a89f54",
-        "characters": 74,
-        "sentenceCount": 1
+        "sha256": "335031548a3f53fd74610d08ffeb885dc1a9c60d4f4b93f27963f656426a403a",
+        "characters": 195,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 2,
-        "namedWorkTitles": [
-          "Младшей Эдды"
+        "namedWorkTitles": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1179,
+            "deathYear": 1241,
+            "text": "1179–1241"
+          }
         ],
-        "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -128603,18 +128850,7 @@
         }
       },
       "manualResolutions": [],
-      "issues": [
-        {
-          "code": "named-work-not-in-structured-list",
-          "severity": "metadata-gap",
-          "field": "biography/works",
-          "values": {
-            "biographyTitle": "Младшей Эдды"
-          },
-          "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
-          "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
-        }
-      ],
+      "issues": [],
       "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
@@ -128634,23 +128870,35 @@
       "name": "Стейнн Стейннар",
       "biography": {
         "present": true,
-        "sha256": "d27645fa2bfca47f8409e8f197bbe600ef3b2efaed834477353a670a38b9a638",
-        "characters": 45,
-        "sentenceCount": 1
+        "sha256": "9d9f5c5158716fd4127f216a92fd927c8b84b20c29c785b4f615cce700eac3c3",
+        "characters": 153,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "movement-era",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1908,
+            "deathYear": 1958,
+            "text": "1908–1958"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "movement-era",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -128753,7 +129001,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -128769,17 +129017,18 @@
       "countryId": "india",
       "countryName": "Индия",
       "writerId": "amit_chaudhuri",
-      "name": "Амита Чоудхури",
+      "name": "Амит Чаудхури",
       "biography": {
         "present": true,
-        "sha256": "81d6eb6ad5b67e15e54998cd557f73f33a4bbe2507d74d235c3c26e49535e363",
-        "characters": 119,
-        "sentenceCount": 1
+        "sha256": "54b113f733685f717e7890cf876548a4bd183610bbc5ebf453e454676a8a6e54",
+        "characters": 207,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "themes-style"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
@@ -128788,7 +129037,8 @@
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "themes-style"
         ]
       },
       "stagingEvidence": {

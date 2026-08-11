@@ -14,6 +14,7 @@ export type WriterBiographyLegacyCorrection = {
 };
 
 const checkedAt = "2026-08-09";
+const batch31CheckedAt = "2026-08-11";
 
 function correction(
   countryId: string,
@@ -1371,6 +1372,258 @@ export const writerPublicProfileFactCorrections = [
     ],
     note: "Adds the source-confirmed death date 28 March 2026 and closes the public life-year display without changing the immutable book source.",
   },
+  {
+    countryId: "guatemala",
+    writerId: "luis_cardoza_y_aragon",
+    patch: {
+      birthPlace: "Антигуа-Гватемала, Гватемала",
+    },
+    evidence: [
+      {
+        provider: "Registro Nacional de las Personas de Guatemala",
+        url: "https://www.renap.gob.gt/sites/default/files/publicaciones-renap/luis-cardoza-y-aragon-web.pdf",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Ministerio de Cultura y Deportes de Guatemala",
+        url: "https://mcd.gob.gt/wp-content/uploads/2022/05/7-Poesi%E2%95%A0ua-de-Luis-Cardoza-y-Arago%E2%95%A0un-Lecturas-Bicentenarias.pdf",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the generic Guatemala City birthplace to the documented city of Antigua Guatemala; the disputed birth year is deliberately left unchanged in this narrow patch.",
+  },
+  {
+    countryId: "guatemala",
+    writerId: "rodrigo_rey_rosa",
+    patch: {
+      birthDate: "1958-11-04",
+    },
+    evidence: [
+      {
+        provider: "Enciclopedia de la Literatura en México",
+        url: "https://www.elem.mx/autor/datos/116526",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Editorial Anagrama",
+        url: "https://www.anagrama-ed.es/autor/rey-rosa-rodrigo-1237",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the transposed placeholder date 4 February to the source-confirmed 4 November 1958.",
+  },
+  {
+    countryId: "guinea_bissau",
+    writerId: "abdulai_sila",
+    patch: {
+      birthDate: "1958-04-01",
+      birthPlace: "Катио, Гвинея-Бисау",
+    },
+    evidence: [
+      {
+        provider: "Literafro — Universidade Federal de Minas Gerais",
+        url: "https://www.letras.ufmg.br/literafro/literafricas/literatura-da-guine-bissau/1581-wellington-marcal-de-carvalho-abdulai-sila",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Pallas Editora",
+        url: "https://pallaseditora.com.br/autor/abdulai-sila-3/",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Adds the source-confirmed birth date and replaces Bissau with the documented southern town of Catió.",
+  },
+  {
+    countryId: "guyana",
+    writerId: "cyril_dabydeen",
+    patch: {
+      birthDate: "1945",
+    },
+    evidence: [
+      {
+        provider: "Peepal Tree Press",
+        url: "https://www.peepaltreepress.com/authors/cyril-dabydeen",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Toronto Metropolitan University Library",
+        url: "https://library.torontomu.ca/asianheritage/authors/dabydeen/",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Removes the unsupported 5 September precision and retains only the independently documented 1945 birth year.",
+  },
+  {
+    countryId: "guyana",
+    writerId: "wilson_harris",
+    patch: {
+      deathPlace: "Челмсфорд, Англия",
+    },
+    evidence: [
+      {
+        provider: "The Guardian",
+        url: "https://www.theguardian.com/books/2018/mar/09/sir-wilson-harris-obituary",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Stabroek News",
+        url: "https://www.stabroeknews.com/2018/04/17/guyana-review/wilson-harris-guyanese-writer-of-intricate-novels-dies-at-96/",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Replaces the incorrect Warwickshire death place with Chelmsford, which the two obituaries identify as Harris's place of death and final home.",
+  },
+  {
+    countryId: "haiti",
+    writerId: "franketienne",
+    patch: {
+      years: "1936–2025",
+      deathDate: "2025-02-20",
+      birthPlace: "Равин-Сеш, Артибонит, Гаити",
+      deathPlace: "Дельма, Гаити",
+    },
+    evidence: [
+      {
+        provider: "Ministère de la Culture et de la Communication d’Haïti",
+        url: "https://communication.gouv.ht/communiques/le-mcc-rend-hommage-a-jean-pierre-basilic-dantor-franck-etienne-dargent-dit-franketienne/",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "HaitiLibre",
+        url: "https://www.haitilibre.com/article-44327-haiti-necrologie-deces-de-franketienne-pluie-de-messages.html",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "UNESCO",
+        url: "https://www.unesco.org/fr/articles/franketienne-1936-2025-un-defenseur-infatigable-de-la-culture-haitienne-et-artiste-de-la-paix-de",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the false 2024 death year and places Frankétienne's birth in Ravine-Sèche, Artibonite, and his death at his Delmas residence.",
+  },
+  {
+    countryId: "haiti",
+    writerId: "jacques_stephen_alexis",
+    patch: {
+      deathDate: "1961",
+      birthPlace: "Гонаив, Гаити",
+    },
+    evidence: [
+      {
+        provider: "Bibliothèque nationale de France",
+        url: "https://www.bnf.fr/fr/jacques-stephen-alexis-bibliographie",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "University of Miami Libraries",
+        url: "https://scholar.library.miami.edu/digital/exhibits/show/haitian-literature/biographical-timeline",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the birthplace from the island of Gonâve to Gonaïves and removes an exact death day that is not established: the university timeline records only his disappearance in April 1961.",
+  },
+  {
+    countryId: "honduras",
+    writerId: "juan_ramon_molina",
+    patch: {
+      birthPlace: "Комаягуэла, Гондурас",
+    },
+    evidence: [
+      {
+        provider: "Universidad Nacional Autónoma de Honduras",
+        url: "https://blogs.unah.edu.hn/cac/armanda-lara-y-los-poemas-de-ramon-molina/",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "UNAH Recursos de Aprendizaje",
+        url: "https://micrositios-cv.unah.edu.hn/die/die_rri_fhum/EG011/ura_unidad2tema3_17294/index.html",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the birthplace from the distinct city of Comayagua to the documented Comayagüela.",
+  },
+  {
+    countryId: "hong_kong",
+    writerId: "xi_xi",
+    patch: {
+      name: "Си Си",
+      birthDate: "1937-10-07",
+    },
+    evidence: [
+      {
+        provider: "Chinese University of Hong Kong Library",
+        url: "https://hklit.lib.cuhk.edu.hk/writers_xixi_about/",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Hong Kong Education Bureau",
+        url: "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/J10.pdf",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Restores the writer's established pen name Xi Xi in Russian and corrects the birth date to 7 October 1937.",
+  },
+  {
+    countryId: "hungary",
+    writerId: "imre_madach",
+    patch: {
+      birthDate: "1823-01-20",
+    },
+    evidence: [
+      {
+        provider: "Petőfi Irodalmi Múzeum",
+        url: "https://opac-nevter.pim.hu/record/-/record/PIM63921",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Országos Széchényi Könyvtár",
+        url: "https://epa.oszk.hu/02000/02055/00015/pdf/EPA02055_nemzeti_evforduloink_2023.pdf",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the birth date from 21 January to the 20 January 1823 date recorded by the Petőfi Literary Museum and National Széchényi Library.",
+  },
+  {
+    countryId: "iceland",
+    writerId: "steinn_steinarr",
+    patch: {
+      birthPlace: "Лёйгаланд, близ Кальдалона, Исландия",
+    },
+    evidence: [
+      {
+        provider: "Snjáfjallasetur heritage centre",
+        url: "https://www.snjafjallasetur.is/ensteinn.html",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Steinn Steinarr Literary Centre",
+        url: "https://www.steinnsteinarr.is/en/steinn-steinarrs-life/",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Replaces the unrelated Ölfusá location with the documented Laugaland farm near Kaldalón; no coordinates are inferred.",
+  },
+  {
+    countryId: "india",
+    writerId: "amit_chaudhuri",
+    patch: {
+      name: "Амит Чаудхури",
+      fullName: "Amit Chaudhuri",
+    },
+    evidence: [
+      {
+        provider: "Ashoka University",
+        url: "https://www.ashoka.edu.in/profile/amit-chaudhuri/",
+        checkedAt: batch31CheckedAt,
+      },
+      {
+        provider: "Sahitya Akademi",
+        url: "https://sahitya-akademi.gov.in/library/meettheauthor/amit_chaudhuri.pdf",
+        checkedAt: batch31CheckedAt,
+      },
+    ],
+    note: "Corrects the declined and misspelled Russian display name and records the university's Latin-script authority form.",
+  },
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1454,6 +1707,8 @@ export const quarantinedWriterIdentities = [
   ["gabon", "juste_auguste_kotto", "identity-not-established", "No authoritative literary identity or attributable bibliography was established in the checked BnF and WorldCat catalogs."],
   ["gambia", "baaba_jobarteh", "identity-not-established", "The card appears to conflate names from West African musical traditions; no authoritative literary identity or attributable bibliography was established."],
   ["grenada", "julian_fedon", "identity-not-established", "Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."],
+  ["guinea_bissau", "antonio_aurelio_gomes", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Guinea-Bissauan writer; the card remains in the internal source archive only."],
+  ["guyana", "roshni_kempadoo", "cross-country-identity-conflict", "The card conflates British-Guyanese visual artist Roshini Kempadoo with Guyanese novelist Oonya Kempadoo; the attributed novels Buxton Spice and Tide Running belong to Oonya Kempadoo."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

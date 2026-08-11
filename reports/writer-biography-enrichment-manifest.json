@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-11T15:16:04.907Z",
+  "generatedAt": "2026-08-11T19:07:08.082Z",
   "policyDocument": "docs/WRITER_BIOGRAPHY_SOURCES_POLICY_RU.md",
   "proseGeneration": "disabled",
   "progress": {
-    "total": 1707,
+    "total": 1705,
     "ready": 45,
-    "remaining": 1662,
+    "remaining": 1660,
     "researchDrafts": 20,
     "validResearchDrafts": 20,
     "awaitingIndependentReview": 0,
     "approvedForPromotion": 20,
-    "remainingWithoutResearchDraft": 1662,
+    "remainingWithoutResearchDraft": 1660,
     "workflowStates": {
-      "source-research": 1662,
+      "source-research": 1660,
       "rights-review": 0,
       "editorial-rewrite": 0,
       "fact-check": 0,
@@ -32013,8 +32013,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 257,
-        "sentenceCount": 3,
+        "textLength": 285,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -32166,8 +32166,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 229,
-        "sentenceCount": 3,
+        "textLength": 221,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -32268,7 +32268,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 249,
+        "textLength": 211,
         "sentenceCount": 3,
         "flags": {
           "missing": false,
@@ -32319,11 +32319,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 216,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32370,62 +32370,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 331,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "guinea_bissau:antonio_aurelio_gomes",
-      "writerId": "antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
-      "countryId": "guinea_bissau",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 41,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -32483,7 +32432,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 283,
+        "textLength": 193,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -32596,7 +32545,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 216,
+        "textLength": 220,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -32647,7 +32596,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 180,
+        "textLength": 226,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -32698,7 +32647,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 176,
+        "textLength": 241,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -32749,59 +32698,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 218,
-        "sentenceCount": 2,
-        "flags": {
-          "missing": false,
-          "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "guyana:roshni_kempadoo",
-      "writerId": "roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
-      "countryId": "guyana",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 168,
-        "sentenceCount": 2,
+        "textLength": 224,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -32851,8 +32749,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 219,
-        "sentenceCount": 3,
+        "textLength": 328,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -32902,8 +32800,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 165,
-        "sentenceCount": 3,
+        "textLength": 223,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -32953,8 +32851,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 177,
-        "sentenceCount": 3,
+        "textLength": 312,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -33004,8 +32902,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 193,
-        "sentenceCount": 3,
+        "textLength": 252,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
           "short": false,
@@ -33055,7 +32953,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 200,
+        "textLength": 199,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -33106,11 +33004,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 144,
-        "sentenceCount": 1,
+        "textLength": 205,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33157,11 +33055,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 183,
-        "sentenceCount": 2,
+        "textLength": 104,
+        "sentenceCount": 1,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33208,11 +33106,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 92,
-        "sentenceCount": 2,
+        "textLength": 194,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33229,7 +33127,7 @@
     {
       "key": "hong_kong:xi_xi",
       "writerId": "xi_xi",
-      "name": "Сянь Юй",
+      "name": "Си Си",
       "countryId": "hong_kong",
       "workflow": {
         "state": "source-research",
@@ -33259,7 +33157,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 67,
+        "textLength": 80,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -33310,7 +33208,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 71,
+        "textLength": 190,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -33361,7 +33259,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
+        "textLength": 100,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -33412,7 +33310,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 50,
+        "textLength": 171,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -33463,14 +33361,14 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
+        "textLength": 111,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
           "short": true,
           "overlyLong": false,
           "generic": false,
-          "duplicate": true,
+          "duplicate": false,
           "unsourced": true,
           "rightsUnproven": true,
           "licensedMetadataMissing": false,
@@ -33514,11 +33412,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 40,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33616,14 +33514,14 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 214,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
-          "duplicate": true,
+          "duplicate": false,
           "unsourced": true,
           "rightsUnproven": true,
           "licensedMetadataMissing": false,
@@ -33718,11 +33616,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 195,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33769,11 +33667,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 51,
-        "sentenceCount": 1,
+        "textLength": 166,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33820,11 +33718,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 38,
-        "sentenceCount": 1,
+        "textLength": 188,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33871,11 +33769,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 187,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33922,11 +33820,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 40,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -33973,11 +33871,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 162,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -34024,11 +33922,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 153,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -34075,11 +33973,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 157,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -35524,7 +35422,7 @@
     {
       "key": "india:amit_chaudhuri",
       "writerId": "amit_chaudhuri",
-      "name": "Амита Чоудхури",
+      "name": "Амит Чаудхури",
       "countryId": "india",
       "workflow": {
         "state": "source-research",
@@ -35554,11 +35452,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 119,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
