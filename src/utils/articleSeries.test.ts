@@ -13,6 +13,12 @@ describe("локализация серий журнала", () => {
     expect(articleSeriesLabel("page-bookvsmovie", "", "en")).toBe(
       "Book and screen adaptation"
     );
+    expect(articleSeriesLabel("page-writers-world", "", "ru")).toBe(
+      "Литературная планета"
+    );
+    expect(articleSeriesLabel("page-writers-world", "", "en")).toBe(
+      "Literary Planet"
+    );
   });
 
   it("сохраняет уже локализованный fallback для неизвестной серии", () => {

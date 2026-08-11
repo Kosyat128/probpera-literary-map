@@ -60,7 +60,7 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
           </span>
         </a>
         <nav aria-label={t("Основная навигация")}>
-          <a href={publicPath("#atlas")}>{t("Планета")}</a>
+          <a href={publicPath("#atlas")}>{t("Литературная планета")}</a>
           <a href={publicPath("#journal")}>{t("Статьи")}</a>
           <a href={publicPath("#books")}>{t("Книги")}</a>
           <CmsNavigationLinks location="header" />
