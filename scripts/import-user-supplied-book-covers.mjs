@@ -42,6 +42,10 @@ const thumbnailDirectory = path.join(coverDirectory, "thumbs");
 const GENERATED_AT = "2026-08-11T00:00:00.000Z";
 const EDITORIAL_NOTE =
   "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания.";
+const OUTPUT = Object.freeze({
+  full: Object.freeze({ width: 720, height: 1_080, quality: 88 }),
+  thumbnail: Object.freeze({ width: 360, height: 540, quality: 86 }),
+});
 const ARCHIVE = Object.freeze({
   name: "Новые обложки.rar",
   sha256: "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
@@ -583,15 +587,29 @@ function outputPaths(slug) {
 async function renderCover(sourcePath) {
   const full = await sharp(sourcePath, { failOn: "warning" })
     .rotate()
-    .resize({ width: 800, height: 1_200, fit: "cover", position: "centre" })
+    .resize({
+      width: OUTPUT.full.width,
+      height: OUTPUT.full.height,
+      fit: "cover",
+      position: "centre",
+    })
     .sharpen({ sigma: 0.55, m1: 0.7, m2: 1.5 })
-    .webp({ quality: 88, smartSubsample: true, effort: 6 })
+    .webp({ quality: OUTPUT.full.quality, smartSubsample: true, effort: 6 })
     .toBuffer();
   const thumbnail = await sharp(sourcePath, { failOn: "warning" })
     .rotate()
-    .resize({ width: 400, height: 600, fit: "cover", position: "centre" })
+    .resize({
+      width: OUTPUT.thumbnail.width,
+      height: OUTPUT.thumbnail.height,
+      fit: "cover",
+      position: "centre",
+    })
     .sharpen({ sigma: 0.65, m1: 0.8, m2: 1.65 })
-    .webp({ quality: 86, smartSubsample: true, effort: 6 })
+    .webp({
+      quality: OUTPUT.thumbnail.quality,
+      smartSubsample: true,
+      effort: 6,
+    })
     .toBuffer();
   return { full, thumbnail };
 }
@@ -670,6 +688,8 @@ function createMarkdownReport(report) {
     `- SHA-256 архива: \`${report.archive.sha256}\``,
     `- Файлов PNG: ${report.sourceInventory.entries}`,
     `- Уникальных изображений: ${report.sourceInventory.uniqueImages}`,
+    `- Полные assets: ${report.output.full.width}×${report.output.full.height}, WebP q${report.output.full.quality}`,
+    `- Миниатюры: ${report.output.thumbnail.width}×${report.output.thumbnail.height}, WebP q${report.output.thumbnail.quality}`,
     `- Точных импортов в пустые карточки: ${report.summary.imported}`,
     `- Пропущено из-за существующей обложки: ${report.summary.skippedExisting}`,
     `- Пропущено как второй вариант того же произведения: ${report.summary.skippedDuplicateArtwork}`,
@@ -750,6 +770,10 @@ async function applyImport(input, canonical) {
       visibleTitle: book.title,
       coverUrl: paths.coverUrl,
       coverThumbnailUrl: paths.coverThumbnailUrl,
+      coverWidth: OUTPUT.full.width,
+      coverHeight: OUTPUT.full.height,
+      coverThumbnailWidth: OUTPUT.thumbnail.width,
+      coverThumbnailHeight: OUTPUT.thumbnail.height,
       coverSha256: sha256(rendered.full),
       coverThumbnailSha256: sha256(rendered.thumbnail),
       equivalentWorkKeys: canonical.familyKeysByWorkKey.get(item.workKey),
@@ -803,6 +827,10 @@ async function applyImport(input, canonical) {
       uncompressedBytes: input.totalBytes,
       duplicateGroups: input.duplicateGroups,
     },
+    output: {
+      full: { ...OUTPUT.full, format: "webp" },
+      thumbnail: { ...OUTPUT.thumbnail, format: "webp" },
+    },
     summary: {
       identified: identified.size,
       imported: imports.length,
@@ -845,7 +873,15 @@ async function validateCommittedOutputs(canonical) {
     report.summary.ambiguous !== ambiguous.length ||
     report.summary.unmatched !== unmatched.length ||
     report.sourceInventory.duplicateEntries !== ARCHIVE.duplicateEntries ||
-    report.sourceInventory.duplicateGroups?.length !== ARCHIVE.duplicateEntries
+    report.sourceInventory.duplicateGroups?.length !== ARCHIVE.duplicateEntries ||
+    report.output?.full?.width !== OUTPUT.full.width ||
+    report.output?.full?.height !== OUTPUT.full.height ||
+    report.output?.full?.quality !== OUTPUT.full.quality ||
+    report.output?.full?.format !== "webp" ||
+    report.output?.thumbnail?.width !== OUTPUT.thumbnail.width ||
+    report.output?.thumbnail?.height !== OUTPUT.thumbnail.height ||
+    report.output?.thumbnail?.quality !== OUTPUT.thumbnail.quality ||
+    report.output?.thumbnail?.format !== "webp"
   ) {
     throw new Error("Манифест или отчёт не совпадает с зафиксированными решениями.");
   }
@@ -879,6 +915,10 @@ async function validateCommittedOutputs(canonical) {
       entry.provenance.sourceIndex !== item.sourceIndex ||
       entry.provenance.matchBasis !== item.matchBasis ||
       entry.provenance.note !== EDITORIAL_NOTE ||
+      entry.coverWidth !== OUTPUT.full.width ||
+      entry.coverHeight !== OUTPUT.full.height ||
+      entry.coverThumbnailWidth !== OUTPUT.thumbnail.width ||
+      entry.coverThumbnailHeight !== OUTPUT.thumbnail.height ||
       !entry.equivalentWorkKeys.includes(item.workKey)
     ) {
       throw new Error(`${item.workKey}: запись манифеста неполна или недетерминирована.`);
@@ -898,11 +938,13 @@ async function validateCommittedOutputs(canonical) {
     ]);
     if (
       fullMetadata.format !== "webp" ||
-      fullMetadata.width !== 800 ||
-      fullMetadata.height !== 1_200 ||
+      fullMetadata.width !== OUTPUT.full.width ||
+      fullMetadata.height !== OUTPUT.full.height ||
+      fullMetadata.hasAlpha !== false ||
       thumbnailMetadata.format !== "webp" ||
-      thumbnailMetadata.width !== 400 ||
-      thumbnailMetadata.height !== 600 ||
+      thumbnailMetadata.width !== OUTPUT.thumbnail.width ||
+      thumbnailMetadata.height !== OUTPUT.thumbnail.height ||
+      thumbnailMetadata.hasAlpha !== false ||
       fullSha !== entry.coverSha256 ||
       thumbnailSha !== entry.coverThumbnailSha256
     ) {
@@ -987,7 +1029,7 @@ async function main() {
   const updatedCanonical = await validateCanonicalArchive();
   await validateCommittedOutputs(updatedCanonical);
   console.log(
-    `Applied: ${imports.length} full covers (800×1200) and ${imports.length} thumbnails (400×600).`
+    `Applied: ${imports.length} full covers (${OUTPUT.full.width}×${OUTPUT.full.height}) and ${imports.length} thumbnails (${OUTPUT.thumbnail.width}×${OUTPUT.thumbnail.height}).`
   );
 }
 

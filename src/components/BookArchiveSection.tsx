@@ -9,6 +9,7 @@ import {
 import ArticleEngagement from "../community/ArticleEngagement";
 import {
   bookArchiveKey,
+  coverArtworkSrcSet,
   isEditorialCover,
   isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
@@ -472,12 +473,7 @@ export default function BookArchiveSection({
             {selectedCoverUrl ? (
               <img
                 src={resolveCoverUrl(selectedCoverUrl)}
-                srcSet={
-                  isCoverArtworkDisplayAllowed(selectedBook) &&
-                  selectedBook.coverThumbnailUrl
-                    ? `${resolveCoverUrl(selectedBook.coverThumbnailUrl)} 400w, ${resolveCoverUrl(selectedBook.coverUrl)} 800w`
-                    : undefined
-                }
+                srcSet={coverArtworkSrcSet(selectedBook, resolveCoverUrl)}
                 sizes="(max-width: 680px) 44vw, 360px"
                 alt={
                   isEditorialCover(selectedBook)
@@ -698,11 +694,7 @@ export default function BookArchiveSection({
                   />
                   <img
                     src={resolveCoverUrl(coverUrl)}
-                    srcSet={
-                      isCoverArtworkDisplayAllowed(book) && book.coverThumbnailUrl
-                        ? `${resolveCoverUrl(book.coverThumbnailUrl)} 400w, ${resolveCoverUrl(book.coverUrl)} 800w`
-                        : undefined
-                    }
+                    srcSet={coverArtworkSrcSet(book, resolveCoverUrl)}
                     sizes="(max-width: 680px) 42vw, 190px"
                     alt={
                       isEditorialCover(book)

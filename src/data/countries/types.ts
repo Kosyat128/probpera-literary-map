@@ -116,6 +116,10 @@ export type WorkProfile = {
   distinctions?: WorkDistinction[];
   coverUrl?: string;
   coverThumbnailUrl?: string;
+  coverWidth?: number;
+  coverHeight?: number;
+  coverThumbnailWidth?: number;
+  coverThumbnailHeight?: number;
   coverSourceUrl?: string;
   coverRights?: {
     status:

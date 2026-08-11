@@ -7,6 +7,10 @@ export type UserSuppliedBookCoverEntry = {
   visibleTitle: string;
   coverUrl: string;
   coverThumbnailUrl: string;
+  coverWidth: number;
+  coverHeight: number;
+  coverThumbnailWidth: number;
+  coverThumbnailHeight: number;
   coverSha256: string;
   coverThumbnailSha256: string;
   equivalentWorkKeys: string[];
@@ -61,6 +65,10 @@ export function applyUserSuppliedBookCover(
     ...work,
     coverUrl: cover.coverUrl,
     coverThumbnailUrl: cover.coverThumbnailUrl,
+    coverWidth: cover.coverWidth,
+    coverHeight: cover.coverHeight,
+    coverThumbnailWidth: cover.coverThumbnailWidth,
+    coverThumbnailHeight: cover.coverThumbnailHeight,
     coverSourceUrl: cover.coverUrl,
     coverRights: {
       status: "editorial-original",

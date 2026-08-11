@@ -386,6 +386,21 @@ export function buildBookArchive(
   });
 }
 
+export function coverArtworkSrcSet(
+  work: WorkProfile,
+  resolveUrl: (value: string) => string = (value) => value
+) {
+  if (
+    !isCoverArtworkDisplayAllowed(work) ||
+    !work.coverThumbnailUrl ||
+    !work.coverUrl
+  ) {
+    return undefined;
+  }
+
+  return `${resolveUrl(work.coverThumbnailUrl)} ${work.coverThumbnailWidth || 400}w, ${resolveUrl(work.coverUrl)} ${work.coverWidth || 800}w`;
+}
+
 export function buildPublicBookArchive(countries: Country[]): BookArchiveEntry[] {
   return buildBookArchive(countries).filter(isPublicBook);
 }

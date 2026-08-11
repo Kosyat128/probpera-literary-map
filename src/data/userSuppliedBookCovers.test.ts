@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildBookArchive,
+  coverArtworkSrcSet,
   isCoverArtworkDisplayAllowed,
 } from "./bookArchive";
 import { isPublicBook } from "./bookQuality";
@@ -121,6 +122,10 @@ describe("пользовательские редакционные обложк
       expect(coveredBook).toMatchObject({
         coverUrl: entry.coverUrl,
         coverThumbnailUrl: entry.coverThumbnailUrl,
+        coverWidth: 720,
+        coverHeight: 1_080,
+        coverThumbnailWidth: 360,
+        coverThumbnailHeight: 540,
         coverRights: {
           status: "editorial-original",
         },
@@ -135,6 +140,24 @@ describe("пользовательские редакционные обложк
         "не является обложкой конкретного издательского издания"
       );
     }
+  });
+
+  it("использует точные width descriptors и сохраняет legacy fallback", () => {
+    const entry = userSuppliedBookCoverManifest.entries[0];
+    const coveredBook = archiveByKey.get(entry.workKey)!;
+
+    expect(coverArtworkSrcSet(coveredBook)).toBe(
+      `${entry.coverThumbnailUrl} 360w, ${entry.coverUrl} 720w`
+    );
+    expect(
+      coverArtworkSrcSet({
+        ...coveredBook,
+        coverWidth: undefined,
+        coverThumbnailWidth: undefined,
+        coverUrl: "legacy/full.webp",
+        coverThumbnailUrl: "legacy/thumb.webp",
+      })
+    ).toBe("legacy/thumb.webp 400w, legacy/full.webp 800w");
   });
 
   it("не изменяет названия, тексты, статусы и количество книг", () => {
@@ -212,15 +235,21 @@ describe("пользовательские редакционные обложк
 
         expect(fullMetadata).toMatchObject({
           format: "webp",
-          width: 800,
-          height: 1_200,
+          width: 720,
+          height: 1_080,
           hasAlpha: false,
         });
         expect(thumbnailMetadata).toMatchObject({
           format: "webp",
-          width: 400,
-          height: 600,
+          width: 360,
+          height: 540,
           hasAlpha: false,
+        });
+        expect(entry).toMatchObject({
+          coverWidth: 720,
+          coverHeight: 1_080,
+          coverThumbnailWidth: 360,
+          coverThumbnailHeight: 540,
         });
         expect(sha256(full)).toBe(entry.coverSha256);
         expect(sha256(thumbnail)).toBe(entry.coverThumbnailSha256);
@@ -256,10 +285,18 @@ describe("пользовательские редакционные обложк
         (cover: {
           checkedAt?: string;
           sourceUrl?: string;
+          coverWidth?: number;
+          coverHeight?: number;
+          coverThumbnailWidth?: number;
+          coverThumbnailHeight?: number;
           provenance?: { archiveSha256?: string; imageSha256?: string };
         }) =>
           cover.checkedAt === "2026-08-11" &&
           cover.sourceUrl?.startsWith("brand/book-covers/") &&
+          cover.coverWidth === 720 &&
+          cover.coverHeight === 1_080 &&
+          cover.coverThumbnailWidth === 360 &&
+          cover.coverThumbnailHeight === 540 &&
           /^[a-f0-9]{64}$/u.test(cover.provenance?.archiveSha256 || "") &&
           /^[a-f0-9]{64}$/u.test(cover.provenance?.imageSha256 || "")
       )

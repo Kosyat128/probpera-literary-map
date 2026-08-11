@@ -91,6 +91,20 @@
       }
     ]
   },
+  "output": {
+    "full": {
+      "width": 720,
+      "height": 1080,
+      "quality": 88,
+      "format": "webp"
+    },
+    "thumbnail": {
+      "width": 360,
+      "height": 540,
+      "quality": 86,
+      "format": "webp"
+    }
+  },
   "summary": {
     "identified": 77,
     "imported": 54,

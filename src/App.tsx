@@ -25,6 +25,7 @@ import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
 import {
   buildBookArchive,
+  coverArtworkSrcSet,
   isEditorialCover,
   isCoverArtworkDisplayAllowed,
   resolveBookArchivePublicTarget,
@@ -1542,6 +1543,8 @@ export default function App() {
                   <div className="book-cover-art">
                     <img
                       src={bookOfMonth.coverUrl}
+                      srcSet={coverArtworkSrcSet(bookOfMonth)}
+                      sizes="210px"
                       alt={`${t("Обложка книги")} «${bookOfMonthText?.title}»`}
                       loading="lazy"
                       decoding="async"
@@ -1556,6 +1559,8 @@ export default function App() {
                   >
                   <img
                     src={bookOfMonth.coverUrl}
+                    srcSet={coverArtworkSrcSet(bookOfMonth)}
+                    sizes="210px"
                     alt={`${t("Обложка книги")} “${bookOfMonthText?.title}”`}
                     loading="lazy"
                     decoding="async"

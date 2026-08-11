@@ -77,6 +77,10 @@ async function main() {
       status: "editorial-original",
       sourceUrl: entry.coverUrl,
       checkedAt: manifestCheckedAt,
+      coverWidth: entry.coverWidth,
+      coverHeight: entry.coverHeight,
+      coverThumbnailWidth: entry.coverThumbnailWidth,
+      coverThumbnailHeight: entry.coverThumbnailHeight,
       provenance: entry.provenance,
       note: entry.provenance.note,
       displayAllowed: true,
@@ -87,6 +91,15 @@ async function main() {
         ...(!entry.provenance?.archiveSha256 || !entry.provenance?.imageSha256
           ? ["Нет SHA-256 архива или исходного изображения"]
           : []),
+        ...(!Number.isInteger(entry.coverWidth) || !Number.isInteger(entry.coverHeight)
+          ? ["Нет размеров полной обложки"]
+          : []),
+        ...(
+          !Number.isInteger(entry.coverThumbnailWidth) ||
+          !Number.isInteger(entry.coverThumbnailHeight)
+            ? ["Нет размеров миниатюры обложки"]
+            : []
+        ),
       ],
     });
     existingCoverUrls.add(entry.coverUrl);
@@ -137,6 +150,11 @@ async function main() {
         `- Показ: ${cover.displayAllowed ? "разрешён" : "заблокирован"}`,
         `- Источник: ${cover.sourceUrl || cover.coverSourceUrl || "не указан"}`,
         `- Проверено: ${cover.checkedAt || "не указано"}`,
+        ...(cover.coverWidth
+          ? [
+              `- Размеры: ${cover.coverWidth}×${cover.coverHeight}; миниатюра ${cover.coverThumbnailWidth}×${cover.coverThumbnailHeight}`,
+            ]
+          : []),
         ...(cover.note ? [`- Примечание: ${cover.note}`] : []),
         ...(cover.provenance
           ? [
