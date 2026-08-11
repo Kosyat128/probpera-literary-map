@@ -96,10 +96,19 @@ test("globe style preview reuses decoded texture assets", async ({
 test("selected Indonesia remains centered after the focus animation", async ({
   page,
 }) => {
+  // A cold software-WebGL start can consume most of the suite's 45 s default
+  // before the deliberate five-second stability window begins in CI.
+  test.setTimeout(90_000);
+
   await page.goto("/");
   await page.locator("#atlas").scrollIntoViewIfNeeded();
+  const globe = page.locator(".literary-globe:not(.is-loading)");
   const canvas = page.locator("#atlas canvas");
-  await expect(canvas).toHaveCount(1, { timeout: 30_000 });
+  await expect(globe).toHaveAttribute("data-globe-render-loop", "active", {
+    timeout: 45_000,
+  });
+  await expect(canvas).toHaveCount(1);
+  await expect(canvas).toBeVisible();
 
   await page.locator('[data-globe-style-option="modern"]').click();
   await expect(page.locator(".literary-globe")).toHaveAttribute(
@@ -108,12 +117,15 @@ test("selected Indonesia remains centered after the focus animation", async ({
   );
 
   await page.locator("#country-search").fill("Индонезия");
-  await page
+  const indonesiaResult = page
     .locator(".search-results button")
     .filter({ hasText: "Индонезия" })
-    .first()
-    .click();
-  await expect(page.locator(".country-panel")).toContainText("Индонезия");
+    .first();
+  await expect(indonesiaResult).toBeVisible({ timeout: 15_000 });
+  await indonesiaResult.click();
+  const countryPanel = page.locator(".country-panel");
+  await expect(countryPanel).toBeVisible();
+  await expect(countryPanel).toContainText("Индонезия");
   await expect(
     page.locator(
       '.globe-country-label[data-country-code="id"][data-country-label-source="selection"]'
