@@ -29,7 +29,6 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал": "Literary journal",
   "Основная навигация": "Main navigation",
   Карта: "Map",
-  Планета: "Planet",
   Статьи: "Articles",
   Разделы: "Sections",
   Календарь: "Calendar",
@@ -54,7 +53,6 @@ const englishInterfaceText: Record<string, string> = {
   "Журнал «Проба Пера»": "Proba Pera magazine",
   "Литературный журнал · с 2025 года": "Literary journal · since 2025",
   "Интерактивная энциклопедия": "Interactive encyclopedia",
-  "Литературная карта мира": "Literary map of the world",
   "Литературная планета": "Literary Planet",
   "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
     "Choose a country on the interactive globe to discover its writers, works, periods and editor-reviewed literary history.",

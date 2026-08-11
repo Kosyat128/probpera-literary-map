@@ -131,7 +131,7 @@ const editorialFeatures = [
     readTime: "12 минут",
   },
   {
-    tag: "Литературная карта мира",
+    tag: "Литературная планета",
     title: "Семь знаковых писателей Японии",
     description:
       "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.",
@@ -974,7 +974,7 @@ export default function App() {
         </a>
 
         <nav aria-label={t("Основная навигация")}>
-          <a href="#atlas">{t("Планета")}</a>
+          <a href="#atlas">{t("Литературная планета")}</a>
           <HeaderArticlesMenu language={language} />
           <details
             className="sections-menu"
@@ -1094,7 +1094,7 @@ export default function App() {
       </header>
 
       <nav className="mobile-nav" aria-label={t("Быстрая навигация")}>
-        <a href="#atlas">{t("Планета")}</a>
+        <a href="#atlas">{t("Литературная планета")}</a>
         <a href="#journal">{t("Статьи")}</a>
         <a href="#books">{t("Книги")}</a>
         <a href="#sections">{t("Разделы")}</a>

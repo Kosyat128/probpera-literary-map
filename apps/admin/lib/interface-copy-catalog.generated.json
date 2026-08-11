@@ -2936,14 +2936,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Литературная карта мира",
-    "group": "Весь интерфейс",
-    "label": "Литературная карта мира",
-    "defaultRu": "Литературная карта мира",
-    "defaultEn": "Literary map of the world",
-    "multiline": false
-  },
-  {
     "key": "interface.Литературная планета",
     "group": "Весь интерфейс",
     "label": "Литературная планета",
@@ -4933,14 +4925,6 @@
     "label": "Письмо уже отправлялось недавно. Подождите немного и повторите попытку.",
     "defaultRu": "Письмо уже отправлялось недавно. Подождите немного и повторите попытку.",
     "defaultEn": "An email was sent recently. Wait a moment and try again.",
-    "multiline": false
-  },
-  {
-    "key": "interface.Планета",
-    "group": "Весь интерфейс",
-    "label": "Планета",
-    "defaultRu": "Планета",
-    "defaultEn": "Planet",
     "multiline": false
   },
   {

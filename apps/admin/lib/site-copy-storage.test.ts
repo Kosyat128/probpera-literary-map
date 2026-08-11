@@ -24,6 +24,15 @@ describe("site-copy admin storage", () => {
       expect(keys).toContain(definition.key);
       expect(definition.key).toBe(`interface.${definition.defaultRu}`);
     }
+    expect(
+      siteCopyCatalog.find(
+        (definition) => definition.key === "interface.Литературная планета"
+      )
+    ).toMatchObject({
+      label: "Пункт «Литературная планета»",
+      defaultRu: "Литературная планета",
+      defaultEn: "Literary Planet",
+    });
   });
 
   it("persists a curated edit to the universal runtime key", () => {

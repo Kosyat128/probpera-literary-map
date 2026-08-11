@@ -140,7 +140,11 @@ export default function SectionsDirectory({
                     id,
                     {
                       id,
-                      label: articleSeriesLabel(id, article.sectionLabel),
+                      label: articleSeriesLabel(
+                        id,
+                        article.sectionLabel,
+                        language
+                      ),
                     },
                   ];
                 })

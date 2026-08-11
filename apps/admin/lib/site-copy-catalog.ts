@@ -11,7 +11,7 @@ export type SiteCopyDefinition = {
 
 const curatedSiteCopyDefinitions = [
   { key: "chrome.brand.subtitle", group: "Шапка и навигация", label: "Подпись под логотипом", defaultRu: "Литературный журнал" },
-  { key: "chrome.nav.planet", group: "Шапка и навигация", label: "Пункт «Планета»", defaultRu: "Планета" },
+  { key: "chrome.nav.planet", group: "Шапка и навигация", label: "Пункт «Литературная планета»", defaultRu: "Литературная планета", defaultEn: "Literary Planet" },
   { key: "chrome.nav.sections", group: "Шапка и навигация", label: "Пункт «Разделы»", defaultRu: "Разделы" },
   { key: "chrome.nav.calendar", group: "Шапка и навигация", label: "Пункт «Календарь»", defaultRu: "Календарь" },
   { key: "chrome.nav.forum", group: "Шапка и навигация", label: "Пункт «Форум»", defaultRu: "Форум" },
