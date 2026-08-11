@@ -226,7 +226,9 @@ export function CmsHomepageBlocks() {
     ...(cmsSiteContent.homepageBlocks as readonly HomepageBlock[]),
   ]
     .filter(
-      (block) => !settingText(block.settings, "coreSectionKey")
+      (block) =>
+        !settingText(block.settings, "coreSectionKey") &&
+        settingText(block.settings, "systemKey") !== "site-copy-overrides"
     )
     .sort((first, second) => first.displayOrder - second.displayOrder);
   if (!blocks.length) return null;

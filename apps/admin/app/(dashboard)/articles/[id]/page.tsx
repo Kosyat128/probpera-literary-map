@@ -252,6 +252,7 @@ export default async function EditArticlePage({
         categories={categories}
         publicSiteUrl={adminEnv.publicSiteUrl}
         templates={templates}
+        saveConfirmed={Boolean(query.saved)}
       />
 
       <div className="dashboard-grid article-maintenance">

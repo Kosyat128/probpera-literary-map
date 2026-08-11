@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
+import { resolveModernGlobeLabels } from "./lib/modern-globe-site-copy.mjs";
+
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   ".."
@@ -40,11 +42,17 @@ const modernBuilderPath = path.join(
   "scripts",
   "build-modern-globe-texture.mjs"
 );
+const publicCmsSnapshotPath = path.join(
+  repositoryRoot,
+  "public",
+  "cms",
+  "published-content.json"
+);
 const textureDirectory = path.join(repositoryRoot, "public", "textures");
 const outputDirectory = path.join(repositoryRoot, "scripts", ".cache");
 const width = 4096;
 const height = 2048;
-const inspectedCodes = new Set(["BR", "FR", "JP", "AU", "RU"]);
+const inspectedCodes = new Set(["BR", "FR", "ID", "JP", "AU", "RU", "CN-TW"]);
 const textureFamilies = [
   {
     style: "antique",
@@ -82,17 +90,30 @@ const textureFamilies = [
   },
 ];
 
-const [atlasJson, atlasProvenance, globeAtlasSource, modernBuilderSource] =
+const [
+  atlasJson,
+  atlasProvenance,
+  globeAtlasSource,
+  modernBuilderSource,
+  publicCmsSnapshot,
+] =
   await Promise.all([
   readFile(atlasPath, "utf8"),
   readFile(atlasProvenancePath, "utf8").then(JSON.parse),
   readFile(globeAtlasSourcePath, "utf8"),
   readFile(modernBuilderPath, "utf8"),
+  readFile(publicCmsSnapshotPath, "utf8").then(JSON.parse),
   ]);
 const atlas = JSON.parse(atlasJson);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
+}
+
+function coverageIds(value) {
+  return String(value ?? "")
+    .split(/\s+/u)
+    .filter(Boolean);
 }
 
 function featureCode(feature) {
@@ -208,8 +229,91 @@ assert(
     ),
   "country atlas provenance must document the official localized label fields"
 );
+const localeScriptRules = {
+  ru: {
+    required: /\p{Script=Cyrillic}/u,
+    forbidden: /\p{Script=Latin}/u,
+  },
+  en: {
+    required: /\p{Script=Latin}/u,
+    forbidden: /\p{Script=Cyrillic}/u,
+  },
+};
+const atlasFeatureIds = atlas.features
+  .map((feature) => feature.properties.ADM0_A3)
+  .sort();
+assert(
+  new Set(atlasFeatureIds).size === atlas.features.length,
+  "country atlas label IDs must be unique"
+);
+const expectedCmsLabels = resolveModernGlobeLabels({
+  features: atlas.features,
+  siteCopy: publicCmsSnapshot.siteCopy,
+});
+assert(
+  atlasProvenance.labels?.siteCopy?.source ===
+    "public/cms/published-content.json" &&
+    JSON.stringify(atlasProvenance.labels.siteCopy.appliedCountryKeys) ===
+      JSON.stringify(expectedCmsLabels.appliedCountryKeys) &&
+    JSON.stringify(atlasProvenance.labels.siteCopy.appliedOceanKeys) ===
+      JSON.stringify(expectedCmsLabels.appliedOceanKeys),
+  "modern texture provenance must record the country and ocean overrides from the exported CMS snapshot"
+);
+for (const locale of ["ru", "en"]) {
+  const scriptRule = localeScriptRules[locale];
+  for (const feature of atlas.features) {
+    const override =
+      atlasProvenance.labels?.shortLabelOverrides?.[
+        feature.properties.ADM0_A3
+      ];
+    const value = String(
+      override?.[locale] ??
+        (locale === "ru"
+          ? feature.properties.NAME_RU
+          : feature.properties.NAME_EN)
+    ).trim();
+    assert(
+      value ===
+        expectedCmsLabels.countryLabels[feature.properties.ADM0_A3][locale],
+      `${feature.properties.ADM0_A3} ${locale.toUpperCase()} label does not match the exported site-copy value`
+    );
+    assert(
+      scriptRule.required.test(value) && !scriptRule.forbidden.test(value),
+      `${feature.properties.ADM0_A3} has a foreign or empty ${locale.toUpperCase()} label: ${JSON.stringify(value)}`
+    );
+  }
+  for (const [index, ocean] of (
+    atlasProvenance.labels?.oceanLabels ?? []
+  ).entries()) {
+    const value = String(ocean[locale] ?? "").trim();
+    assert(
+      ocean.key === expectedCmsLabels.oceanLabels[index]?.key &&
+        value === expectedCmsLabels.oceanLabels[index]?.[locale],
+      `ocean ${index} ${locale.toUpperCase()} label does not match the exported site-copy value`
+    );
+    assert(
+      scriptRule.required.test(value) && !scriptRule.forbidden.test(value),
+      `ocean has a foreign or empty ${locale.toUpperCase()} label: ${JSON.stringify(value)}`
+    );
+  }
+  const audit = atlasProvenance.labels?.localizationAudit?.[locale];
+  assert(
+    audit?.featureLabels === atlas.features.length &&
+      audit?.oceanLabels === 5 &&
+      audit?.missingLabels === 0 &&
+      audit?.mixedScriptLabels === 0,
+    `${locale.toUpperCase()} localization audit must cover every feature and ocean without mixed scripts`
+  );
+}
+assert(
+  atlasProvenance.labels?.densityPolicy?.desktop?.maxLabelRank === 5 &&
+    atlasProvenance.labels?.densityPolicy?.mobile?.maxLabelRank === 3,
+  "modern texture must keep the reviewed desktop/mobile density policy"
+);
 assert(
   modernBuilderSource.includes("natural-earth-i-relief-source.webp") &&
+    modernBuilderSource.includes("publicCmsSnapshotPath") &&
+    modernBuilderSource.includes("resolveModernGlobeLabels") &&
     !modernBuilderSource.includes("process.argv[2]") &&
     modernBuilderSource.includes("feature.properties.LABEL_X") &&
     modernBuilderSource.includes("feature.properties.LABEL_Y") &&
@@ -229,11 +333,41 @@ for (const locale of ["ru", "en"]) {
       asset?.locale === locale &&
         asset?.width === (compact ? width / 2 : width) &&
         asset?.height === (compact ? height / 2 : height) &&
-        asset?.countryLabelCount >= (compact ? 25 : 60),
+        asset?.countryLabelCount >= (compact ? 65 : 85),
       `country atlas provenance must document localized labels in ${expectedPath}`
+    );
+    const accepted = coverageIds(asset.countryLabelCoverage?.accepted);
+    const omittedByRank = coverageIds(
+      asset.countryLabelCoverage?.omittedByRank
+    );
+    const omittedByCollision = coverageIds(
+      asset.countryLabelCoverage?.omittedByCollision
+    );
+    const omitted = [...omittedByRank, ...omittedByCollision].sort();
+    assert(
+      accepted.length === asset.countryLabelCount &&
+        new Set([...accepted, ...omitted]).size === atlas.features.length &&
+        [...accepted, ...omitted].sort().join("|") ===
+          atlasFeatureIds.join("|"),
+      `${expectedPath} must inventory every accepted and intentionally omitted country label`
+    );
+    assert(
+      new Set([...omittedByRank, ...omittedByCollision]).size ===
+        omitted.length &&
+        [...omittedByRank, ...omittedByCollision].sort().join("|") ===
+          [...omitted].sort().join("|"),
+      `${expectedPath} must classify every omission as rank- or collision-limited`
     );
   }
 }
+const indonesiaLabelOverride = atlasProvenance.labels?.shortLabelOverrides?.IDN;
+assert(
+  indonesiaLabelOverride?.longitude >= 115 &&
+    indonesiaLabelOverride?.longitude <= 120 &&
+    indonesiaLabelOverride?.latitude >= -5 &&
+    indonesiaLabelOverride?.latitude <= 1,
+  "modern texture must keep Indonesia's label centered across the archipelago"
+);
 
 function ringPath(ring, horizontalShift = 0) {
   if (!ring.length) return "";

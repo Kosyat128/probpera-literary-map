@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
+import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -549,7 +550,12 @@ const articles = rawArticles.map((rawArticle) => {
   return entry;
 });
 
-const homepageBlocks = rawHomepageBlocks.map((block) => ({
+const {
+  homepageBlocks: publicHomepageBlocks,
+  siteCopy,
+} = extractSiteCopyFromHomepageBlocks(rawHomepageBlocks);
+
+const homepageBlocks = publicHomepageBlocks.map((block) => ({
   id: block.id,
   type: block.block_type,
   title: block.title,
@@ -644,6 +650,7 @@ const generatedAt = new Date().toISOString();
 const siteContent = {
   generatedAt,
   homepageBlocks,
+  siteCopy,
   banners,
   navigationMenus,
   pages,
@@ -715,5 +722,5 @@ await Promise.all([
 ]);
 
 console.log(
-  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers from CMS.`
+  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers from CMS.`
 );

@@ -1,6 +1,5 @@
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useTexture } from "@react-three/drei";
-import { gsap } from "gsap";
 import {
   useCallback,
   useEffect,
@@ -22,6 +21,7 @@ import {
   collectNobelLaureates,
 } from "../data/nobel";
 import {
+  selectInterfacePlural,
   useInterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
 import { selectWriterDisplayName } from "../data/bookLocalization";
@@ -185,15 +185,6 @@ function storedGlobeVisualStyle(): GlobeVisualStyle {
   }
 }
 
-function pluralRu(count: number, forms: [string, string, string]) {
-  const lastTwo = count % 100;
-  const last = count % 10;
-  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
-  if (last === 1) return forms[0];
-  if (last >= 2 && last <= 4) return forms[1];
-  return forms[2];
-}
-
 type PointerOrigin = {
   x: number;
   y: number;
@@ -203,14 +194,43 @@ function geoToCameraPosition(lat: number, lng: number, radius = 3.45) {
   return geographicToSphere(lng, lat, radius);
 }
 
-function fallbackCountryCoordinates(country: Country): [number, number] | null {
+// The 1:110m Natural Earth sheet intentionally omits some very small states
+// and islands. These geographic centers keep their 3D markers available even
+// when a country's currently published writer cards have no usable location.
+const COUNTRY_MARKER_COORDINATE_FALLBACKS: Readonly<
+  Partial<Record<string, [latitude: number, longitude: number]>>
+> = {
+  AD: [42.5063, 1.5218],
+  CK: [-21.2367, -159.7777],
+  FM: [6.9248, 158.161],
+  HK: [22.3193, 114.1694],
+  KM: [-11.6455, 43.3333],
+  LI: [47.141, 9.5209],
+  MC: [43.7384, 7.4246],
+  MO: [22.1987, 113.5439],
+  MU: [-20.1609, 57.5012],
+  NR: [-0.5228, 166.9315],
+  NU: [-19.0544, -169.8672],
+  SC: [-4.6796, 55.492],
+  SM: [43.9424, 12.4578],
+  TV: [-8.5211, 179.1983],
+  VA: [41.9029, 12.4534],
+};
+
+export function fallbackCountryCoordinates(
+  country: Country
+): [number, number] | null {
   if (Array.isArray(country.coordinates)) return country.coordinates;
   if (country.coordinates) return [country.coordinates.lat, country.coordinates.lng];
 
   const points = country.writers
     .map((writer) => writer.coordinates)
     .filter((coordinates): coordinates is { lat: number; lng: number } => Boolean(coordinates));
-  if (!points.length) return null;
+  if (!points.length) {
+    return country.code
+      ? COUNTRY_MARKER_COORDINATE_FALLBACKS[country.code.toUpperCase()] ?? null
+      : null;
+  }
 
   const vector = points.reduce(
     (sum, point) => {
@@ -255,42 +275,65 @@ function CameraFocus({
   controlsRef: RefObject<OrbitControlsImpl>;
   reducedMotion: boolean;
 }) {
-  const { camera } = useThree();
+  const { camera, invalidate } = useThree();
+  const latitude = coordinates?.[0];
+  const longitude = coordinates?.[1];
 
   useEffect(() => {
     const controls = controlsRef.current;
 
-    if (!countryId || !coordinates) {
+    if (
+      !countryId ||
+      latitude === undefined ||
+      longitude === undefined
+    ) {
       if (controls) controls.autoRotate = !reducedMotion;
       return;
     }
 
-    const [lat, lng] = coordinates;
-    const destination = geoToCameraPosition(lat, lng);
+    const destination = geoToCameraPosition(latitude, longitude);
+    const origin = camera.position.clone();
+    const target = new THREE.Vector3(0, -0.2, 0);
+    const startedAt = performance.now();
+    const duration = reducedMotion ? 0 : 1450;
+    let animationFrame = 0;
     if (controls) controls.autoRotate = false;
 
-    const cameraTween = gsap.to(camera.position, {
-      x: destination.x,
-      y: destination.y,
-      z: destination.z,
-      duration: reducedMotion ? 0.01 : 1.45,
-      ease: "power3.inOut",
-      overwrite: true,
-      onUpdate: () => {
-        camera.lookAt(0, -0.2, 0);
-        controls?.update();
-      },
-    });
+    const renderFrame = (now: number) => {
+      const progress = duration === 0
+        ? 1
+        : THREE.MathUtils.clamp((now - startedAt) / duration, 0, 1);
+      const eased = progress < 0.5
+        ? 4 * progress ** 3
+        : 1 - ((-2 * progress + 2) ** 3) / 2;
 
-    const rotationResume = gsap.delayedCall(reducedMotion ? 0.02 : 1.75, () => {
-      if (controlsRef.current) controlsRef.current.autoRotate = !reducedMotion;
-    });
+      camera.position.lerpVectors(origin, destination, eased);
+      if (controls) {
+        controls.target.copy(target);
+        controls.update();
+      } else {
+        camera.lookAt(target);
+      }
+      invalidate();
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(renderFrame);
+      }
+    };
+    renderFrame(startedAt);
 
     return () => {
-      cameraTween.kill();
-      rotationResume.kill();
+      cancelAnimationFrame(animationFrame);
     };
-  }, [camera, controlsRef, coordinates, countryId, reducedMotion]);
+  }, [
+    camera,
+    controlsRef,
+    countryId,
+    invalidate,
+    latitude,
+    longitude,
+    reducedMotion,
+  ]);
 
   return null;
 }
@@ -1707,15 +1750,15 @@ function GlobeScene({
         maxPolarAngle={2.62}
         rotateSpeed={0.48}
         zoomSpeed={0.75}
-        autoRotate={!reducedMotion}
+        autoRotate={!selectedCountry && !reducedMotion}
         autoRotateSpeed={0.24}
         target={[0, -0.2, 0]}
         onStart={() => {
           if (controlsRef.current) controlsRef.current.autoRotate = false;
         }}
         onEnd={() => {
-          if (controlsRef.current && !reducedMotion) {
-            controlsRef.current.autoRotate = true;
+          if (controlsRef.current) {
+            controlsRef.current.autoRotate = !selectedCountry && !reducedMotion;
           }
         }}
       />
@@ -1763,6 +1806,7 @@ export default function LiteraryGlobe({
   const hoveredNobelArticle = hoveredLaureate
     ? findNobelArticle(hoveredLaureate.writer)
     : null;
+  const contextualCountry = hoveredCountry ?? selectedCountry ?? null;
   const visibleNobelCount = useMemo(
     () =>
       nobelCountryId
@@ -1778,14 +1822,16 @@ export default function LiteraryGlobe({
     navigator.hardwareConcurrency <= 4 ||
     window.devicePixelRatio >= 2.5 ||
     window.innerWidth <= 680;
-  const visualStyleLabels: Record<GlobeVisualStyle, string> =
-    language === "en"
-      ? { antique: "Antique", earth: "Classic", modern: "Modern" }
-      : { antique: "Старинный", earth: "Классический", modern: "Современный" };
-  const compactVisualStyleLabels: Record<GlobeVisualStyle, string> =
-    language === "en"
-      ? { antique: "Antique", earth: "Classic", modern: "Modern" }
-      : { antique: "Ретро", earth: "Классический", modern: "Модерн" };
+  const visualStyleLabels: Record<GlobeVisualStyle, string> = {
+    antique: t("Старинный"),
+    earth: t("Классический"),
+    modern: t("Современный"),
+  };
+  const compactVisualStyleLabels: Record<GlobeVisualStyle, string> = {
+    antique: t("Ретро"),
+    earth: t("Классический"),
+    modern: t("Модерн"),
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -2010,13 +2056,9 @@ export default function LiteraryGlobe({
         ))}
         <span className="globe-style-status" role="status" aria-live="polite">
           {visualStyleError
-            ? language === "en"
-              ? "Earth texture could not be loaded. Antique style restored."
-              : "Текстуру Земли не удалось загрузить. Возвращён старинный стиль."
+            ? t("Текстуру Земли не удалось загрузить. Возвращён старинный стиль.")
             : pendingVisualStyle
-              ? language === "en"
-                ? `Loading ${visualStyleLabels[pendingVisualStyle]} style`
-                : `Загружается стиль «${visualStyleLabels[pendingVisualStyle]}»`
+              ? `${t("Загружается стиль")} «${visualStyleLabels[pendingVisualStyle]}»`
               : ""}
         </span>
       </div>
@@ -2030,9 +2072,7 @@ export default function LiteraryGlobe({
             "Современная визуальная редакция 2026 года. Картография: Natural Earth."
           )}
         >
-          {language === "en"
-            ? "Modern edition · 2026"
-            : "Современное оформление · 2026"}
+          {t("Современное оформление · 2026")}
         </div>
       )}
 
@@ -2051,15 +2091,13 @@ export default function LiteraryGlobe({
           <div>
             <strong>{number(visibleNobelCount)}</strong>
             <span>
-              {language === "en"
-                ? visibleNobelCount === 1
-                  ? "laureate on the globe"
-                  : "laureates on the globe"
-                : `${pluralRu(visibleNobelCount, [
-                    "лауреат",
-                    "лауреата",
-                    "лауреатов",
-                  ])} на глобусе`}
+              {t(
+                selectInterfacePlural(visibleNobelCount, language, [
+                  "лауреат на глобусе",
+                  "лауреата на глобусе",
+                  "лауреатов на глобусе",
+                ])
+              )}
             </span>
           </div>
         </div>
@@ -2097,27 +2135,35 @@ export default function LiteraryGlobe({
             </em>
           </div>
         </div>
-      ) : hoveredCountry ? (
-        <div className="globe-country-label" role="status">
+      ) : contextualCountry ? (
+        <div
+          className="globe-country-label"
+          role="status"
+          aria-live="polite"
+          data-country-code={contextualCountry.code}
+          data-country-label-source={hoveredCountry ? "hover" : "selection"}
+        >
           <CountryFlagIcon
-            code={hoveredCountry.code}
-            countryName={hoveredCountry.name}
+            code={contextualCountry.code}
+            countryName={contextualCountry.name}
             className="globe-country-label-flag country-flag-icon--round"
             size={30}
             decorative
             priority
           />
           <div>
-            <span>{countryName(hoveredCountry.code, hoveredCountry.name)}</span>
+            <span>
+              {countryName(contextualCountry.code, contextualCountry.name)}
+            </span>
             <small>
-              {number(hoveredCountry.writers.length)}{" "}
-              {language === "en"
-                ? `${hoveredCountry.writers.length === 1 ? "writer" : "writers"} in the archive`
-                : `${pluralRu(hoveredCountry.writers.length, [
-                    "автор",
-                    "автора",
-                    "авторов",
-                  ])} в архиве`}
+              {number(contextualCountry.writers.length)}{" "}
+              {t(
+                selectInterfacePlural(contextualCountry.writers.length, language, [
+                  "автор в архиве",
+                  "автора в архиве",
+                  "авторов в архиве",
+                ])
+              )}
             </small>
           </div>
         </div>

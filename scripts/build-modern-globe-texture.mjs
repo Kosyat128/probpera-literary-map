@@ -5,6 +5,11 @@ import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
+import {
+  MODERN_GLOBE_COUNTRY_LABEL_OVERRIDES,
+  resolveModernGlobeLabels,
+} from "./lib/modern-globe-site-copy.mjs";
+
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   ".."
@@ -29,6 +34,12 @@ const terrainSourcePath = path.join(
   "assets",
   "natural-earth-i-relief-source.webp"
 );
+const publicCmsSnapshotPath = path.join(
+  repositoryRoot,
+  "public",
+  "cms",
+  "published-content.json"
+);
 const outputDirectory = path.join(repositoryRoot, "public", "textures");
 const width = 4096;
 const height = 2048;
@@ -39,8 +50,8 @@ const labelProfiles = {
   desktop: {
     width,
     height,
-    maxRank: 3,
-    fontSizes: { 2: 34, 3: 28 },
+    maxRank: 5,
+    fontSizes: { 2: 34, 3: 28, 4: 22, 5: 18 },
     strokeWidth: 2.5,
     oceanFontSize: 29,
     oceanStrokeWidth: 2.1,
@@ -48,24 +59,22 @@ const labelProfiles = {
   mobile: {
     width: mobileWidth,
     height: mobileHeight,
-    maxRank: 2,
-    fontSizes: { 2: 18 },
+    maxRank: 3,
+    fontSizes: { 2: 18, 3: 14 },
     strokeWidth: 1.45,
     oceanFontSize: 15,
     oceanStrokeWidth: 1.2,
   },
 };
-const oceanLabels = [
-  { longitude: -145, latitude: -8, ru: "Тихий океан", en: "Pacific Ocean" },
-  { longitude: -32, latitude: 5, ru: "Атлантический океан", en: "Atlantic Ocean" },
-  { longitude: 79, latitude: -26, ru: "Индийский океан", en: "Indian Ocean" },
-  { longitude: 5, latitude: 77, ru: "Северный Ледовитый океан", en: "Arctic Ocean" },
-  { longitude: 8, latitude: -61, ru: "Южный океан", en: "Southern Ocean" },
-];
-const countryLabelOverrides = {
-  CHN: { ru: "Китай", en: "China" },
-  COD: { ru: "ДР Конго", en: "DR Congo" },
-  USA: { ru: "США", en: "United States" },
+const localeScriptRules = {
+  ru: {
+    required: /\p{Script=Cyrillic}/u,
+    forbidden: /\p{Script=Latin}/u,
+  },
+  en: {
+    required: /\p{Script=Latin}/u,
+    forbidden: /\p{Script=Cyrillic}/u,
+  },
 };
 const palette = [
   "#d4df86",
@@ -83,11 +92,13 @@ const palette = [
   "#d5cc7b",
 ];
 
-const [atlas, provenance, terrainSourceBytes] = await Promise.all([
+const [atlas, provenance, terrainSourceBytes, publicCmsSnapshot] =
+  await Promise.all([
   readFile(atlasPath, "utf8").then(JSON.parse),
   readFile(atlasProvenancePath, "utf8").then(JSON.parse),
   readFile(terrainSourcePath),
-]);
+  readFile(publicCmsSnapshotPath, "utf8").then(JSON.parse),
+  ]);
 const terrainSourceSha256 = createHash("sha256")
   .update(terrainSourceBytes)
   .digest("hex")
@@ -109,6 +120,42 @@ for (const [index, feature] of atlas.features.entries()) {
     if (!Object.hasOwn(feature.properties ?? {}, field)) {
       throw new Error(`Atlas feature ${index} is missing ${field}.`);
     }
+  }
+}
+
+const {
+  countryLabels,
+  oceanLabels,
+  appliedCountryKeys,
+  appliedOceanKeys,
+} = resolveModernGlobeLabels({
+  features: atlas.features,
+  siteCopy: publicCmsSnapshot.siteCopy,
+});
+
+function countryLabelText(feature, locale) {
+  return countryLabels[feature.properties.ADM0_A3][locale];
+}
+
+function assertLocalizedLabel(value, locale, context) {
+  const rule = localeScriptRules[locale];
+  if (!value || !rule.required.test(value) || rule.forbidden.test(value)) {
+    throw new Error(
+      `${context} must contain only a non-empty ${locale.toUpperCase()} label; found ${JSON.stringify(value)}.`
+    );
+  }
+}
+
+for (const locale of locales) {
+  for (const feature of atlas.features) {
+    assertLocalizedLabel(
+      countryLabelText(feature, locale),
+      locale,
+      `Atlas feature ${feature.properties.ADM0_A3}`
+    );
+  }
+  for (const [index, ocean] of oceanLabels.entries()) {
+    assertLocalizedLabel(ocean[locale], locale, `Ocean label ${index}`);
   }
 }
 
@@ -230,25 +277,29 @@ function boxesOverlap(first, second) {
 function countryLabelPlacements(locale, profile) {
   const occupied = [];
   const placements = [];
+  const omittedByRank = [];
+  const omittedByCollision = [];
   const candidates = atlas.features
     .filter((feature) => {
       const rank = Number(feature.properties?.LABELRANK);
       const scaleRank = Number(feature.properties?.scalerank);
-      return rank <= profile.maxRank && scaleRank <= 1;
+      const eligible = rank <= profile.maxRank && scaleRank <= 1;
+      if (!eligible) omittedByRank.push(feature.properties.ADM0_A3);
+      return eligible;
     })
     .sort((first, second) => {
       const rankDifference =
         Number(first.properties.LABELRANK) - Number(second.properties.LABELRANK);
-      return rankDifference || approximateFeatureArea(second) - approximateFeatureArea(first);
+      return (
+        rankDifference ||
+        approximateFeatureArea(second) - approximateFeatureArea(first)
+      );
     });
 
   for (const feature of candidates) {
     const rank = Number(feature.properties.LABELRANK);
-    const rawText = String(
-      countryLabelOverrides[feature.properties.ADM0_A3]?.[locale] ??
-        (locale === "ru" ? feature.properties.NAME_RU : feature.properties.NAME_EN)
-    ).trim();
-    if (!rawText) continue;
+    const labelOverride = countryLabels[feature.properties.ADM0_A3];
+    const rawText = countryLabelText(feature, locale);
     const fontSize = profile.fontSizes[rank];
     const lines = wrapLabel(rawText, locale === "ru" ? 19 : 21);
     const lineHeight = fontSize * 1.02;
@@ -261,10 +312,16 @@ function countryLabelPlacements(locale, profile) {
       horizontalMargin,
       Math.min(
         profile.width - horizontalMargin,
-        textureX(Number(feature.properties.LABEL_X), profile.width)
+        textureX(
+          Number(labelOverride?.longitude ?? feature.properties.LABEL_X),
+          profile.width
+        )
       )
     );
-    const y = textureY(Number(feature.properties.LABEL_Y), profile.height);
+    const y = textureY(
+      Number(labelOverride?.latitude ?? feature.properties.LABEL_Y),
+      profile.height
+    );
     const box = {
       left: x - textWidth / 2 - fontSize * 0.32,
       right: x + textWidth / 2 + fontSize * 0.32,
@@ -272,13 +329,27 @@ function countryLabelPlacements(locale, profile) {
       bottom: y + textHeight / 2 + fontSize * 0.22,
     };
     if (occupied.some((accepted) => boxesOverlap(box, accepted))) {
+      omittedByCollision.push(feature.properties.ADM0_A3);
       continue;
     }
     occupied.push(box);
-    placements.push({ x, y, lines, fontSize, lineHeight, rank });
+    placements.push({
+      id: feature.properties.ADM0_A3,
+      text: rawText,
+      x,
+      y,
+      lines,
+      fontSize,
+      lineHeight,
+      rank,
+    });
   }
 
-  return placements;
+  return {
+    placements,
+    omittedByRank: omittedByRank.sort(),
+    omittedByCollision: omittedByCollision.sort(),
+  };
 }
 
 function textElement({
@@ -314,7 +385,11 @@ function textElement({
 }
 
 function labelSvg(locale, profile) {
-  const countries = countryLabelPlacements(locale, profile);
+  const {
+    placements: countries,
+    omittedByRank,
+    omittedByCollision,
+  } = countryLabelPlacements(locale, profile);
   const oceans = oceanLabels.map((label) =>
     textElement({
       x: textureX(label.longitude, profile.width),
@@ -344,6 +419,9 @@ function labelSvg(locale, profile) {
 
   return {
     count: countries.length,
+    acceptedCountryIds: countries.map(({ id }) => id).sort(),
+    omittedByRank,
+    omittedByCollision,
     svg: Buffer.from(
       `<svg xmlns="http://www.w3.org/2000/svg" width="${profile.width}" ` +
         `height="${profile.height}" viewBox="0 0 ${profile.width} ${profile.height}">` +
@@ -472,6 +550,11 @@ const renderedTextures = await Promise.all(
         locale,
         density: variant,
         countryLabelCount: labels.count,
+        countryLabelCoverage: {
+          accepted: labels.acceptedCountryIds.join(" "),
+          omittedByRank: labels.omittedByRank.join(" "),
+          omittedByCollision: labels.omittedByCollision.join(" "),
+        },
       };
     })
   )
@@ -490,8 +573,47 @@ const assetRecords = await Promise.all(
 );
 
 provenance.renderedAssets = assetRecords;
+const provenanceCountryLabelOverrides = Object.fromEntries(
+  atlas.features.flatMap((feature) => {
+    const id = feature.properties.ADM0_A3;
+    const resolved = countryLabels[id];
+    const fixed = MODERN_GLOBE_COUNTRY_LABEL_OVERRIDES[id] ?? {};
+    const differsFromAtlas =
+      resolved.ru !== String(feature.properties.NAME_RU).trim() ||
+      resolved.en !== String(feature.properties.NAME_EN).trim();
+    if (!differsFromAtlas && fixed.longitude === undefined && fixed.latitude === undefined) {
+      return [];
+    }
+    return [
+      [
+        id,
+        {
+          ru: resolved.ru,
+          en: resolved.en,
+          ...(fixed.longitude === undefined
+            ? {}
+            : { longitude: fixed.longitude }),
+          ...(fixed.latitude === undefined ? {} : { latitude: fixed.latitude }),
+        },
+      ],
+    ];
+  })
+);
 provenance.labels = {
   ...provenance.labels,
+  placement:
+    "Official LABEL_X/LABEL_Y positions, deterministic LABELRANK priority, and conservative non-overlap filtering.",
+  localizationAudit: Object.fromEntries(
+    locales.map((locale) => [
+      locale,
+      {
+        featureLabels: atlas.features.length,
+        oceanLabels: oceanLabels.length,
+        missingLabels: 0,
+        mixedScriptLabels: 0,
+      },
+    ])
+  ),
   densityPolicy: {
     desktop: {
       maxLabelRank: labelProfiles.desktop.maxRank,
@@ -500,6 +622,8 @@ provenance.labels = {
           .filter((asset) => asset.density === "desktop")
           .map((asset) => [asset.locale, asset.countryLabelCount])
       ),
+      residualPolicy:
+        "Lower-priority or colliding labels remain available through the localized interactive country label.",
     },
     mobile: {
       maxLabelRank: labelProfiles.mobile.maxRank,
@@ -508,10 +632,17 @@ provenance.labels = {
           .filter((asset) => asset.density === "mobile")
           .map((asset) => [asset.locale, asset.countryLabelCount])
       ),
+      residualPolicy:
+        "Lower-priority or colliding labels remain available through the localized interactive country label.",
     },
   },
-  shortLabelOverrides: countryLabelOverrides,
+  shortLabelOverrides: provenanceCountryLabelOverrides,
   oceanLabels,
+  siteCopy: {
+    source: "public/cms/published-content.json",
+    appliedCountryKeys,
+    appliedOceanKeys,
+  },
 };
 await writeFile(
   atlasProvenancePath,

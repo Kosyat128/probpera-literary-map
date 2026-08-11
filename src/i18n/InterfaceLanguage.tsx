@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from "react";
 
+import { getCountrySiteCopy, getSiteCopy } from "../data/cms/siteCopy";
+
 export type InterfaceLanguage = "ru" | "en";
 
 const STORAGE_KEY = "probpera-interface-language";
@@ -86,6 +88,9 @@ const englishInterfaceText: Record<string, string> = {
   "Открыть интерактивный каталог": "Open the interactive directory",
   "Проба Пера в цифрах": "Proba Pera in numbers",
   публикаций: "publications",
+  публикация: "publication",
+  публикации: "publications",
+  "Авторский архив": "Author archive",
   "Редакционная витрина": "Editorial selection",
   "Свежие публикации": "Latest publications",
   "Авторские статьи, рецензии, литературные истории и материалы о языке.":
@@ -283,10 +288,25 @@ const englishInterfaceText: Record<string, string> = {
     "Country, writer, book, article, period…",
   "Поиск одновременно проверяет страны, писателей, произведения и редакционные публикации.":
     "Search countries, writers, works and editorial publications at once.",
+  Достоевский: "Dostoevsky",
+  Япония: "Japan",
+  Экранизация: "adaptation",
   "Совпадений не найдено": "No matches found",
   "Попробуйте фамилию, название произведения или другую форму слова.":
     "Try a surname, a work title or another form of the word.",
+  автор: "writer",
+  автора: "writers",
+  произведение: "work",
+  произведения: "works",
+  статья: "article",
+  статьи: "articles",
+  статей: "articles",
   Страны: "Countries",
+  страна: "country",
+  страны: "countries",
+  "В выбранной коллекции —": "In this collection:",
+  С: "N",
+  Ю: "S",
   Писатели: "Writers",
   Писатель: "Writer",
   "Ничего не найдено в выбранной коллекции.":
@@ -388,7 +408,40 @@ const englishInterfaceText: Record<string, string> = {
   "Материал, которому можно доверять": "Material you can trust",
   "публикационную проверку по открытым авторитетным источникам":
     "the publication gate against open authoritative sources",
+  "{count} карточка уже прошла публикационную проверку по открытым авторитетным источникам":
+    "{count} writer profile has passed the publication gate against open authoritative sources",
+  "{count} карточки уже прошли публикационную проверку по открытым авторитетным источникам":
+    "{count} writer profiles have passed the publication gate against open authoritative sources",
+  "{count} карточек уже прошли публикационную проверку по открытым авторитетным источникам":
+    "{count} writer profiles have passed the publication gate against open authoritative sources",
+  "{count} документальный портрет подключён без генерации лиц":
+    "{count} documentary portrait is connected without generated faces",
+  "{count} документальных портрета подключены без генерации лиц":
+    "{count} documentary portraits are connected without generated faces",
+  "{count} документальных портретов подключены без генерации лиц":
+    "{count} documentary portraits are connected without generated faces",
+  "Ещё {count} запись остаётся в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
+    "{count} record remains in editorial review; automatically assembled drafts are not published before manual verification",
+  "Ещё {count} записи остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
+    "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
+  "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
+    "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
   "Стиль глобуса": "Globe style",
+  Старинный: "Antique",
+  Ретро: "Retro",
+  Классический: "Classic",
+  Современный: "Modern",
+  Модерн: "Modern",
+  "Современное оформление · 2026": "Modern edition · 2026",
+  "Текстуру Земли не удалось загрузить. Возвращён старинный стиль.":
+    "The globe texture could not be loaded. Antique style has been restored.",
+  "Загружается стиль": "Loading style",
+  "лауреат на глобусе": "laureate on the globe",
+  "лауреата на глобусе": "laureates on the globe",
+  "лауреатов на глобусе": "laureates on the globe",
+  "автор в архиве": "writer in the archive",
+  "автора в архиве": "writers in the archive",
+  "авторов в архиве": "writers in the archive",
   "Современная визуальная редакция 2026 года. Картография: Natural Earth.":
     "Modern visual edition, 2026. Cartography: Natural Earth.",
   "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.":
@@ -464,6 +517,7 @@ const englishInterfaceText: Record<string, string> = {
   "Связаться с редакцией": "Contact the editors",
   Контакты: "Contacts",
   "Независимый литературный журнал": "Independent literary journal",
+  "«Проба Пера»": "Proba Pera",
   "Авторский архив · 157 материалов": "Editorial archive · 157 publications",
   "Журнал, выстроенный для чтения": "A journal designed for reading",
   "Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.":
@@ -1080,8 +1134,15 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
 
   const t = useCallback(
     (russianText: string) => {
-      if (language === "ru") return russianText;
-      return registeredEnglishText(russianText) ?? russianText;
+      const fallback =
+        language === "ru"
+          ? russianText
+          : registeredEnglishText(russianText) ?? russianText;
+      return getSiteCopy(
+        `interface.${russianText}`,
+        fallback,
+        language
+      );
     },
     [language]
   );
@@ -1093,11 +1154,16 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
 
   const countryName = useCallback(
     (code: string | undefined, russianName: string) => {
-      if (language === "ru") return russianName;
       const normalizedCode = (code || "").trim().toUpperCase();
-      if (!/^[A-Z]{2}$/.test(normalizedCode)) return russianName;
-      const localized = regionNames?.of(normalizedCode);
-      return localized && localized !== normalizedCode ? localized : russianName;
+      const localized = /^[A-Z]{2}$/u.test(normalizedCode)
+        ? regionNames?.of(normalizedCode)
+        : undefined;
+      return getCountrySiteCopy(
+        normalizedCode,
+        russianName,
+        localized && localized !== normalizedCode ? localized : undefined,
+        language
+      );
     },
     [language, regionNames]
   );
@@ -1138,6 +1204,23 @@ export function translateInterfaceText(
   russianText: string,
   language: InterfaceLanguage
 ) {
-  if (language === "ru") return russianText;
-  return registeredEnglishText(russianText) ?? russianText;
+  const fallback =
+    language === "ru"
+      ? russianText
+      : registeredEnglishText(russianText) ?? russianText;
+  return getSiteCopy(`interface.${russianText}`, fallback, language);
+}
+
+export function selectInterfacePlural(
+  count: number,
+  language: InterfaceLanguage,
+  forms: readonly [string, string, string]
+) {
+  if (language === "en") return count === 1 ? forms[0] : forms[2];
+  const lastTwo = Math.abs(count) % 100;
+  const last = Math.abs(count) % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
+  if (last === 1) return forms[0];
+  if (last >= 2 && last <= 4) return forms[1];
+  return forms[2];
 }

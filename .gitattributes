@@ -1,1 +1,6 @@
 src/data/geo/countries.geojson text eol=lf
+apps/admin/lib/*.generated.json text eol=lf
+data/*manifest.json text eol=lf
+reports/*.json text eol=lf
+reports/*.md text eol=lf
+src/data/countries/generated/*.json text eol=lf

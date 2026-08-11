@@ -8,6 +8,7 @@ import {
   assertInterfaceTranslationsComplete,
   hasInterfaceTranslation,
   resolveInitialInterfaceLanguage,
+  selectInterfacePlural,
   translateInterfaceText,
 } from "./InterfaceLanguage";
 
@@ -76,6 +77,22 @@ describe("interface language", () => {
     expect(resolveInitialInterfaceLanguage("ru", "en")).toBe("en");
     expect(resolveInitialInterfaceLanguage("en", undefined)).toBe("en");
     expect(resolveInitialInterfaceLanguage("invalid", undefined)).toBe("ru");
+  });
+
+  it("uses English plural rules for counts ending in 1 or 2", () => {
+    const forms = ["автор", "автора", "авторов"] as const;
+    expect([1, 2, 21, 22].map((count) => selectInterfacePlural(count, "en", forms))).toEqual([
+      "автор",
+      "авторов",
+      "авторов",
+      "авторов",
+    ]);
+    expect([1, 2, 21, 22].map((count) => selectInterfacePlural(count, "ru", forms))).toEqual([
+      "автор",
+      "автора",
+      "автор",
+      "автора",
+    ]);
   });
 
   it("has non-empty Russian and English text for every registered phrase", () => {

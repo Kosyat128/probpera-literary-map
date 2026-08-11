@@ -1,4 +1,5 @@
 import type { Country, Writer } from "./countries";
+import { officialNobelLiteratureRecordForWriterId } from "./countries/nobelLiteratureRegistry";
 
 const NOBEL_SIGNAL = /нобел|nobel/iu;
 
@@ -10,7 +11,12 @@ function legacyAwardSignals(writer: Writer) {
 }
 
 export function getNobelYear(writer: Writer): number | null {
-  return writer.nobelAward?.year || writer.nobelYear || null;
+  return (
+    writer.nobelAward?.year ||
+    writer.nobelYear ||
+    officialNobelLiteratureRecordForWriterId(writer.id)?.year ||
+    null
+  );
 }
 
 export function isNobelLaureate(writer: Writer) {

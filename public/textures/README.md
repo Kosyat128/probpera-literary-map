@@ -80,29 +80,39 @@ The same vector geometry is used for the visible borders, country hit testing,
 outlines, centroids, and localized labels. Russian and English country names,
 label points, and priorities come from the official `NAME_RU`, `NAME_EN`,
 `LABEL_X`, `LABEL_Y`, `LABELRANK`, and `scalerank` fields. A deterministic
-collision pass retains 68–69 labels on desktop and 30 on compact textures. The
+collision pass retains 87 labels on desktop and 69–70 on compact textures. The
 three longest sovereign names use restrained atlas forms (`Китай`/`China`,
 `ДР Конго`/`DR Congo`, and `США`/`United States`); their official source names
 remain unchanged in the GeoJSON. Five subdued ocean labels use documented
 static geographic positions. No city layer is invented without a city dataset.
+
+Country and ocean wording is part of the permanent CMS site-copy snapshot. A
+public release exports that snapshot first and then deterministically rebuilds
+all four RU/EN desktop/mobile textures, so an editor's saved `country.XX` or
+`globe.ocean.*` value is baked into the very next deployed modern globe. The
+renderer preserves the reviewed geometry, label coordinates, dimensions,
+density thresholds, and file-size budgets; release QA fails before deployment
+if an edited label violates localization, coverage, or performance rules.
 
 The runtime requests only the active interface language and viewport density,
 after the modern style is selected. A live RU/EN switch replaces the texture
 without recreating the globe. The procedural surface remains the local fallback.
 
 - `modern-atlas-2026-ru.webp`: 4096 × 2048 Russian desktop texture, SHA-256
-  `9402B0C7ACE874FA4AD7288B2D9935F54EF85B2F300BFBE7BAC5EFE059F5BD2E`.
+  `2EB0A86AEA6D1ADFF08C1AACE8FBD89149F432AEBC4001F1B97AEC637321D82B`.
 - `modern-atlas-2026-ru-mobile.webp`: 2048 × 1024 Russian compact texture,
-  SHA-256 `D2D4C5F20DFECC514D537E2FEACC798C193394D0A74379BF6C4A0D5310001149`.
+  SHA-256 `DAB618C766250D9DF340868366A987F2A402864DC8B717482255E470F92C39AB`.
 - `modern-atlas-2026-en.webp`: 4096 × 2048 English desktop texture, SHA-256
-  `15A2617C5BD81AC14A67EBDF64BDD387FE29A649F3DB86EEB30AAFDD3E710AFC`.
+  `8DF82C055820B44B178EFA7321888E9049821859CA0408BBC77B64B2D9219399`.
 - `modern-atlas-2026-en-mobile.webp`: 2048 × 1024 English compact texture,
-  SHA-256 `384F01288FE4DDC6443B9C026EFF798F85C1474F9135E6B218A9A238879E553D`.
+  SHA-256 `B897E3722909FFBEFA25013851AD2BDF605711A069E5C552129B6E470BB3C957`.
 
 To refresh label metadata from a reviewed official download, run
 `npm run assets:globe:modern:labels -- <admin-0.geojson>`, then
 `npm run assets:globe:modern`. The renderer always reads the tracked,
 checksummed relief source; it does not accept an arbitrary raster override.
+Routine public builds run `content:export:cms`, `assets:globe:modern`, and
+`assets:globe:qa` in that order.
 
 The bundled geometry comes from the official Natural Earth Admin 0 – Countries
 GeoJSON in repository release `v5.1.2`, retrieved on 2026-08-09. Natural

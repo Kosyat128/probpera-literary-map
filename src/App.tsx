@@ -47,7 +47,10 @@ import {
   getCoreHomepageSection,
 } from "./data/cms/homepage";
 import ShareLinks from "./editorial/ShareLinks";
-import { useInterfaceLanguage } from "./i18n/InterfaceLanguage";
+import {
+  selectInterfacePlural,
+  useInterfaceLanguage,
+} from "./i18n/InterfaceLanguage";
 import {
   articlePath,
   isDirectArticlePath,
@@ -375,15 +378,6 @@ const verifiedBookFacts = [
   },
 ];
 
-function pluralRu(count: number, forms: [string, string, string]) {
-  const lastTwo = count % 100;
-  const last = count % 10;
-  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
-  if (last === 1) return forms[0];
-  if (last >= 2 && last <= 4) return forms[1];
-  return forms[2];
-}
-
 function writerName(
   writer: Writer,
   fallback = "Автор",
@@ -510,6 +504,12 @@ export default function App() {
     () => auditCountryArchive(countryArchive),
     [countryArchive]
   );
+  const readyBiographyCount =
+    language === "en"
+      ? editorialAudit.englishBiographiesReady
+      : editorialAudit.russianBiographiesReady;
+  const editorialQueueCount =
+    editorialAudit.recordsNeedingReview + generatedEditorialQueue;
 
   const filteredCountries = useMemo(() => {
     if (atlasFilter === "all") return countryArchive;
@@ -1316,17 +1316,13 @@ export default function App() {
                         </span>
                         <small>
                           {result.type === "country"
-                            ? `${number(result.country.writers.length)} ${
-                                language === "en"
-                                  ? result.country.writers.length === 1
-                                    ? "writer"
-                                    : "writers"
-                                  : pluralRu(result.country.writers.length, [
-                                      "автор",
-                                      "автора",
-                                      "авторов",
-                                    ])
-                              }`
+                            ? `${number(result.country.writers.length)} ${t(
+                                selectInterfacePlural(result.country.writers.length, language, [
+                                  "автор",
+                                  "автора",
+                                  "авторов",
+                                ])
+                              )}`
                             : result.type === "writer"
                               ? `${t("Писатель")} · ${countryName(result.country.code, result.country.name)}`
                               : `${t("Книга")} · ${selectBookWriterName(
@@ -1400,21 +1396,13 @@ export default function App() {
               <div className="globe-copy">
                 <span>{t("Интерактивный глобус · ручная навигация")}</span>
                 <p>
-                  {language === "en" ? (
-                    <>
-                      {number(filteredCountries.length)}{" "}
-                      {filteredCountries.length === 1 ? "country" : "countries"} in
-                      this collection
-                    </>
-                  ) : (
-                    <>
-                      В выбранной коллекции — {number(filteredCountries.length)}{" "}
-                      {pluralRu(filteredCountries.length, [
-                        "страна",
-                        "страны",
-                        "стран",
-                      ])}
-                    </>
+                  {t("В выбранной коллекции —")} {number(filteredCountries.length)}{" "}
+                  {t(
+                    selectInterfacePlural(filteredCountries.length, language, [
+                      "страна",
+                      "страны",
+                      "стран",
+                    ])
                   )}
                 </p>
               </div>
@@ -1424,9 +1412,9 @@ export default function App() {
                   <strong>55°45′ N · 37°37′ E</strong>
                 </span>
                 <span className="atlas-compass">
-                  <i>{language === "en" ? "N" : "С"}</i>
+                  <i>{t("С")}</i>
                   <b>✦</b>
-                  <i>{language === "en" ? "S" : "Ю"}</i>
+                  <i>{t("Ю")}</i>
                 </span>
               </div>
 
@@ -1521,15 +1509,13 @@ export default function App() {
                     </span>
                     <small>
                       {number(country.writers.length)}{" "}
-                      {language === "en"
-                        ? country.writers.length === 1
-                          ? "writer"
-                          : "writers"
-                        : pluralRu(country.writers.length, [
-                            "автор",
-                            "автора",
-                            "авторов",
-                          ])}
+                      {t(
+                        selectInterfacePlural(country.writers.length, language, [
+                          "автор",
+                          "автора",
+                          "авторов",
+                        ])
+                      )}
                     </small>
                   </button>
                 ))}
@@ -1678,84 +1664,35 @@ export default function App() {
             </p>
             <ul>
               <li>
-                {language === "en" ? (
-                  <>
-                    {number(editorialAudit.englishBiographiesReady)} writer{" "}
-                    {editorialAudit.englishBiographiesReady === 1
-                      ? "profile has"
-                      : "profiles have"}{" "}
-                    passed the publication gate against open authoritative sources
-                  </>
-                ) : (
-                  <>
-                    {number(editorialAudit.russianBiographiesReady)}{" "}
-                    {pluralRu(editorialAudit.russianBiographiesReady, [
-                      "карточка",
-                      "карточки",
-                      "карточек",
-                    ])} уже{" "}
-                    {editorialAudit.russianBiographiesReady === 1
-                      ? "прошла"
-                      : "прошли"}{" "}
-                    {t(
-                      "публикационную проверку по открытым авторитетным источникам"
-                    )}
-                  </>
-                )}
+                {t(
+                  selectInterfacePlural(readyBiographyCount, language, [
+                    "{count} карточка уже прошла публикационную проверку по открытым авторитетным источникам",
+                    "{count} карточки уже прошли публикационную проверку по открытым авторитетным источникам",
+                    "{count} карточек уже прошли публикационную проверку по открытым авторитетным источникам",
+                  ])
+                ).replace("{count}", number(readyBiographyCount))}
               </li>
               <li>
-                {language === "en" ? (
-                  <>
-                    {number(editorialAudit.portraitedWriters)} documentary{" "}
-                    {editorialAudit.portraitedWriters === 1 ? "portrait is" : "portraits are"}{" "}
-                    connected without generated faces
-                  </>
-                ) : (
-                  <>
-                    {number(editorialAudit.portraitedWriters)}{" "}
-                    {pluralRu(editorialAudit.portraitedWriters, [
-                      "документальный портрет",
-                      "документальных портрета",
-                      "документальных портретов",
-                    ])}{" "}
-                    {editorialAudit.portraitedWriters === 1
-                      ? "подключён"
-                      : "подключены"}{" "}
-                    без генерации лиц
-                  </>
-                )}
+                {t(
+                  selectInterfacePlural(
+                    editorialAudit.portraitedWriters,
+                    language,
+                    [
+                      "{count} документальный портрет подключён без генерации лиц",
+                      "{count} документальных портрета подключены без генерации лиц",
+                      "{count} документальных портретов подключены без генерации лиц",
+                    ]
+                  )
+                ).replace("{count}", number(editorialAudit.portraitedWriters))}
               </li>
               <li>
-                {language === "en" ? (
-                  <>
-                    {number(
-                      editorialAudit.recordsNeedingReview +
-                        generatedEditorialQueue
-                    )}{" "}
-                    records remain in editorial review; automatically assembled drafts
-                    are not published before manual verification
-                  </>
-                ) : (
-                  <>
-                    Ещё{" "}
-                    {number(
-                      editorialAudit.recordsNeedingReview +
-                        generatedEditorialQueue
-                    )}{" "}
-                    {pluralRu(
-                      editorialAudit.recordsNeedingReview +
-                        generatedEditorialQueue,
-                      ["запись", "записи", "записей"]
-                    )}{" "}
-                    {editorialAudit.recordsNeedingReview +
-                      generatedEditorialQueue ===
-                    1
-                      ? "остаётся"
-                      : "остаются"}{" "}
-                    в редакционной очереди; автоматически собранные черновики не
-                    публикуются до ручной проверки
-                  </>
-                )}
+                {t(
+                  selectInterfacePlural(editorialQueueCount, language, [
+                    "Ещё {count} запись остаётся в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+                    "Ещё {count} записи остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+                    "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+                  ])
+                ).replace("{count}", number(editorialQueueCount))}
               </li>
             </ul>
           </article>
@@ -2321,7 +2258,7 @@ export default function App() {
         </div>
         <div className="footer-bottom">
           <p>
-            © 2025–2026 {language === "en" ? "Proba Pera" : "«Проба Пера»"}.{" "}
+            © 2025–2026 {t("«Проба Пера»")}.{" "}
             {t("Авторские публикации защищены законом.")}
           </p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>

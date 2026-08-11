@@ -16,6 +16,7 @@ const navigation = [
   ["▧", "Медиатека", "/media"],
   ["◫", "Страницы", "/pages"],
   ["⌘", "Главная страница", "/homepage"],
+  ["Aa", "Тексты сайта", "/site-copy"],
   ["▱", "Баннеры", "/banners"],
   ["☷", "Меню", "/menus"],
   ["◌", "Комментарии", "/comments"],
@@ -55,7 +56,7 @@ export default function AdminShell({
         <nav className="admin-nav" aria-label="Разделы панели">
           {navigation.map(([icon, label, href], index) => (
             <span key={href}>
-              {index === 9 && <span className="nav-divider" aria-hidden="true" />}
+              {index === 10 && <span className="nav-divider" aria-hidden="true" />}
               <Link
                 href={withAdminBasePath(href)}
                 aria-current={

@@ -14,6 +14,7 @@ import {
   englishTranslationCompensationPayload,
   englishTranslationReleaseIssues,
   isReleasedTranslationStatus,
+  publicationFailureSavePolicy,
   type ArticleTranslationStatus,
 } from "@/lib/article-translations";
 import { adminEnv } from "@/lib/env";
@@ -418,6 +419,7 @@ export async function saveArticleAction(formData: FormData) {
     (requestedStatus === "published" && previousStatus !== "published");
   const requiresReleaseValidation =
     parsed.data.status === "published" || parsed.data.status === "scheduled";
+  const publicationIssues = new Set<string>();
   const publicationOverride = formData.get("publication_override") === "1";
   if (requiresReleaseValidation) {
     const releaseContentHtml = sanitizeHtml(
@@ -444,55 +446,49 @@ export async function saveArticleAction(formData: FormData) {
       !publicationOverride &&
         formData.get("publication_ready") !== "yes" &&
         "завершите контроль перед публикацией",
-      ...englishTranslationReleaseIssues(
-        englishData
-          ? {
-              enabled: true,
-              status: englishData.status,
-              title: englishData.title,
-              subtitle: englishData.subtitle,
-              excerpt: englishData.excerpt,
-              contentHtml: releaseEnglishContentHtml,
-              slug: englishData.slug,
-              coverUrl: parsed.data.coverExternalUrl,
-              coverAlt: englishData.coverAlt,
-              seoTitle: englishData.seoTitle,
-              seoDescription: englishData.seoDescription,
-              seoKeywords: englishData.seoKeywords,
-              ogTitle: englishData.ogTitle,
-              ogDescription: englishData.ogDescription,
-              sources: englishData.sources,
-              bibliography: englishData.bibliography,
-            }
-          : {
-              enabled: false,
-              status: "draft",
-              title: "",
-              subtitle: "",
-              excerpt: "",
-              contentHtml: "",
-              slug: "",
-              coverUrl: null,
-              coverAlt: "",
-              seoTitle: "",
-              seoDescription: "",
-              seoKeywords: [],
-              ogTitle: "",
-              ogDescription: "",
-              sources: [],
-              bibliography: [],
-            }
-      ).map((issue) => `English: ${issue}`),
+      ...(englishEnabled
+        ? englishTranslationReleaseIssues(
+            englishData
+              ? {
+                  enabled: true,
+                  status: englishData.status,
+                  title: englishData.title,
+                  subtitle: englishData.subtitle,
+                  excerpt: englishData.excerpt,
+                  contentHtml: releaseEnglishContentHtml,
+                  slug: englishData.slug,
+                  coverUrl: parsed.data.coverExternalUrl,
+                  coverAlt: englishData.coverAlt,
+                  seoTitle: englishData.seoTitle,
+                  seoDescription: englishData.seoDescription,
+                  seoKeywords: englishData.seoKeywords,
+                  ogTitle: englishData.ogTitle,
+                  ogDescription: englishData.ogDescription,
+                  sources: englishData.sources,
+                  bibliography: englishData.bibliography,
+                }
+              : {
+                  enabled: false,
+                  status: "draft",
+                  title: "",
+                  subtitle: "",
+                  excerpt: "",
+                  contentHtml: "",
+                  slug: "",
+                  coverUrl: null,
+                  coverAlt: "",
+                  seoTitle: "",
+                  seoDescription: "",
+                  seoKeywords: [],
+                  ogTitle: "",
+                  ogDescription: "",
+                  sources: [],
+                  bibliography: [],
+                }
+          ).map((issue) => `English: ${issue}`)
+        : []),
     ].filter(Boolean) as string[];
-    if (releaseIssues.length) {
-      const failedArticleId = optionalText(formData.get("id")) || "new";
-      const errorMessage = `Публикация остановлена: ${releaseIssues.join("; ")}.`;
-      redirect(
-        failedArticleId === "new"
-          ? `/articles/new?error=${encodeURIComponent(errorMessage)}`
-          : articleEditPath(failedArticleId, { error: errorMessage })
-      );
-    }
+    releaseIssues.forEach((issue) => publicationIssues.add(issue));
   }
   const savedSlug = parsed.data.slug || generatedSlug;
 
@@ -714,7 +710,8 @@ export async function saveArticleAction(formData: FormData) {
       currentContentHash: currentEnglishContentHash,
     });
   const requiresEnglishRelease =
-    parsed.data.status === "published" || parsed.data.status === "scheduled";
+    Boolean(englishData) &&
+    (parsed.data.status === "published" || parsed.data.status === "scheduled");
 
   if (requiresEnglishRelease) {
     const bilingualIssues = [
@@ -722,21 +719,39 @@ export async function saveArticleAction(formData: FormData) {
       !englishSourceIsCurrent &&
         "confirm that the English version was reviewed against the current Russian source",
     ].filter((issue): issue is string => Boolean(issue));
-    if (bilingualIssues.length) {
-      const failedArticleId = parsed.data.id || "new";
-      const errorMessage = `English publication is blocked: ${bilingualIssues.join(
-        "; "
-      )}.`;
-      redirect(
-        failedArticleId === "new"
-          ? `/articles/new?error=${encodeURIComponent(errorMessage)}`
-          : articleEditPath(failedArticleId, { error: errorMessage })
-      );
-    }
+    bilingualIssues.forEach((issue) =>
+      publicationIssues.add(`English: ${issue}`)
+    );
   }
 
+  const publicationSavePolicy = publicationFailureSavePolicy({
+    hasIssues: publicationIssues.size > 0,
+    previousStatus: previousArticleSnapshot?.status as string | undefined,
+    requestedStatus: parsed.data.status,
+  });
+  if (publicationSavePolicy.kind === "preserve-published") {
+    if (!articleId) {
+      redirect("/articles?error=Не удалось определить опубликованную статью");
+    }
+    const errorMessage = `Публикация остановлена: ${Array.from(
+      publicationIssues
+    ).join(
+      "; "
+    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора — нажмите «Восстановить копию» после возврата.`;
+    redirect(articleEditPath(articleId, { error: errorMessage }));
+  }
+
+  const publicationBlockMessage = publicationIssues.size
+    ? `Публикация остановлена: ${Array.from(publicationIssues).join(
+        "; "
+      )}. Текст и изображения сохранены в черновике.`
+    : null;
+  const savedStatus = publicationSavePolicy.savedStatus;
+
   const savedEnglishStatus: ArticleTranslationStatus | null = englishData
-    ? isReleasedTranslationStatus(englishData.status) && !englishSourceIsCurrent
+    ? publicationBlockMessage && isReleasedTranslationStatus(englishData.status)
+      ? "draft"
+      : isReleasedTranslationStatus(englishData.status) && !englishSourceIsCurrent
       ? "stale"
       : englishData.status
     : null;
@@ -754,10 +769,10 @@ export async function saveArticleAction(formData: FormData) {
     content_html: sanitizedContentHtml,
     content_json: contentJson,
     category_id: parsed.data.categoryId,
-    status: parsed.data.status,
-    scheduled_at: parsed.data.status === "scheduled" ? parsed.data.scheduledAt : null,
+    status: savedStatus,
+    scheduled_at: savedStatus === "scheduled" ? parsed.data.scheduledAt : null,
     published_at:
-      parsed.data.status === "published" ? previousPublishedAt || now : null,
+      savedStatus === "published" ? previousPublishedAt || now : null,
     cover_external_url: parsed.data.coverExternalUrl,
     cover_alt: parsed.data.coverAlt,
     legacy_path: parsed.data.legacyPath,
@@ -1016,7 +1031,9 @@ export async function saveArticleAction(formData: FormData) {
     entity_id: articleId,
     metadata: {
       title: parsed.data.title,
-      status: parsed.data.status,
+      status: savedStatus,
+      requested_status: parsed.data.status,
+      publication_blocked: Boolean(publicationBlockMessage),
       slug: savedSlug,
       english_status: staleReleasedEnglishOnDisable
         ? "stale"
@@ -1027,7 +1044,7 @@ export async function saveArticleAction(formData: FormData) {
 
   let homepageReplaced = 0;
   if (
-    parsed.data.status === "published" &&
+    savedStatus === "published" &&
     parsed.data.showOnHomepage &&
     parsed.data.categoryId
   ) {
@@ -1057,7 +1074,7 @@ export async function saveArticleAction(formData: FormData) {
   }
 
   let publicationState: "started" | "queued" | "queue-error" | null = null;
-  if (parsed.data.status === "published") {
+  if (savedStatus === "published") {
     if (isNewRelease) {
       await supabase.from("admin_audit_log").insert({
         actor_id: session.user.id,
@@ -1088,6 +1105,7 @@ export async function saveArticleAction(formData: FormData) {
   redirect(
     articleEditPath(articleId, {
       saved: 1,
+      error: publicationBlockMessage,
       publish: publicationState,
       replaced: homepageReplaced || null,
     })

@@ -245,9 +245,28 @@ export const officialNobelLiteratureById = new Map(
   officialNobelLiteratureSnapshot.laureates.map((record) => [record.id, record] as const)
 );
 
+const nobelLiteratureLaureateIdsByWriterId = new Map<string, Set<number>>();
+for (const [writerKey, laureateId] of nobelLiteratureLaureateIdByWriterKey) {
+  const writerId = writerKey.slice(writerKey.indexOf(":") + 1);
+  const ids = nobelLiteratureLaureateIdsByWriterId.get(writerId) || new Set<number>();
+  ids.add(laureateId);
+  nobelLiteratureLaureateIdsByWriterId.set(writerId, ids);
+}
+
 export function officialNobelLiteratureRecordForWriterKey(writerKey: string) {
   const laureateId = nobelLiteratureLaureateIdByWriterKey.get(writerKey);
   return laureateId === undefined
     ? undefined
     : officialNobelLiteratureById.get(laureateId);
+}
+
+/**
+ * Structured fallback for legacy writer objects that retain the canonical
+ * writer id but have not yet been enriched with `nobelAward`. Ambiguous ids
+ * deliberately return undefined instead of guessing from prose or award text.
+ */
+export function officialNobelLiteratureRecordForWriterId(writerId: string) {
+  const laureateIds = nobelLiteratureLaureateIdsByWriterId.get(writerId);
+  if (!laureateIds || laureateIds.size !== 1) return undefined;
+  return officialNobelLiteratureById.get([...laureateIds][0]);
 }

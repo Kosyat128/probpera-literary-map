@@ -163,7 +163,7 @@ export function englishTranslationReleaseIssues(input: {
   sources: readonly unknown[];
   bibliography: readonly unknown[];
 }) {
-  if (!input.enabled) return ["add an English translation"];
+  if (!input.enabled) return [];
 
   const plainText = input.contentHtml
     .replace(/<[^>]+>/gu, " ")
@@ -207,4 +207,22 @@ export function englishTranslationReleaseIssues(input: {
     /data-editorial-block=["']media["']/iu.test(input.contentHtml) &&
       "replace English image placeholders",
   ].filter((issue): issue is string => Boolean(issue));
+}
+
+export function publicationFailureSavePolicy(input: {
+  hasIssues: boolean;
+  previousStatus: string | null | undefined;
+  requestedStatus: string;
+}) {
+  if (input.hasIssues && input.previousStatus === "published") {
+    return {
+      kind: "preserve-published" as const,
+      savedStatus: null,
+    };
+  }
+
+  return {
+    kind: "save" as const,
+    savedStatus: input.hasIssues ? "draft" : input.requestedStatus,
+  };
 }

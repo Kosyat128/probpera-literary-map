@@ -12,7 +12,10 @@ import {
   navigateToArticle,
   navigateToJournal,
 } from "../utils/articleRoutes";
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import {
+  selectInterfacePlural,
+  useInterfaceLanguage,
+} from "../i18n/InterfaceLanguage";
 import {
   articleSeriesId,
   articleSeriesLabel,
@@ -84,15 +87,6 @@ function matchesSearch(source: string, query: string) {
     const stem = searchStem(queryWord);
     return sourceWords.some((sourceWord) => sourceWord.startsWith(stem));
   });
-}
-
-function publicationWord(count: number) {
-  const lastTwo = count % 100;
-  const last = count % 10;
-  if (lastTwo >= 11 && lastTwo <= 14) return "публикаций";
-  if (last === 1) return "публикация";
-  if (last >= 2 && last <= 4) return "публикации";
-  return "публикаций";
 }
 
 const publishedLabelMonths: Record<string, number> = {
@@ -381,11 +375,14 @@ export default function ArticleLibrarySection({
         <header className="article-library-heading">
           <div>
             <span className="section-kicker">
-              {language === "en"
-                ? `Author archive · ${number(localizedArticleCatalog.length)} publications`
-                : `Авторский архив · ${number(localizedArticleCatalog.length)} ${publicationWord(
-                    localizedArticleCatalog.length
-                  )}`}
+              {t("Авторский архив")} · {number(localizedArticleCatalog.length)}{" "}
+              {t(
+                selectInterfacePlural(localizedArticleCatalog.length, language, [
+                  "публикация",
+                  "публикации",
+                  "публикаций",
+                ])
+              )}
             </span>
             <h2>{t("Журнал, выстроенный для чтения")}</h2>
             <p>
@@ -460,16 +457,13 @@ export default function ArticleLibrarySection({
 
         <div className="article-library-summary">
           <p>
-            {language === "en" ? (
-              <>
-                Found <strong>{number(filtered.length)}</strong>{" "}
-                {filtered.length === 1 ? "publication" : "publications"}
-              </>
-            ) : (
-              <>
-                Найдено <strong>{number(filtered.length)}</strong>{" "}
-                {publicationWord(filtered.length)}
-              </>
+            {t("Найдено")} <strong>{number(filtered.length)}</strong>{" "}
+            {t(
+              selectInterfacePlural(filtered.length, language, [
+                "публикация",
+                "публикации",
+                "публикаций",
+              ])
             )}
           </p>
           <span>{t("Текст и заголовки сохранены из оригинальных материалов")}</span>

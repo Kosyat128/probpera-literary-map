@@ -1,4 +1,21 @@
 import { expect, test } from "@playwright/test";
+import sharp from "sharp";
+
+async function meanPixelDifference(firstPng, secondPng) {
+  const [{ data: first, info }, { data: second }] = await Promise.all([
+    sharp(firstPng).ensureAlpha().raw().toBuffer({ resolveWithObject: true }),
+    sharp(secondPng).ensureAlpha().raw().toBuffer({ resolveWithObject: true }),
+  ]);
+  expect(second).toHaveLength(first.length);
+
+  let difference = 0;
+  for (let index = 0; index < first.length; index += 4) {
+    difference += Math.abs(first[index] - second[index]);
+    difference += Math.abs(first[index + 1] - second[index + 1]);
+    difference += Math.abs(first[index + 2] - second[index + 2]);
+  }
+  return difference / (info.width * info.height * 3);
+}
 
 test("globe preloads near the viewport but renders only while visible", async ({
   page,
@@ -74,4 +91,51 @@ test("globe style preview reuses decoded texture assets", async ({
   expect(
     textureAssignments.filter((source) => source.endsWith(earthAsset))
   ).toHaveLength(1);
+});
+
+test("selected Indonesia remains centered after the focus animation", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.locator("#atlas").scrollIntoViewIfNeeded();
+  const canvas = page.locator("#atlas canvas");
+  await expect(canvas).toHaveCount(1, { timeout: 30_000 });
+
+  await page.locator('[data-globe-style-option="modern"]').click();
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-style",
+    "modern"
+  );
+
+  await page.locator("#country-search").fill("Индонезия");
+  await page
+    .locator(".search-results button")
+    .filter({ hasText: "Индонезия" })
+    .first()
+    .click();
+  await expect(page.locator(".country-panel")).toContainText("Индонезия");
+  await expect(
+    page.locator(
+      '.globe-country-label[data-country-code="id"][data-country-label-source="selection"]'
+    )
+  ).toContainText("Индонезия");
+
+  await page.waitForTimeout(1_800);
+  const focused = await canvas.screenshot();
+  // This interval is deliberately longer than the former delayed auto-rotate
+  // restart (1.75 s), so the regression cannot hide behind the camera tween.
+  await page.waitForTimeout(3_200);
+  const stillFocused = await canvas.screenshot();
+
+  expect(await meanPixelDifference(focused, stillFocused)).toBeLessThan(0.9);
+
+  await page
+    .locator(".site-header .interface-language-control")
+    .getByRole("button", { name: /Английский язык|English/iu })
+    .click();
+  await expect(
+    page.locator(
+      '.globe-country-label[data-country-code="id"][data-country-label-source="selection"]'
+    )
+  ).toContainText("Indonesia");
 });

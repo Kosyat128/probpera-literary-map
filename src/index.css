@@ -8576,7 +8576,7 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-more > header p {
   margin: 0;
   color: var(--reader-muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.65;
 }
 
@@ -8683,7 +8683,7 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-more-copy small {
   color: #ef7e2d;
   font-family: var(--sans);
-  font-size: 7px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -8702,7 +8702,7 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-more-copy em {
   color: var(--reader-muted);
-  font-size: 8px;
+  font-size: 10px;
   font-style: normal;
 }
 
@@ -8732,8 +8732,10 @@ a.writer-nobel-medal:focus-visible {
     transform 180ms ease;
 }
 
-.article-reader-related button:hover {
+.article-reader-related button:hover,
+.article-reader-related button:focus-visible {
   border-color: rgba(239, 126, 45, 0.6);
+  outline: none;
   box-shadow: 0 14px 30px color-mix(in srgb, var(--reader-bg) 38%, transparent);
   transform: translateY(-2px);
 }
@@ -8762,7 +8764,8 @@ a.writer-nobel-medal:focus-visible {
     transform 500ms ease;
 }
 
-.article-reader-related button:hover .article-related-image img {
+.article-reader-related button:hover .article-related-image img,
+.article-reader-related button:focus-visible .article-related-image img {
   opacity: 1;
   transform: scale(1.035);
 }
@@ -8775,7 +8778,7 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-related small {
   color: #ef8b40;
-  font-size: 7px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -8783,14 +8786,14 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-related strong {
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
 }
 
 .article-reader-related em {
   color: var(--reader-muted);
-  font-size: 8px;
+  font-size: 10px;
   font-style: normal;
 }
 
@@ -8811,7 +8814,18 @@ a.writer-nobel-medal:focus-visible {
   text-align: left;
   background: var(--reader-paper);
   border: 1px solid var(--reader-line);
+  border-radius: 4px;
   cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.article-reader-sequence button:hover,
+.article-reader-sequence button:focus-visible {
+  background: color-mix(in srgb, var(--orange) 5%, var(--reader-paper));
+  border-color: color-mix(in srgb, var(--orange) 58%, var(--reader-line));
+  outline: none;
 }
 
 .article-reader-sequence button:last-child {
@@ -8820,7 +8834,7 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-sequence small {
   color: #ef8b40;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -10497,16 +10511,96 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .article-reader .engagement-card {
+  min-width: 0;
+  margin-top: 30px;
+  padding: clamp(18px, 3vw, 28px);
   color: var(--reader-text);
-  background: var(--reader-paper);
+  text-align: left;
+  background: color-mix(in srgb, var(--reader-bg) 12%, var(--reader-paper));
   border-color: var(--reader-line);
+  border-radius: 6px;
+  box-shadow:
+    inset 3px 0 color-mix(in srgb, var(--orange) 72%, transparent),
+    0 18px 42px color-mix(in srgb, var(--reader-bg) 18%, transparent);
+}
+
+.article-reader .engagement-card.is-pending p,
+.article-reader .comment-empty p {
+  color: var(--reader-muted);
+}
+
+.article-reader .engagement-heading {
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--reader-line);
+}
+
+.article-reader .rating-summary {
+  min-width: 0;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--orange) 4%, var(--reader-paper));
+  border: 1px solid var(--reader-line);
+  border-radius: 5px;
+}
+
+.article-reader .rating-summary > span strong {
+  color: var(--orange-deep);
+}
+
+.article-reader .rating-summary > div {
+  gap: 2px;
+  min-width: 0;
+}
+
+.article-reader .rating-summary button {
+  display: grid;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  place-items: center;
+  padding: 0;
+  color: var(--reader-muted);
+  border-radius: 50%;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.article-reader .rating-summary button:hover,
+.article-reader .rating-summary button:focus-visible,
+.article-reader .rating-summary button.is-active {
+  color: var(--orange-deep);
+  background: color-mix(in srgb, var(--orange) 11%, transparent);
+  outline: none;
+}
+
+.article-reader .rating-summary button:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--orange) 58%, transparent);
+}
+
+.article-reader .rating-summary button:hover:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 .article-reader .comment-form input,
 .article-reader .comment-form textarea {
   color: var(--reader-text);
-  background: transparent;
+  caret-color: var(--orange-deep);
+  background: color-mix(in srgb, var(--reader-bg) 7%, var(--reader-paper));
   border-color: var(--reader-line);
+}
+
+.article-reader .comment-form input::placeholder,
+.article-reader .comment-form textarea::placeholder {
+  color: color-mix(in srgb, var(--reader-muted) 82%, transparent);
+  opacity: 1;
+}
+
+.article-reader .comment-form input:focus,
+.article-reader .comment-form textarea:focus {
+  border-color: color-mix(in srgb, var(--orange) 68%, var(--reader-line));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--orange) 10%, transparent);
 }
 
 .article-reader .engagement-heading > span,
@@ -10521,6 +10615,155 @@ a.writer-nobel-medal:focus-visible {
 .article-reader .comment-list article,
 .article-reader .comment-empty {
   border-color: var(--reader-line);
+}
+
+.article-reader .comment-list article strong,
+.article-reader .comment-list article p,
+.article-reader .comment-empty strong,
+.article-reader .engagement-message {
+  color: var(--reader-text);
+}
+
+.article-reader .comment-list article p {
+  line-height: 1.65;
+}
+
+.article-reader .comment-empty {
+  background: color-mix(in srgb, var(--reader-bg) 5%, transparent);
+}
+
+.article-reader .engagement-message {
+  background: color-mix(in srgb, var(--orange) 9%, var(--reader-paper));
+}
+
+.article-reader-finish .share-links {
+  padding: 0;
+  border-top: 0;
+}
+
+.article-reader-finish .share-links > span {
+  color: var(--reader-muted);
+}
+
+.article-reader-finish .share-links a,
+.article-reader-finish .share-links button {
+  background: color-mix(in srgb, var(--orange) 8%, var(--reader-paper));
+  border-color: color-mix(in srgb, var(--orange) 42%, var(--reader-line));
+}
+
+.article-reader-bar .interface-language-control,
+.article-reader-bar .display-mode-control {
+  background: color-mix(in srgb, var(--reader-text) 8%, transparent);
+  border-color: var(--reader-line);
+}
+
+.article-reader-bar .interface-language-control button:not(.is-active),
+.article-reader-bar .display-mode-control button:not(.is-active) {
+  color: var(--reader-text);
+}
+
+.article-reader-bar .interface-language-control button:not(.is-active):hover,
+.article-reader-bar .display-mode-control button:not(.is-active):hover {
+  color: var(--reader-text);
+  background: color-mix(in srgb, var(--reader-text) 7%, transparent);
+}
+
+@media (max-width: 720px) {
+  .article-reader-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .article-reader-metrics > span {
+    border-bottom: 1px solid var(--reader-line);
+  }
+
+  .article-reader-metrics > span:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .article-reader-metrics > span:last-child {
+    grid-column: 1 / -1;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .article-reader-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .article-reader-metrics > span,
+  .article-reader-metrics > span:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .article-reader-metrics > span:last-child {
+    grid-column: auto;
+  }
+
+  .article-reader-finish {
+    margin-top: 58px;
+    padding-top: 30px;
+  }
+
+  .article-reader-finish h2 {
+    font-size: clamp(29px, 9vw, 36px);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .article-reader-finish > p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .article-reader .engagement-card {
+    margin-top: 24px;
+    padding: 16px;
+  }
+
+  .article-reader .rating-summary {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .article-reader .rating-summary > span {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .article-reader .rating-summary > div {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .article-reader .rating-summary button {
+    width: 100%;
+    min-width: 36px;
+  }
+
+  .article-reader-finish .share-links {
+    gap: 8px;
+  }
+
+  .article-reader-finish .share-links > span {
+    flex: 1 0 100%;
+    min-height: 20px;
+    margin-right: 0;
+  }
+
+  .article-reader-finish .share-links a,
+  .article-reader-finish .share-links button {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
 }
 
 @media (max-width: 980px) {
@@ -11018,20 +11261,27 @@ a.writer-nobel-medal:focus-visible {
 .article-reader.is-paper {
   --reader-bg: #ece3d8;
   --reader-paper: #fffaf3;
-  --reader-text: #312233;
-  --reader-muted: #746474;
-  --reader-line: rgba(66, 37, 69, 0.16);
+  --reader-text: #2d1e30;
+  --reader-muted: #665669;
+  --reader-line: rgba(66, 37, 69, 0.2);
 }
 
 .article-reader.is-book {
   --reader-bg: #806d59;
   --reader-paper: #f3e3c7;
   --reader-text: #352719;
-  --reader-muted: #78654f;
-  --reader-line: rgba(77, 55, 32, 0.2);
+  --reader-muted: #65513b;
+  --reader-line: rgba(77, 55, 32, 0.24);
   background:
     radial-gradient(circle at 50% 5%, rgba(255, 239, 206, 0.28), transparent 28rem),
     linear-gradient(90deg, #5e4c3b, #89735d 47%, #6d5946);
+}
+
+.article-reader.is-light .article-reader-bar,
+.article-reader.is-paper .article-reader-bar,
+.article-reader.is-book .article-reader-bar {
+  background: color-mix(in srgb, var(--reader-paper) 92%, transparent);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--reader-bg) 16%, transparent);
 }
 
 .article-reader-bar .display-mode-control {

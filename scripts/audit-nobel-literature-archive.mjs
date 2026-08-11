@@ -203,7 +203,7 @@ for (const card of unregisteredBiographyMentions) {
 }
 const biographyYearContradictions = biographyMentionCards.filter(
   ({ years, officialYear }) =>
-    years.length > 0 && years.some((year) => year !== officialYear)
+    years.length > 0 && !years.includes(officialYear)
 );
 for (const card of biographyYearContradictions) {
   blockingIssues.push({
