@@ -22,15 +22,15 @@ function writerByKey(
 describe("writer biography fact-review overlay", () => {
   it("publishes only the compact proven correction set", () => {
     expect(writerBiographyFactReviewCounts).toEqual({
-      reviewed: 600,
-      corrected: 511,
+      reviewed: 680,
+      corrected: 574,
     });
-    expect(Object.keys(reviewOverlay.corrections)).toHaveLength(511);
+    expect(Object.keys(reviewOverlay.corrections)).toHaveLength(574);
     expect(reviewRollup.summary).toEqual({
-      records: 600,
-      unchanged: 64,
-      corrected: 511,
-      held: 25,
+      records: 680,
+      unchanged: 77,
+      corrected: 574,
+      held: 29,
     });
   });
 
@@ -59,6 +59,41 @@ describe("writer biography fact-review overlay", () => {
     for (const text of Object.values(reviewOverlay.corrections)) {
       expect(text).not.toMatch(/(?:проверено|не проверено|verified|unverified)/iu);
     }
+  });
+
+  it("never publishes held batch 29 identities or correction text", () => {
+    const heldKeys = [
+      "gabon:florentin_moussavou_nzigu",
+      "gabon:juste_auguste_kotto",
+      "gambia:baaba_jobarteh",
+    ];
+    const publicKeys = new Set(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => `${country.id}:${writer.id}`)
+      )
+    );
+
+    for (const heldKey of heldKeys) {
+      expect(reviewOverlay.corrections).not.toHaveProperty(heldKey);
+      expect(publicKeys.has(heldKey)).toBe(false);
+    }
+  });
+
+  it("publishes corrected batch 30 associations and withholds only Julian Fedon", () => {
+    const publicKeys = new Set(
+      countries.flatMap((country) =>
+        country.writers.map((writer) => `${country.id}:${writer.id}`)
+      )
+    );
+
+    expect(reviewOverlay.corrections).not.toHaveProperty(
+      "grenada:julian_fedon"
+    );
+    expect(publicKeys.has("grenada:julian_fedon")).toBe(false);
+    expect(publicKeys.has("germany:robert_musil")).toBe(true);
+    expect(publicKeys.has("germany:stefan_zweig")).toBe(true);
+    expect(reviewOverlay.corrections).toHaveProperty("germany:robert_musil");
+    expect(reviewOverlay.corrections).toHaveProperty("germany:stefan_zweig");
   });
 
   it("keeps the source-confirmed Su Tong birth date", () => {

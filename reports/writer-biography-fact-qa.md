@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:a87065a85acc96a9be47b448b82c251b314a68533490407aaabe2881f334da19`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:125b228d09ebc5ffd808d447edba4938eff758fcfa2674f2cf55ddeb74b52e85`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1711; bio присутствует: 1711.
+- Карточек и русских bio проверено алгоритмом: 1707; bio присутствует: 1707.
 - Надёжных identity-match с локальным staging: 231.
-- Из них source-confirmed structured cross-check: 230 (13.4%).
-- Offline Wikidata snapshot содержит candidate QID для 1268 карточек, но label+birth-year identity corroborated только у 1191 (69.6% корпуса); identity-discrepant: 14, требуют дополнительной identity-проверки: 63.
-- Сопоставлено полей дат со snapshot: 2108; exact Gregorian: 1618; совместимы при общей precision: 168; несовместимых строк после curated resolutions: 107. Из них 35 сначала требуют identity repair, а 46 — современные referenced-противоречия для проверки по авторитетному источнику.
-- Ручных source-resolution с сохранёнными доказательствами: 62 в 50 карточках.
+- Из них source-confirmed structured cross-check: 230 (13.5%).
+- Offline Wikidata snapshot содержит candidate QID для 1268 карточек, но label+birth-year identity corroborated только у 1196 (70.1% корпуса); identity-discrepant: 14, требуют дополнительной identity-проверки: 58.
+- Сопоставлено полей дат со snapshot: 2108; exact Gregorian: 1620; совместимы при общей precision: 168; несовместимых строк после curated resolutions: 104. Из них 34 сначала требуют identity repair, а 45 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Ручных source-resolution с сохранёнными доказательствами: 72 в 58 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 0 карточек, 0 полей.
-- Metadata gaps (это не доказанные ошибки): 194.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1681.
+- Metadata gaps (это не доказанные ошибки): 210.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1677.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 139
-- `critical-ranking`: 380
-- `identity-role`: 1665
-- `language`: 173
-- `life-dates`: 74
-- `movement-era`: 103
-- `national-cultural-affiliation`: 1046
-- `nobel`: 105
-- `places`: 13
-- `priority-claim`: 164
-- `reception-influence`: 62
-- `themes-style`: 233
-- `works`: 793
+- `awards`: 137
+- `critical-ranking`: 347
+- `identity-role`: 1660
+- `language`: 168
+- `life-dates`: 94
+- `movement-era`: 92
+- `national-cultural-affiliation`: 1045
+- `nobel`: 108
+- `places`: 12
+- `priority-claim`: 161
+- `reception-influence`: 61
+- `themes-style`: 240
+- `works`: 829
 
 ## High-confidence противоречия
 
@@ -88,7 +88,17 @@
 | `egypt:ibrahim_aslan` | `birthDate` | `` | `` | withheld-conflicting-sources | Ibrahim Aslan — AUC Press: https://aucpress.com/author/ibrahim-aslan/; Ibrahim Aslan — Banipal: https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/ |
 | `egypt:ibrahim_aslan` | `deathDate` | `2012` | `` | retained-source-agreement | Ibrahim Aslan — AUC Press: https://aucpress.com/author/ibrahim-aslan/; Ibrahim Aslan — Banipal: https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/ |
 | `england:christopher_marlowe` | `birthDate` | `1564` | `` | reduced-unsupported-precision | Christopher Marlowe — Poetry Foundation: https://www.poetryfoundation.org/poets/christopher-marlowe; Christopher Marlowe — Royal Shakespeare Company: https://www.rsc.org.uk/edward-ii/about-the-play/who-was-christopher-marlowe |
+| `georgia:galaktion_tabidze` | `birthDate` | `1891-11-17` | `` | corrected-card | Galaktion Tabidze — National Archives of Georgia: https://www.archive.gov.ge/en/galaktioni-1 |
 | `georgia:otar_chiladze` | `deathDate` | `2009-10-01` | `2009-10-01` | corrected-card | Чиладзе Отар Иванович — Большая российская энциклопедия: https://bigenc.ru/c/chiladze-otar-ivanovich-b371ff; Умер грузинский писатель Отар Чиладзе — Российская газета: https://rg.ru/2009/10/01/chiladze-anons.html; Умер грузинский писатель Отар Чиладзе — Коммерсантъ: https://www.kommersant.ru/doc/1720449 |
+| `germany:sebastian_brant` | `birthDate` | `1458` | `` | corrected-card | Sebastian Brant — Deutsche Biographie: https://www.deutsche-biographie.de/gnd118514474.html; Sebastian Brant — Deutsche Nationalbibliothek: https://d-nb.info/gnd/118514474 |
+| `ghana:joseph_casely_hayford` | `birthDate` | `1866` | `` | reduced-conflicting-day-precision | Joseph Ephraim Casely Hayford — Inner Temple: https://www.innertemple.org.uk/celebrating-diversity-at-the-bar/joseph-ephraim-casely-hayford/; J. E. Casely Hayford — Encyclopaedia Africana: https://encyclopaediaafricana.com/hayford-j-e-casely/ |
+| `ghana:joseph_casely_hayford` | `deathDate` | `1930-08-11` | `` | corrected-card | J. E. Casely Hayford — Encyclopaedia Africana: https://encyclopaediaafricana.com/hayford-j-e-casely/ |
+| `ghana:martin_egblewogbe` | `birthDate` | `1975` | `` | reduced-unsupported-precision | Martin Egblewogbe — Writers Project of Ghana: https://www.writersprojectghana.com/megblewogbe/; Against Ethnography — Cambridge University Press: https://www.cambridge.org/core/books/decolonizing-the-english-literary-curriculum/against-ethnography/B3D295B83E9DE2EEE9F559DA4E34568B; The Waiting — CiNii Books: https://ci.nii.ac.jp/ncid/BD00490608 |
+| `ghana:nii_ayikwei_parkes` | `birthDate` | `1974` | `` | reduced-unsupported-precision | Nii Ayikwei Parkes — Peepal Tree Press: https://www.peepaltreepress.com/authors/nii-ayikwei-parkes; Nii Ayikwei Parkes — official curriculum vitae: https://niiparkes.com/open/profile/cv/?aid=235&sa=0 |
+| `greece:andreas_kalvos` | `birthDate` | `1792` | `` | reduced-unsupported-precision | Andreas Kalvos — Capodistrias Museum: https://www.capodistriasmuseum.gr/en/persons/andreas-kalvos/; Andreas Kalvos — Ionian University POLYSEMi: https://polysemi.di.ionio.gr/index.php/2019/08/29/andreas-kalvos-2/ |
+| `grenada:george_brizan` | `birthDate` | `1942-10-31` | `` | corrected-card | George Brizan — National Democratic Congress of Grenada: https://www.ndcgrenada.org/past-leaders/ |
+| `grenada:george_brizan` | `deathDate` | `2012` | `` | reduced-unsupported-precision | George Brizan — CARICOM: https://caricom.org/caricom-remembers-rt-hon-george-brizan/ |
+| `guatemala:francisco_alejandro_mendez` | `deathDate` | `2026-03-28` | `` | added-source-confirmed-date | Francisco Alejandro Méndez — Prensa Libre: https://www.prensalibre.com/vida/escenario/fallece-francisco-alejandro-mendez-premio-nacional-de-literatura-2017/; Francisco Alejandro Méndez Castañeda — Academia Guatemalteca de la Lengua: https://agl.org.gt/academicos/francisco-alejandro-mendez-castaneda/ |
 | `iraq:badr_shakir_al_sayyab` | `birthDate` | `1926-12-24` | `1926-12-24` | corrected-card | al-Sayyab, Badr Shakir — Institut national d'histoire de l'art: https://agorha.inha.fr/ark:/54721/ab33f4f3-f62a-4390-bd1f-862a09ca276c?database=71 |
 | `iraq:nazik_al_malaika` | `birthDate` | `1923-08-23` | `1922-08-23` | retain-current-card | Вестник Таджикского национального университета, 2025: https://msu.tj/file/vestnik/vestnik_t2%2852%29_4_2025.pdf |
 | `israel:zeruya_shalev` | `birthDate` | `1959-04-13` | `1959-04-13` | corrected-card | צרויה שלו — פרויקט בן־יהודה: https://benyehuda.org/lexicon/00036.php; Zeruya Shalev — Humanitas: https://humanitas.ro/autori/zeruya-shalev |
@@ -121,7 +131,7 @@
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1268 candidate-сопоставлений, но identity corroborated только у 1191. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1268 candidate-сопоставлений, но identity corroborated только у 1196. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -131,9 +141,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `cape_verde:jorge_barbosa` | Жоржи Барбоза | `Q1984024` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1902-05-22` | 1902-05-25 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1984024 |
 | `colombia:rafael_pombo` | Рафаэль Помбо | `Q1661285` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1912-05-05` | 1912-05-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1661285 |
 | `costa_rica:carmen_lyra` | Кармен Лира | `Q2939620` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1888-01-15` | 1887-01-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2939620 |
-| `georgia:galaktion_tabidze` | Галактион Табидзе | `Q144086` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1892-11-17` | 1891-11-05 (day, Q1985786, preferred, refs:1) | https://www.wikidata.org/wiki/Q144086 |
-| `germany:sebastian_brant` | Себастьян Брант | `Q60351` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1457` | 1458 (year, Q1985727, normal, refs:21) | https://www.wikidata.org/wiki/Q60351 |
-| `ghana:nii_ayikwei_parkes` | Нии Айквей Паркс | `Q1989954` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1974-01-01` | 1974-04-01 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1989954 |
 | `guatemala:luis_cardoza_y_aragon` | Луис Кардоса-и-Арагон | `Q6700406` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1901-06-21` | 1904-06-21 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q6700406 |
 | `guatemala:rodrigo_rey_rosa` | Родриго Рей Роса | `Q4392560` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1958-02-04` | 1958-11-04 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q4392560 |
 | `guyana:edgar_mittelholzer` | Эдгар Миттельхольцер | `Q181618` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1965-05-05` | 1965-05-06 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q181618 |
@@ -444,6 +451,22 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `france:michel_houellebecq` | Мишель Уэльбек | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Расширение пространства борьбы"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `france:montaigne` | Мишель де Монтень | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Опытов"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `france:prosper_merimee` | Проспер Мериме | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Хроника царствования Карла IX"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `gambia:nana_grey_johnson` | Нана Грей-Джонсон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Magic Calabash"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `gambia:tijan_sallah` | Тиджан Салла | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Kora Land"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `georgia:akaki_tsereteli` | Акакий Церетели | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Пережитое"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `germany:alfred_doblin` | Альфред Дёблин | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Берлин Александрплац"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `germany:eduard_morike` | Эдуард Мёрике | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Художник Нольтен"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `germany:hartmann_von_aue` | Гартман фон Ауэ | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Григорий"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `germany:heinrich_heine` | Генрих Гейне | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Книги песен"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `germany:patrick_suskind` | Патрик Зюскинд | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Парфюмер. История одного убийцы"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:ama_ata_aidoo` | Ама Ата Айду | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Перемены"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:ayi_kwei_armah` | Айи Квей Арма | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Прекрасные ещё не родились"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:joseph_casely_hayford` | Джозеф Эфраим Кейсли-Хейфорд | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Ethiopia Unbound"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:martin_egblewogbe` | Мартин Эгбевогбе | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Mr Happy and the Hammer of God and Other Stories"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:nii_ayikwei_parkes` | Нии Айквей Паркс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Tail of the Blue Bird"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ghana:nii_ayikwei_parkes` | Нии Айквей Паркс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Makings of You"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `greece:andreas_kalvos` | Андреас Калвос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Лира"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `greece:giannis_ritsos` | Яннис Рицос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Эпитафий"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `iceland:snorri_sturluson` | Снорри Стурлусон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Младшей Эдды"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `indonesia:achdiyat_karta_mihardja` | Ахдиат Карта Михарджа | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Атеист"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `italy:giovanni_boccaccio` | Джованни Боккаччо | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Декамерона"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |

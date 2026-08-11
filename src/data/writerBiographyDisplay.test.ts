@@ -133,10 +133,10 @@ describe("writer biography display policy", () => {
       ).length,
       withheldKnownQualityIssues: displays.filter((display) => !display).length,
     }).toEqual({
-      cards: 1_711,
+      cards: 1_707,
       strictGatePassing: 45,
       published: 45,
-      legacyUnverified: 1_666,
+      legacyUnverified: 1_662,
       withheldKnownQualityIssues: 0,
     });
 
