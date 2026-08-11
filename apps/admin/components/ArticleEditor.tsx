@@ -26,6 +26,15 @@ import {
   articleCanonicalUrl,
   initialEnglishCanonicalState,
 } from "@/lib/article-route";
+import {
+  articleDraftRecoveryKeyPrefix,
+  clearConfirmedArticleRecovery,
+  pendingArticleSaveValue,
+  PENDING_ARTICLE_SAVE_KEY,
+  persistArticleRecoverySnapshot,
+  recoveryContentFingerprint,
+  resolveArticleDraftRecoverySource,
+} from "@/lib/article-recovery";
 import { withClientAdminPath } from "@/lib/admin-path";
 import { prepareClientImage } from "@/lib/client-image-upload";
 import {
@@ -287,6 +296,7 @@ export default function ArticleEditor({
   publicSiteUrl,
   templates = [],
   draftKey,
+  saveConfirmed = false,
 }: {
   article: Article;
   englishTranslation?: ArticleTranslation;
@@ -294,6 +304,7 @@ export default function ArticleEditor({
   publicSiteUrl: string;
   templates?: CustomTemplate[];
   draftKey?: string;
+  saveConfirmed?: boolean;
 }) {
   const [activeLocale, setActiveLocale] = useState<"ru" | "en">("ru");
   const activeLocaleRef = useRef<"ru" | "en">("ru");
@@ -358,12 +369,21 @@ export default function ArticleEditor({
     )
   );
   const [savedLocallyAt, setSavedLocallyAt] = useState<string | null>(null);
+  const [draftStorageError, setDraftStorageError] = useState("");
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
   const [recoveryKey, setRecoveryKey] = useState(
     article.id ? `probpera-editor-${article.id}` : ""
   );
+  const [recoverySourceKey, setRecoverySourceKey] = useState(
+    article.id ? `probpera-editor-${article.id}` : ""
+  );
+  const [recoveryDraftScope, setRecoveryDraftScope] = useState<string | null>(
+    null
+  );
+  const initialRecoveryFingerprintRef = useRef<string | null>(null);
+  const latestRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
   const [templateMessage, setTemplateMessage] = useState("");
   const [mediaComposerKind, setMediaComposerKind] = useState<
@@ -584,7 +604,10 @@ export default function ArticleEditor({
 
   useEffect(() => {
     if (article.id) {
-      setRecoveryKey(`probpera-editor-${article.id}`);
+      const articleRecoveryKey = `probpera-editor-${article.id}`;
+      setRecoveryKey(articleRecoveryKey);
+      setRecoverySourceKey(articleRecoveryKey);
+      setRecoveryDraftScope(null);
       return;
     }
 
@@ -616,20 +639,65 @@ export default function ArticleEditor({
         ""
       );
     }
-    const safeScope = scope.replace(/[^a-z0-9_-]+/giu, "-").slice(0, 80) || "new";
-    const nextRecoveryKey = `probpera-editor-draft-${safeScope}-${token}`;
-    const legacyNewDraft = window.localStorage.getItem("probpera-editor-new");
-    if (!window.localStorage.getItem(nextRecoveryKey) && legacyNewDraft) {
-      window.localStorage.setItem(nextRecoveryKey, legacyNewDraft);
-      window.localStorage.removeItem("probpera-editor-new");
+    const nextRecoveryKey = `${articleDraftRecoveryKeyPrefix(scope)}${token}`;
+    let nextRecoverySourceKey = nextRecoveryKey;
+    try {
+      const legacyNewDraft = window.localStorage.getItem("probpera-editor-new");
+      if (!window.localStorage.getItem(nextRecoveryKey) && legacyNewDraft) {
+        persistArticleRecoverySnapshot(
+          window.localStorage,
+          nextRecoveryKey,
+          legacyNewDraft,
+          scope
+        );
+        window.localStorage.removeItem("probpera-editor-new");
+      }
+      nextRecoverySourceKey = resolveArticleDraftRecoverySource(
+        window.localStorage,
+        scope,
+        nextRecoveryKey
+      );
+    } catch {
+      setDraftStorageError(
+        "Браузер запретил доступ к локальным черновикам. Сохраняйте статью кнопкой чаще."
+      );
     }
     setRecoveryKey(nextRecoveryKey);
+    setRecoverySourceKey(nextRecoverySourceKey);
+    setRecoveryDraftScope(scope);
   }, [article.id, draftKey]);
 
   useEffect(() => {
-    if (!recoveryKey) return;
-    setHasRecoveryCopy(Boolean(window.localStorage.getItem(recoveryKey)));
-  }, [recoveryKey]);
+    if (!recoveryKey || !recoverySourceKey) return;
+    if (saveConfirmed) {
+      try {
+        const { clearedCurrent } = clearConfirmedArticleRecovery(
+          window.localStorage,
+          window.sessionStorage,
+          recoveryKey
+        );
+        if (clearedCurrent) {
+          setHasRecoveryCopy(false);
+          setSavedLocallyAt(null);
+        }
+        setDraftStorageError("");
+      } catch {
+        setDraftStorageError(
+          "Статья сохранена, но браузер не дал удалить старую локальную копию."
+        );
+      }
+    }
+
+    try {
+      setHasRecoveryCopy(
+        Boolean(window.localStorage.getItem(recoverySourceKey))
+      );
+    } catch {
+      setDraftStorageError(
+        "Браузер запретил доступ к локальным черновикам. Сохраняйте статью кнопкой чаще."
+      );
+    }
+  }, [recoveryKey, recoverySourceKey, saveConfirmed]);
 
   const recoverySnapshot = useMemo<ArticleRecoverySnapshot>(
     () => ({
@@ -734,6 +802,18 @@ export default function ArticleEditor({
   );
 
   useEffect(() => {
+    latestRecoverySnapshotRef.current = recoverySnapshot;
+    const fingerprint = recoveryContentFingerprint(recoverySnapshot);
+    if (initialRecoveryFingerprintRef.current === null) {
+      initialRecoveryFingerprintRef.current = fingerprint;
+      return;
+    }
+    if (fingerprint !== initialRecoveryFingerprintRef.current) {
+      setIsDirty(true);
+    }
+  }, [recoverySnapshot]);
+
+  useEffect(() => {
     try {
       const stored = JSON.parse(
         window.localStorage.getItem(LEGACY_TEMPLATES_KEY) || "[]"
@@ -767,26 +847,70 @@ export default function ArticleEditor({
   }, [isDirty]);
 
   useEffect(() => {
-    if (!recoveryKey) return;
+    if (!recoveryKey || !isDirty) return;
     const timer = window.setTimeout(() => {
-      window.localStorage.setItem(
-        recoveryKey,
-        JSON.stringify({
-          ...recoverySnapshot,
-          savedAt: Date.now(),
-        })
-      );
-      setSavedLocallyAt(
-        new Intl.DateTimeFormat("ru-RU", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        }).format(new Date())
-      );
-      setHasRecoveryCopy(true);
+      try {
+        persistArticleRecoverySnapshot(
+          window.localStorage,
+          recoveryKey,
+          JSON.stringify({
+            ...recoverySnapshot,
+            savedAt: Date.now(),
+            reason: "autosave",
+          }),
+          recoveryDraftScope
+        );
+        setRecoverySourceKey(recoveryKey);
+        setSavedLocallyAt(
+          new Intl.DateTimeFormat("ru-RU", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }).format(new Date())
+        );
+        setHasRecoveryCopy(true);
+        setDraftStorageError("");
+      } catch {
+        setDraftStorageError(
+          "Автосохранение в браузере не сработало. Нажмите «Сохранить» — текст и загруженные изображения останутся в черновике."
+        );
+      }
     }, 900);
     return () => window.clearTimeout(timer);
-  }, [recoveryKey, recoverySnapshot]);
+  }, [isDirty, recoveryDraftScope, recoveryKey, recoverySnapshot]);
+
+  useEffect(() => {
+    if (!recoveryKey || !isDirty) return;
+    const flushRecoveryCopy = () => {
+      const snapshot = latestRecoverySnapshotRef.current;
+      if (!snapshot) return;
+      try {
+        persistArticleRecoverySnapshot(
+          window.localStorage,
+          recoveryKey,
+          JSON.stringify({
+            ...snapshot,
+            savedAt: Date.now(),
+            reason: "page-hidden",
+          }),
+          recoveryDraftScope
+        );
+        setRecoverySourceKey(recoveryKey);
+      } catch {
+        // The regular autosave reports storage failures while the page is visible.
+      }
+    };
+    const flushWhenHidden = () => {
+      if (document.visibilityState === "hidden") flushRecoveryCopy();
+    };
+
+    window.addEventListener("pagehide", flushRecoveryCopy);
+    document.addEventListener("visibilitychange", flushWhenHidden);
+    return () => {
+      window.removeEventListener("pagehide", flushRecoveryCopy);
+      document.removeEventListener("visibilitychange", flushWhenHidden);
+    };
+  }, [isDirty, recoveryDraftScope, recoveryKey]);
 
   const countHtmlWords = (html: string) => {
     const text = html
@@ -802,27 +926,33 @@ export default function ArticleEditor({
   const russianWordCount = countHtmlWords(contentHtml);
   const englishWordCount = countHtmlWords(englishContentHtml);
 
-  const publicationChecks = useMemo(() => [
-    { label: "Заголовок и постоянный адрес", ok: title.trim().length >= 3 && slug.length >= 2 },
-    { label: "Рубрика выбрана", ok: Boolean(categoryId) },
-    { label: "Не менее 250 слов", ok: russianWordCount >= 250 },
-    { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
-    { label: "Описание карточки — от 80 знаков", ok: excerpt.trim().length >= 80 },
-    { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
-    { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
-    { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
-    { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
-    { label: "English: перевод включён", ok: englishEnabled },
-    { label: "English: статус approved/published", ok: englishStatus === "approved" || englishStatus === "published" },
-    { label: "English: заголовок и адрес", ok: englishTitle.trim().length >= 3 && englishSlug.length >= 2 },
-    { label: "English: не менее 250 слов", ok: englishWordCount >= 250 },
-    { label: "English: есть подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(englishContentHtml) },
-    { label: "English: описание карточки — от 80 знаков", ok: englishExcerpt.trim().length >= 80 },
-    { label: "English: alt обложки", ok: englishCoverAlt.trim().length >= 10 },
-    { label: "English: SEO-описание — от 80 знаков", ok: englishSeoDescription.trim().length >= 80 },
-    { label: "English: указан источник", ok: englishSourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
-    { label: "English: перевод сверен с текущим оригиналом", ok: englishConfirmedCurrentSource || (!russianSourceChanged && Boolean(englishTranslation?.source_content_hash)) },
-  ], [categoryId, contentHtml, coverAlt, coverUrl, englishConfirmedCurrentSource, englishContentHtml, englishCoverAlt, englishEnabled, englishExcerpt, englishSeoDescription, englishSlug, englishSourceText, englishStatus, englishTitle, englishTranslation?.source_content_hash, englishWordCount, excerpt, russianSourceChanged, russianWordCount, seoDescription, slug, sourceText, title]);
+  const publicationChecks = useMemo(() => {
+    const russianChecks = [
+      { label: "Заголовок и постоянный адрес", ok: title.trim().length >= 3 && slug.length >= 2 },
+      { label: "Рубрика выбрана", ok: Boolean(categoryId) },
+      { label: "Не менее 250 слов", ok: russianWordCount >= 250 },
+      { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
+      { label: "Описание карточки — от 80 знаков", ok: excerpt.trim().length >= 80 },
+      { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
+      { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
+      { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
+      { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
+    ];
+    if (!englishEnabled) return russianChecks;
+
+    return [
+      ...russianChecks,
+      { label: "English: статус approved/published", ok: englishStatus === "approved" || englishStatus === "published" },
+      { label: "English: заголовок и адрес", ok: englishTitle.trim().length >= 3 && englishSlug.length >= 2 },
+      { label: "English: не менее 250 слов", ok: englishWordCount >= 250 },
+      { label: "English: есть подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(englishContentHtml) },
+      { label: "English: описание карточки — от 80 знаков", ok: englishExcerpt.trim().length >= 80 },
+      { label: "English: alt обложки", ok: englishCoverAlt.trim().length >= 10 },
+      { label: "English: SEO-описание — от 80 знаков", ok: englishSeoDescription.trim().length >= 80 },
+      { label: "English: указан источник", ok: englishSourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
+      { label: "English: перевод сверен с текущим оригиналом", ok: englishConfirmedCurrentSource || (!russianSourceChanged && Boolean(englishTranslation?.source_content_hash)) },
+    ];
+  }, [categoryId, contentHtml, coverAlt, coverUrl, englishConfirmedCurrentSource, englishContentHtml, englishCoverAlt, englishEnabled, englishExcerpt, englishSeoDescription, englishSlug, englishSourceText, englishStatus, englishTitle, englishTranslation?.source_content_hash, englishWordCount, excerpt, russianSourceChanged, russianWordCount, seoDescription, slug, sourceText, title]);
   const publicationReady = publicationChecks.every((item) => item.ok);
 
   const setLink = () => {
@@ -1219,14 +1349,17 @@ export default function ArticleEditor({
               ...recoverySnapshot,
               ...editorContent,
             };
-      window.localStorage.setItem(
+      persistArticleRecoverySnapshot(
+        window.localStorage,
         recoveryKey,
         JSON.stringify({
           ...snapshotBeforeTemplate,
           savedAt: Date.now(),
           reason: `before-template:${label}`,
-        })
+        }),
+        recoveryDraftScope
       );
+      setRecoverySourceKey(recoveryKey);
       setHasRecoveryCopy(true);
     }
     editor.commands.setContent(html);
@@ -1280,8 +1413,8 @@ export default function ArticleEditor({
   };
 
   const restoreLocalCopy = () => {
-    if (!recoveryKey) return;
-    const stored = window.localStorage.getItem(recoveryKey);
+    if (!recoverySourceKey) return;
+    const stored = window.localStorage.getItem(recoverySourceKey);
     if (!stored || !editor) return;
     try {
       const recovery = JSON.parse(stored) as ArticleRecoverySnapshot;
@@ -1430,6 +1563,40 @@ export default function ArticleEditor({
           );
           return;
         }
+        if (recoveryKey) {
+          const snapshot = latestRecoverySnapshotRef.current;
+          try {
+            if (snapshot) {
+              persistArticleRecoverySnapshot(
+                window.localStorage,
+                recoveryKey,
+                JSON.stringify({
+                  ...snapshot,
+                  savedAt: Date.now(),
+                  reason: "before-submit",
+                }),
+                recoveryDraftScope
+              );
+              setRecoverySourceKey(recoveryKey);
+            }
+          } catch {
+            // Server-side saving still proceeds when browser storage is unavailable.
+          }
+          if (snapshot) {
+            try {
+              window.sessionStorage.setItem(
+                PENDING_ARTICLE_SAVE_KEY,
+                pendingArticleSaveValue(
+                  recoveryKey,
+                  snapshot,
+                  recoveryDraftScope
+                )
+              );
+            } catch {
+              // The local draft itself remains available when session storage is blocked.
+            }
+          }
+        }
         setIsDirty(false);
       }}
       className={isFullscreen ? "article-form is-fullscreen" : "article-form"}
@@ -1533,13 +1700,13 @@ export default function ArticleEditor({
           disabled={!editor || isImageUploadActive}
           onClick={() => switchEditorLocale("en")}
         >
-          EN · редакционный перевод
+          EN · необязательный перевод
         </button>
         <span>
-          EN: {englishStatus}
-          {englishTranslation?.source_article_updated_at && !russianSourceChanged
+          {englishEnabled ? `EN: ${englishStatus}` : "EN: не используется"}
+          {englishEnabled && englishTranslation?.source_article_updated_at && !russianSourceChanged
             ? " · есть привязка к оригиналу"
-            : russianSourceChanged
+            : englishEnabled && russianSourceChanged
               ? " · нужна повторная сверка"
               : ""}
         </span>
@@ -2201,6 +2368,11 @@ export default function ArticleEditor({
 
           <section className="panel settings-stack publication-checklist" aria-labelledby="publication-checklist-title">
             <h2 id="publication-checklist-title">Контроль перед публикацией</h2>
+            <p>
+              {englishEnabled
+                ? "Проверяется русский оригинал и включённый английский перевод."
+                : "Английский перевод не включён: можно выпустить только русский оригинал."}
+            </p>
             <ul>
               {publicationChecks.map((item) => (
                 <li className={item.ok ? "is-ready" : "is-missing"} key={item.label}>
@@ -2356,12 +2528,19 @@ export default function ArticleEditor({
       )}
 
       <footer className="editor-footer">
-        <small>
-          {wordCount.toLocaleString(activeLocale === "en" ? "en-US" : "ru-RU")}{" "}
-          {activeLocale === "en" ? "words" : "слов"}
-          {savedLocallyAt ? ` · резервная копия ${savedLocallyAt}` : ""}
-          {isDirty ? " · есть несохранённые изменения" : ""}
-        </small>
+        <div className="editor-save-state" aria-live="polite">
+          <small>
+            {wordCount.toLocaleString(activeLocale === "en" ? "en-US" : "ru-RU")}{" "}
+            {activeLocale === "en" ? "words" : "слов"}
+            {savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""}
+            {isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}
+          </small>
+          {draftStorageError && (
+            <small className="editor-save-error" role="alert">
+              {draftStorageError}
+            </small>
+          )}
+        </div>
         <div className="editor-actions">
           {hasRecoveryCopy && (
             <button

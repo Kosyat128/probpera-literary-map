@@ -3,6 +3,10 @@
 export const cmsSiteContent = {
   "generatedAt": "2026-08-04T08:21:47.580Z",
   "homepageBlocks": [],
+  "siteCopy": {
+    "ru": {},
+    "en": {}
+  },
   "banners": [],
   "navigationMenus": [
     {

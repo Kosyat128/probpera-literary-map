@@ -46,6 +46,11 @@ function validIsoDate(value) {
   // В исторической базе допустимы год, приблизительная дата и обозначение
   // века. Строго проверяем только значения, которые заявлены как ISO-дата.
   if (!/^\d{4}-/u.test(normalized)) return true;
+  const monthPrecision = normalized.match(/^(\d{4})-(\d{2})$/u);
+  if (monthPrecision) {
+    const month = Number(monthPrecision[2]);
+    return month >= 1 && month <= 12;
+  }
   const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})$/u);
   if (!match) return false;
   const month = Number(match[2]);

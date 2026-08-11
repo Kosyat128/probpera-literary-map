@@ -16,6 +16,13 @@ export default defineConfig(({ mode }) => {
             const moduleId = id.replaceAll("\\\\", "/");
             if (moduleId.includes("/books.generated.json")) return "book-catalog";
             if (
+              moduleId.includes(
+                "/writerBiographyFactReviewCorrections.generated.json"
+              )
+            ) {
+              return "writer-biography-reviews";
+            }
+            if (
               moduleId.includes("/node_modules/three/") ||
               moduleId.includes("/node_modules/@react-three/")
             ) {

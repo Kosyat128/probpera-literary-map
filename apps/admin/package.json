@@ -14,7 +14,7 @@
     "cf:upload": "npm run cf:build && opennextjs-cloudflare upload",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "start": "node scripts/prepare-standalone.mjs && node scripts/start-admin.mjs",
-    "lint": "tsc --noEmit"
+    "lint": "node ../../scripts/export-interface-copy-catalog.mjs --check && tsc --noEmit"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
@@ -28,7 +28,7 @@
     "@tiptap/extension-underline": "^3.29.2",
     "@tiptap/react": "^3.29.2",
     "@tiptap/starter-kit": "^3.29.2",
-    "next": "16.2.12",
+    "next": "16.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sanitize-html": "^2.17.6",

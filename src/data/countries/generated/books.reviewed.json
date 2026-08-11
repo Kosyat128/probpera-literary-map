@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-08T00:00:00.000Z",
-  "sourceManifestFingerprint": "ee1a7091e66e7f5d4269ef3e0128ea1166f84afa43878ae5d5713b600a190b45",
+  "generatedAt": "2026-08-11T00:00:00.000Z",
+  "sourceManifestFingerprint": "ce44d7c43e1d5cb7e5637f9242d19847695a123868fdf0cc600b719323890d09",
   "source": "Validated book-enrichment-curated-batch files; raw imports remain unchanged",
   "works": {
     "austria:franz_kafka": [

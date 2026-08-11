@@ -34,41 +34,61 @@
       "path": "/textures/modern-atlas-2026-ru.webp",
       "width": 4096,
       "height": 2048,
-      "bytes": 1456296,
+      "bytes": 1477396,
       "locale": "ru",
       "density": "desktop",
-      "countryLabelCount": 69,
-      "sha256": "9402B0C7ACE874FA4AD7288B2D9935F54EF85B2F300BFBE7BAC5EFE059F5BD2E"
+      "countryLabelCount": 87,
+      "countryLabelCoverage": {
+        "accepted": "AGO ARG ATA AUS AZE BHS BRA CAN CHL CHN CMR COD COL CUB DJI DZA ECU ESP ETH FLK FRA GAB GBR GIN GRC GRL GTM GUY IDN IND IRN IRQ ISL ISR JPN KAZ KEN LBN LBR LBY LKA LVA MAR MDG MEX MLI MNG MOZ MYS NAM NCL NER NGA NOR NPL NZL PAK PAN PER PHL PNG POL PRI PRK PRY ROU RUS SAU SDN SEN SWE TCD THA TJK TTO TUN TUR TWN TZA UKR USA UZB VNM VUT YEM ZAF ZWE",
+        "omittedByRank": "ALB ARM ATF BDI BLZ BRN CYN EST FJI GMB GNB HRV KOS KWT LSO LUX MDA MKD MNE MWI SAH SLV SOM SVK SVN TGO",
+        "omittedByCollision": "AFG ARE AUT BEL BEN BFA BGD BGR BIH BLR BOL BTN BWA CAF CHE CIV COG CRI CYP CZE DEU DNK DOM EGY ERI FIN GEO GHA GNQ HND HTI HUN IRL ITA JAM JOR KGZ KHM KOR LAO LTU MMR MRT NIC NLD OMN PRT PSX QAT RWA SDS SLB SLE SOL SRB SUR SWZ SYR TKM TLS UGA URY VEN ZMB"
+      },
+      "sha256": "2EB0A86AEA6D1ADFF08C1AACE8FBD89149F432AEBC4001F1B97AEC637321D82B"
     },
     {
       "path": "/textures/modern-atlas-2026-ru-mobile.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 379626,
+      "bytes": 395256,
       "locale": "ru",
       "density": "mobile",
-      "countryLabelCount": 30,
-      "sha256": "D2D4C5F20DFECC514D537E2FEACC798C193394D0A74379BF6C4A0D5310001149"
+      "countryLabelCount": 70,
+      "countryLabelCoverage": {
+        "accepted": "AGO ARG AUS BRA CAN CHL CHN CMR COD COL CUB DZA ECU ESP ETH FRA GBR GIN GRC GRL GTM IDN IND IRN IRQ ISL JPN KAZ KEN LBY LKA MAR MDG MEX MLI MNG MOZ MYS NAM NCL NER NGA NOR NPL NZL PAK PER PHL PNG POL PRK ROU RUS SAU SDN SEN SWE TCD THA TUN TUR TWN TZA UKR USA UZB VNM YEM ZAF ZWE",
+        "omittedByRank": "ALB ARE ARM ATA ATF AUT AZE BDI BEN BGR BHS BIH BLR BLZ BRN BTN BWA CAF CHE COG CRI CYN CYP CZE DJI DNK DOM ERI EST FJI FLK GAB GEO GMB GNB GNQ GUY HND HRV HTI HUN ISR JAM JOR KGZ KOS KWT LAO LBN LBR LSO LTU LUX LVA MDA MKD MNE MWI NIC NLD OMN PAN PRI PRY PSX QAT SAH SLE SLV SOL SOM SRB SUR SVK SVN SWZ TGO TJK TKM TLS TTO URY VUT",
+        "omittedByCollision": "AFG BEL BFA BGD BOL CIV DEU EGY FIN GHA IRL ITA KHM KOR MMR MRT PRT RWA SDS SLB SYR UGA VEN ZMB"
+      },
+      "sha256": "DAB618C766250D9DF340868366A987F2A402864DC8B717482255E470F92C39AB"
     },
     {
       "path": "/textures/modern-atlas-2026-en.webp",
       "width": 4096,
       "height": 2048,
-      "bytes": 1443294,
+      "bytes": 1461376,
       "locale": "en",
       "density": "desktop",
-      "countryLabelCount": 68,
-      "sha256": "15A2617C5BD81AC14A67EBDF64BDD387FE29A649F3DB86EEB30AAFDD3E710AFC"
+      "countryLabelCount": 87,
+      "countryLabelCoverage": {
+        "accepted": "AGO ARG ATA AUS AUT AZE BHS BRA CAN CHL CHN CMR COD COL CUB DJI DZA ECU ESP ETH FLK FRA GAB GBR GIN GRC GRL GTM GUY IDN IND IRN IRQ ISL ISR JPN KAZ KEN LBN LBR LBY LKA LVA MAR MDG MEX MLI MNG MOZ MYS NAM NCL NER NGA NOR NPL NZL PAK PAN PER PHL PNG POL PRI PRY ROU RUS SAU SDN SEN SWE TCD THA TJK TTO TUN TUR TWN TZA UKR USA UZB VNM VUT YEM ZAF ZWE",
+        "omittedByRank": "ALB ARM ATF BDI BLZ BRN CYN EST FJI GMB GNB HRV KOS KWT LSO LUX MDA MKD MNE MWI SAH SLV SOM SVK SVN TGO",
+        "omittedByCollision": "AFG ARE BEL BEN BFA BGD BGR BIH BLR BOL BTN BWA CAF CHE CIV COG CRI CYP CZE DEU DNK DOM EGY ERI FIN GEO GHA GNQ HND HTI HUN IRL ITA JAM JOR KGZ KHM KOR LAO LTU MMR MRT NIC NLD OMN PRK PRT PSX QAT RWA SDS SLB SLE SOL SRB SUR SWZ SYR TKM TLS UGA URY VEN ZMB"
+      },
+      "sha256": "8DF82C055820B44B178EFA7321888E9049821859CA0408BBC77B64B2D9219399"
     },
     {
       "path": "/textures/modern-atlas-2026-en-mobile.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 376330,
+      "bytes": 390810,
       "locale": "en",
       "density": "mobile",
-      "countryLabelCount": 30,
-      "sha256": "384F01288FE4DDC6443B9C026EFF798F85C1474F9135E6B218A9A238879E553D"
+      "countryLabelCount": 69,
+      "countryLabelCoverage": {
+        "accepted": "AGO ARG AUS BRA CAN CHL CHN CMR COD COL CUB DZA ECU ESP ETH FRA GBR GIN GRC GRL GTM IDN IND IRN IRQ ISL JPN KAZ KEN LBY LKA MAR MDG MEX MLI MNG MOZ MYS NAM NCL NER NGA NOR NPL NZL PAK PER PHL PNG POL ROU RUS SAU SDN SEN SWE TCD THA TUN TUR TWN TZA UKR USA UZB VNM YEM ZAF ZWE",
+        "omittedByRank": "ALB ARE ARM ATA ATF AUT AZE BDI BEN BGR BHS BIH BLR BLZ BRN BTN BWA CAF CHE COG CRI CYN CYP CZE DJI DNK DOM ERI EST FJI FLK GAB GEO GMB GNB GNQ GUY HND HRV HTI HUN ISR JAM JOR KGZ KOS KWT LAO LBN LBR LSO LTU LUX LVA MDA MKD MNE MWI NIC NLD OMN PAN PRI PRY PSX QAT SAH SLE SLV SOL SOM SRB SUR SVK SVN SWZ TGO TJK TKM TLS TTO URY VUT",
+        "omittedByCollision": "AFG BEL BFA BGD BOL CIV DEU EGY FIN GHA IRL ITA KHM KOR MMR MRT PRK PRT RWA SDS SLB SYR UGA VEN ZMB"
+      },
+      "sha256": "B897E3722909FFBEFA25013851AD2BDF605711A069E5C552129B6E470BB3C957"
     }
   ],
   "alignment": "Both raster assets combine the equirectangular Natural Earth I physical base with boundaries rendered from countries.geojson. The bundled GeoJSON remains the source for country hit testing, outlines, centroids, and the procedural fallback.",
@@ -89,68 +109,100 @@
       "ru",
       "en"
     ],
-    "placement": "Official LABEL_X/LABEL_Y positions; LABELRANK and scalerank control responsive density.",
+    "placement": "Official LABEL_X/LABEL_Y positions, deterministic LABELRANK priority, and conservative non-overlap filtering.",
     "densityPolicy": {
       "desktop": {
-        "maxLabelRank": 3,
+        "maxLabelRank": 5,
         "countryLabelCounts": {
-          "ru": 69,
-          "en": 68
-        }
+          "ru": 87,
+          "en": 87
+        },
+        "residualPolicy": "Lower-priority or colliding labels remain available through the localized interactive country label."
       },
       "mobile": {
-        "maxLabelRank": 2,
+        "maxLabelRank": 3,
         "countryLabelCounts": {
-          "ru": 30,
-          "en": 30
-        }
+          "ru": 70,
+          "en": 69
+        },
+        "residualPolicy": "Lower-priority or colliding labels remain available through the localized interactive country label."
       }
     },
     "shortLabelOverrides": {
-      "CHN": {
-        "ru": "Китай",
-        "en": "China"
+      "USA": {
+        "ru": "США",
+        "en": "United States"
+      },
+      "IDN": {
+        "ru": "Индонезия",
+        "en": "Indonesia",
+        "longitude": 117.37,
+        "latitude": -2.28
       },
       "COD": {
         "ru": "ДР Конго",
         "en": "DR Congo"
       },
-      "USA": {
-        "ru": "США",
-        "en": "United States"
+      "CHN": {
+        "ru": "Китай",
+        "en": "China"
       }
     },
     "oceanLabels": [
       {
+        "key": "globe.ocean.pacific",
         "longitude": -145,
         "latitude": -8,
         "ru": "Тихий океан",
         "en": "Pacific Ocean"
       },
       {
+        "key": "globe.ocean.atlantic",
         "longitude": -32,
         "latitude": 5,
         "ru": "Атлантический океан",
         "en": "Atlantic Ocean"
       },
       {
+        "key": "globe.ocean.indian",
         "longitude": 79,
         "latitude": -26,
         "ru": "Индийский океан",
         "en": "Indian Ocean"
       },
       {
+        "key": "globe.ocean.arctic",
         "longitude": 5,
         "latitude": 77,
         "ru": "Северный Ледовитый океан",
         "en": "Arctic Ocean"
       },
       {
+        "key": "globe.ocean.southern",
         "longitude": 8,
         "latitude": -61,
         "ru": "Южный океан",
         "en": "Southern Ocean"
       }
-    ]
+    ],
+    "localizationAudit": {
+      "ru": {
+        "featureLabels": 177,
+        "oceanLabels": 5,
+        "missingLabels": 0,
+        "mixedScriptLabels": 0
+      },
+      "en": {
+        "featureLabels": 177,
+        "oceanLabels": 5,
+        "missingLabels": 0,
+        "mixedScriptLabels": 0
+      }
+    },
+    "siteCopy": {
+      "source": "public/cms/published-content.json",
+      "appliedCountryKeys": [],
+      "appliedOceanKeys": []
+    }
   }
 }

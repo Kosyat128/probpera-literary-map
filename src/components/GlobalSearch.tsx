@@ -23,7 +23,10 @@ import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { writerBiographyText } from "../data/writerBiography";
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import {
+  selectInterfacePlural,
+  useInterfaceLanguage,
+} from "../i18n/InterfaceLanguage";
 import {
   literarySearchMatches,
   literarySearchMatchScore,
@@ -68,15 +71,6 @@ export function writerSearchLabel(
     return null;
   }
   return label;
-}
-
-function pluralRu(count: number, forms: [string, string, string]) {
-  const lastTwo = count % 100;
-  const last = count % 10;
-  if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
-  if (last === 1) return forms[0];
-  if (last >= 2 && last <= 4) return forms[1];
-  return forms[2];
 }
 
 export function matches(query: string, values: LiterarySearchValue[]) {
@@ -394,31 +388,25 @@ export default function GlobalSearch({
             <div>
               <button
                 type="button"
-                onClick={() =>
-                  setQuery(language === "en" ? "Dostoevsky" : "Достоевский")
-                }
+                onClick={() => setQuery(t("Достоевский"))}
               >
-                {language === "en" ? "Dostoevsky" : "Достоевский"}
+                {t("Достоевский")}
               </button>
               <button
                 type="button"
-                onClick={() => setQuery(language === "en" ? "Japan" : "Япония")}
+                onClick={() => setQuery(t("Япония"))}
               >
-                {language === "en" ? "Japan" : "Япония"}
+                {t("Япония")}
               </button>
               <button
                 type="button"
-                onClick={() =>
-                  setQuery(language === "en" ? "adaptation" : "экранизация")
-                }
+                onClick={() => setQuery(t("Экранизация"))}
               >
                 {t("Экранизации")}
               </button>
               <button
                 type="button"
-                onClick={() =>
-                  setQuery(language === "en" ? "folklore" : "фольклор")
-                }
+                onClick={() => setQuery(t("Фольклор"))}
               >
                 {t("Фольклор")}
               </button>
@@ -465,15 +453,13 @@ export default function GlobalSearch({
                     <strong>{countryName(country.code, country.name)}</strong>
                     <small>
                       {number(country.writers.length)}{" "}
-                      {language === "en"
-                        ? country.writers.length === 1
-                          ? "writer"
-                          : "writers"
-                        : pluralRu(country.writers.length, [
-                            "автор",
-                            "автора",
-                            "авторов",
-                          ])}
+                      {t(
+                        selectInterfacePlural(country.writers.length, language, [
+                          "автор",
+                          "автора",
+                          "авторов",
+                        ])
+                      )}
                     </small>
                   </button>
                 ))}
@@ -584,9 +570,7 @@ export default function GlobalSearch({
           <span>
             {articlesLoading
               ? t("Подключаем редакционный архив…")
-              : language === "en"
-                ? `${number(countries.length)} countries · ${number(books.length)} works · ${number(localizedArticles.length)} articles`
-                : `${number(countries.length)} стран · ${number(books.length)} ${pluralRu(books.length, ["произведение", "произведения", "произведений"])} · ${number(articleCount)} ${pluralRu(articleCount, ["статья", "статьи", "статей"])}`}
+              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? localizedArticles.length : articleCount)} ${t(selectInterfacePlural(language === "en" ? localizedArticles.length : articleCount, language, ["статья", "статьи", "статей"]))}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

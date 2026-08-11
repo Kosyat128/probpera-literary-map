@@ -698,6 +698,13 @@ export function featureCountryCodeCandidates(
 
   if (properties.ADM0_A3 === "NOR") candidateCodes.push("NO");
   if (properties.ADM0_A3 === "KOS") candidateCodes.push("XK");
+  // Natural Earth deliberately uses non-ISO values for a few disputed or
+  // separately administered features. Keep those decisions explicit: using
+  // POSTAL here would incorrectly turn Northern Cyprus into China (CN) and
+  // Somaliland into Sierra Leone (SL).
+  if (properties.ADM0_A3 === "TWN") candidateCodes.push("TW");
+  if (properties.ADM0_A3 === "CYN") candidateCodes.push("CY");
+  if (properties.ADM0_A3 === "SOL") candidateCodes.push("SO");
 
   return [...new Set(candidateCodes)];
 }
@@ -746,25 +753,42 @@ function ringMetrics(ring: LinearRing) {
   };
 }
 
-function featureCentroid(features: GeoFeature[]): [number, number] | null {
-  let largestArea = -1;
-  let selected: Position | null = null;
+export function featureCentroid(features: GeoFeature[]): [number, number] | null {
+  const weightedCenter = new THREE.Vector3();
+  let totalArea = 0;
 
   features.forEach((feature) => {
     getPolygons(feature).forEach((polygon) => {
       const outerRing = polygon[0];
       if (!outerRing?.length) return;
       const metrics = ringMetrics(outerRing);
+      if (metrics.area <= 0) return;
 
-      if (metrics.area > largestArea) {
-        largestArea = metrics.area;
-        selected = metrics.centroid;
-      }
+      const longitude = THREE.MathUtils.degToRad(metrics.centroid[0]);
+      const latitude = THREE.MathUtils.degToRad(metrics.centroid[1]);
+      const latitudeRadius = Math.cos(latitude);
+      weightedCenter.x += latitudeRadius * Math.cos(longitude) * metrics.area;
+      weightedCenter.y += latitudeRadius * Math.sin(longitude) * metrics.area;
+      weightedCenter.z += Math.sin(latitude) * metrics.area;
+      totalArea += metrics.area;
     });
   });
 
-  if (!selected) return null;
-  return [selected[1], normalizeLongitude(selected[0])];
+  if (totalArea <= 0 || weightedCenter.lengthSq() < 1e-12) return null;
+  weightedCenter.normalize();
+  return [
+    THREE.MathUtils.radToDeg(
+      Math.atan2(
+        weightedCenter.z,
+        Math.hypot(weightedCenter.x, weightedCenter.y)
+      )
+    ),
+    normalizeLongitude(
+      THREE.MathUtils.radToDeg(
+        Math.atan2(weightedCenter.y, weightedCenter.x)
+      )
+    ),
+  ];
 }
 
 function configureTexture(texture: THREE.CanvasTexture) {

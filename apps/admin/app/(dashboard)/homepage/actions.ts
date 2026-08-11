@@ -41,9 +41,20 @@ const coreSectionTypes: Record<string, string> = {
   calendar: "text",
 };
 const coreSectionOrder = Object.keys(coreSectionTypes);
+const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 
 function text(formData: FormData, key: string, maxLength: number) {
   return String(formData.get(key) || "").trim().slice(0, maxLength);
+}
+
+function objectValue(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function isSystemHomepageBlock(block: { settings?: unknown }) {
+  return objectValue(block.settings).systemKey === SITE_COPY_SYSTEM_KEY;
 }
 
 function optionalUuid(formData: FormData, key: string) {
@@ -96,19 +107,22 @@ export async function createHomepageBlockAction(formData: FormData) {
 
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
-  const { data: lastBlock } = await supabase
+  const { data: homepageBlocks } = await supabase
     .from("homepage_blocks")
-    .select("display_order")
-    .order("display_order", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+    .select("display_order,settings");
+  const lastDisplayOrder = Math.max(
+    0,
+    ...(homepageBlocks || [])
+      .filter((block) => !isSystemHomepageBlock(block))
+      .map((block) => block.display_order || 0)
+  );
   const { data, error } = await supabase
     .from("homepage_blocks")
     .insert({
       block_type: blockType,
       title: text(formData, "title", 240),
       settings: settingsFromForm(formData),
-      display_order: (lastBlock?.display_order || 0) + 10,
+      display_order: lastDisplayOrder + 10,
       background_style: backgroundStyle,
       background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
@@ -154,6 +168,9 @@ export async function updateHomepageBlockAction(formData: FormData) {
       )}`
     );
   }
+  if (isSystemHomepageBlock(existing)) {
+    redirect("/homepage?error=Системный блок редактируется в разделе текстов сайта");
+  }
   const existingSettings =
     existing.settings &&
     typeof existing.settings === "object" &&
@@ -193,6 +210,17 @@ export async function toggleHomepageBlockAction(formData: FormData) {
   const enabled = formData.get("enabled") === "true";
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
+  const { data: existing, error: existingError } = await supabase
+    .from("homepage_blocks")
+    .select("settings")
+    .eq("id", id)
+    .single();
+  if (existingError || !existing) {
+    redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
+  }
+  if (isSystemHomepageBlock(existing)) {
+    redirect("/homepage?error=Системный блок нельзя выключить");
+  }
   const { error } = await supabase
     .from("homepage_blocks")
     .update({
@@ -220,18 +248,24 @@ export async function moveHomepageBlockAction(formData: FormData) {
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { data: blocks, error } = await supabase
     .from("homepage_blocks")
-    .select("id,display_order")
+    .select("id,display_order,settings")
     .order("display_order");
   if (error || !blocks) {
     redirect(`/homepage?error=${encodeURIComponent(error?.message || "Блоки не найдены")}`);
   }
-  const index = blocks.findIndex((block) => block.id === id);
+  if (blocks.some((block) => block.id === id && isSystemHomepageBlock(block))) {
+    redirect("/homepage?error=Системный блок нельзя перемещать");
+  }
+  const editableBlocks = blocks.filter(
+    (block) => !isSystemHomepageBlock(block)
+  );
+  const index = editableBlocks.findIndex((block) => block.id === id);
   const targetIndex = direction === "up" ? index - 1 : index + 1;
-  if (index < 0 || targetIndex < 0 || targetIndex >= blocks.length) return;
-  const target = blocks[targetIndex];
-  const current = blocks[index];
+  if (index < 0 || targetIndex < 0 || targetIndex >= editableBlocks.length) return;
+  const target = editableBlocks[targetIndex];
+  const current = editableBlocks[index];
   const temporaryOrder =
-    Math.min(...blocks.map((block) => block.display_order || 0), 0) - 10;
+    Math.min(...editableBlocks.map((block) => block.display_order || 0), 0) - 10;
   const { error: holdError } = await supabase
     .from("homepage_blocks")
     .update({ display_order: temporaryOrder, updated_by: session.user.id })
@@ -287,6 +321,17 @@ export async function deleteHomepageBlockAction(formData: FormData) {
   const id = text(formData, "id", 80);
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
+  const { data: existing, error: existingError } = await supabase
+    .from("homepage_blocks")
+    .select("settings")
+    .eq("id", id)
+    .single();
+  if (existingError || !existing) {
+    redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
+  }
+  if (isSystemHomepageBlock(existing)) {
+    redirect("/homepage?error=Системный блок нельзя удалить");
+  }
   const { error } = await supabase.from("homepage_blocks").delete().eq("id", id);
   if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
   const publication = await recordBuildRequest(

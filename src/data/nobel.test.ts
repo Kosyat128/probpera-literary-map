@@ -125,6 +125,17 @@ describe("complete Nobel literature archive", () => {
     expect(getNobelYear({ ...legacySignalOnly, nobelYear: 1970 })).toBe(1970);
   });
 
+  it("recovers an official year from an unambiguous canonical writer id", () => {
+    const legacySienkiewicz: Writer = {
+      id: "henryk_sienkiewicz",
+      name: "Генрик Сенкевич",
+      awards: ["Нобелевская премия по литературе"],
+    };
+
+    expect(getNobelYear(legacySienkiewicz)).toBe(1905);
+    expect(isNobelLaureate(legacySienkiewicz)).toBe(true);
+  });
+
   it("preserves all four jointly awarded literature prizes", () => {
     const sharedYears = [1904, 1917, 1966, 1974];
     for (const year of sharedYears) {

@@ -8,9 +8,27 @@ import {
   englishTranslationCompensationFields,
   englishTranslationCompensationPayload,
   englishTranslationReleaseIssues,
+  publicationFailureSavePolicy,
 } from "./article-translations";
 
 describe("bilingual article publication helpers", () => {
+  it("never demotes an existing published article when release checks fail", () => {
+    expect(
+      publicationFailureSavePolicy({
+        hasIssues: true,
+        previousStatus: "published",
+        requestedStatus: "published",
+      })
+    ).toEqual({ kind: "preserve-published", savedStatus: null });
+    expect(
+      publicationFailureSavePolicy({
+        hasIssues: true,
+        previousStatus: "draft",
+        requestedStatus: "published",
+      })
+    ).toEqual({ kind: "save", savedStatus: "draft" });
+  });
+
   it("creates a stable source hash independent of object key order", () => {
     const base = {
       title: "Русский оригинал",
@@ -82,6 +100,29 @@ describe("bilingual article publication helpers", () => {
     expect(issues).toContain("approve or publish the English translation");
     expect(issues).toContain("add at least 250 English words");
     expect(issues).toContain("add the English cover description");
+  });
+
+  it("does not require an English translation for a Russian-only release", () => {
+    const issues = englishTranslationReleaseIssues({
+      enabled: false,
+      status: "draft",
+      title: "",
+      subtitle: "",
+      excerpt: "",
+      contentHtml: "",
+      slug: "",
+      coverUrl: null,
+      coverAlt: "",
+      seoTitle: "",
+      seoDescription: "",
+      seoKeywords: [],
+      ogTitle: "",
+      ogDescription: "",
+      sources: [],
+      bibliography: [],
+    });
+
+    expect(issues).toEqual([]);
   });
 
   it("blocks a mixed-language body from being released as English", () => {

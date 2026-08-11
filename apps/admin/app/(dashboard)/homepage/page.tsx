@@ -161,6 +161,13 @@ function settingText(settings: Record<string, unknown>, key: string) {
   return typeof value === "string" ? value : "";
 }
 
+function isSystemHomepageBlock(block: { settings?: unknown }) {
+  return (
+    settingText(settingsObject(block.settings), "systemKey") ===
+    "site-copy-overrides"
+  );
+}
+
 function articleIds(settings: Record<string, unknown>) {
   const value = settings.articleIds;
   return Array.isArray(value)
@@ -212,7 +219,9 @@ export default async function HomepagePage({
       .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
   );
   const customBlocks = blocks.filter(
-    (block) => !settingText(settingsObject(block.settings), "coreSectionKey")
+    (block) =>
+      !settingText(settingsObject(block.settings), "coreSectionKey") &&
+      !isSystemHomepageBlock(block)
   );
   const media: HomepageMediaOption[] = (mediaResult || []).map((asset) => ({
     id: asset.id,

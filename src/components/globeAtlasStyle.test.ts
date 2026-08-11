@@ -67,7 +67,7 @@ describe("globe visual styles", () => {
         POSTAL: "CN",
         ADM0_A3: "CYN",
       })
-    ).toEqual([]);
+    ).toEqual(["CY"]);
     expect(
       featureCountryCodeCandidates({
         ISO_A2: "-99",
@@ -75,11 +75,16 @@ describe("globe visual styles", () => {
         POSTAL: "SL",
         ADM0_A3: "SOL",
       })
-    ).toEqual([]);
+    ).toEqual(["SO"]);
   });
 
   it("keeps reviewed Natural Earth special mappings explicit", () => {
     expect(featureCountryCodeCandidates({ ADM0_A3: "KOS" })).toEqual(["XK"]);
     expect(featureCountryCodeCandidates({ ADM0_A3: "NOR" })).toEqual(["NO"]);
+    expect(
+      featureCountryCodeCandidates({ ADM0_A3: "TWN", ISO_A2: "CN-TW" })
+    ).toEqual(["TW"]);
+    expect(featureCountryCodeCandidates({ ADM0_A3: "CYN" })).toEqual(["CY"]);
+    expect(featureCountryCodeCandidates({ ADM0_A3: "SOL" })).toEqual(["SO"]);
   });
 });
