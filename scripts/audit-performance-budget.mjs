@@ -34,6 +34,9 @@ const images = measured.filter((item) => /\.(?:avif|jpe?g|png|webp)$/iu.test(ite
 const writerPortraits = images.filter((item) =>
   item.relative.startsWith("assets/writer-portraits/")
 );
+const bookCovers = images.filter((item) =>
+  item.relative.startsWith("brand/book-covers/")
+);
 const largestScript = scripts.toSorted((a, b) => b.bytes - a.bytes)[0];
 const mainScript = scripts
   .filter((item) => /^assets\/index-/u.test(item.relative))
@@ -63,16 +66,30 @@ const writerPortraitMaximum = writerPortraits.reduce(
   (maximum, item) => Math.max(maximum, item.bytes),
   0
 );
+const bookCoverTotal = bookCovers.reduce((sum, item) => sum + item.bytes, 0);
+const bookCoverAverage = bookCovers.length
+  ? Math.ceil(bookCoverTotal / bookCovers.length)
+  : 0;
+const bookCoverMaximum = bookCovers.reduce(
+  (maximum, item) => Math.max(maximum, item.bytes),
+  0
+);
+const distExcludingBookCovers = total - bookCoverTotal;
 const largestScriptGzip = await compressedBytes(largestScript);
 const mainScriptGzip = await compressedBytes(mainScript);
 
-function enforce(label, actual, limit) {
+function enforce(label, actual, limit, unit = "bytes") {
   const ok = actual <= limit;
-  console.log(`${ok ? "PASS" : "FAIL"} ${label}: ${actual} / ${limit} bytes`);
+  console.log(`${ok ? "PASS" : "FAIL"} ${label}: ${actual} / ${limit} ${unit}`);
   if (!ok) failures.push(label);
 }
 
 enforce("dist total", total, budget.distTotalBytes);
+enforce(
+  "dist excluding book covers",
+  distExcludingBookCovers,
+  budget.distExcludingBookCoversBytes
+);
 if (largestScript) enforce(`largest JS (${largestScript.relative})`, largestScript.bytes, budget.largestJavaScriptBytes);
 if (largestScript) enforce(`largest JS gzip (${largestScript.relative})`, largestScriptGzip, budget.largestJavaScriptGzipBytes);
 if (mainScript) enforce(`main JS (${mainScript.relative})`, mainScript.bytes, budget.mainJavaScriptBytes);
@@ -81,6 +98,10 @@ if (globeTexture) enforce("antique globe texture", globeTexture.bytes, budget.gl
 enforce("writer portraits total", writerPortraitTotal, budget.writerPortraitTotalBytes);
 enforce("writer portrait average", writerPortraitAverage, budget.writerPortraitAverageBytes);
 enforce("writer portrait maximum", writerPortraitMaximum, budget.writerPortraitMaximumBytes);
+enforce("book cover count", bookCovers.length, budget.bookCoverCount, "files");
+enforce("book covers total", bookCoverTotal, budget.bookCoverTotalBytes);
+enforce("book cover average", bookCoverAverage, budget.bookCoverAverageBytes);
+enforce("book cover maximum", bookCoverMaximum, budget.bookCoverMaximumBytes);
 for (const image of oversizedImages) {
   failures.push(`oversized image ${image.relative}`);
   console.error(`FAIL oversized image ${image.relative}: ${image.bytes} bytes`);

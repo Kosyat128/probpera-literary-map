@@ -18,6 +18,14 @@ const outputPath = path.join(
   "articles",
   "book-mentions.json"
 );
+const userSuppliedCoverManifestPath = path.join(
+  repositoryRoot,
+  "src",
+  "data",
+  "countries",
+  "generated",
+  "userSuppliedBookCovers.generated.json"
+);
 
 export function normalizeMentionText(value = "") {
   return value
@@ -276,8 +284,40 @@ const payload = {
   byArticle,
 };
 
-await fs.mkdir(path.dirname(outputPath), { recursive: true });
-await fs.writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+const serializedPayload = `${JSON.stringify(payload, null, 2)}\n`;
+if (process.argv.includes("--check-user-cover-scope")) {
+  const coverManifest = JSON.parse(
+    await fs.readFile(userSuppliedCoverManifestPath, "utf8")
+  );
+  const coverPaths = new Set(
+    coverManifest.entries.flatMap((entry) => [
+      entry.coverUrl,
+      entry.coverThumbnailUrl,
+    ])
+  );
+  const leakedPaths = [...coverPaths].filter((coverPath) =>
+    serializedPayload.includes(coverPath)
+  );
+  const coveredArticleRecommendations = Object.values(byArticle)
+    .flat()
+    .filter(
+      (recommendation) =>
+        coverManifest.entries.some(
+          (entry) => entry.workKey === recommendation.key
+        ) && recommendation.coverUrl
+    );
+  if (leakedPaths.length || coveredArticleRecommendations.length) {
+    throw new Error(
+      `Пользовательский cover-overlay попал в статьи: paths=${leakedPaths.length}, recommendations=${coveredArticleRecommendations.length}.`
+    );
+  }
+  console.log(
+    `Article cover scope: ${coverManifest.entries.length} user-supplied covers excluded from generated article recommendations.`
+  );
+} else {
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.writeFile(outputPath, serializedPayload, "utf8");
+}
 
 const seaWolfKey = Object.keys(byBook).find((key) =>
   archive.some(

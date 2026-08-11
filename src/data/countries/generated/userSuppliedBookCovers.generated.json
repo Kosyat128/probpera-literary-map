@@ -1,0 +1,1367 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-11T00:00:00.000Z",
+  "archive": {
+    "name": "Новые обложки.rar",
+    "sha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+    "bytes": 244810832,
+    "entries": 87,
+    "uniqueImages": 77
+  },
+  "entries": [
+    {
+      "workKey": "germany:johann_wolfgang_goethe:legacy-johann_wolfgang_goethe-фауст",
+      "visibleAuthor": "Иоганн Вольфганг Гёте",
+      "visibleTitle": "Фауст",
+      "coverUrl": "brand/book-covers/faust-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/faust-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "f16b70012d45502703307ae4b861ebd5118925baa85b4a5c88de1b03cfd1d819",
+      "coverThumbnailSha256": "7a4d16b4e30c4835de32c87ee8bbd71cb815816deb625eaf0f5a2cc22c715255",
+      "equivalentWorkKeys": [
+        "germany:johann_wolfgang_goethe:legacy-johann_wolfgang_goethe-фауст"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "e36b8da8a257125f62ed2f33751b2b021f9a00da6257a74b22eccbe5c44b3e64",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_25 (1).png",
+        "sourceIndex": 1,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:tolstoy:legacy-tolstoy-воскресение",
+      "visibleAuthor": "Лев Николаевич Толстой",
+      "visibleTitle": "Воскресение",
+      "coverUrl": "brand/book-covers/resurrection-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/resurrection-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "0cda30053d0c8d7f33fbff80df7f6e7e54cc7470c673f2738b022240eacfedd0",
+      "coverThumbnailSha256": "e32f1de167d0bd5a1820347c2bc4157b68e33ba4b7bbba6f3d5c673cf6a39dc5",
+      "equivalentWorkKeys": [
+        "russia:tolstoy:legacy-tolstoy-воскресение"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "10a912f6ae433ef1b74a6f91670cbc406fd4e7f8a0abc7e972f30eadcad0cf15",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_25 (2).png",
+        "sourceIndex": 2,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:jack_london:legacy-jack_london-мартин-иден",
+      "visibleAuthor": "Джек Лондон",
+      "visibleTitle": "Мартин Иден",
+      "coverUrl": "brand/book-covers/martin-eden-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/martin-eden-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "0c9818f21618d2f67d4c77afa371e98541b984d5fd94d80d194f2e0eae61d4fa",
+      "coverThumbnailSha256": "502c690d596b97f1a6041b144bd274f593e53866da99432106b9ba8f054d941d",
+      "equivalentWorkKeys": [
+        "usa:jack_london:legacy-jack_london-мартин-иден"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "5ee47420df082e5b2e18ee71b924c6bbafc2828ea9d79fc122bffb78c122558c",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_25 (3).png",
+        "sourceIndex": 3,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:victor_hugo:legacy-victor_hugo-человек-который-смеётся",
+      "visibleAuthor": "Виктор Гюго",
+      "visibleTitle": "Человек, который смеётся",
+      "coverUrl": "brand/book-covers/the-man-who-laughs-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-man-who-laughs-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "7cab8d251bd36592149fc293b6d60c1eced5c8c0c54bed2224b1ec43d6a2248b",
+      "coverThumbnailSha256": "a0a8fa5bcf9ca7e06fedadbf83c580943310db890dda16606efa99de0d4aee43",
+      "equivalentWorkKeys": [
+        "france:victor_hugo:legacy-victor_hugo-человек-который-смеётся"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "b574275e6147fe80471226ee07b6987660dae66468a1f6a1c3862b1aa8cf9c14",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_26 (4).png",
+        "sourceIndex": 4,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:jean_paul_sartre:legacy-jean_paul_sartre-тошнота",
+      "visibleAuthor": "Жан-Поль Сартр",
+      "visibleTitle": "Тошнота",
+      "coverUrl": "brand/book-covers/nausea-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/nausea-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "01a2af477d84bf0e9a98431a60bec9d9539bea99fc9fac26ccbfb5c1fb06e245",
+      "coverThumbnailSha256": "ad403041d9c9aca33f234396dbd9e7dc969627a703ffe4745b3ea711cd1bbd4b",
+      "equivalentWorkKeys": [
+        "france:jean_paul_sartre:legacy-jean_paul_sartre-тошнота"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "1a7b831181fe9e5574bf03dbb62abf25c1a7500c7eca42a4d5ef1dc3f772c2e1",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_26 (6).png",
+        "sourceIndex": 6,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:john_fowles:article-catalog-1f3vwe6",
+      "visibleAuthor": "Джон Фаулз",
+      "visibleTitle": "Коллекционер",
+      "coverUrl": "brand/book-covers/the-collector-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-collector-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "3619a74fbbd7a26d11419624f35586e92694ca18b587e02b81b0e5ce73c4160f",
+      "coverThumbnailSha256": "dd9728511aeed12e1e808c4d09cafdb1e6b598e5382296ca75b0047d43737a23",
+      "equivalentWorkKeys": [
+        "england:john_fowles:article-catalog-1f3vwe6"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "7a46771be3943adf3454dce621fbb6ee0e1c389398747f59d5eb1accb6a6d3ac",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_26 (8).png",
+        "sourceIndex": 8,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "germany:patrick_suskind:legacy-patrick_suskind-парфюмер",
+      "visibleAuthor": "Патрик Зюскинд",
+      "visibleTitle": "Парфюмер",
+      "coverUrl": "brand/book-covers/perfume-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/perfume-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "94c1d4c50139910f526ec43c315d367f3b0b33b30c31f61abc0a26ace5a3fb0e",
+      "coverThumbnailSha256": "177a3e1b5c000eb43535f2a56e276c8348456132917ec59b2a6a00d9cfee4d5f",
+      "equivalentWorkKeys": [
+        "germany:patrick_suskind:legacy-patrick_suskind-парфюмер"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "75704d1cc6bb330fc84d828e431bfa6ed4d076197b75bf9745152af9d4b4ed8a",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_26 (9).png",
+        "sourceIndex": 9,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:anthony_burgess:article-catalog-uud44v",
+      "visibleAuthor": "Энтони Бёрджесс",
+      "visibleTitle": "Заводной апельсин",
+      "coverUrl": "brand/book-covers/a-clockwork-orange-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/a-clockwork-orange-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "48fb85fa2eea7ecaaf39908408e853e1863a30654ca9617c7323016605fd17b4",
+      "coverThumbnailSha256": "d026213366d227da8175ef77000e8a10f5cecf83536f5f3f78682aa986bdb6b8",
+      "equivalentWorkKeys": [
+        "england:anthony_burgess:article-catalog-uud44v"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "fb8b79de6ac63963c5e0a86fb91ba49d491a9c8d10afe1234cc5eaa6ead4261f",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_25_26 (10).png",
+        "sourceIndex": 10,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "italy:dante_alighieri:legacy-dante_alighieri-божественная-комедия",
+      "visibleAuthor": "Данте Алигьери",
+      "visibleTitle": "Божественная комедия",
+      "coverUrl": "brand/book-covers/divine-comedy-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/divine-comedy-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "1264a5c0f819d84910c967a708e154a797d168ad4449e5bc159eb210bfd7d6a8",
+      "coverThumbnailSha256": "57d927a57fea95b541d12615e3246974a85b047f52f2130de708942654c06fdb",
+      "equivalentWorkKeys": [
+        "italy:dante_alighieri:legacy-dante_alighieri-божественная-комедия"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "e3e0eea0f4598a4554d6f0781eafc4795f6c4fcdfe41f5c54b7abe69a801cc72",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (1).png",
+        "sourceIndex": 11,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:charles_dickens:openlibrary-works-ol14868510w",
+      "visibleAuthor": "Чарльз Диккенс",
+      "visibleTitle": "Bleak House",
+      "coverUrl": "brand/book-covers/bleak-house-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/bleak-house-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "a9a0fe1e1d8daaac2550aef904180e936ab6d25bf385eadd282b47e2bbe9d23d",
+      "coverThumbnailSha256": "bad8f01e6998b5d0ec57738e6f4048ffdc3014d9361fa5c0633ddfabcf37be7d",
+      "equivalentWorkKeys": [
+        "england:charles_dickens:openlibrary-works-ol14868510w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "00755bad09b86cf89178f5c8ab5aab1a86c1aaa16b57e23243620ed99da46c85",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (2).png",
+        "sourceIndex": 12,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:theodore_dreiser:legacy-theodore_dreiser-сестра-керри",
+      "visibleAuthor": "Теодор Драйзер",
+      "visibleTitle": "Сестра Керри",
+      "coverUrl": "brand/book-covers/sister-carrie-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/sister-carrie-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "80c3cfb5605adda410fa2324f420f3a2775ef9e5c59167ff71240d608efc4848",
+      "coverThumbnailSha256": "9b9c22bd8ab3ccba380ab9fe37e5dcd3bac72ea7485eed5d99b849cd57568391",
+      "equivalentWorkKeys": [
+        "usa:theodore_dreiser:legacy-theodore_dreiser-сестра-керри"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "877277d98b5bebacfd9d06db5f56d5d6659dad2f00effc89604c124750c6c48f",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (3).png",
+        "sourceIndex": 13,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:jules_verne:openlibrary-works-ol1099364w",
+      "visibleAuthor": "Жюль Верн",
+      "visibleTitle": "Les enfants du capitaine Grant",
+      "coverUrl": "brand/book-covers/children-of-captain-grant-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/children-of-captain-grant-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "ffd9684abe88022025f81f509edf2a6336fffd45a746e578447a19eaf164171e",
+      "coverThumbnailSha256": "1bc57d4d77fcdba6f2af1005ecf5e7d2ca8c7b6406f701996c0735cb259fc0b9",
+      "equivalentWorkKeys": [
+        "france:jules_verne:openlibrary-works-ol1099364w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "5d40e75eab233acb1043c99daf7c48b96d587806c6ef62d1485bc54bb217441e",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (5).png",
+        "sourceIndex": 15,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:sholokhov:legacy-sholokhov-поднятая-целина",
+      "visibleAuthor": "Михаил Александрович Шолохов",
+      "visibleTitle": "Поднятая целина",
+      "coverUrl": "brand/book-covers/virgin-soil-upturned-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/virgin-soil-upturned-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "82fd527da7b56b41ef069cd98cb05fcd21433b2e733834d2822e1d71582eca59",
+      "coverThumbnailSha256": "8719e816ec3e6069991de0f8c724b8f6643bb0cc89e6185b4fc871aa1840979e",
+      "equivalentWorkKeys": [
+        "russia:sholokhov:legacy-sholokhov-поднятая-целина"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "66eeab0c101f0faea3821b1dc7cafa2cf97dd98c4cc5b033591652c64f7bafb0",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (6).png",
+        "sourceIndex": 16,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:edgar_allan_poe:openlibrary-works-ol40962w",
+      "visibleAuthor": "Эдгар Аллан По",
+      "visibleTitle": "The Narrative of Arthur Gordon Pym",
+      "coverUrl": "brand/book-covers/arthur-gordon-pym-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/arthur-gordon-pym-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "b26711beb3423e679136c68f1c1b57f7e0d76de828c8ca26aa43be33e0a24d9b",
+      "coverThumbnailSha256": "6da3b92a1954e131181c2d882031e5ab68ab85bf7d086f32ff288afd4a30b72b",
+      "equivalentWorkKeys": [
+        "usa:edgar_allan_poe:openlibrary-works-ol40962w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "8940de34b6bba1b3a2408a10f4f94ae026bcf23a79cd9fd5e6e5f1ec959f6074",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (7).png",
+        "sourceIndex": 17,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "poland:joseph_conrad:openlibrary-works-ol38684w",
+      "visibleAuthor": "Джозеф Конрад",
+      "visibleTitle": "Lord Jim",
+      "coverUrl": "brand/book-covers/lord-jim-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/lord-jim-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "b923c981400408789ea26a499f141551b40bbde6f40d753048011f9cb2b824e2",
+      "coverThumbnailSha256": "9db60e90d757ebeb15b1c9c4bd61664fe0258a1556f3520964c5a2d08c68def7",
+      "equivalentWorkKeys": [
+        "poland:joseph_conrad:openlibrary-works-ol38684w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "a7f74412d8503f5ae217adfe6001f0ac818b0f9462bcb90070768ee094ebe397",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (8).png",
+        "sourceIndex": 18,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:maupassant:legacy-maupassant-милый-друг",
+      "visibleAuthor": "Ги де Мопассан",
+      "visibleTitle": "Милый друг",
+      "coverUrl": "brand/book-covers/bel-ami-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/bel-ami-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "4ff1a8bbce302324ce8e06b930a92e633a1954af90a10e57b24ca4172501294d",
+      "coverThumbnailSha256": "d059ef3fb6bb034a420a19da6de4958a857082b623eddc22a5dda2fd90f33490",
+      "equivalentWorkKeys": [
+        "france:maupassant:legacy-maupassant-милый-друг"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "3f2aa6911267fdaf6af0c69e121f826ba4aebd5c8b7184f6cb93b7bf2890e8fc",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_19 (10).png",
+        "sourceIndex": 20,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:emile_zola:openlibrary-works-ol118984w",
+      "visibleAuthor": "Эмиль Золя",
+      "visibleTitle": "Nana",
+      "coverUrl": "brand/book-covers/nana-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/nana-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "b5b90dda07d8c5db65556926139ce7bfe7a9ca44f41e4fdc622ff4ff3f290d21",
+      "coverThumbnailSha256": "29f1a85188477fcdf3be394fc630daf5de5d2e4dded03acaccc66426a67c6bb7",
+      "equivalentWorkKeys": [
+        "france:emile_zola:openlibrary-works-ol118984w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "c766959a37d08b59f924a764ccd7fb420f7a381999da0cd2d9bba6c5324a2ddb",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_50 (3).png",
+        "sourceIndex": 23,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:william_thackeray:legacy-william_thackeray-ярмарка-тщеславия",
+      "visibleAuthor": "Уильям Мейкпис Теккерей",
+      "visibleTitle": "Ярмарка тщеславия",
+      "coverUrl": "brand/book-covers/vanity-fair-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/vanity-fair-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "859912297338032bc834e79e9f057b6f6887a6830bf6b0e394b8ca0370049185",
+      "coverThumbnailSha256": "a17bb757359cd2a43664b805b4c09088b4461cfaa7d0dcbd2e52ec20dafa43c3",
+      "equivalentWorkKeys": [
+        "england:william_thackeray:legacy-william_thackeray-ярмарка-тщеславия"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "bedc235c38d259052c1cd8dbdf5fd7dddea63bad186e7ae67741441071b90162",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_50 (4).png",
+        "sourceIndex": 24,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:goncharov:legacy-goncharov-обыкновенная-история",
+      "visibleAuthor": "Иван Александрович Гончаров",
+      "visibleTitle": "Обыкновенная история",
+      "coverUrl": "brand/book-covers/a-common-story-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/a-common-story-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "274f742d52c0e2db4e03517cc3ae86eb9bb678a76ccb6c50fdc56820d1af5c51",
+      "coverThumbnailSha256": "be5b58beb36e3a78c696811ab00ef1cbdad0a2520d35a78f103e538a35f38a93",
+      "equivalentWorkKeys": [
+        "russia:goncharov:legacy-goncharov-обыкновенная-история"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "885d5c7264dd2a15eaf0536e702ade782a6a4a8768cbc450f7d4e2e513cda93e",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_50 (7).png",
+        "sourceIndex": 27,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "germany:heinrich_boell:legacy-heinrich_boell-глазами-клоуна",
+      "visibleAuthor": "Генрих Бёлль",
+      "visibleTitle": "Глазами клоуна",
+      "coverUrl": "brand/book-covers/the-clown-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-clown-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "2e577a8edabcdd8abcb3ee4132a36e5d773161a0743dde62f3cda1fe2473b624",
+      "coverThumbnailSha256": "aafc63f04b9854d64e3160724a7acf5c23171e67b2a45d21ea4fcf77f277110a",
+      "equivalentWorkKeys": [
+        "germany:heinrich_boell:legacy-heinrich_boell-глазами-клоуна"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "c8be8703a1777d4b56758d091e1f2e17375390b4f572919df01e85157263fb8f",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_50 (8).png",
+        "sourceIndex": 28,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:ernest_hemingway:legacy-ernest_hemingway-прощай-оружие",
+      "visibleAuthor": "Эрнест Хемингуэй",
+      "visibleTitle": "Прощай, оружие!",
+      "coverUrl": "brand/book-covers/a-farewell-to-arms-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/a-farewell-to-arms-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "e15c641b51c5217dff41e30cc53a0263558782c384e523481e490ea3edd5d29c",
+      "coverThumbnailSha256": "cb8840d5ee131f707873497eee83bd58e0d77f814d182a99187d4b225d046c39",
+      "equivalentWorkKeys": [
+        "usa:ernest_hemingway:legacy-ernest_hemingway-прощай-оружие"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "4edc6946e0c293e2470a44704ec3bfefcabbde4047b1aa4dfa623fb0c98a6d54",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_26_50 (9).png",
+        "sourceIndex": 29,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "colombia:gabriel_garcia_marquez:legacy-gabriel_garcia_marquez-любовь-во-время-чумы",
+      "visibleAuthor": "Габриэль Гарсиа Маркес",
+      "visibleTitle": "Любовь во время чумы",
+      "coverUrl": "brand/book-covers/love-in-the-time-of-cholera-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/love-in-the-time-of-cholera-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "d63383afa49e90582762ed4152fd1a5fb6ff506fa8262903e85463026ab66eb6",
+      "coverThumbnailSha256": "b418e64f56d0c826fa4974d1ad69860eeed42a28c1bc4630a8b0f07152a64711",
+      "equivalentWorkKeys": [
+        "colombia:gabriel_garcia_marquez:legacy-gabriel_garcia_marquez-любовь-во-время-чумы"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "ca89484ba2148e5f75db32c3a02c42748659be01c324fe7464c3e50fbe99e5e0",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_16 (2).png",
+        "sourceIndex": 31,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "visibleAuthor": "Эрнест Хемингуэй",
+      "visibleTitle": "Старик и море",
+      "coverUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "9013e677f5d20163ef1b4745f62e51aee6bbddbbcda1e478a2425ef694633819",
+      "coverThumbnailSha256": "7713b0f6a3305f628240046b45f839ad81bd34d316028ebdb2dc6096518b2363",
+      "equivalentWorkKeys": [
+        "usa:ernest_hemingway:the-old-man-and-the-sea"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "d8bdd8251766982eb4eaed1a41051ae0c480be20b80c1892d5d5ec8cc1c6bdaa",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_16 (3).png",
+        "sourceIndex": 32,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:jack_london:legacy-jack_london-зов-предков",
+      "visibleAuthor": "Джек Лондон",
+      "visibleTitle": "Зов предков",
+      "coverUrl": "brand/book-covers/the-call-of-the-wild-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-call-of-the-wild-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "3f2311ddf3899da28fd0f1bdfbff0468866044fe2025881f6cfae772f9be808b",
+      "coverThumbnailSha256": "836dee4e09c3d430553af5b757fe4888edf2096cab2146e0d147839feae315b6",
+      "equivalentWorkKeys": [
+        "usa:jack_london:legacy-jack_london-зов-предков"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "fad7b245b7775bbffe92572542407d5dc35dded8d1a87bdbed039c158a390a07",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_17 (5).png",
+        "sourceIndex": 34,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:john_steinbeck:legacy-john_steinbeck-о-мышах-и-людях",
+      "visibleAuthor": "Джон Стейнбек",
+      "visibleTitle": "О мышах и людях",
+      "coverUrl": "brand/book-covers/of-mice-and-men-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/of-mice-and-men-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "c59b8c5bf2c8756d5f91519925dc077945703d4605ccbf7d31ee84e6492d929a",
+      "coverThumbnailSha256": "aea31f8aa84045cf7345bdc36ba32f1b8c99d9d77ef3838e7081e038d166ef88",
+      "equivalentWorkKeys": [
+        "usa:john_steinbeck:legacy-john_steinbeck-о-мышах-и-людях"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "1b98ebb6b098d43d75a153d527c50cf61a02d9e4188ac1b691dcf6d14bae6b9e",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_17 (7).png",
+        "sourceIndex": 36,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:leskov:legacy-leskov-леди-макбет-мценского-уезда",
+      "visibleAuthor": "Николай Семёнович Лесков",
+      "visibleTitle": "Леди Макбет Мценского уезда",
+      "coverUrl": "brand/book-covers/lady-macbeth-of-mtsensk-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/lady-macbeth-of-mtsensk-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "eb0cec62eabaaaacdc8d9ba159f46a1162ba4b857fb1a73e0c69d7488f973087",
+      "coverThumbnailSha256": "2bc433c20da2321d9866486103898afb5ba6f325df30fe068b740af97e492000",
+      "equivalentWorkKeys": [
+        "russia:leskov:legacy-leskov-леди-макбет-мценского-уезда"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "8e11b45143dff24a546beda28a2447a9e53e83c79eec000fef969e4b13c6e5b1",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_18 (9).png",
+        "sourceIndex": 38,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:pushkin:openlibrary-works-ol623479w",
+      "visibleAuthor": "Александр Сергеевич Пушкин",
+      "visibleTitle": "The Queen of Spades",
+      "coverUrl": "brand/book-covers/queen-of-spades-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/queen-of-spades-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "511eebe4125d3801dbc722c183df66329562cd52a501ba6eee65e463317d2776",
+      "coverThumbnailSha256": "e61d11847f3be929537a4fd08ecc7ec10263cc8aca0977bbb620179b31a47ffc",
+      "equivalentWorkKeys": [
+        "russia:pushkin:openlibrary-works-ol623479w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "4bc135fcb50df642edb7d806261401709398dc30dad3b3661aa7987d408d3405",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_18 (10).png",
+        "sourceIndex": 39,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:dostoevsky:openlibrary-works-ol21025633w",
+      "visibleAuthor": "Фёдор Михайлович Достоевский",
+      "visibleTitle": "Записки изъ подполья",
+      "coverUrl": "brand/book-covers/notes-from-underground-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/notes-from-underground-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "3c95b19b80053e687f12dd21d742eeac562302117dd059b65f372753363accdb",
+      "coverThumbnailSha256": "cac016cbd8dd07a186829ec0a698a25c14eb1bc6d09709a5410f5281a20734be",
+      "equivalentWorkKeys": [
+        "russia:dostoevsky:openlibrary-works-ol21025633w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "daf75831cfdea8709c5a185ca2533b6c35994036e1c20251a561eb5626be84bc",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_40 (1).png",
+        "sourceIndex": 40,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:chekhov:legacy-chekhov-чайка",
+      "visibleAuthor": "Антон Павлович Чехов",
+      "visibleTitle": "Чайка",
+      "coverUrl": "brand/book-covers/the-seagull-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-seagull-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "4a60c0b4c3c952604ebc095ed1876eaa6e68246e9dd29b9878a8dcc2e9768b0c",
+      "coverThumbnailSha256": "ca7250c89a15867bc6f7e5059e5b1247c636cc1d486a5e444792c375cdaef139",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-чайка"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "64d1b0db46364e437daf63f30a646c6ed9660a145b79e65b5593e09a8affceb5",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_40 (3).png",
+        "sourceIndex": 42,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:gogol:openlibrary-works-ol40184705w",
+      "visibleAuthor": "Николай Васильевич Гоголь",
+      "visibleTitle": "Mysterious Portrait",
+      "coverUrl": "brand/book-covers/the-portrait-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-portrait-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "61cf930605394501e7359c79d610aa82d8205d07ca7940a845ff3552b008f2d3",
+      "coverThumbnailSha256": "68bc1fbdc28468aa4ac84541973b95ee62f5a0c3df1c2c5fa2f53bf9ac657e1f",
+      "equivalentWorkKeys": [
+        "russia:gogol:openlibrary-works-ol40184705w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "f25389a0081547a0439623823df834f7d8e235dfb3d6670c3e7960d3d163d624",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_41 (4).png",
+        "sourceIndex": 43,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:ostrovsky:legacy-ostrovsky-бесприданница",
+      "visibleAuthor": "Александр Николаевич Островский",
+      "visibleTitle": "Бесприданница",
+      "coverUrl": "brand/book-covers/without-a-dowry-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/without-a-dowry-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "64114820315c752b14ec6c0a6a292ffef389e22432c12efea5c19b776bd5b758",
+      "coverThumbnailSha256": "867acc97d21ef571008ca7510679f6f2e326c2cf7227cdd2ac5fc38404834654",
+      "equivalentWorkKeys": [
+        "russia:ostrovsky:legacy-ostrovsky-бесприданница"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "063d7aecbf6e4015c92169a890c7d213968de57ef34e8bad8d8d78684d7f988f",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_42 (6).png",
+        "sourceIndex": 45,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:turgenev:legacy-turgenev-записки-охотника",
+      "visibleAuthor": "Иван Сергеевич Тургенев",
+      "visibleTitle": "Записки охотника",
+      "coverUrl": "brand/book-covers/a-sportsmans-sketches-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/a-sportsmans-sketches-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "1810cb312383f1bd4dfd2f1b4cd3081274b48b092ed63c12042a0539be96403d",
+      "coverThumbnailSha256": "2b0adb72070c2295ab2a32112e9eee913d54071756b4364133acfb61ee9dcab2",
+      "equivalentWorkKeys": [
+        "russia:turgenev:legacy-turgenev-записки-охотника"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "55322e653ac8541043918189b448cd1669e6a9596f3a3ad7f7c08dc26b8143e5",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_42 (7).png",
+        "sourceIndex": 46,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:dostoevsky:openlibrary-works-ol166923w",
+      "visibleAuthor": "Фёдор Михайлович Достоевский",
+      "visibleTitle": "Игрокъ",
+      "coverUrl": "brand/book-covers/the-gambler-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-gambler-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "76778c3e34d42e9e51469b89304bf5d0a49dab34eaf4179409b861c7860322eb",
+      "coverThumbnailSha256": "d700d5e67c7fe434cd835df6f228b39377f06741e67dd9893e060f8ff254ada7",
+      "equivalentWorkKeys": [
+        "russia:dostoevsky:openlibrary-works-ol166923w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "5091da55da669f3ab4a606855a810375c78bcf987216ca6c8cc2a5e1af53195e",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_43 (9).png",
+        "sourceIndex": 48,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:arthur_conan_doyle:legacy-arthur_conan_doyle-собака-баскервилей",
+      "visibleAuthor": "Артур Конан Дойл",
+      "visibleTitle": "Собака Баскервилей",
+      "coverUrl": "brand/book-covers/the-hound-of-the-baskervilles-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-hound-of-the-baskervilles-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "4c3ad2c11537f8b82132b47c461f019f4794d1213a52b9a12dc934b822527ced",
+      "coverThumbnailSha256": "b5baaa0a1b8dba04fa639914c88d629238760ad415e7a10186bf685aab922710",
+      "equivalentWorkKeys": [
+        "england:arthur_conan_doyle:legacy-arthur_conan_doyle-собака-баскервилей"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "e5db02dde88bc4ecf4a04aca186802fe927f3d335b52a6453e044bf8f002a2db",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_42 (2).png",
+        "sourceIndex": 51,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:marcel_proust:legacy-marcel_proust-в-поисках-утраченного-времени",
+      "visibleAuthor": "Марсель Пруст",
+      "visibleTitle": "В поисках утраченного времени",
+      "coverUrl": "brand/book-covers/in-search-of-lost-time-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/in-search-of-lost-time-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "27ae9a11318b113dd54ab94d077638f835325724906871ca154e7233e5258c2f",
+      "coverThumbnailSha256": "2ced8c680fbc079b21b0d6edbe0b9aadb975d950fe6b55c389b0da95d2c8cf2f",
+      "equivalentWorkKeys": [
+        "france:marcel_proust:legacy-marcel_proust-в-поисках-утраченного-времени"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "6ec5322191d6627b90b1757d0bbc3b819fe4c4ae9bf7089fd170a634162b6390",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_42 (3).png",
+        "sourceIndex": 52,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:vladimir_nabokov:legacy-vladimir_nabokov-приглашение-на-казнь",
+      "visibleAuthor": "Владимир Набоков",
+      "visibleTitle": "Приглашение на казнь",
+      "coverUrl": "brand/book-covers/invitation-to-a-beheading-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/invitation-to-a-beheading-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "8f62008d28acc26e59104614590be2637a598b5116d91e79f81625d403f1225c",
+      "coverThumbnailSha256": "b85b88307012a6917308ad0f445b7055ff4cc52f7b2221c7b2a26b1c5dccf925",
+      "equivalentWorkKeys": [
+        "usa:vladimir_nabokov:legacy-vladimir_nabokov-приглашение-на-казнь"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "251937cae3fee5e8aff04e14d4fa9ba26ad594a324323bb020da4e46d63dda02",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_42 (4).png",
+        "sourceIndex": 53,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро",
+      "visibleAuthor": "Герберт Джордж Уэллс",
+      "visibleTitle": "Остров доктора Моро",
+      "coverUrl": "brand/book-covers/island-of-doctor-moreau-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/island-of-doctor-moreau-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "e98655343ee96e18146f7ed7f595e2f56b4b8c913dc5cbefb153efb367fa6f00",
+      "coverThumbnailSha256": "514c89c6e50d914659eb8b210127f44ec943dbbd2bad477349367c8360eea2b4",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "e261915c8d1cffae1798405e806f9b2375b844ec6e5b845cb27b6860bbbf3585",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_42 (5).png",
+        "sourceIndex": 54,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "norway:henrik_ibsen:legacy-henrik_ibsen-кукольный-дом",
+      "visibleAuthor": "Генрик Ибсен",
+      "visibleTitle": "Кукольный дом",
+      "coverUrl": "brand/book-covers/a-dolls-house-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/a-dolls-house-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "1f6b6768bc75b3ada0295858e423fedd61dd089810cfe7b76b8a46aba57d48a0",
+      "coverThumbnailSha256": "f546c0039cfc0c4e99dd1439e90cb3a9711f7056e153feac7648096f2636a227",
+      "equivalentWorkKeys": [
+        "norway:henrik_ibsen:legacy-henrik_ibsen-кукольный-дом"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "a563f68a286d9e1a202c6ee3f457d975aa3ed99e328394a9dc207311afb19133",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_43 (7).png",
+        "sourceIndex": 56,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:henry_james:legacy-henry_james-портрет-леди",
+      "visibleAuthor": "Генри Джеймс",
+      "visibleTitle": "Портрет леди",
+      "coverUrl": "brand/book-covers/the-portrait-of-a-lady-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-portrait-of-a-lady-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "767c7f171515b4addf665dd835205de0dd39d0cec9b41b3e7411c583df0abd59",
+      "coverThumbnailSha256": "03bf6643cfed0bd234399c1543bd214d0e74152cd915ec5a41487db155c378a0",
+      "equivalentWorkKeys": [
+        "usa:henry_james:legacy-henry_james-портрет-леди",
+        "usa:henry_james:openlibrary-works-ol276365w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "704bdf962a25cf05057b1080df58b53d2708adf82cfed665cf2f8a14d052daee",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_43 (8).png",
+        "sourceIndex": 57,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:flaubert:legacy-flaubert-саламбо",
+      "visibleAuthor": "Гюстав Флобер",
+      "visibleTitle": "Саламбо",
+      "coverUrl": "brand/book-covers/salammbo-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/salammbo-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "980326bbf07ccd99a8a136dad3ecd0f082eba55054e331b62dcba6400692c257",
+      "coverThumbnailSha256": "e07adf6f173393737413d7d973fe65188aa9328feeaccc888355f0ed7a059127",
+      "equivalentWorkKeys": [
+        "france:flaubert:legacy-flaubert-саламбо"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "3a00713a07c74ab26543b7c20c56653c5c3e28aa15db75855c5805dca93e94a0",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_29_44 (9).png",
+        "sourceIndex": 58,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:buninin:legacy-buninin-тёмные-аллеи",
+      "visibleAuthor": "Иван Алексеевич Бунин",
+      "visibleTitle": "Тёмные аллеи",
+      "coverUrl": "brand/book-covers/dark-avenues-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/dark-avenues-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "45422a176d85603da788897b4163a1008e611ca764f54b363192c5c52f80f1be",
+      "coverThumbnailSha256": "21400064f3690b15cc16bd244e3c6b6b5cadd0b99a6b28415a783cfe64297dbe",
+      "equivalentWorkKeys": [
+        "russia:buninin:legacy-buninin-тёмные-аллеи"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "4271755a06b1798d381cd98edf495d0e0b2b288f292133f4f510c0e072c3c2d1",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (4).png",
+        "sourceIndex": 61,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:thomas_hardy:legacy-thomas_hardy-вдали-от-обезумевшей-толпы",
+      "visibleAuthor": "Томас Харди",
+      "visibleTitle": "Вдали от обезумевшей толпы",
+      "coverUrl": "brand/book-covers/far-from-the-madding-crowd-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/far-from-the-madding-crowd-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "ca1c508fa47a4bdf8b9bc1bb4cdb7245365abb0ddc7c79a2f8b24aa920e4909e",
+      "coverThumbnailSha256": "e07eade973fef5fc1484cc2106ea9b98302bc7a15cd5491107a07c2f392b01a7",
+      "equivalentWorkKeys": [
+        "england:thomas_hardy:legacy-thomas_hardy-вдали-от-обезумевшей-толпы"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "4e79d147db34b7daa0b32c2a836e9cc8e406118fb4a5898b800aa545e65dc183",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (6).png",
+        "sourceIndex": 63,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:theodore_dreiser:legacy-theodore_dreiser-финансист",
+      "visibleAuthor": "Теодор Драйзер",
+      "visibleTitle": "Финансист",
+      "coverUrl": "brand/book-covers/the-financier-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-financier-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "25729c6a6d0a35e8e8e9ebd364fddae4125d44d03169d3e53eafbe176ac66f45",
+      "coverThumbnailSha256": "21b9d28ede37748e5f068e4b8d5cc1c1eb4397a4571bbf4d944badb96d5a0037",
+      "equivalentWorkKeys": [
+        "usa:theodore_dreiser:legacy-theodore_dreiser-финансист"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "7181180255b74ae47931787705600624119f3219e6d182f736771a78fd29f752",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (7).png",
+        "sourceIndex": 64,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:william_faulkner:legacy-william_faulkner-свет-в-августе",
+      "visibleAuthor": "Уильям Фолкнер",
+      "visibleTitle": "Свет в августе",
+      "coverUrl": "brand/book-covers/light-in-august-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/light-in-august-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "45a14ee94210d36d75cf6d6b0cee6712edcd624ec6ed43da210228f3ebc3ab33",
+      "coverThumbnailSha256": "fde6d32516e8c315005ee4cc45711ac64292b40850a91b8da593a3a2860b3ac1",
+      "equivalentWorkKeys": [
+        "usa:william_faulkner:legacy-william_faulkner-свет-в-августе"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "6f64ef05a1ccaa0eaff8d129d5b5aa34a43e072a3623e5db2287c013fa1015b7",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (8).png",
+        "sourceIndex": 65,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "germany:erich_maria_remarque:article-catalog-rdkl2z",
+      "visibleAuthor": "Эрих Мария Ремарк",
+      "visibleTitle": "Чёрный обелиск",
+      "coverUrl": "brand/book-covers/the-black-obelisk-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-black-obelisk-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "9be82de3b43627e52125c9892902480a8859a8be5e54d9ea242ab13d995e059e",
+      "coverThumbnailSha256": "5630c52bce62cb7e477d9ee6d411dd8defa8bd5d28fe7408fa60e2aeb7d98220",
+      "equivalentWorkKeys": [
+        "germany:erich_maria_remarque:article-catalog-rdkl2z"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "ab4ee34e5bf93d0438dedf73d74fe40d0a91c4ec059c65331e8490ab63031e59",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (9).png",
+        "sourceIndex": 66,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:turgenev:legacy-turgenev-дворянское-гнездо",
+      "visibleAuthor": "Иван Сергеевич Тургенев",
+      "visibleTitle": "Дворянское гнездо",
+      "coverUrl": "brand/book-covers/home-of-the-gentry-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/home-of-the-gentry-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "f936ed82519be82ae3a53bc42117dae1ef12f58845a8dc7c182f8b0a892dfb88",
+      "coverThumbnailSha256": "4a2663a8184f7d1fbd0c7bc487f091592c792a800b086b29dff44b88e8952923",
+      "equivalentWorkKeys": [
+        "russia:turgenev:legacy-turgenev-дворянское-гнездо"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "83bcf41cf320b2ce43e97c80a9808df79d5dcb3145be1cb177a444fb889faf72",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_39_31 (10).png",
+        "sourceIndex": 67,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "france:jules_verne:legacy-jules_verne-вокруг-света-за-80-дней",
+      "visibleAuthor": "Жюль Верн",
+      "visibleTitle": "Вокруг света за 80 дней",
+      "coverUrl": "brand/book-covers/around-the-world-in-eighty-days-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/around-the-world-in-eighty-days-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "5d9a4bfc0711cc8ac0d0cac6f22f42fe6410720af12ccd14a695de28a4763a2a",
+      "coverThumbnailSha256": "5855a57e0ed37f7513d34d226bba82b28f4b02af8a15631e665a49aebc53bc03",
+      "equivalentWorkKeys": [
+        "france:jules_verne:legacy-jules_verne-вокруг-света-за-80-дней",
+        "france:jules_verne:openlibrary-works-ol1100007w",
+        "france:jules_verne:openlibrary-works-ol20984945w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "2a515a3a5f1b4fbc44501c61ee619b9388b6237e04b5d01955d9c8dc9b2ea6b4",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_12 (2).png",
+        "sourceIndex": 69,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:dostoevsky:openlibrary-works-ol36196411w",
+      "visibleAuthor": "Фёдор Михайлович Достоевский",
+      "visibleTitle": "White Nights",
+      "coverUrl": "brand/book-covers/white-nights-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/white-nights-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "33336db4c3c9339ace79307d84fcb7c0aee9d5a21b2f0bc866a640d23393c172",
+      "coverThumbnailSha256": "7d16711f392bb24b074ef254dd03f17bbcbd1a3fdaac7401b226d35f3463041e",
+      "equivalentWorkKeys": [
+        "russia:dostoevsky:openlibrary-works-ol36196411w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "d0f116af612bbdb13e0e7e8ca4d6a3b0d70e5626c9b998e2424f7f5d2a1a8e08",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_13 (3).png",
+        "sourceIndex": 70,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:gogol:openlibrary-works-ol270278w",
+      "visibleAuthor": "Николай Васильевич Гоголь",
+      "visibleTitle": "Taras Bulba",
+      "coverUrl": "brand/book-covers/taras-bulba-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/taras-bulba-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "4ca99e0fb960af10ba80c748ae67e4eb0c8326593dd765a78bf076dd49091d2f",
+      "coverThumbnailSha256": "5b502b949398e44ac5782cc985b1a29e56692159b06f854fb1443382bcfb6cb1",
+      "equivalentWorkKeys": [
+        "russia:gogol:openlibrary-works-ol270278w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "b0687aed8ae06b359a0bf084e41dbffd6f065f88d9e6fdb6d8c098a9336d6add",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_13 (4).png",
+        "sourceIndex": 71,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "russia:pushkin:openlibrary-works-ol623491w",
+      "visibleAuthor": "Александр Сергеевич Пушкин",
+      "visibleTitle": "Dubrovsky",
+      "coverUrl": "brand/book-covers/dubrovsky-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/dubrovsky-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "c3f58dd12932b9a56759e7ac74fc7169d776d03769921528df8a3b879265e62f",
+      "coverThumbnailSha256": "cbec29b5de57122da9651ae8e31625936212173bc2cbd39ccddc1f5508ca82f5",
+      "equivalentWorkKeys": [
+        "russia:pushkin:openlibrary-works-ol623491w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "f8a8c74adff6beeb7430921775bf4a45d8bc52696e1c41e0ddb0923932caa598",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_13 (5).png",
+        "sourceIndex": 72,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:jane_austen:legacy-jane_austen-эмма",
+      "visibleAuthor": "Джейн Остин",
+      "visibleTitle": "Эмма",
+      "coverUrl": "brand/book-covers/emma-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/emma-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "3658013b020242139a27506aadd2ff373c8fe849a840b4042bfe85e67d108119",
+      "coverThumbnailSha256": "e502e53a7ebed2fedc806cf31e8ed4c0edaf7dea0aac01e6b3d384331edca790",
+      "equivalentWorkKeys": [
+        "england:jane_austen:legacy-jane_austen-эмма"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "00f3d8f6f757d8a50d8fd9b10fac0b944b43d9b4bd8df1d65db4f1d64d1efed0",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_14 (6).png",
+        "sourceIndex": 73,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "england:virginia_woolf:legacy-virginia_woolf-миссис-дэллоуэй",
+      "visibleAuthor": "Вирджиния Вулф",
+      "visibleTitle": "Миссис Дэллоуэй",
+      "coverUrl": "brand/book-covers/mrs-dalloway-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/mrs-dalloway-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "884a4091fadc6aa3f038d67a18e701341e37c44947659b864be3ed6650ab9b82",
+      "coverThumbnailSha256": "a30241fa7ad80a63af4446e18441434966529fd1d4df310eb86d489dec007654",
+      "equivalentWorkKeys": [
+        "england:virginia_woolf:legacy-virginia_woolf-миссис-дэллоуэй"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "55d946e7afdd6b6f21396ea00ddb3e58a4bf707f6720982c242430da35ac517c",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_14 (7).png",
+        "sourceIndex": 74,
+        "matchBasis": "exact-author-and-title",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:edith_wharton:legacy-edith_wharton-эпоха-невинности",
+      "visibleAuthor": "Эдит Уортон",
+      "visibleTitle": "Эпоха невинности",
+      "coverUrl": "brand/book-covers/the-age-of-innocence-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-age-of-innocence-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "6bb00a23c9419ebc9ebbfa1a0a24475466392d7f5eeeb4f621340354e3eb351f",
+      "coverThumbnailSha256": "fd7d02ba8f4eae80ff62968383bade2239d44079e76e91984b86fa53b4c11ce9",
+      "equivalentWorkKeys": [
+        "usa:edith_wharton:legacy-edith_wharton-эпоха-невинности",
+        "usa:edith_wharton:openlibrary-works-ol98491w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "bea302ac1b2d6e1d9da613cf9e2a24080c7fe8bffb0c3455ffb83ecae767c8eb",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_15 (9).png",
+        "sourceIndex": 76,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    },
+    {
+      "workKey": "usa:john_steinbeck:openlibrary-works-ol23190w",
+      "visibleAuthor": "Джон Стейнбек",
+      "visibleTitle": "The Winter of Our Discontent",
+      "coverUrl": "brand/book-covers/the-winter-of-our-discontent-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-winter-of-our-discontent-editorial.webp",
+      "coverWidth": 720,
+      "coverHeight": 1080,
+      "coverThumbnailWidth": 360,
+      "coverThumbnailHeight": 540,
+      "coverSha256": "e290f1858d5e5dd2797f205fc307ba886259b213117ff25ea99a0b801637a10c",
+      "coverThumbnailSha256": "b9f2fb4357304a3e497fccb412f3b7e62bb3c1d526d7f3ccb9f4ead322a6a967",
+      "equivalentWorkKeys": [
+        "usa:john_steinbeck:openlibrary-works-ol23190w"
+      ],
+      "provenance": {
+        "kind": "user-supplied",
+        "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+        "imageSha256": "19b916348f4272bb7a4f0574ba596ca5916ed02c4b5c009ccb8e869a4694a73a",
+        "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_44_16 (10).png",
+        "sourceIndex": 77,
+        "matchBasis": "verified-author-and-bibliographic-title-alias",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      }
+    }
+  ]
+}

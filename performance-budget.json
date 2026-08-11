@@ -1,5 +1,6 @@
 {
-  "distTotalBytes": 85983232,
+  "distTotalBytes": 110100480,
+  "distExcludingBookCoversBytes": 75497472,
   "largestJavaScriptBytes": 2097152,
   "largestJavaScriptGzipBytes": 409600,
   "mainJavaScriptBytes": 716800,
@@ -8,5 +9,9 @@
   "writerPortraitTotalBytes": 37748736,
   "writerPortraitAverageBytes": 36864,
   "writerPortraitMaximumBytes": 153600,
+  "bookCoverCount": 256,
+  "bookCoverTotalBytes": 37748736,
+  "bookCoverAverageBytes": 153600,
+  "bookCoverMaximumBytes": 491520,
   "individualImageBytes": 2621440
 }
