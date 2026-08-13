@@ -33,6 +33,15 @@ export default function ConnectivityStatus() {
           <button type="button" onClick={() => window.location.reload()}>
             {t("Обновить")}
           </button>
+          <button
+            className="connectivity-status-dismiss"
+            type="button"
+            onClick={() => setUpdateReady(false)}
+            aria-label={t("Закрыть")}
+            title={t("Закрыть")}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
         </>
       )}
     </div>

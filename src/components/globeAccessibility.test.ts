@@ -31,5 +31,14 @@ describe("literary globe accessible interaction wiring", () => {
     expect(globeSource).toContain("data-globe-auto-rotate={autoRotateStatus}");
     expect(globeSource).toMatch(/reducedMotion\s*\?\s*"reduced-motion"/u);
     expect(globeSource).toMatch(/selectedCountry\s*\?\s*"selection"/u);
+    expect(globeSource).toContain("disabled={reducedMotion}");
+    expect(globeSource).toContain("autoRotateControlLabel");
+  });
+
+  it("offers recovery and avoids a continuous frame loop for static scenes", () => {
+    expect(globeSource).toContain("Повторить загрузку глобуса");
+    expect(globeSource).toContain("data-globe-load-state");
+    expect(globeSource).toContain("data-globe-frame-mode={frameMode}");
+    expect(globeSource).toMatch(/\?\s*"always"\s*:\s*"demand"/u);
   });
 });

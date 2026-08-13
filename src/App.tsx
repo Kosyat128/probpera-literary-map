@@ -71,6 +71,7 @@ import {
   normalizeLiterarySearch,
 } from "./utils/literarySearch";
 import { safePublicHref } from "./utils/publicHref";
+import { scrollToDeferredHashTarget } from "./utils/deferredHashNavigation";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
@@ -442,6 +443,19 @@ export default function App() {
       window.removeEventListener("probpera:navigation", syncRoute);
     };
   }, []);
+
+  useEffect(() => {
+    if (directArticleRoute || !window.location.hash) return undefined;
+    let frame = 0;
+    let attempts = 0;
+    const scrollWhenReady = () => {
+      if (scrollToDeferredHashTarget(window.location.hash)) return;
+      attempts += 1;
+      if (attempts < 90) frame = window.requestAnimationFrame(scrollWhenReady);
+    };
+    frame = window.requestAnimationFrame(scrollWhenReady);
+    return () => window.cancelAnimationFrame(frame);
+  }, [countryArchive.length, directArticleRoute]);
 
   const cancelSectionsMenuClose = useCallback(() => {
     if (sectionsMenuCloseTimer.current !== null) {
@@ -1241,14 +1255,14 @@ export default function App() {
                   />
                   <source
                     type="image/avif"
-                    srcSet={assetUrl("brand/magazine-hero-wide.avif?v=20260813-literary-nature-full")}
+                    srcSet={assetUrl("brand/magazine-hero-wide.avif?v=20260813-literary-nature-final")}
                   />
                 </>
               )}
               <img
                 src={
                   coreHero?.backgroundImageUrl ||
-                  assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-full")
+                  assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-final")
                 }
                 alt=""
                 width={coreHero?.backgroundImageUrl ? undefined : 1774}

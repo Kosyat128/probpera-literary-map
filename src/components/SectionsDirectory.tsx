@@ -1,4 +1,4 @@
-import { useMemo, type CSSProperties, type MouseEvent } from "react";
+import { useMemo, useState, type CSSProperties, type MouseEvent } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
@@ -41,7 +41,7 @@ function mediaUrl(path: string) {
     : `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 }
 
-function publicationLabel(count: number) {
+function publicationLabel(count: number, formattedCount = String(count)) {
   const lastTwo = count % 100;
   const last = count % 10;
   const form =
@@ -52,7 +52,7 @@ function publicationLabel(count: number) {
         : last >= 2 && last <= 4
           ? "публикации"
           : "публикаций";
-  return `${count} ${form}`;
+  return `${formattedCount} ${form}`;
 }
 
 function workLabel(count: number) {
@@ -67,6 +67,44 @@ function workLabel(count: number) {
           ? "произведения"
           : "произведений";
   return `${count} ${form} в архиве`;
+}
+
+function localizedWorkLabel(count: number, formattedCount: string) {
+  return workLabel(count).replace(String(count), formattedCount);
+}
+
+export function sectionActionKind(
+  section: Pick<SiteSectionLink, "id" | "action" | "metric">,
+  publicationCount: number
+) {
+  if (section.id === "atlas") return "explore" as const;
+  if (section.id === "calendar") return "view" as const;
+  if (
+    section.id === "books" ||
+    section.metric === "writers" ||
+    section.metric === "community" ||
+    section.metric === "account" ||
+    section.metric === "project" ||
+    section.action
+  ) {
+    return "open" as const;
+  }
+  return publicationCount > 0 ? ("read" as const) : ("open" as const);
+}
+
+const directoryGatewayIds = new Set(["atlas", "books", "calendar"]);
+
+export function featuredSectionIds(
+  sections: readonly Pick<SiteSectionLink, "id" | "action" | "metric">[]
+) {
+  const featured = sections.filter(
+    (section) =>
+      directoryGatewayIds.has(section.id) || Boolean(section.metric || section.action)
+  );
+
+  // A small custom catalogue can omit metrics entirely. In that case keeping
+  // its original order is clearer than unexpectedly hiding arbitrary links.
+  return (featured.length ? featured : sections).map((section) => section.id);
 }
 
 const russianMonths: Record<string, number> = {
@@ -101,6 +139,7 @@ export default function SectionsDirectory({
   onAction,
 }: Props) {
   const { language, t, number } = useInterfaceLanguage();
+  const [showAllSections, setShowAllSections] = useState(false);
   const sectionCards = useMemo(() => {
     const usedRecommendations = new Set<string>();
     const localizedCatalog = articleCatalog.flatMap((article) => {
@@ -153,10 +192,18 @@ export default function SectionsDirectory({
       return { section, publications, latest, series };
     });
   }, [language, sections]);
+  const featuredIds = useMemo(
+    () => new Set(featuredSectionIds(sections)),
+    [sections]
+  );
+  const visibleSectionCards = showAllSections
+    ? sectionCards
+    : sectionCards.filter(({ section }) => featuredIds.has(section.id));
+  const hiddenSectionCount = sectionCards.length - visibleSectionCards.length;
 
   return (
-    <div className="sections-directory-grid">
-      {sectionCards.map(({ section, publications, latest, series }) => {
+    <div className="sections-directory-grid" id="sections-directory-list">
+      {visibleSectionCards.map(({ section, publications, latest, series }) => {
         const liveLabel =
           section.id === "atlas"
             ? language === "en"
@@ -165,7 +212,7 @@ export default function SectionsDirectory({
             : section.id === "books"
               ? language === "en"
                 ? `${number(bookCount)} works in the archive`
-                : workLabel(bookCount)
+                : localizedWorkLabel(bookCount, number(bookCount))
               : section.id === "calendar"
                 ? t("События на каждый день")
                 : section.metric === "writers"
@@ -184,13 +231,17 @@ export default function SectionsDirectory({
                         ? "publication"
                         : "publications"
                     }`
-                  : publicationLabel(publications.length);
+                  : publicationLabel(
+                      publications.length,
+                      number(publications.length)
+                    );
+        const actionKind = sectionActionKind(section, publications.length);
         const actionLabel =
-          publications.length > 0
+          actionKind === "read"
             ? t("Читать")
-            : section.id === "atlas"
+            : actionKind === "explore"
               ? t("Исследовать")
-              : section.id === "calendar"
+              : actionKind === "view"
                 ? t("Смотреть")
                 : t("Открыть");
 
@@ -284,6 +335,21 @@ export default function SectionsDirectory({
           </article>
         );
       })}
+      {!showAllSections && hiddenSectionCount > 0 && (
+        <button
+          className="section-directory-more"
+          type="button"
+          aria-controls="sections-directory-list"
+          aria-expanded="false"
+          onClick={() => setShowAllSections(true)}
+        >
+          <span>
+            {language === "en" ? "Show all sections" : "Показать все разделы"}
+          </span>
+          <strong>+{number(hiddenSectionCount)}</strong>
+          <BrandArrowIcon />
+        </button>
+      )}
     </div>
   );
 }

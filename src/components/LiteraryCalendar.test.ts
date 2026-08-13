@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import type { Writer } from "../data/countries";
-import { calendarWriterIdentity, dateParts } from "./LiteraryCalendar";
+import {
+  calendarWriterIdentity,
+  dateParts,
+  visibleCalendarAgendaDays,
+} from "./LiteraryCalendar";
 
 describe("литературный календарь", () => {
   it("не превращает год без точной даты в событие 1 января", () => {
@@ -76,5 +80,16 @@ describe("литературный календарь", () => {
     expect(calendarWriterIdentity(curatedEntry)).toBe(
       calendarWriterIdentity(generatedEntry)
     );
+  });
+
+  it("сначала показывает компактную повестку, а по запросу — все дни с событиями", () => {
+    const days = Array.from({ length: 9 }, (_, index) =>
+      [index + 1, [`event-${index + 1}`]] as const
+    );
+
+    expect(visibleCalendarAgendaDays(days, false).map(([day]) => day)).toEqual([
+      1, 2, 3, 4, 5, 6,
+    ]);
+    expect(visibleCalendarAgendaDays(days, true)).toEqual(days);
   });
 });

@@ -184,6 +184,30 @@
     "multiline": false
   },
   {
+    "key": "interface.Автовращение отключено в режиме уменьшения движения",
+    "group": "Весь интерфейс",
+    "label": "Автовращение отключено в режиме уменьшения движения",
+    "defaultRu": "Автовращение отключено в режиме уменьшения движения",
+    "defaultEn": "Automatic rotation is disabled by reduced-motion preferences",
+    "multiline": false
+  },
+  {
+    "key": "interface.Автовращение приостановлено во время взаимодействия",
+    "group": "Весь интерфейс",
+    "label": "Автовращение приостановлено во время взаимодействия",
+    "defaultRu": "Автовращение приостановлено во время взаимодействия",
+    "defaultEn": "Automatic rotation is paused during interaction",
+    "multiline": false
+  },
+  {
+    "key": "interface.Автовращение приостановлено, пока выбрана страна",
+    "group": "Весь интерфейс",
+    "label": "Автовращение приостановлено, пока выбрана страна",
+    "defaultRu": "Автовращение приостановлено, пока выбрана страна",
+    "defaultEn": "Automatic rotation is paused while a country is selected",
+    "multiline": false
+  },
+  {
     "key": "interface.автор",
     "group": "Весь интерфейс",
     "label": "автор",
@@ -717,6 +741,14 @@
     "label": "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.",
     "defaultRu": "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.",
     "defaultEn": "A direct route to biographies, works and literary connections across the encyclopedia.",
+    "multiline": false
+  },
+  {
+    "key": "interface.В архиве этой страны пока нет опубликованных карточек писателей.",
+    "group": "Весь интерфейс",
+    "label": "В архиве этой страны пока нет опубликованных карточек писателей.",
+    "defaultRu": "В архиве этой страны пока нет опубликованных карточек писателей.",
+    "defaultEn": "This country archive has no published writer profiles yet.",
     "multiline": false
   },
   {
@@ -1461,6 +1493,14 @@
     "label": "Для карточки, поиска и социальных сетей",
     "defaultRu": "Для карточки, поиска и социальных сетей",
     "defaultEn": "For cards, search and social media",
+    "multiline": false
+  },
+  {
+    "key": "interface.Для этого автора проверенные произведения и награды пока не опубликованы.",
+    "group": "Весь интерфейс",
+    "label": "Для этого автора проверенные произведения и награды пока не опубликованы.",
+    "defaultRu": "Для этого автора проверенные произведения и награды пока не опубликованы.",
+    "defaultEn": "No verified works or awards have been published for this writer yet.",
     "multiline": false
   },
   {
@@ -4688,6 +4728,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Открыть карточку автора",
+    "group": "Весь интерфейс",
+    "label": "Открыть карточку автора",
+    "defaultRu": "Открыть карточку автора",
+    "defaultEn": "Open writer profile",
+    "multiline": false
+  },
+  {
     "key": "interface.Открыть постоянную ссылку",
     "group": "Весь интерфейс",
     "label": "Открыть постоянную ссылку",
@@ -4904,6 +4952,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Пауза",
+    "group": "Весь интерфейс",
+    "label": "Пауза",
+    "defaultRu": "Пауза",
+    "defaultEn": "Paused",
+    "multiline": false
+  },
+  {
     "key": "interface.Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
     "group": "Весь интерфейс",
     "label": "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
@@ -5101,6 +5157,14 @@
     "label": "Повторите пароль",
     "defaultRu": "Повторите пароль",
     "defaultEn": "Repeat password",
+    "multiline": false
+  },
+  {
+    "key": "interface.Повторить загрузку глобуса",
+    "group": "Весь интерфейс",
+    "label": "Повторить загрузку глобуса",
+    "defaultRu": "Повторить загрузку глобуса",
+    "defaultEn": "Retry loading the globe",
     "multiline": false
   },
   {

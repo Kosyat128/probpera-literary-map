@@ -336,9 +336,17 @@ const englishInterfaceText: Record<string, string> = {
   "Увеличить масштаб глобуса": "Zoom in on the globe",
   "Остановить автоматическое вращение": "Stop automatic rotation",
   "Включить автоматическое вращение": "Start automatic rotation",
+  "Автовращение приостановлено, пока выбрана страна":
+    "Automatic rotation is paused while a country is selected",
+  "Автовращение приостановлено во время взаимодействия":
+    "Automatic rotation is paused during interaction",
+  "Автовращение отключено в режиме уменьшения движения":
+    "Automatic rotation is disabled by reduced-motion preferences",
   "Вернуть исходный вид глобуса": "Restore the globe's initial view",
   Авто: "Auto",
+  Пауза: "Paused",
   Сброс: "Reset",
+  "Повторить загрузку глобуса": "Retry loading the globe",
   "Литературный архив": "Literary archive",
   "Закрыть панель": "Close panel",
   Столица: "Capital",
@@ -358,6 +366,11 @@ const englishInterfaceText: Record<string, string> = {
   "Источники и материалы": "Sources and related reading",
   "Для этой архивной справки источники ещё не зафиксированы.":
     "Sources have not yet been recorded for this archive note.",
+  "Для этого автора проверенные произведения и награды пока не опубликованы.":
+    "No verified works or awards have been published for this writer yet.",
+  "В архиве этой страны пока нет опубликованных карточек писателей.":
+    "This country archive has no published writer profiles yet.",
+  "Открыть карточку автора": "Open writer profile",
   "Карточка автора": "Writer profile",
   "Литературная традиция": "Literary tradition",
   "Справочная карточка · требует расширения":

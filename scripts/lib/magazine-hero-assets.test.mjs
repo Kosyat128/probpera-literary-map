@@ -27,4 +27,16 @@ describe("main magazine hero", () => {
     expect(source).toContain("mobileSourcePath");
     expect(source).not.toContain(".extract(");
   });
+
+  it("keeps the independent desktop and mobile source compositions", async () => {
+    const desktop = await sharp(
+      path.join(root, "scripts", "assets", "magazine-hero-wide-source.png")
+    ).metadata();
+    const mobile = await sharp(
+      path.join(root, "scripts", "assets", "magazine-hero-mobile-portrait-source.png")
+    ).metadata();
+
+    expect([desktop.width, desktop.height]).toEqual([1774, 887]);
+    expect([mobile.width, mobile.height]).toEqual([941, 1672]);
+  });
 });

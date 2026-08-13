@@ -3,6 +3,7 @@ import {
   useDeferredValue,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -143,7 +144,12 @@ export function requestedBookKey(search: string) {
     : null;
 }
 
-function replaceBookLocation(key: string | null) {
+const bookDetailHistoryStateKey = "probperaBookDetail";
+
+function replaceBookLocation(
+  key: string | null,
+  mode: "push" | "replace" = "replace"
+) {
   if (typeof window === "undefined") return;
   const url = new URL(window.location.href);
   if (key) {
@@ -152,8 +158,17 @@ function replaceBookLocation(key: string | null) {
   } else {
     url.searchParams.delete("book");
   }
-  window.history.replaceState(
-    window.history.state,
+  const nextState: Record<string, unknown> = {
+    ...(window.history.state || {}),
+  };
+  const isAppOpenedDetail = Boolean(nextState[bookDetailHistoryStateKey]);
+  if (key && (mode === "push" || isAppOpenedDetail)) {
+    nextState[bookDetailHistoryStateKey] = key;
+  } else {
+    delete nextState[bookDetailHistoryStateKey];
+  }
+  window.history[mode === "push" ? "pushState" : "replaceState"](
+    nextState,
     "",
     `${url.pathname}${url.search}${url.hash}`
   );
@@ -185,18 +200,41 @@ export default function BookArchiveSection({
     []
   );
   const [relatedArticlesLoading, setRelatedArticlesLoading] = useState(false);
+  const detailRef = useRef<HTMLElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
   const queue = useMemo(() => classifyBookArchiveQueue(books), [books]);
-  const openBookDetail = useCallback((book: BookArchiveEntry) => {
+  const openBookDetail = useCallback((
+    book: BookArchiveEntry,
+    returnFocus?: HTMLElement | null
+  ) => {
+    returnFocusRef.current = returnFocus || null;
     setSelectedBook(book);
-    replaceBookLocation(bookKey(book));
+    replaceBookLocation(
+      bookKey(book),
+      requestedBookKey(window.location.search) ? "replace" : "push"
+    );
   }, []);
   const closeBookDetail = useCallback(() => {
+    const returnFocus = returnFocusRef.current;
+    returnFocusRef.current = null;
     setSelectedBook(null);
-    replaceBookLocation(null);
+    if (window.history.state?.[bookDetailHistoryStateKey]) {
+      window.history.back();
+    } else {
+      replaceBookLocation(null);
+    }
+    window.requestAnimationFrame(() => {
+      const fallback = document.querySelector<HTMLElement>(
+        ".book-archive-toolbar input"
+      );
+      (returnFocus?.isConnected ? returnFocus : fallback)?.focus({
+        preventScroll: true,
+      });
+    });
   }, []);
 
   const counts = useMemo(
@@ -306,14 +344,6 @@ export default function BookArchiveSection({
       }
       setSelectedBook(resolution.book);
       replaceBookLocation(key);
-      window.requestAnimationFrame(() => {
-        document.getElementById("books")?.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "auto"
-            : "smooth",
-          block: "start",
-        });
-      });
     };
 
     openFromLocation();
@@ -332,6 +362,22 @@ export default function BookArchiveSection({
       });
     });
   }, [onRequestedBookHandled, openBookDetail, requestedBook]);
+
+  useEffect(() => {
+    if (!selectedBook) return;
+    const frame = window.requestAnimationFrame(() => {
+      const detail = detailRef.current;
+      if (!detail) return;
+      detail.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+      detail.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [selectedBook]);
 
   useEffect(() => {
     let active = true;
@@ -460,6 +506,7 @@ export default function BookArchiveSection({
           </div>
           <div
             className="book-archive-filters"
+            role="group"
             aria-label={t("Фильтры книжного архива")}
           >
             {archiveFilters.map((item) => (
@@ -483,8 +530,12 @@ export default function BookArchiveSection({
 
       {selectedBook && (
         <article
+          ref={detailRef}
+          id="book-archive-detail"
           className="book-detail-card"
-          aria-live="polite"
+          role="region"
+          tabIndex={-1}
+          aria-label={selectedBookText?.title || selectedBook.title}
           {...cmsBookEntityAttributes(
             selectedItem,
             bookKey(selectedBook),
@@ -886,7 +937,17 @@ export default function BookArchiveSection({
                 <button
                   className="archive-book-detail"
                   type="button"
-                  onClick={() => openBookDetail(book)}
+                  aria-expanded={
+                    selectedBook ? bookKey(selectedBook) === bookKey(book) : false
+                  }
+                  aria-controls={
+                    selectedBook && bookKey(selectedBook) === bookKey(book)
+                      ? "book-archive-detail"
+                      : undefined
+                  }
+                  onClick={(event) =>
+                    openBookDetail(book, event.currentTarget)
+                  }
                 >
                   {t("О книге")}
                 </button>
@@ -898,9 +959,18 @@ export default function BookArchiveSection({
       </div>
 
       {filteredItems.length === 0 && (
-        <div className="book-archive-empty">
+        <div className="book-archive-empty" role="status" aria-live="polite">
           <strong>{t("Ничего не найдено")}</strong>
           <p>{t("Попробуйте другое название, автора, страну или фильтр.")}</p>
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              setFilter("all");
+            }}
+          >
+            {t("Весь архив")}
+          </button>
         </div>
       )}
 

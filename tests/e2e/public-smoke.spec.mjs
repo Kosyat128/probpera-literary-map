@@ -83,9 +83,9 @@ test("обложка и заголовок героя сохраняют ред�
     .toContain(
       isMobile
         ? "?v=20260813-literary-nature-portrait"
-        : "?v=20260813-literary-nature-full"
+        : "?v=20260813-literary-nature-final"
     );
-  await expect(cover).toHaveCSS("object-fit", isMobile ? "cover" : "contain");
+  await expect(cover).toHaveCSS("object-fit", "cover");
   expect(
     await heading.evaluate((element) => {
       const style = getComputedStyle(element);

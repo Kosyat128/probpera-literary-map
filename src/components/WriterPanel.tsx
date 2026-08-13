@@ -6,6 +6,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 
 import { articleCatalog } from "../data/articles/catalog";
@@ -32,7 +33,12 @@ import {
 } from "../cms/directEditBridge";
 import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
-import { writerBiographyPublicStatus } from "./writerPanelPresentation";
+import {
+  WRITER_DETAIL_VIEWS,
+  writerBiographyPublicStatus,
+  writerDetailViewForKey,
+  type WriterDetailView,
+} from "./writerPanelPresentation";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
 
@@ -57,8 +63,6 @@ type WriterPanelProps = {
   onNobelSpotlightToggle?: () => void;
   onClose?: () => void;
 };
-
-type WriterDetailView = "biography" | "works" | "sources";
 
 function getWriterName(
   writer: Writer,
@@ -92,7 +96,7 @@ function pluralRu(count: number, forms: [string, string, string]) {
 }
 
 function relatedArticlesFor(writer: Writer, language: "ru" | "en") {
-  const nameParts = getWriterName(writer)
+  const nameParts = getWriterName(writer, "", language)
     .toLocaleLowerCase("ru")
     .replace(/[^\p{L}\s-]/gu, " ")
     .split(/\s+/)
@@ -125,6 +129,11 @@ export default function WriterPanel({
   const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLElement>(null);
+  const detailTabRefs = useRef<Record<WriterDetailView, HTMLButtonElement | null>>({
+    biography: null,
+    works: null,
+    sources: null,
+  });
   const requestedWriterId = useRef<string | null>(null);
   const handledFocusRequest = useRef<number | null>(null);
   const writers = country.writers || [];
@@ -137,7 +146,14 @@ export default function WriterPanel({
     if (firstWriter && selectedWriter === undefined) onWriterSelect?.(firstWriter);
   }, [country.id, country.writers, onWriterSelect, selectedWriter]);
 
-  const activeWriter = selectedWriter ?? localSelected ?? writers[0] ?? null;
+  const selectedWriterInCountry = selectedWriter
+    ? writers.find((writer) => writer.id === selectedWriter.id) ?? null
+    : null;
+  const localWriterInCountry = localSelected
+    ? writers.find((writer) => writer.id === localSelected.id) ?? null
+    : null;
+  const activeWriter =
+    selectedWriterInCountry ?? localWriterInCountry ?? writers[0] ?? null;
 
   const scrollToWriterDetail = useCallback(() => {
     const detail = detailRef.current;
@@ -157,6 +173,7 @@ export default function WriterPanel({
 
   useLayoutEffect(() => {
     if (!panelRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const animation = gsap.fromTo(
       panelRef.current,
       { autoAlpha: 0, x: 42 },
@@ -170,6 +187,17 @@ export default function WriterPanel({
   useLayoutEffect(() => {
     if (!detailRef.current || !activeWriter) return;
     const detail = detailRef.current;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion) {
+      if (requestedWriterId.current === activeWriter.id) {
+        requestedWriterId.current = null;
+        const frame = window.requestAnimationFrame(scrollToWriterDetail);
+        return () => window.cancelAnimationFrame(frame);
+      }
+      return;
+    }
     const animation = gsap.fromTo(
       detail,
       { autoAlpha: 0, y: 12 },
@@ -208,9 +236,12 @@ export default function WriterPanel({
   const sortedWriters = useMemo(
     () =>
       [...writers].sort((first, second) =>
-        getWriterName(first).localeCompare(getWriterName(second), "ru")
+        getWriterName(first, "", language).localeCompare(
+          getWriterName(second, "", language),
+          language
+        )
       ),
-    [writers]
+    [language, writers]
   );
 
   const periods = useMemo(() => {
@@ -225,6 +256,10 @@ export default function WriterPanel({
     if (country.literaryMovements?.length) return country.literaryMovements.slice(0, 7);
     return uniqueValues(writers.flatMap((writer) => writer.genres || [])).slice(0, 7);
   }, [country.literaryMovements, language, writers]);
+  const periodsAndMovements = useMemo(
+    () => uniqueValues([...periods, ...movements]),
+    [movements, periods]
+  );
 
   const timeline = useMemo(
     () =>
@@ -280,6 +315,11 @@ export default function WriterPanel({
   const activeWriterStatus = writerBiographyPublicStatus(activeWriterBiography);
   const hasWriterWorks =
     activeWriterWorks.length > 0 || Boolean(activeWriter?.awards?.length);
+  const hasWriterSources = Boolean(
+    activeWriterBiography?.kind === "published" &&
+      activeWriterBiography.sources.length > 0
+  );
+  const hasWriterRelatedArticles = otherRelatedArticles.length > 0;
   const countryLabel = countryName(country.code, country.name);
   const countrySubscribed = isSubscribed("country", country.id);
   const activeWriterSubscriptionId = activeWriter
@@ -321,9 +361,34 @@ export default function WriterPanel({
   };
 
   const writerDetailId = `writer-biography-${country.id}`;
+  const writerDetailHeadingId = `${writerDetailId}-heading`;
+  const countryHeadingId = `country-heading-${country.id}`;
+  const detailTabId = (view: WriterDetailView) =>
+    `${writerDetailId}-tab-${view}`;
+  const detailPanelId = (view: WriterDetailView) =>
+    `${writerDetailId}-panel-${view}`;
+  const selectDetailView = (view: WriterDetailView, moveFocus = false) => {
+    setDetailView(view);
+    if (moveFocus) {
+      window.requestAnimationFrame(() => detailTabRefs.current[view]?.focus());
+    }
+  };
+  const handleDetailTabKeyDown = (
+    event: ReactKeyboardEvent<HTMLButtonElement>
+  ) => {
+    const nextView = writerDetailViewForKey(detailView, event.key);
+    if (!nextView) return;
+    event.preventDefault();
+    selectDetailView(nextView, true);
+  };
 
   return (
-    <aside ref={panelRef} className="country-panel" aria-live="polite">
+    <aside
+      ref={panelRef}
+      className="country-panel"
+      role="region"
+      aria-labelledby={countryHeadingId}
+    >
       <div className="panel-topline">
         <div>
           <span className="eyebrow">{t("Литературный архив")}</span>
@@ -347,10 +412,11 @@ export default function WriterPanel({
           code={country.code}
           countryName={country.name}
           size={52}
+          decorative
           priority
         />
         <div>
-          <h2>{countryName(country.code, country.name)}</h2>
+          <h2 id={countryHeadingId}>{countryName(country.code, country.name)}</h2>
           <p>
             {country.capital
               ? `${t("Столица")}: ${country.capital}`
@@ -361,12 +427,12 @@ export default function WriterPanel({
 
       <p className="country-description">{description}</p>
       <div
-        className="country-verification-summary"
+        className={`country-verification-summary${publishedBiographyCount ? "" : " is-empty"}`}
         data-verified-biographies={publishedBiographyCount}
         data-total-biographies={writers.length}
       >
         <span className="country-verification-icon" aria-hidden="true">
-          ✓
+          {publishedBiographyCount ? "✓" : "i"}
         </span>
         <div>
           <strong>
@@ -476,17 +542,14 @@ export default function WriterPanel({
         </div>
       </div>
 
-      {periods.length > 0 && (
+      {periodsAndMovements.length > 0 && (
         <section className="archive-section">
           <div className="section-title">
             <h3>{t("Эпохи и направления")}</h3>
           </div>
           <div className="tag-list">
-            {periods.map((period) => (
-              <span key={period}>{period}</span>
-            ))}
-            {movements.map((movement) => (
-              <span key={movement}>{movement}</span>
+            {periodsAndMovements.map((label) => (
+              <span key={label}>{label}</span>
             ))}
           </div>
         </section>
@@ -498,6 +561,11 @@ export default function WriterPanel({
         </div>
 
         <div className="writer-list">
+          {sortedWriters.length === 0 && (
+            <p className="writer-list-empty" role="status">
+              {t("В архиве этой страны пока нет опубликованных карточек писателей.")}
+            </p>
+          )}
           {sortedWriters.map((writer) => {
             const active = activeWriter?.id === writer.id;
             const writerEntityId = `${country.id}:${writer.id}`;
@@ -513,7 +581,7 @@ export default function WriterPanel({
                 onClick={() => chooseWriter(writer)}
                 aria-pressed={active}
                 aria-controls={writerDetailId}
-                aria-label={`${t("Открыть биографию")}: ${getWriterName(
+                aria-label={`${t("Открыть карточку автора")}: ${getWriterName(
                   writer,
                   t("Неизвестный автор"),
                   language
@@ -595,6 +663,7 @@ export default function WriterPanel({
           id={writerDetailId}
           className="archive-section writer-detail"
           tabIndex={-1}
+          aria-labelledby={writerDetailHeadingId}
           {...cmsEntityMarker(
             "writer",
             activeWriterSubscriptionId,
@@ -636,6 +705,7 @@ export default function WriterPanel({
                   : t("Литературная традиция")}
               </span>
               <h4
+                id={writerDetailHeadingId}
                 {...cmsEntityFieldMarker(
                   "writer",
                   activeWriterSubscriptionId,
@@ -696,37 +766,41 @@ export default function WriterPanel({
             role="tablist"
             aria-label={t("Разделы карточки автора")}
           >
-            <button
-              type="button"
-              role="tab"
-              aria-selected={detailView === "biography"}
-              className={detailView === "biography" ? "is-active" : undefined}
-              onClick={() => setDetailView("biography")}
-            >
-              {t("Биография")}
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={detailView === "works"}
-              className={detailView === "works" ? "is-active" : undefined}
-              disabled={!hasWriterWorks}
-              onClick={() => setDetailView("works")}
-            >
-              {t("Произведения и награды")}
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={detailView === "sources"}
-              className={detailView === "sources" ? "is-active" : undefined}
-              onClick={() => setDetailView("sources")}
-            >
-              {t("Источники и материалы")}
-            </button>
+            {WRITER_DETAIL_VIEWS.map((view) => {
+              const label =
+                view === "biography"
+                  ? t("Биография")
+                  : view === "works"
+                    ? t("Произведения и награды")
+                    : t("Источники и материалы");
+              return (
+                <button
+                  key={view}
+                  ref={(element) => {
+                    detailTabRefs.current[view] = element;
+                  }}
+                  id={detailTabId(view)}
+                  type="button"
+                  role="tab"
+                  tabIndex={detailView === view ? 0 : -1}
+                  aria-selected={detailView === view}
+                  aria-controls={detailPanelId(view)}
+                  className={detailView === view ? "is-active" : undefined}
+                  onClick={() => selectDetailView(view)}
+                  onKeyDown={handleDetailTabKeyDown}
+                >
+                  {label}
+                </button>
+              );
+            })}
           </div>
           {detailView === "biography" && (
-            <div className="writer-detail-tab-panel" role="tabpanel">
+            <div
+              id={detailPanelId("biography")}
+              className="writer-detail-tab-panel"
+              role="tabpanel"
+              aria-labelledby={detailTabId("biography")}
+            >
           <button
             className={`archive-subscribe is-writer${activeWriterSubscribed ? " is-active" : ""}`}
             type="button"
@@ -827,7 +901,12 @@ export default function WriterPanel({
           )}
 
           {detailView === "works" && (
-            <div className="writer-detail-tab-panel" role="tabpanel">
+            <div
+              id={detailPanelId("works")}
+              className="writer-detail-tab-panel"
+              role="tabpanel"
+              aria-labelledby={detailTabId("works")}
+            >
           {activeWriterWorks.length > 0 && (
             <div className="works-block">
               <span>{t("Основные произведения")}</span>
@@ -875,11 +954,21 @@ export default function WriterPanel({
               </ul>
             </div>
           )}
+          {!hasWriterWorks && (
+            <p className="writer-source-empty">
+              {t("Для этого автора проверенные произведения и награды пока не опубликованы.")}
+            </p>
+          )}
             </div>
           )}
 
           {detailView === "sources" && (
-            <div className="writer-detail-tab-panel" role="tabpanel">
+            <div
+              id={detailPanelId("sources")}
+              className="writer-detail-tab-panel"
+              role="tabpanel"
+              aria-labelledby={detailTabId("sources")}
+            >
           {otherRelatedArticles.length > 0 && (
             <div className="writer-articles">
               <span>{t("Материалы журнала")}</span>
@@ -902,8 +991,7 @@ export default function WriterPanel({
             </div>
           )}
 
-          {activeWriterBiography?.kind === "published" &&
-            activeWriterBiography.sources.length > 0 && (
+          {hasWriterSources && activeWriterBiography?.kind === "published" && (
             <div className="source-block">
               <span>{t("Источники")}</span>
               {activeWriterBiography.sources.map((source) => (
@@ -925,7 +1013,7 @@ export default function WriterPanel({
               ))}
             </div>
           )}
-            {activeWriterBiography?.kind !== "published" && (
+            {!hasWriterSources && !hasWriterRelatedArticles && (
               <p className="writer-source-empty">
                 {t("Для этой архивной справки источники ещё не зафиксированы.")}
               </p>

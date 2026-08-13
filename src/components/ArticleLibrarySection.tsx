@@ -12,6 +12,7 @@ import {
   navigateToArticle,
   navigateToJournal,
   resolveArticleRoute,
+  shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import {
   selectInterfacePlural,
@@ -267,10 +268,17 @@ export default function ArticleLibrarySection({
       });
     });
     return [...grouped.values()].sort(
-      (first, second) =>
-        sectionOrder.indexOf(first.id) - sectionOrder.indexOf(second.id)
+      (first, second) => {
+        const firstIndex = sectionOrder.indexOf(first.id);
+        const secondIndex = sectionOrder.indexOf(second.id);
+        return (
+          (firstIndex < 0 ? sectionOrder.length : firstIndex) -
+            (secondIndex < 0 ? sectionOrder.length : secondIndex) ||
+          first.label.localeCompare(second.label, language)
+        );
+      }
     );
-  }, [localizedArticleCatalog]);
+  }, [language, localizedArticleCatalog]);
 
   const filtered = useMemo(() => {
     const query = normalize(search);
@@ -358,6 +366,16 @@ export default function ArticleLibrarySection({
           (article) => article.id === localizedArticleCatalog[selectedIndex + 1]?.id
         )
       : undefined;
+
+  if (readerOnly && !selectedBase) {
+    return (
+      <main className="article-route-not-found">
+        <span aria-hidden="true">404</span>
+        <h1>{t("Материалов по этому запросу пока нет")}</h1>
+        <a href={journalPath()}>{t("Показать весь журнал")}</a>
+      </main>
+    );
+  }
 
   if (readerOnly && selectedBase) {
     return (
@@ -503,6 +521,7 @@ export default function ArticleLibrarySection({
                     article.slug
                   )}
                   onClick={(event) => {
+                    if (!shouldUseClientNavigation(event)) return;
                     event.preventDefault();
                     openArticle(article);
                   }}

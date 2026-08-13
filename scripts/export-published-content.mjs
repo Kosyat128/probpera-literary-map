@@ -890,21 +890,21 @@ await Promise.all([
   ),
   fs.writeFile(
     path.join(publicCmsDirectory, "published-content.json"),
-    JSON.stringify(snapshot, null, 2),
+    `${JSON.stringify(snapshot, null, 2)}\n`,
     "utf8"
   ),
   fs.writeFile(
     path.join(publicCmsDirectory, "published-articles.json"),
-    JSON.stringify({ generatedAt, source: "Supabase CMS", articles }, null, 2),
+    `${JSON.stringify({ generatedAt, source: "Supabase CMS", articles }, null, 2)}\n`,
     "utf8"
   ),
   fs.writeFile(
     path.join(publicCmsDirectory, "book-editions.json"),
-    JSON.stringify(
+    `${JSON.stringify(
       { generatedAt, editions: bookEditionsByWorkId },
       null,
       2
-    ),
+    )}\n`,
     "utf8"
   ),
   fs.writeFile(

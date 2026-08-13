@@ -93,6 +93,32 @@ test("globe style preview reuses decoded texture assets", async ({
   ).toHaveLength(1);
 });
 
+test("globe honors reduced motion without presenting auto-rotation as active", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.locator("#atlas").scrollIntoViewIfNeeded();
+
+  const globe = page.locator(".literary-globe:not(.is-loading)");
+  await expect(globe).toHaveAttribute("data-globe-render-loop", "active", {
+    timeout: 30_000,
+  });
+  await expect(globe).toHaveAttribute(
+    "data-globe-auto-rotate",
+    "reduced-motion"
+  );
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
+
+  const autoRotate = globe.locator('[data-globe-control="auto-rotate"]');
+  await expect(autoRotate).toBeDisabled();
+  await expect(autoRotate).toHaveAttribute("aria-pressed", "false");
+  await expect(autoRotate).toHaveAttribute(
+    "aria-label",
+    /уменьшения движения|reduced-motion/iu
+  );
+});
+
 test("selected Indonesia remains centered after the focus animation", async ({
   page,
 }) => {
@@ -126,11 +152,38 @@ test("selected Indonesia remains centered after the focus animation", async ({
   const countryPanel = page.locator(".country-panel");
   await expect(countryPanel).toBeVisible();
   await expect(countryPanel).toContainText("Индонезия");
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
   await expect(
     page.locator(
       '.globe-country-label[data-country-code="id"][data-country-label-source="selection"]'
     )
   ).toContainText("Индонезия");
+
+  const biographyTab = countryPanel.getByRole("tab", {
+    name: "Биография",
+    exact: true,
+  });
+  const worksTab = countryPanel.getByRole("tab", {
+    name: "Произведения и награды",
+    exact: true,
+  });
+  const sourcesTab = countryPanel.getByRole("tab", {
+    name: "Источники и материалы",
+    exact: true,
+  });
+  await biographyTab.focus();
+  await biographyTab.press("End");
+  await expect(sourcesTab).toBeFocused();
+  await expect(sourcesTab).toHaveAttribute("aria-selected", "true");
+  const sourcesTabId = await sourcesTab.getAttribute("id");
+  expect(sourcesTabId).toBeTruthy();
+  await expect(countryPanel.getByRole("tabpanel")).toHaveAttribute(
+    "aria-labelledby",
+    sourcesTabId
+  );
+  await sourcesTab.press("ArrowLeft");
+  await expect(worksTab).toBeFocused();
+  await expect(worksTab).toHaveAttribute("aria-selected", "true");
 
   await page.waitForTimeout(1_800);
   const focused = await canvas.screenshot();

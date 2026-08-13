@@ -21,27 +21,58 @@ function publicPath(value: string) {
   return `${import.meta.env.BASE_URL}${value.replace(/^\/+/u, "")}`;
 }
 
-export function currentCmsPage() {
-  const configuredBase = import.meta.env.BASE_URL.replace(/\/+$/u, "");
-  let pathname = decodeURIComponent(window.location.pathname);
-  if (configuredBase && pathname.startsWith(configuredBase)) {
-    pathname = pathname.slice(configuredBase.length) || "/";
+export function cmsPageSlugFromPath(pathname: string, baseUrl = "/") {
+  let decodedPathname: string;
+  try {
+    decodedPathname = decodeURIComponent(pathname);
+  } catch {
+    return null;
   }
-  const match = pathname.match(/^\/stranitsy\/([a-z0-9][a-z0-9-]+)\/?$/iu);
-  if (!match) return null;
+
+  const configuredBase = baseUrl.replace(/\/+$/u, "");
+  if (
+    configuredBase &&
+    (decodedPathname === configuredBase ||
+      decodedPathname.startsWith(`${configuredBase}/`))
+  ) {
+    decodedPathname = decodedPathname.slice(configuredBase.length) || "/";
+  }
+
+  const match = decodedPathname.match(
+    /^\/stranitsy\/([a-z0-9][a-z0-9-]+)\/?$/iu
+  );
+  return match?.[1].toLocaleLowerCase("en-US") || null;
+}
+
+export function formatCmsUpdatedAt(
+  value: string | undefined,
+  language: "ru" | "en"
+) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return "";
+
+  return new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
+
+export function currentCmsPage() {
+  if (typeof window === "undefined") return null;
+  const slug = cmsPageSlugFromPath(
+    window.location.pathname,
+    import.meta.env.BASE_URL
+  );
+  if (!slug) return null;
   const pages = cmsSiteContent.pages as readonly CmsPage[];
-  return pages.find((page) => page.slug === match[1]) || null;
+  return pages.find((page) => page.slug === slug) || null;
 }
 
 export default function CmsPageReader({ page }: { page: CmsPage }) {
   const { language, t } = useInterfaceLanguage();
-  const updatedAt = page.updatedAt
-    ? new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }).format(new Date(page.updatedAt))
-    : "";
+  const updatedAt = formatCmsUpdatedAt(page.updatedAt, language);
 
   return (
     <div className="cms-page-shell">

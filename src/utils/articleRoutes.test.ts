@@ -7,6 +7,7 @@ import {
   humanSlug,
   isDirectArticlePath,
   resolveArticleRoute,
+  shouldUseClientNavigation,
 } from "./articleRoutes";
 
 describe("SEO-адреса статей", () => {
@@ -111,5 +112,22 @@ describe("SEO-адреса статей", () => {
     expect(
       resolveArticleRoute(catalog, "/stati/o-literature/shared-slug/")
     ).toBeNull();
+  });
+
+  it("preserves native new-tab and modified-click navigation", () => {
+    const plainClick = {
+      button: 0,
+      defaultPrevented: false,
+      metaKey: false,
+      ctrlKey: false,
+      shiftKey: false,
+      altKey: false,
+    };
+
+    expect(shouldUseClientNavigation(plainClick)).toBe(true);
+    expect(shouldUseClientNavigation({ ...plainClick, ctrlKey: true })).toBe(
+      false
+    );
+    expect(shouldUseClientNavigation({ ...plainClick, button: 1 })).toBe(false);
   });
 });

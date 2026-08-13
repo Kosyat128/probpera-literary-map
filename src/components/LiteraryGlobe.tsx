@@ -1934,6 +1934,7 @@ export default function LiteraryGlobe({
   const [visualStyleError, setVisualStyleError] = useState(false);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
+  const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const [hoveredLaureate, setHoveredLaureate] =
     useState<HoveredLaureate | null>(null);
@@ -1986,6 +1987,30 @@ export default function LiteraryGlobe({
           : globeActive
             ? "active"
             : "offscreen";
+  const autoRotateControlLabel = !autoRotateRequested
+    ? t("Включить автоматическое вращение")
+    : reducedMotion
+      ? t("Автовращение отключено в режиме уменьшения движения")
+      : selectedCountry
+        ? t("Автовращение приостановлено, пока выбрана страна")
+        : interactionPaused
+          ? t("Автовращение приостановлено во время взаимодействия")
+          : t("Остановить автоматическое вращение");
+  const autoRotateControlCaption = [
+    "selection",
+    "interaction",
+    "reduced-motion",
+  ].includes(autoRotateStatus)
+    ? t("Пауза")
+    : t("Авто");
+  const sceneHasAmbientAnimation =
+    renderedVisualStyle !== "modern" ||
+    (showNobelLaureates && visibleNobelCount > 0);
+  const frameMode = !globeActive
+    ? "never"
+    : !reducedMotion && (autoRotateActive || sceneHasAmbientAnimation)
+      ? "always"
+      : "demand";
   const visualStyleLabels: Record<GlobeVisualStyle, string> = {
     antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.full),
     earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.full),
@@ -2103,6 +2128,8 @@ export default function LiteraryGlobe({
     let createdAtlas: GlobeAtlas | null = null;
     const controller = new AbortController();
     const requestedInitialStyle = initialVisualStyle.current;
+    setAtlas(null);
+    setAtlasError(false);
 
     createGlobeAtlas(countries, requestedInitialStyle, initialLanguage.current, {
       signal: controller.signal,
@@ -2146,7 +2173,12 @@ export default function LiteraryGlobe({
       controller.abort();
       createdAtlas?.dispose();
     };
-  }, [atlasRequested, countries]);
+  }, [atlasLoadRequest, atlasRequested, countries]);
+
+  useEffect(() => {
+    setHoveredCountry(null);
+    setHoveredLaureate(null);
+  }, [countries]);
 
   useEffect(() => {
     atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
@@ -2184,14 +2216,30 @@ export default function LiteraryGlobe({
 
   if (!atlas) {
     return (
-      <div ref={containerRef} className="literary-globe is-loading">
-        <div className="globe-loading" role="status">
+      <div
+        ref={containerRef}
+        className="literary-globe is-loading"
+        data-globe-load-state={atlasError ? "error" : "loading"}
+      >
+        <div className="globe-loading">
           <span aria-hidden="true">✦</span>
-          <p>
+          <p role={atlasError ? "alert" : "status"}>
             {atlasError
               ? t("Литературная планета временно недоступна")
               : t("Готовим интерактивный глобус…")}
           </p>
+          {atlasError && (
+            <button
+              type="button"
+              onClick={() => {
+                setAtlasError(false);
+                setAtlasRequested(true);
+                setAtlasLoadRequest((request) => request + 1);
+              }}
+            >
+              {t("Повторить загрузку глобуса")}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -2210,12 +2258,13 @@ export default function LiteraryGlobe({
       onKeyDown={handleGlobeKeyDown}
       data-globe-style={renderedVisualStyle}
       data-globe-render-loop={globeActive ? "active" : "paused"}
+      data-globe-frame-mode={frameMode}
       data-globe-auto-rotate={autoRotateStatus}
     >
       <Canvas
         camera={{ position: [0, 0.08, 4.9], fov: 43, near: 0.1, far: 100 }}
         dpr={[1, economical ? 1.1 : 1.5]}
-        frameloop={globeActive ? "always" : "never"}
+        frameloop={frameMode}
         fallback={
           <div className="globe-loading" role="status">
             <span aria-hidden="true">✦</span>
@@ -2281,24 +2330,19 @@ export default function LiteraryGlobe({
         </button>
         <button
           type="button"
-          className={autoRotateRequested ? "is-active" : undefined}
+          className={
+            autoRotateRequested && !reducedMotion ? "is-active" : undefined
+          }
           data-globe-control="auto-rotate"
           data-globe-auto-rotate-state={autoRotateStatus}
-          aria-label={t(
-            autoRotateRequested
-              ? "Остановить автоматическое вращение"
-              : "Включить автоматическое вращение"
-          )}
-          aria-pressed={autoRotateRequested}
-          title={t(
-            autoRotateRequested
-              ? "Остановить автоматическое вращение"
-              : "Включить автоматическое вращение"
-          )}
+          aria-label={autoRotateControlLabel}
+          aria-pressed={autoRotateRequested && !reducedMotion}
+          disabled={reducedMotion}
+          title={autoRotateControlLabel}
           onClick={toggleAutoRotate}
         >
           <span aria-hidden="true">↻</span>
-          <small>{t("Авто")}</small>
+          <small>{autoRotateControlCaption}</small>
         </button>
         <button
           type="button"
@@ -2409,7 +2453,7 @@ export default function LiteraryGlobe({
       )}
 
       {hoveredLaureate ? (
-        <div className="globe-country-label globe-laureate-label" role="status">
+        <div className="globe-country-label globe-laureate-label" role="tooltip">
           <WriterPortrait
             writer={hoveredLaureate.writer}
             className="globe-laureate-portrait"
@@ -2444,7 +2488,7 @@ export default function LiteraryGlobe({
         <div
           className="globe-country-label"
           role="status"
-          aria-live="polite"
+          aria-live={hoveredCountry ? "off" : "polite"}
           data-country-code={contextualCountry.code}
           data-country-label-source={hoveredCountry ? "hover" : "selection"}
         >

@@ -81,6 +81,14 @@ export function calendarWriterIdentity(writer: Writer) {
   return "";
 }
 
+export function visibleCalendarAgendaDays<T>(
+  entries: readonly (readonly [number, T])[],
+  expanded: boolean,
+  limit = 6
+) {
+  return expanded ? [...entries] : entries.slice(0, limit);
+}
+
 export default function LiteraryCalendar({
   countries,
   onCountrySelect,
@@ -94,6 +102,7 @@ export default function LiteraryCalendar({
     () => new Date(today.getFullYear(), today.getMonth(), 1)
   );
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [showFullAgenda, setShowFullAgenda] = useState(false);
   const month = visibleDate.getMonth();
   const year = visibleDate.getFullYear();
 
@@ -179,12 +188,15 @@ export default function LiteraryCalendar({
     });
     return grouped;
   }, [monthEvents]);
-  const agendaDays = useMemo(
+  const allAgendaDays = useMemo(
     () =>
       [...eventsByDay.entries()]
-        .sort(([firstDay], [secondDay]) => firstDay - secondDay)
-        .slice(0, 6),
+        .sort(([firstDay], [secondDay]) => firstDay - secondDay),
     [eventsByDay]
+  );
+  const agendaDays = useMemo(
+    () => visibleCalendarAgendaDays(allAgendaDays, showFullAgenda),
+    [allAgendaDays, showFullAgenda]
   );
   const displayedAgendaDays = useMemo(() => {
     if (selectedDay === null) return agendaDays;
@@ -212,12 +224,21 @@ export default function LiteraryCalendar({
 
   const moveMonth = (direction: number) => {
     setSelectedDay(null);
+    setShowFullAgenda(false);
     setVisibleDate((current) => new Date(current.getFullYear(), current.getMonth() + direction, 1));
   };
 
   const returnToToday = () => {
+    setShowFullAgenda(false);
     setVisibleDate(new Date(today.getFullYear(), today.getMonth(), 1));
-    setSelectedDay(today.getDate());
+    setSelectedDay(
+      events.some(
+        (event) =>
+          event.month === today.getMonth() && event.day === today.getDate()
+      )
+        ? today.getDate()
+        : null
+    );
   };
 
   return (
@@ -272,7 +293,7 @@ export default function LiteraryCalendar({
               <path d="m14.5 6-6 6 6 6" />
             </svg>
           </button>
-          <strong>
+          <strong aria-live="polite" aria-atomic="true">
             {monthLabel} {year}
           </strong>
           <button
@@ -357,9 +378,10 @@ export default function LiteraryCalendar({
                     : `${day} ${monthLabel}`
                 }
                 disabled={!dayEvents.length}
-                onClick={() =>
-                  setSelectedDay((current) => (current === day ? null : day))
-                }
+                onClick={() => {
+                  setShowFullAgenda(false);
+                  setSelectedDay((current) => (current === day ? null : day));
+                }}
               >
                 <span>{day}</span>
                 {dayEvents.length > 0 && (
@@ -381,12 +403,18 @@ export default function LiteraryCalendar({
               </strong>
             </div>
             {selectedDay !== null && (
-              <button type="button" onClick={() => setSelectedDay(null)}>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedDay(null);
+                  setShowFullAgenda(false);
+                }}
+              >
                 {t("Показать месяц")}
               </button>
             )}
           </header>
-          <div>
+          <div id="calendar-agenda-list">
             {displayedAgendaDays.map(([day, dayEvents]) => (
               <article className="calendar-agenda-day" key={day}>
                 <time dateTime={`${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`}>
@@ -431,6 +459,26 @@ export default function LiteraryCalendar({
                 )}
               </p>
             )}
+            {selectedDay === null &&
+              !showFullAgenda &&
+              allAgendaDays.length > agendaDays.length && (
+                <button
+                  className="calendar-agenda-more"
+                  type="button"
+                  aria-controls="calendar-agenda-list"
+                  aria-expanded="false"
+                  onClick={() => setShowFullAgenda(true)}
+                >
+                  <span>
+                    {language === "en"
+                      ? "Show the full month"
+                      : "Показать весь месяц"}
+                  </span>
+                  <strong>
+                    +{number(allAgendaDays.length - agendaDays.length)}
+                  </strong>
+                </button>
+              )}
           </div>
         </div>
       </div>
