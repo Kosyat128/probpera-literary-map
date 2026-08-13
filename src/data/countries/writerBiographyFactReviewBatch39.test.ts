@@ -136,14 +136,14 @@ describe("writer biography claim review batch 39", () => {
       .filter((key) => !priorAssignedSet.has(key))
       .sort((a, b) => a.localeCompare(b, "en"));
 
-    expect(frozenReviewQueueKeys).toHaveLength(1692);
-    expect(new Set(frozenReviewQueueKeys).size).toBe(1692);
+    expect(frozenReviewQueueKeys).toHaveLength(1691);
+    expect(new Set(frozenReviewQueueKeys).size).toBe(1691);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     for (const batch of frozenBatches) expect(batch).toHaveLength(40);
     expect(priorAssigned).toHaveLength(1000);
     expect(priorAssignedSet.size).toBe(1000);
-    expect(pendingKeys).toHaveLength(740);
+    expect(pendingKeys).toHaveLength(739);
     expect(quarantineKeys).toHaveLength(79);
     expect(new Set(quarantineKeys).size).toBe(quarantineKeys.length);
     expect(keys).toEqual(expectedKeys);
