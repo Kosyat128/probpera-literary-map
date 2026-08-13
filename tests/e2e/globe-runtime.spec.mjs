@@ -93,6 +93,46 @@ test("globe style preview reuses decoded texture assets", async ({
   ).toHaveLength(1);
 });
 
+test("globe filters update the collection without rebuilding the 3D atlas", async ({
+  page,
+}) => {
+  test.setTimeout(90_000);
+  await page.goto("/");
+  await page.locator("#atlas").scrollIntoViewIfNeeded();
+
+  const globe = page.locator(".literary-globe:not(.is-loading)");
+  const canvas = page.locator("#atlas canvas").first();
+  await expect(globe).toBeVisible({ timeout: 30_000 });
+  await expect(canvas).toBeVisible();
+
+  await canvas.evaluate((element) => {
+    element.dataset.filterTestIdentity = "stable-atlas";
+  });
+
+  const filters = [
+    ["all", 200],
+    ["nobel", 44],
+    ["rich", 45],
+    ["portrait", 157],
+    ["verified", 20],
+  ];
+
+  for (const [filter, count] of filters) {
+    await page.locator(`[data-atlas-filter="${filter}"]`).click();
+    await expect(
+      page.locator(`[data-atlas-filter="${filter}"]`)
+    ).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator(".atlas-filter-status")).toContainText(
+      String(count)
+    );
+    await expect(page.locator(".literary-globe.is-loading")).toHaveCount(0);
+    await expect(page.locator("#atlas canvas")).toHaveCount(1);
+    await expect(
+      page.locator('#atlas canvas[data-filter-test-identity="stable-atlas"]')
+    ).toHaveCount(1);
+  }
+});
+
 test("globe honors reduced motion without presenting auto-rotation as active", async ({
   page,
 }) => {
@@ -130,6 +170,12 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await page.locator("#atlas").scrollIntoViewIfNeeded();
   const globe = page.locator(".literary-globe:not(.is-loading)");
   const canvas = page.locator("#atlas canvas");
+  const bringCanvasIntoView = async () => {
+    await canvas.evaluate((element) => {
+      element.scrollIntoView({ block: "center", inline: "center" });
+    });
+    await expect(canvas).toBeInViewport();
+  };
   await expect(globe).toHaveAttribute("data-globe-render-loop", "active", {
     timeout: 45_000,
   });
@@ -152,6 +198,7 @@ test("selected Indonesia remains centered after the focus animation", async ({
   const countryPanel = page.locator(".country-panel");
   await expect(countryPanel).toBeVisible();
   await expect(countryPanel).toContainText("Индонезия");
+  await bringCanvasIntoView();
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
   await expect(
     page.locator(
@@ -185,6 +232,8 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await expect(worksTab).toBeFocused();
   await expect(worksTab).toHaveAttribute("aria-selected", "true");
 
+  await bringCanvasIntoView();
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
   await page.waitForTimeout(1_800);
   const focused = await canvas.screenshot();
   // This interval is deliberately longer than the former delayed auto-rotate

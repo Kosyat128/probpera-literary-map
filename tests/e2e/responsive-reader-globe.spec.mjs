@@ -1,12 +1,18 @@
 import { expect, test } from "@playwright/test";
 
-const articlePath =
-  "/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
+import { articleFromSitemap } from "./helpers/article-route.mjs";
+
+const preferredArticlePath =
+  "/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
 
 test("ArticleReader keeps its controls and long title inside 320–1720px", async ({
   page,
+  request,
+  baseURL,
 }) => {
-  await page.goto(articlePath);
+  await page.goto(
+    await articleFromSitemap(request, baseURL, preferredArticlePath)
+  );
   await expect(page.locator(".article-reader")).toBeVisible();
 
   for (const width of [320, 360, 1440, 1720]) {
@@ -50,8 +56,12 @@ test("ArticleReader keeps its controls and long title inside 320–1720px", asyn
 
 test("ArticleReader lower panels stay readable in light and book modes", async ({
   page,
+  request,
+  baseURL,
 }) => {
-  await page.goto(articlePath);
+  await page.goto(
+    await articleFromSitemap(request, baseURL, preferredArticlePath)
+  );
   const reader = page.locator(".article-reader");
   await expect(reader).toBeVisible();
 

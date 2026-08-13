@@ -1632,14 +1632,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Есть проверенные карточки",
-    "group": "Весь интерфейс",
-    "label": "Есть проверенные карточки",
-    "defaultRu": "Есть проверенные карточки",
-    "defaultEn": "With verified records",
-    "multiline": false
-  },
-  {
     "key": "interface.Есть статья",
     "group": "Весь интерфейс",
     "label": "Есть статья",
@@ -1832,6 +1824,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Запись прошла редакционную проверку",
+    "group": "Весь интерфейс",
+    "label": "Запись прошла редакционную проверку",
+    "defaultRu": "Запись прошла редакционную проверку",
+    "defaultEn": "The record has passed editorial review",
+    "multiline": false
+  },
+  {
     "key": "interface.Зарегистрироваться",
     "group": "Весь интерфейс",
     "label": "Зарегистрироваться",
@@ -1845,6 +1845,14 @@
     "label": "Зафиксированы источники",
     "defaultRu": "Зафиксированы источники",
     "defaultEn": "Sources recorded",
+    "multiline": false
+  },
+  {
+    "key": "interface.Здесь показаны только произведения, прошедшие редакционную проверку.",
+    "group": "Весь интерфейс",
+    "label": "Здесь показаны только произведения, прошедшие редакционную проверку.",
+    "defaultRu": "Здесь показаны только произведения, прошедшие редакционную проверку.",
+    "defaultEn": "Only works that have passed editorial review are shown here.",
     "multiline": false
   },
   {
@@ -2214,6 +2222,22 @@
     "defaultRu": "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.",
     "defaultEn": "Word histories, precise meanings and the expressive possibilities of Russian, presented as living language.",
     "multiline": true
+  },
+  {
+    "key": "interface.Источник",
+    "group": "Весь интерфейс",
+    "label": "Источник",
+    "defaultRu": "Источник",
+    "defaultEn": "Source",
+    "multiline": false
+  },
+  {
+    "key": "interface.Источник ещё не зафиксирован",
+    "group": "Весь интерфейс",
+    "label": "Источник ещё не зафиксирован",
+    "defaultRu": "Источник ещё не зафиксирован",
+    "defaultEn": "The source has not been recorded yet",
+    "multiline": false
   },
   {
     "key": "interface.Источник изображения",
@@ -3688,6 +3712,30 @@
     "multiline": false
   },
   {
+    "key": "interface.Награды автора и отличия произведений показаны с их фактическим редакционным статусом.",
+    "group": "Весь интерфейс",
+    "label": "Награды автора и отличия произведений показаны с их фактическим редакционным статусом.",
+    "defaultRu": "Награды автора и отличия произведений показаны с их фактическим редакционным статусом.",
+    "defaultEn": "Writer awards and work distinctions are shown with their actual editorial status.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Награды и отличия",
+    "group": "Весь интерфейс",
+    "label": "Награды и отличия",
+    "defaultRu": "Награды и отличия",
+    "defaultEn": "Awards and distinctions",
+    "multiline": false
+  },
+  {
+    "key": "interface.Награды и отличия этого автора пока не зафиксированы.",
+    "group": "Весь интерфейс",
+    "label": "Награды и отличия этого автора пока не зафиксированы.",
+    "defaultRu": "Награды и отличия этого автора пока не зафиксированы.",
+    "defaultEn": "No awards or distinctions have been recorded for this writer yet.",
+    "multiline": false
+  },
+  {
     "key": "interface.Нажмите на метку — откроется карточка лауреата",
     "group": "Весь интерфейс",
     "label": "Нажмите на метку — откроется карточка лауреата",
@@ -4424,6 +4472,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Опубликованные произведения",
+    "group": "Весь интерфейс",
+    "label": "Опубликованные произведения",
+    "defaultRu": "Опубликованные произведения",
+    "defaultEn": "Published works",
+    "multiline": false
+  },
+  {
     "key": "interface.Опубликовано до 1945",
     "group": "Весь интерфейс",
     "label": "Опубликовано до 1945",
@@ -4728,6 +4784,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Открыть источник",
+    "group": "Весь интерфейс",
+    "label": "Открыть источник",
+    "defaultRu": "Открыть источник",
+    "defaultEn": "Open source",
+    "multiline": false
+  },
+  {
     "key": "interface.Открыть карточку автора",
     "group": "Весь интерфейс",
     "label": "Открыть карточку автора",
@@ -4757,6 +4821,14 @@
     "label": "Открыть форум",
     "defaultRu": "Открыть форум",
     "defaultEn": "Open forum",
+    "multiline": false
+  },
+  {
+    "key": "interface.Отличие произведения",
+    "group": "Весь интерфейс",
+    "label": "Отличие произведения",
+    "defaultRu": "Отличие произведения",
+    "defaultEn": "Work distinction",
     "multiline": false
   },
   {
@@ -5704,6 +5776,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Проверенные произведения этого автора пока не опубликованы.",
+    "group": "Весь интерфейс",
+    "label": "Проверенные произведения этого автора пока не опубликованы.",
+    "defaultRu": "Проверенные произведения этого автора пока не опубликованы.",
+    "defaultEn": "No reviewed works have been published for this writer yet.",
+    "multiline": false
+  },
+  {
     "key": "interface.Проверенный английский перевод биографии ещё готовится.",
     "group": "Весь интерфейс",
     "label": "Проверенный английский перевод биографии ещё готовится.",
@@ -6256,6 +6336,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Редакционная фиксация",
+    "group": "Весь интерфейс",
+    "label": "Редакционная фиксация",
+    "defaultRu": "Редакционная фиксация",
+    "defaultEn": "Editorial record",
+    "multiline": false
+  },
+  {
     "key": "interface.Редакционные блоки",
     "group": "Весь интерфейс",
     "label": "Редакционные блоки",
@@ -6269,6 +6357,14 @@
     "label": "Редакционные материалы",
     "defaultRu": "Редакционные материалы",
     "defaultEn": "Editorial publications",
+    "multiline": false
+  },
+  {
+    "key": "interface.Редакционный архив",
+    "group": "Весь интерфейс",
+    "label": "Редакционный архив",
+    "defaultRu": "Редакционный архив",
+    "defaultEn": "Editorial archive",
     "multiline": false
   },
   {
@@ -7512,6 +7608,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Страны с проверенными карточками",
+    "group": "Весь интерфейс",
+    "label": "Страны с проверенными карточками",
+    "defaultRu": "Страны с проверенными карточками",
+    "defaultEn": "Countries with verified records",
+    "multiline": false
+  },
+  {
     "key": "interface.Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
     "group": "Весь интерфейс",
     "label": "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.",
@@ -7525,6 +7629,14 @@
     "label": "Страны, писатели и маршруты мировой литературы",
     "defaultRu": "Страны, писатели и маршруты мировой литературы",
     "defaultEn": "Countries, writers and journeys through world literature",
+    "multiline": false
+  },
+  {
+    "key": "interface.Структурированная запись с зафиксированным источником",
+    "group": "Весь интерфейс",
+    "label": "Структурированная запись с зафиксированным источником",
+    "defaultRu": "Структурированная запись с зафиксированным источником",
+    "defaultEn": "Structured record with a documented source",
     "multiline": false
   },
   {

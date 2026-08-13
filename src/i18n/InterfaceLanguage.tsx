@@ -76,7 +76,7 @@ const englishInterfaceText: Record<string, string> = {
   "С портретами": "With portraits",
   "С реальными портретами": "With real portraits",
   Проверено: "Reviewed",
-  "Есть проверенные карточки": "With verified records",
+  "Страны с проверенными карточками": "Countries with verified records",
   "Крупнейшие архивы": "Largest archives",
   "Интерактивный глобус · ручная навигация":
     "Interactive globe · manual navigation",
@@ -364,6 +364,26 @@ const englishInterfaceText: Record<string, string> = {
   "Разделы карточки автора": "Writer card sections",
   "Произведения и награды": "Works and awards",
   "Источники и материалы": "Sources and related reading",
+  "Редакционный архив": "Editorial archive",
+  "Опубликованные произведения": "Published works",
+  "Здесь показаны только произведения, прошедшие редакционную проверку.":
+    "Only works that have passed editorial review are shown here.",
+  "Проверенные произведения этого автора пока не опубликованы.":
+    "No reviewed works have been published for this writer yet.",
+  "Редакционная фиксация": "Editorial record",
+  "Награды и отличия": "Awards and distinctions",
+  "Награды автора и отличия произведений показаны с их фактическим редакционным статусом.":
+    "Writer awards and work distinctions are shown with their actual editorial status.",
+  "Награды и отличия этого автора пока не зафиксированы.":
+    "No awards or distinctions have been recorded for this writer yet.",
+  "Отличие произведения": "Work distinction",
+  "Структурированная запись с зафиксированным источником":
+    "Structured record with a documented source",
+  "Запись прошла редакционную проверку":
+    "The record has passed editorial review",
+  "Источник ещё не зафиксирован": "The source has not been recorded yet",
+  "Открыть источник": "Open source",
+  Источник: "Source",
   "Для этой архивной справки источники ещё не зафиксированы.":
     "Sources have not yet been recorded for this archive note.",
   "Для этого автора проверенные произведения и награды пока не опубликованы.":
@@ -1191,6 +1211,18 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
         language === "ru"
           ? russianText
           : registeredEnglishText(russianText) ?? russianText;
+      if (russianText === "Страны с проверенными карточками") {
+        const legacyOverride = getSiteCopy(
+          "interface.Есть проверенные карточки",
+          "",
+          language
+        );
+        return getSiteCopy(
+          `interface.${russianText}`,
+          legacyOverride || fallback,
+          language
+        );
+      }
       return getSiteCopy(
         `interface.${russianText}`,
         fallback,

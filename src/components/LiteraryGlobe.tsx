@@ -50,6 +50,7 @@ import {
 
 interface Props {
   countries: Country[];
+  atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
   onCountrySelect?: (country: Country) => void;
@@ -172,7 +173,7 @@ const globeSurfaceMaterials: Record<
     clearcoatRoughness: 0.46,
     emissive: "#03111c",
     emissiveIntensity: 0.034,
-    equator: "#79cfff",
+    equator: "#62e2b7",
   },
   modern: {
     bumpScale: 0.014,
@@ -783,9 +784,9 @@ function ContemporaryGlobeFrame({
   economical: boolean;
 }) {
   const earth = visualStyle === "earth";
-  const primary = earth ? "#8dc9e8" : "#9b72ff";
-  const secondary = earth ? "#d7edf6" : "#ff8354";
-  const emissive = earth ? "#123c56" : "#34166b";
+  const primary = earth ? "#5fd6b2" : "#9b72ff";
+  const secondary = earth ? "#9edfff" : "#ff8354";
+  const emissive = earth ? "#115445" : "#34166b";
   const segments = economical ? 128 : 192;
 
   return (
@@ -807,7 +808,7 @@ function ContemporaryGlobeFrame({
         <torusGeometry args={[1.035, 0.0055, 10, segments]} />
         <meshPhysicalMaterial
           color={secondary}
-          emissive={earth ? "#174b68" : "#6f2518"}
+          emissive={earth ? "#1a6556" : "#6f2518"}
           emissiveIntensity={earth ? 0.18 : 0.42}
           roughness={0.3}
           metalness={0.68}
@@ -1308,6 +1309,12 @@ function GlobeSurface({
     },
     []
   );
+
+  useEffect(() => {
+    hoveredCountryId.current = null;
+    latestPointer.current = null;
+    onCountryHover(null);
+  }, [onCountryHover]);
 
   const countryFromPointer = useCallback(
     (clientX: number, clientY: number) => {
@@ -1914,6 +1921,7 @@ function GlobeScene({
 
 export default function LiteraryGlobe({
   countries,
+  atlasCountries,
   selectedCountry,
   selectedWriter,
   onCountrySelect,
@@ -1954,6 +1962,11 @@ export default function LiteraryGlobe({
     ? findNobelArticle(hoveredLaureate.writer)
     : null;
   const contextualCountry = hoveredCountry ?? selectedCountry ?? null;
+  const atlasSourceCountries = atlasCountries ?? countries;
+  const selectableCountryIds = useMemo(
+    () => new Set(countries.map((country) => country.id)),
+    [countries]
+  );
   const visibleNobelCount = useMemo(
     () =>
       nobelCountryId
@@ -2051,6 +2064,22 @@ export default function LiteraryGlobe({
     [handleInteractionEnd, handleInteractionStart]
   );
 
+  const handleCountrySelect = useCallback(
+    (country: Country) => {
+      if (selectableCountryIds.has(country.id)) onCountrySelect?.(country);
+    },
+    [onCountrySelect, selectableCountryIds]
+  );
+
+  const handleCountryHover = useCallback(
+    (country: Country | null) => {
+      setHoveredCountry(
+        country && selectableCountryIds.has(country.id) ? country : null
+      );
+    },
+    [selectableCountryIds]
+  );
+
   const toggleAutoRotate = useCallback(() => {
     clearAutoRotateResumeTimer();
     setInteractionPaused(false);
@@ -2131,15 +2160,18 @@ export default function LiteraryGlobe({
     setAtlas(null);
     setAtlasError(false);
 
-    createGlobeAtlas(countries, requestedInitialStyle, initialLanguage.current, {
-      signal: controller.signal,
-    })
+    createGlobeAtlas(
+      atlasSourceCountries,
+      requestedInitialStyle,
+      initialLanguage.current,
+      { signal: controller.signal }
+    )
       .catch(async (error: unknown) => {
         if (controller.signal.aborted) throw error;
         if (requestedInitialStyle === "antique") throw error;
 
         const fallbackAtlas = await createGlobeAtlas(
-          countries,
+          atlasSourceCountries,
           "antique",
           initialLanguage.current,
           { signal: controller.signal }
@@ -2173,7 +2205,7 @@ export default function LiteraryGlobe({
       controller.abort();
       createdAtlas?.dispose();
     };
-  }, [atlasLoadRequest, atlasRequested, countries]);
+  }, [atlasLoadRequest, atlasRequested, atlasSourceCountries]);
 
   useEffect(() => {
     setHoveredCountry(null);
@@ -2284,8 +2316,8 @@ export default function LiteraryGlobe({
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
           hoveredCountry={hoveredCountry}
-          onCountrySelect={onCountrySelect}
-          onCountryHover={setHoveredCountry}
+          onCountrySelect={handleCountrySelect}
+          onCountryHover={handleCountryHover}
           reducedMotion={reducedMotion}
           economical={economical}
           autoRotate={autoRotateActive}

@@ -218,24 +218,39 @@ export default function BookArchiveSection({
       requestedBookKey(window.location.search) ? "replace" : "push"
     );
   }, []);
+  const restoreBookTriggerFocus = useCallback(
+    (returnFocus: HTMLElement | null) => {
+      window.setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            const fallback = document.querySelector<HTMLElement>(
+              ".book-archive-toolbar input"
+            );
+            (returnFocus?.isConnected ? returnFocus : fallback)?.focus({
+              preventScroll: true,
+            });
+          });
+        });
+      }, 0);
+    },
+    []
+  );
   const closeBookDetail = useCallback(() => {
     const returnFocus = returnFocusRef.current;
     returnFocusRef.current = null;
     setSelectedBook(null);
     if (window.history.state?.[bookDetailHistoryStateKey]) {
+      window.addEventListener(
+        "popstate",
+        () => restoreBookTriggerFocus(returnFocus),
+        { once: true }
+      );
       window.history.back();
     } else {
       replaceBookLocation(null);
+      restoreBookTriggerFocus(returnFocus);
     }
-    window.requestAnimationFrame(() => {
-      const fallback = document.querySelector<HTMLElement>(
-        ".book-archive-toolbar input"
-      );
-      (returnFocus?.isConnected ? returnFocus : fallback)?.focus({
-        preventScroll: true,
-      });
-    });
-  }, []);
+  }, [restoreBookTriggerFocus]);
 
   const counts = useMemo(
     () => ({

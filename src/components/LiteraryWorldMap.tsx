@@ -5,6 +5,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 interface Props {
   countries: Country[];
+  atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
   onCountrySelect?: (country: Country) => void;
@@ -17,6 +18,7 @@ interface Props {
 
 export default function LiteraryWorldMap({
   countries,
+  atlasCountries,
   selectedCountry,
   selectedWriter,
   onCountrySelect,
@@ -33,6 +35,7 @@ export default function LiteraryWorldMap({
     >
       <LiteraryGlobe
         countries={countries}
+        atlasCountries={atlasCountries}
         selectedCountry={selectedCountry}
         selectedWriter={selectedWriter}
         onCountrySelect={onCountrySelect}

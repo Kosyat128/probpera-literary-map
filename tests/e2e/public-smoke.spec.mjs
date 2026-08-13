@@ -1,44 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+import { articleFromSitemap } from "./helpers/article-route.mjs";
+
 function watchErrors(page) {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   return errors;
-}
-
-const sitemapCandidates = ["/sitemap.xml", "/probpera-literary-map/sitemap.xml"];
-
-async function articleFromSitemap(request, baseURL, preferredPath = "") {
-  let sitemap = "";
-  let previewBasePath = "";
-  for (const candidate of sitemapCandidates) {
-    const response = await request.get(new URL(candidate, baseURL).toString());
-    const body = await response.text();
-    if (response.ok() && body.includes("<urlset")) {
-      sitemap = body;
-      previewBasePath = candidate.replace(/\/sitemap\.xml$/u, "");
-      break;
-    }
-  }
-
-  const articleUrls = [...sitemap.matchAll(/<loc>([^<]+\/stati\/[^<]+)<\/loc>/gu)].map(
-    (match) => match[1]
-  );
-  expect(
-    articleUrls.length,
-    "В карте сайта должна быть хотя бы одна опубликованная статья"
-  ).toBeGreaterThan(0);
-
-  const articleUrl =
-    articleUrls.find((candidate) => candidate.includes(preferredPath)) || articleUrls[0];
-  const articlePath = new URL(articleUrl).pathname;
-  const previewArticlePath =
-    previewBasePath && !articlePath.startsWith(`${previewBasePath}/`)
-      ? `${previewBasePath}${articlePath}`
-      : articlePath;
-
-  return new URL(previewArticlePath, baseURL).toString();
 }
 
 async function stubEditorialImages(page) {

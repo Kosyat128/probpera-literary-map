@@ -20,8 +20,22 @@ describe("writer panel accessible relationships", () => {
 
   it("keeps empty states explicit and honors reduced motion", () => {
     expect(panelSource).toContain("!hasWriterWorks");
+    expect(panelSource).toContain("!hasWriterAwards");
     expect(panelSource).toContain("!hasWriterSources && !hasWriterRelatedArticles");
+    expect(panelSource).toContain('className="writer-source-empty" role="status"');
     expect(panelSource).toContain('prefers-reduced-motion: reduce');
     expect(panelSource).not.toContain('className="country-panel" aria-live');
+  });
+
+  it("labels editorial groups, source links, and record statuses", () => {
+    expect(panelSource).toContain("activeWriterWorkGroups.map");
+    expect(panelSource).toContain("activeWriterAwardGroups.map");
+    expect(panelSource).toContain("aria-labelledby={groupHeadingId}");
+    expect(panelSource).toContain("data-editorial-status={work.status}");
+    expect(panelSource).toContain("data-editorial-status={award.status}");
+    expect(panelSource).toContain('target="_blank"');
+    expect(panelSource).toContain('rel="noreferrer"');
+    expect(panelSource).toContain('t("Открыть источник")');
+    expect(panelSource).not.toContain("activeWriterWorks.slice(0, 8)");
   });
 });

@@ -35,8 +35,12 @@ import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
 import {
   WRITER_DETAIL_VIEWS,
+  groupWriterRecordsByStatus,
+  writerAwardsForPanel,
   writerBiographyPublicStatus,
   writerDetailViewForKey,
+  writerRecordStatusPresentation,
+  writerWorksForPanel,
   type WriterDetailView,
 } from "./writerPanelPresentation";
 
@@ -284,16 +288,35 @@ export default function WriterPanel({
   const otherRelatedArticles = activeNobelArticle
     ? relatedArticles.filter((article) => article.id !== activeNobelArticle.id)
     : relatedArticles;
-  const activeWriterWorks = useMemo(
-    () => (activeWriter ? getPublicWriterWorkTitles(activeWriter, language) : []),
-    [activeWriter, language]
-  );
   const activeWriterBiography = useMemo(
     () =>
       activeWriter
         ? selectWriterBiographyForDisplay(activeWriter, language)
         : null,
     [activeWriter, language]
+  );
+  const activeWriterWorks = useMemo(
+    () => (activeWriter ? writerWorksForPanel(activeWriter, language) : []),
+    [activeWriter, language]
+  );
+  const activeWriterAwards = useMemo(
+    () =>
+      activeWriter
+        ? writerAwardsForPanel(
+            activeWriter,
+            activeWriterBiography,
+            language
+          )
+        : [],
+    [activeWriter, activeWriterBiography, language]
+  );
+  const activeWriterWorkGroups = useMemo(
+    () => groupWriterRecordsByStatus(activeWriterWorks),
+    [activeWriterWorks]
+  );
+  const activeWriterAwardGroups = useMemo(
+    () => groupWriterRecordsByStatus(activeWriterAwards),
+    [activeWriterAwards]
   );
   const writerBiographyDisplays = useMemo(
     () =>
@@ -313,8 +336,8 @@ export default function WriterPanel({
     [writerBiographyDisplays]
   );
   const activeWriterStatus = writerBiographyPublicStatus(activeWriterBiography);
-  const hasWriterWorks =
-    activeWriterWorks.length > 0 || Boolean(activeWriter?.awards?.length);
+  const hasWriterWorks = activeWriterWorks.length > 0;
+  const hasWriterAwards = activeWriterAwards.length > 0;
   const hasWriterSources = Boolean(
     activeWriterBiography?.kind === "published" &&
       activeWriterBiography.sources.length > 0
@@ -907,17 +930,16 @@ export default function WriterPanel({
               role="tabpanel"
               aria-labelledby={detailTabId("works")}
             >
-          {activeWriterWorks.length > 0 && (
-            <div className="works-block">
-              <span>{t("Основные произведения")}</span>
-              <ol
+              <section
+                className="writer-record-section is-works"
+                aria-labelledby={`${detailPanelId("works")}-works-heading`}
                 {...cmsEntityFieldMarker(
                   "writer",
                   activeWriterSubscriptionId,
                   "works",
                   activeWriter.works?.length
                     ? activeWriter.works
-                    : activeWriterWorks,
+                    : activeWriterWorks.map((work) => work.title),
                   {
                     kind: "textarea",
                     label: "Основные произведения (по одному в строке)",
@@ -925,22 +947,94 @@ export default function WriterPanel({
                   }
                 )}
               >
-                {activeWriterWorks.slice(0, 8).map((work) => (
-                  <li key={work}>{work}</li>
-                ))}
-              </ol>
-            </div>
-          )}
+                <header className="writer-record-section-heading">
+                  <div>
+                    <span>{t("Редакционный архив")}</span>
+                    <h5 id={`${detailPanelId("works")}-works-heading`}>
+                      {t("Опубликованные произведения")}
+                    </h5>
+                  </div>
+                  <strong aria-label={`${t("Произведения")}: ${number(activeWriterWorks.length)}`}>
+                    {number(activeWriterWorks.length)}
+                  </strong>
+                </header>
+                <p className="writer-record-note">
+                  {t("Здесь показаны только произведения, прошедшие редакционную проверку.")}
+                </p>
 
-          {activeWriter.awards && activeWriter.awards.length > 0 && (
-            <div className="works-block writer-awards-block">
-              <span>{t("Премии и награды")}</span>
-              <ul
+                {activeWriterWorkGroups.map((group) => {
+                  const status = writerRecordStatusPresentation(group.status);
+                  const groupHeadingId = `${detailPanelId("works")}-works-${group.status}`;
+                  return (
+                    <section
+                      key={group.status}
+                      className={`writer-record-group is-${group.status}`}
+                      aria-labelledby={groupHeadingId}
+                    >
+                      <h6 id={groupHeadingId}>
+                        <span aria-hidden="true" />
+                        {t(status.label)}
+                        <small>{number(group.records.length)}</small>
+                      </h6>
+                      <ol className="writer-record-list is-works">
+                        {group.records.map((work) => (
+                          <li
+                            key={work.id}
+                            data-editorial-status={work.status}
+                          >
+                            <div className="writer-record-primary">
+                              <strong>{work.title}</strong>
+                              <span
+                                className={`writer-record-status is-${work.status}`}
+                              >
+                                {t(
+                                  writerRecordStatusPresentation(work.status)
+                                    .label
+                                )}
+                              </span>
+                            </div>
+                            <div className="writer-record-meta">
+                              <span>
+                                {work.sourceCount > 0
+                                  ? `${t("Источники зафиксированы")} · ${number(work.sourceCount)}`
+                                  : t(
+                                      writerRecordStatusPresentation(work.status)
+                                        .detail
+                                    )}
+                              </span>
+                              {work.sourceUrl && (
+                                <a
+                                  href={work.sourceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`${t("Открыть источник")}: ${work.title}`}
+                                >
+                                  {t("Источник")} <span aria-hidden="true">↗</span>
+                                </a>
+                              )}
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+                  );
+                })}
+
+                {!hasWriterWorks && (
+                  <p className="writer-source-empty" role="status">
+                    {t("Проверенные произведения этого автора пока не опубликованы.")}
+                  </p>
+                )}
+              </section>
+
+              <section
+                className="writer-record-section is-awards"
+                aria-labelledby={`${detailPanelId("works")}-awards-heading`}
                 {...cmsEntityFieldMarker(
                   "writer",
                   activeWriterSubscriptionId,
                   "awards",
-                  activeWriter.awards,
+                  activeWriter.awards || [],
                   {
                     kind: "textarea",
                     label: "Премии и награды (по одной в строке)",
@@ -948,17 +1042,95 @@ export default function WriterPanel({
                   }
                 )}
               >
-                {activeWriter.awards.map((award) => (
-                  <li key={award}>{award}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {!hasWriterWorks && (
-            <p className="writer-source-empty">
-              {t("Для этого автора проверенные произведения и награды пока не опубликованы.")}
-            </p>
-          )}
+                <header className="writer-record-section-heading">
+                  <div>
+                    <span>{t("Редакционная фиксация")}</span>
+                    <h5 id={`${detailPanelId("works")}-awards-heading`}>
+                      {t("Награды и отличия")}
+                    </h5>
+                  </div>
+                  <strong aria-label={`${t("Награды и отличия")}: ${number(activeWriterAwards.length)}`}>
+                    {number(activeWriterAwards.length)}
+                  </strong>
+                </header>
+                <p className="writer-record-note">
+                  {t("Награды автора и отличия произведений показаны с их фактическим редакционным статусом.")}
+                </p>
+
+                {activeWriterAwardGroups.map((group) => {
+                  const status = writerRecordStatusPresentation(group.status);
+                  const groupHeadingId = `${detailPanelId("works")}-awards-${group.status}`;
+                  return (
+                    <section
+                      key={group.status}
+                      className={`writer-record-group is-${group.status}`}
+                      aria-labelledby={groupHeadingId}
+                    >
+                      <h6 id={groupHeadingId}>
+                        <span aria-hidden="true" />
+                        {t(status.label)}
+                        <small>{number(group.records.length)}</small>
+                      </h6>
+                      <ul className="writer-record-list is-awards">
+                        {group.records.map((award) => (
+                          <li
+                            key={award.id}
+                            data-editorial-status={award.status}
+                          >
+                            <div className="writer-record-primary">
+                              <strong>{award.label}</strong>
+                              <span
+                                className={`writer-record-status is-${award.status}`}
+                              >
+                                {t(
+                                  writerRecordStatusPresentation(award.status)
+                                    .label
+                                )}
+                              </span>
+                            </div>
+                            {award.kind === "work-distinction" && (
+                              <p className="writer-record-context">
+                                <span>{t("Отличие произведения")}</span>
+                                <cite>{award.workTitle}</cite>
+                                {(award.organization || award.year) && (
+                                  <small>
+                                    {[award.organization, award.year]
+                                      .filter(Boolean)
+                                      .join(" · ")}
+                                  </small>
+                                )}
+                              </p>
+                            )}
+                            <div className="writer-record-meta">
+                              <span>
+                                {award.sourceCount > 0
+                                  ? `${t("Источники зафиксированы")} · ${number(award.sourceCount)}`
+                                  : t(status.detail)}
+                              </span>
+                              {award.sourceUrl && (
+                                <a
+                                  href={award.sourceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`${t("Открыть источник")}: ${award.label}`}
+                                >
+                                  {t("Источник")} <span aria-hidden="true">↗</span>
+                                </a>
+                              )}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  );
+                })}
+
+                {!hasWriterAwards && (
+                  <p className="writer-source-empty" role="status">
+                    {t("Награды и отличия этого автора пока не зафиксированы.")}
+                  </p>
+                )}
+              </section>
             </div>
           )}
 

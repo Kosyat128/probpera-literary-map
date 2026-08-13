@@ -95,6 +95,14 @@ const CmsHomepageBlocks = lazy(() =>
 
 type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
 
+const atlasFilterLabels: Record<AtlasFilter, string> = {
+  all: "Все страны",
+  nobel: "Нобелевские лауреаты",
+  rich: "10+ авторов",
+  portrait: "С реальными портретами",
+  verified: "Страны с проверенными карточками",
+};
+
 type WriterFocusRequest = {
   countryId: string;
   writerId: string;
@@ -807,8 +815,21 @@ export default function App() {
 
   const selectCountry = useCallback(
     (country: Country, focusAtlas = false, writer?: Writer) => {
+      const preferredWriter =
+        writer ??
+        (atlasFilter === "nobel"
+          ? country.writers.find(isNobelLaureate)
+          : atlasFilter === "portrait"
+            ? country.writers.find((candidate) => Boolean(candidate.portrait))
+            : atlasFilter === "verified"
+              ? country.writers.find(
+                  (candidate) => candidate.editorial?.status === "verified"
+                )
+              : null) ??
+        country.writers[0] ??
+        null;
       setSelectedCountry(country);
-      setSelectedWriter(writer ?? country.writers[0] ?? null);
+      setSelectedWriter(preferredWriter);
       setNobelSpotlightCountryId((current) =>
         current && current !== country.id ? null : current
       );
@@ -823,7 +844,7 @@ export default function App() {
         );
       }
     },
-    []
+    [atlasFilter]
   );
 
   const selectWriterAndFocus = useCallback(
@@ -1444,27 +1465,43 @@ export default function App() {
           </header>
 
           <div className="atlas-toolbar">
-            <div className="atlas-filters" aria-label={t("Фильтры глобуса")}>
-              {(
-                [
-                  ["all", "Все страны"],
-                  ["nobel", "Нобелевские лауреаты"],
-                  ["rich", "10+ авторов"],
-                  ["portrait", "С реальными портретами"],
-                  ["verified", "Есть проверенные карточки"],
-                ] as Array<[AtlasFilter, string]>
-              ).map(([value, label]) => (
-                <button
-                  className={atlasFilter === value ? "is-active" : ""}
-                  type="button"
-                  key={value}
-                  data-atlas-filter={value}
-                  aria-pressed={atlasFilter === value}
-                  onClick={() => setAtlasFilter(value)}
-                >
-                  {t(label)} <span>{number(filterCounts[value])}</span>
-                </button>
-              ))}
+            <div className="atlas-filter-cluster">
+              <div
+                className="atlas-filters"
+                role="group"
+                aria-label={t("Фильтры глобуса")}
+              >
+                {(
+                  [
+                    ["all", atlasFilterLabels.all],
+                    ["nobel", atlasFilterLabels.nobel],
+                    ["rich", atlasFilterLabels.rich],
+                    ["portrait", atlasFilterLabels.portrait],
+                    ["verified", atlasFilterLabels.verified],
+                  ] as Array<[AtlasFilter, string]>
+                ).map(([value, label]) => (
+                  <button
+                    className={atlasFilter === value ? "is-active" : ""}
+                    type="button"
+                    key={value}
+                    data-atlas-filter={value}
+                    aria-pressed={atlasFilter === value}
+                    onClick={() => setAtlasFilter(value)}
+                  >
+                    {t(label)} <span>{number(filterCounts[value])}</span>
+                  </button>
+                ))}
+              </div>
+              <p className="atlas-filter-status" role="status" aria-live="polite">
+                {t(atlasFilterLabels[atlasFilter])}: {number(filteredCountries.length)}{" "}
+                {t(
+                  selectInterfacePlural(filteredCountries.length, language, [
+                    "страна",
+                    "страны",
+                    "стран",
+                  ])
+                )}
+              </p>
             </div>
 
             <div className="atlas-ranking">
@@ -1527,6 +1564,7 @@ export default function App() {
                 >
                   <LiteraryWorldMap
                     countries={filteredCountries}
+                    atlasCountries={countryArchive}
                     selectedCountry={selectedCountry}
                     selectedWriter={selectedWriter}
                     onCountrySelect={selectCountry}

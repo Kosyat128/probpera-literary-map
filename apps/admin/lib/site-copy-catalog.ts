@@ -34,7 +34,7 @@ const curatedSiteCopyDefinitions = [
   { key: "home.atlas.filter.nobel", group: "Главная", label: "Фильтр лауреатов", defaultRu: "Нобелевские лауреаты" },
   { key: "home.atlas.filter.rich", group: "Главная", label: "Фильтр больших архивов", defaultRu: "10+ авторов" },
   { key: "home.atlas.filter.portrait", group: "Главная", label: "Фильтр портретов", defaultRu: "С реальными портретами" },
-  { key: "home.atlas.filter.verified", group: "Главная", label: "Фильтр проверенных карточек", defaultRu: "Есть проверенные карточки" },
+  { key: "home.atlas.filter.verified", group: "Главная", label: "Фильтр стран с проверенными карточками", defaultRu: "Страны с проверенными карточками" },
   { key: "home.atlas.ranking", group: "Главная", label: "Заголовок крупнейших архивов", defaultRu: "Крупнейшие архивы" },
   { key: "home.atlas.globe_kicker", group: "Главная", label: "Подпись над глобусом", defaultRu: "Интерактивный глобус · ручная навигация" },
 
