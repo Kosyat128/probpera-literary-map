@@ -1,4 +1,12 @@
+import Link from "next/link";
+
 import { formatDate } from "@/lib/format";
+import { redirect } from "@/lib/navigation";
+import {
+  COMMENTS_CATALOG_PAGE_SIZE,
+  commentsCatalogHref,
+  parseCommentsCatalogQuery,
+} from "@/lib/comments-catalog-query";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { moderateCommentAction } from "./actions";
 
@@ -7,21 +15,26 @@ export const metadata = { title: "Комментарии" };
 export default async function CommentsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ q?: string; status?: string; page?: string; error?: string; saved?: string }>;
 }) {
-  const { status = "" } = await searchParams;
+  const query = await searchParams;
+  const catalog = parseCommentsCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   let request = supabase
     .from("article_comments")
-    .select("id,article_slug,guest_name,body,status,created_at,profiles(display_name)")
+    .select("id,article_slug,guest_name,body,status,created_at,updated_at,profiles(display_name)", { count: "exact" })
     .order("created_at", { ascending: false })
-    .limit(200);
-  if (status === "published" || status === "hidden" || status === "pending") {
-    request = request.eq("status", status);
-  }
-  const { data: commentsResult } = await request;
+    .order("id", { ascending: false });
+  if (catalog.status) request = request.eq("status", catalog.status);
+  if (catalog.orFilter) request = request.or(catalog.orFilter);
+  const { data: commentsResult, count, error } = await request.range(catalog.from, catalog.to);
   const comments = commentsResult || [];
+  const totalCount = count || 0;
+  const totalPages = Math.max(1, Math.ceil(totalCount / COMMENTS_CATALOG_PAGE_SIZE));
+  if (!error && catalog.page > totalPages) {
+    redirect(commentsCatalogHref(catalog, totalPages));
+  }
 
   return (
     <>
@@ -35,17 +48,35 @@ export default async function CommentsPage({
           </p>
         </div>
       </header>
+      {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
+      {query.saved && <p className="form-message form-success">Статус комментария сохранён.</p>}
       <section className="panel">
         <form className="toolbar">
-          <select name="status" defaultValue={status}>
+          <input
+            className="search-input"
+            type="search"
+            name="q"
+            defaultValue={catalog.term}
+            placeholder="Текст, читатель или материал"
+            maxLength={160}
+          />
+          <select name="status" defaultValue={catalog.status}>
             <option value="">Все комментарии</option>
             <option value="published">Опубликованные</option>
             <option value="hidden">Скрытые</option>
             <option value="pending">На проверке</option>
           </select>
+          <input type="hidden" name="page" value="1" />
           <button className="button-secondary" type="submit">Применить</button>
         </form>
-        {comments.length === 0 ? (
+        <p className="catalog-summary">
+          Найдено комментариев: <strong>{totalCount.toLocaleString("ru-RU")}</strong>
+        </p>
+        {error ? (
+          <p className="form-message form-error" role="alert">
+            Не удалось загрузить комментарии: {error.message}
+          </p>
+        ) : comments.length === 0 ? (
           <div className="empty-state"><p>В этом разделе пока нет комментариев.</p></div>
         ) : (
           <table className="data-table">
@@ -67,6 +98,10 @@ export default async function CommentsPage({
                     <td>
                       <form action={moderateCommentAction}>
                         <input type="hidden" name="id" value={comment.id} />
+                        <input type="hidden" name="expected_updated_at" value={comment.updated_at} />
+                        <input type="hidden" name="catalog_q" value={catalog.term} />
+                        <input type="hidden" name="catalog_status" value={catalog.status} />
+                        <input type="hidden" name="catalog_page" value={catalog.page} />
                         <input type="hidden" name="status" value={comment.status === "hidden" ? "published" : "hidden"} />
                         <button className="button-secondary" type="submit">
                           {comment.status === "hidden" ? "Вернуть" : "Скрыть"}
@@ -78,6 +113,21 @@ export default async function CommentsPage({
               })}
             </tbody>
           </table>
+        )}
+        {!error && totalPages > 1 && (
+          <nav className="pagination" aria-label="Страницы комментариев">
+            {catalog.page > 1 ? (
+              <Link href={commentsCatalogHref(catalog, catalog.page - 1)}>← Назад</Link>
+            ) : (
+              <span aria-disabled="true">← Назад</span>
+            )}
+            <span aria-current="page">Страница {catalog.page} из {totalPages}</span>
+            {catalog.page < totalPages ? (
+              <Link href={commentsCatalogHref(catalog, catalog.page + 1)}>Вперёд →</Link>
+            ) : (
+              <span aria-disabled="true">Вперёд →</span>
+            )}
+          </nav>
         )}
       </section>
     </>

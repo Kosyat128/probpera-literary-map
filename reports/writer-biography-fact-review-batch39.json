@@ -1,0 +1,1182 @@
+{
+  "batch": "39",
+  "generatedAt": "2026-08-14",
+  "selectionSnapshot": {
+    "reviewQueue": 1692,
+    "priorAssignedRecords": 1000,
+    "priorAssignedUnique": 1000,
+    "quarantine": 77,
+    "boundary": 40,
+    "boundaryUnique": 40,
+    "overlapPriorAssigned": 0,
+    "overlapQuarantine": 0
+  },
+  "summary": {
+    "records": 40,
+    "unchanged": 0,
+    "corrected": 39,
+    "held": 1
+  },
+  "records": [
+    {
+      "key": "mali:modibo_sounkalo_keita",
+      "originalSha256": "7380de82ba16a305ce4988dae17fa9e3ffcd9ffab31403fff1b25427ff0cadc3",
+      "reviewedTextRu": "Модибо Сункало Кейта (род. 1948) — малийский журналист и писатель, публиковавшийся по-французски. Среди его книг — роман «L’Archer bassari» и сборник рассказов «L’Orphelin».",
+      "applicableTextRu": "Модибо Сункало Кейта (род. 1948) — малийский журналист и писатель, публиковавшийся по-французски. Среди его книг — роман «L’Archer bassari» и сборник рассказов «L’Orphelin».",
+      "claims": [
+        {
+          "textRu": "Модибо Сункало Кейта (род. 1948) — малийский журналист и писатель, публиковавшийся по-французски. Среди его книг — роман «L’Archer bassari» и сборник рассказов «L’Orphelin».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Institut français de Mauritanie",
+              "url": "https://mediatheque-ifm.org/index.php?id=16975&lvl=author_see",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Библиотечный каталог подтверждает авторскую форму имени, 1948 год рождения и издания Кейты."
+            },
+            {
+              "provider": "Persée",
+              "url": "https://www.persee.fr/doc/cea_0008-0055_1983_num_23_92_2244_t1_0514_0000_1",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Академический библиографический обзор атрибутирует Модибо Сункало Кейте роман L’Archer bassari."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Краткая заглушка дополнена годом рождения, языком публикаций и двумя документированными книгами; неподтверждённый год смерти не публикуется."
+    },
+    {
+      "key": "mali:yambo_ouologuem",
+      "originalSha256": "7207559eb84ff83cd932d107b5ebe692c3cf457d2a06fb5020dd315bf2fd10ea",
+      "reviewedTextRu": "Ямбо Уологем (1940–2017) — малийский франкоязычный писатель. Его роман «Le Devoir de violence» получил премию Ренодо в 1968 году.",
+      "applicableTextRu": "Ямбо Уологем (1940–2017) — малийский франкоязычный писатель. Его роман «Le Devoir de violence» получил премию Ренодо в 1968 году.",
+      "claims": [
+        {
+          "textRu": "Ямбо Уологем (1940–2017) — малийский франкоязычный писатель. Его роман «Le Devoir de violence» получил премию Ренодо в 1968 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb455136207",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетная запись подтверждает годы 1940–2017, малийскую авторскую идентичность и роман Le Devoir de violence."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Ouologuem%2C+Yambo%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Библиотечный каталог подтверждает авторство романа и его связь с премией Ренодо 1968 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Неточная первенствующая формула заменена языком, конкретным романом и проверяемой премией."
+    },
+    {
+      "key": "malta:anton_manuel_caruana",
+      "originalSha256": "7c7519c8fc3f6a9bc4373c8098a952676b8d89f2177a70a6c0b8c0e6eaffa434",
+      "reviewedTextRu": "Антонио Эмануэле Каруана (1839–1907) — мальтийский писатель, археолог и исследователь мальтийского языка. Он написал роман «Ineż Farruġ» и составил «Vocabolario della lingua maltese».",
+      "applicableTextRu": "Антонио Эмануэле Каруана (1839–1907) — мальтийский писатель, археолог и исследователь мальтийского языка. Он написал роман «Ineż Farruġ» и составил «Vocabolario della lingua maltese».",
+      "claims": [
+        {
+          "textRu": "Антонио Эмануэле Каруана (1839–1907) — мальтийский писатель, археолог и исследователь мальтийского языка. Он написал роман «Ineż Farruġ» и составил «Vocabolario della lingua maltese».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Malta Library",
+              "url": "https://www.um.edu.mt/library/oar/handle/123456789/50140",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский репозиторий идентифицирует Antonio Emanuele Caruana, годы 1839–1907 и его филологические труды."
+            },
+            {
+              "provider": "National Library of Malta",
+              "url": "https://nla.gov.mt/wp-content/uploads/2024/03/LRC-Malta-catalogue-20.03.24.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог национальной библиотеки фиксирует роман Ineż Farruġ и словарь мальтийского языка Каруаны."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Имя и годы нормализованы по мальтийским каталогам; оценочная формула заменена ролями и библиографией."
+    },
+    {
+      "key": "malta:dun_karm_psaila",
+      "originalSha256": "d4555d0157e998da376733095a22d18bec5fd8d91c8cd19e67b839b383450044",
+      "reviewedTextRu": "Дун Карм Псайла (1871–1961) — мальтийский священник, поэт и лексикограф. Его стихотворение «L-Innu Malti» стало текстом государственного гимна Мальты, а к его книгам относится «Il-Jien u lil hinn Minnu».",
+      "applicableTextRu": "Дун Карм Псайла (1871–1961) — мальтийский священник, поэт и лексикограф. Его стихотворение «L-Innu Malti» стало текстом государственного гимна Мальты, а к его книгам относится «Il-Jien u lil hinn Minnu».",
+      "claims": [
+        {
+          "textRu": "Дун Карм Псайла (1871–1961) — мальтийский священник, поэт и лексикограф. Его стихотворение «L-Innu Malti» стало текстом государственного гимна Мальты, а к его книгам относится «Il-Jien u lil hinn Minnu».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Malta Library",
+              "url": "https://www.um.edu.mt/library/oar/handle/123456789/54450",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетская запись подтверждает годы, литературную и священническую деятельность Дун Карма."
+            },
+            {
+              "provider": "Heritage Malta",
+              "url": "https://heritagemalta.mt/news/heritage-malta-commemorates-dun-karm-psaila-with-an-exhibition-marking-150-years-since-his-birth/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальное агентство наследия подтверждает авторство текста L-Innu Malti и поэтическое наследие Псайлы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Справка дополнена священнической и лексикографической работой и конкретным поэтическим произведением."
+    },
+    {
+      "key": "malta:manwel_dimech",
+      "originalSha256": "33791bba4fffab0e87f33e6c45204a3e599c31b1e2d954a3f4a0c3e9946d7690",
+      "reviewedTextRu": "Манвел Димех (1860–1921) — мальтийский писатель, журналист и общественный реформатор. Он издавал газету «Il-Bandiera tal-Maltin» и публиковал оставшийся незавершённым роман «Ivan u Prascovia».",
+      "applicableTextRu": "Манвел Димех (1860–1921) — мальтийский писатель, журналист и общественный реформатор. Он издавал газету «Il-Bandiera tal-Maltin» и публиковал оставшийся незавершённым роман «Ivan u Prascovia».",
+      "claims": [
+        {
+          "textRu": "Манвел Димех (1860–1921) — мальтийский писатель, журналист и общественный реформатор. Он издавал газету «Il-Bandiera tal-Maltin» и публиковал оставшийся незавершённым роман «Ivan u Prascovia».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Malta Library",
+              "url": "https://www.um.edu.mt/library/oar/bitstream/123456789/40018/1/Manwel%20Dimech.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетская биография подтверждает годы, журналистскую и реформаторскую деятельность и роман Ivan u Prascovia."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Dimech%2C+Manwel%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и библиографию Манвела Димеха."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Абстрактное определение заменено конкретными журналистской работой и романом."
+    },
+    {
+      "key": "malta:oliver_friggieri",
+      "originalSha256": "fc07b3a553b4fd1bf21dd96eee728e6926afbe07d4bfe56d5f30619c86c7c969",
+      "reviewedTextRu": "Оливер Фриджери (1947–2020) — мальтийский писатель, поэт, критик и профессор литературы Мальтийского университета. Он писал на мальтийском языке; среди его романов — «Fil-Parlament ma Jikbrux Fjuri» и «L-Istramb».",
+      "applicableTextRu": "Оливер Фриджери (1947–2020) — мальтийский писатель, поэт, критик и профессор литературы Мальтийского университета. Он писал на мальтийском языке; среди его романов — «Fil-Parlament ma Jikbrux Fjuri» и «L-Istramb».",
+      "claims": [
+        {
+          "textRu": "Оливер Фриджери (1947–2020) — мальтийский писатель, поэт, критик и профессор литературы Мальтийского университета. Он писал на мальтийском языке; среди его романов — «Fil-Parlament ma Jikbrux Fjuri» и «L-Istramb».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Malta",
+              "url": "https://www.um.edu.mt/newspoint/news/2020/11/tributes-oliver-friggieri",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский некролог подтверждает даты, профессорскую, литературную и критическую деятельность Фриджери."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Friggieri%2C+Oliver%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания Fil-Parlament ma Jikbrux Fjuri и L-Istramb."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Ошибочная русская фамилия и суперлатив исправлены; добавлены университетская роль, язык и произведения."
+    },
+    {
+      "key": "malta:ruzar_briffa",
+      "originalSha256": "86da5b25d59d889c1372f904cb5729e628b68eb3ec3deda152e367b15a04298b",
+      "reviewedTextRu": "Ружар Бриффа (1906–1963) — мальтийский поэт и врач-дерматолог, родившийся в Валлетте. Он участвовал в создании университетского Общества мальтийского языка, а медицинский опыт отражался в его лирике.",
+      "applicableTextRu": "Ружар Бриффа (1906–1963) — мальтийский поэт и врач-дерматолог, родившийся в Валлетте. Он участвовал в создании университетского Общества мальтийского языка, а медицинский опыт отражался в его лирике.",
+      "claims": [
+        {
+          "textRu": "Ружар Бриффа (1906–1963) — мальтийский поэт и врач-дерматолог, родившийся в Валлетте. Он участвовал в создании университетского Общества мальтийского языка, а медицинский опыт отражался в его лирике.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "University of Malta Library",
+              "url": "https://www.um.edu.mt/library/oar/bitstream/123456789/42290/1/Ruzar%20Briffa.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский портрет подтверждает годы, рождение в Валлетте, поэзию и врачебную работу Бриффы."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Briffa%2C+Ruzar%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Библиотечный каталог подтверждает авторскую идентичность, годы жизни и поэтические издания Ружара Бриффы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён подтверждёнными профессиями, местом рождения и литературно-организационной работой."
+    },
+    {
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "originalSha256": "a3fa7511a6b8b2591878b3df6c4ed070f34721e25314c9d1e80985ee99bfcf75",
+      "reviewedTextRu": "Кэти Джетнил-Киджинер (род. 1989) — поэтесса и климатическая активистка с Маршалловых Островов, пишущая по-английски. Её сборник «Iep Jāltok: Poems from a Marshallese Daughter» и стихотворение «Dear Matafele Peinem» посвящены семье, культурной памяти и угрозе повышения уровня моря.",
+      "applicableTextRu": "Кэти Джетнил-Киджинер (род. 1989) — поэтесса и климатическая активистка с Маршалловых Островов, пишущая по-английски. Её сборник «Iep Jāltok: Poems from a Marshallese Daughter» и стихотворение «Dear Matafele Peinem» посвящены семье, культурной памяти и угрозе повышения уровня моря.",
+      "claims": [
+        {
+          "textRu": "Кэти Джетнил-Киджинер (род. 1989) — поэтесса и климатическая активистка с Маршалловых Островов, пишущая по-английски. Её сборник «Iep Jāltok: Poems from a Marshallese Daughter» и стихотворение «Dear Matafele Peinem» посвящены семье, культурной памяти и угрозе повышения уровня моря.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Kathy Jetñil-Kijiner — официальный сайт",
+              "url": "https://www.kathyjetnilkijiner.com/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный профиль подтверждает имя, происхождение, поэтическую и климатическую деятельность и произведения."
+            },
+            {
+              "provider": "University of Hawaiʻi",
+              "url": "https://hawaii.edu/cpis/alumni-and-friends/alumni-spotlight/kathy-jetnil-kijiner-2/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский профиль подтверждает образование, маршалльскую идентичность и сборник Iep Jāltok."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Русская передача фамилии исправлена; три предложения и суперлатив заменены двумя предметными предложениями без технической даты 1 января."
+    },
+    {
+      "key": "mauritania:ahmedou_ould_abdel_kader",
+      "originalSha256": "5a345410cba3234256631c8152b09a00af1311e2aa512cdb0c0077d5b4d0131c",
+      "reviewedTextRu": "Ахмеду ульд Абдель Кадер (род. 1941) — мавританский арабоязычный поэт и прозаик, родившийся в Бутилимите. Он публиковал романы «الأسماء المتغيرة» и «القبر المجهول».",
+      "applicableTextRu": "Ахмеду ульд Абдель Кадер (род. 1941) — мавританский арабоязычный поэт и прозаик, родившийся в Бутилимите. Он публиковал романы «الأسماء المتغيرة» и «القبر المجهول».",
+      "claims": [
+        {
+          "textRu": "Ахмеду ульд Абдель Кадер (род. 1941) — мавританский арабоязычный поэт и прозаик, родившийся в Бутилимите. Он публиковал романы «الأسماء المتغيرة» и «القبر المجهول».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Союз мавританских писателей",
+              "url": "https://oudaba.mr/?q=taxonomy%2Fterm%2F1031",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Профессиональная организация подтверждает имя, 1941 год рождения, литературные роли и библиографию автора."
+            },
+            {
+              "provider": "Al Jazeera Encyclopedia",
+              "url": "https://www.aljazeera.net/encyclopedia/2014/10/23/%D8%A3%D8%AD%D9%85%D8%AF-%D9%88%D9%84%D8%AF-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%82%D8%A7%D8%AF%D8%B1",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Биографическая справка подтверждает рождение в Бутилимите и перечисляет романы арабоязычного автора."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Общая строка дополнена местом рождения и двумя документированными романами."
+    },
+    {
+      "key": "mauritania:hamed_ould_hamdane",
+      "originalSha256": "75a38c89b3803452b9f4ea8f45988afc03d18a882e66c6f4870b38e4b7c886eb",
+      "reviewedTextRu": "Авторитетные каталоги не устанавливают мавританского литератора Hamed Ould Hamdane с приписанными карточкой 1957 годом рождения и литературной деятельностью. До появления однозначной национальной или библиотечной записи профиль не публикуется.",
+      "applicableTextRu": null,
+      "claims": [
+        {
+          "textRu": "Авторитетные каталоги не устанавливают мавританского литератора Hamed Ould Hamdane с приписанными карточкой 1957 годом рождения и литературной деятельностью. До появления однозначной национальной или библиотечной записи профиль не публикуется.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=%22Hamed+Ould+Hamdane%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Поиск точной формы имени не обнаруживает однозначной авторской записи с заявленными датой, страной и произведениями."
+            },
+            {
+              "provider": "Библиотека Конгресса США",
+              "url": "https://id.loc.gov/search/?q=%22Hamed%20Ould%20Hamdane%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетный файл не устанавливает заявленную литературную личность и её библиографию."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "held",
+      "notes": "Личность и библиография не установлены независимо; запись помещена в карантин без попытки угадать иную транслитерацию."
+    },
+    {
+      "key": "mauritania:mokhtar_ould_hamidoun",
+      "originalSha256": "e089a9f4b585218952ef2bc95e78fd2c22861627d7af4a9fc70dfc5dbecdd879",
+      "reviewedTextRu": "Мохтар ульд Хамидун (1898–1993) — мавританский учёный, поэт и исследователь истории и культуры страны, писавший по-арабски и по-французски. Он подготовил труд «Précis sur la Mauritanie» и собирал материалы для энциклопедии «Hayat Muritaniyya».",
+      "applicableTextRu": "Мохтар ульд Хамидун (1898–1993) — мавританский учёный, поэт и исследователь истории и культуры страны, писавший по-арабски и по-французски. Он подготовил труд «Précis sur la Mauritanie» и собирал материалы для энциклопедии «Hayat Muritaniyya».",
+      "claims": [
+        {
+          "textRu": "Мохтар ульд Хамидун (1898–1993) — мавританский учёный, поэт и исследователь истории и культуры страны, писавший по-арабски и по-французски. Он подготовил труд «Précis sur la Mauritanie» и собирал материалы для энциклопедии «Hayat Muritaniyya».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb12228801p",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетная запись подтверждает имя, 1898 год рождения, языки, научные роли и библиографию Хамидуна."
+            },
+            {
+              "provider": "CNRS / Annuaire de l’Afrique du Nord",
+              "url": "https://cinumedpub.mmsh.fr/aan/Pdf/AAN-1999-38_08.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Академическое исследование подтверждает годы 1898–1993 и работу над историко-культурным корпусом Мавритании."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Заглушка дополнена языками, исследовательскими направлениями и двумя атрибутированными трудами."
+    },
+    {
+      "key": "mauritania:moussa_ould_ebnou",
+      "originalSha256": "32568b3df26cc8e74e7c371140a11eef7117b12bffdb34447af4b6ac297cca45",
+      "reviewedTextRu": "Мусса ульд Эбну (род. 1956) — мавританский романист и философ, родившийся в Бутилимите и пишущий по-французски и по-арабски. Он издавал собственные переводы романов «L’Amour impossible» и «Le Barzakh» на арабский язык.",
+      "applicableTextRu": "Мусса ульд Эбну (род. 1956) — мавританский романист и философ, родившийся в Бутилимите и пишущий по-французски и по-арабски. Он издавал собственные переводы романов «L’Amour impossible» и «Le Barzakh» на арабский язык.",
+      "claims": [
+        {
+          "textRu": "Мусса ульд Эбну (род. 1956) — мавританский романист и философ, родившийся в Бутилимите и пишущий по-французски и по-арабски. Он издавал собственные переводы романов «L’Amour impossible» и «Le Barzakh» на арабский язык.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Moussa Ould Ebnou — официальный сайт",
+              "url": "https://moussaebnou.net/pages/about",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная биография подтверждает дату и место рождения, философскую карьеру, двуязычие и романы."
+            },
+            {
+              "provider": "SOAS University of London Repository",
+              "url": "https://soas-repository.worktribe.com/OutputFile/362884",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское исследование рассматривает франко-арабское самопереводчество романов L’Amour impossible и Le Barzakh."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён местом рождения, языками и документированной практикой самоперевода."
+    },
+    {
+      "key": "mauritius:ananda_devi",
+      "originalSha256": "a3c353142d795286e5a706013bf5282b19ffb31b1660347ef2a43416ff6d0fcd",
+      "reviewedTextRu": "Ананда Деви (род. 1957) — маврикийская франкоязычная писательница, поэтесса и переводчица. Среди её романов — «Ève de ses décombres» и «Le Sari vert».",
+      "applicableTextRu": "Ананда Деви (род. 1957) — маврикийская франкоязычная писательница, поэтесса и переводчица. Среди её романов — «Ève de ses décombres» и «Le Sari vert».",
+      "claims": [
+        {
+          "textRu": "Ананда Деви (род. 1957) — маврикийская франкоязычная писательница, поэтесса и переводчица. Среди её романов — «Ève de ses décombres» и «Le Sari vert».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Académie française",
+              "url": "https://www.academie-francaise.fr/sites/academie-francaise.fr/files/palmares_2014_0.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Премиальный список Французской академии подтверждает авторскую идентичность Ананды Деви и роман Ève de ses décombres."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Devi%2C+Ananda%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает 1957 год, маврикийское происхождение и издания Ève de ses décombres и Le Sari vert."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Однострочная заглушка дополнена жанрами и двумя проверенными романами."
+    },
+    {
+      "key": "mauritius:edouard_maunick",
+      "originalSha256": "4e37adcc335b101b8e09e04268634ad16344ec3e3b85ae5ea3e2c63a53d17cf2",
+      "reviewedTextRu": "Эдуар Моник (1931–2021) — маврикийский франкоязычный поэт, журналист и дипломат. В его библиографии представлены сборники «Ces oiseaux du sang» и «Fusillez-moi» и поэма «Mandéla mort et vif».",
+      "applicableTextRu": "Эдуар Моник (1931–2021) — маврикийский франкоязычный поэт, журналист и дипломат. В его библиографии представлены сборники «Ces oiseaux du sang» и «Fusillez-moi» и поэма «Mandéla mort et vif».",
+      "claims": [
+        {
+          "textRu": "Эдуар Моник (1931–2021) — маврикийский франкоязычный поэт, журналист и дипломат. В его библиографии представлены сборники «Ces oiseaux du sang» и «Fusillez-moi» и поэма «Mandéla mort et vif».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Académie française",
+              "url": "https://www.academie-francaise.fr/actualites/m-edouard-maunick",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Французская академия подтверждает годы, маврикийское происхождение, поэтическую и дипломатическую деятельность Моника."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/rechercher.do?motRecherche=Edouard+Maunick&critereRecherche=0&depart=0&facetteModifiee=ok",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный каталог подтверждает авторскую идентичность и перечисленные поэтические издания."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Общая формула заменена профессиями и тремя конкретными произведениями."
+    },
+    {
+      "key": "mauritius:jmg_le_clezio",
+      "originalSha256": "bd2f56b5b81566923d3a1e1a4f0c18ae06e1ca2f5d59105d406480cc7f71d4b1",
+      "reviewedTextRu": "Жан-Мари Гюстав Леклезио (род. 1940) — французский писатель из семьи маврикийского происхождения, автор романов, рассказов и эссе. В 2008 году он получил Нобелевскую премию по литературе; среди его книг — «Désert» и «Le Chercheur d’or».",
+      "applicableTextRu": "Жан-Мари Гюстав Леклезио (род. 1940) — французский писатель из семьи маврикийского происхождения, автор романов, рассказов и эссе. В 2008 году он получил Нобелевскую премию по литературе; среди его книг — «Désert» и «Le Chercheur d’or».",
+      "claims": [
+        {
+          "textRu": "Жан-Мари Гюстав Леклезио (род. 1940) — французский писатель из семьи маврикийского происхождения, автор романов, рассказов и эссе. В 2008 году он получил Нобелевскую премию по литературе; среди его книг — «Désert» и «Le Chercheur d’or».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "The Nobel Prize",
+              "url": "https://www.nobelprize.org/prizes/literature/2008/clezio/biographical/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная биография подтверждает дату рождения, маврикийское семейное происхождение и литературную карьеру Леклезио."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/rechercher.do?motRecherche=J.+M.+G.+Le+Clezio&critereRecherche=0&depart=0&facetteModifiee=ok",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания Désert и Le Chercheur d’or."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Расплывчатая культурная связь заменена точным семейным происхождением, жанрами, премией и книгами."
+    },
+    {
+      "key": "mauritius:khal_torabully",
+      "originalSha256": "0eee284970d354cf29a0430630512ed6f35d5bb0d7f4d959052922080f7ae5e0",
+      "reviewedTextRu": "Хал Торабулли (род. 1956) — маврикийский поэт, эссеист и режиссёр, родившийся в Порт-Луи и пишущий по-французски. В книге «Cale d’étoiles — Coolitude» он сформулировал концепцию кулитюда, связанную с памятью наёмных работников индийского происхождения.",
+      "applicableTextRu": "Хал Торабулли (род. 1956) — маврикийский поэт, эссеист и режиссёр, родившийся в Порт-Луи и пишущий по-французски. В книге «Cale d’étoiles — Coolitude» он сформулировал концепцию кулитюда, связанную с памятью наёмных работников индийского происхождения.",
+      "claims": [
+        {
+          "textRu": "Хал Торабулли (род. 1956) — маврикийский поэт, эссеист и режиссёр, родившийся в Порт-Луи и пишущий по-французски. В книге «Cale d’étoiles — Coolitude» он сформулировал концепцию кулитюда, связанную с памятью наёмных работников индийского происхождения.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Bennington College",
+              "url": "https://www.bennington.edu/events/n%C3%A9gritude-coolitude-visionary-poetry-of-khal-torabully",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский профиль подтверждает происхождение, поэтическую деятельность и разработку концепции coolitude."
+            },
+            {
+              "provider": "Boston University — AGNI",
+              "url": "https://agnionline.bu.edu/about/our-people/authors/khal-torabully/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Литературный журнал университета подтверждает 1956 год, место рождения, жанры и книгу Cale d’étoiles — Coolitude."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Заглушка дополнена местом рождения, языком, жанрами и проверяемой литературно-культурной концепцией."
+    },
+    {
+      "key": "mauritius:malcolm_de_chazal",
+      "originalSha256": "4b95af460b8c1682bfdfc83ceda3029a147c1573c62eb5e8801d3af9ed9e2853",
+      "reviewedTextRu": "Малькольм де Шазаль (1902–1981) — маврикийский франкоязычный писатель, поэт и художник. Его афористическая книга «Sens-plastique» вышла в 1947 году, а «Petrusmok» соединяет мифологию, историю и воображаемую географию Маврикия.",
+      "applicableTextRu": "Малькольм де Шазаль (1902–1981) — маврикийский франкоязычный писатель, поэт и художник. Его афористическая книга «Sens-plastique» вышла в 1947 году, а «Petrusmok» соединяет мифологию, историю и воображаемую географию Маврикия.",
+      "claims": [
+        {
+          "textRu": "Малькольм де Шазаль (1902–1981) — маврикийский франкоязычный писатель, поэт и художник. Его афористическая книга «Sens-plastique» вышла в 1947 году, а «Petrusmok» соединяет мифологию, историю и воображаемую географию Маврикия.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Prime Minister’s Office of Mauritius",
+              "url": "https://pmo.govmu.org/CabinetDecision/2002/Cabinet-Decisions-taken-on-05-December-2002.aspx",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Правительственное сообщение подтверждает национальное культурное значение и столетие со дня рождения де Шазаля."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917345&typeNotice=p",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетный каталог подтверждает годы, авторскую идентичность и книги Sens-plastique и Petrusmok."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён языком, художественной ролью и характеристикой двух книг."
+    },
+    {
+      "key": "mauritius:nathacha_appanah",
+      "originalSha256": "07d1047c5c9c728179833843644fdd748871c0eed004ac4c757d557a04d6114c",
+      "reviewedTextRu": "Наташа Аппана (род. 1973) — писательница и журналистка, родившаяся на Маврикии и пишущая по-французски. Её романы «Le Dernier Frère» и «Tropique de la violence» обращаются к истории перемещения людей, сиротству и насилию.",
+      "applicableTextRu": "Наташа Аппана (род. 1973) — писательница и журналистка, родившаяся на Маврикии и пишущая по-французски. Её романы «Le Dernier Frère» и «Tropique de la violence» обращаются к истории перемещения людей, сиротству и насилию.",
+      "claims": [
+        {
+          "textRu": "Наташа Аппана (род. 1973) — писательница и журналистка, родившаяся на Маврикии и пишущая по-французски. Её романы «Le Dernier Frère» и «Tropique de la violence» обращаются к истории перемещения людей, сиротству и насилию.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Éditions Gallimard",
+              "url": "https://www.gallimard.fr/auteurs/nathacha-appanah",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Издательский профиль подтверждает маврикийское происхождение, литературную деятельность и библиографию Аппана."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/rechercher.do?motRecherche=Nathacha+Appanah&critereRecherche=0&depart=0&facetteModifiee=ok",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный каталог подтверждает авторскую идентичность и романы Le Dernier Frère и Tropique de la violence."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Неопределённая современная характеристика заменена местом рождения, языком, профессиями, романами и тематикой."
+    },
+    {
+      "key": "mexico:alfonso_reyes",
+      "originalSha256": "978d3148a47006bc487c0bff86b1d126d1ed3e5fa894b855737041a0392d664f",
+      "reviewedTextRu": "Альфонсо Рейес (1889–1959) — мексиканский эссеист, поэт, переводчик и дипломат. В книгах «Visión de Anáhuac», «Ifigenia cruel» и «El deslinde» он работал с историей Мексики, античной традицией и теорией литературы.",
+      "applicableTextRu": "Альфонсо Рейес (1889–1959) — мексиканский эссеист, поэт, переводчик и дипломат. В книгах «Visión de Anáhuac», «Ifigenia cruel» и «El deslinde» он работал с историей Мексики, античной традицией и теорией литературы.",
+      "claims": [
+        {
+          "textRu": "Альфонсо Рейес (1889–1959) — мексиканский эссеист, поэт, переводчик и дипломат. В книгах «Visión de Anáhuac», «Ifigenia cruel» и «El deslinde» он работал с историей Мексики, античной традицией и теорией литературы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/914",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, роли и библиографию Альфонсо Рейеса."
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "url": "https://catalogue.bnf.fr/ark%3A/12148/cb12058725p",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетная запись подтверждает авторскую идентичность, годы и перечисленные произведения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён жанрами и тремя произведениями с конкретными интеллектуальными направлениями."
+    },
+    {
+      "key": "mexico:alvaro_enrigue",
+      "originalSha256": "5616a7237525fffd6a14fd6ab60733a4184e48b80f686feff3e1429fa83b0825",
+      "reviewedTextRu": "Альваро Энриге (род. 1969) — мексиканский романист, рассказчик и эссеист. Он написал книги «La muerte de un instalador», «Hipotermia» и «Muerte súbita», соединяющие исторический материал с экспериментальным повествованием.",
+      "applicableTextRu": "Альваро Энриге (род. 1969) — мексиканский романист, рассказчик и эссеист. Он написал книги «La muerte de un instalador», «Hipotermia» и «Muerte súbita», соединяющие исторический материал с экспериментальным повествованием.",
+      "claims": [
+        {
+          "textRu": "Альваро Энриге (род. 1969) — мексиканский романист, рассказчик и эссеист. Он написал книги «La muerte de un instalador», «Hipotermia» и «Muerte súbita», соединяющие исторический материал с экспериментальным повествованием.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1502",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения, жанры и библиографию Энриге."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Enrigue%2C+Alvaro%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания трёх названных книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Расплывчатая характеристика заменена жанрами и оригинальными названиями трёх книг."
+    },
+    {
+      "key": "mexico:amparo_davila",
+      "originalSha256": "1089d04883127e9877025afbd8b11023a14078588a20703a0fca6e1c73e14faa",
+      "reviewedTextRu": "Ампаро Давила (1928–2020) — мексиканская поэтесса и автор рассказов, в которых повседневная реальность переходит в тревожное и фантастическое. Её сборники включают «Tiempo destrozado», «Música concreta» и «Árboles petrificados».",
+      "applicableTextRu": "Ампаро Давила (1928–2020) — мексиканская поэтесса и автор рассказов, в которых повседневная реальность переходит в тревожное и фантастическое. Её сборники включают «Tiempo destrozado», «Música concreta» и «Árboles petrificados».",
+      "claims": [
+        {
+          "textRu": "Ампаро Давила (1928–2020) — мексиканская поэтесса и автор рассказов, в которых повседневная реальность переходит в тревожное и фантастическое. Её сборники включают «Tiempo destrozado», «Música concreta» и «Árboles petrificados».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/284",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, жанры и библиографию Ампаро Давилы."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Davila%2C+Amparo%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и три сборника рассказов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Общая строка уточнена поэтической работой и оригинальными названиями трёх сборников."
+    },
+    {
+      "key": "mexico:carlos_de_siguenza",
+      "originalSha256": "ccacb8a0691d75bcd0cd1f9d3357595e6caa1b7c3e376186ee6a5ee830c48aca",
+      "reviewedTextRu": "Карлос де Сигуэнса-и-Гонгора (1645–1700) — новоиспанский писатель, историк, математик и астроном. Он написал повествование «Infortunios de Alonso Ramírez», поэму «Primavera indiana» и научную полемику «Libra astronómica y filosófica».",
+      "applicableTextRu": "Карлос де Сигуэнса-и-Гонгора (1645–1700) — новоиспанский писатель, историк, математик и астроном. Он написал повествование «Infortunios de Alonso Ramírez», поэму «Primavera indiana» и научную полемику «Libra astronómica y filosófica».",
+      "claims": [
+        {
+          "textRu": "Карлос де Сигуэнса-и-Гонгора (1645–1700) — новоиспанский писатель, историк, математик и астроном. Он написал повествование «Infortunios de Alonso Ramírez», поэму «Primavera indiana» и научную полемику «Libra astronómica y filosófica».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/3772",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, роли и библиографию Сигуэнсы-и-Гонгоры."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Siguenza+y+Gongora%2C+Carlos+de%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания перечисленных произведений."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Историографическая оценка заменена точными ролями и тремя произведениями разных жанров."
+    },
+    {
+      "key": "mexico:carlos_fuentes",
+      "originalSha256": "805d6319764eb22dabda0fecf63703c2b419643de36e20ec7a6721b8f9f2fbc2",
+      "reviewedTextRu": "Карлос Фуэнтес (1928–2012) — мексиканский романист, эссеист и дипломат, связанный с латиноамериканским литературным бумом. В романах «La región más transparente», «La muerte de Artemio Cruz» и «Terra Nostra» он исследовал историю и политическую культуру Мексики.",
+      "applicableTextRu": "Карлос Фуэнтес (1928–2012) — мексиканский романист, эссеист и дипломат, связанный с латиноамериканским литературным бумом. В романах «La región más transparente», «La muerte de Artemio Cruz» и «Terra Nostra» он исследовал историю и политическую культуру Мексики.",
+      "claims": [
+        {
+          "textRu": "Карлос Фуэнтес (1928–2012) — мексиканский романист, эссеист и дипломат, связанный с латиноамериканским литературным бумом. В романах «La región más transparente», «La muerte de Artemio Cruz» и «Terra Nostra» он исследовал историю и политическую культуру Мексики.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1162",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, жанры, дипломатическую деятельность и библиографию Фуэнтеса."
+            },
+            {
+              "provider": "El Colegio Nacional",
+              "url": "https://colnal.mx/integrantes/carlos-fuentes/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный профиль Коллегии подтверждает карьеру и основные романы Карлоса Фуэнтеса."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Общая справка конкретизирована тремя романами и точной связью с литературным бумом."
+    },
+    {
+      "key": "mexico:cristina_rivera_garza",
+      "originalSha256": "bba2d55567e5a6ab83bfe933a3d993623bc3799ea48865dce4780fc4d2b3666b",
+      "reviewedTextRu": "Кристина Ривера Гарса (род. 1964) — мексиканская писательница, историк и профессор, работающая в прозе, поэзии и эссеистике. Её книга «El invencible verano de Liliana» получила Пулитцеровскую премию 2024 года в категории мемуаров или автобиографии; среди романов автора — «Nadie me verá llorar».",
+      "applicableTextRu": "Кристина Ривера Гарса (род. 1964) — мексиканская писательница, историк и профессор, работающая в прозе, поэзии и эссеистике. Её книга «El invencible verano de Liliana» получила Пулитцеровскую премию 2024 года в категории мемуаров или автобиографии; среди романов автора — «Nadie me verá llorar».",
+      "claims": [
+        {
+          "textRu": "Кристина Ривера Гарса (род. 1964) — мексиканская писательница, историк и профессор, работающая в прозе, поэзии и эссеистике. Её книга «El invencible verano de Liliana» получила Пулитцеровскую премию 2024 года в категории мемуаров или автобиографии; среди романов автора — «Nadie me verá llorar».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/929",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения, академическую карьеру, жанры и библиографию Риверы Гарсы."
+            },
+            {
+              "provider": "The Pulitzer Prizes",
+              "url": "https://www.pulitzer.org/winners/cristina-rivera-garza",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная страница премии подтверждает награду 2024 года за El invencible verano de Liliana и точную категорию."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён жанрами, академической ролью, конкретным романом и точно названной Пулитцеровской премией."
+    },
+    {
+      "key": "mexico:elena_garro",
+      "originalSha256": "916a1479c6e5c977aafe56e532a36fd65de0e2c387be687b48d813ab1bbb57cd",
+      "reviewedTextRu": "Элена Гарро (1916–1998) — мексиканская писательница, драматург, журналистка и сценаристка. Её роман «Los recuerdos del porvenir», пьеса «Un hogar sólido» и сборник «La semana de colores» используют нелинейное время, память и фантастические элементы.",
+      "applicableTextRu": "Элена Гарро (1916–1998) — мексиканская писательница, драматург, журналистка и сценаристка. Её роман «Los recuerdos del porvenir», пьеса «Un hogar sólido» и сборник «La semana de colores» используют нелинейное время, память и фантастические элементы.",
+      "claims": [
+        {
+          "textRu": "Элена Гарро (1916–1998) — мексиканская писательница, драматург, журналистка и сценаристка. Её роман «Los recuerdos del porvenir», пьеса «Un hogar sólido» и сборник «La semana de colores» используют нелинейное время, память и фантастические элементы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/421",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, жанры и библиографию Элены Гарро."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Garro%2C+Elena%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания трёх названных произведений."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Спорная ярлыковая формула о предшественнице магического реализма заменена жанрами, произведениями и наблюдаемыми приёмами."
+    },
+    {
+      "key": "mexico:elena_poniatowska",
+      "originalSha256": "a26ac6de8fac7f9cb53b7f4f3e1d12d158a5d0763358d351a6d026fcfe9d6750",
+      "reviewedTextRu": "Элена Понятовская (род. 1932) — мексиканская писательница и журналистка, родившаяся в Париже. Она создала документальную книгу «La noche de Tlatelolco» и романы «Hasta no verte Jesús mío» и «Querido Diego, te abraza Quiela»; в 2013 году получила премию Сервантеса.",
+      "applicableTextRu": "Элена Понятовская (род. 1932) — мексиканская писательница и журналистка, родившаяся в Париже. Она создала документальную книгу «La noche de Tlatelolco» и романы «Hasta no verte Jesús mío» и «Querido Diego, te abraza Quiela»; в 2013 году получила премию Сервантеса.",
+      "claims": [
+        {
+          "textRu": "Элена Понятовская (род. 1932) — мексиканская писательница и журналистка, родившаяся в Париже. Она создала документальную книгу «La noche de Tlatelolco» и романы «Hasta no verte Jesús mío» и «Querido Diego, te abraza Quiela»; в 2013 году получила премию Сервантеса.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/866",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату и место рождения, журналистскую деятельность и библиографию Понятовской."
+            },
+            {
+              "provider": "Instituto Cervantes",
+              "url": "https://www.cervantes.es/sobre_instituto_cervantes/prensa/2013/noticias/premio-cervantes-2013.htm",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальное сообщение подтверждает присуждение Элене Понятовской премии Сервантеса 2013 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Обобщённая социальная характеристика дополнена тремя книгами и точно датированной премией."
+    },
+    {
+      "key": "mexico:fernanda_melchor",
+      "originalSha256": "e986a02f6dc832b549fc8ba35ca74dbbae1e331831cc8955a7b35f1e75d9d257",
+      "reviewedTextRu": "Фернанда Мельчор (род. 1982) — мексиканская писательница и журналистка из штата Веракрус. Она написала хроники «Aquí no es Miami» и романы «Temporada de huracanes» и «Páradais», посвящённые насилию и социальному неравенству.",
+      "applicableTextRu": "Фернанда Мельчор (род. 1982) — мексиканская писательница и журналистка из штата Веракрус. Она написала хроники «Aquí no es Miami» и романы «Temporada de huracanes» и «Páradais», посвящённые насилию и социальному неравенству.",
+      "claims": [
+        {
+          "textRu": "Фернанда Мельчор (род. 1982) — мексиканская писательница и журналистка из штата Веракрус. Она написала хроники «Aquí no es Miami» и романы «Temporada de huracanes» и «Páradais», посвящённые насилию и социальному неравенству.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/4045",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает 1982 год, происхождение, журналистскую работу и библиографию Мельчор."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Melchor%2C+Fernanda%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания Aquí no es Miami, Temporada de huracanes и Páradais."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив удалён, технический день рождения не повторяется, а библиография приведена к оригинальным названиям без дубля."
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "originalSha256": "f2f2803146ec5d0e4a3f27a4ec4b279915d4dbe462626e84481e9fe6dd11901e",
+      "reviewedTextRu": "Гуадалупе Неттель (род. 1973) — мексиканская писательница и эссеистка, автор романов и рассказов. Среди её книг — «El cuerpo en que nací», «Después del invierno» и сборник «El matrimonio de los peces rojos».",
+      "applicableTextRu": "Гуадалупе Неттель (род. 1973) — мексиканская писательница и эссеистка, автор романов и рассказов. Среди её книг — «El cuerpo en que nací», «Después del invierno» и сборник «El matrimonio de los peces rojos».",
+      "claims": [
+        {
+          "textRu": "Гуадалупе Неттель (род. 1973) — мексиканская писательница и эссеистка, автор романов и рассказов. Среди её книг — «El cuerpo en que nací», «Después del invierno» и сборник «El matrimonio de los peces rojos».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/3962",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения 27 мая 1973 года, жанры и библиографию Неттель."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Nettel%2C+Guadalupe%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания трёх названных книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Психологическая оценка заменена жанрами и библиографией; профильная дата исправляется с 2 на 27 мая."
+    },
+    {
+      "key": "mexico:ignacio_manuel_altamirano",
+      "originalSha256": "7e1fcca2586f144d84620d25072640be4aa0841df3d0a3ae89d4405e5abc6dfb",
+      "reviewedTextRu": "Игнасио Мануэль Альтамирано (1834–1893) — мексиканский писатель, журналист, педагог, политик и дипломат, писавший по-испански. Его романы «Clemencia», «La Navidad en las montañas» и «El Zarco» участвовали в формировании национальной литературы республиканской Мексики.",
+      "applicableTextRu": "Игнасио Мануэль Альтамирано (1834–1893) — мексиканский писатель, журналист, педагог, политик и дипломат, писавший по-испански. Его романы «Clemencia», «La Navidad en las montañas» и «El Zarco» участвовали в формировании национальной литературы республиканской Мексики.",
+      "claims": [
+        {
+          "textRu": "Игнасио Мануэль Альтамирано (1834–1893) — мексиканский писатель, журналист, педагог, политик и дипломат, писавший по-испански. Его романы «Clemencia», «La Navidad en las montañas» и «El Zarco» участвовали в формировании национальной литературы республиканской Мексики.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1211",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, общественные роли и библиографию Альтамирано."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Altamirano%2C+Ignacio+Manuel%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания Clemencia, La Navidad en las montañas и El Zarco."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Первенствующая оценка заменена полным набором ролей и тремя романами."
+    },
+    {
+      "key": "mexico:javier_velasco",
+      "originalSha256": "efdfd1781b20f798a4120cabb1e622cae222a534ec65318e365e9dd46f09f317",
+      "reviewedTextRu": "Хавьер Веласко (род. 1958) — мексиканский прозаик, хронист и журналист, родившийся в Мехико. Его роман «Diablo guardián» получил премию Alfaguara в 2003 году; он также написал «Luna llena en las rocas» и «Puedo explicarlo todo».",
+      "applicableTextRu": "Хавьер Веласко (род. 1958) — мексиканский прозаик, хронист и журналист, родившийся в Мехико. Его роман «Diablo guardián» получил премию Alfaguara в 2003 году; он также написал «Luna llena en las rocas» и «Puedo explicarlo todo».",
+      "claims": [
+        {
+          "textRu": "Хавьер Веласко (род. 1958) — мексиканский прозаик, хронист и журналист, родившийся в Мехико. Его роман «Diablo guardián» получил премию Alfaguara в 2003 году; он также написал «Luna llena en las rocas» и «Puedo explicarlo todo».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1996",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает имя Xavier Velasco, дату 7 ноября 1958 года, роли, книги и премию Alfaguara."
+            },
+            {
+              "provider": "Penguin Random House",
+              "url": "https://www.penguinlibros.com/mx/literatura-contemporanea/312371-libro-diablo-guardian-9786073821162",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная страница издателя подтверждает авторство Diablo guardián и премию Alfaguara 2003 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Год рождения 1964 и идентификатор Javier исправляются по национальной энциклопедии на профиль Xavier Velasco, 1958; добавлены книги и премия."
+    },
+    {
+      "key": "mexico:jorge_volpi",
+      "originalSha256": "f6be77dc451eddf576f57cf5f668ff27e974d80bde8eb7935e968ba523a3d2af",
+      "reviewedTextRu": "Хорхе Вольпи (род. 1968) — мексиканский романист, эссеист и участник литературной группы Crack. Он написал романы «En busca de Klingsor», «El fin de la locura» и документальный роман «Una novela criminal».",
+      "applicableTextRu": "Хорхе Вольпи (род. 1968) — мексиканский романист, эссеист и участник литературной группы Crack. Он написал романы «En busca de Klingsor», «El fin de la locura» и документальный роман «Una novela criminal».",
+      "claims": [
+        {
+          "textRu": "Хорхе Вольпи (род. 1968) — мексиканский романист, эссеист и участник литературной группы Crack. Он написал романы «En busca de Klingsor», «El fin de la locura» и документальный роман «Una novela criminal».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1142",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения, жанры, участие в группе Crack и библиографию Вольпи."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Volpi%2C+Jorge%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания трёх названных романов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Декларация об обновлении литературы заменена проверяемой групповой принадлежностью и тремя произведениями."
+    },
+    {
+      "key": "mexico:jose_emilio_pacheco",
+      "originalSha256": "6cc17b693c6de7b9c6a35db4496240230e740fd261eb4c08a1090689f213e6cc",
+      "reviewedTextRu": "Хосе Эмилио Пачеко (1939–2014) — мексиканский поэт, прозаик, эссеист и переводчик. В его библиографии представлены роман «Las batallas en el desierto», сборник рассказов «El principio del placer» и книга стихов «No me preguntes cómo pasa el tiempo».",
+      "applicableTextRu": "Хосе Эмилио Пачеко (1939–2014) — мексиканский поэт, прозаик, эссеист и переводчик. В его библиографии представлены роман «Las batallas en el desierto», сборник рассказов «El principio del placer» и книга стихов «No me preguntes cómo pasa el tiempo».",
+      "claims": [
+        {
+          "textRu": "Хосе Эмилио Пачеко (1939–2014) — мексиканский поэт, прозаик, эссеист и переводчик. В его библиографии представлены роман «Las batallas en el desierto», сборник рассказов «El principio del placer» и книга стихов «No me preguntes cómo pasa el tiempo».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/806",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, жанры и библиографию Пачеко."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Pacheco%2C+Jose+Emilio%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания трёх названных книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив и тематическое обобщение заменены жанрами и конкретной библиографией."
+    },
+    {
+      "key": "mexico:jose_joaquin_fernandez_de_lizardi",
+      "originalSha256": "30320395cb1aae6089c54e5a276418231649c85531324d8eed0fd1e7fb4be332",
+      "reviewedTextRu": "Хосе Хоакин Фернандес де Лисарди (1776–1827) — новоиспанский и мексиканский писатель, журналист и издатель. Он выпускал газету «El Pensador Mexicano» и написал романы «El Periquillo Sarniento» и «La Quijotita y su prima».",
+      "applicableTextRu": "Хосе Хоакин Фернандес де Лисарди (1776–1827) — новоиспанский и мексиканский писатель, журналист и издатель. Он выпускал газету «El Pensador Mexicano» и написал романы «El Periquillo Sarniento» и «La Quijotita y su prima».",
+      "claims": [
+        {
+          "textRu": "Хосе Хоакин Фернандес де Лисарди (1776–1827) — новоиспанский и мексиканский писатель, журналист и издатель. Он выпускал газету «El Pensador Mexicano» и написал романы «El Periquillo Sarniento» и «La Quijotita y su prima».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/3002",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, журналистскую деятельность и библиографию Лисарди."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Fernandez+de+Lizardi%2C+Jose+Joaquin%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания El Periquillo Sarniento и La Quijotita y su prima."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Ошибочный русский заголовок и первенствующая оценка заменены оригинальными названиями газеты и двух романов."
+    },
+    {
+      "key": "mexico:jose_vasconcelos",
+      "originalSha256": "375b145be032f7483a9c2b6d78b3d8f7d418e30239f4895bf3424f9a9f0e2ded",
+      "reviewedTextRu": "Хосе Васконселос (1882–1959) — мексиканский философ, эссеист, педагог и государственный деятель, возглавлявший Секретариат народного образования. Он написал эссе «La raza cósmica» и автобиографические книги «Ulises criollo» и «La tormenta».",
+      "applicableTextRu": "Хосе Васконселос (1882–1959) — мексиканский философ, эссеист, педагог и государственный деятель, возглавлявший Секретариат народного образования. Он написал эссе «La raza cósmica» и автобиографические книги «Ulises criollo» и «La tormenta».",
+      "claims": [
+        {
+          "textRu": "Хосе Васконселос (1882–1959) — мексиканский философ, эссеист, педагог и государственный деятель, возглавлявший Секретариат народного образования. Он написал эссе «La raza cósmica» и автобиографические книги «Ulises criollo» и «La tormenta».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1110",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения 27 февраля 1882 года, роли и библиографию Васконселоса."
+            },
+            {
+              "provider": "El Colegio Nacional",
+              "url": "https://colnal.mx/wp-content/uploads/2020/04/Listado-de-integrantes-Colnal-2020-Todos-los-integrantes.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный справочник подтверждает годы жизни, государственную, образовательную и литературную деятельность Васконселоса."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Профильная дата рождения исправляется на 27 февраля; абстрактное влияние заменено должностью и тремя книгами."
+    },
+    {
+      "key": "mexico:juan_rulfo",
+      "originalSha256": "a335c30792fa4ce223e0fc9c4a1bc326d4cdc92a81238a431a33cb3933107359",
+      "reviewedTextRu": "Хуан Рульфо (1917–1986) — мексиканский писатель, сценарист и фотограф. Его художественная проза включает сборник рассказов «El Llano en llamas» и роман «Pedro Páramo», построенный на фрагментарных голосах жителей Комалы.",
+      "applicableTextRu": "Хуан Рульфо (1917–1986) — мексиканский писатель, сценарист и фотограф. Его художественная проза включает сборник рассказов «El Llano en llamas» и роман «Pedro Páramo», построенный на фрагментарных голосах жителей Комалы.",
+      "claims": [
+        {
+          "textRu": "Хуан Рульфо (1917–1986) — мексиканский писатель, сценарист и фотограф. Его художественная проза включает сборник рассказов «El Llano en llamas» и роман «Pedro Páramo», построенный на фрагментарных голосах жителей Комалы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/970",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, роли и библиографию Хуана Рульфо."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Rulfo%2C+Juan%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания El Llano en llamas и Pedro Páramo."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив и недоказуемая степень влияния заменены жанрами, двумя книгами и проверяемой формой повествования."
+    },
+    {
+      "key": "mexico:laura_esquivel",
+      "originalSha256": "f875bea63f51c1c8b66b407c8d2c6c8a7cb7f96dd5e00c536537c501b6512967",
+      "reviewedTextRu": "Лаура Эскивель (род. 1950) — мексиканская писательница и сценаристка. Она написала романы «Como agua para chocolate», «La ley del amor» и «Malinche»; первый из них строит семейное повествование вокруг рецептов и приготовления пищи.",
+      "applicableTextRu": "Лаура Эскивель (род. 1950) — мексиканская писательница и сценаристка. Она написала романы «Como agua para chocolate», «La ley del amor» и «Malinche»; первый из них строит семейное повествование вокруг рецептов и приготовления пищи.",
+      "claims": [
+        {
+          "textRu": "Лаура Эскивель (род. 1950) — мексиканская писательница и сценаристка. Она написала романы «Como agua para chocolate», «La ley del amor» и «Malinche»; первый из них строит семейное повествование вокруг рецептов и приготовления пищи.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/1538",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает дату рождения, роли и библиографию Лауры Эскивель."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Esquivel%2C+Laura%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания Como agua para chocolate, La ley del amor и Malinche."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Рекламная формула мировой известности заменена оригинальными названиями и проверяемой особенностью дебютного романа."
+    },
+    {
+      "key": "mexico:manuel_gutierrez_najera",
+      "originalSha256": "5f17aa87fa6d02b93624df0841e4c19e9abb8bc52c8810e33c8ff4ef7d867603",
+      "reviewedTextRu": "Мануэль Гутьеррес Нахера (1859–1895) — мексиканский поэт, эссеист и журналист, публиковавшийся под несколькими псевдонимами. Его произведения включают поэму «La duquesa Job», рассказ «La novela del tranvía» и сборник «Cuentos frágiles».",
+      "applicableTextRu": "Мануэль Гутьеррес Нахера (1859–1895) — мексиканский поэт, эссеист и журналист, публиковавшийся под несколькими псевдонимами. Его произведения включают поэму «La duquesa Job», рассказ «La novela del tranvía» и сборник «Cuentos frágiles».",
+      "claims": [
+        {
+          "textRu": "Мануэль Гутьеррес Нахера (1859–1895) — мексиканский поэт, эссеист и журналист, публиковавшийся под несколькими псевдонимами. Его произведения включают поэму «La duquesa Job», рассказ «La novela del tranvía» и сборник «Cuentos frágiles».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/3044",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, псевдонимы, жанры и библиографию Гутьерреса Нахеры."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Gutierrez+Najera%2C+Manuel%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог подтверждает авторскую идентичность и издания названных произведений."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Роль предшественника заменена псевдонимной практикой, жанрами и оригинальными названиями трёх произведений."
+    },
+    {
+      "key": "mexico:mariano_azuela",
+      "originalSha256": "9cdb42abce3602c12b748557e2601c863182ada2204fe7fa88d2a5bcc6b62e7a",
+      "reviewedTextRu": "Мариано Асуэла (1873–1952) — мексиканский врач и писатель, участвовавший в Мексиканской революции. Он написал романы «Los de abajo», «Mala yerba» и «Los caciques», в которых изображал вооружённый конфликт и сельское общество.",
+      "applicableTextRu": "Мариано Асуэла (1873–1952) — мексиканский врач и писатель, участвовавший в Мексиканской революции. Он написал романы «Los de abajo», «Mala yerba» и «Los caciques», в которых изображал вооружённый конфликт и сельское общество.",
+      "claims": [
+        {
+          "textRu": "Мариано Асуэла (1873–1952) — мексиканский врач и писатель, участвовавший в Мексиканской революции. Он написал романы «Los de abajo», «Mala yerba» и «Los caciques», в которых изображал вооружённый конфликт и сельское общество.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/91",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает даты, медицинскую и литературную деятельность и библиографию Асуэлы."
+            },
+            {
+              "provider": "El Colegio Nacional",
+              "url": "https://colnal.mx/integrantes/mariano-azuela/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный профиль подтверждает участие в революционных событиях и романы Los de abajo, Mala yerba и Los caciques."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Первенствующая оценка и ранжирование романа заменены биографическим контекстом, тремя оригинальными названиями и тематикой."
+    },
+    {
+      "key": "mexico:octavio_paz",
+      "originalSha256": "018d68f0b02cc1bd947ab6c5540aba3882023f38fa3d562a6f9d71c67a56e593",
+      "reviewedTextRu": "Октавио Пас (1914–1998) — мексиканский поэт, эссеист и дипломат, лауреат Нобелевской премии по литературе 1990 года. Среди его книг — эссе «El laberinto de la soledad» и «El arco y la lira» и поэма «Piedra de sol».",
+      "applicableTextRu": "Октавио Пас (1914–1998) — мексиканский поэт, эссеист и дипломат, лауреат Нобелевской премии по литературе 1990 года. Среди его книг — эссе «El laberinto de la soledad» и «El arco y la lira» и поэма «Piedra de sol».",
+      "claims": [
+        {
+          "textRu": "Октавио Пас (1914–1998) — мексиканский поэт, эссеист и дипломат, лауреат Нобелевской премии по литературе 1990 года. Среди его книг — эссе «El laberinto de la soledad» и «El arco y la lira» и поэма «Piedra de sol».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "The Nobel Prize",
+              "url": "https://www.nobelprize.org/prizes/literature/1990/paz/biographical/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная биография подтверждает даты, мексиканскую литературную и дипломатическую деятельность и премию 1990 года."
+            },
+            {
+              "provider": "Enciclopedia de la Literatura en México",
+              "url": "https://www.elem.mx/autor/datos/810",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная энциклопедия подтверждает жанры и библиографию Октавио Паса."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив удалён; справка дополнена точными жанрами и тремя произведениями."
+    },
+    {
+      "key": "mexico:sergio_pitol",
+      "originalSha256": "c3e23f4c78ca71d40f936c55f62c9a7b4508c554ccbbe91a16d7150a41d46b29",
+      "reviewedTextRu": "Серхио Питоль (1933–2018) — мексиканский писатель, переводчик и дипломат, получивший премию Сервантеса в 2005 году. Он написал книги «El desfile del amor», «La vida conyugal» и «El arte de la fuga».",
+      "applicableTextRu": "Серхио Питоль (1933–2018) — мексиканский писатель, переводчик и дипломат, получивший премию Сервантеса в 2005 году. Он написал книги «El desfile del amor», «La vida conyugal» и «El arte de la fuga».",
+      "claims": [
+        {
+          "textRu": "Серхио Питоль (1933–2018) — мексиканский писатель, переводчик и дипломат, получивший премию Сервантеса в 2005 году. Он написал книги «El desfile del amor», «La vida conyugal» и «El arte de la fuga».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Instituto Cervantes",
+              "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/sofia_sergio_pitol.htm",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная биография подтверждает даты, литературную, переводческую и дипломатическую деятельность и премию Сервантеса."
+            },
+            {
+              "provider": "Centro Virtual Cervantes",
+              "url": "https://cvc.cervantes.es/artes/ciudades_patrimonio/puebla/personalidades/pitol.htm",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Справочник Института Сервантеса подтверждает библиографию, включая El desfile del amor, La vida conyugal и El arte de la fuga."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 39",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён премией и оригинальными названиями трёх книг."
+    }
+  ]
+}

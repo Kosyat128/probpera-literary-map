@@ -5,6 +5,46 @@
 -- mutation transaction.  The admin still attempts a fast GitHub dispatch, but
 -- the five-minute scheduled workflow can always recover an accepted write.
 
+-- Repository-owned ledger for the guarded production reconciliation workflow.
+-- It is intentionally separate from Supabase CLI's internal migration table:
+-- changing vendor-owned bookkeeping would make later CLI reconciliation
+-- ambiguous.  A recorded checksum is immutable; the workflow refuses to run
+-- an edited historical migration under the same version.
+create table if not exists public.probpera_schema_migrations (
+  version text primary key
+    check (version ~ '^20[0-9]{6}_[a-z0-9_]+$'),
+  migration_sha256 text not null
+    check (migration_sha256 ~ '^[0-9a-f]{64}$'),
+  repository_sha text not null
+    check (repository_sha ~ '^[0-9a-f]{40}$'),
+  applied_at timestamptz not null default now()
+);
+
+alter table public.probpera_schema_migrations enable row level security;
+revoke all on table public.probpera_schema_migrations from anon, authenticated;
+grant select on table public.probpera_schema_migrations to service_role;
+
+create or replace function public.protect_probpera_schema_migration_ledger()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  raise exception 'probpera schema migration ledger is append-only';
+end;
+$$;
+
+revoke all on function public.protect_probpera_schema_migration_ledger()
+  from public;
+
+drop trigger if exists probpera_schema_migrations_append_only
+  on public.probpera_schema_migrations;
+create trigger probpera_schema_migrations_append_only
+  before update or delete on public.probpera_schema_migrations
+  for each row
+  execute function public.protect_probpera_schema_migration_ledger();
+
 create table if not exists public.public_build_outbox (
   id bigint generated always as identity primary key,
   actor_id uuid references auth.users(id) on delete set null,
@@ -288,6 +328,8 @@ as $$
         to_regprocedure(
           'public.enqueue_public_build_request(text,text,text,jsonb)'
         ) is not null,
+      'migrationLedger',
+        to_regclass('public.probpera_schema_migrations') is not null,
       'publicationTriggers', (
         select count(*) = 20
         from pg_catalog.pg_trigger outbox_trigger

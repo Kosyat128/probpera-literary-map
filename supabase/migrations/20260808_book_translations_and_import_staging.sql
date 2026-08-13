@@ -233,44 +233,60 @@ grant execute on function public.is_publishable_literary_work(uuid)
 
 drop policy if exists "Public read reviewed literary works"
   on public.literary_works;
+drop policy if exists "Public read publishable literary works"
+  on public.literary_works;
 create policy "Public read publishable literary works"
 on public.literary_works for select
 to anon, authenticated
 using (public.is_publishable_literary_work(id));
 
+drop policy if exists "Public read publishable work translations"
+  on public.literary_work_translations;
 create policy "Public read publishable work translations"
 on public.literary_work_translations for select
 to anon, authenticated
 using (public.is_publishable_literary_work(work_id));
 
+drop policy if exists "Staff manage work translations"
+  on public.literary_work_translations;
 create policy "Staff manage work translations"
 on public.literary_work_translations for all
 to authenticated
 using (public.is_staff())
 with check (public.is_staff());
 
+drop policy if exists "Public read publishable work sources"
+  on public.literary_work_sources;
 create policy "Public read publishable work sources"
 on public.literary_work_sources for select
 to anon, authenticated
 using (public.is_publishable_literary_work(work_id));
 
+drop policy if exists "Staff manage work sources"
+  on public.literary_work_sources;
 create policy "Staff manage work sources"
 on public.literary_work_sources for all
 to authenticated
 using (public.is_staff())
 with check (public.is_staff());
 
+drop policy if exists "Public read publishable work external ids"
+  on public.literary_work_external_ids;
 create policy "Public read publishable work external ids"
 on public.literary_work_external_ids for select
 to anon, authenticated
 using (public.is_publishable_literary_work(work_id));
 
+drop policy if exists "Staff manage work external ids"
+  on public.literary_work_external_ids;
 create policy "Staff manage work external ids"
 on public.literary_work_external_ids for all
 to authenticated
 using (public.is_staff())
 with check (public.is_staff());
 
+drop policy if exists "Staff manage book import candidates"
+  on public.book_import_candidates;
 create policy "Staff manage book import candidates"
 on public.book_import_candidates for all
 to authenticated

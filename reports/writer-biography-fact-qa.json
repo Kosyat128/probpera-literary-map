@@ -1,10 +1,10 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:4d8047a318fd9b14c18df71ba3f76d68d8e995a8e1b60ffb0998e44c5cd40fb6",
+  "sourceFingerprint": "sha256:66341d76f8cb7a7687b963fd64fb48a9b87bbbc997bb98abaf0c1b419b24bd37",
   "scope": {
     "corpus": "stored short Russian writer biographies",
-    "cardsAudited": 1692,
+    "cardsAudited": 1691,
     "uiChanged": false,
     "statusesChanged": false,
     "biographyTextChanged": false,
@@ -12,22 +12,22 @@
     "statement": "This report inventories every biography and detects local contradictions. It does not certify the corpus as fact-checked."
   },
   "summary": {
-    "writerCards": 1692,
-    "biographiesPresent": 1692,
+    "writerCards": 1691,
+    "biographiesPresent": 1691,
     "claimTypeCounts": {
-      "awards": 138,
-      "critical-ranking": 239,
-      "identity-role": 1640,
-      "language": 183,
-      "life-dates": 251,
-      "movement-era": 87,
-      "national-cultural-affiliation": 1060,
-      "nobel": 109,
+      "awards": 137,
+      "critical-ranking": 228,
+      "identity-role": 1639,
+      "language": 187,
+      "life-dates": 274,
+      "movement-era": 83,
+      "national-cultural-affiliation": 1066,
+      "nobel": 110,
       "places": 23,
-      "priority-claim": 145,
-      "reception-influence": 56,
-      "themes-style": 307,
-      "works": 1034
+      "priority-claim": 142,
+      "reception-influence": 52,
+      "themes-style": 311,
+      "works": 1062
     },
     "reliableStagingIdentityMatches": 232,
     "sourceConfirmedStructuredCrossChecks": 231,
@@ -36,20 +36,20 @@
     "wikidataIdentityCorroboratedRecords": 1173,
     "wikidataIdentityDiscrepantRecords": 10,
     "wikidataIdentityReviewRequiredRecords": 84,
-    "wikidataStructuredTriageCoveragePercent": 69.3,
+    "wikidataStructuredTriageCoveragePercent": 69.4,
     "wikidataDateFieldsCompared": 2080,
-    "wikidataExactGregorianDateMatches": 1628,
-    "wikidataSharedPrecisionMatches": 168,
+    "wikidataExactGregorianDateMatches": 1626,
+    "wikidataSharedPrecisionMatches": 172,
     "wikidataCalendarUnresolvedMatches": 68,
     "wikidataAlternateRankMatches": 29,
-    "wikidataUnresolvedDateDiscrepancies": 84,
-    "wikidataModernReferencedDateContradictions": 36,
+    "wikidataUnresolvedDateDiscrepancies": 82,
+    "wikidataModernReferencedDateContradictions": 35,
     "wikidataLikelyBadQidOrIdentityDateRows": 24,
     "wikidataTriageClassificationCounts": {
       "a:calendar-equivalent": 89,
-      "b:lower-precision-compatible": 168,
+      "b:lower-precision-compatible": 172,
       "c:likely-bad-qid-mapping-or-identity": 24,
-      "d:date-contradiction-requiring-authoritative-source": 60
+      "d:date-contradiction-requiring-authoritative-source": 58
     },
     "wikidataLiteraryOccupationCorroborations": 1244,
     "manuallyResolvedRecords": 57,
@@ -59,11 +59,11 @@
     "calendarOrSourceDiscrepancyRecords": 1,
     "calendarOrSourceDiscrepancyIssues": 1,
     "metadataGapIssues": 247,
-    "recordsNeedingHumanClaimSources": 1668,
+    "recordsNeedingHumanClaimSources": 1669,
     "priorityCounts": {
-      "P1": 515,
-      "P2": 141,
-      "P3": 1036
+      "P1": 503,
+      "P2": 142,
+      "P3": 1046
     },
     "matchMethodCounts": {
       "curated-key-to-wikidata-id": 229,
@@ -113,7 +113,7 @@
     "identityDiscrepantPublicCards": 10,
     "identityReviewRequiredPublicCards": 84,
     "curatedCardsMissingCompactSnapshot": 0,
-    "publicCardsWithoutCuratedQid": 425,
+    "publicCardsWithoutCuratedQid": 424,
     "implementationStatus": "checked-in-offline-snapshot-active",
     "safetyBoundary": "Wikidata expands structured discrepancy triage only. It does not certify prose claims, resolve conflicting sources, rewrite biographies, or change publication status automatically."
   },
@@ -2093,87 +2093,6 @@
       "entityLabels": {
         "en": "Vincas Mykolaitis-Putinas",
         "ru": "Винцас Миколайтис-Путинас"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "mexico:fernanda_melchor",
-      "name": "Фернанда Мельчор",
-      "qid": "Q60448241",
-      "field": "birthDate",
-      "cardValue": "1982-06-20",
-      "bestRankClaims": [
-        {
-          "value": "1982-06-03",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q60448241$be819a11-4684-0a90-83d6-d5a4740e0ee4"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q60448241",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Fernanda Melchor",
-        "ru": "Фернанда Мельчор"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "mexico:jose_vasconcelos",
-      "name": "Хосе Васконселос",
-      "qid": "Q1091141",
-      "field": "birthDate",
-      "cardValue": "1882-02-28",
-      "bestRankClaims": [
-        {
-          "value": "1881-02-28",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "q1091141$0B6B1F5B-9F5C-4C90-86E9-10F12D9CE88B"
-        },
-        {
-          "value": "1882-02-27",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q1091141$36e46ca0-412d-3dd6-5f3b-c73829b064e2"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q1091141",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "review-required",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "José Vasconcelos",
-        "ru": "Хосе Васконселос"
       },
       "labelIdentityMatch": true,
       "birthYearIdentityStatus": "match",
@@ -6480,6 +6399,36 @@
       "classification": "lower-precision-compatible"
     },
     {
+      "key": "mali:yambo_ouologuem",
+      "name": "Ямбо Уологем",
+      "qid": "Q3142046",
+      "field": "birthDate",
+      "cardValue": "1940",
+      "snapshotValue": "1940-08-22",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "mali:yambo_ouologuem",
+      "name": "Ямбо Уологем",
+      "qid": "Q3142046",
+      "field": "deathDate",
+      "cardValue": "2017",
+      "snapshotValue": "2017-10-14",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "mauritania:moussa_ould_ebnou",
+      "name": "Мусса ульд Эбну",
+      "qid": "Q6926199",
+      "field": "birthDate",
+      "cardValue": "1956-12-31",
+      "snapshotValue": "1956",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
       "key": "mauritius:ananda_devi",
       "name": "Ананда Деви",
       "qid": "Q2845313",
@@ -6491,7 +6440,7 @@
     },
     {
       "key": "mauritius:khal_torabully",
-      "name": "Хал Торрабулли",
+      "name": "Хал Торабулли",
       "qid": "Q1130419",
       "field": "birthDate",
       "cardValue": "1956",
@@ -6516,6 +6465,16 @@
       "field": "birthDate",
       "cardValue": "1969-08-06",
       "snapshotValue": "1969",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "mexico:fernanda_melchor",
+      "name": "Фернанда Мельчор",
+      "qid": "Q60448241",
+      "field": "birthDate",
+      "cardValue": "1982",
+      "snapshotValue": "1982-06-03",
       "classificationCode": "b",
       "classification": "lower-precision-compatible"
     },
@@ -8495,87 +8454,6 @@
       "entityLabels": {
         "en": "Vincas Mykolaitis-Putinas",
         "ru": "Винцас Миколайтис-Путинас"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "mexico:fernanda_melchor",
-      "name": "Фернанда Мельчор",
-      "qid": "Q60448241",
-      "field": "birthDate",
-      "cardValue": "1982-06-20",
-      "bestRankClaims": [
-        {
-          "value": "1982-06-03",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q60448241$be819a11-4684-0a90-83d6-d5a4740e0ee4"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q60448241",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Fernanda Melchor",
-        "ru": "Фернанда Мельчор"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "mexico:jose_vasconcelos",
-      "name": "Хосе Васконселос",
-      "qid": "Q1091141",
-      "field": "birthDate",
-      "cardValue": "1882-02-28",
-      "bestRankClaims": [
-        {
-          "value": "1881-02-28",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "q1091141$0B6B1F5B-9F5C-4C90-86E9-10F12D9CE88B"
-        },
-        {
-          "value": "1882-02-27",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q1091141$36e46ca0-412d-3dd6-5f3b-c73829b064e2"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q1091141",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "review-required",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "José Vasconcelos",
-        "ru": "Хосе Васконселос"
       },
       "labelIdentityMatch": true,
       "birthYearIdentityStatus": "match",
@@ -18934,174 +18812,22 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "mali:yambo_ouologuem",
-      "name": "Ямбо Уологем",
+      "key": "mauritius:jmg_le_clezio",
+      "name": "Жан-Мари Гюстав Леклезио",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
-        "priority-claim"
+        "national-cultural-affiliation",
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "malta:oliver_friggieri",
-      "name": "Оливер Фридрих",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "malta:ruzar_briffa",
-      "name": "Ружар Бриффа",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "marshall_islands:kathy_jetnil_kijiner",
-      "name": "Кэти Джетнил-Кидд",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "mauritania:moussa_ould_ebnou",
-      "name": "Муса Ульд Эбну",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mauritius:malcolm_de_chazal",
-      "name": "Малькольм де Шазаль",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:alfonso_reyes",
-      "name": "Альфонсо Рейес",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:cristina_rivera_garza",
-      "name": "Кристина Ривера Гарса",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:fernanda_melchor",
-      "name": "Фернанда Мельчор",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:ignacio_manuel_altamirano",
-      "name": "Игнасио Мануэль Альтамирано",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "national-cultural-affiliation",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:jose_emilio_pacheco",
-      "name": "Хосе Эмилио Пачеко",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:jose_joaquin_fernandez_de_lizardi",
-      "name": "Хосе Хоакин Фернандес де Лисарди",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "national-cultural-affiliation",
-        "priority-claim",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:mariano_azuela",
-      "name": "Мариано Асуэла",
+      "key": "mexico:laura_esquivel",
+      "name": "Лаура Эскивель",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
@@ -19121,24 +18847,11 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "awards",
-        "critical-ranking",
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
-        "nobel"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:sergio_pitol",
-      "name": "Серхио Питоль",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -25402,24 +25115,39 @@
       "wikidataIdentityValidationStatus": "identity-review-required"
     },
     {
-      "key": "mauritius:ananda_devi",
-      "name": "Ананда Деви",
+      "key": "mali:yambo_ouologuem",
+      "name": "Ямбо Уологем",
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "language"
+        "language",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "mauritius:jmg_le_clezio",
-      "name": "Жан-Мари Гюстав Ле Клезио",
+      "key": "malta:oliver_friggieri",
+      "name": "Оливер Фриджери",
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "national-cultural-affiliation"
+        "language",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mauritius:ananda_devi",
+      "name": "Ананда Деви",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "language",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -25427,10 +25155,13 @@
     },
     {
       "key": "mauritius:khal_torabully",
-      "name": "Хал Торрабулли",
+      "name": "Хал Торабулли",
       "priority": "P2",
       "issueCodes": [],
-      "claimsRequiringHumanSources": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
+        "works"
+      ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
@@ -25440,7 +25171,10 @@
       "name": "Наташа Аппана",
       "priority": "P2",
       "issueCodes": [],
-      "claimsRequiringHumanSources": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
+        "works"
+      ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
@@ -35939,7 +35673,9 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -35947,12 +35683,14 @@
     },
     {
       "key": "malta:anton_manuel_caruana",
-      "name": "Антон Мануэль Каруана",
+      "name": "Антонио Эмануэле Каруана",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language"
+        "language",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -35964,7 +35702,9 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -35972,15 +35712,45 @@
     },
     {
       "key": "malta:manwel_dimech",
-      "name": "Мануэль Димех",
+      "name": "Манвел Димех",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "malta:ruzar_briffa",
+      "name": "Ружар Бриффа",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "name": "Кэти Джетнил-Киджинер",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "mauritania:ahmedou_ould_abdel_kader",
@@ -35989,19 +35759,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "mauritania:hamed_ould_hamdane",
-      "name": "Хамед Ульд Хамдани",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role"
+        "language",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36013,11 +35773,29 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "mauritania:moussa_ould_ebnou",
+      "name": "Мусса ульд Эбну",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "mauritius:edouard_maunick",
@@ -36026,7 +35804,39 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language"
+        "language",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mauritius:malcolm_de_chazal",
+      "name": "Малькольм де Шазаль",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:alfonso_reyes",
+      "name": "Альфонсо Рейес",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36053,8 +35863,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
-        "reception-influence"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36067,7 +35878,10 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36080,7 +35894,23 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:cristina_rivera_garza",
+      "name": "Кристина Ривера Гарса",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36094,8 +35924,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "movement-era",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36103,31 +35934,60 @@
     },
     {
       "key": "mexico:elena_poniatowska",
-      "name": "Елена Понятовска",
+      "name": "Элена Понятовская",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "mexico:guadalupe_nettel",
-      "name": "Гваделупе Неттель",
+      "key": "mexico:fernanda_melchor",
+      "name": "Фернанда Мельчор",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
         "national-cultural-affiliation",
-        "reception-influence",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "name": "Гуадалупе Неттель",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "mexico:ignacio_manuel_altamirano",
+      "name": "Игнасио Мануэль Альтамирано",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "mexico:javier_velasco",
@@ -36137,6 +35997,7 @@
       "claimsRequiringHumanSources": [
         "identity-role",
         "national-cultural-affiliation",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36150,7 +36011,39 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:jose_emilio_pacheco",
+      "name": "Хосе Эмилио Пачеко",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:jose_joaquin_fernandez_de_lizardi",
+      "name": "Хосе Хоакин Фернандес де Лисарди",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36163,8 +36056,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
-        "reception-influence",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36178,24 +36072,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "movement-era",
+        "life-dates",
         "national-cultural-affiliation",
-        "reception-influence",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "mexico:laura_esquivel",
-      "name": "Лаура Эскивель",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "movement-era",
-        "national-cultural-affiliation",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36209,9 +36088,39 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language",
-        "movement-era",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:mariano_azuela",
+      "name": "Мариано Асуэла",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "mexico:sergio_pitol",
+      "name": "Серхио Питоль",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -162301,21 +162210,27 @@
       "name": "Модибо Сункало Кейта",
       "biography": {
         "present": true,
-        "sha256": "7380de82ba16a305ce4988dae17fa9e3ffcd9ffab31403fff1b25427ff0cadc3",
-        "characters": 31,
-        "sentenceCount": 1
+        "sha256": "bdb1de57c7ebd419427b7f9b5cb8ecba584858bd26dfdc2ae09883e1bf08046d",
+        "characters": 173,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "L’Archer bassari"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -162386,8 +162301,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "no-wikidata-date",
-            "cardValue": "2021",
+            "status": "no-card-date",
+            "cardValue": null,
             "bestRankClaims": []
           }
         }
@@ -162413,28 +162328,37 @@
       "name": "Ямбо Уологем",
       "biography": {
         "present": true,
-        "sha256": "7207559eb84ff83cd932d107b5ebe692c3cf457d2a06fb5020dd315bf2fd10ea",
-        "characters": 61,
-        "sentenceCount": 1
+        "sha256": "6b49c7fc82f1128158ee22f2e25b43daeb36a700df403274feceb6f5f01f8a0b",
+        "characters": 129,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
-          "priority-claim"
+          "language",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Le Devoir de violence"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1940,
+            "deathYear": 2017,
+            "text": "1940–2017"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
-          "priority-claim"
+          "language",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -162499,8 +162423,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1940-08-22",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1940",
             "matchedClaim": {
               "value": "1940-08-22",
               "precision": "day",
@@ -162524,8 +162448,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "2017-10-14",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "2017",
             "matchedClaim": {
               "value": "2017-10-14",
               "precision": "day",
@@ -162552,7 +162476,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -162568,26 +162492,38 @@
       "countryId": "malta",
       "countryName": "Мальта",
       "writerId": "anton_manuel_caruana",
-      "name": "Антон Мануэль Каруана",
+      "name": "Антонио Эмануэле Каруана",
       "biography": {
         "present": true,
-        "sha256": "7c7519c8fc3f6a9bc4373c8098a952676b8d89f2177a70a6c0b8c0e6eaffa434",
-        "characters": 90,
-        "sentenceCount": 1
+        "sha256": "201eb80c4a6d9e14f817473873af706724eea5dadec841fb16357d76e7b82ec6",
+        "characters": 183,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Ineż Farruġ"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1839,
+            "deathYear": 1907,
+            "text": "1839–1907"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -162627,21 +162563,31 @@
       "name": "Дун Карм Псайла",
       "biography": {
         "present": true,
-        "sha256": "d4555d0157e998da376733095a22d18bec5fd8d91c8cd19e67b839b383450044",
-        "characters": 69,
-        "sentenceCount": 1
+        "sha256": "a4203c0bdf2e0f01d9ad3482723cb712073a3d0213d824625821130a0099076b",
+        "characters": 203,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1871,
+            "deathYear": 1961,
+            "text": "1871–1961"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -162760,24 +162706,36 @@
       "countryId": "malta",
       "countryName": "Мальта",
       "writerId": "manwel_dimech",
-      "name": "Мануэль Димех",
+      "name": "Манвел Димех",
       "biography": {
         "present": true,
-        "sha256": "33791bba4fffab0e87f33e6c45204a3e599c31b1e2d954a3f4a0c3e9946d7690",
-        "characters": 55,
-        "sentenceCount": 1
+        "sha256": "7012953f073f2411ffc750d32fc77c630e65b86923a57e2345c2a1594729f174",
+        "characters": 192,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Ivan u Prascovia"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1860,
+            "deathYear": 1921,
+            "text": "1860–1921"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -162896,29 +162854,38 @@
       "countryId": "malta",
       "countryName": "Мальта",
       "writerId": "oliver_friggieri",
-      "name": "Оливер Фридрих",
+      "name": "Оливер Фриджери",
       "biography": {
         "present": true,
-        "sha256": "fc07b3a553b4fd1bf21dd96eee728e6926afbe07d4bfe56d5f30619c86c7c969",
-        "characters": 95,
-        "sentenceCount": 1
+        "sha256": "a88e2a06c4b8b04d74001aa8569dae3a71d49831f833fee1f9041d6d22567c7f",
+        "characters": 213,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1947,
+            "deathYear": 2020,
+            "text": "1947–2020"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking"
+          "language",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163037,7 +163004,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -163056,137 +163023,31 @@
       "name": "Ружар Бриффа",
       "biography": {
         "present": true,
-        "sha256": "86da5b25d59d889c1372f904cb5729e628b68eb3ec3deda152e367b15a04298b",
-        "characters": 46,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "critical-ranking",
-          "identity-role"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "marshall_islands:kathy_jetnil_kijiner",
-      "countryId": "marshall_islands",
-      "countryName": "Маршалловы Острова",
-      "writerId": "kathy_jetnil_kijiner",
-      "name": "Кэти Джетнил-Кидд",
-      "biography": {
-        "present": true,
-        "sha256": "a3fa7511a6b8b2591878b3df6c4ed070f34721e25314c9d1e80985ee99bfcf75",
-        "characters": 268,
-        "sentenceCount": 3
-      },
-      "claims": {
-        "types": [
-          "critical-ranking",
-          "identity-role",
-          "themes-style"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role",
-          "themes-style"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P1",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "mauritania:ahmedou_ould_abdel_kader",
-      "countryId": "mauritania",
-      "countryName": "Мавритания",
-      "writerId": "ahmedou_ould_abdel_kader",
-      "name": "Ахмеду Ульд Абдель Кадер",
-      "biography": {
-        "present": true,
-        "sha256": "5a345410cba3234256631c8152b09a00af1311e2aa512cdb0c0077d5b4d0131c",
-        "characters": 75,
-        "sentenceCount": 1
+        "sha256": "f374cc06761fef32302c6bf46cb40e94ded36919f078fba2443905529d676c00",
+        "characters": 199,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1906,
+            "deathYear": 1963,
+            "text": "1906–1963"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -163219,28 +163080,96 @@
       }
     },
     {
-      "key": "mauritania:hamed_ould_hamdane",
-      "countryId": "mauritania",
-      "countryName": "Мавритания",
-      "writerId": "hamed_ould_hamdane",
-      "name": "Хамед Ульд Хамдани",
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "countryId": "marshall_islands",
+      "countryName": "Маршалловы Острова",
+      "writerId": "kathy_jetnil_kijiner",
+      "name": "Кэти Джетнил-Киджинер",
       "biography": {
         "present": true,
-        "sha256": "75a38c89b3803452b9f4ea8f45988afc03d18a882e66c6f4870b38e4b7c886eb",
-        "characters": 41,
-        "sentenceCount": 1
+        "sha256": "7285e32406668f3040e79cee6ec337bdd46607cde5a1a7aaa12aeeecfc82d7dc",
+        "characters": 282,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Iep Jāltok: Poems from a Marshallese Daughter"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
+        ]
+      },
+      "stagingEvidence": {
+        "identityStatus": "no-reliable-match",
+        "matchMethod": null,
+        "matchEvidence": [],
+        "wikidataId": null,
+        "verificationStatus": null,
+        "sourceConfirmed": false,
+        "sourceUrls": [],
+        "authorityIds": {}
+      },
+      "wikidataEvidence": {
+        "mappingStatus": "no-curated-qid",
+        "qid": null,
+        "entityAvailable": false,
+        "dates": {}
+      },
+      "manualResolutions": [],
+      "issues": [],
+      "priority": "P3",
+      "automatedCoverage": {
+        "textAndClaimInventory": true,
+        "cardSelfConsistency": true,
+        "reliableStagingIdentity": false,
+        "sourceConfirmedStructuredCrossCheck": false,
+        "wikidataStructuredTriage": false,
+        "manualSourceResolutionApplied": false,
+        "completeClaimLevelFactCheck": false
+      }
+    },
+    {
+      "key": "mauritania:ahmedou_ould_abdel_kader",
+      "countryId": "mauritania",
+      "countryName": "Мавритания",
+      "writerId": "ahmedou_ould_abdel_kader",
+      "name": "Ахмеду Ульд Абдель Кадер",
+      "biography": {
+        "present": true,
+        "sha256": "c9d07c90ef9bfe3af1b6669891e9136f1b99acd2a1b245aa4aaa0520974cadac",
+        "characters": 164,
+        "sentenceCount": 3
+      },
+      "claims": {
+        "types": [
+          "identity-role",
+          "language",
+          "themes-style",
+          "works"
+        ],
+        "nobelYears": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "الأسماء المتغيرة"
+        ],
+        "lifeYearPairs": [],
+        "locallyCorroboratedTypes": [],
+        "typesRequiringHumanSources": [
+          "identity-role",
+          "language",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163280,21 +163209,33 @@
       "name": "Мухтар Ульд Хамидун",
       "biography": {
         "present": true,
-        "sha256": "e089a9f4b585218952ef2bc95e78fd2c22861627d7af4a9fc70dfc5dbecdd879",
-        "characters": 58,
-        "sentenceCount": 1
+        "sha256": "a6f07e786af79f1148659f8b2ac78b78ece77538cacf44f124e007673598a6fd",
+        "characters": 243,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1898,
+            "deathYear": 1993,
+            "text": "1898–1993"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163331,26 +163272,32 @@
       "countryId": "mauritania",
       "countryName": "Мавритания",
       "writerId": "moussa_ould_ebnou",
-      "name": "Муса Ульд Эбну",
+      "name": "Мусса ульд Эбну",
       "biography": {
         "present": true,
-        "sha256": "32568b3df26cc8e74e7c371140a11eef7117b12bffdb34447af4b6ac297cca45",
-        "characters": 75,
-        "sentenceCount": 1
+        "sha256": "63f00a5d033ad2fa99d38b658db882bbf6d40bb1c3a87019b43cf2181efdea92",
+        "characters": 218,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "L’Amour impossible"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163398,8 +163345,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1956",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1956-12-31",
             "matchedClaim": {
               "value": "1956",
               "precision": "year",
@@ -163431,7 +163378,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -163450,17 +163397,18 @@
       "name": "Ананда Деви",
       "biography": {
         "present": true,
-        "sha256": "a3c353142d795286e5a706013bf5282b19ffb31b1660347ef2a43416ff6d0fcd",
-        "characters": 36,
-        "sentenceCount": 1
+        "sha256": "f3b8b1e2454aea7a7306cb9c9145077a68be1d801a5b6243eee32cc5cf866050",
+        "characters": 150,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "language"
+          "language",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
@@ -163469,7 +163417,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "language"
+          "language",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163588,23 +163537,36 @@
       "name": "Эдуар Моник",
       "biography": {
         "present": true,
-        "sha256": "4e37adcc335b101b8e09e04268634ad16344ec3e3b85ae5ea3e2c63a53d17cf2",
-        "characters": 59,
-        "sentenceCount": 1
+        "sha256": "542c4eea0d861ef4d2394fdb45179b586f1ae6d4a1cec1be3f1fea11551db939",
+        "characters": 191,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Ces oiseaux du sang",
+          "Mandéla mort et vif"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1931,
+            "deathYear": 2021,
+            "text": "1931–2021"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language"
+          "language",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163721,20 +163683,24 @@
       "countryId": "mauritius",
       "countryName": "Маврикий",
       "writerId": "jmg_le_clezio",
-      "name": "Жан-Мари Гюстав Ле Клезио",
+      "name": "Жан-Мари Гюстав Леклезио",
       "biography": {
         "present": true,
-        "sha256": "bd2f56b5b81566923d3a1e1a4f0c18ae06e1ca2f5d59105d406480cc7f71d4b1",
-        "characters": 91,
-        "sentenceCount": 1
+        "sha256": "45fd0ff2fe3a3055f909b7b4808ff55234b306fc5f286ca0f498b0a077417229",
+        "characters": 236,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "nobel",
+          "works"
         ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
+        "nobelYears": [
+          2008
+        ],
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
@@ -163743,7 +163709,9 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -163844,7 +163812,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P2",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -163860,27 +163828,34 @@
       "countryId": "mauritius",
       "countryName": "Маврикий",
       "writerId": "khal_torabully",
-      "name": "Хал Торрабулли",
+      "name": "Хал Торабулли",
       "biography": {
         "present": true,
-        "sha256": "0eee284970d354cf29a0430630512ed6f35d5bb0d7f4d959052922080f7ae5e0",
-        "characters": 29,
-        "sentenceCount": 1
+        "sha256": "e8a245a6d32e62260d7d5b4fb1dfad4064542f68297089b7abdc96b9bb1b567c",
+        "characters": 252,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Cale d’étoiles — Coolitude"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
-        "typesRequiringHumanSources": []
+        "typesRequiringHumanSources": [
+          "national-cultural-affiliation",
+          "works"
+        ]
       },
       "stagingEvidence": {
         "identityStatus": "reliable-match",
@@ -163996,23 +163971,35 @@
       "name": "Малькольм де Шазаль",
       "biography": {
         "present": true,
-        "sha256": "4b95af460b8c1682bfdfc83ceda3029a147c1573c62eb5e8801d3af9ed9e2853",
-        "characters": 73,
-        "sentenceCount": 1
+        "sha256": "aabc734956433c7619b6a115a8697c835952e32c96d4bf199f46474d5ebb3140",
+        "characters": 226,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Sens-plastique"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1902,
+            "deathYear": 1981,
+            "text": "1902–1981"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -164115,7 +164102,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -164134,24 +164121,31 @@
       "name": "Наташа Аппана",
       "biography": {
         "present": true,
-        "sha256": "07d1047c5c9c728179833843644fdd748871c0eed004ac4c757d557a04d6114c",
-        "characters": 53,
-        "sentenceCount": 1
+        "sha256": "5a6d4b7447d7f7b416b718324d88cbc528eb85573996a62b58687ae4d3f6ee5f",
+        "characters": 221,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Le Dernier Frère"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
-        "typesRequiringHumanSources": []
+        "typesRequiringHumanSources": [
+          "national-cultural-affiliation",
+          "works"
+        ]
       },
       "stagingEvidence": {
         "identityStatus": "reliable-match",
@@ -164267,25 +164261,35 @@
       "name": "Альфонсо Рейес",
       "biography": {
         "present": true,
-        "sha256": "978d3148a47006bc487c0bff86b1d126d1ed3e5fa894b855737041a0392d664f",
-        "characters": 103,
-        "sentenceCount": 1
+        "sha256": "02a0b51ffd9ef65aa80a9561b3e4c93f5d53979a436a7301fd76d2513b0c6ff2",
+        "characters": 214,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Visión de Anáhuac"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1889,
+            "deathYear": 1959,
+            "text": "1889–1959"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -164389,7 +164393,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -164408,9 +164412,9 @@
       "name": "Альваро Энриге",
       "biography": {
         "present": true,
-        "sha256": "5616a7237525fffd6a14fd6ab60733a4184e48b80f686feff3e1429fa83b0825",
-        "characters": 93,
-        "sentenceCount": 1
+        "sha256": "fbb5dcd3e4f03b51405b8e3511ccf31cb11d63ab2df0fe06e98a03d8cc491f68",
+        "characters": 222,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
@@ -164419,8 +164423,10 @@
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "La muerte de un instalador"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
@@ -164529,25 +164535,33 @@
       "name": "Ампаро Давила",
       "biography": {
         "present": true,
-        "sha256": "1089d04883127e9877025afbd8b11023a14078588a20703a0fca6e1c73e14faa",
-        "characters": 99,
-        "sentenceCount": 1
+        "sha256": "576faecded4ed7282f316c1a3b3b959c1318c40d4c682f189c531279ba368819",
+        "characters": 228,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1928,
+            "deathYear": 2020,
+            "text": "1928–2020"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -164587,23 +164601,37 @@
       "name": "Карлос де Сигуэнса-и-Гонгора",
       "biography": {
         "present": true,
-        "sha256": "ccacb8a0691d75bcd0cd1f9d3357595e6caa1b7c3e376186ee6a5ee830c48aca",
-        "characters": 176,
+        "sha256": "54708fc0e85be5f72379cff7aff5839514c880508910df1f6c65d990e50224be",
+        "characters": 234,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Primavera indiana"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1645,
+            "deathYear": 1700,
+            "text": "1645–1700"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -164725,23 +164753,33 @@
       "name": "Карлос Фуэнтес",
       "biography": {
         "present": true,
-        "sha256": "805d6319764eb22dabda0fecf63703c2b419643de36e20ec7a6721b8f9f2fbc2",
-        "characters": 165,
+        "sha256": "764b6c7f4abf5062823a715237cffa9cc5236d0ca854f003f323f56d6fc357e9",
+        "characters": 262,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "La región más transparente"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1928,
+            "deathYear": 2012,
+            "text": "1928–2012"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -164867,27 +164905,29 @@
       "name": "Кристина Ривера Гарса",
       "biography": {
         "present": true,
-        "sha256": "bba2d55567e5a6ab83bfe933a3d993623bc3799ea48865dce4780fc4d2b3666b",
-        "characters": 187,
-        "sentenceCount": 2
+        "sha256": "7e4ba890035045281a7913a3129e87b095a932f0d4715e8c8107bce2efbf1488",
+        "characters": 295,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "El invencible verano de Liliana"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -164970,7 +165010,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -164989,25 +165029,37 @@
       "name": "Элена Гарро",
       "biography": {
         "present": true,
-        "sha256": "916a1479c6e5c977aafe56e532a36fd65de0e2c387be687b48d813ab1bbb57cd",
-        "characters": 115,
+        "sha256": "4076567cf494f5843cb7b831616cf3c1848dd74b86a5d49886d98805c8b69456",
+        "characters": 249,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "movement-era",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "La semana de colores",
+          "Los recuerdos del porvenir",
+          "Un hogar sólido"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1916,
+            "deathYear": 1998,
+            "text": "1916–1998"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "movement-era",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -165136,26 +165188,31 @@
       "countryId": "mexico",
       "countryName": "Мексика",
       "writerId": "elena_poniatowska",
-      "name": "Елена Понятовска",
+      "name": "Элена Понятовская",
       "biography": {
         "present": true,
-        "sha256": "a26ac6de8fac7f9cb53b7f4f3e1d12d158a5d0763358d351a6d026fcfe9d6750",
-        "characters": 164,
-        "sentenceCount": 2
+        "sha256": "3bb971d25e02f1a53290ea907d6811c74e000f5aafca1ecc68a5842b8fdd160f",
+        "characters": 264,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Hasta no verte Jesús mío",
+          "La noche de Tlatelolco"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -165195,24 +165252,24 @@
       "name": "Фернанда Мельчор",
       "biography": {
         "present": true,
-        "sha256": "e986a02f6dc832b549fc8ba35ca74dbbae1e331831cc8955a7b35f1e75d9d257",
-        "characters": 202,
-        "sentenceCount": 2
+        "sha256": "996a075f5c87fe31cb22bcd55bdf64fa6e7c7f16cf402e875e090f9b398369be",
+        "characters": 224,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Temporada de huracanes"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
@@ -165265,8 +165322,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1982-06-20",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1982",
+            "matchedClaim": {
+              "value": "1982-06-03",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q60448241$be819a11-4684-0a90-83d6-d5a4740e0ee4"
+            },
             "bestRankClaims": [
               {
                 "value": "1982-06-03",
@@ -165289,7 +165355,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -165305,29 +165371,29 @@
       "countryId": "mexico",
       "countryName": "Мексика",
       "writerId": "guadalupe_nettel",
-      "name": "Гваделупе Неттель",
+      "name": "Гуадалупе Неттель",
       "biography": {
         "present": true,
-        "sha256": "f2f2803146ec5d0e4a3f27a4ec4b279915d4dbe462626e84481e9fe6dd11901e",
-        "characters": 155,
-        "sentenceCount": 1
+        "sha256": "c36019c283d2cd06a509e8c50d8cd1208849cdcb912a44abd6729e3d16d619a8",
+        "characters": 207,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "El matrimonio de los peces rojos"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence",
           "works"
         ]
       },
@@ -165368,25 +165434,35 @@
       "name": "Игнасио Мануэль Альтамирано",
       "biography": {
         "present": true,
-        "sha256": "7e1fcca2586f144d84620d25072640be4aa0841df3d0a3ae89d4405e5abc6dfb",
-        "characters": 153,
-        "sentenceCount": 1
+        "sha256": "02cd30a16aa253fc41d0e95fef1b706eaad2b5f237ee8ce731658e66de8f1ce6",
+        "characters": 268,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Clemencia"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1834,
+            "deathYear": 1893,
+            "text": "1834–1893"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -165490,7 +165566,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -165509,24 +165585,28 @@
       "name": "Хавьер Веласко",
       "biography": {
         "present": true,
-        "sha256": "efdfd1781b20f798a4120cabb1e622cae222a534ec65318e365e9dd46f09f317",
-        "characters": 146,
-        "sentenceCount": 2
+        "sha256": "00f8a711f5e06d328fffb0c5f4cdd708753e8216a6ee418965705b1bcccc3efd",
+        "characters": 228,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "national-cultural-affiliation",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Diablo guardián"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "national-cultural-affiliation",
+          "themes-style",
           "works"
         ]
       },
@@ -165567,23 +165647,28 @@
       "name": "Хорхе Вольпи",
       "biography": {
         "present": true,
-        "sha256": "f6be77dc451eddf576f57cf5f668ff27e974d80bde8eb7935e968ba523a3d2af",
-        "characters": 115,
-        "sentenceCount": 1
+        "sha256": "65e736458a17b30d80c5bf9fa4afe376ad383065007a3a618a22820869e6fec3",
+        "characters": 205,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "En busca de Klingsor",
+          "Una novela criminal"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -165685,27 +165770,37 @@
       "name": "Хосе Эмилио Пачеко",
       "biography": {
         "present": true,
-        "sha256": "6cc17b693c6de7b9c6a35db4496240230e740fd261eb4c08a1090689f213e6cc",
-        "characters": 175,
+        "sha256": "300b27a1d418102e269156884be70f398a4d2825361c8e0519efc3857ee85e91",
+        "characters": 249,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Las batallas en el desierto"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1939,
+            "deathYear": 2014,
+            "text": "1939–2014"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -165811,7 +165906,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -165830,28 +165925,34 @@
       "name": "Хосе Хоакин Фернандес де Лисарди",
       "biography": {
         "present": true,
-        "sha256": "30320395cb1aae6089c54e5a276418231649c85531324d8eed0fd1e7fb4be332",
-        "characters": 151,
+        "sha256": "ba07f03edc74f0bbb969c7810856e18dd5eb197846f5ac5275e78b335bbd2c5f",
+        "characters": 221,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [
-          "Хромой попугай"
+          "El Periquillo Sarniento"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1776,
+            "deathYear": 1827,
+            "text": "1776–1827"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
           "works"
         ]
       },
@@ -165955,7 +166056,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -165974,26 +166075,36 @@
       "name": "Хосе Васконселос",
       "biography": {
         "present": true,
-        "sha256": "375b145be032f7483a9c2b6d78b3d8f7d418e30239f4895bf3424f9a9f0e2ded",
-        "characters": 151,
+        "sha256": "8653bbd81e9651d0d35f9296cfbc78804edad1466ad0fc1e7a51323d36a77104",
+        "characters": 240,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Ulises criollo"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1882,
+            "deathYear": 1959,
+            "text": "1882–1959"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence",
+          "themes-style",
           "works"
         ]
       },
@@ -166044,8 +166155,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1882-02-28",
+            "status": "exact-gregorian-match",
+            "cardValue": "1882-02-27",
+            "matchedClaim": {
+              "value": "1882-02-27",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q1091141$36e46ca0-412d-3dd6-5f3b-c73829b064e2"
+            },
             "bestRankClaims": [
               {
                 "value": "1881-02-28",
@@ -166116,30 +166236,36 @@
       "name": "Хуан Рульфо",
       "biography": {
         "present": true,
-        "sha256": "a335c30792fa4ce223e0fc9c4a1bc326d4cdc92a81238a431a33cb3933107359",
-        "characters": 183,
+        "sha256": "a470330ff36a1e862ee35b1ffc0630fcbb5206aa136f9be31b73e49533bb4f9f",
+        "characters": 220,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "movement-era",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [
-          "Педро Парамо"
+          "Pedro Páramo"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1917,
+            "deathYear": 1986,
+            "text": "1917–1986"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "movement-era",
+          "life-dates",
           "national-cultural-affiliation",
-          "reception-influence",
+          "themes-style",
           "works"
         ]
       },
@@ -166263,28 +166389,28 @@
       "name": "Лаура Эскивель",
       "biography": {
         "present": true,
-        "sha256": "f875bea63f51c1c8b66b407c8d2c6c8a7cb7f96dd5e00c536537c501b6512967",
-        "characters": 175,
-        "sentenceCount": 1
+        "sha256": "cdd46c8be5ee32e082b85eddda16c74b1f586917525e712a3b431cb3cef0ec29",
+        "characters": 231,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "movement-era",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [
-          "Как вода для шоколада"
+          "Como agua para chocolate"
         ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "movement-era",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ]
       },
@@ -166368,7 +166494,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -166387,27 +166513,36 @@
       "name": "Мануэль Гутьеррес Нахера",
       "biography": {
         "present": true,
-        "sha256": "5f17aa87fa6d02b93624df0841e4c19e9abb8bc52c8810e33c8ff4ef7d867603",
-        "characters": 94,
-        "sentenceCount": 1
+        "sha256": "22246128b3f40403d0def8d922530e4a210826aa73ad7b30a6122cf9c8cc077d",
+        "characters": 236,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
-          "movement-era",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Cuentos frágiles",
+          "La duquesa Job"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1859,
+            "deathYear": 1895,
+            "text": "1859–1895"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language",
-          "movement-era",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -166529,28 +166664,34 @@
       "name": "Мариано Асуэла",
       "biography": {
         "present": true,
-        "sha256": "9cdb42abce3602c12b748557e2601c863182ada2204fe7fa88d2a5bcc6b62e7a",
-        "characters": 161,
+        "sha256": "6b23676444a046542c8c6e6c8b7148c31be8feddccfdbe97507be5d640ea2b2f",
+        "characters": 225,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [
-          "Те, кто внизу"
+          "Los de abajo"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1873,
+            "deathYear": 1952,
+            "text": "1873–1952"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
           "works"
         ]
       },
@@ -166654,7 +166795,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -166673,31 +166814,41 @@
       "name": "Октавио Пас",
       "biography": {
         "present": true,
-        "sha256": "018d68f0b02cc1bd947ab6c5540aba3882023f38fa3d562a6f9d71c67a56e593",
-        "characters": 133,
+        "sha256": "89adf59835fdabaab191777bd710e3d62036e6472dde1f0467484f8b83e1a529",
+        "characters": 214,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "awards",
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ],
         "nobelYears": [
           1990
         ],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Piedra de sol"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1914,
+            "deathYear": 1998,
+            "text": "1914–1998"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "awards",
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -166821,25 +166972,35 @@
       "name": "Серхио Питоль",
       "biography": {
         "present": true,
-        "sha256": "c3e23f4c78ca71d40f936c55f62c9a7b4508c554ccbbe91a16d7150a41d46b29",
-        "characters": 129,
-        "sentenceCount": 1
+        "sha256": "7e1985919a4344a2184c3a8db65ada4fe309a07c2c7ad3856b5dda2c1a5682f6",
+        "characters": 198,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "El desfile del amor"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1933,
+            "deathYear": 2018,
+            "text": "1933–2018"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -166942,7 +167103,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,

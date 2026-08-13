@@ -390,6 +390,8 @@ create trigger articles_sync_russian_translation
 alter table public.article_translations enable row level security;
 alter table public.article_translation_revisions enable row level security;
 
+drop policy if exists "Public read released article translations"
+  on public.article_translations;
 create policy "Public read released article translations"
 on public.article_translations for select
 to anon, authenticated
@@ -408,6 +410,8 @@ using (
   )
 );
 
+drop policy if exists "Staff create article translations"
+  on public.article_translations;
 create policy "Staff create article translations"
 on public.article_translations for insert
 to authenticated
@@ -417,6 +421,8 @@ with check (
   and updated_by = (select auth.uid())
 );
 
+drop policy if exists "Staff update article translations"
+  on public.article_translations;
 create policy "Staff update article translations"
 on public.article_translations for update
 to authenticated
@@ -426,6 +432,8 @@ with check (
   and updated_by = (select auth.uid())
 );
 
+drop policy if exists "Owners and admins delete article translations"
+  on public.article_translations;
 create policy "Owners and admins delete article translations"
 on public.article_translations for delete
 to authenticated
@@ -433,6 +441,8 @@ using (
   public.is_staff(array['owner'::public.staff_role, 'admin'::public.staff_role])
 );
 
+drop policy if exists "Staff read article translation revisions"
+  on public.article_translation_revisions;
 create policy "Staff read article translation revisions"
 on public.article_translation_revisions for select
 to authenticated

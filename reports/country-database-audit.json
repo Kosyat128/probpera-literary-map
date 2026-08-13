@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T18:55:18.218Z",
+  "generatedAt": "2026-08-13T21:22:51.661Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1692,
-    "uniqueWriters": 1679,
-    "workRecords": 3496,
-    "uniqueWorks": 3478,
+    "writerRecords": 1691,
+    "uniqueWriters": 1678,
+    "workRecords": 3519,
+    "uniqueWorks": 3501,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 39,
+    "expandedBiographies": 43,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1647,
+    "russianBiographiesWithheld": 1646,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1672,
+    "englishBiographiesWithheld": 1671,
     "portraitedWriters": 1059,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -1920,7 +1920,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "mauritius",

@@ -63,6 +63,12 @@ Workflow требует GitHub Secrets `SUPABASE_DB_URL` и
 `BACKUP_ENCRYPTION_KEY`. Нельзя подменять `SUPABASE_DB_URL` публичным URL API,
 а ключ шифрования нельзя хранить в репозитории или логах Actions.
 
+Для согласования уже работающей production-базы используйте только ручной
+workflow `Reconcile production database` по инструкции
+`docs/PRODUCTION_DATABASE_RECONCILIATION_RU.md`. Он сначала создаёт и
+восстанавливает зашифрованную копию, проверяет весь план на изолированной базе
+и лишь затем выполняет одну production-транзакцию.
+
 ## Импорт статей
 
 Безопасная проверка:

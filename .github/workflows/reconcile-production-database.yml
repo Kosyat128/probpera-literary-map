@@ -1,0 +1,235 @@
+name: Reconcile production database
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: "Exact 40-character main commit SHA to reconcile"
+        required: true
+        type: string
+      confirmation:
+        description: "Type exactly: RECONCILE PRODUCTION DATABASE"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-database-reconciliation
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout the approved main commit
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$CONFIRMATION" == "RECONCILE PRODUCTION DATABASE" ]] || {
+            echo "::error::The production confirmation text is not exact."
+            exit 1
+          }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "::error::expected_main_sha must be 40 lowercase hexadecimal characters."
+            exit 1
+          }
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The checked-out workflow commit does not match expected_main_sha."
+            exit 1
+          }
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The checkout does not match expected_main_sha."
+            exit 1
+          }
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Verify production secrets
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          set -Eeuo pipefail
+          missing=()
+          [[ -n "$SUPABASE_DB_URL" ]] || missing+=(SUPABASE_DB_URL)
+          [[ -n "$SUPABASE_URL" ]] || missing+=(VITE_SUPABASE_URL)
+          [[ -n "$BACKUP_ENCRYPTION_KEY" ]] || missing+=(BACKUP_ENCRYPTION_KEY)
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error::Missing required GitHub Actions secrets: ${missing[*]}"
+            exit 1
+          fi
+          if (( ${#BACKUP_ENCRYPTION_KEY} < 32 )); then
+            echo "::error::BACKUP_ENCRYPTION_KEY must contain at least 32 characters."
+            exit 1
+          fi
+
+      - name: Build reviewed migration plan
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          mkdir -p reconciliation
+          node scripts/database/build-production-migration-plan.mjs \
+            --output reconciliation/plan.sql \
+            --manifest reconciliation/migration-manifest.json \
+            --verification reconciliation/verify.sql \
+            --repository-sha "$EXPECTED_MAIN_SHA"
+          {
+            echo "# Production database reconciliation"
+            echo
+            printf '%s\n' "- Repository SHA: $EXPECTED_MAIN_SHA"
+            echo "- Migration range: 20260808_article_translations through 20260814_publication_outbox_and_schema_health"
+            echo "- Guard: exact reviewed SHA-256 allowlist"
+          } > reconciliation/summary.md
+
+      - name: Verify production database identity
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: bash scripts/database/supabase-database-safety.sh validate-target
+
+      - name: Create custom-format production backup
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: bash scripts/database/supabase-database-safety.sh dump reconciliation/production-before.dump
+
+      - name: Encrypt and verify pre-migration backup
+        id: archive
+        env:
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          set -Eeuo pipefail
+          archive="reconciliation/probpera-pre-migration-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.dump.enc"
+          bash scripts/database/supabase-database-safety.sh encrypt-verify \
+            reconciliation/production-before.dump \
+            "$archive" \
+            reconciliation/production-before.verified.dump
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+          echo "- Encrypted pre-migration backup: verified byte-for-byte" >> reconciliation/summary.md
+
+      - name: Persist encrypted backup before any production mutation
+        uses: actions/upload-artifact@v7
+        with:
+          name: production-db-pre-migration-backup-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ steps.archive.outputs.archive }}
+            ${{ steps.archive.outputs.archive }}.sha256
+            reconciliation/migration-manifest.json
+            reconciliation/summary.md
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Restore and reconcile the isolated production copy
+        env:
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh restore-drill \
+            reconciliation/production-before.verified.dump \
+            reconciliation/plan.sql \
+            reconciliation/restore-result.env
+          source reconciliation/restore-result.env
+          [[ "$migration_plan" == "verified" ]] || exit 1
+          [[ "$publication_schema" == "20260814-current" ]] || exit 1
+          printf '%s\n' \
+            "- Isolated restore drill: passed ($restored_articles article rows)" \
+            "- Isolated migration plan: passed" \
+            >> reconciliation/summary.md
+
+      - name: Reconfirm the current main tip
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(
+            git ls-remote --exit-code origin refs/heads/main \
+              | awk '{ print $1 }'
+          )"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::main advanced after approval; start a new reviewed run."
+            exit 1
+          }
+
+      - name: Apply the verified plan to production
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh apply-plan \
+            reconciliation/plan.sql
+          echo "- Production transaction: committed" >> reconciliation/summary.md
+
+      - name: Verify production schema health and invariants
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh verify-production \
+            reconciliation/verify.sql \
+            reconciliation/production-verification.txt
+          expected='schema_health=20260814_publication_outbox_and_schema_health;outbox=true;outbox_rpc=true;publication_triggers=true;revision_history=true;work_translations=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=9;invalid_indexes=0'
+          actual="$(tr -d '\r\n' < reconciliation/production-verification.txt)"
+          [[ "$actual" == "$expected" ]] || {
+            echo "::error::Production verification did not return the exact current-schema contract."
+            exit 1
+          }
+          echo "- Production schema health and invariants: passed" >> reconciliation/summary.md
+
+      - name: Finalize redacted summary
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          set -Eeuo pipefail
+          if [[ -f reconciliation/summary.md ]]; then
+            printf '%s\n' "- Workflow status at summary: $JOB_STATUS" >> reconciliation/summary.md
+            cat reconciliation/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload final redacted evidence
+        if: always() && steps.archive.outputs.archive != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: production-db-reconciliation-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reconciliation/migration-manifest.json
+            reconciliation/summary.md
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Remove plaintext database material
+        if: always()
+        run: |
+          rm -f \
+            reconciliation/production-before.dump \
+            reconciliation/production-before.verified.dump \
+            reconciliation/plan.sql \
+            reconciliation/verify.sql \
+            reconciliation/restore-result.env \
+            reconciliation/production-verification.txt

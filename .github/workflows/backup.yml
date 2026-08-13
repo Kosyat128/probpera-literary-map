@@ -51,6 +51,10 @@ jobs:
             } >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
+          if (( ${#BACKUP_ENCRYPTION_KEY} < 32 )); then
+            echo "::error::BACKUP_ENCRYPTION_KEY must contain at least 32 characters."
+            exit 1
+          fi
 
       - name: Create database and storage backup
         env:
@@ -61,12 +65,9 @@ jobs:
           DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
         run: |
           mkdir -p backup/database
-          docker pull "$DATABASE_IMAGE"
-          docker run --rm --entrypoint pg_dump "$DATABASE_IMAGE" \
-            --format=custom \
-            --no-owner \
-            --no-privileges \
-            "$SUPABASE_DB_URL" > backup/database/probpera.dump
+          bash scripts/database/supabase-database-safety.sh validate-target
+          bash scripts/database/supabase-database-safety.sh dump \
+            backup/database/probpera.dump
           npm run backup:storage
 
       - name: Encrypt and verify archive
@@ -77,10 +78,9 @@ jobs:
           stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
           archive="probpera-backup-${stamp}.tar.gz.enc"
           tar -czf backup.tar.gz backup
-          openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -in backup.tar.gz -out "$archive" -pass env:BACKUP_ENCRYPTION_KEY
-          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in "$archive" -out verify.tar.gz -pass env:BACKUP_ENCRYPTION_KEY
+          bash scripts/database/supabase-database-safety.sh encrypt-verify \
+            backup.tar.gz "$archive" verify.tar.gz
           tar -xOf verify.tar.gz backup/database/probpera.dump > verify.dump
-          sha256sum "$archive" > "${archive}.sha256"
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
           if [[ "$(date -u +%d)" == "01" ]]; then echo "retention=90" >> "$GITHUB_OUTPUT"; else echo "retention=30" >> "$GITHUB_OUTPUT"; fi
 
@@ -88,82 +88,12 @@ jobs:
         env:
           DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
         run: |
-          restore_container="probpera-backup-restore-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          cleanup() {
-            docker rm --force "$restore_container" >/dev/null 2>&1 || true
-          }
-          trap cleanup EXIT
-          docker run --detach --name "$restore_container" \
-            -e POSTGRES_PASSWORD=postgres \
-            -e POSTGRES_DB=probpera_restore \
-            "$DATABASE_IMAGE"
-          ready=false
-          for attempt in {1..30}; do
-            if docker exec "$restore_container" pg_isready \
-              --username=postgres --dbname=probpera_restore; then
-              ready=true
-              break
-            fi
-            sleep 2
-          done
-          if [[ "$ready" != "true" ]]; then
-            docker logs "$restore_container"
-            echo "::error::Isolated Supabase PostgreSQL did not become ready."
-            exit 1
-          fi
-          docker cp verify.dump "$restore_container:/tmp/probpera.dump"
-          docker exec "$restore_container" pg_restore \
-            --username=postgres \
-            --dbname=probpera_restore \
-            --clean \
-            --if-exists \
-            --no-owner \
-            --no-privileges \
-            --exit-on-error \
-            /tmp/probpera.dump
-          core_verification="$(docker exec "$restore_container" psql \
-            --username=postgres \
-            --dbname=probpera_restore \
-            --no-psqlrc \
-            --tuples-only \
-            --no-align \
-            --set=ON_ERROR_STOP=1 \
-            --command="select
-              to_regclass('public.articles') is not null,
-              to_regclass('public.admin_audit_log') is not null,
-              (select count(*) from pg_catalog.pg_index where not indisvalid);"
-          )"
-          if [[ "$core_verification" != "t|t|0" ]]; then
-            echo "::error::Restored database failed core schema/integrity probes: $core_verification"
-            exit 1
-          fi
-          publication_schema="$(docker exec "$restore_container" psql \
-            --username=postgres \
-            --dbname=probpera_restore \
-            --no-psqlrc \
-            --tuples-only \
-            --no-align \
-            --set=ON_ERROR_STOP=1 \
-            --command="select case
-              when to_regclass('public.public_build_outbox') is not null
-                and to_regprocedure('public.get_editorial_schema_health()') is not null
-              then '20260814-current'
-              else 'pre-20260814'
-            end;"
-          )"
-          restored_articles="$(docker exec "$restore_container" psql \
-            --username=postgres \
-            --dbname=probpera_restore \
-            --no-psqlrc \
-            --tuples-only \
-            --no-align \
-            --set=ON_ERROR_STOP=1 \
-            --command="select count(*) from public.articles;"
-          )"
-          if ! [[ "$restored_articles" =~ ^[1-9][0-9]*$ ]]; then
-            echo "::error::Restore drill found no production articles."
-            exit 1
-          fi
+          # The shared helper uses pg_restore --exit-on-error, probes
+          # public.get_editorial_schema_health(), and classifies the restored
+          # database as pre-20260814 or 20260814-current.
+          bash scripts/database/supabase-database-safety.sh restore-drill \
+            verify.dump "" backup/restore-result.env
+          source backup/restore-result.env
           {
             echo "Restore drill passed with $restored_articles article rows."
             echo "Restored publication schema: $publication_schema."
@@ -181,3 +111,9 @@ jobs:
             ${{ steps.archive.outputs.archive }}.sha256
           retention-days: ${{ steps.archive.outputs.retention }}
           if-no-files-found: error
+
+      - name: Remove plaintext backup material
+        if: always()
+        run: |
+          rm -rf backup
+          rm -f backup.tar.gz verify.tar.gz verify.dump

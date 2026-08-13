@@ -174,7 +174,8 @@ describe("writer biography claim review batch 36", () => {
 
     // Reinsert newly held identities to reconstruct the frozen pre-integration
     // allocation queue. The live QA queue may omit them after quarantine;
-    // six later Batch 38 identities stay absent and sort after this slice.
+    // six later Batch 38 identities and the later Batch 39 hold stay absent
+    // and sort after this slice.
     const frozenReviewQueueKeys = [
       ...new Set([...reviewQueueKeys, ...expectedHeldKeys]),
     ];
@@ -182,8 +183,8 @@ describe("writer biography claim review batch 36", () => {
       .filter((key) => !priorAssignedSet.has(key))
       .sort((a, b) => a.localeCompare(b, "en"));
 
-    expect(frozenReviewQueueKeys).toHaveLength(1693);
-    expect(new Set(frozenReviewQueueKeys).size).toBe(1693);
+    expect(frozenReviewQueueKeys).toHaveLength(1692);
+    expect(new Set(frozenReviewQueueKeys).size).toBe(1692);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(frozenBatch28Keys).toHaveLength(40);
@@ -196,7 +197,7 @@ describe("writer biography claim review batch 36", () => {
     expect(frozenBatch35Keys).toHaveLength(40);
     expect(priorAssigned).toHaveLength(880);
     expect(priorAssignedSet.size).toBe(880);
-    expect(pendingKeys).toHaveLength(848);
+    expect(pendingKeys).toHaveLength(847);
     expect(quarantineKeys.length).toBeGreaterThanOrEqual(64);
     expect(new Set(quarantineKeys).size).toBe(quarantineKeys.length);
     expect(keys).toEqual(expectedKeys);

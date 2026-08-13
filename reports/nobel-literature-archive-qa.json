@@ -1,7 +1,7 @@
 {
   "version": 1,
   "deterministic": true,
-  "sourceFingerprint": "sha256:7bb5ebf09c4fc3d2c0bfeca440fae86a0ff611047f5e0abbaea208316a024d12",
+  "sourceFingerprint": "sha256:1414cd0221802c85f1284d1dbe5546731d5e126ff86a7c09d98def26beeefcc7",
   "officialSource": {
     "retrievedAt": "2026-08-09",
     "throughYear": 2025,
@@ -20,11 +20,11 @@
     "localCardRepresentations": 125,
     "uniqueStructuredOfficialIds": 122,
     "duplicatePeopleWithCountryCards": 3,
-    "biographyNobelMentions": 109,
-    "biographyClaimsWithExplicitYear": 106,
+    "biographyNobelMentions": 110,
+    "biographyClaimsWithExplicitYear": 107,
     "biographyClaimsWithoutExplicitYear": 3,
     "biographyYearContradictions": 0,
-    "officialCardsWithoutBiographyMention": 16,
+    "officialCardsWithoutBiographyMention": 15,
     "previouslyUnstructuredCards": 77,
     "previouslyUnstructuredCardsResolved": 77,
     "productionArchiveEntriesUsingProseFallback": 0,

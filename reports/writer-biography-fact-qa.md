@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:4d8047a318fd9b14c18df71ba3f76d68d8e995a8e1b60ffb0998e44c5cd40fb6`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:66341d76f8cb7a7687b963fd64fb48a9b87bbbc997bb98abaf0c1b419b24bd37`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1692; bio присутствует: 1692.
+- Карточек и русских bio проверено алгоритмом: 1691; bio присутствует: 1691.
 - Надёжных identity-match с локальным staging: 232.
 - Из них source-confirmed structured cross-check: 231 (13.7%).
-- Offline Wikidata snapshot содержит candidate QID для 1267 карточек, но label+birth-year identity corroborated только у 1173 (69.3% корпуса); identity-discrepant: 10, требуют дополнительной identity-проверки: 84.
-- Сопоставлено полей дат со snapshot: 2080; exact Gregorian: 1628; совместимы при общей precision: 168; несовместимых строк после curated resolutions: 84. Из них 24 сначала требуют identity repair, а 36 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Offline Wikidata snapshot содержит candidate QID для 1267 карточек, но label+birth-year identity corroborated только у 1173 (69.4% корпуса); identity-discrepant: 10, требуют дополнительной identity-проверки: 84.
+- Сопоставлено полей дат со snapshot: 2080; exact Gregorian: 1626; совместимы при общей precision: 172; несовместимых строк после curated resolutions: 82. Из них 24 сначала требуют identity repair, а 35 — современные referenced-противоречия для проверки по авторитетному источнику.
 - Ручных source-resolution с сохранёнными доказательствами: 70 в 57 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
 - Metadata gaps (это не доказанные ошибки): 247.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1668.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1669.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 138
-- `critical-ranking`: 239
-- `identity-role`: 1640
-- `language`: 183
-- `life-dates`: 251
-- `movement-era`: 87
-- `national-cultural-affiliation`: 1060
-- `nobel`: 109
+- `awards`: 137
+- `critical-ranking`: 228
+- `identity-role`: 1639
+- `language`: 187
+- `life-dates`: 274
+- `movement-era`: 83
+- `national-cultural-affiliation`: 1066
+- `nobel`: 110
 - `places`: 23
-- `priority-claim`: 145
-- `reception-influence`: 56
-- `themes-style`: 307
-- `works`: 1034
+- `priority-claim`: 142
+- `reception-influence`: 52
+- `themes-style`: 311
+- `works`: 1062
 
 ## High-confidence противоречия
 
@@ -147,8 +147,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `kazakhstan:dulat_isabekov` | Дулат Исабеков | `Q115204` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2025-02-22` | 2025-02-21 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q115204 |
 | `latvia:karlis_skalbe` | Карлис Скалбе | `Q1069984` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1945-04-15` | 1945-04-14 (day, Q1985727, normal, refs:1); 1945-04-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1069984 |
 | `lithuania:vincas_putinas` | Винцас Миколайтис-Путинас | `Q1124485` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1893-01-06` | 1893-05-20 (day, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q1124485 |
-| `mexico:fernanda_melchor` | Фернанда Мельчор | `Q60448241` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1982-06-20` | 1982-06-03 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q60448241 |
-| `mexico:jose_vasconcelos` | Хосе Васконселос | `Q1091141` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1882-02-28` | 1881-02-28 (day, Q1985727, normal, refs:3); 1882-02-27 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1091141 |
 | `monaco:louis_notari` | Луи Нотари | `Q489830` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1879-10-09` | 1879-10-02 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q489830 |
 | `mongolia:byambyn_rinchen` | Бямбын Ринчен | `Q879330` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1905-11-21` | 1905-12-25 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q879330 |
 | `mongolia:danzanravjaa` | Дулдуйтын Данзанравжаа | `Q1264761` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1856-10-25` | 1857 (year, Q1985727, preferred, refs:1) | https://www.wikidata.org/wiki/Q1264761 |

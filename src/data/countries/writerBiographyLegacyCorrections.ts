@@ -20,6 +20,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch38,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch38";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch39,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch39";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1652,6 +1655,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch36,
   ...writerBiographyPublicProfileFactCorrectionsBatch37,
   ...writerBiographyPublicProfileFactCorrectionsBatch38,
+  ...writerBiographyPublicProfileFactCorrectionsBatch39,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1750,6 +1754,7 @@ export const quarantinedWriterIdentities = [
   ["madagascar", "jean_francois_samlong", "cross-country-identity-conflict", "Authoritative profiles identify Jean-François Samlong as a Réunion writer born in Sainte-Marie in 1949, not a Madagascar writer born in 1951."],
   ["madagascar", "nirina_lua", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict."],
   ["maldives", "amin_jameel", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."],
+  ["mauritania", "hamed_ould_hamdane", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,
