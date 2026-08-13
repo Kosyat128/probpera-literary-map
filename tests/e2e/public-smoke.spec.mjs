@@ -493,12 +493,17 @@ test("глобус загружается только после приближ
   expect(errors).toEqual([]);
 });
 
-test("поиск глобуса находит непроверенную книгу без чернового описания", async ({ page }) => {
+test("поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает черновое описание", async ({ page }) => {
+  await page.route(/\/assets\/countries-[^/?]+\.js(?:\?.*)?$/u, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    await route.continue();
+  });
   await page.goto("/#atlas");
   const search = page.locator("#country-search");
   await search.fill("Морской волк");
   const result = page.getByRole("option", { name: /^Морской волк/u });
   await expect(result).toBeVisible();
+  await expect(search).toHaveValue("Морской волк");
   await result.click();
   await expect(page.locator(".book-detail-copy h3")).toHaveText("Морской волк");
   await expect(page.locator(".book-detail-copy .section-kicker")).toHaveText(

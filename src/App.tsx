@@ -479,6 +479,7 @@ export default function App() {
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
+  const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -616,6 +617,8 @@ export default function App() {
 
   const applyAtlasUrlSelection = useCallback(() => {
     if (!countryArchive.length) return;
+    const isInitialRestore = !atlasUrlInitializedRef.current;
+    atlasUrlInitializedRef.current = true;
     const urlState = readAtlasUrlState();
     const requestedCountry = urlState.countryId
       ? countryArchive.find((country) => country.id === urlState.countryId) ?? null
@@ -638,8 +641,13 @@ export default function App() {
     setSelectedWriter(writer);
     setWriterFocusRequest(null);
     setNobelSpotlightCountryId(null);
-    setSearch("");
-    setSearchOpen(false);
+    // The archive is imported after the search UI is already interactive.
+    // Preserve a query entered during that first load; later history restores
+    // still clear stale search UI as before.
+    if (!isInitialRestore) {
+      setSearch("");
+      setSearchOpen(false);
+    }
 
     if (
       urlState.countryId &&

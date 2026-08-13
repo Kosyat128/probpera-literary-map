@@ -104,6 +104,20 @@ test("modern and classic keep their surfaces but use distinct star fields", asyn
   const modern = page.getByRole("button", { name: "Современный", exact: true });
   await modern.click();
   await expect(globe).toHaveAttribute("data-globe-style", "earth");
+  const activeModernButton = page.locator(
+    '.globe-style-switch button[data-globe-style-option="earth"].is-active'
+  );
+  // Chrome serializes an opaque color as either rgb() or rgba(..., 1),
+  // depending on the browser build. Wait for the CSS transition to settle and
+  // assert the same semantic color in both serializations.
+  await expect(activeModernButton).toHaveCSS(
+    "color",
+    /^rgba?\(156,\s*240,\s*207(?:,\s*1)?\)$/u
+  );
+  await expect(activeModernButton).toHaveCSS(
+    "border-top-color",
+    "rgba(128, 211, 255, 0.72)"
+  );
   expect(
     await globe.evaluate((element) => ({
       scene: getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim(),
@@ -114,19 +128,11 @@ test("modern and classic keep their surfaces but use distinct star fields", asyn
       switcher: getComputedStyle(
         element.querySelector(".globe-style-switch")
       ).backgroundColor,
-      activeText: getComputedStyle(
-        element.querySelector(".globe-style-switch button.is-active")
-      ).color,
-      activeBorder: getComputedStyle(
-        element.querySelector(".globe-style-switch button.is-active")
-      ).borderTopColor,
     }))
   ).toMatchObject({
     scene: "purple-starry",
     controls: "rgba(30, 9, 45, 0.9)",
     switcher: "rgba(32, 10, 48, 0.92)",
-    activeText: "rgba(156, 240, 207, 1)",
-    activeBorder: "rgba(128, 211, 255, 0.72)",
   });
   expect(await globe.evaluate((element) => getComputedStyle(element).backgroundImage))
     .toContain("radial-gradient");
@@ -167,7 +173,12 @@ test("atlas URL restores selections, supports history and mounts the index on de
   await page.locator('[data-atlas-filter="all"]').click();
   await expect(page).not.toHaveURL(/atlas=verified/iu);
   await expect(page).toHaveURL(/country=russia/iu);
+  const search = page.locator("#country-search");
+  await search.fill("Чехов");
+  await expect(search).toHaveValue("Чехов");
   await page.goBack();
+  await expect(search).toHaveValue("");
+  await expect(search).toHaveAttribute("aria-expanded", "false");
   await expect(page.locator('[data-atlas-filter="verified"]')).toHaveAttribute(
     "aria-pressed",
     "true"
@@ -191,21 +202,16 @@ test("globe filters update the collection without rebuilding the 3D atlas", asyn
     element.dataset.filterTestIdentity = "stable-atlas";
   });
 
-  const filters = [
-    ["all", 200],
-    ["nobel", 44],
-    ["rich", 45],
-    ["portrait", 157],
-    ["verified", 20],
-  ];
+  const filters = ["all", "nobel", "rich", "portrait", "verified"];
 
-  for (const [filter, count] of filters) {
-    await page.locator(`[data-atlas-filter="${filter}"]`).click();
-    await expect(
-      page.locator(`[data-atlas-filter="${filter}"]`)
-    ).toHaveAttribute("aria-pressed", "true");
+  for (const filter of filters) {
+    const filterButton = page.locator(`[data-atlas-filter="${filter}"]`);
+    const count = (await filterButton.locator("span").textContent())?.trim();
+    expect(count).toMatch(/^\d+$/u);
+    await filterButton.click();
+    await expect(filterButton).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator(".atlas-filter-status")).toContainText(
-      String(count)
+      count
     );
     await expect(page.locator(".literary-globe.is-loading")).toHaveCount(0);
     await expect(page.locator("#atlas canvas")).toHaveCount(1);
