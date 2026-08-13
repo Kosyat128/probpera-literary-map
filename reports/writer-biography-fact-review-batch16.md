@@ -39,7 +39,7 @@
 - Примечание: Identity/country recommendation: карточка ошибочно помещена в Кабо-Верде; источник подтверждает рождение и литературную принадлежность Мозамбику. Рекомендуется перенести либо удалить дубль после проверки mozambique key. Shared country files не изменялись.
 - Проверенные утверждения:
   - Виржилиу де Лемуш был мозамбикским поэтом и журналистом, использовал имя Дуарте Галван и написал Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus. (`corrected`)
-    - [RTP Ensina](https://ensina.rtp.pt/artigo/virgilio-de-lemos/) — Образовательная служба RTP сообщает, что поэт родился на острове Ибо в Мозамбике, работал журналистом, использовал гетероним Duarte Galvão и перечисляет три названные книги. Проверено: 2026-08-09.
+    - [Universidade Eduardo Mondlane — диссертация PUC Minas](https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf) — Докторская диссертация PUC Minas, размещённая Университетом Эдуарду Мондлане, подтверждает мозамбикскую принадлежность поэта и журналиста, гетероним Duarte Galvão и атрибуцию книг Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus. Проверено: 2026-08-09.
     - [Universidade de São Paulo — Via Atlântica](https://revistas.usp.br/viaatlantica/article/view/187858) — Университетское литературоведческое издание рассматривает Виржилиу де Лемуша в контексте мозамбикской поэзии и подтверждает его авторскую идентичность. Проверено: 2026-08-09.
 
 ## `central_african_republic:benoit_ndemba`
@@ -230,4 +230,3 @@
   - Хосе Мигель Варас был чилийским писателем и журналистом, работал в жанрах романа, рассказа, биографии и хроники, написал Sucede, Chacón и Lugares comunes и получил Национальную премию по литературе 2006 года. (`corrected`)
     - [Universidad de Chile](https://uchile.cl/noticias/27666/jose-miguel-varas-galardonado-con-el-premio-nacional-de-literatura-) — Университетская биография подтверждает писательскую и журналистскую работу Вараса, названные жанры и книги и Национальную премию 2006 года. Проверено: 2026-08-09.
     - [Memoria Chilena — Biblioteca Nacional de Chile](https://www.memoriachilena.gob.cl/602/w3-article-3481.html) — Национальная библиотека Чили независимо подтверждает биографию, журналистскую деятельность и библиографию Вараса. Проверено: 2026-08-09.
-

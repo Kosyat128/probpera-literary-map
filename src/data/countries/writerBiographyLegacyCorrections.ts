@@ -23,6 +23,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch39,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch39";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch40,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch40";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1656,6 +1659,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch37,
   ...writerBiographyPublicProfileFactCorrectionsBatch38,
   ...writerBiographyPublicProfileFactCorrectionsBatch39,
+  ...writerBiographyPublicProfileFactCorrectionsBatch40,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1755,6 +1759,7 @@ export const quarantinedWriterIdentities = [
   ["madagascar", "nirina_lua", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict."],
   ["maldives", "amin_jameel", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."],
   ["mauritania", "hamed_ould_hamdane", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity."],
+  ["monaco", "jean_baptiste_barla", "cross-country-identity-conflict", "Official French museum records identify Jean-Baptiste Barla (1817–1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

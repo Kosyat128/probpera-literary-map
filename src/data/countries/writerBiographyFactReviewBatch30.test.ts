@@ -226,8 +226,8 @@ describe("writer biography claim review batch 30", () => {
     expect(new Set(priorReport).size).toBe(560);
     expect(priorAssigned).toHaveLength(640);
     expect(priorAssignedSet.size).toBe(640);
-    expect(quarantineKeys).toHaveLength(78);
-    expect(new Set(quarantineKeys).size).toBe(78);
+    expect(quarantineKeys).toHaveLength(79);
+    expect(new Set(quarantineKeys).size).toBe(79);
     expect(keys).toEqual(expectedKeys);
     expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
     expect(new Set(keys).size).toBe(40);

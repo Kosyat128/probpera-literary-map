@@ -74,7 +74,7 @@ const writerBiographyFactReviewBatch16Base = [
       textRu: "Виржилиу де Лемуш был мозамбикским поэтом и журналистом, использовал имя Дуарте Галван и написал Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus.",
       verdict: "corrected",
       evidence: [
-        { provider: "RTP Ensina", url: "https://ensina.rtp.pt/artigo/virgilio-de-lemos/", checkedAt, findingRu: "Образовательная служба RTP сообщает, что поэт родился на острове Ибо в Мозамбике, работал журналистом, использовал гетероним Duarte Galvão и перечисляет три названные книги." },
+        { provider: "Universidade Eduardo Mondlane — диссертация PUC Minas", url: "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf", checkedAt, findingRu: "Докторская диссертация PUC Minas, размещённая Университетом Эдуарду Мондлане, подтверждает мозамбикскую принадлежность поэта и журналиста, гетероним Duarte Galvão и атрибуцию книг Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus." },
         { provider: "Universidade de São Paulo — Via Atlântica", url: "https://revistas.usp.br/viaatlantica/article/view/187858", checkedAt, findingRu: "Университетское литературоведческое издание рассматривает Виржилиу де Лемуша в контексте мозамбикской поэзии и подтверждает его авторскую идентичность." },
       ],
     }],

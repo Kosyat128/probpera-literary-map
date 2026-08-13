@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T21:22:51.661Z",
+  "generatedAt": "2026-08-13T22:33:28.386Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -12,18 +12,18 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1691,
-    "uniqueWriters": 1678,
-    "workRecords": 3519,
-    "uniqueWorks": 3501,
+    "writerRecords": 1690,
+    "uniqueWriters": 1677,
+    "workRecords": 3552,
+    "uniqueWorks": 3534,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 43,
+    "expandedBiographies": 44,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1646,
+    "russianBiographiesWithheld": 1645,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1671,
-    "portraitedWriters": 1059,
+    "englishBiographiesWithheld": 1670,
+    "portraitedWriters": 1058,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
     "cardsInEditorialQueue": 200
@@ -2005,7 +2005,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "mongolia",
