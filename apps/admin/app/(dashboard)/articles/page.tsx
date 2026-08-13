@@ -47,6 +47,7 @@ export default async function ArticlesPage({
     skipped?: string;
     error?: string;
     published?: string;
+    deleted?: string;
   }>;
 }) {
   const values = await searchParams;
@@ -181,9 +182,17 @@ export default async function ArticlesPage({
           Публикация запущена. Изменения отправлены на публикацию.
         </p>
       )}
+      {values.deleted && (
+        <p className="form-message form-success">Статья перемещена в архив.</p>
+      )}
+      {values.published === "queued" && (
+        <p className="form-message form-success">
+          Изменение статьи сохранено в резервной очереди публикации.
+        </p>
+      )}
       {values.published === "queue-error" && (
-        <p className="form-message form-error">
-          Публикация поставлена в очередь вручную.
+        <p className="form-message form-error" role="alert">
+          Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.
         </p>
       )}
 
@@ -307,17 +316,14 @@ export default async function ArticlesPage({
                           <button className="button-secondary" type="submit">Копировать и редактировать</button>
                         </form>
                         {article.status !== "published" && (
-                          <form action={changeArticleStatusAction}>
-                            <input type="hidden" name="id" value={article.id} />
-                            <input type="hidden" name="status" value="published" />
-                            <button className="button" type="submit">
-                              Опубликовать
-                            </button>
-                          </form>
+                          <Link className="button" href={articleEditPath(article.id)}>
+                            Открыть для публикации
+                          </Link>
                         )}
                         {article.status === "published" && (
                           <form action={changeArticleStatusAction}>
                             <input type="hidden" name="id" value={article.id} />
+                            <input type="hidden" name="expected_updated_at" value={article.updated_at} />
                             <input type="hidden" name="status" value="hidden" />
                             <ConfirmSubmitButton message="Снять статью с публикации? Адрес и история сохранятся.">
                               Снять
@@ -326,6 +332,7 @@ export default async function ArticlesPage({
                         )}
                         <form action={softDeleteArticleAction}>
                           <input type="hidden" name="id" value={article.id} />
+                          <input type="hidden" name="expected_updated_at" value={article.updated_at} />
                           <ConfirmSubmitButton message="Переместить статью в корзину? Данные останутся восстановимыми.">
                             В корзину
                           </ConfirmSubmitButton>

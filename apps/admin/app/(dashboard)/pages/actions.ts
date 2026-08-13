@@ -7,6 +7,12 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
+import {
+  pageCatalogFromForm,
+  pageCatalogHref,
+  pageCatalogPageNumber,
+  pageEditorHref,
+} from "@/lib/page-catalog-query";
 import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -23,7 +29,10 @@ const pageSchema = z.object({
   seoDescription: z.string().trim().max(400).default(""),
   canonicalUrl: z.string().url().nullable(),
   allowIndexing: z.boolean(),
+  expectedUpdatedAt: z.string().datetime({ offset: true }),
 });
+
+const versionSchema = z.string().datetime({ offset: true });
 
 const allowedPageHtml = {
   allowedTags: [
@@ -71,13 +80,12 @@ function optionalText(value: FormDataEntryValue | null) {
 }
 
 async function auditPage(
+  supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>,
   actorId: string,
   pageId: string,
   action: string,
   metadata: Record<string, unknown> = {}
 ) {
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) return;
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
@@ -87,7 +95,7 @@ async function auditPage(
       ...metadata,
     },
   });
-  await requestPublicBuild({
+  return requestPublicBuild({
     supabase,
     actorId,
     entityType: "page",
@@ -100,6 +108,14 @@ async function auditPage(
 export async function createPageAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const catalog = pageCatalogFromForm(formData);
+  const revisionPage = pageCatalogPageNumber(formData.get("editor_revision_page"));
+  const editorTarget = (
+    pageId: string,
+    options: Parameters<typeof pageEditorHref>[2] = {}
+  ) => pageEditorHref(pageId, catalog, { revisionPage, ...options });
+  const catalogTarget = (options: Parameters<typeof pageCatalogHref>[1] = {}) =>
+    pageCatalogHref(catalog, options);
   const title = String(formData.get("title") || "");
   const slug =
     createSlug(String(formData.get("slug") || title)) ||
@@ -119,10 +135,10 @@ export async function createPageAction(formData: FormData) {
       slug,
     });
   if (!parsed.success) {
-    redirect("/pages?error=Проверьте поля новой страницы");
+    redirect(catalogTarget({ error: "Проверьте поля новой страницы" }));
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/pages?error=База данных не подключена");
+  if (!supabase) redirect(catalogTarget({ error: "База данных не подключена" }));
   const { data, error } = await supabase
     .from("pages")
     .insert({
@@ -142,20 +158,24 @@ export async function createPageAction(formData: FormData) {
     .select("id")
     .single();
   if (error || !data) {
-    redirect(
-      `/pages?error=${encodeURIComponent(error?.message || "Страница не создана")}`
-    );
+    redirect(catalogTarget({ error: error?.message || "Страница не создана" }));
   }
-  await auditPage(session.user.id, data.id, "page.created", {
+  const publication = await auditPage(supabase, session.user.id, data.id, "page.created", {
     slug: parsed.data.slug,
   });
   revalidatePath("/pages");
-  redirect(`/pages/${data.id}?saved=1`);
+  redirect(editorTarget(data.id, { saved: "1", published: publication.state }));
 }
 
 export async function savePageAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const catalog = pageCatalogFromForm(formData);
+  const revisionPage = pageCatalogPageNumber(formData.get("editor_revision_page"));
+  const editorTarget = (
+    pageId: string,
+    options: Parameters<typeof pageEditorHref>[2] = {}
+  ) => pageEditorHref(pageId, catalog, { revisionPage, ...options });
   const id = optionalText(formData.get("id"));
   const title = String(formData.get("title") || "");
   const slug =
@@ -178,15 +198,14 @@ export async function savePageAction(formData: FormData) {
     seoDescription: String(formData.get("seo_description") || ""),
     canonicalUrl: optionalText(formData.get("canonical_url")),
     allowIndexing: formData.get("allow_indexing") === "on",
+    expectedUpdatedAt: formData.get("expected_updated_at"),
   });
   if (!parsed.success || !id) {
-    redirect(
-      `/pages/${id || ""}?error=${encodeURIComponent(
-        parsed.success
-          ? "Некорректная страница"
-          : parsed.error.issues[0]?.message || "Проверьте поля страницы"
-      )}`
-    );
+    redirect(editorTarget(id || "", {
+      error: parsed.success
+        ? "Некорректная страница"
+        : parsed.error.issues[0]?.message || "Проверьте поля страницы",
+    }));
   }
 
   let contentJson: unknown;
@@ -197,8 +216,8 @@ export async function savePageAction(formData: FormData) {
   }
 
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(`/pages/${id}?error=База данных не подключена`);
-  const { error } = await supabase
+  if (!supabase) redirect(editorTarget(id, { error: "База данных не подключена" }));
+  const { data: updated, error } = await supabase
     .from("pages")
     .update({
       title: parsed.data.title,
@@ -215,79 +234,120 @@ export async function savePageAction(formData: FormData) {
       allow_indexing: parsed.data.allowIndexing,
       updated_by: session.user.id,
     })
-    .eq("id", id);
+    .eq("id", id)
+    .eq("updated_at", parsed.data.expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) {
-    redirect(`/pages/${id}?error=${encodeURIComponent(error.message)}`);
+    redirect(editorTarget(id, { error: error.message }));
   }
-  await auditPage(session.user.id, id, "page.updated", {
+  if (!updated) {
+    redirect(editorTarget(id, {
+      error: "Страницу уже изменили в другой вкладке. Обновите страницу и повторите правку.",
+    }));
+  }
+  const publication = await auditPage(supabase, session.user.id, id, "page.updated", {
     status: parsed.data.status,
     slug: parsed.data.slug,
   });
   revalidatePath("/pages");
   revalidatePath(`/pages/${id}`);
-  redirect(`/pages/${id}?saved=1`);
+  redirect(editorTarget(id, { saved: "1", published: publication.state }));
 }
 
 export async function changePageStatusAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const catalog = pageCatalogFromForm(formData);
+  const target = (options: Parameters<typeof pageCatalogHref>[1] = {}) =>
+    pageCatalogHref(catalog, options);
   const id = z.string().uuid().safeParse(formData.get("id"));
   const status = z
     .enum(["draft", "published", "hidden"])
     .safeParse(formData.get("status"));
-  if (!id.success || !status.success) {
-    redirect("/pages?error=Некорректное действие");
+  const expectedUpdatedAt = versionSchema.safeParse(formData.get("expected_updated_at"));
+  if (!id.success || !status.success || !expectedUpdatedAt.success) {
+    redirect(target({ error: "Некорректное действие или версия страницы" }));
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/pages?error=База данных не подключена");
-  const { error } = await supabase
+  if (!supabase) redirect(target({ error: "База данных не подключена" }));
+  const { data: updated, error } = await supabase
     .from("pages")
     .update({
       status: status.data,
       updated_by: session.user.id,
     })
-    .eq("id", id.data);
-  if (error) redirect(`/pages?error=${encodeURIComponent(error.message)}`);
-  await auditPage(session.user.id, id.data, "page.status_changed", {
+    .eq("id", id.data)
+    .eq("updated_at", expectedUpdatedAt.data)
+    .select("id")
+    .maybeSingle();
+  if (error) redirect(target({ error: error.message }));
+  if (!updated) {
+    redirect(target({
+      error: "Статус уже изменён в другой вкладке. Обновите список и повторите действие.",
+    }));
+  }
+  const publication = await auditPage(supabase, session.user.id, id.data, "page.status_changed", {
     status: status.data,
   });
   revalidatePath("/pages");
-  redirect("/pages?saved=1");
+  redirect(target({ saved: "1", published: publication.state }));
 }
 
 export async function softDeletePageAction(formData: FormData) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
+  const catalog = pageCatalogFromForm(formData);
+  const target = (options: Parameters<typeof pageCatalogHref>[1] = {}) =>
+    pageCatalogHref(catalog, options);
   const id = z.string().uuid().safeParse(formData.get("id"));
-  if (!id.success) redirect("/pages?error=Некорректная страница");
+  const expectedUpdatedAt = versionSchema.safeParse(formData.get("expected_updated_at"));
+  if (!id.success || !expectedUpdatedAt.success) {
+    redirect(target({ error: "Некорректная страница или версия" }));
+  }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/pages?error=База данных не подключена");
-  const { error } = await supabase
+  if (!supabase) redirect(target({ error: "База данных не подключена" }));
+  const { data: deleted, error } = await supabase
     .from("pages")
     .update({
       deleted_at: new Date().toISOString(),
       status: "hidden",
       updated_by: session.user.id,
     })
-    .eq("id", id.data);
-  if (error) redirect(`/pages?error=${encodeURIComponent(error.message)}`);
-  await auditPage(session.user.id, id.data, "page.deleted");
+    .eq("id", id.data)
+    .eq("updated_at", expectedUpdatedAt.data)
+    .select("id")
+    .maybeSingle();
+  if (error) redirect(target({ error: error.message }));
+  if (!deleted) {
+    redirect(target({
+      error: "Страницу уже изменили в другой вкладке. Обновите данные перед удалением.",
+    }));
+  }
+  const publication = await auditPage(supabase, session.user.id, id.data, "page.deleted");
   revalidatePath("/pages");
-  redirect("/pages?deleted=1");
+  redirect(target({ deleted: "1", published: publication.state }));
 }
 
 export async function restorePageRevisionAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const catalog = pageCatalogFromForm(formData);
+  const revisionPage = pageCatalogPageNumber(formData.get("editor_revision_page"));
+  const editorTarget = (
+    pageId: string,
+    options: Parameters<typeof pageEditorHref>[2] = {}
+  ) => pageEditorHref(pageId, catalog, { revisionPage, ...options });
   const id = z.string().uuid().safeParse(formData.get("id"));
   const revisionId = z.coerce.number().int().positive().safeParse(
     formData.get("revision_id")
   );
-  if (!id.success || !revisionId.success) {
-    redirect("/pages?error=Некорректная версия");
+  const expectedUpdatedAt = versionSchema.safeParse(formData.get("expected_updated_at"));
+  if (!id.success || !revisionId.success || !expectedUpdatedAt.success) {
+    redirect(pageCatalogHref(catalog, { error: "Некорректная версия" }));
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(`/pages/${id.data}?error=База данных не подключена`);
+  if (!supabase) redirect(editorTarget(id.data, { error: "База данных не подключена" }));
   const { data: revision, error: revisionError } = await supabase
     .from("page_revisions")
     .select("snapshot,revision_number")
@@ -295,10 +355,10 @@ export async function restorePageRevisionAction(formData: FormData) {
     .eq("page_id", id.data)
     .maybeSingle();
   if (revisionError || !revision?.snapshot) {
-    redirect(`/pages/${id.data}?error=Версия не найдена`);
+    redirect(editorTarget(id.data, { error: "Версия не найдена" }));
   }
   const snapshot = revision.snapshot as Record<string, unknown>;
-  const { error } = await supabase
+  const { data: restored, error } = await supabase
     .from("pages")
     .update({
       title: snapshot.title,
@@ -313,13 +373,21 @@ export async function restorePageRevisionAction(formData: FormData) {
       allow_indexing: snapshot.allow_indexing,
       updated_by: session.user.id,
     })
-    .eq("id", id.data);
+    .eq("id", id.data)
+    .eq("updated_at", expectedUpdatedAt.data)
+    .select("id")
+    .maybeSingle();
   if (error) {
-    redirect(`/pages/${id.data}?error=${encodeURIComponent(error.message)}`);
+    redirect(editorTarget(id.data, { error: error.message }));
   }
-  await auditPage(session.user.id, id.data, "page.revision_restored", {
+  if (!restored) {
+    redirect(editorTarget(id.data, {
+      error: "Страницу уже изменили в другой вкладке. Обновите её перед восстановлением версии.",
+    }));
+  }
+  const publication = await auditPage(supabase, session.user.id, id.data, "page.revision_restored", {
     revision: revision.revision_number,
   });
   revalidatePath(`/pages/${id.data}`);
-  redirect(`/pages/${id.data}?saved=1`);
+  redirect(editorTarget(id.data, { saved: "1", published: publication.state }));
 }

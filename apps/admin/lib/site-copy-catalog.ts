@@ -23,7 +23,6 @@ const curatedSiteCopyDefinitions = [
   { key: "chrome.sections.action", group: "Шапка и навигация", label: "Кнопка каталога", defaultRu: "Открыть интерактивный каталог" },
 
   { key: "home.hero.secondary_action", group: "Главная", label: "Вторая кнопка первого экрана", defaultRu: "Читать журнал" },
-  { key: "home.hero.cover_alt", group: "Главная", label: "Описание изображения журнала", defaultRu: "Журнал «Проба Пера» — полноформатное редакционное издание", multiline: true },
   { key: "home.hero.cover_badge", group: "Главная", label: "Подпись под изображением журнала", defaultRu: "Литературный журнал · с 2025 года" },
   { key: "home.hero.metric.countries", group: "Главная", label: "Подпись счётчика стран", defaultRu: "стран" },
   { key: "home.hero.metric.writers", group: "Главная", label: "Подпись счётчика писателей", defaultRu: "писателей" },
@@ -46,10 +45,10 @@ const curatedSiteCopyDefinitions = [
   { key: "globe.style.antique", group: "Глобус", label: "Старинный стиль", defaultRu: "Старинный" },
   { key: "globe.style.classic", group: "Глобус", label: "Классический стиль", defaultRu: "Классический" },
   { key: "globe.style.modern", group: "Глобус", label: "Современный стиль", defaultRu: "Современный" },
-  { key: "globe.modern_badge", group: "Глобус", label: "Плашка современной версии", defaultRu: "Современное оформление · 2026" },
-  { key: "globe.modern_badge_title", group: "Глобус", label: "Описание современной версии", defaultRu: "Современная визуальная редакция 2026 года. Картография: Natural Earth.", multiline: true },
-  { key: "globe.instruction.rotate", group: "Глобус", label: "Подсказка вращения", defaultRu: "Тяните, чтобы вращать" },
-  { key: "globe.instruction.zoom", group: "Глобус", label: "Подсказка масштаба", defaultRu: "Колесо — масштаб" },
+  { key: "globe.classic_badge", group: "Глобус", label: "Плашка классического атласа", defaultRu: "Классический атлас · 2026" },
+  { key: "globe.classic_badge_title", group: "Глобус", label: "Описание классического атласа", defaultRu: "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.", multiline: true },
+  { key: "globe.instruction.rotate", group: "Глобус", label: "Подсказка вращения", defaultRu: "Тяните или используйте стрелки" },
+  { key: "globe.instruction.zoom", group: "Глобус", label: "Подсказка масштаба", defaultRu: "Колесо или ± — масштаб" },
   { key: "globe.laureate.open_article", group: "Глобус", label: "Подсказка лауреата со статьёй", defaultRu: "Нажмите на метку — откроется статья о лауреате", multiline: true },
   { key: "globe.laureate.open_card", group: "Глобус", label: "Подсказка карточки лауреата", defaultRu: "Нажмите на метку — откроется карточка лауреата", multiline: true },
 

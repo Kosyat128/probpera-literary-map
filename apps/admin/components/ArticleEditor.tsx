@@ -71,6 +71,7 @@ type ImageSelectionContext = {
 };
 type Article = {
   id?: string;
+  updated_at?: string;
   title?: string;
   subtitle?: string;
   excerpt?: string;
@@ -99,6 +100,7 @@ type Article = {
 
 export type ArticleTranslation = {
   id?: string;
+  updated_at?: string;
   article_id?: string;
   locale?: "en";
   title?: string;
@@ -1602,6 +1604,18 @@ export default function ArticleEditor({
       className={isFullscreen ? "article-form is-fullscreen" : "article-form"}
     >
       {article.id && <input type="hidden" name="id" value={article.id} />}
+      {article.id && (
+        <input
+          type="hidden"
+          name="expected_updated_at"
+          value={article.updated_at || ""}
+        />
+      )}
+      <input
+        type="hidden"
+        name="english_expected_updated_at"
+        value={englishTranslation?.updated_at || ""}
+      />
       <input type="hidden" name="previous_status" value={article.status || "draft"} />
       <input type="hidden" name="status" value={status} />
       <input type="hidden" name="scheduled_at" value={scheduledAt} />

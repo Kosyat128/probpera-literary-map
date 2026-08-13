@@ -1,0 +1,35 @@
+import { readFileSync } from "node:fs";
+import { describe, expect, it } from "vitest";
+
+const globeSource = readFileSync(
+  new URL("./LiteraryGlobe.tsx", import.meta.url),
+  "utf8"
+);
+
+describe("literary globe accessible interaction wiring", () => {
+  it("exposes keyboard shortcuts and explicit touch-sized controls", () => {
+    expect(globeSource).toContain('tabIndex={0}');
+    expect(globeSource).toContain(
+      'aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter"'
+    );
+    for (const control of ["zoom-out", "zoom-in", "auto-rotate", "reset"]) {
+      expect(globeSource).toContain(`data-globe-control="${control}"`);
+    }
+  });
+
+  it("uses the shared click-versus-drag gesture for surfaces and markers", () => {
+    expect(globeSource).toContain("beginGlobePointerGesture");
+    expect(globeSource).toContain("updateGlobePointerGesture");
+    expect(globeSource).toContain("isGlobePointerTap");
+    expect(globeSource.match(/finishPointerGesture\(/gu)?.length).toBeGreaterThanOrEqual(
+      4
+    );
+  });
+
+  it("reports why automatic rotation is paused", () => {
+    expect(globeSource).toContain("shouldGlobeAutoRotate");
+    expect(globeSource).toContain("data-globe-auto-rotate={autoRotateStatus}");
+    expect(globeSource).toMatch(/reducedMotion\s*\?\s*"reduced-motion"/u);
+    expect(globeSource).toMatch(/selectedCountry\s*\?\s*"selection"/u);
+  });
+});

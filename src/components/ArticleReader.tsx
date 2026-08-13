@@ -32,6 +32,8 @@ import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
+import { cmsEntityMarker } from "../cms/directEditBridge";
+import { CmsPageBanners } from "./CmsSiteChrome";
 
 type ArticleMediaItem = {
   src: string;
@@ -865,6 +867,14 @@ export default function ArticleReader({
       role="dialog"
       aria-modal="true"
       aria-labelledby="article-reader-title"
+      {...cmsEntityMarker(
+        "article",
+        article.id,
+        article.title,
+        article.id.startsWith("cms-")
+          ? `/articles/${encodeURIComponent(article.id.slice(4))}`
+          : `/articles?search=${encodeURIComponent(article.title)}`
+      )}
     >
       <div
         className="article-reader-progress"
@@ -953,6 +963,7 @@ export default function ArticleReader({
       </header>
 
       <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}>
+        <CmsPageBanners />
         <main className="article-reader-layout">
           <aside className="article-reader-toc">
             <span>{t("В этом материале")}</span>

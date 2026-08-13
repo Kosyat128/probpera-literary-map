@@ -6,6 +6,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type KeyboardEvent as ReactKeyboardEvent,
   type RefObject,
 } from "react";
 import * as THREE from "three";
@@ -29,12 +30,23 @@ import CountryFlagIcon from "./CountryFlagIcon";
 import WriterPortrait from "./WriterPortrait";
 import {
   createGlobeAtlas,
+  GLOBE_VISUAL_STYLE_LABELS,
   GLOBE_VISUAL_STYLES,
   isGlobeVisualStyle,
   type GlobeAtlas,
   type GlobeVisualStyle,
 } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
+import {
+  beginGlobePointerGesture,
+  GLOBE_INTERACTION_RESUME_DELAY_MS,
+  globeControlActionForKey,
+  isGlobePointerTap,
+  shouldGlobeAutoRotate,
+  updateGlobePointerGesture,
+  type GlobeControlAction,
+  type GlobePointerGesture,
+} from "./globeInteraction";
 
 interface Props {
   countries: Country[];
@@ -185,11 +197,6 @@ function storedGlobeVisualStyle(): GlobeVisualStyle {
   }
 }
 
-type PointerOrigin = {
-  x: number;
-  y: number;
-};
-
 function geoToCameraPosition(lat: number, lng: number, radius = 3.45) {
   return geographicToSphere(lng, lat, radius);
 }
@@ -204,6 +211,7 @@ const COUNTRY_MARKER_COORDINATE_FALLBACKS: Readonly<
   CK: [-21.2367, -159.7777],
   FM: [6.9248, 158.161],
   HK: [22.3193, 114.1694],
+  KI: [1.4518, 172.9717],
   KM: [-11.6455, 43.3333],
   LI: [47.141, 9.5209],
   MC: [43.7384, 7.4246],
@@ -223,13 +231,16 @@ export function fallbackCountryCoordinates(
   if (Array.isArray(country.coordinates)) return country.coordinates;
   if (country.coordinates) return [country.coordinates.lat, country.coordinates.lng];
 
+  const countryMarker = country.code
+    ? COUNTRY_MARKER_COORDINATE_FALLBACKS[country.code.toUpperCase()]
+    : null;
+  if (countryMarker) return countryMarker;
+
   const points = country.writers
     .map((writer) => writer.coordinates)
     .filter((coordinates): coordinates is { lat: number; lng: number } => Boolean(coordinates));
   if (!points.length) {
-    return country.code
-      ? COUNTRY_MARKER_COORDINATE_FALLBACKS[country.code.toUpperCase()] ?? null
-      : null;
+    return null;
   }
 
   const vector = points.reduce(
@@ -264,6 +275,41 @@ type HoveredLaureate = {
   country: Country;
 };
 
+type GlobeControlRequest = {
+  id: number;
+  action: Exclude<GlobeControlAction, { type: "select" }>;
+};
+
+type PointerGestureRef = {
+  current: GlobePointerGesture | null;
+};
+
+function startPointerGesture(
+  gestureRef: PointerGestureRef,
+  event: ThreeEvent<PointerEvent>
+) {
+  gestureRef.current = beginGlobePointerGesture(event.nativeEvent);
+}
+
+function trackPointerGesture(
+  gestureRef: PointerGestureRef,
+  event: ThreeEvent<PointerEvent>
+) {
+  gestureRef.current = updateGlobePointerGesture(
+    gestureRef.current,
+    event.nativeEvent
+  );
+}
+
+function finishPointerGesture(
+  gestureRef: PointerGestureRef,
+  event: ThreeEvent<PointerEvent>
+) {
+  const isTap = isGlobePointerTap(gestureRef.current, event.nativeEvent);
+  gestureRef.current = null;
+  return isTap;
+}
+
 function CameraFocus({
   countryId,
   coordinates,
@@ -287,7 +333,6 @@ function CameraFocus({
       latitude === undefined ||
       longitude === undefined
     ) {
-      if (controls) controls.autoRotate = !reducedMotion;
       return;
     }
 
@@ -297,7 +342,6 @@ function CameraFocus({
     const startedAt = performance.now();
     const duration = reducedMotion ? 0 : 1450;
     let animationFrame = 0;
-    if (controls) controls.autoRotate = false;
 
     const renderFrame = (now: number) => {
       const progress = duration === 0
@@ -334,6 +378,48 @@ function CameraFocus({
     longitude,
     reducedMotion,
   ]);
+
+  return null;
+}
+
+function GlobeControlDriver({
+  request,
+  controlsRef,
+}: {
+  request: GlobeControlRequest | null;
+  controlsRef: RefObject<OrbitControlsImpl>;
+}) {
+  const { camera, invalidate } = useThree();
+
+  useEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls || !request) return;
+
+    const { action } = request;
+    if (action.type === "rotate") {
+      controls.setAzimuthalAngle(
+        controls.getAzimuthalAngle() + action.azimuthDelta
+      );
+      controls.setPolarAngle(
+        THREE.MathUtils.clamp(
+          controls.getPolarAngle() + action.polarDelta,
+          controls.minPolarAngle,
+          controls.maxPolarAngle
+        )
+      );
+    } else if (action.type === "zoom") {
+      if (action.direction === "in") controls.dollyIn(1.18);
+      else controls.dollyOut(1.18);
+    } else {
+      camera.position.set(0, 0.08, 4.9);
+      camera.zoom = 1;
+      camera.updateProjectionMatrix();
+      controls.target.set(0, -0.2, 0);
+      controls.update();
+    }
+
+    invalidate();
+  }, [camera, controlsRef, invalidate, request]);
 
   return null;
 }
@@ -1211,10 +1297,10 @@ function GlobeSurface({
   const globeMesh = useRef<THREE.Mesh>(null);
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
   const normalizedPointer = useMemo(() => new THREE.Vector2(), []);
-  const pointerOrigin = useRef<PointerOrigin | null>(null);
+  const pointerGesture = useRef<GlobePointerGesture | null>(null);
   const hoveredCountryId = useRef<string | null>(null);
   const pointerFrame = useRef(0);
-  const latestPointer = useRef<PointerOrigin | null>(null);
+  const latestPointer = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(
     () => () => {
@@ -1246,6 +1332,9 @@ function GlobeSurface({
 
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
+    trackPointerGesture(pointerGesture, event);
+    if (event.nativeEvent.pointerType === "touch") return;
+
     latestPointer.current = {
       x: event.nativeEvent.clientX,
       y: event.nativeEvent.clientY,
@@ -1267,23 +1356,12 @@ function GlobeSurface({
 
   const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    pointerOrigin.current = {
-      x: event.nativeEvent.clientX,
-      y: event.nativeEvent.clientY,
-    };
+    startPointerGesture(pointerGesture, event);
   };
 
   const handlePointerUp = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    const start = pointerOrigin.current;
-    pointerOrigin.current = null;
-    if (!start) return;
-
-    const distance = Math.hypot(
-      event.nativeEvent.clientX - start.x,
-      event.nativeEvent.clientY - start.y
-    );
-    if (distance > 7) return;
+    if (!finishPointerGesture(pointerGesture, event)) return;
 
     const country = countryFromPointer(
       event.nativeEvent.clientX,
@@ -1299,7 +1377,11 @@ function GlobeSurface({
         onPointerMove={handlePointerMove}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
+        onPointerCancel={() => {
+          pointerGesture.current = null;
+        }}
         onPointerOut={() => {
+          pointerGesture.current = null;
           cancelAnimationFrame(pointerFrame.current);
           pointerFrame.current = 0;
           latestPointer.current = null;
@@ -1353,6 +1435,64 @@ function GlobeSurface({
   );
 }
 
+function MicrostateMarker({
+  country,
+  coordinates,
+  selected,
+  onCountrySelect,
+  onCountryHover,
+}: {
+  country: Country;
+  coordinates: [number, number];
+  selected: boolean;
+  onCountrySelect?: (country: Country) => void;
+  onCountryHover: (country: Country | null) => void;
+}) {
+  const pointerGesture = useRef<GlobePointerGesture | null>(null);
+  const position = geoToCameraPosition(coordinates[0], coordinates[1], 1.016);
+
+  return (
+    <mesh
+      position={position}
+      onPointerOver={(event) => {
+        event.stopPropagation();
+        onCountryHover(country);
+      }}
+      onPointerOut={(event) => {
+        event.stopPropagation();
+        pointerGesture.current = null;
+        onCountryHover(null);
+      }}
+      onPointerDown={(event) => {
+        event.stopPropagation();
+        startPointerGesture(pointerGesture, event);
+      }}
+      onPointerMove={(event) => {
+        event.stopPropagation();
+        trackPointerGesture(pointerGesture, event);
+      }}
+      onPointerUp={(event) => {
+        event.stopPropagation();
+        if (finishPointerGesture(pointerGesture, event)) {
+          onCountrySelect?.(country);
+        }
+      }}
+      onPointerCancel={() => {
+        pointerGesture.current = null;
+      }}
+    >
+      <sphereGeometry args={[selected ? 0.019 : 0.012, 16, 16]} />
+      <meshStandardMaterial
+        color={selected ? "#ffe0a0" : "#d9a650"}
+        emissive="#d48a2e"
+        emissiveIntensity={selected ? 4.2 : 2.1}
+        roughness={0.45}
+        metalness={0.24}
+      />
+    </mesh>
+  );
+}
+
 function MicrostateMarkers({
   atlas,
   countries,
@@ -1389,34 +1529,16 @@ function MicrostateMarkers({
     <group>
       {microstates.map(({ country, coordinates }) => {
         const selected = selectedCountry?.id === country.id;
-        const position = geoToCameraPosition(coordinates[0], coordinates[1], 1.016);
 
         return (
-          <mesh
+          <MicrostateMarker
             key={country.id}
-            position={position}
-            onPointerOver={(event) => {
-              event.stopPropagation();
-              onCountryHover(country);
-            }}
-            onPointerOut={(event) => {
-              event.stopPropagation();
-              onCountryHover(null);
-            }}
-            onClick={(event) => {
-              event.stopPropagation();
-              onCountrySelect?.(country);
-            }}
-          >
-            <sphereGeometry args={[selected ? 0.019 : 0.012, 16, 16]} />
-            <meshStandardMaterial
-              color={selected ? "#ffe0a0" : "#d9a650"}
-              emissive="#d48a2e"
-              emissiveIntensity={selected ? 4.2 : 2.1}
-              roughness={0.45}
-              metalness={0.24}
-            />
-          </mesh>
+            country={country}
+            coordinates={coordinates}
+            selected={selected}
+            onCountrySelect={onCountrySelect}
+            onCountryHover={onCountryHover}
+          />
         );
       })}
     </group>
@@ -1443,6 +1565,7 @@ function NobelLaureateMarker({
   onHover: (laureate: HoveredLaureate | null) => void;
 }) {
   const marker = useRef<THREE.Group>(null);
+  const pointerGesture = useRef<GlobePointerGesture | null>(null);
 
   useFrame(({ clock }) => {
     if (!marker.current || reducedMotion) return;
@@ -1460,11 +1583,25 @@ function NobelLaureateMarker({
       }}
       onPointerOut={(event) => {
         event.stopPropagation();
+        pointerGesture.current = null;
         onHover(null);
       }}
-      onClick={(event) => {
+      onPointerDown={(event) => {
         event.stopPropagation();
-        onSelect(country, writer);
+        startPointerGesture(pointerGesture, event);
+      }}
+      onPointerMove={(event) => {
+        event.stopPropagation();
+        trackPointerGesture(pointerGesture, event);
+      }}
+      onPointerUp={(event) => {
+        event.stopPropagation();
+        if (finishPointerGesture(pointerGesture, event)) {
+          onSelect(country, writer);
+        }
+      }}
+      onPointerCancel={() => {
+        pointerGesture.current = null;
       }}
     >
       <sprite scale={selected ? [0.1, 0.1, 1] : [0.072, 0.072, 1]}>
@@ -1614,6 +1751,10 @@ function GlobeScene({
   onCountryHover,
   reducedMotion,
   economical,
+  autoRotate,
+  controlRequest,
+  onInteractionStart,
+  onInteractionEnd,
   showNobelLaureates,
   nobelCountryId,
   onWriterSelect,
@@ -1629,6 +1770,10 @@ function GlobeScene({
   onCountryHover: (country: Country | null) => void;
   reducedMotion: boolean;
   economical: boolean;
+  autoRotate: boolean;
+  controlRequest: GlobeControlRequest | null;
+  onInteractionStart: () => void;
+  onInteractionEnd: () => void;
   showNobelLaureates: boolean;
   nobelCountryId?: string | null;
   onWriterSelect?: (country: Country, writer: Writer) => void;
@@ -1750,18 +1895,13 @@ function GlobeScene({
         maxPolarAngle={2.62}
         rotateSpeed={0.48}
         zoomSpeed={0.75}
-        autoRotate={!selectedCountry && !reducedMotion}
+        autoRotate={autoRotate}
         autoRotateSpeed={0.24}
         target={[0, -0.2, 0]}
-        onStart={() => {
-          if (controlsRef.current) controlsRef.current.autoRotate = false;
-        }}
-        onEnd={() => {
-          if (controlsRef.current) {
-            controlsRef.current.autoRotate = !selectedCountry && !reducedMotion;
-          }
-        }}
+        onStart={onInteractionStart}
+        onEnd={onInteractionEnd}
       />
+      <GlobeControlDriver request={controlRequest} controlsRef={controlsRef} />
       <CameraFocus
         countryId={selectedCountry?.id}
         coordinates={coordinates}
@@ -1800,6 +1940,12 @@ export default function LiteraryGlobe({
   const containerRef = useRef<HTMLDivElement>(null);
   const [globeActive, setGlobeActive] = useState(false);
   const [atlasRequested, setAtlasRequested] = useState(false);
+  const [autoRotateRequested, setAutoRotateRequested] = useState(true);
+  const [interactionPaused, setInteractionPaused] = useState(false);
+  const [controlRequest, setControlRequest] =
+    useState<GlobeControlRequest | null>(null);
+  const controlRequestId = useRef(0);
+  const autoRotateResumeTimer = useRef<number | null>(null);
   const hoveredNobelYear = hoveredLaureate
     ? getNobelYear(hoveredLaureate.writer)
     : null;
@@ -1822,16 +1968,96 @@ export default function LiteraryGlobe({
     navigator.hardwareConcurrency <= 4 ||
     window.devicePixelRatio >= 2.5 ||
     window.innerWidth <= 680;
+  const autoRotateActive = shouldGlobeAutoRotate({
+    requested: autoRotateRequested,
+    reducedMotion,
+    selectedCountryId: selectedCountry?.id,
+    interactionPaused,
+    visible: globeActive,
+  });
+  const autoRotateStatus = !autoRotateRequested
+    ? "off"
+    : reducedMotion
+      ? "reduced-motion"
+      : selectedCountry
+        ? "selection"
+        : interactionPaused
+          ? "interaction"
+          : globeActive
+            ? "active"
+            : "offscreen";
   const visualStyleLabels: Record<GlobeVisualStyle, string> = {
-    antique: t("Старинный"),
-    earth: t("Классический"),
-    modern: t("Современный"),
+    antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.full),
+    earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.full),
+    modern: t(GLOBE_VISUAL_STYLE_LABELS.modern.full),
   };
   const compactVisualStyleLabels: Record<GlobeVisualStyle, string> = {
-    antique: t("Ретро"),
-    earth: t("Классический"),
-    modern: t("Модерн"),
+    antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.compact),
+    earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.compact),
+    modern: t(GLOBE_VISUAL_STYLE_LABELS.modern.compact),
   };
+
+  const clearAutoRotateResumeTimer = useCallback(() => {
+    if (autoRotateResumeTimer.current === null) return;
+    window.clearTimeout(autoRotateResumeTimer.current);
+    autoRotateResumeTimer.current = null;
+  }, []);
+
+  const handleInteractionStart = useCallback(() => {
+    clearAutoRotateResumeTimer();
+    setInteractionPaused(true);
+  }, [clearAutoRotateResumeTimer]);
+
+  const handleInteractionEnd = useCallback(() => {
+    clearAutoRotateResumeTimer();
+    autoRotateResumeTimer.current = window.setTimeout(() => {
+      autoRotateResumeTimer.current = null;
+      setInteractionPaused(false);
+    }, GLOBE_INTERACTION_RESUME_DELAY_MS);
+  }, [clearAutoRotateResumeTimer]);
+
+  const requestGlobeControl = useCallback(
+    (action: Exclude<GlobeControlAction, { type: "select" }>) => {
+      handleInteractionStart();
+      controlRequestId.current += 1;
+      setControlRequest({ id: controlRequestId.current, action });
+      handleInteractionEnd();
+    },
+    [handleInteractionEnd, handleInteractionStart]
+  );
+
+  const toggleAutoRotate = useCallback(() => {
+    clearAutoRotateResumeTimer();
+    setInteractionPaused(false);
+    setAutoRotateRequested((enabled) => !enabled);
+  }, [clearAutoRotateResumeTimer]);
+
+  const handleGlobeKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (event.target !== event.currentTarget) return;
+      const action = globeControlActionForKey(event.key, event.shiftKey);
+      if (!action) return;
+
+      if (action.type === "select") {
+        const country = hoveredCountry ?? selectedCountry;
+        if (!country || !onCountrySelect) return;
+        event.preventDefault();
+        onCountrySelect(country);
+        return;
+      }
+
+      event.preventDefault();
+      requestGlobeControl(action);
+    },
+    [hoveredCountry, onCountrySelect, requestGlobeControl, selectedCountry]
+  );
+
+  useEffect(
+    () => () => {
+      clearAutoRotateResumeTimer();
+    },
+    [clearAutoRotateResumeTimer]
+  );
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1975,8 +2201,16 @@ export default function LiteraryGlobe({
     <div
       ref={containerRef}
       className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
+      role="region"
+      tabIndex={0}
+      aria-label={t(
+        "Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб, Home возвращает исходный вид."
+      )}
+      aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter"
+      onKeyDown={handleGlobeKeyDown}
       data-globe-style={renderedVisualStyle}
       data-globe-render-loop={globeActive ? "active" : "paused"}
+      data-globe-auto-rotate={autoRotateStatus}
     >
       <Canvas
         camera={{ position: [0, 0.08, 4.9], fov: 43, near: 0.1, far: 100 }}
@@ -2005,12 +2239,83 @@ export default function LiteraryGlobe({
           onCountryHover={setHoveredCountry}
           reducedMotion={reducedMotion}
           economical={economical}
+          autoRotate={autoRotateActive}
+          controlRequest={controlRequest}
+          onInteractionStart={handleInteractionStart}
+          onInteractionEnd={handleInteractionEnd}
           showNobelLaureates={showNobelLaureates}
           nobelCountryId={nobelCountryId}
           onWriterSelect={onWriterSelect}
           onLaureateHover={setHoveredLaureate}
         />
       </Canvas>
+
+      <div
+        className="globe-controls"
+        role="group"
+        aria-label={t("Управление глобусом")}
+      >
+        <button
+          type="button"
+          data-globe-control="zoom-out"
+          aria-label={t("Уменьшить масштаб глобуса")}
+          aria-keyshortcuts="-"
+          title={t("Уменьшить масштаб глобуса")}
+          onClick={() =>
+            requestGlobeControl({ type: "zoom", direction: "out" })
+          }
+        >
+          <span aria-hidden="true">−</span>
+        </button>
+        <button
+          type="button"
+          data-globe-control="zoom-in"
+          aria-label={t("Увеличить масштаб глобуса")}
+          aria-keyshortcuts="+"
+          title={t("Увеличить масштаб глобуса")}
+          onClick={() =>
+            requestGlobeControl({ type: "zoom", direction: "in" })
+          }
+        >
+          <span aria-hidden="true">+</span>
+        </button>
+        <button
+          type="button"
+          className={autoRotateRequested ? "is-active" : undefined}
+          data-globe-control="auto-rotate"
+          data-globe-auto-rotate-state={autoRotateStatus}
+          aria-label={t(
+            autoRotateRequested
+              ? "Остановить автоматическое вращение"
+              : "Включить автоматическое вращение"
+          )}
+          aria-pressed={autoRotateRequested}
+          title={t(
+            autoRotateRequested
+              ? "Остановить автоматическое вращение"
+              : "Включить автоматическое вращение"
+          )}
+          onClick={toggleAutoRotate}
+        >
+          <span aria-hidden="true">↻</span>
+          <small>{t("Авто")}</small>
+        </button>
+        <button
+          type="button"
+          data-globe-control="reset"
+          aria-label={t("Вернуть исходный вид глобуса")}
+          aria-keyshortcuts="Home"
+          title={t("Вернуть исходный вид глобуса")}
+          onClick={() => {
+            setHoveredCountry(null);
+            setHoveredLaureate(null);
+            requestGlobeControl({ type: "reset" });
+          }}
+        >
+          <span aria-hidden="true">⌂</span>
+          <small>{t("Сброс")}</small>
+        </button>
+      </div>
 
       <div
         className="globe-style-switch"
@@ -2069,10 +2374,10 @@ export default function LiteraryGlobe({
           role="status"
           aria-live="polite"
           title={t(
-            "Современная визуальная редакция 2026 года. Картография: Natural Earth."
+            "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth."
           )}
         >
-          {t("Современное оформление · 2026")}
+          {t("Классический атлас · 2026")}
         </div>
       )}
 
@@ -2165,14 +2470,19 @@ export default function LiteraryGlobe({
                 ])
               )}
             </small>
+            <em>
+              {hoveredCountry
+                ? t("Нажмите, чтобы открыть архив страны")
+                : t("Страна выбрана · карточка архива открыта")}
+            </em>
           </div>
         </div>
       ) : null}
 
-      <div className="globe-instruction">
-        <span>{t("Тяните, чтобы вращать")}</span>
+      <div className="globe-instruction" aria-hidden="true">
+        <span>{t("Тяните или используйте стрелки")}</span>
         <i aria-hidden="true" />
-        <span>{t("Колесо — масштаб")}</span>
+        <span>{t("Колесо или ± — масштаб")}</span>
       </div>
     </div>
   );

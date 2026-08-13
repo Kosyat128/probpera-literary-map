@@ -3,11 +3,22 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "packageManager": "npm@11.17.0",
+  "engines": {
+    "node": "24.x",
+    "npm": "11.x"
+  },
   "workspaces": [
     "apps/admin"
   ],
   "overrides": {
-    "postcss": "8.5.24"
+    "postcss": "8.5.24",
+    "@react-three/drei": {
+      "three-mesh-bvh": "0.8.3"
+    },
+    "stats-gl": {
+      "three": "0.178.0"
+    }
   },
   "scripts": {
     "dev": "vite",
@@ -21,7 +32,7 @@
     "preview": "vite preview",
     "preview:domain": "node scripts/serve-dist.mjs",
     "admin:dev": "npm run dev --workspace @probpera/admin",
-    "admin:build": "npm run build --workspace @probpera/admin",
+    "admin:build": "npm run editorial:catalog && npm run build --workspace @probpera/admin",
     "admin:start": "npm run start --workspace @probpera/admin",
     "admin:serve": "npm run admin:build && npm run admin:start",
     "admin:cf:build": "npm run cf:build --workspace @probpera/admin",
@@ -39,10 +50,16 @@
     "editorial:language:audit": "node scripts/audit-editorial-language.mjs",
     "interface:language:audit": "node scripts/audit-interface-i18n.mjs",
     "interface:copy:catalog": "node scripts/export-interface-copy-catalog.mjs",
+    "editorial:catalog": "node scripts/export-editorial-catalog.mjs",
+    "editorial:catalog:check": "node scripts/export-editorial-catalog.mjs --check",
     "interface:copy:catalog:check": "node scripts/export-interface-copy-catalog.mjs --check",
     "community:config:check": "node scripts/audit-community-config.mjs",
     "content:fix-confirmed": "node scripts/apply-editorial-fixes.mjs",
     "content:normalize-titles": "node scripts/normalize-article-titles.mjs",
+    "content:derived-text:check": "node scripts/normalize-article-derived-text.mjs",
+    "content:derived-text:fix": "node scripts/normalize-article-derived-text.mjs --write",
+    "content:metadata:check": "node scripts/normalize-cms-snapshot-metadata.mjs",
+    "content:metadata:fix": "node scripts/normalize-cms-snapshot-metadata.mjs --write",
     "content:normalize-book-titles": "node scripts/normalize-generated-book-titles.mjs",
     "content:link-books": "node scripts/build-book-article-mentions.mjs",
     "content:link-books:scope-check": "node scripts/build-book-article-mentions.mjs --check-user-cover-scope",
@@ -52,7 +69,7 @@
     "content:import:cms": "node scripts/import-articles-to-supabase.mjs --dry-run",
     "content:export:cms": "node --env-file-if-exists=.env.local scripts/export-published-content.mjs",
     "content:normalize:cms": "node scripts/normalize-cms-publications.mjs",
-    "links:audit": "node scripts/audit-public-routes.mjs",
+    "links:audit": "node scripts/audit-public-routes.mjs && node scripts/normalize-article-derived-text.mjs && node scripts/normalize-cms-snapshot-metadata.mjs",
     "media:audit": "node scripts/audit-section-media.mjs",
     "media:audit:legacy": "node scripts/audit-legacy-article-media.mjs",
     "countries:import": "node scripts/import-wikidata-writers.mjs --target=4000",
@@ -95,29 +112,36 @@
     "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
   },
   "dependencies": {
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.17.10",
-    "@supabase/supabase-js": "^2.57.4",
+    "@react-three/drei": "9.122.0",
+    "@react-three/fiber": "8.18.0",
+    "@supabase/supabase-js": "2.112.3",
     "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-leaflet": "^4.2.1",
-    "three": "^0.178.0"
+    "three": "0.178.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.3",
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.62.1",
-    "@types/leaflet": "^1.9.15",
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^24.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/three": "0.178.0",
     "@vitejs/plugin-react": "^5.1.4",
-    "cheerio": "^1.1.2",
-    "esbuild": "^0.28.1",
+    "cheerio": "^1.2.0",
+    "esbuild": "^0.28.2",
     "sharp": "0.35.3",
     "typescript": "^5.6.3",
     "vite": "^7.3.6",
     "vitest": "^4.1.10"
+  },
+  "allowScripts": {
+    "esbuild@0.25.4": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.28.2": true,
+    "workerd@1.20260811.1": true
   }
 }

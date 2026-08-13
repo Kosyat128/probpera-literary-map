@@ -474,7 +474,7 @@ with check (public.is_staff(array['owner'::public.staff_role]));
 create policy "Public read visible categories"
 on public.categories for select
 to anon, authenticated
-using (is_visible or public.is_staff());
+using (is_visible);
 
 create policy "Staff manage categories"
 on public.categories for all
@@ -496,7 +496,7 @@ with check (public.is_staff());
 create policy "Public read active media metadata"
 on public.media_assets for select
 to anon, authenticated
-using (deleted_at is null or public.is_staff());
+using (deleted_at is null);
 
 create policy "Staff create media metadata"
 on public.media_assets for insert
@@ -523,7 +523,6 @@ using (
     and published_at <= now()
     and deleted_at is null
   )
-  or public.is_staff()
 );
 
 create policy "Staff create articles"
@@ -557,7 +556,6 @@ using (
       and published_at <= now()
       and deleted_at is null
   )
-  or public.is_staff()
 );
 
 create policy "Staff manage article tags"
@@ -582,7 +580,6 @@ on public.pages for select
 to anon, authenticated
 using (
   (status = 'published' and deleted_at is null)
-  or public.is_staff()
 );
 
 create policy "Staff manage pages"
@@ -603,7 +600,7 @@ using (public.is_staff());
 create policy "Public read enabled homepage blocks"
 on public.homepage_blocks for select
 to anon, authenticated
-using (is_enabled or public.is_staff());
+using (is_enabled);
 
 create policy "Staff manage homepage blocks"
 on public.homepage_blocks for all
@@ -620,7 +617,6 @@ using (
     and (starts_at is null or starts_at <= now())
     and (ends_at is null or ends_at > now())
   )
-  or public.is_staff()
 );
 
 create policy "Staff manage banners"
@@ -647,7 +643,7 @@ with check (public.is_staff());
 create policy "Public read visible navigation items"
 on public.navigation_items for select
 to anon, authenticated
-using (is_visible or public.is_staff());
+using (is_visible);
 
 create policy "Staff manage navigation items"
 on public.navigation_items for all
@@ -658,7 +654,7 @@ with check (public.is_staff());
 create policy "Public read active redirects"
 on public.redirects for select
 to anon, authenticated
-using (is_active or public.is_staff());
+using (is_active);
 
 create policy "Staff manage redirects"
 on public.redirects for all

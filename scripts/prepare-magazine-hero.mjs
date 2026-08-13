@@ -17,27 +17,40 @@ if (!metadata.width || !metadata.height) {
   throw new Error("The source image has no readable dimensions");
 }
 
-await image
-  .clone()
-  .resize({ width: 1920, withoutEnlargement: true })
-  .webp({ quality: 86, effort: 6, smartSubsample: true })
-  .toFile(path.join(outputDirectory, "magazine-hero-wide.webp"));
-
-await image
-  .clone()
-  .extract({
-    left: Math.max(0, Math.min(metadata.width - 682, 875)),
-    top: 0,
-    width: Math.min(682, metadata.width),
-    height: metadata.height,
-  })
-  .resize(768, 1024, { fit: "cover" })
-  .webp({ quality: 84, effort: 6, smartSubsample: true })
-  .toFile(path.join(outputDirectory, "magazine-hero-mobile.webp"));
+await Promise.all([
+  image
+    .clone()
+    .resize({ width: 1920, withoutEnlargement: true })
+    .webp({ quality: 86, effort: 6, smartSubsample: true })
+    .toFile(path.join(outputDirectory, "magazine-hero-wide.webp")),
+  image
+    .clone()
+    .resize({ width: 1920, withoutEnlargement: true })
+    .avif({ quality: 63, effort: 7, chromaSubsampling: "4:2:0" })
+    .toFile(path.join(outputDirectory, "magazine-hero-wide.avif")),
+  // The mobile derivative preserves the complete 2:1 composition. Layout
+  // uses object-fit: contain, so this smaller file saves bytes without ever
+  // cropping the landscape, animals, books, or tree from the supplied image.
+  image
+    .clone()
+    .resize({ width: 960, withoutEnlargement: true })
+    .webp({ quality: 84, effort: 6, smartSubsample: true })
+    .toFile(path.join(outputDirectory, "magazine-hero-mobile.webp")),
+  image
+    .clone()
+    .resize({ width: 960, withoutEnlargement: true })
+    .avif({ quality: 60, effort: 7, chromaSubsampling: "4:2:0" })
+    .toFile(path.join(outputDirectory, "magazine-hero-mobile.avif")),
+]);
 
 console.log(
   JSON.stringify({
     source: { width: metadata.width, height: metadata.height },
-    outputs: ["magazine-hero-wide.webp", "magazine-hero-mobile.webp"],
+    outputs: [
+      "magazine-hero-wide.webp",
+      "magazine-hero-wide.avif",
+      "magazine-hero-mobile.webp",
+      "magazine-hero-mobile.avif",
+    ],
   })
 );

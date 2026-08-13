@@ -406,7 +406,6 @@ using (
         and article.deleted_at is null
     )
   )
-  or public.is_staff()
 );
 
 create policy "Staff create article translations"

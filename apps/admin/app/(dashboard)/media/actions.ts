@@ -5,11 +5,13 @@ import { redirect } from "@/lib/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
+import { mediaCatalogPageHref, parseMediaCatalogQuery } from "@/lib/media-catalog-query";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const mediaSchema = z.object({
   id: z.string().uuid(),
+  expectedUpdatedAt: z.string().datetime({ offset: true }),
   altText: z.string().trim().min(3).max(500),
   caption: z.string().trim().max(1000),
   creator: z.string().trim().max(240),
@@ -24,8 +26,16 @@ const mediaSchema = z.object({
 export async function updateMediaMetadataAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const catalog = parseMediaCatalogQuery({
+    q: formData.get("catalog_q"),
+    search_field: formData.get("catalog_search_field"),
+    page: formData.get("catalog_page"),
+  });
+  const catalogTarget = (notice?: { saved?: string; error?: string; published?: string }) =>
+    mediaCatalogPageHref(catalog, catalog.page, notice);
   const parsed = mediaSchema.safeParse({
     id: formData.get("id"),
+    expectedUpdatedAt: formData.get("expected_updated_at"),
     altText: formData.get("alt_text"),
     caption: String(formData.get("caption") || ""),
     creator: String(formData.get("creator") || ""),
@@ -37,15 +47,13 @@ export async function updateMediaMetadataAction(formData: FormData) {
     focusY: formData.get("focus_y") || 0.5,
   });
   if (!parsed.success) {
-    redirect(
-      `/media?error=${encodeURIComponent(
-        parsed.error.issues[0]?.message || "Проверьте описание изображения"
-      )}`
-    );
+    redirect(catalogTarget({
+      error: parsed.error.issues[0]?.message || "Проверьте описание изображения",
+    }));
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/media?error=База данных не подключена");
-  const { error } = await supabase
+  if (!supabase) redirect(catalogTarget({ error: "База данных не подключена" }));
+  const { data: updated, error } = await supabase
     .from("media_assets")
     .update({
       alt_text: parsed.data.altText,
@@ -58,8 +66,16 @@ export async function updateMediaMetadataAction(formData: FormData) {
       focus_x: parsed.data.focusX,
       focus_y: parsed.data.focusY,
     })
-    .eq("id", parsed.data.id);
-  if (error) redirect(`/media?error=${encodeURIComponent(error.message)}`);
+    .eq("id", parsed.data.id)
+    .eq("updated_at", parsed.data.expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
+  if (error) redirect(catalogTarget({ error: error.message }));
+  if (!updated) {
+    redirect(catalogTarget({
+      error: "Изображение уже изменено в другой вкладке. Обновите страницу и повторите правку.",
+    }));
+  }
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "media.updated",
@@ -69,7 +85,7 @@ export async function updateMediaMetadataAction(formData: FormData) {
       license: parsed.data.licenseName,
     },
   });
-  await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
     entityType: "media",
@@ -77,5 +93,34 @@ export async function updateMediaMetadataAction(formData: FormData) {
     reason: "media.updated",
   });
   revalidatePath("/media");
-  redirect("/media?saved=1");
+  redirect(catalogTarget({ saved: "1", published: publication.state }));
+}
+
+export async function republishMediaAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  const parsedId = z.string().uuid().safeParse(formData.get("id"));
+  if (!parsedId.success) {
+    redirect("/media?error=Не удалось определить загруженное изображение");
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect("/media?error=База данных не подключена");
+
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId: session.user.id,
+    entityType: "media",
+    entityId: parsedId.data,
+    reason: "media.uploaded.retry",
+    metadata: { source: "media_uploader_retry" },
+  });
+  await supabase.from("admin_audit_log").insert({
+    actor_id: session.user.id,
+    action: "media.publication_retried",
+    entity_type: "media",
+    entity_id: parsedId.data,
+    metadata: { publication: publication.state },
+  });
+  revalidatePath("/media");
+  redirect(`/media?published=${publication.state}`);
 }

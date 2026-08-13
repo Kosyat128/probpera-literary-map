@@ -1,4 +1,5 @@
-import { defineConfig, loadEnv } from 'vite';
+import { loadEnv } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
@@ -9,12 +10,18 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     plugins: [react()],
+    test: {
+      exclude: ["**/node_modules/**", "**/.git/**", ".tmp/**"],
+    },
     build: {
       rollupOptions: {
         output: {
           manualChunks(id) {
             const moduleId = id.replaceAll("\\\\", "/");
             if (moduleId.includes("/books.generated.json")) return "book-catalog";
+            if (moduleId.includes("/writerPortraits.generated.json")) {
+              return "writer-portraits-data";
+            }
             if (
               moduleId.includes(
                 "/writerBiographyFactReviewCorrections.generated.json"

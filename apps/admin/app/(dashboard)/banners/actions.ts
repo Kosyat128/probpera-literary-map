@@ -6,11 +6,13 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild } from "@/lib/publication";
+import { isSafePublicHref } from "@/lib/public-href";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
 const bannerSchema = z.object({
   id: optionalUuid,
+  expectedUpdatedAt: z.union([z.string().datetime({ offset: true }), z.literal("")]),
   name: z.string().trim().min(2).max(160),
   title: z.string().trim().max(240),
   description: z.string().trim().max(1200),
@@ -44,20 +46,21 @@ async function saveAuditAndBuild(
   action: string
 ) {
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return;
+  if (!supabase) return "queue-error" as const;
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
     entity_type: "banner",
     entity_id: bannerId,
   });
-  await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId,
     entityType: "banner",
     entityId: bannerId,
     reason: action,
   });
+  return publication.state;
 }
 
 export async function saveBannerAction(formData: FormData) {
@@ -65,6 +68,7 @@ export async function saveBannerAction(formData: FormData) {
   if (!session?.user) redirect("/login");
   const parsed = bannerSchema.safeParse({
     id: String(formData.get("id") || ""),
+    expectedUpdatedAt: String(formData.get("expected_updated_at") || ""),
     name: formData.get("name"),
     title: String(formData.get("title") || ""),
     description: String(formData.get("description") || ""),
@@ -84,8 +88,7 @@ export async function saveBannerAction(formData: FormData) {
   }
   if (
     parsed.data.targetUrl &&
-    !parsed.data.targetUrl.startsWith("/") &&
-    !/^https:\/\//iu.test(parsed.data.targetUrl)
+    !isSafePublicHref(parsed.data.targetUrl)
   ) {
     redirect("/banners?error=Ссылка должна начинаться с / или https://");
   }
@@ -111,11 +114,20 @@ export async function saveBannerAction(formData: FormData) {
   };
   let bannerId = parsed.data.id;
   if (bannerId) {
-    const { error } = await supabase
+    if (!parsed.data.expectedUpdatedAt) {
+      redirect("/banners?error=Версия баннера не указана. Обновите страницу.");
+    }
+    const { data: updated, error } = await supabase
       .from("banners")
       .update(payload)
-      .eq("id", bannerId);
+      .eq("id", bannerId)
+      .eq("updated_at", parsed.data.expectedUpdatedAt)
+      .select("id")
+      .maybeSingle();
     if (error) redirect(`/banners?error=${encodeURIComponent(error.message)}`);
+    if (!updated) {
+      redirect("/banners?error=Баннер уже изменён в другой вкладке. Обновите страницу и повторите правку.");
+    }
   } else {
     const { data, error } = await supabase
       .from("banners")
@@ -127,25 +139,38 @@ export async function saveBannerAction(formData: FormData) {
     }
     bannerId = data.id;
   }
-  await saveAuditAndBuild(
+  const publication = await saveAuditAndBuild(
     session.user.id,
     bannerId,
     parsed.data.id ? "banner.updated" : "banner.created"
   );
   revalidatePath("/banners");
-  redirect("/banners?saved=1");
+  redirect(`/banners?saved=1&published=${publication}`);
 }
 
 export async function deleteBannerAction(formData: FormData) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
   const id = z.string().uuid().safeParse(formData.get("id"));
+  const expectedUpdatedAt = z.string().datetime({ offset: true }).safeParse(
+    formData.get("expected_updated_at")
+  );
   if (!id.success) redirect("/banners?error=Некорректный баннер");
+  if (!expectedUpdatedAt.success) redirect("/banners?error=Версия баннера не указана. Обновите страницу.");
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/banners?error=База данных не подключена");
-  const { error } = await supabase.from("banners").delete().eq("id", id.data);
+  const { data: deleted, error } = await supabase
+    .from("banners")
+    .delete()
+    .eq("id", id.data)
+    .eq("updated_at", expectedUpdatedAt.data)
+    .select("id")
+    .maybeSingle();
   if (error) redirect(`/banners?error=${encodeURIComponent(error.message)}`);
-  await saveAuditAndBuild(session.user.id, id.data, "banner.deleted");
+  if (!deleted) {
+    redirect("/banners?error=Баннер уже изменён или удалён. Обновите страницу.");
+  }
+  const publication = await saveAuditAndBuild(session.user.id, id.data, "banner.deleted");
   revalidatePath("/banners");
-  redirect("/banners?deleted=1");
+  redirect(`/banners?deleted=1&published=${publication}`);
 }

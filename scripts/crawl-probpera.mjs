@@ -2,6 +2,7 @@ import { load } from "cheerio";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { normalizeConfirmedArticleHeading } from "./lib/article-route-policy.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -181,7 +182,9 @@ function cleanContent(html) {
   const headings = [];
   root.find("h2,h3").each((index, element) => {
     const heading = $(element);
-    const text = normalizeText(heading.text());
+    const sourceText = normalizeText(heading.text());
+    const text = normalizeConfirmedArticleHeading(sourceText);
+    if (text !== sourceText) heading.text(text);
     const id = headingId(text, index);
     heading.attr("id", id);
     headings.push({

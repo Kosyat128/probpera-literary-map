@@ -21,6 +21,7 @@ import { EditorialImage } from "@/components/EditorialImage";
 
 type PageRecord = {
   id: string;
+  updated_at: string;
   title?: string;
   excerpt?: string;
   slug?: string;
@@ -58,9 +59,13 @@ function ToolbarButton({
 export default function PageEditor({
   page,
   publicSiteUrl,
+  catalogContext,
+  savedAfterSubmit = false,
 }: {
   page: PageRecord;
   publicSiteUrl: string;
+  catalogContext: { q: string; status: string; page: number; revisionPage: number };
+  savedAfterSubmit?: boolean;
 }) {
   const [title, setTitle] = useState(page.title || "");
   const [slug, setSlug] = useState(page.slug || "");
@@ -79,6 +84,14 @@ export default function PageEditor({
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
+  const previewParams = new URLSearchParams();
+  if (catalogContext.q) previewParams.set("q", catalogContext.q);
+  if (catalogContext.status) previewParams.set("status", catalogContext.status);
+  if (catalogContext.page > 1) previewParams.set("page", String(catalogContext.page));
+  if (catalogContext.revisionPage > 1) {
+    previewParams.set("revision_page", String(catalogContext.revisionPage));
+  }
+  const previewHref = `/pages/${page.id}/preview${previewParams.size ? `?${previewParams.toString()}` : ""}`;
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -120,6 +133,12 @@ export default function PageEditor({
     const recoveryKey = `probpera-page-editor-${page.id}`;
     setHasRecoveryCopy(Boolean(window.localStorage.getItem(recoveryKey)));
   }, [page.id]);
+
+  useEffect(() => {
+    if (!savedAfterSubmit) return;
+    window.localStorage.removeItem(`probpera-page-editor-${page.id}`);
+    setHasRecoveryCopy(false);
+  }, [page.id, savedAfterSubmit]);
 
   useEffect(() => {
     const protectDraft = (event: BeforeUnloadEvent) => {
@@ -194,11 +213,25 @@ export default function PageEditor({
       action={savePageAction}
       className={`article-editor${isFullscreen ? " is-fullscreen" : ""}`}
       onSubmit={() => {
+        window.localStorage.setItem(
+          `probpera-page-editor-${page.id}`,
+          JSON.stringify({
+            title,
+            slug,
+            contentHtml,
+            contentJson,
+            savedAt: new Date().toISOString(),
+          })
+        );
         setIsDirty(false);
-        window.localStorage.removeItem(`probpera-page-editor-${page.id}`);
       }}
     >
       <input name="id" type="hidden" value={page.id} />
+      <input name="expected_updated_at" type="hidden" value={page.updated_at} />
+      <input name="catalog_q" type="hidden" value={catalogContext.q} />
+      <input name="catalog_status" type="hidden" value={catalogContext.status} />
+      <input name="catalog_page" type="hidden" value={catalogContext.page} />
+      <input name="editor_revision_page" type="hidden" value={catalogContext.revisionPage} />
       <input name="content_html" type="hidden" value={contentHtml} />
       <input name="content_json" type="hidden" value={contentJson} />
       <section className="editor-main panel">
@@ -329,7 +362,7 @@ export default function PageEditor({
           </div>
           <NextLink
             className="button-secondary"
-            href={`/pages/${page.id}/preview`}
+            href={previewHref}
             target="_blank"
             rel="noreferrer"
           >

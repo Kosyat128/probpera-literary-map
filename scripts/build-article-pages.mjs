@@ -2,6 +2,14 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
+import {
+  articlePublicPath,
+  articleRouteSlug,
+  articleSectionSlug,
+  articleSectionSlugs,
+  normalizeArticlePublicMetadata,
+  normalizedPath,
+} from "./lib/article-route-policy.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -31,26 +39,6 @@ const legacyLandingRedirects = [
   ["/contacts", "/#about"],
 ];
 
-const transliteration = {
-  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",
-  з: "z", и: "i", й: "y", к: "k", л: "l", м: "m", н: "n", о: "o",
-  п: "p", р: "r", с: "s", т: "t", у: "u", ф: "f", х: "h", ц: "ts",
-  ч: "ch", ш: "sh", щ: "sch", ъ: "", ы: "y", ь: "", э: "e", ю: "yu",
-  я: "ya",
-};
-
-const articleSectionSlugs = {
-  "book-opinions": "mnenie-o-knige",
-  "screen-adaptations": "kniga-i-ekranizatsiya",
-  "writers-world": "pisateli-mira",
-  "book-guides": "knizhnyy-gid",
-  awards: "literaturnye-premii",
-  folklore: "folklor-i-mifologiya",
-  language: "russkiy-yazyk",
-  "literary-essays": "o-literature",
-  "author-stories": "literaturnye-istorii",
-};
-
 function xmlEscape(value = "") {
   return value
     .replaceAll("&", "&amp;")
@@ -62,32 +50,6 @@ function xmlEscape(value = "") {
 
 function cdata(value = "") {
   return `<![CDATA[${String(value).replaceAll("]]>", "]]]]><![CDATA[>")}]]>`;
-}
-
-function humanSlug(value = "") {
-  return value
-    .toLocaleLowerCase("ru")
-    .split("")
-    .map((letter) => transliteration[letter] ?? letter)
-    .join("")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 115);
-}
-
-function articleSlug(article) {
-  if (article.slug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(article.slug)) {
-    return article.slug;
-  }
-  return humanSlug(article.title) || "material";
-}
-
-function articleSectionSlug(article) {
-  return articleSectionSlugs[article.sectionId] || "materialy";
-}
-
-function articlePublicPath(article) {
-  return `/stati/${articleSectionSlug(article)}/${articleSlug(article)}`;
 }
 
 function pagePublicPath(page) {
@@ -119,6 +81,13 @@ function safeArticleHtml(contentHtml = "") {
   return $("#article-source").html() || "";
 }
 
+function loadStaticDocument(html) {
+  const $ = load(html, { decodeEntities: false });
+  $('meta[property="og:url"]').remove();
+  $('script[type="application/ld+json"]').remove();
+  return $;
+}
+
 function redirectHtml(targetUrl) {
   return `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">
@@ -134,15 +103,6 @@ async function readJsonIfExists(filePath, fallback) {
   } catch (error) {
     if (error?.code === "ENOENT") return fallback;
     throw error;
-  }
-}
-
-function normalizedPath(value = "") {
-  if (!value) return "";
-  try {
-    return new URL(value, "https://probpera.ru").pathname.replace(/\/+$/, "") || "/";
-  } catch {
-    return value.split(/[?#]/u)[0].replace(/\/+$/, "") || "/";
   }
 }
 
@@ -197,7 +157,17 @@ const cmsSnapshot = await readJsonIfExists(
   { articles: [], pages: [], redirects: [] }
 );
 const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
-const homeDocument = load(baseHtml, { decodeEntities: false });
+const canonicalArticlePaths = new Set(
+  catalog.map((article) => normalizedPath(articlePublicPath(article)))
+);
+const routeSlugOwners = new Map();
+for (const article of catalog) {
+  const slug = articleRouteSlug(article);
+  const owners = routeSlugOwners.get(slug) || new Set();
+  owners.add(article.id);
+  routeSlugOwners.set(slug, owners);
+}
+const homeDocument = loadStaticDocument(baseHtml);
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
 homeDocument('meta[property="og:image"]').attr("content", `${siteUrl}/og-v3.webp`);
@@ -222,6 +192,7 @@ await fs.writeFile(path.join(distDirectory, "index.html"), homeDocument.html(), 
 const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
 const redirectRules = [];
 const rssEntries = [];
+let staticSectionAliases = 0;
 
 for (const [source, destination] of legacyLandingRedirects) {
   const targetUrl = `${siteUrl}${destination}`;
@@ -229,7 +200,8 @@ for (const [source, destination] of legacyLandingRedirects) {
   await writeRedirectPage(source, targetUrl);
 }
 
-for (const article of catalog) {
+for (const rawArticle of catalog) {
+  const article = normalizeArticlePublicMetadata(rawArticle);
   const documentPath =
     article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
   const document = JSON.parse(
@@ -238,10 +210,10 @@ for (const article of catalog) {
       "utf8"
     )
   );
-  const slug = articleSlug(article);
+  const slug = articleRouteSlug(article);
   const publicPath = articlePublicPath(article);
   const canonicalUrl = article.canonicalUrl || `${siteUrl}${publicPath}/`;
-  const $ = load(baseHtml, { decodeEntities: false });
+  const $ = loadStaticDocument(baseHtml);
   const description =
     article.seoDescription?.trim() ||
     article.description?.trim() ||
@@ -341,6 +313,27 @@ for (const article of catalog) {
   await fs.mkdir(targetDirectory, { recursive: true });
   await fs.writeFile(path.join(targetDirectory, "index.html"), $.html(), "utf8");
 
+  if (routeSlugOwners.get(slug)?.size === 1) {
+    for (const sectionSlug of Object.values(articleSectionSlugs)) {
+      const aliasPath = `/stati/${sectionSlug}/${slug}`;
+      if (
+        normalizedPath(aliasPath) === normalizedPath(publicPath) ||
+        canonicalArticlePaths.has(normalizedPath(aliasPath))
+      ) {
+        continue;
+      }
+      redirectRules.push({
+        source: aliasPath,
+        destination: publicPath,
+        permanent: true,
+        server: false,
+        reason: "section-alias",
+      });
+      await writeRedirectPage(aliasPath, canonicalUrl);
+      staticSectionAliases += 1;
+    }
+  }
+
   const englishTranslation = article.translations?.en;
   const englishDocument = document.translations?.en;
   const englishIsReleased =
@@ -364,7 +357,7 @@ for (const article of catalog) {
       title: englishTranslation.title,
       slug: englishTranslation.slug,
     };
-    const englishSlug = articleSlug(englishRouteArticle);
+    const englishSlug = articleRouteSlug(englishRouteArticle);
 
     if (englishSlug !== slug) {
       const englishPublicPath = articlePublicPath(englishRouteArticle);
@@ -382,7 +375,7 @@ for (const article of catalog) {
         englishTranslation.title;
       const englishSocialDescription =
         englishTranslation.ogDescription || englishDescription;
-      const englishDocumentPage = load(baseHtml, { decodeEntities: false });
+      const englishDocumentPage = loadStaticDocument(baseHtml);
 
       englishDocumentPage("html")
         .attr("lang", "en")
@@ -567,7 +560,7 @@ for (const page of cmsSnapshot.pages || []) {
   if (!/^[a-z0-9][a-z0-9-]{1,119}$/u.test(page.slug || "")) continue;
   const publicPath = pagePublicPath(page);
   const canonicalUrl = page.canonicalUrl || `${siteUrl}${publicPath}/`;
-  const $ = load(baseHtml, { decodeEntities: false });
+  const $ = loadStaticDocument(baseHtml);
   const description =
     page.seoDescription?.trim() ||
     page.excerpt?.trim() ||
@@ -758,6 +751,7 @@ const uniqueServerRedirects = [
   ...new Map(
     redirectRules.filter(
       (redirect) =>
+        redirect.server !== false &&
         normalizedPath(redirect.source) !== normalizedPath(redirect.destination)
     ).map((redirect) => [
       normalizedPath(redirect.source),
@@ -779,12 +773,11 @@ await fs.writeFile(
   path.join(distDirectory, "_headers"),
   `/*
   X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors https://admin.probpera.ru; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -798,7 +791,7 @@ await fs.writeFile(
   "utf8"
 );
 
-const notFoundDocument = load(baseHtml, { decodeEntities: false });
+const notFoundDocument = loadStaticDocument(baseHtml);
 notFoundDocument("title").text("Страница не найдена — Проба Пера");
 notFoundDocument('meta[name="description"]').attr(
   "content",
@@ -824,5 +817,5 @@ await fs.writeFile(
 );
 
 console.log(
-  `Built ${catalog.length} article pages, ${(cmsSnapshot.pages || []).length} CMS pages, ${redirectRules.length} redirects, sitemap and RSS for ${siteUrl}.`
+  `Built ${catalog.length} article pages, ${(cmsSnapshot.pages || []).length} CMS pages, ${redirectRules.length} redirects (${staticSectionAliases} portable section aliases), sitemap and RSS for ${siteUrl}.`
 );

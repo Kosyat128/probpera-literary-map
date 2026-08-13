@@ -47,6 +47,7 @@ import {
   coreHomepageSectionStyle,
   getCoreHomepageSection,
 } from "./data/cms/homepage";
+import { cmsCoreFieldMarker, cmsEntityMarker } from "./cms/directEditBridge";
 import ShareLinks from "./editorial/ShareLinks";
 import {
   selectInterfacePlural,
@@ -69,6 +70,7 @@ import {
   literarySearchScore,
   normalizeLiterarySearch,
 } from "./utils/literarySearch";
+import { safePublicHref } from "./utils/publicHref";
 
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
@@ -396,7 +398,7 @@ function mediaUrl(path: string) {
 }
 
 function safeHomepageHref(value: string, fallback: string) {
-  return /^(https:\/\/|mailto:|\/|#)/iu.test(value) ? value : fallback;
+  return safePublicHref(value, fallback);
 }
 
 export default function App() {
@@ -1105,18 +1107,43 @@ export default function App() {
         <button type="button" onClick={() => setGlobalSearchOpen(true)}>
           {t("Поиск")}
         </button>
+        <CmsNavigationLinks location="header" mobile />
       </nav>
 
       <main>
         <CmsHomepageBanners />
-        <section className="magazine-hero">
+        <section
+          className={`magazine-hero${coreHomepageSectionClass(coreHero)}`}
+          style={coreHomepageSectionStyle(coreHero)}
+          {...cmsCoreFieldMarker(
+            "hero",
+            "backgroundMediaId",
+            coreHero?.backgroundImageUrl || "",
+            { kind: "image", label: "Фоновое изображение первого экрана" }
+          )}
+        >
           <div className="hero-editorial">
-            <span className="section-kicker">
+            <span
+              className="section-kicker"
+              {...cmsCoreFieldMarker(
+                "hero",
+                "eyebrow",
+                coreHero?.eyebrow || "Журнал о литературе и искусстве слова",
+                { label: "Надзаголовок первого экрана" }
+              )}
+            >
               {language === "ru" && coreHero?.eyebrow
                 ? coreHero.eyebrow
                 : t("Журнал о литературе и искусстве слова")}
             </span>
-            <h1>
+            <h1
+              {...cmsCoreFieldMarker(
+                "hero",
+                "title",
+                coreHero?.title || "Литература – это целый мир!",
+                { label: "Заголовок первого экрана" }
+              )}
+            >
               {customHeroTitle && !customHeroTitleParts ? (
                 customHeroTitle
               ) : (
@@ -1143,7 +1170,15 @@ export default function App() {
                 </>
               )}
             </h1>
-            <p>
+            <p
+              {...cmsCoreFieldMarker(
+                "hero",
+                "description",
+                coreHero?.description ||
+                  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+                { kind: "textarea", label: "Описание первого экрана" }
+              )}
+            >
               {language === "ru" && coreHero?.description
                 ? coreHero.description
                 : t(
@@ -1154,6 +1189,12 @@ export default function App() {
               <a
                 className="primary-action"
                 href={safeHomepageHref(coreHero?.buttonUrl || "#atlas", "#atlas")}
+                {...cmsCoreFieldMarker(
+                  "hero",
+                  "buttonText",
+                  coreHero?.buttonText || "Открыть глобус",
+                  { label: "Главная кнопка первого экрана" }
+                )}
               >
                 {language === "ru" && coreHero?.buttonText
                   ? coreHero.buttonText
@@ -1187,19 +1228,32 @@ export default function App() {
           <div className="hero-cover">
             <picture>
               {!coreHero?.backgroundImageUrl && (
-                <source
-                  media="(max-width: 680px)"
-                  srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260808")}
-                />
+                <>
+                  <source
+                    media="(max-width: 680px)"
+                    type="image/avif"
+                    srcSet={assetUrl("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-full")}
+                  />
+                  <source
+                    media="(max-width: 680px)"
+                    type="image/webp"
+                    srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260813-literary-nature-full")}
+                  />
+                  <source
+                    type="image/avif"
+                    srcSet={assetUrl("brand/magazine-hero-wide.avif?v=20260813-literary-nature-full")}
+                  />
+                </>
               )}
               <img
                 src={
                   coreHero?.backgroundImageUrl ||
-                  assetUrl("brand/magazine-hero-wide.webp?v=20260808")
+                  assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-full")
                 }
-                alt={t("Журнал «Проба Пера» — полноформатное редакционное издание")}
-                width={coreHero?.backgroundImageUrl ? undefined : 1915}
-                height={coreHero?.backgroundImageUrl ? undefined : 821}
+                alt=""
+                width={coreHero?.backgroundImageUrl ? undefined : 1774}
+                height={coreHero?.backgroundImageUrl ? undefined : 887}
+                aria-hidden="true"
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
@@ -1218,20 +1272,49 @@ export default function App() {
           id="atlas"
           ref={atlasRef}
           style={coreHomepageSectionStyle(coreAtlas)}
+          {...cmsCoreFieldMarker(
+            "atlas",
+            "backgroundMediaId",
+            coreAtlas?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон литературной планеты" }
+          )}
         >
           <header className="atlas-heading">
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "atlas",
+                  "eyebrow",
+                  coreAtlas?.eyebrow || "Интерактивная энциклопедия",
+                  { label: "Надзаголовок литературной планеты" }
+                )}
+              >
                 {language === "ru" && coreAtlas?.eyebrow
                   ? coreAtlas.eyebrow
                   : t("Интерактивная энциклопедия")}
               </span>
-              <h2>
+              <h2
+                {...cmsCoreFieldMarker(
+                  "atlas",
+                  "title",
+                  coreAtlas?.title || "Литературная планета",
+                  { label: "Заголовок литературной планеты" }
+                )}
+              >
                 {language === "ru" && coreAtlas?.title
                   ? coreAtlas.title
                   : t("Литературная планета")}
               </h2>
-              <p>
+              <p
+                {...cmsCoreFieldMarker(
+                  "atlas",
+                  "description",
+                  coreAtlas?.description ||
+                    "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+                  { kind: "textarea", label: "Описание литературной планеты" }
+                )}
+              >
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
@@ -1528,8 +1611,24 @@ export default function App() {
           className={`daily-grid painted-paper-section${coreHomepageSectionClass(coreBookMonth)}`}
           id="book-day"
           style={coreHomepageSectionStyle(coreBookMonth)}
+          {...cmsCoreFieldMarker(
+            "book-month",
+            "backgroundMediaId",
+            coreBookMonth?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон блока книги месяца" }
+          )}
         >
-          <article className="book-of-day">
+          <article
+            className="book-of-day"
+            {...(bookOfMonth
+              ? cmsEntityMarker(
+                  "book",
+                  `${bookOfMonth.countryId}:${bookOfMonth.writerId}:${bookOfMonth.id}`,
+                  bookOfMonthText?.title || bookOfMonth.title,
+                  `/library?country_id=${encodeURIComponent(bookOfMonth.countryId)}&writer_id=${encodeURIComponent(bookOfMonth.writerId)}&work_id=${encodeURIComponent(`${bookOfMonth.countryId}:${bookOfMonth.writerId}:${bookOfMonth.id}`)}`
+                )
+              : {})}
+          >
             <div
               className={`book-cover${bookOfMonthHasCover ? " has-image" : ""}`}
               style={
@@ -1581,12 +1680,27 @@ export default function App() {
               )}
             </div>
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "book-month",
+                  "eyebrow",
+                  coreBookMonth?.eyebrow || "Выбор энциклопедии",
+                  { label: "Надзаголовок книги месяца" }
+                )}
+              >
                 {language === "ru" && coreBookMonth?.eyebrow
                   ? coreBookMonth.eyebrow
                   : t("Выбор энциклопедии")}
               </span>
-              <h3>
+              <h3
+                {...cmsCoreFieldMarker(
+                  "book-month",
+                  "title",
+                  coreBookMonth?.title || "Книга месяца",
+                  { label: "Заголовок блока книги месяца" }
+                )}
+              >
                 {language === "ru" && coreBookMonth?.title
                   ? coreBookMonth.title
                   : t("Книга месяца")}
@@ -1622,10 +1736,19 @@ export default function App() {
               {bookOfMonth && (
                 <div className="book-actions">
                   <button type="button" onClick={() => openBook(bookOfMonth)}>
-                    {language === "ru" && coreBookMonth?.buttonText
-                      ? coreBookMonth.buttonText
-                      : t("О книге")} {" "}
-                    <span>→</span>
+                    <span
+                      {...cmsCoreFieldMarker(
+                        "book-month",
+                        "buttonText",
+                        coreBookMonth?.buttonText || "О книге",
+                        { label: "Кнопка книги месяца" }
+                      )}
+                    >
+                      {language === "ru" && coreBookMonth?.buttonText
+                        ? coreBookMonth.buttonText
+                        : t("О книге")}
+                    </span>{" "}
+                    <span aria-hidden="true">→</span>
                   </button>
                   <button
                     type="button"
@@ -1649,18 +1772,47 @@ export default function App() {
             className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
             id="about"
             style={coreHomepageSectionStyle(coreEditorialStandard)}
+            {...cmsCoreFieldMarker(
+              "editorial-standard",
+              "backgroundMediaId",
+              coreEditorialStandard?.backgroundImageUrl || "",
+              { kind: "image", label: "Фон редакционного стандарта" }
+            )}
           >
-            <span className="section-kicker">
+            <span
+              className="section-kicker"
+              {...cmsCoreFieldMarker(
+                "editorial-standard",
+                "eyebrow",
+                coreEditorialStandard?.eyebrow || "Редакционный стандарт",
+                { label: "Надзаголовок редакционного стандарта" }
+              )}
+            >
               {language === "ru" && coreEditorialStandard?.eyebrow
                 ? coreEditorialStandard.eyebrow
                 : t("Редакционный стандарт")}
             </span>
-            <h3>
+            <h3
+              {...cmsCoreFieldMarker(
+                "editorial-standard",
+                "title",
+                coreEditorialStandard?.title || "Материал, которому можно доверять",
+                { label: "Заголовок редакционного стандарта" }
+              )}
+            >
               {language === "ru" && coreEditorialStandard?.title
                 ? coreEditorialStandard.title
                 : t("Материал, которому можно доверять")}
             </h3>
-            <p>
+            <p
+              {...cmsCoreFieldMarker(
+                "editorial-standard",
+                "description",
+                coreEditorialStandard?.description ||
+                  "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.",
+                { kind: "textarea", label: "Описание редакционного стандарта" }
+              )}
+            >
               {language === "ru" && coreEditorialStandard?.description
                 ? coreEditorialStandard.description
                 : t(
@@ -1743,21 +1895,51 @@ export default function App() {
           className={`editorial-section${coreHomepageSectionClass(coreFeaturedJournal)}`}
           id="featured-journal"
           style={coreHomepageSectionStyle(coreFeaturedJournal)}
+          {...cmsCoreFieldMarker(
+            "featured-journal",
+            "backgroundMediaId",
+            coreFeaturedJournal?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон материалов журнала" }
+          )}
         >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "featured-journal",
+                  "eyebrow",
+                  coreFeaturedJournal?.eyebrow || "Новые публикации",
+                  { label: "Надзаголовок материалов журнала" }
+                )}
+              >
                 {language === "ru" && coreFeaturedJournal?.eyebrow
                   ? coreFeaturedJournal.eyebrow
                   : t("Новые публикации")}
               </span>
-              <h2>
+              <h2
+                {...cmsCoreFieldMarker(
+                  "featured-journal",
+                  "title",
+                  coreFeaturedJournal?.title || "Читать в «Пробе Пера»",
+                  { label: "Заголовок материалов журнала" }
+                )}
+              >
                 {language === "ru" && coreFeaturedJournal?.title
                   ? coreFeaturedJournal.title
                   : t("Читать в «Пробе Пера»")}
               </h2>
               {language === "ru" && coreFeaturedJournal?.description && (
-                <p>{coreFeaturedJournal.description}</p>
+                <p
+                  {...cmsCoreFieldMarker(
+                    "featured-journal",
+                    "description",
+                    coreFeaturedJournal.description,
+                    { kind: "textarea", label: "Описание материалов журнала" }
+                  )}
+                >
+                  {coreFeaturedJournal.description}
+                </p>
               )}
             </div>
             <a
@@ -1856,6 +2038,12 @@ export default function App() {
           className={`community-section${coreHomepageSectionClass(coreCommunity)}`}
           id="community"
           style={coreHomepageSectionStyle(coreCommunity)}
+          {...cmsCoreFieldMarker(
+            "community",
+            "backgroundMediaId",
+            coreCommunity?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон сообщества" }
+          )}
         >
           <div className="community-illustration">
             <div className="community-visual-intro">
@@ -1926,17 +2114,40 @@ export default function App() {
             </div>
           </div>
           <div className="community-copy">
-            <span className="section-kicker">
+            <span
+              className="section-kicker"
+              {...cmsCoreFieldMarker(
+                "community",
+                "eyebrow",
+                coreCommunity?.eyebrow || "Литературное сообщество",
+                { label: "Надзаголовок сообщества" }
+              )}
+            >
               {language === "ru" && coreCommunity?.eyebrow
                 ? coreCommunity.eyebrow
                 : t("Литературное сообщество")}
             </span>
-            <h2>
+            <h2
+              {...cmsCoreFieldMarker(
+                "community",
+                "title",
+                coreCommunity?.title || "Клуб внимательных читателей",
+                { label: "Заголовок сообщества" }
+              )}
+            >
               {language === "ru" && coreCommunity?.title
                 ? coreCommunity.title
                 : t("Клуб внимательных читателей")}
             </h2>
-            <p>
+            <p
+              {...cmsCoreFieldMarker(
+                "community",
+                "description",
+                coreCommunity?.description ||
+                  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
+                { kind: "textarea", label: "Описание сообщества" }
+              )}
+            >
               {language === "ru" && coreCommunity?.description
                 ? coreCommunity.description
                 : t(
@@ -1954,7 +2165,16 @@ export default function App() {
               <li>{t("Личная библиотека, любимые авторы, страны и история участия")}</li>
             </ul>
             <div>
-              <button type="button" onClick={() => openCommunity("forum")}>
+              <button
+                type="button"
+                onClick={() => openCommunity("forum")}
+                {...cmsCoreFieldMarker(
+                  "community",
+                  "buttonText",
+                  coreCommunity?.buttonText || "Открыть форум",
+                  { label: "Кнопка сообщества" }
+                )}
+              >
                 {language === "ru" && coreCommunity?.buttonText
                   ? coreCommunity.buttonText
                   : t("Открыть форум")}
@@ -1972,28 +2192,66 @@ export default function App() {
           className={`authors-section painted-paper-section${coreHomepageSectionClass(coreAuthors)}`}
           id="authors"
           style={coreHomepageSectionStyle(coreAuthors)}
+          {...cmsCoreFieldMarker(
+            "authors",
+            "backgroundMediaId",
+            coreAuthors?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон блока писателей" }
+          )}
         >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "authors",
+                  "eyebrow",
+                  coreAuthors?.eyebrow || "Лица мировой литературы",
+                  { label: "Надзаголовок блока писателей" }
+                )}
+              >
                 {language === "ru" && coreAuthors?.eyebrow
                   ? coreAuthors.eyebrow
                   : t("Лица мировой литературы")}
               </span>
-              <h2>
+              <h2
+                {...cmsCoreFieldMarker(
+                  "authors",
+                  "title",
+                  coreAuthors?.title || "Авторы, с которых можно начать",
+                  { label: "Заголовок блока писателей" }
+                )}
+              >
                 {language === "ru" && coreAuthors?.title
                   ? coreAuthors.title
                   : t("Авторы, с которых можно начать")}
               </h2>
               {language === "ru" && coreAuthors?.description && (
-                <p>{coreAuthors.description}</p>
+                <p
+                  {...cmsCoreFieldMarker(
+                    "authors",
+                    "description",
+                    coreAuthors.description,
+                    { kind: "textarea", label: "Описание блока писателей" }
+                  )}
+                >
+                  {coreAuthors.description}
+                </p>
               )}
             </div>
           </header>
 
           <div className="author-showcase">
             {featuredAuthors.map(({ country, writer }) => (
-              <article key={`${country.id}-${writer.id}`}>
+              <article
+                key={`${country.id}-${writer.id}`}
+                {...cmsEntityMarker(
+                  "writer",
+                  `${country.id}:${writer.id}`,
+                  writerName(writer, "Автор", language),
+                  `/library?country_id=${encodeURIComponent(country.id)}&writer_id=${encodeURIComponent(writer.id)}`
+                )}
+              >
                 <button
                   type="button"
                   onClick={() => selectWriterAndFocus(country, writer)}
@@ -2031,26 +2289,62 @@ export default function App() {
           className={`sections-directory${coreHomepageSectionClass(coreSections)}`}
           id="sections"
           style={coreHomepageSectionStyle(coreSections)}
+          {...cmsCoreFieldMarker(
+            "sections",
+            "backgroundMediaId",
+            coreSections?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон каталога разделов" }
+          )}
         >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "sections",
+                  "eyebrow",
+                  coreSections?.eyebrow || "Навигация по журналу",
+                  { label: "Надзаголовок каталога разделов" }
+                )}
+              >
                 {language === "ru" && coreSections?.eyebrow
                   ? coreSections.eyebrow
                   : t("Навигация по журналу")}
               </span>
-              <h2>
+              <h2
+                {...cmsCoreFieldMarker(
+                  "sections",
+                  "title",
+                  coreSections?.title || "Основные разделы",
+                  { label: "Заголовок каталога разделов" }
+                )}
+              >
                 {language === "ru" && coreSections?.title
                   ? coreSections.title
                   : t("Основные разделы")}
               </h2>
               {language === "ru" && coreSections?.description && (
-                <p>{coreSections.description}</p>
+                <p
+                  {...cmsCoreFieldMarker(
+                    "sections",
+                    "description",
+                    coreSections.description,
+                    { kind: "textarea", label: "Описание каталога разделов" }
+                  )}
+                >
+                  {coreSections.description}
+                </p>
               )}
             </div>
             <a
               className="sections-all-button"
               href={coreSectionsHref}
+              {...cmsCoreFieldMarker(
+                "sections",
+                "buttonText",
+                coreSections?.buttonText || "Полный архив публикаций",
+                { label: "Кнопка каталога разделов" }
+              )}
               onClick={(event) => {
                 if (coreSectionsHref !== journalPath()) return;
                 if (!shouldUseClientNavigation(event)) return;
@@ -2085,20 +2379,49 @@ export default function App() {
           className={`trust-center${coreHomepageSectionClass(coreTrust)}`}
           id="editorial-policy"
           style={coreHomepageSectionStyle(coreTrust)}
+          {...cmsCoreFieldMarker(
+            "trust",
+            "backgroundMediaId",
+            coreTrust?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон редакционной политики" }
+          )}
         >
           <header className="section-heading">
             <div>
-              <span className="section-kicker">
+              <span
+                className="section-kicker"
+                {...cmsCoreFieldMarker(
+                  "trust",
+                  "eyebrow",
+                  coreTrust?.eyebrow || "Открытая редакция",
+                  { label: "Надзаголовок редакционной политики" }
+                )}
+              >
                 {language === "ru" && coreTrust?.eyebrow
                   ? coreTrust.eyebrow
                   : t("Открытая редакция")}
               </span>
-              <h2>
+              <h2
+                {...cmsCoreFieldMarker(
+                  "trust",
+                  "title",
+                  coreTrust?.title || "Как устроено доверие",
+                  { label: "Заголовок редакционной политики" }
+                )}
+              >
                 {language === "ru" && coreTrust?.title
                   ? coreTrust.title
                   : t("Как устроено доверие")}
               </h2>
-              <p>
+              <p
+                {...cmsCoreFieldMarker(
+                  "trust",
+                  "description",
+                  coreTrust?.description ||
+                    "Читатель видит не только готовый текст, но и правила, по которым сведения попадают в энциклопедию.",
+                  { kind: "textarea", label: "Описание редакционной политики" }
+                )}
+              >
                 {language === "ru" && coreTrust?.description
                   ? coreTrust.description
                   : t(
@@ -2111,6 +2434,12 @@ export default function App() {
                 coreTrust?.buttonUrl ||
                   "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале",
                 "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале"
+              )}
+              {...cmsCoreFieldMarker(
+                "trust",
+                "buttonText",
+                coreTrust?.buttonText || "Сообщить об ошибке",
+                { label: "Кнопка редакционной политики" }
               )}
             >
               {language === "ru" && coreTrust?.buttonText
@@ -2167,6 +2496,12 @@ export default function App() {
           id="calendar"
           className={`calendar-section painted-paper-section${coreHomepageSectionClass(coreCalendar)}`}
           style={coreHomepageSectionStyle(coreCalendar)}
+          {...cmsCoreFieldMarker(
+            "calendar",
+            "backgroundMediaId",
+            coreCalendar?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон литературного календаря" }
+          )}
         >
           <Suspense
             fallback={

@@ -11,6 +11,12 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch35,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch35";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch36,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch36";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch37,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch37";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1640,6 +1646,8 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch33,
   ...writerBiographyPublicProfileFactCorrectionsBatch34,
   ...writerBiographyPublicProfileFactCorrectionsBatch35,
+  ...writerBiographyPublicProfileFactCorrectionsBatch36,
+  ...writerBiographyPublicProfileFactCorrectionsBatch37,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1725,6 +1733,13 @@ export const quarantinedWriterIdentities = [
   ["grenada", "julian_fedon", "identity-not-established", "Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."],
   ["guinea_bissau", "antonio_aurelio_gomes", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Guinea-Bissauan writer; the card remains in the internal source archive only."],
   ["guyana", "roshni_kempadoo", "cross-country-identity-conflict", "The card conflates British-Guyanese visual artist Roshini Kempadoo with Guyanese novelist Oonya Kempadoo; the attributed novels Buxton Spice and Tide Running belong to Oonya Kempadoo."],
+  ["laos", "visuth_phommasane", "identity-not-established", "No independent institutional authority record or attributable bibliography establishes the claimed Lao literary identity; the card remains in the internal source archive only."],
+  ["lesotho", "coleman_motsapi", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, dates or literary activity; the card remains in the internal source archive only."],
+  ["lesotho", "letuka_molati", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, birth year or literary activity; the card remains in the internal source archive only."],
+  ["liberia", "marvin_colley", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; the card remains in the internal source archive only."],
+  ["liberia", "sylvester_williams", "identity-not-established", "No authoritative identity record establishes the claimed Liberian poet; the card must not be conflated with Henry Sylvester Williams or other namesakes."],
+  ["liberia", "varney_bangura", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; country and identity may be conflated with unrelated namesakes."],
+  ["liechtenstein", "maria_von_burg", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Liechtenstein writer and dates; the card must not be conflated with similarly named people."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

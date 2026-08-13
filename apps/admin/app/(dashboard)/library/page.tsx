@@ -1,14 +1,166 @@
+import Link from "next/link";
+
+import { bookEditionRightsStatuses } from "@/lib/book-edition-edit";
 import { lookupEditionByIsbn, normalizeIsbn } from "@/lib/isbn";
+import {
+  LIBRARY_CATALOG_PAGE_SIZE,
+  LIBRARY_WORK_PICKER_PAGE_SIZE,
+  libraryCatalogHref,
+  libraryEditorialStatuses,
+  mergeLibraryWorkOptions,
+  normalizeLibraryIdentifier,
+  parseLibraryCatalogQuery,
+  type LibraryCatalogHrefOptions,
+} from "@/lib/library-catalog-query";
+import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { saveBookEditionAction } from "./actions";
+import { saveBookEditionAction, updateBookEditionAction } from "./actions";
+import { saveVisualEntityFieldFormAction } from "../visual-entity-actions";
 
 export const metadata = { title: "Книжный архив" };
 
 type LibrarySearchParams = {
   isbn?: string;
   error?: string;
+  notice?: string;
   saved?: string;
+  work_id?: string;
+  writer_id?: string;
+  country_id?: string;
+  edition_id?: string;
+  published?: string;
+  q?: string;
+  country?: string;
+  writer?: string;
+  status?: string;
+  works_page?: string;
+  editions_page?: string;
+  work_picker_q?: string;
+  work_picker_page?: string;
 };
+
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
+
+function objectValue(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function textValue(value: unknown) {
+  return typeof value === "string" ? value : "";
+}
+
+function listValue(value: unknown) {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string").join("\n")
+    : "";
+}
+
+type LibraryFormContext = {
+  catalog: ReturnType<typeof parseLibraryCatalogQuery>;
+  isbn: string;
+  workId: string;
+  writerId: string;
+  countryId: string;
+  editionId: string;
+};
+
+function LibraryActionContextFields({
+  catalog,
+  isbn,
+  workId,
+  writerId,
+  countryId,
+  editionId,
+}: LibraryFormContext) {
+  return (
+    <>
+      <input type="hidden" name="catalog_q" value={catalog.term} />
+      <input type="hidden" name="catalog_country" value={catalog.country} />
+      <input type="hidden" name="catalog_writer" value={catalog.writer} />
+      <input type="hidden" name="catalog_status" value={catalog.status} />
+      <input type="hidden" name="catalog_works_page" value={catalog.worksPage} />
+      <input type="hidden" name="catalog_editions_page" value={catalog.editionsPage} />
+      <input type="hidden" name="catalog_work_picker_q" value={catalog.workPickerTerm} />
+      <input type="hidden" name="catalog_work_picker_page" value={catalog.workPickerPage} />
+      <input type="hidden" name="catalog_isbn" value={isbn} />
+      <input type="hidden" name="catalog_work_id" value={workId} />
+      <input type="hidden" name="catalog_writer_id" value={writerId} />
+      <input type="hidden" name="catalog_country_id" value={countryId} />
+      <input type="hidden" name="catalog_edition_id" value={editionId} />
+    </>
+  );
+}
+
+function CatalogPagination({
+  label,
+  page,
+  totalPages,
+  href,
+}: {
+  label: string;
+  page: number;
+  totalPages: number;
+  href: (page: number) => string;
+}) {
+  if (totalPages <= 1) return null;
+  return (
+    <nav className="pagination library-pagination" aria-label={label}>
+      {page > 1 ? <Link href={href(1)}>Первая</Link> : <span aria-disabled="true">Первая</span>}
+      {page > 1 ? <Link href={href(page - 1)}>Назад</Link> : <span aria-disabled="true">Назад</span>}
+      <span aria-current="page">Страница {page} из {totalPages}</span>
+      {page < totalPages ? <Link href={href(page + 1)}>Вперёд</Link> : <span aria-disabled="true">Вперёд</span>}
+      {page < totalPages ? <Link href={href(totalPages)}>Последняя</Link> : <span aria-disabled="true">Последняя</span>}
+    </nav>
+  );
+}
+
+function VisualEntityFieldForm({
+  entityType,
+  entityId,
+  field,
+  label,
+  value,
+  multiline = false,
+  hint,
+  formContext,
+}: {
+  entityType: "writer" | "book";
+  entityId: string;
+  field: string;
+  label: string;
+  value: string;
+  multiline?: boolean;
+  hint?: string;
+  formContext: LibraryFormContext;
+}) {
+  return (
+    <form className="visual-entity-field-form" action={saveVisualEntityFieldFormAction}>
+      <LibraryActionContextFields {...formContext} />
+      <input type="hidden" name="entity_type" value={entityType} />
+      <input type="hidden" name="entity_id" value={entityId} />
+      <input type="hidden" name="field" value={field} />
+      <label className="field">
+        <span>{label}</span>
+        {multiline ? (
+          <textarea name="value" defaultValue={value} />
+        ) : (
+          <input
+            name="value"
+            defaultValue={value}
+            inputMode={field === "firstPublished" ? "numeric" : undefined}
+          />
+        )}
+        {hint && <small>{hint}</small>}
+      </label>
+      <button className="button-secondary" type="submit">
+        Сохранить поле
+      </button>
+    </form>
+  );
+}
 
 export default async function LibraryPage({
   searchParams,
@@ -17,33 +169,125 @@ export default async function LibraryPage({
 }) {
   const query = await searchParams;
   const requestedIsbn = normalizeIsbn(query.isbn || "");
+  const requestedWorkId = normalizeLibraryIdentifier(query.work_id, 180);
+  const requestedWriterId = normalizeLibraryIdentifier(query.writer_id, 180);
+  const requestedCountryId = normalizeLibraryIdentifier(query.country_id, 120);
+  const editionIdDraft = String(query.edition_id || "").trim().slice(0, 180);
+  const requestedEditionId = UUID_PATTERN.test(editionIdDraft)
+    ? editionIdDraft.toLowerCase()
+    : "";
+  const catalog = parseLibraryCatalogQuery({
+    q: query.q,
+    country: query.country || requestedCountryId,
+    writer: query.writer || requestedWriterId,
+    status: query.status,
+    works_page: query.works_page,
+    editions_page: query.editions_page,
+    work_picker_q: query.work_picker_q,
+    work_picker_page: query.work_picker_page,
+  });
   const candidate = requestedIsbn
     ? await lookupEditionByIsbn(requestedIsbn).catch(() => null)
     : null;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
 
+  let worksCatalogQuery = supabase
+    .from("literary_works")
+    .select(
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata",
+      { count: "exact" }
+    )
+    .order("title")
+    .order("id");
+  if (catalog.term) worksCatalogQuery = worksCatalogQuery.ilike("title", catalog.pattern);
+  if (catalog.country) worksCatalogQuery = worksCatalogQuery.eq("country_id", catalog.country);
+  if (catalog.writer) worksCatalogQuery = worksCatalogQuery.eq("writer_id", catalog.writer);
+  if (catalog.status) worksCatalogQuery = worksCatalogQuery.eq("editorial_status", catalog.status);
+
+  // This query is intentionally independent from the catalog filters above.
+  // It powers reassignment of an edition to any work in the complete archive.
+  let workPickerQuery = supabase
+    .from("literary_works")
+    .select(
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata",
+      { count: "exact" }
+    )
+    .order("title")
+    .order("id");
+  if (catalog.workPickerTerm) {
+    workPickerQuery = workPickerQuery.ilike(
+      "title",
+      catalog.workPickerPattern
+    );
+  }
+
+  let editionsCatalogQuery = supabase
+    .from("book_editions")
+    .select(
+      "id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_rights_status,is_primary,updated_at,literary_works!inner(id,legacy_id,title,country_id,writer_id,editorial_status,metadata)",
+      { count: "exact" }
+    )
+    .order("updated_at", { ascending: false })
+    .order("id", { ascending: false });
+  if (catalog.term) editionsCatalogQuery = editionsCatalogQuery.ilike("title", catalog.pattern);
+  if (catalog.country) {
+    editionsCatalogQuery = editionsCatalogQuery.eq(
+      "literary_works.country_id",
+      catalog.country
+    );
+  }
+  if (catalog.writer) {
+    editionsCatalogQuery = editionsCatalogQuery.eq(
+      "literary_works.writer_id",
+      catalog.writer
+    );
+  }
+  if (catalog.status) {
+    editionsCatalogQuery = editionsCatalogQuery.eq(
+      "literary_works.editorial_status",
+      catalog.status
+    );
+  }
+
+  let selectedWorkQuery = supabase
+    .from("literary_works")
+    .select(
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata"
+    );
+  if (requestedWorkId) {
+    selectedWorkQuery = UUID_PATTERN.test(requestedWorkId)
+      ? selectedWorkQuery.eq("id", requestedWorkId)
+      : selectedWorkQuery.eq("legacy_id", requestedWorkId);
+  }
+  const selectedWorkPromise = requestedWorkId
+    ? selectedWorkQuery.maybeSingle()
+    : Promise.resolve({ data: null, error: null });
+
+  const selectedEditionPromise = requestedEditionId
+    ? supabase
+        .from("book_editions")
+        .select(
+          "id,legacy_id,work_id,title,isbn_10,isbn_13,publisher,publication_year,language,format,page_count,cover_url,cover_source_url,cover_rights_status,license_name,license_url,creator,rights_holder,rights_checked_at,source_url,is_primary,updated_at"
+        )
+        .eq("id", requestedEditionId)
+        .maybeSingle()
+    : Promise.resolve({ data: null, error: null });
   const [
-    { data: worksResult, error: worksError, count: worksCount },
-    { data: editionsResult, error: editionsError, count: editionsCount },
+    { data: worksResult, error: worksError, count: filteredWorksCount },
+    { data: editionsResult, error: editionsError, count: filteredEditionsCount },
+    { data: workPickerResult, error: workPickerError, count: workPickerCount },
+    totalWorksResult,
+    totalEditionsResult,
     { count: verifiedCoversCount, error: coversError },
+    selectedWorkResult,
+    selectedEditionResult,
   ] = await Promise.all([
-    supabase
-      .from("literary_works")
-      .select(
-        "id,title,original_title,writer_id,country_id,editorial_status,metadata",
-        { count: "exact" }
-      )
-      .order("title")
-      .limit(5000),
-    supabase
-      .from("book_editions")
-      .select(
-        "id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_rights_status,is_primary,literary_works(title,metadata)",
-        { count: "exact" }
-      )
-      .order("updated_at", { ascending: false })
-      .limit(100),
+    worksCatalogQuery.range(catalog.worksFrom, catalog.worksTo),
+    editionsCatalogQuery.range(catalog.editionsFrom, catalog.editionsTo),
+    workPickerQuery.range(catalog.workPickerFrom, catalog.workPickerTo),
+    supabase.from("literary_works").select("id", { count: "exact", head: true }),
+    supabase.from("book_editions").select("id", { count: "exact", head: true }),
     supabase
       .from("book_editions")
       .select("id", { count: "exact", head: true })
@@ -54,10 +298,106 @@ export default async function LibraryPage({
         "permission",
         "external-preview",
       ]),
+    selectedWorkPromise,
+    selectedEditionPromise,
   ]);
   const works = worksResult || [];
   const editions = editionsResult || [];
-  const schemaError = worksError || editionsError || coversError;
+  const workPickerWorks = workPickerResult || [];
+  const worksTotalPages = Math.max(
+    1,
+    Math.ceil((filteredWorksCount || 0) / LIBRARY_CATALOG_PAGE_SIZE)
+  );
+  const editionsTotalPages = Math.max(
+    1,
+    Math.ceil((filteredEditionsCount || 0) / LIBRARY_CATALOG_PAGE_SIZE)
+  );
+  const workPickerTotalPages = Math.max(
+    1,
+    Math.ceil((workPickerCount || 0) / LIBRARY_WORK_PICKER_PAGE_SIZE)
+  );
+  if (
+    !worksError &&
+    !editionsError &&
+    !workPickerError &&
+    (catalog.worksPage > worksTotalPages ||
+      catalog.editionsPage > editionsTotalPages ||
+      catalog.workPickerPage > workPickerTotalPages)
+  ) {
+    redirect(
+      libraryCatalogHref(catalog, {
+        worksPage: Math.min(catalog.worksPage, worksTotalPages),
+        editionsPage: Math.min(catalog.editionsPage, editionsTotalPages),
+        workPickerPage: Math.min(
+          catalog.workPickerPage,
+          workPickerTotalPages
+        ),
+        isbn: requestedIsbn,
+        workId: requestedWorkId,
+        writerId: requestedWriterId,
+        countryId: requestedCountryId,
+        editionId: requestedEditionId,
+      })
+    );
+  }
+  const selectedWork = selectedWorkResult.data;
+  const selectedEdition = selectedEditionResult.data;
+  const currentEditionWorkResult = selectedEdition
+    ? await supabase
+        .from("literary_works")
+        .select(
+          "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata"
+        )
+        .eq("id", selectedEdition.work_id)
+        .maybeSingle()
+    : { data: null, error: null };
+  const writerOverrideResult =
+    requestedCountryId && requestedWriterId
+      ? await supabase
+          .from("writer_profile_overrides")
+          .select("id,fields,is_enabled,updated_at")
+          .eq("country_id", requestedCountryId)
+          .eq("writer_id", requestedWriterId)
+          .maybeSingle()
+      : { data: null, error: null };
+  const writerOverrideFields = objectValue(writerOverrideResult.data?.fields);
+  const workOptions = mergeLibraryWorkOptions(
+    currentEditionWorkResult.data,
+    selectedWork,
+    workPickerWorks
+  );
+  const selectedWriterEntityId =
+    requestedCountryId && requestedWriterId
+      ? `${requestedCountryId}:${requestedWriterId}`
+      : "";
+  const schemaError =
+    worksError ||
+    editionsError ||
+    workPickerError ||
+    totalWorksResult.error ||
+    totalEditionsResult.error ||
+    coversError ||
+    selectedWorkResult.error ||
+    selectedEditionResult.error ||
+    currentEditionWorkResult.error ||
+    writerOverrideResult.error;
+  const formContext: LibraryFormContext = {
+    catalog,
+    isbn: requestedIsbn,
+    workId: requestedWorkId,
+    writerId: requestedWriterId,
+    countryId: requestedCountryId,
+    editionId: requestedEditionId,
+  };
+  const pageHref = (overrides: LibraryCatalogHrefOptions = {}) =>
+    libraryCatalogHref(catalog, {
+      isbn: requestedIsbn,
+      workId: requestedWorkId,
+      writerId: requestedWriterId,
+      countryId: requestedCountryId,
+      editionId: requestedEditionId,
+      ...overrides,
+    });
 
   return (
     <>
@@ -74,8 +414,22 @@ export default async function LibraryPage({
       </header>
 
       {query.error && <p className="form-message">{query.error}</p>}
+      {query.notice === "edition-exists" && (
+        <p className="form-message" role="status">
+          Издание с этим ISBN уже есть в архиве. Открыта существующая запись; её ручные данные не изменены.
+        </p>
+      )}
+      {editionIdDraft && !requestedEditionId && (
+        <p className="form-message form-error" role="alert">
+          Некорректный идентификатор издания.
+        </p>
+      )}
       {query.saved && (
-        <p className="form-message form-success">Издание сохранено.</p>
+        <p className="form-message form-success">
+          {query.saved === "entity"
+            ? "Изменение сохранено и передано в публикацию."
+            : "Издание сохранено."}
+        </p>
       )}
       {schemaError && (
         <p className="form-message">
@@ -83,16 +437,221 @@ export default async function LibraryPage({
           миграцию 20260730_literary_archive.sql и синхронизацию countries.
         </p>
       )}
+      {query.published === "started" && (
+        <p className="form-message form-success">
+          Публичная сборка с обновлённым изданием запущена.
+        </p>
+      )}
+      {query.published === "queued" && (
+        <p className="form-message form-success">
+          Обновление издания поставлено в очередь публикации.
+        </p>
+      )}
+      {query.published === "queue-error" && (
+        <p className="form-message form-error" role="alert">
+          Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.
+        </p>
+      )}
+
+      {(requestedWorkId || requestedWriterId || requestedCountryId) && (
+        <section className="panel visual-entity-context">
+          <div>
+            <span className="eyebrow">Переход из визуального редактора</span>
+            <h2>
+              {requestedWorkId
+                ? "Выбранная книга"
+                : "Произведения выбранного писателя"}
+            </h2>
+            <p>
+              Найдено записей: {(filteredWorksCount || 0).toLocaleString("ru-RU")}. Фильтр
+              использует постоянные идентификаторы страны, автора и произведения.
+            </p>
+          </div>
+          <Link className="button-secondary" href="/library">
+            Показать весь архив
+          </Link>
+        </section>
+      )}
+
+      {selectedWork && (
+        <section className="panel visual-entity-editor">
+          <header>
+            <div>
+              <span className="eyebrow">Редактор произведения</span>
+              <h2>{selectedWork.title}</h2>
+              <p>
+                Каждое поле сохраняется отдельно, получает запись в истории и
+                сразу ставит публичную сборку в очередь.
+              </p>
+            </div>
+            <span className="badge">{selectedWork.legacy_id}</span>
+          </header>
+          <div className="visual-entity-fields">
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="title"
+              label="Название"
+              value={selectedWork.title}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="originalTitle"
+              label="Название на языке оригинала"
+              value={selectedWork.original_title || ""}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="firstPublished"
+              label="Год первой публикации"
+              value={selectedWork.first_published?.toString() || ""}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="originalLanguage"
+              label="Язык оригинала"
+              value={selectedWork.original_language || ""}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="description"
+              label="Описание"
+              value={selectedWork.description || ""}
+              multiline
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="genres"
+              label="Жанры"
+              value={(selectedWork.genres || []).join("\n")}
+              multiline
+              hint="Один жанр в строке."
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="tags"
+              label="Теги"
+              value={(selectedWork.tags || []).join("\n")}
+              multiline
+              hint="Один тег в строке."
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="sourceUrl"
+              label="Источник сведений"
+              value={selectedWork.source_url || ""}
+              hint="HTTPS-адрес проверяемого источника."
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="book"
+              entityId={selectedWork.legacy_id}
+              field="editorialStatus"
+              label="Статус публикации"
+              value={selectedWork.editorial_status}
+              hint="draft, reviewed или verified."
+            />
+          </div>
+        </section>
+      )}
+
+      {selectedWriterEntityId && !selectedWork && (
+        <section className="panel visual-entity-editor">
+          <header>
+            <div>
+              <span className="eyebrow">Редактор писателя</span>
+              <h2>{textValue(writerOverrideFields.name) || requestedWriterId}</h2>
+              <p>
+                Здесь показаны редакционные переопределения. Пустое поле ещё не
+                заменяет исходные сведения из базы countries.
+              </p>
+            </div>
+            <span className="badge">{selectedWriterEntityId}</span>
+          </header>
+          <div className="visual-entity-fields">
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="writer"
+              entityId={selectedWriterEntityId}
+              field="name"
+              label="Имя"
+              value={textValue(writerOverrideFields.name)}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="writer"
+              entityId={selectedWriterEntityId}
+              field="years"
+              label="Годы жизни"
+              value={textValue(writerOverrideFields.years)}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="writer"
+              entityId={selectedWriterEntityId}
+              field="portrait"
+              label="Портрет"
+              value={textValue(writerOverrideFields.portrait)}
+              hint="HTTPS-адрес или путь к проверенному файлу сайта."
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="writer"
+              entityId={selectedWriterEntityId}
+              field="portraitAlt"
+              label="Описание портрета"
+              value={textValue(writerOverrideFields.portraitAlt)}
+            />
+            <VisualEntityFieldForm
+              formContext={formContext}
+              entityType="writer"
+              entityId={selectedWriterEntityId}
+              field="awards"
+              label="Премии и награды"
+              value={listValue(writerOverrideFields.awards)}
+              multiline
+              hint="Одна награда в строке."
+            />
+          </div>
+          <div className="editor-actions">
+            <Link
+              className="button"
+              href={`/editorial-database?country_id=${encodeURIComponent(requestedCountryId)}&writer_id=${encodeURIComponent(requestedWriterId)}`}
+            >
+              Открыть полный профиль автора
+            </Link>
+            <span className="form-message">
+              Полная биография, произведения, источники и остальные поля доступны
+              в единой базе стран и авторов.
+            </span>
+          </div>
+        </section>
+      )}
 
       <section className="stats-grid">
         <article className="stat-card">
           <span>Произведения</span>
-          <strong>{(worksCount || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{(totalWorksResult.count || 0).toLocaleString("ru-RU")}</strong>
           <small>из единой структуры countries</small>
         </article>
         <article className="stat-card">
           <span>Точные издания</span>
-          <strong>{(editionsCount || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{(totalEditionsResult.count || 0).toLocaleString("ru-RU")}</strong>
           <small>с отдельными ISBN</small>
         </article>
         <article className="stat-card">
@@ -107,6 +666,119 @@ export default async function LibraryPage({
         </article>
       </section>
 
+      <section className="panel library-catalog" style={{ marginTop: 18 }}>
+        <div className="library-catalog-heading">
+          <div>
+            <span className="eyebrow">Полный архив без обрезки</span>
+            <h2>Фильтры произведений и изданий</h2>
+            <p>
+              Название ищется на сервере; страна, автор и статус применяются
+              только как проверенные точные фильтры.
+            </p>
+          </div>
+          {(catalog.term || catalog.country || catalog.writer || catalog.status) && (
+            <Link className="button-secondary" href="/library">Сбросить фильтры</Link>
+          )}
+        </div>
+        <form className="library-catalog-filters" method="get">
+          {requestedIsbn && <input type="hidden" name="isbn" value={requestedIsbn} />}
+          {requestedWorkId && <input type="hidden" name="work_id" value={requestedWorkId} />}
+          {requestedWriterId && <input type="hidden" name="writer_id" value={requestedWriterId} />}
+          {requestedCountryId && <input type="hidden" name="country_id" value={requestedCountryId} />}
+          {requestedEditionId && <input type="hidden" name="edition_id" value={requestedEditionId} />}
+          <label className="field library-catalog-query">
+            <span>Название произведения или издания</span>
+            <input name="q" type="search" maxLength={120} defaultValue={catalog.term} placeholder="Например, Война и мир" />
+          </label>
+          <label className="field">
+            <span>ID страны</span>
+            <input name="country" maxLength={120} defaultValue={catalog.country} placeholder="russia" />
+          </label>
+          <label className="field">
+            <span>ID автора</span>
+            <input name="writer" maxLength={180} defaultValue={catalog.writer} placeholder="leo-tolstoy" />
+          </label>
+          <label className="field">
+            <span>Статус произведения</span>
+            <select name="status" defaultValue={catalog.status}>
+              <option value="">Все статусы</option>
+              {Object.entries(libraryEditorialStatuses).map(([value, label]) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
+            </select>
+          </label>
+          <button className="button" type="submit">Применить</button>
+        </form>
+      </section>
+
+      <section className="panel library-catalog" style={{ marginTop: 18 }}>
+        <div className="library-catalog-heading">
+          <div>
+            <span className="eyebrow">Каталог произведений</span>
+            <h2>Все произведения</h2>
+            <p>Найдено: {(filteredWorksCount || 0).toLocaleString("ru-RU")}</p>
+          </div>
+        </div>
+        {worksError ? (
+          <p className="form-message">Не удалось загрузить произведения: {worksError.message}</p>
+        ) : works.length ? (
+          <div className="data-table-wrap">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Произведение</th>
+                  <th>Автор / страна</th>
+                  <th>Год</th>
+                  <th>Статус</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {works.map((work) => {
+                  const metadata = objectValue(work.metadata);
+                  return (
+                    <tr key={work.id}>
+                      <td className="data-title">
+                        <strong>{work.title}</strong>
+                        <small>{work.original_title || work.legacy_id}</small>
+                      </td>
+                      <td className="data-title">
+                        <strong>{textValue(metadata.writerName) || work.writer_id}</strong>
+                        <small>{textValue(metadata.countryName) || work.country_id}</small>
+                      </td>
+                      <td>{work.first_published ?? "—"}</td>
+                      <td><span className="badge">{work.editorial_status}</span></td>
+                      <td>
+                        <Link
+                          className="button-secondary"
+                          href={pageHref({
+                            isbn: "",
+                            workId: work.legacy_id,
+                            writerId: work.writer_id,
+                            countryId: work.country_id,
+                            editionId: "",
+                          })}
+                        >
+                          Редактировать
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="empty-state"><p>Произведения по этим фильтрам не найдены.</p></div>
+        )}
+        <CatalogPagination
+          label="Страницы произведений"
+          page={catalog.worksPage}
+          totalPages={worksTotalPages}
+          href={(worksPage) => pageHref({ worksPage })}
+        />
+      </section>
+
       <div className="dashboard-grid">
         <section className="panel settings-stack">
           <div>
@@ -119,6 +791,12 @@ export default async function LibraryPage({
             </p>
           </div>
           <form className="isbn-search" method="get">
+            {catalog.term && <input type="hidden" name="q" value={catalog.term} />}
+            {catalog.country && <input type="hidden" name="country" value={catalog.country} />}
+            {catalog.writer && <input type="hidden" name="writer" value={catalog.writer} />}
+            {catalog.status && <input type="hidden" name="status" value={catalog.status} />}
+            {catalog.worksPage > 1 && <input type="hidden" name="works_page" value={catalog.worksPage} />}
+            {catalog.editionsPage > 1 && <input type="hidden" name="editions_page" value={catalog.editionsPage} />}
             <label className="field">
               <span>ISBN</span>
               <input
@@ -179,6 +857,65 @@ export default async function LibraryPage({
         </section>
       )}
 
+      {(candidate || selectedEdition) && (
+        <section className="panel library-catalog" style={{ marginTop: 18 }}>
+          <div className="library-catalog-heading">
+            <div>
+              <span className="eyebrow">Весь каталог произведений</span>
+              <h2>Найти произведение для привязки</h2>
+              <p>
+                Поиск не зависит от фильтров таблицы и охватывает весь архив.
+                Найдено: {(workPickerCount || 0).toLocaleString("ru-RU")}.
+              </p>
+            </div>
+            {catalog.workPickerTerm && (
+              <Link
+                className="button-secondary"
+                href={pageHref({ workPickerTerm: "", workPickerPage: 1 })}
+              >
+                Сбросить поиск
+              </Link>
+            )}
+          </div>
+          <form className="library-catalog-filters" method="get">
+            {catalog.term && <input type="hidden" name="q" value={catalog.term} />}
+            {catalog.country && <input type="hidden" name="country" value={catalog.country} />}
+            {catalog.writer && <input type="hidden" name="writer" value={catalog.writer} />}
+            {catalog.status && <input type="hidden" name="status" value={catalog.status} />}
+            {catalog.worksPage > 1 && <input type="hidden" name="works_page" value={catalog.worksPage} />}
+            {catalog.editionsPage > 1 && <input type="hidden" name="editions_page" value={catalog.editionsPage} />}
+            {requestedIsbn && <input type="hidden" name="isbn" value={requestedIsbn} />}
+            {requestedWorkId && <input type="hidden" name="work_id" value={requestedWorkId} />}
+            {requestedWriterId && <input type="hidden" name="writer_id" value={requestedWriterId} />}
+            {requestedCountryId && <input type="hidden" name="country_id" value={requestedCountryId} />}
+            {requestedEditionId && <input type="hidden" name="edition_id" value={requestedEditionId} />}
+            <label className="field library-catalog-query">
+              <span>Название произведения</span>
+              <input
+                name="work_picker_q"
+                type="search"
+                maxLength={120}
+                defaultValue={catalog.workPickerTerm}
+                placeholder="Например, Мастер и Маргарита"
+              />
+              <small>Можно вводить полное название или его часть.</small>
+            </label>
+            <button className="button" type="submit">Найти во всём архиве</button>
+          </form>
+          {workPickerError && (
+            <p className="form-message form-error" role="alert">
+              Поиск произведений недоступен: {workPickerError.message}
+            </p>
+          )}
+          <CatalogPagination
+            label="Страницы поиска произведения для привязки"
+            page={catalog.workPickerPage}
+            totalPages={workPickerTotalPages}
+            href={(workPickerPage) => pageHref({ workPickerPage })}
+          />
+        </section>
+      )}
+
       {candidate && (
         <section className="panel isbn-candidate" style={{ marginTop: 18 }}>
           <div className="isbn-candidate-cover">
@@ -217,20 +954,21 @@ export default async function LibraryPage({
               className="settings-stack edition-save-form"
               action={saveBookEditionAction}
             >
+              <LibraryActionContextFields {...formContext} />
               <label className="field">
                 <span>Связать с произведением</span>
-                <select name="work_id" required defaultValue="">
+                <select name="work_id" required defaultValue={selectedWork?.id || ""}>
                   <option value="" disabled>
                     Выберите произведение
                   </option>
-                  {works.map((work) => {
+                  {workOptions.map((work) => {
                     const metadata =
                       work.metadata && typeof work.metadata === "object"
                         ? (work.metadata as Record<string, string>)
                         : {};
                     return (
                       <option key={work.id} value={work.id}>
-                        {work.title} — {metadata.writerName || work.writer_id}
+                        {work.title} — {metadata.writerName || work.writer_id} · {work.legacy_id}
                       </option>
                     );
                   })}
@@ -286,7 +1024,7 @@ export default async function LibraryPage({
                 <input type="checkbox" name="is_primary" />
                 <span>Сделать основным изданием произведения</span>
               </label>
-              <button className="button" type="submit" disabled={!works.length}>
+              <button className="button" type="submit" disabled={!workOptions.length}>
                 Сохранить точное издание
               </button>
             </form>
@@ -294,9 +1032,188 @@ export default async function LibraryPage({
         </section>
       )}
 
-      <section className="panel" style={{ marginTop: 18 }}>
-        <h2>Последние издания</h2>
-        {editions.length ? (
+      {requestedEditionId && !selectedEdition && !selectedEditionResult.error && (
+        <section className="panel" style={{ marginTop: 18 }}>
+          <div className="empty-state">
+            <p>Издание не найдено или было удалено.</p>
+            <Link className="button-secondary" href={pageHref({ editionId: "" })}>
+              Вернуться к списку
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {selectedEdition && (
+        <section id="edition-editor" className="panel edition-editor" style={{ marginTop: 18 }}>
+          <header>
+            <div>
+              <span className="eyebrow">Точное издание</span>
+              <h2>Редактировать «{selectedEdition.title}»</h2>
+              <p>
+                Сохранение создаёт снимок предыдущей версии, запись аудита и
+                сразу запускает публикацию сайта.
+              </p>
+            </div>
+            <div className="editor-actions">
+              <span className="badge">{selectedEdition.legacy_id}</span>
+              <Link className="button-secondary" href={pageHref({ editionId: "" })}>
+                Закрыть
+              </Link>
+            </div>
+          </header>
+
+          <form className="settings-stack edition-edit-form" action={updateBookEditionAction}>
+            <LibraryActionContextFields {...formContext} />
+            <input type="hidden" name="edition_id" value={selectedEdition.id} />
+            <input type="hidden" name="expected_updated_at" value={selectedEdition.updated_at} />
+            <fieldset>
+              <legend>Издание и ISBN</legend>
+              <div className="edition-edit-grid">
+                <label className="field edition-edit-wide">
+                  <span>Произведение</span>
+                  <select name="work_id" defaultValue={selectedEdition.work_id} required>
+                    {!workOptions.some((work) => work.id === selectedEdition.work_id) && (
+                      <option value={selectedEdition.work_id}>
+                        Текущее произведение · {selectedEdition.work_id}
+                      </option>
+                    )}
+                    {workOptions.map((work) => {
+                      const metadata = objectValue(work.metadata);
+                      return (
+                        <option key={work.id} value={work.id}>
+                          {work.title} — {textValue(metadata.writerName) || work.writer_id} · {work.legacy_id}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <small>
+                    Текущее произведение всегда остаётся в списке. Поиск выше
+                    работает по всему архиву, независимо от страницы таблицы.
+                  </small>
+                </label>
+                <label className="field edition-edit-wide">
+                  <span>Название этого издания</span>
+                  <input name="title" defaultValue={selectedEdition.title} maxLength={300} required />
+                </label>
+                <label className="field">
+                  <span>ISBN-10</span>
+                  <input name="isbn_10" defaultValue={selectedEdition.isbn_10 || ""} maxLength={32} inputMode="text" />
+                </label>
+                <label className="field">
+                  <span>ISBN-13</span>
+                  <input name="isbn_13" defaultValue={selectedEdition.isbn_13 || ""} maxLength={32} inputMode="numeric" />
+                </label>
+                <label className="field">
+                  <span>Издатель</span>
+                  <input name="publisher" defaultValue={selectedEdition.publisher} maxLength={240} />
+                </label>
+                <label className="field">
+                  <span>Год издания</span>
+                  <input name="publication_year" type="number" min={1400} max={2100} defaultValue={selectedEdition.publication_year || ""} />
+                </label>
+                <label className="field">
+                  <span>Язык</span>
+                  <input name="language" defaultValue={selectedEdition.language} maxLength={120} />
+                </label>
+                <label className="field">
+                  <span>Формат</span>
+                  <input name="format" defaultValue={selectedEdition.format} maxLength={120} placeholder="Твёрдый переплёт" />
+                </label>
+                <label className="field">
+                  <span>Количество страниц</span>
+                  <input name="page_count" type="number" min={1} max={100000} defaultValue={selectedEdition.page_count || ""} />
+                </label>
+                <label className="check-field edition-edit-primary">
+                  <input name="is_primary" type="checkbox" defaultChecked={selectedEdition.is_primary} />
+                  <span>Основное издание этого произведения</span>
+                </label>
+              </div>
+              <small>Хотя бы один ISBN обязателен и проверяется по контрольной цифре.</small>
+            </fieldset>
+
+            <fieldset>
+              <legend>Обложка, источник и права</legend>
+              <div className="edition-edit-grid">
+                {selectedEdition.cover_url && (
+                  <div className="edition-edit-cover">
+                    <img src={selectedEdition.cover_url} alt={`Обложка «${selectedEdition.title}»`} />
+                  </div>
+                )}
+                <label className="field edition-edit-wide">
+                  <span>HTTPS-адрес обложки</span>
+                  <input name="cover_url" type="url" defaultValue={selectedEdition.cover_url || ""} maxLength={2000} />
+                </label>
+                <label className="field edition-edit-wide">
+                  <span>Страница — источник обложки</span>
+                  <input name="cover_source_url" type="url" defaultValue={selectedEdition.cover_source_url || ""} maxLength={2000} />
+                </label>
+                <label className="field">
+                  <span>Статус прав</span>
+                  <select name="cover_rights_status" defaultValue={selectedEdition.cover_rights_status}>
+                    {bookEditionRightsStatuses.map((status) => (
+                      <option key={status} value={status}>{status}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="field">
+                  <span>Дата проверки прав</span>
+                  <input name="rights_checked_at" type="date" defaultValue={selectedEdition.rights_checked_at || ""} />
+                </label>
+                <label className="field">
+                  <span>Название лицензии</span>
+                  <input name="license_name" defaultValue={selectedEdition.license_name} maxLength={240} />
+                </label>
+                <label className="field">
+                  <span>Ссылка на лицензию</span>
+                  <input name="license_url" type="url" defaultValue={selectedEdition.license_url || ""} maxLength={2000} />
+                </label>
+                <label className="field">
+                  <span>Автор изображения</span>
+                  <input name="creator" defaultValue={selectedEdition.creator} maxLength={240} />
+                </label>
+                <label className="field">
+                  <span>Правообладатель</span>
+                  <input name="rights_holder" defaultValue={selectedEdition.rights_holder} maxLength={240} />
+                </label>
+              </div>
+              <small>
+                Обложка публикуется только вместе с HTTPS-источником,
+                подтверждённым статусом прав и датой проверки.
+              </small>
+            </fieldset>
+
+            <fieldset>
+              <legend>Источник сведений</legend>
+              <label className="field">
+                <span>Страница каталога или издателя</span>
+                <input name="source_url" type="url" defaultValue={selectedEdition.source_url || ""} maxLength={2000} />
+              </label>
+            </fieldset>
+
+            <div className="editor-actions">
+              <button className="button" type="submit">
+                Сохранить, записать версию и опубликовать
+              </button>
+              <Link className="button-secondary" href="/history">
+                Открыть историю версий
+              </Link>
+            </div>
+          </form>
+        </section>
+      )}
+
+      <section className="panel library-catalog" style={{ marginTop: 18 }}>
+        <div className="library-catalog-heading">
+          <div>
+            <span className="eyebrow">Каталог точных изданий</span>
+            <h2>Все издания</h2>
+            <p>Найдено: {(filteredEditionsCount || 0).toLocaleString("ru-RU")}</p>
+          </div>
+        </div>
+        {editionsError ? (
+          <p className="form-message">Не удалось загрузить издания: {editionsError.message}</p>
+        ) : editions.length ? (
+          <div className="data-table-wrap">
           <table className="data-table">
             <thead>
               <tr>
@@ -304,6 +1221,7 @@ export default async function LibraryPage({
                 <th>ISBN</th>
                 <th>Издатель</th>
                 <th>Обложка</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -329,16 +1247,31 @@ export default async function LibraryPage({
                           : "нет обложки"}
                       </span>
                     </td>
+                    <td>
+                      <Link
+                        className="button-secondary"
+                        href={pageHref({ isbn: "", workId: "", writerId: "", countryId: "", editionId: edition.id })}
+                      >
+                        Редактировать
+                      </Link>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+          </div>
         ) : (
           <div className="empty-state">
-            <p>Точные издания появятся после первого импорта ISBN.</p>
+            <p>Точные издания по этим фильтрам не найдены.</p>
           </div>
         )}
+        <CatalogPagination
+          label="Страницы изданий"
+          page={catalog.editionsPage}
+          totalPages={editionsTotalPages}
+          href={(editionsPage) => pageHref({ editionsPage })}
+        />
       </section>
     </>
   );

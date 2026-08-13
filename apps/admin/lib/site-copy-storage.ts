@@ -53,3 +53,18 @@ export function mergeSiteCopyRows(
   }
   return { ru, en };
 }
+
+/**
+ * Inline editing currently changes only the Russian interface copy. Keep the
+ * independently curated English value intact instead of treating an omitted
+ * locale as an explicit deletion.
+ */
+export function mergeInlineRussianSiteCopy(
+  current: SiteCopyValues,
+  key: string,
+  value: string
+): SiteCopyValues {
+  return mergeSiteCopyRows(current, [
+    { key, ru: value, en: current.en[key] || "" },
+  ]);
+}

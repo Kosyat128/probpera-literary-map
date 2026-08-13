@@ -38,9 +38,13 @@ describe("site-copy admin wiring", () => {
       ),
       "utf8"
     );
-    expect(homepageActions).toContain("Системный блок редактируется");
-    expect(homepageActions).toContain("Системный блок нельзя выключить");
-    expect(homepageActions).toContain("Системный блок нельзя перемещать");
-    expect(homepageActions).toContain("Системный блок нельзя удалить");
+    expect(homepageActions).toContain("isProtectedHomepageBlock");
+    expect(homepageActions).toContain(
+      "Основной или системный блок нельзя выключить"
+    );
+    expect(homepageActions).toContain('rpc("move_homepage_block"');
+    expect(homepageActions).toContain(
+      "Основной или системный блок нельзя удалить"
+    );
   });
 });

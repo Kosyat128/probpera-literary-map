@@ -27,24 +27,50 @@ export async function requestPublicBuild({
   state: PublicationState;
   build: PublicBuildResult;
 }> {
-  const build = await triggerPublicBuild(reason);
+  // Persist the rebuild request before attempting the fast dispatch. The
+  // scheduled workflow consumes this durable marker if the hook is down or
+  // if an accepted workflow later fails before deployment.
   const { error: queueError } = await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
-    action: build.ok ? "public_build.dispatched" : "public_build.requested",
+    action: "public_build.requested",
     entity_type: entityType,
     entity_id: entityId,
     metadata: {
       ...metadata,
       reason,
-      provider: build.provider,
-      hook_configured: build.configured,
-      hook_error: build.ok ? null : build.error,
       requested_at: new Date().toISOString(),
     },
   });
+  if (queueError) {
+    return {
+      state: "queue-error",
+      build: {
+        configured: false,
+        ok: false,
+        provider: "none",
+        error: "durable-queue-unavailable",
+      },
+    };
+  }
+
+  const build = await triggerPublicBuild(reason);
+  if (build.ok) {
+    await supabase.from("admin_audit_log").insert({
+      actor_id: actorId,
+      action: "public_build.dispatched",
+      entity_type: entityType,
+      entity_id: entityId,
+      metadata: {
+        ...metadata,
+        reason,
+        provider: build.provider,
+        requested_at: new Date().toISOString(),
+      },
+    });
+  }
 
   return {
     build,
-    state: build.ok ? "started" : queueError ? "queue-error" : "queued",
+    state: build.ok ? "started" : "queued",
   };
 }

@@ -4,14 +4,16 @@ import { describe, expect, it } from "vitest";
 
 import {
   applyBookEnrichmentActions,
+  applyBookArchiveWriterPresentationOverride,
   buildBookArchive,
   filterRejectedBookCandidates,
   mergeWriterWorkCandidates,
   type BookEnrichmentActionsPayload,
 } from "./bookArchive";
+import { selectBookWriterName } from "./bookLocalization";
 import { isPublicBook } from "./bookQuality";
 import { bookArchiveCountries } from "./countries";
-import type { WorkProfile } from "./countries/types";
+import type { Country, WorkProfile } from "./countries/types";
 
 const archive = buildBookArchive(bookArchiveCountries);
 const editorialSeries = [
@@ -24,6 +26,69 @@ const editorialSeries = [
 ] as const;
 
 describe("редакционная серия книжного архива", () => {
+  it("applies CMS author names to archive/search presentation without mutating source membership", () => {
+    const source = {
+      id: "fixture-country",
+      name: "Тестовая страна",
+      writers: [
+        {
+          id: "fixture-writer",
+          name: "Исходное имя",
+          fullName: "Original Name",
+          bio: "Проверенная биография",
+          works: ["Исходный список"],
+          workDetails: [
+            {
+              id: "verified-work",
+              title: "Проверенное произведение",
+              editorial: { status: "draft" as const },
+            },
+          ],
+        },
+      ],
+    } as Country;
+    const overrides = {
+      "fixture-country:fixture-writer": {
+        name: "Имя из CMS",
+        fullName: "CMS Display Name",
+        bio: "Не должно заменять проверенную биографию архива",
+        works: ["Не должно создавать книгу"],
+      },
+    };
+
+    const archiveWithOverride = buildBookArchive([source], {
+      includeReviewedGenerated: false,
+      applyEnrichmentActions: false,
+      includeUserSuppliedCovers: false,
+      writerProfileOverrides: overrides,
+    });
+
+    expect(archiveWithOverride).toHaveLength(2);
+    expect(archiveWithOverride.map((book) => book.title)).toEqual([
+      "Проверенное произведение",
+      "Исходный список",
+    ]);
+    expect(archiveWithOverride[0].writerName).toBe("Имя из CMS");
+    expect(selectBookWriterName(archiveWithOverride[0], "ru")).toBe(
+      "Имя из CMS"
+    );
+    expect(selectBookWriterName(archiveWithOverride[0], "en")).toBe(
+      "CMS Display Name"
+    );
+    expect(archiveWithOverride[0].writer.bio).toBe("Проверенная биография");
+    expect(source.writers).toHaveLength(1);
+    expect(source.writers[0].name).toBe("Исходное имя");
+    expect(source.writers[0].fullName).toBe("Original Name");
+
+    expect(
+      applyBookArchiveWriterPresentationOverride(
+        source.id,
+        source.writers[0],
+        {}
+      )
+    ).toBe(source.writers[0]);
+  });
+
   it.each(editorialSeries)(
     "связывает «%s» с автором, годом и собственной обложкой",
     (title, year, editorialStatus) => {

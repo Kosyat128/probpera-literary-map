@@ -7,6 +7,10 @@ on:
       - main
     paths:
       - "apps/admin/**"
+      - "src/data/countries/**"
+      - "src/data/cms/**"
+      - "scripts/archive-source.ts"
+      - "scripts/export-editorial-catalog.mjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/deploy-admin.yml"
@@ -47,6 +51,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Generate the complete editorial catalog
+        run: npm run editorial:catalog
 
       - name: Type-check admin
         run: npm run lint --workspace @probpera/admin

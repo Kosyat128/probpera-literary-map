@@ -1,14 +1,18 @@
-import type { CSSProperties } from "react";
-
 import {
   articleCatalog,
   type ArticleCatalogEntry,
 } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { cmsSiteContent } from "../data/cms/site.generated";
+import { cmsHomepageBlockStyle } from "../data/cms/homepageVisualSettings";
 import { articlePath, journalPath } from "../utils/articleRoutes";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
+import { safePublicHref } from "../utils/publicHref";
+import {
+  cmsEntityMarker,
+  cmsHomepageBlockFieldMarker,
+} from "../cms/directEditBridge";
 
 type HomepageBlock = {
   id: string;
@@ -18,12 +22,11 @@ type HomepageBlock = {
   displayOrder: number;
   backgroundStyle: string;
   backgroundImageUrl?: string;
+  backgroundMediaId?: string | null;
 };
 
 function safeHref(value: unknown, fallback = "#journal") {
-  if (typeof value !== "string") return fallback;
-  const trimmed = value.trim();
-  return /^(https:\/\/|mailto:|\/|#)/iu.test(trimmed) ? trimmed : fallback;
+  return safePublicHref(value, fallback);
 }
 
 function settingText(settings: Record<string, unknown>, key: string) {
@@ -45,6 +48,71 @@ function articleLink(article: ArticleCatalogEntry) {
     article.sectionId,
     article.slug
   );
+}
+
+function articleAdminHref(article: ArticleCatalogEntry) {
+  if (article.source === "cms" && article.id.startsWith("cms-")) {
+    return `/articles/edit?id=${encodeURIComponent(article.id.slice(4))}`;
+  }
+  return `/articles?query=${encodeURIComponent(article.title)}`;
+}
+
+function blockAdminHref(block: HomepageBlock) {
+  return `/homepage#block-${encodeURIComponent(block.id)}`;
+}
+
+function blockStyle(block: HomepageBlock) {
+  return cmsHomepageBlockStyle(block.settings, block.backgroundImageUrl);
+}
+
+function blockBackgroundMarker(block: HomepageBlock) {
+  return cmsHomepageBlockFieldMarker(
+    block.id,
+    "backgroundMediaId",
+    block.backgroundImageUrl || "",
+    {
+      kind: "image",
+      label: "Фоновое изображение блока",
+      adminHref: blockAdminHref(block),
+      mediaId: block.backgroundMediaId,
+    }
+  );
+}
+
+function BlockVisualTools({ block }: { block: HomepageBlock }) {
+  const { t } = useInterfaceLanguage();
+  return (
+    <div className="cms-edit-block-tools" aria-label={t("Оформление блока")}>
+      <button
+        type="button"
+        {...cmsHomepageBlockFieldMarker(
+          block.id,
+          "backgroundStyle",
+          block.backgroundStyle,
+          { label: "Стиль фона", adminHref: blockAdminHref(block) }
+        )}
+      >
+        {t("Стиль")}
+      </button>
+      <button type="button" {...blockBackgroundMarker(block)}>
+        {t("Фон")}
+      </button>
+    </div>
+  );
+}
+
+function blockTextMarker(
+  block: HomepageBlock,
+  field: "title" | "eyebrow" | "description" | "copy" | "buttonText" | "buttonUrl",
+  value: string,
+  label: string,
+  kind: "text" | "textarea" = "text"
+) {
+  return cmsHomepageBlockFieldMarker(block.id, field, value, {
+    kind,
+    label,
+    adminHref: blockAdminHref(block),
+  });
 }
 
 function selectBlockArticles(block: HomepageBlock) {
@@ -77,28 +145,75 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
   return (
     <section
       className={`cms-home-block cms-home-articles is-${block.backgroundStyle}`}
-      style={
-        block.backgroundImageUrl
-          ? ({
-              "--cms-background-image": `url(${block.backgroundImageUrl})`,
-            } as CSSProperties)
-          : undefined
-      }
+      {...blockBackgroundMarker(block)}
+      style={blockStyle(block)}
     >
+      <BlockVisualTools block={block} />
       <header>
         <div>
-          <span className="section-kicker">{t("Выбор редакции")}</span>
-          <h2>
+          <span
+            className="section-kicker"
+            {...blockTextMarker(
+              block,
+              "eyebrow",
+              settingText(block.settings, "eyebrow"),
+              "Надзаголовок блока"
+            )}
+          >
+            {settingText(block.settings, "eyebrow") || t("Выбор редакции")}
+          </span>
+          <h2 {...blockTextMarker(block, "title", block.title, "Заголовок блока")}>
             {language === "ru" && block.title
               ? block.title
               : t("Новые публикации")}
           </h2>
+          <p
+            className={!settingText(block.settings, "description") ? "cms-edit-empty-field" : undefined}
+            {...blockTextMarker(
+              block,
+              "description",
+              settingText(block.settings, "description"),
+              "Описание блока",
+              "textarea"
+            )}
+          >
+            {settingText(block.settings, "description")}
+          </p>
         </div>
-        <a href={journalPath()}>{t("Весь журнал")} →</a>
+        <a
+          href={safeHref(block.settings.buttonUrl, journalPath())}
+          {...blockTextMarker(
+            block,
+            "buttonUrl",
+            settingText(block.settings, "buttonUrl"),
+            "Ссылка кнопки"
+          )}
+        >
+          <span
+            {...blockTextMarker(
+              block,
+              "buttonText",
+              settingText(block.settings, "buttonText"),
+              "Текст кнопки"
+            )}
+          >
+            {settingText(block.settings, "buttonText") || t("Весь журнал")}
+          </span>{" "}
+          →
+          <span className="cms-edit-href-handle" aria-hidden="true">{t("ссылка")}</span>
+        </a>
       </header>
       <div className={block.type === "carousel" ? "is-carousel" : ""}>
         {articles.map((article) => (
-          <article key={article.id}>
+          <article
+            key={article.id}
+            {...cmsEntityMarker(
+              "article",
+              article.id,
+              article.title,
+              articleAdminHref(article)
+            )}
+          >
             <a href={articleLink(article)}>
               {article.imageUrl && (
                 <img
@@ -126,34 +241,76 @@ function TextBlock({ block }: { block: HomepageBlock }) {
   const copy =
     settingText(block.settings, "copy") ||
     settingText(block.settings, "description");
+  const copyField = settingText(block.settings, "copy") ? "copy" : "description";
   if (language === "en") return null;
   return (
     <section
       className={`cms-home-block cms-home-text is-${block.backgroundStyle}`}
-      style={
-        block.backgroundImageUrl
-          ? ({
-              "--cms-background-image": `url(${block.backgroundImageUrl})`,
-            } as CSSProperties)
-          : undefined
-      }
+      {...blockBackgroundMarker(block)}
+      style={blockStyle(block)}
     >
-      <span className="section-kicker">
+      <BlockVisualTools block={block} />
+      <span
+        className="section-kicker"
+        {...blockTextMarker(
+          block,
+          "eyebrow",
+          settingText(block.settings, "eyebrow"),
+          "Надзаголовок блока"
+        )}
+      >
         {settingText(block.settings, "eyebrow") || t("Проба Пера")}
       </span>
-      <h2>{block.title}</h2>
+      <h2 {...blockTextMarker(block, "title", block.title, "Заголовок блока")}>
+        {block.title}
+      </h2>
       {html ? (
         <div
+          {...cmsEntityMarker(
+            "homepage-block",
+            block.id,
+            "Расширенный текст блока",
+            blockAdminHref(block)
+          )}
           dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(html) }}
         />
       ) : (
-        copy && <p>{copy}</p>
+        <p
+          className={!copy ? "cms-edit-empty-field" : undefined}
+          {...blockTextMarker(
+            block,
+            copyField,
+            copy,
+            "Текст блока",
+            "textarea"
+          )}
+        >
+          {copy}
+        </p>
       )}
-      {settingText(block.settings, "buttonText") && (
-        <a href={safeHref(block.settings.buttonUrl)}>
-          {settingText(block.settings, "buttonText")} →
-        </a>
-      )}
+      <a
+        className={!settingText(block.settings, "buttonText") ? "cms-edit-empty-field" : undefined}
+        href={safeHref(block.settings.buttonUrl)}
+        {...blockTextMarker(
+          block,
+          "buttonUrl",
+          settingText(block.settings, "buttonUrl"),
+          "Ссылка кнопки"
+        )}
+      >
+        <span
+          {...blockTextMarker(
+            block,
+            "buttonText",
+            settingText(block.settings, "buttonText"),
+            "Текст кнопки"
+          )}
+        >
+          {settingText(block.settings, "buttonText") || t("Открыть")}
+        </span>{" "}
+        →
+        <span className="cms-edit-href-handle" aria-hidden="true">{t("ссылка")}</span>
+      </a>
     </section>
   );
 }
@@ -173,14 +330,39 @@ function CategoryBlock({ block }: { block: HomepageBlock }) {
   return (
     <section
       className={`cms-home-block cms-home-categories is-${block.backgroundStyle}`}
+      {...blockBackgroundMarker(block)}
+      style={blockStyle(block)}
     >
+      <BlockVisualTools block={block} />
       <header>
-        <span className="section-kicker">{t("Навигация по журналу")}</span>
-        <h2>
+        <span
+          className="section-kicker"
+          {...blockTextMarker(
+            block,
+            "eyebrow",
+            settingText(block.settings, "eyebrow"),
+            "Надзаголовок блока"
+          )}
+        >
+          {settingText(block.settings, "eyebrow") || t("Навигация по журналу")}
+        </span>
+        <h2 {...blockTextMarker(block, "title", block.title, "Заголовок блока")}>
           {language === "ru" && block.title
             ? block.title
             : t("Темы и разделы")}
         </h2>
+        <p
+          className={!settingText(block.settings, "description") ? "cms-edit-empty-field" : undefined}
+          {...blockTextMarker(
+            block,
+            "description",
+            settingText(block.settings, "description"),
+            "Описание блока",
+            "textarea"
+          )}
+        >
+          {settingText(block.settings, "description")}
+        </p>
       </header>
       <div>
         {[...sections.entries()].map(([id, section]) => (
@@ -190,6 +372,29 @@ function CategoryBlock({ block }: { block: HomepageBlock }) {
           </a>
         ))}
       </div>
+      <a
+        className={!settingText(block.settings, "buttonText") ? "cms-edit-empty-field" : undefined}
+        href={safeHref(block.settings.buttonUrl, journalPath())}
+        {...blockTextMarker(
+          block,
+          "buttonUrl",
+          settingText(block.settings, "buttonUrl"),
+          "Ссылка кнопки"
+        )}
+      >
+        <span
+          {...blockTextMarker(
+            block,
+            "buttonText",
+            settingText(block.settings, "buttonText"),
+            "Текст кнопки"
+          )}
+        >
+          {settingText(block.settings, "buttonText") || t("Весь журнал")}
+        </span>{" "}
+        →
+        <span className="cms-edit-href-handle" aria-hidden="true">{t("ссылка")}</span>
+      </a>
     </section>
   );
 }
@@ -199,6 +404,7 @@ function CalloutBlock({ block }: { block: HomepageBlock }) {
   const copy =
     settingText(block.settings, "copy") ||
     settingText(block.settings, "description");
+  const copyField = settingText(block.settings, "copy") ? "copy" : "description";
   const defaultTarget =
     block.type === "literary-map"
       ? "#atlas"
@@ -209,12 +415,51 @@ function CalloutBlock({ block }: { block: HomepageBlock }) {
   return (
     <section
       className={`cms-home-block cms-home-callout is-${block.backgroundStyle}`}
+      {...blockBackgroundMarker(block)}
+      style={blockStyle(block)}
     >
-      <span className="section-kicker">{t("Специальный проект")}</span>
-      <h2>{block.title}</h2>
-      {copy && <p>{copy}</p>}
-      <a href={safeHref(block.settings.buttonUrl, defaultTarget)}>
-        {settingText(block.settings, "buttonText") || t("Открыть")} →
+      <BlockVisualTools block={block} />
+      <span
+        className="section-kicker"
+        {...blockTextMarker(
+          block,
+          "eyebrow",
+          settingText(block.settings, "eyebrow"),
+          "Надзаголовок блока"
+        )}
+      >
+        {settingText(block.settings, "eyebrow") || t("Специальный проект")}
+      </span>
+      <h2 {...blockTextMarker(block, "title", block.title, "Заголовок блока")}>
+        {block.title}
+      </h2>
+      <p
+        className={!copy ? "cms-edit-empty-field" : undefined}
+        {...blockTextMarker(block, copyField, copy, "Описание блока", "textarea")}
+      >
+        {copy}
+      </p>
+      <a
+        href={safeHref(block.settings.buttonUrl, defaultTarget)}
+        {...blockTextMarker(
+          block,
+          "buttonUrl",
+          settingText(block.settings, "buttonUrl"),
+          "Ссылка кнопки"
+        )}
+      >
+        <span
+          {...blockTextMarker(
+            block,
+            "buttonText",
+            settingText(block.settings, "buttonText"),
+            "Текст кнопки"
+          )}
+        >
+          {settingText(block.settings, "buttonText") || t("Открыть")}
+        </span>{" "}
+        →
+        <span className="cms-edit-href-handle" aria-hidden="true">{t("ссылка")}</span>
       </a>
     </section>
   );

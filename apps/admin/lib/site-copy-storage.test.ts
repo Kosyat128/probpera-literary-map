@@ -5,7 +5,11 @@ import {
   allSiteCopyCatalog,
   siteCopyCatalog,
 } from "./site-copy-catalog";
-import { mergeSiteCopyRows, readSiteCopyValues } from "./site-copy-storage";
+import {
+  mergeInlineRussianSiteCopy,
+  mergeSiteCopyRows,
+  readSiteCopyValues,
+} from "./site-copy-storage";
 
 describe("site-copy admin storage", () => {
   it("has one editable row per source string and a complete searchable catalog", () => {
@@ -65,5 +69,19 @@ describe("site-copy admin storage", () => {
         en: null,
       })
     ).toEqual({ ru: { good: "Текст" }, en: {} });
+  });
+
+  it("preserves the English translation during an inline Russian edit", () => {
+    const next = mergeInlineRussianSiteCopy(
+      {
+        ru: { "interface.key": "Старый текст" },
+        en: { "interface.key": "Keep this translation" },
+      },
+      "interface.key",
+      "Новый текст"
+    );
+
+    expect(next.ru["interface.key"]).toBe("Новый текст");
+    expect(next.en["interface.key"]).toBe("Keep this translation");
   });
 });

@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { cmsSiteContent } from "./site.generated";
+import { cmsHomepageVisualCssProperties } from "./homepageVisualSettings";
 
 export type CoreHomepageSectionKey =
   | "hero"
@@ -14,6 +15,13 @@ export type CoreHomepageSectionKey =
   | "trust"
   | "calendar";
 
+export type CoreHomepageBackgroundStyle =
+  | "light"
+  | "violet"
+  | "orange"
+  | "paper"
+  | "transparent";
+
 export type CoreHomepageSection = {
   key: CoreHomepageSectionKey;
   title: string;
@@ -21,12 +29,15 @@ export type CoreHomepageSection = {
   description: string;
   buttonText: string;
   buttonUrl: string;
+  backgroundStyle: CoreHomepageBackgroundStyle;
   backgroundImageUrl: string;
+  visualSettings?: Record<string, unknown>;
 };
 
 type CmsHomepageBlock = {
   title?: unknown;
   settings?: unknown;
+  backgroundStyle?: unknown;
   backgroundImageUrl?: unknown;
 };
 
@@ -38,6 +49,15 @@ function objectValue(value: unknown): Record<string, unknown> {
 
 function textValue(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function backgroundStyleValue(value: unknown): CoreHomepageBackgroundStyle {
+  const style = textValue(value);
+  return ["light", "violet", "orange", "paper", "transparent"].includes(
+    style
+  )
+    ? (style as CoreHomepageBackgroundStyle)
+    : "transparent";
 }
 
 const homepageBlocks = (
@@ -58,26 +78,39 @@ export function getCoreHomepageSection(
         textValue(settings.description) || textValue(settings.copy),
       buttonText: textValue(settings.buttonText),
       buttonUrl: textValue(settings.buttonUrl),
+      backgroundStyle: backgroundStyleValue(block.backgroundStyle),
       backgroundImageUrl: textValue(block.backgroundImageUrl),
+      visualSettings: settings,
     };
   }
   return null;
 }
 
 export function coreHomepageSectionClass(section: CoreHomepageSection | null) {
-  return section?.backgroundImageUrl
-    ? " cms-core-editable has-cms-background"
-    : "";
+  if (!section) return "";
+  return ` cms-core-editable is-${section.backgroundStyle}${
+    section.backgroundImageUrl ? " has-cms-background" : ""
+  }`;
 }
 
 export function coreHomepageSectionStyle(
   section: CoreHomepageSection | null
 ): CSSProperties | undefined {
-  return section?.backgroundImageUrl
-    ? ({
+  if (!section) return undefined;
+  const visualProperties = cmsHomepageVisualCssProperties(
+    section.visualSettings
+  );
+  if (!section.backgroundImageUrl && !Object.keys(visualProperties).length) {
+    return undefined;
+  }
+  return {
+    ...visualProperties,
+    ...(section.backgroundImageUrl
+      ? {
         "--cms-core-background": `url(${JSON.stringify(
           section.backgroundImageUrl
         )})`,
-      } as CSSProperties)
-    : undefined;
+        }
+      : {}),
+  } as CSSProperties;
 }

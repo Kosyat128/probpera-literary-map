@@ -1,10 +1,10 @@
 {
   "version": 2,
   "bookCount": 9712,
-  "articleCount": 158,
-  "linkedBookCount": 511,
+  "articleCount": 161,
+  "linkedBookCount": 513,
   "linkedArticleCount": 26,
-  "relationCount": 650,
+  "relationCount": 652,
   "articleBookRelationCount": 30,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
@@ -3017,6 +3017,18 @@
         "kind": "mention"
       }
     ],
+    "india:aravind_adiga:legacy-aravind_adiga-белый-тигр": [
+      {
+        "id": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+        "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/637b5a39-57b0-469d-acf6-32dcea7b7268.webp",
+        "kind": "mention"
+      }
+    ],
     "ireland:bram_stoker:legacy-bram_stoker-дракула": [
       {
         "id": "cms-eb60b099-f6de-40c7-a260-4ca8612005bf",
@@ -4430,6 +4442,18 @@
         "readingMinutes": 4,
         "slug": "1906-god-dzhozue-karduchchi-laureat-nobelevskoy-premii",
         "imageUrl": "https://static.tildacdn.com/tild3933-3563-4564-a438-653938393764/photo.jpg",
+        "kind": "mention"
+      }
+    ],
+    "russia:nestor:legacy-nestor-повесть-временных-лет": [
+      {
+        "id": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+        "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+        "sectionId": "folklore",
+        "sectionLabel": "Фольклор и мифология",
+        "readingMinutes": 6,
+        "slug": "tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f25f30ff-2bac-4f5b-9103-6fabe015517d.webp",
         "kind": "mention"
       }
     ],

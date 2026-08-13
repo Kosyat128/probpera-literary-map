@@ -7,6 +7,7 @@ export default defineConfig({
       "**/node_modules/**",
       "dist/**",
       ".review/**",
+      ".tmp/**",
       "apps/**/.next/**",
       "coverage/**",
     ],

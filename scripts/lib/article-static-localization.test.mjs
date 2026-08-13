@@ -31,7 +31,7 @@ describe("localized static article pages", () => {
     mkdirSync(path.join(fixtureRoot, "dist"), { recursive: true });
     writeFileSync(
       path.join(fixtureRoot, "dist", "index.html"),
-      '<!doctype html><html lang="ru"><head><title>Fixture</title><meta name="description" content=""><meta name="robots" content="index,follow"><meta property="og:type" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""><link rel="canonical" href=""><link rel="alternate" type="application/rss+xml" href=""></head><body><div id="root"></div><script type="module" src="/assets/app.js"></script></body></html>',
+      '<!doctype html><html lang="ru"><head><title>Fixture</title><meta name="description" content=""><meta name="robots" content="index,follow"><meta property="og:type" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:url" content="https://stale.example/old/"><link rel="canonical" href=""><link rel="alternate" type="application/rss+xml" href=""><script type="application/ld+json">{"url":"https://stale.example/old/"}</script></head><body><div id="root"></div><script type="module" src="/assets/app.js"></script></body></html>',
       "utf8"
     );
     writeJson(path.join(fixtureRoot, "public", "articles", "index.json"), []);
@@ -55,13 +55,15 @@ describe("localized static article pages", () => {
     const article = {
       id: "cms-fixture",
       source: "cms",
-      url: "https://example.test/stati/o-literature/russian-route/",
-      canonicalUrl: "https://example.test/stati/o-literature/russian-route/",
-      slug: "russian-route",
-      title: "Русский заголовок",
+      url:
+        "https://example.test/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii/",
+      canonicalUrl:
+        "https://example.test/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii/",
+      slug: "zarubezhnye-klassiki-literatury-i-ih-professii",
+      title: "Зарубежные классики литературы и их профессии",
       description: "Русское описание.",
-      sectionId: "literary-essays",
-      sectionLabel: "О литературе",
+      sectionId: "writers-world",
+      sectionLabel: "Писатели мира",
       publishedLabel: "Опубликовано: 8 августа 2026",
       publishedAt: "2026-08-08T10:00:00.000Z",
       readingMinutes: 2,
@@ -117,7 +119,7 @@ describe("localized static article pages", () => {
       fixtureRoot,
       "dist",
       "stati",
-      "o-literature",
+      "pisateli-mira",
       "a-reviewed-english-article",
       "index.html"
     );
@@ -127,5 +129,48 @@ describe("localized static article pages", () => {
     expect(englishHtml).toContain('data-route-language="en"');
     expect(englishHtml).toContain("Editor-approved English text.");
     expect(englishHtml).not.toContain("Русский текст.");
+    expect(englishHtml).not.toContain("stale.example");
+    expect(
+      readFileSync(path.join(fixtureRoot, "dist", "index.html"), "utf8")
+    ).not.toContain("stale.example");
+
+    const outdatedSectionAlias = path.join(
+      fixtureRoot,
+      "dist",
+      "stati",
+      "literaturnye-istorii",
+      "zarubezhnye-klassiki-literatury-i-ih-professii",
+      "index.html"
+    );
+    expect(existsSync(outdatedSectionAlias)).toBe(true);
+    expect(readFileSync(outdatedSectionAlias, "utf8")).toContain(
+      "https://example.test/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii/"
+    );
+    const generatedRedirects = JSON.parse(
+      readFileSync(path.join(fixtureRoot, "dist", "redirects.generated.json"), "utf8")
+    );
+    expect(generatedRedirects).toContainEqual(
+      expect.objectContaining({
+        source:
+          "/stati/literaturnye-istorii/zarubezhnye-klassiki-literatury-i-ih-professii",
+        destination:
+          "/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii",
+        reason: "section-alias",
+        server: false,
+      })
+    );
+    expect(readFileSync(path.join(fixtureRoot, "dist", "_redirects"), "utf8")).not.toContain(
+      "/stati/literaturnye-istorii/zarubezhnye-klassiki-literatury-i-ih-professii"
+    );
+    const headers = readFileSync(
+      path.join(fixtureRoot, "dist", "_headers"),
+      "utf8"
+    );
+    expect(headers).toContain(
+      "frame-ancestors https://admin.probpera.ru;"
+    );
+    expect(headers).not.toContain("X-Frame-Options");
+    expect(headers).not.toMatch(/frame-ancestors\s+[^;]*\*/u);
+    expect(headers).not.toContain("frame-ancestors 'none'");
   });
 });

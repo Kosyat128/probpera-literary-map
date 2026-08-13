@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild } from "@/lib/publication";
+import { isSafePublicHref } from "@/lib/public-href";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
@@ -18,22 +19,36 @@ const navigationSchema = z.object({
   displayOrder: z.coerce.number().int().min(-10_000).max(10_000),
   newTab: z.boolean(),
   visible: z.boolean(),
+  expectedUpdatedAt: z.union([z.string().datetime({ offset: true }), z.literal("")]),
 });
 
+function menuTarget(
+  formData: FormData,
+  notice?: { error?: string; saved?: string; deleted?: string; published?: string },
+  itemId?: string
+) {
+  const params = new URLSearchParams();
+  const location = String(formData.get("context_location") || "");
+  if (location === "header" || location === "footer") params.set("location", location);
+  for (const [name, value] of Object.entries(notice || {})) {
+    if (value) params.set(name, value.slice(0, name === "error" ? 500 : 40));
+  }
+  return `/menus${params.size ? `?${params.toString()}` : ""}${itemId ? `#navigation-item-${itemId}` : ""}`;
+}
+
 async function finishNavigationAction(
+  supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>,
   actorId: string,
   itemId: string,
   action: string
 ) {
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) return;
   await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
     entity_type: "navigation_item",
     entity_id: itemId,
   });
-  await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId,
     entityType: "navigation_item",
@@ -41,6 +56,7 @@ async function finishNavigationAction(
     reason: action,
   });
   revalidatePath("/menus");
+  return publication.state;
 }
 
 export async function saveNavigationItemAction(formData: FormData) {
@@ -55,22 +71,21 @@ export async function saveNavigationItemAction(formData: FormData) {
     displayOrder: formData.get("display_order") || 0,
     newTab: formData.get("open_in_new_tab") === "on",
     visible: formData.get("is_visible") === "on",
+    expectedUpdatedAt: String(formData.get("expected_updated_at") || ""),
   });
   if (!parsed.success) {
-    redirect(`/menus?error=${encodeURIComponent(parsed.error.issues[0]?.message || "Проверьте пункт меню")}`);
+    redirect(menuTarget(formData, { error: parsed.error.issues[0]?.message || "Проверьте пункт меню" }));
   }
   if (
-    !parsed.data.href.startsWith("/") &&
-    !parsed.data.href.startsWith("#") &&
-    !/^https:\/\//iu.test(parsed.data.href)
+    !isSafePublicHref(parsed.data.href, { allowHash: true })
   ) {
-    redirect("/menus?error=Ссылка должна начинаться с /, # или https://");
+    redirect(menuTarget(formData, { error: "Ссылка должна начинаться с /, # или https://" }));
   }
   if (parsed.data.id && parsed.data.parentId === parsed.data.id) {
-    redirect("/menus?error=Пункт не может быть родителем самому себе");
+    redirect(menuTarget(formData, { error: "Пункт не может быть родителем самому себе" }));
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/menus?error=База данных не подключена");
+  if (!supabase) redirect(menuTarget(formData, { error: "База данных не подключена" }));
   const payload = {
     menu_id: parsed.data.menuId,
     parent_id: parsed.data.parentId || null,
@@ -82,11 +97,22 @@ export async function saveNavigationItemAction(formData: FormData) {
   };
   let itemId = parsed.data.id;
   if (itemId) {
-    const { error } = await supabase
+    if (!parsed.data.expectedUpdatedAt) {
+      redirect(menuTarget(formData, { error: "Версия пункта не указана. Обновите страницу." }, itemId));
+    }
+    const { data: updated, error } = await supabase
       .from("navigation_items")
       .update(payload)
-      .eq("id", itemId);
-    if (error) redirect(`/menus?error=${encodeURIComponent(error.message)}`);
+      .eq("id", itemId)
+      .eq("updated_at", parsed.data.expectedUpdatedAt)
+      .select("id")
+      .maybeSingle();
+    if (error) redirect(menuTarget(formData, { error: error.message }, itemId));
+    if (!updated) {
+      redirect(menuTarget(formData, {
+        error: "Пункт меню уже изменили в другой вкладке. Обновите страницу и повторите правку.",
+      }, itemId));
+    }
   } else {
     const { data, error } = await supabase
       .from("navigation_items")
@@ -94,30 +120,49 @@ export async function saveNavigationItemAction(formData: FormData) {
       .select("id")
       .single();
     if (error || !data) {
-      redirect(`/menus?error=${encodeURIComponent(error?.message || "Пункт не создан")}`);
+      redirect(menuTarget(formData, { error: error?.message || "Пункт не создан" }));
     }
     itemId = data.id;
   }
-  await finishNavigationAction(
+  const publication = await finishNavigationAction(
+    supabase,
     session.user.id,
     itemId,
     parsed.data.id ? "navigation.updated" : "navigation.created"
   );
-  redirect("/menus?saved=1");
+  redirect(menuTarget(formData, { saved: "1", published: publication }, itemId));
 }
 
 export async function deleteNavigationItemAction(formData: FormData) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
   const id = z.string().uuid().safeParse(formData.get("id"));
-  if (!id.success) redirect("/menus?error=Некорректный пункт");
+  const expectedUpdatedAt = z.string().datetime({ offset: true }).safeParse(
+    formData.get("expected_updated_at")
+  );
+  if (!id.success || !expectedUpdatedAt.success) {
+    redirect(menuTarget(formData, { error: "Некорректный пункт или версия" }));
+  }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/menus?error=База данных не подключена");
-  const { error } = await supabase
+  if (!supabase) redirect(menuTarget(formData, { error: "База данных не подключена" }));
+  const { data: deleted, error } = await supabase
     .from("navigation_items")
     .delete()
-    .eq("id", id.data);
-  if (error) redirect(`/menus?error=${encodeURIComponent(error.message)}`);
-  await finishNavigationAction(session.user.id, id.data, "navigation.deleted");
-  redirect("/menus?deleted=1");
+    .eq("id", id.data)
+    .eq("updated_at", expectedUpdatedAt.data)
+    .select("id")
+    .maybeSingle();
+  if (error) redirect(menuTarget(formData, { error: error.message }));
+  if (!deleted) {
+    redirect(menuTarget(formData, {
+      error: "Пункт меню уже изменили в другой вкладке. Обновите страницу перед удалением.",
+    }));
+  }
+  const publication = await finishNavigationAction(
+    supabase,
+    session.user.id,
+    id.data,
+    "navigation.deleted"
+  );
+  redirect(menuTarget(formData, { deleted: "1", published: publication }));
 }

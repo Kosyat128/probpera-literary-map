@@ -26,8 +26,13 @@ import {
 } from "../data/bookLocalization";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useSubscriptions } from "../hooks/useSubscriptions";
+import {
+  cmsEntityFieldMarker,
+  cmsEntityMarker,
+} from "../cms/directEditBridge";
 import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
+import { writerBiographyPublicStatus } from "./writerPanelPresentation";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
 
@@ -52,6 +57,8 @@ type WriterPanelProps = {
   onNobelSpotlightToggle?: () => void;
   onClose?: () => void;
 };
+
+type WriterDetailView = "biography" | "works" | "sources";
 
 function getWriterName(
   writer: Writer,
@@ -122,6 +129,7 @@ export default function WriterPanel({
   const handledFocusRequest = useRef<number | null>(null);
   const writers = country.writers || [];
   const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);
+  const [detailView, setDetailView] = useState<WriterDetailView>("biography");
 
   useEffect(() => {
     const firstWriter = country.writers?.[0] || null;
@@ -252,14 +260,41 @@ export default function WriterPanel({
         : null,
     [activeWriter, language]
   );
+  const writerBiographyDisplays = useMemo(
+    () =>
+      new Map(
+        sortedWriters.map((writer) => [
+          writer.id,
+          selectWriterBiographyForDisplay(writer, language),
+        ])
+      ),
+    [language, sortedWriters]
+  );
+  const publishedBiographyCount = useMemo(
+    () =>
+      [...writerBiographyDisplays.values()].filter(
+        (biography) => biography?.kind === "published"
+      ).length,
+    [writerBiographyDisplays]
+  );
+  const activeWriterStatus = writerBiographyPublicStatus(activeWriterBiography);
+  const hasWriterWorks =
+    activeWriterWorks.length > 0 || Boolean(activeWriter?.awards?.length);
   const countryLabel = countryName(country.code, country.name);
   const countrySubscribed = isSubscribed("country", country.id);
   const activeWriterSubscriptionId = activeWriter
     ? `${country.id}:${activeWriter.id}`
     : "";
+  const activeWriterAdminHref = activeWriter
+    ? `/library?country_id=${encodeURIComponent(country.id)}&writer_id=${encodeURIComponent(activeWriter.id)}`
+    : "";
   const activeWriterSubscribed = activeWriter
     ? isSubscribed("writer", activeWriterSubscriptionId)
     : false;
+
+  useEffect(() => {
+    setDetailView("biography");
+  }, [activeWriter?.id]);
 
   const nobelWriters = writers.filter(isNobelLaureate);
   const nobelCount = nobelWriters.length;
@@ -325,6 +360,32 @@ export default function WriterPanel({
       </header>
 
       <p className="country-description">{description}</p>
+      <div
+        className="country-verification-summary"
+        data-verified-biographies={publishedBiographyCount}
+        data-total-biographies={writers.length}
+      >
+        <span className="country-verification-icon" aria-hidden="true">
+          ✓
+        </span>
+        <div>
+          <strong>
+            {number(publishedBiographyCount)} {" "}
+            {language === "en"
+              ? publishedBiographyCount === 1
+                ? "biography has passed editorial review"
+                : "biographies have passed editorial review"
+              : pluralRu(publishedBiographyCount, [
+                  "биография прошла редакционную проверку",
+                  "биографии прошли редакционную проверку",
+                  "биографий прошли редакционную проверку",
+                ])}
+          </strong>
+          <small>
+            {t("Для каждой биографии показан её фактический статус")}
+          </small>
+        </div>
+      </div>
       <button
         className={`archive-subscribe${countrySubscribed ? " is-active" : ""}`}
         type="button"
@@ -439,6 +500,11 @@ export default function WriterPanel({
         <div className="writer-list">
           {sortedWriters.map((writer) => {
             const active = activeWriter?.id === writer.id;
+            const writerEntityId = `${country.id}:${writer.id}`;
+            const writerAdminHref = `/library?country_id=${encodeURIComponent(country.id)}&writer_id=${encodeURIComponent(writer.id)}`;
+            const biographyStatus = writerBiographyPublicStatus(
+              writerBiographyDisplays.get(writer.id) ?? null
+            );
             return (
               <button
                 key={writer.id}
@@ -451,22 +517,68 @@ export default function WriterPanel({
                   writer,
                   t("Неизвестный автор"),
                   language
-                )}`}
+                )}. ${t(biographyStatus.label)}`}
+                {...cmsEntityMarker(
+                  "writer",
+                  writerEntityId,
+                  getWriterName(writer, t("Неизвестный автор"), language),
+                  writerAdminHref
+                )}
               >
                 <WriterPortrait
                   writer={writer}
                   className="writer-portrait"
                   decorative
+                  cmsMarker={cmsEntityFieldMarker(
+                    "writer",
+                    writerEntityId,
+                    "portrait",
+                    writer.portrait || "",
+                    {
+                      kind: "image",
+                      label: "Портрет писателя",
+                      adminHref: writerAdminHref,
+                    }
+                  )}
                 />
                 <span className="writer-copy">
-                  <strong>
+                  <strong
+                    {...cmsEntityFieldMarker(
+                      "writer",
+                      writerEntityId,
+                      "name",
+                      writer.name || getWriterName(writer, "", language),
+                      {
+                        label: "Имя писателя",
+                        adminHref: writerAdminHref,
+                      }
+                    )}
+                  >
                     {getWriterName(writer, t("Неизвестный автор"), language)}
                   </strong>
-                  <small>
+                  <small
+                    {...cmsEntityFieldMarker(
+                      "writer",
+                      writerEntityId,
+                      "years",
+                      writer.years || getWriterYears(writer, language),
+                      {
+                        label: "Годы жизни",
+                        adminHref: writerAdminHref,
+                      }
+                    )}
+                  >
                     {getWriterYears(writer, language) ||
                       (language === "ru" ? writer.literaryEra : undefined) ||
                       t("Биография в архиве")}
                   </small>
+                  <span
+                    className={`writer-row-status is-${biographyStatus.code}`}
+                    data-biography-status={biographyStatus.code}
+                  >
+                    <i aria-hidden="true" />
+                    {t(biographyStatus.label)}
+                  </span>
                 </span>
                 <span className="writer-arrow" aria-hidden="true">
                   ↗
@@ -483,6 +595,16 @@ export default function WriterPanel({
           id={writerDetailId}
           className="archive-section writer-detail"
           tabIndex={-1}
+          {...cmsEntityMarker(
+            "writer",
+            activeWriterSubscriptionId,
+            getWriterName(
+              activeWriter,
+              t("Неизвестный автор"),
+              language
+            ),
+            activeWriterAdminHref
+          )}
         >
           <div className="section-title">
             <h3>{t("Карточка автора")}</h3>
@@ -492,6 +614,17 @@ export default function WriterPanel({
             <WriterPortrait
               writer={activeWriter}
               className="writer-detail-portrait"
+              cmsMarker={cmsEntityFieldMarker(
+                "writer",
+                activeWriterSubscriptionId,
+                "portrait",
+                activeWriter.portrait || "",
+                {
+                  kind: "image",
+                  label: "Портрет писателя",
+                  adminHref: activeWriterAdminHref,
+                }
+              )}
             />
             <div>
               <span className="writer-era">
@@ -502,18 +635,98 @@ export default function WriterPanel({
                     t("Литературная традиция")
                   : t("Литературная традиция")}
               </span>
-              <h4>
+              <h4
+                {...cmsEntityFieldMarker(
+                  "writer",
+                  activeWriterSubscriptionId,
+                  "name",
+                  activeWriter.name || getWriterName(activeWriter, "", language),
+                  {
+                    label: "Имя писателя",
+                    adminHref: activeWriterAdminHref,
+                  }
+                )}
+              >
                 {getWriterName(
                   activeWriter,
                   t("Неизвестный автор"),
                   language
                 )}
               </h4>
-              <p className="writer-years">
+              <p
+                className="writer-years"
+                {...cmsEntityFieldMarker(
+                  "writer",
+                  activeWriterSubscriptionId,
+                  "years",
+                  activeWriter.years || getWriterYears(activeWriter, language),
+                  {
+                    label: "Годы жизни",
+                    adminHref: activeWriterAdminHref,
+                  }
+                )}
+              >
                 {getWriterYears(activeWriter, language)}
               </p>
             </div>
           </div>
+          <div
+            className={`writer-verification-status is-${activeWriterStatus.code}`}
+            role="status"
+            data-biography-status={activeWriterStatus.code}
+          >
+            <span aria-hidden="true">
+              {activeWriterStatus.code === "verified" ||
+              activeWriterStatus.code === "reviewed"
+                ? "✓"
+                : "i"}
+            </span>
+            <div>
+              <strong>{t(activeWriterStatus.label)}</strong>
+              <small>
+                {t(activeWriterStatus.detail)}
+                {activeWriterStatus.sourceCount > 0
+                  ? ` · ${number(activeWriterStatus.sourceCount)}`
+                  : ""}
+              </small>
+            </div>
+          </div>
+          <div
+            className="writer-detail-tabs"
+            role="tablist"
+            aria-label={t("Разделы карточки автора")}
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected={detailView === "biography"}
+              className={detailView === "biography" ? "is-active" : undefined}
+              onClick={() => setDetailView("biography")}
+            >
+              {t("Биография")}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={detailView === "works"}
+              className={detailView === "works" ? "is-active" : undefined}
+              disabled={!hasWriterWorks}
+              onClick={() => setDetailView("works")}
+            >
+              {t("Произведения и награды")}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={detailView === "sources"}
+              className={detailView === "sources" ? "is-active" : undefined}
+              onClick={() => setDetailView("sources")}
+            >
+              {t("Источники и материалы")}
+            </button>
+          </div>
+          {detailView === "biography" && (
+            <div className="writer-detail-tab-panel" role="tabpanel">
           <button
             className={`archive-subscribe is-writer${activeWriterSubscribed ? " is-active" : ""}`}
             type="button"
@@ -537,7 +750,20 @@ export default function WriterPanel({
                 : t("Следить за новыми материалами автора")}
             </span>
           </button>
-          <p className="writer-bio">
+          <p
+            className="writer-bio"
+            {...cmsEntityFieldMarker(
+              "writer",
+              activeWriterSubscriptionId,
+              "bio",
+              activeWriterBiography?.text || activeWriter.bio || "",
+              {
+                kind: "textarea",
+                label: "Биография",
+                adminHref: activeWriterAdminHref,
+              }
+            )}
+          >
             {activeWriterBiography?.text ||
               (language === "en"
                 ? t("Проверенный английский перевод биографии ещё готовится.")
@@ -597,10 +823,29 @@ export default function WriterPanel({
             </div>
           )}
 
+            </div>
+          )}
+
+          {detailView === "works" && (
+            <div className="writer-detail-tab-panel" role="tabpanel">
           {activeWriterWorks.length > 0 && (
             <div className="works-block">
               <span>{t("Основные произведения")}</span>
-              <ol>
+              <ol
+                {...cmsEntityFieldMarker(
+                  "writer",
+                  activeWriterSubscriptionId,
+                  "works",
+                  activeWriter.works?.length
+                    ? activeWriter.works
+                    : activeWriterWorks,
+                  {
+                    kind: "textarea",
+                    label: "Основные произведения (по одному в строке)",
+                    adminHref: activeWriterAdminHref,
+                  }
+                )}
+              >
                 {activeWriterWorks.slice(0, 8).map((work) => (
                   <li key={work}>{work}</li>
                 ))}
@@ -608,6 +853,33 @@ export default function WriterPanel({
             </div>
           )}
 
+          {activeWriter.awards && activeWriter.awards.length > 0 && (
+            <div className="works-block writer-awards-block">
+              <span>{t("Премии и награды")}</span>
+              <ul
+                {...cmsEntityFieldMarker(
+                  "writer",
+                  activeWriterSubscriptionId,
+                  "awards",
+                  activeWriter.awards,
+                  {
+                    kind: "textarea",
+                    label: "Премии и награды (по одной в строке)",
+                    adminHref: activeWriterAdminHref,
+                  }
+                )}
+              >
+                {activeWriter.awards.map((award) => (
+                  <li key={award}>{award}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+            </div>
+          )}
+
+          {detailView === "sources" && (
+            <div className="writer-detail-tab-panel" role="tabpanel">
           {otherRelatedArticles.length > 0 && (
             <div className="writer-articles">
               <span>{t("Материалы журнала")}</span>
@@ -651,6 +923,13 @@ export default function WriterPanel({
                   ) : null}
                 </div>
               ))}
+            </div>
+          )}
+            {activeWriterBiography?.kind !== "published" && (
+              <p className="writer-source-empty">
+                {t("Для этой архивной справки источники ещё не зафиксированы.")}
+              </p>
+            )}
             </div>
           )}
         </section>

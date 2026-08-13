@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const articlePath =
-  "/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
+  "/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
 
 test("ArticleReader keeps its controls and long title inside 320–1720px", async ({
   page,
@@ -220,7 +220,7 @@ test("ArticleReader lower panels stay readable in light and book modes", async (
 test("globe search metadata and instructions stay readable inside 320–1720px", async ({
   page,
 }) => {
-  await page.goto("/probpera-literary-map/");
+  await page.goto("/");
   await expect(page.locator("#atlas")).toBeVisible();
 
   for (const width of [320, 360]) {

@@ -4,6 +4,7 @@ import {
 } from "./catalog.generated";
 import { cmsArticleCatalog } from "./cms.generated";
 import { articlePublicPath } from "../../utils/articleRoutes";
+import { normalizeArticleMetadataRecord } from "../../utils/articleMetadata";
 
 export type ArticleTranslationStatus = "approved" | "published";
 
@@ -110,18 +111,28 @@ function withCurrentPublicAddress(
   article: ArticleCatalogEntry,
   source: "legacy" | "cms"
 ): ArticleCatalogEntry {
+  const normalizedTranslation = article.translations?.en
+    ? normalizeArticleMetadataRecord(article.translations.en)
+    : undefined;
+  const normalizedArticle = normalizeArticleMetadataRecord({
+    ...article,
+    translations: normalizedTranslation
+      ? { ...article.translations, en: normalizedTranslation }
+      : article.translations,
+  });
   const legacyPath =
-    article.legacyPath || (source === "legacy" ? normalizedPath(article.url) : null);
+    normalizedArticle.legacyPath ||
+    (source === "legacy" ? normalizedPath(normalizedArticle.url) : null);
   const currentPath = articlePublicPath(
-    article.id,
-    article.title,
-    article.sectionId,
-    article.slug
+    normalizedArticle.id,
+    normalizedArticle.title,
+    normalizedArticle.sectionId,
+    normalizedArticle.slug
   );
   const canonicalUrl = new URL(currentPath, "https://probpera.ru").href;
 
   return {
-    ...article,
+    ...normalizedArticle,
     source,
     legacyPath,
     url: canonicalUrl,

@@ -280,8 +280,20 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   },
 });
 const workIds = new Map();
+const { data: lockedWorks, error: lockedWorksError } = await supabase
+  .from("literary_works")
+  .select("id,legacy_id")
+  .eq("is_cms_locked", true);
+if (lockedWorksError) throw lockedWorksError;
+const lockedLegacyIds = new Set(
+  (lockedWorks || []).map((work) => work.legacy_id)
+);
+(lockedWorks || []).forEach((work) => workIds.set(work.legacy_id, work.id));
+const synchronizableWorks = works.filter(
+  (work) => !lockedLegacyIds.has(work.legacy_id)
+);
 
-await inBatches(works, 250, async (batch, number) => {
+await inBatches(synchronizableWorks, 250, async (batch, number) => {
   const { data, error } = await supabase
     .from("literary_works")
     .upsert(batch, { onConflict: "legacy_id" })
@@ -291,6 +303,11 @@ await inBatches(works, 250, async (batch, number) => {
   data.forEach((work) => workIds.set(work.legacy_id, work.id));
   console.log(`Произведения: пакет ${number} сохранён.`);
 });
+if (lockedLegacyIds.size) {
+  console.log(
+    `Произведения: ${lockedLegacyIds.size} ручных CMS-редакций защищены от перезаписи синхронизацией.`
+  );
+}
 
 const translations = translationRows(archive, workIds);
 await inBatches(translations, 200, async (batch, number) => {

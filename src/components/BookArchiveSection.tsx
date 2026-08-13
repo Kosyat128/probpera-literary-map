@@ -35,6 +35,10 @@ import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
 import {
+  cmsEntityFieldMarker,
+  cmsEntityMarker,
+} from "../cms/directEditBridge";
+import {
   literarySearchMatches,
   normalizeLiterarySearch,
 } from "../utils/literarySearch";
@@ -84,6 +88,35 @@ const archiveFilters: Array<{
 
 function editorialRank(item: BookArchiveQueueItem) {
   return item.status === "verified" ? 0 : 1;
+}
+
+export function isBookCmsEditable(
+  item: Pick<BookArchiveQueueItem, "status"> | null | undefined
+) {
+  return item?.status === "verified";
+}
+
+function cmsBookEntityAttributes(
+  item: Pick<BookArchiveQueueItem, "status"> | null | undefined,
+  entityId: string,
+  label: string,
+  adminHref: string
+) {
+  return isBookCmsEditable(item)
+    ? cmsEntityMarker("book", entityId, label, adminHref)
+    : ({ "data-cms-ignore": "true" } as const);
+}
+
+function cmsBookFieldAttributes(
+  item: Pick<BookArchiveQueueItem, "status"> | null | undefined,
+  entityId: string,
+  field: string,
+  value: unknown,
+  options: Parameters<typeof cmsEntityFieldMarker>[4]
+) {
+  return isBookCmsEditable(item)
+    ? cmsEntityFieldMarker("book", entityId, field, value, options)
+    : {};
 }
 
 function bookKey(book: BookArchiveEntry) {
@@ -449,7 +482,16 @@ export default function BookArchiveSection({
       </div>
 
       {selectedBook && (
-        <article className="book-detail-card" aria-live="polite">
+        <article
+          className="book-detail-card"
+          aria-live="polite"
+          {...cmsBookEntityAttributes(
+            selectedItem,
+            bookKey(selectedBook),
+            selectedBookText?.title || selectedBook.title,
+            `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`
+          )}
+        >
           <button
             className="book-detail-close"
             type="button"
@@ -496,9 +538,34 @@ export default function BookArchiveSection({
                 ? t("Проверено редакцией")
                 : t("Не проверено")}
             </span>
-            <h3>{selectedBookText?.title}</h3>
+            <h3
+              {...cmsBookFieldAttributes(
+                selectedItem,
+                bookKey(selectedBook),
+                "title",
+                selectedBook.title,
+                {
+                  label: "Название произведения",
+                  adminHref: `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`,
+                }
+              )}
+            >
+              {selectedBookText?.title}
+            </h3>
             {selectedItem?.status === "verified" && selectedBook.originalTitle && (
-              <p className="book-original-title">
+              <p
+                className="book-original-title"
+                {...cmsBookFieldAttributes(
+                  selectedItem,
+                  bookKey(selectedBook),
+                  "originalTitle",
+                  selectedBook.originalTitle,
+                  {
+                    label: "Название на языке оригинала",
+                    adminHref: `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`,
+                  }
+                )}
+              >
                 {selectedBook.originalTitle}
               </p>
             )}
@@ -520,18 +587,58 @@ export default function BookArchiveSection({
                 selectedBook.firstPublished && (
                 <div>
                   <dt>{t("Первая публикация")}</dt>
-                  <dd>{selectedBook.firstPublished}</dd>
+                  <dd
+                    {...cmsBookFieldAttributes(
+                      selectedItem,
+                      bookKey(selectedBook),
+                      "firstPublished",
+                      selectedBook.firstPublished,
+                      {
+                        label: "Год первой публикации",
+                        adminHref: `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`,
+                      }
+                    )}
+                  >
+                    {selectedBook.firstPublished}
+                  </dd>
                 </div>
               )}
               {selectedOriginalLanguage && (
                 <div>
                   <dt>{t("Язык оригинала")}</dt>
-                  <dd>{selectedOriginalLanguage}</dd>
+                  <dd
+                    {...cmsBookFieldAttributes(
+                      selectedItem,
+                      bookKey(selectedBook),
+                      "originalLanguage",
+                      selectedBook.originalLanguage || "",
+                      {
+                        label: "Язык оригинала",
+                        adminHref: `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`,
+                      }
+                    )}
+                  >
+                    {selectedOriginalLanguage}
+                  </dd>
                 </div>
               )}
             </dl>
             {selectedBookText?.description && (
-              <p>{selectedBookText.description}</p>
+              <p
+                {...cmsBookFieldAttributes(
+                  selectedItem,
+                  bookKey(selectedBook),
+                  "description",
+                  selectedBook.description || selectedBookText.description,
+                  {
+                    kind: "textarea",
+                    label: "Описание произведения",
+                    adminHref: `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`,
+                  }
+                )}
+              >
+                {selectedBookText.description}
+              </p>
             )}
             {selectedMetadataLabels.length > 0 && (
               <div className="book-tags" aria-label={t("Темы и жанры книги")}>
@@ -678,7 +785,16 @@ export default function BookArchiveSection({
             ? book.coverThumbnailUrl || book.coverUrl
             : undefined;
           return (
-          <article className="archive-book-card" key={bookKey(book)}>
+          <article
+            className="archive-book-card"
+            key={bookKey(book)}
+            {...cmsBookEntityAttributes(
+              item,
+              bookKey(book),
+              localizedBook.title,
+              `/library?country_id=${encodeURIComponent(book.countryId)}&writer_id=${encodeURIComponent(book.writerId)}&work_id=${encodeURIComponent(bookKey(book))}`
+            )}
+          >
             <div
               className={`archive-book-cover${coverUrl ? " has-image" : ""}`}
             >
@@ -722,7 +838,20 @@ export default function BookArchiveSection({
                   ? ` · ${book.firstPublished}`
                   : ""}
               </small>
-              <h3>{localizedBook.title}</h3>
+              <h3
+                {...cmsBookFieldAttributes(
+                  item,
+                  bookKey(book),
+                  "title",
+                  book.title,
+                  {
+                    label: "Название произведения",
+                    adminHref: `/library?country_id=${encodeURIComponent(book.countryId)}&writer_id=${encodeURIComponent(book.writerId)}&work_id=${encodeURIComponent(bookKey(book))}`,
+                  }
+                )}
+              >
+                {localizedBook.title}
+              </h3>
               <p>{selectBookWriterName(book, language, t("Автор"))}</p>
               <div className="archive-book-actions">
                 <span

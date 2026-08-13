@@ -17,6 +17,9 @@ const atlasDynamicLabels = new Set([
   "10+ авторов",
   "С реальными портретами",
   "Есть проверенные карточки",
+  "Старинный",
+  "Классический",
+  "Современный",
 ]);
 
 function directTranslationSources() {

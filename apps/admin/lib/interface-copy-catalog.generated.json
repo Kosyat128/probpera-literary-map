@@ -176,6 +176,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Авто",
+    "group": "Весь интерфейс",
+    "label": "Авто",
+    "defaultRu": "Авто",
+    "defaultEn": "Auto",
+    "multiline": false
+  },
+  {
     "key": "interface.автор",
     "group": "Весь интерфейс",
     "label": "автор",
@@ -464,6 +472,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Архивная справка · не проверена",
+    "group": "Весь интерфейс",
+    "label": "Архивная справка · не проверена",
+    "defaultRu": "Архивная справка · не проверена",
+    "defaultEn": "Archive note · not verified",
+    "multiline": false
+  },
+  {
     "key": "globe.ocean.atlantic",
     "group": "Подписи океанов на глобусе",
     "label": "Подпись океана: Атлантический океан",
@@ -728,6 +744,14 @@
     "multiline": false
   },
   {
+    "key": "interface.В редакционной очереди",
+    "group": "Весь интерфейс",
+    "label": "В редакционной очереди",
+    "defaultRu": "В редакционной очереди",
+    "defaultEn": "In editorial review",
+    "multiline": false
+  },
+  {
     "key": "interface.В этой ветке пока нет тем. Откройте первое содержательное обсуждение.",
     "group": "Весь интерфейс",
     "label": "В этой ветке пока нет тем. Откройте первое содержательное обсуждение.",
@@ -816,6 +840,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Вернуть исходный вид глобуса",
+    "group": "Весь интерфейс",
+    "label": "Вернуть исходный вид глобуса",
+    "defaultRu": "Вернуть исходный вид глобуса",
+    "defaultEn": "Restore the globe's initial view",
+    "multiline": false
+  },
+  {
     "key": "interface.Вернуться на главную",
     "group": "Весь интерфейс",
     "label": "Вернуться на главную",
@@ -837,6 +869,14 @@
     "label": "Весь журнал",
     "defaultRu": "Весь журнал",
     "defaultEn": "Explore the journal",
+    "multiline": false
+  },
+  {
+    "key": "interface.Включить автоматическое вращение",
+    "group": "Весь интерфейс",
+    "label": "Включить автоматическое вращение",
+    "defaultRu": "Включить автоматическое вращение",
+    "defaultEn": "Start automatic rotation",
     "multiline": false
   },
   {
@@ -1408,11 +1448,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Для каждой биографии показан её фактический статус",
+    "group": "Весь интерфейс",
+    "label": "Для каждой биографии показан её фактический статус",
+    "defaultRu": "Для каждой биографии показан её фактический статус",
+    "defaultEn": "Each biography shows its actual review status",
+    "multiline": false
+  },
+  {
     "key": "interface.Для карточки, поиска и социальных сетей",
     "group": "Весь интерфейс",
     "label": "Для карточки, поиска и социальных сетей",
     "defaultRu": "Для карточки, поиска и социальных сетей",
     "defaultEn": "For cards, search and social media",
+    "multiline": false
+  },
+  {
+    "key": "interface.Для этой архивной справки источники ещё не зафиксированы.",
+    "group": "Весь интерфейс",
+    "label": "Для этой архивной справки источники ещё не зафиксированы.",
+    "defaultRu": "Для этой архивной справки источники ещё не зафиксированы.",
+    "defaultEn": "Sources have not yet been recorded for this archive note.",
     "multiline": false
   },
   {
@@ -1624,14 +1680,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Журнал «Проба Пера» — полноформатное редакционное издание",
-    "group": "Весь интерфейс",
-    "label": "Журнал «Проба Пера» — полноформатное редакционное издание",
-    "defaultRu": "Журнал «Проба Пера» — полноформатное редакционное издание",
-    "defaultEn": "Proba Pera magazine — a full-size editorial publication",
-    "multiline": false
-  },
-  {
     "key": "interface.Журнал о литературе и искусстве слова",
     "group": "Весь интерфейс",
     "label": "Журнал о литературе и искусстве слова",
@@ -1840,6 +1888,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Изображения баннера",
+    "group": "Весь интерфейс",
+    "label": "Изображения баннера",
+    "defaultRu": "Изображения баннера",
+    "defaultEn": "Banner images",
+    "multiline": false
+  },
+  {
     "key": "interface.Изображения с указанным источником",
     "group": "Весь интерфейс",
     "label": "Изображения с указанным источником",
@@ -1942,6 +1998,14 @@
     "defaultRu": "Интерактивный литературный глобус",
     "defaultEn": "Interactive literary globe",
     "multiline": false
+  },
+  {
+    "key": "interface.Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб, Home возвращает исходный вид.",
+    "group": "Весь интерфейс",
+    "label": "Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб, Home возвращает исходный вид.",
+    "defaultRu": "Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб, Home возвращает исходный вид.",
+    "defaultEn": "Interactive literary globe. Arrow keys rotate, plus and minus zoom, and Home restores the initial view.",
+    "multiline": true
   },
   {
     "key": "interface.Интересные факты",
@@ -2152,11 +2216,35 @@
     "multiline": false
   },
   {
+    "key": "interface.Источники ещё не зафиксированы",
+    "group": "Весь интерфейс",
+    "label": "Источники ещё не зафиксированы",
+    "defaultRu": "Источники ещё не зафиксированы",
+    "defaultEn": "Sources are not recorded yet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Источники зафиксированы",
+    "group": "Весь интерфейс",
+    "label": "Источники зафиксированы",
+    "defaultRu": "Источники зафиксированы",
+    "defaultEn": "Sources recorded",
+    "multiline": false
+  },
+  {
     "key": "interface.Источники и библиография",
     "group": "Весь интерфейс",
     "label": "Источники и библиография",
     "defaultRu": "Источники и библиография",
     "defaultEn": "Sources and bibliography",
+    "multiline": false
+  },
+  {
+    "key": "interface.Источники и материалы",
+    "group": "Весь интерфейс",
+    "label": "Источники и материалы",
+    "defaultRu": "Источники и материалы",
+    "defaultEn": "Sources and related reading",
     "multiline": false
   },
   {
@@ -2432,11 +2520,35 @@
     "multiline": false
   },
   {
+    "key": "interface.Классич.",
+    "group": "Весь интерфейс",
+    "label": "Классич.",
+    "defaultRu": "Классич.",
+    "defaultEn": "Classic",
+    "multiline": false
+  },
+  {
     "key": "interface.Классический",
     "group": "Весь интерфейс",
     "label": "Классический",
     "defaultRu": "Классический",
     "defaultEn": "Classic",
+    "multiline": false
+  },
+  {
+    "key": "interface.Классический атлас · 2026",
+    "group": "Весь интерфейс",
+    "label": "Классический атлас · 2026",
+    "defaultRu": "Классический атлас · 2026",
+    "defaultEn": "Classic atlas · 2026",
+    "multiline": false
+  },
+  {
+    "key": "interface.Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.",
+    "group": "Весь интерфейс",
+    "label": "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.",
+    "defaultRu": "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.",
+    "defaultEn": "Classic cartographic atlas, 2026 edition. Cartography: Natural Earth.",
     "multiline": false
   },
   {
@@ -2597,6 +2709,14 @@
     "label": "Колесо — масштаб",
     "defaultRu": "Колесо — масштаб",
     "defaultEn": "Scroll to zoom",
+    "multiline": false
+  },
+  {
+    "key": "interface.Колесо или ± — масштаб",
+    "group": "Весь интерфейс",
+    "label": "Колесо или ± — масштаб",
+    "defaultRu": "Колесо или ± — масштаб",
+    "defaultEn": "Scroll or use ± to zoom",
     "multiline": false
   },
   {
@@ -3552,6 +3672,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Нажмите, чтобы открыть архив страны",
+    "group": "Весь интерфейс",
+    "label": "Нажмите, чтобы открыть архив страны",
+    "defaultRu": "Нажмите, чтобы открыть архив страны",
+    "defaultEn": "Select to open the country archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Название источника, ссылка, что именно подтверждает",
     "group": "Весь интерфейс",
     "label": "Название источника, ссылка, что именно подтверждает",
@@ -4344,6 +4472,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Остановить автоматическое вращение",
+    "group": "Весь интерфейс",
+    "label": "Остановить автоматическое вращение",
+    "defaultRu": "Остановить автоматическое вращение",
+    "defaultEn": "Stop automatic rotation",
+    "multiline": false
+  },
+  {
     "key": "country.CK",
     "group": "Названия стран",
     "label": "Название страны: Острова Кука",
@@ -4589,6 +4725,14 @@
     "label": "Отправить ответ",
     "defaultRu": "Отправить ответ",
     "defaultEn": "Post reply",
+    "multiline": false
+  },
+  {
+    "key": "interface.Оформление блока",
+    "group": "Весь интерфейс",
+    "label": "Оформление блока",
+    "defaultRu": "Оформление блока",
+    "defaultEn": "Block appearance",
     "multiline": false
   },
   {
@@ -5080,6 +5224,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Подтверждено источниками",
+    "group": "Весь интерфейс",
+    "label": "Подтверждено источниками",
+    "defaultRu": "Подтверждено источниками",
+    "defaultEn": "Source-verified",
+    "multiline": false
+  },
+  {
     "key": "interface.Пожаловаться редакции",
     "group": "Весь интерфейс",
     "label": "Пожаловаться редакции",
@@ -5424,6 +5576,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Премии и награды",
+    "group": "Весь интерфейс",
+    "label": "Премии и награды",
+    "defaultRu": "Премии и награды",
+    "defaultEn": "Prizes and awards",
+    "multiline": false
+  },
+  {
     "key": "interface.Премия не присуждалась: ",
     "group": "Весь интерфейс",
     "label": "Премия не присуждалась: ",
@@ -5469,6 +5629,14 @@
     "label": "Проба Пера в цифрах",
     "defaultRu": "Проба Пера в цифрах",
     "defaultEn": "Proba Pera in numbers",
+    "multiline": false
+  },
+  {
+    "key": "interface.Проверенная биография готовится",
+    "group": "Весь интерфейс",
+    "label": "Проверенная биография готовится",
+    "defaultRu": "Проверенная биография готовится",
+    "defaultEn": "A verified biography is in preparation",
     "multiline": false
   },
   {
@@ -5613,6 +5781,14 @@
     "label": "Произведения",
     "defaultRu": "Произведения",
     "defaultEn": "Works",
+    "multiline": false
+  },
+  {
+    "key": "interface.Произведения и награды",
+    "group": "Весь интерфейс",
+    "label": "Произведения и награды",
+    "defaultRu": "Произведения и награды",
+    "defaultEn": "Works and awards",
     "multiline": false
   },
   {
@@ -5853,6 +6029,14 @@
     "label": "Разделы",
     "defaultRu": "Разделы",
     "defaultEn": "Sections",
+    "multiline": false
+  },
+  {
+    "key": "interface.Разделы карточки автора",
+    "group": "Весь интерфейс",
+    "label": "Разделы карточки автора",
+    "defaultRu": "Разделы карточки автора",
+    "defaultEn": "Writer card sections",
     "multiline": false
   },
   {
@@ -6333,6 +6517,14 @@
     "label": "Подпись на глобусе: Саудовская Аравия",
     "defaultRu": "Саудовская Аравия",
     "defaultEn": "Saudi Arabia",
+    "multiline": false
+  },
+  {
+    "key": "interface.Сброс",
+    "group": "Весь интерфейс",
+    "label": "Сброс",
+    "defaultRu": "Сброс",
+    "defaultEn": "Reset",
     "multiline": false
   },
   {
@@ -6992,6 +7184,14 @@
     "multiline": true
   },
   {
+    "key": "interface.ссылка",
+    "group": "Весь интерфейс",
+    "label": "ссылка",
+    "defaultRu": "ссылка",
+    "defaultEn": "link",
+    "multiline": false
+  },
+  {
     "key": "interface.Ссылка скопирована",
     "group": "Весь интерфейс",
     "label": "Ссылка скопирована",
@@ -7128,6 +7328,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Стиль",
+    "group": "Весь интерфейс",
+    "label": "Стиль",
+    "defaultRu": "Стиль",
+    "defaultEn": "Style",
+    "multiline": false
+  },
+  {
     "key": "interface.Стиль глобуса",
     "group": "Весь интерфейс",
     "label": "Стиль глобуса",
@@ -7181,6 +7389,14 @@
     "label": "Страна",
     "defaultRu": "Страна",
     "defaultEn": "Country",
+    "multiline": false
+  },
+  {
+    "key": "interface.Страна выбрана · карточка архива открыта",
+    "group": "Весь интерфейс",
+    "label": "Страна выбрана · карточка архива открыта",
+    "defaultRu": "Страна выбрана · карточка архива открыта",
+    "defaultEn": "Country selected · archive card open",
     "multiline": false
   },
   {
@@ -7576,6 +7792,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Тяните или используйте стрелки",
+    "group": "Весь интерфейс",
+    "label": "Тяните или используйте стрелки",
+    "defaultRu": "Тяните или используйте стрелки",
+    "defaultEn": "Drag or use the arrow keys",
+    "multiline": false
+  },
+  {
     "key": "interface.Тяните, чтобы вращать",
     "group": "Весь интерфейс",
     "label": "Тяните, чтобы вращать",
@@ -7589,6 +7813,14 @@
     "label": "Убрать из подборки",
     "defaultRu": "Убрать из подборки",
     "defaultEn": "Remove from selection",
+    "multiline": false
+  },
+  {
+    "key": "interface.Увеличить масштаб глобуса",
+    "group": "Весь интерфейс",
+    "label": "Увеличить масштаб глобуса",
+    "defaultRu": "Увеличить масштаб глобуса",
+    "defaultEn": "Zoom in on the globe",
     "multiline": false
   },
   {
@@ -7688,11 +7920,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Уменьшить масштаб глобуса",
+    "group": "Весь интерфейс",
+    "label": "Уменьшить масштаб глобуса",
+    "defaultRu": "Уменьшить масштаб глобуса",
+    "defaultEn": "Zoom out of the globe",
+    "multiline": false
+  },
+  {
     "key": "interface.Уменьшить шрифт",
     "group": "Весь интерфейс",
     "label": "Уменьшить шрифт",
     "defaultRu": "Уменьшить шрифт",
     "defaultEn": "Decrease font size",
+    "multiline": false
+  },
+  {
+    "key": "interface.Управление глобусом",
+    "group": "Весь интерфейс",
+    "label": "Управление глобусом",
+    "defaultRu": "Управление глобусом",
+    "defaultEn": "Globe controls",
     "multiline": false
   },
   {
@@ -7797,6 +8045,14 @@
     "label": "Фольклор и мифология",
     "defaultRu": "Фольклор и мифология",
     "defaultEn": "Folklore and mythology",
+    "multiline": false
+  },
+  {
+    "key": "interface.Фон",
+    "group": "Весь интерфейс",
+    "label": "Фон",
+    "defaultRu": "Фон",
+    "defaultEn": "Background",
     "multiline": false
   },
   {

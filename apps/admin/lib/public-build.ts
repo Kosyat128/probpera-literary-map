@@ -5,7 +5,7 @@ export type PublicBuildResult =
       configured: false;
       ok: false;
       provider: "none";
-      error: "not-configured";
+      error: "not-configured" | "durable-queue-unavailable";
     }
   | {
       configured: true;

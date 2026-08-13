@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
 import { selectWriterDisplayName } from "../data/bookLocalization";
+import { cmsCoreFieldMarker } from "../cms/directEditBridge";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandArrowIcon from "./BrandArrowIcon";
 
@@ -223,13 +224,37 @@ export default function LiteraryCalendar({
     <section className="calendar-card" aria-labelledby="calendar-title">
       <header className="calendar-heading">
         <div>
-          <span className="section-kicker">
+          <span
+            className="section-kicker"
+            {...cmsCoreFieldMarker(
+              "calendar",
+              "eyebrow",
+              eyebrow || "Живая энциклопедия",
+              { label: "Надзаголовок календаря" }
+            )}
+          >
             {language === "ru" && eyebrow ? eyebrow : t("Живая энциклопедия")}
           </span>
-          <h3 id="calendar-title">
+          <h3
+            id="calendar-title"
+            {...cmsCoreFieldMarker(
+              "calendar",
+              "title",
+              title || "Литературный календарь",
+              { label: "Заголовок календаря" }
+            )}
+          >
             {language === "ru" && title ? title : t("Литературный календарь")}
           </h3>
-          <p>
+          <p
+            {...cmsCoreFieldMarker(
+              "calendar",
+              "description",
+              description ||
+                "Даты рождения и памяти писателей складываются в живую историю мировой литературы.",
+              { kind: "textarea", label: "Описание календаря" }
+            )}
+          >
             {language === "ru" && description
               ? description
               : t(

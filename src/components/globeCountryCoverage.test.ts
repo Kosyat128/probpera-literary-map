@@ -55,6 +55,12 @@ function countryCoverageInventory() {
 }
 
 describe("globe country coverage", () => {
+  it("keeps Kiribati on its own island marker after writer-coordinate corrections", () => {
+    const kiribati = countries.find(({ code }) => code?.toUpperCase() === "KI");
+    expect(kiribati).toBeDefined();
+    expect(fallbackCountryCoordinates(kiribati!)).toEqual([1.4518, 172.9717]);
+  });
+
   it("gives every one of the 200 country cards a polygon or intentional marker", () => {
     const inventory = countryCoverageInventory();
     const polygons = inventory.filter(({ mode }) => mode === "polygon");

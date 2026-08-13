@@ -46,6 +46,18 @@ export const GLOBE_VISUAL_STYLES = ["antique", "earth", "modern"] as const;
 
 export type GlobeVisualStyle = (typeof GLOBE_VISUAL_STYLES)[number];
 
+// Public names describe what visitors actually see rather than the internal
+// asset keys: `earth` is the contemporary Blue Marble surface, while
+// `modern` is the classic cartographic Natural Earth atlas.
+export const GLOBE_VISUAL_STYLE_LABELS: Record<
+  GlobeVisualStyle,
+  { full: string; compact: string }
+> = {
+  antique: { full: "Старинный", compact: "Ретро" },
+  earth: { full: "Современный", compact: "Современный" },
+  modern: { full: "Классический", compact: "Классич." },
+};
+
 export const MODERN_GLOBE_EDITION = {
   year: 2026,
   source: "Natural Earth",

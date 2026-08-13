@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-08-11T19:07:08.082Z",
+  "generatedAt": "2026-08-13T07:30:18.097Z",
   "summary": {
-    "writerRecords": 1705,
+    "writerRecords": 1698,
     "russianReady": 45,
-    "russianWithheld": 1660,
+    "russianWithheld": 1653,
     "englishReady": 20,
-    "englishWithheld": 1685,
-    "legacyRussianTextPresent": 1705,
+    "englishWithheld": 1678,
+    "legacyRussianTextPresent": 1698,
     "structuredRussianBiographyPresent": 45,
     "missingBiography": 0,
-    "shortBiography": 1058,
+    "shortBiography": 843,
     "overlyLongBiography": 0,
     "genericBiography": 0,
     "duplicateBiographyRecords": 2,
     "duplicateBiographyGroups": 1,
-    "unsourcedBiography": 1660,
-    "rightsUnproven": 1660,
+    "unsourcedBiography": 1653,
+    "rightsUnproven": 1653,
     "licensedCopyMissingMetadata": 0,
     "humanTranslationRightsMissing": 0,
     "researchDrafts": 20,
@@ -25,7 +25,7 @@
     "researchDraftsApprovedForPromotion": 20,
     "duplicateResearchDraftKeys": 0,
     "orphanResearchDrafts": 0,
-    "withheldWithoutResearchDraft": 1660,
+    "withheldWithoutResearchDraft": 1653,
     "stagingRecords": 2356,
     "stagingRecordsWithLegacyProse": 2356
   },
@@ -43215,8 +43215,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 144,
-        "sentenceCount": 1,
+        "textLength": 250,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43234,7 +43234,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43277,8 +43277,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 139,
-        "sentenceCount": 1,
+        "textLength": 320,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43296,7 +43296,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43339,8 +43339,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 270,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43358,7 +43358,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43401,8 +43401,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 246,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43420,7 +43420,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43463,8 +43463,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 168,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43482,7 +43482,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43525,8 +43525,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 112,
-        "sentenceCount": 1,
+        "textLength": 280,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43544,7 +43544,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43587,7 +43587,7 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 162,
+        "textLength": 208,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -43649,8 +43649,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 243,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43668,7 +43668,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43711,8 +43711,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43730,7 +43730,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43768,13 +43768,13 @@
     },
     {
       "id": "bankim_chandra_chatterjee",
-      "name": "Банким Чандра Чаттерджи",
+      "name": "Банким Чандра Чаттопадхьяй",
       "countryId": "india",
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 215,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43792,7 +43792,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43835,8 +43835,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 99,
-        "sentenceCount": 1,
+        "textLength": 210,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43854,7 +43854,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43897,8 +43897,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 240,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43916,7 +43916,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -43959,8 +43959,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 201,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -43978,7 +43978,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44016,13 +44016,13 @@
     },
     {
       "id": "subramania_bharati",
-      "name": "Субраманья Бхарати",
+      "name": "Субрамания Бхарати",
       "countryId": "india",
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 119,
-        "sentenceCount": 1,
+        "textLength": 258,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44040,7 +44040,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44064,7 +44064,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -44083,8 +44083,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 82,
-        "sentenceCount": 1,
+        "textLength": 256,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44102,7 +44102,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44145,8 +44145,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 99,
-        "sentenceCount": 1,
+        "textLength": 219,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44164,7 +44164,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44207,8 +44207,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 221,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44226,7 +44226,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44269,7 +44269,7 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 169,
+        "textLength": 299,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -44331,7 +44331,7 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 119,
+        "textLength": 198,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -44350,7 +44350,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44393,8 +44393,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 107,
-        "sentenceCount": 1,
+        "textLength": 208,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44412,7 +44412,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44455,8 +44455,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 107,
-        "sentenceCount": 1,
+        "textLength": 166,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44474,7 +44474,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44517,8 +44517,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 122,
-        "sentenceCount": 1,
+        "textLength": 232,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44536,7 +44536,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44579,8 +44579,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 110,
-        "sentenceCount": 1,
+        "textLength": 290,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44598,7 +44598,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44641,8 +44641,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 120,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44660,7 +44660,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44703,8 +44703,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 124,
-        "sentenceCount": 1,
+        "textLength": 222,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44722,7 +44722,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44765,8 +44765,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 125,
-        "sentenceCount": 1,
+        "textLength": 173,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44784,7 +44784,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44827,8 +44827,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44846,7 +44846,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -44889,8 +44889,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 129,
-        "sentenceCount": 1,
+        "textLength": 250,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -44908,7 +44908,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45013,8 +45013,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 118,
-        "sentenceCount": 1,
+        "textLength": 232,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45032,7 +45032,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45075,7 +45075,7 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 179,
+        "textLength": 308,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45137,8 +45137,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 109,
-        "sentenceCount": 1,
+        "textLength": 194,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45156,7 +45156,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45199,8 +45199,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 281,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45218,7 +45218,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45242,7 +45242,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -45261,8 +45261,8 @@
       "countryName": "Индия",
       "russian": {
         "ready": false,
-        "textLength": 86,
-        "sentenceCount": 1,
+        "textLength": 191,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45280,7 +45280,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45323,7 +45323,7 @@
       "countryName": "Индонезия",
       "russian": {
         "ready": false,
-        "textLength": 203,
+        "textLength": 290,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45385,7 +45385,7 @@
       "countryName": "Индонезия",
       "russian": {
         "ready": false,
-        "textLength": 122,
+        "textLength": 243,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45447,7 +45447,7 @@
       "countryName": "Индонезия",
       "russian": {
         "ready": false,
-        "textLength": 138,
+        "textLength": 135,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45509,8 +45509,8 @@
       "countryName": "Индонезия",
       "russian": {
         "ready": false,
-        "textLength": 101,
-        "sentenceCount": 2,
+        "textLength": 219,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45528,7 +45528,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45566,13 +45566,13 @@
     },
     {
       "id": "goenawan_mohamad",
-      "name": "Гоэнтаджара Мохамад",
+      "name": "Гунаван Мохамад",
       "countryId": "indonesia",
       "countryName": "Индонезия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 2,
+        "textLength": 266,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45590,7 +45590,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45633,8 +45633,8 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 132,
-        "sentenceCount": 1,
+        "textLength": 245,
+        "sentenceCount": 4,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45652,7 +45652,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45695,7 +45695,7 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 92,
+        "textLength": 267,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45714,7 +45714,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45757,8 +45757,8 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 256,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45776,7 +45776,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45819,8 +45819,8 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 273,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45838,7 +45838,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45881,8 +45881,8 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 211,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -45900,7 +45900,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -45943,7 +45943,7 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 86,
+        "textLength": 252,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -45962,7 +45962,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46005,131 +46005,7 @@
       "countryName": "Иран",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "shahrnush_parsipur",
-      "name": "Шахрнуш Парсипур",
-      "countryId": "iran",
-      "countryName": "Иран",
-      "russian": {
-        "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "forugh_farrokhzad",
-      "name": "Форуг Фаррохзад",
-      "countryId": "iran",
-      "countryName": "Иран",
-      "russian": {
-        "ready": false,
-        "textLength": 115,
+        "textLength": 224,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -46148,7 +46024,131 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "shahrnush_parsipur",
+      "name": "Шахрнуш Парсипур",
+      "countryId": "iran",
+      "countryName": "Иран",
+      "russian": {
+        "ready": false,
+        "textLength": 288,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "forugh_farrokhzad",
+      "name": "Форуг Фаррохзад",
+      "countryId": "iran",
+      "countryName": "Иран",
+      "russian": {
+        "ready": false,
+        "textLength": 278,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46191,8 +46191,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 280,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46210,7 +46210,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46253,8 +46253,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 265,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46272,7 +46272,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46315,8 +46315,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 227,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46334,7 +46334,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46358,7 +46358,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -46377,8 +46377,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 57,
-        "sentenceCount": 1,
+        "textLength": 230,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46396,7 +46396,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46439,8 +46439,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 50,
-        "sentenceCount": 1,
+        "textLength": 237,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46458,7 +46458,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46501,8 +46501,8 @@
       "countryName": "Ирак",
       "russian": {
         "ready": false,
-        "textLength": 73,
-        "sentenceCount": 1,
+        "textLength": 253,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46520,7 +46520,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46563,8 +46563,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46582,7 +46582,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46687,8 +46687,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 217,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46706,7 +46706,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46749,8 +46749,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 68,
-        "sentenceCount": 1,
+        "textLength": 134,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46768,7 +46768,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46811,8 +46811,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 179,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46830,7 +46830,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46935,8 +46935,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 38,
-        "sentenceCount": 1,
+        "textLength": 220,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -46954,7 +46954,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -46997,8 +46997,8 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 71,
-        "sentenceCount": 1,
+        "textLength": 218,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47016,7 +47016,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47121,7 +47121,7 @@
       "countryName": "Ирландия",
       "russian": {
         "ready": false,
-        "textLength": 289,
+        "textLength": 206,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -47251,8 +47251,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 49,
-        "sentenceCount": 1,
+        "textLength": 229,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47270,7 +47270,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47313,8 +47313,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 55,
-        "sentenceCount": 1,
+        "textLength": 269,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47332,7 +47332,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47375,8 +47375,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 64,
-        "sentenceCount": 1,
+        "textLength": 202,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47394,7 +47394,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47437,8 +47437,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 204,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47456,7 +47456,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47499,8 +47499,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 62,
-        "sentenceCount": 1,
+        "textLength": 154,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47518,7 +47518,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47561,8 +47561,8 @@
       "countryName": "Израиль",
       "russian": {
         "ready": false,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 136,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47580,7 +47580,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47623,8 +47623,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 131,
-        "sentenceCount": 1,
+        "textLength": 256,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47642,7 +47642,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47685,8 +47685,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 67,
-        "sentenceCount": 1,
+        "textLength": 246,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47704,7 +47704,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47747,8 +47747,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 109,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47766,7 +47766,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47809,8 +47809,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 283,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47828,7 +47828,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47871,8 +47871,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 73,
-        "sentenceCount": 1,
+        "textLength": 247,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47890,7 +47890,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47933,8 +47933,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 274,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -47952,7 +47952,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -47995,8 +47995,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 109,
-        "sentenceCount": 1,
+        "textLength": 286,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48014,7 +48014,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48057,8 +48057,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 111,
-        "sentenceCount": 1,
+        "textLength": 209,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48076,7 +48076,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48119,8 +48119,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 79,
-        "sentenceCount": 1,
+        "textLength": 208,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48138,7 +48138,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48181,8 +48181,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 114,
-        "sentenceCount": 1,
+        "textLength": 198,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48200,7 +48200,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48243,8 +48243,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 201,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48262,7 +48262,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48305,8 +48305,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 212,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48324,7 +48324,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48367,8 +48367,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 254,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48386,7 +48386,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48429,8 +48429,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 290,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48448,7 +48448,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48491,8 +48491,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 214,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48510,7 +48510,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48553,8 +48553,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 258,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48572,7 +48572,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48615,8 +48615,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 265,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48634,7 +48634,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48677,8 +48677,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 326,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48696,7 +48696,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48739,8 +48739,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 333,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48758,7 +48758,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48796,13 +48796,13 @@
     },
     {
       "id": "italo_svevo",
-      "name": "Итало Свево",
+      "name": "Итало Звево",
       "countryId": "italy",
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 122,
-        "sentenceCount": 1,
+        "textLength": 299,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48820,7 +48820,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48863,8 +48863,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 280,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48882,7 +48882,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48925,8 +48925,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 285,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -48944,7 +48944,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -48987,8 +48987,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 104,
-        "sentenceCount": 1,
+        "textLength": 260,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49006,7 +49006,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49049,8 +49049,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 164,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49068,7 +49068,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49111,8 +49111,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 104,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49130,7 +49130,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49173,8 +49173,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 287,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49192,7 +49192,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49235,8 +49235,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 297,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49254,7 +49254,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49297,8 +49297,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 284,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49316,7 +49316,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49359,8 +49359,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 81,
-        "sentenceCount": 1,
+        "textLength": 277,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49378,7 +49378,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49421,8 +49421,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 276,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49440,7 +49440,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49483,8 +49483,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 96,
-        "sentenceCount": 1,
+        "textLength": 202,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49502,7 +49502,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49545,8 +49545,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 271,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49564,7 +49564,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49607,8 +49607,8 @@
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 152,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49626,7 +49626,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49664,74 +49664,12 @@
     },
     {
       "id": "roberto_saviano",
-      "name": "Роберто Савиано",
+      "name": "Роберто Савьяно",
       "countryId": "italy",
       "countryName": "Италия",
       "russian": {
         "ready": false,
-        "textLength": 82,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "emilio_salgari",
-      "name": "Эмилио Сальгари",
-      "countryId": "italy",
-      "countryName": "Италия",
-      "russian": {
-        "ready": false,
-        "textLength": 114,
+        "textLength": 315,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -49750,7 +49688,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49774,7 +49712,69 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "emilio_salgari",
+      "name": "Эмилио Сальгари",
+      "countryId": "italy",
+      "countryName": "Италия",
+      "russian": {
+        "ready": false,
+        "textLength": 268,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -49799,8 +49799,8 @@
       "countryName": "Ямайка",
       "russian": {
         "ready": false,
-        "textLength": 187,
-        "sentenceCount": 3,
+        "textLength": 195,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49861,8 +49861,8 @@
       "countryName": "Ямайка",
       "russian": {
         "ready": false,
-        "textLength": 161,
-        "sentenceCount": 3,
+        "textLength": 220,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -49923,7 +49923,7 @@
       "countryName": "Ямайка",
       "russian": {
         "ready": false,
-        "textLength": 118,
+        "textLength": 231,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -49942,7 +49942,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -49985,8 +49985,8 @@
       "countryName": "Ямайка",
       "russian": {
         "ready": false,
-        "textLength": 163,
-        "sentenceCount": 2,
+        "textLength": 194,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50047,7 +50047,7 @@
       "countryName": "Ямайка",
       "russian": {
         "ready": false,
-        "textLength": 156,
+        "textLength": 203,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -50110,7 +50110,7 @@
       "russian": {
         "ready": false,
         "textLength": 155,
-        "sentenceCount": 1,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50128,7 +50128,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50171,8 +50171,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 140,
-        "sentenceCount": 1,
+        "textLength": 197,
+        "sentenceCount": 4,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50190,7 +50190,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50233,8 +50233,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 122,
-        "sentenceCount": 1,
+        "textLength": 217,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50252,7 +50252,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50295,8 +50295,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 206,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50314,7 +50314,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50357,8 +50357,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50376,7 +50376,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50400,7 +50400,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -50419,8 +50419,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 307,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50438,7 +50438,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50481,8 +50481,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 218,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50500,7 +50500,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50543,8 +50543,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 224,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50562,7 +50562,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50586,7 +50586,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -50605,8 +50605,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50624,7 +50624,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50667,8 +50667,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 251,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50686,7 +50686,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50791,8 +50791,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 220,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50810,7 +50810,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50853,8 +50853,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 112,
-        "sentenceCount": 1,
+        "textLength": 258,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50872,7 +50872,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50915,8 +50915,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 234,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50934,7 +50934,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -50977,8 +50977,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 198,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -50996,7 +50996,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51039,8 +51039,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 138,
-        "sentenceCount": 1,
+        "textLength": 245,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51058,7 +51058,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51101,8 +51101,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 114,
-        "sentenceCount": 1,
+        "textLength": 270,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51120,7 +51120,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51163,8 +51163,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 211,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51182,7 +51182,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51225,8 +51225,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 105,
-        "sentenceCount": 1,
+        "textLength": 242,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51244,7 +51244,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51287,8 +51287,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 99,
-        "sentenceCount": 1,
+        "textLength": 251,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51306,7 +51306,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51349,8 +51349,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 123,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51368,7 +51368,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51473,8 +51473,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 169,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51492,7 +51492,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51516,7 +51516,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -51535,8 +51535,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 210,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51554,7 +51554,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51597,8 +51597,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 158,
-        "sentenceCount": 2,
+        "textLength": 218,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51659,8 +51659,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 96,
-        "sentenceCount": 1,
+        "textLength": 198,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51678,7 +51678,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51721,8 +51721,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 109,
-        "sentenceCount": 1,
+        "textLength": 234,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51740,7 +51740,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51783,8 +51783,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 243,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51802,7 +51802,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51845,8 +51845,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 271,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51864,7 +51864,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51907,8 +51907,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 73,
-        "sentenceCount": 1,
+        "textLength": 271,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -51926,7 +51926,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -51950,7 +51950,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52031,8 +52031,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52050,7 +52050,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52093,8 +52093,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52112,7 +52112,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52155,8 +52155,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 230,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52174,7 +52174,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52198,7 +52198,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52217,8 +52217,8 @@
       "countryName": "Япония",
       "russian": {
         "ready": false,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 225,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52236,7 +52236,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52279,8 +52279,8 @@
       "countryName": "Иордания",
       "russian": {
         "ready": false,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 238,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52298,7 +52298,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52336,13 +52336,13 @@
     },
     {
       "id": "ghalib_halasa",
-      "name": "Галиб Халса",
+      "name": "Галиб Халаса",
       "countryId": "jordan",
       "countryName": "Иордания",
       "russian": {
         "ready": false,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 213,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52360,7 +52360,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52403,8 +52403,8 @@
       "countryName": "Иордания",
       "russian": {
         "ready": false,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52422,7 +52422,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52465,8 +52465,8 @@
       "countryName": "Иордания",
       "russian": {
         "ready": false,
-        "textLength": 35,
-        "sentenceCount": 1,
+        "textLength": 216,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52484,7 +52484,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52527,8 +52527,8 @@
       "countryName": "Иордания",
       "russian": {
         "ready": false,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 229,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52546,7 +52546,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52584,12 +52584,12 @@
     },
     {
       "id": "abai_qunanbaiuly",
-      "name": "Абай Кунанбаев",
+      "name": "Абай Кунанбайулы",
       "countryId": "kazakhstan",
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 107,
+        "textLength": 278,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -52608,7 +52608,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52651,7 +52651,7 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 110,
+        "textLength": 228,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -52670,7 +52670,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52708,12 +52708,12 @@
     },
     {
       "id": "akhmet_baitursynov",
-      "name": "Ахмет Байтурсынов",
+      "name": "Ахмет Байтурсынулы",
       "countryId": "kazakhstan",
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 97,
+        "textLength": 253,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -52732,7 +52732,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52775,7 +52775,7 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 93,
+        "textLength": 234,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -52794,7 +52794,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52837,8 +52837,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 65,
-        "sentenceCount": 1,
+        "textLength": 269,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52856,7 +52856,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52899,8 +52899,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 44,
-        "sentenceCount": 1,
+        "textLength": 249,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52918,7 +52918,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -52942,7 +52942,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52961,8 +52961,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 71,
-        "sentenceCount": 1,
+        "textLength": 244,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -52980,7 +52980,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53004,7 +53004,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -53023,8 +53023,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 50,
-        "sentenceCount": 1,
+        "textLength": 227,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53042,7 +53042,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53085,8 +53085,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 270,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53104,7 +53104,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53147,8 +53147,8 @@
       "countryName": "Казахстан",
       "russian": {
         "ready": false,
-        "textLength": 43,
-        "sentenceCount": 1,
+        "textLength": 158,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53166,7 +53166,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53190,7 +53190,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -53209,8 +53209,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 96,
-        "sentenceCount": 1,
+        "textLength": 272,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53228,7 +53228,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53271,8 +53271,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 252,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53290,7 +53290,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53333,8 +53333,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 272,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53352,7 +53352,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53395,8 +53395,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53414,7 +53414,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53438,7 +53438,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -53457,8 +53457,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 229,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53476,7 +53476,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53519,8 +53519,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 247,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53538,7 +53538,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53581,8 +53581,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 52,
-        "sentenceCount": 1,
+        "textLength": 257,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53600,7 +53600,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53643,8 +53643,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 243,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53662,7 +53662,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53705,8 +53705,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 234,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53724,7 +53724,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53767,8 +53767,8 @@
       "countryName": "Кения",
       "russian": {
         "ready": false,
-        "textLength": 43,
-        "sentenceCount": 1,
+        "textLength": 204,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -53786,7 +53786,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -53829,7 +53829,7 @@
       "countryName": "Кирибати",
       "russian": {
         "ready": false,
-        "textLength": 160,
+        "textLength": 323,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -53891,7 +53891,7 @@
       "countryName": "Косово",
       "russian": {
         "ready": false,
-        "textLength": 60,
+        "textLength": 126,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -53953,7 +53953,7 @@
       "countryName": "Косово",
       "russian": {
         "ready": false,
-        "textLength": 47,
+        "textLength": 119,
         "sentenceCount": 1,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -54015,8 +54015,8 @@
       "countryName": "Косово",
       "russian": {
         "ready": false,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 205,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54034,7 +54034,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54077,8 +54077,8 @@
       "countryName": "Косово",
       "russian": {
         "ready": false,
-        "textLength": 53,
-        "sentenceCount": 1,
+        "textLength": 212,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54096,7 +54096,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54139,8 +54139,8 @@
       "countryName": "Косово",
       "russian": {
         "ready": false,
-        "textLength": 31,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54158,7 +54158,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54201,8 +54201,8 @@
       "countryName": "Кувейт",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54220,7 +54220,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54263,8 +54263,8 @@
       "countryName": "Кувейт",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 188,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54282,7 +54282,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54325,8 +54325,8 @@
       "countryName": "Кувейт",
       "russian": {
         "ready": false,
-        "textLength": 49,
-        "sentenceCount": 1,
+        "textLength": 194,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54344,7 +54344,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54368,7 +54368,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54387,8 +54387,8 @@
       "countryName": "Кувейт",
       "russian": {
         "ready": false,
-        "textLength": 51,
-        "sentenceCount": 1,
+        "textLength": 206,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54406,7 +54406,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54430,7 +54430,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54449,8 +54449,8 @@
       "countryName": "Кувейт",
       "russian": {
         "ready": false,
-        "textLength": 64,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54468,7 +54468,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54492,7 +54492,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54511,8 +54511,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 104,
-        "sentenceCount": 1,
+        "textLength": 211,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54530,7 +54530,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54573,8 +54573,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 265,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54592,7 +54592,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54635,8 +54635,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 36,
-        "sentenceCount": 1,
+        "textLength": 169,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54654,7 +54654,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54697,8 +54697,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 201,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54716,7 +54716,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54759,8 +54759,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 39,
-        "sentenceCount": 1,
+        "textLength": 218,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54778,7 +54778,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54802,7 +54802,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54821,8 +54821,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 223,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54840,7 +54840,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54878,13 +54878,13 @@
     },
     {
       "id": "musa_jangaziev",
-      "name": "Муса Джангазиев",
+      "name": "Муса Жангазиев",
       "countryId": "kyrgyzstan",
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 68,
-        "sentenceCount": 1,
+        "textLength": 198,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54902,7 +54902,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -54926,7 +54926,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54940,13 +54940,13 @@
     },
     {
       "id": "suranbay_eraliev",
-      "name": "Суранбай Эралиев",
+      "name": "Сүйүнбай Эралиев",
       "countryId": "kyrgyzstan",
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 218,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -54964,7 +54964,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55007,8 +55007,8 @@
       "countryName": "Кыргызстан",
       "russian": {
         "ready": false,
-        "textLength": 52,
-        "sentenceCount": 1,
+        "textLength": 241,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55026,7 +55026,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55050,7 +55050,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55069,7 +55069,7 @@
       "countryName": "Лаос",
       "russian": {
         "ready": false,
-        "textLength": 100,
+        "textLength": 255,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -55088,7 +55088,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55131,8 +55131,8 @@
       "countryName": "Лаос",
       "russian": {
         "ready": false,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 314,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55150,69 +55150,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "visuth_phommasane",
-      "name": "Висутх Пхомсаван",
-      "countryId": "laos",
-      "countryName": "Лаос",
-      "russian": {
-        "ready": false,
-        "textLength": 46,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55255,8 +55193,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 65,
-        "sentenceCount": 1,
+        "textLength": 287,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55274,7 +55212,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55317,8 +55255,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 58,
-        "sentenceCount": 1,
+        "textLength": 264,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55336,7 +55274,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55379,8 +55317,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 250,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55398,7 +55336,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55441,8 +55379,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 202,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55460,7 +55398,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55484,7 +55422,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55503,8 +55441,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 73,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55522,7 +55460,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55565,8 +55503,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 43,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55584,7 +55522,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55627,8 +55565,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 47,
-        "sentenceCount": 1,
+        "textLength": 225,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55646,7 +55584,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55670,7 +55608,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55689,8 +55627,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 45,
-        "sentenceCount": 1,
+        "textLength": 262,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55708,7 +55646,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55751,8 +55689,8 @@
       "countryName": "Латвия",
       "russian": {
         "ready": false,
-        "textLength": 57,
-        "sentenceCount": 1,
+        "textLength": 241,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55770,7 +55708,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55813,8 +55751,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 99,
-        "sentenceCount": 1,
+        "textLength": 257,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55832,7 +55770,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55875,8 +55813,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 248,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55894,7 +55832,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55937,8 +55875,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 98,
-        "sentenceCount": 1,
+        "textLength": 186,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -55956,7 +55894,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -55999,8 +55937,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 58,
-        "sentenceCount": 1,
+        "textLength": 223,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56018,7 +55956,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56061,8 +55999,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 65,
-        "sentenceCount": 1,
+        "textLength": 257,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56080,7 +56018,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56123,8 +56061,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 56,
-        "sentenceCount": 1,
+        "textLength": 227,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56142,7 +56080,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56166,7 +56104,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56185,8 +56123,8 @@
       "countryName": "Ливан",
       "russian": {
         "ready": false,
-        "textLength": 41,
-        "sentenceCount": 1,
+        "textLength": 281,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56204,7 +56142,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56247,8 +56185,8 @@
       "countryName": "Лесото",
       "russian": {
         "ready": false,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 201,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56266,7 +56204,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56290,7 +56228,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56304,13 +56242,13 @@
     },
     {
       "id": "masechele_khaketla",
-      "name": "Масило Мацела Хакетла",
+      "name": "Нтселисенг «Масечеле» Хакетла",
       "countryId": "lesotho",
       "countryName": "Лесото",
       "russian": {
         "ready": false,
-        "textLength": 43,
-        "sentenceCount": 1,
+        "textLength": 225,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56328,7 +56266,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56352,131 +56290,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "letuka_molati",
-      "name": "Летука Молати",
-      "countryId": "lesotho",
-      "countryName": "Лесото",
-      "russian": {
-        "ready": false,
-        "textLength": 26,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "coleman_motsapi",
-      "name": "Коулман Мотсепе",
-      "countryId": "lesotho",
-      "countryName": "Лесото",
-      "russian": {
-        "ready": false,
-        "textLength": 68,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56490,13 +56304,13 @@
     },
     {
       "id": "bai_t_moore",
-      "name": "Бай Т. Мур",
+      "name": "Бай Тамиа Мур",
       "countryId": "liberia",
       "countryName": "Либерия",
       "russian": {
         "ready": false,
-        "textLength": 82,
-        "sentenceCount": 1,
+        "textLength": 263,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56514,7 +56328,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56538,7 +56352,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56552,13 +56366,13 @@
     },
     {
       "id": "wilton_sankawulo",
-      "name": "Уилтон Санкайуло",
+      "name": "Уилтон Санкавуло",
       "countryId": "liberia",
       "countryName": "Либерия",
       "russian": {
         "ready": false,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 246,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56576,7 +56390,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56600,193 +56414,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "marvin_colley",
-      "name": "Марва Колли",
-      "countryId": "liberia",
-      "countryName": "Либерия",
-      "russian": {
-        "ready": false,
-        "textLength": 39,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "sylvester_williams",
-      "name": "Сильвестр Уильямс",
-      "countryId": "liberia",
-      "countryName": "Либерия",
-      "russian": {
-        "ready": false,
-        "textLength": 51,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "varney_bangura",
-      "name": "Варни Бэнгура",
-      "countryId": "liberia",
-      "countryName": "Либерия",
-      "russian": {
-        "ready": false,
-        "textLength": 30,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56805,8 +56433,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 257,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56824,7 +56452,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56862,13 +56490,13 @@
     },
     {
       "id": "hassan_al_faqih_hassan",
-      "name": "Хасан аль-Фких Хасан",
+      "name": "Хасан аль-Факих Хасан",
       "countryId": "libya",
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 307,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56886,7 +56514,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56929,8 +56557,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 62,
-        "sentenceCount": 1,
+        "textLength": 254,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -56948,7 +56576,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -56972,7 +56600,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56991,8 +56619,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 262,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57010,7 +56638,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57034,7 +56662,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57053,8 +56681,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 42,
-        "sentenceCount": 1,
+        "textLength": 197,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57072,7 +56700,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57115,8 +56743,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 51,
-        "sentenceCount": 1,
+        "textLength": 234,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57134,7 +56762,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57158,7 +56786,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57177,8 +56805,8 @@
       "countryName": "Ливия",
       "russian": {
         "ready": false,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 230,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57196,7 +56824,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57220,7 +56848,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57234,13 +56862,13 @@
     },
     {
       "id": "ida_ospelt_amann",
-      "name": "Ида Оспельт-Амман",
+      "name": "Ида Оспельт-Аманн",
       "countryId": "liechtenstein",
       "countryName": "Лихтенштейн",
       "russian": {
         "ready": false,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 190,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57258,7 +56886,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57282,69 +56910,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "maria_von_burg",
-      "name": "Мария фон Бург",
-      "countryId": "liechtenstein",
-      "countryName": "Лихтенштейн",
-      "russian": {
-        "ready": false,
-        "textLength": 68,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57358,13 +56924,13 @@
     },
     {
       "id": "hansjorg_quaderer",
-      "name": "Хансйорг Квенцель",
+      "name": "Хансйорг Квадерер",
       "countryId": "liechtenstein",
       "countryName": "Лихтенштейн",
       "russian": {
         "ready": false,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 233,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57382,7 +56948,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57420,13 +56986,13 @@
     },
     {
       "id": "jurg_hanselmann",
-      "name": "Юрг Ханцельман",
+      "name": "Юрг Ханзельман",
       "countryId": "liechtenstein",
       "countryName": "Лихтенштейн",
       "russian": {
         "ready": false,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 242,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57444,7 +57010,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57487,8 +57053,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 227,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57506,7 +57072,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57549,8 +57115,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 249,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57568,7 +57134,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57854,13 +57420,13 @@
     },
     {
       "id": "balys_sruoga",
-      "name": "Балиc Сруога",
+      "name": "Балис Сруога",
       "countryId": "lithuania",
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 248,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57878,7 +57444,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57921,8 +57487,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 230,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -57940,7 +57506,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -57983,8 +57549,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 56,
-        "sentenceCount": 1,
+        "textLength": 288,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -58002,7 +57568,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -58107,8 +57673,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 219,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -58126,7 +57692,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -58231,8 +57797,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 52,
-        "sentenceCount": 1,
+        "textLength": 230,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -58250,7 +57816,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -58274,7 +57840,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58293,8 +57859,8 @@
       "countryName": "Литва",
       "russian": {
         "ready": false,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 193,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -58312,7 +57878,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,

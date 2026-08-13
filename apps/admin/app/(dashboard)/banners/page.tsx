@@ -28,7 +28,12 @@ type Banner = {
   display_order: number;
   is_active: boolean;
   page_patterns: string[];
+  updated_at: string;
 };
+
+function escapedLikePattern(value: string) {
+  return `%${value.replace(/[\\%_]/gu, "\\$&")}%`;
+}
 
 function dateTimeValue(value: string | null) {
   return value ? new Date(value).toISOString().slice(0, 16) : "";
@@ -65,6 +70,7 @@ function BannerFields({
   return (
     <>
       {banner && <input type="hidden" name="id" value={banner.id} />}
+      {banner && <input type="hidden" name="expected_updated_at" value={banner.updated_at} />}
       <div className="dashboard-grid">
         <label className="field">
           <span>Служебное название</span>
@@ -135,22 +141,74 @@ function BannerFields({
 export default async function BannersPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; saved?: string; deleted?: string }>;
+  searchParams: Promise<{ error?: string; saved?: string; deleted?: string; published?: string; media_q?: string }>;
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
-  const [{ data: bannersResult }, { data: mediaResult }] = await Promise.all([
-    supabase.from("banners").select("*").order("display_order"),
+  const { data: bannersResult } = await supabase
+    .from("banners")
+    .select("*")
+    .order("display_order")
+    .order("id");
+  const banners = (bannersResult || []) as Banner[];
+  const mediaTerm = String(query.media_q || "").trim().slice(0, 120);
+  const referencedMediaIds = Array.from(
+    new Set(
+      banners
+        .flatMap((banner) => [
+          banner.desktop_media_id,
+          banner.tablet_media_id,
+          banner.mobile_media_id,
+        ])
+        .filter((id): id is string => Boolean(id))
+    )
+  );
+  const mediaRequests = [
     supabase
       .from("media_assets")
       .select("id,alt_text,original_name,bucket,object_path")
       .is("deleted_at", null)
       .order("created_at", { ascending: false })
-      .limit(300),
-  ]);
-  const banners = (bannersResult || []) as Banner[];
-  const media = (mediaResult || []) as Media[];
+      .order("id", { ascending: false })
+      .limit(120),
+    ...(mediaTerm
+      ? [
+          supabase
+            .from("media_assets")
+            .select("id,alt_text,original_name,bucket,object_path")
+            .is("deleted_at", null)
+            .ilike("alt_text", escapedLikePattern(mediaTerm))
+            .order("created_at", { ascending: false })
+            .order("id", { ascending: false })
+            .limit(120),
+          supabase
+            .from("media_assets")
+            .select("id,alt_text,original_name,bucket,object_path")
+            .is("deleted_at", null)
+            .ilike("original_name", escapedLikePattern(mediaTerm))
+            .order("created_at", { ascending: false })
+            .order("id", { ascending: false })
+            .limit(120),
+        ]
+      : []),
+    ...(referencedMediaIds.length
+      ? [
+          supabase
+            .from("media_assets")
+            .select("id,alt_text,original_name,bucket,object_path")
+            .in("id", referencedMediaIds),
+        ]
+      : []),
+  ];
+  const mediaResults = await Promise.all(mediaRequests);
+  const media = Array.from(
+    new Map(
+      mediaResults
+        .flatMap((result) => result.data || [])
+        .map((asset) => [asset.id, asset as Media] as const)
+    ).values()
+  );
   const mediaUrls = new Map(
     media.map((item) => [
       item.id,
@@ -171,12 +229,37 @@ export default async function BannersPage({
         </div>
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && <p className="form-message form-success">Баннер сохранён и отправлен в публикационный контур.</p>}
+      {query.saved && <p className="form-message form-success">Баннер сохранён.</p>}
       {query.deleted && <p className="form-message form-success">Баннер удалён.</p>}
+      {query.published === "started" && <p className="form-message form-success">Публичная сборка с изменениями баннера запущена.</p>}
+      {query.published === "queued" && <p className="form-message form-success">Изменение баннера сохранено в резервной очереди публикации.</p>}
+      {query.published === "queue-error" && <p className="form-message form-error" role="alert">Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
+
+      <form className="panel media-catalog-search" method="get">
+        <label className="field">
+          <span>Найти изображение для баннера</span>
+          <input
+            type="search"
+            name="media_q"
+            maxLength={120}
+            defaultValue={mediaTerm}
+            placeholder="Описание или имя файла"
+          />
+        </label>
+        <div className="media-catalog-search-actions">
+          <button className="button-secondary" type="submit">Найти</button>
+          {mediaTerm && <a className="button-secondary" href="/banners">Сбросить</a>}
+          <a className="button-secondary" href="/media">Вся медиатека</a>
+        </div>
+      </form>
 
       <div className="module-grid banner-admin-grid">
         {banners.map((banner) => (
-          <article className="panel banner-admin-card" key={banner.id}>
+          <article
+            className="panel banner-admin-card"
+            id={`banner-${banner.id}`}
+            key={banner.id}
+          >
             <div className="banner-admin-preview">
               {banner.desktop_media_id && mediaUrls.get(banner.desktop_media_id) ? (
                 <img src={mediaUrls.get(banner.desktop_media_id)} alt="" />
@@ -201,6 +284,7 @@ export default async function BannersPage({
             </details>
             <form action={deleteBannerAction}>
               <input type="hidden" name="id" value={banner.id} />
+              <input type="hidden" name="expected_updated_at" value={banner.updated_at} />
               <ConfirmSubmitButton message="Удалить баннер? Это действие нельзя отменить через интерфейс.">
                 Удалить баннер
               </ConfirmSubmitButton>

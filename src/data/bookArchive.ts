@@ -16,6 +16,12 @@ import enrichmentActionsJson from "./countries/generated/books.enrichment-action
 import { isPublicBook } from "./bookQuality";
 import { selectBookText } from "./bookLocalization";
 import { applyUserSuppliedBookCover } from "./userSuppliedBookCovers";
+import {
+  cmsLiteraryWorkProfilesForWriter,
+  cmsWriterKey,
+  cmsWriterProfileOverrides,
+  type CmsWriterProfileOverride,
+} from "./cms/editorialOverrides";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -131,7 +137,35 @@ export type BuildBookArchiveOptions = {
   includeReviewedGenerated?: boolean;
   applyEnrichmentActions?: boolean;
   includeUserSuppliedCovers?: boolean;
+  writerProfileOverrides?: Record<string, CmsWriterProfileOverride>;
 };
+
+/**
+ * Gives archive/search cards the same CMS-edited author name as the public
+ * writer profile. Only presentation names are copied: quarantine membership,
+ * biographies, works and every source record remain owned by their existing
+ * reviewed pipelines.
+ */
+export function applyBookArchiveWriterPresentationOverride(
+  countryId: string,
+  writer: WriterProfile,
+  overrides: Record<string, CmsWriterProfileOverride> =
+    cmsWriterProfileOverrides
+): WriterProfile {
+  const override = overrides[cmsWriterKey(countryId, writer.id)];
+  if (!override) return writer;
+
+  const name = typeof override.name === "string" ? override.name : undefined;
+  const fullName =
+    typeof override.fullName === "string" ? override.fullName : undefined;
+  if (name === undefined && fullName === undefined) return writer;
+
+  return {
+    ...writer,
+    ...(name !== undefined ? { name } : {}),
+    ...(fullName !== undefined ? { fullName } : {}),
+  };
+}
 
 export type BookEnrichmentActionsPayload = {
   generatedAt: string;
@@ -291,9 +325,17 @@ export function buildBookArchive(
   const includeReviewedGenerated = options.includeReviewedGenerated !== false;
   const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;
   const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;
+  const writerProfileOverrides =
+    options.writerProfileOverrides || cmsWriterProfileOverrides;
   const archive = countries.flatMap((country) =>
     country.writers.flatMap((writer) => {
+      const presentationWriter = applyBookArchiveWriterPresentationOverride(
+        country.id,
+        writer,
+        writerProfileOverrides
+      );
       const candidateGroups = [
+        cmsLiteraryWorkProfilesForWriter(country.id, writer.id),
         includeReviewedGenerated
           ? reviewedBooksForWriter(country.id, writer.id)
           : [],
@@ -363,8 +405,11 @@ export function buildBookArchive(
           countryId: country.id,
           countryName: country.name,
           writerId: writer.id,
-          writerName: writer.name || writer.fullName || "Автор",
-          writer,
+          writerName:
+            presentationWriter.name ||
+            presentationWriter.fullName ||
+            "Автор",
+          writer: presentationWriter,
           country,
         };
       });

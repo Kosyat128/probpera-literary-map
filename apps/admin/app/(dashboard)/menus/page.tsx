@@ -22,6 +22,7 @@ type NavigationItem = {
   open_in_new_tab: boolean;
   is_visible: boolean;
   display_order: number;
+  updated_at: string;
 };
 
 function ItemFields({
@@ -36,7 +37,9 @@ function ItemFields({
   return (
     <>
       {item && <input type="hidden" name="id" value={item.id} />}
+      {item && <input type="hidden" name="expected_updated_at" value={item.updated_at} />}
       <input type="hidden" name="menu_id" value={menu.id} />
+      <input type="hidden" name="context_location" value={menu.location} />
       <div className="dashboard-grid">
         <label className="field">
           <span>Название пункта</span>
@@ -82,20 +85,33 @@ function ItemFields({
 export default async function MenusPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; saved?: string; deleted?: string }>;
+  searchParams: Promise<{
+    error?: string;
+    saved?: string;
+    deleted?: string;
+    published?: string;
+    location?: string;
+  }>;
 }) {
   const query = await searchParams;
+  const requestedLocation = query.location === "header" || query.location === "footer"
+    ? query.location
+    : "";
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   const [{ data: menusResult }, { data: itemsResult }] = await Promise.all([
-    supabase.from("navigation_menus").select("*").order("location"),
+    supabase.from("navigation_menus").select("*").order("location").order("id"),
     supabase
       .from("navigation_items")
       .select("*")
-      .order("display_order"),
+      .order("display_order")
+      .order("id"),
   ]);
   const menus = (menusResult || []) as Menu[];
   const items = (itemsResult || []) as NavigationItem[];
+  const visibleMenus = requestedLocation
+    ? menus.filter((menu) => menu.location === requestedLocation)
+    : menus;
 
   return (
     <>
@@ -112,9 +128,18 @@ export default async function MenusPage({
       {query.error && <p className="form-message">{query.error}</p>}
       {query.saved && <p className="form-message form-success">Навигация сохранена.</p>}
       {query.deleted && <p className="form-message form-success">Пункт удалён.</p>}
+      {query.published === "started" && <p className="form-message form-success">Публичная сборка с навигацией запущена.</p>}
+      {query.published === "queued" && <p className="form-message form-success">Изменение навигации сохранено в резервной очереди публикации.</p>}
+      {query.published === "queue-error" && <p className="form-message form-error" role="alert">Навигация изменена, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
+
+      <nav className="row-actions" aria-label="Фильтр расположения меню">
+        <a className="button-secondary" href="/menus">Все меню</a>
+        <a className="button-secondary" href="/menus?location=header">Шапка</a>
+        <a className="button-secondary" href="/menus?location=footer">Подвал</a>
+      </nav>
 
       <div className="menu-admin-grid">
-        {menus.map((menu) => {
+        {visibleMenus.map((menu) => {
           const menuItems = items.filter((item) => item.menu_id === menu.id);
           return (
             <section className="panel" key={menu.id}>
@@ -131,6 +156,7 @@ export default async function MenusPage({
                 {menuItems.map((item) => (
                   <article
                     className={item.parent_id ? "is-child" : ""}
+                    id={`navigation-item-${item.id}`}
                     key={item.id}
                   >
                     <header>
@@ -150,6 +176,8 @@ export default async function MenusPage({
                     </details>
                     <form action={deleteNavigationItemAction}>
                       <input type="hidden" name="id" value={item.id} />
+                      <input type="hidden" name="expected_updated_at" value={item.updated_at} />
+                      <input type="hidden" name="context_location" value={menu.location} />
                       <ConfirmSubmitButton message="Удалить этот пункт и вложенные в него ссылки?">
                         Удалить
                       </ConfirmSubmitButton>

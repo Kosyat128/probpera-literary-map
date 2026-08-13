@@ -1,3 +1,5 @@
+import configuredArticleSectionSlugs from "../data/articles/sectionRoutes.json";
+
 const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
 
 const transliteration: Record<string, string> = {
@@ -8,17 +10,8 @@ const transliteration: Record<string, string> = {
   я: "ya",
 };
 
-const articleSectionSlugs: Record<string, string> = {
-  "book-opinions": "mnenie-o-knige",
-  "screen-adaptations": "kniga-i-ekranizatsiya",
-  "writers-world": "pisateli-mira",
-  "book-guides": "knizhnyy-gid",
-  awards: "literaturnye-premii",
-  folklore: "folklor-i-mifologiya",
-  language: "russkiy-yazyk",
-  "literary-essays": "o-literature",
-  "author-stories": "literaturnye-istorii",
-};
+const articleSectionSlugs: Record<string, string> =
+  configuredArticleSectionSlugs;
 
 function shortStableHash(value: string) {
   let hash = 2166136261;
@@ -87,49 +80,126 @@ export function isDirectArticlePath(pathname: string) {
 }
 
 export function articleIdFromPath(
-  catalog: Array<{
-    id: string;
-    title: string;
-    sectionId?: string;
-    slug?: string;
-    sourceSlug?: string;
-    translations?: Readonly<{
-      en?: {
-        title: string;
-        slug?: string;
-        translationStatus?: string;
-      };
-    }>;
-  }>,
+  catalog: ArticleRouteCatalogEntry[],
   pathname = window.location.pathname
 ) {
+  return resolveArticleRoute(catalog, pathname)?.articleId || null;
+}
+
+type ArticleRouteCatalogEntry = {
+  id: string;
+  title: string;
+  sectionId?: string;
+  slug?: string;
+  sourceSlug?: string;
+  translations?: Readonly<{
+    en?: {
+      title: string;
+      slug?: string;
+      translationStatus?: string;
+    };
+  }>;
+};
+
+export type ArticleRouteResolution = {
+  articleId: string;
+  canonicalPath: string;
+  isCanonical: boolean;
+};
+
+function decodedRouteSegment(value: string) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return null;
+  }
+}
+
+function routeCandidates(article: ArticleRouteCatalogEntry) {
+  const canonicalSlug =
+    article.slug && /^[a-z0-9][a-z0-9-]{1,179}$/u.test(article.slug)
+      ? article.slug
+      : articleSeoSlug(article.id, article.title);
+  const candidates = [
+    article.id,
+    article.slug,
+    article.sourceSlug,
+    articleSeoSlug(article.id, article.title),
+    legacyArticleSeoSlug(article.id, article.title),
+  ]
+    .filter((value): value is string => Boolean(value))
+    .map((slug) => ({ slug, canonicalSlug }));
+
+  const englishTranslation = article.translations?.en;
+  const englishIsReleased =
+    englishTranslation?.translationStatus === "approved" ||
+    englishTranslation?.translationStatus === "published";
+  if (englishTranslation && englishIsReleased) {
+    const englishCanonicalSlug =
+      englishTranslation.slug &&
+      /^[a-z0-9][a-z0-9-]{1,179}$/u.test(englishTranslation.slug)
+        ? englishTranslation.slug
+        : articleSeoSlug(article.id, englishTranslation.title);
+    for (const slug of [
+      englishTranslation.slug,
+      articleSeoSlug(article.id, englishTranslation.title),
+    ]) {
+      if (slug) candidates.push({ slug, canonicalSlug: englishCanonicalSlug });
+    }
+  }
+  return candidates;
+}
+
+export function resolveArticleRoute(
+  catalog: ArticleRouteCatalogEntry[],
+  pathname = window.location.pathname
+): ArticleRouteResolution | null {
   const normalizedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match =
-    pathname.match(
-      new RegExp(`^${normalizedBase}/stati/[^/]+/([^/]+)/?$`, "i")
-    ) ||
-    pathname.match(
-      new RegExp(`^${normalizedBase}/articles/([^/]+)/?$`, "i")
-    );
-  if (!match) return null;
-  const routeSegment = decodeURIComponent(match[1]);
-  const article = catalog.find((item) => {
-    const englishTranslation = item.translations?.en;
-    const englishIsReleased =
-      englishTranslation?.translationStatus === "approved" ||
-      englishTranslation?.translationStatus === "published";
-    return (
-      item.id === routeSegment ||
-      item.slug === routeSegment ||
-      item.sourceSlug === routeSegment ||
-      articleSeoSlug(item.id, item.title) === routeSegment ||
-      legacyArticleSeoSlug(item.id, item.title) === routeSegment ||
-      (englishIsReleased &&
-        (englishTranslation.slug === routeSegment ||
-          articleSeoSlug(item.id, englishTranslation.title) === routeSegment))
-    );
-  });
-  return article?.id || null;
+  const articleMatch = pathname.match(
+    new RegExp(`^${normalizedBase}/articles/([^/]+)/?$`, "i")
+  );
+  const publicMatch = pathname.match(
+    new RegExp(`^${normalizedBase}/stati/([^/]+)/([^/]+)/?$`, "i")
+  );
+  if (!articleMatch && !publicMatch) return null;
+
+  const encodedSegment = publicMatch?.[2] || articleMatch?.[1] || "";
+  const routeSegment = decodedRouteSegment(encodedSegment);
+  const routeSection = publicMatch
+    ? decodedRouteSegment(publicMatch[1])
+    : null;
+  if (!routeSegment || (publicMatch && !routeSection)) return null;
+
+  const matches = catalog.flatMap((article) =>
+    routeCandidates(article)
+      .filter((candidate) => candidate.slug === routeSegment)
+      .map((candidate) => ({ article, canonicalSlug: candidate.canonicalSlug }))
+  );
+  const exactSectionMatches = routeSection
+    ? matches.filter(
+        ({ article }) => articleSectionSlug(article.sectionId) === routeSection
+      )
+    : [];
+  const eligibleMatches = exactSectionMatches.length
+    ? exactSectionMatches
+    : matches;
+  const articleIds = new Set(
+    eligibleMatches.map(({ article }) => article.id)
+  );
+  if (articleIds.size !== 1) return null;
+
+  const resolved = eligibleMatches[0];
+  const canonicalPath = `${basePath}${articlePublicPath(
+    resolved.article.id,
+    resolved.article.title,
+    resolved.article.sectionId,
+    resolved.canonicalSlug
+  )}`;
+  return {
+    articleId: resolved.article.id,
+    canonicalPath,
+    isCanonical: pathname === canonicalPath,
+  };
 }
 
 export function journalPath(sectionId?: string, seriesId?: string) {

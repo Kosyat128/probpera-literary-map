@@ -80,7 +80,8 @@ test("обложка и заголовок героя сохраняют ред�
   await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
   await expect
     .poll(() => cover.evaluate((image) => image.currentSrc))
-    .toContain("?v=20260808");
+    .toContain("?v=20260813-literary-nature-full");
+  await expect(cover).toHaveCSS("object-fit", "contain");
   expect(
     await heading.evaluate((element) => {
       const style = getComputedStyle(element);
@@ -97,9 +98,24 @@ test("обложка и заголовок героя сохраняют ред�
     )
     .toEqual(
       isMobile
-        ? { complete: true, width: 768, height: 1024 }
-        : { complete: true, width: 1915, height: 821 }
+        ? { complete: true, width: 960, height: 480 }
+        : { complete: true, width: 1774, height: 887 }
     );
+  expect(
+    await cover.evaluate((image) => image.naturalWidth / image.naturalHeight)
+  ).toBeCloseTo(2, 2);
+  if (!isMobile) {
+    const layout = await cover.evaluate((image) => {
+      const hero = image.closest(".magazine-hero");
+      const heroRect = hero?.getBoundingClientRect();
+      return {
+        height: heroRect?.height ?? 0,
+        expectedHeight:
+          (heroRect?.width ?? 0) / (image.naturalWidth / image.naturalHeight),
+      };
+    });
+    expect(Math.abs(layout.height - layout.expectedHeight)).toBeLessThanOrEqual(2);
+  }
 
   const englishButton = page
     .locator(".site-header .interface-language-control")
@@ -414,6 +430,8 @@ test("глобус загружается только после приближ
     .getByRole("button", { name: "Современный" });
   await expect(classicButton).toBeVisible({ timeout: 30_000 });
   await expect(modernButton).toBeVisible({ timeout: 30_000 });
+  await expect(classicButton).toHaveAttribute("data-globe-style-option", "modern");
+  await expect(modernButton).toHaveAttribute("data-globe-style-option", "earth");
   const initialViewport = page.viewportSize();
   const checkedWidths = isMobile ? [320, 360] : [initialViewport?.width ?? 1280, 700];
   for (const width of checkedWidths) {
@@ -438,7 +456,9 @@ test("глобус загружается только после приближ
       response.url().endsWith(`/textures/${russianFilename}`) &&
       response.status() === 200
   );
-  await modernButton.click();
+  // The Natural Earth cartographic texture is the public "Classic" mode;
+  // "Modern" is the photographic Blue Marble surface.
+  await classicButton.click();
   const loadedRussianTexture = await russianTextureResponse;
   expect(loadedRussianTexture.ok()).toBe(true);
   await expect(page.locator(".literary-globe")).toHaveAttribute(
@@ -446,7 +466,7 @@ test("глобус загружается только после приближ
     "modern"
   );
   await expect(page.locator(".globe-modern-badge")).toContainText(
-    "Современное оформление · 2026"
+    "Классический атлас · 2026"
   );
   await expect(page.locator("#atlas canvas")).toHaveCount(1);
   const russianTextureDimensions = await page.evaluate(async (textureUrl) => {
@@ -478,7 +498,7 @@ test("глобус загружается только после приближ
     "modern"
   );
   await expect(page.locator(".globe-modern-badge")).toContainText(
-    "Modern edition · 2026"
+    "Classic atlas · 2026"
   );
   const englishTextureDimensions = await page.evaluate(async (textureUrl) => {
     const image = new Image();

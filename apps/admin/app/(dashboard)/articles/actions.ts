@@ -81,6 +81,7 @@ const articleTranslationSchema = z.object({
 
 type ExistingEnglishTranslation = {
   id: string;
+  updated_at: string;
   status: ArticleTranslationStatus;
   source_content_hash: string | null;
   title: string;
@@ -318,6 +319,10 @@ export async function saveArticleAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const actorId = session.user.id;
+  const expectedUpdatedAt = optionalText(formData.get("expected_updated_at"));
+  const englishExpectedUpdatedAt = optionalText(
+    formData.get("english_expected_updated_at")
+  );
 
   const intent = String(formData.get("intent") || "save");
   const requestedStatus =
@@ -566,14 +571,14 @@ export async function saveArticleAction(formData: FormData) {
       supabase
         .from("articles")
         .select(
-          "title,subtitle,excerpt,slug,content_html,content_json,category_id,status,scheduled_at,published_at,cover_external_url,cover_alt,legacy_path,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,allow_indexing,sources,bibliography,featured,show_on_homepage,pinned,updated_by,categories(slug)"
+          "title,subtitle,excerpt,slug,content_html,content_json,category_id,status,scheduled_at,published_at,cover_external_url,cover_alt,legacy_path,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,allow_indexing,sources,bibliography,featured,show_on_homepage,pinned,updated_by,updated_at,categories(slug)"
         )
         .eq("id", articleId)
         .single(),
       supabase
         .from("article_translations")
         .select(
-          "id,status,source_content_hash,title,subtitle,excerpt,content_json,content_html,cover_alt,slug,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,source_article_updated_at,reviewed_by,reviewed_at,approved_by,approved_at,published_at,created_by,updated_by,deleted_at"
+          "id,status,source_content_hash,title,subtitle,excerpt,content_json,content_html,cover_alt,slug,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,source_article_updated_at,reviewed_by,reviewed_at,approved_by,approved_at,published_at,created_by,updated_by,updated_at,deleted_at"
         )
         .eq("article_id", articleId)
         .eq("locale", "en")
@@ -588,6 +593,13 @@ export async function saveArticleAction(formData: FormData) {
         })
       );
     }
+    if (!expectedUpdatedAt || previous.updated_at !== expectedUpdatedAt) {
+      redirect(
+        articleEditPath(articleId, {
+          error: "Статья уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+        })
+      );
+    }
     if (englishError) {
       redirect(
         articleEditPath(articleId, {
@@ -597,6 +609,17 @@ export async function saveArticleAction(formData: FormData) {
     }
     existingEnglishTranslation =
       (englishTranslation as ExistingEnglishTranslation | null) || null;
+    if (
+      existingEnglishTranslation &&
+      (!englishExpectedUpdatedAt ||
+        existingEnglishTranslation.updated_at !== englishExpectedUpdatedAt)
+    ) {
+      redirect(
+        articleEditPath(articleId, {
+          error: "Английская версия уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+        })
+      );
+    }
     previousArticleSnapshot = articleCompensationPayload(
       previous as unknown as Record<string, unknown>
     );
@@ -796,9 +819,21 @@ export async function saveArticleAction(formData: FormData) {
   };
 
   if (articleId) {
-    const { error } = await supabase.from("articles").update(payload).eq("id", articleId);
-    if (error) {
-      redirect(articleEditPath(articleId, { error: error.message }));
+    const { data: updated, error } = await supabase
+      .from("articles")
+      .update(payload)
+      .eq("id", articleId)
+      .eq("updated_at", expectedUpdatedAt!)
+      .select("id")
+      .maybeSingle();
+    if (error || !updated) {
+      redirect(
+        articleEditPath(articleId, {
+          error:
+            error?.message ||
+            "Статья уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+        })
+      );
     }
   } else {
     const { data, error } = await supabase
@@ -916,6 +951,7 @@ export async function saveArticleAction(formData: FormData) {
       .eq("id", existingEnglishTranslation.id)
       .eq("article_id", articleId)
       .eq("locale", "en")
+      .eq("updated_at", englishExpectedUpdatedAt || "")
       .select("id")
       .maybeSingle();
 
@@ -985,6 +1021,7 @@ export async function saveArticleAction(formData: FormData) {
           .eq("id", existingEnglishTranslation.id)
           .eq("article_id", articleId)
           .eq("locale", "en")
+          .eq("updated_at", englishExpectedUpdatedAt || "")
           .select("id")
           .maybeSingle()
       : await supabase
@@ -1114,6 +1151,13 @@ export async function saveArticleAction(formData: FormData) {
 
 function articleIdFromForm(formData: FormData) {
   const parsed = z.string().uuid().safeParse(formData.get("id"));
+  return parsed.success ? parsed.data : null;
+}
+
+function articleExpectedUpdatedAtFromForm(formData: FormData) {
+  const parsed = z.string().datetime({ offset: true }).safeParse(
+    formData.get("expected_updated_at")
+  );
   return parsed.success ? parsed.data : null;
 }
 
@@ -1403,6 +1447,7 @@ export async function duplicateArticleAction(formData: FormData) {
 
 export async function changeArticleStatusAction(formData: FormData) {
   const id = articleIdFromForm(formData);
+  const expectedUpdatedAt = articleExpectedUpdatedAtFromForm(formData);
   const statusValue = String(formData.get("status") || "");
   const allowedStatuses = new Set([
     "draft",
@@ -1412,7 +1457,7 @@ export async function changeArticleStatusAction(formData: FormData) {
     "hidden",
     "archived",
   ]);
-  if (!id || !allowedStatuses.has(statusValue)) {
+  if (!id || !expectedUpdatedAt || !allowedStatuses.has(statusValue)) {
     redirect("/articles?error=Некорректное изменение статуса");
   }
   if (statusValue === "published" || statusValue === "scheduled") {
@@ -1428,7 +1473,7 @@ export async function changeArticleStatusAction(formData: FormData) {
     id,
     { status: statusValue }
   );
-  const { error } = await supabase
+  const { data: updated, error } = await supabase
     .from("articles")
     .update({
       status: statusValue,
@@ -1437,9 +1482,15 @@ export async function changeArticleStatusAction(formData: FormData) {
         : {}),
       updated_by: userId,
     })
-    .eq("id", id);
+    .eq("id", id)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) {
     redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+  }
+  if (!updated) {
+    redirect("/articles?error=Статья уже изменена в другой вкладке. Обновите список.");
   }
   await supabase.from("admin_audit_log").insert({
     actor_id: userId,
@@ -1454,38 +1505,39 @@ export async function changeArticleStatusAction(formData: FormData) {
     entityId: id,
     reason: `article.status.${statusValue}`,
   });
-  const publishState = statusValue === "published" ? publication.state : undefined;
   revalidatePath("/articles");
   revalidatePath(articleEditPath(id));
-  if (publishState) {
-    redirect(`/articles?published=${publishState}`);
-  }
-  redirect("/articles?saved=1");
+  redirect(`/articles?saved=1&published=${publication.state}`);
 }
 
 export async function softDeleteArticleAction(formData: FormData) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
   const id = articleIdFromForm(formData);
-  if (!id) redirect("/articles?error=Некорректный материал");
+  const expectedUpdatedAt = articleExpectedUpdatedAtFromForm(formData);
+  if (!id || !expectedUpdatedAt) redirect("/articles?error=Некорректный материал или версия");
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/articles?error=База данных не подключена");
-  const { error } = await supabase
+  const { data: updated, error } = await supabase
     .from("articles")
     .update({
       status: "archived",
       deleted_at: new Date().toISOString(),
       updated_by: session.user.id,
     })
-    .eq("id", id);
+    .eq("id", id)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+  if (!updated) redirect("/articles?error=Статья уже изменена в другой вкладке. Обновите страницу.");
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "article.soft_deleted",
     entity_type: "article",
     entity_id: id,
   });
-  await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
     entityType: "article",
@@ -1493,16 +1545,18 @@ export async function softDeleteArticleAction(formData: FormData) {
     reason: "article.soft_deleted",
   });
   revalidatePath("/articles");
+  redirect(`/articles?deleted=1&published=${publication.state}`);
 }
 
 export async function restoreArticleRevisionAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const articleId = articleIdFromForm(formData);
+  const expectedUpdatedAt = articleExpectedUpdatedAtFromForm(formData);
   const revisionId = z.coerce.number().int().positive().safeParse(
     formData.get("revision_id")
   );
-  if (!articleId || !revisionId.success) {
+  if (!articleId || !expectedUpdatedAt || !revisionId.success) {
     redirect("/articles?error=Некорректная версия");
   }
   const supabase = await createServerSupabaseClient();
@@ -1552,7 +1606,7 @@ export async function restoreArticleRevisionAction(formData: FormData) {
       .filter((field) => field in snapshot)
       .map((field) => [field, snapshot[field]])
   );
-  const { error } = await supabase
+  const { data: updated, error } = await supabase
     .from("articles")
     .update({
       ...payload,
@@ -1561,9 +1615,17 @@ export async function restoreArticleRevisionAction(formData: FormData) {
       published_at: null,
       updated_by: session.user.id,
     })
-    .eq("id", articleId);
+    .eq("id", articleId)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) {
     redirect(articleEditPath(articleId, { error: error.message }));
+  }
+  if (!updated) {
+    redirect(articleEditPath(articleId, {
+      error: "Статья уже изменена в другой вкладке. Обновите страницу.",
+    }));
   }
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
@@ -1572,7 +1634,7 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     entity_id: articleId,
     metadata: { revisionNumber: revision.revision_number },
   });
-  await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
     entityType: "article",
@@ -1580,5 +1642,5 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     reason: "article.revision.restored",
   });
   revalidatePath(articleEditPath(articleId));
-  redirect(articleEditPath(articleId, { saved: 1 }));
+  redirect(articleEditPath(articleId, { saved: 1, publish: publication.state }));
 }

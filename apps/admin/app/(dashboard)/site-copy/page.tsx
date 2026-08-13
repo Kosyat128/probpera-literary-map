@@ -108,7 +108,11 @@ export default async function SiteCopyPage({
         </p>
       </section>
 
-      <SiteCopyEditor definitions={definitions} values={values} />
+      <SiteCopyEditor
+        definitions={definitions}
+        values={values}
+        expectedUpdatedAt={data?.[0]?.updated_at}
+      />
     </>
   );
 }

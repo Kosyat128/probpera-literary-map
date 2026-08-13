@@ -2,6 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { formatDate } from "@/lib/format";
+import {
+  pageCatalogPageNumber,
+  pageEditorHref,
+  parsePageCatalogQuery,
+} from "@/lib/page-catalog-query";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = {
@@ -11,10 +16,20 @@ export const metadata = {
 
 export default async function PagePreview({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{
+    q?: string;
+    status?: string;
+    page?: string;
+    revision_page?: string;
+  }>;
 }) {
   const { id } = await params;
+  const query = await searchParams;
+  const catalog = parsePageCatalogQuery(query);
+  const revisionPage = pageCatalogPageNumber(query.revision_page);
   const supabase = await createServerSupabaseClient();
   if (!supabase) notFound();
   const { data: page } = await supabase
@@ -32,7 +47,7 @@ export default async function PagePreview({
           <h1>Так страницу увидит читатель</h1>
           <p>Предпросмотр доступен только редакции и не индексируется.</p>
         </div>
-        <Link className="button-secondary" href={`/pages/${id}`}>
+        <Link className="button-secondary" href={pageEditorHref(id, catalog, { revisionPage })}>
           ← Вернуться в редактор
         </Link>
       </header>

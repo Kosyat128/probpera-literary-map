@@ -75,6 +75,9 @@ function submittedRows(formData: FormData) {
 export async function saveSiteCopyAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const expectedUpdatedAt = String(
+    formData.get("expected_updated_at") || ""
+  ).trim();
 
   let rows: ReturnType<typeof submittedRows>;
   try {
@@ -101,6 +104,14 @@ export async function saveSiteCopyAction(formData: FormData) {
   }
 
   const existing = existingRows?.[0];
+  if (existing && (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt)) {
+    redirect(
+      "/site-copy?error=" +
+        encodeURIComponent(
+          "Тексты уже изменили в другой вкладке. Обновите страницу и повторите сохранение."
+        )
+    );
+  }
   const existingSettings = objectValue(existing?.settings);
   const { ru, en } = mergeSiteCopyRows(
     readSiteCopyValues(existingSettings.siteCopy),
@@ -125,11 +136,22 @@ export async function saveSiteCopyAction(formData: FormData) {
 
   let blockId = existing?.id;
   if (blockId) {
-    const { error } = await supabase
+    const { data: updated, error } = await supabase
       .from("homepage_blocks")
       .update(payload)
-      .eq("id", blockId);
+      .eq("id", blockId)
+      .eq("updated_at", expectedUpdatedAt)
+      .select("id")
+      .maybeSingle();
     if (error) redirect(`/site-copy?error=${encodeURIComponent(error.message)}`);
+    if (!updated) {
+      redirect(
+        "/site-copy?error=" +
+          encodeURIComponent(
+            "Тексты уже изменили в другой вкладке. Обновите страницу и повторите сохранение."
+          )
+      );
+    }
   } else {
     const { data, error } = await supabase
       .from("homepage_blocks")

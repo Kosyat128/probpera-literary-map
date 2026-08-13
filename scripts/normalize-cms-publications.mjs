@@ -3,6 +3,7 @@ import {
   LATEST_EDITORIAL_ARTICLE_ID,
   latestEditorialArticleFix,
 } from "./editorial-publication-fixes.mjs";
+import { articleSectionSlug } from "./lib/article-route-policy.mjs";
 
 const supabaseUrl = (
   process.env.SUPABASE_URL ||
@@ -20,18 +21,6 @@ if (!supabaseUrl || !serviceKey) {
   );
   process.exit(0);
 }
-
-const categoryRouteSlugs = {
-  "book-opinions": "mnenie-o-knige",
-  "screen-adaptations": "kniga-i-ekranizatsiya",
-  "writers-world": "pisateli-mira",
-  "book-guides": "knizhnyy-gid",
-  awards: "literaturnye-premii",
-  folklore: "folklor-i-mifologiya",
-  language: "russkiy-yazyk",
-  "literary-essays": "o-literature",
-  "author-stories": "literaturnye-istorii",
-};
 
 function shortStableHash(value = "") {
   let hash = 2166136261;
@@ -56,8 +45,7 @@ function relationValue(value) {
 }
 
 function publicPath(slug, categorySlug) {
-  const section = categoryRouteSlugs[categorySlug || ""] || "materialy";
-  return `/stati/${section}/${slug}`;
+  return `/stati/${articleSectionSlug(categorySlug)}/${slug}`;
 }
 
 async function request(path, options = {}) {

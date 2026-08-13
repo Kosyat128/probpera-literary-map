@@ -1,29 +1,51 @@
 {
-  "generatedAt": "2026-08-08T17:11:01.159Z",
+  "generatedAt": "2026-08-13T07:30:00.861Z",
   "note": "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
   "summary": {
-    "articles": 158,
-    "totalWords": 143148,
+    "articles": 161,
+    "totalWords": 145773,
     "bySource": {
-      "cms": 158,
+      "cms": 161,
       "legacy": 0
     },
     "englishTranslations": {
       "released": 0,
-      "missing": 158
+      "missing": 161
     },
-    "findings": 192,
-    "affectedArticles": 158,
+    "findings": 210,
+    "affectedArticles": 161,
     "bySeverity": {
-      "high": 158,
-      "low": 34
+      "low": 49,
+      "high": 161
     },
     "byCategory": {
-      "Локализация": 158,
-      "Типографика": 34
+      "Типографика": 49,
+      "Локализация": 161
     }
   },
   "articles": [
+    {
+      "id": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1384,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 980,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
     {
       "id": "cms-3c840efe-7bf3-46eb-a5a3-a1eb55eb5d90",
       "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Е-Ж»",
@@ -76,6 +98,17 @@
       "englishTranslationStatus": "missing",
       "wordCount": 378,
       "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+      "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 261,
+      "issues": 4,
       "critical": 0,
       "high": 1
     },
@@ -619,23 +652,23 @@
       "high": 1
     },
     {
-      "id": "cms-21687156-2b33-46cc-ae07-2e5b057e8bfb",
-      "title": "Непризнанные современниками гении литературы. Уолт Уитмен",
-      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-uolt-uitmen/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 622,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc",
       "title": "Непризнанные современниками гении литературы. Марсель Пруст",
       "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-marsel-prust/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 641,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-21687156-2b33-46cc-ae07-2e5b057e8bfb",
+      "title": "Непризнанные современниками гении литературы. Уолт Уитмен",
+      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-uolt-uitmen/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 622,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -850,23 +883,23 @@
       "high": 1
     },
     {
-      "id": "cms-897f7c9f-2c81-43fc-a238-d06a7d29db81",
-      "title": "1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1916-god-verner-fon-heydenstam-laureat-nobelevskoy-premii/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 604,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7",
       "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
       "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-kitay/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 631,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-897f7c9f-2c81-43fc-a238-d06a7d29db81",
+      "title": "1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1916-god-verner-fon-heydenstam-laureat-nobelevskoy-premii/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 604,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -1279,23 +1312,23 @@
       "high": 1
     },
     {
-      "id": "cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6",
-      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
-      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-avstraliya/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 755,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace",
       "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Анри Барбюс",
       "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-anri-barbyus/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 782,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
+      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-avstraliya/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 755,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -1576,23 +1609,23 @@
       "high": 1
     },
     {
-      "id": "cms-8003f738-fe78-4d80-b3d1-e930de32090a",
-      "title": "1905 год. Генрик Сенкевич — лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1905-god-genrik-senkevich-laureat-nobelevskoy-premii/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 526,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-43549937-2f40-4a86-8ec7-54b006951f8d",
       "title": "1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии",
       "url": "https://probpera.ru/stati/literaturnye-premii/1906-god-dzhozue-karduchchi-laureat-nobelevskoy-premii/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 692,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-8003f738-fe78-4d80-b3d1-e930de32090a",
+      "title": "1905 год. Генрик Сенкевич — лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1905-god-genrik-senkevich-laureat-nobelevskoy-premii/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 526,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -1653,6 +1686,17 @@
       "high": 1
     },
     {
+      "id": "cms-04270881-bde0-4833-82bf-aeeaffec152f",
+      "title": "1901 год. Рене Сюлли-Прюдом — лауреат Нобелевской премии по литературе",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1901-god-rene-syulli-pryudom-laureat-nobelevskoy-premii-po-literature/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 637,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
       "id": "cms-6cd590f0-bcca-4fc7-b32c-312f1a3855bf",
       "title": "Нобелевская премия. История учреждения награды и примечательные факты",
       "url": "https://probpera.ru/stati/literaturnye-premii/nobelevskaya-premiya-istoriya-uchrezhdeniya-nagrady-i-primechatelnye-fakty/",
@@ -1675,34 +1719,12 @@
       "high": 1
     },
     {
-      "id": "cms-04270881-bde0-4833-82bf-aeeaffec152f",
-      "title": "1901 год. Рене Сюлли-Прюдом — лауреат Нобелевской премии по литературе",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1901-god-rene-syulli-pryudom-laureat-nobelevskoy-premii-po-literature/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 637,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-f5f4a78c-c63e-47ca-9fed-a86ca98aead7",
       "title": "Эссе на тему: «Моё первое знакомство с поэзией»",
       "url": "https://probpera.ru/stati/literaturnye-istorii/esse-na-temu-moe-pervoe-znakomstvo-s-poeziey/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 845,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
-      "id": "cms-70da5fff-9d07-42bb-ad55-c64cf9da55f7",
-      "title": "1903 год. Бьёрнстьерне Бьёрнсон — лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1903-god-bernsterne-bernson-laureat-nobelevskoy-premii/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 566,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -1719,6 +1741,17 @@
       "high": 1
     },
     {
+      "id": "cms-70da5fff-9d07-42bb-ad55-c64cf9da55f7",
+      "title": "1903 год. Бьёрнстьерне Бьёрнсон — лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1903-god-bernsterne-bernson-laureat-nobelevskoy-premii/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 566,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
       "id": "cms-57fa086e-81ce-48f8-9f20-2d9ea085bacc",
       "title": "А.О. Эксвемелин «Пираты Америки»",
       "url": "https://probpera.ru/stati/mnenie-o-knige/a-o-eksvemelin-piraty-ameriki/",
@@ -1730,23 +1763,23 @@
       "high": 1
     },
     {
-      "id": "cms-989965d2-7dcd-4acb-ac96-9a49ed74d7fb",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/kristofer-hedfild-rukovodstvo-astronavta-po-zhizni-na-zemle/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 760,
-      "issues": 1,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-0d50532d-95e4-41e8-9d74-a53bbb4ffb6a",
       "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
       "url": "https://probpera.ru/stati/mnenie-o-knige/posledniy-roman-dzheka-londona-byuro-zakaznyh-ubiystv/",
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 975,
+      "issues": 1,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-989965d2-7dcd-4acb-ac96-9a49ed74d7fb",
+      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
+      "url": "https://probpera.ru/stati/mnenie-o-knige/kristofer-hedfild-rukovodstvo-astronavta-po-zhizni-na-zemle/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 760,
       "issues": 1,
       "critical": 0,
       "high": 1
@@ -1764,6 +1797,222 @@
     }
   ],
   "findings": [
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 38,
+      "excerpt": "ПредисловиеЭкранизация известной книги - задача не из простых. Зачастую режиссёру проекта необходимо не только бережно перенести на экра…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1107,
+      "excerpt": "…н на романе Остина Райта «Тони и Сьюзен». Фильм строится на сложной повествовательной структуре - «истории внутри истории». В центре сюжета - успешная галеристка Сьюзен Морроу, которая получает…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1151,
+      "excerpt": "…льм строится на сложной повествовательной структуре - «истории внутри истории». В центре сюжета - успешная галеристка Сьюзен Морроу, которая получает рукопись романа от своего бывшего мужа. По…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 4410,
+      "excerpt": "…нёс культовый роман Стивена Кинга на экраны, подарив нам при этом такого запоминающегося злодея - клоуна Пеннивайза (Билл Скарсгард). Излишек компьютерных эффектов, наверное, единственный минус…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 5834,
+      "excerpt": "…ненному заключению на каторге во Французской Гвиане. Там Шарьер знакомится с другим заключённым - Луи Дегой, с которым вскоре предпримет дерзкий побег.Роли исполнили Чарли Ханнэм, Рами Малек, Р…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 6695,
+      "excerpt": "…а. Так, уже в 2018 году вышел одноимённый фильм, повествующий о парочке возлюбленных: Рейчел Чу - этнической китаянке из США и Нике Янге - скромном преподавателе в университете, который приглаш…"
+    },
+    {
+      "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
+      "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+      "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 874,
+      "excerpt": "…арница- отдалённая мгновенная вспышка на небосклоне – отблеск молний дальней грозы.5. Заунывный - тоскливый, наводящий уныние.6. Закром- отгороженное место в амбаре для ссыпки зерна.7. Зоил- пр…"
+    },
+    {
+      "articleId": "cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+      "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1438,
+      "excerpt": "…их-нибудь действий, событий.14. Задатки- зачатки каких-нибудь способностей, качеств.15. Задрыга - вертлявая, легкомысленная девочка, девушка.16. Закопёрщик- тот, кто верховодит, зачинщик.17. Зв…"
+    },
+    {
+      "articleId": "cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+      "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 2021,
+      "excerpt": "…м трудом.24. Зыбун- трясина, лёгкий почвенный слой на заболачивающихся озёрах, реках.25. Зыряне - название народа коми (коми-зыряне) в отличие от коми-пермяков."
+    },
+    {
+      "articleId": "cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+      "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 896,
+      "excerpt": "…н Змеевич и какие основные версии былины дошли до нас.Кто такой Тугарин Змеевич?Тугарин Змеевич - основной противник Алёши Поповича в одном из наиболее известных былинных сюжетов. В разных запи…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1313,
+      "excerpt": "…той в три сажени». Расстояние между его плечами сравнивается «с косой саженью», а между глазами - «с длиной калёной стрелы». Его размеры само собой являются сказочной гиперболой, подчёркивающей…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1666,
+      "excerpt": "…отного вырывается пламя, а из ушей поднимается дым. Сам Тугарин нередко описывается как человек - он имеет одежду, вооружён и способен вступать в разговор с богатырями. Поэтому представлять его…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 1956,
+      "excerpt": "…ый и меняется от варианта к варианту.Бумажные крылья и змеиные чертыСпособность Тугарина летать - одна из его главных сверхъестественных особенностей. Однако крылья нередко описываются, как бум…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 2828,
+      "excerpt": "…раконами и змееподобными противниками из эпоса других народов лишь на уровне общего типа сюжета - борьбы героя с чудовищным врагом. Доказательств прямого заимствования былины из конкретной анти…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « — ».",
+      "index": 3113,
+      "excerpt": "…канаНаиболее серьёзная параллель связана напрямую с реально существующей исторической личностью - половецким ханом Тугорканом. «Повесть временных лет» сообщает, что он был тестем киевского княз…"
+    },
+    {
+      "articleId": "cms-c115750b-1ccb-43a6-adf9-95621f06ba41",
+      "title": "Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
     {
       "articleId": "cms-2cbd3bd0-78c6-445e-9af9-8c643afc1104",
       "title": "Семь малоизвестных рассказов Амброза Бирса, которые стоит прочитать",
@@ -2509,9 +2758,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-21687156-2b33-46cc-ae07-2e5b057e8bfb",
-      "title": "Непризнанные современниками гении литературы. Уолт Уитмен",
-      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-uolt-uitmen/",
+      "articleId": "cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc",
+      "title": "Непризнанные современниками гении литературы. Марсель Пруст",
+      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-marsel-prust/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -2521,9 +2770,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-1f835cc9-ecfd-45e9-b993-4b7469621bbc",
-      "title": "Непризнанные современниками гении литературы. Марсель Пруст",
-      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-marsel-prust/",
+      "articleId": "cms-21687156-2b33-46cc-ae07-2e5b057e8bfb",
+      "title": "Непризнанные современниками гении литературы. Уолт Уитмен",
+      "url": "https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-uolt-uitmen/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -2881,9 +3130,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-897f7c9f-2c81-43fc-a238-d06a7d29db81",
-      "title": "1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1916-god-verner-fon-heydenstam-laureat-nobelevskoy-premii/",
+      "articleId": "cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
+      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-kitay/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -2893,9 +3142,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-18f0fc37-b390-4a55-aea6-3d69d6bf47b7",
-      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Китай",
-      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-kitay/",
+      "articleId": "cms-897f7c9f-2c81-43fc-a238-d06a7d29db81",
+      "title": "1916 год. Вернер фон Хейденстам – лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1916-god-verner-fon-heydenstam-laureat-nobelevskoy-premii/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -3541,9 +3790,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6",
-      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
-      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-avstraliya/",
+      "articleId": "cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace",
+      "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Анри Барбюс",
+      "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-anri-barbyus/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -3553,9 +3802,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace",
-      "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Анри Барбюс",
-      "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-anri-barbyus/",
+      "articleId": "cms-d4a14360-9314-4a8f-8b02-b45ed7d617a6",
+      "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Австралия",
+      "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-avstraliya/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -3865,9 +4114,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-8003f738-fe78-4d80-b3d1-e930de32090a",
-      "title": "1905 год. Генрик Сенкевич — лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1905-god-genrik-senkevich-laureat-nobelevskoy-premii/",
+      "articleId": "cms-43549937-2f40-4a86-8ec7-54b006951f8d",
+      "title": "1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1906-god-dzhozue-karduchchi-laureat-nobelevskoy-premii/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -3877,9 +4126,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-43549937-2f40-4a86-8ec7-54b006951f8d",
-      "title": "1906 год. Джозуэ Кардуччи — лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1906-god-dzhozue-karduchchi-laureat-nobelevskoy-premii/",
+      "articleId": "cms-8003f738-fe78-4d80-b3d1-e930de32090a",
+      "title": "1905 год. Генрик Сенкевич — лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1905-god-genrik-senkevich-laureat-nobelevskoy-premii/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -3949,6 +4198,18 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
+      "articleId": "cms-04270881-bde0-4833-82bf-aeeaffec152f",
+      "title": "1901 год. Рене Сюлли-Прюдом — лауреат Нобелевской премии по литературе",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1901-god-rene-syulli-pryudom-laureat-nobelevskoy-premii-po-literature/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
       "articleId": "cms-6cd590f0-bcca-4fc7-b32c-312f1a3855bf",
       "title": "Нобелевская премия. История учреждения награды и примечательные факты",
       "url": "https://probpera.ru/stati/literaturnye-premii/nobelevskaya-premiya-istoriya-uchrezhdeniya-nagrady-i-primechatelnye-fakty/",
@@ -3973,33 +4234,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-04270881-bde0-4833-82bf-aeeaffec152f",
-      "title": "1901 год. Рене Сюлли-Прюдом — лауреат Нобелевской премии по литературе",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1901-god-rene-syulli-pryudom-laureat-nobelevskoy-premii-po-literature/",
-      "ruleId": "missing-approved-english-translation",
-      "category": "Локализация",
-      "severity": "high",
-      "match": "translations.en",
-      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
-      "index": 0,
-      "excerpt": "Английская версия не опубликована."
-    },
-    {
       "articleId": "cms-f5f4a78c-c63e-47ca-9fed-a86ca98aead7",
       "title": "Эссе на тему: «Моё первое знакомство с поэзией»",
       "url": "https://probpera.ru/stati/literaturnye-istorii/esse-na-temu-moe-pervoe-znakomstvo-s-poeziey/",
-      "ruleId": "missing-approved-english-translation",
-      "category": "Локализация",
-      "severity": "high",
-      "match": "translations.en",
-      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
-      "index": 0,
-      "excerpt": "Английская версия не опубликована."
-    },
-    {
-      "articleId": "cms-70da5fff-9d07-42bb-ad55-c64cf9da55f7",
-      "title": "1903 год. Бьёрнстьерне Бьёрнсон — лауреат Нобелевской премии",
-      "url": "https://probpera.ru/stati/literaturnye-premii/1903-god-bernsterne-bernson-laureat-nobelevskoy-premii/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -4021,6 +4258,18 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
+      "articleId": "cms-70da5fff-9d07-42bb-ad55-c64cf9da55f7",
+      "title": "1903 год. Бьёрнстьерне Бьёрнсон — лауреат Нобелевской премии",
+      "url": "https://probpera.ru/stati/literaturnye-premii/1903-god-bernsterne-bernson-laureat-nobelevskoy-premii/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
       "articleId": "cms-57fa086e-81ce-48f8-9f20-2d9ea085bacc",
       "title": "А.О. Эксвемелин «Пираты Америки»",
       "url": "https://probpera.ru/stati/mnenie-o-knige/a-o-eksvemelin-piraty-ameriki/",
@@ -4033,9 +4282,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-989965d2-7dcd-4acb-ac96-9a49ed74d7fb",
-      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/kristofer-hedfild-rukovodstvo-astronavta-po-zhizni-na-zemle/",
+      "articleId": "cms-0d50532d-95e4-41e8-9d74-a53bbb4ffb6a",
+      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
+      "url": "https://probpera.ru/stati/mnenie-o-knige/posledniy-roman-dzheka-londona-byuro-zakaznyh-ubiystv/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -4045,9 +4294,9 @@
       "excerpt": "Английская версия не опубликована."
     },
     {
-      "articleId": "cms-0d50532d-95e4-41e8-9d74-a53bbb4ffb6a",
-      "title": "Последний роман Джека Лондона «Бюро заказных убийств»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/posledniy-roman-dzheka-londona-byuro-zakaznyh-ubiystv/",
+      "articleId": "cms-989965d2-7dcd-4acb-ac96-9a49ed74d7fb",
+      "title": "Кристофер Хэдфилд «Руководство астронавта по жизни на Земле»",
+      "url": "https://probpera.ru/stati/mnenie-o-knige/kristofer-hedfild-rukovodstvo-astronavta-po-zhizni-na-zemle/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",

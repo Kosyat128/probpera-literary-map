@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   GLOBE_VISUAL_STYLES,
+  GLOBE_VISUAL_STYLE_LABELS,
   MODERN_GLOBE_EDITION,
   featureCountryCodeCandidates,
   globeTextureAssetName,
@@ -15,6 +16,16 @@ describe("globe visual styles", () => {
     expect(GLOBE_VISUAL_STYLES.every(isGlobeVisualStyle)).toBe(true);
     expect(isGlobeVisualStyle("satellite")).toBe(false);
     expect(isGlobeVisualStyle(null)).toBe(false);
+  });
+
+  it("matches public mode names to the actual texture semantics", () => {
+    expect(GLOBE_VISUAL_STYLE_LABELS).toEqual({
+      antique: { full: "Старинный", compact: "Ретро" },
+      earth: { full: "Современный", compact: "Современный" },
+      modern: { full: "Классический", compact: "Классич." },
+    });
+    expect(globeTextureAssetName("earth", false)).toContain("blue-marble");
+    expect(globeTextureAssetName("modern", false)).toContain("modern-atlas");
   });
 
   it("uses only local, responsive raster assets", () => {

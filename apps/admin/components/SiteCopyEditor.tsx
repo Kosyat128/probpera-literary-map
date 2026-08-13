@@ -14,9 +14,11 @@ function isPrimaryDefinition(definition: SiteCopyDefinition) {
 export default function SiteCopyEditor({
   definitions,
   values,
+  expectedUpdatedAt,
 }: {
   definitions: readonly SiteCopyDefinition[];
   values: SiteCopyValues;
+  expectedUpdatedAt?: string | null;
 }) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState("Основные поля");
@@ -57,6 +59,11 @@ export default function SiteCopyEditor({
 
   return (
     <form className="site-copy-editor" action={saveSiteCopyAction}>
+      <input
+        type="hidden"
+        name="expected_updated_at"
+        value={expectedUpdatedAt || ""}
+      />
       <section className="panel site-copy-toolbar">
         <label className="field">
           <span>Поиск текста</span>

@@ -40,13 +40,13 @@ export type WriterBiographyDisplay =
  * Returns a visitor-facing biography without changing the strict publication
  * gate. A gate-passing locale is preferred. For Russian only, a legacy text
  * may be exposed after the existing automated screen has rejected known
- * service/generic placeholders. Its unverified classification is internal QA
- * metadata only; public views intentionally render no status marker.
+ * service/generic placeholders. Its unverified classification is exposed in
+ * public cards so archival prose cannot be mistaken for a checked biography.
  *
  * `legacy-unverified` never means fact-checked, licensed or provenance-backed.
- * `noticeCode` remains internal QA metadata; current public views deliberately
- * render no status marker. They must not reuse the writer-card
- * `editorial.status` as evidence for this text.
+ * `noticeCode` remains internal QA metadata. Public status must be derived from
+ * this display result and must not reuse the writer-card `editorial.status` as
+ * evidence for the biography text.
  */
 export function selectWriterBiographyForDisplay(
   writer: WriterProfile,

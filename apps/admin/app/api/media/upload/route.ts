@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
+import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
@@ -274,12 +275,22 @@ export async function POST(request: Request) {
       },
     });
 
+    const publication = await requestPublicBuild({
+      supabase,
+      actorId: session.user.id,
+      entityType: "media",
+      entityId: data.id,
+      reason: "media.uploaded",
+      metadata: { imageUsage: parsed.data.imageUsage },
+    });
+
     return NextResponse.json({
       ok: true,
       id: data.id,
       url: publicUrlData.publicUrl,
       width: imageDimensions.width,
       height: imageDimensions.height,
+      publication: publication.state,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Не удалось обработать файл.";

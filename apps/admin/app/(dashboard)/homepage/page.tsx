@@ -4,8 +4,10 @@ import HomepageMediaField, {
   type HomepageMediaOption,
 } from "@/components/HomepageMediaField";
 import HomepageVisualPreview from "@/components/HomepageVisualPreview";
+import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
+import { readHomepageVisualSettings } from "@/lib/homepage-visual-settings";
 import {
   createHomepageBlockAction,
   deleteHomepageBlockAction,
@@ -175,6 +177,10 @@ function articleIds(settings: Record<string, unknown>) {
     : "";
 }
 
+function escapedLikePattern(value: string) {
+  return `%${value.replace(/[\\%_]/gu, "\\$&")}%`;
+}
+
 function BackgroundSelect({ value }: { value: string }) {
   return (
     <select name="background_style" defaultValue={value}>
@@ -195,21 +201,72 @@ export default async function HomepagePage({
     saved?: string;
     deleted?: string;
     published?: string;
+    media_q?: string;
   }>;
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
-  const [{ data: blocksResult }, { data: mediaResult }] = await Promise.all([
-    supabase.from("homepage_blocks").select("*").order("display_order"),
+  const { data: blocksResult } = await supabase
+    .from("homepage_blocks")
+    .select("*")
+    .order("display_order")
+    .order("id");
+  const blocks = blocksResult || [];
+  const mediaTerm = String(query.media_q || "").trim().slice(0, 120);
+  const referencedMediaIds = Array.from(
+    new Set(
+      blocks
+        .map((block) => block.background_media_id)
+        .filter((id): id is string => Boolean(id))
+    )
+  );
+  const baseMediaSelect = "id,bucket,object_path,alt_text,collection_name";
+  const mediaRequests = [
     supabase
       .from("media_assets")
-      .select("id,bucket,object_path,alt_text,collection_name")
+      .select(baseMediaSelect)
       .is("deleted_at", null)
       .order("created_at", { ascending: false })
-      .limit(240),
-  ]);
-  const blocks = blocksResult || [];
+      .order("id", { ascending: false })
+      .limit(120),
+    ...(mediaTerm
+      ? [
+          supabase
+            .from("media_assets")
+            .select(baseMediaSelect)
+            .is("deleted_at", null)
+            .ilike("alt_text", escapedLikePattern(mediaTerm))
+            .order("created_at", { ascending: false })
+            .order("id", { ascending: false })
+            .limit(120),
+          supabase
+            .from("media_assets")
+            .select(baseMediaSelect)
+            .is("deleted_at", null)
+            .ilike("object_path", escapedLikePattern(mediaTerm))
+            .order("created_at", { ascending: false })
+            .order("id", { ascending: false })
+            .limit(120),
+        ]
+      : []),
+    ...(referencedMediaIds.length
+      ? [
+          supabase
+            .from("media_assets")
+            .select(baseMediaSelect)
+            .in("id", referencedMediaIds),
+        ]
+      : []),
+  ];
+  const mediaResults = await Promise.all(mediaRequests);
+  const mediaResult = Array.from(
+    new Map(
+      mediaResults
+        .flatMap((result) => result.data || [])
+        .map((asset) => [asset.id, asset] as const)
+    ).values()
+  );
   const coreBlockByKey = new Map(
     blocks
       .map((block) => {
@@ -230,6 +287,39 @@ export default async function HomepagePage({
     publicUrl: supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path).data.publicUrl,
   }));
   const mediaById = new Map(media.map((asset) => [asset.id, asset]));
+  const previewSections: HomepagePreviewSection[] = coreSectionDefaults.map(
+    (section) => {
+      const block = coreBlockByKey.get(section.key);
+      const settings = settingsObject(block?.settings);
+      return {
+        key: section.key,
+        label: section.label,
+        eyebrow: settingText(settings, "eyebrow") || section.eyebrow,
+        title: block?.title || section.title,
+        description:
+          settingText(settings, "description") || section.description,
+        buttonText: settingText(settings, "buttonText") || section.buttonText,
+        buttonUrl: settingText(settings, "buttonUrl") || section.buttonUrl,
+        backgroundStyle: block?.background_style || section.backgroundStyle,
+        backgroundMediaId: block?.background_media_id || "",
+        updatedAt: block?.updated_at || "",
+        visualSettings: readHomepageVisualSettings(settings),
+      };
+    }
+  );
+  const blockVisualSettings = Object.fromEntries(
+    blocks
+      .filter((block) => !isSystemHomepageBlock(block))
+      .map((block) => [
+        block.id,
+        readHomepageVisualSettings(settingsObject(block.settings)),
+      ])
+  );
+  const blockVisualUpdatedAt = Object.fromEntries(
+    blocks
+      .filter((block) => !isSystemHomepageBlock(block))
+      .map((block) => [block.id, block.updated_at])
+  );
 
   return (
     <>
@@ -297,7 +387,31 @@ export default async function HomepagePage({
         </p>
       )}
 
-      <HomepageVisualPreview url={adminEnv.publicSiteUrl} />
+      <form className="panel media-catalog-search" method="get">
+        <label className="field">
+          <span>Найти изображение для блоков</span>
+          <input
+            type="search"
+            name="media_q"
+            maxLength={120}
+            defaultValue={mediaTerm}
+            placeholder="Описание или имя файла"
+          />
+        </label>
+        <div className="media-catalog-search-actions">
+          <button className="button-secondary" type="submit">Найти</button>
+          {mediaTerm && <Link className="button-secondary" href="/homepage">Сбросить</Link>}
+          <Link className="button-secondary" href="/media">Вся медиатека</Link>
+        </div>
+      </form>
+
+      <HomepageVisualPreview
+        url={adminEnv.publicSiteUrl}
+        sections={previewSections}
+        media={media}
+        blockVisualSettings={blockVisualSettings}
+        blockVisualUpdatedAt={blockVisualUpdatedAt}
+      />
 
       <section className="panel homepage-core-editor">
         <header className="homepage-editor-heading">
@@ -351,6 +465,11 @@ export default async function HomepagePage({
                     type="hidden"
                     name="core_section_key"
                     value={section.key}
+                  />
+                  <input
+                    type="hidden"
+                    name="expected_updated_at"
+                    value={block?.updated_at || ""}
                   />
                   <label className="field">
                     <span>Надзаголовок</span>
@@ -427,7 +546,11 @@ export default async function HomepagePage({
           {customBlocks.map((block, index) => {
             const settings = settingsObject(block.settings);
             return (
-              <article className="panel settings-stack" key={block.id}>
+              <article
+                className="panel settings-stack"
+                id={`block-${block.id}`}
+                key={block.id}
+              >
                 <div className="page-heading">
                   <div>
                     <span className="badge">
@@ -471,6 +594,7 @@ export default async function HomepagePage({
                   action={updateHomepageBlockAction}
                 >
                   <input type="hidden" name="id" value={block.id} />
+                  <input type="hidden" name="expected_updated_at" value={block.updated_at} />
                   <label className="field">
                     <span>Заголовок</span>
                     <input name="title" defaultValue={block.title} />
@@ -546,6 +670,7 @@ export default async function HomepagePage({
                 <div className="editor-actions">
                   <form action={toggleHomepageBlockAction}>
                     <input type="hidden" name="id" value={block.id} />
+                    <input type="hidden" name="expected_updated_at" value={block.updated_at} />
                     <input
                       type="hidden"
                       name="enabled"
@@ -557,6 +682,7 @@ export default async function HomepagePage({
                   </form>
                   <form action={deleteHomepageBlockAction}>
                     <input type="hidden" name="id" value={block.id} />
+                    <input type="hidden" name="expected_updated_at" value={block.updated_at} />
                     <button className="button-secondary" type="submit">
                       Удалить
                     </button>

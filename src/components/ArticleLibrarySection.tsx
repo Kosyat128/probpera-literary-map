@@ -11,6 +11,7 @@ import {
   journalPath,
   navigateToArticle,
   navigateToJournal,
+  resolveArticleRoute,
 } from "../utils/articleRoutes";
 import {
   selectInterfacePlural,
@@ -20,6 +21,7 @@ import {
   articleSeriesId,
   articleSeriesLabel,
 } from "../utils/articleSeries";
+import { cmsEntityMarker } from "../cms/directEditBridge";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -227,7 +229,15 @@ export default function ArticleLibrarySection({
 
   useEffect(() => {
     const syncWithAddress = () => {
-      const articleId = articleIdFromPath(articleCatalog);
+      const route = resolveArticleRoute(articleCatalog);
+      const articleId = route?.articleId || null;
+      if (route && !route.isCanonical) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${route.canonicalPath}${window.location.search}${window.location.hash}`
+        );
+      }
       setSelectedId(articleId);
       if (!articleId) {
         setSectionId(sectionFromAddress());
@@ -235,6 +245,7 @@ export default function ArticleLibrarySection({
         setVisibleCount(12);
       }
     };
+    syncWithAddress();
     window.addEventListener("popstate", syncWithAddress);
     window.addEventListener("hashchange", syncWithAddress);
     window.addEventListener("probpera:navigation", syncWithAddress);
@@ -475,6 +486,14 @@ export default function ArticleLibrarySection({
               <article
                 className={index === 0 && !search ? "is-lead" : ""}
                 key={article.id}
+                {...cmsEntityMarker(
+                  "article",
+                  article.id,
+                  article.title,
+                  article.id.startsWith("cms-")
+                    ? `/articles/${encodeURIComponent(article.id.slice(4))}`
+                    : `/articles?search=${encodeURIComponent(article.title)}`
+                )}
               >
                 <a
                   href={articlePath(

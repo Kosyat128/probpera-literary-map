@@ -1,7 +1,8 @@
 import { cmsSiteContent } from "../data/cms/site.generated";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
-import { CmsNavigationLinks } from "./CmsSiteChrome";
+import { CmsNavigationLinks, CmsPageBanners } from "./CmsSiteChrome";
+import { cmsPageFieldMarker } from "../cms/directEditBridge";
 
 export type CmsPage = {
   id: string;
@@ -66,6 +67,7 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
           <CmsNavigationLinks location="header" />
         </nav>
       </header>
+      <CmsPageBanners />
       <main className="cms-page-main">
         <a className="cms-page-back" href={publicPath("")}>
           ← {t("На главную")}
@@ -86,12 +88,33 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
           <article>
             <header>
               <span className="section-kicker">{t("Проба Пера")}</span>
-              <h1>{page.title}</h1>
-              {page.excerpt && <p>{page.excerpt}</p>}
+              <h1
+                {...cmsPageFieldMarker(page.id, "title", page.title, {
+                  label: "Заголовок страницы",
+                })}
+              >
+                {page.title}
+              </h1>
+              {page.excerpt && (
+                <p
+                  {...cmsPageFieldMarker(page.id, "excerpt", page.excerpt, {
+                    kind: "textarea",
+                    label: "Описание страницы",
+                  })}
+                >
+                  {page.excerpt}
+                </p>
+              )}
               {updatedAt && <small>{t("Обновлено")} {updatedAt}</small>}
             </header>
             <div
               className="cms-page-prose"
+              {...cmsPageFieldMarker(
+                page.id,
+                "contentHtml",
+                page.contentHtml,
+                { kind: "richtext", label: "Содержимое страницы" }
+              )}
               dangerouslySetInnerHTML={{
                 __html: sanitizeArticleHtml(page.contentHtml),
               }}

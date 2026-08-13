@@ -8,6 +8,10 @@ import { mergeWriterBiographyLegacyCorrections } from "./writerBiographyLegacyCo
 import { mergeWriterBiographyFactReviews } from "./writerBiographyFactReviews";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
+import {
+  applyCmsCountryProfileOverrides,
+  applyCmsWriterProfileOverrides,
+} from "../cms/editorialOverrides";
 import { countryFlag } from "../../utils/countryFlag";
 
 import { afghanistan } from "./afghanistan";
@@ -494,7 +498,9 @@ const publicWriterCountries = mergeWriterBiographyLegacyCorrections(
 );
 
 /** Public globe/writer corpus after writer-only corrections and fact review. */
-export const countries: Country[] = mergeWriterBiographyFactReviews(
-  publicWriterCountries
+export const countries: Country[] = applyCmsWriterProfileOverrides(
+  applyCmsCountryProfileOverrides(
+    mergeWriterBiographyFactReviews(publicWriterCountries)
+  )
 );
 export { generatedWriterDraftCount };

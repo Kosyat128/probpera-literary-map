@@ -115,7 +115,6 @@ describe("curated writer fact resolutions", () => {
     ["georgia:otar_chiladze", "deathDate", "2009-10-01"],
     ["iraq:badr_shakir_al_sayyab", "birthDate", "1926-12-24"],
     ["israel:zeruya_shalev", "birthDate", "1959-04-13"],
-    ["lebanon:mikhail_naimy", "birthDate", "1889-11-22"],
     ["mongolia:lodoidamba", "birthDate", "1917-08-20"],
     ["mongolia:lodoidamba", "deathDate", "1970-01-11"],
     ["myanmar:ma_ma_lay", "birthDate", "1917-04-13"],
@@ -142,7 +141,6 @@ describe("curated writer fact resolutions", () => {
     );
     expect(writerByKey("latvia:andrejs_upits")?.birthDate).toBe("1877-12-04");
     expect(writerByKey("latvia:rainis")?.birthDate).toBe("1865-09-11");
-    expect(writerByKey("lebanon:mikhail_naimy")?.deathDate).toBe("1988-02-28");
     expect(writerByKey("lithuania:vincas_kreve")?.deathDate).toBe("1954-07-07");
     expect(writerByKey("mongolia:dashdorj_natsagdorj")?.deathDate).toBe(
       "1937-07-13"
@@ -150,6 +148,13 @@ describe("curated writer fact resolutions", () => {
     expect(writerByKey("senegal:birago_diop")?.birthDate).toBe("1906-12-11");
     expect(writerByKey("uzbekistan:odil_yoqubov")?.birthDate).toBe("1926-10-20");
     expect(writerByKey("uzbekistan:odil_yoqubov")?.deathDate).toBe("2009-12-21");
+  });
+
+  it("keeps Mikhail Naimy's disputed day-level dates empty after batch 37", () => {
+    expect(writerByKey("lebanon:mikhail_naimy")).toMatchObject({
+      birthDate: "",
+      deathDate: "",
+    });
   });
 
   it("stores Shakuri at the supported month precision without inventing a day", () => {

@@ -24,19 +24,12 @@ describe("public writer biography views", () => {
     expect(source).not.toContain('from "../data/writerBiography"');
   });
 
-  it("does not render any public biography or editorial status marker", () => {
-    expect(panelSource).not.toContain("writer-biography-notice");
-    expect(profileSource).not.toContain("writer-biography-notice");
-    expect(panelSource).not.toContain(
-      "Архивная справка · не проверено редакцией"
-    );
-    expect(profileSource).not.toContain(
-      "Архивная справка · не проверено редакцией"
-    );
-    expect(panelSource).not.toContain("Проверено редакцией");
-    expect(panelSource).not.toContain("Редакционная карточка");
-    expect(panelSource).not.toContain(
-      "Справочная карточка · требует расширения"
+  it("derives the panel status from the biography publication result", () => {
+    expect(panelSource).toContain("writerBiographyPublicStatus");
+    expect(panelSource).toContain("activeWriterStatus");
+    expect(panelSource).toContain('data-biography-status={activeWriterStatus.code}');
+    expect(panelSource).not.toMatch(
+      /activeWriter\.editorial[\s\S]{0,300}data-biography-status/u
     );
   });
 

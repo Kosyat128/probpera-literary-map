@@ -128,7 +128,7 @@ alter table public.book_editions enable row level security;
 create policy "Public read reviewed literary works"
 on public.literary_works for select
 to anon, authenticated
-using (editorial_status in ('reviewed', 'verified') or public.is_staff());
+using (editorial_status in ('reviewed', 'verified'));
 
 create policy "Staff manage literary works"
 on public.literary_works for all
@@ -154,7 +154,6 @@ using (
     where literary_works.id = book_editions.work_id
       and literary_works.editorial_status in ('reviewed', 'verified')
   )
-  or public.is_staff()
 );
 
 create policy "Staff manage book editions"

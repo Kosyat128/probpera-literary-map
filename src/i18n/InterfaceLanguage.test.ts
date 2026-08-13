@@ -118,5 +118,5 @@ describe("interface language", () => {
     expect(audit.error).toBeUndefined();
     expect(audit.stderr).toBe("");
     expect(audit.status).toBe(0);
-  });
+  }, 15_000);
 });

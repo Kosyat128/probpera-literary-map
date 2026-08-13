@@ -3,6 +3,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { selectWriterDisplayName } from "../data/bookLocalization";
 import type { WriterProfile } from "../data/countries/types";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import type { CmsMarkerAttributes } from "../cms/directEditBridge";
 
 type WriterPortraitProps = {
   writer: WriterProfile;
@@ -10,6 +11,7 @@ type WriterPortraitProps = {
   decorative?: boolean;
   loading?: "eager" | "lazy";
   style?: CSSProperties;
+  cmsMarker?: CmsMarkerAttributes;
 };
 
 export function writerDisplayName(
@@ -51,6 +53,7 @@ export default function WriterPortrait({
   decorative = false,
   loading = "lazy",
   style,
+  cmsMarker,
 }: WriterPortraitProps) {
   const { language, t } = useInterfaceLanguage();
   const source = portraitUrl(writer.portrait);
@@ -67,6 +70,7 @@ export default function WriterPortrait({
 
   return (
     <span
+      {...cmsMarker}
       className={`writer-portrait-media${hasPortrait ? " has-image" : " is-placeholder"}${
         className ? ` ${className}` : ""
       }`}

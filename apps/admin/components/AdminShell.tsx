@@ -12,6 +12,7 @@ const navigation = [
   ["⌂", "Обзор", "/dashboard"],
   ["✎", "Статьи", "/articles"],
   ["▥", "Книжный архив", "/library"],
+  ["◉", "Страны и авторы", "/editorial-database"],
   ["▤", "Рубрики и теги", "/categories"],
   ["▧", "Медиатека", "/media"],
   ["◫", "Страницы", "/pages"],

@@ -1,10 +1,22 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  articlePublicPath,
+  articleRouteSlug,
+  articleSectionSlugs,
+  normalizedPath,
+} from "./lib/article-route-policy.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDirectory = path.join(projectRoot, "dist");
 const catalogPath = path.join(projectRoot, "public", "articles", "index.json");
+const cmsSnapshotPath = path.join(
+  projectRoot,
+  "public",
+  "cms",
+  "published-content.json"
+);
 const expectedOrigin = "https://probpera.ru";
 const errors = [];
 const checks = [];
@@ -12,14 +24,6 @@ const checks = [];
 function check(condition, message) {
   checks.push({ ok: Boolean(condition), message });
   if (!condition) errors.push(message);
-}
-
-function normalizedPath(value = "") {
-  try {
-    return new URL(value, expectedOrigin).pathname.replace(/\/+$/, "") || "/";
-  } catch {
-    return value.split(/[?#]/u)[0].replace(/\/+$/, "") || "/";
-  }
 }
 
 async function read(relativePath) {
@@ -35,7 +39,38 @@ async function exists(relativePath) {
   }
 }
 
-const [homeHtml, robots, sitemap, rss, redirectsText, serverRedirects, cname, catalogText, notFoundHtml] =
+function mergeCatalogs(legacyArticles, cmsArticles) {
+  const replacedIds = new Set(
+    cmsArticles.map((article) => article.legacyId).filter(Boolean)
+  );
+  const replacedPaths = new Set(
+    cmsArticles
+      .map((article) => normalizedPath(article.legacyPath))
+      .filter(Boolean)
+  );
+  return [
+    ...cmsArticles,
+    ...legacyArticles.filter(
+      (article) =>
+        !replacedIds.has(article.id) &&
+        !replacedPaths.has(normalizedPath(article.url))
+    ),
+  ];
+}
+
+const [
+  homeHtml,
+  robots,
+  sitemap,
+  rss,
+  redirectsText,
+  serverRedirects,
+  cname,
+  catalogText,
+  cmsSnapshotText,
+  notFoundHtml,
+  headersText,
+] =
   await Promise.all([
     read("index.html"),
     read("robots.txt"),
@@ -45,10 +80,14 @@ const [homeHtml, robots, sitemap, rss, redirectsText, serverRedirects, cname, ca
     read("_redirects"),
     read("CNAME"),
     fs.readFile(catalogPath, "utf8"),
+    fs.readFile(cmsSnapshotPath, "utf8"),
     read("404.html"),
+    read("_headers"),
   ]);
 
-const catalog = JSON.parse(catalogText);
+const legacyCatalog = JSON.parse(catalogText);
+const cmsSnapshot = JSON.parse(cmsSnapshotText);
+const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
 const redirects = JSON.parse(redirectsText);
 const redirectBySource = new Map();
 for (const redirect of redirects) {
@@ -56,6 +95,23 @@ for (const redirect of redirects) {
   const destinations = redirectBySource.get(source) || new Set();
   destinations.add(normalizedPath(redirect.destination));
   redirectBySource.set(source, destinations);
+}
+const serverRedirectLines = serverRedirects
+  .split(/\r?\n/u)
+  .map((line) => line.trim())
+  .filter(Boolean);
+const serverRedirectSources = new Set(
+  serverRedirectLines.map((line) => normalizedPath(line.split(/\s+/u)[0]))
+);
+const canonicalArticlePaths = new Set(
+  catalog.map((article) => normalizedPath(articlePublicPath(article)))
+);
+const routeSlugOwners = new Map();
+for (const article of catalog) {
+  const slug = articleRouteSlug(article);
+  const owners = routeSlugOwners.get(slug) || new Set();
+  owners.add(article.id);
+  routeSlugOwners.set(slug, owners);
 }
 
 check(cname.trim() === "probpera.ru", "CNAME указывает ровно на probpera.ru");
@@ -83,8 +139,21 @@ check(
   "страница 404 существует и закрыта от индексации"
 );
 check(
-  serverRedirects.split(/\r?\n/u).filter(Boolean).length >= catalog.length,
+  serverRedirectLines.length >= catalog.length,
   "сформирован файл серверных 301-редиректов для миграционного хостинга"
+);
+check(
+  serverRedirectLines.length <= 2_000,
+  "Cloudflare _redirects укладывается в лимит 2000 статических правил"
+);
+const frameAncestors = headersText.match(
+  /frame-ancestors\s+([^;]+);/iu
+)?.[1]?.trim();
+check(
+  !/^\s*X-Frame-Options\s*:/imu.test(headersText) &&
+    frameAncestors === "https://admin.probpera.ru" &&
+    !frameAncestors.includes("*"),
+  "production headers разрешают встраивание только защищённой админ-панели"
 );
 
 const sitemapLocations = [
@@ -115,10 +184,61 @@ for (const [source, destinations] of redirectBySource) {
   );
 }
 
+let portableSectionAliases = 0;
 for (const article of catalog) {
-  const currentPath = normalizedPath(article.canonicalUrl || article.url);
+  const currentPath = normalizedPath(articlePublicPath(article));
   const articleFile = `${currentPath.replace(/^\/+/u, "")}/index.html`;
-  check(await exists(articleFile), `новая страница статьи существует: ${currentPath}`);
+  const articleExists = await exists(articleFile);
+  check(articleExists, `новая страница статьи существует: ${currentPath}`);
+  if (articleExists) {
+    const articleHtml = await read(articleFile);
+    check(
+      articleHtml.includes(
+        `<link rel="canonical" href="${expectedOrigin}${currentPath}/">`
+      ),
+      `canonical статической страницы совпадает с маршрутом: ${currentPath}`
+    );
+  }
+
+  const slug = articleRouteSlug(article);
+  if (routeSlugOwners.get(slug)?.size === 1) {
+    for (const sectionSlug of Object.values(articleSectionSlugs)) {
+      const aliasPath = normalizedPath(`/stati/${sectionSlug}/${slug}`);
+      if (aliasPath === currentPath || canonicalArticlePaths.has(aliasPath)) {
+        continue;
+      }
+      portableSectionAliases += 1;
+      const aliasFile = `${aliasPath.replace(/^\/+/u, "")}/index.html`;
+      const aliasExists = await exists(aliasFile);
+      check(aliasExists, `portable section alias существует: ${aliasPath}`);
+      const aliasDestinations = redirectBySource.get(aliasPath);
+      check(
+        aliasDestinations?.size === 1 && aliasDestinations.has(currentPath),
+        `portable section alias ведёт прямо на canonical: ${aliasPath}`
+      );
+      check(
+        redirects.some(
+          (redirect) =>
+            normalizedPath(redirect.source) === aliasPath &&
+            normalizedPath(redirect.destination) === currentPath &&
+            redirect.reason === "section-alias" &&
+            redirect.server === false
+        ),
+        `portable section alias помечен как static-only: ${aliasPath}`
+      );
+      check(
+        !serverRedirectSources.has(aliasPath),
+        `portable section alias не расходует лимит Cloudflare _redirects: ${aliasPath}`
+      );
+      if (aliasExists) {
+        const aliasHtml = await read(aliasFile);
+        check(
+          aliasHtml.includes(`${expectedOrigin}${currentPath}/`),
+          `portable section alias содержит canonical target: ${aliasPath}`
+        );
+      }
+    }
+  }
 
   const legacyValue = article.legacyPath ||
     (article.source === "legacy" ? article.url : "");
@@ -131,6 +251,15 @@ for (const article of catalog) {
   const legacyFile = `${legacyPath.replace(/^\/+/u, "")}/index.html`;
   check(await exists(legacyFile), `страница перехода существует: ${legacyPath}`);
 }
+
+const reportedBrokenPath =
+  "/stati/literaturnye-istorii/zarubezhnye-klassiki-literatury-i-ih-professii";
+const reportedCanonicalPath =
+  "/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii";
+check(
+  redirectBySource.get(reportedBrokenPath)?.has(reportedCanonicalPath),
+  "пользовательский URL профессий зарубежных классиков ведёт на canonical раздела"
+);
 
 for (const source of [
   "/read",
@@ -150,6 +279,8 @@ const summary = {
   articles: catalog.length,
   sitemapUrls: sitemapLocations.length,
   redirects: redirects.length,
+  serverRedirects: serverRedirectLines.length,
+  portableSectionAliases,
   errors: errors.slice(0, 100),
 };
 

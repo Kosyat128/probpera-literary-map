@@ -14,6 +14,11 @@ export type InterfaceLanguage = "ru" | "en";
 
 const STORAGE_KEY = "probpera-interface-language";
 const EVENT_NAME = "probpera:interface-language";
+const observedInterfaceSourceText = new Set<string>();
+
+export function isObservedInterfaceSourceText(value: string) {
+  return observedInterfaceSourceText.has(value);
+}
 
 const englishInterfaceText: Record<string, string> = {
   "Чтение становится событием, когда мысль продолжается в разговоре.":
@@ -319,12 +324,40 @@ const englishInterfaceText: Record<string, string> = {
     "Use the country text index below",
   "Тяните, чтобы вращать": "Drag to rotate",
   "Колесо — масштаб": "Scroll to zoom",
+  "Тяните или используйте стрелки": "Drag or use the arrow keys",
+  "Колесо или ± — масштаб": "Scroll or use ± to zoom",
+  "Нажмите, чтобы открыть архив страны": "Select to open the country archive",
+  "Страна выбрана · карточка архива открыта":
+    "Country selected · archive card open",
+  "Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб, Home возвращает исходный вид.":
+    "Interactive literary globe. Arrow keys rotate, plus and minus zoom, and Home restores the initial view.",
+  "Управление глобусом": "Globe controls",
+  "Уменьшить масштаб глобуса": "Zoom out of the globe",
+  "Увеличить масштаб глобуса": "Zoom in on the globe",
+  "Остановить автоматическое вращение": "Stop automatic rotation",
+  "Включить автоматическое вращение": "Start automatic rotation",
+  "Вернуть исходный вид глобуса": "Restore the globe's initial view",
+  Авто: "Auto",
+  Сброс: "Reset",
   "Литературный архив": "Literary archive",
   "Закрыть панель": "Close panel",
   Столица: "Capital",
   "Литературное наследие страны": "The country’s literary heritage",
   "Эпохи и направления": "Periods and movements",
   "Биография в архиве": "Biography in the archive",
+  "Для каждой биографии показан её фактический статус":
+    "Each biography shows its actual review status",
+  "Подтверждено источниками": "Source-verified",
+  "Архивная справка · не проверена": "Archive note · not verified",
+  "В редакционной очереди": "In editorial review",
+  "Источники зафиксированы": "Sources recorded",
+  "Источники ещё не зафиксированы": "Sources are not recorded yet",
+  "Проверенная биография готовится": "A verified biography is in preparation",
+  "Разделы карточки автора": "Writer card sections",
+  "Произведения и награды": "Works and awards",
+  "Источники и материалы": "Sources and related reading",
+  "Для этой архивной справки источники ещё не зафиксированы.":
+    "Sources have not yet been recorded for this archive note.",
   "Карточка автора": "Writer profile",
   "Литературная традиция": "Literary tradition",
   "Справочная карточка · требует расширения":
@@ -332,6 +365,7 @@ const englishInterfaceText: Record<string, string> = {
   "Расширенная биография готовится для энциклопедии.":
     "An extended biography is being prepared for the encyclopedia.",
   "Основные произведения": "Major works",
+  "Премии и награды": "Prizes and awards",
   "Материалы журнала": "Journal articles",
   Источники: "Sources",
   "Литературная хронология": "Literary chronology",
@@ -428,9 +462,11 @@ const englishInterfaceText: Record<string, string> = {
   Старинный: "Antique",
   Ретро: "Retro",
   Классический: "Classic",
+  "Классич.": "Classic",
   Современный: "Modern",
   Модерн: "Modern",
   "Современное оформление · 2026": "Modern edition · 2026",
+  "Классический атлас · 2026": "Classic atlas · 2026",
   "Текстуру Земли не удалось загрузить. Возвращён старинный стиль.":
     "The globe texture could not be loaded. Antique style has been restored.",
   "Загружается стиль": "Loading style",
@@ -442,6 +478,8 @@ const englishInterfaceText: Record<string, string> = {
   "авторов в архиве": "writers in the archive",
   "Современная визуальная редакция 2026 года. Картография: Natural Earth.":
     "Modern visual edition, 2026. Cartography: Natural Earth.",
+  "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.":
+    "Classic cartographic atlas, 2026 edition. Cartography: Natural Earth.",
   "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.":
     "Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.",
   "Интересный факт о книге": "A notable book fact",
@@ -539,8 +577,6 @@ const englishInterfaceText: Record<string, string> = {
   "Материалы подобраны по рубрике, теме и смысловым связям этой публикации.":
     "Recommendations are selected by section, subject and thematic links to this article.",
   "События на каждый день": "Events for every day",
-  "Журнал «Проба Пера» — полноформатное редакционное издание":
-    "Proba Pera magazine — a full-size editorial publication",
   "Обложка книги": "Book cover",
   "Обложка конкретного издания": "Cover of a specific edition",
   "Издание на обложке": "Edition shown on the cover",
@@ -963,6 +999,11 @@ const englishInterfaceText: Record<string, string> = {
     "A literary ecosystem connecting countries, writers, books and articles.",
   "Вернуться на главную": "Return home",
   "Объявление редакции": "Editorial announcement",
+  "Оформление блока": "Block appearance",
+  Стиль: "Style",
+  Фон: "Background",
+  "Изображения баннера": "Banner images",
+  ссылка: "link",
   Подробнее: "Learn more",
   Дополнительно: "More",
   "Социальные сети": "Social media",
@@ -1132,6 +1173,7 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
 
   const t = useCallback(
     (russianText: string) => {
+      observedInterfaceSourceText.add(russianText);
       const fallback =
         language === "ru"
           ? russianText
@@ -1202,6 +1244,7 @@ export function translateInterfaceText(
   russianText: string,
   language: InterfaceLanguage
 ) {
+  observedInterfaceSourceText.add(russianText);
   const fallback =
     language === "ru"
       ? russianText

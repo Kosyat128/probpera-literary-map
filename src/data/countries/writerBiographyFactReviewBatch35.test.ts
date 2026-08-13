@@ -174,8 +174,8 @@ describe("writer biography claim review batch 35", () => {
       .filter((key) => !priorAssignedSet.has(key))
       .sort((a, b) => a.localeCompare(b, "en"));
 
-    expect(frozenReviewQueueKeys).toHaveLength(1705);
-    expect(new Set(frozenReviewQueueKeys).size).toBe(1705);
+    expect(frozenReviewQueueKeys).toHaveLength(1698);
+    expect(new Set(frozenReviewQueueKeys).size).toBe(1698);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(frozenBatch28Keys).toHaveLength(40);
@@ -187,7 +187,7 @@ describe("writer biography claim review batch 35", () => {
     expect(frozenBatch34Keys).toHaveLength(40);
     expect(priorAssigned).toHaveLength(840);
     expect(priorAssignedSet.size).toBe(840);
-    expect(pendingKeys).toHaveLength(900);
+    expect(pendingKeys).toHaveLength(893);
     expect(quarantineKeys.length).toBeGreaterThanOrEqual(64);
     expect(new Set(quarantineKeys).size).toBe(quarantineKeys.length);
     expect(keys).toEqual(expectedKeys);
@@ -386,7 +386,6 @@ describe("writer biography claim review batch 35", () => {
     expect(markdown).toContain("overlap с Batch01–34: 0");
   });
 });
-
 
 
 

@@ -4,6 +4,15 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "@/lib/navigation";
 
 import { requireStaff } from "@/lib/auth";
+import {
+  HOMEPAGE_BUTTON_URL_ERROR,
+  homepageSettingsPatch,
+  isSafeHomepageButtonUrl,
+} from "@/lib/homepage-settings";
+import {
+  homepageVisualSettingsInputFromForm,
+  mergeHomepageVisualSettings,
+} from "@/lib/homepage-visual-settings";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -57,6 +66,11 @@ function isSystemHomepageBlock(block: { settings?: unknown }) {
   return objectValue(block.settings).systemKey === SITE_COPY_SYSTEM_KEY;
 }
 
+function isProtectedHomepageBlock(block: { settings?: unknown }) {
+  const settings = objectValue(block.settings);
+  return Boolean(settings.systemKey || settings.coreSectionKey);
+}
+
 function optionalUuid(formData: FormData, key: string) {
   const value = text(formData, key, 80);
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(
@@ -67,18 +81,35 @@ function optionalUuid(formData: FormData, key: string) {
 }
 
 function settingsFromForm(formData: FormData) {
-  const articleIds = text(formData, "article_ids", 8_000)
-    .split(/[\s,;]+/u)
-    .map((value) => value.trim())
-    .filter(Boolean)
-    .slice(0, 24);
-  return {
+  const buttonUrl = text(formData, "button_url", 500);
+  if (!isSafeHomepageButtonUrl(buttonUrl)) {
+    redirect(`/homepage?error=${encodeURIComponent(HOMEPAGE_BUTTON_URL_ERROR)}`);
+  }
+  return homepageSettingsPatch({
     eyebrow: text(formData, "eyebrow", 160),
     description: text(formData, "description", 2_000),
     buttonText: text(formData, "button_text", 120),
-    buttonUrl: text(formData, "button_url", 500),
-    articleIds,
+    buttonUrl,
+    ...(formData.has("article_ids")
+      ? { articleIdsText: text(formData, "article_ids", 8_000) }
+      : {}),
+  });
+}
+
+function mergedSettingsFromForm(
+  existingSettings: Record<string, unknown>,
+  formData: FormData
+) {
+  const contentSettings = {
+    ...existingSettings,
+    ...settingsFromForm(formData),
   };
+  if (!formData.has("imageFit")) return contentSettings;
+  return mergeHomepageVisualSettings(
+    contentSettings,
+    homepageVisualSettingsInputFromForm(formData),
+    formData.get("reset_visual_settings") === "1"
+  );
 }
 
 async function recordBuildRequest(
@@ -150,6 +181,7 @@ export async function updateHomepageBlockAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const id = text(formData, "id", 80);
+  const expectedUpdatedAt = text(formData, "expected_updated_at", 80);
   const backgroundStyle = text(formData, "background_style", 40);
   if (!id || !backgroundStyles.has(backgroundStyle)) {
     redirect("/homepage?error=Некорректные параметры блока");
@@ -158,7 +190,7 @@ export async function updateHomepageBlockAction(formData: FormData) {
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { data: existing, error: existingError } = await supabase
     .from("homepage_blocks")
-    .select("settings")
+    .select("settings,updated_at")
     .eq("id", id)
     .single();
   if (existingError || !existing) {
@@ -171,26 +203,32 @@ export async function updateHomepageBlockAction(formData: FormData) {
   if (isSystemHomepageBlock(existing)) {
     redirect("/homepage?error=Системный блок редактируется в разделе текстов сайта");
   }
+  if (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt) {
+    redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
+  }
   const existingSettings =
     existing.settings &&
     typeof existing.settings === "object" &&
     !Array.isArray(existing.settings)
       ? (existing.settings as Record<string, unknown>)
       : {};
-  const { error } = await supabase
+  const { data: updated, error } = await supabase
     .from("homepage_blocks")
     .update({
       title: text(formData, "title", 240),
-      settings: {
-        ...existingSettings,
-        ...settingsFromForm(formData),
-      },
+      settings: mergedSettingsFromForm(existingSettings, formData),
       background_style: backgroundStyle,
       background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
     })
-    .eq("id", id);
-  if (error) {
+    .eq("id", id)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
+  if (error || !updated) {
+    if (!error) {
+      redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
+    }
     redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
   }
   const publication = await recordBuildRequest(
@@ -207,28 +245,36 @@ export async function toggleHomepageBlockAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const id = text(formData, "id", 80);
+  const expectedUpdatedAt = text(formData, "expected_updated_at", 80);
   const enabled = formData.get("enabled") === "true";
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { data: existing, error: existingError } = await supabase
     .from("homepage_blocks")
-    .select("settings")
+    .select("settings,updated_at")
     .eq("id", id)
     .single();
   if (existingError || !existing) {
     redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
   }
-  if (isSystemHomepageBlock(existing)) {
-    redirect("/homepage?error=Системный блок нельзя выключить");
+  if (isProtectedHomepageBlock(existing)) {
+    redirect("/homepage?error=Основной или системный блок нельзя выключить здесь");
   }
-  const { error } = await supabase
+  if (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt) {
+    redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу.");
+  }
+  const { data: updated, error } = await supabase
     .from("homepage_blocks")
     .update({
       is_enabled: enabled,
       updated_by: session.user.id,
     })
-    .eq("id", id);
+    .eq("id", id)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+  if (!updated) redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу.");
   const publication = await recordBuildRequest(
     supabase,
     session.user.id,
@@ -246,65 +292,14 @@ export async function moveHomepageBlockAction(formData: FormData) {
   const direction = formData.get("direction") === "up" ? "up" : "down";
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
-  const { data: blocks, error } = await supabase
-    .from("homepage_blocks")
-    .select("id,display_order,settings")
-    .order("display_order");
-  if (error || !blocks) {
-    redirect(`/homepage?error=${encodeURIComponent(error?.message || "Блоки не найдены")}`);
+  const { data: moved, error } = await supabase.rpc("move_homepage_block", {
+    p_block_id: id,
+    p_direction: direction,
+  });
+  if (error) {
+    redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
   }
-  if (blocks.some((block) => block.id === id && isSystemHomepageBlock(block))) {
-    redirect("/homepage?error=Системный блок нельзя перемещать");
-  }
-  const editableBlocks = blocks.filter(
-    (block) => !isSystemHomepageBlock(block)
-  );
-  const index = editableBlocks.findIndex((block) => block.id === id);
-  const targetIndex = direction === "up" ? index - 1 : index + 1;
-  if (index < 0 || targetIndex < 0 || targetIndex >= editableBlocks.length) return;
-  const target = editableBlocks[targetIndex];
-  const current = editableBlocks[index];
-  const temporaryOrder =
-    Math.min(...editableBlocks.map((block) => block.display_order || 0), 0) - 10;
-  const { error: holdError } = await supabase
-    .from("homepage_blocks")
-    .update({ display_order: temporaryOrder, updated_by: session.user.id })
-    .eq("id", current.id);
-  if (holdError) {
-    redirect(`/homepage?error=${encodeURIComponent(holdError.message)}`);
-  }
-  const { error: targetError } = await supabase
-    .from("homepage_blocks")
-    .update({
-      display_order: current.display_order,
-      updated_by: session.user.id,
-    })
-    .eq("id", target.id);
-  if (targetError) {
-    await supabase
-      .from("homepage_blocks")
-      .update({ display_order: current.display_order })
-      .eq("id", current.id);
-    redirect(`/homepage?error=${encodeURIComponent(targetError.message)}`);
-  }
-  const { error: currentError } = await supabase
-    .from("homepage_blocks")
-    .update({
-      display_order: target.display_order,
-      updated_by: session.user.id,
-    })
-    .eq("id", current.id);
-  if (currentError) {
-    await supabase
-      .from("homepage_blocks")
-      .update({ display_order: target.display_order })
-      .eq("id", target.id);
-    await supabase
-      .from("homepage_blocks")
-      .update({ display_order: current.display_order })
-      .eq("id", current.id);
-    redirect(`/homepage?error=${encodeURIComponent(currentError.message)}`);
-  }
+  if (!moved) return;
   const publication = await recordBuildRequest(
     supabase,
     session.user.id,
@@ -319,21 +314,32 @@ export async function deleteHomepageBlockAction(formData: FormData) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
   const id = text(formData, "id", 80);
+  const expectedUpdatedAt = text(formData, "expected_updated_at", 80);
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { data: existing, error: existingError } = await supabase
     .from("homepage_blocks")
-    .select("settings")
+    .select("settings,updated_at")
     .eq("id", id)
     .single();
   if (existingError || !existing) {
     redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
   }
-  if (isSystemHomepageBlock(existing)) {
-    redirect("/homepage?error=Системный блок нельзя удалить");
+  if (isProtectedHomepageBlock(existing)) {
+    redirect("/homepage?error=Основной или системный блок нельзя удалить");
   }
-  const { error } = await supabase.from("homepage_blocks").delete().eq("id", id);
+  if (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt) {
+    redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу.");
+  }
+  const { data: deleted, error } = await supabase
+    .from("homepage_blocks")
+    .delete()
+    .eq("id", id)
+    .eq("updated_at", expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
   if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+  if (!deleted) redirect("/homepage?error=Блок уже изменён или удалён. Обновите страницу.");
   const publication = await recordBuildRequest(
     supabase,
     session.user.id,
@@ -370,6 +376,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const coreSectionKey = text(formData, "core_section_key", 80);
+  const expectedUpdatedAt = text(formData, "expected_updated_at", 80);
   const blockType = coreSectionTypes[coreSectionKey];
   const backgroundStyle = text(formData, "background_style", 40);
   if (!blockType || !backgroundStyles.has(backgroundStyle)) {
@@ -380,7 +387,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
   if (!supabase) redirect("/homepage?error=База данных не подключена");
   const { data: existing, error: existingError } = await supabase
     .from("homepage_blocks")
-    .select("id,settings")
+    .select("id,settings,updated_at")
     .contains("settings", { coreSectionKey })
     .limit(1)
     .maybeSingle();
@@ -398,8 +405,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
     block_type: blockType,
     title: text(formData, "title", 240),
     settings: {
-      ...existingSettings,
-      ...settingsFromForm(formData),
+      ...mergedSettingsFromForm(existingSettings, formData),
       coreSectionKey,
     },
     display_order: (coreSectionOrder.indexOf(coreSectionKey) + 1) * 10,
@@ -410,12 +416,23 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
   };
 
   let blockId = existing?.id;
-  if (blockId) {
-    const { error } = await supabase
+  if (existing && blockId) {
+    if (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt) {
+      redirect("/homepage?error=Основной блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
+    }
+    const { data: updated, error } = await supabase
       .from("homepage_blocks")
       .update(payload)
-      .eq("id", blockId);
-    if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+      .eq("id", blockId)
+      .eq("updated_at", expectedUpdatedAt)
+      .select("id")
+      .maybeSingle();
+    if (error || !updated) {
+      if (!error) {
+        redirect("/homepage?error=Основной блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
+      }
+      redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+    }
   } else {
     const { data, error } = await supabase
       .from("homepage_blocks")

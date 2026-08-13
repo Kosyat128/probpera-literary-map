@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T19:07:07.288Z",
+  "generatedAt": "2026-08-13T07:30:17.212Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1705,
-    "uniqueWriters": 1692,
-    "workRecords": 3397,
-    "uniqueWorks": 3379,
+    "writerRecords": 1698,
+    "uniqueWriters": 1685,
+    "workRecords": 3475,
+    "uniqueWorks": 3457,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 10,
+    "expandedBiographies": 34,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1660,
+    "russianBiographiesWithheld": 1653,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1685,
+    "englishBiographiesWithheld": 1678,
     "portraitedWriters": 1059,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -1631,7 +1631,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "latvia",
@@ -1682,7 +1682,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 2
     },
     {
       "id": "liberia",
@@ -1699,7 +1699,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 2
     },
     {
       "id": "libya",
@@ -1733,7 +1733,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "lithuania",

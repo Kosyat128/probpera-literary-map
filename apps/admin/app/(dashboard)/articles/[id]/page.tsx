@@ -281,6 +281,7 @@ export default async function EditArticlePage({
                     <td>
                       <form action={restoreArticleRevisionAction}>
                         <input type="hidden" name="id" value={id} />
+                        <input type="hidden" name="expected_updated_at" value={article.updated_at} />
                         <input type="hidden" name="revision_id" value={revision.id} />
                         <ConfirmSubmitButton
                           message={`Восстановить версию ${revision.revision_number}? Это заменит текущий текст.`}
@@ -310,6 +311,7 @@ export default async function EditArticlePage({
           </Link>
           <form action={softDeleteArticleAction}>
             <input type="hidden" name="id" value={id} />
+            <input type="hidden" name="expected_updated_at" value={article.updated_at} />
             <ConfirmSubmitButton message="Перенести статью в архив? После этого её не будет в общем списке статей, но в личном архиве она останется.">
               Архивировать
             </ConfirmSubmitButton>
