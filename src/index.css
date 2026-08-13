@@ -14640,8 +14640,13 @@ html[data-theme="book"] .calendar-heading h3 {
   .magazine-hero {
     width: 100%;
     max-width: 100vw;
-    min-height: clamp(780px, 210vw, 900px);
+    min-height: calc(100svh - 66px);
     overflow: hidden;
+  }
+
+  .magazine-hero.cms-core-editable {
+    --cms-image-object-fit: cover;
+    --cms-image-position: center center;
   }
 
   .magazine-hero::before {
@@ -14707,7 +14712,8 @@ html[data-theme="book"] .calendar-heading h3 {
   .hero-cover img {
     width: 100%;
     margin-left: 0;
-    object-position: center top;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .hero-cover > span {

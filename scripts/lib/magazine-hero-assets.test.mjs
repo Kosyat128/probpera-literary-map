@@ -11,21 +11,20 @@ describe("main magazine hero", () => {
   it.each([
     ["magazine-hero-wide.webp", 1774, 887],
     ["magazine-hero-wide.avif", 1774, 887],
-    ["magazine-hero-mobile.webp", 960, 480],
-    ["magazine-hero-mobile.avif", 960, 480],
-  ])("keeps the complete 2:1 composition in %s", async (name, width, height) => {
+    ["magazine-hero-mobile.webp", 941, 1672],
+    ["magazine-hero-mobile.avif", 941, 1672],
+  ])("keeps the intended source composition in %s", async (name, width, height) => {
     const metadata = await sharp(asset(name)).metadata();
     expect(metadata.width).toBe(width);
     expect(metadata.height).toBe(height);
-    expect(metadata.width / metadata.height).toBe(2);
   });
 
-  it("does not crop the mobile derivative", async () => {
+  it("builds mobile output from a separate portrait source without pixel cropping", async () => {
     const source = await readFile(
       path.join(root, "scripts", "prepare-magazine-hero.mjs"),
       "utf8"
     );
+    expect(source).toContain("mobileSourcePath");
     expect(source).not.toContain(".extract(");
-    expect(source).not.toContain('fit: "cover"');
   });
 });

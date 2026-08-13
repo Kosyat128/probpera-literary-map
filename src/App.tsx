@@ -1232,12 +1232,12 @@ export default function App() {
                   <source
                     media="(max-width: 680px)"
                     type="image/avif"
-                    srcSet={assetUrl("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-full")}
+                    srcSet={assetUrl("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait")}
                   />
                   <source
                     media="(max-width: 680px)"
                     type="image/webp"
-                    srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260813-literary-nature-full")}
+                    srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260813-literary-nature-portrait")}
                   />
                   <source
                     type="image/avif"

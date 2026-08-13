@@ -80,8 +80,12 @@ test("обложка и заголовок героя сохраняют ред�
   await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
   await expect
     .poll(() => cover.evaluate((image) => image.currentSrc))
-    .toContain("?v=20260813-literary-nature-full");
-  await expect(cover).toHaveCSS("object-fit", "contain");
+    .toContain(
+      isMobile
+        ? "?v=20260813-literary-nature-portrait"
+        : "?v=20260813-literary-nature-full"
+    );
+  await expect(cover).toHaveCSS("object-fit", isMobile ? "cover" : "contain");
   expect(
     await heading.evaluate((element) => {
       const style = getComputedStyle(element);
@@ -98,12 +102,13 @@ test("обложка и заголовок героя сохраняют ред�
     )
     .toEqual(
       isMobile
-        ? { complete: true, width: 960, height: 480 }
+        ? { complete: true, width: 941, height: 1672 }
         : { complete: true, width: 1774, height: 887 }
     );
-  expect(
-    await cover.evaluate((image) => image.naturalWidth / image.naturalHeight)
-  ).toBeCloseTo(2, 2);
+  expect(await cover.evaluate((image) => image.naturalWidth / image.naturalHeight)).toBeCloseTo(
+    isMobile ? 941 / 1672 : 2,
+    2
+  );
   if (!isMobile) {
     const layout = await cover.evaluate((image) => {
       const hero = image.closest(".magazine-hero");
