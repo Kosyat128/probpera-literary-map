@@ -71,7 +71,9 @@ describe("visual page and site-chrome persistence", () => {
     expect(exporterSource).toContain("tabletMediaId: banner.tablet_media_id");
     expect(exporterSource).toContain("mobileMediaId: banner.mobile_media_id");
     expect(previewSource).toContain("?.id || next.value");
-    expect(previewSource).toContain("isSavingInline || hasUnresolvedMedia");
+    expect(previewSource).toContain(
+      "isSavingInline || isLoadingInlineVersion || !inlineVersionReady || hasUnresolvedMedia"
+    );
   });
 
   it("never converts managed CMS entity prose into generic interface copy", () => {

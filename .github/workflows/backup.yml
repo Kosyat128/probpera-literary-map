@@ -36,10 +36,21 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
         run: |
-          test -n "$SUPABASE_DB_URL"
-          test -n "$SUPABASE_URL"
-          test -n "$SUPABASE_SERVICE_ROLE_KEY"
-          test -n "$BACKUP_ENCRYPTION_KEY"
+          missing=()
+          [[ -n "$SUPABASE_DB_URL" ]] || missing+=(SUPABASE_DB_URL)
+          [[ -n "$SUPABASE_URL" ]] || missing+=(VITE_SUPABASE_URL)
+          [[ -n "$SUPABASE_SERVICE_ROLE_KEY" ]] || missing+=(SUPABASE_SERVICE_ROLE_KEY)
+          [[ -n "$BACKUP_ENCRYPTION_KEY" ]] || missing+=(BACKUP_ENCRYPTION_KEY)
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error::Missing required repository secrets: ${missing[*]}"
+            {
+              echo "## Backup configuration is incomplete"
+              echo
+              echo "Add these GitHub Actions secrets without placing their values in the repository or chat:"
+              printf -- '- `%s`\n' "${missing[@]}"
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
 
       - name: Create database and storage backup
         env:
@@ -47,9 +58,15 @@ jobs:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           BACKUP_OUTPUT_DIR: backup/storage
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
         run: |
           mkdir -p backup/database
-          pg_dump "$SUPABASE_DB_URL" --format=custom --no-owner --no-privileges --file=backup/database/probpera.dump
+          docker pull "$DATABASE_IMAGE"
+          docker run --rm --entrypoint pg_dump "$DATABASE_IMAGE" \
+            --format=custom \
+            --no-owner \
+            --no-privileges \
+            "$SUPABASE_DB_URL" > backup/database/probpera.dump
           npm run backup:storage
 
       - name: Encrypt and verify archive
@@ -63,10 +80,97 @@ jobs:
           openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -in backup.tar.gz -out "$archive" -pass env:BACKUP_ENCRYPTION_KEY
           openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in "$archive" -out verify.tar.gz -pass env:BACKUP_ENCRYPTION_KEY
           tar -xOf verify.tar.gz backup/database/probpera.dump > verify.dump
-          pg_restore --list verify.dump > /dev/null
           sha256sum "$archive" > "${archive}.sha256"
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
           if [[ "$(date -u +%d)" == "01" ]]; then echo "retention=90" >> "$GITHUB_OUTPUT"; else echo "retention=30" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Restore database into an isolated PostgreSQL service
+        env:
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          restore_container="probpera-backup-restore-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          cleanup() {
+            docker rm --force "$restore_container" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+          docker run --detach --name "$restore_container" \
+            -e POSTGRES_PASSWORD=postgres \
+            -e POSTGRES_DB=probpera_restore \
+            "$DATABASE_IMAGE"
+          ready=false
+          for attempt in {1..30}; do
+            if docker exec "$restore_container" pg_isready \
+              --username=postgres --dbname=probpera_restore; then
+              ready=true
+              break
+            fi
+            sleep 2
+          done
+          if [[ "$ready" != "true" ]]; then
+            docker logs "$restore_container"
+            echo "::error::Isolated Supabase PostgreSQL did not become ready."
+            exit 1
+          fi
+          docker cp verify.dump "$restore_container:/tmp/probpera.dump"
+          docker exec "$restore_container" pg_restore \
+            --username=postgres \
+            --dbname=probpera_restore \
+            --clean \
+            --if-exists \
+            --no-owner \
+            --no-privileges \
+            --exit-on-error \
+            /tmp/probpera.dump
+          core_verification="$(docker exec "$restore_container" psql \
+            --username=postgres \
+            --dbname=probpera_restore \
+            --no-psqlrc \
+            --tuples-only \
+            --no-align \
+            --set=ON_ERROR_STOP=1 \
+            --command="select
+              to_regclass('public.articles') is not null,
+              to_regclass('public.admin_audit_log') is not null,
+              (select count(*) from pg_catalog.pg_index where not indisvalid);"
+          )"
+          if [[ "$core_verification" != "t|t|0" ]]; then
+            echo "::error::Restored database failed core schema/integrity probes: $core_verification"
+            exit 1
+          fi
+          publication_schema="$(docker exec "$restore_container" psql \
+            --username=postgres \
+            --dbname=probpera_restore \
+            --no-psqlrc \
+            --tuples-only \
+            --no-align \
+            --set=ON_ERROR_STOP=1 \
+            --command="select case
+              when to_regclass('public.public_build_outbox') is not null
+                and to_regprocedure('public.get_editorial_schema_health()') is not null
+              then '20260814-current'
+              else 'pre-20260814'
+            end;"
+          )"
+          restored_articles="$(docker exec "$restore_container" psql \
+            --username=postgres \
+            --dbname=probpera_restore \
+            --no-psqlrc \
+            --tuples-only \
+            --no-align \
+            --set=ON_ERROR_STOP=1 \
+            --command="select count(*) from public.articles;"
+          )"
+          if ! [[ "$restored_articles" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::Restore drill found no production articles."
+            exit 1
+          fi
+          {
+            echo "Restore drill passed with $restored_articles article rows."
+            echo "Restored publication schema: $publication_schema."
+            if [[ "$publication_schema" == "pre-20260814" ]]; then
+              echo "Apply 20260814 after this verified pre-migration backup; the admin schema health check must then report current."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload encrypted backup
         uses: actions/upload-artifact@v7

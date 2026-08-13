@@ -14,6 +14,26 @@ test("ArticleReader keeps its controls and long title inside 320–1720px", asyn
     await articleFromSitemap(request, baseURL, preferredArticlePath)
   );
   await expect(page.locator(".article-reader")).toBeVisible();
+  const readerContent = page.locator(".article-reader-content");
+  await expect(readerContent).toBeVisible({ timeout: 30_000 });
+  await readerContent.evaluate((content) => {
+    const probe = document.createElement("section");
+    probe.className = "e2e-overflow-probe";
+    probe.innerHTML = `
+      <p>${"UnbrokenEditorialToken".repeat(24)}</p>
+      <a href="#probe">https://example.org/${"very-long-segment".repeat(24)}</a>
+      <table><tbody><tr><td>${"LongTableCell".repeat(24)}</td><td>Second cell</td></tr></tbody></table>
+      <pre>${"const_unbroken_source_token_".repeat(24)}</pre>
+    `;
+    content.append(probe);
+
+    const rating = document.createElement("div");
+    rating.className = "rating-summary e2e-touch-rating";
+    rating.innerHTML = `<span><strong>5.0</strong><small>1 rating</small></span><div>${[1, 2, 3, 4, 5]
+      .map((score) => `<button type="button" aria-label="${score} out of 5">★</button>`)
+      .join("")}</div>`;
+    content.append(rating);
+  });
 
   for (const width of [320, 360, 1440, 1720]) {
     await page.setViewportSize({ width, height: width < 500 ? 800 : 1000 });
@@ -32,25 +52,148 @@ test("ArticleReader keeps its controls and long title inside 320–1720px", asyn
       const backBox = back.getBoundingClientRect();
       const titleBox = title.getBoundingClientRect();
       const paperBox = paper.getBoundingClientRect();
+      const readerBox = reader.getBoundingClientRect();
+      const requiredContainment = [
+        paper,
+        ...reader.querySelectorAll(
+          ".article-reader-bar, .article-reader-lead h1, .article-reader-sources, .article-reader-more, .article-reader-finish, .article-reader-sequence, .e2e-overflow-probe"
+        ),
+      ];
+      const visibleControlBoxes = [...bar.querySelectorAll("nav button")]
+        .filter((element) => {
+          const style = getComputedStyle(element);
+          const box = element.getBoundingClientRect();
+          return style.display !== "none" && box.width > 0 && box.height > 0;
+        })
+        .map((element) => element.getBoundingClientRect());
+      const controlGeometry = [...bar.querySelectorAll("nav button")]
+        .filter((element) => getComputedStyle(element).display !== "none")
+        .map((element) => ({
+          label: element.getAttribute("aria-label") || element.textContent,
+          className: element.className,
+          parentClassName: element.parentElement?.className,
+          compactRuleMatches: element.matches(
+            ".article-reader-bar .display-mode-control.is-compact button"
+          ),
+          computedWidth: getComputedStyle(element).width,
+          computedHeight: getComputedStyle(element).height,
+          computedFlex: getComputedStyle(element).flex,
+          width: element.getBoundingClientRect().width,
+          height: element.getBoundingClientRect().height,
+        }));
+      const ratingBoxes = [...reader.querySelectorAll(".e2e-touch-rating button")]
+        .map((element) => element.getBoundingClientRect());
 
       return {
+        stylesheets: [...document.styleSheets].map((sheet) => sheet.href),
+        readerOverflow: reader.scrollWidth - reader.clientWidth,
         barOverflow: bar.scrollWidth - bar.clientWidth,
         closePastViewport: closeBox.right - window.innerWidth,
         titleOverflow: title.scrollWidth - title.clientWidth,
         titlePastPaper: titleBox.left + title.scrollWidth - paperBox.right,
+        descendantPastViewport: Math.max(
+          0,
+          ...requiredContainment.map(
+            (element) => element.getBoundingClientRect().right - readerBox.right
+          )
+        ),
+        minimumControlWidth: Math.min(...visibleControlBoxes.map((box) => box.width)),
+        minimumControlHeight: Math.min(...visibleControlBoxes.map((box) => box.height)),
+        visibleControlCount: visibleControlBoxes.length,
+        minimumRatingWidth: Math.min(...ratingBoxes.map((box) => box.width)),
+        minimumRatingHeight: Math.min(...ratingBoxes.map((box) => box.height)),
+        controlGeometry,
         backWidth: backBox.width,
         backHeight: backBox.height,
       };
     });
 
+    expect(layout.readerOverflow, `reader overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(layout.barOverflow, `reader bar overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(layout.closePastViewport, `close clipping at ${width}px`).toBeLessThanOrEqual(1);
     expect(layout.titleOverflow, `title overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(layout.titlePastPaper, `title past paper at ${width}px`).toBeLessThanOrEqual(1);
+    expect(
+      layout.descendantPastViewport,
+      `reader descendant past viewport at ${width}px`
+    ).toBeLessThanOrEqual(1);
+    if (width <= 360) {
+      expect(layout.visibleControlCount).toBe(9);
+      expect(
+        layout.minimumControlWidth,
+        JSON.stringify({ controls: layout.controlGeometry, stylesheets: layout.stylesheets })
+      ).toBeGreaterThanOrEqual(44);
+      expect(
+        layout.minimumControlHeight,
+        JSON.stringify(layout.controlGeometry)
+      ).toBeGreaterThanOrEqual(44);
+      expect(layout.minimumRatingWidth).toBeGreaterThanOrEqual(44);
+      expect(layout.minimumRatingHeight).toBeGreaterThanOrEqual(44);
+    }
     if (width === 320) {
       expect(layout.backWidth).toBeGreaterThanOrEqual(44);
       expect(layout.backHeight).toBeGreaterThanOrEqual(44);
     }
+  }
+});
+
+test("mobile header keeps search and 44px actions in two compact sticky rows", async ({
+  page,
+}) => {
+  for (const width of [320, 360]) {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto("/");
+
+    const header = page.locator(".site-header");
+    const mobileNav = page.locator(".mobile-nav");
+    const search = header.locator(".global-search-trigger");
+    const languageButtons = header.locator(".interface-language-control button");
+    const account = header.locator(".reader-button");
+    await expect(search).toBeVisible();
+    await expect(languageButtons).toHaveCount(2);
+    await expect(languageButtons.first()).toBeVisible();
+    await expect(languageButtons.last()).toBeVisible();
+    await expect(account).toBeVisible();
+
+    const geometry = await page.evaluate(() => {
+      const box = (selector) => {
+        const element = document.querySelector(selector);
+        if (!element) throw new Error(`Missing mobile header target: ${selector}`);
+        const bounds = element.getBoundingClientRect();
+        return { width: bounds.width, height: bounds.height };
+      };
+      const heroTitle = document.querySelector(".hero-editorial h1");
+      return {
+        header: box(".site-header"),
+        mobileNav: box(".mobile-nav"),
+        search: box(".site-header .global-search-trigger"),
+        languages: [...document.querySelectorAll(
+          ".site-header .interface-language-control button"
+        )].map((element) => {
+          const bounds = element.getBoundingClientRect();
+          return { width: bounds.width, height: bounds.height };
+        }),
+        account: box(".site-header .reader-button"),
+        heroText: heroTitle?.textContent?.replace(/\s+/gu, " ").trim(),
+      };
+    });
+
+    expect(geometry.header.height).toBeLessThanOrEqual(58);
+    expect(geometry.mobileNav.height).toBeLessThanOrEqual(54);
+    for (const target of [
+      geometry.search,
+      ...geometry.languages,
+      geometry.account,
+    ]) {
+      expect(target.width).toBeGreaterThanOrEqual(44);
+      expect(target.height).toBeGreaterThanOrEqual(44);
+    }
+    expect(geometry.heroText).toBe("Литература – это целый мир!");
+
+    await search.click();
+    await expect(page.locator(".global-search")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".global-search")).toHaveCount(0);
   }
 });
 

@@ -1,4 +1,5 @@
 import manifestJson from "./countries/generated/userSuppliedBookCovers.generated.json";
+import batch20260813ManifestJson from "./countries/generated/userSuppliedBookCoversBatch20260813.generated.json";
 import type { WorkProfile } from "./countries/types";
 
 export type UserSuppliedBookCoverEntry = {
@@ -21,6 +22,7 @@ export type UserSuppliedBookCoverEntry = {
     sourceFilename: string;
     sourceIndex: number;
     matchBasis: string;
+    sourceEvidence?: "chatgpt-image-filename";
     note: string;
   };
 };
@@ -41,8 +43,24 @@ type UserSuppliedBookCoverManifest = {
 export const userSuppliedBookCoverManifest =
   manifestJson as UserSuppliedBookCoverManifest;
 
+export const userSuppliedBookCoverBatch20260813Manifest =
+  batch20260813ManifestJson as UserSuppliedBookCoverManifest;
+
+export const userSuppliedBookCoverManifests = [
+  userSuppliedBookCoverManifest,
+  userSuppliedBookCoverBatch20260813Manifest,
+] as const;
+
 export const userSuppliedBookCoverByWorkKey = new Map(
-  userSuppliedBookCoverManifest.entries.map((entry) => [entry.workKey, entry])
+  userSuppliedBookCoverManifests.flatMap((manifest) =>
+    manifest.entries.map((entry) => [
+      entry.workKey,
+      {
+        ...entry,
+        checkedAt: manifest.generatedAt.slice(0, 10),
+      },
+    ] as const)
+  )
 );
 
 export function applyUserSuppliedBookCover(
@@ -73,7 +91,7 @@ export function applyUserSuppliedBookCover(
     coverRights: {
       status: "editorial-original",
       sourceUrl: cover.coverUrl,
-      checkedAt: userSuppliedBookCoverManifest.generatedAt.slice(0, 10),
+      checkedAt: cover.checkedAt,
       note: cover.provenance.note,
     },
   };

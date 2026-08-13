@@ -41,6 +41,8 @@ export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   legacyPath?: string | null;
   documentPath?: string;
   imageAlt?: string;
+  imageFocusX?: number;
+  imageFocusY?: number;
   publishedAt?: string | null;
   featured?: boolean;
   pinned?: boolean;

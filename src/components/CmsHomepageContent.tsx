@@ -9,6 +9,7 @@ import { articlePath, journalPath } from "../utils/articleRoutes";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import { safePublicHref } from "../utils/publicHref";
+import { mediaFocusStyle } from "../utils/mediaFocus";
 import {
   cmsEntityMarker,
   cmsHomepageBlockFieldMarker,
@@ -23,6 +24,8 @@ type HomepageBlock = {
   backgroundStyle: string;
   backgroundImageUrl?: string;
   backgroundMediaId?: string | null;
+  backgroundFocusX?: number;
+  backgroundFocusY?: number;
 };
 
 function safeHref(value: unknown, fallback = "#journal") {
@@ -62,7 +65,12 @@ function blockAdminHref(block: HomepageBlock) {
 }
 
 function blockStyle(block: HomepageBlock) {
-  return cmsHomepageBlockStyle(block.settings, block.backgroundImageUrl);
+  return cmsHomepageBlockStyle(
+    block.settings,
+    block.backgroundImageUrl,
+    block.backgroundFocusX,
+    block.backgroundFocusY
+  );
 }
 
 function blockBackgroundMarker(block: HomepageBlock) {
@@ -218,6 +226,7 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
               {article.imageUrl && (
                 <img
                   src={article.imageUrl}
+                  style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
                   alt={article.imageAlt || ""}
                   loading="lazy"
                   decoding="async"

@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 import { cmsSiteContent } from "./site.generated";
 import { cmsHomepageVisualCssProperties } from "./homepageVisualSettings";
+import { mediaFocusPosition } from "../../utils/mediaFocus";
 
 export type CoreHomepageSectionKey =
   | "hero"
@@ -31,6 +32,8 @@ export type CoreHomepageSection = {
   buttonUrl: string;
   backgroundStyle: CoreHomepageBackgroundStyle;
   backgroundImageUrl: string;
+  backgroundFocusX?: number;
+  backgroundFocusY?: number;
   visualSettings?: Record<string, unknown>;
 };
 
@@ -39,6 +42,8 @@ type CmsHomepageBlock = {
   settings?: unknown;
   backgroundStyle?: unknown;
   backgroundImageUrl?: unknown;
+  backgroundFocusX?: unknown;
+  backgroundFocusY?: unknown;
 };
 
 function objectValue(value: unknown): Record<string, unknown> {
@@ -80,6 +85,10 @@ export function getCoreHomepageSection(
       buttonUrl: textValue(settings.buttonUrl),
       backgroundStyle: backgroundStyleValue(block.backgroundStyle),
       backgroundImageUrl: textValue(block.backgroundImageUrl),
+      backgroundFocusX:
+        block.backgroundFocusX === undefined ? undefined : Number(block.backgroundFocusX),
+      backgroundFocusY:
+        block.backgroundFocusY === undefined ? undefined : Number(block.backgroundFocusY),
       visualSettings: settings,
     };
   }
@@ -104,6 +113,14 @@ export function coreHomepageSectionStyle(
     return undefined;
   }
   return {
+    ...(section.backgroundImageUrl
+      ? {
+          "--cms-image-position": mediaFocusPosition(
+            section.backgroundFocusX,
+            section.backgroundFocusY
+          ),
+        }
+      : {}),
     ...visualProperties,
     ...(section.backgroundImageUrl
       ? {

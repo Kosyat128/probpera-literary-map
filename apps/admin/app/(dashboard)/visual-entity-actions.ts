@@ -17,8 +17,61 @@ import {
 } from "@/lib/visual-entity-edit";
 
 export type VisualEntityEditResult =
-  | { ok: true; publication: PublicationState }
+  | { ok: true; publication: PublicationState; updatedAt: string }
   | { ok: false; error: string };
+
+export type VisualEntityVersionResult =
+  | { ok: true; updatedAt: string }
+  | { ok: false; error: string };
+
+const ISO_TIMESTAMP_PATTERN =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$/u;
+
+function normalizedExpectedUpdatedAt(value: unknown) {
+  const normalized = typeof value === "string" ? value.trim() : "";
+  return ISO_TIMESTAMP_PATTERN.test(normalized) && !Number.isNaN(Date.parse(normalized))
+    ? normalized
+    : "";
+}
+
+export async function getVisualEntityVersionAction(input: {
+  entityType: "writer" | "book";
+  entityId: string;
+}): Promise<VisualEntityVersionResult> {
+  const session = await requireStaff();
+  if (!session?.user) return { ok: false, error: "Требуется вход в редакцию." };
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) return { ok: false, error: "База данных не подключена." };
+  try {
+    if (input.entityType === "writer") {
+      const identity = parseWriterEntityId(input.entityId);
+      const { data, error } = await supabase
+        .from("writer_profile_overrides")
+        .select("updated_at")
+        .eq("country_id", identity.countryId)
+        .eq("writer_id", identity.writerId)
+        .maybeSingle();
+      if (error) return { ok: false, error: error.message };
+      return { ok: true, updatedAt: data?.updated_at || "" };
+    }
+    const identity = parseBookEntityId(input.entityId);
+    const { data, error } = await supabase
+      .from("literary_works")
+      .select("updated_at")
+      .eq("legacy_id", identity.entityId)
+      .eq("country_id", identity.countryId)
+      .eq("writer_id", identity.writerId)
+      .maybeSingle();
+    if (error) return { ok: false, error: error.message };
+    if (!data) return { ok: false, error: "Произведение не найдено." };
+    return { ok: true, updatedAt: data.updated_at };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : "Некорректная запись.",
+    };
+  }
+}
 
 export async function saveVisualEntityFieldAction(
   input: VisualEntityEditInput
@@ -43,7 +96,9 @@ export async function saveVisualEntityFieldAction(
     return { ok: false, error: "База данных не подключена." };
   }
 
+  const expectedUpdatedAt = normalizedExpectedUpdatedAt(input.expectedUpdatedAt);
   let databaseId = edit.entityId;
+  let updatedAt = "";
   if (edit.entityType === "writer") {
     const identity = parseWriterEntityId(edit.entityId);
     const { data: existing, error: readError } = await supabase
@@ -53,6 +108,15 @@ export async function saveVisualEntityFieldAction(
       .eq("writer_id", identity.writerId)
       .maybeSingle();
     if (readError) return { ok: false, error: readError.message };
+    if (
+      (existing && (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt)) ||
+      (!existing && expectedUpdatedAt)
+    ) {
+      return {
+        ok: false,
+        error: "Карточку уже изменили в другой вкладке. Выберите поле заново и повторите правку.",
+      };
+    }
 
     const payload = {
       country_id: identity.countryId,
@@ -72,9 +136,9 @@ export async function saveVisualEntityFieldAction(
             updated_by: session.user.id,
           })
           .eq("id", existing.id)
-          .eq("updated_at", existing.updated_at)
+          .eq("updated_at", expectedUpdatedAt)
       : supabase.from("writer_profile_overrides").insert(payload);
-    const { data, error } = await writeQuery.select("id").maybeSingle();
+    const { data, error } = await writeQuery.select("id,updated_at").maybeSingle();
     if (error || !data) {
       return {
         ok: false,
@@ -84,7 +148,14 @@ export async function saveVisualEntityFieldAction(
       };
     }
     databaseId = data.id;
+    updatedAt = data.updated_at;
   } else {
+    if (!expectedUpdatedAt) {
+      return {
+        ok: false,
+        error: "Версия произведения не загружена. Выберите поле заново и повторите правку.",
+      };
+    }
     const identity = parseBookEntityId(edit.entityId);
     const { data, error } = await supabase
       .from("literary_works")
@@ -96,7 +167,8 @@ export async function saveVisualEntityFieldAction(
       .eq("legacy_id", edit.entityId)
       .eq("country_id", identity.countryId)
       .eq("writer_id", identity.writerId)
-      .select("id")
+      .eq("updated_at", expectedUpdatedAt)
+      .select("id,updated_at")
       .maybeSingle();
     if (error) return { ok: false, error: error.message };
     if (!data) {
@@ -106,6 +178,7 @@ export async function saveVisualEntityFieldAction(
       };
     }
     databaseId = data.id;
+    updatedAt = data.updated_at;
   }
 
   const action =
@@ -141,7 +214,7 @@ export async function saveVisualEntityFieldAction(
 
   revalidatePath("/homepage");
   revalidatePath("/library");
-  return { ok: true, publication: publication.state };
+  return { ok: true, publication: publication.state, updatedAt };
 }
 
 export async function saveVisualEntityFieldFormAction(formData: FormData) {
@@ -154,6 +227,7 @@ export async function saveVisualEntityFieldFormAction(formData: FormData) {
     entityId,
     field,
     value,
+    expectedUpdatedAt: String(formData.get("expected_updated_at") || ""),
   });
 
   const context: {

@@ -5,6 +5,7 @@ export type VisualEntityEditInput = {
   entityId: string;
   field: string;
   value: unknown;
+  expectedUpdatedAt?: string;
 };
 
 type FieldRule = {

@@ -11,7 +11,6 @@ import {
 import ArticleEngagement from "./community/ArticleEngagement";
 import type { CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
-import GlobalSearch, { writerSearchLabel } from "./components/GlobalSearch";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
@@ -72,7 +71,14 @@ import {
 } from "./utils/literarySearch";
 import { safePublicHref } from "./utils/publicHref";
 import { scrollToDeferredHashTarget } from "./utils/deferredHashNavigation";
+import {
+  commitAtlasUrlState,
+  readAtlasUrlState,
+  type AtlasUrlFilter,
+} from "./utils/atlasUrlState";
+import { writerSearchLabel } from "./utils/writerSearchLabel";
 
+const GlobalSearch = lazy(() => import("./components/GlobalSearch"));
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
 const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
@@ -93,7 +99,7 @@ const CmsHomepageBlocks = lazy(() =>
   }))
 );
 
-type AtlasFilter = "all" | "nobel" | "rich" | "portrait" | "verified";
+type AtlasFilter = AtlasUrlFilter;
 
 const atlasFilterLabels: Record<AtlasFilter, string> = {
   all: "Все страны",
@@ -124,6 +130,38 @@ const featuredCountryIds = [
   "usa",
   "india",
 ];
+
+function countryMatchesAtlasFilter(country: Country, filter: AtlasFilter) {
+  if (filter === "all") return true;
+  if (filter === "nobel") return country.writers.some(isNobelLaureate);
+  if (filter === "rich") return country.writers.length >= 10;
+  if (filter === "portrait") {
+    return country.writers.some((writer) => Boolean(writer.portrait));
+  }
+  return country.writers.some(
+    (writer) => writer.editorial?.status === "verified"
+  );
+}
+
+function preferredWriterForAtlas(
+  country: Country,
+  filter: AtlasFilter,
+  requestedWriter?: Writer | null
+) {
+  if (requestedWriter) return requestedWriter;
+  if (filter === "nobel") return country.writers.find(isNobelLaureate) ?? null;
+  if (filter === "portrait") {
+    return country.writers.find((writer) => Boolean(writer.portrait)) ?? null;
+  }
+  if (filter === "verified") {
+    return (
+      country.writers.find(
+        (writer) => writer.editorial?.status === "verified"
+      ) ?? null
+    );
+  }
+  return country.writers[0] ?? null;
+}
 
 const editorialFeatures = [
   {
@@ -429,7 +467,10 @@ export default function App() {
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
-  const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>("all");
+  const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(
+    () => readAtlasUrlState().filter
+  );
+  const [countryIndexOpen, setCountryIndexOpen] = useState(false);
   const [nobelSpotlightCountryId, setNobelSpotlightCountryId] = useState<string | null>(null);
   const [communityOpen, setCommunityOpen] = useState(false);
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
@@ -536,23 +577,15 @@ export default function App() {
   const editorialQueueCount =
     editorialAudit.recordsNeedingReview + generatedEditorialQueue;
 
-  const filteredCountries = useMemo(() => {
-    if (atlasFilter === "all") return countryArchive;
-    if (atlasFilter === "nobel") {
-      return countryArchive.filter((country) =>
-        country.writers.some(isNobelLaureate)
-      );
-    }
-    if (atlasFilter === "rich") {
-      return countryArchive.filter((country) => country.writers.length >= 10);
-    }
-    if (atlasFilter === "portrait") {
-      return countryArchive.filter((country) => country.writers.some((writer) => writer.portrait));
-    }
-    return countryArchive.filter((country) =>
-      country.writers.some((writer) => writer.editorial?.status === "verified")
-    );
-  }, [atlasFilter, countryArchive]);
+  const filteredCountries = useMemo(
+    () =>
+      atlasFilter === "all"
+        ? countryArchive
+        : countryArchive.filter((country) =>
+            countryMatchesAtlasFilter(country, atlasFilter)
+          ),
+    [atlasFilter, countryArchive]
+  );
 
   const topCountries = useMemo(
     () =>
@@ -566,18 +599,70 @@ export default function App() {
     () => ({
       all: countryArchive.length,
       nobel: countryArchive.filter((country) =>
-        country.writers.some(isNobelLaureate)
+        countryMatchesAtlasFilter(country, "nobel")
       ).length,
-      rich: countryArchive.filter((country) => country.writers.length >= 10).length,
+      rich: countryArchive.filter((country) =>
+        countryMatchesAtlasFilter(country, "rich")
+      ).length,
       portrait: countryArchive.filter((country) =>
-        country.writers.some((writer) => writer.portrait)
+        countryMatchesAtlasFilter(country, "portrait")
       ).length,
       verified: countryArchive.filter((country) =>
-        country.writers.some((writer) => writer.editorial?.status === "verified")
+        countryMatchesAtlasFilter(country, "verified")
       ).length,
     }),
     [countryArchive]
   );
+
+  const applyAtlasUrlSelection = useCallback(() => {
+    if (!countryArchive.length) return;
+    const urlState = readAtlasUrlState();
+    const requestedCountry = urlState.countryId
+      ? countryArchive.find((country) => country.id === urlState.countryId) ?? null
+      : null;
+    const country =
+      requestedCountry &&
+      countryMatchesAtlasFilter(requestedCountry, urlState.filter)
+        ? requestedCountry
+        : null;
+    const requestedWriter =
+      country && urlState.writerId
+        ? country.writers.find((writer) => writer.id === urlState.writerId) ?? null
+        : null;
+    const writer = country
+      ? preferredWriterForAtlas(country, urlState.filter, requestedWriter)
+      : null;
+
+    setAtlasFilter(urlState.filter);
+    setSelectedCountry(country);
+    setSelectedWriter(writer);
+    setWriterFocusRequest(null);
+    setNobelSpotlightCountryId(null);
+    setSearch("");
+    setSearchOpen(false);
+
+    if (
+      urlState.countryId &&
+      (!country || (writer?.id ?? null) !== urlState.writerId)
+    ) {
+      commitAtlasUrlState(
+        {
+          filter: urlState.filter,
+          countryId: country?.id ?? null,
+          writerId: writer?.id ?? null,
+        },
+        "replace"
+      );
+    }
+  }, [countryArchive]);
+
+  useEffect(() => {
+    if (!countryArchive.length) return undefined;
+    applyAtlasUrlSelection();
+    window.addEventListener("popstate", applyAtlasUrlSelection);
+    return () =>
+      window.removeEventListener("popstate", applyAtlasUrlSelection);
+  }, [applyAtlasUrlSelection, countryArchive.length]);
 
   const atlasSearchIndex = useMemo<AtlasSearchResult[]>(() => {
     const results: AtlasSearchResult[] = [];
@@ -815,19 +900,11 @@ export default function App() {
 
   const selectCountry = useCallback(
     (country: Country, focusAtlas = false, writer?: Writer) => {
-      const preferredWriter =
-        writer ??
-        (atlasFilter === "nobel"
-          ? country.writers.find(isNobelLaureate)
-          : atlasFilter === "portrait"
-            ? country.writers.find((candidate) => Boolean(candidate.portrait))
-            : atlasFilter === "verified"
-              ? country.writers.find(
-                  (candidate) => candidate.editorial?.status === "verified"
-                )
-              : null) ??
-        country.writers[0] ??
-        null;
+      const preferredWriter = preferredWriterForAtlas(
+        country,
+        atlasFilter,
+        writer
+      );
       setSelectedCountry(country);
       setSelectedWriter(preferredWriter);
       setNobelSpotlightCountryId((current) =>
@@ -835,6 +912,11 @@ export default function App() {
       );
       setSearch("");
       setSearchOpen(false);
+      commitAtlasUrlState({
+        filter: atlasFilter,
+        countryId: country.id,
+        writerId: preferredWriter?.id ?? null,
+      });
       if (focusAtlas) {
         window.requestAnimationFrame(() =>
           atlasRef.current?.scrollIntoView({
@@ -889,32 +971,94 @@ export default function App() {
     setSelectedWriter(null);
     setWriterFocusRequest(null);
     setNobelSpotlightCountryId(null);
-  }, []);
+    commitAtlasUrlState({
+      filter: atlasFilter,
+      countryId: null,
+      writerId: null,
+    });
+  }, [atlasFilter]);
 
-  const selectGlobeWriter = useCallback(async (writer: Writer | null) => {
-    if (!writer) {
-      setSelectedWriter(null);
-      return;
-    }
-    if (isNobelLaureate(writer)) {
-      const { findNobelArticle } = await import("./data/articles/nobelArticles");
-      const article = findNobelArticle(writer);
-      if (article) {
-        navigateToArticle(article);
+  const selectAtlasFilter = useCallback(
+    (filter: AtlasFilter) => {
+      const keepCountry =
+        selectedCountry && countryMatchesAtlasFilter(selectedCountry, filter)
+          ? selectedCountry
+          : null;
+      // Atlas filters select countries, not individual writers. Preserve a
+      // writer already chosen inside a country that remains in the collection;
+      // otherwise a shared URL changes identity after reload/back navigation.
+      const keepWriter = keepCountry
+        ? selectedWriter ?? preferredWriterForAtlas(keepCountry, filter)
+        : null;
+      setAtlasFilter(filter);
+      if (keepCountry) {
+        setSelectedWriter(keepWriter);
+      } else {
+        setSelectedCountry(null);
+        setSelectedWriter(null);
+        setWriterFocusRequest(null);
+        setNobelSpotlightCountryId(null);
+      }
+      commitAtlasUrlState({
+        filter,
+        countryId: keepCountry?.id ?? null,
+        writerId: keepWriter?.id ?? null,
+      });
+    },
+    [selectedCountry, selectedWriter]
+  );
+
+  const selectGlobeWriter = useCallback(
+    async (writer: Writer | null) => {
+      if (!writer) {
+        setSelectedWriter(null);
+        commitAtlasUrlState({
+          filter: atlasFilter,
+          countryId: selectedCountry?.id ?? null,
+          writerId: null,
+        });
         return;
       }
-    }
-    setSelectedWriter(writer);
-    window.setTimeout(() => {
-      document.querySelector<HTMLElement>(".country-panel .writer-detail")
-        ?.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "auto"
-            : "smooth",
-          block: "start",
-        });
-    }, 80);
-  }, []);
+      if (isNobelLaureate(writer)) {
+        const { findNobelArticle } = await import(
+          "./data/articles/nobelArticles"
+        );
+        const article = findNobelArticle(writer);
+        if (article) {
+          navigateToArticle(article);
+          return;
+        }
+      }
+      setSelectedWriter(writer);
+      commitAtlasUrlState({
+        filter: atlasFilter,
+        countryId: selectedCountry?.id ?? null,
+        writerId: writer.id,
+      });
+      window.setTimeout(() => {
+        document.querySelector<HTMLElement>(".country-panel .writer-detail")
+          ?.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth",
+            block: "start",
+          });
+      }, 80);
+    },
+    [atlasFilter, selectedCountry]
+  );
+
+  const selectPanelWriter = useCallback(
+    (writer: Writer) => {
+      setSelectedWriter(writer);
+      commitAtlasUrlState({
+        filter: atlasFilter,
+        countryId: selectedCountry?.id ?? null,
+        writerId: writer.id,
+      });
+    },
+    [atlasFilter, selectedCountry]
+  );
 
   const openCommunity = useCallback((view: CommunityView) => {
     setCommunityView(view);
@@ -1184,6 +1328,7 @@ export default function App() {
               ) : (
                 <>
                   <span className="hero-title-lead">{structuredHeroLead}</span>
+                  {" "}
                   <em className="hero-title-accent">
                     {structuredHeroAccentParts ? (
                       <>
@@ -1191,6 +1336,7 @@ export default function App() {
                           {structuredHeroDash}
                           {structuredHeroAccentParts[1]}
                         </span>
+                        {" "}
                         <span className="hero-title-accent-line">
                           {structuredHeroAccentParts[2]}
                         </span>
@@ -1486,7 +1632,7 @@ export default function App() {
                     key={value}
                     data-atlas-filter={value}
                     aria-pressed={atlasFilter === value}
-                    onClick={() => setAtlasFilter(value)}
+                    onClick={() => selectAtlasFilter(value)}
                   >
                     {t(label)} <span>{number(filterCounts[value])}</span>
                   </button>
@@ -1604,7 +1750,7 @@ export default function App() {
                       ? writerFocusRequest.token
                       : undefined
                   }
-                  onWriterSelect={setSelectedWriter}
+                  onWriterSelect={selectPanelWriter}
                   nobelSpotlightActive={
                     nobelSpotlightCountryId === selectedCountry.id
                   }
@@ -1618,44 +1764,51 @@ export default function App() {
               </Suspense>
             )}
           </div>
-          <details className="atlas-country-index">
+          <details
+            className="atlas-country-index"
+            onToggle={(event) => setCountryIndexOpen(event.currentTarget.open)}
+          >
             <summary>
               {t("Текстовый указатель стран")}
               <span>{number(filteredCountries.length)}</span>
             </summary>
-            <div>
-              {filteredCountries
-                .slice()
-                .sort((first, second) => first.name.localeCompare(second.name, "ru"))
-                .map((country) => (
-                  <button
-                    type="button"
-                    key={country.id}
-                    onClick={() => selectCountry(country, true)}
-                  >
-                    <span>
-                      <CountryFlagIcon
-                        className="country-result-flag country-flag-icon--round"
-                        code={country.code}
-                        countryName={country.name}
-                        size={24}
-                        decorative
-                      />
-                      {countryName(country.code, country.name)}
-                    </span>
-                    <small>
-                      {number(country.writers.length)}{" "}
-                      {t(
-                        selectInterfacePlural(country.writers.length, language, [
-                          "автор",
-                          "автора",
-                          "авторов",
-                        ])
-                      )}
-                    </small>
-                  </button>
-                ))}
-            </div>
+            {countryIndexOpen && (
+              <div>
+                {filteredCountries
+                  .slice()
+                  .sort((first, second) =>
+                    first.name.localeCompare(second.name, "ru")
+                  )
+                  .map((country) => (
+                    <button
+                      type="button"
+                      key={country.id}
+                      onClick={() => selectCountry(country, true)}
+                    >
+                      <span>
+                        <CountryFlagIcon
+                          className="country-result-flag country-flag-icon--round"
+                          code={country.code}
+                          countryName={country.name}
+                          size={24}
+                          decorative
+                        />
+                        {countryName(country.code, country.name)}
+                      </span>
+                      <small>
+                        {number(country.writers.length)}{" "}
+                        {t(
+                          selectInterfacePlural(
+                            country.writers.length,
+                            language,
+                            ["автор", "автора", "авторов"]
+                          )
+                        )}
+                      </small>
+                    </button>
+                  ))}
+              </div>
+            )}
           </details>
         </section>
 
@@ -2669,19 +2822,23 @@ export default function App() {
         </Suspense>
       ) : null}
 
-      <GlobalSearch
-        open={globalSearchOpen}
-        countries={countryArchive}
-        books={bookArchive}
-        articleCount={articleCount}
-        onClose={() => setGlobalSearchOpen(false)}
-        onCountrySelect={(country, writer) =>
-          writer
-            ? selectWriterAndFocus(country, writer)
-            : selectCountry(country, true)
-        }
-        onBookSelect={openBook}
-      />
+      {globalSearchOpen ? (
+        <Suspense fallback={null}>
+          <GlobalSearch
+            open
+            countries={countryArchive}
+            books={bookArchive}
+            articleCount={articleCount}
+            onClose={() => setGlobalSearchOpen(false)}
+            onCountrySelect={(country, writer) =>
+              writer
+                ? selectWriterAndFocus(country, writer)
+                : selectCountry(country, true)
+            }
+            onBookSelect={openBook}
+          />
+        </Suspense>
+      ) : null}
     </div>
   );
 }

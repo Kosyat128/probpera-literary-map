@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   HISTORY_EVENTS_PAGE_SIZE,
   HISTORY_PAGE_SIZE,
+  historyAuditEntityTypes,
   historyCatalogFormHref,
   historyCatalogHref,
   parseHistoryCatalogQuery,
@@ -45,5 +46,16 @@ describe("history catalog query", () => {
     expect(
       historyCatalogFormHref({ get: (name) => values.get(name) }, { restored: "work" })
     ).toContain("restored=work");
+  });
+
+  it("groups work subrecords into the work audit stream", () => {
+    expect(historyAuditEntityTypes.work).toEqual(
+      expect.arrayContaining([
+        "literary_work_translation",
+        "literary_work_source",
+        "literary_work_external_id",
+        "book_import_candidate",
+      ])
+    );
   });
 });

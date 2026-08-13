@@ -1,0 +1,1387 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T00:00:00.000Z",
+  "policy": "docs/COVER_RIGHTS_POLICY.md",
+  "archive": {
+    "name": "Новые обложки.rar",
+    "sha256": "2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f",
+    "bytes": 307935513,
+    "entries": 101,
+    "uniqueImages": 100
+  },
+  "sourceInventory": {
+    "entries": 101,
+    "uniqueImages": 100,
+    "duplicateEntries": 1,
+    "width": 1024,
+    "height": 1536,
+    "format": "png",
+    "orientation": "portrait",
+    "alpha": false,
+    "uncompressedBytes": 321363903,
+    "duplicateGroups": [
+      {
+        "imageSha256": "c1b4c7ae4ec7815f18a2ce7229fc3384c2c718c42a4fec1aad739d8b9645c5b3",
+        "sourceIndexes": [
+          1,
+          61
+        ],
+        "filenames": [
+          "73af0067-25da-423f-aa72-8dd241b972da.png",
+          "ChatGPT Image 13 авг. 2026 г., 02_46_27 (9).png"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "full": {
+      "width": 720,
+      "height": 1080,
+      "quality": 55,
+      "format": "webp"
+    },
+    "thumbnail": {
+      "width": 360,
+      "height": 540,
+      "quality": 50,
+      "format": "webp"
+    }
+  },
+  "rightsEvidence": {
+    "chatGptFilenameEntries": 99,
+    "uuidFilenameEntries": 2,
+    "selectedImportsWithChatGptFilename": 51,
+    "embeddedMetadataEntries": 0,
+    "quarantinedSourceIndexes": [
+      2
+    ]
+  },
+  "summary": {
+    "matchedToCanonical": 57,
+    "imported": 51,
+    "skippedExisting": 6,
+    "alternativeArtwork": 9,
+    "exactDuplicates": 1,
+    "unmatched": 33,
+    "rightsQuarantined": 1,
+    "archiveBooks": 9712,
+    "publicBooks": 31,
+    "pendingBooks": 9681
+  },
+  "imports": [
+    {
+      "sourceIndex": 3,
+      "workKey": "russia:turgenev:article-series-men9bv",
+      "slug": "smoke-turgenev-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Иван Тургенев",
+      "title": "Дым",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_07 (1).png",
+      "imageSha256": "45f42c63910aca0af47bf2b78819c26756181f06552630c81a36f7da213e716c",
+      "canonicalAuthor": "Иван Сергеевич Тургенев",
+      "canonicalTitle": "Дым",
+      "coverUrl": "brand/book-covers/smoke-turgenev-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/smoke-turgenev-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:turgenev:article-series-men9bv"
+      ]
+    },
+    {
+      "sourceIndex": 4,
+      "workKey": "russia:turgenev:openlibrary-works-ol43357w",
+      "slug": "asya-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Иван Тургенев",
+      "title": "Ася",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_07 (2).png",
+      "imageSha256": "30998b5f52c2a0f1b5e0e1411dad331020a682bfda028f1d88ee4924ba0492c7",
+      "canonicalAuthor": "Иван Сергеевич Тургенев",
+      "canonicalTitle": "Asya",
+      "coverUrl": "brand/book-covers/asya-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/asya-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:turgenev:openlibrary-works-ol43357w"
+      ]
+    },
+    {
+      "sourceIndex": 5,
+      "workKey": "russia:turgenev:openlibrary-works-ol28645904w",
+      "slug": "first-love-turgenev-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Иван Тургенев",
+      "title": "Первая любовь",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_08 (3).png",
+      "imageSha256": "b3df3fba80d5557c89f408aedb7c870642106d79d809ad055ff6c8000a13cee5",
+      "canonicalAuthor": "Иван Сергеевич Тургенев",
+      "canonicalTitle": "First Love",
+      "coverUrl": "brand/book-covers/first-love-turgenev-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/first-love-turgenev-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:turgenev:openlibrary-works-ol15578053w",
+        "russia:turgenev:openlibrary-works-ol28645904w",
+        "russia:turgenev:openlibrary-works-ol43315w"
+      ]
+    },
+    {
+      "sourceIndex": 6,
+      "workKey": "russia:turgenev:openlibrary-works-ol43363w",
+      "slug": "spring-torrents-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Иван Тургенев",
+      "title": "Вешние воды",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_08 (4).png",
+      "imageSha256": "62db8cf2819a338bc3a7bbf75ff23066f92493bdd3ebb55f4cfceb7b9aabf981",
+      "canonicalAuthor": "Иван Сергеевич Тургенев",
+      "canonicalTitle": "Veshnie vody",
+      "coverUrl": "brand/book-covers/spring-torrents-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/spring-torrents-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:turgenev:openlibrary-works-ol43363w"
+      ]
+    },
+    {
+      "sourceIndex": 7,
+      "workKey": "russia:tolstoy:legacy-tolstoy-смерть-ивана-ильича",
+      "slug": "death-of-ivan-ilyich-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Лев Толстой",
+      "title": "Смерть Ивана Ильича",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_08 (5).png",
+      "imageSha256": "dab8c885dc1eaed9555d2dc1e0a1ce4c901add68b612a760e74fa5e7eaf6855a",
+      "canonicalAuthor": "Лев Николаевич Толстой",
+      "canonicalTitle": "Смерть Ивана Ильича",
+      "coverUrl": "brand/book-covers/death-of-ivan-ilyich-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/death-of-ivan-ilyich-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:tolstoy:legacy-tolstoy-смерть-ивана-ильича"
+      ]
+    },
+    {
+      "sourceIndex": 8,
+      "workKey": "russia:tolstoy:openlibrary-works-ol36393350w",
+      "slug": "father-sergius-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Лев Толстой",
+      "title": "Отец Сергий",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_09 (6).png",
+      "imageSha256": "af5f6b5c49c489384a96ef68e3b3b83885845491bcea32b3a96f0ca5f0c971a5",
+      "canonicalAuthor": "Лев Николаевич Толстой",
+      "canonicalTitle": "Father Sergius",
+      "coverUrl": "brand/book-covers/father-sergius-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/father-sergius-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:tolstoy:openlibrary-works-ol36393350w"
+      ]
+    },
+    {
+      "sourceIndex": 9,
+      "workKey": "russia:tolstoy:openlibrary-works-ol267106w",
+      "slug": "hadji-murad-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Лев Толстой",
+      "title": "Хаджи-Мурат",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_09 (7).png",
+      "imageSha256": "c672fee17a9f0fddd28cc753eefa3422b75cd623f031a6766f7cd838784ad399",
+      "canonicalAuthor": "Лев Николаевич Толстой",
+      "canonicalTitle": "Hadji Murad",
+      "coverUrl": "brand/book-covers/hadji-murad-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/hadji-murad-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:tolstoy:openlibrary-works-ol267106w"
+      ]
+    },
+    {
+      "sourceIndex": 15,
+      "workKey": "russia:ostrovsky:legacy-ostrovsky-гроза",
+      "slug": "the-storm-ostrovsky-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Александр Островский",
+      "title": "Гроза",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_28 (3).png",
+      "imageSha256": "a3cc5e6085e938361c2cca0c385dc07afcbf962431004cdddce1a57b85763f8e",
+      "canonicalAuthor": "Александр Николаевич Островский",
+      "canonicalTitle": "Гроза",
+      "coverUrl": "brand/book-covers/the-storm-ostrovsky-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-storm-ostrovsky-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:ostrovsky:legacy-ostrovsky-гроза"
+      ]
+    },
+    {
+      "sourceIndex": 17,
+      "workKey": "russia:gogol:openlibrary-works-ol34880357w",
+      "slug": "christmas-eve-gogol-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Николай Гоголь",
+      "title": "Ночь перед Рождеством",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_28 (5).png",
+      "imageSha256": "4b3d4b6f15e7842fc56ae195374a6b40eec0c592d6875be1e1fec04b47f4e73a",
+      "canonicalAuthor": "Николай Васильевич Гоголь",
+      "canonicalTitle": "Nochebuena",
+      "coverUrl": "brand/book-covers/christmas-eve-gogol-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/christmas-eve-gogol-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:gogol:openlibrary-works-ol34880357w"
+      ]
+    },
+    {
+      "sourceIndex": 19,
+      "workKey": "russia:dostoevsky:article-series-cnwr4c",
+      "slug": "the-adolescent-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Фёдор Достоевский",
+      "title": "Подросток",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_29 (7).png",
+      "imageSha256": "e45e4aa7bc5914466b300fb1288c2efcc1b99c335af78c378848c09a51b3d149",
+      "canonicalAuthor": "Фёдор Михайлович Достоевский",
+      "canonicalTitle": "Подросток",
+      "coverUrl": "brand/book-covers/the-adolescent-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-adolescent-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:dostoevsky:article-series-cnwr4c"
+      ]
+    },
+    {
+      "sourceIndex": 22,
+      "workKey": "russia:chekhov:article-series-10x9915",
+      "slug": "the-steppe-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Антон Чехов",
+      "title": "Степь",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_29 (10).png",
+      "imageSha256": "228d6e778014a12c976bec4e6a4f28d96188c78bb87cfddb443c06d35306d2fa",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Степь",
+      "coverUrl": "brand/book-covers/the-steppe-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-steppe-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:article-series-10x9915"
+      ]
+    },
+    {
+      "sourceIndex": 23,
+      "workKey": "russia:buninin:legacy-buninin-господин-из-сан-франциско",
+      "slug": "gentleman-from-san-francisco-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Иван Бунин",
+      "title": "Господин из Сан-Франциско",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_20 (1).png",
+      "imageSha256": "61964e0ead67d2bee2d56b9ad9dcf05c1ac4f1434820eb1a914aab5982444f63",
+      "canonicalAuthor": "Иван Алексеевич Бунин",
+      "canonicalTitle": "Господин из Сан-Франциско",
+      "coverUrl": "brand/book-covers/gentleman-from-san-francisco-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/gentleman-from-san-francisco-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:buninin:legacy-buninin-господин-из-сан-франциско",
+        "russia:buninin:openlibrary-works-ol603369w",
+        "russia:buninin:openlibrary-works-ol7973532w"
+      ]
+    },
+    {
+      "sourceIndex": 24,
+      "workKey": "russia:gogol:openlibrary-works-ol8791626w",
+      "slug": "the-nose-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Николай Гоголь",
+      "title": "Нос",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_20 (2).png",
+      "imageSha256": "907b45d98378fb7bf918cc1bb95d5bdc42735360579777ae202b1fbfb4d23c37",
+      "canonicalAuthor": "Николай Васильевич Гоголь",
+      "canonicalTitle": "The Nose",
+      "coverUrl": "brand/book-covers/the-nose-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-nose-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:gogol:openlibrary-works-ol8791626w"
+      ]
+    },
+    {
+      "sourceIndex": 25,
+      "workKey": "russia:gogol:openlibrary-works-ol40388005w",
+      "slug": "diary-of-a-madman-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Николай Гоголь",
+      "title": "Записки сумасшедшего",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_21 (3).png",
+      "imageSha256": "8074291e9389b33ef6899d42cf55e9f468efa1ff611d46ef35cc63ca471a5264",
+      "canonicalAuthor": "Николай Васильевич Гоголь",
+      "canonicalTitle": "Diary of a Madman",
+      "coverUrl": "brand/book-covers/diary-of-a-madman-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/diary-of-a-madman-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:gogol:openlibrary-works-ol18157220w",
+        "russia:gogol:openlibrary-works-ol270282w",
+        "russia:gogol:openlibrary-works-ol40388005w"
+      ]
+    },
+    {
+      "sourceIndex": 28,
+      "workKey": "russia:chekhov:legacy-chekhov-палата-6",
+      "slug": "ward-no-6-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Антон Чехов",
+      "title": "Палата № 6",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_23 (6).png",
+      "imageSha256": "36766f5de8231659b85694fb8723a93919a7cb2fe9481399ff4b19591fabfe4a",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Палата № 6",
+      "coverUrl": "brand/book-covers/ward-no-6-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ward-no-6-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-палата-6"
+      ]
+    },
+    {
+      "sourceIndex": 30,
+      "workKey": "russia:tolstoy:article-series-zqpjjm",
+      "slug": "after-the-ball-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Лев Толстой",
+      "title": "После бала",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_24 (8).png",
+      "imageSha256": "f8c1bea467c859d86c18a241f06638892b52469cafd1b0f6a2a7959f3fd16243",
+      "canonicalAuthor": "Лев Николаевич Толстой",
+      "canonicalTitle": "После бала",
+      "coverUrl": "brand/book-covers/after-the-ball-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/after-the-ball-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:tolstoy:article-series-zqpjjm"
+      ]
+    },
+    {
+      "sourceIndex": 31,
+      "workKey": "russia:leskov:legacy-leskov-очарованный-странник",
+      "slug": "enchanted-wanderer-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Николай Лесков",
+      "title": "Очарованный странник",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_24 (9).png",
+      "imageSha256": "d9b8aa3ee69895d5c48363cb71edb154990eecaf213c626005f790371b05b2c4",
+      "canonicalAuthor": "Николай Семёнович Лесков",
+      "canonicalTitle": "Очарованный странник",
+      "coverUrl": "brand/book-covers/enchanted-wanderer-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/enchanted-wanderer-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:leskov:legacy-leskov-очарованный-странник"
+      ]
+    },
+    {
+      "sourceIndex": 33,
+      "workKey": "russia:leskov:legacy-leskov-левша",
+      "slug": "lefty-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Николай Лесков",
+      "title": "Левша",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_14 (1).png",
+      "imageSha256": "47a75be832303175ef743670d9f1804cf0e893b7fe9699575bbd00429bb37557",
+      "canonicalAuthor": "Николай Семёнович Лесков",
+      "canonicalTitle": "Левша",
+      "coverUrl": "brand/book-covers/lefty-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/lefty-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:leskov:legacy-leskov-левша"
+      ]
+    },
+    {
+      "sourceIndex": 34,
+      "workKey": "russia:lermontov:legacy-lermontov-мцыри",
+      "slug": "mtsyri-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Михаил Лермонтов",
+      "title": "Мцыри",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_15 (2).png",
+      "imageSha256": "015cf74f399e28837b3dd877b1d96e100ef1e4167853c5ca341e22258ad094c4",
+      "canonicalAuthor": "Михаил Юрьевич Лермонтов",
+      "canonicalTitle": "Мцыри",
+      "coverUrl": "brand/book-covers/mtsyri-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/mtsyri-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:lermontov:legacy-lermontov-мцыри"
+      ]
+    },
+    {
+      "sourceIndex": 36,
+      "workKey": "russia:chekhov:legacy-chekhov-три-сестры",
+      "slug": "three-sisters-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Антон Чехов",
+      "title": "Три сестры",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_19 (4).png",
+      "imageSha256": "b20243ff13693bf8d1badc085011343f677e214664cbe03cac2a0320d9b58032",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Три сестры",
+      "coverUrl": "brand/book-covers/three-sisters-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/three-sisters-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-три-сестры"
+      ]
+    },
+    {
+      "sourceIndex": 42,
+      "workKey": "russia:turgenev:legacy-turgenev-муму",
+      "slug": "mumu-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Иван Тургенев",
+      "title": "Муму",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_21 (10).png",
+      "imageSha256": "de34ba8f34d23e17fdd8811d1f95cd7662271751498c20f4a22d6869d15ece26",
+      "canonicalAuthor": "Иван Сергеевич Тургенев",
+      "canonicalTitle": "Муму",
+      "coverUrl": "brand/book-covers/mumu-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/mumu-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:turgenev:legacy-turgenev-муму"
+      ]
+    },
+    {
+      "sourceIndex": 43,
+      "workKey": "russia:karamzin:legacy-karamzin-бедная-лиза",
+      "slug": "poor-liza-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Николай Карамзин",
+      "title": "Бедная Лиза",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_10 (1).png",
+      "imageSha256": "3f855d2a5ace717c6f63ece4fad25ea0bd61dbc95aa8ce9ef46f872c740a8e17",
+      "canonicalAuthor": "Николай Михайлович Карамзин",
+      "canonicalTitle": "Бедная Лиза",
+      "coverUrl": "brand/book-covers/poor-liza-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/poor-liza-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:karamzin:legacy-karamzin-бедная-лиза"
+      ]
+    },
+    {
+      "sourceIndex": 49,
+      "workKey": "russia:fonvizin:legacy-fonvizin-недоросль",
+      "slug": "the-minor-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Денис Фонвизин",
+      "title": "Недоросль",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_13 (7).png",
+      "imageSha256": "9b0fca42aaf9735abd02939e8b9b4550786bb385e9df6b93ce4cd798ea422f63",
+      "canonicalAuthor": "Денис Иванович Фонвизин",
+      "canonicalTitle": "Недоросль",
+      "coverUrl": "brand/book-covers/the-minor-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-minor-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:fonvizin:legacy-fonvizin-недоросль"
+      ]
+    },
+    {
+      "sourceIndex": 50,
+      "workKey": "russia:nekrasov:legacy-nekrasov-кому-на-руси-жить-хорошо",
+      "slug": "who-is-happy-in-russia-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Николай Некрасов",
+      "title": "Кому на Руси жить хорошо",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_13 (8).png",
+      "imageSha256": "7eb13383c5e81ef8d60b13d370d07a4af53f45ea6085020012258ade86a157c9",
+      "canonicalAuthor": "Николай Алексеевич Некрасов",
+      "canonicalTitle": "Кому на Руси жить хорошо",
+      "coverUrl": "brand/book-covers/who-is-happy-in-russia-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/who-is-happy-in-russia-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:nekrasov:legacy-nekrasov-кому-на-руси-жить-хорошо"
+      ]
+    },
+    {
+      "sourceIndex": 60,
+      "workKey": "russia:solzhenitsyn:legacy-solzhenitsyn-один-день-ивана-денисовича",
+      "slug": "one-day-ivan-denisovich-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Александр Солженицын",
+      "title": "Один день Ивана Денисовича",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_26 (8).png",
+      "imageSha256": "7a95cd7b2441da01e45fcbe666d05a6b16bedcb80d1106e8582fa15b20c9e393",
+      "canonicalAuthor": "Александр Исаевич Солженицын",
+      "canonicalTitle": "Один день Ивана Денисовича",
+      "coverUrl": "brand/book-covers/one-day-ivan-denisovich-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/one-day-ivan-denisovich-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:solzhenitsyn:legacy-solzhenitsyn-один-день-ивана-денисовича"
+      ]
+    },
+    {
+      "sourceIndex": 63,
+      "workKey": "england:jane_austen:persuasion",
+      "slug": "persuasion-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Джейн Остин",
+      "title": "Доводы рассудка",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_26 (1).png",
+      "imageSha256": "84ab2a2cf53e4a09da5e682c28603cfda4eee640511b4f80632851ac56c563e5",
+      "canonicalAuthor": "Джейн Остин",
+      "canonicalTitle": "Доводы рассудка",
+      "coverUrl": "brand/book-covers/persuasion-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/persuasion-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:jane_austen:persuasion"
+      ]
+    },
+    {
+      "sourceIndex": 64,
+      "workKey": "england:charles_dickens:article-series-1tdjfsi",
+      "slug": "our-mutual-friend-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Чарльз Диккенс",
+      "title": "Наш общий друг",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_26 (2).png",
+      "imageSha256": "ebdc017a7ab93232b06c881678523ac1bb894cd7455b14998488ab305ef71203",
+      "canonicalAuthor": "Чарльз Диккенс",
+      "canonicalTitle": "Наш общий друг",
+      "coverUrl": "brand/book-covers/our-mutual-friend-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/our-mutual-friend-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:charles_dickens:article-series-1tdjfsi"
+      ]
+    },
+    {
+      "sourceIndex": 65,
+      "workKey": "england:robert_louis_stevenson:article-series-1vf17g1",
+      "slug": "black-arrow-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Роберт Льюис Стивенсон",
+      "title": "Чёрная стрела",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_27 (3).png",
+      "imageSha256": "dd7d795a1c51b8694d8450bc89cf4bea466acf76ff2b80cd80bfe53227462f07",
+      "canonicalAuthor": "Роберт Льюис Стивенсон",
+      "canonicalTitle": "Чёрная стрела",
+      "coverUrl": "brand/book-covers/black-arrow-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/black-arrow-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:robert_louis_stevenson:article-series-1vf17g1"
+      ]
+    },
+    {
+      "sourceIndex": 66,
+      "workKey": "england:arthur_conan_doyle:article-series-nq6wxl",
+      "slug": "white-company-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Артур Конан Дойл",
+      "title": "Белый отряд",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_27 (4).png",
+      "imageSha256": "dd306f566845fc5bddc3f747aa9be2857fe8baa6d032f185d7c08101ce21a17a",
+      "canonicalAuthor": "Артур Конан Дойл",
+      "canonicalTitle": "Белый отряд",
+      "coverUrl": "brand/book-covers/white-company-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/white-company-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:arthur_conan_doyle:article-series-nq6wxl"
+      ]
+    },
+    {
+      "sourceIndex": 67,
+      "workKey": "england:h_g_wells:the-war-in-the-air",
+      "slug": "war-in-the-air-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Герберт Уэллс",
+      "title": "Война в воздухе",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_28 (5).png",
+      "imageSha256": "2e0bad2d04b3ee89c21fff392d7a479ec086b5c301b01057fe97bd1ed530f21e",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Война в воздухе",
+      "coverUrl": "brand/book-covers/war-in-the-air-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/war-in-the-air-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-war-in-the-air"
+      ]
+    },
+    {
+      "sourceIndex": 68,
+      "workKey": "england:h_g_wells:article-series-15osrun",
+      "slug": "tono-bungay-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Герберт Уэллс",
+      "title": "Тоно-Бенге",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_28 (6).png",
+      "imageSha256": "4f5fb99fa44588eb598eb673a5aebc892749f7f3082ec406f21bb4f5153fbd4d",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Тоно Бенге",
+      "coverUrl": "brand/book-covers/tono-bungay-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/tono-bungay-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:article-series-15osrun"
+      ]
+    },
+    {
+      "sourceIndex": 69,
+      "workKey": "england:virginia_woolf:article-series-1d76kri",
+      "slug": "between-the-acts-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Вирджиния Вулф",
+      "title": "Между актов",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_29 (7).png",
+      "imageSha256": "850e217db932713e1bfba396138db9b726e36f70e61463c8c5bf8e983e0908bf",
+      "canonicalAuthor": "Вирджиния Вулф",
+      "canonicalTitle": "Между актов",
+      "coverUrl": "brand/book-covers/between-the-acts-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/between-the-acts-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:virginia_woolf:article-series-1d76kri"
+      ]
+    },
+    {
+      "sourceIndex": 70,
+      "workKey": "england:george_orwell:article-series-1ux02ta",
+      "slug": "keep-the-aspidistra-flying-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Джордж Оруэлл",
+      "title": "Да здравствует фикус!",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_29 (8).png",
+      "imageSha256": "3b91d81e47c8cf78ff2481d67147bd537655c56a450da5249db4bc394b07c9f1",
+      "canonicalAuthor": "Джордж Оруэлл",
+      "canonicalTitle": "Да здравствует фикус!",
+      "coverUrl": "brand/book-covers/keep-the-aspidistra-flying-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/keep-the-aspidistra-flying-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:george_orwell:article-series-1ux02ta"
+      ]
+    },
+    {
+      "sourceIndex": 71,
+      "workKey": "england:graham_greene:article-series-nps3bc",
+      "slug": "end-of-the-affair-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Грэм Грин",
+      "title": "Конец одного романа",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_30 (9).png",
+      "imageSha256": "994116a94b285658c983c9c528be7af586c8dfaea998b553be82fa2bcc7eab9a",
+      "canonicalAuthor": "Грэм Грин",
+      "canonicalTitle": "Конец одного романа",
+      "coverUrl": "brand/book-covers/end-of-the-affair-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/end-of-the-affair-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:graham_greene:article-series-nps3bc"
+      ]
+    },
+    {
+      "sourceIndex": 72,
+      "workKey": "england:anthony_trollope:article-series-17ulruw",
+      "slug": "barchester-towers-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Энтони Троллоп",
+      "title": "Барчестерские башни",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_11_30 (10).png",
+      "imageSha256": "8e6ae92403cde10d4c41e35ba264cf6588b03c34f89a68da6a42ef3457278a74",
+      "canonicalAuthor": "Энтони Троллоп",
+      "canonicalTitle": "Барчестерские башни",
+      "coverUrl": "brand/book-covers/barchester-towers-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/barchester-towers-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:anthony_trollope:article-series-17ulruw"
+      ]
+    },
+    {
+      "sourceIndex": 73,
+      "workKey": "england:wilkie_collins:article-series-1lpskee",
+      "slug": "moonstone-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Уилки Коллинз",
+      "title": "Лунный камень",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_47 (1).png",
+      "imageSha256": "d9881ee2aa3f267b206039d3445c87c4e58acccd09e3b92035dcdd68c04e2ca1",
+      "canonicalAuthor": "Уилки Коллинз",
+      "canonicalTitle": "Лунный камень",
+      "coverUrl": "brand/book-covers/moonstone-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/moonstone-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:wilkie_collins:article-series-1lpskee"
+      ]
+    },
+    {
+      "sourceIndex": 74,
+      "workKey": "england:charles_dickens:article-series-cyoupj",
+      "slug": "martin-chuzzlewit-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Чарльз Диккенс",
+      "title": "Мартин Чезлвит",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_47 (2).png",
+      "imageSha256": "dd9e7367ff8536900035edcf545edfe5a32df88e9562516bf7ff161b39991640",
+      "canonicalAuthor": "Чарльз Диккенс",
+      "canonicalTitle": "Жизнь и приключения Мартина Чезлвита",
+      "coverUrl": "brand/book-covers/martin-chuzzlewit-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/martin-chuzzlewit-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:charles_dickens:article-series-cyoupj"
+      ]
+    },
+    {
+      "sourceIndex": 75,
+      "workKey": "england:rafael_sabatini:article-catalog-1xrb2ql",
+      "slug": "captain-blood-odyssey-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Рафаэль Сабатини",
+      "title": "Одиссея капитана Блада",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_48 (3).png",
+      "imageSha256": "76cddd7c5bc642da37252e422f39d42f01d9d0216a3e03d7bc874390e00006cf",
+      "canonicalAuthor": "Рафаэль Сабатини",
+      "canonicalTitle": "Одиссея капитана Блада",
+      "coverUrl": "brand/book-covers/captain-blood-odyssey-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/captain-blood-odyssey-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:rafael_sabatini:article-catalog-1xrb2ql"
+      ]
+    },
+    {
+      "sourceIndex": 76,
+      "workKey": "england:rafael_sabatini:article-catalog-6ofizb",
+      "slug": "sea-hawk-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Рафаэль Сабатини",
+      "title": "Морской ястреб",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_48 (4).png",
+      "imageSha256": "6e6573b01a20ae5dced015e62a2c5421c1a89893c0443c24183b9238c00aface",
+      "canonicalAuthor": "Рафаэль Сабатини",
+      "canonicalTitle": "Морской ястреб",
+      "coverUrl": "brand/book-covers/sea-hawk-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/sea-hawk-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:rafael_sabatini:article-catalog-6ofizb"
+      ]
+    },
+    {
+      "sourceIndex": 77,
+      "workKey": "england:daniel_defoe:article-catalog-9070zv",
+      "slug": "captain-singleton-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Даниэль Дефо",
+      "title": "Приключения капитана Сингльтона",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_48 (5).png",
+      "imageSha256": "f8197aba2dcd558062a5a9cd26996135a4eb0879f8dae4bc8e00e245c6b78923",
+      "canonicalAuthor": "Даниэль Дефо",
+      "canonicalTitle": "Жизнь и пиратские приключения славного капитана Сингльтона",
+      "coverUrl": "brand/book-covers/captain-singleton-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/captain-singleton-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:daniel_defoe:article-catalog-9070zv",
+        "england:daniel_defoe:openlibrary-works-ol45307w"
+      ]
+    },
+    {
+      "sourceIndex": 78,
+      "workKey": "england:h_g_wells:article-series-wsj9a0",
+      "slug": "strange-orchid-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Герберт Уэллс",
+      "title": "Странная орхидея",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_48 (6).png",
+      "imageSha256": "23b197c43710bb9e1e3f6446b4531fe4958bf5868b2829feb7bdfcd9c1825627",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Странная орхидея",
+      "coverUrl": "brand/book-covers/strange-orchid-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/strange-orchid-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:article-series-wsj9a0"
+      ]
+    },
+    {
+      "sourceIndex": 82,
+      "workKey": "england:laurence_sterne:article-series-12cg5ce",
+      "slug": "tristram-shandy-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Лоренс Стерн",
+      "title": "Жизнь и мнения Тристрама Шенди, джентльмена",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_53_58 (1).png",
+      "imageSha256": "08873d9fd7af3214a9101cae345b7371751e7dd5262dbe20b4b7fa6fbaa6bf50",
+      "canonicalAuthor": "Лоренс Стерн",
+      "canonicalTitle": "Жизнь и мнения Тристрама Шенди, джентльмена",
+      "coverUrl": "brand/book-covers/tristram-shandy-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/tristram-shandy-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:laurence_sterne:article-series-12cg5ce",
+        "england:laurence_sterne:legacy-laurence_sterne-жизнь-и-мнения-тристрама-шенди",
+        "england:laurence_sterne:openlibrary-works-ol5475749w",
+        "england:laurence_sterne:openlibrary-works-ol679230w"
+      ]
+    },
+    {
+      "sourceIndex": 83,
+      "workKey": "england:jane_austen:legacy-jane_austen-разум-и-чувства",
+      "slug": "sense-and-sensibility-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Джейн Остин",
+      "title": "Чувство и чувствительность",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_53_59 (2).png",
+      "imageSha256": "41739fbcaaf436a64c8ba2c232d0b92fe65518e57b7a698cc592d2e74eca6b2a",
+      "canonicalAuthor": "Джейн Остин",
+      "canonicalTitle": "Разум и чувства",
+      "coverUrl": "brand/book-covers/sense-and-sensibility-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/sense-and-sensibility-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:jane_austen:legacy-jane_austen-разум-и-чувства",
+        "england:jane_austen:openlibrary-works-ol26417383w",
+        "england:jane_austen:openlibrary-works-ol37510629w",
+        "england:jane_austen:openlibrary-works-ol66562w"
+      ]
+    },
+    {
+      "sourceIndex": 89,
+      "workKey": "france:flaubert:legacy-flaubert-воспитание-чувств",
+      "slug": "sentimental-education-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Гюстав Флобер",
+      "title": "Воспитание чувств",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_05 (8).png",
+      "imageSha256": "00718e771ef2584c5bc40754beec273dd925085b563231f6544d2b0b8eed9638",
+      "canonicalAuthor": "Гюстав Флобер",
+      "canonicalTitle": "Воспитание чувств",
+      "coverUrl": "brand/book-covers/sentimental-education-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/sentimental-education-editorial.webp",
+      "equivalentWorkKeys": [
+        "france:flaubert:legacy-flaubert-воспитание-чувств",
+        "france:flaubert:openlibrary-works-ol893802w"
+      ]
+    },
+    {
+      "sourceIndex": 91,
+      "workKey": "england:aldous_huxley:legacy-aldous_huxley-остров",
+      "slug": "island-huxley-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Олдос Хаксли",
+      "title": "Остров",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_07 (10).png",
+      "imageSha256": "9c2006bed560a56994a773cb12b252f710cb08c1ab1740a3749a4d2e57d3913e",
+      "canonicalAuthor": "Олдос Хаксли",
+      "canonicalTitle": "Остров",
+      "coverUrl": "brand/book-covers/island-huxley-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/island-huxley-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:aldous_huxley:legacy-aldous_huxley-остров",
+        "england:aldous_huxley:openlibrary-works-ol64462w"
+      ]
+    },
+    {
+      "sourceIndex": 93,
+      "workKey": "england:walter_scott:legacy-walter_scott-айвенго",
+      "slug": "ivanhoe-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Вальтер Скотт",
+      "title": "Айвенго",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_12 (2).png",
+      "imageSha256": "edb40fe06321a21afcead744de7882e3a9341151ea0700a6a7a07d3497c19763",
+      "canonicalAuthor": "Вальтер Скотт",
+      "canonicalTitle": "Айвенго",
+      "coverUrl": "brand/book-covers/ivanhoe-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ivanhoe-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:walter_scott:legacy-walter_scott-айвенго",
+        "england:walter_scott:openlibrary-works-ol863808w"
+      ]
+    },
+    {
+      "sourceIndex": 94,
+      "workKey": "poland:joseph_conrad:openlibrary-works-ol38663w",
+      "slug": "heart-of-darkness-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Джозеф Конрад",
+      "title": "Сердце тьмы",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_13 (3).png",
+      "imageSha256": "8fc77cefca93f9ffc4030e58ce33fbdc5e81415a066be7c8712ee5f6c1da1041",
+      "canonicalAuthor": "Джозеф Конрад",
+      "canonicalTitle": "Heart of Darkness",
+      "coverUrl": "brand/book-covers/heart-of-darkness-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/heart-of-darkness-editorial.webp",
+      "equivalentWorkKeys": [
+        "poland:joseph_conrad:openlibrary-works-ol15010471w",
+        "poland:joseph_conrad:openlibrary-works-ol15010790w",
+        "poland:joseph_conrad:openlibrary-works-ol21920402w",
+        "poland:joseph_conrad:openlibrary-works-ol38663w",
+        "poland:joseph_conrad:openlibrary-works-ol38893w"
+      ]
+    },
+    {
+      "sourceIndex": 97,
+      "workKey": "usa:james_fenimore_cooper:legacy-james_fenimore_cooper-последний-из-могикан",
+      "slug": "last-of-the-mohicans-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Джеймс Фенимор Купер",
+      "title": "Последний из могикан",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_19 (6).png",
+      "imageSha256": "3f6711e53f56f4b9405eb8182cbb5826541f05dc9e8c979704a44d91bd515da3",
+      "canonicalAuthor": "Джеймс Фенимор Купер",
+      "canonicalTitle": "Последний из могикан",
+      "coverUrl": "brand/book-covers/last-of-the-mohicans-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/last-of-the-mohicans-editorial.webp",
+      "equivalentWorkKeys": [
+        "usa:james_fenimore_cooper:legacy-james_fenimore_cooper-последний-из-могикан"
+      ]
+    },
+    {
+      "sourceIndex": 98,
+      "workKey": "england:charles_dickens:a-tale-of-two-cities",
+      "slug": "tale-of-two-cities-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Чарльз Диккенс",
+      "title": "Повесть о двух городах",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_20 (7).png",
+      "imageSha256": "2b2338995c2995da06ba84e6591c23308928d6336c3b9aef9e3959a2f782b670",
+      "canonicalAuthor": "Чарльз Диккенс",
+      "canonicalTitle": "Повесть о двух городах",
+      "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:charles_dickens:a-tale-of-two-cities"
+      ]
+    },
+    {
+      "sourceIndex": 99,
+      "workKey": "russia:buninin:openlibrary-works-ol603367w",
+      "slug": "the-village-bunin-editorial",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "author": "Иван Бунин",
+      "title": "Деревня",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_21 (8).png",
+      "imageSha256": "686e4db73192efa8a28465037cf4f2446d501edea0126daf149fc661486e1581",
+      "canonicalAuthor": "Иван Алексеевич Бунин",
+      "canonicalTitle": "The Village",
+      "coverUrl": "brand/book-covers/the-village-bunin-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-village-bunin-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:buninin:openlibrary-works-ol603367w"
+      ]
+    },
+    {
+      "sourceIndex": 100,
+      "workKey": "england:thomas_hardy:legacy-thomas_hardy-мэр-кэстербриджа",
+      "slug": "mayor-of-casterbridge-editorial",
+      "matchBasis": "exact-author-and-title",
+      "author": "Томас Харди",
+      "title": "Мэр Кэстербриджа",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_22 (9).png",
+      "imageSha256": "f42eec129a36ad213d94f0e434a7d6773636169e5846c5d72d933bbbccb9eb42",
+      "canonicalAuthor": "Томас Харди",
+      "canonicalTitle": "Мэр Кэстербриджа",
+      "coverUrl": "brand/book-covers/mayor-of-casterbridge-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/mayor-of-casterbridge-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:thomas_hardy:legacy-thomas_hardy-мэр-кэстербриджа",
+        "england:thomas_hardy:openlibrary-works-ol8193406w"
+      ]
+    }
+  ],
+  "skippedExisting": [
+    {
+      "sourceIndex": 13,
+      "workKey": "russia:turgenev:legacy-turgenev-дворянское-гнездо",
+      "reason": "existing-editorial-cover-preserved",
+      "author": "Иван Тургенев",
+      "title": "Дворянское гнездо",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_27 (1).png",
+      "imageSha256": "e94e7f4e4899205f6b8b90c662e1ea506039e137c49edcd7a58e52b5d928c467"
+    },
+    {
+      "sourceIndex": 84,
+      "workKey": "usa:henry_james:legacy-henry_james-портрет-леди",
+      "reason": "existing-editorial-cover-preserved",
+      "author": "Генри Джеймс",
+      "title": "Портрет дамы",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_00 (3).png",
+      "imageSha256": "715665df7d378b601cd572fdd21b77a98075a7edd66d0c504b81eb25ccab6722"
+    },
+    {
+      "sourceIndex": 86,
+      "workKey": "england:arthur_conan_doyle:legacy-arthur_conan_doyle-собака-баскервилей",
+      "reason": "existing-editorial-cover-preserved",
+      "author": "Артур Конан Дойл",
+      "title": "Собака Баскервилей",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_02 (5).png",
+      "imageSha256": "d17c75aec3f37790772768e2ca28a686254e908c6954bcfaac4dafd06ca63268"
+    },
+    {
+      "sourceIndex": 90,
+      "workKey": "usa:francis_scott_fitzgerald:tender-is-the-night",
+      "reason": "existing-editorial-cover-preserved",
+      "author": "Фрэнсис Скотт Фицджеральд",
+      "title": "Ночь нежна",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_06 (9).png",
+      "imageSha256": "c6e9b22776c314edbd6f3e70de4537fccd4a406690fdce889df221800777e112"
+    },
+    {
+      "sourceIndex": 92,
+      "workKey": "russia:gogol:openlibrary-works-ol40184705w",
+      "reason": "existing-editorial-cover-preserved",
+      "author": "Николай Гоголь",
+      "title": "Портрет",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_12 (1).png",
+      "imageSha256": "91389524d90c49d29612baa993aff9ec86914905207b9eb4fe2110eb3c3f68f6"
+    },
+    {
+      "sourceIndex": 101,
+      "workKey": "russia:lermontov:a-hero-of-our-time-editorial",
+      "reason": "component-of-covered-work-preserved",
+      "author": "Михаил Лермонтов",
+      "title": "Бэла",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_23 (10).png",
+      "imageSha256": "76346da50877ef75eb87732fc6befa642c0edee15f3728273211f1bd29c98ec6"
+    }
+  ],
+  "alternativeArtwork": [
+    {
+      "sourceIndex": 35,
+      "selectedSourceIndex": 32,
+      "reason": "alternative-artwork-for-same-unmatched-work",
+      "author": "Александр Куприн",
+      "title": "Поединок",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_17 (3).png",
+      "imageSha256": "addbb7404a315f329b3598571cc23526ebb66323170e7fee002a4113b929bf86"
+    },
+    {
+      "sourceIndex": 38,
+      "selectedSourceIndex": 23,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Иван Бунин",
+      "title": "Господин из Сан-Франциско",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_20 (6).png",
+      "imageSha256": "89ef54d647d6e7c0c92419afb19a2fd12fdd60f7205897c28eb4a0a66eadc98e"
+    },
+    {
+      "sourceIndex": 53,
+      "selectedSourceIndex": 42,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Иван Тургенев",
+      "title": "Муму",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_22 (1).png",
+      "imageSha256": "9105d091e720a95af144cf55f1f69dc610166389128ca1ceeb58bc45238db4fa"
+    },
+    {
+      "sourceIndex": 54,
+      "selectedSourceIndex": 33,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Николай Лесков",
+      "title": "Левша",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_23 (2).png",
+      "imageSha256": "9324f3c6f7fc8eef8e67d12cf2038574b484b2fd6ab73cb92d0608086286faef"
+    },
+    {
+      "sourceIndex": 55,
+      "selectedSourceIndex": 40,
+      "reason": "alternative-artwork-for-same-unmatched-work",
+      "author": "Владимир Короленко",
+      "title": "Слепой музыкант",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_23 (3).png",
+      "imageSha256": "7bf49c0047010c84bc0c2b961430b93de336610f93959d24f5d5eb673cdf20e8"
+    },
+    {
+      "sourceIndex": 79,
+      "selectedSourceIndex": 69,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Вирджиния Вулф",
+      "title": "Между актов",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_49 (7).png",
+      "imageSha256": "d061e298790def9e8a850b2360837b58c0443c4f2f3ce66b84d0ae9873356984"
+    },
+    {
+      "sourceIndex": 80,
+      "selectedSourceIndex": 70,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Джордж Оруэлл",
+      "title": "Да здравствует фикус!",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_50 (8).png",
+      "imageSha256": "5776fbdd6e86fad2f07226641088cd8f29ce57fd7165832935ee8c6bd88e9fda"
+    },
+    {
+      "sourceIndex": 81,
+      "selectedSourceIndex": 71,
+      "reason": "alternative-artwork-for-imported-work",
+      "author": "Грэм Грин",
+      "title": "Конец одного романа",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 03_47_50 (9).png",
+      "imageSha256": "b43dfb168c1b91f87871ec5a48e8a71e21a52355a76b1e63c1babda50990f9bc"
+    },
+    {
+      "sourceIndex": 95,
+      "selectedSourceIndex": 84,
+      "reason": "alternative-artwork-for-existing-covered-work",
+      "author": "Генри Джеймс",
+      "title": "Портрет дамы",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_14 (4).png",
+      "imageSha256": "37d6e6b57bc78bd96e1d6b90f34598f1938e1ef17d287c26bfafe6ccf4da0fea"
+    }
+  ],
+  "exactDuplicates": [
+    {
+      "sourceIndex": 1,
+      "selectedSourceIndex": 61,
+      "reason": "byte-identical-to-chatgpt-named-entry",
+      "author": "Валентин Катаев",
+      "title": "Белеет парус одинокий",
+      "sourceFilename": "73af0067-25da-423f-aa72-8dd241b972da.png",
+      "imageSha256": "c1b4c7ae4ec7815f18a2ce7229fc3384c2c718c42a4fec1aad739d8b9645c5b3"
+    }
+  ],
+  "rightsQuarantine": [
+    {
+      "sourceIndex": 2,
+      "reason": "no-generator-or-license-metadata-and-no-provenance-bearing-duplicate",
+      "author": "Вальтер Скотт",
+      "title": "Пират",
+      "sourceFilename": "153f35fa-81f3-4791-a0dd-e3e52ec612d6.png",
+      "imageSha256": "efd2a0be4224bf31e1941d7d1bd1fa2bfe3bc906b01840e723883c88e395b25e"
+    }
+  ],
+  "unmatched": [
+    {
+      "sourceIndex": 10,
+      "reason": "no-exact-standalone-work-only-combined-trilogy",
+      "author": "Лев Толстой",
+      "title": "Отрочество",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_09 (8).png",
+      "imageSha256": "d6a81515ffa458c5c9e3246ba7b9ec72d38023fb069a1c391d60244d6f2a221d"
+    },
+    {
+      "sourceIndex": 11,
+      "reason": "no-exact-standalone-work-only-combined-trilogy",
+      "author": "Лев Толстой",
+      "title": "Юность",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_11 (9).png",
+      "imageSha256": "46698e18efbcb6ce5c765f6aeab981b44865473e4ffa4732af779a727627ef0b"
+    },
+    {
+      "sourceIndex": 12,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Алексей Толстой",
+      "title": "Пётр Первый",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 01_58_11 (10).png",
+      "imageSha256": "b8512af3b924caf47083132a5acf5a9756b7bdfc1e26b2bc0304e7e8a1476b07"
+    },
+    {
+      "sourceIndex": 14,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Александр Куприн",
+      "title": "Олеся",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_27 (2).png",
+      "imageSha256": "189f22820eb18d484f57fb83081ee59e672ae3f57f52f549acfdc968bf5cf446"
+    },
+    {
+      "sourceIndex": 16,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Николай Гоголь",
+      "title": "Вий",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_28 (4).png",
+      "imageSha256": "5891ab52c1cebc9469ecaf5b2d0964a381e37a759f730cad8baf09e9f77978d3"
+    },
+    {
+      "sourceIndex": 18,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Фёдор Достоевский",
+      "title": "Бедные люди",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_28 (6).png",
+      "imageSha256": "0f3e89417749d9ec4e4c478764557e97f1020508e9c0c1368ab83f39b406e5ae"
+    },
+    {
+      "sourceIndex": 20,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Михаил Булгаков",
+      "title": "Морфий",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_29 (8).png",
+      "imageSha256": "3aacfd20e2aa03cfb9d543c4ba8e6769dbb99be1de51d8d0be05aef6cf67aa80"
+    },
+    {
+      "sourceIndex": 21,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Лев Толстой",
+      "title": "Севастопольские рассказы",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_01_29 (9).png",
+      "imageSha256": "29fb882df5f289919fbab0e7d1025f4ce9a7b196ddfe26b1c229b027882ae307"
+    },
+    {
+      "sourceIndex": 26,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Николай Гоголь",
+      "title": "Старосветские помещики",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_21 (4).png",
+      "imageSha256": "e8bfbbd6d1589c6cd6e10b4bf7be53c145b7d4291cb362c3938c5b20d2a90aa9"
+    },
+    {
+      "sourceIndex": 27,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Александр Куприн",
+      "title": "Гранатовый браслет",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_22 (5).png",
+      "imageSha256": "dbfb06a7e3972228656a4b612998f5456bb58b1947810e03e3ab244f110e100f"
+    },
+    {
+      "sourceIndex": 29,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Антон Чехов",
+      "title": "Ионыч",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_24 (7).png",
+      "imageSha256": "b15545727c607d57a7a26cad3e9ca869305b39cd248ee91179a4b5775464e23e"
+    },
+    {
+      "sourceIndex": 32,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Александр Куприн",
+      "title": "Поединок",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_16_25 (10).png",
+      "imageSha256": "92f40c7a4a228afcb38dffb1684dfc06aa0986ca3154f5ddec8eb60050d22d29"
+    },
+    {
+      "sourceIndex": 37,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Фёдор Достоевский",
+      "title": "Униженные и оскорблённые",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_19 (5).png",
+      "imageSha256": "93632a4bed56842caa69728f878f58bb401dd8287b99c55efea0c89b5ff4bfc5"
+    },
+    {
+      "sourceIndex": 39,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Николай Гоголь",
+      "title": "Майская ночь, или Утопленница",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_20 (7).png",
+      "imageSha256": "3805d69ea8025889d598bf5f471d5e7804e9d0158b5f54b798c0a362db692b1a"
+    },
+    {
+      "sourceIndex": 40,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Владимир Короленко",
+      "title": "Слепой музыкант",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_20 (8).png",
+      "imageSha256": "42f34ffcbfdb3cbf8c3feaef2aba4f32e5a2e8005586ffdc0e95a70ff6c3c52a"
+    },
+    {
+      "sourceIndex": 41,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Максим Горький",
+      "title": "На дне",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_31_21 (9).png",
+      "imageSha256": "6ab2a1bd53fd2153e03770717ea320113095fe7b6962a0aec21912215b574024"
+    },
+    {
+      "sourceIndex": 44,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Гавриил Троепольский",
+      "title": "Белый Бим Чёрное ухо",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_11 (2).png",
+      "imageSha256": "ceecbab9b5cbaa7692dc957a035ab65bf89c08c67865c9886e57383862f3bdef"
+    },
+    {
+      "sourceIndex": 45,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Андрей Платонов",
+      "title": "Котлован",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_11 (3).png",
+      "imageSha256": "a52e137219f1d489d6eeac341d0bd9135e5da1cb75982585c74dafb016f0dc88"
+    },
+    {
+      "sourceIndex": 46,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Чингиз Айтматов",
+      "title": "Плаха",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_11 (4).png",
+      "imageSha256": "20058132f1316a3b2e14e8c44166962d74b49a7477c3588e0b1f4b1e59211edd"
+    },
+    {
+      "sourceIndex": 47,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Михаил Булгаков",
+      "title": "Записки юного врача",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_12 (5).png",
+      "imageSha256": "7cfd9a90da8fd71969e957c26de48ecd39933708253daee1142207fe66b8196b"
+    },
+    {
+      "sourceIndex": 48,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Евгений Шварц",
+      "title": "Обыкновенное чудо",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_12 (6).png",
+      "imageSha256": "93841285ca8e3f53f088756b9e42deb3cf2049c512b0c882da6f9ccc7a3f3658"
+    },
+    {
+      "sourceIndex": 51,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Валентин Распутин",
+      "title": "Живи и помни",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_13 (9).png",
+      "imageSha256": "4849986dbae4c33f46c04d822faeda14a2ddd1b7d83e262ca630dcb91395d3ec"
+    },
+    {
+      "sourceIndex": 52,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Михаил Лермонтов",
+      "title": "Песня про купца Калашникова",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_43_14 (10).png",
+      "imageSha256": "54217799ca72f9fb1ed0f6d42d441218a1d555a0c99423f1305a59cd87f4bd83"
+    },
+    {
+      "sourceIndex": 56,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Максим Горький",
+      "title": "Детство",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_23 (4).png",
+      "imageSha256": "93368fed5530e7fa7c995d65e7b5573d62768107fffa6ebb9d9f85d011f43eba"
+    },
+    {
+      "sourceIndex": 57,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Иван Шмелёв",
+      "title": "Лето Господне",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_25 (5).png",
+      "imageSha256": "ec3c5439d6a1ecde1e8f4543711ad6f92f281ac2984bce4498cc67daa75a9b98"
+    },
+    {
+      "sourceIndex": 58,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Максим Горький",
+      "title": "Старуха Изергиль",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_25 (6).png",
+      "imageSha256": "276e0364d896a52ae948d69d4094743879bf2c824c903561a4afd372765ed01c"
+    },
+    {
+      "sourceIndex": 59,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Александр Куприн",
+      "title": "Суламифь",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_26 (7).png",
+      "imageSha256": "8d827e318e6928ee67b29d625e41cd769e4bc4142c352deac522bf34c85b42a3"
+    },
+    {
+      "sourceIndex": 61,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Валентин Катаев",
+      "title": "Белеет парус одинокий",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_27 (9).png",
+      "imageSha256": "c1b4c7ae4ec7815f18a2ce7229fc3384c2c718c42a4fec1aad739d8b9645c5b3"
+    },
+    {
+      "sourceIndex": 62,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Константин Паустовский",
+      "title": "Мещёрская сторона",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 02_46_27 (10).png",
+      "imageSha256": "b03e75076d4062574cfa051e90ae47ded10ea7affb65da1e7e1ea8ea208f7f0d"
+    },
+    {
+      "sourceIndex": 85,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Чарльз Диккенс",
+      "title": "Крошка Доррит",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_00 (4).png",
+      "imageSha256": "975b267f6923838b18b4007d664babd6de2e60663df6b9fe2a7bf908db681cec"
+    },
+    {
+      "sourceIndex": 87,
+      "reason": "no-exact-work-in-canonical-archive",
+      "author": "Томас Харди",
+      "title": "Возвращение на родину",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_03 (6).png",
+      "imageSha256": "34068c8d2b3423b555d4c35b23e7937295a82a9a46741552944494f8cf4b54d5"
+    },
+    {
+      "sourceIndex": 88,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Эдвард Бульвер-Литтон",
+      "title": "Последние дни Помпеи",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_54_04 (7).png",
+      "imageSha256": "d46caf231800626acb8ec2f5a19e837d9fb284823925369b3d06c0a45e2e13b2"
+    },
+    {
+      "sourceIndex": 96,
+      "reason": "no-exact-author-work-in-canonical-archive",
+      "author": "Сомерсет Моэм",
+      "title": "Луна и грош",
+      "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_15 (5).png",
+      "imageSha256": "b2831e150f00394755e01f833e98f6d36e66b172c9e6543ea38175d28079f3a2"
+    }
+  ]
+}

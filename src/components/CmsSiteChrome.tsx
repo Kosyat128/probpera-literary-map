@@ -10,6 +10,8 @@ import {
   type CmsNavigationNode,
 } from "../cms/siteChromeRuntime";
 import { safePublicHref } from "../utils/publicHref";
+import { mediaFocusPosition } from "../utils/mediaFocus";
+import type { CSSProperties } from "react";
 
 type Banner = {
   id: string;
@@ -24,6 +26,12 @@ type Banner = {
   desktopMediaId?: string | null;
   tabletMediaId?: string | null;
   mobileMediaId?: string | null;
+  desktopFocusX?: number;
+  desktopFocusY?: number;
+  tabletFocusX?: number;
+  tabletFocusY?: number;
+  mobileFocusX?: number;
+  mobileFocusY?: number;
 };
 
 type NavigationMenu = {
@@ -56,6 +64,22 @@ export function CmsPageBanners({ pathname }: { pathname?: string } = {}) {
   return (
     <aside
       className={`cms-banner${hasImage ? " has-image" : ""}`}
+      style={
+        {
+          "--cms-banner-focus-desktop": mediaFocusPosition(
+            banner.desktopFocusX,
+            banner.desktopFocusY
+          ),
+          "--cms-banner-focus-tablet": mediaFocusPosition(
+            banner.tabletFocusX ?? banner.desktopFocusX,
+            banner.tabletFocusY ?? banner.desktopFocusY
+          ),
+          "--cms-banner-focus-mobile": mediaFocusPosition(
+            banner.mobileFocusX ?? banner.tabletFocusX ?? banner.desktopFocusX,
+            banner.mobileFocusY ?? banner.tabletFocusY ?? banner.desktopFocusY
+          ),
+        } as CSSProperties
+      }
       {...cmsSiteChromeFieldMarker(
         "banner",
         banner.id,

@@ -93,6 +93,88 @@ test("globe style preview reuses decoded texture assets", async ({
   ).toHaveLength(1);
 });
 
+test("modern and classic keep their surfaces but use distinct star fields", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.locator("#atlas").scrollIntoViewIfNeeded();
+  const globe = page.locator(".literary-globe:not(.is-loading)");
+  await expect(globe).toBeVisible({ timeout: 30_000 });
+
+  const modern = page.getByRole("button", { name: "Современный", exact: true });
+  await modern.click();
+  await expect(globe).toHaveAttribute("data-globe-style", "earth");
+  expect(
+    await globe.evaluate((element) => ({
+      scene: getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim(),
+      background: getComputedStyle(element).backgroundImage,
+      controls: getComputedStyle(
+        element.querySelector(".globe-controls")
+      ).backgroundColor,
+      switcher: getComputedStyle(
+        element.querySelector(".globe-style-switch")
+      ).backgroundColor,
+      activeText: getComputedStyle(
+        element.querySelector(".globe-style-switch button.is-active")
+      ).color,
+      activeBorder: getComputedStyle(
+        element.querySelector(".globe-style-switch button.is-active")
+      ).borderTopColor,
+    }))
+  ).toMatchObject({
+    scene: "purple-starry",
+    controls: "rgba(30, 9, 45, 0.9)",
+    switcher: "rgba(32, 10, 48, 0.92)",
+    activeText: "rgba(156, 240, 207, 1)",
+    activeBorder: "rgba(128, 211, 255, 0.72)",
+  });
+  expect(await globe.evaluate((element) => getComputedStyle(element).backgroundImage))
+    .toContain("radial-gradient");
+
+  const classic = page.getByRole("button", { name: "Классический", exact: true });
+  await classic.click();
+  await expect(globe).toHaveAttribute("data-globe-style", "modern");
+  await expect
+    .poll(() =>
+      globe.evaluate((element) =>
+        getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim()
+      )
+    )
+    .toBe("cold-starry");
+  expect(await globe.evaluate((element) => getComputedStyle(element).backgroundImage))
+    .toContain("radial-gradient");
+});
+
+test("atlas URL restores selections, supports history and mounts the index on demand", async ({
+  page,
+}) => {
+  await page.goto("/?atlas=verified&country=russia&writer=chekhov#atlas");
+  await expect(page.locator('[data-atlas-filter="verified"]')).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+  await expect(page.locator(".country-panel")).toContainText("Россия", {
+    timeout: 30_000,
+  });
+  await expect(page).toHaveURL(/atlas=verified.*country=russia.*writer=chekhov/iu);
+
+  const countryIndex = page.locator(".atlas-country-index");
+  await expect(countryIndex.locator(":scope > div")).toHaveCount(0);
+  await countryIndex.locator("summary").click();
+  await expect(countryIndex.locator(":scope > div")).toHaveCount(1);
+  await expect(countryIndex.locator(":scope > div > button")).toHaveCount(20);
+
+  await page.locator('[data-atlas-filter="all"]').click();
+  await expect(page).not.toHaveURL(/atlas=verified/iu);
+  await expect(page).toHaveURL(/country=russia/iu);
+  await page.goBack();
+  await expect(page.locator('[data-atlas-filter="verified"]')).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+  await expect(page.locator(".country-panel")).toContainText("Россия");
+});
+
 test("globe filters update the collection without rebuilding the 3D atlas", async ({
   page,
 }) => {

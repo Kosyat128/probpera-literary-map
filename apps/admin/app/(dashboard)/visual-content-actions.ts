@@ -18,6 +18,10 @@ export type VisualContentEditResult =
   | { ok: true; publication: PublicationState; updatedAt?: string }
   | { ok: false; error: string };
 
+export type VisualContentVersionResult =
+  | { ok: true; updatedAt: string }
+  | { ok: false; error: string };
+
 export type HomepageBlockVisualSettingsInput = {
   entityId: string;
   expectedUpdatedAt: string;
@@ -27,6 +31,38 @@ export type HomepageBlockVisualSettingsInput = {
 
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
+const ISO_TIMESTAMP_PATTERN =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$/u;
+
+function normalizedExpectedUpdatedAt(value: unknown) {
+  const normalized = typeof value === "string" ? value.trim() : "";
+  return ISO_TIMESTAMP_PATTERN.test(normalized) && !Number.isNaN(Date.parse(normalized))
+    ? normalized
+    : "";
+}
+
+export async function getVisualContentVersionAction(input: {
+  entityType: keyof typeof entityConfiguration;
+  entityId: string;
+}): Promise<VisualContentVersionResult> {
+  const session = await requireStaff();
+  if (!session?.user) return { ok: false, error: "Требуется вход в редакцию." };
+  const entityId = String(input?.entityId || "").trim().toLowerCase();
+  if (!UUID_PATTERN.test(entityId) || !Object.hasOwn(entityConfiguration, input?.entityType)) {
+    return { ok: false, error: "Некорректная запись для прямого редактирования." };
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) return { ok: false, error: "База данных не подключена." };
+  const configuration = entityConfiguration[input.entityType];
+  const { data, error } = await supabase
+    .from(configuration.table)
+    .select("updated_at")
+    .eq("id", entityId)
+    .maybeSingle();
+  if (error) return { ok: false, error: error.message };
+  if (!data) return { ok: false, error: "Запись не найдена." };
+  return { ok: true, updatedAt: data.updated_at };
+}
 
 const entityConfiguration = {
   page: {
@@ -202,6 +238,13 @@ export async function saveVisualContentFieldAction(
   if (!supabase) {
     return { ok: false, error: "База данных не подключена." };
   }
+  const expectedUpdatedAt = normalizedExpectedUpdatedAt(input.expectedUpdatedAt);
+  if (!expectedUpdatedAt) {
+    return {
+      ok: false,
+      error: "Версия записи не загружена. Выберите поле заново и повторите правку.",
+    };
+  }
 
   if (edit.isMedia && edit.value) {
     const { data: mediaAsset, error: mediaError } = await supabase
@@ -244,18 +287,20 @@ export async function saveVisualContentFieldAction(
           "Этот блок скрыт или управляется отдельной формой основной композиции.",
       };
     }
+    if (existingBlock.updated_at !== expectedUpdatedAt) {
+      return {
+        ok: false,
+        error: "Блок уже изменили в другой вкладке. Выберите поле заново и повторите правку.",
+      };
+    }
     if (edit.column === "settings") {
       patch.settings = {
         ...existingSettings,
         [edit.field]: edit.value,
       };
     }
-    patch.__expectedUpdatedAt = existingBlock.updated_at;
     patch.updated_by = session.user.id;
   }
-
-  const expectedUpdatedAt = patch.__expectedUpdatedAt;
-  delete patch.__expectedUpdatedAt;
 
   let updateQuery = supabase
     .from(configuration.table)
@@ -268,13 +313,11 @@ export async function saveVisualContentFieldAction(
   if (edit.entityType === "banner") updateQuery = updateQuery.eq("is_active", true);
   if (edit.entityType === "homepage-block") {
     updateQuery = updateQuery.eq("is_enabled", true);
-    if (typeof expectedUpdatedAt === "string") {
-      updateQuery = updateQuery.eq("updated_at", expectedUpdatedAt);
-    }
   }
+  updateQuery = updateQuery.eq("updated_at", expectedUpdatedAt);
 
   const { data: updated, error: updateError } = await updateQuery
-    .select("id")
+    .select("id,updated_at")
     .maybeSingle();
   if (updateError) return { ok: false, error: updateError.message };
   if (!updated) {
@@ -323,5 +366,9 @@ export async function saveVisualContentFieldAction(
     revalidatePath("/banners");
   }
 
-  return { ok: true, publication: publication.state };
+  return {
+    ok: true,
+    publication: publication.state,
+    updatedAt: updated.updated_at,
+  };
 }

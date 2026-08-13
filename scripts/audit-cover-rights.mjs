@@ -6,10 +6,12 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
 const countriesDirectory = path.join(projectRoot, "src", "data", "countries");
 const reportDirectory = path.join(projectRoot, "reports");
-const userSuppliedCoverManifestPath = path.join(
-  countriesDirectory,
-  "generated",
-  "userSuppliedBookCovers.generated.json"
+const userSuppliedCoverManifestFiles = [
+  "userSuppliedBookCovers.generated.json",
+  "userSuppliedBookCoversBatch20260813.generated.json",
+];
+const userSuppliedCoverManifestPaths = userSuppliedCoverManifestFiles.map((file) =>
+  path.join(countriesDirectory, "generated", file)
 );
 const allowedStatuses = new Set([
   "public-domain",
@@ -26,8 +28,11 @@ function field(block, name) {
 }
 
 async function main() {
-  const userSuppliedCoverManifest = JSON.parse(
-    await readFile(userSuppliedCoverManifestPath, "utf8")
+  const userSuppliedCoverManifests = await Promise.all(
+    userSuppliedCoverManifestPaths.map(async (manifestPath, index) => ({
+      file: userSuppliedCoverManifestFiles[index],
+      manifest: JSON.parse(await readFile(manifestPath, "utf8")),
+    }))
   );
   const files = (await readdir(countriesDirectory))
     .filter((file) => file.endsWith(".ts"))
@@ -67,54 +72,64 @@ async function main() {
   }
 
   const existingCoverUrls = new Set(covers.map(({ coverUrl }) => coverUrl));
-  const manifestCheckedAt = userSuppliedCoverManifest.generatedAt.slice(0, 10);
-  for (const entry of userSuppliedCoverManifest.entries) {
-    if (existingCoverUrls.has(entry.coverUrl)) continue;
-    covers.push({
-      file: "generated/userSuppliedBookCovers.generated.json",
-      coverUrl: entry.coverUrl,
-      coverSourceUrl: entry.coverUrl,
-      status: "editorial-original",
-      sourceUrl: entry.coverUrl,
-      checkedAt: manifestCheckedAt,
-      coverWidth: entry.coverWidth,
-      coverHeight: entry.coverHeight,
-      coverThumbnailWidth: entry.coverThumbnailWidth,
-      coverThumbnailHeight: entry.coverThumbnailHeight,
-      provenance: entry.provenance,
-      note: entry.provenance.note,
-      displayAllowed: true,
-      issues: [
-        ...(entry.provenance?.kind !== "user-supplied"
-          ? ["Некорректный provenance пользовательской обложки"]
-          : []),
-        ...(!entry.provenance?.archiveSha256 || !entry.provenance?.imageSha256
-          ? ["Нет SHA-256 архива или исходного изображения"]
-          : []),
-        ...(!Number.isInteger(entry.coverWidth) || !Number.isInteger(entry.coverHeight)
-          ? ["Нет размеров полной обложки"]
-          : []),
-        ...(
-          !Number.isInteger(entry.coverThumbnailWidth) ||
-          !Number.isInteger(entry.coverThumbnailHeight)
-            ? ["Нет размеров миниатюры обложки"]
-            : []
-        ),
-      ],
-    });
-    existingCoverUrls.add(entry.coverUrl);
+  for (const { file, manifest } of userSuppliedCoverManifests) {
+    const manifestCheckedAt = manifest.generatedAt.slice(0, 10);
+    for (const entry of manifest.entries) {
+      if (existingCoverUrls.has(entry.coverUrl)) continue;
+      covers.push({
+        file: `generated/${file}`,
+        coverUrl: entry.coverUrl,
+        coverSourceUrl: entry.coverUrl,
+        status: "editorial-original",
+        sourceUrl: entry.coverUrl,
+        checkedAt: manifestCheckedAt,
+        coverWidth: entry.coverWidth,
+        coverHeight: entry.coverHeight,
+        coverThumbnailWidth: entry.coverThumbnailWidth,
+        coverThumbnailHeight: entry.coverThumbnailHeight,
+        provenance: entry.provenance,
+        note: entry.provenance.note,
+        displayAllowed: true,
+        issues: [
+          ...(entry.provenance?.kind !== "user-supplied"
+            ? ["Некорректный provenance пользовательской обложки"]
+            : []),
+          ...(!entry.provenance?.archiveSha256 || !entry.provenance?.imageSha256
+            ? ["Нет SHA-256 архива или исходного изображения"]
+            : []),
+          ...(!Number.isInteger(entry.coverWidth) || !Number.isInteger(entry.coverHeight)
+            ? ["Нет размеров полной обложки"]
+            : []),
+          ...(
+            !Number.isInteger(entry.coverThumbnailWidth) ||
+            !Number.isInteger(entry.coverThumbnailHeight)
+              ? ["Нет размеров миниатюры обложки"]
+              : []
+          ),
+        ],
+      });
+      existingCoverUrls.add(entry.coverUrl);
+    }
   }
 
+  const userSuppliedFiles = new Set(
+    userSuppliedCoverManifestFiles.map((file) => `generated/${file}`)
+  );
+  const generatedAt = userSuppliedCoverManifests
+    .map(({ manifest }) => manifest.generatedAt)
+    .sort()
+    .at(-1);
+
   const report = {
-    generatedAt: userSuppliedCoverManifest.generatedAt,
+    generatedAt,
     policy: "docs/COVER_RIGHTS_POLICY.md",
     summary: {
       covers: covers.length,
       countryCovers: covers.filter(
-        (cover) => cover.file !== "generated/userSuppliedBookCovers.generated.json"
+        (cover) => !userSuppliedFiles.has(cover.file)
       ).length,
       userSuppliedCovers: covers.filter(
-        (cover) => cover.file === "generated/userSuppliedBookCovers.generated.json"
+        (cover) => userSuppliedFiles.has(cover.file)
       ).length,
       displayAllowed: covers.filter((cover) => cover.displayAllowed).length,
       blocked: covers.filter((cover) => !cover.displayAllowed).length,

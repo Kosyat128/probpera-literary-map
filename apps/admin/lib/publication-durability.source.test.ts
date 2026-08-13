@@ -5,18 +5,25 @@ import { describe, expect, it } from "vitest";
 const root = path.resolve(process.cwd());
 
 describe("durable public publication requests", () => {
-  it("records a request before fast dispatch", () => {
+  it("uses the transactional outbox with a legacy fallback before dispatch", () => {
     const source = readFileSync(
       path.join(root, "apps/admin/lib/publication.ts"),
       "utf8"
     );
+    const outbox = source.indexOf('"enqueue_public_build_request"');
     const request = source.indexOf('action: "public_build.requested"');
-    const queueGuard = source.indexOf("if (queueError)");
+    const queueGuard = source.indexOf("if (queueError ||");
     const dispatch = source.indexOf("await triggerPublicBuild(reason)");
+    expect(outbox).toBeGreaterThan(-1);
     expect(request).toBeGreaterThan(-1);
-    expect(queueGuard).toBeGreaterThan(request);
+    expect(request).toBeGreaterThan(outbox);
+    expect(queueGuard).toBeGreaterThan(outbox);
     expect(queueGuard).toBeLessThan(dispatch);
-    expect(dispatch).toBeGreaterThan(request);
+    expect(dispatch).toBeGreaterThan(outbox);
+    expect(source).toContain('"mark_public_build_dispatched"');
+    expect(source).toContain('outboxError.code === "PGRST202"');
+    expect(source).not.toContain("/enqueue_public_build_request/iu");
+    expect(source).toContain("normalizeOutboxId(outboxId)");
     expect(source).toContain('error: "durable-queue-unavailable"');
   });
 

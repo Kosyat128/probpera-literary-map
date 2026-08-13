@@ -16,6 +16,15 @@
 12. `supabase/migrations/20260802_reader_journey.sql`
 13. `supabase/migrations/20260803_public_article_view_counts.sql`
 14. `supabase/migrations/20260804_content_analytics.sql`
+15. `supabase/migrations/20260808_article_translations.sql`
+16. `supabase/migrations/20260808_book_translations_and_import_staging.sql`
+17. `supabase/migrations/20260812_homepage_block_revisions.sql`
+18. `supabase/migrations/20260812_writer_and_work_revisions.sql`
+19. `supabase/migrations/20260813_editorial_database_admin.sql`
+20. `supabase/migrations/20260813_homepage_atomic_move.sql`
+21. `supabase/migrations/20260813_tags_updated_at.sql`
+22. `supabase/migrations/20260813_unified_revision_history.sql`
+23. `supabase/migrations/20260814_publication_outbox_and_schema_health.sql`
 
 Восьмая миграция добавляет безопасное редактирование профиля, загрузку
 аватаров, любимые страны и писателей, репутацию и оценки тем форума. Она также
@@ -31,7 +40,28 @@
 Четырнадцатая добавляет агрегированную статистику переходов и чтения для
 редакционной панели без передачи посетителям служебных данных.
 
-Перед каждой серией изменений создаётся резервная копия базы.
+Миграции 15–18 добавляют переводы статей и произведений, источники и внешние
+идентификаторы книг, очередь импорта и восстановимые редакционные ревизии
+главной страницы, писателей и произведений. Миграции 19–22 расширяют
+редакторскую базу, атомарно меняют порядок блоков главной, защищают теги от
+параллельной перезаписи и объединяют историю ревизий. Миграция 23 добавляет
+транзакционный публикационный outbox, диагностический RPC и проверку версии
+схемы для экрана здоровья админки.
+
+Перед каждой серией изменений обязательны четыре последовательных шага:
+
+1. Запустить GitHub Actions workflow `Encrypted Supabase backup` и получить
+   успешный зашифрованный артефакт.
+2. Дождаться успешного изолированного `pg_restore --exit-on-error`, который
+   выполняется тем же workflow и не затрагивает production.
+3. Применить ещё не применённые миграции строго в порядке имени файла.
+4. Открыть `/health` в админке и подтвердить текущую схему
+   `20260814_publication_outbox_and_schema_health`, наличие всех outbox-триггеров
+   и отсутствие ошибок очереди публикации.
+
+Workflow требует GitHub Secrets `SUPABASE_DB_URL` и
+`BACKUP_ENCRYPTION_KEY`. Нельзя подменять `SUPABASE_DB_URL` публичным URL API,
+а ключ шифрования нельзя хранить в репозитории или логах Actions.
 
 ## Импорт статей
 

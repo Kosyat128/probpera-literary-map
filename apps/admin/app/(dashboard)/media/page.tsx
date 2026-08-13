@@ -1,6 +1,8 @@
 import Link from "next/link";
 
+import MediaFocalEditor from "@/components/MediaFocalEditor";
 import MediaUploader from "@/components/MediaUploader";
+import { articleEditPath } from "@/lib/admin-routes";
 import { formatDate } from "@/lib/format";
 import {
   MEDIA_CATALOG_PAGE_SIZE,
@@ -13,6 +15,22 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { updateMediaMetadataAction } from "./actions";
 
 export const metadata = { title: "Медиатека" };
+
+type MediaUsage = {
+  media_id: string;
+  entity_type: string;
+  entity_id: string;
+  field_name: string;
+};
+
+function mediaUsageHref(usage: MediaUsage) {
+  if (usage.entity_type === "article") return articleEditPath(usage.entity_id);
+  if (usage.entity_type === "page") return `/pages/${encodeURIComponent(usage.entity_id)}`;
+  if (usage.entity_type === "banner") return "/banners";
+  if (usage.entity_type === "homepage") return "/homepage";
+  if (usage.entity_type === "category") return "/categories";
+  return "";
+}
 
 export default async function MediaPage({
   searchParams,
@@ -46,6 +64,58 @@ export default async function MediaPage({
     count: assetsCount,
   } = await assetsRequest.range(catalog.from, catalog.to);
   const assets = assetsResult || [];
+  const { data: usagesResult, error: usagesError } = assets.length
+    ? await supabase
+        .from("media_usages")
+        .select("media_id,entity_type,entity_id,field_name")
+        .in("media_id", assets.map((asset) => asset.id))
+        .order("entity_type")
+        .order("field_name")
+    : { data: [], error: null };
+  const assetIds = assets.map((asset) => asset.id);
+  const directUsageResults = assets.length
+    ? await Promise.all([
+        supabase.from("articles").select("id,cover_media_id").in("cover_media_id", assetIds).is("deleted_at", null),
+        supabase.from("articles").select("id,og_media_id").in("og_media_id", assetIds).is("deleted_at", null),
+        supabase.from("homepage_blocks").select("id,background_media_id").in("background_media_id", assetIds),
+        supabase.from("banners").select("id,desktop_media_id").in("desktop_media_id", assetIds),
+        supabase.from("banners").select("id,tablet_media_id").in("tablet_media_id", assetIds),
+        supabase.from("banners").select("id,mobile_media_id").in("mobile_media_id", assetIds),
+      ])
+    : Array.from({ length: 6 }, () => ({ data: [], error: null }));
+  const usagesByMedia = new Map<string, MediaUsage[]>();
+  const addUsage = (usage: MediaUsage) => {
+    const current = usagesByMedia.get(usage.media_id) || [];
+    if (current.some((item) =>
+      item.entity_type === usage.entity_type &&
+      item.entity_id === usage.entity_id &&
+      item.field_name === usage.field_name
+    )) return;
+    current.push(usage);
+    usagesByMedia.set(usage.media_id, current);
+  };
+  for (const usage of usagesResult || []) addUsage(usage);
+  const directFields = [
+    ["article", "cover_media_id"],
+    ["article", "og_media_id"],
+    ["homepage", "background_media_id"],
+    ["banner", "desktop_media_id"],
+    ["banner", "tablet_media_id"],
+    ["banner", "mobile_media_id"],
+  ] as const;
+  directUsageResults.forEach((result, index) => {
+    const [entityType, fieldName] = directFields[index];
+    for (const row of result.data || []) {
+      const mediaId = String(row[fieldName as keyof typeof row] || "");
+      if (mediaId) addUsage({
+        media_id: mediaId,
+        entity_type: entityType,
+        entity_id: row.id,
+        field_name: fieldName,
+      });
+    }
+  });
+  const directUsageError = directUsageResults.find((result) => result.error)?.error;
   const totalAssets = assetsCount || 0;
   const totalPages = Math.max(1, Math.ceil(totalAssets / MEDIA_CATALOG_PAGE_SIZE));
 
@@ -70,6 +140,8 @@ export default async function MediaPage({
       {query.published === "started" && <p className="form-message form-success">Публичная сборка с обновлённым изображением запущена.</p>}
       {query.published === "queued" && <p className="form-message form-success">Обновление изображения поставлено в резервную очередь публикации.</p>}
       {query.published === "queue-error" && <p className="form-message form-error" role="alert">Метаданные сохранены, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
+      {usagesError && <p className="form-message form-error" role="alert">Не удалось загрузить места использования изображений: {usagesError.message}</p>}
+      {directUsageError && <p className="form-message form-error" role="alert">Не удалось проверить прямые привязки изображений: {directUsageError.message}</p>}
 
       <div className="dashboard-grid">
         <MediaUploader />
@@ -144,6 +216,7 @@ export default async function MediaPage({
               const { data } = supabase.storage
                 .from(asset.bucket)
                 .getPublicUrl(asset.object_path);
+              const usages = usagesByMedia.get(asset.id) || [];
               return (
                 <article className="media-card" key={asset.id}>
                   <img src={data.publicUrl} alt={asset.alt_text} />
@@ -166,10 +239,33 @@ export default async function MediaPage({
                         <label className="field"><span>Лицензия</span><input name="license_name" defaultValue={asset.license_name} /></label>
                         <label className="field"><span>Ссылка на лицензию</span><input name="license_url" type="url" defaultValue={asset.license_url || ""} /></label>
                         <label className="field"><span>Коллекция</span><input name="collection_name" required defaultValue={asset.collection_name} /></label>
-                        <div className="media-focus-fields">
-                          <label className="field"><span>Фокус X</span><input name="focus_x" type="number" min="0" max="1" step="0.01" defaultValue={asset.focus_x} /></label>
-                          <label className="field"><span>Фокус Y</span><input name="focus_y" type="number" min="0" max="1" step="0.01" defaultValue={asset.focus_y} /></label>
-                        </div>
+                        <MediaFocalEditor
+                          src={data.publicUrl}
+                          alt={asset.alt_text}
+                          initialX={asset.focus_x}
+                          initialY={asset.focus_y}
+                          width={asset.width}
+                          height={asset.height}
+                        />
+                        <section className="media-usage-readout" aria-label="Места использования изображения">
+                          <strong>Используется: {usages.length}</strong>
+                          {usages.length ? (
+                            <ul>
+                              {usages.map((usage) => {
+                                const href = mediaUsageHref(usage);
+                                const label = `${usage.entity_type} · ${usage.field_name}`;
+                                return (
+                                  <li key={`${usage.entity_type}:${usage.entity_id}:${usage.field_name}`}>
+                                    {href ? <Link href={href}>{label}</Link> : <span>{label}</span>}
+                                    <small>{usage.entity_id}</small>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                            <small>Изображение пока не привязано к опубликованным сущностям.</small>
+                          )}
+                        </section>
                         <button className="button-secondary" type="submit">Сохранить сведения</button>
                       </form>
                     </details>

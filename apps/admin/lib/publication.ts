@@ -16,6 +16,18 @@ type RequestPublicBuildOptions = {
   metadata?: Record<string, unknown>;
 };
 
+function normalizeOutboxId(value: unknown): string | null {
+  if (typeof value === "string" && /^[1-9]\d*$/u.test(value)) return value;
+  if (
+    typeof value === "number" &&
+    Number.isSafeInteger(value) &&
+    value > 0
+  ) {
+    return String(value);
+  }
+  return null;
+}
+
 export async function requestPublicBuild({
   supabase,
   actorId,
@@ -27,21 +39,46 @@ export async function requestPublicBuild({
   state: PublicationState;
   build: PublicBuildResult;
 }> {
-  // Persist the rebuild request before attempting the fast dispatch. The
-  // scheduled workflow consumes this durable marker if the hook is down or
-  // if an accepted workflow later fails before deployment.
-  const { error: queueError } = await supabase.from("admin_audit_log").insert({
-    actor_id: actorId,
-    action: "public_build.requested",
-    entity_type: entityType,
-    entity_id: entityId,
-    metadata: {
-      ...metadata,
-      reason,
-      requested_at: new Date().toISOString(),
-    },
-  });
-  if (queueError) {
+  // Prefer the transactional outbox introduced by the current schema. Older
+  // databases keep working through the audit-log fallback until migration.
+  // Table triggers enqueue the underlying mutation inside its own transaction,
+  // so a process crash before this fast dispatch cannot lose the request.
+  const { data: outboxId, error: outboxError } = await supabase.rpc(
+    "enqueue_public_build_request",
+    {
+      p_entity_type: entityType,
+      p_entity_id: entityId,
+      p_reason: reason,
+      p_metadata: metadata,
+    }
+  );
+  // Only a confirmed missing-RPC response may use the compatibility queue.
+  // Permission, validation and transient database failures must remain visible;
+  // treating them as an old schema can lose manual republish requests once the
+  // scheduled consumer has switched to the outbox.
+  const outboxUnavailable = Boolean(
+    outboxError &&
+      (outboxError.code === "PGRST202" ||
+        (outboxError.code === "42883" &&
+          /function public\.enqueue_public_build_request\([^)]*\) does not exist/iu.test(
+            outboxError.message || ""
+          )))
+  );
+  const durableOutboxId = outboxError ? null : normalizeOutboxId(outboxId);
+  const { error: queueError } = outboxUnavailable
+    ? await supabase.from("admin_audit_log").insert({
+        actor_id: actorId,
+        action: "public_build.requested",
+        entity_type: entityType,
+        entity_id: entityId,
+        metadata: {
+          ...metadata,
+          reason,
+          requested_at: new Date().toISOString(),
+        },
+      })
+    : { error: outboxError };
+  if (queueError || (!outboxUnavailable && durableOutboxId === null)) {
     return {
       state: "queue-error",
       build: {
@@ -55,6 +92,12 @@ export async function requestPublicBuild({
 
   const build = await triggerPublicBuild(reason);
   if (build.ok) {
+    if (durableOutboxId !== null) {
+      await supabase.rpc("mark_public_build_dispatched", {
+        p_outbox_id: durableOutboxId,
+        p_provider: build.provider,
+      });
+    }
     await supabase.from("admin_audit_log").insert({
       actor_id: actorId,
       action: "public_build.dispatched",

@@ -35,6 +35,9 @@ export default defineConfig(({ mode }) => {
             ) {
               return "three-vendor";
             }
+            if (moduleId.includes("/node_modules/@supabase/")) {
+              return "supabase-vendor";
+            }
             if (moduleId.includes("/node_modules/gsap/")) return "motion-vendor";
             if (
               moduleId.includes("/node_modules/react/") ||

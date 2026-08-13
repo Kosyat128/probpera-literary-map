@@ -5,10 +5,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { saveCoreHomepageSectionAction } from "@/app/(dashboard)/homepage/actions";
 import { saveInlineSiteCopyAction } from "@/app/(dashboard)/site-copy/inline-actions";
 import {
+  getVisualContentVersionAction,
   saveHomepageBlockVisualSettingsAction,
   saveVisualContentFieldAction,
 } from "@/app/(dashboard)/visual-content-actions";
-import { saveVisualEntityFieldAction } from "@/app/(dashboard)/visual-entity-actions";
+import {
+  getVisualEntityVersionAction,
+  saveVisualEntityFieldAction,
+} from "@/app/(dashboard)/visual-entity-actions";
 import type { HomepageMediaOption } from "@/components/HomepageMediaField";
 import {
   defaultHomepageVisualSettings,
@@ -306,6 +310,9 @@ export default function HomepageVisualPreview({
   const [inlineValue, setInlineValue] = useState("");
   const [inlineStatus, setInlineStatus] = useState("");
   const [isSavingInline, setIsSavingInline] = useState(false);
+  const [inlineExpectedUpdatedAt, setInlineExpectedUpdatedAt] = useState("");
+  const [inlineVersionReady, setInlineVersionReady] = useState(false);
+  const [isLoadingInlineVersion, setIsLoadingInlineVersion] = useState(false);
   const [visualSettings, setVisualSettings] = useState<HomepageVisualSettings>({
     ...defaultHomepageVisualSettings,
   });
@@ -403,6 +410,51 @@ export default function HomepageVisualPreview({
     ? sections.find((section) => section.key === selection.entityId) || null
     : null;
   const selectedMedia = selectedSection?.backgroundMediaId || "";
+
+  useEffect(() => {
+    let active = true;
+    setInlineExpectedUpdatedAt("");
+    setInlineVersionReady(false);
+    setIsLoadingInlineVersion(false);
+    if (!selection) return () => { active = false; };
+
+    const visualEntity =
+      selection.entityType === "writer" || selection.entityType === "book";
+    const visualContent = isVisualContentEntityType(selection.entityType);
+    if (!visualEntity && !visualContent) return () => { active = false; };
+
+    const cachedBlockVersion =
+      selection.entityType === "homepage-block"
+        ? visualUpdatedAtByBlock[selection.entityId]
+        : "";
+    if (cachedBlockVersion) {
+      setInlineExpectedUpdatedAt(cachedBlockVersion);
+      setInlineVersionReady(true);
+      return () => { active = false; };
+    }
+
+    setIsLoadingInlineVersion(true);
+    const request = visualEntity
+      ? getVisualEntityVersionAction({
+          entityType: selection.entityType as "writer" | "book",
+          entityId: selection.entityId,
+        })
+      : getVisualContentVersionAction({
+          entityType: selection.entityType as VisualContentEntityType,
+          entityId: selection.entityId,
+        });
+    void request.then((result) => {
+      if (!active) return;
+      setIsLoadingInlineVersion(false);
+      if (result.ok) {
+        setInlineExpectedUpdatedAt(result.updatedAt);
+        setInlineVersionReady(true);
+      } else {
+        setInlineStatus(result.error);
+      }
+    });
+    return () => { active = false; };
+  }, [selection, visualUpdatedAtByBlock]);
 
   const updatePreview = (
     key: string,
@@ -502,28 +554,48 @@ export default function HomepageVisualPreview({
     if (!selectedVisualEntity) return;
     const entity = selectedVisualEntity;
     const value = inlineValue;
-    void runInlineSave(() =>
-      saveVisualEntityFieldAction({
-        entityType: entity.entityType as "writer" | "book",
-        entityId: entity.entityId,
-        field: entity.field,
-        value,
-      })
-    );
+    void (async () => {
+      const result = await runInlineSave(() =>
+        saveVisualEntityFieldAction({
+          entityType: entity.entityType as "writer" | "book",
+          entityId: entity.entityId,
+          field: entity.field,
+          value,
+          expectedUpdatedAt: inlineExpectedUpdatedAt,
+        })
+      );
+      if (result?.ok && result.updatedAt) {
+        setInlineExpectedUpdatedAt(result.updatedAt);
+        setInlineVersionReady(true);
+      }
+    })();
   };
 
   const saveVisualContentField = () => {
     if (!selectedVisualContent) return;
     const content = selectedVisualContent;
     const value = inlineValue;
-    void runInlineSave(() =>
-      saveVisualContentFieldAction({
-        entityType: content.entityType as VisualContentEntityType,
-        entityId: content.entityId,
-        field: content.field,
-        value,
-      })
-    );
+    void (async () => {
+      const result = await runInlineSave(() =>
+        saveVisualContentFieldAction({
+          entityType: content.entityType as VisualContentEntityType,
+          entityId: content.entityId,
+          field: content.field,
+          value,
+          expectedUpdatedAt: inlineExpectedUpdatedAt,
+        })
+      );
+      if (result?.ok && result.updatedAt) {
+        setInlineExpectedUpdatedAt(result.updatedAt);
+        setInlineVersionReady(true);
+        if (content.entityType === "homepage-block") {
+          setVisualUpdatedAtByBlock((current) => ({
+            ...current,
+            [content.entityId]: result.updatedAt!,
+          }));
+        }
+      }
+    })();
   };
 
   const saveVisualSettings = (reset = false) => {
@@ -908,7 +980,7 @@ export default function HomepageVisualPreview({
               <button
                 className="button"
                 type="button"
-                disabled={isSavingInline || hasUnresolvedMedia}
+                disabled={isSavingInline || isLoadingInlineVersion || !inlineVersionReady || hasUnresolvedMedia}
                 onClick={saveVisualContentField}
               >
                 {isSavingInline
@@ -924,7 +996,7 @@ export default function HomepageVisualPreview({
                   </p>
                   <VisualSettingsControls
                     value={visualSettings}
-                    disabled={isSavingInline}
+                    disabled={isSavingInline || isLoadingInlineVersion || !inlineVersionReady}
                     onChange={updateVisualSettingsPreview}
                   />
                   <div className="editor-actions">
@@ -1011,7 +1083,7 @@ export default function HomepageVisualPreview({
               <button
                 className="button"
                 type="button"
-                disabled={isSavingInline}
+                disabled={isSavingInline || isLoadingInlineVersion || !inlineVersionReady}
                 onClick={saveVisualEntityField}
               >
                 {isSavingInline

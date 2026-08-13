@@ -347,6 +347,22 @@ function mediaById(mediaLookup, id) {
   return id ? mediaLookup.get(id) || null : null;
 }
 
+function mediaFocus(media) {
+  if (!media) return {};
+  const focusX =
+    media.focus_x === null || media.focus_x === undefined || media.focus_x === ""
+      ? Number.NaN
+      : Number(media.focus_x);
+  const focusY =
+    media.focus_y === null || media.focus_y === undefined || media.focus_y === ""
+      ? Number.NaN
+      : Number(media.focus_y);
+  return {
+    ...(Number.isFinite(focusX) ? { focusX: Math.min(1, Math.max(0, focusX)) } : {}),
+    ...(Number.isFinite(focusY) ? { focusY: Math.min(1, Math.max(0, focusY)) } : {}),
+  };
+}
+
 function normalizeSettings(value) {
   return value && typeof value === "object" && !Array.isArray(value) ? value : {};
 }
@@ -595,6 +611,7 @@ const articles = rawArticles.map((rawArticle) => {
     : 0;
   const coverMedia = mediaById(mediaLookup, article.cover_media_id);
   const imageUrl = article.cover_external_url || storageUrl(coverMedia) || undefined;
+  const imageFocus = article.cover_external_url ? {} : mediaFocus(coverMedia);
   const ogImageUrl = storageUrl(mediaById(mediaLookup, article.og_media_id)) || imageUrl;
   const id = `cms-${article.id}`;
   const publicPath = articlePublicPath(slug, sectionId);
@@ -669,6 +686,8 @@ const articles = rawArticles.map((rawArticle) => {
     title: article.title,
     description,
     imageUrl,
+    imageFocusX: imageFocus.focusX,
+    imageFocusY: imageFocus.focusY,
     imageAlt: imageAltLooksTechnical(article.cover_alt || coverMedia?.alt_text)
       ? `Иллюстрация к статье «${article.title}»`
       : article.cover_alt || coverMedia?.alt_text || "",
@@ -721,7 +740,9 @@ const {
   siteCopy,
 } = extractSiteCopyFromHomepageBlocks(rawHomepageBlocks);
 
-const homepageBlocks = publicHomepageBlocks.map((block) => ({
+const homepageBlocks = publicHomepageBlocks.map((block) => {
+  const backgroundMedia = mediaById(mediaLookup, block.background_media_id);
+  return ({
   id: block.id,
   type: block.block_type,
   title: block.title,
@@ -729,13 +750,18 @@ const homepageBlocks = publicHomepageBlocks.map((block) => ({
   displayOrder: block.display_order,
   backgroundStyle: block.background_style,
   backgroundMediaId: block.background_media_id,
-  backgroundImageUrl: storageUrl(
-    mediaById(mediaLookup, block.background_media_id)
-  ),
+  backgroundImageUrl: storageUrl(backgroundMedia),
+  backgroundFocusX: mediaFocus(backgroundMedia).focusX,
+  backgroundFocusY: mediaFocus(backgroundMedia).focusY,
   updatedAt: block.updated_at,
-}));
+  });
+});
 
-const banners = rawBanners.map((banner) => ({
+const banners = rawBanners.map((banner) => {
+  const desktopMedia = mediaById(mediaLookup, banner.desktop_media_id);
+  const tabletMedia = mediaById(mediaLookup, banner.tablet_media_id);
+  const mobileMedia = mediaById(mediaLookup, banner.mobile_media_id);
+  return ({
   id: banner.id,
   name: banner.name,
   title: banner.title,
@@ -749,10 +775,17 @@ const banners = rawBanners.map((banner) => ({
   desktopMediaId: banner.desktop_media_id,
   tabletMediaId: banner.tablet_media_id,
   mobileMediaId: banner.mobile_media_id,
-  desktopImageUrl: storageUrl(mediaById(mediaLookup, banner.desktop_media_id)),
-  tabletImageUrl: storageUrl(mediaById(mediaLookup, banner.tablet_media_id)),
-  mobileImageUrl: storageUrl(mediaById(mediaLookup, banner.mobile_media_id)),
-}));
+  desktopImageUrl: storageUrl(desktopMedia),
+  tabletImageUrl: storageUrl(tabletMedia),
+  mobileImageUrl: storageUrl(mobileMedia),
+  desktopFocusX: mediaFocus(desktopMedia).focusX,
+  desktopFocusY: mediaFocus(desktopMedia).focusY,
+  tabletFocusX: mediaFocus(tabletMedia).focusX,
+  tabletFocusY: mediaFocus(tabletMedia).focusY,
+  mobileFocusX: mediaFocus(mobileMedia).focusX,
+  mobileFocusY: mediaFocus(mobileMedia).focusY,
+  });
+});
 
 const navigationMenus = rawMenus.map((menu) => ({
   id: menu.id,

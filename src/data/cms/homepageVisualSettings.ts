@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { mediaFocusPosition } from "../../utils/mediaFocus";
 
 export const cmsHomepageVisualSettingKeys = [
   "imageFit",
@@ -182,11 +183,16 @@ export function cmsHomepageVisualCssProperties(
 
 export function cmsHomepageBlockStyle(
   settings: unknown,
-  backgroundImageUrl?: string
+  backgroundImageUrl?: string,
+  backgroundFocusX?: unknown,
+  backgroundFocusY?: unknown
 ) {
   return {
     ...(backgroundImageUrl
       ? { "--cms-background-image": `url(${JSON.stringify(backgroundImageUrl)})` }
+      : {}),
+    ...(backgroundImageUrl
+      ? { "--cms-image-position": mediaFocusPosition(backgroundFocusX, backgroundFocusY) }
       : {}),
     ...cmsHomepageVisualCssProperties(settings),
   } as CSSProperties;

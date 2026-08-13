@@ -18,13 +18,18 @@ const outputPath = path.join(
   "articles",
   "book-mentions.json"
 );
-const userSuppliedCoverManifestPath = path.join(
-  repositoryRoot,
-  "src",
-  "data",
-  "countries",
-  "generated",
-  "userSuppliedBookCovers.generated.json"
+const userSuppliedCoverManifestPaths = [
+  "userSuppliedBookCovers.generated.json",
+  "userSuppliedBookCoversBatch20260813.generated.json",
+].map((file) =>
+  path.join(
+    repositoryRoot,
+    "src",
+    "data",
+    "countries",
+    "generated",
+    file
+  )
 );
 
 export function normalizeMentionText(value = "") {
@@ -286,11 +291,14 @@ const payload = {
 
 const serializedPayload = `${JSON.stringify(payload, null, 2)}\n`;
 if (process.argv.includes("--check-user-cover-scope")) {
-  const coverManifest = JSON.parse(
-    await fs.readFile(userSuppliedCoverManifestPath, "utf8")
+  const coverManifests = await Promise.all(
+    userSuppliedCoverManifestPaths.map(async (manifestPath) =>
+      JSON.parse(await fs.readFile(manifestPath, "utf8"))
+    )
   );
+  const coverEntries = coverManifests.flatMap((manifest) => manifest.entries);
   const coverPaths = new Set(
-    coverManifest.entries.flatMap((entry) => [
+    coverEntries.flatMap((entry) => [
       entry.coverUrl,
       entry.coverThumbnailUrl,
     ])
@@ -302,7 +310,7 @@ if (process.argv.includes("--check-user-cover-scope")) {
     .flat()
     .filter(
       (recommendation) =>
-        coverManifest.entries.some(
+        coverEntries.some(
           (entry) => entry.workKey === recommendation.key
         ) && recommendation.coverUrl
     );
@@ -312,7 +320,7 @@ if (process.argv.includes("--check-user-cover-scope")) {
     );
   }
   console.log(
-    `Article cover scope: ${coverManifest.entries.length} user-supplied covers excluded from generated article recommendations.`
+    `Article cover scope: ${coverEntries.length} user-supplied covers excluded from generated article recommendations.`
   );
 } else {
   await fs.mkdir(path.dirname(outputPath), { recursive: true });

@@ -1,11 +1,11 @@
 # Аудит прав на обложки
 
-Сформирован: 2026-08-11T00:00:00.000Z
+Сформирован: 2026-08-13T00:00:00.000Z
 
-- Найдено обложек: 119
+- Найдено обложек: 170
 - В country-файлах: 65
-- Из пользовательского manifest-overlay: 54
-- Разрешено к показу политикой проекта: 119
+- Из пользовательского manifest-overlay: 105
+- Разрешено к показу политикой проекта: 170
 - Заблокировано до проверки: 0
 - Записей с замечаниями: 0
 
@@ -1186,4 +1186,565 @@
 - Размеры: 720×1080; миниатюра 360×540
 - Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания.
 - Provenance: user-supplied; archive SHA-256: 7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b; image SHA-256: 19b916348f4272bb7a4f0574ba596ca5916ed02c4b5c009ccb8e869a4694a73a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/smoke-turgenev-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 45f42c63910aca0af47bf2b78819c26756181f06552630c81a36f7da213e716c
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/asya-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 30998b5f52c2a0f1b5e0e1411dad331020a682bfda028f1d88ee4924ba0492c7
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/first-love-turgenev-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: b3df3fba80d5557c89f408aedb7c870642106d79d809ad055ff6c8000a13cee5
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/spring-torrents-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 62db8cf2819a338bc3a7bbf75ff23066f92493bdd3ebb55f4cfceb7b9aabf981
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/death-of-ivan-ilyich-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: dab8c885dc1eaed9555d2dc1e0a1ce4c901add68b612a760e74fa5e7eaf6855a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/father-sergius-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: af5f6b5c49c489384a96ef68e3b3b83885845491bcea32b3a96f0ca5f0c971a5
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/hadji-murad-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: c672fee17a9f0fddd28cc753eefa3422b75cd623f031a6766f7cd838784ad399
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-storm-ostrovsky-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: a3cc5e6085e938361c2cca0c385dc07afcbf962431004cdddce1a57b85763f8e
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/christmas-eve-gogol-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 4b3d4b6f15e7842fc56ae195374a6b40eec0c592d6875be1e1fec04b47f4e73a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-adolescent-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: e45e4aa7bc5914466b300fb1288c2efcc1b99c335af78c378848c09a51b3d149
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-steppe-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 228d6e778014a12c976bec4e6a4f28d96188c78bb87cfddb443c06d35306d2fa
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/gentleman-from-san-francisco-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 61964e0ead67d2bee2d56b9ad9dcf05c1ac4f1434820eb1a914aab5982444f63
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-nose-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 907b45d98378fb7bf918cc1bb95d5bdc42735360579777ae202b1fbfb4d23c37
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/diary-of-a-madman-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 8074291e9389b33ef6899d42cf55e9f468efa1ff611d46ef35cc63ca471a5264
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/ward-no-6-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 36766f5de8231659b85694fb8723a93919a7cb2fe9481399ff4b19591fabfe4a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/after-the-ball-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: f8c1bea467c859d86c18a241f06638892b52469cafd1b0f6a2a7959f3fd16243
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/enchanted-wanderer-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: d9b8aa3ee69895d5c48363cb71edb154990eecaf213c626005f790371b05b2c4
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/lefty-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 47a75be832303175ef743670d9f1804cf0e893b7fe9699575bbd00429bb37557
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/mtsyri-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 015cf74f399e28837b3dd877b1d96e100ef1e4167853c5ca341e22258ad094c4
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/three-sisters-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: b20243ff13693bf8d1badc085011343f677e214664cbe03cac2a0320d9b58032
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/mumu-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: de34ba8f34d23e17fdd8811d1f95cd7662271751498c20f4a22d6869d15ece26
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/poor-liza-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 3f855d2a5ace717c6f63ece4fad25ea0bd61dbc95aa8ce9ef46f872c740a8e17
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-minor-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 9b0fca42aaf9735abd02939e8b9b4550786bb385e9df6b93ce4cd798ea422f63
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/who-is-happy-in-russia-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 7eb13383c5e81ef8d60b13d370d07a4af53f45ea6085020012258ade86a157c9
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/one-day-ivan-denisovich-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 7a95cd7b2441da01e45fcbe666d05a6b16bedcb80d1106e8582fa15b20c9e393
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/persuasion-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 84ab2a2cf53e4a09da5e682c28603cfda4eee640511b4f80632851ac56c563e5
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/our-mutual-friend-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: ebdc017a7ab93232b06c881678523ac1bb894cd7455b14998488ab305ef71203
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/black-arrow-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: dd7d795a1c51b8694d8450bc89cf4bea466acf76ff2b80cd80bfe53227462f07
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/white-company-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: dd306f566845fc5bddc3f747aa9be2857fe8baa6d032f185d7c08101ce21a17a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/war-in-the-air-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 2e0bad2d04b3ee89c21fff392d7a479ec086b5c301b01057fe97bd1ed530f21e
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/tono-bungay-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 4f5fb99fa44588eb598eb673a5aebc892749f7f3082ec406f21bb4f5153fbd4d
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/between-the-acts-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 850e217db932713e1bfba396138db9b726e36f70e61463c8c5bf8e983e0908bf
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/keep-the-aspidistra-flying-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 3b91d81e47c8cf78ff2481d67147bd537655c56a450da5249db4bc394b07c9f1
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/end-of-the-affair-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 994116a94b285658c983c9c528be7af586c8dfaea998b553be82fa2bcc7eab9a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/barchester-towers-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 8e6ae92403cde10d4c41e35ba264cf6588b03c34f89a68da6a42ef3457278a74
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/moonstone-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: d9881ee2aa3f267b206039d3445c87c4e58acccd09e3b92035dcdd68c04e2ca1
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/martin-chuzzlewit-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: dd9e7367ff8536900035edcf545edfe5a32df88e9562516bf7ff161b39991640
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/captain-blood-odyssey-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 76cddd7c5bc642da37252e422f39d42f01d9d0216a3e03d7bc874390e00006cf
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/sea-hawk-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 6e6573b01a20ae5dced015e62a2c5421c1a89893c0443c24183b9238c00aface
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/captain-singleton-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: f8197aba2dcd558062a5a9cd26996135a4eb0879f8dae4bc8e00e245c6b78923
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/strange-orchid-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 23b197c43710bb9e1e3f6446b4531fe4958bf5868b2829feb7bdfcd9c1825627
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/tristram-shandy-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 08873d9fd7af3214a9101cae345b7371751e7dd5262dbe20b4b7fa6fbaa6bf50
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/sense-and-sensibility-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 41739fbcaaf436a64c8ba2c232d0b92fe65518e57b7a698cc592d2e74eca6b2a
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/sentimental-education-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 00718e771ef2584c5bc40754beec273dd925085b563231f6544d2b0b8eed9638
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/island-huxley-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 9c2006bed560a56994a773cb12b252f710cb08c1ab1740a3749a4d2e57d3913e
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/ivanhoe-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: edb40fe06321a21afcead744de7882e3a9341151ea0700a6a7a07d3497c19763
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/heart-of-darkness-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 8fc77cefca93f9ffc4030e58ce33fbdc5e81415a066be7c8712ee5f6c1da1041
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/last-of-the-mohicans-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 3f6711e53f56f4b9405eb8182cbb5826541f05dc9e8c979704a44d91bd515da3
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/tale-of-two-cities-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 2b2338995c2995da06ba84e6591c23308928d6336c3b9aef9e3959a2f782b670
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-village-bunin-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: 686e4db73192efa8a28465037cf4f2446d501edea0126daf149fc661486e1581
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260813.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/mayor-of-casterbridge-editorial.webp
+- Проверено: 2026-08-13
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
+- Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: f42eec129a36ad213d94f0e434a7d6773636169e5846c5d72d933bbbccb9eb42
 - Замечаний нет

@@ -4,6 +4,7 @@ import {
   articleCatalog,
   type ArticleCatalogEntry,
 } from "../data/articles/catalog";
+import { mediaFocusStyle } from "../utils/mediaFocus";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import {
   articleIdFromPath,
@@ -532,6 +533,7 @@ export default function ArticleLibrarySection({
                         <img
                           className="library-card-image-backdrop"
                           src={article.imageUrl}
+                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
                           alt=""
                           aria-hidden="true"
                           loading="lazy"
@@ -542,6 +544,7 @@ export default function ArticleLibrarySection({
                         />
                         <img
                           src={article.imageUrl}
+                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
                           alt={
                             article.imageAlt ||
                             `${t("Иллюстрация к материалу")} “${article.title}”`

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-13T07:30:17.212Z",
+  "generatedAt": "2026-08-13T18:55:18.218Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
     "uniqueCountryCodes": 200,
-    "cardsWithWriters": 194,
+    "cardsWithWriters": 193,
     "cardsWithCoordinates": 5,
     "cardsWithDescription": 5,
     "cardsWithHistory": 5,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1698,
-    "uniqueWriters": 1685,
-    "workRecords": 3475,
-    "uniqueWorks": 3457,
+    "writerRecords": 1692,
+    "uniqueWriters": 1679,
+    "workRecords": 3496,
+    "uniqueWorks": 3478,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 34,
+    "expandedBiographies": 39,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1653,
+    "russianBiographiesWithheld": 1647,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1678,
+    "englishBiographiesWithheld": 1672,
     "portraitedWriters": 1059,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -1784,7 +1784,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 0
     },
     {
       "id": "madagascar",
@@ -1801,7 +1801,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 10
+      "writers": 7
     },
     {
       "id": "malawi",
@@ -1852,7 +1852,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "mali",

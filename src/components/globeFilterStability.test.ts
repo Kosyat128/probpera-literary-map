@@ -29,4 +29,20 @@ describe("globe filter stability wiring", () => {
     expect(appSource).toContain('role="group"');
     expect(appSource).toContain("atlas-filter-status");
   });
+
+  it("mounts the 200-country fallback only after visitors open it", () => {
+    expect(appSource).toContain("const [countryIndexOpen, setCountryIndexOpen]");
+    expect(appSource).toContain(
+      "onToggle={(event) => setCountryIndexOpen(event.currentTarget.open)}"
+    );
+    expect(appSource).toContain("{countryIndexOpen && (");
+  });
+
+  it("keeps filters and selections shareable through browser history", () => {
+    expect(appSource).toContain("readAtlasUrlState");
+    expect(appSource).toContain("commitAtlasUrlState");
+    expect(appSource).toContain(
+      'window.addEventListener("popstate", applyAtlasUrlSelection)'
+    );
+  });
 });

@@ -29,16 +29,23 @@
    `supabase/migrations/20260730_staff_management.sql`, затем миграции
    `20260801_forum_reports.sql`, `20260801_reader_profiles_and_forum_votes.sql`,
    `20260802_client_errors.sql`, `20260802_editor_templates.sql`,
-   `20260802_reader_journey.sql` и
-   `20260803_public_article_view_counts.sql`,
+   `20260802_reader_journey.sql`,
+   `20260803_public_article_view_counts.sql` и
+   `20260804_content_analytics.sql`,
    `20260808_article_translations.sql` и
    `20260808_book_translations_and_import_staging.sql`, затем
    `20260812_homepage_block_revisions.sql` и
    `20260812_writer_and_work_revisions.sql`, затем
    `20260813_editorial_database_admin.sql`,
    `20260813_homepage_atomic_move.sql`,
-   `20260813_tags_updated_at.sql` и
-   `20260813_unified_revision_history.sql` в порядке имени файла.
+   `20260813_tags_updated_at.sql`,
+   `20260813_unified_revision_history.sql` и
+   `20260814_publication_outbox_and_schema_health.sql` в порядке имени файла.
+   Перед применением обязательно должен успешно завершиться workflow
+   `Encrypted Supabase backup` с реальным восстановлением dump в изолированную
+   PostgreSQL. После применения проверьте в разделе «Состояние сайта» версию
+   схемы `20260814_publication_outbox_and_schema_health` и отсутствие
+   необработанных запросов публикации.
 3. Скопировать `apps/admin/.env.example` в локальный `.env.local` панели и
    заполнить публичные параметры Supabase. Ключ `service_role` нельзя добавлять
    в переменные `NEXT_PUBLIC_*` и нельзя передавать браузеру.

@@ -109,8 +109,9 @@ describe("пользовательские редакционные обложк
     const expectedKeys = userSuppliedBookCoverManifest.entries
       .map((entry) => entry.workKey)
       .sort();
+    const expectedKeySet = new Set(expectedKeys);
 
-    expect(addedKeys).toEqual(expectedKeys);
+    expect(addedKeys.filter((key) => expectedKeySet.has(key))).toEqual(expectedKeys);
     for (const entry of userSuppliedBookCoverManifest.entries) {
       const baselineBook = baselineByKey.get(entry.workKey);
       const coveredBook = archiveByKey.get(entry.workKey);
@@ -266,22 +267,31 @@ describe("пользовательские редакционные обложк
       (cover: { provenance?: { kind?: string } }) =>
         cover.provenance?.kind === "user-supplied"
     );
+    const originalBatchRows = overlayRows.filter(
+      (cover: { provenance?: { archiveSha256?: string } }) =>
+        cover.provenance?.archiveSha256 ===
+        "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b"
+    );
 
-    expect(audit.generatedAt).toBe("2026-08-11T00:00:00.000Z");
+    expect(audit.generatedAt).toBe("2026-08-13T00:00:00.000Z");
     expect(audit.summary).toMatchObject({
-      covers: 119,
+      covers: 170,
       countryCovers: 65,
-      userSuppliedCovers: 54,
-      displayAllowed: 119,
+      userSuppliedCovers: 105,
+      displayAllowed: 170,
       blocked: 0,
       withIssues: 0,
     });
-    expect(overlayRows).toHaveLength(54);
+    expect(overlayRows).toHaveLength(105);
+    expect(originalBatchRows).toHaveLength(54);
     expect(new Set(overlayRows.map((cover: { coverUrl: string }) => cover.coverUrl)).size).toBe(
+      105
+    );
+    expect(new Set(originalBatchRows.map((cover: { coverUrl: string }) => cover.coverUrl)).size).toBe(
       54
     );
     expect(
-      overlayRows.every(
+      originalBatchRows.every(
         (cover: {
           checkedAt?: string;
           sourceUrl?: string;

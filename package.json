@@ -95,7 +95,7 @@
     "writers:qids:audit": "node scripts/resolve-curated-writer-qids.mjs",
     "writers:qids:apply": "node scripts/resolve-curated-writer-qids.mjs --apply",
     "covers:audit": "node scripts/audit-cover-rights.mjs && npm run covers:user:check",
-    "covers:user:check": "node scripts/import-user-supplied-book-covers.mjs --check && npm run content:link-books:scope-check",
+    "covers:user:check": "node scripts/import-user-supplied-book-covers.mjs --check && node scripts/import-user-supplied-book-covers-2026-08-13.mjs --check && npm run content:link-books:scope-check",
     "books:audit": "node scripts/audit-book-database.mjs && node scripts/audit-article-book-coverage.mjs && npm run books:enrichment:check",
     "books:enrichment:build": "node scripts/build-book-enrichment-manifest.mjs --write",
     "books:enrichment:check": "node scripts/build-book-enrichment-manifest.mjs --check && vitest run scripts/lib/book-enrichment-policy.test.mjs scripts/lib/book-enrichment-promotion.test.mjs scripts/lib/book-enrichment-generator.test.mjs scripts/lib/book-enrichment-curated-batch-01.test.mjs scripts/lib/book-publication-sql.test.mjs src/data/bookArchive.test.ts src/data/countries/generated/generatedBooks.types.test.ts",

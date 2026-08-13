@@ -35,6 +35,7 @@ import { writerBiographyFactReviewBatch34 } from "../src/data/countries/writerBi
 import { writerBiographyFactReviewBatch35 } from "../src/data/countries/writerBiographyFactReviewBatch35";
 import { writerBiographyFactReviewBatch36 } from "../src/data/countries/writerBiographyFactReviewBatch36";
 import { writerBiographyFactReviewBatch37 } from "../src/data/countries/writerBiographyFactReviewBatch37";
+import { writerBiographyFactReviewBatch38 } from "../src/data/countries/writerBiographyFactReviewBatch38";
 
 /**
  * Build-only registry. Detailed evidence stays outside the public bundle; the
@@ -78,4 +79,5 @@ export const writerBiographyFactReviews = [
   ...writerBiographyFactReviewBatch35,
   ...writerBiographyFactReviewBatch36,
   ...writerBiographyFactReviewBatch37,
+  ...writerBiographyFactReviewBatch38,
 ];

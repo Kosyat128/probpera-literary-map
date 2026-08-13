@@ -17,7 +17,6 @@ import {
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
   selectBookWriterName,
-  selectWriterDisplayName,
 } from "../data/bookLocalization";
 import type { Country, Writer } from "../data/countries";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
@@ -38,6 +37,7 @@ import {
   navigateToArticle,
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
+import { writerSearchLabel } from "../utils/writerSearchLabel";
 import CountryFlagIcon from "./CountryFlagIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
@@ -57,21 +57,7 @@ type WriterMatch = {
   writer: Writer;
 };
 
-export function writerSearchLabel(
-  writer: Writer,
-  language: "ru" | "en"
-) {
-  const label = selectWriterDisplayName(writer, language, "").trim();
-  if (!label) return null;
-  if (
-    language === "en" &&
-    (label.toLocaleLowerCase("en") === "author" ||
-      /\p{Script=Cyrillic}/u.test(label))
-  ) {
-    return null;
-  }
-  return label;
-}
+export { writerSearchLabel } from "../utils/writerSearchLabel";
 
 export function matches(query: string, values: LiterarySearchValue[]) {
   return literarySearchMatches(query, values);

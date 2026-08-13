@@ -9,6 +9,13 @@ import { parseBookEditionEdit } from "@/lib/book-edition-edit";
 import { persistWithPrimaryEditionCompensation } from "@/lib/book-edition-primary";
 import { isValidIsbn, normalizeIsbn } from "@/lib/isbn";
 import { libraryCatalogFormHref } from "@/lib/library-catalog-query";
+import {
+  parseWorkspaceDelete,
+  parseWorkExternalId,
+  parseWorkImportCandidateReview,
+  parseWorkSourceEdit,
+  parseWorkTranslationEdit,
+} from "@/lib/literary-work-workspace";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -380,4 +387,504 @@ export async function saveBookEditionAction(formData: FormData) {
     saved: "edition",
     published: publication.state,
   }));
+}
+
+type AdminSupabase = NonNullable<
+  Awaited<ReturnType<typeof createServerSupabaseClient>>
+>;
+
+function workspaceHref(
+  formData: FormData,
+  options: Parameters<typeof libraryCatalogFormHref>[1] = {}
+) {
+  return `${libraryCatalogFormHref(formData, options)}#work-workspace`;
+}
+
+function workspaceInput(formData: FormData) {
+  return {
+    workId: formData.get("work_id"),
+    translationId: formData.get("translation_id"),
+    sourceId: formData.get("source_id"),
+    externalIdRowId: formData.get("external_id_row_id"),
+    candidateId: formData.get("candidate_id"),
+    expectedUpdatedAt: formData.get("expected_updated_at"),
+    locale: formData.get("locale"),
+    title: formData.get("title"),
+    description: formData.get("description"),
+    sourceLanguage: formData.get("source_language"),
+    translationMethod: formData.get("translation_method"),
+    editorialStatus: formData.get("editorial_status"),
+    sourceUrls: formData.get("source_urls"),
+    reviewedAt: formData.get("reviewed_at"),
+    provider: formData.get("provider"),
+    sourceUrl: formData.get("source_url"),
+    fieldNames: formData.get("field_names"),
+    licenseName: formData.get("license_name"),
+    usage: formData.get("usage"),
+    retrievedAt: formData.get("retrieved_at"),
+    scheme: formData.get("scheme"),
+    externalId: formData.get("external_id"),
+    qualityScore: formData.get("quality_score"),
+    status: formData.get("status"),
+    rejectionReasons: formData.get("rejection_reasons"),
+  };
+}
+
+async function finishWorkspaceMutation({
+  supabase,
+  actorId,
+  action,
+  entityType,
+  entityId,
+  workId,
+  metadata = {},
+}: {
+  supabase: AdminSupabase;
+  actorId: string;
+  action: string;
+  entityType: string;
+  entityId: string;
+  workId: string;
+  metadata?: Record<string, unknown>;
+}) {
+  const { error: auditError } = await supabase.from("admin_audit_log").insert({
+    actor_id: actorId,
+    action,
+    entity_type: entityType,
+    // Group subrecord events under the work in the history catalog while
+    // retaining the exact changed row for forensic inspection.
+    entity_id: workId,
+    metadata: { ...metadata, workId, recordId: entityId },
+  });
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId,
+    entityType,
+    entityId,
+    reason: action,
+    metadata: { ...metadata, workId },
+  });
+  revalidatePath("/library");
+  revalidatePath("/history");
+  return { publication: publication.state, auditError };
+}
+
+function workspaceMutationError(error: unknown, fallback: string) {
+  return error instanceof Error ? error.message : fallback;
+}
+
+export async function saveWorkTranslationAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkTranslationEdit>;
+  try {
+    edit = parseWorkTranslationEdit(workspaceInput(formData));
+  } catch (error) {
+    redirect(workspaceHref(formData, {
+      error: workspaceMutationError(error, "Проверьте перевод произведения."),
+    }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+
+  const query = edit.translationId
+    ? supabase
+        .from("literary_work_translations")
+        .update(edit.patch)
+        .eq("id", edit.translationId)
+        .eq("work_id", edit.workId)
+        .eq("updated_at", edit.expectedUpdatedAt!)
+    : supabase.from("literary_work_translations").insert({
+        work_id: edit.workId,
+        locale: edit.locale,
+        ...edit.patch,
+      });
+  const { data: saved, error } = await query.select("id").maybeSingle();
+  if (error || !saved) {
+    redirect(workspaceHref(formData, {
+      error:
+        error?.message ||
+        "Перевод уже изменён в другой вкладке. Обновите страницу и повторите правку.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: edit.translationId
+      ? "literary_work_translation.updated"
+      : "literary_work_translation.created",
+    entityType: "literary_work_translation",
+    entityId: saved.id,
+    workId: edit.workId,
+    metadata: { locale: edit.locale, status: edit.patch.editorial_status },
+  });
+  redirect(workspaceHref(formData, {
+    saved: "workspace",
+    published: outcome.publication,
+    error: outcome.auditError
+      ? `Перевод сохранён, но журнал аудита недоступен: ${outcome.auditError.message}`
+      : undefined,
+  }));
+}
+
+export async function deleteWorkTranslationAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let identity: ReturnType<typeof parseWorkspaceDelete>;
+  try {
+    identity = parseWorkspaceDelete({
+      workId: formData.get("work_id"),
+      rowId: formData.get("translation_id"),
+      expectedUpdatedAt: formData.get("expected_updated_at"),
+    });
+    if (!identity.expectedUpdatedAt) throw new Error("Версия перевода не указана.");
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Некорректный перевод.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const { data: deleted, error } = await supabase
+    .from("literary_work_translations")
+    .delete()
+    .eq("id", identity.rowId)
+    .eq("work_id", identity.workId)
+    .eq("updated_at", identity.expectedUpdatedAt!)
+    .select("id")
+    .maybeSingle();
+  if (error || !deleted) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Перевод уже изменён. Обновите страницу перед удалением.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "literary_work_translation.deleted",
+    entityType: "literary_work_translation",
+    entityId: deleted.id,
+    workId: identity.workId,
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function saveWorkSourceAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkSourceEdit>;
+  try {
+    edit = parseWorkSourceEdit(workspaceInput(formData));
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Проверьте источник.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const query = edit.sourceId
+    ? supabase
+        .from("literary_work_sources")
+        .update(edit.patch)
+        .eq("id", edit.sourceId)
+        .eq("work_id", edit.workId)
+        .eq("updated_at", edit.expectedUpdatedAt!)
+    : supabase.from("literary_work_sources").insert({
+        work_id: edit.workId,
+        ...edit.patch,
+      });
+  const { data: saved, error } = await query.select("id").maybeSingle();
+  if (error || !saved) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Источник уже изменён. Обновите страницу и повторите правку.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: edit.sourceId ? "literary_work_source.updated" : "literary_work_source.created",
+    entityType: "literary_work_source",
+    entityId: saved.id,
+    workId: edit.workId,
+    metadata: { provider: edit.patch.provider, usage: edit.patch.usage },
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function deleteWorkSourceAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let identity: ReturnType<typeof parseWorkspaceDelete>;
+  try {
+    identity = parseWorkspaceDelete({
+      workId: formData.get("work_id"),
+      rowId: formData.get("source_id"),
+      expectedUpdatedAt: formData.get("expected_updated_at"),
+    });
+    if (!identity.expectedUpdatedAt) throw new Error("Версия источника не указана.");
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Некорректный источник.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const { data: deleted, error } = await supabase
+    .from("literary_work_sources")
+    .delete()
+    .eq("id", identity.rowId)
+    .eq("work_id", identity.workId)
+    .eq("updated_at", identity.expectedUpdatedAt!)
+    .select("id")
+    .maybeSingle();
+  if (error || !deleted) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Источник уже изменён. Обновите страницу перед удалением.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "literary_work_source.deleted",
+    entityType: "literary_work_source",
+    entityId: deleted.id,
+    workId: identity.workId,
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function addWorkExternalIdAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkExternalId>;
+  try {
+    edit = parseWorkExternalId(workspaceInput(formData));
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Проверьте идентификатор.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const { data: saved, error } = await supabase
+    .from("literary_work_external_ids")
+    .insert({
+      work_id: edit.workId,
+      scheme: edit.scheme,
+      external_id: edit.externalId,
+      source_url: edit.sourceUrl,
+    })
+    .select("id")
+    .maybeSingle();
+  if (error || !saved) {
+    redirect(workspaceHref(formData, { error: error?.message || "Идентификатор не сохранён." }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "literary_work_external_id.created",
+    entityType: "literary_work_external_id",
+    entityId: saved.id,
+    workId: edit.workId,
+    metadata: { scheme: edit.scheme },
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function updateWorkExternalIdAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkExternalId>;
+  let expected: ReturnType<typeof parseWorkExternalId>;
+  try {
+    edit = parseWorkExternalId(workspaceInput(formData));
+    expected = parseWorkExternalId({
+      workId: formData.get("work_id"),
+      externalIdRowId: formData.get("external_id_row_id"),
+      scheme: formData.get("expected_scheme"),
+      externalId: formData.get("expected_external_id"),
+      sourceUrl: formData.get("expected_source_url"),
+    });
+    if (!edit.externalIdRowId || !expected.externalIdRowId) {
+      throw new Error("Запись идентификатора не указана.");
+    }
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Проверьте идентификатор.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const { data: saved, error } = await supabase
+    .from("literary_work_external_ids")
+    .update({
+      scheme: edit.scheme,
+      external_id: edit.externalId,
+      source_url: edit.sourceUrl,
+    })
+    .eq("id", edit.externalIdRowId!)
+    .eq("work_id", edit.workId)
+    .eq("scheme", expected.scheme)
+    .eq("external_id", expected.externalId)
+    .eq("source_url", expected.sourceUrl)
+    .select("id")
+    .maybeSingle();
+  if (error || !saved) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Идентификатор уже изменён. Обновите страницу и повторите правку.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "literary_work_external_id.updated",
+    entityType: "literary_work_external_id",
+    entityId: saved.id,
+    workId: edit.workId,
+    metadata: { scheme: edit.scheme, previousScheme: expected.scheme },
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function deleteWorkExternalIdAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkExternalId>;
+  try {
+    edit = parseWorkExternalId({
+      ...workspaceInput(formData),
+      externalIdRowId: formData.get("external_id_row_id"),
+    });
+    if (!edit.externalIdRowId) throw new Error("Запись идентификатора не указана.");
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Некорректный идентификатор.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  const { data: deleted, error } = await supabase
+    .from("literary_work_external_ids")
+    .delete()
+    .eq("id", edit.externalIdRowId!)
+    .eq("work_id", edit.workId)
+    .eq("scheme", edit.scheme)
+    .eq("external_id", edit.externalId)
+    .eq("source_url", edit.sourceUrl)
+    .select("id")
+    .maybeSingle();
+  if (error || !deleted) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Идентификатор уже изменён или удалён. Обновите страницу.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "literary_work_external_id.deleted",
+    entityType: "literary_work_external_id",
+    entityId: deleted.id,
+    workId: edit.workId,
+    metadata: { scheme: edit.scheme },
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+async function candidateScope(supabase: AdminSupabase, workId: string) {
+  const { data, error } = await supabase
+    .from("literary_works")
+    .select("country_id,writer_id")
+    .eq("id", workId)
+    .maybeSingle();
+  if (error || !data) throw databaseError(error, "Произведение не найдено.");
+  return data;
+}
+
+export async function reviewWorkImportCandidateAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let edit: ReturnType<typeof parseWorkImportCandidateReview>;
+  try {
+    edit = parseWorkImportCandidateReview(workspaceInput(formData));
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Проверьте импорт-кандидата.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  let scope: Awaited<ReturnType<typeof candidateScope>>;
+  try {
+    scope = await candidateScope(supabase, edit.workId);
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Произведение не найдено.") }));
+  }
+  const reviewed = edit.status === "reviewed" || edit.status === "promoted";
+  const { data: saved, error } = await supabase
+    .from("book_import_candidates")
+    .update({
+      quality_score: edit.qualityScore,
+      status: edit.status,
+      rejection_reasons: edit.rejectionReasons,
+      reviewed_by: reviewed ? session.user.id : null,
+      reviewed_at: reviewed ? new Date().toISOString() : null,
+      promoted_work_id: edit.status === "promoted" ? edit.workId : null,
+    })
+    .eq("id", edit.candidateId)
+    .eq("country_id", scope.country_id)
+    .eq("writer_id", scope.writer_id)
+    .eq("updated_at", edit.expectedUpdatedAt)
+    .select("id")
+    .maybeSingle();
+  if (error || !saved) {
+    redirect(workspaceHref(formData, {
+      error: error?.message || "Импорт-кандидат уже изменён. Обновите страницу и повторите правку.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "book_import_candidate.reviewed",
+    entityType: "book_import_candidate",
+    entityId: saved.id,
+    workId: edit.workId,
+    metadata: { status: edit.status, qualityScore: edit.qualityScore },
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
+}
+
+export async function deleteWorkImportCandidateAction(formData: FormData) {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  let identity: ReturnType<typeof parseWorkspaceDelete>;
+  try {
+    identity = parseWorkspaceDelete({
+      workId: formData.get("work_id"),
+      rowId: formData.get("candidate_id"),
+      expectedUpdatedAt: formData.get("expected_updated_at"),
+    });
+    if (!identity.expectedUpdatedAt) throw new Error("Версия импорт-кандидата не указана.");
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Некорректный импорт-кандидат.") }));
+  }
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) redirect(workspaceHref(formData, { error: "База данных не подключена." }));
+  let scope: Awaited<ReturnType<typeof candidateScope>>;
+  try {
+    scope = await candidateScope(supabase, identity.workId);
+  } catch (error) {
+    redirect(workspaceHref(formData, { error: workspaceMutationError(error, "Произведение не найдено.") }));
+  }
+  const { data: deleted, error } = await supabase
+    .from("book_import_candidates")
+    .delete()
+    .eq("id", identity.rowId)
+    .eq("country_id", scope.country_id)
+    .eq("writer_id", scope.writer_id)
+    .eq("updated_at", identity.expectedUpdatedAt!)
+    .in("status", ["candidate", "rejected"])
+    .select("id")
+    .maybeSingle();
+  if (error || !deleted) {
+    redirect(workspaceHref(formData, {
+      error:
+        error?.message ||
+        "Удалять можно только необработанные или отклонённые записи. Обновите страницу.",
+    }));
+  }
+  const outcome = await finishWorkspaceMutation({
+    supabase,
+    actorId: session.user.id,
+    action: "book_import_candidate.deleted",
+    entityType: "book_import_candidate",
+    entityId: deleted.id,
+    workId: identity.workId,
+  });
+  redirect(workspaceHref(formData, { saved: "workspace", published: outcome.publication }));
 }

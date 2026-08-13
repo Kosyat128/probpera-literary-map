@@ -9,6 +9,7 @@ export type VisualContentEditInput = {
   entityId: string;
   field: string;
   value: unknown;
+  expectedUpdatedAt?: string;
 };
 
 type TextRule = {

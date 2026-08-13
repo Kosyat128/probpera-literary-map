@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import LiteraryWorkWorkspace, {
+  type LiteraryWorkWorkspaceContext,
+} from "@/components/LiteraryWorkWorkspace";
 import { bookEditionRightsStatuses } from "@/lib/book-edition-edit";
 import { lookupEditionByIsbn, normalizeIsbn } from "@/lib/isbn";
 import {
@@ -65,6 +68,7 @@ type LibraryFormContext = {
   writerId: string;
   countryId: string;
   editionId: string;
+  entityExpectedUpdatedAt: string;
 };
 
 function LibraryActionContextFields({
@@ -139,6 +143,11 @@ function VisualEntityFieldForm({
   return (
     <form className="visual-entity-field-form" action={saveVisualEntityFieldFormAction}>
       <LibraryActionContextFields {...formContext} />
+      <input
+        type="hidden"
+        name="expected_updated_at"
+        value={formContext.entityExpectedUpdatedAt}
+      />
       <input type="hidden" name="entity_type" value={entityType} />
       <input type="hidden" name="entity_id" value={entityId} />
       <input type="hidden" name="field" value={field} />
@@ -195,7 +204,7 @@ export default async function LibraryPage({
   let worksCatalogQuery = supabase
     .from("literary_works")
     .select(
-      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata",
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata,updated_at",
       { count: "exact" }
     )
     .order("title")
@@ -210,7 +219,7 @@ export default async function LibraryPage({
   let workPickerQuery = supabase
     .from("literary_works")
     .select(
-      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata",
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata,updated_at",
       { count: "exact" }
     )
     .order("title")
@@ -253,7 +262,7 @@ export default async function LibraryPage({
   let selectedWorkQuery = supabase
     .from("literary_works")
     .select(
-      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata"
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata,updated_at"
     );
   if (requestedWorkId) {
     selectedWorkQuery = UUID_PATTERN.test(requestedWorkId)
@@ -361,6 +370,45 @@ export default async function LibraryPage({
           .maybeSingle()
       : { data: null, error: null };
   const writerOverrideFields = objectValue(writerOverrideResult.data?.fields);
+  const [
+    workTranslationsResult,
+    workSourcesResult,
+    workExternalIdsResult,
+    workImportCandidatesResult,
+  ] = selectedWork
+    ? await Promise.all([
+        supabase
+          .from("literary_work_translations")
+          .select("id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,updated_at")
+          .eq("work_id", selectedWork.id)
+          .order("locale"),
+        supabase
+          .from("literary_work_sources")
+          .select("id,provider,source_url,field_names,license_name,usage,retrieved_at,updated_at")
+          .eq("work_id", selectedWork.id)
+          .order("provider")
+          .order("id"),
+        supabase
+          .from("literary_work_external_ids")
+          .select("id,scheme,external_id,source_url")
+          .eq("work_id", selectedWork.id)
+          .order("scheme")
+          .order("external_id"),
+        supabase
+          .from("book_import_candidates")
+          .select("id,provider,external_id,title,source_url,quality_score,status,rejection_reasons,promoted_work_id,updated_at")
+          .eq("country_id", selectedWork.country_id)
+          .eq("writer_id", selectedWork.writer_id)
+          .order("quality_score", { ascending: false })
+          .order("updated_at", { ascending: false })
+          .order("id"),
+      ])
+    : [
+        { data: [], error: null },
+        { data: [], error: null },
+        { data: [], error: null },
+        { data: [], error: null },
+      ];
   const workOptions = mergeLibraryWorkOptions(
     currentEditionWorkResult.data,
     selectedWork,
@@ -380,7 +428,11 @@ export default async function LibraryPage({
     selectedWorkResult.error ||
     selectedEditionResult.error ||
     currentEditionWorkResult.error ||
-    writerOverrideResult.error;
+    writerOverrideResult.error ||
+    workTranslationsResult.error ||
+    workSourcesResult.error ||
+    workExternalIdsResult.error ||
+    workImportCandidatesResult.error;
   const formContext: LibraryFormContext = {
     catalog,
     isbn: requestedIsbn,
@@ -388,6 +440,23 @@ export default async function LibraryPage({
     writerId: requestedWriterId,
     countryId: requestedCountryId,
     editionId: requestedEditionId,
+    entityExpectedUpdatedAt:
+      selectedWork?.updated_at || writerOverrideResult.data?.updated_at || "",
+  };
+  const workspaceContext: LiteraryWorkWorkspaceContext = {
+    catalogQ: catalog.term,
+    catalogCountry: catalog.country,
+    catalogWriter: catalog.writer,
+    catalogStatus: catalog.status,
+    catalogWorksPage: catalog.worksPage,
+    catalogEditionsPage: catalog.editionsPage,
+    catalogWorkPickerQ: catalog.workPickerTerm,
+    catalogWorkPickerPage: catalog.workPickerPage,
+    catalogIsbn: requestedIsbn,
+    catalogWorkId: requestedWorkId,
+    catalogWriterId: requestedWriterId,
+    catalogCountryId: requestedCountryId,
+    catalogEditionId: requestedEditionId,
   };
   const pageHref = (overrides: LibraryCatalogHrefOptions = {}) =>
     libraryCatalogHref(catalog, {
@@ -428,13 +497,16 @@ export default async function LibraryPage({
         <p className="form-message form-success">
           {query.saved === "entity"
             ? "Изменение сохранено и передано в публикацию."
-            : "Издание сохранено."}
+            : query.saved === "workspace"
+              ? "Редакционная запись произведения сохранена."
+              : "Издание сохранено."}
         </p>
       )}
       {schemaError && (
         <p className="form-message">
-          Книжные таблицы ещё не применены в Supabase. Сначала выполните
-          миграцию 20260730_literary_archive.sql и синхронизацию countries.
+          Книжные таблицы ещё не применены в Supabase. Выполните миграции
+          20260730_literary_archive.sql и 20260808_book_translations_and_import_staging.sql,
+          затем синхронизируйте countries.
         </p>
       )}
       {query.published === "started" && (
@@ -568,6 +640,17 @@ export default async function LibraryPage({
             />
           </div>
         </section>
+      )}
+
+      {selectedWork && !workTranslationsResult.error && !workSourcesResult.error && !workExternalIdsResult.error && !workImportCandidatesResult.error && (
+        <LiteraryWorkWorkspace
+          work={{ id: selectedWork.id, title: selectedWork.title }}
+          translations={workTranslationsResult.data || []}
+          sources={workSourcesResult.data || []}
+          externalIds={workExternalIdsResult.data || []}
+          candidates={workImportCandidatesResult.data || []}
+          context={workspaceContext}
+        />
       )}
 
       {selectedWriterEntityId && !selectedWork && (

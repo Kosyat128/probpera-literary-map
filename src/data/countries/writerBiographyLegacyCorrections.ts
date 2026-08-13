@@ -17,6 +17,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch37,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch37";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch38,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch38";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1648,6 +1651,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch35,
   ...writerBiographyPublicProfileFactCorrectionsBatch36,
   ...writerBiographyPublicProfileFactCorrectionsBatch37,
+  ...writerBiographyPublicProfileFactCorrectionsBatch38,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1740,6 +1744,12 @@ export const quarantinedWriterIdentities = [
   ["liberia", "sylvester_williams", "identity-not-established", "No authoritative identity record establishes the claimed Liberian poet; the card must not be conflated with Henry Sylvester Williams or other namesakes."],
   ["liberia", "varney_bangura", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; country and identity may be conflated with unrelated namesakes."],
   ["liechtenstein", "maria_von_burg", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Liechtenstein writer and dates; the card must not be conflated with similarly named people."],
+  ["macau", "hou_chio_jan", "identity-not-established", "No authoritative catalog establishes the claimed Macanese literary identity, date or attributable bibliography."],
+  ["macau", "hou_jingming", "identity-not-established", "No authoritative catalog establishes the claimed Macanese literary identity; the name must not be conflated with unrelated people or Yao Jingming."],
+  ["madagascar", "elie_charles_abraham", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Malagasy writer and the available secondary dates conflict."],
+  ["madagascar", "jean_francois_samlong", "cross-country-identity-conflict", "Authoritative profiles identify Jean-François Samlong as a Réunion writer born in Sainte-Marie in 1949, not a Madagascar writer born in 1951."],
+  ["madagascar", "nirina_lua", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict."],
+  ["maldives", "amin_jameel", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

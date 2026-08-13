@@ -12,6 +12,7 @@ import ArticleViewCount from "../community/ArticleViewCount";
 import DisplayModeControl from "./DisplayModeControl";
 import InterfaceLanguageControl from "./InterfaceLanguageControl";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
+import { mediaFocusPosition, mediaFocusStyle } from "../utils/mediaFocus";
 import {
   getArticleBookMentions,
   type ArticleBookMention,
@@ -1106,7 +1107,13 @@ export default function ArticleReader({
             {displayArticle.imageUrl && !translationUnavailable && (
               <figure
                 className="article-reader-cover"
-                style={{ backgroundImage: `url("${displayArticle.imageUrl}")` }}
+                style={{
+                  backgroundImage: `url("${displayArticle.imageUrl}")`,
+                  backgroundPosition: mediaFocusPosition(
+                    displayArticle.imageFocusX,
+                    displayArticle.imageFocusY
+                  ),
+                }}
               >
                 <button
                   className="article-reader-cover-button"
@@ -1119,6 +1126,10 @@ export default function ArticleReader({
                 >
                   <img
                     src={displayArticle.imageUrl}
+                    style={mediaFocusStyle(
+                      displayArticle.imageFocusX,
+                      displayArticle.imageFocusY
+                    )}
                     alt={
                       displayArticle.imageAlt ||
                       articleIllustrationAlt(language, displayArticle.title)
@@ -1370,13 +1381,20 @@ export default function ArticleReader({
                         aria-hidden="true"
                         style={
                           item.imageUrl
-                            ? { backgroundImage: `url("${item.imageUrl}")` }
+                            ? {
+                                backgroundImage: `url("${item.imageUrl}")`,
+                                backgroundPosition: mediaFocusPosition(
+                                  item.imageFocusX,
+                                  item.imageFocusY
+                                ),
+                              }
                             : undefined
                         }
                       >
                         {item.imageUrl ? (
                           <img
                             src={item.imageUrl}
+                            style={mediaFocusStyle(item.imageFocusX, item.imageFocusY)}
                             alt=""
                             loading="lazy"
                             decoding="async"
@@ -1414,10 +1432,17 @@ export default function ArticleReader({
                   <span
                     className="article-related-image"
                     aria-hidden="true"
-                    style={{ backgroundImage: `url("${item.imageUrl}")` }}
+                    style={{
+                      backgroundImage: `url("${item.imageUrl}")`,
+                      backgroundPosition: mediaFocusPosition(
+                        item.imageFocusX,
+                        item.imageFocusY
+                      ),
+                    }}
                   >
                     <img
                       src={item.imageUrl}
+                      style={mediaFocusStyle(item.imageFocusX, item.imageFocusY)}
                       alt=""
                       loading="lazy"
                       decoding="async"
