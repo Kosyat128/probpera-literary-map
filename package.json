@@ -27,6 +27,7 @@
     "build:domain": "node scripts/build-domain-release.mjs",
     "domain:audit": "node scripts/audit-domain-release.mjs",
     "release:check": "npm run lint && npm test && npm run community:config:check && npm run interface:language:audit && npm run content:audit && npm run editorial:language:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run writers:biographies:reviews:check && npm run writers:biographies:facts:qa && npm run writers:identities:check && npm run writers:nobel:check && npm run covers:audit && npm run assets:globe:qa && npm run build:all && npm run performance:audit",
+    "release:smoke:live": "node scripts/audit-live-security.mjs",
     "performance:audit": "node scripts/audit-performance-budget.mjs",
     "backup:storage": "node scripts/backup-supabase-storage.mjs",
     "preview": "vite preview",

@@ -70,6 +70,7 @@ const [
   cmsSnapshotText,
   notFoundHtml,
   headersText,
+  securityText,
 ] =
   await Promise.all([
     read("index.html"),
@@ -83,6 +84,7 @@ const [
     fs.readFile(cmsSnapshotPath, "utf8"),
     read("404.html"),
     read("_headers"),
+    read(".well-known/security.txt"),
   ]);
 
 const legacyCatalog = JSON.parse(catalogText);
@@ -154,6 +156,13 @@ check(
     frameAncestors === "https://admin.probpera.ru" &&
     !frameAncestors.includes("*"),
   "production headers разрешают встраивание только защищённой админ-панели"
+);
+
+check(
+  securityText.includes("Contact: mailto:probperasite@yandex.ru") &&
+    securityText.includes("Canonical: https://probpera.ru/.well-known/security.txt") &&
+    Number.isFinite(Date.parse(securityText.match(/^Expires:\s*(.+)$/imu)?.[1] || "")),
+  "security.txt contains a contact, expiry, and canonical address"
 );
 
 const sitemapLocations = [

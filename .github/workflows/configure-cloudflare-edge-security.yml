@@ -1,0 +1,116 @@
+name: Configure Cloudflare edge security
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: "Exact 40-character lowercase main commit SHA to inspect or apply"
+        required: true
+        type: string
+      apply:
+        description: "Apply changes (false performs a read-only dry run)"
+        required: true
+        default: false
+        type: boolean
+      confirmation:
+        description: "For apply=true type exactly: APPLY PROBPERA CLOUDFLARE EDGE"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-cloudflare-edge-security
+  cancel-in-progress: false
+
+jobs:
+  configure:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout the approved main commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          APPLY: ${{ inputs.apply }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "::error::expected_main_sha must be 40 lowercase hexadecimal characters."
+            exit 1
+          }
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The workflow commit does not match expected_main_sha."
+            exit 1
+          }
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The checkout does not match expected_main_sha."
+            exit 1
+          }
+          if [[ "$APPLY" == "true" && "$CONFIRMATION" != "APPLY PROBPERA CLOUDFLARE EDGE" ]]; then
+            echo "::error::The production apply confirmation text is not exact."
+            exit 1
+          fi
+          if [[ "$APPLY" != "true" && -n "$CONFIRMATION" ]]; then
+            echo "::notice::Confirmation is ignored in read-only dry-run mode."
+          fi
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Verify Cloudflare secret presence
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -Eeuo pipefail
+          missing=()
+          [[ -n "$CLOUDFLARE_API_TOKEN" ]] || missing+=(CLOUDFLARE_API_TOKEN)
+          [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]] || missing+=(CLOUDFLARE_ACCOUNT_ID)
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error::Missing required production secrets: ${missing[*]}"
+            exit 1
+          fi
+
+      - name: Reconfirm the current main tip before production apply
+        if: inputs.apply
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(git ls-remote --exit-code origin refs/heads/main | awk '{ print $1 }')"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::main advanced after approval; start a new reviewed run."
+            exit 1
+          }
+
+      - name: Inspect or apply Cloudflare edge policy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          APPLY: ${{ inputs.apply }}
+        run: |
+          set -Eeuo pipefail
+          summary="$(node scripts/cloudflare/configure-edge-security.mjs --apply="$APPLY")"
+          printf '%s\n' "$summary"
+          {
+            echo "## Cloudflare edge policy"
+            echo
+            echo '```text'
+            printf '%s\n' "$summary"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -787,6 +787,11 @@ await fs.writeFile(
 
 /brand/*
   Cache-Control: public, max-age=2592000
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=86400
 `,
   "utf8"
 );

@@ -1,0 +1,47 @@
+name: Audit live production security
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_run:
+    workflows:
+      - Deploy Vite site to GitHub Pages
+      - Deploy editorial admin
+    types:
+      - completed
+    branches:
+      - main
+
+# CodeQL's workflow_run warning does not apply here: this workflow never checks out
+# or executes untrusted pull-request code. Both upstream workflows run only on main,
+# and the checkout below is pinned to their main-branch head SHA.
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-production-security-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout audited release
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Audit live HTTPS, headers, and security.txt
+        run: npm run release:smoke:live -- --attempts=6 --retry-delay-ms=15000
+        env:
+          LIVE_SMOKE_ORIGINS: https://probpera.ru,https://admin.probpera.ru

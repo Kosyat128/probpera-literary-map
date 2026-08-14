@@ -29,7 +29,9 @@ permissions:
 
 concurrency:
   group: pages-production
-  cancel-in-progress: true
+  # A five-minute poll must never interrupt a push or an intentional manual release.
+  # A newer push/manual run may still supersede an older poll or release.
+  cancel-in-progress: ${{ github.event_name != 'schedule' }}
 
 jobs:
   build:
@@ -41,7 +43,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -118,11 +120,17 @@ jobs:
         if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v6
 
+      - name: Verify required hidden Pages files
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        shell: bash
+        run: test -s dist/.well-known/security.txt
+
       - name: Upload production artifact
         if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+          include-hidden-files: true
 
   deploy:
     if: needs.build.outputs.should_deploy == 'true'
@@ -139,7 +147,7 @@ jobs:
 
       - name: Checkout publication finalizer
         if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Node.js for publication finalizer
         if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
@@ -174,7 +182,7 @@ jobs:
 
     steps:
       - name: Checkout social publisher
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Node.js for social publishing
         uses: actions/setup-node@v7

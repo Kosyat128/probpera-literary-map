@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { adminEnv, isSupabaseConfigured } from "@/lib/env";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const configuredAdminBasePath = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH);
   const pathname = request.nextUrl.pathname;
   const duplicatedPrefix = configuredAdminBasePath
