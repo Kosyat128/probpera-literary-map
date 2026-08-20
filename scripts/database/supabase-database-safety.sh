@@ -6,6 +6,9 @@ IFS=$'\n\t'
 readonly DEFAULT_DATABASE_IMAGE="public.ecr.aws/supabase/postgres:17.6.1.136"
 readonly EXPECTED_PRODUCTION_PROJECT_REF="sjqejjmwpzfsczxdghvw"
 readonly EXPECTED_PRODUCTION_API_HOST="${EXPECTED_PRODUCTION_PROJECT_REF}.supabase.co"
+# The pinned image listens here but exports POSTGRES_HOST, which libpq does not
+# consume. Bind every isolated client explicitly instead of relying on defaults.
+readonly ISOLATED_DATABASE_HOST="/var/run/postgresql"
 DATABASE_IMAGE="${DATABASE_IMAGE:-$DEFAULT_DATABASE_IMAGE}"
 RESTORE_CONTAINER=""
 RESTORE_IDENTITY_BODY=""
@@ -133,6 +136,7 @@ verify_seeded_identity_ids() {
   local restored_count restored_digest
 
   docker exec "$RESTORE_CONTAINER" psql \
+    --host="$ISOLATED_DATABASE_HOST" \
     --username=postgres \
     --dbname=probpera_restore \
     --no-psqlrc \
@@ -152,6 +156,7 @@ verify_seeded_identity_ids() {
 
   restored_count="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -167,6 +172,9 @@ verify_seeded_identity_ids() {
 wait_for_initialized_restore_database() {
   local ready=false
   local platform_state=""
+  local pid1_stage="waiting"
+  local pg_isready_stage="not-run"
+  local query_stage="not-run"
 
   for _attempt in {1..60}; do
     # The upstream postgres entrypoint first exposes a temporary server while it
@@ -174,22 +182,55 @@ wait_for_initialized_restore_database() {
     # pg_isready alone can therefore succeed too early.  Require PID 1 to be the
     # final server as well as the exact initialized Supabase base contract. Vault
     # is bootstrapped separately only after its completely absent state is proven.
-    if docker exec "$RESTORE_CONTAINER" sh -ceu \
-        '[ "$(cat /proc/1/comm)" = "postgres" ]' >/dev/null 2>&1 \
-      && docker exec "$RESTORE_CONTAINER" pg_isready \
-        --username=postgres --dbname=probpera_restore >/dev/null 2>&1 \
-      && platform_state="$(
-        docker exec "$RESTORE_CONTAINER" psql \
-          --username=postgres \
-          --dbname=probpera_restore \
-          --no-psqlrc \
-          --tuples-only \
-          --no-align \
-          --set=ON_ERROR_STOP=1 \
-          --command="select current_database() = 'probpera_restore', to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
-          2>/dev/null
-      )" \
-      && [[ "$platform_state" == "t|t|t|t|t" ]]; then
+    if ! docker exec "$RESTORE_CONTAINER" sh -ceu \
+        '[ "$(cat /proc/1/comm)" = "postgres" ]' >/dev/null 2>&1; then
+      platform_state=""
+      pid1_stage="waiting"
+      pg_isready_stage="not-run"
+      query_stage="not-run"
+      sleep 2
+      continue
+    fi
+    pid1_stage="ready"
+
+    if ! docker exec "$RESTORE_CONTAINER" pg_isready \
+        --host="$ISOLATED_DATABASE_HOST" \
+        --username=postgres \
+        --dbname=probpera_restore >/dev/null 2>&1; then
+      platform_state=""
+      pg_isready_stage="waiting"
+      query_stage="not-run"
+      sleep 2
+      continue
+    fi
+    pg_isready_stage="ready"
+
+    if ! platform_state="$(
+      docker exec "$RESTORE_CONTAINER" psql \
+        --host="$ISOLATED_DATABASE_HOST" \
+        --username=postgres \
+        --dbname=probpera_restore \
+        --no-psqlrc \
+        --tuples-only \
+        --no-align \
+        --set=ON_ERROR_STOP=1 \
+        --command="select current_database() = 'probpera_restore', to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
+        2>/dev/null
+    )"; then
+      platform_state=""
+      query_stage="error"
+      sleep 2
+      continue
+    fi
+    if [[ "$platform_state" =~ ^[tf]\|[tf]\|[tf]\|[tf]\|[tf]$ ]]; then
+      query_stage="ready"
+    else
+      query_stage="invalid-output"
+      sleep 2
+      continue
+    fi
+
+    if [[ "$platform_state" == "t|t|t|t|t" ]]; then
       ready=true
       break
     fi
@@ -201,6 +242,7 @@ wait_for_initialized_restore_database() {
     if [[ "$platform_state" =~ ^[tf]\|[tf]\|[tf]\|[tf]\|[tf]$ ]]; then
       diagnostic_state="$platform_state"
     fi
+    echo "::error::Isolated readiness stages (pid1|pg_isready|query): $pid1_stage|$pg_isready_stage|$query_stage" >&2
     echo "::error::Isolated base vector (database|auth_users|auth_schema|roles|auth_id_contract): $diagnostic_state" >&2
     docker logs "$RESTORE_CONTAINER" >&2
     die "Isolated Supabase PostgreSQL did not reach the exact initialized base platform state."
@@ -212,6 +254,7 @@ bootstrap_isolated_restore_vault() {
 
   vault_precondition="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -226,6 +269,7 @@ bootstrap_isolated_restore_vault() {
   # Existence-tolerant DDL and disconnect tolerance are forbidden: a concurrent
   # or partial state, or any hook failure, aborts the transaction and the drill.
   docker exec "$RESTORE_CONTAINER" psql \
+    --host="$ISOLATED_DATABASE_HOST" \
     --username=postgres \
     --dbname=probpera_restore \
     --no-psqlrc \
@@ -237,6 +281,7 @@ bootstrap_isolated_restore_vault() {
 
   vault_state="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -253,6 +298,7 @@ assert_empty_application_schema() {
   local application_empty
   application_empty="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -531,6 +577,7 @@ command_restore_drill() {
   docker cp "$dump" "$RESTORE_CONTAINER:/tmp/probpera.dump"
   if (( RESTORE_IDENTITY_COUNT > 0 )); then
     docker exec --interactive "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -543,6 +590,7 @@ command_restore_drill() {
   verify_seeded_identity_ids
 
   docker exec "$RESTORE_CONTAINER" pg_restore \
+    --host="$ISOLATED_DATABASE_HOST" \
     --username=postgres \
     --dbname=probpera_restore \
     --schema=public \
@@ -557,6 +605,7 @@ command_restore_drill() {
   restored_auth_users="$RESTORE_IDENTITY_COUNT"
   core="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -574,6 +623,7 @@ command_restore_drill() {
     [[ -s "$plan_absolute" ]] || die "Migration plan is missing or empty."
     docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -584,6 +634,7 @@ command_restore_drill() {
 
   restored_articles="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -597,6 +648,7 @@ command_restore_drill() {
 
   publication_schema="$(
     docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \

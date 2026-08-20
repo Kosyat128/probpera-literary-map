@@ -148,8 +148,22 @@ describe("guarded production database reconciliation", () => {
     );
     expect(readinessImplementation).toContain("pg_isready");
     expect(readinessImplementation).toContain(
-      "--username=postgres --dbname=probpera_restore"
+      '--host="$ISOLATED_DATABASE_HOST"'
     );
+    expect(readinessImplementation).toContain("--username=postgres");
+    expect(readinessImplementation).toContain("--dbname=probpera_restore");
+    expect(helper).toContain(
+      'readonly ISOLATED_DATABASE_HOST="/var/run/postgresql"'
+    );
+    expect(
+      helper.match(/--host="\$ISOLATED_DATABASE_HOST"/gu)
+    ).toHaveLength(14);
+    expect(
+      helper.match(
+        /docker exec(?: --interactive)? "\$RESTORE_CONTAINER" (?:psql|pg_isready|pg_restore) \\/gu
+      )
+    ).toHaveLength(14);
+    expect(helper).not.toContain("--env PGHOST=");
     expect(readinessImplementation).not.toContain("supabase_vault");
     expect(readinessImplementation).not.toContain("vault.secrets");
     expect(readinessImplementation).toContain(
@@ -179,6 +193,18 @@ describe("guarded production database reconciliation", () => {
     );
     expect(readinessImplementation).toContain(
       'local diagnostic_state="unavailable"'
+    );
+    expect(readinessImplementation).toContain('local pid1_stage="waiting"');
+    expect(readinessImplementation).toContain(
+      'local pg_isready_stage="not-run"'
+    );
+    expect(readinessImplementation).toContain('local query_stage="not-run"');
+    expect(readinessImplementation).toContain('pid1_stage="ready"');
+    expect(readinessImplementation).toContain('pg_isready_stage="ready"');
+    expect(readinessImplementation).toContain('query_stage="error"');
+    expect(readinessImplementation).toContain('query_stage="invalid-output"');
+    expect(readinessImplementation).toContain(
+      "Isolated readiness stages (pid1|pg_isready|query)"
     );
     expect(readinessImplementation).toContain(
       "did not reach the exact initialized base platform state"
