@@ -681,8 +681,8 @@ describe("legacy writer biography curation", () => {
       resolveBookArchivePublicTarget(countries, book)
     );
 
-    expect(archive).toHaveLength(9_712);
-    expect(publicArchive).toHaveLength(31);
+    expect(archive).toHaveLength(9_729);
+    expect(publicArchive).toHaveLength(48);
     expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
     expect(booksWhoseWriterCardIsQuarantined).toHaveLength(48);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(

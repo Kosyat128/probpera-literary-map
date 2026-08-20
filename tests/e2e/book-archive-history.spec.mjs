@@ -6,6 +6,11 @@ test("switching book details keeps one history entry and close returns to the ar
 }) => {
   test.skip(Boolean(isMobile), "Desktop history contract");
   await page.goto("/#books");
+  await expect(
+    page
+      .locator(".book-archive-filters")
+      .getByRole("button", { name: /Весь архив/u })
+  ).toContainText(/9\s*729/u, { timeout: 60_000 });
   const detailButtons = page.locator(".archive-book-detail");
   await expect(detailButtons.first()).toBeVisible({ timeout: 20_000 });
 

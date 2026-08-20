@@ -531,7 +531,7 @@ async function validateCanonicalArchive(committedManifest) {
     baselinePublicCount,
     currentPublicCount,
   } = archiveModule;
-  if (baseline.length !== 9_712 || current.length !== 9_712) {
+  if (baseline.length !== 9_729 || current.length !== 9_729) {
     throw new Error(
       "Размер архива изменился: baseline=" +
         baseline.length +
@@ -540,7 +540,7 @@ async function validateCanonicalArchive(committedManifest) {
         "."
     );
   }
-  if (baselinePublicCount !== 31 || currentPublicCount !== 31) {
+  if (baselinePublicCount !== 48 || currentPublicCount !== 48) {
     throw new Error(
       "Количество публичных карточек изменилось: " +
         baselinePublicCount +

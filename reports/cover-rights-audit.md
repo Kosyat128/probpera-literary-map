@@ -1,11 +1,11 @@
 # Аудит прав на обложки
 
-Сформирован: 2026-08-13T00:00:00.000Z
+Сформирован: 2026-08-20T00:00:00.000Z
 
-- Найдено обложек: 170
+- Найдено обложек: 213
 - В country-файлах: 65
-- Из пользовательского manifest-overlay: 105
-- Разрешено к показу политикой проекта: 170
+- Из пользовательского manifest-overlay: 148
+- Разрешено к показу политикой проекта: 213
 - Заблокировано до проверки: 0
 - Записей с замечаниями: 0
 
@@ -1747,4 +1747,477 @@
 - Размеры: 720×1080; миниатюра 360×540
 - Примечание: Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.
 - Provenance: user-supplied; archive SHA-256: 2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f; image SHA-256: f42eec129a36ad213d94f0e434a7d6773636169e5846c5d72d933bbbccb9eb42
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/ghostwritten-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: f3f2ee4049bf9e91edea2e89faa18f4b618e5e86df4aff8dcbf77a86d43b1873
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/number9dream-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 6a5ab5ab61bd5b4767ab349195692d7ef875f1eb667fc6bd87d9977054f75fbd
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/cloud-atlas-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 8f713895aae89071809161fbb7745737454812f790a8ff3fcb366b5e05111eb1
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/black-swan-green-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 8b6e7e3bfa4ff3d561064aecd65b8a7cd20c8dc235fb19b2a34d480026536f72
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 5f1db49d376574260f9a679f670009f5e34eb77ea79080e74b4aca58417feb89
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/simple-mortals-bone-clocks-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 688ff5bfa8555fefe16aca9efa178048649a341d8bdb68041f786ef1aa6268ae
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/slade-house-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: f71033a7f7fd2ba4e232876609fb436ccc509ce0fac3b8296dae9f4a5382d78b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/utopia-avenue-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 58345b0d6c1112ff29259bf9f7368b5667dab82e23f49f0ac5572f7b5a29f2c8
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/bone-clocks-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 2c4dba79cc307ea8a2ce42d0980d9759f155620ccec15946f5c4f03737368b34
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/slade-house-russian-title-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: ca169afb49521be6b0a710e43a32d7f2406194b5369f79cfc1ae6a61e80ce323
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/norwegian-wood-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 0167484e99373ab609a81bba1187b246bfb796e342c711674e170931bf20df5d
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/kafka-on-the-shore-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: eabf63d1dd1267bdaa951b9f4a6772e5b814d897949501334aa3672c56fd5a33
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/1q84-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: ffe0870b3b4389b06ed1e57668e0faf0eaa3440e174a3883fff2acd34fe52449
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/wind-up-bird-chronicle-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 758926b74f5b6914f286e1544a573ba915d2d5ef2c5a0cf4cda7607e5c417364
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/wild-sheep-chase-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 0bf23ce70906c1c1dfb1b648c460d9d0eb19f6833a664716663d3c3c70875bd3
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/south-of-border-west-of-sun-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 178c4dd1ef95c676f3f7000060da5f55e47b547ddcf02cb3074b9275fe5e7cca
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/hard-boiled-wonderland-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 3ce6d45730236900370f9fe43e4d7ca63984aeeada1ff8316eba147da13488c6
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/after-dark-murakami-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: d332496821fac7fa456cca8a2ec1ddb051fb3af81492b8d3c48ef1479bd04a4b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/colorless-tsukuru-tazaki-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 9df897e87fdead735daa58bd18562773243a2516fd03adde050f9b1f57a7f0fb
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/killing-commendatore-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: a895f759e2bb95e5c2c5a1c7970768c984bd205cb6127856fe68c38477951439
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/steppe-chekhov-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 933763c27b85877b2a05e461485aeb9e54e787cbbb767a370fee84c0aae9a6a9
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-duel-chekhov-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 3e15d468cae4266f30c1293f4014b858bfa8fd9d72bc197c1cbcd3405b5a2f66
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/ward-no-6-chekhov-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 6379b4a307f68b46c729ea8ec101722373f532bbd45b77fd22b006bdeb54514d
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 51ec7a4d6c4181c3c175d570281d3f1490805def9fd707228c8d38e0b2b7bd6b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/seagull-chekhov-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 6889718a284a14e40313f50a87b29b1565d02c7fb1e76574019201ae6c6fe44b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/uncle-vanya-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 1aad7145250d21b431fd47605601058ef14f33c42ab0439a13c875d754c25e63
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/the-man-in-a-case-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 5d8612d8bcac86413e4285098029d5d200bf9761c1002a68af0f641777748aff
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/lady-with-the-dog-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: e557ac410d2c19279e995dfef3ef176452ae61f0330809005b55e7bda2932f34
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/three-sisters-chekhov-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 0177ec23c1013b28781257eaca4598322da4c5474bee31862fea347b19a2aca3
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/cherry-orchard-chekhov-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 3bb7fdc6ed08d0a8c855060021f2768e0b796506b5b2c923f66e148f7aee076b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/time-machine-wells-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: da74066b97f510e3a6c6ef8d46fd81e04c345c42d2cdac470d94cefac8f8e462
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/island-doctor-moreau-wells-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 38eb73dcecee5ef77cd50999fd4298e061778e5f88dc06de9be7cf7c92d6f2c0
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/invisible-man-wells-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 12291413f47479a7235839033b13041bf3bacb1fbc3e177c1cd8ca4cf03dd793
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/war-of-worlds-wells-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: b64fad72ea1c0d2bc60cde7ea2d370323a607852e0b514d61e7258ff6f72dbaf
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/when-sleeper-wakes-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/first-men-in-moon-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 36bee097b385bedbf20bf4d6c5583cb8283cd440918b19065822cb2a64767db4
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/food-of-gods-wells-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 48f2f9f60f846df926bde08e2aac57b4147bdbf1a41a4eecc52c767fcbc86a2b
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/war-in-air-wells-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 40be5e5c45dada67e67173ccb19beeab2a7f5f5ba5fdf32e98e345d292235a1e
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/world-set-free-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: b0b9b30bfb4cca9e837862031516f88a5df4876e926f1d6697f092ba3d92d80f
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/men-like-gods-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 5e74ed2538481011a6cd8c4ebcd5920a2789afec224d2b79dcdf14a4019d0292
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/tono-bungay-wells-20260820-alternate.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 95104ce34142a278e7d8660dc03b4658c0cda39b81b839096d523bdb949f2729
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/ann-veronica-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde
+- Замечаний нет
+
+## generated/userSuppliedBookCoversBatch20260820.generated.json
+
+- Статус: editorial-original
+- Показ: разрешён
+- Источник: brand/book-covers/history-mr-polly-20260820-editorial.webp
+- Проверено: 2026-08-20
+- Размеры: 720×1080; миниатюра 360×540
+- Примечание: Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.
+- Provenance: user-supplied; archive SHA-256: 0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3; image SHA-256: 15b56974651b0590b09225001307f8302a43f19774fda33889df770f84bad765
 - Замечаний нет

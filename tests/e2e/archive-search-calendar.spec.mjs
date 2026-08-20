@@ -85,7 +85,7 @@ test("архив и изображения сохраняют desktop-сетку
   await expect(cover).toHaveCSS("object-fit", "contain");
 });
 
-test("архив разделяет 31 проверенную книгу и 9 681 карточку в очереди", async ({
+test("архив разделяет 48 проверенных книг и 9 681 карточку в очереди", async ({
   page,
   isMobile,
 }) => {
@@ -98,8 +98,8 @@ test("архив разделяет 31 проверенную книгу и 9 68
   });
   const pending = filters.getByRole("button", { name: /Непроверенные/u });
 
-  await expect(all).toContainText(/9\s*712/u, { timeout: 20_000 });
-  await expect(verified).toContainText(/31/u);
+  await expect(all).toContainText(/9\s*729/u, { timeout: 40_000 });
+  await expect(verified).toContainText(/48/u);
   await expect(pending).toContainText(/9\s*681/u);
 
   await pending.click();
@@ -111,7 +111,7 @@ test("архив разделяет 31 проверенную книгу и 9 68
   );
 
   await verified.click();
-  await expect(page.locator(".book-filter-heading small")).toContainText(/31/u);
+  await expect(page.locator(".book-filter-heading small")).toContainText(/48/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );

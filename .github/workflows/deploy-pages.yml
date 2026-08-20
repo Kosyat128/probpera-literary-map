@@ -29,17 +29,23 @@ permissions:
 
 concurrency:
   group: pages-production
-  # A five-minute poll must never interrupt a push or an intentional manual release.
-  # A newer push/manual run may still supersede an older poll or release.
-  cancel-in-progress: ${{ github.event_name != 'schedule' }}
+  # One production release owns the complete code+CMS snapshot lifecycle. A
+  # newer request is coalesced behind it and can never cancel midway or let an
+  # older artifact overtake a newer production state.
+  cancel-in-progress: false
+  # Preserve every pending code/CMS owner instead of GitHub's default
+  # single-pending replacement. GitHub currently supports up to 100 queued runs.
+  queue: max
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.release_gate.outputs.should_deploy }}
-      scheduled_ids: ${{ steps.scheduled.outputs.ids }}
       rebuild_max_id: ${{ steps.rebuild.outputs.max_id }}
+      publication_article_count: ${{ steps.publication_snapshot.outputs.article_count }}
+      publication_outbox_high_water: ${{ steps.publication_snapshot.outputs.outbox_high_water }}
+      publication_content_sha256: ${{ steps.publication_snapshot.outputs.content_sha256 }}
 
     steps:
       - name: Checkout repository
@@ -70,11 +76,19 @@ jobs:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
+      - name: Check whether production is behind the scheduled code head
+        id: deployed_code
+        if: github.event_name == 'schedule'
+        run: node scripts/check-deployed-release-head.mjs
+        env:
+          EXPECTED_MAIN_SHA: ${{ github.sha }}
+          PUBLIC_SITE_URL: https://probpera.ru
+
       - name: Decide whether a release is needed
         id: release_gate
         shell: bash
         run: |
-          if [[ "${{ github.event_name }}" != "schedule" || "${{ steps.scheduled.outputs.published }}" != "0" || "${{ steps.rebuild.outputs.requested }}" == "1" ]]; then
+          if [[ "${{ github.event_name }}" != "schedule" || "${{ steps.scheduled.outputs.published }}" != "0" || "${{ steps.rebuild.outputs.requested }}" == "1" || "${{ steps.deployed_code.outputs.code_pending }}" == "1" ]]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
@@ -87,6 +101,17 @@ jobs:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           PUBLIC_SITE_URL: https://probpera.ru
+
+      - name: Export current CMS snapshot for release verification
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run content:export:cms
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          PUBLIC_SITE_URL: https://probpera.ru
+          CMS_EXPORT_REQUIRE_STABLE: "true"
+          CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
 
       - name: Verify public site and editorial archive
         if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
@@ -109,6 +134,22 @@ jobs:
         env:
           YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
 
+      - name: Re-export and freeze the complete CMS publication head
+        id: publication_snapshot
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run content:export:cms
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          PUBLIC_SITE_URL: https://probpera.ru
+          CMS_EXPORT_REQUIRE_STABLE: "true"
+          CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
+
+      - name: Verify the frozen CMS publication snapshot
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run content:audit && npm run links:audit
+
       - name: Build production site
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run build:domain
@@ -118,6 +159,8 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           VITE_BOOSTY_URL: ${{ vars.VITE_BOOSTY_URL }}
           YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
+          CMS_SNAPSHOT_PREEXPORTED: "true"
+          RELEASE_COMMIT_SHA: ${{ github.sha }}
 
       - name: Enforce production performance budget
         if: steps.release_gate.outputs.should_deploy == 'true'
@@ -148,28 +191,103 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      - name: Checkout publication finalizer
-        if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
+      - name: Checkout publication guard
         uses: actions/checkout@v7
 
-      - name: Set up Node.js for publication finalizer
-        if: needs.build.outputs.scheduled_ids != '' || needs.build.outputs.rebuild_max_id != ''
+      - name: Set up Node.js for publication guard
         uses: actions/setup-node@v7
         with:
           node-version: 24
 
-      - name: Finalize scheduled publications
-        if: needs.build.outputs.scheduled_ids != ''
-        run: node scripts/publish-scheduled-content.mjs --finalize=${{ needs.build.outputs.scheduled_ids }}
+      - name: Refuse stale code or CMS publication heads
+        run: npm run content:publication:head-check
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ github.sha }}
+          CANDIDATE_ARTICLE_COUNT: ${{ needs.build.outputs.publication_article_count }}
+          CANDIDATE_OUTBOX_HIGH_WATER: ${{ needs.build.outputs.publication_outbox_high_water }}
+          CANDIDATE_CONTENT_SHA256: ${{ needs.build.outputs.publication_content_sha256 }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+  publication_followup:
+    name: Coalesce a post-deploy CMS follow-up
+    if: needs.build.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - deploy
+    outputs:
+      safe_to_finalize: ${{ steps.postdeploy_followup.outputs.safe_to_finalize }}
+    # GitHub permissions cannot be scoped to one step. Keep Actions write in
+    # this single-purpose job; build, deployment and finalization never receive it.
+    permissions:
+      contents: read
+      actions: write
+
+    steps:
+      - name: Checkout publication follow-up guard
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js for publication follow-up guard
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Coalesce an immediate CMS follow-up after Pages promotion
+        id: postdeploy_followup
+        continue-on-error: true
+        run: npm run content:publication:coalesce
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ github.sha }}
+          CANDIDATE_OUTBOX_HIGH_WATER: ${{ needs.build.outputs.publication_outbox_high_water }}
+
+      - name: Record the scheduled-poll fallback
+        if: steps.postdeploy_followup.outcome != 'success'
+        shell: bash
+        run: |
+          {
+            echo "## Immediate follow-up dispatch was unavailable"
+            echo
+            echo "The promoted artifact remains a valid snapshot, but its outbox marker is not acknowledged."
+            echo "The five-minute transactional outbox poll remains the fail-closed recovery path."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  finalize_publication:
+    name: Finalize the deployed CMS snapshot
+    if: needs.publication_followup.outputs.safe_to_finalize == 'true'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - deploy
+      - publication_followup
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout publication finalizer
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js for publication finalizer
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Finalize the deployed transactional CMS snapshot
+        if: needs.build.outputs.publication_outbox_high_water != '' && needs.build.outputs.publication_outbox_high_water != '0'
+        run: node scripts/check-public-build-requests.mjs --finalize=outbox:${{ needs.build.outputs.publication_outbox_high_water }}
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
-      - name: Finalize public rebuild requests
+      - name: Finalize compatibility rebuild requests
         if: needs.build.outputs.rebuild_max_id != ''
         run: node scripts/check-public-build-requests.mjs --finalize=${{ needs.build.outputs.rebuild_max_id }}
         env:

@@ -101,6 +101,10 @@ const updateResponse = await fetch(
     body: JSON.stringify({
       status: "published",
       published_at: now,
+      // The transactional outbox is the retry contract. Clearing the schedule
+      // in the same mutation prevents a failed deploy from publishing the row
+      // repeatedly while still leaving its outbox request pending.
+      scheduled_at: null,
     }),
   }
 );

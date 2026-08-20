@@ -114,3 +114,9 @@ jobs:
             printf '%s\n' "$summary"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify live edge behavior after apply
+        if: inputs.apply
+        run: |
+          set -Eeuo pipefail
+          node scripts/audit-live-security.mjs --attempts=6 --retry-delay-ms=15000

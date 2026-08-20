@@ -86,11 +86,14 @@ describe("modern globe site-copy labels", () => {
       ).then(JSON.parse),
     ]);
     const build = packageJson.scripts.build;
+    const snapshotBuild = packageJson.scripts["build:from-snapshot"];
     expect(build.indexOf("content:export:cms")).toBeLessThan(
-      build.indexOf("assets:globe:modern")
+      build.indexOf("build:from-snapshot")
     );
-    expect(build.indexOf("assets:globe:modern")).toBeLessThan(
-      build.indexOf("assets:globe:qa")
+    expect(snapshotBuild).toContain("assets:globe:modern");
+    expect(snapshotBuild).toContain("assets:globe:qa");
+    expect(snapshotBuild.indexOf("assets:globe:modern")).toBeLessThan(
+      snapshotBuild.indexOf("assets:globe:qa")
     );
     expect(builderSource).toContain("publicCmsSnapshotPath");
     expect(builderSource).toContain("resolveModernGlobeLabels");

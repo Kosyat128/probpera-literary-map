@@ -26,6 +26,7 @@
 22. `supabase/migrations/20260813_unified_revision_history.sql`
 23. `supabase/migrations/20260814_publication_outbox_and_schema_health.sql`
 24. `supabase/migrations/20260820_homepage_book_month_editorial_choice.sql`
+25. `supabase/migrations/20260820_literary_work_cover_artworks.sql`
 
 Восьмая миграция добавляет безопасное редактирование профиля, загрузку
 аватаров, любимые страны и писателей, репутацию и оценки тем форума. Она также
@@ -50,6 +51,9 @@
 схемы для экрана здоровья админки. Миграция 24 атомарно заменяет устаревшую
 системную подпись блока книги месяца на «Выбор редакции», не затрагивая
 пользовательский текст.
+Миграция 25 добавляет отдельное work-level хранилище редакционных обложек,
+не приписывает иллюстрациям издательские ISBN, сохраняет неизменяемый
+archive/image provenance и включает 21-й публикационный outbox-триггер.
 
 Перед каждой серией изменений обязательны четыре последовательных шага:
 
@@ -59,7 +63,7 @@
    выполняется тем же workflow и не затрагивает production.
 3. Применить ещё не применённые миграции строго в порядке имени файла.
 4. Открыть `/health` в админке и подтвердить текущую схему
-   `20260814_publication_outbox_and_schema_health`, наличие всех outbox-триггеров
+   `20260820_literary_work_cover_artworks`, наличие всех 21 outbox-триггеров
    и отсутствие ошибок очереди публикации.
 
 Workflow требует GitHub Secrets `SUPABASE_DB_URL` и
@@ -99,6 +103,17 @@ node scripts/import-articles-to-supabase.mjs --apply
 
 ```text
 npm run books:sync
+```
+
+Для batch обложек 20 августа сначала выполняется локальный dry-run, затем
+read-only preflight всех обязательных таблиц и schema-health RPC, и только
+после успешного согласования миграций — точечная синхронизация 41 canonical
+work target (17 из них добавлены этим статическим batch) и 43 artwork-записей:
+
+```text
+npm run books:sync:covers-20260820
+npm run books:sync:covers-20260820:preflight
+npm run books:sync:covers-20260820:apply
 ```
 
 ## Восстановление

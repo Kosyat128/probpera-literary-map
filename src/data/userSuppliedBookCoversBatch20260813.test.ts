@@ -47,7 +47,7 @@ describe("пользовательские редакционные обложк
     );
 
     expect(userSuppliedBookCoverBatch20260813Manifest).toEqual(batchManifestJson);
-    expect(userSuppliedBookCoverManifests).toHaveLength(2);
+    expect(userSuppliedBookCoverManifests).toHaveLength(3);
     expect(userSuppliedBookCoverBatch20260813Manifest).toMatchObject({
       schemaVersion: 1,
       generatedAt: "2026-08-13T00:00:00.000Z",
@@ -111,10 +111,10 @@ describe("пользовательские редакционные обложк
       expect(isCoverArtworkDisplayAllowed(after!)).toBe(true);
     }
 
-    expect(archive).toHaveLength(9_712);
-    expect(baseline).toHaveLength(9_712);
-    expect(archive.filter(isPublicBook)).toHaveLength(31);
-    expect(baseline.filter(isPublicBook)).toHaveLength(31);
+    expect(archive).toHaveLength(9_729);
+    expect(baseline).toHaveLength(9_729);
+    expect(archive.filter(isPublicBook)).toHaveLength(48);
+    expect(baseline.filter(isPublicBook)).toHaveLength(48);
   });
 
   it("фиксирует каждую запись архива ровно в одной категории решения", async () => {

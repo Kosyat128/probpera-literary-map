@@ -9,30 +9,61 @@ Workflow `Configure Cloudflare edge security` безопасно сверяет 
 идентификаторы зоны и ruleset не выводятся в журнал. Для токена нужны как минимум:
 
 - Zone / Zone Settings: Read и Edit;
+- Zone / Single Redirect: Edit;
 - Zone / Transform Rules: Read и Edit;
 - Zone / Cache Rules: Read и Edit;
 - Zone / Zone: Read.
 
 ## Что управляется
 
-1. `Always Use HTTPS = on` для зоны.
-2. Одно Response Header Transform Rule со стабильным `ref`
+1. `Always Use HTTPS = on` остаётся включённым как дополнительная зональная
+   защита.
+2. Одно zone-level Single Redirect Rule в фазе
+   `http_request_dynamic_redirect` со стабильным `ref`
+   `probpera-zone-http-to-https-v1`. Оно срабатывает только для незашифрованных
+   запросов (`not ssl`) к `probpera.ru` и `admin.probpera.ru`, возвращает `308`
+   на тот же host и path и сохраняет query string. Поэтому HTTPS-запросы не
+   попадают в цикл. Новое управляемое правило явно добавляется в конец ruleset,
+   а существующее обновляется на своей текущей позиции: оно не может затенить
+   более раннее ручное правило и не меняет взаимный порядок посторонних правил.
+3. Одно Response Header Transform Rule со стабильным `ref`
    `probpera-public-security-response-headers-v1`. Выражение строго
    `(http.host eq "probpera.ru")`, поэтому правило не меняет ответы админки.
    Оно задаёт те же защитные заголовки, что объявлены для публичной сборки в
    `dist/_headers`: CSP, HSTS, `nosniff`, строгий `Referrer-Policy`, отключение
    camera/microphone/geolocation/payment и COOP `same-origin`.
-3. Одно Cache Rule со стабильным `ref`
+4. Одно Cache Rule со стабильным `ref`
    `probpera-public-immutable-assets-cache-v1`: годовой browser/edge TTL только
    для хешированных Vite-ресурсов `/assets/*` публичного хоста. Редакционные
    каталоги `/assets/country-flags/*` и `/assets/writer-portraits/*`, а также
    `/textures/*` и `/brand/*` намеренно не входят в это правило, поскольку их
    стабильные имена не гарантируют неизменяемость содержимого.
 
-Скрипт добавляет или обновляет только правило с собственным `ref` через API
+Скрипт добавляет или обновляет только правила с собственными `ref` через API
 одного правила. Посторонние правила не отправляются обратно целиком и не
 удаляются. Дубли собственных `ref`, неоднозначная зона, неполная пагинация и
-потенциально пересекающиеся ручные правила вызывают отказ до записи.
+потенциально пересекающиеся ручные header/cache rules вызывают отказ до записи.
+Для Single Redirect действует более строгая fail-closed проверка: до любой
+записи каждое включённое постороннее правило должно быть доказуемо непересекающимся
+с незашифрованным трафиком обоих целевых хостов (например, только `ssl` или
+другой точный host). Незнакомое или сложное выражение считается потенциальным
+пересечением и останавливает apply. Отключённые правила сохраняются, но не
+блокируют применение. После apply повторное чтение проверяет не только наличие
+управляемого правила, но и прежние порядок и семантическое содержимое каждого
+постороннего redirect rule.
+
+Значение `always_use_https=on` в API подтверждает только сохранённую настройку,
+но не является проверкой фактического HTTP-ответа. После apply workflow поэтому
+запускает live-аудит: для обоих хостов он требует `301` или `308`, обязательный
+`Location` и точное сохранение host/path/query. Явный Single Redirect является
+репозиторно управляемым механизмом принудительного HTTPS, в том числе перед
+маршрутизацией Worker. Это соответствует
+[рекомендации Cloudflare по миграции Always Use HTTPS](https://developers.cloudflare.com/rules/reference/page-rules-migration/#migrate-always-use-https)
+и API-фазе
+[`http_request_dynamic_redirect`](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/).
+Cloudflare документирует, что добавление одного правила без позиции помещает
+его в конец; configurator задаёт эквивалентную явную позицию `after: ""`:
+[Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/).
 
 ## Порядок ручного запуска
 

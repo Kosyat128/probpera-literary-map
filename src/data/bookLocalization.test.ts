@@ -55,7 +55,7 @@ describe("локализация книжной карточки", () => {
           /\p{Script=Cyrillic}/u.test(writerName)
       );
 
-    expect(archiveBooks).toHaveLength(9_712);
+    expect(archiveBooks).toHaveLength(9_729);
     expect(invalidWriterNames).toEqual([]);
   });
 

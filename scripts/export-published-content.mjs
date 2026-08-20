@@ -16,6 +16,15 @@ import { staleManagedCmsArticleSnapshotNames } from "./lib/cms-article-snapshot-
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
+import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
+import {
+  articleIdSet,
+  assertCandidateCanReplaceBaseline,
+  assertStableOutboxWindow,
+  cmsSourceArticleId,
+  normalizeOutboxHighWater,
+  publicationMetadata,
+} from "./lib/cms-publication-state.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -69,6 +78,11 @@ const supabaseUrl = (
   ""
 ).replace(/\/+$/, "");
 const { apiKey, publicKey } = resolveCmsExportKeys(process.env);
+const serviceRoleKey = String(process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
+const requireStableSnapshot = process.env.CMS_EXPORT_REQUIRE_STABLE === "true";
+const publicationBaselineUrl = String(
+  process.env.CMS_PUBLICATION_BASELINE_URL || ""
+).trim();
 const siteOrigin = (
   process.env.PUBLIC_SITE_URL ||
   process.env.VITE_PUBLIC_SITE_URL ||
@@ -76,10 +90,20 @@ const siteOrigin = (
 ).replace(/\/+$/, "");
 
 if (!supabaseUrl || !apiKey) {
+  if (requireStableSnapshot) {
+    throw new Error(
+      "Stable CMS export requires SUPABASE_URL and a configured export key."
+    );
+  }
   console.log(
     "CMS export skipped: public Supabase variables are not configured. Existing CMS snapshot is preserved."
   );
   process.exit(0);
+}
+if (requireStableSnapshot && !serviceRoleKey) {
+  throw new Error(
+    "Stable CMS export requires SUPABASE_SERVICE_ROLE_KEY for the publication outbox and withdrawal guard."
+  );
 }
 const publicSnapshotKey = requirePublicCmsExportKey(publicKey);
 
@@ -162,6 +186,91 @@ async function fetchRows(table, query) {
 
 async function fetchOptionalRows(table, query, accessKey = apiKey) {
   return fetchTableRows(table, query, accessKey, true);
+}
+
+async function fetchOutboxHighWater() {
+  if (!serviceRoleKey) return null;
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/public_build_outbox?select=id&order=id.desc&limit=1`,
+    {
+      headers: {
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error(
+      `CMS publication outbox high-water probe failed: ${response.status} ${await response.text()}`
+    );
+  }
+  const rows = await response.json();
+  if (!Array.isArray(rows)) {
+    throw new Error("CMS publication outbox high-water probe returned a non-array body.");
+  }
+  return normalizeOutboxHighWater(rows[0]?.id ?? 0);
+}
+
+async function readJsonIfExists(target) {
+  try {
+    return JSON.parse(await fs.readFile(target, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT") return null;
+    throw error;
+  }
+}
+
+async function publicationBaseline() {
+  if (!publicationBaselineUrl) {
+    return readJsonIfExists(path.join(publicCmsDirectory, "published-content.json"));
+  }
+  const url = new URL(publicationBaselineUrl);
+  url.searchParams.set(
+    "publication_guard",
+    `${process.env.GITHUB_RUN_ID || "local"}-${
+      process.env.GITHUB_RUN_ATTEMPT || "1"
+    }-${Date.now()}`
+  );
+  const response = await fetch(url, {
+    cache: "no-store",
+    headers: { "cache-control": "no-cache" },
+  });
+  if (!response.ok) {
+    throw new Error(
+      `Deployed CMS publication baseline failed: ${response.status} ${response.statusText}`
+    );
+  }
+  const value = await response.json();
+  if (!value || !Array.isArray(value.articles)) {
+    throw new Error("Deployed CMS publication baseline is not a valid snapshot.");
+  }
+  return value;
+}
+
+async function authoritativeArticleStates(sourceIds) {
+  const states = new Map(sourceIds.map((id) => [id, null]));
+  if (!sourceIds.length) return states;
+  if (!serviceRoleKey) {
+    return new Map();
+  }
+  const rows = await fetchTableRows(
+    "articles",
+    {
+      select: "id,status,deleted_at",
+      id: `in.(${sourceIds.join(",")})`,
+      order: "id.asc",
+    },
+    serviceRoleKey,
+    false
+  );
+  rows.forEach((row) => states.set(row.id, row));
+  return states;
+}
+
+function failUnstableExport(error) {
+  if (error?.code !== "CMS_SNAPSHOT_CHANGED") throw error;
+  console.error(error.message);
+  process.exit(75);
 }
 
 function relationValue(value) {
@@ -488,6 +597,10 @@ function asGeneratedModule(variableName, value, comment) {
 export const ${variableName} = ${JSON.stringify(value, null, 2)} as const;
 `;
 }
+
+const exportOutboxStart = serviceRoleKey
+  ? await fetchOutboxHighWater()
+  : "0";
 
 const [
   rawArticles,
@@ -903,6 +1016,19 @@ for (const edition of rawBookEditions) {
   };
 }
 
+const exportOutboxAfterRead = serviceRoleKey
+  ? await fetchOutboxHighWater()
+  : exportOutboxStart;
+let stableOutboxHighWater;
+try {
+  stableOutboxHighWater = assertStableOutboxWindow(
+    exportOutboxStart,
+    exportOutboxAfterRead
+  );
+} catch (error) {
+  failUnstableExport(error);
+}
+
 const generatedAt = new Date().toISOString();
 const siteContent = {
   generatedAt,
@@ -914,7 +1040,7 @@ const siteContent = {
   redirects,
   bookEditionsByWorkId,
 };
-const snapshot = {
+const snapshotContent = {
   version: 1,
   generatedAt,
   source: "Supabase CMS",
@@ -924,109 +1050,154 @@ const snapshot = {
   literaryWorksByLegacyId,
   ...siteContent,
 };
+const snapshot = {
+  ...snapshotContent,
+  publication: publicationMetadata(snapshotContent, stableOutboxHighWater),
+};
 
-await fs.mkdir(publicCmsArticlesDirectory, { recursive: true });
-await fs.mkdir(path.dirname(articleCatalogModule), { recursive: true });
-await fs.mkdir(path.dirname(siteContentModule), { recursive: true });
+const baseline = await publicationBaseline();
+const candidateIds = articleIdSet(snapshot.articles, "candidate snapshot");
+const baselineIds = baseline?.articles
+  ? articleIdSet(baseline.articles, "deployed baseline")
+  : new Set();
+const removedSourceIds = [...baselineIds]
+  .filter((id) => !candidateIds.has(id))
+  .map(cmsSourceArticleId);
+const withdrawalStates = await authoritativeArticleStates(removedSourceIds);
+const replacement = assertCandidateCanReplaceBaseline({
+  candidate: snapshot,
+  baseline,
+  authoritativeStates: withdrawalStates,
+});
 
-await Promise.all([
-  ...articleDocuments.map(({ path: outputPath, payload }) =>
-    fs.writeFile(outputPath, JSON.stringify(payload, null, 2), "utf8")
-  ),
-  fs.writeFile(
-    path.join(publicCmsDirectory, "published-content.json"),
-    `${JSON.stringify(snapshot, null, 2)}\n`,
-    "utf8"
-  ),
-  fs.writeFile(
-    path.join(publicCmsDirectory, "published-articles.json"),
-    `${JSON.stringify({ generatedAt, source: "Supabase CMS", articles }, null, 2)}\n`,
-    "utf8"
-  ),
-  fs.writeFile(
-    path.join(publicCmsDirectory, "book-editions.json"),
-    `${JSON.stringify(
-      { generatedAt, editions: bookEditionsByWorkId },
-      null,
-      2
-    )}\n`,
-    "utf8"
-  ),
-  fs.writeFile(
-    articleCatalogModule,
-    asGeneratedModule(
-      "cmsArticleCatalog",
-      articles,
-      "Public article metadata exported through read-only RLS policies."
-    ),
-    "utf8"
-  ),
-  fs.writeFile(
-    siteContentModule,
-    asGeneratedModule(
-      "cmsSiteContent",
-      siteContent,
-      "Public homepage, navigation and page metadata exported through read-only RLS policies."
-    ),
-    "utf8"
-  ),
-  fs.writeFile(
-    bookEditionsModule,
-    asGeneratedModule(
-      "cmsBookEditionsByWorkId",
-      bookEditionsByWorkId,
-      "Verified exact-edition covers exported from the normalized library."
-    ),
-    "utf8"
-  ),
-  fs.writeFile(
-    countryProfilesModule,
-    asGeneratedModule(
-      "cmsCountryProfileOverrides",
-      countryProfileOverrides,
-      "Durable country-profile overrides saved from the editorial database."
-    ),
-    "utf8"
-  ),
-  fs.writeFile(
-    writerProfilesModule,
-    asGeneratedModule(
-      "cmsWriterProfileOverrides",
-      writerProfileOverrides,
-      "Durable writer-profile overrides saved from the visual CMS."
-    ),
-    "utf8"
-  ),
-  fs.writeFile(
-    literaryWorksModule,
-    asGeneratedModule(
-      "cmsLiteraryWorksByLegacyId",
-      literaryWorksByLegacyId,
-      "Published literary-work records saved in the normalized CMS library."
-    ),
-    "utf8"
-  ),
-]);
+if (serviceRoleKey) {
+  try {
+    stableOutboxHighWater = assertStableOutboxWindow(
+      stableOutboxHighWater,
+      await fetchOutboxHighWater()
+    );
+  } catch (error) {
+    failUnstableExport(error);
+  }
+}
 
-// A withdrawn article must not remain reachable through its old JSON URL.
-// Cleanup happens only after every current snapshot has been written
-// successfully and is restricted to UUID-backed CMS documents.
 const expectedArticleDocumentNames = articleDocuments.map(({ path: outputPath }) =>
   path.basename(outputPath)
 );
-const existingArticleDocumentNames = await fs.readdir(
-  publicCmsArticlesDirectory
-);
+let existingArticleDocumentNames = [];
+try {
+  existingArticleDocumentNames = await fs.readdir(publicCmsArticlesDirectory);
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
 const staleArticleDocumentNames = staleManagedCmsArticleSnapshotNames(
   existingArticleDocumentNames,
   expectedArticleDocumentNames
 );
-await Promise.all(
-  staleArticleDocumentNames.map((name) =>
-    fs.unlink(path.join(publicCmsArticlesDirectory, name))
-  )
-);
+
+// Generated article documents, secondary indexes and TypeScript catalogs are
+// staged first. The canonical published-content manifest is promoted last and
+// acts as the snapshot commit point. Any failed promotion restores all prior
+// destinations, including intentionally withdrawn article documents.
+await commitAtomicFileSet({
+  root: projectRoot,
+  writes: [
+    ...articleDocuments.map(({ path: outputPath, payload }) => ({
+      path: outputPath,
+      content: `${JSON.stringify(payload, null, 2)}\n`,
+    })),
+    {
+      path: path.join(publicCmsDirectory, "published-articles.json"),
+      content: `${JSON.stringify(
+        {
+          generatedAt,
+          source: "Supabase CMS",
+          publication: snapshot.publication,
+          articles,
+        },
+        null,
+        2
+      )}\n`,
+    },
+    {
+      path: path.join(publicCmsDirectory, "book-editions.json"),
+      content: `${JSON.stringify(
+        { generatedAt, editions: bookEditionsByWorkId },
+        null,
+        2
+      )}\n`,
+    },
+    {
+      path: articleCatalogModule,
+      content: asGeneratedModule(
+        "cmsArticleCatalog",
+        articles,
+        "Public article metadata exported through read-only RLS policies."
+      ),
+    },
+    {
+      path: siteContentModule,
+      content: asGeneratedModule(
+        "cmsSiteContent",
+        siteContent,
+        "Public homepage, navigation and page metadata exported through read-only RLS policies."
+      ),
+    },
+    {
+      path: bookEditionsModule,
+      content: asGeneratedModule(
+        "cmsBookEditionsByWorkId",
+        bookEditionsByWorkId,
+        "Verified exact-edition covers exported from the normalized library."
+      ),
+    },
+    {
+      path: countryProfilesModule,
+      content: asGeneratedModule(
+        "cmsCountryProfileOverrides",
+        countryProfileOverrides,
+        "Durable country-profile overrides saved from the editorial database."
+      ),
+    },
+    {
+      path: writerProfilesModule,
+      content: asGeneratedModule(
+        "cmsWriterProfileOverrides",
+        writerProfileOverrides,
+        "Durable writer-profile overrides saved from the visual CMS."
+      ),
+    },
+    {
+      path: literaryWorksModule,
+      content: asGeneratedModule(
+        "cmsLiteraryWorksByLegacyId",
+        literaryWorksByLegacyId,
+        "Published literary-work records saved in the normalized CMS library."
+      ),
+    },
+    {
+      path: path.join(publicCmsDirectory, "published-content.json"),
+      content: `${JSON.stringify(snapshot, null, 2)}\n`,
+    },
+  ],
+  deletes: staleArticleDocumentNames.map((name) =>
+    path.join(publicCmsArticlesDirectory, name)
+  ),
+});
+
+if (process.env.GITHUB_OUTPUT) {
+  await fs.appendFile(
+    process.env.GITHUB_OUTPUT,
+    [
+      `article_count=${snapshot.publication.articleCount}`,
+      `outbox_high_water=${snapshot.publication.outboxHighWater}`,
+      `content_sha256=${snapshot.publication.contentSha256}`,
+      "",
+    ].join("\n"),
+    "utf8"
+  );
+}
 
 console.log(
-  `Exported ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers from CMS; removed ${staleArticleDocumentNames.length} stale article snapshot(s).`
+  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at outbox ${snapshot.publication.outboxHighWater}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) removed.`
 );

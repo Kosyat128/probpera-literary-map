@@ -87,6 +87,30 @@ describe("live production security audit", () => {
     expect(result.errors.join("\n")).toContain("Strict-Transport-Security");
   });
 
+  it("rejects the observed HTTP 200 response without a Location header", async () => {
+    const fetchImpl = async (url) => {
+      const requestUrl = new URL(url);
+      if (requestUrl.protocol === "http:") {
+        return new Response("plaintext response", { status: 200 });
+      }
+      return successfulFetch(url);
+    };
+
+    const result = await auditOrigin("https://probpera.ru", {
+      fetchImpl,
+      now,
+      timeoutMs: 100,
+    });
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      "http://probpera.ru/robots.txt?release-smoke=1 returned 200; expected 301 or 308"
+    );
+    expect(result.errors).toContain(
+      "http://probpera.ru/robots.txt?release-smoke=1 did not return a Location header"
+    );
+  });
+
   it("requires framing protection and a fresh canonical security document", () => {
     const headers = new Headers({
       ...requiredHeaders,

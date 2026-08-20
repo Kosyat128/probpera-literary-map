@@ -1,0 +1,1802 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-20T00:00:00.000Z",
+  "policy": "docs/COVER_RIGHTS_POLICY.md",
+  "archive": {
+    "name": "Новые обложки.rar",
+    "sha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+    "bytes": 94728556,
+    "entries": 43,
+    "uniqueImages": 43
+  },
+  "sourceInventory": {
+    "entries": 43,
+    "uniqueImages": 43,
+    "duplicateEntries": 0,
+    "width": 1024,
+    "height": 1536,
+    "format": "png",
+    "orientation": "portrait",
+    "alpha": false,
+    "uncompressedBytes": 99527961
+  },
+  "output": {
+    "full": {
+      "width": 720,
+      "height": 1080,
+      "quality": 55,
+      "format": "webp"
+    },
+    "thumbnail": {
+      "width": 360,
+      "height": 540,
+      "quality": 50,
+      "format": "webp"
+    }
+  },
+  "rightsEvidence": {
+    "chatGptFilenameEntries": 33,
+    "editorialRenamedEntries": 10,
+    "explicitUserArchiveInstruction": true,
+    "importedChatGptFilenameEntries": 33,
+    "importedEditorialRenamedEntries": 10,
+    "quarantinedSourceIndexes": []
+  },
+  "summary": {
+    "archiveEntries": 43,
+    "uniqueWorks": 41,
+    "matchedSourceFiles": 43,
+    "matchedToCanonical": 41,
+    "imported": 43,
+    "artworkRecords": 43,
+    "assetFiles": 86,
+    "primaryArtwork": 31,
+    "secondaryArtwork": 12,
+    "skippedExisting": 10,
+    "aliasConsolidated": 2,
+    "createdWorks": 17,
+    "existingCanonicalWorks": 24,
+    "unmatched": 0,
+    "rightsQuarantined": 0,
+    "archiveBooks": 9729,
+    "publicBooks": 48,
+    "pendingBooks": 9681
+  },
+  "artworks": [
+    {
+      "sourceIndex": 1,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+      "imageSha256": "f3f2ee4049bf9e91edea2e89faa18f4b618e5e86df4aff8dcbf77a86d43b1873",
+      "bytes": 2739066,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Литературный призрак",
+      "workKey": "england:david_mitchell:ghostwritten",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:ghostwritten"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 2,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+      "imageSha256": "6a5ab5ab61bd5b4767ab349195692d7ef875f1eb667fc6bd87d9977054f75fbd",
+      "bytes": 2844451,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Сон № 9",
+      "workKey": "england:david_mitchell:number9dream",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:number9dream"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 3,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (3).png",
+      "imageSha256": "8f713895aae89071809161fbb7745737454812f790a8ff3fcb366b5e05111eb1",
+      "bytes": 3026804,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Облачный атлас",
+      "workKey": "england:david_mitchell:cloud-atlas",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/cloud-atlas-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/cloud-atlas-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:cloud-atlas"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 4,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (4).png",
+      "imageSha256": "8b6e7e3bfa4ff3d561064aecd65b8a7cd20c8dc235fb19b2a34d480026536f72",
+      "bytes": 2893770,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Под знаком чёрного лебедя",
+      "workKey": "england:david_mitchell:black-swan-green",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/black-swan-green-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/black-swan-green-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:black-swan-green"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 5,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+      "imageSha256": "5f1db49d376574260f9a679f670009f5e34eb77ea79080e74b4aca58417feb89",
+      "bytes": 2524981,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Тысяча осеней Якоба де Зута",
+      "workKey": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 6,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_05 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_05 (6).png",
+      "imageSha256": "688ff5bfa8555fefe16aca9efa178048649a341d8bdb68041f786ef1aa6268ae",
+      "bytes": 2866184,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Простые смертные",
+      "workKey": "england:david_mitchell:the-bone-clocks",
+      "matchBasis": "verified-russian-title-alias",
+      "coverUrl": "brand/book-covers/simple-mortals-bone-clocks-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/simple-mortals-bone-clocks-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:the-bone-clocks"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 7,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+      "imageSha256": "f71033a7f7fd2ba4e232876609fb436ccc509ce0fac3b8296dae9f4a5382d78b",
+      "bytes": 2333570,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Голодный дом",
+      "workKey": "england:david_mitchell:slade-house",
+      "matchBasis": "verified-russian-title",
+      "coverUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:slade-house"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 8,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (8).png",
+      "imageSha256": "58345b0d6c1112ff29259bf9f7368b5667dab82e23f49f0ac5572f7b5a29f2c8",
+      "bytes": 3051055,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Утопия-авеню",
+      "workKey": "england:david_mitchell:utopia-avenue",
+      "matchBasis": "verified-title-punctuation-alias",
+      "coverUrl": "brand/book-covers/utopia-avenue-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/utopia-avenue-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:utopia-avenue"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 9,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+      "imageSha256": "2c4dba79cc307ea8a2ce42d0980d9759f155620ccec15946f5c4f03737368b34",
+      "bytes": 2517428,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Костяные часы",
+      "workKey": "england:david_mitchell:the-bone-clocks",
+      "matchBasis": "verified-russian-title",
+      "coverUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:the-bone-clocks"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 10,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_07 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_07 (10).png",
+      "imageSha256": "ca169afb49521be6b0a710e43a32d7f2406194b5369f79cfc1ae6a61e80ce323",
+      "bytes": 2381840,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Дом Слэйд",
+      "workKey": "england:david_mitchell:slade-house",
+      "matchBasis": "verified-russian-title-alias",
+      "coverUrl": "brand/book-covers/slade-house-russian-title-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/slade-house-russian-title-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:slade-house"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 11,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_14 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_14 (1).png",
+      "imageSha256": "0167484e99373ab609a81bba1187b246bfb796e342c711674e170931bf20df5d",
+      "bytes": 2627976,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Норвежский лес",
+      "workKey": "japan:haruki_murakami:norwegian-wood",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/norwegian-wood-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/norwegian-wood-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:norwegian-wood"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 12,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_14 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_14 (2).png",
+      "imageSha256": "eabf63d1dd1267bdaa951b9f4a6772e5b814d897949501334aa3672c56fd5a33",
+      "bytes": 2848649,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Кафка на пляже",
+      "workKey": "japan:haruki_murakami:kafka-on-the-shore",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/kafka-on-the-shore-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/kafka-on-the-shore-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:kafka-on-the-shore"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 13,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_15 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_15 (3).png",
+      "imageSha256": "ffe0870b3b4389b06ed1e57668e0faf0eaa3440e174a3883fff2acd34fe52449",
+      "bytes": 2503077,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "1Q84",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-1q84",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/1q84-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/1q84-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-1q84",
+        "japan:haruki_murakami:openlibrary-works-ol16533021w",
+        "japan:haruki_murakami:openlibrary-works-ol17534240w",
+        "japan:haruki_murakami:openlibrary-works-ol19352035w",
+        "japan:haruki_murakami:openlibrary-works-ol20659838w",
+        "japan:haruki_murakami:openlibrary-works-ol37491017w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 14,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_15 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_15 (4).png",
+      "imageSha256": "758926b74f5b6914f286e1544a573ba915d2d5ef2c5a0cf4cda7607e5c417364",
+      "bytes": 2721717,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Хроники Заводной Птицы",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-хроники-заводной-птицы",
+      "matchBasis": "verified-capitalization-alias",
+      "coverUrl": "brand/book-covers/wind-up-bird-chronicle-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/wind-up-bird-chronicle-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-хроники-заводной-птицы",
+        "japan:haruki_murakami:openlibrary-works-ol25111252w",
+        "japan:haruki_murakami:openlibrary-works-ol2625412w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 15,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (5).png",
+      "imageSha256": "0bf23ce70906c1c1dfb1b648c460d9d0eb19f6833a664716663d3c3c70875bd3",
+      "bytes": 2688130,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Охота на овец",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-охота-на-овец",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/wild-sheep-chase-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/wild-sheep-chase-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-охота-на-овец",
+        "japan:haruki_murakami:openlibrary-works-ol25669302w",
+        "japan:haruki_murakami:openlibrary-works-ol2625441w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 16,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (6).png",
+      "imageSha256": "178c4dd1ef95c676f3f7000060da5f55e47b547ddcf02cb3074b9275fe5e7cca",
+      "bytes": 2316715,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "К югу от границы, на запад от солнца",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625405w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/south-of-border-west-of-sun-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/south-of-border-west-of-sun-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625405w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 17,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (7).png",
+      "imageSha256": "3ce6d45730236900370f9fe43e4d7ca63984aeeada1ff8316eba147da13488c6",
+      "bytes": 2914251,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Страна Чудес без тормозов и Конец Света",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625421w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/hard-boiled-wonderland-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/hard-boiled-wonderland-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625421w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 18,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (8).png",
+      "imageSha256": "d332496821fac7fa456cca8a2ec1ddb051fb3af81492b8d3c48ef1479bd04a4b",
+      "bytes": 2525554,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Послемрак",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625402w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/after-dark-murakami-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/after-dark-murakami-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625402w",
+        "japan:haruki_murakami:openlibrary-works-ol31431894w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 19,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (9).png",
+      "imageSha256": "9df897e87fdead735daa58bd18562773243a2516fd03adde050f9b1f57a7f0fb",
+      "bytes": 2560285,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Бесцветный Цкуру Тадзаки и годы его странствий",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol16810121w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/colorless-tsukuru-tazaki-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/colorless-tsukuru-tazaki-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol16810121w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 20,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (10).png",
+      "imageSha256": "a895f759e2bb95e5c2c5a1c7970768c984bd205cb6127856fe68c38477951439",
+      "bytes": 2522234,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Убийство Командора",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol19754736w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/killing-commendatore-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/killing-commendatore-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol17937100w",
+        "japan:haruki_murakami:openlibrary-works-ol19754736w"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 21,
+      "relativePath": "Чехов/01_Антон_Чехов_Степь_1888.png",
+      "filename": "01_Антон_Чехов_Степь_1888.png",
+      "imageSha256": "933763c27b85877b2a05e461485aeb9e54e787cbbb767a370fee84c0aae9a6a9",
+      "bytes": 1100976,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Степь",
+      "workKey": "russia:chekhov:article-series-10x9915",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/steppe-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/steppe-chekhov-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:article-series-10x9915"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 22,
+      "relativePath": "Чехов/02_Антон_Чехов_Дуэль_1891.png",
+      "filename": "02_Антон_Чехов_Дуэль_1891.png",
+      "imageSha256": "3e15d468cae4266f30c1293f4014b858bfa8fd9d72bc197c1cbcd3405b5a2f66",
+      "bytes": 1057178,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дуэль",
+      "workKey": "russia:chekhov:the-duel",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-duel"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 23,
+      "relativePath": "Чехов/03_Антон_Чехов_Палата_№6_1892.png",
+      "filename": "03_Антон_Чехов_Палата_№6_1892.png",
+      "imageSha256": "6379b4a307f68b46c729ea8ec101722373f532bbd45b77fd22b006bdeb54514d",
+      "bytes": 901052,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Палата № 6",
+      "workKey": "russia:chekhov:legacy-chekhov-палата-6",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/ward-no-6-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ward-no-6-chekhov-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-палата-6"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 24,
+      "relativePath": "Чехов/04_Антон_Чехов_Чёрный_монах_1894.png",
+      "filename": "04_Антон_Чехов_Чёрный_монах_1894.png",
+      "imageSha256": "51ec7a4d6c4181c3c175d570281d3f1490805def9fd707228c8d38e0b2b7bd6b",
+      "bytes": 960505,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Чёрный монах",
+      "workKey": "russia:chekhov:the-black-monk",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-black-monk"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 25,
+      "relativePath": "Чехов/05_Антон_Чехов_Чайка_1896.png",
+      "filename": "05_Антон_Чехов_Чайка_1896.png",
+      "imageSha256": "6889718a284a14e40313f50a87b29b1565d02c7fb1e76574019201ae6c6fe44b",
+      "bytes": 1001106,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Чайка",
+      "workKey": "russia:chekhov:legacy-chekhov-чайка",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/seagull-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/seagull-chekhov-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-чайка"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 26,
+      "relativePath": "Чехов/06_Антон_Чехов_Дядя_Ваня_1897.png",
+      "filename": "06_Антон_Чехов_Дядя_Ваня_1897.png",
+      "imageSha256": "1aad7145250d21b431fd47605601058ef14f33c42ab0439a13c875d754c25e63",
+      "bytes": 1062619,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дядя Ваня",
+      "workKey": "russia:chekhov:uncle-vanya",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:uncle-vanya"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 27,
+      "relativePath": "Чехов/07_Антон_Чехов_Человек_в_футляре_1898.png",
+      "filename": "07_Антон_Чехов_Человек_в_футляре_1898.png",
+      "imageSha256": "5d8612d8bcac86413e4285098029d5d200bf9761c1002a68af0f641777748aff",
+      "bytes": 1055703,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Человек в футляре",
+      "workKey": "russia:chekhov:the-man-in-a-case",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-man-in-a-case"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 28,
+      "relativePath": "Чехов/08_Антон_Чехов_Дама_с_собачкой_1899.png",
+      "filename": "08_Антон_Чехов_Дама_с_собачкой_1899.png",
+      "imageSha256": "e557ac410d2c19279e995dfef3ef176452ae61f0330809005b55e7bda2932f34",
+      "bytes": 1164471,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дама с собачкой",
+      "workKey": "russia:chekhov:the-lady-with-the-dog",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-lady-with-the-dog"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 29,
+      "relativePath": "Чехов/09_Антон_Чехов_Три_сестры_1901.png",
+      "filename": "09_Антон_Чехов_Три_сестры_1901.png",
+      "imageSha256": "0177ec23c1013b28781257eaca4598322da4c5474bee31862fea347b19a2aca3",
+      "bytes": 1006669,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Три сестры",
+      "workKey": "russia:chekhov:legacy-chekhov-три-сестры",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/three-sisters-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/three-sisters-chekhov-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:legacy-chekhov-три-сестры"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 30,
+      "relativePath": "Чехов/10_Антон_Чехов_Вишнёвый_сад_1904.png",
+      "filename": "10_Антон_Чехов_Вишнёвый_сад_1904.png",
+      "imageSha256": "3bb7fdc6ed08d0a8c855060021f2768e0b796506b5b2c923f66e148f7aee076b",
+      "bytes": 1260546,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Вишнёвый сад",
+      "workKey": "russia:chekhov:the-cherry-orchard",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/cherry-orchard-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/cherry-orchard-chekhov-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-cherry-orchard"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 31,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (1).png",
+      "imageSha256": "da74066b97f510e3a6c6ef8d46fd81e04c345c42d2cdac470d94cefac8f8e462",
+      "bytes": 2867483,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Машина времени",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-машина-времени",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/time-machine-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/time-machine-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-машина-времени"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 32,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (2).png",
+      "imageSha256": "38eb73dcecee5ef77cd50999fd4298e061778e5f88dc06de9be7cf7c92d6f2c0",
+      "bytes": 2405982,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Остров доктора Моро",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/island-doctor-moreau-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/island-doctor-moreau-wells-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 33,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (3).png",
+      "imageSha256": "12291413f47479a7235839033b13041bf3bacb1fbc3e177c1cd8ca4cf03dd793",
+      "bytes": 2655781,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Человек-невидимка",
+      "workKey": "england:h_g_wells:invisible-man-editorial",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/invisible-man-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/invisible-man-wells-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:invisible-man-editorial"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 34,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (4).png",
+      "imageSha256": "b64fad72ea1c0d2bc60cde7ea2d370323a607852e0b514d61e7258ff6f72dbaf",
+      "bytes": 2588703,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Война миров",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-война-миров",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/war-of-worlds-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/war-of-worlds-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-война-миров"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 35,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+      "imageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+      "bytes": 2587906,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Когда спящий проснётся",
+      "workKey": "england:h_g_wells:when-the-sleeper-wakes",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:when-the-sleeper-wakes"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 36,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+      "imageSha256": "36bee097b385bedbf20bf4d6c5583cb8283cd440918b19065822cb2a64767db4",
+      "bytes": 3182956,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Первые люди на Луне",
+      "workKey": "england:h_g_wells:the-first-men-in-the-moon",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-first-men-in-the-moon"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 37,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+      "imageSha256": "48f2f9f60f846df926bde08e2aac57b4147bdbf1a41a4eecc52c767fcbc86a2b",
+      "bytes": 2704891,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Пища богов",
+      "workKey": "england:h_g_wells:the-food-of-the-gods",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-food-of-the-gods"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 38,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (8).png",
+      "imageSha256": "40be5e5c45dada67e67173ccb19beeab2a7f5f5ba5fdf32e98e345d292235a1e",
+      "bytes": 2659289,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Война в воздухе",
+      "workKey": "england:h_g_wells:the-war-in-the-air",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/war-in-air-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/war-in-air-wells-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-war-in-the-air"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 39,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+      "imageSha256": "b0b9b30bfb4cca9e837862031516f88a5df4876e926f1d6697f092ba3d92d80f",
+      "bytes": 2868059,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Освобождённый мир",
+      "workKey": "england:h_g_wells:the-world-set-free",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-world-set-free"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 40,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+      "imageSha256": "5e74ed2538481011a6cd8c4ebcd5920a2789afec224d2b79dcdf14a4019d0292",
+      "bytes": 2718829,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Люди как боги",
+      "workKey": "england:h_g_wells:men-like-gods",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:men-like-gods"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 41,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (1).png",
+      "imageSha256": "95104ce34142a278e7d8660dc03b4658c0cda39b81b839096d523bdb949f2729",
+      "bytes": 2767562,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Тоно-Бенге",
+      "workKey": "england:h_g_wells:article-series-15osrun",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/tono-bungay-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/tono-bungay-wells-20260820-alternate.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:article-series-15osrun"
+      ],
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 42,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+      "imageSha256": "d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde",
+      "bytes": 2891496,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Анна-Вероника",
+      "workKey": "england:h_g_wells:ann-veronica",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:ann-veronica"
+      ],
+      "isPrimary": true
+    },
+    {
+      "sourceIndex": 43,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+      "imageSha256": "15b56974651b0590b09225001307f8302a43f19774fda33889df770f84bad765",
+      "bytes": 2650462,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "История мистера Полли",
+      "workKey": "england:h_g_wells:the-history-of-mr-polly",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-history-of-mr-polly"
+      ],
+      "isPrimary": true
+    }
+  ],
+  "imports": [
+    {
+      "sourceIndex": 1,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+      "imageSha256": "f3f2ee4049bf9e91edea2e89faa18f4b618e5e86df4aff8dcbf77a86d43b1873",
+      "bytes": 2739066,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Литературный призрак",
+      "workKey": "england:david_mitchell:ghostwritten",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:ghostwritten"
+      ]
+    },
+    {
+      "sourceIndex": 2,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+      "imageSha256": "6a5ab5ab61bd5b4767ab349195692d7ef875f1eb667fc6bd87d9977054f75fbd",
+      "bytes": 2844451,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Сон № 9",
+      "workKey": "england:david_mitchell:number9dream",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:number9dream"
+      ]
+    },
+    {
+      "sourceIndex": 3,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (3).png",
+      "imageSha256": "8f713895aae89071809161fbb7745737454812f790a8ff3fcb366b5e05111eb1",
+      "bytes": 3026804,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Облачный атлас",
+      "workKey": "england:david_mitchell:cloud-atlas",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/cloud-atlas-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/cloud-atlas-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:cloud-atlas"
+      ]
+    },
+    {
+      "sourceIndex": 4,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (4).png",
+      "imageSha256": "8b6e7e3bfa4ff3d561064aecd65b8a7cd20c8dc235fb19b2a34d480026536f72",
+      "bytes": 2893770,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Под знаком чёрного лебедя",
+      "workKey": "england:david_mitchell:black-swan-green",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/black-swan-green-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/black-swan-green-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:black-swan-green"
+      ]
+    },
+    {
+      "sourceIndex": 5,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+      "imageSha256": "5f1db49d376574260f9a679f670009f5e34eb77ea79080e74b4aca58417feb89",
+      "bytes": 2524981,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Тысяча осеней Якоба де Зута",
+      "workKey": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet"
+      ]
+    },
+    {
+      "sourceIndex": 7,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+      "imageSha256": "f71033a7f7fd2ba4e232876609fb436ccc509ce0fac3b8296dae9f4a5382d78b",
+      "bytes": 2333570,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Голодный дом",
+      "workKey": "england:david_mitchell:slade-house",
+      "matchBasis": "verified-russian-title",
+      "coverUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:slade-house"
+      ]
+    },
+    {
+      "sourceIndex": 8,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (8).png",
+      "imageSha256": "58345b0d6c1112ff29259bf9f7368b5667dab82e23f49f0ac5572f7b5a29f2c8",
+      "bytes": 3051055,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Утопия-авеню",
+      "workKey": "england:david_mitchell:utopia-avenue",
+      "matchBasis": "verified-title-punctuation-alias",
+      "coverUrl": "brand/book-covers/utopia-avenue-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/utopia-avenue-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:utopia-avenue"
+      ]
+    },
+    {
+      "sourceIndex": 9,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+      "imageSha256": "2c4dba79cc307ea8a2ce42d0980d9759f155620ccec15946f5c4f03737368b34",
+      "bytes": 2517428,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Костяные часы",
+      "workKey": "england:david_mitchell:the-bone-clocks",
+      "matchBasis": "verified-russian-title",
+      "coverUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:david_mitchell:the-bone-clocks"
+      ]
+    },
+    {
+      "sourceIndex": 12,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_14 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_14 (2).png",
+      "imageSha256": "eabf63d1dd1267bdaa951b9f4a6772e5b814d897949501334aa3672c56fd5a33",
+      "bytes": 2848649,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Кафка на пляже",
+      "workKey": "japan:haruki_murakami:kafka-on-the-shore",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/kafka-on-the-shore-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/kafka-on-the-shore-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:kafka-on-the-shore"
+      ]
+    },
+    {
+      "sourceIndex": 13,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_15 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_15 (3).png",
+      "imageSha256": "ffe0870b3b4389b06ed1e57668e0faf0eaa3440e174a3883fff2acd34fe52449",
+      "bytes": 2503077,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "1Q84",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-1q84",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/1q84-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/1q84-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-1q84",
+        "japan:haruki_murakami:openlibrary-works-ol16533021w",
+        "japan:haruki_murakami:openlibrary-works-ol17534240w",
+        "japan:haruki_murakami:openlibrary-works-ol19352035w",
+        "japan:haruki_murakami:openlibrary-works-ol20659838w",
+        "japan:haruki_murakami:openlibrary-works-ol37491017w"
+      ]
+    },
+    {
+      "sourceIndex": 14,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_15 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_15 (4).png",
+      "imageSha256": "758926b74f5b6914f286e1544a573ba915d2d5ef2c5a0cf4cda7607e5c417364",
+      "bytes": 2721717,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Хроники Заводной Птицы",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-хроники-заводной-птицы",
+      "matchBasis": "verified-capitalization-alias",
+      "coverUrl": "brand/book-covers/wind-up-bird-chronicle-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/wind-up-bird-chronicle-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-хроники-заводной-птицы",
+        "japan:haruki_murakami:openlibrary-works-ol25111252w",
+        "japan:haruki_murakami:openlibrary-works-ol2625412w"
+      ]
+    },
+    {
+      "sourceIndex": 15,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (5).png",
+      "imageSha256": "0bf23ce70906c1c1dfb1b648c460d9d0eb19f6833a664716663d3c3c70875bd3",
+      "bytes": 2688130,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Охота на овец",
+      "workKey": "japan:haruki_murakami:legacy-haruki_murakami-охота-на-овец",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/wild-sheep-chase-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/wild-sheep-chase-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:legacy-haruki_murakami-охота-на-овец",
+        "japan:haruki_murakami:openlibrary-works-ol25669302w",
+        "japan:haruki_murakami:openlibrary-works-ol2625441w"
+      ]
+    },
+    {
+      "sourceIndex": 16,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (6).png",
+      "imageSha256": "178c4dd1ef95c676f3f7000060da5f55e47b547ddcf02cb3074b9275fe5e7cca",
+      "bytes": 2316715,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "К югу от границы, на запад от солнца",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625405w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/south-of-border-west-of-sun-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/south-of-border-west-of-sun-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625405w"
+      ]
+    },
+    {
+      "sourceIndex": 17,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_16 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_16 (7).png",
+      "imageSha256": "3ce6d45730236900370f9fe43e4d7ca63984aeeada1ff8316eba147da13488c6",
+      "bytes": 2914251,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Страна Чудес без тормозов и Конец Света",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625421w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/hard-boiled-wonderland-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/hard-boiled-wonderland-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625421w"
+      ]
+    },
+    {
+      "sourceIndex": 18,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (8).png",
+      "imageSha256": "d332496821fac7fa456cca8a2ec1ddb051fb3af81492b8d3c48ef1479bd04a4b",
+      "bytes": 2525554,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Послемрак",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol2625402w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/after-dark-murakami-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/after-dark-murakami-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol2625402w",
+        "japan:haruki_murakami:openlibrary-works-ol31431894w"
+      ]
+    },
+    {
+      "sourceIndex": 19,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (9).png",
+      "imageSha256": "9df897e87fdead735daa58bd18562773243a2516fd03adde050f9b1f57a7f0fb",
+      "bytes": 2560285,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Бесцветный Цкуру Тадзаки и годы его странствий",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol16810121w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/colorless-tsukuru-tazaki-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/colorless-tsukuru-tazaki-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol16810121w"
+      ]
+    },
+    {
+      "sourceIndex": 20,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_17 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_17 (10).png",
+      "imageSha256": "a895f759e2bb95e5c2c5a1c7970768c984bd205cb6127856fe68c38477951439",
+      "bytes": 2522234,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Убийство Командора",
+      "workKey": "japan:haruki_murakami:openlibrary-works-ol19754736w",
+      "matchBasis": "verified-bibliographic-title-alias",
+      "coverUrl": "brand/book-covers/killing-commendatore-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/killing-commendatore-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "japan:haruki_murakami:openlibrary-works-ol17937100w",
+        "japan:haruki_murakami:openlibrary-works-ol19754736w"
+      ]
+    },
+    {
+      "sourceIndex": 22,
+      "relativePath": "Чехов/02_Антон_Чехов_Дуэль_1891.png",
+      "filename": "02_Антон_Чехов_Дуэль_1891.png",
+      "imageSha256": "3e15d468cae4266f30c1293f4014b858bfa8fd9d72bc197c1cbcd3405b5a2f66",
+      "bytes": 1057178,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дуэль",
+      "workKey": "russia:chekhov:the-duel",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-duel"
+      ]
+    },
+    {
+      "sourceIndex": 24,
+      "relativePath": "Чехов/04_Антон_Чехов_Чёрный_монах_1894.png",
+      "filename": "04_Антон_Чехов_Чёрный_монах_1894.png",
+      "imageSha256": "51ec7a4d6c4181c3c175d570281d3f1490805def9fd707228c8d38e0b2b7bd6b",
+      "bytes": 960505,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Чёрный монах",
+      "workKey": "russia:chekhov:the-black-monk",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-black-monk"
+      ]
+    },
+    {
+      "sourceIndex": 26,
+      "relativePath": "Чехов/06_Антон_Чехов_Дядя_Ваня_1897.png",
+      "filename": "06_Антон_Чехов_Дядя_Ваня_1897.png",
+      "imageSha256": "1aad7145250d21b431fd47605601058ef14f33c42ab0439a13c875d754c25e63",
+      "bytes": 1062619,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дядя Ваня",
+      "workKey": "russia:chekhov:uncle-vanya",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:uncle-vanya"
+      ]
+    },
+    {
+      "sourceIndex": 27,
+      "relativePath": "Чехов/07_Антон_Чехов_Человек_в_футляре_1898.png",
+      "filename": "07_Антон_Чехов_Человек_в_футляре_1898.png",
+      "imageSha256": "5d8612d8bcac86413e4285098029d5d200bf9761c1002a68af0f641777748aff",
+      "bytes": 1055703,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Человек в футляре",
+      "workKey": "russia:chekhov:the-man-in-a-case",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-man-in-a-case"
+      ]
+    },
+    {
+      "sourceIndex": 28,
+      "relativePath": "Чехов/08_Антон_Чехов_Дама_с_собачкой_1899.png",
+      "filename": "08_Антон_Чехов_Дама_с_собачкой_1899.png",
+      "imageSha256": "e557ac410d2c19279e995dfef3ef176452ae61f0330809005b55e7bda2932f34",
+      "bytes": 1164471,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Дама с собачкой",
+      "workKey": "russia:chekhov:the-lady-with-the-dog",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "russia:chekhov:the-lady-with-the-dog"
+      ]
+    },
+    {
+      "sourceIndex": 31,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (1).png",
+      "imageSha256": "da74066b97f510e3a6c6ef8d46fd81e04c345c42d2cdac470d94cefac8f8e462",
+      "bytes": 2867483,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Машина времени",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-машина-времени",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/time-machine-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/time-machine-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-машина-времени"
+      ]
+    },
+    {
+      "sourceIndex": 34,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (4).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (4).png",
+      "imageSha256": "b64fad72ea1c0d2bc60cde7ea2d370323a607852e0b514d61e7258ff6f72dbaf",
+      "bytes": 2588703,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Война миров",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-война-миров",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/war-of-worlds-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/war-of-worlds-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:legacy-h_g_wells-война-миров"
+      ]
+    },
+    {
+      "sourceIndex": 35,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+      "imageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+      "bytes": 2587906,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Когда спящий проснётся",
+      "workKey": "england:h_g_wells:when-the-sleeper-wakes",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:when-the-sleeper-wakes"
+      ]
+    },
+    {
+      "sourceIndex": 36,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+      "imageSha256": "36bee097b385bedbf20bf4d6c5583cb8283cd440918b19065822cb2a64767db4",
+      "bytes": 3182956,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Первые люди на Луне",
+      "workKey": "england:h_g_wells:the-first-men-in-the-moon",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-first-men-in-the-moon"
+      ]
+    },
+    {
+      "sourceIndex": 37,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+      "imageSha256": "48f2f9f60f846df926bde08e2aac57b4147bdbf1a41a4eecc52c767fcbc86a2b",
+      "bytes": 2704891,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Пища богов",
+      "workKey": "england:h_g_wells:the-food-of-the-gods",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-food-of-the-gods"
+      ]
+    },
+    {
+      "sourceIndex": 39,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+      "imageSha256": "b0b9b30bfb4cca9e837862031516f88a5df4876e926f1d6697f092ba3d92d80f",
+      "bytes": 2868059,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Освобождённый мир",
+      "workKey": "england:h_g_wells:the-world-set-free",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-world-set-free"
+      ]
+    },
+    {
+      "sourceIndex": 40,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+      "imageSha256": "5e74ed2538481011a6cd8c4ebcd5920a2789afec224d2b79dcdf14a4019d0292",
+      "bytes": 2718829,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Люди как боги",
+      "workKey": "england:h_g_wells:men-like-gods",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:men-like-gods"
+      ]
+    },
+    {
+      "sourceIndex": 42,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+      "imageSha256": "d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde",
+      "bytes": 2891496,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Анна-Вероника",
+      "workKey": "england:h_g_wells:ann-veronica",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:ann-veronica"
+      ]
+    },
+    {
+      "sourceIndex": 43,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+      "imageSha256": "15b56974651b0590b09225001307f8302a43f19774fda33889df770f84bad765",
+      "bytes": 2650462,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "История мистера Полли",
+      "workKey": "england:h_g_wells:the-history-of-mr-polly",
+      "matchBasis": "exact-author-and-title",
+      "coverUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "equivalentWorkKeys": [
+        "england:h_g_wells:the-history-of-mr-polly"
+      ]
+    }
+  ],
+  "skippedExisting": [
+    {
+      "sourceIndex": 11,
+      "relativePath": "Лучшие книги Мураками/ChatGPT Image 19 авг. 2026 г., 17_59_14 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_59_14 (1).png",
+      "imageSha256": "0167484e99373ab609a81bba1187b246bfb796e342c711674e170931bf20df5d",
+      "bytes": 2627976,
+      "visibleAuthor": "Харуки Мураками",
+      "visibleTitle": "Норвежский лес",
+      "workKey": "japan:haruki_murakami:norwegian-wood",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/norwegian-wood-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/norwegian-wood-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 21,
+      "relativePath": "Чехов/01_Антон_Чехов_Степь_1888.png",
+      "filename": "01_Антон_Чехов_Степь_1888.png",
+      "imageSha256": "933763c27b85877b2a05e461485aeb9e54e787cbbb767a370fee84c0aae9a6a9",
+      "bytes": 1100976,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Степь",
+      "workKey": "russia:chekhov:article-series-10x9915",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/steppe-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/steppe-chekhov-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 23,
+      "relativePath": "Чехов/03_Антон_Чехов_Палата_№6_1892.png",
+      "filename": "03_Антон_Чехов_Палата_№6_1892.png",
+      "imageSha256": "6379b4a307f68b46c729ea8ec101722373f532bbd45b77fd22b006bdeb54514d",
+      "bytes": 901052,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Палата № 6",
+      "workKey": "russia:chekhov:legacy-chekhov-палата-6",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/ward-no-6-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/ward-no-6-chekhov-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 25,
+      "relativePath": "Чехов/05_Антон_Чехов_Чайка_1896.png",
+      "filename": "05_Антон_Чехов_Чайка_1896.png",
+      "imageSha256": "6889718a284a14e40313f50a87b29b1565d02c7fb1e76574019201ae6c6fe44b",
+      "bytes": 1001106,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Чайка",
+      "workKey": "russia:chekhov:legacy-chekhov-чайка",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/seagull-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/seagull-chekhov-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 29,
+      "relativePath": "Чехов/09_Антон_Чехов_Три_сестры_1901.png",
+      "filename": "09_Антон_Чехов_Три_сестры_1901.png",
+      "imageSha256": "0177ec23c1013b28781257eaca4598322da4c5474bee31862fea347b19a2aca3",
+      "bytes": 1006669,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Три сестры",
+      "workKey": "russia:chekhov:legacy-chekhov-три-сестры",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/three-sisters-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/three-sisters-chekhov-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 30,
+      "relativePath": "Чехов/10_Антон_Чехов_Вишнёвый_сад_1904.png",
+      "filename": "10_Антон_Чехов_Вишнёвый_сад_1904.png",
+      "imageSha256": "3bb7fdc6ed08d0a8c855060021f2768e0b796506b5b2c923f66e148f7aee076b",
+      "bytes": 1260546,
+      "visibleAuthor": "Антон Чехов",
+      "visibleTitle": "Вишнёвый сад",
+      "workKey": "russia:chekhov:the-cherry-orchard",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/cherry-orchard-chekhov-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/cherry-orchard-chekhov-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 32,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (2).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (2).png",
+      "imageSha256": "38eb73dcecee5ef77cd50999fd4298e061778e5f88dc06de9be7cf7c92d6f2c0",
+      "bytes": 2405982,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Остров доктора Моро",
+      "workKey": "england:h_g_wells:legacy-h_g_wells-остров-доктора-моро",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/island-doctor-moreau-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/island-doctor-moreau-wells-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 33,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (3).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_56 (3).png",
+      "imageSha256": "12291413f47479a7235839033b13041bf3bacb1fbc3e177c1cd8ca4cf03dd793",
+      "bytes": 2655781,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Человек-невидимка",
+      "workKey": "england:h_g_wells:invisible-man-editorial",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/invisible-man-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/invisible-man-wells-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 38,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (8).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (8).png",
+      "imageSha256": "40be5e5c45dada67e67173ccb19beeab2a7f5f5ba5fdf32e98e345d292235a1e",
+      "bytes": 2659289,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Война в воздухе",
+      "workKey": "england:h_g_wells:the-war-in-the-air",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/war-in-air-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/war-in-air-wells-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 41,
+      "relativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (1).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (1).png",
+      "imageSha256": "95104ce34142a278e7d8660dc03b4658c0cda39b81b839096d523bdb949f2729",
+      "bytes": 2767562,
+      "visibleAuthor": "Герберт Уэллс",
+      "visibleTitle": "Тоно-Бенге",
+      "workKey": "england:h_g_wells:article-series-15osrun",
+      "matchBasis": "existing-editorial-cover-preserved",
+      "coverUrl": "brand/book-covers/tono-bungay-wells-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/tono-bungay-wells-20260820-alternate.webp",
+      "isPrimary": false
+    }
+  ],
+  "alternativeArtwork": [
+    {
+      "sourceIndex": 6,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_05 (6).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_05 (6).png",
+      "imageSha256": "688ff5bfa8555fefe16aca9efa178048649a341d8bdb68041f786ef1aa6268ae",
+      "bytes": 2866184,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Простые смертные",
+      "workKey": "england:david_mitchell:the-bone-clocks",
+      "matchBasis": "verified-russian-title-alias",
+      "selectedSourceIndex": 9,
+      "reason": "same-work-russian-title-alias-current-title-kostyanye-chasy",
+      "coverUrl": "brand/book-covers/simple-mortals-bone-clocks-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/simple-mortals-bone-clocks-20260820-alternate.webp",
+      "isPrimary": false
+    },
+    {
+      "sourceIndex": 10,
+      "relativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_07 (10).png",
+      "filename": "ChatGPT Image 19 авг. 2026 г., 17_55_07 (10).png",
+      "imageSha256": "ca169afb49521be6b0a710e43a32d7f2406194b5369f79cfc1ae6a61e80ce323",
+      "bytes": 2381840,
+      "visibleAuthor": "Дэвид Митчелл",
+      "visibleTitle": "Дом Слэйд",
+      "workKey": "england:david_mitchell:slade-house",
+      "matchBasis": "verified-russian-title-alias",
+      "selectedSourceIndex": 7,
+      "reason": "same-work-russian-title-alias-current-title-golodny-dom",
+      "coverUrl": "brand/book-covers/slade-house-russian-title-20260820-alternate.webp",
+      "coverThumbnailUrl": "brand/book-covers/thumbs/slade-house-russian-title-20260820-alternate.webp",
+      "isPrimary": false
+    }
+  ],
+  "createdWorks": [
+    {
+      "workKey": "england:david_mitchell:ghostwritten",
+      "canonicalAuthor": "Дэвид Стивен Митчелл",
+      "canonicalTitle": "Литературный призрак",
+      "titleRu": "Литературный призрак",
+      "titleEn": "Ghostwritten",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL271981W",
+        "https://davidmitchellbooks.com/books/"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL271981W",
+          "sourceUrl": "https://openlibrary.org/works/OL271981W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:david_mitchell:number9dream",
+      "canonicalAuthor": "Дэвид Стивен Митчелл",
+      "canonicalTitle": "Сон № 9",
+      "titleRu": "Сон № 9",
+      "titleEn": "Number9Dream",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL271980W",
+        "https://davidmitchellbooks.com/books/"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL271980W",
+          "sourceUrl": "https://openlibrary.org/works/OL271980W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:david_mitchell:slade-house",
+      "canonicalAuthor": "Дэвид Стивен Митчелл",
+      "canonicalTitle": "Голодный дом",
+      "titleRu": "Голодный дом",
+      "titleEn": "Slade House",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL17801648W",
+        "https://davidmitchellbooks.com/books/"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL17801648W",
+          "sourceUrl": "https://openlibrary.org/works/OL17801648W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:david_mitchell:the-bone-clocks",
+      "canonicalAuthor": "Дэвид Стивен Митчелл",
+      "canonicalTitle": "Костяные часы",
+      "titleRu": "Костяные часы",
+      "titleEn": "The Bone Clocks",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL17078738W",
+        "https://davidmitchellbooks.com/books/",
+        "https://azbooka.ru/books/kostyanye-chasy"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL17078738W",
+          "sourceUrl": "https://openlibrary.org/works/OL17078738W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "canonicalAuthor": "Дэвид Стивен Митчелл",
+      "canonicalTitle": "Тысяча осеней Якоба де Зута",
+      "titleRu": "Тысяча осеней Якоба де Зута",
+      "titleEn": "The Thousand Autumns of Jacob de Zoet",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL15233654W",
+        "https://davidmitchellbooks.com/books/"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL15233654W",
+          "sourceUrl": "https://openlibrary.org/works/OL15233654W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:ann-veronica",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Анна-Вероника",
+      "titleRu": "Анна-Вероника",
+      "titleEn": "Ann Veronica",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52258W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52258W",
+          "sourceUrl": "https://openlibrary.org/works/OL52258W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:men-like-gods",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Люди как боги",
+      "titleRu": "Люди как боги",
+      "titleEn": "Men Like Gods",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52237W"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52237W",
+          "sourceUrl": "https://openlibrary.org/works/OL52237W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:the-first-men-in-the-moon",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Первые люди на Луне",
+      "titleRu": "Первые люди на Луне",
+      "titleEn": "The First Men in the Moon",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52260W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52260W",
+          "sourceUrl": "https://openlibrary.org/works/OL52260W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:the-food-of-the-gods",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Пища богов",
+      "titleRu": "Пища богов",
+      "titleEn": "The Food of the Gods and How It Came to Earth",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52195W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52195W",
+          "sourceUrl": "https://openlibrary.org/works/OL52195W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:the-history-of-mr-polly",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "История мистера Полли",
+      "titleRu": "История мистера Полли",
+      "titleEn": "The History of Mr. Polly",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52262W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52262W",
+          "sourceUrl": "https://openlibrary.org/works/OL52262W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:the-world-set-free",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Освобождённый мир",
+      "titleRu": "Освобождённый мир",
+      "titleEn": "The World Set Free",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52257W",
+        "https://www.gutenberg.org/ebooks/1059"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52257W",
+          "sourceUrl": "https://openlibrary.org/works/OL52257W"
+        }
+      ]
+    },
+    {
+      "workKey": "england:h_g_wells:when-the-sleeper-wakes",
+      "canonicalAuthor": "Герберт Джордж Уэллс",
+      "canonicalTitle": "Когда спящий проснётся",
+      "titleRu": "Когда спящий проснётся",
+      "titleEn": "When the Sleeper Wakes",
+      "sourceUrls": [
+        "https://openlibrary.org/works/OL52151W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+      ],
+      "externalIds": [
+        {
+          "scheme": "openlibrary",
+          "value": "OL52151W",
+          "sourceUrl": "https://openlibrary.org/works/OL52151W"
+        }
+      ]
+    },
+    {
+      "workKey": "russia:chekhov:the-black-monk",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Чёрный монах",
+      "titleRu": "Чёрный монах",
+      "titleEn": "The Black Monk",
+      "sourceUrls": [
+        "https://chekhovmuseum.com/museum/objects/17/849?type=section"
+      ],
+      "externalIds": [
+        {
+          "scheme": "other",
+          "value": "probpera-cover-batch-20260820:the-black-monk",
+          "sourceUrl": "https://probpera.ru/brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp"
+        }
+      ]
+    },
+    {
+      "workKey": "russia:chekhov:the-duel",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Дуэль",
+      "titleRu": "Дуэль",
+      "titleEn": "The Duel",
+      "sourceUrls": [
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf"
+      ],
+      "externalIds": [
+        {
+          "scheme": "other",
+          "value": "probpera-cover-batch-20260820:the-duel",
+          "sourceUrl": "https://probpera.ru/brand/book-covers/the-duel-chekhov-20260820-editorial.webp"
+        }
+      ]
+    },
+    {
+      "workKey": "russia:chekhov:the-lady-with-the-dog",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Дама с собачкой",
+      "titleRu": "Дама с собачкой",
+      "titleEn": "The Lady with the Dog",
+      "sourceUrls": [
+        "https://ar.culture.ru/ru/subject/illyustracii-k-dame-s-sobachkoy",
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf"
+      ],
+      "externalIds": [
+        {
+          "scheme": "other",
+          "value": "probpera-cover-batch-20260820:the-lady-with-the-dog",
+          "sourceUrl": "https://probpera.ru/brand/book-covers/lady-with-the-dog-20260820-editorial.webp"
+        }
+      ]
+    },
+    {
+      "workKey": "russia:chekhov:the-man-in-a-case",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Человек в футляре",
+      "titleRu": "Человек в футляре",
+      "titleEn": "The Man in a Case",
+      "sourceUrls": [
+        "https://chekhovmuseum.com/museum/objects/17/871?type=section",
+        "https://chekhovmuseum.com/en/museum/about/history"
+      ],
+      "externalIds": [
+        {
+          "scheme": "other",
+          "value": "probpera-cover-batch-20260820:the-man-in-a-case",
+          "sourceUrl": "https://probpera.ru/brand/book-covers/the-man-in-a-case-20260820-editorial.webp"
+        }
+      ]
+    },
+    {
+      "workKey": "russia:chekhov:uncle-vanya",
+      "canonicalAuthor": "Антон Павлович Чехов",
+      "canonicalTitle": "Дядя Ваня",
+      "titleRu": "Дядя Ваня",
+      "titleEn": "Uncle Vanya",
+      "sourceUrls": [
+        "https://chekhovmuseum.com/museum/objects/17/871?type=section",
+        "https://chekhovmuseum.com/en/museum/about/history"
+      ],
+      "externalIds": [
+        {
+          "scheme": "other",
+          "value": "probpera-cover-batch-20260820:uncle-vanya",
+          "sourceUrl": "https://probpera.ru/brand/book-covers/uncle-vanya-20260820-editorial.webp"
+        }
+      ]
+    }
+  ],
+  "unmatched": [],
+  "rightsQuarantine": []
+}

@@ -32,9 +32,16 @@ function run(command, args) {
 }
 
 await run(nodeCommand, ["scripts/audit-analytics-config.mjs"]);
-await run(nodeCommand, [npmCli, "run", "build"]);
+await run(nodeCommand, [
+  npmCli,
+  "run",
+  process.env.CMS_SNAPSHOT_PREEXPORTED === "true"
+    ? "build:from-snapshot"
+    : "build",
+]);
 await fs.writeFile(path.join(projectRoot, "dist", "CNAME"), "probpera.ru\n", "utf8");
 await fs.writeFile(path.join(projectRoot, "dist", ".nojekyll"), "", "utf8");
+await run(nodeCommand, ["scripts/check-deployed-release-head.mjs", "--write"]);
 await run(nodeCommand, ["scripts/audit-domain-release.mjs"]);
 await run(nodeCommand, ["scripts/audit-seo-release.mjs"]);
 

@@ -9,6 +9,7 @@ const reportDirectory = path.join(projectRoot, "reports");
 const userSuppliedCoverManifestFiles = [
   "userSuppliedBookCovers.generated.json",
   "userSuppliedBookCoversBatch20260813.generated.json",
+  "userSuppliedBookCoversBatch20260820.generated.json",
 ];
 const userSuppliedCoverManifestPaths = userSuppliedCoverManifestFiles.map((file) =>
   path.join(countriesDirectory, "generated", file)

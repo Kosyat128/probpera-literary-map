@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "bookCount": 9712,
+  "bookCount": 9729,
   "articleCount": 161,
-  "linkedBookCount": 513,
-  "linkedArticleCount": 26,
-  "relationCount": 652,
-  "articleBookRelationCount": 30,
+  "linkedBookCount": 517,
+  "linkedArticleCount": 27,
+  "relationCount": 657,
+  "articleBookRelationCount": 35,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
       {
@@ -1399,6 +1399,40 @@
         "kind": "mention"
       }
     ],
+    "england:h_g_wells:the-food-of-the-gods": [
+      {
+        "id": "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d",
+        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
+        "sectionId": "language",
+        "sectionLabel": "Русский язык",
+        "readingMinutes": 3,
+        "slug": "popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-a",
+        "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
+        "title": "Зарубежные классики литературы и их профессии",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели мира",
+        "readingMinutes": 12,
+        "slug": "zarubezhnye-klassiki-literatury-i-ih-professii",
+        "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:the-world-set-free": [
+      {
+        "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
+        "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 6,
+        "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
+        "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
+        "kind": "mention"
+      }
+    ],
     "england:h_g_wells:legacy-h_g_wells-машина-времени": [
       {
         "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
@@ -1777,6 +1811,30 @@
         "slug": "mnenie-o-knige-devida-mitchella-utopiya-avenyu",
         "imageUrl": "https://static.tildacdn.com/tild3933-3832-4536-b831-353861383232/234234.jpg",
         "kind": "review"
+      }
+    ],
+    "england:david_mitchell:ghostwritten": [
+      {
+        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
+        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 8,
+        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
+        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:david_mitchell:number9dream": [
+      {
+        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
+        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 8,
+        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
+        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
+        "kind": "mention"
       }
     ],
     "england:evelyn_waugh:article-series-15s6gh2": [
@@ -7652,6 +7710,103 @@
         "kind": "mention"
       }
     ],
+    "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d": [
+      {
+        "key": "russia:tolstoy:war-and-peace",
+        "countryId": "russia",
+        "writerId": "tolstoy",
+        "bookId": "war-and-peace",
+        "firstPublished": 1869,
+        "coverUrl": "brand/book-covers/thumbs/war-and-peace-editorial.webp",
+        "localizations": {
+          "ru": {
+            "title": "Война и мир",
+            "writerName": "Лев Николаевич Толстой"
+          },
+          "en": {
+            "title": "War and Peace",
+            "writerName": "Leo Tolstoy"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:h_g_wells:the-food-of-the-gods",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-food-of-the-gods",
+        "firstPublished": 1904,
+        "localizations": {
+          "ru": {
+            "title": "Пища богов",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The Food of the Gods and How It Came to Earth",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
+    "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02": [
+      {
+        "key": "england:h_g_wells:the-food-of-the-gods",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-food-of-the-gods",
+        "firstPublished": 1904,
+        "localizations": {
+          "ru": {
+            "title": "Пища богов",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The Food of the Gods and How It Came to Earth",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:john_galsworthy:the-forsyte-saga",
+        "countryId": "england",
+        "writerId": "john_galsworthy",
+        "bookId": "the-forsyte-saga",
+        "firstPublished": 1922,
+        "localizations": {
+          "ru": {
+            "title": "Сага о Форсайтах",
+            "writerName": "Джон Голсуорси"
+          },
+          "en": {
+            "title": "The Forsyte Saga",
+            "writerName": "John Galsworthy"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
+    "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b": [
+      {
+        "key": "england:h_g_wells:the-world-set-free",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-world-set-free",
+        "firstPublished": 1914,
+        "localizations": {
+          "ru": {
+            "title": "Освобождённый мир",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The World Set Free",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
     "cms-6a04dd7f-ba4d-4d32-96d0-7e716bce386d": [
       {
         "key": "england:aldous_huxley:brave-new-world-editorial",
@@ -7732,26 +7887,6 @@
         "kind": "mention"
       }
     ],
-    "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02": [
-      {
-        "key": "england:john_galsworthy:the-forsyte-saga",
-        "countryId": "england",
-        "writerId": "john_galsworthy",
-        "bookId": "the-forsyte-saga",
-        "firstPublished": 1922,
-        "localizations": {
-          "ru": {
-            "title": "Сага о Форсайтах",
-            "writerName": "Джон Голсуорси"
-          },
-          "en": {
-            "title": "The Forsyte Saga",
-            "writerName": "John Galsworthy"
-          }
-        },
-        "kind": "mention"
-      }
-    ],
     "cms-a834a7a4-2ba1-4818-8a56-7f6a393d63eb": [
       {
         "key": "england:john_galsworthy:the-forsyte-saga",
@@ -7785,6 +7920,62 @@
           "en": {
             "title": "The Old Man and the Sea",
             "writerName": "Ernest Hemingway"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
+    "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8": [
+      {
+        "key": "england:david_mitchell:ghostwritten",
+        "countryId": "england",
+        "writerId": "david_mitchell",
+        "bookId": "ghostwritten",
+        "firstPublished": 1999,
+        "localizations": {
+          "ru": {
+            "title": "Литературный призрак",
+            "writerName": "Дэвид Стивен Митчелл"
+          },
+          "en": {
+            "title": "Ghostwritten",
+            "writerName": "David Stephen Mitchell"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "usa:herman_melville:moby-dick",
+        "countryId": "usa",
+        "writerId": "herman_melville",
+        "bookId": "moby-dick",
+        "firstPublished": 1851,
+        "localizations": {
+          "ru": {
+            "title": "Моби Дик, или Белый кит",
+            "writerName": "Герман Мелвилл"
+          },
+          "en": {
+            "title": "Moby-Dick; or, The Whale",
+            "writerName": "Herman Melville"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:david_mitchell:number9dream",
+        "countryId": "england",
+        "writerId": "david_mitchell",
+        "bookId": "number9dream",
+        "firstPublished": 2001,
+        "localizations": {
+          "ru": {
+            "title": "Сон № 9",
+            "writerName": "Дэвид Стивен Митчелл"
+          },
+          "en": {
+            "title": "Number9Dream",
+            "writerName": "David Stephen Mitchell"
           }
         },
         "kind": "mention"
@@ -7892,27 +8083,6 @@
         "kind": "feature"
       }
     ],
-    "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d": [
-      {
-        "key": "russia:tolstoy:war-and-peace",
-        "countryId": "russia",
-        "writerId": "tolstoy",
-        "bookId": "war-and-peace",
-        "firstPublished": 1869,
-        "coverUrl": "brand/book-covers/thumbs/war-and-peace-editorial.webp",
-        "localizations": {
-          "ru": {
-            "title": "Война и мир",
-            "writerName": "Лев Николаевич Толстой"
-          },
-          "en": {
-            "title": "War and Peace",
-            "writerName": "Leo Tolstoy"
-          }
-        },
-        "kind": "mention"
-      }
-    ],
     "cms-22c7eab8-cf9d-4824-8311-3680a4d88714": [
       {
         "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
@@ -7991,26 +8161,6 @@
           }
         },
         "kind": "feature"
-      }
-    ],
-    "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8": [
-      {
-        "key": "usa:herman_melville:moby-dick",
-        "countryId": "usa",
-        "writerId": "herman_melville",
-        "bookId": "moby-dick",
-        "firstPublished": 1851,
-        "localizations": {
-          "ru": {
-            "title": "Моби Дик, или Белый кит",
-            "writerName": "Герман Мелвилл"
-          },
-          "en": {
-            "title": "Moby-Dick; or, The Whale",
-            "writerName": "Herman Melville"
-          }
-        },
-        "kind": "mention"
       }
     ],
     "cms-a1285abc-3c95-45c7-b573-56860d5b2be6": [

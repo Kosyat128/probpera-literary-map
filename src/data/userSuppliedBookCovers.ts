@@ -1,9 +1,12 @@
 import manifestJson from "./countries/generated/userSuppliedBookCovers.generated.json";
 import batch20260813ManifestJson from "./countries/generated/userSuppliedBookCoversBatch20260813.generated.json";
+import batch20260820ManifestJson from "./countries/generated/userSuppliedBookCoversBatch20260820.generated.json";
 import type { WorkProfile } from "./countries/types";
 
 export type UserSuppliedBookCoverEntry = {
   workKey: string;
+  /** Defaults to true for immutable manifests created before alternate artwork support. */
+  isPrimary?: boolean;
   visibleAuthor: string;
   visibleTitle: string;
   coverUrl: string;
@@ -20,9 +23,12 @@ export type UserSuppliedBookCoverEntry = {
     archiveSha256: string;
     imageSha256: string;
     sourceFilename: string;
+    sourceRelativePath?: string;
     sourceIndex: number;
     matchBasis: string;
-    sourceEvidence?: "chatgpt-image-filename";
+    sourceEvidence?:
+      | "chatgpt-image-filename"
+      | "user-supplied-archive-confirmation";
     note: string;
   };
 };
@@ -46,22 +52,37 @@ export const userSuppliedBookCoverManifest =
 export const userSuppliedBookCoverBatch20260813Manifest =
   batch20260813ManifestJson as UserSuppliedBookCoverManifest;
 
+export const userSuppliedBookCoverBatch20260820Manifest =
+  batch20260820ManifestJson as UserSuppliedBookCoverManifest;
+
 export const userSuppliedBookCoverManifests = [
   userSuppliedBookCoverManifest,
   userSuppliedBookCoverBatch20260813Manifest,
+  userSuppliedBookCoverBatch20260820Manifest,
 ] as const;
 
-export const userSuppliedBookCoverByWorkKey = new Map(
-  userSuppliedBookCoverManifests.flatMap((manifest) =>
-    manifest.entries.map((entry) => [
-      entry.workKey,
-      {
-        ...entry,
-        checkedAt: manifest.generatedAt.slice(0, 10),
-      },
-    ] as const)
-  )
+export const userSuppliedBookCoverArtworks = userSuppliedBookCoverManifests.flatMap(
+  (manifest) =>
+    manifest.entries.map((entry) => ({
+      ...entry,
+      isPrimary: entry.isPrimary !== false,
+      checkedAt: manifest.generatedAt.slice(0, 10),
+    }))
 );
+
+export const userSuppliedBookCoverByWorkKey = new Map<
+  string,
+  (typeof userSuppliedBookCoverArtworks)[number]
+>();
+for (const artwork of userSuppliedBookCoverArtworks) {
+  if (!artwork.isPrimary) continue;
+  if (userSuppliedBookCoverByWorkKey.has(artwork.workKey)) {
+    throw new Error(
+      `Duplicate primary user-supplied artwork for ${artwork.workKey}.`
+    );
+  }
+  userSuppliedBookCoverByWorkKey.set(artwork.workKey, artwork);
+}
 
 export function applyUserSuppliedBookCover(
   workKey: string,

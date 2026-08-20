@@ -21,6 +21,7 @@ const outputPath = path.join(
 const userSuppliedCoverManifestPaths = [
   "userSuppliedBookCovers.generated.json",
   "userSuppliedBookCoversBatch20260813.generated.json",
+  "userSuppliedBookCoversBatch20260820.generated.json",
 ].map((file) =>
   path.join(
     repositoryRoot,

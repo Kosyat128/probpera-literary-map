@@ -22,6 +22,7 @@ const reviewedMigrations = [
   ["20260813_unified_revision_history.sql", "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"],
   ["20260814_publication_outbox_and_schema_health.sql", "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"],
   ["20260820_homepage_book_month_editorial_choice.sql", "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"],
+  ["20260820_literary_work_cover_artworks.sql", "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"],
 ];
 
 function fail(message) {
@@ -206,7 +207,8 @@ begin
     or to_regclass('public.country_profile_overrides') is null
     or to_regclass('public.public_build_outbox') is null
     or to_regclass('public.probpera_schema_migrations') is null
-    or to_regclass('public.admin_revision_history') is null then
+    or to_regclass('public.admin_revision_history') is null
+    or to_regclass('public.literary_work_cover_artworks') is null then
     raise exception 'Required editorial relation is missing after reconciliation';
   end if;
 
@@ -251,8 +253,8 @@ ${values}
     and not outbox_trigger.tgisinternal
     and outbox_trigger.tgfoid = 'public.capture_public_build_outbox()'::regprocedure
     and outbox_trigger.tgname = (relation.relname::text || '_public_build_outbox')::name;
-  if outbox_triggers <> 20 then
-    raise exception 'Expected 20 publication triggers, found %', outbox_triggers;
+  if outbox_triggers <> 21 then
+    raise exception 'Expected 21 publication triggers, found %', outbox_triggers;
   end if;
 
   select user_id into staff_user
@@ -270,13 +272,14 @@ ${values}
   );
   health := public.get_editorial_schema_health();
   if health is null
-    or health ->> 'version' <> '20260814_publication_outbox_and_schema_health'
+    or health ->> 'version' <> '20260820_literary_work_cover_artworks'
     or not coalesce((health ->> 'outbox')::boolean, false)
     or not coalesce((health ->> 'outboxRpc')::boolean, false)
     or not coalesce((health ->> 'migrationLedger')::boolean, false)
     or not coalesce((health ->> 'publicationTriggers')::boolean, false)
     or not coalesce((health ->> 'revisionHistory')::boolean, false)
     or not coalesce((health ->> 'workTranslations')::boolean, false)
+    or not coalesce((health ->> 'workCoverArtworks')::boolean, false)
     or not coalesce((health ->> 'countryOverrides')::boolean, false)
     or not coalesce((health ->> 'writerOverrides')::boolean, false)
     or not coalesce((health ->> 'homepageMove')::boolean, false)
@@ -319,6 +322,7 @@ select concat(
   ';publication_triggers=', health ->> 'publicationTriggers',
   ';revision_history=', health ->> 'revisionHistory',
   ';work_translations=', health ->> 'workTranslations',
+  ';work_cover_artworks=', health ->> 'workCoverArtworks',
   ';country_overrides=', health ->> 'countryOverrides',
   ';writer_overrides=', health ->> 'writerOverrides',
   ';homepage_move=', health ->> 'homepageMove',

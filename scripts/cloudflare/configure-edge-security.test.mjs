@@ -1,12 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, readdirSync } from "node:fs";
 import {
+  MANAGED_HTTPS_REDIRECT_RULE_REF,
   MANAGED_RULE_REF,
   PUBLIC_CONTENT_SECURITY_POLICY,
   configureCloudflareEdge,
+  desiredHttpsRedirectRule,
   desiredImmutableAssetCacheRule,
   desiredPublicHeaderRule,
   planManagedCacheRule,
+  planManagedHttpsRedirectRule,
   planManagedRule,
   redactSensitive,
 } from "./configure-edge-security.mjs";
@@ -17,6 +20,8 @@ const rulesetId = "cccccccccccccccccccccccccccccccc";
 const managedRuleId = "dddddddddddddddddddddddddddddddd";
 const cacheRulesetId = "11111111111111111111111111111111";
 const managedCacheRuleId = "22222222222222222222222222222222";
+const redirectRulesetId = "33333333333333333333333333333333";
+const managedRedirectRuleId = "44444444444444444444444444444444";
 const token = "cloudflare-test-token-never-print";
 
 function success(result, resultInfo) {
@@ -73,6 +78,43 @@ function managedCacheRule(overrides = {}) {
   };
 }
 
+function managedRedirectRule(overrides = {}) {
+  return {
+    id: managedRedirectRuleId,
+    ...desiredHttpsRedirectRule(),
+    ...overrides,
+  };
+}
+
+function unrelatedRedirectRule(overrides = {}) {
+  return {
+    id: "55555555555555555555555555555555",
+    ref: "unrelated-https-canonical-path",
+    expression: '(ssl and http.request.uri.path eq "/old")',
+    description: "unrelated HTTPS canonical redirect",
+    action: "redirect",
+    action_parameters: {
+      from_value: {
+        target_url: { value: "https://probpera.ru/new" },
+        status_code: 301,
+        preserve_query_string: true,
+      },
+    },
+    enabled: true,
+    ...overrides,
+  };
+}
+
+function overlappingRedirectRule(overrides = {}) {
+  return unrelatedRedirectRule({
+    ref: "unrelated-http-apex-redirect",
+    expression:
+      '(not ssl and http.host eq "probpera.ru" and http.request.uri.path eq "/old")',
+    description: "unrelated HTTP apex redirect",
+    ...overrides,
+  });
+}
+
 function unrelatedRule() {
   return {
     id: "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
@@ -95,6 +137,8 @@ function makeFetch(options = {}) {
     const alwaysUseHttps = options.alwaysUseHttps ?? "on";
     const rules = options.rules ?? [unrelatedRule(), managedRule()];
     const cacheRules = options.cacheRules ?? [managedCacheRule()];
+    const redirectRulesetExists = options.redirectRulesetExists ?? true;
+    const redirectRules = options.redirectRules ?? [managedRedirectRule()];
     const zone = options.zone ?? zoneResult();
     const url = new URL(urlValue);
     const resource = `${url.pathname}${url.search}`;
@@ -122,9 +166,31 @@ function makeFetch(options = {}) {
         [
           { id: rulesetId, kind: "zone", phase: "http_response_headers_transform" },
           { id: cacheRulesetId, kind: "zone", phase: "http_request_cache_settings" },
+          ...(redirectRulesetExists
+            ? [
+                {
+                  id: redirectRulesetId,
+                  kind: "zone",
+                  phase: "http_request_dynamic_redirect",
+                },
+              ]
+            : []),
         ],
         { page: 1, per_page: 50, total_pages: 1 }
       );
+    }
+    if (
+      init.method === "GET" &&
+      url.pathname === `/client/v4/zones/${zoneId}/rulesets/${redirectRulesetId}`
+    ) {
+      return apiResponse({
+        id: redirectRulesetId,
+        name: "Redirect rules",
+        description: "existing redirect entry point",
+        kind: "zone",
+        phase: "http_request_dynamic_redirect",
+        rules: redirectRules,
+      });
     }
     if (
       init.method === "GET" &&
@@ -194,6 +260,26 @@ describe("Cloudflare public edge security configurator", () => {
     for (const [name, setting] of Object.entries(rule.action_parameters.headers)) {
       expect(publicBuilder).toContain(`${name}: ${setting.value}`);
     }
+
+    const redirectRule = desiredHttpsRedirectRule();
+    expect(redirectRule.ref).toBe(MANAGED_HTTPS_REDIRECT_RULE_REF);
+    expect(redirectRule.expression).toBe(
+      '(not ssl and http.host in {"probpera.ru" "admin.probpera.ru"})'
+    );
+    expect(redirectRule.action_parameters).toEqual({
+      from_value: {
+        target_url: {
+          expression: 'concat("https://", http.host, http.request.uri.path)',
+        },
+        status_code: 308,
+        preserve_query_string: true,
+      },
+    });
+    expect(
+      planManagedHttpsRedirectRule({
+        rules: [unrelatedRedirectRule(), managedRedirectRule()],
+      }).operation
+    ).toBe("none");
   });
 
   it("is idempotent and dry-run performs GET requests only", async () => {
@@ -211,6 +297,7 @@ describe("Cloudflare public edge security configurator", () => {
       active: true,
       plannedChanges: [],
       appliedChanges: [],
+      unrelatedRedirectRulesPreserved: 0,
       unrelatedResponseHeaderRulesPreserved: 1,
       unrelatedCacheRulesPreserved: 0,
     });
@@ -264,9 +351,318 @@ describe("Cloudflare public edge security configurator", () => {
       "update-rule",
     ]);
     expect(result.unrelatedResponseHeaderRulesPreserved).toBe(1);
+    expect(result.unrelatedRedirectRulesPreserved).toBe(0);
     expect(result.unrelatedCacheRulesPreserved).toBe(0);
     expect(calls.filter((call) => call.method !== "GET")).toHaveLength(2);
     expect(rules[0]).toEqual(unrelatedRule());
+  });
+
+  it("appends the managed HTTPS redirect without replacing or reordering unrelated redirects", async () => {
+    let redirectRules = [unrelatedRedirectRule()];
+    const { fetchImpl, calls } = makeFetch({
+      get redirectRules() {
+        return redirectRules;
+      },
+      mutate({ url, init, body }) {
+        if (
+          init.method === "POST" &&
+          url.pathname ===
+            `/client/v4/zones/${zoneId}/rulesets/${redirectRulesetId}/rules`
+        ) {
+          expect(body).toEqual({
+            ...desiredHttpsRedirectRule(),
+            position: { after: "" },
+          });
+          expect(body).not.toHaveProperty("rules");
+          redirectRules = [unrelatedRedirectRule(), managedRedirectRule()];
+          return apiResponse({
+            id: redirectRulesetId,
+            kind: "zone",
+            phase: "http_request_dynamic_redirect",
+            rules: redirectRules,
+          });
+        }
+        throw new Error(`Unexpected mutation: ${init.method} ${url.pathname}`);
+      },
+    });
+
+    const result = await configureCloudflareEdge({
+      token,
+      accountId,
+      fetchImpl,
+      apply: true,
+    });
+
+    expect(result.appliedChanges).toEqual(["create-redirect-rule"]);
+    expect(result.unrelatedRedirectRulesPreserved).toBe(1);
+    expect(redirectRules[0]).toEqual(unrelatedRedirectRule());
+    expect(calls.filter((call) => call.method !== "GET")).toHaveLength(1);
+  });
+
+  it("proves foreign redirect disjointness conservatively and ignores disabled rules", () => {
+    expect(() =>
+      planManagedHttpsRedirectRule({ rules: [overlappingRedirectRule()] })
+    ).toThrow("not provably disjoint");
+    expect(() =>
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression: '(http.request.uri.path eq "/old")',
+          }),
+        ],
+      })
+    ).toThrow("not provably disjoint");
+    expect(() =>
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression: "(ssl and true xor not ssl)",
+          }),
+        ],
+      })
+    ).toThrow("not provably disjoint");
+    expect(() =>
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression: "(ssl and true || not ssl)",
+          }),
+        ],
+      })
+    ).toThrow("not provably disjoint");
+    expect(() =>
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression: "(ssl and true or(not ssl))",
+          }),
+        ],
+      })
+    ).toThrow("not provably disjoint");
+
+    expect(
+      planManagedHttpsRedirectRule({ rules: [unrelatedRedirectRule()] }).operation
+    ).toBe("create-redirect-rule");
+    expect(
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression:
+              '(not ssl and http.host eq "www.probpera.ru" and http.request.uri.path eq "/old")',
+          }),
+        ],
+      }).operation
+    ).toBe("create-redirect-rule");
+    expect(
+      planManagedHttpsRedirectRule({
+        rules: [
+          unrelatedRedirectRule({
+            expression:
+              '((ssl and http.host eq "probpera.ru") or http.host in {"example.com" "admin.example.com"})',
+          }),
+        ],
+      }).operation
+    ).toBe("create-redirect-rule");
+    expect(
+      planManagedHttpsRedirectRule({
+        rules: [overlappingRedirectRule({ enabled: false })],
+      }).operation
+    ).toBe("create-redirect-rule");
+  });
+
+  it("fails before every mutation when an enabled foreign redirect may overlap", async () => {
+    const { fetchImpl, calls } = makeFetch({
+      alwaysUseHttps: "off",
+      redirectRules: [overlappingRedirectRule()],
+    });
+
+    await expect(
+      configureCloudflareEdge({ token, accountId, fetchImpl, apply: true })
+    ).rejects.toThrow("not provably disjoint");
+    expect(calls.every((call) => call.method === "GET")).toBe(true);
+  });
+
+  it("updates only the managed redirect in place and preserves foreign rule order", async () => {
+    const disabledOverlap = overlappingRedirectRule({
+      id: "77777777777777777777777777777777",
+      ref: "disabled-legacy-http-redirect",
+      enabled: false,
+    });
+    let redirectRules = [
+      unrelatedRedirectRule(),
+      managedRedirectRule({ expression: '(http.host eq "www.probpera.ru")' }),
+      disabledOverlap,
+    ];
+    const { fetchImpl, calls } = makeFetch({
+      get redirectRules() {
+        return redirectRules;
+      },
+      mutate({ url, init, body }) {
+        if (
+          init.method === "PATCH" &&
+          url.pathname ===
+            `/client/v4/zones/${zoneId}/rulesets/${redirectRulesetId}/rules/${managedRedirectRuleId}`
+        ) {
+          expect(body).toEqual(desiredHttpsRedirectRule());
+          expect(body).not.toHaveProperty("position");
+          redirectRules = [
+            unrelatedRedirectRule(),
+            managedRedirectRule(),
+            disabledOverlap,
+          ];
+          return apiResponse({
+            id: redirectRulesetId,
+            kind: "zone",
+            phase: "http_request_dynamic_redirect",
+            rules: redirectRules,
+          });
+        }
+        throw new Error(`Unexpected mutation: ${init.method} ${url.pathname}`);
+      },
+    });
+
+    const result = await configureCloudflareEdge({
+      token,
+      accountId,
+      fetchImpl,
+      apply: true,
+    });
+
+    expect(result.appliedChanges).toEqual(["update-redirect-rule"]);
+    expect(result.unrelatedRedirectRulesPreserved).toBe(2);
+    expect(redirectRules.map((rule) => rule.id)).toEqual([
+      unrelatedRedirectRule().id,
+      managedRedirectRuleId,
+      disabledOverlap.id,
+    ]);
+    expect(calls.filter((call) => call.method !== "GET")).toHaveLength(1);
+  });
+
+  it("fails post-apply verification if a foreign redirect changes", async () => {
+    let redirectRules = [unrelatedRedirectRule()];
+    const { fetchImpl } = makeFetch({
+      get redirectRules() {
+        return redirectRules;
+      },
+      mutate({ url, init }) {
+        if (
+          init.method === "POST" &&
+          url.pathname ===
+            `/client/v4/zones/${zoneId}/rulesets/${redirectRulesetId}/rules`
+        ) {
+          redirectRules = [
+            unrelatedRedirectRule({ description: "changed concurrently" }),
+            managedRedirectRule(),
+          ];
+          return apiResponse({
+            id: redirectRulesetId,
+            kind: "zone",
+            phase: "http_request_dynamic_redirect",
+            rules: redirectRules,
+          });
+        }
+        throw new Error(`Unexpected mutation: ${init.method} ${url.pathname}`);
+      },
+    });
+
+    await expect(
+      configureCloudflareEdge({ token, accountId, fetchImpl, apply: true })
+    ).rejects.toThrow("post-apply verification");
+  });
+
+  it("preserves semantic whitespace inside foreign redirect string literals", () => {
+    const withDoubleSpace = planManagedHttpsRedirectRule({
+      rules: [
+        unrelatedRedirectRule({
+          expression: '(ssl and http.request.uri.path eq "/foo  bar")',
+        }),
+      ],
+    });
+    const withSingleSpace = planManagedHttpsRedirectRule({
+      rules: [
+        unrelatedRedirectRule({
+          expression: '(ssl and http.request.uri.path eq "/foo bar")',
+        }),
+      ],
+    });
+    expect(withDoubleSpace.unrelatedRuleSnapshot).not.toEqual(
+      withSingleSpace.unrelatedRuleSnapshot
+    );
+  });
+
+  it("fails post-apply verification if Cloudflare does not keep a new fallback last", async () => {
+    let redirectRules = [unrelatedRedirectRule()];
+    const { fetchImpl } = makeFetch({
+      get redirectRules() {
+        return redirectRules;
+      },
+      mutate({ url, init }) {
+        if (
+          init.method === "POST" &&
+          url.pathname ===
+            `/client/v4/zones/${zoneId}/rulesets/${redirectRulesetId}/rules`
+        ) {
+          redirectRules = [managedRedirectRule(), unrelatedRedirectRule()];
+          return apiResponse({
+            id: redirectRulesetId,
+            kind: "zone",
+            phase: "http_request_dynamic_redirect",
+            rules: redirectRules,
+          });
+        }
+        throw new Error(`Unexpected mutation: ${init.method} ${url.pathname}`);
+      },
+    });
+
+    await expect(
+      configureCloudflareEdge({ token, accountId, fetchImpl, apply: true })
+    ).rejects.toThrow("post-apply verification");
+  });
+
+  it("creates the zone redirect entry point when the phase does not exist", async () => {
+    let redirectRulesetExists = false;
+    let redirectRules = [];
+    const { fetchImpl, calls } = makeFetch({
+      get redirectRulesetExists() {
+        return redirectRulesetExists;
+      },
+      get redirectRules() {
+        return redirectRules;
+      },
+      mutate({ url, init, body }) {
+        if (
+          init.method === "POST" &&
+          url.pathname === `/client/v4/zones/${zoneId}/rulesets`
+        ) {
+          expect(body).toEqual({
+            name: "PROBPERA managed HTTPS redirects",
+            description:
+              "Zone-level HTTPS redirects managed by the PROBPERA repository",
+            kind: "zone",
+            phase: "http_request_dynamic_redirect",
+            rules: [desiredHttpsRedirectRule()],
+          });
+          redirectRulesetExists = true;
+          redirectRules = [managedRedirectRule()];
+          return apiResponse({
+            id: redirectRulesetId,
+            ...body,
+            rules: redirectRules,
+          });
+        }
+        throw new Error(`Unexpected mutation: ${init.method} ${url.pathname}`);
+      },
+    });
+
+    const result = await configureCloudflareEdge({
+      token,
+      accountId,
+      fetchImpl,
+      apply: true,
+    });
+
+    expect(result.appliedChanges).toEqual(["create-redirect-ruleset"]);
+    expect(calls.filter((call) => call.method !== "GET")).toHaveLength(1);
   });
 
   it("adds one rule without submitting or replacing the unrelated rules array", async () => {
@@ -317,6 +713,15 @@ describe("Cloudflare public edge security configurator", () => {
     expect(() =>
       planManagedCacheRule({
         rules: [managedCacheRule(), managedCacheRule({ id: zoneId })],
+      })
+    ).toThrow("duplicate rules");
+
+    expect(() =>
+      planManagedHttpsRedirectRule({
+        rules: [
+          managedRedirectRule(),
+          managedRedirectRule({ id: "66666666666666666666666666666666" }),
+        ],
       })
     ).toThrow("duplicate rules");
 
@@ -380,6 +785,8 @@ describe("Cloudflare public edge security configurator", () => {
     expect(workflow).toContain("secrets.CLOUDFLARE_API_TOKEN");
     expect(workflow).toContain("secrets.CLOUDFLARE_ACCOUNT_ID");
     expect(workflow).toContain('git ls-remote --exit-code origin refs/heads/main');
+    expect(workflow).toContain("Verify live edge behavior after apply");
+    expect(workflow).toContain("node scripts/audit-live-security.mjs --attempts=6");
     expect(workflow).not.toMatch(/echo[^\n]*(?:CLOUDFLARE_API_TOKEN|ACCOUNT_ID)=/u);
   });
 });

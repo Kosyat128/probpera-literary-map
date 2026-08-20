@@ -2,8 +2,13 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 export const PUBLIC_ZONE_NAME = "probpera.ru";
+export const DYNAMIC_REDIRECT_PHASE = "http_request_dynamic_redirect";
 export const RESPONSE_HEADERS_PHASE = "http_response_headers_transform";
 export const CACHE_SETTINGS_PHASE = "http_request_cache_settings";
+export const MANAGED_HTTPS_REDIRECT_RULE_REF =
+  "probpera-zone-http-to-https-v1";
+export const MANAGED_HTTPS_REDIRECT_RULE_DESCRIPTION =
+  "PROBPERA zone HTTP to HTTPS redirect (repository managed)";
 export const MANAGED_RULE_REF = "probpera-public-security-response-headers-v1";
 export const MANAGED_RULE_DESCRIPTION =
   "PROBPERA public security response headers (repository managed)";
@@ -159,6 +164,28 @@ export function desiredPublicHeaderRule(zoneName = PUBLIC_ZONE_NAME) {
   };
 }
 
+export function desiredHttpsRedirectRule(zoneName = PUBLIC_ZONE_NAME) {
+  if (zoneName !== PUBLIC_ZONE_NAME) {
+    throw new Error(`This configurator is locked to ${PUBLIC_ZONE_NAME}`);
+  }
+  return {
+    ref: MANAGED_HTTPS_REDIRECT_RULE_REF,
+    expression: `(not ssl and http.host in {"${zoneName}" "admin.${zoneName}"})`,
+    description: MANAGED_HTTPS_REDIRECT_RULE_DESCRIPTION,
+    action: "redirect",
+    action_parameters: {
+      from_value: {
+        target_url: {
+          expression: 'concat("https://", http.host, http.request.uri.path)',
+        },
+        status_code: 308,
+        preserve_query_string: true,
+      },
+    },
+    enabled: true,
+  };
+}
+
 export function desiredImmutableAssetCacheRule(zoneName = PUBLIC_ZONE_NAME) {
   if (zoneName !== PUBLIC_ZONE_NAME) {
     throw new Error(`This configurator is locked to ${PUBLIC_ZONE_NAME}`);
@@ -255,6 +282,215 @@ export function managedCacheRuleIsCurrent(rule, zoneName = PUBLIC_ZONE_NAME) {
     JSON.stringify(comparableCacheRule(rule)) ===
     JSON.stringify(comparableCacheRule(desiredImmutableAssetCacheRule(zoneName)))
   );
+}
+
+function comparableRedirectRule(rule) {
+  return canonicalize({
+    ref: rule?.ref,
+    expression: normalizeExpression(rule?.expression),
+    description: rule?.description,
+    action: rule?.action,
+    action_parameters: rule?.action_parameters,
+    enabled: rule?.enabled !== false,
+  });
+}
+
+export function managedHttpsRedirectRuleIsCurrent(
+  rule,
+  zoneName = PUBLIC_ZONE_NAME
+) {
+  return (
+    JSON.stringify(comparableRedirectRule(rule)) ===
+    JSON.stringify(comparableRedirectRule(desiredHttpsRedirectRule(zoneName)))
+  );
+}
+
+function scanTopLevelBooleanOperator(expression, operator) {
+  const parts = [];
+  let start = 0;
+  let parentheses = 0;
+  let braces = 0;
+  let brackets = 0;
+  let quote = "";
+  let escaped = false;
+  const lower = expression.toLowerCase();
+
+  for (let index = 0; index < expression.length; index += 1) {
+    const character = expression[index];
+    if (quote) {
+      if (escaped) escaped = false;
+      else if (character === "\\") escaped = true;
+      else if (character === quote) quote = "";
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+      continue;
+    }
+    if (character === "(") parentheses += 1;
+    else if (character === ")") parentheses -= 1;
+    else if (character === "{") braces += 1;
+    else if (character === "}") braces -= 1;
+    else if (character === "[") brackets += 1;
+    else if (character === "]") brackets -= 1;
+
+    if (parentheses < 0 || braces < 0 || brackets < 0) return null;
+    if (parentheses || braces || brackets) continue;
+
+    if (
+      lower.startsWith(operator, index) &&
+      (index === 0 || !/[a-z0-9_.]/iu.test(expression[index - 1])) &&
+      (index + operator.length === expression.length ||
+        !/[a-z0-9_.]/iu.test(expression[index + operator.length]))
+    ) {
+      parts.push(expression.slice(start, index).trim());
+      start = index + operator.length;
+      index += operator.length - 1;
+    }
+  }
+
+  if (quote || parentheses || braces || brackets) return null;
+  if (!parts.length) return [];
+  parts.push(expression.slice(start).trim());
+  return parts.every(Boolean) ? parts : null;
+}
+
+function stripBalancedOuterParentheses(expression) {
+  let output = expression.trim();
+  while (output.startsWith("(") && output.endsWith(")")) {
+    let depth = 0;
+    let quote = "";
+    let escaped = false;
+    let closesAtEnd = false;
+    for (let index = 0; index < output.length; index += 1) {
+      const character = output[index];
+      if (quote) {
+        if (escaped) escaped = false;
+        else if (character === "\\") escaped = true;
+        else if (character === quote) quote = "";
+        continue;
+      }
+      if (character === '"' || character === "'") {
+        quote = character;
+        continue;
+      }
+      if (character === "(") depth += 1;
+      else if (character === ")") depth -= 1;
+      if (depth < 0) return output;
+      if (depth === 0) {
+        closesAtEnd = index === output.length - 1;
+        break;
+      }
+    }
+    if (!closesAtEnd) break;
+    output = output.slice(1, -1).trim();
+  }
+  return output;
+}
+
+function hostAtomIsProvablyDisjoint(expression, targetHosts) {
+  const equality = expression.match(
+    /^http\.host\s+eq\s+"([a-z0-9.-]+)"$/iu
+  );
+  const reversedEquality = expression.match(
+    /^"([a-z0-9.-]+)"\s+eq\s+http\.host$/iu
+  );
+  const equalityHost = equality?.[1] || reversedEquality?.[1];
+  if (equalityHost) return !targetHosts.has(equalityHost.toLowerCase());
+
+  const hostSet = expression.match(/^http\.host\s+in\s+\{(.+)\}$/iu)?.[1];
+  if (!hostSet) return false;
+  const hosts = [...hostSet.matchAll(/"([a-z0-9.-]+)"/giu)].map((match) =>
+    match[1].toLowerCase()
+  );
+  const remainder = hostSet.replace(/"[a-z0-9.-]+"/giu, "").trim();
+  return (
+    hosts.length > 0 &&
+    remainder === "" &&
+    hosts.every((host) => !targetHosts.has(host))
+  );
+}
+
+function containsCStyleLogicalOperator(expression) {
+  let quote = "";
+  let escaped = false;
+  for (let index = 0; index < expression.length; index += 1) {
+    const character = expression[index];
+    if (quote) {
+      if (escaped) escaped = false;
+      else if (character === "\\") escaped = true;
+      else if (character === quote) quote = "";
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+      continue;
+    }
+    if (
+      character === "!" ||
+      expression.startsWith("&&", index) ||
+      expression.startsWith("||", index) ||
+      expression.startsWith("^^", index)
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function redirectExpressionIsProvablyDisjoint(expressionValue, zoneName) {
+  // This is intentionally a proof over a small, explicit subset of the Rules
+  // language, not a best-effort evaluator. Unknown atoms return false, OR is
+  // safe only when every branch is disjoint, and AND is safe when at least one
+  // branch excludes all non-TLS requests to both managed hosts.
+  const expression = stripBalancedOuterParentheses(
+    normalizeExpression(expressionValue)
+  );
+  if (!expression) return false;
+  if (containsCStyleLogicalOperator(expression)) return false;
+
+  const orParts = scanTopLevelBooleanOperator(expression, "or");
+  if (orParts === null) return false;
+  if (orParts.length) {
+    return orParts.every((part) =>
+      redirectExpressionIsProvablyDisjoint(part, zoneName)
+    );
+  }
+
+  const xorParts = scanTopLevelBooleanOperator(expression, "xor");
+  if (xorParts === null || xorParts.length) return false;
+
+  const andParts = scanTopLevelBooleanOperator(expression, "and");
+  if (andParts === null) return false;
+  if (andParts.length) {
+    return andParts.some((part) =>
+      redirectExpressionIsProvablyDisjoint(part, zoneName)
+    );
+  }
+
+  const lower = expression.toLowerCase();
+  if (["false", "ssl", "ssl eq true", "true eq ssl"].includes(lower)) {
+    return true;
+  }
+  const targetHosts = new Set(
+    [zoneName, `admin.${zoneName}`].map((host) => host.toLowerCase())
+  );
+  return hostAtomIsProvablyDisjoint(expression, targetHosts);
+}
+
+function preservedRedirectRule(rule) {
+  if (!rule || typeof rule !== "object" || Array.isArray(rule)) {
+    throw new Error("Cloudflare unrelated redirect rule must be an object");
+  }
+  const { last_updated: _lastUpdated, version: _version, ...definition } = rule;
+  return canonicalize({
+    ...definition,
+    id: requireCloudflareId(rule?.id, "Cloudflare unrelated redirect rule id"),
+    // Preserve the foreign expression byte-for-byte. Collapsing whitespace is
+    // unsafe here because spaces inside quoted path literals are semantic.
+    expression: typeof rule?.expression === "string" ? rule.expression : "",
+    enabled: rule?.enabled !== false,
+  });
 }
 
 function targetHeaderNames() {
@@ -381,6 +617,10 @@ async function readResponseHeaderRuleset(client, zoneId) {
   return readPhaseRuleset(client, zoneId, RESPONSE_HEADERS_PHASE);
 }
 
+async function readDynamicRedirectRuleset(client, zoneId) {
+  return readPhaseRuleset(client, zoneId, DYNAMIC_REDIRECT_PHASE);
+}
+
 async function readCacheRuleset(client, zoneId) {
   return readPhaseRuleset(client, zoneId, CACHE_SETTINGS_PHASE);
 }
@@ -464,28 +704,126 @@ export function planManagedCacheRule(ruleset, zoneName = PUBLIC_ZONE_NAME) {
   };
 }
 
+export function planManagedHttpsRedirectRule(
+  ruleset,
+  zoneName = PUBLIC_ZONE_NAME
+) {
+  const rules = ruleset?.rules || [];
+  const matches = rules.filter(
+    (rule) => rule?.ref === MANAGED_HTTPS_REDIRECT_RULE_REF
+  );
+  if (matches.length > 1) {
+    throw new Error(
+      `Cloudflare contains duplicate rules with ref ${MANAGED_HTTPS_REDIRECT_RULE_REF}`
+    );
+  }
+
+  const target = matches[0] || null;
+  if (target) requireCloudflareId(target.id, "Cloudflare managed redirect rule id");
+  const duplicateDescriptions = rules.filter(
+    (rule) =>
+      rule !== target &&
+      rule?.description === MANAGED_HTTPS_REDIRECT_RULE_DESCRIPTION
+  );
+  if (duplicateDescriptions.length) {
+    throw new Error(
+      "Cloudflare contains another redirect rule with the managed HTTPS redirect description"
+    );
+  }
+
+  const unrelatedRules = rules.filter((rule) => rule !== target);
+  const potentiallyOverlappingRules = unrelatedRules.filter(
+    (rule) =>
+      rule?.enabled !== false &&
+      !redirectExpressionIsProvablyDisjoint(rule?.expression, zoneName)
+  );
+  if (potentiallyOverlappingRules.length) {
+    throw new Error(
+      "Cloudflare contains an enabled foreign redirect rule that is not provably disjoint from HTTP traffic for probpera.ru and admin.probpera.ru"
+    );
+  }
+
+  const unrelatedRuleSnapshot = unrelatedRules.map(preservedRedirectRule);
+  const targetIndex = target ? rules.indexOf(target) : -1;
+  return {
+    operation: !ruleset
+      ? "create-redirect-ruleset"
+      : !target
+        ? "create-redirect-rule"
+        : managedHttpsRedirectRuleIsCurrent(target, zoneName)
+          ? "none"
+          : "update-redirect-rule",
+    target,
+    targetIndex,
+    unrelatedRuleIds: unrelatedRuleSnapshot.map((rule) => rule.id),
+    unrelatedRuleSnapshot,
+    unrelatedRuleCount: rules.length - (target ? 1 : 0),
+  };
+}
+
 async function inspectConfiguration(client, accountId, zoneName) {
   const zone = await discoverZone(client, accountId, zoneName);
-  const [alwaysUseHttps, ruleset, cacheRuleset] = await Promise.all([
+  const [alwaysUseHttps, redirectRuleset, ruleset, cacheRuleset] = await Promise.all([
     readAlwaysUseHttps(client, zone.id),
+    readDynamicRedirectRuleset(client, zone.id),
     readResponseHeaderRuleset(client, zone.id),
     readCacheRuleset(client, zone.id),
   ]);
+  const redirectRulePlan = planManagedHttpsRedirectRule(redirectRuleset, zoneName);
   const rulePlan = planManagedRule(ruleset, zoneName);
   const cacheRulePlan = planManagedCacheRule(cacheRuleset, zoneName);
   return {
     zone,
     alwaysUseHttps,
+    redirectRuleset,
+    redirectRulePlan,
     ruleset,
     rulePlan,
     cacheRuleset,
     cacheRulePlan,
     plannedChanges: [
       ...(alwaysUseHttps.value === "on" ? [] : ["enable-always-use-https"]),
+      ...(redirectRulePlan.operation === "none" ? [] : [redirectRulePlan.operation]),
       ...(rulePlan.operation === "none" ? [] : [rulePlan.operation]),
       ...(cacheRulePlan.operation === "none" ? [] : [cacheRulePlan.operation]),
     ],
   };
+}
+
+async function applyHttpsRedirectRulePlan(client, state, zoneName) {
+  const zoneId = state.zone.id;
+  const desiredRule = desiredHttpsRedirectRule(zoneName);
+  switch (state.redirectRulePlan.operation) {
+    case "none":
+      return;
+    case "create-redirect-ruleset":
+      await client.request("POST", `/zones/${zoneId}/rulesets`, {
+        name: "PROBPERA managed HTTPS redirects",
+        description: "Zone-level HTTPS redirects managed by the PROBPERA repository",
+        kind: "zone",
+        phase: DYNAMIC_REDIRECT_PHASE,
+        rules: [desiredRule],
+      });
+      return;
+    case "create-redirect-rule":
+      // Cloudflare evaluates Single Redirects in order. Keep every foreign rule
+      // in place and explicitly append this broad fallback at the bottom.
+      await client.request(
+        "POST",
+        `/zones/${zoneId}/rulesets/${state.redirectRuleset.id}/rules`,
+        { ...desiredRule, position: { after: "" } }
+      );
+      return;
+    case "update-redirect-rule":
+      await client.request(
+        "PATCH",
+        `/zones/${zoneId}/rulesets/${state.redirectRuleset.id}/rules/${state.redirectRulePlan.target.id}`,
+        desiredRule
+      );
+      return;
+    default:
+      throw new Error("Unknown Cloudflare HTTPS redirect rule plan");
+  }
 }
 
 async function applyRulePlan(client, state, zoneName) {
@@ -582,6 +920,7 @@ export async function configureCloudflareEdge(options) {
       active: true,
       plannedChanges: state.plannedChanges,
       appliedChanges: [],
+      unrelatedRedirectRulesPreserved: state.redirectRulePlan.unrelatedRuleCount,
       unrelatedResponseHeaderRulesPreserved: state.rulePlan.unrelatedRuleCount,
       unrelatedCacheRulesPreserved: state.cacheRulePlan.unrelatedRuleCount,
     };
@@ -597,17 +936,39 @@ export async function configureCloudflareEdge(options) {
       { value: "on" }
     );
   }
+  await applyHttpsRedirectRulePlan(client, state, zoneName);
   await applyRulePlan(client, state, zoneName);
 
-  const [verifiedSetting, verifiedRuleset, verifiedCacheRuleset] = await Promise.all([
+  const expectedRedirectTargetIndex =
+    state.redirectRulePlan.operation === "create-redirect-ruleset"
+      ? 0
+      : state.redirectRulePlan.operation === "create-redirect-rule"
+        ? state.redirectRuleset.rules.length
+        : state.redirectRulePlan.targetIndex;
+
+  const [
+    verifiedSetting,
+    verifiedRedirectRuleset,
+    verifiedRuleset,
+    verifiedCacheRuleset,
+  ] = await Promise.all([
     readAlwaysUseHttps(client, state.zone.id),
+    readDynamicRedirectRuleset(client, state.zone.id),
     readResponseHeaderRuleset(client, state.zone.id),
     readCacheRuleset(client, state.zone.id),
   ]);
+  const verifiedRedirectPlan = planManagedHttpsRedirectRule(
+    verifiedRedirectRuleset,
+    zoneName
+  );
   const verifiedPlan = planManagedRule(verifiedRuleset, zoneName);
   const verifiedCachePlan = planManagedCacheRule(verifiedCacheRuleset, zoneName);
   if (
     verifiedSetting.value !== "on" ||
+    verifiedRedirectPlan.operation !== "none" ||
+    verifiedRedirectPlan.targetIndex !== expectedRedirectTargetIndex ||
+    JSON.stringify(verifiedRedirectPlan.unrelatedRuleSnapshot) !==
+      JSON.stringify(state.redirectRulePlan.unrelatedRuleSnapshot) ||
     verifiedPlan.operation !== "none" ||
     verifiedCachePlan.operation !== "none"
   ) {
@@ -620,6 +981,7 @@ export async function configureCloudflareEdge(options) {
     active: true,
     plannedChanges: state.plannedChanges,
     appliedChanges: state.plannedChanges,
+    unrelatedRedirectRulesPreserved: verifiedRedirectPlan.unrelatedRuleCount,
     unrelatedResponseHeaderRulesPreserved: verifiedPlan.unrelatedRuleCount,
     unrelatedCacheRulesPreserved: verifiedCachePlan.unrelatedRuleCount,
   };
@@ -653,6 +1015,7 @@ function summarize(result) {
     `Cloudflare edge mode: ${result.mode}`,
     `Zone: ${result.zone} (active and account-verified)`,
     `Changes: ${changes} (${outcome})`,
+    `Unrelated redirect rules preserved: ${result.unrelatedRedirectRulesPreserved}`,
     `Unrelated response-header rules preserved: ${result.unrelatedResponseHeaderRulesPreserved}`,
     `Unrelated cache rules preserved: ${result.unrelatedCacheRulesPreserved}`,
   ].join("\n");

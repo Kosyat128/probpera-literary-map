@@ -8,6 +8,7 @@ import { mergeWriterBiographyLegacyCorrections } from "./writerBiographyLegacyCo
 import { mergeWriterBiographyFactReviews } from "./writerBiographyFactReviews";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
+import { mergeUserSuppliedBookWorkSupplementsBatch20260820 } from "./userSuppliedBookWorkSupplementsBatch20260820";
 import {
   applyCmsCountryProfileOverrides,
   applyCmsWriterProfileOverrides,
@@ -467,8 +468,10 @@ const countriesBeforeWriterBiographyCorrections: Country[] =
   mergeReviewedWriterBiographyDrafts(
     mergeWriterPortraits(
       mergeVerifiedBookSupplements(
-        mergeArticleReferencedBooks(
-          mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+        mergeUserSuppliedBookWorkSupplementsBatch20260820(
+          mergeArticleReferencedBooks(
+            mergeGeneratedWriters(mergeNobelLaureates(curatedCountries))
+          )
         )
       )
     ),
