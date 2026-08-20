@@ -144,11 +144,23 @@ describe("guarded production database reconciliation", () => {
     );
     expect(readinessImplementation).not.toContain("/proc/1/comm");
     expect(readinessImplementation).not.toContain("/proc/1/cmdline");
+    expect(readinessImplementation).not.toContain("/proc/1/exe");
+    expect(readinessImplementation).not.toContain("readlink");
+    expect(readinessImplementation).not.toContain("/proc/$");
+    expect(readinessImplementation).not.toContain("coproc");
+    expect(readinessImplementation).not.toContain("pg_read_file");
+    expect(readinessImplementation).not.toContain("pg_backend_pid");
+    expect(readinessImplementation).not.toMatch(/\bgrant\b/iu);
     expect(readinessImplementation).toContain(
-      'pid1_executable="$(readlink /proc/1/exe)"'
+      "IFS= read -r postmaster_pid < /var/lib/postgresql/data/postmaster.pid"
     );
     expect(readinessImplementation).toContain(
-      'case "$pid1_executable" in */postgres) exit 0 ;; *) exit 1 ;; esac'
+      '[ "$postmaster_pid" = "1" ]'
+    );
+    expect(readinessImplementation.indexOf("postmaster.pid")).toBeLessThan(
+      readinessImplementation.indexOf(
+        'docker exec "$RESTORE_CONTAINER" pg_isready'
+      )
     );
     expect(readinessImplementation).toContain("pg_isready");
     expect(readinessImplementation).toContain(
@@ -198,17 +210,21 @@ describe("guarded production database reconciliation", () => {
     expect(readinessImplementation).toContain(
       'local diagnostic_state="unavailable"'
     );
-    expect(readinessImplementation).toContain('local pid1_stage="waiting"');
+    expect(readinessImplementation).toContain(
+      'local postmaster_pid_stage="waiting"'
+    );
     expect(readinessImplementation).toContain(
       'local pg_isready_stage="not-run"'
     );
     expect(readinessImplementation).toContain('local query_stage="not-run"');
-    expect(readinessImplementation).toContain('pid1_stage="ready"');
+    expect(readinessImplementation).toContain(
+      'postmaster_pid_stage="ready"'
+    );
     expect(readinessImplementation).toContain('pg_isready_stage="ready"');
     expect(readinessImplementation).toContain('query_stage="error"');
     expect(readinessImplementation).toContain('query_stage="invalid-output"');
     expect(readinessImplementation).toContain(
-      "Isolated readiness stages (pid1|pg_isready|query)"
+      "Isolated readiness stages (postmaster_pid|pg_isready|query)"
     );
     expect(readinessImplementation).toContain(
       "did not reach the exact initialized base platform state"
