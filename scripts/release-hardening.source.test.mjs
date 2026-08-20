@@ -48,6 +48,19 @@ describe("release workflow hardening", () => {
     expect(source).not.toContain(
       "--finalize=outbox:${{ needs.build.outputs.publication_outbox_high_water }}"
     );
+    const firstExport = source.indexOf(
+      "- name: Export current CMS snapshot for release verification"
+    );
+    const derivedLinks = source.indexOf(
+      "- name: Regenerate CMS-derived article and book links"
+    );
+    const fullVerification = source.indexOf(
+      "- name: Verify public site and editorial archive"
+    );
+    expect(firstExport).toBeGreaterThanOrEqual(0);
+    expect(derivedLinks).toBeGreaterThan(firstExport);
+    expect(fullVerification).toBeGreaterThan(derivedLinks);
+    expect(source).toContain("run: npm run content:link-books");
     expect(read("scripts/check-public-build-requests.mjs")).toContain(
       "BigInt(deployedId) >= BigInt(maxId)"
     );

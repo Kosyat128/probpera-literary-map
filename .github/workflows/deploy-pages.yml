@@ -115,6 +115,10 @@ jobs:
           CMS_EXPORT_REQUIRE_STABLE: "true"
           CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
 
+      - name: Regenerate CMS-derived article and book links
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run content:link-books
+
       - name: Verify public site and editorial archive
         if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
         run: npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
