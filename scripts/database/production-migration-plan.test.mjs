@@ -32,6 +32,10 @@ const dumpImplementation = helper.slice(
 );
 const readinessImplementation = helper.slice(
   helper.indexOf("wait_for_initialized_restore_database()"),
+  helper.indexOf("bootstrap_isolated_restore_vault()")
+);
+const vaultBootstrapImplementation = helper.slice(
+  helper.indexOf("bootstrap_isolated_restore_vault()"),
   helper.indexOf("assert_empty_application_schema()")
 );
 const identityValidationImplementation = helper.slice(
@@ -134,7 +138,7 @@ describe("guarded production database reconciliation", () => {
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
   });
 
-  it("waits for the final initialized Supabase server and exact Vault state", () => {
+  it("waits for the final base server and bootstraps only an absent Vault state", () => {
     expect(restoreImplementation).toContain(
       "--env POSTGRES_DB=probpera_restore"
     );
@@ -146,18 +150,8 @@ describe("guarded production database reconciliation", () => {
     expect(readinessImplementation).toContain(
       "--username=postgres --dbname=probpera_restore"
     );
-    expect(readinessImplementation).toContain(
-      "e.extname = 'supabase_vault'"
-    );
-    expect(readinessImplementation).toContain(
-      "n.nspname = 'vault'"
-    );
-    expect(readinessImplementation).toContain(
-      "e.extversion = a.default_version"
-    );
-    expect(readinessImplementation).toContain(
-      "to_regclass('vault.secrets') is not null"
-    );
+    expect(readinessImplementation).not.toContain("supabase_vault");
+    expect(readinessImplementation).not.toContain("vault.secrets");
     expect(readinessImplementation).toContain(
       "to_regclass('auth.users') is not null"
     );
@@ -171,15 +165,52 @@ describe("guarded production database reconciliation", () => {
     expect(readinessImplementation).toContain("c.contype in ('p', 'u')");
     expect(readinessImplementation).toContain("cardinality(c.conkey) = 1");
     expect(readinessImplementation).toContain(
-      '"t|t|t|t|t|t|t|t"'
+      '"t|t|t|t|t|t"'
     );
     expect(readinessImplementation).toContain(
-      "did not reach the exact initialized platform state"
+      "did not reach the exact initialized base platform state"
     );
     expect(readinessImplementation).not.toContain("|| true");
-    expect(restoreImplementation).not.toMatch(
-      /create\s+extension(?:\s+if\s+not\s+exists)?\s+supabase_vault/iu
+
+    expect(vaultBootstrapImplementation).toContain(
+      "to_regnamespace('vault') is null"
     );
+    expect(vaultBootstrapImplementation).toContain(
+      "not exists (select 1 from pg_catalog.pg_extension where extname = 'supabase_vault')"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      "to_regclass('vault.secrets') is null"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      "default_version is not null"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      '"t|t|t|t"'
+    );
+    expect(vaultBootstrapImplementation).toContain("--single-transaction");
+    expect(vaultBootstrapImplementation).toContain("--set=ON_ERROR_STOP=1");
+    expect(vaultBootstrapImplementation).toContain("create schema vault;");
+    expect(vaultBootstrapImplementation).toContain(
+      "create extension supabase_vault with schema vault;"
+    );
+    expect(vaultBootstrapImplementation).not.toMatch(/if\s+not\s+exists/iu);
+    expect(vaultBootstrapImplementation).toContain(
+      "e.extversion = a.default_version"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      "n.nspname = 'vault'"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      "c.relname = 'secrets'"
+    );
+    expect(vaultBootstrapImplementation).toContain(
+      "did not reach the exact extension version, schema, and secrets table state"
+    );
+    expect(vaultBootstrapImplementation).not.toContain("|| true");
+    expect(restoreImplementation.indexOf("wait_for_initialized_restore_database"))
+      .toBeLessThan(restoreImplementation.indexOf("bootstrap_isolated_restore_vault"));
+    expect(restoreImplementation.indexOf("bootstrap_isolated_restore_vault"))
+      .toBeLessThan(restoreImplementation.indexOf("assert_empty_application_schema"));
   });
 
   it("keeps a full recovery dump and strictly drills the public application slice", () => {

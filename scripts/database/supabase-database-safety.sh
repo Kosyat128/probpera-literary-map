@@ -172,7 +172,8 @@ wait_for_initialized_restore_database() {
     # The upstream postgres entrypoint first exposes a temporary server while it
     # runs init scripts, then stops it and execs the final postgres process.
     # pg_isready alone can therefore succeed too early.  Require PID 1 to be the
-    # final server as well as an exact initialized Supabase platform contract.
+    # final server as well as the exact initialized Supabase base contract. Vault
+    # is bootstrapped separately only after its completely absent state is proven.
     if docker exec "$RESTORE_CONTAINER" sh -ceu \
         '[ "$(cat /proc/1/comm)" = "postgres" ]' >/dev/null 2>&1 \
       && docker exec "$RESTORE_CONTAINER" pg_isready \
@@ -185,10 +186,10 @@ wait_for_initialized_restore_database() {
           --tuples-only \
           --no-align \
           --set=ON_ERROR_STOP=1 \
-          --command="select current_database() = 'probpera_restore', exists (select 1 from pg_catalog.pg_extension e join pg_catalog.pg_namespace n on n.oid = e.extnamespace join pg_catalog.pg_available_extensions a on a.name = e.extname where e.extname = 'supabase_vault' and n.nspname = 'vault' and e.extversion = a.default_version), to_regclass('vault.secrets') is not null, to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, to_regnamespace('storage') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
+          --command="select current_database() = 'probpera_restore', to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, to_regnamespace('storage') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
           2>/dev/null
       )" \
-      && [[ "$platform_state" == "t|t|t|t|t|t|t|t" ]]; then
+      && [[ "$platform_state" == "t|t|t|t|t|t" ]]; then
       ready=true
       break
     fi
@@ -197,8 +198,50 @@ wait_for_initialized_restore_database() {
 
   [[ "$ready" == true ]] || {
     docker logs "$RESTORE_CONTAINER" >&2
-    die "Isolated Supabase PostgreSQL did not reach the exact initialized platform state."
+    die "Isolated Supabase PostgreSQL did not reach the exact initialized base platform state."
   }
+}
+
+bootstrap_isolated_restore_vault() {
+  local vault_precondition vault_state
+
+  vault_precondition="$(
+    docker exec "$RESTORE_CONTAINER" psql \
+      --username=postgres \
+      --dbname=probpera_restore \
+      --no-psqlrc \
+      --tuples-only \
+      --no-align \
+      --set=ON_ERROR_STOP=1 \
+      --command="select to_regnamespace('vault') is null, not exists (select 1 from pg_catalog.pg_extension where extname = 'supabase_vault'), to_regclass('vault.secrets') is null, exists (select 1 from pg_catalog.pg_available_extensions where name = 'supabase_vault' and default_version is not null);"
+  )"
+  [[ "$vault_precondition" == "t|t|t|t" ]] \
+    || die "Isolated Vault bootstrap requires a completely absent Vault state and an available default supabase_vault version."
+
+  # Existence-tolerant DDL and disconnect tolerance are forbidden: a concurrent
+  # or partial state, or any hook failure, aborts the transaction and the drill.
+  docker exec "$RESTORE_CONTAINER" psql \
+    --username=postgres \
+    --dbname=probpera_restore \
+    --no-psqlrc \
+    --set=ON_ERROR_STOP=1 \
+    --single-transaction \
+    --command="create schema vault;" \
+    --command="create extension supabase_vault with schema vault;" \
+    >/dev/null
+
+  vault_state="$(
+    docker exec "$RESTORE_CONTAINER" psql \
+      --username=postgres \
+      --dbname=probpera_restore \
+      --no-psqlrc \
+      --tuples-only \
+      --no-align \
+      --set=ON_ERROR_STOP=1 \
+      --command="select current_database() = 'probpera_restore', to_regnamespace('vault') is not null, exists (select 1 from pg_catalog.pg_extension e join pg_catalog.pg_namespace n on n.oid = e.extnamespace join pg_catalog.pg_available_extensions a on a.name = e.extname where e.extname = 'supabase_vault' and n.nspname = 'vault' and e.extversion = a.default_version), exists (select 1 from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid = c.relnamespace where n.nspname = 'vault' and c.relname = 'secrets' and c.relkind in ('r', 'p'));"
+  )"
+  [[ "$vault_state" == "t|t|t|t" ]] \
+    || die "Isolated Vault bootstrap did not reach the exact extension version, schema, and secrets table state."
 }
 
 assert_empty_application_schema() {
@@ -471,6 +514,7 @@ command_restore_drill() {
     "$DATABASE_IMAGE" >/dev/null
 
   wait_for_initialized_restore_database
+  bootstrap_isolated_restore_vault
   assert_empty_application_schema
 
   # Keep the unfiltered custom dump as the encrypted recovery artifact. For the
