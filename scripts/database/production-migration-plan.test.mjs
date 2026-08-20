@@ -165,7 +165,20 @@ describe("guarded production database reconciliation", () => {
     expect(readinessImplementation).toContain("c.contype in ('p', 'u')");
     expect(readinessImplementation).toContain("cardinality(c.conkey) = 1");
     expect(readinessImplementation).toContain(
-      '"t|t|t|t|t|t"'
+      '"t|t|t|t|t"'
+    );
+    expect(readinessImplementation).not.toContain(
+      "to_regnamespace('storage')"
+    );
+    expect(helper).not.toMatch(/create\s+schema\s+storage/iu);
+    expect(readinessImplementation).toContain(
+      "Isolated base vector (database|auth_users|auth_schema|roles|auth_id_contract)"
+    );
+    expect(readinessImplementation).toContain(
+      "^[tf]\\|[tf]\\|[tf]\\|[tf]\\|[tf]$"
+    );
+    expect(readinessImplementation).toContain(
+      'local diagnostic_state="unavailable"'
     );
     expect(readinessImplementation).toContain(
       "did not reach the exact initialized base platform state"

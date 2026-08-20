@@ -186,10 +186,10 @@ wait_for_initialized_restore_database() {
           --tuples-only \
           --no-align \
           --set=ON_ERROR_STOP=1 \
-          --command="select current_database() = 'probpera_restore', to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, to_regnamespace('storage') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
+          --command="select current_database() = 'probpera_restore', to_regclass('auth.users') is not null, to_regnamespace('auth') is not null, (select count(*) = 6 from pg_catalog.pg_roles where rolname in ('anon', 'authenticated', 'service_role', 'supabase_admin', 'supabase_auth_admin', 'supabase_storage_admin')), (exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name = 'id' and udt_schema = 'pg_catalog' and udt_name = 'uuid' and is_nullable = 'NO' and is_identity = 'NO' and is_generated = 'NEVER') and exists (select 1 from pg_catalog.pg_constraint c join pg_catalog.pg_class r on r.oid = c.conrelid join pg_catalog.pg_namespace n on n.oid = r.relnamespace join pg_catalog.pg_attribute a on a.attrelid = r.oid where n.nspname = 'auth' and r.relname = 'users' and a.attname = 'id' and c.contype in ('p', 'u') and cardinality(c.conkey) = 1 and a.attnum = any(c.conkey)) and not exists (select 1 from information_schema.columns where table_schema = 'auth' and table_name = 'users' and column_name <> 'id' and is_nullable = 'NO' and column_default is null and is_identity = 'NO' and is_generated = 'NEVER'));" \
           2>/dev/null
       )" \
-      && [[ "$platform_state" == "t|t|t|t|t|t" ]]; then
+      && [[ "$platform_state" == "t|t|t|t|t" ]]; then
       ready=true
       break
     fi
@@ -197,6 +197,11 @@ wait_for_initialized_restore_database() {
   done
 
   [[ "$ready" == true ]] || {
+    local diagnostic_state="unavailable"
+    if [[ "$platform_state" =~ ^[tf]\|[tf]\|[tf]\|[tf]\|[tf]$ ]]; then
+      diagnostic_state="$platform_state"
+    fi
+    echo "::error::Isolated base vector (database|auth_users|auth_schema|roles|auth_id_contract): $diagnostic_state" >&2
     docker logs "$RESTORE_CONTAINER" >&2
     die "Isolated Supabase PostgreSQL did not reach the exact initialized base platform state."
   }
