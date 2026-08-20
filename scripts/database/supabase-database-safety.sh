@@ -299,6 +299,33 @@ assert_empty_application_schema() {
     || die "Isolated application schema is not empty."
 }
 
+verify_isolated_application_owner() {
+  local owner_state=""
+  if ! owner_state="$(
+    docker exec "$RESTORE_CONTAINER" psql \
+      --host="$ISOLATED_DATABASE_HOST" \
+      --username=postgres \
+      --dbname=probpera_restore \
+      --no-psqlrc \
+      --tuples-only \
+      --no-align \
+      --set=ON_ERROR_STOP=1 \
+      --command="select current_database() = 'probpera_restore', exists (select 1 from pg_catalog.pg_roles where rolname = 'supabase_admin'), coalesce((select rolcanlogin from pg_catalog.pg_roles where rolname = 'supabase_admin'), false), coalesce((select rolsuper from pg_catalog.pg_roles where rolname = 'supabase_admin'), false), exists (select 1 from pg_catalog.pg_roles r where r.rolname = 'supabase_admin' and has_schema_privilege(r.oid, 'public', 'CREATE'));" \
+      2>/dev/null
+  )"; then
+    die "Isolated application-owner verification query failed."
+  fi
+
+  [[ "$owner_state" == "t|t|t|t|t" ]] || {
+    local diagnostic_state="unavailable"
+    if [[ "$owner_state" =~ ^[tf]\|[tf]\|[tf]\|[tf]\|[tf]$ ]]; then
+      diagnostic_state="$owner_state"
+    fi
+    echo "::error::Isolated application-owner vector (database|role|login|superuser|public_create): $diagnostic_state" >&2
+    die "Isolated supabase_admin does not match the pinned image application-owner contract."
+  }
+}
+
 validate_database_url() {
   require_env SUPABASE_DB_URL
   require_env SUPABASE_URL
@@ -555,6 +582,7 @@ command_restore_drill() {
   wait_for_initialized_restore_database
   verify_initialized_restore_vault
   assert_empty_application_schema
+  verify_isolated_application_owner
 
   # Keep the unfiltered custom dump as the encrypted recovery artifact. For the
   # automated drill, insert only validated UUID identities needed by public
@@ -579,7 +607,7 @@ command_restore_drill() {
 
   docker exec "$RESTORE_CONTAINER" pg_restore \
     --host="$ISOLATED_DATABASE_HOST" \
-    --username=postgres \
+    --username=supabase_admin \
     --dbname=probpera_restore \
     --schema=public \
     --strict-names \
@@ -612,7 +640,7 @@ command_restore_drill() {
     docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"
     docker exec "$RESTORE_CONTAINER" psql \
       --host="$ISOLATED_DATABASE_HOST" \
-      --username=postgres \
+      --username=supabase_admin \
       --dbname=probpera_restore \
       --no-psqlrc \
       --set=ON_ERROR_STOP=1 \

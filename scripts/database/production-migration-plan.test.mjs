@@ -38,6 +38,10 @@ const vaultVerificationImplementation = helper.slice(
   helper.indexOf("verify_initialized_restore_vault()"),
   helper.indexOf("assert_empty_application_schema()")
 );
+const applicationOwnerImplementation = helper.slice(
+  helper.indexOf("verify_isolated_application_owner()"),
+  helper.indexOf("validate_database_url()")
+);
 const identityValidationImplementation = helper.slice(
   helper.indexOf("validate_identity_sidecar()"),
   helper.indexOf("wait_for_initialized_restore_database()")
@@ -173,12 +177,12 @@ describe("guarded production database reconciliation", () => {
     );
     expect(
       helper.match(/--host="\$ISOLATED_DATABASE_HOST"/gu)
-    ).toHaveLength(12);
+    ).toHaveLength(13);
     expect(
       helper.match(
         /docker exec(?: --interactive)? "\$RESTORE_CONTAINER" (?:psql|pg_isready|pg_restore) \\/gu
       )
-    ).toHaveLength(12);
+    ).toHaveLength(13);
     expect(helper).not.toContain("--env PGHOST=");
     expect(readinessImplementation).not.toContain("supabase_vault");
     expect(readinessImplementation).not.toContain("vault.secrets");
@@ -271,6 +275,58 @@ describe("guarded production database reconciliation", () => {
       .toBeLessThan(restoreImplementation.indexOf("verify_initialized_restore_vault"));
     expect(restoreImplementation.indexOf("verify_initialized_restore_vault"))
       .toBeLessThan(restoreImplementation.indexOf("assert_empty_application_schema"));
+  });
+
+  it("preflights and uses the pinned application owner only for application writes", () => {
+    expect(applicationOwnerImplementation).toContain(
+      "exists (select 1 from pg_catalog.pg_roles where rolname = 'supabase_admin')"
+    );
+    expect(applicationOwnerImplementation).toContain("rolcanlogin");
+    expect(applicationOwnerImplementation).toContain("rolsuper");
+    expect(applicationOwnerImplementation).toContain(
+      "has_schema_privilege(r.oid, 'public', 'CREATE')"
+    );
+    expect(applicationOwnerImplementation).toContain('"t|t|t|t|t"');
+    expect(applicationOwnerImplementation).toContain(
+      "^[tf]\\|[tf]\\|[tf]\\|[tf]\\|[tf]$"
+    );
+    expect(applicationOwnerImplementation).toContain(
+      "Isolated application-owner vector (database|role|login|superuser|public_create)"
+    );
+    expect(applicationOwnerImplementation).toContain("--username=postgres");
+    expect(applicationOwnerImplementation).not.toContain(
+      "--username=supabase_admin"
+    );
+    expect(helper).not.toMatch(/^\s*(?:grant|revoke)\b/gimu);
+    expect(
+      helper.match(/--username=supabase_admin/gu)
+    ).toHaveLength(2);
+
+    const restoreClient = restoreImplementation.slice(
+      restoreImplementation.indexOf(
+        'docker exec "$RESTORE_CONTAINER" pg_restore'
+      ),
+      restoreImplementation.indexOf(
+        "verify_seeded_identity_ids",
+        restoreImplementation.indexOf(
+          'docker exec "$RESTORE_CONTAINER" pg_restore'
+        )
+      )
+    );
+    expect(restoreClient).toContain("--username=supabase_admin");
+
+    const planClient = restoreImplementation.slice(
+      restoreImplementation.indexOf(
+        'docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"'
+      ),
+      restoreImplementation.indexOf("restored_articles=")
+    );
+    expect(planClient).toContain("--username=supabase_admin");
+    expect(planClient).toContain("--file=/tmp/reconciliation.sql");
+    expect(restoreImplementation.indexOf("assert_empty_application_schema"))
+      .toBeLessThan(restoreImplementation.indexOf("verify_isolated_application_owner"));
+    expect(restoreImplementation.indexOf("verify_isolated_application_owner"))
+      .toBeLessThan(restoreImplementation.indexOf('docker cp "$dump"'));
   });
 
   it("keeps a full recovery dump and strictly drills the public application slice", () => {
