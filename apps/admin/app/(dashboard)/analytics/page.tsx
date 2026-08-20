@@ -1,4 +1,5 @@
 import { articlePublicPath } from "@/lib/article-route";
+import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { normalizeViewPath } from "@/lib/view-path";
 
@@ -25,6 +26,13 @@ function topEntries(map: Map<string, number>, limit: number) {
 export default async function AnalyticsPage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
+
+  const metrikaCounterId = /^\d{1,15}$/u.test(adminEnv.metrikaCounterId)
+    ? adminEnv.metrikaCounterId
+    : "";
+  const geographyReportUrl = metrikaCounterId
+    ? `https://metrika.yandex.ru/stat/geo?period=month&id=${encodeURIComponent(metrikaCounterId)}`
+    : "https://metrika.yandex.ru/list";
 
   const sinceDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
   const since = sinceDate.toISOString();
@@ -151,6 +159,42 @@ export default async function AnalyticsPage() {
       </header>
 
       {trackingNotice && <p className="form-message">{trackingNotice}</p>}
+
+      <section className="panel analytics-geography">
+        <div>
+          <span className="eyebrow">Яндекс Метрика · точные данные</span>
+          <h2>Россия, регионы и другие страны</h2>
+          <p>
+            Отчёт показывает посетителей, визиты, просмотры и отказы по
+            странам, областям/регионам и городам. Язык браузера и часовой пояс
+            не используются как выдуманная география.
+          </p>
+          {!metrikaCounterId && (
+            <small>
+              ID счётчика не передан этой сборке админки: откроется список
+              доступных счётчиков.
+            </small>
+          )}
+        </div>
+        <div className="analytics-geography-actions">
+          <a
+            className="button"
+            href={geographyReportUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Открыть отчёт «География»
+          </a>
+          <a
+            className="button-secondary"
+            href="https://yandex.ru/support/metrica/ru/visitors/geography"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Как читать отчёт
+          </a>
+        </div>
+      </section>
 
       <section className="stats-grid analytics-stats">
         <article className="stat-card">

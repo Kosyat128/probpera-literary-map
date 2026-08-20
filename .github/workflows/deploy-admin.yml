@@ -33,6 +33,7 @@ jobs:
       NEXT_PUBLIC_SITE_URL: https://probpera.ru
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -48,6 +49,7 @@ jobs:
         run: |
           test -n "$NEXT_PUBLIC_SUPABASE_URL"
           test -n "$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"
+          [[ "$YANDEX_METRIKA_COUNTER_ID" =~ ^[0-9]+$ ]]
 
       - name: Install dependencies
         run: npm ci

@@ -174,21 +174,38 @@ test("на мобильном архив и изображения не раст
         return null;
       }
       const centerX = (box) => box.left + box.width / 2;
-      const centerY = (box) => box.top + box.height / 2;
+      const overlaps = (first, second) =>
+        first.left < second.right &&
+        first.right > second.left &&
+        first.top < second.bottom &&
+        first.bottom > second.top;
       return {
         statusFits: statusElement.scrollWidth <= statusElement.clientWidth,
         detailFits: detailElement.scrollWidth <= detailElement.clientWidth,
+        actionsFit: element.scrollWidth <= element.clientWidth,
         saveFromRowCenter: Math.abs(centerX(save) - centerX(row)),
-        statusFromSaveBaseline: Math.abs(centerY(status) - centerY(save)),
-        detailFromSaveBaseline: Math.abs(centerY(detail) - centerY(save)),
+        statusWidth: status.width,
+        saveWidth: save.width,
+        detailWidth: detail.width,
+        statusBeforeSave: status.bottom <= save.top + 0.5,
+        saveBeforeDetail: save.bottom <= detail.top + 0.5,
+        controlsOverlap:
+          overlaps(status, save) ||
+          overlaps(status, detail) ||
+          overlaps(save, detail),
       };
     });
   expect(mobileActions).not.toBeNull();
   expect(mobileActions.statusFits).toBe(true);
   expect(mobileActions.detailFits).toBe(true);
+  expect(mobileActions.actionsFit).toBe(true);
   expect(mobileActions.saveFromRowCenter).toBeLessThanOrEqual(1);
-  expect(mobileActions.statusFromSaveBaseline).toBeLessThanOrEqual(1);
-  expect(mobileActions.detailFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(mobileActions.statusWidth).toBeGreaterThanOrEqual(44);
+  expect(mobileActions.saveWidth).toBeGreaterThanOrEqual(44);
+  expect(mobileActions.detailWidth).toBeGreaterThanOrEqual(44);
+  expect(mobileActions.statusBeforeSave).toBe(true);
+  expect(mobileActions.saveBeforeDetail).toBe(true);
+  expect(mobileActions.controlsOverlap).toBe(false);
 
   await page.locator("#authors").scrollIntoViewIfNeeded();
   const portrait = page.locator(".author-showcase-portrait img").first();
@@ -205,4 +222,76 @@ test("на мобильном архив и изображения не раст
   const cover = page.locator(".global-search-book-cover img").first();
   await expect(cover).toBeVisible({ timeout: 20_000 });
   await expect(cover).toHaveCSS("object-fit", "contain");
+});
+
+test("статус, сохранение и детали книг не пересекаются на адаптивных ширинах", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(Boolean(isMobile), "Desktop responsive archive contract");
+  await page.goto("/#books");
+  await page
+    .locator(".book-archive-filters")
+    .getByRole("button", { name: /Проверено редакцией/u })
+    .click();
+  await expect(page.locator(".archive-book-actions").first()).toBeVisible({
+    timeout: 20_000,
+  });
+
+  const responsiveCases = [
+    { width: 1521, columns: 3, minimumActionWidth: 1 },
+    { width: 1451, columns: 3, minimumActionWidth: 1 },
+    { width: 1280, columns: 3, minimumActionWidth: 1 },
+    { width: 1024, columns: 2, minimumActionWidth: 1 },
+    { width: 768, columns: 2, minimumActionWidth: 1 },
+    { width: 390, columns: 1, minimumActionWidth: 44 },
+    { width: 320, columns: 1, minimumActionWidth: 44 },
+  ];
+
+  for (const responsiveCase of responsiveCases) {
+    await page.setViewportSize({ width: responsiveCase.width, height: 900 });
+
+    const geometry = await page.evaluate(() => {
+      const intersects = (left, right) =>
+        Math.min(left.right, right.right) - Math.max(left.left, right.left) > 0.5 &&
+        Math.min(left.bottom, right.bottom) - Math.max(left.top, right.top) > 0.5;
+      const grid = document.querySelector(".book-archive-grid");
+      const rows = [...document.querySelectorAll(".archive-book-actions")].slice(0, 12);
+      return {
+        columns: grid
+          ? getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length
+          : 0,
+        overlaps: rows.filter((row) => {
+          const status = row.querySelector(".editorial-state")?.getBoundingClientRect();
+          const save = row.querySelector(".archive-book-save")?.getBoundingClientRect();
+          const detail = row.querySelector(".archive-book-detail")?.getBoundingClientRect();
+          return Boolean(
+            status &&
+              save &&
+              detail &&
+              (intersects(status, save) || intersects(save, detail) || intersects(status, detail))
+          );
+        }).length,
+        minimumStatusWidth: Math.min(
+          ...rows.map(
+            (row) => row.querySelector(".editorial-state")?.getBoundingClientRect().width ?? 0
+          )
+        ),
+        minimumDetailWidth: Math.min(
+          ...rows.map(
+            (row) => row.querySelector(".archive-book-detail")?.getBoundingClientRect().width ?? 0
+          )
+        ),
+      };
+    });
+
+    expect(geometry.columns).toBe(responsiveCase.columns);
+    expect(geometry.overlaps).toBe(0);
+    expect(geometry.minimumStatusWidth).toBeGreaterThanOrEqual(
+      responsiveCase.minimumActionWidth
+    );
+    expect(geometry.minimumDetailWidth).toBeGreaterThanOrEqual(
+      responsiveCase.minimumActionWidth
+    );
+  }
 });

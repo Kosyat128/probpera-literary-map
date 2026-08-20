@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  articleTextTones,
   articleTextTone,
   safeTextToneSpanAttributes,
   sanitizeArticleTextToneJson,
@@ -8,7 +9,9 @@ import {
 
 describe("safe article presentation tokens", () => {
   it("accepts only the editorial palette", () => {
+    expect(articleTextTones).toHaveLength(24);
     expect(articleTextTone("forest")).toBe("forest");
+    expect(articleTextTone("charcoal")).toBe("charcoal");
     expect(articleTextTone("expression(alert(1))")).toBeNull();
     expect(articleTextTone("#00ff00")).toBeNull();
   });

@@ -2,11 +2,29 @@ const blockedElements =
   "script,style,iframe,object,embed,form,input,button,textarea,select,link,meta";
 const allowedTextTones = new Set([
   "garnet",
-  "forest",
-  "ocean",
+  "coral",
+  "rose",
+  "berry",
+  "plum",
+  "violet",
   "indigo",
+  "navy",
+  "cobalt",
+  "ocean",
+  "teal",
+  "emerald",
+  "forest",
+  "olive",
+  "moss",
+  "ochre",
   "amber",
+  "bronze",
+  "umber",
+  "cocoa",
   "slate",
+  "steel",
+  "graphite",
+  "charcoal",
 ]);
 const allowedTextToneClasses = new Set([
   "article-text-tone",
@@ -87,9 +105,9 @@ export function sanitizeArticleHtml(source: string) {
       element.classList.contains("article-text-tone") &&
       element.classList.contains(expectedToneClass);
     if (hasSafeTextTone) {
-      allowedTextTones.forEach((tone) => {
-        if (tone !== textTone) element.classList.remove(`is-tone-${tone}`);
-      });
+      // A valid tone span has one canonical class pair. Even other otherwise
+      // safe presentation classes must not change an inline tone's behavior.
+      element.className = `article-text-tone ${expectedToneClass}`;
     } else {
       element.removeAttribute("data-text-tone");
       allowedTextToneClasses.forEach((className) =>

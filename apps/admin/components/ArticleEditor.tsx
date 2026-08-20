@@ -2007,12 +2007,12 @@ export default function ArticleEditor({
                       onClick={() => editor?.chain().focus().setTextTone(tone.id).run()}
                     >
                       <span className="editor-text-tone-swatch" aria-hidden="true" />
-                      <span><strong>{tone.label}</strong><small>AAA · {tone.contrastRatio}:1</small></span>
+                      <span><strong>{tone.label}</strong><small>AAA · от {tone.contrastRatio}:1</small></span>
                     </button>
                   ))}
                 </div>
                 <small className="editor-text-tone-note">
-                  Палитра использует редакционные токены с контрастом AAA на светлой странице. Произвольный CSS не сохраняется.
+                  24 редакционных оттенка с контрастом AAA на светлой и тёмной теме. Произвольный CSS не сохраняется.
                 </small>
               </ToolbarMenu>
 

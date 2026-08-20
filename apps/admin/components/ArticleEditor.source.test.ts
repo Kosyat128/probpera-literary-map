@@ -29,7 +29,10 @@ describe("article editor publication and recovery wiring", () => {
   it("uses safe semantic text tones and positions the first illustration logically", () => {
     expect(editorSource).toContain("ArticleTextTone");
     expect(editorSource).toContain("articleTextTones.map");
-    expect(editorSource).toContain("AAA · {tone.contrastRatio}:1");
+    expect(editorSource).toContain("AAA · от {tone.contrastRatio}:1");
+    expect(editorSource).toContain(
+      "24 редакционных оттенка с контрастом AAA"
+    );
     expect(editorSource).toContain("insertImageAtLogicalPosition");
     expect(editorSource).toContain("firstHeadingPosition ?? firstBlockEnd");
     expect(editorSource).toContain("Number(node.attrs.level || 0) === 2");

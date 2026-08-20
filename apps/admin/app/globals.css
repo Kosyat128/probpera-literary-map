@@ -652,6 +652,41 @@ textarea:focus-visible,
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.analytics-geography {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  background:
+    radial-gradient(circle at 96% 12%, rgba(88, 184, 255, 0.13), transparent 16rem),
+    linear-gradient(135deg, rgba(57, 162, 105, 0.08), transparent 50%),
+    var(--panel);
+}
+
+.analytics-geography h2 {
+  margin: 7px 0 8px;
+}
+
+.analytics-geography p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.analytics-geography small {
+  display: block;
+  margin-top: 8px;
+  color: var(--orange-soft);
+}
+
+.analytics-geography-actions {
+  display: grid;
+  min-width: 250px;
+  gap: 8px;
+}
+
 .analytics-timeline {
   margin-bottom: 18px;
 }
@@ -725,8 +760,13 @@ textarea:focus-visible,
 
 @media (max-width: 680px) {
   .analytics-stats,
-  .analytics-grid {
+  .analytics-grid,
+  .analytics-geography {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analytics-geography-actions {
+    min-width: 0;
   }
 
   .analytics-bars {
@@ -2350,6 +2390,12 @@ textarea:focus-visible,
   grid-column: 1 / -1;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px;
+  max-height: min(620px, 68vh);
+  padding-right: 3px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(255, 179, 109, 0.48) transparent;
+  scrollbar-width: thin;
 }
 
 .editor-tool-menu-panel .editor-text-tone-palette button {
@@ -2405,12 +2451,30 @@ textarea:focus-visible,
   padding: 3px 5px 1px;
 }
 
-[data-text-tone="garnet"] { --tone-reader: #852744; --tone-editor: #ff8fab; }
-[data-text-tone="forest"] { --tone-reader: #235f42; --tone-editor: #7fd9aa; }
-[data-text-tone="ocean"] { --tone-reader: #145d75; --tone-editor: #6fd3ee; }
-[data-text-tone="indigo"] { --tone-reader: #55437e; --tone-editor: #c7b5ff; }
-[data-text-tone="amber"] { --tone-reader: #754b0a; --tone-editor: #ffc56c; }
-[data-text-tone="slate"] { --tone-reader: #485466; --tone-editor: #ccd5e1; }
+[data-text-tone="garnet"] { --tone-reader: #852744; --tone-editor: #ffb0c4; }
+[data-text-tone="coral"] { --tone-reader: #702b25; --tone-editor: #ffb4a8; }
+[data-text-tone="rose"] { --tone-reader: #742447; --tone-editor: #ffafd2; }
+[data-text-tone="berry"] { --tone-reader: #682653; --tone-editor: #f4b4df; }
+[data-text-tone="plum"] { --tone-reader: #5d2b60; --tone-editor: #e8b6eb; }
+[data-text-tone="violet"] { --tone-reader: #4e3470; --tone-editor: #d8c1ff; }
+[data-text-tone="indigo"] { --tone-reader: #48376e; --tone-editor: #c9c8ff; }
+[data-text-tone="navy"] { --tone-reader: #263f6a; --tone-editor: #b8d0ff; }
+[data-text-tone="cobalt"] { --tone-reader: #164c70; --tone-editor: #9ed4ff; }
+[data-text-tone="ocean"] { --tone-reader: #0b4c62; --tone-editor: #8eddf4; }
+[data-text-tone="teal"] { --tone-reader: #074d49; --tone-editor: #87e3d8; }
+[data-text-tone="emerald"] { --tone-reader: #164f35; --tone-editor: #8ce3b5; }
+[data-text-tone="forest"] { --tone-reader: #1b5038; --tone-editor: #a7e4bc; }
+[data-text-tone="olive"] { --tone-reader: #414b12; --tone-editor: #d5dd86; }
+[data-text-tone="moss"] { --tone-reader: #3a491f; --tone-editor: #c7dc9b; }
+[data-text-tone="ochre"] { --tone-reader: #5d3c00; --tone-editor: #f0cf79; }
+[data-text-tone="amber"] { --tone-reader: #674005; --tone-editor: #f5ca80; }
+[data-text-tone="bronze"] { --tone-reader: #65411f; --tone-editor: #efc399; }
+[data-text-tone="umber"] { --tone-reader: #593927; --tone-editor: #e4c2aa; }
+[data-text-tone="cocoa"] { --tone-reader: #4e362f; --tone-editor: #dcc5ba; }
+[data-text-tone="slate"] { --tone-reader: #3e4856; --tone-editor: #c4ced9; }
+[data-text-tone="steel"] { --tone-reader: #3a4a57; --tone-editor: #bcd3df; }
+[data-text-tone="graphite"] { --tone-reader: #41434a; --tone-editor: #ced0d5; }
+[data-text-tone="charcoal"] { --tone-reader: #34363b; --tone-editor: #d9d9dc; }
 
 .ProseMirror .article-text-tone[data-text-tone] {
   color: var(--tone-editor);
@@ -4303,6 +4367,11 @@ textarea:focus-visible,
   .editor-tool-menu-panel,
   .editor-tool-menu:last-child .editor-tool-menu-panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .editor-text-tone-palette {
+    grid-template-columns: minmax(0, 1fr);
+    max-height: 56vh;
   }
 
   .ProseMirror {
