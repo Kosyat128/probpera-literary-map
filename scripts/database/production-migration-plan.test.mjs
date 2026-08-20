@@ -110,6 +110,15 @@ describe("guarded production database reconciliation", () => {
     expect(helper).not.toContain('[[ "$SUPABASE_DB_URL" == *"$project_ref"* ]]');
   });
 
+  it("passes the validated database URI explicitly to every remote client container", () => {
+    expect(
+      helper.match(/--env "PGDATABASE=\$SUPABASE_DB_URL"/gu)
+    ).toHaveLength(4);
+    expect(helper).not.toMatch(/--env PGDATABASE(?:\s|\\)/u);
+    expect(helper).not.toContain('export PGDATABASE="$SUPABASE_DB_URL"');
+    expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
+  });
+
   it("requires an exact main SHA, confirmation, lock, and production environment", () => {
     const workflow = parse(workflowSource);
     expect(workflow.on).toEqual({

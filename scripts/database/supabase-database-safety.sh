@@ -118,10 +118,9 @@ run_remote_psql() {
   sql_directory="$(dirname "$sql_absolute")"
   sql_name="$(basename "$sql_absolute")"
 
-  export PGDATABASE="$SUPABASE_DB_URL"
   if [[ -n "$output_file" ]]; then
     docker run --rm \
-      --env PGDATABASE \
+      --env "PGDATABASE=$SUPABASE_DB_URL" \
       --env PGSSLMODE=require \
       --volume "$sql_directory:/probpera-sql:ro" \
       --entrypoint psql \
@@ -132,7 +131,7 @@ run_remote_psql() {
       --file "/probpera-sql/$sql_name" > "$output_file"
   else
     docker run --rm \
-      --env PGDATABASE \
+      --env "PGDATABASE=$SUPABASE_DB_URL" \
       --env PGSSLMODE=require \
       --volume "$sql_directory:/probpera-sql:ro" \
       --entrypoint psql \
@@ -149,10 +148,9 @@ command_validate_target() {
   pull_database_image
 
   local verification
-  export PGDATABASE="$SUPABASE_DB_URL"
   verification="$(
     docker run --rm \
-      --env PGDATABASE \
+      --env "PGDATABASE=$SUPABASE_DB_URL" \
       --env PGSSLMODE=require \
       --entrypoint psql \
       "$DATABASE_IMAGE" \
@@ -173,9 +171,8 @@ command_dump() {
   pull_database_image
   umask 077
 
-  export PGDATABASE="$SUPABASE_DB_URL"
   docker run --rm \
-    --env PGDATABASE \
+    --env "PGDATABASE=$SUPABASE_DB_URL" \
     --env PGSSLMODE=require \
     --entrypoint pg_dump \
     "$DATABASE_IMAGE" \
