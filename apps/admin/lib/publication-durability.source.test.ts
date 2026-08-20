@@ -36,7 +36,10 @@ describe("durable public publication requests", () => {
       "if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'"
     );
     expect(workflow).toContain(
-      "if: needs.build.outputs.rebuild_max_id != ''"
+      "if: needs.build.outputs.publication_queue_marker != ''"
+    );
+    expect(workflow).toContain(
+      "--finalize=${{ needs.build.outputs.publication_queue_marker }}"
     );
   });
 });

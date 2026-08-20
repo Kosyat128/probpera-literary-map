@@ -1,4 +1,5 @@
 import { appendFile } from "node:fs/promises";
+import { isMissingPublicationOutbox } from "./lib/cms-publication-head.mjs";
 
 const supabaseUrl = (
   process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ""
@@ -66,7 +67,10 @@ async function hasOutbox() {
   const body = await response.text();
   // PGRST205 is the normal schema-cache response for a missing relation. Do
   // not treat auth, RLS, network, or other API failures as an old schema.
-  if (response.status === 404 && /PGRST205|public_build_outbox/iu.test(body)) {
+  if (
+    response.status === 404 &&
+    isMissingPublicationOutbox(response.status, body)
+  ) {
     return false;
   }
   throw new Error(`Public build outbox probe failed: ${response.status} ${body}`);
@@ -108,6 +112,23 @@ async function finalizeOutbox(maxId) {
 }
 
 async function finalizeLegacyAudit(maxId) {
+  const markerQuery = new URLSearchParams({
+    select: "entity_id",
+    action: "eq.public_build.deployed",
+    order: "id.desc",
+    limit: "1",
+  });
+  const markers = await jsonRows(
+    await request(`admin_audit_log?${markerQuery.toString()}`),
+    "Legacy public build marker query"
+  );
+  const deployedId = /^\d+$/u.test(String(markers[0]?.entity_id || ""))
+    ? String(markers[0].entity_id)
+    : "0";
+  if (BigInt(deployedId) >= BigInt(maxId)) {
+    console.log(`Legacy public builds are already finalized through audit ${maxId}.`);
+    return;
+  }
   const response = await request("admin_audit_log", {
     method: "POST",
     headers: { Prefer: "return=minimal" },

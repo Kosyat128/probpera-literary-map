@@ -1,27 +1,51 @@
 import { appendFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
-import { normalizeOutboxHighWater } from "./lib/cms-publication-state.mjs";
+import {
+  normalizePublicationHead,
+  publicationHeadProgress,
+  publicationHeadMarker,
+} from "./lib/cms-publication-state.mjs";
+import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 
 export function assertPublicationDeployHead({
+  candidateHeadSource = "outbox",
   candidateOutboxHighWater,
+  candidateLegacyAuditHighWater = "0",
+  currentHeadSource = "outbox",
   currentOutboxHighWater,
+  currentLegacyAuditHighWater = "0",
   expectedMainSha,
   currentMainSha,
   articleCount,
   contentSha256,
 }) {
-  const candidate = normalizeOutboxHighWater(
-    candidateOutboxHighWater,
-    "candidate outbox high-water mark"
+  const candidateHead = normalizePublicationHead(
+    {
+      source: candidateHeadSource,
+      outboxHighWater: candidateOutboxHighWater,
+      legacyAuditHighWater: candidateLegacyAuditHighWater,
+    },
+    "candidate publication head"
   );
-  const current = normalizeOutboxHighWater(
-    currentOutboxHighWater,
-    "current outbox high-water mark"
+  const currentHead = normalizePublicationHead(
+    {
+      source: currentHeadSource,
+      outboxHighWater: currentOutboxHighWater,
+      legacyAuditHighWater: currentLegacyAuditHighWater,
+    },
+    "current publication head"
   );
-  if (candidate !== current) {
+  let cmsHeadMatches = false;
+  try {
+    cmsHeadMatches =
+      publicationHeadProgress(candidateHead, currentHead).state === "current";
+  } catch {
+    cmsHeadMatches = false;
+  }
+  if (!cmsHeadMatches) {
     throw new Error(
-      `CMS advanced after the build snapshot (${candidate} -> ${current}); refusing to overwrite production with an older publication set.`
+      `CMS advanced after the build snapshot (${publicationHeadMarker(candidateHead) || `${candidateHead.source}:0`} -> ${publicationHeadMarker(currentHead) || `${currentHead.source}:0`}); refusing to overwrite production with an older publication set.`
     );
   }
   if (!/^[0-9a-f]{40}$/u.test(String(expectedMainSha || ""))) {
@@ -38,7 +62,12 @@ export function assertPublicationDeployHead({
   if (!/^[0-9a-f]{64}$/u.test(String(contentSha256 || ""))) {
     throw new Error("Candidate content fingerprint is missing or invalid.");
   }
-  return { candidate, articleCount: Number(articleCount), contentSha256 };
+  return {
+    candidate: candidateHead.outboxHighWater,
+    candidateHead,
+    articleCount: Number(articleCount),
+    contentSha256,
+  };
 }
 
 async function json(response, label) {
@@ -62,19 +91,8 @@ export async function verifyPublicationDeployHead(environment = process.env, fet
     throw new Error("Pre-deploy code head guard requires GITHUB_REPOSITORY and GITHUB_TOKEN.");
   }
 
-  const [outboxRows, mainRef] = await Promise.all([
-    json(
-      await fetchImpl(
-        `${supabaseUrl}/rest/v1/public_build_outbox?select=id&order=id.desc&limit=1`,
-        {
-          headers: {
-            apikey: serviceKey,
-            Authorization: `Bearer ${serviceKey}`,
-          },
-        }
-      ),
-      "Current CMS publication head"
-    ),
+  const [currentHead, mainRef] = await Promise.all([
+    fetchCmsPublicationHead({ supabaseUrl, serviceKey, fetchImpl }),
     json(
       await fetchImpl(
         `https://api.github.com/repos/${githubRepository}/git/ref/heads/main`,
@@ -89,13 +107,14 @@ export async function verifyPublicationDeployHead(environment = process.env, fet
       "Current GitHub main head"
     ),
   ]);
-  if (!Array.isArray(outboxRows)) {
-    throw new Error("Current CMS publication head returned a non-array body.");
-  }
-
   const result = assertPublicationDeployHead({
+    candidateHeadSource: environment.CANDIDATE_PUBLICATION_HEAD_SOURCE,
     candidateOutboxHighWater: environment.CANDIDATE_OUTBOX_HIGH_WATER,
-    currentOutboxHighWater: outboxRows[0]?.id ?? 0,
+    candidateLegacyAuditHighWater:
+      environment.CANDIDATE_LEGACY_AUDIT_HIGH_WATER,
+    currentHeadSource: currentHead.source,
+    currentOutboxHighWater: currentHead.outboxHighWater,
+    currentLegacyAuditHighWater: currentHead.legacyAuditHighWater,
     expectedMainSha: environment.EXPECTED_MAIN_SHA,
     currentMainSha: mainRef?.object?.sha,
     articleCount: environment.CANDIDATE_ARTICLE_COUNT,
@@ -109,7 +128,7 @@ export async function verifyPublicationDeployHead(environment = process.env, fet
         "## Publication head guard",
         "",
         `- Combined release SHA: \`${environment.EXPECTED_MAIN_SHA}\``,
-        `- CMS outbox high-water: \`${result.candidate}\``,
+        `- CMS publication head: \`${publicationHeadMarker(result.candidateHead) || `${result.candidateHead.source}:0`}\``,
         `- Published articles: **${result.articleCount}**`,
         `- Snapshot fingerprint: \`${result.contentSha256}\``,
         "- Result: current code and CMS heads exactly match the uploaded Pages artifact.",
@@ -119,7 +138,7 @@ export async function verifyPublicationDeployHead(environment = process.env, fet
     );
   }
   console.log(
-    `Publication head verified: main ${environment.EXPECTED_MAIN_SHA}, outbox ${result.candidate}, ${result.articleCount} articles, snapshot ${result.contentSha256.slice(0, 12)}.`
+    `Publication head verified: main ${environment.EXPECTED_MAIN_SHA}, CMS ${publicationHeadMarker(result.candidateHead) || `${result.candidateHead.source}:0`}, ${result.articleCount} articles, snapshot ${result.contentSha256.slice(0, 12)}.`
   );
   return result;
 }

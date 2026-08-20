@@ -37,7 +37,19 @@ describe("release workflow hardening", () => {
     expect(source).toContain("CMS_SNAPSHOT_PREEXPORTED: \"true\"");
     expect(source).toContain("run: npm run content:publication:head-check");
     expect(source).toContain(
+      "--finalize=${{ needs.build.outputs.publication_queue_marker }}"
+    );
+    expect(source).toContain(
+      "CANDIDATE_PUBLICATION_HEAD_SOURCE: ${{ needs.build.outputs.publication_head_source }}"
+    );
+    expect(source).toContain(
+      "CANDIDATE_LEGACY_AUDIT_HIGH_WATER: ${{ needs.build.outputs.publication_legacy_audit_high_water }}"
+    );
+    expect(source).not.toContain(
       "--finalize=outbox:${{ needs.build.outputs.publication_outbox_high_water }}"
+    );
+    expect(read("scripts/check-public-build-requests.mjs")).toContain(
+      "BigInt(deployedId) >= BigInt(maxId)"
     );
     expect(source.indexOf("Refuse stale code or CMS publication heads")).toBeLessThan(
       source.indexOf("uses: actions/deploy-pages@v5")
@@ -88,7 +100,7 @@ describe("release workflow hardening", () => {
     expect(publicationMutation).toContain("scheduled_at: null");
     const workflow = read(".github/workflows/deploy-pages.yml");
     expect(workflow).toContain(
-      "Finalize the deployed transactional CMS snapshot"
+      "Finalize the deployed composite CMS snapshot"
     );
     expect(workflow).not.toContain("Finalize scheduled publications");
   });

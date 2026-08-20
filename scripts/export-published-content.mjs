@@ -20,11 +20,12 @@ import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
 import {
   articleIdSet,
   assertCandidateCanReplaceBaseline,
-  assertStableOutboxWindow,
+  assertStablePublicationHeadWindow,
   cmsSourceArticleId,
-  normalizeOutboxHighWater,
+  publicationHeadMarker,
   publicationMetadata,
 } from "./lib/cms-publication-state.mjs";
+import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -186,29 +187,6 @@ async function fetchRows(table, query) {
 
 async function fetchOptionalRows(table, query, accessKey = apiKey) {
   return fetchTableRows(table, query, accessKey, true);
-}
-
-async function fetchOutboxHighWater() {
-  if (!serviceRoleKey) return null;
-  const response = await fetch(
-    `${supabaseUrl}/rest/v1/public_build_outbox?select=id&order=id.desc&limit=1`,
-    {
-      headers: {
-        apikey: serviceRoleKey,
-        Authorization: `Bearer ${serviceRoleKey}`,
-      },
-    }
-  );
-  if (!response.ok) {
-    throw new Error(
-      `CMS publication outbox high-water probe failed: ${response.status} ${await response.text()}`
-    );
-  }
-  const rows = await response.json();
-  if (!Array.isArray(rows)) {
-    throw new Error("CMS publication outbox high-water probe returned a non-array body.");
-  }
-  return normalizeOutboxHighWater(rows[0]?.id ?? 0);
 }
 
 async function readJsonIfExists(target) {
@@ -598,9 +576,9 @@ export const ${variableName} = ${JSON.stringify(value, null, 2)} as const;
 `;
 }
 
-const exportOutboxStart = serviceRoleKey
-  ? await fetchOutboxHighWater()
-  : "0";
+const exportPublicationHeadStart = serviceRoleKey
+  ? await fetchCmsPublicationHead({ supabaseUrl, serviceKey: serviceRoleKey })
+  : { source: "outbox", outboxHighWater: "0", legacyAuditHighWater: "0" };
 
 const [
   rawArticles,
@@ -1016,14 +994,14 @@ for (const edition of rawBookEditions) {
   };
 }
 
-const exportOutboxAfterRead = serviceRoleKey
-  ? await fetchOutboxHighWater()
-  : exportOutboxStart;
-let stableOutboxHighWater;
+const exportPublicationHeadAfterRead = serviceRoleKey
+  ? await fetchCmsPublicationHead({ supabaseUrl, serviceKey: serviceRoleKey })
+  : exportPublicationHeadStart;
+let stablePublicationHead;
 try {
-  stableOutboxHighWater = assertStableOutboxWindow(
-    exportOutboxStart,
-    exportOutboxAfterRead
+  stablePublicationHead = assertStablePublicationHeadWindow(
+    exportPublicationHeadStart,
+    exportPublicationHeadAfterRead
   );
 } catch (error) {
   failUnstableExport(error);
@@ -1052,7 +1030,7 @@ const snapshotContent = {
 };
 const snapshot = {
   ...snapshotContent,
-  publication: publicationMetadata(snapshotContent, stableOutboxHighWater),
+  publication: publicationMetadata(snapshotContent, stablePublicationHead),
 };
 
 const baseline = await publicationBaseline();
@@ -1072,9 +1050,9 @@ const replacement = assertCandidateCanReplaceBaseline({
 
 if (serviceRoleKey) {
   try {
-    stableOutboxHighWater = assertStableOutboxWindow(
-      stableOutboxHighWater,
-      await fetchOutboxHighWater()
+    stablePublicationHead = assertStablePublicationHeadWindow(
+      stablePublicationHead,
+      await fetchCmsPublicationHead({ supabaseUrl, serviceKey: serviceRoleKey })
     );
   } catch (error) {
     failUnstableExport(error);
@@ -1190,7 +1168,10 @@ if (process.env.GITHUB_OUTPUT) {
     process.env.GITHUB_OUTPUT,
     [
       `article_count=${snapshot.publication.articleCount}`,
+      `publication_head_source=${snapshot.publication.headSource}`,
       `outbox_high_water=${snapshot.publication.outboxHighWater}`,
+      `legacy_audit_high_water=${snapshot.publication.legacyAuditHighWater}`,
+      `publication_queue_marker=${publicationHeadMarker(stablePublicationHead)}`,
       `content_sha256=${snapshot.publication.contentSha256}`,
       "",
     ].join("\n"),
@@ -1199,5 +1180,5 @@ if (process.env.GITHUB_OUTPUT) {
 }
 
 console.log(
-  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at outbox ${snapshot.publication.outboxHighWater}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) removed.`
+  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at publication head ${publicationHeadMarker(stablePublicationHead) || `${stablePublicationHead.source}:0`}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) removed.`
 );

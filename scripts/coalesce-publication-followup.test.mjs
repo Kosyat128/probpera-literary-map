@@ -16,7 +16,9 @@ function environment(overrides = {}) {
     GITHUB_TOKEN: "github-secret",
     GITHUB_RUN_ID: "9001",
     EXPECTED_MAIN_SHA: sha,
+    CANDIDATE_PUBLICATION_HEAD_SOURCE: "outbox",
     CANDIDATE_OUTBOX_HIGH_WATER: "165",
+    CANDIDATE_LEGACY_AUDIT_HIGH_WATER: "0",
     ...overrides,
   };
 }
@@ -83,10 +85,53 @@ describe("post-deploy publication follow-up coalescing", () => {
     ).toThrow("moved backwards");
   });
 
+  it("tracks legacy audit writes alongside an available outbox", () => {
+    expect(
+      classifyPublicationFollowUp({
+        candidateHeadSource: "outbox",
+        candidateOutboxHighWater: "165",
+        candidateLegacyAuditHighWater: "41",
+        currentHeadSource: "outbox",
+        currentOutboxHighWater: "165",
+        currentLegacyAuditHighWater: "42",
+        expectedMainSha: sha,
+        currentMainSha: sha,
+      })
+    ).toMatchObject({ state: "cms-advanced", shouldDispatch: true });
+  });
+
+  it("treats legacy-to-outbox migration as advancement but rejects schema rollback", () => {
+    expect(
+      classifyPublicationFollowUp({
+        candidateHeadSource: "legacy-audit",
+        candidateOutboxHighWater: "0",
+        candidateLegacyAuditHighWater: "42",
+        currentHeadSource: "outbox",
+        currentOutboxHighWater: "1",
+        currentLegacyAuditHighWater: "42",
+        expectedMainSha: sha,
+        currentMainSha: sha,
+      })
+    ).toMatchObject({ state: "cms-advanced", shouldDispatch: true });
+    expect(() =>
+      classifyPublicationFollowUp({
+        candidateHeadSource: "outbox",
+        candidateOutboxHighWater: "1",
+        candidateLegacyAuditHighWater: "42",
+        currentHeadSource: "legacy-audit",
+        currentOutboxHighWater: "0",
+        currentLegacyAuditHighWater: "42",
+        expectedMainSha: sha,
+        currentMainSha: sha,
+      })
+    ).toThrow("moved backwards");
+  });
+
   it("dispatches exactly one immediate CMS run when only outbox advanced", async () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 166 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha } }))
       .mockResolvedValueOnce(
         response({ workflow_runs: [{ id: 9001, status: "in_progress", head_sha: sha }] })
@@ -100,12 +145,12 @@ describe("post-deploy publication follow-up coalescing", () => {
       safeToFinalize: false,
       dispatched: true,
     });
-    expect(fetchImpl).toHaveBeenCalledTimes(4);
-    const [runsUrl] = fetchImpl.mock.calls[2];
+    expect(fetchImpl).toHaveBeenCalledTimes(5);
+    const [runsUrl] = fetchImpl.mock.calls[3];
     expect(runsUrl.searchParams.get("branch")).toBe("main");
     expect(runsUrl.searchParams.get("per_page")).toBe("100");
     expect(runsUrl.searchParams.get("page")).toBe("1");
-    const [dispatchUrl, dispatchOptions] = fetchImpl.mock.calls[3];
+    const [dispatchUrl, dispatchOptions] = fetchImpl.mock.calls[4];
     expect(dispatchUrl).toContain("/actions/workflows/deploy-pages.yml/dispatches");
     expect(dispatchOptions.method).toBe("POST");
     expect(dispatchOptions.headers.Authorization).toBe("Bearer github-secret");
@@ -122,6 +167,7 @@ describe("post-deploy publication follow-up coalescing", () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 166 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha } }))
       .mockResolvedValueOnce(
         response({
@@ -139,7 +185,7 @@ describe("post-deploy publication follow-up coalescing", () => {
       safeToFinalize: false,
       dispatched: false,
     });
-    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(fetchImpl).toHaveBeenCalledTimes(4);
   });
 
   it("checks the second API page at a full queue before creating a duplicate", async () => {
@@ -151,6 +197,7 @@ describe("post-deploy publication follow-up coalescing", () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 166 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha } }))
       .mockResolvedValueOnce(response({ workflow_runs: firstPage }))
       .mockResolvedValueOnce(
@@ -162,14 +209,15 @@ describe("post-deploy publication follow-up coalescing", () => {
     await expect(
       coalescePublicationFollowUp(environment(), fetchImpl)
     ).resolves.toMatchObject({ state: "cms-followup-existing", dispatched: false });
-    expect(fetchImpl).toHaveBeenCalledTimes(4);
-    expect(fetchImpl.mock.calls[3][0].searchParams.get("page")).toBe("2");
+    expect(fetchImpl).toHaveBeenCalledTimes(5);
+    expect(fetchImpl.mock.calls[4][0].searchParams.get("page")).toBe("2");
   });
 
   it("reuses a nonterminal push run on the advanced main SHA", async () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 165 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha: newerSha } }))
       .mockResolvedValueOnce(
         response({
@@ -187,13 +235,14 @@ describe("post-deploy publication follow-up coalescing", () => {
       safeToFinalize: false,
       dispatched: false,
     });
-    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(fetchImpl).toHaveBeenCalledTimes(4);
   });
 
   it("queues one full run for a code-only skip-ci or token-suppressed main advance", async () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 165 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha: newerSha } }))
       .mockResolvedValueOnce(
         response({
@@ -209,7 +258,7 @@ describe("post-deploy publication follow-up coalescing", () => {
       safeToFinalize: false,
       dispatched: true,
     });
-    const [, dispatchOptions] = fetchImpl.mock.calls[3];
+    const [, dispatchOptions] = fetchImpl.mock.calls[4];
     expect(JSON.parse(dispatchOptions.body)).toEqual({
       ref: "main",
       inputs: {
@@ -223,6 +272,7 @@ describe("post-deploy publication follow-up coalescing", () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 165 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha: newerSha } }))
       .mockResolvedValueOnce(
         response({
@@ -241,13 +291,14 @@ describe("post-deploy publication follow-up coalescing", () => {
       safeToFinalize: false,
       dispatched: true,
     });
-    expect(JSON.parse(fetchImpl.mock.calls[3][1].body).inputs.mode).toBe("full");
+    expect(JSON.parse(fetchImpl.mock.calls[4][1].body).inputs.mode).toBe("full");
   });
 
   it("fails closed when GitHub refuses the immediate dispatch", async () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(response([{ id: 166 }]))
+      .mockResolvedValueOnce(response([]))
       .mockResolvedValueOnce(response({ object: { sha } }))
       .mockResolvedValueOnce(response({ workflow_runs: [] }))
       .mockResolvedValueOnce(response({ message: "forbidden" }, 403));

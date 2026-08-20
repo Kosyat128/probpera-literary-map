@@ -42,9 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.release_gate.outputs.should_deploy }}
-      rebuild_max_id: ${{ steps.rebuild.outputs.max_id }}
       publication_article_count: ${{ steps.publication_snapshot.outputs.article_count }}
+      publication_head_source: ${{ steps.publication_snapshot.outputs.publication_head_source }}
       publication_outbox_high_water: ${{ steps.publication_snapshot.outputs.outbox_high_water }}
+      publication_legacy_audit_high_water: ${{ steps.publication_snapshot.outputs.legacy_audit_high_water }}
+      publication_queue_marker: ${{ steps.publication_snapshot.outputs.publication_queue_marker }}
       publication_content_sha256: ${{ steps.publication_snapshot.outputs.content_sha256 }}
 
     steps:
@@ -207,7 +209,9 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           EXPECTED_MAIN_SHA: ${{ github.sha }}
           CANDIDATE_ARTICLE_COUNT: ${{ needs.build.outputs.publication_article_count }}
+          CANDIDATE_PUBLICATION_HEAD_SOURCE: ${{ needs.build.outputs.publication_head_source }}
           CANDIDATE_OUTBOX_HIGH_WATER: ${{ needs.build.outputs.publication_outbox_high_water }}
+          CANDIDATE_LEGACY_AUDIT_HIGH_WATER: ${{ needs.build.outputs.publication_legacy_audit_high_water }}
           CANDIDATE_CONTENT_SHA256: ${{ needs.build.outputs.publication_content_sha256 }}
 
       - name: Deploy to GitHub Pages
@@ -247,7 +251,9 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
           EXPECTED_MAIN_SHA: ${{ github.sha }}
+          CANDIDATE_PUBLICATION_HEAD_SOURCE: ${{ needs.build.outputs.publication_head_source }}
           CANDIDATE_OUTBOX_HIGH_WATER: ${{ needs.build.outputs.publication_outbox_high_water }}
+          CANDIDATE_LEGACY_AUDIT_HIGH_WATER: ${{ needs.build.outputs.publication_legacy_audit_high_water }}
 
       - name: Record the scheduled-poll fallback
         if: steps.postdeploy_followup.outcome != 'success'
@@ -280,16 +286,9 @@ jobs:
         with:
           node-version: 24
 
-      - name: Finalize the deployed transactional CMS snapshot
-        if: needs.build.outputs.publication_outbox_high_water != '' && needs.build.outputs.publication_outbox_high_water != '0'
-        run: node scripts/check-public-build-requests.mjs --finalize=outbox:${{ needs.build.outputs.publication_outbox_high_water }}
-        env:
-          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-
-      - name: Finalize compatibility rebuild requests
-        if: needs.build.outputs.rebuild_max_id != ''
-        run: node scripts/check-public-build-requests.mjs --finalize=${{ needs.build.outputs.rebuild_max_id }}
+      - name: Finalize the deployed composite CMS snapshot
+        if: needs.build.outputs.publication_queue_marker != ''
+        run: node scripts/check-public-build-requests.mjs --finalize=${{ needs.build.outputs.publication_queue_marker }}
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

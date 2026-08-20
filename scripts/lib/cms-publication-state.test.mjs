@@ -4,6 +4,9 @@ import {
   assertCandidateCanReplaceBaseline,
   assertPublicationMetadata,
   assertStableOutboxWindow,
+  assertStablePublicationHeadWindow,
+  publicationHeadMarker,
+  publicationHeadProgress,
   publicationMetadata,
 } from "./cms-publication-state.mjs";
 
@@ -33,6 +36,51 @@ describe("CMS publication snapshot state", () => {
       "CMS changed during export"
     );
     expect(assertStableOutboxWindow("42", "42")).toBe("42");
+  });
+
+  it("freezes both publication queues and retries a migration switch", () => {
+    const head = {
+      source: "outbox",
+      outboxHighWater: "42",
+      legacyAuditHighWater: "9",
+    };
+    expect(assertStablePublicationHeadWindow(head, head)).toEqual(head);
+    expect(() =>
+      assertStablePublicationHeadWindow(head, {
+        ...head,
+        legacyAuditHighWater: "10",
+      })
+    ).toThrow("CMS changed during export");
+    expect(() =>
+      assertStablePublicationHeadWindow(
+        {
+          source: "legacy-audit",
+          outboxHighWater: "0",
+          legacyAuditHighWater: "10",
+        },
+        { ...head, legacyAuditHighWater: "10" }
+      )
+    ).toThrow("CMS changed during export");
+  });
+
+  it("orders a migration transition without comparing unrelated sequences", () => {
+    const legacy = {
+      source: "legacy-audit",
+      outboxHighWater: "0",
+      legacyAuditHighWater: "91",
+    };
+    const migrated = {
+      source: "outbox",
+      outboxHighWater: "1",
+      legacyAuditHighWater: "91",
+    };
+    expect(publicationHeadProgress(legacy, migrated).state).toBe("advanced");
+    expect(() => publicationHeadProgress(migrated, legacy)).toThrow(
+      "moved backwards"
+    );
+    expect(
+      publicationHeadMarker({ ...migrated, outboxHighWater: "17" })
+    ).toBe("outbox:17,legacy-audit:91");
   });
 
   it("rejects a bigint already rounded by JSON number parsing", () => {
@@ -74,6 +122,44 @@ describe("CMS publication snapshot state", () => {
       assertCandidateCanReplaceBaseline({
         candidate: snapshot([id("1")], "41"),
         baseline: snapshot([id("1")], "42"),
+      })
+    ).toThrow("older than deployed");
+  });
+
+  it("keeps legacy monotonicity across migration and rejects schema rollback", () => {
+    const baseline = snapshot([id("1")], {
+      source: "legacy-audit",
+      outboxHighWater: "0",
+      legacyAuditHighWater: "42",
+    });
+    expect(
+      assertCandidateCanReplaceBaseline({
+        candidate: snapshot([id("1")], {
+          source: "outbox",
+          outboxHighWater: "1",
+          legacyAuditHighWater: "42",
+        }),
+        baseline,
+      })
+    ).toEqual({ removedIds: [] });
+    expect(() =>
+      assertCandidateCanReplaceBaseline({
+        candidate: snapshot([id("1")], {
+          source: "outbox",
+          outboxHighWater: "1",
+          legacyAuditHighWater: "41",
+        }),
+        baseline,
+      })
+    ).toThrow("older than deployed");
+    expect(() =>
+      assertCandidateCanReplaceBaseline({
+        candidate: baseline,
+        baseline: snapshot([id("1")], {
+          source: "outbox",
+          outboxHighWater: "1",
+          legacyAuditHighWater: "42",
+        }),
       })
     ).toThrow("older than deployed");
   });

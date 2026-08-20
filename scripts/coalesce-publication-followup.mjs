@@ -2,7 +2,12 @@ import { appendFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { normalizeOutboxHighWater } from "./lib/cms-publication-state.mjs";
+import {
+  normalizePublicationHead,
+  publicationHeadProgress,
+  publicationHeadMarker,
+} from "./lib/cms-publication-state.mjs";
+import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 
 const workflowFile = "deploy-pages.yml";
 
@@ -10,6 +15,27 @@ function validSha(value, label) {
   const sha = String(value || "").trim();
   if (!/^[0-9a-f]{40}$/u.test(sha)) throw new Error(`${label} is missing or invalid.`);
   return sha;
+}
+
+function headReasonSegment(head) {
+  return (publicationHeadMarker(head) || `${head.source}:0`).replace(
+    /[^a-z0-9]+/giu,
+    "-"
+  );
+}
+
+function publicationFollowUpReason(classification) {
+  const legacyFreeOutbox =
+    classification.candidateHead.source === "outbox" &&
+    classification.currentHead.source === "outbox" &&
+    classification.candidateHead.legacyAuditHighWater === "0" &&
+    classification.currentHead.legacyAuditHighWater === "0";
+  const cmsChange = legacyFreeOutbox
+    ? `outbox-${classification.candidate}-to-${classification.current}`
+    : `head-${headReasonSegment(classification.candidateHead)}-to-${headReasonSegment(classification.currentHead)}`;
+  return classification.state === "main-advanced"
+    ? `postdeploy-main-${classification.mainSha.slice(0, 12)}-${cmsChange}`
+    : `postdeploy-${cmsChange}`;
 }
 
 function nonterminalWorkflowRuns(
@@ -31,33 +57,46 @@ function nonterminalWorkflowRuns(
 }
 
 export function classifyPublicationFollowUp({
+  candidateHeadSource = "outbox",
   candidateOutboxHighWater,
+  candidateLegacyAuditHighWater = "0",
+  currentHeadSource = "outbox",
   currentOutboxHighWater,
+  currentLegacyAuditHighWater = "0",
   expectedMainSha,
   currentMainSha,
 }) {
-  const candidate = normalizeOutboxHighWater(
-    candidateOutboxHighWater,
-    "candidate outbox high-water mark"
+  const candidateHead = normalizePublicationHead(
+    {
+      source: candidateHeadSource,
+      outboxHighWater: candidateOutboxHighWater,
+      legacyAuditHighWater: candidateLegacyAuditHighWater,
+    },
+    "candidate publication head"
   );
-  const current = normalizeOutboxHighWater(
-    currentOutboxHighWater,
-    "current outbox high-water mark"
+  const currentHead = normalizePublicationHead(
+    {
+      source: currentHeadSource,
+      outboxHighWater: currentOutboxHighWater,
+      legacyAuditHighWater: currentLegacyAuditHighWater,
+    },
+    "current publication head"
   );
+  const candidate = candidateHead.outboxHighWater;
+  const current = currentHead.outboxHighWater;
+  const headProgress = publicationHeadProgress(candidateHead, currentHead);
+  const headsMatch = headProgress.state === "current";
   const expectedSha = validSha(expectedMainSha, "Expected workflow SHA");
   const mainSha = validSha(currentMainSha, "Current main SHA");
-  if (BigInt(current) < BigInt(candidate)) {
-    throw new Error(
-      `CMS outbox moved backwards after deployment (${candidate} -> ${current}).`
-    );
-  }
   if (mainSha !== expectedSha) {
     return {
       state: "main-advanced",
       candidate,
       current,
+      candidateHead,
+      currentHead,
       mainSha,
-      cmsMatchesCandidate: current === candidate,
+      cmsMatchesCandidate: headsMatch,
       // A main advance is not safe to acknowledge until a matching run is
       // proven or a full replacement run is successfully queued.
       safeToFinalize: false,
@@ -65,11 +104,13 @@ export function classifyPublicationFollowUp({
       dispatchMode: "full",
     };
   }
-  if (current === candidate) {
+  if (headsMatch) {
     return {
       state: "current",
       candidate,
       current,
+      candidateHead,
+      currentHead,
       mainSha,
       safeToFinalize: true,
       shouldDispatch: false,
@@ -79,6 +120,8 @@ export function classifyPublicationFollowUp({
     state: "cms-advanced",
     candidate,
     current,
+    candidateHead,
+    currentHead,
     mainSha,
     safeToFinalize: false,
     shouldDispatch: true,
@@ -144,7 +187,7 @@ async function writeResult(environment, result) {
         "## Post-deploy publication coalescing",
         "",
         `- State: \`${result.state}\``,
-        `- Outbox: \`${result.candidate}\` → \`${result.current}\``,
+        `- CMS head: \`${publicationHeadMarker(result.candidateHead) || `${result.candidateHead.source}:0`}\` → \`${publicationHeadMarker(result.currentHead) || `${result.currentHead.source}:0`}\``,
         `- Candidate marker may be finalized: **${result.safeToFinalize ? "yes" : "no"}**`,
         `- ${detail}`,
         "",
@@ -183,19 +226,8 @@ export async function coalescePublicationFollowUp(
     "X-GitHub-Api-Version": "2022-11-28",
   };
 
-  const [outboxRows, mainRef] = await Promise.all([
-    json(
-      await fetchImpl(
-        `${supabaseUrl}/rest/v1/public_build_outbox?select=id&order=id.desc&limit=1`,
-        {
-          headers: {
-            apikey: serviceKey,
-            Authorization: `Bearer ${serviceKey}`,
-          },
-        }
-      ),
-      "Current CMS publication head"
-    ),
+  const [currentHead, mainRef] = await Promise.all([
+    fetchCmsPublicationHead({ supabaseUrl, serviceKey, fetchImpl }),
     json(
       await fetchImpl(`https://api.github.com/repos/${repository}/git/ref/heads/main`, {
         headers: githubHeaders,
@@ -203,13 +235,14 @@ export async function coalescePublicationFollowUp(
       "Current GitHub main head"
     ),
   ]);
-  if (!Array.isArray(outboxRows)) {
-    throw new Error("Current CMS publication head returned a non-array body.");
-  }
-
   const classification = classifyPublicationFollowUp({
+    candidateHeadSource: environment.CANDIDATE_PUBLICATION_HEAD_SOURCE,
     candidateOutboxHighWater: environment.CANDIDATE_OUTBOX_HIGH_WATER,
-    currentOutboxHighWater: outboxRows[0]?.id ?? 0,
+    candidateLegacyAuditHighWater:
+      environment.CANDIDATE_LEGACY_AUDIT_HIGH_WATER,
+    currentHeadSource: currentHead.source,
+    currentOutboxHighWater: currentHead.outboxHighWater,
+    currentLegacyAuditHighWater: currentHead.legacyAuditHighWater,
     expectedMainSha: environment.EXPECTED_MAIN_SHA,
     currentMainSha: mainRef?.object?.sha,
   });
@@ -263,10 +296,7 @@ export async function coalescePublicationFollowUp(
         ref: "main",
         inputs: {
           mode: classification.dispatchMode,
-          reason:
-            classification.state === "main-advanced"
-              ? `postdeploy-main-${classification.mainSha.slice(0, 12)}-outbox-${classification.candidate}-to-${classification.current}`
-              : `postdeploy-outbox-${classification.candidate}-to-${classification.current}`,
+          reason: publicationFollowUpReason(classification),
         },
       }),
     }
