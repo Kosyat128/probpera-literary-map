@@ -255,10 +255,9 @@ wait_for_initialized_restore_database() {
   }
 }
 
-bootstrap_isolated_restore_vault() {
-  local vault_precondition vault_state
-
-  vault_precondition="$(
+verify_initialized_restore_vault() {
+  local vault_state=""
+  if ! vault_state="$(
     docker exec "$RESTORE_CONTAINER" psql \
       --host="$ISOLATED_DATABASE_HOST" \
       --username=postgres \
@@ -267,37 +266,20 @@ bootstrap_isolated_restore_vault() {
       --tuples-only \
       --no-align \
       --set=ON_ERROR_STOP=1 \
-      --command="select to_regnamespace('vault') is null, not exists (select 1 from pg_catalog.pg_extension where extname = 'supabase_vault'), to_regclass('vault.secrets') is null, exists (select 1 from pg_catalog.pg_available_extensions where name = 'supabase_vault' and default_version is not null);"
-  )"
-  [[ "$vault_precondition" == "t|t|t|t" ]] \
-    || die "Isolated Vault bootstrap requires a completely absent Vault state and an available default supabase_vault version."
+      --command="select current_database() = 'probpera_restore', to_regnamespace('vault') is not null, exists (select 1 from pg_catalog.pg_extension e join pg_catalog.pg_namespace n on n.oid = e.extnamespace where e.extname = 'supabase_vault' and n.nspname = 'vault'), exists (select 1 from pg_catalog.pg_extension e join pg_catalog.pg_available_extensions a on a.name = e.extname where e.extname = 'supabase_vault' and a.default_version is not null and e.extversion = a.default_version), exists (select 1 from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid = c.relnamespace where n.nspname = 'vault' and c.relname = 'secrets' and c.relkind in ('r', 'p'));" \
+      2>/dev/null
+  )"; then
+    die "Isolated initialized Vault verification query failed."
+  fi
 
-  # Existence-tolerant DDL and disconnect tolerance are forbidden: a concurrent
-  # or partial state, or any hook failure, aborts the transaction and the drill.
-  docker exec "$RESTORE_CONTAINER" psql \
-    --host="$ISOLATED_DATABASE_HOST" \
-    --username=postgres \
-    --dbname=probpera_restore \
-    --no-psqlrc \
-    --set=ON_ERROR_STOP=1 \
-    --single-transaction \
-    --command="create schema vault;" \
-    --command="create extension supabase_vault with schema vault;" \
-    >/dev/null
-
-  vault_state="$(
-    docker exec "$RESTORE_CONTAINER" psql \
-      --host="$ISOLATED_DATABASE_HOST" \
-      --username=postgres \
-      --dbname=probpera_restore \
-      --no-psqlrc \
-      --tuples-only \
-      --no-align \
-      --set=ON_ERROR_STOP=1 \
-      --command="select current_database() = 'probpera_restore', to_regnamespace('vault') is not null, exists (select 1 from pg_catalog.pg_extension e join pg_catalog.pg_namespace n on n.oid = e.extnamespace join pg_catalog.pg_available_extensions a on a.name = e.extname where e.extname = 'supabase_vault' and n.nspname = 'vault' and e.extversion = a.default_version), exists (select 1 from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid = c.relnamespace where n.nspname = 'vault' and c.relname = 'secrets' and c.relkind in ('r', 'p'));"
-  )"
-  [[ "$vault_state" == "t|t|t|t" ]] \
-    || die "Isolated Vault bootstrap did not reach the exact extension version, schema, and secrets table state."
+  [[ "$vault_state" == "t|t|t|t|t" ]] || {
+    local diagnostic_state="unavailable"
+    if [[ "$vault_state" =~ ^[tf]\|[tf]\|[tf]\|[tf]\|[tf]$ ]]; then
+      diagnostic_state="$vault_state"
+    fi
+    echo "::error::Isolated Vault vector (database|schema|extension_schema|extension_version|secrets_table): $diagnostic_state" >&2
+    die "Isolated platform Vault is not initialized to the exact schema, extension version, and secrets table state."
+  }
 }
 
 assert_empty_application_schema() {
@@ -571,7 +553,7 @@ command_restore_drill() {
     "$DATABASE_IMAGE" >/dev/null
 
   wait_for_initialized_restore_database
-  bootstrap_isolated_restore_vault
+  verify_initialized_restore_vault
   assert_empty_application_schema
 
   # Keep the unfiltered custom dump as the encrypted recovery artifact. For the

@@ -32,10 +32,10 @@ const dumpImplementation = helper.slice(
 );
 const readinessImplementation = helper.slice(
   helper.indexOf("wait_for_initialized_restore_database()"),
-  helper.indexOf("bootstrap_isolated_restore_vault()")
+  helper.indexOf("verify_initialized_restore_vault()")
 );
-const vaultBootstrapImplementation = helper.slice(
-  helper.indexOf("bootstrap_isolated_restore_vault()"),
+const vaultVerificationImplementation = helper.slice(
+  helper.indexOf("verify_initialized_restore_vault()"),
   helper.indexOf("assert_empty_application_schema()")
 );
 const identityValidationImplementation = helper.slice(
@@ -138,7 +138,7 @@ describe("guarded production database reconciliation", () => {
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
   });
 
-  it("waits for the final base server and bootstraps only an absent Vault state", () => {
+  it("waits for the final base server and verifies initialized platform Vault", () => {
     expect(restoreImplementation).toContain(
       "--env POSTGRES_DB=probpera_restore"
     );
@@ -173,12 +173,12 @@ describe("guarded production database reconciliation", () => {
     );
     expect(
       helper.match(/--host="\$ISOLATED_DATABASE_HOST"/gu)
-    ).toHaveLength(14);
+    ).toHaveLength(12);
     expect(
       helper.match(
         /docker exec(?: --interactive)? "\$RESTORE_CONTAINER" (?:psql|pg_isready|pg_restore) \\/gu
       )
-    ).toHaveLength(14);
+    ).toHaveLength(12);
     expect(helper).not.toContain("--env PGHOST=");
     expect(readinessImplementation).not.toContain("supabase_vault");
     expect(readinessImplementation).not.toContain("vault.secrets");
@@ -231,44 +231,45 @@ describe("guarded production database reconciliation", () => {
     );
     expect(readinessImplementation).not.toContain("|| true");
 
-    expect(vaultBootstrapImplementation).toContain(
-      "to_regnamespace('vault') is null"
+    expect(vaultVerificationImplementation).toContain(
+      "to_regnamespace('vault') is not null"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      "not exists (select 1 from pg_catalog.pg_extension where extname = 'supabase_vault')"
+    expect(vaultVerificationImplementation).toContain(
+      "e.extname = 'supabase_vault' and n.nspname = 'vault'"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      "to_regclass('vault.secrets') is null"
-    );
-    expect(vaultBootstrapImplementation).toContain(
+    expect(vaultVerificationImplementation).toContain(
       "default_version is not null"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      '"t|t|t|t"'
-    );
-    expect(vaultBootstrapImplementation).toContain("--single-transaction");
-    expect(vaultBootstrapImplementation).toContain("--set=ON_ERROR_STOP=1");
-    expect(vaultBootstrapImplementation).toContain("create schema vault;");
-    expect(vaultBootstrapImplementation).toContain(
-      "create extension supabase_vault with schema vault;"
-    );
-    expect(vaultBootstrapImplementation).not.toMatch(/if\s+not\s+exists/iu);
-    expect(vaultBootstrapImplementation).toContain(
+    expect(vaultVerificationImplementation).toContain(
       "e.extversion = a.default_version"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      "n.nspname = 'vault'"
+    expect(vaultVerificationImplementation).toContain(
+      "c.relname = 'secrets' and c.relkind in ('r', 'p')"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      "c.relname = 'secrets'"
+    expect(vaultVerificationImplementation).toContain('"t|t|t|t|t"');
+    expect(vaultVerificationImplementation).toContain(
+      "^[tf]\\|[tf]\\|[tf]\\|[tf]\\|[tf]$"
     );
-    expect(vaultBootstrapImplementation).toContain(
-      "did not reach the exact extension version, schema, and secrets table state"
+    expect(vaultVerificationImplementation).toContain(
+      "Isolated Vault vector (database|schema|extension_schema|extension_version|secrets_table)"
     );
-    expect(vaultBootstrapImplementation).not.toContain("|| true");
+    expect(vaultVerificationImplementation).toContain("--set=ON_ERROR_STOP=1");
+    expect(vaultVerificationImplementation).not.toContain(
+      "--single-transaction"
+    );
+    expect(vaultVerificationImplementation).not.toMatch(
+      /create\s+(?:schema|extension)/iu
+    );
+    expect(vaultVerificationImplementation).not.toMatch(/\bgrant\b/iu);
+    expect(vaultVerificationImplementation).not.toMatch(/\bhook\b/iu);
+    expect(vaultVerificationImplementation).not.toMatch(/if\s+not\s+exists/iu);
+    expect(vaultVerificationImplementation).not.toContain("|| true");
+    expect(vaultVerificationImplementation).toContain(
+      "Isolated platform Vault is not initialized to the exact schema, extension version, and secrets table state"
+    );
     expect(restoreImplementation.indexOf("wait_for_initialized_restore_database"))
-      .toBeLessThan(restoreImplementation.indexOf("bootstrap_isolated_restore_vault"));
-    expect(restoreImplementation.indexOf("bootstrap_isolated_restore_vault"))
+      .toBeLessThan(restoreImplementation.indexOf("verify_initialized_restore_vault"));
+    expect(restoreImplementation.indexOf("verify_initialized_restore_vault"))
       .toBeLessThan(restoreImplementation.indexOf("assert_empty_application_schema"));
   });
 
