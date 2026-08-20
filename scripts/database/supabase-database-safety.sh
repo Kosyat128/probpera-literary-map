@@ -7,6 +7,7 @@ readonly DEFAULT_DATABASE_IMAGE="public.ecr.aws/supabase/postgres:17.6.1.136"
 readonly EXPECTED_PRODUCTION_PROJECT_REF="sjqejjmwpzfsczxdghvw"
 readonly EXPECTED_PRODUCTION_API_HOST="${EXPECTED_PRODUCTION_PROJECT_REF}.supabase.co"
 DATABASE_IMAGE="${DATABASE_IMAGE:-$DEFAULT_DATABASE_IMAGE}"
+RESTORE_CONTAINER=""
 
 die() {
   echo "::error::$*" >&2
@@ -33,6 +34,16 @@ absolute_path() {
 pull_database_image() {
   require_command docker
   docker pull "$DATABASE_IMAGE" >/dev/null
+}
+
+cleanup_restore() {
+  local active_container="${RESTORE_CONTAINER:-}"
+  [[ -n "$active_container" ]] || return 0
+  docker rm --force "$active_container" >/dev/null 2>&1 || {
+    echo "::error::Failed to remove the isolated restore container." >&2
+    return 1
+  }
+  RESTORE_CONTAINER=""
 }
 
 validate_database_url() {
@@ -220,44 +231,62 @@ command_encrypt_verify() {
 }
 
 command_restore_drill() {
-  local dump plan result container
+  local dump plan result
   dump="$(absolute_path "$1")"
   plan="${2:-}"
   result="${3:-}"
   [[ -s "$dump" ]] || die "Restore drill dump is missing or empty."
   pull_database_image
 
-  container="probpera-restore-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${RANDOM}"
-  cleanup_restore() {
-    docker rm --force "$container" >/dev/null 2>&1 || true
-  }
+  RESTORE_CONTAINER="probpera-restore-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${RANDOM}"
   trap cleanup_restore EXIT
 
-  docker run --detach --name "$container" \
+  docker run --detach --name "$RESTORE_CONTAINER" \
     --env POSTGRES_PASSWORD=postgres \
-    --env POSTGRES_DB=probpera_restore \
+    --env POSTGRES_DB=postgres \
     "$DATABASE_IMAGE" >/dev/null
 
   local ready=false
   for _attempt in {1..45}; do
-    if docker exec "$container" pg_isready \
-      --username=postgres --dbname=probpera_restore >/dev/null 2>&1; then
+    if docker exec "$RESTORE_CONTAINER" pg_isready \
+      --username=postgres --dbname=postgres >/dev/null 2>&1; then
       ready=true
       break
     fi
     sleep 2
   done
   [[ "$ready" == true ]] || {
-    docker logs "$container" >&2
+    docker logs "$RESTORE_CONTAINER" >&2
     die "Isolated Supabase PostgreSQL did not become ready."
   }
 
-  docker cp "$dump" "$container:/tmp/probpera.dump"
-  docker exec "$container" pg_restore \
+  # pg_restore --clean emits DROP POLICY ... ON relation statements that fail
+  # against a fresh database even with --if-exists.  Create the drill target
+  # from template0, prove that it contains no user relations, and restore every
+  # dump entry under --exit-on-error instead of excluding platform schemas.
+  docker exec "$RESTORE_CONTAINER" createdb \
+    --username=postgres \
+    --template=template0 \
+    probpera_restore
+
+  local isolated_empty
+  isolated_empty="$(
+    docker exec "$RESTORE_CONTAINER" psql \
+      --username=postgres \
+      --dbname=probpera_restore \
+      --no-psqlrc \
+      --tuples-only \
+      --no-align \
+      --set=ON_ERROR_STOP=1 \
+      --command="select not exists (select 1 from pg_catalog.pg_class relation join pg_catalog.pg_namespace namespace on namespace.oid = relation.relnamespace where namespace.nspname <> 'information_schema' and namespace.nspname not like 'pg_%' and relation.relkind in ('r', 'p', 'v', 'm', 'S', 'f'));"
+  )"
+  [[ "$isolated_empty" == "t" ]] \
+    || die "Isolated restore target is not empty."
+
+  docker cp "$dump" "$RESTORE_CONTAINER:/tmp/probpera.dump"
+  docker exec "$RESTORE_CONTAINER" pg_restore \
     --username=postgres \
     --dbname=probpera_restore \
-    --clean \
-    --if-exists \
     --no-owner \
     --no-privileges \
     --exit-on-error \
@@ -265,7 +294,7 @@ command_restore_drill() {
 
   local core restored_articles publication_schema
   core="$(
-    docker exec "$container" psql \
+    docker exec "$RESTORE_CONTAINER" psql \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -281,8 +310,8 @@ command_restore_drill() {
     local plan_absolute
     plan_absolute="$(absolute_path "$plan")"
     [[ -s "$plan_absolute" ]] || die "Migration plan is missing or empty."
-    docker cp "$plan_absolute" "$container:/tmp/reconciliation.sql"
-    docker exec "$container" psql \
+    docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"
+    docker exec "$RESTORE_CONTAINER" psql \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -292,7 +321,7 @@ command_restore_drill() {
   fi
 
   restored_articles="$(
-    docker exec "$container" psql \
+    docker exec "$RESTORE_CONTAINER" psql \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \
@@ -305,7 +334,7 @@ command_restore_drill() {
     || die "Restore drill found no production articles."
 
   publication_schema="$(
-    docker exec "$container" psql \
+    docker exec "$RESTORE_CONTAINER" psql \
       --username=postgres \
       --dbname=probpera_restore \
       --no-psqlrc \

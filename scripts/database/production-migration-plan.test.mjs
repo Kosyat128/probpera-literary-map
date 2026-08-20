@@ -118,6 +118,28 @@ describe("guarded production database reconciliation", () => {
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
   });
 
+  it("restores every dump entry into a proven-empty template0 database", () => {
+    expect(helper).toContain("--template=template0");
+    expect(helper).toContain("Isolated restore target is not empty.");
+    expect(helper).toContain("--exit-on-error");
+    expect(helper).not.toMatch(/^\s+--clean(?:\s|\\)/mu);
+    expect(helper).not.toMatch(/^\s+--if-exists(?:\s|\\)/mu);
+    expect(helper).not.toMatch(/--(?:exclude-schema|exclude-table|use-list)/u);
+  });
+
+  it("keeps restore cleanup state alive until the EXIT trap runs", () => {
+    expect(helper).toContain('RESTORE_CONTAINER=""');
+    expect(helper).toContain(
+      'local active_container="${RESTORE_CONTAINER:-}"'
+    );
+    expect(helper).toContain(
+      "Failed to remove the isolated restore container."
+    );
+    expect(helper).toContain('trap cleanup_restore EXIT');
+    expect(helper).not.toContain("local dump plan result container");
+    expect(helper).not.toContain('docker rm --force "$container"');
+  });
+
   it("requires an exact main SHA, confirmation, lock, and production environment", () => {
     const workflow = parse(workflowSource);
     expect(workflow.on).toEqual({
