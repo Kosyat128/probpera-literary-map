@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-13T22:51:24.974Z",
+  "generatedAt": "2026-08-20T11:02:20.443Z",
   "summary": {
     "countryCards": 200,
-    "writerRecords": 1690,
+    "writerRecords": 1684,
     "bookRecords": 9712,
-    "findings": 7,
+    "findings": 10,
     "critical": 0,
-    "review": 7
+    "review": 10
   },
   "critical": [],
   "review": [
@@ -48,6 +48,24 @@
     },
     {
       "identity": "writer:germany:paul_heyse",
+      "field": "biography",
+      "issue": "проверенная биография короче 180 знаков",
+      "severity": "review"
+    },
+    {
+      "identity": "writer:niger:mariama_hima",
+      "field": "biography",
+      "issue": "пробел перед знаком препинания",
+      "severity": "review"
+    },
+    {
+      "identity": "writer:niger:mariama_hima",
+      "field": "work",
+      "issue": "пробел перед знаком препинания",
+      "severity": "review"
+    },
+    {
+      "identity": "writer:north_macedonia:kocho_racin",
       "field": "biography",
       "issue": "проверенная биография короче 180 знаков",
       "severity": "review"

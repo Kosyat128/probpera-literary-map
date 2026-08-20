@@ -14,6 +14,7 @@ import {
 } from "./lib/cms-export-keys.mjs";
 import { staleManagedCmsArticleSnapshotNames } from "./lib/cms-article-snapshot-files.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
+import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -505,7 +506,7 @@ const [
 ] = await Promise.all([
   fetchRows("articles", {
     select:
-      "id,legacy_id,title,subtitle,excerpt,content_html,cover_media_id,cover_external_url,cover_alt,slug,legacy_path,published_at,featured,show_on_homepage,pinned,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,og_media_id,allow_indexing,categories(name,slug)",
+      "id,legacy_id,title,subtitle,excerpt,content_html,cover_media_id,cover_external_url,cover_alt,slug,legacy_path,published_at,updated_at,featured,show_on_homepage,pinned,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,og_media_id,allow_indexing,categories(name,slug)",
     status: "eq.published",
     deleted_at: "is.null",
     order: "pinned.desc,featured.desc,published_at.desc,id.asc",
@@ -613,6 +614,15 @@ const articles = rawArticles.map((rawArticle) => {
   const imageUrl = article.cover_external_url || storageUrl(coverMedia) || undefined;
   const imageFocus = article.cover_external_url ? {} : mediaFocus(coverMedia);
   const ogImageUrl = storageUrl(mediaById(mediaLookup, article.og_media_id)) || imageUrl;
+  const imageAlt = imageAltLooksTechnical(article.cover_alt || coverMedia?.alt_text)
+    ? `Иллюстрация к статье «${article.title}»`
+    : article.cover_alt || coverMedia?.alt_text || "";
+  const dzenCover = dzenCoverForArticle({
+    title: article.title,
+    content_html: document.contentHtml,
+    cover_external_url: imageUrl,
+    cover_alt: imageAlt,
+  });
   const id = `cms-${article.id}`;
   const publicPath = articlePublicPath(slug, sectionId);
   const canonicalUrl = `${siteOrigin}${publicPath}/`;
@@ -649,6 +659,7 @@ const articles = rawArticles.map((rawArticle) => {
         sectionLabel: categoryEnglishLabels[sectionId] || "Article",
         publishedLabel: englishPublicationLabel(article.published_at),
         publishedAt: article.published_at,
+        updatedAt: englishTranslation.updated_at,
         readingMinutes: Math.max(1, Math.ceil(englishWordCount / 180)),
         wordCount: englishWordCount,
         headingCount: englishDocument?.headings.length || 0,
@@ -688,13 +699,14 @@ const articles = rawArticles.map((rawArticle) => {
     imageUrl,
     imageFocusX: imageFocus.focusX,
     imageFocusY: imageFocus.focusY,
-    imageAlt: imageAltLooksTechnical(article.cover_alt || coverMedia?.alt_text)
-      ? `Иллюстрация к статье «${article.title}»`
-      : article.cover_alt || coverMedia?.alt_text || "",
+    imageAlt,
+    dzenImageUrl: dzenCover?.url,
+    dzenImageAlt: dzenCover?.alt,
     sectionId,
     sectionLabel,
     publishedLabel: publicationLabel(article.published_at),
     publishedAt: article.published_at,
+    updatedAt: article.updated_at,
     readingMinutes: Math.max(1, Math.ceil(wordCount / 180)),
     wordCount,
     headingCount: document.headings.length,

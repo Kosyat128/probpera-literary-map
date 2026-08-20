@@ -4,7 +4,11 @@ import { NextResponse, type NextRequest } from "next/server";
 import { adminEnv, isSupabaseConfigured } from "@/lib/env";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
-export async function proxy(request: NextRequest) {
+// Next.js 16 keeps middleware.ts specifically for Edge-runtime deployments.
+// OpenNext Cloudflare does not yet support the Node-runtime proxy.ts convention.
+export const runtime = "experimental-edge";
+
+export async function middleware(request: NextRequest) {
   const configuredAdminBasePath = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH);
   const pathname = request.nextUrl.pathname;
   const duplicatedPrefix = configuredAdminBasePath

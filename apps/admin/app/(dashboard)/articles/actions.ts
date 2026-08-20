@@ -19,6 +19,14 @@ import {
 } from "@/lib/article-translations";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
+import {
+  safeTextToneSpanAttributes,
+  sanitizeArticleTextToneJson,
+} from "@/lib/article-content-presentation";
+import {
+  positionLeadingIllustrationHtml,
+  positionLeadingIllustrationJson,
+} from "@/lib/article-leading-illustration";
 import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -131,12 +139,17 @@ const allowedArticleHtml = {
       "data-reveal",
       "data-image-layout",
       "data-caption",
+      "data-text-tone",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
     a: sanitizeHtml.simpleTransform("a", {
       rel: "noopener noreferrer",
+    }),
+    span: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeTextToneSpanAttributes(attributes),
     }),
   },
 };
@@ -270,7 +283,9 @@ export async function importLegacyArticlesAction() {
         title: article.title.trim(),
         excerpt: String(article.description || "").trim().slice(0, 700),
         content_json: { type: "doc", content: [] },
-        content_html: sanitizeHtml(documents[index]?.contentHtml || "", allowedArticleHtml),
+        content_html: positionLeadingIllustrationHtml(
+          sanitizeHtml(documents[index]?.contentHtml || "", allowedArticleHtml)
+        ),
         cover_external_url: article.imageUrl || null,
         cover_alt:
           article.imageAlt ||
@@ -499,22 +514,27 @@ export async function saveArticleAction(formData: FormData) {
 
   let contentJson: unknown;
   try {
-    contentJson = JSON.parse(parsed.data.contentJson);
+    contentJson = positionLeadingIllustrationJson(
+      sanitizeArticleTextToneJson(JSON.parse(parsed.data.contentJson))
+    );
   } catch {
     contentJson = { type: "doc", content: [] };
   }
-  const sanitizedContentHtml = sanitizeHtml(
-    parsed.data.contentHtml,
-    allowedArticleHtml
+  const sanitizedContentHtml = positionLeadingIllustrationHtml(
+    sanitizeHtml(parsed.data.contentHtml, allowedArticleHtml)
   );
 
   let englishContentJson: unknown = null;
   const sanitizedEnglishContentHtml = englishData
-    ? sanitizeHtml(englishData.contentHtml, allowedArticleHtml)
+    ? positionLeadingIllustrationHtml(
+        sanitizeHtml(englishData.contentHtml, allowedArticleHtml)
+      )
     : "";
   if (englishData) {
     try {
-      englishContentJson = JSON.parse(englishData.contentJson);
+      englishContentJson = positionLeadingIllustrationJson(
+        sanitizeArticleTextToneJson(JSON.parse(englishData.contentJson))
+      );
     } catch {
       englishContentJson = { type: "doc", content: [] };
     }
@@ -1122,7 +1142,7 @@ export async function saveArticleAction(formData: FormData) {
           article_id: articleId,
           title: parsed.data.title,
           slug: savedSlug,
-          platforms: ["vk", "dzen"],
+          platforms: ["dzen"],
           requested_at: now,
         },
       });
@@ -1226,7 +1246,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
         article_id: article.id,
         title: article.title,
         slug: article.slug,
-        platforms: ["vk", "dzen"],
+        platforms: ["dzen"],
         requested_at: new Date().toISOString(),
         reason: "manual-editor-request",
       },

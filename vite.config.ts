@@ -6,9 +6,21 @@ export default defineConfig(({ mode }) => {
   const environment = loadEnv(mode, process.cwd(), "");
   const configuredBase = environment.PUBLIC_SITE_BASE_PATH || "/probpera-literary-map/";
   const base = configuredBase === "/" ? "/" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}/`;
-
+  const rawMetrikaCounterId = (
+    process.env.YANDEX_METRIKA_COUNTER_ID ||
+    environment.YANDEX_METRIKA_COUNTER_ID ||
+    ""
+  ).trim();
+  if (rawMetrikaCounterId && !/^[1-9]\d{0,14}$/u.test(rawMetrikaCounterId)) {
+    throw new Error(
+      "YANDEX_METRIKA_COUNTER_ID must be a positive numeric counter identifier"
+    );
+  }
   return {
     base,
+    define: {
+      __YANDEX_METRIKA_COUNTER_ID__: JSON.stringify(rawMetrikaCounterId),
+    },
     plugins: [react()],
     test: {
       exclude: ["**/node_modules/**", "**/.git/**", ".tmp/**"],

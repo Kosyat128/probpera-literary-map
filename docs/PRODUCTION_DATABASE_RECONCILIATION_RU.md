@@ -46,9 +46,9 @@ database URL должен быть direct endpoint этого проекта л�
    manifest и редактированный отчёт в GitHub Artifact; сбой загрузки
    останавливает job;
 5. восстанавливает копию в изолированный PostgreSQL-контейнер;
-6. на восстановленной копии одной транзакцией применяет строго девять
+6. на восстановленной копии одной транзакцией применяет строго десять
    проверенных миграций от `20260808_article_translations` до
-   `20260814_publication_outbox_and_schema_health`;
+   `20260820_homepage_book_month_editorial_choice`;
 7. проверяет ledger, 20 outbox-триггеров, индексы, покрытие переводов и
    staff-only RPC `get_editorial_schema_health()`;
 8. повторно сверяет SHA актуальной вершины `main`, чтобы не применить

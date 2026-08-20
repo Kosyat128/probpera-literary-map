@@ -24,9 +24,10 @@ Workflow `Configure Cloudflare edge security` безопасно сверяет 
    camera/microphone/geolocation/payment и COOP `same-origin`.
 3. Одно Cache Rule со стабильным `ref`
    `probpera-public-immutable-assets-cache-v1`: годовой browser/edge TTL только
-   для хешированных Vite-ресурсов `/assets/*` публичного хоста. Каталоги
+   для хешированных Vite-ресурсов `/assets/*` публичного хоста. Редакционные
+   каталоги `/assets/country-flags/*` и `/assets/writer-portraits/*`, а также
    `/textures/*` и `/brand/*` намеренно не входят в это правило, поскольку их
-   имена не гарантируют неизменяемость содержимого.
+   стабильные имена не гарантируют неизменяемость содержимого.
 
 Скрипт добавляет или обновляет только правило с собственным `ref` через API
 одного правила. Посторонние правила не отправляются обратно целиком и не

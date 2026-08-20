@@ -29,6 +29,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch41,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch41";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch42,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch42";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1664,6 +1667,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch39,
   ...writerBiographyPublicProfileFactCorrectionsBatch40,
   ...writerBiographyPublicProfileFactCorrectionsBatch41,
+  ...writerBiographyPublicProfileFactCorrectionsBatch42,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1768,6 +1772,8 @@ export const quarantinedWriterIdentities = [
   ["namibia", "gustav_frolich", "cross-country-identity-conflict", "German authority records identify Gustav Frölich (1879–1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year."],
   ["namibia", "ndapewaoshali_shikongo", "identity-not-established", "A first-party site establishes a Namibian writer using the single name Ndapewoshali, but not the Shikongo surname, 1993 birth year or children's-book identity claimed by this card."],
   ["nauru", "michael_francis", "identity-not-established", "The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs."],
+  ["new_zealand", "steven_baker", "cross-country-identity-conflict", "The id and displayed name Steven Baker are conflated with Steven Roger Fischer: the attributed works belong to Fischer, while no authoritative source establishes a matching New Zealand writer named Steven Baker."],
+  ["niger", "ibrahim_adam", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Nigerien writer, birth year, literary role or works."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

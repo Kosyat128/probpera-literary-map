@@ -39,6 +39,12 @@ const englishInterfaceText: Record<string, string> = {
   Календарь: "Calendar",
   Форум: "Forum",
   "О проекте": "About",
+  "Настройки статистики": "Analytics settings",
+  "Точная и бережная статистика": "Accurate, privacy-conscious analytics",
+  "Яндекс Метрика поможет увидеть посещаемость по странам и регионам. Она загрузится только с вашего разрешения; Вебвизор отключён.":
+    "Yandex Metrica helps us understand readership by country and region. It loads only with your permission; session replay is disabled.",
+  "Разрешить статистику": "Allow analytics",
+  "Только необходимые": "Necessary only",
   "Открыть единый поиск": "Open site search",
   Поиск: "Search",
   Войти: "Sign in",

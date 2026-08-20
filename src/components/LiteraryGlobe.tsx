@@ -42,6 +42,7 @@ import {
   GLOBE_INTERACTION_RESUME_DELAY_MS,
   globeControlActionForKey,
   isGlobePointerTap,
+  orbitDollyMethodForZoomDirection,
   shouldGlobeAutoRotate,
   updateGlobePointerGesture,
   type GlobeControlAction,
@@ -409,8 +410,7 @@ function GlobeControlDriver({
         )
       );
     } else if (action.type === "zoom") {
-      if (action.direction === "in") controls.dollyIn(1.18);
-      else controls.dollyOut(1.18);
+      controls[orbitDollyMethodForZoomDirection(action.direction)](1.18);
     } else {
       camera.position.set(0, 0.08, 4.9);
       camera.zoom = 1;
@@ -846,6 +846,41 @@ function ContemporaryGlobeFrame({
           />
         </mesh>
       ))}
+
+      <mesh position={[0, -1.18, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.035, 0.055, 0.2, 32]} />
+        <meshPhysicalMaterial
+          color={earth ? "#173c55" : "#25133c"}
+          emissive={earth ? "#0e4f55" : "#3b1b5f"}
+          emissiveIntensity={0.2}
+          roughness={0.28}
+          metalness={0.76}
+          clearcoat={0.62}
+          clearcoatRoughness={0.2}
+        />
+      </mesh>
+      <mesh position={[0, -1.31, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.12, 0.21, 0.09, 40]} />
+        <meshPhysicalMaterial
+          color={earth ? "#102d42" : "#1d102e"}
+          emissive={earth ? "#0c3d49" : "#30164c"}
+          emissiveIntensity={0.16}
+          roughness={0.32}
+          metalness={0.72}
+          clearcoat={0.54}
+        />
+      </mesh>
+      <mesh position={[0, -1.4, 0]} raycast={() => null}>
+        <cylinderGeometry args={[0.31, 0.42, 0.08, 48]} />
+        <meshPhysicalMaterial
+          color={earth ? "#0b2031" : "#160b24"}
+          emissive={earth ? "#092b37" : "#25103b"}
+          emissiveIntensity={0.14}
+          roughness={0.36}
+          metalness={0.68}
+          clearcoat={0.48}
+        />
+      </mesh>
     </group>
   );
 }
@@ -1796,11 +1831,9 @@ function GlobeScene({
     <>
       <RendererResizeSync />
       {visualStyle !== "modern" && (
-        <>
-          <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
-          <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
-        </>
+        <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
       )}
+      <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight
         args={[
@@ -2016,9 +2049,10 @@ export default function LiteraryGlobe({
   ].includes(autoRotateStatus)
     ? t("Пауза")
     : t("Авто");
-  const sceneHasAmbientAnimation =
-    renderedVisualStyle !== "modern" ||
-    (showNobelLaureates && visibleNobelCount > 0);
+  // Every visual style now includes the subtle star field. Reduced-motion still
+  // switches the canvas to demand rendering below, so this only keeps the
+  // normal-motion scene alive while it is visible.
+  const sceneHasAmbientAnimation = Boolean(renderedVisualStyle) && !selectedCountry;
   const frameMode = !globeActive
     ? "never"
     : !reducedMotion && (autoRotateActive || sceneHasAmbientAnimation)

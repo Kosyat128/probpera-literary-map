@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-13T22:33:29.240Z",
+  "generatedAt": "2026-08-20T11:02:36.117Z",
   "policyDocument": "docs/WRITER_BIOGRAPHY_SOURCES_POLICY_RU.md",
   "proseGeneration": "disabled",
   "progress": {
-    "total": 1690,
+    "total": 1684,
     "ready": 45,
-    "remaining": 1645,
+    "remaining": 1639,
     "researchDrafts": 20,
     "validResearchDrafts": 20,
     "awaitingIndependentReview": 0,
     "approvedForPromotion": 20,
-    "remainingWithoutResearchDraft": 1645,
+    "remainingWithoutResearchDraft": 1639,
     "workflowStates": {
-      "source-research": 1645,
+      "source-research": 1639,
       "rights-review": 0,
       "editorial-rewrite": 0,
       "fact-check": 0,
@@ -50815,7 +50815,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 171,
+        "textLength": 170,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -51448,7 +51448,7 @@
     {
       "key": "myanmar:thakin_kodaw_hmaing",
       "writerId": "thakin_kodaw_hmaing",
-      "name": "Тхикин Кода Хмаинг",
+      "name": "Такин Кодо Хмайн",
       "countryId": "myanmar",
       "workflow": {
         "state": "source-research",
@@ -51478,11 +51478,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
+        "textLength": 186,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -51499,7 +51499,7 @@
     {
       "key": "myanmar:min_thu_wun",
       "writerId": "min_thu_wun",
-      "name": "Мин Тху Вун",
+      "name": "Мин Тувун",
       "countryId": "myanmar",
       "workflow": {
         "state": "source-research",
@@ -51529,11 +51529,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
+        "textLength": 155,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -51631,8 +51631,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 79,
-        "sentenceCount": 1,
+        "textLength": 117,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -51652,7 +51652,7 @@
     {
       "key": "myanmar:theippan_maung_wa",
       "writerId": "theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
+      "name": "Тейппан Маун Ва",
       "countryId": "myanmar",
       "workflow": {
         "state": "source-research",
@@ -51682,58 +51682,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 116,
-        "sentenceCount": 2,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "myanmar:ludu_daw_amar",
-      "writerId": "ludu_daw_amar",
-      "name": "Людду Дав Амар",
-      "countryId": "myanmar",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 121,
+        "textLength": 177,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -51752,10 +51701,10 @@
       }
     },
     {
-      "key": "namibia:ndapewaoshali_shikongo",
-      "writerId": "ndapewaoshali_shikongo",
-      "name": "Ндандулениао Шиконго",
-      "countryId": "namibia",
+      "key": "myanmar:ludu_daw_amar",
+      "writerId": "ludu_daw_amar",
+      "name": "Люду До Амар",
+      "countryId": "myanmar",
       "workflow": {
         "state": "source-research",
         "priority": "P2",
@@ -51784,164 +51733,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 68,
-        "sentenceCount": 1,
+        "textLength": 160,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "namibia:gabi_stolz",
-      "writerId": "gabi_stolz",
-      "name": "Габи Штольц",
-      "countryId": "namibia",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 65,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "namibia:gustav_frolich",
-      "writerId": "gustav_frolich",
-      "name": "Густав Фрёлих",
-      "countryId": "namibia",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "nauru:michael_francis",
-      "writerId": "michael_francis",
-      "name": "Майкл Фрэнсис",
-      "countryId": "nauru",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 86,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -51988,11 +51784,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 206,
-        "sentenceCount": 3,
+        "textLength": 114,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52039,7 +51835,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 139,
+        "textLength": 120,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -52060,7 +51856,7 @@
     {
       "key": "nepal:bp_koirala",
       "writerId": "bp_koirala",
-      "name": "Б. П. Коирала",
+      "name": "Бишвешвар Прасад Коирала",
       "countryId": "nepal",
       "workflow": {
         "state": "source-research",
@@ -52090,8 +51886,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 141,
-        "sentenceCount": 2,
+        "textLength": 143,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -52141,11 +51937,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 102,
+        "textLength": 136,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52192,8 +51988,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 127,
-        "sentenceCount": 2,
+        "textLength": 177,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -52243,11 +52039,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 138,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52294,11 +52090,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
-        "sentenceCount": 1,
+        "textLength": 240,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52319,7 +52115,7 @@
       "countryId": "netherlands",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52345,11 +52141,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 68,
-        "sentenceCount": 1,
+        "textLength": 130,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52396,11 +52192,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 89,
-        "sentenceCount": 1,
+        "textLength": 158,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52447,11 +52243,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
+        "textLength": 184,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52498,11 +52294,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 144,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52523,7 +52319,7 @@
       "countryId": "netherlands",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52549,11 +52345,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 174,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52600,11 +52396,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 79,
-        "sentenceCount": 1,
+        "textLength": 163,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52651,11 +52447,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 133,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52702,11 +52498,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 51,
-        "sentenceCount": 1,
+        "textLength": 148,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52727,7 +52523,7 @@
       "countryId": "netherlands",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52753,11 +52549,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 124,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -52804,8 +52600,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 260,
-        "sentenceCount": 2,
+        "textLength": 181,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -52829,7 +52625,7 @@
       "countryId": "new_zealand",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52855,7 +52651,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 186,
+        "textLength": 211,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -52876,11 +52672,11 @@
     {
       "key": "new_zealand:james_k_baxter",
       "writerId": "james_k_baxter",
-      "name": "Джеймс К. Бакстер",
+      "name": "Джеймс Кир Бакстер",
       "countryId": "new_zealand",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -52906,7 +52702,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 146,
+        "textLength": 147,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -53008,7 +52804,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 144,
+        "textLength": 181,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -53059,11 +52855,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 116,
+        "textLength": 159,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53080,7 +52876,7 @@
     {
       "key": "new_zealand:c_k_stead",
       "writerId": "c_k_stead",
-      "name": "К. К. Стед",
+      "name": "Кристиан Карлсон Стед",
       "countryId": "new_zealand",
       "workflow": {
         "state": "source-research",
@@ -53110,8 +52906,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 136,
-        "sentenceCount": 2,
+        "textLength": 182,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -53161,8 +52957,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 192,
-        "sentenceCount": 3,
+        "textLength": 161,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -53212,7 +53008,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 121,
+        "textLength": 163,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -53263,8 +53059,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 174,
-        "sentenceCount": 3,
+        "textLength": 128,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -53314,11 +53110,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
+        "textLength": 179,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53339,7 +53135,7 @@
       "countryId": "new_zealand",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -53365,8 +53161,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 167,
-        "sentenceCount": 2,
+        "textLength": 154,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -53416,8 +53212,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 154,
-        "sentenceCount": 2,
+        "textLength": 166,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -53467,11 +53263,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
-        "sentenceCount": 2,
+        "textLength": 171,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53518,11 +53314,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 113,
+        "textLength": 156,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53569,8 +53365,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 136,
-        "sentenceCount": 2,
+        "textLength": 192,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -53620,11 +53416,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 87,
-        "sentenceCount": 1,
+        "textLength": 180,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53641,7 +53437,7 @@
     {
       "key": "new_zealand:damien_wilkins",
       "writerId": "damien_wilkins",
-      "name": "Дамиан Уилкинс",
+      "name": "Дэмиен Уилкинс",
       "countryId": "new_zealand",
       "workflow": {
         "state": "source-research",
@@ -53671,11 +53467,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 117,
-        "sentenceCount": 2,
+        "textLength": 161,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53722,7 +53518,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 130,
+        "textLength": 173,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -53773,62 +53569,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 168,
+        "textLength": 194,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "new_zealand:steven_baker",
-      "writerId": "steven_baker",
-      "name": "Стивен Бикер",
-      "countryId": "new_zealand",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 119,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -53875,7 +53620,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 165,
+        "textLength": 190,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -53926,8 +53671,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 219,
-        "sentenceCount": 3,
+        "textLength": 124,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -53977,8 +53722,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 209,
-        "sentenceCount": 3,
+        "textLength": 165,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -54002,7 +53747,7 @@
       "countryId": "nicaragua",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54028,8 +53773,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 204,
-        "sentenceCount": 3,
+        "textLength": 140,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -54079,11 +53824,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 106,
-        "sentenceCount": 1,
+        "textLength": 136,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54130,58 +53875,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 65,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "niger:ibrahim_adam",
-      "writerId": "ibrahim_adam",
-      "name": "Ибрахим Адам",
-      "countryId": "niger",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 26,
+        "textLength": 96,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -54232,11 +53926,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 174,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54283,11 +53977,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 150,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54334,11 +54028,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 55,
-        "sentenceCount": 1,
+        "textLength": 140,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54385,11 +54079,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 165,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54410,7 +54104,7 @@
       "countryId": "nigeria",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54436,11 +54130,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 46,
-        "sentenceCount": 1,
+        "textLength": 131,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54487,11 +54181,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 170,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54512,7 +54206,7 @@
       "countryId": "nigeria",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54538,11 +54232,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 71,
-        "sentenceCount": 1,
+        "textLength": 152,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54589,8 +54283,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 118,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": true,
@@ -54614,7 +54308,7 @@
       "countryId": "nigeria",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54640,11 +54334,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 60,
-        "sentenceCount": 1,
+        "textLength": 179,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54691,11 +54385,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 53,
-        "sentenceCount": 1,
+        "textLength": 159,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54716,7 +54410,7 @@
       "countryId": "nigeria",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54742,11 +54436,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 102,
-        "sentenceCount": 1,
+        "textLength": 178,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54793,11 +54487,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 118,
-        "sentenceCount": 1,
+        "textLength": 156,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54844,7 +54538,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
+        "textLength": 130,
         "sentenceCount": 1,
         "flags": {
           "missing": false,
@@ -54895,11 +54589,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 80,
-        "sentenceCount": 1,
+        "textLength": 208,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54946,11 +54640,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 196,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -54997,11 +54691,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 52,
-        "sentenceCount": 1,
+        "textLength": 147,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55059,8 +54753,8 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 284,
-        "sentenceCount": 3,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -55116,11 +54810,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 217,
+        "textLength": 108,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": false,
+          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55167,11 +54861,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 79,
-        "sentenceCount": 1,
+        "textLength": 160,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55218,11 +54912,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 105,
-        "sentenceCount": 1,
+        "textLength": 180,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55294,7 +54988,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55320,11 +55014,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 149,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55345,7 +55039,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55371,11 +55065,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 195,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55575,11 +55269,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 69,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55651,7 +55345,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55683,11 +55377,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 161,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55759,7 +55453,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55785,11 +55479,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 60,
-        "sentenceCount": 1,
+        "textLength": 132,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,

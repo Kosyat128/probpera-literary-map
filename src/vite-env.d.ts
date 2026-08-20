@@ -13,6 +13,8 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
+declare const __YANDEX_METRIKA_COUNTER_ID__: string;
+
 declare module "*.svg" {
   const src: string;
   export default src;

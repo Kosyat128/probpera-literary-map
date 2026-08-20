@@ -13,7 +13,7 @@ export const MANAGED_CACHE_RULE_DESCRIPTION =
   "PROBPERA immutable Vite assets cache policy (repository managed)";
 
 export const PUBLIC_CONTENT_SECURITY_POLICY =
-  "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors https://admin.probpera.ru; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests";
+  "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors https://admin.probpera.ru; form-action 'self'; script-src 'self' https://mc.yandex.ru https://yastatic.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://mc.yandex.ru https://mc.yandex.az https://mc.yandex.by https://mc.yandex.co.il https://mc.yandex.com https://mc.yandex.com.am https://mc.yandex.com.ge https://mc.yandex.com.tr https://mc.yandex.ee https://mc.yandex.fr https://mc.yandex.kg https://mc.yandex.kz https://mc.yandex.lt https://mc.yandex.lv https://mc.yandex.md https://mc.yandex.tj https://mc.yandex.tm https://mc.yandex.uz; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests";
 
 export const PUBLIC_SECURITY_HEADERS = Object.freeze({
   "X-Content-Type-Options": Object.freeze({
@@ -165,7 +165,7 @@ export function desiredImmutableAssetCacheRule(zoneName = PUBLIC_ZONE_NAME) {
   }
   return {
     ref: MANAGED_CACHE_RULE_REF,
-    expression: `(http.host eq "${zoneName}" and starts_with(http.request.uri.path, "/assets/"))`,
+    expression: `(http.host eq "${zoneName}" and starts_with(http.request.uri.path, "/assets/") and not starts_with(http.request.uri.path, "/assets/country-flags/") and not starts_with(http.request.uri.path, "/assets/writer-portraits/"))`,
     description: MANAGED_CACHE_RULE_DESCRIPTION,
     action: "set_cache_settings",
     action_parameters: {

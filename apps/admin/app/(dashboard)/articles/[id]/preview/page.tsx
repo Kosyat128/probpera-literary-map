@@ -12,11 +12,21 @@ export default async function ArticlePreviewPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ locale?: string }>;
+  searchParams: Promise<{ locale?: string; viewport?: string }>;
 }) {
   const { id } = await params;
   const query = await searchParams;
   const locale = query.locale === "en" ? "en" : "ru";
+  const viewport = ["desktop", "tablet", "mobile"].includes(
+    query.viewport || ""
+  )
+    ? (query.viewport as "desktop" | "tablet" | "mobile")
+    : "desktop";
+  const previewHref = (
+    nextLocale: "ru" | "en" = locale,
+    nextViewport: "desktop" | "tablet" | "mobile" = viewport
+  ) =>
+    `/articles/${id}/preview?locale=${nextLocale}&viewport=${nextViewport}`;
   const supabase = await createServerSupabaseClient();
   if (!supabase) notFound();
   const [{ data: article }, { data: englishTranslation }] = await Promise.all([
@@ -62,16 +72,34 @@ export default async function ArticlePreviewPage({
       <nav className="article-language-tabs" aria-label="Язык предпросмотра">
         <Link
           className={locale === "ru" ? "is-active" : undefined}
-          href={`/articles/${id}/preview?locale=ru`}
+          href={previewHref("ru")}
         >
           RU · оригинал
         </Link>
         <Link
           className={locale === "en" ? "is-active" : undefined}
-          href={`/articles/${id}/preview?locale=en`}
+          href={previewHref("en")}
         >
           EN · перевод
         </Link>
+      </nav>
+      <nav className="preview-device-tabs" aria-label="Ширина предпросмотра">
+        {(
+          [
+            ["desktop", "Компьютер"],
+            ["tablet", "Планшет"],
+            ["mobile", "Телефон"],
+          ] as const
+        ).map(([id, label]) => (
+          <Link
+            key={id}
+            className={viewport === id ? "is-active" : undefined}
+            aria-current={viewport === id ? "page" : undefined}
+            href={previewHref(locale, id)}
+          >
+            {label}
+          </Link>
+        ))}
       </nav>
       {locale === "en" && !englishTranslation && (
         <p className="form-message" role="status">
@@ -79,7 +107,7 @@ export default async function ArticlePreviewPage({
           перевода.
         </p>
       )}
-      {localizedArticle && <article className="admin-article-preview">
+      {localizedArticle && <article className={`admin-article-preview is-${viewport}`}>
         <header>
           <span>{locale === "en" ? "Article" : category?.name || "Материалы"}</span>
           <h1>{localizedArticle.title}</h1>
@@ -89,6 +117,9 @@ export default async function ArticlePreviewPage({
             {localizedUpdatedAt} · {localizedArticle.status}
           </small>
         </header>
+        {localizedArticle.excerpt && (
+          <p className="preview-lead">{localizedArticle.excerpt}</p>
+        )}
         {article.cover_external_url && (
           <figure>
             <img
@@ -99,9 +130,6 @@ export default async function ArticlePreviewPage({
               <figcaption>{localizedArticle.cover_alt}</figcaption>
             )}
           </figure>
-        )}
-        {localizedArticle.excerpt && (
-          <p className="preview-lead">{localizedArticle.excerpt}</p>
         )}
         <div
           className="preview-prose"

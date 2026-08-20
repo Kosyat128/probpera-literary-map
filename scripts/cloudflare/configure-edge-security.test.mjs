@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import {
   MANAGED_RULE_REF,
   PUBLIC_CONTENT_SECURITY_POLICY,
@@ -166,7 +166,7 @@ describe("Cloudflare public edge security configurator", () => {
 
     const cacheRule = desiredImmutableAssetCacheRule();
     expect(cacheRule.expression).toBe(
-      '(http.host eq "probpera.ru" and starts_with(http.request.uri.path, "/assets/"))'
+      '(http.host eq "probpera.ru" and starts_with(http.request.uri.path, "/assets/") and not starts_with(http.request.uri.path, "/assets/country-flags/") and not starts_with(http.request.uri.path, "/assets/writer-portraits/"))'
     );
     expect(cacheRule.expression).not.toContain("/textures/");
     expect(cacheRule.expression).not.toContain("/brand/");
@@ -175,7 +175,20 @@ describe("Cloudflare public edge security configurator", () => {
       browser_ttl: { mode: "override_origin", default: 31_536_000 },
       edge_ttl: { mode: "override_origin", default: 31_536_000 },
     });
-    expect(existsSync("public/assets")).toBe(false);
+    const mutablePublicAssetDirectories = readdirSync("public/assets", {
+      withFileTypes: true,
+    })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
+    expect(mutablePublicAssetDirectories).toEqual([
+      "country-flags",
+      "writer-portraits",
+    ]);
+    for (const directory of mutablePublicAssetDirectories) {
+      expect(cacheRule.expression).toContain(
+        `not starts_with(http.request.uri.path, "/assets/${directory}/")`
+      );
+    }
 
     const publicBuilder = readFileSync("scripts/build-article-pages.mjs", "utf8");
     for (const [name, setting] of Object.entries(rule.action_parameters.headers)) {

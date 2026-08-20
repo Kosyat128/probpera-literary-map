@@ -21,6 +21,7 @@ const reviewedMigrations = [
   ["20260813_tags_updated_at.sql", "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"],
   ["20260813_unified_revision_history.sql", "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"],
   ["20260814_publication_outbox_and_schema_health.sql", "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"],
+  ["20260820_homepage_book_month_editorial_choice.sql", "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"],
 ];
 
 function fail(message) {

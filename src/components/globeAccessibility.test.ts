@@ -41,4 +41,24 @@ describe("literary globe accessible interaction wiring", () => {
     expect(globeSource).toContain("data-globe-frame-mode={frameMode}");
     expect(globeSource).toMatch(/\?\s*"always"\s*:\s*"demand"/u);
   });
+
+  it("keeps a real star field behind every public style and grounds the contemporary globe", () => {
+    const sceneSource = globeSource.slice(
+      globeSource.indexOf("function GlobeScene"),
+      globeSource.indexOf("export default function LiteraryGlobe")
+    );
+    const skyConditionStart = sceneSource.indexOf('visualStyle !== "modern"');
+    const skyConditionEnd = sceneSource.indexOf("\n      )}", skyConditionStart);
+    const starFieldStart = sceneSource.indexOf("<MuseumStarfield");
+
+    expect(skyConditionStart).toBeGreaterThan(0);
+    expect(skyConditionEnd).toBeGreaterThan(0);
+    expect(starFieldStart).toBeGreaterThan(skyConditionEnd);
+    expect(sceneSource).toContain(
+      '<MuseumStarfield economical={economical} reducedMotion={reducedMotion} />'
+    );
+    expect(globeSource).toContain(
+      '<cylinderGeometry args={[0.31, 0.42, 0.08, 48]} />'
+    );
+  });
 });

@@ -5,14 +5,15 @@ import { describe, expect, it } from "vitest";
 const root = path.resolve(process.cwd());
 const proxyPath = path.join(root, "apps/admin/proxy.ts");
 const middlewarePath = path.join(root, "apps/admin/middleware.ts");
-const source = readFileSync(proxyPath, "utf8");
+const source = readFileSync(middlewarePath, "utf8");
 
-describe("Next.js 16 admin proxy convention", () => {
-  it("uses proxy.ts and the named proxy export", () => {
-    expect(existsSync(proxyPath)).toBe(true);
-    expect(existsSync(middlewarePath)).toBe(false);
-    expect(source).toContain("export async function proxy(request: NextRequest)");
-    expect(source).not.toContain("export async function middleware");
+describe("Cloudflare-compatible Next.js 16 admin middleware", () => {
+  it("keeps the deprecated middleware convention intentionally on the Edge runtime", () => {
+    expect(existsSync(middlewarePath)).toBe(true);
+    expect(existsSync(proxyPath)).toBe(false);
+    expect(source).toContain('export const runtime = "experimental-edge"');
+    expect(source).toContain("export async function middleware(request: NextRequest)");
+    expect(source).not.toContain("export async function proxy");
   });
 
   it("preserves routing normalization, authentication refresh, and matcher coverage", () => {

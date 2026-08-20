@@ -36,6 +36,16 @@ export type GlobeControlAction =
       type: "select";
     };
 
+export function orbitDollyMethodForZoomDirection(
+  direction: "in" | "out"
+): "dollyIn" | "dollyOut" {
+  // OrbitControls names these methods after the physical camera dolly. For a
+  // perspective camera `dollyOut` reduces the radius and therefore zooms the
+  // image in, while `dollyIn` increases it. Keeping that counter-intuitive
+  // mapping here prevents the visible +/− controls from being reversed again.
+  return direction === "in" ? "dollyOut" : "dollyIn";
+}
+
 function pointerTolerance(pointerType: string) {
   if (pointerType === "touch") return 14;
   if (pointerType === "pen") return 10;

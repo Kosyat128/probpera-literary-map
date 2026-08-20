@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   publish:
-    name: Publish pending articles to social channels
+    name: Verify pending articles in Dzen
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -27,23 +27,18 @@ jobs:
         with:
           node-version: 24
 
-      - name: Publish pending articles to VK and Dzen feed
+      - name: Install social publisher dependencies
+        run: npm ci
+
+      - name: Verify pending articles in the Dzen feed
         id: social_publish
         run: npm run content:social:publish
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           PUBLIC_SITE_URL: https://probpera.ru
-          SOCIAL_REQUIRED_PLATFORMS: vk,dzen
+          SOCIAL_REQUIRED_PLATFORMS: dzen
           SOCIAL_BOOTSTRAP_LATEST: "true"
-          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
-          VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
-          VK_GROUP_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
-          VK_USER_ACCESS_TOKEN: ${{ secrets.VK_USER_ACCESS_TOKEN }}
-          OK_GROUP_ID: ${{ secrets.OK_GROUP_ID }}
-          OK_APPLICATION_KEY: ${{ secrets.OK_APPLICATION_KEY }}
-          OK_ACCESS_TOKEN: ${{ secrets.OK_ACCESS_TOKEN }}
-          OK_SESSION_SECRET_KEY: ${{ secrets.OK_SESSION_SECRET_KEY }}
           DZEN_RSS_URL: https://probpera.ru/rss.xml
 
       - name: Summarize social publication
@@ -61,5 +56,5 @@ jobs:
               echo "❌ Остались необработанные обязательные каналы. Следующая автоматическая попытка — не позднее чем через 10 минут."
             fi
             echo
-            echo "Обязательные каналы: ВКонтакте и RSS Дзена. Одноклассники станут обязательными после настройки секретов."
+            echo "Обязательный канал: RSS Дзена. Автопубликация во ВКонтакте отключена редакционной политикой."
           } >> "$GITHUB_STEP_SUMMARY"

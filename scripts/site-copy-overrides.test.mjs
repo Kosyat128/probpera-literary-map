@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   extractSiteCopyFromHomepageBlocks,
+  normalizeHomepageEditorialCopy,
   SITE_COPY_SYSTEM_KEY,
 } from "./site-copy-overrides.mjs";
 
@@ -57,5 +58,32 @@ describe("site-copy CMS export", () => {
     expect(exporter).toContain("extractSiteCopyFromHomepageBlocks(rawHomepageBlocks)");
     expect(exporter).not.toMatch(/method:\s*["'](?:POST|PATCH|PUT|DELETE)["']/u);
     expect(exporter).not.toContain("siteCopyCatalog");
+  });
+
+  it("normalizes the legacy book-of-the-month attribution without touching custom copy", () => {
+    expect(
+      normalizeHomepageEditorialCopy({
+        id: "book-month",
+        settings: {
+          coreSectionKey: "book-month",
+          eyebrow: "Выбор энциклопедии",
+          description: "Текст",
+        },
+      })
+    ).toEqual({
+      id: "book-month",
+      settings: {
+        coreSectionKey: "book-month",
+        eyebrow: "Выбор редакции",
+        description: "Текст",
+      },
+    });
+    expect(
+      normalizeHomepageEditorialCopy({
+        settings: { coreSectionKey: "book-month", eyebrow: "Выбор читателей" },
+      })
+    ).toEqual({
+      settings: { coreSectionKey: "book-month", eyebrow: "Выбор читателей" },
+    });
   });
 });

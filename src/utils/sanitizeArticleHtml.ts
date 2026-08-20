@@ -1,5 +1,17 @@
 const blockedElements =
   "script,style,iframe,object,embed,form,input,button,textarea,select,link,meta";
+const allowedTextTones = new Set([
+  "garnet",
+  "forest",
+  "ocean",
+  "indigo",
+  "amber",
+  "slate",
+]);
+const allowedTextToneClasses = new Set([
+  "article-text-tone",
+  ...[...allowedTextTones].map((tone) => `is-tone-${tone}`),
+]);
 const allowedAttributes = new Set([
   "alt",
   "class",
@@ -14,6 +26,7 @@ const allowedAttributes = new Set([
   "data-reveal",
   "data-image-layout",
   "data-caption",
+  "data-text-tone",
 ]);
 
 function isSafeUrl(value: string) {
@@ -39,29 +52,50 @@ export function sanitizeArticleHtml(source: string) {
     });
 
     if (element.hasAttribute("class")) {
-      const safeClasses = [...element.classList].filter((className) =>
-        [
-          "article-media-split",
-          "article-gallery",
-          "article-design-block",
-          "article-leading-label",
-          "is-fact",
-          "is-accent",
-          "is-columns",
-          "is-timeline",
-          "is-metrics",
-          "is-ornament",
-          "is-gallery",
-          "is-slider",
-          "article-inline-image",
-          "is-wide",
-          "is-normal",
-          "is-left",
-          "is-right",
-        ].includes(className)
+      const safeClasses = [...element.classList].filter(
+        (className) =>
+          allowedTextToneClasses.has(className) ||
+          [
+            "article-media-split",
+            "article-gallery",
+            "article-design-block",
+            "article-leading-label",
+            "is-fact",
+            "is-accent",
+            "is-columns",
+            "is-timeline",
+            "is-metrics",
+            "is-ornament",
+            "is-gallery",
+            "is-slider",
+            "article-inline-image",
+            "is-wide",
+            "is-normal",
+            "is-left",
+            "is-right",
+          ].includes(className)
       );
       if (safeClasses.length) element.className = safeClasses.join(" ");
       else element.removeAttribute("class");
+    }
+
+    const textTone = element.dataset.textTone || "";
+    const expectedToneClass = `is-tone-${textTone}`;
+    const hasSafeTextTone =
+      element.tagName === "SPAN" &&
+      allowedTextTones.has(textTone) &&
+      element.classList.contains("article-text-tone") &&
+      element.classList.contains(expectedToneClass);
+    if (hasSafeTextTone) {
+      allowedTextTones.forEach((tone) => {
+        if (tone !== textTone) element.classList.remove(`is-tone-${tone}`);
+      });
+    } else {
+      element.removeAttribute("data-text-tone");
+      allowedTextToneClasses.forEach((className) =>
+        element.classList.remove(className)
+      );
+      if (!element.classList.length) element.removeAttribute("class");
     }
 
     for (const attributeName of ["href", "src"]) {

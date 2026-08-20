@@ -1100,6 +1100,11 @@ export default function App() {
   const structuredHeroDash = language === "ru" ? "– " : "";
   const coreAtlas = getCoreHomepageSection("atlas");
   const coreBookMonth = getCoreHomepageSection("book-month");
+  const cmsBookMonthEyebrow = coreBookMonth?.eyebrow?.trim();
+  const bookMonthEyebrow =
+    cmsBookMonthEyebrow === "Выбор энциклопедии"
+      ? "Выбор редакции"
+      : cmsBookMonthEyebrow || "Выбор редакции";
   const coreEditorialStandard = getCoreHomepageSection("editorial-standard");
   const coreFeaturedJournal = getCoreHomepageSection("featured-journal");
   const coreCommunity = getCoreHomepageSection("community");
@@ -1898,13 +1903,11 @@ export default function App() {
                 {...cmsCoreFieldMarker(
                   "book-month",
                   "eyebrow",
-                  coreBookMonth?.eyebrow || "Выбор энциклопедии",
+                  bookMonthEyebrow,
                   { label: "Надзаголовок книги месяца" }
                 )}
               >
-                {language === "ru" && coreBookMonth?.eyebrow
-                  ? coreBookMonth.eyebrow
-                  : t("Выбор энциклопедии")}
+                {language === "ru" ? bookMonthEyebrow : t("Выбор редакции")}
               </span>
               <h3
                 {...cmsCoreFieldMarker(
@@ -1948,32 +1951,49 @@ export default function App() {
               )}
               {bookOfMonth && (
                 <div className="book-actions">
-                  <button type="button" onClick={() => openBook(bookOfMonth)}>
-                    <span
-                      {...cmsCoreFieldMarker(
-                        "book-month",
-                        "buttonText",
-                        coreBookMonth?.buttonText || "О книге",
-                        { label: "Кнопка книги месяца" }
-                      )}
+                  <div className="book-actions-primary">
+                    <button
+                      className="book-action-primary"
+                      type="button"
+                      onClick={() => openBook(bookOfMonth)}
                     >
-                      {language === "ru" && coreBookMonth?.buttonText
-                        ? coreBookMonth.buttonText
-                        : t("О книге")}
-                    </span>{" "}
-                    <span aria-hidden="true">→</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      selectCountry(bookOfMonth.country, true, bookOfMonth.writer)
-                    }
-                  >
-                    {t("Открыть автора и страну")} <span>→</span>
-                  </button>
+                      <span
+                        {...cmsCoreFieldMarker(
+                          "book-month",
+                          "buttonText",
+                          coreBookMonth?.buttonText || "О книге",
+                          { label: "Кнопка книги месяца" }
+                        )}
+                      >
+                        {language === "ru" && coreBookMonth?.buttonText
+                          ? coreBookMonth.buttonText
+                          : t("О книге")}
+                      </span>{" "}
+                      <span aria-hidden="true">→</span>
+                    </button>
+                    <button
+                      className="book-action-secondary"
+                      type="button"
+                      onClick={() =>
+                        selectCountry(
+                          bookOfMonth.country,
+                          true,
+                          bookOfMonth.writer
+                        )
+                      }
+                    >
+                      {t("Открыть автора и страну")} <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
                   {bookOfMonth.sourceUrl && (
-                    <a href={bookOfMonth.sourceUrl} target="_blank" rel="noreferrer">
-                      {t("Источник сведений")}
+                    <a
+                      className="book-source-link"
+                      href={bookOfMonth.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>{t("Источник сведений")}</span>
+                      <span aria-hidden="true">↗</span>
                     </a>
                   )}
                 </div>

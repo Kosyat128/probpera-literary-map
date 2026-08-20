@@ -1,4 +1,17 @@
 import { defineConfig, devices } from "@playwright/test";
+import { existsSync, readFileSync } from "node:fs";
+
+function builtPreviewBasePath() {
+  const indexPath = new URL("./dist/index.html", import.meta.url);
+  if (!existsSync(indexPath)) return "/probpera-literary-map/";
+  const html = readFileSync(indexPath, "utf8");
+  const assetPath = html.match(/(?:src|href)=["']([^"']*\/assets\/[^"']+)["']/u)?.[1];
+  if (!assetPath?.startsWith("/")) return "/probpera-literary-map/";
+  const marker = assetPath.indexOf("/assets/");
+  return marker === 0 ? "/" : `${assetPath.slice(0, marker)}/`;
+}
+
+const previewBasePath = builtPreviewBasePath();
 
 export default defineConfig({
   testDir: "tests/e2e",
@@ -23,5 +36,9 @@ export default defineConfig({
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
+    env: {
+      ...process.env,
+      PUBLIC_SITE_BASE_PATH: previewBasePath,
+    },
   },
 });

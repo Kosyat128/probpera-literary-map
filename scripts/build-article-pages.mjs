@@ -10,6 +10,10 @@ import {
   normalizeArticlePublicMetadata,
   normalizedPath,
 } from "./lib/article-route-policy.mjs";
+import {
+  dzenCoverForArticle,
+  positionDzenLeadIllustration,
+} from "./lib/article-publication-images.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -50,6 +54,89 @@ function xmlEscape(value = "") {
 
 function cdata(value = "") {
   return `<![CDATA[${String(value).replaceAll("]]>", "]]]]><![CDATA[>")}]]>`;
+}
+
+function conciseMetaDescription(value, fallback, maxLength = 200) {
+  const normalize = (text) =>
+    String(text || "")
+      .replace(/<[^>]*>/gu, " ")
+      .replace(/\s+/gu, " ")
+      .trim();
+  const normalizedValue = normalize(value);
+  const normalizedFallback = normalize(fallback);
+  const description =
+    normalizedValue.length >= 40
+      ? normalizedValue
+      : normalize(`${normalizedValue} ${normalizedFallback}`) || normalizedFallback;
+
+  if (description.length <= maxLength) return description;
+
+  const candidate = description.slice(0, maxLength - 1).trimEnd();
+  const sentenceEnd = Math.max(
+    candidate.lastIndexOf(". "),
+    candidate.lastIndexOf("! "),
+    candidate.lastIndexOf("? ")
+  );
+  if (sentenceEnd >= 90) return candidate.slice(0, sentenceEnd + 1);
+
+  const wordEnd = candidate.lastIndexOf(" ");
+  const clipped = (wordEnd >= 90 ? candidate.slice(0, wordEnd) : candidate)
+    .replace(/[,:;–—-]+$/u, "")
+    .trimEnd();
+  return `${clipped}…`;
+}
+
+const russianMonthNumbers = new Map([
+  ["января", 1], ["январь", 1],
+  ["февраля", 2], ["февраль", 2],
+  ["марта", 3], ["март", 3],
+  ["апреля", 4], ["апрель", 4],
+  ["мая", 5], ["май", 5],
+  ["июня", 6], ["июнь", 6],
+  ["июля", 7], ["июль", 7],
+  ["августа", 8], ["август", 8],
+  ["сентября", 9], ["сентябрь", 9],
+  ["октября", 10], ["октябрь", 10],
+  ["ноября", 11], ["ноябрь", 11],
+  ["декабря", 12], ["декабрь", 12],
+]);
+
+function dateOnly(value) {
+  if (!value) return "";
+  const parsed = new Date(value);
+  return Number.isFinite(parsed.getTime()) ? parsed.toISOString().slice(0, 10) : "";
+}
+
+function dateFromPublicationLabel(value = "") {
+  const normalized = String(value).toLocaleLowerCase("ru").replaceAll("ё", "е");
+  const russian = normalized.match(
+    /(?:опубликовано\s*:\s*)?(\d{1,2})\s+([а-я]+)\s+(\d{4})/u
+  );
+  if (russian) {
+    const month = russianMonthNumbers.get(russian[2]);
+    const day = Number.parseInt(russian[1], 10);
+    const year = Number.parseInt(russian[3], 10);
+    if (month && day >= 1 && day <= 31 && year >= 1990 && year <= 2200) {
+      return `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    }
+  }
+  const english = normalized.match(
+    /(?:published\s*:\s*)?(\d{1,2})\s+([a-z]+)\s+(\d{4})/u
+  );
+  return english ? dateOnly(`${english[1]} ${english[2]} ${english[3]} UTC`) : "";
+}
+
+function articlePublishedDate(article) {
+  return dateOnly(article.publishedAt) || dateFromPublicationLabel(article.publishedLabel);
+}
+
+function articleModifiedDate(article) {
+  return dateOnly(article.updatedAt) || articlePublishedDate(article);
+}
+
+function sitemapEntryXml({ url, lastmod }) {
+  const modified = lastmod ? `<lastmod>${lastmod}</lastmod>` : "";
+  return `  <url><loc>${xmlEscape(url)}</loc>${modified}</url>`;
 }
 
 function pagePublicPath(page) {
@@ -171,22 +258,60 @@ const homeDocument = loadStaticDocument(baseHtml);
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
 homeDocument('meta[property="og:image"]').attr("content", `${siteUrl}/og-v3.webp`);
+homeDocument('meta[name="twitter:image"]').attr("content", `${siteUrl}/og-v3.webp`);
 homeDocument("head").append(`<meta property="og:url" content="${siteUrl}/">`);
 homeDocument("head").append(
   `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Проба Пера",
-    alternateName: "Проба Пера — литературный журнал",
-    url: `${siteUrl}/`,
-    inLanguage: "ru-RU",
-    publisher: {
-      "@type": "Organization",
-      name: "Проба Пера",
-      logo: `${siteUrl}/brand/probpera-logo.png`,
-    },
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        name: "Проба Пера",
+        url: `${siteUrl}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/brand/probpera-logo.png`,
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        name: "Проба Пера",
+        alternateName: "Проба Пера — литературный журнал",
+        url: `${siteUrl}/`,
+        inLanguage: "ru-RU",
+        publisher: { "@id": `${siteUrl}/#organization` },
+      },
+    ],
   }).replaceAll("<", "\\u003c")}</script>`
 );
+const latestIndexableArticles = catalog
+  .filter((article) => article.allowIndexing !== false)
+  .slice(0, 12);
+homeDocument("#root").html(`
+  <main class="static-article-fallback static-home-fallback" data-static-seo>
+    <article>
+      <span>Литературный журнал и энциклопедия</span>
+      <h1>Проба Пера — статьи о книгах, писателях и мировой литературе</h1>
+      <p>Авторский литературный журнал, книжный архив, биографии писателей и интерактивная энциклопедия стран собраны в одном редакционном пространстве.</p>
+      <nav aria-label="Основные разделы">
+        <a href="${siteBasePath || ""}/#journal">Читать журнал</a>
+        <a href="${siteBasePath || ""}/#atlas">Открыть литературную карту мира</a>
+        <a href="${siteBasePath || ""}/#books">Перейти к книжному архиву</a>
+      </nav>
+      <section aria-labelledby="latest-publications-static">
+        <h2 id="latest-publications-static">Новые публикации</h2>
+        <ul>
+          ${latestIndexableArticles.map((article) => {
+            const href = article.canonicalUrl || `${siteUrl}${articlePublicPath(article)}/`;
+            return `<li><a href="${xmlEscape(href)}">${xmlEscape(article.title)}</a></li>`;
+          }).join("\n")}
+        </ul>
+      </section>
+    </article>
+  </main>
+`);
 await fs.writeFile(path.join(distDirectory, "index.html"), homeDocument.html(), "utf8");
 
 const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
@@ -214,21 +339,34 @@ for (const rawArticle of catalog) {
   const publicPath = articlePublicPath(article);
   const canonicalUrl = article.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = loadStaticDocument(baseHtml);
-  const description =
-    article.seoDescription?.trim() ||
-    article.description?.trim() ||
-    `Авторский материал литературного журнала «Проба Пера»: ${article.title}`;
+  const description = conciseMetaDescription(
+    article.seoDescription || article.description,
+    `Авторский материал литературного журнала «Проба Пера»: ${article.title}`
+  );
   const imageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
   const socialTitle = article.ogTitle || article.title;
   const socialDescription = article.ogDescription || description;
   const socialImageUrl = article.ogImageUrl || imageUrl;
+  const publishedDate = articlePublishedDate(article);
+  const modifiedDate = articleModifiedDate(article);
+  const safeRssBody = safeArticleHtml(document.contentHtml);
+  const dzenCover = dzenCoverForArticle({
+    title: article.title,
+    // Select before the RSS sanitizer removes editorial classes/ARIA that
+    // identify decorative or hidden media. The chosen URL is still required
+    // to be a safe HTTPS image by dzenCoverForArticle.
+    content_html: document.contentHtml,
+    cover_external_url: article.dzenImageUrl || socialImageUrl,
+    cover_alt: article.dzenImageAlt || article.imageAlt,
+  });
 
   rssEntries.push({
     ...article,
     articleUrl: canonicalUrl,
     description,
-    imageUrl: socialImageUrl,
-    contentHtml: safeArticleHtml(document.contentHtml),
+    imageUrl: dzenCover?.url,
+    imageAlt: dzenCover?.alt || article.imageAlt,
+    contentHtml: positionDzenLeadIllustration(safeRssBody, dzenCover),
   });
 
   $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
@@ -242,11 +380,35 @@ for (const rawArticle of catalog) {
   $('meta[property="og:title"]').attr("content", socialTitle);
   $('meta[property="og:description"]').attr("content", socialDescription);
   $('meta[property="og:image"]').attr("content", socialImageUrl);
+  $('meta[property="og:image:alt"]').attr(
+    "content",
+    article.imageAlt || article.title
+  );
+  $('meta[name="twitter:title"]').attr("content", socialTitle);
+  $('meta[name="twitter:description"]').attr("content", socialDescription);
+  $('meta[name="twitter:image"]').attr("content", socialImageUrl);
+  $('meta[name="twitter:image:alt"]').attr(
+    "content",
+    article.imageAlt || article.title
+  );
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   if (article.allowIndexing === false) {
     $('meta[name="robots"]').attr("content", "noindex,follow");
   }
   $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
+  if (publishedDate) {
+    $("head").append(
+      `<meta property="article:published_time" content="${publishedDate}">`
+    );
+  }
+  if (modifiedDate) {
+    $("head").append(
+      `<meta property="article:modified_time" content="${modifiedDate}">`
+    );
+  }
+  $("head").append(
+    `<meta property="article:section" content="${xmlEscape(article.sectionLabel)}">`
+  );
   $("head").append(
     `<script type="application/ld+json">${JSON.stringify([
       {
@@ -257,7 +419,8 @@ for (const rawArticle of catalog) {
         image: [imageUrl],
         mainEntityOfPage: canonicalUrl,
         inLanguage: "ru-RU",
-        datePublished: article.publishedAt || undefined,
+        datePublished: article.publishedAt || publishedDate || undefined,
+        dateModified: article.updatedAt || modifiedDate || undefined,
         wordCount: article.wordCount,
         articleSection: article.sectionLabel,
         isPartOf: {
@@ -304,6 +467,55 @@ for (const rawArticle of catalog) {
     </main>
   `);
 
+  const englishTranslation = article.translations?.en;
+  const englishDocument = document.translations?.en;
+  const englishIsReleased =
+    englishTranslation &&
+    englishDocument &&
+    ["approved", "published"].includes(englishTranslation.translationStatus) &&
+    String(englishTranslation.title || "").trim() &&
+    String(englishDocument.contentHtml || "").trim() &&
+    !/[\u0400-\u052f]/u.test(
+      [
+        englishTranslation.title,
+        englishTranslation.description,
+        englishDocument.contentHtml,
+        englishDocument.plainText,
+      ].join(" ")
+    );
+
+  const englishRouteArticle = englishIsReleased
+    ? {
+        ...article,
+        title: englishTranslation.title,
+        slug: englishTranslation.slug,
+      }
+    : null;
+  const englishSlug = englishRouteArticle
+    ? articleRouteSlug(englishRouteArticle)
+    : "";
+  const englishPublicPath = englishRouteArticle
+    ? articlePublicPath(englishRouteArticle)
+    : "";
+  const englishRouteUrl = englishPublicPath
+    ? `${siteUrl}${englishPublicPath}/`
+    : "";
+  const englishCanonicalUrl = englishRouteUrl
+    ? englishTranslation.canonicalUrl || englishRouteUrl
+    : "";
+
+  if (englishRouteUrl && englishSlug !== slug) {
+    $("head").append(
+      `<link rel="alternate" hreflang="ru" href="${canonicalUrl}">`
+    );
+    $("head").append(
+      `<link rel="alternate" hreflang="en" href="${englishCanonicalUrl}">`
+    );
+    $("head").append(
+      `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}">`
+    );
+  }
+
   const targetDirectory = path.join(
     distDirectory,
     "stati",
@@ -334,40 +546,14 @@ for (const rawArticle of catalog) {
     }
   }
 
-  const englishTranslation = article.translations?.en;
-  const englishDocument = document.translations?.en;
-  const englishIsReleased =
-    englishTranslation &&
-    englishDocument &&
-    ["approved", "published"].includes(englishTranslation.translationStatus) &&
-    String(englishTranslation.title || "").trim() &&
-    String(englishDocument.contentHtml || "").trim() &&
-    !/[\u0400-\u052f]/u.test(
-      [
-        englishTranslation.title,
-        englishTranslation.description,
-        englishDocument.contentHtml,
-        englishDocument.plainText,
-      ].join(" ")
-    );
-
   if (englishIsReleased) {
-    const englishRouteArticle = {
-      ...article,
-      title: englishTranslation.title,
-      slug: englishTranslation.slug,
-    };
-    const englishSlug = articleRouteSlug(englishRouteArticle);
-
     if (englishSlug !== slug) {
-      const englishPublicPath = articlePublicPath(englishRouteArticle);
-      const englishRouteUrl = `${siteUrl}${englishPublicPath}/`;
-      const englishCanonicalUrl =
-        englishTranslation.canonicalUrl || englishRouteUrl;
-      const englishDescription =
-        englishTranslation.seoDescription?.trim() ||
-        englishTranslation.description?.trim() ||
-        englishDocument.plainText.slice(0, 320);
+      const englishDescription = conciseMetaDescription(
+        englishTranslation.seoDescription ||
+          englishTranslation.description ||
+          englishDocument.plainText,
+        `An original PROBA PERA literary journal article: ${englishTranslation.title}`
+      );
       const englishImageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
       const englishSocialTitle =
         englishTranslation.ogTitle ||
@@ -400,12 +586,45 @@ for (const rawArticle of catalog) {
         "content",
         article.ogImageUrl || englishImageUrl
       );
+      englishDocumentPage('meta[property="og:image:alt"]').attr(
+        "content",
+        englishTranslation.imageAlt || englishTranslation.title
+      );
+      englishDocumentPage('meta[property="og:locale"]').attr(
+        "content",
+        "en_US"
+      );
+      englishDocumentPage('meta[name="twitter:title"]').attr(
+        "content",
+        englishSocialTitle
+      );
+      englishDocumentPage('meta[name="twitter:description"]').attr(
+        "content",
+        englishSocialDescription
+      );
+      englishDocumentPage('meta[name="twitter:image"]').attr(
+        "content",
+        article.ogImageUrl || englishImageUrl
+      );
+      englishDocumentPage('meta[name="twitter:image:alt"]').attr(
+        "content",
+        englishTranslation.imageAlt || englishTranslation.title
+      );
       englishDocumentPage('link[rel="canonical"]').attr(
         "href",
         englishCanonicalUrl
       );
       englishDocumentPage("head").append(
-        `<meta property="og:url" content="${englishRouteUrl}">`
+        `<meta property="og:url" content="${englishCanonicalUrl}">`
+      );
+      englishDocumentPage("head").append(
+        `<link rel="alternate" hreflang="ru" href="${canonicalUrl}">`
+      );
+      englishDocumentPage("head").append(
+        `<link rel="alternate" hreflang="en" href="${englishCanonicalUrl}">`
+      );
+      englishDocumentPage("head").append(
+        `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}">`
       );
       if (englishTranslation.seoKeywords?.length) {
         englishDocumentPage("head").append(
@@ -430,6 +649,13 @@ for (const rawArticle of catalog) {
           mainEntityOfPage: englishCanonicalUrl,
           inLanguage: "en",
           datePublished: englishTranslation.publishedAt || article.publishedAt || undefined,
+          dateModified:
+            englishTranslation.updatedAt ||
+            englishTranslation.translationPublishedAt ||
+            englishTranslation.approvedAt ||
+            englishTranslation.publishedAt ||
+            article.publishedAt ||
+            undefined,
           wordCount: englishTranslation.wordCount,
           articleSection: englishTranslation.sectionLabel,
           isPartOf: {
@@ -470,12 +696,13 @@ for (const rawArticle of catalog) {
       ) {
         sitemapEntries.push({
           url: englishRouteUrl,
-          lastmod: (
+          lastmod: dateOnly(
+            englishTranslation.updatedAt ||
             englishTranslation.translationPublishedAt ||
             englishTranslation.approvedAt ||
-            article.publishedAt ||
-            buildDate
-          ).slice(0, 10),
+            englishTranslation.publishedAt ||
+            article.publishedAt
+          ),
         });
       }
     }
@@ -553,7 +780,9 @@ for (const rawArticle of catalog) {
     });
     await writeRedirectPage(article.legacyPath, canonicalUrl);
   }
-  sitemapEntries.push({ url: canonicalUrl, lastmod: buildDate });
+  if (article.allowIndexing !== false) {
+    sitemapEntries.push({ url: canonicalUrl, lastmod: modifiedDate });
+  }
 }
 
 for (const page of cmsSnapshot.pages || []) {
@@ -561,10 +790,13 @@ for (const page of cmsSnapshot.pages || []) {
   const publicPath = pagePublicPath(page);
   const canonicalUrl = page.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = loadStaticDocument(baseHtml);
-  const description =
-    page.seoDescription?.trim() ||
-    page.excerpt?.trim() ||
-    `Страница литературного журнала «Проба Пера»: ${page.title}`;
+  const description = conciseMetaDescription(
+    page.seoDescription || page.excerpt,
+    `Страница литературного журнала «Проба Пера»: ${page.title}`
+  );
+  const pageImageUrl =
+    page.ogImageUrl || page.imageUrl || `${siteUrl}/og-v3.webp`;
+  const pageImageAlt = page.imageAlt || page.title;
   $("title").text(`${page.seoTitle || page.title} — Проба Пера`);
   $('meta[name="description"]').attr("content", description);
   $('meta[property="og:type"]').attr("content", "website");
@@ -573,6 +805,15 @@ for (const page of cmsSnapshot.pages || []) {
     page.seoTitle || page.title
   );
   $('meta[property="og:description"]').attr("content", description);
+  $('meta[property="og:image"]').attr("content", pageImageUrl);
+  $('meta[property="og:image:alt"]').attr("content", pageImageAlt);
+  $('meta[name="twitter:title"]').attr(
+    "content",
+    page.seoTitle || page.title
+  );
+  $('meta[name="twitter:description"]').attr("content", description);
+  $('meta[name="twitter:image"]').attr("content", pageImageUrl);
+  $('meta[name="twitter:image:alt"]').attr("content", pageImageAlt);
   $('link[rel="canonical"]').attr("href", canonicalUrl);
   $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
   if (page.allowIndexing === false) {
@@ -638,7 +879,7 @@ for (const redirect of cmsSnapshot.redirects || []) {
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapEntries
-  .map(({ url, lastmod }) => `  <url><loc>${xmlEscape(url)}</loc><lastmod>${lastmod}</lastmod></url>`)
+  .map(sitemapEntryXml)
   .join("\n")}
 </urlset>
 `;
@@ -659,11 +900,7 @@ ${rssEntries.slice(0, 40).map((article) => {
   const publishedAt = article.publishedAt
     ? new Date(article.publishedAt).toUTCString()
     : new Date().toUTCString();
-  const contentHtml = `${
-    article.imageUrl
-      ? `<figure><img src="${xmlEscape(article.imageUrl)}" alt="${xmlEscape(article.imageAlt || article.title)}"></figure>`
-      : ""
-  }${article.contentHtml}`;
+  const contentHtml = article.contentHtml;
   return `  <item>
     <title>${xmlEscape(article.title)}</title><link>${article.articleUrl}</link>
     <guid isPermaLink="true">${article.articleUrl}</guid>
@@ -679,7 +916,7 @@ ${rssEntries.slice(0, 40).map((article) => {
 await fs.writeFile(path.join(distDirectory, "rss.xml"), rss, "utf8");
 await fs.writeFile(
   path.join(distDirectory, "robots.txt"),
-  `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${siteUrl}/sitemap.xml\n`,
+  `User-agent: *\nAllow: /\nDisallow: /admin/\nClean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid\nSitemap: ${siteUrl}/sitemap.xml\n`,
   "utf8"
 );
 await fs.writeFile(
@@ -777,7 +1014,7 @@ await fs.writeFile(
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors https://admin.probpera.ru; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors https://admin.probpera.ru; form-action 'self'; script-src 'self' https://mc.yandex.ru https://yastatic.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://mc.yandex.ru https://mc.yandex.az https://mc.yandex.by https://mc.yandex.co.il https://mc.yandex.com https://mc.yandex.com.am https://mc.yandex.com.ge https://mc.yandex.com.tr https://mc.yandex.ee https://mc.yandex.fr https://mc.yandex.kg https://mc.yandex.kz https://mc.yandex.lt https://mc.yandex.lv https://mc.yandex.md https://mc.yandex.tj https://mc.yandex.tm https://mc.yandex.uz; media-src 'self' blob: https:; worker-src 'self' blob:; upgrade-insecure-requests
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

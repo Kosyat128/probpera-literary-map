@@ -5,6 +5,7 @@ import {
   GLOBE_KEYBOARD_ROTATION_STEP,
   globeControlActionForKey,
   isGlobePointerTap,
+  orbitDollyMethodForZoomDirection,
   shouldGlobeAutoRotate,
   updateGlobePointerGesture,
 } from "./globeInteraction";
@@ -93,6 +94,11 @@ describe("globe keyboard controls", () => {
     expect(globeControlActionForKey("Home")).toEqual({ type: "reset" });
     expect(globeControlActionForKey("Enter")).toEqual({ type: "select" });
     expect(globeControlActionForKey("Escape")).toBeNull();
+  });
+
+  it("maps visible plus and minus controls to OrbitControls camera movement", () => {
+    expect(orbitDollyMethodForZoomDirection("in")).toBe("dollyOut");
+    expect(orbitDollyMethodForZoomDirection("out")).toBe("dollyIn");
   });
 });
 

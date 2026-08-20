@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { readAnalyticsConsent } from "../analytics/yandexMetrika";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
@@ -46,8 +47,11 @@ export default function ActivityTracker() {
   useEffect(() => {
     if (!configured || !supabase) return;
     const client = supabase;
+    const requestController = new AbortController();
+    let active = true;
 
     const track = async () => {
+      if (!active || readAnalyticsConsent() !== "granted") return;
       if ((document as Document & { prerendering?: boolean }).prerendering) return;
       const path = currentViewPath();
       let viewed: Record<string, number> = {};
@@ -91,11 +95,18 @@ export default function ActivityTracker() {
         utm_campaign: params.get("utm_campaign")?.slice(0, 180) || null,
       };
 
-      let { error } = await client.from("content_views").insert(extendedPayload);
+      let { error } = await client
+        .from("content_views")
+        .insert(extendedPayload)
+        .abortSignal(requestController.signal);
+      if (!active) return;
       if (error && /previous_path|navigation_source|utm_/iu.test(error.message)) {
-        ({ error } = await client.from("content_views").insert(commonPayload));
+        ({ error } = await client
+          .from("content_views")
+          .insert(commonPayload)
+          .abortSignal(requestController.signal));
       }
-      if (error) return;
+      if (!active || error) return;
 
       viewed[path] = now;
       window.sessionStorage.setItem(viewedKey, JSON.stringify(viewed));
@@ -109,6 +120,8 @@ export default function ActivityTracker() {
     window.addEventListener("popstate", handleNavigation);
     window.addEventListener("probpera:navigation", handleNavigation);
     return () => {
+      active = false;
+      requestController.abort();
       window.removeEventListener("hashchange", handleNavigation);
       window.removeEventListener("popstate", handleNavigation);
       window.removeEventListener("probpera:navigation", handleNavigation);

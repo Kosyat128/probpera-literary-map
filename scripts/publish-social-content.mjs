@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const supabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "")
@@ -12,11 +13,16 @@ const siteUrl = (process.env.PUBLIC_SITE_URL || "https://probpera.ru")
   .trim()
   .replace(/\/+$/u, "");
 const requiredPlatforms = new Set(
-  (process.env.SOCIAL_REQUIRED_PLATFORMS || "vk,ok,dzen")
+  (process.env.SOCIAL_REQUIRED_PLATFORMS || "dzen")
     .split(",")
     .map((item) => item.trim().toLocaleLowerCase("ru"))
     .filter(Boolean)
+    .filter(
+      (platform) =>
+        platform !== "vk" || process.env.SOCIAL_ENABLE_VK_AUTOPUBLISH === "true"
+    )
 );
+if (!requiredPlatforms.size) requiredPlatforms.add("dzen");
 const bootstrapLatest = process.env.SOCIAL_BOOTSTRAP_LATEST === "true";
 const dryRun = process.argv.includes("--dry-run");
 const vkApiVersion = "5.199";
@@ -255,7 +261,7 @@ async function appendAuditLog(action, entityId, metadata) {
 async function fetchArticle(articleId) {
   const query = new URLSearchParams({
     select:
-      "id,title,excerpt,slug,canonical_url,cover_external_url,seo_description,og_description,published_at,categories(slug)",
+      "id,title,excerpt,slug,canonical_url,content_html,cover_external_url,cover_alt,seo_description,og_description,published_at,categories(slug)",
     id: `eq.${articleId}`,
     status: "eq.published",
     deleted_at: "is.null",
@@ -508,7 +514,19 @@ async function verifyDzenRss(article) {
   if (!rss.includes(canonical) && !rss.includes(article.slug)) {
     throw new Error("Новая статья ещё не появилась в RSS после сборки.");
   }
-  return { ok: true, state: "rss-ready", feedUrl: rssUrl };
+  const dzenCover = dzenCoverForArticle(article);
+  if (dzenCover && !rss.replaceAll("&amp;", "&").includes(dzenCover.url)) {
+    throw new Error(
+      "Первая пригодная иллюстрация статьи ещё не стала обложкой в RSS Дзена."
+    );
+  }
+  return {
+    ok: true,
+    state: "rss-ready",
+    feedUrl: rssUrl,
+    coverUrl: dzenCover?.url || null,
+    coverSource: dzenCover?.source || "not-provided",
+  };
 }
 
 const publishers = {
@@ -522,14 +540,51 @@ async function dryRunPreview() {
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, "utf8"));
   const latest = snapshot.articles?.[0];
   if (!latest) throw new Error("В CMS-снимке нет опубликованных статей для проверки.");
+  const publicRoot = path.join(projectRoot, "public");
+  const documentPath = path.resolve(publicRoot, String(latest.documentPath || ""));
+  const documentRelativePath = path.relative(publicRoot, documentPath);
+  let articleDocument = {};
+  if (
+    latest.documentPath &&
+    documentRelativePath &&
+    !documentRelativePath.startsWith(`..${path.sep}`) &&
+    documentRelativePath !== ".." &&
+    !path.isAbsolute(documentRelativePath)
+  ) {
+    try {
+      const parsedDocument = JSON.parse(await fs.readFile(documentPath, "utf8"));
+      if (parsedDocument && typeof parsedDocument === "object") {
+        articleDocument = parsedDocument;
+      }
+    } catch {
+      // A catalog-only preview remains useful when its article document is absent.
+    }
+  }
   const article = {
     ...latest,
     canonical_url: latest.canonicalUrl,
+    content_html:
+      typeof articleDocument.contentHtml === "string"
+        ? articleDocument.contentHtml
+        : "",
     cover_external_url: latest.imageUrl,
+    cover_alt: latest.dzenImageAlt || latest.imageAlt,
+    dzenImageUrl: latest.dzenImageUrl,
     seo_description: latest.seoDescription,
     og_description: latest.ogDescription,
   };
-  console.log(JSON.stringify({ url: articleUrl(article), text: socialText(article) }, null, 2));
+  console.log(
+    JSON.stringify(
+      {
+        url: articleUrl(article),
+        text: socialText(article),
+        dzenCover: dzenCoverForArticle(article),
+        vkAutopublish: false,
+      },
+      null,
+      2
+    )
+  );
 }
 
 async function main() {

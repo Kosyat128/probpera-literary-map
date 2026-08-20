@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-13T22:33:28.386Z",
+  "generatedAt": "2026-08-20T11:02:35.272Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
     "uniqueCountryCodes": 200,
-    "cardsWithWriters": 193,
+    "cardsWithWriters": 191,
     "cardsWithCoordinates": 5,
     "cardsWithDescription": 5,
     "cardsWithHistory": 5,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1690,
-    "uniqueWriters": 1677,
-    "workRecords": 3552,
-    "uniqueWorks": 3534,
+    "writerRecords": 1684,
+    "uniqueWriters": 1671,
+    "workRecords": 3575,
+    "uniqueWorks": 3557,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 44,
+    "expandedBiographies": 43,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1645,
+    "russianBiographiesWithheld": 1639,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1670,
+    "englishBiographiesWithheld": 1664,
     "portraitedWriters": 1058,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -2107,7 +2107,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 0
     },
     {
       "id": "nauru",
@@ -2124,7 +2124,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 1
+      "writers": 0
     },
     {
       "id": "nepal",
@@ -2175,7 +2175,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 20
+      "writers": 19
     },
     {
       "id": "nicaragua",
@@ -2209,7 +2209,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "nigeria",

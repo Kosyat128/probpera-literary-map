@@ -66,7 +66,7 @@ describe("country archive", () => {
       true
     );
     expect(countries.filter((country) => country.writers.length > 0).length).toBe(
-      193
+      191
     );
   });
 });

@@ -48,8 +48,11 @@ jobs:
       - name: Audit encyclopedia and media
         run: npm run countries:audit && npm run media:audit && npm run books:audit && npm run covers:audit && npm run assets:globe:qa
 
-      - name: Build public site and admin
-        run: npm run build:all
+      - name: Build production public site and admin
+        run: npm run admin:build && npm run build:domain
+
+      - name: Audit production SEO output
+        run: npm run seo:audit
 
       - name: Enforce production performance budget
         run: npm run performance:audit

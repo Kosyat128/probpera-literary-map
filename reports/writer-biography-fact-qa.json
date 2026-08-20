@@ -1,10 +1,10 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:9d38f9c0ad161a6347c7a73319b7f69b58fc1d4041ba95a7485d6ae0eff2461d",
+  "sourceFingerprint": "sha256:3f955f357d105fd361dbf7c6ca738233b3759451873b047b77cd8cf5e3c251fe",
   "scope": {
     "corpus": "stored short Russian writer biographies",
-    "cardsAudited": 1686,
+    "cardsAudited": 1684,
     "uiChanged": false,
     "statusesChanged": false,
     "biographyTextChanged": false,
@@ -12,44 +12,44 @@
     "statement": "This report inventories every biography and detects local contradictions. It does not certify the corpus as fact-checked."
   },
   "summary": {
-    "writerCards": 1686,
-    "biographiesPresent": 1686,
+    "writerCards": 1684,
+    "biographiesPresent": 1684,
     "claimTypeCounts": {
-      "awards": 139,
-      "critical-ranking": 198,
-      "identity-role": 1631,
-      "language": 191,
-      "life-dates": 325,
-      "movement-era": 86,
-      "national-cultural-affiliation": 1065,
-      "nobel": 110,
+      "awards": 136,
+      "critical-ranking": 188,
+      "identity-role": 1630,
+      "language": 189,
+      "life-dates": 346,
+      "movement-era": 85,
+      "national-cultural-affiliation": 1061,
+      "nobel": 111,
       "places": 23,
-      "priority-claim": 133,
-      "reception-influence": 45,
-      "themes-style": 323,
-      "works": 1104
+      "priority-claim": 129,
+      "reception-influence": 41,
+      "themes-style": 322,
+      "works": 1130
     },
     "reliableStagingIdentityMatches": 232,
     "sourceConfirmedStructuredCrossChecks": 231,
     "sourceConfirmedCoveragePercent": 13.7,
-    "wikidataSnapshotCandidateRecords": 1265,
-    "wikidataIdentityCorroboratedRecords": 1167,
-    "wikidataIdentityDiscrepantRecords": 10,
+    "wikidataSnapshotCandidateRecords": 1263,
+    "wikidataIdentityCorroboratedRecords": 1168,
+    "wikidataIdentityDiscrepantRecords": 7,
     "wikidataIdentityReviewRequiredRecords": 88,
-    "wikidataStructuredTriageCoveragePercent": 69.2,
-    "wikidataDateFieldsCompared": 2073,
-    "wikidataExactGregorianDateMatches": 1635,
-    "wikidataSharedPrecisionMatches": 166,
+    "wikidataStructuredTriageCoveragePercent": 69.4,
+    "wikidataDateFieldsCompared": 2072,
+    "wikidataExactGregorianDateMatches": 1634,
+    "wikidataSharedPrecisionMatches": 170,
     "wikidataCalendarUnresolvedMatches": 67,
     "wikidataAlternateRankMatches": 26,
-    "wikidataUnresolvedDateDiscrepancies": 76,
-    "wikidataModernReferencedDateContradictions": 32,
-    "wikidataLikelyBadQidOrIdentityDateRows": 23,
+    "wikidataUnresolvedDateDiscrepancies": 72,
+    "wikidataModernReferencedDateContradictions": 31,
+    "wikidataLikelyBadQidOrIdentityDateRows": 20,
     "wikidataTriageClassificationCounts": {
       "a:calendar-equivalent": 89,
-      "b:lower-precision-compatible": 166,
-      "c:likely-bad-qid-mapping-or-identity": 23,
-      "d:date-contradiction-requiring-authoritative-source": 53
+      "b:lower-precision-compatible": 170,
+      "c:likely-bad-qid-mapping-or-identity": 20,
+      "d:date-contradiction-requiring-authoritative-source": 52
     },
     "wikidataLiteraryOccupationCorroborations": 1244,
     "manuallyResolvedRecords": 57,
@@ -59,11 +59,11 @@
     "calendarOrSourceDiscrepancyRecords": 1,
     "calendarOrSourceDiscrepancyIssues": 1,
     "metadataGapIssues": 247,
-    "recordsNeedingHumanClaimSources": 1666,
+    "recordsNeedingHumanClaimSources": 1664,
     "priorityCounts": {
-      "P1": 468,
-      "P2": 155,
-      "P3": 1063
+      "P1": 454,
+      "P2": 162,
+      "P3": 1068
     },
     "matchMethodCounts": {
       "curated-key-to-wikidata-id": 229,
@@ -105,12 +105,12 @@
       "P27",
       "P800"
     ],
-    "publicCardsWithCuratedQid": 1265,
+    "publicCardsWithCuratedQid": 1263,
     "publicCorpusCoveragePercent": 75,
     "curatedCardsAlreadyPresentInStaging": 229,
-    "publicCardsWithSnapshotEntity": 1265,
-    "identityCorroboratedPublicCards": 1167,
-    "identityDiscrepantPublicCards": 10,
+    "publicCardsWithSnapshotEntity": 1263,
+    "identityCorroboratedPublicCards": 1168,
+    "identityDiscrepantPublicCards": 7,
     "identityReviewRequiredPublicCards": 88,
     "curatedCardsMissingCompactSnapshot": 0,
     "publicCardsWithoutCuratedQid": 421,
@@ -2281,153 +2281,11 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "new_zealand:steven_baker",
-      "name": "Стивен Бикер",
-      "qid": "Q95312295",
-      "field": "birthDate",
-      "cardValue": "1953-11-05",
-      "bestRankClaims": [
-        {
-          "value": "1947",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 2,
-          "claimId": "Q95312295$B91BAFF3-C9F0-4CFE-B166-1A01587DF04F"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q95312295",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Steven Roger Fischer"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 6,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "niger:abdoulaye_mamani",
-      "name": "Абдулае Мамани",
-      "qid": "Q308401",
-      "field": "birthDate",
-      "cardValue": "1939",
-      "bestRankClaims": [
-        {
-          "value": "1932",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "Q308401$C6264F42-42AE-40A3-B848-251E1AC4439A"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q308401",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Abdoulaye Mamani",
-        "ru": "Абдулай Мамани"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 7,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "niger:mariama_hima",
-      "name": "Мариама Хима",
-      "qid": "Q16937510",
-      "field": "birthDate",
-      "cardValue": "1957",
-      "bestRankClaims": [
-        {
-          "value": "1951",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q16937510$B5257031-DA4A-4208-8BA9-19D8D349132A"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q16937510",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Mariama Hima"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 6,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "north_korea:han_sorya",
-      "name": "Хан Соря",
-      "qid": "Q487273",
-      "field": "birthDate",
-      "cardValue": "1900-08-03",
-      "bestRankClaims": [
-        {
-          "value": "1900-08-30",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q487273$4553CF53-B796-4519-BFE0-5F9C67C30E8D"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q487273",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Han Sorya",
-        "ru": "Хан Соль Я"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
       "key": "north_korea:ri_ki_yong",
       "name": "Ли Ги Ён",
       "qid": "Q485218",
       "field": "birthDate",
-      "cardValue": "1895-05-06",
+      "cardValue": "1895",
       "bestRankClaims": [
         {
           "value": "1896-05-06",
@@ -6377,12 +6235,52 @@
       "classification": "lower-precision-compatible"
     },
     {
+      "key": "niger:mariama_hima",
+      "name": "Мариама Хима",
+      "qid": "Q16937510",
+      "field": "birthDate",
+      "cardValue": "1951-02-20",
+      "snapshotValue": "1951",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
       "key": "nigeria:helon_habila",
       "name": "Хелон Хабила",
       "qid": "Q1371444",
       "field": "birthDate",
       "cardValue": "1967-11",
       "snapshotValue": "1967",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "north_korea:han_sorya",
+      "name": "Хан Соря",
+      "qid": "Q487273",
+      "field": "birthDate",
+      "cardValue": "1900",
+      "snapshotValue": "1900-08-30",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "north_korea:han_sorya",
+      "name": "Хан Соря",
+      "qid": "Q487273",
+      "field": "deathDate",
+      "cardValue": "1976",
+      "snapshotValue": "1976-04-06",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "north_korea:ri_ki_yong",
+      "name": "Ли Ги Ён",
+      "qid": "Q485218",
+      "field": "deathDate",
+      "cardValue": "1984",
+      "snapshotValue": "1984-08-09",
       "classificationCode": "b",
       "classification": "lower-precision-compatible"
     },
@@ -7110,117 +7008,11 @@
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
     {
-      "key": "new_zealand:steven_baker",
-      "name": "Стивен Бикер",
-      "qid": "Q95312295",
-      "field": "birthDate",
-      "cardValue": "1953-11-05",
-      "bestRankClaims": [
-        {
-          "value": "1947",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 2,
-          "claimId": "Q95312295$B91BAFF3-C9F0-4CFE-B166-1A01587DF04F"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q95312295",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Steven Roger Fischer"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 6,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "niger:abdoulaye_mamani",
-      "name": "Абдулае Мамани",
-      "qid": "Q308401",
-      "field": "birthDate",
-      "cardValue": "1939",
-      "bestRankClaims": [
-        {
-          "value": "1932",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 3,
-          "claimId": "Q308401$C6264F42-42AE-40A3-B848-251E1AC4439A"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q308401",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Abdoulaye Mamani",
-        "ru": "Абдулай Мамани"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 7,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "niger:mariama_hima",
-      "name": "Мариама Хима",
-      "qid": "Q16937510",
-      "field": "birthDate",
-      "cardValue": "1957",
-      "bestRankClaims": [
-        {
-          "value": "1951",
-          "precision": "year",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q16937510$B5257031-DA4A-4208-8BA9-19D8D349132A"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q16937510",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "high",
-      "reason": "The RU/EN labels and/or the birth-year evidence contradict the curated card identity. Exclude this QID from factual corrections until the mapping is repaired.",
-      "identityValidationStatus": "identity-discrepant",
-      "entityLabels": {
-        "en": "Mariama Hima"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 6,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
       "key": "north_korea:ri_ki_yong",
       "name": "Ли Ги Ён",
       "qid": "Q485218",
       "field": "birthDate",
-      "cardValue": "1895-05-06",
+      "cardValue": "1895",
       "bestRankClaims": [
         {
           "value": "1896-05-06",
@@ -8330,42 +8122,6 @@
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "north_korea:han_sorya",
-      "name": "Хан Соря",
-      "qid": "Q487273",
-      "field": "birthDate",
-      "cardValue": "1900-08-03",
-      "bestRankClaims": [
-        {
-          "value": "1900-08-30",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q487273$4553CF53-B796-4519-BFE0-5F9C67C30E8D"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q487273",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Han Sorya",
-        "ru": "Хан Соль Я"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": true,
       "modern": true,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
@@ -10937,70 +10693,6 @@
       "safeAction": "Quarantine this QID and any portrait sourced through it; repair the identity mapping before using snapshot claims as factual evidence."
     },
     {
-      "key": "new_zealand:steven_baker",
-      "name": "Стивен Бикер",
-      "qid": "Q95312295",
-      "entityLabels": {
-        "en": "Steven Roger Fischer"
-      },
-      "labelIdentityMatch": true,
-      "cardBirthYear": 1953,
-      "wikidataBirthYears": [
-        1947
-      ],
-      "nearestBirthYearDistance": 6,
-      "humanClaimPresent": true,
-      "literaryOccupationIds": [],
-      "publicPortrait": null,
-      "publicPortraitSourceUrl": null,
-      "portraitIdentityRisk": false,
-      "safeAction": "Quarantine this QID and any portrait sourced through it; repair the identity mapping before using snapshot claims as factual evidence."
-    },
-    {
-      "key": "niger:abdoulaye_mamani",
-      "name": "Абдулае Мамани",
-      "qid": "Q308401",
-      "entityLabels": {
-        "en": "Abdoulaye Mamani",
-        "ru": "Абдулай Мамани"
-      },
-      "labelIdentityMatch": true,
-      "cardBirthYear": 1939,
-      "wikidataBirthYears": [
-        1932
-      ],
-      "nearestBirthYearDistance": 7,
-      "humanClaimPresent": true,
-      "literaryOccupationIds": [
-        "Q36180",
-        "Q49757"
-      ],
-      "publicPortrait": null,
-      "publicPortraitSourceUrl": null,
-      "portraitIdentityRisk": false,
-      "safeAction": "Quarantine this QID and any portrait sourced through it; repair the identity mapping before using snapshot claims as factual evidence."
-    },
-    {
-      "key": "niger:mariama_hima",
-      "name": "Мариама Хима",
-      "qid": "Q16937510",
-      "entityLabels": {
-        "en": "Mariama Hima"
-      },
-      "labelIdentityMatch": true,
-      "cardBirthYear": 1957,
-      "wikidataBirthYears": [
-        1951
-      ],
-      "nearestBirthYearDistance": 6,
-      "humanClaimPresent": true,
-      "literaryOccupationIds": [],
-      "publicPortrait": null,
-      "publicPortraitSourceUrl": null,
-      "portraitIdentityRisk": false,
-      "safeAction": "Quarantine this QID and any portrait sourced through it; repair the identity mapping before using snapshot claims as factual evidence."
-    },
-    {
       "key": "samoa:lani_wendt_young",
       "name": "Лани Вендт Янг",
       "qid": "Q44217961",
@@ -12316,21 +12008,6 @@
       "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
     },
     {
-      "key": "niger:ibrahim_adam",
-      "name": "Ибрахим Адам",
-      "qid": "Q99929822",
-      "entityLabels": {
-        "en": "Ibrahim Adam"
-      },
-      "labelIdentityMatch": true,
-      "cardBirthYear": 1952,
-      "wikidataBirthYears": [],
-      "birthYearIdentityStatus": "not-comparable",
-      "humanClaimPresent": true,
-      "literaryOccupationIds": [],
-      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
-    },
-    {
       "key": "north_korea:ri_ki_yong",
       "name": "Ли Ги Ён",
       "qid": "Q485218",
@@ -12344,6 +12021,26 @@
         1896
       ],
       "birthYearIdentityStatus": "conflict",
+      "humanClaimPresent": true,
+      "literaryOccupationIds": [
+        "Q36180"
+      ],
+      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
+    },
+    {
+      "key": "norway:amalie_skram",
+      "name": "Амали Скрам",
+      "qid": "Q291676",
+      "entityLabels": {
+        "en": "Amalie Skram",
+        "ru": "Амалия Скрам"
+      },
+      "labelIdentityMatch": false,
+      "cardBirthYear": 1846,
+      "wikidataBirthYears": [
+        1846
+      ],
+      "birthYearIdentityStatus": "match",
       "humanClaimPresent": true,
       "literaryOccupationIds": [
         "Q36180"
@@ -18525,151 +18222,14 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "new_zealand:keri_hulme",
-      "name": "Кери Хьюм",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "awards",
-        "themes-style",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
       "key": "new_zealand:loyd_jones",
       "name": "Ллойд Джонс",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "reception-influence",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nicaragua:ernesto_cardenal",
-      "name": "Эрнесто Карденаль",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nicaragua:gioconda_belli",
-      "name": "Джоконда Белли",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "nicaragua:ruben_dario",
-      "name": "Рубен Дарио",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "language",
-        "movement-era",
-        "national-cultural-affiliation",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nicaragua:sergio_ramirez",
-      "name": "Серхио Рамирес",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "niger:boubou_hama",
-      "name": "Бубу Хама",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nigeria:ben_okri",
-      "name": "Бен Окри",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
         "awards",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nigeria:chimamanda_adichie",
-      "name": "Чимаманда Нгози Адичи",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nigeria:chinua_achebe",
-      "name": "Чинуа Ачебе",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nigeria:christopher_okigbo",
-      "name": "Кристофер Окигбо",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
+        "movement-era",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -18683,27 +18243,14 @@
       "claimsRequiringHumanSources": [
         "identity-role",
         "language",
+        "life-dates",
         "national-cultural-affiliation",
-        "priority-claim"
+        "priority-claim",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "nigeria:flora_nwapa",
-      "name": "Флора Нвапа",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "national-cultural-affiliation",
-        "priority-claim",
-        "reception-influence"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "nigeria:wole_soyinka",
@@ -18711,55 +18258,29 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "national-cultural-affiliation",
-        "nobel"
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "niue:john_pule",
-      "name": "Джон Пуле",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "north_korea:han_sorya",
-      "name": "Хан Соря",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "north_macedonia:kocho_racin",
-      "name": "Кочо Рацин",
+      "key": "north_korea:paek_nam_nyong",
+      "name": "Пэк Нам Рён",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
         "language",
+        "national-cultural-affiliation",
         "priority-claim",
-        "themes-style"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "norway:bjornstjerne_bjornson",
@@ -18767,39 +18288,29 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "national-cultural-affiliation",
-        "nobel"
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "norway:henrik_ibsen",
-      "name": "Генрик Ибсен",
+      "key": "norway:jon_fosse",
+      "name": "Юн Фоссе",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
+        "identity-role",
         "national-cultural-affiliation",
-        "priority-claim"
+        "nobel",
+        "themes-style",
+        "works"
       ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "norway:jo_nesbo",
-      "name": "Ю Несбё",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "norway:jonas_lie",
@@ -24506,12 +24017,36 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
+      "key": "new_zealand:keri_hulme",
+      "name": "Кери Хьюм",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "new_zealand:witi_ihimaera",
       "name": "Вити Ихимаэра",
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "reception-influence",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nigeria:ben_okri",
+      "name": "Бен Окри",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": true,
@@ -24524,8 +24059,45 @@
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nigeria:chimamanda_adichie",
+      "name": "Чимаманда Нгози Адичи",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
         "national-cultural-affiliation",
-        "reception-influence",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nigeria:chinua_achebe",
+      "name": "Чинуа Ачебе",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nigeria:christopher_okigbo",
+      "name": "Кристофер Окигбо",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": true,
@@ -24538,7 +24110,8 @@
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -24550,8 +24123,34 @@
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "movement-era",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "norway:henrik_ibsen",
+      "name": "Генрик Ибсен",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "norway:jo_nesbo",
+      "name": "Ю Несбё",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -36154,7 +35753,8 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36166,28 +35766,32 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "new_zealand:steven_baker",
-      "name": "Стивен Бикер",
+      "key": "nicaragua:ernesto_cardenal",
+      "name": "Эрнесто Карденаль",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language"
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-discrepant"
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "niger:abdoulaye_mamani",
-      "name": "Абдулае Мамани",
+      "key": "nicaragua:gioconda_belli",
+      "name": "Джоконда Белли",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
@@ -36196,19 +35800,62 @@
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-discrepant"
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "niger:ibrahim_adam",
-      "name": "Ибрахим Адам",
+      "key": "nicaragua:ruben_dario",
+      "name": "Рубен Дарио",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-review-required"
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nicaragua:sergio_ramirez",
+      "name": "Серхио Рамирес",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "niger:abdoulaye_mamani",
+      "name": "Абдулае Мамани",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "niger:boubou_hama",
+      "name": "Бубу Хама",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "niger:mariama_hima",
@@ -36216,11 +35863,27 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-discrepant"
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nigeria:flora_nwapa",
+      "name": "Флора Нвапа",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "nigeria:teju_cole",
@@ -36229,28 +35892,28 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "north_korea:choe_myong_ik",
-      "name": "Чхве Мён Ик",
+      "key": "niue:john_pule",
+      "name": "Джон Пуле",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "north_korea:paek_nam_nyong",
-      "name": "Пэк Нам Рён",
+      "key": "north_korea:choe_myong_ik",
+      "name": "Чхве Мён Ик",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
@@ -36263,13 +35926,31 @@
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
+      "key": "north_korea:han_sorya",
+      "name": "Хан Соря",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "north_korea:ri_ki_yong",
       "name": "Ли Ги Ён",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36283,7 +35964,22 @@
       "claimsRequiringHumanSources": [
         "identity-role",
         "language",
-        "themes-style"
+        "life-dates"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "north_macedonia:kocho_racin",
+      "name": "Кочо Рацин",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36296,7 +35992,7 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation",
+        "life-dates",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36310,6 +36006,7 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -36324,12 +36021,14 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "movement-era",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
+      "wikidataIdentityValidationStatus": "identity-review-required"
     },
     {
       "key": "norway:erlend_loe",
@@ -36338,26 +36037,12 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "norway:jon_fosse",
-      "name": "Юн Улав Фоссе",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
         "national-cultural-affiliation",
-        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "norway:karl_ove_knausgard",
@@ -175922,31 +175607,34 @@
       "name": "Кери Хьюм",
       "biography": {
         "present": true,
-        "sha256": "525bde5c146c753ca4595bde762571b92cf0ca3f182417fc02b90bb6e39a099f",
-        "characters": 174,
-        "sentenceCount": 3
+        "sha256": "c12bc62061078737c0de6ed1e38e836592cd5f194eccf0abde058b25b445f13e",
+        "characters": 128,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
-          "themes-style",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 1,
         "namedWorkTitles": [
-          "Люди костей"
+          "The Bone People"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1947,
+            "deathYear": 2021,
+            "text": "1947–2021"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
-          "themes-style",
           "works"
         ]
       },
@@ -176067,7 +175755,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -176086,20 +175774,22 @@
       "name": "Ллойд Джонс",
       "biography": {
         "present": true,
-        "sha256": "dcd2098e8db95baad0d67a637626c4a3cfa9411a0d456279211f08442e5952e2",
-        "characters": 130,
+        "sha256": "0d094a85500bd522ae0f9f09f18e96625f332b9d6c98d831c86d05b499a1503c",
+        "characters": 173,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
+          "awards",
           "identity-role",
-          "reception-influence",
+          "movement-era",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Mister Pip"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -176107,8 +175797,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "reception-influence",
+          "awards",
+          "movement-era",
           "works"
         ]
       },
@@ -176243,21 +175933,25 @@
       "name": "Патриция Грейс",
       "biography": {
         "present": true,
-        "sha256": "edc5d69f6bdfb4ea265a77fce31dc47d4b8be4eae48280a14569de505e1013ed",
-        "characters": 121,
+        "sha256": "1d966e3ca287bbadf6d7bd1f78c086720424b97735aa099ea694049592ad97ba",
+        "characters": 163,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Potiki"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176297,21 +175991,27 @@
       "name": "Робин Хайд",
       "biography": {
         "present": true,
-        "sha256": "7e5bc32bb9c9918c8a5ad78221a39815682d2ecd62b4ce9ae8f756b037bf87a0",
-        "characters": 113,
+        "sha256": "23d3ae0778d5ab2b7375446c5b7be7782508ac7111705c104def13f823b821df",
+        "characters": 156,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176344,111 +176044,6 @@
       }
     },
     {
-      "key": "new_zealand:steven_baker",
-      "countryId": "new_zealand",
-      "countryName": "Новая Зеландия",
-      "writerId": "steven_baker",
-      "name": "Стивен Бикер",
-      "biography": {
-        "present": true,
-        "sha256": "7eb278d42b2707d7916c77ab4624206f96795b5335a9966787a42bf5ea9ee036",
-        "characters": 119,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role",
-          "language"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role",
-          "language"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "curated-qid-candidate",
-        "qid": "Q95312295",
-        "entityAvailable": true,
-        "sourceUrl": "https://www.wikidata.org/wiki/Q95312295",
-        "lastRevisionId": 2522923266,
-        "modified": "2026-07-26T13:45:57Z",
-        "labels": {
-          "en": "Steven Roger Fischer"
-        },
-        "labelIdentityMatch": true,
-        "cardBirthYear": 1953,
-        "wikidataBirthYears": [
-          1947
-        ],
-        "birthYearIdentityStatus": "conflict",
-        "nearestBirthYearDistance": 6,
-        "identityValidationStatus": "identity-discrepant",
-        "manualIdentityConfirmation": null,
-        "publicPortrait": null,
-        "publicPortraitSourceUrl": null,
-        "portraitIdentityRisk": false,
-        "humanClaimPresent": true,
-        "literaryOccupationIds": [],
-        "structuredClaimCounts": {
-          "birthDates": 1,
-          "deathDates": 0,
-          "occupations": 2,
-          "citizenships": 1,
-          "notableWorks": 0
-        },
-        "dates": {
-          "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1953-11-05",
-            "bestRankClaims": [
-              {
-                "value": "1947",
-                "precision": "year",
-                "calendarId": "Q1985727",
-                "rank": "normal",
-                "referenced": true,
-                "referenceCount": 2,
-                "claimId": "Q95312295$B91BAFF3-C9F0-4CFE-B166-1A01587DF04F"
-              }
-            ],
-            "allClaimCount": 1
-          },
-          "deathDate": {
-            "status": "no-card-date",
-            "cardValue": null,
-            "bestRankClaims": []
-          }
-        }
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P3",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": true,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
       "key": "new_zealand:witi_ihimaera",
       "countryId": "new_zealand",
       "countryName": "Новая Зеландия",
@@ -176456,19 +176051,20 @@
       "name": "Вити Ихимаэра",
       "biography": {
         "present": true,
-        "sha256": "e0aa59efe01f15450de32668c93de4b75b9c4b2a7b2624799250bf953f012240",
-        "characters": 192,
-        "sentenceCount": 3
+        "sha256": "58b62e2d5f21c7e6593cec8103f465ef1964ccef3d58f860fc4fc437868eb301",
+        "characters": 161,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Tangi"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -176476,7 +176072,6 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "reception-influence",
           "works"
         ]
       },
@@ -176595,27 +176190,31 @@
       "name": "Эрнесто Карденаль",
       "biography": {
         "present": true,
-        "sha256": "9571343018009c74429f97059d9189fec7d97853cd650ace5ec8672585d8dd1a",
-        "characters": 219,
-        "sentenceCount": 3
+        "sha256": "264dc3c8d1eb3ca5c55f1e5b46e6502fe5d15217bc203f9009a8cbdebafb9174",
+        "characters": 124,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
-          "themes-style"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1925,
+            "deathYear": 2020,
+            "text": "1925–2020"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
-          "themes-style"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176718,7 +176317,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -176737,26 +176336,25 @@
       "name": "Джоконда Белли",
       "biography": {
         "present": true,
-        "sha256": "588d2db2aac9039a00b605021ced5210bd70cd4ad285a098f332748a197b4809",
-        "characters": 204,
-        "sentenceCount": 3
+        "sha256": "ceb2483568686e6a350cc4304c94c770881f51e2dada7311cc433be37856174b",
+        "characters": 140,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "El ojo de la mujer",
+          "La mujer habitada"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation",
           "works"
         ]
       },
@@ -176778,7 +176376,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -176797,29 +176395,25 @@
       "name": "Рубен Дарио",
       "biography": {
         "present": true,
-        "sha256": "fa3287e7ec91e9b7e87d1980588231855ee2b912feddbdc32b658f67ea093607",
-        "characters": 165,
-        "sentenceCount": 2
+        "sha256": "5d58fbda22182113a51ba6a611f70c52301600be1d23279e1d44ada4aedd4a93",
+        "characters": 190,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
-          "movement-era",
-          "national-cultural-affiliation",
-          "priority-claim"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language",
-          "movement-era",
-          "national-cultural-affiliation",
-          "priority-claim"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176924,7 +176518,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -176943,25 +176537,23 @@
       "name": "Серхио Рамирес",
       "biography": {
         "present": true,
-        "sha256": "f427c80e3ded42f3bed5f5e6b9409fa2b19a980d736a3c709f67c8d19ee93bb7",
-        "characters": 209,
-        "sentenceCount": 3
+        "sha256": "0ff461bb9e810fd13e3538eecb6d43257b5d5e9bff3d307908187a0474e063d5",
+        "characters": 165,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -177043,7 +176635,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -177062,22 +176654,32 @@
       "name": "Абдулае Мамани",
       "biography": {
         "present": true,
-        "sha256": "633618a77fa2f16200f0a2203b1717492b4a9704fe086c5342d75c1796e1823f",
-        "characters": 65,
+        "sha256": "0108cabe96db2e4d0c5e77f60ca24b9c1ff723be8d9bd3cc9629fee0279e0508",
+        "characters": 96,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Sarraounia"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1932,
+            "deathYear": 1993,
+            "text": "1932–1993"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -177103,13 +176705,13 @@
           "ru": "Абдулай Мамани"
         },
         "labelIdentityMatch": true,
-        "cardBirthYear": 1939,
+        "cardBirthYear": 1932,
         "wikidataBirthYears": [
           1932
         ],
-        "birthYearIdentityStatus": "conflict",
-        "nearestBirthYearDistance": 7,
-        "identityValidationStatus": "identity-discrepant",
+        "birthYearIdentityStatus": "match",
+        "nearestBirthYearDistance": 0,
+        "identityValidationStatus": "identity-corroborated",
         "manualIdentityConfirmation": null,
         "publicPortrait": null,
         "publicPortraitSourceUrl": null,
@@ -177128,8 +176730,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1939",
+            "status": "exact-gregorian-match",
+            "cardValue": "1932",
+            "matchedClaim": {
+              "value": "1932",
+              "precision": "year",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 3,
+              "claimId": "Q308401$C6264F42-42AE-40A3-B848-251E1AC4439A"
+            },
             "bestRankClaims": [
               {
                 "value": "1932",
@@ -177191,23 +176802,31 @@
       "name": "Бубу Хама",
       "biography": {
         "present": true,
-        "sha256": "8faf68a7c169947ae01d19089972cbb9e28803fd4e3b2094db70b0329321e89e",
-        "characters": 106,
-        "sentenceCount": 1
+        "sha256": "504c3661c74c14f84eb24a96b6cfb430dcaf271648cab2bda44b526184215190",
+        "characters": 136,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1906,
+            "deathYear": 1982,
+            "text": "1906–1982"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -177309,96 +176928,6 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": true,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "niger:ibrahim_adam",
-      "countryId": "niger",
-      "countryName": "Нигер",
-      "writerId": "ibrahim_adam",
-      "name": "Ибрахим Адам",
-      "biography": {
-        "present": true,
-        "sha256": "d080f38c3e0b5c7dd9bf9c4ebe9b584ce315fe74e7c89952a71030c5b8388476",
-        "characters": 26,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "curated-qid-candidate",
-        "qid": "Q99929822",
-        "entityAvailable": true,
-        "sourceUrl": "https://www.wikidata.org/wiki/Q99929822",
-        "lastRevisionId": 2524661120,
-        "modified": "2026-07-30T04:04:10Z",
-        "labels": {
-          "en": "Ibrahim Adam"
-        },
-        "labelIdentityMatch": true,
-        "cardBirthYear": 1952,
-        "wikidataBirthYears": [],
-        "birthYearIdentityStatus": "not-comparable",
-        "nearestBirthYearDistance": null,
-        "identityValidationStatus": "identity-review-required",
-        "manualIdentityConfirmation": null,
-        "publicPortrait": null,
-        "publicPortraitSourceUrl": null,
-        "portraitIdentityRisk": false,
-        "humanClaimPresent": true,
-        "literaryOccupationIds": [],
-        "structuredClaimCounts": {
-          "birthDates": 0,
-          "deathDates": 0,
-          "occupations": 2,
-          "citizenships": 1,
-          "notableWorks": 0
-        },
-        "dates": {
-          "birthDate": {
-            "status": "no-wikidata-date",
-            "cardValue": "1952",
-            "bestRankClaims": []
-          },
-          "deathDate": {
-            "status": "no-card-date",
-            "cardValue": null,
-            "bestRankClaims": []
-          }
-        }
-      },
-      "manualResolutions": [],
-      "issues": [],
       "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
@@ -177418,21 +176947,25 @@
       "name": "Мариама Хима",
       "biography": {
         "present": true,
-        "sha256": "f70f8029d4ad82b15e4a144010ddf6ac65d176a3f98d6494a320f772e001772f",
-        "characters": 80,
-        "sentenceCount": 1
+        "sha256": "d5f5904c30925811412c3d344f141c93d1103eba7f363b908ea15323a710e578",
+        "characters": 174,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Sagesse africaine : proverbes"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -177456,13 +176989,13 @@
           "en": "Mariama Hima"
         },
         "labelIdentityMatch": true,
-        "cardBirthYear": 1957,
+        "cardBirthYear": 1951,
         "wikidataBirthYears": [
           1951
         ],
-        "birthYearIdentityStatus": "conflict",
-        "nearestBirthYearDistance": 6,
-        "identityValidationStatus": "identity-discrepant",
+        "birthYearIdentityStatus": "match",
+        "nearestBirthYearDistance": 0,
+        "identityValidationStatus": "identity-corroborated",
         "manualIdentityConfirmation": null,
         "publicPortrait": null,
         "publicPortraitSourceUrl": null,
@@ -177478,8 +177011,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1957",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1951-02-20",
+            "matchedClaim": {
+              "value": "1951",
+              "precision": "year",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q16937510$B5257031-DA4A-4208-8BA9-19D8D349132A"
+            },
             "bestRankClaims": [
               {
                 "value": "1951",
@@ -177521,19 +177063,21 @@
       "name": "Бен Окри",
       "biography": {
         "present": true,
-        "sha256": "39dbd6dbad1580a96b8a5b64c77414f2dd4f73b9ae232203956be815e42cd694",
-        "characters": 59,
-        "sentenceCount": 1
+        "sha256": "7f72ec1e82a5a94761e20e9ef49763846e6cac0eefcf4826f25a33a82fd9eb54",
+        "characters": 118,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "The Famished Road"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -177541,8 +177085,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -177642,7 +177186,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -177661,29 +177205,32 @@
       "name": "Бучи Эмечета",
       "biography": {
         "present": true,
-        "sha256": "eab068be9bd3b824ea25c1284de8496727309f88df1234db2df855187e380528",
-        "characters": 71,
-        "sentenceCount": 1
+        "sha256": "e7a75171d5fca47d23ea73e5dd74725bfe915d74578cca3424b7b96408087a18",
+        "characters": 152,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation",
-          "reception-influence",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1944,
+            "deathYear": 2017,
+            "text": "1944–2017"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "national-cultural-affiliation",
-          "reception-influence",
           "works"
         ]
       },
@@ -177843,19 +177390,21 @@
       "name": "Чимаманда Нгози Адичи",
       "biography": {
         "present": true,
-        "sha256": "ab8c2d7ffbc773506e9e01d3c13329ed6af5c8cc5e46e3e61f47740c45cb893f",
-        "characters": 102,
-        "sentenceCount": 1
+        "sha256": "36426f88c954ccc44cd37e0c1686f27670166ab723120a72adc568650392f073",
+        "characters": 178,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Purple Hibiscus"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -177863,8 +177412,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -177964,7 +177513,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -177983,25 +177532,37 @@
       "name": "Чинуа Ачебе",
       "biography": {
         "present": true,
-        "sha256": "8f4289ba1351f17054d3db90c584182ca63141e380bffd93593d4f99f82de4c4",
-        "characters": 55,
-        "sentenceCount": 1
+        "sha256": "084f31d8cf288a20ce244eaa9f5fa0fd6ccc6bed6534818e45f30ebd0f8937af",
+        "characters": 140,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "priority-claim"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Things Fall Apart"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1930,
+            "deathYear": 2013,
+            "text": "1930–2013"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "priority-claim"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178123,7 +177684,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -178142,26 +177703,35 @@
       "name": "Кристофер Окигбо",
       "biography": {
         "present": true,
-        "sha256": "819c532791c88a6bb8eb86c471a3a3036e209651c18a0166d8da4ba166fed1cd",
-        "characters": 46,
-        "sentenceCount": 1
+        "sha256": "5d2331d6bacd84b7a4cbb1871ba380463d21f1ae985cc2857e2eb5ed5abc5b7d",
+        "characters": 131,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1932,
+            "deathYear": 1967,
+            "text": "1932–1967"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178299,7 +177869,7 @@
         }
       ],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -178318,27 +177888,37 @@
       "name": "Д. О. Фагунва",
       "biography": {
         "present": true,
-        "sha256": "5b973b2ff2d4836e420c61ada35b6ca27122df76ddc910d43279f9243fee9640",
-        "characters": 69,
-        "sentenceCount": 1
+        "sha256": "a86aa3702edf5eb34e9cd15ac4fe0065345a23820f40fb8164bb030e592e8759",
+        "characters": 150,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
           "language",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "priority-claim",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1903,
+            "deathYear": 1963,
+            "text": "1903–1963"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "language",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "priority-claim",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178378,27 +177958,35 @@
       "name": "Флора Нвапа",
       "biography": {
         "present": true,
-        "sha256": "73c36d0ee39f2e9192c429edd8b3ff58a3a5e8a99b216da44ffa9822da3bc575",
-        "characters": 74,
-        "sentenceCount": 1
+        "sha256": "88344d25810e0b29b44a032fe3d0e5225120b0c20c914ec04b4252ac50df9c7d",
+        "characters": 165,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
-          "reception-influence"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Efuru"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1931,
+            "deathYear": 1993,
+            "text": "1931–1993"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim",
-          "reception-influence"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178503,7 +178091,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -178522,17 +178110,18 @@
       "name": "Хелон Хабила",
       "biography": {
         "present": true,
-        "sha256": "fcd807294b3b30b7cd634017f059f5169ea05bd86ec795d55f846016c764404b",
-        "characters": 60,
-        "sentenceCount": 1
+        "sha256": "b0e3d77d5b6103250514a8a7ebed5ce22b91e1d27ef634b17ef8c17c679a46d3",
+        "characters": 179,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
@@ -178541,7 +178130,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178687,23 +178277,25 @@
       "name": "Теджу Коул",
       "biography": {
         "present": true,
-        "sha256": "40826b1d7861808c30e6b8c7f7e941af8fc6b2aaee7823db20ae5ad17ee3df5a",
-        "characters": 53,
-        "sentenceCount": 1
+        "sha256": "c98ccd42f2ea080c555679bb114ef304ec523156c5658ea2335dcf0339eeb80e",
+        "characters": 159,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Open City"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178805,21 +178397,21 @@
       "name": "Воле Шойинка",
       "biography": {
         "present": true,
-        "sha256": "c6c54f2fb5982565e15e180c963771837c83b92a38e8e6aa1927724197e633f4",
-        "characters": 85,
-        "sentenceCount": 1
+        "sha256": "927830db85028e28611adee4afe525e008c9d8016e1a18e7f7cd23b347e239a1",
+        "characters": 170,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ],
         "nobelYears": [
           1986
         ],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
@@ -178828,9 +178420,9 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178951,23 +178543,25 @@
       "name": "Джон Пуле",
       "biography": {
         "present": true,
-        "sha256": "fecf52d25d4088260d89ceaac7792a8f5d17b2b8d150d14fe7c4a3ccdcbc4e45",
-        "characters": 118,
-        "sentenceCount": 1
+        "sha256": "04f15ece94e20fe2d401fe428772c81d39e9191f3c89d3d66cb6a86980f09ad2",
+        "characters": 156,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "The Shark That Ate the Sun"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -178988,7 +178582,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -179007,23 +178601,25 @@
       "name": "Чхве Мён Ик",
       "biography": {
         "present": true,
-        "sha256": "220b3b9b09232ef3b80adcb59739b03f0e24a0aa084e833e39cd77f399088782",
-        "characters": 103,
-        "sentenceCount": 1
+        "sha256": "1d6157a14b5979ea7e95e62b3b9861822fda4b4da799ac68ecb9a74c20655f9e",
+        "characters": 196,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -179063,25 +178659,33 @@
       "name": "Хан Соря",
       "biography": {
         "present": true,
-        "sha256": "d048b4391efb5e96bfa2537177a8781f34375ec7769d07ad4c33fea40a319a7a",
-        "characters": 84,
+        "sha256": "cd31df889a8667229be2dca4ab6f3c44b04615063a22ac6b96dbbac924a892f1",
+        "characters": 130,
         "sentenceCount": 1
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1900,
+            "deathYear": 1976,
+            "text": "1900–1976"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style"
         ]
       },
       "stagingEvidence": {
@@ -179131,8 +178735,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1900-08-03",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1900",
+            "matchedClaim": {
+              "value": "1900-08-30",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q487273$4553CF53-B796-4519-BFE0-5F9C67C30E8D"
+            },
             "bestRankClaims": [
               {
                 "value": "1900-08-30",
@@ -179147,8 +178760,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1976-04-06",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1976",
             "matchedClaim": {
               "value": "1976-04-06",
               "precision": "day",
@@ -179175,7 +178788,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -179194,24 +178807,30 @@
       "name": "Пэк Нам Рён",
       "biography": {
         "present": true,
-        "sha256": "11d73987ff961e926859014db0d2ea9acfcec1290c5a653066bdc1157ea37960",
-        "characters": 52,
-        "sentenceCount": 1
+        "sha256": "9254673193642a764e662d18da4300db88f3637be0b9e03de09992a262f6e3a6",
+        "characters": 147,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
+          "language",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Friend"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "language",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ]
       },
@@ -179233,7 +178852,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -179252,23 +178871,35 @@
       "name": "Ли Ги Ён",
       "biography": {
         "present": true,
-        "sha256": "5e3c71e0b480a7a7d31945419a9c0f513fcdebdce0e840d1c890715c0addd55c",
-        "characters": 80,
-        "sentenceCount": 1
+        "sha256": "b6f3fd64d751eee142fc56c91dd1c004bef5bde8eff6723deabfa9dad5c21595",
+        "characters": 208,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 4,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1895,
+            "deathYear": 1984,
+            "text": "1895–1984"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -179318,7 +178949,7 @@
         "dates": {
           "birthDate": {
             "status": "wikidata-date-discrepancy",
-            "cardValue": "1895-05-06",
+            "cardValue": "1895",
             "bestRankClaims": [
               {
                 "value": "1896-05-06",
@@ -179333,8 +178964,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1984-08-09",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1984",
             "matchedClaim": {
               "value": "1984-08-09",
               "precision": "day",
@@ -179380,25 +179011,31 @@
       "name": "Блаже Конески",
       "biography": {
         "present": true,
-        "sha256": "49a4fc91498d708cd8873e0105c414fba7e60c98d4612b9bcb7dccbb5f913525",
-        "characters": 284,
-        "sentenceCount": 3
+        "sha256": "79c9f25733e860be4534c4a73d5c7834806c1f5e42633c644c2e5e7b226fa7cd",
+        "characters": 182,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
           "language",
-          "themes-style"
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1921,
+            "deathYear": 1993,
+            "text": "1921–1993"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "language",
-          "themes-style"
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -179520,27 +179157,35 @@
       "name": "Кочо Рацин",
       "biography": {
         "present": true,
-        "sha256": "4a023669074dcc29bb4dd5f62f2d4ead7c18be61b9ab382a91d2e1b00244e24f",
-        "characters": 217,
+        "sha256": "841a44b05c704b11917b3c9b839b85a378d598b5ba702d4f9202aedac0871eb5",
+        "characters": 108,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
-          "priority-claim",
-          "themes-style"
+          "life-dates",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Бели мугри"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1908,
+            "deathYear": 1943,
+            "text": "1908–1943"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language",
-          "priority-claim",
-          "themes-style"
+          "life-dates",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -179643,7 +179288,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -179662,24 +179307,32 @@
       "name": "Аксель Сандемусе",
       "biography": {
         "present": true,
-        "sha256": "dd2cb1753df33670bba8f6737b8a57d76ea42afd7ab521c4200c87d33adf5a93",
-        "characters": 69,
-        "sentenceCount": 1
+        "sha256": "2d7024c2e180ddb352597e1128284fea05b6c6f5b7bc3c727d14927be8604c81",
+        "characters": 183,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "En flyktning krysser sitt spor"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1899,
+            "deathYear": 1965,
+            "text": "1899–1965"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation",
+          "life-dates",
           "works"
         ]
       },
@@ -179802,23 +179455,33 @@
       "name": "Александр Хьелланн",
       "biography": {
         "present": true,
-        "sha256": "bb74bf659bafb39c7004d0b967e9c1a5d915f5c9a7d48b462f7c565fe84b7848",
-        "characters": 75,
-        "sentenceCount": 1
+        "sha256": "3efc5bc53685f1664f4e68e20143077da55a66515d680251a1ad8863767e178e",
+        "characters": 149,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Garman & Worse"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1849,
+            "deathYear": 1906,
+            "text": "1849–1906"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -179941,25 +179604,35 @@
       "name": "Амали Скрам",
       "biography": {
         "present": true,
-        "sha256": "24a2d4f583fdce88bfc075a74baeb147ce73e43b446409e7f702a1efb1160e1e",
-        "characters": 70,
-        "sentenceCount": 1
+        "sha256": "192f0fe855bd25e8cf146fff806152c21f384234bf4a055d8a78b9e375834486",
+        "characters": 195,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "movement-era",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1846,
+            "deathYear": 1905,
+            "text": "1846–1905"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "movement-era",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -179983,14 +179656,14 @@
           "en": "Amalie Skram",
           "ru": "Амалия Скрам"
         },
-        "labelIdentityMatch": true,
+        "labelIdentityMatch": false,
         "cardBirthYear": 1846,
         "wikidataBirthYears": [
           1846
         ],
         "birthYearIdentityStatus": "match",
         "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
+        "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": "assets/writer-portraits/q291676.webp",
         "publicPortraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Amalie_Skram2_(cropped).jpg",
@@ -180080,32 +179753,39 @@
       "name": "Бьёрнстьерне Бьёрнсон",
       "biography": {
         "present": true,
-        "sha256": "c53fcc30c06aea2828ad78de73206e38a0825e1cae8f694fdfeb66de2403d2e3",
-        "characters": 90,
-        "sentenceCount": 1
+        "sha256": "73fa64ad301bff549f4b30c27373c51e7052dc04004c9498c1f69aad1a548fce",
+        "characters": 216,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ],
         "nobelYears": [
           1903
         ],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1832,
+            "deathYear": 1910,
+            "text": "1832–1910"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -180244,28 +179924,38 @@
       "name": "Камилла Коллетт",
       "biography": {
         "present": true,
-        "sha256": "5eb6b1a2d71730e00b1b324606257e8d54f4c8087f40910881776536f6876965",
-        "characters": 105,
-        "sentenceCount": 1
+        "sha256": "71edfdc1962f641cdcbf5de874eeba8650a63fbdd420da952aaf809f57aebab7",
+        "characters": 180,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "movement-era",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Amtmandens Døttre",
+          "I de lange Nætter"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1813,
+            "deathYear": 1895,
+            "text": "1813–1895"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "movement-era",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -180401,23 +180091,27 @@
       "name": "Эрленд Лу",
       "biography": {
         "present": true,
-        "sha256": "3d7a5fcd36e575b935d1b4c01c80373bebe38dbddc7f2a8be78f764cf42524aa",
-        "characters": 60,
-        "sentenceCount": 1
+        "sha256": "c4ec7532d87bbcadf28fb78e8bcfa76919ae24816916f386f15a7f935715514f",
+        "characters": 132,
+        "sentenceCount": 4
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Tatt av kvinnen"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -180519,20 +180213,30 @@
       "name": "Генрик Ибсен",
       "biography": {
         "present": true,
-        "sha256": "fbaaac26da59b8fe98211d705e91f53a3170349ca5304962a982b0a364bece25",
-        "characters": 79,
-        "sentenceCount": 1
+        "sha256": "4280c67a4b04bc92b84ccb87ec58d4e771afff4d9c6e409c14f6717ccdd7df4c",
+        "characters": 160,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 4,
+        "namedWorkTitles": [
+          "Et dukkehjem",
+          "Peer Gynt"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1828,
+            "deathYear": 1906,
+            "text": "1828–1906"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
@@ -180540,7 +180244,7 @@
         ],
         "typesRequiringHumanSources": [
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -180660,7 +180364,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -180679,18 +180383,18 @@
       "name": "Ю Несбё",
       "biography": {
         "present": true,
-        "sha256": "8e94b97654e2227876588163cd6969e48694df992e35ddab9c5acc1df67d9c87",
-        "characters": 84,
-        "sentenceCount": 1
+        "sha256": "dcbad222f3b728bc0302319da541f12e17f4b9abdad6cd952271a88786561bab",
+        "characters": 161,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
@@ -180699,8 +180403,8 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -180800,7 +180504,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -180816,28 +180520,34 @@
       "countryId": "norway",
       "countryName": "Норвегия",
       "writerId": "jon_fosse",
-      "name": "Юн Улав Фоссе",
+      "name": "Юн Фоссе",
       "biography": {
         "present": true,
-        "sha256": "2b7dd27742177af4cc40cec07ef63e48e22c11cf748ff9df05a079f5011d588e",
-        "characters": 230,
-        "sentenceCount": 2
+        "sha256": "0e617671d7ac3155ec53721aa43185b6f9ec3eaef17d8c3862990aeb1cd0471c",
+        "characters": 202,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "national-cultural-affiliation",
+          "nobel",
           "themes-style",
           "works"
         ],
-        "nobelYears": [],
-        "quotedTitleCount": 1,
-        "namedWorkTitles": [],
+        "nobelYears": [
+          2023
+        ],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Nokon kjem til å komme"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "national-cultural-affiliation",
+          "nobel",
           "themes-style",
           "works"
         ]
@@ -180860,7 +180570,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,

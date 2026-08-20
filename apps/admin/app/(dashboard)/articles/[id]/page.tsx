@@ -122,15 +122,10 @@ export default async function EditArticlePage({
     });
   });
   const socialChannels = [
-    { id: "vk", label: "ВКонтакте" },
-    { id: "ok", label: "Одноклассники", optional: true },
     { id: "dzen", label: "Дзен" },
   ].map((channel) => {
     const result = channelState.get(channel.id);
     if (!socialRequest) return { ...channel, tone: "idle", status: "Не отправлялось" };
-    if (!result && channel.optional) {
-      return { ...channel, tone: "idle", status: "Подключается позже" };
-    }
     if (!result) return { ...channel, tone: "waiting", status: "Ожидает отправки" };
     if (result.action === "social_publish.succeeded") {
       return {
@@ -203,7 +198,7 @@ export default async function EditArticlePage({
       )}
       {query.social === "requested" && (
         <p className="form-message form-success">
-          Отправка во «ВКонтакте» и RSS Дзена поставлена в очередь.
+          Проверка публикации в RSS Дзена поставлена в очередь.
         </p>
       )}
       {query.social === "retrying" && (
@@ -218,15 +213,16 @@ export default async function EditArticlePage({
             <span className="eyebrow">Распространение</span>
             <h2 id="social-publication-title">Автопостинг публикации</h2>
             <p>
-              После публикации сайт сам передаёт материал в подключённые каналы,
-              фиксирует результат и повторяет временно неудавшиеся попытки.
+              После публикации сайт проверяет материал и выбранную ведущую
+              иллюстрацию в RSS Дзена, фиксирует результат и повторяет временно
+              неудавшиеся попытки.
             </p>
           </div>
           {article.status === "published" && (
             <form action={requestSocialPublicationAction}>
               <input type="hidden" name="id" value={article.id} />
-              <ConfirmSubmitButton message="Повторить только незавершённую отправку? Если прежняя доставка уже полностью завершена, будет создана новая публикация.">
-                Повторить отправку
+              <ConfirmSubmitButton message="Повторить только незавершённую проверку RSS Дзена? Если прежняя проверка уже завершена, будет создано новое задание.">
+                Повторить проверку Дзена
               </ConfirmSubmitButton>
             </form>
           )}
@@ -239,11 +235,17 @@ export default async function EditArticlePage({
               <small>{channel.status}</small>
             </div>
           ))}
+          <div className="social-channel is-idle">
+            <span aria-hidden="true" />
+            <strong>ВКонтакте</strong>
+            <small>Автопубликация отключена</small>
+          </div>
         </div>
         <small className="social-publication-note">
-          Для Дзена формируется RSS-канал журнала. VK получает текст и ссылку от
-          имени сообщества; обложка прикрепляется при наличии пользовательского
-          токена администратора. «Одноклассники» будут подключены отдельным этапом.
+          Для Дзена формируется RSS-канал журнала. Обложкой становится первая
+          пригодная иллюстрация в тексте; отдельная обложка статьи используется
+          только как резерв. Автопубликация во ВКонтакте отключена редакционной
+          политикой и не блокирует выпуск.
         </small>
       </section>
       <ArticleEditor

@@ -20,6 +20,23 @@ export function isSiteCopySystemBlock(block) {
   return objectValue(block?.settings).systemKey === SITE_COPY_SYSTEM_KEY;
 }
 
+export function normalizeHomepageEditorialCopy(block) {
+  const settings = objectValue(block?.settings);
+  if (
+    settings.coreSectionKey !== "book-month" ||
+    settings.eyebrow !== "Выбор энциклопедии"
+  ) {
+    return block;
+  }
+  return {
+    ...block,
+    settings: {
+      ...settings,
+      eyebrow: "Выбор редакции",
+    },
+  };
+}
+
 export function extractSiteCopyFromHomepageBlocks(blocks) {
   const systemBlocks = blocks
     .filter(isSiteCopySystemBlock)
@@ -32,7 +49,9 @@ export function extractSiteCopyFromHomepageBlocks(blocks) {
   const storedCopy = objectValue(settings.siteCopy);
 
   return {
-    homepageBlocks: blocks.filter((block) => !isSiteCopySystemBlock(block)),
+    homepageBlocks: blocks
+      .filter((block) => !isSiteCopySystemBlock(block))
+      .map(normalizeHomepageEditorialCopy),
     siteCopy: {
       ru: localeCopy(storedCopy.ru),
       en: localeCopy(storedCopy.en),

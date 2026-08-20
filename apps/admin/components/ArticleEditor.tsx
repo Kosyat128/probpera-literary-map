@@ -57,6 +57,8 @@ import {
   type EditorImageReplaceDetail,
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
+import { ArticleTextTone } from "@/components/ArticleTextTone";
+import { articleTextTones } from "@/lib/article-content-presentation";
 
 type Category = { id: string; name: string; slug: string };
 type ImageUploadTarget = "article" | "cover";
@@ -491,6 +493,7 @@ export default function ArticleEditor({
       Underline,
       Link.configure({ openOnClick: false, autolink: true }),
       EditorialImage,
+      ArticleTextTone,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({
         placeholder:
@@ -1008,8 +1011,54 @@ export default function ArticleEditor({
       setTemplateMessage("Место для изображения заполнено.");
       return;
     }
-    editor.chain().focus().setImage(attributes).run();
-    setTemplateMessage("Изображение вставлено в материал.");
+    const insertedAsLead = insertImageAtLogicalPosition(attributes);
+    setTemplateMessage(
+      insertedAsLead
+        ? "Первая иллюстрация размещена после вступления и перед первым смысловым разделом."
+        : "Изображение вставлено в материал."
+    );
+  };
+
+  const insertImageAtLogicalPosition = (attributes: {
+    src: string;
+    alt: string;
+    caption: string;
+    layout: EditorialImageLayout;
+  }) => {
+    if (!editor) return false;
+    let hasImage = false;
+    editor.state.doc.descendants((node) => {
+      if (node.type.name === "image") {
+        hasImage = true;
+        return false;
+      }
+      return !hasImage;
+    });
+    if (hasImage) {
+      editor.chain().focus().setImage(attributes).run();
+      return false;
+    }
+
+    let firstHeadingPosition: number | null = null;
+    let firstBlockEnd: number | null = null;
+    editor.state.doc.forEach((node, offset) => {
+      if (firstBlockEnd === null) firstBlockEnd = offset + node.nodeSize;
+      if (
+        firstHeadingPosition === null &&
+        node.type.name === "heading" &&
+        Number(node.attrs.level || 0) === 2
+      ) {
+        firstHeadingPosition = offset;
+      }
+    });
+    const insertionPosition =
+      firstHeadingPosition ?? firstBlockEnd ?? editor.state.doc.content.size;
+    editor
+      .chain()
+      .focus()
+      .insertContentAt(insertionPosition, { type: "image", attrs: attributes })
+      .run();
+    return true;
   };
 
   const rememberImageSelection = () => {
@@ -1211,8 +1260,12 @@ export default function ArticleEditor({
       } else if (replaceSelectedMediaSlot(editor, attributes)) {
         setImageUploadMessage("Место для фотографии заполнено загруженным изображением.");
       } else {
-        editor.chain().focus().setImage(attributes).run();
-        setImageUploadMessage("Изображение загружено и вставлено в статью.");
+        const insertedAsLead = insertImageAtLogicalPosition(attributes);
+        setImageUploadMessage(
+          insertedAsLead
+            ? "Изображение загружено и автоматически размещено после вступления, перед первым разделом."
+            : "Изображение загружено и вставлено в статью."
+        );
       }
       setTemplateMessage("Изображение готово. При необходимости выберите его и измените расположение.");
       setIsDirty(true);
@@ -1931,6 +1984,36 @@ export default function ArticleEditor({
                 <ToolbarButton label="Фото по HTTPS-адресу" active={editor?.isActive("image")} onClick={addImage} />
                 <ToolbarButton label="Галерея" onClick={() => addMediaCollection("gallery")} />
                 <ToolbarButton label="Слайдер" onClick={() => addMediaCollection("slider")} />
+              </ToolbarMenu>
+
+              <ToolbarMenu label="Цвет текста">
+                <div className="editor-text-tone-palette" role="group" aria-label="Безопасная палитра цвета текста">
+                  <button
+                    type="button"
+                    className={!editor?.isActive("textTone") ? "is-active" : undefined}
+                    aria-pressed={!editor?.isActive("textTone")}
+                    onClick={() => editor?.chain().focus().unsetTextTone().run()}
+                  >
+                    <span className="editor-text-tone-reset" aria-hidden="true">A</span>
+                    <span><strong>Основной</strong><small>Цвет темы</small></span>
+                  </button>
+                  {articleTextTones.map((tone) => (
+                    <button
+                      type="button"
+                      key={tone.id}
+                      className={editor?.isActive("textTone", { tone: tone.id }) ? "is-active" : undefined}
+                      data-text-tone={tone.id}
+                      aria-pressed={editor?.isActive("textTone", { tone: tone.id })}
+                      onClick={() => editor?.chain().focus().setTextTone(tone.id).run()}
+                    >
+                      <span className="editor-text-tone-swatch" aria-hidden="true" />
+                      <span><strong>{tone.label}</strong><small>AAA · {tone.contrastRatio}:1</small></span>
+                    </button>
+                  ))}
+                </div>
+                <small className="editor-text-tone-note">
+                  Палитра использует редакционные токены с контрастом AAA на светлой странице. Произвольный CSS не сохраняется.
+                </small>
               </ToolbarMenu>
 
               <ToolbarMenu label="Ещё">

@@ -3864,6 +3864,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Настройки статистики",
+    "group": "Весь интерфейс",
+    "label": "Настройки статистики",
+    "defaultRu": "Настройки статистики",
+    "defaultEn": "Analytics settings",
+    "multiline": false
+  },
+  {
     "key": "interface.Настройки чтения",
     "group": "Весь интерфейс",
     "label": "Настройки чтения",
@@ -6208,6 +6216,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Разрешить статистику",
+    "group": "Весь интерфейс",
+    "label": "Разрешить статистику",
+    "defaultRu": "Разрешить статистику",
+    "defaultEn": "Allow analytics",
+    "multiline": false
+  },
+  {
     "key": "interface.Ранние издания и классика",
     "group": "Весь интерфейс",
     "label": "Ранние издания и классика",
@@ -7888,11 +7904,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Только необходимые",
+    "group": "Весь интерфейс",
+    "label": "Только необходимые",
+    "defaultRu": "Только необходимые",
+    "defaultEn": "Necessary only",
+    "multiline": false
+  },
+  {
     "key": "country.TO",
     "group": "Названия стран",
     "label": "Название страны: Тонга",
     "defaultRu": "Тонга",
     "defaultEn": "Tonga",
+    "multiline": false
+  },
+  {
+    "key": "interface.Точная и бережная статистика",
+    "group": "Весь интерфейс",
+    "label": "Точная и бережная статистика",
+    "defaultRu": "Точная и бережная статистика",
+    "defaultEn": "Accurate, privacy-conscious analytics",
     "multiline": false
   },
   {
@@ -8758,6 +8790,14 @@
     "defaultRu": "Ямайка",
     "defaultEn": "Jamaica",
     "multiline": false
+  },
+  {
+    "key": "interface.Яндекс Метрика поможет увидеть посещаемость по странам и регионам. Она загрузится только с вашего разрешения; Вебвизор отключён.",
+    "group": "Весь интерфейс",
+    "label": "Яндекс Метрика поможет увидеть посещаемость по странам и регионам. Она загрузится только с вашего разрешения; Вебвизор отключён.",
+    "defaultRu": "Яндекс Метрика поможет увидеть посещаемость по странам и регионам. Она загрузится только с вашего разрешения; Вебвизор отключён.",
+    "defaultEn": "Yandex Metrica helps us understand readership by country and region. It loads only with your permission; session replay is disabled.",
+    "multiline": true
   },
   {
     "key": "interface.Япония",

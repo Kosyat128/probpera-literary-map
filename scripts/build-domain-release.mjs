@@ -31,10 +31,12 @@ function run(command, args) {
   });
 }
 
+await run(nodeCommand, ["scripts/audit-analytics-config.mjs"]);
 await run(nodeCommand, [npmCli, "run", "build"]);
 await fs.writeFile(path.join(projectRoot, "dist", "CNAME"), "probpera.ru\n", "utf8");
 await fs.writeFile(path.join(projectRoot, "dist", ".nojekyll"), "", "utf8");
 await run(nodeCommand, ["scripts/audit-domain-release.mjs"]);
+await run(nodeCommand, ["scripts/audit-seo-release.mjs"]);
 
 console.log(
   "Доменный пакет готов в dist. DNS и настройки GitHub Pages этим действием не изменены."

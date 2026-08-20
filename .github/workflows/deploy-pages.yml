@@ -103,6 +103,12 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
 
+      - name: Verify production analytics configuration
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run analytics:config:check -- --require-env
+        env:
+          YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
+
       - name: Build production site
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run build:domain
@@ -111,6 +117,7 @@ jobs:
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           VITE_BOOSTY_URL: ${{ vars.VITE_BOOSTY_URL }}
+          YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
 
       - name: Enforce production performance budget
         if: steps.release_gate.outputs.should_deploy == 'true'
@@ -189,23 +196,18 @@ jobs:
         with:
           node-version: 24
 
-      - name: Publish pending articles to VK and Dzen feed
+      - name: Install social publisher dependencies
+        run: npm ci
+
+      - name: Verify pending articles in the Dzen feed
         id: social_publish
         run: npm run content:social:publish
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           PUBLIC_SITE_URL: https://probpera.ru
-          SOCIAL_REQUIRED_PLATFORMS: vk,dzen
+          SOCIAL_REQUIRED_PLATFORMS: dzen
           SOCIAL_BOOTSTRAP_LATEST: "true"
-          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
-          VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
-          VK_GROUP_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
-          VK_USER_ACCESS_TOKEN: ${{ secrets.VK_USER_ACCESS_TOKEN }}
-          OK_GROUP_ID: ${{ secrets.OK_GROUP_ID }}
-          OK_APPLICATION_KEY: ${{ secrets.OK_APPLICATION_KEY }}
-          OK_ACCESS_TOKEN: ${{ secrets.OK_ACCESS_TOKEN }}
-          OK_SESSION_SECRET_KEY: ${{ secrets.OK_SESSION_SECRET_KEY }}
           DZEN_RSS_URL: https://probpera.ru/rss.xml
 
       - name: Summarize social distribution
@@ -216,10 +218,10 @@ jobs:
             echo "## Автопубликация материалов"
             echo
             if [[ "${{ steps.social_publish.outcome }}" == "success" ]]; then
-              echo "✅ Обязательные каналы (ВКонтакте и RSS Дзена) обработаны успешно."
+              echo "✅ RSS Дзена проверен: материал и ведущая иллюстрация доступны."
             else
               echo "❌ Не все обязательные каналы обработаны. Незавершённые задания повторит отдельный social workflow."
             fi
             echo
-            echo "Одноклассники пока не являются обязательным каналом и не блокируют выпуск до настройки доступов."
+            echo "Автопубликация во ВКонтакте отключена редакционной политикой."
           } >> "$GITHUB_STEP_SUMMARY"

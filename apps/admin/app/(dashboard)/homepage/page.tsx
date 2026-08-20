@@ -69,7 +69,7 @@ const coreSectionDefaults = [
   {
     key: "book-month",
     label: "Книга месяца",
-    eyebrow: "Выбор энциклопедии",
+    eyebrow: "Выбор редакции",
     title: "Книга месяца",
     description:
       "Каждый месяц энциклопедия выбирает новое произведение из единой базы стран.",

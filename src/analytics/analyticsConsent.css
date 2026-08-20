@@ -1,0 +1,107 @@
+.analytics-consent {
+  position: fixed;
+  z-index: 12000;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: max(16px, env(safe-area-inset-left));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 920px;
+  margin-inline: auto;
+  padding: 16px 18px;
+  color: #fffaf1;
+  background: rgba(34, 12, 50, 0.96);
+  border: 1px solid rgba(231, 199, 121, 0.48);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(11, 3, 18, 0.38);
+  backdrop-filter: blur(16px);
+}
+
+.analytics-consent strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+}
+
+.analytics-consent p {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(255, 250, 241, 0.82);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.analytics-consent__actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.analytics-consent button {
+  min-height: 44px;
+  padding: 0 15px;
+  color: #2f143d;
+  font: inherit;
+  font-weight: 700;
+  background: #f0cf7b;
+  border: 1px solid #f5de9e;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.analytics-consent button:hover,
+.analytics-consent button:focus-visible {
+  background: #ffe8aa;
+}
+
+.analytics-consent .analytics-consent__secondary {
+  color: #fffaf1;
+  background: transparent;
+  border-color: rgba(255, 250, 241, 0.36);
+}
+
+.analytics-consent-settings {
+  position: fixed;
+  z-index: 11999;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  min-height: 44px;
+  padding: 0 13px;
+  color: #fffaf1;
+  font: 600 0.76rem/1 system-ui, sans-serif;
+  background: rgba(34, 12, 50, 0.9);
+  border: 1px solid rgba(231, 199, 121, 0.52);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(11, 3, 18, 0.24);
+  cursor: pointer;
+}
+
+.analytics-consent-settings:hover,
+.analytics-consent-settings:focus-visible {
+  color: #2f143d;
+  background: #f0cf7b;
+}
+
+@media (max-width: 720px) {
+  .analytics-consent {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .analytics-consent__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .analytics-consent {
+    background: #220c32;
+    backdrop-filter: none;
+  }
+}
