@@ -67,7 +67,8 @@ jobs:
           mkdir -p backup/database
           bash scripts/database/supabase-database-safety.sh validate-target
           bash scripts/database/supabase-database-safety.sh dump \
-            backup/database/probpera.dump
+            backup/database/probpera.dump \
+            backup/database/auth-user-ids.seed
           npm run backup:storage
 
       - name: Encrypt and verify archive
@@ -75,32 +76,16 @@ jobs:
         env:
           BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
         run: |
+          umask 077
           stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
           archive="probpera-backup-${stamp}.tar.gz.enc"
           tar -czf backup.tar.gz backup
           bash scripts/database/supabase-database-safety.sh encrypt-verify \
             backup.tar.gz "$archive" verify.tar.gz
           tar -xOf verify.tar.gz backup/database/probpera.dump > verify.dump
+          tar -xOf verify.tar.gz backup/database/auth-user-ids.seed > verify-auth-user-ids.seed
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
           if [[ "$(date -u +%d)" == "01" ]]; then echo "retention=90" >> "$GITHUB_OUTPUT"; else echo "retention=30" >> "$GITHUB_OUTPUT"; fi
-
-      - name: Restore database into an isolated PostgreSQL service
-        env:
-          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
-        run: |
-          # The shared helper uses pg_restore --exit-on-error, probes
-          # public.get_editorial_schema_health(), and classifies the restored
-          # database as pre-20260814 or 20260814-current.
-          bash scripts/database/supabase-database-safety.sh restore-drill \
-            verify.dump "" backup/restore-result.env
-          source backup/restore-result.env
-          {
-            echo "Restore drill passed with $restored_articles article rows."
-            echo "Restored publication schema: $publication_schema."
-            if [[ "$publication_schema" == "pre-20260814" ]]; then
-              echo "Apply 20260814 after this verified pre-migration backup; the admin schema health check must then report current."
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload encrypted backup
         uses: actions/upload-artifact@v7
@@ -112,8 +97,30 @@ jobs:
           retention-days: ${{ steps.archive.outputs.retention }}
           if-no-files-found: error
 
+      - name: Restore application schema into an isolated Supabase database
+        env:
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          # The encrypted artifact retains the full custom dump. The shared
+          # helper waits for final Supabase initialization, verifies Vault, and
+          # strictly restores the portable public application slice.
+          bash scripts/database/supabase-database-safety.sh restore-drill \
+            verify.dump verify-auth-user-ids.seed "" backup/restore-result.env
+          source backup/restore-result.env
+          [[ "$restore_scope" == "public-application-schema" ]] || exit 1
+          [[ "$identity_seed" == "auth-user-id-sidecar-v1" ]] || exit 1
+          [[ "$identity_seed_sha256" =~ ^[0-9a-f]{64}$ ]] || exit 1
+          {
+            echo "Application-schema restore drill passed with $restored_articles article rows and $restored_auth_users verified UUID-only auth identity stubs."
+            echo "Verified auth identity sidecar SHA-256: $identity_seed_sha256."
+            echo "Restored publication schema: $publication_schema."
+            if [[ "$publication_schema" == "pre-20260814" ]]; then
+              echo "Apply 20260814 after this verified pre-migration backup; the admin schema health check must then report current."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Remove plaintext backup material
         if: always()
         run: |
           rm -rf backup
-          rm -f backup.tar.gz verify.tar.gz verify.dump
+          rm -f backup.tar.gz verify.tar.gz verify.dump verify-auth-user-ids.seed

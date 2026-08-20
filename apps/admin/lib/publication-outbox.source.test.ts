@@ -18,6 +18,10 @@ const backupWorkflow = readFileSync(
   path.join(root, ".github/workflows/backup.yml"),
   "utf8"
 );
+const databaseSafety = readFileSync(
+  path.join(root, "scripts/database/supabase-database-safety.sh"),
+  "utf8"
+);
 
 describe("transactional public build outbox", () => {
   it("enqueues every public editorial mutation inside its transaction", () => {
@@ -46,10 +50,16 @@ describe("transactional public build outbox", () => {
     expect(backupWorkflow).toContain(
       "public.ecr.aws/supabase/postgres:17.6.1.136"
     );
-    expect(backupWorkflow).toContain("--exit-on-error");
-    expect(backupWorkflow).toContain("public.get_editorial_schema_health()");
-    expect(backupWorkflow).toContain("pre-20260814");
-    expect(backupWorkflow).toContain("20260814-current");
-    expect(backupWorkflow).toContain("Restore drill passed");
+    expect(backupWorkflow).toContain(
+      "bash scripts/database/supabase-database-safety.sh restore-drill"
+    );
+    expect(backupWorkflow).toContain(
+      '[[ "$restore_scope" == "public-application-schema" ]]'
+    );
+    expect(databaseSafety).toContain("--exit-on-error");
+    expect(databaseSafety).toContain("public.get_editorial_schema_health()");
+    expect(databaseSafety).toContain("pre-20260814");
+    expect(databaseSafety).toContain("20260814-current");
+    expect(backupWorkflow).toContain("Application-schema restore drill passed");
   });
 });

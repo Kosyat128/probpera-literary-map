@@ -26,6 +26,22 @@ const backupWorkflow = readFileSync(
   path.join(root, ".github/workflows/backup.yml"),
   "utf8"
 );
+const dumpImplementation = helper.slice(
+  helper.indexOf("command_dump()"),
+  helper.indexOf("command_encrypt_verify()")
+);
+const readinessImplementation = helper.slice(
+  helper.indexOf("wait_for_initialized_restore_database()"),
+  helper.indexOf("assert_empty_application_schema()")
+);
+const identityValidationImplementation = helper.slice(
+  helper.indexOf("validate_identity_sidecar()"),
+  helper.indexOf("wait_for_initialized_restore_database()")
+);
+const restoreImplementation = helper.slice(
+  helper.indexOf("command_restore_drill()"),
+  helper.indexOf("command_apply_plan()")
+);
 
 describe("guarded production database reconciliation", () => {
   it("builds only the reviewed ordered migration plan", () => {
@@ -113,22 +129,151 @@ describe("guarded production database reconciliation", () => {
   it("passes the validated database URI explicitly to every remote client", () => {
     expect(
       helper.match(/--dbname="\$SUPABASE_DB_URL"/gu)
-    ).toHaveLength(4);
+    ).toHaveLength(5);
     expect(helper).not.toContain("PGDATABASE");
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
   });
 
-  it("restores every dump entry into a proven-empty template0 database", () => {
-    expect(helper).toContain("--template=template0");
-    expect(helper).toContain("Isolated restore target is not empty.");
-    expect(helper).toContain("--exit-on-error");
-    expect(helper).not.toMatch(/^\s+--clean(?:\s|\\)/mu);
-    expect(helper).not.toMatch(/^\s+--if-exists(?:\s|\\)/mu);
-    expect(helper).not.toMatch(/--(?:exclude-schema|exclude-table|use-list)/u);
+  it("waits for the final initialized Supabase server and exact Vault state", () => {
+    expect(restoreImplementation).toContain(
+      "--env POSTGRES_DB=probpera_restore"
+    );
+    expect(readinessImplementation).toContain("/proc/1/comm");
+    expect(readinessImplementation).toContain(
+      '[ "$(cat /proc/1/comm)" = "postgres" ]'
+    );
+    expect(readinessImplementation).toContain("pg_isready");
+    expect(readinessImplementation).toContain(
+      "--username=postgres --dbname=probpera_restore"
+    );
+    expect(readinessImplementation).toContain(
+      "e.extname = 'supabase_vault'"
+    );
+    expect(readinessImplementation).toContain(
+      "n.nspname = 'vault'"
+    );
+    expect(readinessImplementation).toContain(
+      "e.extversion = a.default_version"
+    );
+    expect(readinessImplementation).toContain(
+      "to_regclass('vault.secrets') is not null"
+    );
+    expect(readinessImplementation).toContain(
+      "to_regclass('auth.users') is not null"
+    );
+    expect(readinessImplementation).toContain("column_name = 'id'");
+    expect(readinessImplementation).toContain("udt_name = 'uuid'");
+    expect(readinessImplementation).toContain("is_nullable = 'NO'");
+    expect(readinessImplementation).toContain("column_name <> 'id'");
+    expect(readinessImplementation).toContain("column_default is null");
+    expect(readinessImplementation).toContain("is_identity = 'NO'");
+    expect(readinessImplementation).toContain("is_generated = 'NEVER'");
+    expect(readinessImplementation).toContain("c.contype in ('p', 'u')");
+    expect(readinessImplementation).toContain("cardinality(c.conkey) = 1");
+    expect(readinessImplementation).toContain(
+      '"t|t|t|t|t|t|t|t"'
+    );
+    expect(readinessImplementation).toContain(
+      "did not reach the exact initialized platform state"
+    );
+    expect(readinessImplementation).not.toContain("|| true");
+    expect(restoreImplementation).not.toMatch(
+      /create\s+extension(?:\s+if\s+not\s+exists)?\s+supabase_vault/iu
+    );
+  });
+
+  it("keeps a full recovery dump and strictly drills the public application slice", () => {
+    expect(dumpImplementation).toContain("--format=custom");
+    expect(dumpImplementation).not.toContain("--schema=public");
+    expect(restoreImplementation).toContain(
+      "assert_empty_application_schema"
+    );
+    expect(helper).toContain(
+      "Isolated application schema is not empty."
+    );
+    expect(restoreImplementation).toContain("--schema=public");
+    expect(restoreImplementation).not.toContain("--data-only");
+    expect(restoreImplementation).not.toContain("--schema=auth");
+    expect(restoreImplementation).not.toContain("--table=users");
+    expect(restoreImplementation).toContain("--strict-names");
+    expect(restoreImplementation).toContain("--exit-on-error");
+    expect(restoreImplementation).toContain(
+      "restore_scope=public-application-schema"
+    );
+    expect(restoreImplementation).toContain(
+      "identity_seed=auth-user-id-sidecar-v1"
+    );
+    expect(restoreImplementation).toContain("identity_seed_sha256=");
+    expect(
+      restoreImplementation.match(
+        /\s+docker exec "\$RESTORE_CONTAINER" pg_restore \\/gu
+      )
+    ).toHaveLength(1);
+    expect(restoreImplementation).not.toMatch(/^\s+--clean(?:\s|\\)/mu);
+    expect(restoreImplementation).not.toMatch(/^\s+--if-exists(?:\s|\\)/mu);
+    expect(restoreImplementation).not.toMatch(
+      /--(?:exclude-schema|exclude-table|use-list)/u
+    );
+    expect(restoreImplementation.indexOf("wait_for_initialized_restore_database"))
+      .toBeLessThan(restoreImplementation.indexOf("assert_empty_application_schema"));
+    expect(restoreImplementation.indexOf("assert_empty_application_schema"))
+      .toBeLessThan(restoreImplementation.indexOf("pg_restore"));
+  });
+
+  it("exports, validates, and seeds only canonical auth user UUIDs", () => {
+    expect(dumpImplementation).toContain(
+      "select lower(id::text) from auth.users order by id;"
+    );
+    expect(dumpImplementation).toContain("format=probpera-auth-user-ids-v1");
+    expect(dumpImplementation).toContain("count=%s");
+    expect(dumpImplementation).toContain("sha256=%s");
+    expect(dumpImplementation).toContain("LC_ALL=C sort -c -u");
+    expect(dumpImplementation).not.toMatch(
+      /auth\.users[^\n]*(?:email|phone|password|metadata)/iu
+    );
+
+    expect(identityValidationImplementation).toContain(
+      "format=probpera-auth-user-ids-v1"
+    );
+    expect(identityValidationImplementation).toContain(
+      "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    );
+    expect(identityValidationImplementation).toContain("cmp --silent");
+    expect(identityValidationImplementation).toContain("LC_ALL=C sort -c -u");
+    expect(identityValidationImplementation).toContain(
+      "count does not match its body"
+    );
+    expect(identityValidationImplementation).toContain(
+      "digest does not match its body"
+    );
+
+    expect(restoreImplementation).toContain(
+      'validate_identity_sidecar "$identity_sidecar"'
+    );
+    expect(restoreImplementation).toContain(
+      "\\copy auth.users (id) from pstdin with (format text)"
+    );
+    expect(restoreImplementation).not.toMatch(
+      /(?:insert|copy|\\copy)\s+(?:into\s+)?auth\.users\s*\((?!id\))/iu
+    );
+    expect(identityValidationImplementation).toContain(
+      'cmp --silent "$RESTORE_IDENTITY_BODY" "$RESTORE_IDENTITY_RAW"'
+    );
+    expect(identityValidationImplementation).toContain(
+      '"$restored_digest" == "$RESTORE_IDENTITY_DIGEST"'
+    );
+    expect(identityValidationImplementation).toContain(
+      '"$restored_count" == "$RESTORE_IDENTITY_COUNT"'
+    );
+    expect(
+      restoreImplementation.match(/verify_seeded_identity_ids/gu)
+    ).toHaveLength(2);
   });
 
   it("keeps restore cleanup state alive until the EXIT trap runs", () => {
     expect(helper).toContain('RESTORE_CONTAINER=""');
+    expect(helper).toContain('RESTORE_IDENTITY_BODY=""');
+    expect(helper).toContain('RESTORE_IDENTITY_RAW=""');
     expect(helper).toContain(
       'local active_container="${RESTORE_CONTAINER:-}"'
     );
@@ -160,6 +305,76 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
       "schema_health=20260820_literary_work_cover_artworks;outbox=true;outbox_rpc=true;publication_triggers=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=11;invalid_indexes=0"
+    );
+    expect(workflowSource).toContain(
+      '[[ "$restore_scope" == "public-application-schema" ]]'
+    );
+    expect(workflowSource).toContain(
+      '[[ "$identity_seed" == "auth-user-id-sidecar-v1" ]]'
+    );
+    expect(backupWorkflow).toContain(
+      '[[ "$restore_scope" == "public-application-schema" ]]'
+    );
+    expect(backupWorkflow).toContain(
+      '[[ "$identity_seed" == "auth-user-id-sidecar-v1" ]]'
+    );
+    expect(workflowSource).toContain(
+      '[[ "$identity_seed_sha256" =~ ^[0-9a-f]{64}$ ]]'
+    );
+    expect(backupWorkflow).toContain(
+      '[[ "$identity_seed_sha256" =~ ^[0-9a-f]{64}$ ]]'
+    );
+    expect(workflowSource).toContain(
+      "Verified auth identity sidecar SHA-256: $identity_seed_sha256"
+    );
+    expect(backupWorkflow).toContain(
+      "Verified auth identity sidecar SHA-256: $identity_seed_sha256"
+    );
+    expect(backupWorkflow).toContain(
+      "backup/database/auth-user-ids.seed"
+    );
+    expect(backupWorkflow).toContain("verify-auth-user-ids.seed");
+    expect(backupWorkflow).toMatch(
+      /- name: Encrypt and verify archive[\s\S]*?run: \|\n\s+umask 077/u
+    );
+    expect(workflowSource).toContain("auth-user-ids.seed");
+    expect(workflowSource).toContain("identity_archive=$identity_archive");
+    expect(workflowSource).toContain(
+      "${{ steps.archive.outputs.identity_archive }}.sha256"
+    );
+    const backupUpload = backupWorkflow.slice(
+      backupWorkflow.indexOf("- name: Upload encrypted backup"),
+      backupWorkflow.indexOf(
+        "- name: Restore application schema into an isolated Supabase database"
+      )
+    );
+    const reconciliationUpload = workflowSource.slice(
+      workflowSource.indexOf(
+        "- name: Persist encrypted backup before any production mutation"
+      ),
+      workflowSource.indexOf(
+        "- name: Restore and reconcile the isolated application schema"
+      )
+    );
+    expect(backupUpload).not.toContain("verify-auth-user-ids.seed");
+    expect(backupUpload).not.toContain("backup/database/auth-user-ids.seed");
+    expect(reconciliationUpload).not.toContain(
+      "reconciliation/auth-user-ids.seed"
+    );
+    expect(reconciliationUpload).not.toContain(
+      "reconciliation/auth-user-ids.verified.seed"
+    );
+    expect(
+      backupWorkflow.indexOf("Upload encrypted backup")
+    ).toBeLessThan(
+      backupWorkflow.indexOf(
+        "Restore application schema into an isolated Supabase database"
+      )
+    );
+    expect(
+      workflowSource.indexOf("Persist encrypted backup before any production mutation")
+    ).toBeLessThan(
+      workflowSource.indexOf("Restore and reconcile the isolated application schema")
     );
     expect(
       workflowSource.indexOf("Persist encrypted backup before any production mutation")

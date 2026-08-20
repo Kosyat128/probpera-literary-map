@@ -108,12 +108,15 @@ jobs:
           DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
         run: bash scripts/database/supabase-database-safety.sh validate-target
 
-      - name: Create custom-format production backup
+      - name: Create full custom-format production backup
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
-        run: bash scripts/database/supabase-database-safety.sh dump reconciliation/production-before.dump
+        run: |
+          bash scripts/database/supabase-database-safety.sh dump \
+            reconciliation/production-before.dump \
+            reconciliation/auth-user-ids.seed
 
       - name: Encrypt and verify pre-migration backup
         id: archive
@@ -122,12 +125,18 @@ jobs:
         run: |
           set -Eeuo pipefail
           archive="reconciliation/probpera-pre-migration-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.dump.enc"
+          identity_archive="reconciliation/probpera-auth-user-ids-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.seed.enc"
           bash scripts/database/supabase-database-safety.sh encrypt-verify \
             reconciliation/production-before.dump \
             "$archive" \
             reconciliation/production-before.verified.dump
+          bash scripts/database/supabase-database-safety.sh encrypt-verify \
+            reconciliation/auth-user-ids.seed \
+            "$identity_archive" \
+            reconciliation/auth-user-ids.verified.seed
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
-          echo "- Encrypted pre-migration backup: verified byte-for-byte" >> reconciliation/summary.md
+          echo "identity_archive=$identity_archive" >> "$GITHUB_OUTPUT"
+          echo "- Encrypted full-database pre-migration backup and UUID-only auth identity sidecar: verified byte-for-byte" >> reconciliation/summary.md
 
       - name: Persist encrypted backup before any production mutation
         uses: actions/upload-artifact@v7
@@ -136,25 +145,32 @@ jobs:
           path: |
             ${{ steps.archive.outputs.archive }}
             ${{ steps.archive.outputs.archive }}.sha256
+            ${{ steps.archive.outputs.identity_archive }}
+            ${{ steps.archive.outputs.identity_archive }}.sha256
             reconciliation/migration-manifest.json
             reconciliation/summary.md
           retention-days: 90
           if-no-files-found: error
 
-      - name: Restore and reconcile the isolated production copy
+      - name: Restore and reconcile the isolated application schema
         env:
           DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
         run: |
           set -Eeuo pipefail
           bash scripts/database/supabase-database-safety.sh restore-drill \
             reconciliation/production-before.verified.dump \
+            reconciliation/auth-user-ids.verified.seed \
             reconciliation/plan.sql \
             reconciliation/restore-result.env
           source reconciliation/restore-result.env
+          [[ "$restore_scope" == "public-application-schema" ]] || exit 1
+          [[ "$identity_seed" == "auth-user-id-sidecar-v1" ]] || exit 1
+          [[ "$identity_seed_sha256" =~ ^[0-9a-f]{64}$ ]] || exit 1
           [[ "$migration_plan" == "verified" ]] || exit 1
           [[ "$publication_schema" == "20260814-current" ]] || exit 1
           printf '%s\n' \
-            "- Isolated restore drill: passed ($restored_articles article rows)" \
+            "- Isolated application-schema restore drill: passed ($restored_articles article rows; $restored_auth_users verified UUID-only auth identity stubs)" \
+            "- Verified auth identity sidecar SHA-256: $identity_seed_sha256" \
             "- Isolated migration plan: passed" \
             >> reconciliation/summary.md
 
@@ -229,6 +245,8 @@ jobs:
           rm -f \
             reconciliation/production-before.dump \
             reconciliation/production-before.verified.dump \
+            reconciliation/auth-user-ids.seed \
+            reconciliation/auth-user-ids.verified.seed \
             reconciliation/plan.sql \
             reconciliation/verify.sql \
             reconciliation/restore-result.env \
