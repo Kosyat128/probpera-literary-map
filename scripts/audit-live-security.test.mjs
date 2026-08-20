@@ -61,7 +61,7 @@ describe("live production security audit", () => {
       if (requestUrl.protocol === "http:") {
         return new Response(null, {
           status: 301,
-          headers: { Location: "https://probpera.ru/robots.txt" },
+          headers: { Location: "https://probpera.ru/.well-known/security.txt" },
         });
       }
       if (requestUrl.pathname === "/.well-known/security.txt") {
@@ -104,10 +104,10 @@ describe("live production security audit", () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
-      "http://probpera.ru/robots.txt?release-smoke=1 returned 200; expected 301 or 308"
+      "http://probpera.ru/.well-known/security.txt?release-smoke=1 returned 200; expected 301 or 308"
     );
     expect(result.errors).toContain(
-      "http://probpera.ru/robots.txt?release-smoke=1 did not return a Location header"
+      "http://probpera.ru/.well-known/security.txt?release-smoke=1 did not return a Location header"
     );
   });
 

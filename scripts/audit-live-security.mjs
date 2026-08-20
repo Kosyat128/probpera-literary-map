@@ -148,7 +148,10 @@ export async function auditOrigin(originValue, options = {}) {
   const errors = [];
   let checks = 0;
 
-  const httpProbe = new URL("/robots.txt?release-smoke=1", origin);
+  // Cloudflare Managed robots.txt is served before Single Redirect rules and
+  // intentionally returns HTTP 200. Probe our own immutable security document
+  // so the audit measures the zone-wide HTTP -> HTTPS policy itself.
+  const httpProbe = new URL("/.well-known/security.txt?release-smoke=1", origin);
   httpProbe.protocol = "http:";
   const expectedRedirect = new URL(httpProbe);
   expectedRedirect.protocol = "https:";
