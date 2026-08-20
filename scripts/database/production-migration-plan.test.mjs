@@ -142,9 +142,13 @@ describe("guarded production database reconciliation", () => {
     expect(restoreImplementation).toContain(
       "--env POSTGRES_DB=probpera_restore"
     );
-    expect(readinessImplementation).toContain("/proc/1/comm");
+    expect(readinessImplementation).not.toContain("/proc/1/comm");
+    expect(readinessImplementation).not.toContain("/proc/1/cmdline");
     expect(readinessImplementation).toContain(
-      '[ "$(cat /proc/1/comm)" = "postgres" ]'
+      'pid1_executable="$(readlink /proc/1/exe)"'
+    );
+    expect(readinessImplementation).toContain(
+      'case "$pid1_executable" in */postgres) exit 0 ;; *) exit 1 ;; esac'
     );
     expect(readinessImplementation).toContain("pg_isready");
     expect(readinessImplementation).toContain(

@@ -183,7 +183,8 @@ wait_for_initialized_restore_database() {
     # final server as well as the exact initialized Supabase base contract. Vault
     # is bootstrapped separately only after its completely absent state is proven.
     if ! docker exec "$RESTORE_CONTAINER" sh -ceu \
-        '[ "$(cat /proc/1/comm)" = "postgres" ]' >/dev/null 2>&1; then
+        'pid1_executable="$(readlink /proc/1/exe)" && case "$pid1_executable" in */postgres) exit 0 ;; *) exit 1 ;; esac' \
+        >/dev/null 2>&1; then
       platform_state=""
       pid1_stage="waiting"
       pg_isready_stage="not-run"
