@@ -1,0 +1,1188 @@
+{
+  "batch": "41",
+  "generatedAt": "2026-08-14",
+  "selectionSnapshot": {
+    "reviewQueue": 1690,
+    "priorAssignedRecords": 1080,
+    "priorAssignedUnique": 1080,
+    "quarantine": 79,
+    "boundary": 40,
+    "boundaryUnique": 40,
+    "overlapPriorAssigned": 0,
+    "overlapQuarantine": 0
+  },
+  "summary": {
+    "records": 40,
+    "unchanged": 0,
+    "corrected": 36,
+    "held": 4
+  },
+  "records": [
+    {
+      "key": "myanmar:ludu_daw_amar",
+      "originalSha256": "eab1c14ceaea7ab26ee4b86e7628a79fd0ef8479f8c1b517a5cb4efdb26295fc",
+      "reviewedTextRu": "Люду До Амар (1915–2008) — бирманская писательница, журналистка и редактор. Вместе с Люду У Хла она выпускала в Мандалае газету Ludu и писала о культуре Мьянмы.",
+      "applicableTextRu": "Люду До Амар (1915–2008) — бирманская писательница, журналистка и редактор. Вместе с Люду У Хла она выпускала в Мандалае газету Ludu и писала о культуре Мьянмы.",
+      "claims": [
+        {
+          "textRu": "Люду До Амар (1915–2008) — бирманская писательница, журналистка и редактор. Вместе с Люду У Хла она выпускала в Мандалае газету Ludu и писала о культуре Мьянмы.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Cambridge University Press",
+              "url": "https://www.cambridge.org/core/books/abs/female-voice-of-myanmar/ludu-daw-amar-the-voice-of-unity/116EF77DC8AB6E5B542F13FC411558A6",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское издание подтверждает идентичность, редакционную работу и культурную публицистику Люду До Амар."
+            },
+            {
+              "provider": "Cornell University",
+              "url": "https://ecommons.cornell.edu/bitstreams/5dc51a24-1240-4072-beb1-17e1b80d3c8c/download",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Исследование Корнеллского университета документирует писательскую и газетную деятельность Амар и У Хла в Мандалае."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценочная формула о влиянии заменена документированными профессиями и редакционной работой."
+    },
+    {
+      "key": "myanmar:ma_ma_lay",
+      "originalSha256": "1465c9a2cf857c0ef7971c5f6f67453fb1aa0a988beb08407324be69363614db",
+      "reviewedTextRu": "Ма Ма Лэй (1917–1982) — бирманская писательница и редактор. Она написала романы «Not Out of Hate» и «A Man Like Him».",
+      "applicableTextRu": "Ма Ма Лэй (1917–1982) — бирманская писательница и редактор. Она написала романы «Not Out of Hate» и «A Man Like Him».",
+      "claims": [
+        {
+          "textRu": "Ма Ма Лэй (1917–1982) — бирманская писательница и редактор. Она написала романы «Not Out of Hate» и «A Man Like Him».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Ohio University Press",
+              "url": "https://www.ohioswallow.com/author/ma-ma-lay/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское издательство приводит авторскую идентичность Ма Ма Лэй и библиографию её книг."
+            },
+            {
+              "provider": "Cornell University",
+              "url": "https://ecommons.cornell.edu/bitstreams/6bbdd02d-da23-4235-bcdf-f87d500c86d1/download",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Исследование Корнеллского университета подтверждает её литературную и редакционную деятельность и название A Man Like Him."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Обобщённая характеристика заменена датами, профессиями и двумя установленными произведениями."
+    },
+    {
+      "key": "myanmar:min_thu_wun",
+      "originalSha256": "7d16069e1028a16f4ea55a1fb590dc23a09faec9f7f190eec15241bddf85a4ae",
+      "reviewedTextRu": "Мин Тувун (1909–2004) — бирманский поэт, эссеист и исследователь языка. Он участвовал в литературном движении Khit San и с 1931 года писал стихи для детей.",
+      "applicableTextRu": "Мин Тувун (1909–2004) — бирманский поэт, эссеист и исследователь языка. Он участвовал в литературном движении Khit San и с 1931 года писал стихи для детей.",
+      "claims": [
+        {
+          "textRu": "Мин Тувун (1909–2004) — бирманский поэт, эссеист и исследователь языка. Он участвовал в литературном движении Khit San и с 1931 года писал стихи для детей.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Chiang Mai University conference proceedings",
+              "url": "https://www.burmaconference.com/wp-content/uploads/2025/01/ICBMS4-proceedings-final-J-R.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский сборник содержит биографию Мин Тувуна, дату рождения, профессии и связь с Khit San."
+            },
+            {
+              "provider": "Ministry of the Office of the President of Myanmar",
+              "url": "https://presoffministry.gov.mm/en/article/36739",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный материал Мьянмы подтверждает статус поэта и начало публикации детских стихов в 1931 году."
+            },
+            {
+              "provider": "Myanmar Digital News",
+              "url": "https://www.mdn.gov.mm/en/kungyangon-flourishes-after-old-thakhut-river-expansion",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальное издание Министерства информации Мьянмы независимо называет Кунджангон местом рождения поэта Мин Тувуна."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Суперлатив заменён проверяемыми ролями, литературным движением и датированным направлением работы."
+    },
+    {
+      "key": "myanmar:thakin_kodaw_hmaing",
+      "originalSha256": "c2b70d1f3a136804dbd73d0c0fd41487abaed3b8cb82294edf996be99df5eceb",
+      "reviewedTextRu": "Такин Кодо Хмайн (1876–1964) — бирманский поэт, драматург, журналист и участник антиколониального движения. Он публиковал политические и литературные тексты под несколькими псевдонимами.",
+      "applicableTextRu": "Такин Кодо Хмайн (1876–1964) — бирманский поэт, драматург, журналист и участник антиколониального движения. Он публиковал политические и литературные тексты под несколькими псевдонимами.",
+      "claims": [
+        {
+          "textRu": "Такин Кодо Хмайн (1876–1964) — бирманский поэт, драматург, журналист и участник антиколониального движения. Он публиковал политические и литературные тексты под несколькими псевдонимами.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Northern Illinois University, Center for Burma Studies",
+              "url": "https://www.niu.edu/burma/publications/journal/2015/abstracts-19-1.shtml",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетский Центр исследований Бирмы подтверждает литературную и политическую деятельность Такина Кодо Хмайна."
+            },
+            {
+              "provider": "Ministry of Information of Myanmar",
+              "url": "https://myanmar.gov.mm/documents/20143/2936705/31_Aug_19_gnlm.pdf/c604c5e2-90df-7ba2-ca7c-f5dbbdad7e6c?t=1567229534510",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальное издание Мьянмы подтверждает точные даты жизни, деревню Вале, журналистскую работу, псевдоним и антиколониальную деятельность автора."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценочная формула заменена профессиями, псевдонимами и исторически установленной деятельностью."
+    },
+    {
+      "key": "myanmar:theippan_maung_wa",
+      "originalSha256": "99be52cac0a1e51a47d9e1a6435561107b2923d881aab37f5d2fce940fc690cc",
+      "reviewedTextRu": "Тейппан Маун Ва (1899–1942), псевдоним У Сейн Тина, — бирманский прозаик и автор дневников. Его военный дневник опубликован на английском языке под названием «Wartime in Burma».",
+      "applicableTextRu": "Тейппан Маун Ва (1899–1942), псевдоним У Сейн Тина, — бирманский прозаик и автор дневников. Его военный дневник опубликован на английском языке под названием «Wartime in Burma».",
+      "claims": [
+        {
+          "textRu": "Тейппан Маун Ва (1899–1942), псевдоним У Сейн Тина, — бирманский прозаик и автор дневников. Его военный дневник опубликован на английском языке под названием «Wartime in Burma».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Ohio University Press",
+              "url": "https://www.ohioswallow.com/9780896804715/wartime-in-burma/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское издательство подтверждает псевдоним, писательскую деятельность и публикацию военного дневника."
+            },
+            {
+              "provider": "J-STAGE",
+              "url": "https://www.jstage.jst.go.jp/article/sea1971/1991/20/1991_20_35/_article",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Рецензируемая университетская публикация документирует автора и его место в бирманской прозе периода Khit San."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Общая характеристика заменена установленным именем, жанром и конкретным изданием дневника."
+    },
+    {
+      "key": "namibia:gabi_stolz",
+      "originalSha256": "43808a51403a75f4372594eca58d99861473f890630dd5bb330b910c9a6c5402",
+      "reviewedTextRu": "Личность «Gabi Stolz» как намибийской немецкоязычной писательницы 1956 года рождения не установлена по авторитетным библиотечным каталогам.",
+      "applicableTextRu": null,
+      "claims": [
+        {
+          "textRu": "Личность «Gabi Stolz» как намибийской немецкоязычной писательницы 1956 года рождения не установлена по авторитетным библиотечным каталогам.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "German National Library",
+              "url": "https://portal.dnb.de/opac/simpleSearch?query=%22Gabi+Stolz%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Каталог Немецкой национальной библиотеки не даёт однозначной авторской записи, совпадающей со всеми данными карточки."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=%22Gabi+Stolz%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог не позволяет связать имя, год рождения и намибийскую литературную деятельность в одну личность."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "held",
+      "notes": "Профиль помещён в карантин: имя не связано с уникальной авторской идентичностью и опубликованными произведениями."
+    },
+    {
+      "key": "namibia:gustav_frolich",
+      "originalSha256": "8ded9267ca112932e3e46fa1881e730a7080488109fcdf178a3b50f54f2a6c0a",
+      "reviewedTextRu": "Карточка «Gustav Frölich» смешивает данные: авторитетные справочники описывают одноимённого немецкого аграрного учёного 1879–1940, а не намибийского писателя.",
+      "applicableTextRu": null,
+      "claims": [
+        {
+          "textRu": "Карточка «Gustav Frölich» смешивает данные: авторитетные справочники описывают одноимённого немецкого аграрного учёного 1879–1940, а не намибийского писателя.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Deutsche Biographie",
+              "url": "https://www.deutsche-biographie.de/sfz17761.html",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический справочник идентифицирует Густава Фрёлиха как немецкого специалиста по животноводству 1879–1940."
+            },
+            {
+              "provider": "Deutsche Digitale Bibliothek",
+              "url": "https://www.deutsche-digitale-bibliothek.de/person/gnd/119512270",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Немецкая цифровая библиотека подтверждает профессиональную область и авторитетную запись, не соответствующую литературной карточке Намибии."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "held",
+      "notes": "Профиль помещён в карантин из-за междоменного смешения личности, неверного года смерти и неподтверждённой связи с Намибией."
+    },
+    {
+      "key": "namibia:ndapewaoshali_shikongo",
+      "originalSha256": "f42bfdd5fc514e88209280c4be9d75ba77575f20059c998e4bc9b5f85aed50ae",
+      "reviewedTextRu": "Личность «Ndapewaoshali Shikongo» не установлена: найденный авторский ресурс использует имя Ndapewoshali без фамилии и не подтверждает год рождения и детские книги из карточки.",
+      "applicableTextRu": null,
+      "claims": [
+        {
+          "textRu": "Личность «Ndapewaoshali Shikongo» не установлена: найденный авторский ресурс использует имя Ndapewoshali без фамилии и не подтверждает год рождения и детские книги из карточки.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "Ndapewoshali Writes",
+              "url": "https://ndapewoshaliwrites.com/author/ndapewoshalia/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Первичный авторский ресурс описывает поэзию и публицистику Ndapewoshali, но не подтверждает фамилию Shikongo, год рождения или детские книги."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=%22Ndapewaoshali+Shikongo%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог не содержит однозначной записи, связывающей точное имя карточки с заявленными биографическими данными."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "held",
+      "notes": "Профиль помещён в карантин: возможная реальная авторка не может быть безошибочно отождествлена с этой карточкой."
+    },
+    {
+      "key": "nauru:michael_francis",
+      "originalSha256": "5c62774aa5f9a945e98f309e9fcae0ddd22d814871b563f9d58c146a745d4de8",
+      "reviewedTextRu": "Личность «Michael Francis» как науруанского писателя 1960 года рождения не установлена: имя не связано с произведением или уникальной библиотечной записью.",
+      "applicableTextRu": null,
+      "claims": [
+        {
+          "textRu": "Личность «Michael Francis» как науруанского писателя 1960 года рождения не установлена: имя не связано с произведением или уникальной библиотечной записью.",
+          "verdict": "not-established",
+          "evidence": [
+            {
+              "provider": "National Library of Australia",
+              "url": "https://catalogue.nla.gov.au/catalog?search_field=all_fields&q=%22Michael+Francis%22+Nauru",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Поиск Национальной библиотеки Австралии не устанавливает автора из Науру с биографическими признаками данной карточки."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=%22Michael+Francis%22+Nauru",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог не связывает общее имя с науруанским авторством, годом рождения и конкретной книгой."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "held",
+      "notes": "Профиль помещён в карантин: слишком общее имя и отсутствие произведений не позволяют установить личность."
+    },
+    {
+      "key": "nepal:bhanubhakta_acharya",
+      "originalSha256": "c23ab8f62501b2e1c3128a6e451b8f6b8aa2f6258d54972d9c1d8a5655c935ea",
+      "reviewedTextRu": "Бханубхакта Ачарья (1814–1868) — непальский поэт и переводчик. Он создал непальскую стихотворную версию «Рамаяны».",
+      "applicableTextRu": "Бханубхакта Ачарья (1814–1868) — непальский поэт и переводчик. Он создал непальскую стихотворную версию «Рамаяны».",
+      "claims": [
+        {
+          "textRu": "Бханубхакта Ачарья (1814–1868) — непальский поэт и переводчик. Он создал непальскую стихотворную версию «Рамаяны».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Purbanchal University",
+              "url": "https://www.purbanchaluniversity.edu.np/news/detail/pu-s-vc-dr.-thapaliya-extends-warm-wishes-on-bhanu-jayanti-celebration-240713121054",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университет подтверждает дату рождения, профессию поэта и перевод Рамаяны на непальский язык."
+            },
+            {
+              "provider": "Indian Institute of Technology Kanpur",
+              "url": "https://www.nepali.iitk.ac.in/bio",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Институциональный архив непальской литературы подтверждает годы жизни, происхождение и переводческую работу Бханубхакты."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Почётное ранжирование и широкая причинная оценка заменены профессией и конкретной переводческой работой."
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "originalSha256": "dfcc964e5684f6ccf36cdb74943b15a4be749c68835bcc5a5c8feb48d7d3de60",
+      "reviewedTextRu": "Бишвешвар Прасад Коирала (ум. 1982) — непальский прозаик и политический деятель. Среди его романов — «Teen Ghumti», «Sumnima» и «Narendra Dai».",
+      "applicableTextRu": "Бишвешвар Прасад Коирала (ум. 1982) — непальский прозаик и политический деятель. Среди его романов — «Teen Ghumti», «Sumnima» и «Narendra Dai».",
+      "claims": [
+        {
+          "textRu": "Бишвешвар Прасад Коирала (ум. 1982) — непальский прозаик и политический деятель. Среди его романов — «Teen Ghumti», «Sumnima» и «Narendra Dai».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Embassy of India in Kathmandu",
+              "url": "https://www.indembkathmandu.gov.in/about-b-p-koirala-foundation",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная страница фонда подтверждает литературную и политическую деятельность Б. П. Коиралы и год смерти."
+            },
+            {
+              "provider": "Tribhuvan University",
+              "url": "https://elibrary.tucl.edu.np/JQ99OgQIizUxyjI9nB0on9OyLkqsGIf4/api/core/bitstreams/5e37fd64-281c-4238-9043-eb9a16194dfa/content",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское исследование называет Коиралу прозаиком и перечисляет Teen Ghumti, Sumnima и Narendra Dai."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Непроверяемая формула об основательстве направления заменена ролями и документированной библиографией."
+    },
+    {
+      "key": "nepal:krishna_dharabasi",
+      "originalSha256": "abea639016166642d7d07e4f3760b0350fae62f4c478b6e93f94590881bcf79b",
+      "reviewedTextRu": "Кришна Дхарабаси — литературный псевдоним непальского писателя Кришны Прасада Бхаттарая. Его роман «Radha» удостоен премии Madan Puraskar.",
+      "applicableTextRu": "Кришна Дхарабаси — литературный псевдоним непальского писателя Кришны Прасада Бхаттарая. Его роман «Radha» удостоен премии Madan Puraskar.",
+      "claims": [
+        {
+          "textRu": "Кришна Дхарабаси — литературный псевдоним непальского писателя Кришны Прасада Бхаттарая. Его роман «Radha» удостоен премии Madan Puraskar.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Madan Puraskar Guthi",
+              "url": "https://guthi.madanpuraskar.org/people/krishna-dharabasi/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная страница премии подтверждает настоящее имя, псевдоним, роман Radha и присуждение Madan Puraskar."
+            },
+            {
+              "provider": "Tribhuvan University",
+              "url": "https://elibrary.tucl.edu.np/bitstreams/f64c1be7-8050-4cf1-a1b6-eaf48f9032c4/download",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское исследование подтверждает авторскую идентичность Дхарабаси, роман Radha и его премиальную историю."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Техническая дата и оценочное тематическое обобщение заменены настоящим именем, книгой и официальной премией."
+    },
+    {
+      "key": "nepal:laxmi_prasad_devkota",
+      "originalSha256": "1a73ec2ae3c76ce4097e2934e21fc4d63552cb3afcff138fd09850a6a8a8f5c1",
+      "reviewedTextRu": "Лакшми Прасад Девкота — непальский поэт, драматург и эссеист. Он написал поэмы «Muna Madan», «Shakuntala» и «Sulochana».",
+      "applicableTextRu": "Лакшми Прасад Девкота — непальский поэт, драматург и эссеист. Он написал поэмы «Muna Madan», «Shakuntala» и «Sulochana».",
+      "claims": [
+        {
+          "textRu": "Лакшми Прасад Девкота — непальский поэт, драматург и эссеист. Он написал поэмы «Muna Madan», «Shakuntala» и «Sulochana».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Sanskritik Sansthan, Government of Nepal",
+              "url": "https://www.sanskritiksansthan.gov.np/content/628",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальное учреждение культуры Непала подтверждает авторство Девкоты и поэмы Muna Madan."
+            },
+            {
+              "provider": "Tribhuvan University",
+              "url": "https://elibrary.tucl.edu.np/JQ99OgQIizUxyjI9nB0on9OyLkqsGIf4/api/core/bitstreams/aa69e41a-1163-4dba-a528-1e6d7b5c555a/content",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское исследование подтверждает поэзию, драматургию, эссеистику и произведения Muna Madan, Shakuntala и Sulochana."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Суперлатив и общее влияние заменены жанрами и тремя конкретными произведениями."
+    },
+    {
+      "key": "nepal:manjushree_thapa",
+      "originalSha256": "c6e48486ee02c251ad402cb80e4bfbf5c53693285cc51f932212edee19b5a68b",
+      "reviewedTextRu": "Манджушри Тхапа (род. 1968 в Катманду) — непальская писательница и переводчица, работающая на английском языке. Она написала романы «The Tutor of History» и «Seasons of Flight».",
+      "applicableTextRu": "Манджушри Тхапа (род. 1968 в Катманду) — непальская писательница и переводчица, работающая на английском языке. Она написала романы «The Tutor of History» и «Seasons of Flight».",
+      "claims": [
+        {
+          "textRu": "Манджушри Тхапа (род. 1968 в Катманду) — непальская писательница и переводчица, работающая на английском языке. Она написала романы «The Tutor of History» и «Seasons of Flight».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Library of Congress",
+              "url": "https://www.loc.gov/acq/overseas-offices/delhi/salrp/manjushreethapa.html",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Библиотека Конгресса подтверждает год и место рождения, писательскую и переводческую работу и The Tutor of History."
+            },
+            {
+              "provider": "Manjushree Thapa author bibliography",
+              "url": "https://manjushreethapa.com/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Первичная авторская библиография подтверждает англоязычные книги The Tutor of History и Seasons of Flight."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Неопределённая современная характеристика заменена датой, местом, ролями и двумя названиями книг."
+    },
+    {
+      "key": "nepal:parijat",
+      "originalSha256": "a817ab975013863e1e8a549a2fda75dcb78bd254178f422c3fb7a94d52f8a967",
+      "reviewedTextRu": "Париджат (Бишну Кумари Вайба; 1937–1993) — непальская писательница и поэтесса. Её роман «Shirishko Phool» получил премию Madan Puraskar.",
+      "applicableTextRu": "Париджат (Бишну Кумари Вайба; 1937–1993) — непальская писательница и поэтесса. Её роман «Shirishko Phool» получил премию Madan Puraskar.",
+      "claims": [
+        {
+          "textRu": "Париджат (Бишну Кумари Вайба; 1937–1993) — непальская писательница и поэтесса. Её роман «Shirishko Phool» получил премию Madan Puraskar.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Madan Puraskar Guthi",
+              "url": "https://guthi.madanpuraskar.org/people/parijat/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальная страница премии подтверждает настоящее имя, годы жизни, роман Shirishko Phool и награду."
+            },
+            {
+              "provider": "University of California Press / eScholarship",
+              "url": "https://pub-ucpec2-prd.cdlib.org/ucpressebooks/view?anchor.id=0&brand=eschol&chunk.id=d0e7288&doc.view=content&docId=ft729007x1&toc.depth=1",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетское издание подтверждает авторскую идентичность, роман и присуждение Madan Puraskar."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование заменено настоящим именем, установленным романом и официальной премией."
+    },
+    {
+      "key": "netherlands:alexandre_olivier_exquemelin",
+      "originalSha256": "dcfb0952e77af29213f5f9f8c714ebec55a7660b65814a51d0707da2336048c0",
+      "reviewedTextRu": "Александр Оливье Эксквемелин (ок. 1645–1707) — хирург и автор свидетельства о карибских буканьерах. Его книга «De Americaensche Zee-Roovers» впервые издана в Амстердаме в 1678 году.",
+      "applicableTextRu": "Александр Оливье Эксквемелин (ок. 1645–1707) — хирург и автор свидетельства о карибских буканьерах. Его книга «De Americaensche Zee-Roovers» впервые издана в Амстердаме в 1678 году.",
+      "claims": [
+        {
+          "textRu": "Александр Оливье Эксквемелин (ок. 1645–1707) — хирург и автор свидетельства о карибских буканьерах. Его книга «De Americaensche Zee-Roovers» впервые издана в Амстердаме в 1678 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Library of Congress",
+              "url": "https://www.loc.gov/exhibits/exploring-the-early-americas/interactives/buccaneers-of-america/index.html",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Выставка Библиотеки Конгресса подтверждает годы, профессию хирурга, авторство и амстердамское издание 1678 года."
+            },
+            {
+              "provider": "Digital Library for Dutch Literature",
+              "url": "https://www.dbnl.org/tekst/exqu001amer02_01/exqu001amer02_01_0001.php",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Цифровая библиотека нидерландской литературы подтверждает Эксквемелина и нидерландский оригинал De Americaensche Zee-Roovers."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценка исторической значимости заменена профессией, предметом книги и точными выходными данными первого издания."
+    },
+    {
+      "key": "netherlands:anne_frank",
+      "originalSha256": "bc0e447d6019cfd2b4b48f2ddf844de2c5c8c9c746b058957d52c683a04422e3",
+      "reviewedTextRu": "Анна Франк (1929–1945) вела дневник на нидерландском языке во время укрытия в оккупированном Амстердаме. Первое книжное издание «Het Achterhuis» вышло в 1947 году.",
+      "applicableTextRu": "Анна Франк (1929–1945) вела дневник на нидерландском языке во время укрытия в оккупированном Амстердаме. Первое книжное издание «Het Achterhuis» вышло в 1947 году.",
+      "claims": [
+        {
+          "textRu": "Анна Франк (1929–1945) вела дневник на нидерландском языке во время укрытия в оккупированном Амстердаме. Первое книжное издание «Het Achterhuis» вышло в 1947 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Anne Frank House",
+              "url": "https://www.annefrank.org/en/anne-frank/diary/publication-diary/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Музей Анны Франк документирует происхождение рукописей и первое нидерландское издание Het Achterhuis в 1947 году."
+            },
+            {
+              "provider": "UNESCO Memory of the World",
+              "url": "https://www.unesco.org/en/memory-world/diaries-anne-frank?hub=701",
+              "checkedAt": "2026-08-14",
+              "findingRu": "ЮНЕСКО подтверждает идентичность дневников и описание двух лет жизни Анны Франк в укрытии во время войны."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование известности заменено языком, обстоятельствами создания и библиографией первого издания."
+    },
+    {
+      "key": "netherlands:betje_wolff",
+      "originalSha256": "9ea693e6877928a37f1ca49fc86bdc8a8f0050a1388d468e7b5d2ca0339ef993",
+      "reviewedTextRu": "Бетье Вольф (1738–1804) — нидерландская писательница. Совместно с Агье Декен она написала эпистолярный роман «Historie van mejuffrouw Sara Burgerhart» (1782).",
+      "applicableTextRu": "Бетье Вольф (1738–1804) — нидерландская писательница. Совместно с Агье Декен она написала эпистолярный роман «Historie van mejuffrouw Sara Burgerhart» (1782).",
+      "claims": [
+        {
+          "textRu": "Бетье Вольф (1738–1804) — нидерландская писательница. Совместно с Агье Декен она написала эпистолярный роман «Historie van mejuffrouw Sara Burgerhart» (1782).",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Digital Library for Dutch Literature",
+              "url": "https://www.dbnl.org/auteurs/auteur.php?id=wolf016",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная библиотека подтверждает авторскую идентичность Вольф и совместную работу над Sara Burgerhart."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Betje+Wolff%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает годы жизни и библиографическую связь Вольф, Декен и романа 1782 года."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Общая характеристика заменена датами, соавторством, жанром и точным названием романа."
+    },
+    {
+      "key": "netherlands:cees_nooteboom",
+      "originalSha256": "8cb19f6f5da249d6bf8ec7973f5c2daedfd638ad769189da697db2ae6978bf3e",
+      "reviewedTextRu": "Сейс Нотебоом (1933–2026) — нидерландский прозаик, поэт, эссеист и автор путевой прозы. Среди его книг — романы «Rituelen» и «Het volgende verhaal».",
+      "applicableTextRu": "Сейс Нотебоом (1933–2026) — нидерландский прозаик, поэт, эссеист и автор путевой прозы. Среди его книг — романы «Rituelen» и «Het volgende verhaal».",
+      "claims": [
+        {
+          "textRu": "Сейс Нотебоом (1933–2026) — нидерландский прозаик, поэт, эссеист и автор путевой прозы. Среди его книг — романы «Rituelen» и «Het volgende verhaal».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dutch Foundation for Literature",
+              "url": "https://www.letterenfonds.nl/en/whats-happening/in-memoriam-cees-nooteboom",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный фонд подтверждает годы жизни, жанры и книги Rituelen и Het volgende verhaal."
+            },
+            {
+              "provider": "Akademie der Künste",
+              "url": "https://adk.de/presse/pressemitteilungen/pm-akademie-der-kuenste-trauert-um-cees-nooteboom-1933-2026",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Берлинская Академия искусств независимо подтверждает смерть в 2026 году и литературную биографию Нотебоома."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Исправлен ранее открытый год жизни; краткая заглушка дополнена жанрами и двумя произведениями."
+    },
+    {
+      "key": "netherlands:erasmus_rotterdam",
+      "originalSha256": "9194abfa49885ba1d9879d31c7bc9269eda95d42ed3fd5512df0a4c29e561402",
+      "reviewedTextRu": "Эразм Роттердамский (год рождения точно не установлен: 1466, 1467 или 1469; умер в 1536 году) — нидерландский гуманист, филолог и богослов. Он написал «Похвалу глупости» и подготовил печатное греко-латинское издание Нового Завета 1516 года.",
+      "applicableTextRu": "Эразм Роттердамский (год рождения точно не установлен: 1466, 1467 или 1469; умер в 1536 году) — нидерландский гуманист, филолог и богослов. Он написал «Похвалу глупости» и подготовил печатное греко-латинское издание Нового Завета 1516 года.",
+      "claims": [
+        {
+          "textRu": "Эразм Роттердамский (год рождения точно не установлен: 1466, 1467 или 1469; умер в 1536 году) — нидерландский гуманист, филолог и богослов. Он написал «Похвалу глупости» и подготовил печатное греко-латинское издание Нового Завета 1516 года.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Stanford Encyclopedia of Philosophy",
+              "url": "https://plato.stanford.edu/entries/erasmus/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Университетская энциклопедия приводит 1469–1536, гуманистическую и филологическую деятельность, Praise of Folly и издание греческого Нового Завета 1516 года."
+            },
+            {
+              "provider": "Erasmus House museum",
+              "url": "https://erasmushouse.museum/wp-content/uploads/2020/06/Dossier_docent-1.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Музейный образовательный материал прямо фиксирует неопределённость года рождения между 1466, 1467 и 1469 годами и подтверждает публикацию Praise of Folly."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Общая формула влияния заменена дисциплинами, книгой и датированным филологическим изданием."
+    },
+    {
+      "key": "netherlands:frederik_van_eeden",
+      "originalSha256": "aa36476cb54bd57ca69a72b637892edd5fe4b1b6b3269b9af5bb29b74b8f6504",
+      "reviewedTextRu": "Фредерик ван Эден (1860–1932) — нидерландский писатель, врач и психиатр. Он написал «De kleine Johannes» и роман «Van de koele meren des doods».",
+      "applicableTextRu": "Фредерик ван Эден (1860–1932) — нидерландский писатель, врач и психиатр. Он написал «De kleine Johannes» и роман «Van de koele meren des doods».",
+      "claims": [
+        {
+          "textRu": "Фредерик ван Эден (1860–1932) — нидерландский писатель, врач и психиатр. Он написал «De kleine Johannes» и роман «Van de koele meren des doods».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Digital Library for Dutch Literature",
+              "url": "https://www.dbnl.org/tekst/bork001schr01_01/bork001schr01_01_0297.php",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Литературная библиотека подтверждает годы, профессии и книгу De kleine Johannes."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Frederik+van+Eeden%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный каталог подтверждает авторскую идентичность и библиографию двух названных произведений."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Краткая оценочная запись заменена медицинской и литературной профессиями и оригинальными названиями книг."
+    },
+    {
+      "key": "netherlands:harry_mulisch",
+      "originalSha256": "4cd8916e5c13da1247105c05cb74b1030b8569ae4612a12bcbb111022cdead7e",
+      "reviewedTextRu": "Гарри Мулиш (1927–2010) — нидерландский романист, драматург и эссеист. Он написал романы «De aanslag» и «De ontdekking van de hemel».",
+      "applicableTextRu": "Гарри Мулиш (1927–2010) — нидерландский романист, драматург и эссеист. Он написал романы «De aanslag» и «De ontdekking van de hemel».",
+      "claims": [
+        {
+          "textRu": "Гарри Мулиш (1927–2010) — нидерландский романист, драматург и эссеист. Он написал романы «De aanslag» и «De ontdekking van de hemel».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dutch Foundation for Literature",
+              "url": "https://www.letterenfonds.nl/en/authors/harry-mulisch",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный литературный фонд подтверждает годы, жанры и оригинальные названия романов Мулиша."
+            },
+            {
+              "provider": "Library of Congress",
+              "url": "https://id.loc.gov/authorities/names/n79109076.html",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Авторитетная запись Библиотеки Конгресса подтверждает идентичность и библиографию Гарри Мулиша."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование и неформальная группировка заменены жанрами и двумя документированными романами."
+    },
+    {
+      "key": "netherlands:herman_koch",
+      "originalSha256": "a11647ec30ee6d662fbb4452d04ec6e66619b8a3616b89d7ba7a221ce9505757",
+      "reviewedTextRu": "Херман Кох (род. 1953) — нидерландский писатель. Он написал романы «Het diner», «Zomerhuis met zwembad» и «Geachte heer M.».",
+      "applicableTextRu": "Херман Кох (род. 1953) — нидерландский писатель. Он написал романы «Het diner», «Zomerhuis met zwembad» и «Geachte heer M.».",
+      "claims": [
+        {
+          "textRu": "Херман Кох (род. 1953) — нидерландский писатель. Он написал романы «Het diner», «Zomerhuis met zwembad» и «Geachte heer M.».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dutch Foundation for Literature",
+              "url": "https://www.letterenfonds.nl/en/authors/herman-koch",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный фонд подтверждает год рождения, профессию и библиографию романов Коха."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Herman+Koch%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог независимо подтверждает авторскую идентичность и перечисленные произведения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Маркетинговая формула о бестселлере заменена тремя оригинальными названиями романов."
+    },
+    {
+      "key": "netherlands:joost_van_den_vondel",
+      "originalSha256": "99fc78f9b2f10e3f71a8e8608d77ed98cbcbea017ad7f25f1ead1cfa82c71853",
+      "reviewedTextRu": "Йост ван ден Вондел (1587–1679) — нидерландский поэт и драматург. Он написал пьесы «Gijsbrecht van Aemstel», «Lucifer» и «Jeptha».",
+      "applicableTextRu": "Йост ван ден Вондел (1587–1679) — нидерландский поэт и драматург. Он написал пьесы «Gijsbrecht van Aemstel», «Lucifer» и «Jeptha».",
+      "claims": [
+        {
+          "textRu": "Йост ван ден Вондел (1587–1679) — нидерландский поэт и драматург. Он написал пьесы «Gijsbrecht van Aemstel», «Lucifer» и «Jeptha».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Digital Library for Dutch Literature",
+              "url": "https://www.dbnl.org/tekst/bork001nede01_01/bork001nede01_01_1391.php",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная библиотека подтверждает годы, жанры и драматургическое наследие Вондела."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Joost+van+den+Vondel%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает авторскую идентичность и библиографию трёх пьес."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Почётная метафора и ранжирование заменены жанрами и тремя оригинальными названиями пьес."
+    },
+    {
+      "key": "netherlands:louis_couperus",
+      "originalSha256": "a60cdc9f24bc9a0754ece1a16bda8b7f3eb88102dc83522d024921779831283e",
+      "reviewedTextRu": "Луи Куперус (1863–1923) — нидерландский романист и автор путевой прозы. Он написал романы «Eline Vere», «De stille kracht» и «Van oude menschen, de dingen, die voorbij gaan».",
+      "applicableTextRu": "Луи Куперус (1863–1923) — нидерландский романист и автор путевой прозы. Он написал романы «Eline Vere», «De stille kracht» и «Van oude menschen, de dingen, die voorbij gaan».",
+      "claims": [
+        {
+          "textRu": "Луи Куперус (1863–1923) — нидерландский романист и автор путевой прозы. Он написал романы «Eline Vere», «De stille kracht» и «Van oude menschen, de dingen, die voorbij gaan».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dutch Foundation for Literature",
+              "url": "https://www.letterenfonds.nl/en/authors/louis-couperus",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный литературный фонд подтверждает годы, жанры и романы Куперуса."
+            },
+            {
+              "provider": "Digital Library for Dutch Literature",
+              "url": "https://www.dbnl.org/tekst/bast002loui01_01/bast002loui01_01.pdf",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная литературная библиотека документирует биографию и библиографию Луи Куперуса."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование заменено жанрами и тремя установленными оригинальными названиями романов."
+    },
+    {
+      "key": "netherlands:multatuli",
+      "originalSha256": "88324182e8750ef1450d82ad25cde50b39047594be2873803232c525604f5726",
+      "reviewedTextRu": "Мультатули — псевдоним нидерландского писателя Эдуарда Доувеса Деккера (1820–1887). В 1860 году он опубликовал роман «Max Havelaar» о колониальном управлении в Нидерландской Ост-Индии.",
+      "applicableTextRu": "Мультатули — псевдоним нидерландского писателя Эдуарда Доувеса Деккера (1820–1887). В 1860 году он опубликовал роман «Max Havelaar» о колониальном управлении в Нидерландской Ост-Индии.",
+      "claims": [
+        {
+          "textRu": "Мультатули — псевдоним нидерландского писателя Эдуарда Доувеса Деккера (1820–1887). В 1860 году он опубликовал роман «Max Havelaar» о колониальном управлении в Нидерландской Ост-Индии.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dutch Foundation for Literature",
+              "url": "https://www.letterenfonds.nl/en/authors/multatuli",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный литературный фонд подтверждает настоящее имя, годы, псевдоним, книгу и год её издания."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Multatuli%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает авторитетную идентичность Деккера и библиографию Max Havelaar."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценка значимости заменена настоящим именем, точным годом издания и документированным предметом романа."
+    },
+    {
+      "key": "new_zealand:allen_curnow",
+      "originalSha256": "ab87d406e4eaf528035f541e9525bf5f3258729c706ceda88d23d1c0715b1334",
+      "reviewedTextRu": "Аллен Карноу (1911–2001) — новозеландский поэт, литературный критик и редактор антологий. Среди его книг — «Early Days Yet» и «Continuum: New and Later Poems».",
+      "applicableTextRu": "Аллен Карноу (1911–2001) — новозеландский поэт, литературный критик и редактор антологий. Среди его книг — «Early Days Yet» и «Continuum: New and Later Poems».",
+      "claims": [
+        {
+          "textRu": "Аллен Карноу (1911–2001) — новозеландский поэт, литературный критик и редактор антологий. Среди его книг — «Early Days Yet» и «Continuum: New and Later Poems».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/curnow-allen",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация подтверждает годы, роли и библиографию Аллена Карноу."
+            },
+            {
+              "provider": "Arts Foundation of New Zealand",
+              "url": "https://www.thearts.co.nz/artists/allen-curnow",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный фонд искусств независимо подтверждает поэтическую карьеру и основные сборники Карноу."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование заменено профессиями и двумя названиями поэтических книг."
+    },
+    {
+      "key": "new_zealand:bill_manhire",
+      "originalSha256": "60cb922fe90d1a507abbd80bfb2f1a5ef96bf7bb1c9d9817970030332481c843",
+      "reviewedTextRu": "Билл Манхайр (род. 1946) — новозеландский поэт, прозаик и редактор. Он основал программу творческого письма в Университете Виктории в Веллингтоне и написал сборники «Milky Way Bar» и «Lifted».",
+      "applicableTextRu": "Билл Манхайр (род. 1946) — новозеландский поэт, прозаик и редактор. Он основал программу творческого письма в Университете Виктории в Веллингтоне и написал сборники «Milky Way Bar» и «Lifted».",
+      "claims": [
+        {
+          "textRu": "Билл Манхайр (род. 1946) — новозеландский поэт, прозаик и редактор. Он основал программу творческого письма в Университете Виктории в Веллингтоне и написал сборники «Milky Way Bar» и «Lifted».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/manhire-bill",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год рождения, жанры, преподавательскую работу и библиографию Манхайра."
+            },
+            {
+              "provider": "Arts Foundation of New Zealand",
+              "url": "https://www.thearts.co.nz/artists/bill-manhire",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный фонд искусств подтверждает основание программы творческого письма и названия поэтических книг."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценочное ранжирование заменено ролями, университетским проектом и двумя сборниками."
+    },
+    {
+      "key": "new_zealand:bruce_mason",
+      "originalSha256": "b0954d5f92e0d684a0dcc7fb5c128a808730be11a8d99121a0659a765c481684",
+      "reviewedTextRu": "Брюс Мейсон (1921–1982) — новозеландский драматург, актёр и театральный критик, родившийся в Веллингтоне. Он написал пьесы «The Pohutukawa Tree» и «The End of the Golden Weather».",
+      "applicableTextRu": "Брюс Мейсон (1921–1982) — новозеландский драматург, актёр и театральный критик, родившийся в Веллингтоне. Он написал пьесы «The Pohutukawa Tree» и «The End of the Golden Weather».",
+      "claims": [
+        {
+          "textRu": "Брюс Мейсон (1921–1982) — новозеландский драматург, актёр и театральный критик, родившийся в Веллингтоне. Он написал пьесы «The Pohutukawa Tree» и «The End of the Golden Weather».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/5m37/mason-bruce-edward-george",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает годы, Веллингтон, театральные роли и пьесы Мейсона."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/mason-bruce",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает биографию и библиографию драматурга."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Исправлено место рождения; оценочная формула заменена театральными ролями и двумя пьесами."
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "originalSha256": "56e591c620e12d6ef771266ff4b16a8e31a90329585fd0d7721ae1d3e4eb1045",
+      "reviewedTextRu": "Кристиан Карлсон Стед (род. 1932) — новозеландский поэт, романист и литературный критик. Он написал романы «All Visitors Ashore» и «The Death of the Body», а также книгу «Mansfield».",
+      "applicableTextRu": "Кристиан Карлсон Стед (род. 1932) — новозеландский поэт, романист и литературный критик. Он написал романы «All Visitors Ashore» и «The Death of the Body», а также книгу «Mansfield».",
+      "claims": [
+        {
+          "textRu": "Кристиан Карлсон Стед (род. 1932) — новозеландский поэт, романист и литературный критик. Он написал романы «All Visitors Ashore» и «The Death of the Body», а также книгу «Mansfield».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/stead-c-k-",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год рождения, литературные роли и библиографию К. К. Стеда."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22C.+K.+Stead%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает авторскую идентичность и три названные книги."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценка значимости заменена профессиями и тремя библиографически установленными книгами."
+    },
+    {
+      "key": "new_zealand:damien_wilkins",
+      "originalSha256": "64f79d8ed1356855f719f0909a4e23c7a2aa7ad966b38962be4c2feacce400b0",
+      "reviewedTextRu": "Дэмиен Уилкинс (род. 1963 в Лоуэр-Хатте) — новозеландский романист, автор рассказов и поэт. Среди его книг — «The Miserables», «The Veteran Perils» и «Max Gate».",
+      "applicableTextRu": "Дэмиен Уилкинс (род. 1963 в Лоуэр-Хатте) — новозеландский романист, автор рассказов и поэт. Среди его книг — «The Miserables», «The Veteran Perils» и «Max Gate».",
+      "claims": [
+        {
+          "textRu": "Дэмиен Уилкинс (род. 1963 в Лоуэр-Хатте) — новозеландский романист, автор рассказов и поэт. Среди его книг — «The Miserables», «The Veteran Perils» и «Max Gate».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/wilkins-damien",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год и место рождения, жанры и библиографию Дэмиена Уилкинса."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Damien+Wilkins%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает авторскую идентичность и три названные книги."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Исправлено место рождения; ранжирование заменено жанрами и тремя книгами."
+    },
+    {
+      "key": "new_zealand:eleanor_catton",
+      "originalSha256": "befdd61fe74e2feb96ecb7e9b56174e17effe10db9b6d79b2854df21a2ff355c",
+      "reviewedTextRu": "Элеанор Каттон (род. 1985 в Лондоне, Онтарио) — новозеландская писательница и сценаристка. Её роман «The Luminaries» получил Букеровскую премию 2013 года.",
+      "applicableTextRu": "Элеанор Каттон (род. 1985 в Лондоне, Онтарио) — новозеландская писательница и сценаристка. Её роман «The Luminaries» получил Букеровскую премию 2013 года.",
+      "claims": [
+        {
+          "textRu": "Элеанор Каттон (род. 1985 в Лондоне, Онтарио) — новозеландская писательница и сценаристка. Её роман «The Luminaries» получил Букеровскую премию 2013 года.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/catton-eleanor/",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает канадское рождение, профессии, роман и Букеровскую премию."
+            },
+            {
+              "provider": "The Booker Prizes",
+              "url": "https://thebookerprizes.com/the-booker-library/authors/eleanor-catton",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Официальный архив премии подтверждает авторскую идентичность и победу The Luminaries в 2013 году."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Уточнено канадское место рождения и исправлены координаты; рекламная формула заменена профессиями и официальной наградой."
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "originalSha256": "90c40c744d636bf8e3564bf9f5504d3b9ea1f8bcda94001a8efcfad440dbe308",
+      "reviewedTextRu": "Элизабет Нокс (род. 1959) — новозеландская писательница, автор книг для взрослых и подростков. Она написала романы «The Vintner’s Luck», «Dreamhunter» и «Dreamquake».",
+      "applicableTextRu": "Элизабет Нокс (род. 1959) — новозеландская писательница, автор книг для взрослых и подростков. Она написала романы «The Vintner’s Luck», «Dreamhunter» и «Dreamquake».",
+      "claims": [
+        {
+          "textRu": "Элизабет Нокс (род. 1959) — новозеландская писательница, автор книг для взрослых и подростков. Она написала романы «The Vintner’s Luck», «Dreamhunter» и «Dreamquake».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/knox-elizabeth",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год рождения, аудитории и библиографию Элизабет Нокс."
+            },
+            {
+              "provider": "Arts Foundation of New Zealand",
+              "url": "https://www.thearts.co.nz/artists/elizabeth-knox",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный фонд искусств независимо подтверждает писательскую карьеру и названные романы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование заменено аудиториями и тремя проверяемыми названиями романов."
+    },
+    {
+      "key": "new_zealand:fiona_kidman",
+      "originalSha256": "c4de60bc4dff3cc3b9054af4ea575b086bfa850a288d601b230b88f1614fc189",
+      "reviewedTextRu": "Фиона Кидман (род. 1940 в Хавере) — новозеландская писательница, поэтесса и редактор. Её роман «This Mortal Boy» получил премию Acorn Foundation Fiction Prize в 2019 году.",
+      "applicableTextRu": "Фиона Кидман (род. 1940 в Хавере) — новозеландская писательница, поэтесса и редактор. Её роман «This Mortal Boy» получил премию Acorn Foundation Fiction Prize в 2019 году.",
+      "claims": [
+        {
+          "textRu": "Фиона Кидман (род. 1940 в Хавере) — новозеландская писательница, поэтесса и редактор. Её роман «This Mortal Boy» получил премию Acorn Foundation Fiction Prize в 2019 году.",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/kidman-fiona",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год и место рождения, роли, роман и премию 2019 года."
+            },
+            {
+              "provider": "Arts Foundation of New Zealand",
+              "url": "https://www.thearts.co.nz/artists/fiona-kidman",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный фонд искусств независимо подтверждает литературную биографию и награды Фионы Кидман."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Исправлено место рождения; оценочная формула заменена профессиями, романом и датированной наградой."
+    },
+    {
+      "key": "new_zealand:frank_sargeson",
+      "originalSha256": "43e041e849b61655f5508641f7b552c2b178ce37e5654161ada9d63aacc53cf7",
+      "reviewedTextRu": "Фрэнк Сарджесон (1903–1982), урождённый Норрис Фрэнк Дэйви, — новозеландский автор рассказов, романист и драматург. Среди его книг — «That Summer» и «The Stories of Frank Sargeson».",
+      "applicableTextRu": "Фрэнк Сарджесон (1903–1982), урождённый Норрис Фрэнк Дэйви, — новозеландский автор рассказов, романист и драматург. Среди его книг — «That Summer» и «The Stories of Frank Sargeson».",
+      "claims": [
+        {
+          "textRu": "Фрэнк Сарджесон (1903–1982), урождённый Норрис Фрэнк Дэйви, — новозеландский автор рассказов, романист и драматург. Среди его книг — «That Summer» и «The Stories of Frank Sargeson».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/4s5/sargeson-frank/print",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает настоящее имя, годы, жанры и библиографию Сарджесона."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/sargeson-frank",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает литературные роли и названные книги."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Широкая оценка влияния заменена настоящим именем, жанрами и двумя книгами."
+    },
+    {
+      "key": "new_zealand:james_k_baxter",
+      "originalSha256": "9921eb11fac9b45a8aa6ee10e7c2cfb8328e4b521269cfe4abadc157479a5359",
+      "reviewedTextRu": "Джеймс Кир Бакстер (1926–1972) — новозеландский поэт, драматург и литературный критик. Среди его книг — «Pig Island Letters» и «Jerusalem Sonnets».",
+      "applicableTextRu": "Джеймс Кир Бакстер (1926–1972) — новозеландский поэт, драматург и литературный критик. Среди его книг — «Pig Island Letters» и «Jerusalem Sonnets».",
+      "claims": [
+        {
+          "textRu": "Джеймс Кир Бакстер (1926–1972) — новозеландский поэт, драматург и литературный критик. Среди его книг — «Pig Island Letters» и «Jerusalem Sonnets».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/5b14/baxter-james-keir",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает годы, жанры и библиографию Джеймса К. Бакстера."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/baxter-james-k-",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает литературные роли и сборники поэта."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценочное ранжирование заменено жанрами и двумя конкретными сборниками."
+    },
+    {
+      "key": "new_zealand:jane_mander",
+      "originalSha256": "7599a3e29e23292b66b7ed4a76ac9bacf5f7603d8bb5d42f9d0d0ec5e4137cb0",
+      "reviewedTextRu": "Джейн Мандер (1877–1949), родившаяся в Рамараме, — новозеландская писательница и журналистка. Она написала романы «The Story of a New Zealand River» и «Allen Adair».",
+      "applicableTextRu": "Джейн Мандер (1877–1949), родившаяся в Рамараме, — новозеландская писательница и журналистка. Она написала романы «The Story of a New Zealand River» и «Allen Adair».",
+      "claims": [
+        {
+          "textRu": "Джейн Мандер (1877–1949), родившаяся в Рамараме, — новозеландская писательница и журналистка. Она написала романы «The Story of a New Zealand River» и «Allen Adair».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/4m34/mander-mary-jane",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает годы, Рамараму, профессии и романы Джейн Мандер."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/mander-jane",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает биографию и библиографию писательницы."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Исправлено место рождения; общая формула заменена профессиями и двумя романами."
+    },
+    {
+      "key": "new_zealand:janet_frame",
+      "originalSha256": "0d910399413639b7fec1654fb30fb47d42046974c1b2caddb01ef6b2bb0fac76",
+      "reviewedTextRu": "Джанет Фрейм (1924–2004) — новозеландская писательница, поэтесса и автор автобиографической прозы. Она написала романы «Owls Do Cry» и «Faces in the Water», а также книгу «An Angel at My Table».",
+      "applicableTextRu": "Джанет Фрейм (1924–2004) — новозеландская писательница, поэтесса и автор автобиографической прозы. Она написала романы «Owls Do Cry» и «Faces in the Water», а также книгу «An Angel at My Table».",
+      "claims": [
+        {
+          "textRu": "Джанет Фрейм (1924–2004) — новозеландская писательница, поэтесса и автор автобиографической прозы. Она написала романы «Owls Do Cry» и «Faces in the Water», а также книгу «An Angel at My Table».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/6f1/frame-janet-paterson",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает годы, жанры и основные книги Джанет Фрейм."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/frame-janet",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает литературную биографию и библиографию Фрейм."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Оценочная формула заменена жанрами и тремя библиографически установленными книгами."
+    },
+    {
+      "key": "new_zealand:kate_de_goldi",
+      "originalSha256": "c1b4a068d6f542546d5a4dd6d62026c86e5d674202f4af6d19562cfa4a344852",
+      "reviewedTextRu": "Кейт Де Голди (род. 1959) — новозеландская писательница, автор прозы для взрослых, подростков и детей. Она написала «The 10 PM Question» и «From the Cutting Room of Barney Kettle».",
+      "applicableTextRu": "Кейт Де Голди (род. 1959) — новозеландская писательница, автор прозы для взрослых, подростков и детей. Она написала «The 10 PM Question» и «From the Cutting Room of Barney Kettle».",
+      "claims": [
+        {
+          "textRu": "Кейт Де Голди (род. 1959) — новозеландская писательница, автор прозы для взрослых, подростков и детей. Она написала «The 10 PM Question» и «From the Cutting Room of Barney Kettle».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/de-goldi-kate",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная организация подтверждает год рождения, аудитории и библиографию Кейт Де Голди."
+            },
+            {
+              "provider": "WorldCat",
+              "url": "https://search.worldcat.org/search?q=au%3A%22Kate+De+Goldi%22",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Международный библиотечный каталог подтверждает авторскую идентичность и два названных произведения."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Общая характеристика уточнена аудиториями и двумя конкретными книгами."
+    },
+    {
+      "key": "new_zealand:katherine_mansfield",
+      "originalSha256": "038b9ed4431590925a7aeed32101cdc2f923915d567ac92822eb29f30a7c3396",
+      "reviewedTextRu": "Кэтрин Мэнсфилд (1888–1923), урождённая Кэтлин Бошан, — новозеландская писательница, работавшая преимущественно в жанре рассказа. Среди её книг — «Bliss and Other Stories» и «The Garden Party and Other Stories».",
+      "applicableTextRu": "Кэтрин Мэнсфилд (1888–1923), урождённая Кэтлин Бошан, — новозеландская писательница, работавшая преимущественно в жанре рассказа. Среди её книг — «Bliss and Other Stories» и «The Garden Party and Other Stories».",
+      "claims": [
+        {
+          "textRu": "Кэтрин Мэнсфилд (1888–1923), урождённая Кэтлин Бошан, — новозеландская писательница, работавшая преимущественно в жанре рассказа. Среди её книг — «Bliss and Other Stories» и «The Garden Party and Other Stories».",
+          "verdict": "corrected",
+          "evidence": [
+            {
+              "provider": "Dictionary of New Zealand Biography",
+              "url": "https://teara.govt.nz/en/biographies/3m42/mansfield-katherine",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальный биографический словарь подтверждает настоящее имя, годы, жанр и библиографию Мэнсфилд."
+            },
+            {
+              "provider": "Read NZ Te Pou Muramura",
+              "url": "https://www.read-nz.org/writers-files/writer/mansfield-katherine",
+              "checkedAt": "2026-08-14",
+              "findingRu": "Национальная читательская организация независимо подтверждает биографию и названные сборники рассказов."
+            }
+          ]
+        }
+      ],
+      "reviewer": "Codex independent claim-by-claim factual review, batch 41",
+      "decision": "corrected",
+      "notes": "Ранжирование заменено настоящим именем, жанром и двумя оригинальными названиями сборников."
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { selectHistoricalWriterBiographyFactReviewBoundary } from "./writerBiographyFactReviewBoundary.test-support";
 import { legacyWriterBiography } from "../writerBiography";
 import {
   countries as publicCountries,
@@ -215,20 +216,25 @@ describe("writer biography claim review batch 30", () => {
     const applicableKeys = writerBiographyFactReviewBatch30
       .filter((record) => record.decision !== "held")
       .map((record) => record.key);
+    const historicalBoundaryKeys =
+      selectHistoricalWriterBiographyFactReviewBoundary({
+        liveReviewQueueKeys: reviewQueueKeys,
+        currentBatchHeldKeys: ["grenada:julian_fedon"],
+        priorAssignedKeys: priorAssigned,
+        boundarySize: 40,
+      });
 
     // The report freezes the original allocation snapshot. The integrated
     // live queue is smaller because held identities from later batches,
     // including six from Batch 38 and the later Batch 39/40 holds, are now
     // quarantined; the Batch 30 slice itself must remain unchanged.
-    expect(reviewQueueKeys).toHaveLength(1690);
-    expect(reviewQueueSet.size).toBe(1690);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(priorAssigned).toHaveLength(640);
     expect(priorAssignedSet.size).toBe(640);
-    expect(quarantineKeys).toHaveLength(79);
-    expect(new Set(quarantineKeys).size).toBe(79);
+    expect(new Set(quarantineKeys).size).toBe(quarantineKeys.length);
     expect(keys).toEqual(expectedKeys);
+    expect(keys).toEqual(historicalBoundaryKeys);
     expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
     expect(new Set(keys).size).toBe(40);
     expect(keys.some((key) => priorAssignedSet.has(key))).toBe(false);

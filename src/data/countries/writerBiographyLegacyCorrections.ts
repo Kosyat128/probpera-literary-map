@@ -26,6 +26,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch40,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch40";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch41,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch41";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1660,6 +1663,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch38,
   ...writerBiographyPublicProfileFactCorrectionsBatch39,
   ...writerBiographyPublicProfileFactCorrectionsBatch40,
+  ...writerBiographyPublicProfileFactCorrectionsBatch41,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1760,6 +1764,10 @@ export const quarantinedWriterIdentities = [
   ["maldives", "amin_jameel", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."],
   ["mauritania", "hamed_ould_hamdane", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity."],
   ["monaco", "jean_baptiste_barla", "cross-country-identity-conflict", "Official French museum records identify Jean-Baptiste Barla (1817–1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer."],
+  ["namibia", "gabi_stolz", "identity-not-established", "No unique national-library authority record or attributable work establishes Gabi Stolz as the claimed Namibia-linked German-language writer born in 1956."],
+  ["namibia", "gustav_frolich", "cross-country-identity-conflict", "German authority records identify Gustav Frölich (1879–1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year."],
+  ["namibia", "ndapewaoshali_shikongo", "identity-not-established", "A first-party site establishes a Namibian writer using the single name Ndapewoshali, but not the Shikongo surname, 1993 birth year or children's-book identity claimed by this card."],
+  ["nauru", "michael_francis", "identity-not-established", "The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

@@ -1,10 +1,10 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:2fcb41230dbd6164586954fb09031b36b94f5ce6e678de24000e7d5b57cc36b0",
+  "sourceFingerprint": "sha256:9d38f9c0ad161a6347c7a73319b7f69b58fc1d4041ba95a7485d6ae0eff2461d",
   "scope": {
     "corpus": "stored short Russian writer biographies",
-    "cardsAudited": 1690,
+    "cardsAudited": 1686,
     "uiChanged": false,
     "statusesChanged": false,
     "biographyTextChanged": false,
@@ -12,44 +12,44 @@
     "statement": "This report inventories every biography and detects local contradictions. It does not certify the corpus as fact-checked."
   },
   "summary": {
-    "writerCards": 1690,
-    "biographiesPresent": 1690,
+    "writerCards": 1686,
+    "biographiesPresent": 1686,
     "claimTypeCounts": {
       "awards": 139,
-      "critical-ranking": 212,
-      "identity-role": 1638,
+      "critical-ranking": 198,
+      "identity-role": 1631,
       "language": 191,
-      "life-dates": 301,
+      "life-dates": 325,
       "movement-era": 86,
-      "national-cultural-affiliation": 1067,
+      "national-cultural-affiliation": 1065,
       "nobel": 110,
       "places": 23,
-      "priority-claim": 138,
-      "reception-influence": 50,
-      "themes-style": 322,
-      "works": 1086
+      "priority-claim": 133,
+      "reception-influence": 45,
+      "themes-style": 323,
+      "works": 1104
     },
     "reliableStagingIdentityMatches": 232,
     "sourceConfirmedStructuredCrossChecks": 231,
     "sourceConfirmedCoveragePercent": 13.7,
-    "wikidataSnapshotCandidateRecords": 1266,
-    "wikidataIdentityCorroboratedRecords": 1171,
+    "wikidataSnapshotCandidateRecords": 1265,
+    "wikidataIdentityCorroboratedRecords": 1167,
     "wikidataIdentityDiscrepantRecords": 10,
-    "wikidataIdentityReviewRequiredRecords": 85,
-    "wikidataStructuredTriageCoveragePercent": 69.3,
-    "wikidataDateFieldsCompared": 2076,
-    "wikidataExactGregorianDateMatches": 1632,
-    "wikidataSharedPrecisionMatches": 167,
-    "wikidataCalendarUnresolvedMatches": 68,
+    "wikidataIdentityReviewRequiredRecords": 88,
+    "wikidataStructuredTriageCoveragePercent": 69.2,
+    "wikidataDateFieldsCompared": 2073,
+    "wikidataExactGregorianDateMatches": 1635,
+    "wikidataSharedPrecisionMatches": 166,
+    "wikidataCalendarUnresolvedMatches": 67,
     "wikidataAlternateRankMatches": 26,
-    "wikidataUnresolvedDateDiscrepancies": 80,
-    "wikidataModernReferencedDateContradictions": 34,
-    "wikidataLikelyBadQidOrIdentityDateRows": 24,
+    "wikidataUnresolvedDateDiscrepancies": 76,
+    "wikidataModernReferencedDateContradictions": 32,
+    "wikidataLikelyBadQidOrIdentityDateRows": 23,
     "wikidataTriageClassificationCounts": {
       "a:calendar-equivalent": 89,
-      "b:lower-precision-compatible": 167,
-      "c:likely-bad-qid-mapping-or-identity": 24,
-      "d:date-contradiction-requiring-authoritative-source": 56
+      "b:lower-precision-compatible": 166,
+      "c:likely-bad-qid-mapping-or-identity": 23,
+      "d:date-contradiction-requiring-authoritative-source": 53
     },
     "wikidataLiteraryOccupationCorroborations": 1244,
     "manuallyResolvedRecords": 57,
@@ -59,11 +59,11 @@
     "calendarOrSourceDiscrepancyRecords": 1,
     "calendarOrSourceDiscrepancyIssues": 1,
     "metadataGapIssues": 247,
-    "recordsNeedingHumanClaimSources": 1670,
+    "recordsNeedingHumanClaimSources": 1666,
     "priorityCounts": {
-      "P1": 486,
-      "P2": 149,
-      "P3": 1055
+      "P1": 468,
+      "P2": 155,
+      "P3": 1063
     },
     "matchMethodCounts": {
       "curated-key-to-wikidata-id": 229,
@@ -105,15 +105,15 @@
       "P27",
       "P800"
     ],
-    "publicCardsWithCuratedQid": 1266,
-    "publicCorpusCoveragePercent": 74.9,
+    "publicCardsWithCuratedQid": 1265,
+    "publicCorpusCoveragePercent": 75,
     "curatedCardsAlreadyPresentInStaging": 229,
-    "publicCardsWithSnapshotEntity": 1266,
-    "identityCorroboratedPublicCards": 1171,
+    "publicCardsWithSnapshotEntity": 1265,
+    "identityCorroboratedPublicCards": 1167,
     "identityDiscrepantPublicCards": 10,
-    "identityReviewRequiredPublicCards": 85,
+    "identityReviewRequiredPublicCards": 88,
     "curatedCardsMissingCompactSnapshot": 0,
-    "publicCardsWithoutCuratedQid": 424,
+    "publicCardsWithoutCuratedQid": 421,
     "implementationStatus": "checked-in-offline-snapshot-active",
     "safetyBoundary": "Wikidata expands structured discrepancy triage only. It does not certify prose claims, resolve conflicting sources, rewrite biographies, or change publication status automatically."
   },
@@ -2241,146 +2241,6 @@
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "myanmar:theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
-      "qid": "Q7777816",
-      "field": "birthDate",
-      "cardValue": "1899-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1899-06-05",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q7777816$69BBFF77-B046-4982-B036-DB167034FBEF"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7777816",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "review-required",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Theippan Maung Wa"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "myanmar:theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
-      "qid": "Q7777816",
-      "field": "deathDate",
-      "cardValue": "1942-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1942-06-06",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q7777816$CC78C725-C680-4931-A993-44F5C373F9DB"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7777816",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Theippan Maung Wa"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "namibia:gustav_frolich",
-      "name": "Густав Фрёлих",
-      "qid": "Q5746561",
-      "field": "deathDate",
-      "cardValue": "1945",
-      "bestRankClaims": [
-        {
-          "value": "1940-08-23",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q5746561$6200235E-9DB7-4581-BE1C-80EF435DB0E5"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q5746561",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": true,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Gustav Frölich"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 5,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "nepal:krishna_dharabasi",
-      "name": "Кришна Дхараваси",
-      "qid": "Q13180208",
-      "field": "birthDate",
-      "cardValue": "1959-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1960-07-17",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q13180208$D642C1DE-349E-4E97-9695-4EBC162E5F2B"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q13180208",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "review-required",
-      "reason": "The RU/EN label plus birth-year identity check is incomplete. Treat the QID as a candidate, not as factual evidence, until identity is validated.",
-      "identityValidationStatus": "identity-review-required",
-      "entityLabels": {
-        "en": "Krishna Dharabasi"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 1,
-      "otherFieldCorroboratesIdentity": false,
       "modern": true,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
@@ -6457,42 +6317,32 @@
       "classification": "lower-precision-compatible"
     },
     {
-      "key": "namibia:gustav_frolich",
-      "name": "Густав Фрёлих",
-      "qid": "Q5746561",
+      "key": "myanmar:theippan_maung_wa",
+      "name": "Тейппан Маун Ва",
+      "qid": "Q7777816",
       "field": "birthDate",
-      "cardValue": "1879",
-      "snapshotValue": "1879-02-02",
+      "cardValue": "1899",
+      "snapshotValue": "1899-06-05",
       "classificationCode": "b",
       "classification": "lower-precision-compatible"
     },
     {
-      "key": "nepal:manjushree_thapa",
-      "name": "Манджушри Тхапа",
-      "qid": "Q467220",
-      "field": "birthDate",
-      "cardValue": "1968-01-01",
-      "snapshotValue": "1968",
-      "classificationCode": "b",
-      "classification": "lower-precision-compatible"
-    },
-    {
-      "key": "nepal:parijat",
-      "name": "Париджат",
-      "qid": "Q7137083",
-      "field": "birthDate",
-      "cardValue": "1937-03-13",
-      "snapshotValue": "1937",
-      "classificationCode": "b",
-      "classification": "lower-precision-compatible"
-    },
-    {
-      "key": "nepal:parijat",
-      "name": "Париджат",
-      "qid": "Q7137083",
+      "key": "myanmar:theippan_maung_wa",
+      "name": "Тейппан Маун Ва",
+      "qid": "Q7777816",
       "field": "deathDate",
-      "cardValue": "1993-12-04",
-      "snapshotValue": "1993",
+      "cardValue": "1942",
+      "snapshotValue": "1942-06-06",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "nepal:bhanubhakta_acharya",
+      "name": "Бханубхакта Ачарья",
+      "qid": "Q2510589",
+      "field": "deathDate",
+      "cardValue": "1868",
+      "snapshotValue": "1868-04-23",
       "classificationCode": "b",
       "classification": "lower-precision-compatible"
     },
@@ -6501,7 +6351,7 @@
       "name": "Анна Франк",
       "qid": "Q4583",
       "field": "deathDate",
-      "cardValue": "1945-02-01",
+      "cardValue": "1945",
       "snapshotValue": "1945-02",
       "classificationCode": "b",
       "classification": "lower-precision-compatible"
@@ -7256,41 +7106,6 @@
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": true,
       "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "nepal:krishna_dharabasi",
-      "name": "Кришна Дхараваси",
-      "qid": "Q13180208",
-      "field": "birthDate",
-      "cardValue": "1959-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1960-07-17",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q13180208$D642C1DE-349E-4E97-9695-4EBC162E5F2B"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q13180208",
-      "classificationCode": "c",
-      "classification": "likely-bad-qid-mapping-or-identity",
-      "classificationConfidence": "review-required",
-      "reason": "The RU/EN label plus birth-year identity check is incomplete. Treat the QID as a candidate, not as factual evidence, until identity is validated.",
-      "identityValidationStatus": "identity-review-required",
-      "entityLabels": {
-        "en": "Krishna Dharabasi"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "conflict",
-      "yearConflict": true,
-      "nearestYearDistance": 1,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
@@ -8479,111 +8294,6 @@
       "labelIdentityMatch": true,
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "myanmar:theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
-      "qid": "Q7777816",
-      "field": "birthDate",
-      "cardValue": "1899-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1899-06-05",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q7777816$69BBFF77-B046-4982-B036-DB167034FBEF"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7777816",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "review-required",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Theippan Maung Wa"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "myanmar:theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
-      "qid": "Q7777816",
-      "field": "deathDate",
-      "cardValue": "1942-01-01",
-      "bestRankClaims": [
-        {
-          "value": "1942-06-06",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q7777816$CC78C725-C680-4931-A993-44F5C373F9DB"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q7777816",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Theippan Maung Wa"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "namibia:gustav_frolich",
-      "name": "Густав Фрёлих",
-      "qid": "Q5746561",
-      "field": "deathDate",
-      "cardValue": "1945",
-      "bestRankClaims": [
-        {
-          "value": "1940-08-23",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 1,
-          "claimId": "Q5746561$6200235E-9DB7-4581-BE1C-80EF435DB0E5"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q5746561",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": true,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Gustav Frölich"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 5,
       "otherFieldCorroboratesIdentity": true,
       "modern": true,
       "referenced": true,
@@ -10843,24 +10553,6 @@
       "key": "netherlands:erasmus_rotterdam",
       "name": "Эразм Роттердамский",
       "qid": "Q43499",
-      "field": "birthDate",
-      "cardValue": "1466-10-28",
-      "matchedClaim": {
-        "value": "1466-10-28",
-        "precision": "day",
-        "calendarId": "Q1985786",
-        "rank": "preferred",
-        "referenced": true,
-        "referenceCount": 2,
-        "claimId": "Q43499$2A6BC9D7-BDEC-4C0A-97CC-1BB7E2C21207"
-      },
-      "classification": "calendar-model-unresolved",
-      "safeAction": "Confirm whether the card intentionally stores Old Style or New Style before normalizing the date."
-    },
-    {
-      "key": "netherlands:erasmus_rotterdam",
-      "name": "Эразм Роттердамский",
-      "qid": "Q43499",
       "field": "deathDate",
       "cardValue": "1536-07-12",
       "matchedClaim": {
@@ -12544,21 +12236,82 @@
       "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
     },
     {
+      "key": "myanmar:theippan_maung_wa",
+      "name": "Тейппан Маун Ва",
+      "qid": "Q7777816",
+      "entityLabels": {
+        "en": "Theippan Maung Wa"
+      },
+      "labelIdentityMatch": false,
+      "cardBirthYear": 1899,
+      "wikidataBirthYears": [
+        1899
+      ],
+      "birthYearIdentityStatus": "match",
+      "humanClaimPresent": true,
+      "literaryOccupationIds": [
+        "Q36180"
+      ],
+      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
+    },
+    {
       "key": "nepal:krishna_dharabasi",
       "name": "Кришна Дхараваси",
       "qid": "Q13180208",
       "entityLabels": {
         "en": "Krishna Dharabasi"
       },
-      "labelIdentityMatch": true,
-      "cardBirthYear": 1959,
+      "labelIdentityMatch": false,
+      "cardBirthYear": null,
       "wikidataBirthYears": [
         1960
       ],
-      "birthYearIdentityStatus": "conflict",
+      "birthYearIdentityStatus": "not-comparable",
       "humanClaimPresent": true,
       "literaryOccupationIds": [
         "Q6625963"
+      ],
+      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
+    },
+    {
+      "key": "netherlands:erasmus_rotterdam",
+      "name": "Эразм Роттердамский",
+      "qid": "Q43499",
+      "entityLabels": {
+        "en": "Erasmus",
+        "ru": "Эразм Роттердамский"
+      },
+      "labelIdentityMatch": true,
+      "cardBirthYear": null,
+      "wikidataBirthYears": [
+        1466,
+        1469
+      ],
+      "birthYearIdentityStatus": "not-comparable",
+      "humanClaimPresent": true,
+      "literaryOccupationIds": [
+        "Q11774202",
+        "Q36180"
+      ],
+      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
+    },
+    {
+      "key": "new_zealand:james_k_baxter",
+      "name": "Джеймс Кир Бакстер",
+      "qid": "Q6137045",
+      "entityLabels": {
+        "en": "James K. Baxter"
+      },
+      "labelIdentityMatch": false,
+      "cardBirthYear": 1926,
+      "wikidataBirthYears": [
+        1926
+      ],
+      "birthYearIdentityStatus": "match",
+      "humanClaimPresent": true,
+      "literaryOccupationIds": [
+        "Q36180",
+        "Q49757"
       ],
       "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
     },
@@ -18728,284 +18481,44 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "myanmar:ludu_daw_amar",
-      "name": "Людду Дав Амар",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "myanmar:ma_ma_lay",
-      "name": "Ма Ма Лэй",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-review-required"
-    },
-    {
-      "key": "myanmar:min_thu_wun",
-      "name": "Мин Тху Вун",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "myanmar:thakin_kodaw_hmaing",
-      "name": "Тхикин Кода Хмаинг",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nepal:bhanubhakta_acharya",
-      "name": "Бханубхакта Ачарья",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "language",
-        "priority-claim",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "nepal:bp_koirala",
-      "name": "Б. П. Коирала",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "priority-claim",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "nepal:laxmi_prasad_devkota",
-      "name": "Лакшми Прасад Девкота",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "reception-influence",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "netherlands:betje_wolff",
-      "name": "Бетје Вольф",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "priority-claim",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "netherlands:erasmus_rotterdam",
-      "name": "Эразм Роттердамский",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "netherlands:harry_mulisch",
-      "name": "Гарри Мулиш",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "netherlands:joost_van_den_vondel",
-      "name": "Йост ван ден Вондел",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "netherlands:louis_couperus",
-      "name": "Луис Куперус",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "new_zealand:bill_manhire",
-      "name": "Билл Манхайр",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "new_zealand:bruce_mason",
-      "name": "Брюс Мейсон",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "new_zealand:c_k_stead",
-      "name": "К. К. Стед",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "new_zealand:eleanor_catton",
-      "name": "Элеанор Каттон",
+      "key": "nepal:krishna_dharabasi",
+      "name": "Кришна Дхараваси",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "awards",
         "identity-role",
-        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
+      "wikidataIdentityValidationStatus": "identity-review-required"
     },
     {
-      "key": "new_zealand:elizabeth_knox",
-      "name": "Элизабет Нокс",
+      "key": "netherlands:alexandre_olivier_exquemelin",
+      "name": "Александер Оливье Эксквемелин",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
         "identity-role",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "new_zealand:frank_sargeson",
-      "name": "Фрэнк Сарджесон",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
+        "life-dates",
         "priority-claim",
-        "reception-influence"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "new_zealand:james_k_baxter",
-      "name": "Джеймс К. Бакстер",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "new_zealand:janet_frame",
-      "name": "Джанет Фрейм",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "new_zealand:katherine_mansfield",
-      "name": "Кэтрин Мэнсфилд",
+      "key": "netherlands:anne_frank",
+      "name": "Анна Франк",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "movement-era",
-        "reception-influence"
+        "language",
+        "life-dates",
+        "priority-claim",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -24910,11 +24423,84 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
+      "key": "myanmar:ludu_daw_amar",
+      "name": "Люду До Амар",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "myanmar:ma_ma_lay",
+      "name": "Ма Ма Лэй",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-review-required"
+    },
+    {
+      "key": "nepal:bhanubhakta_acharya",
+      "name": "Бханубхакта Ачарья",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "nepal:laxmi_prasad_devkota",
+      "name": "Лакшми Прасад Девкота",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "netherlands:cees_nooteboom",
       "name": "Сейс Нотебоом",
       "priority": "P2",
       "issueCodes": [],
-      "claimsRequiringHumanSources": [],
+      "claimsRequiringHumanSources": [
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "netherlands:harry_mulisch",
+      "name": "Гарри Мулиш",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "new_zealand:frank_sargeson",
+      "name": "Фрэнк Сарджесон",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
       "wikidataIdentityValidationStatus": "identity-corroborated"
@@ -36204,82 +35790,61 @@
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
+      "key": "myanmar:min_thu_wun",
+      "name": "Мин Тувун",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "myanmar:thakin_kodaw_hmaing",
+      "name": "Такин Кодо Хмайн",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "myanmar:theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "namibia:gabi_stolz",
-      "name": "Габи Штольц",
+      "name": "Тейппан Маун Ва",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
         "language",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "namibia:gustav_frolich",
-      "name": "Густав Фрёлих",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "language",
-        "national-cultural-affiliation"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "namibia:ndapewaoshali_shikongo",
-      "name": "Ндандулениао Шиконго",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "nauru:michael_francis",
-      "name": "Майкл Фрэнсис",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "nepal:krishna_dharabasi",
-      "name": "Кришна Дхараваси",
-      "priority": "P3",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-review-required"
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "name": "Бишвешвар Прасад Коирала",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "nepal:manjushree_thapa",
@@ -36290,7 +35855,6 @@
         "identity-role",
         "language",
         "national-cultural-affiliation",
-        "reception-influence",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36303,19 +35867,22 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "netherlands:alexandre_olivier_exquemelin",
-      "name": "Александер Оливье Эксквемелин",
+      "key": "netherlands:betje_wolff",
+      "name": "Бетје Вольф",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36323,16 +35890,17 @@
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "netherlands:anne_frank",
-      "name": "Анна Франк",
+      "key": "netherlands:erasmus_rotterdam",
+      "name": "Эразм Роттердамский",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
+      "wikidataIdentityValidationStatus": "identity-review-required"
     },
     {
       "key": "netherlands:frederik_van_eeden",
@@ -36340,7 +35908,9 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36360,12 +35930,41 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
+      "key": "netherlands:joost_van_den_vondel",
+      "name": "Йост ван ден Вондел",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "netherlands:louis_couperus",
+      "name": "Луис Куперус",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
       "key": "netherlands:multatuli",
       "name": "Мултатули",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36378,7 +35977,50 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "new_zealand:bill_manhire",
+      "name": "Билл Манхайр",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "new_zealand:bruce_mason",
+      "name": "Брюс Мейсон",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "name": "Кристиан Карлсон Стед",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36386,15 +36028,43 @@
     },
     {
       "key": "new_zealand:damien_wilkins",
-      "name": "Дамиан Уилкинс",
+      "name": "Дэмиен Уилкинс",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "movement-era",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "new_zealand:eleanor_catton",
+      "name": "Элеанор Каттон",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "name": "Элизабет Нокс",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "new_zealand:fiona_kidman",
@@ -36402,11 +36072,26 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "new_zealand:james_k_baxter",
+      "name": "Джеймс Кир Бакстер",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-review-required"
     },
     {
       "key": "new_zealand:jane_mander",
@@ -36415,6 +36100,21 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "new_zealand:janet_frame",
+      "name": "Джанет Фрейм",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36428,7 +36128,20 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "reception-influence",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "new_zealand:katherine_mansfield",
+      "name": "Кэтрин Мэнсфилд",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -170264,8 +169977,8 @@
       "name": "Дрис Шрайби",
       "biography": {
         "present": true,
-        "sha256": "de4272e67a1956a656e8907f204c0facec645e1d65e92fdd0acb755ee735f659",
-        "characters": 171,
+        "sha256": "be2e4708eef947ece899a84d52fd1a3ced932879bfddae50123d220ec053f0b6",
+        "characters": 170,
         "sentenceCount": 3
       },
       "claims": {
@@ -171990,30 +171703,34 @@
       "countryId": "myanmar",
       "countryName": "Мьянма",
       "writerId": "ludu_daw_amar",
-      "name": "Людду Дав Амар",
+      "name": "Люду До Амар",
       "biography": {
         "present": true,
-        "sha256": "eab1c14ceaea7ab26ee4b86e7628a79fd0ef8479f8c1b517a5cb4efdb26295fc",
-        "characters": 121,
+        "sha256": "3417511a0a1bf0dc6ca6a3e52209e47942d089a64336d8f79eca552c19e34f93",
+        "characters": 160,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1915,
+            "deathYear": 2008,
+            "text": "1915–2008"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
-        "typesRequiringHumanSources": [
-          "critical-ranking"
-        ]
+        "typesRequiringHumanSources": []
       },
       "stagingEvidence": {
         "identityStatus": "reliable-match",
@@ -172127,7 +171844,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -172146,26 +171863,35 @@
       "name": "Ма Ма Лэй",
       "biography": {
         "present": true,
-        "sha256": "1465c9a2cf857c0ef7971c5f6f67453fb1aa0a988beb08407324be69363614db",
-        "characters": 79,
-        "sentenceCount": 1
+        "sha256": "c0677a92ba6b8c10ba9b5422033c0bd99b0cba7b4b37610e1e22f65ea8422799",
+        "characters": 117,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Not Out of Hate"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1917,
+            "deathYear": 1982,
+            "text": "1917–1982"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -172299,7 +172025,7 @@
         }
       ],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -172315,28 +172041,34 @@
       "countryId": "myanmar",
       "countryName": "Мьянма",
       "writerId": "min_thu_wun",
-      "name": "Мин Тху Вун",
+      "name": "Мин Тувун",
       "biography": {
         "present": true,
-        "sha256": "7d16069e1028a16f4ea55a1fb590dc23a09faec9f7f190eec15241bddf85a4ae",
-        "characters": 101,
+        "sha256": "7afe1b2afb18e6e0b933698833dbd2650cc84205d85e9817a351edd6fc097c60",
+        "characters": 155,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "language",
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1909,
+            "deathYear": 2004,
+            "text": "1909–2004"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "language",
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -172439,7 +172171,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -172455,26 +172187,32 @@
       "countryId": "myanmar",
       "countryName": "Мьянма",
       "writerId": "thakin_kodaw_hmaing",
-      "name": "Тхикин Кода Хмаинг",
+      "name": "Такин Кодо Хмайн",
       "biography": {
         "present": true,
-        "sha256": "c2b70d1f3a136804dbd73d0c0fd41487abaed3b8cb82294edf996be99df5eceb",
-        "characters": 104,
+        "sha256": "111dd77f34a6d3242df8dbea46c3cf6579ec74c75a2481aaaa91470833f447e7",
+        "characters": 186,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "priority-claim"
+          "life-dates"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1876,
+            "deathYear": 1964,
+            "text": "1876–1964"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "priority-claim"
+          "life-dates"
         ]
       },
       "stagingEvidence": {
@@ -172577,7 +172315,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -172593,24 +172331,40 @@
       "countryId": "myanmar",
       "countryName": "Мьянма",
       "writerId": "theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
+      "name": "Тейппан Маун Ва",
       "biography": {
         "present": true,
-        "sha256": "99be52cac0a1e51a47d9e1a6435561107b2923d881aab37f5d2fce940fc690cc",
-        "characters": 116,
+        "sha256": "26e3e358247fe28413654e1cc6e7768224acf0b473bf884f2c73a42851614309",
+        "characters": 177,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1899,
+            "deathYear": 1942,
+            "text": "1899–1942"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "language",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -172633,14 +172387,14 @@
         "labels": {
           "en": "Theippan Maung Wa"
         },
-        "labelIdentityMatch": true,
+        "labelIdentityMatch": false,
         "cardBirthYear": 1899,
         "wikidataBirthYears": [
           1899
         ],
         "birthYearIdentityStatus": "match",
         "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
+        "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": null,
         "publicPortraitSourceUrl": null,
@@ -172658,8 +172412,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1899-01-01",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1899",
+            "matchedClaim": {
+              "value": "1899-06-05",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q7777816$69BBFF77-B046-4982-B036-DB167034FBEF"
+            },
             "bestRankClaims": [
               {
                 "value": "1899-06-05",
@@ -172674,8 +172437,17 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1942-01-01",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1942",
+            "matchedClaim": {
+              "value": "1942-06-06",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 1,
+              "claimId": "Q7777816$CC78C725-C680-4931-A993-44F5C373F9DB"
+            },
             "bestRankClaims": [
               {
                 "value": "1942-06-06",
@@ -172705,301 +172477,6 @@
       }
     },
     {
-      "key": "namibia:gabi_stolz",
-      "countryId": "namibia",
-      "countryName": "Намибия",
-      "writerId": "gabi_stolz",
-      "name": "Габи Штольц",
-      "biography": {
-        "present": true,
-        "sha256": "43808a51403a75f4372594eca58d99861473f890630dd5bb330b910c9a6c5402",
-        "characters": 65,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role",
-          "language",
-          "national-cultural-affiliation"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role",
-          "language",
-          "national-cultural-affiliation"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P3",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "namibia:gustav_frolich",
-      "countryId": "namibia",
-      "countryName": "Намибия",
-      "writerId": "gustav_frolich",
-      "name": "Густав Фрёлих",
-      "biography": {
-        "present": true,
-        "sha256": "8ded9267ca112932e3e46fa1881e730a7080488109fcdf178a3b50f54f2a6c0a",
-        "characters": 80,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role",
-          "language",
-          "national-cultural-affiliation"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role",
-          "language",
-          "national-cultural-affiliation"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "curated-qid-candidate",
-        "qid": "Q5746561",
-        "entityAvailable": true,
-        "sourceUrl": "https://www.wikidata.org/wiki/Q5746561",
-        "lastRevisionId": 2508966881,
-        "modified": "2026-06-22T00:14:15Z",
-        "labels": {
-          "en": "Gustav Frölich"
-        },
-        "labelIdentityMatch": true,
-        "cardBirthYear": 1879,
-        "wikidataBirthYears": [
-          1879
-        ],
-        "birthYearIdentityStatus": "match",
-        "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
-        "manualIdentityConfirmation": null,
-        "publicPortrait": null,
-        "publicPortraitSourceUrl": null,
-        "portraitIdentityRisk": false,
-        "humanClaimPresent": true,
-        "literaryOccupationIds": [],
-        "structuredClaimCounts": {
-          "birthDates": 1,
-          "deathDates": 1,
-          "occupations": 2,
-          "citizenships": 1,
-          "notableWorks": 0
-        },
-        "dates": {
-          "birthDate": {
-            "status": "compatible-at-shared-precision",
-            "cardValue": "1879",
-            "matchedClaim": {
-              "value": "1879-02-02",
-              "precision": "day",
-              "calendarId": "Q1985727",
-              "rank": "normal",
-              "referenced": true,
-              "referenceCount": 1,
-              "claimId": "Q5746561$49222E4A-C174-46AE-96F0-55B405DB61AE"
-            },
-            "bestRankClaims": [
-              {
-                "value": "1879-02-02",
-                "precision": "day",
-                "calendarId": "Q1985727",
-                "rank": "normal",
-                "referenced": true,
-                "referenceCount": 1,
-                "claimId": "Q5746561$49222E4A-C174-46AE-96F0-55B405DB61AE"
-              }
-            ],
-            "allClaimCount": 1
-          },
-          "deathDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1945",
-            "bestRankClaims": [
-              {
-                "value": "1940-08-23",
-                "precision": "day",
-                "calendarId": "Q1985727",
-                "rank": "normal",
-                "referenced": true,
-                "referenceCount": 1,
-                "claimId": "Q5746561$6200235E-9DB7-4581-BE1C-80EF435DB0E5"
-              }
-            ],
-            "allClaimCount": 1
-          }
-        }
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P3",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": true,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "namibia:ndapewaoshali_shikongo",
-      "countryId": "namibia",
-      "countryName": "Намибия",
-      "writerId": "ndapewaoshali_shikongo",
-      "name": "Ндандулениао Шиконго",
-      "biography": {
-        "present": true,
-        "sha256": "f42bfdd5fc514e88209280c4be9d75ba77575f20059c998e4bc9b5f85aed50ae",
-        "characters": 68,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role",
-          "works"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role",
-          "works"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P3",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
-      "key": "nauru:michael_francis",
-      "countryId": "nauru",
-      "countryName": "Науру",
-      "writerId": "michael_francis",
-      "name": "Майкл Фрэнсис",
-      "biography": {
-        "present": true,
-        "sha256": "5c62774aa5f9a945e98f309e9fcae0ddd22d814871b563f9d58c146a745d4de8",
-        "characters": 86,
-        "sentenceCount": 1
-      },
-      "claims": {
-        "types": [
-          "identity-role"
-        ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
-        "locallyCorroboratedTypes": [],
-        "typesRequiringHumanSources": [
-          "identity-role"
-        ]
-      },
-      "stagingEvidence": {
-        "identityStatus": "no-reliable-match",
-        "matchMethod": null,
-        "matchEvidence": [],
-        "wikidataId": null,
-        "verificationStatus": null,
-        "sourceConfirmed": false,
-        "sourceUrls": [],
-        "authorityIds": {}
-      },
-      "wikidataEvidence": {
-        "mappingStatus": "no-curated-qid",
-        "qid": null,
-        "entityAvailable": false,
-        "dates": {}
-      },
-      "manualResolutions": [],
-      "issues": [],
-      "priority": "P3",
-      "automatedCoverage": {
-        "textAndClaimInventory": true,
-        "cardSelfConsistency": true,
-        "reliableStagingIdentity": false,
-        "sourceConfirmedStructuredCrossCheck": false,
-        "wikidataStructuredTriage": false,
-        "manualSourceResolutionApplied": false,
-        "completeClaimLevelFactCheck": false
-      }
-    },
-    {
       "key": "nepal:bhanubhakta_acharya",
       "countryId": "nepal",
       "countryName": "Непал",
@@ -173007,29 +172484,32 @@
       "name": "Бханубхакта Ачарья",
       "biography": {
         "present": true,
-        "sha256": "c23ab8f62501b2e1c3128a6e451b8f6b8aa2f6258d54972d9c1d8a5655c935ea",
-        "characters": 206,
-        "sentenceCount": 3
+        "sha256": "d776eb9bcc0d7d2e8fc136dcfcd9b4ff81e71badb04382db5032145d65bf587d",
+        "characters": 114,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
-          "priority-claim",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1814,
+            "deathYear": 1868,
+            "text": "1814–1868"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "language",
-          "priority-claim",
           "works"
         ]
       },
@@ -173118,8 +172598,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1868-04-23",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1868",
             "matchedClaim": {
               "value": "1868-04-23",
               "precision": "day",
@@ -173146,7 +172626,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173162,27 +172642,25 @@
       "countryId": "nepal",
       "countryName": "Непал",
       "writerId": "bp_koirala",
-      "name": "Б. П. Коирала",
+      "name": "Бишвешвар Прасад Коирала",
       "biography": {
         "present": true,
-        "sha256": "dfcc964e5684f6ccf36cdb74943b15a4be749c68835bcc5a5c8feb48d7d3de60",
-        "characters": 141,
-        "sentenceCount": 2
+        "sha256": "a006c600e032edb71541e5cca3281af799d976ab3a6f99b5fe74088ad847b441",
+        "characters": 143,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role",
-          "priority-claim",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role",
-          "priority-claim",
+          "themes-style",
           "works"
         ]
       },
@@ -173204,7 +172682,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173223,21 +172701,25 @@
       "name": "Кришна Дхараваси",
       "biography": {
         "present": true,
-        "sha256": "abea639016166642d7d07e4f3760b0350fae62f4c478b6e93f94590881bcf79b",
-        "characters": 115,
-        "sentenceCount": 1
+        "sha256": "c46b629437d2a9d8c5f5b6dd5264f30556252ec5050651a439f3df07a45feb69",
+        "characters": 138,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
+          "awards",
           "identity-role",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Radha"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
+          "awards",
           "identity-role",
           "works"
         ]
@@ -173262,13 +172744,13 @@
         "labels": {
           "en": "Krishna Dharabasi"
         },
-        "labelIdentityMatch": true,
-        "cardBirthYear": 1959,
+        "labelIdentityMatch": false,
+        "cardBirthYear": null,
         "wikidataBirthYears": [
           1960
         ],
-        "birthYearIdentityStatus": "conflict",
-        "nearestBirthYearDistance": 1,
+        "birthYearIdentityStatus": "not-comparable",
+        "nearestBirthYearDistance": null,
         "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": "assets/writer-portraits/q13180208.webp",
@@ -173287,8 +172769,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1959-01-01",
+            "status": "no-card-date",
+            "cardValue": null,
             "bestRankClaims": [
               {
                 "value": "1960-07-17",
@@ -173299,8 +172781,7 @@
                 "referenceCount": 1,
                 "claimId": "Q13180208$D642C1DE-349E-4E97-9695-4EBC162E5F2B"
               }
-            ],
-            "allClaimCount": 1
+            ]
           },
           "deathDate": {
             "status": "no-card-date",
@@ -173311,7 +172792,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173330,20 +172811,20 @@
       "name": "Лакшми Прасад Девкота",
       "biography": {
         "present": true,
-        "sha256": "1a73ec2ae3c76ce4097e2934e21fc4d63552cb3afcff138fd09850a6a8a8f5c1",
-        "characters": 139,
+        "sha256": "d88dcffdf0d6189ab27dc84fe46a9472ef6b5a36daaaf2d2eea0f4333f2ce785",
+        "characters": 120,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Muna Madan"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [
           "identity",
@@ -173351,8 +172832,6 @@
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "reception-influence",
           "works"
         ]
       },
@@ -173490,7 +172969,7 @@
         }
       ],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173509,28 +172988,28 @@
       "name": "Манджушри Тхапа",
       "biography": {
         "present": true,
-        "sha256": "c6e48486ee02c251ad402cb80e4bfbf5c53693285cc51f932212edee19b5a68b",
-        "characters": 127,
-        "sentenceCount": 2
+        "sha256": "d1c9c69cf8b39dd25669694137f5c088fc96d2ad3c922c633f4aa98febc0782c",
+        "characters": 177,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "language",
           "national-cultural-affiliation",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "The Tutor of History"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "language",
           "national-cultural-affiliation",
-          "reception-influence",
           "works"
         ]
       },
@@ -173577,8 +173056,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "compatible-at-shared-precision",
-            "cardValue": "1968-01-01",
+            "status": "exact-gregorian-match",
+            "cardValue": "1968",
             "matchedClaim": {
               "value": "1968",
               "precision": "year",
@@ -173629,21 +173108,27 @@
       "name": "Париджат",
       "biography": {
         "present": true,
-        "sha256": "a817ab975013863e1e8a549a2fda75dcb78bd254178f422c3fb7a94d52f8a967",
-        "characters": 102,
+        "sha256": "858a474678d69d216b508e35e9b0ef850e2a9d88deaeb9ad835757df75343d9c",
+        "characters": 136,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Shirishko Phool"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -173693,8 +173178,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "compatible-at-shared-precision",
-            "cardValue": "1937-03-13",
+            "status": "exact-gregorian-match",
+            "cardValue": "1937",
             "matchedClaim": {
               "value": "1937",
               "precision": "year",
@@ -173718,8 +173203,8 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "compatible-at-shared-precision",
-            "cardValue": "1993-12-04",
+            "status": "exact-gregorian-match",
+            "cardValue": "1993",
             "matchedClaim": {
               "value": "1993",
               "precision": "year",
@@ -173765,22 +173250,28 @@
       "name": "Александер Оливье Эксквемелин",
       "biography": {
         "present": true,
-        "sha256": "dcfb0952e77af29213f5f9f8c714ebec55a7660b65814a51d0707da2336048c0",
-        "characters": 260,
-        "sentenceCount": 2
+        "sha256": "f8a167cb57c3d7f3f9052e98490e6ca5faa8c96896e1f2fb901b334fcd4f77d0",
+        "characters": 181,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
+          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "De Americaensche Zee-Roovers"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
+          "priority-claim",
           "works"
         ]
       },
@@ -173802,7 +173293,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173821,21 +173312,33 @@
       "name": "Анна Франк",
       "biography": {
         "present": true,
-        "sha256": "bc0e447d6019cfd2b4b48f2ddf844de2c5c8c9c746b058957d52c683a04422e3",
-        "characters": 79,
-        "sentenceCount": 1
+        "sha256": "6dbcbbec492485e25eb5bb63d2415a9bd4667944bc3966f73b30f68acfb606b9",
+        "characters": 163,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "language",
+          "life-dates",
+          "priority-claim",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1929,
+            "deathYear": 1945,
+            "text": "1929–1945"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "language",
+          "life-dates",
+          "priority-claim",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -173908,7 +173411,7 @@
           },
           "deathDate": {
             "status": "compatible-at-shared-precision",
-            "cardValue": "1945-02-01",
+            "cardValue": "1945",
             "matchedClaim": {
               "value": "1945-02",
               "precision": "month",
@@ -173935,7 +173438,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -173954,24 +173457,32 @@
       "name": "Бетје Вольф",
       "biography": {
         "present": true,
-        "sha256": "9ea693e6877928a37f1ca49fc86bdc8a8f0050a1388d468e7b5d2ca0339ef993",
-        "characters": 89,
-        "sentenceCount": 1
+        "sha256": "908c68c719c26fff218f2362075c17bcf4caf7028097f7a7313b02be5073e259",
+        "characters": 158,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "priority-claim",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Historie van mejuffrouw Sara Burgerhart"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1738,
+            "deathYear": 1804,
+            "text": "1738–1804"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "priority-claim",
+          "life-dates",
           "works"
         ]
       },
@@ -173993,7 +173504,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -174012,24 +173523,38 @@
       "name": "Сейс Нотебоом",
       "biography": {
         "present": true,
-        "sha256": "8cb19f6f5da249d6bf8ec7973f5c2daedfd638ad769189da697db2ae6978bf3e",
-        "characters": 51,
-        "sentenceCount": 1
+        "sha256": "0576690ec2ea6407ecdb5ee50f1b4e56a62cc7aaafa2ff17843c58f1baf4f161",
+        "characters": 148,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Rituelen"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1933,
+            "deathYear": 2026,
+            "text": "1933–2026"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
-        "typesRequiringHumanSources": []
+        "typesRequiringHumanSources": [
+          "themes-style",
+          "works"
+        ]
       },
       "stagingEvidence": {
         "identityStatus": "reliable-match",
@@ -174122,8 +173647,17 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "no-card-date",
-            "cardValue": null,
+            "status": "exact-gregorian-match",
+            "cardValue": "2026-02-11",
+            "matchedClaim": {
+              "value": "2026-02-11",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 2,
+              "claimId": "Q158394$f67b622d-4670-6926-fcee-b1197ddc3640"
+            },
             "bestRankClaims": [
               {
                 "value": "2026-02-11",
@@ -174134,7 +173668,8 @@
                 "referenceCount": 2,
                 "claimId": "Q158394$f67b622d-4670-6926-fcee-b1197ddc3640"
               }
-            ]
+            ],
+            "allClaimCount": 1
           }
         }
       },
@@ -174159,23 +173694,23 @@
       "name": "Эразм Роттердамский",
       "biography": {
         "present": true,
-        "sha256": "9194abfa49885ba1d9879d31c7bc9269eda95d42ed3fd5512df0a4c29e561402",
-        "characters": 105,
-        "sentenceCount": 1
+        "sha256": "98f7b597a5bb255f6f36d515a620bd55d56f0fe07115298effc4dde1929cd191",
+        "characters": 240,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -174200,14 +173735,14 @@
           "ru": "Эразм Роттердамский"
         },
         "labelIdentityMatch": true,
-        "cardBirthYear": 1466,
+        "cardBirthYear": null,
         "wikidataBirthYears": [
           1466,
           1469
         ],
-        "birthYearIdentityStatus": "match",
-        "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
+        "birthYearIdentityStatus": "not-comparable",
+        "nearestBirthYearDistance": null,
+        "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": "assets/writer-portraits/q43499.webp",
         "publicPortraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Holbein-erasmus.jpg",
@@ -174226,17 +173761,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "compatible-calendar-unresolved",
-            "cardValue": "1466-10-28",
-            "matchedClaim": {
-              "value": "1466-10-28",
-              "precision": "day",
-              "calendarId": "Q1985786",
-              "rank": "preferred",
-              "referenced": true,
-              "referenceCount": 2,
-              "claimId": "Q43499$2A6BC9D7-BDEC-4C0A-97CC-1BB7E2C21207"
-            },
+            "status": "no-card-date",
+            "cardValue": "1466/1467/1469",
             "bestRankClaims": [
               {
                 "value": "1466-10-28",
@@ -174247,8 +173773,7 @@
                 "referenceCount": 2,
                 "claimId": "Q43499$2A6BC9D7-BDEC-4C0A-97CC-1BB7E2C21207"
               }
-            ],
-            "allClaimCount": 3
+            ]
           },
           "deathDate": {
             "status": "compatible-calendar-unresolved",
@@ -174279,7 +173804,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -174298,21 +173823,33 @@
       "name": "Фредерик ван Эден",
       "biography": {
         "present": true,
-        "sha256": "aa36476cb54bd57ca69a72b637892edd5fe4b1b6b3269b9af5bb29b74b8f6504",
-        "characters": 66,
-        "sentenceCount": 1
+        "sha256": "332bd22d3d51676e20d284355423d2b76e6323393871d38084d1f7557f5e4a54",
+        "characters": 144,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Van de koele meren des doods"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1860,
+            "deathYear": 1932,
+            "text": "1860–1932"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -174436,27 +173973,34 @@
       "name": "Гарри Мулиш",
       "biography": {
         "present": true,
-        "sha256": "4cd8916e5c13da1247105c05cb74b1030b8569ae4612a12bcbb111022cdead7e",
-        "characters": 106,
-        "sentenceCount": 1
+        "sha256": "ffa9f46076c222701309125292a03b945aeb1de55ed58b257637701a804f597e",
+        "characters": 133,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "De aanslag"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1927,
+            "deathYear": 2010,
+            "text": "1927–2010"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "works"
         ]
       },
@@ -174579,7 +174123,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -174598,9 +174142,9 @@
       "name": "Херман Кох",
       "biography": {
         "present": true,
-        "sha256": "a11647ec30ee6d662fbb4452d04ec6e66619b8a3616b89d7ba7a221ce9505757",
-        "characters": 88,
-        "sentenceCount": 1
+        "sha256": "bf6f499eb926ee4f54bac6fe913364d4bf63fae3dfd03f00bed0355fe2e89d97",
+        "characters": 124,
+        "sentenceCount": 4
       },
       "claims": {
         "types": [
@@ -174608,8 +174152,10 @@
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Het diner"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
@@ -174715,23 +174261,33 @@
       "name": "Йост ван ден Вондел",
       "biography": {
         "present": true,
-        "sha256": "99fc78f9b2f10e3f71a8e8608d77ed98cbcbea017ad7f25f1ead1cfa82c71853",
-        "characters": 68,
-        "sentenceCount": 1
+        "sha256": "44e3c0dc20ce648e3ddcb01af4edd48b32ff839d7b9ac17fb7a96d191454c79b",
+        "characters": 130,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Gijsbrecht van Aemstel"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1587,
+            "deathYear": 1679,
+            "text": "1587–1679"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -174835,7 +174391,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -174854,23 +174410,33 @@
       "name": "Луис Куперус",
       "biography": {
         "present": true,
-        "sha256": "a60cdc9f24bc9a0754ece1a16bda8b7f3eb88102dc83522d024921779831283e",
-        "characters": 59,
-        "sentenceCount": 1
+        "sha256": "274f0d2f672428fc6dcd7ac4812fdab2a4107d6f849762fb337feb0ed95f4267",
+        "characters": 174,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Eline Vere"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1863,
+            "deathYear": 1923,
+            "text": "1863–1923"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -174973,7 +174539,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -174992,22 +174558,32 @@
       "name": "Мултатули",
       "biography": {
         "present": true,
-        "sha256": "88324182e8750ef1450d82ad25cde50b39047594be2873803232c525604f5726",
-        "characters": 90,
-        "sentenceCount": 1
+        "sha256": "f5a09685c5b43e2a6676b9c5e649b64cb802e30c78f45d4b92f79e3bb9ae78f2",
+        "characters": 184,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Max Havelaar"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1820,
+            "deathYear": 1887,
+            "text": "1820–1887"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -175048,21 +174624,31 @@
       "name": "Аллен Карноу",
       "biography": {
         "present": true,
-        "sha256": "ab87d406e4eaf528035f541e9525bf5f3258729c706ceda88d23d1c0715b1334",
-        "characters": 116,
+        "sha256": "bee1f1b9b1c835a1a7d4178d7da20fe032887ec800357faa2d34dcf801a84f25",
+        "characters": 159,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1911,
+            "deathYear": 2001,
+            "text": "1911–2001"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175102,25 +174688,27 @@
       "name": "Билл Манхайр",
       "biography": {
         "present": true,
-        "sha256": "60cb922fe90d1a507abbd80bfb2f1a5ef96bf7bb1c9d9817970030332481c843",
-        "characters": 136,
-        "sentenceCount": 2
+        "sha256": "81028cd1e66848542a9707d90a897f04888388c53a0ed2becc6e0b9db626d2e2",
+        "characters": 192,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "priority-claim"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Milky Way Bar"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "priority-claim"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175141,7 +174729,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175160,23 +174748,33 @@
       "name": "Брюс Мейсон",
       "biography": {
         "present": true,
-        "sha256": "b0954d5f92e0d684a0dcc7fb5c128a808730be11a8d99121a0659a765c481684",
-        "characters": 101,
+        "sha256": "880fcaa01a531f7d9736ed3a2a69c4ce9aeae5fc2f82b265814cca682cf40f9c",
+        "characters": 179,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "priority-claim"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "The Pohutukawa Tree"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1921,
+            "deathYear": 1982,
+            "text": "1921–1982"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "priority-claim"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175197,7 +174795,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175213,26 +174811,29 @@
       "countryId": "new_zealand",
       "countryName": "Новая Зеландия",
       "writerId": "c_k_stead",
-      "name": "К. К. Стед",
+      "name": "Кристиан Карлсон Стед",
       "biography": {
         "present": true,
-        "sha256": "56e591c620e12d6ef771266ff4b16a8e31a90329585fd0d7721ae1d3e4eb1045",
-        "characters": 136,
-        "sentenceCount": 2
+        "sha256": "d929252605943d2a91ee68849190bc5f8a96020e005f78095cad83eb67c73da6",
+        "characters": 182,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "All Visitors Ashore",
+          "Mansfield"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175253,7 +174854,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175269,24 +174870,28 @@
       "countryId": "new_zealand",
       "countryName": "Новая Зеландия",
       "writerId": "damien_wilkins",
-      "name": "Дамиан Уилкинс",
+      "name": "Дэмиен Уилкинс",
       "biography": {
         "present": true,
-        "sha256": "64f79d8ed1356855f719f0909a4e23c7a2aa7ad966b38962be4c2feacce400b0",
-        "characters": 117,
-        "sentenceCount": 2
+        "sha256": "a601a0077c316c511e6daca63ac5b131249c50aa126f9fd3f9a34a603421378b",
+        "characters": 161,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "movement-era",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "movement-era",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175387,28 +174992,24 @@
       "name": "Элеанор Каттон",
       "biography": {
         "present": true,
-        "sha256": "befdd61fe74e2feb96ecb7e9b56174e17effe10db9b6d79b2854df21a2ff355c",
-        "characters": 167,
-        "sentenceCount": 2
+        "sha256": "beca8571266402cffd12af3ee4997775dd0ac54af504317ed25a535224f10b84",
+        "characters": 154,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
-          "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 1,
         "namedWorkTitles": [
-          "Светила"
+          "The Luminaries"
         ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "awards",
           "identity-role",
-          "national-cultural-affiliation",
           "works"
         ]
       },
@@ -175492,7 +175093,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175511,23 +175112,23 @@
       "name": "Элизабет Нокс",
       "biography": {
         "present": true,
-        "sha256": "90c40c744d636bf8e3564bf9f5504d3b9ea1f8bcda94001a8efcfad440dbe308",
-        "characters": 154,
-        "sentenceCount": 2
+        "sha256": "aae4045a9979dde6b191b263f62d230e774d41098edb76e80342bc75998bb6ea",
+        "characters": 166,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "The Vintner’s Luck"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "works"
         ]
@@ -175550,7 +175151,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175569,21 +175170,25 @@
       "name": "Фиона Кидман",
       "biography": {
         "present": true,
-        "sha256": "c4de60bc4dff3cc3b9054af4ea575b086bfa850a288d601b230b88f1614fc189",
-        "characters": 105,
-        "sentenceCount": 2
+        "sha256": "ce0750007c98d24ee2c8f342b89d41d22571ad7e389289219ea3ace729bbec56",
+        "characters": 171,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "This Mortal Boy"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175623,28 +175228,33 @@
       "name": "Фрэнк Сарджесон",
       "biography": {
         "present": true,
-        "sha256": "43e041e849b61655f5508641f7b552c2b178ce37e5654161ada9d63aacc53cf7",
-        "characters": 144,
+        "sha256": "5f4155e99d4ea6fe6671610caff7c595c1f7bf85be1cb1676c3e2488d62685d9",
+        "characters": 181,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "priority-claim",
-          "reception-influence"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1903,
+            "deathYear": 1982,
+            "text": "1903–1982"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "priority-claim",
-          "reception-influence"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175761,7 +175371,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175777,28 +175387,34 @@
       "countryId": "new_zealand",
       "countryName": "Новая Зеландия",
       "writerId": "james_k_baxter",
-      "name": "Джеймс К. Бакстер",
+      "name": "Джеймс Кир Бакстер",
       "biography": {
         "present": true,
-        "sha256": "9921eb11fac9b45a8aa6ee10e7c2cfb8328e4b521269cfe4abadc157479a5359",
-        "characters": 146,
+        "sha256": "5978e8537e0265ab59d9ae61593d217cf1bcde3b47a9d9ca0508bf19eb23575e",
+        "characters": 147,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1926,
+            "deathYear": 1972,
+            "text": "1926–1972"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -175821,14 +175437,14 @@
         "labels": {
           "en": "James K. Baxter"
         },
-        "labelIdentityMatch": true,
+        "labelIdentityMatch": false,
         "cardBirthYear": 1926,
         "wikidataBirthYears": [
           1926
         ],
         "birthYearIdentityStatus": "match",
         "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
+        "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": "assets/writer-portraits/q6137045.webp",
         "publicPortraitSourceUrl": "https://commons.wikimedia.org/wiki/File:James_K._Baxter_in_the_1950s_(cropped).jpg",
@@ -175900,7 +175516,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -175919,22 +175535,32 @@
       "name": "Джейн Мандер",
       "biography": {
         "present": true,
-        "sha256": "7599a3e29e23292b66b7ed4a76ac9bacf5f7603d8bb5d42f9d0d0ec5e4137cb0",
+        "sha256": "c56de432ef66c662b2a4036ed883c916ef48a9d3f302e8d439cca1a7fe2a11ce",
         "characters": 165,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "The Story of a New Zealand River"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1877,
+            "deathYear": 1949,
+            "text": "1877–1949"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -175975,25 +175601,34 @@
       "name": "Джанет Фрейм",
       "biography": {
         "present": true,
-        "sha256": "0d910399413639b7fec1654fb30fb47d42046974c1b2caddb01ef6b2bb0fac76",
-        "characters": 168,
+        "sha256": "cc61216d495d04b058c2cdbd40f2417a0af31397f9c81807f352a4bbdc7801e8",
+        "characters": 194,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "An Angel at My Table",
+          "Owls Do Cry"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1924,
+            "deathYear": 2004,
+            "text": "1924–2004"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176014,7 +175649,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -176033,24 +175668,22 @@
       "name": "Кейт де Голди",
       "biography": {
         "present": true,
-        "sha256": "c1b4a068d6f542546d5a4dd6d62026c86e5d674202f4af6d19562cfa4a344852",
-        "characters": 87,
-        "sentenceCount": 1
+        "sha256": "517f7445883e45eb72825e4b00b929848d462236f79098f2d958add0f26dc827",
+        "characters": 180,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "reception-influence",
           "works"
         ]
       },
@@ -176143,27 +175776,31 @@
       "name": "Кэтрин Мэнсфилд",
       "biography": {
         "present": true,
-        "sha256": "038b9ed4431590925a7aeed32101cdc2f923915d567ac92822eb29f30a7c3396",
-        "characters": 186,
+        "sha256": "50ac568b7772427548b648167ef36359d65f742a35eaadc4f1dda93bc421f21b",
+        "characters": 211,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "movement-era",
-          "reception-influence"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1888,
+            "deathYear": 1923,
+            "text": "1888–1923"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "movement-era",
-          "reception-influence"
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -176266,7 +175903,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,

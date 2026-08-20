@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { selectHistoricalWriterBiographyFactReviewBoundary } from "./writerBiographyFactReviewBoundary.test-support";
 import { legacyWriterBiography } from "../writerBiography";
 import {
   countries as publicCountries,
@@ -164,15 +165,13 @@ describe("writer biography claim review batch 34", () => {
     // allocation queue. The live QA queue may omit them after quarantine;
     // six later Batch 38 identities plus the later Batch 39 and Batch 40
     // holds stay absent and sort after this slice.
-    const frozenReviewQueueKeys = [
-      ...new Set([...reviewQueueKeys, ...expectedHeldKeys]),
-    ];
-    const pendingKeys = frozenReviewQueueKeys
-      .filter((key) => !priorAssignedSet.has(key))
-      .sort((a, b) => a.localeCompare(b, "en"));
+    const historicalBoundaryKeys = selectHistoricalWriterBiographyFactReviewBoundary({
+      liveReviewQueueKeys: reviewQueueKeys,
+      currentBatchHeldKeys: expectedHeldKeys,
+      priorAssignedKeys: priorAssigned,
+      boundarySize: 40,
+    });
 
-    expect(frozenReviewQueueKeys).toHaveLength(1690);
-    expect(new Set(frozenReviewQueueKeys).size).toBe(1690);
     expect(priorReport).toHaveLength(560);
     expect(new Set(priorReport).size).toBe(560);
     expect(frozenBatch28Keys).toHaveLength(40);
@@ -183,11 +182,9 @@ describe("writer biography claim review batch 34", () => {
     expect(frozenBatch33Keys).toHaveLength(40);
     expect(priorAssigned).toHaveLength(800);
     expect(priorAssignedSet.size).toBe(800);
-    expect(pendingKeys).toHaveLength(925);
-    expect(quarantineKeys.length).toBeGreaterThanOrEqual(64);
     expect(new Set(quarantineKeys).size).toBe(quarantineKeys.length);
     expect(keys).toEqual(expectedKeys);
-    expect(keys).toEqual(pendingKeys.slice(0, 40));
+    expect(keys).toEqual(historicalBoundaryKeys);
     expect(new Set(keys).size).toBe(40);
     expect(keys.some((key) => priorAssignedSet.has(key))).toBe(false);
     expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);

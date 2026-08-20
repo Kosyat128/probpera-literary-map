@@ -36106,20 +36106,22 @@
       "writers": [
         {
           "id": "thakin_kodaw_hmaing",
-          "label": "Тхикин Кода Хмаинг",
+          "label": "Такин Кодо Хмайн",
           "fields": {
-            "name": "Тхикин Кода Хмаинг",
+            "name": "Такин Кодо Хмайн",
             "fullName": "Thakin Kodaw Hmaing",
             "years": "1876–1964",
             "birthDate": "1876-03-23",
             "deathDate": "1964-07-23",
-            "birthPlace": "Варетхо, Бирма",
+            "birthPlace": "деревня Вале, тауншип Шведаун, Мьянма",
             "portrait": "assets/writer-portraits/q673390.webp",
             "portraitAlt": "Портрет: Тхикин Кода Хмаинг",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Kodawmhine.jpg",
             "genres": [
               "поэзия",
-              "историческая литература"
+              "драматургия",
+              "журналистика",
+              "политическая публицистика"
             ],
             "language": "бирманский",
             "nationality": "бирманец",
@@ -36127,11 +36129,8 @@
               "XX век",
               "классика"
             ],
-            "bio": "Бирманский поэт, писатель и историк. Один из основателей современной бирманской национальной литературы.",
-            "works": [
-              "Myo Chit Thu",
-              "Политические и исторические поэмы"
-            ],
+            "bio": "Такин Кодо Хмайн (1876–1964) — бирманский поэт, драматург, журналист и участник антиколониального движения. Он публиковал политические и литературные тексты под несколькими псевдонимами.",
+            "works": [],
             "awards": [],
             "relatedWriters": [
               "min_thu_wun",
@@ -36142,20 +36141,22 @@
         },
         {
           "id": "min_thu_wun",
-          "label": "Мин Тху Вун",
+          "label": "Мин Тувун",
           "fields": {
-            "name": "Мин Тху Вун",
+            "name": "Мин Тувун",
             "fullName": "Min Thu Wun",
             "years": "1909–2004",
             "birthDate": "1909-02-10",
             "deathDate": "2004-08-15",
-            "birthPlace": "Кьяуксе, Мьянма",
+            "birthPlace": "Кунджангон, Мьянма",
             "portrait": "assets/writer-portraits/q6862607.webp",
             "portraitAlt": "Портрет: Мин Тху Вун",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Min_Thu_Wun_portrait.jpg",
             "genres": [
               "поэзия",
-              "эссе"
+              "эссе",
+              "филология",
+              "детская литература"
             ],
             "language": "бирманский",
             "nationality": "бирманец",
@@ -36163,10 +36164,8 @@
               "XX век",
               "поэзия"
             ],
-            "bio": "Бирманский поэт, писатель и филолог. Один из крупнейших представителей современной бирманской поэзии.",
-            "works": [
-              "Poems and Essays"
-            ],
+            "bio": "Мин Тувун (1909–2004) — бирманский поэт, эссеист и исследователь языка. Он участвовал в литературном движении Khit San и с 1931 года писал стихи для детей.",
+            "works": [],
             "awards": [],
             "relatedWriters": [
               "thakin_kodaw_hmaing"
@@ -36220,7 +36219,8 @@
             "portrait": "",
             "genres": [
               "роман",
-              "социальная проза"
+              "социальная проза",
+              "редакторская работа"
             ],
             "language": "бирманский",
             "nationality": "бирманка",
@@ -36228,10 +36228,10 @@
               "XX век",
               "женская литература"
             ],
-            "bio": "Бирманская писательница, одна из самых известных женщин-авторов Мьянмы XX века.",
+            "bio": "Ма Ма Лэй (1917–1982) — бирманская писательница и редактор. Она написала романы «Not Out of Hate» и «A Man Like Him».",
             "works": [
               "Not Out of Hate",
-              "Mother"
+              "A Man Like Him"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36242,18 +36242,18 @@
         },
         {
           "id": "theippan_maung_wa",
-          "label": "Тхейппан Маунг Ва",
+          "label": "Тейппан Маун Ва",
           "fields": {
-            "name": "Тхейппан Маунг Ва",
-            "fullName": "Theippan Maung Wa",
+            "name": "Тейппан Маун Ва",
+            "fullName": "U Sein Tin (Theippan Maung Wa)",
             "years": "1899–1942",
-            "birthDate": "1899-01-01",
-            "deathDate": "1942-01-01",
+            "birthDate": "1899",
+            "deathDate": "1942",
             "birthPlace": "Бирма",
             "portrait": "",
             "genres": [
-              "рассказ",
-              "публицистика"
+              "проза",
+              "дневник"
             ],
             "language": "бирманский",
             "nationality": "бирманец",
@@ -36261,9 +36261,9 @@
               "XX век",
               "колониальный период"
             ],
-            "bio": "Бирманский писатель и журналист колониального периода. Один из заметных авторов ранней современной бирманской прозы.",
+            "bio": "Тейппан Маун Ва (1899–1942), псевдоним У Сейн Тина, — бирманский прозаик и автор дневников. Его военный дневник опубликован на английском языке под названием «Wartime in Burma».",
             "works": [
-              "Рассказы и публицистика"
+              "Wartime in Burma"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36274,9 +36274,9 @@
         },
         {
           "id": "ludu_daw_amar",
-          "label": "Людду Дав Амар",
+          "label": "Люду До Амар",
           "fields": {
-            "name": "Людду Дав Амар",
+            "name": "Люду До Амар",
             "fullName": "Ludu Daw Amar",
             "years": "1915–2008",
             "birthDate": "1915-11-29",
@@ -36287,8 +36287,9 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Ludu_Daw_Amar_portrait.jpg",
             "genres": [
               "эссе",
-              "история",
-              "публицистика"
+              "журналистика",
+              "редакторская работа",
+              "история культуры"
             ],
             "language": "бирманский",
             "nationality": "бирманка",
@@ -36296,11 +36297,8 @@
               "XX век",
               "культура"
             ],
-            "bio": "Бирманская писательница, журналистка и историк культуры. Одна из самых влиятельных интеллектуальных фигур Мьянмы XX века.",
-            "works": [
-              "Исторические и культурные исследования",
-              "Публицистика"
-            ],
+            "bio": "Люду До Амар (1915–2008) — бирманская писательница, журналистка и редактор. Вместе с Люду У Хла она выпускала в Мандалае газету Ludu и писала о культуре Мьянмы.",
+            "works": [],
             "awards": [],
             "relatedWriters": [
               "ma_ma_lay",
@@ -36319,85 +36317,7 @@
         "code": "na",
         "flag": "🇳🇦"
       },
-      "writers": [
-        {
-          "id": "ndapewaoshali_shikongo",
-          "label": "Ндандулениао Шиконго",
-          "fields": {
-            "name": "Ндандулениао Шиконго",
-            "fullName": "Ndapewaoshali Shikongo",
-            "years": "1993–",
-            "birthDate": "1993",
-            "deathDate": "",
-            "birthPlace": "Намибия",
-            "portrait": "",
-            "genres": [
-              "проза",
-              "детская литература"
-            ],
-            "language": "английский",
-            "nationality": "намибийка",
-            "tags": [
-              "XXI век"
-            ],
-            "bio": "Современная намибийская писательница и автор произведений для детей.",
-            "works": [],
-            "awards": [],
-            "articleUrl": ""
-          }
-        },
-        {
-          "id": "gabi_stolz",
-          "label": "Габи Штольц",
-          "fields": {
-            "name": "Габи Штольц",
-            "fullName": "Gabi Stolz",
-            "years": "1956–",
-            "birthDate": "1956",
-            "deathDate": "",
-            "birthPlace": "Намибия",
-            "portrait": "",
-            "genres": [
-              "проза"
-            ],
-            "language": "немецкий",
-            "nationality": "намибийка",
-            "tags": [
-              "XX век",
-              "XXI век"
-            ],
-            "bio": "Автор, связанная с немецкоязычной литературной традицией Намибии.",
-            "works": [],
-            "awards": [],
-            "articleUrl": ""
-          }
-        },
-        {
-          "id": "gustav_frolich",
-          "label": "Густав Фрёлих",
-          "fields": {
-            "name": "Густав Фрёлих",
-            "fullName": "Gustav Frölich",
-            "years": "1879–1945",
-            "birthDate": "1879",
-            "deathDate": "1945",
-            "birthPlace": "Германская империя",
-            "portrait": "",
-            "genres": [
-              "проза"
-            ],
-            "language": "немецкий",
-            "nationality": "немец",
-            "tags": [
-              "XX век"
-            ],
-            "bio": "Немецкоязычный писатель, связанный с литературой германской Юго-Западной Африки.",
-            "works": [],
-            "awards": [],
-            "articleUrl": ""
-          }
-        }
-      ]
+      "writers": []
     },
     {
       "id": "nauru",
@@ -36407,35 +36327,7 @@
         "code": "nr",
         "flag": "🇳🇷"
       },
-      "writers": [
-        {
-          "id": "michael_francis",
-          "label": "Майкл Фрэнсис",
-          "fields": {
-            "name": "Майкл Фрэнсис",
-            "fullName": "Michael Francis",
-            "years": "1960–",
-            "birthDate": "1960",
-            "deathDate": "",
-            "birthPlace": "Науру",
-            "portrait": "",
-            "genres": [
-              "проза",
-              "эссе"
-            ],
-            "language": "английский",
-            "nationality": "науруанец",
-            "tags": [
-              "XX век",
-              "XXI век"
-            ],
-            "bio": "Науруанский автор, связанный с современной литературной и культурной традицией страны.",
-            "works": [],
-            "awards": [],
-            "articleUrl": ""
-          }
-        }
-      ]
+      "writers": []
     },
     {
       "id": "nepal",
@@ -36454,7 +36346,7 @@
             "fullName": "Bhanubhakta Acharya",
             "years": "1814–1868",
             "birthDate": "1814-07-13",
-            "deathDate": "1868-04-23",
+            "deathDate": "1868",
             "birthPlace": "Чунди Рамга, Непал",
             "portrait": "assets/writer-portraits/q2510589.webp",
             "portraitAlt": "Портрет: Бханубхакта Ачарья",
@@ -36471,7 +36363,7 @@
               "классика",
               "национальная литература"
             ],
-            "bio": "Непальский поэт, переводчик и основатель классической литературы на непальском языке. Считается Адикави — первым поэтом Непала. Его перевод «Рамаяны» сыграл огромную роль в развитии национальной литературы.",
+            "bio": "Бханубхакта Ачарья (1814–1868) — непальский поэт и переводчик. Он создал непальскую стихотворную версию «Рамаяны».",
             "works": [
               "Bhanubhakta Ramayana"
             ],
@@ -36498,7 +36390,8 @@
             "genres": [
               "поэзия",
               "эпос",
-              "драма"
+              "драматургия",
+              "эссе"
             ],
             "language": "непали",
             "nationality": "непалец",
@@ -36506,7 +36399,7 @@
               "XX век",
               "национальный поэт"
             ],
-            "bio": "Величайший поэт Непала, писатель и мыслитель. Автор произведений, оказавших огромное влияние на развитие современной непальской литературы.",
+            "bio": "Лакшми Прасад Девкота — непальский поэт, драматург и эссеист. Он написал поэмы «Muna Madan», «Shakuntala» и «Sulochana».",
             "works": [
               "Muna Madan",
               "Shakuntala",
@@ -36522,18 +36415,18 @@
         },
         {
           "id": "bp_koirala",
-          "label": "Б. П. Коирала",
+          "label": "Бишвешвар Прасад Коирала",
           "fields": {
-            "name": "Б. П. Коирала",
+            "name": "Бишвешвар Прасад Коирала",
             "fullName": "Bishweshwar Prasad Koirala",
             "years": "1914–1982",
-            "birthDate": "1914-09-08",
-            "deathDate": "1982-07-21",
+            "birthDate": "1914",
+            "deathDate": "1982",
             "birthPlace": "Варанаси, Британская Индия",
             "portrait": "",
             "genres": [
               "роман",
-              "психологическая проза"
+              "проза"
             ],
             "language": "непали",
             "nationality": "непалец",
@@ -36541,10 +36434,10 @@
               "XX век",
               "роман"
             ],
-            "bio": "Непальский писатель и один из основателей современной непальской прозы. Его романы исследуют психологию человека, общество и традиции Непала.",
+            "bio": "Бишвешвар Прасад Коирала (ум. 1982) — непальский прозаик и политический деятель. Среди его романов — «Teen Ghumti», «Sumnima» и «Narendra Dai».",
             "works": [
-              "Sumnima",
               "Teen Ghumti",
+              "Sumnima",
               "Narendra Dai"
             ],
             "awards": [],
@@ -36561,8 +36454,8 @@
             "name": "Париджат",
             "fullName": "Bishnu Kumari Waiba (Parijat)",
             "years": "1937–1993",
-            "birthDate": "1937-03-13",
-            "deathDate": "1993-12-04",
+            "birthDate": "1937",
+            "deathDate": "1993",
             "birthPlace": "Дарджилинг, Индия",
             "portrait": "assets/writer-portraits/q7137083.webp",
             "portraitAlt": "Портрет: Париджат",
@@ -36577,11 +36470,13 @@
               "XX век",
               "женская литература"
             ],
-            "bio": "Непальская писательница и поэтесса. Один из главных голосов современной непальской литературы XX века.",
+            "bio": "Париджат (Бишну Кумари Вайба; 1937–1993) — непальская писательница и поэтесса. Её роман «Shirishko Phool» получил премию Madan Puraskar.",
             "works": [
-              "Shirish Ko Phool"
+              "Shirishko Phool"
             ],
-            "awards": [],
+            "awards": [
+              "Madan Puraskar за роман Shirishko Phool"
+            ],
             "relatedWriters": [
               "bp_koirala"
             ],
@@ -36595,7 +36490,7 @@
             "name": "Манджушри Тхапа",
             "fullName": "Manjushree Thapa",
             "years": "1968–",
-            "birthDate": "1968-01-01",
+            "birthDate": "1968",
             "deathDate": "",
             "birthPlace": "Катманду, Непал",
             "portrait": "assets/writer-portraits/q467220.webp",
@@ -36603,7 +36498,8 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:MANJU3.jpg",
             "genres": [
               "роман",
-              "эссе"
+              "эссе",
+              "перевод"
             ],
             "language": "английский",
             "nationality": "непалка",
@@ -36611,7 +36507,7 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Современная непальская писательница, создающая произведения на английском языке. Известна романами и эссе о современном Непале.",
+            "bio": "Манджушри Тхапа (род. 1968 в Катманду) — непальская писательница и переводчица, работающая на английском языке. Она написала романы «The Tutor of History» и «Seasons of Flight».",
             "works": [
               "The Tutor of History",
               "Seasons of Flight"
@@ -36628,9 +36524,9 @@
           "label": "Кришна Дхараваси",
           "fields": {
             "name": "Кришна Дхараваси",
-            "fullName": "Krishna Dharabasi",
+            "fullName": "Krishna Prasad Bhattarai (Krishna Dharabasi)",
             "years": "1959–",
-            "birthDate": "1959-01-01",
+            "birthDate": "",
             "deathDate": "",
             "birthPlace": "Непал",
             "portrait": "assets/writer-portraits/q13180208.webp",
@@ -36638,7 +36534,7 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Krishna_Dharabasi.jpg",
             "genres": [
               "роман",
-              "современная проза"
+              "проза"
             ],
             "language": "непали",
             "nationality": "непалец",
@@ -36646,11 +36542,13 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Современный непальский писатель, известный романами и произведениями о социальных и культурных изменениях в Непале.",
+            "bio": "Кришна Дхарабаси — литературный псевдоним непальского писателя Кришны Прасада Бхаттарая. Его роман «Radha» удостоен премии Madan Puraskar.",
             "works": [
-              "Sharanarthi"
+              "Radha"
             ],
-            "awards": [],
+            "awards": [
+              "Madan Puraskar за роман Radha"
+            ],
             "relatedWriters": [
               "manjushree_thapa"
             ],
@@ -36674,25 +36572,26 @@
           "fields": {
             "name": "Эразм Роттердамский",
             "fullName": "Desiderius Erasmus",
-            "years": "1466–1536",
-            "birthDate": "1466-10-28",
+            "years": "1466/1467/1469–1536",
+            "birthDate": "1466/1467/1469",
             "deathDate": "1536-07-12",
             "birthPlace": "Роттердам",
             "portrait": "assets/writer-portraits/q43499.webp",
             "portraitAlt": "Портрет: Эразм Роттердамский",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Holbein-erasmus.jpg",
             "genres": [
-              "эссе",
-              "философская проза"
+              "гуманистическая проза",
+              "филология",
+              "богословие"
             ],
             "language": "латинский",
             "nationality": "нидерландец",
             "tags": [
               "Возрождение"
             ],
-            "bio": "Нидерландский гуманист эпохи Возрождения, писатель, философ и крупнейший мыслитель Северного Возрождения.",
+            "bio": "Эразм Роттердамский (год рождения точно не установлен: 1466, 1467 или 1469; умер в 1536 году) — нидерландский гуманист, филолог и богослов. Он написал «Похвалу глупости» и подготовил печатное греко-латинское издание Нового Завета 1516 года.",
             "works": [
-              "Похвала глупости"
+              "Moriae encomium (Похвала глупости)"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36716,16 +36615,18 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:J_vondel.jpg",
             "genres": [
               "поэзия",
-              "драма"
+              "драматургия"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
             "tags": [
               "XVII век"
             ],
-            "bio": "Крупнейший нидерландский поэт и драматург Золотого века Нидерландов.",
+            "bio": "Йост ван ден Вондел (1587–1679) — нидерландский поэт и драматург. Он написал пьесы «Gijsbrecht van Aemstel», «Lucifer» и «Jeptha».",
             "works": [
-              "Люцифер"
+              "Gijsbrecht van Aemstel",
+              "Lucifer",
+              "Jeptha"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36746,16 +36647,17 @@
             "birthPlace": "Влиссинген",
             "portrait": "",
             "genres": [
-              "роман"
+              "роман",
+              "эпистолярный роман"
             ],
             "language": "нидерландский",
             "nationality": "нидерландка",
             "tags": [
               "XVIII век"
             ],
-            "bio": "Нидерландская писательница эпохи Просвещения, одна из основательниц национального романа.",
+            "bio": "Бетье Вольф (1738–1804) — нидерландская писательница. Совместно с Агье Декен она написала эпистолярный роман «Historie van mejuffrouw Sara Burgerhart» (1782).",
             "works": [
-              "История миссис Сары Бюргерхарт"
+              "Historie van mejuffrouw Sara Burgerhart"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36769,7 +36671,7 @@
           "label": "Мултатули",
           "fields": {
             "name": "Мултатули",
-            "fullName": "Eduard Douwes Dekker",
+            "fullName": "Eduard Douwes Dekker (Multatuli)",
             "years": "1820–1887",
             "birthDate": "1820-03-02",
             "deathDate": "1887-02-19",
@@ -36777,6 +36679,7 @@
             "portrait": "",
             "genres": [
               "роман",
+              "публицистика",
               "сатира"
             ],
             "language": "нидерландский",
@@ -36784,9 +36687,9 @@
             "tags": [
               "XIX век"
             ],
-            "bio": "Нидерландский писатель, автор одного из важнейших романов голландской литературы XIX века.",
+            "bio": "Мультатули — псевдоним нидерландского писателя Эдуарда Доувеса Деккера (1820–1887). В 1860 году он опубликовал роман «Max Havelaar» о колониальном управлении в Нидерландской Ост-Индии.",
             "works": [
-              "Макс Хавелар"
+              "Max Havelaar"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36810,16 +36713,18 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Frederik_van_Eeden_foto_1895.png",
             "genres": [
               "роман",
-              "философская проза"
+              "поэзия",
+              "эссе"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
             "tags": [
               "XX век"
             ],
-            "bio": "Нидерландский писатель, поэт и философ конца XIX — начала XX века.",
+            "bio": "Фредерик ван Эден (1860–1932) — нидерландский писатель, врач и психиатр. Он написал «De kleine Johannes» и роман «Van de koele meren des doods».",
             "works": [
-              "Маленький Иоганнес"
+              "De kleine Johannes",
+              "Van de koele meren des doods"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36843,7 +36748,7 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:CouperusGoldsmid.jpg",
             "genres": [
               "роман",
-              "психологическая проза"
+              "путевая проза"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
@@ -36851,9 +36756,11 @@
               "XIX век",
               "XX век"
             ],
-            "bio": "Один из крупнейших нидерландских романистов конца XIX века.",
+            "bio": "Луи Куперус (1863–1923) — нидерландский романист и автор путевой прозы. Он написал романы «Eline Vere», «De stille kracht» и «Van oude menschen, de dingen, die voorbij gaan».",
             "works": [
-              "Старые люди и вещи, которые проходят"
+              "Eline Vere",
+              "De stille kracht",
+              "Van oude menschen, de dingen, die voorbij gaan"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36870,23 +36777,23 @@
             "fullName": "Anne Frank",
             "years": "1929–1945",
             "birthDate": "1929-06-12",
-            "deathDate": "1945-02-01",
+            "deathDate": "1945",
             "birthPlace": "Франкфурт-на-Майне",
             "portrait": "assets/writer-portraits/q4583.webp",
             "portraitAlt": "Портрет: Анна Франк",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank_(cropped).jpg",
             "genres": [
               "дневник",
-              "мемуары"
+              "автобиографическая проза"
             ],
             "language": "нидерландский",
             "nationality": "нидерландская еврейская община",
             "tags": [
               "XX век"
             ],
-            "bio": "Автор дневника, ставшего одним из самых известных свидетельств эпохи Холокоста.",
+            "bio": "Анна Франк (1929–1945) вела дневник на нидерландском языке во время укрытия в оккупированном Амстердаме. Первое книжное издание «Het Achterhuis» вышло в 1947 году.",
             "works": [
-              "Дневник Анны Франк"
+              "Het Achterhuis"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36909,17 +36816,19 @@
             "portraitAlt": "Портрет: Гарри Мулиш",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Harry_Mulisch_2010.JPG",
             "genres": [
-              "роман"
+              "роман",
+              "драматургия",
+              "эссе"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
             "tags": [
               "XX век"
             ],
-            "bio": "Один из крупнейших нидерландских писателей XX века, представитель «большой тройки» литературы Нидерландов.",
+            "bio": "Гарри Мулиш (1927–2010) — нидерландский романист, драматург и эссеист. Он написал романы «De aanslag» и «De ontdekking van de hemel».",
             "works": [
-              "Покушение",
-              "Открытие неба"
+              "De aanslag",
+              "De ontdekking van de hemel"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36934,16 +36843,18 @@
           "fields": {
             "name": "Сейс Нотебоом",
             "fullName": "Cees Nooteboom",
-            "years": "1933–",
+            "years": "1933–2026",
             "birthDate": "1933-07-31",
-            "deathDate": "",
+            "deathDate": "2026-02-11",
             "birthPlace": "Гаага",
             "portrait": "assets/writer-portraits/q158394.webp",
             "portraitAlt": "Портрет: Сейс Нотебоом",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Cees_Nooteboom_(cropped).jpg",
             "genres": [
               "роман",
-              "эссе"
+              "поэзия",
+              "эссе",
+              "путевая проза"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
@@ -36951,9 +36862,10 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Современный нидерландский писатель, поэт и эссеист.",
+            "bio": "Сейс Нотебоом (1933–2026) — нидерландский прозаик, поэт, эссеист и автор путевой прозы. Среди его книг — романы «Rituelen» и «Het volgende verhaal».",
             "works": [
-              "Ритуалы"
+              "Rituelen",
+              "Het volgende verhaal"
             ],
             "awards": [],
             "relatedWriters": [
@@ -36977,16 +36889,18 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Herman_Koch.jpg",
             "genres": [
               "роман",
-              "сатира"
+              "проза"
             ],
             "language": "нидерландский",
             "nationality": "нидерландец",
             "tags": [
               "XXI век"
             ],
-            "bio": "Современный нидерландский писатель и журналист, автор международного бестселлера «Ужин».",
+            "bio": "Херман Кох (род. 1953) — нидерландский писатель. Он написал романы «Het diner», «Zomerhuis met zwembad» и «Geachte heer M.».",
             "works": [
-              "Ужин"
+              "Het diner",
+              "Zomerhuis met zwembad",
+              "Geachte heer M."
             ],
             "awards": [],
             "relatedWriters": [
@@ -37001,11 +36915,13 @@
           "fields": {
             "name": "Александер Оливье Эксквемелин",
             "fullName": "Alexandre Olivier Exquemelin",
-            "years": "ок. 1645 — после 1707",
+            "years": "ок. 1645–1707",
+            "birthDate": "ок. 1645",
             "portrait": "",
             "genres": [
-              "документальная проза",
-              "мемуары"
+              "мемуарная проза",
+              "путевая проза",
+              "историческое свидетельство"
             ],
             "language": "нидерландский",
             "nationality": "франко-нидерландский автор",
@@ -37013,8 +36929,10 @@
               "XVII век",
               "морская литература"
             ],
-            "bio": "Врач, путешественник и автор одного из важнейших свидетельств о карибском пиратстве XVII века. Биографические сведения об Эксквемелине фрагментарны, а ранние издания его книги заметно расходятся между собой, поэтому спорные детали редакция обозначает отдельно.",
-            "works": [],
+            "bio": "Александр Оливье Эксквемелин (ок. 1645–1707) — хирург и автор свидетельства о карибских буканьерах. Его книга «De Americaensche Zee-Roovers» впервые издана в Амстердаме в 1678 году.",
+            "works": [
+              "De Americaensche Zee-Roovers"
+            ],
             "articleUrl": "https://probpera.ru/read/page-article/page-books/2"
           }
         }
@@ -37034,7 +36952,7 @@
           "label": "Кэтрин Мэнсфилд",
           "fields": {
             "name": "Кэтрин Мэнсфилд",
-            "fullName": "Kathleen Mansfield Beauchamp",
+            "fullName": "Kathleen Mansfield Beauchamp (Katherine Mansfield)",
             "years": "1888–1923",
             "birthDate": "1888-10-14",
             "deathDate": "1923-01-09",
@@ -37053,12 +36971,10 @@
               "модернизм",
               "мировая классика"
             ],
-            "bio": "Новозеландская писательница, одна из крупнейших фигур мирового модернизма. Получила известность благодаря психологическим рассказам, оказавшим влияние на развитие короткой прозы XX века.",
+            "bio": "Кэтрин Мэнсфилд (1888–1923), урождённая Кэтлин Бошан, — новозеландская писательница, работавшая преимущественно в жанре рассказа. Среди её книг — «Bliss and Other Stories» и «The Garden Party and Other Stories».",
             "works": [
-              "Счастье",
-              "Комната мисс Брилл",
-              "Прелюдия",
-              "Садовая вечеринка"
+              "Bliss and Other Stories",
+              "The Garden Party and Other Stories"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37070,10 +36986,10 @@
         },
         {
           "id": "james_k_baxter",
-          "label": "Джеймс К. Бакстер",
+          "label": "Джеймс Кир Бакстер",
           "fields": {
-            "name": "Джеймс К. Бакстер",
-            "fullName": "James K. Baxter",
+            "name": "Джеймс Кир Бакстер",
+            "fullName": "James Keir Baxter",
             "years": "1926–1972",
             "birthDate": "1926-06-29",
             "deathDate": "1972-10-22",
@@ -37083,7 +36999,8 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:James_K._Baxter_in_the_1950s_(cropped).jpg",
             "genres": [
               "поэзия",
-              "эссе"
+              "драматургия",
+              "литературная критика"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37091,11 +37008,10 @@
               "XX век",
               "поэзия"
             ],
-            "bio": "Один из крупнейших новозеландских поэтов XX века. Его творчество связано с духовными поисками, природой и культурной идентичностью Новой Зеландии.",
+            "bio": "Джеймс Кир Бакстер (1926–1972) — новозеландский поэт, драматург и литературный критик. Среди его книг — «Pig Island Letters» и «Jerusalem Sonnets».",
             "works": [
-              "Jerusalem Sonnets",
-              "The Tree House",
-              "Pig Island Letters"
+              "Pig Island Letters",
+              "Jerusalem Sonnets"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37114,11 +37030,11 @@
             "years": "1877–1949",
             "birthDate": "1877-04-09",
             "deathDate": "1949-12-20",
-            "birthPlace": "Онехунга, Новая Зеландия",
+            "birthPlace": "Рамарама, Новая Зеландия",
             "portrait": "",
             "genres": [
               "роман",
-              "социальная проза"
+              "журналистика"
             ],
             "language": "английский",
             "nationality": "новозеландка",
@@ -37126,10 +37042,10 @@
               "XIX век",
               "XX век"
             ],
-            "bio": "Новозеландская писательница, журналистка и одна из первых заметных романисток страны. В своих произведениях обращалась к вопросам общества, семьи и положения женщин.",
+            "bio": "Джейн Мандер (1877–1949), родившаяся в Рамараме, — новозеландская писательница и журналистка. Она написала романы «The Story of a New Zealand River» и «Allen Adair».",
             "works": [
               "The Story of a New Zealand River",
-              "The Passionate Puritan"
+              "Allen Adair"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37144,7 +37060,7 @@
           "label": "Фрэнк Сарджесон",
           "fields": {
             "name": "Фрэнк Сарджесон",
-            "fullName": "Frank Sargeson",
+            "fullName": "Norris Frank Davey (Frank Sargeson)",
             "years": "1903–1982",
             "birthDate": "1903-03-23",
             "deathDate": "1982-03-01",
@@ -37154,7 +37070,8 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Sargeson.jpg",
             "genres": [
               "рассказ",
-              "реализм"
+              "роман",
+              "драматургия"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37162,10 +37079,10 @@
               "XX век",
               "реализм"
             ],
-            "bio": "Новозеландский писатель, один из основателей современной национальной прозы. Его рассказы оказали большое влияние на развитие литературы страны.",
+            "bio": "Фрэнк Сарджесон (1903–1982), урождённый Норрис Фрэнк Дэйви, — новозеландский автор рассказов, романист и драматург. Среди его книг — «That Summer» и «The Stories of Frank Sargeson».",
             "works": [
               "That Summer",
-              "Collected Stories"
+              "The Stories of Frank Sargeson"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37188,7 +37105,8 @@
             "portrait": "",
             "genres": [
               "поэзия",
-              "эссе"
+              "литературная критика",
+              "редакторская работа"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37196,10 +37114,10 @@
               "XX век",
               "поэзия"
             ],
-            "bio": "Новозеландский поэт, редактор и критик. Один из главных создателей национальной поэтической традиции Новой Зеландии.",
+            "bio": "Аллен Карноу (1911–2001) — новозеландский поэт, литературный критик и редактор антологий. Среди его книг — «Early Days Yet» и «Continuum: New and Later Poems».",
             "works": [
               "Early Days Yet",
-              "Collected Poems"
+              "Continuum: New and Later Poems"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37211,9 +37129,9 @@
         },
         {
           "id": "c_k_stead",
-          "label": "К. К. Стед",
+          "label": "Кристиан Карлсон Стед",
           "fields": {
-            "name": "К. К. Стед",
+            "name": "Кристиан Карлсон Стед",
             "fullName": "Christian Karlson Stead",
             "years": "1932–",
             "birthDate": "1932-10-17",
@@ -37221,8 +37139,8 @@
             "birthPlace": "Окленд, Новая Зеландия",
             "portrait": "",
             "genres": [
-              "роман",
               "поэзия",
+              "роман",
               "литературная критика"
             ],
             "language": "английский",
@@ -37232,7 +37150,7 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Новозеландский писатель, поэт и литературный критик. Один из наиболее значимых представителей литературы страны второй половины XX века.",
+            "bio": "Кристиан Карлсон Стед (род. 1932) — новозеландский поэт, романист и литературный критик. Он написал романы «All Visitors Ashore» и «The Death of the Body», а также книгу «Mansfield».",
             "works": [
               "All Visitors Ashore",
               "The Death of the Body",
@@ -37376,12 +37294,12 @@
             "years": "1921–1982",
             "birthDate": "1921-09-28",
             "deathDate": "1982-12-31",
-            "birthPlace": "Вангануи, Новая Зеландия",
+            "birthPlace": "Веллингтон, Новая Зеландия",
             "portrait": "",
             "genres": [
-              "драма",
-              "эссе",
-              "театр"
+              "драматургия",
+              "актёрское искусство",
+              "театральная критика"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37389,7 +37307,7 @@
               "XX век",
               "драматургия"
             ],
-            "bio": "Новозеландский драматург, писатель и критик. Один из основателей национального театра Новой Зеландии.",
+            "bio": "Брюс Мейсон (1921–1982) — новозеландский драматург, актёр и театральный критик, родившийся в Веллингтоне. Он написал пьесы «The Pohutukawa Tree» и «The End of the Golden Weather».",
             "works": [
               "The Pohutukawa Tree",
               "The End of the Golden Weather"
@@ -37411,7 +37329,7 @@
             "years": "1985–",
             "birthDate": "1985-09-24",
             "deathDate": "",
-            "birthPlace": "Лондон, Канада",
+            "birthPlace": "Лондон, Онтарио, Канада",
             "portrait": "assets/writer-portraits/q3050522.webp",
             "portraitAlt": "Портрет: Элеанор Каттон",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Eleanor_Catton.jpg",
@@ -37426,13 +37344,14 @@
               "XXI век",
               "Букеровские лауреаты"
             ],
-            "bio": "Новозеландская писательница канадского происхождения. Получила мировую известность благодаря роману «Светила», за который стала лауреатом Букеровской премии 2013 года.",
+            "bio": "Элеанор Каттон (род. 1985 в Лондоне, Онтарио) — новозеландская писательница и сценаристка. Её роман «The Luminaries» получил Букеровскую премию 2013 года.",
             "works": [
-              "Светила",
-              "The Rehearsal"
+              "The Rehearsal",
+              "The Luminaries",
+              "Birnam Wood"
             ],
             "awards": [
-              "Букеровская премия 2013"
+              "Букеровская премия за The Luminaries, 2013"
             ],
             "relatedWriters": [
               "katherine_mansfield",
@@ -37455,7 +37374,7 @@
             "genres": [
               "роман",
               "фэнтези",
-              "фантастика"
+              "литература для подростков"
             ],
             "language": "английский",
             "nationality": "новозеландка",
@@ -37463,9 +37382,9 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Новозеландская писательница, автор романов на границе литературной прозы, фантастики и фэнтези. Одна из наиболее известных современных писательниц страны.",
+            "bio": "Элизабет Нокс (род. 1959) — новозеландская писательница, автор книг для взрослых и подростков. Она написала романы «The Vintner’s Luck», «Dreamhunter» и «Dreamquake».",
             "works": [
-              "The Vintner's Luck",
+              "The Vintner’s Luck",
               "Dreamhunter",
               "Dreamquake"
             ],
@@ -37486,7 +37405,7 @@
             "years": "1940–",
             "birthDate": "1940-03-26",
             "deathDate": "",
-            "birthPlace": "Крайстчерч, Новая Зеландия",
+            "birthPlace": "Хавера, Новая Зеландия",
             "portrait": "",
             "genres": [
               "роман",
@@ -37499,14 +37418,14 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Новозеландская писательница, поэтесса и редактор. Один из заметных авторов современной литературы страны.",
+            "bio": "Фиона Кидман (род. 1940 в Хавере) — новозеландская писательница, поэтесса и редактор. Её роман «This Mortal Boy» получил премию Acorn Foundation Fiction Prize в 2019 году.",
             "works": [
               "The Book of Secrets",
               "This Mortal Boy",
               "Songs from the Violet Café"
             ],
             "awards": [
-              "Премия Генерал-губернатора Новой Зеландии"
+              "Acorn Foundation Fiction Prize за This Mortal Boy, 2019"
             ],
             "relatedWriters": [
               "patricia_grace",
@@ -37561,7 +37480,8 @@
             "portrait": "",
             "genres": [
               "поэзия",
-              "рассказ"
+              "проза",
+              "редакторская работа"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37570,10 +37490,10 @@
               "XXI век",
               "поэзия"
             ],
-            "bio": "Новозеландский поэт, писатель и основатель первого курса творческого письма в стране. Один из ведущих современных поэтов Новой Зеландии.",
+            "bio": "Билл Манхайр (род. 1946) — новозеландский поэт, прозаик и редактор. Он основал программу творческого письма в Университете Виктории в Веллингтоне и написал сборники «Milky Way Bar» и «Lifted».",
             "works": [
               "Milky Way Bar",
-              "The New Land"
+              "Lifted"
             ],
             "awards": [
               "Премия Премьер-министра Новой Зеландии"
@@ -37599,7 +37519,8 @@
             "portraitAlt": "Портрет: Кейт де Голди",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Kate%C2%B7De%C2%B7Goldi%E2%80%A2Frankfurt%C2%B72012%E2%80%A2Lisa%C2%B7Gardiner.jpg",
             "genres": [
-              "роман",
+              "проза",
+              "подростковая литература",
               "детская литература"
             ],
             "language": "английский",
@@ -37608,7 +37529,7 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Новозеландская писательница, известная произведениями для детей, подростков и взрослых.",
+            "bio": "Кейт Де Голди (род. 1959) — новозеландская писательница, автор прозы для взрослых, подростков и детей. Она написала «The 10 PM Question» и «From the Cutting Room of Barney Kettle».",
             "works": [
               "The 10 PM Question",
               "From the Cutting Room of Barney Kettle"
@@ -37623,19 +37544,19 @@
         },
         {
           "id": "damien_wilkins",
-          "label": "Дамиан Уилкинс",
+          "label": "Дэмиен Уилкинс",
           "fields": {
-            "name": "Дамиан Уилкинс",
+            "name": "Дэмиен Уилкинс",
             "fullName": "Damien Wilkins",
             "years": "1963–",
             "birthDate": "1963-02-16",
             "deathDate": "",
-            "birthPlace": "Нью-Плимут, Новая Зеландия",
+            "birthPlace": "Лоуэр-Хатт, Новая Зеландия",
             "portrait": "",
             "genres": [
               "роман",
-              "поэзия",
-              "современная проза"
+              "рассказ",
+              "поэзия"
             ],
             "language": "английский",
             "nationality": "новозеландец",
@@ -37643,11 +37564,11 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Новозеландский писатель, романист, поэт и литературный редактор. Представитель современной литературы Новой Зеландии.",
+            "bio": "Дэмиен Уилкинс (род. 1963 в Лоуэр-Хатте) — новозеландский романист, автор рассказов и поэт. Среди его книг — «The Miserables», «The Veteran Perils» и «Max Gate».",
             "works": [
               "The Miserables",
-              "Max Gate",
-              "Dad"
+              "The Veteran Perils",
+              "Max Gate"
             ],
             "awards": [],
             "relatedWriters": [
@@ -37709,6 +37630,8 @@
             "portrait": "",
             "genres": [
               "роман",
+              "рассказ",
+              "поэзия",
               "автобиографическая проза"
             ],
             "language": "английский",
@@ -37717,11 +37640,11 @@
               "XX век",
               "психологическая проза"
             ],
-            "bio": "Одна из крупнейших новозеландских писательниц XX века. Её творчество сочетает психологическую прозу, автобиографические мотивы и исследование внутреннего мира человека.",
+            "bio": "Джанет Фрейм (1924–2004) — новозеландская писательница, поэтесса и автор автобиографической прозы. Она написала романы «Owls Do Cry» и «Faces in the Water», а также книгу «An Angel at My Table».",
             "works": [
-              "Лица в воде",
-              "К периоду ангелов",
-              "Living in the Maniototo"
+              "Owls Do Cry",
+              "Faces in the Water",
+              "An Angel at My Table"
             ],
             "awards": [],
             "relatedWriters": [

@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:2fcb41230dbd6164586954fb09031b36b94f5ce6e678de24000e7d5b57cc36b0`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:9d38f9c0ad161a6347c7a73319b7f69b58fc1d4041ba95a7485d6ae0eff2461d`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1690; bio присутствует: 1690.
+- Карточек и русских bio проверено алгоритмом: 1686; bio присутствует: 1686.
 - Надёжных identity-match с локальным staging: 232.
 - Из них source-confirmed structured cross-check: 231 (13.7%).
-- Offline Wikidata snapshot содержит candidate QID для 1266 карточек, но label+birth-year identity corroborated только у 1171 (69.3% корпуса); identity-discrepant: 10, требуют дополнительной identity-проверки: 85.
-- Сопоставлено полей дат со snapshot: 2076; exact Gregorian: 1632; совместимы при общей precision: 167; несовместимых строк после curated resolutions: 80. Из них 24 сначала требуют identity repair, а 34 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Offline Wikidata snapshot содержит candidate QID для 1265 карточек, но label+birth-year identity corroborated только у 1167 (69.2% корпуса); identity-discrepant: 10, требуют дополнительной identity-проверки: 88.
+- Сопоставлено полей дат со snapshot: 2073; exact Gregorian: 1635; совместимы при общей precision: 166; несовместимых строк после curated resolutions: 76. Из них 23 сначала требуют identity repair, а 32 — современные referenced-противоречия для проверки по авторитетному источнику.
 - Ручных source-resolution с сохранёнными доказательствами: 70 в 57 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
 - Metadata gaps (это не доказанные ошибки): 247.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1670.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1666.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
 - `awards`: 139
-- `critical-ranking`: 212
-- `identity-role`: 1638
+- `critical-ranking`: 198
+- `identity-role`: 1631
 - `language`: 191
-- `life-dates`: 301
+- `life-dates`: 325
 - `movement-era`: 86
-- `national-cultural-affiliation`: 1067
+- `national-cultural-affiliation`: 1065
 - `nobel`: 110
 - `places`: 23
-- `priority-claim`: 138
-- `reception-influence`: 50
-- `themes-style`: 322
-- `works`: 1086
+- `priority-claim`: 133
+- `reception-influence`: 45
+- `themes-style`: 323
+- `works`: 1104
 
 ## High-confidence противоречия
 
@@ -129,7 +129,7 @@
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1266 candidate-сопоставлений, но identity corroborated только у 1171. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1265 candidate-сопоставлений, но identity corroborated только у 1167. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -151,10 +151,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `mongolia:danzanravjaa` | Дулдуйтын Данзанравжаа | `Q1264761` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1856-10-25` | 1857 (year, Q1985727, preferred, refs:1) | https://www.wikidata.org/wiki/Q1264761 |
 | `mongolia:sonomyn_udval` | Сономын Удвал | `Q7562208` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1921-02-23` | 1921-02-21 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q7562208 |
 | `montenegro:marko_miljanov` | Марко Милянов Попович | `Q3132479` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1901-02-02` | 1901-02-15 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q3132479 |
-| `myanmar:theippan_maung_wa` | Тхейппан Маунг Ва | `Q7777816` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1899-01-01` | 1899-06-05 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q7777816 |
-| `myanmar:theippan_maung_wa` | Тхейппан Маунг Ва | `Q7777816` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1942-01-01` | 1942-06-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q7777816 |
-| `namibia:gustav_frolich` | Густав Фрёлих | `Q5746561` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1945` | 1940-08-23 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q5746561 |
-| `nepal:krishna_dharabasi` | Кришна Дхараваси | `Q13180208` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1959-01-01` | 1960-07-17 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q13180208 |
 | `new_zealand:kate_de_goldi` | Кейт де Голди | `Q1735679` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1959-11-24` | 1959-08-18 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1735679 |
 | `new_zealand:steven_baker` | Стивен Бикер | `Q95312295` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1953-11-05` | 1947 (year, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q95312295 |
 | `niger:abdoulaye_mamani` | Абдулае Мамани | `Q308401` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1939` | 1932 (year, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q308401 |
