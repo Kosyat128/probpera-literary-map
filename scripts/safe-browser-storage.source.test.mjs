@@ -25,7 +25,9 @@ describe("non-fatal browser storage contract", () => {
       path.join(root, "src/community/sessionIdentity.ts"),
       "utf8"
     );
-    expect(source).toContain("const created = legacy || createVisitorId()");
+    expect(source).toContain("let transientVisitorId: string | null = null");
+    expect(source).toContain("transientVisitorId = existing");
+    expect(source).toContain("transientVisitorId = created");
     expect(source).toContain('writeWebStorage("session", legacySessionKey, created)');
     expect(source).toContain("return created");
   });
