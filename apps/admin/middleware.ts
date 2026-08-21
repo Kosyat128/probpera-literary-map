@@ -56,7 +56,7 @@ export async function middleware(request: NextRequest) {
   );
   const pathname = request.nextUrl.pathname;
   const duplicatedPrefix = configuredAdminBasePath
-    ? `${configuredAdminBasePath}/${configuredAdminBasePath.replace(/^\/+?/gu, "")}`
+    ? `${configuredAdminBasePath}/${configuredAdminBasePath.replace(/^\/+/gu, "")}`
     : "";
 
   if (
