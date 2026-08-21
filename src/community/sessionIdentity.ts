@@ -1,3 +1,5 @@
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
+
 const visitorKey = "probpera-visitor-id";
 const legacySessionKey = "probpera-session-id";
 
@@ -13,18 +15,13 @@ function createVisitorId() {
 }
 
 export function getCommunitySessionId() {
-  try {
-    const existing = window.localStorage.getItem(visitorKey);
-    if (existing) return existing;
-    const legacy = window.sessionStorage.getItem(legacySessionKey);
-    const created = legacy || createVisitorId();
-    window.localStorage.setItem(visitorKey, created);
-    return created;
-  } catch {
-    const existing = window.sessionStorage.getItem(legacySessionKey);
-    if (existing) return existing;
-    const created = createVisitorId();
-    window.sessionStorage.setItem(legacySessionKey, created);
-    return created;
+  const existing = readWebStorage("local", visitorKey);
+  if (existing) return existing;
+
+  const legacy = readWebStorage("session", legacySessionKey);
+  const created = legacy || createVisitorId();
+  if (!writeWebStorage("local", visitorKey, created)) {
+    writeWebStorage("session", legacySessionKey, created);
   }
+  return created;
 }
