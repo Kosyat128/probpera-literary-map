@@ -30,6 +30,10 @@ const reviewedHotfixes = [
     "20260821_articles_staff_read_rls.sql",
     "e148b1f35cc49e1ed1eeb3bd116b625bfcd1784e7c32f6ee3baacc3f345cc82b",
   ],
+  [
+    "20260821_media_assets_staff_read_rls.sql",
+    "1b03d20025d5bc8bc8ec6ab1bf38f1d92fb8892650c6f466d39aa528d3b2abf8",
+  ],
 ];
 
 function fail(message) {
@@ -265,9 +269,13 @@ ${values}
           tablename = 'article_translations'
           and policyname = 'Staff read article translations'
         )
+        or (
+          tablename = 'media_assets'
+          and policyname = 'Staff read media metadata'
+        )
       )
-  ) <> 2 then
-    raise exception 'Staff article read policies are missing after reconciliation';
+  ) <> 3 then
+    raise exception 'Staff editorial read policies are missing after reconciliation';
   end if;
 
   select count(*) into outbox_triggers

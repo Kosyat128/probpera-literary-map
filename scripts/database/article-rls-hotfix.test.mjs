@@ -14,14 +14,25 @@ const planner = path.join(
   root,
   "scripts/database/build-production-migration-plan.mjs"
 );
-const hotfixFilename = "20260821_articles_staff_read_rls.sql";
-const hotfixPath = path.join(root, "supabase", "hotfixes", hotfixFilename);
-const expectedDigest =
-  "e148b1f35cc49e1ed1eeb3bd116b625bfcd1784e7c32f6ee3baacc3f345cc82b";
+const articleHotfix = {
+  filename: "20260821_articles_staff_read_rls.sql",
+  sha256: "e148b1f35cc49e1ed1eeb3bd116b625bfcd1784e7c32f6ee3baacc3f345cc82b",
+};
+const mediaHotfix = {
+  filename: "20260821_media_assets_staff_read_rls.sql",
+  sha256: "1b03d20025d5bc8bc8ec6ab1bf38f1d92fb8892650c6f466d39aa528d3b2abf8",
+};
 
-describe("article staff read RLS hotfix", () => {
+function hotfixSource(filename) {
+  return readFileSync(
+    path.join(root, "supabase", "hotfixes", filename),
+    "utf8"
+  );
+}
+
+describe("staff read RLS hotfixes", () => {
   it("allows only authenticated staff to read editorial article rows", () => {
-    const hotfix = readFileSync(hotfixPath, "utf8");
+    const hotfix = hotfixSource(articleHotfix.filename);
 
     expect(hotfix).toContain('create policy "Staff read articles"');
     expect(hotfix).toContain(
@@ -32,13 +43,27 @@ describe("article staff read RLS hotfix", () => {
     expect(hotfix).not.toContain("to anon");
     expect(hotfix).not.toContain("using (true)");
     expect(createHash("sha256").update(hotfix).digest("hex")).toBe(
-      expectedDigest
+      articleHotfix.sha256
     );
   });
 
-  it("pins and verifies the hotfix in the production reconciliation plan", () => {
+  it("gives staff full read access to media metadata without exposing it to anon", () => {
+    const hotfix = hotfixSource(mediaHotfix.filename);
+
+    expect(hotfix).toContain('create policy "Staff read media metadata"');
+    expect(hotfix).toContain("on public.media_assets for select");
+    expect(hotfix).toContain("to authenticated");
+    expect(hotfix).toContain("using (public.is_staff())");
+    expect(hotfix).not.toContain("to anon");
+    expect(hotfix).not.toContain("using (true)");
+    expect(createHash("sha256").update(hotfix).digest("hex")).toBe(
+      mediaHotfix.sha256
+    );
+  });
+
+  it("pins and verifies both hotfixes in the production reconciliation plan", () => {
     const temporaryDirectory = mkdtempSync(
-      path.join(os.tmpdir(), "probpera-article-rls-hotfix-")
+      path.join(os.tmpdir(), "probpera-staff-read-rls-hotfix-")
     );
     try {
       const planPath = path.join(temporaryDirectory, "plan.sql");
@@ -58,17 +83,14 @@ describe("article staff read RLS hotfix", () => {
 
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
-      expect(manifest.hotfixes).toEqual([
-        {
-          filename: hotfixFilename,
-          sha256: expectedDigest,
-        },
-      ]);
+      expect(manifest.hotfixes).toEqual([articleHotfix, mediaHotfix]);
+      for (const hotfix of manifest.hotfixes) {
+        expect(plan).toContain(
+          `-- BEGIN REVIEWED HOTFIX: ${hotfix.filename}`
+        );
+      }
       expect(plan).toContain(
-        `-- BEGIN REVIEWED HOTFIX: ${hotfixFilename}`
-      );
-      expect(plan).toContain(
-        "Staff article read policies are missing after reconciliation"
+        "Staff editorial read policies are missing after reconciliation"
       );
       expect(plan.indexOf("BEGIN REVIEWED HOTFIX")).toBeLessThan(
         plan.indexOf("insert into public.probpera_schema_migrations")
