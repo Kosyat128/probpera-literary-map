@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "./globals.css";
+import SafeBrowserStorageBootstrap from "@/components/SafeBrowserStorageBootstrap";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+
+// A nonce-based CSP is generated for every request. Force dynamic rendering so
+// Next.js can attach that fresh nonce to framework and page scripts.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="ru">
-      <body data-admin-base-path={adminBasePath || undefined}>{children}</body>
+      <body data-admin-base-path={adminBasePath || undefined}>
+        <SafeBrowserStorageBootstrap />
+        {children}
+      </body>
     </html>
   );
 }
