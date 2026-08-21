@@ -13,6 +13,7 @@ import CmsDirectEditBridge, { prepareCmsEditDocument } from './cms/directEditBri
 import { InterfaceLanguageProvider } from './i18n/InterfaceLanguage';
 import ConnectivityStatus from './mobile/ConnectivityStatus';
 import { registerServiceWorker } from './mobile/registerServiceWorker';
+import './prepaint.css';
 import './index.css';
 
 const cmsPage = currentCmsPage();

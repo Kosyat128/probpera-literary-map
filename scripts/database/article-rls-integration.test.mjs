@@ -12,6 +12,11 @@ const hotfix = readFileSync(
   ),
   "utf8"
 );
+const contractTemplate = readFileSync(
+  path.join(root, "scripts/database/fixtures/article-rls-contract.sql"),
+  "utf8"
+);
+const hotfixMarker = "-- __ARTICLE_RLS_HOTFIX__";
 const postgresImage =
   process.env.POSTGRES_RLS_TEST_IMAGE || "postgres:17-alpine";
 const dockerProbe = spawnSync(
@@ -44,390 +49,81 @@ function commandFailure(label, result) {
     .join("\n");
 }
 
-function waitForPostgres(containerName) {
-  for (let attempt = 0; attempt < 120; attempt += 1) {
-    const result = docker([
-      "exec",
-      containerName,
-      "pg_isready",
-      "--username=postgres",
-      "--dbname=probpera_rls",
-    ]);
-    if (result.status === 0) return;
-    sleep(250);
-  }
-  throw new Error("PostgreSQL did not become ready for the RLS integration test");
+function containerLogs(containerName) {
+  const result = docker(["logs", containerName], { timeout: 20_000 });
+  return [result.stdout, result.stderr].filter(Boolean).join("\n").trim();
 }
 
-const staffUser = "00000000-0000-4000-8000-000000000001";
-const readerUser = "00000000-0000-4000-8000-000000000002";
-const draftArticle = "00000000-0000-4000-8000-000000000101";
-const publishedArticle = "00000000-0000-4000-8000-000000000102";
-const draftTranslation = "00000000-0000-4000-8000-000000000201";
+function waitForDatabase(containerName) {
+  let consecutiveSuccesses = 0;
+  let lastProbe = null;
+
+  // The official image briefly starts a temporary PostgreSQL server while it
+  // creates POSTGRES_DB. pg_isready can report success during that phase even
+  // though the requested database does not exist yet. Require three successful
+  // SQL connections to the exact database so the test cannot race initdb.
+  for (let attempt = 0; attempt < 240; attempt += 1) {
+    const state = docker([
+      "inspect",
+      "--format",
+      "{{.State.Running}}",
+      containerName,
+    ]);
+    if (state.status !== 0 || state.stdout.trim() !== "true") {
+      throw new Error(
+        [
+          "PostgreSQL container stopped during initialization.",
+          containerLogs(containerName),
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+    }
+
+    lastProbe = docker([
+      "exec",
+      containerName,
+      "psql",
+      "--username=postgres",
+      "--dbname=probpera_rls",
+      "--no-psqlrc",
+      "--tuples-only",
+      "--no-align",
+      "--command",
+      "select current_database();",
+    ]);
+
+    if (
+      lastProbe.status === 0 &&
+      lastProbe.stdout.trim() === "probpera_rls"
+    ) {
+      consecutiveSuccesses += 1;
+      if (consecutiveSuccesses >= 3) return;
+    } else {
+      consecutiveSuccesses = 0;
+    }
+    sleep(250);
+  }
+
+  throw new Error(
+    [
+      "PostgreSQL did not finish creating probpera_rls for the integration test.",
+      lastProbe ? commandFailure("Last database readiness probe", lastProbe) : "",
+      containerLogs(containerName),
+    ]
+      .filter(Boolean)
+      .join("\n")
+  );
+}
 
 function integrationSql() {
-  return String.raw`\set ON_ERROR_STOP on
-\pset tuples_only on
-\pset format unaligned
-
-create role anon nologin;
-create role authenticated nologin;
-
-create schema auth;
-grant usage on schema auth to anon, authenticated;
-
-create or replace function auth.uid()
-returns uuid
-language sql
-stable
-set search_path = ''
-as $$
-  select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid;
-$$;
-grant execute on function auth.uid() to anon, authenticated;
-
-create type public.staff_role as enum ('owner', 'admin', 'editor');
-create type public.article_status as enum (
-  'draft',
-  'review',
-  'scheduled',
-  'published',
-  'hidden',
-  'archived'
-);
-create type public.article_translation_status as enum (
-  'draft',
-  'review',
-  'approved',
-  'published',
-  'stale',
-  'archived'
-);
-
-create table auth.users (
-  id uuid primary key
-);
-
-create table public.staff_memberships (
-  user_id uuid primary key references auth.users(id) on delete cascade,
-  role public.staff_role not null
-);
-
-create or replace function public.is_staff(
-  allowed_roles public.staff_role[] default array[
-    'owner'::public.staff_role,
-    'admin'::public.staff_role,
-    'editor'::public.staff_role
-  ]
-)
-returns boolean
-language sql
-stable
-security definer
-set search_path = ''
-as $$
-  select exists (
-    select 1
-    from public.staff_memberships
-    where user_id = (select auth.uid())
-      and role = any(allowed_roles)
-  );
-$$;
-revoke all on function public.is_staff(public.staff_role[]) from public;
-grant execute on function public.is_staff(public.staff_role[]) to authenticated;
-
-create table public.articles (
-  id uuid primary key,
-  title text not null,
-  status public.article_status not null default 'draft',
-  slug text not null unique,
-  published_at timestamptz,
-  created_by uuid not null references auth.users(id) on delete restrict,
-  updated_by uuid not null references auth.users(id) on delete restrict,
-  deleted_at timestamptz
-);
-
-create table public.article_translations (
-  id uuid primary key,
-  article_id uuid not null references public.articles(id) on delete cascade,
-  locale text not null,
-  title text not null,
-  slug text not null,
-  status public.article_translation_status not null default 'draft',
-  published_at timestamptz,
-  created_by uuid not null references auth.users(id) on delete restrict,
-  updated_by uuid not null references auth.users(id) on delete restrict,
-  deleted_at timestamptz,
-  unique (article_id, locale),
-  unique (locale, slug)
-);
-
-alter table public.articles enable row level security;
-alter table public.article_translations enable row level security;
-
-grant usage on schema public to anon, authenticated;
-grant select on public.articles, public.article_translations to anon, authenticated;
-grant insert, update, delete on public.articles, public.article_translations
-  to authenticated;
-
-create policy "Public read published articles"
-on public.articles for select
-to anon, authenticated
-using (
-  status = 'published'
-  and published_at <= now()
-  and deleted_at is null
-);
-
-create policy "Staff create articles"
-on public.articles for insert
-to authenticated
-with check (
-  public.is_staff()
-  and created_by = (select auth.uid())
-  and updated_by = (select auth.uid())
-);
-
-create policy "Staff update articles"
-on public.articles for update
-to authenticated
-using (public.is_staff())
-with check (
-  public.is_staff()
-  and updated_by = (select auth.uid())
-);
-
-create policy "Owners and admins delete articles"
-on public.articles for delete
-to authenticated
-using (
-  public.is_staff(array[
-    'owner'::public.staff_role,
-    'admin'::public.staff_role
-  ])
-);
-
-create policy "Public read released article translations"
-on public.article_translations for select
-to anon, authenticated
-using (
-  status in ('approved', 'published')
-  and deleted_at is null
-  and exists (
-    select 1
-    from public.articles article
-    where article.id = article_id
-      and article.status = 'published'
-      and article.published_at <= now()
-      and article.deleted_at is null
-  )
-);
-
-create policy "Staff create article translations"
-on public.article_translations for insert
-to authenticated
-with check (
-  public.is_staff()
-  and created_by = (select auth.uid())
-  and updated_by = (select auth.uid())
-);
-
-create policy "Staff update article translations"
-on public.article_translations for update
-to authenticated
-using (public.is_staff())
-with check (
-  public.is_staff()
-  and updated_by = (select auth.uid())
-);
-
-create policy "Owners and admins delete article translations"
-on public.article_translations for delete
-to authenticated
-using (
-  public.is_staff(array[
-    'owner'::public.staff_role,
-    'admin'::public.staff_role
-  ])
-);
-
-${hotfix}
-
-insert into auth.users (id)
-values
-  ('${staffUser}'),
-  ('${readerUser}');
-insert into public.staff_memberships (user_id, role)
-values ('${staffUser}', 'editor');
-
-insert into public.articles (
-  id,
-  title,
-  status,
-  slug,
-  published_at,
-  created_by,
-  updated_by
-)
-values (
-  '${publishedArticle}',
-  'Published fixture',
-  'published',
-  'published-fixture',
-  now(),
-  '${staffUser}',
-  '${staffUser}'
-);
-
-set role authenticated;
-select set_config('request.jwt.claim.sub', '${staffUser}', false);
-select set_config(
-  'request.jwt.claims',
-  '{"sub":"${staffUser}","role":"authenticated"}',
-  false
-);
-
-do $staff_contract$
-declare
-  returned_id uuid;
-begin
-  insert into public.articles (
-    id,
-    title,
-    status,
-    slug,
-    created_by,
-    updated_by
-  )
-  values (
-    '${draftArticle}',
-    'Staff draft fixture',
-    'draft',
-    'staff-draft-fixture',
-    '${staffUser}',
-    '${staffUser}'
-  )
-  returning id into returned_id;
-
-  if returned_id <> '${draftArticle}'::uuid then
-    raise exception 'Staff INSERT ... RETURNING did not return the draft article';
-  end if;
-
-  if not exists (
-    select 1 from public.articles where id = '${draftArticle}'
-  ) then
-    raise exception 'Staff cannot read the draft article after creation';
-  end if;
-
-  insert into public.article_translations (
-    id,
-    article_id,
-    locale,
-    title,
-    slug,
-    status,
-    created_by,
-    updated_by
-  )
-  values (
-    '${draftTranslation}',
-    '${draftArticle}',
-    'en',
-    'Staff translation fixture',
-    'staff-translation-fixture',
-    'draft',
-    '${staffUser}',
-    '${staffUser}'
-  )
-  returning id into returned_id;
-
-  if returned_id <> '${draftTranslation}'::uuid then
-    raise exception 'Staff translation INSERT ... RETURNING did not return its id';
-  end if;
-
-  if not exists (
-    select 1
-    from public.article_translations
-    where id = '${draftTranslation}'
-  ) then
-    raise exception 'Staff cannot read the draft translation after creation';
-  end if;
-end;
-$staff_contract$;
-reset role;
-
-set role anon;
-select set_config('request.jwt.claim.sub', '', false);
-select set_config('request.jwt.claims', '{"role":"anon"}', false);
-
-do $anon_contract$
-begin
-  if exists (
-    select 1 from public.articles where id = '${draftArticle}'
-  ) then
-    raise exception 'Anonymous readers can see a draft article';
-  end if;
-
-  if exists (
-    select 1
-    from public.article_translations
-    where id = '${draftTranslation}'
-  ) then
-    raise exception 'Anonymous readers can see a draft translation';
-  end if;
-
-  if not exists (
-    select 1 from public.articles where id = '${publishedArticle}'
-  ) then
-    raise exception 'Anonymous readers cannot see a published article';
-  end if;
-end;
-$anon_contract$;
-reset role;
-
-set role authenticated;
-select set_config('request.jwt.claim.sub', '${readerUser}', false);
-select set_config(
-  'request.jwt.claims',
-  '{"sub":"${readerUser}","role":"authenticated"}',
-  false
-);
-
-do $reader_contract$
-begin
-  if exists (
-    select 1 from public.articles where id = '${draftArticle}'
-  ) then
-    raise exception 'A non-staff authenticated reader can see a draft article';
-  end if;
-
-  begin
-    insert into public.articles (
-      id,
-      title,
-      status,
-      slug,
-      created_by,
-      updated_by
-    )
-    values (
-      '00000000-0000-4000-8000-000000000103',
-      'Forbidden reader draft',
-      'draft',
-      'forbidden-reader-draft',
-      '${readerUser}',
-      '${readerUser}'
+  const markerCount = contractTemplate.split(hotfixMarker).length - 1;
+  if (markerCount !== 1) {
+    throw new Error(
+      `Article RLS fixture must contain exactly one hotfix marker; found ${markerCount}`
     );
-    raise exception 'A non-staff reader unexpectedly created an article';
-  exception
-    when insufficient_privilege then null;
-  end;
-end;
-$reader_contract$;
-reset role;
-
-select 'RLS_CONTRACT_OK';
-`;
+  }
+  return contractTemplate.replace(hotfixMarker, hotfix.trim());
 }
 
 describe("article RLS integration contract", () => {
@@ -468,7 +164,7 @@ describe("article RLS integration contract", () => {
           throw new Error(commandFailure("Starting PostgreSQL", start));
         }
         started = true;
-        waitForPostgres(containerName);
+        waitForDatabase(containerName);
 
         const result = docker(
           [
