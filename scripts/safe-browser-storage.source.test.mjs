@@ -1,0 +1,34 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+
+const root = path.resolve(process.cwd());
+const migratedFiles = [
+  "src/community/sessionIdentity.ts",
+  "src/community/ActivityTracker.tsx",
+  "src/community/ArticleEngagement.tsx",
+  "src/community/EditorialWorkbench.tsx",
+  "src/hooks/useDisplayMode.ts",
+  "src/hooks/useReadingLibrary.ts",
+  "src/hooks/useSubscriptions.ts",
+];
+
+describe("non-fatal browser storage contract", () => {
+  it.each(migratedFiles)("routes %s through safe storage helpers", (filename) => {
+    const source = readFileSync(path.join(root, filename), "utf8");
+    expect(source).toContain("safeWebStorage");
+    expect(source).not.toMatch(/window\.(?:local|session)Storage/gu);
+  });
+
+  it("keeps the diagnostic identity available even without persistence", () => {
+    const source = readFileSync(
+      path.join(root, "src/community/sessionIdentity.ts"),
+      "utf8"
+    );
+    expect(source).toContain("let transientVisitorId: string | null = null");
+    expect(source).toContain("transientVisitorId = existing");
+    expect(source).toContain("transientVisitorId = created");
+    expect(source).toContain('writeWebStorage("session", legacySessionKey, created)');
+    expect(source).toContain("return created");
+  });
+});

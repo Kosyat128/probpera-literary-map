@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useAuth } from "../community/AuthContext";
 import { supabase } from "../lib/supabase";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 
 export type ReaderSubscription = {
   type: "country" | "writer" | "section";
@@ -20,7 +21,7 @@ function keyOf(item: Pick<ReaderSubscription, "type" | "id">) {
 function readItems(): ReaderSubscription[] {
   if (typeof window === "undefined") return [];
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+    const parsed = JSON.parse(readWebStorage("local", STORAGE_KEY) || "[]");
     return Array.isArray(parsed)
       ? parsed.filter(
           (item): item is ReaderSubscription =>
@@ -34,7 +35,7 @@ function readItems(): ReaderSubscription[] {
 }
 
 function writeItems(items: ReaderSubscription[]) {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  writeWebStorage("local", STORAGE_KEY, JSON.stringify(items));
   window.dispatchEvent(
     new CustomEvent<ReaderSubscription[]>(EVENT_NAME, { detail: items })
   );

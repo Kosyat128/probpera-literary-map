@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useAuth } from "../community/AuthContext";
 import { supabase } from "../lib/supabase";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 
 export type SavedReading = {
   id: string;
@@ -22,7 +23,7 @@ const EVENT_NAME = "probpera:reading-library";
 function readItems(): SavedReading[] {
   if (typeof window === "undefined") return [];
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+    const parsed = JSON.parse(readWebStorage("local", STORAGE_KEY) || "[]");
     return Array.isArray(parsed)
       ? parsed.filter(
           (item): item is Omit<SavedReading, "kind"> & {
@@ -48,7 +49,7 @@ function itemKey(item: Pick<SavedReading, "id" | "kind">) {
 }
 
 function saveItems(items: SavedReading[]) {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  writeWebStorage("local", STORAGE_KEY, JSON.stringify(items));
   window.dispatchEvent(
     new CustomEvent<SavedReading[]>(EVENT_NAME, { detail: items })
   );

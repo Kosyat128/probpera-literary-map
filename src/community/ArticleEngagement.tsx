@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { supabase } from "../lib/supabase";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
 
@@ -168,7 +169,7 @@ export default function ArticleEngagement({
       return;
     }
     if (!user) {
-      window.localStorage.setItem("probpera-guest-name", guestName.trim());
+      writeWebStorage("local", "probpera-guest-name", guestName.trim());
     }
     setCommentBody("");
     setMessage(t("Комментарий опубликован."));
@@ -177,7 +178,7 @@ export default function ArticleEngagement({
 
   useEffect(() => {
     if (user || guestName) return;
-    setGuestName(window.localStorage.getItem("probpera-guest-name") || "");
+    setGuestName(readWebStorage("local", "probpera-guest-name") || "");
   }, [guestName, user]);
 
   const reportComment = async (commentId: string) => {
