@@ -1,3 +1,6 @@
+export const CURRENT_EDITORIAL_SCHEMA_VERSION =
+  "20260820_literary_work_cover_artworks";
+
 export type EditorialSchemaHealth = {
   version?: string;
   outbox?: boolean;
@@ -51,9 +54,15 @@ const editorialSchemaCapabilityLabels: Record<
 export function getMissingEditorialSchemaCapabilities(
   health: EditorialSchemaHealth | null | undefined
 ): string[] {
-  return EDITORIAL_SCHEMA_REQUIRED_FLAGS.filter(
+  const missingCapabilities = EDITORIAL_SCHEMA_REQUIRED_FLAGS.filter(
     (field) => health?.[field] !== true
   ).map((field) => editorialSchemaCapabilityLabels[field]);
+
+  if (health?.version !== CURRENT_EDITORIAL_SCHEMA_VERSION) {
+    missingCapabilities.unshift("актуальная версия схемы");
+  }
+
+  return missingCapabilities;
 }
 
 export function isEditorialSchemaReady(
