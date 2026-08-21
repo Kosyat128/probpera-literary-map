@@ -5,6 +5,10 @@ import "./globals.css";
 import SafeBrowserStorageBootstrap from "@/components/SafeBrowserStorageBootstrap";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
+// A nonce-based CSP is generated for every request. Force dynamic rendering so
+// Next.js can attach that fresh nonce to framework and page scripts.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: {
     default: "Редакция — Проба Пера",
