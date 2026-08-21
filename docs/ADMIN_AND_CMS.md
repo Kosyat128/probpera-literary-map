@@ -42,12 +42,13 @@
    `20260813_unified_revision_history.sql`,
    `20260814_publication_outbox_and_schema_health.sql` и
    `20260820_homepage_book_month_editorial_choice.sql`,
-   `20260820_literary_work_cover_artworks.sql` в порядке имени файла.
+   `20260820_literary_work_cover_artworks.sql`,
+   `20260822_staff_editorial_read_rls.sql` в порядке имени файла.
    Перед применением обязательно должен успешно завершиться workflow
    `Encrypted Supabase backup` с реальным восстановлением dump в изолированную
    PostgreSQL. После применения проверьте в разделе «Состояние сайта» версию
-   схемы `20260820_literary_work_cover_artworks` и отсутствие
-   необработанных запросов публикации.
+   схемы `20260822_staff_editorial_read_rls`, три staff-only политики чтения и
+   отсутствие необработанных запросов публикации.
 3. Скопировать `apps/admin/.env.example` в локальный `.env.local` панели и
    заполнить публичные параметры Supabase. Ключ `service_role` нельзя добавлять
    в переменные `NEXT_PUBLIC_*` и нельзя передавать браузеру.
