@@ -1,29 +1,38 @@
 import { expect, test } from "@playwright/test";
 
-test("главная не показывает SEO-заглушку, пока загружается приложение", async ({
+test("главная не показывает SEO-заглушку до загрузки CSS и приложения", async ({
   page,
 }) => {
-  let releaseMainBundle = () => undefined;
+  let releaseAssets = () => undefined;
   let mainBundleRequested = false;
-  const mainBundleGate = new Promise((resolve) => {
-    releaseMainBundle = resolve;
+  let stylesheetRequested = false;
+  const assetGate = new Promise((resolve) => {
+    releaseAssets = resolve;
   });
 
-  await page.route(/\/assets\/index-[^/]+\.js(?:\?.*)?$/u, async (route) => {
-    mainBundleRequested = true;
-    await mainBundleGate;
+  await page.route(/\/assets\/index-[^/]+\.(?:css|js)(?:\?.*)?$/u, async (route) => {
+    if (/\.js(?:\?|$)/u.test(route.request().url())) {
+      mainBundleRequested = true;
+    } else {
+      stylesheetRequested = true;
+    }
+    await assetGate;
     await route.continue();
   });
 
   try {
     await page.goto("/", { waitUntil: "commit" });
-    await expect.poll(() => mainBundleRequested).toBe(true);
+    await expect
+      .poll(() => mainBundleRequested && stylesheetRequested)
+      .toBe(true);
 
     const staticFallback = page.locator("[data-static-seo]");
     await expect(staticFallback).toHaveCount(1);
     await expect(staticFallback).toBeHidden();
+    await expect(page.locator('head > style[data-home-prepaint]')).toHaveCount(1);
+    await expect(page.locator('head > script[type="module"]')).toHaveCount(1);
   } finally {
-    releaseMainBundle();
+    releaseAssets();
   }
 
   await expect(page.locator(".magazine-app")).toBeVisible();
