@@ -1,9 +1,26 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-react-shell>
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style data-home-prepaint>
+    /*
+     * Production HTML contains a crawlable homepage fallback inside #root.
+     * Hide that temporary copy before the first paint when the React module is
+     * present. Static journal archives remove the module script and stay visible.
+     */
+    html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
+      display: none !important;
+    }
+  </style>
+  <noscript>
+    <style data-home-prepaint-noscript>
+      html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
+        display: block !important;
+      }
+    </style>
+  </noscript>
   <meta
     name="description"
     content="Проба Пера — литературный журнал, статьи о книгах и интерактивная энциклопедия мира на старинном 3D-глобусе."
@@ -45,12 +62,11 @@
   <meta name="twitter:image" content="%BASE_URL%og-v3.webp" />
   <meta name="twitter:image:alt" content="Проба Пера — литературный журнал и карта мира" />
   <title>Проба Пера — литературный журнал и атлас мира</title>
+  <script type="module" src="/src/main.tsx"></script>
 </head>
-
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
