@@ -26,7 +26,8 @@ describe("public bootstrap error boundary", () => {
     expect(boundary).toContain('boundary: "bootstrap"');
     expect(boundary).toContain("reportClientError(error, \"react\"");
     expect(boundary).toContain("globalThis.location.reload()");
-    expect(boundary).toContain('href="/stati/"');
+    expect(boundary).toContain("import.meta.env.BASE_URL");
+    expect(boundary).toContain("stati/");
     expect(boundary).toContain('role="alert"');
   });
 });
