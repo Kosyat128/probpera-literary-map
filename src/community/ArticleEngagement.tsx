@@ -136,26 +136,13 @@ export default function ArticleEngagement({
     if (!user && guestName.trim().length < 2) return;
     setBusy(true);
     setMessage("");
-    const payload = {
+    const { error } = await supabase.rpc("submit_article_comment", {
       p_article_slug: articleSlug,
       p_session_id: getCommunitySessionId(),
       p_body: commentBody.trim(),
       p_guest_name: user ? null : guestName.trim(),
       p_parent_id: null,
-    };
-    let { error } = await supabase.rpc("submit_article_comment", payload);
-
-    // Совместимость с базой, созданной до появления защищённой RPC-функции.
-    if (error?.code === "42883") {
-      const fallback = await supabase.from("article_comments").insert({
-        article_slug: articleSlug,
-        author_id: user?.id || null,
-        guest_name: user ? null : guestName.trim(),
-        session_id: getCommunitySessionId(),
-        body: commentBody.trim(),
-      });
-      error = fallback.error;
-    }
+    });
 
     setBusy(false);
     if (error) {
