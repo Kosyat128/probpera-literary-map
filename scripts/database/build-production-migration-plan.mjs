@@ -15,7 +15,6 @@ const reviewedMigrations = [
   ["20260808_article_translations.sql", "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"],
   ["20260808_book_translations_and_import_staging.sql", "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"],
   ["20260812_homepage_block_revisions.sql", "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"],
-  ["20260812_writer_and_work_revisions.sql", "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"],
   ["20260813_editorial_database_admin.sql", "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"],
   ["20260813_homepage_atomic_move.sql", "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"],
   ["20260813_tags_updated_at.sql", "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"],
@@ -23,6 +22,13 @@ const reviewedMigrations = [
   ["20260814_publication_outbox_and_schema_health.sql", "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"],
   ["20260820_homepage_book_month_editorial_choice.sql", "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"],
   ["20260820_literary_work_cover_artworks.sql", "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"],
+];
+
+const reviewedHotfixes = [
+  [
+    "20260821_articles_staff_read_rls.sql",
+    "e148b1f35cc49e1ed1eeb3bd116b625bfcd1784e7c32f6ee3baacc3f345cc82b",
+  ],
 ];
 
 function fail(message) {
@@ -245,6 +251,24 @@ ${values}
     raise exception 'Article translation coverage invariant failed';
   end if;
 
+  if (
+    select count(*)
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and cmd = 'SELECT'
+      and roles = array['authenticated'::name]
+      and position('is_staff' in coalesce(qual, '')) > 0
+      and (
+        (tablename = 'articles' and policyname = 'Staff read articles')
+        or (
+          tablename = 'article_translations'
+          and policyname = 'Staff read article translations'
+        )
+      )
+  ) <> 2 then
+    raise exception 'Staff article read policies are missing after reconciliation';
+  end if;
+
   select count(*) into outbox_triggers
   from pg_catalog.pg_trigger outbox_trigger
   join pg_catalog.pg_class relation on relation.oid = outbox_trigger.tgrelid
@@ -363,6 +387,21 @@ function main() {
       source,
     };
   });
+  const hotfixes = reviewedHotfixes.map(([filename, expectedDigest]) => {
+    const hotfixPath = path.join(
+      repositoryRoot,
+      "supabase",
+      "hotfixes",
+      filename
+    );
+    const source = readFileSync(hotfixPath, "utf8").replaceAll("\r\n", "\n");
+    const digest = sha256(source);
+    if (digest !== expectedDigest) {
+      fail(`${filename} does not match its reviewed SHA-256`);
+    }
+    assertStaticSafety(filename, source);
+    return { filename, digest, source };
+  });
 
   const plan = [
     "-- Generated from the reviewed production migration allowlist.",
@@ -375,6 +414,11 @@ function main() {
       `\n-- BEGIN REVIEWED MIGRATION: ${filename}`,
       source.trimEnd(),
       `-- END REVIEWED MIGRATION: ${filename}\n`,
+    ]),
+    ...hotfixes.flatMap(({ filename, source }) => [
+      `\n-- BEGIN REVIEWED HOTFIX: ${filename}`,
+      source.trimEnd(),
+      `-- END REVIEWED HOTFIX: ${filename}\n`,
     ]),
     buildLedgerWrite(migrations, arguments_.repositorySha),
     buildInvariants(migrations),
@@ -391,6 +435,10 @@ function main() {
         migrations: migrations.map(({ filename, version, digest }) => ({
           filename,
           version,
+          sha256: digest,
+        })),
+        hotfixes: hotfixes.map(({ filename, digest }) => ({
+          filename,
           sha256: digest,
         })),
       },
