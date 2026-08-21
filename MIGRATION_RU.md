@@ -27,6 +27,7 @@
 23. `supabase/migrations/20260814_publication_outbox_and_schema_health.sql`
 24. `supabase/migrations/20260820_homepage_book_month_editorial_choice.sql`
 25. `supabase/migrations/20260820_literary_work_cover_artworks.sql`
+26. `supabase/migrations/20260822_staff_editorial_read_rls.sql`
 
 Восьмая миграция добавляет безопасное редактирование профиля, загрузку
 аватаров, любимые страны и писателей, репутацию и оценки тем форума. Она также
@@ -54,6 +55,9 @@
 Миграция 25 добавляет отдельное work-level хранилище редакционных обложек,
 не приписывает иллюстрациям издательские ISBN, сохраняет неизменяемый
 archive/image provenance и включает 21-й публикационный outbox-триггер.
+Миграция 26 делает staff-only чтение черновиков статей, переводов и скрытых
+метаданных медиатеки частью канонического ledger и добавляет отдельную
+health-проверку всех трёх политик.
 
 Перед каждой серией изменений обязательны четыре последовательных шага:
 
@@ -63,8 +67,8 @@ archive/image provenance и включает 21-й публикационный 
    выполняется тем же workflow и не затрагивает production.
 3. Применить ещё не применённые миграции строго в порядке имени файла.
 4. Открыть `/health` в админке и подтвердить текущую схему
-   `20260820_literary_work_cover_artworks`, наличие всех 21 outbox-триггеров
-   и отсутствие ошибок очереди публикации.
+   `20260822_staff_editorial_read_rls`, наличие всех 21 outbox-триггеров,
+   трёх staff-only политик чтения и отсутствие ошибок очереди публикации.
 
 Workflow требует GitHub Secrets `SUPABASE_DB_URL` и
 `BACKUP_ENCRYPTION_KEY`. Нельзя подменять `SUPABASE_DB_URL` публичным URL API,
