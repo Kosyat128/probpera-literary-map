@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "./globals.css";
+import SafeBrowserStorageBootstrap from "@/components/SafeBrowserStorageBootstrap";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="ru">
-      <body data-admin-base-path={adminBasePath || undefined}>{children}</body>
+      <body data-admin-base-path={adminBasePath || undefined}>
+        <SafeBrowserStorageBootstrap />
+        {children}
+      </body>
     </html>
   );
 }
