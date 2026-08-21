@@ -1,5 +1,18 @@
 export const LATEST_EDITORIAL_ARTICLE_ID =
   "2cbd3bd0-78c6-445e-9af9-8c643afc1104";
+export const MYTHOLOGY_EXPRESSIONS_ARTICLE_ID =
+  "8fa390e5-db2d-450b-89c9-8db574179cfa";
+export const BLACK_SWAN_REVIEW_ARTICLE_ID =
+  "7ad1ab89-8a77-407d-b59a-6147c0e2a7a6";
+export const INDIA_WRITERS_ARTICLE_ID =
+  "8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc";
+
+export const EDITORIAL_PUBLICATION_FIX_IDS = Object.freeze([
+  LATEST_EDITORIAL_ARTICLE_ID,
+  MYTHOLOGY_EXPRESSIONS_ARTICLE_ID,
+  BLACK_SWAN_REVIEW_ARTICLE_ID,
+  INDIA_WRITERS_ARTICLE_ID,
+]);
 
 const mediaRoot =
   "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08";
@@ -104,12 +117,81 @@ export const latestEditorialArticleFix = {
   ],
 };
 
+export const mythologyExpressionsMetadataFix = Object.freeze({
+  excerpt:
+    "Происхождение и современное значение пятнадцати выражений из античных мифов: ахиллесова пята, яблоко раздора, нить Ариадны и другие.",
+  seo_description:
+    "Происхождение и современное значение 15 выражений из античных мифов: ахиллесова пята, яблоко раздора, нить Ариадны и другие.",
+  og_description:
+    "Что означают 15 известных выражений из древнегреческой мифологии, от ахиллесовой пяты до прометеева огня.",
+});
+
+const confirmedCanonicalLinkReplacements = Object.freeze({
+  [BLACK_SWAN_REVIEW_ARTICLE_ID]: [
+    [
+      "https://probpera.ru/read/page-books/7",
+      "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devid-mitchell-oblachnyy-atlas/",
+    ],
+  ],
+  [INDIA_WRITERS_ARTICLE_ID]: [
+    [
+      "https://probpera.ru/read/page-article/nobel-prize/14",
+      "https://probpera.ru/stati/literaturnye-premii/1913-god-rabindranat-tagor-laureat-nobelevskoy-premii/",
+    ],
+  ],
+});
+
+function publicArticleId(value = "") {
+  return String(value).replace(/^cms-/u, "");
+}
+
 export function applyEditorialPublicationFix(article) {
-  if (article?.id !== LATEST_EDITORIAL_ARTICLE_ID) return article;
-  const stillContainsImportedDefects =
-    String(article.title || "").includes("именитых писателей") ||
-    /всп<\/p>\s*<p[^>]*>оминает/iu.test(String(article.content_html || "")) ||
-    /alt="[a-f0-9 -]{30,}"/iu.test(String(article.content_html || ""));
-  if (!stillContainsImportedDefects) return article;
-  return { ...article, ...latestEditorialArticleFix };
+  if (!article?.id) return article;
+  const articleId = publicArticleId(article.id);
+  let corrected = article;
+
+  if (articleId === LATEST_EDITORIAL_ARTICLE_ID) {
+    const stillContainsImportedDefects =
+      String(article.title || "").includes("именитых писателей") ||
+      /всп<\/p>\s*<p[^>]*>оминает/iu.test(String(article.content_html || "")) ||
+      /alt="[a-f0-9 -]{30,}"/iu.test(String(article.content_html || ""));
+    if (stillContainsImportedDefects) {
+      corrected = { ...corrected, ...latestEditorialArticleFix };
+    }
+  }
+
+  if (articleId === MYTHOLOGY_EXPRESSIONS_ARTICLE_ID) {
+    corrected = { ...corrected, ...mythologyExpressionsMetadataFix };
+    if (
+      "description" in article ||
+      "seoDescription" in article ||
+      "ogDescription" in article
+    ) {
+      corrected = {
+        ...corrected,
+        description: mythologyExpressionsMetadataFix.excerpt,
+        seoDescription: mythologyExpressionsMetadataFix.seo_description,
+        ogDescription: mythologyExpressionsMetadataFix.og_description,
+      };
+    }
+  }
+
+  const linkReplacements = confirmedCanonicalLinkReplacements[articleId] || [];
+  const contentField =
+    typeof corrected.content_html === "string"
+      ? "content_html"
+      : typeof corrected.contentHtml === "string"
+        ? "contentHtml"
+        : "";
+  if (linkReplacements.length && contentField) {
+    let contentHtml = corrected[contentField];
+    for (const [legacyUrl, canonicalUrl] of linkReplacements) {
+      contentHtml = contentHtml.replaceAll(legacyUrl, canonicalUrl);
+    }
+    if (contentHtml !== corrected[contentField]) {
+      corrected = { ...corrected, [contentField]: contentHtml };
+    }
+  }
+
+  return corrected;
 }

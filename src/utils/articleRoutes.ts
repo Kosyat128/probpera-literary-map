@@ -46,6 +46,12 @@ export function articleSectionSlug(sectionId?: string) {
   return articleSectionSlugs[sectionId || ""] || "materialy";
 }
 
+export function articleSectionArchivePath(sectionId?: string) {
+  return sectionId && sectionId !== "all"
+    ? `/stati/${articleSectionSlug(sectionId)}/`
+    : "/stati/";
+}
+
 export function articlePublicPath(
   articleId: string,
   title: string,
@@ -76,7 +82,23 @@ export function articlePath(
 }
 
 export function isDirectArticlePath(pathname: string) {
-  return /\/(?:stati|articles)\//iu.test(pathname);
+  return /\/(?:stati\/[^/]+\/[^/]+|articles\/[^/]+)\/?$/iu.test(pathname);
+}
+
+export function journalSectionFromPath(pathname = window.location.pathname) {
+  const normalizedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const archiveMatch = pathname.match(
+    new RegExp(`^${normalizedBase}/stati(?:/([^/]+))?/?$`, "i")
+  );
+  if (!archiveMatch) return null;
+  if (!archiveMatch[1]) return "all";
+  const requestedSlug = decodedRouteSegment(archiveMatch[1]);
+  if (!requestedSlug) return null;
+  return (
+    Object.entries(articleSectionSlugs).find(
+      ([, sectionSlug]) => sectionSlug === requestedSlug
+    )?.[0] || null
+  );
 }
 
 export function articleIdFromPath(
@@ -204,11 +226,9 @@ export function resolveArticleRoute(
 
 export function journalPath(sectionId?: string, seriesId?: string) {
   const params = new URLSearchParams();
-  if (sectionId && sectionId !== "all") params.set("section", sectionId);
   if (seriesId) params.set("series", seriesId);
   const query = params.size ? `?${params.toString()}` : "";
-  const rootPath = basePath ? `${basePath}/` : "/";
-  return `${rootPath}${query}#journal`;
+  return `${basePath}${articleSectionArchivePath(sectionId)}${query}`;
 }
 
 type ArticleRouteTarget = {
@@ -237,8 +257,9 @@ export function navigateToJournal(
   seriesId?: string
 ) {
   const href = journalPath(sectionId, seriesId);
-  if (replace) window.history.replaceState({}, "", href);
-  else window.history.pushState({}, "", href);
+  const state = { probperaJournal: sectionId || "all" };
+  if (replace) window.history.replaceState(state, "", href);
+  else window.history.pushState(state, "", href);
   window.dispatchEvent(new Event("probpera:navigation"));
   scrollToReadingSurface("journal");
 }

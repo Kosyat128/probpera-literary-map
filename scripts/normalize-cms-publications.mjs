@@ -1,7 +1,6 @@
 import {
   applyEditorialPublicationFix,
-  LATEST_EDITORIAL_ARTICLE_ID,
-  latestEditorialArticleFix,
+  EDITORIAL_PUBLICATION_FIX_IDS,
 } from "./editorial-publication-fixes.mjs";
 import { articleSectionSlug } from "./lib/article-route-policy.mjs";
 
@@ -109,27 +108,47 @@ for (const { article, nextSlug } of changes) {
   }
 }
 
-const latestRows = await request(
-  `articles?select=id,title,content_html&id=eq.${encodeURIComponent(
-    LATEST_EDITORIAL_ARTICLE_ID
-  )}&limit=1`
-);
-const latestArticle = latestRows[0] || null;
-const correctedLatest = applyEditorialPublicationFix(latestArticle);
-if (latestArticle && correctedLatest !== latestArticle) {
-  await request(`articles?id=eq.${encodeURIComponent(LATEST_EDITORIAL_ARTICLE_ID)}`, {
+const editorialFields = [
+  "title",
+  "excerpt",
+  "content_html",
+  "cover_alt",
+  "seo_title",
+  "seo_description",
+  "og_title",
+  "og_description",
+  "sources",
+];
+let editorialFixCount = 0;
+
+for (const articleId of EDITORIAL_PUBLICATION_FIX_IDS) {
+  const rows = await request(
+    `articles?select=id,${editorialFields.join(",")}&id=eq.${encodeURIComponent(
+      articleId
+    )}&limit=1`
+  );
+  const article = rows[0] || null;
+  const corrected = applyEditorialPublicationFix(article);
+  if (!article || corrected === article) continue;
+  const patch = Object.fromEntries(
+    editorialFields
+      .filter(
+        (field) =>
+          JSON.stringify(corrected[field]) !== JSON.stringify(article[field])
+      )
+      .map((field) => [field, corrected[field]])
+  );
+  if (!Object.keys(patch).length) continue;
+  await request(`articles?id=eq.${encodeURIComponent(articleId)}`, {
     method: "PATCH",
     body: JSON.stringify({
-      ...latestEditorialArticleFix,
+      ...patch,
       updated_at: new Date().toISOString(),
     }),
   });
+  editorialFixCount += 1;
 }
 
 console.log(
-  `CMS normalized: ${changes.length} readable article URLs; latest publication ${
-    latestArticle && correctedLatest !== latestArticle
-      ? "proofread and updated"
-      : "already current"
-  }.`
+  `CMS normalized: ${changes.length} readable article URLs; ${editorialFixCount} editorial publication fixes applied.`
 );

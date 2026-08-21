@@ -29,6 +29,34 @@ function htmlFileForUrl(urlValue) {
     : path.join(distDirectory, "index.html");
 }
 
+function normalizedUrlPath(urlValue) {
+  const parsed = new URL(urlValue, expectedOrigin);
+  return parsed.pathname.replace(/\/+$/u, "") || "/";
+}
+
+function metadataIdentity(value = "") {
+  return String(value)
+    .toLocaleLowerCase("ru")
+    .replaceAll("ё", "е")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
+function jsonLdNodes(value) {
+  if (Array.isArray(value)) return value.flatMap(jsonLdNodes);
+  if (!value || typeof value !== "object") return [];
+  if (Array.isArray(value["@graph"])) return value["@graph"].flatMap(jsonLdNodes);
+  return [value];
+}
+
+function schemaTypes(node) {
+  return Array.isArray(node?.["@type"])
+    ? node["@type"]
+    : node?.["@type"]
+      ? [node["@type"]]
+      : [];
+}
+
 function oneMeta($, selector, label) {
   const elements = $(selector);
   check(elements.length === 1, `${label}: expected one ${selector}, found ${elements.length}`);
@@ -88,6 +116,11 @@ check(
 );
 
 const canonicalOwners = new Map();
+const titleOwners = new Map();
+const descriptionOwners = new Map();
+const pageLinks = new Map();
+const pageDocuments = new Map();
+const hreflangByPage = new Map();
 for (const location of locations) {
   let html;
   try {
@@ -107,6 +140,7 @@ for (const location of locations) {
   const twitterCard = oneMeta($, 'meta[name="twitter:card"]', location);
   const canonicalLinks = $('link[rel="canonical"]');
   const canonical = canonicalLinks.first().attr("href")?.trim() || "";
+  const structuredNodes = [];
 
   check(Boolean(title), `${location}: title is present`);
   check(description.length >= 40 && description.length <= 200, `${location}: description has a useful length`);
@@ -124,18 +158,194 @@ for (const location of locations) {
   );
   for (const script of $('script[type="application/ld+json"]').toArray()) {
     try {
-      JSON.parse($(script).text());
+      structuredNodes.push(...jsonLdNodes(JSON.parse($(script).text())));
     } catch (error) {
       errors.push(`${location}: invalid JSON-LD (${error.message})`);
     }
   }
+  const pathnameSegments = new URL(location).pathname.split("/").filter(Boolean);
+  const isArticlePage =
+    pathnameSegments[0] === "stati" && pathnameSegments.length === 3;
+  const isArticleArchive =
+    pathnameSegments[0] === "stati" && pathnameSegments.length <= 2;
+  const types = new Set(structuredNodes.flatMap(schemaTypes));
+  if (isArticlePage) {
+    check(types.has("WebPage"), `${location}: Article graph declares WebPage`);
+    check(types.has("Article"), `${location}: Article graph declares Article`);
+    check(
+      types.has("BreadcrumbList"),
+      `${location}: Article graph declares BreadcrumbList`
+    );
+    const articleNode = structuredNodes.find((node) =>
+      schemaTypes(node).includes("Article")
+    );
+    check(
+      articleNode?.mainEntityOfPage?.["@id"] === canonical,
+      `${location}: Article mainEntityOfPage references the canonical WebPage`
+    );
+    check(
+      Boolean(articleNode?.headline && articleNode?.datePublished),
+      `${location}: Article graph contains headline and publication date`
+    );
+    check(
+      Boolean(articleNode?.author?.["@id"] && articleNode?.publisher?.["@id"]),
+      `${location}: Article author and publisher use stable entity ids`
+    );
+  }
+  if (isArticleArchive) {
+    check(
+      types.has("CollectionPage"),
+      `${location}: journal archive declares CollectionPage`
+    );
+    check(types.has("ItemList"), `${location}: journal archive declares ItemList`);
+    check(
+      types.has("BreadcrumbList"),
+      `${location}: journal archive declares BreadcrumbList`
+    );
+  }
+  const breadcrumbNodes = structuredNodes.filter((node) =>
+    schemaTypes(node).includes("BreadcrumbList")
+  );
+  for (const breadcrumb of breadcrumbNodes) {
+    const items = breadcrumb.itemListElement || [];
+    check(
+      items.every(
+        (item, index) =>
+          item?.position === index + 1 &&
+          /^https:\/\//u.test(item?.item || "") &&
+          !/[?#]/u.test(item.item)
+      ),
+      `${location}: breadcrumb positions and item URLs are canonical crawlable URLs`
+    );
+    check(
+      items.at(-1)?.item === canonical,
+      `${location}: breadcrumb terminates at the page canonical`
+    );
+  }
+  const ids = structuredNodes.map((node) => node?.["@id"]).filter(Boolean);
+  check(
+    new Set(ids).size === ids.length,
+    `${location}: JSON-LD entity ids are unique within the document`
+  );
+
+  const internalLinks = $("a[href]")
+    .map((_index, element) => $(element).attr("href")?.trim() || "")
+    .get()
+    .flatMap((href) => {
+      try {
+        const parsed = new URL(href, location);
+        return parsed.origin === expectedOrigin ? [parsed] : [];
+      } catch {
+        return [];
+      }
+    });
+  pageLinks.set(location, internalLinks);
+  pageDocuments.set(normalizedUrlPath(location), { location, canonical });
+  hreflangByPage.set(
+    location,
+    $('link[rel="alternate"][hreflang]')
+      .map((_index, element) => ({
+        language: $(element).attr("hreflang")?.trim().toLocaleLowerCase("en") || "",
+        href: $(element).attr("href")?.trim() || "",
+      }))
+      .get()
+  );
+  if (isArticlePage) {
+    check(
+      internalLinks.filter((url) => /\/stati\//u.test(url.pathname)).length >= 3,
+      `${location}: Article HTML exposes crawlable journal and related links`
+    );
+  }
   const owners = canonicalOwners.get(canonical) || [];
   owners.push(location);
   canonicalOwners.set(canonical, owners);
+  const titleKey = metadataIdentity(title);
+  const titles = titleOwners.get(titleKey) || [];
+  titles.push(location);
+  titleOwners.set(titleKey, titles);
+  const descriptionKey = metadataIdentity(description);
+  const descriptions = descriptionOwners.get(descriptionKey) || [];
+  descriptions.push(location);
+  descriptionOwners.set(descriptionKey, descriptions);
 }
 
 for (const [canonical, owners] of canonicalOwners) {
   if (owners.length > 1) errors.push(`canonical ${canonical} is shared by ${owners.join(", ")}`);
+}
+
+for (const [title, owners] of titleOwners) {
+  if (title && owners.length > 1) {
+    errors.push(`title is duplicated by ${owners.join(", ")}`);
+  }
+}
+for (const [description, owners] of descriptionOwners) {
+  if (description && owners.length > 1) {
+    errors.push(`meta description is duplicated by ${owners.join(", ")}`);
+  }
+}
+
+const incomingLinks = new Map(locations.map((location) => [location, new Set()]));
+for (const [source, links] of pageLinks) {
+  for (const link of links) {
+    const targetPath = normalizedUrlPath(link);
+    const sitemapTarget = pageDocuments.get(targetPath);
+    if (link.search) {
+      warnings.push(`${source}: internal crawl link uses query state ${link.href}`);
+    }
+    if (sitemapTarget) {
+      if (sitemapTarget.location !== source) {
+        incomingLinks.get(sitemapTarget.location)?.add(source);
+      }
+      continue;
+    }
+    if (/\.[a-z0-9]{1,8}$/iu.test(link.pathname)) continue;
+    try {
+      const targetHtml = await fs.readFile(htmlFileForUrl(link), "utf8");
+      const targetDocument = load(targetHtml, { decodeEntities: false });
+      const targetCanonical =
+        targetDocument('link[rel="canonical"]').first().attr("href")?.trim() || "";
+      check(
+        targetCanonical === `${expectedOrigin}${link.pathname}` ||
+          targetCanonical === `${expectedOrigin}${link.pathname}/`,
+        `${source}: internal link points to a non-canonical HTML route ${link.href}`
+      );
+    } catch {
+      errors.push(`${source}: internal link target is missing ${link.href}`);
+    }
+  }
+}
+
+for (const location of locations) {
+  const segments = new URL(location).pathname.split("/").filter(Boolean);
+  if (segments[0] === "stati" && segments.length === 3) {
+    check(
+      (incomingLinks.get(location)?.size || 0) > 0,
+      `${location}: Article is linked from another indexable page`
+    );
+  }
+}
+
+for (const [location, alternates] of hreflangByPage) {
+  const languageAlternates = alternates.filter(
+    (alternate) => alternate.language && alternate.language !== "x-default"
+  );
+  if (!languageAlternates.length) continue;
+  check(
+    new Set(alternates.map((alternate) => alternate.language)).size ===
+      alternates.length,
+    `${location}: hreflang languages are unique`
+  );
+  for (const alternate of languageAlternates) {
+    check(
+      locations.includes(alternate.href),
+      `${location}: hreflang target is an indexable sitemap URL ${alternate.href}`
+    );
+    const reverse = hreflangByPage.get(alternate.href) || [];
+    check(
+      reverse.some((candidate) => candidate.href === location),
+      `${location}: hreflang target links back from ${alternate.href}`
+    );
+  }
 }
 
 const homeDocument = load(homeHtml);

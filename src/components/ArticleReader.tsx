@@ -28,7 +28,11 @@ import { useDisplayMode } from "../hooks/useDisplayMode";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useReadingProgress } from "../hooks/useReadingProgress";
-import { articlePath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  journalPath,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
@@ -234,7 +238,7 @@ export default function ArticleReader({
   onOpen,
 }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLAnchorElement>(null);
   const lightboxRef = useRef<HTMLDivElement>(null);
   const lightboxCloseButtonRef = useRef<HTMLButtonElement>(null);
   const lightboxTriggerRef = useRef<HTMLElement | null>(null);
@@ -888,17 +892,21 @@ export default function ArticleReader({
       />
 
       <header className="article-reader-bar">
-          <button
+          <a
             ref={closeButtonRef}
             className="reader-back"
-            type="button"
-            onClick={onClose}
+            href={journalPath(displayArticle.sectionId)}
+            onClick={(event) => {
+              if (!shouldUseClientNavigation(event)) return;
+              event.preventDefault();
+              onClose();
+            }}
           >
           <span aria-hidden="true">
             <BrandArrowIcon />
           </span>{" "}
           {t("К журналу")}
-        </button>
+        </a>
         <div>
           <span>{displayArticle.sectionLabel}</span>
           <strong>{activeHeading?.text || t("Проба Пера")}</strong>
@@ -1371,10 +1379,19 @@ export default function ArticleReader({
                 </header>
                 <div>
                   {continuingRecommendations.map((item) => (
-                    <button
-                      type="button"
+                    <a
                       key={item.id}
-                      onClick={() => openAnother(item)}
+                      href={articlePath(
+                        item.id,
+                        item.title,
+                        item.sectionId,
+                        item.slug
+                      )}
+                      onClick={(event) => {
+                        if (!shouldUseClientNavigation(event)) return;
+                        event.preventDefault();
+                        openAnother(item);
+                      }}
                     >
                       <span
                         className="article-reader-more-image"
@@ -1417,7 +1434,7 @@ export default function ArticleReader({
                           {item.readingMinutes} {t("мин. чтения")}
                         </em>
                       </span>
-                    </button>
+                    </a>
                   ))}
                 </div>
               </section>
@@ -1427,7 +1444,20 @@ export default function ArticleReader({
           <aside className="article-reader-related">
             <span>{t("Продолжить чтение")}</span>
             {sidebarRecommendations.map((item) => (
-              <button type="button" key={item.id} onClick={() => openAnother(item)}>
+              <a
+                key={item.id}
+                href={articlePath(
+                  item.id,
+                  item.title,
+                  item.sectionId,
+                  item.slug
+                )}
+                onClick={(event) => {
+                  if (!shouldUseClientNavigation(event)) return;
+                  event.preventDefault();
+                  openAnother(item);
+                }}
+              >
                 {item.imageUrl && (
                   <span
                     className="article-related-image"
@@ -1463,7 +1493,7 @@ export default function ArticleReader({
                     {item.readingMinutes} {t("мин.")}
                   </em>
                 </span>
-              </button>
+              </a>
             ))}
           </aside>
         </main>
@@ -1473,18 +1503,42 @@ export default function ArticleReader({
           aria-label={t("Соседние публикации")}
         >
           {localizedPrevious ? (
-            <button type="button" onClick={() => openAnother(localizedPrevious)}>
+            <a
+              href={articlePath(
+                localizedPrevious.id,
+                localizedPrevious.title,
+                localizedPrevious.sectionId,
+                localizedPrevious.slug
+              )}
+              onClick={(event) => {
+                if (!shouldUseClientNavigation(event)) return;
+                event.preventDefault();
+                openAnother(localizedPrevious);
+              }}
+            >
               <small>{t("Предыдущий материал")}</small>
               <strong>← {localizedPrevious.title}</strong>
-            </button>
+            </a>
           ) : (
             <span />
           )}
           {localizedNext && (
-            <button type="button" onClick={() => openAnother(localizedNext)}>
+            <a
+              href={articlePath(
+                localizedNext.id,
+                localizedNext.title,
+                localizedNext.sectionId,
+                localizedNext.slug
+              )}
+              onClick={(event) => {
+                if (!shouldUseClientNavigation(event)) return;
+                event.preventDefault();
+                openAnother(localizedNext);
+              }}
+            >
               <small>{t("Следующий материал")}</small>
               <strong>{localizedNext.title} →</strong>
-            </button>
+            </a>
           )}
         </nav>
       </div>

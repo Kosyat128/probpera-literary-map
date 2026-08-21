@@ -1,11 +1,15 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   articleIdFromPath,
   articlePath,
+  articleSectionArchivePath,
   articleSeoSlug,
   humanSlug,
   isDirectArticlePath,
+  journalPath,
+  journalSectionFromPath,
+  navigateToJournal,
   resolveArticleRoute,
   shouldUseClientNavigation,
 } from "./articleRoutes";
@@ -65,7 +69,62 @@ describe("SEO-адреса статей", () => {
     expect(
       isDirectArticlePath("/probpera-literary-map/articles/article-1/")
     ).toBe(true);
-    expect(isDirectArticlePath("/probpera-literary-map/#journal")).toBe(false);
+    expect(isDirectArticlePath("/probpera-literary-map/stati/")).toBe(false);
+    expect(
+      isDirectArticlePath("/probpera-literary-map/stati/mnenie-o-knige/")
+    ).toBe(false);
+  });
+
+  it("creates crawlable journal and section archive URLs", () => {
+    expect(articleSectionArchivePath()).toBe("/stati/");
+    expect(articleSectionArchivePath("book-opinions")).toBe(
+      "/stati/mnenie-o-knige/"
+    );
+    expect(journalPath()).toContain("/stati/");
+    expect(journalPath("book-opinions")).toContain(
+      "/stati/mnenie-o-knige/"
+    );
+    expect(journalPath("book-opinions")).not.toContain("#journal");
+    expect(journalSectionFromPath(journalPath())).toBe("all");
+    expect(journalSectionFromPath(journalPath("book-opinions"))).toBe(
+      "book-opinions"
+    );
+    expect(
+      journalSectionFromPath(
+        journalPath("book-opinions").replace("mnenie-o-knige", "neizvestno")
+      )
+    ).toBeNull();
+  });
+
+  it("keeps enhanced journal navigation inside the loaded application", () => {
+    const pushState = vi.fn();
+    const replaceState = vi.fn();
+    const dispatchEvent = vi.fn();
+    const requestAnimationFrame = vi.fn(() => 1);
+    vi.stubGlobal("window", {
+      history: { pushState, replaceState },
+      dispatchEvent,
+      requestAnimationFrame,
+      matchMedia: () => ({ matches: false }),
+    });
+
+    navigateToJournal("book-opinions");
+    expect(pushState).toHaveBeenCalledWith(
+      { probperaJournal: "book-opinions" },
+      "",
+      journalPath("book-opinions")
+    );
+    expect(dispatchEvent).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+
+    navigateToJournal("language", true);
+    expect(replaceState).toHaveBeenCalledWith(
+      { probperaJournal: "language" },
+      "",
+      journalPath("language")
+    );
+    expect(dispatchEvent).toHaveBeenCalledTimes(2);
+    vi.unstubAllGlobals();
   });
 
   it("repairs a valid slug placed under an outdated section", () => {

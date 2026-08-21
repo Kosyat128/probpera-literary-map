@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import {
   articlePublicPath,
   articleRouteSlug,
+  articleSectionArchivePath,
   articleSectionSlugs,
   normalizedPath,
 } from "./lib/article-route-policy.mjs";
@@ -142,7 +143,7 @@ check(
 );
 check(
   serverRedirectLines.length >= catalog.length,
-  "сформирован файл серверных 301-редиректов для миграционного хостинга"
+  "сформирован manifest 301-редиректов для последующей настройки edge-хостинга"
 );
 check(
   serverRedirectLines.length <= 2_000,
@@ -180,6 +181,24 @@ check(
   sitemapLocations.every((url) => url.startsWith(`${expectedOrigin}/`)),
   "все URL sitemap относятся к probpera.ru"
 );
+
+for (const sectionId of ["", ...Object.keys(articleSectionSlugs)]) {
+  const archivePath = articleSectionArchivePath(sectionId);
+  const archiveUrl = `${expectedOrigin}${archivePath}/`;
+  const archiveFile = `${archivePath.replace(/^\/+|\/+$/gu, "")}/index.html`;
+  check(
+    sitemapLocations.includes(archiveUrl),
+    `sitemap содержит canonical архива: ${archivePath}`
+  );
+  check(await exists(archiveFile), `статический архив существует: ${archivePath}`);
+  if (await exists(archiveFile)) {
+    const archiveHtml = await read(archiveFile);
+    check(
+      archiveHtml.includes(`<link rel="canonical" href="${archiveUrl}">`),
+      `canonical архива совпадает с маршрутом: ${archivePath}`
+    );
+  }
+}
 
 for (const [source, destinations] of redirectBySource) {
   check(

@@ -215,9 +215,9 @@ const editorialFeatures = [
     articleUrl: articlePath(
       "page--article--first--profession--writers--2",
       "Зарубежные классики литературы и их профессии",
-      "author-stories"
+      "writers-world"
     ),
-    sectionUrl: journalPath("author-stories"),
+    sectionUrl: journalPath("writers-world"),
     readTime: "11 минут",
   },
 ];
@@ -1218,14 +1218,14 @@ export default function App() {
                             openCommunity(section.action);
                             return;
                           }
+                          const journalSectionId =
+                            section.id === "journal" ? "all" : section.id;
                           if (
-                            section.href.includes("#journal") &&
+                            section.href === journalPath(journalSectionId) &&
                             shouldUseClientNavigation(event)
                           ) {
                             event.preventDefault();
-                            navigateToJournal(
-                              section.id === "journal" ? "all" : section.id
-                            );
+                            navigateToJournal(journalSectionId);
                           }
                         }}
                       >

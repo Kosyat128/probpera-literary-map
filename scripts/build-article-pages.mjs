@@ -5,6 +5,7 @@ import { load } from "cheerio";
 import {
   articlePublicPath,
   articleRouteSlug,
+  articleSectionArchivePath,
   articleSectionSlug,
   articleSectionSlugs,
   normalizeArticlePublicMetadata,
@@ -14,6 +15,7 @@ import {
   dzenCoverForArticle,
   positionDzenLeadIllustration,
 } from "./lib/article-publication-images.mjs";
+import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -29,19 +31,40 @@ const siteUrl = `${siteOrigin}${siteBasePath}`;
 const siteRootPath = `${siteBasePath || ""}/`;
 const buildDate = new Date().toISOString().slice(0, 10);
 const legacyLandingRedirects = [
-  ["/read", "/#journal"],
-  ["/read/page-article/page-books", "/?section=book-opinions#journal"],
-  ["/read/page-article/page-bookvsmovie", "/?section=screen-adaptations#journal"],
-  ["/read/page-article/page-writers-world", "/?section=writers-world#journal"],
-  ["/read/page-article/knigniy-gid", "/?section=book-guides#journal"],
-  ["/read/page-article/topbooks", "/?section=book-guides#journal"],
-  ["/read/page-article/famous_prizes", "/?section=awards#journal"],
-  ["/read/page-article/nobel-prize", "/?section=awards#journal"],
-  ["/read/page-article/folklore", "/?section=folklore#journal"],
-  ["/read/page-words", "/?section=language#journal"],
-  ["/read/page-stories", "/?section=author-stories#journal"],
+  ["/read", "/stati/"],
+  ["/read/page-article/page-books", "/stati/mnenie-o-knige/"],
+  ["/read/page-article/page-bookvsmovie", "/stati/kniga-i-ekranizatsiya/"],
+  ["/read/page-article/page-writers-world", "/stati/pisateli-mira/"],
+  ["/read/page-article/knigniy-gid", "/stati/knizhnyy-gid/"],
+  ["/read/page-article/topbooks", "/stati/knizhnyy-gid/"],
+  ["/read/page-article/famous_prizes", "/stati/literaturnye-premii/"],
+  ["/read/page-article/nobel-prize", "/stati/literaturnye-premii/"],
+  ["/read/page-article/folklore", "/stati/folklor-i-mifologiya/"],
+  ["/read/page-words", "/stati/russkiy-yazyk/"],
+  ["/read/page-stories", "/stati/literaturnye-istorii/"],
   ["/contacts", "/#about"],
 ];
+
+const sectionEditorialDescriptions = Object.freeze({
+  "book-opinions":
+    "Редакционные мнения о классических и современных книгах: история создания, контекст, особенности текста и впечатления после чтения.",
+  "screen-adaptations":
+    "Сравнения литературных произведений и их экранизаций: сюжетные изменения, режиссёрские решения и сохранение авторского замысла.",
+  "writers-world":
+    "Биографии и творческие маршруты писателей разных стран, литературные традиции и авторы, повлиявшие на мировую культуру.",
+  "book-guides":
+    "Тематические подборки и книжные маршруты по классике и современной литературе с редакционными пояснениями.",
+  awards:
+    "История литературных премий, правила отбора, важные лауреаты и книги, отмеченные международными и национальными наградами.",
+  folklore:
+    "Материалы о фольклоре, мифологических образах, сказочных персонажах и их месте в литературной традиции разных народов.",
+  language:
+    "Статьи о русском языке, происхождении слов и выражений, словарном запасе и точном употреблении литературной речи.",
+  "literary-essays":
+    "Редакционные эссе о литературе, чтении, культурной памяти и роли книг в жизни человека и общества.",
+  "author-stories":
+    "Литературные истории и авторские тексты журнала «Проба Пера» о чтении, творчестве и личном опыте.",
+});
 
 function xmlEscape(value = "") {
   return value
@@ -84,6 +107,36 @@ function conciseMetaDescription(value, fallback, maxLength = 200) {
     .replace(/[,:;–—-]+$/u, "")
     .trimEnd();
   return `${clipped}…`;
+}
+
+function metadataIdentity(value = "") {
+  return String(value)
+    .toLocaleLowerCase("ru")
+    .replaceAll("ё", "е")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
+function uniqueMetaDescription({
+  preferred,
+  title,
+  visibleText,
+  fallback,
+  usedDescriptions,
+}) {
+  const candidates = [
+    conciseMetaDescription(preferred, fallback),
+    conciseMetaDescription(`${title}. ${visibleText}`, fallback),
+    conciseMetaDescription(
+      `Материал литературного журнала «Проба Пера»: ${title}. ${visibleText}`,
+      fallback
+    ),
+  ];
+  const selected =
+    candidates.find((candidate) => !usedDescriptions.has(metadataIdentity(candidate))) ||
+    conciseMetaDescription(`${title}. ${fallback}`, fallback);
+  usedDescriptions.add(metadataIdentity(selected));
+  return selected;
 }
 
 const russianMonthNumbers = new Map([
@@ -168,6 +221,32 @@ function safeArticleHtml(contentHtml = "") {
   return $("#article-source").html() || "";
 }
 
+function canonicalizeInternalArticleLinks(contentHtml, canonicalByLegacyPath) {
+  const $ = load(`<main id="canonical-article-source">${contentHtml}</main>`, {
+    decodeEntities: false,
+  });
+  $("#canonical-article-source a[href]").each((_index, element) => {
+    const href = $(element).attr("href")?.trim() || "";
+    if (!href || href.startsWith("#")) return;
+    let parsed;
+    try {
+      parsed = new URL(href, `${siteUrl}/`);
+    } catch {
+      return;
+    }
+    if (
+      parsed.origin !== siteOrigin &&
+      !["probpera.ru", "www.probpera.ru"].includes(parsed.hostname)
+    ) {
+      return;
+    }
+    const canonicalUrl = canonicalByLegacyPath.get(normalizedPath(parsed.pathname));
+    if (!canonicalUrl) return;
+    $(element).attr("href", `${canonicalUrl}${parsed.hash || ""}`);
+  });
+  return $("#canonical-article-source").html() || "";
+}
+
 function loadStaticDocument(html) {
   const $ = load(html, { decodeEntities: false });
   $('meta[property="og:url"]').remove();
@@ -243,10 +322,27 @@ const cmsSnapshot = await readJsonIfExists(
   path.join(publicDirectory, "cms", "published-content.json"),
   { articles: [], pages: [], redirects: [] }
 );
-const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
+const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []).map(
+  applyEditorialPublicationFix
+);
 const canonicalArticlePaths = new Set(
   catalog.map((article) => normalizedPath(articlePublicPath(article)))
 );
+const canonicalByLegacyPath = new Map();
+for (const article of catalog) {
+  const canonicalUrl =
+    article.canonicalUrl || `${siteUrl}${articlePublicPath(article)}/`;
+  for (const candidate of [article.url, article.legacyPath]) {
+    const candidatePath = normalizedPath(candidate);
+    if (candidatePath) canonicalByLegacyPath.set(candidatePath, canonicalUrl);
+  }
+}
+const cloudAtlasCanonical = canonicalByLegacyPath.get(
+  "/read/page-article/page-books/7"
+);
+if (cloudAtlasCanonical) {
+  canonicalByLegacyPath.set("/read/page-books/7", cloudAtlasCanonical);
+}
 const routeSlugOwners = new Map();
 for (const article of catalog) {
   const slug = articleRouteSlug(article);
@@ -254,6 +350,25 @@ for (const article of catalog) {
   owners.add(article.id);
   routeSlugOwners.set(slug, owners);
 }
+const indexableCatalog = catalog.filter(
+  (article) => article.allowIndexing !== false
+);
+const articlesBySection = new Map();
+for (const article of indexableCatalog) {
+  const sectionArticles = articlesBySection.get(article.sectionId) || [];
+  sectionArticles.push(article);
+  articlesBySection.set(article.sectionId, sectionArticles);
+}
+const archiveSections = Object.keys(articleSectionSlugs)
+  .map((sectionId) => ({
+    id: sectionId,
+    slug: articleSectionSlug(sectionId),
+    label:
+      articlesBySection.get(sectionId)?.[0]?.sectionLabel ||
+      sectionId,
+    articles: articlesBySection.get(sectionId) || [],
+  }))
+  .filter((section) => section.articles.length > 0);
 const homeDocument = loadStaticDocument(baseHtml);
 homeDocument('link[rel="canonical"]').attr("href", `${siteUrl}/`);
 homeDocument('link[rel="alternate"][type="application/rss+xml"]').attr("href", `${siteUrl}/rss.xml`);
@@ -270,9 +385,16 @@ homeDocument("head").append(
         name: "Проба Пера",
         url: `${siteUrl}/`,
         logo: {
-          "@type": "ImageObject",
-          url: `${siteUrl}/brand/probpera-logo.png`,
+          "@id": `${siteUrl}/#logo`,
         },
+      },
+      {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}/#logo`,
+        url: `${siteUrl}/brand/probpera-logo.png`,
+        contentUrl: `${siteUrl}/brand/probpera-logo.png`,
+        width: 500,
+        height: 500,
       },
       {
         "@type": "WebSite",
@@ -283,12 +405,18 @@ homeDocument("head").append(
         inLanguage: "ru-RU",
         publisher: { "@id": `${siteUrl}/#organization` },
       },
+      {
+        "@type": "Periodical",
+        "@id": `${siteUrl}/#periodical`,
+        name: "Проба Пера",
+        url: `${siteUrl}/stati/`,
+        inLanguage: "ru-RU",
+        publisher: { "@id": `${siteUrl}/#organization` },
+      },
     ],
   }).replaceAll("<", "\\u003c")}</script>`
 );
-const latestIndexableArticles = catalog
-  .filter((article) => article.allowIndexing !== false)
-  .slice(0, 12);
+const latestIndexableArticles = indexableCatalog.slice(0, 12);
 homeDocument("#root").html(`
   <main class="static-article-fallback static-home-fallback" data-static-seo>
     <article>
@@ -296,9 +424,16 @@ homeDocument("#root").html(`
       <h1>Проба Пера — статьи о книгах, писателях и мировой литературе</h1>
       <p>Авторский литературный журнал, книжный архив, биографии писателей и интерактивная энциклопедия стран собраны в одном редакционном пространстве.</p>
       <nav aria-label="Основные разделы">
-        <a href="${siteBasePath || ""}/#journal">Читать журнал</a>
+        <a href="${siteBasePath || ""}/stati/">Читать журнал</a>
         <a href="${siteBasePath || ""}/#atlas">Открыть литературную карту мира</a>
         <a href="${siteBasePath || ""}/#books">Перейти к книжному архиву</a>
+      </nav>
+      <nav aria-label="Рубрики журнала">
+        <ul>
+          ${archiveSections.map((section) => `
+            <li><a href="${siteBasePath || ""}${articleSectionArchivePath(section.id)}/">${xmlEscape(section.label)}</a> — ${section.articles.length}</li>
+          `).join("\n")}
+        </ul>
       </nav>
       <section aria-labelledby="latest-publications-static">
         <h2 id="latest-publications-static">Новые публикации</h2>
@@ -318,6 +453,186 @@ const sitemapEntries = [{ url: `${siteUrl}/`, lastmod: buildDate }];
 const redirectRules = [];
 const rssEntries = [];
 let staticSectionAliases = 0;
+const usedMetaDescriptions = new Set([
+  metadataIdentity(
+    homeDocument('meta[name="description"]').attr("content") || ""
+  ),
+]);
+
+function latestArchiveDate(articles) {
+  return articles
+    .map(articleModifiedDate)
+    .filter(Boolean)
+    .sort()
+    .at(-1) || buildDate;
+}
+
+async function writeArticleArchivePage(section = null) {
+  const archiveArticles = section?.articles || indexableCatalog;
+  const archivePath = articleSectionArchivePath(section?.id);
+  const canonicalUrl = `${siteUrl}${archivePath}/`;
+  const label = section?.label || "Все публикации";
+  const title = section
+    ? `${label} — статьи литературного журнала`
+    : "Все статьи литературного журнала";
+  const preferredDescription = section
+    ? sectionEditorialDescriptions[section.id]
+    : "Полный архив литературного журнала «Проба Пера»: статьи о книгах, писателях, экранизациях, премиях, фольклоре, культуре и русском языке.";
+  const description = uniqueMetaDescription({
+    preferred: preferredDescription,
+    title,
+    visibleText: archiveArticles.slice(0, 4).map((article) => article.title).join(". "),
+    fallback: `Редакционный архив «Проба Пера»: ${label}`,
+    usedDescriptions: usedMetaDescriptions,
+  });
+  const $ = loadStaticDocument(baseHtml);
+  $("title").text(`${title} — Проба Пера`);
+  $('meta[name="description"]').attr("content", description);
+  $('meta[property="og:type"]').attr("content", "website");
+  $('meta[property="og:title"]').attr("content", title);
+  $('meta[property="og:description"]').attr("content", description);
+  $('meta[property="og:image"]').attr("content", `${siteUrl}/og-v3.webp`);
+  $('meta[property="og:image:alt"]').attr(
+    "content",
+    `Литературный журнал «Проба Пера»: ${label}`
+  );
+  $('meta[name="twitter:title"]').attr("content", title);
+  $('meta[name="twitter:description"]').attr("content", description);
+  $('meta[name="twitter:image"]').attr("content", `${siteUrl}/og-v3.webp`);
+  $('meta[name="twitter:image:alt"]').attr(
+    "content",
+    `Литературный журнал «Проба Пера»: ${label}`
+  );
+  $('link[rel="canonical"]').attr("href", canonicalUrl);
+  $("head").append(`<meta property="og:url" content="${canonicalUrl}">`);
+  $("head").append(
+    `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
+          name: "Проба Пера",
+          url: `${siteUrl}/`,
+          logo: { "@id": `${siteUrl}/#logo` },
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          name: "Проба Пера",
+          alternateName: "Проба Пера — литературный журнал",
+          url: `${siteUrl}/`,
+          inLanguage: "ru-RU",
+          publisher: { "@id": `${siteUrl}/#organization` },
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": canonicalUrl,
+          url: canonicalUrl,
+          name: title,
+          description,
+          inLanguage: "ru-RU",
+          isPartOf: { "@id": `${siteUrl}/#website` },
+          breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+          mainEntity: { "@id": `${canonicalUrl}#articles` },
+        },
+        {
+          "@type": "ItemList",
+          "@id": `${canonicalUrl}#articles`,
+          name: label,
+          numberOfItems: archiveArticles.length,
+          itemListElement: archiveArticles.map((article, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: article.title,
+            url:
+              article.canonicalUrl ||
+              `${siteUrl}${articlePublicPath(article)}/`,
+          })),
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${canonicalUrl}#breadcrumb`,
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Проба Пера",
+              item: `${siteUrl}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: section ? "Журнал" : label,
+              item: `${siteUrl}${articleSectionArchivePath()}/`,
+            },
+            ...(section
+              ? [
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: label,
+                    item: canonicalUrl,
+                  },
+                ]
+              : []),
+          ],
+        },
+      ],
+    }).replaceAll("<", "\\u003c")}</script>`
+  );
+  $('script[type="module"],link[rel="modulepreload"]').remove();
+  $("#root").html(`
+    <main class="static-article-fallback static-home-fallback" data-static-seo>
+      <article>
+        <nav aria-label="Хлебные крошки">
+          <a href="${siteBasePath || ""}/">Проба Пера</a>
+          ${section ? ` · <a href="${siteBasePath || ""}/stati/">Журнал</a>` : ""}
+        </nav>
+        <span>Литературный журнал</span>
+        <h1>${xmlEscape(title)}</h1>
+        <p>${xmlEscape(description)}</p>
+        <nav aria-label="Рубрики журнала">
+          <ul>
+            <li><a href="${siteBasePath || ""}/stati/">Все публикации</a> — ${indexableCatalog.length}</li>
+            ${archiveSections.map((item) => `
+              <li><a href="${siteBasePath || ""}${articleSectionArchivePath(item.id)}/">${xmlEscape(item.label)}</a> — ${item.articles.length}</li>
+            `).join("\n")}
+          </ul>
+        </nav>
+        <section aria-labelledby="archive-publications">
+          <h2 id="archive-publications">${xmlEscape(label)}</h2>
+          <ol>
+            ${archiveArticles.map((article) => {
+              const href =
+                article.canonicalUrl || `${siteUrl}${articlePublicPath(article)}/`;
+              return `<li>
+                <a href="${xmlEscape(href)}"><strong>${xmlEscape(article.title)}</strong></a>
+                <p>${xmlEscape(conciseMetaDescription(article.description, article.title, 180))}</p>
+              </li>`;
+            }).join("\n")}
+          </ol>
+        </section>
+        <p><a href="${siteBasePath || ""}/#journal">Открыть интерактивную витрину журнала</a></p>
+      </article>
+    </main>
+  `);
+  const targetDirectory = path.join(
+    distDirectory,
+    ...archivePath.split("/").filter(Boolean)
+  );
+  await fs.mkdir(targetDirectory, { recursive: true });
+  await fs.writeFile(path.join(targetDirectory, "index.html"), $.html(), "utf8");
+  sitemapEntries.push({
+    url: canonicalUrl,
+    lastmod: latestArchiveDate(archiveArticles),
+  });
+}
+
+await writeArticleArchivePage();
+for (const section of archiveSections) {
+  await writeArticleArchivePage(section);
+}
 
 for (const [source, destination] of legacyLandingRedirects) {
   const targetUrl = `${siteUrl}${destination}`;
@@ -329,27 +644,40 @@ for (const rawArticle of catalog) {
   const article = normalizeArticlePublicMetadata(rawArticle);
   const documentPath =
     article.documentPath || `articles/${encodeURIComponent(article.id)}.json`;
-  const document = JSON.parse(
+  const document = applyEditorialPublicationFix(JSON.parse(
     await fs.readFile(
       path.join(publicDirectory, ...documentPath.split("/")),
       "utf8"
     )
-  );
+  ));
   const slug = articleRouteSlug(article);
   const publicPath = articlePublicPath(article);
   const canonicalUrl = article.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = loadStaticDocument(baseHtml);
-  const description = conciseMetaDescription(
-    article.seoDescription || article.description,
-    `Авторский материал литературного журнала «Проба Пера»: ${article.title}`
-  );
+  const descriptionFallback =
+    `Авторский материал литературного журнала «Проба Пера»: ${article.title}`;
+  const preferredDescription = article.seoDescription || article.description;
+  const description = uniqueMetaDescription({
+    preferred: preferredDescription,
+    title: article.title,
+    visibleText: document.plainText || "",
+    fallback: descriptionFallback,
+    usedDescriptions: usedMetaDescriptions,
+  });
   const imageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
   const socialTitle = article.ogTitle || article.title;
-  const socialDescription = article.ogDescription || description;
+  const socialDescription =
+    !article.ogDescription ||
+    metadataIdentity(article.ogDescription) === metadataIdentity(preferredDescription)
+      ? description
+      : conciseMetaDescription(article.ogDescription, description);
   const socialImageUrl = article.ogImageUrl || imageUrl;
   const publishedDate = articlePublishedDate(article);
   const modifiedDate = articleModifiedDate(article);
-  const safeRssBody = safeArticleHtml(document.contentHtml);
+  const safePublicBody = canonicalizeInternalArticleLinks(
+    safeArticleHtml(document.contentHtml),
+    canonicalByLegacyPath
+  );
   const dzenCover = dzenCoverForArticle({
     title: article.title,
     // Select before the RSS sanitizer removes editorial classes/ARIA that
@@ -366,7 +694,7 @@ for (const rawArticle of catalog) {
     description,
     imageUrl: dzenCover?.url,
     imageAlt: dzenCover?.alt || article.imageAlt,
-    contentHtml: positionDzenLeadIllustration(safeRssBody, dzenCover),
+    contentHtml: positionDzenLeadIllustration(safePublicBody, dzenCover),
   });
 
   $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
@@ -409,61 +737,122 @@ for (const rawArticle of catalog) {
   $("head").append(
     `<meta property="article:section" content="${xmlEscape(article.sectionLabel)}">`
   );
+  const sectionArchiveUrl =
+    `${siteUrl}${articleSectionArchivePath(article.sectionId)}/`;
+  const relatedArticles = [
+    ...(articlesBySection.get(article.sectionId) || []),
+    ...indexableCatalog,
+  ]
+    .filter((candidate, index, candidates) =>
+      candidate.id !== article.id &&
+      candidates.findIndex((item) => item.id === candidate.id) === index
+    )
+    .slice(0, 6);
   $("head").append(
-    `<script type="application/ld+json">${JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: article.title,
-        description,
-        image: [imageUrl],
-        mainEntityOfPage: canonicalUrl,
-        inLanguage: "ru-RU",
-        datePublished: article.publishedAt || publishedDate || undefined,
-        dateModified: article.updatedAt || modifiedDate || undefined,
-        wordCount: article.wordCount,
-        articleSection: article.sectionLabel,
-        isPartOf: {
-          "@type": "Periodical",
+    `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
           name: "Проба Пера",
           url: `${siteUrl}/`,
-        },
-        author: {
-          "@type": "Organization",
-          name: "Проба Пера",
-          url: "https://probpera.ru",
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "Проба Пера",
-          url: "https://probpera.ru",
           logo: {
             "@type": "ImageObject",
             url: `${siteUrl}/brand/probpera-logo.png`,
+            width: 500,
+            height: 500,
           },
         },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Проба Пера", item: `${siteUrl}/` },
-          { "@type": "ListItem", position: 2, name: article.sectionLabel, item: `${siteUrl}/?section=${encodeURIComponent(article.sectionId)}#journal` },
-          { "@type": "ListItem", position: 3, name: article.title, item: canonicalUrl },
-        ],
-      },
-    ]).replaceAll("<", "\\u003c")}</script>`
+        {
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          name: "Проба Пера",
+          url: `${siteUrl}/`,
+          inLanguage: "ru-RU",
+          publisher: { "@id": `${siteUrl}/#organization` },
+        },
+        {
+          "@type": "Periodical",
+          "@id": `${siteUrl}/#periodical`,
+          name: "Проба Пера",
+          url: `${siteUrl}${articleSectionArchivePath()}/`,
+          inLanguage: "ru-RU",
+          publisher: { "@id": `${siteUrl}/#organization` },
+        },
+        {
+          "@type": "WebPage",
+          "@id": canonicalUrl,
+          url: canonicalUrl,
+          name: article.title,
+          description,
+          inLanguage: "ru-RU",
+          isPartOf: { "@id": `${siteUrl}/#website` },
+          breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+          primaryImageOfPage: { "@id": `${canonicalUrl}#primaryimage` },
+          mainEntity: { "@id": `${canonicalUrl}#article` },
+        },
+        {
+          "@type": "Article",
+          "@id": `${canonicalUrl}#article`,
+          headline: article.title,
+          description,
+          image: [{ "@id": `${canonicalUrl}#primaryimage` }],
+          mainEntityOfPage: { "@id": canonicalUrl },
+          inLanguage: "ru-RU",
+          datePublished: article.publishedAt || publishedDate || undefined,
+          dateModified: article.updatedAt || modifiedDate || undefined,
+          wordCount: article.wordCount,
+          articleSection: article.sectionLabel,
+          isPartOf: { "@id": `${siteUrl}/#periodical` },
+          author: { "@id": `${siteUrl}/#organization` },
+          publisher: { "@id": `${siteUrl}/#organization` },
+        },
+        {
+          "@type": "ImageObject",
+          "@id": `${canonicalUrl}#primaryimage`,
+          url: imageUrl,
+          contentUrl: imageUrl,
+          caption: article.imageAlt || article.title,
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${canonicalUrl}#breadcrumb`,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Проба Пера", item: `${siteUrl}/` },
+            { "@type": "ListItem", position: 2, name: "Журнал", item: `${siteUrl}${articleSectionArchivePath()}/` },
+            { "@type": "ListItem", position: 3, name: article.sectionLabel, item: sectionArchiveUrl },
+            { "@type": "ListItem", position: 4, name: article.title, item: canonicalUrl },
+          ],
+        },
+      ],
+    }).replaceAll("<", "\\u003c")}</script>`
   );
 
   $("#root").html(`
     <main class="static-article-fallback">
-      <a href="${siteBasePath || ""}/#journal">← Журнал «Проба Пера»</a>
+      <nav aria-label="Хлебные крошки">
+        <a href="${siteBasePath || ""}/">Проба Пера</a> ·
+        <a href="${siteBasePath || ""}/stati/">Журнал</a> ·
+        <a href="${siteBasePath || ""}${articleSectionArchivePath(article.sectionId)}/">${xmlEscape(article.sectionLabel)}</a>
+      </nav>
       <article>
         <span>${xmlEscape(article.sectionLabel)}</span>
         <h1>${xmlEscape(article.title)}</h1>
         <p>${xmlEscape(description)}</p>
-        ${safeArticleHtml(document.contentHtml)}
+        ${safePublicBody}
       </article>
+      <nav aria-label="Читайте также">
+        <h2>Читайте также</h2>
+        <ul>
+          ${relatedArticles.map((candidate) => {
+            const href =
+              candidate.canonicalUrl ||
+              `${siteUrl}${articlePublicPath(candidate)}/`;
+            return `<li><a href="${xmlEscape(href)}">${xmlEscape(candidate.title)}</a></li>`;
+          }).join("\n")}
+        </ul>
+      </nav>
     </main>
   `);
 
@@ -548,19 +937,32 @@ for (const rawArticle of catalog) {
 
   if (englishIsReleased) {
     if (englishSlug !== slug) {
-      const englishDescription = conciseMetaDescription(
+      const englishPreferredDescription =
         englishTranslation.seoDescription ||
-          englishTranslation.description ||
-          englishDocument.plainText,
-        `An original PROBA PERA literary journal article: ${englishTranslation.title}`
-      );
+        englishTranslation.description ||
+        englishDocument.plainText;
+      const englishDescription = uniqueMetaDescription({
+        preferred: englishPreferredDescription,
+        title: englishTranslation.title,
+        visibleText: englishDocument.plainText || "",
+        fallback:
+          `An original PROBA PERA literary journal article: ${englishTranslation.title}`,
+        usedDescriptions: usedMetaDescriptions,
+      });
       const englishImageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
       const englishSocialTitle =
         englishTranslation.ogTitle ||
         englishTranslation.seoTitle ||
         englishTranslation.title;
       const englishSocialDescription =
-        englishTranslation.ogDescription || englishDescription;
+        !englishTranslation.ogDescription ||
+        metadataIdentity(englishTranslation.ogDescription) ===
+          metadataIdentity(englishPreferredDescription)
+          ? englishDescription
+          : conciseMetaDescription(
+              englishTranslation.ogDescription,
+              englishDescription
+            );
       const englishDocumentPage = loadStaticDocument(baseHtml);
 
       englishDocumentPage("html")
@@ -790,10 +1192,15 @@ for (const page of cmsSnapshot.pages || []) {
   const publicPath = pagePublicPath(page);
   const canonicalUrl = page.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = loadStaticDocument(baseHtml);
-  const description = conciseMetaDescription(
-    page.seoDescription || page.excerpt,
-    `Страница литературного журнала «Проба Пера»: ${page.title}`
-  );
+  const pageDescriptionFallback =
+    `Страница литературного журнала «Проба Пера»: ${page.title}`;
+  const description = uniqueMetaDescription({
+    preferred: page.seoDescription || page.excerpt,
+    title: page.title,
+    visibleText: page.contentText || page.excerpt || "",
+    fallback: pageDescriptionFallback,
+    usedDescriptions: usedMetaDescriptions,
+  });
   const pageImageUrl =
     page.ogImageUrl || page.imageUrl || `${siteUrl}/og-v3.webp`;
   const pageImageAlt = page.imageAlt || page.title;
@@ -945,7 +1352,7 @@ await fs.writeFile(
         {
           name: "Статьи журнала",
           short_name: "Статьи",
-          url: `${siteRootPath}#featured-journal`,
+          url: `${siteBasePath || ""}/stati/`,
         },
         {
           name: "Литературный календарь",
@@ -1048,7 +1455,7 @@ notFoundDocument("#root").html(`
       <span>Ошибка 404</span>
       <h1>Эта страница не найдена</h1>
       <p>Возможно, адрес изменился при обновлении журнала. Все прежние статьи сохранены и получили постоянные адреса.</p>
-      <p><a href="${siteBasePath || ""}/#journal">Открыть журнал</a> · <a href="${siteBasePath || ""}/#atlas">Перейти к «Литературной планете»</a></p>
+      <p><a href="${siteBasePath || ""}/stati/">Открыть журнал</a> · <a href="${siteBasePath || ""}/#atlas">Перейти к «Литературной планете»</a></p>
     </article>
   </main>
 `);

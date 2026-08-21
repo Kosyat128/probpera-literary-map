@@ -10,6 +10,7 @@ import {
   articleIdFromPath,
   articlePath,
   journalPath,
+  journalSectionFromPath,
   navigateToArticle,
   navigateToJournal,
   resolveArticleRoute,
@@ -187,6 +188,8 @@ function recommendedArticles(
 }
 
 function sectionFromAddress() {
+  const routeSection = journalSectionFromPath();
+  if (routeSection) return routeSection;
   const requested = new URLSearchParams(window.location.search).get("section");
   return requested &&
     articleCatalog.some((article) => article.sectionId === requested)
@@ -350,9 +353,7 @@ export default function ArticleLibrarySection({
       window.history.back();
       return;
     }
-    window.history.replaceState({}, "", journalPath(sectionId));
-    window.dispatchEvent(new Event("probpera:navigation"));
-    setSelectedId(null);
+    navigateToJournal(selectedBase?.sectionId || sectionId, true);
   };
 
   const previousBase =

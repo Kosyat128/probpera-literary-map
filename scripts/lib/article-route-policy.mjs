@@ -81,6 +81,12 @@ export function articlePublicPath(article) {
   return `/stati/${articleSectionSlug(article?.sectionId)}/${articleRouteSlug(article)}`;
 }
 
+export function articleSectionArchivePath(sectionId = "") {
+  return sectionId && sectionId !== "all"
+    ? `/stati/${articleSectionSlug(sectionId)}`
+    : "/stati";
+}
+
 export function normalizePublicMetadataText(value = "") {
   return String(value)
     .normalize("NFC")

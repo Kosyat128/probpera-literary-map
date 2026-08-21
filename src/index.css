@@ -8138,7 +8138,9 @@ a.writer-nobel-medal:focus-visible {
   gap: 8px;
   align-items: center;
   justify-self: start;
+  color: inherit;
   font-size: 11px;
+  text-decoration: none;
 }
 
 .reader-back span {
@@ -9778,7 +9780,7 @@ a.writer-nobel-medal:focus-visible {
   gap: 9px;
 }
 
-.article-reader-more button {
+.article-reader-more a {
   display: grid;
   grid-template-rows: auto 1fr;
   min-width: 0;
@@ -9786,6 +9788,7 @@ a.writer-nobel-medal:focus-visible {
   overflow: hidden;
   color: var(--reader-text);
   text-align: left;
+  text-decoration: none;
   background: color-mix(in srgb, var(--reader-paper) 88%, #ef7e2d 2%);
   border: 1px solid var(--reader-line);
   border-radius: 5px;
@@ -9796,8 +9799,8 @@ a.writer-nobel-medal:focus-visible {
     transform 180ms ease;
 }
 
-.article-reader-more button:hover,
-.article-reader-more button:focus-visible {
+.article-reader-more a:hover,
+.article-reader-more a:focus-visible {
   border-color: rgba(239, 126, 45, 0.62);
   outline: none;
   box-shadow: 0 15px 35px color-mix(in srgb, var(--reader-bg) 36%, transparent);
@@ -9806,7 +9809,7 @@ a.writer-nobel-medal:focus-visible {
 
 @media (min-width: 1401px) {
   /* These three recommendations are already present in the sticky rail. */
-  .article-reader-more button:nth-child(-n + 3) {
+  .article-reader-more a:nth-child(-n + 3) {
     display: none;
   }
 
@@ -9859,8 +9862,8 @@ a.writer-nobel-medal:focus-visible {
   font-style: normal;
 }
 
-.article-reader-more button:hover img,
-.article-reader-more button:focus-visible img {
+.article-reader-more a:hover img,
+.article-reader-more a:focus-visible img {
   opacity: 1;
   transform: scale(1.035);
 }
@@ -9907,13 +9910,14 @@ a.writer-nobel-medal:focus-visible {
   margin-bottom: 10px;
 }
 
-.article-reader-related button {
+.article-reader-related a {
   display: grid;
   gap: 0;
   overflow: hidden;
   padding: 0;
   color: var(--reader-text);
   text-align: left;
+  text-decoration: none;
   background: color-mix(in srgb, var(--reader-paper) 84%, transparent);
   border: 1px solid var(--reader-line);
   border-radius: 4px;
@@ -9924,8 +9928,8 @@ a.writer-nobel-medal:focus-visible {
     transform 180ms ease;
 }
 
-.article-reader-related button:hover,
-.article-reader-related button:focus-visible {
+.article-reader-related a:hover,
+.article-reader-related a:focus-visible {
   border-color: rgba(239, 126, 45, 0.6);
   outline: none;
   box-shadow: 0 14px 30px color-mix(in srgb, var(--reader-bg) 38%, transparent);
@@ -9956,8 +9960,8 @@ a.writer-nobel-medal:focus-visible {
     transform 500ms ease;
 }
 
-.article-reader-related button:hover .article-related-image img,
-.article-reader-related button:focus-visible .article-related-image img {
+.article-reader-related a:hover .article-related-image img,
+.article-reader-related a:focus-visible .article-related-image img {
   opacity: 1;
   transform: scale(1.035);
 }
@@ -9998,12 +10002,13 @@ a.writer-nobel-medal:focus-visible {
   padding: 0 25px 85px;
 }
 
-.article-reader-sequence button {
+.article-reader-sequence a {
   display: grid;
   gap: 10px;
   padding: 24px;
   color: var(--reader-text);
   text-align: left;
+  text-decoration: none;
   background: var(--reader-paper);
   border: 1px solid var(--reader-line);
   border-radius: 4px;
@@ -10013,14 +10018,14 @@ a.writer-nobel-medal:focus-visible {
     border-color 160ms ease;
 }
 
-.article-reader-sequence button:hover,
-.article-reader-sequence button:focus-visible {
+.article-reader-sequence a:hover,
+.article-reader-sequence a:focus-visible {
   background: color-mix(in srgb, var(--orange) 5%, var(--reader-paper));
   border-color: color-mix(in srgb, var(--orange) 58%, var(--reader-line));
   outline: none;
 }
 
-.article-reader-sequence button:last-child {
+.article-reader-sequence a:last-child {
   text-align: right;
 }
 
@@ -12555,9 +12560,9 @@ a.writer-nobel-medal:focus-visible {
   -webkit-text-fill-color: #65513b !important;
 }
 
-.article-reader.is-light .article-reader-sequence button,
-.article-reader.is-paper .article-reader-sequence button,
-.article-reader.is-book .article-reader-sequence button {
+.article-reader.is-light .article-reader-sequence a,
+.article-reader.is-paper .article-reader-sequence a,
+.article-reader.is-book .article-reader-sequence a {
   transition: border-color 160ms ease;
 }
 

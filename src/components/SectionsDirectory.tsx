@@ -253,12 +253,14 @@ export default function SectionsDirectory({
             onAction?.(section.action);
             return;
           }
+          const journalSectionId =
+            section.id === "journal" ? "all" : section.id;
           if (
-            section.href.includes("#journal") &&
+            section.href === journalPath(journalSectionId) &&
             shouldUseClientNavigation(event)
           ) {
             event.preventDefault();
-            navigateToJournal(section.id === "journal" ? "all" : section.id);
+            navigateToJournal(journalSectionId);
           }
         };
 

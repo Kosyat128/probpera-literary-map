@@ -9,6 +9,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { load } from "cheerio";
 import { afterEach, describe, expect, it } from "vitest";
 
 const temporaryRoots = [];
@@ -34,7 +35,44 @@ describe("localized static article pages", () => {
       '<!doctype html><html lang="ru"><head><title>Fixture</title><meta name="description" content=""><meta name="robots" content="index,follow"><meta property="og:type" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:url" content="https://stale.example/old/"><link rel="canonical" href=""><link rel="alternate" type="application/rss+xml" href=""><script type="application/ld+json">{"url":"https://stale.example/old/"}</script></head><body><div id="root"></div><script type="module" src="/assets/app.js"></script></body></html>',
       "utf8"
     );
-    writeJson(path.join(fixtureRoot, "public", "articles", "index.json"), []);
+    const sharedDescription =
+      "Общее редакционное описание, намеренно повторённое для проверки уникальности итоговых метаданных.";
+    const legacyArticle = {
+      id: "page--article--fixture--related--1",
+      url: "https://example.test/read/page-article/fixture-related/1",
+      slug: "fixture-related-article",
+      title: "Связанный материал для проверки",
+      description: sharedDescription,
+      seoDescription: sharedDescription,
+      sectionId: "writers-world",
+      sectionLabel: "Писатели мира",
+      publishedLabel: "Опубликовано: 7 августа 2026",
+      publishedAt: "2026-08-07T10:00:00.000Z",
+      readingMinutes: 2,
+      wordCount: 180,
+      headingCount: 1,
+      allowIndexing: true,
+    };
+    writeJson(
+      path.join(fixtureRoot, "public", "articles", "index.json"),
+      [legacyArticle]
+    );
+    writeJson(
+      path.join(
+        fixtureRoot,
+        "public",
+        "articles",
+        "page--article--fixture--related--1.json"
+      ),
+      {
+        ...legacyArticle,
+        headings: [{ id: "legacy", level: 2, text: "Связанный раздел" }],
+        contentHtml:
+          "<h2>Связанный раздел</h2><p>Самостоятельный текст связанного материала для поисковой проверки.</p>",
+        plainText:
+          "Связанный раздел. Самостоятельный текст связанного материала для поисковой проверки.",
+      }
+    );
 
     const englishTranslation = {
       locale: "en",
@@ -61,7 +99,8 @@ describe("localized static article pages", () => {
         "https://example.test/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii/",
       slug: "zarubezhnye-klassiki-literatury-i-ih-professii",
       title: "Зарубежные классики литературы и их профессии",
-      description: "Русское описание.",
+      description: sharedDescription,
+      seoDescription: sharedDescription,
       sectionId: "writers-world",
       sectionLabel: "Писатели мира",
       publishedLabel: "Опубликовано: 8 августа 2026",
@@ -82,7 +121,8 @@ describe("localized static article pages", () => {
       {
         ...article,
         headings: [{ id: "ru", level: 2, text: "Русский раздел" }],
-        contentHtml: "<h2>Русский раздел</h2><p>Русский текст.</p>",
+        contentHtml:
+          '<h2>Русский раздел</h2><p>Русский текст со <a href="https://example.test/read/page-article/fixture-related/1">ссылкой на связанный материал</a>.</p>',
         plainText: "Русский раздел Русский текст.",
         translations: {
           en: {
@@ -133,6 +173,73 @@ describe("localized static article pages", () => {
     expect(
       readFileSync(path.join(fixtureRoot, "dist", "index.html"), "utf8")
     ).not.toContain("stale.example");
+
+    const russianFile = path.join(
+      fixtureRoot,
+      "dist",
+      "stati",
+      "pisateli-mira",
+      "zarubezhnye-klassiki-literatury-i-ih-professii",
+      "index.html"
+    );
+    const russianHtml = readFileSync(russianFile, "utf8");
+    const $russian = load(russianHtml);
+    const schemaTypes = new Set(
+      $russian('script[type="application/ld+json"]')
+        .toArray()
+        .flatMap((element) => {
+          const value = JSON.parse($russian(element).text());
+          return value["@graph"] || [value];
+        })
+        .map((node) => node["@type"])
+    );
+    expect(schemaTypes.has("WebPage")).toBe(true);
+    expect(schemaTypes.has("Article")).toBe(true);
+    expect(schemaTypes.has("BreadcrumbList")).toBe(true);
+    expect(russianHtml).toContain(
+      'href="https://example.test/stati/pisateli-mira/fixture-related-article/"'
+    );
+    expect(russianHtml).not.toContain(
+      'href="https://example.test/read/page-article/fixture-related/1"'
+    );
+
+    const journalFile = path.join(fixtureRoot, "dist", "stati", "index.html");
+    const sectionFile = path.join(
+      fixtureRoot,
+      "dist",
+      "stati",
+      "pisateli-mira",
+      "index.html"
+    );
+    expect(existsSync(journalFile)).toBe(true);
+    expect(existsSync(sectionFile)).toBe(true);
+    const journalHtml = readFileSync(journalFile, "utf8");
+    const sectionHtml = readFileSync(sectionFile, "utf8");
+    expect(journalHtml).toContain(
+      '<link rel="canonical" href="https://example.test/stati/">'
+    );
+    expect(sectionHtml).toContain(
+      '<link rel="canonical" href="https://example.test/stati/pisateli-mira/">'
+    );
+    expect(journalHtml).not.toContain('script type="module"');
+    expect(sectionHtml).not.toContain('script type="module"');
+
+    const $legacy = load(
+      readFileSync(
+        path.join(
+          fixtureRoot,
+          "dist",
+          "stati",
+          "pisateli-mira",
+          "fixture-related-article",
+          "index.html"
+        ),
+        "utf8"
+      )
+    );
+    expect($russian('meta[name="description"]').attr("content")).not.toBe(
+      $legacy('meta[name="description"]').attr("content")
+    );
 
     const outdatedSectionAlias = path.join(
       fixtureRoot,
