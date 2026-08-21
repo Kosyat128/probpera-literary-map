@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CURRENT_EDITORIAL_SCHEMA_VERSION,
@@ -6,6 +8,19 @@ import {
   isEditorialSchemaReady,
   type EditorialSchemaHealth,
 } from "./editorial-schema-health";
+
+const root = path.resolve(process.cwd());
+const latestSchemaMigration = readFileSync(
+  path.join(
+    root,
+    "supabase/migrations/20260820_literary_work_cover_artworks.sql"
+  ),
+  "utf8"
+);
+const productionMigrationPlanner = readFileSync(
+  path.join(root, "scripts/database/build-production-migration-plan.mjs"),
+  "utf8"
+);
 
 const completeHealth: EditorialSchemaHealth = {
   version: CURRENT_EDITORIAL_SCHEMA_VERSION,
@@ -27,6 +42,15 @@ describe("editorial schema health", () => {
   it("accepts the complete current production schema contract", () => {
     expect(isEditorialSchemaReady(completeHealth)).toBe(true);
     expect(getMissingEditorialSchemaCapabilities(completeHealth)).toEqual([]);
+  });
+
+  it("keeps the admin readiness version aligned with database reconciliation", () => {
+    expect(latestSchemaMigration).toContain(
+      `'version', '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
+    );
+    expect(productionMigrationPlanner).toContain(
+      `health ->> 'version' <> '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
+    );
   });
 
   it("rejects every missing or false required database capability", () => {
