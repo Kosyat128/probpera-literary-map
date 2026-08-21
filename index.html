@@ -9,15 +9,31 @@
      * Production HTML contains a crawlable homepage fallback inside #root.
      * Hide that temporary copy before the first paint when the React module is
      * present. Static journal archives remove the module script and stay visible.
+     * If the application bundle cannot start, reveal the accessible fallback
+     * after a bounded delay instead of leaving the visitor on a blank page.
      */
     html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
-      display: none !important;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      animation: probpera-home-fallback-rescue 1ms step-end 8s forwards;
+    }
+
+    @keyframes probpera-home-fallback-rescue {
+      to {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   </style>
   <noscript>
     <style data-home-prepaint-noscript>
       html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
-        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        animation: none !important;
       }
     </style>
   </noscript>
