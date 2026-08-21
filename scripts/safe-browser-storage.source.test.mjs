@@ -31,4 +31,26 @@ describe("non-fatal browser storage contract", () => {
     expect(source).toContain('writeWebStorage("session", legacySessionKey, created)');
     expect(source).toContain("return created");
   });
+
+  it("installs compatibility storage before public providers and admin editors", () => {
+    const publicEntrypoint = readFileSync(path.join(root, "src/main.tsx"), "utf8");
+    const adminLayout = readFileSync(
+      path.join(root, "apps/admin/app/layout.tsx"),
+      "utf8"
+    );
+    const adminBootstrap = readFileSync(
+      path.join(root, "apps/admin/components/SafeBrowserStorageBootstrap.tsx"),
+      "utf8"
+    );
+
+    expect(publicEntrypoint).toContain("installSafeWebStorage();");
+    expect(publicEntrypoint.indexOf("installSafeWebStorage();")).toBeLessThan(
+      publicEntrypoint.indexOf("const cmsPage")
+    );
+    expect(adminBootstrap).toContain('"use client"');
+    expect(adminBootstrap).toContain("installSafeWebStorage();");
+    expect(adminLayout.indexOf("<SafeBrowserStorageBootstrap />")).toBeLessThan(
+      adminLayout.indexOf("{children}")
+    );
+  });
 });
