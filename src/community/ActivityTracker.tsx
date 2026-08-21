@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import { readAnalyticsConsent } from "../analytics/yandexMetrika";
 import { supabase } from "../lib/supabase";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
 
@@ -56,9 +57,7 @@ export default function ActivityTracker() {
       const path = currentViewPath();
       let viewed: Record<string, number> = {};
       try {
-        const stored = JSON.parse(
-          window.sessionStorage.getItem(viewedKey) || "{}"
-        );
+        const stored = JSON.parse(readWebStorage("session", viewedKey) || "{}");
         viewed = Array.isArray(stored)
           ? Object.fromEntries(stored.map((item) => [String(item), 0]))
           : stored;
@@ -69,7 +68,7 @@ export default function ActivityTracker() {
       const now = Date.now();
       if (now - (viewed[path] || 0) < VIEW_COOLDOWN_MS) return;
 
-      const previousPath = window.sessionStorage.getItem(previousPathKey);
+      const previousPath = readWebStorage("session", previousPathKey);
       const params = new URLSearchParams(window.location.search);
       const utmSource = params.get("utm_source")?.slice(0, 120) || null;
       const referrerHost = externalReferrerHost();
@@ -109,8 +108,8 @@ export default function ActivityTracker() {
       if (!active || error) return;
 
       viewed[path] = now;
-      window.sessionStorage.setItem(viewedKey, JSON.stringify(viewed));
-      window.sessionStorage.setItem(previousPathKey, path);
+      writeWebStorage("session", viewedKey, JSON.stringify(viewed));
+      writeWebStorage("session", previousPathKey, path);
       window.dispatchEvent(new Event("probpera:page-view-recorded"));
     };
 
