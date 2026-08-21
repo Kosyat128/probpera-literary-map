@@ -13,7 +13,7 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260820_literary_work_cover_artworks.sql"
+    "supabase/migrations/20260822_staff_editorial_read_rls.sql"
   ),
   "utf8"
 );
@@ -28,6 +28,7 @@ const completeHealth: EditorialSchemaHealth = {
   outboxRpc: true,
   migrationLedger: true,
   publicationTriggers: true,
+  staffEditorialReadPolicies: true,
   pendingPublicBuilds: 0,
   revisionHistory: true,
   workTranslations: true,
@@ -72,7 +73,7 @@ describe("editorial schema health", () => {
     expect(
       getMissingEditorialSchemaCapabilities({
         ...completeHealth,
-        version: "20260814_publication_outbox_and_schema_health",
+        version: "20260820_literary_work_cover_artworks",
       })
     ).toContain("актуальная версия схемы");
     expect(
@@ -88,9 +89,9 @@ describe("editorial schema health", () => {
       getMissingEditorialSchemaCapabilities({
         ...completeHealth,
         migrationLedger: false,
-        workCoverArtworks: false,
+        staffEditorialReadPolicies: false,
       })
-    ).toEqual(["журнал миграций", "редакционные обложки"]);
+    ).toEqual(["журнал миграций", "права чтения редакции"]);
   });
 
   it("does not report an unavailable health response as ready", () => {

@@ -75,7 +75,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(11);
+      expect(manifest.migrations).toHaveLength(12);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -88,6 +88,7 @@ describe("guarded production database reconciliation", () => {
         "20260814_publication_outbox_and_schema_health.sql",
         "20260820_homepage_book_month_editorial_choice.sql",
         "20260820_literary_work_cover_artworks.sql",
+        "20260822_staff_editorial_read_rls.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -99,6 +100,7 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");
       expect(verification).toContain("work_cover_artworks=");
+      expect(verification).toContain("staff_editorial_read_policies=");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
     }
@@ -451,7 +453,7 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "schema_health=20260820_literary_work_cover_artworks;outbox=true;outbox_rpc=true;publication_triggers=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=11;invalid_indexes=0"
+      "schema_health=20260822_staff_editorial_read_rls;outbox=true;outbox_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=12;invalid_indexes=0"
     );
     expect(workflowSource).toContain(
       '[[ "$restore_scope" == "public-application-schema" ]]'
