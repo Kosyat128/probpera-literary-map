@@ -30,6 +30,23 @@ const editorialTables = [
   "country_profile_overrides",
   "literary_work_cover_artworks",
 ];
+const adminOperationalTables = [
+  "admin_audit_log",
+  "article_revisions",
+  "book_edition_revisions",
+  "client_errors",
+  "country_profile_override_revisions",
+  "homepage_block_revisions",
+  "literary_work_revisions",
+  "page_revisions",
+  "public_build_outbox",
+  "site_chrome_revisions",
+  "staff_memberships",
+  "writer_profile_override_revisions",
+];
+const allowedAnonymousCommands = new Map([
+  ["client_errors", new Set(["insert"])],
+]);
 
 function orderedSqlSources() {
   return sqlDirectories.flatMap((directory) =>
@@ -94,12 +111,21 @@ function policyRoles(statement) {
     statement.match(
       /\bto\s+([\s\S]*?)(?=\busing\b|\bwith\s+check\b|;)/iu
     )?.[1] ?? ""
-  );
+  ).trim();
 }
 
 function targetsRole(statement, role) {
   return new RegExp(`(?:^|[\\s,])${role}(?:$|[\\s,])`, "iu").test(
-    policyRoles(statement).trim()
+    policyRoles(statement)
+  );
+}
+
+function targetsAnonymous(statement) {
+  const roles = policyRoles(statement);
+  return (
+    roles.length === 0 ||
+    targetsRole(statement, "public") ||
+    targetsRole(statement, "anon")
   );
 }
 
@@ -138,11 +164,58 @@ describe("editorial RLS contract", () => {
       (policy) =>
         editorialTables.includes(policy.table) &&
         ["all", "insert", "update", "delete"].includes(policy.command) &&
-        targetsRole(policy.statement, "anon")
+        targetsAnonymous(policy.statement)
     );
     expect(
       anonymousWrites.map(
         (policy) => `${policy.table}:${policy.name} (${policy.filename})`
+      )
+    ).toEqual([]);
+  });
+});
+
+describe("admin operational RLS contract", () => {
+  it("keeps RLS enabled on private operational tables", () => {
+    expect(adminOperationalTables).toHaveLength(12);
+    for (const table of adminOperationalTables) {
+      expect(rlsState.get(table), `${table} must finish with RLS enabled`).toBe(
+        true
+      );
+    }
+  });
+
+  it("keeps an authenticated read path for the administrative application", () => {
+    for (const table of adminOperationalTables) {
+      const authenticatedReads = policies.filter(
+        (policy) =>
+          policy.table === table &&
+          ["all", "select"].includes(policy.command) &&
+          targetsRole(policy.statement, "authenticated")
+      );
+      expect(
+        authenticatedReads,
+        `${table} needs an authenticated SELECT or ALL policy`
+      ).not.toHaveLength(0);
+    }
+  });
+
+  it("does not expose operational rows beyond explicitly allowed error intake", () => {
+    const unexpectedAnonymousPolicies = policies.filter((policy) => {
+      if (
+        !adminOperationalTables.includes(policy.table) ||
+        !targetsAnonymous(policy.statement)
+      ) {
+        return false;
+      }
+      return !allowedAnonymousCommands
+        .get(policy.table)
+        ?.has(policy.command);
+    });
+
+    expect(
+      unexpectedAnonymousPolicies.map(
+        (policy) =>
+          `${policy.table}:${policy.command}:${policy.name} (${policy.filename})`
       )
     ).toEqual([]);
   });
