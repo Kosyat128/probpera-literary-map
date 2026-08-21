@@ -5,6 +5,7 @@ import ActivityTracker from './community/ActivityTracker';
 import ClientDiagnostics from './community/ClientDiagnostics';
 import { AuthProvider } from './community/AuthContext';
 import AppErrorBoundary from './components/AppErrorBoundary';
+import BootstrapErrorBoundary from './components/BootstrapErrorBoundary';
 import { startYandexMetrika } from './analytics/yandexMetrika';
 import AnalyticsConsent from './analytics/AnalyticsConsent';
 import { useAnalyticsConsent } from './analytics/useAnalyticsConsent';
@@ -31,17 +32,19 @@ function ConsentAwareActivityTracker() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <InterfaceLanguageProvider>
-      <AuthProvider>
-        <CmsDirectEditBridge />
-        {!cmsEditMode && <ConsentAwareActivityTracker />}
-        {!cmsEditMode && <AnalyticsConsent />}
-        <ClientDiagnostics />
-        <ConnectivityStatus />
-        <AppErrorBoundary>
-          {cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
-        </AppErrorBoundary>
-      </AuthProvider>
-    </InterfaceLanguageProvider>
+    <BootstrapErrorBoundary>
+      <InterfaceLanguageProvider>
+        <AuthProvider>
+          <CmsDirectEditBridge />
+          {!cmsEditMode && <ConsentAwareActivityTracker />}
+          {!cmsEditMode && <AnalyticsConsent />}
+          <ClientDiagnostics />
+          <ConnectivityStatus />
+          <AppErrorBoundary>
+            {cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
+          </AppErrorBoundary>
+        </AuthProvider>
+      </InterfaceLanguageProvider>
+    </BootstrapErrorBoundary>
   </React.StrictMode>
 );
