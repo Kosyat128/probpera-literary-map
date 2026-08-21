@@ -35,20 +35,19 @@ jobs:
       - name: Apply guarded release configuration changes
         run: node scripts/patch-turnstile-release-config.mjs
 
-      - name: Commit the generated patch when needed
+      - name: Commit the generated non-workflow policy patch when needed
         shell: bash
         run: |
           git add \
-            .github/workflows/deploy-pages.yml \
             scripts/build-article-pages.mjs \
             scripts/cloudflare/configure-edge-security.mjs
           if git diff --cached --quiet; then
-            echo "Turnstile release configuration is already current."
+            echo "Turnstile public policy is already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore(auth): align Turnstile release configuration"
+          git commit -m "chore(auth): align Turnstile public CSP"
           git push origin HEAD:${{ github.head_ref }}
 
   verify:
