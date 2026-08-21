@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:6d38b728ff21930150397fe454cf8917c1771cf40302d31d4ad83e50b6f44c81`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:94bbea20de107acdc44a346fd5ac9c7a37410252804595b3ac13dd01bfdaf4ee`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1681; bio присутствует: 1681.
+- Карточек и русских bio проверено алгоритмом: 1678; bio присутствует: 1678.
 - Надёжных identity-match с локальным staging: 232.
-- Из них source-confirmed structured cross-check: 231 (13.7%).
-- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1165 (69.3% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 91.
-- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1632; совместимы при общей precision: 176; несовместимых строк после curated resolutions: 68. Из них 20 сначала требуют identity repair, а 30 — современные referenced-противоречия для проверки по авторитетному источнику.
-- Ручных source-resolution с сохранёнными доказательствами: 70 в 57 карточках.
+- Из них source-confirmed structured cross-check: 231 (13.8%).
+- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1164 (69.4% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 92.
+- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1633; совместимы при общей precision: 176; несовместимых строк после curated resolutions: 68. Из них 20 сначала требуют identity repair, а 30 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Ручных source-resolution с сохранёнными доказательствами: 71 в 58 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
-- Metadata gaps (это не доказанные ошибки): 247.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1661.
+- Metadata gaps (это не доказанные ошибки): 248.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1658.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 130
-- `critical-ranking`: 159
-- `identity-role`: 1630
-- `language`: 188
-- `life-dates`: 398
-- `movement-era`: 84
+- `awards`: 137
+- `critical-ranking`: 144
+- `identity-role`: 1628
+- `language`: 183
+- `life-dates`: 422
+- `movement-era`: 82
 - `national-cultural-affiliation`: 1062
 - `nobel`: 112
-- `places`: 23
-- `priority-claim`: 124
-- `reception-influence`: 38
-- `themes-style`: 323
-- `works`: 1175
+- `places`: 26
+- `priority-claim`: 125
+- `reception-influence`: 36
+- `themes-style`: 334
+- `works`: 1201
 
 ## High-confidence противоречия
 
@@ -118,6 +118,7 @@
 | `nigeria:christopher_okigbo` | `birthDate` | `1932-08-16` | `1930-08-16` | retain-current-card | Christopher Okigbo: https://www.poetryfoundation.org/poets/christopher-okigbo; Christopher Okigbo Papers — UNESCO Memory of the World: https://media.unesco.org/sites/default/files/webform/mow001/50africaokigbopapers.pdf |
 | `nigeria:helon_habila` | `birthDate` | `1967-11` | `1967-01-01` | corrected-card-reduced-precision | Helon Habila, Writers on Writing — Lancaster University Transcultural Writing Archive: https://www.lancaster.ac.uk/transculturalwriting-archive/radiophonics/contents/writersonwriting/helonhabila/index.html |
 | `nigeria:helon_habila` | `birthPlace` | `Калтунго, Нигерия` | `` | corrected-card | Helon Habila, Writers on Writing — Lancaster University Transcultural Writing Archive: https://www.lancaster.ac.uk/transculturalwriting-archive/radiophonics/contents/writersonwriting/helonhabila/index.html |
+| `republic_of_congo:sony_labou_tansi` | `birthDate` | `1947-06-05` | `1947-07-05` | corrected-card | Sony Labou Tansi — Bibliothèque nationale de France: https://catalogue.bnf.fr/ark:/12148/cb11910402v; Sony Labou Tansi — Les Francophonies: https://www.lesfrancophonies.fr/SONY-LABOU-TANSI |
 | `samoa:albert_wendt` | `birthDate` | `1939-10-27` | `1939-10-27` | corrected-card | Albert Wendt — Academy of New Zealand Literature: https://www.anzliterature.com/member/albert-wendt/; Albert Wendt — Wikidata Q1235864: https://www.wikidata.org/wiki/Q1235864 |
 | `senegal:birago_diop` | `birthDate` | `1906-12-11` | `1906-12-12` | retain-current-card | Birago Diop — Bibliothèque nationale de France authority record: https://catalogue.bnf.fr/ark:/12148/cb11900243p |
 | `south_sudan:taban_lo_liyong` | `birthDate` | `1939` | `1938-01-01` | retain-current-card | Табан Ло Лийонг — Большая российская энциклопедия: https://old.bigenc.ru/literature/text/2173989 |
@@ -129,7 +130,7 @@
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1165. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1164. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -465,6 +466,7 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `luxembourg:jean_portante` | Жан Портанте | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Mrs Haroy ou la mémoire de la baleine"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `madagascar:jacques_rabemananjara` | Жак Рабеманандзара | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Antsa"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `madagascar:jacques_rabemananjara` | Жак Рабеманандзара | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Les dieux malgaches"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `qatar:abdulaziz_al_mahmoud` | Абдулазиз Аль-Махмуд | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Al Qursan"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `south_korea:il_yeon` | Иль Ён | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Самгук Юса"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `spain:miguel_de_cervantes` | Мигель де Сервантес | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Дон Кихот"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `ukraine:ivan_kotliarevsky` | Иван Котляревский | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Энеиды"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |

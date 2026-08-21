@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-20T14:22:05.312Z",
+  "generatedAt": "2026-08-21T02:18:35.889Z",
   "policyDocument": "docs/WRITER_BIOGRAPHY_SOURCES_POLICY_RU.md",
   "proseGeneration": "disabled",
   "progress": {
-    "total": 1684,
+    "total": 1678,
     "ready": 45,
-    "remaining": 1639,
+    "remaining": 1633,
     "researchDrafts": 20,
     "validResearchDrafts": 20,
     "awaitingIndependentReview": 0,
     "approvedForPromotion": 20,
-    "remainingWithoutResearchDraft": 1639,
+    "remainingWithoutResearchDraft": 1633,
     "workflowStates": {
-      "source-research": 1639,
+      "source-research": 1633,
       "rights-review": 0,
       "editorial-rewrite": 0,
       "fact-check": 0,
@@ -54937,7 +54937,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -54963,11 +54963,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 60,
-        "sentenceCount": 1,
+        "textLength": 151,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55090,7 +55090,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55116,11 +55116,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 160,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55167,11 +55167,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 147,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55192,7 +55192,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55218,11 +55218,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 177,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55294,7 +55294,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55320,11 +55320,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 57,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55402,7 +55402,7 @@
       "countryId": "norway",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55428,11 +55428,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 199,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55530,11 +55530,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 186,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55555,7 +55555,7 @@
       "countryId": "oman",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55581,11 +55581,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 75,
-        "sentenceCount": 1,
+        "textLength": 147,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55606,7 +55606,7 @@
       "countryId": "oman",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55632,11 +55632,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 55,
-        "sentenceCount": 1,
+        "textLength": 148,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55657,7 +55657,7 @@
       "countryId": "oman",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55683,11 +55683,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 74,
-        "sentenceCount": 1,
+        "textLength": 201,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55734,62 +55734,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 159,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "oman:zahir_al_ghazali",
-      "writerId": "zahir_al_ghazali",
-      "name": "Захир аль-Газали",
-      "countryId": "oman",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 57,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55810,7 +55759,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55836,11 +55785,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
+        "textLength": 146,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55861,7 +55810,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55887,7 +55836,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 142,
+        "textLength": 206,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -55912,7 +55861,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55938,11 +55887,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 77,
-        "sentenceCount": 1,
+        "textLength": 168,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -55963,7 +55912,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -55989,11 +55938,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 110,
+        "textLength": 187,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56014,7 +55963,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56040,11 +55989,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 184,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56065,7 +56014,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56091,11 +56040,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56116,7 +56065,7 @@
       "countryId": "pakistan",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56142,11 +56091,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 211,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56193,8 +56142,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 232,
-        "sentenceCount": 3,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -56218,7 +56167,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56244,11 +56193,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56269,7 +56218,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56295,11 +56244,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56320,7 +56269,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56346,11 +56295,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 96,
-        "sentenceCount": 1,
+        "textLength": 199,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56371,7 +56320,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56397,11 +56346,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 224,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56422,7 +56371,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56448,11 +56397,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 246,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56473,7 +56422,7 @@
       "countryId": "palestine",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56499,11 +56448,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 304,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56524,7 +56473,7 @@
       "countryId": "panama",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56550,7 +56499,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 203,
+        "textLength": 213,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -56571,11 +56520,11 @@
     {
       "key": "panama:rogelio_sinan",
       "writerId": "rogelio_sinan",
-      "name": "Рохелио Синиан",
+      "name": "Рохелио Синан",
       "countryId": "panama",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56601,62 +56550,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 157,
+        "textLength": 188,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "panama:demetrio_kalleyas",
-      "writerId": "demetrio_kalleyas",
-      "name": "Деметрио Кальехас",
-      "countryId": "panama",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 82,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -56677,7 +56575,7 @@
       "countryId": "panama",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -56703,7 +56601,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 141,
+        "textLength": 190,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -56754,58 +56652,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 196,
-        "sentenceCount": 2,
-        "flags": {
-          "missing": false,
-          "short": false,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "papua_new_guinea:siri_gising",
-      "writerId": "siri_gising",
-      "name": "Сири Гисинг",
-      "countryId": "papua_new_guinea",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 135,
+        "textLength": 230,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -56856,8 +56703,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 192,
-        "sentenceCount": 3,
+        "textLength": 252,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -56907,7 +56754,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 173,
+        "textLength": 222,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -56958,8 +56805,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 182,
-        "sentenceCount": 3,
+        "textLength": 190,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -57009,8 +56856,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 229,
-        "sentenceCount": 3,
+        "textLength": 205,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -57060,7 +56907,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 183,
+        "textLength": 298,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57111,7 +56958,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 164,
+        "textLength": 191,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57136,7 +56983,7 @@
       "countryId": "paraguay",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57162,8 +57009,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 141,
-        "sentenceCount": 2,
+        "textLength": 199,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -57213,11 +57060,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
+        "textLength": 180,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -57238,7 +57085,7 @@
       "countryId": "paraguay",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57264,8 +57111,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 143,
-        "sentenceCount": 2,
+        "textLength": 261,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -57285,7 +57132,7 @@
     {
       "key": "paraguay:liza_haedo",
       "writerId": "liza_haedo",
-      "name": "Лис Хаун",
+      "name": "Лиз Мария Аэдо",
       "countryId": "paraguay",
       "workflow": {
         "state": "source-research",
@@ -57315,7 +57162,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 186,
+        "textLength": 217,
         "sentenceCount": 3,
         "flags": {
           "missing": false,
@@ -57366,8 +57213,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 185,
-        "sentenceCount": 3,
+        "textLength": 274,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -57387,7 +57234,7 @@
     {
       "key": "paraguay:rubén_bareiro_saguier",
       "writerId": "rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "name": "Рубен Барейро Сагьер",
       "countryId": "paraguay",
       "workflow": {
         "state": "source-research",
@@ -57417,8 +57264,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 196,
-        "sentenceCount": 3,
+        "textLength": 237,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -57442,7 +57289,7 @@
       "countryId": "peru",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57468,7 +57315,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 191,
+        "textLength": 285,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57493,7 +57340,7 @@
       "countryId": "peru",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -57519,8 +57366,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 164,
-        "sentenceCount": 2,
+        "textLength": 263,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -57570,11 +57417,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 137,
-        "sentenceCount": 1,
+        "textLength": 263,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -57621,7 +57468,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 196,
+        "textLength": 289,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57672,7 +57519,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 201,
+        "textLength": 238,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57723,7 +57570,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 157,
+        "textLength": 246,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57774,7 +57621,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 189,
+        "textLength": 179,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57825,7 +57672,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 172,
+        "textLength": 264,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57876,7 +57723,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 189,
+        "textLength": 262,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -57927,7 +57774,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 193,
+        "textLength": 249,
         "sentenceCount": 3,
         "flags": {
           "missing": false,
@@ -57978,8 +57825,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 175,
-        "sentenceCount": 2,
+        "textLength": 212,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -58029,8 +57876,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 128,
-        "sentenceCount": 2,
+        "textLength": 206,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -58080,8 +57927,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 131,
-        "sentenceCount": 2,
+        "textLength": 190,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -58131,8 +57978,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 186,
-        "sentenceCount": 2,
+        "textLength": 226,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -58156,7 +58003,7 @@
       "countryId": "peru",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58182,11 +58029,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 116,
-        "sentenceCount": 2,
+        "textLength": 270,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58207,7 +58054,7 @@
       "countryId": "peru",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58233,7 +58080,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 183,
+        "textLength": 235,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -58284,8 +58131,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 177,
-        "sentenceCount": 2,
+        "textLength": 222,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -58335,7 +58182,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 177,
+        "textLength": 205,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -58386,11 +58233,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 183,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58411,7 +58258,7 @@
       "countryId": "philippines",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58437,11 +58284,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 108,
+        "textLength": 227,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58462,7 +58309,7 @@
       "countryId": "philippines",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58488,11 +58335,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 82,
-        "sentenceCount": 1,
+        "textLength": 244,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58513,7 +58360,7 @@
       "countryId": "philippines",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58539,11 +58386,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 241,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58560,11 +58407,11 @@
     {
       "key": "philippines:edith_tiempo",
       "writerId": "edith_tiempo",
-      "name": "Эдит Тиампо",
+      "name": "Эдит Тьемпо",
       "countryId": "philippines",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58590,11 +58437,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 257,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58641,11 +58488,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 99,
-        "sentenceCount": 1,
+        "textLength": 170,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58666,7 +58513,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58692,11 +58539,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 92,
-        "sentenceCount": 1,
+        "textLength": 165,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58717,7 +58564,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58743,11 +58590,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 42,
-        "sentenceCount": 1,
+        "textLength": 131,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58768,7 +58615,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58794,11 +58641,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 39,
-        "sentenceCount": 1,
+        "textLength": 168,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58819,7 +58666,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58845,11 +58692,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 27,
-        "sentenceCount": 1,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58870,7 +58717,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -58896,11 +58743,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 56,
-        "sentenceCount": 1,
+        "textLength": 208,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58947,11 +58794,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 66,
-        "sentenceCount": 1,
+        "textLength": 176,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -58998,11 +58845,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 70,
-        "sentenceCount": 1,
+        "textLength": 215,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59023,7 +58870,7 @@
       "countryId": "poland",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59055,7 +58902,7 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 273,
+        "textLength": 175,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -59106,8 +58953,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 162,
-        "sentenceCount": 2,
+        "textLength": 206,
+        "sentenceCount": 4,
         "flags": {
           "missing": false,
           "short": false,
@@ -59131,7 +58978,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59157,11 +59004,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 147,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59182,7 +59029,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59208,11 +59055,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 268,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59259,11 +59106,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 120,
-        "sentenceCount": 1,
+        "textLength": 210,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59310,11 +59157,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 209,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59361,7 +59208,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 193,
+        "textLength": 227,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -59412,11 +59259,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59463,7 +59310,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 170,
+        "textLength": 266,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -59514,11 +59361,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 244,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59565,7 +59412,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 185,
+        "textLength": 248,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -59616,11 +59463,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59641,7 +59488,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59667,11 +59514,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 216,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59688,7 +59535,7 @@
     {
       "key": "portugal:walter_hugo_mae",
       "writerId": "walter_hugo_mae",
-      "name": "Валтер Угу Маи",
+      "name": "Валтер Угу Маэ",
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
@@ -59717,9 +59564,9 @@
       },
       "sourceCandidates": [
         {
-          "title": "Автобиография Валтера Угу Маи",
-          "provider": "Официальный сайт писателя",
-          "url": "https://www.valterhugomae.com/"
+          "title": "Valter Hugo Mãe — лауреат Премии Жозе Сарамаго 2007 года",
+          "provider": "Prémio Literário José Saramago",
+          "url": "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae"
         },
         {
           "title": "Valter Hugo Mãe — биография",
@@ -59729,8 +59576,8 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 198,
-        "sentenceCount": 2,
+        "textLength": 308,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -59754,7 +59601,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59780,8 +59627,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 180,
-        "sentenceCount": 2,
+        "textLength": 255,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -59831,7 +59678,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 134,
+        "textLength": 255,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -59856,7 +59703,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59882,11 +59729,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 132,
-        "sentenceCount": 1,
+        "textLength": 247,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59907,7 +59754,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59933,11 +59780,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 95,
-        "sentenceCount": 1,
+        "textLength": 367,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -59958,7 +59805,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -59984,11 +59831,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 101,
-        "sentenceCount": 1,
+        "textLength": 205,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60009,7 +59856,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60035,62 +59882,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 103,
-        "sentenceCount": 1,
+        "textLength": 202,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "portugal:augusto_abreu",
-      "writerId": "augusto_abreu",
-      "name": "Аугушту Абреу",
-      "countryId": "portugal",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 90,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60111,7 +59907,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60137,11 +59933,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 110,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60162,7 +59958,7 @@
       "countryId": "portugal",
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60194,11 +59990,11 @@
       ],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 152,
-        "sentenceCount": 1,
+        "textLength": 223,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60245,7 +60041,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 198,
+        "textLength": 264,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -60296,8 +60092,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 210,
-        "sentenceCount": 3,
+        "textLength": 182,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -60321,7 +60117,7 @@
       "countryId": "puerto_rico",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60347,11 +60143,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 104,
+        "textLength": 284,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60372,7 +60168,7 @@
       "countryId": "puerto_rico",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60398,8 +60194,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 190,
-        "sentenceCount": 3,
+        "textLength": 259,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
           "short": false,
@@ -60449,8 +60245,8 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 187,
-        "sentenceCount": 2,
+        "textLength": 259,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
           "short": false,
@@ -60470,7 +60266,7 @@
     {
       "key": "qatar:abdulaziz_al_mahmoud",
       "writerId": "abdulaziz_al_mahmoud",
-      "name": "Абдель Азиз аль-Махмуд",
+      "name": "Абдулазиз Аль-Махмуд",
       "countryId": "qatar",
       "workflow": {
         "state": "source-research",
@@ -60500,11 +60296,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 228,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60521,7 +60317,7 @@
     {
       "key": "qatar:kulthum_jaber",
       "writerId": "kulthum_jaber",
-      "name": "Кулсум Джабер",
+      "name": "Кульсум Джабр аль-Кувари",
       "countryId": "qatar",
       "workflow": {
         "state": "source-research",
@@ -60551,113 +60347,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 64,
-        "sentenceCount": 1,
+        "textLength": 269,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "qatar:ahmad_al_mahmoud",
-      "writerId": "ahmad_al_mahmoud",
-      "name": "Ахмад аль-Махмуд",
-      "countryId": "qatar",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 44,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
-          "overlyLong": false,
-          "generic": false,
-          "duplicate": false,
-          "unsourced": true,
-          "rightsUnproven": true,
-          "licensedMetadataMissing": false,
-          "humanTranslationRightsMissing": false
-        },
-        "publicationIssues": [
-          "нет биографии ru"
-        ]
-      }
-    },
-    {
-      "key": "qatar:jamal_fayiz_al_maliki",
-      "writerId": "jamal_fayiz_al_maliki",
-      "name": "Джамаль Файз аль-Малики",
-      "countryId": "qatar",
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "sourceCandidates": [],
-      "audit": {
-        "legacyTextPresent": true,
-        "textLength": 63,
-        "sentenceCount": 1,
-        "flags": {
-          "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60704,11 +60398,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 56,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60729,7 +60423,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60755,7 +60449,7 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 182,
+        "textLength": 207,
         "sentenceCount": 2,
         "flags": {
           "missing": false,
@@ -60780,7 +60474,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60806,11 +60500,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60831,7 +60525,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60857,11 +60551,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 102,
-        "sentenceCount": 1,
+        "textLength": 314,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60882,7 +60576,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60908,11 +60602,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 318,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60933,7 +60627,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -60959,11 +60653,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -60984,7 +60678,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -61010,11 +60704,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 290,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -61035,7 +60729,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -61061,11 +60755,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 34,
-        "sentenceCount": 1,
+        "textLength": 260,
+        "sentenceCount": 3,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,
@@ -61086,7 +60780,7 @@
       "countryId": "republic_of_congo",
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -61112,11 +60806,11 @@
       "sourceCandidates": [],
       "audit": {
         "legacyTextPresent": true,
-        "textLength": 36,
-        "sentenceCount": 1,
+        "textLength": 232,
+        "sentenceCount": 2,
         "flags": {
           "missing": false,
-          "short": true,
+          "short": false,
           "overlyLong": false,
           "generic": false,
           "duplicate": false,

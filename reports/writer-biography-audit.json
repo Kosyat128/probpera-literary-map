@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-08-20T14:22:05.312Z",
+  "generatedAt": "2026-08-21T02:18:35.889Z",
   "summary": {
-    "writerRecords": 1684,
+    "writerRecords": 1678,
     "russianReady": 45,
-    "russianWithheld": 1639,
+    "russianWithheld": 1633,
     "englishReady": 20,
-    "englishWithheld": 1664,
-    "legacyRussianTextPresent": 1684,
+    "englishWithheld": 1658,
+    "legacyRussianTextPresent": 1678,
     "structuredRussianBiographyPresent": 45,
     "missingBiography": 0,
-    "shortBiography": 696,
+    "shortBiography": 627,
     "overlyLongBiography": 0,
     "genericBiography": 0,
     "duplicateBiographyRecords": 0,
     "duplicateBiographyGroups": 0,
-    "unsourcedBiography": 1639,
-    "rightsUnproven": 1639,
+    "unsourcedBiography": 1633,
+    "rightsUnproven": 1633,
     "licensedCopyMissingMetadata": 0,
     "humanTranslationRightsMissing": 0,
     "researchDrafts": 20,
@@ -25,7 +25,7 @@
     "researchDraftsApprovedForPromotion": 20,
     "duplicateResearchDraftKeys": 0,
     "orphanResearchDrafts": 0,
-    "withheldWithoutResearchDraft": 1639,
+    "withheldWithoutResearchDraft": 1633,
     "stagingRecords": 2356,
     "stagingRecordsWithLegacyProse": 2356
   },
@@ -68648,8 +68648,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 60,
-        "sentenceCount": 1,
+        "textLength": 151,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -68667,7 +68667,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -68691,7 +68691,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -68834,8 +68834,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 160,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -68853,7 +68853,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -68877,7 +68877,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -68896,8 +68896,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 76,
-        "sentenceCount": 1,
+        "textLength": 147,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -68915,7 +68915,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -68958,8 +68958,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 177,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -68977,7 +68977,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -69001,7 +69001,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -69082,8 +69082,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 57,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -69101,7 +69101,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -69125,7 +69125,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -69212,8 +69212,8 @@
       "countryName": "Норвегия",
       "russian": {
         "ready": false,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 199,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -69231,7 +69231,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -69255,7 +69255,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -69336,441 +69336,7 @@
       "countryName": "Оман",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "abdullah_bin_mohammed_al_taie",
-      "name": "Абдулла бин Мухаммад ат-Таи",
-      "countryId": "oman",
-      "countryName": "Оман",
-      "russian": {
-        "ready": false,
-        "textLength": 75,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "saif_al_rahbi",
-      "name": "Саиф ар-Рахби",
-      "countryId": "oman",
-      "countryName": "Оман",
-      "russian": {
-        "ready": false,
-        "textLength": 55,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "jokha_alharthi",
-      "name": "Джоха аль-Харси",
-      "countryId": "oman",
-      "countryName": "Оман",
-      "russian": {
-        "ready": false,
-        "textLength": 74,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "abdullah_habib",
-      "name": "Абдулла Хабиб",
-      "countryId": "oman",
-      "countryName": "Оман",
-      "russian": {
-        "ready": false,
-        "textLength": 59,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "zahir_al_ghazali",
-      "name": "Захир аль-Газали",
-      "countryId": "oman",
-      "countryName": "Оман",
-      "russian": {
-        "ready": false,
-        "textLength": 57,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "muhammad_iqbal",
-      "name": "Мухаммад Икбал",
-      "countryId": "pakistan",
-      "countryName": "Пакистан",
-      "russian": {
-        "ready": false,
-        "textLength": 104,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "saadat_hasan_manto",
-      "name": "Саадат Хасан Манто",
-      "countryId": "pakistan",
-      "countryName": "Пакистан",
-      "russian": {
-        "ready": false,
-        "textLength": 142,
+        "textLength": 186,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -69826,75 +69392,13 @@
       "sourceCandidates": []
     },
     {
-      "id": "faiz_ahmad_faiz",
-      "name": "Фаиз Ахмад Фаиз",
-      "countryId": "pakistan",
-      "countryName": "Пакистан",
+      "id": "abdullah_bin_mohammed_al_taie",
+      "name": "Абдулла бин Мухаммад ат-Таи",
+      "countryId": "oman",
+      "countryName": "Оман",
       "russian": {
         "ready": false,
-        "textLength": 77,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "intizar_husain",
-      "name": "Интизар Хусейн",
-      "countryId": "pakistan",
-      "countryName": "Пакистан",
-      "russian": {
-        "ready": false,
-        "textLength": 110,
+        "textLength": 147,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -69913,7 +69417,193 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "saif_al_rahbi",
+      "name": "Саиф ар-Рахби",
+      "countryId": "oman",
+      "countryName": "Оман",
+      "russian": {
+        "ready": false,
+        "textLength": 148,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "jokha_alharthi",
+      "name": "Джоха аль-Харси",
+      "countryId": "oman",
+      "countryName": "Оман",
+      "russian": {
+        "ready": false,
+        "textLength": 201,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "abdullah_habib",
+      "name": "Абдулла Хабиб",
+      "countryId": "oman",
+      "countryName": "Оман",
+      "russian": {
+        "ready": false,
+        "textLength": 159,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -69938,6 +69628,254 @@
       "workflow": {
         "state": "source-research",
         "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "muhammad_iqbal",
+      "name": "Мухаммад Икбал",
+      "countryId": "pakistan",
+      "countryName": "Пакистан",
+      "russian": {
+        "ready": false,
+        "textLength": 146,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "saadat_hasan_manto",
+      "name": "Саадат Хасан Манто",
+      "countryId": "pakistan",
+      "countryName": "Пакистан",
+      "russian": {
+        "ready": false,
+        "textLength": 206,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "faiz_ahmad_faiz",
+      "name": "Фаиз Ахмад Фаиз",
+      "countryId": "pakistan",
+      "countryName": "Пакистан",
+      "russian": {
+        "ready": false,
+        "textLength": 168,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "intizar_husain",
+      "name": "Интизар Хусейн",
+      "countryId": "pakistan",
+      "countryName": "Пакистан",
+      "russian": {
+        "ready": false,
+        "textLength": 187,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -69956,8 +69894,8 @@
       "countryName": "Пакистан",
       "russian": {
         "ready": false,
-        "textLength": 85,
-        "sentenceCount": 1,
+        "textLength": 184,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -69975,7 +69913,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -69999,7 +69937,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70018,8 +69956,8 @@
       "countryName": "Пакистан",
       "russian": {
         "ready": false,
-        "textLength": 84,
-        "sentenceCount": 1,
+        "textLength": 192,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70037,7 +69975,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70061,7 +69999,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70080,8 +70018,8 @@
       "countryName": "Пакистан",
       "russian": {
         "ready": false,
-        "textLength": 94,
-        "sentenceCount": 1,
+        "textLength": 211,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70099,7 +70037,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70123,7 +70061,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70142,8 +70080,8 @@
       "countryName": "Палау",
       "russian": {
         "ready": false,
-        "textLength": 232,
-        "sentenceCount": 3,
+        "textLength": 182,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70204,8 +70142,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70223,7 +70161,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70247,7 +70185,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70266,8 +70204,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 93,
-        "sentenceCount": 1,
+        "textLength": 185,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70285,7 +70223,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70309,7 +70247,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70328,8 +70266,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 96,
-        "sentenceCount": 1,
+        "textLength": 199,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70347,7 +70285,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70371,7 +70309,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70390,8 +70328,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 83,
-        "sentenceCount": 1,
+        "textLength": 224,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70409,7 +70347,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70433,7 +70371,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70452,8 +70390,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 48,
-        "sentenceCount": 1,
+        "textLength": 246,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70471,7 +70409,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70495,7 +70433,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70514,8 +70452,8 @@
       "countryName": "Палестина",
       "russian": {
         "ready": false,
-        "textLength": 59,
-        "sentenceCount": 1,
+        "textLength": 304,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -70533,7 +70471,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -70557,7 +70495,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70576,7 +70514,7 @@
       "countryName": "Панама",
       "russian": {
         "ready": false,
-        "textLength": 203,
+        "textLength": 213,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -70619,7 +70557,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70633,12 +70571,12 @@
     },
     {
       "id": "rogelio_sinan",
-      "name": "Рохелио Синиан",
+      "name": "Рохелио Синан",
       "countryId": "panama",
       "countryName": "Панама",
       "russian": {
         "ready": false,
-        "textLength": 157,
+        "textLength": 188,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -70681,69 +70619,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "demetrio_kalleyas",
-      "name": "Деметрио Кальехас",
-      "countryId": "panama",
-      "countryName": "Панама",
-      "russian": {
-        "ready": false,
-        "textLength": 82,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70762,7 +70638,7 @@
       "countryName": "Панама",
       "russian": {
         "ready": false,
-        "textLength": 141,
+        "textLength": 190,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -70805,7 +70681,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -70824,69 +70700,7 @@
       "countryName": "Папуа — Новая Гвинея",
       "russian": {
         "ready": false,
-        "textLength": 196,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": false,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "siri_gising",
-      "name": "Сири Гисинг",
-      "countryId": "papua_new_guinea",
-      "countryName": "Папуа — Новая Гвинея",
-      "russian": {
-        "ready": false,
-        "textLength": 135,
+        "textLength": 230,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -70948,8 +70762,8 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 192,
-        "sentenceCount": 3,
+        "textLength": 252,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71010,7 +70824,7 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 173,
+        "textLength": 222,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71072,8 +70886,8 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 182,
-        "sentenceCount": 3,
+        "textLength": 190,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71134,8 +70948,8 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 229,
-        "sentenceCount": 3,
+        "textLength": 205,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71196,7 +71010,7 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 183,
+        "textLength": 298,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71258,7 +71072,7 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 164,
+        "textLength": 191,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71320,8 +71134,132 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 141,
+        "textLength": 199,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "lisandro_diaz_leon",
+      "name": "Лисандро Диас Леон",
+      "countryId": "paraguay",
+      "countryName": "Парагвай",
+      "russian": {
+        "ready": false,
+        "textLength": 180,
         "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "mario_ruben_alvarez",
+      "name": "Марио Рубен Альварес",
+      "countryId": "paraguay",
+      "countryName": "Парагвай",
+      "russian": {
+        "ready": false,
+        "textLength": 261,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71376,137 +71314,13 @@
       "sourceCandidates": []
     },
     {
-      "id": "lisandro_diaz_leon",
-      "name": "Лисандро Диас Леон",
-      "countryId": "paraguay",
-      "countryName": "Парагвай",
-      "russian": {
-        "ready": false,
-        "textLength": 103,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "mario_ruben_alvarez",
-      "name": "Марио Рубен Альварес",
-      "countryId": "paraguay",
-      "countryName": "Парагвай",
-      "russian": {
-        "ready": false,
-        "textLength": 143,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": false,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
       "id": "liza_haedo",
-      "name": "Лис Хаун",
+      "name": "Лиз Мария Аэдо",
       "countryId": "paraguay",
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 186,
+        "textLength": 217,
         "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71568,8 +71382,8 @@
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 185,
-        "sentenceCount": 3,
+        "textLength": 274,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71625,13 +71439,13 @@
     },
     {
       "id": "rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "name": "Рубен Барейро Сагьер",
       "countryId": "paraguay",
       "countryName": "Парагвай",
       "russian": {
         "ready": false,
-        "textLength": 196,
-        "sentenceCount": 3,
+        "textLength": 237,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71692,7 +71506,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 191,
+        "textLength": 285,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71735,7 +71549,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -71754,8 +71568,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 164,
-        "sentenceCount": 2,
+        "textLength": 263,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71797,7 +71611,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -71816,8 +71630,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 137,
-        "sentenceCount": 1,
+        "textLength": 263,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -71835,7 +71649,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -71878,7 +71692,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 196,
+        "textLength": 289,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -71940,7 +71754,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 201,
+        "textLength": 238,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72002,7 +71816,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 157,
+        "textLength": 246,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72064,7 +71878,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 189,
+        "textLength": 179,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72126,7 +71940,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 172,
+        "textLength": 264,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72188,7 +72002,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 189,
+        "textLength": 262,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72250,7 +72064,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 193,
+        "textLength": 249,
         "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72312,8 +72126,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 175,
-        "sentenceCount": 2,
+        "textLength": 212,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72374,8 +72188,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 128,
-        "sentenceCount": 2,
+        "textLength": 206,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72436,8 +72250,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 131,
-        "sentenceCount": 2,
+        "textLength": 190,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72498,8 +72312,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 186,
-        "sentenceCount": 2,
+        "textLength": 226,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72560,8 +72374,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 116,
-        "sentenceCount": 2,
+        "textLength": 270,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72579,7 +72393,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -72603,7 +72417,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -72622,7 +72436,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 183,
+        "textLength": 235,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72665,7 +72479,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -72684,8 +72498,8 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 177,
-        "sentenceCount": 2,
+        "textLength": 222,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -72746,7 +72560,7 @@
       "countryName": "Перу",
       "russian": {
         "ready": false,
-        "textLength": 177,
+        "textLength": 205,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -72808,813 +72622,7 @@
       "countryName": "Филиппины",
       "russian": {
         "ready": false,
-        "textLength": 95,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "jose_rizal",
-      "name": "Хосе Рисаль",
-      "countryId": "philippines",
-      "countryName": "Филиппины",
-      "russian": {
-        "ready": false,
-        "textLength": 108,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "nick_joaquin",
-      "name": "Ник Хоакин",
-      "countryId": "philippines",
-      "countryName": "Филиппины",
-      "russian": {
-        "ready": false,
-        "textLength": 82,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "f_sionil_jose",
-      "name": "Ф. Сионил Хосе",
-      "countryId": "philippines",
-      "countryName": "Филиппины",
-      "russian": {
-        "ready": false,
-        "textLength": 72,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "edith_tiempo",
-      "name": "Эдит Тиампо",
-      "countryId": "philippines",
-      "countryName": "Филиппины",
-      "russian": {
-        "ready": false,
-        "textLength": 94,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "miguel_syjuco",
-      "name": "Мигель Сихуко",
-      "countryId": "philippines",
-      "countryName": "Филиппины",
-      "russian": {
-        "ready": false,
-        "textLength": 99,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "jan_kochanowski",
-      "name": "Ян Кохановский",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 92,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "adam_mickiewicz",
-      "name": "Адам Мицкевич",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 42,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "juliusz_slowacki",
-      "name": "Юлиуш Словацкий",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 39,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "boleslaw_prus",
-      "name": "Болеслав Прус",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 27,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "stanislaw_lem",
-      "name": "Станислав Лем",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 56,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "czeslaw_milosz",
-      "name": "Чеслав Милош",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 66,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P0",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "wislawa_szymborska",
-      "name": "Вислава Шимборская",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 70,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P0",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "joseph_conrad",
-      "name": "Джозеф Конрад",
-      "countryId": "poland",
-      "countryName": "Польша",
-      "russian": {
-        "ready": false,
-        "textLength": 273,
+        "textLength": 183,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -73667,6 +72675,812 @@
         },
         "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
       },
+      "sourceCandidates": []
+    },
+    {
+      "id": "jose_rizal",
+      "name": "Хосе Рисаль",
+      "countryId": "philippines",
+      "countryName": "Филиппины",
+      "russian": {
+        "ready": false,
+        "textLength": 227,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "nick_joaquin",
+      "name": "Ник Хоакин",
+      "countryId": "philippines",
+      "countryName": "Филиппины",
+      "russian": {
+        "ready": false,
+        "textLength": 244,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "f_sionil_jose",
+      "name": "Ф. Сионил Хосе",
+      "countryId": "philippines",
+      "countryName": "Филиппины",
+      "russian": {
+        "ready": false,
+        "textLength": 241,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "edith_tiempo",
+      "name": "Эдит Тьемпо",
+      "countryId": "philippines",
+      "countryName": "Филиппины",
+      "russian": {
+        "ready": false,
+        "textLength": 257,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "miguel_syjuco",
+      "name": "Мигель Сихуко",
+      "countryId": "philippines",
+      "countryName": "Филиппины",
+      "russian": {
+        "ready": false,
+        "textLength": 170,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "jan_kochanowski",
+      "name": "Ян Кохановский",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 165,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "adam_mickiewicz",
+      "name": "Адам Мицкевич",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 131,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "juliusz_slowacki",
+      "name": "Юлиуш Словацкий",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 168,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "boleslaw_prus",
+      "name": "Болеслав Прус",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 182,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "stanislaw_lem",
+      "name": "Станислав Лем",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 208,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "czeslaw_milosz",
+      "name": "Чеслав Милош",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 176,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P0",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "wislawa_szymborska",
+      "name": "Вислава Шимборская",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 215,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P0",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "joseph_conrad",
+      "name": "Джозеф Конрад",
+      "countryId": "poland",
+      "countryName": "Польша",
+      "russian": {
+        "ready": false,
+        "textLength": 175,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
       "sourceCandidates": [
         {
           "title": "Joseph Conrad — biographical record",
@@ -73682,8 +73496,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 162,
-        "sentenceCount": 2,
+        "textLength": 206,
+        "sentenceCount": 4,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -73744,8 +73558,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 147,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -73763,7 +73577,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -73787,7 +73601,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -73806,8 +73620,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 91,
-        "sentenceCount": 1,
+        "textLength": 268,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -73825,7 +73639,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -73849,7 +73663,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -73868,8 +73682,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 120,
-        "sentenceCount": 1,
+        "textLength": 210,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -73887,7 +73701,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -73930,8 +73744,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 88,
-        "sentenceCount": 1,
+        "textLength": 209,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -73949,7 +73763,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -73992,7 +73806,7 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 193,
+        "textLength": 227,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -74054,8 +73868,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 108,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74073,7 +73887,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -74116,7 +73930,7 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 170,
+        "textLength": 266,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -74178,8 +73992,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 97,
-        "sentenceCount": 1,
+        "textLength": 244,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74197,7 +74011,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -74240,7 +74054,7 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 185,
+        "textLength": 248,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -74302,8 +74116,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 236,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74321,7 +74135,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -74364,8 +74178,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 115,
-        "sentenceCount": 1,
+        "textLength": 216,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74383,7 +74197,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -74407,7 +74221,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -74421,13 +74235,13 @@
     },
     {
       "id": "walter_hugo_mae",
-      "name": "Валтер Угу Маи",
+      "name": "Валтер Угу Маэ",
       "countryId": "portugal",
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 198,
-        "sentenceCount": 2,
+        "textLength": 308,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74481,9 +74295,9 @@
       },
       "sourceCandidates": [
         {
-          "title": "Автобиография Валтера Угу Маи",
-          "provider": "Официальный сайт писателя",
-          "url": "https://www.valterhugomae.com/"
+          "title": "Valter Hugo Mãe — лауреат Премии Жозе Сарамаго 2007 года",
+          "provider": "Prémio Literário José Saramago",
+          "url": "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae"
         },
         {
           "title": "Valter Hugo Mãe — биография",
@@ -74499,8 +74313,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 180,
-        "sentenceCount": 2,
+        "textLength": 255,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74542,7 +74356,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P1",
+        "priority": "P2",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -74561,7 +74375,7 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 134,
+        "textLength": 255,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -74623,8 +74437,8 @@
       "countryName": "Португалия",
       "russian": {
         "ready": false,
-        "textLength": 132,
-        "sentenceCount": 1,
+        "textLength": 247,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -74642,379 +74456,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "manuel_de_aranha",
-      "name": "Мануэл де Арриага",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 95,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "branquinho_da_fonseca",
-      "name": "Бранкинью да Фонсека",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 101,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "herberto_helder",
-      "name": "Эрберту Элдер",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 103,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "augusto_abreu",
-      "name": "Аугушту Абреу",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 90,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "helia_correa",
-      "name": "Элия Коррея",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 110,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "jose_rodrigues_dos_santos",
-      "name": "Жозе Родригеш душ Сантуш",
-      "countryId": "portugal",
-      "countryName": "Португалия",
-      "russian": {
-        "ready": false,
-        "textLength": 152,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75048,6 +74490,316 @@
         },
         "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
       },
+      "sourceCandidates": []
+    },
+    {
+      "id": "manuel_de_aranha",
+      "name": "Мануэл де Арриага",
+      "countryId": "portugal",
+      "countryName": "Португалия",
+      "russian": {
+        "ready": false,
+        "textLength": 367,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "branquinho_da_fonseca",
+      "name": "Бранкинью да Фонсека",
+      "countryId": "portugal",
+      "countryName": "Португалия",
+      "russian": {
+        "ready": false,
+        "textLength": 205,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "herberto_helder",
+      "name": "Эрберту Элдер",
+      "countryId": "portugal",
+      "countryName": "Португалия",
+      "russian": {
+        "ready": false,
+        "textLength": 202,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "helia_correa",
+      "name": "Элия Коррея",
+      "countryId": "portugal",
+      "countryName": "Португалия",
+      "russian": {
+        "ready": false,
+        "textLength": 185,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "jose_rodrigues_dos_santos",
+      "name": "Жозе Родригеш душ Сантуш",
+      "countryId": "portugal",
+      "countryName": "Португалия",
+      "russian": {
+        "ready": false,
+        "textLength": 223,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P2",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
       "sourceCandidates": [
         {
           "title": "José Rodrigues dos Santos — биография",
@@ -75063,7 +74815,7 @@
       "countryName": "Пуэрто-Рико",
       "russian": {
         "ready": false,
-        "textLength": 198,
+        "textLength": 264,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -75125,8 +74877,8 @@
       "countryName": "Пуэрто-Рико",
       "russian": {
         "ready": false,
-        "textLength": 210,
-        "sentenceCount": 3,
+        "textLength": 182,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75187,131 +74939,7 @@
       "countryName": "Пуэрто-Рико",
       "russian": {
         "ready": false,
-        "textLength": 104,
-        "sentenceCount": 2,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "manuel_ramos_otero",
-      "name": "Мануэль Рамос Отеро",
-      "countryId": "puerto_rico",
-      "countryName": "Пуэрто-Рико",
-      "russian": {
-        "ready": false,
-        "textLength": 190,
-        "sentenceCount": 3,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": false,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "esmeralda_santiago",
-      "name": "Эсмеральда Сантьяго",
-      "countryId": "puerto_rico",
-      "countryName": "Пуэрто-Рико",
-      "russian": {
-        "ready": false,
-        "textLength": 187,
+        "textLength": 284,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -75367,14 +74995,14 @@
       "sourceCandidates": []
     },
     {
-      "id": "abdulaziz_al_mahmoud",
-      "name": "Абдель Азиз аль-Махмуд",
-      "countryId": "qatar",
-      "countryName": "Катар",
+      "id": "manuel_ramos_otero",
+      "name": "Мануэль Рамос Отеро",
+      "countryId": "puerto_rico",
+      "countryName": "Пуэрто-Рико",
       "russian": {
         "ready": false,
-        "textLength": 61,
-        "sentenceCount": 1,
+        "textLength": 259,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75392,7 +75020,131 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "esmeralda_santiago",
+      "name": "Эсмеральда Сантьяго",
+      "countryId": "puerto_rico",
+      "countryName": "Пуэрто-Рико",
+      "russian": {
+        "ready": false,
+        "textLength": 259,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "abdulaziz_al_mahmoud",
+      "name": "Абдулазиз Аль-Махмуд",
+      "countryId": "qatar",
+      "countryName": "Катар",
+      "russian": {
+        "ready": false,
+        "textLength": 228,
+        "sentenceCount": 3,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75430,13 +75182,13 @@
     },
     {
       "id": "kulthum_jaber",
-      "name": "Кулсум Джабер",
+      "name": "Кульсум Джабр аль-Кувари",
       "countryId": "qatar",
       "countryName": "Катар",
       "russian": {
         "ready": false,
-        "textLength": 64,
-        "sentenceCount": 1,
+        "textLength": 269,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75454,131 +75206,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "ahmad_al_mahmoud",
-      "name": "Ахмад аль-Махмуд",
-      "countryId": "qatar",
-      "countryName": "Катар",
-      "russian": {
-        "ready": false,
-        "textLength": 44,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "jamal_fayiz_al_maliki",
-      "name": "Джамаль Файз аль-Малики",
-      "countryId": "qatar",
-      "countryName": "Катар",
-      "russian": {
-        "ready": false,
-        "textLength": 63,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75621,69 +75249,7 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 56,
-        "sentenceCount": 1,
-        "legacyTextPresent": true,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии ru"
-        ]
-      },
-      "english": {
-        "ready": false,
-        "structuredTranslationPresent": false,
-        "method": null,
-        "issues": [
-          "нет биографии en"
-        ]
-      },
-      "flags": {
-        "missing": false,
-        "short": true,
-        "overlyLong": false,
-        "generic": false,
-        "duplicate": false,
-        "unsourced": true,
-        "rightsUnproven": true,
-        "licensedMetadataMissing": false,
-        "humanTranslationRightsMissing": false
-      },
-      "research": {
-        "present": false,
-        "status": null,
-        "author": null,
-        "researchedAt": null,
-        "sourceCount": 0,
-        "localeDrafts": [],
-        "reviewDecision": null,
-        "reviewer": null,
-        "reviewedAt": null,
-        "issues": [],
-        "publishable": false
-      },
-      "workflow": {
-        "state": "source-research",
-        "priority": "P2",
-        "completed": {
-          "sourceResearch": false,
-          "rightsReview": false,
-          "editorialDraft": false,
-          "factCheck": false,
-          "languageReview": false
-        },
-        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
-      },
-      "sourceCandidates": []
-    },
-    {
-      "id": "sylvain_bemba",
-      "name": "Сильвен Бемба",
-      "countryId": "republic_of_congo",
-      "countryName": "Республика Конго",
-      "russian": {
-        "ready": false,
-        "textLength": 182,
+        "textLength": 226,
         "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
@@ -75739,14 +75305,14 @@
       "sourceCandidates": []
     },
     {
-      "id": "sony_labou_tansi",
-      "name": "Сони Лабу Танси",
+      "id": "sylvain_bemba",
+      "name": "Сильвен Бемба",
       "countryId": "republic_of_congo",
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 63,
-        "sentenceCount": 1,
+        "textLength": 207,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75764,7 +75330,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75788,7 +75354,69 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
+        "completed": {
+          "sourceResearch": false,
+          "rightsReview": false,
+          "editorialDraft": false,
+          "factCheck": false,
+          "languageReview": false
+        },
+        "nextAction": "Verify identity and core facts in authoritative sources; record field-level provenance."
+      },
+      "sourceCandidates": []
+    },
+    {
+      "id": "sony_labou_tansi",
+      "name": "Сони Лабу Танси",
+      "countryId": "republic_of_congo",
+      "countryName": "Республика Конго",
+      "russian": {
+        "ready": false,
+        "textLength": 236,
+        "sentenceCount": 2,
+        "legacyTextPresent": true,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии ru"
+        ]
+      },
+      "english": {
+        "ready": false,
+        "structuredTranslationPresent": false,
+        "method": null,
+        "issues": [
+          "нет биографии en"
+        ]
+      },
+      "flags": {
+        "missing": false,
+        "short": false,
+        "overlyLong": false,
+        "generic": false,
+        "duplicate": false,
+        "unsourced": true,
+        "rightsUnproven": true,
+        "licensedMetadataMissing": false,
+        "humanTranslationRightsMissing": false
+      },
+      "research": {
+        "present": false,
+        "status": null,
+        "author": null,
+        "researchedAt": null,
+        "sourceCount": 0,
+        "localeDrafts": [],
+        "reviewDecision": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "issues": [],
+        "publishable": false
+      },
+      "workflow": {
+        "state": "source-research",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -75807,8 +75435,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 102,
-        "sentenceCount": 1,
+        "textLength": 314,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75826,7 +75454,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75850,7 +75478,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -75869,8 +75497,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 78,
-        "sentenceCount": 1,
+        "textLength": 318,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75888,7 +75516,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75912,7 +75540,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -75931,8 +75559,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 72,
-        "sentenceCount": 1,
+        "textLength": 226,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -75950,7 +75578,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -75974,7 +75602,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -75993,8 +75621,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 54,
-        "sentenceCount": 1,
+        "textLength": 290,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -76012,7 +75640,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -76036,7 +75664,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -76055,8 +75683,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 34,
-        "sentenceCount": 1,
+        "textLength": 260,
+        "sentenceCount": 3,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -76074,7 +75702,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -76098,7 +75726,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,
@@ -76117,8 +75745,8 @@
       "countryName": "Республика Конго",
       "russian": {
         "ready": false,
-        "textLength": 36,
-        "sentenceCount": 1,
+        "textLength": 232,
+        "sentenceCount": 2,
         "legacyTextPresent": true,
         "structuredTranslationPresent": false,
         "method": null,
@@ -76136,7 +75764,7 @@
       },
       "flags": {
         "missing": false,
-        "short": true,
+        "short": false,
         "overlyLong": false,
         "generic": false,
         "duplicate": false,
@@ -76160,7 +75788,7 @@
       },
       "workflow": {
         "state": "source-research",
-        "priority": "P2",
+        "priority": "P1",
         "completed": {
           "sourceResearch": false,
           "rightsReview": false,

@@ -501,9 +501,9 @@ export const portugal: Country = {
         reviewedAt: "2026-08-03",
         sources: [
           {
-            title: "Автобиография Валтера Угу Маи",
-            url: "https://www.valterhugomae.com/",
-            publisher: "Официальный сайт писателя"
+            title: "Valter Hugo Mãe — лауреат Премии Жозе Сарамаго 2007 года",
+            url: "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae",
+            publisher: "Prémio Literário José Saramago"
           },
           {
             title: "Valter Hugo Mãe — биография",

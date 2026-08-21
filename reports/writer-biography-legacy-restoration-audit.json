@@ -1,29 +1,29 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T14:30:47.484Z",
+  "generatedAt": "2026-08-21T02:18:37.868Z",
   "scope": {
     "booksTouched": false,
     "strictPublicationGateChanged": false,
-    "purpose": "Inventory and risk classification of stored Russian writer biographies; this is not factual verification of 1723 public cards."
+    "purpose": "Inventory and risk classification of stored Russian writer biographies; this is not factual verification of 1678 public cards."
   },
   "summary": {
-    "writerCardRecords": 1723,
-    "distinctCountryWriterKeys": 1723,
-    "distinctWriterIds": 1710,
-    "distinctNormalizedDisplayNames": 1710,
-    "legacyRussianTextPresent": 1723,
+    "writerCardRecords": 1678,
+    "distinctCountryWriterKeys": 1678,
+    "distinctWriterIds": 1665,
+    "distinctNormalizedDisplayNames": 1665,
+    "legacyRussianTextPresent": 1678,
     "gatePassingRussian": 45,
     "gatePassingEnglish": 20,
-    "russianWithheldByStrictGate": 1678,
-    "distinctWithheldWriterIds": 1665,
-    "qualityScreenedLegacyDisplayCandidates": 1678,
+    "russianWithheldByStrictGate": 1633,
+    "distinctWithheldWriterIds": 1620,
+    "qualityScreenedLegacyDisplayCandidates": 1633,
     "knownGenericLegacyBlockedFromDisplay": 0,
-    "restoredInPublicWriterViewsFromLegacy": 1678,
+    "restoredInPublicWriterViewsFromLegacy": 1633,
     "stillWithheldInPublicWriterViews": 0,
-    "possibleRussianDisplayTotalWithoutWeakeningGate": 1723,
+    "possibleRussianDisplayTotalWithoutWeakeningGate": 1678,
     "factCheckedByThisAutomatedAudit": 0,
     "serviceBiographyCorrectionsWithRecordedEvidence": 55,
-    "identityRiskRecordsQuarantined": 44,
+    "identityRiskRecordsQuarantined": 91,
     "identityRecordsRepairedFromAuthoritativeSources": 2,
     "newlyPromotedToReviewedOrVerified": 0,
     "safeToDescribeAsAllFactChecked": false
@@ -34,7 +34,7 @@
     "gatePassingRussianWithoutNamedReviewer": 25,
     "legacyOnlyWithPerTextProvenance": 0,
     "legacyOnlyWithWriterLevelSourceCandidates": 93,
-    "legacyOnlyWithoutAnyWriterLevelSourceCandidate": 1585,
+    "legacyOnlyWithoutAnyWriterLevelSourceCandidate": 1540,
     "legacyOnlyWithRecordedCreationMethod": 0,
     "rightsStatus": "Unproven for every withheld legacy text. This means the repository lacks a sufficient record; it is not a legal finding of infringement.",
     "staging": {
@@ -48,84 +48,49 @@
         "bnf": 1453,
         "nla": 517
       },
-      "publicRecordsWithExactNormalizedNameMatch": 168,
-      "publicRecordsWithUniqueExactNormalizedNameMatch": 163,
+      "publicRecordsWithExactNormalizedNameMatch": 171,
+      "publicRecordsWithUniqueExactNormalizedNameMatch": 166,
       "publicRuntimeMergeEnabled": false,
       "warning": "The staging file is a candidate index only. Public cards have no Wikidata IDs, exact-name coverage is low, and a name match must not be promoted as identity proof."
     }
   },
   "automatedQualitySignals": {
     "legacyTextLengthBands": {
-      "0-39": 57,
-      "40-79": 496,
-      "80-119": 602,
-      "120-249": 544,
-      "250-499": 20,
-      "500+": 4
+      "0-39": 13,
+      "40-79": 231,
+      "80-119": 340,
+      "120-249": 929,
+      "250-499": 162,
+      "500+": 3
     },
     "legacySentenceCounts": {
       "0": 0,
-      "1": 1125,
-      "2": 522,
-      "3": 70,
-      "4": 6,
+      "1": 559,
+      "2": 928,
+      "3": 175,
+      "4": 16,
       "5+": 0
     },
-    "belowCurrentLengthOrSentenceGate": 1223,
+    "belowCurrentLengthOrSentenceGate": 627,
     "genericOrServiceTextRecords": 0,
     "operationalCopyRecords": 0,
-    "exactDuplicateBiographyGroups": 2,
-    "exactDuplicateBiographyRecords": 4,
+    "exactDuplicateBiographyGroups": 0,
+    "exactDuplicateBiographyRecords": 0,
     "repeatedWriterIdGroups": 13,
     "repeatedWriterIdRecords": 26,
     "sameNormalizedNameDifferentIdGroups": 1,
-    "unsupportedSuperlativeCandidates": 433,
+    "unsupportedSuperlativeCandidates": 144,
     "nobelClaimWithoutStructuredNobelYear": 0,
-    "nonIsoBirthDateFields": 293,
-    "nonIsoDeathDateFields": 136,
+    "nonIsoBirthDateFields": 287,
+    "nonIsoDeathDateFields": 132,
     "reviewedOrVerifiedWriterStatusButBiographyWithheld": 25,
-    "mojibakeMarkerRecords": 0,
+    "mojibakeMarkerRecords": 1,
     "embeddedUrlRecords": 0,
     "caution": "Signals are triage flags, not proof that a statement is false or true. Absence of a flag is not a fact check."
   },
   "highRiskQueues": {
     "knownGenericOrServiceText": [],
-    "exactDuplicateBiographyGroups": [
-      {
-        "normalizedText": "один из крупнейших венгерских поэтов xx века",
-        "records": [
-          {
-            "key": "hungary:endre_ady",
-            "id": "endre_ady",
-            "name": "Эндре Ади",
-            "countryId": "hungary"
-          },
-          {
-            "key": "hungary:miklos_radnoti",
-            "id": "miklos_radnoti",
-            "name": "Миклош Радноти",
-            "countryId": "hungary"
-          }
-        ]
-      },
-      {
-        "normalizedText": "современный монгольский поэт и писатель",
-        "records": [
-          {
-            "key": "mongolia:uriankhai",
-            "id": "uriankhai",
-            "name": "Дамдинсурэнгийн Урианхай",
-            "countryId": "mongolia"
-          },
-          {
-            "key": "mongolia:mend_ooyo",
-            "id": "mend_ooyo",
-            "name": "Гомбожавын Мэнд-Ооёо",
-            "countryId": "mongolia"
-          }
-        ]
-      }
-    ],
+    "exactDuplicateBiographyGroups": [],
     "repeatedWriterIdGroups": [
       {
         "writerId": "robert_musil",
@@ -523,11 +488,11 @@
       {
         "key": "portugal:walter_hugo_mae",
         "id": "walter_hugo_mae",
-        "name": "Валтер Угу Маи",
+        "name": "Валтер Угу Маэ",
         "countryId": "portugal",
         "cardStatus": "reviewed",
         "writerLevelSourceUrls": [
-          "https://www.valterhugomae.com/",
+          "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae",
           "https://livro.dglab.gov.pt/sites/DGLB/Portugues/autores/Paginas/PesquisaAutores1.aspx?AutorId=10976"
         ]
       },
@@ -626,354 +591,354 @@
     ],
     "superlativeSample": [
       {
-        "key": "chile:vicente_huidobro",
-        "id": "vicente_huidobro",
-        "name": "Висенте Уидобро",
-        "countryId": "chile",
-        "text": "Чилийский поэт, один из крупнейших представителей авангарда XX века. Основатель литературного направления креасьонизм, согласно которому поэт создаёт новый художественный мир."
+        "key": "romania:mihai_eminescu",
+        "id": "mihai_eminescu",
+        "name": "Михай Эминеску",
+        "countryId": "romania",
+        "text": "Величайший румынский поэт и национальный классик."
       },
       {
-        "key": "chile:pablo_neruda",
-        "id": "pablo_neruda",
-        "name": "Пабло Неруда",
-        "countryId": "chile",
-        "text": "Чилийский поэт, дипломат и общественный деятель, один из крупнейших поэтов XX века. Лауреат Нобелевской премии по литературе 1971 года."
+        "key": "romania:ion_luca_caragiale",
+        "id": "ion_luca_caragiale",
+        "name": "Ион Лука Караджале",
+        "countryId": "romania",
+        "text": "Румынский драматург и сатирик, один из крупнейших авторов страны."
       },
       {
-        "key": "chile:nicanor_parra",
-        "id": "nicanor_parra",
-        "name": "Никанор Парра",
-        "countryId": "chile",
-        "text": "Чилийский поэт, математик и физик, создатель направления антипоэзии. Один из самых влиятельных испаноязычных поэтов XX века."
+        "key": "romania:norman_manea",
+        "id": "norman_manea",
+        "name": "Норман Манеа",
+        "countryId": "romania",
+        "text": "Современный румынский писатель, один из крупнейших авторов европейской прозы."
       },
       {
-        "key": "chile:roberto_bolano",
-        "id": "roberto_bolano",
-        "name": "Роберто Боланьо",
-        "countryId": "chile",
-        "text": "Чилийский писатель и поэт, один из самых влиятельных авторов испаноязычной литературы конца XX — начала XXI века. Его творчество стало символом нового этапа латиноамериканской прозы."
+        "key": "russia:kirill-turovsky",
+        "id": "kirill-turovsky",
+        "name": "Кирилл Туровский",
+        "countryId": "russia",
+        "text": "Епископ Туровский, богослов, проповедник и один из крупнейших авторов древнерусской литературы XII века."
       },
       {
-        "key": "chile:marcela_serrano",
-        "id": "marcela_serrano",
-        "name": "Марцела Серрано",
-        "countryId": "chile",
-        "text": "Чилийская писательница, одна из наиболее известных современных авторов страны. В своих романах исследует темы женской идентичности, памяти, любви и политической истории Чили."
+        "key": "russia:lomonosov",
+        "id": "lomonosov",
+        "name": "Михаил Васильевич Ломоносов",
+        "countryId": "russia",
+        "text": "Русский учёный, поэт и реформатор русского литературного языка. Один из крупнейших представителей русского классицизма."
       },
       {
-        "key": "china:bai_juyi",
-        "id": "bai_juyi",
-        "name": "Бо Цзюй-и",
-        "countryId": "china",
-        "text": "Один из крупнейших китайских поэтов эпохи Тан, известный простотой языка и вниманием к жизни простых людей."
+        "key": "russia:derzhavin",
+        "id": "derzhavin",
+        "name": "Гавриил Романович Державин",
+        "countryId": "russia",
+        "text": "Русский поэт эпохи классицизма, государственный деятель, один из крупнейших русских поэтов XVIII века."
       },
       {
-        "key": "china:ba_jin",
-        "id": "ba_jin",
-        "name": "Ба Цзинь",
-        "countryId": "china",
-        "text": "Китайский писатель XX века, один из крупнейших представителей современной китайской литературы."
+        "key": "russia:karamzin",
+        "id": "karamzin",
+        "name": "Николай Михайлович Карамзин",
+        "countryId": "russia",
+        "text": "Русский писатель, историк и журналист, один из крупнейших представителей русского сентиментализма."
       },
       {
-        "key": "china:lao_she",
-        "id": "lao_she",
-        "name": "Лао Шэ",
-        "countryId": "china",
-        "text": "Китайский писатель и драматург, один из крупнейших мастеров китайской прозы XX века."
+        "key": "russia:lermontov",
+        "id": "lermontov",
+        "name": "Михаил Юрьевич Лермонтов",
+        "countryId": "russia",
+        "text": "Русский поэт, прозаик и драматург, один из крупнейших представителей русского романтизма."
       },
       {
-        "key": "china:mao_dun",
-        "id": "mao_dun",
-        "name": "Мао Дунь",
-        "countryId": "china",
-        "text": "Китайский писатель, литературный критик и общественный деятель, один из крупнейших представителей китайского реализма XX века."
+        "key": "russia:turgenev",
+        "id": "turgenev",
+        "name": "Иван Сергеевич Тургенев",
+        "countryId": "russia",
+        "text": "Русский писатель, поэт и драматург, один из крупнейших представителей русского реализма XIX века."
       },
       {
-        "key": "china:ai_qing",
-        "id": "ai_qing",
-        "name": "Ай Цин",
-        "countryId": "china",
-        "text": "Китайский поэт XX века, один из наиболее значительных представителей современной китайской поэзии."
+        "key": "russia:blok",
+        "id": "blok",
+        "name": "Александр Александрович Блок",
+        "countryId": "russia",
+        "text": "Русский поэт Серебряного века, один из крупнейших представителей символизма."
       },
       {
-        "key": "china:zhang_a_ling",
-        "id": "zhang_a_ling",
-        "name": "Чжан Айлин",
-        "countryId": "china",
-        "text": "Китайская писательница и сценарист, одна из самых известных китайских авторов XX века, мастер психологической прозы."
+        "key": "russia:akhmatova",
+        "id": "akhmatova",
+        "name": "Анна Андреевна Ахматова",
+        "countryId": "russia",
+        "text": "Русская поэтесса Серебряного века, одна из крупнейших фигур русской поэзии XX века."
       },
       {
-        "key": "china:yu_hua",
-        "id": "yu_hua",
-        "name": "Юй Хуа",
-        "countryId": "china",
-        "text": "Современный китайский писатель, один из самых известных представителей китайской литературы конца XX — начала XXI века."
+        "key": "russia:esenin",
+        "id": "esenin",
+        "name": "Сергей Александрович Есенин",
+        "countryId": "russia",
+        "text": "Русский поэт, один из крупнейших представителей русской поэзии XX века, известный лирикой о природе, родине и человеке."
       },
       {
-        "key": "china:wang_meng",
-        "id": "wang_meng",
-        "name": "Ван Мэн",
-        "countryId": "china",
-        "text": "Китайский писатель, поэт и государственный деятель, один из крупнейших современных авторов Китая."
+        "key": "russia:tsvetaeva",
+        "id": "tsvetaeva",
+        "name": "Марина Ивановна Цветаева",
+        "countryId": "russia",
+        "text": "Русская поэтесса Серебряного века, одна из крупнейших фигур мировой поэзии XX века."
       },
       {
-        "key": "china:can_xue",
-        "id": "can_xue",
-        "name": "Цань Сюэ",
-        "countryId": "china",
-        "text": "Китайская писательница и литературный экспериментатор, одна из наиболее известных представительниц авангардной прозы Китая."
+        "key": "russia:mandelstam",
+        "id": "mandelstam",
+        "name": "Осип Эмильевич Мандельштам",
+        "countryId": "russia",
+        "text": "Русский поэт и прозаик, один из крупнейших представителей акмеизма."
       },
       {
-        "key": "china:han_han",
-        "id": "han_han",
-        "name": "Хань Хань",
-        "countryId": "china",
-        "text": "Китайский писатель, блогер, режиссёр и общественный деятель, один из самых известных современных авторов Китая."
+        "key": "russia:pelevin",
+        "id": "pelevin",
+        "name": "Виктор Олегович Пелевин",
+        "countryId": "russia",
+        "text": "Современный русский писатель, один из наиболее известных представителей постмодернизма."
       },
       {
-        "key": "china:jia_pingwa",
-        "id": "jia_pingwa",
-        "name": "Цзя Пинва",
-        "countryId": "china",
-        "text": "Китайский писатель, один из наиболее известных современных авторов материкового Китая, известный романами о жизни китайской провинции."
+        "key": "rwanda:alexis_kagame",
+        "id": "alexis_kagame",
+        "name": "Алексис Кагаме",
+        "countryId": "rwanda",
+        "text": "Руандийский поэт, философ и историк, один из крупнейших представителей национальной литературной традиции."
       },
       {
-        "key": "colombia:alvaro_mutis",
-        "id": "alvaro_mutis",
-        "name": "Альваро Мутис",
-        "countryId": "colombia",
-        "text": "Колумбийский поэт и писатель, один из крупнейших представителей латиноамериканской литературы XX века. Создатель образа Макироля — одного из известных персонажей современной испаноязычной прозы."
+        "key": "rwanda:scholastique_mukasonga",
+        "id": "scholastique_mukasonga",
+        "name": "Шоластик Мукасонга",
+        "countryId": "rwanda",
+        "text": "Руандийская писательница, одна из самых известных современных авторов африканской литературы."
       },
       {
-        "key": "england:edmund_spenser",
-        "id": "edmund_spenser",
-        "name": "Эдмунд Спенсер",
-        "countryId": "england",
-        "text": "Английский поэт эпохи Возрождения, один из крупнейших представителей елизаветинской литературы."
+        "key": "saint_lucia:derek_walcott",
+        "id": "derek_walcott",
+        "name": "Дерек Уолкотт",
+        "countryId": "saint_lucia",
+        "text": "Сент-люсийский поэт, драматург и писатель. Один из крупнейших англоязычных авторов XX века. Лауреат Нобелевской премии по литературе 1992 года. В его творчестве соединяются античная традиция, европейская культура и история Карибского региона."
       },
       {
-        "key": "england:john_donne",
-        "id": "john_donne",
-        "name": "Джон Донн",
-        "countryId": "england",
-        "text": "Английский поэт и проповедник, один из крупнейших представителей метафизической школы поэзии."
+        "key": "samoa:sia_figiel",
+        "id": "sia_figiel",
+        "name": "Сиа Фигиэль",
+        "countryId": "samoa",
+        "text": "Самоанская писательница и поэтесса. Одна из наиболее известных женщин-авторов Самоа. В своих произведениях исследует жизнь самоанских женщин, традиции и столкновение культур."
       },
       {
-        "key": "england:laurence_sterne",
-        "id": "laurence_sterne",
-        "name": "Лоренс Стерн",
-        "countryId": "england",
-        "text": "Английский писатель и священник, один из крупнейших мастеров сатирического романа XVIII века."
+        "key": "senegal:mariama_ba",
+        "id": "mariama_ba",
+        "name": "Мариама Ба",
+        "countryId": "senegal",
+        "text": "Сенегальская писательница, одна из крупнейших африканских авторов XX века."
       },
       {
-        "key": "england:samuel_coleridge",
-        "id": "samuel_coleridge",
-        "name": "Сэмюэл Тейлор Кольридж",
-        "countryId": "england",
-        "text": "Английский поэт, критик и философ, один из крупнейших представителей романтизма."
+        "key": "serbia:branko_radicevic",
+        "id": "branko_radicevic",
+        "name": "Бранко Радичевич",
+        "countryId": "serbia",
+        "text": "Один из крупнейших сербских поэтов романтизма."
       },
       {
-        "key": "england:lord_byron",
-        "id": "lord_byron",
-        "name": "Джордж Гордон Байрон",
-        "countryId": "england",
-        "text": "Английский поэт-романтик, один из крупнейших представителей европейского романтизма."
+        "key": "serbia:milos_crnjanski",
+        "id": "milos_crnjanski",
+        "name": "Милош Црнянский",
+        "countryId": "serbia",
+        "text": "Один из крупнейших сербских писателей XX века."
       },
       {
-        "key": "england:percy_shelley",
-        "id": "percy_shelley",
-        "name": "Перси Биши Шелли",
-        "countryId": "england",
-        "text": "Английский поэт-романтик, один из крупнейших лириков XIX века."
+        "key": "serbia:mesa_selimovic",
+        "id": "mesa_selimovic",
+        "name": "Меша Селимович",
+        "countryId": "serbia",
+        "text": "Один из крупнейших авторов югославской литературы."
       },
       {
-        "key": "england:john_keats",
-        "id": "john_keats",
-        "name": "Джон Китс",
-        "countryId": "england",
-        "text": "Английский поэт-романтик, один из наиболее значительных представителей английской лирической поэзии."
+        "key": "serbia:danilo_kis",
+        "id": "danilo_kis",
+        "name": "Данило Киш",
+        "countryId": "serbia",
+        "text": "Один из крупнейших сербских писателей второй половины XX века."
       },
       {
-        "key": "england:jane_austen",
-        "id": "jane_austen",
-        "name": "Джейн Остин",
-        "countryId": "england",
-        "text": "Английская писательница, одна из крупнейших авторов английской литературы XIX века."
+        "key": "sierra_leone:syl_cheney_coker",
+        "id": "syl_cheney_coker",
+        "name": "Силь Чейни-Кокер",
+        "countryId": "sierra_leone",
+        "text": "Сьерра-леонский поэт, романист и один из крупнейших представителей литературы страны."
       },
       {
-        "key": "england:george_eliot",
-        "id": "george_eliot",
-        "name": "Джордж Элиот (Мэри Энн Эванс)",
-        "countryId": "england",
-        "text": "Английская писательница и переводчица, одна из крупнейших представительниц реализма XIX века."
+        "key": "sierra_leone:aminatta_forna",
+        "id": "aminatta_forna",
+        "name": "Аминатта Форна",
+        "countryId": "sierra_leone",
+        "text": "Писательница с сьерра-леонскими корнями, одна из самых известных современных авторов страны."
       },
       {
-        "key": "england:thomas_hardy",
-        "id": "thomas_hardy",
-        "name": "Томас Харди",
-        "countryId": "england",
-        "text": "Английский писатель и поэт, один из крупнейших авторов поздней викторианской эпохи."
+        "key": "slovakia:hviezdoslav",
+        "id": "hviezdoslav",
+        "name": "Павол Орсаг Гвездослав",
+        "countryId": "slovakia",
+        "text": "Крупнейший словацкий поэт и драматург XIX–XX веков."
       },
       {
-        "key": "england:oscar_wilde",
-        "id": "oscar_wilde",
-        "name": "Оскар Уайльд",
-        "countryId": "england",
-        "text": "Ирландский писатель и драматург, представитель эстетизма, один из самых известных авторов конца XIX века."
+        "key": "slovakia:timrava",
+        "id": "timrava",
+        "name": "Божена Сланчикова-Тимрава",
+        "countryId": "slovakia",
+        "text": "Одна из крупнейших словацких писательниц, мастер психологической прозы."
       },
       {
-        "key": "england:ian_mcewan",
-        "id": "ian_mcewan",
-        "name": "Иэн Макьюэн",
-        "countryId": "england",
-        "text": "Иэн Макьюэн — британский писатель и сценарист. Один из его наиболее известных романов — «Искупление»."
+        "key": "slovakia:dominik_tatarka",
+        "id": "dominik_tatarka",
+        "name": "Доминик Татарка",
+        "countryId": "slovakia",
+        "text": "Словацкий писатель, эссеист и один из крупнейших авторов XX века."
       },
       {
-        "key": "england:anthony_burgess",
-        "id": "anthony_burgess",
-        "name": "Энтони Бёрджесс",
-        "countryId": "england",
-        "text": "Энтони Бёрджесс — английский писатель и композитор. Его самый известный роман — антиутопия «Заводной апельсин»."
+        "key": "slovenia:france_preseren",
+        "id": "france_preseren",
+        "name": "Франце Прешерн",
+        "countryId": "slovenia",
+        "text": "Величайший словенский поэт, национальный классик Словении."
       },
       {
-        "key": "equatorial_guinea:juan_tomas_avila_laurel",
-        "id": "juan_tomas_avila_laurel",
-        "name": "Хуан Томас Авила Лаурель",
-        "countryId": "equatorial_guinea",
-        "text": "Современный экватогвинейский писатель, автор романов, рассказов и эссе. Один из наиболее известных представителей литературы страны."
+        "key": "slovenia:ivan_cankar",
+        "id": "ivan_cankar",
+        "name": "Иван Цанкар",
+        "countryId": "slovenia",
+        "text": "Крупнейший словенский писатель, драматург и публицист."
       },
       {
-        "key": "eritrea:sebhat_gebregziabher",
-        "id": "sebhat_gebregziabher",
-        "name": "Себхат Эфрем",
-        "countryId": "eritrea",
-        "text": "Эритрейский писатель, один из крупнейших представителей литературы на языке тигринья."
+        "key": "slovenia:oton_zupancic",
+        "id": "oton_zupancic",
+        "name": "Отон Жупанчич",
+        "countryId": "slovenia",
+        "text": "Один из крупнейших словенских поэтов XX века."
       },
       {
-        "key": "estonia:anton_hansen_tammsaare",
-        "id": "anton_hansen_tammsaare",
-        "name": "Антон Хансен Таммсааре",
-        "countryId": "estonia",
-        "text": "Крупнейший эстонский романист XX века."
+        "key": "slovenia:boris_pahor",
+        "id": "boris_pahor",
+        "name": "Борис Пахор",
+        "countryId": "slovenia",
+        "text": "Один из крупнейших словенских писателей XX века."
       },
       {
-        "key": "estonia:marie_under",
-        "id": "marie_under",
-        "name": "Мария Ундер",
-        "countryId": "estonia",
-        "text": "Одна из крупнейших эстонских поэтесс XX века."
+        "key": "slovenia:tone_pavcek",
+        "id": "tone_pavcek",
+        "name": "Тоне Павчек",
+        "countryId": "slovenia",
+        "text": "Словенский поэт, один из крупнейших авторов XX века."
       },
       {
-        "key": "estonia:jaan_kross",
-        "id": "jaan_kross",
-        "name": "Яан Кросс",
-        "countryId": "estonia",
-        "text": "Крупнейший эстонский писатель XX века, автор исторических романов."
+        "key": "slovenia:drago_jancar",
+        "id": "drago_jancar",
+        "name": "Драго Янчар",
+        "countryId": "slovenia",
+        "text": "Один из наиболее известных современных словенских писателей."
       },
       {
-        "key": "ethiopia:haddis_alemayehu",
-        "id": "haddis_alemayehu",
-        "name": "Хаддис Алемайеху",
-        "countryId": "ethiopia",
-        "text": "Один из крупнейших эфиопских романистов XX века."
+        "key": "somalia:nuruddin_farah",
+        "id": "nuruddin_farah",
+        "name": "Нурруддин Фарах",
+        "countryId": "somalia",
+        "text": "Один из крупнейших сомалийских романистов и наиболее известных африканских писателей современности."
       },
       {
-        "key": "fiji:subramani",
-        "id": "subramani",
-        "name": "Субрамани",
-        "countryId": "fiji",
-        "text": "Фиджийский писатель индийского происхождения, один из наиболее известных представителей литературы Фиджи. Его творчество посвящено культурной идентичности, истории и жизни индийской общины страны."
+        "key": "south_africa:cj_langenhoven",
+        "id": "cj_langenhoven",
+        "name": "Корнелис Якоб Лангенховен",
+        "countryId": "south_africa",
+        "text": "Южноафриканский писатель и один из крупнейших деятелей литературы на африкаанс."
       },
       {
-        "key": "fiji:satendra_nandan",
-        "id": "satendra_nandan",
-        "name": "Сатендра Нандан",
-        "countryId": "fiji",
-        "text": "Фиджийский писатель, поэт и академик индийского происхождения. Один из наиболее известных авторов Фиджи, работающих в жанре автобиографической и художественной прозы."
+        "key": "south_africa:zakes_mda",
+        "id": "zakes_mda",
+        "name": "Зукесва Мда",
+        "countryId": "south_africa",
+        "text": "Южноафриканский писатель, драматург и художник, один из ведущих современных авторов страны."
       },
       {
-        "key": "fiji:epeli_hauofa",
-        "id": "epeli_hauofa",
-        "name": "Эпели Хау'офа",
-        "countryId": "fiji",
-        "text": "Писатель, антрополог и один из наиболее влиятельных авторов Тихоокеанского региона. Значительную часть жизни провёл на Фиджи и оказал большое влияние на развитие тихоокеанской литературы."
+        "key": "south_africa:marlene_van_niekerk",
+        "id": "marlene_van_niekerk",
+        "name": "Марлен ван Никерк",
+        "countryId": "south_africa",
+        "text": "Одна из крупнейших современных писательниц на языке африкаанс."
       },
       {
-        "key": "finland:eino_leino",
-        "id": "eino_leino",
-        "name": "Эйно Лейно",
-        "countryId": "finland",
-        "text": "Один из крупнейших финских поэтов."
+        "key": "south_africa:ivan_vladislavic",
+        "id": "ivan_vladislavic",
+        "name": "Иван Владиславич",
+        "countryId": "south_africa",
+        "text": "Южноафриканский писатель, один из крупнейших представителей современной городской прозы."
       },
       {
-        "key": "finland:vaino_linna",
-        "id": "vaino_linna",
-        "name": "Вяйнё Линна",
-        "countryId": "finland",
-        "text": "Один из крупнейших финских писателей XX века."
+        "key": "south_korea:kim_so_wol",
+        "id": "kim_so_wol",
+        "name": "Ким Со Воль",
+        "countryId": "south_korea",
+        "text": "Корейский поэт, один из самых известных авторов корейской поэзии XX века. Его стихи отличаются музыкальностью и обращением к народным традициям."
       },
       {
-        "key": "france:chretien_de_troyes",
-        "id": "chretien_de_troyes",
-        "name": "Кретьен де Труа",
-        "countryId": "france",
-        "text": "Французский поэт XII века, один из крупнейших представителей куртуазной литературы Средневековья. Считается одним из создателей литературной традиции о короле Артуре и рыцарях Круглого стола."
+        "key": "south_korea:ko_un",
+        "id": "ko_un",
+        "name": "Ко Ын",
+        "countryId": "south_korea",
+        "text": "Южнокорейский поэт и писатель, один из наиболее известных представителей современной корейской литературы. Автор многочисленных поэтических сборников и номинировался на международные литературные премии."
       },
       {
-        "key": "france:francois_villon",
-        "id": "francois_villon",
-        "name": "Франсуа Вийон",
-        "countryId": "france",
-        "text": "Французский поэт позднего Средневековья, один из наиболее известных авторов французской лирики XV века."
+        "key": "south_korea:hwang_seok_yong",
+        "id": "hwang_seok_yong",
+        "name": "Хван Сок Ён",
+        "countryId": "south_korea",
+        "text": "Южнокорейский писатель, один из крупнейших авторов современной корейской прозы. Его произведения посвящены истории Кореи, войне, разделению страны и судьбам простых людей."
       },
       {
-        "key": "france:racine",
-        "id": "racine",
-        "name": "Жан Расин",
-        "countryId": "france",
-        "text": "Французский драматург, один из крупнейших представителей классицизма."
+        "key": "south_korea:kim_young_ha",
+        "id": "kim_young_ha",
+        "name": "Ким Ён Ха",
+        "countryId": "south_korea",
+        "text": "Южнокорейский писатель, один из самых известных современных авторов Кореи. Его проза часто исследует темы городской жизни, идентичности и отчуждения."
       },
       {
-        "key": "france:voltaire",
-        "id": "voltaire",
-        "name": "Вольтер",
-        "countryId": "france",
-        "text": "Французский философ, писатель и историк эпохи Просвещения, один из наиболее влиятельных мыслителей Европы."
+        "key": "south_korea:jeong_yoo_jung",
+        "id": "jeong_yoo_jung",
+        "name": "Чон Юджон",
+        "countryId": "south_korea",
+        "text": "Южнокорейская писательница, одна из наиболее известных современных авторов психологических триллеров."
       },
       {
-        "key": "france:balzac",
-        "id": "balzac",
-        "name": "Оноре де Бальзак",
-        "countryId": "france",
-        "text": "Французский писатель, создатель эпопеи «Человеческая комедия», один из крупнейших представителей реализма."
+        "key": "south_korea:han_kang",
+        "id": "han_kang",
+        "name": "Хан Ган",
+        "countryId": "south_korea",
+        "text": "Южнокорейская писательница, одна из крупнейших современных авторов Кореи. Её проза исследует темы человеческого тела, памяти, насилия, травмы и отношений человека с обществом. Лауреат Нобелевской премии по литературе 2024 года."
       },
       {
-        "key": "france:victor_hugo",
-        "id": "victor_hugo",
-        "name": "Виктор Гюго",
-        "countryId": "france",
-        "text": "Французский писатель, поэт и драматург, один из крупнейших представителей романтизма."
+        "key": "south_korea:kim_hun",
+        "id": "kim_hun",
+        "name": "Ким Хун",
+        "countryId": "south_korea",
+        "text": "Южнокорейский писатель и журналист, один из наиболее известных авторов исторической прозы современной Кореи."
       },
       {
-        "key": "france:alexandre_dumas",
-        "id": "alexandre_dumas",
-        "name": "Александр Дюма (отец)",
-        "countryId": "france",
-        "text": "Французский писатель и драматург, один из самых популярных авторов приключенческой литературы."
+        "key": "south_korea:shin_kyung_sook",
+        "id": "shin_kyung_sook",
+        "name": "Син Гён Сук",
+        "countryId": "south_korea",
+        "text": "Южнокорейская писательница, одна из самых известных современных авторов Кореи. Её произведения посвящены памяти, семье и личным трагедиям на фоне исторических событий."
       },
       {
-        "key": "france:george_sand",
-        "id": "george_sand",
-        "name": "Жорж Санд (Амандин Аврора Дюпен)",
-        "countryId": "france",
-        "text": "Французская писательница, одна из крупнейших фигур европейского романтизма XIX века."
+        "key": "south_korea:kim_aeran",
+        "id": "kim_aeran",
+        "name": "Ким Э Ран",
+        "countryId": "south_korea",
+        "text": "Южнокорейская писательница, одна из наиболее заметных представительниц молодого поколения корейской литературы."
       },
       {
-        "key": "france:flaubert",
-        "id": "flaubert",
-        "name": "Гюстав Флобер",
-        "countryId": "france",
-        "text": "Французский писатель, один из крупнейших мастеров реализма XIX века, известный точностью литературного стиля."
+        "key": "spain:jorge_manrique",
+        "id": "jorge_manrique",
+        "name": "Хорхе Манрике",
+        "countryId": "spain",
+        "text": "Кастильский поэт позднего Средневековья, один из крупнейших представителей испанской лирики XV века."
       }
     ],
     "nobelMetadataMismatchSample": []
@@ -1698,6 +1663,91 @@
     ],
     "quarantined": [
       {
+        "key": "portugal:augusto_abreu",
+        "reason": "identity-not-established",
+        "note": "No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927–2011 dates or attributable bibliography."
+      },
+      {
+        "key": "qatar:ahmad_al_mahmoud",
+        "reason": "identity-not-established",
+        "note": "No authoritative source establishes the claimed male Qatari writer and poet born in 1957; the card risks conflating several different people with similar names."
+      },
+      {
+        "key": "qatar:jamal_fayiz_al_maliki",
+        "reason": "identity-not-established",
+        "note": "Authoritative Qatari sources identify prose writer Jamal Fayiz Khamis Al-Saeed, born in 1964, not the claimed poet Jamal Fayiz Al-Maliky born in 1953; any remap must be explicit."
+      },
+      {
+        "key": "eritrea:hadish_haile",
+        "reason": "identity-not-established",
+        "note": "No institutional authority record or attributable bibliography establishes the claimed Eritrean writer."
+      },
+      {
+        "key": "eritrea:khaled_abdalla",
+        "reason": "identity-not-established",
+        "note": "No institutional catalog establishes the claimed Eritrean literary identity; the name must not be conflated with unrelated people."
+      },
+      {
+        "key": "eritrea:rebkah_haile",
+        "reason": "identity-not-established",
+        "note": "No institutional authority match establishes this card; it must not be conflated with Ethiopian-American memoirist Rebecca G. Haile."
+      },
+      {
+        "key": "eswatini:albert_ncube",
+        "reason": "identity-not-established",
+        "note": "No institutional catalog establishes the claimed Eswatini writer and literary role."
+      },
+      {
+        "key": "eswatini:gladys_lobola",
+        "reason": "identity-not-established",
+        "note": "No institutional catalog establishes the claimed Eswatini author or bibliography."
+      },
+      {
+        "key": "eswatini:sarah_mlotshwa",
+        "reason": "identity-not-established",
+        "note": "No institutional catalog establishes the claimed Eswatini writer or the works and themes attributed to the card."
+      },
+      {
+        "key": "eswatini:stanley_madwe",
+        "reason": "identity-not-established",
+        "note": "No institutional catalog establishes the claimed Eswatini poet or literary role."
+      },
+      {
+        "key": "ethiopia:hirut_kefele",
+        "reason": "identity-not-established",
+        "note": "No institutional authority match establishes the claimed Ethiopian writer, year and literary role."
+      },
+      {
+        "key": "eritrea:sebhat_gebregziabher",
+        "reason": "cross-country-identity-conflict",
+        "note": "The card conflates Ethiopian writer Sibhat Gebre-Egziabher with Eritrean general and politician Sebhat Ephrem; its name, dates, country, language and work do not establish one literary identity."
+      },
+      {
+        "key": "democratic_republic_of_congo:sylvain_bemba",
+        "reason": "cross-country-identity-conflict",
+        "note": "Sylvain Bemba was born in Sibiti and belongs to the Republic of the Congo corpus; a corrected public card is published there."
+      },
+      {
+        "key": "democratic_republic_of_congo:tshibumba_kanda_matulu",
+        "reason": "service-record",
+        "note": "Tshibumba Kanda-Matulu is a documented visual artist; History of Zaire is a painting cycle, not a literary work, so the record is not published as a writer."
+      },
+      {
+        "key": "djibouti:abdourahman_h_yama",
+        "reason": "identity-not-established",
+        "note": "The key/fullName and displayed name conflict, and no institutional catalog establishes the claimed Djiboutian literary identity or bibliography."
+      },
+      {
+        "key": "comoros:mahmoud_said_ahmed",
+        "reason": "identity-not-established",
+        "note": "No institutional authority record or attributable bibliography establishes the claimed Comorian writer; the card must not be conflated with similarly named artists, historians or writers."
+      },
+      {
+        "key": "comoros:said_ahmed_mohamed",
+        "reason": "cross-country-identity-conflict",
+        "note": "The authority identity is the Tanzanian Swahili writer Said Ahmed Mohamed Khamis, now published under Tanzania with corrected dates and birthplace."
+      },
+      {
         "key": "cape_verde:virgilio_de_lemos",
         "reason": "cross-country-identity-conflict",
         "note": "The record belongs to the Mozambican poet Virgilio de Lemos; a corrected Mozambique card is published instead."
@@ -1916,6 +1966,156 @@
         "key": "vanuatu:nicolas_tewes",
         "reason": "identity-not-established",
         "note": "No authoritative literary identity or named work is recorded."
+      },
+      {
+        "key": "gabon:florentin_moussavou_nzigu",
+        "reason": "identity-not-established",
+        "note": "The exact literary identity, Nzigu name component and attributed bibliography are not established; checked institutional sources instead document a Gabonese public official with a similar name."
+      },
+      {
+        "key": "gabon:juste_auguste_kotto",
+        "reason": "identity-not-established",
+        "note": "No authoritative literary identity or attributable bibliography was established in the checked BnF and WorldCat catalogs."
+      },
+      {
+        "key": "gambia:baaba_jobarteh",
+        "reason": "identity-not-established",
+        "note": "The card appears to conflate names from West African musical traditions; no authoritative literary identity or attributable bibliography was established."
+      },
+      {
+        "key": "grenada:julian_fedon",
+        "reason": "identity-not-established",
+        "note": "Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."
+      },
+      {
+        "key": "guinea_bissau:antonio_aurelio_gomes",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Guinea-Bissauan writer; the card remains in the internal source archive only."
+      },
+      {
+        "key": "guyana:roshni_kempadoo",
+        "reason": "cross-country-identity-conflict",
+        "note": "The card conflates British-Guyanese visual artist Roshini Kempadoo with Guyanese novelist Oonya Kempadoo; the attributed novels Buxton Spice and Tide Running belong to Oonya Kempadoo."
+      },
+      {
+        "key": "laos:visuth_phommasane",
+        "reason": "identity-not-established",
+        "note": "No independent institutional authority record or attributable bibliography establishes the claimed Lao literary identity; the card remains in the internal source archive only."
+      },
+      {
+        "key": "lesotho:coleman_motsapi",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, dates or literary activity; the card remains in the internal source archive only."
+      },
+      {
+        "key": "lesotho:letuka_molati",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, birth year or literary activity; the card remains in the internal source archive only."
+      },
+      {
+        "key": "liberia:marvin_colley",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; the card remains in the internal source archive only."
+      },
+      {
+        "key": "liberia:sylvester_williams",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record establishes the claimed Liberian poet; the card must not be conflated with Henry Sylvester Williams or other namesakes."
+      },
+      {
+        "key": "liberia:varney_bangura",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; country and identity may be conflated with unrelated namesakes."
+      },
+      {
+        "key": "liechtenstein:maria_von_burg",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Liechtenstein writer and dates; the card must not be conflated with similarly named people."
+      },
+      {
+        "key": "macau:hou_chio_jan",
+        "reason": "identity-not-established",
+        "note": "No authoritative catalog establishes the claimed Macanese literary identity, date or attributable bibliography."
+      },
+      {
+        "key": "macau:hou_jingming",
+        "reason": "identity-not-established",
+        "note": "No authoritative catalog establishes the claimed Macanese literary identity; the name must not be conflated with unrelated people or Yao Jingming."
+      },
+      {
+        "key": "madagascar:elie_charles_abraham",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Malagasy writer and the available secondary dates conflict."
+      },
+      {
+        "key": "madagascar:jean_francois_samlong",
+        "reason": "cross-country-identity-conflict",
+        "note": "Authoritative profiles identify Jean-François Samlong as a Réunion writer born in Sainte-Marie in 1949, not a Madagascar writer born in 1951."
+      },
+      {
+        "key": "madagascar:nirina_lua",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict."
+      },
+      {
+        "key": "maldives:amin_jameel",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."
+      },
+      {
+        "key": "mauritania:hamed_ould_hamdane",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity."
+      },
+      {
+        "key": "monaco:jean_baptiste_barla",
+        "reason": "cross-country-identity-conflict",
+        "note": "Official French museum records identify Jean-Baptiste Barla (1817–1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer."
+      },
+      {
+        "key": "namibia:gabi_stolz",
+        "reason": "identity-not-established",
+        "note": "No unique national-library authority record or attributable work establishes Gabi Stolz as the claimed Namibia-linked German-language writer born in 1956."
+      },
+      {
+        "key": "namibia:gustav_frolich",
+        "reason": "cross-country-identity-conflict",
+        "note": "German authority records identify Gustav Frölich (1879–1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year."
+      },
+      {
+        "key": "namibia:ndapewaoshali_shikongo",
+        "reason": "identity-not-established",
+        "note": "A first-party site establishes a Namibian writer using the single name Ndapewoshali, but not the Shikongo surname, 1993 birth year or children's-book identity claimed by this card."
+      },
+      {
+        "key": "nauru:michael_francis",
+        "reason": "identity-not-established",
+        "note": "The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs."
+      },
+      {
+        "key": "new_zealand:steven_baker",
+        "reason": "cross-country-identity-conflict",
+        "note": "The id and displayed name Steven Baker are conflated with Steven Roger Fischer: the attributed works belong to Fischer, while no authoritative source establishes a matching New Zealand writer named Steven Baker."
+      },
+      {
+        "key": "niger:ibrahim_adam",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Nigerien writer, birth year, literary role or works."
+      },
+      {
+        "key": "oman:zahir_al_ghazali",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Omani writer; the card must not be conflated with poet Zahir al-Ghafri."
+      },
+      {
+        "key": "panama:demetrio_kalleyas",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Panamanian writer; the card must not be conflated with poet Demetrio Korsi."
+      },
+      {
+        "key": "papua_new_guinea:siri_gising",
+        "reason": "identity-not-established",
+        "note": "No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card."
       }
     ],
     "rule": "Service prose was replaced only where a real identity and named work could be tied to a recorded authoritative/official source. Ambiguous, duplicate, cross-country service and unsupported identities were removed from public country arrays pending evidence."
@@ -1953,9 +2153,9 @@
     "warning": "These two field-level spot checks validate the workflow, not the remaining corpus and not every sentence in either biography."
   },
   "researchPlan": {
-    "initialWorkItems": 1665,
+    "initialWorkItems": 1620,
     "batchSize": 20,
-    "estimatedBatches": 84,
+    "estimatedBatches": 81,
     "stages": [
       "Разрешить каноническую личность, дубли и межстрановые связи",
       "Проверить по полям даты жизни, языки, национальный контекст и главные произведения",

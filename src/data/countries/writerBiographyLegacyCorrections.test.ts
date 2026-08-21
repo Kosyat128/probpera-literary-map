@@ -54,6 +54,9 @@ import {
   writerBiographyPublicProfileFactCorrectionsBatch44,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch44";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch45,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch45";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -81,21 +84,22 @@ describe("legacy writer biography curation", () => {
       "writerBiographyPublicProfileFactCorrectionsBatch42.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch43.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch44.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch45.ts",
       "writerBiographyLegacyCorrections.ts",
     ].map((fileName) =>
       readFileSync(new URL(fileName, import.meta.url), "utf8")
     );
 
     for (const source of runtimeSources) {
-      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44)/);
+      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44|45)/);
     }
   });
 
   it("keeps the manually sourced correction queue exact and auditable", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
-    expect(quarantinedWriterIdentities).toHaveLength(88);
+    expect(quarantinedWriterIdentities).toHaveLength(91);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(463);
+    expect(writerPublicProfileFactCorrections).toHaveLength(500);
     expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
     expect(writerBiographyPublicProfileFactCorrectionsBatch33).toHaveLength(14);
     expect(writerBiographyPublicProfileFactCorrectionsBatch34).toHaveLength(17);
@@ -109,6 +113,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyPublicProfileFactCorrectionsBatch42).toHaveLength(38);
     expect(writerBiographyPublicProfileFactCorrectionsBatch43).toHaveLength(37);
     expect(writerBiographyPublicProfileFactCorrectionsBatch44).toHaveLength(40);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch45).toHaveLength(37);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -508,7 +513,7 @@ describe("legacy writer biography curation", () => {
     });
   });
 
-  it("publishes compact source-backed profile patches for batches 36–44", () => {
+  it("publishes compact source-backed profile patches for batches 36–45", () => {
     const publicWriters = new Map(
       countries.flatMap((country) =>
         country.writers.map((writer) => [key(country.id, writer.id), writer])
@@ -549,6 +554,10 @@ describe("legacy writer biography curation", () => {
       },
       {
         corrections: writerBiographyPublicProfileFactCorrectionsBatch44,
+        checkedAt: "2026-08-21",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch45,
         checkedAt: "2026-08-21",
       },
     ] as const;
@@ -662,6 +671,7 @@ describe("legacy writer biography curation", () => {
     expect(publicSylvain?.works).toEqual([
       "Le Soleil est parti à M’Pemba",
       "L’Homme qui tua le crocodile",
+      "Léopolis",
     ]);
     expect(bookSourceSylvain?.works).toEqual([]);
 
@@ -702,11 +712,11 @@ describe("legacy writer biography curation", () => {
     expect(archive).toHaveLength(9_729);
     expect(publicArchive).toHaveLength(48);
     expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
-    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(51);
+    expect(booksWhoseWriterCardIsQuarantined).toHaveLength(55);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true
     );
-    expect(publicTargets.filter((target) => !target)).toHaveLength(51);
+    expect(publicTargets.filter((target) => !target)).toHaveLength(55);
     expect(
       publicTargets
         .filter((target) => target)

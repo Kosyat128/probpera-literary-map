@@ -1,29 +1,29 @@
 # Аудит возврата русских биографий писателей
 
-Сформирован: 2026-08-09T14:30:47.484Z
+Сформирован: 2026-08-21T02:18:37.868Z
 
-> Этот отчёт не утверждает, что 1723 публичные карточки фактологически проверены. Автоматический аудит классифицирует риски и provenance; истинность каждого утверждения проверяется только в редакционном workflow.
+> Этот отчёт не утверждает, что 1678 публичные карточки фактологически проверены. Автоматический аудит классифицирует риски и provenance; истинность каждого утверждения проверяется только в редакционном workflow.
 
 ## Точный остаток
 
-- Карточек: 1723; уникальных `countryId:writerId`: 1723; уникальных `writerId`: 1710.
-- Текущий строгий RU-gate проходит 45; скрыто 1678.
+- Карточек: 1678; уникальных `countryId:writerId`: 1678; уникальных `writerId`: 1665.
+- Текущий строгий RU-gate проходит 45; скрыто 1633.
 - EN-gate проходит 20. Русский legacy-текст не используется как английский fallback.
-- Legacy `bio` физически хранится у 1723 карточек.
-- Автоматический screen допускает к публичному отображению 1678 legacy-текстов, но сам по себе не проверяет их факты и происхождение; явных служебных/шаблонных текстов среди оставшихся публичных карточек: 0.
-- Всего RU-текст отображается у 1723 карточек: 45 gate-passing + 1678 legacy. Публичный интерфейс не показывает для legacy маркер статуса.
-- Исправлено 55 служебных биографий реальных авторов; 44 сомнительные/дублирующие карточки исключены из публичных массивов до подтверждения личности.
+- Legacy `bio` физически хранится у 1678 карточек.
+- Автоматический screen допускает к публичному отображению 1633 legacy-текстов, но сам по себе не проверяет их факты и происхождение; явных служебных/шаблонных текстов среди оставшихся публичных карточек: 0.
+- Всего RU-текст отображается у 1678 карточек: 45 gate-passing + 1633 legacy. Публичный интерфейс не показывает для legacy маркер статуса.
+- Исправлено 55 служебных биографий реальных авторов; 91 сомнительные/дублирующие карточки исключены из публичных массивов до подтверждения личности.
 - Ещё 2 карточки с реальными авторами сохранены после исправления чужого ID, ложных дат и связанных полей по библиотечным/университетским источникам.
 - Новых статусов `reviewed`/`verified` этот аудит не выставляет: 0.
 
 ## Почему нельзя сказать «все проверены»
 
-- 1585 из 1678 legacy-текстов не имеют даже writer-level source candidate; у 93 такой кандидат есть, но он не является per-text provenance.
-- У всех 1678 legacy-текстов не записаны способ создания и правовое происхождение. Это отсутствие доказательства в репозитории, а не вывод о нарушении.
-- 1223 текстов не достигают текущего норматива по длине или числу предложений.
+- 1540 из 1633 legacy-текстов не имеют даже writer-level source candidate; у 93 такой кандидат есть, но он не является per-text provenance.
+- У всех 1633 legacy-текстов не записаны способ создания и правовое происхождение. Это отсутствие доказательства в репозитории, а не вывод о нарушении.
+- 627 текстов не достигают текущего норматива по длине или числу предложений.
 - 0 текст — служебный/шаблонный; 0 содержат редакционные фразы вместо биографии.
-- 433 содержат суперлативы вроде «крупнейший» или «один из ведущих», которые требуют отдельного источника или нейтральной переписи.
-- Дословные повторы: 4 карточек в 2 группах. Повторяющиеся ID: 26 карточки в 13 группах.
+- 144 содержат суперлативы вроде «крупнейший» или «один из ведущих», которые требуют отдельного источника или нейтральной переписи.
+- Дословные повторы: 0 карточек в 0 группах. Повторяющиеся ID: 26 карточки в 13 группах.
 - У 25 карточек есть внутренний общий статус reviewed/verified, хотя сама биография не проходит gate. Этот статус не переносится на legacy-текст и не показывается рядом с описанием.
 - 0 legacy-текстов заявляют Нобелевскую премию без структурированного `nobelYear`; это очередь сверки metadata, а не доказанная фактическая ошибка.
 
@@ -36,7 +36,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 - Gate-passing биография остаётся `published` со своими sources/status.
 - Русский legacy получает только внутреннюю QA-классификацию; публично выводится сам текст без маркера статуса.
 - В результате явно записано: fact check — `not-recorded`, provenance — `not-recorded`, rights — `not-recorded`.
-- После 55 точечных замен и карантина 44 identity-risk карточек публичных generic/service placeholder осталось 0.
+- После 55 точечных замен и карантина 91 identity-risk карточек публичных generic/service placeholder осталось 0.
 - Английского fallback нет.
 
 > Публичный интерфейс не сообщает статус legacy-текста. Это не делает текст проверенным: общий статус карточки автора не используется как доказательство статуса биографии, а строгий gate остаётся неизменным.
@@ -45,7 +45,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 
 Проверены только отдельные поля двух записей, а не весь корпус: сведения о Редьярде Киплинге сопоставлены с [официальной страницей Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/1907/kipling/facts/), а сведения о театральной карьере Шекспира — со [страницей Folger Shakespeare Library](https://www.folger.edu/explore/shakespeares-life/). Для Киплинга выбранные поля согласуются с источником. Шекспировская legacy-биография автоматически не promoted: writer-level источник не заменяет per-text provenance и запись способа создания текста.
 
-> Эта выборка из двух записей подтверждает пригодность процесса, но не является проверкой остальных 1721 карточек и не доказывает каждое предложение в двух выбранных текстах.
+> Эта выборка из двух записей подтверждает пригодность процесса, но не является проверкой остальных 1676 карточек и не доказывает каждое предложение в двух выбранных текстах.
 
 ## Точечные исправления служебных биографий
 
@@ -114,8 +114,25 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 
 ## Карантин сомнительных личностей
 
-Из публичной базы временно исключены 44 записи с неверным/дублирующим ID, явной межстрановой служебной связью или без подтверждённого соответствия личности и произведения. Исходные файлы стран не удалены: записи можно вернуть после документированной сверки.
+Из публичной базы временно исключены 91 записи с неверным/дублирующим ID, явной межстрановой служебной связью или без подтверждённого соответствия личности и произведения. Исходные файлы стран не удалены: записи можно вернуть после документированной сверки.
 
+- `portugal:augusto_abreu` — No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927–2011 dates or attributable bibliography.
+- `qatar:ahmad_al_mahmoud` — No authoritative source establishes the claimed male Qatari writer and poet born in 1957; the card risks conflating several different people with similar names.
+- `qatar:jamal_fayiz_al_maliki` — Authoritative Qatari sources identify prose writer Jamal Fayiz Khamis Al-Saeed, born in 1964, not the claimed poet Jamal Fayiz Al-Maliky born in 1953; any remap must be explicit.
+- `eritrea:hadish_haile` — No institutional authority record or attributable bibliography establishes the claimed Eritrean writer.
+- `eritrea:khaled_abdalla` — No institutional catalog establishes the claimed Eritrean literary identity; the name must not be conflated with unrelated people.
+- `eritrea:rebkah_haile` — No institutional authority match establishes this card; it must not be conflated with Ethiopian-American memoirist Rebecca G. Haile.
+- `eswatini:albert_ncube` — No institutional catalog establishes the claimed Eswatini writer and literary role.
+- `eswatini:gladys_lobola` — No institutional catalog establishes the claimed Eswatini author or bibliography.
+- `eswatini:sarah_mlotshwa` — No institutional catalog establishes the claimed Eswatini writer or the works and themes attributed to the card.
+- `eswatini:stanley_madwe` — No institutional catalog establishes the claimed Eswatini poet or literary role.
+- `ethiopia:hirut_kefele` — No institutional authority match establishes the claimed Ethiopian writer, year and literary role.
+- `eritrea:sebhat_gebregziabher` — The card conflates Ethiopian writer Sibhat Gebre-Egziabher with Eritrean general and politician Sebhat Ephrem; its name, dates, country, language and work do not establish one literary identity.
+- `democratic_republic_of_congo:sylvain_bemba` — Sylvain Bemba was born in Sibiti and belongs to the Republic of the Congo corpus; a corrected public card is published there.
+- `democratic_republic_of_congo:tshibumba_kanda_matulu` — Tshibumba Kanda-Matulu is a documented visual artist; History of Zaire is a painting cycle, not a literary work, so the record is not published as a writer.
+- `djibouti:abdourahman_h_yama` — The key/fullName and displayed name conflict, and no institutional catalog establishes the claimed Djiboutian literary identity or bibliography.
+- `comoros:mahmoud_said_ahmed` — No institutional authority record or attributable bibliography establishes the claimed Comorian writer; the card must not be conflated with similarly named artists, historians or writers.
+- `comoros:said_ahmed_mohamed` — The authority identity is the Tanzanian Swahili writer Said Ahmed Mohamed Khamis, now published under Tanzania with corrected dates and birthplace.
 - `cape_verde:virgilio_de_lemos` — The record belongs to the Mozambican poet Virgilio de Lemos; a corrected Mozambique card is published instead.
 - `central_african_republic:benoit_ndemba` — No authoritative identity or bibliographic work match was established in the checked BnF and IdRef catalogs.
 - `chad:felix_tchikaya` — The card likely conflates a supposed Chadian author with the Congolese poet Tchicaya U Tam'si; no separate authority identity was established.
@@ -160,10 +177,40 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 - `laos:douangchandra_souphanouvong` — The Russian name conflicts with the Latin name/id and no authoritative literary identity is recorded.
 - `timor_leste:jorge_barretto_xavier` — No authoritative literary identity or named work is recorded.
 - `vanuatu:nicolas_tewes` — No authoritative literary identity or named work is recorded.
+- `gabon:florentin_moussavou_nzigu` — The exact literary identity, Nzigu name component and attributed bibliography are not established; checked institutional sources instead document a Gabonese public official with a similar name.
+- `gabon:juste_auguste_kotto` — No authoritative literary identity or attributable bibliography was established in the checked BnF and WorldCat catalogs.
+- `gambia:baaba_jobarteh` — The card appears to conflate names from West African musical traditions; no authoritative literary identity or attributable bibliography was established.
+- `grenada:julian_fedon` — Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established.
+- `guinea_bissau:antonio_aurelio_gomes` — No authoritative identity record or attributable bibliography establishes the claimed Guinea-Bissauan writer; the card remains in the internal source archive only.
+- `guyana:roshni_kempadoo` — The card conflates British-Guyanese visual artist Roshini Kempadoo with Guyanese novelist Oonya Kempadoo; the attributed novels Buxton Spice and Tide Running belong to Oonya Kempadoo.
+- `laos:visuth_phommasane` — No independent institutional authority record or attributable bibliography establishes the claimed Lao literary identity; the card remains in the internal source archive only.
+- `lesotho:coleman_motsapi` — No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, dates or literary activity; the card remains in the internal source archive only.
+- `lesotho:letuka_molati` — No authoritative identity record or attributable bibliography establishes the claimed Lesotho writer, birth year or literary activity; the card remains in the internal source archive only.
+- `liberia:marvin_colley` — No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; the card remains in the internal source archive only.
+- `liberia:sylvester_williams` — No authoritative identity record establishes the claimed Liberian poet; the card must not be conflated with Henry Sylvester Williams or other namesakes.
+- `liberia:varney_bangura` — No authoritative identity record or attributable bibliography establishes the claimed Liberian writer; country and identity may be conflated with unrelated namesakes.
+- `liechtenstein:maria_von_burg` — No authoritative identity record or attributable bibliography establishes the claimed Liechtenstein writer and dates; the card must not be conflated with similarly named people.
+- `macau:hou_chio_jan` — No authoritative catalog establishes the claimed Macanese literary identity, date or attributable bibliography.
+- `macau:hou_jingming` — No authoritative catalog establishes the claimed Macanese literary identity; the name must not be conflated with unrelated people or Yao Jingming.
+- `madagascar:elie_charles_abraham` — No authoritative identity record or attributable bibliography establishes the claimed Malagasy writer and the available secondary dates conflict.
+- `madagascar:jean_francois_samlong` — Authoritative profiles identify Jean-François Samlong as a Réunion writer born in Sainte-Marie in 1949, not a Madagascar writer born in 1951.
+- `madagascar:nirina_lua` — No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict.
+- `maldives:amin_jameel` — No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship.
+- `mauritania:hamed_ould_hamdane` — No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity.
+- `monaco:jean_baptiste_barla` — Official French museum records identify Jean-Baptiste Barla (1817–1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer.
+- `namibia:gabi_stolz` — No unique national-library authority record or attributable work establishes Gabi Stolz as the claimed Namibia-linked German-language writer born in 1956.
+- `namibia:gustav_frolich` — German authority records identify Gustav Frölich (1879–1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year.
+- `namibia:ndapewaoshali_shikongo` — A first-party site establishes a Namibian writer using the single name Ndapewoshali, but not the Shikongo surname, 1993 birth year or children's-book identity claimed by this card.
+- `nauru:michael_francis` — The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs.
+- `new_zealand:steven_baker` — The id and displayed name Steven Baker are conflated with Steven Roger Fischer: the attributed works belong to Fischer, while no authoritative source establishes a matching New Zealand writer named Steven Baker.
+- `niger:ibrahim_adam` — No authoritative identity record or attributable bibliography establishes the claimed Nigerien writer, birth year, literary role or works.
+- `oman:zahir_al_ghazali` — No authoritative identity record or attributable bibliography establishes the claimed Omani writer; the card must not be conflated with poet Zahir al-Ghafri.
+- `panama:demetrio_kalleyas` — No authoritative identity record or attributable bibliography establishes the claimed Panamanian writer; the card must not be conflated with poet Demetrio Korsi.
+- `papua_new_guinea:siri_gising` — No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card.
 
 ## Реалистичный план
 
-Начальная очередь — 1665 уникальных legacy `writerId`, минимум 84 партий по 20. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.
+Начальная очередь — 1620 уникальных legacy `writerId`, минимум 81 партий по 20. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.
 
 1. Разрешить каноническую личность, дубли и межстрановые связи.
 2. Проверить по полям даты жизни, языки, национальный контекст и главные произведения.

@@ -38,6 +38,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch44,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch44";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch45,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch45";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1676,6 +1679,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch42,
   ...writerBiographyPublicProfileFactCorrectionsBatch43,
   ...writerBiographyPublicProfileFactCorrectionsBatch44,
+  ...writerBiographyPublicProfileFactCorrectionsBatch45,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1697,6 +1701,9 @@ export type QuarantinedWriterIdentity = {
  * delete the source-country data.
  */
 export const quarantinedWriterIdentities = [
+  ["portugal", "augusto_abreu", "identity-not-established", "No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927–2011 dates or attributable bibliography."],
+  ["qatar", "ahmad_al_mahmoud", "identity-not-established", "No authoritative source establishes the claimed male Qatari writer and poet born in 1957; the card risks conflating several different people with similar names."],
+  ["qatar", "jamal_fayiz_al_maliki", "identity-not-established", "Authoritative Qatari sources identify prose writer Jamal Fayiz Khamis Al-Saeed, born in 1964, not the claimed poet Jamal Fayiz Al-Maliky born in 1953; any remap must be explicit."],
   ["eritrea", "hadish_haile", "identity-not-established", "No institutional authority record or attributable bibliography establishes the claimed Eritrean writer."],
   ["eritrea", "khaled_abdalla", "identity-not-established", "No institutional catalog establishes the claimed Eritrean literary identity; the name must not be conflated with unrelated people."],
   ["eritrea", "rebkah_haile", "identity-not-established", "No institutional authority match establishes this card; it must not be conflated with Ethiopian-American memoirist Rebecca G. Haile."],

@@ -1907,6 +1907,25 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       ],
     },
   ],
+  "republic_of_congo:sony_labou_tansi": [
+    {
+      field: "birthDate",
+      cardValue: "1947-06-05",
+      stagingValue: "1947-07-05",
+      decision: "corrected-card",
+      note: "The card was corrected from 5 July to 5 June using the Bibliothèque nationale de France authority record and the Les Francophonies institutional biography; the stale staging value is not promoted.",
+      sources: [
+        {
+          title: "Sony Labou Tansi — Bibliothèque nationale de France",
+          url: "https://catalogue.bnf.fr/ark:/12148/cb11910402v",
+        },
+        {
+          title: "Sony Labou Tansi — Les Francophonies",
+          url: "https://www.lesfrancophonies.fr/SONY-LABOU-TANSI",
+        },
+      ],
+    },
+  ],
 });
 
 const CLAIM_PATTERNS = {

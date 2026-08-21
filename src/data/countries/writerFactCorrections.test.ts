@@ -257,6 +257,7 @@ describe("curated writer fact resolutions", () => {
       works: [
         "Le Soleil est parti à M’Pemba",
         "L’Homme qui tua le crocodile",
+        "Léopolis",
       ],
     });
     expect(writerByKey("egypt:hamdi_abu_golayyel")?.birthDate).toBe("");
