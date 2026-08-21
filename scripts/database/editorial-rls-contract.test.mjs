@@ -7,6 +7,10 @@ const sqlDirectories = [
   path.join(root, "supabase", "migrations"),
   path.join(root, "supabase", "hotfixes"),
 ];
+const clientErrorMigration = readFileSync(
+  path.join(root, "supabase", "migrations", "20260802_client_errors.sql"),
+  "utf8"
+);
 const editorialTables = [
   "articles",
   "article_tags",
@@ -29,6 +33,21 @@ const editorialTables = [
   "writer_profile_overrides",
   "country_profile_overrides",
   "literary_work_cover_artworks",
+];
+const adminOperationalTables = [
+  "admin_audit_log",
+  "article_revisions",
+  "book_edition_revisions",
+  "client_errors",
+  "country_profile_override_revisions",
+  "homepage_block_revisions",
+  "literary_work_revisions",
+  "page_revisions",
+  "public_build_outbox",
+  "publication_jobs",
+  "site_chrome_revisions",
+  "staff_memberships",
+  "writer_profile_override_revisions",
 ];
 
 function orderedSqlSources() {
@@ -94,12 +113,21 @@ function policyRoles(statement) {
     statement.match(
       /\bto\s+([\s\S]*?)(?=\busing\b|\bwith\s+check\b|;)/iu
     )?.[1] ?? ""
-  );
+  ).trim();
 }
 
 function targetsRole(statement, role) {
   return new RegExp(`(?:^|[\\s,])${role}(?:$|[\\s,])`, "iu").test(
-    policyRoles(statement).trim()
+    policyRoles(statement)
+  );
+}
+
+function targetsAnonymous(statement) {
+  const roles = policyRoles(statement);
+  return (
+    roles.length === 0 ||
+    targetsRole(statement, "public") ||
+    targetsRole(statement, "anon")
   );
 }
 
@@ -138,12 +166,66 @@ describe("editorial RLS contract", () => {
       (policy) =>
         editorialTables.includes(policy.table) &&
         ["all", "insert", "update", "delete"].includes(policy.command) &&
-        targetsRole(policy.statement, "anon")
+        targetsAnonymous(policy.statement)
     );
     expect(
       anonymousWrites.map(
         (policy) => `${policy.table}:${policy.name} (${policy.filename})`
       )
     ).toEqual([]);
+  });
+});
+
+describe("admin operational RLS contract", () => {
+  it("keeps RLS enabled on private operational tables", () => {
+    expect(adminOperationalTables).toHaveLength(13);
+    for (const table of adminOperationalTables) {
+      expect(rlsState.get(table), `${table} must finish with RLS enabled`).toBe(
+        true
+      );
+    }
+  });
+
+  it("keeps an authenticated read path for the administrative application", () => {
+    for (const table of adminOperationalTables) {
+      const authenticatedReads = policies.filter(
+        (policy) =>
+          policy.table === table &&
+          ["all", "select"].includes(policy.command) &&
+          targetsRole(policy.statement, "authenticated")
+      );
+      expect(
+        authenticatedReads,
+        `${table} needs an authenticated SELECT or ALL policy`
+      ).not.toHaveLength(0);
+    }
+  });
+
+  it("does not expose operational tables through anonymous policies", () => {
+    const anonymousPolicies = policies.filter(
+      (policy) =>
+        adminOperationalTables.includes(policy.table) &&
+        targetsAnonymous(policy.statement)
+    );
+
+    expect(
+      anonymousPolicies.map(
+        (policy) =>
+          `${policy.table}:${policy.command}:${policy.name} (${policy.filename})`
+      )
+    ).toEqual([]);
+  });
+
+  it("keeps anonymous client diagnostics behind the bounded RPC", () => {
+    expect(clientErrorMigration).toMatch(
+      /create or replace function public\.submit_client_error\([\s\S]*?security definer set search_path = ''/iu
+    );
+    expect(clientErrorMigration).toContain("if recent_errors >= 12 then");
+    expect(clientErrorMigration).toMatch(
+      /grant execute on function public\.submit_client_error\([\s\S]*?\)\s+to anon, authenticated;/iu
+    );
+    expect(clientErrorMigration).toMatch(
+      /revoke insert, delete on public\.client_errors from anon, authenticated;/iu
+    );
   });
 });
