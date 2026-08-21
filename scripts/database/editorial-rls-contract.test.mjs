@@ -7,6 +7,10 @@ const sqlDirectories = [
   path.join(root, "supabase", "migrations"),
   path.join(root, "supabase", "hotfixes"),
 ];
+const clientErrorMigration = readFileSync(
+  path.join(root, "supabase", "migrations", "20260802_client_errors.sql"),
+  "utf8"
+);
 const editorialTables = [
   "articles",
   "article_tags",
@@ -210,5 +214,18 @@ describe("admin operational RLS contract", () => {
           `${policy.table}:${policy.command}:${policy.name} (${policy.filename})`
       )
     ).toEqual([]);
+  });
+
+  it("keeps anonymous client diagnostics behind the bounded RPC", () => {
+    expect(clientErrorMigration).toMatch(
+      /create or replace function public\.submit_client_error\([\s\S]*?security definer set search_path = ''/iu
+    );
+    expect(clientErrorMigration).toContain("if recent_errors >= 12 then");
+    expect(clientErrorMigration).toMatch(
+      /grant execute on function public\.submit_client_error\([\s\S]*?\)\s+to anon, authenticated;/iu
+    );
+    expect(clientErrorMigration).toMatch(
+      /revoke insert, delete on public\.client_errors from anon, authenticated;/iu
+    );
   });
 });
