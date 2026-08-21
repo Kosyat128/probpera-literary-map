@@ -67,6 +67,8 @@ describe("CMS editorial overrides", () => {
           title: "Название из CMS",
           description: "Описание из CMS",
           firstPublished: 2026,
+          genres: ["роман"] as const,
+          tags: ["проверено"] as const,
           editorialStatus: "verified",
         },
       }
@@ -78,6 +80,8 @@ describe("CMS editorial overrides", () => {
         title: "Название из CMS",
         description: "Описание из CMS",
         firstPublished: 2026,
+        genres: ["роман"],
+        tags: ["проверено"],
         editorial: { status: "verified", reviewedAt: undefined },
       }),
     ]);

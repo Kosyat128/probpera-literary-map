@@ -60,8 +60,8 @@ export type CmsLiteraryWork = {
   originalTitle?: string;
   firstPublished?: number;
   originalLanguage?: string;
-  genres?: string[];
-  tags?: string[];
+  genres?: readonly string[];
+  tags?: readonly string[];
   description?: string;
   sourceUrl?: string;
   editorialStatus: "reviewed" | "verified";
@@ -149,8 +149,8 @@ export function cmsLiteraryWorkProfilesForWriter(
       originalTitle: work.originalTitle || undefined,
       firstPublished: work.firstPublished,
       originalLanguage: work.originalLanguage || undefined,
-      genres: work.genres || [],
-      tags: work.tags || [],
+      genres: [...(work.genres || [])],
+      tags: [...(work.tags || [])],
       description: work.description || undefined,
       sourceUrl: work.sourceUrl || undefined,
       editorial: {
