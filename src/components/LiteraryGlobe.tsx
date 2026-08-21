@@ -1830,9 +1830,7 @@ function GlobeScene({
   return (
     <>
       <RendererResizeSync />
-      {visualStyle !== "modern" && (
-        <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
-      )}
+      <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
       <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight

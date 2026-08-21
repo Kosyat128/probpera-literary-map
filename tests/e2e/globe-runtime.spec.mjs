@@ -93,7 +93,7 @@ test("globe style preview reuses decoded texture assets", async ({
   ).toHaveLength(1);
 });
 
-test("modern and classic keep their surfaces but use distinct star fields", async ({
+test("all globe surfaces use the same seamless star background", async ({
   page,
 }) => {
   await page.goto("/");
@@ -118,8 +118,7 @@ test("modern and classic keep their surfaces but use distinct star fields", asyn
     "border-top-color",
     "rgba(128, 211, 255, 0.72)"
   );
-  expect(
-    await globe.evaluate((element) => ({
+  const modernPresentation = await globe.evaluate((element) => ({
       scene: getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim(),
       background: getComputedStyle(element).backgroundImage,
       controls: getComputedStyle(
@@ -128,14 +127,16 @@ test("modern and classic keep their surfaces but use distinct star fields", asyn
       switcher: getComputedStyle(
         element.querySelector(".globe-style-switch")
       ).backgroundColor,
-    }))
-  ).toMatchObject({
-    scene: "purple-starry",
+      vignette: getComputedStyle(
+        element.querySelector(".globe-vignette")
+      ).boxShadow,
+    }));
+  expect(modernPresentation).toMatchObject({
+    scene: "shared-starry",
     controls: "rgba(30, 9, 45, 0.9)",
     switcher: "rgba(32, 10, 48, 0.92)",
   });
-  expect(await globe.evaluate((element) => getComputedStyle(element).backgroundImage))
-    .toContain("radial-gradient");
+  expect(modernPresentation.background).toContain("radial-gradient");
 
   const classic = page.getByRole("button", { name: "Классический", exact: true });
   await classic.click();
@@ -146,9 +147,33 @@ test("modern and classic keep their surfaces but use distinct star fields", asyn
         getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim()
       )
     )
-    .toBe("cold-starry");
-  expect(await globe.evaluate((element) => getComputedStyle(element).backgroundImage))
-    .toContain("radial-gradient");
+    .toBe("shared-starry");
+  expect(
+    await globe.evaluate((element) => ({
+      background: getComputedStyle(element).backgroundImage,
+      vignette: getComputedStyle(
+        element.querySelector(".globe-vignette")
+      ).boxShadow,
+    }))
+  ).toMatchObject({
+    background: modernPresentation.background,
+    vignette: modernPresentation.vignette,
+  });
+
+  const antique = page.getByRole("button", { name: "Старинный", exact: true });
+  await antique.click();
+  await expect(globe).toHaveAttribute("data-globe-style", "antique");
+  expect(
+    await globe.evaluate((element) => ({
+      background: getComputedStyle(element).backgroundImage,
+      vignette: getComputedStyle(
+        element.querySelector(".globe-vignette")
+      ).boxShadow,
+    }))
+  ).toMatchObject({
+    background: modernPresentation.background,
+    vignette: modernPresentation.vignette,
+  });
 });
 
 test("atlas URL restores selections, supports history and mounts the index on demand", async ({

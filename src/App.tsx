@@ -2775,7 +2775,7 @@ export default function App() {
               />
               <span>
                 <strong>{t("Проба Пера")}</strong>
-                <small>{t("Литературный журнал и мировая энциклопедия")}</small>
+                <small>{t("Литературный журнал")}</small>
               </span>
             </a>
             <p>

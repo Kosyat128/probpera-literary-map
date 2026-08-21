@@ -6,15 +6,24 @@ const publicStyles = readFileSync(
   new URL("../index.css", import.meta.url),
   "utf8"
 );
+const globeSource = readFileSync(
+  new URL("./LiteraryGlobe.tsx", import.meta.url),
+  "utf8"
+);
 
 const sharedSceneStart = publicStyles.indexOf(
-  '.literary-globe[data-globe-style="earth"],\n.literary-globe[data-globe-style="modern"]'
+  '.literary-globe[data-globe-style="antique"],\n.literary-globe[data-globe-style="earth"],\n.literary-globe[data-globe-style="modern"]'
 );
-const earthThemeStart = publicStyles.indexOf(
-  '.literary-globe[data-globe-style="earth"] {',
+const sharedPaletteStart = publicStyles.indexOf(
+  '.literary-globe[data-globe-style="antique"],\n.literary-globe[data-globe-style="earth"],\n.literary-globe[data-globe-style="modern"]',
   sharedSceneStart + 1
 );
-const sharedStarfield = publicStyles.slice(sharedSceneStart, earthThemeStart);
+const sharedPaletteEnd = publicStyles.indexOf(
+  ".literary-globe::before {",
+  sharedPaletteStart + 1
+);
+const sharedStarfield = publicStyles.slice(sharedSceneStart, sharedPaletteStart);
+const sharedPalette = publicStyles.slice(sharedPaletteStart, sharedPaletteEnd);
 const stageThemeStart = publicStyles.lastIndexOf(".world-map-stage {");
 const stageFrameStart = publicStyles.indexOf(
   ".world-map-stage::before {",
@@ -34,7 +43,7 @@ describe("globe scene starfield", () => {
 
   it("renders one irregular field across the full scene without tiled seams", () => {
     expect(sharedSceneStart).toBeGreaterThan(-1);
-    expect(earthThemeStart).toBeGreaterThan(sharedSceneStart);
+    expect(sharedPaletteStart).toBeGreaterThan(sharedSceneStart);
     expect(
       sharedStarfield.match(/radial-gradient\(circle at/g)?.length
     ).toBeGreaterThanOrEqual(30);
@@ -51,9 +60,30 @@ describe("globe scene starfield", () => {
     expect(stageFrame).not.toMatch(/linear-gradient\([^)]*50%/);
   });
 
-  it("keeps separate purple and cold palettes without animating the field", () => {
-    expect(publicStyles).toContain("--globe-scene-theme: purple-starry");
-    expect(publicStyles).toContain("--globe-scene-theme: cold-starry");
+  it("gives every globe mode the exact same visible background palette", () => {
+    expect(sharedPaletteEnd).toBeGreaterThan(sharedPaletteStart);
+    expect(sharedPalette).toContain("--globe-scene-theme: shared-starry");
+    expect(sharedPalette).toContain("--globe-star-bright: rgba(255, 252, 247, 0.88)");
+    expect(sharedPalette).toContain("--globe-star-cool: rgba(178, 215, 255, 0.72)");
+    expect(sharedPalette).toContain(
+      "--globe-scene-base: linear-gradient(155deg, #271039 0%, #180722 56%, #100418 100%)"
+    );
+    expect(sharedPalette).not.toContain("#132c39");
+    expect(publicStyles).not.toContain("--globe-scene-theme: purple-starry");
+    expect(publicStyles).not.toContain("--globe-scene-theme: cold-starry");
     expect(sharedStarfield).not.toContain("animation:");
+  });
+
+  it("keeps the WebGL sky and vignette identical in all three modes", () => {
+    expect(globeSource).toContain(
+      "<MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />"
+    );
+    expect(globeSource).not.toContain('visualStyle !== "modern" &&');
+    expect(publicStyles).not.toContain(
+      '[data-globe-style="modern"] .globe-vignette'
+    );
+    expect(publicStyles).not.toContain(
+      '[data-globe-style="earth"] .globe-vignette'
+    );
   });
 });
