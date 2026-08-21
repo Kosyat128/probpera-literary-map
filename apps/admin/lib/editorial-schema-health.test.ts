@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  CURRENT_EDITORIAL_SCHEMA_VERSION,
   EDITORIAL_SCHEMA_REQUIRED_FLAGS,
   getMissingEditorialSchemaCapabilities,
   isEditorialSchemaReady,
@@ -7,7 +8,7 @@ import {
 } from "./editorial-schema-health";
 
 const completeHealth: EditorialSchemaHealth = {
-  version: "20260820_literary_work_cover_artworks",
+  version: CURRENT_EDITORIAL_SCHEMA_VERSION,
   outbox: true,
   outboxRpc: true,
   migrationLedger: true,
@@ -41,6 +42,21 @@ describe("editorial schema health", () => {
       delete withoutField[field];
       expect(isEditorialSchemaReady(withoutField)).toBe(false);
     }
+  });
+
+  it("rejects missing and stale schema health versions", () => {
+    expect(
+      getMissingEditorialSchemaCapabilities({
+        ...completeHealth,
+        version: "20260814_publication_outbox_and_schema_health",
+      })
+    ).toContain("актуальная версия схемы");
+    expect(
+      isEditorialSchemaReady({
+        ...completeHealth,
+        version: undefined,
+      })
+    ).toBe(false);
   });
 
   it("names the database capabilities that still need attention", () => {
