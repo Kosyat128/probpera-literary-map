@@ -25,6 +25,13 @@ const reviewedMigrations = [
   ["20260820_literary_work_cover_artworks.sql", "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"],
 ];
 
+const reviewedHotfixes = [
+  [
+    "20260821_articles_staff_read_rls.sql",
+    "e148b1f35cc49e1ed1eeb3bd116b625bfcd1784e7c32f6ee3baacc3f345cc82b",
+  ],
+];
+
 function fail(message) {
   throw new Error(`Production migration plan rejected: ${message}`);
 }
@@ -245,6 +252,24 @@ ${values}
     raise exception 'Article translation coverage invariant failed';
   end if;
 
+  if (
+    select count(*)
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and cmd = 'SELECT'
+      and roles = array['authenticated'::name]
+      and position('is_staff' in coalesce(qual, '')) > 0
+      and (
+        (tablename = 'articles' and policyname = 'Staff read articles')
+        or (
+          tablename = 'article_translations'
+          and policyname = 'Staff read article translations'
+        )
+      )
+  ) <> 2 then
+    raise exception 'Staff article read policies are missing after reconciliation';
+  end if;
+
   select count(*) into outbox_triggers
   from pg_catalog.pg_trigger outbox_trigger
   join pg_catalog.pg_class relation on relation.oid = outbox_trigger.tgrelid
@@ -363,6 +388,21 @@ function main() {
       source,
     };
   });
+  const hotfixes = reviewedHotfixes.map(([filename, expectedDigest]) => {
+    const hotfixPath = path.join(
+      repositoryRoot,
+      "supabase",
+      "hotfixes",
+      filename
+    );
+    const source = readFileSync(hotfixPath, "utf8").replaceAll("\r\n", "\n");
+    const digest = sha256(source);
+    if (digest !== expectedDigest) {
+      fail(`${filename} does not match its reviewed SHA-256`);
+    }
+    assertStaticSafety(filename, source);
+    return { filename, digest, source };
+  });
 
   const plan = [
     "-- Generated from the reviewed production migration allowlist.",
@@ -375,6 +415,11 @@ function main() {
       `\n-- BEGIN REVIEWED MIGRATION: ${filename}`,
       source.trimEnd(),
       `-- END REVIEWED MIGRATION: ${filename}\n`,
+    ]),
+    ...hotfixes.flatMap(({ filename, source }) => [
+      `\n-- BEGIN REVIEWED HOTFIX: ${filename}`,
+      source.trimEnd(),
+      `-- END REVIEWED HOTFIX: ${filename}\n`,
     ]),
     buildLedgerWrite(migrations, arguments_.repositorySha),
     buildInvariants(migrations),
@@ -391,6 +436,10 @@ function main() {
         migrations: migrations.map(({ filename, version, digest }) => ({
           filename,
           version,
+          sha256: digest,
+        })),
+        hotfixes: hotfixes.map(({ filename, digest }) => ({
+          filename,
           sha256: digest,
         })),
       },
