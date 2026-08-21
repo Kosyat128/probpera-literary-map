@@ -1,3 +1,8 @@
+import {
+  getMissingEditorialSchemaCapabilities,
+  isEditorialSchemaReady,
+  type EditorialSchemaHealth,
+} from "@/lib/editorial-schema-health";
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { setDiagnosticStatusAction } from "./actions";
@@ -12,20 +17,6 @@ type Diagnostic = {
   source: string;
   status: string;
   created_at: string;
-};
-
-type EditorialSchemaHealth = {
-  version?: string;
-  outbox?: boolean;
-  outboxRpc?: boolean;
-  publicationTriggers?: boolean;
-  pendingPublicBuilds?: number;
-  revisionHistory?: boolean;
-  workTranslations?: boolean;
-  countryOverrides?: boolean;
-  writerOverrides?: boolean;
-  homepageMove?: boolean;
-  tagsUpdatedAt?: boolean;
 };
 
 export default async function HealthPage() {
@@ -44,17 +35,22 @@ export default async function HealthPage() {
     schemaHealthData && typeof schemaHealthData === "object"
       ? (schemaHealthData as EditorialSchemaHealth)
       : null;
-  const schemaReady = Boolean(
-    schemaHealth?.outbox &&
-      schemaHealth.outboxRpc &&
-      schemaHealth.publicationTriggers &&
-      schemaHealth.revisionHistory &&
-      schemaHealth.workTranslations &&
-      schemaHealth.countryOverrides &&
-      schemaHealth.writerOverrides &&
-      schemaHealth.homepageMove &&
-      schemaHealth.tagsUpdatedAt
-  );
+  const schemaReady = isEditorialSchemaReady(schemaHealth);
+  const missingSchemaCapabilities =
+    getMissingEditorialSchemaCapabilities(schemaHealth);
+  const schemaCheckAvailable = !schemaHealthError && Boolean(schemaHealth);
+  const schemaStatusLabel = !schemaCheckAvailable
+    ? "Проверка недоступна"
+    : schemaReady
+      ? "Готова"
+      : "Требует миграций";
+  const schemaStatusDetail = schemaReady
+    ? schemaHealth?.version || "актуальная версия"
+    : schemaHealthError
+      ? "health-check недоступен"
+      : schemaHealth
+        ? `Не готовы: ${missingSchemaCapabilities.join(", ")}`
+        : "версия не определена";
   const grouped = new Map<string, { latest: Diagnostic; count: number }>();
   for (const item of (data || []) as Diagnostic[]) {
     const current = grouped.get(item.fingerprint);
@@ -69,7 +65,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Открыто</span><strong>{openCount || 0}</strong><small>требуют внимания</small></article>
       <article className="stat-card"><span>За 24 часа</span><strong>{recentCount || 0}</strong><small>включая повторения</small></article>
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
-      <article className="stat-card"><span>Схема CMS</span><strong>{schemaReady ? "Готова" : "Требует миграций"}</strong><small>{schemaHealth?.version || (schemaHealthError ? "health-check недоступен" : "версия не определена")}</small></article>
+      <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "—"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
     </section>
     <section className="panel">
