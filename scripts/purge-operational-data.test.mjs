@@ -86,7 +86,9 @@ describe("operational data retention", () => {
       "in.(resolved,ignored)"
     );
     expect(new URL(calls[1].url).searchParams.get("status")).toBe("eq.open");
-    expect(new URL(calls[2].url).pathname).toEndWith("/content_views");
+    expect(new URL(calls[2].url).pathname.endsWith("/content_views")).toBe(
+      true
+    );
   });
 
   it("fails closed in Actions when the service credentials are absent", async () => {
