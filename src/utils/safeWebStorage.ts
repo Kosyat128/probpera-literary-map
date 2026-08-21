@@ -81,8 +81,12 @@ function createResilientStorage(primary: Storage | null): Storage {
     },
     setItem(key: string, value: string) {
       removed.delete(key);
+      if (!primary) {
+        overlay.set(key, value);
+        return;
+      }
       try {
-        primary?.setItem(key, value);
+        primary.setItem(key, value);
         overlay.delete(key);
       } catch {
         // Preserve the current-page experience when persistence is blocked or
