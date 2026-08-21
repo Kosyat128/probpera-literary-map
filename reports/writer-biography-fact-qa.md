@@ -1,6 +1,6 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:6c2b2d8a0715b2da0fc7aaea293f5328795db2d3fcd43a0d14f2ad45df7c152d`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:6d38b728ff21930150397fe454cf8917c1771cf40302d31d4ad83e50b6f44c81`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
@@ -9,8 +9,8 @@
 - Карточек и русских bio проверено алгоритмом: 1681; bio присутствует: 1681.
 - Надёжных identity-match с локальным staging: 232.
 - Из них source-confirmed structured cross-check: 231 (13.7%).
-- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1166 (69.4% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 90.
-- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1633; совместимы при общей precision: 174; несовместимых строк после curated resolutions: 69. Из них 20 сначала требуют identity repair, а 31 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1165 (69.3% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 91.
+- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1632; совместимы при общей precision: 176; несовместимых строк после curated resolutions: 68. Из них 20 сначала требуют identity repair, а 30 — современные referenced-противоречия для проверки по авторитетному источнику.
 - Ручных source-resolution с сохранёнными доказательствами: 70 в 57 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
@@ -20,19 +20,19 @@
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 134
-- `critical-ranking`: 173
-- `identity-role`: 1628
-- `language`: 189
-- `life-dates`: 369
-- `movement-era`: 83
-- `national-cultural-affiliation`: 1059
-- `nobel`: 111
+- `awards`: 130
+- `critical-ranking`: 159
+- `identity-role`: 1630
+- `language`: 188
+- `life-dates`: 398
+- `movement-era`: 84
+- `national-cultural-affiliation`: 1062
+- `nobel`: 112
 - `places`: 23
-- `priority-claim`: 125
-- `reception-influence`: 40
-- `themes-style`: 315
-- `works`: 1156
+- `priority-claim`: 124
+- `reception-influence`: 38
+- `themes-style`: 323
+- `works`: 1175
 
 ## High-confidence противоречия
 
@@ -129,7 +129,7 @@
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1166. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1165. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -155,7 +155,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `north_korea:ri_ki_yong` | Ли Ги Ён | `Q485218` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1895` | 1896-05-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q485218 |
 | `pakistan:intizar_husain` | Интизар Хусейн | `Q6057750` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1923-12-21` | 1925-12-21 (day, Q1985727, normal, refs:2); 1923-12-07 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q6057750 |
 | `panama:ricardo_miro` | Рикардо Миро | `Q5573605` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1883-11-05` | 1882-11-05 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q5573605 |
-| `peru:santiago_roncagliolo` | Сантьяго Ронкальоло | `Q1399637` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1975-07-29` | 1975-03-29 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q1399637 |
 | `romania:mircea_eliade` | Мирча Элиаде | `Q41590` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1907-03-13` | 1907-03-09 (day, Q1985786, normal, refs:7) | https://www.wikidata.org/wiki/Q41590 |
 | `russia:kantemir` | Антиох Дмитриевич Кантемир | `Q372115` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1708-09-10` | 1708-09-21 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q372115 |
 | `russia:mandelstam` | Осип Эмильевич Мандельштам | `Q189950` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1891-01-15` | 1891-01-02 (day, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q189950 |

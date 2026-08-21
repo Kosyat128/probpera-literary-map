@@ -51,6 +51,9 @@ import {
   writerBiographyPublicProfileFactCorrectionsBatch43,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch43";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch44,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch44";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -77,13 +80,14 @@ describe("legacy writer biography curation", () => {
       "writerBiographyPublicProfileFactCorrectionsBatch41.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch42.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch43.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch44.ts",
       "writerBiographyLegacyCorrections.ts",
     ].map((fileName) =>
       readFileSync(new URL(fileName, import.meta.url), "utf8")
     );
 
     for (const source of runtimeSources) {
-      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43)/);
+      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44)/);
     }
   });
 
@@ -91,7 +95,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
     expect(quarantinedWriterIdentities).toHaveLength(88);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(423);
+    expect(writerPublicProfileFactCorrections).toHaveLength(463);
     expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
     expect(writerBiographyPublicProfileFactCorrectionsBatch33).toHaveLength(14);
     expect(writerBiographyPublicProfileFactCorrectionsBatch34).toHaveLength(17);
@@ -104,6 +108,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyPublicProfileFactCorrectionsBatch41).toHaveLength(36);
     expect(writerBiographyPublicProfileFactCorrectionsBatch42).toHaveLength(38);
     expect(writerBiographyPublicProfileFactCorrectionsBatch43).toHaveLength(37);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch44).toHaveLength(40);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -503,7 +508,7 @@ describe("legacy writer biography curation", () => {
     });
   });
 
-  it("publishes compact source-backed profile patches for batches 36–43", () => {
+  it("publishes compact source-backed profile patches for batches 36–44", () => {
     const publicWriters = new Map(
       countries.flatMap((country) =>
         country.writers.map((writer) => [key(country.id, writer.id), writer])
@@ -541,6 +546,10 @@ describe("legacy writer biography curation", () => {
       {
         corrections: writerBiographyPublicProfileFactCorrectionsBatch43,
         checkedAt: "2026-08-20",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch44,
+        checkedAt: "2026-08-21",
       },
     ] as const;
 

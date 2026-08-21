@@ -1,7 +1,7 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:6c2b2d8a0715b2da0fc7aaea293f5328795db2d3fcd43a0d14f2ad45df7c152d",
+  "sourceFingerprint": "sha256:6d38b728ff21930150397fe454cf8917c1771cf40302d31d4ad83e50b6f44c81",
   "scope": {
     "corpus": "stored short Russian writer biographies",
     "cardsAudited": 1681,
@@ -15,41 +15,41 @@
     "writerCards": 1681,
     "biographiesPresent": 1681,
     "claimTypeCounts": {
-      "awards": 134,
-      "critical-ranking": 173,
-      "identity-role": 1628,
-      "language": 189,
-      "life-dates": 369,
-      "movement-era": 83,
-      "national-cultural-affiliation": 1059,
-      "nobel": 111,
+      "awards": 130,
+      "critical-ranking": 159,
+      "identity-role": 1630,
+      "language": 188,
+      "life-dates": 398,
+      "movement-era": 84,
+      "national-cultural-affiliation": 1062,
+      "nobel": 112,
       "places": 23,
-      "priority-claim": 125,
-      "reception-influence": 40,
-      "themes-style": 315,
-      "works": 1156
+      "priority-claim": 124,
+      "reception-influence": 38,
+      "themes-style": 323,
+      "works": 1175
     },
     "reliableStagingIdentityMatches": 232,
     "sourceConfirmedStructuredCrossChecks": 231,
     "sourceConfirmedCoveragePercent": 13.7,
     "wikidataSnapshotCandidateRecords": 1263,
-    "wikidataIdentityCorroboratedRecords": 1166,
+    "wikidataIdentityCorroboratedRecords": 1165,
     "wikidataIdentityDiscrepantRecords": 7,
-    "wikidataIdentityReviewRequiredRecords": 90,
-    "wikidataStructuredTriageCoveragePercent": 69.4,
+    "wikidataIdentityReviewRequiredRecords": 91,
+    "wikidataStructuredTriageCoveragePercent": 69.3,
     "wikidataDateFieldsCompared": 2072,
-    "wikidataExactGregorianDateMatches": 1633,
-    "wikidataSharedPrecisionMatches": 174,
+    "wikidataExactGregorianDateMatches": 1632,
+    "wikidataSharedPrecisionMatches": 176,
     "wikidataCalendarUnresolvedMatches": 67,
     "wikidataAlternateRankMatches": 26,
-    "wikidataUnresolvedDateDiscrepancies": 69,
-    "wikidataModernReferencedDateContradictions": 31,
+    "wikidataUnresolvedDateDiscrepancies": 68,
+    "wikidataModernReferencedDateContradictions": 30,
     "wikidataLikelyBadQidOrIdentityDateRows": 20,
     "wikidataTriageClassificationCounts": {
       "a:calendar-equivalent": 89,
-      "b:lower-precision-compatible": 174,
+      "b:lower-precision-compatible": 176,
       "c:likely-bad-qid-mapping-or-identity": 20,
-      "d:date-contradiction-requiring-authoritative-source": 49
+      "d:date-contradiction-requiring-authoritative-source": 48
     },
     "wikidataLiteraryOccupationCorroborations": 1244,
     "manuallyResolvedRecords": 57,
@@ -61,9 +61,9 @@
     "metadataGapIssues": 247,
     "recordsNeedingHumanClaimSources": 1661,
     "priorityCounts": {
-      "P1": 437,
-      "P2": 164,
-      "P3": 1080
+      "P1": 424,
+      "P2": 166,
+      "P3": 1091
     },
     "matchMethodCounts": {
       "curated-key-to-wikidata-id": 229,
@@ -109,9 +109,9 @@
     "publicCorpusCoveragePercent": 75.1,
     "curatedCardsAlreadyPresentInStaging": 229,
     "publicCardsWithSnapshotEntity": 1263,
-    "identityCorroboratedPublicCards": 1166,
+    "identityCorroboratedPublicCards": 1165,
     "identityDiscrepantPublicCards": 7,
-    "identityReviewRequiredPublicCards": 90,
+    "identityReviewRequiredPublicCards": 91,
     "curatedCardsMissingCompactSnapshot": 0,
     "publicCardsWithoutCuratedQid": 418,
     "implementationStatus": "checked-in-offline-snapshot-active",
@@ -2394,42 +2394,6 @@
       "nearestYearDistance": 1,
       "otherFieldCorroboratesIdentity": true,
       "modern": false,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "peru:santiago_roncagliolo",
-      "name": "Сантьяго Ронкальоло",
-      "qid": "Q1399637",
-      "field": "birthDate",
-      "cardValue": "1975-07-29",
-      "bestRankClaims": [
-        {
-          "value": "1975-03-29",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 2,
-          "claimId": "Q1399637$B4C3E96E-D9BF-4C55-8750-A1C5FADDD24B"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q1399637",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Santiago Roncagliolo",
-        "ru": "Сантьяго Ронкальоло"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
-      "modern": true,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
     },
@@ -6217,6 +6181,26 @@
       "classification": "lower-precision-compatible"
     },
     {
+      "key": "peru:fernando_iwasaki",
+      "name": "Фернандо Ивасаки",
+      "qid": "Q2387475",
+      "field": "birthDate",
+      "cardValue": "1961",
+      "snapshotValue": "1961-06-05",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
+      "key": "peru:ivan_thays",
+      "name": "Иван Тайс",
+      "qid": "Q2565081",
+      "field": "birthDate",
+      "cardValue": "1968",
+      "snapshotValue": "1968-10-21",
+      "classificationCode": "b",
+      "classification": "lower-precision-compatible"
+    },
+    {
       "key": "portugal:helia_correa",
       "name": "Элия Коррея",
       "qid": "Q5964177",
@@ -8099,42 +8083,6 @@
       "birthYearIdentityStatus": "match",
       "nearestYearDistance": 0,
       "otherFieldCorroboratesIdentity": true,
-      "modern": true,
-      "referenced": true,
-      "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
-    },
-    {
-      "key": "peru:santiago_roncagliolo",
-      "name": "Сантьяго Ронкальоло",
-      "qid": "Q1399637",
-      "field": "birthDate",
-      "cardValue": "1975-07-29",
-      "bestRankClaims": [
-        {
-          "value": "1975-03-29",
-          "precision": "day",
-          "calendarId": "Q1985727",
-          "rank": "normal",
-          "referenced": true,
-          "referenceCount": 2,
-          "claimId": "Q1399637$B4C3E96E-D9BF-4C55-8750-A1C5FADDD24B"
-        }
-      ],
-      "sourceUrl": "https://www.wikidata.org/wiki/Q1399637",
-      "classificationCode": "d",
-      "classification": "date-contradiction-requiring-authoritative-source",
-      "classificationConfidence": "high-triage",
-      "reason": "The curated identity is not disproved, but the date values conflict. Review the Wikidata references and an authoritative national, publisher, archival, or library source before editing.",
-      "yearConflict": false,
-      "identityValidationStatus": "identity-corroborated",
-      "entityLabels": {
-        "en": "Santiago Roncagliolo",
-        "ru": "Сантьяго Ронкальоло"
-      },
-      "labelIdentityMatch": true,
-      "birthYearIdentityStatus": "match",
-      "nearestYearDistance": 0,
-      "otherFieldCorroboratesIdentity": false,
       "modern": true,
       "referenced": true,
       "safeAction": "Compare the claim references with an authoritative national or library source; do not auto-rewrite the card from Wikidata."
@@ -11960,6 +11908,27 @@
         1882
       ],
       "birthYearIdentityStatus": "conflict",
+      "humanClaimPresent": true,
+      "literaryOccupationIds": [
+        "Q36180",
+        "Q49757"
+      ],
+      "safeAction": "Keep this as a candidate mapping only; validate the identity with an authority ID or an authoritative biographical source."
+    },
+    {
+      "key": "paraguay:manuel_ortiz_guerrero",
+      "name": "Мануэль Ортис Герреро",
+      "qid": "Q6321725",
+      "entityLabels": {
+        "en": "Manuel Ortiz Guerrero",
+        "ru": "Мануэль Ортис Герреро"
+      },
+      "labelIdentityMatch": true,
+      "cardBirthYear": null,
+      "wikidataBirthYears": [
+        1897
+      ],
+      "birthYearIdentityStatus": "not-comparable",
       "humanClaimPresent": true,
       "literaryOccupationIds": [
         "Q36180",
@@ -18235,101 +18204,14 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "paraguay:manuel_ortiz_guerrero",
-      "name": "Мануэль Ортис Герреро",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "paraguay:rafael_barrett",
-      "name": "Рафаэль Баррет",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "peru:claudia_salazar_jimenez",
-      "name": "Клаудия Салазар Хименес",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "peru:jose_watanabe",
-      "name": "Хосе Ватанабе",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "peru:juan_espinosa_medrano",
-      "name": "Хуан Эспиноса Медрано",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "peru:julio_ramon_ribeyro",
-      "name": "Хулио Рамон Рибейро",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "themes-style"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
       "key": "peru:mario_bellatin",
       "name": "Марио Беллатин",
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "critical-ranking",
         "identity-role",
         "national-cultural-affiliation",
+        "priority-claim",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -18342,94 +18224,24 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "nobel",
+        "themes-style"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "philippines:miguel_syjuco",
+      "name": "Мигель Сихуко",
+      "priority": "P1",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
         "awards",
-        "critical-ranking",
         "identity-role",
-        "national-cultural-affiliation",
-        "nobel"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "peru:santiago_roncagliolo",
-      "name": "Сантьяго Ронкальоло",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation",
-        "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "philippines:edith_tiempo",
-      "name": "Эдит Тиампо",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "language"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "philippines:f_sionil_jose",
-      "name": "Ф. Сионил Хосе",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "not-mapped"
-    },
-    {
-      "key": "philippines:francisco_balagtas",
-      "name": "Франсиско Балагтас",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "language",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "philippines:nick_joaquin",
-      "name": "Ник Хоакин",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "works"
-      ],
-      "reliableStagingIdentity": true,
-      "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "poland:adam_mickiewicz",
-      "name": "Адам Мицкевич",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "movement-era",
-        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -18442,9 +18254,9 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "national-cultural-affiliation",
-        "nobel"
+        "nobel",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -18456,26 +18268,13 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "national-cultural-affiliation",
-        "nobel"
+        "nobel",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "poland:jan_kochanowski",
-      "name": "Ян Кохановский",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "identity-role",
-        "national-cultural-affiliation",
-        "priority-claim"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
@@ -18484,24 +18283,10 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
         "identity-role",
         "national-cultural-affiliation",
+        "nobel",
         "works"
-      ],
-      "reliableStagingIdentity": false,
-      "sourceConfirmedStructuredCrossCheck": false,
-      "wikidataIdentityValidationStatus": "identity-corroborated"
-    },
-    {
-      "key": "poland:stanislaw_lem",
-      "name": "Станислав Лем",
-      "priority": "P1",
-      "issueCodes": [],
-      "claimsRequiringHumanSources": [
-        "critical-ranking",
-        "identity-role",
-        "national-cultural-affiliation"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -18513,9 +18298,12 @@
       "priority": "P1",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "awards",
+        "language",
         "national-cultural-affiliation",
-        "nobel"
+        "nobel",
+        "reception-influence",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": true,
       "sourceConfirmedStructuredCrossCheck": true,
@@ -18528,6 +18316,8 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "awards",
+        "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "nobel",
         "themes-style",
@@ -23826,6 +23616,31 @@
     {
       "key": "palestine:mahmoud_darwish",
       "name": "Махмуд Дарвиш",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "philippines:francisco_balagtas",
+      "name": "Франсиско Балагтас",
+      "priority": "P2",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "language",
+        "works"
+      ],
+      "reliableStagingIdentity": true,
+      "sourceConfirmedStructuredCrossCheck": true,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "philippines:nick_joaquin",
+      "name": "Ник Хоакин",
       "priority": "P2",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
@@ -36105,13 +35920,28 @@
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
+      "key": "paraguay:manuel_ortiz_guerrero",
+      "name": "Мануэль Ортис Герреро",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-review-required"
+    },
+    {
       "key": "paraguay:mario_ruben_alvarez",
       "name": "Марио Рубен Альварес",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language"
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36123,19 +35953,38 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role"
+        "identity-role",
+        "life-dates",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
-      "key": "paraguay:rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "key": "paraguay:rafael_barrett",
+      "name": "Рафаэль Баррет",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "paraguay:rubén_bareiro_saguier",
+      "name": "Рубен Барейро Сагьер",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36148,7 +35997,7 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "themes-style",
         "works"
@@ -36164,14 +36013,29 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language",
+        "life-dates",
+        "movement-era",
         "national-cultural-affiliation",
-        "reception-influence",
-        "themes-style"
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "peru:claudia_salazar_jimenez",
+      "name": "Клаудия Салазар Хименес",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "peru:eduardo_gonzalez_viana",
@@ -36195,7 +36059,7 @@
       "claimsRequiringHumanSources": [
         "identity-role",
         "national-cultural-affiliation",
-        "reception-influence"
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36208,7 +36072,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36221,7 +36087,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36234,12 +36102,45 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "language",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "peru:jose_watanabe",
+      "name": "Хосе Ватанабе",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "peru:juan_espinosa_medrano",
+      "name": "Хуан Эспиноса Медрано",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
     },
     {
       "key": "peru:julio_ortega",
@@ -36249,11 +36150,28 @@
       "claimsRequiringHumanSources": [
         "identity-role",
         "national-cultural-affiliation",
+        "themes-style",
         "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
       "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "peru:julio_ramon_ribeyro",
+      "name": "Хулио Рамон Рибейро",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
       "key": "peru:manuel_gonzalez_prada",
@@ -36262,7 +36180,9 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "national-cultural-affiliation"
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36275,6 +36195,7 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -36289,6 +36210,7 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -36297,12 +36219,13 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "philippines:jose_rizal",
-      "name": "Хосе Рисаль",
+      "key": "peru:santiago_roncagliolo",
+      "name": "Сантьяго Ронкальоло",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
+        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36310,13 +36233,58 @@
       "wikidataIdentityValidationStatus": "identity-corroborated"
     },
     {
-      "key": "philippines:miguel_syjuco",
-      "name": "Мигель Сихуко",
+      "key": "philippines:edith_tiempo",
+      "name": "Эдит Тьемпо",
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "reception-influence",
+        "life-dates",
+        "themes-style"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "philippines:f_sionil_jose",
+      "name": "Ф. Сионил Хосе",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "not-mapped"
+    },
+    {
+      "key": "philippines:jose_rizal",
+      "name": "Хосе Рисаль",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "poland:adam_mickiewicz",
+      "name": "Адам Мицкевич",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "movement-era",
+        "national-cultural-affiliation",
         "works"
       ],
       "reliableStagingIdentity": false,
@@ -36329,8 +36297,27 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
-        "movement-era",
-        "national-cultural-affiliation"
+        "identity-role",
+        "life-dates",
+        "national-cultural-affiliation",
+        "themes-style",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "poland:jan_kochanowski",
+      "name": "Ян Кохановский",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "language",
+        "life-dates",
+        "national-cultural-affiliation",
+        "works"
       ],
       "reliableStagingIdentity": false,
       "sourceConfirmedStructuredCrossCheck": false,
@@ -36343,7 +36330,7 @@
       "issueCodes": [],
       "claimsRequiringHumanSources": [
         "identity-role",
-        "language",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -36357,6 +36344,24 @@
       "priority": "P3",
       "issueCodes": [],
       "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
+        "movement-era",
+        "national-cultural-affiliation",
+        "works"
+      ],
+      "reliableStagingIdentity": false,
+      "sourceConfirmedStructuredCrossCheck": false,
+      "wikidataIdentityValidationStatus": "identity-corroborated"
+    },
+    {
+      "key": "poland:stanislaw_lem",
+      "name": "Станислав Лем",
+      "priority": "P3",
+      "issueCodes": [],
+      "claimsRequiringHumanSources": [
+        "identity-role",
+        "life-dates",
         "national-cultural-affiliation",
         "works"
       ],
@@ -184876,25 +184881,25 @@
       "name": "Мануэль Ортис Герреро",
       "biography": {
         "present": true,
-        "sha256": "a03a32ed33e6db861b6e44c56f6b1e7416965711d7c576ff0ba9c41144ed0d91",
-        "characters": 173,
+        "sha256": "ae2bf6bc2e101beb01c0c4ff8ffbcebe22e696ace76646d94510dc2d094a6cfa",
+        "characters": 222,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "themes-style"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -184919,13 +184924,13 @@
           "ru": "Мануэль Ортис Герреро"
         },
         "labelIdentityMatch": true,
-        "cardBirthYear": 1897,
+        "cardBirthYear": null,
         "wikidataBirthYears": [
           1897
         ],
-        "birthYearIdentityStatus": "match",
-        "nearestBirthYearDistance": 0,
-        "identityValidationStatus": "identity-corroborated",
+        "birthYearIdentityStatus": "not-comparable",
+        "nearestBirthYearDistance": null,
+        "identityValidationStatus": "identity-review-required",
         "manualIdentityConfirmation": null,
         "publicPortrait": "assets/writer-portraits/q6321725.webp",
         "publicPortraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Manuel_Ortiz_Guerrero_de_joven.jpg",
@@ -184944,17 +184949,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1897-07-16",
-            "matchedClaim": {
-              "value": "1897-07-16",
-              "precision": "day",
-              "calendarId": "Q1985727",
-              "rank": "normal",
-              "referenced": true,
-              "referenceCount": 1,
-              "claimId": "Q6321725$261778DF-A76D-443C-B207-F2907D1205AB"
-            },
+            "status": "no-card-date",
+            "cardValue": null,
             "bestRankClaims": [
               {
                 "value": "1897-07-16",
@@ -184965,8 +184961,7 @@
                 "referenceCount": 1,
                 "claimId": "Q6321725$261778DF-A76D-443C-B207-F2907D1205AB"
               }
-            ],
-            "allClaimCount": 1
+            ]
           },
           "deathDate": {
             "status": "exact-gregorian-match",
@@ -184997,7 +184992,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -185016,23 +185011,25 @@
       "name": "Марио Рубен Альварес",
       "biography": {
         "present": true,
-        "sha256": "55408aecd40537d77960cc83fea6434e35581ba7150c2fc5f9c7ef38423858bc",
-        "characters": 143,
-        "sentenceCount": 2
+        "sha256": "5648181098b1844c534e532d4e75ab37c8baa5c192a27733441505dd8faba95e",
+        "characters": 261,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "language"
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language"
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185072,21 +185069,33 @@
       "name": "Наталисио Гонсалес",
       "biography": {
         "present": true,
-        "sha256": "e1ddc45d517759e481badaae12193136b4ce3ecc438164e02ac114b0c4eec45f",
-        "characters": 183,
+        "sha256": "742d9cf21396a02b8bf50958a9f0bf4559b0f40b52c7f3c8a3e4499ef94299c2",
+        "characters": 298,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "El Paraguay eterno"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1897,
+            "deathYear": 1966,
+            "text": "1897–1966"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185126,23 +185135,33 @@
       "name": "Рафаэль Баррет",
       "biography": {
         "present": true,
-        "sha256": "083aa26f01a0e195c3805d6aead05bb06a9b6b7be047b96bec91c71ab8628b85",
-        "characters": 192,
-        "sentenceCount": 3
+        "sha256": "1670810cab8030cfe87791f785cedb51996113be6e1369881403e8902f282e11",
+        "characters": 252,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1876,
+            "deathYear": 1910,
+            "text": "1876–1910"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185244,7 +185263,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -185260,25 +185279,37 @@
       "countryId": "paraguay",
       "countryName": "Парагвай",
       "writerId": "rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "name": "Рубен Барейро Сагьер",
       "biography": {
         "present": true,
-        "sha256": "3e616c612916b5bba3383028f5502ac6db2a9fdf64ff1e9867d3ec3908f73fee",
-        "characters": 196,
-        "sentenceCount": 3
+        "sha256": "c01d4ebb4197edb909ae11b453facf5269f4abd1bb2300db97cecb34b8cdba71",
+        "characters": 237,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "La rosa azul"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1930,
+            "deathYear": 2014,
+            "text": "1930–2014"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
+          "themes-style",
           "works"
         ]
       },
@@ -185319,24 +185350,30 @@
       "name": "Альфредо Брис Эченике",
       "biography": {
         "present": true,
-        "sha256": "2d9d8adf1626eb30a484584c4cf8ff6d3a97c7c116853ff86d9d2d8641865056",
-        "characters": 189,
+        "sha256": "d27b4e1b83e7fd3dd732c0fffde782e4dfcfe0db3d7d2b6d9f04cbc1322879f9",
+        "characters": 262,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1939,
+            "deathYear": 2026,
+            "text": "1939–2026"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "themes-style",
           "works"
@@ -185379,29 +185416,39 @@
       "name": "Сесар Вальехо",
       "biography": {
         "present": true,
-        "sha256": "f9e9a3432bf9346f02aebc1ba557fbdb08b47ee79cdce19765b30136e31ed25b",
-        "characters": 201,
+        "sha256": "9f41808df832feb110eb8c42ac203f271a1e5688c162047cd0b3807192178530",
+        "characters": 238,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
+          "life-dates",
+          "movement-era",
           "national-cultural-affiliation",
-          "reception-influence",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 4,
+        "namedWorkTitles": [
+          "Trilce"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1892,
+            "deathYear": 1938,
+            "text": "1892–1938"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language",
+          "life-dates",
+          "movement-era",
           "national-cultural-affiliation",
-          "reception-influence",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185526,24 +185573,24 @@
       "name": "Клаудия Салазар Хименес",
       "biography": {
         "present": true,
-        "sha256": "56ac63d194855f61fe9761402f9569f27c8fdc5d619efb698ebb8fafce497ff5",
-        "characters": 193,
+        "sha256": "9183ed8065a3fe6d5fdd1cc94fcf93bb2b7ee4f5a67cdcb66b99ab2b1fbaf838",
+        "characters": 249,
         "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "La sangre de la aurora"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
@@ -185567,7 +185614,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -185586,9 +185633,9 @@
       "name": "Эдуардо Гонсалес Вьяна",
       "biography": {
         "present": true,
-        "sha256": "7833d097d07451280e3a030f913c387837211bb586498d95f1d1e3f6594c911c",
-        "characters": 128,
-        "sentenceCount": 2
+        "sha256": "919fce92efa553c8f2cbbf2a4e9a41dec73683004ba5a2546557b68ce6cace3f",
+        "characters": 206,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
@@ -185597,8 +185644,10 @@
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "El corrido de Dante"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
@@ -185644,25 +185693,25 @@
       "name": "Фернандо Ивасаки",
       "biography": {
         "present": true,
-        "sha256": "14098332a91ee95758e7492aea9c083ca400e16a83cc48312f58febf9ffab5e1",
-        "characters": 131,
-        "sentenceCount": 2
+        "sha256": "58bddae2ccc83569d63943d36c3bfba4106b1182b8bc2912beba03f5b702d44f",
+        "characters": 190,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "national-cultural-affiliation",
-          "reception-influence"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185712,8 +185761,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1961-06-05",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1961",
             "matchedClaim": {
               "value": "1961-06-05",
               "precision": "day",
@@ -185764,23 +185813,33 @@
       "name": "Инка Гарсиласо де ла Вега",
       "biography": {
         "present": true,
-        "sha256": "5d8987d18809ac4b3ab67ba67c881373c4026de651ca96483acc2b9dd3924c49",
-        "characters": 191,
+        "sha256": "3b20a2e6ba06a39c3ffeec4b9ba5f689d59b5a6311e4d0b21edaf72878f7a664",
+        "characters": 285,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1539,
+            "deathYear": 1616,
+            "text": "1539–1616"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185903,23 +185962,30 @@
       "name": "Иван Тайс",
       "biography": {
         "present": true,
-        "sha256": "48906f330f32ef44fee8a67d5a76cfe9671d4f97e2ddfa428ad74247cff9cf06",
-        "characters": 116,
-        "sentenceCount": 2
+        "sha256": "8620b85e948ee36e36972a098aee7c53333a3d28becd0c59d02b4a75144a412a",
+        "characters": 270,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Las fotografías de Frances Farmer",
+          "Un lugar llamado Oreja de Perro"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -185968,8 +186034,8 @@
         },
         "dates": {
           "birthDate": {
-            "status": "exact-gregorian-match",
-            "cardValue": "1968-10-21",
+            "status": "compatible-at-shared-precision",
+            "cardValue": "1968",
             "matchedClaim": {
               "value": "1968-10-21",
               "precision": "day",
@@ -186020,23 +186086,35 @@
       "name": "Хосе Мария Аргедас",
       "biography": {
         "present": true,
-        "sha256": "a6ecadce3f235c7f3ffc79c2e0c2858fc95a07cf6976f9e7a49e30213e2447f5",
-        "characters": 157,
+        "sha256": "b79a789a8b00dab19aef7843a5da9d5de7a457b6c9a4c80ce5e82ad42fb07b9e",
+        "characters": 246,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "language",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 3,
+        "namedWorkTitles": [
+          "Los ríos profundos"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1911,
+            "deathYear": 1969,
+            "text": "1911–1969"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "language",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -186162,27 +186240,35 @@
       "name": "Хосе Ватанабе",
       "biography": {
         "present": true,
-        "sha256": "d9e2a8e1b77561ec9011b35817aaad2262a4b82717f986a286322dde57f18393",
-        "characters": 177,
+        "sha256": "f76bb20391e18bd2959296d6595b11470cc17ead60fbb08932e5c0395bde7b32",
+        "characters": 205,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1945,
+            "deathYear": 2007,
+            "text": "1945–2007"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -186203,7 +186289,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -186222,25 +186308,25 @@
       "name": "Хуан Эспиноса Медрано",
       "biography": {
         "present": true,
-        "sha256": "241aec598db94a47ec18147e7f9dad4d333daffa80f2b90a268494eab1601b02",
-        "characters": 164,
-        "sentenceCount": 2
+        "sha256": "91d2b7958be6947b307107f62e36d78df800d15d692fc3b2c442109d3ec8f92e",
+        "characters": 263,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -186263,7 +186349,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -186282,24 +186368,26 @@
       "name": "Хулио Ортега",
       "biography": {
         "present": true,
-        "sha256": "6b824773222d5461878e65faf1cb6d15db2e2c45ff3f94368858456b29fc3d32",
-        "characters": 186,
-        "sentenceCount": 2
+        "sha256": "ed20bb03b058ec5157c1f6b08343ca9c93047972dc3bb4b27f02e7d7632d938a",
+        "characters": 226,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
           "identity-role",
           "national-cultural-affiliation",
+          "themes-style",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
           "national-cultural-affiliation",
+          "themes-style",
           "works"
         ]
       },
@@ -186340,27 +186428,35 @@
       "name": "Хулио Рамон Рибейро",
       "biography": {
         "present": true,
-        "sha256": "29e2666c75be6518460f0efed41694a2956f330cfed9d6b2c73b7d43beea7177",
-        "characters": 172,
+        "sha256": "fcb7604f388cb883b6a90373e06fa12ea21e7cd2c4c539d9518cd10b564042a9",
+        "characters": 264,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1929,
+            "deathYear": 1994,
+            "text": "1929–1994"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "themes-style"
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -186463,7 +186559,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -186482,23 +186578,35 @@
       "name": "Мануэль Гонсалес Прада",
       "biography": {
         "present": true,
-        "sha256": "cc9ad333789e9c21ccaa494c4c52ad4eade2c449cd4f8f8a7e14ecc1a2e72559",
-        "characters": 196,
+        "sha256": "372c23ff52f1b16874b1b024b93ef9a1a3f8633745cbe8f90feba4f05037c590",
+        "characters": 289,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Pájinas libres"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1844,
+            "deathYear": 1918,
+            "text": "1844–1918"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -186538,26 +186646,26 @@
       "name": "Марио Беллатин",
       "biography": {
         "present": true,
-        "sha256": "6bfc2e3b5a525576a3b48bb128a5e4706d26d2f86c1b44b0891d8379095b0d94",
-        "characters": 177,
-        "sentenceCount": 2
+        "sha256": "f338f329835a2fd1422a9a222d18b7ef12c095da8efd149a3898668bb46cb6f1",
+        "characters": 222,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 4,
         "namedWorkTitles": [],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
+          "priority-claim",
           "works"
         ]
       },
@@ -186598,31 +186706,37 @@
       "name": "Марио Варгас Льоса",
       "biography": {
         "present": true,
-        "sha256": "bd7baafef9a664956da0c921352feabd3c494e7f1010a5cd2700406278d63210",
-        "characters": 189,
+        "sha256": "e0d916518aca596a43dbbcd153420a545fdb1292c8793b4cfed95ba0dfdefb52",
+        "characters": 179,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "themes-style"
         ],
         "nobelYears": [
           2010
         ],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1936,
+            "deathYear": 2025,
+            "text": "1936–2025"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "awards",
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "themes-style"
         ]
       },
       "stagingEvidence": {
@@ -186700,8 +186814,17 @@
             "allClaimCount": 1
           },
           "deathDate": {
-            "status": "no-card-date",
-            "cardValue": null,
+            "status": "exact-gregorian-match",
+            "cardValue": "2025-04-13",
+            "matchedClaim": {
+              "value": "2025-04-13",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 2,
+              "claimId": "Q39803$63fe2a5f-415d-e8ba-d834-6ca6260785d6"
+            },
             "bestRankClaims": [
               {
                 "value": "2025-04-13",
@@ -186712,7 +186835,8 @@
                 "referenceCount": 2,
                 "claimId": "Q39803$63fe2a5f-415d-e8ba-d834-6ca6260785d6"
               }
-            ]
+            ],
+            "allClaimCount": 1
           }
         }
       },
@@ -186737,23 +186861,33 @@
       "name": "Оскар Колчадо Лусио",
       "biography": {
         "present": true,
-        "sha256": "0ab60aa6ce28dea434fa48d7e13909aafc1e4ee8636f93219942a71b0133438d",
-        "characters": 183,
+        "sha256": "9a3648a4a05bab289048c106c22fb22b52c0c7a07d9f9111c9575c2c252fc609",
+        "characters": 235,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Rosa Cuchillo"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1947,
+            "deathYear": 2023,
+            "text": "1947–2023"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -186795,23 +186929,31 @@
       "name": "Рикардо Пальма",
       "biography": {
         "present": true,
-        "sha256": "bdf0ecb22c314fa3344241ef5ceca070c4a34c399baffaa4b415400ab38920d1",
-        "characters": 137,
-        "sentenceCount": 1
+        "sha256": "fb3d04868c2bd3f579ab31b39d3859360462bfe98ffaf1d10b8752d821ef8183",
+        "characters": 263,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
         "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1833,
+            "deathYear": 1919,
+            "text": "1833–1919"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -186936,24 +187078,24 @@
       "name": "Сантьяго Ронкальоло",
       "biography": {
         "present": true,
-        "sha256": "8c8425b78946c88bc6756699f9e3ca2ba876a77ea31dff486a66a8aace0f01cd",
-        "characters": 175,
-        "sentenceCount": 2
+        "sha256": "1951cd67e3f7e1980be2b426cbce96f38059e45fb0c862b5afead59519eb2d3f",
+        "characters": 212,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Abril rojo"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
           "national-cultural-affiliation",
           "works"
@@ -187006,8 +187148,17 @@
         },
         "dates": {
           "birthDate": {
-            "status": "wikidata-date-discrepancy",
-            "cardValue": "1975-07-29",
+            "status": "exact-gregorian-match",
+            "cardValue": "1975-03-29",
+            "matchedClaim": {
+              "value": "1975-03-29",
+              "precision": "day",
+              "calendarId": "Q1985727",
+              "rank": "normal",
+              "referenced": true,
+              "referenceCount": 2,
+              "claimId": "Q1399637$B4C3E96E-D9BF-4C55-8750-A1C5FADDD24B"
+            },
             "bestRankClaims": [
               {
                 "value": "1975-03-29",
@@ -187030,7 +187181,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187046,28 +187197,34 @@
       "countryId": "philippines",
       "countryName": "Филиппины",
       "writerId": "edith_tiempo",
-      "name": "Эдит Тиампо",
+      "name": "Эдит Тьемпо",
       "biography": {
         "present": true,
-        "sha256": "3a3c66823408a035b138d819a6ee4ee2e65294f41b399e538f40e008c1ae61bf",
-        "characters": 94,
-        "sentenceCount": 1
+        "sha256": "2178a818e705c5e4d37b21d0f04f5bb74876b9b9612228ea7524ae1bad55b7d3",
+        "characters": 257,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "language"
+          "life-dates",
+          "themes-style"
         ],
         "nobelYears": [],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1919,
+            "deathYear": 2011,
+            "text": "1919–2011"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "language"
+          "life-dates",
+          "themes-style"
         ]
       },
       "stagingEvidence": {
@@ -187088,7 +187245,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187107,23 +187264,33 @@
       "name": "Ф. Сионил Хосе",
       "biography": {
         "present": true,
-        "sha256": "d0ede57d41981a66f92236d2d63d43c85a8057160283f8624592cbae80be243e",
-        "characters": 72,
-        "sentenceCount": 1
+        "sha256": "f1a482a7b1db17449906a3b1f7dcfa8340647213bfc49616f32cad905122e25d",
+        "characters": 241,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 1,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1924,
+            "deathYear": 2022,
+            "text": "1924–2022"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
-          "identity-role"
+          "identity-role",
+          "life-dates",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -187144,7 +187311,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187163,20 +187330,30 @@
       "name": "Франсиско Балагтас",
       "biography": {
         "present": true,
-        "sha256": "cc6df036cbd585fc797ad74bafb6053fe71cd5983d732a48d9edfcf286f3c5ce",
-        "characters": 95,
-        "sentenceCount": 1
+        "sha256": "550350f26963df7a5457b175ebbedf8dc886698f658d32a48cee92944baf9283",
+        "characters": 183,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
           "language",
-          "priority-claim"
+          "life-dates",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Florante at Laura",
+          "Orosmán at Zafira"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1788,
+            "deathYear": 1862,
+            "text": "1788–1862"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
@@ -187184,7 +187361,7 @@
         ],
         "typesRequiringHumanSources": [
           "language",
-          "priority-claim"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -187302,7 +187479,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187321,22 +187498,32 @@
       "name": "Хосе Рисаль",
       "biography": {
         "present": true,
-        "sha256": "1211007cb7877c41d10af34131b724c7c650a6fc38c8727ae53ad4a9d3e608c3",
-        "characters": 108,
+        "sha256": "92e4cf036d97822f94ae4ea994f47a43fe3ce7ac0f9ebf532426a676f15433aa",
+        "characters": 227,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Noli me tangere"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1861,
+            "deathYear": 1896,
+            "text": "1861–1896"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "life-dates",
           "works"
         ]
       },
@@ -187460,14 +187647,14 @@
       "name": "Мигель Сихуко",
       "biography": {
         "present": true,
-        "sha256": "62b33a77af339ff0629a79a0829a4b6800c1a23bd711db320064dc535c532d32",
-        "characters": 99,
-        "sentenceCount": 1
+        "sha256": "36ce15e0c042becf93d18ebd44f899fba74cad67f7be3e8048c3431a8ad133f2",
+        "characters": 170,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
+          "awards",
           "identity-role",
-          "reception-influence",
           "works"
         ],
         "nobelYears": [],
@@ -187478,8 +187665,8 @@
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
+          "awards",
           "identity-role",
-          "reception-influence",
           "works"
         ]
       },
@@ -187561,7 +187748,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P3",
+      "priority": "P1",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187580,27 +187767,32 @@
       "name": "Ник Хоакин",
       "biography": {
         "present": true,
-        "sha256": "143551ad54482c1270f03fbeb7a30bf4dba985f9fe635a1f6d8b77134bafd1a9",
-        "characters": 82,
-        "sentenceCount": 1
+        "sha256": "e67d7e58770739b03482a014eaf0174f2d80fdf169a64d55efbb9570f64d1f53",
+        "characters": 244,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1917,
+            "deathYear": 2004,
+            "text": "1917–2004"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "works"
         ]
       },
@@ -187719,7 +187911,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P2",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187738,26 +187930,34 @@
       "name": "Адам Мицкевич",
       "biography": {
         "present": true,
-        "sha256": "8cc064252d6353ae67918b91b1c76f03f82558f61095dc02672b731a9ca16017",
-        "characters": 42,
-        "sentenceCount": 1
+        "sha256": "ee5b7cb3576c1dcf9710c53f37805836e08b7c3fd3946e07ba7de388c345d4bb",
+        "characters": 131,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "movement-era",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Пан Тадеуш"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1798,
+            "deathYear": 1855,
+            "text": "1798–1855"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
+          "life-dates",
           "movement-era",
           "national-cultural-affiliation",
           "works"
@@ -187864,7 +188064,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -187883,23 +188083,35 @@
       "name": "Болеслав Прус",
       "biography": {
         "present": true,
-        "sha256": "02d797dd7edbab49a42f04dba80aaab708532ec5f5eb8e1af1426e9d9c300883",
-        "characters": 27,
-        "sentenceCount": 1
+        "sha256": "66d494035945bc234e8868178a99c86be2dbdbadd1532ebe3eaa7f2759661c1b",
+        "characters": 182,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "movement-era",
-          "national-cultural-affiliation"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1847,
+            "deathYear": 1912,
+            "text": "1847–1912"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "movement-era",
-          "national-cultural-affiliation"
+          "identity-role",
+          "life-dates",
+          "national-cultural-affiliation",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -188022,32 +188234,41 @@
       "name": "Чеслав Милош",
       "biography": {
         "present": true,
-        "sha256": "a5c3a936903126f37ac9e8b3575fcbb9e690cbb62124eab3da669c9a2a700a26",
-        "characters": 66,
-        "sentenceCount": 1
+        "sha256": "3fd9834556e57702f996889ad9c2aacdaffec117799701d66c6d50600d82e157",
+        "characters": 176,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ],
         "nobelYears": [
           1980
         ],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Порабощённый разум"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1911,
+            "deathYear": 2004,
+            "text": "1911–2004"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -188186,32 +188407,43 @@
       "name": "Генрик Сенкевич",
       "biography": {
         "present": true,
-        "sha256": "c5966ab40f082e9ad7b04f5ddaa93a102744987d5a1ed5310617ead7298b3a57",
-        "characters": 70,
-        "sentenceCount": 1
+        "sha256": "6d14331165544b6fe50b9520a76233c9f92dade0c5c3ce72f5e82ddc9e63b37f",
+        "characters": 184,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [
           1905
         ],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Камо грядеши"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1846,
+            "deathYear": 1916,
+            "text": "1846–1916"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -188349,25 +188581,35 @@
       "name": "Ян Кохановский",
       "biography": {
         "present": true,
-        "sha256": "80d6d5cea4c66b4e07a14c607f1465cf50f00d82449677717409ccaa87c962f3",
-        "characters": 92,
-        "sentenceCount": 1
+        "sha256": "4d2e1494d91c46b8738418057fad10fe19e5b7183f768322873d607af992202a",
+        "characters": 165,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
+          "language",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1530,
+            "deathYear": 1584,
+            "text": "1530–1584"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
+          "language",
+          "life-dates",
           "national-cultural-affiliation",
-          "priority-claim"
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -188471,7 +188713,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -188490,25 +188732,31 @@
       "name": "Джозеф Конрад",
       "biography": {
         "present": true,
-        "sha256": "334203c3b313ff0809efcf35c20d117aee691b983b4e267baecea05418ad0e0e",
-        "characters": 273,
+        "sha256": "262398af5cfb4c655784eb4bd99d8bf01084c95047826bb862a490d455bfe198",
+        "characters": 175,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "identity-role",
-          "language",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 3,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1857,
+            "deathYear": 1924,
+            "text": "1857–1924"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "identity-role",
-          "language",
+          "life-dates",
           "national-cultural-affiliation",
           "works"
         ]
@@ -188634,21 +188882,33 @@
       "name": "Юлиуш Словацкий",
       "biography": {
         "present": true,
-        "sha256": "1ed6ebe6aa5119b808523e3f3285e2162059725af0c78b88056e5bd20f6bb6b1",
-        "characters": 39,
-        "sentenceCount": 1
+        "sha256": "db7a80abb6b49a0dce2d85b7d07b868872c3030b4bf06687117c3e5c8aaa7522",
+        "characters": 168,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
+          "identity-role",
+          "life-dates",
+          "movement-era",
           "national-cultural-affiliation",
           "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1809,
+            "deathYear": 1849,
+            "text": "1809–1849"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
+          "identity-role",
+          "life-dates",
+          "movement-era",
           "national-cultural-affiliation",
           "works"
         ]
@@ -188773,26 +189033,30 @@
       "name": "Ольга Токарчук",
       "biography": {
         "present": true,
-        "sha256": "2c4ce22343d30c656d12035038c8bdc6c782f0b469249867e894246b6676299f",
-        "characters": 244,
-        "sentenceCount": 2
+        "sha256": "2414c470421fcf41ef462c443f1fbb5032006de35347ae091199a681ff4801d1",
+        "characters": 190,
+        "sentenceCount": 3
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
           "national-cultural-affiliation",
+          "nobel",
           "works"
         ],
-        "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
+        "nobelYears": [
+          2018
+        ],
+        "quotedTitleCount": 1,
+        "namedWorkTitles": [
+          "Бегуны"
+        ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "awards",
           "identity-role",
           "national-cultural-affiliation",
+          "nobel",
           "works"
         ]
       },
@@ -188897,25 +189161,35 @@
       "name": "Станислав Лем",
       "biography": {
         "present": true,
-        "sha256": "2c54a798e4956ab2e8f0dbb6585c56b034717bd3ca6ce61918301aee48103e98",
-        "characters": 56,
-        "sentenceCount": 1
+        "sha256": "12174bd31acf9318fac9b8009ed80da0716ca3b834795fce42cf0dffa3c90918",
+        "characters": 208,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ],
         "nobelYears": [],
-        "quotedTitleCount": 0,
-        "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "quotedTitleCount": 2,
+        "namedWorkTitles": [
+          "Солярис"
+        ],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1921,
+            "deathYear": 2006,
+            "text": "1921–2006"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
-          "critical-ranking",
           "identity-role",
-          "national-cultural-affiliation"
+          "life-dates",
+          "national-cultural-affiliation",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -189020,7 +189294,7 @@
       },
       "manualResolutions": [],
       "issues": [],
-      "priority": "P1",
+      "priority": "P3",
       "automatedCoverage": {
         "textAndClaimInventory": true,
         "cardSelfConsistency": true,
@@ -189039,32 +189313,45 @@
       "name": "Вислава Шимборская",
       "biography": {
         "present": true,
-        "sha256": "1edd12d14bf4e4238ee947e0a1b357c3f63ef3e13ea5f11a23745f7d041e2beb",
-        "characters": 70,
-        "sentenceCount": 1
+        "sha256": "f94426465d1a7f7156befae0680c4ad8992423d1730356311bc985d33a1d4cfc",
+        "characters": 215,
+        "sentenceCount": 2
       },
       "claims": {
         "types": [
-          "awards",
           "identity-role",
+          "language",
+          "life-dates",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "reception-influence",
+          "themes-style",
+          "works"
         ],
         "nobelYears": [
           1996
         ],
         "quotedTitleCount": 0,
         "namedWorkTitles": [],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1923,
+            "deathYear": 2012,
+            "text": "1923–2012"
+          }
+        ],
         "locallyCorroboratedTypes": [
           "identity",
           "identity-role",
           "life-dates"
         ],
         "typesRequiringHumanSources": [
-          "awards",
+          "language",
           "national-cultural-affiliation",
-          "nobel"
+          "nobel",
+          "reception-influence",
+          "themes-style",
+          "works"
         ]
       },
       "stagingEvidence": {
@@ -189204,13 +189491,15 @@
       "name": "Владислав Станислав Реймонт",
       "biography": {
         "present": true,
-        "sha256": "2dbe32ccc370860b75b6d3f1783471a23feacb322f00b186667504934e4f58a3",
-        "characters": 284,
+        "sha256": "0dd4ce0ff8f42caf11ed74c00ae6dee6f1a5df2c8d966a45b087f56f13c56bcf",
+        "characters": 191,
         "sentenceCount": 2
       },
       "claims": {
         "types": [
           "awards",
+          "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "nobel",
           "themes-style",
@@ -189219,14 +189508,22 @@
         "nobelYears": [
           1924
         ],
-        "quotedTitleCount": 1,
+        "quotedTitleCount": 2,
         "namedWorkTitles": [
           "Мужики"
         ],
-        "lifeYearPairs": [],
+        "lifeYearPairs": [
+          {
+            "birthYear": 1867,
+            "deathYear": 1925,
+            "text": "1867–1925"
+          }
+        ],
         "locallyCorroboratedTypes": [],
         "typesRequiringHumanSources": [
           "awards",
+          "identity-role",
+          "life-dates",
           "national-cultural-affiliation",
           "nobel",
           "themes-style",
