@@ -15,7 +15,7 @@ export default class BootstrapErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, info: ErrorInfo) {
     reportClientError(error, "react", {
       boundary: "bootstrap",
-      componentStack: info.componentStack.slice(0, 3000),
+      componentStack: (info.componentStack || "").slice(0, 3000),
     });
   }
 
