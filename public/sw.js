@@ -1,10 +1,29 @@
 /* Proba Pera first-party offline shell. Editorial data remains network-first. */
-const CACHE_VERSION = "probpera-v2";
+const CACHE_VERSION = "probpera-v3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
+const STATIC_CACHE_LIMIT = 160;
+const PAGE_CACHE_LIMIT = 40;
 const scopeUrl = new URL(self.registration.scope);
 const scopePath = scopeUrl.pathname.replace(/\/$/, "");
 const scoped = (path) => `${scopePath}${path}` || "/";
+
+function isCacheable(response) {
+  return (
+    response.ok &&
+    !/\bno-store\b/iu.test(response.headers.get("Cache-Control") || "")
+  );
+}
+
+async function trimCache(cacheName, maxEntries) {
+  const cache = await caches.open(cacheName);
+  const requests = await cache.keys();
+  const overflow = requests.length - maxEntries;
+  if (overflow <= 0) return;
+  await Promise.all(
+    requests.slice(0, overflow).map((request) => cache.delete(request))
+  );
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -16,6 +35,7 @@ self.addEventListener("install", (event) => {
           cache.add(scoped("/brand/probpera-logo.png")),
         ])
       )
+      .then(() => trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT))
       .then(() => self.skipWaiting())
   );
 });
@@ -31,6 +51,12 @@ self.addEventListener("activate", (event) => {
             .map((key) => caches.delete(key))
         )
       )
+      .then(() =>
+        Promise.all([
+          trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT),
+          trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT),
+        ])
+      )
       .then(() => self.clients.claim())
   );
 });
@@ -39,23 +65,24 @@ async function networkFirst(request) {
   const cache = await caches.open(PAGE_CACHE);
   try {
     const response = await fetch(request);
-    if (response.ok) await cache.put(request, response.clone());
+    if (isCacheable(response)) {
+      await cache.put(request, response.clone());
+      await trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT);
+    }
     return response;
   } catch {
-    return (
-      (await cache.match(request)) ||
-      Response.error()
-    );
+    return (await cache.match(request)) || Response.error();
   }
 }
 
 async function cacheFirst(request) {
-  const cached = await caches.match(request);
+  const cache = await caches.open(STATIC_CACHE);
+  const cached = await cache.match(request);
   if (cached) return cached;
   const response = await fetch(request);
-  if (response.ok) {
-    const cache = await caches.open(STATIC_CACHE);
+  if (isCacheable(response)) {
     await cache.put(request, response.clone());
+    await trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT);
   }
   return response;
 }
