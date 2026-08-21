@@ -31,7 +31,9 @@ export default class BootstrapErrorBoundary extends Component<Props, State> {
           <button type="button" onClick={() => globalThis.location.reload()}>
             Обновить страницу
           </button>
-          <a href="/stati/">Открыть статический архив статей</a>
+          <a href={`${import.meta.env.BASE_URL}stati/`}>
+            Открыть статический архив статей
+          </a>
         </main>
       );
     }
