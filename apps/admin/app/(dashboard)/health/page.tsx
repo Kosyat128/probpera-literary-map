@@ -1,4 +1,8 @@
 import { formatDate } from "@/lib/format";
+import {
+  isEditorialSchemaReady,
+  type EditorialSchemaHealth,
+} from "@/lib/editorial-schema-health";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { setDiagnosticStatusAction } from "./actions";
 
@@ -12,20 +16,6 @@ type Diagnostic = {
   source: string;
   status: string;
   created_at: string;
-};
-
-type EditorialSchemaHealth = {
-  version?: string;
-  outbox?: boolean;
-  outboxRpc?: boolean;
-  publicationTriggers?: boolean;
-  pendingPublicBuilds?: number;
-  revisionHistory?: boolean;
-  workTranslations?: boolean;
-  countryOverrides?: boolean;
-  writerOverrides?: boolean;
-  homepageMove?: boolean;
-  tagsUpdatedAt?: boolean;
 };
 
 export default async function HealthPage() {
@@ -44,17 +34,7 @@ export default async function HealthPage() {
     schemaHealthData && typeof schemaHealthData === "object"
       ? (schemaHealthData as EditorialSchemaHealth)
       : null;
-  const schemaReady = Boolean(
-    schemaHealth?.outbox &&
-      schemaHealth.outboxRpc &&
-      schemaHealth.publicationTriggers &&
-      schemaHealth.revisionHistory &&
-      schemaHealth.workTranslations &&
-      schemaHealth.countryOverrides &&
-      schemaHealth.writerOverrides &&
-      schemaHealth.homepageMove &&
-      schemaHealth.tagsUpdatedAt
-  );
+  const schemaReady = isEditorialSchemaReady(schemaHealth);
   const grouped = new Map<string, { latest: Diagnostic; count: number }>();
   for (const item of (data || []) as Diagnostic[]) {
     const current = grouped.get(item.fingerprint);
