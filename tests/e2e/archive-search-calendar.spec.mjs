@@ -257,6 +257,7 @@ test("статус, сохранение и детали книг не пере�
         Math.min(left.bottom, right.bottom) - Math.max(left.top, right.top) > 0.5;
       const grid = document.querySelector(".book-archive-grid");
       const rows = [...document.querySelectorAll(".archive-book-actions")].slice(0, 12);
+      const filterButtons = [...document.querySelectorAll(".book-archive-filters button")];
       return {
         columns: grid
           ? getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length
@@ -282,6 +283,11 @@ test("статус, сохранение и детали книг не пере�
             (row) => row.querySelector(".archive-book-detail")?.getBoundingClientRect().width ?? 0
           )
         ),
+        filterCountOverlaps: filterButtons.filter((button) => {
+          const copy = button.querySelector(".book-filter-copy")?.getBoundingClientRect();
+          const count = button.querySelector(".book-filter-count")?.getBoundingClientRect();
+          return Boolean(copy && count && intersects(copy, count));
+        }).length,
       };
     });
 
@@ -293,5 +299,8 @@ test("статус, сохранение и детали книг не пере�
     expect(geometry.minimumDetailWidth).toBeGreaterThanOrEqual(
       responsiveCase.minimumActionWidth
     );
+    if (responsiveCase.width <= 430) {
+      expect(geometry.filterCountOverlaps).toBe(0);
+    }
   }
 });

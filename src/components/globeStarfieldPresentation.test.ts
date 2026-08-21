@@ -15,6 +15,17 @@ const earthThemeStart = publicStyles.indexOf(
   sharedSceneStart + 1
 );
 const sharedStarfield = publicStyles.slice(sharedSceneStart, earthThemeStart);
+const stageThemeStart = publicStyles.lastIndexOf(".world-map-stage {");
+const stageFrameStart = publicStyles.indexOf(
+  ".world-map-stage::before {",
+  stageThemeStart
+);
+const stageFrameEnd = publicStyles.indexOf(
+  ".world-map-stage::after {",
+  stageFrameStart
+);
+const stageTheme = publicStyles.slice(stageThemeStart, stageFrameStart);
+const stageFrame = publicStyles.slice(stageFrameStart, stageFrameEnd);
 
 describe("globe scene starfield", () => {
   it("does not force a 320px document under classic scrollbar viewports", () => {
@@ -31,6 +42,13 @@ describe("globe scene starfield", () => {
     expect(sharedStarfield).toContain("background-size: 100% 100%");
     expect(sharedStarfield).not.toMatch(/background-size:\s*\n?\s*\d+px/);
     expect(sharedStarfield).not.toContain("repeating-radial-gradient");
+    expect(stageThemeStart).toBeGreaterThan(-1);
+    expect(stageFrameStart).toBeGreaterThan(stageThemeStart);
+    expect(stageTheme).toContain("background-repeat: no-repeat");
+    expect(stageTheme).toContain("background-size: 100% 100%");
+    expect(stageTheme).not.toMatch(/\/\s*\d+px\s+\d+px/);
+    expect(stageFrame).toContain("background: none");
+    expect(stageFrame).not.toMatch(/linear-gradient\([^)]*50%/);
   });
 
   it("keeps separate purple and cold palettes without animating the field", () => {
