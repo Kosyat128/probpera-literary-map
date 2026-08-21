@@ -2,10 +2,14 @@ export type WebStorageArea = "local" | "session";
 
 type StorageHost = Pick<Window, "localStorage" | "sessionStorage">;
 type StorageProperty = keyof StorageHost;
-type StoragePrototypeLike = Pick<
-  Storage,
-  "clear" | "getItem" | "key" | "removeItem" | "setItem"
-> & { readonly length: number };
+type StoragePrototypeLike = {
+  readonly length: number;
+  clear(): void;
+  getItem(key: string): string | null;
+  key(index: number): string | null;
+  removeItem(key: string): void;
+  setItem(key: string, value: string): void;
+};
 type StorageMethodName =
   | "clear"
   | "getItem"
@@ -191,7 +195,7 @@ export function installSafeWebStorage(
   prototype: StoragePrototypeLike | null | undefined =
     typeof Storage === "undefined"
       ? null
-      : (Storage.prototype as StoragePrototypeLike)
+      : (Storage.prototype as unknown as StoragePrototypeLike)
 ) {
   if (!host) return false;
   const prototypePatched = patchStoragePrototype(prototype);
