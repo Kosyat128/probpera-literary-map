@@ -1,32 +1,83 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { adminEnv, isSupabaseConfigured } from "@/lib/env";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import {
+  buildAdminContentSecurityPolicy,
+  createAdminCspNonce,
+} from "@/lib/content-security-policy";
+import { adminEnv, isSupabaseConfigured } from "@/lib/env";
 
 // Next.js 16 keeps middleware.ts specifically for Edge-runtime deployments.
 // OpenNext Cloudflare does not yet support the Node-runtime proxy.ts convention.
 export const runtime = "experimental-edge";
 
+function secureRequestHeaders(
+  request: NextRequest,
+  nonce: string,
+  contentSecurityPolicy: string
+) {
+  const headers = new Headers(request.headers);
+  headers.set("x-nonce", nonce);
+  headers.set("Content-Security-Policy", contentSecurityPolicy);
+  return headers;
+}
+
+function secureResponse(response: NextResponse, contentSecurityPolicy: string) {
+  response.headers.set("Content-Security-Policy", contentSecurityPolicy);
+  response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  return response;
+}
+
 export async function middleware(request: NextRequest) {
-  const configuredAdminBasePath = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH);
+  const nonce = createAdminCspNonce();
+  const contentSecurityPolicy = buildAdminContentSecurityPolicy({
+    nonce,
+    isDevelopment: process.env.NODE_ENV !== "production",
+    supabaseUrl: adminEnv.supabaseUrl,
+    publicSiteUrl: adminEnv.publicSiteUrl,
+  });
+  const createNextResponse = () =>
+    secureResponse(
+      NextResponse.next({
+        request: {
+          headers: secureRequestHeaders(
+            request,
+            nonce,
+            contentSecurityPolicy
+          ),
+        },
+      }),
+      contentSecurityPolicy
+    );
+
+  const configuredAdminBasePath = getAdminBasePathFromEnv(
+    process.env.ADMIN_BASE_PATH
+  );
   const pathname = request.nextUrl.pathname;
   const duplicatedPrefix = configuredAdminBasePath
-    ? `${configuredAdminBasePath}/${configuredAdminBasePath.replace(/^\/+/gu, "")}`
+    ? `${configuredAdminBasePath}/${configuredAdminBasePath.replace(/^\/+?/gu, "")}`
     : "";
 
-  if (duplicatedPrefix && (pathname === duplicatedPrefix || pathname.startsWith(`${duplicatedPrefix}/`))) {
+  if (
+    duplicatedPrefix &&
+    (pathname === duplicatedPrefix ||
+      pathname.startsWith(`${duplicatedPrefix}/`))
+  ) {
     const normalizedUrl = request.nextUrl.clone();
     normalizedUrl.pathname =
       pathname === duplicatedPrefix
         ? configuredAdminBasePath
         : `${configuredAdminBasePath}${pathname.slice(duplicatedPrefix.length)}`;
-    return NextResponse.redirect(normalizedUrl, 308);
+    return secureResponse(
+      NextResponse.redirect(normalizedUrl, 308),
+      contentSecurityPolicy
+    );
   }
 
-  if (!isSupabaseConfigured) return NextResponse.next();
+  if (!isSupabaseConfigured) return createNextResponse();
 
-  let response = NextResponse.next({ request });
+  let response = createNextResponse();
   const supabase = createServerClient(
     adminEnv.supabaseUrl,
     adminEnv.supabasePublishableKey,
@@ -39,7 +90,7 @@ export async function middleware(request: NextRequest) {
           cookiesToSet.forEach(({ name, value }) => {
             request.cookies.set(name, value);
           });
-          response = NextResponse.next({ request });
+          response = createNextResponse();
           cookiesToSet.forEach(({ name, value, options }) => {
             response.cookies.set(name, value, options);
           });
@@ -53,5 +104,13 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    {
+      source: "/((?!_next/static|_next/image|favicon.ico).*)",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+  ],
 };
