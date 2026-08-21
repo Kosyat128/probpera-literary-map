@@ -575,8 +575,6 @@ const englishInterfaceText: Record<string, string> = {
   "Существенные исправления проходят редакционную проверку. Читатель может сообщить о неточности по почте, указав страницу, фрагмент и надёжный источник.":
     "Material corrections undergo editorial review. Readers may report an error by email, identifying the page, passage and a reliable source.",
   "Собираем литературные даты…": "Building the literary calendar…",
-  "Литературный журнал и мировая энциклопедия":
-    "Literary journal and world encyclopedia",
   "Авторские статьи и единая интерактивная экосистема о мировой литературе: страны, писатели, книги, эпохи и разговор читателей.":
     "Original essays and a unified interactive ecosystem for world literature: countries, writers, books, periods and reader discussion.",
   "Карта сайта": "Site map",

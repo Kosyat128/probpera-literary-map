@@ -62,7 +62,6 @@ const curatedSiteCopyDefinitions = [
   { key: "popup.search.empty_hint", group: "Всплывающие панели", label: "Совет при пустом поиске", defaultRu: "Попробуйте фамилию, название произведения или другую форму слова.", multiline: true },
   { key: "popup.search.private_note", group: "Всплывающие панели", label: "Подпись поиска", defaultRu: "Поиск выполняется внутри сайта" },
 
-  { key: "footer.brand.subtitle", group: "Подвал", label: "Подпись бренда", defaultRu: "Литературный журнал и мировая энциклопедия" },
   { key: "footer.brand.description", group: "Подвал", label: "Описание журнала", defaultRu: "Авторские статьи и единая интерактивная экосистема о мировой литературе: страны, писатели, книги, эпохи и разговор читателей.", multiline: true },
   { key: "footer.copyright", group: "Подвал", label: "Текст об авторских правах", defaultRu: "Авторские публикации защищены законом." },
   { key: "footer.independent", group: "Подвал", label: "Нижняя подпись", defaultRu: "Независимый литературный журнал" },

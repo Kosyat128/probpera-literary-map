@@ -42,18 +42,20 @@ describe("literary globe accessible interaction wiring", () => {
     expect(globeSource).toMatch(/\?\s*"always"\s*:\s*"demand"/u);
   });
 
-  it("keeps a real star field behind every public style and grounds the contemporary globe", () => {
+  it("keeps the same real sky and star field behind every public style", () => {
     const sceneSource = globeSource.slice(
       globeSource.indexOf("function GlobeScene"),
       globeSource.indexOf("export default function LiteraryGlobe")
     );
-    const skyConditionStart = sceneSource.indexOf('visualStyle !== "modern"');
-    const skyConditionEnd = sceneSource.indexOf("\n      )}", skyConditionStart);
+    const skyDomeStart = sceneSource.indexOf("<MuseumSkyDome");
     const starFieldStart = sceneSource.indexOf("<MuseumStarfield");
 
-    expect(skyConditionStart).toBeGreaterThan(0);
-    expect(skyConditionEnd).toBeGreaterThan(0);
-    expect(starFieldStart).toBeGreaterThan(skyConditionEnd);
+    expect(skyDomeStart).toBeGreaterThan(0);
+    expect(starFieldStart).toBeGreaterThan(skyDomeStart);
+    expect(sceneSource).not.toContain('visualStyle !== "modern"');
+    expect(sceneSource).toContain(
+      '<MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />'
+    );
     expect(sceneSource).toContain(
       '<MuseumStarfield economical={economical} reducedMotion={reducedMotion} />'
     );
