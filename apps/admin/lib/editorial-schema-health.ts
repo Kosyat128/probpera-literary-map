@@ -1,5 +1,5 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260820_literary_work_cover_artworks";
+  "20260822_staff_editorial_read_rls";
 
 export type EditorialSchemaHealth = {
   version?: string;
@@ -7,6 +7,7 @@ export type EditorialSchemaHealth = {
   outboxRpc?: boolean;
   migrationLedger?: boolean;
   publicationTriggers?: boolean;
+  staffEditorialReadPolicies?: boolean;
   pendingPublicBuilds?: number;
   revisionHistory?: boolean;
   workTranslations?: boolean;
@@ -22,6 +23,7 @@ export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "outboxRpc",
   "migrationLedger",
   "publicationTriggers",
+  "staffEditorialReadPolicies",
   "revisionHistory",
   "workTranslations",
   "workCoverArtworks",
@@ -42,6 +44,7 @@ const editorialSchemaCapabilityLabels: Record<
   outboxRpc: "RPC публикации",
   migrationLedger: "журнал миграций",
   publicationTriggers: "триггеры публикации",
+  staffEditorialReadPolicies: "права чтения редакции",
   revisionHistory: "история версий",
   workTranslations: "переводы произведений",
   workCoverArtworks: "редакционные обложки",
