@@ -5,6 +5,36 @@ import { reportClientError } from "../community/diagnosticsReporter";
 type Props = { children: ReactNode };
 type State = { failed: boolean };
 
+const bootstrapCopy = {
+  ru: {
+    brand: "Проба Пера",
+    title: "Не удалось открыть интерфейс журнала",
+    description:
+      "Обновите страницу. Опубликованные материалы при этом не потеряны.",
+    reload: "Обновить страницу",
+    archive: "Открыть статический архив статей",
+  },
+  en: {
+    brand: "PROBA PERA",
+    title: "The journal interface could not be opened",
+    description:
+      "Reload the page. Published materials have not been lost.",
+    reload: "Reload page",
+    archive: "Open the static article archive",
+  },
+} as const;
+
+function currentBootstrapCopy() {
+  const documentLanguage =
+    typeof document === "undefined"
+      ? "ru"
+      : document.documentElement.dataset.routeLanguage ||
+        document.documentElement.lang;
+  return documentLanguage.toLocaleLowerCase("en").startsWith("en")
+    ? bootstrapCopy.en
+    : bootstrapCopy.ru;
+}
+
 export default class BootstrapErrorBoundary extends Component<Props, State> {
   state: State = { failed: false };
 
@@ -21,19 +51,16 @@ export default class BootstrapErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.failed) {
+      const copy = currentBootstrapCopy();
       return (
         <main className="app-error" role="alert">
-          <span>Проба Пера</span>
-          <h1>Не удалось открыть интерфейс журнала</h1>
-          <p>
-            Обновите страницу. Опубликованные материалы при этом не потеряны.
-          </p>
+          <span>{copy.brand}</span>
+          <h1>{copy.title}</h1>
+          <p>{copy.description}</p>
           <button type="button" onClick={() => globalThis.location.reload()}>
-            Обновить страницу
+            {copy.reload}
           </button>
-          <a href={`${import.meta.env.BASE_URL}stati/`}>
-            Открыть статический архив статей
-          </a>
+          <a href={`${import.meta.env.BASE_URL}stati/`}>{copy.archive}</a>
         </main>
       );
     }
