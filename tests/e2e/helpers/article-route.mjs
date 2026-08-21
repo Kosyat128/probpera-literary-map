@@ -22,7 +22,13 @@ export async function articleFromSitemap(
 
   const articleUrls = [
     ...sitemap.matchAll(/<loc>([^<]+\/stati\/[^<]+)<\/loc>/gu),
-  ].map((match) => match[1]);
+  ]
+    .map((match) => match[1])
+    .filter((candidate) => {
+      const segments = new URL(candidate).pathname.split("/").filter(Boolean);
+      const journalIndex = segments.lastIndexOf("stati");
+      return journalIndex >= 0 && segments.length === journalIndex + 3;
+    });
   expect(
     articleUrls.length,
     "The sitemap must contain at least one published article"

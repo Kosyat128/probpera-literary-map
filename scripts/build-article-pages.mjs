@@ -544,7 +544,6 @@ async function writeArticleArchivePage(section = null) {
           itemListElement: archiveArticles.map((article, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            name: article.title,
             url:
               article.canonicalUrl ||
               `${siteUrl}${articlePublicPath(article)}/`,
@@ -607,8 +606,7 @@ async function writeArticleArchivePage(section = null) {
               const href =
                 article.canonicalUrl || `${siteUrl}${articlePublicPath(article)}/`;
               return `<li>
-                <a href="${xmlEscape(href)}"><strong>${xmlEscape(article.title)}</strong></a>
-                <p>${xmlEscape(conciseMetaDescription(article.description, article.title, 180))}</p>
+                <a href="${xmlEscape(href)}">${xmlEscape(article.title)}</a>
               </li>`;
             }).join("\n")}
           </ol>
@@ -654,6 +652,9 @@ for (const rawArticle of catalog) {
   const publicPath = articlePublicPath(article);
   const canonicalUrl = article.canonicalUrl || `${siteUrl}${publicPath}/`;
   const $ = loadStaticDocument(baseHtml);
+  $('link[rel="modulepreload"]').filter((_index, element) =>
+    !/react-vendor/u.test($(element).attr("href") || "")
+  ).remove();
   const descriptionFallback =
     `Авторский материал литературного журнала «Проба Пера»: ${article.title}`;
   const preferredDescription = article.seoDescription || article.description;
@@ -747,7 +748,7 @@ for (const rawArticle of catalog) {
       candidate.id !== article.id &&
       candidates.findIndex((item) => item.id === candidate.id) === index
     )
-    .slice(0, 6);
+    .slice(0, 3);
   $("head").append(
     `<script type="application/ld+json">${JSON.stringify({
       "@context": "https://schema.org",
@@ -765,29 +766,11 @@ for (const rawArticle of catalog) {
           },
         },
         {
-          "@type": "WebSite",
-          "@id": `${siteUrl}/#website`,
-          name: "Проба Пера",
-          url: `${siteUrl}/`,
-          inLanguage: "ru-RU",
-          publisher: { "@id": `${siteUrl}/#organization` },
-        },
-        {
-          "@type": "Periodical",
-          "@id": `${siteUrl}/#periodical`,
-          name: "Проба Пера",
-          url: `${siteUrl}${articleSectionArchivePath()}/`,
-          inLanguage: "ru-RU",
-          publisher: { "@id": `${siteUrl}/#organization` },
-        },
-        {
           "@type": "WebPage",
           "@id": canonicalUrl,
           url: canonicalUrl,
           name: article.title,
-          description,
           inLanguage: "ru-RU",
-          isPartOf: { "@id": `${siteUrl}/#website` },
           breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           primaryImageOfPage: { "@id": `${canonicalUrl}#primaryimage` },
           mainEntity: { "@id": `${canonicalUrl}#article` },
@@ -804,7 +787,6 @@ for (const rawArticle of catalog) {
           dateModified: article.updatedAt || modifiedDate || undefined,
           wordCount: article.wordCount,
           articleSection: article.sectionLabel,
-          isPartOf: { "@id": `${siteUrl}/#periodical` },
           author: { "@id": `${siteUrl}/#organization` },
           publisher: { "@id": `${siteUrl}/#organization` },
         },
@@ -812,8 +794,6 @@ for (const rawArticle of catalog) {
           "@type": "ImageObject",
           "@id": `${canonicalUrl}#primaryimage`,
           url: imageUrl,
-          contentUrl: imageUrl,
-          caption: article.imageAlt || article.title,
         },
         {
           "@type": "BreadcrumbList",

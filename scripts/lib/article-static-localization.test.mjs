@@ -195,6 +195,8 @@ describe("localized static article pages", () => {
     );
     expect(schemaTypes.has("WebPage")).toBe(true);
     expect(schemaTypes.has("Article")).toBe(true);
+    expect(schemaTypes.has("ImageObject")).toBe(true);
+    expect(schemaTypes.has("Organization")).toBe(true);
     expect(schemaTypes.has("BreadcrumbList")).toBe(true);
     expect(russianHtml).toContain(
       'href="https://example.test/stati/pisateli-mira/fixture-related-article/"'
@@ -215,6 +217,19 @@ describe("localized static article pages", () => {
     expect(existsSync(sectionFile)).toBe(true);
     const journalHtml = readFileSync(journalFile, "utf8");
     const sectionHtml = readFileSync(sectionFile, "utf8");
+    const $section = load(sectionHtml);
+    const sectionSchemaTypes = new Set(
+      $section('script[type="application/ld+json"]')
+        .toArray()
+        .flatMap((element) => {
+          const value = JSON.parse($section(element).text());
+          return value["@graph"] || [value];
+        })
+        .map((node) => node["@type"])
+    );
+    expect(sectionSchemaTypes.has("CollectionPage")).toBe(true);
+    expect(sectionSchemaTypes.has("ItemList")).toBe(true);
+    expect(sectionSchemaTypes.has("BreadcrumbList")).toBe(true);
     expect(journalHtml).toContain(
       '<link rel="canonical" href="https://example.test/stati/">'
     );

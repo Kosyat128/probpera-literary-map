@@ -173,6 +173,14 @@ for (const location of locations) {
     check(types.has("WebPage"), `${location}: Article graph declares WebPage`);
     check(types.has("Article"), `${location}: Article graph declares Article`);
     check(
+      types.has("ImageObject"),
+      `${location}: Article graph declares its primary ImageObject`
+    );
+    check(
+      types.has("Organization"),
+      `${location}: Article graph declares its publisher Organization`
+    );
+    check(
       types.has("BreadcrumbList"),
       `${location}: Article graph declares BreadcrumbList`
     );

@@ -254,19 +254,26 @@ test("прямой URL статьи возвращает к полному жу�
   await expect(
     reader.getByRole("navigation", { name: "Reading settings" })
   ).toBeVisible();
-  await expect(
-    reader.getByRole("button", { name: "Back to journal" })
-  ).toBeVisible();
+  await expect(reader.getByRole("link", { name: "Back to journal" })).toBeVisible();
 
   await russianButton.click();
   await expect(
     reader.getByRole("navigation", { name: "Настройки чтения" })
   ).toBeVisible();
-  await reader.getByRole("button", { name: /К журналу|Back to journal/iu }).click();
+  const journalLink = reader.getByRole("link", {
+    name: /К журналу|Back to journal/iu,
+  });
+  const journalHref = await journalLink.getAttribute("href");
+  expect(journalHref).toMatch(/\/stati\/[^/]+\/$/u);
+  const journalPathname = new URL(journalHref, baseURL).pathname;
+  await journalLink.click();
 
   await expect(page.locator(".site-header")).toBeVisible();
   await expect(page.locator("#journal")).toBeVisible();
-  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("#journal");
+  await expect.poll(() => page.evaluate(() => window.location.pathname)).toBe(
+    journalPathname
+  );
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
 });
 
 test("редакционные изображения сохраняют пропорции в ридере, галерее и слайдере", async ({
