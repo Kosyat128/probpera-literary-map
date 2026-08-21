@@ -15,6 +15,7 @@ const reviewedMigrations = [
   ["20260808_article_translations.sql", "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"],
   ["20260808_book_translations_and_import_staging.sql", "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"],
   ["20260812_homepage_block_revisions.sql", "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"],
+  ["20260812_writer_and_work_revisions.sql", "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"],
   ["20260813_editorial_database_admin.sql", "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"],
   ["20260813_homepage_atomic_move.sql", "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"],
   ["20260813_tags_updated_at.sql", "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"],
