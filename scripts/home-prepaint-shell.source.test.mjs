@@ -27,4 +27,10 @@ describe("homepage prepaint shell", () => {
     expect(entrypoint).not.toContain("prepaint.css");
     expect(template).not.toContain('<script type="module" src="/src/main.tsx"></script>\n</body>');
   });
+
+  it("restores the accessible fallback when the application cannot boot", () => {
+    expect(template).toContain("probpera-home-fallback-rescue");
+    expect(template).toContain("8s forwards");
+    expect(template).toContain("animation: none !important");
+  });
 });
