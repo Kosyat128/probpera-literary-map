@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 
 const STORAGE_KEY = "probpera-editorial-draft";
 
@@ -24,7 +25,7 @@ const emptyDraft: Draft = {
 
 function readDraft(): Draft {
   try {
-    const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "null");
+    const saved = JSON.parse(readWebStorage("local", STORAGE_KEY) || "null");
     return saved && typeof saved === "object"
       ? { ...emptyDraft, ...saved }
       : emptyDraft;
@@ -54,7 +55,7 @@ export default function EditorialWorkbench() {
     .filter(Boolean).length;
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+    writeWebStorage("local", STORAGE_KEY, JSON.stringify(draft));
   }, [draft]);
 
   const update = (field: keyof Draft, value: string) => {
