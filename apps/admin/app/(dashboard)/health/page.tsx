@@ -38,6 +38,12 @@ export default async function HealthPage() {
   const schemaReady = isEditorialSchemaReady(schemaHealth);
   const missingSchemaCapabilities =
     getMissingEditorialSchemaCapabilities(schemaHealth);
+  const schemaCheckAvailable = !schemaHealthError && Boolean(schemaHealth);
+  const schemaStatusLabel = !schemaCheckAvailable
+    ? "Проверка недоступна"
+    : schemaReady
+      ? "Готова"
+      : "Требует миграций";
   const schemaStatusDetail = schemaReady
     ? schemaHealth?.version || "актуальная версия"
     : schemaHealthError
@@ -59,7 +65,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Открыто</span><strong>{openCount || 0}</strong><small>требуют внимания</small></article>
       <article className="stat-card"><span>За 24 часа</span><strong>{recentCount || 0}</strong><small>включая повторения</small></article>
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
-      <article className="stat-card"><span>Схема CMS</span><strong>{schemaReady ? "Готова" : "Требует миграций"}</strong><small>{schemaStatusDetail}</small></article>
+      <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "—"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
     </section>
     <section className="panel">
