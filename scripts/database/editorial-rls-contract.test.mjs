@@ -44,9 +44,6 @@ const adminOperationalTables = [
   "staff_memberships",
   "writer_profile_override_revisions",
 ];
-const allowedAnonymousCommands = new Map([
-  ["client_errors", new Set(["insert"])],
-]);
 
 function orderedSqlSources() {
   return sqlDirectories.flatMap((directory) =>
@@ -199,21 +196,15 @@ describe("admin operational RLS contract", () => {
     }
   });
 
-  it("does not expose operational rows beyond explicitly allowed error intake", () => {
-    const unexpectedAnonymousPolicies = policies.filter((policy) => {
-      if (
-        !adminOperationalTables.includes(policy.table) ||
-        !targetsAnonymous(policy.statement)
-      ) {
-        return false;
-      }
-      return !allowedAnonymousCommands
-        .get(policy.table)
-        ?.has(policy.command);
-    });
+  it("does not expose operational tables through anonymous policies", () => {
+    const anonymousPolicies = policies.filter(
+      (policy) =>
+        adminOperationalTables.includes(policy.table) &&
+        targetsAnonymous(policy.statement)
+    );
 
     expect(
-      unexpectedAnonymousPolicies.map(
+      anonymousPolicies.map(
         (policy) =>
           `${policy.table}:${policy.command}:${policy.name} (${policy.filename})`
       )
