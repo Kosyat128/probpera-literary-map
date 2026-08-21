@@ -2,6 +2,10 @@ export type WebStorageArea = "local" | "session";
 
 type StorageHost = Pick<Window, "localStorage" | "sessionStorage">;
 type StorageProperty = keyof StorageHost;
+type StoragePrototypeLike = Pick<
+  Storage,
+  "clear" | "getItem" | "key" | "removeItem" | "setItem"
+> & { readonly length: number };
 type StorageMethodName =
   | "clear"
   | "getItem"
@@ -85,9 +89,12 @@ function createResilientStorage(primary: Storage | null): Storage {
   };
 }
 
-function patchStoragePrototype(prototype: Storage | null | undefined) {
+function patchStoragePrototype(
+  prototype: StoragePrototypeLike | null | undefined
+) {
   if (!prototype) return false;
-  const markedPrototype = prototype as Storage & Record<string, unknown>;
+  const markedPrototype = prototype as StoragePrototypeLike &
+    Record<string, unknown>;
   if (markedPrototype[installationMarker] === true) return true;
 
   let patched = false;
@@ -106,7 +113,10 @@ function patchStoragePrototype(prototype: Storage | null | undefined) {
       Object.defineProperty(prototype, method, {
         configurable: true,
         writable: true,
-        value: function safeStorageMethod(this: Storage, ...args: unknown[]) {
+        value: function safeStorageMethod(
+          this: StoragePrototypeLike,
+          ...args: unknown[]
+        ) {
           try {
             return Reflect.apply(original, this, args);
           } catch {
@@ -126,7 +136,7 @@ function patchStoragePrototype(prototype: Storage | null | undefined) {
     try {
       Object.defineProperty(prototype, "length", {
         ...lengthDescriptor,
-        get: function safeStorageLength(this: Storage) {
+        get: function safeStorageLength(this: StoragePrototypeLike) {
           try {
             return Reflect.apply(lengthDescriptor.get!, this, []);
           } catch {
@@ -178,8 +188,10 @@ function installStorageFacade(host: StorageHost, property: StorageProperty) {
 export function installSafeWebStorage(
   host: StorageHost | null | undefined =
     typeof window === "undefined" ? null : window,
-  prototype: Storage | null | undefined =
-    typeof Storage === "undefined" ? null : Storage.prototype
+  prototype: StoragePrototypeLike | null | undefined =
+    typeof Storage === "undefined"
+      ? null
+      : (Storage.prototype as StoragePrototypeLike)
 ) {
   if (!host) return false;
   const prototypePatched = patchStoragePrototype(prototype);
