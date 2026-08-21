@@ -40,6 +40,7 @@ const adminOperationalTables = [
   "literary_work_revisions",
   "page_revisions",
   "public_build_outbox",
+  "publication_jobs",
   "site_chrome_revisions",
   "staff_memberships",
   "writer_profile_override_revisions",
@@ -173,7 +174,7 @@ describe("editorial RLS contract", () => {
 
 describe("admin operational RLS contract", () => {
   it("keeps RLS enabled on private operational tables", () => {
-    expect(adminOperationalTables).toHaveLength(12);
+    expect(adminOperationalTables).toHaveLength(13);
     for (const table of adminOperationalTables) {
       expect(rlsState.get(table), `${table} must finish with RLS enabled`).toBe(
         true
