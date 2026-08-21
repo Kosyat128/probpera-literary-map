@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import ActivityTracker from './community/ActivityTracker';
+import AuthTurnstileGate from './community/AuthTurnstileGate';
 import ClientDiagnostics from './community/ClientDiagnostics';
 import { AuthProvider } from './community/AuthContext';
 import AppErrorBoundary from './components/AppErrorBoundary';
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <InterfaceLanguageProvider>
         <AuthProvider>
           <CmsDirectEditBridge />
+          {!cmsEditMode && <AuthTurnstileGate />}
           {!cmsEditMode && <ConsentAwareActivityTracker />}
           {!cmsEditMode && <AnalyticsConsent />}
           <ClientDiagnostics />
