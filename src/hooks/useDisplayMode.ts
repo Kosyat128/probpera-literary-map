@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
+
 export type DisplayMode = "dark" | "light" | "book";
 
 const STORAGE_KEY = "probpera-display-mode";
@@ -11,9 +13,8 @@ function isDisplayMode(value: unknown): value is DisplayMode {
 
 function preferredMode(): DisplayMode {
   if (typeof window === "undefined") return "dark";
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (isDisplayMode(stored)) return stored;
-  return "dark";
+  const stored = readWebStorage("local", STORAGE_KEY);
+  return isDisplayMode(stored) ? stored : "dark";
 }
 
 function applyMode(mode: DisplayMode) {
@@ -49,7 +50,7 @@ export function useDisplayMode() {
 
   const setMode = useCallback((nextMode: DisplayMode) => {
     setLocalMode(nextMode);
-    window.localStorage.setItem(STORAGE_KEY, nextMode);
+    writeWebStorage("local", STORAGE_KEY, nextMode);
     applyMode(nextMode);
     window.dispatchEvent(
       new CustomEvent<DisplayMode>(EVENT_NAME, { detail: nextMode })
