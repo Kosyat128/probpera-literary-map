@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  installSafeWebStorage,
   readWebStorage,
   removeWebStorage,
   writeWebStorage,
@@ -47,6 +48,54 @@ function host(localStorage: Storage, sessionStorage = memoryStorage()) {
     Window,
     "localStorage" | "sessionStorage"
   >;
+}
+
+function throwingStoragePrototype() {
+  const prototype = {} as Storage;
+  Object.defineProperties(prototype, {
+    length: {
+      configurable: true,
+      get() {
+        throw new DOMException("blocked", "SecurityError");
+      },
+    },
+    clear: {
+      configurable: true,
+      writable: true,
+      value() {
+        throw new DOMException("blocked", "SecurityError");
+      },
+    },
+    getItem: {
+      configurable: true,
+      writable: true,
+      value() {
+        throw new DOMException("blocked", "SecurityError");
+      },
+    },
+    key: {
+      configurable: true,
+      writable: true,
+      value() {
+        throw new DOMException("blocked", "SecurityError");
+      },
+    },
+    removeItem: {
+      configurable: true,
+      writable: true,
+      value() {
+        throw new DOMException("blocked", "SecurityError");
+      },
+    },
+    setItem: {
+      configurable: true,
+      writable: true,
+      value() {
+        throw new DOMException("full", "QuotaExceededError");
+      },
+    },
+  });
+  return prototype;
 }
 
 describe("safe web storage", () => {
@@ -100,5 +149,53 @@ describe("safe web storage", () => {
     expect(readWebStorage("local", "key", null)).toBeNull();
     expect(writeWebStorage("session", "key", "value", null)).toBe(false);
     expect(removeWebStorage("session", "key", null)).toBe(false);
+  });
+
+  it("makes legacy direct Storage calls non-throwing", () => {
+    const prototype = throwingStoragePrototype();
+    const storageHost = host(
+      Object.create(prototype) as Storage,
+      Object.create(prototype) as Storage
+    );
+
+    expect(installSafeWebStorage(storageHost, prototype)).toBe(true);
+    expect(storageHost.localStorage.getItem("draft")).toBeNull();
+    expect(storageHost.localStorage.key(0)).toBeNull();
+    expect(storageHost.localStorage.length).toBe(0);
+    expect(() => storageHost.localStorage.setItem("draft", "text")).not.toThrow();
+    expect(() => storageHost.localStorage.removeItem("draft")).not.toThrow();
+    expect(() => storageHost.localStorage.clear()).not.toThrow();
+    expect(installSafeWebStorage(storageHost, prototype)).toBe(true);
+  });
+
+  it("replaces an inaccessible storage property with an in-memory session view", () => {
+    const storageHost = Object.defineProperties({}, {
+      localStorage: {
+        configurable: true,
+        get() {
+          throw new DOMException("blocked", "SecurityError");
+        },
+      },
+      sessionStorage: {
+        configurable: true,
+        get() {
+          throw new DOMException("blocked", "SecurityError");
+        },
+      },
+    }) as Pick<Window, "localStorage" | "sessionStorage">;
+
+    expect(installSafeWebStorage(storageHost, null)).toBe(true);
+    storageHost.localStorage.setItem("draft", "saved in memory");
+    expect(storageHost.localStorage.getItem("draft")).toBe("saved in memory");
+    storageHost.localStorage.removeItem("draft");
+    expect(storageHost.localStorage.getItem("draft")).toBeNull();
+  });
+
+  it("keeps failed quota writes readable during the current page session", () => {
+    const storageHost = host(memoryStorage({ throwOnSet: true }));
+
+    expect(installSafeWebStorage(storageHost, null)).toBe(true);
+    storageHost.localStorage.setItem("page-draft", "recovery copy");
+    expect(storageHost.localStorage.getItem("page-draft")).toBe("recovery copy");
   });
 });
