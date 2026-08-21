@@ -46,11 +46,12 @@ database URL должен быть direct endpoint этого проекта л�
    manifest и редактированный отчёт в GitHub Artifact; сбой загрузки
    останавливает job;
 5. восстанавливает копию в изолированный PostgreSQL-контейнер;
-6. на восстановленной копии одной транзакцией применяет строго одиннадцать
+6. на восстановленной копии одной транзакцией применяет строго двенадцать
    проверенных миграций от `20260808_article_translations` до
-   `20260820_literary_work_cover_artworks`;
-7. проверяет ledger, 21 outbox-триггер, наличие work-level artwork, индексы, покрытие переводов и
-   staff-only RPC `get_editorial_schema_health()`;
+   `20260822_staff_editorial_read_rls`;
+7. проверяет ledger, 21 outbox-триггер, наличие work-level artwork, индексы,
+   покрытие переводов, три staff-only политики чтения и RPC
+   `get_editorial_schema_health()`;
 8. повторно сверяет SHA актуальной вершины `main`, чтобы не применить
    устаревший план после более нового deploy;
 9. только после успешного restore drill применяет тот же план одной
@@ -62,6 +63,16 @@ database URL должен быть direct endpoint этого проекта л�
 исторического SQL, собственные `BEGIN/COMMIT`, опасный DDL, неповторяемая
 политика или несовпадение существующего ledger останавливают workflow до
 production mutation.
+
+Текущий точный health-контракт после согласования:
+
+- версия `20260822_staff_editorial_read_rls`;
+- 12 записей в `probpera_schema_migrations`;
+- все 21 публикационный триггер;
+- staff-only чтение `articles`, `article_translations` и `media_assets`;
+- актуальные outbox, история ревизий, переводы произведений, редакционные
+  обложки и CMS-переопределения;
+- отсутствие невалидных индексов.
 
 ## Если запуск остановился
 
@@ -79,9 +90,9 @@ production-транзакции, база не менялась. Если оши
 
 Пакет данных запускается только после зелёного `Reconcile production
 database` для того же SHA: таблица
-`literary_work_cover_artworks` и актуальный schema-health RPC должны
-уже существовать. В environment `production` дополнительно нужен
-secret `SUPABASE_SERVICE_ROLE_KEY`; его значение, как и
+`literary_work_cover_artworks`, канонические staff-only политики и актуальный
+schema-health RPC должны уже существовать. В environment `production`
+дополнительно нужен secret `SUPABASE_SERVICE_ROLE_KEY`; его значение, как и
 `VITE_SUPABASE_URL`, не выводится в лог.
 
 Вручную запускается workflow `Sync book cover batch 2026-08-20` из
