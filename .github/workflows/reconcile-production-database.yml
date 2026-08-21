@@ -97,7 +97,7 @@ jobs:
             echo "# Production database reconciliation"
             echo
             printf '%s\n' "- Repository SHA: $EXPECTED_MAIN_SHA"
-            echo "- Migration range: 20260808_article_translations through 20260820_literary_work_cover_artworks"
+            echo "- Migration range: 20260808_article_translations through 20260822_staff_editorial_read_rls"
             echo "- Guard: exact reviewed SHA-256 allowlist"
           } > reconciliation/summary.md
 
@@ -209,7 +209,7 @@ jobs:
           bash scripts/database/supabase-database-safety.sh verify-production \
             reconciliation/verify.sql \
             reconciliation/production-verification.txt
-          expected='schema_health=20260820_literary_work_cover_artworks;outbox=true;outbox_rpc=true;publication_triggers=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=11;invalid_indexes=0'
+          expected='schema_health=20260822_staff_editorial_read_rls;outbox=true;outbox_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=12;invalid_indexes=0'
           actual="$(tr -d '\r\n' < reconciliation/production-verification.txt)"
           [[ "$actual" == "$expected" ]] || {
             echo "::error::Production verification did not return the exact current-schema contract."
