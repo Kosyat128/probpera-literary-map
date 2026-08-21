@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   EDITORIAL_SCHEMA_REQUIRED_FLAGS,
+  getMissingEditorialSchemaCapabilities,
   isEditorialSchemaReady,
   type EditorialSchemaHealth,
 } from "./editorial-schema-health";
@@ -24,6 +25,7 @@ const completeHealth: EditorialSchemaHealth = {
 describe("editorial schema health", () => {
   it("accepts the complete current production schema contract", () => {
     expect(isEditorialSchemaReady(completeHealth)).toBe(true);
+    expect(getMissingEditorialSchemaCapabilities(completeHealth)).toEqual([]);
   });
 
   it("rejects every missing or false required database capability", () => {
@@ -39,6 +41,16 @@ describe("editorial schema health", () => {
       delete withoutField[field];
       expect(isEditorialSchemaReady(withoutField)).toBe(false);
     }
+  });
+
+  it("names the database capabilities that still need attention", () => {
+    expect(
+      getMissingEditorialSchemaCapabilities({
+        ...completeHealth,
+        migrationLedger: false,
+        workCoverArtworks: false,
+      })
+    ).toEqual(["журнал миграций", "редакционные обложки"]);
   });
 
   it("does not report an unavailable health response as ready", () => {
