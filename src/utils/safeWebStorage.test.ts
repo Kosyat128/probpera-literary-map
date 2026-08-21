@@ -43,7 +43,7 @@ function memoryStorage(options: {
   return storage;
 }
 
-function host(localStorage: Storage, sessionStorage = memoryStorage()) {
+function host(localStorage: Storage, sessionStorage: Storage = memoryStorage()) {
   return { localStorage, sessionStorage } as Pick<
     Window,
     "localStorage" | "sessionStorage"
