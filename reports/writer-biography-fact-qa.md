@@ -1,38 +1,38 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:9fcab1a42ad94e972b187526013a3a358f182087892a619c07216820a74c2ae3`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:6c2b2d8a0715b2da0fc7aaea293f5328795db2d3fcd43a0d14f2ad45df7c152d`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1684; bio присутствует: 1684.
+- Карточек и русских bio проверено алгоритмом: 1681; bio присутствует: 1681.
 - Надёжных identity-match с локальным staging: 232.
 - Из них source-confirmed structured cross-check: 231 (13.7%).
-- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1168 (69.4% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 88.
-- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1634; совместимы при общей precision: 170; несовместимых строк после curated resolutions: 72. Из них 20 сначала требуют identity repair, а 31 — современные referenced-противоречия для проверки по авторитетному источнику.
+- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1166 (69.4% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 90.
+- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1633; совместимы при общей precision: 174; несовместимых строк после curated resolutions: 69. Из них 20 сначала требуют identity repair, а 31 — современные referenced-противоречия для проверки по авторитетному источнику.
 - Ручных source-resolution с сохранёнными доказательствами: 70 в 57 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
 - Metadata gaps (это не доказанные ошибки): 247.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1664.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1661.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 136
-- `critical-ranking`: 188
-- `identity-role`: 1630
+- `awards`: 134
+- `critical-ranking`: 173
+- `identity-role`: 1628
 - `language`: 189
-- `life-dates`: 346
-- `movement-era`: 85
-- `national-cultural-affiliation`: 1061
+- `life-dates`: 369
+- `movement-era`: 83
+- `national-cultural-affiliation`: 1059
 - `nobel`: 111
 - `places`: 23
-- `priority-claim`: 129
-- `reception-influence`: 41
-- `themes-style`: 322
-- `works`: 1130
+- `priority-claim`: 125
+- `reception-influence`: 40
+- `themes-style`: 315
+- `works`: 1156
 
 ## High-confidence противоречия
 
@@ -129,7 +129,7 @@
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1168. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1166. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -155,9 +155,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `north_korea:ri_ki_yong` | Ли Ги Ён | `Q485218` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1895` | 1896-05-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q485218 |
 | `pakistan:intizar_husain` | Интизар Хусейн | `Q6057750` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1923-12-21` | 1925-12-21 (day, Q1985727, normal, refs:2); 1923-12-07 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q6057750 |
 | `panama:ricardo_miro` | Рикардо Миро | `Q5573605` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1883-11-05` | 1882-11-05 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q5573605 |
-| `papua_new_guinea:vincent_eri` | Винсент Эри | `Q1409221` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1936-09-03` | 1936-09-12 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q1409221 |
-| `papua_new_guinea:vincent_eri` | Винсент Эри | `Q1409221` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2015-05-25` | 1993-05-25 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q1409221 |
-| `paraguay:julio_correa` | Хулио Корреа | `Q9016482` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1890-06-30` | 1890-08-30 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q9016482 |
 | `peru:santiago_roncagliolo` | Сантьяго Ронкальоло | `Q1399637` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1975-07-29` | 1975-03-29 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q1399637 |
 | `romania:mircea_eliade` | Мирча Элиаде | `Q41590` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1907-03-13` | 1907-03-09 (day, Q1985786, normal, refs:7) | https://www.wikidata.org/wiki/Q41590 |
 | `russia:kantemir` | Антиох Дмитриевич Кантемир | `Q372115` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1708-09-10` | 1708-09-21 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q372115 |

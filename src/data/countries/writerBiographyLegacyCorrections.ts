@@ -32,6 +32,9 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch42,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch42";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch43,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch43";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1668,6 +1671,7 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch40,
   ...writerBiographyPublicProfileFactCorrectionsBatch41,
   ...writerBiographyPublicProfileFactCorrectionsBatch42,
+  ...writerBiographyPublicProfileFactCorrectionsBatch43,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1774,6 +1778,9 @@ export const quarantinedWriterIdentities = [
   ["nauru", "michael_francis", "identity-not-established", "The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs."],
   ["new_zealand", "steven_baker", "cross-country-identity-conflict", "The id and displayed name Steven Baker are conflated with Steven Roger Fischer: the attributed works belong to Fischer, while no authoritative source establishes a matching New Zealand writer named Steven Baker."],
   ["niger", "ibrahim_adam", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Nigerien writer, birth year, literary role or works."],
+  ["oman", "zahir_al_ghazali", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Omani writer; the card must not be conflated with poet Zahir al-Ghafri."],
+  ["panama", "demetrio_kalleyas", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Panamanian writer; the card must not be conflated with poet Demetrio Korsi."],
+  ["papua_new_guinea", "siri_gising", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,

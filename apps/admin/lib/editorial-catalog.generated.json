@@ -38702,7 +38702,7 @@
           "label": "Юнас Ли",
           "fields": {
             "name": "Юнас Ли",
-            "fullName": "Jonas Lie",
+            "fullName": "Jonas Lauritz Idemil Lie",
             "years": "1833–1908",
             "birthDate": "1833-11-06",
             "deathDate": "1908-07-05",
@@ -38711,16 +38711,21 @@
             "portraitAlt": "Портрет: Юнас Ли",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Portrett_av_Jonas_Lie,_1904_-_no-nb_digifoto_20160308_00031_blds_04695_(cropped).jpg",
             "genres": [
-              "роман"
+              "роман",
+              "рассказ",
+              "драматургия",
+              "поэзия"
             ],
             "language": "норвежский",
             "nationality": "норвежец",
             "tags": [
               "XIX век"
             ],
-            "bio": "Норвежский писатель, один из крупнейших романистов XIX века.",
+            "bio": "Юнас Ли (1833–1908) — норвежский романист, драматург, поэт и автор рассказов. Среди его произведений — «Familjen paa Gilje», «Den Fremsynte» и «Trold».",
             "works": [
-              "Семья на Гилье"
+              "Familjen paa Gilje",
+              "Den Fremsynte",
+              "Trold"
             ],
             "awards": [],
             "relatedWriters": [
@@ -38810,16 +38815,20 @@
           "label": "Кнут Гамсун",
           "fields": {
             "name": "Кнут Гамсун",
-            "fullName": "Knut Hamsun",
+            "fullName": "Knud Pedersen (Knut Hamsun)",
             "years": "1859–1952",
             "birthDate": "1859-08-04",
             "deathDate": "1952-02-19",
-            "birthPlace": "Лом",
+            "birthPlace": "Вого, Норвегия",
             "portrait": "assets/writer-portraits/q40826.webp",
             "portraitAlt": "Портрет: Кнут Гамсун",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Portrett_av_Knut_Hamsun_(1859-1952)_(cropped).jpg",
             "genres": [
-              "роман"
+              "роман",
+              "повесть",
+              "рассказ",
+              "драматургия",
+              "поэзия"
             ],
             "language": "норвежский",
             "nationality": "норвежец",
@@ -38827,13 +38836,14 @@
               "Нобелевская премия",
               "XX век"
             ],
-            "bio": "Норвежский писатель, лауреат Нобелевской премии по литературе 1920 года.",
+            "bio": "Кнут Гамсун (1859–1952) — норвежский писатель, автор романов «Sult», «Pan» и «Markens Grøde». В 1920 году он получил Нобелевскую премию по литературе.",
             "works": [
-              "Голод",
-              "Пан"
+              "Sult",
+              "Pan",
+              "Markens Grøde"
             ],
             "awards": [
-              "Нобелевская премия по литературе 1920"
+              "Нобелевская премия по литературе, 1920"
             ],
             "relatedWriters": [
               "sigrid_undset"
@@ -38846,7 +38856,7 @@
           "label": "Олав Дуун",
           "fields": {
             "name": "Олав Дуун",
-            "fullName": "Olav Duun",
+            "fullName": "Ole Julius Duun",
             "years": "1876–1939",
             "birthDate": "1876-11-21",
             "deathDate": "1939-09-13",
@@ -38855,16 +38865,20 @@
             "portraitAlt": "Портрет: Олав Дуун",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Portrett_av_Olav_Duun.jpg",
             "genres": [
-              "роман"
+              "роман",
+              "повесть",
+              "рассказ"
             ],
             "language": "норвежский",
             "nationality": "норвежец",
             "tags": [
               "XX век"
             ],
-            "bio": "Один из крупнейших норвежских прозаиков XX века.",
+            "bio": "Олав Дуун (1876–1939) — норвежский романист, автор рассказов и бывший учитель. Среди его книг — цикл «Juvikfolke», романы «Medmenneske» и «Menneske og maktene».",
             "works": [
-              "Люди Ювика"
+              "Juvikfolke",
+              "Medmenneske",
+              "Menneske og maktene"
             ],
             "awards": [],
             "relatedWriters": [
@@ -38887,7 +38901,10 @@
             "portraitAlt": "Портрет: Сигрид Унсет",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Sigrid_Undset_1928.jpg",
             "genres": [
-              "исторический роман"
+              "роман",
+              "рассказ",
+              "эссе",
+              "историческая проза"
             ],
             "language": "норвежский",
             "nationality": "норвежка",
@@ -38895,12 +38912,14 @@
               "Нобелевская премия",
               "XX век"
             ],
-            "bio": "Норвежская писательница, лауреат Нобелевской премии по литературе 1928 года.",
+            "bio": "Сигрид Унсет (1882–1949) — норвежская романистка, автор «Kristin Lavransdatter» и «Jenny». Она получила Нобелевскую премию по литературе 1928 года.",
             "works": [
-              "Кристин, дочь Лавранса"
+              "Kristin Lavransdatter",
+              "Jenny",
+              "Olav Audunssøn"
             ],
             "awards": [
-              "Нобелевская премия по литературе 1928"
+              "Нобелевская премия по литературе, 1928"
             ],
             "relatedWriters": [
               "tarjei_vesaas"
@@ -38922,18 +38941,25 @@
             "portraitAlt": "Портрет: Тарьей Весос",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Tarjei_Vesaas.jpg",
             "genres": [
-              "роман"
+              "роман",
+              "рассказ",
+              "поэзия",
+              "драматургия"
             ],
             "language": "норвежский",
             "nationality": "норвежец",
             "tags": [
               "XX век"
             ],
-            "bio": "Норвежский писатель и поэт, один из крупнейших авторов XX века.",
+            "bio": "Тарьей Весос (1897–1970) — норвежский романист, поэт и драматург, автор книг «Fuglane» и «Is-slottet». Роман «Is-slottet» получил Литературную премию Северного совета 1964 года.",
             "works": [
-              "Ледяной замок"
+              "Fuglane",
+              "Is-slottet",
+              "Kimen"
             ],
-            "awards": [],
+            "awards": [
+              "Литературная премия Северного совета за Is-slottet, 1964"
+            ],
             "relatedWriters": [
               "aksel_sandemose"
             ],
@@ -38988,6 +39014,7 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Jostein_Gaarder_Leipziger_Buchmesse_2017_(cropped).jpg",
             "genres": [
               "роман",
+              "детская и юношеская литература",
               "философская проза"
             ],
             "language": "норвежский",
@@ -38996,9 +39023,11 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Современный норвежский писатель, автор философской прозы.",
+            "bio": "Юстейн Гордер — норвежский писатель, родившийся в 1952 году, автор книг для детей, юношества и взрослых. Среди его романов — «Sofies verden», «Kabalmysteriet» и «I et speil, i en gåte».",
             "works": [
-              "Мир Софии"
+              "Sofies verden",
+              "Kabalmysteriet",
+              "I et speil, i en gåte"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39056,18 +39085,24 @@
             "portraitAlt": "Портрет: Карл Уве Кнаусгор",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Karl_Ove_Knausg%C3%A5rd_2010-09-17.JPG",
             "genres": [
-              "автобиографическая проза"
+              "роман",
+              "автобиографическая проза",
+              "эссе"
             ],
             "language": "норвежский",
             "nationality": "норвежец",
             "tags": [
               "XXI век"
             ],
-            "bio": "Современный норвежский писатель, автор автобиографического цикла «Моя борьба».",
+            "bio": "Карл Уве Кнаусгор — норвежский писатель, родившийся в 1968 году; «Min kamp» представляет собой шеститомный автобиографический роман-цикл. Его дебют «Ute av verden» получил Норвежскую премию критиков.",
             "works": [
-              "Моя борьба"
+              "Min kamp",
+              "Ute av verden",
+              "Morgenstjernen"
             ],
-            "awards": [],
+            "awards": [
+              "Норвежская премия критиков за Ute av verden, 1998"
+            ],
             "relatedWriters": [
               "erlend_loe"
             ],
@@ -39160,14 +39195,16 @@
           "label": "Абу Муслим аль-Бахляни",
           "fields": {
             "name": "Абу Муслим аль-Бахляни",
-            "fullName": "Abu Muslim al-Bahlani",
+            "fullName": "ناصر بن سالم بن عديم البهلاني (أبو مسلم البهلاني)",
             "years": "1860–1920",
             "birthDate": "1860",
             "deathDate": "1920",
-            "birthPlace": "Оман",
+            "birthPlace": "Вади-Мухаррам, Самаиль, Оман",
             "portrait": "",
             "genres": [
-              "поэзия"
+              "поэзия",
+              "религиозная проза",
+              "журналистика"
             ],
             "language": "арабский",
             "nationality": "оманец",
@@ -39175,9 +39212,9 @@
               "XIX век",
               "XX век"
             ],
-            "bio": "Оманский поэт, один из крупнейших представителей классической арабской поэзии страны.",
+            "bio": "Абу Муслим аль-Бахляни (Насир бин Салим бин Удаййим, 1860–1920) — оманский поэт, религиозный учёный, судья и журналист. Ему принадлежит книга «النفس الرحماني في أذكار أبي مسلم البهلاني».",
             "works": [
-              "Поэтические произведения"
+              "النفس الرحماني في أذكار أبي مسلم البهلاني"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39199,16 +39236,20 @@
             "portrait": "",
             "genres": [
               "поэзия",
-              "проза"
+              "роман",
+              "эссе",
+              "журналистика"
             ],
             "language": "арабский",
             "nationality": "оманец",
             "tags": [
               "XX век"
             ],
-            "bio": "Оманский писатель и поэт, один из основателей современной литературы Омана.",
+            "bio": "Абдулла бин Мухаммад ат-Таи — оманский поэт, прозаик и журналист. Среди его произведений — «ملائكة الجبل الأخضر», «الشراع الكبير» и «الفجر الزاحف».",
             "works": [
-              "Литературные произведения"
+              "ملائكة الجبل الأخضر",
+              "الشراع الكبير",
+              "الفجر الزاحف"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39226,10 +39267,12 @@
             "years": "1956–",
             "birthDate": "1956",
             "deathDate": "",
-            "birthPlace": "Оман",
+            "birthPlace": "Сурур, Самаиль, Оман",
             "portrait": "",
             "genres": [
-              "поэзия"
+              "поэзия",
+              "проза",
+              "эссе"
             ],
             "language": "арабский",
             "nationality": "оманец",
@@ -39237,9 +39280,11 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Один из наиболее известных современных оманских поэтов.",
+            "bio": "Саиф ар-Рахби — оманский поэт, прозаик и эссеист, родившийся в 1956 году в Суруре. Среди его книг — «أجراس القطيعة», «رأس المسافر» и «شجرة الفرصاد».",
             "works": [
-              "Поэтические сборники"
+              "أجراس القطيعة",
+              "رأس المسافر",
+              "شجرة الفرصاد"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39261,19 +39306,22 @@
             "portrait": "",
             "genres": [
               "роман",
-              "проза"
+              "рассказ",
+              "академическая проза"
             ],
             "language": "арабский",
             "nationality": "оманка",
             "tags": [
               "XXI век"
             ],
-            "bio": "Оманская писательница, лауреат Международной Букеровской премии 2019 года.",
+            "bio": "Джоха аль-Харси — оманская писательница и исследовательница арабской литературы, автор романа «سيدات القمر» («Celestial Bodies»). Английский перевод романа получил International Booker Prize 2019 года.",
             "works": [
-              "Небесные тела"
+              "سيدات القمر",
+              "نارنجة",
+              "حرير الغزالة"
             ],
             "awards": [
-              "International Booker Prize"
+              "International Booker Prize за Celestial Bodies, 2019"
             ],
             "relatedWriters": [
               "saif_al_rahbi"
@@ -39293,8 +39341,10 @@
             "birthPlace": "Оман",
             "portrait": "",
             "genres": [
-              "эссе",
-              "проза"
+              "поэзия",
+              "проза",
+              "кинокритика",
+              "кинорежиссура"
             ],
             "language": "арабский",
             "nationality": "оманец",
@@ -39302,40 +39352,9 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Оманский писатель, эссеист и автор культурных исследований.",
+            "bio": "Абдулла Хабиб — оманский писатель, поэт, кинокритик и кинорежиссёр. Авторитетные источники расходятся в годе его рождения, поэтому дата в карточке не менялась.",
             "works": [
               "Эссе"
-            ],
-            "awards": [],
-            "relatedWriters": [
-              "saif_al_rahbi"
-            ],
-            "articleUrl": ""
-          }
-        },
-        {
-          "id": "zahir_al_ghazali",
-          "label": "Захир аль-Газали",
-          "fields": {
-            "name": "Захир аль-Газали",
-            "fullName": "Zahir Al Ghazali",
-            "years": "1957–",
-            "birthDate": "1957",
-            "deathDate": "",
-            "birthPlace": "Оман",
-            "portrait": "",
-            "genres": [
-              "поэзия"
-            ],
-            "language": "арабский",
-            "nationality": "оманец",
-            "tags": [
-              "XX век",
-              "XXI век"
-            ],
-            "bio": "Оманский поэт и писатель современной арабской литературы.",
-            "works": [
-              "Поэтические произведения"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39360,7 +39379,7 @@
           "label": "Мухаммад Икбал",
           "fields": {
             "name": "Мухаммад Икбал",
-            "fullName": "Muhammad Iqbal",
+            "fullName": "Sir Muhammad Iqbal",
             "years": "1877–1938",
             "birthDate": "1877-11-09",
             "deathDate": "1938-04-21",
@@ -39370,7 +39389,8 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Iqbal_2.jpg",
             "genres": [
               "поэзия",
-              "философская литература"
+              "философская проза",
+              "эссе"
             ],
             "language": "урду, персидский",
             "nationality": "пакистанец",
@@ -39378,10 +39398,11 @@
               "XX век",
               "классика"
             ],
-            "bio": "Великий поэт урду и персидской литературы, философ и мыслитель. Считается национальным поэтом Пакистана.",
+            "bio": "Мухаммад Икбал (1877–1938) — поэт и философ, писавший на урду и персидском языках. Среди его книг — «Asrar-i-Khudi», «Bang-i-Dara» и «Javid Nama».",
             "works": [
-              "Bang-e-Dra",
-              "Asrar-e-Khudi"
+              "Asrar-i-Khudi",
+              "Bang-i-Dara",
+              "Javid Nama"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39406,7 +39427,9 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Saadat_Hasan_Manto.jpg",
             "genres": [
               "рассказ",
-              "реализм"
+              "драматургия",
+              "эссе",
+              "радиопьеса"
             ],
             "language": "урду",
             "nationality": "пакистанец",
@@ -39414,12 +39437,15 @@
               "XX век",
               "рассказ"
             ],
-            "bio": "Один из крупнейших мастеров рассказа на урду XX века. Его произведения посвящены человеческой природе, разделу Индии и социальным потрясениям.",
+            "bio": "Саадат Хасан Манто (1912–1955) — писатель на урду, драматург и автор рассказов. Среди его произведений — «Toba Tek Singh», «Thanda Gosht» и «Khol Do»; в 2012 году он был посмертно награждён Nishan-e-Imtiaz.",
             "works": [
               "Toba Tek Singh",
-              "Thanda Gosht"
+              "Thanda Gosht",
+              "Khol Do"
             ],
-            "awards": [],
+            "awards": [
+              "Nishan-e-Imtiaz, 2012"
+            ],
             "relatedWriters": [
               "intizar_husain",
               "faiz_ahmad_faiz"
@@ -39436,12 +39462,14 @@
             "years": "1911–1984",
             "birthDate": "1911-02-13",
             "deathDate": "1984-11-20",
-            "birthPlace": "Наранг, Британская Индия",
+            "birthPlace": "Кала-Кадер, Нароваль, Британская Индия",
             "portrait": "assets/writer-portraits/q381296.webp",
             "portraitAlt": "Портрет: Фаиз Ахмад Фаиз",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Faiz_Ahmed_Faiz_(cropped).jpg",
             "genres": [
-              "поэзия"
+              "поэзия",
+              "журналистика",
+              "эссе"
             ],
             "language": "урду",
             "nationality": "пакистанец",
@@ -39449,13 +39477,15 @@
               "XX век",
               "поэзия"
             ],
-            "bio": "Пакистанский поэт, один из величайших представителей современной поэзии урду.",
+            "bio": "Фаиз Ахмад Фаиз (1911–1984) — пакистанский поэт на урду и журналист, автор сборников «Naqsh-e-Faryadi», «Dast-e-Saba» и «Zindan-Nama». Он получил Ленинскую премию мира.",
             "works": [
               "Naqsh-e-Faryadi",
-              "Dast-e-Saba"
+              "Dast-e-Saba",
+              "Zindan-Nama"
             ],
             "awards": [
-              "Премия Ленина мира"
+              "Ленинская премия мира",
+              "Nishan-e-Imtiaz, 1990"
             ],
             "relatedWriters": [
               "muhammad_iqbal"
@@ -39476,7 +39506,9 @@
             "portrait": "",
             "genres": [
               "роман",
-              "рассказ"
+              "рассказ",
+              "поэзия",
+              "литературная критика"
             ],
             "language": "урду",
             "nationality": "пакистанец",
@@ -39484,12 +39516,16 @@
               "XX век",
               "роман"
             ],
-            "bio": "Один из крупнейших пакистанских писателей на урду. Его творчество сочетает историю, мифологию и современность.",
+            "bio": "Интизар Хусейн (1923–2016) — пакистанский автор романов и рассказов на урду, среди его книг — «Basti» и «Aage Samandar Hai». Он вошёл в шорт-лист Man Booker International Prize 2013 года.",
             "works": [
               "Basti",
-              "Aage Samandar Hai"
+              "Aage Samandar Hai",
+              "The Seventh Door"
             ],
-            "awards": [],
+            "awards": [
+              "Man Booker International Prize, шорт-лист 2013",
+              "Sitara-e-Imtiaz, 2007"
+            ],
             "relatedWriters": [
               "saadat_hasan_manto"
             ],
@@ -39509,7 +39545,8 @@
             "portrait": "",
             "genres": [
               "роман",
-              "драма"
+              "рассказ",
+              "драматургия"
             ],
             "language": "урду",
             "nationality": "пакистанка",
@@ -39517,11 +39554,17 @@
               "XX век",
               "женская литература"
             ],
-            "bio": "Пакистанская писательница и драматург, одна из самых известных авторов прозы на урду.",
+            "bio": "Бано Кудсия (1928–2017) — пакистанская романистка, драматург и автор рассказов на урду. Она написала роман «Raja Gidh» и получила награды Sitara-e-Imtiaz, Hilal-e-Imtiaz и Kamal-e-Fun.",
             "works": [
-              "Raja Gidh"
+              "Raja Gidh",
+              "Aatish Zair-i-Paa",
+              "Aadhi Baat"
             ],
-            "awards": [],
+            "awards": [
+              "Sitara-e-Imtiaz, 1983",
+              "Hilal-e-Imtiaz, 2010",
+              "Kamal-e-Fun, 2010"
+            ],
             "relatedWriters": [
               "intizar_husain"
             ],
@@ -39543,7 +39586,8 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Hayfestival-2016-Kamila-Shamsie.jpg",
             "genres": [
               "роман",
-              "современная проза"
+              "рассказ",
+              "эссе"
             ],
             "language": "английский",
             "nationality": "пакистанского происхождения",
@@ -39551,13 +39595,14 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Пакистанско-британская писательница, известная романами о семье, истории и миграции.",
+            "bio": "Камила Шамси — пакистанско-британская романистка, родившаяся в Карачи в 1973 году; среди её книг — «Burnt Shadows» и «Home Fire». Роман «Home Fire» получил Women’s Prize for Fiction 2018 года.",
             "works": [
+              "In the City by the Sea",
               "Burnt Shadows",
               "Home Fire"
             ],
             "awards": [
-              "Women's Prize for Fiction"
+              "Women’s Prize for Fiction за Home Fire, 2018"
             ],
             "relatedWriters": [
               "mohsin_hamid"
@@ -39580,7 +39625,7 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Mohsin_Hamid_reading,_Brooklyn.jpg",
             "genres": [
               "роман",
-              "современная проза"
+              "эссе"
             ],
             "language": "английский",
             "nationality": "пакистанец",
@@ -39588,12 +39633,16 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Современный пакистанский писатель, известный романами о глобализации, миграции и идентичности.",
+            "bio": "Мохсин Хамид — пакистанский романист и эссеист, автор книг «Moth Smoke», «The Reluctant Fundamentalist» и «Exit West». Два последних романа вошли в шорт-листы Букеровской премии 2007 и 2017 годов соответственно.",
             "works": [
+              "Moth Smoke",
               "The Reluctant Fundamentalist",
               "Exit West"
             ],
-            "awards": [],
+            "awards": [
+              "The Reluctant Fundamentalist — шорт-лист Букеровской премии, 2007",
+              "Exit West — шорт-лист Букеровской премии, 2017"
+            ],
             "relatedWriters": [
               "kamila_shamsie"
             ],
@@ -39616,26 +39665,29 @@
           "label": "Эмелихтер Килэнг",
           "fields": {
             "name": "Эмелихтер Килэнг",
-            "fullName": "Emelihter Kihleng",
-            "years": "1970–",
-            "birthDate": "1970-01-01",
+            "fullName": "Emelihter S. Kihleng",
+            "years": "",
+            "birthDate": "",
             "deathDate": "",
-            "birthPlace": "Палау",
+            "birthPlace": "Гуам",
             "portrait": "",
+            "country": "Федеративные Штаты Микронезии",
             "genres": [
               "поэзия",
-              "эссе"
+              "эссе",
+              "редакторская работа"
             ],
-            "language": "английский",
-            "nationality": "палауано-микронезийская писательница",
+            "language": "английский, понпейский",
+            "nationality": "понпейская",
             "tags": [
               "XXI век",
-              "микронезийская литература",
+              "литература Микронезии",
               "поэзия"
             ],
-            "bio": "Палауано-микронезийская поэтесса и писательница. Одна из заметных представительниц современной литературы Микронезии. Её творчество связано с культурной памятью островных народов, женским опытом и сохранением наследия Тихого океана.",
+            "bio": "Эмелихтер Килэнг — понпейская поэтесса, родившаяся на Гуаме, автор сборника «My Urohs» 2008 года. Она также выступила соредактором антологии «Indigenous Literatures from Micronesia».",
             "works": [
-              "My Urohs"
+              "My Urohs",
+              "Indigenous Literatures from Micronesia"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39670,19 +39722,24 @@
             "portraitAlt": "Портрет: Махмуд Дарвиш",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Arafat_Darwish_Habash_(cropped).jpg",
             "genres": [
-              "поэзия"
+              "поэзия",
+              "проза",
+              "эссе"
             ],
             "language": "арабский",
             "nationality": "палестинец",
             "tags": [
               "XX век"
             ],
-            "bio": "Один из крупнейших арабских поэтов XX века, национальный поэт Палестины.",
+            "bio": "Махмуд Дарвиш (1941–2008) — палестинский поэт и автор прозы; среди его книг — «Why Did You Leave the Horse Alone?», «Mural» и «Memory for Forgetfulness». В 2001 году он получил Lannan Cultural Freedom Prize.",
             "works": [
-              "Почему ты оставил лошадь одну?",
-              "Меньше роз"
+              "Why Did You Leave the Horse Alone?",
+              "Mural",
+              "Memory for Forgetfulness"
             ],
-            "awards": [],
+            "awards": [
+              "Lannan Cultural Freedom Prize, 2001"
+            ],
             "articleUrl": ""
           }
         },
@@ -39691,27 +39748,34 @@
           "label": "Гассан Канафани",
           "fields": {
             "name": "Гассан Канафани",
-            "fullName": "Ghassan Kanafani",
+            "fullName": "Ghassan Fayiz Kanafani",
             "years": "1936–1972",
             "birthDate": "1936-04-09",
             "deathDate": "1972-07-08",
             "birthPlace": "Акка, Палестина",
+            "deathPlace": "Бейрут, Ливан",
             "portrait": "",
             "genres": [
               "роман",
-              "повесть"
+              "рассказ",
+              "драматургия",
+              "журналистика",
+              "литературная критика"
             ],
             "language": "арабский",
             "nationality": "палестинец",
             "tags": [
               "XX век"
             ],
-            "bio": "Палестинский писатель и журналист, один из главных представителей современной арабской прозы.",
+            "bio": "Гассан Фаиз Канафани (1936–1972) — палестинский писатель, журналист, драматург и литературный критик. Среди его книг — «Men in the Sun», «All That’s Left to You» и «Returning to Haifa».",
             "works": [
-              "Возвращение в Хайфу",
-              "Люди под солнцем"
+              "Men in the Sun",
+              "All That’s Left to You",
+              "Returning to Haifa"
             ],
-            "awards": [],
+            "awards": [
+              "Friends of the Book Society Prize за All That’s Left to You, 1966"
+            ],
             "articleUrl": ""
           }
         },
@@ -39720,26 +39784,30 @@
           "label": "Эдвард Саид",
           "fields": {
             "name": "Эдвард Саид",
-            "fullName": "Edward Said",
+            "fullName": "Edward Wadie Said",
             "years": "1935–2003",
             "birthDate": "1935-11-01",
-            "deathDate": "2003-09-25",
+            "deathDate": "2003-09-24",
             "birthPlace": "Иерусалим",
             "portrait": "assets/writer-portraits/q201538.webp",
             "portraitAlt": "Портрет: Эдвард Саид",
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Edward_Said_and_Daniel_Barenboim_in_Sevilla,_2002_(Said).jpg",
             "genres": [
+              "литературная критика",
               "эссе",
-              "литературная критика"
+              "мемуары",
+              "музыкальная критика"
             ],
             "language": "английский",
             "nationality": "палестинец",
             "tags": [
               "XX век"
             ],
-            "bio": "Палестино-американский литературовед, автор эссе и один из основателей постколониальной критики.",
+            "bio": "Эдвард Вади Саид (1935–2003) — палестино-американский литературовед, критик и профессор Колумбийского университета. Среди его книг — «Orientalism», «Culture and Imperialism» и мемуары «Out of Place».",
             "works": [
-              "Ориентализм"
+              "Orientalism",
+              "Culture and Imperialism",
+              "Out of Place"
             ],
             "awards": [],
             "articleUrl": ""
@@ -39765,11 +39833,15 @@
               "XX век",
               "XXI век"
             ],
-            "bio": "Палестинская писательница, одна из ведущих представительниц арабской женской прозы.",
+            "bio": "Сахар Халифа — палестинская романистка, родившаяся в Наблусе в 1941 году; среди её книг — «Wild Thorns» и «The Image, the Icon, and the Covenant». За второй роман она получила Naguib Mahfouz Medal for Literature в 2006 году.",
             "works": [
-              "Дикий терновник"
+              "Wild Thorns",
+              "The Image, the Icon, and the Covenant",
+              "Of Noble Origins"
             ],
-            "awards": [],
+            "awards": [
+              "Naguib Mahfouz Medal for Literature за The Image, the Icon, and the Covenant, 2006"
+            ],
             "articleUrl": ""
           }
         },
@@ -39780,21 +39852,28 @@
             "name": "Фадва Тукан",
             "fullName": "Fadwa Tuqan",
             "years": "1917–2003",
-            "birthDate": "1917-03-01",
+            "birthDate": "1917",
             "deathDate": "2003-12-12",
             "birthPlace": "Наблус, Палестина",
             "portrait": "",
             "genres": [
-              "поэзия"
+              "поэзия",
+              "автобиография"
             ],
             "language": "арабский",
             "nationality": "палестинка",
             "tags": [
               "XX век"
             ],
-            "bio": "Одна из крупнейших палестинских поэтесс XX века.",
-            "works": [],
-            "awards": [],
+            "bio": "Фадва Тукан (1917–2003) — палестинская поэтесса и автор двухтомной автобиографии. Среди её книг — «Alone with the Days», «The Night and the Horsemen» и «A Mountainous Journey»; в 1988–1989 годах она получила поэтическую премию Султана аль-Увейса.",
+            "works": [
+              "Alone with the Days",
+              "The Night and the Horsemen",
+              "A Mountainous Journey"
+            ],
+            "awards": [
+              "Sultan Bin Ali Al Owais Cultural Award for Poetry, 1988–1989"
+            ],
             "articleUrl": ""
           }
         },
@@ -39805,25 +39884,32 @@
             "name": "Ибрагим Насраллах",
             "fullName": "Ibrahim Nasrallah",
             "years": "1954–",
-            "birthDate": "1954-12-02",
+            "birthDate": "1954",
             "deathDate": "",
             "birthPlace": "Амман",
             "portrait": "",
             "genres": [
               "роман",
-              "поэзия"
+              "поэзия",
+              "автобиография",
+              "кинокритика"
             ],
             "language": "арабский",
-            "nationality": "палестинец",
+            "nationality": "палестино-иорданская",
             "tags": [
               "XX век",
               "XXI век"
             ],
-            "bio": "Палестинский писатель и поэт, автор многочисленных романов.",
+            "bio": "Ибрагим Насралла (род. 1954) — палестино-иорданский поэт и романист, автор «Time of White Horses», «Lanterns of the King of Galilee» и «The Second War of the Dog». Последний роман получил Международную премию арабской литературы 2018 года, а автор — Neustadt International Prize for Literature 2026 года.",
             "works": [
-              "Палестинская трилогия"
+              "Time of White Horses",
+              "Lanterns of the King of Galilee",
+              "The Second War of the Dog"
             ],
-            "awards": [],
+            "awards": [
+              "International Prize for Arabic Fiction за The Second War of the Dog, 2018",
+              "Neustadt International Prize for Literature, 2026"
+            ],
             "articleUrl": ""
           }
         }
@@ -39843,6 +39929,7 @@
           "label": "Рикардо Миро",
           "fields": {
             "name": "Рикардо Миро",
+            "fullName": "Ricardo Miró Denis",
             "years": "1883–1940",
             "birthDate": "1883-11-05",
             "deathDate": "1940-03-02",
@@ -39853,7 +39940,9 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Miro_ricardo.jpg",
             "genres": [
               "поэзия",
-              "эссе"
+              "рассказ",
+              "роман",
+              "дипломатическая проза"
             ],
             "language": "испанский",
             "nationality": "панамец",
@@ -39862,10 +39951,12 @@
               "поэзия",
               "национальная литература"
             ],
-            "bio": "Панамский поэт, один из основателей национальной литературы страны и крупнейший представитель панамской поэзии начала XX века. Его творчество связано с темами родины, природы и национальной идентичности.",
+            "bio": "Рикардо Миро Денис (1883–1940) — панамский поэт, прозаик и дипломат, родившийся и умерший в городе Панама. Среди его книг — «Preludios», «Los segundos preludios», «La leyenda del Pacífico» и «Caminos silenciosos».",
             "works": [
-              "Патриотическая песнь",
-              "Мелодии заката"
+              "Preludios",
+              "Los segundos preludios",
+              "La leyenda del Pacífico",
+              "Caminos silenciosos"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39877,18 +39968,21 @@
         },
         {
           "id": "rogelio_sinan",
-          "label": "Рохелио Синиан",
+          "label": "Рохелио Синан",
           "fields": {
-            "name": "Рохелио Синиан",
-            "years": "1904–1994",
-            "birthDate": "1904-04-25",
+            "name": "Рохелио Синан",
+            "fullName": "Bernardo Domínguez Alba (Rogelio Sinán)",
+            "years": "1902–1994",
+            "birthDate": "1902-04-25",
             "deathDate": "1994-10-04",
             "birthPlace": "Табога, Панама",
             "deathPlace": "Панама, Панама",
             "portrait": "",
             "genres": [
               "поэзия",
-              "авангард",
+              "рассказ",
+              "роман",
+              "драматургия",
               "эссе"
             ],
             "language": "испанский",
@@ -39898,43 +39992,16 @@
               "авангард",
               "поэзия"
             ],
-            "bio": "Панамский поэт и писатель, один из главных представителей авангардной литературы страны. Внёс значительный вклад в развитие современной испаноязычной поэзии.",
+            "bio": "Рохелио Синан — псевдоним панамского писателя Бернардо Домингеса Альбы (1902–1994), создававшего поэзию, рассказы, романы и пьесы. Среди его книг — «Onda», «Plenilunio» и «La isla mágica».",
             "works": [
-              "Остров магии",
-              "Книга странствий"
+              "Onda",
+              "Plenilunio",
+              "La isla mágica"
             ],
-            "awards": [],
-            "relatedWriters": [
-              "ricardo_miro"
+            "awards": [
+              "Premio Ricardo Miró за Plenilunio, 1943",
+              "Premio Ricardo Miró за La isla mágica, 1977"
             ],
-            "articleUrl": ""
-          }
-        },
-        {
-          "id": "demetrio_kalleyas",
-          "label": "Деметрио Кальехас",
-          "fields": {
-            "name": "Деметрио Кальехас",
-            "years": "1875–1958",
-            "birthDate": "1875-01-01",
-            "deathDate": "1958-01-01",
-            "birthPlace": "Панама",
-            "portrait": "",
-            "genres": [
-              "проза",
-              "журналистика"
-            ],
-            "language": "испанский",
-            "nationality": "панамец",
-            "tags": [
-              "XX век",
-              "панамская литература"
-            ],
-            "bio": "Панамский писатель и журналист, представитель ранней литературной традиции страны.",
-            "works": [
-              "Литературные очерки"
-            ],
-            "awards": [],
             "relatedWriters": [
               "ricardo_miro"
             ],
@@ -39946,13 +40013,18 @@
           "label": "Хуан Давид Морган",
           "fields": {
             "name": "Хуан Давид Морган",
+            "fullName": "Juan David Morgan González",
             "years": "1942–",
-            "birthDate": "1942-01-01",
-            "birthPlace": "Панама",
+            "birthDate": "1942-04-06",
+            "birthPlace": "Давид, Чирики, Панама",
             "portrait": "",
             "genres": [
+              "роман",
               "исторический роман",
-              "проза"
+              "рассказ",
+              "драматургия",
+              "поэзия",
+              "эссе"
             ],
             "language": "испанский",
             "nationality": "панамец",
@@ -39961,10 +40033,11 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Панамский писатель, автор исторических романов и произведений о судьбе Панамы. Один из заметных современных представителей литературы страны.",
+            "bio": "Хуан Давид Морган Гонсалес — панамский писатель и юрист, родившийся 6 апреля 1942 года в городе Давид. Среди его книг — «Fugitivos del paisaje», «El caballo de oro» и «El silencio de Gaudí».",
             "works": [
-              "Последний корабль",
-              "Панамские истории"
+              "Fugitivos del paisaje",
+              "El caballo de oro",
+              "El silencio de Gaudí"
             ],
             "awards": [],
             "relatedWriters": [
@@ -39990,15 +40063,15 @@
           "label": "Винсент Эри",
           "fields": {
             "name": "Винсент Эри",
-            "fullName": "Vincent Eri",
-            "years": "1936–2015",
-            "birthDate": "1936-09-03",
-            "deathDate": "2015-05-25",
-            "birthPlace": "Гулли, залив Папуа, Папуа — Новая Гвинея",
+            "fullName": "Sir Vincent Serei Eri",
+            "years": "1936–1993",
+            "birthDate": "1936-09-12",
+            "deathDate": "1993-05-25",
+            "birthPlace": "Мовеаве, провинция Галф, Папуа — Новая Гвинея",
+            "deathPlace": "Порт-Морсби, Папуа — Новая Гвинея",
             "portrait": "",
             "genres": [
-              "роман",
-              "историческая проза"
+              "роман"
             ],
             "language": "английский",
             "nationality": "папуа-новогвинеец",
@@ -40007,47 +40080,17 @@
               "литература Океании",
               "национальная литература"
             ],
-            "bio": "Папуа-новогвинейский писатель, дипломат и государственный деятель. Автор первого опубликованного романа Папуа — Новой Гвинеи «The Crocodile», ставшего важной частью национальной литературы страны.",
+            "bio": "Сэр Винсент Сереи Эри (1936–1993) — папуа-новогвинейский писатель, государственный служащий, дипломат и генерал-губернатор. Его роман «The Crocodile», опубликованный в 1970 году, стал первым романом автора из Папуа — Новой Гвинеи.",
             "works": [
               "The Crocodile"
             ],
-            "awards": [],
+            "awards": [
+              "Companion of the Order of St Michael and St George, 1981",
+              "Knight Bachelor, 1990"
+            ],
             "relatedWriters": [
               "albert_wendt",
               "epeli_hauofa"
-            ],
-            "articleUrl": ""
-          }
-        },
-        {
-          "id": "siri_gising",
-          "label": "Сири Гисинг",
-          "fields": {
-            "name": "Сири Гисинг",
-            "fullName": "Siri Gising",
-            "years": "1939–",
-            "birthDate": "1939-01-01",
-            "deathDate": "",
-            "birthPlace": "Папуа — Новая Гвинея",
-            "portrait": "",
-            "genres": [
-              "проза",
-              "образовательная литература"
-            ],
-            "language": "английский",
-            "nationality": "папуа-новогвинеец",
-            "tags": [
-              "XX век",
-              "образование",
-              "литература Океании"
-            ],
-            "bio": "Писатель и педагог Папуа — Новой Гвинеи. Один из авторов, связанных с развитием национального образования и письменной культуры страны.",
-            "works": [
-              "Mister Pip-related educational writings"
-            ],
-            "awards": [],
-            "relatedWriters": [
-              "vincent_eri"
             ],
             "articleUrl": ""
           }
@@ -40145,16 +40188,17 @@
           "label": "Хулио Корреа",
           "fields": {
             "name": "Хулио Корреа",
+            "fullName": "Julio Arístides Correa Myzkowsky",
             "years": "1890–1953",
-            "birthDate": "1890-06-30",
-            "deathDate": "1953-07-14",
+            "birthDate": "1890",
+            "deathDate": "1953",
             "birthPlace": "Асунсьон, Парагвай",
             "deathPlace": "Асунсьон, Парагвай",
             "portrait": "",
             "genres": [
               "драматургия",
               "поэзия",
-              "социальная проза"
+              "рассказ"
             ],
             "language": "гуарани, испанский",
             "nationality": "парагваец",
@@ -40163,11 +40207,11 @@
               "гуарани",
               "национальная литература"
             ],
-            "bio": "Парагвайский писатель, поэт и драматург. Один из важнейших авторов, использовавших гуарани в литературе. Его произведения отражают жизнь простого народа и социальные проблемы страны.",
+            "bio": "Хулио Аристидес Корреа Мышковски (1890–1953) — парагвайский поэт, драматург и автор рассказов, писавший на гуарани и испанском. Среди его пьес — «Sandía yvyguy», «Karu poka» и «Pleito rire».",
             "works": [
-              "Тексты на гуарани",
-              "Драматические произведения",
-              "Стихи"
+              "Sandía yvyguy",
+              "Karu poka",
+              "Pleito rire"
             ],
             "awards": [],
             "relatedWriters": [
@@ -40182,6 +40226,7 @@
           "label": "Аугусто Роа Бастос",
           "fields": {
             "name": "Аугусто Роа Бастос",
+            "fullName": "Augusto José Antonio Roa Bastos",
             "years": "1917–2005",
             "birthDate": "1917-06-13",
             "deathDate": "2005-04-26",
@@ -40192,9 +40237,11 @@
             "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Escritor_Augusto_R._Bastos.jpg",
             "genres": [
               "роман",
-              "историческая проза",
-              "политический роман",
-              "рассказ"
+              "рассказ",
+              "поэзия",
+              "драматургия",
+              "сценарий",
+              "журналистика"
             ],
             "language": "испанский",
             "nationality": "парагваец",
@@ -40203,16 +40250,14 @@
               "великая латиноамериканская проза",
               "историческая литература"
             ],
-            "bio": "Парагвайский писатель, журналист и сценарист, крупнейший представитель литературы страны XX века. Его творчество посвящено истории Парагвая, политическому насилию, диктатуре и судьбе человека. Лауреат Премии Сервантеса 1989 года.",
+            "bio": "Аугусто Хосе Антонио Роа Бастос (1917–2005) — парагвайский романист, поэт, журналист и сценарист. Среди его книг — «Hijo de hombre», «Yo el Supremo» и «El fiscal»; в 1989 году он получил премию Сервантеса.",
             "works": [
-              "Сын человеческий",
-              "Я, Верховный",
-              "Плот",
-              "Цветок тьмы"
+              "Hijo de hombre",
+              "Yo el Supremo",
+              "El fiscal"
             ],
             "awards": [
-              "Премия Сервантеса 1989 года",
-              "Премия имени Мигеля де Сервантеса"
+              "Премия Сервантеса, 1989"
             ],
             "relatedWriters": [
               "rafael_barrett",
@@ -40263,6 +40308,7 @@
           "label": "Габриэль Касаксиа",
           "fields": {
             "name": "Габриэль Касаксиа",
+            "fullName": "Benigno Gabriel Casaccia Bibolini",
             "years": "1907–1980",
             "birthDate": "1907-04-20",
             "deathDate": "1980-11-24",
@@ -40272,7 +40318,8 @@
             "genres": [
               "роман",
               "рассказ",
-              "психологическая проза"
+              "драматургия",
+              "журналистика"
             ],
             "language": "испанский",
             "nationality": "парагваец",
@@ -40280,11 +40327,12 @@
               "XX век",
               "современная проза"
             ],
-            "bio": "Парагвайский писатель, один из основателей современной парагвайской прозы. Его произведения отличаются психологизмом, реализмом и критическим изображением общества.",
+            "bio": "Бениньо Габриэль Касаксиа Биболини (1907–1980) — парагвайский романист, автор рассказов, пьес и журналистских текстов. Среди его книг — «La babosa», «La llaga», «Los exiliados» и «El Guajhú».",
             "works": [
-              "Гуаху",
-              "Богоматерь",
-              "Краткая жизнь"
+              "La babosa",
+              "La llaga",
+              "Los exiliados",
+              "El Guajhú"
             ],
             "awards": [],
             "relatedWriters": [
@@ -40300,7 +40348,7 @@
           "fields": {
             "name": "Хуан Мануэль Маркос",
             "years": "1950–",
-            "birthDate": "1950-01-01",
+            "birthDate": "1950",
             "birthPlace": "Асунсьон, Парагвай",
             "portrait": "",
             "genres": [
@@ -40316,14 +40364,13 @@
               "XXI век",
               "современная литература"
             ],
-            "bio": "Парагвайский писатель, поэт, литературовед и преподаватель. Один из заметных представителей современной интеллектуальной литературы Парагвая.",
+            "bio": "Хуан Мануэль Маркос (род. 1950) — парагвайский романист, поэт, литературовед и университетский преподаватель. Его роман «El invierno de Gunter» получил в Парагвае награду «Libro del Año» в 1987 году.",
             "works": [
               "El invierno de Gunter",
-              "Poemas",
-              "Литературоведческие исследования"
+              "La poética de Hugo Rodríguez-Alcalá: técnica y estilo"
             ],
             "awards": [
-              "Национальная литературная премия Парагвая"
+              "Libro del Año за El invierno de Gunter, 1987"
             ],
             "relatedWriters": [
               "augusto_roa_bastos",
@@ -40337,28 +40384,26 @@
           "label": "Лисандро Диас Леон",
           "fields": {
             "name": "Лисандро Диас Леон",
-            "years": "1929–2002",
-            "birthDate": "1929-03-15",
-            "deathDate": "2002-06-01",
-            "birthPlace": "Парагвай",
-            "deathPlace": "Парагвай",
+            "years": "1889–1928",
+            "birthDate": "1889",
+            "deathDate": "1928",
+            "birthPlace": "Сантисима-Тринидад, Асунсьон, Парагвай",
+            "deathPlace": "Париж, Франция",
             "portrait": "",
             "genres": [
-              "поэзия",
-              "журналистика",
-              "эссе"
+              "политическая публицистика",
+              "ораторское искусство"
             ],
             "language": "испанский",
             "nationality": "парагваец",
             "tags": [
+              "XIX век",
               "XX век",
-              "поэзия"
+              "политическая публицистика"
             ],
-            "bio": "Парагвайский писатель, поэт и журналист. Представитель национальной литературы второй половины XX века.",
-            "works": [
-              "Поэтические сборники",
-              "Публицистические произведения"
-            ],
+            "category": "политик, дипломат и парламентский оратор",
+            "bio": "Лисандро Диас Леон (1889–1928) — парагвайский политик, дипломат и парламентский оратор. Он занимал посты министра внутренних дел и министра юстиции, культа и народного просвещения.",
+            "works": [],
             "awards": [],
             "relatedWriters": [
               "augusto_roa_bastos",
@@ -40404,32 +40449,34 @@
         },
         {
           "id": "liza_haedo",
-          "label": "Лис Хаун",
+          "label": "Лиз Мария Аэдо",
           "fields": {
-            "name": "Лис Хаун",
-            "years": "1928–2019",
-            "birthDate": "1928-07-27",
-            "deathDate": "2019-07-29",
-            "birthPlace": "Вильяррика, Парагвай",
-            "deathPlace": "Асунсьон, Парагвай",
+            "name": "Лиз Мария Аэдо",
+            "fullName": "Liz María Haedo",
+            "years": "1986–",
+            "birthDate": "1986",
+            "deathDate": "",
+            "birthPlace": "Асунсьон, Парагвай",
+            "deathPlace": "",
             "portrait": "",
             "genres": [
-              "поэзия",
-              "эссе"
+              "рассказ",
+              "сценарий"
             ],
             "language": "испанский",
             "nationality": "парагвайка",
             "tags": [
-              "XX век",
-              "женская литература",
-              "поэзия"
+              "XXI век",
+              "современная литература"
             ],
-            "bio": "Парагвайская поэтесса, писательница и журналистка. Одна из наиболее заметных женщин-авторов Парагвая XX века. Её творчество связано с темами любви, памяти, времени и человеческой судьбы.",
+            "bio": "Лиз Мария Аэдо (род. 1986) — парагвайская писательница и сценаристка, автор сборников «Pieles de papel» и «Juruguasúlas». В 2020 году «Pieles de papel» получил PEN/Edward and Lily Tuck Award for Paraguayan Literature.",
             "works": [
-              "Поэтические сборники",
-              "Стихи и эссе"
+              "Pieles de papel",
+              "Juruguasúlas"
             ],
-            "awards": [],
+            "awards": [
+              "PEN/Edward and Lily Tuck Award for Paraguayan Literature за Pieles de papel, 2020"
+            ],
             "relatedWriters": [
               "adela_zamudio",
               "manuel_ortiz_guerrero"
@@ -40443,15 +40490,15 @@
           "fields": {
             "name": "Эльвио Ромеро",
             "years": "1926–2004",
-            "birthDate": "1926-12-17",
+            "birthDate": "1926-12-01",
             "deathDate": "2004-05-19",
-            "birthPlace": "Юнкаль, Парагвай",
+            "birthPlace": "Йегрос, Каасапа, Парагвай",
             "deathPlace": "Буэнос-Айрес, Аргентина",
             "portrait": "",
             "genres": [
               "поэзия",
-              "эссе",
-              "публицистика"
+              "журналистика",
+              "эссе"
             ],
             "language": "испанский",
             "nationality": "парагваец",
@@ -40460,13 +40507,15 @@
               "поэзия",
               "социальная литература"
             ],
-            "bio": "Парагвайский поэт, журналист и писатель. Один из наиболее значительных поэтов Парагвая XX века. Его творчество связано с социальной тематикой, историей страны и политическими событиями.",
+            "bio": "Эльвио Ромеро (1926–2004) — парагвайский поэт, журналист и писатель, родившийся в Йегросе и умерший в Буэнос-Айресе. Среди его сборников — «Días roturados», «El sol bajo las raíces» и «Destierro y atardecer»; в 1991 году он получил Национальную литературную премию Парагвая.",
             "works": [
-              "Потерянная роза",
-              "Дождь",
-              "Стихи о свободе"
+              "Días roturados",
+              "El sol bajo las raíces",
+              "Destierro y atardecer"
             ],
-            "awards": [],
+            "awards": [
+              "Национальная литературная премия Парагвая, 1991"
+            ],
             "relatedWriters": [
               "augusto_roa_bastos",
               "manuel_ortiz_guerrero"
