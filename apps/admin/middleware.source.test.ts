@@ -17,10 +17,27 @@ describe("Cloudflare-compatible Next.js 16 admin middleware", () => {
   });
 
   it("preserves routing normalization, authentication refresh, and matcher coverage", () => {
-    expect(source).toContain("return NextResponse.redirect(normalizedUrl, 308)");
+    expect(source).toContain("NextResponse.redirect(normalizedUrl, 308)");
     expect(source).toContain("await supabase.auth.getUser()");
     expect(source).toContain(
-      'matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"]'
+      'source: "/((?!_next/static|_next/image|favicon.ico).*)"'
     );
+    expect(source).toContain('key: "next-router-prefetch"');
+    expect(source).toContain('key: "purpose", value: "prefetch"');
+  });
+
+  it("injects a fresh nonce into the request and returns the same CSP", () => {
+    expect(source).toContain("const nonce = createAdminCspNonce()");
+    expect(source).toContain('headers.set("x-nonce", nonce)');
+    expect(source).toContain(
+      'headers.set("Content-Security-Policy", contentSecurityPolicy)'
+    );
+    expect(source).toContain(
+      'response.headers.set("Content-Security-Policy", contentSecurityPolicy)'
+    );
+    expect(source).toContain(
+      'response.headers.set("Cache-Control", "private, no-store, max-age=0")'
+    );
+    expect(source).toContain("response = createNextResponse()");
   });
 });
