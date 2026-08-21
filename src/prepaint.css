@@ -1,0 +1,13 @@
+/*
+ * The production homepage contains a crawlable static fallback inside #root.
+ * React replaces it after the module graph loads. Hide only that temporary
+ * copy before the first paint when scripting is active, so visitors never see
+ * a second page flash. Pure static journal archives remove the module script
+ * and therefore remain visible. With JavaScript disabled the fallback also
+ * remains visible as the accessible no-script version of the homepage.
+ */
+@media (scripting: enabled) {
+  html:has(script[type="module"]) #root > [data-static-seo] {
+    display: none !important;
+  }
+}
