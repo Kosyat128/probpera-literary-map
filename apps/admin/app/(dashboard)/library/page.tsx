@@ -4,6 +4,7 @@ import LiteraryWorkWorkspace, {
   type LiteraryWorkWorkspaceContext,
 } from "@/components/LiteraryWorkWorkspace";
 import { bookEditionRightsStatuses } from "@/lib/book-edition-edit";
+import { adminEnv } from "@/lib/env";
 import { lookupEditionByIsbn, normalizeIsbn } from "@/lib/isbn";
 import {
   LIBRARY_CATALOG_PAGE_SIZE,
@@ -15,6 +16,13 @@ import {
   parseLibraryCatalogQuery,
   type LibraryCatalogHrefOptions,
 } from "@/lib/library-catalog-query";
+import {
+  editorialArtworkAssetUrl,
+  editorialArtworkCountFromRelation,
+  editorialArtworkDigest,
+  editorialArtworkProvenanceView,
+  editorialArtworkSecondaryCount,
+} from "@/lib/literary-work-cover-artwork";
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { saveBookEditionAction, updateBookEditionAction } from "./actions";
@@ -204,7 +212,7 @@ export default async function LibraryPage({
   let worksCatalogQuery = supabase
     .from("literary_works")
     .select(
-      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata,updated_at",
+      "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata,updated_at,literary_work_cover_artworks(count)",
       { count: "exact" }
     )
     .order("title")
@@ -288,7 +296,9 @@ export default async function LibraryPage({
     { data: workPickerResult, error: workPickerError, count: workPickerCount },
     totalWorksResult,
     totalEditionsResult,
-    { count: verifiedCoversCount, error: coversError },
+    { count: verifiedEditionCoversCount, error: editionCoversError },
+    { count: editorialArtworksCount, error: editorialArtworksCountError },
+    { count: primaryEditorialArtworksCount, error: primaryEditorialArtworksCountError },
     selectedWorkResult,
     selectedEditionResult,
   ] = await Promise.all([
@@ -307,6 +317,13 @@ export default async function LibraryPage({
         "permission",
         "external-preview",
       ]),
+    supabase
+      .from("literary_work_cover_artworks")
+      .select("id", { count: "exact", head: true }),
+    supabase
+      .from("literary_work_cover_artworks")
+      .select("id", { count: "exact", head: true })
+      .eq("is_primary", true),
     selectedWorkPromise,
     selectedEditionPromise,
   ]);
@@ -324,6 +341,10 @@ export default async function LibraryPage({
   const workPickerTotalPages = Math.max(
     1,
     Math.ceil((workPickerCount || 0) / LIBRARY_WORK_PICKER_PAGE_SIZE)
+  );
+  const secondaryEditorialArtworksCount = editorialArtworkSecondaryCount(
+    editorialArtworksCount,
+    primaryEditorialArtworksCount
   );
   if (
     !worksError &&
@@ -375,6 +396,7 @@ export default async function LibraryPage({
     workSourcesResult,
     workExternalIdsResult,
     workImportCandidatesResult,
+    workEditorialArtworksResult,
   ] = selectedWork
     ? await Promise.all([
         supabase
@@ -402,8 +424,18 @@ export default async function LibraryPage({
           .order("quality_score", { ascending: false })
           .order("updated_at", { ascending: false })
           .order("id"),
+        supabase
+          .from("literary_work_cover_artworks")
+          .select(
+            "id,cover_url,thumbnail_url,cover_width,cover_height,thumbnail_width,thumbnail_height,rights_status,cover_source_url,rights_checked_at,source_archive_sha256,source_image_sha256,source_filename,source_relative_path,source_index,is_primary,provenance,created_at,updated_at"
+          )
+          .eq("work_id", selectedWork.id)
+          .order("is_primary", { ascending: false })
+          .order("source_index")
+          .order("id"),
       ])
     : [
+        { data: [], error: null },
         { data: [], error: null },
         { data: [], error: null },
         { data: [], error: null },
@@ -424,7 +456,9 @@ export default async function LibraryPage({
     workPickerError ||
     totalWorksResult.error ||
     totalEditionsResult.error ||
-    coversError ||
+    editionCoversError ||
+    editorialArtworksCountError ||
+    primaryEditorialArtworksCountError ||
     selectedWorkResult.error ||
     selectedEditionResult.error ||
     currentEditionWorkResult.error ||
@@ -432,7 +466,8 @@ export default async function LibraryPage({
     workTranslationsResult.error ||
     workSourcesResult.error ||
     workExternalIdsResult.error ||
-    workImportCandidatesResult.error;
+    workImportCandidatesResult.error ||
+    workEditorialArtworksResult.error;
   const formContext: LibraryFormContext = {
     catalog,
     isbn: requestedIsbn,
@@ -472,12 +507,12 @@ export default async function LibraryPage({
     <>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">Произведение → точное издание → обложка</span>
+          <span className="eyebrow">Произведение → иллюстрация / точное издание → обложка</span>
           <h1>Книжный архив</h1>
           <p>
-            Произведение хранится отдельно от издательских тиражей. Обложка
-            привязывается только к точному ISBN, источнику и записи о правах —
-            так изображение одного издания не выдаётся за все остальные.
+            Обложка издания всегда привязана к точному ISBN, источнику и правам.
+            Редакционная иллюстрация хранится отдельно на уровне произведения и не
+            считается обложкой конкретного издания.
           </p>
         </div>
       </header>
@@ -505,7 +540,8 @@ export default async function LibraryPage({
       {schemaError && (
         <p className="form-message">
           Книжные таблицы ещё не применены в Supabase. Выполните миграции
-          20260730_literary_archive.sql и 20260808_book_translations_and_import_staging.sql,
+          20260730_literary_archive.sql, 20260808_book_translations_and_import_staging.sql
+          и 20260820_literary_work_cover_artworks.sql,
           затем синхронизируйте countries.
         </p>
       )}
@@ -642,6 +678,146 @@ export default async function LibraryPage({
         </section>
       )}
 
+      {selectedWork && (
+        <section
+          className="panel editorial-artwork-panel"
+          aria-labelledby="editorial-artworks-heading"
+        >
+          <div className="library-catalog-heading">
+            <div>
+              <span className="eyebrow">Отдельно от изданий и ISBN</span>
+              <h2 id="editorial-artworks-heading">Редакционные иллюстрации «{selectedWork.title}»</h2>
+              <p>
+                Это визуальные материалы карточки произведения, а не обложки
+                издательских тиражей. Данные показаны только для проверки: их
+                происхождение неизменяемо.
+              </p>
+            </div>
+            <span className="badge">
+              {(workEditorialArtworksResult.data || []).length.toLocaleString("ru-RU")} шт.
+            </span>
+          </div>
+
+          {workEditorialArtworksResult.error ? (
+            <p className="form-message form-error" role="alert">
+              Не удалось загрузить редакционные иллюстрации: {workEditorialArtworksResult.error.message}
+            </p>
+          ) : (workEditorialArtworksResult.data || []).length ? (
+            <div className="editorial-artwork-grid">
+              {(workEditorialArtworksResult.data || []).map((artwork) => {
+                const previewUrl =
+                  editorialArtworkAssetUrl(
+                    artwork.thumbnail_url,
+                    adminEnv.publicSiteUrl
+                  ) ||
+                  editorialArtworkAssetUrl(
+                    artwork.cover_url,
+                    adminEnv.publicSiteUrl
+                  );
+                const fullSizeUrl = editorialArtworkAssetUrl(
+                  artwork.cover_url,
+                  adminEnv.publicSiteUrl
+                );
+                const sourceUrl = editorialArtworkAssetUrl(
+                  artwork.cover_source_url,
+                  adminEnv.publicSiteUrl
+                );
+                const provenance = editorialArtworkProvenanceView(
+                  artwork.provenance
+                );
+                return (
+                  <article className="editorial-artwork-card" key={artwork.id}>
+                    <div className="editorial-artwork-preview">
+                      {previewUrl ? (
+                        <img
+                          src={previewUrl}
+                          alt={`Редакционная иллюстрация «${selectedWork.title}»`}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span>Предпросмотр недоступен</span>
+                      )}
+                    </div>
+                    <div className="editorial-artwork-copy">
+                      <header>
+                        <div>
+                          <span className="eyebrow">
+                            Файл №{artwork.source_index.toLocaleString("ru-RU")}
+                          </span>
+                          <h3>{artwork.source_filename}</h3>
+                        </div>
+                        <span className="badge">
+                          {artwork.is_primary ? "Основная" : "Дополнительная"}
+                        </span>
+                      </header>
+                      <dl className="editorial-artwork-facts">
+                        <div>
+                          <dt>Размер</dt>
+                          <dd>{artwork.cover_width} × {artwork.cover_height} px</dd>
+                        </div>
+                        <div>
+                          <dt>Статус прав</dt>
+                          <dd>{artwork.rights_status}</dd>
+                        </div>
+                        <div>
+                          <dt>Права проверены</dt>
+                          <dd><time dateTime={artwork.rights_checked_at}>{artwork.rights_checked_at}</time></dd>
+                        </div>
+                        <div>
+                          <dt>Путь в архиве</dt>
+                          <dd>{artwork.source_relative_path}</dd>
+                        </div>
+                      </dl>
+                      <div className="editorial-artwork-links">
+                        {fullSizeUrl && (
+                          <a href={fullSizeUrl} target="_blank" rel="noreferrer">
+                            Открыть полный размер
+                          </a>
+                        )}
+                        {sourceUrl && sourceUrl !== fullSizeUrl && (
+                          <a href={sourceUrl} target="_blank" rel="noreferrer">
+                            Открыть зафиксированный источник
+                          </a>
+                        )}
+                      </div>
+                      <details className="editorial-artwork-provenance">
+                        <summary>Происхождение и хеши</summary>
+                        <dl>
+                          <div>
+                            <dt>Тип источника</dt>
+                            <dd>{provenance.kind || "—"}</dd>
+                          </div>
+                          <div>
+                            <dt>Основание сопоставления</dt>
+                            <dd>{provenance.matchBasis || "—"}</dd>
+                          </div>
+                          <div>
+                            <dt>SHA-256 архива</dt>
+                            <dd><code title={artwork.source_archive_sha256}>{editorialArtworkDigest(artwork.source_archive_sha256)}</code></dd>
+                          </div>
+                          <div>
+                            <dt>SHA-256 исходника</dt>
+                            <dd><code title={artwork.source_image_sha256}>{editorialArtworkDigest(artwork.source_image_sha256)}</code></dd>
+                          </div>
+                        </dl>
+                        {provenance.sourceEvidence && (
+                          <p>Свидетельство: {provenance.sourceEvidence}</p>
+                        )}
+                        {provenance.note && <p>{provenance.note}</p>}
+                      </details>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <p>Для этого произведения редакционные иллюстрации не загружены.</p>
+            </div>
+          )}
+        </section>
+      )}
+
       {selectedWork && !workTranslationsResult.error && !workSourcesResult.error && !workExternalIdsResult.error && !workImportCandidatesResult.error && (
         <LiteraryWorkWorkspace
           work={{ id: selectedWork.id, title: selectedWork.title }}
@@ -726,7 +902,7 @@ export default async function LibraryPage({
         </section>
       )}
 
-      <section className="stats-grid">
+      <section className="stats-grid library-stats-grid">
         <article className="stat-card">
           <span>Произведения</span>
           <strong>{(totalWorksResult.count || 0).toLocaleString("ru-RU")}</strong>
@@ -738,9 +914,17 @@ export default async function LibraryPage({
           <small>с отдельными ISBN</small>
         </article>
         <article className="stat-card">
-          <span>Проверенные обложки</span>
-          <strong>{(verifiedCoversCount || 0).toLocaleString("ru-RU")}</strong>
-          <small>источник и права заполнены</small>
+          <span>Обложки точных изданий</span>
+          <strong>{(verifiedEditionCoversCount || 0).toLocaleString("ru-RU")}</strong>
+          <small>источник и права подтверждены; отдельно от иллюстраций</small>
+        </article>
+        <article className="stat-card">
+          <span>Редакционные иллюстрации</span>
+          <strong>{(editorialArtworksCount || 0).toLocaleString("ru-RU")}</strong>
+          <small>
+            {(primaryEditorialArtworksCount || 0).toLocaleString("ru-RU")} основных ·{" "}
+            {secondaryEditorialArtworksCount.toLocaleString("ru-RU")} дополнительных
+          </small>
         </article>
         <article className="stat-card">
           <span>Принцип импорта</span>
@@ -813,6 +997,7 @@ export default async function LibraryPage({
                   <th>Автор / страна</th>
                   <th>Год</th>
                   <th>Статус</th>
+                  <th>Ред. иллюстрации</th>
                   <th></th>
                 </tr>
               </thead>
@@ -831,6 +1016,13 @@ export default async function LibraryPage({
                       </td>
                       <td>{work.first_published ?? "—"}</td>
                       <td><span className="badge">{work.editorial_status}</span></td>
+                      <td>
+                        <span className="badge">
+                          {editorialArtworkCountFromRelation(
+                            work.literary_work_cover_artworks
+                          ).toLocaleString("ru-RU")}
+                        </span>
+                      </td>
                       <td>
                         <Link
                           className="button-secondary"
