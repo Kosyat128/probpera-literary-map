@@ -25,7 +25,11 @@ describe("atomic auto-translated article publication", () => {
     expect(wrapperSource).toContain(": legacySaveArticleAction(formData)");
   });
 
-  it("keeps editorial validation on the compatibility path", () => {
+  it("keeps legacy URL and editorial validation on the compatibility path", () => {
+    expect(wrapperSource).toContain("optionalUrlIsValid");
+    expect(wrapperSource).toContain('formData.get("canonical_url")');
+    expect(wrapperSource).toContain("legacyCanonicalIsCompatible");
+    expect(actionSource).toContain("legacyShapeCompatible");
     expect(actionSource).toContain("publicationIssues.length > 0");
     expect(actionSource).toContain("return legacySaveArticleAction(formData)");
     expect(actionSource).toContain("englishTranslationReleaseIssues");
@@ -45,7 +49,7 @@ describe("atomic auto-translated article publication", () => {
 
   it("preserves both page-load optimistic locks", () => {
     expect(actionSource).toContain("expectedArticleUpdatedAt");
-    expect(actionSource).toContain("expectedEnglishUpdatedAt");
+    expect(actionSource).toContain("expectedEnglishUpdatedAt: englishExpectedUpdatedAt");
     expect(actionSource).toContain("english_expected_updated_at");
     expect(actionSource).toContain("expected_updated_at");
   });
