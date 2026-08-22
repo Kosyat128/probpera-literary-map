@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
+  type Ref,
   type RefObject,
 } from "react";
 import * as THREE from "three";
@@ -55,6 +56,8 @@ import {
   type GlobePointerGesture,
 } from "./globeInteraction";
 
+export type LiteraryGlobeMode = "embedded" | "immersive";
+
 interface Props {
   countries: Country[];
   atlasCountries?: Country[];
@@ -64,9 +67,22 @@ interface Props {
   onWriterSelect?: (country: Country, writer: Writer) => void;
   showNobelLaureates?: boolean;
   nobelCountryId?: string | null;
+  mode?: LiteraryGlobeMode;
+  rootRef?: Ref<HTMLDivElement>;
 }
 
 const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
+const GLOBE_CAMERA_CONFIG = {
+  position: [0, 0.08, 4.9] as [number, number, number],
+  fov: 43,
+  near: 0.1,
+  far: 100,
+};
+
+function assignRef<T>(ref: Ref<T> | undefined, value: T | null) {
+  if (typeof ref === "function") ref(value);
+  else if (ref) (ref as { current: T | null }).current = value;
+}
 
 const globeStylePalette: Record<
   GlobeVisualStyle,
@@ -1261,12 +1277,38 @@ function RendererResizeSync() {
     if (!container) return;
 
     let animationFrame = 0;
-    const synchronize = () => {
+    let lastWidth = 0;
+    let lastHeight = 0;
+    const synchronize = (entry?: ResizeObserverEntry) => {
+      const rawContentBoxSize = entry?.contentBoxSize as
+        | ReadonlyArray<ResizeObserverSize>
+        | ResizeObserverSize
+        | undefined;
+      const contentBoxSize = Array.isArray(rawContentBoxSize)
+        ? rawContentBoxSize[0]
+        : (rawContentBoxSize as ResizeObserverSize | undefined);
+      const width = Math.max(
+        1,
+        Math.round(
+          contentBoxSize?.inlineSize ??
+            entry?.contentRect.width ??
+            container.clientWidth
+        )
+      );
+      const height = Math.max(
+        1,
+        Math.round(
+          contentBoxSize?.blockSize ??
+            entry?.contentRect.height ??
+            container.clientHeight
+        )
+      );
+
+      if (width === lastWidth && height === lastHeight) return;
       cancelAnimationFrame(animationFrame);
       animationFrame = requestAnimationFrame(() => {
-        const rect = canvas.getBoundingClientRect();
-        const width = Math.max(1, Math.round(rect.width));
-        const height = Math.max(1, Math.round(rect.height));
+        lastWidth = width;
+        lastHeight = height;
         gl.setSize(width, height, false);
 
         if (camera instanceof THREE.PerspectiveCamera) {
@@ -1276,15 +1318,16 @@ function RendererResizeSync() {
       });
     };
 
-    const observer = new ResizeObserver(synchronize);
+    const observer = new ResizeObserver(([entry]) => synchronize(entry));
+    const synchronizeFromViewport = () => synchronize();
     observer.observe(container);
-    window.addEventListener("resize", synchronize, { passive: true });
+    window.addEventListener("resize", synchronizeFromViewport, { passive: true });
     synchronize();
 
     return () => {
       cancelAnimationFrame(animationFrame);
       observer.disconnect();
-      window.removeEventListener("resize", synchronize);
+      window.removeEventListener("resize", synchronizeFromViewport);
     };
   }, [camera, gl]);
 
@@ -1965,6 +2008,8 @@ export default function LiteraryGlobe({
   onWriterSelect,
   showNobelLaureates = false,
   nobelCountryId,
+  mode = "embedded",
+  rootRef,
 }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const [visualStyle, setVisualStyle] = useState<GlobeVisualStyle>(
@@ -1983,7 +2028,7 @@ export default function LiteraryGlobe({
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const [hoveredLaureate, setHoveredLaureate] =
     useState<HoveredLaureate | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [globeActive, setGlobeActive] = useState(false);
   const [atlasRequested, setAtlasRequested] = useState(false);
   const [autoRotateRequested, setAutoRotateRequested] = useState(true);
@@ -1991,6 +2036,13 @@ export default function LiteraryGlobe({
   const [controlRequest, setControlRequest] =
     useState<GlobeControlRequest | null>(null);
   const controlRequestId = useRef(0);
+  const setContainerRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      containerRef.current = node;
+      assignRef(rootRef, node);
+    },
+    [rootRef]
+  );
   const autoRotateResumeTimer = useRef<number | null>(null);
   const hoveredNobelYear = hoveredLaureate
     ? getNobelYear(hoveredLaureate.writer)
@@ -2287,9 +2339,10 @@ export default function LiteraryGlobe({
   if (!atlas) {
     return (
       <div
-        ref={containerRef}
+        ref={setContainerRef}
         className="literary-globe is-loading"
         data-globe-load-state={atlasError ? "error" : "loading"}
+        data-globe-mode={mode}
       >
         <div className="globe-loading">
           <span aria-hidden="true">✦</span>
@@ -2317,7 +2370,7 @@ export default function LiteraryGlobe({
 
   return (
     <div
-      ref={containerRef}
+      ref={setContainerRef}
       className={`literary-globe${hoveredCountry ? " is-hovering" : ""}`}
       role="region"
       tabIndex={0}
@@ -2330,9 +2383,10 @@ export default function LiteraryGlobe({
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
       data-globe-auto-rotate={autoRotateStatus}
+      data-globe-mode={mode}
     >
       <Canvas
-        camera={{ position: [0, 0.08, 4.9], fov: 43, near: 0.1, far: 100 }}
+        camera={GLOBE_CAMERA_CONFIG}
         dpr={[1, economical ? 1.1 : 1.5]}
         frameloop={frameMode}
         fallback={

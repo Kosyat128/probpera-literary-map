@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 
 export type UiActionSize = "sm" | "md" | "lg";
 export type UiActionSurface = "light" | "dark";
@@ -38,7 +38,7 @@ export function uiActionClassName({
     .join(" ");
 }
 
-export default function Button({
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button({
   children,
   className = "",
   disabled,
@@ -50,9 +50,10 @@ export default function Button({
   type = "button",
   variant = "secondary",
   ...props
-}: ButtonProps) {
+}: ButtonProps, ref) {
   return (
     <button
+      ref={ref}
       {...props}
       type={type}
       className={uiActionClassName({ className, loading, size, surface, variant })}
@@ -65,4 +66,6 @@ export default function Button({
       {endIcon && <span className="ui-action__icon" aria-hidden="true">{endIcon}</span>}
     </button>
   );
-}
+});
+
+export default Button;

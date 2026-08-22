@@ -5,6 +5,10 @@ const globeSource = readFileSync(
   new URL("./LiteraryGlobe.tsx", import.meta.url),
   "utf8"
 );
+const worldMapSource = readFileSync(
+  new URL("./LiteraryWorldMap.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("literary globe accessible interaction wiring", () => {
   it("exposes keyboard shortcuts and explicit touch-sized controls", () => {
@@ -40,6 +44,37 @@ describe("literary globe accessible interaction wiring", () => {
     expect(globeSource).toContain("data-globe-load-state");
     expect(globeSource).toContain("data-globe-frame-mode={frameMode}");
     expect(globeSource).toMatch(/\?\s*"always"\s*:\s*"demand"/u);
+  });
+
+  it("keeps renderer sizing independent from FLIP transforms", () => {
+    const resizeSyncSource = globeSource.slice(
+      globeSource.indexOf("function RendererResizeSync"),
+      globeSource.indexOf("function CountrySphericalOutline")
+    );
+
+    expect(resizeSyncSource).toContain("contentBoxSize");
+    expect(resizeSyncSource).toContain("container.clientWidth");
+    expect(resizeSyncSource).toContain("container.clientHeight");
+    expect(resizeSyncSource).not.toContain("getBoundingClientRect");
+    expect(globeSource).toContain("camera={GLOBE_CAMERA_CONFIG}");
+  });
+
+  it("tags a stable embedded or immersive root without replacing the canvas", () => {
+    expect(globeSource.match(/<Canvas/gu)).toHaveLength(1);
+    expect(globeSource).toContain('mode = "embedded"');
+    expect(globeSource).toContain("data-globe-mode={mode}");
+    expect(worldMapSource).toContain("rootRef?: Ref<HTMLElement>");
+    expect(worldMapSource).toContain("ref={rootRef}");
+    expect(worldMapSource).toContain("data-globe-mode={mode}");
+    expect(worldMapSource).toContain("mode={mode}");
+  });
+
+  it("forwards writer selection as one country-writer event", () => {
+    expect(worldMapSource).toContain(
+      "onWriterSelect?: (country: Country, writer: WriterProfile) => void"
+    );
+    expect(worldMapSource).toContain("onWriterSelect={onWriterSelect}");
+    expect(worldMapSource).not.toContain("onWriterSelect={(country, writer) =>");
   });
 
   it("keeps the same real sky and star field behind every public style", () => {

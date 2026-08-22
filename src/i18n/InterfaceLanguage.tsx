@@ -57,6 +57,13 @@ const englishInterfaceText: Record<string, string> = {
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
+  "Погрузиться": "Enter the Literary Planet",
+  "Погрузиться в Литературную планету": "Enter the Literary Planet",
+  "Искать в Литературной планете": "Search the Literary Planet",
+  "Открыть фильтры планеты": "Open Literary Planet filters",
+  "Закрыть Литературную планету": "Close the Literary Planet",
+  "Развернуть архив страны": "Expand country archive",
+  "Свернуть архив страны": "Collapse country archive",
   "Читать журнал": "Read the journal",
   стран: "countries",
   писателей: "writers",
@@ -76,6 +83,7 @@ const englishInterfaceText: Record<string, string> = {
   "Страна не найдена в выбранной коллекции.":
     "No country was found in this collection.",
   "Фильтры глобуса": "Globe filters",
+  "Поиск по Литературной планете": "Search the Literary Planet",
   "Все страны": "All countries",
   "Нобелевские лауреаты": "Nobel laureates",
   "10+ авторов": "10+ writers",

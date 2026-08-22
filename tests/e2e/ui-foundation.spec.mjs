@@ -79,7 +79,9 @@ test("core controls expose hover, keyboard focus, pressed and disabled states", 
   await expect(page.locator(".global-search-trigger")).toBeFocused();
   await expect(page.locator(".global-search-trigger")).not.toHaveCSS("outline-style", "none");
 
-  const ru = page.locator('.interface-language-control button[aria-label*="Русский"]');
+  const ru = page.locator(
+    '.site-header .interface-language-control button[aria-label*="Русский"]'
+  );
   await expect(ru).toHaveAttribute("aria-pressed", "true");
 
   await page.locator("#atlas").scrollIntoViewIfNeeded();

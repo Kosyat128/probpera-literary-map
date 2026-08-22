@@ -1,6 +1,7 @@
+import type { Ref } from "react";
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
-import LiteraryGlobe from "./LiteraryGlobe";
+import LiteraryGlobe, { type LiteraryGlobeMode } from "./LiteraryGlobe";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
 interface Props {
@@ -9,11 +10,13 @@ interface Props {
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
   onCountrySelect?: (country: Country) => void;
-  onWriterSelect?: (writer: WriterProfile | null) => void;
+  onWriterSelect?: (country: Country, writer: WriterProfile) => void;
   showNobelLaureates?: boolean;
   nobelCountryId?: string | null;
   filters?: WriterFilterState;
   onFiltersChange?: (filters: WriterFilterState) => void;
+  mode?: LiteraryGlobeMode;
+  rootRef?: Ref<HTMLElement>;
 }
 
 export default function LiteraryWorldMap({
@@ -25,13 +28,17 @@ export default function LiteraryWorldMap({
   onWriterSelect,
   showNobelLaureates,
   nobelCountryId,
+  mode = "embedded",
+  rootRef,
 }: Props) {
   const { t } = useInterfaceLanguage();
 
   return (
     <section
+      ref={rootRef}
       className="world-map-stage"
       aria-label={t("Интерактивный литературный глобус")}
+      data-globe-mode={mode}
     >
       <LiteraryGlobe
         countries={countries}
@@ -39,12 +46,10 @@ export default function LiteraryWorldMap({
         selectedCountry={selectedCountry}
         selectedWriter={selectedWriter}
         onCountrySelect={onCountrySelect}
-        onWriterSelect={(country, writer) => {
-          onCountrySelect?.(country);
-          onWriterSelect?.(writer);
-        }}
+        onWriterSelect={onWriterSelect}
         showNobelLaureates={showNobelLaureates}
         nobelCountryId={nobelCountryId}
+        mode={mode}
       />
     </section>
   );
