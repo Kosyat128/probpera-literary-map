@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { loadEnv } from 'vite';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -18,6 +19,14 @@ export default defineConfig(({ mode }) => {
   }
   return {
     base,
+    resolve: {
+      alias: [
+        {
+          find: /^@\//u,
+          replacement: fileURLToPath(new URL("./apps/admin/", import.meta.url)),
+        },
+      ],
+    },
     define: {
       __YANDEX_METRIKA_COUNTER_ID__: JSON.stringify(rawMetrikaCounterId),
     },

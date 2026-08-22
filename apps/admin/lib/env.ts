@@ -10,6 +10,7 @@ const supabasePublishableKey =
     "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
     "VITE_SUPABASE_PUBLISHABLE_KEY",
   ]);
+const openAiApiKey = getEnvValue(["OPENAI_API_KEY"]);
 
 export const adminEnv = {
   supabaseUrl,
@@ -54,6 +55,11 @@ export const adminEnv = {
       "VITE_YANDEX_METRIKA_COUNTER_ID",
       "PUBLIC_YANDEX_METRIKA_COUNTER_ID",
     ]) || "",
+  openAiApiKey,
+  openAiTranslationModel:
+    getEnvValue(["OPENAI_TRANSLATION_MODEL"]) || "gpt-5.6-sol",
+  openAiAutoTranslateArticles:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]).toLowerCase() !== "false",
 };
 
 export const isSupabaseConfigured = Boolean(
