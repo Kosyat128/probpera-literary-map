@@ -103,11 +103,11 @@ begin
     end if;
 
     if p_english_mode in ('save', 'stale') then
-      select *
+      select english_translation.*
       into current_english
-      from public.article_translations
-      where article_id = p_article_id
-        and locale = 'en'
+      from public.article_translations as english_translation
+      where english_translation.article_id = p_article_id
+        and english_translation.locale = 'en'
       for update;
       has_english := found;
 
