@@ -9,24 +9,11 @@ import { redirect } from "@/lib/navigation";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
-import { saveArticleAction as legacySaveArticleAction } from "./actions-legacy";
-import { isArticleBundleRpcAvailable } from "./article-bundle-rpc";
-import { saveAutoTranslatedArticleAtomically } from "./atomic-auto-publish-action";
+import { saveStandardArticleAtomically } from "./atomic-standard-save-action";
 
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
   return text || null;
-}
-
-function optionalUrlIsValid(value: FormDataEntryValue | null) {
-  const url = optionalText(value);
-  if (!url) return true;
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 function commaList(value: FormDataEntryValue | null) {
@@ -65,7 +52,7 @@ export async function saveArticleAction(formData: FormData) {
   const autoTranslationEnabled =
     adminEnv.openAiAutoTranslateArticles && Boolean(adminEnv.openAiApiKey);
   if (intent !== "publish" || !autoTranslationEnabled) {
-    return legacySaveArticleAction(formData);
+    return saveStandardArticleAtomically(formData);
   }
 
   // A deliberately reviewed manual English release always wins. Automatic
@@ -78,7 +65,7 @@ export async function saveArticleAction(formData: FormData) {
     ) &&
     formData.get("english_confirm_current_source") === "on";
   if (manualEnglishConfirmed) {
-    return legacySaveArticleAction(formData);
+    return saveStandardArticleAtomically(formData);
   }
 
   const articleId = optionalText(formData.get("id"));
@@ -134,13 +121,13 @@ export async function saveArticleAction(formData: FormData) {
   }
 
   // An unchanged already-published English translation needs no paid model
-  // request. Legacy validation will independently verify the persisted source
-  // hash before saving the Russian article.
+  // request. The canonical standard action still verifies optimistic locks,
+  // release rules and the persisted source hash before committing.
   if (
     existingEnglishHash === sourceHash &&
     existingEnglishStatus === "published"
   ) {
-    return legacySaveArticleAction(formData);
+    return saveStandardArticleAtomically(formData);
   }
 
   try {
@@ -209,14 +196,7 @@ export async function saveArticleAction(formData: FormData) {
     formData.set("english_status", "published");
     formData.set("english_confirm_current_source", "on");
 
-    const atomicPersistenceAvailable =
-      supabase && (await isArticleBundleRpcAvailable(supabase));
-    const legacyCanonicalIsCompatible = optionalUrlIsValid(
-      formData.get("canonical_url")
-    );
-    return atomicPersistenceAvailable && legacyCanonicalIsCompatible
-      ? saveAutoTranslatedArticleAtomically(formData)
-      : legacySaveArticleAction(formData);
+    return saveStandardArticleAtomically(formData);
   } catch (error) {
     const detail =
       error instanceof Error ? error.message : "неизвестная ошибка переводчика";
