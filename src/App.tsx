@@ -15,6 +15,11 @@ import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
 import WriterPortrait from "./components/WriterPortrait";
+import BrandArrowIcon from "./components/BrandArrowIcon";
+import BrandBookIcon from "./components/BrandBookIcon";
+import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
+import BrandSearchIcon from "./components/BrandSearchIcon";
+import BrandUserIcon from "./components/BrandUserIcon";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -77,6 +82,8 @@ import {
   type AtlasUrlFilter,
 } from "./utils/atlasUrlState";
 import { writerSearchLabel } from "./utils/writerSearchLabel";
+import ActionLink from "./ui/ActionLink";
+import Button from "./ui/Button";
 
 const GlobalSearch = lazy(() => import("./components/GlobalSearch"));
 const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
@@ -1258,32 +1265,30 @@ export default function App() {
         </nav>
 
         <div className="header-actions">
-          <button
+          <Button
             className="global-search-trigger"
-            type="button"
+            surface="dark"
+            variant="secondary"
+            startIcon={<BrandSearchIcon />}
             onClick={() => setGlobalSearchOpen(true)}
             aria-label={t("Открыть единый поиск")}
           >
-            <span aria-hidden="true">⌕</span>
             <small>{t("Поиск")}</small>
             <kbd>/</kbd>
-          </button>
+          </Button>
           <InterfaceLanguageControl />
           <SocialLinks />
-          <button
+          <Button
             className="reader-button"
-            type="button"
+            surface="dark"
+            variant="secondary"
+            startIcon={
+              readerName.slice(0, 1).toUpperCase() || <BrandUserIcon />
+            }
             onClick={() => openCommunity("account")}
           >
-            <span>
-              {readerName.slice(0, 1).toUpperCase() || (
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M12 12.3a4.15 4.15 0 1 0 0-8.3 4.15 4.15 0 0 0 0 8.3Zm-7 7.1c.8-3.3 3.45-5.15 7-5.15s6.2 1.85 7 5.15" />
-                </svg>
-              )}
-            </span>
             {readerName || t("Войти")}
-          </button>
+          </Button>
         </div>
       </header>
 
@@ -1380,8 +1385,12 @@ export default function App() {
                   )}
             </p>
             <div className="hero-actions">
-              <a
+              <ActionLink
                 className="primary-action"
+                size="lg"
+                surface="dark"
+                variant="primary"
+                endIcon={<BrandArrowIcon />}
                 href={safeHomepageHref(coreHero?.buttonUrl || "#atlas", "#atlas")}
                 {...cmsCoreFieldMarker(
                   "hero",
@@ -1392,12 +1401,17 @@ export default function App() {
               >
                 {language === "ru" && coreHero?.buttonText
                   ? coreHero.buttonText
-                  : t("Открыть глобус")} {" "}
-                <span>→</span>
-              </a>
-              <a className="secondary-action" href={journalPath()}>
+                  : t("Открыть глобус")}
+              </ActionLink>
+              <ActionLink
+                className="secondary-action"
+                size="lg"
+                surface="dark"
+                variant="secondary"
+                href={journalPath()}
+              >
                 {t("Читать журнал")}
-              </a>
+              </ActionLink>
             </div>
             <div className="hero-proof">
               <span>
@@ -1524,7 +1538,9 @@ export default function App() {
             >
               <label htmlFor="country-search">{t("Найти страну, писателя или книгу")}</label>
               <div className="search-field">
-                <span aria-hidden="true">⌕</span>
+                <span className="search-field-icon" aria-hidden="true">
+                  <BrandSearchIcon />
+                </span>
                 <input
                   id="country-search"
                   role="combobox"
@@ -1588,7 +1604,9 @@ export default function App() {
                               decorative
                             />
                           ) : (
-                            <span className="country-result-book" aria-hidden="true">▤</span>
+                            <span className="country-result-book" aria-hidden="true">
+                              <BrandBookIcon />
+                            </span>
                           )}
                           {result.label}
                         </span>
@@ -1639,16 +1657,21 @@ export default function App() {
                     ["verified", atlasFilterLabels.verified],
                   ] as Array<[AtlasFilter, string]>
                 ).map(([value, label]) => (
-                  <button
+                  <Button
                     className={atlasFilter === value ? "is-active" : ""}
-                    type="button"
+                    size="md"
+                    surface="dark"
+                    variant="text"
                     key={value}
                     data-atlas-filter={value}
                     aria-pressed={atlasFilter === value}
                     onClick={() => selectAtlasFilter(value)}
                   >
-                    {t(label)} <span>{number(filterCounts[value])}</span>
-                  </button>
+                    {t(label)}{" "}
+                    <span className="atlas-filter-count">
+                      {number(filterCounts[value])}
+                    </span>
+                  </Button>
                 ))}
               </div>
               <p className="atlas-filter-status" role="status" aria-live="polite">
@@ -1666,10 +1689,16 @@ export default function App() {
             <div className="atlas-ranking">
               <span>{t("Крупнейшие архивы")}</span>
               {topCountries.map((country) => (
-                <button type="button" key={country.id} onClick={() => selectCountry(country)}>
+                <Button
+                  key={country.id}
+                  size="md"
+                  surface="dark"
+                  variant="text"
+                  onClick={() => selectCountry(country)}
+                >
                   {countryName(country.code, country.name)}
                   <small>{number(country.writers.length)}</small>
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -1952,9 +1981,10 @@ export default function App() {
               {bookOfMonth && (
                 <div className="book-actions">
                   <div className="book-actions-primary">
-                    <button
+                    <Button
                       className="book-action-primary"
-                      type="button"
+                      variant="primary"
+                      endIcon={<BrandArrowIcon />}
                       onClick={() => openBook(bookOfMonth)}
                     >
                       <span
@@ -1968,12 +1998,13 @@ export default function App() {
                         {language === "ru" && coreBookMonth?.buttonText
                           ? coreBookMonth.buttonText
                           : t("О книге")}
-                      </span>{" "}
-                      <span aria-hidden="true">→</span>
-                    </button>
-                    <button
+                      </span>
+                    </Button>
+                    <Button
                       className="book-action-secondary"
-                      type="button"
+                      surface="dark"
+                      variant="secondary"
+                      endIcon={<BrandArrowIcon />}
                       onClick={() =>
                         selectCountry(
                           bookOfMonth.country,
@@ -1982,19 +2013,22 @@ export default function App() {
                         )
                       }
                     >
-                      {t("Открыть автора и страну")} <span aria-hidden="true">→</span>
-                    </button>
+                      {t("Открыть автора и страну")}
+                    </Button>
                   </div>
                   {bookOfMonth.sourceUrl && (
-                    <a
+                    <ActionLink
                       className="book-source-link"
+                      size="md"
+                      surface="dark"
+                      variant="text"
+                      endIcon={<BrandExternalLinkIcon />}
                       href={bookOfMonth.sourceUrl}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <span>{t("Источник сведений")}</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
+                      {t("Источник сведений")}
+                    </ActionLink>
                   )}
                 </div>
               )}
@@ -2398,8 +2432,8 @@ export default function App() {
               <li>{t("Личная библиотека, любимые авторы, страны и история участия")}</li>
             </ul>
             <div>
-              <button
-                type="button"
+              <Button
+                variant="primary"
                 onClick={() => openCommunity("forum")}
                 {...cmsCoreFieldMarker(
                   "community",
@@ -2411,11 +2445,15 @@ export default function App() {
                 {language === "ru" && coreCommunity?.buttonText
                   ? coreCommunity.buttonText
                   : t("Открыть форум")}
-              </button>
+              </Button>
               {!user && (
-                <button type="button" onClick={() => openCommunity("account")}>
+                <Button
+                  surface="dark"
+                  variant="secondary"
+                  onClick={() => openCommunity("account")}
+                >
                   {t("Вступить в клуб")}
-                </button>
+                </Button>
               )}
             </div>
           </div>

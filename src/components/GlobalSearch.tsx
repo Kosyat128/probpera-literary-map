@@ -39,8 +39,11 @@ import {
 } from "../utils/articleRoutes";
 import { writerSearchLabel } from "../utils/writerSearchLabel";
 import CountryFlagIcon from "./CountryFlagIcon";
+import BrandBookIcon from "./BrandBookIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
+import BrandSearchIcon from "./BrandSearchIcon";
 import WriterPortrait from "./WriterPortrait";
+import IconButton from "../ui/IconButton";
 
 type Props = {
   open: boolean;
@@ -345,13 +348,16 @@ export default function GlobalSearch({
             <span className="section-kicker">{t("Единый каталог")}</span>
             <h2 id="global-search-title">{t("Найти в «Пробе Пера»")}</h2>
           </div>
-          <button type="button" onClick={onClose} aria-label={t("Закрыть поиск")}>
-            <BrandCloseIcon />
-          </button>
+          <IconButton
+            icon={<BrandCloseIcon />}
+            surface="dark"
+            onClick={onClose}
+            aria-label={t("Закрыть поиск")}
+          />
         </header>
 
         <label className="global-search-field">
-          <span aria-hidden="true">⌕</span>
+          <span aria-hidden="true"><BrandSearchIcon /></span>
           <input
             ref={inputRef}
             type="search"
@@ -505,7 +511,7 @@ export default function GlobalSearch({
                           decoding="async"
                         />
                       ) : (
-                        <span>▤</span>
+                        <span><BrandBookIcon /></span>
                       )}
                     </span>
                     <strong>{presentBookArchiveEntry(book, language).title}</strong>

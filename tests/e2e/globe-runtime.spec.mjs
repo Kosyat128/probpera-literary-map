@@ -231,7 +231,9 @@ test("globe filters update the collection without rebuilding the 3D atlas", asyn
 
   for (const filter of filters) {
     const filterButton = page.locator(`[data-atlas-filter="${filter}"]`);
-    const count = (await filterButton.locator("span").textContent())?.trim();
+    const count = (
+      await filterButton.locator(".atlas-filter-count").textContent()
+    )?.trim();
     expect(count).toMatch(/^\d+$/u);
     await filterButton.click();
     await expect(filterButton).toHaveAttribute("aria-pressed", "true");
