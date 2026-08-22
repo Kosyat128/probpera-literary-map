@@ -10,11 +10,14 @@ async function openAccount(page) {
   const trigger = page.locator(".site-header .reader-button");
   await expect(trigger).toBeVisible();
   await trigger.click();
-  const dialog = page.getByRole("dialog", {
+  const namedDialog = page.getByRole("dialog", {
     name: "Личный кабинет «Пробы Пера»",
   });
-  await expect(dialog).toBeVisible();
-  return { dialog, trigger };
+  await expect(namedDialog).toBeVisible();
+  return {
+    dialog: page.locator('.community-hub[role="dialog"]'),
+    trigger,
+  };
 }
 
 async function openForum(page, isMobile) {
@@ -24,11 +27,14 @@ async function openForum(page, isMobile) {
   const trigger = scope.getByRole("button", { name: "Форум", exact: true });
   await expect(trigger).toBeVisible();
   await trigger.click();
-  const dialog = page.getByRole("dialog", {
+  const namedDialog = page.getByRole("dialog", {
     name: "Говорилка — форум «Проба Пера»",
   });
-  await expect(dialog).toBeVisible();
-  return { dialog, trigger };
+  await expect(namedDialog).toBeVisible();
+  return {
+    dialog: page.locator('.community-hub[role="dialog"]'),
+    trigger,
+  };
 }
 
 test("личный кабинет удерживает фокус, блокирует фон и возвращает управление", async ({
@@ -144,6 +150,7 @@ test("форум и вход переключаются внутри одног�
   await expect(dialog.locator(".community-setup")).toBeVisible();
 
   await tabs.getByRole("button", { name: "Вход и регистрация" }).click();
+  await expect(dialog).toHaveAccessibleName("Личный кабинет «Пробы Пера»");
   await expect(email).toHaveValue("reader@example.test");
   expect(errors).toEqual([]);
 });
