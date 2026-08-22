@@ -27,8 +27,11 @@ function withTurnstileToken<T extends CaptchaCredentials>(credentials: T): T {
   } as T;
 }
 
-export function installAuthTurnstile(client: SupabaseClient) {
-  if (!isAuthTurnstileConfigured) return client;
+export function installAuthTurnstile(
+  client: SupabaseClient,
+  enabled = isAuthTurnstileConfigured
+) {
+  if (!enabled) return client;
   const auth = client.auth;
   const originalSignUp = auth.signUp.bind(auth);
   const originalSignInWithPassword = auth.signInWithPassword.bind(auth);
