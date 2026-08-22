@@ -160,7 +160,7 @@ describe("Tilda dependency audit", () => {
     });
   });
 
-  it("keeps the current repository inside the reviewed dependency boundary", async () => {
+  it("keeps the current repository below the reviewed dependency ceilings", async () => {
     const manifest = JSON.parse(
       await fs.readFile(
         path.join(process.cwd(), "config", "tilda-dependency-baseline.json"),
@@ -181,10 +181,18 @@ describe("Tilda dependency audit", () => {
         missingUrls: [],
       },
     ]);
-    expect(result.generated.budget).toEqual({
-      ...manifest.generatedBudget,
-      occurrenceHeadroom: 0,
-      uniqueUrlHeadroom: 0,
-    });
+    // The committed fallback snapshot can legitimately contain fewer derived
+    // dzenImageUrl copies than a fresh production CMS export. Both snapshots
+    // must remain below the reviewed ceilings; neither is required to fill an
+    // aggregate serialization budget exactly.
+    expect(result.generated.budget).toMatchObject(manifest.generatedBudget);
+    expect(result.generated.budget.occurrenceHeadroom).toBeGreaterThanOrEqual(0);
+    expect(result.generated.budget.uniqueUrlHeadroom).toBeGreaterThanOrEqual(0);
+    expect(result.generated.occurrences).toBeLessThanOrEqual(
+      manifest.generatedBudget.maxOccurrences
+    );
+    expect(result.generated.uniqueUrls).toBeLessThanOrEqual(
+      manifest.generatedBudget.maxUniqueUrls
+    );
   });
 });
