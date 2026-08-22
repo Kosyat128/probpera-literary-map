@@ -26,6 +26,7 @@
   },
   "generatedPrefixes": [
     "src/data/articles/catalog.generated.ts",
+    "src/data/articles/cms.generated.ts",
     "public/articles/",
     "public/cms/"
   ]
