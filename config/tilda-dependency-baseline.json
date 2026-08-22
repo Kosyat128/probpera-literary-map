@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "host": "static.tildacdn.com",
+  "runtimeRoots": [
+    "src",
+    "public"
+  ],
+  "handwrittenFiles": {
+    "src/App.tsx": {
+      "expectedOccurrences": 15,
+      "allowedUrls": [
+        "https://static.tildacdn.com/tild3037-3130-4065-b839-653563653430/c471b0ab-eb22-48d7-8.png",
+        "https://static.tildacdn.com/tild3162-6534-4936-b966-633930633738/photo.jpg",
+        "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
+        "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
+        "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+        "https://static.tildacdn.com/tild3839-3364-4139-a434-386438386638/image.png",
+        "https://static.tildacdn.com/tild6138-3239-4335-b166-643935623330/123231.png",
+        "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
+        "https://static.tildacdn.com/tild6262-3936-4061-b465-623133623265/image.png",
+        "https://static.tildacdn.com/tild6333-6433-4634-b862-666436373139/photo.png",
+        "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
+        "https://static.tildacdn.com/tild6634-3234-4332-b438-663736316139/anastacia-dvi-HRPaX-.jpg"
+      ]
+    }
+  },
+  "generatedPrefixes": [
+    "src/data/articles/catalog.generated.ts",
+    "src/data/articles/cms.generated.ts",
+    "public/articles/",
+    "public/cms/"
+  ],
+  "generatedBudget": {
+    "maxOccurrences": 5243,
+    "maxUniqueUrls": 1568
+  }
+}
