@@ -1,20 +1,18 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { load } from "cheerio";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
-import { articleCanonicalUrl } from "@/lib/article-route";
+import { articleCanonicalUrl } from "./article-route";
 import {
   articleTranslationSourceHash,
   englishTranslationReleaseIssues,
-} from "@/lib/article-translations";
-import { safeTextToneSpanAttributes } from "@/lib/article-content-presentation";
-import { adminEnv } from "@/lib/env";
-import { createSlug } from "@/lib/slug";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+} from "./article-translations";
+import { safeTextToneSpanAttributes } from "./article-content-presentation";
+import { adminEnv } from "./env";
+import { createSlug } from "./slug";
 
-type SupabaseServerClient = NonNullable<
-  Awaited<ReturnType<typeof createServerSupabaseClient>>
->;
+type SupabaseServerClient = SupabaseClient;
 
 type ArticleSourceRow = {
   id: string;
@@ -148,13 +146,17 @@ export function protectedArticleHtmlSignature(html: string): string[] {
 }
 
 function sameStringArray(left: readonly string[], right: readonly string[]) {
-  return left.length === right.length && left.every((item, i) => item === right[i]);
+  return (
+    left.length === right.length &&
+    left.every((item, index) => item === right[index])
+  );
 }
 
 function responseText(payload: unknown) {
   if (!payload || typeof payload !== "object") return "";
   const record = payload as Record<string, unknown>;
   if (typeof record.output_text === "string") return record.output_text;
+
   for (const item of Array.isArray(record.output) ? record.output : []) {
     if (!item || typeof item !== "object") continue;
     const content = (item as Record<string, unknown>).content;
@@ -177,8 +179,10 @@ function responseUsage(payload: unknown) {
   const record =
     usage && typeof usage === "object" ? (usage as Record<string, unknown>) : {};
   return {
-    inputTokens: typeof record.input_tokens === "number" ? record.input_tokens : null,
-    outputTokens: typeof record.output_tokens === "number" ? record.output_tokens : null,
+    inputTokens:
+      typeof record.input_tokens === "number" ? record.input_tokens : null,
+    outputTokens:
+      typeof record.output_tokens === "number" ? record.output_tokens : null,
   };
 }
 
@@ -207,11 +211,23 @@ const translationJsonSchema = {
     cover_alt: { type: "string" },
     seo_title: { type: "string" },
     seo_description: { type: "string" },
-    seo_keywords: { type: "array", maxItems: 30, items: { type: "string" } },
+    seo_keywords: {
+      type: "array",
+      maxItems: 30,
+      items: { type: "string" },
+    },
     og_title: { type: "string" },
     og_description: { type: "string" },
-    sources: { type: "array", maxItems: 100, items: { type: "string" } },
-    bibliography: { type: "array", maxItems: 100, items: { type: "string" } },
+    sources: {
+      type: "array",
+      maxItems: 100,
+      items: { type: "string" },
+    },
+    bibliography: {
+      type: "array",
+      maxItems: 100,
+      items: { type: "string" },
+    },
   },
 } as const;
 
@@ -249,6 +265,7 @@ export async function translateArticleSourceToEnglish(
   const sourceSignature = protectedArticleHtmlSignature(sourceHtml);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 120_000);
+
   try {
     const response = await (options.fetchImpl || fetch)(
       "https://api.openai.com/v1/responses",
@@ -273,7 +290,11 @@ export async function translateArticleSourceToEnglish(
             "Do not leave Cyrillic text in the English editorial fields. Transliterate proper names when an established English form is unavailable.",
             "Keep SEO fields concise and accurate. Return only the requested structured JSON.",
           ].join("\n"),
-          input: JSON.stringify({ SOURCE_DATA: { ...source, contentHtml: sourceHtml } }, null, 2),
+          input: JSON.stringify(
+            { SOURCE_DATA: { ...source, contentHtml: sourceHtml } },
+            null,
+            2
+          ),
           text: {
             format: {
               type: "json_schema",
@@ -285,6 +306,7 @@ export async function translateArticleSourceToEnglish(
         }),
       }
     );
+
     const payload = (await response.json().catch(() => null)) as unknown;
     if (!response.ok) {
       const apiError =
@@ -304,12 +326,14 @@ export async function translateArticleSourceToEnglish(
 
     const output = responseText(payload);
     if (!output) throw new Error("OpenAI returned no translation text");
+
     let decoded: unknown;
     try {
       decoded = JSON.parse(output);
     } catch {
       throw new Error("OpenAI returned invalid translation JSON");
     }
+
     const parsed = translatedArticleSchema.safeParse(decoded);
     if (!parsed.success) {
       throw new Error(
@@ -319,7 +343,10 @@ export async function translateArticleSourceToEnglish(
       );
     }
 
-    const translatedHtml = sanitizeHtml(parsed.data.content_html, allowedArticleHtml);
+    const translatedHtml = sanitizeHtml(
+      parsed.data.content_html,
+      allowedArticleHtml
+    );
     if (
       !sameStringArray(
         sourceSignature,
@@ -350,6 +377,7 @@ export async function translateArticleSourceToEnglish(
       sources: normalized.sources.map((text) => ({ text })),
       bibliography: normalized.bibliography.map((text) => ({ text })),
     }).filter((issue) => !issue.includes("cover"));
+
     if (releaseIssues.length) {
       throw new Error(
         `English translation failed release checks: ${releaseIssues.join("; ")}`
@@ -386,7 +414,11 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
   supabase: SupabaseServerClient;
   actorId: string;
   articleId: string;
-}): Promise<{ state: AutoTranslationState; model?: string; error?: string }> {
+}): Promise<{
+  state: AutoTranslationState;
+  model?: string;
+  error?: string;
+}> {
   if (!adminEnv.openAiAutoTranslateArticles) return { state: "skipped" };
   if (!adminEnv.openAiApiKey) return { state: "not-configured" };
 
@@ -397,9 +429,14 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
     )
     .eq("id", input.articleId)
     .maybeSingle();
+
   if (articleError || !rawArticle) {
-    return { state: "failed", error: articleError?.message || "published article not found" };
+    return {
+      state: "failed",
+      error: articleError?.message || "published article not found",
+    };
   }
+
   const article = rawArticle as unknown as ArticleSourceRow;
   if (article.status !== "published") return { state: "skipped" };
 
@@ -417,17 +454,27 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
     seoDescription: article.seo_description || article.excerpt || "",
     seoKeywords: article.seo_keywords || [],
     ogTitle: article.og_title || article.seo_title || article.title,
-    ogDescription: article.og_description || article.seo_description || article.excerpt || "",
+    ogDescription:
+      article.og_description ||
+      article.seo_description ||
+      article.excerpt ||
+      "",
   });
+
   const { data: rawEnglish, error: englishError } = await input.supabase
     .from("article_translations")
     .select("id,updated_at,slug,canonical_url,status,source_content_hash")
     .eq("article_id", article.id)
     .eq("locale", "en")
     .maybeSingle();
+
   if (englishError) return { state: "failed", error: englishError.message };
+
   const existing = rawEnglish as ExistingEnglishRow | null;
-  if (existing?.source_content_hash === sourceHash && existing.status === "published") {
+  if (
+    existing?.source_content_hash === sourceHash &&
+    existing.status === "published"
+  ) {
     return { state: "current" };
   }
 
@@ -438,14 +485,19 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
       subtitle: article.subtitle || "",
       excerpt: article.excerpt || "",
       contentHtml: article.content_html || "",
-      coverAlt: article.cover_alt || `Иллюстрация к статье «${article.title}»`,
+      coverAlt:
+        article.cover_alt || `Иллюстрация к статье «${article.title}»`,
       sources: normalizedLineItems(article.sources),
       bibliography: normalizedLineItems(article.bibliography),
       seoTitle: article.seo_title || article.title,
       seoDescription: article.seo_description || article.excerpt || "",
       seoKeywords: [...(article.seo_keywords || [])],
       ogTitle: article.og_title || article.seo_title || article.title,
-      ogDescription: article.og_description || article.seo_description || article.excerpt || "",
+      ogDescription:
+        article.og_description ||
+        article.seo_description ||
+        article.excerpt ||
+        "",
     });
 
     const { data: latestArticle, error: latestError } = await input.supabase
@@ -453,15 +505,25 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
       .select("updated_at")
       .eq("id", article.id)
       .maybeSingle();
-    if (latestError || !latestArticle || latestArticle.updated_at !== article.updated_at) {
-      return { state: "conflict", error: "Russian source changed during translation" };
+
+    if (
+      latestError ||
+      !latestArticle ||
+      latestArticle.updated_at !== article.updated_at
+    ) {
+      return {
+        state: "conflict",
+        error: "Russian source changed during translation",
+      };
     }
 
     const category = Array.isArray(article.categories)
       ? article.categories[0]
       : article.categories;
     const englishSlug =
-      existing?.slug || createSlug(translated.title) || `article-${article.id.slice(0, 8)}`;
+      existing?.slug ||
+      createSlug(translated.title) ||
+      `article-${article.id.slice(0, 8)}`;
     const now = new Date().toISOString();
     const translationPayload = {
       article_id: article.id,
@@ -480,7 +542,11 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
       seo_keywords: translated.seo_keywords,
       canonical_url:
         existing?.canonical_url ||
-        articleCanonicalUrl(adminEnv.publicSiteUrl, englishSlug, category?.slug || null),
+        articleCanonicalUrl(
+          adminEnv.publicSiteUrl,
+          englishSlug,
+          category?.slug || null
+        ),
       og_title: translated.og_title,
       og_description: translated.og_description,
       status: "published",
@@ -510,10 +576,13 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
           .insert({ ...translationPayload, created_by: input.actorId })
           .select("id")
           .maybeSingle();
+
     if (saved.error || !saved.data) {
       return {
         state: existing && !saved.error ? "conflict" : "failed",
-        error: saved.error?.message || "English translation changed during automatic translation",
+        error:
+          saved.error?.message ||
+          "English translation changed during automatic translation",
       };
     }
 
@@ -532,9 +601,14 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
         duration_ms: Date.now() - startedAt,
       },
     });
+
     return { state: "translated", model: translated.model };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "automatic English translation failed";
+    const message =
+      error instanceof Error
+        ? error.message
+        : "automatic English translation failed";
+
     await input.supabase.from("admin_audit_log").insert({
       actor_id: input.actorId,
       action: "article.auto_translation.failed",
@@ -547,6 +621,7 @@ export async function ensurePublishedArticleEnglishTranslation(input: {
         duration_ms: Date.now() - startedAt,
       },
     });
+
     return { state: "failed", error: message };
   }
 }
