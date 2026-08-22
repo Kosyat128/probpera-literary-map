@@ -28,6 +28,14 @@ describe("public authentication Turnstile contract", () => {
     expect(gate).toContain('appearance: "always"');
   });
 
+  it("recovers from a failed third-party script load", () => {
+    expect(gate).toContain("turnstileLoader = null");
+    expect(gate).toContain(
+      "document.getElementById(TURNSTILE_SCRIPT_ID)?.remove()"
+    );
+    expect(gate).toContain('script.addEventListener("error", fail, { once: true })');
+  });
+
   it("blocks submission before verification and resets every used token", () => {
     expect(gate).toContain('document.addEventListener("submit", protectSubmit, true)');
     expect(gate).toContain("event.stopImmediatePropagation()");
