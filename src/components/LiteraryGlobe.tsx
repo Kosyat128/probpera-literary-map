@@ -13,6 +13,8 @@ import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import type { Country, Writer } from "../data/countries";
+import Button from "../ui/Button";
+import IconButton from "../ui/IconButton";
 import {
   findNobelArticle,
   getNobelYear,
@@ -27,6 +29,10 @@ import {
 } from "../i18n/InterfaceLanguage";
 import { selectWriterDisplayName } from "../data/bookLocalization";
 import CountryFlagIcon from "./CountryFlagIcon";
+import BrandMinusIcon from "./BrandMinusIcon";
+import BrandPlusIcon from "./BrandPlusIcon";
+import BrandResetIcon from "./BrandResetIcon";
+import BrandRotateIcon from "./BrandRotateIcon";
 import WriterPortrait from "./WriterPortrait";
 import {
   createGlobeAtlas,
@@ -2368,8 +2374,9 @@ export default function LiteraryGlobe({
         role="group"
         aria-label={t("Управление глобусом")}
       >
-        <button
-          type="button"
+        <IconButton
+          icon={<BrandMinusIcon />}
+          surface="dark"
           data-globe-control="zoom-out"
           aria-label={t("Уменьшить масштаб глобуса")}
           aria-keyshortcuts="-"
@@ -2377,11 +2384,10 @@ export default function LiteraryGlobe({
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "out" })
           }
-        >
-          <span aria-hidden="true">−</span>
-        </button>
-        <button
-          type="button"
+        />
+        <IconButton
+          icon={<BrandPlusIcon />}
+          surface="dark"
           data-globe-control="zoom-in"
           aria-label={t("Увеличить масштаб глобуса")}
           aria-keyshortcuts="+"
@@ -2389,11 +2395,11 @@ export default function LiteraryGlobe({
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "in" })
           }
-        >
-          <span aria-hidden="true">+</span>
-        </button>
-        <button
-          type="button"
+        />
+        <Button
+          surface="dark"
+          variant="text"
+          startIcon={<BrandRotateIcon />}
           className={
             autoRotateRequested && !reducedMotion ? "is-active" : undefined
           }
@@ -2405,11 +2411,12 @@ export default function LiteraryGlobe({
           title={autoRotateControlLabel}
           onClick={toggleAutoRotate}
         >
-          <span aria-hidden="true">↻</span>
           <small>{autoRotateControlCaption}</small>
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          surface="dark"
+          variant="text"
+          startIcon={<BrandResetIcon />}
           data-globe-control="reset"
           aria-label={t("Вернуть исходный вид глобуса")}
           aria-keyshortcuts="Home"
@@ -2420,9 +2427,8 @@ export default function LiteraryGlobe({
             requestGlobeControl({ type: "reset" });
           }}
         >
-          <span aria-hidden="true">⌂</span>
           <small>{t("Сброс")}</small>
-        </button>
+        </Button>
       </div>
 
       <div
@@ -2431,13 +2437,14 @@ export default function LiteraryGlobe({
         aria-label={t("Стиль глобуса")}
       >
         {GLOBE_VISUAL_STYLES.map((style) => (
-          <button
+          <Button
             key={style}
-            type="button"
+            surface="dark"
+            variant="text"
             className={visualStyle === style ? "is-active" : undefined}
             data-globe-style-option={style}
             aria-pressed={visualStyle === style}
-            aria-busy={pendingVisualStyle === style || undefined}
+            loading={pendingVisualStyle === style}
             aria-label={visualStyleLabels[style]}
             onPointerEnter={() => {
               if (style !== renderedVisualStyle) {
@@ -2465,7 +2472,7 @@ export default function LiteraryGlobe({
             <span className="globe-style-label-compact" aria-hidden="true">
               {compactVisualStyleLabels[style]}
             </span>
-          </button>
+          </Button>
         ))}
         <span className="globe-style-status" role="status" aria-live="polite">
           {visualStyleError

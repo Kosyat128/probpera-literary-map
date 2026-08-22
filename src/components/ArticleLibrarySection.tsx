@@ -25,6 +25,7 @@ import {
   articleSeriesLabel,
 } from "../utils/articleSeries";
 import { cmsEntityMarker } from "../cms/directEditBridge";
+import BrandSearchIcon from "./BrandSearchIcon";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -593,7 +594,7 @@ export default function ArticleLibrarySection({
           </div>
         ) : (
           <div className="article-library-empty">
-            <span aria-hidden="true">⌕</span>
+            <span aria-hidden="true"><BrandSearchIcon /></span>
             <h3>
               {language === "en" && localizedArticleCatalog.length === 0
                 ? t("Пока нет опубликованных переводов на английский язык")
