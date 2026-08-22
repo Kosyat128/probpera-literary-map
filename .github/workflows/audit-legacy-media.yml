@@ -1,0 +1,69 @@
+name: Audit legacy Tilda media
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 3 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: legacy-tilda-media-audit
+  cancel-in-progress: true
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Build the read-only legacy media inventory
+        run: node scripts/audit-legacy-tilda-media.mjs --output=.tmp/legacy-media-inventory
+
+      - name: Summarize inventory
+        if: always()
+        shell: bash
+        run: |
+          if [[ -s .tmp/legacy-media-inventory/inventory.json ]]; then
+            node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const fs = require("node:fs");
+          const inventory = JSON.parse(
+            fs.readFileSync(".tmp/legacy-media-inventory/inventory.json", "utf8")
+          );
+          console.log("## Старые Tilda-медиа");
+          console.log();
+          console.log(`- Всего ссылок: ${inventory.totalReferences}`);
+          console.log(`- Уникальных ресурсов: ${inventory.uniqueAssets}`);
+          console.log(`- Повторно используемых ресурсов: ${inventory.duplicatedAssets}`);
+          console.log(`- HTTP-ссылок: ${inventory.unsafe.httpReferences}`);
+          console.log(`- Исполняемых ресурсов: ${inventory.unsafe.executableReferences}`);
+          console.log(`- URL с чувствительными параметрами: ${inventory.unsafe.credentialedReferences}`);
+          console.log(`- SHA-256 набора URL: \`${inventory.urlSetSha256}\``);
+          NODE
+          else
+            {
+              echo "## Старые Tilda-медиа"
+              echo
+              echo "Инвентаризация не была создана; проверьте предыдущий шаг."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload migration inventory
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: legacy-tilda-media-inventory
+          path: .tmp/legacy-media-inventory
+          if-no-files-found: error
+          retention-days: 30
