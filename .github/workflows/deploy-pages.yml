@@ -40,6 +40,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
     outputs:
       should_deploy: ${{ steps.release_gate.outputs.should_deploy }}
       publication_article_count: ${{ steps.publication_snapshot.outputs.article_count }}
