@@ -1,10 +1,11 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260822_staff_editorial_read_rls";
+  "20260822_zz_atomic_article_bundle";
 
 export type EditorialSchemaHealth = {
   version?: string;
   outbox?: boolean;
   outboxRpc?: boolean;
+  articleBundleRpc?: boolean;
   migrationLedger?: boolean;
   publicationTriggers?: boolean;
   staffEditorialReadPolicies?: boolean;
@@ -21,6 +22,7 @@ export type EditorialSchemaHealth = {
 export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "outbox",
   "outboxRpc",
+  "articleBundleRpc",
   "migrationLedger",
   "publicationTriggers",
   "staffEditorialReadPolicies",
@@ -42,6 +44,7 @@ const editorialSchemaCapabilityLabels: Record<
 > = {
   outbox: "очередь публикации",
   outboxRpc: "RPC публикации",
+  articleBundleRpc: "атомарное сохранение статьи и перевода",
   migrationLedger: "журнал миграций",
   publicationTriggers: "триггеры публикации",
   staffEditorialReadPolicies: "права чтения редакции",
