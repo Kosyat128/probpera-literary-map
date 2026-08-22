@@ -23,6 +23,15 @@ describe("article bundle RPC client", () => {
     expect(source).not.toContain("SUPABASE_SERVICE_ROLE");
   });
 
+  it("activates the RPC only after production schema health confirms it", () => {
+    expect(source).toContain('supabase.rpc("get_editorial_schema_health")');
+    expect(source).toContain(
+      'health.version === "20260822_zz_atomic_article_bundle"'
+    );
+    expect(source).toContain("health.articleBundleRpc === true");
+    expect(source).toContain("if (error || !data || typeof data !== \"object\") return false");
+  });
+
   it("keeps optimistic-lock failures understandable in the editor", () => {
     expect(source).toContain('message.includes("ARTICLE_CONFLICT")');
     expect(source).toContain('message.includes("ENGLISH_CONFLICT")');

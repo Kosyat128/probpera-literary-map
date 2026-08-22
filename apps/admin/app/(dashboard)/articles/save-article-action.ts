@@ -10,10 +10,23 @@ import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 import { saveArticleAction as legacySaveArticleAction } from "./actions-legacy";
+import { isArticleBundleRpcAvailable } from "./article-bundle-rpc";
+import { saveAutoTranslatedArticleAtomically } from "./atomic-auto-publish-action";
 
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
   return text || null;
+}
+
+function optionalUrlIsValid(value: FormDataEntryValue | null) {
+  const url = optionalText(value);
+  if (!url) return true;
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function commaList(value: FormDataEntryValue | null) {
@@ -196,7 +209,14 @@ export async function saveArticleAction(formData: FormData) {
     formData.set("english_status", "published");
     formData.set("english_confirm_current_source", "on");
 
-    return legacySaveArticleAction(formData);
+    const atomicPersistenceAvailable =
+      supabase && (await isArticleBundleRpcAvailable(supabase));
+    const legacyCanonicalIsCompatible = optionalUrlIsValid(
+      formData.get("canonical_url")
+    );
+    return atomicPersistenceAvailable && legacyCanonicalIsCompatible
+      ? saveAutoTranslatedArticleAtomically(formData)
+      : legacySaveArticleAction(formData);
   } catch (error) {
     const detail =
       error instanceof Error ? error.message : "неизвестная ошибка переводчика";
