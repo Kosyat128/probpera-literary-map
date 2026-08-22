@@ -275,6 +275,11 @@ grant select, insert, update, delete on public.articles to authenticated;
 grant select, insert, update, delete on public.article_translations to authenticated;
 grant select, insert, update on public.redirects to authenticated;
 grant select, insert on public.admin_audit_log to authenticated;
+-- These are assertion-only reads in this isolated integration fixture. The
+-- production privilege model remains unchanged.
+grant select on public.article_revisions to authenticated;
+grant select on public.article_translation_revisions to authenticated;
+grant select on public.public_build_outbox to authenticated;
 grant usage, select on all sequences in schema public to authenticated;
 
 create policy "Staff read articles" on public.articles for select to authenticated
