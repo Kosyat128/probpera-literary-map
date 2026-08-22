@@ -16,6 +16,10 @@ const edgeSecurity = readFileSync(
   path.join(root, "scripts", "cloudflare", "configure-edge-security.mjs"),
   "utf8"
 );
+const deployment = readFileSync(
+  path.join(root, ".github", "workflows", "deploy-pages.yml"),
+  "utf8"
+);
 
 describe("public authentication Turnstile contract", () => {
   it("loads only the official explicit widget and mounts it in the auth form", () => {
@@ -62,5 +66,12 @@ describe("public authentication Turnstile contract", () => {
     expect(edgeSecurity).toContain(
       "frame-src https://challenges.cloudflare.com"
     );
+  });
+
+  it("passes only the public site key into the production build", () => {
+    expect(deployment).toContain(
+      "VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}"
+    );
+    expect(deployment).not.toContain("TURNSTILE_SECRET_KEY");
   });
 });
