@@ -1,4 +1,5 @@
 import {
+  CURRENT_EDITORIAL_SCHEMA_VERSION,
   getMissingEditorialSchemaCapabilities,
   isEditorialSchemaReady,
   type EditorialSchemaHealth,
@@ -52,6 +53,19 @@ export default async function HealthPage() {
       : schemaHealth
         ? `Не готовы: ${missingSchemaCapabilities.join(", ")}`
         : "версия не определена";
+  const atomicArticleSaveReady = Boolean(
+    schemaCheckAvailable &&
+      schemaHealth?.version === CURRENT_EDITORIAL_SCHEMA_VERSION &&
+      schemaHealth?.articleBundleRpc === true
+  );
+  const atomicArticleSaveLabel = atomicArticleSaveReady
+    ? "Атомарно"
+    : "Legacy fallback";
+  const atomicArticleSaveDetail = atomicArticleSaveReady
+    ? "RU + EN сохраняются одной транзакцией"
+    : schemaCheckAvailable
+      ? "save_article_bundle ещё не подтверждён production-схемой"
+      : "ожидается доступный schema health-check";
   const translationConfigured = Boolean(adminEnv.openAiApiKey);
   const translationEnabled = adminEnv.openAiAutoTranslateArticles;
   const translationStatusLabel = !translationEnabled
@@ -79,6 +93,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>За 24 часа</span><strong>{recentCount || 0}</strong><small>включая повторения</small></article>
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
       <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
+      <article className="stat-card"><span>Сохранение RU+EN</span><strong>{atomicArticleSaveLabel}</strong><small>{atomicArticleSaveDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "—"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
       <article className="stat-card"><span>Автоперевод EN</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
     </section>
