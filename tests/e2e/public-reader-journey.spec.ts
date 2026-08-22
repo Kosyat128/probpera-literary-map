@@ -50,17 +50,32 @@ function collectBrowserDiagnostics(page: Page): BrowserDiagnostics {
 
 async function firstArticleHref(page: Page) {
   return page.locator("a[href]").evaluateAll((links) => {
+    const canonicalHref = document
+      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
+      ?.getAttribute("href");
+    const canonicalOrigin = canonicalHref
+      ? new URL(canonicalHref, window.location.href).origin
+      : window.location.origin;
+
     for (const link of links) {
       const rawHref = link.getAttribute("href");
       if (!rawHref) continue;
       const url = new URL(rawHref, window.location.href);
-      if (url.origin !== window.location.origin) continue;
+      if (
+        url.origin !== window.location.origin &&
+        url.origin !== canonicalOrigin
+      ) {
+        continue;
+      }
       const segments = url.pathname.split("/").filter(Boolean);
       const journalIndex = segments.indexOf("stati");
       if (journalIndex < 0) continue;
       if (segments.length - journalIndex < 3) continue;
       if (url.pathname.includes("/page-")) continue;
-      return url.href;
+      return new URL(
+        `${url.pathname}${url.search}${url.hash}`,
+        window.location.origin
+      ).href;
     }
     return null;
   });
