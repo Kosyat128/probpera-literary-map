@@ -18,6 +18,17 @@ function optionalText(value: FormDataEntryValue | null) {
   return text || null;
 }
 
+function optionalUrlIsValid(value: FormDataEntryValue | null) {
+  const url = optionalText(value);
+  if (!url) return true;
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function commaList(value: FormDataEntryValue | null) {
   return String(value || "")
     .split(/[,;\n]+/u)
@@ -200,7 +211,10 @@ export async function saveArticleAction(formData: FormData) {
 
     const atomicPersistenceAvailable =
       supabase && (await isArticleBundleRpcAvailable(supabase));
-    return atomicPersistenceAvailable
+    const legacyCanonicalIsCompatible = optionalUrlIsValid(
+      formData.get("canonical_url")
+    );
+    return atomicPersistenceAvailable && legacyCanonicalIsCompatible
       ? saveAutoTranslatedArticleAtomically(formData)
       : legacySaveArticleAction(formData);
   } catch (error) {
