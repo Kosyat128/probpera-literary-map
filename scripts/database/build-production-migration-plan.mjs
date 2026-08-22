@@ -26,7 +26,7 @@ const reviewedMigrations = [
   ["20260822_staff_editorial_read_rls.sql", "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"],
   [
     "20260822_zz_atomic_article_bundle.sql",
-    "a07d181ab07c602b6bea89fdb51fea0851e9b664bf37a396188e2cc86712158a",
+    "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",
   ],
 ];
 
