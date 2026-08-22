@@ -7,6 +7,10 @@ import {
   writeWebStorage,
 } from "./safeWebStorage";
 
+type InstallStoragePrototype = NonNullable<
+  Parameters<typeof installSafeWebStorage>[1]
+>;
+
 function memoryStorage(options: {
   throwOnGet?: boolean;
   throwOnSet?: boolean;
@@ -50,8 +54,8 @@ function host(localStorage: Storage, sessionStorage: Storage = memoryStorage()) 
   >;
 }
 
-function throwingStoragePrototype() {
-  const prototype = {} as Storage;
+function throwingStoragePrototype(): InstallStoragePrototype {
+  const prototype = {} as InstallStoragePrototype;
   Object.defineProperties(prototype, {
     length: {
       configurable: true,
