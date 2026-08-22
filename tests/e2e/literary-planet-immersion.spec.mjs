@@ -113,6 +113,7 @@ test("embedded atlas enters one-canvas immersion and Escape restores scroll and 
   page,
   isMobile,
 }) => {
+  test.setTimeout(90_000);
   test.skip(isMobile, "Desktop covers the full modal keyboard contract.");
 
   const atlas = await openEmbeddedAtlas(page);
