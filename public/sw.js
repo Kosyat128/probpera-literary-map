@@ -25,6 +25,27 @@ async function trimCache(cacheName, maxEntries) {
   );
 }
 
+async function rememberResponse(cacheName, request, response, maxEntries) {
+  if (!isCacheable(response)) return;
+  try {
+    const cache = await caches.open(cacheName);
+    await cache.put(request, response.clone());
+    await trimCache(cacheName, maxEntries);
+  } catch {
+    // Offline caching is an enhancement. A quota or CacheStorage failure must
+    // never hide a fresh response that was already received from the network.
+  }
+}
+
+async function cachedResponse(cacheName, request) {
+  try {
+    const cache = await caches.open(cacheName);
+    return await cache.match(request);
+  } catch {
+    return undefined;
+  }
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -36,6 +57,7 @@ self.addEventListener("install", (event) => {
         ])
       )
       .then(() => trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT))
+      .catch(() => undefined)
       .then(() => self.skipWaiting())
   );
 });
@@ -52,38 +74,31 @@ self.addEventListener("activate", (event) => {
         )
       )
       .then(() =>
-        Promise.all([
+        Promise.allSettled([
           trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT),
           trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT),
         ])
       )
+      .catch(() => undefined)
       .then(() => self.clients.claim())
   );
 });
 
 async function networkFirst(request) {
-  const cache = await caches.open(PAGE_CACHE);
   try {
     const response = await fetch(request);
-    if (isCacheable(response)) {
-      await cache.put(request, response.clone());
-      await trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT);
-    }
+    await rememberResponse(PAGE_CACHE, request, response, PAGE_CACHE_LIMIT);
     return response;
   } catch {
-    return (await cache.match(request)) || Response.error();
+    return (await cachedResponse(PAGE_CACHE, request)) || Response.error();
   }
 }
 
 async function cacheFirst(request) {
-  const cache = await caches.open(STATIC_CACHE);
-  const cached = await cache.match(request);
+  const cached = await cachedResponse(STATIC_CACHE, request);
   if (cached) return cached;
   const response = await fetch(request);
-  if (isCacheable(response)) {
-    await cache.put(request, response.clone());
-    await trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT);
-  }
+  await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT);
   return response;
 }
 
