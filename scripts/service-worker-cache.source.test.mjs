@@ -28,6 +28,8 @@ describe("service worker cache bounds", () => {
     expect(pageLimit).toBeGreaterThan(0);
     expect(pageLimit).toBeLessThanOrEqual(50);
     expect(source).toContain("async function trimCache(cacheName, maxEntries)");
+    expect(source).toContain("entries.slice(0, overflow)");
+    expect(source).toContain("cache.delete(request)");
     expect(source).toContain("trimCache(STATIC_CACHE, STATIC_CACHE_LIMIT)");
     expect(source).toContain("trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT)");
   });
@@ -37,5 +39,17 @@ describe("service worker cache bounds", () => {
     expect(source).toContain("no-store");
     expect(source).toContain("const cached = await cache.match(request)");
     expect(source).not.toContain("const cached = await caches.match(request)");
+  });
+
+  it("keeps a successful network response usable when cache storage fails", () => {
+    expect(source).toContain("async function rememberResponse");
+    expect(source).toContain("await cache.put(request, response.clone())");
+    expect(source).toContain("Quota and browser storage failures");
+    expect(source).toContain(
+      "await rememberResponse(PAGE_CACHE, request, response, PAGE_CACHE_LIMIT)"
+    );
+    expect(source).toContain(
+      "await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT)"
+    );
   });
 });
