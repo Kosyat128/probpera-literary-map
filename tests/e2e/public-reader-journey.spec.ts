@@ -18,13 +18,16 @@ function collectBrowserDiagnostics(page: Page): BrowserDiagnostics {
   });
 
   page.on("requestfailed", (request) => {
+    const failureText = request.failure()?.errorText || "failed";
+    if (failureText === "net::ERR_ABORTED") return;
+
     const currentOrigin = page.url().startsWith("http")
       ? new URL(page.url()).origin
       : null;
     const requestUrl = new URL(request.url());
     if (currentOrigin && requestUrl.origin === currentOrigin) {
       diagnostics.failedSameOriginRequests.push(
-        `${request.method()} ${requestUrl.pathname}: ${request.failure()?.errorText || "failed"}`
+        `${request.method()} ${requestUrl.pathname}: ${failureText}`
       );
     }
   });
