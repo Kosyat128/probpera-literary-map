@@ -97,6 +97,7 @@ describe("Tilda dependency audit", () => {
       files: 1,
       occurrences: 1,
       uniqueUrls: 1,
+      budget: null,
     });
   });
 
@@ -126,6 +127,39 @@ describe("Tilda dependency audit", () => {
     );
   });
 
+  it("stops aggregate growth inside generated runtime snapshots", async () => {
+    const rootDir = await fixtureRoot();
+    await fs.writeFile(
+      path.join(rootDir, "src", "App.tsx"),
+      `const cards = ["${firstUrl}", "${firstUrl}"];\n`
+    );
+    await fs.writeFile(
+      path.join(rootDir, "public", "articles", "article.json"),
+      JSON.stringify({ first: secondUrl, second: secondUrl })
+    );
+    const manifest = {
+      ...fixtureManifest(),
+      generatedBudget: {
+        maxOccurrences: 1,
+        maxUniqueUrls: 0,
+      },
+    };
+
+    const result = await auditTildaDependencies({ rootDir, manifest });
+
+    expect(result.status).toBe("failed");
+    expect(result.errors.join("\n")).toContain(
+      "above the reviewed ceiling 1"
+    );
+    expect(result.errors.join("\n")).toContain(
+      "above the reviewed ceiling 0"
+    );
+    expect(result.generated.budget).toMatchObject({
+      occurrenceHeadroom: -1,
+      uniqueUrlHeadroom: -1,
+    });
+  });
+
   it("keeps the current repository inside the reviewed dependency boundary", async () => {
     const manifest = JSON.parse(
       await fs.readFile(
@@ -147,5 +181,10 @@ describe("Tilda dependency audit", () => {
         missingUrls: [],
       },
     ]);
+    expect(result.generated.budget).toEqual({
+      ...manifest.generatedBudget,
+      occurrenceHeadroom: 0,
+      uniqueUrlHeadroom: 0,
+    });
   });
 });
