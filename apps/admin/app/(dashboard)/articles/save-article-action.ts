@@ -150,9 +150,12 @@ export async function saveArticleAction(formData: FormData) {
       String(formData.get("english_slug") || "").trim() ||
       createSlug(translated.title) ||
       `english-${slug}`;
-    let englishCanonical = String(
-      formData.get("english_canonical_url") || ""
-    ).trim();
+    const hadEnglishBeforeAuto =
+      formData.get("english_enabled") === "on" &&
+      Boolean(String(formData.get("english_title") || "").trim());
+    let englishCanonical = hadEnglishBeforeAuto
+      ? String(formData.get("english_canonical_url") || "").trim()
+      : "";
     if (!englishCanonical) {
       let categorySlug: string | null = null;
       const categoryId = optionalText(formData.get("category_id"));
