@@ -22,7 +22,9 @@ describe("atomic article bundle migration", () => {
 
   it("checks both optimistic locks before the article mutation", () => {
     const articleLock = migration.indexOf("from public.articles\n    where id = p_article_id\n    for update;");
-    const englishLock = migration.indexOf("from public.article_translations\n      where article_id = p_article_id");
+    const englishLock = migration.indexOf(
+      "from public.article_translations as english_translation\n      where english_translation.article_id = p_article_id"
+    );
     const articleUpdate = migration.indexOf("update public.articles\n    set");
 
     expect(articleLock).toBeGreaterThan(0);
