@@ -16,6 +16,16 @@ export function validateMetrikaCounterId(value) {
   return { configured: true, counterId: normalized };
 }
 
+export function cspDirectiveIncludes(policySource, directive, requiredSources) {
+  const escapedDirective = String(directive).replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+  const match = String(policySource).match(
+    new RegExp(`\\b${escapedDirective}\\s+([^;\"]+)`, "u")
+  );
+  if (!match) return false;
+  const sources = new Set(match[1].trim().split(/\s+/u));
+  return requiredSources.every((source) => sources.has(source));
+}
+
 async function sourceFiles(directory) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   const files = [];
@@ -108,9 +118,14 @@ async function main() {
     "index.html must not load Metrika before consent"
   );
   check(
-    cloudflarePolicy.includes(
-      "script-src 'self' https://mc.yandex.ru https://yastatic.net"
-    ) && cloudflarePolicy.includes("https://mc.yandex.kz"),
+    cspDirectiveIncludes(cloudflarePolicy, "script-src", [
+      "'self'",
+      "https://mc.yandex.ru",
+      "https://yastatic.net",
+    ]) &&
+      cspDirectiveIncludes(cloudflarePolicy, "connect-src", [
+        "https://mc.yandex.kz",
+      ]),
     "production CSP must permit the documented Metrika script and regional endpoints"
   );
 
