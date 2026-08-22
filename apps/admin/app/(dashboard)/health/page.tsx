@@ -3,6 +3,7 @@ import {
   isEditorialSchemaReady,
   type EditorialSchemaHealth,
 } from "@/lib/editorial-schema-health";
+import { adminEnv } from "@/lib/env";
 import { formatDate } from "@/lib/format";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { setDiagnosticStatusAction } from "./actions";
@@ -51,6 +52,18 @@ export default async function HealthPage() {
       : schemaHealth
         ? `Не готовы: ${missingSchemaCapabilities.join(", ")}`
         : "версия не определена";
+  const translationConfigured = Boolean(adminEnv.openAiApiKey);
+  const translationEnabled = adminEnv.openAiAutoTranslateArticles;
+  const translationStatusLabel = !translationEnabled
+    ? "Отключён"
+    : translationConfigured
+      ? "Готов"
+      : "Нужен API key";
+  const translationStatusDetail = !translationEnabled
+    ? "OPENAI_AUTO_TRANSLATE_ARTICLES=false"
+    : translationConfigured
+      ? `модель: ${adminEnv.openAiTranslationModel}`
+      : "добавьте OPENAI_API_KEY в Secret Worker";
   const grouped = new Map<string, { latest: Diagnostic; count: number }>();
   for (const item of (data || []) as Diagnostic[]) {
     const current = grouped.get(item.fingerprint);
@@ -67,6 +80,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
       <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "—"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
+      <article className="stat-card"><span>Автоперевод EN</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
     </section>
     <section className="panel">
       {diagnostics.length === 0 ? <div className="empty-state"><p>Клиентских ошибок пока не зарегистрировано.</p></div> :
