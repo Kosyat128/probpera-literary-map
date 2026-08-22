@@ -192,11 +192,35 @@
     "multiline": false
   },
   {
+    "key": "interface.Автовращение приостановлено вне экрана",
+    "group": "Весь интерфейс",
+    "label": "Автовращение приостановлено вне экрана",
+    "defaultRu": "Автовращение приостановлено вне экрана",
+    "defaultEn": "Auto-rotation is paused while the globe is offscreen",
+    "multiline": false
+  },
+  {
     "key": "interface.Автовращение приостановлено во время взаимодействия",
     "group": "Весь интерфейс",
     "label": "Автовращение приостановлено во время взаимодействия",
     "defaultRu": "Автовращение приостановлено во время взаимодействия",
     "defaultEn": "Automatic rotation is paused during interaction",
+    "multiline": false
+  },
+  {
+    "key": "interface.Автовращение приостановлено во время наведения",
+    "group": "Весь интерфейс",
+    "label": "Автовращение приостановлено во время наведения",
+    "defaultRu": "Автовращение приостановлено во время наведения",
+    "defaultEn": "Auto-rotation is paused while pointing at the globe",
+    "multiline": false
+  },
+  {
+    "key": "interface.Автовращение приостановлено во время перелёта камеры",
+    "group": "Весь интерфейс",
+    "label": "Автовращение приостановлено во время перелёта камеры",
+    "defaultRu": "Автовращение приостановлено во время перелёта камеры",
+    "defaultEn": "Auto-rotation is paused during camera travel",
     "multiline": false
   },
   {
@@ -877,6 +901,14 @@
     "label": "Вернуть исходный вид глобуса",
     "defaultRu": "Вернуть исходный вид глобуса",
     "defaultEn": "Restore the globe's initial view",
+    "multiline": false
+  },
+  {
+    "key": "interface.Вернуться к прокрутке",
+    "group": "Весь интерфейс",
+    "label": "Вернуться к прокрутке",
+    "defaultRu": "Вернуться к прокрутке",
+    "defaultEn": "Return to page scroll",
     "multiline": false
   },
   {
@@ -3024,6 +3056,14 @@
     "multiline": false
   },
   {
+    "key": "interface.лауреат страны",
+    "group": "Весь интерфейс",
+    "label": "лауреат страны",
+    "defaultRu": "лауреат страны",
+    "defaultEn": "country laureate",
+    "multiline": false
+  },
+  {
     "key": "interface.лауреата на глобусе",
     "group": "Весь интерфейс",
     "label": "лауреата на глобусе",
@@ -3032,11 +3072,27 @@
     "multiline": false
   },
   {
+    "key": "interface.лауреата страны",
+    "group": "Весь интерфейс",
+    "label": "лауреата страны",
+    "defaultRu": "лауреата страны",
+    "defaultEn": "country laureates",
+    "multiline": false
+  },
+  {
     "key": "interface.лауреатов на глобусе",
     "group": "Весь интерфейс",
     "label": "лауреатов на глобусе",
     "defaultRu": "лауреатов на глобусе",
     "defaultEn": "laureates on the globe",
+    "multiline": false
+  },
+  {
+    "key": "interface.лауреатов страны",
+    "group": "Весь интерфейс",
+    "label": "лауреатов страны",
+    "defaultRu": "лауреатов страны",
+    "defaultEn": "country laureates",
     "multiline": false
   },
   {
@@ -3552,6 +3608,14 @@
     "multiline": true
   },
   {
+    "key": "interface.Место писателя на глобусе пока не указано",
+    "group": "Весь интерфейс",
+    "label": "Место писателя на глобусе пока не указано",
+    "defaultRu": "Место писателя на глобусе пока не указано",
+    "defaultEn": "This writer's place on the globe is not available yet",
+    "multiline": false
+  },
+  {
     "key": "interface.Место рождения",
     "group": "Весь интерфейс",
     "label": "Место рождения",
@@ -3589,6 +3653,14 @@
     "label": "минут чтения",
     "defaultRu": "минут чтения",
     "defaultEn": "minutes",
+    "multiline": false
+  },
+  {
+    "key": "interface.Мир",
+    "group": "Весь интерфейс",
+    "label": "Мир",
+    "defaultRu": "Мир",
+    "defaultEn": "World",
     "multiline": false
   },
   {
@@ -3720,6 +3792,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Навигация по Литературной планете",
+    "group": "Весь интерфейс",
+    "label": "Навигация по Литературной планете",
+    "defaultRu": "Навигация по Литературной планете",
+    "defaultEn": "Literary Planet navigation",
+    "multiline": false
+  },
+  {
     "key": "interface.Награды автора и отличия произведений показаны с их фактическим редакционным статусом.",
     "group": "Весь интерфейс",
     "label": "Награды автора и отличия произведений показаны с их фактическим редакционным статусом.",
@@ -3744,19 +3824,19 @@
     "multiline": false
   },
   {
+    "key": "interface.Нажмите на кластер — откроется Нобелевский контекст страны",
+    "group": "Весь интерфейс",
+    "label": "Нажмите на кластер — откроется Нобелевский контекст страны",
+    "defaultRu": "Нажмите на кластер — откроется Нобелевский контекст страны",
+    "defaultEn": "Select the cluster to open the country’s Nobel context",
+    "multiline": false
+  },
+  {
     "key": "interface.Нажмите на метку — откроется карточка лауреата",
     "group": "Весь интерфейс",
     "label": "Нажмите на метку — откроется карточка лауреата",
     "defaultRu": "Нажмите на метку — откроется карточка лауреата",
     "defaultEn": "Select the marker to open the laureate’s profile",
-    "multiline": false
-  },
-  {
-    "key": "interface.Нажмите на метку — откроется статья о лауреате",
-    "group": "Весь интерфейс",
-    "label": "Нажмите на метку — откроется статья о лауреате",
-    "defaultRu": "Нажмите на метку — откроется статья о лауреате",
-    "defaultEn": "Select the marker to open an article about the laureate",
     "multiline": false
   },
   {
@@ -4744,6 +4824,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Открыть архив",
+    "group": "Весь интерфейс",
+    "label": "Открыть архив",
+    "defaultRu": "Открыть архив",
+    "defaultEn": "Open archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Открыть биографию",
     "group": "Весь интерфейс",
     "label": "Открыть биографию",
@@ -5256,6 +5344,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Повторить",
+    "group": "Весь интерфейс",
+    "label": "Повторить",
+    "defaultRu": "Повторить",
+    "defaultEn": "Retry",
+    "multiline": false
+  },
+  {
     "key": "interface.Повторить загрузку глобуса",
     "group": "Весь интерфейс",
     "label": "Повторить загрузку глобуса",
@@ -5533,6 +5629,14 @@
     "label": "Показать месяц",
     "defaultRu": "Показать месяц",
     "defaultEn": "Show month",
+    "multiline": false
+  },
+  {
+    "key": "interface.Показать на глобусе",
+    "group": "Весь интерфейс",
+    "label": "Показать на глобусе",
+    "defaultRu": "Показать на глобусе",
+    "defaultEn": "Show on globe",
     "multiline": false
   },
   {
@@ -6173,6 +6277,14 @@
     "label": "Название страны: Пуэрто-Рико",
     "defaultRu": "Пуэрто-Рико",
     "defaultEn": "Puerto Rico",
+    "multiline": false
+  },
+  {
+    "key": "interface.Развернуть архив полностью",
+    "group": "Весь интерфейс",
+    "label": "Развернуть архив полностью",
+    "defaultRu": "Развернуть архив полностью",
+    "defaultEn": "Expand archive fully",
     "multiline": false
   },
   {
@@ -7040,6 +7152,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Случайное литературное путешествие",
+    "group": "Весь интерфейс",
+    "label": "Случайное литературное путешествие",
+    "defaultRu": "Случайное литературное путешествие",
+    "defaultEn": "Random literary journey",
+    "multiline": false
+  },
+  {
+    "key": "interface.Случайное путешествие",
+    "group": "Весь интерфейс",
+    "label": "Случайное путешествие",
+    "defaultRu": "Случайное путешествие",
+    "defaultEn": "Surprise me",
+    "multiline": false
+  },
+  {
     "key": "interface.Сменить аватар",
     "group": "Весь интерфейс",
     "label": "Сменить аватар",
@@ -7552,6 +7680,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Статья о лауреате",
+    "group": "Весь интерфейс",
+    "label": "Статья о лауреате",
+    "defaultRu": "Статья о лауреате",
+    "defaultEn": "Article about the laureate",
+    "multiline": false
+  },
+  {
     "key": "interface.Статья по теме",
     "group": "Весь интерфейс",
     "label": "Статья по теме",
@@ -7573,6 +7709,14 @@
     "label": "Стиль глобуса",
     "defaultRu": "Стиль глобуса",
     "defaultEn": "Globe style",
+    "multiline": false
+  },
+  {
+    "key": "interface.Стиль не загрузился. Предыдущий стиль сохранён.",
+    "group": "Весь интерфейс",
+    "label": "Стиль не загрузился. Предыдущий стиль сохранён.",
+    "defaultRu": "Стиль не загрузился. Предыдущий стиль сохранён.",
+    "defaultEn": "The style could not load. The previous style is still active.",
     "multiline": false
   },
   {
@@ -8208,6 +8352,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Управлять глобусом",
+    "group": "Весь интерфейс",
+    "label": "Управлять глобусом",
+    "defaultRu": "Управлять глобусом",
+    "defaultEn": "Control globe",
+    "multiline": false
+  },
+  {
     "key": "country.UY",
     "group": "Названия стран",
     "label": "Название страны: Уругвай",
@@ -8421,6 +8573,14 @@
     "label": "Хронология месяца",
     "defaultRu": "Хронология месяца",
     "defaultEn": "Month chronology",
+    "multiline": false
+  },
+  {
+    "key": "interface.Центр обзора",
+    "group": "Весь интерфейс",
+    "label": "Центр обзора",
+    "defaultRu": "Центр обзора",
+    "defaultEn": "View centre",
     "multiline": false
   },
   {

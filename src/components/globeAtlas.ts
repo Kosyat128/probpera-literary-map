@@ -5,6 +5,11 @@ import type { Country } from "../data/countries/types";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { GlobeTextureImageCache } from "./globeAssetCache";
 import {
+  countryFocusMetricsFromGeometries,
+  type CountryFocusMetrics,
+} from "./globeFocusMath";
+import { scheduleGlobeIdlePrewarm } from "./globePerformance";
+import {
   buildSphericalOutlinePositions,
   geometryLatitudeBounds,
   geometryContainsGeographicPoint,
@@ -91,8 +96,17 @@ export type GlobeAtlas = {
   countryAtGeographicCoordinates: (longitude: number, latitude: number) => Country | null;
   geographicCoordinatesAtUv: (uv: THREE.Vector2) => [longitude: number, latitude: number];
   centroidForCountry: (countryId: string) => [number, number] | null;
+  focusMetricsForCountry: (countryId: string) => CountryFocusMetrics | null;
+  prewarmFocusMetrics: (
+    countryIds: readonly string[],
+    options?: GlobeFocusMetricsPrewarmOptions
+  ) => () => void;
   outlineGeometryForCountry: (countryId: string) => THREE.BufferGeometry | null;
-  updateHighlight: (selectedCountryId?: string | null, hoveredCountryId?: string | null) => void;
+  updateHighlight: (
+    selectedCountryId?: string | null,
+    hoveredCountryId?: string | null,
+    candidateCountryId?: string | null
+  ) => void;
   setVisualStyle: (
     style: GlobeVisualStyle,
     language?: InterfaceLanguage
@@ -104,6 +118,49 @@ export type GlobeAtlas = {
   dispose: () => void;
 };
 
+export type GlobeFocusMetricsPrewarmOptions = Readonly<{
+  shouldPause?: () => boolean;
+}>;
+
+export type GlobeHighlightState = Readonly<{
+  selectedCountryId: string | null;
+  hoveredCountryId: string | null;
+  candidateCountryId: string | null;
+}>;
+
+export function createGlobeHighlightUpdater(
+  onChange: (state: GlobeHighlightState) => void
+) {
+  let current: GlobeHighlightState = {
+    selectedCountryId: null,
+    hoveredCountryId: null,
+    candidateCountryId: null,
+  };
+
+  return (
+    selectedCountryId?: string | null,
+    hoveredCountryId?: string | null,
+    candidateCountryId?: string | null
+  ) => {
+    const next: GlobeHighlightState = {
+      selectedCountryId: selectedCountryId ?? null,
+      hoveredCountryId: hoveredCountryId ?? null,
+      candidateCountryId: candidateCountryId ?? null,
+    };
+    if (
+      next.selectedCountryId === current.selectedCountryId &&
+      next.hoveredCountryId === current.hoveredCountryId &&
+      next.candidateCountryId === current.candidateCountryId
+    ) {
+      return false;
+    }
+
+    current = next;
+    onChange(next);
+    return true;
+  };
+}
+
 export type CreateGlobeAtlasOptions = {
   compact?: boolean;
   signal?: AbortSignal;
@@ -113,6 +170,8 @@ const DESKTOP_MAP_WIDTH = 4096;
 const DESKTOP_MAP_HEIGHT = 2048;
 const COMPACT_MAP_WIDTH = 2048;
 const COMPACT_MAP_HEIGHT = 1024;
+const HIGHLIGHT_WIDTH = 1024;
+const HIGHLIGHT_HEIGHT = 512;
 let geoJsonPromise: Promise<GeoFeatureCollection> | null = null;
 const globeMapCache = new GlobeTextureImageCache({ maxEntries: 2 });
 
@@ -829,6 +888,19 @@ function configureReliefTexture(texture: THREE.CanvasTexture) {
   return texture;
 }
 
+function configureDynamicHighlightTexture(texture: THREE.CanvasTexture) {
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.flipY = GLOBE_TEXTURE_FLIP_Y;
+  texture.anisotropy = 1;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
+  return texture;
+}
+
 async function loadVisualStyleMap(
   style: GlobeVisualStyle,
   compact: boolean,
@@ -959,21 +1031,24 @@ export async function createGlobeAtlas(
     )
   );
   const highlightCanvas = document.createElement("canvas");
-  const highlightWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
-  const highlightHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
+  const highlightWidth = Math.min(mapWidth, HIGHLIGHT_WIDTH);
+  const highlightHeight = Math.min(mapHeight, HIGHLIGHT_HEIGHT);
   highlightCanvas.width = highlightWidth;
   highlightCanvas.height = highlightHeight;
   const highlightContext = highlightCanvas.getContext("2d");
   if (!highlightContext) throw new Error("Canvas 2D is unavailable");
-  const highlightTexture = configureTexture(new THREE.CanvasTexture(highlightCanvas));
+  const highlightTexture = configureDynamicHighlightTexture(
+    new THREE.CanvasTexture(highlightCanvas)
+  );
   const centroids = new Map<string, [number, number] | null>();
+  const focusMetrics = new Map<string, CountryFocusMetrics | null>();
   const outlineGeometries = new Map<string, THREE.BufferGeometry | null>();
   const flagImages = new Map<string, HTMLImageElement>();
   const pendingFlagImages = new Map<string, Promise<HTMLImageElement | null>>();
   let activeSelectedCountryId: string | null = null;
   let activeHoveredCountryId: string | null = null;
+  let activeCandidateCountryId: string | null = null;
   let disposed = false;
-  let flagPreloadTimer: number | null = null;
   let activeVisualStyle = initialVisualStyle;
   let activeLanguage = initialLanguage;
   let visualStyleRequest = 0;
@@ -1001,6 +1076,36 @@ export async function createGlobeAtlas(
       centroids.set(countryId, featureCentroid(featuresByCountryId.get(countryId) ?? []));
     }
     return centroids.get(countryId) ?? null;
+  };
+
+  const focusMetricsForCountry = (countryId: string) => {
+    if (!focusMetrics.has(countryId)) {
+      const geometries = (featuresByCountryId.get(countryId) ?? []).map(
+        (feature) => feature.geometry
+      );
+      focusMetrics.set(
+        countryId,
+        countryFocusMetricsFromGeometries(
+          geometries,
+          centroidForCountry(countryId)
+        )
+      );
+    }
+    return focusMetrics.get(countryId) ?? null;
+  };
+
+  const prewarmFocusMetrics = (
+    countryIds: readonly string[],
+    options: GlobeFocusMetricsPrewarmOptions = {}
+  ) => {
+    const queue = [...new Set(countryIds)].filter(
+      (countryId) => !focusMetrics.has(countryId)
+    );
+    return scheduleGlobeIdlePrewarm({
+      items: queue,
+      work: focusMetricsForCountry,
+      shouldPause: () => disposed || Boolean(options.shouldPause?.()),
+    });
   };
 
   const outlineGeometryForCountry = (countryId: string) => {
@@ -1054,25 +1159,6 @@ export async function createGlobeAtlas(
     return promise;
   };
 
-  const flagPreloadQueue = [
-    ...new Set(selectableFeatures.map(({ country }) => country.id)),
-  ];
-  let flagPreloadCursor = 0;
-  const preloadFlagBatch = async () => {
-    if (disposed || flagPreloadCursor >= flagPreloadQueue.length) return;
-    const batch = flagPreloadQueue.slice(flagPreloadCursor, flagPreloadCursor + 8);
-    flagPreloadCursor += batch.length;
-    await Promise.all(batch.map((countryId) => loadFlagImage(countryId)));
-    if (!disposed && flagPreloadCursor < flagPreloadQueue.length) {
-      flagPreloadTimer = window.setTimeout(() => {
-        void preloadFlagBatch();
-      }, 180);
-    }
-  };
-  flagPreloadTimer = window.setTimeout(() => {
-    void preloadFlagBatch();
-  }, 900);
-
   const drawFlagHighlight = (
     countryId: string,
     opacity: number,
@@ -1114,7 +1200,8 @@ export async function createGlobeAtlas(
         if (
           !disposed &&
           (activeSelectedCountryId === countryId ||
-            activeHoveredCountryId === countryId)
+            activeHoveredCountryId === countryId ||
+            activeCandidateCountryId === countryId)
         ) {
           redrawHighlights();
         }
@@ -1150,24 +1237,18 @@ export async function createGlobeAtlas(
   const redrawHighlights = () => {
     highlightContext.clearRect(0, 0, highlightWidth, highlightHeight);
 
-    if (activeSelectedCountryId) {
-      if (activeVisualStyle === "modern") {
-        drawModernHighlight(
-          activeSelectedCountryId,
-          "rgba(246, 145, 77, 0.28)",
-          "#ffb177",
-          3,
-          9
-        );
-      } else {
-        drawFlagHighlight(
-          activeSelectedCountryId,
-          0.42,
-          "#ff9b2f",
-          3.2,
-          10
-        );
-      }
+    if (
+      activeCandidateCountryId &&
+      activeCandidateCountryId !== activeHoveredCountryId &&
+      activeCandidateCountryId !== activeSelectedCountryId
+    ) {
+      drawModernHighlight(
+        activeCandidateCountryId,
+        "rgba(146, 203, 255, 0.11)",
+        "#a8d7ff",
+        1.7,
+        4
+      );
     }
 
     if (
@@ -1193,16 +1274,46 @@ export async function createGlobeAtlas(
       }
     }
 
+    if (activeSelectedCountryId) {
+      if (activeVisualStyle === "modern") {
+        drawModernHighlight(
+          activeSelectedCountryId,
+          "rgba(246, 145, 77, 0.28)",
+          "#ffb177",
+          3,
+          9
+        );
+      } else {
+        drawFlagHighlight(
+          activeSelectedCountryId,
+          0.42,
+          "#ff9b2f",
+          3.2,
+          10
+        );
+      }
+    }
+
     highlightTexture.needsUpdate = true;
   };
 
+  const applyHighlightState = createGlobeHighlightUpdater((next) => {
+    activeSelectedCountryId = next.selectedCountryId;
+    activeHoveredCountryId = next.hoveredCountryId;
+    activeCandidateCountryId = next.candidateCountryId;
+    redrawHighlights();
+  });
+
   const updateHighlight = (
     selectedCountryId?: string | null,
-    hoveredCountryId?: string | null
+    hoveredCountryId?: string | null,
+    candidateCountryId?: string | null
   ) => {
-    activeSelectedCountryId = selectedCountryId ?? null;
-    activeHoveredCountryId = hoveredCountryId ?? null;
-    redrawHighlights();
+    applyHighlightState(
+      selectedCountryId,
+      hoveredCountryId,
+      candidateCountryId
+    );
   };
 
   const setVisualStyle = async (
@@ -1243,6 +1354,8 @@ export async function createGlobeAtlas(
     countryAtGeographicCoordinates,
     geographicCoordinatesAtUv,
     centroidForCountry,
+    focusMetricsForCountry,
+    prewarmFocusMetrics,
     outlineGeometryForCountry,
     updateHighlight,
     setVisualStyle,
@@ -1250,12 +1363,12 @@ export async function createGlobeAtlas(
     dispose: () => {
       disposed = true;
       visualStyleRequest += 1;
-      if (flagPreloadTimer !== null) window.clearTimeout(flagPreloadTimer);
       mapTexture.dispose();
       reliefTexture.dispose();
       highlightTexture.dispose();
       outlineGeometries.forEach((geometry) => geometry?.dispose());
       outlineGeometries.clear();
+      focusMetrics.clear();
     },
   };
 }

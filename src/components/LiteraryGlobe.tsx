@@ -1,9 +1,9 @@
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, useTexture } from "@react-three/drei";
 import {
   useCallback,
   useEffect,
   useMemo,
+  useReducer,
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -11,7 +11,6 @@ import {
   type RefObject,
 } from "react";
 import * as THREE from "three";
-import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import type { Country, Writer } from "../data/countries";
 import Button from "../ui/Button";
@@ -28,6 +27,7 @@ import {
   selectInterfacePlural,
   useInterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
+import { articlePath } from "../utils/articleRoutes";
 import { selectWriterDisplayName } from "../data/bookLocalization";
 import CountryFlagIcon from "./CountryFlagIcon";
 import BrandMinusIcon from "./BrandMinusIcon";
@@ -35,6 +35,20 @@ import BrandPlusIcon from "./BrandPlusIcon";
 import BrandResetIcon from "./BrandResetIcon";
 import BrandRotateIcon from "./BrandRotateIcon";
 import WriterPortrait from "./WriterPortrait";
+import NobelMarkerLayer, { type NobelLayerHover } from "./NobelMarkerLayer";
+import GlobeCameraRig, {
+  globeCameraIntentKey,
+  type GlobeCameraCancellationEvent,
+  type GlobeCameraPhase,
+  type GlobeCameraControlRequest,
+  type GlobeCameraFocusIntent,
+  type GlobeCameraView,
+  type GlobeCountryCameraIntentKind,
+} from "./GlobeCameraRig";
+import type { CountryFocusMetrics, ViewInsets } from "./globeFocusMath";
+import { useGlobeStyleState } from "./useGlobeStyleState";
+import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
+import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
 import {
   createGlobeAtlas,
   GLOBE_VISUAL_STYLE_LABELS,
@@ -44,31 +58,77 @@ import {
   type GlobeVisualStyle,
 } from "./globeAtlas";
 import { geographicToSphere } from "./globeGeography";
+import { raycastGlobeAtNdc } from "./globeProjection";
 import {
   beginGlobePointerGesture,
   GLOBE_INTERACTION_RESUME_DELAY_MS,
   globeControlActionForKey,
   isGlobePointerTap,
-  orbitDollyMethodForZoomDirection,
-  shouldGlobeAutoRotate,
   updateGlobePointerGesture,
   type GlobeControlAction,
   type GlobePointerGesture,
 } from "./globeInteraction";
+import {
+  globeKeyboardCandidateAriaCopy,
+} from "./globeKeyboardNavigation";
+import {
+  resolveGlobeAutoRotationPolicy,
+  resolveGlobeFrameMode,
+} from "./globePerformance";
+import {
+  createGlobeTouchActivationState,
+  globeTouchActivationReducer,
+  resolveGlobeTouchActivationPolicy,
+} from "./globeTouchActivation";
+import {
+  nobelLaureateRowId,
+  resolveNobelMarkerDetailMode,
+  type NobelMarkerDetailMode,
+} from "./nobelMarkerPolicy";
 
 export type LiteraryGlobeMode = "embedded" | "immersive";
+export type GlobeCountrySelectionSource = "pointer" | "keyboard";
+export type GlobeCountrySelectionFocusKind = Exclude<
+  GlobeCountryCameraIntentKind,
+  "writer-focus"
+>;
+
+export type GlobeExplicitFocusRequest =
+  | Readonly<{
+      id: number;
+      kind: "home";
+    }>
+  | Readonly<{
+      id: number;
+      kind: GlobeCountrySelectionFocusKind;
+      countryId: string;
+    }>
+  | Readonly<{
+      id: number;
+      kind: "writer-focus";
+      countryId: string;
+      writerId: string;
+      coordinates: Readonly<{ latitude: number; longitude: number }>;
+    }>;
 
 interface Props {
   countries: Country[];
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
-  onCountrySelect?: (country: Country) => void;
+  onCountrySelect?: (
+    country: Country,
+    source?: GlobeCountrySelectionSource
+  ) => void;
   onWriterSelect?: (country: Country, writer: Writer) => void;
   showNobelLaureates?: boolean;
   nobelCountryId?: string | null;
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLDivElement>;
+  onViewSample?: (sample: GlobeViewSample) => void;
+  onHoverCountryChange?: (country: Country | null) => void;
+  focusRequest?: GlobeExplicitFocusRequest | null;
+  economical?: boolean;
 }
 
 const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
@@ -221,69 +281,11 @@ function storedGlobeVisualStyle(): GlobeVisualStyle {
   }
 }
 
-function geoToCameraPosition(lat: number, lng: number, radius = 3.45) {
-  return geographicToSphere(lng, lat, radius);
-}
-
-// The 1:110m Natural Earth sheet intentionally omits some very small states
-// and islands. These geographic centers keep their 3D markers available even
-// when a country's currently published writer cards have no usable location.
-const COUNTRY_MARKER_COORDINATE_FALLBACKS: Readonly<
-  Partial<Record<string, [latitude: number, longitude: number]>>
-> = {
-  AD: [42.5063, 1.5218],
-  CK: [-21.2367, -159.7777],
-  FM: [6.9248, 158.161],
-  HK: [22.3193, 114.1694],
-  KI: [1.4518, 172.9717],
-  KM: [-11.6455, 43.3333],
-  LI: [47.141, 9.5209],
-  MC: [43.7384, 7.4246],
-  MO: [22.1987, 113.5439],
-  MU: [-20.1609, 57.5012],
-  NR: [-0.5228, 166.9315],
-  NU: [-19.0544, -169.8672],
-  SC: [-4.6796, 55.492],
-  SM: [43.9424, 12.4578],
-  TV: [-8.5211, 179.1983],
-  VA: [41.9029, 12.4534],
-};
-
 export function fallbackCountryCoordinates(
   country: Country
 ): [number, number] | null {
-  if (Array.isArray(country.coordinates)) return country.coordinates;
-  if (country.coordinates) return [country.coordinates.lat, country.coordinates.lng];
-
-  const countryMarker = country.code
-    ? COUNTRY_MARKER_COORDINATE_FALLBACKS[country.code.toUpperCase()]
-    : null;
-  if (countryMarker) return countryMarker;
-
-  const points = country.writers
-    .map((writer) => writer.coordinates)
-    .filter((coordinates): coordinates is { lat: number; lng: number } => Boolean(coordinates));
-  if (!points.length) {
-    return null;
-  }
-
-  const vector = points.reduce(
-    (sum, point) => {
-      const lat = THREE.MathUtils.degToRad(point.lat);
-      const lng = THREE.MathUtils.degToRad(point.lng);
-      sum.x += Math.cos(lat) * Math.cos(lng);
-      sum.y += Math.cos(lat) * Math.sin(lng);
-      sum.z += Math.sin(lat);
-      return sum;
-    },
-    new THREE.Vector3()
-  );
-  vector.normalize();
-
-  return [
-    THREE.MathUtils.radToDeg(Math.atan2(vector.z, Math.hypot(vector.x, vector.y))),
-    THREE.MathUtils.radToDeg(Math.atan2(vector.y, vector.x)),
-  ];
+  const resolved = resolveCountryGlobeCoordinates(country);
+  return resolved ? [resolved.latitude, resolved.longitude] : null;
 }
 
 function writerDisplayName(
@@ -294,15 +296,7 @@ function writerDisplayName(
   return selectWriterDisplayName(writer, language, fallback);
 }
 
-type HoveredLaureate = {
-  writer: Writer;
-  country: Country;
-};
-
-type GlobeControlRequest = {
-  id: number;
-  action: Exclude<GlobeControlAction, { type: "select" }>;
-};
+type GlobeControlRequest = GlobeCameraControlRequest;
 
 type PointerGestureRef = {
   current: GlobePointerGesture | null;
@@ -332,119 +326,6 @@ function finishPointerGesture(
   const isTap = isGlobePointerTap(gestureRef.current, event.nativeEvent);
   gestureRef.current = null;
   return isTap;
-}
-
-function CameraFocus({
-  countryId,
-  coordinates,
-  controlsRef,
-  reducedMotion,
-}: {
-  countryId?: string | null;
-  coordinates?: [number, number] | null;
-  controlsRef: RefObject<OrbitControlsImpl>;
-  reducedMotion: boolean;
-}) {
-  const { camera, invalidate } = useThree();
-  const latitude = coordinates?.[0];
-  const longitude = coordinates?.[1];
-
-  useEffect(() => {
-    const controls = controlsRef.current;
-
-    if (
-      !countryId ||
-      latitude === undefined ||
-      longitude === undefined
-    ) {
-      return;
-    }
-
-    const destination = geoToCameraPosition(latitude, longitude);
-    const origin = camera.position.clone();
-    const target = new THREE.Vector3(0, -0.2, 0);
-    const startedAt = performance.now();
-    const duration = reducedMotion ? 0 : 1450;
-    let animationFrame = 0;
-
-    const renderFrame = (now: number) => {
-      const progress = duration === 0
-        ? 1
-        : THREE.MathUtils.clamp((now - startedAt) / duration, 0, 1);
-      const eased = progress < 0.5
-        ? 4 * progress ** 3
-        : 1 - ((-2 * progress + 2) ** 3) / 2;
-
-      camera.position.lerpVectors(origin, destination, eased);
-      if (controls) {
-        controls.target.copy(target);
-        controls.update();
-      } else {
-        camera.lookAt(target);
-      }
-      invalidate();
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(renderFrame);
-      }
-    };
-    renderFrame(startedAt);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [
-    camera,
-    controlsRef,
-    countryId,
-    invalidate,
-    latitude,
-    longitude,
-    reducedMotion,
-  ]);
-
-  return null;
-}
-
-function GlobeControlDriver({
-  request,
-  controlsRef,
-}: {
-  request: GlobeControlRequest | null;
-  controlsRef: RefObject<OrbitControlsImpl>;
-}) {
-  const { camera, invalidate } = useThree();
-
-  useEffect(() => {
-    const controls = controlsRef.current;
-    if (!controls || !request) return;
-
-    const { action } = request;
-    if (action.type === "rotate") {
-      controls.setAzimuthalAngle(
-        controls.getAzimuthalAngle() + action.azimuthDelta
-      );
-      controls.setPolarAngle(
-        THREE.MathUtils.clamp(
-          controls.getPolarAngle() + action.polarDelta,
-          controls.minPolarAngle,
-          controls.maxPolarAngle
-        )
-      );
-    } else if (action.type === "zoom") {
-      controls[orbitDollyMethodForZoomDirection(action.direction)](1.18);
-    } else {
-      camera.position.set(0, 0.08, 4.9);
-      camera.zoom = 1;
-      camera.updateProjectionMatrix();
-      controls.target.set(0, -0.2, 0);
-      controls.update();
-    }
-
-    invalidate();
-  }, [camera, controlsRef, invalidate, request]);
-
-  return null;
 }
 
 function MuseumAtmosphere({ visualStyle }: { visualStyle: GlobeVisualStyle }) {
@@ -986,9 +867,11 @@ function ModernGlobeFrame({ economical }: { economical: boolean }) {
 function MuseumStarfield({
   economical,
   reducedMotion,
+  animate,
 }: {
   economical: boolean;
   reducedMotion: boolean;
+  animate: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const count = economical ? 900 : 2400;
@@ -1072,7 +955,7 @@ function MuseumStarfield({
   useEffect(() => () => geometry.dispose(), [geometry]);
 
   useFrame((_, delta) => {
-    if (materialRef.current && !reducedMotion) {
+    if (materialRef.current && animate && !reducedMotion) {
       materialRef.current.uniforms.uTime.value += Math.min(delta, 0.05);
     }
   });
@@ -1149,9 +1032,11 @@ function MuseumStarfield({
 function MuseumSkyDome({
   reducedMotion,
   economical,
+  animate,
 }: {
   reducedMotion: boolean;
   economical: boolean;
+  animate: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const uniforms = useMemo(
@@ -1163,7 +1048,7 @@ function MuseumSkyDome({
   );
 
   useFrame((_, delta) => {
-    if (materialRef.current && !reducedMotion) {
+    if (materialRef.current && animate && !reducedMotion) {
       materialRef.current.uniforms.uTime.value += Math.min(delta, 0.05) * 0.025;
     }
   });
@@ -1268,79 +1153,15 @@ function MuseumSkyDome({
   );
 }
 
-function RendererResizeSync() {
-  const { camera, gl } = useThree();
-
-  useEffect(() => {
-    const canvas = gl.domElement;
-    const container = canvas.parentElement;
-    if (!container) return;
-
-    let animationFrame = 0;
-    let lastWidth = 0;
-    let lastHeight = 0;
-    const synchronize = (entry?: ResizeObserverEntry) => {
-      const rawContentBoxSize = entry?.contentBoxSize as
-        | ReadonlyArray<ResizeObserverSize>
-        | ResizeObserverSize
-        | undefined;
-      const contentBoxSize = Array.isArray(rawContentBoxSize)
-        ? rawContentBoxSize[0]
-        : (rawContentBoxSize as ResizeObserverSize | undefined);
-      const width = Math.max(
-        1,
-        Math.round(
-          contentBoxSize?.inlineSize ??
-            entry?.contentRect.width ??
-            container.clientWidth
-        )
-      );
-      const height = Math.max(
-        1,
-        Math.round(
-          contentBoxSize?.blockSize ??
-            entry?.contentRect.height ??
-            container.clientHeight
-        )
-      );
-
-      if (width === lastWidth && height === lastHeight) return;
-      cancelAnimationFrame(animationFrame);
-      animationFrame = requestAnimationFrame(() => {
-        lastWidth = width;
-        lastHeight = height;
-        gl.setSize(width, height, false);
-
-        if (camera instanceof THREE.PerspectiveCamera) {
-          camera.aspect = width / height;
-          camera.updateProjectionMatrix();
-        }
-      });
-    };
-
-    const observer = new ResizeObserver(([entry]) => synchronize(entry));
-    const synchronizeFromViewport = () => synchronize();
-    observer.observe(container);
-    window.addEventListener("resize", synchronizeFromViewport, { passive: true });
-    synchronize();
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      observer.disconnect();
-      window.removeEventListener("resize", synchronizeFromViewport);
-    };
-  }, [camera, gl]);
-
-  return null;
-}
-
 function CountrySphericalOutline({
   atlas,
   country,
+  candidate = false,
   selected = false,
 }: {
   atlas: GlobeAtlas;
   country?: Country | null;
+  candidate?: boolean;
   selected?: boolean;
 }) {
   const geometry = country ? atlas.outlineGeometryForCountry(country.id) : null;
@@ -1349,9 +1170,9 @@ function CountrySphericalOutline({
   return (
     <lineSegments geometry={geometry} dispose={null} raycast={() => null}>
       <lineBasicMaterial
-        color={selected ? "#ffd486" : "#ff9a38"}
+        color={selected ? "#ffd486" : candidate ? "#9fd8ff" : "#ff9a38"}
         transparent
-        opacity={selected ? 0.98 : 0.72}
+        opacity={selected ? 0.98 : candidate ? 0.56 : 0.76}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
         toneMapped={false}
@@ -1364,28 +1185,29 @@ function GlobeSurface({
   atlas,
   visualStyle,
   selectedCountry,
+  candidateCountry,
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
   economical,
+  globeObjectRef,
+  touchInteractionEnabled,
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
   selectedCountry?: Country | null;
+  candidateCountry?: Country | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   economical: boolean;
+  globeObjectRef: RefObject<THREE.Mesh>;
+  touchInteractionEnabled: boolean;
 }) {
   const surfaceMaterial = globeSurfaceMaterials[visualStyle];
-  const { camera, gl } = useThree();
-  const globeMesh = useRef<THREE.Mesh>(null);
-  const raycaster = useMemo(() => new THREE.Raycaster(), []);
-  const normalizedPointer = useMemo(() => new THREE.Vector2(), []);
-  const pointerGesture = useRef<GlobePointerGesture | null>(null);
   const hoveredCountryId = useRef<string | null>(null);
   const pointerFrame = useRef(0);
-  const latestPointer = useRef<{ x: number; y: number } | null>(null);
+  const latestPointerUv = useRef<THREE.Vector2 | null>(null);
 
   useEffect(
     () => () => {
@@ -1396,47 +1218,22 @@ function GlobeSurface({
 
   useEffect(() => {
     hoveredCountryId.current = null;
-    latestPointer.current = null;
+    latestPointerUv.current = null;
     onCountryHover(null);
   }, [onCountryHover]);
 
-  const countryFromPointer = useCallback(
-    (clientX: number, clientY: number) => {
-      const mesh = globeMesh.current;
-      if (!mesh) return null;
-
-      const bounds = gl.domElement.getBoundingClientRect();
-      if (bounds.width <= 0 || bounds.height <= 0) return null;
-
-      normalizedPointer.set(
-        ((clientX - bounds.left) / bounds.width) * 2 - 1,
-        -((clientY - bounds.top) / bounds.height) * 2 + 1
-      );
-      raycaster.setFromCamera(normalizedPointer, camera);
-      mesh.updateWorldMatrix(true, false);
-
-      const intersection = raycaster.intersectObject(mesh, false)[0];
-      return intersection?.uv ? atlas.countryAtUv(intersection.uv) : null;
-    },
-    [atlas, camera, gl, normalizedPointer, raycaster]
-  );
-
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    trackPointerGesture(pointerGesture, event);
     if (event.nativeEvent.pointerType === "touch") return;
 
-    latestPointer.current = {
-      x: event.nativeEvent.clientX,
-      y: event.nativeEvent.clientY,
-    };
+    latestPointerUv.current = event.uv?.clone() ?? null;
     if (pointerFrame.current) return;
 
     pointerFrame.current = requestAnimationFrame(() => {
       pointerFrame.current = 0;
-      const pointer = latestPointer.current;
-      if (!pointer) return;
-      const country = countryFromPointer(pointer.x, pointer.y);
+      const uv = latestPointerUv.current;
+      if (!uv) return;
+      const country = atlas.countryAtUv(uv);
       const nextId = country?.id ?? null;
       if (hoveredCountryId.current === nextId) return;
 
@@ -1445,37 +1242,22 @@ function GlobeSurface({
     });
   };
 
-  const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    startPointerGesture(pointerGesture, event);
-  };
-
-  const handlePointerUp = (event: ThreeEvent<PointerEvent>) => {
-    event.stopPropagation();
-    if (!finishPointerGesture(pointerGesture, event)) return;
-
-    const country = countryFromPointer(
-      event.nativeEvent.clientX,
-      event.nativeEvent.clientY
-    );
+    const country = event.uv ? atlas.countryAtUv(event.uv) : null;
     if (country) onCountrySelect?.(country);
   };
 
   return (
     <group>
       <mesh
-        ref={globeMesh}
+        ref={globeObjectRef}
         onPointerMove={handlePointerMove}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={() => {
-          pointerGesture.current = null;
-        }}
+        onClick={touchInteractionEnabled ? handleClick : undefined}
         onPointerOut={() => {
-          pointerGesture.current = null;
           cancelAnimationFrame(pointerFrame.current);
           pointerFrame.current = 0;
-          latestPointer.current = null;
+          latestPointerUv.current = null;
           hoveredCountryId.current = null;
           onCountryHover(null);
         }}
@@ -1506,6 +1288,16 @@ function GlobeSurface({
 
         <CountrySphericalOutline
           atlas={atlas}
+          country={
+            candidateCountry?.id === selectedCountry?.id ||
+            candidateCountry?.id === hoveredCountry?.id
+              ? null
+              : candidateCountry
+          }
+          candidate
+        />
+        <CountrySphericalOutline
+          atlas={atlas}
           country={hoveredCountry?.id === selectedCountry?.id ? null : hoveredCountry}
         />
         <CountrySphericalOutline atlas={atlas} country={selectedCountry} selected />
@@ -1529,23 +1321,40 @@ function GlobeSurface({
 function MicrostateMarker({
   country,
   coordinates,
+  candidate,
+  hovered,
   selected,
   onCountrySelect,
   onCountryHover,
+  touchInteractionEnabled,
 }: {
   country: Country;
   coordinates: [number, number];
+  candidate: boolean;
+  hovered: boolean;
   selected: boolean;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
+  touchInteractionEnabled: boolean;
 }) {
   const pointerGesture = useRef<GlobePointerGesture | null>(null);
-  const position = geoToCameraPosition(coordinates[0], coordinates[1], 1.016);
+  const position = geographicToSphere(coordinates[1], coordinates[0], 1.016);
+  const radius = selected ? 0.021 : hovered ? 0.018 : candidate ? 0.016 : 0.012;
+  const color = selected
+    ? "#ffe4aa"
+    : hovered
+      ? "#ffb45f"
+      : candidate
+        ? "#9fd8ff"
+        : "#d9a650";
 
   return (
-    <mesh
+    <group
       position={position}
       onPointerOver={(event) => {
+        if (event.nativeEvent.pointerType === "touch" && !touchInteractionEnabled) {
+          return;
+        }
         event.stopPropagation();
         onCountryHover(country);
       }}
@@ -1572,30 +1381,137 @@ function MicrostateMarker({
         pointerGesture.current = null;
       }}
     >
-      <sphereGeometry args={[selected ? 0.019 : 0.012, 16, 16]} />
-      <meshStandardMaterial
-        color={selected ? "#ffe0a0" : "#d9a650"}
-        emissive="#d48a2e"
-        emissiveIntensity={selected ? 4.2 : 2.1}
-        roughness={0.45}
-        metalness={0.24}
-      />
-    </mesh>
+      <mesh>
+        <sphereGeometry args={[0.034, 14, 10]} />
+        <meshBasicMaterial
+          transparent
+          opacity={0}
+          depthWrite={false}
+          colorWrite={false}
+        />
+      </mesh>
+      <mesh raycast={() => null}>
+        <sphereGeometry args={[radius, 16, 16]} />
+        <meshStandardMaterial
+          color={color}
+          emissive={candidate && !hovered && !selected ? "#579fd0" : "#d48a2e"}
+          emissiveIntensity={selected ? 4.2 : hovered ? 3 : candidate ? 2.5 : 2.1}
+          roughness={0.45}
+          metalness={0.24}
+        />
+      </mesh>
+    </group>
   );
+}
+
+function GlobePagePanTapBridge({
+  atlas,
+  countries,
+  globeObjectRef,
+  active,
+  onCountrySelect,
+}: {
+  atlas: GlobeAtlas;
+  countries: Country[];
+  globeObjectRef: RefObject<THREE.Mesh>;
+  active: boolean;
+  onCountrySelect?: (country: Country) => void;
+}) {
+  const { camera, gl } = useThree();
+  const gestureRef = useRef<GlobePointerGesture | null>(null);
+  const raycaster = useMemo(() => new THREE.Raycaster(), []);
+  const ndc = useMemo(() => new THREE.Vector2(), []);
+  const countriesById = useMemo(
+    () => new Map(countries.map((country) => [country.id, country])),
+    [countries]
+  );
+  const onCountrySelectRef = useRef(onCountrySelect);
+  onCountrySelectRef.current = onCountrySelect;
+
+  useEffect(() => {
+    if (!active) {
+      gestureRef.current = null;
+      return undefined;
+    }
+    const canvas = gl.domElement;
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) {
+        return;
+      }
+      gestureRef.current = beginGlobePointerGesture(event);
+    };
+    const handlePointerMove = (event: PointerEvent) => {
+      gestureRef.current = updateGlobePointerGesture(
+        gestureRef.current,
+        event
+      );
+    };
+    const handlePointerUp = (event: PointerEvent) => {
+      if (!isGlobePointerTap(gestureRef.current, event)) {
+        gestureRef.current = null;
+        return;
+      }
+      gestureRef.current = null;
+      const globeObject = globeObjectRef.current;
+      if (!globeObject) return;
+      const bounds = canvas.getBoundingClientRect();
+      if (bounds.width <= 0 || bounds.height <= 0) return;
+      ndc.set(
+        ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+        -((event.clientY - bounds.top) / bounds.height) * 2 + 1
+      );
+      const hit = raycastGlobeAtNdc({
+        camera,
+        globeObject,
+        ndc,
+        raycaster,
+      });
+      const country = hit ? atlas.countryAtUv(hit.uv) : null;
+      const selectableCountry = country
+        ? countriesById.get(country.id) ?? null
+        : null;
+      if (selectableCountry) {
+        onCountrySelectRef.current?.(selectableCountry);
+      }
+    };
+    const clearGesture = () => {
+      gestureRef.current = null;
+    };
+
+    canvas.addEventListener("pointerdown", handlePointerDown, { passive: true });
+    canvas.addEventListener("pointermove", handlePointerMove, { passive: true });
+    canvas.addEventListener("pointerup", handlePointerUp, { passive: true });
+    canvas.addEventListener("pointercancel", clearGesture, { passive: true });
+    return () => {
+      gestureRef.current = null;
+      canvas.removeEventListener("pointerdown", handlePointerDown);
+      canvas.removeEventListener("pointermove", handlePointerMove);
+      canvas.removeEventListener("pointerup", handlePointerUp);
+      canvas.removeEventListener("pointercancel", clearGesture);
+    };
+  }, [active, atlas, camera, countriesById, gl, globeObjectRef, ndc, raycaster]);
+
+  return null;
 }
 
 function MicrostateMarkers({
   atlas,
   countries,
   selectedCountry,
+  candidateCountry,
+  hoveredCountry,
   onCountrySelect,
   onCountryHover,
+  touchInteractionEnabled,
 }: {
   atlas: GlobeAtlas;
   countries: Country[];
   selectedCountry?: Country | null;
+  candidateCountry?: Country | null;
+  hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
+  touchInteractionEnabled: boolean;
 }) {
   const microstates = useMemo(
     () =>
@@ -1620,15 +1536,21 @@ function MicrostateMarkers({
     <group>
       {microstates.map(({ country, coordinates }) => {
         const selected = selectedCountry?.id === country.id;
+        const hovered = hoveredCountry?.id === country.id && !selected;
+        const candidate =
+          candidateCountry?.id === country.id && !selected && !hovered;
 
         return (
           <MicrostateMarker
             key={country.id}
             country={country}
             coordinates={coordinates}
+            candidate={candidate}
+            hovered={hovered}
             selected={selected}
             onCountrySelect={onCountrySelect}
             onCountryHover={onCountryHover}
+            touchInteractionEnabled={touchInteractionEnabled}
           />
         );
       })}
@@ -1636,197 +1558,41 @@ function MicrostateMarkers({
   );
 }
 
-function NobelLaureateMarker({
-  country,
+function SelectedWriterLocationMarker({
   writer,
-  position,
-  selected,
-  reducedMotion,
-  texture,
-  onSelect,
-  onHover,
+  coordinates,
 }: {
-  country: Country;
   writer: Writer;
-  position: THREE.Vector3;
-  selected: boolean;
-  reducedMotion: boolean;
-  texture: THREE.Texture;
-  onSelect: (country: Country, writer: Writer) => void;
-  onHover: (laureate: HoveredLaureate | null) => void;
+  coordinates: Readonly<{ latitude: number; longitude: number }>;
 }) {
-  const marker = useRef<THREE.Group>(null);
-  const pointerGesture = useRef<GlobePointerGesture | null>(null);
-
-  useFrame(({ clock }) => {
-    if (!marker.current || reducedMotion) return;
-    const pulse = 1 + Math.sin(clock.elapsedTime * 2.1 + position.x * 4) * 0.1;
-    marker.current.scale.setScalar(pulse);
-  });
+  const position = geographicToSphere(
+    coordinates.longitude,
+    coordinates.latitude,
+    1.035
+  );
 
   return (
-    <group
-      ref={marker}
-      position={position}
-      onPointerOver={(event) => {
-        event.stopPropagation();
-        onHover({ country, writer });
-      }}
-      onPointerOut={(event) => {
-        event.stopPropagation();
-        pointerGesture.current = null;
-        onHover(null);
-      }}
-      onPointerDown={(event) => {
-        event.stopPropagation();
-        startPointerGesture(pointerGesture, event);
-      }}
-      onPointerMove={(event) => {
-        event.stopPropagation();
-        trackPointerGesture(pointerGesture, event);
-      }}
-      onPointerUp={(event) => {
-        event.stopPropagation();
-        if (finishPointerGesture(pointerGesture, event)) {
-          onSelect(country, writer);
-        }
-      }}
-      onPointerCancel={() => {
-        pointerGesture.current = null;
-      }}
-    >
-      <sprite scale={selected ? [0.1, 0.1, 1] : [0.072, 0.072, 1]}>
-        <spriteMaterial
-          map={texture}
-          color={selected ? "#fff4c4" : "#ffffff"}
+    <group name={`selected-writer-location-${writer.id}`} position={position}>
+      <mesh raycast={() => null}>
+        <sphereGeometry args={[0.017, 18, 14]} />
+        <meshStandardMaterial
+          color="#fff0c4"
+          emissive="#f67518"
+          emissiveIntensity={4.4}
+          roughness={0.32}
+          metalness={0.3}
+        />
+      </mesh>
+      <mesh scale={1.85} raycast={() => null}>
+        <sphereGeometry args={[0.017, 18, 14]} />
+        <meshBasicMaterial
+          color="#ff9a38"
           transparent
-          alphaTest={0.025}
+          opacity={0.18}
           depthWrite={false}
-          toneMapped={false}
+          blending={THREE.AdditiveBlending}
         />
-      </sprite>
-    </group>
-  );
-}
-
-function NobelLaureateMarkers({
-  atlas,
-  countries,
-  nobelCountryId,
-  selectedWriter,
-  reducedMotion,
-  onSelect,
-  onHover,
-}: {
-  atlas: GlobeAtlas;
-  countries: Country[];
-  nobelCountryId?: string | null;
-  selectedWriter?: Writer | null;
-  reducedMotion: boolean;
-  onSelect: (country: Country, writer: Writer) => void;
-  onHover: (laureate: HoveredLaureate | null) => void;
-}) {
-  const medalTexture = useTexture(
-    `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`
-  );
-  medalTexture.colorSpace = THREE.SRGBColorSpace;
-
-  const laureates = useMemo(() => {
-    const entries = nobelCountryId
-      ? collectCountryNobelLaureates(countries, nobelCountryId)
-      : collectNobelLaureates(countries);
-    const source = entries
-      .flatMap(({ country, writer }) => {
-        const countryCentroid = atlas.centroidForCountry(country.id);
-        const fallback = countryCentroid
-          ? { lat: countryCentroid[0], lng: countryCentroid[1] }
-          : null;
-
-        return [
-          {
-            country,
-            writer,
-            coordinates: writer.coordinates || fallback,
-          },
-        ]
-          .filter(
-            (
-              item
-            ): item is {
-              country: Country;
-              writer: Writer;
-              coordinates: { lat: number; lng: number };
-            } => Boolean(item.coordinates)
-          );
-      });
-
-    const placed: typeof source = [];
-    const distance = (
-      first: { lat: number; lng: number },
-      second: { lat: number; lng: number }
-    ) => {
-      const meanLatitude = THREE.MathUtils.degToRad((first.lat + second.lat) / 2);
-      const longitudeDistance =
-        (first.lng - second.lng) * Math.max(0.3, Math.cos(meanLatitude));
-      return Math.hypot(first.lat - second.lat, longitudeDistance);
-    };
-
-    for (const [index, laureate] of source.entries()) {
-      let coordinates = laureate.coordinates;
-      let attempt = 0;
-
-      while (
-        placed.some(
-          (candidate) =>
-            candidate.country.id === laureate.country.id &&
-            distance(candidate.coordinates, coordinates) < 2.15
-        ) &&
-        attempt < 18
-      ) {
-        attempt += 1;
-        const ring = 1.55 + Math.floor((attempt - 1) / 6) * 1.05;
-        const angle = index * 2.3999632297 + attempt * (Math.PI / 3);
-        const longitudeScale = Math.max(
-          0.32,
-          Math.cos(THREE.MathUtils.degToRad(laureate.coordinates.lat))
-        );
-        coordinates = {
-          lat: THREE.MathUtils.clamp(
-            laureate.coordinates.lat + Math.sin(angle) * ring,
-            -89.5,
-            89.5
-          ),
-          lng:
-            laureate.coordinates.lng +
-            (Math.cos(angle) * ring) / longitudeScale,
-        };
-      }
-
-      placed.push({ ...laureate, coordinates });
-    }
-
-    return placed;
-  }, [atlas, countries, nobelCountryId]);
-
-  return (
-    <group>
-      {laureates.map(({ country, writer, coordinates }) => (
-        <NobelLaureateMarker
-          key={`${country.id}:${writer.id}`}
-          country={country}
-          writer={writer}
-          position={geographicToSphere(
-            coordinates.lng,
-            coordinates.lat,
-            1.026
-          )}
-          selected={selectedWriter?.id === writer.id}
-          reducedMotion={reducedMotion}
-          texture={medalTexture}
-          onSelect={onSelect}
-          onHover={onHover}
-        />
-      ))}
+      </mesh>
     </group>
   );
 }
@@ -1837,6 +1603,7 @@ function GlobeScene({
   countries,
   selectedCountry,
   selectedWriter,
+  candidateCountry,
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
@@ -1850,12 +1617,23 @@ function GlobeScene({
   nobelCountryId,
   onWriterSelect,
   onLaureateHover,
+  active,
+  mobile,
+  viewInsets,
+  onCameraPhaseChange,
+  onCameraFocusStarted,
+  onCameraFocusCancelled,
+  onCameraFocusSettled,
+  onViewSample,
+  focusRequest,
+  touchInteractionEnabled,
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
   countries: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
+  candidateCountry?: Country | null;
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
@@ -1868,19 +1646,97 @@ function GlobeScene({
   showNobelLaureates: boolean;
   nobelCountryId?: string | null;
   onWriterSelect?: (country: Country, writer: Writer) => void;
-  onLaureateHover: (laureate: HoveredLaureate | null) => void;
+  onLaureateHover: (laureate: NobelLayerHover | null) => void;
+  active: boolean;
+  mobile: boolean;
+  viewInsets: ViewInsets;
+  onCameraPhaseChange: (phase: GlobeCameraPhase) => void;
+  onCameraFocusStarted: (intentKey: string) => void;
+  onCameraFocusCancelled: (event: GlobeCameraCancellationEvent) => void;
+  onCameraFocusSettled: (intentKey: string) => void;
+  onViewSample: (sample: GlobeViewSample) => void;
+  focusRequest?: GlobeExplicitFocusRequest | null;
+  touchInteractionEnabled: boolean;
 }) {
-  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const globeObjectRef = useRef<THREE.Mesh>(null);
+  const [nobelDetailMode, setNobelDetailMode] =
+    useState<NobelMarkerDetailMode>("clustered");
+  const [viewSampleRequest, setViewSampleRequest] = useState(0);
   const palette = globeStylePalette[visualStyle];
-  const coordinates = selectedCountry
-    ? atlas.centroidForCountry(selectedCountry.id) || fallbackCountryCoordinates(selectedCountry)
-    : null;
+  const matchingFocusRequest =
+    selectedCountry &&
+    focusRequest?.kind !== "home" &&
+    focusRequest?.countryId === selectedCountry.id
+      ? focusRequest
+      : null;
+  const explicitWriterCoordinates =
+    matchingFocusRequest?.kind === "writer-focus" &&
+    matchingFocusRequest.writerId === selectedWriter?.id &&
+    matchingFocusRequest.coordinates
+      ? matchingFocusRequest.coordinates
+      : null;
+  const focusIntent = useMemo<GlobeCameraFocusIntent | null>(() => {
+    if (focusRequest?.kind === "home") {
+      return { id: focusRequest.id, kind: "home" };
+    }
+    if (!selectedCountry) {
+      return null;
+    }
+    let metrics = atlas.focusMetricsForCountry(selectedCountry.id);
+    if (
+      matchingFocusRequest?.kind === "writer-focus" &&
+      matchingFocusRequest.coordinates
+    ) {
+      const direction = geographicToSphere(
+        matchingFocusRequest.coordinates.longitude,
+        matchingFocusRequest.coordinates.latitude
+      ).normalize();
+      metrics = {
+        direction,
+        angularRadius: THREE.MathUtils.degToRad(0.35),
+        principalAngularExtent: THREE.MathUtils.degToRad(0.35),
+        principalPolygonCount: 0,
+        source: "fallback",
+      } satisfies CountryFocusMetrics;
+    }
+    return metrics
+      ? {
+          id: matchingFocusRequest?.id ?? `country:${selectedCountry.id}`,
+          kind: matchingFocusRequest?.kind ?? "country-focus",
+          countryId: selectedCountry.id,
+          metrics,
+        }
+      : null;
+  }, [atlas, focusRequest, matchingFocusRequest, selectedCountry]);
+  const updateNobelDetailMode = useCallback((view: GlobeCameraView) => {
+    const radius = Math.hypot(...view.position);
+    setNobelDetailMode((current) =>
+      resolveNobelMarkerDetailMode(radius, current)
+    );
+  }, []);
+  const handleViewSettled = useCallback(
+    (view: GlobeCameraView) => {
+      updateNobelDetailMode(view);
+      setViewSampleRequest((request) => request + 1);
+      if (focusIntent && view.source === focusIntent.kind) {
+        onCameraFocusSettled(globeCameraIntentKey(focusIntent));
+      }
+    },
+    [focusIntent, onCameraFocusSettled, updateNobelDetailMode]
+  );
 
   return (
     <>
-      <RendererResizeSync />
-      <MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />
-      <MuseumStarfield economical={economical} reducedMotion={reducedMotion} />
+      <MuseumSkyDome
+        reducedMotion={reducedMotion}
+        economical={economical}
+        animate={autoRotate}
+      />
+      <MuseumStarfield
+        economical={economical}
+        reducedMotion={reducedMotion}
+        animate={autoRotate}
+      />
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight
         args={[
@@ -1933,10 +1789,20 @@ function GlobeScene({
         atlas={atlas}
         visualStyle={visualStyle}
         selectedCountry={selectedCountry}
+        candidateCountry={candidateCountry}
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
         economical={economical}
+        globeObjectRef={globeObjectRef}
+        touchInteractionEnabled={touchInteractionEnabled}
+      />
+      <GlobePagePanTapBridge
+        atlas={atlas}
+        countries={countries}
+        globeObjectRef={globeObjectRef}
+        active={!touchInteractionEnabled}
+        onCountrySelect={onCountrySelect}
       />
       {visualStyle === "antique" ? (
         <MythicGlobeFrame />
@@ -1952,48 +1818,59 @@ function GlobeScene({
         atlas={atlas}
         countries={countries}
         selectedCountry={selectedCountry}
+        candidateCountry={candidateCountry}
+        hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
+        touchInteractionEnabled={touchInteractionEnabled}
       />
+      {selectedWriter && explicitWriterCoordinates && (
+        <SelectedWriterLocationMarker
+          writer={selectedWriter}
+          coordinates={explicitWriterCoordinates}
+        />
+      )}
       {showNobelLaureates && (
-        <NobelLaureateMarkers
+        <NobelMarkerLayer
           atlas={atlas}
           countries={countries}
           nobelCountryId={nobelCountryId}
           selectedWriter={selectedWriter}
-          reducedMotion={reducedMotion}
-          onSelect={(country, writer) => {
+          detailMode={nobelDetailMode}
+          touchInteractionEnabled={touchInteractionEnabled}
+          onCountrySelect={(country) => onCountrySelect?.(country)}
+          onWriterSelect={(country, writer) => {
             if (onWriterSelect) onWriterSelect(country, writer);
             else onCountrySelect?.(country);
           }}
           onHover={onLaureateHover}
         />
       )}
-      <OrbitControls
-        ref={controlsRef}
-        makeDefault
-        enableDamping
-        dampingFactor={0.055}
-        enablePan={false}
-        enableZoom
-        minDistance={2.25}
-        maxDistance={5}
-        minPolarAngle={0.5}
-        maxPolarAngle={2.62}
-        rotateSpeed={0.48}
-        zoomSpeed={0.75}
+      <GlobeCameraRig
+        focusIntent={focusIntent}
+        controlRequest={controlRequest}
         autoRotate={autoRotate}
-        autoRotateSpeed={0.24}
-        target={[0, -0.2, 0]}
-        onStart={onInteractionStart}
-        onEnd={onInteractionEnd}
-      />
-      <GlobeControlDriver request={controlRequest} controlsRef={controlsRef} />
-      <CameraFocus
-        countryId={selectedCountry?.id}
-        coordinates={coordinates}
-        controlsRef={controlsRef}
         reducedMotion={reducedMotion}
+        mobile={mobile}
+        active={active}
+        interactionEnabled={touchInteractionEnabled}
+        viewInsets={viewInsets}
+        onInteractionStart={onInteractionStart}
+        onInteractionEnd={onInteractionEnd}
+        onPhaseChange={onCameraPhaseChange}
+        onProgrammaticStart={onCameraFocusStarted}
+        onProgrammaticCancel={onCameraFocusCancelled}
+        onViewChange={updateNobelDetailMode}
+        onViewSettled={handleViewSettled}
+      />
+      <GlobeViewObserver
+        atlas={atlas}
+        countries={countries}
+        globeObjectRef={globeObjectRef}
+        viewInsets={viewInsets}
+        active={active}
+        sampleRequest={viewSampleRequest}
+        onSample={onViewSample}
       />
     </>
   );
@@ -2010,32 +1887,67 @@ export default function LiteraryGlobe({
   nobelCountryId,
   mode = "embedded",
   rootRef,
+  onViewSample,
+  onHoverCountryChange,
+  focusRequest,
+  economical = false,
 }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
-  const [visualStyle, setVisualStyle] = useState<GlobeVisualStyle>(
-    storedGlobeVisualStyle
-  );
-  const initialVisualStyle = useRef(visualStyle);
+  const initialVisualStyle = useRef(storedGlobeVisualStyle());
   const initialLanguage = useRef(language);
-  const [renderedVisualStyle, setRenderedVisualStyle] =
-    useState<GlobeVisualStyle>(visualStyle);
-  const [pendingVisualStyle, setPendingVisualStyle] =
-    useState<GlobeVisualStyle | null>(null);
-  const [visualStyleError, setVisualStyleError] = useState(false);
+  const languageRef = useRef(language);
+  languageRef.current = language;
+  const atlasInstanceRef = useRef<GlobeAtlas | null>(null);
+  const globeStyle = useGlobeStyleState({
+    initialStyle: initialVisualStyle.current,
+    applyStyle: async (style) => {
+      const currentAtlas = atlasInstanceRef.current;
+      if (!currentAtlas) throw new Error("globe-atlas-unavailable");
+      await currentAtlas.setVisualStyle(style, languageRef.current);
+    },
+    onCommit: (style) => {
+      window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, style);
+    },
+  });
+  const renderedVisualStyle = globeStyle.renderedStyle;
+  const pendingVisualStyle = globeStyle.pendingStyle;
+  const visualStyleError = Boolean(globeStyle.error);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const [hoveredLaureate, setHoveredLaureate] =
-    useState<HoveredLaureate | null>(null);
+    useState<NobelLayerHover | null>(null);
+  const [viewSample, setViewSample] = useState<GlobeViewSample>({
+    candidate: null,
+    coordinates: null,
+    cameraRadius: Math.hypot(...GLOBE_CAMERA_CONFIG.position),
+    revision: 0,
+  });
+  const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [globeActive, setGlobeActive] = useState(false);
+  const [globeVisible, setGlobeVisible] = useState(false);
+  const [documentVisible, setDocumentVisible] = useState(
+    () => document.visibilityState !== "hidden"
+  );
+  const globeActive = globeVisible && documentVisible;
   const [atlasRequested, setAtlasRequested] = useState(false);
   const [autoRotateRequested, setAutoRotateRequested] = useState(true);
   const [interactionPaused, setInteractionPaused] = useState(false);
   const [controlRequest, setControlRequest] =
     useState<GlobeControlRequest | null>(null);
+  const [cameraPhase, setCameraPhase] = useState<GlobeCameraPhase>("idle");
+  const [startedCameraIntent, setStartedCameraIntent] = useState("none");
+  const [cancelledCameraMotion, setCancelledCameraMotion] =
+    useState<GlobeCameraCancellationEvent | null>(null);
+  const [settledCameraIntent, setSettledCameraIntent] = useState("none");
   const controlRequestId = useRef(0);
+  const prewarmInputPauseUntilRef = useRef(0);
+  const prewarmRuntimeRef = useRef({
+    globeActive: false,
+    interactionPaused: false,
+    cameraBusy: false,
+  });
   const setContainerRef = useCallback(
     (node: HTMLDivElement | null) => {
       containerRef.current = node;
@@ -2044,11 +1956,8 @@ export default function LiteraryGlobe({
     [rootRef]
   );
   const autoRotateResumeTimer = useRef<number | null>(null);
-  const hoveredNobelYear = hoveredLaureate
+  const hoveredNobelYear = hoveredLaureate?.kind === "writer"
     ? getNobelYear(hoveredLaureate.writer)
-    : null;
-  const hoveredNobelArticle = hoveredLaureate
-    ? findNobelArticle(hoveredLaureate.writer)
     : null;
   const contextualCountry = hoveredCountry ?? selectedCountry ?? null;
   const atlasSourceCountries = atlasCountries ?? countries;
@@ -2056,64 +1965,119 @@ export default function LiteraryGlobe({
     () => new Set(countries.map((country) => country.id)),
     [countries]
   );
-  const visibleNobelCount = useMemo(
+  const visibleNobelEntries = useMemo(
     () =>
       nobelCountryId
-        ? collectCountryNobelLaureates(countries, nobelCountryId).length
-        : collectNobelLaureates(countries).length,
+        ? collectCountryNobelLaureates(countries, nobelCountryId)
+        : collectNobelLaureates(countries),
     [countries, nobelCountryId]
   );
+  const visibleNobelCount = visibleNobelEntries.length;
   const [reducedMotion, setReducedMotion] = useState(() =>
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
-  const economical =
-    ((navigator as Navigator & { deviceMemory?: number }).deviceMemory || 8) <= 4 ||
-    navigator.hardwareConcurrency <= 4 ||
-    window.devicePixelRatio >= 2.5 ||
-    window.innerWidth <= 680;
-  const autoRotateActive = shouldGlobeAutoRotate({
+  const [coarsePointer, setCoarsePointer] = useState(() =>
+    window.matchMedia("(any-pointer: coarse)").matches
+  );
+  const [touchActivationState, touchActivationDispatch] = useReducer(
+    globeTouchActivationReducer,
+    undefined,
+    () =>
+      createGlobeTouchActivationState({
+        view: mode,
+        pointer: coarsePointer ? "coarse" : "fine",
+        reducedMotion,
+        globeVisible: globeActive,
+      })
+  );
+  const touchActivationPolicy = resolveGlobeTouchActivationPolicy(
+    touchActivationState
+  );
+  const [viewportSize, setViewportSize] = useState(() => ({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  }));
+  useEffect(() => {
+    let frame = 0;
+    const updateViewport = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        setViewportSize({ width: window.innerWidth, height: window.innerHeight });
+      });
+    };
+    window.addEventListener("resize", updateViewport, { passive: true });
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", updateViewport);
+    };
+  }, []);
+  const mobileGlobe = viewportSize.width <= 680;
+  const cameraViewInsets = useMemo<ViewInsets>(() => {
+    if (!selectedCountry) return { top: 0, right: 0, bottom: 0, left: 0 };
+    if (viewportSize.width <= 980) {
+      return { top: 0, right: 0, bottom: 154, left: 0 };
+    }
+    return {
+      top: 0,
+      right: mode === "immersive" ? 470 : 445,
+      bottom: 0,
+      left: 0,
+    };
+  }, [mode, selectedCountry, viewportSize.width]);
+  const cameraFlightActive = cameraPhase === "programmatic";
+  const cameraControlsActive = ["manual", "settling", "command"].includes(
+    cameraPhase
+  );
+  prewarmRuntimeRef.current = {
+    globeActive,
+    interactionPaused,
+    cameraBusy: cameraFlightActive || cameraControlsActive,
+  };
+  const autoRotatePolicy = resolveGlobeAutoRotationPolicy({
     requested: autoRotateRequested,
     reducedMotion,
-    selectedCountryId: selectedCountry?.id,
-    interactionPaused,
-    visible: globeActive,
+    documentVisible,
+    globeVisible,
+    hasSelection: Boolean(selectedCountry),
+    hasHover: Boolean(hoveredCountry || hoveredLaureate),
+    interacting: interactionPaused || cameraControlsActive,
+    cameraFlightActive,
   });
-  const autoRotateStatus = !autoRotateRequested
-    ? "off"
-    : reducedMotion
-      ? "reduced-motion"
-      : selectedCountry
-        ? "selection"
-        : interactionPaused
-          ? "interaction"
-          : globeActive
-            ? "active"
-            : "offscreen";
+  const autoRotateActive = autoRotatePolicy.active;
+  const autoRotateStatus = autoRotatePolicy.status;
   const autoRotateControlLabel = !autoRotateRequested
     ? t("Включить автоматическое вращение")
     : reducedMotion
       ? t("Автовращение отключено в режиме уменьшения движения")
       : selectedCountry
         ? t("Автовращение приостановлено, пока выбрана страна")
+        : hoveredCountry || hoveredLaureate
+          ? t("Автовращение приостановлено во время наведения")
+          : cameraFlightActive
+            ? t("Автовращение приостановлено во время перелёта камеры")
         : interactionPaused
           ? t("Автовращение приостановлено во время взаимодействия")
+          : !globeActive
+            ? t("Автовращение приостановлено вне экрана")
           : t("Остановить автоматическое вращение");
   const autoRotateControlCaption = [
     "selection",
+    "hover",
     "interaction",
+    "camera-flight",
     "reduced-motion",
+    "document-hidden",
+    "offscreen",
   ].includes(autoRotateStatus)
     ? t("Пауза")
     : t("Авто");
-  // Every visual style now includes the subtle star field. Reduced-motion still
-  // switches the canvas to demand rendering below, so this only keeps the
-  // normal-motion scene alive while it is visible.
-  const sceneHasAmbientAnimation = Boolean(renderedVisualStyle) && !selectedCountry;
-  const frameMode = !globeActive
-    ? "never"
-    : !reducedMotion && (autoRotateActive || sceneHasAmbientAnimation)
-      ? "always"
-      : "demand";
+  const frameMode = resolveGlobeFrameMode({
+    globeVisible,
+    documentVisible,
+    autoRotateActive,
+    cameraFlightActive,
+    controlsDampingActive: cameraControlsActive,
+  });
   const visualStyleLabels: Record<GlobeVisualStyle, string> = {
     antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.full),
     earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.full),
@@ -2131,10 +2095,29 @@ export default function LiteraryGlobe({
     autoRotateResumeTimer.current = null;
   }, []);
 
+  const markPrewarmInputActivity = useCallback((cooldownMs = 240) => {
+    prewarmInputPauseUntilRef.current = Math.max(
+      prewarmInputPauseUntilRef.current,
+      performance.now() + cooldownMs
+    );
+  }, []);
+
+  const shouldPauseFocusPrewarm = useCallback(() => {
+    const runtime = prewarmRuntimeRef.current;
+    return (
+      !runtime.globeActive ||
+      runtime.interactionPaused ||
+      runtime.cameraBusy ||
+      performance.now() < prewarmInputPauseUntilRef.current
+    );
+  }, []);
+
   const handleInteractionStart = useCallback(() => {
     clearAutoRotateResumeTimer();
+    markPrewarmInputActivity(420);
+    setKeyboardCandidateActive(false);
     setInteractionPaused(true);
-  }, [clearAutoRotateResumeTimer]);
+  }, [clearAutoRotateResumeTimer, markPrewarmInputActivity]);
 
   const handleInteractionEnd = useCallback(() => {
     clearAutoRotateResumeTimer();
@@ -2156,18 +2139,30 @@ export default function LiteraryGlobe({
 
   const handleCountrySelect = useCallback(
     (country: Country) => {
-      if (selectableCountryIds.has(country.id)) onCountrySelect?.(country);
+      if (selectableCountryIds.has(country.id)) {
+        setKeyboardCandidateActive(false);
+        onCountrySelect?.(country, "pointer");
+      }
     },
     [onCountrySelect, selectableCountryIds]
   );
 
   const handleCountryHover = useCallback(
     (country: Country | null) => {
-      setHoveredCountry(
-        country && selectableCountryIds.has(country.id) ? country : null
-      );
+      const nextCountry =
+        country && selectableCountryIds.has(country.id) ? country : null;
+      setHoveredCountry(nextCountry);
+      onHoverCountryChange?.(nextCountry);
     },
-    [selectableCountryIds]
+    [onHoverCountryChange, selectableCountryIds]
+  );
+
+  const handleViewSample = useCallback(
+    (sample: GlobeViewSample) => {
+      setViewSample(sample);
+      onViewSample?.(sample);
+    },
+    [onViewSample]
   );
 
   const toggleAutoRotate = useCallback(() => {
@@ -2183,17 +2178,23 @@ export default function LiteraryGlobe({
       if (!action) return;
 
       if (action.type === "select") {
-        const country = hoveredCountry ?? selectedCountry;
+        const country = keyboardCandidateActive ? viewSample.candidate : null;
         if (!country || !onCountrySelect) return;
         event.preventDefault();
-        onCountrySelect(country);
+        onCountrySelect(country, "keyboard");
         return;
       }
 
       event.preventDefault();
       requestGlobeControl(action);
+      setKeyboardCandidateActive(action.type === "rotate");
     },
-    [hoveredCountry, onCountrySelect, requestGlobeControl, selectedCountry]
+    [
+      keyboardCandidateActive,
+      onCountrySelect,
+      requestGlobeControl,
+      viewSample.candidate,
+    ]
   );
 
   useEffect(
@@ -2207,10 +2208,10 @@ export default function LiteraryGlobe({
     const container = containerRef.current;
     if (!container) return;
     let intersectsViewport = false;
-    const update = () =>
-      setGlobeActive(
-        intersectsViewport && document.visibilityState !== "hidden"
-      );
+    const update = () => {
+      setGlobeVisible(intersectsViewport);
+      setDocumentVisible(document.visibilityState !== "hidden");
+    };
     const preloadObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) setAtlasRequested(true);
@@ -2242,9 +2243,30 @@ export default function LiteraryGlobe({
   }, []);
 
   useEffect(() => {
+    const media = window.matchMedia("(any-pointer: coarse)");
+    const updatePreference = () => setCoarsePointer(media.matches);
+    updatePreference();
+    media.addEventListener("change", updatePreference);
+    return () => media.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    touchActivationDispatch({
+      type: "SYNC_ENVIRONMENT",
+      environment: {
+        view: mode,
+        pointer: coarsePointer ? "coarse" : "fine",
+        reducedMotion,
+        globeVisible: globeActive,
+      },
+    });
+  }, [coarsePointer, globeActive, mode, reducedMotion]);
+
+  useEffect(() => {
     if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
+    let loadedStyle = initialVisualStyle.current;
     const controller = new AbortController();
     const requestedInitialStyle = initialVisualStyle.current;
     setAtlas(null);
@@ -2267,23 +2289,16 @@ export default function LiteraryGlobe({
           { signal: controller.signal }
         );
         initialVisualStyle.current = "antique";
-        if (!disposed) {
-          setVisualStyleError(true);
-          setVisualStyle("antique");
-          try {
-            window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, "antique");
-          } catch {
-            // The in-session fallback is sufficient when storage is blocked.
-          }
-        }
+        loadedStyle = "antique";
         return fallbackAtlas;
       })
       .then((nextAtlas) => {
         createdAtlas = nextAtlas;
         if (disposed) nextAtlas.dispose();
         else {
-          setRenderedVisualStyle(initialVisualStyle.current);
+          atlasInstanceRef.current = nextAtlas;
           setAtlas(nextAtlas);
+          void globeStyle.requestStyle(loadedStyle, { force: true });
         }
       })
       .catch(() => {
@@ -2293,48 +2308,51 @@ export default function LiteraryGlobe({
     return () => {
       disposed = true;
       controller.abort();
+      if (atlasInstanceRef.current === createdAtlas) {
+        atlasInstanceRef.current = null;
+      }
       createdAtlas?.dispose();
     };
-  }, [atlasLoadRequest, atlasRequested, atlasSourceCountries]);
+  }, [
+    atlasLoadRequest,
+    atlasRequested,
+    atlasSourceCountries,
+    globeStyle.requestStyle,
+  ]);
 
   useEffect(() => {
     setHoveredCountry(null);
     setHoveredLaureate(null);
-  }, [countries]);
+    setKeyboardCandidateActive(false);
+    onHoverCountryChange?.(null);
+  }, [countries, onHoverCountryChange]);
 
   useEffect(() => {
-    atlas?.updateHighlight(selectedCountry?.id, hoveredCountry?.id);
-  }, [atlas, hoveredCountry?.id, selectedCountry?.id]);
+    atlas?.updateHighlight(
+      selectedCountry?.id,
+      hoveredCountry?.id,
+      keyboardCandidateActive ? viewSample.candidate?.id : undefined
+    );
+  }, [
+    atlas,
+    hoveredCountry?.id,
+    keyboardCandidateActive,
+    selectedCountry?.id,
+    viewSample.candidate?.id,
+  ]);
 
   useEffect(() => {
-    if (!atlas) return;
-    let cancelled = false;
-    setPendingVisualStyle(visualStyle);
+    if (!atlas || !globeActive) return;
+    return atlas.prewarmFocusMetrics(
+      atlasSourceCountries.map((country) => country.id),
+      { shouldPause: shouldPauseFocusPrewarm }
+    );
+  }, [atlas, atlasSourceCountries, globeActive, shouldPauseFocusPrewarm]);
 
-    atlas
-      .setVisualStyle(visualStyle, language)
-      .then(() => {
-        if (cancelled) return;
-        setRenderedVisualStyle(visualStyle);
-        setPendingVisualStyle(null);
-        try {
-          window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, visualStyle);
-        } catch {
-          // Storage can be unavailable in strict privacy modes; the switch
-          // still works for the current session.
-        }
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setPendingVisualStyle(null);
-        setVisualStyleError(true);
-        setVisualStyle("antique");
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [atlas, language, visualStyle]);
+  useEffect(() => {
+    if (!atlas || renderedVisualStyle !== "modern") return;
+    void globeStyle.requestStyle(renderedVisualStyle, { force: true });
+  }, [atlas, globeStyle.requestStyle, language, renderedVisualStyle]);
 
   if (!atlas) {
     return (
@@ -2343,6 +2361,7 @@ export default function LiteraryGlobe({
         className="literary-globe is-loading"
         data-globe-load-state={atlasError ? "error" : "loading"}
         data-globe-mode={mode}
+        style={{ touchAction: mode === "immersive" ? "none" : "pan-y" }}
       >
         <div className="globe-loading">
           <span aria-hidden="true">✦</span>
@@ -2379,16 +2398,60 @@ export default function LiteraryGlobe({
       )}
       aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter"
       onKeyDown={handleGlobeKeyDown}
+      onPointerDownCapture={() => markPrewarmInputActivity(420)}
+      onPointerMoveCapture={() => markPrewarmInputActivity()}
+      onTouchStartCapture={() => markPrewarmInputActivity(420)}
+      onTouchMoveCapture={() => markPrewarmInputActivity(320)}
+      onWheelCapture={() => markPrewarmInputActivity(420)}
+      onKeyDownCapture={(event) => {
+        markPrewarmInputActivity(420);
+        if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
+          return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        touchActivationDispatch({ type: "ESCAPE" });
+      }}
       data-globe-style={renderedVisualStyle}
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
       data-globe-auto-rotate={autoRotateStatus}
       data-globe-mode={mode}
+      data-globe-touch-mode={touchActivationPolicy.mode}
+      data-globe-camera-phase={cameraPhase}
+      data-globe-camera-intent={
+        focusRequest ? `${focusRequest.kind}:${String(focusRequest.id)}` : "none"
+      }
+      data-globe-camera-started-intent={startedCameraIntent}
+      data-globe-camera-cancelled-intent={
+        cancelledCameraMotion?.intentKey ?? "none"
+      }
+      data-globe-camera-cancellation-source={
+        cancelledCameraMotion?.source ?? "none"
+      }
+      data-globe-camera-settled-intent={settledCameraIntent}
+      data-globe-camera-radius={viewSample.cameraRadius.toFixed(4)}
+      data-globe-view-revision={viewSample.revision}
+      data-globe-view-country={viewSample.candidate?.id ?? "ocean"}
+      data-globe-keyboard-candidate={
+        keyboardCandidateActive ? viewSample.candidate?.id ?? "ocean" : "inactive"
+      }
+      data-globe-writer-marker={
+        focusRequest?.kind === "writer-focus" &&
+        selectedWriter &&
+        focusRequest.writerId === selectedWriter.id &&
+        focusRequest.countryId === selectedCountry?.id &&
+        focusRequest.coordinates
+          ? selectedWriter.id
+          : "none"
+      }
+      style={{ touchAction: touchActivationPolicy.touchAction }}
     >
       <Canvas
         camera={GLOBE_CAMERA_CONFIG}
         dpr={[1, economical ? 1.1 : 1.5]}
         frameloop={frameMode}
+        style={{ touchAction: touchActivationPolicy.touchAction }}
         fallback={
           <div className="globe-loading" role="status">
             <span aria-hidden="true">✦</span>
@@ -2407,6 +2470,7 @@ export default function LiteraryGlobe({
           countries={countries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
+          candidateCountry={keyboardCandidateActive ? viewSample.candidate : null}
           hoveredCountry={hoveredCountry}
           onCountrySelect={handleCountrySelect}
           onCountryHover={handleCountryHover}
@@ -2420,25 +2484,60 @@ export default function LiteraryGlobe({
           nobelCountryId={nobelCountryId}
           onWriterSelect={onWriterSelect}
           onLaureateHover={setHoveredLaureate}
+          active={globeActive}
+          mobile={mobileGlobe}
+          viewInsets={cameraViewInsets}
+          onCameraPhaseChange={setCameraPhase}
+          onCameraFocusStarted={setStartedCameraIntent}
+          onCameraFocusCancelled={setCancelledCameraMotion}
+          onCameraFocusSettled={setSettledCameraIntent}
+          onViewSample={handleViewSample}
+          focusRequest={focusRequest}
+          touchInteractionEnabled={touchActivationPolicy.controlsEnabled}
         />
       </Canvas>
+
+      {touchActivationPolicy.activationControl && (
+        <Button
+          className="globe-touch-activation"
+          size="md"
+          surface="dark"
+          variant="secondary"
+          data-globe-control="touch-activation"
+          aria-pressed={touchActivationPolicy.controlsEnabled}
+          onClick={() =>
+            touchActivationDispatch({
+              type:
+                touchActivationPolicy.activationControl === "activate"
+                  ? "ACTIVATE"
+                  : "DEACTIVATE",
+            })
+          }
+        >
+          {touchActivationPolicy.activationControl === "activate"
+            ? t("Управлять глобусом")
+            : t("Вернуться к прокрутке")}
+        </Button>
+      )}
+
+      <span className="globe-keyboard-status" role="status" aria-live="polite">
+        {keyboardCandidateActive
+          ? globeKeyboardCandidateAriaCopy({
+              countryName: viewSample.candidate
+                ? countryName(viewSample.candidate.code, viewSample.candidate.name)
+                : null,
+              writerCount: viewSample.candidate?.writers.length,
+              selected: viewSample.candidate?.id === selectedCountry?.id,
+              language,
+            })
+          : ""}
+      </span>
 
       <div
         className="globe-controls"
         role="group"
         aria-label={t("Управление глобусом")}
       >
-        <IconButton
-          icon={<BrandMinusIcon />}
-          surface="dark"
-          data-globe-control="zoom-out"
-          aria-label={t("Уменьшить масштаб глобуса")}
-          aria-keyshortcuts="-"
-          title={t("Уменьшить масштаб глобуса")}
-          onClick={() =>
-            requestGlobeControl({ type: "zoom", direction: "out" })
-          }
-        />
         <IconButton
           icon={<BrandPlusIcon />}
           surface="dark"
@@ -2448,6 +2547,17 @@ export default function LiteraryGlobe({
           title={t("Увеличить масштаб глобуса")}
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "in" })
+          }
+        />
+        <IconButton
+          icon={<BrandMinusIcon />}
+          surface="dark"
+          data-globe-control="zoom-out"
+          aria-label={t("Уменьшить масштаб глобуса")}
+          aria-keyshortcuts="-"
+          title={t("Уменьшить масштаб глобуса")}
+          onClick={() =>
+            requestGlobeControl({ type: "zoom", direction: "out" })
           }
         />
         <Button
@@ -2489,15 +2599,16 @@ export default function LiteraryGlobe({
         className="globe-style-switch"
         role="group"
         aria-label={t("Стиль глобуса")}
+        aria-busy={Boolean(pendingVisualStyle)}
       >
         {GLOBE_VISUAL_STYLES.map((style) => (
           <Button
             key={style}
             surface="dark"
             variant="text"
-            className={visualStyle === style ? "is-active" : undefined}
+            className={globeStyle.ariaPressedFor(style) ? "is-active" : undefined}
             data-globe-style-option={style}
-            aria-pressed={visualStyle === style}
+            aria-pressed={globeStyle.ariaPressedFor(style)}
             loading={pendingVisualStyle === style}
             aria-label={visualStyleLabels[style]}
             onPointerEnter={() => {
@@ -2516,8 +2627,7 @@ export default function LiteraryGlobe({
               }
             }}
             onClick={() => {
-              setVisualStyleError(false);
-              setVisualStyle(style);
+              void globeStyle.requestStyle(style);
             }}
           >
             <span className="globe-style-label-full">
@@ -2528,12 +2638,21 @@ export default function LiteraryGlobe({
             </span>
           </Button>
         ))}
-        <span className="globe-style-status" role="status" aria-live="polite">
+        <span
+          className="globe-style-status"
+          role={visualStyleError ? "alert" : "status"}
+          aria-live={visualStyleError ? "assertive" : "polite"}
+        >
           {visualStyleError
-            ? t("Текстуру Земли не удалось загрузить. Возвращён старинный стиль.")
+            ? t("Стиль не загрузился. Предыдущий стиль сохранён.")
             : pendingVisualStyle
               ? `${t("Загружается стиль")} «${visualStyleLabels[pendingVisualStyle]}»`
               : ""}
+          {visualStyleError && (
+            <button type="button" onClick={() => void globeStyle.retryStyle()}>
+              {t("Повторить")}
+            </button>
+          )}
         </span>
       </div>
 
@@ -2554,30 +2673,68 @@ export default function LiteraryGlobe({
       <div className="globe-shadow" aria-hidden="true" />
 
       {showNobelLaureates && visibleNobelCount > 0 && (
-        <div className="globe-nobel-status" role="status" aria-live="polite">
-          <img
-            src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-          />
-          <div>
-            <strong>{number(visibleNobelCount)}</strong>
-            <span>
-              {t(
-                selectInterfacePlural(visibleNobelCount, language, [
-                  "лауреат на глобусе",
-                  "лауреата на глобусе",
-                  "лауреатов на глобусе",
-                ])
-              )}
-            </span>
-          </div>
-        </div>
+        <details className="globe-nobel-status">
+          <summary>
+            <img
+              src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <strong>{number(visibleNobelCount)}</strong>
+              <span>
+                {t(
+                  selectInterfacePlural(visibleNobelCount, language, [
+                    "лауреат на глобусе",
+                    "лауреата на глобусе",
+                    "лауреатов на глобусе",
+                  ])
+                )}
+              </span>
+            </div>
+          </summary>
+          <ul className="globe-nobel-index" aria-label={t("Нобелевские лауреаты")}>
+            {visibleNobelEntries.map(({ country, writer }) => {
+              const article = findNobelArticle(writer);
+              return (
+                <li key={`${country.id}:${writer.id}`}>
+                  <button
+                    id={nobelLaureateRowId(country.id, writer.id)}
+                    type="button"
+                    onClick={() => {
+                      if (onWriterSelect) onWriterSelect(country, writer);
+                      else handleCountrySelect(country);
+                    }}
+                  >
+                    <span>{writerDisplayName(writer, t("Автор"), language)}</span>
+                    <small>
+                      {countryName(country.code, country.name)}
+                      {getNobelYear(writer) ? ` · ${getNobelYear(writer)}` : ""}
+                    </small>
+                  </button>
+                  {article && (
+                    <a
+                      className="globe-nobel-article-action"
+                      href={articlePath(
+                        article.id,
+                        article.title,
+                        article.sectionId,
+                        article.slug
+                      )}
+                    >
+                      {t("Статья о лауреате")}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </details>
       )}
 
-      {hoveredLaureate ? (
+      {hoveredLaureate?.kind === "writer" ? (
         <div className="globe-country-label globe-laureate-label" role="tooltip">
           <WriterPortrait
             writer={hoveredLaureate.writer}
@@ -2603,9 +2760,42 @@ export default function LiteraryGlobe({
               )}`}
             </small>
             <em>
-              {hoveredNobelArticle
-                ? t("Нажмите на метку — откроется статья о лауреате")
-                : t("Нажмите на метку — откроется карточка лауреата")}
+              {t("Нажмите на метку — откроется карточка лауреата")}
+            </em>
+          </div>
+        </div>
+      ) : hoveredLaureate?.kind === "cluster" ? (
+        <div className="globe-country-label globe-laureate-label" role="tooltip">
+          <img
+            src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
+            className="globe-laureate-portrait"
+            alt=""
+            aria-hidden="true"
+          />
+          <div>
+            <span>
+              {countryName(
+                hoveredLaureate.country.code,
+                hoveredLaureate.country.name
+              )}
+            </span>
+            <small>
+              {number(hoveredLaureate.count)}{" "}
+              {t(
+                selectInterfacePlural(hoveredLaureate.count, language, [
+                  "лауреат страны",
+                  "лауреата страны",
+                  "лауреатов страны",
+                ])
+              )}
+              {hoveredLaureate.yearRange
+                ? ` · ${hoveredLaureate.yearRange.first}–${hoveredLaureate.yearRange.last}`
+                : ""}
+            </small>
+            <em>
+              {t(
+                "Нажмите на кластер — откроется Нобелевский контекст страны"
+              )}
             </em>
           </div>
         </div>

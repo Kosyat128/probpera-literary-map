@@ -166,11 +166,18 @@ describe("atlasExperienceReducer", () => {
     ).toMatchObject({ transition: "exiting" });
   });
 
-  it("allows sheet and quiet changes only in legal immersive states", () => {
+  it("allows the responsive country sheet in either settled view", () => {
     const embedded = createAtlasExperienceState();
     expect(
       atlasExperienceReducer(embedded, { type: "TOGGLE_SHEET" })
-    ).toBe(embedded);
+    ).toMatchObject({ sheetState: "half" });
+    const half = atlasExperienceReducer(immersiveIdle(), {
+      type: "SET_SHEET_STATE",
+      sheetState: "half",
+    });
+    expect(atlasExperienceReducer(half, { type: "TOGGLE_SHEET" })).toMatchObject({
+      sheetState: "expanded",
+    });
     expect(
       atlasExperienceReducer(embedded, { type: "QUIET_TIMEOUT" })
     ).toBe(embedded);

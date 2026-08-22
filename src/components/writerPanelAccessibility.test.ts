@@ -5,6 +5,11 @@ const panelSource = readFileSync(
   new URL("./WriterPanel.tsx", import.meta.url),
   "utf8"
 );
+const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
+const globeSource = readFileSync(
+  new URL("./LiteraryGlobe.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("writer panel accessible relationships", () => {
   it("connects the country region, writer detail, tabs, and tab panels", () => {
@@ -37,5 +42,88 @@ describe("writer panel accessible relationships", () => {
     expect(panelSource).toContain('rel="noreferrer"');
     expect(panelSource).toContain('t("Открыть источник")');
     expect(panelSource).not.toContain("activeWriterWorks.slice(0, 8)");
+  });
+
+  it("exposes a semantic breadcrumb and explicit globe actions", () => {
+    expect(panelSource).toContain('className="country-panel-breadcrumbs"');
+    expect(panelSource).toContain(
+      'aria-label={t("Навигация по Литературной планете")}'
+    );
+    expect(panelSource).toContain('<li aria-current="page">{activeWriterLabel}</li>');
+    expect(panelSource).toContain("onNavigateWorld?: () => void");
+    expect(panelSource).toContain("onNavigateCountry?: () => void");
+    expect(panelSource).toContain("onShowWriterOnGlobe?: (writer: Writer) => void");
+    expect(panelSource).toContain("onClick={() => onShowWriterOnGlobe(activeWriter)}");
+    expect(panelSource).toContain('{t("Показать на глобусе")}');
+  });
+
+  it("only offers writer travel for validated spatial data", () => {
+    expect(panelSource).toContain("const activeWriterGlobeCoordinates");
+    expect(panelSource).toContain("createGlobeCoordinates(");
+    expect(panelSource).toContain(
+      "onShowWriterOnGlobe && activeWriterGlobeCoordinates"
+    );
+    expect(panelSource).toContain(
+      'className="writer-source-empty writer-globe-unavailable"'
+    );
+    expect(panelSource).toContain(
+      't("Место писателя на глобусе пока не указано")'
+    );
+  });
+
+  it("keeps writer selection separate from the explicit globe action", () => {
+    const chooseWriterSource = panelSource.slice(
+      panelSource.indexOf("const chooseWriter"),
+      panelSource.indexOf("const writerDetailId")
+    );
+    expect(chooseWriterSource).toContain("onWriterSelect?.(writer)");
+    expect(chooseWriterSource).not.toContain("onShowWriterOnGlobe");
+  });
+
+  it("keeps World and Country breadcrumb transitions independent from refocus", () => {
+    const worldTransition = appSource.slice(
+      appSource.indexOf("const navigateWriterBreadcrumbWorld"),
+      appSource.indexOf("const navigateWriterBreadcrumbCountry")
+    );
+    const countryTransition = appSource.slice(
+      appSource.indexOf("const navigateWriterBreadcrumbCountry"),
+      appSource.indexOf("const showWriterOnGlobe")
+    );
+
+    expect(worldTransition).toContain("setSelectedCountry(null)");
+    expect(worldTransition).toContain("setSelectedWriter(null)");
+    expect(worldTransition).toContain("globeFocusRequestIdRef.current += 1");
+    expect(worldTransition).toContain('kind: "home"');
+    expect(worldTransition).toContain("countryId: null");
+    expect(worldTransition).toContain("writerId: null");
+
+    expect(countryTransition).toContain("setSelectedWriter(null)");
+    expect(countryTransition).toContain("countryId: selectedCountry.id");
+    expect(countryTransition).toContain("writerId: null");
+    expect(countryTransition).toContain("focusCountryPresentation()");
+    expect(countryTransition).not.toContain("setSelectedCountry(null)");
+    expect(countryTransition).not.toContain("showCountryOnGlobe");
+    expect(appSource).toContain(
+      "const keepWriter = keepCountry ? selectedWriter : null"
+    );
+    expect(appSource).toContain("country && urlState.writerId");
+  });
+
+  it("routes the World transition through the camera home intent", () => {
+    expect(globeSource).toContain('kind: "home";');
+    expect(globeSource).toContain('focusRequest?.kind === "home"');
+    expect(globeSource).toContain('{ id: focusRequest.id, kind: "home" }');
+  });
+
+  it("validates writer coordinates again at the App boundary", () => {
+    const showWriterTransition = appSource.slice(
+      appSource.indexOf("const showWriterOnGlobe"),
+      appSource.indexOf("const openCommunity")
+    );
+    expect(showWriterTransition).toContain("createGlobeCoordinates(");
+    expect(showWriterTransition).toContain("!coordinates ||");
+    expect(showWriterTransition).toContain("globeFocusRequestIdRef.current += 1");
+    expect(showWriterTransition).toContain("coordinates,");
+    expect(showWriterTransition).not.toContain("coordinates: null");
   });
 });

@@ -35,7 +35,7 @@ const curatedSiteCopyDefinitions = [
   { key: "home.atlas.filter.rich", group: "Главная", label: "Фильтр больших архивов", defaultRu: "10+ авторов" },
   { key: "home.atlas.filter.portrait", group: "Главная", label: "Фильтр портретов", defaultRu: "С реальными портретами" },
   { key: "home.atlas.filter.verified", group: "Главная", label: "Фильтр стран с проверенными карточками", defaultRu: "Страны с проверенными карточками" },
-  { key: "home.atlas.ranking", group: "Главная", label: "Заголовок крупнейших архивов", defaultRu: "Крупнейшие архивы" },
+  { key: "home.atlas.archives", group: "Главная", label: "Кнопка крупнейших архивов", defaultRu: "Крупнейшие архивы" },
   { key: "home.atlas.globe_kicker", group: "Главная", label: "Подпись над глобусом", defaultRu: "Интерактивный глобус · ручная навигация" },
 
   { key: "globe.loading", group: "Глобус", label: "Загрузка глобуса", defaultRu: "Готовим интерактивный глобус…" },
@@ -49,7 +49,6 @@ const curatedSiteCopyDefinitions = [
   { key: "globe.classic_badge_title", group: "Глобус", label: "Описание классического атласа", defaultRu: "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.", multiline: true },
   { key: "globe.instruction.rotate", group: "Глобус", label: "Подсказка вращения", defaultRu: "Тяните или используйте стрелки" },
   { key: "globe.instruction.zoom", group: "Глобус", label: "Подсказка масштаба", defaultRu: "Колесо или ± — масштаб" },
-  { key: "globe.laureate.open_article", group: "Глобус", label: "Подсказка лауреата со статьёй", defaultRu: "Нажмите на метку — откроется статья о лауреате", multiline: true },
   { key: "globe.laureate.open_card", group: "Глобус", label: "Подсказка карточки лауреата", defaultRu: "Нажмите на метку — откроется карточка лауреата", multiline: true },
 
   { key: "popup.search.eyebrow", group: "Всплывающие панели", label: "Надзаголовок общего поиска", defaultRu: "Единый каталог" },

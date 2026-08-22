@@ -27,12 +27,14 @@ import {
 } from "../data/bookLocalization";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useSubscriptions } from "../hooks/useSubscriptions";
+import { createGlobeCoordinates } from "./globeCoordinates";
 import {
   cmsEntityFieldMarker,
   cmsEntityMarker,
 } from "../cms/directEditBridge";
 import BrandCloseIcon from "./BrandCloseIcon";
 import WriterPortrait from "./WriterPortrait";
+import Button from "../ui/Button";
 import {
   WRITER_DETAIL_VIEWS,
   groupWriterRecordsByStatus,
@@ -63,6 +65,9 @@ type WriterPanelProps = {
   selectedWriter?: Writer | null;
   focusRequestId?: number;
   onWriterSelect?: (writer: Writer) => void;
+  onShowWriterOnGlobe?: (writer: Writer) => void;
+  onNavigateWorld?: () => void;
+  onNavigateCountry?: () => void;
   nobelSpotlightActive?: boolean;
   onNobelSpotlightToggle?: () => void;
   onClose?: () => void;
@@ -125,6 +130,9 @@ export default function WriterPanel({
   selectedWriter,
   focusRequestId,
   onWriterSelect,
+  onShowWriterOnGlobe,
+  onNavigateWorld,
+  onNavigateCountry,
   nobelSpotlightActive = false,
   onNobelSpotlightToggle,
   onClose,
@@ -157,7 +165,9 @@ export default function WriterPanel({
     ? writers.find((writer) => writer.id === localSelected.id) ?? null
     : null;
   const activeWriter =
-    selectedWriterInCountry ?? localWriterInCountry ?? writers[0] ?? null;
+    selectedWriter === undefined
+      ? localWriterInCountry ?? writers[0] ?? null
+      : selectedWriterInCountry;
 
   const scrollToWriterDetail = useCallback(() => {
     const detail = detailRef.current;
@@ -344,6 +354,15 @@ export default function WriterPanel({
   );
   const hasWriterRelatedArticles = otherRelatedArticles.length > 0;
   const countryLabel = countryName(country.code, country.name);
+  const activeWriterLabel = activeWriter
+    ? getWriterName(activeWriter, t("Неизвестный автор"), language)
+    : null;
+  const activeWriterGlobeCoordinates = activeWriter?.coordinates
+    ? createGlobeCoordinates(
+        activeWriter.coordinates.lat,
+        activeWriter.coordinates.lng
+      )
+    : null;
   const countrySubscribed = isSubscribed("country", country.id);
   const activeWriterSubscriptionId = activeWriter
     ? `${country.id}:${activeWriter.id}`
@@ -410,6 +429,7 @@ export default function WriterPanel({
       ref={panelRef}
       className="country-panel"
       role="region"
+      tabIndex={-1}
       aria-labelledby={countryHeadingId}
     >
       <div className="panel-topline">
@@ -428,6 +448,38 @@ export default function WriterPanel({
           </button>
         )}
       </div>
+
+      <nav
+        className="country-panel-breadcrumbs"
+        aria-label={t("Навигация по Литературной планете")}
+      >
+        <ol>
+          <li>
+            {onNavigateWorld ? (
+              <button
+                type="button"
+                onClick={onNavigateWorld}
+              >
+                {t("Мир")}
+              </button>
+            ) : (
+              <span>{t("Мир")}</span>
+            )}
+          </li>
+          <li aria-current={activeWriterLabel ? undefined : "page"}>
+            {activeWriterLabel && onNavigateCountry ? (
+              <button type="button" onClick={onNavigateCountry}>
+                {countryLabel}
+              </button>
+            ) : (
+              <span>{countryLabel}</span>
+            )}
+          </li>
+          {activeWriterLabel && (
+            <li aria-current="page">{activeWriterLabel}</li>
+          )}
+        </ol>
+      </nav>
 
       <header className="country-heading">
         <CountryFlagIcon
@@ -763,6 +815,22 @@ export default function WriterPanel({
               </p>
             </div>
           </div>
+          {onShowWriterOnGlobe && activeWriterGlobeCoordinates ? (
+            <Button
+              className="writer-show-on-globe"
+              type="button"
+              size="md"
+              variant="secondary"
+              onClick={() => onShowWriterOnGlobe(activeWriter)}
+              aria-label={`${t("Показать на глобусе")}: ${activeWriterLabel}`}
+            >
+              {t("Показать на глобусе")}
+            </Button>
+          ) : onShowWriterOnGlobe ? (
+            <p className="writer-source-empty writer-globe-unavailable">
+              {t("Место писателя на глобусе пока не указано")}
+            </p>
+          ) : null}
           <div
             className={`writer-verification-status is-${activeWriterStatus.code}`}
             role="status"

@@ -1735,13 +1735,16 @@ main [id] {
 .atlas-section::after {
   position: absolute;
   z-index: 1;
-  inset: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(220px, 24vw, 390px);
   content: "";
   pointer-events: none;
   opacity: 0.78;
-  background: url("/brand/atlas-side-brushes.webp") center top / max(100%, 1440px) auto no-repeat;
+  background: url("/brand/atlas-side-brushes.webp") center bottom / max(100%, 1440px) auto no-repeat;
   filter: drop-shadow(0 18px 30px rgba(11, 0, 17, 0.16));
-  mask-image: linear-gradient(to bottom, #000 0 74%, transparent 96%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 34% 100%);
 }
 
 .atlas-heading,
@@ -1914,29 +1917,48 @@ main [id] {
 }
 
 .atlas-toolbar {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 30px;
-  align-items: center;
+  display: block;
   max-width: 1530px;
   margin: 0 auto 18px;
 }
 
+.atlas-toolbar.has-open-archives {
+  z-index: 40;
+}
+
 .atlas-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+  padding: 2px 0 6px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  scroll-snap-type: inline proximity;
+}
+
+.atlas-filters::-webkit-scrollbar {
+  display: none;
 }
 
 .atlas-filter-cluster {
-  display: flex;
-  gap: 14px;
-  align-items: center;
+  position: relative;
+  display: block;
+  width: 100%;
   min-width: 0;
+}
+
+.atlas-filter-options {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  align-items: center;
 }
 
 .atlas-filters button {
   display: inline-flex;
+  flex: 0 0 auto;
   gap: 9px;
   align-items: center;
   min-height: 44px;
@@ -1948,6 +1970,7 @@ main [id] {
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
   cursor: pointer;
+  scroll-snap-align: start;
   transition:
     color 160ms ease,
     background 160ms ease,
@@ -1970,50 +1993,85 @@ main [id] {
   color: var(--orange-soft);
 }
 
-.atlas-filter-status {
-  min-width: 190px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 11px;
-  font-weight: 750;
-  line-height: 1.35;
-  text-align: right;
+.atlas-archives-caret {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  color: var(--orange-soft);
+  font-size: 13px;
+  line-height: 1;
+  transition: transform 160ms ease;
 }
 
-.atlas-ranking {
-  display: flex;
-  gap: 4px;
-  align-items: center;
+.atlas-archives-toggle[aria-expanded="true"] .atlas-archives-caret {
+  transform: rotate(180deg);
 }
 
-.atlas-ranking > span {
-  margin-right: 7px;
-  color: var(--ui-text-muted-dark);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+.atlas-archives-popover {
+  position: absolute;
+  z-index: 36;
+  top: calc(100% + 8px);
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+  width: min(760px, 100%);
+  padding: 9px;
+  background:
+    linear-gradient(135deg, rgba(53, 10, 73, 0.98), rgba(23, 3, 35, 0.98));
+  border: 1px solid rgba(255, 174, 94, 0.32);
+  border-radius: 14px;
+  box-shadow: 0 20px 54px rgba(10, 0, 17, 0.42);
+  backdrop-filter: blur(16px);
 }
 
-.atlas-ranking button {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  padding: 5px 7px;
+.atlas-archives-popover button {
+  display: block;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 10px;
   color: rgba(255, 255, 255, 0.84);
-  font-size: 10px;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
 }
 
-.atlas-ranking button:hover {
+.atlas-archives-popover .ui-action__label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.atlas-archives-popover button:hover,
+.atlas-archives-popover button:focus-visible {
   color: #fff;
+  background: rgba(246, 117, 24, 0.14);
+  border-color: rgba(255, 174, 94, 0.42);
 }
 
-.atlas-ranking small {
-  color: var(--ui-text-muted-dark);
-  font-size: 10px;
+.atlas-archives-popover .ui-action__label > span {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.atlas-archives-popover button small {
+  color: var(--orange-soft);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+@media (max-width: 680px) {
+  .atlas-archives-popover {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
 }
 
 .nobel-archive-strip {
@@ -2068,7 +2126,7 @@ main [id] {
 
 .nobel-archive-strip header small {
   color: #ffad68;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -2085,14 +2143,17 @@ main [id] {
 .nobel-archive-strip header p {
   margin: 4px 0 0;
   color: rgba(255, 255, 255, 0.46);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.45;
 }
 
 .nobel-archive-intro {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
   padding: 9px 12px;
   color: #fff1e3;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.07em;
   text-decoration: none;
@@ -2125,9 +2186,10 @@ main [id] {
 
 .nobel-archive-decades button {
   flex: 0 0 auto;
-  padding: 5px 9px;
+  min-height: 36px;
+  padding: 7px 10px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2157,10 +2219,10 @@ main [id] {
 .nobel-archive-year {
   display: grid;
   align-content: start;
-  flex: 0 0 146px;
+  flex: 0 0 178px;
   gap: 3px;
-  min-height: 64px;
-  padding: 8px 9px;
+  min-height: 88px;
+  padding: 10px 11px;
   color: rgba(255, 255, 255, 0.66);
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -2203,7 +2265,7 @@ main [id] {
 
 .nobel-year-article > small {
   color: #ff9b4b;
-  font-size: 6px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -2232,7 +2294,7 @@ main [id] {
 
 .nobel-archive-year button span {
   overflow: hidden;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   line-height: 1.3;
   text-overflow: ellipsis;
@@ -2243,7 +2305,7 @@ main [id] {
 .nobel-archive-year button small {
   overflow: hidden;
   color: rgba(255, 255, 255, 0.31);
-  font-size: 6px;
+  font-size: 9px;
   line-height: 1.3;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2254,7 +2316,7 @@ main [id] {
   justify-content: space-between;
   gap: 12px;
   color: rgba(255, 255, 255, 0.32);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.05em;
 }
 
@@ -2298,7 +2360,19 @@ main [id] {
 }
 
 .atlas-layout.has-country {
-  grid-template-columns: minmax(580px, 1fr) minmax(380px, 425px);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 981px) {
+  .atlas-experience-surface[data-atlas-view="embedded"] .atlas-country-presentation {
+    position: absolute;
+    z-index: 42;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(425px, calc(100% - 72px));
+    pointer-events: auto;
+  }
 }
 
 .globe-column {
@@ -2474,7 +2548,25 @@ main [id] {
 .literary-globe canvas {
   position: relative;
   z-index: 2;
-  touch-action: none;
+}
+
+.literary-globe[data-globe-touch-mode="page-pan"] canvas {
+  touch-action: pan-y pinch-zoom !important;
+}
+
+.literary-globe[data-globe-touch-mode="globe-control"] canvas {
+  touch-action: none !important;
+}
+
+.globe-keyboard-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .literary-globe:focus-visible {
@@ -3099,24 +3191,40 @@ main [id] {
   z-index: 14;
   top: 68px;
   right: 28px;
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
   min-width: 172px;
-  padding: 9px 12px 9px 9px;
+  padding: 0;
   color: #fff4df;
-  pointer-events: none;
+  pointer-events: auto;
   background:
     radial-gradient(circle at 12% 20%, rgba(246, 117, 24, 0.18), transparent 38%),
     rgba(22, 4, 33, 0.86);
   border: 1px solid rgba(255, 184, 102, 0.42);
-  border-radius: 999px;
+  border-radius: 20px;
   box-shadow:
     0 16px 42px rgba(0, 0, 0, 0.32),
     inset 0 0 20px rgba(246, 117, 24, 0.05);
   backdrop-filter: blur(13px);
   animation: reveal 220ms ease-out both;
+}
+
+.globe-nobel-status > summary {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 9px 12px 9px 9px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.globe-nobel-status > summary::-webkit-details-marker {
+  display: none;
+}
+
+.globe-nobel-status > summary:focus-visible {
+  outline: 2px solid #ffb36d;
+  outline-offset: 3px;
+  border-radius: 20px;
 }
 
 .globe-nobel-status img {
@@ -3150,6 +3258,83 @@ main [id] {
   line-height: 1.25;
   letter-spacing: 0.045em;
   text-transform: uppercase;
+}
+
+.globe-nobel-index {
+  display: grid;
+  width: min(310px, calc(100vw - 36px));
+  max-height: min(48dvh, 360px);
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  list-style: none;
+  border-top: 1px solid rgba(255, 184, 102, 0.24);
+  overscroll-behavior: contain;
+}
+
+.globe-nobel-index > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px;
+  align-items: stretch;
+}
+
+.globe-nobel-index button {
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  color: #fff4df;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+}
+
+.globe-nobel-index button:hover,
+.globe-nobel-index button:focus-visible {
+  background: rgba(246, 117, 24, 0.16);
+  outline: 1px solid rgba(255, 184, 102, 0.42);
+}
+
+.globe-nobel-index button span {
+  margin: 0;
+  color: #fff8e9;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.globe-nobel-index button small {
+  margin-top: 3px;
+  color: rgba(255, 244, 223, 0.68);
+  font-size: 10px;
+}
+
+.globe-nobel-article-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  min-height: 44px;
+  padding: 7px 9px;
+  color: #ffd697;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid rgba(255, 184, 102, 0.28);
+  border-radius: 10px;
+}
+
+.globe-nobel-article-action:hover,
+.globe-nobel-article-action:focus-visible {
+  color: #fff6df;
+  background: rgba(246, 117, 24, 0.2);
+  border-color: rgba(255, 184, 102, 0.54);
+  outline: 2px solid rgba(255, 215, 153, 0.88);
+  outline-offset: 2px;
 }
 
 .globe-instruction {
@@ -3202,6 +3387,91 @@ main [id] {
   pointer-events: none;
   border: 1px solid rgba(85, 20, 116, 0.08);
   border-radius: 4px;
+}
+
+.literary-globe .globe-touch-activation {
+  position: absolute;
+  z-index: 24;
+  right: 18px;
+  bottom: 82px;
+  min-height: 44px;
+  border-color: rgba(255, 173, 91, 0.58);
+  box-shadow: 0 12px 30px rgba(8, 0, 14, 0.3);
+}
+
+.country-panel-breadcrumbs {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 18px;
+  color: rgba(72, 42, 84, 0.74);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.country-panel-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.country-panel-breadcrumbs li {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.country-panel-breadcrumbs li + li::before {
+  color: rgba(136, 70, 147, 0.52);
+  content: "›";
+}
+
+.country-panel-breadcrumbs button {
+  min-height: 44px;
+  padding: 0 8px;
+  color: #5d2178;
+  font: inherit;
+  font-weight: 800;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.country-panel-breadcrumbs button:focus-visible {
+  outline: 2px solid #8c3db1;
+  outline-offset: 2px;
+}
+
+.writer-show-on-globe {
+  width: 100%;
+  min-height: 44px;
+  margin: 14px 0 4px;
+}
+
+.globe-empty-state {
+  position: absolute;
+  z-index: 18;
+  inset: 50% auto auto 50%;
+  width: min(360px, calc(100% - 32px));
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.globe-style-status button {
+  min-height: 32px;
+  padding: 2px 8px;
+  margin-left: 6px;
+  color: #ffe1b5;
+  font: inherit;
+  font-weight: 800;
+  background: rgba(255, 139, 46, 0.12);
+  border: 1px solid rgba(255, 167, 84, 0.42);
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .panel-topline,
@@ -15207,25 +15477,6 @@ html[data-theme="book"] .calendar-heading h3 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .atlas-ranking {
-    display: none;
-  }
-
-  .atlas-toolbar {
-    grid-template-columns: 1fr;
-  }
-
-  .atlas-filter-cluster {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .atlas-filter-status {
-    min-width: 0;
-    text-align: left;
-  }
-
   .atlas-layout.has-country {
     grid-template-columns: minmax(510px, 1fr) 390px;
   }
@@ -15562,8 +15813,9 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-section::after {
+    height: 250px;
     opacity: 0.64;
-    background: url("/brand/atlas-side-brushes-mobile.webp") center top / 390px 760px no-repeat;
+    background: url("/brand/atlas-side-brushes-mobile.webp") center bottom / 390px 760px no-repeat;
   }
 
   .atlas-heading h2 {
@@ -17567,6 +17819,14 @@ html[data-theme="book"] .calendar-heading h3 {
   min-width: 0;
 }
 
+/* The branded brush belongs to .atlas-section::after (z-index: 1). Keep the
+   entire isolated WebGL experience above it; otherwise the isolation context
+   traps Canvas below the decorative pseudo-element. */
+.atlas-experience-slot {
+  z-index: 2;
+  isolation: isolate;
+}
+
 .atlas-experience-slot[data-atlas-placeholder-active="true"] {
   min-height: 720px;
 }
@@ -17701,15 +17961,13 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #fff8eb;
 }
 
-.atlas-immersive-identity > span {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  color: #2c073e;
-  background: var(--orange);
+.atlas-immersive-identity > img {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
   border: 1px solid rgba(255, 223, 185, 0.72);
-  border-radius: 50%;
+  border-radius: 7px;
   box-shadow: 0 10px 30px rgba(246, 117, 24, 0.24);
 }
 
@@ -17738,6 +17996,10 @@ html[data-theme="book"] .calendar-heading h3 {
   align-items: center;
 }
 
+.atlas-immersive-random .ui-action__icon {
+  color: var(--orange);
+}
+
 .atlas-immersive-close {
   flex: 0 0 auto;
   border-color: rgba(255, 173, 91, 0.6);
@@ -17753,7 +18015,7 @@ html[data-theme="book"] .calendar-heading h3 {
   box-shadow: 0 14px 34px rgba(10, 0, 17, 0.3);
 }
 
-.atlas-experience-surface[data-atlas-view="immersive"] .atlas-layout.has-country {
+.atlas-experience-surface .atlas-layout.has-country {
   grid-template-columns: minmax(0, 1fr);
 }
 
@@ -17801,8 +18063,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .country-search > label,
 .search-caption,
-.atlas-ranking > span,
-.atlas-ranking small,
 .globe-copy p,
 .atlas-coordinate small,
 .atlas-country-index summary,
@@ -17851,6 +18111,8 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  overflow: clip;
+  overscroll-behavior: none;
   color: #fff8ed;
   background:
     radial-gradient(circle at 50% 46%, rgba(99, 31, 139, 0.36), transparent 34rem),
@@ -17935,7 +18197,6 @@ html[data-theme="book"] .calendar-heading h3 {
   transition-delay: 0s;
 }
 
-.atlas-experience-surface[data-atlas-view="immersive"] .atlas-ranking,
 .atlas-experience-surface[data-atlas-view="immersive"] .nobel-archive-strip,
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-index,
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersion-launch,
@@ -18071,7 +18332,9 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 980px) {
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation {
+  .atlas-experience-surface .atlas-country-presentation {
+    position: absolute;
+    z-index: 42;
     top: auto;
     right: 0;
     bottom: 0;
@@ -18080,60 +18343,156 @@ html[data-theme="book"] .calendar-heading h3 {
     height: min(70dvh, 660px);
     max-height: min(70dvh, 660px);
     padding: 0 max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    pointer-events: auto;
     transition: max-height 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation[data-atlas-sheet-state="collapsed"] {
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+  }
+
+  .literary-globe .globe-nobel-status {
+    top: 116px;
+    right: 14px;
+    transform: scale(0.84);
+    transform-origin: top right;
+  }
+
+  .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-state="collapsed"] {
     height: 142px;
     max-height: 142px;
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-toggle {
+  .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-state="half"] {
+    height: min(46dvh, 460px);
+    max-height: min(46dvh, 460px);
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .globe-touch-activation {
+    z-index: 44;
+    bottom: calc(142px + max(12px, env(safe-area-inset-bottom)));
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="half"] .globe-touch-activation {
+    z-index: 44;
+    bottom: calc(min(46dvh, 460px) + max(12px, env(safe-area-inset-bottom)));
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="expanded"] .globe-touch-activation {
+    z-index: 44;
+    bottom: calc(min(70dvh, 660px) + max(12px, env(safe-area-inset-bottom)));
+  }
+
+  .atlas-experience-surface .atlas-country-sheet-toggle {
     position: relative;
     z-index: 3;
     display: flex;
     width: 100%;
-    min-height: 48px;
+    min-height: 64px;
+    padding: 10px 12px;
     border-radius: 14px 14px 0 0;
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-toggle .ui-action__label {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-state="collapsed"] .atlas-country-sheet-toggle {
+    height: 100%;
+    border-radius: 14px;
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-toggle .ui-action__label > span {
+  .atlas-experience-surface .atlas-country-sheet-toggle .ui-action__label {
+    position: relative;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 9px;
+    align-items: center;
+    width: 100%;
+    padding-top: 6px;
+    text-align: left;
+  }
+
+  .atlas-experience-surface .atlas-country-sheet-handle {
+    position: absolute;
+    top: -5px;
+    left: 50%;
     width: 36px;
     height: 4px;
     background: rgba(255, 255, 255, 0.56);
     border-radius: 999px;
+    transform: translateX(-50%);
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation .country-panel {
+  .atlas-country-sheet-flag {
+    width: 34px;
+    height: 34px;
+  }
+
+  .atlas-country-sheet-copy {
+    display: grid;
+    min-width: 0;
+  }
+
+  .atlas-country-sheet-copy strong {
+    overflow: hidden;
+    color: #fff7e8;
+    font-size: 13px;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .atlas-country-sheet-copy small {
+    margin-top: 3px;
+    color: rgba(255, 244, 223, 0.76);
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .atlas-country-sheet-action {
+    padding: 7px 9px;
+    color: #fff1d9;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 173, 91, 0.48);
+    border-radius: 999px;
+  }
+
+  .atlas-experience-surface .atlas-country-presentation .country-panel {
     height: 100%;
     min-height: 0;
     border-radius: 0 0 14px 14px;
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-content {
-    height: calc(100% - 48px);
+  .atlas-experience-surface .atlas-country-sheet-content {
+    height: calc(100% - 64px);
     overflow: hidden;
   }
 
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-content[aria-hidden="true"] {
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-sheet-content {
+    height: calc(100% - 64px);
+  }
+
+  .atlas-experience-surface .atlas-country-sheet-content[aria-hidden="true"] {
+    height: 0;
     visibility: hidden;
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity small,
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity strong,
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-search-toggle .ui-action__label,
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-filter-toggle .ui-action__label {
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-filter-toggle .ui-action__label,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-random .ui-action__label {
     display: none;
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-search-toggle,
-  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-filter-toggle {
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-filter-toggle,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-random {
     width: 44px;
     min-width: 44px;
     padding: 0;
@@ -18183,7 +18542,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 680px) {
-  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
     bottom: calc(142px + max(12px, env(safe-area-inset-bottom)));
   }
 }

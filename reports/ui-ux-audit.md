@@ -15,9 +15,9 @@
 
 ## Статусы
 
-- `CLOSED` — finding полностью закрыт текущим UI Foundation PR.
-- `PARTIAL` — текущий PR закрыл только явно указанную часть; остаток остаётся в назначенном будущем этапе.
-- `OPEN` — не входит в scope UI Foundation и намеренно оставлен будущему этапу.
+- `CLOSED` — finding полностью закрыт указанным этапом и имеет source/unit/E2E evidence.
+- `PARTIAL` — указанный этап закрыл только явно описанную часть; остаток остаётся в назначенном будущем этапе.
+- `OPEN` — finding ещё не закрыт либо намеренно оставлен будущему этапу.
 
 ## Findings
 
@@ -36,13 +36,13 @@
 | ATLAS-001 | P1 | Search / combobox | Combobox атласа не реализовывал APG keyboard model: не было active index, `aria-activedescendant`, ArrowUp/Down и согласованного Enter. | `#country-search[role="combobox"]`, `#country-results [role="option"]`; `src/App.tsx`, `src/components/AtlasSearchCombobox.tsx`, `src/components/AtlasSearchCombobox.test.tsx` | Все, RU/EN | Immersive Literary Planet | **CLOSED** — единый embedded/immersive combobox имеет стабильные option IDs, active index, `aria-activedescendant`, ArrowUp/Down, Home/End, Enter, Escape и pointer/touch selection. |
 | ATLAS-002 | P1 | Contrast / type | Мелкая служебная типографика имела 8–10 px, низкую opacity и местами недостаточный контраст. | `.atlas-filters`, `.atlas-ranking`, `.globe-copy`, `.globe-instruction`, selected-country labels, placeholders, search metadata, `.country-metric`; `src/index.css` | Все, особенно 768–1920 | Immersive Literary Planet / Globe UX Polish / Final QA | **PARTIAL** — основная Atlas microcopy поднята до 12 px и более плотных semantic colors. Остались `.globe-instruction` 10 px и selected-country labels 9–10 px; rendered forced-colors/gradient verification переносится в Stage 4 / Final QA. |
 | ATLAS-003 | P1 | Overflow | `overflow-x: clip` маскирует внутреннее переполнение hero/map/cards/footer вместо устранения причины. | `.magazine-app`, `.magazine-hero`, `.atlas-experience-*`, `.world-map-stage`, cards, `#community`, `.site-footer`; `src/App.tsx`, `src/index.css` | 360, RU/EN | Immersive Literary Planet / Final QA | **PARTIAL** — Atlas surface, overlays, panel/sheet и filter row получили `min-width:0`, safe sizing, containment и явный horizontal-scroll allowlist. Общий legacy `overflow-x: clip` и причины вне Atlas остались Final QA/Homepage scope. |
-| GLOBE-001 | P1 | Country panel | После выбора страны на mobile панель остаётся далеко ниже viewport, focus не переносится. | `.atlas-layout.has-country`, `.country-panel`; `src/App.tsx`, `src/components/GlobalSearch.tsx`, `src/components/WriterPanel.tsx`, `src/index.css` | 360, 768, RU/EN | Globe UX Polish | **OPEN** |
-| GLOBE-002 | P1 | Keyboard | Стрелки вращают глобус, но не формируют keyboard candidate; Enter не может выбрать новую страну без pointer. | `.literary-globe[role="region"]`; `src/components/LiteraryGlobe.tsx`, `src/components/globeInteraction.ts` | Все, RU/EN | Globe UX Polish | **OPEN** |
-| GLOBE-003 | P1 | Touch | Большой canvas с `touch-action:none` создаёт scroll trap и не имеет явного режима «страница/глобус». | `.literary-globe canvas`; `src/index.css`, `src/components/LiteraryGlobe.tsx` | 360, 768 touch | Globe UX Polish | **OPEN** |
-| GLOBE-004 | P2 | Performance | После выключения Auto WebGL остаётся в постоянном `frameloop="always"` из-за ambient animation. | `.literary-globe`, auto-rotate control; `src/components/LiteraryGlobe.tsx` | Все, особенно слабый 360/768 | Globe UX Polish | **OPEN** |
-| GLOBE-005 | P2 | State model | Pending и committed оформление визуально смешаны: `aria-pressed` меняется до готовности canvas. | Globe style buttons, `.is-loading`; `src/components/LiteraryGlobe.tsx`, `src/index.css` | Все | Globe UX Polish | **OPEN** |
-| GLOBE-006 | P2 | Layout stability | Выбранная страна переводит сцену из одной колонки в две и резко ресайзит WebGL. | `.atlas-layout.has-country`; `src/index.css` | 768–1920 | Globe UX Polish | **OPEN** |
-| GLOBE-007 | P2 | Reduced motion | Часть программных переходов использует `behavior:"smooth"` без проверки reduced motion. | Переходы к секциям/книгам; `src/App.tsx`, `src/components/BookArchiveSection.tsx` | Все при `prefers-reduced-motion: reduce` | Globe UX Polish | **OPEN** |
+| GLOBE-001 | P1 | Country panel | После выбора страны на mobile панель остаётся далеко ниже viewport, focus не переносится. | `.atlas-country-presentation`, `.atlas-country-sheet-toggle`, `.country-panel`; `src/App.tsx`, `src/atlas/atlasExperienceState.ts`, `src/components/WriterPanel.tsx`, `src/index.css` | 360, 768, RU/EN | Globe UX Polish | **CLOSED** — country context стал overlay bottom sheet с immediate flag/country/writer-count peek и явным «Открыть архив»; реализованы `collapsed/half/expanded`, `inert` collapsed content и focus на видимый toggle/panel для keyboard/search path. Evidence: `atlasExperienceState.test.ts`, `writerPanelAccessibility.test.ts`, responsive + premium globe E2E. |
+| GLOBE-002 | P1 | Keyboard | Стрелки вращают глобус, но не формируют keyboard candidate; Enter не может выбрать новую страну без pointer. | `.literary-globe[role="region"]`, `.globe-keyboard-status`; `src/components/LiteraryGlobe.tsx`, `src/components/GlobeViewObserver.tsx`, `src/components/globeKeyboardNavigation.ts` | Все, RU/EN | Globe UX Polish | **CLOSED** — optical centre ray формирует filter-aware candidate, ocean fallback ограничен visible central zone, backside/far исключены, Enter выбирает только active candidate, live region сообщает country/writer count. Evidence: `GlobeViewObserver.test.ts`, `globeKeyboardNavigation.test.ts`, premium keyboard E2E. |
+| GLOBE-003 | P1 | Touch | Большой canvas с `touch-action:none` создаёт scroll trap и не имеет явного режима «страница/глобус». | `.literary-globe[data-globe-touch-mode] canvas`, `.globe-touch-activation`; `src/index.css`, `src/components/LiteraryGlobe.tsx`, `src/components/globeTouchActivation.ts`, `src/components/globeInteraction.ts` | 360, 768 touch | Globe UX Polish | **CLOSED** — coarse embedded default использует `pan-y pinch-zoom`, explicit full-control включает `touch-action:none`, доступен возврат/Escape, clean tap отделён от scroll/drag; immersive получает full gestures. Evidence: `globeTouchActivation.test.ts` и CDP touch E2E (page pan, tap, rotate, pinch, exit, immersive). |
+| GLOBE-004 | P2 | Performance | После выключения Auto WebGL остаётся в постоянном `frameloop="always"` из-за ambient animation. | `.literary-globe[data-globe-frame-mode]`, auto-rotate control; `src/components/LiteraryGlobe.tsx`, `src/components/globePerformance.ts` | Все, особенно слабый 360/768 | Globe UX Polish | **CLOSED** — frame policy даёт `never` offscreen/hidden, `demand` idle Auto OFF/selected/Nobel/reduced и временный `always` только Auto/flight/settling; static sky/stars/Nobel не удерживают loop. Evidence: `globePerformance.test.ts`, `nobelMarkerPolicy.test.ts`, Auto-Off demand + existing visibility E2E. |
+| GLOBE-005 | P2 | State model | Pending и committed оформление визуально смешаны: `aria-pressed` меняется до готовности canvas. | `.globe-style-switch`, `.globe-style-status`; `src/components/LiteraryGlobe.tsx`, `src/components/useGlobeStyleState.ts`, `src/index.css` | Все | Globe UX Polish | **CLOSED** — requested/pending/rendered/failure разделены; `aria-pressed` следует только rendered style, pending сохраняет старую surface и busy/status, race latest-wins, failure-safe retry. Evidence: `useGlobeStyleState.test.ts` и held-texture premium E2E. |
+| GLOBE-006 | P2 | Layout stability | Выбранная страна переводит сцену из одной колонки в две и резко ресайзит WebGL. | `.atlas-layout.has-country`, `.atlas-country-presentation`; `src/index.css`, `src/components/LiteraryGlobe.tsx` | 768–1920 | Globe UX Polish | **CLOSED** — desktop drawer и compact sheet являются overlays, layout остаётся одноколоночным, custom renderer resize writer удалён и R3F остаётся единственным sizing owner. Evidence: `globeAccessibility.test.ts`, premium Canvas identity/bounding-box E2E. |
+| GLOBE-007 | P2 | Reduced motion | Часть программных переходов использует `behavior:"smooth"` без проверки reduced motion. | Globe camera/scroll/sheet/context transitions; `src/App.tsx`, `src/components/GlobeCameraRig.tsx`, `src/components/globeFocusMath.ts`, `src/index.css` | Все при `prefers-reduced-motion: reduce` | Globe UX Polish | **CLOSED** — reduced camera duration равна 0, Auto disabled/demand, Globe-scope scroll выбирает `auto`, Atlas/panel/sheet transitions отключаются; writer/Random/World используют тот же immediate controller. Evidence: focus-math unit, existing reduced-motion globe E2E и same-Canvas immersion E2E. |
 | MOBILE-001 | P1 | Hit targets | Несколько семейств интерактивных элементов имели область меньше 44×44 px. | Header search/language/reader, atlas ranking, book actions, footer/social; `src/index.css`, migrated components | 360–1920, pointer coarse | Final QA | **PARTIAL** — Header/Hero-часть закрыта: search/RU/EN/account и обе CTA имеют минимум 44 px на 320/360/390; foundation и migrated core controls также соблюдают контракт. Оставшиеся legacy card/footer/social families не мигрированы. |
 | MOBILE-002 | P2 | Author cards | Карточки авторов с фиксированной высотой 470 px чрезмерно растягивают mobile-страницу. | `.author-showcase` cards; `src/index.css` | 360, 768 | Homepage Structure | **OPEN** |
 | A11Y-001 | P1 | Focus | `summary` не входил в общий focus-visible selector и получал слабый UA-outline на тёмной шапке. | `.articles-menu > summary`, `.sections-menu > summary`, `.cms-nav-group > summary`; `src/index.css`, header menus | Все, особенно 1366–1920 | UI Foundation | **CLOSED** — `summary:focus-visible` использует общий контрастный focus token. |
@@ -154,11 +154,26 @@
 - Reduced motion: browser harness не предоставляет CSS media emulation, поэтому rendered screenshot не заявляется; economical capture является только performance-fallback proxy, а reduced-motion contract покрыт автоматическими state/tests.
 - Full-tree `git diff --check`: **PASS — final full-tree run, exit 0; только CRLF notices**.
 
+## Findings, закрытые Premium Globe Exploration
+
+### CLOSED
+
+- `GLOBE-001` — mobile country context стал immediate overlay peek и трёхпозиционным bottom sheet; keyboard/search path фокусирует видимый toggle/panel.
+- `GLOBE-002` — реализован optical centre-ray candidate, ограниченный ocean fallback, filter/visibility guards, Enter и RU/EN live region.
+- `GLOBE-003` — embedded coarse-pointer default возвращён к page pan, а full globe control включается явно и имеет возврат/Escape.
+- `GLOBE-004` — Auto OFF/selected/Nobel/reduced idle используют demand, offscreen/hidden — never; continuous frames ограничены активным runtime source.
+- `GLOBE-005` — requested/pending/rendered/failure style lifecycle разделён, `aria-pressed` следует rendered texture, race latest-wins.
+- `GLOBE-006` — desktop drawer и compact sheet стали overlays; R3F остаётся единственным sizing owner, Canvas identity/geometry стабильны.
+- `GLOBE-007` — camera/scroll/Atlas transition/sheet и связанные writer/Random/World переходы учитывают reduced motion.
+
+### Stage 4 evidence
+
+- Source/unit: camera rig/focus/projection, view observer/keyboard/touch, frame/idle/highlight/style, coordinates/Random/Nobel и writer/accessibility contracts.
+- Runtime: `tests/e2e/premium-globe-exploration.spec.mjs` плюс существующие globe runtime и Stage 3 immersion regressions.
+- Полное описание evidence: [`docs/GLOBE_EXPLORATION_UX.md`](../docs/GLOBE_EXPLORATION_UX.md) и [`reports/stage4-premium-globe-exploration-pr.md`](stage4-premium-globe-exploration-pr.md).
+- Финальные численные QA counts, performance measurements и artifact registry зафиксированы в PR report и являются обязательным release-gate evidence; исторический текст findings при этом сохранён.
+
 ## OPEN findings по следующим этапам
-
-### Globe UX Polish
-
-`GLOBE-001`–`GLOBE-007`; `ATLAS-002` — размер/контраст `.globe-instruction` и selected-country labels.
 
 ### Homepage Structure
 
@@ -176,7 +191,7 @@
 
 - Header + Hero: разница левых guides ≤2 px; mobile navigation полностью достижима; 768 использует утверждённый существующий art-directed source; RU/EN не переполняются.
 - Immersive Literary Planet: APG combobox закрыт; основная Atlas microcopy исправлена, а остаток `ATLAS-002` явно перенесён в Globe UX Polish / Final QA. Видимый Atlas content не выходит за viewport вне явного horizontal-scroll allowlist; глобальный overflow-остаток проверяется Final QA.
-- Globe UX Polish: keyboard-only selection; touch scroll/activation contract; country panel видна и получает focus; committed/pending состояния разделены; idle WebGL переходит в demand.
+- Globe UX Polish: **CLOSED в Stage 4** — keyboard-only selection, touch scroll/activation, immediate country presentation, committed/pending style lifecycle и demand idle подтверждены source/unit/E2E evidence выше.
 - Homepage Structure: CLS ≤0.1; initial compressed JS+CSS ≤300 KiB; нет ложного empty-state; далёкие секции не грузятся до intent; deep links сохраняются.
 - Final QA: deterministic visual matrix 5×2 плюс states/reduced motion; target-size/contrast/localization/loading semantics; snapshot updates только осознанным PR.
 

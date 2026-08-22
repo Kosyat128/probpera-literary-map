@@ -22,6 +22,22 @@ import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
+import type { GlobeViewSample } from "./components/GlobeViewObserver";
+import type {
+  GlobeCountrySelectionFocusKind,
+  GlobeCountrySelectionSource,
+  GlobeExplicitFocusRequest,
+} from "./components/LiteraryGlobe";
+import {
+  chooseRandomLiteraryDestination,
+  rememberLiteraryDestination,
+} from "./components/globeDiscovery";
+import {
+  createGlobeCoordinates,
+  formatGlobeCoordinatesDms,
+  resolveCountryGlobeCoordinates,
+  resolveGlobeCoordinateContext,
+} from "./components/globeCoordinates";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -63,7 +79,6 @@ import {
   articlePath,
   isDirectArticlePath,
   journalPath,
-  navigateToArticle,
   navigateToJournal,
   shouldUseClientNavigation,
 } from "./utils/articleRoutes";
@@ -466,6 +481,16 @@ export default function App() {
   );
   const directArticleRoute = isDirectArticlePath(currentPathname);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [globeViewSample, setGlobeViewSample] = useState<GlobeViewSample>({
+    candidate: null,
+    coordinates: null,
+    cameraRadius: 4.9,
+    revision: 0,
+  });
+  const [globeHoveredCountry, setGlobeHoveredCountry] =
+    useState<Country | null>(null);
+  const [globeFocusRequest, setGlobeFocusRequest] =
+    useState<GlobeExplicitFocusRequest | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
   const [writerFocusRequest, setWriterFocusRequest] =
     useState<WriterFocusRequest | null>(null);
@@ -480,6 +505,7 @@ export default function App() {
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(
     () => readAtlasUrlState().filter
   );
+  const [largestArchivesOpen, setLargestArchivesOpen] = useState(false);
   const [countryIndexOpen, setCountryIndexOpen] = useState(false);
   const [nobelSpotlightCountryId, setNobelSpotlightCountryId] = useState<string | null>(null);
   const [communityOpen, setCommunityOpen] = useState(false);
@@ -491,15 +517,28 @@ export default function App() {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
+  const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
+  const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
+  const randomAtlasHistoryRef = useRef<string[]>([]);
+  const globeFocusRequestIdRef = useRef(0);
   const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
   const sectionsMenuRef = useRef<HTMLDetailsElement>(null);
+  const closeLargestArchivesOnEscape = useCallback(() => {
+    if (!largestArchivesOpen) return false;
+    setLargestArchivesOpen(false);
+    window.requestAnimationFrame(() =>
+      atlasArchivesToggleRef.current?.focus({ preventScroll: true })
+    );
+    return true;
+  }, [largestArchivesOpen]);
   const atlasExperience = useAtlasExperience({
     urlSelection: {
       filter: atlasFilter,
       countryId: selectedCountry?.id ?? null,
       writerId: selectedWriter?.id ?? null,
     },
+    onEscapeBeforeExperience: closeLargestArchivesOnEscape,
   });
   const atlasExperienceDispatch = atlasExperience.dispatch;
   const syncAtlasExperienceFromUrl = atlasExperience.syncFromUrl;
@@ -507,12 +546,28 @@ export default function App() {
     atlasExperience.commitUrlSelection;
   const atlasImmersive = atlasExperience.state.view === "immersive";
   const atlasSheetContentCollapsed =
-    atlasImmersive &&
     atlasExperience.compactSheet &&
     atlasExperience.state.sheetState === "collapsed";
   const atlasSearchOpen = atlasImmersive
     ? atlasExperience.state.searchOpen
     : searchOpen;
+
+  useEffect(() => {
+    if (atlasImmersive && !atlasExperience.state.filtersOpen) {
+      setLargestArchivesOpen(false);
+    }
+  }, [atlasExperience.state.filtersOpen, atlasImmersive]);
+
+  useEffect(() => {
+    if (!largestArchivesOpen) return undefined;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (atlasFilterClusterRef.current?.contains(event.target as Node)) return;
+      setLargestArchivesOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePointer, true);
+    return () =>
+      document.removeEventListener("pointerdown", closeOnOutsidePointer, true);
+  }, [largestArchivesOpen]);
 
   const setAtlasSearchVisibility = useCallback(
     (open: boolean) => {
@@ -661,12 +716,12 @@ export default function App() {
     [atlasFilter, countryArchive]
   );
 
-  const topCountries = useMemo(
+  const largestArchiveCountries = useMemo(
     () =>
-      [...filteredCountries]
+      [...countryArchive]
         .sort((first, second) => second.writers.length - first.writers.length)
         .slice(0, 5),
-    [filteredCountries]
+    [countryArchive]
   );
 
   const filterCounts = useMemo(
@@ -688,6 +743,66 @@ export default function App() {
     [countryArchive]
   );
 
+  const globeCoordinateContext = useMemo(() => {
+    const selectedCoordinates = selectedCountry
+      ? resolveCountryGlobeCoordinates(selectedCountry)
+      : null;
+    const hoverCoordinates = globeHoveredCountry
+      ? resolveCountryGlobeCoordinates(globeHoveredCountry)
+      : null;
+    const explicitWriterFocus =
+      globeFocusRequest?.kind === "writer-focus" &&
+      globeFocusRequest.countryId === selectedCountry?.id &&
+      globeFocusRequest.writerId === selectedWriter?.id &&
+      globeFocusRequest.coordinates
+        ? globeFocusRequest
+        : null;
+    return resolveGlobeCoordinateContext({
+      writer: selectedWriter && explicitWriterFocus
+        ? {
+            coordinates: explicitWriterFocus.coordinates,
+            label: selectWriterDisplayName(
+              selectedWriter,
+              language,
+              t("Автор")
+            ),
+          }
+        : null,
+      selectedCountry: selectedCountry && selectedCoordinates
+        ? {
+            coordinates: selectedCoordinates,
+            label: countryName(selectedCountry.code, selectedCountry.name),
+          }
+        : null,
+      hoverCountry: globeHoveredCountry && hoverCoordinates
+        ? {
+            coordinates: hoverCoordinates,
+            label: countryName(
+              globeHoveredCountry.code,
+              globeHoveredCountry.name
+            ),
+          }
+        : null,
+      viewCentre: globeViewSample.coordinates
+        ? {
+            coordinates: globeViewSample.coordinates,
+            label: t("Центр обзора"),
+          }
+        : null,
+    });
+  }, [
+    countryName,
+    globeFocusRequest,
+    globeHoveredCountry,
+    globeViewSample,
+    language,
+    selectedCountry,
+    selectedWriter,
+    t,
+  ]);
+  const globeCoordinateReadout =
+    formatGlobeCoordinatesDms(globeCoordinateContext) || "—";
+
   const applyAtlasUrlSelection = useCallback(() => {
     const urlState = syncAtlasExperienceFromUrl();
     if (!countryArchive.length) return;
@@ -705,9 +820,10 @@ export default function App() {
       country && urlState.writerId
         ? country.writers.find((writer) => writer.id === urlState.writerId) ?? null
         : null;
-    const writer = country
-      ? preferredWriterForAtlas(country, urlState.filter, requestedWriter)
-      : null;
+    const writer =
+      country && urlState.writerId
+        ? preferredWriterForAtlas(country, urlState.filter, requestedWriter)
+        : null;
 
     setAtlasFilter(urlState.filter);
     setSelectedCountry(country);
@@ -980,14 +1096,31 @@ export default function App() {
   }, []);
 
   const selectCountry = useCallback(
-    (country: Country, focusAtlas = false, writer?: Writer) => {
+    (
+      country: Country,
+      focusAtlas = false,
+      writer?: Writer,
+      cameraIntentKind?: GlobeCountrySelectionFocusKind
+    ) => {
       const preferredWriter = preferredWriterForAtlas(
         country,
         atlasFilter,
         writer
       );
+      const resolvedCameraIntentKind =
+        cameraIntentKind ??
+        (selectedCountry?.id === country.id
+          ? "country-refocus"
+          : "country-focus");
+      setLargestArchivesOpen(false);
       setSelectedCountry(country);
       setSelectedWriter(preferredWriter);
+      globeFocusRequestIdRef.current += 1;
+      setGlobeFocusRequest({
+        id: globeFocusRequestIdRef.current,
+        kind: resolvedCameraIntentKind,
+        countryId: country.id,
+      });
       atlasExperienceDispatch({
         type: "SET_SHEET_STATE",
         sheetState: "collapsed",
@@ -1005,7 +1138,9 @@ export default function App() {
       if (focusAtlas) {
         window.requestAnimationFrame(() =>
           atlasRef.current?.scrollIntoView({
-            behavior: "smooth",
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth",
             block: "start",
           })
         );
@@ -1017,7 +1152,60 @@ export default function App() {
       atlasFilter,
       closeAtlasSearch,
       commitAtlasExperienceUrlSelection,
+      selectedCountry?.id,
     ]
+  );
+
+  const selectRandomLiteraryDestination = useCallback(() => {
+    const destination = chooseRandomLiteraryDestination({
+      candidates: filteredCountries,
+      randomValue: Math.random(),
+      currentId: selectedCountry?.id ?? null,
+      recentIds: randomAtlasHistoryRef.current,
+    });
+    if (!destination) return;
+    randomAtlasHistoryRef.current = rememberLiteraryDestination(
+      randomAtlasHistoryRef.current,
+      destination.id
+    );
+    selectCountry(destination, false, undefined, "random-focus");
+  }, [filteredCountries, selectCountry, selectedCountry?.id]);
+
+  const focusCountryPresentation = useCallback(() => {
+    window.requestAnimationFrame(() =>
+      window.requestAnimationFrame(() => {
+        const presentation = document.querySelector<HTMLElement>(
+          ".atlas-country-presentation"
+        );
+        const collapsed =
+          atlasExperience.compactSheet &&
+          presentation?.dataset.atlasSheetState === "collapsed";
+        const target = collapsed
+          ? document.querySelector<HTMLElement>(".atlas-country-sheet-toggle")
+          : document.querySelector<HTMLElement>(".country-panel");
+        if (!target) return;
+        target.focus({ preventScroll: atlasImmersive });
+        if (!atlasImmersive) {
+          target.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth",
+            block: "nearest",
+          });
+        }
+      })
+    );
+  }, [
+    atlasExperience.compactSheet,
+    atlasImmersive,
+  ]);
+
+  const selectGlobeCountry = useCallback(
+    (country: Country, source?: GlobeCountrySelectionSource) => {
+      selectCountry(country);
+      if (source === "keyboard") focusCountryPresentation();
+    },
+    [focusCountryPresentation, selectCountry]
   );
 
   const selectWriterAndFocus = useCallback(
@@ -1058,6 +1246,7 @@ export default function App() {
         return;
       }
       selectCountry(result.country);
+      focusCountryPresentation();
     },
     [
       atlasExperience,
@@ -1066,6 +1255,7 @@ export default function App() {
       selectBookWriterAndCountry,
       selectCountry,
       selectWriterAndFocus,
+      focusCountryPresentation,
     ]
   );
 
@@ -1087,6 +1277,7 @@ export default function App() {
     setSelectedCountry(null);
     setSelectedWriter(null);
     setWriterFocusRequest(null);
+    setGlobeFocusRequest(null);
     setNobelSpotlightCountryId(null);
     commitAtlasExperienceUrlSelection({
       filter: atlasFilter,
@@ -1107,11 +1298,10 @@ export default function App() {
           ? selectedCountry
           : null;
       // Atlas filters select countries, not individual writers. Preserve a
-      // writer already chosen inside a country that remains in the collection;
-      // otherwise a shared URL changes identity after reload/back navigation.
-      const keepWriter = keepCountry
-        ? selectedWriter ?? preferredWriterForAtlas(keepCountry, filter)
-        : null;
+      // writer already chosen inside a country that remains in the collection,
+      // including an intentional country-level breadcrumb with no writer.
+      const keepWriter = keepCountry ? selectedWriter : null;
+      setLargestArchivesOpen(false);
       setAtlasFilter(filter);
       if (keepCountry) {
         setSelectedWriter(keepWriter);
@@ -1144,17 +1334,7 @@ export default function App() {
   );
 
   const selectGlobeWriter = useCallback(
-    async (country: Country, writer: Writer) => {
-      if (!atlasImmersive && isNobelLaureate(writer)) {
-        const { findNobelArticle } = await import(
-          "./data/articles/nobelArticles"
-        );
-        const article = findNobelArticle(writer);
-        if (article) {
-          navigateToArticle(article);
-          return;
-        }
-      }
+    (country: Country, writer: Writer) => {
       setSelectedCountry(country);
       setSelectedWriter(writer);
       setNobelSpotlightCountryId((current) =>
@@ -1175,7 +1355,7 @@ export default function App() {
           });
       }, 80);
     },
-    [atlasFilter, atlasImmersive, commitAtlasExperienceUrlSelection]
+    [atlasFilter, commitAtlasExperienceUrlSelection]
   );
 
   const selectPanelWriter = useCallback(
@@ -1188,6 +1368,81 @@ export default function App() {
       });
     },
     [atlasFilter, commitAtlasExperienceUrlSelection, selectedCountry]
+  );
+
+  const navigateWriterBreadcrumbWorld = useCallback(() => {
+    setSelectedCountry(null);
+    setSelectedWriter(null);
+    setWriterFocusRequest(null);
+    setNobelSpotlightCountryId(null);
+    globeFocusRequestIdRef.current += 1;
+    setGlobeFocusRequest({
+      id: globeFocusRequestIdRef.current,
+      kind: "home",
+    });
+    commitAtlasExperienceUrlSelection({
+      filter: atlasFilter,
+      countryId: null,
+      writerId: null,
+    });
+    window.requestAnimationFrame(() => {
+      atlasExperience.stageRef.current
+        ?.querySelector<HTMLElement>(".literary-globe")
+        ?.focus({ preventScroll: true });
+    });
+  }, [
+    atlasExperience.stageRef,
+    atlasFilter,
+    commitAtlasExperienceUrlSelection,
+  ]);
+
+  const navigateWriterBreadcrumbCountry = useCallback(() => {
+    if (!selectedCountry) return;
+    setSelectedWriter(null);
+    setWriterFocusRequest(null);
+    setGlobeFocusRequest(null);
+    commitAtlasExperienceUrlSelection({
+      filter: atlasFilter,
+      countryId: selectedCountry.id,
+      writerId: null,
+    });
+    focusCountryPresentation();
+  }, [
+    atlasFilter,
+    commitAtlasExperienceUrlSelection,
+    focusCountryPresentation,
+    selectedCountry,
+  ]);
+
+  const showWriterOnGlobe = useCallback(
+    (writer: Writer) => {
+      const coordinates = writer.coordinates
+        ? createGlobeCoordinates(
+            writer.coordinates.lat,
+            writer.coordinates.lng
+          )
+        : null;
+      if (
+        !selectedCountry ||
+        !coordinates ||
+        !selectedCountry.writers.some((candidate) => candidate.id === writer.id)
+      ) {
+        return;
+      }
+      atlasExperienceDispatch({
+        type: "SET_SHEET_STATE",
+        sheetState: "collapsed",
+      });
+      globeFocusRequestIdRef.current += 1;
+      setGlobeFocusRequest({
+        id: globeFocusRequestIdRef.current,
+        kind: "writer-focus",
+        countryId: selectedCountry.id,
+        writerId: writer.id,
+        coordinates,
+      });
+    },
+    [atlasExperienceDispatch, selectedCountry]
   );
 
   const openCommunity = useCallback((view: CommunityView) => {
@@ -1597,7 +1852,7 @@ export default function App() {
                 aria-hidden="true"
                 loading="eager"
                 decoding="async"
-                {...({ fetchpriority: "high" } as Record<string, string>)}
+                fetchPriority="high"
               />
             </picture>
             <span>{t("Литературный журнал · с 2025 года")}</span>
@@ -1668,6 +1923,8 @@ export default function App() {
                   onFiltersToggle={() =>
                     atlasExperienceDispatch({ type: "TOGGLE_FILTERS" })
                   }
+                  randomDisabled={filteredCountries.length === 0}
+                  onRandomJourney={selectRandomLiteraryDestination}
                 />
           <header className="atlas-heading" id="atlas-search-panel">
             <div>
@@ -1795,66 +2052,112 @@ export default function App() {
             />
           </header>
 
-          <div className="atlas-toolbar">
-            <div className="atlas-filter-cluster">
+          <div
+            className={`atlas-toolbar${largestArchivesOpen ? " has-open-archives" : ""}`}
+          >
+            <div
+              ref={atlasFilterClusterRef}
+              className="atlas-filter-cluster"
+              onKeyDownCapture={(event) => {
+                if (event.key !== "Escape" || !largestArchivesOpen) return;
+                event.preventDefault();
+                event.stopPropagation();
+                setLargestArchivesOpen(false);
+                window.requestAnimationFrame(() =>
+                  atlasArchivesToggleRef.current?.focus({ preventScroll: true })
+                );
+              }}
+              onBlurCapture={() => {
+                window.requestAnimationFrame(() => {
+                  if (
+                    atlasFilterClusterRef.current?.contains(
+                      document.activeElement
+                    )
+                  ) {
+                    return;
+                  }
+                  setLargestArchivesOpen(false);
+                });
+              }}
+            >
               <div
                 className="atlas-filters"
                 id="atlas-filter-panel"
-                role="group"
-                aria-label={t("Фильтры глобуса")}
               >
-                {(
-                  [
-                    ["all", atlasFilterLabels.all],
-                    ["nobel", atlasFilterLabels.nobel],
-                    ["rich", atlasFilterLabels.rich],
-                    ["portrait", atlasFilterLabels.portrait],
-                    ["verified", atlasFilterLabels.verified],
-                  ] as Array<[AtlasFilter, string]>
-                ).map(([value, label]) => (
-                  <Button
-                    className={atlasFilter === value ? "is-active" : ""}
-                    size="md"
-                    surface="dark"
-                    variant="text"
-                    key={value}
-                    data-atlas-filter={value}
-                    aria-pressed={atlasFilter === value}
-                    onClick={() => selectAtlasFilter(value)}
-                  >
-                    {t(label)}{" "}
-                    <span className="atlas-filter-count">
-                      {number(filterCounts[value])}
-                    </span>
-                  </Button>
-                ))}
-              </div>
-              <p className="atlas-filter-status" role="status" aria-live="polite">
-                {t(atlasFilterLabels[atlasFilter])}: {number(filteredCountries.length)}{" "}
-                {t(
-                  selectInterfacePlural(filteredCountries.length, language, [
-                    "страна",
-                    "страны",
-                    "стран",
-                  ])
-                )}
-              </p>
-            </div>
-
-            <div className="atlas-ranking">
-              <span>{t("Крупнейшие архивы")}</span>
-              {topCountries.map((country) => (
+                <div
+                  className="atlas-filter-options"
+                  role="group"
+                  aria-label={t("Фильтры глобуса")}
+                >
+                  {(
+                    [
+                      ["all", atlasFilterLabels.all],
+                      ["nobel", atlasFilterLabels.nobel],
+                      ["rich", atlasFilterLabels.rich],
+                      ["portrait", atlasFilterLabels.portrait],
+                      ["verified", atlasFilterLabels.verified],
+                    ] as Array<[AtlasFilter, string]>
+                  ).map(([value, label]) => (
+                    <Button
+                      className={atlasFilter === value ? "is-active" : ""}
+                      size="md"
+                      surface="dark"
+                      variant="text"
+                      key={value}
+                      data-atlas-filter={value}
+                      aria-pressed={atlasFilter === value}
+                      onClick={() => selectAtlasFilter(value)}
+                    >
+                      {t(label)}{" "}
+                      <span className="atlas-filter-count">
+                        {number(filterCounts[value])}
+                      </span>
+                    </Button>
+                  ))}
+                </div>
                 <Button
-                  key={country.id}
+                  ref={atlasArchivesToggleRef}
+                  className={`atlas-archives-toggle${largestArchivesOpen ? " is-active" : ""}`}
                   size="md"
                   surface="dark"
                   variant="text"
-                  onClick={() => selectCountry(country)}
+                  data-atlas-archives-toggle
+                  aria-expanded={largestArchivesOpen}
+                  aria-controls="atlas-largest-archives"
+                  disabled={!largestArchiveCountries.length}
+                  onClick={() => setLargestArchivesOpen((open) => !open)}
                 >
-                  {countryName(country.code, country.name)}
-                  <small>{number(country.writers.length)}</small>
+                  {t("Крупнейшие архивы")}
+                  <span className="atlas-archives-caret" aria-hidden="true">
+                    ↓
+                  </span>
                 </Button>
-              ))}
+              </div>
+              {largestArchivesOpen && (
+                <div
+                  className="atlas-archives-popover"
+                  id="atlas-largest-archives"
+                  role="group"
+                  aria-label={t("Крупнейшие архивы")}
+                >
+                  {largestArchiveCountries.map((country) => (
+                    <Button
+                      key={country.id}
+                      size="md"
+                      surface="dark"
+                      variant="text"
+                      aria-label={`${countryName(country.code, country.name)} — ${number(country.writers.length)} ${t("авторов")}`}
+                      onClick={() => {
+                        selectCountry(country);
+                        focusCountryPresentation();
+                      }}
+                    >
+                      <span>{countryName(country.code, country.name)}</span>
+                      <small>{number(country.writers.length)}</small>
+                    </Button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -1899,8 +2202,8 @@ export default function App() {
               </div>
               <div className="atlas-ornaments" aria-hidden="true">
                 <span className="atlas-coordinate">
-                  <small>{t("Архив мира")}</small>
-                  <strong>55°45′ N · 37°37′ E</strong>
+                  <small>{globeCoordinateContext?.label || t("Архив мира")}</small>
+                  <strong>{globeCoordinateReadout}</strong>
                 </span>
                 <span className="atlas-compass">
                   <i>{t("С")}</i>
@@ -1909,35 +2212,38 @@ export default function App() {
                 </span>
               </div>
 
-              {filteredCountries.length > 0 ? (
-                <Suspense
-                  fallback={
-                    <div className="globe-loading" role="status">
-                      <span aria-hidden="true">✦</span>
-                      <p>{t("Открываем «Литературную планету»…")}</p>
-                    </div>
+              <Suspense
+                fallback={
+                  <div className="globe-loading" role="status">
+                    <span aria-hidden="true">✦</span>
+                    <p>{t("Открываем «Литературную планету»…")}</p>
+                  </div>
+                }
+              >
+                <LiteraryWorldMap
+                  countries={filteredCountries}
+                  atlasCountries={countryArchive}
+                  mode={atlasImmersive ? "immersive" : "embedded"}
+                  rootRef={atlasExperience.stageRef}
+                  selectedCountry={selectedCountry}
+                  selectedWriter={selectedWriter}
+                  onCountrySelect={selectGlobeCountry}
+                  onWriterSelect={selectGlobeWriter}
+                  onViewSample={setGlobeViewSample}
+                  onHoverCountryChange={setGlobeHoveredCountry}
+                  focusRequest={globeFocusRequest}
+                  economical={atlasExperience.economical}
+                  showNobelLaureates={
+                    atlasFilter === "nobel" ||
+                    nobelSpotlightCountryId === selectedCountry?.id
                   }
-                >
-                  <LiteraryWorldMap
-                    countries={filteredCountries}
-                    atlasCountries={countryArchive}
-                    mode={atlasImmersive ? "immersive" : "embedded"}
-                    rootRef={atlasExperience.stageRef}
-                    selectedCountry={selectedCountry}
-                    selectedWriter={selectedWriter}
-                    onCountrySelect={selectCountry}
-                    onWriterSelect={selectGlobeWriter}
-                    showNobelLaureates={
-                      atlasFilter === "nobel" ||
-                      nobelSpotlightCountryId === selectedCountry?.id
-                    }
-                    nobelCountryId={
-                      atlasFilter === "nobel" ? null : nobelSpotlightCountryId
-                    }
-                  />
-                </Suspense>
-              ) : (
-                <div className="globe-loading" role="status">
+                  nobelCountryId={
+                    atlasFilter === "nobel" ? null : nobelSpotlightCountryId
+                  }
+                />
+              </Suspense>
+              {filteredCountries.length === 0 && (
+                <div className="globe-loading globe-empty-state" role="status">
                   <span aria-hidden="true">✦</span>
                   <p>{t("В этой коллекции пока нет стран")}</p>
                 </div>
@@ -1954,27 +2260,58 @@ export default function App() {
                   selectedCountry.name
                 )}
               >
-                {atlasImmersive && (
+                {atlasExperience.compactSheet && (
                   <Button
                     className="atlas-country-sheet-toggle"
                     size="md"
                     surface="dark"
                     variant="secondary"
                     aria-expanded={
-                      atlasExperience.state.sheetState === "expanded"
+                      atlasExperience.state.sheetState !== "collapsed"
                     }
                     aria-controls="atlas-country-sheet-content"
                     aria-label={
                       atlasExperience.state.sheetState === "expanded"
                         ? t("Свернуть архив страны")
-                        : t("Развернуть архив страны")
+                        : atlasExperience.state.sheetState === "half"
+                          ? t("Развернуть архив полностью")
+                          : t("Развернуть архив страны")
                     }
                     onClick={() =>
                       atlasExperienceDispatch({ type: "TOGGLE_SHEET" })
                     }
                   >
-                    <span aria-hidden="true" />
-                    {countryName(selectedCountry.code, selectedCountry.name)}
+                    <span className="atlas-country-sheet-handle" aria-hidden="true" />
+                    <CountryFlagIcon
+                      className="atlas-country-sheet-flag country-flag-icon--round"
+                      code={selectedCountry.code}
+                      countryName={selectedCountry.name}
+                      size={34}
+                      decorative
+                      priority
+                    />
+                    <span className="atlas-country-sheet-copy">
+                      <strong>
+                        {countryName(selectedCountry.code, selectedCountry.name)}
+                      </strong>
+                      <small>
+                        {number(selectedCountry.writers.length)}{" "}
+                        {t(
+                          selectInterfacePlural(
+                            selectedCountry.writers.length,
+                            language,
+                            ["автор", "автора", "авторов"]
+                          )
+                        )}
+                      </small>
+                    </span>
+                    <span className="atlas-country-sheet-action">
+                      {atlasExperience.state.sheetState === "expanded"
+                        ? t("Свернуть архив страны")
+                        : atlasExperience.state.sheetState === "half"
+                          ? t("Развернуть архив полностью")
+                          : t("Открыть архив")}
+                    </span>
                   </Button>
                 )}
                 <div
@@ -2006,6 +2343,9 @@ export default function App() {
                           : undefined
                       }
                       onWriterSelect={selectPanelWriter}
+                      onNavigateWorld={navigateWriterBreadcrumbWorld}
+                      onNavigateCountry={navigateWriterBreadcrumbCountry}
+                      onShowWriterOnGlobe={showWriterOnGlobe}
                       nobelSpotlightActive={
                         nobelSpotlightCountryId === selectedCountry.id
                       }

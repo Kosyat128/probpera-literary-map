@@ -16,7 +16,9 @@ type Props = {
   immersive: boolean;
   onClose: () => void;
   onFiltersToggle: () => void;
+  onRandomJourney: () => void;
   onSearchToggle: () => void;
+  randomDisabled?: boolean;
   searchOpen: boolean;
 };
 
@@ -28,7 +30,9 @@ export default function AtlasExperienceChrome({
   immersive,
   onClose,
   onFiltersToggle,
+  onRandomJourney,
   onSearchToggle,
+  randomDisabled = false,
   searchOpen,
 }: Props) {
   const { t } = useInterfaceLanguage();
@@ -46,7 +50,14 @@ export default function AtlasExperienceChrome({
         aria-hidden={immersive ? undefined : "true"}
       >
         <div className="atlas-immersive-identity">
-          <span aria-hidden="true">✦</span>
+          <img
+            src={`${import.meta.env.BASE_URL}brand/probpera-logo.png`}
+            alt=""
+            aria-hidden="true"
+            width="42"
+            height="42"
+            decoding="async"
+          />
           <div>
             <small>{t("Интерактивная энциклопедия")}</small>
             <strong>{t("Литературная планета")}</strong>
@@ -82,6 +93,19 @@ export default function AtlasExperienceChrome({
             onClick={onFiltersToggle}
           >
             {t("Фильтры глобуса")}
+          </Button>
+          <Button
+            className="atlas-immersive-random"
+            size="md"
+            surface="dark"
+            variant="secondary"
+            startIcon={<span aria-hidden="true">✦</span>}
+            disabled={randomDisabled}
+            aria-label={t("Случайное литературное путешествие")}
+            data-atlas-action="random-journey"
+            onClick={onRandomJourney}
+          >
+            {t("Случайное путешествие")}
           </Button>
           <InterfaceLanguageControl />
           <IconButton
