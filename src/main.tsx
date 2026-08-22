@@ -17,6 +17,7 @@ import ConnectivityStatus from './mobile/ConnectivityStatus';
 import { registerServiceWorker } from './mobile/registerServiceWorker';
 import { installSafeWebStorage } from './utils/safeWebStorage';
 import './index.css';
+import './community/community-accessibility.css';
 
 installSafeWebStorage();
 
