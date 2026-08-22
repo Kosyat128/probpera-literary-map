@@ -52,4 +52,11 @@ describe("service worker cache bounds", () => {
       "await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT)"
     );
   });
+
+  it("does not block installation or activation on optional cache cleanup", () => {
+    expect(source).toContain(".catch(() => undefined)");
+    expect(source).toContain("Promise.allSettled([");
+    expect(source).toContain(".then(() => self.skipWaiting())");
+    expect(source).toContain(".then(() => self.clients.claim())");
+  });
 });
