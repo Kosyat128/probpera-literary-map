@@ -20,6 +20,27 @@
   --line: rgba(54, 22, 76, 0.13);
   --serif: Georgia, "Times New Roman", serif;
   --sticky-navigation-offset: 96px;
+  --ui-control-sm: 36px;
+  --ui-control-md: 44px;
+  --ui-control-lg: 48px;
+  --ui-radius-tight: 2px;
+  --ui-radius-control: 4px;
+  --ui-radius-panel: 14px;
+  --ui-radius-round: 999px;
+  --ui-space-1: 4px;
+  --ui-space-2: 8px;
+  --ui-space-3: 12px;
+  --ui-space-4: 16px;
+  --ui-space-5: 20px;
+  --ui-transition-fast: 160ms ease;
+  --ui-transition-base: 180ms ease;
+  --ui-focus-color: #ff9b45;
+  --ui-focus-ring: 0 0 0 3px rgba(246, 117, 24, 0.24);
+  --ui-primary: var(--orange);
+  --ui-primary-hover: #ff8935;
+  --ui-primary-active: var(--orange-deep);
+  --ui-text-muted-light: #6b5a71;
+  --ui-text-muted-dark: rgba(255, 255, 255, 0.74);
 }
 
 * {
@@ -57,8 +78,9 @@ a {
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(246, 117, 24, 0.8);
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--ui-focus-color);
   outline-offset: 3px;
 }
 
@@ -1163,7 +1185,7 @@ main [id] {
     transform 180ms ease;
 }
 
-.reader-button span {
+.reader-button > .ui-action__icon {
   display: grid;
   place-items: center;
   width: 28px;
@@ -1203,8 +1225,8 @@ main [id] {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  height: 32px;
-  padding: 3px;
+  height: var(--ui-control-md);
+  padding: 0;
   background: rgba(19, 2, 32, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
@@ -1213,12 +1235,13 @@ main [id] {
 .interface-language-control button {
   display: grid;
   place-items: center;
-  min-width: 27px;
-  height: 24px;
-  padding: 0 6px;
+  min-width: var(--ui-control-md);
+  height: var(--ui-control-md);
+  min-height: var(--ui-control-md);
+  padding: 0;
   color: rgba(255, 255, 255, 0.58);
   font: inherit;
-  font-size: 7px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.08em;
   background: transparent;
@@ -1798,9 +1821,17 @@ main [id] {
   border-color: rgba(255, 156, 69, 0.6);
 }
 
-.search-field > span {
+.search-field > .search-field-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
   color: var(--orange-soft);
-  font-size: 24px;
+}
+
+.search-field-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .search-field input {
@@ -1924,9 +1955,9 @@ main [id] {
     border-color 160ms ease;
 }
 
-.atlas-filters button span {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 8px;
+.atlas-filters button .ui-action__label > span {
+  color: var(--ui-text-muted-dark);
+  font-size: 10px;
 }
 
 .atlas-filters button:hover,
@@ -1936,7 +1967,7 @@ main [id] {
   border-color: rgba(255, 154, 69, 0.55);
 }
 
-.atlas-filters button.is-active span {
+.atlas-filters button.is-active .ui-action__label > span {
   color: var(--orange-soft);
 }
 
@@ -1958,8 +1989,8 @@ main [id] {
 
 .atlas-ranking > span {
   margin-right: 7px;
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 8px;
+  color: var(--ui-text-muted-dark);
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1970,8 +2001,8 @@ main [id] {
   gap: 5px;
   align-items: center;
   padding: 5px 7px;
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 9px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 10px;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -1982,8 +2013,8 @@ main [id] {
 }
 
 .atlas-ranking small {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 8px;
+  color: var(--ui-text-muted-dark);
+  font-size: 10px;
 }
 
 .nobel-archive-strip {
@@ -7003,6 +7034,16 @@ a.writer-nobel-medal:focus-visible {
   color: var(--orange-soft);
   font-size: 14px;
   border-radius: 5px;
+}
+
+.country-result-book svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
 }
 
 .section-card-latest {
@@ -12358,6 +12399,18 @@ a.writer-nobel-medal:focus-visible {
   font-size: 26px;
 }
 
+.global-search-field > span svg,
+.article-library-empty > span svg,
+.global-search-book-cover > span svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .global-search-field input {
   min-width: 0;
   padding: 4px 0;
@@ -13551,7 +13604,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-size: 9px;
 }
 
-@media (max-width: 1520px) {
+@media (max-width: 1580px) {
   .global-search-trigger {
     width: 38px;
     justify-content: center;
@@ -15406,7 +15459,7 @@ html[data-theme="book"] .calendar-heading h3 {
     color: transparent;
   }
 
-  .reader-button span {
+  .reader-button > .ui-action__icon {
     flex: 0 0 28px;
     color: var(--violet-800);
   }
@@ -17221,7 +17274,7 @@ html[data-theme="book"] .calendar-heading h3 {
   line-height: 1.25;
   letter-spacing: 0.065em;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--ui-radius-control);
   transition:
     color 180ms ease,
     background-color 180ms ease,
@@ -17693,5 +17746,220 @@ html[data-theme="book"] .calendar-heading h3 {
     text-decoration: underline;
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.12em;
+  }
+}
+
+/* UI Foundation: shared interaction contract without changing the editorial layout. */
+.ui-action,
+.ui-icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  color: inherit;
+  font: inherit;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius-control);
+  transition:
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-fast),
+    transform var(--ui-transition-fast);
+}
+
+.ui-action {
+  gap: var(--ui-space-2);
+  padding-inline: var(--ui-space-4);
+}
+
+.ui-action--sm,
+.ui-icon-button--sm {
+  min-height: var(--ui-control-sm);
+}
+
+.ui-action--md,
+.ui-icon-button--md {
+  min-height: var(--ui-control-md);
+}
+
+.ui-action--lg,
+.ui-icon-button--lg {
+  min-height: var(--ui-control-lg);
+}
+
+.ui-icon-button {
+  width: var(--ui-control-md);
+  min-width: var(--ui-control-md);
+  height: var(--ui-control-md);
+  padding: 0;
+}
+
+.ui-icon-button--sm {
+  width: var(--ui-control-sm);
+  min-width: var(--ui-control-sm);
+  height: var(--ui-control-sm);
+}
+
+.ui-icon-button--lg {
+  width: var(--ui-control-lg);
+  min-width: var(--ui-control-lg);
+  height: var(--ui-control-lg);
+}
+
+.ui-action--primary {
+  color: #fff;
+  background: var(--ui-primary);
+  border-color: var(--ui-primary);
+}
+
+.ui-action--primary:not(:disabled):hover {
+  color: #fff;
+  background: var(--ui-primary-hover);
+  border-color: var(--ui-primary-hover);
+}
+
+.ui-action--primary:not(:disabled):active {
+  background: var(--ui-primary-active);
+  border-color: var(--ui-primary-active);
+  transform: translateY(1px);
+}
+
+.ui-action--secondary {
+  color: var(--violet-800);
+  background: transparent;
+  border-color: rgba(75, 8, 124, 0.3);
+}
+
+.ui-action--secondary.ui-action--dark,
+.ui-icon-button--dark {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(19, 2, 32, 0.2);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.ui-action--secondary:not(:disabled):hover,
+.ui-icon-button:not(:disabled):hover {
+  color: var(--orange-deep);
+  background: rgba(246, 117, 24, 0.09);
+  border-color: rgba(213, 82, 8, 0.5);
+}
+
+.ui-action--secondary.ui-action--dark:not(:disabled):hover,
+.ui-icon-button--dark:not(:disabled):hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 183, 111, 0.58);
+}
+
+.ui-action--text {
+  padding-inline: var(--ui-space-3);
+  background: transparent;
+  border-color: transparent;
+}
+
+.ui-action--text:not(:disabled):hover {
+  color: var(--orange-deep);
+  background: rgba(246, 117, 24, 0.08);
+}
+
+.ui-action:focus-visible,
+.ui-icon-button:focus-visible {
+  outline: 2px solid var(--ui-focus-color);
+  outline-offset: 3px;
+  box-shadow: var(--ui-focus-ring);
+}
+
+.ui-action:disabled,
+.ui-icon-button:disabled,
+.ui-action[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.52;
+  transform: none;
+}
+
+.ui-action__label {
+  min-width: 0;
+}
+
+.ui-action__icon,
+.ui-action__icon > svg {
+  display: block;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+}
+
+.ui-action__icon > svg,
+.brand-search-icon,
+.brand-user-icon,
+.brand-plus-icon,
+.brand-minus-icon,
+.brand-rotate-icon,
+.brand-reset-icon,
+.brand-external-link-icon,
+.brand-book-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.ui-action__spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ui-action-spin 700ms linear infinite;
+}
+
+.ui-action.is-loading > :not(.ui-action__spinner),
+.ui-icon-button.is-loading > :not(.ui-action__spinner) {
+  visibility: hidden;
+}
+
+@keyframes ui-action-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-action,
+  .ui-icon-button {
+    transition: none !important;
+  }
+
+  .ui-action__spinner {
+    animation: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .ui-action,
+  .ui-icon-button {
+    border-color: ButtonText;
+  }
+
+  .ui-action:focus-visible,
+  .ui-icon-button:focus-visible,
+  summary:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media (max-width: 1580px) {
+  .header-actions .global-search-trigger {
+    width: var(--ui-control-md);
+    min-width: var(--ui-control-md);
+    height: var(--ui-control-md);
   }
 }

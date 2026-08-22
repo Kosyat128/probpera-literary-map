@@ -2,6 +2,7 @@ import {
   useInterfaceLanguage,
   type InterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
+import Button from "../ui/Button";
 
 const languages: Array<{
   id: InterfaceLanguage;
@@ -22,17 +23,19 @@ export default function InterfaceLanguageControl() {
       aria-label={t("Язык интерфейса")}
     >
       {languages.map((item) => (
-        <button
-          type="button"
+        <Button
           key={item.id}
           className={language === item.id ? "is-active" : ""}
+          size="md"
+          surface="dark"
+          variant="text"
           aria-label={t(item.label)}
           aria-pressed={language === item.id}
           title={t(item.label)}
           onClick={() => setLanguage(item.id)}
         >
           {item.shortLabel}
-        </button>
+        </Button>
       ))}
     </div>
   );
