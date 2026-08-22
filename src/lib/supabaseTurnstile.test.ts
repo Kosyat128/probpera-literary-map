@@ -72,6 +72,27 @@ describe("Supabase Auth Turnstile bridge", () => {
     expect(hasAuthTurnstileToken()).toBe(false);
   });
 
+  it("installs only one wrapper on the same auth client", async () => {
+    const { client, signInWithPassword } = fakeClient();
+    installAuthTurnstile(client, true);
+    const installedMethod = client.auth.signInWithPassword;
+    installAuthTurnstile(client, true);
+
+    expect(client.auth.signInWithPassword).toBe(installedMethod);
+    setAuthTurnstileToken("single-wrapper-token");
+    await client.auth.signInWithPassword({
+      email: "reader@example.test",
+      password: "correct horse battery staple",
+    });
+
+    expect(signInWithPassword).toHaveBeenCalledTimes(1);
+    expect(signInWithPassword).toHaveBeenCalledWith({
+      email: "reader@example.test",
+      password: "correct horse battery staple",
+      options: { captchaToken: "single-wrapper-token" },
+    });
+  });
+
   it("leaves auth methods and tokens untouched while protection is disabled", async () => {
     const { client, signUp } = fakeClient();
     const originalSignUp = client.auth.signUp;
