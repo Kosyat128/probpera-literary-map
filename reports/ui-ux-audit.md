@@ -7,6 +7,7 @@
 - Дополнительно на этапе 0 проверялись hover, focus, active, loading, keyboard, mouse, touch-scroll, reduced motion, выбранная страна и три оформления глобуса.
 - Этот файл фиксирует результаты уже выполненного аудита. Новый полный аудит вместо него не проводился; добавлены только постоянные ID, связь с текущим UI Foundation PR и статусы.
 - P0 на исходном этапе не найдено.
+- Исторический visual lock для обеих полос шапки и правой группы: `c547c312c34c285385d7c97971d9d9d608217310` (20.08.2026), до UI Foundation. Текущий PR намеренно восстанавливает оттуда native search, RU/EN, пять social controls, reader control, размеры, радиусы, интервалы и responsive visibility.
 
 ## Неприкосновенные ограничения бренда
 
@@ -22,14 +23,16 @@
 
 | ID | Priority | Area | Проблема | Компоненты / селекторы и затронутые файлы | Target viewport | Planned stage | Status |
 |---|---|---|---|---|---|---|---|
-| UI-001 | P3 | UI foundation | У кнопок не было общего контракта размеров, радиусов, focus и состояний. | `.primary-action`, `.secondary-action`, `.global-search-trigger`, `.reader-button`, language/globe/atlas controls; `src/index.css`, `src/ui/*` | Все, RU/EN | UI Foundation | **CLOSED** — добавлены семантические токены, `Button`, `IconButton`, `ActionLink`, состояния и тестовый fixture. |
-| UI-002 | P3 | Visual QA | Не было полной baseline-матрицы главной и интерактивных состояний. | `tests/e2e/*.spec.mjs`, `playwright.config.mjs`, `tests/e2e/ui-foundation.spec.mjs` | 320–1920, RU/EN | Final QA | **PARTIAL** — сохранены before/after-артефакты и добавлена 9-width geometry/state-проверка; deterministic `toHaveScreenshot`-baseline остаётся будущему PR. |
+| UI-001 | P3 | UI foundation | У кнопок не было общего контракта размеров, радиусов, focus и состояний. | `.primary-action`, `.secondary-action`, globe/atlas controls; `src/index.css`, `src/ui/*` | Все, RU/EN | UI Foundation | **PARTIAL** — семантические токены и primitives сохранены для migrated controls; `.global-search-trigger`, `.reader-button` и RU/EN намеренно возвращены к native historical contract по решению владельца и исключены из дальнейшего redesign. |
+| UI-002 | P3 | Visual QA | Не было полной baseline-матрицы главной и интерактивных состояний. | `tests/e2e/*.spec.mjs`, `playwright.config.mjs`, `tests/e2e/ui-foundation.spec.mjs`, `tests/e2e/header-hero-polish.spec.mjs`, `scripts/capture-header-hero-qa.mjs` | 320–1920, RU/EN | Final QA | **PARTIAL** — добавлена отдельная детерминированная матрица Header/Hero: RU 320/360/390/430/768/1024/1280/1366/1440/1920, EN 360/768/1440/1920 и состояния обоих menu. Она также доказывает возврат обеих полос шапки и Hero к исходному визуалу; окончательный `toHaveScreenshot`-baseline всей главной остаётся будущему PR. |
 | UI-003 | P3 | Typography | `overflow-wrap:anywhere` может разрывать имена внутри слова. | Заголовки/имена карточек; `src/index.css` | 360, 768, RU/EN | Final QA | **OPEN** |
 | UI-004 | P2 | Homepage | Одинаковые KPI повторяются в topline, hero, atlas и каталогах. | Hero/atlas/archive/directory stats; `src/App.tsx`, `src/components/SectionsDirectory.tsx` | Все, особенно 360/768 | Homepage Structure | **OPEN** |
-| HEADER-001 | P1 | Layout grid | У крупных секций разные левые направляющие из-за нескольких gutters/max-width/padding. | `.brand`, `.hero-editorial h1`, `.atlas-heading`, `.book-archive-heading`, `.article-library-heading`, `.calendar-heading`; `src/index.css` | Все, сильнее 1366–1920, RU/EN | Header + Hero | **OPEN** |
-| HEADER-002 | P2 | Mobile navigation | Горизонтальная мобильная навигация скрывает scrollbar, не показывает продолжение и не имеет `aria-current`. | `.mobile-nav`; `src/App.tsx`, `src/index.css` | 360, частично 768, RU/EN | Header + Hero | **OPEN** |
-| HERO-001 | P1 | Hero art direction | На 768 выбирается desktop source, что даёт чрезмерное кадрирование существующей заставки. | `.hero-cover picture`; `src/App.tsx`, `src/index.css` | 768, RU/EN | Header + Hero | **OPEN** |
-| HERO-002 | P2 | Hero typography | Перенос hero-title жёстко задан DOM-разрывами и русской структурой; accent line использует `nowrap`. | Hero title lines/accent; `src/App.tsx`, `src/index.css` | 360, 768, RU/EN | Header + Hero | **OPEN** |
+| UI-005 | P3 | Footer navigation | Между белыми пунктами трёх колонок footer было слишком много вертикального воздуха. | `.footer-map section`; `src/index.css` | 768–1920, RU/EN | Header + Hero | **CLOSED** — итоговый responsive row gap уменьшен с 7 до 5 px без изменения текста, колонок, типографики или кнопок. |
+| HEADER-001 | P1 | Layout grid | У крупных секций разные левые направляющие из-за нескольких gutters/max-width/padding. | `.brand`, `.hero-editorial h1`, `.atlas-heading`, `.book-archive-heading`, `.article-library-heading`, `.calendar-heading`; `src/index.css` | Все, сильнее 1366–1920, RU/EN | Header + Hero | **OPEN** — унификация была отменена по решению владельца, чтобы обе полосы шапки визуально остались точно как до этапа; finding не закрывается скрытым изменением геометрии. |
+| HEADER-002 | P2 | Mobile navigation | Горизонтальная мобильная навигация скрывает scrollbar, не показывает продолжение и не имеет `aria-current`. | `.mobile-nav`; `src/App.tsx`, `src/index.css` | 360, частично 768, RU/EN | Header + Hero | **OPEN** — исходная нижняя полоса восстановлена без визуальных модификаций; улучшение требует отдельного согласования, не меняющего утверждённый вид. |
+| HEADER-003 | P2 | Header menus | Mega-menu закрывались только blur/hover-таймером: Escape не возвращал фокус, клик вне меню мог оставить его открытым. | `.articles-menu`, `.sections-menu`; `src/App.tsx`, `src/components/HeaderArticlesMenu.tsx` | 360–1920, RU/EN | Header + Hero | **CLOSED** — добавлены outside-pointer close, Escape с возвратом фокуса на `summary` и более устойчивый hover grace period; внешний вид панели не изменён. |
+| HERO-001 | P1 | Hero art direction | На 768 выбирается desktop source, что даёт чрезмерное кадрирование существующей заставки. | `.hero-cover picture`; `src/App.tsx`, `src/index.css` | 768, RU/EN | Header + Hero | **OPEN** — исходный breakpoint 680 px восстановлен по решению владельца вместе с прежним визуалом Hero. |
+| HERO-002 | P2 | Hero typography | Перенос hero-title жёстко задан DOM-разрывами и русской структурой; accent line использует `nowrap`. | `.hero-title-lead`, `.hero-title-accent`; `src/App.tsx`, `src/index.css` | 360, 768, RU/EN | Header + Hero | **OPEN** — прежняя типографическая структура восстановлена без визуального изменения. |
 | ATLAS-001 | P1 | Search / combobox | Combobox атласа не реализует APG keyboard model: нет active index, `aria-activedescendant`, ArrowUp/Down и согласованного Enter. | `#country-search[role="combobox"]`, `#country-results [role="option"]`; `src/App.tsx` | Все, RU/EN | Immersive Literary Planet | **OPEN** |
 | ATLAS-002 | P1 | Contrast / type | Мелкая служебная типографика имела 8–10 px, низкую opacity и местами недостаточный контраст. | `.atlas-filters`, `.atlas-ranking`, `.globe-copy`, placeholders, search metadata, `.country-metric`; `src/index.css` | Все, особенно 768–1920 | Immersive Literary Planet | **PARTIAL** — исправлены migrated atlas filter/ranking controls и foundation muted tokens; globe copy, placeholders, search metadata и country metrics остаются. |
 | ATLAS-003 | P1 | Overflow | `overflow-x: clip` маскирует внутреннее переполнение hero/map/cards/footer вместо устранения причины. | `.magazine-app`, `.magazine-hero`, `.world-map-stage`, cards, `#community`, `.site-footer`; `src/index.css` | 360, RU/EN | Immersive Literary Planet | **OPEN** |
@@ -40,11 +43,12 @@
 | GLOBE-005 | P2 | State model | Pending и committed оформление визуально смешаны: `aria-pressed` меняется до готовности canvas. | Globe style buttons, `.is-loading`; `src/components/LiteraryGlobe.tsx`, `src/index.css` | Все | Globe UX Polish | **OPEN** |
 | GLOBE-006 | P2 | Layout stability | Выбранная страна переводит сцену из одной колонки в две и резко ресайзит WebGL. | `.atlas-layout.has-country`; `src/index.css` | 768–1920 | Globe UX Polish | **OPEN** |
 | GLOBE-007 | P2 | Reduced motion | Часть программных переходов использует `behavior:"smooth"` без проверки reduced motion. | Переходы к секциям/книгам; `src/App.tsx`, `src/components/BookArchiveSection.tsx` | Все при `prefers-reduced-motion: reduce` | Globe UX Polish | **OPEN** |
-| MOBILE-001 | P1 | Hit targets | Несколько семейств интерактивных элементов имели область меньше 44×44 px. | Header search/language/reader, atlas ranking, book actions, footer/social; `src/index.css`, migrated components | 360–1920, pointer coarse | Final QA | **PARTIAL** — foundation и migrated core controls имеют 36/44/48 px contract, ключевые header/globe/atlas/hero/book/community controls доведены до безопасных размеров; оставшиеся legacy card/footer/social families не мигрированы. |
+| MOBILE-001 | P1 | Hit targets | Несколько семейств интерактивных элементов имели область меньше 44×44 px. | Header search/language/reader, atlas ranking, book actions, footer/social; `src/index.css`, migrated components | 360–1920, pointer coarse | Final QA | **PARTIAL** — Header/Hero-часть закрыта: search/RU/EN/account и обе CTA имеют минимум 44 px на 320/360/390; foundation и migrated core controls также соблюдают контракт. Оставшиеся legacy card/footer/social families не мигрированы. |
 | MOBILE-002 | P2 | Author cards | Карточки авторов с фиксированной высотой 470 px чрезмерно растягивают mobile-страницу. | `.author-showcase` cards; `src/index.css` | 360, 768 | Homepage Structure | **OPEN** |
 | A11Y-001 | P1 | Focus | `summary` не входил в общий focus-visible selector и получал слабый UA-outline на тёмной шапке. | `.articles-menu > summary`, `.sections-menu > summary`, `.cms-nav-group > summary`; `src/index.css`, header menus | Все, особенно 1366–1920 | UI Foundation | **CLOSED** — `summary:focus-visible` использует общий контрастный focus token. |
 | A11Y-002 | P2 | Loading semantics | Видимые loading-состояния не имеют полного `status`/`aria-live`/`aria-busy` контракта. | `.articles-mega-loading`, `.country-panel.panel-loading`; `src/components/HeaderArticlesMenu.tsx`, `src/App.tsx` | Все | Final QA | **OPEN** |
 | A11Y-003 | P2 | Localization | RU/EN имеют различную структуру и отдельные неполностью локализованные labels/title/empty states. | Article library, country panel, header/global/globe labels, `document.title`; `src/App.tsx` и связанные компоненты | Все, RU/EN | Final QA | **OPEN** |
+| A11Y-004 | P1 | Accessible name | На узком экране подпись reader control визуально скрывается; доступное имя не было закреплено независимо от CSS. | `.reader-button`; `src/App.tsx`, `src/index.css` | 320–390, RU/EN | Header + Hero | **CLOSED** — `aria-label` всегда содержит имя читателя либо локализованное «Войти», без изменения прежней геометрии кнопки. |
 | PERF-001 | P1 | Loading / CLS | Архив сначала пуст и искусственно ждёт; ложное empty-state сменяется крупными секциями и создаёт скачки. | Book/article/sections/calendar/writers/footer; `src/App.tsx`, `src/index.css` | Все, особенно 360/768 и слабый mobile | Homepage Structure | **OPEN** |
 | PERF-002 | P1 | Entry graph | Initial preload включает main, Three, book catalog и CSS — около 700.6 KiB gzip. | Entry document; `vite.config.ts`, `src/App.tsx`, `src/data/bookArchive.ts` | Все, критично 360/768 | Homepage Structure | **OPEN** |
 | PERF-003 | P1 | Search index | Полный индекс стран, писателей и книг строится синхронно до открытия поиска. | `#country-search`, `.global-search-trigger`; `src/App.tsx` | Все, особенно 360 | Homepage Structure | **OPEN** |
@@ -62,8 +66,10 @@
 | UI-002 | Отдельный deterministic visual spec; snapshots обновляются только вручную в review. | 10 base snapshots RU/EN плюс interaction/reduced-motion states; CI не выполняет auto-update. |
 | UI-003 | `overflow-wrap:break-word`, корректный `lang`, управляемая hyphenation. | Набор длинных RU/EN имён не overflow и не разрывается до допустимой точки. |
 | UI-004 | Оставить один основной KPI block, в секциях — только контекстные числа. | Duplicate-copy assertion и mobile DOM/screenshot budget. |
+| UI-005 | Сократить только межстрочный grid gap footer menu, не меняя карту сайта. | Computed `row-gap` каждой из трёх основных колонок = 5 px на desktop; порядок/текст ссылок неизменны. |
 | HEADER-001 | Единые `--page-gutter`/`--content-max` и content-wrapper; full-bleed только у фона. | Разница левых landmarks ≤2 px на целевой матрице RU/EN. |
 | HEADER-002 | Edge fade/scroll hint, snap и `aria-current` либо компактное доступное меню. | Первый/последний пункт достижимы Tab/swipe; current объявлен; document overflow 0. |
+| HEADER-003 | Close-on-outside и Escape с возвратом фокуса, не меняя разметку/стили поверхности. | Enter открывает menu; Escape закрывает и возвращает focus; pointer вне закрывает; панель не выходит за viewport. |
 | HERO-001 | Расширить art-direction breakpoint для уже существующего mobile/tablet asset. | На 768 `currentSrc` равен утверждённому варианту; visual diff сохраняет композицию/логотип. |
 | HERO-002 | Locale-aware soft breaks и balanced wrapping без изменения текста. | `scrollWidth <= clientWidth`; утверждённые 360/768 RU/EN snapshots. |
 | ATLAS-001 | Active index, стабильные option id, `aria-activedescendant`, ArrowUp/Down, Home/End, Enter, Escape. | Полный APG-combobox сценарий; active option совпадает с выбранной страной. |
@@ -81,6 +87,7 @@
 | A11Y-001 | Общий контрастный focus token для `summary`. | После Tab outline не `auto`, indicator contrast ≥3:1, RU/EN snapshot. |
 | A11Y-002 | `role=status`, `aria-live` и связанный `aria-busy`. | При задержке accessibility tree содержит именованный status/busy; после load busy снимается. |
 | A11Y-003 | Locale-aware title/labels/sort и устойчивые локализованные empty states. | Одинаковый порядок landmarks; EN tree/title без RU copy и наоборот; сортировка текущим `Intl.Collator`. |
+| A11Y-004 | Независимое от CSS доступное имя reader control. | Axe без `button-name`; RU/EN accessible name остаётся непустым на 320/360/390. |
 | PERF-001 | Loading state и breakpoint/language-aware skeleton с устойчивым intrinsic size; не показывать empty до import. | Нет ложного empty; top landmarks меняется ≤8 px; CLS ≤0.1; hash deep-link точен. |
 | PERF-002 | Three около atlas, books около books, search по intent; убрать тяжёлое из entry preload graph. | `dist/index.html` не preload-ит Three/book catalog; initial compressed JS+CSS ≤300 KiB. |
 | PERF-003 | Компактный предсобранный индекс или Worker, загрузка по первому focus/open. | 0 builds до открытия, ровно 1 после; mobile TBT ≤200 ms, hydration long task <50 ms. |
@@ -94,20 +101,34 @@
 
 ### CLOSED
 
-- `UI-001` — единый семантический контракт controls и состояний.
 - `A11Y-001` — общий видимый focus для `summary`.
 
 ### PARTIAL
 
-- `UI-002` — добавлены матрица доказательств и автоматические geometry/state checks; screenshot-baseline остаётся Final QA.
+- `UI-001` — primitives и общий контракт сохранены для migrated controls; исторические кнопки шапки исключены по прямому решению владельца.
+- `UI-002` — добавлены foundation и Header/Hero before/after-матрицы и автоматические geometry/state checks; screenshot-baseline всей главной остаётся Final QA.
 - `ATLAS-002` — улучшены migrated atlas controls; оставшийся мелкий служебный текст не входит в текущий scope.
-- `MOBILE-001` — migrated core controls приведены к foundation targets; legacy families остаются Final QA.
+- `MOBILE-001` — Header/Hero и migrated core controls приведены к foundation targets; legacy families остаются Final QA.
+
+## Findings, закрытые Header + Hero Polish
+
+### CLOSED
+
+- `HEADER-003` — menus закрываются вне области и по Escape с возвратом фокуса; внешний вид не менялся.
+- `A11Y-004` — reader control имеет устойчивое локализованное доступное имя.
+- `UI-005` — слегка уменьшен только вертикальный gap белых footer menu items.
+
+### PARTIAL
+
+- `UI-002` — закрыта отдельная Header/Hero visual matrix; full-home snapshot gate остаётся Final QA.
+- `MOBILE-001` — foundation targets сохранены; визуальные размеры исходных кнопок Stage 2 намеренно не меняет.
+- `UI-001` — shared primitives сохранены, но исторические search/RU-EN/social/login controls являются явным owner-approved исключением.
+
+### OPEN по решению владельца
+
+- `HEADER-001`, `HEADER-002`, `HERO-001`, `HERO-002` — ранее подготовленные визуальные изменения отменены; обе полосы шапки и Hero оставлены точно в прежнем виде.
 
 ## OPEN findings по следующим этапам
-
-### Header + Hero
-
-`HEADER-001`, `HEADER-002`, `HERO-001`, `HERO-002`.
 
 ### Immersive Literary Planet
 
@@ -124,6 +145,10 @@
 ### Final QA
 
 `UI-002` (остаток), `UI-003`, `MOBILE-001` (остаток), `A11Y-002`, `A11Y-003`, `PERF-008`.
+
+### Header + Hero (требует нового явного согласования)
+
+`HEADER-001`, `HEADER-002`, `HERO-001`, `HERO-002`.
 
 ## Критерии будущих этапов
 
