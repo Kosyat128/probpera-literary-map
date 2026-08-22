@@ -39,6 +39,9 @@ GITHUB_DEPLOY_REPOSITORY=Kosyat128/probpera-literary-map
 GITHUB_DEPLOY_WORKFLOW=deploy-pages.yml
 GITHUB_DEPLOY_REF=main
 GOOGLE_BOOKS_API_KEY=
+OPENAI_API_KEY=
+OPENAI_TRANSLATION_MODEL=gpt-5.6-sol
+OPENAI_AUTO_TRANSLATE_ARTICLES=true
 YANDEX_METRIKA_COUNTER_ID=
 ```
 
@@ -46,8 +49,17 @@ YANDEX_METRIKA_COUNTER_ID=
 репозитория с разрешением Actions: read and write. Он не должен иметь префикс
 `NEXT_PUBLIC_` и не должен храниться в Git.
 
+`OPENAI_API_KEY` — серверный Secret Worker, используемый только автоматическим
+английским переводчиком статей. Его нельзя объявлять как `NEXT_PUBLIC_*` или
+`VITE_*`. `OPENAI_TRANSLATION_MODEL` и `OPENAI_AUTO_TRANSLATE_ARTICLES` не
+содержат секрета и могут храниться как обычные Variables. Значение по умолчанию
+для модели — `gpt-5.6-sol`, а автоперевод включён, если флаг не установлен в
+`false`.
+
 Если переменные создавались через Dashboard, при ручном deploy используйте
-параметр `--keep-vars`, чтобы Wrangler не удалил их. Приватные значения
+параметр `--keep-vars`, чтобы Wrangler не удалил их. В `apps/admin/wrangler.jsonc`
+также включён `keep_vars: true`, поэтому автоматический deploy из GitHub не
+должен удалять сохранённые в Worker Variables и Secrets. Приватные значения
 добавляются как Secrets: после сохранения Cloudflare не показывает их повторно.
 
 Автоматический deploy из `main` выполняет
@@ -94,6 +106,8 @@ docker compose -f docker-compose.admin.yml up -d
 - `NEXT_PUBLIC_SUPABASE_URL` и `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` могут
   присутствовать в клиентской части;
 - deployment hook — только серверная переменная;
+- `OPENAI_API_KEY` — только серверный Secret, если включён автоматический
+  английский перевод;
 - ни один приватный ключ не должен иметь префикс `NEXT_PUBLIC_` или `VITE_`.
 
 `SUPABASE_SERVICE_ROLE_KEY` не передаётся контейнеру панели. Он допустим только
