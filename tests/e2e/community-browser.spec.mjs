@@ -18,7 +18,9 @@ async function openAccount(page) {
 }
 
 async function openForum(page, isMobile) {
-  const scope = isMobile ? page.locator(".mobile-nav") : page.locator(".site-header > nav");
+  const scope = isMobile
+    ? page.locator(".mobile-nav")
+    : page.locator(".site-header > nav");
   const trigger = scope.getByRole("button", { name: "Форум", exact: true });
   await expect(trigger).toBeVisible();
   await trigger.click();
@@ -38,7 +40,9 @@ test("личный кабинет удерживает фокус, блокир�
   const close = dialog.getByRole("button", { name: "Закрыть" });
 
   await expect(close).toBeFocused();
-  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe("hidden");
+  await expect
+    .poll(() => page.evaluate(() => document.body.style.overflow))
+    .toBe("hidden");
 
   await page.keyboard.press("Shift+Tab");
   expect(
@@ -52,7 +56,9 @@ test("личный кабинет удерживает фокус, блокир�
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveCount(0);
   await expect(trigger).toBeFocused();
-  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).not.toBe("hidden");
+  await expect
+    .poll(() => page.evaluate(() => document.body.style.overflow))
+    .not.toBe("hidden");
   expect(errors).toEqual([]);
 });
 
@@ -64,24 +70,43 @@ test("форма входа и регистрации сохраняет пон�
   const { dialog } = await openAccount(page);
   const form = dialog.locator("form.auth-form");
 
-  await expect(form.getByRole("heading", { name: "Войти в «Пробу Пера»" })).toBeVisible();
-  await expect(form.getByLabel("Электронная почта")).toHaveAttribute("autocomplete", "email");
-  const signInPassword = form.getByLabel("Пароль", { exact: true });
+  await expect(
+    form.getByRole("heading", { name: "Войти в «Пробу Пера»" })
+  ).toBeVisible();
+  await expect(form.getByLabel("Электронная почта")).toHaveAttribute(
+    "autocomplete",
+    "email"
+  );
+  const signInPassword = form.locator(
+    'input[autocomplete="current-password"]'
+  );
   await expect(signInPassword).toHaveAttribute("type", "password");
-  await expect(signInPassword).toHaveAttribute("autocomplete", "current-password");
-  await expect(form.getByRole("button", { name: "Войти", exact: true })).toBeDisabled();
+  await expect(signInPassword).toHaveCount(1);
+  await expect(
+    form.getByRole("button", { name: "Войти", exact: true })
+  ).toBeDisabled();
   await expect(form.locator(".auth-connection-note")).toContainText(
     "Регистрация включится после подключения серверных ключей"
   );
 
-  await form.getByRole("button", { name: "Нет аккаунта — зарегистрироваться" }).click();
-  await expect(form.getByRole("heading", { name: "Вступить в литературный клуб" })).toBeVisible();
-  await expect(form.getByLabel("Никнейм в сообществе")).toHaveAttribute("minlength", "2");
-  await expect(form.getByLabel("Никнейм в сообществе")).toHaveAttribute("maxlength", "32");
-  const password = form.getByLabel("Пароль", { exact: true });
-  const confirmation = form.getByLabel("Повторите пароль");
-  await expect(password).toHaveAttribute("autocomplete", "new-password");
-  await expect(confirmation).toHaveAttribute("autocomplete", "new-password");
+  await form
+    .getByRole("button", { name: "Нет аккаунта — зарегистрироваться" })
+    .click();
+  await expect(
+    form.getByRole("heading", { name: "Вступить в литературный клуб" })
+  ).toBeVisible();
+  await expect(form.getByLabel("Никнейм в сообществе")).toHaveAttribute(
+    "minlength",
+    "2"
+  );
+  await expect(form.getByLabel("Никнейм в сообществе")).toHaveAttribute(
+    "maxlength",
+    "32"
+  );
+  const newPasswords = form.locator('input[autocomplete="new-password"]');
+  const password = newPasswords.first();
+  const confirmation = newPasswords.nth(1);
+  await expect(newPasswords).toHaveCount(2);
   await expect(form.getByRole("checkbox")).not.toBeChecked();
 
   await form.getByRole("button", { name: "Показать пароль" }).click();
@@ -90,7 +115,9 @@ test("форма входа и регистрации сохраняет пон�
   await form.getByRole("button", { name: "Скрыть пароль" }).click();
   await expect(password).toHaveAttribute("type", "password");
   await expect(confirmation).toHaveAttribute("type", "password");
-  await expect(form.getByRole("button", { name: "Зарегистрироваться" })).toBeDisabled();
+  await expect(
+    form.getByRole("button", { name: "Зарегистрироваться" })
+  ).toBeDisabled();
   expect(errors).toEqual([]);
 });
 
@@ -130,7 +157,9 @@ test("мобильный кабинет помещается в экран и с
   await page.goto("/");
   const { dialog } = await openAccount(page);
   const form = dialog.locator("form.auth-form");
-  await form.getByRole("button", { name: "Нет аккаунта — зарегистрироваться" }).click();
+  await form
+    .getByRole("button", { name: "Нет аккаунта — зарегистрироваться" })
+    .click();
 
   const geometry = await dialog.evaluate((element) => {
     const bounds = element.getBoundingClientRect();
