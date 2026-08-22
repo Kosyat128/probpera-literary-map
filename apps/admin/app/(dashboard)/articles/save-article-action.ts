@@ -10,6 +10,8 @@ import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 import { saveArticleAction as legacySaveArticleAction } from "./actions-legacy";
+import { isArticleBundleRpcAvailable } from "./article-bundle-rpc";
+import { saveAutoTranslatedArticleAtomically } from "./atomic-auto-publish-action";
 
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
@@ -196,7 +198,11 @@ export async function saveArticleAction(formData: FormData) {
     formData.set("english_status", "published");
     formData.set("english_confirm_current_source", "on");
 
-    return legacySaveArticleAction(formData);
+    const atomicPersistenceAvailable =
+      supabase && (await isArticleBundleRpcAvailable(supabase));
+    return atomicPersistenceAvailable
+      ? saveAutoTranslatedArticleAtomically(formData)
+      : legacySaveArticleAction(formData);
   } catch (error) {
     const detail =
       error instanceof Error ? error.message : "неизвестная ошибка переводчика";
