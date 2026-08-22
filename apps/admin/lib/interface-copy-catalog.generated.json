@@ -1784,6 +1784,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Закрыть Литературную планету",
+    "group": "Весь интерфейс",
+    "label": "Закрыть Литературную планету",
+    "defaultRu": "Закрыть Литературную планету",
+    "defaultEn": "Close the Literary Planet",
+    "multiline": false
+  },
+  {
     "key": "interface.Закрыть панель",
     "group": "Весь интерфейс",
     "label": "Закрыть панель",
@@ -2117,6 +2125,14 @@
     "label": "Название страны: Ирландия",
     "defaultRu": "Ирландия",
     "defaultEn": "Ireland",
+    "multiline": false
+  },
+  {
+    "key": "interface.Искать в Литературной планете",
+    "group": "Весь интерфейс",
+    "label": "Искать в Литературной планете",
+    "defaultRu": "Искать в Литературной планете",
+    "defaultEn": "Search the Literary Planet",
     "multiline": false
   },
   {
@@ -4816,6 +4832,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Открыть фильтры планеты",
+    "group": "Весь интерфейс",
+    "label": "Открыть фильтры планеты",
+    "defaultRu": "Открыть фильтры планеты",
+    "defaultEn": "Open Literary Planet filters",
+    "multiline": false
+  },
+  {
     "key": "interface.Открыть форум",
     "group": "Весь интерфейс",
     "label": "Открыть форум",
@@ -5240,6 +5264,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Погрузиться",
+    "group": "Весь интерфейс",
+    "label": "Погрузиться",
+    "defaultRu": "Погрузиться",
+    "defaultEn": "Enter the Literary Planet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Погрузиться в Литературную планету",
+    "group": "Весь интерфейс",
+    "label": "Погрузиться в Литературную планету",
+    "defaultRu": "Погрузиться в Литературную планету",
+    "defaultEn": "Enter the Literary Planet",
+    "multiline": false
+  },
+  {
     "key": "interface.Подборки читателей",
     "group": "Весь интерфейс",
     "label": "Подборки читателей",
@@ -5405,6 +5445,14 @@
     "label": "Поиск по книге, автору или стране",
     "defaultRu": "Поиск по книге, автору или стране",
     "defaultEn": "Search by book, writer or country",
+    "multiline": false
+  },
+  {
+    "key": "interface.Поиск по Литературной планете",
+    "group": "Весь интерфейс",
+    "label": "Поиск по Литературной планете",
+    "defaultRu": "Поиск по Литературной планете",
+    "defaultEn": "Search the Literary Planet",
     "multiline": false
   },
   {
@@ -6128,6 +6176,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Развернуть архив страны",
+    "group": "Весь интерфейс",
+    "label": "Развернуть архив страны",
+    "defaultRu": "Развернуть архив страны",
+    "defaultEn": "Expand country archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Разговор о литературе",
     "group": "Весь интерфейс",
     "label": "Разговор о литературе",
@@ -6709,6 +6765,14 @@
     "label": "Сверено с официальным архивом",
     "defaultRu": "Сверено с официальным архивом",
     "defaultEn": "Verified against the official archive",
+    "multiline": false
+  },
+  {
+    "key": "interface.Свернуть архив страны",
+    "group": "Весь интерфейс",
+    "label": "Свернуть архив страны",
+    "defaultRu": "Свернуть архив страны",
+    "defaultEn": "Collapse country archive",
     "multiline": false
   },
   {

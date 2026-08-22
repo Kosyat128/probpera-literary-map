@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 
 import type { UiActionSize, UiActionSurface } from "./Button";
 
@@ -10,7 +10,7 @@ type IconButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "aria-label
   surface?: UiActionSurface;
 };
 
-export default function IconButton({
+const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton({
   "aria-label": ariaLabel,
   className = "",
   disabled,
@@ -20,9 +20,10 @@ export default function IconButton({
   surface = "light",
   type = "button",
   ...props
-}: IconButtonProps) {
+}: IconButtonProps, ref) {
   return (
     <button
+      ref={ref}
       {...props}
       type={type}
       className={[
@@ -40,4 +41,6 @@ export default function IconButton({
       <span className="ui-action__icon" aria-hidden="true">{icon}</span>
     </button>
   );
-}
+});
+
+export default IconButton;

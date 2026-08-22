@@ -24,7 +24,9 @@ const sharedPaletteEnd = publicStyles.indexOf(
 );
 const sharedStarfield = publicStyles.slice(sharedSceneStart, sharedPaletteStart);
 const sharedPalette = publicStyles.slice(sharedPaletteStart, sharedPaletteEnd);
-const stageThemeStart = publicStyles.lastIndexOf(".world-map-stage {");
+const stageThemeStart = publicStyles.indexOf(
+  ".world-map-stage {\n  background:\n    radial-gradient(ellipse at 50% 41%"
+);
 const stageFrameStart = publicStyles.indexOf(
   ".world-map-stage::before {",
   stageThemeStart
@@ -35,6 +37,7 @@ const stageFrameEnd = publicStyles.indexOf(
 );
 const stageTheme = publicStyles.slice(stageThemeStart, stageFrameStart);
 const stageFrame = publicStyles.slice(stageFrameStart, stageFrameEnd);
+const laterStageOverrides = publicStyles.slice(stageFrameEnd);
 
 describe("globe scene starfield", () => {
   it("does not force a 320px document under classic scrollbar viewports", () => {
@@ -58,6 +61,8 @@ describe("globe scene starfield", () => {
     expect(stageTheme).not.toMatch(/\/\s*\d+px\s+\d+px/);
     expect(stageFrame).toContain("background: none");
     expect(stageFrame).not.toMatch(/linear-gradient\([^)]*50%/);
+    expect(laterStageOverrides).not.toMatch(/background-repeat:\s*repeat/);
+    expect(laterStageOverrides).not.toMatch(/background-size:\s*\d+px/);
   });
 
   it("gives every globe mode the exact same visible background palette", () => {

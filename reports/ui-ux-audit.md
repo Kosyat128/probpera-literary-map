@@ -33,9 +33,9 @@
 | HEADER-003 | P2 | Header menus | Mega-menu закрывались только blur/hover-таймером: Escape не возвращал фокус, клик вне меню мог оставить его открытым. | `.articles-menu`, `.sections-menu`; `src/App.tsx`, `src/components/HeaderArticlesMenu.tsx` | 360–1920, RU/EN | Header + Hero | **CLOSED** — добавлены outside-pointer close, Escape с возвратом фокуса на `summary` и более устойчивый hover grace period; внешний вид панели не изменён. |
 | HERO-001 | P1 | Hero art direction | На 768 выбирается desktop source, что даёт чрезмерное кадрирование существующей заставки. | `.hero-cover picture`; `src/App.tsx`, `src/index.css` | 768, RU/EN | Header + Hero | **OPEN** — исходный breakpoint 680 px восстановлен по решению владельца вместе с прежним визуалом Hero. |
 | HERO-002 | P2 | Hero typography | Перенос hero-title жёстко задан DOM-разрывами и русской структурой; accent line использует `nowrap`. | `.hero-title-lead`, `.hero-title-accent`; `src/App.tsx`, `src/index.css` | 360, 768, RU/EN | Header + Hero | **OPEN** — прежняя типографическая структура восстановлена без визуального изменения. |
-| ATLAS-001 | P1 | Search / combobox | Combobox атласа не реализует APG keyboard model: нет active index, `aria-activedescendant`, ArrowUp/Down и согласованного Enter. | `#country-search[role="combobox"]`, `#country-results [role="option"]`; `src/App.tsx` | Все, RU/EN | Immersive Literary Planet | **OPEN** |
-| ATLAS-002 | P1 | Contrast / type | Мелкая служебная типографика имела 8–10 px, низкую opacity и местами недостаточный контраст. | `.atlas-filters`, `.atlas-ranking`, `.globe-copy`, placeholders, search metadata, `.country-metric`; `src/index.css` | Все, особенно 768–1920 | Immersive Literary Planet | **PARTIAL** — исправлены migrated atlas filter/ranking controls и foundation muted tokens; globe copy, placeholders, search metadata и country metrics остаются. |
-| ATLAS-003 | P1 | Overflow | `overflow-x: clip` маскирует внутреннее переполнение hero/map/cards/footer вместо устранения причины. | `.magazine-app`, `.magazine-hero`, `.world-map-stage`, cards, `#community`, `.site-footer`; `src/index.css` | 360, RU/EN | Immersive Literary Planet | **OPEN** |
+| ATLAS-001 | P1 | Search / combobox | Combobox атласа не реализовывал APG keyboard model: не было active index, `aria-activedescendant`, ArrowUp/Down и согласованного Enter. | `#country-search[role="combobox"]`, `#country-results [role="option"]`; `src/App.tsx`, `src/components/AtlasSearchCombobox.tsx`, `src/components/AtlasSearchCombobox.test.tsx` | Все, RU/EN | Immersive Literary Planet | **CLOSED** — единый embedded/immersive combobox имеет стабильные option IDs, active index, `aria-activedescendant`, ArrowUp/Down, Home/End, Enter, Escape и pointer/touch selection. |
+| ATLAS-002 | P1 | Contrast / type | Мелкая служебная типографика имела 8–10 px, низкую opacity и местами недостаточный контраст. | `.atlas-filters`, `.atlas-ranking`, `.globe-copy`, `.globe-instruction`, selected-country labels, placeholders, search metadata, `.country-metric`; `src/index.css` | Все, особенно 768–1920 | Immersive Literary Planet / Globe UX Polish / Final QA | **PARTIAL** — основная Atlas microcopy поднята до 12 px и более плотных semantic colors. Остались `.globe-instruction` 10 px и selected-country labels 9–10 px; rendered forced-colors/gradient verification переносится в Stage 4 / Final QA. |
+| ATLAS-003 | P1 | Overflow | `overflow-x: clip` маскирует внутреннее переполнение hero/map/cards/footer вместо устранения причины. | `.magazine-app`, `.magazine-hero`, `.atlas-experience-*`, `.world-map-stage`, cards, `#community`, `.site-footer`; `src/App.tsx`, `src/index.css` | 360, RU/EN | Immersive Literary Planet / Final QA | **PARTIAL** — Atlas surface, overlays, panel/sheet и filter row получили `min-width:0`, safe sizing, containment и явный horizontal-scroll allowlist. Общий legacy `overflow-x: clip` и причины вне Atlas остались Final QA/Homepage scope. |
 | GLOBE-001 | P1 | Country panel | После выбора страны на mobile панель остаётся далеко ниже viewport, focus не переносится. | `.atlas-layout.has-country`, `.country-panel`; `src/App.tsx`, `src/components/GlobalSearch.tsx`, `src/components/WriterPanel.tsx`, `src/index.css` | 360, 768, RU/EN | Globe UX Polish | **OPEN** |
 | GLOBE-002 | P1 | Keyboard | Стрелки вращают глобус, но не формируют keyboard candidate; Enter не может выбрать новую страну без pointer. | `.literary-globe[role="region"]`; `src/components/LiteraryGlobe.tsx`, `src/components/globeInteraction.ts` | Все, RU/EN | Globe UX Polish | **OPEN** |
 | GLOBE-003 | P1 | Touch | Большой canvas с `touch-action:none` создаёт scroll trap и не имеет явного режима «страница/глобус». | `.literary-globe canvas`; `src/index.css`, `src/components/LiteraryGlobe.tsx` | 360, 768 touch | Globe UX Polish | **OPEN** |
@@ -107,7 +107,7 @@
 
 - `UI-001` — primitives и общий контракт сохранены для migrated controls; исторические кнопки шапки исключены по прямому решению владельца.
 - `UI-002` — добавлены foundation и Header/Hero before/after-матрицы и автоматические geometry/state checks; screenshot-baseline всей главной остаётся Final QA.
-- `ATLAS-002` — улучшены migrated atlas controls; оставшийся мелкий служебный текст не входит в текущий scope.
+- `ATLAS-002` — UI Foundation закрыл только migrated controls; Stage 3 закрыл основную Atlas microcopy, но остаток по `.globe-instruction`, selected-country labels и rendered forced-colors остаётся Stage 4 / Final QA.
 - `MOBILE-001` — Header/Hero и migrated core controls приведены к foundation targets; legacy families остаются Final QA.
 
 ## Findings, закрытые Header + Hero Polish
@@ -128,15 +128,37 @@
 
 - `HEADER-001`, `HEADER-002`, `HERO-001`, `HERO-002` — ранее подготовленные визуальные изменения отменены; обе полосы шапки и Hero оставлены точно в прежнем виде.
 
+## Findings, затронутые Immersive Literary Planet
+
+### CLOSED
+
+- `ATLAS-001` — поиск атласа получил единый APG combobox для embedded и immersive presentation.
+
+### PARTIAL
+
+- `ATLAS-002` — основная globe copy, placeholders, search metadata и country metrics подняты до 12 px и более плотных colors. `.globe-instruction` остаётся 10 px, selected-country labels — 9–10 px; rendered forced-colors/gradient verification остаётся Stage 4 / Final QA.
+- `ATLAS-003` — контейнеры Atlas и immersive overlays исправлены; глобальный legacy clip и overflow-причины вне Atlas остаются открытыми для Final QA/Homepage Structure.
+
+`GLOBE-001`–`GLOBE-007` сознательно не закрываются этим Stage 3 PR и остаются Stage 4 scope.
+
+### Stage 3 QA evidence
+
+- TypeScript: **PASS — `npm run typecheck`**.
+- Targeted reducer/combobox/URL/globe tests: **PASS — 5 files / 32 tests**.
+- Full Vitest `--maxWorkers=4`: **PASS — 241 files / 1255 passed + 1 skipped**.
+- Stage 3 Playwright current-source suite: **PASS — 9 passed / 9 intentionally skipped in 1.8 min**.
+- Existing globe/responsive Playwright regressions: **PASS — 22 / 22 in 2.2 min**.
+- Production build: **PASS — 1015 modules**; article/redirect generation: **161 articles / 2097 redirects**; SEO: **5262 ready**; domain: **11319 / 11319**.
+- Performance: **PASS — 114,028,640 / 114,819,072 bytes; margin 790,432; 4323 files**.
+- Visual evidence: [`reports/stage3-visual-evidence/README.md`](stage3-visual-evidence/README.md), **26 PNG + README**, P0/P1 отсутствуют. Остались P2 swipe-affordance у `.atlas-filters` и P3 визуальное дублирование selected label через collapsed mobile sheet header.
+- Reduced motion: browser harness не предоставляет CSS media emulation, поэтому rendered screenshot не заявляется; economical capture является только performance-fallback proxy, а reduced-motion contract покрыт автоматическими state/tests.
+- Full-tree `git diff --check`: **PASS — final full-tree run, exit 0; только CRLF notices**.
+
 ## OPEN findings по следующим этапам
-
-### Immersive Literary Planet
-
-`ATLAS-001`, `ATLAS-002` (остаток), `ATLAS-003`.
 
 ### Globe UX Polish
 
-`GLOBE-001`–`GLOBE-007`.
+`GLOBE-001`–`GLOBE-007`; `ATLAS-002` — размер/контраст `.globe-instruction` и selected-country labels.
 
 ### Homepage Structure
 
@@ -144,7 +166,7 @@
 
 ### Final QA
 
-`UI-002` (остаток), `UI-003`, `MOBILE-001` (остаток), `A11Y-002`, `A11Y-003`, `PERF-008`.
+`UI-002` (остаток), `UI-003`, `ATLAS-002` (rendered forced-colors/gradient verification), `ATLAS-003` (остаток вне Atlas), `MOBILE-001` (остаток), `A11Y-002`, `A11Y-003`, `PERF-008`.
 
 ### Header + Hero (требует нового явного согласования)
 
@@ -153,7 +175,7 @@
 ## Критерии будущих этапов
 
 - Header + Hero: разница левых guides ≤2 px; mobile navigation полностью достижима; 768 использует утверждённый существующий art-directed source; RU/EN не переполняются.
-- Immersive Literary Planet: APG combobox; gradient-aware contrast; видимый контент не выходит за viewport вне явного horizontal-scroll allowlist.
+- Immersive Literary Planet: APG combobox закрыт; основная Atlas microcopy исправлена, а остаток `ATLAS-002` явно перенесён в Globe UX Polish / Final QA. Видимый Atlas content не выходит за viewport вне явного horizontal-scroll allowlist; глобальный overflow-остаток проверяется Final QA.
 - Globe UX Polish: keyboard-only selection; touch scroll/activation contract; country panel видна и получает focus; committed/pending состояния разделены; idle WebGL переходит в demand.
 - Homepage Structure: CLS ≤0.1; initial compressed JS+CSS ≤300 KiB; нет ложного empty-state; далёкие секции не грузятся до intent; deep links сохраняются.
 - Final QA: deterministic visual matrix 5×2 плюс states/reduced motion; target-size/contrast/localization/loading semantics; snapshot updates только осознанным PR.
