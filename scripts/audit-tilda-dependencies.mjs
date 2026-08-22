@@ -90,12 +90,32 @@ export function classifyTildaPath(relativePath, manifest) {
 }
 
 function sortedUnique(values) {
-  return [...new Set(values)].sort((left, right) => left.localeCompare(right, "en"));
+  return [...new Set(values)].sort((left, right) =>
+    left.localeCompare(right, "en")
+  );
 }
 
 function difference(left, right) {
   const rightSet = new Set(right);
   return left.filter((value) => !rightSet.has(value));
+}
+
+function readGeneratedBudget(manifest) {
+  const budget = manifest.generatedBudget;
+  if (!budget) return null;
+  const maxOccurrences = Number(budget.maxOccurrences);
+  const maxUniqueUrls = Number(budget.maxUniqueUrls);
+  if (
+    !Number.isSafeInteger(maxOccurrences) ||
+    maxOccurrences < 0 ||
+    !Number.isSafeInteger(maxUniqueUrls) ||
+    maxUniqueUrls < 0
+  ) {
+    throw new Error(
+      "generatedBudget must contain non-negative safe integer limits"
+    );
+  }
+  return { maxOccurrences, maxUniqueUrls };
 }
 
 export async function auditTildaDependencies({
@@ -105,6 +125,7 @@ export async function auditTildaDependencies({
 } = {}) {
   const manifest =
     suppliedManifest || JSON.parse(await fs.readFile(manifestPath, "utf8"));
+  const generatedBudget = readGeneratedBudget(manifest);
   const runtimeRoots = manifest.runtimeRoots || ["src", "public"];
   const runtimeFiles = await collectRuntimeTextFiles(rootDir, runtimeRoots);
   const matches = [];
@@ -168,6 +189,30 @@ export async function auditTildaDependencies({
   }
 
   const generated = matches.filter((match) => match.category === "generated");
+  const generatedOccurrences = generated.reduce(
+    (total, match) => total + match.occurrences,
+    0
+  );
+  const generatedUniqueUrls = sortedUnique(
+    generated.flatMap((match) => match.urls)
+  ).length;
+  if (
+    generatedBudget &&
+    generatedOccurrences > generatedBudget.maxOccurrences
+  ) {
+    errors.push(
+      `generated runtime snapshots contain ${generatedOccurrences} Tilda occurrence(s), above the reviewed ceiling ${generatedBudget.maxOccurrences}`
+    );
+  }
+  if (
+    generatedBudget &&
+    generatedUniqueUrls > generatedBudget.maxUniqueUrls
+  ) {
+    errors.push(
+      `generated runtime snapshots contain ${generatedUniqueUrls} unique Tilda URL(s), above the reviewed ceiling ${generatedBudget.maxUniqueUrls}`
+    );
+  }
+
   const totalOccurrences = matches.reduce(
     (total, match) => total + match.occurrences,
     0
@@ -183,11 +228,17 @@ export async function auditTildaDependencies({
     handwritten: handwrittenSummary,
     generated: {
       files: generated.length,
-      occurrences: generated.reduce(
-        (total, match) => total + match.occurrences,
-        0
-      ),
-      uniqueUrls: sortedUnique(generated.flatMap((match) => match.urls)).length,
+      occurrences: generatedOccurrences,
+      uniqueUrls: generatedUniqueUrls,
+      budget: generatedBudget
+        ? {
+            ...generatedBudget,
+            occurrenceHeadroom:
+              generatedBudget.maxOccurrences - generatedOccurrences,
+            uniqueUrlHeadroom:
+              generatedBudget.maxUniqueUrls - generatedUniqueUrls,
+          }
+        : null,
       largestFiles: generated
         .slice()
         .sort(
