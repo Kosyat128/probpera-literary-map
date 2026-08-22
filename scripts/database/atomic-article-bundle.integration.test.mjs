@@ -111,7 +111,7 @@ function integrationSql() {
   if (count !== 1) {
     throw new Error(`Atomic fixture must contain one migration marker; found ${count}`);
   }
-  return contractTemplate.replace(marker, migration.trim());
+  return contractTemplate.replace(marker, () => migration.trim());
 }
 
 describe("atomic article bundle PostgreSQL contract", () => {
