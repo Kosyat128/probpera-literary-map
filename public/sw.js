@@ -37,6 +37,15 @@ async function rememberResponse(cacheName, request, response, maxEntries) {
   }
 }
 
+async function cachedResponse(cacheName, request) {
+  try {
+    const cache = await caches.open(cacheName);
+    return await cache.match(request);
+  } catch {
+    return undefined;
+  }
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -70,24 +79,23 @@ self.addEventListener("activate", (event) => {
           trimCache(PAGE_CACHE, PAGE_CACHE_LIMIT),
         ])
       )
+      .catch(() => undefined)
       .then(() => self.clients.claim())
   );
 });
 
 async function networkFirst(request) {
-  const cache = await caches.open(PAGE_CACHE);
   try {
     const response = await fetch(request);
     await rememberResponse(PAGE_CACHE, request, response, PAGE_CACHE_LIMIT);
     return response;
   } catch {
-    return (await cache.match(request)) || Response.error();
+    return (await cachedResponse(PAGE_CACHE, request)) || Response.error();
   }
 }
 
 async function cacheFirst(request) {
-  const cache = await caches.open(STATIC_CACHE);
-  const cached = await cache.match(request);
+  const cached = await cachedResponse(STATIC_CACHE, request);
   if (cached) return cached;
   const response = await fetch(request);
   await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT);
