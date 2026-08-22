@@ -35,7 +35,46 @@ describe("service worker cache bounds", () => {
   it("does not retain no-store responses or search stale cache generations", () => {
     expect(source).toContain('response.headers.get("Cache-Control")');
     expect(source).toContain("no-store");
-    expect(source).toContain("const cached = await cache.match(request)");
+    expect(source).toContain("return await cache.match(request)");
     expect(source).not.toContain("const cached = await caches.match(request)");
+  });
+
+  it("keeps a fresh response usable when runtime cache maintenance fails", () => {
+    expect(source).toContain("async function rememberResponse");
+    expect(source).toContain("async function cachedResponse");
+    expect(source).toContain("await cache.put(request, response.clone())");
+    expect(source).toContain("never hide a fresh response");
+    expect(source).toContain(
+      "await rememberResponse(PAGE_CACHE, request, response, PAGE_CACHE_LIMIT)"
+    );
+    expect(source).toContain(
+      "await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT)"
+    );
+  });
+
+  it("attempts network-first requests before touching CacheStorage", () => {
+    const networkFirst = source.slice(
+      source.indexOf("async function networkFirst"),
+      source.indexOf("async function cacheFirst")
+    );
+    expect(networkFirst.indexOf("await fetch(request)")).toBeLessThan(
+      networkFirst.indexOf("cachedResponse(PAGE_CACHE, request)")
+    );
+    expect(networkFirst).not.toContain("await caches.open(PAGE_CACHE)");
+
+    const cacheFirst = source.slice(
+      source.indexOf("async function cacheFirst"),
+      source.indexOf('self.addEventListener("fetch"')
+    );
+    expect(cacheFirst).toContain("await cachedResponse(STATIC_CACHE, request)");
+    expect(cacheFirst).toContain("const response = await fetch(request)");
+    expect(cacheFirst).not.toContain("await caches.open(STATIC_CACHE)");
+  });
+
+  it("does not block installation or activation on optional cleanup", () => {
+    expect(source.match(/\.catch\(\(\) => undefined\)/gu)).toHaveLength(2);
+    expect(source).toContain("Promise.allSettled([");
+    expect(source).toContain(".then(() => self.skipWaiting())");
+    expect(source).toContain(".then(() => self.clients.claim())");
   });
 });
