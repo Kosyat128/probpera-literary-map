@@ -92,7 +92,7 @@ test("reduced motion disables foundation transitions and keeps loading geometry"
   await page.emulateMedia({ reducedMotion: "reduce" });
   await settleHomepage(page, 360);
 
-  const control = page.locator(".global-search-trigger");
+  const control = page.locator(".hero-actions .ui-action--primary");
   await expect(control).toHaveCSS("transition-duration", "0s");
 
   const result = await page.evaluate(() => {

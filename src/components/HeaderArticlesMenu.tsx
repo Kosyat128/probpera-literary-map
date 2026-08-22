@@ -54,6 +54,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const closeTimer = useRef<number | null>(null);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
   const t = useCallback(
     (text: string) => translateInterfaceText(text, language),
     [language]
@@ -67,6 +68,22 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
   }, []);
 
   useEffect(() => cancelScheduledClose, [cancelScheduledClose]);
+
+  useEffect(() => {
+    const closeFromOutside = (event: PointerEvent) => {
+      const details = detailsRef.current;
+      if (
+        !details?.open ||
+        !(event.target instanceof Node) ||
+        details.contains(event.target)
+      ) {
+        return;
+      }
+      details.removeAttribute("open");
+    };
+    document.addEventListener("pointerdown", closeFromOutside, true);
+    return () => document.removeEventListener("pointerdown", closeFromOutside, true);
+  }, []);
 
   const loadArticles = useCallback(() => {
     if (articles.length || loading) return;
@@ -111,6 +128,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
 
   return (
     <details
+      ref={detailsRef}
       className="articles-menu"
       onPointerEnter={() => {
         cancelScheduledClose();
@@ -123,7 +141,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
         closeTimer.current = window.setTimeout(() => {
           if (!details.matches(":hover")) details.removeAttribute("open");
           closeTimer.current = null;
-        }, 140);
+        }, 240);
       }}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -131,6 +149,12 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
         }
       }}
       onFocusCapture={loadArticles}
+      onKeyDown={(event) => {
+        if (event.key !== "Escape" || !event.currentTarget.open) return;
+        event.preventDefault();
+        event.currentTarget.removeAttribute("open");
+        event.currentTarget.querySelector("summary")?.focus();
+      }}
       onToggle={(event) => {
         if (event.currentTarget.open) loadArticles();
       }}

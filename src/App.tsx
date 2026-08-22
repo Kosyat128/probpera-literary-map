@@ -19,7 +19,6 @@ import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
 import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
-import BrandUserIcon from "./components/BrandUserIcon";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -488,6 +487,7 @@ export default function App() {
   const atlasRef = useRef<HTMLElement>(null);
   const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
+  const sectionsMenuRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     const syncRoute = () => setCurrentPathname(window.location.pathname);
@@ -522,6 +522,22 @@ export default function App() {
   }, []);
 
   useEffect(() => cancelSectionsMenuClose, [cancelSectionsMenuClose]);
+
+  useEffect(() => {
+    const closeFromOutside = (event: PointerEvent) => {
+      const details = sectionsMenuRef.current;
+      if (
+        !details?.open ||
+        !(event.target instanceof Node) ||
+        details.contains(event.target)
+      ) {
+        return;
+      }
+      details.removeAttribute("open");
+    };
+    document.addEventListener("pointerdown", closeFromOutside, true);
+    return () => document.removeEventListener("pointerdown", closeFromOutside, true);
+  }, []);
 
   useEffect(() => {
     if (directArticleRoute) return undefined;
@@ -1178,6 +1194,7 @@ export default function App() {
           <a href="#atlas">{t("Литературная планета")}</a>
           <HeaderArticlesMenu language={language} />
           <details
+            ref={sectionsMenuRef}
             className="sections-menu"
             onPointerEnter={cancelSectionsMenuClose}
             onPointerLeave={(event) => {
@@ -1187,12 +1204,18 @@ export default function App() {
               sectionsMenuCloseTimer.current = window.setTimeout(() => {
                 if (!details.matches(":hover")) details.removeAttribute("open");
                 sectionsMenuCloseTimer.current = null;
-              }, 140);
+              }, 240);
             }}
             onBlur={(event) => {
               if (!event.currentTarget.contains(event.relatedTarget)) {
                 event.currentTarget.removeAttribute("open");
               }
+            }}
+            onKeyDown={(event) => {
+              if (event.key !== "Escape" || !event.currentTarget.open) return;
+              event.preventDefault();
+              event.currentTarget.removeAttribute("open");
+              event.currentTarget.querySelector("summary")?.focus();
             }}
           >
             <summary>
@@ -1265,30 +1288,33 @@ export default function App() {
         </nav>
 
         <div className="header-actions">
-          <Button
+          <button
             className="global-search-trigger"
-            surface="dark"
-            variant="secondary"
-            startIcon={<BrandSearchIcon />}
+            type="button"
             onClick={() => setGlobalSearchOpen(true)}
             aria-label={t("Открыть единый поиск")}
           >
+            <span aria-hidden="true">⌕</span>
             <small>{t("Поиск")}</small>
             <kbd>/</kbd>
-          </Button>
+          </button>
           <InterfaceLanguageControl />
           <SocialLinks />
-          <Button
+          <button
             className="reader-button"
-            surface="dark"
-            variant="secondary"
-            startIcon={
-              readerName.slice(0, 1).toUpperCase() || <BrandUserIcon />
-            }
+            aria-label={readerName || t("Войти")}
+            type="button"
             onClick={() => openCommunity("account")}
           >
+            <span>
+              {readerName.slice(0, 1).toUpperCase() || (
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M12 12.3a4.15 4.15 0 1 0 0-8.3 4.15 4.15 0 0 0 0 8.3Zm-7 7.1c.8-3.3 3.45-5.15 7-5.15s6.2 1.85 7 5.15" />
+                </svg>
+              )}
+            </span>
             {readerName || t("Войти")}
-          </Button>
+          </button>
         </div>
       </header>
 

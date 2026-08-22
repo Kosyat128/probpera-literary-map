@@ -1185,7 +1185,7 @@ main [id] {
     transform 180ms ease;
 }
 
-.reader-button > .ui-action__icon {
+.reader-button span {
   display: grid;
   place-items: center;
   width: 28px;
@@ -1225,8 +1225,8 @@ main [id] {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  height: var(--ui-control-md);
-  padding: 0;
+  height: 32px;
+  padding: 3px;
   background: rgba(19, 2, 32, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
@@ -1235,13 +1235,12 @@ main [id] {
 .interface-language-control button {
   display: grid;
   place-items: center;
-  min-width: var(--ui-control-md);
-  height: var(--ui-control-md);
-  min-height: var(--ui-control-md);
-  padding: 0;
+  min-width: 27px;
+  height: 24px;
+  padding: 0 6px;
   color: rgba(255, 255, 255, 0.58);
   font: inherit;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 900;
   letter-spacing: 0.08em;
   background: transparent;
@@ -13604,7 +13603,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-size: 9px;
 }
 
-@media (max-width: 1580px) {
+@media (max-width: 1520px) {
   .global-search-trigger {
     width: 38px;
     justify-content: center;
@@ -15459,7 +15458,7 @@ html[data-theme="book"] .calendar-heading h3 {
     color: transparent;
   }
 
-  .reader-button > .ui-action__icon {
+  .reader-button span {
     flex: 0 0 28px;
     color: var(--violet-800);
   }
@@ -16998,7 +16997,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .footer-map section {
-  gap: 7px;
+  gap: 5px;
 }
 
 .footer-map h2 {
@@ -17953,13 +17952,5 @@ html[data-theme="book"] .calendar-heading h3 {
   .ui-icon-button:focus-visible,
   summary:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media (max-width: 1580px) {
-  .header-actions .global-search-trigger {
-    width: var(--ui-control-md);
-    min-width: var(--ui-control-md);
-    height: var(--ui-control-md);
   }
 }

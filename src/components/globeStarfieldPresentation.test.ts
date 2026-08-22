@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const publicStyles = readFileSync(
   new URL("../index.css", import.meta.url),
   "utf8"
-);
+).replace(/\r\n/gu, "\n");
 const globeSource = readFileSync(
   new URL("./LiteraryGlobe.tsx", import.meta.url),
   "utf8"
