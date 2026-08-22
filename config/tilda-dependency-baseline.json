@@ -29,5 +29,9 @@
     "src/data/articles/cms.generated.ts",
     "public/articles/",
     "public/cms/"
-  ]
+  ],
+  "generatedBudget": {
+    "maxOccurrences": 5243,
+    "maxUniqueUrls": 1568
+  }
 }
