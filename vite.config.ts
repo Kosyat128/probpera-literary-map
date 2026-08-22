@@ -20,9 +20,12 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     resolve: {
-      alias: {
-        "@": fileURLToPath(new URL("./apps/admin", import.meta.url)),
-      },
+      alias: [
+        {
+          find: /^@\//u,
+          replacement: fileURLToPath(new URL("./apps/admin/", import.meta.url)),
+        },
+      ],
     },
     define: {
       __YANDEX_METRIKA_COUNTER_ID__: JSON.stringify(rawMetrikaCounterId),
