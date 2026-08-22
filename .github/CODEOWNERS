@@ -1,0 +1,14 @@
+# Every repository change has an explicit owner.
+* @Kosyat128
+
+# Security, deployment, database and editorial administration boundaries.
+/.github/ @Kosyat128
+/supabase/ @Kosyat128
+/apps/admin/ @Kosyat128
+/scripts/database/ @Kosyat128
+/scripts/cloudflare/ @Kosyat128
+/public/sw.js @Kosyat128
+/package.json @Kosyat128
+/package-lock.json @Kosyat128
+/vite.config.ts @Kosyat128
+/playwright.config.mjs @Kosyat128
