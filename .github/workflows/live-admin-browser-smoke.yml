@@ -1,0 +1,50 @@
+name: Live admin browser smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "47 3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-admin-browser-smoke
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Audit live admin login
+        run: node scripts/audit-live-admin-browser.mjs
+        env:
+          ADMIN_SITE_URL: https://admin.probpera.ru
+
+      - name: Upload live admin browser report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: live-admin-browser-report
+          path: reports/live-admin-browser
+          if-no-files-found: warn
+          retention-days: 14
