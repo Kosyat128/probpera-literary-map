@@ -43,6 +43,14 @@ OPENAI_AUTO_TRANSLATE_ARTICLES=true
 
 `gpt-5.6-sol` используется по умолчанию для максимального качества литературного перевода. Модель можно заменить серверной переменной окружения без изменения кода. Установка `OPENAI_AUTO_TRANSLATE_ARTICLES=false` полностью отключает автоматические переводы.
 
+## Активация в Cloudflare Production
+
+Редакционная панель работает в Worker `probpera-admin`. В Cloudflare Dashboard откройте Worker → **Settings → Variables and Secrets** и добавьте `OPENAI_API_KEY` именно как **Secret**. `OPENAI_TRANSLATION_MODEL` и `OPENAI_AUTO_TRANSLATE_ARTICLES` можно добавить как обычные Variables; при их отсутствии используются значения по умолчанию выше.
+
+В `apps/admin/wrangler.jsonc` включён `keep_vars: true`, поэтому последующие автоматические deploy из GitHub сохраняют эти Worker Variables и Secrets.
+
+После сохранения ключа откройте в админке раздел **«Состояние сайта»**. Карточка **«Автоперевод EN»** должна показывать **«Готов»** и название активной модели. Если отображается **«Нужен API key»**, Worker ещё не получил `OPENAI_API_KEY`; если **«Отключён»**, проверьте `OPENAI_AUTO_TRANSLATE_ARTICLES`.
+
 ## Аудит
 
 Успешный перевод создаёт событие `article.auto_translation.succeeded` с моделью, request id, source hash, количеством входных/выходных токенов и длительностью. Полный текст статьи и API key в журнал не записываются.
