@@ -24,6 +24,10 @@ const reviewedMigrations = [
   ["20260820_homepage_book_month_editorial_choice.sql", "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"],
   ["20260820_literary_work_cover_artworks.sql", "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"],
   ["20260822_staff_editorial_read_rls.sql", "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"],
+  [
+    "20260822_zz_atomic_article_bundle.sql",
+    "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -226,7 +230,8 @@ begin
 
   if to_regprocedure('public.get_editorial_schema_health()') is null
     or to_regprocedure('public.enqueue_public_build_request(text,text,text,jsonb)') is null
-    or to_regprocedure('public.move_homepage_block(uuid,text)') is null then
+    or to_regprocedure('public.move_homepage_block(uuid,text)') is null
+    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
 
@@ -306,9 +311,10 @@ ${values}
   );
   health := public.get_editorial_schema_health();
   if health is null
-    or health ->> 'version' <> '20260822_staff_editorial_read_rls'
+    or health ->> 'version' <> '20260822_zz_atomic_article_bundle'
     or not coalesce((health ->> 'outbox')::boolean, false)
     or not coalesce((health ->> 'outboxRpc')::boolean, false)
+    or not coalesce((health ->> 'articleBundleRpc')::boolean, false)
     or not coalesce((health ->> 'migrationLedger')::boolean, false)
     or not coalesce((health ->> 'publicationTriggers')::boolean, false)
     or not coalesce((health ->> 'staffEditorialReadPolicies')::boolean, false)
@@ -354,6 +360,7 @@ select concat(
   'schema_health=', health ->> 'version',
   ';outbox=', health ->> 'outbox',
   ';outbox_rpc=', health ->> 'outboxRpc',
+  ';article_bundle_rpc=', health ->> 'articleBundleRpc',
   ';publication_triggers=', health ->> 'publicationTriggers',
   ';staff_editorial_read_policies=', health ->> 'staffEditorialReadPolicies',
   ';revision_history=', health ->> 'revisionHistory',

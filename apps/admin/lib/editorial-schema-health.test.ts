@@ -13,7 +13,7 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260822_staff_editorial_read_rls.sql"
+    "supabase/migrations/20260822_zz_atomic_article_bundle.sql"
   ),
   "utf8"
 );
@@ -26,6 +26,7 @@ const completeHealth: EditorialSchemaHealth = {
   version: CURRENT_EDITORIAL_SCHEMA_VERSION,
   outbox: true,
   outboxRpc: true,
+  articleBundleRpc: true,
   migrationLedger: true,
   publicationTriggers: true,
   staffEditorialReadPolicies: true,
@@ -52,6 +53,7 @@ describe("editorial schema health", () => {
     expect(productionMigrationPlanner).toContain(
       `health ->> 'version' <> '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
     );
+    expect(productionMigrationPlanner).toContain("health ->> 'articleBundleRpc'");
   });
 
   it("rejects every missing or false required database capability", () => {
@@ -73,7 +75,7 @@ describe("editorial schema health", () => {
     expect(
       getMissingEditorialSchemaCapabilities({
         ...completeHealth,
-        version: "20260820_literary_work_cover_artworks",
+        version: "20260822_staff_editorial_read_rls",
       })
     ).toContain("актуальная версия схемы");
     expect(

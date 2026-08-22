@@ -66,7 +66,11 @@ describe("canonical staff editorial read migration", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations.at(-1)).toEqual({
+      expect(
+        manifest.migrations.find(
+          (item) => item.version === "20260822_staff_editorial_read_rls"
+        )
+      ).toEqual({
         filename: migrationFilename,
         version: "20260822_staff_editorial_read_rls",
         sha256: expectedDigest,
