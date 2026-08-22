@@ -86,6 +86,7 @@ function loadTurnstile() {
     script.addEventListener("error", fail, { once: true });
     document.head.append(script);
   }).catch((error) => {
+    document.getElementById(TURNSTILE_SCRIPT_ID)?.remove();
     turnstileLoader = null;
     throw error;
   });
