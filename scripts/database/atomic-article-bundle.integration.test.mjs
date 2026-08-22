@@ -111,7 +111,22 @@ function integrationSql() {
   if (count !== 1) {
     throw new Error(`Atomic fixture must contain one migration marker; found ${count}`);
   }
-  return contractTemplate.replace(marker, () => migration.trim());
+  const productionOutboxProbe = `
+create or replace function public.capture_public_build_outbox()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $probpera_fixture_outbox$
+begin
+  return case when tg_op = 'DELETE' then old else new end;
+end;
+$probpera_fixture_outbox$;
+`;
+  return contractTemplate.replace(
+    marker,
+    () => `${productionOutboxProbe}\n${migration.trim()}`
+  );
 }
 
 describe("atomic article bundle PostgreSQL contract", () => {
