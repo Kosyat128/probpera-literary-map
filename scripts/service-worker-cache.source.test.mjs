@@ -38,4 +38,23 @@ describe("service worker cache bounds", () => {
     expect(source).toContain("const cached = await cache.match(request)");
     expect(source).not.toContain("const cached = await caches.match(request)");
   });
+
+  it("keeps a fresh response usable when runtime cache maintenance fails", () => {
+    expect(source).toContain("async function rememberResponse");
+    expect(source).toContain("await cache.put(request, response.clone())");
+    expect(source).toContain("never hide a fresh response");
+    expect(source).toContain(
+      "await rememberResponse(PAGE_CACHE, request, response, PAGE_CACHE_LIMIT)"
+    );
+    expect(source).toContain(
+      "await rememberResponse(STATIC_CACHE, request, response, STATIC_CACHE_LIMIT)"
+    );
+  });
+
+  it("does not block installation or activation on optional cleanup", () => {
+    expect(source).toContain(".catch(() => undefined)");
+    expect(source).toContain("Promise.allSettled([");
+    expect(source).toContain(".then(() => self.skipWaiting())");
+    expect(source).toContain(".then(() => self.clients.claim())");
+  });
 });
