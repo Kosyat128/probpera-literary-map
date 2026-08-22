@@ -101,6 +101,33 @@ function publishErrorPath(articleId: string | null, message: string) {
     : `/articles/new?error=${encodeURIComponent(message)}`;
 }
 
+function isUuid(value: string | null) {
+  return Boolean(
+    value &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(
+        value
+      )
+  );
+}
+
+function isValidUrl(value: string | null) {
+  if (!value) return true;
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isValidTimestamp(value: string | null) {
+  return !value || !Number.isNaN(Date.parse(value));
+}
+
+function itemTextsFit(items: Array<{ text: string }>) {
+  return items.every((item) => item.text.length <= 1000);
+}
+
 export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -117,6 +144,8 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
   const title = String(formData.get("title") || "").trim();
   const subtitle = String(formData.get("subtitle") || "").trim();
   const excerpt = String(formData.get("excerpt") || "").trim();
+  const rawContentHtml = String(formData.get("content_html") || "");
+  const rawContentJson = String(formData.get("content_json") || "{}");
   const slug =
     createSlug(String(formData.get("slug") || "").trim() || title) ||
     `material-${Date.now()}`;
@@ -137,7 +166,7 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
   const bibliography = lineItems(formData.get("bibliography"));
   const contentJson = parsedContentJson(formData.get("content_json"));
   const contentHtml = positionLeadingIllustrationHtml(
-    sanitizeHtml(String(formData.get("content_html") || ""), allowedArticleHtml)
+    sanitizeHtml(rawContentHtml, allowedArticleHtml)
   );
 
   const englishTitle = String(formData.get("english_title") || "").trim();
@@ -145,6 +174,12 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
     formData.get("english_subtitle") || ""
   ).trim();
   const englishExcerpt = String(formData.get("english_excerpt") || "").trim();
+  const rawEnglishContentHtml = String(
+    formData.get("english_content_html") || ""
+  );
+  const rawEnglishContentJson = String(
+    formData.get("english_content_json") || "{}"
+  );
   const englishSlug =
     createSlug(
       String(formData.get("english_slug") || "").trim() || englishTitle
@@ -153,10 +188,7 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
     formData.get("english_content_json")
   );
   const englishContentHtml = positionLeadingIllustrationHtml(
-    sanitizeHtml(
-      String(formData.get("english_content_html") || ""),
-      allowedArticleHtml
-    )
+    sanitizeHtml(rawEnglishContentHtml, allowedArticleHtml)
   );
   const englishCoverAlt = String(
     formData.get("english_cover_alt") || ""
@@ -183,6 +215,50 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
   const englishSources = lineItems(formData.get("english_sources"));
   const englishBibliography = lineItems(formData.get("english_bibliography"));
 
+  // The legacy action remains the authority for malformed form shapes. This
+  // keeps its Zod error messages and prevents the narrower atomic release path
+  // from accepting data the existing editor would reject.
+  const legacyShapeCompatible =
+    (!articleId || isUuid(articleId)) &&
+    (!categoryId || isUuid(categoryId)) &&
+    isValidTimestamp(expectedUpdatedAt) &&
+    isValidTimestamp(englishExpectedUpdatedAt) &&
+    title.length >= 3 &&
+    title.length <= 240 &&
+    subtitle.length <= 360 &&
+    excerpt.length <= 700 &&
+    slug.length <= 180 &&
+    rawContentHtml.length <= 2_000_000 &&
+    rawContentJson.length <= 2_000_000 &&
+    isValidUrl(coverExternalUrl) &&
+    coverAlt.length <= 500 &&
+    seoTitle.length <= 180 &&
+    seoDescription.length <= 400 &&
+    seoKeywords.every((item) => item.length <= 80) &&
+    ogTitle.length <= 180 &&
+    ogDescription.length <= 400 &&
+    itemTextsFit(sources) &&
+    itemTextsFit(bibliography) &&
+    englishTitle.length >= 3 &&
+    englishTitle.length <= 240 &&
+    englishSubtitle.length <= 360 &&
+    englishExcerpt.length <= 700 &&
+    englishSlug.length <= 180 &&
+    rawEnglishContentHtml.length <= 2_000_000 &&
+    rawEnglishContentJson.length <= 2_000_000 &&
+    englishCoverAlt.length <= 500 &&
+    englishSeoTitle.length <= 180 &&
+    englishSeoDescription.length <= 400 &&
+    englishSeoKeywords.every((item) => item.length <= 80) &&
+    isValidUrl(englishCanonicalUrl) &&
+    englishOgTitle.length <= 180 &&
+    englishOgDescription.length <= 400 &&
+    itemTextsFit(englishSources) &&
+    itemTextsFit(englishBibliography);
+  if (!legacyShapeCompatible) {
+    return legacySaveArticleAction(formData);
+  }
+
   const plainText = sanitizeHtml(contentHtml, {
     allowedTags: [],
     allowedAttributes: {},
@@ -190,7 +266,6 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
     .replace(/\s+/gu, " ")
     .trim();
   const publicationIssues = [
-    title.length < 3 && "укажите заголовок",
     !categoryId && "выберите рубрику",
     plainText.split(/\s+/u).filter(Boolean).length < 250 &&
       "добавьте не менее 250 слов",
@@ -378,16 +453,15 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
     ? articlePublicPath(slug, categorySlug)
     : null;
 
+  let saved: Awaited<ReturnType<typeof saveArticleBundleRpc>>;
   try {
-    const saved = await saveArticleBundleRpc(supabase, {
+    saved = await saveArticleBundleRpc(supabase, {
       articleId,
       expectedArticleUpdatedAt: articleId ? expectedUpdatedAt : null,
       articlePayload,
       englishMode: "save",
       englishPayload,
-      expectedEnglishUpdatedAt: existingEnglishUpdatedAt
-        ? englishExpectedUpdatedAt
-        : null,
+      expectedEnglishUpdatedAt: englishExpectedUpdatedAt,
       redirectSourcePath,
       redirectDestinationPath,
       replaceHomepage:
@@ -412,25 +486,6 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
         persistence: "atomic-article-bundle",
       },
     });
-
-    const publication = await requestPublicBuild({
-      supabase,
-      actorId,
-      entityType: "article",
-      entityId: saved.articleId,
-      reason: "article.published",
-      metadata: { persistence: "atomic-article-bundle" },
-    });
-
-    revalidatePath("/dashboard");
-    revalidatePath("/articles");
-    redirect(
-      articleEditPath(saved.articleId, {
-        saved: 1,
-        publish: publication.state,
-        replaced: saved.homepageReplaced || null,
-      })
-    );
   } catch (error) {
     const message =
       error instanceof Error
@@ -438,4 +493,23 @@ export async function saveAutoTranslatedArticleAtomically(formData: FormData) {
         : "Не удалось атомарно сохранить публикацию.";
     redirect(publishErrorPath(articleId, message));
   }
+
+  const publication = await requestPublicBuild({
+    supabase,
+    actorId,
+    entityType: "article",
+    entityId: saved.articleId,
+    reason: "article.published",
+    metadata: { persistence: "atomic-article-bundle" },
+  });
+
+  revalidatePath("/dashboard");
+  revalidatePath("/articles");
+  redirect(
+    articleEditPath(saved.articleId, {
+      saved: 1,
+      publish: publication.state,
+      replaced: saved.homepageReplaced || null,
+    })
+  );
 }
