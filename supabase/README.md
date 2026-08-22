@@ -26,6 +26,32 @@ VITE_SUPABASE_PUBLISHABLE_KEY=ВАШ-ПУБЛИЧНЫЙ-ANON-KEY
 
 Следующий push в `main` соберёт сайт уже с подключённым сообществом.
 
+## Turnstile для входа и регистрации
+
+Защита включается только атомарно: публичный site key и соответствующий ему
+секрет должны относиться к одному Turnstile-виджету. Нельзя включать только
+одну сторону — иначе Supabase отклонит вход или сайт продолжит работать без
+проверки.
+
+1. В Cloudflare Turnstile создайте виджет для `probpera.ru` и нужных preview-
+   доменов. Site key является публичным, secret key — только серверным.
+2. В Supabase откройте `Authentication → Bot and Abuse Protection`, выберите
+   Cloudflare Turnstile и сохраните secret key. Секрет нельзя помещать в
+   `.env.example`, Vite, GitHub Pages или Actions Variable.
+3. В GitHub откройте `Settings → Secrets and variables → Actions → Variables`
+   и добавьте `VITE_TURNSTILE_SITE_KEY` со значением публичного site key.
+4. После слияния кода дождитесь production deploy. Затем вручную запустите
+   workflow `Configure Cloudflare edge security`: сначала `apply=false`, затем
+   для того же актуального SHA `apply=true` и подтверждение
+   `APPLY PROBPERA CLOUDFLARE EDGE`. Это добавит официальный Turnstile origin
+   в CSP на границе Cloudflare.
+5. Проверьте регистрацию и вход в обычном и приватном окне. После каждой
+   попытки виджет должен выдать новый одноразовый токен.
+
+Без `VITE_TURNSTILE_SITE_KEY` клиентский виджет не загружается. Это позволяет
+сначала подготовить код и CSP, а затем включить защиту одним изменением
+Actions Variable после настройки Supabase.
+
 Если база была подключена до 27 июля 2026 года, дополнительно выполните
 `migrations/20260727_community_safety.sql`. Миграция добавляет ограничение
 частоты гостевых комментариев и встроенную отправку жалоб редакции.
