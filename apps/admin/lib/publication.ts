@@ -1,3 +1,7 @@
+import {
+  ensurePublishedArticleEnglishTranslation,
+  type AutoTranslationState,
+} from "@/lib/auto-translate-article";
 import { triggerPublicBuild, type PublicBuildResult } from "@/lib/public-build";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -38,7 +42,28 @@ export async function requestPublicBuild({
 }: RequestPublicBuildOptions): Promise<{
   state: PublicationState;
   build: PublicBuildResult;
+  autoTranslation?: AutoTranslationState;
 }> {
+  // Translate a published Russian article before dispatching the public build,
+  // so the same release can contain the synchronized English version. The
+  // helper skips unchanged English rows and never exposes the OpenAI key to the
+  // browser. Translation failure is audited but does not destroy the accepted
+  // Russian publication; a later republish can retry safely.
+  const translation =
+    entityType === "article" && reason === "article.published"
+      ? await ensurePublishedArticleEnglishTranslation({
+          supabase,
+          actorId,
+          articleId: entityId,
+        })
+      : { state: "skipped" as const };
+  const publicationMetadata = {
+    ...metadata,
+    auto_translation: translation.state,
+    auto_translation_model: translation.model || null,
+    auto_translation_error: translation.error?.slice(0, 300) || null,
+  };
+
   // Prefer the transactional outbox introduced by the current schema. Older
   // databases keep working through the audit-log fallback until migration.
   // Table triggers enqueue the underlying mutation inside its own transaction,
@@ -49,7 +74,7 @@ export async function requestPublicBuild({
       p_entity_type: entityType,
       p_entity_id: entityId,
       p_reason: reason,
-      p_metadata: metadata,
+      p_metadata: publicationMetadata,
     }
   );
   // Only a confirmed missing-RPC response may use the compatibility queue.
@@ -72,7 +97,7 @@ export async function requestPublicBuild({
         entity_type: entityType,
         entity_id: entityId,
         metadata: {
-          ...metadata,
+          ...publicationMetadata,
           reason,
           requested_at: new Date().toISOString(),
         },
@@ -81,6 +106,7 @@ export async function requestPublicBuild({
   if (queueError || (!outboxUnavailable && durableOutboxId === null)) {
     return {
       state: "queue-error",
+      autoTranslation: translation.state,
       build: {
         configured: false,
         ok: false,
@@ -104,7 +130,7 @@ export async function requestPublicBuild({
       entity_type: entityType,
       entity_id: entityId,
       metadata: {
-        ...metadata,
+        ...publicationMetadata,
         reason,
         provider: build.provider,
         requested_at: new Date().toISOString(),
@@ -114,6 +140,7 @@ export async function requestPublicBuild({
 
   return {
     build,
+    autoTranslation: translation.state,
     state: build.ok ? "started" : "queued",
   };
 }
