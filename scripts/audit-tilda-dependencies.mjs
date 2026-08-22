@@ -103,8 +103,8 @@ export async function auditTildaDependencies({
   manifestPath = defaultManifestPath,
   manifest: suppliedManifest,
 } = {}) {
-  const manifest = suppliedManifest ||
-    JSON.parse(await fs.readFile(manifestPath, "utf8"));
+  const manifest =
+    suppliedManifest || JSON.parse(await fs.readFile(manifestPath, "utf8"));
   const runtimeRoots = manifest.runtimeRoots || ["src", "public"];
   const runtimeFiles = await collectRuntimeTextFiles(rootDir, runtimeRoots);
   const matches = [];
@@ -168,11 +168,6 @@ export async function auditTildaDependencies({
   }
 
   const generated = matches.filter((match) => match.category === "generated");
-  const allUrls = matches.flatMap((match) =>
-    Array.from({ length: match.occurrences }, (_, index) =>
-      match.urls[Math.min(index, match.urls.length - 1)]
-    )
-  );
   const totalOccurrences = matches.reduce(
     (total, match) => total + match.occurrences,
     0
