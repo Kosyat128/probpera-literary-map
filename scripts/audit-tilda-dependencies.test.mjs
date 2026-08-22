@@ -127,13 +127,22 @@ describe("Tilda dependency audit", () => {
   });
 
   it("keeps the current repository inside the reviewed dependency boundary", async () => {
+    const manifest = JSON.parse(
+      await fs.readFile(
+        path.join(process.cwd(), "config", "tilda-dependency-baseline.json"),
+        "utf8"
+      )
+    );
+    const baseline = manifest.handwrittenFiles["src/App.tsx"];
     const result = await auditTildaDependencies();
+
     expect(result.errors, JSON.stringify(result, null, 2)).toEqual([]);
+    expect(result.unexpected).toEqual([]);
     expect(result.handwritten).toEqual([
       {
         path: "src/App.tsx",
-        occurrences: 15,
-        uniqueUrls: 12,
+        occurrences: baseline.expectedOccurrences,
+        uniqueUrls: new Set(baseline.allowedUrls).size,
         addedUrls: [],
         missingUrls: [],
       },
