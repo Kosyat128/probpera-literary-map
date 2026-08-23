@@ -137,7 +137,8 @@ const rowIdentity = {
   writer_profile_overrides: (row) => `${row.country_id}:${row.writer_id}`,
   literary_works: (row) => row.id,
   literary_work_translations: (row) => `${row.work_id}:${row.locale}`,
-  literary_work_sources: (row) => `${row.work_id}:${row.source_url}`,
+  literary_work_sources: (row) =>
+    `${row.work_id}:${row.provider}:${row.source_url}`,
 };
 
 async function fetchTableRows(table, query, accessKey, optional = false) {
@@ -532,7 +533,7 @@ const [
     {
       select:
         "work_id,provider,source_url,field_names,license_name,usage,retrieved_at",
-      order: "work_id.asc,source_url.asc",
+      order: "work_id.asc,provider.asc,source_url.asc",
     },
     publicSnapshotKey,
     true

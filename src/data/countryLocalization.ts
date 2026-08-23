@@ -12,6 +12,32 @@ const publishableMethods = new Set([
 const interfaceLanguageStorageKey = "probpera-interface-language";
 const activeCountryProxyCache = new WeakMap<Country, Country>();
 
+type InterfaceLanguageCandidate = string | null | undefined;
+
+function normalizedInterfaceLanguage(
+  value: InterfaceLanguageCandidate
+): "ru" | "en" | null {
+  const normalized = String(value || "").trim().toLocaleLowerCase("en");
+  if (normalized === "ru" || normalized.startsWith("ru-")) return "ru";
+  if (normalized === "en" || normalized.startsWith("en-")) return "en";
+  return null;
+}
+
+export function resolveActiveCountryInterfaceLanguage(input: {
+  appliedLanguage?: InterfaceLanguageCandidate;
+  routeLanguage?: InterfaceLanguageCandidate;
+  storedLanguage?: InterfaceLanguageCandidate;
+  documentLanguage?: InterfaceLanguageCandidate;
+}): "ru" | "en" {
+  return (
+    normalizedInterfaceLanguage(input.appliedLanguage) ||
+    normalizedInterfaceLanguage(input.routeLanguage) ||
+    normalizedInterfaceLanguage(input.storedLanguage) ||
+    normalizedInterfaceLanguage(input.documentLanguage) ||
+    "ru"
+  );
+}
+
 export function selectCountryEnglishTranslation(country: Country) {
   const translation = country.translations?.en;
   if (!translation) return null;
@@ -45,27 +71,27 @@ export function countryForLanguage(
 }
 
 export function activeCountryInterfaceLanguage(): "ru" | "en" {
+  let storedLanguage = "";
   try {
-    if (
-      typeof window !== "undefined" &&
-      window.localStorage.getItem(interfaceLanguageStorageKey) === "en"
-    ) {
-      return "en";
+    if (typeof window !== "undefined") {
+      storedLanguage =
+        window.localStorage.getItem(interfaceLanguageStorageKey) || "";
     }
   } catch {
-    // localStorage can be denied by privacy settings. The document language
-    // below remains a safe fallback.
+    // localStorage can be denied by privacy settings. Route/document state
+    // remains the deterministic publication-safe fallback.
   }
-  if (typeof document !== "undefined") {
-    const declaredLanguage =
-      document.documentElement.dataset.language ||
-      document.documentElement.dataset.routeLanguage ||
-      document.documentElement.lang;
-    if (declaredLanguage.toLocaleLowerCase("en").startsWith("en")) {
-      return "en";
-    }
-  }
-  return "ru";
+
+  const root =
+    typeof document !== "undefined" ? document.documentElement : null;
+  return resolveActiveCountryInterfaceLanguage({
+    // Once InterfaceLanguage has applied a choice, it is the live source of
+    // truth. Before that first effect, an explicit route beats stale storage.
+    appliedLanguage: root?.dataset.language,
+    routeLanguage: root?.dataset.routeLanguage,
+    storedLanguage,
+    documentLanguage: root?.lang,
+  });
 }
 
 /**

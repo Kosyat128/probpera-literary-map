@@ -4,6 +4,7 @@ import type { Country } from "./countries/types";
 import {
   countryForLanguage,
   countryWithActiveLanguage,
+  resolveActiveCountryInterfaceLanguage,
   selectCountryEnglishTranslation,
 } from "./countryLocalization";
 
@@ -77,5 +78,35 @@ describe("country localization", () => {
 
     language = "ru";
     expect(live.name).toBe("Россия");
+  });
+
+  it("uses the live applied language after a visitor switches languages", () => {
+    expect(
+      resolveActiveCountryInterfaceLanguage({
+        appliedLanguage: "ru",
+        routeLanguage: "en",
+        storedLanguage: "en",
+        documentLanguage: "en",
+      })
+    ).toBe("ru");
+  });
+
+  it("uses an explicit route before stale storage on the first render", () => {
+    expect(
+      resolveActiveCountryInterfaceLanguage({
+        routeLanguage: "en",
+        storedLanguage: "ru",
+        documentLanguage: "ru",
+      })
+    ).toBe("en");
+  });
+
+  it("falls back to the stored preference when no route is declared", () => {
+    expect(
+      resolveActiveCountryInterfaceLanguage({
+        storedLanguage: "en",
+        documentLanguage: "ru",
+      })
+    ).toBe("en");
   });
 });
