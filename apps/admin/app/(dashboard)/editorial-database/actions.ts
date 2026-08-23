@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
 import { ensureWriterEnglishBiography } from "@/lib/auto-translate-writer-biography";
 import { requireStaff } from "@/lib/auth";
+import { editorialCatalog } from "@/lib/editorial-catalog";
 import {
   countryProfileFields,
   parseEditorialProfileOverride,
@@ -29,6 +30,17 @@ function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : {};
+}
+
+function editorialSourceFields(countryId: string, writerId: string | null) {
+  const country = editorialCatalog.countries.find(
+    (candidate) => candidate.id === countryId
+  );
+  if (!country) return {};
+  if (!writerId) return objectValue(country.fields);
+  return objectValue(
+    country.writers.find((candidate) => candidate.id === writerId)?.fields
+  );
 }
 
 function targetUrl({
@@ -253,6 +265,10 @@ export async function saveEditorialProfileAction(formData: FormData) {
     databaseId = data.id;
   }
 
+  const sourceFields = {
+    ...editorialSourceFields(edit.countryId, edit.writerId),
+    ...completeSource.fields,
+  };
   let translation: {
     state: string;
     model?: string;
@@ -266,13 +282,13 @@ export async function saveEditorialProfileAction(formData: FormData) {
           actorId: session.user.id,
           countryId: edit.countryId,
           writerId: edit.writerId!,
-          sourceFields: completeSource.fields,
+          sourceFields,
         })
       : await ensureCountryEnglishProfile({
           supabase,
           actorId: session.user.id,
           countryId: edit.countryId,
-          sourceFields: completeSource.fields,
+          sourceFields,
         });
   }
 
