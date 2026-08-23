@@ -58,6 +58,10 @@ export const adminEnv = {
   openAiApiKey,
   openAiTranslationModel:
     getEnvValue(["OPENAI_TRANSLATION_MODEL"]) || "gpt-5.6-sol",
+  openAiTranslationReviewModel:
+    getEnvValue(["OPENAI_TRANSLATION_REVIEW_MODEL"]) || "gpt-5.6-sol",
+  openAiPremiumTranslationReview:
+    getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !== "false",
   openAiAutoTranslateArticles:
     getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]).toLowerCase() !== "false",
 };
