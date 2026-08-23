@@ -8,9 +8,10 @@ const publishableStatuses = new Set(["reviewed", "verified"]);
 const lawfulMethods = new Set([
   "editorial-original",
   "human-translation",
+  "machine-translation",
   "licensed-source",
 ]);
-const humanTranslationRights = new Set([
+const translationSourceRights = new Set([
   "project-original",
   "public-domain",
   "licensed",
@@ -124,8 +125,11 @@ export function writerBiographyQualityIssues(
     );
   }
 
-  if (translation.method === "human-translation") {
-    if (!humanTranslationRights.has(translation.sourceTextRights || "")) {
+  if (
+    translation.method === "human-translation" ||
+    translation.method === "machine-translation"
+  ) {
+    if (!translationSourceRights.has(translation.sourceTextRights || "")) {
       issues.push(`для перевода ${locale} не зафиксированы права на исходный текст`);
     }
     if (

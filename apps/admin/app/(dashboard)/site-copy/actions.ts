@@ -3,12 +3,15 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "@/lib/navigation";
 
+import {
+  translateSiteCopyBatchToEnglish,
+  translationSourceHash,
+} from "@/lib/auto-translate-site-copy";
 import { requireStaff } from "@/lib/auth";
+import { adminEnv } from "@/lib/env";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import {
-  allSiteCopyKeys,
-} from "@/lib/site-copy-catalog";
+import { allSiteCopyKeys } from "@/lib/site-copy-catalog";
 import {
   mergeSiteCopyRows,
   readSiteCopyValues,
@@ -17,11 +20,39 @@ import {
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 const SITE_COPY_DISPLAY_ORDER = 2_000_000_000;
 const MAX_COPY_LENGTH = 4_000;
+const TRANSLATION_BATCH_SIZE = 50;
+
+type MachineCopyState = Record<
+  string,
+  {
+    sourceHash: string;
+    model?: string;
+    reviewerModel?: string | null;
+    generatedAt?: string;
+  }
+>;
 
 function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : {};
+}
+
+function readMachineCopyState(value: unknown): MachineCopyState {
+  const result: MachineCopyState = {};
+  for (const [key, rawEntry] of Object.entries(objectValue(value))) {
+    const entry = objectValue(rawEntry);
+    if (typeof entry.sourceHash !== "string" || !entry.sourceHash.trim()) continue;
+    result[key] = {
+      sourceHash: entry.sourceHash.trim(),
+      model: typeof entry.model === "string" ? entry.model : undefined,
+      reviewerModel:
+        typeof entry.reviewerModel === "string" ? entry.reviewerModel : null,
+      generatedAt:
+        typeof entry.generatedAt === "string" ? entry.generatedAt : undefined,
+    };
+  }
+  return result;
 }
 
 function isAllowedCopyKey(key: string) {
@@ -72,6 +103,85 @@ function submittedRows(formData: FormData) {
   return rows;
 }
 
+async function autoTranslateChangedRows({
+  rows,
+  existingSettings,
+}: {
+  rows: ReturnType<typeof submittedRows>;
+  existingSettings: Record<string, unknown>;
+}) {
+  const current = readSiteCopyValues(existingSettings.siteCopy);
+  const premiumState = objectValue(existingSettings.premiumTranslation);
+  const machine = readMachineCopyState(premiumState.siteCopyEn);
+  const pending: Array<{ key: string; text: string; sourceHash: string }> = [];
+
+  for (const row of rows) {
+    const previousRu = current.ru[row.key] || "";
+    const previousEn = current.en[row.key] || "";
+    const ruChanged = row.ru !== previousRu;
+    const enChanged = row.en !== previousEn;
+
+    if (!row.ru) {
+      delete machine[row.key];
+      continue;
+    }
+    if (enChanged) {
+      // Any explicit English edit becomes human-owned immediately.
+      delete machine[row.key];
+    }
+    if (!ruChanged) continue;
+
+    const sourceHash = await translationSourceHash({ key: row.key, text: row.ru });
+    const machineOwned = Boolean(machine[row.key]);
+    const shouldTranslate = !row.en || (machineOwned && !enChanged);
+    if (shouldTranslate) pending.push({ key: row.key, text: row.ru, sourceHash });
+  }
+
+  if (!pending.length || !adminEnv.openAiAutoTranslateSiteCopy) {
+    return { rows, machine, translationCalls: 0 };
+  }
+  if (!adminEnv.openAiApiKey) {
+    throw new Error(
+      "Премиальный EN-перевод включён, но OPENAI_API_KEY не настроен. Добавьте английский текст вручную или подключите API key."
+    );
+  }
+
+  const translatedByKey = new Map<string, string>();
+  let translationCalls = 0;
+  let lastModel = adminEnv.openAiTranslationModel;
+  let lastReviewerModel: string | null = null;
+  for (let start = 0; start < pending.length; start += TRANSLATION_BATCH_SIZE) {
+    const batch = pending.slice(start, start + TRANSLATION_BATCH_SIZE);
+    const translated = await translateSiteCopyBatchToEnglish(
+      batch.map(({ key, text }) => ({ key, text }))
+    );
+    if (!translated) continue;
+    translationCalls += 1;
+    lastModel = translated.translatorModel;
+    lastReviewerModel = translated.reviewerModel;
+    for (const item of translated.value.items) {
+      translatedByKey.set(item.key, item.text);
+    }
+  }
+
+  const generatedAt = new Date().toISOString();
+  const enrichedRows = rows.map((row) => {
+    const translated = translatedByKey.get(row.key);
+    if (!translated) return row;
+    const pendingItem = pending.find((item) => item.key === row.key);
+    if (!pendingItem) return row;
+    machine[row.key] = {
+      sourceHash: pendingItem.sourceHash,
+      model: lastModel,
+      reviewerModel: lastReviewerModel,
+      generatedAt,
+    };
+    return { ...row, en: translated };
+  });
+
+  return { rows: enrichedRows, machine, translationCalls };
+}
+
 export async function saveSiteCopyAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -113,10 +223,25 @@ export async function saveSiteCopyAction(formData: FormData) {
     );
   }
   const existingSettings = objectValue(existing?.settings);
+
+  let translationResult: Awaited<ReturnType<typeof autoTranslateChangedRows>>;
+  try {
+    translationResult = await autoTranslateChangedRows({ rows, existingSettings });
+  } catch (error) {
+    redirect(
+      `/site-copy?error=${encodeURIComponent(
+        error instanceof Error
+          ? error.message
+          : "Не удалось подготовить премиальный английский перевод."
+      )}`
+    );
+  }
+
   const { ru, en } = mergeSiteCopyRows(
     readSiteCopyValues(existingSettings.siteCopy),
-    rows
+    translationResult.rows
   );
+  const existingPremium = objectValue(existingSettings.premiumTranslation);
 
   const payload = {
     block_type: "text",
@@ -126,6 +251,14 @@ export async function saveSiteCopyAction(formData: FormData) {
       systemKey: SITE_COPY_SYSTEM_KEY,
       version: 1,
       siteCopy: { ru, en },
+      premiumTranslation: {
+        ...existingPremium,
+        siteCopyEn: translationResult.machine,
+        model: adminEnv.openAiTranslationModel,
+        reviewerModel: adminEnv.openAiTranslationReviewModel,
+        twoPassReview: adminEnv.openAiPremiumTranslationReview,
+        updatedAt: new Date().toISOString(),
+      },
     },
     display_order: SITE_COPY_DISPLAY_ORDER,
     is_enabled: true,
@@ -177,6 +310,9 @@ export async function saveSiteCopyAction(formData: FormData) {
     metadata: {
       russian_overrides: Object.keys(ru).length,
       english_overrides: Object.keys(en).length,
+      premium_translation_calls: translationResult.translationCalls,
+      translation_model: adminEnv.openAiTranslationModel,
+      translation_reviewer_model: adminEnv.openAiTranslationReviewModel,
       storage: "homepage_blocks",
     },
   });

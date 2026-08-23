@@ -21,7 +21,11 @@ export type WriterBiographyTranslationProfile = {
   text: string;
   sourceLanguage: string;
   status: WriterBiographyEditorialStatus;
-  method: "editorial-original" | "human-translation" | "licensed-source";
+  method:
+    | "editorial-original"
+    | "human-translation"
+    | "machine-translation"
+    | "licensed-source";
   reviewedAt?: string;
   reviewer?: string;
   translatedFromLocale?: WriterBiographyLocale;
@@ -31,6 +35,12 @@ export type WriterBiographyTranslationProfile = {
     | "licensed"
     | "permission";
   sources: WriterBiographySourceProfile[];
+  translationMeta?: {
+    model?: string;
+    reviewerModel?: string;
+    sourceHash?: string;
+    generatedAt?: string;
+  };
 };
 
 export type WorkEditorialStatus = "draft" | "reviewed" | "verified";
@@ -42,7 +52,11 @@ export type WorkTranslationProfile = {
   sourceLanguage: string;
   status: WorkEditorialStatus;
   sourceUrls: string[];
-  method: "editorial-original" | "human-translation" | "licensed-source";
+  method:
+    | "editorial-original"
+    | "human-translation"
+    | "machine-translation"
+    | "licensed-source";
   reviewedAt?: string;
 };
 
@@ -231,6 +245,41 @@ export type WriterProfile = {
   [key: string]: unknown;
 };
 
+export type CountryTimelineItem =
+  | string
+  | {
+      year?: string | number;
+      title?: string;
+      description?: string;
+    };
+
+export type CountryEnglishTranslationProfile = {
+  locale: "en";
+  status: "reviewed" | "verified";
+  method: "human-translation" | "machine-translation" | "editorial-original";
+  sourceHash: string;
+  generatedAt?: string;
+  model?: string;
+  reviewerModel?: string | null;
+  fields: {
+    name?: string;
+    region?: string;
+    continent?: string;
+    officialLanguage?: string;
+    literaryPeriods?: string[];
+    literaryMovements?: string[];
+    periods?: string[];
+    capital?: string;
+    description?: string;
+    history?: string;
+    historicalNote?: string;
+    facts?: string[];
+    literaryPlaces?: string[];
+    timeline?: CountryTimelineItem[];
+    chronology?: CountryTimelineItem[];
+  };
+};
+
 export type Country = {
   id: string;
   name: string;
@@ -252,22 +301,11 @@ export type Country = {
   historicalNote?: string;
   facts?: string[];
   literaryPlaces?: string[];
-  timeline?: Array<
-    | string
-    | {
-        year?: string | number;
-        title?: string;
-        description?: string;
-      }
-  >;
-  chronology?: Array<
-    | string
-    | {
-        year?: string | number;
-        title?: string;
-        description?: string;
-      }
-  >;
+  timeline?: CountryTimelineItem[];
+  chronology?: CountryTimelineItem[];
+  translations?: {
+    en?: CountryEnglishTranslationProfile;
+  };
   nobel?: number;
   places?: number;
   influence?: number;

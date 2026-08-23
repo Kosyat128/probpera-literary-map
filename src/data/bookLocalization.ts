@@ -64,6 +64,14 @@ function stableWriterIdName(writerId: string) {
     .join(" ");
 }
 
+function curatedWriterIdName(writerId: string) {
+  return (
+    curatedEnglishBookWriterNames.get(
+      writerId.trim().toLocaleLowerCase("en")
+    ) || ""
+  );
+}
+
 function isProfessionalEnglishWriterName(value: string) {
   return (
     isEnglishSafe(value) &&
@@ -112,7 +120,16 @@ export function selectWriterDisplayName(
     const value = candidate?.trim() || "";
     return value && (locale === "ru" || isEnglishSafe(value));
   });
-  return selected?.trim() || fallback;
+  if (selected?.trim()) return selected.trim();
+  if (locale === "en") {
+    // Search and writer profiles must not turn an arbitrary technical ID into
+    // a visitor-facing identity. Only explicitly reviewed spellings are safe
+    // here. Book cards may still derive a conservative label from a stable ID
+    // after the bilingual publication gate has passed.
+    const curatedName = curatedWriterIdName(writer.id);
+    if (isProfessionalEnglishWriterName(curatedName)) return curatedName;
+  }
+  return fallback;
 }
 
 export function selectWriterYears(

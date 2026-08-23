@@ -60,6 +60,44 @@ jobs:
       - name: Type-check admin
         run: npm run lint --workspace @probpera/admin
 
+      - name: Ensure premium translation secret
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          test -n "$CLOUDFLARE_API_TOKEN"
+          cd apps/admin
+
+          # An optional GitHub Actions copy lets CI provision or rotate the
+          # Worker secret without putting its value in source or command args.
+          if [[ -n "${OPENAI_API_KEY:-}" ]]; then
+            printf '%s' "$OPENAI_API_KEY" \
+              | npx wrangler secret put OPENAI_API_KEY --config wrangler.jsonc
+          fi
+
+          secret_list="$(npx wrangler secret list --config wrangler.jsonc)"
+          SECRET_LIST="$secret_list" node <<'NODE'
+          const raw = process.env.SECRET_LIST || "[]";
+          let secrets;
+          try {
+            secrets = JSON.parse(raw);
+          } catch {
+            throw new Error("Wrangler did not return a valid secret inventory");
+          }
+          if (
+            !Array.isArray(secrets) ||
+            !secrets.some((entry) => entry?.name === "OPENAI_API_KEY")
+          ) {
+            throw new Error(
+              "OPENAI_API_KEY is not configured on Cloudflare Worker probpera-admin"
+            );
+          }
+          NODE
+
       - name: Deploy to Cloudflare Workers
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -3,6 +3,44 @@ const getEnvValue = (keys: string[]) =>
     .map((key) => process.env[key]?.trim())
     .find((value) => Boolean(value)) || "";
 
+export type OpenAiReasoningEffort =
+  | "none"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh"
+  | "max";
+export type OpenAiReasoningMode = "standard" | "pro";
+
+const openAiReasoningEfforts = new Set<OpenAiReasoningEffort>([
+  "none",
+  "low",
+  "medium",
+  "high",
+  "xhigh",
+  "max",
+]);
+const openAiReasoningModes = new Set<OpenAiReasoningMode>([
+  "standard",
+  "pro",
+]);
+
+function getOpenAiReasoningEffort(
+  keys: string[],
+  fallback: OpenAiReasoningEffort
+): OpenAiReasoningEffort {
+  const value = getEnvValue(keys).toLowerCase() as OpenAiReasoningEffort;
+  return openAiReasoningEfforts.has(value) ? value : fallback;
+}
+
+function getOpenAiReasoningMode(
+  keys: string[],
+  fallback: OpenAiReasoningMode
+): OpenAiReasoningMode {
+  const value = getEnvValue(keys).toLowerCase() as OpenAiReasoningMode;
+  return openAiReasoningModes.has(value) ? value : fallback;
+}
+
 const supabaseUrl =
   getEnvValue(["NEXT_PUBLIC_SUPABASE_URL", "VITE_SUPABASE_URL"]);
 const supabasePublishableKey =
@@ -58,8 +96,34 @@ export const adminEnv = {
   openAiApiKey,
   openAiTranslationModel:
     getEnvValue(["OPENAI_TRANSLATION_MODEL"]) || "gpt-5.6-sol",
+  openAiTranslationReviewModel:
+    getEnvValue(["OPENAI_TRANSLATION_REVIEW_MODEL"]) || "gpt-5.6-sol",
+  openAiTranslationReasoningEffort: getOpenAiReasoningEffort(
+    ["OPENAI_TRANSLATION_REASONING_EFFORT"],
+    "max"
+  ),
+  openAiTranslationReasoningMode: getOpenAiReasoningMode(
+    ["OPENAI_TRANSLATION_REASONING_MODE"],
+    "pro"
+  ),
+  openAiTranslationReviewReasoningEffort: getOpenAiReasoningEffort(
+    ["OPENAI_TRANSLATION_REVIEW_REASONING_EFFORT"],
+    "max"
+  ),
+  openAiTranslationReviewReasoningMode: getOpenAiReasoningMode(
+    ["OPENAI_TRANSLATION_REVIEW_REASONING_MODE"],
+    "pro"
+  ),
+  openAiPremiumTranslationReview:
+    getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !== "false",
   openAiAutoTranslateArticles:
     getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]).toLowerCase() !== "false",
+  openAiAutoTranslateLibrary:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_LIBRARY"]).toLowerCase() !== "false",
+  openAiAutoTranslateSiteCopy:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_SITE_COPY"]).toLowerCase() !== "false",
+  openAiAutoTranslateProfiles:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_PROFILES"]).toLowerCase() !== "false",
 };
 
 export const isSupabaseConfigured = Boolean(

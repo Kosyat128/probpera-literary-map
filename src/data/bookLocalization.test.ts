@@ -120,6 +120,18 @@ describe("локализация книжной карточки", () => {
       )
     ).toBe("Author");
     expect(
+      selectWriterDisplayName(
+        { id: "miguel_de_cervantes", name: "Мигель де Сервантес" },
+        "en"
+      )
+    ).toBe("Author");
+    expect(
+      selectWriterDisplayName(
+        { id: "dostoevsky", name: "Фёдор Достоевский" },
+        "en"
+      )
+    ).toBe("Fyodor Dostoevsky");
+    expect(
       selectBookWriterName(
         {
           ...book,
