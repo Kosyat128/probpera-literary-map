@@ -46,6 +46,101 @@ jobs:
       - name: Build OpenNext Worker
         run: npm run cf:build --workspace @probpera/admin
 
+      - name: Decompose the OpenNext server handler
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const fs = require("node:fs");
+          const path = require("node:path");
+          const { gzipSync } = require("node:zlib");
+
+          const project = path.resolve("apps/admin");
+          const root = path.join(
+            project,
+            ".open-next",
+            "server-functions",
+            "default"
+          );
+
+          function walk(directory) {
+            return fs.readdirSync(directory, { withFileTypes: true }).flatMap(
+              (entry) => {
+                const target = path.join(directory, entry.name);
+                return entry.isDirectory() ? walk(target) : [target];
+              }
+            );
+          }
+
+          const files = walk(root)
+            .map((file) => ({
+              file,
+              relative: path.relative(project, file).replaceAll("\\", "/"),
+              bytes: fs.statSync(file).size,
+            }))
+            .sort((left, right) => right.bytes - left.bytes);
+          const handler = files.find((item) =>
+            item.relative.endsWith("apps/admin/handler.mjs")
+          );
+          if (!handler) throw new Error("OpenNext application handler is missing");
+
+          const sourceTotals = new Map();
+          const maps = files.filter((item) => item.relative.endsWith(".map"));
+          for (const mapFile of maps) {
+            let map;
+            try {
+              map = JSON.parse(fs.readFileSync(mapFile.file, "utf8"));
+            } catch {
+              continue;
+            }
+            const sources = Array.isArray(map.sources) ? map.sources : [];
+            const contents = Array.isArray(map.sourcesContent)
+              ? map.sourcesContent
+              : [];
+            sources.forEach((source, index) => {
+              const content = typeof contents[index] === "string"
+                ? contents[index]
+                : "";
+              const bytes = Buffer.byteLength(content);
+              const previous = sourceTotals.get(source) || 0;
+              sourceTotals.set(source, Math.max(previous, bytes));
+            });
+          }
+
+          const sourceRows = [...sourceTotals.entries()]
+            .map(([source, sourceBytes]) => ({ source, sourceBytes }))
+            .sort((left, right) => right.sourceBytes - left.sourceBytes);
+          const sourceFiles = walk(project)
+            .filter((file) =>
+              !file.includes(`${path.sep}node_modules${path.sep}`) &&
+              !file.includes(`${path.sep}.next${path.sep}`) &&
+              !file.includes(`${path.sep}.open-next${path.sep}`) &&
+              !file.includes(`${path.sep}.wrangler${path.sep}`)
+            )
+            .map((file) => ({
+              file: path.relative(project, file).replaceAll("\\", "/"),
+              bytes: fs.statSync(file).size,
+            }))
+            .sort((left, right) => right.bytes - left.bytes);
+
+          const handlerBytes = fs.readFileSync(handler.file);
+          const summary = {
+            handler: {
+              file: handler.relative,
+              bytes: handler.bytes,
+              gzipBytes: gzipSync(handlerBytes, { level: 9 }).byteLength,
+            },
+            builtFiles: files.slice(0, 100),
+            sourceMapCount: maps.length,
+            sourceCount: sourceRows.length,
+            topSourceContents: sourceRows.slice(0, 500),
+            largestRepositoryInputs: sourceFiles.slice(0, 200),
+          };
+          const output = path.join(root, "handler-source-summary.json");
+          fs.writeFileSync(output, `${JSON.stringify(summary, null, 2)}\n`);
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+
       - name: Produce the exact Wrangler dry-run bundle and metafile
         shell: bash
         run: |
@@ -116,6 +211,7 @@ jobs:
         with:
           name: admin-worker-bundle-analysis
           path: |
+            apps/admin/.open-next/server-functions/default/handler-source-summary.json
             apps/admin/.wrangler-dry/meta.json
             apps/admin/.wrangler-dry/bundle-top-inputs.json
           retention-days: 7
