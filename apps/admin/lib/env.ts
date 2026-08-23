@@ -41,13 +41,23 @@ function getOpenAiReasoningMode(
   return openAiReasoningModes.has(value) ? value : fallback;
 }
 
-const supabaseUrl =
-  getEnvValue(["NEXT_PUBLIC_SUPABASE_URL", "VITE_SUPABASE_URL"]);
-const supabasePublishableKey =
-  getEnvValue([
-    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
-    "VITE_SUPABASE_PUBLISHABLE_KEY",
-  ]);
+export function premiumTranslationFeatureEnabled(input: {
+  apiKey?: string | null;
+  setting?: string | null;
+}) {
+  const apiKey = String(input.apiKey || "").trim();
+  const setting = String(input.setting || "").trim().toLowerCase();
+  return Boolean(apiKey) && setting !== "false";
+}
+
+const supabaseUrl = getEnvValue([
+  "NEXT_PUBLIC_SUPABASE_URL",
+  "VITE_SUPABASE_URL",
+]);
+const supabasePublishableKey = getEnvValue([
+  "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+  "VITE_SUPABASE_PUBLISHABLE_KEY",
+]);
 const openAiApiKey = getEnvValue(["OPENAI_API_KEY"]);
 
 export const adminEnv = {
@@ -64,8 +74,7 @@ export const adminEnv = {
       "NEXT_PUBLIC_ADMIN_URL",
       "VITE_PUBLIC_ADMIN_URL",
       "PUBLIC_ADMIN_URL",
-    ]).replace(/\/+$/, "") ||
-    "https://probpera.ru/admin",
+    ]).replace(/\/+$/, "") || "https://probpera.ru/admin",
   deployHookUrl:
     getEnvValue([
       "PUBLIC_SITE_DEPLOY_HOOK_URL",
@@ -85,8 +94,7 @@ export const adminEnv = {
     "Kosyat128/probpera-literary-map",
   githubDeployWorkflow:
     getEnvValue(["GITHUB_DEPLOY_WORKFLOW"]) || "deploy-pages.yml",
-  githubDeployRef:
-    getEnvValue(["GITHUB_DEPLOY_REF"]) || "main",
+  githubDeployRef: getEnvValue(["GITHUB_DEPLOY_REF"]) || "main",
   metrikaCounterId:
     getEnvValue([
       "YANDEX_METRIKA_COUNTER_ID",
@@ -115,15 +123,24 @@ export const adminEnv = {
     "pro"
   ),
   openAiPremiumTranslationReview:
-    getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !== "false",
-  openAiAutoTranslateArticles:
-    getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]).toLowerCase() !== "false",
-  openAiAutoTranslateLibrary:
-    getEnvValue(["OPENAI_AUTO_TRANSLATE_LIBRARY"]).toLowerCase() !== "false",
-  openAiAutoTranslateSiteCopy:
-    getEnvValue(["OPENAI_AUTO_TRANSLATE_SITE_COPY"]).toLowerCase() !== "false",
-  openAiAutoTranslateProfiles:
-    getEnvValue(["OPENAI_AUTO_TRANSLATE_PROFILES"]).toLowerCase() !== "false",
+    getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !==
+    "false",
+  openAiAutoTranslateArticles: premiumTranslationFeatureEnabled({
+    apiKey: openAiApiKey,
+    setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]),
+  }),
+  openAiAutoTranslateLibrary: premiumTranslationFeatureEnabled({
+    apiKey: openAiApiKey,
+    setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_LIBRARY"]),
+  }),
+  openAiAutoTranslateSiteCopy: premiumTranslationFeatureEnabled({
+    apiKey: openAiApiKey,
+    setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_SITE_COPY"]),
+  }),
+  openAiAutoTranslateProfiles: premiumTranslationFeatureEnabled({
+    apiKey: openAiApiKey,
+    setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_PROFILES"]),
+  }),
 };
 
 export const isSupabaseConfigured = Boolean(
