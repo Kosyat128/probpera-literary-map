@@ -99,7 +99,8 @@ jobs:
       - name: Build OpenNext Worker with Webpack
         run: npm run cf:build --workspace @probpera/admin
 
-      - name: Enforce Wrangler compressed-size budget
+      - name: Produce exact Wrangler bundle evidence
+        id: bundle
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -114,22 +115,85 @@ jobs:
             2>&1 | tee .wrangler-dry/dry-run.log
           node <<'NODE'
           const fs = require('node:fs');
-          const log = fs.readFileSync('.wrangler-dry/dry-run.log', 'utf8');
+          const path = require('node:path');
+          const directory = '.wrangler-dry';
+          const log = fs.readFileSync(path.join(directory, 'dry-run.log'), 'utf8');
           const match = log.match(
             /Total Upload:\s*([0-9.]+) KiB\s*\/\s*gzip:\s*([0-9.]+) KiB/u
           );
           if (!match) throw new Error('Wrangler did not report upload sizes');
-          const rawKiB = Number(match[1]);
-          const gzipKiB = Number(match[2]);
-          const maximumGzipKiB = 2900;
-          console.log(JSON.stringify({ rawKiB, gzipKiB, maximumGzipKiB }));
-          if (gzipKiB > maximumGzipKiB) {
+          const size = {
+            rawKiB: Number(match[1]),
+            gzipKiB: Number(match[2]),
+            maximumGzipKiB: 2900,
+          };
+          fs.writeFileSync(
+            path.join(directory, 'size.json'),
+            `${JSON.stringify(size, null, 2)}\n`
+          );
+
+          const meta = JSON.parse(
+            fs.readFileSync(path.join(directory, 'meta.json'), 'utf8')
+          );
+          const totals = new Map();
+          const outputs = Object.entries(meta.outputs || {}).map(
+            ([name, output]) => {
+              for (const [inputName, value] of Object.entries(output.inputs || {})) {
+                totals.set(
+                  inputName,
+                  (totals.get(inputName) || 0) + Number(value.bytesInOutput || 0)
+                );
+              }
+              return {
+                name,
+                bytes: Number(output.bytes || 0),
+                inputCount: Object.keys(output.inputs || {}).length,
+              };
+            }
+          ).sort((left, right) => right.bytes - left.bytes);
+          const topInputs = [...totals.entries()]
+            .map(([name, bytesInOutput]) => ({ name, bytesInOutput }))
+            .sort((left, right) => right.bytesInOutput - left.bytesInOutput);
+          const summary = {
+            size,
+            outputs: outputs.slice(0, 100),
+            topInputs: topInputs.slice(0, 500),
+          };
+          fs.writeFileSync(
+            path.join(directory, 'bundle-summary.json'),
+            `${JSON.stringify(summary, null, 2)}\n`
+          );
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+
+      - name: Upload Webpack Worker evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: admin-worker-webpack-analysis
+          path: |
+            apps/admin/.wrangler-dry/meta.json
+            apps/admin/.wrangler-dry/size.json
+            apps/admin/.wrangler-dry/bundle-summary.json
+            apps/admin/.wrangler-dry/dry-run.log
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Enforce compressed-size budget
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const size = JSON.parse(
+            fs.readFileSync('apps/admin/.wrangler-dry/size.json', 'utf8')
+          );
+          if (size.gzipKiB > size.maximumGzipKiB) {
             throw new Error(
-              `Compressed Worker ${gzipKiB} KiB exceeds ${maximumGzipKiB} KiB`
+              `Compressed Worker ${size.gzipKiB} KiB exceeds ${size.maximumGzipKiB} KiB`
             );
           }
           NODE
-          if grep -R -Fq 'editorial-catalog.generated.json' .wrangler-dry; then
+          if grep -R -Fq 'editorial-catalog.generated.json' apps/admin/.wrangler-dry; then
             echo '::error::Legacy monolithic catalog remains in the Worker bundle.'
             exit 1
           fi
