@@ -1,0 +1,137 @@
+name: Close premium rollout verifier
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/finish-premium-rollout.yml"
+      - ".github/workflows/finish-premium-rollout-cleanup.yml"
+
+permissions:
+  actions: read
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: close-premium-rollout-verifier-20260823
+  cancel-in-progress: false
+
+jobs:
+  close-after-success:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Wait for the independent rollout verifier
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const token = process.env.GH_TOKEN;
+          const repository = process.env.REPOSITORY;
+          const prNumber = process.env.PR_NUMBER;
+          const headSha = process.env.PR_HEAD_SHA;
+          const headRef = process.env.PR_HEAD_REF;
+          const headers = {
+            Accept: "application/vnd.github+json",
+            Authorization: `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+            "User-Agent": "probpera-premium-rollout-cleanup",
+          };
+          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+          async function api(path, init = {}) {
+            const response = await fetch(`https://api.github.com${path}`, {
+              ...init,
+              headers: { ...headers, ...(init.headers || {}) },
+            });
+            const text = await response.text();
+            if (!response.ok) {
+              throw new Error(
+                `GitHub API ${path} failed (${response.status}): ${text.slice(0, 500)}`
+              );
+            }
+            return text ? JSON.parse(text) : null;
+          }
+
+          const deadline = Date.now() + 45 * 60 * 1000;
+          let selected = null;
+          let last = "";
+          while (Date.now() < deadline) {
+            const data = await api(
+              `/repos/${repository}/actions/runs?head_sha=${headSha}&event=pull_request&per_page=100`
+            );
+            selected = (data.workflow_runs || [])
+              .filter(
+                (run) =>
+                  run.name === "Finish premium English rollout" &&
+                  run.head_sha === headSha
+              )
+              .sort(
+                (left, right) =>
+                  new Date(right.created_at).getTime() -
+                  new Date(left.created_at).getTime()
+              )[0] || null;
+            const state = selected
+              ? `${selected.id}:${selected.status}:${selected.conclusion || ""}`
+              : "missing";
+            if (state !== last) {
+              console.log(`VERIFIER=${state}`);
+              last = state;
+            }
+            if (selected?.status === "completed") break;
+            await sleep(15_000);
+          }
+
+          if (!selected || selected.status !== "completed") {
+            throw new Error("Independent rollout verifier did not complete");
+          }
+          if (selected.conclusion !== "success") {
+            throw new Error(
+              `Independent rollout verifier failed: ${selected.html_url}`
+            );
+          }
+
+          await api(`/repos/${repository}/issues/${prNumber}/comments`, {
+            method: "POST",
+            body: JSON.stringify({
+              body: [
+                "Premium English production rollout verified successfully.",
+                "",
+                `- Verification run: ${selected.html_url}`,
+                "- Admin deployment and Pages deployment: success for current main",
+                "- Live public release marker: current",
+                "- Admin health endpoint: non-5xx",
+                "- Production DB contract: exact and healthy (`premium_machine_translation=true`, `ledger_entries=14`, `invalid_indexes=0`)",
+                "",
+                "This PR contains only one-time diagnostics and is closed without merge.",
+              ].join("\n"),
+            }),
+          });
+          await api(`/repos/${repository}/pulls/${prNumber}`, {
+            method: "PATCH",
+            body: JSON.stringify({ state: "closed" }),
+          });
+
+          try {
+            await api(
+              `/repos/${repository}/git/refs/heads/${encodeURIComponent(headRef)}`,
+              { method: "DELETE" }
+            );
+            console.log(`DELETED_BRANCH=${headRef}`);
+          } catch (error) {
+            console.warn(`Branch cleanup warning: ${error.message}`);
+          }
+          NODE
