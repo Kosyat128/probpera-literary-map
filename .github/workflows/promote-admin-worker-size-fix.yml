@@ -1,0 +1,408 @@
+name: Promote verified admin Worker size fix
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: promote-admin-worker-size-pr-94
+  cancel-in-progress: true
+
+jobs:
+  promote:
+    if: >-
+      github.event.pull_request.number == 94 &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+      SOURCE_REF: ${{ github.event.pull_request.head.ref }}
+      REPOSITORY: ${{ github.repository }}
+      GH_TOKEN: ${{ github.token }}
+      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_test_only
+      NEXT_PUBLIC_SITE_URL: https://probpera.ru
+      NEXT_PUBLIC_ADMIN_URL: https://admin.probpera.ru
+      YANDEX_METRIKA_COUNTER_ID: "1"
+
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Build a clean product-only candidate
+        id: candidate
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git fetch --no-tags origin main
+          base_sha="$(git rev-parse origin/main)"
+          current_source="$(git rev-parse HEAD)"
+          [[ "$current_source" == "$SOURCE_SHA" ]]
+
+          git diff --binary "origin/main...$SOURCE_SHA" -- \
+            . \
+            ':(exclude).github/workflows/**' \
+            > /tmp/admin-worker-product.patch
+          [[ -s /tmp/admin-worker-product.patch ]] || {
+            echo "::error::PR #94 contains no non-workflow product changes."
+            exit 1
+          }
+
+          release_branch="release/admin-worker-size-${SOURCE_SHA:0:12}"
+          git switch --detach origin/main
+          git switch -c "$release_branch"
+          git apply --index /tmp/admin-worker-product.patch
+
+          # Regenerate the checked-in asset representation from the canonical
+          # archive so the candidate is validated exactly as production builds it.
+          npm ci
+          npm run editorial:catalog
+          git add -A
+
+          changed_files="$(git diff --cached --name-only)"
+          [[ -n "$changed_files" ]]
+          printf '%s\n' "$changed_files"
+
+          while IFS= read -r file; do
+            case "$file" in
+              apps/admin/*|scripts/export-editorial-catalog.mjs|scripts/*editorial*catalog*|package.json|package-lock.json)
+                ;;
+              *)
+                echo "::error::Unexpected product path in clean candidate: $file"
+                exit 1
+                ;;
+            esac
+            case "$file" in
+              *.env|*.env.*|*.dev.vars|*.pem|*.key)
+                echo "::error::Secret-bearing file is forbidden in the release candidate: $file"
+                exit 1
+                ;;
+            esac
+          done <<< "$changed_files"
+
+          git diff --cached --check
+          if git diff --cached | grep -E '^\+[^+].*(CLOUDFLARE_API_TOKEN|OPENAI_API_KEY=|SUPABASE_DB_URL=)' >/dev/null; then
+            echo "::error::A credential-like assignment appeared in the candidate diff."
+            exit 1
+          fi
+
+          if git grep -nE '^[[:space:]]*import .*editorial-catalog\.generated\.json' -- apps/admin >/tmp/static-catalog-imports.txt; then
+            cat /tmp/static-catalog-imports.txt
+            echo "::error::The multi-megabyte editorial catalog is still statically imported into the Worker."
+            exit 1
+          fi
+
+          asset_count="$(find apps/admin/public -type f -path '*editorial-catalog*' 2>/dev/null | wc -l | tr -d ' ')"
+          [[ "$asset_count" =~ ^[0-9]+$ ]] && (( asset_count >= 2 )) || {
+            echo "::error::Expected generated editorial catalog assets, found $asset_count."
+            exit 1
+          }
+
+          if [[ -f apps/admin/lib/editorial-catalog.generated.json ]]; then
+            legacy_size="$(stat -c '%s' apps/admin/lib/editorial-catalog.generated.json)"
+            (( legacy_size <= 262144 )) || {
+              echo "::error::Legacy server-bundled catalog remains too large: $legacy_size bytes."
+              exit 1
+            }
+          fi
+
+          echo "base_sha=$base_sha" >> "$GITHUB_OUTPUT"
+          echo "release_branch=$release_branch" >> "$GITHUB_OUTPUT"
+          echo "asset_count=$asset_count" >> "$GITHUB_OUTPUT"
+
+      - name: Validate admin types and focused contracts
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run lint --workspace @probpera/admin
+          npx vitest run \
+            apps/admin/lib \
+            scripts/export-editorial-catalog.source.test.mjs \
+            scripts/export-editorial-catalog.test.mjs \
+            --passWithNoTests
+
+      - name: Build OpenNext Worker and enforce real gzip size
+        id: worker_size
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run cf:build --workspace @probpera/admin
+          (
+            cd apps/admin
+            npx wrangler deploy \
+              --dry-run \
+              --config wrangler.jsonc \
+              --outdir /tmp/probpera-admin-worker
+          ) 2>&1 | tee /tmp/wrangler-dry-run.log
+
+          gzip_kib="$(python <<'PY'
+          import pathlib, re
+          text = pathlib.Path('/tmp/wrangler-dry-run.log').read_text(encoding='utf-8', errors='replace')
+          matches = re.findall(r'gzip:\s*([0-9]+(?:\.[0-9]+)?)\s*(KiB|MiB)', text, re.I)
+          if not matches:
+              raise SystemExit('Wrangler output did not expose a compressed upload size')
+          value, unit = matches[-1]
+          size = float(value) * (1024 if unit.lower() == 'mib' else 1)
+          print(f'{size:.2f}')
+          PY
+          )"
+          python - "$gzip_kib" <<'PY'
+          import sys
+          size = float(sys.argv[1])
+          limit = 2900.0
+          if size > limit:
+              raise SystemExit(
+                  f'Compressed Worker is {size:.2f} KiB; release ceiling is {limit:.2f} KiB'
+              )
+          print(f'Compressed Worker size is {size:.2f} KiB (ceiling {limit:.2f} KiB).')
+          PY
+          echo "gzip_kib=$gzip_kib" >> "$GITHUB_OUTPUT"
+
+      - name: Require exact-source Quality and security success
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          deadline=$(( $(date +%s) + 2700 ))
+          while (( $(date +%s) < deadline )); do
+            run_json="$(
+              gh api "/repos/$REPOSITORY/actions/runs?head_sha=$SOURCE_SHA&per_page=100"
+            )"
+            quality="$(
+              RUN_JSON="$run_json" node <<'NODE'
+              const data = JSON.parse(process.env.RUN_JSON || '{}');
+              const runs = (data.workflow_runs || [])
+                .filter((run) => run.name === 'Quality and security')
+                .sort((a, b) => b.id - a.id);
+              process.stdout.write(JSON.stringify(runs[0] || null));
+              NODE
+            )"
+            if [[ "$quality" != "null" ]]; then
+              status="$(QUALITY="$quality" node -e "process.stdout.write(JSON.parse(process.env.QUALITY).status || '')")"
+              conclusion="$(QUALITY="$quality" node -e "process.stdout.write(JSON.parse(process.env.QUALITY).conclusion || '')")"
+              run_id="$(QUALITY="$quality" node -e "process.stdout.write(String(JSON.parse(process.env.QUALITY).id || ''))")"
+              echo "Quality run $run_id: $status/$conclusion"
+              if [[ "$status" == "completed" ]]; then
+                [[ "$conclusion" == "success" ]] || {
+                  echo "::error::Exact-source Quality and security ended with $conclusion."
+                  exit 1
+                }
+                exit 0
+              fi
+            fi
+            sleep 15
+          done
+          echo "::error::Exact-source Quality and security did not complete in the release window."
+          exit 1
+
+      - name: Reconfirm immutable source and main base
+        shell: bash
+        env:
+          EXPECTED_BASE_SHA: ${{ steps.candidate.outputs.base_sha }}
+        run: |
+          set -Eeuo pipefail
+          remote_source="$(git ls-remote origin "refs/heads/$SOURCE_REF" | awk '{print $1}')"
+          remote_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          [[ "$remote_source" == "$SOURCE_SHA" ]] || {
+            echo "::error::PR #94 advanced during verification; the newer run owns promotion."
+            exit 1
+          }
+          [[ "$remote_main" == "$EXPECTED_BASE_SHA" ]] || {
+            echo "::error::main advanced during verification; rebuild the clean candidate on the new base."
+            exit 1
+          }
+
+      - name: Commit and push clean release branch
+        id: release
+        shell: bash
+        env:
+          RELEASE_BRANCH: ${{ steps.candidate.outputs.release_branch }}
+          GZIP_KIB: ${{ steps.worker_size.outputs.gzip_kib }}
+          ASSET_COUNT: ${{ steps.candidate.outputs.asset_count }}
+        run: |
+          set -Eeuo pipefail
+          git config user.name "probpera-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "fix(admin): keep Worker bundle below Cloudflare free limit"
+          release_sha="$(git rev-parse HEAD)"
+          git push origin "HEAD:refs/heads/$RELEASE_BRANCH"
+
+          body="$(cat <<EOF
+          ## Verified clean release candidate
+
+          Source PR: #94 at \`$SOURCE_SHA\`.
+
+          - product-only commit: \`$release_sha\`;
+          - generated editorial catalog assets: $ASSET_COUNT;
+          - Wrangler compressed upload: $GZIP_KIB KiB;
+          - enforced release ceiling: 2900 KiB;
+          - exact-source Quality and security: success;
+          - no diagnostic workflow is included in this branch.
+          EOF
+          )"
+
+          pr_json="$(
+            gh api --method POST "/repos/$REPOSITORY/pulls" \
+              -f title='fix(admin): keep Worker below Cloudflare free-plan limit' \
+              -f head="$RELEASE_BRANCH" \
+              -f base=main \
+              -f body="$body"
+          )"
+          release_pr="$(PR_JSON="$pr_json" node -e "process.stdout.write(String(JSON.parse(process.env.PR_JSON).number))")"
+          echo "release_sha=$release_sha" >> "$GITHUB_OUTPUT"
+          echo "release_pr=$release_pr" >> "$GITHUB_OUTPUT"
+
+      - name: Squash merge the verified clean candidate
+        id: merge
+        shell: bash
+        env:
+          RELEASE_PR: ${{ steps.release.outputs.release_pr }}
+          RELEASE_SHA: ${{ steps.release.outputs.release_sha }}
+          GZIP_KIB: ${{ steps.worker_size.outputs.gzip_kib }}
+        run: |
+          set -Eeuo pipefail
+          merge_json="$(
+            gh api --method PUT "/repos/$REPOSITORY/pulls/$RELEASE_PR/merge" \
+              -f merge_method=squash \
+              -f sha="$RELEASE_SHA" \
+              -f commit_title='fix(admin): keep Worker below Cloudflare free-plan limit' \
+              -f commit_message="Move the generated editorial catalog out of the Worker bundle and verify a $GZIP_KIB KiB compressed upload before production deployment."
+          )"
+          merged="$(MERGE_JSON="$merge_json" node -e "process.stdout.write(String(JSON.parse(process.env.MERGE_JSON).merged))")"
+          [[ "$merged" == "true" ]] || {
+            echo "$merge_json"
+            echo "::error::GitHub did not merge the verified clean candidate."
+            exit 1
+          }
+          merge_sha="$(MERGE_JSON="$merge_json" node -e "process.stdout.write(JSON.parse(process.env.MERGE_JSON).sha || '')")"
+          [[ "$merge_sha" =~ ^[0-9a-f]{40}$ ]]
+          echo "merge_sha=$merge_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Dispatch production admin and public releases
+        shell: bash
+        env:
+          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
+        run: |
+          set -Eeuo pipefail
+          current_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          [[ "$current_main" == "$MERGE_SHA" ]]
+
+          gh api --method POST "/repos/$REPOSITORY/actions/workflows/deploy-admin.yml/dispatches" \
+            -f ref=main
+          gh api --method POST "/repos/$REPOSITORY/actions/workflows/deploy-pages.yml/dispatches" \
+            -f ref=main \
+            -F 'inputs[mode]=full' \
+            -F 'inputs[reason]=admin-worker-size-release'
+
+      - name: Require successful exact-main production deploys
+        shell: bash
+        env:
+          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
+        run: |
+          set -Eeuo pipefail
+          deadline=$(( $(date +%s) + 2400 ))
+          while (( $(date +%s) < deadline )); do
+            all_runs="$(gh api "/repos/$REPOSITORY/actions/runs?head_sha=$MERGE_SHA&per_page=100")"
+            selection="$(
+              RUN_JSON="$all_runs" node <<'NODE'
+              const data = JSON.parse(process.env.RUN_JSON || '{}');
+              const names = ['Deploy editorial admin', 'Deploy Vite site to GitHub Pages'];
+              const selected = names.map((name) => {
+                const candidates = (data.workflow_runs || [])
+                  .filter((run) => run.name === name && run.head_sha === process.env.MERGE_SHA)
+                  .sort((a, b) => b.id - a.id);
+                const run = candidates[0] || null;
+                return run ? {
+                  name,
+                  id: run.id,
+                  status: run.status,
+                  conclusion: run.conclusion,
+                  url: run.html_url,
+                } : { name, id: null, status: 'missing', conclusion: null, url: null };
+              });
+              process.stdout.write(JSON.stringify(selected));
+              NODE
+            )"
+            echo "$selection"
+            failed="$(SELECTION="$selection" node -e "const s=JSON.parse(process.env.SELECTION); process.stdout.write(String(s.some(r => r.status === 'completed' && r.conclusion !== 'success')))")"
+            [[ "$failed" == "false" ]] || {
+              echo "::error::A production deployment failed for exact main SHA $MERGE_SHA."
+              exit 1
+            }
+            complete="$(SELECTION="$selection" node -e "const s=JSON.parse(process.env.SELECTION); process.stdout.write(String(s.every(r => r.id && r.status === 'completed' && r.conclusion === 'success')))")"
+            if [[ "$complete" == "true" ]]; then
+              break
+            fi
+            sleep 15
+          done
+
+          final_runs="$(gh api "/repos/$REPOSITORY/actions/runs?head_sha=$MERGE_SHA&per_page=100")"
+          FINAL_RUNS="$final_runs" MERGE_SHA="$MERGE_SHA" node <<'NODE'
+          const data = JSON.parse(process.env.FINAL_RUNS || '{}');
+          for (const name of ['Deploy editorial admin', 'Deploy Vite site to GitHub Pages']) {
+            const run = (data.workflow_runs || [])
+              .filter((candidate) => candidate.name === name && candidate.head_sha === process.env.MERGE_SHA)
+              .sort((a, b) => b.id - a.id)[0];
+            if (!run || run.status !== 'completed' || run.conclusion !== 'success') {
+              throw new Error(`${name} did not complete successfully for ${process.env.MERGE_SHA}`);
+            }
+          }
+          NODE
+
+      - name: Verify live release markers
+        shell: bash
+        env:
+          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
+        run: |
+          set -Eeuo pipefail
+          deadline=$(( $(date +%s) + 600 ))
+          while (( $(date +%s) < deadline )); do
+            marker="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' \
+              "https://probpera.ru/.well-known/probpera-release-head.json?sha=$MERGE_SHA" || true)"
+            marker_sha="$(MARKER="$marker" node -e "try { process.stdout.write(JSON.parse(process.env.MARKER || '{}').commitSha || '') } catch {}")"
+            admin_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' --max-time 20 \
+              "https://admin.probpera.ru/health?sha=$MERGE_SHA" || true)"
+            echo "public=$marker_sha admin_http=$admin_status"
+            if [[ "$marker_sha" == "$MERGE_SHA" && "$admin_status" =~ ^[234][0-9][0-9]$ ]]; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::Live release markers did not converge to exact main SHA $MERGE_SHA."
+          exit 1
+
+      - name: Close diagnostic pull requests with release evidence
+        if: success()
+        shell: bash
+        env:
+          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
+          GZIP_KIB: ${{ steps.worker_size.outputs.gzip_kib }}
+          RELEASE_PR: ${{ steps.release.outputs.release_pr }}
+        run: |
+          set -Eeuo pipefail
+          comment="Admin Worker size release completed successfully. Clean PR #$RELEASE_PR was squash-merged as \`$MERGE_SHA\`; Wrangler dry-run measured $GZIP_KIB KiB gzip; exact-main admin and Pages deployments succeeded; live release markers were verified. This diagnostic PR is closed without merge."
+          gh api --method POST "/repos/$REPOSITORY/issues/94/comments" -f body="$comment"
+          gh api --method PATCH "/repos/$REPOSITORY/pulls/94" -f state=closed
+          gh api --method POST "/repos/$REPOSITORY/issues/90/comments" -f body="$comment" || true
+          gh api --method PATCH "/repos/$REPOSITORY/pulls/90" -f state=closed || true
