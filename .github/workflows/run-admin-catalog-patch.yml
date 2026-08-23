@@ -1,0 +1,111 @@
+name: Run admin catalog patch
+
+on:
+  push:
+    branches:
+      - fix/admin-worker-bundle-size
+    paths:
+      - ".catalog-patch-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: run-admin-catalog-patch
+  cancel-in-progress: false
+
+jobs:
+  patch-test-and-size:
+    if: github.actor == 'Kosyat128'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v7
+        with:
+          ref: fix/admin-worker-bundle-size
+          fetch-depth: 1
+
+      - name: Apply source migration
+        run: python scripts/apply-admin-catalog-patch.py
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Generate, type-check and test
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run editorial:catalog
+          node scripts/export-editorial-catalog.mjs --check
+          npm run lint --workspace @probpera/admin
+          npx vitest run \
+            apps/admin/lib/editorial-catalog.test.ts \
+            apps/admin/lib/env.test.ts
+          git diff --check
+
+      - name: Build exact OpenNext Worker
+        run: npm run cf:build --workspace @probpera/admin
+
+      - name: Enforce Wrangler free-plan budget
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          cd apps/admin
+          rm -rf .wrangler-dry
+          mkdir -p .wrangler-dry
+          npx wrangler deploy \
+            --dry-run \
+            --outdir .wrangler-dry \
+            --metafile .wrangler-dry/meta.json \
+            --config wrangler.jsonc \
+            2>&1 | tee .wrangler-dry/dry-run.log
+          node <<'NODE'
+          const fs = require("node:fs");
+          const log = fs.readFileSync(".wrangler-dry/dry-run.log", "utf8");
+          const match = log.match(
+            /Total Upload:\s*([0-9.]+) KiB\s*\/\s*gzip:\s*([0-9.]+) KiB/u
+          );
+          if (!match) throw new Error("Wrangler did not report upload sizes");
+          const rawKiB = Number(match[1]);
+          const gzipKiB = Number(match[2]);
+          const maximumGzipKiB = 2900;
+          console.log(JSON.stringify({ rawKiB, gzipKiB, maximumGzipKiB }));
+          if (gzipKiB > maximumGzipKiB) {
+            throw new Error(
+              `Compressed Worker ${gzipKiB} KiB exceeds ${maximumGzipKiB} KiB`
+            );
+          }
+          NODE
+          if grep -R -Fq "editorial-catalog.generated.json" .wrangler-dry; then
+            echo "::error::Legacy monolithic catalog remains in the Worker bundle."
+            exit 1
+          fi
+
+      - name: Commit only proven product changes
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git rm -f scripts/apply-admin-catalog-patch.py .catalog-patch-trigger
+          git config user.name "probpera-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A \
+            .gitignore \
+            apps/admin/lib \
+            apps/admin/app \
+            apps/admin/package.json \
+            scripts/export-editorial-catalog.mjs \
+            scripts/apply-admin-catalog-patch.py \
+            .catalog-patch-trigger
+          git commit -m "fix(admin): externalize editorial catalog assets"
+          git push origin HEAD:fix/admin-worker-bundle-size
