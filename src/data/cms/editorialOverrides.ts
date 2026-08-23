@@ -72,17 +72,21 @@ export type CmsLiteraryWork = {
   reviewedAt?: string;
 };
 
-export const cmsWriterProfileOverrides = generatedWriterProfiles as Record<
+// Generated modules intentionally use `as const` so their build artefacts are
+// immutable. The premium exporter validates every nested field before writing;
+// runtime mappers below make mutable defensive copies where WorkProfile needs
+// them, so a readonly-to-editorial assertion is safe at this boundary.
+export const cmsWriterProfileOverrides = generatedWriterProfiles as unknown as Record<
   string,
   CmsWriterProfileOverride
 >;
 
-export const cmsCountryProfileOverrides = generatedCountryProfiles as Record<
+export const cmsCountryProfileOverrides = generatedCountryProfiles as unknown as Record<
   string,
   CmsCountryProfileOverride
 >;
 
-export const cmsLiteraryWorksByLegacyId = generatedLiteraryWorks as Record<
+export const cmsLiteraryWorksByLegacyId = generatedLiteraryWorks as unknown as Record<
   string,
   CmsLiteraryWork
 >;
