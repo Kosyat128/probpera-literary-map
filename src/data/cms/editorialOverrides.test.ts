@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import type { Country } from "../countries/types";
+import type {
+  Country,
+  WriterBiographySourceProfile,
+} from "../countries/types";
 import {
   applyCmsCountryProfileOverrides,
   applyCmsWriterProfileOverrides,
@@ -19,11 +22,11 @@ const country = {
   ],
 } as Country;
 
-const biographySource = {
+const biographySource: WriterBiographySourceProfile = {
   provider: "Редакция",
   url: "https://example.org/writer",
-  fields: ["identity", "biography-facts"] as const,
-  usage: "fact-check" as const,
+  fields: ["identity", "biography-facts"],
+  usage: "fact-check",
   retrievedAt: "2026-08-23",
 };
 
