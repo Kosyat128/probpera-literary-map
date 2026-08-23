@@ -21,6 +21,7 @@ export type CmsWriterProfileOverride = Partial<
     | "genres"
     | "languages"
     | "nationality"
+    | "biographyTranslations"
   >
 >;
 
@@ -45,6 +46,7 @@ export type CmsCountryProfileOverride = Partial<
     | "literaryPlaces"
     | "timeline"
     | "chronology"
+    | "translations"
     | "nobel"
     | "places"
     | "influence"
@@ -64,6 +66,8 @@ export type CmsLiteraryWork = {
   tags?: readonly string[];
   description?: string;
   sourceUrl?: string;
+  translations?: WorkProfile["translations"];
+  sources?: WorkProfile["sources"];
   editorialStatus: "reviewed" | "verified";
   reviewedAt?: string;
 };
@@ -131,6 +135,30 @@ const literaryWorksByWriter = Object.values(cmsLiteraryWorksByLegacyId).reduce(
   new Map<string, CmsLiteraryWork[]>()
 );
 
+function copiedTranslations(
+  translations: WorkProfile["translations"]
+): WorkProfile["translations"] {
+  if (!translations) return undefined;
+  return {
+    ...(translations.ru
+      ? {
+          ru: {
+            ...translations.ru,
+            sourceUrls: [...translations.ru.sourceUrls],
+          },
+        }
+      : {}),
+    ...(translations.en
+      ? {
+          en: {
+            ...translations.en,
+            sourceUrls: [...translations.en.sourceUrls],
+          },
+        }
+      : {}),
+  };
+}
+
 export function cmsLiteraryWorkProfilesForWriter(
   countryId: string,
   writerId: string,
@@ -153,6 +181,11 @@ export function cmsLiteraryWorkProfilesForWriter(
       tags: [...(work.tags || [])],
       description: work.description || undefined,
       sourceUrl: work.sourceUrl || undefined,
+      translations: copiedTranslations(work.translations),
+      sources: work.sources?.map((source) => ({
+        ...source,
+        fields: [...source.fields],
+      })),
       editorial: {
         status: work.editorialStatus,
         reviewedAt: work.reviewedAt,
