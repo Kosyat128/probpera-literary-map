@@ -1,0 +1,249 @@
+name: Finish premium English rollout
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/finish-premium-rollout.yml"
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: finish-premium-english-rollout-20260823
+  cancel-in-progress: false
+
+jobs:
+  production-runs-and-live-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Wait for exact post-merge production evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const token = process.env.GH_TOKEN;
+          const repository = process.env.REPOSITORY;
+          const headers = {
+            Accept: "application/vnd.github+json",
+            Authorization: `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "probpera-premium-rollout-verifier",
+          };
+          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+          async function api(path, init = {}) {
+            const response = await fetch(`https://api.github.com${path}`, {
+              ...init,
+              headers: { ...headers, ...(init.headers || {}) },
+            });
+            const text = await response.text();
+            if (!response.ok) {
+              throw new Error(
+                `GitHub API ${path} failed (${response.status}): ${text.slice(0, 600)}`
+              );
+            }
+            return text ? JSON.parse(text) : null;
+          }
+
+          const repositoryInfo = await api(`/repos/${repository}`);
+          const mainBranch = repositoryInfo.default_branch || "main";
+          const branchInfo = await api(
+            `/repos/${repository}/branches/${encodeURIComponent(mainBranch)}`
+          );
+          const mainSha = branchInfo.commit.sha;
+          if (!/^[0-9a-f]{40}$/.test(mainSha)) {
+            throw new Error(`Invalid current main SHA: ${mainSha}`);
+          }
+          console.log(`CURRENT_MAIN_SHA=${mainSha}`);
+
+          const workflows = [
+            {
+              name: "Deploy editorial admin",
+              file: "deploy-admin.yml",
+              inputs: {},
+            },
+            {
+              name: "Deploy Vite site to GitHub Pages",
+              file: "deploy-pages.yml",
+              inputs: {
+                mode: "full",
+                reason: "premium-english-rollout-verification",
+              },
+            },
+          ];
+
+          async function latestExactRun(name) {
+            const data = await api(
+              `/repos/${repository}/actions/runs?head_sha=${mainSha}&per_page=100`
+            );
+            return (data.workflow_runs || [])
+              .filter((run) => run.name === name && run.head_sha === mainSha)
+              .sort(
+                (left, right) =>
+                  new Date(right.created_at).getTime() -
+                  new Date(left.created_at).getTime()
+              )[0] || null;
+          }
+
+          async function dispatch(workflow) {
+            await api(
+              `/repos/${repository}/actions/workflows/${workflow.file}/dispatches`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  ref: mainBranch,
+                  inputs: workflow.inputs,
+                }),
+              }
+            );
+            console.log(`DISPATCHED=${workflow.name}`);
+          }
+
+          async function requireSuccessfulRun(workflow) {
+            let run = await latestExactRun(workflow.name);
+            if (!run || (run.status === "completed" && run.conclusion !== "success")) {
+              await dispatch(workflow);
+              await sleep(5_000);
+            }
+
+            const deadline = Date.now() + 35 * 60 * 1000;
+            let last = "";
+            while (Date.now() < deadline) {
+              run = await latestExactRun(workflow.name);
+              const state = run
+                ? `${run.id}:${run.status}:${run.conclusion || ""}`
+                : "missing";
+              if (state !== last) {
+                console.log(`${workflow.name}: ${state}`);
+                last = state;
+              }
+              if (run?.status === "completed") {
+                if (run.conclusion !== "success") {
+                  throw new Error(
+                    `${workflow.name} run ${run.id} ended with ${run.conclusion}: ${run.html_url}`
+                  );
+                }
+                return run;
+              }
+              await sleep(15_000);
+            }
+            throw new Error(`${workflow.name} did not complete before the deadline`);
+          }
+
+          const evidence = [];
+          for (const workflow of workflows) {
+            evidence.push(await requireSuccessfulRun(workflow));
+          }
+          console.log(
+            `PRODUCTION_RUNS=${JSON.stringify(
+              evidence.map((run) => ({
+                name: run.name,
+                id: run.id,
+                conclusion: run.conclusion,
+                head_sha: run.head_sha,
+                url: run.html_url,
+              }))
+            )}`
+          );
+
+          let release = null;
+          for (let attempt = 1; attempt <= 30; attempt += 1) {
+            const response = await fetch(
+              `https://probpera.ru/.well-known/probpera-release-head.json?sha=${mainSha}&attempt=${attempt}`,
+              { headers: { "Cache-Control": "no-cache" } }
+            );
+            const text = await response.text();
+            try {
+              release = response.ok ? JSON.parse(text) : null;
+            } catch {
+              release = null;
+            }
+            console.log(
+              `LIVE_RELEASE attempt=${attempt} status=${response.status} payload=${text.slice(0, 300)}`
+            );
+            if (release?.commitSha === mainSha) break;
+            await sleep(10_000);
+          }
+          if (release?.commitSha !== mainSha) {
+            throw new Error(
+              `Live release marker is not the current main SHA: ${JSON.stringify(release)}`
+            );
+          }
+
+          const admin = await fetch(
+            `https://admin.probpera.ru/health?sha=${mainSha}`,
+            { redirect: "manual", headers: { "Cache-Control": "no-cache" } }
+          );
+          console.log(
+            `ADMIN_HEALTH status=${admin.status} location=${
+              admin.headers.get("location") || ""
+            }`
+          );
+          if (admin.status >= 500) {
+            throw new Error(`Admin health returned ${admin.status}`);
+          }
+          NODE
+
+  production-database-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Verify production credentials and PostgreSQL client
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -n "$SUPABASE_DB_URL"
+          test -n "$SUPABASE_URL"
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y postgresql-client
+          fi
+
+      - name: Require exact healthy production contract without mutation
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          main_sha="$(git rev-parse HEAD)"
+          node scripts/database/build-production-migration-plan.mjs \
+            --output /tmp/unused-plan.sql \
+            --manifest /tmp/manifest.json \
+            --verification /tmp/verify.sql \
+            --repository-sha "$main_sha"
+          psql "$SUPABASE_DB_URL" \
+            --no-psqlrc \
+            --set ON_ERROR_STOP=1 \
+            --file /tmp/verify.sql \
+            > /tmp/contract.txt
+          actual="$(tr -d '\r\n' < /tmp/contract.txt)"
+          expected='schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=14;invalid_indexes=0'
+          echo "ACTUAL_PRODUCTION_CONTRACT=$actual"
+          [[ "$actual" == "$expected" ]]
