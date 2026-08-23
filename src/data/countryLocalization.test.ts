@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Country } from "./countries/types";
 import {
   countryForLanguage,
+  countryWithActiveLanguage,
   selectCountryEnglishTranslation,
 } from "./countryLocalization";
 
@@ -59,5 +60,22 @@ describe("country localization", () => {
     };
     expect(selectCountryEnglishTranslation(unsafe)).toBeNull();
     expect(countryForLanguage(unsafe, "en")).toBe(unsafe);
+  });
+
+  it("switches a stable public record live without mutating the source", () => {
+    let language: "ru" | "en" = "ru";
+    const live = countryWithActiveLanguage(country, () => language);
+
+    expect(live.name).toBe("Россия");
+    expect(live.description).toBe("Русское описание");
+
+    language = "en";
+    expect(live.name).toBe("Russia");
+    expect(live.description).toBe("An English literary profile.");
+    expect(live.writers).toBe(country.writers);
+    expect(country.name).toBe("Россия");
+
+    language = "ru";
+    expect(live.name).toBe("Россия");
   });
 });
