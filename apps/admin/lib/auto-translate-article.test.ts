@@ -49,10 +49,10 @@ function translatedPayload(contentHtml: string) {
   };
 }
 
-function openAiResponse(payload: unknown) {
+function openAiResponse(payload: unknown, suffix = "translation") {
   return new Response(
     JSON.stringify({
-      id: "resp_test_translation",
+      id: `resp_test_${suffix}`,
       output: [
         {
           type: "message",
@@ -70,33 +70,37 @@ function openAiResponse(payload: unknown) {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "x-request-id": "req_test_translation",
+        "x-request-id": `req_test_${suffix}`,
       },
     }
   );
 }
 
 describe("automatic literary article translation", () => {
-  it("preserves protected HTML structure, links and image sources", async () => {
+  it("runs a premium second editorial pass while preserving protected HTML", async () => {
     const translatedHtml =
       `<h2 id="context">Context</h2><p>${longEnglishParagraph} ` +
       '<a href="https://example.com/source" target="_blank" rel="noopener noreferrer">source</a>.</p>' +
       '<figure class="article-image"><img src="https://cdn.example.com/image.webp" alt="Literary illustration" loading="lazy"><figcaption>Caption</figcaption></figure>';
-    const fetchImpl = vi.fn(async () =>
-      openAiResponse(translatedPayload(translatedHtml))
-    ) as unknown as typeof fetch;
+    const payload = translatedPayload(translatedHtml);
+    const fetchImpl = vi
+      .fn()
+      .mockImplementationOnce(async () => openAiResponse(payload, "draft"))
+      .mockImplementationOnce(async () => openAiResponse(payload, "review")) as unknown as typeof fetch;
 
     const result = await translateArticleSourceToEnglish(source, {
       apiKey: "test-key",
       model: "gpt-test",
+      reviewModel: "gpt-review-test",
       fetchImpl,
     });
 
+    expect(fetchImpl).toHaveBeenCalledTimes(2);
     expect(result.title).toBe("A Russian Literary Essay");
-    expect(result.model).toBe("gpt-test");
-    expect(result.requestId).toBe("req_test_translation");
-    expect(result.inputTokens).toBe(1200);
-    expect(result.outputTokens).toBe(1800);
+    expect(result.model).toBe("gpt-review-test");
+    expect(result.requestId).toBe("req_test_review");
+    expect(result.inputTokens).toBe(2400);
+    expect(result.outputTokens).toBe(3600);
     expect(result.content_html).toContain('href="https://example.com/source"');
     expect(result.content_html).toContain(
       'src="https://cdn.example.com/image.webp"'
@@ -105,12 +109,21 @@ describe("automatic literary article translation", () => {
       protectedArticleHtmlSignature(result.content_html)
     ).toEqual(protectedArticleHtmlSignature(source.contentHtml));
 
-    const requestBody = JSON.parse(
+    const firstRequest = JSON.parse(
       String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[0]?.[1]?.body)
     );
-    expect(requestBody.model).toBe("gpt-test");
-    expect(requestBody.store).toBe(false);
-    expect(requestBody.text.format.type).toBe("json_schema");
+    const secondRequest = JSON.parse(
+      String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[1]?.[1]?.body)
+    );
+    expect(firstRequest.model).toBe("gpt-test");
+    expect(firstRequest.store).toBe(false);
+    expect(firstRequest.text.format.type).toBe("json_schema");
+    expect(secondRequest.model).toBe("gpt-review-test");
+    expect(secondRequest.store).toBe(false);
+    expect(secondRequest.text.format.name).toBe(
+      "probpera_premium_translation_review"
+    );
+    expect(secondRequest.instructions).toContain("major literary magazine");
   });
 
   it("rejects a translation that changes a protected link", async () => {
@@ -129,6 +142,46 @@ describe("automatic literary article translation", () => {
         fetchImpl,
       })
     ).rejects.toThrow("changed protected HTML structure");
+  });
+
+  it("rejects premium review output that leaves Cyrillic reader-facing text", async () => {
+    const translatedHtml =
+      `<h2 id="context">Context</h2><p>${longEnglishParagraph} ` +
+      '<a href="https://example.com/source" target="_blank" rel="noopener noreferrer">source</a>.</p>' +
+      '<figure class="article-image"><img src="https://cdn.example.com/image.webp" alt="Literary illustration" loading="lazy"><figcaption>Caption</figcaption></figure>';
+    const draft = translatedPayload(translatedHtml);
+    const badReview = { ...draft, title: "English title Русский" };
+    const fetchImpl = vi
+      .fn()
+      .mockImplementationOnce(async () => openAiResponse(draft, "draft"))
+      .mockImplementationOnce(async () => openAiResponse(badReview, "review")) as unknown as typeof fetch;
+
+    await expect(
+      translateArticleSourceToEnglish(source, {
+        apiKey: "test-key",
+        model: "gpt-test",
+        fetchImpl,
+      })
+    ).rejects.toThrow("left Cyrillic");
+  });
+
+  it("can explicitly disable the premium review for controlled fallback", async () => {
+    const translatedHtml =
+      `<h2 id="context">Context</h2><p>${longEnglishParagraph} ` +
+      '<a href="https://example.com/source" target="_blank" rel="noopener noreferrer">source</a>.</p>' +
+      '<figure class="article-image"><img src="https://cdn.example.com/image.webp" alt="Literary illustration" loading="lazy"><figcaption>Caption</figcaption></figure>';
+    const fetchImpl = vi.fn(async () =>
+      openAiResponse(translatedPayload(translatedHtml), "draft")
+    ) as unknown as typeof fetch;
+
+    const result = await translateArticleSourceToEnglish(source, {
+      apiKey: "test-key",
+      model: "gpt-test",
+      fetchImpl,
+      premiumReview: false,
+    });
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(result.inputTokens).toBe(1200);
   });
 
   it("never attempts a network request without a server API key", async () => {
