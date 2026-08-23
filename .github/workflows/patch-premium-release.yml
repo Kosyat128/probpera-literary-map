@@ -1,138 +1,14 @@
-name: One-time premium release hardening
+name: Retired one-time premium release helper
 
 on:
-  push:
-    branches:
-      - feat/premium-english-autotranslation
-    paths:
-      - ".github/workflows/patch-premium-release.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: one-time-premium-release-hardening
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  patch:
-    if: github.actor == 'Kosyat128'
+  retired:
+    if: false
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - name: Checkout translation branch
-        uses: actions/checkout@v7
-        with:
-          ref: feat/premium-english-autotranslation
-          fetch-depth: 1
-
-      - name: Approve the premium migration in guarded production tooling
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          python <<'PY'
-          from pathlib import Path
-
-          def replace_once(path: str, old: str, new: str) -> None:
-              file_path = Path(path)
-              source = file_path.read_text(encoding="utf-8")
-              count = source.count(old)
-              if count != 1:
-                  raise SystemExit(
-                      f"{path}: expected exactly one replacement target, found {count}"
-                  )
-              file_path.write_text(source.replace(old, new, 1), encoding="utf-8")
-
-          planner = "scripts/database/build-production-migration-plan.mjs"
-          replace_once(
-              planner,
-              '''  [
-              "20260822_zz_atomic_article_bundle.sql",
-              "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",
-            ],
-          ];'''.replace("          ", ""),
-              '''  [
-              "20260822_zz_atomic_article_bundle.sql",
-              "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",
-            ],
-            [
-              "20260823_premium_machine_translation.sql",
-              "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6",
-            ],
-          ];'''.replace("          ", ""),
-          )
-          replace_once(
-              planner,
-              "    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null then",
-              "    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then",
-          )
-          replace_once(
-              planner,
-              "    raise exception 'Editorial schema health RPC did not report a current schema';\n  end if;\nend;\n$probpera_reconciliation_invariants$;",
-              "    raise exception 'Editorial schema health RPC did not report a current schema';\n  end if;\n\n  if not public.premium_machine_translation_ready() then\n    raise exception 'Premium machine-translation schema is not ready';\n  end if;\nend;\n$probpera_reconciliation_invariants$;",
-          )
-          replace_once(
-              planner,
-              "  ';migration_ledger=', health ->> 'migrationLedger',\n  ';ledger_entries=', (",
-              "  ';migration_ledger=', health ->> 'migrationLedger',\n  ';premium_machine_translation=', public.premium_machine_translation_ready(),\n  ';ledger_entries=', (",
-          )
-
-          test_file = "scripts/database/production-migration-plan.test.mjs"
-          replace_once(
-              test_file,
-              "      expect(manifest.migrations).toHaveLength(13);",
-              "      expect(manifest.migrations).toHaveLength(14);",
-          )
-          replace_once(
-              test_file,
-              '        "20260822_zz_atomic_article_bundle.sql",\n      ]);',
-              '        "20260822_zz_atomic_article_bundle.sql",\n        "20260823_premium_machine_translation.sql",\n      ]);',
-          )
-          replace_once(
-              test_file,
-              '      expect(plan).toContain("public.save_article_bundle");',
-              '      expect(plan).toContain("public.save_article_bundle");\n      expect(plan).toContain("public.premium_machine_translation_ready");',
-          )
-          replace_once(
-              test_file,
-              '      expect(verification).toContain("article_bundle_rpc=");',
-              '      expect(verification).toContain("article_bundle_rpc=");\n      expect(verification).toContain("premium_machine_translation=");',
-          )
-
-          workflow = ".github/workflows/reconcile-production-database.yml"
-          replace_once(
-              workflow,
-              "- Migration range: 20260808_article_translations through 20260822_zz_atomic_article_bundle",
-              "- Migration range: 20260808_article_translations through 20260823_premium_machine_translation",
-          )
-          replace_once(
-              workflow,
-              "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=13;invalid_indexes=0",
-              "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=14;invalid_indexes=0",
-          )
-
-          Path(".github/workflows/patch-premium-release.yml").unlink()
-          PY
-
-      - name: Verify patch shape
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          git diff --check
-          grep -Fq '20260823_premium_machine_translation.sql' scripts/database/build-production-migration-plan.mjs
-          grep -Fq 'ledger_entries=14' .github/workflows/reconcile-production-database.yml
-          test ! -e .github/workflows/patch-premium-release.yml
-
-      - name: Commit guarded production integration
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          git config user.name "probpera-release-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add \
-            scripts/database/build-production-migration-plan.mjs \
-            scripts/database/production-migration-plan.test.mjs \
-            .github/workflows/reconcile-production-database.yml \
-            .github/workflows/patch-premium-release.yml
-          git commit -m "chore(db): approve premium translation migration"
-          git push origin HEAD:feat/premium-english-autotranslation
+      - run: echo "This one-time helper is retired."
