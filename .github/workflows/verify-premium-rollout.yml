@@ -109,7 +109,6 @@ jobs:
       TARGET_SHA: 5950d4f46f632e6290db09e8afe6f78b7b5c7114
       SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
       SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
     steps:
       - name: Checkout the merged code plus this read-only verifier
         uses: actions/checkout@v7
@@ -117,12 +116,17 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Verify production credentials are available
+      - name: Verify production credentials and PostgreSQL client
         shell: bash
         run: |
           set -Eeuo pipefail
           test -n "$SUPABASE_DB_URL"
           test -n "$SUPABASE_URL"
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y postgresql-client
+          fi
+          psql --version
 
       - name: Build the reviewed verification query
         shell: bash
@@ -138,9 +142,11 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-          bash scripts/database/supabase-database-safety.sh verify-production \
-            /tmp/production-verify.sql \
-            /tmp/production-contract.txt
+          psql "$SUPABASE_DB_URL" \
+            --no-psqlrc \
+            --set ON_ERROR_STOP=1 \
+            --file /tmp/production-verify.sql \
+            > /tmp/production-contract.txt
           printf 'ACTUAL_PRODUCTION_CONTRACT='
           tr -d '\r\n' < /tmp/production-contract.txt
           printf '\n'
