@@ -68,15 +68,20 @@ export default async function HealthPage() {
       : "ожидается доступный schema health-check";
   const translationConfigured = Boolean(adminEnv.openAiApiKey);
   const translationEnabled = adminEnv.openAiAutoTranslateArticles;
+  const premiumReviewEnabled = adminEnv.openAiPremiumTranslationReview;
   const translationStatusLabel = !translationEnabled
     ? "Отключён"
     : translationConfigured
-      ? "Готов"
+      ? premiumReviewEnabled
+        ? "Premium · 2 прохода"
+        : "Готов · 1 проход"
       : "Нужен API key";
   const translationStatusDetail = !translationEnabled
     ? "OPENAI_AUTO_TRANSLATE_ARTICLES=false"
     : translationConfigured
-      ? `модель: ${adminEnv.openAiTranslationModel}`
+      ? premiumReviewEnabled
+        ? `${adminEnv.openAiTranslationModel} → ${adminEnv.openAiTranslationReviewModel}`
+        : `модель: ${adminEnv.openAiTranslationModel}; premium review выключен`
       : "добавьте OPENAI_API_KEY в Secret Worker";
   const grouped = new Map<string, { latest: Diagnostic; count: number }>();
   for (const item of (data || []) as Diagnostic[]) {
