@@ -459,7 +459,7 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;ledger_entries=13;invalid_indexes=0"
+      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=14;invalid_indexes=0"
     );
     expect(workflowSource).toContain(
       '[[ "$restore_scope" == "public-application-schema" ]]'
