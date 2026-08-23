@@ -1,0 +1,132 @@
+name: One-time premium migration allowlist
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - synchronize
+    paths:
+      - ".github/workflows/patch-premium-release.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: one-time-premium-migration-allowlist
+  cancel-in-progress: false
+
+jobs:
+  integrate:
+    if: github.event.pull_request.number == 88 && github.actor == 'Kosyat128'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout translation branch
+        uses: actions/checkout@v7
+        with:
+          ref: feat/premium-english-autotranslation
+          fetch-depth: 1
+
+      - name: Integrate the reviewed migration into the guarded plan
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python <<'PY'
+          from pathlib import Path
+          import re
+
+          def replace_exact(path: str, old: str, new: str) -> None:
+              file_path = Path(path)
+              source = file_path.read_text(encoding="utf-8")
+              count = source.count(old)
+              if count != 1:
+                  raise SystemExit(
+                      f"{path}: expected one exact target, found {count}"
+                  )
+              file_path.write_text(source.replace(old, new, 1), encoding="utf-8")
+
+          planner = Path("scripts/database/build-production-migration-plan.mjs")
+          source = planner.read_text(encoding="utf-8")
+          source, count = re.subn(
+              r'(  \[\n    "20260822_zz_atomic_article_bundle\.sql",\n    "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",\n  \],\n)(\];)',
+              r'\1  [\n    "20260823_premium_machine_translation.sql",\n    "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6",\n  ],\n\2',
+              source,
+              count=1,
+              flags=re.MULTILINE,
+          )
+          if count != 1:
+              raise SystemExit(
+                  f"{planner}: expected one migration-list target, found {count}"
+              )
+          planner.write_text(source, encoding="utf-8")
+
+          replace_exact(
+              str(planner),
+              "    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null then",
+              "    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then",
+          )
+          replace_exact(
+              str(planner),
+              "    raise exception 'Editorial schema health RPC did not report a current schema';\n  end if;\nend;\n$probpera_reconciliation_invariants$;",
+              "    raise exception 'Editorial schema health RPC did not report a current schema';\n  end if;\n\n  if not public.premium_machine_translation_ready() then\n    raise exception 'Premium machine-translation schema is not ready';\n  end if;\nend;\n$probpera_reconciliation_invariants$;",
+          )
+          replace_exact(
+              str(planner),
+              "  ';migration_ledger=', health ->> 'migrationLedger',\n  ';ledger_entries=', (",
+              "  ';migration_ledger=', health ->> 'migrationLedger',\n  ';premium_machine_translation=', public.premium_machine_translation_ready(),\n  ';ledger_entries=', (",
+          )
+
+          test_file = "scripts/database/production-migration-plan.test.mjs"
+          replace_exact(
+              test_file,
+              "      expect(manifest.migrations).toHaveLength(13);",
+              "      expect(manifest.migrations).toHaveLength(14);",
+          )
+          replace_exact(
+              test_file,
+              '        "20260822_zz_atomic_article_bundle.sql",\n      ]);',
+              '        "20260822_zz_atomic_article_bundle.sql",\n        "20260823_premium_machine_translation.sql",\n      ]);',
+          )
+          replace_exact(
+              test_file,
+              '      expect(plan).toContain("public.save_article_bundle");',
+              '      expect(plan).toContain("public.save_article_bundle");\n      expect(plan).toContain("public.premium_machine_translation_ready");',
+          )
+          replace_exact(
+              test_file,
+              '      expect(verification).toContain("article_bundle_rpc=");',
+              '      expect(verification).toContain("article_bundle_rpc=");\n      expect(verification).toContain("premium_machine_translation=");',
+          )
+          PY
+
+      - name: Verify the generated production plan
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git diff --check
+          node --check scripts/database/build-production-migration-plan.mjs
+          node scripts/database/build-production-migration-plan.mjs \
+            --output /tmp/premium-plan.sql \
+            --manifest /tmp/premium-manifest.json \
+            --verification /tmp/premium-verify.sql \
+            --repository-sha "$GITHUB_SHA"
+          node -e '
+            const manifest = require("/tmp/premium-manifest.json");
+            if (manifest.migrations.length !== 14) process.exit(1);
+            if (manifest.migrations.at(-1).filename !== "20260823_premium_machine_translation.sql") process.exit(1);
+          '
+          grep -Fq 'public.premium_machine_translation_ready()' /tmp/premium-plan.sql
+          grep -Fq 'premium_machine_translation=' /tmp/premium-verify.sql
+
+      - name: Commit reviewed allowlist integration
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "probpera-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            scripts/database/build-production-migration-plan.mjs \
+            scripts/database/production-migration-plan.test.mjs
+          git commit -m "chore(db): approve premium translation migration"
+          git push origin HEAD:feat/premium-english-autotranslation
