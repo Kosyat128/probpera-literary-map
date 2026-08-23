@@ -46,6 +46,22 @@ jobs:
       - name: Build OpenNext Worker
         run: npm run cf:build --workspace @probpera/admin
 
+      - name: Produce the exact Wrangler dry-run bundle and metafile
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          cd apps/admin
+          rm -rf .wrangler-dry
+          mkdir -p .wrangler-dry
+          npx wrangler deploy \
+            --dry-run \
+            --outdir .wrangler-dry \
+            --metafile .wrangler-dry/meta.json \
+            --config wrangler.jsonc
+          find .wrangler-dry -maxdepth 3 -type f -printf '%s %p\n' \
+            | sort -nr \
+            | head -n 40
+
       - name: Summarize bundled inputs
         shell: bash
         run: |
@@ -53,27 +69,40 @@ jobs:
           node <<'NODE'
           const fs = require("node:fs");
           const path = require("node:path");
-          const directory = path.resolve(
-            "apps/admin/.open-next/server-functions/default"
-          );
-          const metaPath = path.join(directory, "handler.mjs.meta.json");
+          const directory = path.resolve("apps/admin/.wrangler-dry");
+          const metaPath = path.join(directory, "meta.json");
           const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
-          const handler = Object.entries(meta.outputs || {}).find(([name]) =>
-            name.endsWith("handler.mjs")
+
+          const totals = new Map();
+          const outputs = Object.entries(meta.outputs || {}).map(
+            ([name, output]) => {
+              for (const [inputName, value] of Object.entries(
+                output.inputs || {}
+              )) {
+                totals.set(
+                  inputName,
+                  (totals.get(inputName) || 0) +
+                    Number(value.bytesInOutput || 0)
+                );
+              }
+              return {
+                name,
+                bytes: Number(output.bytes || 0),
+                inputCount: Object.keys(output.inputs || {}).length,
+              };
+            }
           );
-          if (!handler) throw new Error("OpenNext handler output is absent from metafile");
-          const [outputName, output] = handler;
-          const rows = Object.entries(output.inputs || {})
-            .map(([name, value]) => ({
-              name,
-              bytesInOutput: Number(value.bytesInOutput || 0),
-            }))
+          outputs.sort((left, right) => right.bytes - left.bytes);
+
+          const rows = [...totals.entries()]
+            .map(([name, bytesInOutput]) => ({ name, bytesInOutput }))
             .sort((left, right) => right.bytesInOutput - left.bytesInOutput);
           const summary = {
-            outputName,
-            outputBytes: Number(output.bytes || 0),
+            outputCount: outputs.length,
+            outputBytes: outputs.reduce((sum, output) => sum + output.bytes, 0),
+            outputs: outputs.slice(0, 100),
             inputCount: rows.length,
-            topInputs: rows.slice(0, 300),
+            topInputs: rows.slice(0, 500),
           };
           fs.writeFileSync(
             path.join(directory, "bundle-top-inputs.json"),
@@ -87,7 +116,7 @@ jobs:
         with:
           name: admin-worker-bundle-analysis
           path: |
-            apps/admin/.open-next/server-functions/default/handler.mjs.meta.json
-            apps/admin/.open-next/server-functions/default/bundle-top-inputs.json
+            apps/admin/.wrangler-dry/meta.json
+            apps/admin/.wrangler-dry/bundle-top-inputs.json
           retention-days: 7
           if-no-files-found: error
