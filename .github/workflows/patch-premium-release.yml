@@ -1,11 +1,11 @@
 name: One-time premium migration integration
 
 on:
-  push:
+  pull_request:
     branches:
-      - feat/premium-english-autotranslation
-    paths:
-      - ".github/workflows/patch-premium-release.yml"
+      - main
+    types:
+      - synchronize
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   integrate:
-    if: github.actor == 'Kosyat128'
+    if: github.event.pull_request.number == 88 && github.actor == 'Kosyat128'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
