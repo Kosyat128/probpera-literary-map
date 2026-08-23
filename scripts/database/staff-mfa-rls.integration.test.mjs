@@ -114,7 +114,9 @@ function integrationSql() {
       `Staff MFA fixture must contain exactly one migration marker; found ${markerCount}`
     );
   }
-  return contractTemplate.replace(marker, migration.trim());
+  // Use a function replacement so JavaScript does not interpret PostgreSQL
+  // dollar-quote pairs (for example $$) as replacement-string tokens.
+  return contractTemplate.replace(marker, () => migration.trim());
 }
 
 describe("staff opt-in MFA RLS integration contract", () => {
