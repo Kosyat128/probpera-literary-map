@@ -53,6 +53,7 @@ jobs:
           node <<'NODE'
           const fs = require("node:fs");
           const path = require("node:path");
+          const { createHash } = require("node:crypto");
           const { gzipSync } = require("node:zlib");
 
           const project = path.resolve("apps/admin");
@@ -115,13 +116,74 @@ jobs:
               !file.includes(`${path.sep}node_modules${path.sep}`) &&
               !file.includes(`${path.sep}.next${path.sep}`) &&
               !file.includes(`${path.sep}.open-next${path.sep}`) &&
-              !file.includes(`${path.sep}.wrangler${path.sep}`)
+              !file.includes(`${path.sep}.wrangler${path.sep}`) &&
+              !file.includes(`${path.sep}.bundle-inspection${path.sep}`)
             )
             .map((file) => ({
               file: path.relative(project, file).replaceAll("\\", "/"),
               bytes: fs.statSync(file).size,
             }))
             .sort((left, right) => right.bytes - left.bytes);
+
+          const handlerMetaPath = path.join(
+            path.dirname(handler.file),
+            "handler.mjs.meta.json"
+          );
+          const handlerMeta = JSON.parse(
+            fs.readFileSync(handlerMetaPath, "utf8")
+          );
+          const contributionTotals = new Map();
+          for (const output of Object.values(handlerMeta.outputs || {})) {
+            for (const [inputName, value] of Object.entries(
+              output.inputs || {}
+            )) {
+              contributionTotals.set(
+                inputName,
+                (contributionTotals.get(inputName) || 0) +
+                  Number(value.bytesInOutput || 0)
+              );
+            }
+          }
+          const topHandlerInputs = [...contributionTotals.entries()]
+            .map(([input, bytesInOutput]) => ({ input, bytesInOutput }))
+            .sort((left, right) => right.bytesInOutput - left.bytesInOutput);
+
+          const inspectionDirectory = path.join(project, ".bundle-inspection");
+          fs.rmSync(inspectionDirectory, { recursive: true, force: true });
+          fs.mkdirSync(inspectionDirectory, { recursive: true });
+          const copiedChunks = [];
+          for (const [index, row] of topHandlerInputs
+            .filter(
+              ({ input }) =>
+                input.includes("/.next/server/chunks/") &&
+                input.endsWith(".js")
+            )
+            .slice(0, 30)
+            .entries()) {
+            const sourcePath = path.resolve(project, row.input);
+            if (!fs.existsSync(sourcePath)) continue;
+            const contents = fs.readFileSync(sourcePath);
+            const targetName = `${String(index + 1).padStart(2, "0")}-${path.basename(
+              row.input
+            )}`;
+            fs.copyFileSync(
+              sourcePath,
+              path.join(inspectionDirectory, targetName)
+            );
+            copiedChunks.push({
+              rank: index + 1,
+              input: row.input,
+              targetName,
+              bytes: contents.byteLength,
+              gzipBytes: gzipSync(contents, { level: 9 }).byteLength,
+              bytesInOutput: row.bytesInOutput,
+              sha256: createHash("sha256").update(contents).digest("hex"),
+            });
+          }
+          fs.writeFileSync(
+            path.join(inspectionDirectory, "chunk-index.json"),
+            `${JSON.stringify(copiedChunks, null, 2)}\n`
+          );
 
           const handlerBytes = fs.readFileSync(handler.file);
           const summary = {
@@ -135,6 +197,8 @@ jobs:
             sourceCount: sourceRows.length,
             topSourceContents: sourceRows.slice(0, 500),
             largestRepositoryInputs: sourceFiles.slice(0, 200),
+            topHandlerInputs: topHandlerInputs.slice(0, 500),
+            copiedChunks,
           };
           const output = path.join(root, "handler-source-summary.json");
           fs.writeFileSync(output, `${JSON.stringify(summary, null, 2)}\n`);
@@ -211,6 +275,7 @@ jobs:
         with:
           name: admin-worker-bundle-analysis
           path: |
+            apps/admin/.bundle-inspection/**
             apps/admin/.open-next/server-functions/default/apps/admin/handler.mjs.meta.json
             apps/admin/.open-next/server-functions/default/handler-source-summary.json
             apps/admin/.wrangler-dry/meta.json
