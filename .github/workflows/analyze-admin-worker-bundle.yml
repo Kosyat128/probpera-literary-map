@@ -211,6 +211,7 @@ jobs:
         with:
           name: admin-worker-bundle-analysis
           path: |
+            apps/admin/.open-next/server-functions/default/apps/admin/handler.mjs.meta.json
             apps/admin/.open-next/server-functions/default/handler-source-summary.json
             apps/admin/.wrangler-dry/meta.json
             apps/admin/.wrangler-dry/bundle-top-inputs.json
