@@ -125,8 +125,8 @@ function sameStringArray(left: readonly string[], right: readonly string[]) {
   );
 }
 
-function serialized(value: unknown) {
-  return typeof value === "string" ? value : JSON.stringify(value);
+function serialized(value: unknown): string {
+  return typeof value === "string" ? value : JSON.stringify(value) || "";
 }
 
 function normalizedUrl(value: string) {
