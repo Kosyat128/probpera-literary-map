@@ -380,7 +380,7 @@ select concat(
   ';homepage_move=', health ->> 'homepageMove',
   ';tags_updated_at=', health ->> 'tagsUpdatedAt',
   ';migration_ledger=', health ->> 'migrationLedger',
-  ';premium_machine_translation=', public.premium_machine_translation_ready(),
+  ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
   ';ledger_entries=', (
     select count(*) from public.probpera_schema_migrations
   ),
