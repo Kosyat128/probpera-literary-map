@@ -2,6 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 
+import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
+import { ensureWriterEnglishBiography } from "@/lib/auto-translate-writer-biography";
 import { requireStaff } from "@/lib/auth";
 import {
   countryProfileFields,
@@ -23,6 +25,12 @@ function formValues(formData: FormData, fields: readonly string[]) {
   return values;
 }
 
+function objectValue(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
 function targetUrl({
   countryId,
   writerId,
@@ -36,7 +44,10 @@ function targetUrl({
 }) {
   const params = new URLSearchParams({ country_id: countryId });
   if (writerId) params.set("writer_id", writerId);
-  params.set(result === "error" ? "error" : "result", result === "error" ? message || "Ошибка" : result);
+  params.set(
+    result === "error" ? "error" : "result",
+    result === "error" ? message || "Ошибка" : result
+  );
   return `/editorial-database?${params.toString()}`;
 }
 
@@ -50,17 +61,25 @@ export async function saveEditorialProfileAction(formData: FormData) {
   const expectedUpdatedAt = String(
     formData.get("expected_updated_at") || ""
   ).trim();
+  const profileFields =
+    entityType === "country" ? countryProfileFields : writerProfileFields;
+  const submittedValues = formValues(formData, profileFields);
   let edit: ReturnType<typeof parseEditorialProfileOverride>;
+  let completeSource: ReturnType<typeof parseEditorialProfileOverride>;
   try {
     edit = parseEditorialProfileOverride({
       entityType,
       countryId,
       writerId,
       enabledFields: formData.getAll("enabled_fields"),
-      values: formValues(
-        formData,
-        entityType === "country" ? countryProfileFields : writerProfileFields
-      ),
+      values: submittedValues,
+    });
+    completeSource = parseEditorialProfileOverride({
+      entityType,
+      countryId,
+      writerId,
+      enabledFields: profileFields,
+      values: submittedValues,
     });
   } catch (error) {
     redirect(
@@ -68,7 +87,8 @@ export async function saveEditorialProfileAction(formData: FormData) {
         countryId,
         writerId,
         result: "error",
-        message: error instanceof Error ? error.message : "Проверьте поля профиля.",
+        message:
+          error instanceof Error ? error.message : "Проверьте поля профиля.",
       })
     );
   }
@@ -89,17 +109,72 @@ export async function saveEditorialProfileAction(formData: FormData) {
   const table = isWriter
     ? "writer_profile_overrides"
     : "country_profile_overrides";
-  let databaseId = `${edit.countryId}${edit.writerId ? `:${edit.writerId}` : ""}`;
+  let existingQuery = supabase
+    .from(table)
+    .select("id,fields,updated_at")
+    .eq("country_id", edit.countryId);
+  if (isWriter) existingQuery = existingQuery.eq("writer_id", edit.writerId!);
+  const existingResponse = await existingQuery.maybeSingle();
+  if (existingResponse.error) {
+    redirect(
+      targetUrl({
+        countryId: edit.countryId,
+        writerId: edit.writerId,
+        result: "error",
+        message: existingResponse.error.message,
+      })
+    );
+  }
+  const existing = existingResponse.data as {
+    id: string;
+    fields: unknown;
+    updated_at: string;
+  } | null;
+  if (
+    expectedUpdatedAt &&
+    (!existing || existing.updated_at !== expectedUpdatedAt)
+  ) {
+    redirect(
+      targetUrl({
+        countryId: edit.countryId,
+        writerId: edit.writerId,
+        result: "error",
+        message:
+          "Запись уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+      })
+    );
+  }
+
+  const protectedField = isWriter
+    ? "biographyTranslations"
+    : "translations";
+  const existingFields = objectValue(existing?.fields);
+  const protectedValue = objectValue(existingFields[protectedField]);
+  const persistedFields = {
+    ...edit.fields,
+    ...(Object.keys(protectedValue).length
+      ? { [protectedField]: protectedValue }
+      : {}),
+  };
+
+  let databaseId =
+    existing?.id ||
+    `${edit.countryId}${edit.writerId ? `:${edit.writerId}` : ""}`;
   let action = `${edit.entityType}_profile.updated`;
   let result: "saved" | "removed" = "saved";
 
-  if (!Object.keys(edit.fields).length) {
-    let deleteQuery = supabase.from(table).delete().eq("country_id", edit.countryId);
+  if (!Object.keys(persistedFields).length) {
+    let deleteQuery = supabase
+      .from(table)
+      .delete()
+      .eq("country_id", edit.countryId);
     if (isWriter) deleteQuery = deleteQuery.eq("writer_id", edit.writerId!);
-    if (expectedUpdatedAt) {
-      deleteQuery = deleteQuery.eq("updated_at", expectedUpdatedAt);
+    if (existing?.updated_at) {
+      deleteQuery = deleteQuery.eq("updated_at", existing.updated_at);
     }
-    const { data: deleted, error } = await deleteQuery.select("id").maybeSingle();
+    const { data: deleted, error } = await deleteQuery
+      .select("id")
+      .maybeSingle();
     if (error) {
       redirect(
         targetUrl({
@@ -110,13 +185,14 @@ export async function saveEditorialProfileAction(formData: FormData) {
         })
       );
     }
-    if (expectedUpdatedAt && !deleted) {
+    if (existing && !deleted) {
       redirect(
         targetUrl({
           countryId: edit.countryId,
           writerId: edit.writerId,
           result: "error",
-          message: "Запись уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+          message:
+            "Запись уже изменена в другой вкладке. Обновите страницу и повторите правку.",
         })
       );
     }
@@ -126,18 +202,18 @@ export async function saveEditorialProfileAction(formData: FormData) {
     const payload = {
       country_id: edit.countryId,
       ...(isWriter ? { writer_id: edit.writerId } : {}),
-      fields: edit.fields,
+      fields: persistedFields,
       is_enabled: true,
       updated_by: session.user.id,
     };
     let data: { id: string } | null = null;
     let error: { message: string } | null = null;
-    if (expectedUpdatedAt) {
+    if (existing) {
       let updateQuery = supabase
         .from(table)
         .update(payload)
-        .eq("country_id", edit.countryId)
-        .eq("updated_at", expectedUpdatedAt);
+        .eq("id", existing.id)
+        .eq("updated_at", existing.updated_at);
       if (isWriter) updateQuery = updateQuery.eq("writer_id", edit.writerId!);
       const response = await updateQuery.select("id").maybeSingle();
       data = response.data;
@@ -148,12 +224,17 @@ export async function saveEditorialProfileAction(formData: FormData) {
             countryId: edit.countryId,
             writerId: edit.writerId,
             result: "error",
-            message: "Запись уже изменена в другой вкладке. Обновите страницу и повторите правку.",
+            message:
+              "Запись уже изменена в другой вкладке. Обновите страницу и повторите правку.",
           })
         );
       }
     } else {
-      const response = await supabase.from(table).insert(payload).select("id").single();
+      const response = await supabase
+        .from(table)
+        .insert(payload)
+        .select("id")
+        .single();
       data = response.data;
       error = response.error;
     }
@@ -172,18 +253,48 @@ export async function saveEditorialProfileAction(formData: FormData) {
     databaseId = data.id;
   }
 
-  const { error: auditError } = await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action,
-    entity_type: `${edit.entityType}_profile`,
-    entity_id: databaseId,
-    metadata: {
-      countryId: edit.countryId,
-      writerId: edit.writerId,
-      fields: Object.keys(edit.fields),
-      editor: "editorial-database",
-    },
-  });
+  let translation: {
+    state: string;
+    model?: string;
+    reviewerModel?: string | null;
+    error?: string;
+  } = { state: "skipped" };
+  if (result !== "removed") {
+    translation = isWriter
+      ? await ensureWriterEnglishBiography({
+          supabase,
+          actorId: session.user.id,
+          countryId: edit.countryId,
+          writerId: edit.writerId!,
+          sourceFields: completeSource.fields,
+        })
+      : await ensureCountryEnglishProfile({
+          supabase,
+          actorId: session.user.id,
+          countryId: edit.countryId,
+          sourceFields: completeSource.fields,
+        });
+  }
+
+  const { error: auditError } = await supabase
+    .from("admin_audit_log")
+    .insert({
+      actor_id: session.user.id,
+      action,
+      entity_type: `${edit.entityType}_profile`,
+      entity_id: databaseId,
+      metadata: {
+        countryId: edit.countryId,
+        writerId: edit.writerId,
+        fields: Object.keys(edit.fields),
+        protectedEnglishStatePreserved: Object.keys(protectedValue).length > 0,
+        autoTranslationState: translation.state,
+        autoTranslationModel: translation.model || null,
+        autoTranslationReviewerModel: translation.reviewerModel || null,
+        autoTranslationError: translation.error?.slice(0, 500) || null,
+        editor: "editorial-database",
+      },
+    });
 
   const publication = await requestPublicBuild({
     supabase,
@@ -195,6 +306,10 @@ export async function saveEditorialProfileAction(formData: FormData) {
       countryId: edit.countryId,
       writerId: edit.writerId,
       fields: Object.keys(edit.fields),
+      translationState: translation.state,
+      translationModel: translation.model || null,
+      translationReviewerModel: translation.reviewerModel || null,
+      translationError: translation.error?.slice(0, 500) || null,
       auditError: auditError?.message || null,
     },
   });
@@ -206,9 +321,17 @@ export async function saveEditorialProfileAction(formData: FormData) {
     country_id: edit.countryId,
     result,
     publication: publication.state,
+    translation: translation.state,
   });
   if (edit.writerId) params.set("writer_id", edit.writerId);
   if (auditError) params.set("warning", "audit");
+  if (
+    translation.state === "failed" ||
+    translation.state === "conflict" ||
+    translation.state === "not-configured"
+  ) {
+    params.set("warning", `translation-${translation.state}`);
+  }
   redirect(`/editorial-database?${params.toString()}`);
 }
 
@@ -216,7 +339,9 @@ export async function publishEditorialDatabaseAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/editorial-database?error=База+данных+не+подключена");
+  if (!supabase) {
+    redirect("/editorial-database?error=База+данных+не+подключена");
+  }
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
