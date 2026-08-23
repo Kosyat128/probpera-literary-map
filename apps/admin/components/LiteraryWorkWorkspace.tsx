@@ -13,9 +13,9 @@ import {
   deleteWorkTranslationAction,
   reviewWorkImportCandidateAction,
   saveWorkSourceAction,
-  saveWorkTranslationAction,
   updateWorkExternalIdAction,
 } from "@/app/(dashboard)/library/actions";
+import { saveWorkTranslationWithPremiumEnglishAction } from "@/app/(dashboard)/library/premium-translation-actions";
 
 export type LiteraryWorkWorkspaceContext = {
   catalogQ: string;
@@ -124,7 +124,7 @@ function TranslationEditor({
         </div>
         <span className="badge">{translation?.editorial_status || "draft"}</span>
       </header>
-      <form className="settings-stack" action={saveWorkTranslationAction}>
+      <form className="settings-stack" action={saveWorkTranslationWithPremiumEnglishAction}>
         <WorkspaceContextFields context={context} workId={workId} />
         <input type="hidden" name="translation_id" value={translation?.id || ""} />
         <input type="hidden" name="expected_updated_at" value={translation?.updated_at || ""} />
