@@ -71,7 +71,7 @@ export default async function SettingsPage({
                   <ConfirmSubmitButton message="Отозвать доступ к редакционной панели?">Отозвать</ConfirmSubmitButton>
                 </form>
               )}
-            </td></tr>)}</tbody></table>}
+            </td></tr>)}</tbody>
           </table>
           {!staff.length && <div className="empty-state"><p>После назначения первого владельца команда появится здесь.</p></div>}
         </section>
