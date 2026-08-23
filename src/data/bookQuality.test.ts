@@ -58,6 +58,26 @@ describe("контроль публичного книжного текста", 
     expect(countEditorialSentences(validBook.translations!.en!.description)).toBe(2);
   });
 
+  it("принимает проверенный машинный EN с теми же структурированными источниками", () => {
+    const machineTranslated: WorkProfile = {
+      ...validBook,
+      translations: {
+        ...validBook.translations,
+        en: {
+          ...validBook.translations!.en!,
+          sourceLanguage: "Russian",
+          status: "reviewed",
+          method: "machine-translation",
+          reviewedAt: "2026-08-23",
+        },
+      },
+    };
+
+    expect(translationQualityIssues(machineTranslated.translations!.en, "en")).toEqual([]);
+    expect(bookPublicationIssues(machineTranslated)).toEqual([]);
+    expect(isPublicBook(machineTranslated)).toBe(true);
+  });
+
   it("не выпускает reviewed-карточку без английского текста", () => {
     const incomplete: WorkProfile = {
       ...validBook,
