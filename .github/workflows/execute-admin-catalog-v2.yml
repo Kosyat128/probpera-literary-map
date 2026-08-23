@@ -1,0 +1,130 @@
+name: Execute complete admin catalog reduction
+
+on:
+  push:
+    branches:
+      - fix/admin-worker-bundle-size
+    paths:
+      - ".github/workflows/execute-admin-catalog-v2.yml"
+      - "scripts/apply-interface-catalog-patch.py"
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/execute-admin-catalog-v2.yml"
+      - "scripts/apply-interface-catalog-patch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: execute-complete-admin-catalog-reduction
+  cancel-in-progress: false
+
+jobs:
+  apply-and-prove:
+    if: github.actor == 'Kosyat128'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
+    steps:
+      - name: Checkout worker-size branch
+        uses: actions/checkout@v7
+        with:
+          ref: fix/admin-worker-bundle-size
+          fetch-depth: 1
+
+      - name: Apply both reviewed catalog refactors
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python scripts/apply-admin-catalog-patch.py
+          python scripts/apply-interface-catalog-patch.py
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Generate catalogs and validate code
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run editorial:catalog
+          npm run interface:copy:catalog
+          node scripts/export-editorial-catalog.mjs --check
+          node scripts/export-interface-copy-catalog.mjs --check
+          npm run lint --workspace @probpera/admin
+          npx vitest run \
+            apps/admin/lib/editorial-catalog.test.ts \
+            apps/admin/lib/site-copy-catalog.test.ts \
+            apps/admin/lib/env.test.ts
+          git diff --check
+
+      - name: Build OpenNext Worker
+        run: npm run cf:build --workspace @probpera/admin
+
+      - name: Require compressed Worker below 2900 KiB
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          cd apps/admin
+          rm -rf .wrangler-dry
+          mkdir -p .wrangler-dry
+          npx wrangler deploy \
+            --dry-run \
+            --outdir .wrangler-dry \
+            --metafile .wrangler-dry/meta.json \
+            --config wrangler.jsonc \
+            2>&1 | tee .wrangler-dry/dry-run.log
+          node <<'NODE'
+          const fs = require("node:fs");
+          const log = fs.readFileSync(".wrangler-dry/dry-run.log", "utf8");
+          const match = log.match(
+            /Total Upload:\s*([0-9.]+) KiB\s*\/\s*gzip:\s*([0-9.]+) KiB/u
+          );
+          if (!match) throw new Error("Wrangler did not report upload sizes");
+          const rawKiB = Number(match[1]);
+          const gzipKiB = Number(match[2]);
+          const maximumGzipKiB = 2900;
+          console.log(JSON.stringify({ rawKiB, gzipKiB, maximumGzipKiB }));
+          if (gzipKiB > maximumGzipKiB) {
+            throw new Error(
+              `Compressed Worker ${gzipKiB} KiB exceeds ${maximumGzipKiB} KiB`
+            );
+          }
+          NODE
+          if grep -R -Eq \
+            "(?:editorial|interface-copy)-catalog\\.generated\\.json" \
+            .wrangler-dry; then
+            echo "::error::A legacy monolithic catalog remains in the Worker."
+            exit 1
+          fi
+
+      - name: Commit only proven product changes
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "probpera-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A \
+            .gitignore \
+            apps/admin/app \
+            apps/admin/lib \
+            apps/admin/package.json \
+            apps/admin/public/interface-copy-catalog/catalog.json \
+            scripts/export-editorial-catalog.mjs \
+            scripts/export-interface-copy-catalog.mjs
+          git commit -m "fix(admin): externalize static catalog assets"
+          git push origin HEAD:fix/admin-worker-bundle-size
