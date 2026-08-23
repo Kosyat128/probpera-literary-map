@@ -1,0 +1,223 @@
+name: Verify premium rollout
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/verify-premium-rollout.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: verify-premium-rollout-20260823
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TARGET_SHA: 5950d4f46f632e6290db09e8afe6f78b7b5c7114
+    steps:
+      - name: Collect and verify post-merge production runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const token = process.env.GH_TOKEN;
+          const repository = process.env.REPOSITORY;
+          const targetSha = process.env.TARGET_SHA;
+          const requiredNames = [
+            "Deploy Vite site to GitHub Pages",
+            "Deploy editorial admin",
+            "Dispatch premium database reconciliation",
+            "Reconcile production database",
+          ];
+          const terminalConclusions = new Set([
+            "success",
+            "failure",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "startup_failure",
+            "skipped",
+          ]);
+          const sleep = (milliseconds) =>
+            new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+          async function api(path) {
+            const response = await fetch(`https://api.github.com${path}`, {
+              headers: {
+                Accept: "application/vnd.github+json",
+                Authorization: `Bearer ${token}`,
+                "X-GitHub-Api-Version": "2022-11-28",
+                "User-Agent": "probpera-rollout-verifier",
+              },
+            });
+            const body = await response.text();
+            if (!response.ok) {
+              throw new Error(
+                `GitHub API ${path} failed (${response.status}): ${body.slice(0, 500)}`
+              );
+            }
+            return JSON.parse(body);
+          }
+
+          const deadline = Date.now() + 38 * 60 * 1000;
+          let lastSnapshot = "";
+          let selected = [];
+
+          while (Date.now() < deadline) {
+            const data = await api(
+              `/repos/${repository}/actions/runs?head_sha=${targetSha}&per_page=100`
+            );
+            const runs = Array.isArray(data.workflow_runs)
+              ? data.workflow_runs
+              : [];
+            selected = requiredNames.map((name) => {
+              const candidates = runs
+                .filter((run) => run.name === name && run.head_sha === targetSha)
+                .sort(
+                  (left, right) =>
+                    new Date(right.created_at).getTime() -
+                    new Date(left.created_at).getTime()
+                );
+              const run = candidates[0];
+              return run
+                ? {
+                    name,
+                    id: run.id,
+                    event: run.event,
+                    status: run.status,
+                    conclusion: run.conclusion,
+                    createdAt: run.created_at,
+                    updatedAt: run.updated_at,
+                    url: run.html_url,
+                  }
+                : {
+                    name,
+                    id: null,
+                    event: null,
+                    status: "missing",
+                    conclusion: null,
+                    createdAt: null,
+                    updatedAt: null,
+                    url: null,
+                  };
+            });
+
+            const snapshot = JSON.stringify(
+              selected.map(({ name, id, status, conclusion }) => ({
+                name,
+                id,
+                status,
+                conclusion,
+              }))
+            );
+            if (snapshot !== lastSnapshot) {
+              console.log("POST_MERGE_RUNS");
+              console.log(JSON.stringify(selected, null, 2));
+              lastSnapshot = snapshot;
+            }
+
+            const failed = selected.find(
+              (run) =>
+                run.conclusion &&
+                terminalConclusions.has(run.conclusion) &&
+                run.conclusion !== "success"
+            );
+            if (failed) {
+              throw new Error(
+                `${failed.name} ended with ${failed.conclusion}; run ${failed.id}: ${failed.url}`
+              );
+            }
+
+            if (
+              selected.every(
+                (run) =>
+                  run.id &&
+                  run.status === "completed" &&
+                  run.conclusion === "success"
+              )
+            ) {
+              break;
+            }
+            await sleep(15_000);
+          }
+
+          if (
+            !selected.every(
+              (run) =>
+                run.id &&
+                run.status === "completed" &&
+                run.conclusion === "success"
+            )
+          ) {
+            throw new Error(
+              `Production rollout did not reach four successful terminal runs: ${JSON.stringify(
+                selected
+              )}`
+            );
+          }
+
+          console.log("ALL_REQUIRED_PRODUCTION_RUNS_SUCCESS");
+          console.log(JSON.stringify(selected, null, 2));
+
+          let releaseMarker = null;
+          for (let attempt = 1; attempt <= 30; attempt += 1) {
+            const response = await fetch(
+              `https://probpera.ru/.well-known/probpera-release-head.json?target=${targetSha}&attempt=${attempt}`,
+              {
+                headers: { "Cache-Control": "no-cache" },
+              }
+            );
+            const text = await response.text();
+            if (response.ok) {
+              try {
+                releaseMarker = JSON.parse(text);
+              } catch {
+                releaseMarker = null;
+              }
+            }
+            console.log(
+              `LIVE_RELEASE_ATTEMPT ${attempt}: status=${response.status} payload=${text.slice(
+                0,
+                300
+              )}`
+            );
+            if (releaseMarker?.commitSha === targetSha) break;
+            await sleep(10_000);
+          }
+          if (releaseMarker?.commitSha !== targetSha) {
+            throw new Error(
+              `Live release marker is not current: ${JSON.stringify(releaseMarker)}`
+            );
+          }
+          console.log(`LIVE_RELEASE_CURRENT ${JSON.stringify(releaseMarker)}`);
+
+          const adminResponse = await fetch(
+            `https://admin.probpera.ru/health?target=${targetSha}`,
+            { redirect: "manual", headers: { "Cache-Control": "no-cache" } }
+          );
+          console.log(
+            `ADMIN_HEALTH status=${adminResponse.status} location=${
+              adminResponse.headers.get("location") || ""
+            } server=${adminResponse.headers.get("server") || ""}`
+          );
+          if (adminResponse.status >= 500) {
+            throw new Error(
+              `Admin health endpoint returned ${adminResponse.status}`
+            );
+          }
+          NODE
