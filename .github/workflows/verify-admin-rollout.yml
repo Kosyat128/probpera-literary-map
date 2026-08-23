@@ -1,0 +1,304 @@
+name: Verify final admin rollout
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/verify-admin-rollout.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: verify-final-admin-rollout-20260823
+  cancel-in-progress: false
+
+jobs:
+  production-runs-and-live-endpoints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      TARGET_SHA: 4849f027afc3bf1acda280cf4a4108b5366aad17
+    steps:
+      - name: Wait for exact main rollout evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const token = process.env.GH_TOKEN;
+          const repository = process.env.REPOSITORY;
+          const targetSha = process.env.TARGET_SHA;
+          const requiredNames = [
+            "Quality and security",
+            "Deploy Vite site to GitHub Pages",
+            "Deploy editorial admin",
+          ];
+          const failureConclusions = new Set([
+            "failure",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "startup_failure",
+          ]);
+          const sleep = (milliseconds) =>
+            new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+          async function api(path) {
+            const response = await fetch(`https://api.github.com${path}`, {
+              headers: {
+                Accept: "application/vnd.github+json",
+                Authorization: `Bearer ${token}`,
+                "X-GitHub-Api-Version": "2022-11-28",
+                "User-Agent": "probpera-final-admin-rollout-verifier",
+              },
+            });
+            const text = await response.text();
+            if (!response.ok) {
+              throw new Error(
+                `GitHub API ${path} failed (${response.status}): ${text.slice(0, 500)}`
+              );
+            }
+            return JSON.parse(text);
+          }
+
+          const deadline = Date.now() + 28 * 60 * 1000;
+          let selected = [];
+          let previousSnapshot = "";
+
+          while (Date.now() < deadline) {
+            const data = await api(
+              `/repos/${repository}/actions/runs?head_sha=${targetSha}&per_page=100`
+            );
+            const runs = Array.isArray(data.workflow_runs)
+              ? data.workflow_runs
+              : [];
+            selected = requiredNames.map((name) => {
+              const candidates = runs
+                .filter((run) => run.name === name && run.head_sha === targetSha)
+                .sort(
+                  (left, right) =>
+                    new Date(right.created_at).getTime() -
+                    new Date(left.created_at).getTime()
+                );
+              const run = candidates[0];
+              return run
+                ? {
+                    name,
+                    id: run.id,
+                    event: run.event,
+                    status: run.status,
+                    conclusion: run.conclusion,
+                    createdAt: run.created_at,
+                    updatedAt: run.updated_at,
+                    url: run.html_url,
+                  }
+                : {
+                    name,
+                    id: null,
+                    event: null,
+                    status: "missing",
+                    conclusion: null,
+                    createdAt: null,
+                    updatedAt: null,
+                    url: null,
+                  };
+            });
+
+            const snapshot = JSON.stringify(
+              selected.map(({ name, id, status, conclusion }) => ({
+                name,
+                id,
+                status,
+                conclusion,
+              }))
+            );
+            if (snapshot !== previousSnapshot) {
+              console.log("FINAL_MAIN_RUNS");
+              console.log(JSON.stringify(selected, null, 2));
+              previousSnapshot = snapshot;
+            }
+
+            const failed = selected.find((run) =>
+              failureConclusions.has(run.conclusion)
+            );
+            if (failed) {
+              throw new Error(
+                `${failed.name} ended with ${failed.conclusion}; run ${failed.id}: ${failed.url}`
+              );
+            }
+            if (
+              selected.every(
+                (run) =>
+                  run.id &&
+                  run.status === "completed" &&
+                  run.conclusion === "success"
+              )
+            ) {
+              break;
+            }
+            await sleep(15_000);
+          }
+
+          if (
+            !selected.every(
+              (run) =>
+                run.id &&
+                run.status === "completed" &&
+                run.conclusion === "success"
+            )
+          ) {
+            throw new Error(
+              `Final rollout did not reach three successful exact-SHA runs: ${JSON.stringify(
+                selected
+              )}`
+            );
+          }
+          console.log("ALL_FINAL_MAIN_RUNS_SUCCESS");
+          console.log(JSON.stringify(selected, null, 2));
+
+          const adminRun = selected.find(
+            (run) => run.name === "Deploy editorial admin"
+          );
+          const jobsData = await api(
+            `/repos/${repository}/actions/runs/${adminRun.id}/jobs?per_page=100`
+          );
+          const deployJob = (jobsData.jobs || []).find(
+            (job) => job.name === "deploy"
+          );
+          if (!deployJob || deployJob.conclusion !== "success") {
+            throw new Error(
+              `Admin deploy job is not successful: ${JSON.stringify(deployJob)}`
+            );
+          }
+          const requiredSteps = [
+            "Inspect premium translation secret",
+            "Deploy to Cloudflare Workers",
+            "Report premium translation readiness",
+          ];
+          for (const name of requiredSteps) {
+            const step = (deployJob.steps || []).find(
+              (candidate) => candidate.name === name
+            );
+            if (!step || step.conclusion !== "success") {
+              throw new Error(
+                `Admin deploy step ${name} is not successful: ${JSON.stringify(step)}`
+              );
+            }
+          }
+          console.log("ADMIN_DEPLOY_STEPS_SUCCESS");
+          console.log(
+            JSON.stringify(
+              deployJob.steps.filter((step) => requiredSteps.includes(step.name)),
+              null,
+              2
+            )
+          );
+
+          let marker = null;
+          for (let attempt = 1; attempt <= 30; attempt += 1) {
+            const response = await fetch(
+              `https://probpera.ru/.well-known/probpera-release-head.json?target=${targetSha}&attempt=${attempt}`,
+              { headers: { "Cache-Control": "no-cache" } }
+            );
+            const text = await response.text();
+            console.log(
+              `LIVE_RELEASE_ATTEMPT ${attempt}: status=${response.status} payload=${text.slice(
+                0,
+                300
+              )}`
+            );
+            if (response.ok) {
+              try {
+                marker = JSON.parse(text);
+              } catch {
+                marker = null;
+              }
+            }
+            if (marker?.commitSha === targetSha) break;
+            await sleep(10_000);
+          }
+          if (marker?.commitSha !== targetSha) {
+            throw new Error(
+              `Live release marker is not current: ${JSON.stringify(marker)}`
+            );
+          }
+          console.log(`LIVE_RELEASE_CURRENT ${JSON.stringify(marker)}`);
+
+          const adminResponse = await fetch(
+            `https://admin.probpera.ru/health?target=${targetSha}`,
+            { redirect: "manual", headers: { "Cache-Control": "no-cache" } }
+          );
+          console.log(
+            `ADMIN_HEALTH status=${adminResponse.status} location=${
+              adminResponse.headers.get("location") || ""
+            } server=${adminResponse.headers.get("server") || ""}`
+          );
+          if (adminResponse.status >= 500) {
+            throw new Error(`Admin health endpoint returned ${adminResponse.status}`);
+          }
+          NODE
+
+  production-database-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+    env:
+      TARGET_SHA: 4849f027afc3bf1acda280cf4a4108b5366aad17
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+    steps:
+      - name: Checkout the merged code plus this read-only verifier
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify production credentials and PostgreSQL client
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -n "$SUPABASE_DB_URL"
+          test -n "$SUPABASE_URL"
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y postgresql-client
+          fi
+          psql --version
+
+      - name: Build the reviewed verification query
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node scripts/database/build-production-migration-plan.mjs \
+            --output /tmp/unused-plan.sql \
+            --manifest /tmp/production-manifest.json \
+            --verification /tmp/production-verify.sql \
+            --repository-sha "$TARGET_SHA"
+
+      - name: Require the exact healthy production contract without mutation
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          psql "$SUPABASE_DB_URL" \
+            --no-psqlrc \
+            --set ON_ERROR_STOP=1 \
+            --file /tmp/production-verify.sql \
+            > /tmp/production-contract.txt
+          actual="$(tr -d '\r\n' < /tmp/production-contract.txt)"
+          expected='schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=14;invalid_indexes=0'
+          printf 'ACTUAL_PRODUCTION_CONTRACT=%s\n' "$actual"
+          [[ "$actual" == "$expected" ]] || {
+            echo "::error::Production contract is not exact."
+            exit 1
+          }
