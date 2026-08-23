@@ -7,6 +7,8 @@ Result: **PASS — no remaining P0/P1 issue was found in the inspected states af
 
 This folder is a visual record of the current V11 domain build. The stale preview that had previously occupied port `4173` was not used: it resolved the HTML but served the wrong Vite base and returned `404` for root assets.
 
+Selective refresh: `en-360x800-embedded-modern-country-collapsed.png` was recaptured on 2026-08-23 from the current root preview at `http://127.0.0.1:4173/` after the mobile selected-country layering correction, using `assets/index-CakQm7Rv.js` and `assets/index-Cvad-RPW.css`. The build-identity table below remains the provenance record for the original 16-state V11 sweep.
+
 ## Build identity
 
 | Artifact | SHA-256 |
@@ -23,7 +25,7 @@ The requested dimensions are the page's exact `window.innerWidth × window.inner
 | Screenshot | Requested viewport | PNG raster | Language | Mode | Public style | State inspected | Result | SHA-256 |
 | --- | ---: | ---: | --- | --- | --- | --- | --- | --- |
 | `ru-320x800-embedded-antique-filters.png` | 320×800 | 305×763 | RU | Embedded | Старинный | Compact filter rail and globe | PASS | `b835871f32fd1556f4dadad587de433ff67f17df9939974d32edbff540fc4d35` |
-| `en-360x800-embedded-modern-country-collapsed.png` | 360×800 | 345×767 | EN | Embedded | Современный | Selected country, collapsed mobile sheet | PASS | `4184f79139cecc72a863a909f0a14e0c99d69d2ae9b8e9ead2611c955c6e97a4` |
+| `en-360x800-embedded-modern-country-collapsed.png` | 360×800 | 345×767 | EN | Embedded | Современный | Selected country, collapsed mobile sheet | PASS | `708b1b5b0234cc8f1a346702f67ff0ffde14618d66a83edec4eea84453faa0bb` |
 | `ru-390x844-embedded-filters.png` | 390×844 | 375×811 | RU | Embedded | Старинный | Compact filter rail | PASS | `fd89a7e2fe24d3618c97bd72d4a9ec6f7c6de505e30adac0d030cec194dc4ae1` |
 | `ru-390x844-embedded-archives-open.png` | 390×844 | 375×811 | RU | Embedded | Старинный | “Крупнейшие архивы” popover | PASS | `40e976733409b03748cc6e8b3d2409ee919b825f7ae7b30313ddf7d3f83365fa` |
 | `en-430x932-immersive-antique-country-expanded.png` | 430×932 | 430×931 | EN | Immersive | Старинный | Selected France, expanded mobile sheet | PASS | `1243f1db2af71c55b93d4b4774a059611e04735cdb911ab937762000b1b5cc11` |
@@ -66,7 +68,7 @@ No source change is required for the inspected sharpness concern.
 
 | Viewport | Runtime tier and backing data | Visual result |
 | --- | --- | --- |
-| 360×800 | Compact texture tier by viewport width; `earth-blue-marble-mobile.webp` is 2048×1024; Canvas backing buffer observed at 307×610 with DPR ≈ 1; `data-atlas-economical=false`. | No pixel breakup, stair-stepping or blurred SVG edges. The photographic Blue Marble texture is intentionally softer/darker than vector labels at this small globe size, but is not under-resolved. Controls and outlines are crisp. |
+| 360×800 | Compact texture tier by viewport width; `earth-blue-marble-mobile.webp` is 2048×1024; Canvas CSS surface observed at 307×610 with a 384×762 backing buffer (DPR ≈ 1.25); `data-atlas-economical=false`. | No pixel breakup, stair-stepping or blurred SVG edges. The photographic Blue Marble texture is intentionally softer/darker than vector labels at this small globe size, but is not under-resolved. Controls, outlines and the loaded `ru.svg` flag remain crisp. |
 | 1366×768 | Desktop 4096×2048 texture; Canvas backing buffer 1240×720 with DPR ≈ 1; `data-atlas-economical=false`. | Map labels, country outline, Thomas Mann portrait, activated writer marker and SVG controls remain sharp at native capture scale. |
 | 1920×1080 | Desktop 4096×2048 texture; Canvas backing buffer 1920×1080 with DPR ≈ 1; `data-atlas-economical=false`. | Globe texture, visible microstate/Nobel symbols, medallions, status chips and rails remain sharp. The 760×760 Nobel detail crop shows no pixel breakup. |
 
@@ -92,6 +94,7 @@ The compact tier is a deliberate bandwidth tier, not the economical renderer. Th
 - The orange brush and orbit line render at the lower exposition boundary and behind the interactive globe surface; neither covers the globe or its controls in the inspected embedded states.
 - The compact filter family stays on a deliberate internal horizontal rail. “Крупнейшие архивы” opens as a distinct, readable disclosure instead of mixing its country entries into the primary metrics row.
 - The selected-country panel/drawer is contained at mobile, tablet and desktop sizes. It neither displaces immersive chrome nor creates document-level horizontal overflow.
+- In the refreshed EN 360×800 collapsed-country state there is exactly one Three.js Canvas; the underlying `.globe-country-label` and `.globe-instruction` both compute to `display: none`, the visible control SVGs retain 24×24 viewBoxes, `ru.svg` loads as `image/svg+xml` with HTTP 200, and the country sheet starts 23.2 px below the globe controls.
 - Writer, Nobel and country-marker treatments remain visually distinguishable against all three inspected globe styles.
 - No browser console warning or error was recorded after completing the matrix.
 

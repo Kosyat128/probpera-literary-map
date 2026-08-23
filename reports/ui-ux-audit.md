@@ -170,6 +170,7 @@
 
 - Source/unit: camera rig/focus/projection, view observer/keyboard/touch, frame/idle/highlight/style, coordinates/Random/Nobel и writer/accessibility contracts.
 - Runtime: `tests/e2e/premium-globe-exploration.spec.mjs` плюс существующие globe runtime и Stage 3 immersion regressions.
+- SVG/flags: focused 360×800 and 390×844 QA across all three styles confirms one Canvas, crisp outlines/markers/control SVGs, on-demand-only flags and no duplicate country label/instruction beneath the open mobile sheet.
 - Полное описание evidence: [`docs/GLOBE_EXPLORATION_UX.md`](../docs/GLOBE_EXPLORATION_UX.md) и [`reports/stage4-premium-globe-exploration-pr.md`](stage4-premium-globe-exploration-pr.md).
 - Финальные численные QA counts, performance measurements и artifact registry зафиксированы в PR report и являются обязательным release-gate evidence; исторический текст findings при этом сохранён.
 

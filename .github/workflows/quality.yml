@@ -18,7 +18,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -58,7 +58,7 @@ jobs:
         run: npm run performance:audit
 
       - name: Install browser quality tools
-        run: npm install --no-save --ignore-scripts @playwright/test@1.60.0 @axe-core/playwright@4.11.3 && npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Run browser, mobile and accessibility checks
         run: npm run test:e2e

@@ -11,7 +11,7 @@
 | Base `main` | `6e4380582ecc47cd82eb428148fb6a90fdcc3d70` |
 | Merged Stage 3 | `546fb441e9929a54de5dd87b1f63e133871af8df` (PR #83) |
 | Implementation | **COMPLETE IN SOURCE** |
-| Final QA | **LOCAL V11 QA COMPLETE WITH ONE KNOWN PLATFORM LIMITATION:** public/admin TypeScript PASS; targeted Stage 4 units `19 files / 118 tests` PASS; premium E2E `22/22` PASS; full E2E `126 passed / 18 intentional skips / 0 failed`; performance and visual registries PASS. Full Vitest has one pre-existing Windows-only CRLF failure described below; green Linux CI is required before merge. |
+| Final QA | **LOCAL FINAL QA COMPLETE WITH ONE KNOWN PLATFORM LIMITATION:** public/admin TypeScript PASS; targeted Stage 4 units `19 files / 121 tests` PASS; premium E2E `22/22` PASS; full E2E `126 passed / 18 intentional skips / 0 failed`; final post-CI-fix performance and frozen V11 visual registries PASS. Full Vitest has one pre-existing Windows-only CRLF failure described below; green Linux CI is required before merge. |
 | Merge | Только ручной merge после review; automatic merge запрещён |
 | Next stage | Stage 5 и Future Atlas Expansion автоматически не начинать |
 
@@ -251,23 +251,26 @@ Final run registry:
 | Gate | Final result |
 |---|---|
 | TypeScript / lint | **PASS — public `tsc` and admin `tsc`; interface catalog 1130 entries; i18n 916 phrases / 55 surfaces / 5 approved exceptions** |
-| Targeted Stage 4 unit/component | **PASS — 19 files / 118 tests** |
-| Full unit/component | **LOCAL WINDOWS LIMITATION — 258 files passed / 2 skipped / 1 failed; 1359 tests passed / 2 skipped / 1 failed.** The sole failure is the pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; the tracked migration/test is unchanged. Green Linux CI is required before merge. |
-| Premium + regression E2E | **PASS — premium 22/22; full suite 126 passed / 18 intentional skips / 0 failed, 2 workers, 6.8 min; regression subset 39 passed / 9 intentional skips** |
+| Targeted Stage 4 unit/component | **PASS — 19 files / 121 tests** |
+| Full unit/component | **LOCAL WINDOWS LIMITATION — 258 files passed / 2 skipped / 1 failed; 1362 tests passed / 2 skipped / 1 failed.** The sole failure is the pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; the tracked migration/test is unchanged. Green Linux CI is required before merge. |
+| Premium + regression E2E | **PASS — premium 22/22; full suite 126 passed / 18 intentional skips / 0 failed, 2 workers, 6.4 min; regression subset 31 passed / 9 intentional skips** |
 | Globe asset QA | **PASS — full textures 4096×2048 and mobile textures 2048×1024 for the antique/earth/modern RU/EN set** |
 | Production/domain/release gates | **Build/domain/SEO subgates PASS — domain 11319/11319; SEO 5262 ready; 161 pages; 2097 redirects; sitemap 172 URLs; visual runtime console errors 0.** The aggregate Windows release check retains only the documented CRLF-sensitive Vitest failure; Linux CI is required before merge. |
-| Performance/artifact budget | **PASS — 114,079,071 / 114,819,072 bytes, headroom 740,001; excluding covers 74,503,905 / 75,497,472, headroom 993,567; 4323 files** |
-| Full-tree `git diff --check` | **PASS — final staged tree, exit 0; no whitespace errors.** |
+| Performance/artifact budget | **PASS — 114,079,331 / 114,819,072 bytes, headroom 739,741; excluding covers 74,504,165 / 75,497,472, headroom 993,307; 4323 files** |
+| Full-tree `git diff --check` | **PASS — final working tree, exit 0; cached-tree verification is repeated immediately before commit.** |
 | Head SHA | The final PR head is pinned by the PR/CI after the documentation commit; a commit cannot truthfully embed its own SHA. |
+
+CI fidelity: the Quality workflow installs the browser binary for the Playwright version already frozen by `package-lock.json`; it no longer performs an inline package downgrade. The overall job ceiling is `30` minutes for the expanded 144-case browser matrix, while worker count, per-test timeout, retries and assertions remain unchanged.
 
 ## Visual, motion и performance evidence
 
 Required visual/motion matrix остаётся: `320×800`, `360×800`, `390×844`, `430×932`, `768×1024`, `1024×768`, `1280×800`, `1366×700`, `1366×768`, `1440×900`, `1920×1080`; representative RU/EN; три styles; near/medium/far/opposite/high-latitude/microstate; cancel/latest-wins/Home/writer/Random; compact sheet; reduced motion, forced colors, 200% zoom и weak-mobile/economical profile.
 
-- Visual evidence: **PASS — 16 PNG, all 11 required viewports**, RU/EN, embedded/immersive, all three public styles and selected-country/filter/archive/writer/Nobel/brush states. Registry: [`reports/stage4-visual-evidence/README.md`](../reports/stage4-visual-evidence/README.md), SHA-256 `c069dcf0b0f986c77ea70172960e0961d51df37159a0c93f6c451626e0eb3ebf`; remaining P0/P1: `0`; console errors: `0`.
-- Motion/runtime evidence: passive texture uploads `0`, offscreen frames `0`, Auto OFF frame counter plateau; premium E2E `22/22`, full E2E `126 passed / 18 intentional skips / 0 failed`, regression subset `39 passed / 9 intentional skips`.
-- Premium performance: total artifact `114,079,071 / 114,819,072` bytes (headroom `740,001`), excluding covers `74,503,905 / 75,497,472` (headroom `993,567`), `4323` files. Retina DPR `1.5` retained the full 4096×2048 tier; compact mobile used the dedicated 2048×1024 tier.
-- Frozen V11 build artifacts: main JS `629,468` bytes, SHA-256 `c2cc86617e6782364d194bc7f125fb9234ce269321b9f6599957a64d1eb9f080`; CSS `324,101` bytes, SHA-256 `3bbbd9cea3810ec9f1b3fe33e781db0eb43e2a45704ca2af94afbee63c49f34a`; globe chunk `92,442` bytes, SHA-256 `f08912e79a71d43a3b503cfd7da4c64265292b21fc636a30c79c9e68db0674c1`.
+- Visual evidence: **PASS — 16 PNG, all 11 required viewports**, RU/EN, embedded/immersive, all three public styles and selected-country/filter/archive/writer/Nobel/brush states. Registry: [`reports/stage4-visual-evidence/README.md`](../reports/stage4-visual-evidence/README.md), SHA-256 `2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90`; remaining P0/P1: `0`; console errors: `0`.
+- SVG/flag focused evidence: **PASS — 360×800 and 390×844, antique/earth/modern**; exactly one Canvas and one rendered style, crisp Japan outline/marker/control SVGs, mobile country-sheet duplication absent, and on-demand flags limited to the selected/hovered countries (`jp.svg`, then `kp.svg` on deliberate hover). All `204/204` local flag SVG assets respond successfully; console warnings/errors: `0`.
+- Motion/runtime evidence: passive texture uploads `0`, offscreen frames `0`, Auto OFF frame counter plateau; premium E2E `22/22`, full E2E `126 passed / 18 intentional skips / 0 failed`, regression subset `31 passed / 9 intentional skips`.
+- Premium performance: total artifact `114,079,331 / 114,819,072` bytes (headroom `739,741`), excluding covers `74,504,165 / 75,497,472` (headroom `993,307`), `4323` files. Retina DPR `1.5` retained the full 4096×2048 tier; compact mobile used the dedicated 2048×1024 tier.
+- Final post-CI-fix build artifacts: main JS `index-CakQm7Rv.js`, `629,468` bytes, SHA-256 `5efa0c417538cd1c9ae440394b010860530922dfed2edbe209e305927c6625be`; CSS `index-Cvad-RPW.css`, `324,296` bytes, SHA-256 `2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef`; globe chunk `LiteraryWorldMap-D8Tss8bM.js`, `92,507` bytes, SHA-256 `f321edf85e8e51fde2b426b741c27cc5f31c83aea162f3cc179afefaaa8005f7`.
 
 ## Вне scope и review policy
 

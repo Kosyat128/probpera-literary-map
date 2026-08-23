@@ -167,6 +167,26 @@ describe("GlobeCameraRig contract", () => {
     expect(source).toContain("enabled={active && interactionEnabled}");
   });
 
+  it("starts flight time on its first rendered frame and clears damping residue", () => {
+    const source = readFileSync(
+      new URL("./GlobeCameraRig.tsx", import.meta.url),
+      "utf8"
+    );
+
+    expect(source).toContain("startedAt: null");
+    expect(source).toContain(
+      "if (flight.startedAt === null) flight.startedAt = frameTime"
+    );
+    const settlingLoop = source.slice(
+      source.indexOf("const settling ="),
+      source.indexOf("if (controls.autoRotate) invalidate()")
+    );
+    expect(settlingLoop).toContain("controls.enableDamping = false");
+    expect(settlingLoop.indexOf("controls.enableDamping = false")).toBeLessThan(
+      settlingLoop.indexOf("syncRestingControls();")
+    );
+  });
+
   it("issues one atomic country intent per selection, including same-country refocus", () => {
     const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
     const selectCountrySource = appSource.slice(

@@ -129,7 +129,7 @@ type ActiveFlight = {
   token: number;
   source: GlobeProgrammaticCameraSource;
   intent: GlobeCameraFocusIntent;
-  startedAt: number;
+  startedAt: number | null;
   durationMs: number;
   trajectory: GlobeCameraTrajectory;
 };
@@ -410,7 +410,10 @@ export default function GlobeCameraRig({
         token: ++flightTokenRef.current,
         source: globeCameraMotionSourceForIntent(intent),
         intent,
-        startedAt: performance.now(),
+        // Start the clock on the first frame that can actually render the
+        // flight. A busy main thread must not consume the whole animation
+        // before the user has had a chance to interrupt it.
+        startedAt: null,
         durationMs,
         trajectory,
       };
@@ -622,7 +625,9 @@ export default function GlobeCameraRig({
 
     const flight = flightRef.current;
     if (flight) {
-      const elapsed = performance.now() - flight.startedAt;
+      const frameTime = performance.now();
+      if (flight.startedAt === null) flight.startedAt = frameTime;
+      const elapsed = frameTime - flight.startedAt;
       const progress = THREE.MathUtils.clamp(elapsed / flight.durationMs, 0, 1);
       const sample = sampleCameraTrajectory(flight.trajectory, progress);
       camera.up.set(0, 1, 0);
@@ -653,6 +658,11 @@ export default function GlobeCameraRig({
         performance.now() - settling.startedAt >= SETTLE_TIMEOUT_MS
       ) {
         settlingRef.current = null;
+        // OrbitControls retains a tiny spherical delta while damping is on.
+        // Flush that residue once before returning to demand rendering so an
+        // idle globe cannot keep invalidating frames indefinitely.
+        controls.enableDamping = false;
+        controls.update();
         syncRestingControls();
         emitViewSettled(settling.source);
       } else {

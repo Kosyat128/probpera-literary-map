@@ -12,7 +12,49 @@ async function openAtlas(page) {
   const canvas = atlas.locator("canvas");
   await expect(globe).toBeVisible({ timeout: 45_000 });
   await expect(canvas).toHaveCount(1);
+  await expect(canvas).toHaveAttribute("data-engine", /^three\.js r\d+/u);
+  await expect
+    .poll(() =>
+      canvas.evaluate(
+        (element) =>
+          new Promise((resolve) => {
+            const measure = () => {
+              const canvasRect = element.getBoundingClientRect();
+              const surfaceRect = element.parentElement?.getBoundingClientRect();
+              return {
+                canvasHeight: canvasRect.height,
+                canvasWidth: canvasRect.width,
+                surfaceHeight: surfaceRect?.height ?? 0,
+                surfaceWidth: surfaceRect?.width ?? 0,
+              };
+            };
+            const first = measure();
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                const second = measure();
+                resolve(
+                  second.canvasWidth > 0 &&
+                    second.canvasHeight > 0 &&
+                    Math.abs(second.canvasWidth - second.surfaceWidth) < 0.5 &&
+                    Math.abs(second.canvasHeight - second.surfaceHeight) < 0.5 &&
+                    Math.abs(second.canvasWidth - first.canvasWidth) < 0.5 &&
+                    Math.abs(second.canvasHeight - first.canvasHeight) < 0.5
+                );
+              })
+            );
+          })
+      )
+    )
+    .toBe(true);
   return { atlas, globe, canvas };
+}
+
+async function openAtlasInterface(page) {
+  await page.goto("/");
+  const atlas = page.locator("#atlas");
+  await atlas.scrollIntoViewIfNeeded();
+  await expect(atlas.locator(".atlas-toolbar")).toBeVisible();
+  return { atlas };
 }
 
 async function selectCountryFromAtlasSearch(page, query) {
@@ -58,6 +100,39 @@ async function dispatchTouchSequence(page, frames) {
   } finally {
     await session.detach();
   }
+}
+
+async function centerEmbeddedGlobeForTouchControl({ globe, page }) {
+  await globe.evaluate((element) =>
+    element.scrollIntoView({ behavior: "instant", block: "center" })
+  );
+  await page.evaluate(
+    () =>
+      new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve))
+      )
+  );
+  await expect
+    .poll(() =>
+      globe.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return rect.bottom > 0 && rect.top < window.innerHeight;
+      })
+    )
+    .toBe(true);
+  await expect(globe).not.toHaveAttribute("data-globe-touch-mode", "suspended");
+}
+
+async function ensureEmbeddedGlobeControl({ activation, globe, page }) {
+  await centerEmbeddedGlobeForTouchControl({ globe, page });
+  await expect(activation).toBeVisible();
+  if ((await globe.getAttribute("data-globe-touch-mode")) === "page-pan") {
+    await expect(activation).toHaveText(/Управлять глобусом|Control globe/iu);
+    await activation.click();
+  }
+  await expect(globe).toHaveAttribute("data-globe-touch-mode", "globe-control");
+  await expect(activation).toHaveAttribute("aria-pressed", "true");
+  await expect(activation).toHaveText(/Вернуться к прокрутке|Return to page scroll/iu);
 }
 
 async function expectImmersiveSurfaceContained({ experience, page }) {
@@ -278,7 +353,9 @@ test("atlas filters stay on one line and rich count matches the collection", asy
   isMobile,
 }) => {
   if (!isMobile) await page.setViewportSize({ width: 1440, height: 900 });
-  const { atlas } = await openAtlas(page);
+  // This is an interface contract: waiting for GeoJSON/WebGL readiness makes
+  // it depend on an unrelated, CPU-heavy renderer initialization in Linux CI.
+  const { atlas } = await openAtlasInterface(page);
   const filters = atlas.locator(".atlas-filters");
   const filterButtons = filters.locator(
     ":scope > .atlas-filter-options > button[data-atlas-filter]"
@@ -587,24 +664,8 @@ test("coarse embedded globe preserves page pan until explicit full control", asy
   });
 
   const activation = globe.locator('[data-globe-control="touch-activation"]');
-  await expect(activation).toHaveText(/Управлять глобусом|Control globe/iu);
-  await activation.click();
-  await expect(globe).toHaveAttribute("data-globe-touch-mode", "globe-control");
+  await ensureEmbeddedGlobeControl({ activation, globe, page });
   await expect(canvas).toHaveCSS("touch-action", "none");
-  await expect(activation).toHaveText(/Вернуться к прокрутке|Return to page scroll/iu);
-
-  // Closing the mobile country sheet changes the document height. Centre the
-  // stable globe after that reflow so the synthetic gesture starts on the
-  // Canvas, not on the small strip that can remain below the sticky header.
-  await globe.evaluate((element) =>
-    element.scrollIntoView({ behavior: "instant", block: "center" })
-  );
-  await page.evaluate(
-    () =>
-      new Promise((resolve) =>
-        requestAnimationFrame(() => requestAnimationFrame(resolve))
-      )
-  );
 
   const activeBox = await canvas.boundingBox();
   expect(activeBox).toBeTruthy();
@@ -681,7 +742,14 @@ test("coarse embedded globe preserves page pan until explicit full control", asy
   await selectCountryFromAtlasSearch(page, "Япония");
   const activeSheet = page.locator(".atlas-country-presentation");
   await expect(activeSheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
-  await expect(activation).toBeVisible();
+
+  // Focusing the responsive country presentation may briefly move the globe
+  // outside its IntersectionObserver boundary. The production safety policy
+  // intentionally clears embedded touch capture in that case, so establish
+  // full control explicitly before exercising the sheet-adjacent deactivate
+  // target. Both transitions remain real pointer clicks.
+  await ensureEmbeddedGlobeControl({ activation, globe, page });
+
   const activationBox = await activation.boundingBox();
   const activeSheetBox = await activeSheet.boundingBox();
   expect(activationBox).toBeTruthy();

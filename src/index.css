@@ -18355,6 +18355,11 @@ html[data-theme="book"] .calendar-heading h3 {
     width: auto;
   }
 
+  .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-country-label,
+  .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-instruction {
+    display: none;
+  }
+
   .literary-globe .globe-nobel-status {
     top: 116px;
     right: 14px;
@@ -18374,17 +18379,17 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .globe-touch-activation {
     z-index: 44;
-    bottom: calc(142px + max(12px, env(safe-area-inset-bottom)));
+    bottom: calc(142px + max(24px, env(safe-area-inset-bottom)));
   }
 
   .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="half"] .globe-touch-activation {
     z-index: 44;
-    bottom: calc(min(46dvh, 460px) + max(12px, env(safe-area-inset-bottom)));
+    bottom: calc(min(46dvh, 460px) + max(24px, env(safe-area-inset-bottom)));
   }
 
   .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="expanded"] .globe-touch-activation {
     z-index: 44;
-    bottom: calc(min(70dvh, 660px) + max(12px, env(safe-area-inset-bottom)));
+    bottom: calc(min(70dvh, 660px) + max(24px, env(safe-area-inset-bottom)));
   }
 
   .atlas-experience-surface .atlas-country-sheet-toggle {
@@ -18543,7 +18548,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (max-width: 680px) {
   .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
-    bottom: calc(142px + max(12px, env(safe-area-inset-bottom)));
+    bottom: calc(142px + max(24px, env(safe-area-inset-bottom)));
   }
 }
 
