@@ -19,12 +19,34 @@ const country = {
   ],
 } as Country;
 
+const biographySource = {
+  provider: "Редакция",
+  url: "https://example.org/writer",
+  fields: ["identity", "biography-facts"] as const,
+  usage: "fact-check" as const,
+  retrievedAt: "2026-08-23",
+};
+
+const bookSourceUrl = "https://example.org/book";
+
 describe("CMS editorial overrides", () => {
-  it("applies country fields without allowing an override to replace writers", () => {
+  it("applies country fields and EN translation without allowing an override to replace writers", () => {
     const unsafeDatabaseValue = {
       "test-country": {
         name: "Новое название",
         capital: "Новая столица",
+        translations: {
+          en: {
+            locale: "en",
+            status: "reviewed",
+            method: "machine-translation",
+            sourceHash: "country-hash",
+            fields: {
+              name: "Test Country",
+              capital: "New Capital",
+            },
+          },
+        },
         writers: [],
       },
     } as unknown as Parameters<typeof applyCmsCountryProfileOverrides>[1];
@@ -35,6 +57,7 @@ describe("CMS editorial overrides", () => {
 
     expect(updated[0].name).toBe("Новое название");
     expect(updated[0].capital).toBe("Новая столица");
+    expect(updated[0].translations?.en?.fields.name).toBe("Test Country");
     expect(updated[0].writers).toBe(country.writers);
   });
 
@@ -43,6 +66,28 @@ describe("CMS editorial overrides", () => {
       "test-country:writer": {
         name: "Имя из CMS",
         bio: "Текст, сохранённый владельцем в визуальном редакторе.",
+        biographyTranslations: {
+          ru: {
+            locale: "ru",
+            text: "Проверенная редакционная биография писателя содержит два предложения. Второе предложение подтверждает полноту тестового материала.",
+            sourceLanguage: "Russian",
+            status: "verified",
+            method: "editorial-original",
+            reviewedAt: "2026-08-23",
+            sources: [biographySource],
+          },
+          en: {
+            locale: "en",
+            text: "This reviewed English biography contains two complete factual sentences about the writer. Its provenance remains attached to the public profile.",
+            sourceLanguage: "Russian",
+            status: "reviewed",
+            method: "machine-translation",
+            reviewedAt: "2026-08-23",
+            translatedFromLocale: "ru",
+            sourceTextRights: "project-original",
+            sources: [biographySource],
+          },
+        },
       },
     });
 
@@ -51,10 +96,13 @@ describe("CMS editorial overrides", () => {
       name: "Имя из CMS",
       bio: "Текст, сохранённый владельцем в визуальном редакторе.",
     });
+    expect(
+      updated.writers[0].biographyTranslations?.en?.method
+    ).toBe("machine-translation");
     expect(country.writers[0].name).toBe("Исходное имя");
   });
 
-  it("converts a published CMS work into the canonical archive shape", () => {
+  it("converts a published bilingual CMS work into the canonical archive shape", () => {
     const works = cmsLiteraryWorkProfilesForWriter(
       "test-country",
       "writer",
@@ -69,6 +117,39 @@ describe("CMS editorial overrides", () => {
           firstPublished: 2026,
           genres: ["роман"] as const,
           tags: ["проверено"] as const,
+          translations: {
+            ru: {
+              locale: "ru",
+              title: "Название из CMS",
+              description:
+                "Русское описание книги содержит необходимые сведения о сюжете и контексте произведения. Второе предложение завершает проверенную редакционную аннотацию.",
+              sourceLanguage: "Russian",
+              status: "verified",
+              sourceUrls: [bookSourceUrl],
+              method: "editorial-original",
+              reviewedAt: "2026-08-23",
+            },
+            en: {
+              locale: "en",
+              title: "CMS Book Title",
+              description:
+                "The English description gives international readers the essential plot and literary context of the work. A second sentence completes the reviewed editorial annotation without adding unsupported claims.",
+              sourceLanguage: "Russian",
+              status: "reviewed",
+              sourceUrls: [bookSourceUrl],
+              method: "machine-translation",
+              reviewedAt: "2026-08-23",
+            },
+          },
+          sources: [
+            {
+              provider: "Example Library",
+              url: bookSourceUrl,
+              fields: ["identity", "title", "description"],
+              usage: "reference-only",
+              retrievedAt: "2026-08-23",
+            },
+          ],
           editorialStatus: "verified",
         },
       }
@@ -82,6 +163,18 @@ describe("CMS editorial overrides", () => {
         firstPublished: 2026,
         genres: ["роман"],
         tags: ["проверено"],
+        translations: expect.objectContaining({
+          en: expect.objectContaining({
+            title: "CMS Book Title",
+            method: "machine-translation",
+          }),
+        }),
+        sources: [
+          expect.objectContaining({
+            url: bookSourceUrl,
+            usage: "reference-only",
+          }),
+        ],
         editorial: { status: "verified", reviewedAt: undefined },
       }),
     ]);
