@@ -9,7 +9,10 @@ export default async function LoginPage({
   searchParams: Promise<{ error?: string; success?: string }>;
 }) {
   const session = await getStaffSession();
-  if (session.user && session.role) redirect("/dashboard");
+  if (session.user && session.role) {
+    if (session.mfa.required) redirect("/mfa");
+    redirect("/dashboard");
+  }
   const query = await searchParams;
 
   return (
@@ -60,37 +63,37 @@ export default async function LoginPage({
             </button>
           </form>
         ) : (
-        <form className="form-stack" action={loginAction}>
-          <label className="field">
-            <span>Электронная почта</span>
-            <input
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              placeholder="editor@probpera.ru"
-            />
-          </label>
-          <label className="field">
-            <span>Пароль</span>
-            <input
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              minLength={8}
-              required
-            />
-          </label>
-          <button className="button" type="submit">Войти в редакцию</button>
-          <button
-            className="button-secondary"
-            type="submit"
-            formAction={resetPasswordAction}
-            formNoValidate
-          >
-            Восстановить пароль по почте
-          </button>
-        </form>
+          <form className="form-stack" action={loginAction}>
+            <label className="field">
+              <span>Электронная почта</span>
+              <input
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                placeholder="editor@probpera.ru"
+              />
+            </label>
+            <label className="field">
+              <span>Пароль</span>
+              <input
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                minLength={8}
+                required
+              />
+            </label>
+            <button className="button" type="submit">Войти в редакцию</button>
+            <button
+              className="button-secondary"
+              type="submit"
+              formAction={resetPasswordAction}
+              formNoValidate
+            >
+              Восстановить пароль по почте
+            </button>
+          </form>
         )}
       </section>
     </main>
