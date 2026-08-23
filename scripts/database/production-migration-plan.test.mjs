@@ -107,6 +107,7 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("staff_editorial_read_policies=");
       expect(verification).toContain("article_bundle_rpc=");
       expect(verification).toContain("premium_machine_translation=");
+      expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
     }
