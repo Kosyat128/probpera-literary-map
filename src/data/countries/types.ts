@@ -21,7 +21,11 @@ export type WriterBiographyTranslationProfile = {
   text: string;
   sourceLanguage: string;
   status: WriterBiographyEditorialStatus;
-  method: "editorial-original" | "human-translation" | "licensed-source";
+  method:
+    | "editorial-original"
+    | "human-translation"
+    | "machine-translation"
+    | "licensed-source";
   reviewedAt?: string;
   reviewer?: string;
   translatedFromLocale?: WriterBiographyLocale;
@@ -31,6 +35,12 @@ export type WriterBiographyTranslationProfile = {
     | "licensed"
     | "permission";
   sources: WriterBiographySourceProfile[];
+  translationMeta?: {
+    model?: string;
+    reviewerModel?: string;
+    sourceHash?: string;
+    generatedAt?: string;
+  };
 };
 
 export type WorkEditorialStatus = "draft" | "reviewed" | "verified";
@@ -42,7 +52,11 @@ export type WorkTranslationProfile = {
   sourceLanguage: string;
   status: WorkEditorialStatus;
   sourceUrls: string[];
-  method: "editorial-original" | "human-translation" | "licensed-source";
+  method:
+    | "editorial-original"
+    | "human-translation"
+    | "machine-translation"
+    | "licensed-source";
   reviewedAt?: string;
 };
 
