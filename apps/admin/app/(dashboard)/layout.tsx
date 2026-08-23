@@ -32,6 +32,7 @@ export default async function DashboardLayout({
   }
 
   if (!session.user) adminRedirect("/login");
+  if (session.mfa.required) adminRedirect("/mfa");
 
   if (!session.role) {
     return (
