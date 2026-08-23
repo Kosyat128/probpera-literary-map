@@ -1,0 +1,893 @@
+name: Apply admin catalog asset externalization
+
+on:
+  push:
+    branches:
+      - fix/admin-worker-bundle-size
+    paths:
+      - ".github/workflows/apply-admin-catalog-assets.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-admin-catalog-assets
+  cancel-in-progress: false
+
+jobs:
+  apply-and-prove:
+    if: github.actor == 'Kosyat128'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
+    steps:
+      - name: Checkout worker-size branch
+        uses: actions/checkout@v7
+        with:
+          ref: fix/admin-worker-bundle-size
+          fetch-depth: 1
+
+      - name: Rewrite catalog generation and runtime access
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path(".")
+
+          def write(path: str, content: str) -> None:
+              normalized = re.sub(r"^          ", "", content, flags=re.MULTILINE)
+              target = root / path
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_text(normalized, encoding="utf-8")
+
+          def replace_once(path: str, old: str, new: str) -> None:
+              target = root / path
+              source = target.read_text(encoding="utf-8")
+              count = source.count(old)
+              if count != 1:
+                  raise SystemExit(
+                      f"{path}: expected exactly one target, found {count}"
+                  )
+              target.write_text(source.replace(old, new, 1), encoding="utf-8")
+
+          write(
+              "scripts/export-editorial-catalog.mjs",
+              r'''import {
+            mkdir,
+            readFile,
+            readdir,
+            rm,
+            writeFile,
+          } from "node:fs/promises";
+          import path from "node:path";
+          import { pathToFileURL, fileURLToPath } from "node:url";
+
+          import { build } from "esbuild";
+
+          const projectRoot = path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            ".."
+          );
+          const temporaryDirectory = path.join(projectRoot, ".tmp");
+          const temporaryBundle = path.join(
+            temporaryDirectory,
+            `admin-editorial-catalog-${process.pid}.mjs`
+          );
+          const outputDirectory = path.join(
+            projectRoot,
+            "apps",
+            "admin",
+            "public",
+            "editorial-catalog"
+          );
+          const checkOnly = process.argv.includes("--check");
+
+          const countryFields = [
+            "name",
+            "code",
+            "flag",
+            "coordinates",
+            "region",
+            "continent",
+            "officialLanguage",
+            "literaryPeriods",
+            "literaryMovements",
+            "periods",
+            "capital",
+            "description",
+            "history",
+            "historicalNote",
+            "facts",
+            "literaryPlaces",
+            "timeline",
+            "chronology",
+            "nobel",
+            "places",
+            "influence",
+          ];
+
+          const writerFields = [
+            "name",
+            "fullName",
+            "birth",
+            "death",
+            "years",
+            "birthDate",
+            "deathDate",
+            "birthPlace",
+            "deathPlace",
+            "portrait",
+            "portraitAlt",
+            "portraitSourceUrl",
+            "country",
+            "movement",
+            "literaryEra",
+            "genres",
+            "languages",
+            "language",
+            "nationality",
+            "tags",
+            "category",
+            "bio",
+            "biography",
+            "description",
+            "works",
+            "awards",
+            "places",
+            "relatedWriters",
+            "articleUrl",
+            "biographyTranslations",
+          ];
+
+          function selectedFields(source, fields) {
+            return Object.fromEntries(
+              fields.flatMap((field) =>
+                source[field] === undefined ? [] : [[field, source[field]]]
+              )
+            );
+          }
+
+          function objectValue(value) {
+            return value && typeof value === "object" && !Array.isArray(value)
+              ? value
+              : {};
+          }
+
+          function eligibleWriterBiography(writer) {
+            const translations = objectValue(writer.biographyTranslations);
+            const russian = objectValue(translations.ru);
+            return (
+              russian.locale === "ru" &&
+              russian.method === "editorial-original" &&
+              ["reviewed", "verified"].includes(String(russian.status)) &&
+              typeof russian.text === "string" &&
+              russian.text.trim().length >= 120 &&
+              Array.isArray(russian.sources) &&
+              russian.sources.length > 0
+            );
+          }
+
+          function eligibleCountry(country) {
+            return (
+              typeof country.name === "string" &&
+              country.name.trim().length > 0 &&
+              [country.description, country.history, country.historicalNote].some(
+                (value) => typeof value === "string" && value.trim().length > 0
+              )
+            );
+          }
+
+          function safeCountryId(value) {
+            const id = String(value || "").trim();
+            if (!/^[a-z0-9][a-z0-9_-]*$/u.test(id)) {
+              throw new Error(`Unsafe editorial country id: ${id}`);
+            }
+            return id;
+          }
+
+          function serialized(value) {
+            return `${JSON.stringify(value, null, 2)}\n`;
+          }
+
+          function expectedFiles(countries) {
+            const index = {
+              version: 2,
+              stats: {
+                countries: countries.length,
+                writers: countries.reduce(
+                  (total, country) => total + country.writers.length,
+                  0
+                ),
+                eligibleWriterBiographies: countries.reduce(
+                  (total, country) =>
+                    total + country.writers.filter(eligibleWriterBiography).length,
+                  0
+                ),
+                eligibleCountries: countries.filter(eligibleCountry).length,
+              },
+              countries: countries.map((country) => ({
+                id: safeCountryId(country.id),
+                label: country.name || country.id,
+                writers: country.writers.map((writer) => ({
+                  id: writer.id,
+                  label: writer.name || writer.fullName || writer.id,
+                })),
+              })),
+            };
+            const files = new Map([["index.json", serialized(index)]]);
+            for (const country of countries) {
+              const id = safeCountryId(country.id);
+              files.set(
+                `countries/${id}.json`,
+                serialized({
+                  id,
+                  label: country.name || id,
+                  fields: selectedFields(country, countryFields),
+                  writers: country.writers.map((writer) => ({
+                    id: writer.id,
+                    label: writer.name || writer.fullName || writer.id,
+                    fields: selectedFields(writer, writerFields),
+                  })),
+                })
+              );
+            }
+            return files;
+          }
+
+          async function existingFileNames(directory, prefix = "") {
+            const entries = await readdir(directory, { withFileTypes: true }).catch(
+              () => []
+            );
+            const names = [];
+            for (const entry of entries) {
+              const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
+              if (entry.isDirectory()) {
+                names.push(
+                  ...(await existingFileNames(
+                    path.join(directory, entry.name),
+                    relative
+                  ))
+                );
+              } else {
+                names.push(relative);
+              }
+            }
+            return names.sort();
+          }
+
+          await mkdir(temporaryDirectory, { recursive: true });
+          try {
+            await build({
+              absWorkingDir: projectRoot,
+              entryPoints: [path.join(projectRoot, "scripts", "archive-source.ts")],
+              bundle: true,
+              platform: "node",
+              format: "esm",
+              target: "node24",
+              outfile: temporaryBundle,
+              logLevel: "silent",
+            });
+            const source = await import(
+              `${pathToFileURL(temporaryBundle).href}?v=${Date.now()}`
+            );
+            const countries = source.archiveCountries;
+            const files = expectedFiles(countries);
+
+            if (checkOnly) {
+              const existingNames = await existingFileNames(outputDirectory);
+              const expectedNames = [...files.keys()].sort();
+              if (JSON.stringify(existingNames) !== JSON.stringify(expectedNames)) {
+                throw new Error(
+                  "Редакционные asset-файлы отсутствуют или содержат лишние записи. Запустите npm run editorial:catalog."
+                );
+              }
+              for (const [relativePath, expected] of files) {
+                const current = await readFile(
+                  path.join(outputDirectory, relativePath),
+                  "utf8"
+                );
+                if (current !== expected) {
+                  throw new Error(
+                    `Редакционный asset устарел: ${relativePath}. Запустите npm run editorial:catalog.`
+                  );
+                }
+              }
+            } else {
+              await rm(outputDirectory, { recursive: true, force: true });
+              await Promise.all(
+                [...files].map(async ([relativePath, content]) => {
+                  const destination = path.join(outputDirectory, relativePath);
+                  await mkdir(path.dirname(destination), { recursive: true });
+                  await writeFile(destination, content, "utf8");
+                })
+              );
+              console.log(
+                `Editorial catalog assets: ${countries.length} countries, ${files.size} files, ${countries.reduce(
+                  (total, country) => total + country.writers.length,
+                  0
+                )} writers.`
+              );
+            }
+          } finally {
+            await rm(temporaryBundle, { force: true });
+          }
+          ''',
+          )
+
+          write(
+              "apps/admin/lib/editorial-catalog.ts",
+              r'''import { getCloudflareContext } from "@opennextjs/cloudflare";
+
+          import { adminEnv } from "./env";
+
+          export type EditorialCatalogWriterSummary = {
+            id: string;
+            label: string;
+          };
+
+          export type EditorialCatalogWriter = EditorialCatalogWriterSummary & {
+            fields: Record<string, unknown>;
+          };
+
+          export type EditorialCatalogCountrySummary = {
+            id: string;
+            label: string;
+            writers: EditorialCatalogWriterSummary[];
+          };
+
+          export type EditorialCatalogCountry = {
+            id: string;
+            label: string;
+            fields: Record<string, unknown>;
+            writers: EditorialCatalogWriter[];
+          };
+
+          export type EditorialCatalogIndex = {
+            version: number;
+            stats: {
+              countries: number;
+              writers: number;
+              eligibleWriterBiographies: number;
+              eligibleCountries: number;
+            };
+            countries: EditorialCatalogCountrySummary[];
+          };
+
+          type FetchImplementation = typeof fetch;
+          type StaticAssetsBinding = {
+            fetch(request: Request): Promise<Response>;
+          };
+
+          const assetRoot = "/editorial-catalog";
+          const safeCountryIdPattern = /^[a-z0-9][a-z0-9_-]*$/u;
+          let indexPromise: Promise<EditorialCatalogIndex> | null = null;
+          const countryPromises = new Map<
+            string,
+            Promise<EditorialCatalogCountry>
+          >();
+
+          function objectValue(value: unknown): Record<string, unknown> {
+            return value && typeof value === "object" && !Array.isArray(value)
+              ? (value as Record<string, unknown>)
+              : {};
+          }
+
+          function text(value: unknown) {
+            return typeof value === "string" ? value.trim() : "";
+          }
+
+          function nonNegativeInteger(value: unknown) {
+            return typeof value === "number" && Number.isSafeInteger(value) && value >= 0
+              ? value
+              : null;
+          }
+
+          function writerSummary(value: unknown): EditorialCatalogWriterSummary | null {
+            const row = objectValue(value);
+            const id = text(row.id);
+            const label = text(row.label);
+            return id && label ? { id, label } : null;
+          }
+
+          function countrySummary(
+            value: unknown
+          ): EditorialCatalogCountrySummary | null {
+            const row = objectValue(value);
+            const id = text(row.id);
+            const label = text(row.label);
+            const writers = Array.isArray(row.writers)
+              ? row.writers.flatMap((item) => {
+                  const parsed = writerSummary(item);
+                  return parsed ? [parsed] : [];
+                })
+              : [];
+            return id && label && safeCountryIdPattern.test(id)
+              ? { id, label, writers }
+              : null;
+          }
+
+          function parseIndex(value: unknown): EditorialCatalogIndex {
+            const row = objectValue(value);
+            const stats = objectValue(row.stats);
+            const countries = Array.isArray(row.countries)
+              ? row.countries.flatMap((item) => {
+                  const parsed = countrySummary(item);
+                  return parsed ? [parsed] : [];
+                })
+              : [];
+            const parsedStats = {
+              countries: nonNegativeInteger(stats.countries),
+              writers: nonNegativeInteger(stats.writers),
+              eligibleWriterBiographies: nonNegativeInteger(
+                stats.eligibleWriterBiographies
+              ),
+              eligibleCountries: nonNegativeInteger(stats.eligibleCountries),
+            };
+            if (
+              row.version !== 2 ||
+              countries.length === 0 ||
+              Object.values(parsedStats).some((item) => item === null) ||
+              parsedStats.countries !== countries.length
+            ) {
+              throw new Error("Editorial catalog index has an invalid shape");
+            }
+            return {
+              version: 2,
+              stats: parsedStats as EditorialCatalogIndex["stats"],
+              countries,
+            };
+          }
+
+          function parseCountry(value: unknown): EditorialCatalogCountry {
+            const row = objectValue(value);
+            const id = text(row.id);
+            const label = text(row.label);
+            const writers = Array.isArray(row.writers)
+              ? row.writers.flatMap((item) => {
+                  const source = objectValue(item);
+                  const summary = writerSummary(source);
+                  return summary
+                    ? [
+                        {
+                          ...summary,
+                          fields: objectValue(source.fields),
+                        },
+                      ]
+                    : [];
+                })
+              : [];
+            if (!id || !label || !safeCountryIdPattern.test(id)) {
+              throw new Error("Editorial country asset has an invalid shape");
+            }
+            return {
+              id,
+              label,
+              fields: objectValue(row.fields),
+              writers,
+            };
+          }
+
+          async function cloudflareAsset(pathname: string) {
+            try {
+              const context = getCloudflareContext();
+              const assets = (context.env as { ASSETS?: StaticAssetsBinding }).ASSETS;
+              if (!assets) return null;
+              return await assets.fetch(
+                new Request(`https://assets.local${pathname}`)
+              );
+            } catch {
+              return null;
+            }
+          }
+
+          async function fetchJson(
+            pathname: string,
+            fetchImpl?: FetchImplementation,
+            explicitUrl?: string
+          ) {
+            let response =
+              fetchImpl || explicitUrl
+                ? null
+                : await cloudflareAsset(pathname);
+            if (!response || !response.ok) {
+              const base = `${adminEnv.adminSiteUrl.replace(/\/+$/u, "")}/`;
+              const url =
+                explicitUrl ||
+                new URL(pathname.replace(/^\/+/, ""), base).href;
+              response = await (fetchImpl || fetch)(url, {
+                cache: "no-store",
+                headers: { Accept: "application/json" },
+              });
+            }
+            if (!response.ok) {
+              throw new Error(
+                `Editorial catalog asset failed (${response.status}): ${pathname}`
+              );
+            }
+            return response.json() as Promise<unknown>;
+          }
+
+          export async function loadEditorialCatalogIndex(options: {
+            fetchImpl?: FetchImplementation;
+            url?: string;
+          } = {}) {
+            if (options.fetchImpl || options.url) {
+              return parseIndex(
+                await fetchJson(
+                  `${assetRoot}/index.json`,
+                  options.fetchImpl,
+                  options.url
+                )
+              );
+            }
+            if (!indexPromise) {
+              indexPromise = fetchJson(`${assetRoot}/index.json`)
+                .then(parseIndex)
+                .catch((error) => {
+                  indexPromise = null;
+                  throw error;
+                });
+            }
+            return indexPromise;
+          }
+
+          export async function loadEditorialCountry(
+            countryId: string,
+            options: { fetchImpl?: FetchImplementation; url?: string } = {}
+          ) {
+            const id = countryId.trim();
+            if (!safeCountryIdPattern.test(id)) {
+              throw new Error(`Unsafe editorial country id: ${id}`);
+            }
+            if (options.fetchImpl || options.url) {
+              const country = parseCountry(
+                await fetchJson(
+                  `${assetRoot}/countries/${id}.json`,
+                  options.fetchImpl,
+                  options.url
+                )
+              );
+              if (country.id !== id) {
+                throw new Error("Editorial country asset id does not match request");
+              }
+              return country;
+            }
+            let pending = countryPromises.get(id);
+            if (!pending) {
+              pending = fetchJson(`${assetRoot}/countries/${id}.json`)
+                .then(parseCountry)
+                .then((country) => {
+                  if (country.id !== id) {
+                    throw new Error(
+                      "Editorial country asset id does not match request"
+                    );
+                  }
+                  return country;
+                })
+                .catch((error) => {
+                  countryPromises.delete(id);
+                  throw error;
+                });
+              countryPromises.set(id, pending);
+            }
+            return pending;
+          }
+
+          export function editorialCountry(
+            catalog: EditorialCatalogIndex,
+            countryId: string
+          ) {
+            return (
+              catalog.countries.find((country) => country.id === countryId) || null
+            );
+          }
+
+          export function editorialWriter(
+            country: EditorialCatalogCountry,
+            writerId: string
+          ) {
+            return country.writers.find((writer) => writer.id === writerId) || null;
+          }
+          ''',
+          )
+
+          write(
+              "apps/admin/lib/editorial-catalog.test.ts",
+              r'''import { describe, expect, it, vi } from "vitest";
+
+          import {
+            editorialCountry,
+            editorialWriter,
+            loadEditorialCatalogIndex,
+            loadEditorialCountry,
+          } from "./editorial-catalog";
+
+          function jsonResponse(value: unknown, status = 200) {
+            return new Response(JSON.stringify(value), {
+              status,
+              headers: { "Content-Type": "application/json" },
+            });
+          }
+
+          describe("external editorial catalog assets", () => {
+            it("loads and validates the compact index", async () => {
+              const fetchImpl = vi.fn(async () =>
+                jsonResponse({
+                  version: 2,
+                  stats: {
+                    countries: 1,
+                    writers: 1,
+                    eligibleWriterBiographies: 0,
+                    eligibleCountries: 1,
+                  },
+                  countries: [
+                    {
+                      id: "russia",
+                      label: "Россия",
+                      writers: [{ id: "tolstoy", label: "Лев Толстой" }],
+                    },
+                  ],
+                })
+              ) as unknown as typeof fetch;
+              const index = await loadEditorialCatalogIndex({
+                fetchImpl,
+                url: "https://assets.test/editorial-catalog/index.json",
+              });
+              expect(index.stats.writers).toBe(1);
+              expect(editorialCountry(index, "russia")?.label).toBe("Россия");
+            });
+
+            it("loads only the requested country shard", async () => {
+              const fetchImpl = vi.fn(async () =>
+                jsonResponse({
+                  id: "russia",
+                  label: "Россия",
+                  fields: { name: "Россия" },
+                  writers: [
+                    {
+                      id: "tolstoy",
+                      label: "Лев Толстой",
+                      fields: { fullName: "Leo Tolstoy" },
+                    },
+                  ],
+                })
+              ) as unknown as typeof fetch;
+              const country = await loadEditorialCountry("russia", {
+                fetchImpl,
+                url: "https://assets.test/editorial-catalog/countries/russia.json",
+              });
+              expect(editorialWriter(country, "tolstoy")?.fields.fullName).toBe(
+                "Leo Tolstoy"
+              );
+            });
+
+            it("rejects traversal before any request", async () => {
+              const fetchImpl = vi.fn() as unknown as typeof fetch;
+              await expect(
+                loadEditorialCountry("../secret", { fetchImpl })
+              ).rejects.toThrow("Unsafe editorial country id");
+              expect(fetchImpl).not.toHaveBeenCalled();
+            });
+          });
+          ''',
+          )
+
+          legacy = root / "apps/admin/lib/editorial-catalog.generated.json"
+          if legacy.exists():
+              legacy.unlink()
+          replace_once(
+              ".gitignore",
+              "apps/admin/.wrangler-dry-run/\n",
+              "apps/admin/.wrangler-dry-run/\napps/admin/.wrangler-dry/\napps/admin/public/editorial-catalog/\n",
+          )
+          replace_once(
+              "apps/admin/package.json",
+              '"build": "next build"',
+              '"build": "node ../../scripts/export-editorial-catalog.mjs && next build"',
+          )
+
+          page = "apps/admin/app/(dashboard)/editorial-database/page.tsx"
+          replace_once(
+              page,
+              'import {\n  editorialCatalog,\n  editorialCountry,\n  editorialWriter,\n} from "@/lib/editorial-catalog";',
+              'import {\n  editorialCountry,\n  editorialWriter,\n  loadEditorialCatalogIndex,\n  loadEditorialCountry,\n} from "@/lib/editorial-catalog";',
+          )
+          replace_once(
+              page,
+              '  const query = await searchParams;\n  const defaultCountryId = editorialCountry("russia")?.id || editorialCatalog.countries[0]?.id || "";\n  const countryId = editorialCountry(query.country_id || "")?.id || defaultCountryId;\n  const selectedCountry = editorialCountry(countryId);\n  const writerId = editorialWriter(countryId, query.writer_id || "")?.id || "";\n  const selectedWriter = writerId ? editorialWriter(countryId, writerId) : null;',
+              '  const [query, catalogIndex] = await Promise.all([\n    searchParams,\n    loadEditorialCatalogIndex(),\n  ]);\n  const defaultCountryId =\n    editorialCountry(catalogIndex, "russia")?.id ||\n    catalogIndex.countries[0]?.id ||\n    "";\n  const countryId =\n    editorialCountry(catalogIndex, query.country_id || "")?.id ||\n    defaultCountryId;\n  const selectedCountry = countryId\n    ? await loadEditorialCountry(countryId)\n    : null;\n  const writerId = selectedCountry\n    ? editorialWriter(selectedCountry, query.writer_id || "")?.id || ""\n    : "";\n  const selectedWriter =\n    selectedCountry && writerId\n      ? editorialWriter(selectedCountry, writerId)\n      : null;',
+          )
+          replace_once(
+              page,
+              "  const totalWriters = editorialCatalog.countries.reduce((total, country) => total + country.writers.length, 0);",
+              "  const totalWriters = catalogIndex.stats.writers;",
+          )
+          page_path = root / page
+          page_source = page_path.read_text(encoding="utf-8").replace(
+              "editorialCatalog.countries",
+              "catalogIndex.countries",
+          )
+          page_path.write_text(page_source, encoding="utf-8")
+
+          translations_page = root / "apps/admin/app/(dashboard)/translations/page.tsx"
+          source = translations_page.read_text(encoding="utf-8")
+          source = source.replace(
+              'import { editorialCatalog } from "@/lib/editorial-catalog";',
+              'import { loadEditorialCatalogIndex } from "@/lib/editorial-catalog";',
+              1,
+          )
+          source, removed = re.subn(
+              r'\nfunction eligibleStaticWriterBiographies\(\) \{.*?\n\}\n\nfunction eligibleStaticCountries\(\) \{.*?\n\}\n',
+              "\n",
+              source,
+              count=1,
+              flags=re.DOTALL,
+          )
+          if removed != 1:
+              raise SystemExit("translations/page.tsx: eligibility helpers not found")
+          source = source.replace(
+              "  const query = await searchParams;\n  const supabase = await createServerSupabaseClient();",
+              "  const [query, catalogIndex] = await Promise.all([\n    searchParams,\n    loadEditorialCatalogIndex(),\n  ]);\n  const supabase = await createServerSupabaseClient();",
+              1,
+          )
+          source = source.replace(
+              "  const eligibleWriters = eligibleStaticWriterBiographies();\n  const eligibleCountries = eligibleStaticCountries();",
+              "  const eligibleWriters =\n    catalogIndex.stats.eligibleWriterBiographies;\n  const eligibleCountries = catalogIndex.stats.eligibleCountries;",
+              1,
+          )
+          translations_page.write_text(source, encoding="utf-8")
+
+          country_actions = root / "apps/admin/app/(dashboard)/translations/country-actions.ts"
+          source = country_actions.read_text(encoding="utf-8")
+          source = source.replace(
+              'import { editorialCatalog } from "@/lib/editorial-catalog";',
+              'import {\n  loadEditorialCatalogIndex,\n  loadEditorialCountry,\n} from "@/lib/editorial-catalog";',
+              1,
+          )
+          source = source.replace(
+              "  let translated = 0;",
+              "  const catalogIndex = await loadEditorialCatalogIndex();\n\n  let translated = 0;",
+              1,
+          )
+          source = source.replace(
+              "  for (const country of editorialCatalog.countries) {\n    if (translated >= MAX_COUNTRY_TRANSLATIONS || scanned >= MAX_COUNTRY_SCAN) break;\n    scanned += 1;\n    const result = await ensureCountryEnglishProfile({",
+              "  for (const countrySummary of catalogIndex.countries) {\n    if (translated >= MAX_COUNTRY_TRANSLATIONS || scanned >= MAX_COUNTRY_SCAN) break;\n    scanned += 1;\n    const country = await loadEditorialCountry(countrySummary.id);\n    const result = await ensureCountryEnglishProfile({",
+              1,
+          )
+          country_actions.write_text(source, encoding="utf-8")
+
+          batch_actions = root / "apps/admin/app/(dashboard)/translations/actions.ts"
+          source = batch_actions.read_text(encoding="utf-8")
+          source = source.replace(
+              'import { editorialCatalog } from "@/lib/editorial-catalog";',
+              'import {\n  loadEditorialCatalogIndex,\n  loadEditorialCountry,\n} from "@/lib/editorial-catalog";',
+              1,
+          )
+          source = source.replace(
+              "function staticWriterCandidates() {",
+              "async function staticWriterCandidates() {",
+              1,
+          )
+          source = source.replace(
+              "  for (const country of editorialCatalog.countries) {\n    for (const writer of country.writers) {",
+              "  const catalogIndex = await loadEditorialCatalogIndex();\n  for (const countrySummary of catalogIndex.countries) {\n    const country = await loadEditorialCountry(countrySummary.id);\n    for (const writer of country.writers) {",
+              1,
+          )
+          source = source.replace(
+              "  for (const candidate of staticWriterCandidates()) {",
+              "  for (const candidate of await staticWriterCandidates()) {",
+              1,
+          )
+          batch_actions.write_text(source, encoding="utf-8")
+
+          editor_actions = root / "apps/admin/app/(dashboard)/editorial-database/actions.ts"
+          source = editor_actions.read_text(encoding="utf-8")
+          source = source.replace(
+              'import { editorialCatalog } from "@/lib/editorial-catalog";',
+              'import { loadEditorialCountry } from "@/lib/editorial-catalog";\nimport { adminEnv } from "@/lib/env";',
+              1,
+          )
+          source = source.replace(
+              "function editorialSourceFields(countryId: string, writerId: string | null) {\n  const country = editorialCatalog.countries.find(\n    (candidate) => candidate.id === countryId\n  );",
+              "async function editorialSourceFields(\n  countryId: string,\n  writerId: string | null\n) {\n  const country = await loadEditorialCountry(countryId);",
+              1,
+          )
+          source = source.replace(
+              "  const sourceFields = {\n    ...editorialSourceFields(edit.countryId, edit.writerId),\n    ...completeSource.fields,\n  };",
+              "  const sourceFields = adminEnv.openAiAutoTranslateProfiles\n    ? {\n        ...(await editorialSourceFields(edit.countryId, edit.writerId)),\n        ...completeSource.fields,\n      }\n    : completeSource.fields;",
+              1,
+          )
+          editor_actions.write_text(source, encoding="utf-8")
+
+          for path in [
+              "apps/admin/app/(dashboard)/editorial-database/page.tsx",
+              "apps/admin/app/(dashboard)/editorial-database/actions.ts",
+              "apps/admin/app/(dashboard)/translations/page.tsx",
+              "apps/admin/app/(dashboard)/translations/actions.ts",
+              "apps/admin/app/(dashboard)/translations/country-actions.ts",
+              "apps/admin/lib/editorial-catalog.ts",
+          ]:
+              content = (root / path).read_text(encoding="utf-8")
+              if "editorialCatalog" in content or "editorial-catalog.generated.json" in content:
+                  raise SystemExit(f"{path}: monolithic catalog reference remains")
+          PY
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Generate and validate catalog assets
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run editorial:catalog
+          node scripts/export-editorial-catalog.mjs --check
+          npm run lint --workspace @probpera/admin
+          npx vitest run \
+            apps/admin/lib/editorial-catalog.test.ts \
+            apps/admin/lib/env.test.ts
+          git diff --check
+
+      - name: Build OpenNext Worker
+        run: npm run cf:build --workspace @probpera/admin
+
+      - name: Enforce Wrangler compressed-size budget
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          cd apps/admin
+          rm -rf .wrangler-dry
+          mkdir -p .wrangler-dry
+          npx wrangler deploy \
+            --dry-run \
+            --outdir .wrangler-dry \
+            --metafile .wrangler-dry/meta.json \
+            --config wrangler.jsonc \
+            2>&1 | tee .wrangler-dry/dry-run.log
+          node <<'NODE'
+          const fs = require("node:fs");
+          const log = fs.readFileSync(".wrangler-dry/dry-run.log", "utf8");
+          const match = log.match(
+            /Total Upload:\s*([0-9.]+) KiB\s*\/\s*gzip:\s*([0-9.]+) KiB/u
+          );
+          if (!match) throw new Error("Wrangler did not report upload sizes");
+          const rawKiB = Number(match[1]);
+          const gzipKiB = Number(match[2]);
+          const maximumGzipKiB = 2900;
+          console.log(JSON.stringify({ rawKiB, gzipKiB, maximumGzipKiB }));
+          if (gzipKiB > maximumGzipKiB) {
+            throw new Error(
+              `Compressed Worker ${gzipKiB} KiB exceeds ${maximumGzipKiB} KiB`
+            );
+          }
+          NODE
+          if grep -R -Fq "editorial-catalog.generated.json" .wrangler-dry; then
+            echo "::error::Legacy monolithic catalog remains in the Worker bundle."
+            exit 1
+          fi
+
+      - name: Commit proven source reduction
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "probpera-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A \
+            .gitignore \
+            apps/admin/lib \
+            apps/admin/app \
+            apps/admin/package.json \
+            scripts/export-editorial-catalog.mjs
+          git commit -m "fix(admin): externalize editorial catalog assets"
+          git push origin HEAD:fix/admin-worker-bundle-size
