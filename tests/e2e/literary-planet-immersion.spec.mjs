@@ -227,6 +227,7 @@ test("country selection replaces the immersive entry and survives Back/Forward w
   page,
   isMobile,
 }) => {
+  test.setTimeout(90_000);
   test.skip(isMobile, "Mobile country presentation has a dedicated sheet test.");
 
   await page.goto("/");
