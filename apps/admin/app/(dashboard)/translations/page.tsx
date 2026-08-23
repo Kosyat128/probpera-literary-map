@@ -9,6 +9,7 @@ import {
   translatePremiumSiteCopyBatchAction,
   translatePremiumWriterBatchAction,
 } from "./actions";
+import { translatePremiumCountryBatchAction } from "./country-actions";
 
 export const metadata = { title: "Premium English" };
 export const dynamic = "force-dynamic";
@@ -39,6 +40,19 @@ function eligibleStaticWriterBiographies() {
     }
   }
   return total;
+}
+
+function eligibleStaticCountries() {
+  return editorialCatalog.countries.filter((country) => {
+    const fields = country.fields;
+    return (
+      typeof fields.name === "string" &&
+      fields.name.trim().length > 0 &&
+      [fields.description, fields.history, fields.historicalNote].some(
+        (value) => typeof value === "string" && value.trim().length > 0
+      )
+    );
+  }).length;
 }
 
 export default async function PremiumTranslationsPage({
@@ -100,6 +114,7 @@ export default async function PremiumTranslationsPage({
   const apiReady = Boolean(adminEnv.openAiApiKey);
   const bookDbReady = machineWorkReadiness?.data === true;
   const eligibleWriters = eligibleStaticWriterBiographies();
+  const eligibleCountries = eligibleStaticCountries();
 
   const readinessChecks = [
     ["OpenAI server secret", apiReady],
@@ -176,6 +191,11 @@ export default async function PremiumTranslationsPage({
           <small>кандидатов на безопасный EN</small>
         </article>
         <article className="stat-card">
+          <span>Страны с содержательным профилем</span>
+          <strong>{eligibleCountries}</strong>
+          <small>готовы к premium EN</small>
+        </article>
+        <article className="stat-card">
           <span>CMS-тексты</span>
           <strong>{Object.keys(siteCopy.ru).length}</strong>
           <small>машинных EN: {Object.keys(machineCopy).length}</small>
@@ -219,6 +239,18 @@ export default async function PremiumTranslationsPage({
           </button>
         </form>
 
+        <form className="panel settings-stack" action={translatePremiumCountryBatchAction}>
+          <span className="eyebrow">Страны</span>
+          <h2>Премиальный EN профилей стран</h2>
+          <p>
+            История, описание, литературные периоды, движения, факты и места переводятся
+            по две страны за запуск. Коды, координаты, годы и числовые показатели не меняются.
+          </p>
+          <button className="button" type="submit" disabled={!apiReady}>
+            Перевести следующий пакет стран
+          </button>
+        </form>
+
         <form className="panel settings-stack" action={translatePremiumSiteCopyBatchAction}>
           <span className="eyebrow">Интерфейс</span>
           <h2>Догнать CMS site-copy</h2>
@@ -235,10 +267,11 @@ export default async function PremiumTranslationsPage({
       <section className="panel" style={{ marginTop: 18 }}>
         <h2>Правила качества</h2>
         <p>
-          Переводчик не имеет права менять URL, ISBN, даты, идентификаторы и защищённую
-          HTML-структуру. Для статей после модели выполняются обычные release-checks;
-          книги и биографии проходят ограничения длины, предложений, provenance и
-          отсутствие кириллицы. При конфликте версии результат не записывается.
+          Переводчик не имеет права менять URL, ISBN, даты, идентификаторы, координаты
+          и защищённую HTML-структуру. Для статей после модели выполняются обычные
+          release-checks; книги, биографии и страны проходят структурные ограничения,
+          provenance/source-hash проверки и отсутствие случайной кириллицы. При конфликте
+          версии результат не записывается.
         </p>
       </section>
     </>
