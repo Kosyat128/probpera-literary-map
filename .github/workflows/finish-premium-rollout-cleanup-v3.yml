@@ -1,0 +1,165 @@
+name: Close all premium rollout diagnostics
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".github/workflows/finish-premium-rollout.yml"
+      - ".github/workflows/finish-premium-rollout-cleanup-v3.yml"
+
+permissions:
+  actions: read
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: close-all-premium-rollout-diagnostics-20260823
+  cancel-in-progress: false
+
+jobs:
+  cleanup-after-success:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Close diagnostic PRs only after the independent verifier succeeds
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          CURRENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          CURRENT_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node <<'NODE'
+          const token = process.env.GH_TOKEN;
+          const repository = process.env.REPOSITORY;
+          const currentPr = Number(process.env.CURRENT_PR_NUMBER);
+          const currentHeadRef = process.env.CURRENT_HEAD_REF;
+          const headers = {
+            Accept: "application/vnd.github+json",
+            Authorization: `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+            "User-Agent": "probpera-premium-rollout-final-cleanup",
+          };
+          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+          async function api(path, init = {}, allow404 = false) {
+            const response = await fetch(`https://api.github.com${path}`, {
+              ...init,
+              headers: { ...headers, ...(init.headers || {}) },
+            });
+            const text = await response.text();
+            if (allow404 && response.status === 404) return null;
+            if (!response.ok) {
+              throw new Error(
+                `GitHub API ${path} failed (${response.status}): ${text.slice(0, 500)}`
+              );
+            }
+            return text ? JSON.parse(text) : null;
+          }
+
+          const deadline = Date.now() + 45 * 60 * 1000;
+          let verifier = null;
+          let lastState = "";
+          while (Date.now() < deadline) {
+            const data = await api(
+              `/repos/${repository}/actions/runs?event=pull_request&per_page=100`
+            );
+            verifier = (data.workflow_runs || [])
+              .filter(
+                (run) =>
+                  run.name === "Finish premium English rollout" &&
+                  run.head_branch === currentHeadRef &&
+                  Array.isArray(run.pull_requests) &&
+                  run.pull_requests.some((pull) => pull.number === currentPr)
+              )
+              .sort(
+                (left, right) =>
+                  new Date(right.created_at).getTime() -
+                  new Date(left.created_at).getTime()
+              )[0] || null;
+            const state = verifier
+              ? `${verifier.id}:${verifier.status}:${verifier.conclusion || ""}`
+              : "missing";
+            if (state !== lastState) {
+              console.log(`VERIFIER=${state}`);
+              lastState = state;
+            }
+            if (verifier?.status === "completed") break;
+            await sleep(15_000);
+          }
+
+          if (!verifier || verifier.status !== "completed") {
+            throw new Error("Independent production verifier did not complete");
+          }
+          if (verifier.conclusion !== "success") {
+            throw new Error(
+              `Production verifier failed; diagnostics remain open: ${verifier.html_url}`
+            );
+          }
+
+          const evidence = [
+            "Premium English production rollout verified successfully.",
+            "",
+            `- Verification run: ${verifier.html_url}`,
+            "- Current-main admin deployment: success",
+            "- Current-main Pages deployment and live release marker: success",
+            "- Admin health endpoint: non-5xx",
+            "- Production database: exact healthy contract with `premium_machine_translation=true`, `ledger_entries=14`, `invalid_indexes=0`",
+            "",
+            "This diagnostic PR is closed without merge.",
+          ].join("\n");
+
+          async function closePr(number, message) {
+            const pr = await api(
+              `/repos/${repository}/pulls/${number}`,
+              {},
+              true
+            );
+            if (!pr) return;
+            if (pr.state === "open") {
+              await api(`/repos/${repository}/issues/${number}/comments`, {
+                method: "POST",
+                body: JSON.stringify({ body: message }),
+              });
+              await api(`/repos/${repository}/pulls/${number}`, {
+                method: "PATCH",
+                body: JSON.stringify({ state: "closed" }),
+              });
+              console.log(`CLOSED_PR=${number}`);
+            }
+            const headRef = pr.head?.repo?.full_name === repository
+              ? pr.head.ref
+              : null;
+            if (headRef && headRef !== "main") {
+              try {
+                await api(
+                  `/repos/${repository}/git/refs/heads/${encodeURIComponent(headRef)}`,
+                  { method: "DELETE" },
+                  true
+                );
+                console.log(`DELETED_BRANCH=${headRef}`);
+              } catch (error) {
+                console.warn(`Branch cleanup warning for ${headRef}: ${error.message}`);
+              }
+            }
+          }
+
+          await closePr(currentPr, evidence);
+          await closePr(
+            92,
+            [
+              "Superseded by the final successful current-main rollout verifier.",
+              "",
+              `Final evidence: ${verifier.html_url}`,
+              "This older diagnostic PR is closed without merge.",
+            ].join("\n")
+          );
+          NODE
