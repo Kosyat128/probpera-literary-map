@@ -112,7 +112,12 @@ export function selectWriterDisplayName(
     const value = candidate?.trim() || "";
     return value && (locale === "ru" || isEnglishSafe(value));
   });
-  return selected?.trim() || fallback;
+  if (selected?.trim()) return selected.trim();
+  if (locale === "en") {
+    const stableName = stableWriterIdName(writer.id);
+    if (isProfessionalEnglishWriterName(stableName)) return stableName;
+  }
+  return fallback;
 }
 
 export function selectWriterYears(
