@@ -60,7 +60,8 @@ jobs:
       - name: Type-check admin
         run: npm run lint --workspace @probpera/admin
 
-      - name: Ensure premium translation secret
+      - name: Inspect premium translation secret
+        id: premium_secret
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -80,7 +81,8 @@ jobs:
           fi
 
           secret_list="$(npx wrangler secret list --config wrangler.jsonc)"
-          SECRET_LIST="$secret_list" node <<'NODE'
+          has_secret="$(
+            SECRET_LIST="$secret_list" node <<'NODE'
           const raw = process.env.SECRET_LIST || "[]";
           let secrets;
           try {
@@ -88,15 +90,22 @@ jobs:
           } catch {
             throw new Error("Wrangler did not return a valid secret inventory");
           }
-          if (
-            !Array.isArray(secrets) ||
-            !secrets.some((entry) => entry?.name === "OPENAI_API_KEY")
-          ) {
-            throw new Error(
-              "OPENAI_API_KEY is not configured on Cloudflare Worker probpera-admin"
-            );
-          }
+          process.stdout.write(
+            String(
+              Array.isArray(secrets) &&
+                secrets.some((entry) => entry?.name === "OPENAI_API_KEY")
+            )
+          );
           NODE
+          )"
+
+          if [[ "$has_secret" == "true" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Premium English automation is ready."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::OPENAI_API_KEY is not configured on Cloudflare Worker probpera-admin. The admin will deploy with every premium auto-translation path safely disabled; manual RU/EN editing remains available."
+          fi
 
       - name: Deploy to Cloudflare Workers
         env:
@@ -107,3 +116,17 @@ jobs:
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           test -n "$CLOUDFLARE_API_TOKEN"
           npm run cf:deploy --workspace @probpera/admin
+
+      - name: Report premium translation readiness
+        if: always()
+        env:
+          PREMIUM_SECRET_READY: ${{ steps.premium_secret.outputs.ready }}
+        shell: bash
+        run: |
+          if [[ "$PREMIUM_SECRET_READY" == "true" ]]; then
+            echo "### Premium English: ready" >> "$GITHUB_STEP_SUMMARY"
+            echo "Cloudflare Worker secret OPENAI_API_KEY is configured." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### Premium English: safely disabled" >> "$GITHUB_STEP_SUMMARY"
+            echo "The admin is deployed, but automatic translation remains disabled until OPENAI_API_KEY is added as a Worker or GitHub Actions secret." >> "$GITHUB_STEP_SUMMARY"
+          fi
