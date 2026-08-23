@@ -9,6 +9,7 @@ const publishableStatuses = new Set(["reviewed", "verified"]);
 const lawfulTextMethods = new Set([
   "editorial-original",
   "human-translation",
+  "machine-translation",
   "licensed-source",
 ]);
 const mojibakeMarkers = ["Р°", "Рµ", "Рё", "СЃ", "С‚", "вЂ"];
