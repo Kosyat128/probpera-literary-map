@@ -75,7 +75,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(13);
+      expect(manifest.migrations).toHaveLength(14);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -90,6 +90,7 @@ describe("guarded production database reconciliation", () => {
         "20260820_literary_work_cover_artworks.sql",
         "20260822_staff_editorial_read_rls.sql",
         "20260822_zz_atomic_article_bundle.sql",
+        "20260823_premium_machine_translation.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -98,12 +99,14 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("Editorial schema health RPC did not report a current schema");
       expect(plan).toContain("pg_advisory_xact_lock");
       expect(plan).toContain("public.save_article_bundle");
+      expect(plan).toContain("public.premium_machine_translation_ready");
       expect(plan).not.toMatch(/^\s*(?:begin|commit|rollback)\s*;/gimu);
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");
       expect(verification).toContain("work_cover_artworks=");
       expect(verification).toContain("staff_editorial_read_policies=");
       expect(verification).toContain("article_bundle_rpc=");
+      expect(verification).toContain("premium_machine_translation=");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
     }

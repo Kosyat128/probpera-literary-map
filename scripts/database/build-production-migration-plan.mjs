@@ -28,6 +28,10 @@ const reviewedMigrations = [
     "20260822_zz_atomic_article_bundle.sql",
     "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc",
   ],
+  [
+    "20260823_premium_machine_translation.sql",
+    "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -231,7 +235,8 @@ begin
   if to_regprocedure('public.get_editorial_schema_health()') is null
     or to_regprocedure('public.enqueue_public_build_request(text,text,text,jsonb)') is null
     or to_regprocedure('public.move_homepage_block(uuid,text)') is null
-    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null then
+    or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null
+    or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
 
@@ -327,6 +332,10 @@ ${values}
     or not coalesce((health ->> 'tagsUpdatedAt')::boolean, false) then
     raise exception 'Editorial schema health RPC did not report a current schema';
   end if;
+
+  if not public.premium_machine_translation_ready() then
+    raise exception 'Premium machine-translation schema is not ready';
+  end if;
 end;
 $probpera_reconciliation_invariants$;
 `;
@@ -371,6 +380,7 @@ select concat(
   ';homepage_move=', health ->> 'homepageMove',
   ';tags_updated_at=', health ->> 'tagsUpdatedAt',
   ';migration_ledger=', health ->> 'migrationLedger',
+  ';premium_machine_translation=', public.premium_machine_translation_ready(),
   ';ledger_entries=', (
     select count(*) from public.probpera_schema_migrations
   ),
