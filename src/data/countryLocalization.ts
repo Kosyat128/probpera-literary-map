@@ -53,14 +53,17 @@ export function activeCountryInterfaceLanguage(): "ru" | "en" {
       return "en";
     }
   } catch {
-    // localStorage can be denied by privacy settings. The Russian source is
-    // the deterministic and publication-safe fallback.
+    // localStorage can be denied by privacy settings. The document language
+    // below remains a safe fallback.
   }
-  if (
-    typeof document !== "undefined" &&
-    document.documentElement.lang.toLocaleLowerCase("en").startsWith("en")
-  ) {
-    return "en";
+  if (typeof document !== "undefined") {
+    const declaredLanguage =
+      document.documentElement.dataset.language ||
+      document.documentElement.dataset.routeLanguage ||
+      document.documentElement.lang;
+    if (declaredLanguage.toLocaleLowerCase("en").startsWith("en")) {
+      return "en";
+    }
   }
   return "ru";
 }
