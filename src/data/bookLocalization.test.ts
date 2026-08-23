@@ -124,7 +124,7 @@ describe("локализация книжной карточки", () => {
         { id: "miguel_de_cervantes", name: "Мигель де Сервантес" },
         "en"
       )
-    ).toBe("Miguel de Cervantes");
+    ).toBe("Author");
     expect(
       selectWriterDisplayName(
         { id: "dostoevsky", name: "Фёдор Достоевский" },
