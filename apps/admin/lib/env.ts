@@ -58,8 +58,18 @@ export const adminEnv = {
   openAiApiKey,
   openAiTranslationModel:
     getEnvValue(["OPENAI_TRANSLATION_MODEL"]) || "gpt-5.6-sol",
+  openAiTranslationReviewModel:
+    getEnvValue(["OPENAI_TRANSLATION_REVIEW_MODEL"]) || "gpt-5.6-sol",
+  openAiPremiumTranslationReview:
+    getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !== "false",
   openAiAutoTranslateArticles:
     getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]).toLowerCase() !== "false",
+  openAiAutoTranslateLibrary:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_LIBRARY"]).toLowerCase() !== "false",
+  openAiAutoTranslateSiteCopy:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_SITE_COPY"]).toLowerCase() !== "false",
+  openAiAutoTranslateProfiles:
+    getEnvValue(["OPENAI_AUTO_TRANSLATE_PROFILES"]).toLowerCase() !== "false",
 };
 
 export const isSupabaseConfigured = Boolean(
