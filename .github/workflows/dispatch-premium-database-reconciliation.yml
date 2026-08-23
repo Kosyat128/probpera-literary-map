@@ -7,6 +7,7 @@ on:
     paths:
       - "supabase/migrations/20260823_premium_machine_translation.sql"
       - "scripts/database/build-production-migration-plan.mjs"
+      - ".github/workflows/reconcile-production-database.yml"
 
 permissions:
   actions: write
