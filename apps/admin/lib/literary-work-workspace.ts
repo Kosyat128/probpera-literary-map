@@ -7,6 +7,7 @@ const CONTROL_PATTERN = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u;
 export const workTranslationMethods = [
   "editorial-original",
   "human-translation",
+  "machine-translation",
   "licensed-source",
 ] as const;
 
