@@ -75,7 +75,7 @@ describe("modern globe site-copy labels", () => {
       ),
       readFile(
         new URL(
-          "../../apps/admin/lib/interface-copy-catalog.generated.json",
+          "../../apps/admin/catalog-assets/interface-copy-catalog.json",
           import.meta.url
         ),
         "utf8"

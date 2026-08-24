@@ -1,4 +1,7 @@
-import interfaceCopyCatalog from "./interface-copy-catalog.generated.json";
+import {
+  readAdminCatalogText,
+  type AdminCatalogReadOptions,
+} from "./admin-catalog-assets";
 
 export type SiteCopyDefinition = {
   key: string;
@@ -72,21 +75,121 @@ export const siteCopyCatalog: readonly SiteCopyDefinition[] =
     key: `interface.${definition.defaultRu}`,
   }));
 
-const curatedSourceTexts = new Set<string>(
-  siteCopyCatalog.map((definition) => definition.defaultRu)
-);
+let cachedAllSiteCopyCatalog: readonly SiteCopyDefinition[] | null = null;
 
-export const allSiteCopyCatalog: readonly SiteCopyDefinition[] = [
-  ...siteCopyCatalog,
-  ...(interfaceCopyCatalog as SiteCopyDefinition[]).filter(
-    (definition) => !curatedSourceTexts.has(definition.defaultRu)
-  ),
-];
+function objectValue(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
 
-export const allSiteCopyKeys = new Set(
-  allSiteCopyCatalog.map((definition) => definition.key)
-);
+function validatedText(
+  value: unknown,
+  field: string,
+  maximumLength: number
+): string {
+  if (
+    typeof value !== "string" ||
+    !value.trim() ||
+    value.length > maximumLength
+  ) {
+    throw new Error(`Interface copy catalog has an invalid ${field}`);
+  }
+  return value;
+}
 
-export const siteCopyDefinitionByKey = new Map(
-  allSiteCopyCatalog.map((definition) => [definition.key, definition])
-);
+export function parseInterfaceCopyCatalog(
+  source: string
+): readonly SiteCopyDefinition[] {
+  const raw = JSON.parse(source);
+  if (!Array.isArray(raw) || raw.length < 100) {
+    throw new Error("Interface copy catalog is unexpectedly incomplete");
+  }
+  const keys = new Set<string>();
+  return raw.map((candidate) => {
+    const definition = objectValue(candidate);
+    if (!definition) {
+      throw new Error("Interface copy catalog has an invalid definition");
+    }
+    const key = validatedText(definition.key, "key", 1_200);
+    if (!/^(?:interface|country|globe)\./u.test(key)) {
+      throw new Error(`Interface copy catalog has an invalid key: ${key}`);
+    }
+    if (keys.has(key)) {
+      throw new Error(`Interface copy catalog has a duplicate key: ${key}`);
+    }
+    keys.add(key);
+    const defaultEn =
+      typeof definition.defaultEn === "string"
+        ? definition.defaultEn
+        : undefined;
+    return {
+      key,
+      group: validatedText(definition.group, "group", 300),
+      label: validatedText(definition.label, "label", 2_000),
+      defaultRu: validatedText(definition.defaultRu, "defaultRu", 4_000),
+      ...(defaultEn === undefined ? {} : { defaultEn }),
+      ...(definition.multiline === true ? { multiline: true } : {}),
+    };
+  });
+}
+
+function mergeWithCuratedCatalog(
+  generated: readonly SiteCopyDefinition[]
+): readonly SiteCopyDefinition[] {
+  const curatedSourceTexts = new Set(
+    siteCopyCatalog.map((definition) => definition.defaultRu)
+  );
+  const merged = [
+    ...siteCopyCatalog,
+    ...generated.filter(
+      (definition) => !curatedSourceTexts.has(definition.defaultRu)
+    ),
+  ];
+  const keys = merged.map((definition) => definition.key);
+  if (new Set(keys).size !== keys.length) {
+    throw new Error("Interface copy catalog has duplicate merged keys");
+  }
+  return merged;
+}
+
+export async function loadAllSiteCopyCatalog(
+  options?: AdminCatalogReadOptions
+): Promise<readonly SiteCopyDefinition[]> {
+  if (options) {
+    return mergeWithCuratedCatalog(
+      parseInterfaceCopyCatalog(
+        await readAdminCatalogText("interface-copy-catalog.json", options)
+      )
+    );
+  }
+  if (cachedAllSiteCopyCatalog) {
+    return cachedAllSiteCopyCatalog;
+  }
+  const catalog = mergeWithCuratedCatalog(
+    parseInterfaceCopyCatalog(
+      await readAdminCatalogText("interface-copy-catalog.json")
+    )
+  );
+  cachedAllSiteCopyCatalog = catalog;
+  return catalog;
+}
+
+export async function loadAllSiteCopyKeys(options?: AdminCatalogReadOptions) {
+  return new Set(
+    (await loadAllSiteCopyCatalog(options)).map(
+      (definition) => definition.key
+    )
+  );
+}
+
+export async function loadSiteCopyDefinitionByKey(
+  options?: AdminCatalogReadOptions
+) {
+  return new Map(
+    (await loadAllSiteCopyCatalog(options)).map((definition) => [
+      definition.key,
+      definition,
+    ])
+  );
+}

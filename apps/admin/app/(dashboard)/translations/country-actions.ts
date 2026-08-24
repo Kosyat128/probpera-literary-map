@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 
 import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
 import { requireStaff } from "@/lib/auth";
-import { editorialCatalog } from "@/lib/editorial-catalog";
+import { loadEditorialCatalog } from "@/lib/editorial-catalog";
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
@@ -32,6 +32,7 @@ export async function translatePremiumCountryBatchAction() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
 
+  const editorialCatalog = await loadEditorialCatalog();
   let translated = 0;
   let current = 0;
   let manual = 0;

@@ -11,7 +11,7 @@ import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { allSiteCopyKeys } from "@/lib/site-copy-catalog";
+import { loadAllSiteCopyKeys } from "@/lib/site-copy-catalog";
 import {
   mergeSiteCopyRows,
   readSiteCopyValues,
@@ -55,23 +55,26 @@ function readMachineCopyState(value: unknown): MachineCopyState {
   return result;
 }
 
-function isAllowedCopyKey(key: string) {
+function isAllowedCopyKey(key: string, allowedKeys: ReadonlySet<string>) {
   return (
-    allSiteCopyKeys.has(key) ||
+    allowedKeys.has(key) ||
     (key.startsWith("interface.") &&
       key.slice("interface.".length).trim().length > 0 &&
       key.length <= 1_200)
   );
 }
 
-function submittedRows(formData: FormData) {
+function submittedRows(
+  formData: FormData,
+  allowedKeys: ReadonlySet<string>
+) {
   const keys = formData.getAll("copy_key").map(String);
   const russianValues = formData.getAll("copy_ru").map(String);
   const englishValues = formData.getAll("copy_en").map(String);
   if (
     keys.length !== russianValues.length ||
     keys.length !== englishValues.length ||
-    keys.length > allSiteCopyKeys.size + 100
+    keys.length > allowedKeys.size + 100
   ) {
     throw new Error("Форма текстов повреждена. Обновите страницу и повторите.");
   }
@@ -91,7 +94,7 @@ function submittedRows(formData: FormData) {
   }
 
   for (const row of rows) {
-    if (!isAllowedCopyKey(row.key)) {
+    if (!isAllowedCopyKey(row.key, allowedKeys)) {
       throw new Error(`Неизвестное поле текста: ${row.key}`);
     }
     if (row.ru.length > MAX_COPY_LENGTH || row.en.length > MAX_COPY_LENGTH) {
@@ -191,7 +194,8 @@ export async function saveSiteCopyAction(formData: FormData) {
 
   let rows: ReturnType<typeof submittedRows>;
   try {
-    rows = submittedRows(formData);
+    const allowedKeys = await loadAllSiteCopyKeys();
+    rows = submittedRows(formData, allowedKeys);
   } catch (error) {
     redirect(
       `/site-copy?error=${encodeURIComponent(

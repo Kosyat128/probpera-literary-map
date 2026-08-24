@@ -1,7 +1,7 @@
 import SiteCopyEditor from "@/components/SiteCopyEditor";
 import { adminEnv } from "@/lib/env";
 import {
-  allSiteCopyCatalog,
+  loadAllSiteCopyCatalog,
   type SiteCopyDefinition,
 } from "@/lib/site-copy-catalog";
 import {
@@ -28,7 +28,10 @@ export default async function SiteCopyPage({
     published?: string;
   }>;
 }) {
-  const query = await searchParams;
+  const [query, allSiteCopyCatalog] = await Promise.all([
+    searchParams,
+    loadAllSiteCopyCatalog(),
+  ]);
   const supabase = await createServerSupabaseClient();
   if (!supabase) return null;
   const { data, error } = await supabase

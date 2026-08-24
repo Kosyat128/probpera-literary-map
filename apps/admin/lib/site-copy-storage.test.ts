@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { resolveSiteCopy } from "../../../src/data/cms/siteCopy";
 import {
-  allSiteCopyCatalog,
+  loadAllSiteCopyCatalog,
   siteCopyCatalog,
 } from "./site-copy-catalog";
 import {
@@ -12,7 +12,8 @@ import {
 } from "./site-copy-storage";
 
 describe("site-copy admin storage", () => {
-  it("has one editable row per source string and a complete searchable catalog", () => {
+  it("has one editable row per source string and a complete searchable catalog", async () => {
+    const allSiteCopyCatalog = await loadAllSiteCopyCatalog();
     const keys = allSiteCopyCatalog.map((item) => item.key);
     expect(new Set(keys).size).toBe(keys.length);
     expect(keys.length).toBeGreaterThanOrEqual(790);

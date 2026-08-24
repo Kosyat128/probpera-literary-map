@@ -9,7 +9,10 @@ import {
 } from "@/lib/auto-translate-site-copy";
 import { ensureWriterEnglishBiography } from "@/lib/auto-translate-writer-biography";
 import { requireStaff } from "@/lib/auth";
-import { editorialCatalog } from "@/lib/editorial-catalog";
+import {
+  loadEditorialCatalog,
+  type EditorialCatalog,
+} from "@/lib/editorial-catalog";
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
@@ -125,7 +128,7 @@ export async function translatePremiumLibraryBatchAction() {
   );
 }
 
-function staticWriterCandidates() {
+function staticWriterCandidates(editorialCatalog: EditorialCatalog) {
   const candidates: Array<{
     countryId: string;
     writerId: string;
@@ -170,6 +173,7 @@ export async function translatePremiumWriterBatchAction() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
 
+  const editorialCatalog = await loadEditorialCatalog();
   let translated = 0;
   let current = 0;
   let manual = 0;
@@ -177,7 +181,7 @@ export async function translatePremiumWriterBatchAction() {
   let failed = 0;
   let scanned = 0;
 
-  for (const candidate of staticWriterCandidates()) {
+  for (const candidate of staticWriterCandidates(editorialCatalog)) {
     if (translated >= MAX_WRITER_TRANSLATIONS || scanned >= MAX_WRITER_SCAN) break;
     scanned += 1;
     const result = await ensureWriterEnglishBiography({

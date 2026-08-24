@@ -18,13 +18,13 @@ const sourcePath = path.join(
   "i18n",
   "InterfaceLanguage.tsx"
 );
-const outputPath = path.join(
+const outputDirectory = path.join(
   projectRoot,
   "apps",
   "admin",
-  "lib",
-  "interface-copy-catalog.generated.json"
+  "catalog-assets"
 );
+const outputPath = path.join(outputDirectory, "interface-copy-catalog.json");
 const countriesDirectory = path.join(projectRoot, "src", "data", "countries");
 const atlasPath = path.join(
   projectRoot,
@@ -200,6 +200,7 @@ if (process.argv.includes("--check")) {
   }
   console.log(`Verified ${entries.length} site-copy fields for the admin.`);
 } else {
+  await fs.mkdir(outputDirectory, { recursive: true });
   await fs.writeFile(outputPath, generated, "utf8");
   console.log(`Exported ${entries.length} site-copy fields for the admin.`);
 }

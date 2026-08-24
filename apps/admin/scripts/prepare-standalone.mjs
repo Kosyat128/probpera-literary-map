@@ -31,6 +31,15 @@ await cp(
   { recursive: true, force: true }
 );
 
+const catalogAssetsRoot = path.join(appRoot, "catalog-assets");
+if (existsSync(catalogAssetsRoot)) {
+  await cp(
+    catalogAssetsRoot,
+    path.join(standaloneApp, "catalog-assets"),
+    { recursive: true, force: true }
+  );
+}
+
 // Standalone output on some environments does not copy traced external modules
 // for workspace-dependencies consistently. Copying the traced node_modules fallback
 // ensures modules like @supabase/supabase-js are available at runtime.
