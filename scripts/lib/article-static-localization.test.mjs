@@ -11,6 +11,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { load } from "cheerio";
 import { afterEach, describe, expect, it } from "vitest";
+import { resolveRedirectArtifactPath } from "./redirect-artifact-path.mjs";
 
 const temporaryRoots = [];
 
@@ -271,6 +272,36 @@ describe("localized static article pages", () => {
     const generatedRedirects = JSON.parse(
       readFileSync(path.join(fixtureRoot, "dist", "redirects.generated.json"), "utf8")
     );
+    const legacySlugAlias = "/articles/fixture-related-article";
+    expect(generatedRedirects).toContainEqual(
+      expect.objectContaining({
+        source: legacySlugAlias,
+        destination: "/stati/pisateli-mira/fixture-related-article",
+      })
+    );
+    const legacySlugAliasFile = path.join(
+      fixtureRoot,
+      "dist",
+      "articles",
+      "fixture-related-article",
+      "index.html"
+    );
+    expect(existsSync(legacySlugAliasFile)).toBe(true);
+    expect(readFileSync(legacySlugAliasFile, "utf8")).toContain(
+      "https://example.test/stati/pisateli-mira/fixture-related-article/"
+    );
+    for (const redirect of generatedRedirects) {
+      const redirectFile = resolveRedirectArtifactPath({
+        distDirectory: path.join(fixtureRoot, "dist"),
+        siteOrigin: "https://example.test",
+        sourceValue: redirect.source,
+      });
+      expect(existsSync(redirectFile), redirect.source).toBe(true);
+      const redirectHtml = readFileSync(redirectFile, "utf8");
+      expect(redirectHtml, redirect.source).toContain(
+        '<meta name="robots" content="noindex,follow">'
+      );
+    }
     expect(generatedRedirects).toContainEqual(
       expect.objectContaining({
         source:

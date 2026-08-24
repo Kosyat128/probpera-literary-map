@@ -1,0 +1,659 @@
+name: Manage guarded RU connectivity fallback
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: "Read, snapshot, plan, apply emergency DNS-only, or roll it back"
+        required: true
+        default: inspect
+        type: choice
+        options:
+          - inspect
+          - snapshot
+          - plan-direct
+          - apply-direct
+          - rollback
+      expected_main_sha:
+        description: "Exact 40-character lowercase SHA of the approved current main"
+        required: true
+        type: string
+      proof_run_id:
+        description: "Audit RU and direct connectivity run ID (required for plan/apply)"
+        required: false
+        default: ""
+        type: string
+      rollback_snapshot_run_id:
+        description: "Original management run ID whose pre-change snapshot must be restored"
+        required: false
+        default: ""
+        type: string
+      pages_hostname:
+        description: "Reviewed GitHub Pages origin hostname"
+        required: true
+        default: Kosyat128.github.io
+        type: string
+      confirmation:
+        description: "Apply: APPLY DIRECT PROBPERA <SHA>; rollback: ROLLBACK PROBPERA <SHA>"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: production-ru-connectivity-fallback
+  cancel-in-progress: false
+
+jobs:
+  manage:
+    # Keep an already-running compensation path eligible during ordinary workflow cancellation.
+    # A hard runner loss/timeout still relies on the authenticated 90-day rollback artifact.
+    if: ${{ always() && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: production
+    steps:
+      - name: Checkout the approved main commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable invocation and artifact references
+        env:
+          OPERATION: ${{ inputs.operation }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PROOF_RUN_ID: ${{ inputs.proof_run_id }}
+          ROLLBACK_SNAPSHOT_RUN_ID: ${{ inputs.rollback_snapshot_run_id }}
+          PAGES_HOSTNAME: ${{ inputs.pages_hostname }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "::error::expected_main_sha must be 40 lowercase hexadecimal characters."
+            exit 1
+          }
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The workflow commit does not match expected_main_sha."
+            exit 1
+          }
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The checkout does not match expected_main_sha."
+            exit 1
+          }
+          [[ "$PAGES_HOSTNAME" == "Kosyat128.github.io" ]] || {
+            echo "::error::The Pages hostname is not the reviewed origin."
+            exit 1
+          }
+          case "$OPERATION" in
+            plan-direct|apply-direct)
+              [[ "$PROOF_RUN_ID" =~ ^[1-9][0-9]*$ ]] || {
+                echo "::error::proof_run_id is required for plan/apply."
+                exit 1
+              }
+              [[ -z "$ROLLBACK_SNAPSHOT_RUN_ID" ]] || {
+                echo "::error::rollback_snapshot_run_id is valid only for rollback."
+                exit 1
+              }
+              ;;
+            rollback)
+              [[ "$ROLLBACK_SNAPSHOT_RUN_ID" =~ ^[1-9][0-9]*$ ]] || {
+                echo "::error::rollback_snapshot_run_id is required for rollback."
+                exit 1
+              }
+              [[ -z "$PROOF_RUN_ID" ]] || {
+                echo "::error::proof_run_id is not accepted for rollback."
+                exit 1
+              }
+              ;;
+            inspect|snapshot)
+              [[ -z "$PROOF_RUN_ID" && -z "$ROLLBACK_SNAPSHOT_RUN_ID" ]] || {
+                echo "::error::Artifact run IDs are not accepted for read-only inventory."
+                exit 1
+              }
+              ;;
+            *)
+              echo "::error::Unknown operation."
+              exit 1
+              ;;
+          esac
+          if [[ "$OPERATION" == "apply-direct" ]]; then
+            [[ "$CONFIRMATION" == "APPLY DIRECT PROBPERA $EXPECTED_MAIN_SHA" ]] || {
+              echo "::error::Production apply confirmation is not exact."
+              exit 1
+            }
+          elif [[ "$OPERATION" == "rollback" ]]; then
+            [[ "$CONFIRMATION" == "ROLLBACK PROBPERA $EXPECTED_MAIN_SHA" ]] || {
+              echo "::error::Production rollback confirmation is not exact."
+              exit 1
+            }
+          elif [[ -n "$CONFIRMATION" ]]; then
+            echo "::error::Confirmation must be empty for read-only operations."
+            exit 1
+          fi
+
+      - name: Reconfirm current main before any mutation
+        if: inputs.operation == 'apply-direct' || inputs.operation == 'rollback'
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(git ls-remote --exit-code origin refs/heads/main | awk '{ print $1 }')"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::main advanced after approval; start a new reviewed run."
+            exit 1
+          }
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+
+      - name: Verify least-privilege Cloudflare secret presence
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON: ${{ secrets.RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON }}
+          OPERATION: ${{ inputs.operation }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          missing=()
+          [[ -n "$CLOUDFLARE_API_TOKEN" ]] || missing+=(CLOUDFLARE_API_TOKEN)
+          [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]] || missing+=(CLOUDFLARE_ACCOUNT_ID)
+          if [[ "$OPERATION" == "apply-direct" || "$OPERATION" == "rollback" ]]; then
+            [[ -n "$RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON" ]] || missing+=(RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON)
+          fi
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error::Missing required production secrets: ${missing[*]}"
+            exit 1
+          fi
+
+      - name: Require the reviewed long-term direct delivery plan
+        if: inputs.operation == 'apply-direct'
+        run: node scripts/dns/validate-ru-connectivity-plan.mjs --require-ready
+
+      - name: Reconfirm parent DS absence through independent resolvers
+        if: inputs.operation == 'apply-direct'
+        run: node scripts/dns/verify-parent-ds-absence.mjs --zone=probpera.ru
+      - name: Attest the merged review behind Pages renewal evidence
+        if: inputs.operation == 'apply-direct'
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { createHash } = require("node:crypto");
+            const { readFileSync } = require("node:fs");
+            const planPath = "config/dns/ru-connectivity-plan.json";
+            const checkedPlanBytes = Buffer.from(readFileSync(planPath));
+            const plan = JSON.parse(checkedPlanBytes.toString("utf8"));
+            const evidence = plan.contentOrigin?.longTermCertificateRenewalEvidence;
+            const match = String(evidence?.reviewPullRequest || "").match(
+              /^https:\/\/github\.com\/Kosyat128\/probpera-literary-map\/pull\/([1-9][0-9]*)$/
+            );
+            if (!match || typeof evidence?.path !== "string") {
+              core.setFailed("Pages renewal evidence has no attestable pull request/path.");
+              return;
+            }
+            const pull_number = Number(match[1]);
+            const { data: pull } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number,
+            });
+            if (!pull.merged_at || pull.base.ref !== "main" || !pull.merge_commit_sha) {
+              core.setFailed("Pages renewal evidence PR is not merged into main.");
+              return;
+            }
+            const mergedAt = Date.parse(pull.merged_at);
+            const createdAt = Date.parse(pull.created_at);
+            const reviewedAt = Date.parse(evidence.reviewedAt);
+            const now = Date.now();
+            if (
+              !Number.isFinite(mergedAt) ||
+              !Number.isFinite(createdAt) ||
+              !Number.isFinite(reviewedAt) ||
+              mergedAt > now + 5 * 60_000 ||
+              now - mergedAt > 90 * 24 * 60 * 60_000 ||
+              reviewedAt < createdAt ||
+              reviewedAt > mergedAt + 5 * 60_000
+            ) {
+              core.setFailed("Pages renewal review is stale or has inconsistent timestamps.");
+              return;
+            }
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number,
+              per_page: 100,
+            });
+            const reviewedPaths = new Set(files.map((file) => file.filename));
+            if (!reviewedPaths.has(planPath) || !reviewedPaths.has(evidence.path)) {
+              core.setFailed("The attested PR did not review both the delivery plan and renewal evidence.");
+              return;
+            }
+            const reviews = await github.paginate(github.rest.pulls.listReviews, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number,
+              per_page: 100,
+            });
+            const latestByReviewer = new Map();
+            for (const review of [...reviews].sort((left, right) => Number(left.id) - Number(right.id))) {
+              if (review.user?.login) latestByReviewer.set(review.user.login, review);
+            }
+            let independentlyApproved = false;
+            for (const [login, review] of latestByReviewer) {
+              if (
+                login === pull.user?.login ||
+                review.state !== "APPROVED" ||
+                review.commit_id !== pull.head.sha
+              ) continue;
+              try {
+                const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  username: login,
+                });
+                if (["admin", "maintain", "write"].includes(permission.permission)) {
+                  independentlyApproved = true;
+                  break;
+                }
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+            }
+            if (!independentlyApproved) {
+              core.setFailed("Pages renewal evidence lacks an independent approving review.");
+              return;
+            }
+            const { data: comparison } = await github.rest.repos.compareCommitsWithBasehead({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              basehead: `${pull.merge_commit_sha}...${context.sha}`,
+            });
+            if (!["ahead", "identical"].includes(comparison.status)) {
+              core.setFailed("The reviewed evidence commit is not an ancestor of this main SHA.");
+              return;
+            }
+            async function readRepositoryFile(path, ref) {
+              const { data: file } = await github.rest.repos.getContent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path,
+                ref,
+              });
+              if (Array.isArray(file) || file.type !== "file" || file.encoding !== "base64") {
+                throw new Error(`${path} was not a regular file at ${ref}`);
+              }
+              return Buffer.from(file.content.replace(/\n/g, ""), "base64");
+            }
+            const checkedEvidenceBytes = Buffer.from(readFileSync(evidence.path));
+            const [headPlanBytes, headEvidenceBytes, mergePlanBytes, mergeEvidenceBytes] =
+              await Promise.all([
+                readRepositoryFile(planPath, pull.head.sha),
+                readRepositoryFile(evidence.path, pull.head.sha),
+                readRepositoryFile(planPath, pull.merge_commit_sha),
+                readRepositoryFile(evidence.path, pull.merge_commit_sha),
+              ]);
+            if (
+              !headPlanBytes.equals(checkedPlanBytes) ||
+              !mergePlanBytes.equals(checkedPlanBytes) ||
+              !headEvidenceBytes.equals(checkedEvidenceBytes) ||
+              !mergeEvidenceBytes.equals(checkedEvidenceBytes)
+            ) {
+              core.setFailed("The checked-out plan/evidence bytes differ from the approved final PR head or merge.");
+              return;
+            }
+            const digest = createHash("sha256")
+              .update(checkedEvidenceBytes)
+              .digest("hex");
+            if (digest !== evidence.evidenceSha256) {
+              core.setFailed("The current evidence digest does not match the reviewed bytes.");
+            }
+
+      - name: Attest direct proof workflow run
+        if: inputs.operation == 'plan-direct' || inputs.operation == 'apply-direct'
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          PROOF_RUN_ID: ${{ inputs.proof_run_id }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        with:
+          script: |
+            const runId = Number(process.env.PROOF_RUN_ID);
+            const expectedSha = process.env.EXPECTED_MAIN_SHA;
+            const { data: run } = await github.rest.actions.getWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: runId,
+            });
+            if (run.path !== ".github/workflows/audit-ru-connectivity.yml") {
+              core.setFailed("Proof artifact came from an unapproved workflow.");
+            } else if (run.head_branch !== "main" || run.head_sha !== expectedSha) {
+              core.setFailed("Proof workflow was not executed for the approved main SHA.");
+            } else if (["pull_request", "pull_request_target"].includes(run.event)) {
+              core.setFailed("Pull-request artifacts are never accepted as production proof.");
+            } else if (run.status !== "completed" || run.conclusion !== "success") {
+              core.setFailed("Proof workflow must be completed successfully.");
+            }
+
+      - name: Attest rollback snapshot workflow run
+        id: attest_rollback_snapshot
+        if: inputs.operation == 'rollback'
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          ROLLBACK_SNAPSHOT_RUN_ID: ${{ inputs.rollback_snapshot_run_id }}
+        with:
+          script: |
+            const runId = Number(process.env.ROLLBACK_SNAPSHOT_RUN_ID);
+            const { data: run } = await github.rest.actions.getWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: runId,
+            });
+            if (run.path !== ".github/workflows/manage-ru-connectivity.yml") {
+              core.setFailed("Rollback snapshot came from an unapproved workflow.");
+            } else if (run.head_branch !== "main") {
+              core.setFailed("Rollback snapshot was not captured by the main-branch workflow.");
+            } else if (run.event !== "workflow_dispatch") {
+              core.setFailed("Rollback snapshot was not captured by a reviewed manual production run.");
+            } else if (
+              run.status !== "completed" ||
+              !["success", "failure", "cancelled", "timed_out"].includes(run.conclusion)
+            ) {
+              core.setFailed("Rollback snapshot must come from a completed apply attempt that reached snapshot capture.");
+            } else if (!/^[0-9a-f]{40}$/.test(run.head_sha)) {
+              core.setFailed("Rollback snapshot run has no valid immutable main SHA.");
+            } else {
+              core.setOutput("snapshot_main_sha", run.head_sha);
+            }
+
+      - name: Download immutable direct proof
+        if: inputs.operation == 'plan-direct' || inputs.operation == 'apply-direct'
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: ru-connectivity-direct-proof
+          path: artifacts/proof
+          run-id: ${{ inputs.proof_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Download original rollback snapshot
+        if: inputs.operation == 'rollback'
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: ru-connectivity-apply-snapshot
+          path: artifacts/rollback
+          run-id: ${{ inputs.rollback_snapshot_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Authenticate and decrypt original rollback snapshot
+        if: inputs.operation == 'rollback'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON: ${{ secrets.RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p artifacts/rollback-plain
+          node scripts/cloudflare/protect-ru-snapshot.mjs decrypt \
+            --input=artifacts/rollback/cloudflare-before.enc.json \
+            --output=artifacts/rollback-plain/cloudflare-before.json
+
+      - name: Capture complete current state before the requested operation
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p artifacts/current
+          node scripts/cloudflare/manage-ru-connectivity.mjs snapshot \
+            --snapshot=artifacts/current/cloudflare-before.json \
+            --expected-main-sha="${{ inputs.expected_main_sha }}"
+
+      - name: Encrypt the complete snapshot before artifact storage
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON: ${{ secrets.RU_CONNECTIVITY_SNAPSHOT_KEYRING_JSON }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node scripts/cloudflare/protect-ru-snapshot.mjs encrypt \
+            --input=artifacts/current/cloudflare-before.json \
+            --output=artifacts/current/cloudflare-before.enc.json
+
+      - name: Upload short-lived encrypted pre-operation snapshot
+        if: ${{ always() && inputs.operation != 'apply-direct' }}
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-dns-snapshot
+          path: artifacts/current/cloudflare-before.enc.json
+          if-no-files-found: warn
+          retention-days: 2
+
+      - name: Upload apply-only encrypted rollback snapshot
+        if: ${{ always() && inputs.operation == 'apply-direct' }}
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-apply-snapshot
+          path: artifacts/current/cloudflare-before.enc.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Bind attested direct proof to the fresh Cloudflare snapshot
+        if: inputs.operation == 'plan-direct' || inputs.operation == 'apply-direct'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PAGES_HOSTNAME: ${{ inputs.pages_hostname }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node scripts/cloudflare/manage-ru-connectivity.mjs bind-proof \
+            --expected-main-sha="$EXPECTED_MAIN_SHA" \
+            --pages-hostname="$PAGES_HOSTNAME" \
+            --snapshot=artifacts/current/cloudflare-before.json \
+            --tls-proof=artifacts/proof/direct-connectivity.json \
+            --bound-proof=artifacts/proof/direct-connectivity-bound.json
+
+      - name: Inspect, plan, apply, or rollback exact public records
+        id: manager_operation
+        continue-on-error: ${{ inputs.operation == 'apply-direct' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          OPERATION: ${{ inputs.operation }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PAGES_HOSTNAME: ${{ inputs.pages_hostname }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [[ "$OPERATION" == "apply-direct" || "$OPERATION" == "rollback" ]]; then
+            current_main_sha="$(git ls-remote --exit-code origin refs/heads/main | awk '{ print $1 }')"
+            [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+              echo "::error::main advanced after artifact preparation; start a new reviewed run."
+              exit 1
+            }
+          fi
+          case "$OPERATION" in
+            inspect)
+              node scripts/cloudflare/manage-ru-connectivity.mjs inspect
+              ;;
+            snapshot)
+              echo "Snapshot captured and uploaded; no second API operation was performed."
+              ;;
+            plan-direct)
+              node scripts/cloudflare/manage-ru-connectivity.mjs plan-direct \
+                --expected-main-sha="$EXPECTED_MAIN_SHA" \
+                --pages-hostname="$PAGES_HOSTNAME" \
+                --tls-proof=artifacts/proof/direct-connectivity-bound.json
+              ;;
+            apply-direct)
+              node scripts/cloudflare/manage-ru-connectivity.mjs apply-direct \
+                --expected-main-sha="$EXPECTED_MAIN_SHA" \
+                --pages-hostname="$PAGES_HOSTNAME" \
+                --delivery-plan=config/dns/ru-connectivity-plan.json \
+                --tls-proof=artifacts/proof/direct-connectivity-bound.json \
+                --snapshot=artifacts/current/cloudflare-before.json \
+                --confirm="$CONFIRMATION"
+              ;;
+            rollback)
+              node scripts/cloudflare/manage-ru-connectivity.mjs rollback \
+                --snapshot=artifacts/rollback-plain/cloudflare-before.json \
+                --expected-main-sha="$EXPECTED_MAIN_SHA" \
+                --snapshot-main-sha="${{ steps.attest_rollback_snapshot.outputs.snapshot_main_sha }}" \
+                --pages-hostname="$PAGES_HOSTNAME" \
+                --confirm="$CONFIRMATION"
+              ;;
+          esac
+
+      - name: Verify forced direct route after emergency apply
+        id: post_apply_direct
+        if: inputs.operation == 'apply-direct' && steps.manager_operation.outcome == 'success'
+        continue-on-error: true
+        env:
+          EXPECTED_RELEASE_SHA: ${{ inputs.expected_main_sha }}
+        run: >-
+          node scripts/network/audit-connectivity.mjs
+          --mode=direct
+          --host=probpera.ru
+          --expected-dns-route=direct
+          --dns-attempts=6
+          --dns-retry-delay-ms=15000
+
+      - name: Verify admin remained on its existing security contract
+        id: post_apply_admin
+        if: inputs.operation == 'apply-direct' && steps.manager_operation.outcome == 'success'
+        continue-on-error: true
+        env:
+          LIVE_SMOKE_ORIGINS: https://admin.probpera.ru
+        run: node scripts/audit-live-security.mjs --attempts=6 --retry-delay-ms=15000
+
+      - name: Verify the new route from Russian eyeball networks
+        id: post_apply_ru
+        if: inputs.operation == 'apply-direct' && steps.manager_operation.outcome == 'success'
+        continue-on-error: true
+        env:
+          PROBPERA_EXPECTED_RU_ROUTE: direct
+          EXPECTED_RELEASE_SHA: ${{ inputs.expected_main_sha }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p artifacts
+          node scripts/network/audit-russian-probes.mjs \
+            --host=probpera.ru \
+            --ip-version=both \
+            --limit=10 \
+            --json > artifacts/post-apply-russian-probes.json
+
+      - name: Upload post-apply Russian measurement evidence
+        id: post_apply_ru_artifact
+        if: ${{ always() && inputs.operation == 'apply-direct' && steps.manager_operation.outcome == 'success' }}
+        continue-on-error: true
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-post-apply-russian-probes
+          path: artifacts/post-apply-russian-probes.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Require final Moscow, Saint Petersburg, mobile, and fixed-ISP confirmation
+        id: post_apply_ru_confirmation
+        if: ${{ always() && inputs.operation == 'apply-direct' && steps.manager_operation.outcome == 'success' }}
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node --input-type=module <<'NODE'
+          import { readFileSync } from "node:fs";
+          const report = JSON.parse(
+            readFileSync("artifacts/post-apply-russian-probes.json", "utf8")
+          );
+          if (
+            report.status !== "passed" ||
+            report.contentIntegrity?.fullAssetParityVerified !== true ||
+            report.russiaConfirmation !== "confirmed"
+          ) {
+            throw new Error(
+              "The Globalping route signal is not final ISP/full-asset confirmation; retain no DNS mutation"
+            );
+          }
+          NODE
+
+      - name: Automatically restore the in-run snapshot after any apply failure
+        id: automatic_compensation
+        if: >-
+          ${{ always() && inputs.operation == 'apply-direct' &&
+              (contains(fromJSON('["failure","cancelled"]'), steps.manager_operation.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_direct.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_admin.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru_artifact.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru_confirmation.outcome)) }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PAGES_HOSTNAME: ${{ inputs.pages_hostname }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node scripts/cloudflare/manage-ru-connectivity.mjs rollback \
+            --snapshot=artifacts/current/cloudflare-before.json \
+            --snapshot-main-sha="$EXPECTED_MAIN_SHA" \
+            --expected-main-sha="$EXPECTED_MAIN_SHA" \
+            --pages-hostname="$PAGES_HOSTNAME" \
+            --confirm="ROLLBACK PROBPERA $EXPECTED_MAIN_SHA"
+          EXPECTED_RELEASE_SHA="$EXPECTED_MAIN_SHA" \
+            node scripts/network/audit-connectivity.mjs \
+              --mode=global \
+              --host=probpera.ru \
+              --expected-dns-route=cloudflare \
+              --dns-attempts=6 \
+              --dns-retry-delay-ms=15000
+          LIVE_SMOKE_ORIGINS="https://probpera.ru,https://admin.probpera.ru" \
+            node scripts/audit-live-security.mjs --attempts=6 --retry-delay-ms=15000
+
+      - name: Keep the failed apply red after compensating rollback
+        if: >-
+          ${{ always() && inputs.operation == 'apply-direct' &&
+              (contains(fromJSON('["failure","cancelled"]'), steps.manager_operation.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_direct.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_admin.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru_artifact.outcome) ||
+               contains(fromJSON('["failure","cancelled"]'), steps.post_apply_ru_confirmation.outcome)) }}
+        env:
+          COMPENSATION_OUTCOME: ${{ steps.automatic_compensation.outcome }}
+        shell: bash
+        run: |
+          if [[ "$COMPENSATION_OUTCOME" == "success" ]]; then
+            echo "::error::Emergency apply failed; the authenticated pre-change snapshot was restored and verified."
+          else
+            echo "::error::Emergency apply failed and automatic restoration was not verified; use the attested apply-only rollback artifact immediately."
+          fi
+          exit 1
+
+      - name: Verify Cloudflare route and security after rollback
+        if: inputs.operation == 'rollback'
+        env:
+          EXPECTED_RELEASE_SHA: ${{ inputs.expected_main_sha }}
+          LIVE_SMOKE_ORIGINS: https://probpera.ru,https://admin.probpera.ru
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node scripts/network/audit-connectivity.mjs \
+            --mode=global \
+            --host=probpera.ru \
+            --expected-dns-route=cloudflare \
+            --dns-attempts=6 \
+            --dns-retry-delay-ms=15000
+          node scripts/audit-live-security.mjs --attempts=6 --retry-delay-ms=15000

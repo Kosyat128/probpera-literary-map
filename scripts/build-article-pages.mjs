@@ -16,6 +16,7 @@ import {
   positionDzenLeadIllustration,
 } from "./lib/article-publication-images.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
+import { resolveRedirectArtifactPath } from "./lib/redirect-artifact-path.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -290,28 +291,13 @@ function mergeCatalogs(legacyArticles, cmsArticles) {
 }
 
 async function writeRedirectPage(sourcePath, targetUrl) {
-  const normalized = normalizedPath(sourcePath);
-  const segments = normalized
-    .split("/")
-    .filter(Boolean)
-    .map((segment) => decodeURIComponent(segment));
-  if (segments.some((segment) => segment === "." || segment === "..")) return;
-
-  const finalSegment = segments.at(-1) || "";
-  if (/\.[a-z0-9]{1,8}$/iu.test(finalSegment)) {
-    const outputPath = path.join(distDirectory, ...segments);
-    await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    await fs.writeFile(outputPath, redirectHtml(targetUrl), "utf8");
-    return;
-  }
-
-  const outputDirectory = path.join(distDirectory, ...segments);
-  await fs.mkdir(outputDirectory, { recursive: true });
-  await fs.writeFile(
-    path.join(outputDirectory, "index.html"),
-    redirectHtml(targetUrl),
-    "utf8"
-  );
+  const outputPath = resolveRedirectArtifactPath({
+    distDirectory,
+    siteOrigin: siteUrl,
+    sourceValue: sourcePath,
+  });
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.writeFile(outputPath, redirectHtml(targetUrl), "utf8");
 }
 
 const baseHtml = await fs.readFile(path.join(distDirectory, "index.html"), "utf8");
@@ -1125,6 +1111,7 @@ for (const rawArticle of catalog) {
     destination: publicPath,
     permanent: true,
   });
+  await writeRedirectPage(`/articles/${slug}`, canonicalUrl);
   if (article.sourceSlug && article.sourceSlug !== slug) {
     const previousPublicPath = `/stati/${articleSectionSlug(article)}/${article.sourceSlug}`;
     redirectRules.push({

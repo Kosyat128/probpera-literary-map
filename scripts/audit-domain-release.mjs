@@ -8,6 +8,7 @@ import {
   articleSectionSlugs,
   normalizedPath,
 } from "./lib/article-route-policy.mjs";
+import { resolveRedirectArtifactPath } from "./lib/redirect-artifact-path.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDirectory = path.join(projectRoot, "dist");
@@ -38,6 +39,34 @@ async function exists(relativePath) {
   } catch {
     return false;
   }
+}
+
+function redirectArtifactPath(sourceValue) {
+  return resolveRedirectArtifactPath({
+    distDirectory,
+    siteOrigin: expectedOrigin,
+    sourceValue,
+  });
+}
+
+function comparableSameOriginUrl(value, { absolute = false } = {}) {
+  if (absolute && !/^https:\/\//iu.test(String(value || ""))) return null;
+  let parsed;
+  try {
+    parsed = absolute
+      ? new URL(value)
+      : new URL(value, `${expectedOrigin}/`);
+  } catch {
+    return null;
+  }
+  if (
+    parsed.origin !== expectedOrigin ||
+    parsed.username ||
+    parsed.password
+  ) {
+    return null;
+  }
+  return `${parsed.origin}${normalizedPath(parsed.pathname)}${parsed.search}${parsed.hash}`;
 }
 
 function mergeCatalogs(legacyArticles, cmsArticles) {
@@ -212,6 +241,35 @@ for (const [source, destinations] of redirectBySource) {
   );
 }
 
+let portableRedirectPages = 0;
+for (const redirect of redirects) {
+  const source = normalizedPath(redirect.source);
+  const artifactPath = redirectArtifactPath(redirect.source);
+  const artifactExists = await exists(path.relative(distDirectory, artifactPath));
+  check(
+    artifactExists,
+    `portable redirect page существует: ${source}`
+  );
+  if (!artifactExists) continue;
+  portableRedirectPages += 1;
+  const redirectHtml = await read(path.relative(distDirectory, artifactPath));
+  check(
+    redirectHtml.includes('<meta name="robots" content="noindex,follow">'),
+    `portable redirect page закрыта от индексации: ${source}`
+  );
+  const canonicalHref = redirectHtml.match(
+    /<link\s+rel="canonical"\s+href="([^"]+)"/iu
+  )?.[1];
+  const actualTarget = comparableSameOriginUrl(canonicalHref, { absolute: true });
+  const expectedTarget = comparableSameOriginUrl(redirect.destination);
+  check(
+    actualTarget !== null &&
+      expectedTarget !== null &&
+      actualTarget === expectedTarget,
+    `portable redirect page ведёт прямо на manifest target: ${source}`
+  );
+}
+
 let portableSectionAliases = 0;
 for (const article of catalog) {
   const currentPath = normalizedPath(articlePublicPath(article));
@@ -289,6 +347,26 @@ check(
   "пользовательский URL профессий зарубежных классиков ведёт на canonical раздела"
 );
 
+const reportedBrokenArticleAlias =
+  "/articles/10-vydayuschihsya-knig-xxi-veka-ostavivshih-sled-v-mirovoy-literature";
+const reportedArticleCanonicalPath =
+  "/stati/knizhnyy-gid/10-vydayuschihsya-knig-xxi-veka-ostavivshih-sled-v-mirovoy-literature";
+check(
+  redirectBySource
+    .get(reportedBrokenArticleAlias)
+    ?.has(reportedArticleCanonicalPath),
+  "live 404 article slug alias ведёт на canonical статью"
+);
+check(
+  await exists(
+    path.relative(
+      distDirectory,
+      redirectArtifactPath(reportedBrokenArticleAlias)
+    )
+  ),
+  "live 404 article slug alias имеет portable static page"
+);
+
 for (const source of [
   "/read",
   "/read/page-article/page-books",
@@ -308,6 +386,7 @@ const summary = {
   sitemapUrls: sitemapLocations.length,
   redirects: redirects.length,
   serverRedirects: serverRedirectLines.length,
+  portableRedirectPages,
   portableSectionAliases,
   errors: errors.slice(0, 100),
 };

@@ -1,0 +1,365 @@
+name: Audit RU and direct connectivity
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_release_sha:
+        description: "Optional exact deployed main SHA (40 lowercase hexadecimal characters)"
+        required: false
+        default: ""
+        type: string
+      expected_ru_route:
+        description: "Route Russian probes must observe"
+        required: true
+        default: cloudflare
+        type: choice
+        options:
+          - cloudflare
+          - direct
+          - either
+      run_ru_probe:
+        description: "Create fresh Globalping measurements in Russian eyeball networks"
+        required: true
+        default: true
+        type: boolean
+      require_direct:
+        description: "Fail unless the direct TLS/IPv4/IPv6 proof is production-ready"
+        required: true
+        default: false
+        type: boolean
+  schedule:
+    - cron: "47 2 * * *"
+  workflow_run:
+    workflows:
+      - Deploy Vite site to GitHub Pages
+    types:
+      - completed
+    branches:
+      - main
+  pull_request:
+    paths:
+      - ".github/workflows/audit-ru-connectivity.yml"
+      - ".github/workflows/manage-ru-connectivity.yml"
+      - "config/dns/**"
+      - "docs/RU_CONNECTIVITY_*.md"
+      - "package.json"
+      - "scripts/cloudflare/manage-ru-connectivity*"
+      - "scripts/dns/**"
+      - "scripts/network/**"
+
+# A workflow_run only executes reviewed main-branch code. Pull requests receive
+# no secrets and do not create Globalping measurements.
+permissions:
+  contents: read
+
+concurrency:
+  group: ru-connectivity-audit-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout audited code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked test dependencies
+        run: npm ci
+
+      - name: Validate the blocked GeoDNS zone definition
+        run: node scripts/dns/validate-ru-connectivity-plan.mjs
+
+      - name: Test connectivity and guarded DNS tooling
+        run: npm run connectivity:test
+
+      - name: Build and verify portable legacy-route artifacts on pull requests
+        if: github.event_name == 'pull_request'
+        env:
+          PUBLIC_SITE_ORIGIN: https://probpera.ru
+          PUBLIC_SITE_BASE_PATH: /
+          PUBLIC_SITE_URL: https://probpera.ru
+          VITE_PUBLIC_SITE_URL: https://probpera.ru
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          npm run build:from-snapshot
+          node --input-type=module <<'NODE'
+          import { readFile } from "node:fs/promises";
+          import { resolveRedirectArtifactPath } from "./scripts/lib/redirect-artifact-path.mjs";
+
+          const origin = "https://probpera.ru";
+          const redirects = JSON.parse(await readFile("dist/redirects.generated.json", "utf8"));
+          if (!Array.isArray(redirects) || redirects.length < 157) {
+            throw new Error("The built release does not contain the complete legacy redirect manifest");
+          }
+          const sample = redirects
+            .filter((entry) => entry?.permanent === true && String(entry?.source || "").startsWith("/articles/"))
+            .sort((left, right) => left.source.localeCompare(right.source, "en"))[0];
+          if (!sample || !String(sample.destination || "").startsWith("/stati/")) {
+            throw new Error("No deterministic permanent article alias was built");
+          }
+          const aliasPath = resolveRedirectArtifactPath({
+            distDirectory: "dist",
+            siteOrigin: origin,
+            sourceValue: sample.source,
+          });
+          const aliasHtml = await readFile(aliasPath, "utf8");
+          const canonical = new URL(
+            sample.destination.endsWith("/") ? sample.destination : `${sample.destination}/`,
+            origin
+          ).href;
+          if (!aliasHtml.includes('name="robots" content="noindex,follow"') ||
+              !aliasHtml.includes(`rel="canonical" href="${canonical}"`) ||
+              !aliasHtml.includes(`http-equiv="refresh" content="0;url=${canonical}"`)) {
+            throw new Error("The deterministic legacy alias lost its canonical static redirect semantics");
+          }
+          const notFoundHtml = await readFile("dist/404.html", "utf8");
+          if (!notFoundHtml.includes('name="robots" content="noindex,follow"') ||
+              !notFoundHtml.includes('rel="canonical" href="https://probpera.ru/"') ||
+              !notFoundHtml.includes("Ошибка 404")) {
+            throw new Error("The portable custom 404 artifact is incomplete");
+          }
+          NODE
+
+  global:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout audited release
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+
+      - name: Validate optional expected release SHA
+        env:
+          EXPECTED_RELEASE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || (github.event_name == 'workflow_dispatch' && (inputs.expected_release_sha || github.sha) || (github.event_name == 'schedule' && github.sha || '')) }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [[ -n "$EXPECTED_RELEASE_SHA" && ! "$EXPECTED_RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::expected_release_sha must be empty or 40 lowercase hexadecimal characters."
+            exit 1
+          fi
+
+      - name: Audit global DNS, HTTPS, release, SEO, PWA, and assets
+        id: global_audit
+        continue-on-error: true
+        env:
+          EXPECTED_RELEASE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || (github.event_name == 'workflow_dispatch' && (inputs.expected_release_sha || github.sha) || (github.event_name == 'schedule' && github.sha || '')) }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p artifacts
+          node scripts/network/audit-connectivity.mjs \
+            --mode=global \
+            --host=probpera.ru \
+            --json > artifacts/global-connectivity.json
+
+      - name: Recheck public and admin security contracts
+        id: security_audit
+        continue-on-error: true
+        run: node scripts/audit-live-security.mjs --attempts=3 --retry-delay-ms=5000
+        env:
+          LIVE_SMOKE_ORIGINS: https://probpera.ru,https://admin.probpera.ru
+
+      - name: Upload global audit evidence
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-global
+          path: artifacts/global-connectivity.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Enforce global and admin health
+        if: ${{ github.event_name != 'pull_request' && (steps.global_audit.outcome != 'success' || steps.security_audit.outcome != 'success') }}
+        shell: bash
+        run: |
+          echo "::error::The required global or admin production audit failed; inspect the uploaded report."
+          exit 1
+
+      - name: Report production drift without blocking pull-request artifact checks
+        if: ${{ github.event_name == 'pull_request' && (steps.global_audit.outcome != 'success' || steps.security_audit.outcome != 'success') }}
+        shell: bash
+        run: echo "::warning::Current production does not yet satisfy the proposed live contract; strict enforcement resumes after deployment."
+
+  direct_preflight:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout audited code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+
+      - name: Audit forced direct Host/SNI on every Pages A and AAAA
+        id: direct_audit
+        env:
+          EXPECTED_RELEASE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || (github.event_name == 'workflow_dispatch' && (inputs.expected_release_sha || github.sha) || (github.event_name == 'schedule' && github.sha || '')) }}
+          RUN_EXTERNAL_IPV6_DIAGNOSTIC: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.require_direct) }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p artifacts
+          external_ipv6_args=()
+          if [[ "$RUN_EXTERNAL_IPV6_DIAGNOSTIC" == "true" ]]; then
+            # Diagnostic only until the external schema binds full HTML/CMS/PWA/asset hashes.
+            external_ipv6_args+=(--external-ipv6-proof=globalping)
+          fi
+          set +e
+          node scripts/network/audit-connectivity.mjs \
+            --mode=direct \
+            --host=probpera.ru \
+            "${external_ipv6_args[@]}" \
+            --json > artifacts/direct-connectivity.json
+          audit_exit=$?
+          set -e
+          echo "exit_code=$audit_exit" >> "$GITHUB_OUTPUT"
+          if [[ "$audit_exit" -ne 0 ]]; then
+            echo "::warning::Direct route is not production-ready; the JSON proof remains ineligible."
+          fi
+
+      - name: Upload direct proof candidate
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-direct-proof
+          path: artifacts/direct-connectivity.json
+          if-no-files-found: error
+          retention-days: 2
+
+      - name: Enforce direct readiness when explicitly requested
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.require_direct }}
+        env:
+          EXPECTED_RELEASE_SHA: ${{ inputs.expected_release_sha }}
+          DIRECT_AUDIT_EXIT: ${{ steps.direct_audit.outputs.exit_code }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "::error::require_direct needs an exact expected_release_sha."
+            exit 1
+          }
+          [[ "$DIRECT_AUDIT_EXIT" == "0" ]] || {
+            echo "::error::Direct audit exited unsuccessfully."
+            exit 1
+          }
+          node -e '
+            const fs = require("node:fs");
+            const report = JSON.parse(fs.readFileSync("artifacts/direct-connectivity.json", "utf8"));
+            const expected = process.env.EXPECTED_RELEASE_SHA;
+            if (
+              report.schema !== "probpera-connectivity-audit/v1" ||
+              report.requiredOk !== true ||
+              report.directTlsReady !== true ||
+              report.proof?.proofEligible !== true ||
+              report.proof?.status !== "passed" ||
+              report.proof?.expectedMainSha !== expected ||
+              report.proof?.hosts?.apex?.status !== "passed" ||
+              report.proof?.hosts?.www?.status !== "passed"
+            ) {
+              throw new Error("Direct proof is incomplete or ineligible");
+            }
+          '
+
+  russian_probe:
+    if: ${{ github.event_name != 'pull_request' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && (github.event_name != 'workflow_dispatch' || inputs.run_ru_probe) }}
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout audited code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+
+      - name: Derive the expected Russian route from reviewed production state
+        id: routing_state
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          MANUAL_ROUTE: ${{ github.event_name == 'workflow_dispatch' && inputs.expected_ru_route || '' }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node --input-type=module <<'NODE'
+          import { readFileSync } from "node:fs";
+          import { appendFileSync } from "node:fs";
+
+          const plan = JSON.parse(readFileSync("config/dns/ru-connectivity-plan.json", "utf8"));
+          const stateRoutes = {
+            "cloudflare-full": "cloudflare",
+            "geodns-ru-direct": "direct",
+          };
+          const expectedRoute = process.env.EVENT_NAME === "workflow_dispatch"
+            ? process.env.MANUAL_ROUTE
+            : stateRoutes[plan.productionRoutingState];
+          if (!new Set(["cloudflare", "direct", "either"]).has(expectedRoute)) {
+            throw new Error("Reviewed production routing state does not map to a valid RU route");
+          }
+          appendFileSync(process.env.GITHUB_OUTPUT, `expected_route=${expectedRoute}\n`);
+          NODE
+
+      - name: Measure fresh Russian IPv4 and IPv6 eyeball routes
+        id: ru_probe
+        continue-on-error: true
+        env:
+          PROBPERA_EXPECTED_RU_ROUTE: ${{ steps.routing_state.outputs.expected_route }}
+          EXPECTED_RELEASE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || (github.event_name == 'workflow_dispatch' && (inputs.expected_release_sha || github.sha) || github.sha) }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p artifacts
+          node scripts/network/audit-russian-probes.mjs \
+            --host=probpera.ru \
+            --ip-version=both \
+            --limit=10 \
+            --json > artifacts/russian-probes.json
+
+      - name: Upload Russian measurement IDs and redacted results
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: ru-connectivity-russian-probes
+          path: artifacts/russian-probes.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Enforce Russian route health
+        if: steps.ru_probe.outcome != 'success'
+        shell: bash
+        run: |
+          echo "::error::Fresh Russian eyeball probes did not meet route, TLS, status, or latency thresholds."
+          exit 1
