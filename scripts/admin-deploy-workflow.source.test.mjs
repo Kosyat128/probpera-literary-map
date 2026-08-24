@@ -10,6 +10,13 @@ const workflow = readFileSync(
 const adminPackage = JSON.parse(
   readFileSync(path.join(root, "apps", "admin", "package.json"), "utf8")
 );
+const adminWrangler = JSON.parse(
+  readFileSync(path.join(root, "apps", "admin", "wrangler.jsonc"), "utf8")
+);
+const catalogSync = readFileSync(
+  path.join(root, "apps", "admin", "scripts", "sync-private-catalogs.mjs"),
+  "utf8"
+);
 
 function stepSource(name) {
   const marker = `      - name: ${name}`;
@@ -92,8 +99,8 @@ describe("editorial admin deployment workflow", () => {
     expect(sync).toBeGreaterThan(build);
     expect(deploy).toBeGreaterThan(sync);
 
-    const r2 = stepSource("Sync private admin catalogs");
-    expect(r2).toContain(
+    const kv = stepSource("Sync private admin catalogs");
+    expect(kv).toContain(
       "npm run cf:catalogs:sync --workspace @probpera/admin"
     );
     expect(adminPackage.scripts["cf:catalogs:sync"]).toBe(
@@ -111,7 +118,18 @@ describe("editorial admin deployment workflow", () => {
     expect(adminPackage.scripts["cf:deploy:built"]).toBe(
       "opennextjs-cloudflare deploy"
     );
-    expect(r2).not.toContain("wrangler r2");
+    expect(catalogSync).toMatch(/"kv",\s*"key",\s*"put"/u);
+    expect(catalogSync).toMatch(/"kv",\s*"key",\s*"get"/u);
+    expect(catalogSync).toContain('"--remote"');
+    expect(catalogSync).not.toContain('"r2"');
+    expect(adminWrangler.r2_buckets).toBeUndefined();
+    expect(adminWrangler.kv_namespaces).toEqual([
+      {
+        binding: "ADMIN_CATALOGS",
+        id: "f3ae59fd55ee4c0cac8ff1613db81680",
+      },
+    ]);
+    expect(kv).not.toContain("wrangler r2");
 
     const deployment = stepSource("Deploy to Cloudflare Workers");
     expect(deployment).toContain(

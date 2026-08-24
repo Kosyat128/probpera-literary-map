@@ -1,11 +1,10 @@
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
-import os from "node:os";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
-const BUCKET_NAME = "probpera-admin-catalogs";
+const KV_BINDING = "ADMIN_CATALOGS";
 const CATALOG_OBJECTS = [
   {
     key: "editorial-catalog.json",
@@ -40,7 +39,7 @@ function runWrangler(args, { allowFailure = false, quiet = false } = {}) {
     encoding: "utf8",
     maxBuffer: 20 * 1024 * 1024,
   });
-  if (!quiet) {
+  if (!quiet || result.status !== 0) {
     process.stdout.write(result.stdout || "");
     process.stderr.write(result.stderr || "");
   }
@@ -52,14 +51,14 @@ function runWrangler(args, { allowFailure = false, quiet = false } = {}) {
   return result;
 }
 
-function objectModeArguments() {
+function storageModeArguments() {
   return local
     ? ["--local", "--persist-to", localStateDirectory]
     : ["--remote"];
 }
 
-async function digest(filePath) {
-  return createHash("sha256").update(await readFile(filePath)).digest("hex");
+function digest(value) {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 if (
@@ -72,74 +71,45 @@ if (
   );
 }
 
-if (!local) {
-  const bucketInfo = runWrangler(
-    ["r2", "bucket", "info", BUCKET_NAME, "--config", configPath],
-    { allowFailure: true, quiet: true }
-  );
-  if (bucketInfo.status !== 0) {
-    console.log(`Creating private R2 bucket ${BUCKET_NAME}.`);
-    runWrangler([
-      "r2",
-      "bucket",
-      "create",
-      BUCKET_NAME,
-      "--config",
-      configPath,
-    ]);
-  }
-}
+for (const catalog of CATALOG_OBJECTS) {
+  const sourcePath = path.join(catalogDirectory, catalog.file);
+  const source = await readFile(sourcePath);
+  runWrangler([
+    "kv",
+    "key",
+    "put",
+    catalog.key,
+    "--path",
+    sourcePath,
+    "--binding",
+    KV_BINDING,
+    ...storageModeArguments(),
+    "--config",
+    configPath,
+  ]);
 
-const verificationDirectory = await mkdtemp(
-  path.join(os.tmpdir(), "probpera-admin-catalogs-")
-);
-try {
-  for (const catalog of CATALOG_OBJECTS) {
-    const sourcePath = path.join(catalogDirectory, catalog.file);
-    await readFile(sourcePath);
-    runWrangler([
-      "r2",
-      "object",
-      "put",
-      `${BUCKET_NAME}/${catalog.key}`,
-      ...objectModeArguments(),
-      "--file",
-      sourcePath,
-      "--content-type",
-      "application/json",
-      "--force",
-      "--config",
-      configPath,
-    ]);
-
-    const verificationPath = path.join(
-      verificationDirectory,
-      catalog.file
-    );
-    runWrangler([
-      "r2",
-      "object",
+  const verification = runWrangler(
+    [
+      "kv",
+      "key",
       "get",
-      `${BUCKET_NAME}/${catalog.key}`,
-      ...objectModeArguments(),
-      "--file",
-      verificationPath,
+      catalog.key,
+      "--binding",
+      KV_BINDING,
+      ...storageModeArguments(),
       "--config",
       configPath,
-    ]);
-    const [sourceDigest, remoteDigest] = await Promise.all([
-      digest(sourcePath),
-      digest(verificationPath),
-    ]);
-    if (sourceDigest !== remoteDigest) {
-      throw new Error(
-        `R2 catalog verification failed for ${catalog.key}`
-      );
-    }
-    console.log(
-      `Verified private catalog ${catalog.key}: sha256 ${sourceDigest}`
+    ],
+    { quiet: true }
+  );
+  const sourceDigest = digest(source);
+  const storedDigest = digest(Buffer.from(verification.stdout, "utf8"));
+  if (sourceDigest !== storedDigest) {
+    throw new Error(
+      `Workers KV catalog verification failed for ${catalog.key}`
     );
   }
-} finally {
-  await rm(verificationDirectory, { recursive: true, force: true });
+  console.log(
+    `Verified private KV catalog ${catalog.key}: sha256 ${sourceDigest}`
+  );
 }

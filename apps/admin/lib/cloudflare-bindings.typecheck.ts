@@ -1,17 +1,13 @@
-type CatalogObjectContract = {
-  text(): Promise<string>;
-};
-
-type CatalogBucketContract = {
-  get(key: string): Promise<CatalogObjectContract | null>;
+type CatalogNamespaceContract = {
+  get(key: string, type: "text"): Promise<string | null>;
 };
 
 type Assert<T extends true> = T;
-type R2BindingMatchesCatalogLoader = Assert<
-  AdminCloudflareBindings["ADMIN_CATALOGS"] extends CatalogBucketContract
+type KvBindingMatchesCatalogLoader = Assert<
+  AdminCloudflareBindings["ADMIN_CATALOGS"] extends CatalogNamespaceContract
     ? true
     : false
 >;
 
-const r2BindingMatchesCatalogLoader: R2BindingMatchesCatalogLoader = true;
-void r2BindingMatchesCatalogLoader;
+const kvBindingMatchesCatalogLoader: KvBindingMatchesCatalogLoader = true;
+void kvBindingMatchesCatalogLoader;
