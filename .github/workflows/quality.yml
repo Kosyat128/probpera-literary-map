@@ -60,7 +60,14 @@ jobs:
       - name: Install browser quality tools
         run: npx playwright install --with-deps chromium
 
-      - name: Run browser, mobile and accessibility checks
+      - name: Run premium globe browser and mobile checks
+        env:
+          PLAYWRIGHT_SUITE: premium-globe
+        run: npm run test:e2e
+
+      - name: Run remaining browser, mobile and accessibility checks
+        env:
+          PLAYWRIGHT_SUITE: regression
         run: npm run test:e2e
 
       - name: Upload browser diagnostics on failure

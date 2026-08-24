@@ -12,9 +12,17 @@ function builtPreviewBasePath() {
 }
 
 const previewBasePath = builtPreviewBasePath();
+const suite = process.env.PLAYWRIGHT_SUITE;
+const suiteSelection =
+  suite === "premium-globe"
+    ? { testMatch: "**/premium-globe-exploration.spec.mjs" }
+    : suite === "regression"
+      ? { testIgnore: "**/premium-globe-exploration.spec.mjs" }
+      : {};
 
 export default defineConfig({
   testDir: "tests/e2e",
+  ...suiteSelection,
   timeout: 45_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
