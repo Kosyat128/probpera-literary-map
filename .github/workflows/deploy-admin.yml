@@ -107,17 +107,32 @@ jobs:
           npm run cf:build --workspace @probpera/admin
           npm run cf:size --workspace @probpera/admin
 
-      - name: Sync private admin catalogs
+      - name: Verify preseeded private admin catalogs
         if: github.event_name != 'pull_request'
         env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ADMIN_EDITORIAL_CATALOG_SHA256: ${{ vars.ADMIN_EDITORIAL_CATALOG_SHA256 }}
+          ADMIN_INTERFACE_COPY_CATALOG_SHA256: ${{ vars.ADMIN_INTERFACE_COPY_CATALOG_SHA256 }}
         shell: bash
         run: |
           set -Eeuo pipefail
-          test -n "$CLOUDFLARE_ACCOUNT_ID"
-          test -n "$CLOUDFLARE_API_TOKEN"
-          npm run cf:catalogs:sync --workspace @probpera/admin
+          for expected in \
+            "$ADMIN_EDITORIAL_CATALOG_SHA256" \
+            "$ADMIN_INTERFACE_COPY_CATALOG_SHA256"; do
+            if [[ ! "$expected" =~ ^[a-f0-9]{64}$ ]]; then
+              echo "::error::A required preseeded admin catalog SHA-256 variable is missing or invalid."
+              exit 1
+            fi
+          done
+
+          editorial_sha="$(sha256sum apps/admin/catalog-assets/editorial-catalog.json | awk '{print $1}')"
+          interface_sha="$(sha256sum apps/admin/catalog-assets/interface-copy-catalog.json | awk '{print $1}')"
+
+          if [[ "$editorial_sha" != "$ADMIN_EDITORIAL_CATALOG_SHA256" ]] ||
+             [[ "$interface_sha" != "$ADMIN_INTERFACE_COPY_CATALOG_SHA256" ]]; then
+            echo "::error::Checked-in admin catalogs do not match the preseeded private Workers KV values."
+            exit 1
+          fi
+          echo "Verified checked-in catalogs against preseeded private Workers KV SHA-256 values."
 
       - name: Inspect premium translation secret
         if: github.event_name != 'pull_request'
