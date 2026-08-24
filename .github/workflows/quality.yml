@@ -63,7 +63,13 @@ jobs:
       - name: Run premium globe browser and mobile checks
         env:
           PLAYWRIGHT_SUITE: premium-globe
-        run: npm run test:e2e
+        run: |
+          set -euo pipefail
+          for shard in 21 {1..20} 22; do
+            echo "::group::Premium globe shard ${shard}/22"
+            npm run test:e2e -- --shard="${shard}/22" --workers=1
+            echo "::endgroup::"
+          done
 
       - name: Run remaining browser, mobile and accessibility checks
         env:
