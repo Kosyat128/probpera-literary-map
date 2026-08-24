@@ -1022,7 +1022,7 @@ test("manual drag cancels a country flight before the next frame and never snaps
       .querySelector(".literary-globe:not(.is-loading)")
       ?.getAttribute("data-globe-camera-phase") === "programmatic"
   );
-  await result.click();
+  const resultClick = result.click();
   await programmaticStart;
 
   try {
@@ -1052,6 +1052,8 @@ test("manual drag cancels a country flight before the next frame and never snaps
         buttons: 1,
       });
     }
+
+    await resultClick;
 
     await expect(globe).not.toHaveAttribute(
       "data-globe-camera-cancelled-intent",
