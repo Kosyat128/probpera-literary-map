@@ -7,10 +7,12 @@ const checkOnly = process.argv.includes("--check");
 
 try {
   const source = (await readFile(sourcePath, "utf8")).replace(/\r\n/gu, "\n");
-  const normalized = source.replace(
-    /\n\s*interface GlobalProps \{\n\s*mainModule: typeof import\([^\n]+\);\n\s*\}\n/u,
-    "\n"
-  );
+  const normalized = source
+    .replace(
+      /\n\s*interface GlobalProps \{\n\s*mainModule: typeof import\([^\n]+\);\n\s*\}\n/u,
+      "\n"
+    )
+    .replace(/ \(hash: [a-f0-9]+\)/u, "");
 
   if (/\.open-next\/worker/u.test(normalized)) {
     throw new Error(
