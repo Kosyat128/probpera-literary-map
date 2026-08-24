@@ -73,7 +73,10 @@ VITE_SUPABASE_PUBLISHABLE_KEY
 ```
 
 Cloudflare API Token ограничивается разрешениями редактирования Workers Scripts
-и Workers Routes только нужной учётной записи и зоны `probpera.ru`.
+и Workers Routes только нужной учётной записи и зоны `probpera.ru`. Дополнительно
+для этой учётной записи требуется разрешение `Workers KV Storage: Edit`: workflow
+записывает и сразу проверяет только два приватных ключа редакционных каталогов в
+namespace `probpera-admin-catalogs` до публикации измеренного Worker.
 
 Перед включением трафика проверяется итоговый размер Worker. Бесплатный Workers
 имеет более строгие ограничения на размер и процессорное время; если собранная

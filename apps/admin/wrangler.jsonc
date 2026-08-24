@@ -15,10 +15,10 @@
     "binding": "ASSETS",
     "run_worker_first": false
   },
-  "r2_buckets": [
+  "kv_namespaces": [
     {
       "binding": "ADMIN_CATALOGS",
-      "bucket_name": "probpera-admin-catalogs"
+      "id": "f3ae59fd55ee4c0cac8ff1613db81680"
     }
   ],
   "routes": [

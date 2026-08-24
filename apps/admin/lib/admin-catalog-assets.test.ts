@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   readAdminCatalogText,
-  type AdminCatalogBucket,
+  type AdminCatalogNamespace,
 } from "./admin-catalog-assets";
 import {
   loadEditorialCatalog,
@@ -13,36 +13,30 @@ import {
   parseInterfaceCopyCatalog,
 } from "./site-copy-catalog";
 
-function bucketWith(value: string | null): AdminCatalogBucket {
+function namespaceWith(value: string | null): AdminCatalogNamespace {
   return {
     async get() {
-      return value === null
-        ? null
-        : {
-            async text() {
-              return value;
-            },
-          };
+      return value;
     },
   };
 }
 
 describe("private admin catalog assets", () => {
-  it("reads bounded catalog objects through the R2 binding boundary", async () => {
+  it("reads bounded catalog values through the KV binding boundary", async () => {
     await expect(
       readAdminCatalogText("editorial-catalog.json", {
-        bucket: bucketWith('{"version":1,"countries":[]}'),
+        namespace: namespaceWith('{"version":1,"countries":[]}'),
       })
     ).resolves.toContain('"version":1');
     await expect(
       readAdminCatalogText("editorial-catalog.json", {
-        bucket: bucketWith(null),
+        namespace: namespaceWith(null),
       })
-    ).rejects.toThrow("object is unavailable");
+    ).rejects.toThrow("key is unavailable");
   });
 
   it("loads the complete checked-in editorial catalog without static imports", async () => {
-    const catalog = await loadEditorialCatalog({ bucket: null });
+    const catalog = await loadEditorialCatalog({ namespace: null });
     expect(catalog.countries).toHaveLength(200);
     expect(
       catalog.countries.reduce(
@@ -70,7 +64,7 @@ describe("private admin catalog assets", () => {
   });
 
   it("loads and validates the complete interface-copy catalog", async () => {
-    const catalog = await loadAllSiteCopyCatalog({ bucket: null });
+    const catalog = await loadAllSiteCopyCatalog({ namespace: null });
     expect(catalog.length).toBeGreaterThanOrEqual(790);
     expect(
       catalog.filter((definition) => definition.group === "Названия стран")

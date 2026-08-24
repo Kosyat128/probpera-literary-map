@@ -4,20 +4,16 @@ export type AdminCatalogAssetName =
   | "editorial-catalog.json"
   | "interface-copy-catalog.json";
 
-type AdminCatalogObject = {
-  text(): Promise<string>;
-};
-
-export type AdminCatalogBucket = {
-  get(key: string): Promise<AdminCatalogObject | null>;
+export type AdminCatalogNamespace = {
+  get(key: string, type: "text"): Promise<string | null>;
 };
 
 export type AdminCatalogReadOptions = {
-  bucket?: AdminCatalogBucket | null;
+  namespace?: AdminCatalogNamespace | null;
   localDirectory?: string;
 };
 
-function runtimeCatalogBucket(): AdminCatalogBucket | null {
+function runtimeCatalogNamespace(): AdminCatalogNamespace | null {
   try {
     return getCloudflareContext().env.ADMIN_CATALOGS ?? null;
   } catch {
@@ -52,20 +48,22 @@ async function readLocalCatalog(
 
 /**
  * Catalogs are bounded, generated JSON files. Production reads them through a
- * private R2 binding; local Next.js and tests use the checked-in source files.
+ * private Workers KV binding; local Next.js and tests use checked-in sources.
  */
 export async function readAdminCatalogText(
   name: AdminCatalogAssetName,
   options: AdminCatalogReadOptions = {}
 ): Promise<string> {
-  const bucket =
-    options.bucket === undefined ? runtimeCatalogBucket() : options.bucket;
-  if (bucket) {
-    const object = await bucket.get(name);
-    if (!object) {
-      throw new Error(`Admin catalog object is unavailable: ${name}`);
+  const namespace =
+    options.namespace === undefined
+      ? runtimeCatalogNamespace()
+      : options.namespace;
+  if (namespace) {
+    const value = await namespace.get(name, "text");
+    if (value === null) {
+      throw new Error(`Admin catalog key is unavailable: ${name}`);
     }
-    return object.text();
+    return value;
   }
   return readLocalCatalog(name, options.localDirectory);
 }
