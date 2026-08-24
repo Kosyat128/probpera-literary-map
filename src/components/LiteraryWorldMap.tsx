@@ -1,15 +1,23 @@
 import type { Ref } from "react";
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
-import LiteraryGlobe, { type LiteraryGlobeMode } from "./LiteraryGlobe";
+import LiteraryGlobe, {
+  type GlobeCountrySelectionSource,
+  type GlobeExplicitFocusRequest,
+  type LiteraryGlobeMode,
+} from "./LiteraryGlobe";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import type { GlobeViewSample } from "./GlobeViewObserver";
 
 interface Props {
   countries: Country[];
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
-  onCountrySelect?: (country: Country) => void;
+  onCountrySelect?: (
+    country: Country,
+    source?: GlobeCountrySelectionSource
+  ) => void;
   onWriterSelect?: (country: Country, writer: WriterProfile) => void;
   showNobelLaureates?: boolean;
   nobelCountryId?: string | null;
@@ -17,6 +25,10 @@ interface Props {
   onFiltersChange?: (filters: WriterFilterState) => void;
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLElement>;
+  onViewSample?: (sample: GlobeViewSample) => void;
+  onHoverCountryChange?: (country: Country | null) => void;
+  focusRequest?: GlobeExplicitFocusRequest | null;
+  economical?: boolean;
 }
 
 export default function LiteraryWorldMap({
@@ -30,6 +42,10 @@ export default function LiteraryWorldMap({
   nobelCountryId,
   mode = "embedded",
   rootRef,
+  onViewSample,
+  onHoverCountryChange,
+  focusRequest,
+  economical = false,
 }: Props) {
   const { t } = useInterfaceLanguage();
 
@@ -50,6 +66,10 @@ export default function LiteraryWorldMap({
         showNobelLaureates={showNobelLaureates}
         nobelCountryId={nobelCountryId}
         mode={mode}
+        onViewSample={onViewSample}
+        onHoverCountryChange={onHoverCountryChange}
+        focusRequest={focusRequest}
+        economical={economical}
       />
     </section>
   );

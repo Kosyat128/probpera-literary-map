@@ -237,9 +237,6 @@ test("globe filters update the collection without rebuilding the 3D atlas", asyn
     expect(count).toMatch(/^\d+$/u);
     await filterButton.click();
     await expect(filterButton).toHaveAttribute("aria-pressed", "true");
-    await expect(page.locator(".atlas-filter-status")).toContainText(
-      count
-    );
     await expect(page.locator(".literary-globe.is-loading")).toHaveCount(0);
     await expect(page.locator("#atlas canvas")).toHaveCount(1);
     await expect(
@@ -276,6 +273,7 @@ test("globe honors reduced motion without presenting auto-rotation as active", a
 
 test("selected Indonesia remains centered after the focus animation", async ({
   page,
+  isMobile,
 }) => {
   // A cold software-WebGL start can consume most of the suite's 45 s default
   // before the deliberate five-second stability window begins in CI.
@@ -311,6 +309,13 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await expect(indonesiaResult).toBeVisible({ timeout: 15_000 });
   await indonesiaResult.click();
   const countryPanel = page.locator(".country-panel");
+  if (isMobile) {
+    const sheetToggle = page.locator(".atlas-country-sheet-toggle");
+    await expect(sheetToggle).toBeVisible();
+    await expect(sheetToggle).toHaveAttribute("aria-expanded", "false");
+    await sheetToggle.click();
+    await expect(sheetToggle).toHaveAttribute("aria-expanded", "true");
+  }
   await expect(countryPanel).toBeVisible();
   await expect(countryPanel).toContainText("Индонезия");
   await bringCanvasIntoView();

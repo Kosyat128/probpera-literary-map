@@ -57,6 +57,8 @@ const englishInterfaceText: Record<string, string> = {
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
+  "Открыть архив": "Open archive",
+  "Развернуть архив полностью": "Expand archive fully",
   "Погрузиться": "Enter the Literary Planet",
   "Погрузиться в Литературную планету": "Enter the Literary Planet",
   "Искать в Литературной планете": "Search the Literary Planet",
@@ -87,11 +89,11 @@ const englishInterfaceText: Record<string, string> = {
   "Все страны": "All countries",
   "Нобелевские лауреаты": "Nobel laureates",
   "10+ авторов": "10+ writers",
+  "Крупнейшие архивы": "Largest archives",
   "С портретами": "With portraits",
   "С реальными портретами": "With real portraits",
   Проверено: "Reviewed",
   "Страны с проверенными карточками": "Countries with verified records",
-  "Крупнейшие архивы": "Largest archives",
   "Интерактивный глобус · ручная навигация":
     "Interactive globe · manual navigation",
   "В этой коллекции пока нет стран": "There are no countries in this collection yet",
@@ -99,6 +101,15 @@ const englishInterfaceText: Record<string, string> = {
   "Открываем архив…": "Opening the archive…",
   "Текстовый указатель стран": "Text index of countries",
   "Навигация по «Пробе Пера»": "Explore Proba Pera",
+  "Навигация по Литературной планете": "Literary Planet navigation",
+  Мир: "World",
+  "Показать на глобусе": "Show on globe",
+  "Место писателя на глобусе пока не указано":
+    "This writer's place on the globe is not available yet",
+  "Случайное литературное путешествие": "Random literary journey",
+  "Случайное путешествие": "Surprise me",
+  "Управлять глобусом": "Control globe",
+  "Вернуться к прокрутке": "Return to page scroll",
   "Все темы и разделы сайта": "All subjects and sections",
   "От редакционных статей до мировой литературной энциклопедии.":
     "From original essays to a world literary encyclopedia.",
@@ -506,6 +517,15 @@ const englishInterfaceText: Record<string, string> = {
   "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
     "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
   "Стиль глобуса": "Globe style",
+  "Стиль не загрузился. Предыдущий стиль сохранён.":
+    "The style could not load. The previous style is still active.",
+  Повторить: "Retry",
+  "Автовращение приостановлено во время наведения":
+    "Auto-rotation is paused while pointing at the globe",
+  "Автовращение приостановлено во время перелёта камеры":
+    "Auto-rotation is paused during camera travel",
+  "Автовращение приостановлено вне экрана":
+    "Auto-rotation is paused while the globe is offscreen",
   Старинный: "Antique",
   Ретро: "Retro",
   Классический: "Classic",
@@ -675,10 +695,14 @@ const englishInterfaceText: Record<string, string> = {
   "Подключаем статьи, книги, писателей и страны.":
     "Loading articles, books, writers and countries.",
   "Нобелевский лауреат": "Nobel laureate",
-  "Нажмите на метку — откроется статья о лауреате":
-    "Select the marker to open an article about the laureate",
   "Нажмите на метку — откроется карточка лауреата":
     "Select the marker to open the laureate’s profile",
+  "Нажмите на кластер — откроется Нобелевский контекст страны":
+    "Select the cluster to open the country’s Nobel context",
+  "Статья о лауреате": "Article about the laureate",
+  "лауреат страны": "country laureate",
+  "лауреата страны": "country laureates",
+  "лауреатов страны": "country laureates",
   "Нобелевский архив": "Nobel archive",
   "Редакционная серия": "Editorial series",
   "Лауреаты Нобелевской премии · 1901–2025":
@@ -713,6 +737,7 @@ const englishInterfaceText: Record<string, string> = {
   "Архив объединяет авторов и ключевые произведения литературной традиции страны.":
     "The archive brings together writers and defining works from this country’s literary tradition.",
   "Архив мира": "World archive",
+  "Центр обзора": "View centre",
   "Иллюстрация к материалу": "Illustration for",
   "Фирменная обложка материала": "Branded cover for",
   "Источник портрета": "Portrait source",

@@ -9,7 +9,7 @@ const publicStyles = readFileSync(
 const globeSource = readFileSync(
   new URL("./LiteraryGlobe.tsx", import.meta.url),
   "utf8"
-);
+).replace(/\r\n/gu, "\n");
 
 const sharedSceneStart = publicStyles.indexOf(
   '.literary-globe[data-globe-style="antique"],\n.literary-globe[data-globe-style="earth"],\n.literary-globe[data-globe-style="modern"]'
@@ -80,8 +80,8 @@ describe("globe scene starfield", () => {
   });
 
   it("keeps the WebGL sky and vignette identical in all three modes", () => {
-    expect(globeSource).toContain(
-      "<MuseumSkyDome reducedMotion={reducedMotion} economical={economical} />"
+    expect(globeSource).toMatch(
+      /<MuseumSkyDome\s+reducedMotion=\{reducedMotion\}\s+economical=\{economical\}\s+animate=\{autoRotate\}\s*\/>/u
     );
     expect(globeSource).not.toContain('visualStyle !== "modern" &&');
     expect(publicStyles).not.toContain(

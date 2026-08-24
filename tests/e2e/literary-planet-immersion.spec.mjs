@@ -526,7 +526,7 @@ test("mobile country archive is a collapsed, expandable bottom sheet over the st
   expect(toggleBox.height).toBeGreaterThanOrEqual(44);
 
   await toggle.tap();
-  await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "expanded");
+  await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(sheetContent).not.toHaveAttribute("aria-hidden", "true");
   await expect(sheetContent).not.toHaveAttribute("inert", "");

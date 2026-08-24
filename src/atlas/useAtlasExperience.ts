@@ -42,6 +42,7 @@ export interface UseAtlasExperienceOptions {
   transitionDurationMs?: number;
   directTransitionDurationMs?: number;
   onUrlStateChange?: (state: AtlasUrlState) => void;
+  onEscapeBeforeExperience?: () => boolean;
 }
 
 export interface AtlasExperienceController {
@@ -145,9 +146,7 @@ function readEconomicalMode() {
   return Boolean(
     connection?.saveData ||
       (deviceMemory !== undefined && deviceMemory <= 4) ||
-      navigator.hardwareConcurrency <= 4 ||
-      window.devicePixelRatio >= 2.5 ||
-      window.innerWidth <= 680
+      navigator.hardwareConcurrency <= 4
   );
 }
 
@@ -297,6 +296,9 @@ export function useAtlasExperience(
   const economicalRef = useRef(economical);
   const selectionRef = useRef(options.urlSelection);
   const onUrlStateChangeRef = useRef(options.onUrlStateChange);
+  const onEscapeBeforeExperienceRef = useRef(
+    options.onEscapeBeforeExperience
+  );
   const quietDelayRef = useRef(options.quietDelayMs ?? 2500);
   const transitionDurationRef = useRef(options.transitionDurationMs ?? 440);
   const directTransitionDurationRef = useRef(
@@ -308,6 +310,7 @@ export function useAtlasExperience(
   economicalRef.current = economical;
   selectionRef.current = options.urlSelection;
   onUrlStateChangeRef.current = options.onUrlStateChange;
+  onEscapeBeforeExperienceRef.current = options.onEscapeBeforeExperience;
   quietDelayRef.current = options.quietDelayMs ?? 2500;
   transitionDurationRef.current = options.transitionDurationMs ?? 440;
   directTransitionDurationRef.current =
@@ -820,6 +823,10 @@ export function useAtlasExperience(
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
+        if (onEscapeBeforeExperienceRef.current?.()) {
+          notifyActivity();
+          return;
+        }
         const current = stateRef.current;
         if (current.searchOpen) {
           dispatch({ type: "CLOSE_SEARCH" });

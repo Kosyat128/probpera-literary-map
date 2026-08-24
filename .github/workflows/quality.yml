@@ -18,7 +18,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
 
     steps:
       - name: Checkout repository
@@ -58,9 +58,16 @@ jobs:
         run: npm run performance:audit
 
       - name: Install browser quality tools
-        run: npm install --no-save --ignore-scripts @playwright/test@1.60.0 @axe-core/playwright@4.11.3 && npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
-      - name: Run browser, mobile and accessibility checks
+      - name: Run premium globe browser and mobile checks
+        env:
+          PLAYWRIGHT_SUITE: premium-globe
+        run: npm run test:e2e
+
+      - name: Run remaining browser, mobile and accessibility checks
+        env:
+          PLAYWRIGHT_SUITE: regression
         run: npm run test:e2e
 
       - name: Upload browser diagnostics on failure

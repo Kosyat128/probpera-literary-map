@@ -167,8 +167,8 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
   await expect(globe).toBeVisible({ timeout: 60_000 });
   const controls = globe.locator(".globe-controls > button");
   await expect(controls).toHaveCount(4);
-  await expect(controls.nth(0)).toHaveAttribute("data-globe-control", "zoom-out");
-  await expect(controls.nth(1)).toHaveAttribute("data-globe-control", "zoom-in");
+  await expect(controls.nth(0)).toHaveAttribute("data-globe-control", "zoom-in");
+  await expect(controls.nth(1)).toHaveAttribute("data-globe-control", "zoom-out");
 
   const geometry = await controls.evaluateAll((buttons) =>
     buttons.map((button) => {
@@ -183,10 +183,10 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
 
   await expect(controls.nth(0)).toHaveAttribute(
     "aria-label",
-    "Уменьшить масштаб глобуса"
+    "Увеличить масштаб глобуса"
   );
   await expect(controls.nth(1)).toHaveAttribute(
     "aria-label",
-    "Увеличить масштаб глобуса"
+    "Уменьшить масштаб глобуса"
   );
 });

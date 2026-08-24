@@ -8,7 +8,7 @@ export type AtlasExperienceTransition =
 
 export type AtlasExperienceEntrySource = "embedded" | "hero" | "url";
 
-export type AtlasExperienceSheetState = "collapsed" | "expanded";
+export type AtlasExperienceSheetState = "collapsed" | "half" | "expanded";
 
 export interface AtlasExperienceState {
   view: AtlasExperienceView;
@@ -242,7 +242,7 @@ export function atlasExperienceReducer(
 
     case "SET_SHEET_STATE":
       if (
-        !isImmersiveInteractive(state) ||
+        state.transition !== "idle" ||
         state.sheetState === event.sheetState
       ) {
         return state;
@@ -250,11 +250,15 @@ export function atlasExperienceReducer(
       return { ...state, sheetState: event.sheetState, quiet: false };
 
     case "TOGGLE_SHEET":
-      if (!isImmersiveInteractive(state)) return state;
+      if (state.transition !== "idle") return state;
       return {
         ...state,
         sheetState:
-          state.sheetState === "collapsed" ? "expanded" : "collapsed",
+          state.sheetState === "collapsed"
+            ? "half"
+            : state.sheetState === "half"
+              ? "expanded"
+              : "collapsed",
         quiet: false,
       };
 

@@ -5,7 +5,7 @@ const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
 const globeSource = readFileSync(
   new URL("./LiteraryGlobe.tsx", import.meta.url),
   "utf8"
-);
+).replace(/\r\n/gu, "\n");
 const worldMapSource = readFileSync(
   new URL("./LiteraryWorldMap.tsx", import.meta.url),
   "utf8"
@@ -16,9 +16,9 @@ describe("globe filter stability wiring", () => {
     expect(appSource).toContain("atlasCountries={countryArchive}");
     expect(worldMapSource).toContain("atlasCountries={atlasCountries}");
     expect(globeSource).toContain("const atlasSourceCountries = atlasCountries ?? countries");
-    expect(globeSource).toContain("createGlobeAtlas(\n      atlasSourceCountries");
-    expect(globeSource).toContain(
-      "[atlasLoadRequest, atlasRequested, atlasSourceCountries]"
+    expect(globeSource).toMatch(/createGlobeAtlas\(\s*atlasSourceCountries,/u);
+    expect(globeSource).toMatch(
+      /\[\s*atlasLoadRequest,\s*atlasRequested,\s*atlasSourceCountries,/u
     );
   });
 
@@ -27,7 +27,30 @@ describe("globe filter stability wiring", () => {
     expect(globeSource).toContain("selectableCountryIds.has(country.id)");
     expect(globeSource).toContain("countries={countries}");
     expect(appSource).toContain('role="group"');
-    expect(appSource).toContain("atlas-filter-status");
+    expect(appSource).toContain('rich: "10+ авторов"');
+    expect(appSource).toContain("data-atlas-archives-toggle");
+    expect(appSource).toContain("largestArchiveCountries.map");
+    expect(appSource).not.toContain('className="atlas-ranking"');
+  });
+
+  it("keeps filters and the archive disclosure in one overflow-safe row", () => {
+    const cssSource = readFileSync(new URL("../index.css", import.meta.url), "utf8");
+    const filtersRule =
+      cssSource.match(/\.atlas-filters\s*\{([\s\S]*?)\}/u)?.[1] ?? "";
+    const buttonRule =
+      cssSource.match(/\.atlas-filters button\s*\{([\s\S]*?)\}/u)?.[1] ?? "";
+    const toolbarRule =
+      cssSource.match(/\.atlas-toolbar\s*\{([\s\S]*?)\}/u)?.[1] ?? "";
+
+    expect(toolbarRule).not.toContain("z-index: 40");
+    expect(cssSource).toMatch(
+      /\.atlas-toolbar\.has-open-archives\s*\{[\s\S]*?z-index:\s*40;/u
+    );
+    expect(filtersRule).toContain("flex-wrap: nowrap");
+    expect(filtersRule).toContain("overflow-x: auto");
+    expect(filtersRule).toContain("scrollbar-width: none");
+    expect(buttonRule).toContain("flex: 0 0 auto");
+    expect(buttonRule).toContain("scroll-snap-align: start");
   });
 
   it("mounts the 200-country fallback only after visitors open it", () => {
