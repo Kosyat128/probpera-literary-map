@@ -140,6 +140,7 @@ export default function EditorialWorkbench() {
               <option value="folklore">{t("Фольклор и мифология")}</option>
               <option value="language">{t("Русский язык")}</option>
               <option value="literary-essays">{t("О литературе и культуре")}</option>
+              <option value="miscellaneous">{t("Разное")}</option>
             </select>
           </label>
           <label>

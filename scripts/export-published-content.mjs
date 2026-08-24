@@ -118,6 +118,7 @@ const categoryEnglishLabels = {
   language: "Language",
   "literary-essays": "Literature and culture",
   "author-stories": "Literary stories",
+  miscellaneous: "Miscellaneous",
 };
 
 function queryString(values) {

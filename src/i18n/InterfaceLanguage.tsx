@@ -150,6 +150,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературные премии": "Literary prizes",
   "Биографии и судьбы писателей": "Writers: lives and biographies",
   "О литературе и культуре": "Literature and culture",
+  "Разное": "Miscellaneous",
   "Фольклор и мифология": "Folklore and mythology",
   "Язык и редкие слова": "Language and rare words",
   "Литературные истории": "Literary stories",
@@ -619,7 +620,7 @@ const englishInterfaceText: Record<string, string> = {
   Контакты: "Contacts",
   "Независимый литературный журнал": "Independent literary journal",
   "«Проба Пера»": "Proba Pera",
-  "Авторский архив · 157 материалов": "Editorial archive · 157 publications",
+  "Авторский архив · 166 материалов": "Editorial archive · 166 publications",
   "Журнал, выстроенный для чтения": "A journal designed for reading",
   "Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.":
     "Book reviews, literary essays, biographies, adaptations and observations on language form one editorial library.",

@@ -63,6 +63,7 @@ import {
 } from "./data/bookLocalization";
 import { calculateArchiveStatistics } from "./data/archiveStatistics";
 import { articleCatalogEntryForLanguage } from "./data/articles/localization";
+import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "./data/articles/publicationStats";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -1040,9 +1041,11 @@ export default function App() {
     import("./data/articles/catalog").then(({ articleCatalog }) => {
       if (active) {
         setArticleCount(
-          articleCatalog.filter((article) =>
-            articleCatalogEntryForLanguage(article, language)
-          ).length
+          language === "ru"
+            ? PUBLIC_ARCHIVE_ARTICLE_COUNT
+            : articleCatalog.filter((article) =>
+                articleCatalogEntryForLanguage(article, language)
+              ).length
         );
       }
     });

@@ -2,6 +2,10 @@ import {
   applyEditorialPublicationFix,
   EDITORIAL_PUBLICATION_FIX_IDS,
 } from "./editorial-publication-fixes.mjs";
+import {
+  drakePublication,
+  drakePublicationCategory,
+} from "./fixtures/drake-publication.mjs";
 import { articleSectionSlug } from "./lib/article-route-policy.mjs";
 
 const supabaseUrl = (
@@ -108,6 +112,46 @@ for (const { article, nextSlug } of changes) {
   }
 }
 
+let drakeSeeded = false;
+const categoryRows = await request(
+  `categories?select=id,slug&slug=eq.${encodeURIComponent(
+    drakePublicationCategory.slug
+  )}&limit=1`
+);
+let drakeCategory = categoryRows[0] || null;
+if (!drakeCategory) {
+  const insertedCategories = await request("categories", {
+    method: "POST",
+    headers: { Prefer: "return=representation" },
+    body: JSON.stringify(drakePublicationCategory),
+  });
+  drakeCategory = insertedCategories[0] || null;
+}
+
+const existingDrake = articles.find(
+  (article) => article.legacy_id === drakePublication.legacy_id
+);
+if (!existingDrake) {
+  const createdBy = articles
+    .map((article) => article.created_by || article.author_id)
+    .find(Boolean);
+  if (!createdBy || !drakeCategory?.id) {
+    throw new Error("Cannot seed the Drake publication without an editor and category.");
+  }
+  await request("articles", {
+    method: "POST",
+    headers: { Prefer: "return=minimal" },
+    body: JSON.stringify({
+      ...drakePublication,
+      category_id: drakeCategory.id,
+      created_by: createdBy,
+      updated_by: createdBy,
+      canonical_url: `${siteOrigin}/stati/raznoe/${drakePublication.slug}/`,
+    }),
+  });
+  drakeSeeded = true;
+}
+
 const editorialFields = [
   "title",
   "excerpt",
@@ -150,5 +194,7 @@ for (const articleId of EDITORIAL_PUBLICATION_FIX_IDS) {
 }
 
 console.log(
-  `CMS normalized: ${changes.length} readable article URLs; ${editorialFixCount} editorial publication fixes applied.`
+  `CMS normalized: ${changes.length} readable article URLs; ${editorialFixCount} editorial publication fixes applied; Drake publication ${
+    drakeSeeded ? "added" : "already present"
+  }.`
 );
