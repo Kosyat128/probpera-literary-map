@@ -61,16 +61,6 @@ function digest(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-if (
-  !local &&
-  (!process.env.CLOUDFLARE_ACCOUNT_ID ||
-    !process.env.CLOUDFLARE_API_TOKEN)
-) {
-  throw new Error(
-    "CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are required for remote catalog sync"
-  );
-}
-
 for (const catalog of CATALOG_OBJECTS) {
   const sourcePath = path.join(catalogDirectory, catalog.file);
   const source = await readFile(sourcePath);

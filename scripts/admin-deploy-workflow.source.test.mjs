@@ -74,7 +74,7 @@ describe("editorial admin deployment workflow", () => {
 
     for (const name of [
       "Validate application configuration",
-      "Sync private admin catalogs",
+      "Verify preseeded private admin catalogs",
       "Inspect premium translation secret",
       "Deploy to Cloudflare Workers",
     ]) {
@@ -91,18 +91,40 @@ describe("editorial admin deployment workflow", () => {
     );
   });
 
-  it("syncs private catalogs through the reusable command before deploying the measured artifact", () => {
+  it("fails closed unless checked-in catalogs match the preseeded private KV values", () => {
     const build = workflow.indexOf("- name: Build and verify Cloudflare Worker");
-    const sync = workflow.indexOf("- name: Sync private admin catalogs");
+    const verify = workflow.indexOf(
+      "- name: Verify preseeded private admin catalogs"
+    );
     const deploy = workflow.indexOf("- name: Deploy to Cloudflare Workers");
     expect(build).toBeGreaterThanOrEqual(0);
-    expect(sync).toBeGreaterThan(build);
-    expect(deploy).toBeGreaterThan(sync);
+    expect(verify).toBeGreaterThan(build);
+    expect(deploy).toBeGreaterThan(verify);
 
-    const kv = stepSource("Sync private admin catalogs");
-    expect(kv).toContain(
-      "npm run cf:catalogs:sync --workspace @probpera/admin"
+    const gate = stepSource("Verify preseeded private admin catalogs");
+    const continuation = String.fromCharCode(92);
+    expect(gate).toContain(`for expected in ${continuation}`);
+    expect(gate).toContain(
+      `"$ADMIN_EDITORIAL_CATALOG_SHA256" ${continuation}`
     );
+    expect(gate).not.toContain("for expected in +");
+    expect(gate).toContain(
+      "vars.ADMIN_EDITORIAL_CATALOG_SHA256"
+    );
+    expect(gate).toContain(
+      "vars.ADMIN_INTERFACE_COPY_CATALOG_SHA256"
+    );
+    expect(gate).toContain(
+      "sha256sum apps/admin/catalog-assets/editorial-catalog.json"
+    );
+    expect(gate).toContain(
+      "sha256sum apps/admin/catalog-assets/interface-copy-catalog.json"
+    );
+    expect(gate).toContain("missing or invalid");
+    expect(gate).toContain("do not match");
+    expect(gate).not.toContain("secrets.");
+    expect(gate).not.toContain("CLOUDFLARE_API_TOKEN");
+    expect(gate).not.toContain("cf:catalogs:sync");
     expect(adminPackage.scripts["cf:catalogs:sync"]).toBe(
       "node scripts/sync-private-catalogs.mjs"
     );
@@ -122,6 +144,7 @@ describe("editorial admin deployment workflow", () => {
     expect(catalogSync).toMatch(/"kv",\s*"key",\s*"get"/u);
     expect(catalogSync).toContain('"--remote"');
     expect(catalogSync).not.toContain('"r2"');
+    expect(catalogSync).not.toContain("CLOUDFLARE_API_TOKEN");
     expect(adminWrangler.r2_buckets).toBeUndefined();
     expect(adminWrangler.kv_namespaces).toEqual([
       {
@@ -129,7 +152,10 @@ describe("editorial admin deployment workflow", () => {
         id: "f3ae59fd55ee4c0cac8ff1613db81680",
       },
     ]);
-    expect(kv).not.toContain("wrangler r2");
+    expect(workflow).not.toContain(
+      "npm run cf:catalogs:sync --workspace @probpera/admin"
+    );
+    expect(workflow).not.toContain("- name: Sync private admin catalogs");
 
     const deployment = stepSource("Deploy to Cloudflare Workers");
     expect(deployment).toContain(

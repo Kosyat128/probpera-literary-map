@@ -72,11 +72,47 @@ VITE_SUPABASE_URL
 VITE_SUPABASE_PUBLISHABLE_KEY
 ```
 
+В GitHub Actions Variables обязательны два несекретных контрольных значения:
+
+```text
+ADMIN_EDITORIAL_CATALOG_SHA256
+ADMIN_INTERFACE_COPY_CATALOG_SHA256
+```
+
 Cloudflare API Token ограничивается разрешениями редактирования Workers Scripts
-и Workers Routes только нужной учётной записи и зоны `probpera.ru`. Дополнительно
-для этой учётной записи требуется разрешение `Workers KV Storage: Edit`: workflow
-записывает и сразу проверяет только два приватных ключа редакционных каталогов в
-namespace `probpera-admin-catalogs` до публикации измеренного Worker.
+и Workers Routes только нужной учётной записи и зоны `probpera.ru`. Разрешение
+`Workers KV Storage: Edit` этому CI-токену не требуется: production workflow
+намеренно не записывает KV.
+
+### Обновление приватных каталогов Workers KV
+
+Namespace `probpera-admin-catalogs` предварительно заполняется только вручную
+через привилегированную OAuth-сессию Wrangler. При первом заполнении или после
+изменения исходных данных:
+
+1. Сгенерируйте оба проверенных каталога:
+
+   ```text
+   npm run editorial:catalog
+   npm run interface:copy:catalog
+   ```
+
+2. Войдите в нужную учётную запись и синхронизируйте KV:
+
+   ```text
+   npx wrangler login
+   npm run cf:catalogs:sync --workspace @probpera/admin
+   ```
+
+3. Команда загружает и повторно читает оба ключа. Скопируйте показанные SHA-256
+   из строк `Verified private KV catalog ...` в соответствующие GitHub Actions
+   Variables, указанные выше.
+4. Только после успешной проверки зафиксируйте каталоги и создайте PR.
+
+При merge production workflow сам вычисляет SHA-256 двух checked-in файлов и
+сравнивает их с Variables до deploy. Пустое или несовпадающее значение
+останавливает выпуск. Pull request не читает production Variables, не пишет KV
+и не выполняет deploy.
 
 Перед включением трафика проверяется итоговый размер Worker. Бесплатный Workers
 имеет более строгие ограничения на размер и процессорное время; если собранная
