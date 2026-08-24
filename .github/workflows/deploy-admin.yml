@@ -9,8 +9,32 @@ on:
       - "apps/admin/**"
       - "src/data/countries/**"
       - "src/data/cms/**"
+      - "src/i18n/InterfaceLanguage.tsx"
+      - "src/utils/countryFlag.ts"
+      - "src/data/geo/countries.geojson"
+      - "scripts/lib/modern-globe-site-copy.mjs"
       - "scripts/archive-source.ts"
       - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "scripts/check-admin-worker-size.mjs"
+      - "scripts/admin-deploy-workflow.source.test.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/deploy-admin.yml"
+  pull_request:
+    paths:
+      - "apps/admin/**"
+      - "src/data/countries/**"
+      - "src/data/cms/**"
+      - "src/i18n/InterfaceLanguage.tsx"
+      - "src/utils/countryFlag.ts"
+      - "src/data/geo/countries.geojson"
+      - "scripts/lib/modern-globe-site-copy.mjs"
+      - "scripts/archive-source.ts"
+      - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "scripts/check-admin-worker-size.mjs"
+      - "scripts/admin-deploy-workflow.source.test.mjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/deploy-admin.yml"
@@ -31,8 +55,6 @@ jobs:
       ADMIN_ALLOWED_ORIGINS: admin.probpera.ru
       NEXT_PUBLIC_ADMIN_URL: https://admin.probpera.ru
       NEXT_PUBLIC_SITE_URL: https://probpera.ru
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
       YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
     steps:
       - name: Checkout
@@ -44,23 +66,61 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Validate application configuration
+      - name: Configure pull request build environment
+        if: github.event_name == 'pull_request'
         shell: bash
+        run: |
+          printf '%s\n' \
+            "NEXT_PUBLIC_SUPABASE_URL=https://ci-placeholder.supabase.co" \
+            "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_ci_placeholder" \
+            >> "$GITHUB_ENV"
+
+      - name: Validate application configuration
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
         run: |
           test -n "$NEXT_PUBLIC_SUPABASE_URL"
           test -n "$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"
           [[ "$YANDEX_METRIKA_COUNTER_ID" =~ ^[0-9]+$ ]]
 
+          printf '%s\n' \
+            "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" \
+            "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY" \
+            >> "$GITHUB_ENV"
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate the complete editorial catalog
-        run: npm run editorial:catalog
+      - name: Generate private admin catalogs
+        run: |
+          npm run editorial:catalog
+          npm run interface:copy:catalog
 
       - name: Type-check admin
         run: npm run lint --workspace @probpera/admin
 
+      - name: Build and verify Cloudflare Worker
+        run: |
+          npm run cf:build --workspace @probpera/admin
+          npm run cf:size --workspace @probpera/admin
+
+      - name: Sync private admin catalogs
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          test -n "$CLOUDFLARE_API_TOKEN"
+          npm run cf:catalogs:sync --workspace @probpera/admin
+
       - name: Inspect premium translation secret
+        if: github.event_name != 'pull_request'
         id: premium_secret
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -108,6 +168,7 @@ jobs:
           fi
 
       - name: Deploy to Cloudflare Workers
+        if: github.event_name != 'pull_request'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -115,10 +176,10 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           test -n "$CLOUDFLARE_API_TOKEN"
-          npm run cf:deploy --workspace @probpera/admin
+          npm run cf:deploy:built --workspace @probpera/admin
 
       - name: Report premium translation readiness
-        if: always()
+        if: ${{ always() && github.event_name != 'pull_request' }}
         env:
           PREMIUM_SECRET_READY: ${{ steps.premium_secret.outputs.ready }}
         shell: bash

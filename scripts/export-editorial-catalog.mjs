@@ -13,13 +13,13 @@ const temporaryBundle = path.join(
   temporaryDirectory,
   `admin-editorial-catalog-${process.pid}.mjs`
 );
-const outputPath = path.join(
+const outputDirectory = path.join(
   projectRoot,
   "apps",
   "admin",
-  "lib",
-  "editorial-catalog.generated.json"
+  "catalog-assets"
 );
+const outputPath = path.join(outputDirectory, "editorial-catalog.json");
 const checkOnly = process.argv.includes("--check");
 
 const countryFields = [
@@ -121,6 +121,7 @@ try {
       );
     }
   } else {
+    await mkdir(outputDirectory, { recursive: true });
     await writeFile(outputPath, output, "utf8");
     console.log(
       `Editorial catalog: ${countries.length} countries, ${countries.reduce(

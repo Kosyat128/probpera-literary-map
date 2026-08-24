@@ -1,5 +1,8 @@
 import { adminEnv } from "@/lib/env";
-import { editorialCatalog } from "@/lib/editorial-catalog";
+import {
+  loadEditorialCatalog,
+  type EditorialCatalog,
+} from "@/lib/editorial-catalog";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { readSiteCopyValues } from "@/lib/site-copy-storage";
 
@@ -20,7 +23,9 @@ function objectValue(value: unknown): Record<string, unknown> {
     : {};
 }
 
-function eligibleStaticWriterBiographies() {
+function eligibleStaticWriterBiographies(
+  editorialCatalog: EditorialCatalog
+) {
   let total = 0;
   for (const country of editorialCatalog.countries) {
     for (const writer of country.writers) {
@@ -42,7 +47,9 @@ function eligibleStaticWriterBiographies() {
   return total;
 }
 
-function eligibleStaticCountries() {
+function eligibleStaticCountries(
+  editorialCatalog: EditorialCatalog
+) {
   return editorialCatalog.countries.filter((country) => {
     const fields = country.fields;
     return (
@@ -64,7 +71,10 @@ export default async function PremiumTranslationsPage({
     publication?: string;
   }>;
 }) {
-  const query = await searchParams;
+  const [query, editorialCatalog] = await Promise.all([
+    searchParams,
+    loadEditorialCatalog(),
+  ]);
   const supabase = await createServerSupabaseClient();
 
   const [
@@ -113,8 +123,8 @@ export default async function PremiumTranslationsPage({
   const machineCopy = objectValue(premiumState.siteCopyEn);
   const apiReady = Boolean(adminEnv.openAiApiKey);
   const bookDbReady = machineWorkReadiness?.data === true;
-  const eligibleWriters = eligibleStaticWriterBiographies();
-  const eligibleCountries = eligibleStaticCountries();
+  const eligibleWriters = eligibleStaticWriterBiographies(editorialCatalog);
+  const eligibleCountries = eligibleStaticCountries(editorialCatalog);
 
   const readinessChecks = [
     ["OpenAI server secret", apiReady],
