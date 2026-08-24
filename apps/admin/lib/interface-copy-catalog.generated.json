@@ -352,11 +352,11 @@
     "multiline": false
   },
   {
-    "key": "interface.Авторский архив · 157 материалов",
+    "key": "interface.Авторский архив · 166 материалов",
     "group": "Весь интерфейс",
-    "label": "Авторский архив · 157 материалов",
-    "defaultRu": "Авторский архив · 157 материалов",
-    "defaultEn": "Editorial archive · 157 publications",
+    "label": "Авторский архив · 166 материалов",
+    "defaultRu": "Авторский архив · 166 материалов",
+    "defaultEn": "Editorial archive · 166 publications",
     "multiline": false
   },
   {
@@ -6373,6 +6373,14 @@
     "label": "Размер аватара не должен превышать 2 МБ.",
     "defaultRu": "Размер аватара не должен превышать 2 МБ.",
     "defaultEn": "Your avatar must not exceed 2 MB.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Разное",
+    "group": "Весь интерфейс",
+    "label": "Разное",
+    "defaultRu": "Разное",
+    "defaultEn": "Miscellaneous",
     "multiline": false
   },
   {
