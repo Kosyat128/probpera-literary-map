@@ -65,7 +65,7 @@ jobs:
           PLAYWRIGHT_SUITE: premium-globe
         run: |
           set -euo pipefail
-          for shard in {1..22}; do
+          for shard in 21 {1..20} 22; do
             echo "::group::Premium globe shard ${shard}/22"
             npm run test:e2e -- --shard="${shard}/22" --workers=1
             echo "::endgroup::"
