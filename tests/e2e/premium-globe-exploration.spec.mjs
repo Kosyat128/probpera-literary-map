@@ -988,7 +988,6 @@ test("writer selection stays still until explicit Show on globe", async ({
 
 test("manual drag cancels a country flight before the next frame and never snaps back", async ({
   page,
-  isMobile,
 }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   const { globe, canvas } = await openAtlas(page);
@@ -1022,81 +1021,57 @@ test("manual drag cancels a country flight before the next frame and never snaps
       .querySelector(".literary-globe:not(.is-loading)")
       ?.getAttribute("data-globe-camera-phase") === "programmatic"
   );
-  await result.click();
+  const resultClick = result.click();
   await programmaticStart;
 
   try {
-    if (isMobile) {
-      await inputSession.send("Input.dispatchTouchEvent", {
-        type: "touchStart",
-        touchPoints: [{ x, y, id: 1 }],
-      });
-      await inputSession.send("Input.dispatchTouchEvent", {
-        type: "touchMove",
-        touchPoints: [{ x: x + 8, y: y + 2, id: 1 }],
-      });
-    } else {
-      await inputSession.send("Input.dispatchMouseEvent", {
-        type: "mousePressed",
-        x,
-        y,
-        button: "left",
-        buttons: 1,
-        clickCount: 1,
-      });
-      await inputSession.send("Input.dispatchMouseEvent", {
-        type: "mouseMoved",
-        x: x + 8,
-        y: y + 2,
-        button: "left",
-        buttons: 1,
-      });
-    }
+    // Camera cancellation is pointer-agnostic. Trusted CDP touch drag/pinch
+    // coverage remains in the coarse embedded globe test above; mouse keeps
+    // this short-flight timing assertion deterministic in both projects.
+    await inputSession.send("Input.dispatchMouseEvent", {
+      type: "mousePressed",
+      x,
+      y,
+      button: "left",
+      buttons: 1,
+      clickCount: 1,
+    });
+    await inputSession.send("Input.dispatchMouseEvent", {
+      type: "mouseMoved",
+      x: x + 8,
+      y: y + 2,
+      button: "left",
+      buttons: 1,
+    });
+
+    await resultClick;
 
     await expect(globe).not.toHaveAttribute(
       "data-globe-camera-cancelled-intent",
       "none"
     );
 
-    if (isMobile) {
-      for (const [moveX, moveY] of [
-        [x + 64, y + 12],
-        [x + 128, y + 24],
-        [x + 190, y + 36],
-      ]) {
-        await inputSession.send("Input.dispatchTouchEvent", {
-          type: "touchMove",
-          touchPoints: [{ x: moveX, y: moveY, id: 1 }],
-        });
-        await page.waitForTimeout(32);
-      }
-      await inputSession.send("Input.dispatchTouchEvent", {
-        type: "touchEnd",
-        touchPoints: [],
-      });
-    } else {
-      for (const [moveX, moveY] of [
-        [x + 64, y + 12],
-        [x + 128, y + 24],
-        [x + 190, y + 36],
-      ]) {
-        await inputSession.send("Input.dispatchMouseEvent", {
-          type: "mouseMoved",
-          x: moveX,
-          y: moveY,
-          button: "left",
-          buttons: 1,
-        });
-      }
+    for (const [moveX, moveY] of [
+      [x + 64, y + 12],
+      [x + 128, y + 24],
+      [x + 190, y + 36],
+    ]) {
       await inputSession.send("Input.dispatchMouseEvent", {
-        type: "mouseReleased",
-        x: x + 190,
-        y: y + 36,
+        type: "mouseMoved",
+        x: moveX,
+        y: moveY,
         button: "left",
-        buttons: 0,
-        clickCount: 1,
+        buttons: 1,
       });
     }
+    await inputSession.send("Input.dispatchMouseEvent", {
+      type: "mouseReleased",
+      x: x + 190,
+      y: y + 36,
+      button: "left",
+      buttons: 0,
+      clickCount: 1,
+    });
   } finally {
     await inputSession.detach();
   }
