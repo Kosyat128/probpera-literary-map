@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
 export default function TranslationSubmitButton({
@@ -7,7 +8,7 @@ export default function TranslationSubmitButton({
   disabled = false,
   pendingLabel = "Перевожу…",
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   disabled?: boolean;
   pendingLabel?: string;
 }) {
