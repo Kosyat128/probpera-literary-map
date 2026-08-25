@@ -19,6 +19,7 @@ import { installSafeWebStorage } from './utils/safeWebStorage';
 import './index.css';
 import './community/community-accessibility.css';
 import './styles/stage5-home-art-direction.css';
+import './styles/stage5-home-layout.css';
 
 installSafeWebStorage();
 

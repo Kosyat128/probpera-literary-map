@@ -322,3 +322,48 @@ not modified or inferred by Stage 5B.
 
 STAGE 5B TYPOGRAPHY AND ART DIRECTION:
 READY FOR REVIEW
+
+## Stage 5C closure
+
+Stage 5C is complete as a scoped homepage structure and community checkpoint on
+base 9e75dc01bc143e0330264c72da74eb7b35018902. The final immutable branch head
+is recorded in the substage PR after commit creation.
+
+### Implemented contract
+
+- Reordered whole homepage blocks to Article Library, Authors, Sections,
+  Calendar, Community, Trust, and Footer without changing locked content or
+  component ownership.
+- Grouped Editorial Standard and Book Fact beside Book Month on desktop, as a
+  compact supporting pair on tablet, and as a clean stack on mobile.
+- Added one late scoped stylesheet with 4/2/1 Authors and Sections grids.
+  Sections use shared six-row subgrid tracks; empty landmarks remain reserved
+  on desktop/tablet and disappear only on compact mobile.
+- Bounded author cards at 420px desktop/tablet and 400px mobile.
+- Reflowed Community without removing its art, statistics, forum/account
+  actions, or CMS markers. Its three prompts share height, padding, and text
+  baselines; statistics remain supporting and CTAs remain grouped.
+- Added no paint override, nth/per-card hack, hidden-overflow workaround, image
+  pack, font, translated prose, or data layer. Header/Hero, Globe, Book Archive,
+  article content, URLs, and catalogs are unchanged.
+
+### Verification and visual evidence
+
+- Focused Vitest passed 17/17; TypeScript tsc --noEmit passed.
+- The production Vite diagnostic built 1030 modules; CSS measured 334.26 KB raw
+  / 61.07 KB gzip.
+- The unchanged performance budget passed at 106600241 / 115081216 total bytes
+  and 67025075 / 75497472 bytes excluding book covers.
+- One targeted Playwright scenario passed all 1440x900, 1024x768, and 390x844
+  assertions for order, 4/2/1 grids, Sections landmark delta <=2px, Book Month
+  flow, Community prompt rhythm, author caps, and horizontal overflow.
+- reports/stage5c-layout-community/visual/ contains 12 compact WebP captures
+  (800172 bytes), with zero browser/page errors and zero horizontal overflow.
+  Human review found no clipping, overlap, title-wrap, grid, or order regression.
+
+Remote mandatory checks are intentionally not claimed here before the PR
+exists. Their exact run, tested head, integration checkpoint, and merge state
+are recorded in the PR.
+
+STAGE 5C STRUCTURE AND COMMUNITY:
+READY FOR REVIEW

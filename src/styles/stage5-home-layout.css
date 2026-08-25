@@ -1,0 +1,298 @@
+/* Stage 5C: scoped homepage composition, shared card rows, and responsive flow. */
+
+#book-day.daily-grid {
+  grid-template-columns: minmax(0, 1.22fr) minmax(340px, 0.78fr);
+  grid-template-rows: auto;
+  align-items: stretch;
+}
+
+#book-day > .book-of-day {
+  grid-row: auto;
+  min-height: 0;
+}
+
+#book-day > .book-month-supporting {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 22px;
+  min-width: 0;
+}
+
+#book-day .editorial-standard,
+#book-day .book-fact-card {
+  min-width: 0;
+  min-height: 0;
+}
+
+#book-day .editorial-standard {
+  padding: clamp(28px, 3vw, 44px);
+}
+
+#book-day .book-fact-card {
+  padding: clamp(22px, 2.4vw, 34px);
+}
+
+#authors .author-showcase {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+#authors .author-showcase button {
+  height: clamp(360px, 28vw, 420px);
+  min-height: 0;
+  max-height: 420px;
+}
+
+#authors .author-showcase .author-showcase-portrait {
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+}
+
+#sections > .sections-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: row;
+  align-items: stretch;
+}
+
+#sections .section-directory-card {
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+  min-height: 0;
+}
+
+#sections .section-directory-card > div {
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  align-content: stretch;
+  min-height: 100%;
+}
+
+#sections .section-directory-card h3 {
+  align-self: start;
+}
+
+#sections .section-card-action {
+  display: flex;
+  align-items: stretch;
+}
+
+#sections .section-card-action > a {
+  width: 100%;
+}
+
+#community.community-section {
+  grid-template-columns: minmax(0, 1.06fr) minmax(380px, 0.94fr);
+  min-height: 0;
+}
+
+#community > .community-illustration {
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
+  min-height: 0;
+  padding: clamp(48px, 5vw, 76px);
+}
+
+#community .community-reading-notes {
+  grid-template-rows: auto repeat(3, minmax(68px, 1fr));
+  align-items: stretch;
+  min-width: 0;
+}
+
+#community .community-reading-notes button {
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 68px;
+  padding: 12px 14px 12px 17px;
+}
+
+#community .community-reading-notes button > span,
+#community .community-reading-notes strong {
+  min-width: 0;
+}
+
+#community .community-reading-notes strong {
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+#community .community-visual-stats {
+  width: 100%;
+  max-width: none;
+}
+
+#community .community-visual-stats > span {
+  min-width: 0;
+}
+
+#community .community-visual-stats strong {
+  font-size: clamp(19px, 1.4vw, 24px);
+}
+
+#community .community-visual-stats small {
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  overflow-wrap: anywhere;
+}
+
+#community .community-copy {
+  min-width: 0;
+}
+
+#community .community-actions {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+#community .community-actions > button {
+  min-width: min(100%, 180px);
+}
+
+@media (min-width: 681px) {
+  #sections .section-card-series-slot,
+  #sections .section-card-latest-slot {
+    display: flex;
+  }
+
+  #sections .section-card-series-slot {
+    min-height: 72px;
+  }
+
+  #sections .section-card-latest-slot {
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 1180px) {
+  #book-day.daily-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #book-day > .book-of-day {
+    min-height: clamp(480px, 52vw, 560px);
+  }
+
+  #book-day > .book-month-supporting {
+    grid-template-columns: minmax(0, 1.12fr) minmax(250px, 0.88fr);
+    grid-template-rows: auto;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  #book-day .book-fact-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  #authors .author-showcase,
+  #sections > .sections-directory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #authors .author-showcase button {
+    height: clamp(360px, 38vw, 420px);
+  }
+
+  #community.community-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #community > .community-illustration {
+    min-height: 0;
+  }
+
+  #community > .community-copy {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 680px) {
+  #book-day.daily-grid {
+    gap: 16px;
+  }
+
+  #book-day > .book-of-day,
+  #book-day .editorial-standard,
+  #book-day .book-fact-card {
+    min-height: 0;
+  }
+
+  #book-day > .book-month-supporting {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  #book-day .editorial-standard {
+    padding: 24px 20px;
+  }
+
+  #book-day .book-fact-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  #authors .author-showcase,
+  #sections > .sections-directory-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #authors .author-showcase button {
+    height: clamp(340px, 108vw, 400px);
+    max-height: 400px;
+  }
+
+  #sections .section-directory-card {
+    grid-row: auto;
+    grid-template-rows: auto;
+  }
+
+  #sections .section-directory-card > div {
+    grid-row: auto;
+    grid-template-rows: repeat(6, auto);
+  }
+
+  #sections .section-card-series-slot:empty,
+  #sections .section-card-latest-slot:empty {
+    display: none;
+  }
+
+  #community > .community-illustration {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 24px;
+    min-height: 0;
+    padding: 36px 20px 30px;
+  }
+
+  #community .community-reading-notes {
+    grid-template-rows: auto repeat(3, minmax(64px, 1fr));
+  }
+
+  #community .community-reading-notes button {
+    min-height: 64px;
+    padding: 12px 13px 12px 16px;
+  }
+
+  #community .community-copy {
+    padding: 32px 20px 56px;
+  }
+
+  #community .community-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #community .community-actions > button {
+    width: 100%;
+    min-width: 0;
+  }
+}

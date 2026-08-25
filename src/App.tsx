@@ -2595,6 +2595,7 @@ export default function App() {
             </div>
           </article>
 
+          <div className="book-month-supporting">
           <article
             className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
             id="about"
@@ -2699,6 +2700,7 @@ export default function App() {
               </a>
             </div>
           </article>
+          </div>
         </section>
 
         <Suspense
@@ -2860,164 +2862,6 @@ export default function App() {
         >
           <ArticleLibrarySection />
         </Suspense>
-
-        <section
-          className={`community-section${coreHomepageSectionClass(coreCommunity)}`}
-          id="community"
-          style={coreHomepageSectionStyle(coreCommunity)}
-          {...cmsCoreFieldMarker(
-            "community",
-            "backgroundMediaId",
-            coreCommunity?.backgroundImageUrl || "",
-            { kind: "image", label: "Фон сообщества" }
-          )}
-        >
-          <div className="community-illustration">
-            <div className="community-visual-intro">
-              <span className="section-kicker">{t("Разговор после чтения")}</span>
-              <blockquote>
-                {t(
-                  "Чтение становится событием, когда мысль продолжается в разговоре."
-                )}
-              </blockquote>
-              <p>
-                {t(
-                  "Выберите тему, продолжите мысль из статьи или предложите собственный маршрут чтения."
-                )}
-              </p>
-              <div className="community-visual-rule">
-                <span>{t("Редакционный принцип клуба")}</span>
-                <i aria-hidden="true" />
-              </div>
-            </div>
-            <div className="community-reading-notes" aria-label={t("Темы для разговора")}>
-              <span>{t("С чего начать разговор")}</span>
-              <button type="button" onClick={() => openCommunity("forum")}>
-                <i aria-hidden="true">01</i>
-                <span>
-                  <small>{t("Читательский дневник")}</small>
-                  <strong>{t("Какая книга не отпускает вас сейчас?")}</strong>
-                </span>
-              </button>
-              <button type="button" onClick={() => openCommunity("forum")}>
-                <i aria-hidden="true">02</i>
-                <span>
-                  <small>{t("Искусство перевода")}</small>
-                  <strong>{t("Когда перевод становится новой книгой")}</strong>
-                </span>
-              </button>
-              <button type="button" onClick={() => openCommunity("forum")}>
-                <i aria-hidden="true">03</i>
-                <span>
-                  <small>{t("Литературная планета")}</small>
-                  <strong>{t("Соберите собственный маршрут чтения")}</strong>
-                </span>
-              </button>
-            </div>
-            <div
-              className="community-visual-stats"
-              aria-label={t("Энциклопедия сообщества")}
-            >
-              <span>
-                <strong>
-                  {totalWriters ? number(totalWriters) : "—"}
-                </strong>
-                <small>{t("авторов в энциклопедии")}</small>
-              </span>
-              <span>
-                <strong>
-                  {totalWorks ? number(totalWorks) : "—"}
-                </strong>
-                <small>{t("произведений в архиве")}</small>
-              </span>
-              <span>
-                <strong>
-                  {archiveStatistics.countries
-                    ? number(archiveStatistics.countries)
-                    : "—"}
-                </strong>
-                <small>{t("стран на карте")}</small>
-              </span>
-            </div>
-          </div>
-          <div className="community-copy">
-            <span
-              className="section-kicker"
-              {...cmsCoreFieldMarker(
-                "community",
-                "eyebrow",
-                coreCommunity?.eyebrow || "Литературное сообщество",
-                { label: "Надзаголовок сообщества" }
-              )}
-            >
-              {language === "ru" && coreCommunity?.eyebrow
-                ? coreCommunity.eyebrow
-                : t("Литературное сообщество")}
-            </span>
-            <h2
-              {...cmsCoreFieldMarker(
-                "community",
-                "title",
-                coreCommunity?.title || "Клуб внимательных читателей",
-                { label: "Заголовок сообщества" }
-              )}
-            >
-              {language === "ru" && coreCommunity?.title
-                ? coreCommunity.title
-                : t("Клуб внимательных читателей")}
-            </h2>
-            <p
-              {...cmsCoreFieldMarker(
-                "community",
-                "description",
-                coreCommunity?.description ||
-                  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
-                { kind: "textarea", label: "Описание сообщества" }
-              )}
-            >
-              {language === "ru" && coreCommunity?.description
-                ? coreCommunity.description
-                : t(
-                    "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
-                  )}
-            </p>
-            <p className="community-copy-note">
-              {t(
-                "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки."
-              )}
-            </p>
-            <ul>
-              <li>{t("Разговоры о книгах, статьях, переводах и экранизациях")}</li>
-              <li>{t("Оценки, комментарии и тематические подборки читателей")}</li>
-              <li>{t("Личная библиотека, любимые авторы, страны и история участия")}</li>
-            </ul>
-            <div>
-              <Button
-                variant="primary"
-                onClick={() => openCommunity("forum")}
-                {...cmsCoreFieldMarker(
-                  "community",
-                  "buttonText",
-                  coreCommunity?.buttonText || "Открыть форум",
-                  { label: "Кнопка сообщества" }
-                )}
-              >
-                {language === "ru" && coreCommunity?.buttonText
-                  ? coreCommunity.buttonText
-                  : t("Открыть форум")}
-              </Button>
-              {!user && (
-                <Button
-                  surface="dark"
-                  variant="secondary"
-                  onClick={() => openCommunity("account")}
-                >
-                  {t("Вступить в клуб")}
-                </Button>
-              )}
-            </div>
-          </div>
-        </section>
 
         <section
           className={`authors-section painted-paper-section${coreHomepageSectionClass(coreAuthors)}`}
@@ -3207,6 +3051,196 @@ export default function App() {
         </section>
 
         <section
+          id="calendar"
+          className={`calendar-section painted-paper-section${coreHomepageSectionClass(coreCalendar)}`}
+          style={coreHomepageSectionStyle(coreCalendar)}
+          {...cmsCoreFieldMarker(
+            "calendar",
+            "backgroundMediaId",
+            coreCalendar?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон литературного календаря" }
+          )}
+        >
+          <Suspense
+            fallback={
+              <div className="calendar-card">
+                {t("Собираем литературные даты…")}
+              </div>
+            }
+          >
+            <LiteraryCalendar
+              countries={countryArchive}
+              eyebrow={coreCalendar?.eyebrow}
+              title={coreCalendar?.title}
+              description={coreCalendar?.description}
+              onCountrySelect={(country, writer) =>
+                writer
+                  ? selectWriterAndFocus(country, writer)
+                  : selectCountry(country, true)
+              }
+            />
+          </Suspense>
+        </section>
+
+        <section
+          className={`community-section${coreHomepageSectionClass(coreCommunity)}`}
+          id="community"
+          style={coreHomepageSectionStyle(coreCommunity)}
+          {...cmsCoreFieldMarker(
+            "community",
+            "backgroundMediaId",
+            coreCommunity?.backgroundImageUrl || "",
+            { kind: "image", label: "Фон сообщества" }
+          )}
+        >
+          <div className="community-illustration">
+            <div className="community-visual-intro">
+              <span className="section-kicker">{t("Разговор после чтения")}</span>
+              <blockquote>
+                {t(
+                  "Чтение становится событием, когда мысль продолжается в разговоре."
+                )}
+              </blockquote>
+              <p>
+                {t(
+                  "Выберите тему, продолжите мысль из статьи или предложите собственный маршрут чтения."
+                )}
+              </p>
+              <div className="community-visual-rule">
+                <span>{t("Редакционный принцип клуба")}</span>
+                <i aria-hidden="true" />
+              </div>
+            </div>
+            <div className="community-reading-notes" aria-label={t("Темы для разговора")}>
+              <span>{t("С чего начать разговор")}</span>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">01</i>
+                <span>
+                  <small>{t("Читательский дневник")}</small>
+                  <strong>{t("Какая книга не отпускает вас сейчас?")}</strong>
+                </span>
+              </button>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">02</i>
+                <span>
+                  <small>{t("Искусство перевода")}</small>
+                  <strong>{t("Когда перевод становится новой книгой")}</strong>
+                </span>
+              </button>
+              <button type="button" onClick={() => openCommunity("forum")}>
+                <i aria-hidden="true">03</i>
+                <span>
+                  <small>{t("Литературная планета")}</small>
+                  <strong>{t("Соберите собственный маршрут чтения")}</strong>
+                </span>
+              </button>
+            </div>
+            <div
+              className="community-visual-stats"
+              aria-label={t("Энциклопедия сообщества")}
+            >
+              <span>
+                <strong>
+                  {totalWriters ? number(totalWriters) : "—"}
+                </strong>
+                <small>{t("авторов в энциклопедии")}</small>
+              </span>
+              <span>
+                <strong>
+                  {totalWorks ? number(totalWorks) : "—"}
+                </strong>
+                <small>{t("произведений в архиве")}</small>
+              </span>
+              <span>
+                <strong>
+                  {archiveStatistics.countries
+                    ? number(archiveStatistics.countries)
+                    : "—"}
+                </strong>
+                <small>{t("стран на карте")}</small>
+              </span>
+            </div>
+          </div>
+          <div className="community-copy">
+            <span
+              className="section-kicker"
+              {...cmsCoreFieldMarker(
+                "community",
+                "eyebrow",
+                coreCommunity?.eyebrow || "Литературное сообщество",
+                { label: "Надзаголовок сообщества" }
+              )}
+            >
+              {language === "ru" && coreCommunity?.eyebrow
+                ? coreCommunity.eyebrow
+                : t("Литературное сообщество")}
+            </span>
+            <h2
+              {...cmsCoreFieldMarker(
+                "community",
+                "title",
+                coreCommunity?.title || "Клуб внимательных читателей",
+                { label: "Заголовок сообщества" }
+              )}
+            >
+              {language === "ru" && coreCommunity?.title
+                ? coreCommunity.title
+                : t("Клуб внимательных читателей")}
+            </h2>
+            <p
+              {...cmsCoreFieldMarker(
+                "community",
+                "description",
+                coreCommunity?.description ||
+                  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
+                { kind: "textarea", label: "Описание сообщества" }
+              )}
+            >
+              {language === "ru" && coreCommunity?.description
+                ? coreCommunity.description
+                : t(
+                    "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
+                  )}
+            </p>
+            <p className="community-copy-note">
+              {t(
+                "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки."
+              )}
+            </p>
+            <ul>
+              <li>{t("Разговоры о книгах, статьях, переводах и экранизациях")}</li>
+              <li>{t("Оценки, комментарии и тематические подборки читателей")}</li>
+              <li>{t("Личная библиотека, любимые авторы, страны и история участия")}</li>
+            </ul>
+            <div className="community-actions">
+              <Button
+                variant="primary"
+                onClick={() => openCommunity("forum")}
+                {...cmsCoreFieldMarker(
+                  "community",
+                  "buttonText",
+                  coreCommunity?.buttonText || "Открыть форум",
+                  { label: "Кнопка сообщества" }
+                )}
+              >
+                {language === "ru" && coreCommunity?.buttonText
+                  ? coreCommunity.buttonText
+                  : t("Открыть форум")}
+              </Button>
+              {!user && (
+                <Button
+                  surface="dark"
+                  variant="secondary"
+                  onClick={() => openCommunity("account")}
+                >
+                  {t("Вступить в клуб")}
+                </Button>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section
           className={`trust-center${coreHomepageSectionClass(coreTrust)}`}
           id="editorial-policy"
           style={coreHomepageSectionStyle(coreTrust)}
@@ -3321,38 +3355,6 @@ export default function App() {
               </p>
             </details>
           </div>
-        </section>
-
-        <section
-          id="calendar"
-          className={`calendar-section painted-paper-section${coreHomepageSectionClass(coreCalendar)}`}
-          style={coreHomepageSectionStyle(coreCalendar)}
-          {...cmsCoreFieldMarker(
-            "calendar",
-            "backgroundMediaId",
-            coreCalendar?.backgroundImageUrl || "",
-            { kind: "image", label: "Фон литературного календаря" }
-          )}
-        >
-          <Suspense
-            fallback={
-              <div className="calendar-card">
-                {t("Собираем литературные даты…")}
-              </div>
-            }
-          >
-            <LiteraryCalendar
-              countries={countryArchive}
-              eyebrow={coreCalendar?.eyebrow}
-              title={coreCalendar?.title}
-              description={coreCalendar?.description}
-              onCountrySelect={(country, writer) =>
-                writer
-                  ? selectWriterAndFocus(country, writer)
-                  : selectCountry(country, true)
-              }
-            />
-          </Suspense>
         </section>
       </main>
 

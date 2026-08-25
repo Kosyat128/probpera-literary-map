@@ -1,0 +1,201 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/probpera-literary-map/",
+  "capturedAt": "2026-08-25T19:16:42.900Z",
+  "browser": "151.0.7922.170",
+  "method": "Playwright viewport captures with reduced motion, disabled transitions, and WebP encoding",
+  "captures": [
+    {
+      "file": "ru-1440x900-book-month.webp",
+      "locale": "ru",
+      "selector": "#book-day",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "anchor": {
+        "height": 1009,
+        "top": 72,
+        "width": 1440
+      },
+      "backgroundImage": "linear-gradient(135deg, rgba(249, 241, 224, 0.96), rgba(255, 252, 245, 0.92))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "ru-1440x900-authors.webp",
+      "locale": "ru",
+      "selector": "#authors",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "anchor": {
+        "height": 731,
+        "top": 72,
+        "width": 1440
+      },
+      "backgroundImage": "radial-gradient(circle at 8% 84%, rgba(246, 117, 24, 0.07), rgba(0, 0, 0, 0) 352px), radial-gradient(circle at 92% 8%, rgba(76, 8, 124, 0.06), rgba(0, 0, 0, 0) 400px), linear-gradient(145deg, rgb(255, 253, 248), rgb(255, 250, 242) 54%, rgb(245, 234, 219))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "ru-1440x900-sections.webp",
+      "locale": "ru",
+      "selector": "#sections",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "anchor": {
+        "height": 1370,
+        "top": 72,
+        "width": 1440
+      },
+      "backgroundImage": "radial-gradient(circle at 86% 16%, rgba(246, 117, 24, 0.1), rgba(0, 0, 0, 0) 432px), radial-gradient(circle at 11% 88%, rgba(104, 16, 201, 0.18), rgba(0, 0, 0, 0) 400px), linear-gradient(135deg, rgb(36, 8, 58), rgb(17, 3, 29) 74%)",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "ru-1440x900-calendar.webp",
+      "locale": "ru",
+      "selector": "#calendar",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "anchor": {
+        "height": 2031,
+        "top": 72,
+        "width": 1440
+      },
+      "backgroundImage": "linear-gradient(135deg, rgba(249, 241, 224, 0.96), rgba(255, 252, 245, 0.92))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "ru-1440x900-community.webp",
+      "locale": "ru",
+      "selector": "#community",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "anchor": {
+        "height": 846,
+        "top": 72,
+        "width": 1440
+      },
+      "backgroundImage": "radial-gradient(circle at 80% 12%, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 400px), radial-gradient(circle at 16% 86%, rgba(104, 16, 201, 0.16), rgba(0, 0, 0, 0) 384px), linear-gradient(137deg, rgb(23, 5, 31), rgb(9, 1, 15) 76%)",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-1024x768-book-month.webp",
+      "locale": "en",
+      "selector": "#book-day",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "anchor": {
+        "height": 1102,
+        "top": 72,
+        "width": 1024
+      },
+      "backgroundImage": "linear-gradient(135deg, rgba(249, 241, 224, 0.96), rgba(255, 252, 245, 0.92))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-1024x768-sections.webp",
+      "locale": "en",
+      "selector": "#sections",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "anchor": {
+        "height": 2006,
+        "top": 72,
+        "width": 1024
+      },
+      "backgroundImage": "radial-gradient(circle at 86% 16%, rgba(246, 117, 24, 0.1), rgba(0, 0, 0, 0) 432px), radial-gradient(circle at 11% 88%, rgba(104, 16, 201, 0.18), rgba(0, 0, 0, 0) 400px), linear-gradient(135deg, rgb(36, 8, 58), rgb(17, 3, 29) 74%)",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-1024x768-community.webp",
+      "locale": "en",
+      "selector": "#community",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "anchor": {
+        "height": 1125,
+        "top": 72,
+        "width": 1024
+      },
+      "backgroundImage": "radial-gradient(circle at 80% 12%, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 400px), radial-gradient(circle at 16% 86%, rgba(104, 16, 201, 0.16), rgba(0, 0, 0, 0) 384px), linear-gradient(137deg, rgb(23, 5, 31), rgb(9, 1, 15) 76%)",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-390x844-book-month.webp",
+      "locale": "en",
+      "selector": "#book-day",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "anchor": {
+        "height": 1447,
+        "top": 72,
+        "width": 390
+      },
+      "backgroundImage": "linear-gradient(135deg, rgba(249, 241, 224, 0.96), rgba(255, 252, 245, 0.92))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-390x844-authors.webp",
+      "locale": "en",
+      "selector": "#authors",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "anchor": {
+        "height": 2077,
+        "top": 72,
+        "width": 390
+      },
+      "backgroundImage": "radial-gradient(circle at 8% 84%, rgba(246, 117, 24, 0.07), rgba(0, 0, 0, 0) 352px), radial-gradient(circle at 92% 8%, rgba(76, 8, 124, 0.06), rgba(0, 0, 0, 0) 400px), linear-gradient(145deg, rgb(255, 253, 248), rgb(255, 250, 242) 54%, rgb(245, 234, 219))",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-390x844-sections.webp",
+      "locale": "en",
+      "selector": "#sections",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "anchor": {
+        "height": 2722,
+        "top": 72,
+        "width": 390
+      },
+      "backgroundImage": "radial-gradient(circle at 86% 16%, rgba(246, 117, 24, 0.1), rgba(0, 0, 0, 0) 432px), radial-gradient(circle at 11% 88%, rgba(104, 16, 201, 0.18), rgba(0, 0, 0, 0) 400px), linear-gradient(135deg, rgb(36, 8, 58), rgb(17, 3, 29) 74%)",
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "en-390x844-community.webp",
+      "locale": "en",
+      "selector": "#community",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "anchor": {
+        "height": 1508,
+        "top": 72,
+        "width": 390
+      },
+      "backgroundImage": "radial-gradient(circle at 80% 12%, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 400px), radial-gradient(circle at 16% 86%, rgba(104, 16, 201, 0.16), rgba(0, 0, 0, 0) 384px), linear-gradient(137deg, rgb(23, 5, 31), rgb(9, 1, 15) 76%)",
+      "horizontalOverflow": 0
+    }
+  ],
+  "browserErrors": []
+}
