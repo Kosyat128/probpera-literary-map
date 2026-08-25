@@ -94,7 +94,7 @@ describe("premium English translation", () => {
     expect(secondBody.input).toContain("SOURCE_DATA");
   });
 
-  it("uses Workers AI for both free premium passes without an OpenAI key", async () => {
+  it("uses Gemma translation plus gpt-oss-120b final review on Workers AI", async () => {
     const run = vi
       .fn()
       .mockResolvedValueOnce({
@@ -105,7 +105,7 @@ describe("premium English translation", () => {
       })
       .mockResolvedValueOnce({
         id: "cf_review",
-        model: "@cf/zai-org/glm-4.7-flash",
+        model: "@cf/openai/gpt-oss-120b",
         response: { text: "Final Workers AI English" },
         usage: { prompt_tokens: 125, completion_tokens: 30 },
       });
@@ -123,7 +123,7 @@ describe("premium English translation", () => {
 
     expect(run).toHaveBeenCalledTimes(2);
     expect(run.mock.calls[0]?.[0]).toBe("@cf/google/gemma-4-26b-a4b-it");
-    expect(run.mock.calls[1]?.[0]).toBe("@cf/zai-org/glm-4.7-flash");
+    expect(run.mock.calls[1]?.[0]).toBe("@cf/openai/gpt-oss-120b");
     expect(result.value.text).toBe("Final Workers AI English");
     expect(result.translatorRequestId).toBe("cf_translate");
     expect(result.reviewerRequestId).toBe("cf_review");
@@ -138,6 +138,10 @@ describe("premium English translation", () => {
       type: "json_schema",
       json_schema: schema,
     });
+    expect(firstInput.max_completion_tokens).toBe(30_000);
+    expect(firstInput).not.toHaveProperty("max_tokens");
+    expect(secondInput.max_tokens).toBe(30_000);
+    expect(secondInput).not.toHaveProperty("max_completion_tokens");
     expect(JSON.stringify(secondInput)).toContain("DRAFT_TRANSLATION");
     expect(JSON.stringify(secondInput)).toContain("SOURCE_DATA");
   });
