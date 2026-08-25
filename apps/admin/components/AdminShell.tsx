@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import ArticleWorkspaceTools from "@/components/ArticleWorkspaceTools";
 import type { StaffSession } from "@/lib/auth";
 import { adminBasePath, withAdminBasePath } from "@/lib/navigation";
 import { logoutAction } from "@/app/(auth)/login/actions";
@@ -30,6 +31,10 @@ const navigation = [
   ["↺", "История изменений", "/history"],
 ] as const;
 
+function isArticleEditorPath(pathname: string) {
+  return /^\/articles\/(?:new|edit|[0-9a-f-]{36})$/iu.test(pathname);
+}
+
 export default function AdminShell({
   session,
   publicSiteUrl,
@@ -45,6 +50,7 @@ export default function AdminShell({
       ? pathname
       : pathname.replace(new RegExp(`^${adminBasePath.replace("/", "\\/")}(?=/|$)`, "u"), "") ||
         "/";
+  const showArticleWorkspace = isArticleEditorPath(normalizedPathname);
 
   return (
     <div className="admin-layout">
@@ -96,7 +102,10 @@ export default function AdminShell({
             Открыть сайт ↗
           </a>
         </header>
-        <main className="admin-content">{children}</main>
+        <main className="admin-content">
+          {showArticleWorkspace && <ArticleWorkspaceTools />}
+          {children}
+        </main>
       </div>
     </div>
   );
