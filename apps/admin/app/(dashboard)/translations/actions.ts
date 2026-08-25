@@ -22,9 +22,15 @@ import {
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { readSiteCopyValues } from "@/lib/site-copy-storage";
+import {
+  advanceBackfillCursor,
+  circularBackfillIndex,
+  normalizeBackfillCursor,
+} from "@/lib/translation-backfill-cursor";
 
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 const MAX_LIBRARY_TRANSLATIONS = 4;
+const MAX_LIBRARY_SCAN = 60;
 const MAX_WRITER_TRANSLATIONS = 3;
 const MAX_WRITER_SCAN = 120;
 const MAX_SITE_COPY_TRANSLATIONS = 50;
@@ -58,7 +64,7 @@ function publicBuildMetadata(kind: string, translated: number) {
   };
 }
 
-export async function translatePremiumLibraryBatchAction() {
+export async function translatePremiumLibraryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   if (!adminEnv.premiumTranslationConfigured) {
@@ -80,13 +86,32 @@ export async function translatePremiumLibraryBatchAction() {
     );
   }
 
-  const russianRows = await supabase
+  const countResponse = await supabase
     .from("literary_work_translations")
-    .select("work_id")
+    .select("work_id", { count: "exact", head: true })
     .eq("locale", "ru")
-    .in("editorial_status", ["reviewed", "verified"])
-    .order("updated_at", { ascending: true })
-    .limit(60);
+    .in("editorial_status", ["reviewed", "verified"]);
+  if (countResponse.error) {
+    redirect(translationsUrl({ error: countResponse.error.message }));
+  }
+  const totalCandidates = countResponse.count || 0;
+  const startCursor = normalizeBackfillCursor(
+    formData.get("backfill_cursor"),
+    totalCandidates
+  );
+
+  const russianRows = totalCandidates
+    ? await supabase
+        .from("literary_work_translations")
+        .select("work_id")
+        .eq("locale", "ru")
+        .in("editorial_status", ["reviewed", "verified"])
+        .order("updated_at", { ascending: true })
+        .range(
+          startCursor,
+          Math.min(startCursor + MAX_LIBRARY_SCAN - 1, totalCandidates - 1)
+        )
+    : { data: [], error: null };
   if (russianRows.error) {
     redirect(translationsUrl({ error: russianRows.error.message }));
   }
@@ -96,11 +121,13 @@ export async function translatePremiumLibraryBatchAction() {
   let manual = 0;
   let skipped = 0;
   let failed = 0;
+  let processed = 0;
   const uniqueWorkIds = [
     ...new Set((russianRows.data || []).map((row) => String(row.work_id))),
   ];
   for (const workId of uniqueWorkIds) {
     if (translated >= MAX_LIBRARY_TRANSLATIONS) break;
+    processed += 1;
     const result = await ensureLiteraryWorkEnglishTranslation({
       supabase,
       actorId: session.user.id,
@@ -112,6 +139,11 @@ export async function translatePremiumLibraryBatchAction() {
     else if (result.state === "failed" || result.state === "conflict") failed += 1;
     else skipped += 1;
   }
+  const nextLibraryCursor = advanceBackfillCursor(
+    startCursor,
+    processed,
+    totalCandidates
+  );
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -132,6 +164,7 @@ export async function translatePremiumLibraryBatchAction() {
     translationsUrl({
       success: `Книги: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
+      libraryCursor: nextLibraryCursor,
     })
   );
 }
@@ -171,7 +204,7 @@ function staticWriterCandidates(editorialCatalog: EditorialCatalog) {
   return candidates;
 }
 
-export async function translatePremiumWriterBatchAction() {
+export async function translatePremiumWriterBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   if (!adminEnv.premiumTranslationConfigured) {
@@ -184,16 +217,26 @@ export async function translatePremiumWriterBatchAction() {
   if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
 
   const editorialCatalog = await loadEditorialCatalog();
+  const candidates = staticWriterCandidates(editorialCatalog);
+  const startCursor = normalizeBackfillCursor(
+    formData.get("backfill_cursor"),
+    candidates.length
+  );
   let translated = 0;
   let current = 0;
   let manual = 0;
   let skipped = 0;
   let failed = 0;
-  let scanned = 0;
+  let processed = 0;
+  const scanLimit = Math.min(MAX_WRITER_SCAN, candidates.length);
 
-  for (const candidate of staticWriterCandidates(editorialCatalog)) {
-    if (translated >= MAX_WRITER_TRANSLATIONS || scanned >= MAX_WRITER_SCAN) break;
-    scanned += 1;
+  for (let step = 0; step < scanLimit; step += 1) {
+    if (translated >= MAX_WRITER_TRANSLATIONS) break;
+    const candidate = candidates[
+      circularBackfillIndex(startCursor, step, candidates.length)
+    ];
+    if (!candidate) break;
+    processed += 1;
     const result = await ensureWriterEnglishBiography({
       supabase,
       actorId: session.user.id,
@@ -205,6 +248,11 @@ export async function translatePremiumWriterBatchAction() {
     else if (result.state === "failed" || result.state === "conflict") failed += 1;
     else skipped += 1;
   }
+  const nextWriterCursor = advanceBackfillCursor(
+    startCursor,
+    processed,
+    candidates.length
+  );
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -225,6 +273,7 @@ export async function translatePremiumWriterBatchAction() {
     translationsUrl({
       success: `Биографии: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
+      writerCursor: nextWriterCursor,
     })
   );
 }
