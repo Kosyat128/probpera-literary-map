@@ -8,6 +8,7 @@ import {
 import { articleTranslationSourceHash } from "./article-translations";
 import { translateArticleSourceToEnglish } from "./auto-translate-article";
 import { adminEnv } from "./env";
+import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 import { createSlug } from "./slug";
 
 type ArticleRow = {
@@ -73,7 +74,7 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateArticles) return { state: "skipped" };
-  if (!adminEnv.openAiApiKey) return { state: "not-configured" };
+  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
 
   const articleResponse = await input.supabase
     .from("articles")
@@ -281,6 +282,7 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "premium article translation failed";
+    const runtime = premiumTranslationRuntimeMetadata();
     await input.supabase.from("admin_audit_log").insert({
       actor_id: input.actorId,
       action: "article.premium_translation.backfill.failed",
@@ -288,8 +290,9 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
       entity_id: article.id,
       metadata: {
         locale: "en",
-        model: adminEnv.openAiTranslationModel,
-        reviewer_model: adminEnv.openAiTranslationReviewModel,
+        provider: runtime.provider,
+        model: runtime.model,
+        reviewer_model: runtime.reviewerModel,
         error: message.slice(0, 500),
         duration_ms: Date.now() - startedAt,
       },
