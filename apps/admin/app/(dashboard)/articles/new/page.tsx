@@ -5,6 +5,7 @@ import ArticleEditor, {
 import ArticleCopyPicker, {
   type CopyableArticle,
 } from "@/components/ArticleCopyPicker";
+import { INITIAL_ARTICLE_COPY_OPTIONS_LIMIT } from "@/lib/article-copy-search";
 import { adminEnv } from "@/lib/env";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -56,7 +57,7 @@ export default async function NewArticlePage({
       .select("id,title,status,updated_at")
       .is("deleted_at", null)
       .order("updated_at", { ascending: false })
-      .limit(500),
+      .limit(INITIAL_ARTICLE_COPY_OPTIONS_LIMIT),
     copyFromId
       ? supabase
           .from("articles")
@@ -163,8 +164,8 @@ export default async function NewArticlePage({
           <span className="eyebrow">Новый материал</span>
           <h1>Создать статью</h1>
           <p>
-            Выберите базовый материал и начинайте редактирование сразу: можно заменить
-            тему, текст, иллюстрации и настроить SEO.
+            Начните с чистого листа, готового шаблона или найдите существующую статью
+            как образец. Полный архив подгружается только по вашему поиску.
           </p>
         </div>
       </header>
