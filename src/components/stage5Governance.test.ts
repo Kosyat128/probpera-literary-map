@@ -276,7 +276,7 @@ describe("Stage 5A governance baseline", () => {
     );
   });
 
-  it("locks the complete current Stage 5A homepage landmark order", () => {
+  it("locks the complete current Stage 5C homepage landmark order", () => {
     const main = jsxNodes(app).filter(
       (node) => jsxTagName(node, app.sourceFile) === "main"
     );
@@ -297,11 +297,11 @@ describe("Stage 5A governance baseline", () => {
       "book-archive",
       "featured-journal",
       "article-library",
-      "community",
       "authors",
       "sections",
-      "trust",
       "calendar",
+      "community",
+      "trust",
     ]);
   });
 

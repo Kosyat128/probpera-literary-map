@@ -1,16 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-const PHASE_5A_LANDMARKS = [
+const PHASE_5C_LANDMARKS = [
   "#atlas",
   "#book-day",
   "#books",
   "#featured-journal",
   "#journal",
-  "#community",
   "#authors",
   "#sections",
-  "#editorial-policy",
   "#calendar",
+  "#community",
+  "#editorial-policy",
   ".site-footer",
 ];
 
@@ -27,13 +27,13 @@ async function openHomepage(page, locale = "ru") {
   await page.evaluate(() => document.fonts.ready);
 }
 
-test("phase 5A pins the current public database order without horizontal overflow", async ({
+test("phase 5C pins the current public database order without horizontal overflow", async ({
   page,
 }) => {
   await openHomepage(page);
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
 
-  for (const selector of PHASE_5A_LANDMARKS) {
+  for (const selector of PHASE_5C_LANDMARKS) {
     await expect(page.locator(selector), selector).toHaveCount(1);
   }
 
@@ -49,7 +49,7 @@ test("phase 5A pins the current public database order without horizontal overflo
         document.documentElement.scrollWidth -
         document.documentElement.clientWidth,
     };
-  }, PHASE_5A_LANDMARKS);
+  }, PHASE_5C_LANDMARKS);
 
   expect(baseline.overflow).toBeLessThanOrEqual(2);
   for (let index = 1; index < baseline.entries.length; index += 1) {
