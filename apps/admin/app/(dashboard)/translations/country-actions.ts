@@ -17,6 +17,7 @@ import {
   advanceBackfillCursor,
   circularBackfillIndex,
   normalizeBackfillCursor,
+  translationBackfillCursorParams,
 } from "@/lib/translation-backfill-cursor";
 
 const MAX_COUNTRY_TRANSLATIONS = 2;
@@ -35,18 +36,24 @@ function translationsUrl(values: Record<string, string | number | null | undefin
 export async function translatePremiumCountryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const cursorParams = translationBackfillCursorParams(formData);
   if (!adminEnv.premiumTranslationConfigured) {
     redirect(
-      translationsUrl({ error: premiumTranslationConfigurationError() })
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
     );
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+  }
 
   const editorialCatalog = await loadEditorialCatalog();
   const candidates = editorialCatalog.countries;
   const startCursor = normalizeBackfillCursor(
-    formData.get("backfill_cursor"),
+    cursorParams.countryCursor,
     candidates.length
   );
   let translated = 0;
@@ -109,6 +116,7 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
   revalidatePath("/editorial-database");
   redirect(
     translationsUrl({
+      ...cursorParams,
       success: `Страны: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
       countryCursor: nextCountryCursor,
