@@ -94,11 +94,7 @@ function findActionButton(
   );
 }
 
-export default function ArticleWorkspaceTools({
-  articleId,
-}: {
-  articleId?: string;
-}) {
+export default function ArticleWorkspaceTools() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const [snapshot, setSnapshot] = useState<WorkspaceSnapshot>({
@@ -107,7 +103,7 @@ export default function ArticleWorkspaceTools({
     ready: 0,
     total: 0,
     saveState: "Редактор готов",
-    canPreview: Boolean(articleId),
+    canPreview: false,
     canPublish: false,
   });
 
