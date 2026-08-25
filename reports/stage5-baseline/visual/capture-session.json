@@ -1,0 +1,2466 @@
+{
+  "schemaVersion": 1,
+  "releaseSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+  "priorVerifiedLiveRelease": {
+    "matches": true,
+    "expectedReleaseSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+    "evidence": "cache-busted live marker was verified earlier in this capture task before the live TLS/asset edge degraded"
+  },
+  "liveProbeAtResumeStart": {
+    "reachable": true,
+    "url": "https://probpera.ru/.well-known/probpera-release-head.json",
+    "status": 200,
+    "payload": {
+      "schemaVersion": 1,
+      "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "generatedAt": "2026-08-24T11:09:25.987Z"
+    },
+    "matches": true
+  },
+  "liveProbeAtResumeEnd": {
+    "reachable": true,
+    "url": "https://probpera.ru/.well-known/probpera-release-head.json",
+    "status": 200,
+    "payload": {
+      "schemaVersion": 1,
+      "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "generatedAt": "2026-08-24T11:09:25.987Z"
+    },
+    "matches": true
+  },
+  "artifact": {
+    "id": 9517505146,
+    "runId": 32719497676,
+    "embeddedReleaseHead": {
+      "schemaVersion": 1,
+      "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "generatedAt": "2026-08-24T11:09:25.987Z"
+    }
+  },
+  "renderMethod": "exact official production artifact over loopback; live static assets stalled and later strict TLS failed in this environment",
+  "environmentLimitations": [
+    "Direct live hashed JS/CSS returned zero bytes until timeout from both Cloudflare IPv4s.",
+    "Later strict live HTTPS probe failed with certificate alt-name mismatch for probpera.ru; TLS verification was not disabled."
+  ],
+  "browser": "Chrome 151.0.7922.170",
+  "matrixMeasurements": [
+    {
+      "key": "ru-320x800",
+      "locale": "ru",
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "page": {
+        "innerWidth": 320,
+        "innerHeight": 800,
+        "clientWidth": 320,
+        "scrollWidth": 320,
+        "scrollHeight": 32775,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 929,
+          "height": 1361
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2290,
+          "height": 2460
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 4751,
+          "height": 4783
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 12968,
+          "height": 6921
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 19889,
+          "height": 1894
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 21782,
+          "height": 2436
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 24219,
+          "height": 3297
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 28604,
+          "height": 2830
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 27515,
+          "height": 1089
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 31434,
+          "height": 1341
+        }
+      ]
+    },
+    {
+      "key": "ru-360x800",
+      "locale": "ru",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "page": {
+        "innerWidth": 360,
+        "innerHeight": 800,
+        "clientWidth": 360,
+        "scrollWidth": 360,
+        "scrollHeight": 32100,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 929,
+          "height": 1318
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2248,
+          "height": 2206
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 4454,
+          "height": 4738
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 12630,
+          "height": 7114
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 19744,
+          "height": 1694
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 21438,
+          "height": 2398
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 23836,
+          "height": 3193
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 28057,
+          "height": 2702
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 27029,
+          "height": 1028
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 30759,
+          "height": 1341
+        }
+      ]
+    },
+    {
+      "key": "ru-390x844",
+      "locale": "ru",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "scrollHeight": 31565,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 924,
+          "height": 1302
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2226,
+          "height": 2092
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 4319,
+          "height": 4651
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 12205,
+          "height": 7275
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 19480,
+          "height": 1562
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 21042,
+          "height": 2398
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 23440,
+          "height": 3122
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 27548,
+          "height": 2702
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 26562,
+          "height": 986
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 30250,
+          "height": 1316
+        }
+      ]
+    },
+    {
+      "key": "ru-430x932",
+      "locale": "ru",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "page": {
+        "innerWidth": 430,
+        "innerHeight": 932,
+        "clientWidth": 430,
+        "scrollWidth": 430,
+        "scrollHeight": 31460,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 978,
+          "height": 1302
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2280,
+          "height": 2011
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 4291,
+          "height": 4620
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 12195,
+          "height": 7499
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 19694,
+          "height": 1531
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 21225,
+          "height": 2398
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 23623,
+          "height": 2955
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 27540,
+          "height": 2604
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 26578,
+          "height": 962
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 30144,
+          "height": 1316
+        }
+      ]
+    },
+    {
+      "key": "ru-768x1024",
+      "locale": "ru",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": {
+        "innerWidth": 768,
+        "innerHeight": 1024,
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "scrollHeight": 21173,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 853,
+          "height": 1336
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2189,
+          "height": 1490
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3679,
+          "height": 2183
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 8357,
+          "height": 4306
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 12662,
+          "height": 1256
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 13918,
+          "height": 1345
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 15263,
+          "height": 1844
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 17974,
+          "height": 2488
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 17107,
+          "height": 867
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 20462,
+          "height": 711
+        }
+      ]
+    },
+    {
+      "key": "ru-1024x768",
+      "locale": "ru",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "page": {
+        "innerWidth": 1024,
+        "innerHeight": 768,
+        "clientWidth": 1024,
+        "scrollWidth": 1024,
+        "scrollHeight": 17788,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 685,
+          "height": 1263
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 1948,
+          "height": 1417
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3365,
+          "height": 1946
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 7894,
+          "height": 3060
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 10954,
+          "height": 884
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 11838,
+          "height": 803
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 12642,
+          "height": 1854
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 15285,
+          "height": 2013
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 14496,
+          "height": 789
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 17298,
+          "height": 490
+        }
+      ]
+    },
+    {
+      "key": "ru-1280x800",
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "page": {
+        "innerWidth": 1280,
+        "innerHeight": 800,
+        "clientWidth": 1280,
+        "scrollWidth": 1280,
+        "scrollHeight": 15480,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 754,
+          "height": 1199
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 1953,
+          "height": 1362
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3315,
+          "height": 1513
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6668,
+          "height": 2624
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9292,
+          "height": 912
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10204,
+          "height": 815
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11018,
+          "height": 1222
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 12923,
+          "height": 2047
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 12240,
+          "height": 683
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 14970,
+          "height": 510
+        }
+      ]
+    },
+    {
+      "key": "ru-1366x700",
+      "locale": "ru",
+      "viewport": {
+        "width": 1366,
+        "height": 700
+      },
+      "page": {
+        "innerWidth": 1366,
+        "innerHeight": 700,
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "scrollHeight": 15694,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 797,
+          "height": 1203
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2000,
+          "height": 1372
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3372,
+          "height": 1517
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6768,
+          "height": 2710
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9478,
+          "height": 910
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10389,
+          "height": 818
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11207,
+          "height": 1226
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 13135,
+          "height": 2057
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 12433,
+          "height": 703
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 15192,
+          "height": 502
+        }
+      ]
+    },
+    {
+      "key": "ru-1366x768",
+      "locale": "ru",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "page": {
+        "innerWidth": 1366,
+        "innerHeight": 768,
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "scrollHeight": 15694,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 797,
+          "height": 1203
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2000,
+          "height": 1372
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3372,
+          "height": 1517
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6768,
+          "height": 2710
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9478,
+          "height": 910
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10389,
+          "height": 818
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11207,
+          "height": 1226
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 13135,
+          "height": 2057
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 12433,
+          "height": 703
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 15192,
+          "height": 502
+        }
+      ]
+    },
+    {
+      "key": "ru-1440x900",
+      "locale": "ru",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "page": {
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 15839,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 834,
+          "height": 1205
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2039,
+          "height": 1379
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3418,
+          "height": 1519
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6845,
+          "height": 2785
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9630,
+          "height": 932
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10562,
+          "height": 820
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11382,
+          "height": 1196
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 13268,
+          "height": 2063
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 12578,
+          "height": 690
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 15331,
+          "height": 508
+        }
+      ]
+    },
+    {
+      "key": "ru-1920x1080",
+      "locale": "ru",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "page": {
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "scrollHeight": 15792,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 1074,
+          "height": 1205
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2279,
+          "height": 1038
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3317,
+          "height": 1295
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6605,
+          "height": 3000
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9605,
+          "height": 923
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10528,
+          "height": 820
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11348,
+          "height": 1196
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 13211,
+          "height": 2068
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 12544,
+          "height": 667
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 15279,
+          "height": 513
+        }
+      ]
+    },
+    {
+      "key": "en-360x800",
+      "locale": "en",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "page": {
+        "innerWidth": 360,
+        "innerHeight": 800,
+        "clientWidth": 360,
+        "scrollWidth": 360,
+        "scrollHeight": 24631,
+        "overflowX": 0,
+        "language": "en",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 905,
+          "height": 1233
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2137,
+          "height": 1962
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 4099,
+          "height": 4656
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 11887,
+          "height": 1011
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 12898,
+          "height": 1638
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 14536,
+          "height": 2398
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 16934,
+          "height": 2751
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 20633,
+          "height": 2683
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 19685,
+          "height": 949
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 23316,
+          "height": 1316
+        }
+      ]
+    },
+    {
+      "key": "en-768x1024",
+      "locale": "en",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": {
+        "innerWidth": 768,
+        "innerHeight": 1024,
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "scrollHeight": 17367,
+        "overflowX": 0,
+        "language": "en",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 853,
+          "height": 1336
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2189,
+          "height": 1440
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3630,
+          "height": 2201
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 8296,
+          "height": 838
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 9133,
+          "height": 1226
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 10359,
+          "height": 1345
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 11705,
+          "height": 1658
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 14168,
+          "height": 2488
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 13363,
+          "height": 804
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 16656,
+          "height": 711
+        }
+      ]
+    },
+    {
+      "key": "en-1440x900",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "page": {
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 13765,
+        "overflowX": 0,
+        "language": "en",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 834,
+          "height": 1205
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2039,
+          "height": 1351
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3390,
+          "height": 1505
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6803,
+          "height": 881
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 7684,
+          "height": 914
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 8598,
+          "height": 820
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 9419,
+          "height": 1108
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 11193,
+          "height": 2063
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 10527,
+          "height": 666
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 13257,
+          "height": 508
+        }
+      ]
+    },
+    {
+      "key": "en-1920x1080",
+      "locale": "en",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "page": {
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "scrollHeight": 13471,
+        "overflowX": 0,
+        "language": "en",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      },
+      "anchors": [
+        {
+          "name": "top",
+          "selector": null,
+          "absoluteY": 0
+        },
+        {
+          "name": "globe",
+          "selector": "#atlas",
+          "absoluteY": 1074,
+          "height": 1205
+        },
+        {
+          "name": "book-area",
+          "selector": "#book-day",
+          "absoluteY": 2279,
+          "height": 924
+        },
+        {
+          "name": "book-archive",
+          "selector": "#books",
+          "absoluteY": 3203,
+          "height": 1281
+        },
+        {
+          "name": "article-library",
+          "selector": "#journal",
+          "absoluteY": 6476,
+          "height": 925
+        },
+        {
+          "name": "community",
+          "selector": "#community",
+          "absoluteY": 7401,
+          "height": 914
+        },
+        {
+          "name": "authors",
+          "selector": "#authors",
+          "absoluteY": 8315,
+          "height": 820
+        },
+        {
+          "name": "sections",
+          "selector": "#sections",
+          "absoluteY": 9135,
+          "height": 1102
+        },
+        {
+          "name": "calendar",
+          "selector": "#calendar",
+          "absoluteY": 10890,
+          "height": 2068
+        },
+        {
+          "name": "trust",
+          "selector": "#editorial-policy",
+          "absoluteY": 10238,
+          "height": 652
+        },
+        {
+          "name": "footer",
+          "selector": ".site-footer",
+          "absoluteY": 12958,
+          "height": 513
+        }
+      ]
+    }
+  ],
+  "createdArtifacts": [
+    {
+      "path": "closeups/header.webp",
+      "kind": "closeup",
+      "selector": ".site-header",
+      "boundingBox": {
+        "x": 0,
+        "y": 34,
+        "width": 1440,
+        "height": 80
+      }
+    },
+    {
+      "path": "closeups/hero.webp",
+      "kind": "closeup",
+      "selector": ".magazine-hero",
+      "boundingBox": {
+        "x": 0,
+        "y": 114,
+        "width": 1440,
+        "height": 720
+      }
+    },
+    {
+      "path": "closeups/globe.webp",
+      "kind": "closeup",
+      "selector": "#atlas",
+      "boundingBox": {
+        "x": 0,
+        "y": 96,
+        "width": 1440,
+        "height": 1205.0625
+      }
+    },
+    {
+      "path": "closeups/book-area.webp",
+      "kind": "closeup",
+      "selector": "#book-day",
+      "boundingBox": {
+        "x": 0,
+        "y": -191.9375,
+        "width": 1440,
+        "height": 1379.15625
+      }
+    },
+    {
+      "path": "closeups/book-archive.webp",
+      "kind": "closeup",
+      "selector": "#books",
+      "boundingBox": {
+        "x": 0,
+        "y": -261.78125,
+        "width": 1440,
+        "height": 1519.21875
+      }
+    },
+    {
+      "path": "closeups/article-library.webp",
+      "kind": "closeup",
+      "selector": "#journal",
+      "boundingBox": {
+        "x": 0,
+        "y": -894.65625,
+        "width": 1440,
+        "height": 2784.765625
+      }
+    },
+    {
+      "path": "closeups/community.webp",
+      "kind": "closeup",
+      "selector": "#community",
+      "boundingBox": {
+        "x": 0,
+        "y": 32.109375,
+        "width": 1440,
+        "height": 931.515625
+      }
+    },
+    {
+      "path": "closeups/authors.webp",
+      "kind": "closeup",
+      "selector": "#authors",
+      "boundingBox": {
+        "x": 0,
+        "y": 87.625,
+        "width": 1440,
+        "height": 820.390625
+      }
+    },
+    {
+      "path": "closeups/sections.webp",
+      "kind": "closeup",
+      "selector": "#sections",
+      "boundingBox": {
+        "x": 0,
+        "y": -99.984375,
+        "width": 1440,
+        "height": 1195.515625
+      }
+    },
+    {
+      "path": "closeups/calendar.webp",
+      "kind": "closeup",
+      "selector": "#calendar",
+      "boundingBox": {
+        "x": 0,
+        "y": -533.359375,
+        "width": 1440,
+        "height": 2063.40625
+      }
+    },
+    {
+      "path": "closeups/trust.webp",
+      "kind": "closeup",
+      "selector": "#editorial-policy",
+      "boundingBox": {
+        "x": 0,
+        "y": 152.53125,
+        "width": 1440,
+        "height": 690.109375
+      }
+    },
+    {
+      "path": "closeups/footer.webp",
+      "kind": "closeup",
+      "selector": ".site-footer",
+      "boundingBox": {
+        "x": 0,
+        "y": 392.046875,
+        "width": 1440,
+        "height": 508.1875
+      }
+    },
+    {
+      "path": "closeups/writer-panel.webp",
+      "kind": "closeup",
+      "selector": ".country-panel",
+      "state": "first country and writer selected"
+    },
+    {
+      "path": "states/loading-article-reader.webp",
+      "kind": "state",
+      "state": "real suspense UI under 2500ms exact chunk delay"
+    },
+    {
+      "path": "closeups/article-reader.webp",
+      "kind": "closeup",
+      "selector": ".article-reader",
+      "state": "first public article opened"
+    },
+    {
+      "path": "closeups/global-search.webp",
+      "kind": "closeup",
+      "selector": ".global-search",
+      "boundingBox": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 402.1875
+      }
+    },
+    {
+      "path": "states/selected-search-results.webp",
+      "kind": "state",
+      "state": "read-only Tolstoy search results"
+    },
+    {
+      "path": "states/focus-header.webp",
+      "kind": "state",
+      "state": "keyboard focus on global search trigger"
+    },
+    {
+      "path": "states/mobile-360x800.webp",
+      "kind": "state",
+      "locale": "ru",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "forcedColors": "none",
+      "reducedMotion": "reduce",
+      "page": {
+        "innerWidth": 360,
+        "innerHeight": 800,
+        "clientWidth": 360,
+        "scrollWidth": 360,
+        "scrollHeight": 32100,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      }
+    },
+    {
+      "path": "states/reduced-motion-globe-1440x900.webp",
+      "kind": "state",
+      "locale": "ru",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "forcedColors": "none",
+      "reducedMotion": "reduce",
+      "page": {
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 15839,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      }
+    },
+    {
+      "path": "states/zoom-200pct-equivalent-640x900.webp",
+      "kind": "state",
+      "locale": "ru",
+      "viewport": {
+        "width": 640,
+        "height": 900
+      },
+      "forcedColors": "none",
+      "reducedMotion": "reduce",
+      "page": {
+        "innerWidth": 640,
+        "innerHeight": 900,
+        "clientWidth": 640,
+        "scrollWidth": 640,
+        "scrollHeight": 20287,
+        "overflowX": 0,
+        "language": "ru",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      }
+    },
+    {
+      "path": "states/forced-colors-focus-1440x900.webp",
+      "kind": "state",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "forcedColors": "active",
+      "reducedMotion": "reduce",
+      "page": {
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 13765,
+        "overflowX": 0,
+        "language": "en",
+        "title": "Проба Пера — литературный журнал и атлас мира",
+        "failedImages": []
+      }
+    },
+    {
+      "path": "states/default-home-1440x900.webp",
+      "kind": "state",
+      "state": "default",
+      "locale": "ru",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "path": "states/hover-global-search-1440x900.webp",
+      "kind": "state",
+      "state": "hover",
+      "target": ".global-search-trigger"
+    },
+    {
+      "path": "states/active-global-search-1440x900.webp",
+      "kind": "state",
+      "state": "active",
+      "target": ".global-search-trigger",
+      "method": "real pointer down held during raster; released without click"
+    },
+    {
+      "path": "states/expanded-articles-menu-1440x900.webp",
+      "kind": "state",
+      "state": "expanded",
+      "target": "details.articles-menu"
+    },
+    {
+      "path": "states/empty-search-results.webp",
+      "selector": ".global-search",
+      "boundingBox": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 358.59375
+      },
+      "kind": "state",
+      "state": "empty",
+      "method": "real read-only search with deterministic no-match query"
+    },
+    {
+      "path": "closeups/book-detail-ru.webp",
+      "selector": "#book-archive-detail",
+      "boundingBox": {
+        "x": 57.59375,
+        "y": 96.4375,
+        "width": 1324.8125,
+        "height": 824
+      },
+      "kind": "closeup",
+      "locale": "ru",
+      "state": "first public archive book expanded; save/follow controls not activated"
+    },
+    {
+      "path": "closeups/book-detail-en.webp",
+      "selector": "#book-archive-detail",
+      "boundingBox": {
+        "x": 57.59375,
+        "y": 95.78125,
+        "width": 1324.8125,
+        "height": 747
+      },
+      "kind": "closeup",
+      "locale": "en",
+      "state": "first public archive book expanded; save/follow controls not activated"
+    },
+    {
+      "path": "closeups/follow-writer.webp",
+      "selector": ".writer-detail",
+      "boundingBox": {
+        "x": 971.40625,
+        "y": 96.046875,
+        "width": 373,
+        "height": 523.875
+      },
+      "kind": "closeup",
+      "locale": "ru",
+      "state": "first listed country and writer selected; follow button not activated"
+    },
+    {
+      "path": "states/mobile-sheet-expanded-390x844.webp",
+      "kind": "state",
+      "state": "mobile sheet expanded",
+      "locale": "ru",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "selectedCountry": "Австралия 24 автора РАЗВЕРНУТЬ АРХИВ ПОЛНОСТЬЮ"
+    },
+    {
+      "path": "closeups/reading-library-auth-gate.webp",
+      "selector": ".community-hub.is-account",
+      "boundingBox": {
+        "x": 42,
+        "y": 42,
+        "width": 1404,
+        "height": 864
+      },
+      "kind": "availability-evidence",
+      "state": "unauthenticated account gate; actual reading-library content NOT MEASURED"
+    }
+  ],
+  "skips": [],
+  "blockedMutations": [
+    {
+      "label": "measure-ru-320x800",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-360x800",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-390x844",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-430x932",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-768x1024",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1024x768",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1280x800",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1366x700",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1366x768",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1440x900",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-ru-1920x1080",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-en-360x800",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-en-768x1024",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-en-1440x900",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "measure-en-1920x1080",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "closeups",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "closeups",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_content_view_count"
+    },
+    {
+      "label": "state-mobile-360x800",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "state-reduced-motion-globe-1440x900",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "state-zoom-200pct-equivalent-640x900",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "state-forced-colors-focus-1440x900",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-interaction-states",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-book-detail-ru",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-book-detail-ru",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-book-detail-en",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-book-detail-en",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-book-detail-en",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-follow-writer",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-mobile-sheet",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    },
+    {
+      "label": "additional-reading-library-gate",
+      "method": "POST",
+      "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+    }
+  ],
+  "blockedExternal": [],
+  "artifactMisses": [],
+  "browserLogs": [
+    {
+      "label": "measure-ru-320x800",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-360x800",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-390x844",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-430x932",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-768x1024",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1024x768",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1280x800",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1366x700",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1366x768",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1440x900",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-ru-1920x1080",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-en-360x800",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-en-768x1024",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-en-1440x900",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "measure-en-1920x1080",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "closeups",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "state-mobile-360x800",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "state-reduced-motion-globe-1440x900",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "state-zoom-200pct-equivalent-640x900",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "state-forced-colors-focus-1440x900",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-interaction-states",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-book-detail-ru",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-book-detail-en",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-follow-writer",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-mobile-sheet",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    },
+    {
+      "label": "additional-reading-library-gate",
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "consoleWarnings": [
+        "Service Worker registration blocked by Playwright"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "responseErrors": []
+    }
+  ],
+  "additionalCapture": {
+    "releaseSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+    "method": "exact official production artifact 9517505146 served read-only over loopback",
+    "createdArtifacts": [
+      {
+        "path": "states/default-home-1440x900.webp",
+        "kind": "state",
+        "state": "default",
+        "locale": "ru",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      {
+        "path": "states/hover-global-search-1440x900.webp",
+        "kind": "state",
+        "state": "hover",
+        "target": ".global-search-trigger"
+      },
+      {
+        "path": "states/active-global-search-1440x900.webp",
+        "kind": "state",
+        "state": "active",
+        "target": ".global-search-trigger",
+        "method": "real pointer down held during raster; released without click"
+      },
+      {
+        "path": "states/expanded-articles-menu-1440x900.webp",
+        "kind": "state",
+        "state": "expanded",
+        "target": "details.articles-menu"
+      },
+      {
+        "path": "states/empty-search-results.webp",
+        "selector": ".global-search",
+        "boundingBox": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 358.59375
+        },
+        "kind": "state",
+        "state": "empty",
+        "method": "real read-only search with deterministic no-match query"
+      },
+      {
+        "path": "closeups/book-detail-ru.webp",
+        "selector": "#book-archive-detail",
+        "boundingBox": {
+          "x": 57.59375,
+          "y": 96.4375,
+          "width": 1324.8125,
+          "height": 824
+        },
+        "kind": "closeup",
+        "locale": "ru",
+        "state": "first public archive book expanded; save/follow controls not activated"
+      },
+      {
+        "path": "closeups/book-detail-en.webp",
+        "selector": "#book-archive-detail",
+        "boundingBox": {
+          "x": 57.59375,
+          "y": 95.78125,
+          "width": 1324.8125,
+          "height": 747
+        },
+        "kind": "closeup",
+        "locale": "en",
+        "state": "first public archive book expanded; save/follow controls not activated"
+      },
+      {
+        "path": "closeups/follow-writer.webp",
+        "selector": ".writer-detail",
+        "boundingBox": {
+          "x": 971.40625,
+          "y": 96.046875,
+          "width": 373,
+          "height": 523.875
+        },
+        "kind": "closeup",
+        "locale": "ru",
+        "state": "first listed country and writer selected; follow button not activated"
+      },
+      {
+        "path": "states/mobile-sheet-expanded-390x844.webp",
+        "kind": "state",
+        "state": "mobile sheet expanded",
+        "locale": "ru",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "selectedCountry": "Австралия 24 автора РАЗВЕРНУТЬ АРХИВ ПОЛНОСТЬЮ"
+      },
+      {
+        "path": "closeups/reading-library-auth-gate.webp",
+        "selector": ".community-hub.is-account",
+        "boundingBox": {
+          "x": 42,
+          "y": 42,
+          "width": 1404,
+          "height": 864
+        },
+        "kind": "availability-evidence",
+        "state": "unauthenticated account gate; actual reading-library content NOT MEASURED"
+      }
+    ],
+    "blockedMutations": [
+      {
+        "label": "additional-interaction-states",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-book-detail-ru",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-book-detail-ru",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-book-detail-en",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-book-detail-en",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-book-detail-en",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-follow-writer",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-mobile-sheet",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      },
+      {
+        "label": "additional-reading-library-gate",
+        "method": "POST",
+        "url": "https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary"
+      }
+    ],
+    "browserLogs": [
+      {
+        "label": "additional-interaction-states",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      },
+      {
+        "label": "additional-book-detail-ru",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      },
+      {
+        "label": "additional-book-detail-en",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      },
+      {
+        "label": "additional-follow-writer",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      },
+      {
+        "label": "additional-mobile-sheet",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      },
+      {
+        "label": "additional-reading-library-gate",
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "consoleWarnings": [
+          "Service Worker registration blocked by Playwright"
+        ],
+        "pageErrors": [],
+        "requestFailures": [
+          "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        ],
+        "responseErrors": []
+      }
+    ],
+    "checks": {
+      "visibleDisabledControlsInDefaultAndSearch": [],
+      "readingLibrary": {
+        "visibleWithoutAuthentication": false,
+        "evidence": "reader entry opens the account authentication gate; account-library is absent for an unauthenticated isolated context"
+      },
+      "visibleDisabledControlsInAccountGate": []
+    },
+    "artifactIdentity": {
+      "releaseHead": {
+        "schemaVersion": 1,
+        "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+        "generatedAt": "2026-08-24T11:09:25.987Z"
+      },
+      "matches": true,
+      "exactAssets": {
+        "js": {
+          "path": "assets/index-ko5WhBaQ.js",
+          "bytes": 682305,
+          "sha256": "6e843844b8b929ca1200d51a6647406bc169c4ded6333766e3cce02d4023cea4"
+        },
+        "css": {
+          "path": "assets/index-Cvad-RPW.css",
+          "bytes": 324296,
+          "sha256": "2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef"
+        }
+      }
+    }
+  }
+}
