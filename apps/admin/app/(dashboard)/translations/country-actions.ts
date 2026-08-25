@@ -7,6 +7,10 @@ import { requireStaff } from "@/lib/auth";
 import { loadEditorialCatalog } from "@/lib/editorial-catalog";
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
+import {
+  premiumTranslationConfigurationError,
+  premiumTranslationRuntimeMetadata,
+} from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -26,8 +30,10 @@ function translationsUrl(values: Record<string, string | number | null | undefin
 export async function translatePremiumCountryBatchAction() {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
-  if (!adminEnv.openAiApiKey) {
-    redirect(translationsUrl({ error: "OPENAI_API_KEY не настроен на сервере." }));
+  if (!adminEnv.premiumTranslationConfigured) {
+    redirect(
+      translationsUrl({ error: premiumTranslationConfigurationError() })
+    );
   }
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
@@ -58,6 +64,7 @@ export async function translatePremiumCountryBatchAction() {
 
   let publication: string | null = null;
   if (translated > 0) {
+    const runtime = premiumTranslationRuntimeMetadata();
     publication = (
       await requestPublicBuild({
         supabase,
@@ -69,9 +76,10 @@ export async function translatePremiumCountryBatchAction() {
           premiumEnglish: true,
           kind: "countries",
           translated,
-          model: adminEnv.openAiTranslationModel,
-          reviewerModel: adminEnv.openAiTranslationReviewModel,
-          twoPassReview: adminEnv.openAiPremiumTranslationReview,
+          provider: runtime.provider,
+          model: runtime.model,
+          reviewerModel: runtime.reviewerModel,
+          twoPassReview: runtime.twoPassReview,
         },
       })
     ).state;
