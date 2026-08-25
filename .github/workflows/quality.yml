@@ -23,6 +23,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          # Stage 5 baseline tests intentionally read the immutable BASE_MAIN_SHA.
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
