@@ -258,6 +258,12 @@ async function openAiStructuredPass(input: {
   }
 }
 
+function workersAiTokenLimit(model: string, maxOutputTokens: number) {
+  return model.startsWith("@cf/openai/gpt-oss-")
+    ? { max_tokens: maxOutputTokens }
+    : { max_completion_tokens: maxOutputTokens };
+}
+
 async function workersAiStructuredPass(input: {
   ai: WorkersAiBinding;
   model: string;
@@ -275,7 +281,7 @@ async function workersAiStructuredPass(input: {
         { role: "user", content: JSON.stringify(input.data, null, 2) },
       ],
       stream: false,
-      max_completion_tokens: input.maxOutputTokens,
+      ...workersAiTokenLimit(input.model, input.maxOutputTokens),
       temperature: 0.15,
       response_format: {
         type: "json_schema",
