@@ -58,8 +58,8 @@ export default function ArticleCopyPicker({
           <span className="eyebrow">Старт статьи</span>
           <h2 id="article-copy-title">Как начать материал</h2>
           <p>
-            Для обычной статьи сразу переходите к редактору. Поиск старого материала
-            нужен только когда хотите сохранить его структуру, изображения и блоки.
+            Для обычной статьи сразу переходите к редактору. Если нужен образец,
+            безопасная копия сохраняет структуру и медиа, а исходная статья не изменится.
           </p>
         </div>
         <strong>{articles.length} доступных образцов</strong>
@@ -112,7 +112,7 @@ export default function ArticleCopyPicker({
                     className="button-secondary"
                     href={`/articles/new?copyFrom=${encodeURIComponent(article.id)}`}
                   >
-                    Взять структуру без копии
+                    Открыть без создания копии
                   </Link>
                 </div>
               </article>
