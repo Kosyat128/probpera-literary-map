@@ -47,11 +47,11 @@ export function articleWorkspaceCheckSection(label: string): ArticleWorkspaceSec
   if (value.includes("источник") || value.includes("source")) return "sources";
   if (value.includes("облож") || value.includes("alt")) return "cover";
   if (value.includes("изображ") || value.includes("media")) return "media";
-  if (value.includes("рубри") || value.includes("category")) return "basics";
-  if (value.includes("заголов") || value.includes("описание карточки")) return "basics";
   if (value.includes("слов") || value.includes("words") || value.includes("h2")) {
     return "text";
   }
+  if (value.includes("рубри") || value.includes("category")) return "basics";
+  if (value.includes("заголов") || value.includes("описание карточки")) return "basics";
   if (
     value.includes("approved") ||
     value.includes("published") ||
