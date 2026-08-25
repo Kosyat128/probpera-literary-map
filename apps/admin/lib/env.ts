@@ -74,7 +74,7 @@ const cloudflareTranslationModel =
   "@cf/google/gemma-4-26b-a4b-it";
 const cloudflareTranslationReviewModel =
   getEnvValue(["CLOUDFLARE_TRANSLATION_REVIEW_MODEL"]) ||
-  "@cf/zai-org/glm-4.7-flash";
+  "@cf/openai/gpt-oss-120b";
 
 // Backwards-compatible readiness credential. Existing translation actions use
 // openAiApiKey only as a server-side gate before entering the shared premium

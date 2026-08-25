@@ -69,6 +69,9 @@ export default async function PremiumTranslationsPage({
     success?: string;
     error?: string;
     publication?: string;
+    libraryCursor?: string;
+    writerCursor?: string;
+    countryCursor?: string;
   }>;
 }) {
   const [query, editorialCatalog] = await Promise.all([
@@ -153,7 +156,7 @@ export default async function PremiumTranslationsPage({
           <h1>Премиальный английский перевод</h1>
           <p>
             {workersAi
-              ? "Gemma 4 переводит материал, а GLM-4.7-Flash независимо сверяет его с русским оригиналом и редактирует до естественного литературного английского. OpenAI API для этого режима не требуется."
+              ? "Gemma 4 делает полный литературный перевод, а Cloudflare-hosted OpenAI gpt-oss-120b независимо сверяет его с русским оригиналом и выполняет финальную редактуру до естественного литературного английского. Платный OpenAI API для этого режима не требуется."
               : "Первый OpenAI-проход переводит материал, второй сверяет его с русским оригиналом и редактирует до естественного литературного английского."}{" "}
             Ручные EN-версии никогда автоматически не перезаписываются.
           </p>
@@ -239,11 +242,13 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumLibraryBatchAction}>
+          <input type="hidden" name="backfill_cursor" value={query.libraryCursor || "0"} />
           <span className="eyebrow">Книжный архив</span>
           <h2>Премиальный EN книг</h2>
           <p>
             До четырёх проверенных RU-карточек за запуск. Ручной reviewed/verified EN
-            имеет абсолютный приоритет и не заменяется моделью.
+            имеет абсолютный приоритет и не заменяется моделью. Позиция обхода сохраняется
+            между пакетами, поэтому архив постепенно проходит целиком.
           </p>
           <button className="button" type="submit" disabled={!translationReady || !bookDbReady}>
             Перевести следующий пакет книг
@@ -251,11 +256,13 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumWriterBatchAction}>
+          <input type="hidden" name="backfill_cursor" value={query.writerCursor || "0"} />
           <span className="eyebrow">Писатели</span>
           <h2>Премиальный EN биографий</h2>
           <p>
             Переводятся только проверенные редакционные RU-оригиналы с provenance.
-            По три новых биографии за запуск.
+            По три новых биографии за запуск; следующий пакет продолжает с места,
+            на котором закончился предыдущий.
           </p>
           <button className="button" type="submit" disabled={!translationReady}>
             Перевести следующий пакет биографий
@@ -263,11 +270,13 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumCountryBatchAction}>
+          <input type="hidden" name="backfill_cursor" value={query.countryCursor || "0"} />
           <span className="eyebrow">Страны</span>
           <h2>Премиальный EN профилей стран</h2>
           <p>
             История, описание, литературные периоды, движения, факты и места переводятся
-            по две страны за запуск. Коды, координаты, годы и числовые показатели не меняются.
+            по две страны за запуск. Курсор переносится между пакетами; коды, координаты,
+            годы и числовые показатели не меняются.
           </p>
           <button className="button" type="submit" disabled={!translationReady}>
             Перевести следующий пакет стран

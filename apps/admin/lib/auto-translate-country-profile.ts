@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 
 const timelineItemSchema = z.object({
   year: z.string().max(80),
@@ -231,7 +232,7 @@ export async function ensureCountryEnglishProfile(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
-  if (!adminEnv.openAiApiKey) return { state: "not-configured" };
+  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
 
   const existingResponse = await input.supabase
     .from("country_profile_overrides")
@@ -273,16 +274,14 @@ export async function ensureCountryEnglishProfile(input: {
     return { state: "current" };
   }
 
+  const runtime = premiumTranslationRuntimeMetadata();
   try {
     const translated = await premiumTranslateToEnglish({
       source,
       schema: translatedCountryJsonSchema,
       schemaName: "probpera_country_profile_translation",
       validate: (value) => validateCountryTranslation(source, value),
-      apiKey: adminEnv.openAiApiKey,
-      model: adminEnv.openAiTranslationModel,
-      reviewerModel: adminEnv.openAiTranslationReviewModel,
-      review: adminEnv.openAiPremiumTranslationReview,
+      review: runtime.twoPassReview,
       maxOutputTokens: 12_000,
       domainInstructions: [
         "This is a factual country profile for a world-literature encyclopedia.",
@@ -321,6 +320,7 @@ export async function ensureCountryEnglishProfile(input: {
           method: "machine-translation",
           sourceHash,
           generatedAt,
+          provider: runtime.provider,
           model: translated.translatorModel,
           reviewerModel: translated.reviewerModel,
           fields: compactFields(translated.value),
@@ -363,6 +363,7 @@ export async function ensureCountryEnglishProfile(input: {
         countryId: input.countryId,
         locale: "en",
         source_hash: sourceHash,
+        provider: runtime.provider,
         model: translated.translatorModel,
         reviewer_model: translated.reviewerModel,
         translator_request_id: translated.translatorRequestId,
@@ -389,8 +390,9 @@ export async function ensureCountryEnglishProfile(input: {
       entity_id: input.countryId,
       metadata: {
         locale: "en",
-        model: adminEnv.openAiTranslationModel,
-        reviewer_model: adminEnv.openAiTranslationReviewModel,
+        provider: runtime.provider,
+        model: runtime.model,
+        reviewer_model: runtime.reviewerModel,
         error: message.slice(0, 500),
       },
     });
