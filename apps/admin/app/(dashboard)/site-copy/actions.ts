@@ -9,6 +9,10 @@ import {
 } from "@/lib/auto-translate-site-copy";
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
+import {
+  premiumTranslationConfigurationError,
+  premiumTranslationRuntimeMetadata,
+} from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { loadAllSiteCopyKeys } from "@/lib/site-copy-catalog";
@@ -141,18 +145,23 @@ async function autoTranslateChangedRows({
   }
 
   if (!pending.length || !adminEnv.openAiAutoTranslateSiteCopy) {
-    return { rows, machine, translationCalls: 0 };
+    return {
+      rows,
+      machine,
+      translationCalls: 0,
+      translationModel: null as string | null,
+      translationReviewerModel: null as string | null,
+    };
   }
-  if (!adminEnv.openAiApiKey) {
-    throw new Error(
-      "Премиальный EN-перевод включён, но OPENAI_API_KEY не настроен. Добавьте английский текст вручную или подключите API key."
-    );
+  if (!adminEnv.premiumTranslationConfigured) {
+    throw new Error(premiumTranslationConfigurationError());
   }
 
+  const runtime = premiumTranslationRuntimeMetadata();
   const translatedByKey = new Map<string, string>();
   let translationCalls = 0;
-  let lastModel = adminEnv.openAiTranslationModel;
-  let lastReviewerModel: string | null = null;
+  let lastModel = runtime.model;
+  let lastReviewerModel: string | null = runtime.reviewerModel;
   for (let start = 0; start < pending.length; start += TRANSLATION_BATCH_SIZE) {
     const batch = pending.slice(start, start + TRANSLATION_BATCH_SIZE);
     const translated = await translateSiteCopyBatchToEnglish(
@@ -182,7 +191,13 @@ async function autoTranslateChangedRows({
     return { ...row, en: translated };
   });
 
-  return { rows: enrichedRows, machine, translationCalls };
+  return {
+    rows: enrichedRows,
+    machine,
+    translationCalls,
+    translationModel: translationCalls ? lastModel : null,
+    translationReviewerModel: translationCalls ? lastReviewerModel : null,
+  };
 }
 
 export async function saveSiteCopyAction(formData: FormData) {
@@ -246,6 +261,7 @@ export async function saveSiteCopyAction(formData: FormData) {
     translationResult.rows
   );
   const existingPremium = objectValue(existingSettings.premiumTranslation);
+  const runtime = premiumTranslationRuntimeMetadata();
 
   const payload = {
     block_type: "text",
@@ -258,9 +274,10 @@ export async function saveSiteCopyAction(formData: FormData) {
       premiumTranslation: {
         ...existingPremium,
         siteCopyEn: translationResult.machine,
-        model: adminEnv.openAiTranslationModel,
-        reviewerModel: adminEnv.openAiTranslationReviewModel,
-        twoPassReview: adminEnv.openAiPremiumTranslationReview,
+        provider: runtime.provider,
+        model: runtime.model,
+        reviewerModel: runtime.reviewerModel,
+        twoPassReview: runtime.twoPassReview,
         updatedAt: new Date().toISOString(),
       },
     },
@@ -315,8 +332,10 @@ export async function saveSiteCopyAction(formData: FormData) {
       russian_overrides: Object.keys(ru).length,
       english_overrides: Object.keys(en).length,
       premium_translation_calls: translationResult.translationCalls,
-      translation_model: adminEnv.openAiTranslationModel,
-      translation_reviewer_model: adminEnv.openAiTranslationReviewModel,
+      translation_provider: runtime.provider,
+      translation_model: translationResult.translationModel || runtime.model,
+      translation_reviewer_model:
+        translationResult.translationReviewerModel ?? runtime.reviewerModel,
       storage: "homepage_blocks",
     },
   });

@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 
 const biographyOutputSchema = z.object({
   text: z.string().trim().min(120).max(1_600),
@@ -47,6 +48,7 @@ type BiographyProfile = {
     | "permission";
   sources: BiographySource[];
   translationMeta?: {
+    provider?: "cloudflare" | "openai";
     model?: string;
     reviewerModel?: string | null;
     sourceHash?: string;
@@ -183,7 +185,7 @@ export async function ensureWriterEnglishBiography(input: {
   overrideId?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
-  if (!adminEnv.openAiApiKey) return { state: "not-configured" };
+  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
 
   const existingResponse = await input.supabase
     .from("writer_profile_overrides")
@@ -243,16 +245,14 @@ export async function ensureWriterEnglishBiography(input: {
     return { state: "current", overrideId: existingOverride?.id };
   }
 
+  const runtime = premiumTranslationRuntimeMetadata();
   try {
     const translated = await premiumTranslateToEnglish({
       source,
       schema: biographyJsonSchema,
       schemaName: "probpera_writer_biography_translation",
       validate: validateEnglishBiography,
-      apiKey: adminEnv.openAiApiKey,
-      model: adminEnv.openAiTranslationModel,
-      reviewerModel: adminEnv.openAiTranslationReviewModel,
-      review: adminEnv.openAiPremiumTranslationReview,
+      review: runtime.twoPassReview,
       maxOutputTokens: 4_000,
       domainInstructions: [
         "This is a concise factual literary biography for a world-literature encyclopedia.",
@@ -279,6 +279,8 @@ export async function ensureWriterEnglishBiography(input: {
     }
 
     const generatedAt = new Date().toISOString();
+    const providerLabel =
+      runtime.provider === "cloudflare" ? "Cloudflare Workers AI" : "OpenAI";
     const englishProfile: BiographyProfile = {
       locale: "en",
       text: translated.value.text,
@@ -286,11 +288,12 @@ export async function ensureWriterEnglishBiography(input: {
       status: "reviewed",
       method: "machine-translation",
       reviewedAt: generatedAt.slice(0, 10),
-      reviewer: `OpenAI ${translated.reviewerModel || translated.translatorModel}`,
+      reviewer: `${providerLabel} ${translated.reviewerModel || translated.translatorModel}`,
       translatedFromLocale: "ru",
       sourceTextRights: "project-original",
       sources: russian.sources,
       translationMeta: {
+        provider: runtime.provider,
         model: translated.translatorModel,
         reviewerModel: translated.reviewerModel,
         sourceHash,
@@ -345,6 +348,7 @@ export async function ensureWriterEnglishBiography(input: {
         writerId: input.writerId,
         locale: "en",
         source_hash: sourceHash,
+        provider: runtime.provider,
         model: translated.translatorModel,
         reviewer_model: translated.reviewerModel,
         translator_request_id: translated.translatorRequestId,
@@ -371,8 +375,9 @@ export async function ensureWriterEnglishBiography(input: {
       entity_id: `${input.countryId}:${input.writerId}`,
       metadata: {
         locale: "en",
-        model: adminEnv.openAiTranslationModel,
-        reviewer_model: adminEnv.openAiTranslationReviewModel,
+        provider: runtime.provider,
+        model: runtime.model,
+        reviewer_model: runtime.reviewerModel,
         error: message.slice(0, 500),
       },
     });
