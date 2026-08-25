@@ -65,6 +65,13 @@ function publicBuildMetadata(kind: string, translated: number) {
   };
 }
 
+function batchFailureMessage(error: unknown) {
+  const message = typeof error === "string" ? error.trim() : "";
+  return message
+    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
+    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
+}
+
 export async function translatePremiumLibraryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -134,6 +141,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
   let skipped = 0;
   let failed = 0;
   let processed = 0;
+  let firstError = "";
   const uniqueWorkIds = [
     ...new Set((russianRows.data || []).map((row) => String(row.work_id))),
   ];
@@ -148,7 +156,11 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     if (result.state === "translated") translated += 1;
     else if (result.state === "current") current += 1;
     else if (result.state === "manual") manual += 1;
-    else if (result.state === "failed" || result.state === "conflict") failed += 1;
+    else if (result.state === "failed") {
+      failed += 1;
+      firstError = result.error || "";
+      break;
+    } else if (result.state === "conflict") failed += 1;
     else skipped += 1;
   }
   const nextLibraryCursor = advanceBackfillCursor(
@@ -176,6 +188,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Книги: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      error: firstError ? batchFailureMessage(firstError) : null,
       publication,
       libraryCursor: nextLibraryCursor,
     })
@@ -247,6 +260,7 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
   let skipped = 0;
   let failed = 0;
   let processed = 0;
+  let firstError = "";
   const scanLimit = Math.min(MAX_WRITER_SCAN, candidates.length);
 
   for (let step = 0; step < scanLimit; step += 1) {
@@ -264,7 +278,11 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
     if (result.state === "translated") translated += 1;
     else if (result.state === "current") current += 1;
     else if (result.state === "manual") manual += 1;
-    else if (result.state === "failed" || result.state === "conflict") failed += 1;
+    else if (result.state === "failed") {
+      failed += 1;
+      firstError = result.error || "";
+      break;
+    } else if (result.state === "conflict") failed += 1;
     else skipped += 1;
   }
   const nextWriterCursor = advanceBackfillCursor(
@@ -292,6 +310,7 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Биографии: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      error: firstError ? batchFailureMessage(firstError) : null,
       publication,
       writerCursor: nextWriterCursor,
     })
@@ -367,9 +386,20 @@ export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
     );
   }
 
-  const translated = await translateSiteCopyBatchToEnglish(
-    pending.map(({ key, text }) => ({ key, text }))
-  );
+  let translated: Awaited<ReturnType<typeof translateSiteCopyBatchToEnglish>>;
+  try {
+    translated = await translateSiteCopyBatchToEnglish(
+      pending.map(({ key, text }) => ({ key, text }))
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error || "");
+    redirect(
+      translationsUrl({
+        ...cursorParams,
+        error: batchFailureMessage(message),
+      })
+    );
+  }
   if (!translated) {
     redirect(
       translationsUrl({ ...cursorParams, success: "Site copy: нечего переводить." })
