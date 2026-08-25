@@ -133,12 +133,29 @@ describe("Stage 5B homepage art-direction contract", () => {
       declarationValue(artRules, ".book-of-day .book-action-primary", "background")
     ).toBe("var(--ui-primary)");
     expect(
+      declarationValue(artRules, ".book-of-day .book-action-primary", "color")
+    ).toBe("#fff");
+    expect(
+      declarationValue(
+        artRules,
+        ".book-of-day .book-action-primary > span",
+        "color"
+      )
+    ).toBe("inherit");
+    expect(
       declarationValue(
         artRules,
         ".book-of-day .book-action-primary:hover",
         "background"
       )
     ).toBe("var(--ui-primary-hover)");
+    expect(
+      declarationValue(
+        artRules,
+        ".book-of-day .book-action-primary:hover",
+        "color"
+      )
+    ).toBe("#fff");
 
     const followWriterRules = artRules.filter((rule) =>
       rule.selector.startsWith(".archive-subscribe.is-writer")
