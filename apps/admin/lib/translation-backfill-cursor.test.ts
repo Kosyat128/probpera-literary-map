@@ -4,6 +4,7 @@ import {
   advanceBackfillCursor,
   circularBackfillIndex,
   normalizeBackfillCursor,
+  translationBackfillCursorParams,
 } from "./translation-backfill-cursor";
 
 describe("translation backfill cursors", () => {
@@ -13,6 +14,18 @@ describe("translation backfill cursors", () => {
     expect(normalizeBackfillCursor("-1", 100)).toBe(0);
     expect(normalizeBackfillCursor("100", 100)).toBe(0);
     expect(normalizeBackfillCursor("42", 100)).toBe(42);
+  });
+
+  it("preserves only bounded non-negative cursor tokens across actions", () => {
+    const formData = new FormData();
+    formData.set("libraryCursor", "42");
+    formData.set("writerCursor", "7");
+    formData.set("countryCursor", "999999999999999999999");
+    expect(translationBackfillCursorParams(formData)).toEqual({
+      libraryCursor: 42,
+      writerCursor: 7,
+      countryCursor: 0,
+    });
   });
 
   it("advances by the number of candidates actually processed", () => {
