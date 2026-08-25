@@ -11,6 +11,7 @@ export type OpenAiReasoningEffort =
   | "xhigh"
   | "max";
 export type OpenAiReasoningMode = "standard" | "pro";
+export type PremiumTranslationProvider = "cloudflare" | "openai";
 
 const openAiReasoningEfforts = new Set<OpenAiReasoningEffort>([
   "none",
@@ -41,13 +42,21 @@ function getOpenAiReasoningMode(
   return openAiReasoningModes.has(value) ? value : fallback;
 }
 
+function getPremiumTranslationProvider(): PremiumTranslationProvider {
+  return getEnvValue(["PREMIUM_TRANSLATION_PROVIDER"]).toLowerCase() === "openai"
+    ? "openai"
+    : "cloudflare";
+}
+
 export function premiumTranslationFeatureEnabled(input: {
   apiKey?: string | null;
   setting?: string | null;
+  provider?: PremiumTranslationProvider;
 }) {
   const apiKey = String(input.apiKey || "").trim();
   const setting = String(input.setting || "").trim().toLowerCase();
-  return Boolean(apiKey) && setting !== "false";
+  if (setting === "false") return false;
+  return input.provider === "cloudflare" || Boolean(apiKey);
 }
 
 const supabaseUrl = getEnvValue([
@@ -58,7 +67,23 @@ const supabasePublishableKey = getEnvValue([
   "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
   "VITE_SUPABASE_PUBLISHABLE_KEY",
 ]);
-const openAiApiKey = getEnvValue(["OPENAI_API_KEY"]);
+const openAiDirectApiKey = getEnvValue(["OPENAI_API_KEY"]);
+const premiumTranslationProvider = getPremiumTranslationProvider();
+const cloudflareTranslationModel =
+  getEnvValue(["CLOUDFLARE_TRANSLATION_MODEL"]) ||
+  "@cf/google/gemma-4-26b-a4b-it";
+const cloudflareTranslationReviewModel =
+  getEnvValue(["CLOUDFLARE_TRANSLATION_REVIEW_MODEL"]) ||
+  "@cf/zai-org/glm-4.7-flash";
+
+// Backwards-compatible readiness credential. Existing translation actions use
+// openAiApiKey only as a server-side gate before entering the shared premium
+// pipeline. On Workers AI the binding itself is the credential, so expose a
+// non-secret marker here while retaining the real OpenAI key separately.
+const premiumTranslationCredential =
+  premiumTranslationProvider === "cloudflare"
+    ? "cloudflare-workers-ai-binding"
+    : openAiDirectApiKey;
 
 export const adminEnv = {
   supabaseUrl,
@@ -101,7 +126,14 @@ export const adminEnv = {
       "VITE_YANDEX_METRIKA_COUNTER_ID",
       "PUBLIC_YANDEX_METRIKA_COUNTER_ID",
     ]) || "",
-  openAiApiKey,
+  premiumTranslationProvider,
+  premiumTranslationConfigured:
+    premiumTranslationProvider === "cloudflare" || Boolean(openAiDirectApiKey),
+  cloudflareTranslationModel,
+  cloudflareTranslationReviewModel,
+  openAiDirectApiKey,
+  // Kept for compatibility with existing server-side translation gates.
+  openAiApiKey: premiumTranslationCredential,
   openAiTranslationModel:
     getEnvValue(["OPENAI_TRANSLATION_MODEL"]) || "gpt-5.6-sol",
   openAiTranslationReviewModel:
@@ -126,19 +158,23 @@ export const adminEnv = {
     getEnvValue(["OPENAI_PREMIUM_TRANSLATION_REVIEW"]).toLowerCase() !==
     "false",
   openAiAutoTranslateArticles: premiumTranslationFeatureEnabled({
-    apiKey: openAiApiKey,
+    apiKey: openAiDirectApiKey,
+    provider: premiumTranslationProvider,
     setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_ARTICLES"]),
   }),
   openAiAutoTranslateLibrary: premiumTranslationFeatureEnabled({
-    apiKey: openAiApiKey,
+    apiKey: openAiDirectApiKey,
+    provider: premiumTranslationProvider,
     setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_LIBRARY"]),
   }),
   openAiAutoTranslateSiteCopy: premiumTranslationFeatureEnabled({
-    apiKey: openAiApiKey,
+    apiKey: openAiDirectApiKey,
+    provider: premiumTranslationProvider,
     setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_SITE_COPY"]),
   }),
   openAiAutoTranslateProfiles: premiumTranslationFeatureEnabled({
-    apiKey: openAiApiKey,
+    apiKey: openAiDirectApiKey,
+    provider: premiumTranslationProvider,
     setting: getEnvValue(["OPENAI_AUTO_TRANSLATE_PROFILES"]),
   }),
 };
