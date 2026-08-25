@@ -12,6 +12,7 @@ import {
 } from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { translationBackfillCursorParams } from "@/lib/translation-backfill-cursor";
 
 const MAX_ARTICLE_TRANSLATIONS = 2;
 const ARTICLE_SCAN_PAGE_SIZE = 100;
@@ -26,16 +27,22 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
-export async function translatePremiumArticleBatchAction() {
+export async function translatePremiumArticleBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const cursorParams = translationBackfillCursorParams(formData);
   if (!adminEnv.premiumTranslationConfigured) {
     redirect(
-      translationsUrl({ error: premiumTranslationConfigurationError() })
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
     );
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+  }
 
   let translated = 0;
   let current = 0;
@@ -53,7 +60,9 @@ export async function translatePremiumArticleBatchAction() {
       .order("updated_at", { ascending: true })
       .range(offset, offset + ARTICLE_SCAN_PAGE_SIZE - 1);
     if (articles.error) {
-      redirect(translationsUrl({ error: articles.error.message }));
+      redirect(
+        translationsUrl({ ...cursorParams, error: articles.error.message })
+      );
     }
 
     const page = articles.data || [];
@@ -66,7 +75,9 @@ export async function translatePremiumArticleBatchAction() {
       .is("deleted_at", null)
       .in("article_id", articleIds);
     if (englishRows.error) {
-      redirect(translationsUrl({ error: englishRows.error.message }));
+      redirect(
+        translationsUrl({ ...cursorParams, error: englishRows.error.message })
+      );
     }
 
     const englishStatus = new Map(
@@ -123,6 +134,7 @@ export async function translatePremiumArticleBatchAction() {
   revalidatePath("/articles");
   redirect(
     translationsUrl({
+      ...cursorParams,
       success: `Статьи: новых/обновлённых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
     })
