@@ -33,6 +33,13 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
+function batchFailureMessage(error: unknown) {
+  const message = typeof error === "string" ? error.trim() : "";
+  return message
+    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
+    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
+}
+
 export async function translatePremiumCountryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -62,10 +69,11 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
   let skipped = 0;
   let failed = 0;
   let processed = 0;
+  let firstError = "";
   const scanLimit = Math.min(MAX_COUNTRY_SCAN, candidates.length);
 
   for (let step = 0; step < scanLimit; step += 1) {
-    if (translated >= MAX_COUNTRY_TRANSLATIONS) break;
+    if (translated >= MAX_COUNTRY_TRANSLATIONS || firstError) break;
     const country = candidates[
       circularBackfillIndex(startCursor, step, candidates.length)
     ];
@@ -80,7 +88,10 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     if (result.state === "translated") translated += 1;
     else if (result.state === "current") current += 1;
     else if (result.state === "manual") manual += 1;
-    else if (result.state === "failed" || result.state === "conflict") failed += 1;
+    else if (result.state === "failed") {
+      failed += 1;
+      firstError = result.error || "";
+    } else if (result.state === "conflict") failed += 1;
     else skipped += 1;
   }
   const nextCountryCursor = advanceBackfillCursor(
@@ -118,6 +129,7 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Страны: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      error: firstError ? batchFailureMessage(firstError) : null,
       publication,
       countryCursor: nextCountryCursor,
     })
