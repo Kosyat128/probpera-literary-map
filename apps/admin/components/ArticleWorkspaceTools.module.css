@@ -93,7 +93,9 @@
 .nav button,
 .action,
 .outline summary,
-.outline button {
+.outline button,
+.guidance summary,
+.guidance button {
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: inherit;
   font: inherit;
@@ -113,7 +115,9 @@
 .nav button:hover,
 .action:hover,
 .outline summary:hover,
-.outline button:hover {
+.outline button:hover,
+.guidance summary:hover,
+.guidance button:hover {
   border-color: rgba(255, 179, 109, 0.34);
   background: rgba(255, 118, 25, 0.09);
   color: white;
@@ -159,7 +163,7 @@
   display: grid;
   min-width: 0;
   grid-template-columns: auto minmax(90px, 190px) auto;
-  gap: 8px;
+  gap: 7px 8px;
   align-items: center;
   color: #cfc1d7;
   font-size: 11px;
@@ -185,21 +189,31 @@
   transition: width 180ms ease;
 }
 
+.metrics {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  color: #8f8099;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .saveState {
   overflow: hidden;
-  max-width: 430px;
+  max-width: 360px;
   color: #bbaec8;
   font-size: 11px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.outline {
+.outline,
+.guidance {
   position: relative;
   justify-self: end;
 }
 
-.outline summary {
+.outline summary,
+.guidance summary {
   display: inline-flex;
   min-height: 30px;
   align-items: center;
@@ -211,13 +225,22 @@
   font-size: 11px;
   font-weight: 800;
   list-style: none;
+  white-space: nowrap;
 }
 
-.outline summary::-webkit-details-marker {
+.outline summary::-webkit-details-marker,
+.guidance summary::-webkit-details-marker {
   display: none;
 }
 
-.outlinePanel {
+.guidance summary.guidanceAlert {
+  border-color: rgba(255, 160, 85, 0.28);
+  background: rgba(255, 118, 25, 0.1);
+  color: #ffd2a7;
+}
+
+.outlinePanel,
+.guidancePanel {
   position: absolute;
   z-index: 40;
   top: calc(100% + 8px);
@@ -234,7 +257,8 @@
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
 }
 
-.outline button {
+.outline button,
+.guidance button {
   display: block;
   width: 100%;
   min-height: 34px;
@@ -248,6 +272,39 @@
 .outline button[data-level="3"] {
   padding-left: 24px;
   color: #bbaec8;
+  font-size: 11px;
+}
+
+.guidancePanel button {
+  display: grid;
+  grid-template-columns: 31px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.guidancePanel button span {
+  display: inline-grid;
+  min-height: 22px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 118, 25, 0.1);
+  color: #ffbd83;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.guidancePanel button strong {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.guidancePanel p {
+  margin: 4px 6px;
+  color: #aee8c9;
   font-size: 11px;
 }
 
@@ -386,7 +443,8 @@
     grid-template-columns: 1fr;
   }
 
-  .outline {
+  .outline,
+  .guidance {
     justify-self: start;
   }
 }
@@ -416,6 +474,10 @@
 
   .quality {
     grid-template-columns: auto minmax(70px, 1fr) auto;
+  }
+
+  .metrics {
+    display: none;
   }
 
   .saveState,

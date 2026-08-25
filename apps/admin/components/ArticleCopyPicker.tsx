@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 
 import { duplicateArticleAction } from "@/app/(dashboard)/articles/actions";
+import {
+  searchArticleCopyOptionsAction,
+  type ArticleCopySearchItem,
+} from "@/app/(dashboard)/articles/article-copy-search-action";
 
 export type CopyableArticle = {
   id: string;
@@ -27,6 +31,7 @@ function normalize(value: string) {
     .replace(/\p{M}/gu, "")
     .toLocaleLowerCase("ru")
     .replace(/ё/gu, "е")
+    .replace(/\s+/gu, " ")
     .trim();
 }
 
@@ -37,13 +42,42 @@ export default function ArticleCopyPicker({
 }) {
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(false);
+  const [remoteArticles, setRemoteArticles] = useState<ArticleCopySearchItem[] | null>(
+    null
+  );
+  const [searchError, setSearchError] = useState<string | null>(null);
+  const [isSearching, startSearch] = useTransition();
+  const searchRequestRef = useRef(0);
+  const needle = normalize(query);
+
+  useEffect(() => {
+    if (!expanded || needle.length < 2) {
+      searchRequestRef.current += 1;
+      setRemoteArticles(null);
+      setSearchError(null);
+      return;
+    }
+
+    const requestId = ++searchRequestRef.current;
+    const timeout = window.setTimeout(() => {
+      startSearch(async () => {
+        const result = await searchArticleCopyOptionsAction(query);
+        if (requestId !== searchRequestRef.current) return;
+        setRemoteArticles(result.items);
+        setSearchError(result.error);
+      });
+    }, 260);
+
+    return () => window.clearTimeout(timeout);
+  }, [expanded, needle, query]);
+
   const matches = useMemo(() => {
-    const needle = normalize(query);
+    if (needle.length >= 2 && remoteArticles) return remoteArticles;
     const filtered = needle
       ? articles.filter((article) => normalize(article.title).includes(needle))
       : articles;
     return filtered.slice(0, needle ? 24 : 8);
-  }, [articles, query]);
+  }, [articles, needle, remoteArticles]);
 
   const jumpToEditor = () => {
     document
@@ -62,7 +96,7 @@ export default function ArticleCopyPicker({
             безопасная копия сохраняет структуру и медиа, а исходная статья не изменится.
           </p>
         </div>
-        <strong>{articles.length} доступных образцов</strong>
+        <strong>{articles.length} свежих · весь архив по поиску</strong>
       </div>
 
       <div className="article-copy-mode-actions">
@@ -86,7 +120,7 @@ export default function ArticleCopyPicker({
       {expanded && (
         <>
           <label className="field article-copy-search">
-            <span>Поиск статьи</span>
+            <span>Поиск статьи во всём архиве</span>
             <input
               type="search"
               value={query}
@@ -95,8 +129,18 @@ export default function ArticleCopyPicker({
               autoComplete="off"
               autoFocus
             />
+            <small>
+              {needle.length < 2
+                ? "Показаны последние материалы. Введите минимум 2 символа для поиска по всему архиву."
+                : isSearching
+                  ? "Ищем по архиву…"
+                  : remoteArticles
+                    ? `Найдено: ${remoteArticles.length}`
+                    : "Поиск запускается автоматически."}
+            </small>
           </label>
-          <div className="article-copy-results" role="list">
+          {searchError && <p className="form-message">{searchError}</p>}
+          <div className="article-copy-results" role="list" aria-busy={isSearching}>
             {matches.map((article) => (
               <article className="article-copy-item" key={article.id}>
                 <div>
@@ -117,7 +161,7 @@ export default function ArticleCopyPicker({
                 </div>
               </article>
             ))}
-            {!matches.length && (
+            {!matches.length && !isSearching && !searchError && (
               <p className="article-copy-empty">По вашему запросу статей не найдено.</p>
             )}
           </div>

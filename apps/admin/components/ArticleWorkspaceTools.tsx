@@ -4,8 +4,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   articleWorkspaceAnchor,
+  articleWorkspaceCheckLocale,
+  articleWorkspaceCheckSection,
+  articleWorkspaceDocumentMetrics,
   articleWorkspacePanelSection,
   articleWorkspaceQuality,
+  type ArticleWorkspaceLocale,
   type ArticleWorkspaceSection,
 } from "@/lib/article-workspace-utils";
 
@@ -17,9 +21,19 @@ type OutlineItem = {
   level: 2 | 3;
 };
 
+type GuidanceItem = {
+  label: string;
+  locale: ArticleWorkspaceLocale;
+  section: ArticleWorkspaceSection;
+};
+
+type DocumentMetrics = ReturnType<typeof articleWorkspaceDocumentMetrics>;
+
 type WorkspaceSnapshot = {
   locale: "RU" | "EN";
   outline: OutlineItem[];
+  missing: GuidanceItem[];
+  metrics: DocumentMetrics;
   ready: number;
   total: number;
   saveState: string;
@@ -94,12 +108,22 @@ function findActionButton(
   );
 }
 
+function editorLocale(form: HTMLFormElement): ArticleWorkspaceLocale {
+  return form
+    .querySelector<HTMLButtonElement>(".article-language-tabs button.is-active")
+    ?.textContent?.includes("EN")
+    ? "en"
+    : "ru";
+}
+
 export default function ArticleWorkspaceTools() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const [snapshot, setSnapshot] = useState<WorkspaceSnapshot>({
     locale: "RU",
     outline: [],
+    missing: [],
+    metrics: articleWorkspaceDocumentMetrics("", 0, 0),
     ready: 0,
     total: 0,
     saveState: "Редактор готов",
@@ -115,15 +139,12 @@ export default function ArticleWorkspaceTools() {
     form.classList.add("article-workspace-enabled");
     form.closest<HTMLElement>(".admin-content")?.classList.add("article-workspace-page");
 
-    const activeLocaleButton = form.querySelector<HTMLButtonElement>(
-      ".article-language-tabs button.is-active"
+    const activeLocale = editorLocale(form);
+    const editorRoot = form.querySelector<HTMLElement>(
+      ".editor-content-drop-target .ProseMirror"
     );
-    const locale = activeLocaleButton?.textContent?.includes("EN") ? "EN" : "RU";
-
     const outline = Array.from(
-      form.querySelectorAll<HTMLElement>(
-        ".editor-content-drop-target .ProseMirror h2, .editor-content-drop-target .ProseMirror h3"
-      )
+      editorRoot?.querySelectorAll<HTMLElement>("h2, h3") || []
     )
       .map((heading, index) => {
         const label = heading.textContent?.replace(/\s+/gu, " ").trim() || "";
@@ -142,6 +163,22 @@ export default function ArticleWorkspaceTools() {
       form.querySelectorAll<HTMLElement>(".publication-checklist li")
     );
     const ready = checks.filter((item) => item.classList.contains("is-ready")).length;
+    const missing = checks
+      .filter((item) => item.classList.contains("is-missing"))
+      .map((item) =>
+        (item.textContent || "").replace(/^[✓○]\s*/u, "").replace(/\s+/gu, " ").trim()
+      )
+      .filter(Boolean)
+      .map((label) => ({
+        label,
+        locale: articleWorkspaceCheckLocale(label),
+        section: articleWorkspaceCheckSection(label),
+      }));
+    const metrics = articleWorkspaceDocumentMetrics(
+      editorRoot?.innerText || editorRoot?.textContent || "",
+      outline.length,
+      editorRoot?.querySelectorAll("img").length || 0
+    );
     const saveState =
       form.querySelector<HTMLElement>(".editor-save-state small")?.textContent
         ?.replace(/\s+/gu, " ")
@@ -152,8 +189,10 @@ export default function ArticleWorkspaceTools() {
     const publishButton = findActionButton(form, "publish");
 
     setSnapshot({
-      locale,
+      locale: activeLocale === "en" ? "EN" : "RU",
       outline,
+      missing,
+      metrics,
       ready,
       total: checks.length,
       saveState,
@@ -212,6 +251,27 @@ export default function ArticleWorkspaceTools() {
     if (!form) return;
     const target = findPanel(form, section);
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const goToIssue = (issue: GuidanceItem) => {
+    const form = formRef.current;
+    if (!form) return;
+    const currentLocale = editorLocale(form);
+    if (currentLocale === issue.locale) {
+      scrollToSection(issue.section);
+      return;
+    }
+    const localeButton = Array.from(
+      form.querySelectorAll<HTMLButtonElement>(".article-language-tabs button")
+    ).find((button) =>
+      issue.locale === "en"
+        ? button.textContent?.includes("EN")
+        : button.textContent?.includes("RU")
+    );
+    localeButton?.click();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => scrollToSection(issue.section));
+    });
   };
 
   const triggerSave = () => {
@@ -311,11 +371,41 @@ export default function ArticleWorkspaceTools() {
             <span style={{ width: `${quality.percent}%` }} />
           </span>
           <span>{snapshot.total ? `${quality.percent}% готово` : "контроль появится после заполнения"}</span>
+          <span className={styles.metrics}>
+            {snapshot.metrics.words.toLocaleString(snapshot.locale === "EN" ? "en-US" : "ru-RU")} слов
+            {` · ${snapshot.metrics.readingMinutes || 0} мин · ${snapshot.metrics.headings} H2/H3 · ${snapshot.metrics.images} фото`}
+          </span>
         </div>
 
         <div className={styles.actions}>
           <span className={styles.saveState}>{snapshot.saveState}</span>
           <span className={styles.shortcut}>Ctrl/Cmd + S</span>
+          <details className={styles.guidance}>
+            <summary className={snapshot.missing.length ? styles.guidanceAlert : undefined}>
+              {snapshot.missing.length
+                ? `Требует внимания · ${snapshot.missing.length}`
+                : "Контроль пройден"}
+            </summary>
+            <div className={styles.guidancePanel}>
+              {snapshot.missing.length ? (
+                snapshot.missing.map((item, index) => (
+                  <button
+                    type="button"
+                    key={`${item.locale}-${item.label}-${index}`}
+                    onClick={(event) => {
+                      event.currentTarget.closest("details")?.removeAttribute("open");
+                      goToIssue(item);
+                    }}
+                  >
+                    <span>{item.locale.toUpperCase()}</span>
+                    <strong>{item.label}</strong>
+                  </button>
+                ))
+              ) : (
+                <p>Все обязательные пункты текущего чек-листа выполнены.</p>
+              )}
+            </div>
+          </details>
           <details className={styles.outline}>
             <summary>
               Оглавление · {snapshot.outline.length}
