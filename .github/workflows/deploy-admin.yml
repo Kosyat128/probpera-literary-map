@@ -148,8 +148,8 @@ jobs:
           test -n "$CLOUDFLARE_API_TOKEN"
           cd apps/admin
 
-          # An optional GitHub Actions copy lets CI provision or rotate the
-          # Worker secret without putting its value in source or command args.
+          # Workers AI is the default provider and needs no API secret. Keep an
+          # optional OpenAI secret only for an explicitly selected paid fallback.
           if [[ -n "${OPENAI_API_KEY:-}" ]]; then
             printf '%s' "$OPENAI_API_KEY" \
               | npx wrangler secret put OPENAI_API_KEY --config wrangler.jsonc
@@ -174,12 +174,11 @@ jobs:
           NODE
           )"
 
-          if [[ "$has_secret" == "true" ]]; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "Premium English automation is ready."
-          else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::OPENAI_API_KEY is not configured on Cloudflare Worker probpera-admin. The admin will deploy with every premium auto-translation path safely disabled; manual RU/EN editing remains available."
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "openai_fallback=$has_secret" >> "$GITHUB_OUTPUT"
+          echo "Premium English automation is ready through the Cloudflare Workers AI binding."
+          if [[ "$has_secret" != "true" ]]; then
+            echo "OpenAI fallback is not configured; this is expected for the free default mode."
           fi
 
       - name: Deploy to Cloudflare Workers
@@ -196,13 +195,19 @@ jobs:
       - name: Report premium translation readiness
         if: ${{ always() && github.event_name != 'pull_request' }}
         env:
-          PREMIUM_SECRET_READY: ${{ steps.premium_secret.outputs.ready }}
+          PREMIUM_TRANSLATION_READY: ${{ steps.premium_secret.outputs.ready }}
+          OPENAI_FALLBACK_READY: ${{ steps.premium_secret.outputs.openai_fallback }}
         shell: bash
         run: |
-          if [[ "$PREMIUM_SECRET_READY" == "true" ]]; then
-            echo "### Premium English: ready" >> "$GITHUB_STEP_SUMMARY"
-            echo "Cloudflare Worker secret OPENAI_API_KEY is configured." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$PREMIUM_TRANSLATION_READY" == "true" ]]; then
+            echo "### Premium English: ready on Workers AI" >> "$GITHUB_STEP_SUMMARY"
+            echo "Default provider: Cloudflare Workers AI binding (no OpenAI API key required)." >> "$GITHUB_STEP_SUMMARY"
+            if [[ "$OPENAI_FALLBACK_READY" == "true" ]]; then
+              echo "Optional paid OpenAI fallback secret is also configured." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "Optional paid OpenAI fallback is not configured and will not be used." >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
-            echo "### Premium English: safely disabled" >> "$GITHUB_STEP_SUMMARY"
-            echo "The admin is deployed, but automatic translation remains disabled until OPENAI_API_KEY is added as a Worker or GitHub Actions secret." >> "$GITHUB_STEP_SUMMARY"
+            echo "### Premium English: deployment check failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "Workers AI readiness could not be confirmed by the deployment workflow." >> "$GITHUB_STEP_SUMMARY"
           fi
