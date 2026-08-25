@@ -91,13 +91,20 @@ describe("Stage 5C homepage layout and community contract", () => {
     );
     expect(value("#book-day > .book-of-day", "grid-row")).toBe("auto");
     expect(
+      value(
+        "#book-day.daily-grid",
+        "grid-template-columns",
+        "@media (max-width: 1360px)"
+      )
+    ).toBe("minmax(0, 1fr)");
+    expect(
       value("#book-day > .book-month-supporting", "grid-template-rows")
     ).toBe("minmax(0, 1fr) auto");
     expect(
       value(
         "#book-day > .book-month-supporting",
         "grid-template-columns",
-        "@media (max-width: 1180px)"
+        "@media (max-width: 1360px)"
       )
     ).toBe("minmax(0, 1.12fr) minmax(250px, 0.88fr)");
     expect(

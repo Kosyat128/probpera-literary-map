@@ -138,7 +138,7 @@ describe("Stage 5B homepage art-direction contract", () => {
     expect(
       declarationValue(
         artRules,
-        ".book-of-day .book-action-primary > span",
+        ".book-of-day .book-action-primary span",
         "color"
       )
     ).toBe("inherit");

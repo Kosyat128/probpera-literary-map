@@ -157,7 +157,7 @@
   border-color: var(--ui-primary);
 }
 
-.book-of-day .book-action-primary > span {
+.book-of-day .book-action-primary span {
   color: inherit;
 }
 
