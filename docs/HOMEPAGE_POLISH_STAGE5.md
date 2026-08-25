@@ -266,3 +266,59 @@ design: this evidence is ready for that review, not a substitute for it.
 
 STAGE 5A VISUAL BASELINE:
 READY FOR REVIEW
+
+## Stage 5B closure
+
+Stage 5B is complete as a scoped homepage art-direction checkpoint on base
+d9a77efee9ce9348569162a91261ece66210283d. The final immutable branch head is
+recorded in the substage PR description after commit creation.
+
+### Implemented contract
+
+- Added one late-loaded, homepage-scoped stylesheet with the approved desktop
+  and mobile scales for major, normal, card, body, metadata, kicker, and action
+  roles. It contains no global h2, h3, p, or button override.
+- Normalized the measured excessive Article Library, Trust, and Calendar
+  section spacing and removed the Trust disclosure minimum-height outlier.
+  Community, author-card, directory-card, and Book Month geometry remain owned
+  by Stage 5C.
+- Replaced only the Book Month primary-action outlier with the canonical
+  --ui-primary / --ui-primary-hover tokens. Semantic error, warning, success,
+  Nobel, and artwork colors are untouched.
+- Changed Follow Writer backgrounds only. Its dimensions, typography, motion,
+  state logic, and Stage 4 WriterPanel architecture are unchanged.
+- Added CSS-only PAPER, LIGHT EDITORIAL, VIOLET, and INK fallback surfaces.
+  All editable core fallbacks are guarded by :not(.cms-core-editable), while
+  the established CMS !important background contract remains authoritative.
+- Added no image pack, font, second data layer, translated prose, or new public
+  interface copy. Header/Hero, logo/navigation/actions, Open Globe, Globe
+  architecture, Book Archive, article content, source data, URLs, and homepage
+  section order are unchanged.
+
+### Verification and visual evidence
+
+- Focused Vitest passed 15/15 across the Stage 5B CSS contract, Stage 5 content
+  data lock, and homepage CMS tests.
+- TypeScript tsc --noEmit passed. A direct Vite diagnostic build passed with
+  1029 transformed modules; its CSS artifact measured 329.51 KB raw / 60.23 KB
+  gzip.
+- The unchanged production-budget audit passed at 106595396 / 115081216 total
+  bytes and 67020230 / 75497472 bytes excluding covers. This was a local
+  worktree diagnostic, not a replacement for the remote Pages artifact.
+- Targeted Playwright passed 2/2: RU desktop 1440x900 and EN mobile 390x844.
+  The tests assert every approved type range and line-height, the reduced
+  spacing limits, all four background families, and document overflow without
+  .skip, .only, assertion deletion, or overflow masking.
+- reports/stage5b-art-direction/visual/ contains 12 compact WebP captures and a
+  machine-readable manifest from Chrome 151.0.7922.170. Every capture has zero
+  horizontal overflow; page/console errors are zero. Human review found no
+  clipping, overlap, title-wrap, contrast, or background-layer regression.
+
+Remote mandatory checks are intentionally not claimed here before the PR exists.
+Their exact run results, tested head SHA, integration checkpoint, and merge state
+are recorded in the PR. The local EN Article Library capture preserves the
+current localized empty state; content readiness is governed separately and was
+not modified or inferred by Stage 5B.
+
+STAGE 5B TYPOGRAPHY AND ART DIRECTION:
+READY FOR REVIEW
