@@ -22,9 +22,16 @@ import {
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { readSiteCopyValues } from "@/lib/site-copy-storage";
+import {
+  advanceBackfillCursor,
+  circularBackfillIndex,
+  normalizeBackfillCursor,
+  translationBackfillCursorParams,
+} from "@/lib/translation-backfill-cursor";
 
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 const MAX_LIBRARY_TRANSLATIONS = 4;
+const MAX_LIBRARY_SCAN = 60;
 const MAX_WRITER_TRANSLATIONS = 3;
 const MAX_WRITER_SCAN = 120;
 const MAX_SITE_COPY_TRANSLATIONS = 50;
@@ -58,37 +65,67 @@ function publicBuildMetadata(kind: string, translated: number) {
   };
 }
 
-export async function translatePremiumLibraryBatchAction() {
+export async function translatePremiumLibraryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const cursorParams = translationBackfillCursorParams(formData);
   if (!adminEnv.premiumTranslationConfigured) {
     redirect(
-      translationsUrl({ error: premiumTranslationConfigurationError() })
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
     );
   }
 
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+  }
 
   const readiness = await supabase.rpc("premium_machine_translation_ready");
   if (readiness.error || readiness.data !== true) {
     redirect(
       translationsUrl({
+        ...cursorParams,
         error:
           "Книжный premium EN подготовлен, но DB-миграция machine-translation ещё не применена.",
       })
     );
   }
 
-  const russianRows = await supabase
+  const countResponse = await supabase
     .from("literary_work_translations")
-    .select("work_id")
+    .select("work_id", { count: "exact", head: true })
     .eq("locale", "ru")
-    .in("editorial_status", ["reviewed", "verified"])
-    .order("updated_at", { ascending: true })
-    .limit(60);
+    .in("editorial_status", ["reviewed", "verified"]);
+  if (countResponse.error) {
+    redirect(
+      translationsUrl({ ...cursorParams, error: countResponse.error.message })
+    );
+  }
+  const totalCandidates = countResponse.count || 0;
+  const startCursor = normalizeBackfillCursor(
+    cursorParams.libraryCursor,
+    totalCandidates
+  );
+
+  const russianRows = totalCandidates
+    ? await supabase
+        .from("literary_work_translations")
+        .select("work_id")
+        .eq("locale", "ru")
+        .in("editorial_status", ["reviewed", "verified"])
+        .order("updated_at", { ascending: true })
+        .range(
+          startCursor,
+          Math.min(startCursor + MAX_LIBRARY_SCAN - 1, totalCandidates - 1)
+        )
+    : { data: [], error: null };
   if (russianRows.error) {
-    redirect(translationsUrl({ error: russianRows.error.message }));
+    redirect(
+      translationsUrl({ ...cursorParams, error: russianRows.error.message })
+    );
   }
 
   let translated = 0;
@@ -96,11 +133,13 @@ export async function translatePremiumLibraryBatchAction() {
   let manual = 0;
   let skipped = 0;
   let failed = 0;
+  let processed = 0;
   const uniqueWorkIds = [
     ...new Set((russianRows.data || []).map((row) => String(row.work_id))),
   ];
   for (const workId of uniqueWorkIds) {
     if (translated >= MAX_LIBRARY_TRANSLATIONS) break;
+    processed += 1;
     const result = await ensureLiteraryWorkEnglishTranslation({
       supabase,
       actorId: session.user.id,
@@ -112,6 +151,11 @@ export async function translatePremiumLibraryBatchAction() {
     else if (result.state === "failed" || result.state === "conflict") failed += 1;
     else skipped += 1;
   }
+  const nextLibraryCursor = advanceBackfillCursor(
+    startCursor,
+    processed,
+    totalCandidates
+  );
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -130,8 +174,10 @@ export async function translatePremiumLibraryBatchAction() {
   revalidatePath("/library");
   redirect(
     translationsUrl({
+      ...cursorParams,
       success: `Книги: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
+      libraryCursor: nextLibraryCursor,
     })
   );
 }
@@ -171,29 +217,45 @@ function staticWriterCandidates(editorialCatalog: EditorialCatalog) {
   return candidates;
 }
 
-export async function translatePremiumWriterBatchAction() {
+export async function translatePremiumWriterBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const cursorParams = translationBackfillCursorParams(formData);
   if (!adminEnv.premiumTranslationConfigured) {
     redirect(
-      translationsUrl({ error: premiumTranslationConfigurationError() })
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
     );
   }
 
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+  }
 
   const editorialCatalog = await loadEditorialCatalog();
+  const candidates = staticWriterCandidates(editorialCatalog);
+  const startCursor = normalizeBackfillCursor(
+    cursorParams.writerCursor,
+    candidates.length
+  );
   let translated = 0;
   let current = 0;
   let manual = 0;
   let skipped = 0;
   let failed = 0;
-  let scanned = 0;
+  let processed = 0;
+  const scanLimit = Math.min(MAX_WRITER_SCAN, candidates.length);
 
-  for (const candidate of staticWriterCandidates(editorialCatalog)) {
-    if (translated >= MAX_WRITER_TRANSLATIONS || scanned >= MAX_WRITER_SCAN) break;
-    scanned += 1;
+  for (let step = 0; step < scanLimit; step += 1) {
+    if (translated >= MAX_WRITER_TRANSLATIONS) break;
+    const candidate = candidates[
+      circularBackfillIndex(startCursor, step, candidates.length)
+    ];
+    if (!candidate) break;
+    processed += 1;
     const result = await ensureWriterEnglishBiography({
       supabase,
       actorId: session.user.id,
@@ -205,6 +267,11 @@ export async function translatePremiumWriterBatchAction() {
     else if (result.state === "failed" || result.state === "conflict") failed += 1;
     else skipped += 1;
   }
+  const nextWriterCursor = advanceBackfillCursor(
+    startCursor,
+    processed,
+    candidates.length
+  );
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -223,8 +290,10 @@ export async function translatePremiumWriterBatchAction() {
   revalidatePath("/editorial-database");
   redirect(
     translationsUrl({
+      ...cursorParams,
       success: `Биографии: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
       publication,
+      writerCursor: nextWriterCursor,
     })
   );
 }
@@ -234,16 +303,22 @@ type MachineSiteCopy = Record<
   { sourceHash?: unknown; model?: unknown; reviewerModel?: unknown; generatedAt?: unknown }
 >;
 
-export async function translatePremiumSiteCopyBatchAction() {
+export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const cursorParams = translationBackfillCursorParams(formData);
   if (!adminEnv.premiumTranslationConfigured) {
     redirect(
-      translationsUrl({ error: premiumTranslationConfigurationError() })
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
     );
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+  }
 
   const existingRows = await supabase
     .from("homepage_blocks")
@@ -252,12 +327,17 @@ export async function translatePremiumSiteCopyBatchAction() {
     .order("updated_at", { ascending: false })
     .limit(1);
   if (existingRows.error) {
-    redirect(translationsUrl({ error: existingRows.error.message }));
+    redirect(
+      translationsUrl({ ...cursorParams, error: existingRows.error.message })
+    );
   }
   const existing = existingRows.data?.[0];
   if (!existing) {
     redirect(
-      translationsUrl({ success: "Site copy: русских CMS-переопределений для перевода пока нет." })
+      translationsUrl({
+        ...cursorParams,
+        success: "Site copy: русских CMS-переопределений для перевода пока нет.",
+      })
     );
   }
 
@@ -279,14 +359,21 @@ export async function translatePremiumSiteCopyBatchAction() {
   }
 
   if (!pending.length) {
-    redirect(translationsUrl({ success: "Site copy: все машинные/пустые EN уже актуальны." }));
+    redirect(
+      translationsUrl({
+        ...cursorParams,
+        success: "Site copy: все машинные/пустые EN уже актуальны.",
+      })
+    );
   }
 
   const translated = await translateSiteCopyBatchToEnglish(
     pending.map(({ key, text }) => ({ key, text }))
   );
   if (!translated) {
-    redirect(translationsUrl({ success: "Site copy: нечего переводить." }));
+    redirect(
+      translationsUrl({ ...cursorParams, success: "Site copy: нечего переводить." })
+    );
   }
 
   const en = { ...values.en };
@@ -326,6 +413,7 @@ export async function translatePremiumSiteCopyBatchAction() {
   if (update.error || !update.data) {
     redirect(
       translationsUrl({
+        ...cursorParams,
         error:
           update.error?.message ||
           "Site copy изменился во время перевода. Повторите пакет на свежей версии.",
@@ -359,6 +447,7 @@ export async function translatePremiumSiteCopyBatchAction() {
   revalidatePath("/homepage");
   redirect(
     translationsUrl({
+      ...cursorParams,
       success: `Site copy: переведено ${translated.value.items.length} строк.`,
       publication: publication.state,
     })
