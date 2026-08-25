@@ -1,6 +1,10 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { articleCanonicalUrl } from "./article-route";
+import {
+  isMachineOwnedEnglishArticleTranslation,
+  premiumArticleMachineContentJson,
+} from "./article-translation-machine-ownership";
 import { articleTranslationSourceHash } from "./article-translations";
 import { translateArticleSourceToEnglish } from "./auto-translate-article";
 import { adminEnv } from "./env";
@@ -34,6 +38,7 @@ type ExistingEnglishRow = {
   canonical_url: string | null;
   status: string;
   source_content_hash: string | null;
+  content_json: unknown;
 };
 
 function normalizedLineItems(value: unknown[] | null | undefined) {
@@ -51,6 +56,7 @@ function normalizedLineItems(value: unknown[] | null | undefined) {
 export type PremiumArticleBackfillState =
   | "translated"
   | "current"
+  | "manual"
   | "skipped"
   | "not-configured"
   | "conflict"
@@ -108,7 +114,9 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
 
   const englishResponse = await input.supabase
     .from("article_translations")
-    .select("id,updated_at,slug,canonical_url,status,source_content_hash")
+    .select(
+      "id,updated_at,slug,canonical_url,status,source_content_hash,content_json"
+    )
     .eq("article_id", article.id)
     .eq("locale", "en")
     .maybeSingle();
@@ -121,6 +129,19 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
     existing.status === "published"
   ) {
     return { state: "current" };
+  }
+
+  // Anything that predates the premium ownership marker, or anything an
+  // editor has subsequently taken over, is human-owned and is never replaced
+  // by a batch backfill.
+  if (
+    existing &&
+    !isMachineOwnedEnglishArticleTranslation({
+      contentJson: existing.content_json,
+      sourceContentHash: existing.source_content_hash,
+    })
+  ) {
+    return { state: "manual" };
   }
 
   const startedAt = Date.now();
@@ -171,7 +192,14 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
       title: translated.title,
       subtitle: translated.subtitle,
       excerpt: translated.excerpt,
-      content_json: { type: "doc", content: [] },
+      content_json: premiumArticleMachineContentJson({
+        sourceHash,
+        model: translated.model,
+        reviewerModel: translated.reviewModel,
+        translatorRequestId: translated.requestId,
+        reviewerRequestId: translated.reviewRequestId,
+        generatedAt: now,
+      }),
       content_html: translated.content_html,
       cover_alt: translated.cover_alt,
       slug: englishSlug,
@@ -232,6 +260,7 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
       metadata: {
         locale: "en",
         source_hash: sourceHash,
+        ownership: "machine-translation",
         model: translated.model,
         reviewer_model: translated.reviewModel,
         translator_request_id: translated.requestId,
@@ -250,7 +279,8 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
       reviewerModel: translated.reviewModel,
     };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "premium article translation failed";
+    const message =
+      error instanceof Error ? error.message : "premium article translation failed";
     await input.supabase.from("admin_audit_log").insert({
       actor_id: input.actorId,
       action: "article.premium_translation.backfill.failed",
