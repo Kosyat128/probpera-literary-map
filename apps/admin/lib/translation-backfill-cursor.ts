@@ -1,7 +1,27 @@
+const MAX_CURSOR_TOKEN = 1_000_000_000;
+
+function cursorToken(value: unknown) {
+  const text = String(value ?? "0").trim();
+  if (!/^\d+$/u.test(text)) return 0;
+  const parsed = Number.parseInt(text, 10);
+  if (!Number.isSafeInteger(parsed) || parsed < 0 || parsed > MAX_CURSOR_TOKEN) {
+    return 0;
+  }
+  return parsed;
+}
+
+export function translationBackfillCursorParams(formData: FormData) {
+  return {
+    libraryCursor: cursorToken(formData.get("libraryCursor")),
+    writerCursor: cursorToken(formData.get("writerCursor")),
+    countryCursor: cursorToken(formData.get("countryCursor")),
+  };
+}
+
 export function normalizeBackfillCursor(value: unknown, total: number) {
   if (!Number.isInteger(total) || total <= 0) return 0;
-  const parsed = Number.parseInt(String(value ?? "0"), 10);
-  if (!Number.isInteger(parsed) || parsed < 0 || parsed >= total) return 0;
+  const parsed = cursorToken(value);
+  if (parsed >= total) return 0;
   return parsed;
 }
 
