@@ -7,6 +7,7 @@ export type ArticleWorkspaceSection =
   | "seo"
   | "sources"
   | "quality";
+export type ArticleWorkspaceLocale = "ru" | "en";
 
 function normalizeWorkspaceText(value: string) {
   return value
@@ -36,6 +37,32 @@ export function articleWorkspacePanelSection(
   return null;
 }
 
+export function articleWorkspaceCheckLocale(label: string): ArticleWorkspaceLocale {
+  return normalizeWorkspaceText(label).startsWith("english:") ? "en" : "ru";
+}
+
+export function articleWorkspaceCheckSection(label: string): ArticleWorkspaceSection {
+  const value = normalizeWorkspaceText(label).replace(/^english:\s*/u, "");
+  if (value.includes("seo")) return "seo";
+  if (value.includes("источник") || value.includes("source")) return "sources";
+  if (value.includes("облож") || value.includes("alt")) return "cover";
+  if (value.includes("изображ") || value.includes("media")) return "media";
+  if (value.includes("слов") || value.includes("words") || value.includes("h2")) {
+    return "text";
+  }
+  if (value.includes("рубри") || value.includes("category")) return "basics";
+  if (value.includes("заголов") || value.includes("описание карточки")) return "basics";
+  if (
+    value.includes("approved") ||
+    value.includes("published") ||
+    value.includes("сверен") ||
+    value.includes("current original")
+  ) {
+    return "publish";
+  }
+  return "quality";
+}
+
 export function articleWorkspaceAnchor(text: string, index: number) {
   const normalized = normalizeWorkspaceText(text)
     .replace(/[^a-zа-я0-9]+/giu, "-")
@@ -53,5 +80,21 @@ export function articleWorkspaceQuality(ready: number, total: number) {
     total: safeTotal,
     percent,
     complete: safeTotal > 0 && safeReady === safeTotal,
+  };
+}
+
+export function articleWorkspaceDocumentMetrics(
+  text: string,
+  headings: number,
+  images: number
+) {
+  const words = text.replace(/\s+/gu, " ").trim()
+    ? text.replace(/\s+/gu, " ").trim().split(" ").length
+    : 0;
+  return {
+    words,
+    headings: Math.max(0, Math.trunc(headings)),
+    images: Math.max(0, Math.trunc(images)),
+    readingMinutes: words ? Math.max(1, Math.ceil(words / 200)) : 0,
   };
 }
