@@ -72,6 +72,9 @@ type ExistingEnglishForAuto = {
   bibliography: unknown[] | null;
 };
 
+const existingEnglishSelect =
+  "source_content_hash,status,content_json,title,subtitle,excerpt,slug,content_html,cover_alt,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,sources,bibliography";
+
 function normalizedStoredLineItems(value: unknown[] | null | undefined) {
   return (value || [])
     .map((item) => {
@@ -153,8 +156,65 @@ function stripMachineOwnershipFromFormData(formData: FormData) {
   }
 }
 
+function preserveMachineOwnershipInFormData(
+  formData: FormData,
+  existing: ExistingEnglishForAuto
+) {
+  formData.set(
+    "english_content_json",
+    JSON.stringify(existing.content_json || { type: "doc", content: [] })
+  );
+}
+
 function saveHumanOwnedEnglish(formData: FormData) {
   stripMachineOwnershipFromFormData(formData);
+  return saveStandardArticleAtomically(formData);
+}
+
+async function saveStandardRespectingEnglishOwnership(
+  formData: FormData,
+  options: { forceHuman?: boolean } = {}
+) {
+  if (options.forceHuman) return saveHumanOwnedEnglish(formData);
+
+  const articleId = optionalText(formData.get("id"));
+  if (!articleId) {
+    if (manualEnglishProvided(formData)) stripMachineOwnershipFromFormData(formData);
+    return saveStandardArticleAtomically(formData);
+  }
+
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) return saveStandardArticleAtomically(formData);
+
+  const response = await supabase
+    .from("article_translations")
+    .select(existingEnglishSelect)
+    .eq("article_id", articleId)
+    .eq("locale", "en")
+    .maybeSingle();
+  if (response.error || !response.data) {
+    if (!response.data && manualEnglishProvided(formData)) {
+      stripMachineOwnershipFromFormData(formData);
+    }
+    return saveStandardArticleAtomically(formData);
+  }
+
+  const existing = response.data as ExistingEnglishForAuto;
+  const machineOwned = isMachineOwnedEnglishArticleTranslation({
+    contentJson: existing.content_json,
+    sourceContentHash: existing.source_content_hash,
+  });
+  if (!machineOwned) return saveHumanOwnedEnglish(formData);
+
+  if (englishFormFingerprint(formData) !== storedEnglishFingerprint(existing)) {
+    return saveHumanOwnedEnglish(formData);
+  }
+
+  // Tiptap serialises only the editor document and may drop unknown top-level
+  // metadata. Restore the persisted provenance when the editor did not change
+  // any reader-facing English field, so a Russian-only save does not silently
+  // disable future automatic refreshes.
+  preserveMachineOwnershipInFormData(formData, existing);
   return saveStandardArticleAtomically(formData);
 }
 
@@ -163,7 +223,7 @@ export async function saveArticleAction(formData: FormData) {
   const autoTranslationEnabled =
     adminEnv.openAiAutoTranslateArticles && Boolean(adminEnv.openAiApiKey);
   if (intent !== "publish" || !autoTranslationEnabled) {
-    return saveHumanOwnedEnglish(formData);
+    return saveStandardRespectingEnglishOwnership(formData);
   }
 
   // A deliberately reviewed manual English release always wins. Automatic
@@ -176,7 +236,9 @@ export async function saveArticleAction(formData: FormData) {
     ) &&
     formData.get("english_confirm_current_source") === "on";
   if (manualEnglishConfirmed) {
-    return saveHumanOwnedEnglish(formData);
+    return saveStandardRespectingEnglishOwnership(formData, {
+      forceHuman: true,
+    });
   }
 
   const articleId = optionalText(formData.get("id"));
@@ -219,21 +281,19 @@ export async function saveArticleAction(formData: FormData) {
 
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    return saveHumanOwnedEnglish(formData);
+    return saveStandardArticleAtomically(formData);
   }
 
   let existingEnglish: ExistingEnglishForAuto | null = null;
   if (articleId) {
     const response = await supabase
       .from("article_translations")
-      .select(
-        "source_content_hash,status,content_json,title,subtitle,excerpt,slug,content_html,cover_alt,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,sources,bibliography"
-      )
+      .select(existingEnglishSelect)
       .eq("article_id", articleId)
       .eq("locale", "en")
       .maybeSingle();
     if (response.error) {
-      return saveHumanOwnedEnglish(formData);
+      return saveStandardRespectingEnglishOwnership(formData);
     }
     existingEnglish =
       (response.data as ExistingEnglishForAuto | null) || null;
@@ -260,6 +320,10 @@ export async function saveArticleAction(formData: FormData) {
     if (englishFormFingerprint(formData) !== storedEnglishFingerprint(existingEnglish)) {
       return saveHumanOwnedEnglish(formData);
     }
+
+    // Keep the provenance marker even if the editor client discarded unknown
+    // JSON metadata while rendering an otherwise untouched English document.
+    preserveMachineOwnershipInFormData(formData, existingEnglish);
 
     // An unchanged already-published machine translation needs no paid model
     // request. The canonical standard action still verifies optimistic locks
