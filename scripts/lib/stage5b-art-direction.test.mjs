@@ -134,7 +134,7 @@ describe("Stage 5B homepage art-direction contract", () => {
     ).toBe("var(--ui-primary)");
     expect(
       declarationValue(artRules, ".book-of-day .book-action-primary", "color")
-    ).toBe("#fff");
+    ).toBe("var(--ink)");
     expect(
       declarationValue(
         artRules,
@@ -155,7 +155,7 @@ describe("Stage 5B homepage art-direction contract", () => {
         ".book-of-day .book-action-primary:hover",
         "color"
       )
-    ).toBe("#fff");
+    ).toBe("var(--ink)");
 
     const followWriterRules = artRules.filter((rule) =>
       rule.selector.startsWith(".archive-subscribe.is-writer")

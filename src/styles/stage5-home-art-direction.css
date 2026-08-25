@@ -152,7 +152,7 @@
 }
 
 .book-of-day .book-action-primary {
-  color: #fff;
+  color: var(--ink);
   background: var(--ui-primary);
   border-color: var(--ui-primary);
 }
@@ -163,7 +163,7 @@
 
 .book-of-day .book-action-primary:hover,
 .book-of-day .book-action-primary:focus-visible {
-  color: #fff;
+  color: var(--ink);
   background: var(--ui-primary-hover);
 }
 
