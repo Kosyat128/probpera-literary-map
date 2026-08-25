@@ -54,7 +54,7 @@ describe("Cloudflare edge applicability preflight", () => {
     });
   });
 
-  it.each([199, 500, 503])(
+  it.each([500, 503, 599])(
     "fails closed for an unexpected live probe status %s",
     async (status) => {
       const fetchImpl = vi
