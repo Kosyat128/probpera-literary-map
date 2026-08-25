@@ -1,6 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { premiumTranslateToEnglish } from "./premium-english-translation";
+import {
+  premiumTranslateToEnglish,
+  type WorkersAiBinding,
+} from "./premium-english-translation";
 
 const schema = {
   type: "object",
@@ -25,8 +28,19 @@ function response(text: string, id: string, requestId: string) {
   );
 }
 
+function validateText(value: unknown) {
+  if (
+    !value ||
+    typeof value !== "object" ||
+    typeof (value as { text?: unknown }).text !== "string"
+  ) {
+    throw new Error("invalid");
+  }
+  return { text: (value as { text: string }).text };
+}
+
 describe("premium English translation", () => {
-  it("uses independent pro-max translator and reviewer passes", async () => {
+  it("uses independent pro-max translator and reviewer passes on explicit OpenAI", async () => {
     const fetchImpl = vi
       .fn()
       .mockResolvedValueOnce(
@@ -40,16 +54,8 @@ describe("premium English translation", () => {
       source: { text: "Русский исходник" },
       schema,
       schemaName: "test_translation",
-      validate(value) {
-        if (
-          !value ||
-          typeof value !== "object" ||
-          typeof (value as { text?: unknown }).text !== "string"
-        ) {
-          throw new Error("invalid");
-        }
-        return { text: (value as { text: string }).text };
-      },
+      validate: validateText,
+      provider: "openai",
       apiKey: "test-key",
       model: "gpt-5.6-sol",
       reviewerModel: "gpt-5.6-sol",
@@ -88,7 +94,55 @@ describe("premium English translation", () => {
     expect(secondBody.input).toContain("SOURCE_DATA");
   });
 
-  it("supports explicitly disabling the reviewer for controlled fallback", async () => {
+  it("uses Workers AI for both free premium passes without an OpenAI key", async () => {
+    const run = vi
+      .fn()
+      .mockResolvedValueOnce({
+        id: "cf_translate",
+        model: "@cf/google/gemma-4-26b-a4b-it",
+        response: { text: "First Workers AI draft" },
+        usage: { prompt_tokens: 90, completion_tokens: 35 },
+      })
+      .mockResolvedValueOnce({
+        id: "cf_review",
+        model: "@cf/zai-org/glm-4.7-flash",
+        response: { text: "Final Workers AI English" },
+        usage: { prompt_tokens: 125, completion_tokens: 30 },
+      });
+    const aiBinding = { run } as unknown as WorkersAiBinding;
+
+    const result = await premiumTranslateToEnglish({
+      source: { text: "Русский исходник" },
+      schema,
+      schemaName: "workers_ai_translation",
+      validate: validateText,
+      provider: "cloudflare",
+      aiBinding,
+      review: true,
+    });
+
+    expect(run).toHaveBeenCalledTimes(2);
+    expect(run.mock.calls[0]?.[0]).toBe("@cf/google/gemma-4-26b-a4b-it");
+    expect(run.mock.calls[1]?.[0]).toBe("@cf/zai-org/glm-4.7-flash");
+    expect(result.value.text).toBe("Final Workers AI English");
+    expect(result.translatorRequestId).toBe("cf_translate");
+    expect(result.reviewerRequestId).toBe("cf_review");
+    expect(result.inputTokens).toBe(90);
+    expect(result.reviewOutputTokens).toBe(30);
+    expect(result.translatorReasoningEffort).toBe("none");
+    expect(result.translatorReasoningMode).toBe("standard");
+
+    const firstInput = run.mock.calls[0]?.[1] as Record<string, unknown>;
+    const secondInput = run.mock.calls[1]?.[1] as Record<string, unknown>;
+    expect(firstInput.response_format).toEqual({
+      type: "json_schema",
+      json_schema: schema,
+    });
+    expect(JSON.stringify(secondInput)).toContain("DRAFT_TRANSLATION");
+    expect(JSON.stringify(secondInput)).toContain("SOURCE_DATA");
+  });
+
+  it("supports explicitly disabling the reviewer for controlled OpenAI fallback", async () => {
     const fetchImpl = vi.fn(async () =>
       response("Single pass", "resp_single", "req_single")
     ) as unknown as typeof fetch;
@@ -97,9 +151,8 @@ describe("premium English translation", () => {
       source: { text: "Текст" },
       schema,
       schemaName: "test_single",
-      validate(value) {
-        return value as { text: string };
-      },
+      validate: validateText,
+      provider: "openai",
       apiKey: "test-key",
       model: "gpt-5.6-sol",
       reasoningEffort: "high",
@@ -129,13 +182,29 @@ describe("premium English translation", () => {
         source: { text: "Текст" },
         schema,
         schemaName: "test_no_key",
-        validate(value) {
-          return value as { text: string };
-        },
+        validate: validateText,
+        provider: "openai",
         apiKey: "",
         fetchImpl,
       })
     ).rejects.toThrow("OPENAI_API_KEY is not configured");
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
+  it("does not silently fall back to paid OpenAI when Workers AI is unavailable", async () => {
+    const fetchImpl = vi.fn() as unknown as typeof fetch;
+    await expect(
+      premiumTranslateToEnglish({
+        source: { text: "Текст" },
+        schema,
+        schemaName: "test_no_binding",
+        validate: validateText,
+        provider: "cloudflare",
+        aiBinding: null,
+        apiKey: "paid-key-must-not-be-used",
+        fetchImpl,
+      })
+    ).rejects.toThrow("Cloudflare Workers AI binding is not configured");
     expect(fetchImpl).not.toHaveBeenCalled();
   });
 });

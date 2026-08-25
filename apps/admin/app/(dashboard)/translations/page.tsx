@@ -121,14 +121,24 @@ export default async function PremiumTranslationsPage({
   const siteCopy = readSiteCopyValues(siteCopySettings.siteCopy);
   const premiumState = objectValue(siteCopySettings.premiumTranslation);
   const machineCopy = objectValue(premiumState.siteCopyEn);
-  const apiReady = Boolean(adminEnv.openAiApiKey);
+  const translationReady = adminEnv.premiumTranslationConfigured;
+  const workersAi = adminEnv.premiumTranslationProvider === "cloudflare";
+  const translatorModel = workersAi
+    ? adminEnv.cloudflareTranslationModel
+    : adminEnv.openAiTranslationModel;
+  const reviewerModel = workersAi
+    ? adminEnv.cloudflareTranslationReviewModel
+    : adminEnv.openAiTranslationReviewModel;
   const bookDbReady = machineWorkReadiness?.data === true;
   const eligibleWriters = eligibleStaticWriterBiographies(editorialCatalog);
   const eligibleCountries = eligibleStaticCountries(editorialCatalog);
 
   const readinessChecks = [
-    ["OpenAI server secret", apiReady],
-    ["Модель переводчика", Boolean(adminEnv.openAiTranslationModel)],
+    [
+      workersAi ? "Cloudflare Workers AI binding" : "OpenAI server secret",
+      translationReady,
+    ],
+    ["Модель переводчика", Boolean(translatorModel)],
     ["Второй редакторский проход", adminEnv.openAiPremiumTranslationReview],
     ["DB: machine-translation для книг", bookDbReady],
   ] as const;
@@ -137,11 +147,14 @@ export default async function PremiumTranslationsPage({
     <>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">Premium English · OpenAI</span>
+          <span className="eyebrow">
+            Premium English · {workersAi ? "Cloudflare Workers AI" : "OpenAI"}
+          </span>
           <h1>Премиальный английский перевод</h1>
           <p>
-            Первый GPT-5.6 Sol переводит материал, второй GPT-5.6 Sol сверяет его
-            с русским оригиналом и редактирует до естественного литературного английского.
+            {workersAi
+              ? "Gemma 4 переводит материал, а GLM-4.7-Flash независимо сверяет его с русским оригиналом и редактирует до естественного литературного английского. OpenAI API для этого режима не требуется."
+              : "Первый OpenAI-проход переводит материал, второй сверяет его с русским оригиналом и редактирует до естественного литературного английского."}{" "}
             Ручные EN-версии никогда автоматически не перезаписываются.
           </p>
         </div>
@@ -159,13 +172,13 @@ export default async function PremiumTranslationsPage({
       <section className="dashboard-grid">
         <article className="panel">
           <span className="eyebrow">Модели</span>
-          <h2>{adminEnv.openAiTranslationModel}</h2>
+          <h2>{translatorModel}</h2>
           <p>
-            Финальная редактура: <strong>{adminEnv.openAiTranslationReviewModel}</strong>
+            Финальная редактура: <strong>{reviewerModel}</strong>
           </p>
           <p className="editorial-note">
             {adminEnv.openAiPremiumTranslationReview
-              ? "Premium review включён: на материал выполняются два модельных прохода."
+              ? "Premium review включён: на материал выполняются два независимых модельных прохода."
               : "Premium review отключён переменной окружения."}
           </p>
         </article>
@@ -220,7 +233,7 @@ export default async function PremiumTranslationsPage({
             За один запуск обрабатываются не более двух устаревших/отсутствующих EN.
             Новые публикации уже переводятся автоматически до сохранения английской версии.
           </p>
-          <button className="button" type="submit" disabled={!apiReady}>
+          <button className="button" type="submit" disabled={!translationReady}>
             Перевести следующий пакет статей
           </button>
         </form>
@@ -232,7 +245,7 @@ export default async function PremiumTranslationsPage({
             До четырёх проверенных RU-карточек за запуск. Ручной reviewed/verified EN
             имеет абсолютный приоритет и не заменяется моделью.
           </p>
-          <button className="button" type="submit" disabled={!apiReady || !bookDbReady}>
+          <button className="button" type="submit" disabled={!translationReady || !bookDbReady}>
             Перевести следующий пакет книг
           </button>
         </form>
@@ -244,7 +257,7 @@ export default async function PremiumTranslationsPage({
             Переводятся только проверенные редакционные RU-оригиналы с provenance.
             По три новых биографии за запуск.
           </p>
-          <button className="button" type="submit" disabled={!apiReady}>
+          <button className="button" type="submit" disabled={!translationReady}>
             Перевести следующий пакет биографий
           </button>
         </form>
@@ -256,7 +269,7 @@ export default async function PremiumTranslationsPage({
             История, описание, литературные периоды, движения, факты и места переводятся
             по две страны за запуск. Коды, координаты, годы и числовые показатели не меняются.
           </p>
-          <button className="button" type="submit" disabled={!apiReady}>
+          <button className="button" type="submit" disabled={!translationReady}>
             Перевести следующий пакет стран
           </button>
         </form>
@@ -268,7 +281,7 @@ export default async function PremiumTranslationsPage({
             До 50 русских CMS-переопределений за один двухпроходный запрос.
             Существующий ручной английский не меняется.
           </p>
-          <button className="button" type="submit" disabled={!apiReady}>
+          <button className="button" type="submit" disabled={!translationReady}>
             Перевести site-copy
           </button>
         </form>
