@@ -23,6 +23,7 @@ export function articleWorkspacePanelSection(
 ): ArticleWorkspaceSection | null {
   const value = normalizeWorkspaceText(heading);
   if (!value) return null;
+  if (value.includes("контроль") || value.includes("checklist")) return "quality";
   if (value.includes("publication") || value.includes("публикац")) return "publish";
   if (value.includes("облож")) return "cover";
   if (value.includes("seo") || value.includes("поиск") || value.includes("open graph")) {
@@ -31,7 +32,6 @@ export function articleWorkspacePanelSection(
   if (value.includes("source") || value.includes("источник") || value.includes("библиограф")) {
     return "sources";
   }
-  if (value.includes("контроль") || value.includes("checklist")) return "quality";
   if (value.includes("рубри")) return "basics";
   return null;
 }
