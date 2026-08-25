@@ -86,6 +86,25 @@ jobs:
             exit 1
           fi
 
+      - name: Verify live Cloudflare edge applicability
+        env:
+          APPLY: ${{ inputs.apply }}
+        run: |
+          set -Eeuo pipefail
+          require_proxied=false
+          if [[ "$APPLY" == "true" ]]; then
+            require_proxied=true
+          fi
+          summary="$(node scripts/cloudflare/verify-edge-applicability.mjs --require-proxied="$require_proxied")"
+          printf '%s\n' "$summary"
+          {
+            echo "## Cloudflare live edge applicability"
+            echo
+            echo '```text'
+            printf '%s\n' "$summary"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Reconfirm the current main tip before production apply
         if: inputs.apply
         env:
