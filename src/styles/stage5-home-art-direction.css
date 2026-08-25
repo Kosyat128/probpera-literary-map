@@ -1,0 +1,193 @@
+/* Stage 5B: scoped homepage typography, rhythm, action color, and fallback surfaces. */
+:root {
+  --home-title-major: clamp(34px, 3.1vw, 44px);
+  --home-title-normal: clamp(30px, 2.7vw, 38px);
+  --home-title-card: clamp(23px, 2vw, 32px);
+  --home-copy: clamp(16px, 1.15vw, 18px);
+  --home-metadata: 12px;
+  --home-action-size: 13px;
+  --home-section-space: clamp(68px, 6vw, 96px);
+  --home-surface-paper:
+    radial-gradient(circle at 8% 84%, rgba(246, 117, 24, 0.07), transparent 22rem),
+    radial-gradient(circle at 92% 8%, rgba(76, 8, 124, 0.06), transparent 25rem),
+    linear-gradient(145deg, #fffdf8, var(--cream) 54%, var(--cream-deep));
+  --home-surface-light-editorial:
+    radial-gradient(circle at 88% 12%, rgba(76, 8, 124, 0.055), transparent 24rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(249, 239, 226, 0.96));
+  --home-surface-violet:
+    radial-gradient(circle at 86% 16%, rgba(246, 117, 24, 0.1), transparent 27rem),
+    radial-gradient(circle at 11% 88%, rgba(104, 16, 201, 0.18), transparent 25rem),
+    linear-gradient(135deg, var(--violet-850), var(--violet-950) 74%);
+  --home-surface-ink:
+    radial-gradient(circle at 80% 12%, rgba(246, 117, 24, 0.08), transparent 25rem),
+    radial-gradient(circle at 16% 86%, rgba(104, 16, 201, 0.16), transparent 24rem),
+    linear-gradient(137deg, #17051f, #09010f 76%);
+}
+
+:where(
+  .daily-grid,
+  .editorial-section,
+  .article-library,
+  .community-section,
+  .authors-section,
+  .sections-directory,
+  .trust-center,
+  .calendar-section
+) .section-kicker {
+  font-size: var(--home-metadata);
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+}
+
+.section-heading h2,
+.article-library-heading h2,
+.community-copy h2,
+.cms-home-block h2 {
+  font-size: var(--home-title-major);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.book-of-day h3,
+.editorial-standard h3,
+.journal-engagement h3,
+.calendar-heading h3,
+.community-illustration blockquote,
+.is-featured .article-copy h3,
+.is-lead .library-card-copy h3 {
+  font-size: var(--home-title-normal);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.article-copy h3,
+.library-card-copy h3,
+.author-showcase strong,
+.sections-directory h3,
+.trust-center summary,
+.book-fact-card h3 {
+  font-size: var(--home-title-card);
+  line-height: 1.12;
+}
+
+.book-of-day p,
+.editorial-standard > p,
+.article-copy p,
+.article-library-heading p,
+.library-card-copy p,
+.journal-engagement > div:first-child > p,
+.community-visual-intro > p,
+.community-copy > p,
+.sections-directory > div:last-child p,
+.calendar-heading p,
+.trust-center .section-heading p,
+.trust-center details p,
+.book-fact-card p {
+  font-size: var(--home-copy);
+  line-height: 1.62;
+}
+
+.article-copy small,
+.author-showcase small,
+.sections-directory .section-card-eyebrow,
+.article-library-heading label span,
+.library-card-image small,
+.library-card-copy > div,
+.calendar-summary > div > span,
+.calendar-featured > span,
+.calendar-agenda > header span,
+.calendar-agenda-day > time small {
+  font-size: var(--home-metadata);
+  line-height: 1.4;
+}
+
+.book-of-day .book-actions-primary button,
+.editorial-section .section-heading > a,
+.article-copy strong,
+.section-link,
+.sections-all-button,
+.section-card-action strong,
+.article-library-tabs button,
+.library-card-copy > strong,
+.article-library-more,
+.community-copy button,
+.community-primary {
+  font-size: var(--home-action-size);
+  line-height: 1.4;
+}
+
+.editorial-section,
+.article-library,
+.trust-center {
+  padding-block: var(--home-section-space);
+}
+
+.calendar-section.painted-paper-section {
+  padding-bottom: var(--home-section-space);
+}
+
+.trust-center details {
+  min-height: 0;
+}
+
+.daily-grid.painted-paper-section:not(.cms-core-editable),
+.authors-section.painted-paper-section:not(.cms-core-editable),
+.calendar-section.painted-paper-section:not(.cms-core-editable) {
+  background: var(--home-surface-paper);
+}
+
+.editorial-standard:not(.cms-core-editable),
+.trust-center:not(.cms-core-editable) {
+  background: var(--home-surface-light-editorial);
+}
+
+.editorial-section:not(.cms-core-editable),
+.sections-directory:not(.cms-core-editable) {
+  background: var(--home-surface-violet);
+}
+
+.article-library,
+.community-section:not(.cms-core-editable) {
+  background: var(--home-surface-ink);
+}
+
+.book-of-day .book-action-primary {
+  background: var(--ui-primary);
+  border-color: var(--ui-primary);
+}
+
+.book-of-day .book-action-primary:hover,
+.book-of-day .book-action-primary:focus-visible {
+  background: var(--ui-primary-hover);
+}
+
+.article-library-heading .section-kicker,
+.article-library-tabs button span,
+.library-card-copy > strong,
+.article-library-more span,
+.article-library-empty > span {
+  color: var(--orange-soft);
+}
+
+.archive-subscribe.is-writer:not(.is-active) {
+  background:
+    radial-gradient(circle at 15% 0, rgba(255, 210, 160, 0.32), transparent 34%),
+    linear-gradient(112deg, var(--orange-deep), var(--orange) 52%, var(--orange-deep));
+}
+
+.archive-subscribe.is-writer:hover,
+.archive-subscribe.is-writer:focus-visible {
+  background:
+    radial-gradient(circle at 15% 0, rgba(255, 224, 183, 0.42), transparent 35%),
+    linear-gradient(112deg, var(--orange-deep), var(--orange-soft) 52%, var(--orange));
+}
+
+@media (max-width: 680px) {
+  :root {
+    --home-title-major: clamp(27px, 8vw, 34px);
+    --home-title-normal: clamp(25px, 7vw, 32px);
+    --home-title-card: clamp(21px, 6vw, 28px);
+    --home-copy: clamp(15px, 4.2vw, 17px);
+    --home-section-space: clamp(60px, 8vw, 72px);
+  }
+}
