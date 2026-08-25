@@ -60,6 +60,84 @@ describe("CMS publication head probe", () => {
     });
   });
 
+  it("retries only the exact transient future-issued JWT response", async () => {
+    const sleepImpl = vi.fn().mockResolvedValue(undefined);
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValueOnce(response([{ id: 17 }]))
+      .mockResolvedValueOnce(
+        response(
+          { code: "PGRST303", message: "JWT issued at future" },
+          401
+        )
+      )
+      .mockResolvedValueOnce(response([{ id: 91 }]));
+
+    await expect(
+      fetchCmsPublicationHead({
+        ...options,
+        fetchImpl,
+        sleepImpl,
+        jwtFutureRetryDelaysMs: [25],
+      })
+    ).resolves.toEqual({
+      source: "outbox",
+      outboxHighWater: "17",
+      legacyAuditHighWater: "91",
+    });
+    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(sleepImpl).toHaveBeenCalledTimes(1);
+    expect(sleepImpl).toHaveBeenCalledWith(25);
+  });
+
+  it.each([
+    [401, { code: "PGRST303", message: "JWT expired" }],
+    [401, { code: "PGRST302", message: "JWT issued at future" }],
+    [403, { code: "PGRST303", message: "JWT issued at future" }],
+    [401, "PGRST303 JWT issued at future"],
+  ])(
+    "does not retry a non-exact JWT/auth failure %s",
+    async (status, body) => {
+      const sleepImpl = vi.fn().mockResolvedValue(undefined);
+      const fetchImpl = vi
+        .fn()
+        .mockResolvedValueOnce(response([{ id: 17 }]))
+        .mockResolvedValueOnce(response(body, status));
+
+      await expect(
+        fetchCmsPublicationHead({
+          ...options,
+          fetchImpl,
+          sleepImpl,
+          jwtFutureRetryDelaysMs: [25],
+        })
+      ).rejects.toThrow(`Legacy CMS publication audit head failed: ${status}`);
+      expect(fetchImpl).toHaveBeenCalledTimes(2);
+      expect(sleepImpl).not.toHaveBeenCalled();
+    }
+  );
+
+  it("fails closed after the bounded JWT clock-skew retries are exhausted", async () => {
+    const sleepImpl = vi.fn().mockResolvedValue(undefined);
+    const futureJwt = { code: "PGRST303", message: "JWT issued at future" };
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValueOnce(response([{ id: 17 }]))
+      .mockResolvedValueOnce(response(futureJwt, 401))
+      .mockResolvedValueOnce(response(futureJwt, 401));
+
+    await expect(
+      fetchCmsPublicationHead({
+        ...options,
+        fetchImpl,
+        sleepImpl,
+        jwtFutureRetryDelaysMs: [25],
+      })
+    ).rejects.toThrow("Legacy CMS publication audit head failed: 401");
+    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(sleepImpl).toHaveBeenCalledTimes(1);
+  });
+
   it.each([
     [403, { code: "42501", message: "permission denied" }],
     [500, { code: "XX000", message: "public_build_outbox unavailable" }],

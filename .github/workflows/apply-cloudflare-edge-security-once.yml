@@ -1,0 +1,86 @@
+name: Apply Cloudflare edge security once
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/apply-cloudflare-edge-security-once.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-cloudflare-edge-security
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout the approved main commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Reconfirm immutable main tip before production apply
+        run: |
+          set -Eeuo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || {
+            echo "::error::This one-time production apply may run only from main."
+            exit 1
+          }
+          [[ "$(git rev-parse HEAD)" == "$GITHUB_SHA" ]] || {
+            echo "::error::The checkout does not match GITHUB_SHA."
+            exit 1
+          }
+          current_main_sha="$(git ls-remote --exit-code origin refs/heads/main | awk '{ print $1 }')"
+          [[ "$current_main_sha" == "$GITHUB_SHA" ]] || {
+            echo "::error::main advanced before the approved production apply; refusing to mutate Cloudflare."
+            exit 1
+          }
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Verify Cloudflare secret presence
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -Eeuo pipefail
+          missing=()
+          [[ -n "$CLOUDFLARE_API_TOKEN" ]] || missing+=(CLOUDFLARE_API_TOKEN)
+          [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]] || missing+=(CLOUDFLARE_ACCOUNT_ID)
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error::Missing required production secrets: ${missing[*]}"
+            exit 1
+          fi
+
+      - name: Apply repository-managed Cloudflare edge policy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -Eeuo pipefail
+          summary="$(node scripts/cloudflare/configure-edge-security.mjs --apply=true)"
+          printf '%s\n' "$summary"
+          {
+            echo "## One-time Cloudflare edge policy apply"
+            echo
+            echo '```text'
+            printf '%s\n' "$summary"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify live HTTPS, security headers, and security.txt
+        run: |
+          set -Eeuo pipefail
+          node scripts/audit-live-security.mjs --attempts=6 --retry-delay-ms=15000

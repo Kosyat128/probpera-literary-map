@@ -1,112 +1,48 @@
 # Управляемая защита Cloudflare для `probpera.ru`
 
-Workflow `Configure Cloudflare edge security` безопасно сверяет и при явном
-разрешении применяет внешнюю конфигурацию, которую GitHub Pages сам обеспечить
-не может. По умолчанию запуск является только чтением (`apply=false`).
+## Текущая production-политика
 
-Он строго привязан к активной зоне `probpera.ru` в аккаунте из секрета
-`CLOUDFLARE_ACCOUNT_ID` и использует токен из `CLOUDFLARE_API_TOKEN`. Значения секретов,
-идентификаторы зоны и ruleset не выводятся в журнал. Для токена нужны как минимум:
+Для публичного `probpera.ru` доступность из РФ имеет приоритет. Apex работает в режиме **DNS only / direct delivery** и не должен принудительно переводиться на Cloudflare proxy. Репозиторий проверяет это по фактическому live-ответу: наличие `CF-Ray` на публичном origin считается неожиданным включением Cloudflare edge и блокирует direct-origin production audit.
 
-- Zone / Zone Settings: Read и Edit;
-- Zone / Single Redirect: Edit;
-- Zone / Transform Rules: Read и Edit;
-- Zone / Cache Rules: Read и Edit;
-- Zone / Zone: Read.
+`admin.probpera.ru` остаётся отдельным Cloudflare/Worker-контуром и продолжает проходить строгую проверку HTTPS и security headers.
 
-## Что управляется
+Cloudflare Response Header Transform Rules, Cache Rules и Single Redirect Rules применимы к посетительскому трафику только когда соответствующий hostname реально проходит через Cloudflare edge. Поэтому сохранённое и успешно прочитанное обратно правило в API не считается доказательством, что оно действует на публичный `probpera.ru` в режиме DNS only.
 
-1. `Always Use HTTPS = on` остаётся включённым как дополнительная зональная
-   защита.
-2. Одно zone-level Single Redirect Rule в фазе
-   `http_request_dynamic_redirect` со стабильным `ref`
-   `probpera-zone-http-to-https-v1`. Оно срабатывает только для незашифрованных
-   запросов (`not ssl`) к `probpera.ru` и `admin.probpera.ru`, возвращает `308`
-   на тот же host и path и сохраняет query string. Поэтому HTTPS-запросы не
-   попадают в цикл. Новое управляемое правило явно добавляется в конец ruleset,
-   а существующее обновляется на своей текущей позиции: оно не может затенить
-   более раннее ручное правило и не меняет взаимный порядок посторонних правил.
-3. Одно Response Header Transform Rule со стабильным `ref`
-   `probpera-public-security-response-headers-v1`. Выражение строго
-   `(http.host eq "probpera.ru")`, поэтому правило не меняет ответы админки.
-   Оно задаёт те же защитные заголовки, что объявлены для публичной сборки в
-   `dist/_headers`: CSP, HSTS, `nosniff`, строгий `Referrer-Policy`, отключение
-   camera/microphone/geolocation/payment и COOP `same-origin`.
-4. Одно Cache Rule со стабильным `ref`
-   `probpera-public-immutable-assets-cache-v1`: годовой browser/edge TTL только
-   для хешированных Vite-ресурсов `/assets/*` публичного хоста. Редакционные
-   каталоги `/assets/country-flags/*` и `/assets/writer-portraits/*`, а также
-   `/textures/*` и `/brand/*` намеренно не входят в это правило, поскольку их
-   стабильные имена не гарантируют неизменяемость содержимого.
+Перед любым `apply=true` workflow `Configure Cloudflare edge security` выполняет read-only preflight `scripts/cloudflare/verify-edge-applicability.mjs`. Если публичный origin не проходит через Cloudflare, apply останавливается **до любых API-мутаций**. Dry-run при этом разрешён и показывает фактический edge state.
 
-Скрипт добавляет или обновляет только правила с собственными `ref` через API
-одного правила. Посторонние правила не отправляются обратно целиком и не
-удаляются. Дубли собственных `ref`, неоднозначная зона, неполная пагинация и
-потенциально пересекающиеся ручные header/cache rules вызывают отказ до записи.
-Для Single Redirect действует более строгая fail-closed проверка: до любой
-записи каждое включённое постороннее правило должно быть доказуемо непересекающимся
-с незашифрованным трафиком обоих целевых хостов (например, только `ssl` или
-другой точный host). Незнакомое или сложное выражение считается потенциальным
-пересечением и останавливает apply. Отключённые правила сохраняются, но не
-блокируют применение. После apply повторное чтение проверяет не только наличие
-управляемого правила, но и прежние порядок и семантическое содержимое каждого
-постороннего redirect rule.
+## Что проверяется для прямого публичного origin
 
-Значение `always_use_https=on` в API подтверждает только сохранённую настройку,
-но не является проверкой фактического HTTP-ответа. После apply workflow поэтому
-запускает live-аудит: для обоих хостов он требует `301` или `308`, обязательный
-`Location` и точное сохранение host/path/query. Явный Single Redirect является
-репозиторно управляемым механизмом принудительного HTTPS, в том числе перед
-маршрутизацией Worker. Это соответствует
-[рекомендации Cloudflare по миграции Always Use HTTPS](https://developers.cloudflare.com/rules/reference/page-rules-migration/#migrate-always-use-https)
-и API-фазе
-[`http_request_dynamic_redirect`](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/).
-Cloudflare документирует, что добавление одного правила без позиции помещает
-его в конец; configurator задаёт эквивалентную явную позицию `after: ""`:
-[Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/).
+`Audit live production security` разделяет два профиля:
 
-## Порядок ручного запуска
+1. `probpera.ru` — direct/DNS-only profile:
+   - Cloudflare proxy должен оставаться выключенным (`CF-Ray` отсутствует);
+   - HTTP должен корректно переводиться на HTTPS с сохранением host/path/query;
+   - HTTPS-корень должен быть доступен;
+   - `/.well-known/security.txt` должен быть доступен как `text/plain` и содержать валидные Contact, Expires и Canonical.
+2. `admin.probpera.ru` — strict edge profile:
+   - HTTPS;
+   - HSTS;
+   - `X-Content-Type-Options: nosniff`;
+   - строгий `Referrer-Policy`;
+   - `Permissions-Policy`;
+   - frame protection через X-Frame-Options или CSP;
+   - корректный `security.txt`.
 
-1. Открыть Actions → `Configure Cloudflare edge security` → Run workflow на
-   ветке `main`.
-2. Вставить точный 40-символьный SHA текущего `main`, оставить `apply=false` и
-   проверить dry-run. Он выполняет только запросы GET.
-3. Для применения повторить запуск с тем же актуальным SHA, выбрать
-   `apply=true` и ввести без изменений:
+Серверные security headers публичного GitHub Pages origin не используются как release gate, потому что при DNS-only они не могут быть добавлены Cloudflare Transform Rules. Это осознанный компромисс в пользу стабильной прямой доступности из РФ; строгий header profile сохраняется для админки.
 
-   `APPLY PROBPERA CLOUDFLARE EDGE`
+## Репозиторно управляемые Cloudflare правила
 
-Перед записью workflow повторно сравнивает текущий удалённый `main` с одобренным
-SHA. После записи скрипт заново читает настройки и требует точного совпадения.
+Configurator `scripts/cloudflare/configure-edge-security.mjs` по-прежнему умеет безопасно сверять конфигурацию зоны и предназначен для случаев, когда edge path сознательно активирован. Он управляет:
 
-Локальный dry-run допустим только через переменные окружения; секреты нельзя
-передавать аргументами командной строки или сохранять в `.env`:
+- `Always Use HTTPS`;
+- zone-level Single Redirect Rule `probpera-zone-http-to-https-v1`;
+- Response Header Transform Rule `probpera-public-security-response-headers-v1`;
+- Cache Rule `probpera-public-immutable-assets-cache-v1`.
 
-```powershell
-node scripts/cloudflare/configure-edge-security.mjs --apply=false
-```
+Однако для текущего публичного production режима эти правила **не следует применять**, пока `probpera.ru` остаётся DNS only. Preflight специально не переключает proxy автоматически.
 
-## Почему `/.well-known/security.txt` может отсутствовать на GitHub Pages
+## Ручной workflow
 
-`actions/upload-pages-artifact@v5` по умолчанию исключает каталоги, имя которых
-начинается с точки. Поэтому файл `dist/.well-known/security.txt` существует в
-сборке, но не попадает в Pages artifact, если не включить скрытые файлы.
+`Configure Cloudflare edge security` можно безопасно запускать в dry-run режиме для диагностики. Для `apply=true` требуется точный SHA `main`, точная подтверждающая фраза и активный live Cloudflare edge path. Если `probpera.ru` идёт напрямую, workflow откажется до записи.
 
-Безопасное исправление deploy-workflow: перед загрузкой проверить точный файл и
-передать action явный параметр:
-
-```yaml
-- name: Verify public security contact
-  run: test -s dist/.well-known/security.txt
-
-- name: Upload production artifact
-  uses: actions/upload-pages-artifact@v5
-  with:
-    path: dist
-    include-hidden-files: true
-```
-
-Перед включением параметра следует сохранить отдельную проверку, что в `dist`
-нет `.env`, ключей и иных скрытых служебных файлов. Этот документ фиксирует
-необходимое изменение; сам deploy-workflow меняется в рамках его отдельного
-релизного hardening, чтобы не создавать конфликтующих правок.
+Таким образом, случайное включение Cloudflare proxy или попытка применить edge-only политику к bypass-трафику больше не должны проходить незамеченными.

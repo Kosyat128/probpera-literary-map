@@ -6,11 +6,16 @@ import { ensurePublishedArticlePremiumEnglish } from "@/lib/auto-translate-publi
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
+import {
+  premiumTranslationConfigurationError,
+  premiumTranslationRuntimeMetadata,
+} from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { translationBackfillCursorParams } from "@/lib/translation-backfill-cursor";
 
 const MAX_ARTICLE_TRANSLATIONS = 2;
-const MAX_ARTICLE_SCAN = 20;
+const ARTICLE_SCAN_PAGE_SIZE = 100;
 
 function translationsUrl(values: Record<string, string | number | null | undefined>) {
   const params = new URLSearchParams();
@@ -22,45 +27,100 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
-export async function translatePremiumArticleBatchAction() {
+function batchFailureMessage(error: unknown) {
+  const message = typeof error === "string" ? error.trim() : "";
+  return message
+    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
+    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
+}
+
+export async function translatePremiumArticleBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
-  if (!adminEnv.openAiApiKey) {
-    redirect(translationsUrl({ error: "OPENAI_API_KEY не настроен на сервере." }));
+  const cursorParams = translationBackfillCursorParams(formData);
+  if (!adminEnv.premiumTranslationConfigured) {
+    redirect(
+      translationsUrl({
+        ...cursorParams,
+        error: premiumTranslationConfigurationError(),
+      })
+    );
   }
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(translationsUrl({ error: "База данных не подключена." }));
-
-  const articles = await supabase
-    .from("articles")
-    .select("id")
-    .eq("status", "published")
-    .is("deleted_at", null)
-    .order("updated_at", { ascending: true })
-    .limit(MAX_ARTICLE_SCAN);
-  if (articles.error) {
-    redirect(translationsUrl({ error: articles.error.message }));
+  if (!supabase) {
+    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
   }
 
   let translated = 0;
   let current = 0;
+  let manual = 0;
   let skipped = 0;
   let failed = 0;
-  for (const article of articles.data || []) {
-    if (translated >= MAX_ARTICLE_TRANSLATIONS) break;
-    const result = await ensurePublishedArticlePremiumEnglish({
-      supabase,
-      actorId: session.user.id,
-      articleId: article.id,
-    });
-    if (result.state === "translated") translated += 1;
-    else if (result.state === "current") current += 1;
-    else if (result.state === "failed" || result.state === "conflict") failed += 1;
-    else skipped += 1;
+  let offset = 0;
+  let firstError = "";
+
+  while (translated < MAX_ARTICLE_TRANSLATIONS && !firstError) {
+    const articles = await supabase
+      .from("articles")
+      .select("id")
+      .eq("status", "published")
+      .is("deleted_at", null)
+      .order("updated_at", { ascending: true })
+      .range(offset, offset + ARTICLE_SCAN_PAGE_SIZE - 1);
+    if (articles.error) {
+      redirect(
+        translationsUrl({ ...cursorParams, error: articles.error.message })
+      );
+    }
+
+    const page = articles.data || [];
+    if (!page.length) break;
+    const articleIds = page.map((article) => String(article.id));
+    const englishRows = await supabase
+      .from("article_translations")
+      .select("article_id,status")
+      .eq("locale", "en")
+      .is("deleted_at", null)
+      .in("article_id", articleIds);
+    if (englishRows.error) {
+      redirect(
+        translationsUrl({ ...cursorParams, error: englishRows.error.message })
+      );
+    }
+
+    const englishStatus = new Map(
+      (englishRows.data || []).map((row) => [String(row.article_id), String(row.status)])
+    );
+
+    for (const articleId of articleIds) {
+      if (translated >= MAX_ARTICLE_TRANSLATIONS || firstError) break;
+      if (englishStatus.get(articleId) === "published") {
+        current += 1;
+        continue;
+      }
+
+      const result = await ensurePublishedArticlePremiumEnglish({
+        supabase,
+        actorId: session.user.id,
+        articleId,
+      });
+      if (result.state === "translated") translated += 1;
+      else if (result.state === "current") current += 1;
+      else if (result.state === "manual") manual += 1;
+      else if (result.state === "failed") {
+        failed += 1;
+        firstError = result.error || "";
+      } else if (result.state === "conflict") failed += 1;
+      else skipped += 1;
+    }
+
+    offset += page.length;
+    if (page.length < ARTICLE_SCAN_PAGE_SIZE) break;
   }
 
   let publication: string | null = null;
   if (translated > 0) {
+    const runtime = premiumTranslationRuntimeMetadata();
     publication = (
       await requestPublicBuild({
         supabase,
@@ -72,9 +132,10 @@ export async function translatePremiumArticleBatchAction() {
           premiumEnglish: true,
           kind: "articles",
           translated,
-          model: adminEnv.openAiTranslationModel,
-          reviewerModel: adminEnv.openAiTranslationReviewModel,
-          twoPassReview: adminEnv.openAiPremiumTranslationReview,
+          provider: runtime.provider,
+          model: runtime.model,
+          reviewerModel: runtime.reviewerModel,
+          twoPassReview: runtime.twoPassReview,
         },
       })
     ).state;
@@ -84,7 +145,9 @@ export async function translatePremiumArticleBatchAction() {
   revalidatePath("/articles");
   redirect(
     translationsUrl({
-      success: `Статьи: новых/обновлённых EN ${translated}, актуальных ${current}, пропущено ${skipped}, ошибок ${failed}.`,
+      ...cursorParams,
+      success: `Статьи: новых/обновлённых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      error: firstError ? batchFailureMessage(firstError) : null,
       publication,
     })
   );
