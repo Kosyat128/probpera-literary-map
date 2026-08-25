@@ -27,6 +27,13 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
+function batchFailureMessage(error: unknown) {
+  const message = typeof error === "string" ? error.trim() : "";
+  return message
+    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
+    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
+}
+
 export async function translatePremiumArticleBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -50,8 +57,9 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
   let skipped = 0;
   let failed = 0;
   let offset = 0;
+  let firstError = "";
 
-  while (translated < MAX_ARTICLE_TRANSLATIONS) {
+  while (translated < MAX_ARTICLE_TRANSLATIONS && !firstError) {
     const articles = await supabase
       .from("articles")
       .select("id")
@@ -85,7 +93,7 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
     );
 
     for (const articleId of articleIds) {
-      if (translated >= MAX_ARTICLE_TRANSLATIONS) break;
+      if (translated >= MAX_ARTICLE_TRANSLATIONS || firstError) break;
       if (englishStatus.get(articleId) === "published") {
         current += 1;
         continue;
@@ -99,7 +107,10 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
       if (result.state === "translated") translated += 1;
       else if (result.state === "current") current += 1;
       else if (result.state === "manual") manual += 1;
-      else if (result.state === "failed" || result.state === "conflict") failed += 1;
+      else if (result.state === "failed") {
+        failed += 1;
+        firstError = result.error || "";
+      } else if (result.state === "conflict") failed += 1;
       else skipped += 1;
     }
 
@@ -136,6 +147,7 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Статьи: новых/обновлённых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      error: firstError ? batchFailureMessage(firstError) : null,
       publication,
     })
   );
