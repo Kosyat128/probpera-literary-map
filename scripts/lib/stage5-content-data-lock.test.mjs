@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import {
+  currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
   ownerCssClasses,
 } from "../stage5-baseline-registry.mjs";
@@ -173,7 +174,7 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
-  for (const scope of governanceFingerprintRegistry.filter(
+  for (const scope of currentIntegrationGovernanceFingerprintRegistry.filter(
     (entry) => !entry.classTokens
   )) {
     it(`keeps ${scope.id} semantically unchanged`, () => {
@@ -181,8 +182,19 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     });
   }
 
-  it("keeps Header/Hero owner CSS rules unchanged", () => {
+  it("preserves the historical Stage 5A premium-pipeline evidence", () => {
     const scope = governanceFingerprintRegistry.find(
+      (entry) => entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+    );
+    expect(scope.paths).toHaveLength(44);
+    expect(scope.expected).toEqual({
+      files: 44,
+      sha256: "2b4bdaa25e526d7839297330befe68f121539443ba68634e3bf036dbae7afe9f",
+    });
+  });
+
+  it("keeps Header/Hero owner CSS rules unchanged", () => {
+    const scope = currentIntegrationGovernanceFingerprintRegistry.find(
       (entry) => entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
     );
     expect(ownerCssFingerprint()).toEqual(scope.expected);

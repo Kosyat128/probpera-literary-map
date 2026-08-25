@@ -174,6 +174,29 @@ export const governanceFingerprintRegistry = Object.freeze([
   },
 ]);
 
+export const currentIntegrationPremiumTranslationAndHealthPaths = Object.freeze([
+  ...premiumTranslationAndHealthPaths,
+  "apps/admin/lib/article-translation-machine-ownership.ts",
+  "apps/admin/lib/premium-translation-runtime.ts",
+  "apps/admin/lib/translation-backfill-cursor.ts",
+]);
+
+export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
+  governanceFingerprintRegistry.map((entry) =>
+    entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+      ? Object.freeze({
+          ...entry,
+          sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
+          paths: currentIntegrationPremiumTranslationAndHealthPaths,
+          expected: Object.freeze({
+            files: 47,
+            sha256: "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
+          }),
+        })
+      : entry
+  )
+);
+
 export const sourceReviewRegistry = Object.freeze([
   ["governance", "docs/UI_FOUNDATION.md"],
   ["governance", "docs/GLOBE_EXPLORATION_UX.md"],
