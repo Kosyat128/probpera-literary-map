@@ -1,3 +1,4 @@
+import TranslationSubmitButton from "@/components/TranslationSubmitButton";
 import { adminEnv } from "@/lib/env";
 import {
   loadEditorialCatalog,
@@ -236,9 +237,9 @@ export default async function PremiumTranslationsPage({
             За один запуск обрабатываются не более двух устаревших/отсутствующих EN.
             Новые публикации уже переводятся автоматически до сохранения английской версии.
           </p>
-          <button className="button" type="submit" disabled={!translationReady}>
+          <TranslationSubmitButton disabled={!translationReady}>
             Перевести следующий пакет статей
-          </button>
+          </TranslationSubmitButton>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumLibraryBatchAction}>
@@ -250,9 +251,9 @@ export default async function PremiumTranslationsPage({
             имеет абсолютный приоритет и не заменяется моделью. Позиция обхода сохраняется
             между пакетами, поэтому архив постепенно проходит целиком.
           </p>
-          <button className="button" type="submit" disabled={!translationReady || !bookDbReady}>
+          <TranslationSubmitButton disabled={!translationReady || !bookDbReady}>
             Перевести следующий пакет книг
-          </button>
+          </TranslationSubmitButton>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumWriterBatchAction}>
@@ -264,9 +265,9 @@ export default async function PremiumTranslationsPage({
             По три новых биографии за запуск; следующий пакет продолжает с места,
             на котором закончился предыдущий.
           </p>
-          <button className="button" type="submit" disabled={!translationReady}>
+          <TranslationSubmitButton disabled={!translationReady}>
             Перевести следующий пакет биографий
-          </button>
+          </TranslationSubmitButton>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumCountryBatchAction}>
@@ -278,9 +279,9 @@ export default async function PremiumTranslationsPage({
             по две страны за запуск. Курсор переносится между пакетами; коды, координаты,
             годы и числовые показатели не меняются.
           </p>
-          <button className="button" type="submit" disabled={!translationReady}>
+          <TranslationSubmitButton disabled={!translationReady}>
             Перевести следующий пакет стран
-          </button>
+          </TranslationSubmitButton>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumSiteCopyBatchAction}>
@@ -290,9 +291,9 @@ export default async function PremiumTranslationsPage({
             До 50 русских CMS-переопределений за один двухпроходный запрос.
             Существующий ручной английский не меняется.
           </p>
-          <button className="button" type="submit" disabled={!translationReady}>
+          <TranslationSubmitButton disabled={!translationReady}>
             Перевести site-copy
-          </button>
+          </TranslationSubmitButton>
         </form>
       </section>
 
