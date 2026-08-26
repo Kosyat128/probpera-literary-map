@@ -43,6 +43,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   allowedDevOrigins: ["127.0.0.1"],
   outputFileTracingRoot: process.cwd().replace(/[\\/]apps[\\/]admin$/, ""),
+  outputFileTracingExcludes: {
+    "/*": ["./catalog-assets/**/*"],
+  },
   basePath: adminBasePath,
   poweredByHeader: false,
   reactStrictMode: true,

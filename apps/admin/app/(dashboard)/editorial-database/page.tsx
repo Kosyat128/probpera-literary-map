@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import {
-  editorialCatalog,
+  loadEditorialCatalog,
   editorialCountry,
   editorialWriter,
 } from "@/lib/editorial-catalog";
@@ -270,12 +270,15 @@ export default async function EditorialDatabasePage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  const query = await searchParams;
-  const defaultCountryId = editorialCountry("russia")?.id || editorialCatalog.countries[0]?.id || "";
-  const countryId = editorialCountry(query.country_id || "")?.id || defaultCountryId;
-  const selectedCountry = editorialCountry(countryId);
-  const writerId = editorialWriter(countryId, query.writer_id || "")?.id || "";
-  const selectedWriter = writerId ? editorialWriter(countryId, writerId) : null;
+  const [query, editorialCatalog] = await Promise.all([
+    searchParams,
+    loadEditorialCatalog(),
+  ]);
+  const defaultCountryId = editorialCountry(editorialCatalog, "russia")?.id || editorialCatalog.countries[0]?.id || "";
+  const countryId = editorialCountry(editorialCatalog, query.country_id || "")?.id || defaultCountryId;
+  const selectedCountry = editorialCountry(editorialCatalog, countryId);
+  const writerId = editorialWriter(editorialCatalog, countryId, query.writer_id || "")?.id || "";
+  const selectedWriter = writerId ? editorialWriter(editorialCatalog, countryId, writerId) : null;
   const supabase = await createServerSupabaseClient();
   if (!supabase || !selectedCountry) return null;
 

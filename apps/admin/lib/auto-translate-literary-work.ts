@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 
 type SupabaseServerClient = SupabaseClient;
 
@@ -78,7 +79,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateLibrary) return { state: "skipped" };
-  if (!adminEnv.openAiApiKey) return { state: "not-configured" };
+  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
 
   const [workResponse, russianResponse, englishResponse] = await Promise.all([
     input.supabase
@@ -160,16 +161,14 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   }
 
   const startedAt = Date.now();
+  const runtime = premiumTranslationRuntimeMetadata();
   try {
     const translated = await premiumTranslateToEnglish({
       source,
       schema: translatedWorkJsonSchema,
       schemaName: "probpera_literary_work_translation",
       validate: validateWorkTranslation,
-      apiKey: adminEnv.openAiApiKey,
-      model: adminEnv.openAiTranslationModel,
-      reviewerModel: adminEnv.openAiTranslationReviewModel,
-      review: adminEnv.openAiPremiumTranslationReview,
+      review: runtime.twoPassReview,
       maxOutputTokens: 4_000,
       domainInstructions: [
         "This is a compact literary-encyclopedia record for a book or literary work.",
@@ -199,6 +198,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       ...existingMetadata,
       premiumTranslation: {
         sourceHash,
+        provider: runtime.provider,
         translatorModel: translated.translatorModel,
         reviewerModel: translated.reviewerModel,
         translatorRequestId: translated.translatorRequestId,
@@ -248,6 +248,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       metadata: {
         locale: "en",
         source_hash: sourceHash,
+        provider: runtime.provider,
         model: translated.translatorModel,
         reviewer_model: translated.reviewerModel,
         translator_request_id: translated.translatorRequestId,
@@ -275,8 +276,9 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       entity_id: input.workId,
       metadata: {
         locale: "en",
-        model: adminEnv.openAiTranslationModel,
-        reviewer_model: adminEnv.openAiTranslationReviewModel,
+        provider: runtime.provider,
+        model: runtime.model,
+        reviewer_model: runtime.reviewerModel,
         error: message.slice(0, 500),
         duration_ms: Date.now() - startedAt,
       },

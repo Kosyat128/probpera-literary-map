@@ -9,8 +9,32 @@ on:
       - "apps/admin/**"
       - "src/data/countries/**"
       - "src/data/cms/**"
+      - "src/i18n/InterfaceLanguage.tsx"
+      - "src/utils/countryFlag.ts"
+      - "src/data/geo/countries.geojson"
+      - "scripts/lib/modern-globe-site-copy.mjs"
       - "scripts/archive-source.ts"
       - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "scripts/check-admin-worker-size.mjs"
+      - "scripts/admin-deploy-workflow.source.test.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/deploy-admin.yml"
+  pull_request:
+    paths:
+      - "apps/admin/**"
+      - "src/data/countries/**"
+      - "src/data/cms/**"
+      - "src/i18n/InterfaceLanguage.tsx"
+      - "src/utils/countryFlag.ts"
+      - "src/data/geo/countries.geojson"
+      - "scripts/lib/modern-globe-site-copy.mjs"
+      - "scripts/archive-source.ts"
+      - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "scripts/check-admin-worker-size.mjs"
+      - "scripts/admin-deploy-workflow.source.test.mjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/deploy-admin.yml"
@@ -31,8 +55,6 @@ jobs:
       ADMIN_ALLOWED_ORIGINS: admin.probpera.ru
       NEXT_PUBLIC_ADMIN_URL: https://admin.probpera.ru
       NEXT_PUBLIC_SITE_URL: https://probpera.ru
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
       YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
     steps:
       - name: Checkout
@@ -44,23 +66,76 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Validate application configuration
+      - name: Configure pull request build environment
+        if: github.event_name == 'pull_request'
         shell: bash
+        run: |
+          printf '%s\n' \
+            "NEXT_PUBLIC_SUPABASE_URL=https://ci-placeholder.supabase.co" \
+            "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_ci_placeholder" \
+            >> "$GITHUB_ENV"
+
+      - name: Validate application configuration
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
         run: |
           test -n "$NEXT_PUBLIC_SUPABASE_URL"
           test -n "$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"
           [[ "$YANDEX_METRIKA_COUNTER_ID" =~ ^[0-9]+$ ]]
 
+          printf '%s\n' \
+            "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" \
+            "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY" \
+            >> "$GITHUB_ENV"
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate the complete editorial catalog
-        run: npm run editorial:catalog
+      - name: Generate private admin catalogs
+        run: |
+          npm run editorial:catalog
+          npm run interface:copy:catalog
 
       - name: Type-check admin
         run: npm run lint --workspace @probpera/admin
 
+      - name: Build and verify Cloudflare Worker
+        run: |
+          npm run cf:build --workspace @probpera/admin
+          npm run cf:size --workspace @probpera/admin
+
+      - name: Verify preseeded private admin catalogs
+        if: github.event_name != 'pull_request'
+        env:
+          ADMIN_EDITORIAL_CATALOG_SHA256: ${{ vars.ADMIN_EDITORIAL_CATALOG_SHA256 }}
+          ADMIN_INTERFACE_COPY_CATALOG_SHA256: ${{ vars.ADMIN_INTERFACE_COPY_CATALOG_SHA256 }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          for expected in \
+            "$ADMIN_EDITORIAL_CATALOG_SHA256" \
+            "$ADMIN_INTERFACE_COPY_CATALOG_SHA256"; do
+            if [[ ! "$expected" =~ ^[a-f0-9]{64}$ ]]; then
+              echo "::error::A required preseeded admin catalog SHA-256 variable is missing or invalid."
+              exit 1
+            fi
+          done
+
+          editorial_sha="$(sha256sum apps/admin/catalog-assets/editorial-catalog.json | awk '{print $1}')"
+          interface_sha="$(sha256sum apps/admin/catalog-assets/interface-copy-catalog.json | awk '{print $1}')"
+
+          if [[ "$editorial_sha" != "$ADMIN_EDITORIAL_CATALOG_SHA256" ]] ||
+             [[ "$interface_sha" != "$ADMIN_INTERFACE_COPY_CATALOG_SHA256" ]]; then
+            echo "::error::Checked-in admin catalogs do not match the preseeded private Workers KV values."
+            exit 1
+          fi
+          echo "Verified checked-in catalogs against preseeded private Workers KV SHA-256 values."
+
       - name: Inspect premium translation secret
+        if: github.event_name != 'pull_request'
         id: premium_secret
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -73,8 +148,8 @@ jobs:
           test -n "$CLOUDFLARE_API_TOKEN"
           cd apps/admin
 
-          # An optional GitHub Actions copy lets CI provision or rotate the
-          # Worker secret without putting its value in source or command args.
+          # Workers AI is the default provider and needs no API secret. Keep an
+          # optional OpenAI secret only for an explicitly selected paid fallback.
           if [[ -n "${OPENAI_API_KEY:-}" ]]; then
             printf '%s' "$OPENAI_API_KEY" \
               | npx wrangler secret put OPENAI_API_KEY --config wrangler.jsonc
@@ -99,15 +174,15 @@ jobs:
           NODE
           )"
 
-          if [[ "$has_secret" == "true" ]]; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "Premium English automation is ready."
-          else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::OPENAI_API_KEY is not configured on Cloudflare Worker probpera-admin. The admin will deploy with every premium auto-translation path safely disabled; manual RU/EN editing remains available."
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "openai_fallback=$has_secret" >> "$GITHUB_OUTPUT"
+          echo "Premium English automation is ready through the Cloudflare Workers AI binding."
+          if [[ "$has_secret" != "true" ]]; then
+            echo "OpenAI fallback is not configured; this is expected for the free default mode."
           fi
 
       - name: Deploy to Cloudflare Workers
+        if: github.event_name != 'pull_request'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -115,18 +190,24 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           test -n "$CLOUDFLARE_API_TOKEN"
-          npm run cf:deploy --workspace @probpera/admin
+          npm run cf:deploy:built --workspace @probpera/admin
 
       - name: Report premium translation readiness
-        if: always()
+        if: ${{ always() && github.event_name != 'pull_request' }}
         env:
-          PREMIUM_SECRET_READY: ${{ steps.premium_secret.outputs.ready }}
+          PREMIUM_TRANSLATION_READY: ${{ steps.premium_secret.outputs.ready }}
+          OPENAI_FALLBACK_READY: ${{ steps.premium_secret.outputs.openai_fallback }}
         shell: bash
         run: |
-          if [[ "$PREMIUM_SECRET_READY" == "true" ]]; then
-            echo "### Premium English: ready" >> "$GITHUB_STEP_SUMMARY"
-            echo "Cloudflare Worker secret OPENAI_API_KEY is configured." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$PREMIUM_TRANSLATION_READY" == "true" ]]; then
+            echo "### Premium English: ready on Workers AI" >> "$GITHUB_STEP_SUMMARY"
+            echo "Default provider: Cloudflare Workers AI binding (no OpenAI API key required)." >> "$GITHUB_STEP_SUMMARY"
+            if [[ "$OPENAI_FALLBACK_READY" == "true" ]]; then
+              echo "Optional paid OpenAI fallback secret is also configured." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "Optional paid OpenAI fallback is not configured and will not be used." >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
-            echo "### Premium English: safely disabled" >> "$GITHUB_STEP_SUMMARY"
-            echo "The admin is deployed, but automatic translation remains disabled until OPENAI_API_KEY is added as a Worker or GitHub Actions secret." >> "$GITHUB_STEP_SUMMARY"
+            echo "### Premium English: deployment check failed" >> "$GITHUB_STEP_SUMMARY"
+            echo "Workers AI readiness could not be confirmed by the deployment workflow." >> "$GITHUB_STEP_SUMMARY"
           fi

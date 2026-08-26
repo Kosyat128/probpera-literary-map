@@ -5,7 +5,10 @@ import { revalidatePath } from "next/cache";
 import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
 import { ensureWriterEnglishBiography } from "@/lib/auto-translate-writer-biography";
 import { requireStaff } from "@/lib/auth";
-import { editorialCatalog } from "@/lib/editorial-catalog";
+import {
+  loadEditorialCatalog,
+  type EditorialCatalog,
+} from "@/lib/editorial-catalog";
 import {
   countryProfileFields,
   parseEditorialProfileOverride,
@@ -32,7 +35,11 @@ function objectValue(value: unknown): Record<string, unknown> {
     : {};
 }
 
-function editorialSourceFields(countryId: string, writerId: string | null) {
+function editorialSourceFields(
+  editorialCatalog: EditorialCatalog,
+  countryId: string,
+  writerId: string | null
+) {
   const country = editorialCatalog.countries.find(
     (candidate) => candidate.id === countryId
   );
@@ -169,13 +176,24 @@ export async function saveEditorialProfileAction(formData: FormData) {
       : {}),
   };
 
+  const willRemove = !Object.keys(persistedFields).length;
+  const sourceFields = willRemove
+    ? null
+    : {
+        ...editorialSourceFields(
+          await loadEditorialCatalog(),
+          edit.countryId,
+          edit.writerId
+        ),
+        ...completeSource.fields,
+      };
   let databaseId =
     existing?.id ||
     `${edit.countryId}${edit.writerId ? `:${edit.writerId}` : ""}`;
   let action = `${edit.entityType}_profile.updated`;
   let result: "saved" | "removed" = "saved";
 
-  if (!Object.keys(persistedFields).length) {
+  if (willRemove) {
     let deleteQuery = supabase
       .from(table)
       .delete()
@@ -265,17 +283,13 @@ export async function saveEditorialProfileAction(formData: FormData) {
     databaseId = data.id;
   }
 
-  const sourceFields = {
-    ...editorialSourceFields(edit.countryId, edit.writerId),
-    ...completeSource.fields,
-  };
   let translation: {
     state: string;
     model?: string;
     reviewerModel?: string | null;
     error?: string;
   } = { state: "skipped" };
-  if (result !== "removed") {
+  if (sourceFields) {
     translation = isWriter
       ? await ensureWriterEnglishBiography({
           supabase,

@@ -1,20 +1,27 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 import {
   adminEnv,
   type OpenAiReasoningEffort,
   type OpenAiReasoningMode,
+  type PremiumTranslationProvider,
 } from "./env";
 
 export type TranslationJsonSchema = Record<string, unknown>;
 
-type OpenAiUsage = {
+type TranslationUsage = {
   inputTokens: number | null;
   outputTokens: number | null;
 };
 
-type OpenAiPassResult = OpenAiUsage & {
+type TranslationPassResult = TranslationUsage & {
   value: unknown;
   model: string;
   requestId: string | null;
+};
+
+export type WorkersAiBinding = {
+  run(model: string, input: Record<string, unknown>): Promise<unknown>;
 };
 
 export type PremiumEnglishTranslationResult<T> = {
@@ -40,6 +47,8 @@ export type PremiumEnglishTranslationOptions<T> = {
   domainInstructions?: readonly string[];
   validate: (value: unknown) => T;
   maxOutputTokens?: number;
+  provider?: PremiumTranslationProvider;
+  aiBinding?: WorkersAiBinding | null;
   apiKey?: string;
   model?: string;
   reviewerModel?: string;
@@ -77,7 +86,7 @@ const baseReviewerInstructions = [
   "Return only data matching the requested JSON schema.",
 ] as const;
 
-function responseText(payload: unknown) {
+function openAiResponseText(payload: unknown) {
   if (!payload || typeof payload !== "object") return "";
   const record = payload as Record<string, unknown>;
   if (typeof record.output_text === "string") return record.output_text;
@@ -96,19 +105,26 @@ function responseText(payload: unknown) {
   return "";
 }
 
-function responseUsage(payload: unknown): OpenAiUsage {
+function usageFromRecord(payload: unknown): TranslationUsage {
   const usage =
     payload && typeof payload === "object"
       ? (payload as Record<string, unknown>).usage
       : null;
   const record =
     usage && typeof usage === "object" ? (usage as Record<string, unknown>) : {};
-  return {
-    inputTokens:
-      typeof record.input_tokens === "number" ? record.input_tokens : null,
-    outputTokens:
-      typeof record.output_tokens === "number" ? record.output_tokens : null,
-  };
+  const inputTokens =
+    typeof record.input_tokens === "number"
+      ? record.input_tokens
+      : typeof record.prompt_tokens === "number"
+        ? record.prompt_tokens
+        : null;
+  const outputTokens =
+    typeof record.output_tokens === "number"
+      ? record.output_tokens
+      : typeof record.completion_tokens === "number"
+        ? record.completion_tokens
+        : null;
+  return { inputTokens, outputTokens };
 }
 
 function apiErrorMessage(payload: unknown) {
@@ -119,7 +135,56 @@ function apiErrorMessage(payload: unknown) {
     : "";
 }
 
-async function structuredPass(input: {
+function runtimeWorkersAiBinding(): WorkersAiBinding | null {
+  try {
+    return getCloudflareContext().env.AI as unknown as WorkersAiBinding;
+  } catch {
+    return null;
+  }
+}
+
+function parseJsonText(value: string, label: "translation" | "review") {
+  const trimmed = value.trim();
+  const unfenced = trimmed
+    .replace(/^```(?:json)?\s*/iu, "")
+    .replace(/\s*```$/u, "")
+    .trim();
+  try {
+    return JSON.parse(unfenced) as unknown;
+  } catch {
+    throw new Error(`Machine translation returned invalid ${label} JSON`);
+  }
+}
+
+function workersAiValue(payload: unknown, label: "translation" | "review") {
+  if (!payload || typeof payload !== "object") {
+    throw new Error(`Cloudflare Workers AI returned no ${label} output`);
+  }
+  const record = payload as Record<string, unknown>;
+
+  if (record.response !== undefined) {
+    return typeof record.response === "string"
+      ? parseJsonText(record.response, label)
+      : record.response;
+  }
+
+  const choices = Array.isArray(record.choices) ? record.choices : [];
+  const first = choices[0];
+  if (first && typeof first === "object") {
+    const message = (first as Record<string, unknown>).message;
+    if (message && typeof message === "object") {
+      const messageRecord = message as Record<string, unknown>;
+      if (messageRecord.parsed !== undefined) return messageRecord.parsed;
+      if (typeof messageRecord.content === "string") {
+        return parseJsonText(messageRecord.content, label);
+      }
+    }
+  }
+
+  throw new Error(`Cloudflare Workers AI returned no ${label} output`);
+}
+
+async function openAiStructuredPass(input: {
   apiKey: string;
   model: string;
   reasoningEffort: OpenAiReasoningEffort;
@@ -131,7 +196,7 @@ async function structuredPass(input: {
   maxOutputTokens: number;
   fetchImpl: typeof fetch;
   label: "translation" | "review";
-}): Promise<OpenAiPassResult> {
+}): Promise<TranslationPassResult> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 300_000);
   try {
@@ -173,19 +238,11 @@ async function structuredPass(input: {
       );
     }
 
-    const output = responseText(payload);
+    const output = openAiResponseText(payload);
     if (!output) throw new Error(`OpenAI returned no ${input.label} output`);
 
-    let value: unknown;
-    try {
-      value = JSON.parse(output);
-    } catch {
-      throw new Error(`OpenAI returned invalid ${input.label} JSON`);
-    }
-
-    const usage = responseUsage(payload);
     return {
-      value,
+      value: parseJsonText(output, input.label),
       model: input.model,
       requestId:
         response.headers.get("x-request-id") ||
@@ -194,45 +251,162 @@ async function structuredPass(input: {
         typeof (payload as Record<string, unknown>).id === "string"
           ? String((payload as Record<string, unknown>).id)
           : null),
-      ...usage,
+      ...usageFromRecord(payload),
     };
   } finally {
     clearTimeout(timeout);
   }
 }
 
+function workersAiTokenLimit(model: string, maxOutputTokens: number) {
+  return model.startsWith("@cf/openai/gpt-oss-")
+    ? { max_tokens: maxOutputTokens }
+    : { max_completion_tokens: maxOutputTokens };
+}
+
+async function workersAiStructuredPass(input: {
+  ai: WorkersAiBinding;
+  model: string;
+  schema: TranslationJsonSchema;
+  instructions: readonly string[];
+  data: unknown;
+  maxOutputTokens: number;
+  label: "translation" | "review";
+}): Promise<TranslationPassResult> {
+  let payload: unknown;
+  try {
+    payload = await input.ai.run(input.model, {
+      messages: [
+        { role: "system", content: input.instructions.join("\n") },
+        { role: "user", content: JSON.stringify(input.data, null, 2) },
+      ],
+      stream: false,
+      ...workersAiTokenLimit(input.model, input.maxOutputTokens),
+      temperature: 0.15,
+      response_format: {
+        type: "json_schema",
+        json_schema: input.schema,
+      },
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error || "");
+    throw new Error(
+      `Cloudflare Workers AI ${input.label} request failed${
+        message ? `: ${message.slice(0, 400)}` : ""
+      }`
+    );
+  }
+
+  const record =
+    payload && typeof payload === "object"
+      ? (payload as Record<string, unknown>)
+      : {};
+  return {
+    value: workersAiValue(payload, input.label),
+    model: typeof record.model === "string" ? record.model : input.model,
+    requestId: typeof record.id === "string" ? record.id : null,
+    ...usageFromRecord(payload),
+  };
+}
+
+function selectedProvider<T>(
+  options: PremiumEnglishTranslationOptions<T>
+): PremiumTranslationProvider {
+  if (options.provider) return options.provider;
+  if (options.aiBinding) return "cloudflare";
+  // Existing unit tests and controlled callers inject fetch + apiKey together.
+  // Preserve that explicit OpenAI test seam without making production silently
+  // fall back to a paid provider.
+  if (options.fetchImpl && options.apiKey !== undefined) return "openai";
+  return adminEnv.premiumTranslationProvider;
+}
+
 export async function premiumTranslateToEnglish<T>(
   options: PremiumEnglishTranslationOptions<T>
 ): Promise<PremiumEnglishTranslationResult<T>> {
-  const apiKey = options.apiKey ?? adminEnv.openAiApiKey;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured");
-
-  const model = options.model ?? adminEnv.openAiTranslationModel;
-  const reviewerModel =
-    options.reviewerModel ?? adminEnv.openAiTranslationReviewModel;
-  const reasoningEffort =
-    options.reasoningEffort ?? adminEnv.openAiTranslationReasoningEffort;
-  const reasoningMode =
-    options.reasoningMode ?? adminEnv.openAiTranslationReasoningMode;
-  const reviewerReasoningEffort =
-    options.reviewerReasoningEffort ??
-    adminEnv.openAiTranslationReviewReasoningEffort;
-  const reviewerReasoningMode =
-    options.reviewerReasoningMode ??
-    adminEnv.openAiTranslationReviewReasoningMode;
+  const provider = selectedProvider(options);
   const review = options.review ?? adminEnv.openAiPremiumTranslationReview;
-  const fetchImpl = options.fetchImpl || fetch;
   const maxOutputTokens = Math.max(
     2_000,
     Math.min(options.maxOutputTokens ?? 30_000, 60_000)
   );
   const domainInstructions = options.domainInstructions || [];
 
-  const first = await structuredPass({
+  const openAiReasoningEffort =
+    options.reasoningEffort ?? adminEnv.openAiTranslationReasoningEffort;
+  const openAiReasoningMode =
+    options.reasoningMode ?? adminEnv.openAiTranslationReasoningMode;
+  const openAiReviewerReasoningEffort =
+    options.reviewerReasoningEffort ??
+    adminEnv.openAiTranslationReviewReasoningEffort;
+  const openAiReviewerReasoningMode =
+    options.reviewerReasoningMode ??
+    adminEnv.openAiTranslationReviewReasoningMode;
+
+  let first: TranslationPassResult;
+  let second: TranslationPassResult | null = null;
+
+  if (provider === "cloudflare") {
+    const ai = options.aiBinding ?? runtimeWorkersAiBinding();
+    if (!ai) {
+      throw new Error("Cloudflare Workers AI binding is not configured");
+    }
+    first = await workersAiStructuredPass({
+      ai,
+      model: adminEnv.cloudflareTranslationModel,
+      schema: options.schema,
+      instructions: [...baseTranslatorInstructions, ...domainInstructions],
+      data: { SOURCE_DATA: options.source },
+      maxOutputTokens,
+      label: "translation",
+    });
+    const draft = options.validate(first.value);
+
+    if (review) {
+      second = await workersAiStructuredPass({
+        ai,
+        model: adminEnv.cloudflareTranslationReviewModel,
+        schema: options.schema,
+        instructions: [...baseReviewerInstructions, ...domainInstructions],
+        data: {
+          SOURCE_DATA: options.source,
+          DRAFT_TRANSLATION: draft,
+        },
+        maxOutputTokens,
+        label: "review",
+      });
+    }
+
+    const finalValue = second ? options.validate(second.value) : draft;
+    return {
+      value: finalValue,
+      translatorModel: first.model,
+      reviewerModel: second?.model ?? null,
+      translatorReasoningEffort: "none",
+      translatorReasoningMode: "standard",
+      reviewerReasoningEffort: second ? "none" : null,
+      reviewerReasoningMode: second ? "standard" : null,
+      translatorRequestId: first.requestId,
+      reviewerRequestId: second?.requestId ?? null,
+      inputTokens: first.inputTokens,
+      outputTokens: first.outputTokens,
+      reviewInputTokens: second?.inputTokens ?? null,
+      reviewOutputTokens: second?.outputTokens ?? null,
+    };
+  }
+
+  const apiKey = options.apiKey ?? adminEnv.openAiDirectApiKey;
+  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured");
+  const model = options.model ?? adminEnv.openAiTranslationModel;
+  const reviewerModel =
+    options.reviewerModel ?? adminEnv.openAiTranslationReviewModel;
+  const fetchImpl = options.fetchImpl || fetch;
+
+  first = await openAiStructuredPass({
     apiKey,
     model,
-    reasoningEffort,
-    reasoningMode,
+    reasoningEffort: openAiReasoningEffort,
+    reasoningMode: openAiReasoningMode,
     schema: options.schema,
     schemaName: `${options.schemaName}_draft`,
     instructions: [...baseTranslatorInstructions, ...domainInstructions],
@@ -243,55 +417,39 @@ export async function premiumTranslateToEnglish<T>(
   });
   const draft = options.validate(first.value);
 
-  if (!review) {
-    return {
-      value: draft,
-      translatorModel: first.model,
-      reviewerModel: null,
-      translatorReasoningEffort: reasoningEffort,
-      translatorReasoningMode: reasoningMode,
-      reviewerReasoningEffort: null,
-      reviewerReasoningMode: null,
-      translatorRequestId: first.requestId,
-      reviewerRequestId: null,
-      inputTokens: first.inputTokens,
-      outputTokens: first.outputTokens,
-      reviewInputTokens: null,
-      reviewOutputTokens: null,
-    };
+  if (review) {
+    second = await openAiStructuredPass({
+      apiKey,
+      model: reviewerModel,
+      reasoningEffort: openAiReviewerReasoningEffort,
+      reasoningMode: openAiReviewerReasoningMode,
+      schema: options.schema,
+      schemaName: `${options.schemaName}_final`,
+      instructions: [...baseReviewerInstructions, ...domainInstructions],
+      data: {
+        SOURCE_DATA: options.source,
+        DRAFT_TRANSLATION: draft,
+      },
+      maxOutputTokens,
+      fetchImpl,
+      label: "review",
+    });
   }
 
-  const second = await structuredPass({
-    apiKey,
-    model: reviewerModel,
-    reasoningEffort: reviewerReasoningEffort,
-    reasoningMode: reviewerReasoningMode,
-    schema: options.schema,
-    schemaName: `${options.schemaName}_final`,
-    instructions: [...baseReviewerInstructions, ...domainInstructions],
-    data: {
-      SOURCE_DATA: options.source,
-      DRAFT_TRANSLATION: draft,
-    },
-    maxOutputTokens,
-    fetchImpl,
-    label: "review",
-  });
-  const finalValue = options.validate(second.value);
-
+  const finalValue = second ? options.validate(second.value) : draft;
   return {
     value: finalValue,
     translatorModel: first.model,
-    reviewerModel: second.model,
-    translatorReasoningEffort: reasoningEffort,
-    translatorReasoningMode: reasoningMode,
-    reviewerReasoningEffort,
-    reviewerReasoningMode,
+    reviewerModel: second?.model ?? null,
+    translatorReasoningEffort: openAiReasoningEffort,
+    translatorReasoningMode: openAiReasoningMode,
+    reviewerReasoningEffort: second ? openAiReviewerReasoningEffort : null,
+    reviewerReasoningMode: second ? openAiReviewerReasoningMode : null,
     translatorRequestId: first.requestId,
-    reviewerRequestId: second.requestId,
+    reviewerRequestId: second?.requestId ?? null,
     inputTokens: first.inputTokens,
     outputTokens: first.outputTokens,
-    reviewInputTokens: second.inputTokens,
-    reviewOutputTokens: second.outputTokens,
+    reviewInputTokens: second?.inputTokens ?? null,
+    reviewOutputTokens: second?.outputTokens ?? null,
   };
 }

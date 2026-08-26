@@ -98,6 +98,17 @@ jobs:
             exit 1
           }
 
+      - name: Verify whether the public origin actually traverses Cloudflare
+        env:
+          APPLY: ${{ inputs.apply }}
+        run: |
+          set -Eeuo pipefail
+          if [[ "$APPLY" == "true" ]]; then
+            node scripts/cloudflare/verify-edge-applicability.mjs --require-proxied=true
+          else
+            node scripts/cloudflare/verify-edge-applicability.mjs --require-proxied=false
+          fi
+
       - name: Inspect or apply Cloudflare edge policy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

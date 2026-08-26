@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "lib": [
+      "ES2022"
+    ],
+    "plugins": [],
+    "skipLibCheck": false,
+    "types": [
+      "@cloudflare/workers-types"
+    ]
+  },
+  "files": [
+    "cloudflare-env.d.ts",
+    "cloudflare-open-next-env.d.ts",
+    "lib/cloudflare-bindings.typecheck.ts"
+  ],
+  "include": []
+}

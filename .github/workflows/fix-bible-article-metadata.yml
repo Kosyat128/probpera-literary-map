@@ -1,0 +1,95 @@
+name: Fix Bible article metadata
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: "Exact lowercase 40-character SHA of the current main tip"
+        required: true
+        type: string
+      confirmation:
+        description: "Type exactly: FIX BIBLE ARTICLE METADATA 50978DC4"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-bible-article-metadata-fix
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout the exact approved main commit
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.expected_main_sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "::error::expected_main_sha must be 40 lowercase hexadecimal characters."
+            exit 1
+          }
+          [[ "$CONFIRMATION" == "FIX BIBLE ARTICLE METADATA 50978DC4" ]] || {
+            echo "::error::The production metadata-fix confirmation text is not exact."
+            exit 1
+          }
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The workflow commit does not match expected_main_sha."
+            exit 1
+          }
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::The checkout does not match expected_main_sha."
+            exit 1
+          }
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install the locked dependency graph
+        run: npm ci
+
+      - name: Run the fixed-purpose source and unit tests
+        run: >-
+          npx vitest run
+          scripts/database/fix-bible-article-metadata.test.mjs
+
+      - name: Validate production secrets and pinned API identity
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: >-
+          node scripts/database/fix-bible-article-metadata.mjs
+          --validate-environment-only
+
+      - name: Reconfirm remote main and apply the guarded metadata fix
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(git ls-remote --exit-code origin refs/heads/main | awk '{ print $1 }')"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::main advanced after approval; start a new reviewed run."
+            exit 1
+          }
+          node scripts/database/fix-bible-article-metadata.mjs --apply

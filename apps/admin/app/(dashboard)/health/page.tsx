@@ -66,18 +66,24 @@ export default async function HealthPage() {
     : schemaCheckAvailable
       ? "save_article_bundle ещё не подтверждён production-схемой"
       : "ожидается доступный schema health-check";
-  const translationConfigured = Boolean(adminEnv.openAiApiKey);
+  const translationConfigured = adminEnv.premiumTranslationConfigured;
   const translationEnabled = adminEnv.openAiAutoTranslateArticles;
+  const workersAi = adminEnv.premiumTranslationProvider === "cloudflare";
+  const translationModel = workersAi
+    ? adminEnv.cloudflareTranslationModel
+    : adminEnv.openAiTranslationModel;
   const translationStatusLabel = !translationEnabled
     ? "Отключён"
     : translationConfigured
       ? "Готов"
-      : "Нужен API key";
+      : "Нужна настройка";
   const translationStatusDetail = !translationEnabled
-    ? "OPENAI_AUTO_TRANSLATE_ARTICLES=false"
+    ? "автоперевод отключён operational kill switch"
     : translationConfigured
-      ? `модель: ${adminEnv.openAiTranslationModel}`
-      : "добавьте OPENAI_API_KEY в Secret Worker";
+      ? `${workersAi ? "Workers AI" : "OpenAI"}: ${translationModel}`
+      : workersAi
+        ? "не подключён Cloudflare Workers AI binding"
+        : "добавьте OPENAI_API_KEY в Secret Worker";
   const grouped = new Map<string, { latest: Diagnostic; count: number }>();
   for (const item of (data || []) as Diagnostic[]) {
     const current = grouped.get(item.fingerprint);

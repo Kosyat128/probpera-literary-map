@@ -9,11 +9,21 @@
   ],
   "workers_dev": false,
   "keep_vars": true,
+  "minify": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS",
     "run_worker_first": false
   },
+  "ai": {
+    "binding": "AI"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ADMIN_CATALOGS",
+      "id": "f3ae59fd55ee4c0cac8ff1613db81680"
+    }
+  ],
   "routes": [
     {
       "pattern": "admin.probpera.ru",
@@ -24,7 +34,8 @@
     "ADMIN_BASE_PATH": "/",
     "NEXT_PUBLIC_ADMIN_URL": "https://admin.probpera.ru",
     "NEXT_PUBLIC_SITE_URL": "https://probpera.ru",
-    "ADMIN_ALLOWED_ORIGINS": "admin.probpera.ru"
+    "ADMIN_ALLOWED_ORIGINS": "admin.probpera.ru",
+    "PREMIUM_TRANSLATION_PROVIDER": "cloudflare"
   },
   "observability": {
     "enabled": true

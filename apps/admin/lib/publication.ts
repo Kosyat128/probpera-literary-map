@@ -1,7 +1,7 @@
 import {
-  ensurePublishedArticleEnglishTranslation,
-  type AutoTranslationState,
-} from "@/lib/auto-translate-article";
+  ensurePublishedArticlePremiumEnglish,
+  type PremiumArticleBackfillState,
+} from "@/lib/auto-translate-published-article-premium";
 import { triggerPublicBuild, type PublicBuildResult } from "@/lib/public-build";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -42,16 +42,16 @@ export async function requestPublicBuild({
 }: RequestPublicBuildOptions): Promise<{
   state: PublicationState;
   build: PublicBuildResult;
-  autoTranslation?: AutoTranslationState;
+  autoTranslation?: PremiumArticleBackfillState;
 }> {
   // Translate a published Russian article before dispatching the public build,
   // so the same release can contain the synchronized English version. The
-  // helper skips unchanged English rows and never exposes the OpenAI key to the
-  // browser. Translation failure is audited but does not destroy the accepted
-  // Russian publication; a later republish can retry safely.
+  // premium helper skips unchanged/human-owned English rows and keeps provider
+  // credentials server-side. Translation failure is audited but does not
+  // destroy the accepted Russian publication; a later republish can retry.
   const translation =
     entityType === "article" && reason === "article.published"
-      ? await ensurePublishedArticleEnglishTranslation({
+      ? await ensurePublishedArticlePremiumEnglish({
           supabase,
           actorId,
           articleId: entityId,
