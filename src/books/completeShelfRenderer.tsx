@@ -898,7 +898,7 @@ function CompleteShelfBook({
       >
         <planeGeometry args={[1, 1]} />
         <meshPhysicalMaterial
-          color="#ffffff"
+          color="#fff3e5"
           map={foreEdgeMap || undefined}
           bumpMap={foreEdgeMap || undefined}
           bumpScale={0.0022}
@@ -916,7 +916,7 @@ function CompleteShelfBook({
         >
           <planeGeometry args={[1, 1]} />
           <meshPhysicalMaterial
-            color="#ffffff"
+            color="#fff3e5"
             map={headTailEdgeMap || undefined}
             bumpMap={headTailEdgeMap || undefined}
             bumpScale={0.0015}

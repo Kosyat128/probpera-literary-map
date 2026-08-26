@@ -330,6 +330,14 @@ function resolveCoverUrl(url?: string) {
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
 }
 
+function createInitialBookShelfControllerState(forcedColors: boolean) {
+  const shelfState = createInitialBookShelfState("shelf");
+  const viewMode = shelfState.effectiveViewMode;
+  return forcedColors && viewMode === "shelf"
+    ? createInitialBookShelfState("catalog")
+    : shelfState;
+}
+
 
 export default function BookArchiveSection({
   books,
@@ -348,23 +356,24 @@ export default function BookArchiveSection({
   const [smartShelfStatus, setSmartShelfStatus] = useState("");
   const [activeCollectionId, setActiveCollectionId] = useState("all");
   const [visibleCount, setVisibleCount] = useState(12);
-  const [shelfState, shelfDispatch] = useReducer(
-    bookShelfStateReducer,
-    undefined,
-    () => createInitialBookShelfState("shelf")
-  );
-  const [sceneLoadGeneration, setSceneLoadGeneration] = useState(0);
   const [forcedColors, setForcedColors] = useState(
     () =>
       typeof window !== "undefined" &&
       typeof window.matchMedia === "function" &&
       window.matchMedia("(forced-colors: active)").matches
   );
+  const [shelfState, shelfDispatch] = useReducer(
+    bookShelfStateReducer,
+    undefined,
+    () => createInitialBookShelfControllerState(forcedColors)
+  );
+  const [sceneLoadGeneration, setSceneLoadGeneration] = useState(0);
   const viewMode = forcedColors ? "catalog" : shelfState.effectiveViewMode;
   const setViewMode = useCallback(
     (nextViewMode: BookShelfViewMode) => {
-      shelfDispatch({ type: "set-view-mode", viewMode: nextViewMode });
-      if (nextViewMode === "shelf" && shelfState.error) {
+      const resolvedViewMode = forcedColors ? "catalog" : nextViewMode;
+      shelfDispatch({ type: "set-view-mode", viewMode: resolvedViewMode });
+      if (resolvedViewMode === "shelf" && shelfState.error) {
         setSceneLoadGeneration((generation) => generation + 1);
         shelfDispatch({
           type: "recover",
@@ -372,7 +381,7 @@ export default function BookArchiveSection({
         });
       }
     },
-    [shelfState.error, shelfState.requestId]
+    [forcedColors, shelfState.error, shelfState.requestId]
   );
   const [searchScope, setSearchScope] =
     useState<BookShelfSearchScope>("library");
@@ -972,7 +981,12 @@ export default function BookArchiveSection({
 
   useEffect(() => {
     const media = window.matchMedia("(forced-colors: active)");
-    const update = () => setForcedColors(media.matches);
+    const update = () => {
+      setForcedColors(media.matches);
+      if (media.matches) {
+        shelfDispatch({ type: "set-view-mode", viewMode: "catalog" });
+      }
+    };
     update();
     media.addEventListener?.("change", update);
     return () => media.removeEventListener?.("change", update);

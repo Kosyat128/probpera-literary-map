@@ -478,7 +478,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     );
     expect(current.expected).toEqual({
       files: 9,
-      sha256: "0737fae8bf27722b6cdc5810e40d33a8a016006ff1c3a944bb13e0ffb61a3413",
+      sha256: "f78c1da6cc5480e5429d77737817d3daa937cfda052b7c7406d8a2230763206a",
     });
   });
 
