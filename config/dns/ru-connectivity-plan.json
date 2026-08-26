@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "status": "blocked",
+  "productionRoutingState": "cloudflare-full",
+  "zone": "probpera.ru",
+  "canonicalOrigin": "https://probpera.ru",
+  "authoritativeProvider": {
+    "candidate": "ibm-ns1-connect",
+    "accountReady": false,
+    "requiresEcsAndCountryFiltering": true,
+    "requiresApexAlias": true,
+    "requiresAtomicVersionActivation": true
+  },
+  "contentOrigin": {
+    "provider": "github-pages",
+    "hostname": "Kosyat128.github.io",
+    "longTermCertificateRenewalConfirmed": false,
+    "longTermCertificateRenewalEvidence": null,
+    "ipv4": [
+      "185.199.108.153",
+      "185.199.109.153",
+      "185.199.110.153",
+      "185.199.111.153"
+    ],
+    "ipv6": [
+      "2606:50c0:8000::153",
+      "2606:50c0:8001::153",
+      "2606:50c0:8002::153",
+      "2606:50c0:8003::153"
+    ]
+  },
+  "directDelivery": {
+    "mode": "unselected",
+    "provider": null,
+    "accountReady": false,
+    "hostname": null,
+    "ipv4": [],
+    "ipv6": [],
+    "customCertificateReady": false,
+    "certificateAutomation": null,
+    "artifactSyncReady": false,
+    "securityPolicyReady": false
+  },
+  "publicHosts": [
+    "probpera.ru",
+    "www.probpera.ru"
+  ],
+  "preserveHosts": [
+    "admin.probpera.ru"
+  ],
+  "preserveRecordTypes": [
+    "NS",
+    "MX",
+    "TXT",
+    "CAA",
+    "SRV"
+  ],
+  "routing": {
+    "ru": {
+      "countries": [
+        "RU"
+      ],
+      "target": "direct-delivery",
+      "addressFamilies": [
+        "A",
+        "AAAA"
+      ],
+      "aliasTargets": {
+        "probpera.ru": null,
+        "www.probpera.ru": null
+      }
+    },
+    "default": {
+      "target": "cloudflare-partial",
+      "addressFamilies": [
+        "A",
+        "AAAA"
+      ],
+      "cnameTargets": {
+        "probpera.ru": null,
+        "www.probpera.ru": null
+      }
+    },
+    "admin": {
+      "target": "cloudflare-partial",
+      "countries": "all",
+      "cnameTarget": null,
+      "applicationConfiguration": "preserve"
+    }
+  },
+  "ttlSeconds": 300,
+  "delegationSafety": {
+    "parentDs": {
+      "status": "unproven",
+      "parentZone": "ru",
+      "checkedAt": null,
+      "resolverQuorum": 0,
+      "evidenceSha256": null
+    },
+    "providerUnsignedCandidateReady": false,
+    "registrarNsChangeReviewed": false,
+    "dnssecPostMigrationPlanReady": false
+  },
+  "cloudflarePartial": {
+    "eligible": null,
+    "advancedCertificateActive": false,
+    "delegatedDcvReady": false,
+    "verificationTxtReady": false,
+    "requiredPlan": [
+      "business",
+      "enterprise"
+    ],
+    "cloudflareRegistrarAllowed": false
+  },
+  "preconditions": {
+    "adminPartialRoutePassed": false,
+    "cloudflareApiSnapshotComplete": false,
+    "cloudflareAdvancedCertificateActive": false,
+    "cloudflareDelegatedDcvReady": false,
+    "cloudflareFullToPartialConversionReviewed": false,
+    "cloudflarePartialEligibilityConfirmed": false,
+    "cloudflarePartialVerificationReady": false,
+    "githubPagesDnsCheckPassed": false,
+    "githubPagesCertificateRenewalCompatibilityConfirmed": false,
+    "githubPagesHttpsEnforced": false,
+    "directCertificateCoversPublicHosts": false,
+    "directDeliveryAccountReady": false,
+    "directHttpRedirectsToHttps": false,
+    "directIpv4Passed": false,
+    "directIpv6Passed": false,
+    "directRepresentativeHtmlPassed": false,
+    "directSecurityContractPassed": false,
+    "directSeoCompatibilityPassed": false,
+    "deploymentAtomicityPassed": false,
+    "releaseParityPassed": false,
+    "trustedDualStackProofPassed": false,
+    "adminFingerprintPreserved": false,
+    "providerRollbackVersionReady": false,
+    "parentDsAbsenceFreshlyProven": false,
+    "providerUnsignedCandidateReady": false,
+    "registrarNsChangeReviewed": false,
+    "dnssecPostMigrationPlanReady": false
+  }
+}
