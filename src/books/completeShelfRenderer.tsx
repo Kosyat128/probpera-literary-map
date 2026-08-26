@@ -1,9 +1,11 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import {
+  BoxGeometry,
   BufferAttribute,
   DoubleSide,
   MathUtils,
+  PlaneGeometry,
   Shape,
   ShapeGeometry,
   Vector2,
@@ -20,10 +22,12 @@ import type { BookShelfPhase } from "./bookShelfState";
 import {
   buildCompleteShelfBookPose,
   buildCompleteShelfBookSpec,
+  completeShelfPhaseAllowsSelectionSwitch,
   completeShelfPhaseHasInspection,
   completeShelfSettlementForPhase,
   completeShelfWorkingSetLimit,
   layoutCompleteShelfBooks,
+  resolveCompleteShelfViewportFraming,
   selectCompleteShelfWorkingSet,
   type CompleteShelfBookPose,
   type CompleteShelfLayoutEntry,
@@ -34,11 +38,12 @@ import {
   createCompleteShelfClothMap,
   createCompleteShelfClothSurfaceMaps,
   createCompleteShelfContactShadowTexture,
+  createCompleteShelfLeatherMap,
+  createCompleteShelfLeatherSurfaceMaps,
   createCompleteShelfPageEdgeTextures,
   createCompleteShelfWoodDetailMap,
   createCompleteShelfWoodMap,
   disposeCompleteShelfTextures,
-  loadCompleteShelfCoverTexture,
 } from "./completeShelfTextures";
 
 const HIGH_CLOTH_NORMAL_SCALE = new Vector2(0.42, 0.42);
@@ -314,83 +319,155 @@ function createCompleteShelfRoundedPlaneGeometry(
   return geometry;
 }
 
-function ClothMaterial({
+function createCompleteShelfBowedSpineGeometry(
+  thickness: number,
+  height: number,
+  depth: number,
+  bow: number,
+  economical: boolean
+) {
+  const geometry = new BoxGeometry(
+    thickness,
+    height,
+    depth,
+    1,
+    economical ? 1 : 2,
+    economical ? 6 : 12
+  );
+  const position = geometry.getAttribute("position");
+  const halfThickness = thickness * 0.5;
+  const halfDepth = depth * 0.5;
+  for (let index = 0; index < position.count; index += 1) {
+    const x = position.getX(index);
+    const normalizedZ = Math.min(1, Math.abs(position.getZ(index)) / halfDepth);
+    const shoulder = Math.max(0, 1 - normalizedZ * normalizedZ);
+    if (x <= -halfThickness + 0.0001) {
+      position.setX(index, x - bow * shoulder);
+    } else if (x >= halfThickness - 0.0001) {
+      position.setX(index, x + bow * shoulder * 0.16);
+    }
+  }
+  position.needsUpdate = true;
+  geometry.computeVertexNormals();
+  geometry.computeBoundingBox();
+  geometry.computeBoundingSphere();
+  return geometry;
+}
+
+function createCompleteShelfBowedSpineFoilGeometry(
+  width: number,
+  height: number,
+  bow: number,
+  economical: boolean
+) {
+  const geometry = new PlaneGeometry(
+    width,
+    height,
+    economical ? 6 : 12,
+    economical ? 1 : 2
+  );
+  const position = geometry.getAttribute("position");
+  const halfWidth = width * 0.5;
+  for (let index = 0; index < position.count; index += 1) {
+    const normalizedX = Math.min(1, Math.abs(position.getX(index)) / halfWidth);
+    position.setZ(index, bow * Math.max(0, 1 - normalizedX * normalizedX));
+  }
+  position.needsUpdate = true;
+  geometry.computeVertexNormals();
+  geometry.computeBoundingBox();
+  geometry.computeBoundingSphere();
+  return geometry;
+}
+
+function BindingMaterial({
+  binding,
   color,
-  foilColor,
-  clothMap,
-  clothNormalMap,
-  clothRoughnessMap,
+  bindingMap,
+  bindingNormalMap,
+  bindingRoughnessMap,
   economical,
 }: {
+  binding: "leather" | "cloth";
   color: string;
-  foilColor: string;
-  clothMap: CanvasTexture | null;
-  clothNormalMap: CanvasTexture | null;
-  clothRoughnessMap: CanvasTexture | null;
+  bindingMap: CanvasTexture | null;
+  bindingNormalMap: CanvasTexture | null;
+  bindingRoughnessMap: CanvasTexture | null;
   economical: boolean;
 }) {
+  const leather = binding === "leather";
   if (economical) {
     return (
       <meshStandardMaterial
         color={color}
-        roughness={0.91}
+        roughness={leather ? 0.82 : 0.91}
         metalness={0}
-        roughnessMap={clothRoughnessMap || undefined}
-        normalMap={clothNormalMap || undefined}
+        roughnessMap={bindingRoughnessMap || undefined}
+        normalMap={bindingNormalMap || undefined}
         normalScale={ECONOMICAL_CLOTH_NORMAL_SCALE}
-        bumpMap={clothMap || undefined}
-        bumpScale={0.004}
+        bumpMap={bindingMap || undefined}
+        bumpScale={leather ? 0.0052 : 0.004}
       />
     );
   }
   return (
     <meshPhysicalMaterial
       color={color}
-      roughness={0.9}
-      metalness={0.01}
-      roughnessMap={clothRoughnessMap || undefined}
-      normalMap={clothNormalMap || undefined}
+      roughness={leather ? 0.72 : 0.86}
+      metalness={0.005}
+      roughnessMap={bindingRoughnessMap || undefined}
+      normalMap={bindingNormalMap || undefined}
       normalScale={HIGH_CLOTH_NORMAL_SCALE}
-      bumpMap={clothMap || undefined}
-      bumpScale={0.0055}
-      sheen={0.3}
-      sheenColor={foilColor}
-      sheenRoughness={0.7}
+      bumpMap={bindingMap || undefined}
+      bumpScale={leather ? 0.007 : 0.0055}
+      clearcoat={leather ? 0.055 : 0.01}
+      clearcoatRoughness={leather ? 0.72 : 0.92}
+      sheen={leather ? 0.06 : 0.14}
+      sheenColor={color}
+      sheenRoughness={leather ? 0.8 : 0.74}
     />
   );
 }
 
 function SpineMaterial({
   map,
-  foilColor,
-  clothMap,
-  clothNormalMap,
-  clothRoughnessMap,
+  binding,
+  surfaceColor,
+  bindingMap,
+  bindingNormalMap,
+  bindingRoughnessMap,
   economical,
 }: {
   map: CanvasTexture | null;
-  foilColor: string;
-  clothMap: CanvasTexture | null;
-  clothNormalMap: CanvasTexture | null;
-  clothRoughnessMap: CanvasTexture | null;
+  binding: "leather" | "cloth";
+  surfaceColor: string;
+  bindingMap: CanvasTexture | null;
+  bindingNormalMap: CanvasTexture | null;
+  bindingRoughnessMap: CanvasTexture | null;
   economical: boolean;
 }) {
+  const leather = binding === "leather";
   return (
     <meshPhysicalMaterial
       color="#ffffff"
       map={map || undefined}
-      normalMap={clothNormalMap || undefined}
+      normalMap={bindingNormalMap || undefined}
       normalScale={
         economical ? ECONOMICAL_CLOTH_NORMAL_SCALE : HIGH_CLOTH_NORMAL_SCALE
       }
-      roughnessMap={clothRoughnessMap || undefined}
-      bumpMap={clothMap || undefined}
-      bumpScale={economical ? 0.003 : 0.005}
-      roughness={economical ? 0.91 : 0.88}
-      metalness={economical ? 0 : 0.015}
-      sheen={economical ? 0.14 : 0.32}
-      sheenColor={foilColor}
-      sheenRoughness={0.68}
+      roughnessMap={bindingRoughnessMap || undefined}
+      bumpMap={bindingMap || undefined}
+      bumpScale={
+        economical ? (leather ? 0.0045 : 0.003) : leather ? 0.007 : 0.005
+      }
+      roughness={
+        economical ? (leather ? 0.82 : 0.91) : leather ? 0.72 : 0.85
+      }
+      metalness={economical ? 0 : 0.005}
+      clearcoat={leather && !economical ? 0.055 : 0}
+      clearcoatRoughness={0.72}
+      sheen={economical ? 0.04 : leather ? 0.06 : 0.14}
+      sheenColor={surfaceColor}
+      sheenRoughness={leather ? 0.8 : 0.74}
       side={DoubleSide}
     />
   );
@@ -401,17 +478,19 @@ function FoilMaterial({
   embossMap,
   color,
   front = false,
+  precolored = false,
 }: {
   map: CanvasTexture | null;
   embossMap: CanvasTexture | null;
   color: string;
   front?: boolean;
+  precolored?: boolean;
 }) {
   return (
     <meshPhysicalMaterial
       map={map || undefined}
-      alphaMap={map || undefined}
-      color={color}
+      alphaMap={precolored ? undefined : map || undefined}
+      color={precolored ? "#ffffff" : color}
       transparent
       alphaTest={0.015}
       depthWrite={false}
@@ -438,9 +517,9 @@ function CompleteShelfBook({
   reporterKey,
   economical,
   reducedMotion,
-  clothMap,
-  clothNormalMap,
-  clothRoughnessMap,
+  bindingMap,
+  bindingNormalMap,
+  bindingRoughnessMap,
   foreEdgeMap,
   headTailEdgeMap,
   contactShadowMap,
@@ -459,9 +538,9 @@ function CompleteShelfBook({
   reporterKey: string | null;
   economical: boolean;
   reducedMotion: boolean;
-  clothMap: CanvasTexture | null;
-  clothNormalMap: CanvasTexture | null;
-  clothRoughnessMap: CanvasTexture | null;
+  bindingMap: CanvasTexture | null;
+  bindingNormalMap: CanvasTexture | null;
+  bindingRoughnessMap: CanvasTexture | null;
   foreEdgeMap: CanvasTexture | null;
   headTailEdgeMap: CanvasTexture | null;
   contactShadowMap: CanvasTexture | null;
@@ -485,6 +564,7 @@ function CompleteShelfBook({
   const selected = spec.key === selectedBookKey;
   const renderFullRig = selected && completeShelfPhaseHasInspection(phase);
   const spineBoardThickness = economical ? 0.012 : 0.014;
+  const spineBow = economical ? 0.014 : 0.02;
   const spineWidth = 0.082;
   const pageWidth = coverWidth - 0.074;
   const pageHeight = height - 0.068;
@@ -523,14 +603,42 @@ function CompleteShelfBook({
   );
   const spineGeometry = useMemo(
     () =>
-      new RoundedBoxGeometry(
+      createCompleteShelfBowedSpineGeometry(
         spineBoardThickness,
         height - 0.012,
         pageDepth + boardThickness * 1.88,
-        1,
-        0.0015
+        spineBow,
+        economical
       ),
-    [boardThickness, height, pageDepth, spineBoardThickness]
+    [
+      boardThickness,
+      economical,
+      height,
+      pageDepth,
+      spineBoardThickness,
+      spineBow,
+    ]
+  );
+  const spineFoilGeometry = useMemo(
+    () =>
+      createCompleteShelfBowedSpineFoilGeometry(
+        pageDepth + boardThickness * 1.82,
+        height - 0.018,
+        spineBow,
+        economical
+      ),
+    [boardThickness, economical, height, pageDepth, spineBow]
+  );
+  const spineBandGeometry = useMemo(
+    () =>
+      new RoundedBoxGeometry(
+        economical ? 0.009 : 0.012,
+        economical ? 0.018 : 0.022,
+        (pageDepth + boardThickness * 1.82) * 0.92,
+        1,
+        economical ? 0.002 : 0.0035
+      ),
+    [boardThickness, economical, pageDepth]
   );
   const spineLiningGeometry = useMemo(
     () =>
@@ -570,6 +678,8 @@ function CompleteShelfBook({
       coverGeometry?.dispose();
       pageBlockGeometry?.dispose();
       spineGeometry.dispose();
+      spineFoilGeometry.dispose();
+      spineBandGeometry.dispose();
       spineLiningGeometry.dispose();
       coverSurfaceGeometry?.dispose();
       endpaperGeometry?.dispose();
@@ -578,54 +688,12 @@ function CompleteShelfBook({
       coverSurfaceGeometry,
       endpaperGeometry,
       pageBlockGeometry,
+      spineBandGeometry,
+      spineFoilGeometry,
       spineGeometry,
       spineLiningGeometry,
     ]
   );
-  const coverArtworkRef = useRef<CanvasTexture | null>(null);
-  const [coverArtwork, setCoverArtwork] = useState<CanvasTexture | null>(null);
-  const shouldLoadCover = Boolean(spec.coverUrl && selected);
-
-  useEffect(() => {
-    coverArtworkRef.current?.dispose();
-    coverArtworkRef.current = null;
-    setCoverArtwork(null);
-    if (!shouldLoadCover || !spec.coverUrl) return;
-    let active = true;
-    const cancel = loadCompleteShelfCoverTexture(
-      {
-        coverUrl: spec.coverUrl,
-        baseColor: spec.baseColor,
-        coverAspectRatio: coverWidth / height,
-        economical,
-      },
-      (texture) => {
-        if (!active) {
-          texture.dispose();
-          return;
-        }
-        coverArtworkRef.current?.dispose();
-        coverArtworkRef.current = texture;
-        setCoverArtwork(texture);
-        invalidate();
-      }
-    );
-    return () => {
-      active = false;
-      cancel();
-      coverArtworkRef.current?.dispose();
-      coverArtworkRef.current = null;
-    };
-  }, [
-    coverWidth,
-    economical,
-    height,
-    invalidate,
-    selected,
-    shouldLoadCover,
-    spec.baseColor,
-    spec.coverUrl,
-  ]);
 
   useLayoutEffect(() => {
     pageSettleCallbackRef.current = onRequestPageSettle;
@@ -741,11 +809,17 @@ function CompleteShelfBook({
       ref={groupRef}
       onClick={(event) => {
         event.stopPropagation();
-        if (!selected && phase === "SHELF_IDLE") {
+        if (
+          !selected &&
+          (phase === "SHELF_IDLE" ||
+            completeShelfPhaseAllowsSelectionSwitch(phase))
+        ) {
           onOpenBook(spec.key);
-        } else if (
-          phase === "INSPECTION_CLOSED" ||
-          phase === "COVER_CRACKED"
+          return;
+        }
+        if (
+          selected &&
+          (phase === "INSPECTION_CLOSED" || phase === "COVER_CRACKED")
         ) {
           onRequestCoverOpen(spec.key);
         }
@@ -779,12 +853,12 @@ function CompleteShelfBook({
             castShadow={!economical}
             receiveShadow
           >
-            <ClothMaterial
+            <BindingMaterial
+              binding={spec.binding}
               color={spec.baseColor}
-              foilColor={spec.foilColor}
-              clothMap={clothMap}
-              clothNormalMap={clothNormalMap}
-              clothRoughnessMap={clothRoughnessMap}
+              bindingMap={bindingMap}
+              bindingNormalMap={bindingNormalMap}
+              bindingRoughnessMap={bindingRoughnessMap}
               economical={economical}
             />
           </mesh>
@@ -814,7 +888,7 @@ function CompleteShelfBook({
               color="#17100d"
               roughness={0.9}
               metalness={0}
-              bumpMap={clothMap || undefined}
+              bumpMap={bindingMap || undefined}
               bumpScale={0.006}
               transparent
               opacity={0.48}
@@ -835,31 +909,58 @@ function CompleteShelfBook({
       >
         <SpineMaterial
           map={artwork.spineSurface}
-          foilColor={spec.foilColor}
-          clothMap={clothMap}
-          clothNormalMap={clothNormalMap}
-          clothRoughnessMap={clothRoughnessMap}
+          binding={spec.binding}
+          surfaceColor={spec.baseColor}
+          bindingMap={bindingMap}
+          bindingNormalMap={bindingNormalMap}
+          bindingRoughnessMap={bindingRoughnessMap}
           economical={economical}
         />
       </mesh>
       <mesh
+        geometry={spineFoilGeometry}
         position={[
           -coverWidth / 2 - spineBoardThickness * 0.855,
           0,
           0,
         ]}
         rotation={[0, -Math.PI / 2, 0]}
-        scale={[pageDepth + boardThickness * 1.82, height - 0.018, 1]}
         visible={Boolean(artwork.spineFoil)}
         renderOrder={4}
       >
-        <planeGeometry args={[1, 1]} />
         <FoilMaterial
           map={artwork.spineFoil}
           embossMap={artwork.spineFoilEmboss}
           color={spec.foilColor}
+          precolored
         />
       </mesh>
+      {[-0.41, 0.41].map((offset) => (
+        <mesh
+          key={offset}
+          geometry={spineBandGeometry}
+          position={[
+            -coverWidth / 2 -
+              spineBoardThickness * 0.855 -
+              spineBow +
+              (economical ? 0.003 : 0.004),
+            height * offset,
+            0,
+          ]}
+          castShadow={!economical}
+          receiveShadow
+          renderOrder={3}
+        >
+            <BindingMaterial
+              binding={spec.binding}
+              color="#2a1c21"
+            bindingMap={bindingMap}
+            bindingNormalMap={bindingNormalMap}
+            bindingRoughnessMap={bindingRoughnessMap}
+            economical={economical}
+          />
+        </mesh>
+      ))}
       <mesh
         geometry={spineLiningGeometry}
         position={[-coverWidth / 2 + spineWidth * 0.38, 0, 0]}
@@ -1071,42 +1172,13 @@ function CompleteShelfBook({
           position={[coverWidth / 2, 0, 0]}
           castShadow={!economical}
         >
-          <ClothMaterial
+          <BindingMaterial
+            binding={spec.binding}
             color={spec.baseColor}
-            foilColor={spec.foilColor}
-            clothMap={clothMap}
-            clothNormalMap={clothNormalMap}
-            clothRoughnessMap={clothRoughnessMap}
+            bindingMap={bindingMap}
+            bindingNormalMap={bindingNormalMap}
+            bindingRoughnessMap={bindingRoughnessMap}
             economical={economical}
-          />
-        </mesh>
-        <mesh
-          geometry={coverSurfaceGeometry || undefined}
-          position={[coverWidth / 2, 0, boardThickness * 0.55]}
-          visible={Boolean(coverArtwork)}
-          renderOrder={4}
-        >
-          <meshPhysicalMaterial
-            map={coverArtwork || undefined}
-            color="#ffffff"
-            normalMap={clothNormalMap || undefined}
-            normalScale={
-              economical
-                ? ECONOMICAL_CLOTH_NORMAL_SCALE
-                : HIGH_CLOTH_NORMAL_SCALE
-            }
-            roughnessMap={clothRoughnessMap || undefined}
-            bumpMap={clothMap || undefined}
-            bumpScale={economical ? 0.0022 : 0.0035}
-            roughness={0.92}
-            metalness={0.035}
-            clearcoat={0.06}
-            clearcoatRoughness={0.72}
-            sheen={0.26}
-            sheenRoughness={0.78}
-            polygonOffset
-            polygonOffsetFactor={-2}
-            polygonOffsetUnits={-2}
           />
         </mesh>
         <mesh
@@ -1168,9 +1240,9 @@ function CompleteShelfBook({
                 color={spec.baseColor}
                 roughness={0.98}
                 metalness={0.02}
-                normalMap={clothNormalMap || undefined}
+                normalMap={bindingNormalMap || undefined}
                 normalScale={HIGH_CLOTH_NORMAL_SCALE}
-                bumpMap={clothMap || undefined}
+                bumpMap={bindingMap || undefined}
                 bumpScale={0.0045}
               />
             </mesh>
@@ -1185,7 +1257,7 @@ function CompleteShelfBook({
             color="#17100d"
             roughness={0.9}
             metalness={0}
-            bumpMap={clothMap || undefined}
+            bumpMap={bindingMap || undefined}
             bumpScale={0.006}
             transparent
             opacity={0.48}
@@ -1225,17 +1297,6 @@ function WarmWoodShelf({
       ),
     [economical, width]
   );
-  const lipGeometry = useMemo(
-    () =>
-      new RoundedBoxGeometry(
-        width + 0.08,
-        0.075,
-        0.11,
-        economical ? 1 : 2,
-        0.018
-      ),
-    [economical, width]
-  );
   const backRailGeometry = useMemo(
     () =>
       new RoundedBoxGeometry(
@@ -1250,9 +1311,8 @@ function WarmWoodShelf({
   useEffect(
     () => () => {
       topGeometry.dispose();
-      lipGeometry.dispose();
       backRailGeometry.dispose();
-    }, [backRailGeometry, lipGeometry, topGeometry]
+    }, [backRailGeometry, topGeometry]
   );
   const topRoughness = Math.min(
     0.68,
@@ -1277,24 +1337,6 @@ function WarmWoodShelf({
           clearcoat={0.08}
           clearcoatRoughness={0.66}
           envMapIntensity={0.72}
-        />
-      </mesh>
-      <mesh
-        geometry={lipGeometry}
-        position={[0, -1.155, 0.565]}
-        castShadow={!economical}
-        receiveShadow
-      >
-        <meshPhysicalMaterial
-          color="#9a5b38"
-          map={woodMap || undefined}
-          bumpMap={woodDetailMap || undefined}
-          bumpScale={economical ? 0.005 : 0.008}
-          roughnessMap={woodDetailMap || undefined}
-          roughness={0.6}
-          metalness={0}
-          clearcoat={0.06}
-          clearcoatRoughness={0.7}
         />
       </mesh>
       <mesh
@@ -1338,15 +1380,17 @@ function WarmWoodShelf({
 export default function CompleteShelfRenderer(
   props: CompleteShelfRendererProps
 ) {
+  const { size, viewport, invalidate } = useThree();
+  const renderingEconomical = props.economical || size.width <= 640;
   const anchorKey = props.selectedBookKey || props.focusedBookKey;
   const workingSet = useMemo(
     () =>
       selectCompleteShelfWorkingSet(
         props.items,
         anchorKey,
-        completeShelfWorkingSetLimit(props.economical)
+        completeShelfWorkingSetLimit(renderingEconomical)
       ),
-    [anchorKey, props.economical, props.items]
+    [anchorKey, props.items, renderingEconomical]
   );
   const specs = useMemo(
     () =>
@@ -1376,31 +1420,39 @@ export default function CompleteShelfRenderer(
     props.selectedBookKey && completeShelfPhaseHasInspection(props.phase)
   );
   const clothMap = useMemo(
-    () => createCompleteShelfClothMap(props.economical),
-    [props.economical]
+    () => createCompleteShelfClothMap(renderingEconomical),
+    [renderingEconomical]
   );
   const clothSurfaceMaps = useMemo(
-    () => createCompleteShelfClothSurfaceMaps(props.economical),
-    [props.economical]
+    () => createCompleteShelfClothSurfaceMaps(renderingEconomical),
+    [renderingEconomical]
+  );
+  const leatherMap = useMemo(
+    () => createCompleteShelfLeatherMap(renderingEconomical),
+    [renderingEconomical]
+  );
+  const leatherSurfaceMaps = useMemo(
+    () => createCompleteShelfLeatherSurfaceMaps(renderingEconomical),
+    [renderingEconomical]
   );
   const pageEdgeMaps = useMemo(
     () =>
       needsFullRigMaps
-        ? createCompleteShelfPageEdgeTextures(props.economical)
+        ? createCompleteShelfPageEdgeTextures(renderingEconomical)
         : EMPTY_PAGE_EDGE_TEXTURES,
-    [needsFullRigMaps, props.economical]
+    [needsFullRigMaps, renderingEconomical]
   );
   const contactShadowMap = useMemo(
-    () => createCompleteShelfContactShadowTexture(props.economical),
-    [props.economical]
+    () => createCompleteShelfContactShadowTexture(renderingEconomical),
+    [renderingEconomical]
   );
   const woodMap = useMemo(
-    () => createCompleteShelfWoodMap("#6a3b26", props.economical),
-    [props.economical]
+    () => createCompleteShelfWoodMap("#6a3b26", renderingEconomical),
+    [renderingEconomical]
   );
   const woodDetailMap = useMemo(
-    () => createCompleteShelfWoodDetailMap(props.economical),
-    [props.economical]
+    () => createCompleteShelfWoodDetailMap(renderingEconomical),
+    [renderingEconomical]
   );
   useEffect(
     () => () =>
@@ -1408,6 +1460,9 @@ export default function CompleteShelfRenderer(
         clothMap,
         clothSurfaceMaps.normal,
         clothSurfaceMaps.roughness,
+        leatherMap,
+        leatherSurfaceMaps.normal,
+        leatherSurfaceMaps.roughness,
         contactShadowMap,
         pageEdgeMaps.fore,
         pageEdgeMaps.headTail,
@@ -1418,17 +1473,59 @@ export default function CompleteShelfRenderer(
       clothMap,
       clothSurfaceMaps,
       contactShadowMap,
+      leatherMap,
+      leatherSurfaceMaps,
       pageEdgeMaps,
       woodDetailMap,
       woodMap,
     ]
   );
   const shelfWidth = Math.max(
-    5.8,
+    6.5,
     layout.length
-      ? layout[layout.length - 1].x - layout[0].x + 1.45
-      : 5.8
+      ? layout[layout.length - 1].x - layout[0].x + 1.7
+      : 6.5
   );
+  const sceneFraming = resolveCompleteShelfViewportFraming({
+    pixelWidth: size.width,
+    viewportWidth: viewport.width,
+    shelfWidth,
+  });
+  useEffect(() => {
+    let firstFrame = 0;
+    let secondFrame = 0;
+    const scheduleStableFrame = () => {
+      if (firstFrame) window.cancelAnimationFrame(firstFrame);
+      if (secondFrame) window.cancelAnimationFrame(secondFrame);
+      invalidate();
+      firstFrame = window.requestAnimationFrame(() => {
+        firstFrame = 0;
+        invalidate();
+        secondFrame = window.requestAnimationFrame(() => {
+          secondFrame = 0;
+          invalidate();
+        });
+      });
+    };
+    scheduleStableFrame();
+    window.addEventListener("resize", scheduleStableFrame);
+    window.addEventListener("scroll", scheduleStableFrame, true);
+    return () => {
+      window.removeEventListener("resize", scheduleStableFrame);
+      window.removeEventListener("scroll", scheduleStableFrame, true);
+      if (firstFrame) window.cancelAnimationFrame(firstFrame);
+      if (secondFrame) window.cancelAnimationFrame(secondFrame);
+    };
+  }, [
+    invalidate,
+    sceneFraming.positionY,
+    sceneFraming.scale,
+    size.height,
+    size.left,
+    size.top,
+    size.width,
+    workingSet.entries.length,
+  ]);
   const reporterKey =
     props.selectedBookKey ||
     props.focusedBookKey ||
@@ -1445,40 +1542,49 @@ export default function CompleteShelfRenderer(
   };
 
   return (
-    <group>
+    <group
+      scale={sceneFraming.scale}
+      position={[0, sceneFraming.positionY, 0]}
+    >
       <WarmWoodShelf
         width={shelfWidth}
         appearance={props.appearance}
-        economical={props.economical}
+        economical={renderingEconomical}
         woodMap={woodMap}
         woodDetailMap={woodDetailMap}
         contactShadowMap={contactShadowMap}
       />
-      {workingSet.entries.map((entry, index) => (
-        <CompleteShelfBook
-          key={entry.item.key}
-          layout={layout[index]}
-          anchorSlot={workingSet.anchorSlot}
-          phase={props.phase}
-          requestId={props.requestId}
-          focusedBookKey={props.focusedBookKey}
-          selectedBookKey={props.selectedBookKey}
-          reporterKey={reporterKey}
-          economical={props.economical}
-          reducedMotion={props.reducedMotion}
-          clothMap={clothMap}
-          clothNormalMap={clothSurfaceMaps.normal}
-          clothRoughnessMap={clothSurfaceMaps.roughness}
-          foreEdgeMap={pageEdgeMaps.fore}
-          headTailEdgeMap={pageEdgeMaps.headTail}
-          contactShadowMap={contactShadowMap}
-          onOpenBook={props.onOpenBook}
-          onRequestCoverOpen={props.onRequestCoverOpen}
-          onStartPageDrag={props.onStartPageDrag}
-          onRequestPageSettle={props.onRequestPageSettle}
-          callbacks={callbacks}
-        />
-      ))}
+      {workingSet.entries.map((entry, index) => {
+        const binding = layout[index].spec.binding;
+        const bindingMap = binding === "leather" ? leatherMap : clothMap;
+        const bindingSurfaceMaps =
+          binding === "leather" ? leatherSurfaceMaps : clothSurfaceMaps;
+        return (
+          <CompleteShelfBook
+            key={entry.item.key}
+            layout={layout[index]}
+            anchorSlot={workingSet.anchorSlot}
+            phase={props.phase}
+            requestId={props.requestId}
+            focusedBookKey={props.focusedBookKey}
+            selectedBookKey={props.selectedBookKey}
+            reporterKey={reporterKey}
+            economical={renderingEconomical}
+            reducedMotion={props.reducedMotion}
+            bindingMap={bindingMap}
+            bindingNormalMap={bindingSurfaceMaps.normal}
+            bindingRoughnessMap={bindingSurfaceMaps.roughness}
+            foreEdgeMap={pageEdgeMaps.fore}
+            headTailEdgeMap={pageEdgeMaps.headTail}
+            contactShadowMap={contactShadowMap}
+            onOpenBook={props.onOpenBook}
+            onRequestCoverOpen={props.onRequestCoverOpen}
+            onStartPageDrag={props.onStartPageDrag}
+            onRequestPageSettle={props.onRequestPageSettle}
+            callbacks={callbacks}
+          />
+        );
+      })}
     </group>
   );
 }

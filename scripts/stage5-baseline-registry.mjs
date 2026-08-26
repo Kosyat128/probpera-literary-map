@@ -196,26 +196,26 @@ export const stage5D1AdditiveI18nAttestation = Object.freeze({
       "7053755a7c46865d1c8f1c795c595b08d96d031bfeb0a9653c1cc1f6dc395c93",
     codeOutsideInitializerSha256:
       "96a330622dd3b14b98f4215fc8392e7af7160c8ff74b8e33df2d2e99efb55802",
-    currentEntries: 1066,
+    currentEntries: 1074,
     additions: Object.freeze({
-      entries: 150,
+      entries: 158,
       keysSha256:
-        "9c7cb37bfccaf64a6f7dfb73cf813b1dd29c54e4ee9d660b04507c3618358fb5",
+        "1a594d47059a6ebe35d6db178d05ad8077c4852b3f7a8b278774961388a96de9",
       pairsSha256:
-        "30785d888e065cc7c34dcaa2f27372cfe334cd2b5541572c71993a88bfd731e7",
+        "454c5e5ff1ac4b3b4f1d9d8f9876a057c844c75a4ed521e3431d9bfca23ecaa4",
     }),
   }),
   catalog: Object.freeze({
     baselineEntries: 1130,
     baselineContentSha256:
       "280bb7704a34921fdbb2c95c51bb5264ecaab1c210dfbdb5b0a37d62a29caa5d",
-    currentEntries: 1280,
+    currentEntries: 1288,
     additions: Object.freeze({
-      entries: 150,
+      entries: 158,
       keysSha256:
-        "2c9c3dd90df216f9f96180999f53b4460969fcebd9268e035ac148af27bd72e2",
+        "b1ef658d8c0e23ea6cc50eb63c177cdab20d364e3659d0c2d6c597654112ee78",
       contentSha256:
-        "378ad3abf741c1eb9910e189270dd909024dc4f5421128808ed2102a29865d27",
+        "24815d91de6943a0903654cbcaf571dba0479af86ec99e0be8dde0be3b47a52c",
     }),
   }),
 });
@@ -278,9 +278,9 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               sourceIntegrationSha:
                 stage5D1AdditiveI18nAttestation.sourceIntegrationSha,
               expected: Object.freeze({
-                files: 9,
-                sha256:
-                  "ee96d9d7b3b94680c8dad5ac75317e75f21a382bdf213ad74b069bbd7634d663",
+              files: 9,
+              sha256:
+                  "dd720968c269372c4caa3521273d9eea9b1ead231e5733e334c993402da38942",
               }),
             })
         : entry

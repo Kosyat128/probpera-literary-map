@@ -1,61 +1,100 @@
 import type { BookShelfPhase } from "./bookShelfState";
 export const COMPLETE_SHELF_MAX_WORKING_SET = 13;
-export const COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 11;
+export const COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 13;
 export const COMPLETE_SHELF_GAP = 0.022;
 export const COMPLETE_SHELF_TOP = -1.02;
+export const COMPLETE_SHELF_INSPECTION_LIFT = 0.13;
+export const COMPLETE_SHELF_BOOK_FORMAT = Object.freeze({
+  height: 1.52,
+  coverWidth: 1.07,
+  pageDepth: 0.27,
+  boardThickness: 0.032,
+  pageInset: 0.052,
+});
 
-const FALLBACK_BASE_COLORS = [
-  "#3f244d",
-  "#264653",
-  "#5b2c35",
-  "#293b32",
-] as const;
-const FALLBACK_ACCENTS = ["#d8b568", "#b87333"] as const;
 const PREMIUM_FALLBACK_PALETTES = [
   {
-    baseColor: "#1f4057",
-    accentColor: "#d8b56b",
+    baseColor: "#173f52",
+    accentColor: "#d49a3d",
     paperColor: "#eadfc9",
-    foilColor: "#f0cf86",
+    foilColor: "#f3cf79",
   },
   {
-    baseColor: "#652c35",
-    accentColor: "#d4aa63",
+    baseColor: "#641e2b",
+    accentColor: "#c9893f",
     paperColor: "#efe0cb",
-    foilColor: "#edca7d",
+    foilColor: "#efc66e",
   },
   {
-    baseColor: "#d2b98d",
-    accentColor: "#754726",
+    baseColor: "#806238",
+    accentColor: "#bd8437",
     paperColor: "#f5ead5",
-    foilColor: "#fff0c4",
+    foilColor: "#f3d38b",
   },
   {
-    baseColor: "#294d43",
-    accentColor: "#d9b66a",
+    baseColor: "#174b3d",
+    accentColor: "#c89338",
     paperColor: "#e9dec7",
-    foilColor: "#f1d28f",
+    foilColor: "#f0ca72",
   },
   {
-    baseColor: "#a86032",
-    accentColor: "#542f27",
+    baseColor: "#914420",
+    accentColor: "#ce8739",
     paperColor: "#f0dfc6",
-    foilColor: "#f4d492",
+    foilColor: "#f2ca75",
   },
   {
-    baseColor: "#333b61",
-    accentColor: "#d6ad68",
+    baseColor: "#27335e",
+    accentColor: "#c68d3c",
     paperColor: "#ece1cd",
-    foilColor: "#efd08b",
+    foilColor: "#efc974",
+  },
+  {
+    baseColor: "#15505a",
+    accentColor: "#c78a38",
+    paperColor: "#eee1ca",
+    foilColor: "#efc66f",
+  },
+  {
+    baseColor: "#741f27",
+    accentColor: "#cf8b41",
+    paperColor: "#efe2d0",
+    foilColor: "#f1ca76",
+  },
+  {
+    baseColor: "#805615",
+    accentColor: "#c88d35",
+    paperColor: "#f1e3cb",
+    foilColor: "#f2d17e",
+  },
+  {
+    baseColor: "#1e4b7a",
+    accentColor: "#ce9139",
+    paperColor: "#e9dfcf",
+    foilColor: "#f0c76e",
+  },
+  {
+    baseColor: "#7a291f",
+    accentColor: "#cd8b43",
+    paperColor: "#f0dfca",
+    foilColor: "#f1cb78",
+  },
+  {
+    baseColor: "#4c5b24",
+    accentColor: "#c9963d",
+    paperColor: "#eee4ce",
+    foilColor: "#efcb75",
   },
 ] as const;
-export const COMPLETE_SHELF_INSPECTION_GUTTER = 0.54;
+export const COMPLETE_SHELF_INSPECTION_GUTTER = 0.72;
 
 export type CompleteShelfFoilMotif =
   | "arch"
   | "diamond"
   | "orbital"
   | "rules";
+
+export type CompleteShelfBinding = "leather" | "cloth";
 
 export type CompleteShelfItemInput = Readonly<{
   key: string;
@@ -88,6 +127,7 @@ export type CompleteShelfBookSpec = Readonly<{
   foilColor: string;
   coverUrl: string | null;
   motif: CompleteShelfFoilMotif;
+  binding: CompleteShelfBinding;
   lean: number;
 }>;
 
@@ -120,6 +160,30 @@ const clamp = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
 const color = (value: string, fallback: string) =>
   /^#[0-9a-f]{6}$/iu.test(value.trim()) ? value.trim() : fallback;
+
+const mixHexColor = (
+  value: string,
+  target: "#000000" | "#ffffff",
+  ratio: number
+) => {
+  const source = color(value, "#53345f");
+  const targetChannel = target === "#ffffff" ? 255 : 0;
+  const amount = clamp(ratio, 0, 1);
+  const channels = [1, 3, 5].map((offset) => {
+    const channel = Number.parseInt(source.slice(offset, offset + 2), 16);
+    return Math.round(channel + (targetChannel - channel) * amount)
+      .toString(16)
+      .padStart(2, "0");
+  });
+  return `#${channels.join("")}`;
+};
+
+const deterministicPaletteTone = (value: string, seed: number) => {
+  const signedStep = ((seed >>> 24) % 9) - 4;
+  return signedStep >= 0
+    ? mixHexColor(value, "#ffffff", signedStep * 0.014)
+    : mixHexColor(value, "#000000", Math.abs(signedStep) * 0.01);
+};
 
 export function normalizeCompleteShelfText(value: string, maximum = 120) {
   return value
@@ -179,11 +243,6 @@ export function buildCompleteShelfBookSpec(
     "orbital",
     "rules",
   ];
-  const height = round(1.36 + (seed % 8) * 0.045);
-  // Real hardcovers cluster around a recognisable portrait ratio.  The old
-  // independent width randomizer occasionally produced unnaturally narrow
-  // boards and forced authorized artwork into a thick letterbox frame.
-  const coverAspectRatio = 0.56 + ((seed >>> 4) % 5) * 0.016;
   return Object.freeze({
     key,
     title: normalizeCompleteShelfText(input.title, 180) || "Untitled",
@@ -191,32 +250,25 @@ export function buildCompleteShelfBookSpec(
     year: rawYear >= 1000 && rawYear <= 2100 ? rawYear : null,
     sourceIndex,
     seed,
-    dimensions: Object.freeze({
-      height,
-      coverWidth: round(height * coverAspectRatio),
-      pageDepth: round(0.215 + ((seed >>> 8) % 7) * 0.018),
-      boardThickness: 0.032,
-      pageInset: round(0.048 + ((seed >>> 16) % 3) * 0.006),
-    }),
-    baseColor: coverUrl
-      ? color(
-          input.baseColor,
-          FALLBACK_BASE_COLORS[seed % FALLBACK_BASE_COLORS.length]
-        )
-      : fallbackPalette.baseColor,
-    accentColor: coverUrl
-      ? color(
-          input.accentColor,
-          FALLBACK_ACCENTS[(seed >>> 3) % FALLBACK_ACCENTS.length]
-        )
-      : fallbackPalette.accentColor,
-    paperColor: coverUrl
-      ? color(input.paperColor, "#e8dcc4")
-      : fallbackPalette.paperColor,
-    foilColor: fallbackPalette.foilColor,
+    dimensions: COMPLETE_SHELF_BOOK_FORMAT,
+    // The shelf is a premium archive binding, not a reproduction of a
+    // particular edition.  Every physical binding therefore comes from the
+    // deterministic archive palette even when an authorized cover exists for
+    // the adjacent detail panel.
+    baseColor: deterministicPaletteTone(fallbackPalette.baseColor, seed),
+    accentColor: deterministicPaletteTone(
+      fallbackPalette.accentColor,
+      seed ^ 0x9e3779b9
+    ),
+    paperColor: fallbackPalette.paperColor,
+    foilColor: deterministicPaletteTone(
+      fallbackPalette.foilColor,
+      seed ^ 0x85ebca6b
+    ),
     coverUrl,
     motif: motifs[(seed >>> 18) % motifs.length],
-    lean: round((((seed >>> 21) % 7) - 3) * 0.008),
+    binding: (seed >>> 20) % 3 === 0 ? "cloth" : "leather",
+    lean: 0,
   });
 }
 
@@ -266,6 +318,27 @@ export function selectCompleteShelfWorkingSet<T extends { key: string }>(
     entries: Object.freeze(entries),
     anchorSlot,
     anchorSourceIndex,
+  });
+}
+
+export function resolveCompleteShelfViewportFraming({
+  pixelWidth,
+  viewportWidth,
+  shelfWidth,
+}: {
+  pixelWidth: number;
+  viewportWidth: number;
+  shelfWidth: number;
+}) {
+  const safePixelWidth = Math.max(1, Number(pixelWidth) || 1);
+  if (safePixelWidth > 640) {
+    return Object.freeze({ scale: 1, positionY: 0 });
+  }
+  const safeViewportWidth = Math.max(0.1, Number(viewportWidth) || 0.1);
+  const safeShelfWidth = Math.max(0.1, Number(shelfWidth) || 0.1);
+  return Object.freeze({
+    scale: round(clamp((safeViewportWidth * 0.9) / safeShelfWidth, 0.3, 0.72)),
+    positionY: -0.18,
   });
 }
 
@@ -370,9 +443,9 @@ export function buildCompleteShelfBookPose({
     position: Object.freeze([
       inspecting ? 0 : round(layout.x + spread),
       round(
-        COMPLETE_SHELF_TOP +
+          COMPLETE_SHELF_TOP +
           (spec.dimensions.height * inspectionScale) / 2 +
-          (inspecting ? 0.018 : 0)
+          (inspecting ? COMPLETE_SHELF_INSPECTION_LIFT : 0)
       ),
       inspecting
         ? 1.05
@@ -406,4 +479,12 @@ export function completeShelfSettlementForPhase(
       SHELF_RESTORING: "shelf-restored",
   };
   return settlements[phase] || null;
+}
+
+export function completeShelfPhaseAllowsSelectionSwitch(
+  phase: BookShelfPhase
+) {
+  return ["INSPECTION_CLOSED", "COVER_CRACKED", "BOOK_OPEN"].includes(
+    phase
+  );
 }

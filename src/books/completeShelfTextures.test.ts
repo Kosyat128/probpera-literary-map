@@ -7,8 +7,12 @@ import {
   createCompleteShelfArtworkTextures,
   disposeCompleteShelfTextures,
   loadCompleteShelfCoverTexture,
+  resolveCompleteShelfSpineTextColor,
+  resolveCompleteShelfSpineOrnamentLayout,
   resolveCompleteShelfCoverTextureSize,
   wrapCompleteShelfArtworkText,
+  wrapCompleteShelfTitleText,
+  wrapCompleteShelfWriterText,
 } from "./completeShelfTextures";
 
 afterEach(() => vi.unstubAllGlobals());
@@ -31,14 +35,15 @@ describe("Complete Shelf procedural artwork data", () => {
     const plan = buildCompleteShelfArtworkPlan(spec);
 
     expect(plan.titleLines.join(" ")).toBe("Великая книга пера");
+    expect(plan.frontWriterLines.join(" ")).toBe("Автор Архива");
     expect(plan.spineTitleLines.join(" ")).toBe("Великая книга пера");
     expect(plan.spineWriterLines.join(" ")).toBe("Автор Архива");
     expect(plan.spineTitle).toBe("Великая книга пера");
     expect(plan.writer).toBe("Автор Архива");
     expect(plan.yearLabel).toBe("1912");
-    expect(plan.baseColor).toBe("#3f244d");
-    expect(plan.paperColor).toBe("#e8dcc4");
-    expect(plan.accentColor).toBe("#d8b568");
+    expect(plan.baseColor).toBe(spec.baseColor);
+    expect(plan.paperColor).toBe(spec.paperColor);
+    expect(plan.accentColor).toBe(spec.accentColor);
     expect(plan.foilColor).toMatch(/^#[0-9a-f]{6}$/iu);
     expect(plan.foilColor).not.toBe("#b87333");
     expect(plan.hasCoverArtwork).toBe(true);
@@ -54,6 +59,127 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(lines.length).toBeLessThanOrEqual(3);
     expect(lines.every((line) => line.length <= 12)).toBe(true);
     expect(lines[lines.length - 1]).toMatch(/…$/u);
+  });
+
+  it("keeps a full writer FIO on the spine without an ellipsis", () => {
+    const writer =
+      "Александр Сергеевич Пушкин-Бутурлин Длинное Редакционное Имя";
+    const lines = wrapCompleteShelfWriterText(writer, 13, 6);
+
+    expect(lines.length).toBeLessThanOrEqual(6);
+    expect(lines.join(" ")).not.toContain("…");
+    expect(lines.join("").replace(/\s/gu, "")).toBe(
+      writer.replace(/\s/gu, "")
+    );
+  });
+
+  it("keeps a full long title on spine and front artwork", () => {
+    const title =
+      "Повесть о великом литературном путешествии через пространство и время";
+    const front = wrapCompleteShelfTitleText(title, 18, 5);
+    const spine = wrapCompleteShelfTitleText(title, 11, 8);
+
+    expect(front).toHaveLength(5);
+    expect(spine.length).toBeLessThanOrEqual(8);
+    expect(front.join(" ")).not.toContain("…");
+    expect(spine.join(" ")).not.toContain("…");
+    expect(front.join("").replace(/\s/gu, "")).toBe(
+      title.replace(/\s/gu, "")
+    );
+    expect(spine.join("").replace(/\s/gu, "")).toBe(
+      title.replace(/\s/gu, "")
+    );
+  });
+
+  it("keeps darker antique-gold spine lettering legible across all palettes", () => {
+    const luminance = (value: string) => {
+      const channels = [1, 3, 5].map((offset) => {
+        const channel =
+          Number.parseInt(value.slice(offset, offset + 2), 16) / 255;
+        return channel <= 0.04045
+          ? channel / 12.92
+          : ((channel + 0.055) / 1.055) ** 2.4;
+      });
+      return (
+        channels[0] * 0.2126 +
+        channels[1] * 0.7152 +
+        channels[2] * 0.0722
+      );
+    };
+    const contrast = (first: string, second: string) => {
+      const values = [luminance(first), luminance(second)].sort(
+        (left, right) => right - left
+      );
+      return (values[0] + 0.05) / (values[1] + 0.05);
+    };
+    const specs = Array.from({ length: 512 }, (_, index) =>
+      buildCompleteShelfBookSpec(
+        {
+          key: `palette-${index}`,
+          title: `Книга ${index}`,
+          writer: `Автор ${index}`,
+          year: 1900 + (index % 100),
+          baseColor: "#000000",
+          accentColor: "#000000",
+          paperColor: "#ffffff",
+        },
+        index
+      )
+    );
+
+    expect(new Set(specs.map((spec) => spec.baseColor)).size).toBeGreaterThan(
+      12
+    );
+    for (const spec of specs) {
+      const textColor = resolveCompleteShelfSpineTextColor(
+        spec.baseColor,
+        spec.foilColor
+      );
+      expect(luminance(textColor)).toBeLessThan(luminance(spec.foilColor));
+      expect(contrast(spec.baseColor, textColor)).toBeGreaterThanOrEqual(3.1);
+    }
+  });
+
+  it("keeps identical line-dot-line spine ornaments pixel-aligned", () => {
+    for (const [width, height] of [
+      [112, 512],
+      [337, 1536],
+    ] as const) {
+      for (const centerRatio of [0.09, 0.91]) {
+        const layout = resolveCompleteShelfSpineOrnamentLayout(
+          width,
+          height,
+          centerRatio
+        );
+        expect(layout.centerX).toBe(width / 2);
+        expect(layout.leftEnd - layout.left).toBe(
+          layout.right - layout.rightStart
+        );
+        expect(layout.centerX - layout.leftEnd).toBe(
+          layout.rightStart - layout.centerX
+        );
+        expect(layout.left).toBeGreaterThan(width * 0.16);
+        expect(layout.right).toBeLessThan(width * 0.84);
+        expect(layout.centerY - layout.lineWidth / 2).toBeGreaterThan(0);
+        expect(layout.centerY + layout.lineWidth / 2).toBeLessThan(height);
+        expect(layout.dotRadius).toBeGreaterThanOrEqual(2);
+        expect(layout.leftEnd).toBeLessThan(
+          layout.centerX - layout.dotRadius
+        );
+        expect(layout.rightStart).toBeGreaterThan(
+          layout.centerX + layout.dotRadius
+        );
+      }
+      const top = resolveCompleteShelfSpineOrnamentLayout(width, height, 0.09);
+      const bottom = resolveCompleteShelfSpineOrnamentLayout(
+        width,
+        height,
+        0.91
+      );
+      expect(top.centerY).toBe(height - bottom.centerY);
+      expect(top.lineWidth).toBe(bottom.lineWidth);
+      expect(top.dotRadius).toBe(bottom.dotRadius);
+    }
   });
 
   it("uses native cover pixels without blurry upscaling", () => {

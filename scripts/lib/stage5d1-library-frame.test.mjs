@@ -412,7 +412,7 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
       "COMPLETE_SHELF_MAX_WORKING_SET = 13"
     );
     expect(completeShelfModel.text).toContain(
-      "COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 11"
+      "COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 13"
     );
     expect(completeShelfModel.text).toContain(
       "Array.from({ length: count }, (_, slotIndex) =>"

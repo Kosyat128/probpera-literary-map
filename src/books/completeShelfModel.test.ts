@@ -2,15 +2,20 @@ import { describe, expect, it } from "vitest";
 
 import {
   COMPLETE_SHELF_GAP,
+  COMPLETE_SHELF_BOOK_FORMAT,
   COMPLETE_SHELF_ECONOMICAL_WORKING_SET,
   COMPLETE_SHELF_INSPECTION_GUTTER,
+  COMPLETE_SHELF_INSPECTION_LIFT,
   COMPLETE_SHELF_MAX_WORKING_SET,
+  COMPLETE_SHELF_TOP,
   buildCompleteShelfBookPose,
   buildCompleteShelfBookSpec,
+  completeShelfPhaseAllowsSelectionSwitch,
   completeShelfSettlementForPhase,
   completeShelfWorkingSetLimit,
   layoutCompleteShelfBooks,
   normalizeCompleteShelfCoverUrl,
+  resolveCompleteShelfViewportFraming,
   selectCompleteShelfWorkingSet,
   type CompleteShelfItemInput,
 } from "./completeShelfModel";
@@ -41,7 +46,7 @@ describe("Complete Shelf procedural model", () => {
     expect(emptyAfterSort.seed).toBe(emptyAtStart.seed);
   });
 
-  it("creates bounded, varied hardcover dimensions", () => {
+  it("keeps every 3D binding in one premium A5-like physical format", () => {
     const specs = Array.from({ length: 32 }, (_, index) =>
       buildCompleteShelfBookSpec(input(`book-${index}`, index), index)
     );
@@ -49,15 +54,18 @@ describe("Complete Shelf procedural model", () => {
       specs.map((spec) => JSON.stringify(spec.dimensions))
     );
 
-    expect(dimensionSignatures.size).toBeGreaterThan(8);
+    expect(dimensionSignatures.size).toBe(1);
     for (const spec of specs) {
-      expect(spec.dimensions.height).toBeGreaterThanOrEqual(1.36);
-      expect(spec.dimensions.height).toBeLessThanOrEqual(1.675);
-      expect(spec.dimensions.coverWidth).toBeGreaterThanOrEqual(0.7);
-      expect(spec.dimensions.pageDepth).toBeGreaterThanOrEqual(0.215);
-      expect(spec.dimensions.boardThickness).toBeGreaterThan(0);
-      expect(spec.dimensions.pageInset).toBeGreaterThan(0);
+      expect(spec.dimensions).toEqual(COMPLETE_SHELF_BOOK_FORMAT);
+      expect(spec.dimensions.coverWidth / spec.dimensions.height).toBeCloseTo(
+        148 / 210,
+        2
+      );
+      expect(spec.lean).toBe(0);
     }
+    expect(new Set(specs.map((spec) => spec.binding))).toEqual(
+      new Set(["leather", "cloth"])
+    );
   });
 
   it("bounds the working set and retains the requested anchor", () => {
@@ -76,21 +84,20 @@ describe("Complete Shelf procedural model", () => {
     );
 
     expect(COMPLETE_SHELF_MAX_WORKING_SET).toBe(13);
-    expect(COMPLETE_SHELF_ECONOMICAL_WORKING_SET).toBe(11);
+    expect(COMPLETE_SHELF_ECONOMICAL_WORKING_SET).toBe(13);
     expect(quality.entries).toHaveLength(13);
-    expect(economical.entries).toHaveLength(11);
+    expect(economical.entries).toHaveLength(13);
     expect(quality.entries[quality.anchorSlot].item.key).toBe("book-27");
-    expect(economical.entries[economical.anchorSlot].item.key).toBe(
-      "book-27"
-    );
+    expect(economical.entries[economical.anchorSlot].item.key).toBe("book-27");
   });
 
-  it("uses authorized cover truth and a varied premium fallback palette", () => {
+  it("keeps cover truth out of the deterministic vivid archive bindings", () => {
     const coverUrl = "/probpera-literary-map/brand/book-covers/1984.webp";
     const covered = buildCompleteShelfBookSpec(
       { ...input("covered", 1), coverUrl },
       0
     );
+    const uncovered = buildCompleteShelfBookSpec(input("covered", 1), 0);
     const fallbacks = Array.from({ length: 48 }, (_, index) =>
       buildCompleteShelfBookSpec(input(`fallback-${index}`, index), index)
     );
@@ -99,14 +106,27 @@ describe("Complete Shelf procedural model", () => {
     );
 
     expect(covered.coverUrl).toBe(coverUrl);
-    expect(covered.baseColor).toBe(input("covered", 1).baseColor);
+    expect(covered.baseColor).toBe(uncovered.baseColor);
+    expect(covered.accentColor).toBe(uncovered.accentColor);
+    expect(covered.foilColor).toBe(uncovered.foilColor);
     expect(
       new Set(fallbacks.map((spec) => spec.baseColor)).size
-    ).toBeGreaterThanOrEqual(5);
+    ).toBeGreaterThanOrEqual(10);
     expect(fallbacks.map((spec) => spec.baseColor)).toEqual(
       repeatedFallbacks.map((spec) => spec.baseColor)
     );
     expect(fallbacks.every((spec) => spec.foilColor !== "#f67518")).toBe(true);
+    expect(
+      fallbacks.every((spec) => {
+        const [red, green, blue] = [1, 3, 5].map((offset) =>
+          Number.parseInt(spec.baseColor.slice(offset, offset + 2), 16)
+        );
+        return (
+          Math.max(red, green, blue) < 168 &&
+          (red <= blue || red >= blue * 1.35)
+        );
+      })
+    ).toBe(true);
     expect(normalizeCompleteShelfCoverUrl("javascript:alert(1)")).toBeNull();
     expect(normalizeCompleteShelfCoverUrl("brand/../secret.webp")).toBeNull();
   });
@@ -150,7 +170,7 @@ describe("Complete Shelf procedural model", () => {
         (current.spec.dimensions.pageDepth +
           current.spec.dimensions.boardThickness * 2) /
           2;
-      expect(clearance).toBeGreaterThanOrEqual(COMPLETE_SHELF_GAP - 0.0001);
+      expect(clearance).toBeCloseTo(COMPLETE_SHELF_GAP, 3);
     }
   });
 
@@ -196,6 +216,11 @@ describe("Complete Shelf procedural model", () => {
     expect(inspection.position[0]).toBe(0);
     expect(inspection.position[2]).toBeGreaterThan(1);
     expect(inspection.scale).toBeGreaterThan(1.4);
+    expect(COMPLETE_SHELF_INSPECTION_LIFT).toBeCloseTo(0.13, 3);
+    expect(
+      inspection.position[1] -
+        (COMPLETE_SHELF_TOP + (spec.dimensions.height * inspection.scale) / 2)
+    ).toBeCloseTo(COMPLETE_SHELF_INSPECTION_LIFT, 3);
     expect(open.coverAngle).toBeLessThan(-2);
     expect(open.scale).toBe(1.5);
     expect(page.firstLeafAngle).toBeLessThan(-0.6);
@@ -225,7 +250,7 @@ describe("Complete Shelf procedural model", () => {
     const layout = layoutCompleteShelfBooks(specs, anchorSlot);
     const common = {
       anchorSlot,
-      phase: "INSPECTION_CLOSED" as const,
+      phase: "COVER_OPENING" as const,
       selectedBookKey: "book-2",
       focusedBookKey: "book-2",
     };
@@ -247,5 +272,64 @@ describe("Complete Shelf procedural model", () => {
     expect(center.position[0]).toBe(0);
     expect(right.position[0]).toBeGreaterThan(0.7);
     expect(center.position[1]).toBeGreaterThan(left.position[1]);
+    const selectedHalfWidth =
+      (specs[anchorSlot].dimensions.coverWidth * center.scale) / 2;
+    const neighborHalfWidth =
+      (specs[anchorSlot - 1].dimensions.pageDepth +
+        specs[anchorSlot - 1].dimensions.boardThickness * 2) /
+      2;
+    expect(
+      Math.abs(left.position[0]) - selectedHalfWidth - neighborHalfWidth
+    ).toBeGreaterThan(COMPLETE_SHELF_GAP);
+    expect(
+      right.position[0] - selectedHalfWidth - neighborHalfWidth
+    ).toBeGreaterThan(COMPLETE_SHELF_GAP);
   });
+
+  it("fits all 13 books and the shelf into a narrow mobile viewport uniformly", () => {
+    const mobile = resolveCompleteShelfViewportFraming({
+      pixelWidth: 390,
+      viewportWidth: 2.88,
+      shelfWidth: 6.5,
+    });
+    const narrow = resolveCompleteShelfViewportFraming({
+      pixelWidth: 320,
+      viewportWidth: 2.36,
+      shelfWidth: 6.5,
+    });
+    const desktop = resolveCompleteShelfViewportFraming({
+      pixelWidth: 1440,
+      viewportWidth: 7.2,
+      shelfWidth: 6.5,
+    });
+
+    expect(mobile.scale).toBeGreaterThanOrEqual(0.3);
+    expect(mobile.scale).toBeLessThan(0.5);
+    expect(6.5 * mobile.scale).toBeLessThanOrEqual(2.88 * 0.91);
+    expect(6.5 * narrow.scale).toBeLessThanOrEqual(2.36 * 0.91);
+    expect(mobile.positionY).toBeLessThan(0);
+    expect(desktop).toEqual({ scale: 1, positionY: 0 });
+  });
+
+  it("switches a selected book only from stable inspection phases", () => {
+    for (const phase of [
+      "INSPECTION_CLOSED",
+      "COVER_CRACKED",
+      "BOOK_OPEN",
+    ] as const) {
+      expect(completeShelfPhaseAllowsSelectionSwitch(phase)).toBe(true);
+    }
+    for (const phase of [
+      "INSPECTION_ENTERING",
+      "COVER_OPENING",
+      "PAGE_DRAGGING",
+      "PAGE_SETTLING",
+      "INSPECTION_CLOSING",
+      "SHELF_RESTORING",
+      "SHELF_MOVING",
+    ] as const) {
+      expect(completeShelfPhaseAllowsSelectionSwitch(phase)).toBe(false);
+    }
+  });
+
 });

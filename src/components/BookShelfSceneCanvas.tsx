@@ -187,6 +187,7 @@ export default function BookShelfSceneCanvas({
       gl={{
         alpha: true,
         antialias: !economical,
+        preserveDrawingBuffer: true,
         powerPreference: economical ? "low-power" : "high-performance",
       }}
       performance={{ min: economical ? 0.65 : 0.8 }}

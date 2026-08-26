@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 async function openBookCatalog(page) {
   await page.goto("/#books");
   const catalogButton = page.getByRole("button", {
-    name: "КАТАЛОГ",
+    name: "Каталог",
     exact: true,
   });
   await expect(catalogButton).toBeVisible({ timeout: 20_000 });
@@ -18,9 +18,7 @@ test("switching book details keeps one history entry and close returns to the ar
   test.skip(Boolean(isMobile), "Desktop history contract");
   await openBookCatalog(page);
   await expect(
-    page
-      .locator(".book-archive-filters")
-      .getByRole("button", { name: /Весь архив/u })
+    page.locator(".book-shelf-frame__collection > span")
   ).toContainText(/9\s*729/u, { timeout: 60_000 });
   const detailButtons = page.locator(".archive-book-detail");
   await expect(detailButtons.first()).toBeVisible({ timeout: 20_000 });

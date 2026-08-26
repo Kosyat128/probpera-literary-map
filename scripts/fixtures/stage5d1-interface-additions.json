@@ -52,6 +52,14 @@
       "english": "All writers"
     },
     {
+      "source": "Выберите книгу",
+      "english": "Choose a book"
+    },
+    {
+      "source": "Выбрать случайное произведение из всего архива",
+      "english": "Choose a random work from the entire archive"
+    },
+    {
       "source": "Главный материал",
       "english": "Featured article"
     },
@@ -144,6 +152,10 @@
       "english": "There are no books on this shelf yet"
     },
     {
+      "source": "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.",
+      "english": "Select a spine to bring the book forward and open its description and details."
+    },
+    {
       "source": "Назад",
       "english": "Back"
     },
@@ -208,12 +220,20 @@
       "english": "Unified catalogue suggestions"
     },
     {
+      "source": "Показать ещё 13",
+      "english": "Show 13 more"
+    },
+    {
       "source": "Полка пуста",
       "english": "The shelf is empty"
     },
     {
       "source": "Предыдущая книга",
       "english": "Previous book"
+    },
+    {
+      "source": "Предыдущие 13 произведений",
+      "english": "Previous 13 works"
     },
     {
       "source": "РЕДАКЦИОННЫЕ ПОЛКИ",
@@ -278,6 +298,18 @@
     {
       "source": "Следующая книга",
       "english": "Next book"
+    },
+    {
+      "source": "Следующие 13 произведений",
+      "english": "Next 13 works"
+    },
+    {
+      "source": "Случайное произведение",
+      "english": "Random work"
+    },
+    {
+      "source": "Случайный выбор",
+      "english": "Random pick"
     },
     {
       "source": "Сначала ранние",

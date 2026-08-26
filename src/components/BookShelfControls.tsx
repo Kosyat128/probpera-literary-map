@@ -17,8 +17,6 @@ export type BookShelfQuickFilterOption = {
 };
 
 type Props = {
-  brandName: string;
-  brandTagline: string;
   query: string;
   onQueryChange: (value: string) => void;
   searchLabel: string;
@@ -31,6 +29,10 @@ type Props = {
   onViewModeChange: (mode: BookShelfViewMode) => void;
   shelfLabel: string;
   catalogLabel: string;
+  randomLabel: string;
+  randomDescription: string;
+  randomDisabled: boolean;
+  onRandomWork: (trigger: HTMLButtonElement) => void;
   filters: readonly BookShelfQuickFilterOption[];
   activeFilterId: string;
   onFilterChange: (id: string) => void;
@@ -42,8 +44,6 @@ type Props = {
 };
 
 export default function BookShelfControls({
-  brandName,
-  brandTagline,
   query,
   onQueryChange,
   searchLabel,
@@ -56,6 +56,10 @@ export default function BookShelfControls({
   onViewModeChange,
   shelfLabel,
   catalogLabel,
+  randomLabel,
+  randomDescription,
+  randomDisabled,
+  onRandomWork,
   filters,
   activeFilterId,
   onFilterChange,
@@ -72,17 +76,10 @@ export default function BookShelfControls({
   return (
     <div className="book-archive-toolbar book-shelf-controls">
       <div className="book-shelf-controls__topline">
-        <a
-          className="book-shelf-controls__brand"
-          href={import.meta.env.BASE_URL}
-          aria-label={brandName}
-        >
+        <span className="book-shelf-controls__mark" aria-hidden="true">
           <BrandQuillIcon />
-          <span>
-            <strong>{brandName}</strong>
-            <small>{brandTagline}</small>
-          </span>
-        </a>
+        </span>
+
         <label className="book-shelf-controls__search">
           <span>{searchLabel}</span>
           <span className="book-shelf-controls__input">
@@ -114,6 +111,17 @@ export default function BookShelfControls({
             onClick={() => onViewModeChange("catalog")}
           >
             {catalogLabel}
+          </button>
+          <button
+            type="button"
+            className="book-shelf-controls__random"
+            onClick={(event) => onRandomWork(event.currentTarget)}
+            disabled={randomDisabled}
+            aria-label={randomDescription}
+            title={randomDescription}
+          >
+            <span aria-hidden="true">✦</span>
+            {randomLabel}
           </button>
         </div>
 

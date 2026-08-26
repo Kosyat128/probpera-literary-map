@@ -7,6 +7,10 @@ const controller = readFileSync(
   new URL("./BookArchiveSection.tsx", import.meta.url),
   "utf8"
 );
+const controls = readFileSync(
+  new URL("./BookShelfControls.tsx", import.meta.url),
+  "utf8"
+);
 const scene = readFileSync(new URL("./BookShelfScene.tsx", import.meta.url), "utf8");
 const loader = readFileSync(
   new URL("./BookShelfBrandLoader.tsx", import.meta.url),
@@ -30,7 +34,6 @@ describe("approved Complete Shelf outer presentation", () => {
   it("keeps the warm library below every interactive layer", () => {
     expect(cssRule(".book-shelf-frame")).toContain("width: 100%");
     expect(cssRule(".book-shelf-frame")).toContain("max-width: none");
-    expect(cssRule(".book-shelf-controls__brand")).toContain("order: 1");
     expect(cssRule(".book-shelf-controls__search")).toContain("order: 2");
     expect(cssRule(".book-shelf-controls__views")).toContain("order: 3");
     expect(cssRule(".book-shelf-controls__scope")).toContain("order: 4");
@@ -72,7 +75,10 @@ describe("approved Complete Shelf outer presentation", () => {
       "rgba(255, 247, 236"
     );
     expect(css).toMatch(
-      /\.book-shelf-frame\.is-shelf[\s\S]*?\.book-detail-cover\s*\{[\s\S]*?display:\s*none/iu
+      /\.book-shelf-frame\.is-shelf\s+\.book-shelf-frame__detail\s+\.book-detail-cover\s*\{[^}]*display:\s*grid/iu
+    );
+    expect(css).not.toMatch(
+      /\.book-shelf-frame\.is-shelf\s+\.book-shelf-frame__detail\s+\.book-detail-cover\s*\{[^}]*display:\s*none/iu
     );
   });
 
@@ -114,6 +120,62 @@ describe("approved Complete Shelf outer presentation", () => {
       "sceneNearViewport || Boolean(selectedBook || requestedBook)"
     );
     expect(scene).toContain('props.active && support === "ready"');
+  });
+
+  it("keeps only the compact quill mark in the archive header and gives spine selection a quiet interactive hint", () => {
+    expect(controls).toContain("BrandQuillIcon");
+    expect(controls).toContain('className="book-shelf-controls__mark"');
+    expect(controls).not.toContain("book-shelf-controls__brand");
+    expect(controls).not.toContain("brandName");
+    expect(css).not.toContain(".book-shelf-controls__brand");
+    expect(cssRule(".book-shelf-controls__mark")).toContain("width: 40px");
+    expect(cssRule(".book-shelf-controls__topline")).toContain(
+      "minmax(260px, 360px)"
+    );
+    expect(cssRule(".book-shelf-controls__topline")).toContain(
+      "max-content"
+    );
+    expect(
+      cssRule(
+        ".book-shelf-controls.book-archive-toolbar .book-shelf-controls__input input"
+      )
+    ).toContain("min-width: 0");
+    expect(cssRule(".book-shelf-controls .book-filter-copy")).toContain(
+      "text-align: center"
+    );
+    expect(css).toMatch(
+      /@media \(max-width: 767px\)[\s\S]*?\.book-shelf-controls__search\s*\{[\s\S]*?grid-column:\s*2/iu
+    );
+    expect(controller).toContain('className="book-shelf-scene-hint"');
+    expect(controller).toContain('t("Выберите книгу")');
+    expect(controller).toContain("Нажмите на корешок — книга выйдет вперёд");
+    expect(cssRule(".book-shelf-scene-hint")).toContain("z-index: 4");
+  });
+
+  it("keeps edition artwork compact beside the book description", () => {
+    const coverRule = cssRule(
+      ".book-shelf-frame__detail .book-detail-cover"
+    );
+    expect(coverRule).toContain("float: left");
+    expect(coverRule).toContain("width: 96px");
+    expect(coverRule).toContain("min-height: 136px");
+    expect(controller).toContain(
+      'sizes="(max-width: 680px) 82px, 96px"'
+    );
+  });
+
+  it("discovers across the full archive and moves the shelf in 13-book batches", () => {
+    expect(controller).toContain("candidates: queue.all");
+    expect(controller).toContain("rememberRandomBookArchiveItem");
+    expect(controller).toContain('t("Случайное произведение")');
+    expect(controls).toContain('className="book-shelf-controls__random"');
+    expect(controls).not.toMatch(
+      /book-shelf-controls__random[\s\S]{0,300}aria-pressed/iu
+    );
+    expect(controller).toContain("focusedIndex - COMPLETE_SHELF_MAX_WORKING_SET");
+    expect(controller).toContain("focusedIndex + COMPLETE_SHELF_MAX_WORKING_SET");
+    expect(controller).toContain('t("Предыдущие 13 произведений")');
+    expect(controller).toContain('t("Следующие 13 произведений")');
   });
 
   it("passes the controller-owned transition state through without local phase state", () => {
@@ -177,6 +239,32 @@ describe("approved Complete Shelf outer presentation", () => {
     );
     expect(css).toMatch(
       /@media \(forced-colors: active\)[\s\S]*?\.book-shelf-frame__library-backdrop[\s\S]*?display:\s*none/iu
+    );
+  });
+
+  it("centres mobile control copy without clipping or horizontal overflow", () => {
+    const mobileCss = css.slice(css.lastIndexOf("@media (max-width: 767px)"));
+
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input\s*\{[^}]*height:\s*44px[^}]*border-color:\s*rgba\(246,\s*117,\s*24,\s*0\.82\)/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input input\s*\{[^}]*height:\s*42px[^}]*line-height:\s*42px/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*hidden/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls \.book-archive-filters > button\s*\{[^}]*align-items:\s*center[^}]*justify-content:\s*center[^}]*min-width:\s*0/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-navigation__position\s*\{[^}]*grid-template-columns:\s*56px minmax\(82px,\s*1fr\) 56px[^}]*align-items:\s*center/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-navigation__actions\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-navigation__actions > button\s*\{[^}]*height:\s*50px[^}]*min-height:\s*50px/iu
     );
   });
 

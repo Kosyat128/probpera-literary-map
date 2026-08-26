@@ -1,327 +1,71 @@
 {
-  "generatedAt": "2026-08-26T06:29:08.310Z",
-  "scope": "Stage 5D-1 final live visual evidence refresh",
+  "generatedAt": "2026-08-26T12:44:14.396Z",
+  "scope": "Stage 5D-1 final production-build visual evidence",
   "source": {
-    "url": "http://127.0.0.1:4175/probpera-literary-map/#books",
-    "server": "current live Vite dev server on 127.0.0.1:4175",
-    "buildOrTestsRunByReviewer": false,
-    "productCodeChangedByReviewer": false,
-    "viewports": [
-      "1440x900",
-      "390x844"
-    ]
+    "url": "http://127.0.0.1:4173/#books",
+    "server": "local Vite preview"
   },
   "checks": [
     {
       "case": "ru-desktop-1440x900",
-      "name": "idle shelf has one demand Canvas and no preselected detail",
-      "passed": true,
-      "severity": "P1",
+      "state": "idle",
       "evidence": {
         "frame": {
           "width": 1325,
-          "height": 795
+          "height": 855
         },
         "documentOverflow": 0,
         "frameOverflow": 0,
         "canvasCount": 1,
         "detailCount": 0,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "SHELF_IDLE"
+        "phase": "SHELF_IDLE",
+        "brandCount": 0,
+        "audioElements": 0
       }
     },
     {
       "case": "ru-desktop-1440x900",
-      "name": "idle shelf has no horizontal overflow",
-      "passed": true,
-      "severity": "P1",
+      "state": "selected",
       "evidence": {
         "frame": {
           "width": 1325,
-          "height": 795
-        },
-        "documentOverflow": 0,
-        "frameOverflow": 0,
-        "canvasCount": 1,
-        "detailCount": 0,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "SHELF_IDLE"
-      }
-    },
-    {
-      "case": "ru-desktop-1440x900",
-      "name": "clicking a spine reaches inspection detail",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "selectedLayout": {
-          "frame": {
-            "width": 1325,
-            "height": 795
-          },
-          "documentOverflow": 0,
-          "frameOverflow": 0,
-          "canvasCount": 1,
-          "detailCount": 1,
-          "audioElements": 0,
-          "autoplayMedia": 0,
-          "phase": "INSPECTION_CLOSED"
-        },
-        "selected": {
-          "title": "Будденброки",
-          "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
-          "coverWidth": 288,
-          "coverHeight": 432
-        }
-      }
-    },
-    {
-      "case": "ru-desktop-1440x900",
-      "name": "real cover request is selected-only",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "selected": {
-          "title": "Будденброки",
-          "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
-          "coverWidth": 288,
-          "coverHeight": 432
-        },
-        "matchingCoverRequests": [
-          {
-            "phase": "selected-request",
-            "url": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
-            "resourceType": "image"
-          }
-        ]
-      }
-    },
-    {
-      "case": "ru-desktop-1440x900",
-      "name": "selected state has no horizontal overflow",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "frame": {
-          "width": 1325,
-          "height": 795
+          "height": 855
         },
         "documentOverflow": 0,
         "frameOverflow": 0,
         "canvasCount": 1,
         "detailCount": 1,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "INSPECTION_CLOSED"
-      }
-    },
-    {
-      "case": "ru-desktop-1440x900",
-      "name": "desktop has no page errors or audio",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "pageErrors": [],
-        "audioRequests": [],
-        "audioElements": 0,
-        "autoplayMedia": 0
+        "phase": "INSPECTION_CLOSED",
+        "brandCount": 0,
+        "audioElements": 0
       }
     },
     {
       "case": "ru-mobile-390x844",
-      "name": "mobile idle shelf has one Canvas and no page-level horizontal overflow",
-      "passed": true,
-      "severity": "P1",
+      "state": "idle",
       "evidence": {
         "frame": {
           "width": 370,
-          "height": 858
+          "height": 868
         },
         "documentOverflow": 0,
-        "frameOverflow": 25,
+        "frameOverflow": 0,
         "canvasCount": 1,
         "detailCount": 0,
-        "audioElements": 0,
-        "autoplayMedia": 0,
         "phase": "SHELF_IDLE",
-        "overflowInterpretation": {
-          "pageLevelOverflow": 0,
-          "frameOverflowIsContained": true,
-          "frameCssOverflow": "clip",
-          "intentionalFilterRailOverflowX": "auto"
-        }
-      }
-    },
-    {
-      "case": "ru-mobile-390x844",
-      "name": "mobile has no page errors or audio",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "pageErrors": [],
-        "audioRequests": [],
-        "audioElements": 0,
-        "autoplayMedia": 0
-      }
-    },
-    {
-      "case": "approved-concept-visual",
-      "name": "desktop idle shows one balanced row of 13 premium spines on one wooden shelf",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "screenshot": "ru-desktop-1440x900-shelf.png",
-        "observedSpines": 13,
-        "woodenShelfTiers": 1,
-        "lowerTierPresent": false,
-        "composition": "centered and symmetric with readable gold tooling"
-      }
-    },
-    {
-      "case": "approved-concept-visual",
-      "name": "desktop selected state shows central full artwork, flank spines and right detail",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "screenshot": "ru-desktop-1440x900-selected.png",
-        "selectedTitle": "Будденброки",
-        "centralFullArtwork": true,
-        "flankSpines": true,
-        "rightDetailPanel": true,
-        "topRail": true,
-        "bottomRail": true
-      }
-    },
-    {
-      "case": "approved-concept-visual",
-      "name": "mobile idle keeps the shelf readable and contained at 390x844",
-      "passed": true,
-      "severity": "P1",
-      "evidence": {
-        "screenshot": "ru-mobile-390x844-shelf.png",
-        "pageLevelHorizontalOverflow": 0,
-        "oneWoodenShelf": true,
-        "lowerTierPresent": false,
-        "controlsContained": true
+        "brandCount": 0,
+        "audioElements": 0
       }
     }
   ],
-  "diagnostics": {
-    "ru-desktop-1440x900": {
-      "phase": "selected-request",
-      "consoleErrors": [
-        "Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \n    at img\n    at picture\n    at div\n    at section\n    at main\n    at div\n    at App (http://127.0.0.1:4175/probpera-literary-map/src/App.tsx?t=1787725300138:415:20)\n    at AppErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/AppErrorBoundary.tsx:46:16)\n    at AuthProvider (http://127.0.0.1:4175/probpera-literary-map/src/community/AuthContext.tsx:19:32)\n    at InterfaceLanguageProvider (http://127.0.0.1:4175/probpera-literary-map/src/i18n/InterfaceLanguage.tsx:1135:45)\n    at BootstrapErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/BootstrapErrorBoundary.tsx:24:16)"
-      ],
-      "pageErrors": [],
-      "requestFailures": [],
-      "httpErrors": [],
-      "audioRequests": [],
-      "requests": [
-        {
-          "phase": "selected-request",
-          "url": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
-          "resourceType": "image"
-        }
-      ]
-    },
-    "ru-mobile-390x844": {
-      "phase": "idle",
-      "consoleErrors": [
-        "Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \n    at img\n    at picture\n    at div\n    at section\n    at main\n    at div\n    at App (http://127.0.0.1:4175/probpera-literary-map/src/App.tsx?t=1787725300138:415:20)\n    at AppErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/AppErrorBoundary.tsx:46:16)\n    at AuthProvider (http://127.0.0.1:4175/probpera-literary-map/src/community/AuthContext.tsx:19:32)\n    at InterfaceLanguageProvider (http://127.0.0.1:4175/probpera-literary-map/src/i18n/InterfaceLanguage.tsx:1135:45)\n    at BootstrapErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/BootstrapErrorBoundary.tsx:24:16)"
-      ],
-      "pageErrors": [],
-      "requestFailures": [],
-      "httpErrors": [],
-      "audioRequests": [],
-      "requests": []
-    }
-  },
   "screenshots": [
     "ru-desktop-1440x900-shelf.png",
     "ru-desktop-1440x900-selected.png",
     "ru-mobile-390x844-shelf.png"
   ],
   "screenshotSha256": {
-    "ru-desktop-1440x900-shelf.png": "8854DE2E872FBDD24E5411D5B921D9ED5AA764FB09F802B3019A3318A1527B32",
-    "ru-desktop-1440x900-selected.png": "3F081EDE5EE8CEAA83203CA86D0BFB5D5F1714468EC0A2EC277C876866E211DB",
-    "ru-mobile-390x844-shelf.png": "4BAB0B9C26E56DD935BAACDD7E97C182D15E67651EF081341CEE01E0BCF7A229"
-  },
-  "cases": {
-    "desktop": {
-      "idleLayout": {
-        "frame": {
-          "width": 1325,
-          "height": 795
-        },
-        "documentOverflow": 0,
-        "frameOverflow": 0,
-        "canvasCount": 1,
-        "detailCount": 0,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "SHELF_IDLE"
-      },
-      "selectedLayout": {
-        "frame": {
-          "width": 1325,
-          "height": 795
-        },
-        "documentOverflow": 0,
-        "frameOverflow": 0,
-        "canvasCount": 1,
-        "detailCount": 1,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "INSPECTION_CLOSED"
-      },
-      "selected": {
-        "title": "Будденброки",
-        "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
-        "coverWidth": 288,
-        "coverHeight": 432
-      }
-    },
-    "mobile": {
-      "idleLayout": {
-        "frame": {
-          "width": 370,
-          "height": 858
-        },
-        "documentOverflow": 0,
-        "frameOverflow": 25,
-        "canvasCount": 1,
-        "detailCount": 0,
-        "audioElements": 0,
-        "autoplayMedia": 0,
-        "phase": "SHELF_IDLE"
-      }
-    }
-  },
-  "visualReview": {
-    "status": "PASS",
-    "target": "C:/Users/User/Desktop/STAGE_5_BOOKSHELF_CONCEPT_APPROVED.png",
-    "targetSha256": "46727D471384D42919F872D53A15C6047E6023EE02414C1300252E02A5DAD0DF",
-    "reviewedAt": "2026-08-26T06:31:30.000Z",
-    "confirmed": [
-      "compact isolated-quill top rail",
-      "balanced 13-spine idle row",
-      "single wooden shelf with no lower tier",
-      "central selected full artwork with flank spines",
-      "right metadata detail and bottom navigation/actions",
-      "mobile page-level containment"
-    ],
-    "nonBlockingDiagnostics": [
-      "Live Vite dev emits one React development warning for the unrelated App hero fetchPriority prop; pageErrors remain zero and the separately certified production build passes."
-    ]
-  },
-  "summary": {
-    "passed": 11,
-    "failed": 0,
-    "total": 11,
-    "p1": 0,
-    "p2": 0,
-    "verdict": "PASS"
+    "ru-desktop-1440x900-shelf.png": "4A6E2B9075734CBFDAA24B04E29E1BD2171C040E95444F4571E3598F53348B63",
+    "ru-desktop-1440x900-selected.png": "59286ECDB057E9DFE55D76C198777FFF02F62F7CBB32F152CE68F3F7C624F30A",
+    "ru-mobile-390x844-shelf.png": "8B10B51CE97670176E4DA56273CC89023F55787AE1D793445A106AAFA509150B"
   }
 }

@@ -1336,6 +1336,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Выберите книгу",
+    "group": "Весь интерфейс",
+    "label": "Выберите книгу",
+    "defaultRu": "Выберите книгу",
+    "defaultEn": "Choose a book",
+    "multiline": false
+  },
+  {
     "key": "interface.Выберите писателя",
     "group": "Весь интерфейс",
     "label": "Выберите писателя",
@@ -1397,6 +1405,14 @@
     "label": "Выбранный день",
     "defaultRu": "Выбранный день",
     "defaultEn": "Selected day",
+    "multiline": false
+  },
+  {
+    "key": "interface.Выбрать случайное произведение из всего архива",
+    "group": "Весь интерфейс",
+    "label": "Выбрать случайное произведение из всего архива",
+    "defaultRu": "Выбрать случайное произведение из всего архива",
+    "defaultEn": "Choose a random work from the entire archive",
     "multiline": false
   },
   {
@@ -4328,6 +4344,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.",
+    "group": "Весь интерфейс",
+    "label": "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.",
+    "defaultRu": "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.",
+    "defaultEn": "Select a spine to bring the book forward and open its description and details.",
+    "multiline": false
+  },
+  {
     "key": "interface.Нажмите на метку — откроется карточка лауреата",
     "group": "Весь интерфейс",
     "label": "Нажмите на метку — откроется карточка лауреата",
@@ -6288,6 +6312,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Показать ещё 13",
+    "group": "Весь интерфейс",
+    "label": "Показать ещё 13",
+    "defaultRu": "Показать ещё 13",
+    "defaultEn": "Show 13 more",
+    "multiline": false
+  },
+  {
     "key": "interface.Показать изображение",
     "group": "Весь интерфейс",
     "label": "Показать изображение",
@@ -6565,6 +6597,14 @@
     "label": "Предыдущее изображение",
     "defaultRu": "Предыдущее изображение",
     "defaultEn": "Previous image",
+    "multiline": false
+  },
+  {
+    "key": "interface.Предыдущие 13 произведений",
+    "group": "Весь интерфейс",
+    "label": "Предыдущие 13 произведений",
+    "defaultRu": "Предыдущие 13 произведений",
+    "defaultEn": "Previous 13 works",
     "multiline": false
   },
   {
@@ -8008,6 +8048,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Следующие 13 произведений",
+    "group": "Весь интерфейс",
+    "label": "Следующие 13 произведений",
+    "defaultRu": "Следующие 13 произведений",
+    "defaultEn": "Next 13 works",
+    "multiline": false
+  },
+  {
     "key": "interface.Следующий материал",
     "group": "Весь интерфейс",
     "label": "Следующий материал",
@@ -8064,11 +8112,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Случайное произведение",
+    "group": "Весь интерфейс",
+    "label": "Случайное произведение",
+    "defaultRu": "Случайное произведение",
+    "defaultEn": "Random work",
+    "multiline": false
+  },
+  {
     "key": "interface.Случайное путешествие",
     "group": "Весь интерфейс",
     "label": "Случайное путешествие",
     "defaultRu": "Случайное путешествие",
     "defaultEn": "Surprise me",
+    "multiline": false
+  },
+  {
+    "key": "interface.Случайный выбор",
+    "group": "Весь интерфейс",
+    "label": "Случайный выбор",
+    "defaultRu": "Случайный выбор",
+    "defaultEn": "Random pick",
     "multiline": false
   },
   {

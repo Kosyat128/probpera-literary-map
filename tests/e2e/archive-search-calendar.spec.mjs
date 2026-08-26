@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 async function openBookCatalog(page) {
   await page.goto("/#books");
   const catalogButton = page.getByRole("button", {
-    name: "КАТАЛОГ",
+    name: "Каталог",
     exact: true,
   });
   await expect(catalogButton).toBeVisible({ timeout: 20_000 });
@@ -103,13 +103,14 @@ test("архив разделяет 48 проверенных книг и 9 681 
   test.skip(Boolean(isMobile), "Desktop archive queue contract");
   await openBookCatalog(page);
   const filters = page.locator(".book-archive-filters");
-  const all = filters.getByRole("button", { name: /Весь архив/u });
   const verified = filters.getByRole("button", {
-    name: /Проверено редакцией/u,
+    name: /Проверено/u,
   });
 
-  await expect(all).toContainText(/9\s*729/u, { timeout: 40_000 });
-  await expect(verified).toContainText(/48/u);
+  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(
+    /9\s*729/u,
+    { timeout: 40_000 }
+  );
   await page
     .getByRole("button", { name: "Расширенные фильтры", exact: true })
     .click();
@@ -123,7 +124,7 @@ test("архив разделяет 48 проверенных книг и 9 681 
   await filterDialog
     .getByRole("button", { name: "Закрыть фильтры", exact: true })
     .click();
-  await expect(page.locator(".book-filter-heading > span")).toContainText(
+  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(
     /9\s*681/u
   );
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
@@ -131,7 +132,7 @@ test("архив разделяет 48 проверенных книг и 9 681 
   );
 
   await verified.click();
-  await expect(page.locator(".book-filter-heading > span")).toContainText(/48/u);
+  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(/48/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );
@@ -177,7 +178,7 @@ test("на мобильном архив и изображения не раст
 
   await page
     .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено редакцией/u })
+    .getByRole("button", { name: /Проверено/u })
     .click();
   const mobileActions = await page
     .locator(".archive-book-actions")
@@ -252,7 +253,7 @@ test("статус, сохранение и детали книг не пере�
   await openBookCatalog(page);
   await page
     .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено редакцией/u })
+    .getByRole("button", { name: /Проверено/u })
     .click();
   await expect(page.locator(".archive-book-actions").first()).toBeVisible({
     timeout: 20_000,
