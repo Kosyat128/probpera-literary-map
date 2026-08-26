@@ -178,7 +178,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
     >
       <SceneErrorBoundary onFailure={failureHandler}>
         <Suspense fallback={<BookShelfBrandLoader label={props.loadingLabel} />}>
-          {support === "ready" ? (
+          {props.active && support === "ready" ? (
             <LazyBookShelfSceneCanvas
               items={props.items}
               appearance={props.appearance}

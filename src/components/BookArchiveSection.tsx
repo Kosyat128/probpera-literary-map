@@ -390,6 +390,10 @@ export default function BookArchiveSection({
   const [shelfFailure, setShelfFailure] =
     useState<BookShelfSceneFailure | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const archiveSectionRef = useRef<HTMLElement>(null);
+  const [sceneNearViewport, setSceneNearViewport] = useState(
+    () => typeof IntersectionObserver === "undefined"
+  );
   const economicalRendering = useMemo(() => {
     if (typeof navigator === "undefined") return false;
     const device = navigator as Navigator & {
@@ -430,6 +434,21 @@ export default function BookArchiveSection({
   const filteredItemsRef = useRef<readonly BookArchiveQueueItem[]>([]);
   const filterDrawerRef = useRef<HTMLElement>(null);
   const filterReturnFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const section = archiveSectionRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setSceneNearViewport(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setSceneNearViewport(Boolean(entry?.isIntersecting)),
+      { rootMargin: "720px 0px", threshold: 0.01 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
   const openAdvancedFilters = useCallback(() => {
     filterReturnFocusRef.current =
       document.activeElement instanceof HTMLElement
@@ -1748,6 +1767,7 @@ export default function BookArchiveSection({
 
   return (
     <section
+      ref={archiveSectionRef}
       className={`book-archive-section${coreHomepageSectionClass(
         coreBookArchive
       )}`}
@@ -2257,7 +2277,9 @@ export default function BookArchiveSection({
                   selectedBookKey={selectedBook ? bookKey(selectedBook) : null}
                   phase={shelfState.phase}
                   requestId={shelfState.requestId}
-                  active
+                  active={
+                    sceneNearViewport || Boolean(selectedBook || requestedBook)
+                  }
                   economical={economicalRendering}
                   reducedMotion={reducedMotion}
                   loadAttempt={sceneLoadGeneration === 0 ? "primary" : "retry"}

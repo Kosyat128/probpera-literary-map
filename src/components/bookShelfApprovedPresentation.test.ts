@@ -106,6 +106,16 @@ describe("approved Complete Shelf outer presentation", () => {
     );
   });
 
+  it("defers the bookshelf WebGL context until the archive approaches the viewport", () => {
+    expect(controller).toContain("archiveSectionRef");
+    expect(controller).toContain('rootMargin: "720px 0px"');
+    expect(controller).toContain("sceneNearViewport");
+    expect(controller).toContain(
+      "sceneNearViewport || Boolean(selectedBook || requestedBook)"
+    );
+    expect(scene).toContain('props.active && support === "ready"');
+  });
+
   it("passes the controller-owned transition state through without local phase state", () => {
     expect(scene).toContain("year?: number");
     expect(scene).toContain("phase: BookShelfPhase");

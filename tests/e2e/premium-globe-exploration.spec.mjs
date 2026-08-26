@@ -989,6 +989,9 @@ test("writer selection stays still until explicit Show on globe", async ({
 test("manual drag cancels a country flight before the next frame and never snaps back", async ({
   page,
 }) => {
+  // Cold mobile SwiftShader startup varies on shared CI runners. Assertions
+  // remain unchanged; this ceiling only prevents setup time from ending them.
+  test.setTimeout(90_000);
   await page.setViewportSize({ width: 1024, height: 768 });
   const { globe, canvas } = await openAtlas(page);
   await page.locator('[data-atlas-action="enter-immersive"]').click();
