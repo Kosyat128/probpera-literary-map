@@ -70,8 +70,15 @@ describe("performance budget audit", () => {
   it("fails when one book cover exceeds its dedicated maximum", async () => {
     const cwd = await fixture({ bookCoverMaximumBytes: 299 });
 
-    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
-      stderr: expect.stringContaining("Performance budget exceeded: book cover maximum"),
+    await expect(
+      execFileAsync(process.execPath, [auditScript], {
+        cwd,
+        env: { ...process.env, GITHUB_ACTIONS: "true" },
+      })
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        "::error title=Performance budget exceeded::book cover maximum: 300 / 299 bytes"
+      ),
     });
   });
 });

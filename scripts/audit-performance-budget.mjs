@@ -78,10 +78,26 @@ const distExcludingBookCovers = total - bookCoverTotal;
 const largestScriptGzip = await compressedBytes(largestScript);
 const mainScriptGzip = await compressedBytes(mainScript);
 
+function githubCommandValue(value) {
+  return String(value)
+    .replaceAll("%", "%25")
+    .replaceAll("\r", "%0D")
+    .replaceAll("\n", "%0A");
+}
+
+function annotateFailure(label, actual, limit, unit) {
+  if (process.env.GITHUB_ACTIONS !== "true") return;
+  const detail = githubCommandValue(`${label}: ${actual} / ${limit} ${unit}`);
+  console.error(`::error title=Performance budget exceeded::${detail}`);
+}
+
 function enforce(label, actual, limit, unit = "bytes") {
   const ok = actual <= limit;
   console.log(`${ok ? "PASS" : "FAIL"} ${label}: ${actual} / ${limit} ${unit}`);
-  if (!ok) failures.push(label);
+  if (!ok) {
+    failures.push(label);
+    annotateFailure(label, actual, limit, unit);
+  }
 }
 
 enforce("dist total", total, budget.distTotalBytes);
@@ -103,8 +119,10 @@ enforce("book covers total", bookCoverTotal, budget.bookCoverTotalBytes);
 enforce("book cover average", bookCoverAverage, budget.bookCoverAverageBytes);
 enforce("book cover maximum", bookCoverMaximum, budget.bookCoverMaximumBytes);
 for (const image of oversizedImages) {
-  failures.push(`oversized image ${image.relative}`);
-  console.error(`FAIL oversized image ${image.relative}: ${image.bytes} bytes`);
+  const label = `oversized image ${image.relative}`;
+  failures.push(label);
+  console.error(`FAIL ${label}: ${image.bytes} bytes`);
+  annotateFailure(label, image.bytes, budget.individualImageBytes, "bytes");
 }
 
 if (failures.length) {
