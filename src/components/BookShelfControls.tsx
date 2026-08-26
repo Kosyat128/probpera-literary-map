@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import BrandBookIcon from "./BrandBookIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
+import BrandQuillIcon from "./BrandQuillIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
 
 export type BookShelfViewMode = "shelf" | "catalog";
@@ -16,6 +17,8 @@ export type BookShelfQuickFilterOption = {
 };
 
 type Props = {
+  brandName: string;
+  brandTagline: string;
   query: string;
   onQueryChange: (value: string) => void;
   searchLabel: string;
@@ -39,6 +42,8 @@ type Props = {
 };
 
 export default function BookShelfControls({
+  brandName,
+  brandTagline,
   query,
   onQueryChange,
   searchLabel,
@@ -55,14 +60,29 @@ export default function BookShelfControls({
   activeFilterId,
   onFilterChange,
   resultCountLabel,
-  formatCount,
   onOpenAdvancedFilters,
   advancedFiltersLabel,
   suggestions,
 }: Props) {
+  const compactOrder = ["verified", "classic", "children"];
+  const compactFilters = compactOrder.flatMap((id) =>
+    filters.filter((filter) => filter.id === id)
+  );
+
   return (
     <div className="book-archive-toolbar book-shelf-controls">
       <div className="book-shelf-controls__topline">
+        <a
+          className="book-shelf-controls__brand"
+          href={import.meta.env.BASE_URL}
+          aria-label={brandName}
+        >
+          <BrandQuillIcon />
+          <span>
+            <strong>{brandName}</strong>
+            <small>{brandTagline}</small>
+          </span>
+        </a>
         <label className="book-shelf-controls__search">
           <span>{searchLabel}</span>
           <span className="book-shelf-controls__input">
@@ -76,25 +96,6 @@ export default function BookShelfControls({
             />
           </span>
         </label>
-
-        <div className="book-shelf-controls__scope" role="group" aria-label={searchLabel}>
-          <button
-            type="button"
-            className={searchScope === "library" ? "is-active" : ""}
-            aria-pressed={searchScope === "library"}
-            onClick={() => onSearchScopeChange("library")}
-          >
-            {libraryScopeLabel}
-          </button>
-          <button
-            type="button"
-            className={searchScope === "global" ? "is-active" : ""}
-            aria-pressed={searchScope === "global"}
-            onClick={() => onSearchScopeChange("global")}
-          >
-            {globalScopeLabel}
-          </button>
-        </div>
 
         <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
           <button
@@ -115,41 +116,55 @@ export default function BookShelfControls({
             {catalogLabel}
           </button>
         </div>
+
+        <label className="book-shelf-controls__scope">
+          <span className="book-shelf-controls__visually-hidden">{searchLabel}</span>
+          <select
+            value={searchScope}
+            onChange={(event) =>
+              onSearchScopeChange(event.target.value as BookShelfSearchScope)
+            }
+            aria-label={searchLabel}
+          >
+            <option value="library">{libraryScopeLabel}</option>
+            <option value="global">{globalScopeLabel}</option>
+          </select>
+        </label>
+
+        <div className="book-filter-panel">
+          <span className="book-shelf-controls__visually-hidden">
+            {resultCountLabel}
+          </span>
+          <div className="book-archive-filters" role="group" aria-label={resultCountLabel}>
+            {compactFilters.map((filter) => (
+              <button
+                className={activeFilterId === filter.id ? "is-active" : ""}
+                type="button"
+                key={filter.id}
+                onClick={() => onFilterChange(filter.id)}
+                aria-pressed={activeFilterId === filter.id}
+                disabled={filter.unavailable}
+              >
+                <span className="book-filter-copy">
+                  <strong>{filter.label}</strong>
+                  <small>{filter.description}</small>
+                </span>
+              </button>
+            ))}
+          </div>
+          <button
+            className="book-shelf-controls__advanced"
+            type="button"
+            onClick={onOpenAdvancedFilters}
+            aria-label={advancedFiltersLabel}
+            title={advancedFiltersLabel}
+          >
+            <BrandFilterIcon />
+          </button>
+        </div>
       </div>
 
       {suggestions}
-
-      <div className="book-filter-panel">
-        <div className="book-filter-heading">
-          <span>{resultCountLabel}</span>
-          <button type="button" onClick={onOpenAdvancedFilters}>
-            <BrandFilterIcon />
-            {advancedFiltersLabel}
-          </button>
-        </div>
-        <div className="book-archive-filters" role="group" aria-label={resultCountLabel}>
-          {filters.map((filter) => (
-            <button
-              className={activeFilterId === filter.id ? "is-active" : ""}
-              type="button"
-              key={filter.id}
-              onClick={() => onFilterChange(filter.id)}
-              aria-pressed={activeFilterId === filter.id}
-              disabled={filter.unavailable}
-            >
-              <span className="book-filter-copy">
-                <strong>{filter.label}</strong>
-                <small>{filter.description}</small>
-              </span>
-              <span className="book-filter-count">
-                {filter.count === null || filter.count === undefined
-                  ? "—"
-                  : formatCount(filter.count)}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

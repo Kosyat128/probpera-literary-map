@@ -1160,6 +1160,7 @@ const englishInterfaceText: Record<string, string> = {
   "Недавно проверенные": "Recently reviewed",
   "Недоступно: проверенные профили аудитории отсутствуют": "Unavailable: no verified audience profiles",
   "Открыть книгу": "Open book",
+  "Перелистнуть страницу": "Turn page",
   "Открыть полку автора": "Open writer shelf",
   "ПЕРИОДЫ": "PERIODS",
   "ПОЛКА": "SHELF",

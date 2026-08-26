@@ -21,6 +21,8 @@ export default function BookShelfFrame({
       data-book-shelf-mode={viewMode}
       style={themeStyle}
     >
+      <div className="book-shelf-frame__library-backdrop" aria-hidden="true" />
+      <div className="book-shelf-frame__atmosphere" aria-hidden="true" />
       {children}
       <p className="book-shelf-frame__live" aria-live="polite" aria-atomic="true">
         {liveMessage}

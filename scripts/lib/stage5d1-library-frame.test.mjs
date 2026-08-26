@@ -156,6 +156,7 @@ const controls = parseSource("src/components/BookShelfControls.tsx");
 const frame = parseSource("src/components/BookShelfFrame.tsx");
 const scene = parseSource("src/components/BookShelfScene.tsx");
 const sceneCanvas = parseSource("src/components/BookShelfSceneCanvas.tsx");
+const completeShelfModel = parseSource("src/books/completeShelfModel.ts");
 
 describe("Stage 5D-1 Complete Shelf architecture contract", () => {
   it("keeps BookArchiveSection as the complete controller and Canvas presentation-only", () => {
@@ -173,8 +174,8 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
       ])
     );
     expect(controller.text).toContain('const [query, setQuery] = useState("")');
-    expect(controller.text).toContain(
-      "const viewMode = shelfState.effectiveViewMode"
+    expect(variableInitializer(controller, "viewMode")).toMatch(
+      /forcedColors\s*\?\s*"catalog"\s*:\s*shelfState\.effectiveViewMode/u
     );
     expect(controller.text).toContain("useReducer(");
     expect(controller.text).toMatch(/\bactiveCollection(?:Id|Key)?\b/u);
@@ -259,9 +260,15 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
     );
     expect(
       jsxAttributeText(sceneInstances[0], "key", controller.sourceFile)
-    ).toContain("shelfState.requestId");
+    ).toContain("sceneLoadGeneration");
     expect(
       jsxAttributeText(sceneInstances[0], "loadAttempt", controller.sourceFile)
+    ).toContain("sceneLoadGeneration");
+    expect(
+      jsxAttributeText(sceneInstances[0], "phase", controller.sourceFile)
+    ).toContain("shelfState.phase");
+    expect(
+      jsxAttributeText(sceneInstances[0], "requestId", controller.sourceFile)
     ).toContain("shelfState.requestId");
     const sceneRegions = jsxNodes(scene).filter(
       (node) =>
@@ -340,9 +347,19 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
       (node) => jsxTagName(node, controller.sourceFile) === "BookShelfScene"
     );
     expect(sceneInstance).toBeDefined();
-    expect(
-      jsxAttributeText(sceneInstance, "onFocusBook", controller.sourceFile)
-    ).toContain("setFocusedBookKey");
+    const focusHandler = jsxAttributeText(
+      sceneInstance,
+      "onFocusBook",
+      controller.sourceFile
+    );
+    expect(focusHandler).toContain("requestFocusBook");
+    const focusInitializer = variableInitializer(controller, "requestFocusBook");
+    expect(focusInitializer).toContain("setFocusedBookKey");
+    expect(focusInitializer).toContain('"request-focus"');
+    expect(focusInitializer).not.toMatch(
+      /setSelectedBook|replaceBookLocation|history/u
+    );
+    expect(focusHandler).not.toContain("openBookDetail");
     expect(
       jsxAttributeText(sceneInstance, "onOpenBook", controller.sourceFile)
     ).toContain("openBookDetail");
@@ -352,10 +369,13 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
   });
 
   it("forces Catalog for unsupported WebGL, context loss and render failure", () => {
-    expect(scene.text).toContain('props.onFailure("unsupported")');
-    expect(scene.text).toContain('props.onFailure("render-error")');
+    expect(scene.text).toContain('onFailureRef.current("unsupported")');
+    expect(scene.text).toContain('onFailureRef.current("render-error")');
     expect(scene.text).toContain('props.onFailure("context-lost")');
     expect(sceneCanvas.text).toContain('"webglcontextlost"');
+    expect(scene.text).toContain('getExtension("WEBGL_lose_context")');
+    expect(scene.text).toContain("}, [props.active]);");
+    expect(scene.text).not.toContain("[props.active, props.onFailure]");
 
     const failureInitializer = variableInitializer(
       controller,
@@ -375,16 +395,31 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
 
   it("keeps the full filtered collection separate from paged DOM and capped scene items", () => {
     const sceneItems = variableInitializer(controller, "sceneItems");
+    const sceneQueueItems = variableInitializer(controller, "sceneQueueItems");
     const visibleItems = variableInitializer(controller, "visibleItems");
-    const canvasVisibleItems = variableInitializer(sceneCanvas, "visibleItems");
 
-    expect(sceneItems).toMatch(/filteredItems\.map/u);
+    expect(sceneQueueItems).toMatch(
+      /if\s*\(!selectedBook\)\s*return filteredItems/u
+    );
+    expect(sceneQueueItems).toContain("[selectedQueueItem, ...filteredItems]");
+    expect(sceneItems).toMatch(/sceneQueueItems\.map/u);
     expect(sceneItems).not.toContain("visibleItems");
     expect(sceneItems).not.toMatch(/\.slice\(/u);
     expect(visibleItems).toMatch(/filteredItems\.slice\(0,\s*visibleCount\)/u);
-    expect(canvasVisibleItems).toMatch(/items\.length\s*<=\s*36/u);
-    expect(canvasVisibleItems).toMatch(/items\.slice\(start,\s*start\s*\+\s*36\)/u);
-    expect(sceneCanvas.text).toMatch(/\{visibleItems\.map\(/u);
+    expect(sceneCanvas.text).toContain("<CompleteShelfRenderer");
+    expect(sceneCanvas.text).toContain("items={items}");
+    expect(completeShelfModel.text).toContain(
+      "COMPLETE_SHELF_MAX_WORKING_SET = 13"
+    );
+    expect(completeShelfModel.text).toContain(
+      "COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 11"
+    );
+    expect(completeShelfModel.text).toContain(
+      "Array.from({ length: count }, (_, slotIndex) =>"
+    );
+    expect(completeShelfModel.text).toContain(
+      "(anchorSourceIndex + slotIndex - anchorSlot + items.length) %"
+    );
     expect(controller.text).toMatch(/<BookShelfScene[\s\S]*?items=\{sceneItems\}/u);
   });
 

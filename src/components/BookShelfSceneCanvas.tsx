@@ -1,12 +1,26 @@
 import { Canvas, useThree } from "@react-three/fiber";
-import { useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import {
+  ACESFilmicToneMapping,
+  PCFSoftShadowMap,
+  PMREMGenerator,
+  SRGBColorSpace,
+  type RectAreaLight,
+} from "three";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
 
 import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
 } from "./BookShelfScene";
+import type { BookShelfPhase } from "../books/bookShelfState";
+import { completeShelfPhaseHasInspection } from "../books/completeShelfModel";
+import CompleteShelfRenderer, {
+  type CompleteShelfTransitionCallbacks,
+} from "../books/completeShelfRenderer";
 
-export type BookShelfSceneCanvasProps = {
+export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   items: readonly BookShelfPresentationItem[];
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
@@ -14,23 +28,63 @@ export type BookShelfSceneCanvasProps = {
   active: boolean;
   economical: boolean;
   reducedMotion: boolean;
+  phase: BookShelfPhase;
+  requestId: number;
   onFocusBook: (key: string) => void;
   onOpenBook: (key: string) => void;
+  onRequestCoverOpen: (key: string) => void;
+  onRequestInspectionClose: () => void;
+  onCrackCover: () => void;
+  onStartPageDrag: () => void;
+  onRequestPageSettle: () => void;
   onContextLost: () => void;
 };
 
 function SceneLifecycle({
   dependency,
+  exposure,
+  economical,
   onContextLost,
 }: {
   dependency: string;
+  exposure: number;
+  economical: boolean;
   onContextLost: () => void;
 }) {
-  const { gl, invalidate } = useThree();
+  const { gl, scene, invalidate } = useThree();
 
   useEffect(() => {
     invalidate();
   }, [dependency, invalidate]);
+
+  useEffect(() => {
+    const previousExposure = gl.toneMappingExposure;
+    const previousToneMapping = gl.toneMapping;
+    const previousOutputColorSpace = gl.outputColorSpace;
+    const previousShadowType = gl.shadowMap.type;
+    const previousEnvironment = scene.environment;
+    const previousEnvironmentIntensity = scene.environmentIntensity;
+    RectAreaLightUniformsLib.init();
+    const pmrem = new PMREMGenerator(gl);
+    const environmentTarget = pmrem.fromScene(new RoomEnvironment(), 0.04);
+    gl.toneMapping = ACESFilmicToneMapping;
+    gl.toneMappingExposure = exposure;
+    gl.outputColorSpace = SRGBColorSpace;
+    gl.shadowMap.type = PCFSoftShadowMap;
+    scene.environment = environmentTarget.texture;
+    scene.environmentIntensity = economical ? 0.48 : 0.72;
+    invalidate();
+    return () => {
+      gl.toneMappingExposure = previousExposure;
+      gl.toneMapping = previousToneMapping;
+      gl.outputColorSpace = previousOutputColorSpace;
+      gl.shadowMap.type = previousShadowType;
+      scene.environment = previousEnvironment;
+      scene.environmentIntensity = previousEnvironmentIntensity;
+      environmentTarget.dispose();
+      pmrem.dispose();
+    };
+  }, [economical, exposure, gl, invalidate, scene]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -46,58 +100,41 @@ function SceneLifecycle({
   return null;
 }
 
-function ShelfBook({
-  item,
-  index,
-  focused,
-  selected,
-  onFocusBook,
-  onOpenBook,
+function RakingAreaLight({
+  color,
+  intensity,
+  width,
+  height,
+  position,
+  target,
 }: {
-  item: BookShelfPresentationItem;
-  index: number;
-  focused: boolean;
-  selected: boolean;
-  onFocusBook: (key: string) => void;
-  onOpenBook: (key: string) => void;
+  color: string;
+  intensity: number;
+  width: number;
+  height: number;
+  position: [number, number, number];
+  target: [number, number, number];
 }) {
-  const row = Math.floor(index / 12);
-  const column = index % 12;
-  const x = (column - 5.5) * 0.72;
-  const y = 1.65 - row * 2.05;
-  const z = focused ? 0.48 : selected ? 0.24 : 0;
-  const height = 1.34 + ((index * 17) % 7) * 0.055;
-  const width = 0.46 + ((index * 11) % 5) * 0.035;
+  const lightRef = useRef<RectAreaLight>(null);
+  const { invalidate } = useThree();
+
+  useLayoutEffect(() => {
+    lightRef.current?.lookAt(...target);
+    invalidate();
+  }, [invalidate, target]);
 
   return (
-    <group position={[x, y, z]}>
-      <mesh
-        scale={[width, height, 0.34]}
-        onPointerDown={(event) => {
-          event.stopPropagation();
-          onFocusBook(item.key);
-        }}
-        onDoubleClick={(event) => {
-          event.stopPropagation();
-          onOpenBook(item.key);
-        }}
-      >
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial
-          color={focused ? item.accentColor : item.baseColor}
-          roughness={0.78}
-          metalness={0.04}
-          emissive={selected ? item.accentColor : "#000000"}
-          emissiveIntensity={selected ? 0.14 : 0}
-        />
-      </mesh>
-      <mesh position={[0, 0, 0.19]} scale={[width * 0.86, height * 0.9, 0.02]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={item.paperColor} roughness={0.92} />
-      </mesh>
-    </group>
+    <rectAreaLight
+      ref={lightRef}
+      color={color}
+      intensity={intensity}
+      width={width}
+      height={height}
+      position={position}
+    />
   );
 }
+
 
 export default function BookShelfSceneCanvas({
   items,
@@ -107,72 +144,157 @@ export default function BookShelfSceneCanvas({
   active,
   economical,
   reducedMotion,
+  phase,
+  requestId,
   onFocusBook,
   onOpenBook,
+  onRequestCoverOpen,
+  onRequestInspectionClose,
+  onCrackCover,
+  onStartPageDrag,
+  onRequestPageSettle,
+  onMotionReached,
+  onMotionSettled,
+  onInspectionEntered,
+  onCoverOpened,
+  onPageSettled,
+  onInspectionClosed,
+  onShelfRestored,
   onContextLost,
 }: BookShelfSceneCanvasProps) {
-  const visibleItems = useMemo(() => {
-    if (items.length <= 36) return [...items];
-    const focusedIndex = Math.max(
-      0,
-      items.findIndex((item) => item.key === focusedBookKey)
-    );
-    const start = Math.min(Math.max(0, focusedIndex - 17), items.length - 36);
-    return items.slice(start, start + 36);
-  }, [focusedBookKey, items]);
-  const dependency = `${focusedBookKey || ""}:${selectedBookKey || ""}:${visibleItems
-    .map((item) => item.key)
-    .join("|")}`;
+  const dependency = [
+    phase,
+    requestId,
+    focusedBookKey || "",
+    selectedBookKey || "",
+    items.length,
+    appearance.shelfColor,
+    appearance.intensity,
+  ].join(":");
 
   return (
     <Canvas
       aria-hidden="true"
       frameloop="demand"
-      dpr={economical ? 1 : [1, 1.5]}
-      camera={{ position: [0, 0.2, 8.7], fov: 42, near: 0.1, far: 30 }}
+      shadows={!economical}
+      dpr={economical ? 1 : [1, 2]}
+      camera={{
+        position: [0, 0.02, 5.15],
+        fov: 38,
+        near: 0.1,
+        far: 30,
+      }}
       gl={{
         alpha: true,
         antialias: !economical,
         powerPreference: economical ? "low-power" : "high-performance",
       }}
+      performance={{ min: economical ? 0.65 : 0.8 }}
       style={{ pointerEvents: active ? "auto" : "none" }}
+      onPointerMissed={() => {
+        if (
+          completeShelfPhaseHasInspection(phase) &&
+          phase !== "INSPECTION_CLOSING"
+        ) {
+          onRequestInspectionClose();
+        }
+      }}
     >
-      <SceneLifecycle dependency={dependency} onContextLost={onContextLost} />
+      <SceneLifecycle
+        dependency={dependency}
+        exposure={economical ? 0.96 : 0.9}
+        economical={economical}
+        onContextLost={onContextLost}
+      />
+      <hemisphereLight
+        args={[
+          "#fff8e8",
+          "#5b4030",
+          0.56 + appearance.intensity * 0.12,
+        ]}
+      />
       <ambientLight
-        intensity={(economical ? 0.86 : 0.72) + appearance.intensity * 0.42}
-        color={appearance.ambientColor}
+        intensity={economical ? 0.28 : 0.12}
+        color="#fff8ed"
       />
       <directionalLight
-        position={[4, 6, 6]}
-        intensity={(economical ? 0.82 : 1.02) + appearance.intensity * 0.48}
-        color={appearance.lightColor}
+        position={[-4.6, 7.4, 5.8]}
+        intensity={1.42 + appearance.intensity * 0.18}
+        color="#ffe8c2"
+        castShadow={!economical}
+        shadow-mapSize-width={economical ? 512 : 2048}
+        shadow-mapSize-height={economical ? 512 : 2048}
+        shadow-camera-left={-6}
+        shadow-camera-right={6}
+        shadow-camera-top={6}
+        shadow-camera-bottom={-1.5}
+        shadow-camera-near={1}
+        shadow-camera-far={18}
+        shadow-bias={-0.00018}
+        shadow-normalBias={0.018}
+        shadow-radius={3.5}
       />
-      <pointLight
-        position={[-4, 1, 4]}
-        intensity={0.34 + appearance.intensity * 0.46}
-        color={appearance.ambientColor}
+      <directionalLight
+        position={[5.5, 3.6, 4.2]}
+        intensity={0.3 + appearance.intensity * 0.08}
+        color="#d8e3e7"
       />
-      {[0, 1, 2].map((row) => (
-        <mesh key={row} position={[0, 0.72 - row * 2.05, -0.23]} scale={[9.25, 0.15, 0.8]}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial
-            color={appearance.shelfColor}
-            roughness={appearance.materialRoughness}
-          />
-        </mesh>
-      ))}
-      {visibleItems.map((item, index) => (
-        <ShelfBook
-          key={item.key}
-          item={item}
-          index={index}
-          focused={item.key === focusedBookKey}
-          selected={item.key === selectedBookKey}
-          onFocusBook={onFocusBook}
-          onOpenBook={onOpenBook}
-        />
-      ))}
-      {!reducedMotion ? null : <group />}
+      <RakingAreaLight
+        color="#ffe8c2"
+        intensity={economical ? 2.2 : 5.4}
+        width={4.8}
+        height={5.6}
+        position={[-3.2, 4.05, 4.6]}
+        target={[0, 0, 0]}
+      />
+      <RakingAreaLight
+        color="#d5a45e"
+        intensity={economical ? 1.2 : 3.45}
+        width={1.6}
+        height={4.8}
+        position={[3.8, 2.15, -2.1]}
+        target={[-0.2, 0, 0]}
+      />
+      <RakingAreaLight
+        color="#ffe8c2"
+        intensity={economical ? 0.75 : 1.9}
+        width={0.9}
+        height={4.6}
+        position={[-4.6, 1.75, 1.1]}
+        target={[-0.55, 0, 0]}
+      />
+      <RakingAreaLight
+        color="#fff7e7"
+        intensity={economical ? 0.8 : 2.15}
+        width={1.15}
+        height={3.8}
+        position={[4.2, 3.35, 3.1]}
+        target={[0.65, 0.1, 0]}
+      />
+      <CompleteShelfRenderer
+        items={items}
+        appearance={appearance}
+        focusedBookKey={focusedBookKey}
+        selectedBookKey={selectedBookKey}
+        phase={phase}
+        requestId={requestId}
+        economical={economical}
+        reducedMotion={reducedMotion}
+        onFocusBook={onFocusBook}
+        onOpenBook={onOpenBook}
+        onRequestCoverOpen={onRequestCoverOpen}
+        onRequestInspectionClose={onRequestInspectionClose}
+        onCrackCover={onCrackCover}
+        onStartPageDrag={onStartPageDrag}
+        onRequestPageSettle={onRequestPageSettle}
+        onMotionReached={onMotionReached}
+        onMotionSettled={onMotionSettled}
+        onInspectionEntered={onInspectionEntered}
+        onCoverOpened={onCoverOpened}
+        onPageSettled={onPageSettled}
+        onInspectionClosed={onInspectionClosed}
+        onShelfRestored={onShelfRestored}
+      />
     </Canvas>
   );
 }

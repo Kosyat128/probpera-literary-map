@@ -152,7 +152,7 @@ export const governanceFingerprintRegistry = Object.freeze([
     paths: bookArchiveOwnerPaths,
     expected: {
       files: 9,
-      sha256: "a875a1eef7b27a4773a4f364b84d0c0b37796094f620054800d6156c6275596b",
+      sha256: "0cc93c1437b7829a9657557b4f26038d2e0d79df41b7791160316c168411cd41",
     },
   },
   {
@@ -196,26 +196,26 @@ export const stage5D1AdditiveI18nAttestation = Object.freeze({
       "7053755a7c46865d1c8f1c795c595b08d96d031bfeb0a9653c1cc1f6dc395c93",
     codeOutsideInitializerSha256:
       "96a330622dd3b14b98f4215fc8392e7af7160c8ff74b8e33df2d2e99efb55802",
-    currentEntries: 1065,
+    currentEntries: 1066,
     additions: Object.freeze({
-      entries: 149,
+      entries: 150,
       keysSha256:
-        "f2879d307bcfba745786bd0f28bbaa15b06c28854bd96e6f38d1b10806f5f32f",
+        "9c7cb37bfccaf64a6f7dfb73cf813b1dd29c54e4ee9d660b04507c3618358fb5",
       pairsSha256:
-        "c0ba3aa8bba7527521182c2e47fb4c741dd0787842d710e218ade01e65728ff8",
+        "30785d888e065cc7c34dcaa2f27372cfe334cd2b5541572c71993a88bfd731e7",
     }),
   }),
   catalog: Object.freeze({
     baselineEntries: 1130,
     baselineContentSha256:
       "280bb7704a34921fdbb2c95c51bb5264ecaab1c210dfbdb5b0a37d62a29caa5d",
-    currentEntries: 1279,
+    currentEntries: 1280,
     additions: Object.freeze({
-      entries: 149,
+      entries: 150,
       keysSha256:
-        "f0d8cf38db01021143079f6fdfa6706c3eab73119ad066d43ef6da5c64670cb6",
+        "2c9c3dd90df216f9f96180999f53b4460969fcebd9268e035ac148af27bd72e2",
       contentSha256:
-        "95f5529a4927a0ed0279e16d31a4e06b8cd2e707cf468f098a1b9be755b52fda",
+        "378ad3abf741c1eb9910e189270dd909024dc4f5421128808ed2102a29865d27",
     }),
   }),
 });
@@ -272,6 +272,17 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
             enforced: stage5D1EnforcedGovernanceScopes.premiumCurrent,
             additiveAttestationId: stage5D1AdditiveI18nAttestation.id,
           })
+        : entry.id === "BOOK-ARCHIVE-OWNER-LOCK"
+          ? Object.freeze({
+              ...entry,
+              sourceIntegrationSha:
+                stage5D1AdditiveI18nAttestation.sourceIntegrationSha,
+              expected: Object.freeze({
+                files: 9,
+                sha256:
+                  "0737fae8bf27722b6cdc5810e40d33a8a016006ff1c3a944bb13e0ffb61a3413",
+              }),
+            })
         : entry
   )
 );

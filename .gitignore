@@ -15,5 +15,6 @@ apps/admin/.wrangler-dry-run/
 *.log
 scripts/.cache/
 .review/
+.reference/
 .tmp/
 test-results/

@@ -461,6 +461,27 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     });
   });
 
+  it("preserves historical Book Archive evidence and attests the current owner", () => {
+    const historical = governanceFingerprintRegistry.find(
+      (entry) => entry.id === "BOOK-ARCHIVE-OWNER-LOCK"
+    );
+    expect(historical.expected).toEqual({
+      files: 9,
+      sha256: "0cc93c1437b7829a9657557b4f26038d2e0d79df41b7791160316c168411cd41",
+    });
+
+    const current = currentIntegrationGovernanceFingerprintRegistry.find(
+      (entry) => entry.id === "BOOK-ARCHIVE-OWNER-LOCK"
+    );
+    expect(current.sourceIntegrationSha).toBe(
+      "fdd981381e859ab0ceaa44b48e9236af70c43db7"
+    );
+    expect(current.expected).toEqual({
+      files: 9,
+      sha256: "0737fae8bf27722b6cdc5810e40d33a8a016006ff1c3a944bb13e0ffb61a3413",
+    });
+  });
+
   it("keeps Header/Hero owner CSS rules unchanged", () => {
     const scope = currentIntegrationGovernanceFingerprintRegistry.find(
       (entry) => entry.id === "HEADER-HERO-CSS-OWNER-LOCK"

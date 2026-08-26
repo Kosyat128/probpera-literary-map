@@ -1,364 +1,327 @@
 {
-  "generatedAt": "2026-08-25T23:38:58.506Z",
-  "scope": "Stage 5D-1 three-P2 affected-case regression",
+  "generatedAt": "2026-08-26T06:29:08.310Z",
+  "scope": "Stage 5D-1 final live visual evidence refresh",
+  "source": {
+    "url": "http://127.0.0.1:4175/probpera-literary-map/#books",
+    "server": "current live Vite dev server on 127.0.0.1:4175",
+    "buildOrTestsRunByReviewer": false,
+    "productCodeChangedByReviewer": false,
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ]
+  },
   "checks": [
     {
-      "case": "ru-desktop",
-      "name": "Axe #books has zero violations",
+      "case": "ru-desktop-1440x900",
+      "name": "idle shelf has one demand Canvas and no preselected detail",
       "passed": true,
-      "evidence": "22 passes"
+      "severity": "P1",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "SHELF_IDLE"
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "verified quick filter: ordinary click",
+      "case": "ru-desktop-1440x900",
+      "name": "idle shelf has no horizontal overflow",
       "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "SHELF_IDLE"
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "verified filter creates removable chip",
+      "case": "ru-desktop-1440x900",
+      "name": "clicking a spine reaches inspection detail",
       "passed": true,
-      "evidence": "Проверено редакцией\n×\nСбросить\nСохранить как умную полку"
+      "severity": "P1",
+      "evidence": {
+        "selectedLayout": {
+          "frame": {
+            "width": 1325,
+            "height": 795
+          },
+          "documentOverflow": 0,
+          "frameOverflow": 0,
+          "canvasCount": 1,
+          "detailCount": 1,
+          "audioElements": 0,
+          "autoplayMedia": 0,
+          "phase": "INSPECTION_CLOSED"
+        },
+        "selected": {
+          "title": "Будденброки",
+          "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+          "coverWidth": 288,
+          "coverHeight": 432
+        }
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "remove verified chip: ordinary click",
+      "case": "ru-desktop-1440x900",
+      "name": "real cover request is selected-only",
       "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "selected": {
+          "title": "Будденброки",
+          "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+          "coverWidth": 288,
+          "coverHeight": 432
+        },
+        "matchingCoverRequests": [
+          {
+            "phase": "selected-request",
+            "url": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+            "resourceType": "image"
+          }
+        ]
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "chip removal clears verified filter",
+      "case": "ru-desktop-1440x900",
+      "name": "selected state has no horizontal overflow",
       "passed": true,
-      "evidence": "false"
+      "severity": "P1",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 1,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "INSPECTION_CLOSED"
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "verified quick filter before reset: ordinary click",
+      "case": "ru-desktop-1440x900",
+      "name": "desktop has no page errors or audio",
       "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "pageErrors": [],
+        "audioRequests": [],
+        "audioElements": 0,
+        "autoplayMedia": 0
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "query plus verified expose multiple chips",
+      "case": "ru-mobile-390x844",
+      "name": "mobile idle shelf has one Canvas and no page-level horizontal overflow",
       "passed": true,
-      "evidence": "Поиск: Толстой\n×\nПроверено редакцией\n×\nСбросить\nСохранить как умную полку"
+      "severity": "P1",
+      "evidence": {
+        "frame": {
+          "width": 370,
+          "height": 858
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 25,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "SHELF_IDLE",
+        "overflowInterpretation": {
+          "pageLevelOverflow": 0,
+          "frameOverflowIsContained": true,
+          "frameCssOverflow": "clip",
+          "intentionalFilterRailOverflowX": "auto"
+        }
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "reset active filters: ordinary click",
+      "case": "ru-mobile-390x844",
+      "name": "mobile has no page errors or audio",
       "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "pageErrors": [],
+        "audioRequests": [],
+        "audioElements": 0,
+        "autoplayMedia": 0
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "reset clears chips and query",
+      "case": "approved-concept-visual",
+      "name": "desktop idle shows one balanced row of 13 premium spines on one wooden shelf",
       "passed": true,
-      "evidence": "{\"chips\":0,\"query\":\"\"}"
+      "severity": "P1",
+      "evidence": {
+        "screenshot": "ru-desktop-1440x900-shelf.png",
+        "observedSpines": 13,
+        "woodenShelfTiers": 1,
+        "lowerTierPresent": false,
+        "composition": "centered and symmetric with readable gold tooling"
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "open author drawer: ordinary click",
+      "case": "approved-concept-visual",
+      "name": "desktop selected state shows central full artwork, flank spines and right detail",
       "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "screenshot": "ru-desktop-1440x900-selected.png",
+        "selectedTitle": "Будденброки",
+        "centralFullArtwork": true,
+        "flankSpines": true,
+        "rightDetailPanel": true,
+        "topRail": true,
+        "bottomRail": true
+      }
     },
     {
-      "case": "ru-desktop",
-      "name": "author drawer exposes selected-author context",
+      "case": "approved-concept-visual",
+      "name": "mobile idle keeps the shelf readable and contained at 390x844",
       "passed": true,
-      "evidence": "АТ\nАалы Токомбаев\nКыргызстан · 1 произведений\nОткрыть полку автора"
-    },
-    {
-      "case": "ru-desktop",
-      "name": "open writer shelf: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-desktop",
-      "name": "writer shelf updates collection and chip",
-      "passed": true,
-      "evidence": "Текущая полкаАалы Токомбаев\n1 произведений"
-    },
-    {
-      "case": "ru-desktop",
-      "name": "remove author chip: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-desktop",
-      "name": "normal console errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-desktop",
-      "name": "normal page errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-desktop",
-      "name": "normal request failures = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "ru-desktop",
-      "name": "normal HTTP errors = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "en-desktop",
-      "name": "English language: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "en-desktop",
-      "name": "Axe #books has zero violations",
-      "passed": true,
-      "evidence": "22 passes"
-    },
-    {
-      "case": "en-desktop",
-      "name": "normal console errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "en-desktop",
-      "name": "normal page errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "en-desktop",
-      "name": "normal request failures = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "en-desktop",
-      "name": "normal HTTP errors = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "Axe #books has zero violations",
-      "passed": true,
-      "evidence": "22 passes"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "verified quick filter: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "verified filter creates removable chip",
-      "passed": true,
-      "evidence": "Проверено редакцией\n×\nСбросить\nСохранить как умную полку"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "remove verified chip: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "chip removal clears verified filter",
-      "passed": true,
-      "evidence": "false"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "verified quick filter before reset: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "query plus verified expose multiple chips",
-      "passed": true,
-      "evidence": "Поиск: Толстой\n×\nПроверено редакцией\n×\nСбросить\nСохранить как умную полку"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "reset active filters: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "reset clears chips and query",
-      "passed": true,
-      "evidence": "{\"chips\":0,\"query\":\"\"}"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "open author drawer: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "author drawer exposes selected-author context",
-      "passed": true,
-      "evidence": "АТ\nАалы Токомбаев\nКыргызстан · 1 произведений\nОткрыть полку автора"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "open writer shelf: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "writer shelf updates collection and chip",
-      "passed": true,
-      "evidence": "Текущая полкаАалы Токомбаев\n1 произведений"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "remove author chip: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "normal console errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "normal page errors = 0",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "ru-mobile",
-      "name": "normal request failures = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "ru-mobile",
-      "name": "normal HTTP errors = 0",
-      "passed": true,
-      "evidence": "[]"
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "first injected chunk failure falls back to Catalogue",
-      "passed": true,
-      "evidence": "[\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\"]"
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "Shelf retry: ordinary click",
-      "passed": true,
-      "evidence": ""
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "retry requests a second distinct Canvas chunk",
-      "passed": true,
-      "evidence": "[\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\",\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-B9JztxBr.js\"]"
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "retry recovers exactly one Canvas",
-      "passed": true,
-      "evidence": "1 canvas"
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "only injected request failure occurred",
-      "passed": true,
-      "evidence": "[{\"url\":\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\",\"error\":\"net::ERR_FAILED\"}]"
-    },
-    {
-      "case": "lazy-chunk-retry",
-      "name": "no uncaught page errors during recovery",
-      "passed": true,
-      "evidence": ""
+      "severity": "P1",
+      "evidence": {
+        "screenshot": "ru-mobile-390x844-shelf.png",
+        "pageLevelHorizontalOverflow": 0,
+        "oneWoodenShelf": true,
+        "lowerTierPresent": false,
+        "controlsContained": true
+      }
     }
   ],
-  "axe": {
-    "ru-desktop": {
-      "violations": [],
-      "passes": 22,
-      "incomplete": 1
+  "diagnostics": {
+    "ru-desktop-1440x900": {
+      "phase": "selected-request",
+      "consoleErrors": [
+        "Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \n    at img\n    at picture\n    at div\n    at section\n    at main\n    at div\n    at App (http://127.0.0.1:4175/probpera-literary-map/src/App.tsx?t=1787725300138:415:20)\n    at AppErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/AppErrorBoundary.tsx:46:16)\n    at AuthProvider (http://127.0.0.1:4175/probpera-literary-map/src/community/AuthContext.tsx:19:32)\n    at InterfaceLanguageProvider (http://127.0.0.1:4175/probpera-literary-map/src/i18n/InterfaceLanguage.tsx:1135:45)\n    at BootstrapErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/BootstrapErrorBoundary.tsx:24:16)"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "audioRequests": [],
+      "requests": [
+        {
+          "phase": "selected-request",
+          "url": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+          "resourceType": "image"
+        }
+      ]
     },
-    "en-desktop": {
-      "violations": [],
-      "passes": 22,
-      "incomplete": 1
-    },
-    "ru-mobile": {
-      "violations": [],
-      "passes": 22,
-      "incomplete": 1
+    "ru-mobile-390x844": {
+      "phase": "idle",
+      "consoleErrors": [
+        "Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \n    at img\n    at picture\n    at div\n    at section\n    at main\n    at div\n    at App (http://127.0.0.1:4175/probpera-literary-map/src/App.tsx?t=1787725300138:415:20)\n    at AppErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/AppErrorBoundary.tsx:46:16)\n    at AuthProvider (http://127.0.0.1:4175/probpera-literary-map/src/community/AuthContext.tsx:19:32)\n    at InterfaceLanguageProvider (http://127.0.0.1:4175/probpera-literary-map/src/i18n/InterfaceLanguage.tsx:1135:45)\n    at BootstrapErrorBoundary (http://127.0.0.1:4175/probpera-literary-map/src/components/BootstrapErrorBoundary.tsx:24:16)"
+      ],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "audioRequests": [],
+      "requests": []
     }
   },
-  "diagnostics": {
-    "ru-desktop": {
-      "consoleErrors": [],
-      "pageErrors": [],
-      "requestFailures": [],
-      "httpErrors": []
-    },
-    "en-desktop": {
-      "consoleErrors": [],
-      "pageErrors": [],
-      "requestFailures": [],
-      "httpErrors": []
-    },
-    "ru-mobile": {
-      "consoleErrors": [],
-      "pageErrors": [],
-      "requestFailures": [],
-      "httpErrors": []
-    },
-    "lazy-chunk-retry": {
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_FAILED",
-        "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js"
-      ],
-      "pageErrors": [],
-      "requestFailures": [
-        {
-          "url": "http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js",
-          "error": "net::ERR_FAILED"
-        }
-      ],
-      "httpErrors": []
-    }
+  "screenshots": [
+    "ru-desktop-1440x900-shelf.png",
+    "ru-desktop-1440x900-selected.png",
+    "ru-mobile-390x844-shelf.png"
+  ],
+  "screenshotSha256": {
+    "ru-desktop-1440x900-shelf.png": "8854DE2E872FBDD24E5411D5B921D9ED5AA764FB09F802B3019A3318A1527B32",
+    "ru-desktop-1440x900-selected.png": "3F081EDE5EE8CEAA83203CA86D0BFB5D5F1714468EC0A2EC277C876866E211DB",
+    "ru-mobile-390x844-shelf.png": "4BAB0B9C26E56DD935BAACDD7E97C182D15E67651EF081341CEE01E0BCF7A229"
   },
   "cases": {
-    "ru-desktop": {
-      "completed": true
+    "desktop": {
+      "idleLayout": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "SHELF_IDLE"
+      },
+      "selectedLayout": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 1,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "INSPECTION_CLOSED"
+      },
+      "selected": {
+        "title": "Будденброки",
+        "coverUrl": "http://127.0.0.1:4175/probpera-literary-map/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+        "coverWidth": 288,
+        "coverHeight": 432
+      }
     },
-    "en-desktop": {
-      "completed": true
-    },
-    "ru-mobile": {
-      "completed": true
-    },
-    "lazy-chunk-retry": {
-      "completed": true
+    "mobile": {
+      "idleLayout": {
+        "frame": {
+          "width": 370,
+          "height": 858
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 25,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "audioElements": 0,
+        "autoplayMedia": 0,
+        "phase": "SHELF_IDLE"
+      }
     }
   },
+  "visualReview": {
+    "status": "PASS",
+    "target": "C:/Users/User/Desktop/STAGE_5_BOOKSHELF_CONCEPT_APPROVED.png",
+    "targetSha256": "46727D471384D42919F872D53A15C6047E6023EE02414C1300252E02A5DAD0DF",
+    "reviewedAt": "2026-08-26T06:31:30.000Z",
+    "confirmed": [
+      "compact isolated-quill top rail",
+      "balanced 13-spine idle row",
+      "single wooden shelf with no lower tier",
+      "central selected full artwork with flank spines",
+      "right metadata detail and bottom navigation/actions",
+      "mobile page-level containment"
+    ],
+    "nonBlockingDiagnostics": [
+      "Live Vite dev emits one React development warning for the unrelated App hero fetchPriority prop; pageErrors remain zero and the separately certified production build passes."
+    ]
+  },
   "summary": {
-    "passed": 48,
+    "passed": 11,
     "failed": 0,
-    "total": 48
+    "total": 11,
+    "p1": 0,
+    "p2": 0,
+    "verdict": "PASS"
   }
 }

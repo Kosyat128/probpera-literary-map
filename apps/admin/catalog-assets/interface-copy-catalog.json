@@ -5808,6 +5808,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Перелистнуть страницу",
+    "group": "Весь интерфейс",
+    "label": "Перелистнуть страницу",
+    "defaultRu": "Перелистнуть страницу",
+    "defaultEn": "Turn page",
+    "multiline": false
+  },
+  {
     "key": "interface.Период",
     "group": "Весь интерфейс",
     "label": "Период",
