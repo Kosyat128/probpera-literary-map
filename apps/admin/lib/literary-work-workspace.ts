@@ -174,7 +174,7 @@ export function parseWorkTranslationEdit(input: Record<string, unknown>) {
   if (status !== "draft") {
     const count = sentenceCount(description);
     if (count < 2 || count > 3) {
-      throw new Error("Проверенное описание должно состоять из 2–3 предложений.");
+      throw new Error("Проверенное описание должно состоять из 2-3 предложений.");
     }
   }
   return {

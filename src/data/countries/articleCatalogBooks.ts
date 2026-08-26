@@ -94,7 +94,7 @@ export const articleCatalogWriters: Record<string, WriterProfile[]> = {
       ["Шантарам", pageTurner(1), "роман"],
     ]),
     writer("terry_hayes", "Терри Хейс", [
-      ["Я — Пилигрим", pageTurner(3), "роман", ["Я Пилигрим"]],
+      ["Я - Пилигрим", pageTurner(3), "роман", ["Я Пилигрим"]],
     ]),
   ],
   cyprus: [

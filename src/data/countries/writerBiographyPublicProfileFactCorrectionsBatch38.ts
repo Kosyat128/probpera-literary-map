@@ -23,7 +23,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
       { provider: "Visuotinė lietuvių enciklopedija", url: "https://www.vle.lt/straipsnis/maironis/", checkedAt },
       { provider: "Библиотека Конгресса США", url: "https://id.loc.gov/authorities/names/n50034352.html", checkedAt },
     ],
-    note: "Дата 21 октября соответствует старому стилю; современная календарная дата — 2 ноября 1862 года.",
+    note: "Дата 21 октября соответствует старому стилю; современная календарная дата - 2 ноября 1862 года.",
   },
   {
     countryId: "luxembourg",
@@ -43,7 +43,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
       genres: ["роман", "рассказ", "драма"],
     },
     evidence: [
-      { provider: "University of Western Australia — African Literature", url: "https://aflit.arts.uwa.edu.au/Rafenomanjatoeng.html", checkedAt },
+      { provider: "University of Western Australia - African Literature", url: "https://aflit.arts.uwa.edu.au/Rafenomanjatoeng.html", checkedAt },
       { provider: "Words Without Borders", url: "https://wordswithoutborders.org/contributors/view/charlotte-arrisoa-rafenomanjato/", checkedAt },
     ],
     note: "Пустая библиография заменена тремя атрибутированными произведениями, жанры расширены.",
@@ -106,7 +106,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
     },
     evidence: [
       { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=12012965", checkedAt },
-      { provider: "University of Western Australia — African Literature", url: "https://aflit.arts.uwa.edu.au/RakotosonMicheleEng.html", checkedAt },
+      { provider: "University of Western Australia - African Literature", url: "https://aflit.arts.uwa.edu.au/RakotosonMicheleEng.html", checkedAt },
     ],
     note: "Место рождения, жанры и библиография уточнены.",
   },
@@ -115,7 +115,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
     writerId: "regis_rajemisa_raolison",
     patch: {
       name: "Режис Радземиса-Раулизон",
-      years: "1913–1990",
+      years: "1913-1990",
       deathDate: "1990",
       works: ["Rakibolana malagasy"],
     },
@@ -142,7 +142,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
   {
     countryId: "malawi",
     writerId: "legson_kayira",
-    patch: { years: "ок. 1942–2012", birthDate: "" },
+    patch: { years: "ок. 1942-2012", birthDate: "" },
     evidence: [
       { provider: "Skagit Valley College Hall of Fame", url: "https://www.skagit.edu/hall-of-fame/inductees.html", checkedAt },
       { provider: "WorldCat", url: "https://search.worldcat.org/search?q=au%3A%22Kayira%2C+Legson%22", checkedAt },
@@ -159,7 +159,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
     },
     evidence: [
       { provider: "Howard University", url: "https://profiles.howard.edu/paul-tiyambe-zeleza", checkedAt },
-      { provider: "United States International University–Africa", url: "https://www.usiu.ac.ke/1813/gratitude-reflections-landmark-birthday", checkedAt },
+      { provider: "United States International University-Africa", url: "https://www.usiu.ac.ke/1813/gratitude-reflections-landmark-birthday", checkedAt },
     ],
     note: "Дата и место рождения исправлены по автобиографической университетской публикации; добавлен роман.",
   },
@@ -183,7 +183,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
     writerId: "kemala",
     patch: {
       fullName: "Ahmad Kamal Abdullah",
-      years: "1941–2021",
+      years: "1941-2021",
       birthDate: "1941-01-30",
       deathDate: "2021-10-27",
       birthPlace: "Гомбак, Селангор, Малайзия",
@@ -215,7 +215,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
   {
     countryId: "maldives",
     writerId: "abdulla_sodiq",
-    patch: { years: "ок. 1935–", birthDate: "1935", coordinates: undefined },
+    patch: { years: "ок. 1935-", birthDate: "1935", coordinates: undefined },
     evidence: [
       { provider: "SunOnline International", url: "https://english.sun.mv/94453", checkedAt },
       { provider: "Maldives National University Repository", url: "https://saruna.mnu.edu.mv/items/46fe73c3-d96a-4151-803c-86bb204fefb9", checkedAt },
@@ -238,7 +238,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
     patch: { birthPlace: "Сегу, Мали", works: ["Le Wassa ou les secrets d’une reine"] },
     evidence: [
       { provider: "Institut des Sciences Humaines du Mali", url: "https://www.ish-mali.ml/ish-web/storage/app/public/fichiers/a9tuwbTz6BoJJIRHG1GgcIlpk4xuc68PQGOMmBqS.pdf", checkedAt },
-      { provider: "University of Western Australia — African Literature", url: "https://aflit.arts.uwa.edu.au/BaKonareAdameEng.html", checkedAt },
+      { provider: "University of Western Australia - African Literature", url: "https://aflit.arts.uwa.edu.au/BaKonareAdameEng.html", checkedAt },
     ],
     note: "Место рождения Бамако исправлено на Сегу; добавлен роман.",
   },

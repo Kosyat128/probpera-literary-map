@@ -14,7 +14,7 @@ export const singapore: Country = {
 
       fullName: "Edwin Nadason Thumboo",
 
-      years: "1933–",
+      years: "1933-",
 
       birthDate: "1933-11-22",
 
@@ -71,7 +71,7 @@ export const singapore: Country = {
 
       fullName: "Kuo Pao Kun",
 
-      years: "1939–2002",
+      years: "1939-2002",
 
       birthDate: "1939-11-12",
 
@@ -126,7 +126,7 @@ export const singapore: Country = {
 
       fullName: "Claire Tham",
 
-      years: "1967–",
+      years: "1967-",
 
       birthDate: "1967-01-01",
 
@@ -179,7 +179,7 @@ export const singapore: Country = {
 
       fullName: "Josephine Chia",
 
-      years: "1951–",
+      years: "1951-",
 
       birthDate: "1951-01-01",
 

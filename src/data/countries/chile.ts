@@ -8,7 +8,7 @@ export const chile: Country = {
     {
       id: "alberto_blest_gana",
       name: "Альберто Блест Гана",
-      years: "1830–1920",
+      years: "1830-1920",
       birthDate: "1830-05-04",
       deathDate: "1920-11-09",
       birthPlace: "Сантьяго, Чили",
@@ -45,7 +45,7 @@ export const chile: Country = {
     {
       id: "baldomero_lillo",
       name: "Бальдомеро Лильо",
-      years: "1867–1923",
+      years: "1867-1923",
       birthDate: "1867-01-06",
       deathDate: "1923-09-10",
       birthPlace: "Лота, Чили",
@@ -81,7 +81,7 @@ export const chile: Country = {
     {
       id: "vicente_huidobro",
       name: "Висенте Уидобро",
-      years: "1893–1948",
+      years: "1893-1948",
       birthDate: "1893-01-10",
       deathDate: "1948-01-02",
       birthPlace: "Сантьяго, Чили",
@@ -118,7 +118,7 @@ export const chile: Country = {
         {
       id: "gabriela_mistral",
       name: "Габриэла Мистраль",
-      years: "1889–1957",
+      years: "1889-1957",
       birthDate: "1889-04-07",
       deathDate: "1957-01-10",
       birthPlace: "Викунья, Чили",
@@ -160,7 +160,7 @@ export const chile: Country = {
     {
       id: "pablo_neruda",
       name: "Пабло Неруда",
-      years: "1904–1973",
+      years: "1904-1973",
       birthDate: "1904-07-12",
       deathDate: "1973-09-23",
       birthPlace: "Парраль, Чили",
@@ -202,7 +202,7 @@ export const chile: Country = {
     {
       id: "nicanor_parra",
       name: "Никанор Парра",
-      years: "1914–2018",
+      years: "1914-2018",
       birthDate: "1914-09-05",
       deathDate: "2018-01-23",
       birthPlace: "Сан-Фабиан-де-Алико, Чили",
@@ -243,7 +243,7 @@ export const chile: Country = {
         {
       id: "jose_donoso",
       name: "Хосе Доносо",
-      years: "1924–1996",
+      years: "1924-1996",
       birthDate: "1924-10-05",
       deathDate: "1996-12-07",
       birthPlace: "Сантьяго, Чили",
@@ -283,7 +283,7 @@ export const chile: Country = {
     {
       id: "isabel_allende",
       name: "Исабель Альенде",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-08-02",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -322,7 +322,7 @@ export const chile: Country = {
     {
       id: "luis_sepúlveda",
       name: "Луис Сепульведа",
-      years: "1949–2020",
+      years: "1949-2020",
       birthDate: "1949-10-04",
       deathDate: "2020-04-16",
       birthPlace: "Овалье, Чили",
@@ -361,7 +361,7 @@ export const chile: Country = {
     {
       id: "diamela_eltit",
       name: "Диамела Эльтит",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-08-24",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -398,7 +398,7 @@ export const chile: Country = {
         {
       id: "roberto_bolano",
       name: "Роберто Боланьо",
-      years: "1953–2003",
+      years: "1953-2003",
       birthDate: "1953-04-28",
       deathDate: "2003-07-15",
       birthPlace: "Сантьяго, Чили",
@@ -408,7 +408,7 @@ export const chile: Country = {
         lng: -70.6693
       },
       portrait: "",
-      bio: "Чилийский писатель и поэт, один из самых влиятельных авторов испаноязычной литературы конца XX — начала XXI века. Его творчество стало символом нового этапа латиноамериканской прозы.",
+      bio: "Чилийский писатель и поэт, один из самых влиятельных авторов испаноязычной литературы конца XX - начала XXI века. Его творчество стало символом нового этапа латиноамериканской прозы.",
       works: [
         "2666",
         "Дикие детективы",
@@ -442,7 +442,7 @@ export const chile: Country = {
     {
       id: "alejandro_zambra",
       name: "Алехандро Самбра",
-      years: "1975–",
+      years: "1975-",
       birthDate: "1975-09-24",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -479,7 +479,7 @@ export const chile: Country = {
     {
       id: "lina_meruane",
       name: "Лина Меруане",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -516,7 +516,7 @@ export const chile: Country = {
     {
       id: "raul_zurita",
       name: "Рауль Сурита",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-01-10",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -554,7 +554,7 @@ export const chile: Country = {
         {
       id: "hernan_rivera_letelier",
       name: "Эрнан Ривера Летельер",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-07-11",
       birthPlace: "Талавера, Чили",
       coordinates: {
@@ -591,7 +591,7 @@ export const chile: Country = {
     {
       id: "alejandra_costamagna",
       name: "Алехандра Костаманья",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970-03-23",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -628,7 +628,7 @@ export const chile: Country = {
     {
       id: "carmen_martin_gaite_chile_relation",
       name: "Марта Брун",
-      years: "1897–1967",
+      years: "1897-1967",
       birthDate: "1897-10-09",
       deathDate: "1967-10-27",
       birthPlace: "Чильян, Чили",
@@ -664,7 +664,7 @@ export const chile: Country = {
     {
       id: "jose_miguel_varas",
       name: "Хосе Мигель Варас",
-      years: "1928–2011",
+      years: "1928-2011",
       birthDate: "1928-03-12",
       deathDate: "2011-09-23",
       birthPlace: "Сантьяго, Чили",
@@ -702,7 +702,7 @@ export const chile: Country = {
         {
       id: "marcela_serrano",
       name: "Марцела Серрано",
-      years: "1951–",
+      years: "1951-",
       birthDate: "1951-10-29",
       birthPlace: "Сантьяго, Чили",
       coordinates: {
@@ -739,7 +739,7 @@ export const chile: Country = {
     {
       id: "alejandro_jodorowsky_chile",
       name: "Алехандро Ходоровский",
-      years: "1929–",
+      years: "1929-",
       birthDate: "1929-02-17",
       birthPlace: "Токопилья, Чили",
       coordinates: {

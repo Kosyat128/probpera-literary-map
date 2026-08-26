@@ -10,7 +10,7 @@ export const bosnia: Country = {
       id: "mehmed_beg_kapetanovic",
       name: "Мехмед-бег Капетанович Любушак",
       fullName: "Mehmed-beg Kapetanović Ljubušak",
-      years: "1839–1902",
+      years: "1839-1902",
 
       birthDate: "1839-12-19",
       deathDate: "1902-07-29",
@@ -57,7 +57,7 @@ export const bosnia: Country = {
       name: "Алекса Шантич",
       fullName: "Aleksa Šantić",
 
-      years: "1868–1924",
+      years: "1868-1924",
 
       birthDate: "1868-05-27",
       deathDate: "1924-02-02",
@@ -104,7 +104,7 @@ export const bosnia: Country = {
       name: "Светозар Чорович",
       fullName: "Svetozar Ćorović",
 
-      years: "1875–1919",
+      years: "1875-1919",
 
       birthDate: "1875-05-29",
       deathDate: "1919-04-17",
@@ -150,7 +150,7 @@ export const bosnia: Country = {
       name: "Петар Кочич",
       fullName: "Petar Kočić",
 
-      years: "1877–1916",
+      years: "1877-1916",
 
       birthDate: "1877-06-29",
       deathDate: "1916-08-27",
@@ -197,7 +197,7 @@ export const bosnia: Country = {
       name: "Бранко Ћопич",
       fullName: "Branko Ćopić",
 
-      years: "1915–1984",
+      years: "1915-1984",
 
       birthDate: "1915-01-01",
       deathDate: "1984-03-26",
@@ -244,7 +244,7 @@ export const bosnia: Country = {
       name: "Абдулах Сидран",
       fullName: "Abdulah Sidran",
 
-      years: "1944–2024",
+      years: "1944-2024",
 
       birthDate: "1944-10-02",
       deathDate: "2024-03-23",
@@ -292,7 +292,7 @@ export const bosnia: Country = {
       name: "Александар Хемон",
       fullName: "Aleksandar Hemon",
 
-      years: "1964–",
+      years: "1964-",
 
       birthDate: "1964-09-09",
       deathDate: "",

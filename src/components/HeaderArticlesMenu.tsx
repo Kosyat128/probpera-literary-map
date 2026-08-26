@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
+import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import {
   articlePath,
   journalPath,
@@ -259,7 +260,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 ? `${localizedArticles.length} ${
                     localizedArticles.length === 1 ? "publication" : "publications"
                   } in the archive`
-                : `${localizedArticles.length} материалов в архиве`
+                : `${PUBLIC_ARCHIVE_ARTICLE_COUNT} материалов в архиве`
               : t("Полный архив журнала")}
           </span>
           <a

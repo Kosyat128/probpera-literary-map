@@ -26,7 +26,7 @@ export default function ConnectivityStatus() {
   return (
     <div className="connectivity-status" role="status">
       {!online ? (
-        <span>{t("Нет сети — доступны уже открытые материалы")}</span>
+        <span>{t("Нет сети - доступны уже открытые материалы")}</span>
       ) : (
         <>
           <span>{t("Доступна новая версия журнала")}</span>

@@ -36,7 +36,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     },
     evidence: [
       { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1997/fo/facts/", checkedAt },
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/dario-fo_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/dario-fo_%28Dizionario-Biografico%29/", checkedAt },
     ],
     note: "Все даты, произведения и Нобелевская премия подтверждены; текущее место рождения «Леньяно» ошибочно и должно быть заменено на Санджано в коммуне Леджуно.",
   },
@@ -63,7 +63,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     evidence: [
       { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/2172029/elena-ferrante/", checkedAt },
       { provider: "Padova University Press", url: "https://www.padovauniversitypress.it/it/publications/9788869381300", checkedAt },
-      { provider: "Elena Ferrante — официальный каталог произведений", url: "https://elenaferrante.com/works/", checkedAt },
+      { provider: "Elena Ferrante - официальный каталог произведений", url: "https://elenaferrante.com/works/", checkedAt },
     ],
     note: "Год рождения 1943 и Неаполь как место рождения не подтверждены для скрывающего личность автора и не должны подаваться как биографические факты; произведения подтверждены.",
   },
@@ -71,7 +71,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     countryId: "italy",
     writerId: "emilio_salgari",
     patch: {
-      years: "1862–1911",
+      years: "1862-1911",
       birthPlace: "Верона, Италия",
       deathPlace: "Турин, Италия",
       works: ["Чёрный корсар","Тигры Момпрачема","Тайны чёрных джунглей"],
@@ -90,7 +90,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       deathDate: "",
     },
     evidence: [
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/francesco-petrarca_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/francesco-petrarca_%28Dizionario-Biografico%29/", checkedAt },
       { provider: "University of Bologna", url: "https://www.unibo.it/en/university/who-we-are/our-history/famous-people-and-students/Petrarch", checkedAt },
       { provider: "Academy of American Poets", url: "https://poets.org/poet/petrarch", checkedAt },
     ],
@@ -106,7 +106,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       { provider: "Casa Leopardi", url: "https://www.giacomoleopardi.it/en/life-and-works/", checkedAt },
       { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/giacomo-leopardi", checkedAt },
     ],
-    note: "Даты и места подтверждены. «Бесконечность» — отдельное стихотворение, поэтому для поля works последовательнее перечислить книги и корпуса: «Песни», «Нравственные очерки», «Дзибальдоне».",
+    note: "Даты и места подтверждены. «Бесконечность» - отдельное стихотворение, поэтому для поля works последовательнее перечислить книги и корпуса: «Песни», «Нравственные очерки», «Дзибальдоне».",
   },
   {
     countryId: "italy",
@@ -116,7 +116,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       birthDate: "",
     },
     evidence: [
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giovan-battista-marino_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giovan-battista-marino_%28Dizionario-Biografico%29/", checkedAt },
       { provider: "Bibliothèque nationale de France", url: "https://data.bnf.fr/fr/ark:/12148/cb12158025x", checkedAt },
     ],
     note: "Текущая deathDate 1625-03-26 ошибочна. Авторитетные источники расходятся между 14 и 18 октября в дате рождения, поэтому birthDate удаляется вместо выбора одной версии; годы, города и произведения подтверждены.",
@@ -130,7 +130,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     },
     evidence: [
       { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1906/carducci/bibliography/", checkedAt },
-      { provider: "University of Bologna — Historical Archive", url: "https://archiviostorico.unibo.it/it/patrimonio-documentario/ritratti-di-docenti?record=132848", checkedAt },
+      { provider: "University of Bologna - Historical Archive", url: "https://archiviostorico.unibo.it/it/patrimonio-documentario/ritratti-di-docenti?record=132848", checkedAt },
       { provider: "Treccani", url: "https://www.treccani.it/enciclopedia/giosue-carducci_%28Enciclopedia-dell%27Italiano%29/", checkedAt },
     ],
     note: "Дата, место рождения и премия верны; следует добавить место смерти Болонья и исправить название Rime nuove с неточного «Новые стихи» на «Новые рифмы».",
@@ -144,7 +144,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       birthDate: "",
     },
     evidence: [
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giovanni-boccaccio_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giovanni-boccaccio_%28Dizionario-Biografico%29/", checkedAt },
       { provider: "Bibliothèque nationale de France", url: "https://www.bnf.fr/sites/default/files/2018-11/biblio%20boccace.pdf", checkedAt },
     ],
     note: "Точная birthDate 1313-06-16 не подтверждается и должна быть удалена. Место рождения сохраняется как честная альтернатива, а сокращённое «Фьяметта» уточняется до полного названия произведения.",
@@ -157,7 +157,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     },
     evidence: [
       { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1926/deledda/biographical/", checkedAt },
-      { provider: "Nobel Prize — award summary", url: "https://www.nobelprize.org/prizes/literature/1926/summary/", checkedAt },
+      { provider: "Nobel Prize - award summary", url: "https://www.nobelprize.org/prizes/literature/1926/summary/", checkedAt },
       { provider: "Rai Cultura", url: "https://www.raicultura.it/speciali/graziadeledda", checkedAt },
     ],
     note: "Даты, города и премия подтверждены. Произведение «Золото» не находится в авторитетных библиографиях Деледды и заменяется на подтверждённый роман «Пепел» (Cenere).",
@@ -185,8 +185,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       birthDate: "",
     },
     evidence: [
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/luigi-capuana_%28Dizionario-Biografico%29/", checkedAt },
-      { provider: "Treccani — Enciclopedia Italiana", url: "https://www.treccani.it/enciclopedia/luigi-capuana_%28Enciclopedia-Italiana%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/luigi-capuana_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Enciclopedia Italiana", url: "https://www.treccani.it/enciclopedia/luigi-capuana_%28Enciclopedia-Italiana%29/", checkedAt },
       { provider: "Università degli Studi G. d’Annunzio Chieti-Pescara", url: "https://www.dilass.unich.it/sites/st06/files/20-_vita_e_opere_di_l._capuana.pdf", checkedAt },
       { provider: "Санкт-Петербургская государственная специальная центральная библиотека", url: "https://www.gbs.spb.ru/ru/search/detail/?id=07c3b00313dd2e85f9bd721d023cb748", checkedAt },
     ],
@@ -229,7 +229,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
       birthDate: "",
     },
     evidence: [
-      { provider: "Treccani — Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giuseppe-eligio-silvio-felice-pellico_%28Dizionario-Biografico%29/", checkedAt },
+      { provider: "Treccani - Dizionario Biografico degli Italiani", url: "https://www.treccani.it/enciclopedia/giuseppe-eligio-silvio-felice-pellico_%28Dizionario-Biografico%29/", checkedAt },
       { provider: "Comune di Saluzzo", url: "https://comune.saluzzo.cn.it/vivere-il-comune/luoghi/casa-pellico-2-2/", checkedAt },
       { provider: "Ministero della Cultura / Archivio di Stato di Roma", url: "https://movio.beniculturali.it/asrm/ilteatronellazio/it/139/documenti/show/26/710", checkedAt },
       { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb46982719b", checkedAt },
@@ -244,9 +244,9 @@ export const writerBiographyPublicProfileFactCorrectionsBatch34 = [
     },
     evidence: [
       { provider: "University of Bologna", url: "https://www.unibo.it/en/university/who-we-are/our-history/famous-people-and-students/umberto-eco-1", checkedAt },
-      { provider: "University of Bologna — Historical Archive", url: "https://archiviostorico.unibo.it/it/patrimonio-documentario/ritratti-di-docenti?record=140809", checkedAt },
+      { provider: "University of Bologna - Historical Archive", url: "https://archiviostorico.unibo.it/it/patrimonio-documentario/ritratti-di-docenti?record=140809", checkedAt },
       { provider: "Treccani", url: "https://www.treccani.it/enciclopedia/umberto-eco_%28Enciclopedia-Italiana%29", checkedAt },
-      { provider: "University of Bologna — memorial profile", url: "https://www.unibo.it/en/university/the-university-of-bologna-mourns-the-death-of-umberto-eco", checkedAt },
+      { provider: "University of Bologna - memorial profile", url: "https://www.unibo.it/en/university/the-university-of-bologna-mourns-the-death-of-umberto-eco", checkedAt },
     ],
     note: "Даты и места подтверждены. «Имя розы» уже присутствует в workDetails, но отсутствует в основном массиве works и должно быть добавлено для полноты и единообразного отображения. Координаты текущей записи указывают на Турин, а не на Алессандрию; это отмечено для отдельной географической проверки без неподтверждённой ручной подгонки.",
   },

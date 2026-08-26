@@ -12,7 +12,7 @@ export const kazakhstan: Country = {
       name: "Абай Кунанбаев",
       fullName: "Abai Qunanbaiuly",
 
-      years: "1845–1904",
+      years: "1845-1904",
 
       birthDate: "1845-08-10",
       deathDate: "1904-07-06",
@@ -63,7 +63,7 @@ export const kazakhstan: Country = {
       name: "Ыбырай Алтынсарин",
       fullName: "Ybyrai Altynsarin",
 
-      years: "1841–1889",
+      years: "1841-1889",
 
       birthDate: "1841-10-20",
       deathDate: "1889-07-29",
@@ -113,7 +113,7 @@ export const kazakhstan: Country = {
       name: "Ахмет Байтурсынов",
       fullName: "Akhmet Baitursynov",
 
-      years: "1872–1937",
+      years: "1872-1937",
 
       birthDate: "1872-01-05",
       deathDate: "1937-12-08",
@@ -163,7 +163,7 @@ export const kazakhstan: Country = {
       name: "Мухтар Ауэзов",
       fullName: "Mukhtar Auezov",
 
-      years: "1897–1961",
+      years: "1897-1961",
 
       birthDate: "1897-09-28",
       deathDate: "1961-06-27",
@@ -212,7 +212,7 @@ export const kazakhstan: Country = {
       name: "Жусупбек Аймауытов",
       fullName: "Zhussipbek Aimauytov",
 
-      years: "1889–1931",
+      years: "1889-1931",
 
       birthDate: "1889-06-28",
       deathDate: "1931-04-21",
@@ -262,7 +262,7 @@ export const kazakhstan: Country = {
       name: "Магжан Жумабаев",
       fullName: "Magzhan Zhumabayev",
 
-      years: "1893–1938",
+      years: "1893-1938",
 
       birthDate: "1893-06-25",
       deathDate: "1938-03-19",
@@ -310,7 +310,7 @@ export const kazakhstan: Country = {
       name: "Ильяс Жансугуров",
       fullName: "Ilyas Zhansugurov",
 
-      years: "1894–1938",
+      years: "1894-1938",
 
       birthDate: "1894-05-14",
       deathDate: "1938-02-26",
@@ -358,7 +358,7 @@ export const kazakhstan: Country = {
       name: "Олжас Сулейменов",
       fullName: "Olzhas Suleimenov",
 
-      years: "1936–",
+      years: "1936-",
 
       birthDate: "1936-05-18",
       deathDate: "",
@@ -409,7 +409,7 @@ export const kazakhstan: Country = {
       name: "Абдижамил Нурпеисов",
       fullName: "Abdizhamil Nurpeisov",
 
-      years: "1924–2022",
+      years: "1924-2022",
 
       birthDate: "1924-10-22",
       deathDate: "2022-02-05",
@@ -457,7 +457,7 @@ export const kazakhstan: Country = {
       name: "Дулат Исабеков",
       fullName: "Dulat Isabekov",
 
-      years: "1942–",
+      years: "1942-",
 
       birthDate: "1942-12-20",
       deathDate: "",

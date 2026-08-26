@@ -269,7 +269,7 @@ async function fetchBatch(qids, batchNumber, batchCount) {
     languages: SELECTED_LABEL_LANGUAGES.join("|"),
     ids: qids.join("|"),
     // Keep the endpoint protected without failing a full snapshot refresh for
-    // the normal 5–6 second replication lag periodically reported by Wikidata.
+    // the normal 5-6 second replication lag periodically reported by Wikidata.
     maxlag: "10",
   });
   const url = `${WIKIDATA_ENDPOINT}?${query.toString()}`;

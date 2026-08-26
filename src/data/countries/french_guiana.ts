@@ -17,7 +17,7 @@ export const frenchGuiana: Country = {
     {
       id: "leon_gontran_damas",
       name: "Леон-Гонтан Дамас",
-      years: "1912–1978",
+      years: "1912-1978",
       birthDate: "1912-04-28",
       deathDate: "1978-01-22",
       birthPlace: "Кайенна, Французская Гвиана",

@@ -2,7 +2,7 @@ import type { Country } from "../types";
 
 export const papuaNewGuinea: Country = {
   id: "papua_new_guinea",
-  name: "Папуа — Новая Гвинея",
+  name: "Папуа - Новая Гвинея",
   code: "pg",
 
   writers: [
@@ -14,13 +14,13 @@ export const papuaNewGuinea: Country = {
 
       fullName: "Vincent Eri",
 
-      years: "1936–2015",
+      years: "1936-2015",
 
       birthDate: "1936-09-03",
 
       deathDate: "2015-05-25",
 
-      birthPlace: "Гулли, залив Папуа, Папуа — Новая Гвинея",
+      birthPlace: "Гулли, залив Папуа, Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -9.4438,
@@ -29,7 +29,7 @@ export const papuaNewGuinea: Country = {
 
       portrait: "",
 
-      bio: "Папуа-новогвинейский писатель, дипломат и государственный деятель. Автор первого опубликованного романа Папуа — Новой Гвинеи «The Crocodile», ставшего важной частью национальной литературы страны.",
+      bio: "Папуа-новогвинейский писатель, дипломат и государственный деятель. Автор первого опубликованного романа Папуа - Новой Гвинеи «The Crocodile», ставшего важной частью национальной литературы страны.",
 
       works: [
         "The Crocodile"
@@ -68,13 +68,13 @@ export const papuaNewGuinea: Country = {
 
       fullName: "Siri Gising",
 
-      years: "1939–",
+      years: "1939-",
 
       birthDate: "1939-01-01",
 
       deathDate: "",
 
-      birthPlace: "Папуа — Новая Гвинея",
+      birthPlace: "Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -6.315,
@@ -83,7 +83,7 @@ export const papuaNewGuinea: Country = {
 
       portrait: "",
 
-      bio: "Писатель и педагог Папуа — Новой Гвинеи. Один из авторов, связанных с развитием национального образования и письменной культуры страны.",
+      bio: "Писатель и педагог Папуа - Новой Гвинеи. Один из авторов, связанных с развитием национального образования и письменной культуры страны.",
 
       works: [
         "Mister Pip-related educational writings"
@@ -119,13 +119,13 @@ export const papuaNewGuinea: Country = {
 
       fullName: "Kati Thambe",
 
-      years: "XX–XXI век",
+      years: "XX-XXI век",
 
       birthDate: "",
 
       deathDate: "",
 
-      birthPlace: "Папуа — Новая Гвинея",
+      birthPlace: "Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -9.4438,
@@ -134,10 +134,10 @@ export const papuaNewGuinea: Country = {
 
       portrait: "",
 
-      bio: "Представитель современной литературы Папуа — Новой Гвинеи. Связан с развитием современной письменной культуры страны.",
+      bio: "Представитель современной литературы Папуа - Новой Гвинеи. Связан с развитием современной письменной культуры страны.",
 
       works: [
-        "Современная проза Папуа — Новой Гвинеи"
+        "Современная проза Папуа - Новой Гвинеи"
       ],
 
       genres: [
@@ -172,13 +172,13 @@ export const papuaNewGuinea: Country = {
 
       fullName: "Raymond Gat",
 
-      years: "XX–XXI век",
+      years: "XX-XXI век",
 
       birthDate: "",
 
       deathDate: "",
 
-      birthPlace: "Папуа — Новая Гвинея",
+      birthPlace: "Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -9.4438,
@@ -187,7 +187,7 @@ export const papuaNewGuinea: Country = {
 
       portrait: "",
 
-      bio: "Писатель и культурный деятель Папуа — Новой Гвинеи, связанный с развитием национального литературного пространства.",
+      bio: "Писатель и культурный деятель Папуа - Новой Гвинеи, связанный с развитием национального литературного пространства.",
 
       works: [
         "Литературные и культурные публикации"

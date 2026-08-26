@@ -8,7 +8,7 @@ export const barbados: Country = {
     {
       id: "george_lamming",
       name: "Джордж Лэмминг",
-      years: "1927–2022",
+      years: "1927-2022",
       birthDate: "1927-06-08",
       deathDate: "2022-06-04",
       birthPlace: "Бриджтаун, Барбадос",
@@ -47,7 +47,7 @@ export const barbados: Country = {
     {
       id: "kamau_brathwaite",
       name: "Камау Брэтуэйт",
-      years: "1930–2020",
+      years: "1930-2020",
       birthDate: "1930-05-11",
       deathDate: "2020-02-04",
       birthPlace: "Бриджтаун, Барбадос",
@@ -85,7 +85,7 @@ export const barbados: Country = {
     {
       id: "austin_clarke",
       name: "Остин Кларк",
-      years: "1934–2016",
+      years: "1934-2016",
       birthDate: "1934-07-26",
       deathDate: "2016-06-26",
       birthPlace: "Сент-Майкл, Барбадос",

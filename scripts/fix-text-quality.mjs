@@ -100,7 +100,7 @@ function normalizeStringValue(value, key, context) {
   }
 
   if (key === "years" && v.length === 0) {
-    v = "—";
+    v = "-";
   }
 
   v = v

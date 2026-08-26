@@ -14,13 +14,13 @@ export const tonga: Country = {
 
       fullName: "Epeli Hauʻofa",
 
-      years: "1939–2009",
+      years: "1939-2009",
 
       birthDate: "1939-12-07",
 
       deathDate: "2009-01-11",
 
-      birthPlace: "Папуа — Новая Гвинея",
+      birthPlace: "Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -21.1394,

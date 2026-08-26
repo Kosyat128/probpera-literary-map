@@ -12,7 +12,7 @@ export const turkey: Country = {
       name: "Юнус Эмре",
       fullName: "Yunus Emre",
 
-      years: "ок. 1238–1328",
+      years: "ок. 1238-1328",
 
       birthDate: "1238-01-01",
       deathDate: "1328-01-01",
@@ -62,7 +62,7 @@ export const turkey: Country = {
       name: "Фузули",
       fullName: "Muhammad Fuzuli",
 
-      years: "ок. 1483–1556",
+      years: "ок. 1483-1556",
 
       birthDate: "1483-01-01",
       deathDate: "1556-01-01",
@@ -113,7 +113,7 @@ export const turkey: Country = {
       name: "Намык Кемаль",
       fullName: "Namık Kemal",
 
-      years: "1840–1888",
+      years: "1840-1888",
 
       birthDate: "1840-12-21",
       deathDate: "1888-12-02",
@@ -164,7 +164,7 @@ export const turkey: Country = {
       name: "Халиде Эдиб Адывар",
       fullName: "Halide Edib Adıvar",
 
-      years: "1884–1964",
+      years: "1884-1964",
 
       birthDate: "1884-06-11",
       deathDate: "1964-01-09",
@@ -214,7 +214,7 @@ export const turkey: Country = {
       name: "Ахмет Хамди Танпынар",
       fullName: "Ahmet Hamdi Tanpınar",
 
-      years: "1901–1962",
+      years: "1901-1962",
 
       birthDate: "1901-06-23",
       deathDate: "1962-01-24",
@@ -263,7 +263,7 @@ export const turkey: Country = {
       name: "Назым Хикмет",
       fullName: "Nâzım Hikmet",
 
-      years: "1902–1963",
+      years: "1902-1963",
 
       birthDate: "1902-01-15",
       deathDate: "1963-06-03",
@@ -312,7 +312,7 @@ export const turkey: Country = {
       name: "Орхан Памук",
       fullName: "Orhan Pamuk",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952-06-07",
       deathDate: "",
@@ -365,7 +365,7 @@ export const turkey: Country = {
       name: "Элиф Шафак",
       fullName: "Elif Shafak",
 
-      years: "1971–",
+      years: "1971-",
 
       birthDate: "1971-10-25",
       deathDate: "",

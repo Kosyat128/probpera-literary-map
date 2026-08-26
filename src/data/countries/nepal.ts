@@ -14,7 +14,7 @@ export const nepal: Country = {
 
       fullName: "Bhanubhakta Acharya",
 
-      years: "1814–1868",
+      years: "1814-1868",
 
       birthDate: "1814-07-13",
 
@@ -29,7 +29,7 @@ export const nepal: Country = {
 
       portrait: "",
 
-      bio: "Непальский поэт, переводчик и основатель классической литературы на непальском языке. Считается Адикави — первым поэтом Непала. Его перевод «Рамаяны» сыграл огромную роль в развитии национальной литературы.",
+      bio: "Непальский поэт, переводчик и основатель классической литературы на непальском языке. Считается Адикави - первым поэтом Непала. Его перевод «Рамаяны» сыграл огромную роль в развитии национальной литературы.",
 
       works: [
         "Bhanubhakta Ramayana"
@@ -68,7 +68,7 @@ export const nepal: Country = {
 
       fullName: "Laxmi Prasad Devkota",
 
-      years: "1909–1959",
+      years: "1909-1959",
 
       birthDate: "1909-11-12",
 
@@ -124,7 +124,7 @@ export const nepal: Country = {
 
       fullName: "Bishweshwar Prasad Koirala",
 
-      years: "1914–1982",
+      years: "1914-1982",
 
       birthDate: "1914-09-08",
 
@@ -178,7 +178,7 @@ export const nepal: Country = {
 
       fullName: "Bishnu Kumari Waiba (Parijat)",
 
-      years: "1937–1993",
+      years: "1937-1993",
 
       birthDate: "1937-03-13",
 
@@ -230,7 +230,7 @@ export const nepal: Country = {
 
       fullName: "Manjushree Thapa",
 
-      years: "1968–",
+      years: "1968-",
 
       birthDate: "1968-01-01",
 
@@ -283,7 +283,7 @@ export const nepal: Country = {
 
       fullName: "Krishna Dharabasi",
 
-      years: "1959–",
+      years: "1959-",
 
       birthDate: "1959-01-01",
 

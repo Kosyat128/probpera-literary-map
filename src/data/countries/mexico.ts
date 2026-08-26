@@ -8,7 +8,7 @@ export const mexico: Country = {
     {
       id: "sor_juana_ines_de_la_cruz",
       name: "Сор Хуана Инес де ла Крус",
-      years: "1648–1695",
+      years: "1648-1695",
       birthDate: "1648-11-12",
       deathDate: "1695-04-17",
       birthPlace: "Сан-Мигель-Непантла, Новая Испания",
@@ -48,7 +48,7 @@ export const mexico: Country = {
     {
       id: "carlos_de_siguenza",
       name: "Карлос де Сигуэнса-и-Гонгора",
-      years: "1645–1700",
+      years: "1645-1700",
       birthDate: "1645-08-14",
       deathDate: "1700-08-22",
       birthPlace: "Мехико, Новая Испания",
@@ -83,7 +83,7 @@ export const mexico: Country = {
     {
       id: "jose_joaquin_fernandez_de_lizardi",
       name: "Хосе Хоакин Фернандес де Лисарди",
-      years: "1776–1827",
+      years: "1776-1827",
       birthDate: "1776-11-15",
       deathDate: "1827-06-21",
       birthPlace: "Мехико, Новая Испания",
@@ -119,7 +119,7 @@ export const mexico: Country = {
         {
       id: "ignacio_manuel_altamirano",
       name: "Игнасио Мануэль Альтамирано",
-      years: "1834–1893",
+      years: "1834-1893",
       birthDate: "1834-11-13",
       deathDate: "1893-02-13",
       birthPlace: "Тикстла, Мексика",
@@ -156,7 +156,7 @@ export const mexico: Country = {
     {
       id: "mariano_azuela",
       name: "Мариано Асуэла",
-      years: "1873–1952",
+      years: "1873-1952",
       birthDate: "1873-01-01",
       deathDate: "1952-03-01",
       birthPlace: "Лагос-де-Морено, Мексика",
@@ -195,7 +195,7 @@ export const mexico: Country = {
     {
       id: "manuel_gutierrez_najera",
       name: "Мануэль Гутьеррес Нахера",
-      years: "1859–1895",
+      years: "1859-1895",
       birthDate: "1859-12-22",
       deathDate: "1895-02-03",
       birthPlace: "Мехико, Мексика",
@@ -231,7 +231,7 @@ export const mexico: Country = {
     {
       id: "alfonso_reyes",
       name: "Альфонсо Рейес",
-      years: "1889–1959",
+      years: "1889-1959",
       birthDate: "1889-05-17",
       deathDate: "1959-12-27",
       birthPlace: "Монтеррей, Мексика",
@@ -270,7 +270,7 @@ export const mexico: Country = {
     {
       id: "jose_vasconcelos",
       name: "Хосе Васконселос",
-      years: "1882–1959",
+      years: "1882-1959",
       birthDate: "1882-02-28",
       deathDate: "1959-06-30",
       birthPlace: "Оахака, Мексика",
@@ -307,7 +307,7 @@ export const mexico: Country = {
         {
       id: "juan_rulfo",
       name: "Хуан Рульфо",
-      years: "1917–1986",
+      years: "1917-1986",
       birthDate: "1917-05-16",
       deathDate: "1986-01-07",
       birthPlace: "Саюла, Мексика",
@@ -346,7 +346,7 @@ export const mexico: Country = {
     {
       id: "octavio_paz",
       name: "Октавио Пас",
-      years: "1914–1998",
+      years: "1914-1998",
       birthDate: "1914-03-31",
       deathDate: "1998-04-19",
       birthPlace: "Мехико, Мексика",
@@ -388,7 +388,7 @@ export const mexico: Country = {
     {
       id: "carlos_fuentes",
       name: "Карлос Фуэнтес",
-      years: "1928–2012",
+      years: "1928-2012",
       birthDate: "1928-11-11",
       deathDate: "2012-05-15",
       birthPlace: "Панама",
@@ -429,7 +429,7 @@ export const mexico: Country = {
     {
       id: "elena_garro",
       name: "Элена Гарро",
-      years: "1916–1998",
+      years: "1916-1998",
       birthDate: "1916-12-11",
       deathDate: "1998-08-22",
       birthPlace: "Пуэбла, Мексика",
@@ -468,7 +468,7 @@ export const mexico: Country = {
         {
       id: "jose_emilio_pacheco",
       name: "Хосе Эмилио Пачеко",
-      years: "1939–2014",
+      years: "1939-2014",
       birthDate: "1939-06-30",
       deathDate: "2014-01-26",
       birthPlace: "Мехико, Мексика",
@@ -511,7 +511,7 @@ export const mexico: Country = {
     {
       id: "elena_poniatowska",
       name: "Елена Понятовска",
-      years: "1932–",
+      years: "1932-",
       birthDate: "1932-05-19",
       birthPlace: "Париж, Франция",
       coordinates: {
@@ -549,7 +549,7 @@ export const mexico: Country = {
     {
       id: "laura_esquivel",
       name: "Лаура Эскивель",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-09-30",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -586,7 +586,7 @@ export const mexico: Country = {
     {
       id: "javier_velasco",
       name: "Хавьер Веласко",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-11-18",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -622,7 +622,7 @@ export const mexico: Country = {
     {
       id: "valeria_luiselli",
       name: "Валерия Луиселли",
-      years: "1983–",
+      years: "1983-",
       birthDate: "1983-08-16",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -659,7 +659,7 @@ export const mexico: Country = {
         {
       id: "fernanda_melchor",
       name: "Фернанда Мельчор",
-      years: "1982–",
+      years: "1982-",
       birthDate: "1982-06-20",
       birthPlace: "Веракрус, Мексика",
       coordinates: {
@@ -696,7 +696,7 @@ export const mexico: Country = {
     {
       id: "guadalupe_nettel",
       name: "Гваделупе Неттель",
-      years: "1973–",
+      years: "1973-",
       birthDate: "1973-05-02",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -734,7 +734,7 @@ export const mexico: Country = {
     {
       id: "jorge_volpi",
       name: "Хорхе Вольпи",
-      years: "1968–",
+      years: "1968-",
       birthDate: "1968-07-10",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -771,7 +771,7 @@ export const mexico: Country = {
     {
       id: "cristina_rivera_garza",
       name: "Кристина Ривера Гарса",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-10-01",
       birthPlace: "Матаморос, Мексика",
       coordinates: {
@@ -808,7 +808,7 @@ export const mexico: Country = {
     {
       id: "alvaro_enrigue",
       name: "Альваро Энриге",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-08-06",
       birthPlace: "Гвадалахара, Мексика",
       coordinates: {
@@ -845,7 +845,7 @@ export const mexico: Country = {
         {
       id: "sergio_pitol",
       name: "Серхио Питоль",
-      years: "1933–2018",
+      years: "1933-2018",
       birthDate: "1933-03-18",
       deathDate: "2018-04-12",
       birthPlace: "Пуэбла, Мексика",
@@ -884,7 +884,7 @@ export const mexico: Country = {
     {
       id: "amparo_davila",
       name: "Ампаро Давила",
-      years: "1928–2020",
+      years: "1928-2020",
       birthDate: "1928-02-21",
       deathDate: "2020-04-18",
       birthPlace: "Пинос, Мексика",
@@ -923,7 +923,7 @@ export const mexico: Country = {
     {
       id: "yuri_herrera",
       name: "Юрий Эррера",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970-01-01",
       birthPlace: "Актопан, Мексика",
       coordinates: {
@@ -960,7 +960,7 @@ export const mexico: Country = {
     {
       id: "maria_fernanda_ampuero",
       name: "Мария Фернанда Ампуэро",
-      years: "1976–",
+      years: "1976-",
       birthDate: "1976-04-14",
       birthPlace: "Гуаякиль, Эквадор",
       coordinates: {

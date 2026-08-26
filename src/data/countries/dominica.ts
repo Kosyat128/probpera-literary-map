@@ -8,7 +8,7 @@ export const dominica: Country = {
     {
       id: "jean_rhys",
       name: "Жан Рис",
-      years: "1890–1979",
+      years: "1890-1979",
       birthDate: "1890-08-24",
       deathDate: "1979-05-14",
       birthPlace: "Розо, Доминика",
@@ -46,7 +46,7 @@ export const dominica: Country = {
     {
       id: "phyllis_shand_allfrey",
       name: "Филлис Шанд Олфри",
-      years: "1908–1986",
+      years: "1908-1986",
       birthDate: "1908-10-24",
       deathDate: "1986",
       birthPlace: "Розо, Доминика",

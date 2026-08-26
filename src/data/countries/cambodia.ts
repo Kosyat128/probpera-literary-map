@@ -11,7 +11,7 @@ export const cambodia: Country = {
       name: "Анг Дуонг",
       fullName: "Ang Duong",
 
-      years: "1796–1860",
+      years: "1796-1860",
 
       birthDate: "1796",
       deathDate: "1860",
@@ -58,7 +58,7 @@ export const cambodia: Country = {
       name: "Крам Нгэ",
       fullName: "Kram Ngoy",
 
-      years: "1865–1936",
+      years: "1865-1936",
 
       birthDate: "1865",
       deathDate: "1936",
@@ -104,7 +104,7 @@ export const cambodia: Country = {
       name: "Рим Кин",
       fullName: "Rim Kin",
 
-      years: "1911–1959",
+      years: "1911-1959",
 
       birthDate: "1911-11-08",
       deathDate: "1959-01-27",
@@ -151,7 +151,7 @@ export const cambodia: Country = {
       name: "Ноу Хач",
       fullName: "Nou Hach",
 
-      years: "1916–1975",
+      years: "1916-1975",
 
       birthDate: "1916",
       deathDate: "1975",
@@ -198,7 +198,7 @@ export const cambodia: Country = {
       name: "Сот Полин",
       fullName: "Soth Polin",
 
-      years: "1943–",
+      years: "1943-",
 
       birthDate: "1943",
       deathDate: "",

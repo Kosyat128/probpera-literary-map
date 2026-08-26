@@ -129,7 +129,7 @@ const markdown = [
         "",
         ...issues.map(
           (issue) =>
-            `- **${issue.severity} · ${issue.type}** — ${issue.title} (${issue.articleId}): ${issue.note}`
+            `- **${issue.severity} · ${issue.type}** - ${issue.title} (${issue.articleId}): ${issue.note}`
         ),
       ]
     : []),

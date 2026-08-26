@@ -10,7 +10,7 @@ export const ghana: Country = {
       id: "joseph_casely_hayford",
       name: "Джозеф Эфуа Кейсели Хейфорд",
       fullName: "Joseph Ephraim Casely Hayford",
-      years: "1866–1930",
+      years: "1866-1930",
 
       birthDate: "1866-05-24",
       deathDate: "1930-01-15",
@@ -56,7 +56,7 @@ export const ghana: Country = {
       id: "kofi_awoonor",
       name: "Кофи Авоноор",
       fullName: "Kofi Awoonor",
-      years: "1935–2013",
+      years: "1935-2013",
 
       birthDate: "1935-03-13",
       deathDate: "2013-09-21",
@@ -102,7 +102,7 @@ export const ghana: Country = {
       id: "ama_ata_aidoo",
       name: "Амма Ата Айду",
       fullName: "Ama Ata Aidoo",
-      years: "1942–2023",
+      years: "1942-2023",
 
       birthDate: "1942-03-23",
       deathDate: "2023-05-31",
@@ -149,7 +149,7 @@ export const ghana: Country = {
       id: "ayi_kwei_armah",
       name: "Айи Квей Арма",
       fullName: "Ayi Kwei Armah",
-      years: "1939–",
+      years: "1939-",
 
       birthDate: "1939-10-28",
       deathDate: "",
@@ -195,7 +195,7 @@ export const ghana: Country = {
       id: "nii_ayikwei_parkes",
       name: "Нии Айквей Паркс",
       fullName: "Nii Ayikwei Parkes",
-      years: "1974–",
+      years: "1974-",
 
       birthDate: "1974-01-01",
       deathDate: "",
@@ -241,7 +241,7 @@ export const ghana: Country = {
       id: "martin_egblewogbe",
       name: "Мартин Эгбевогбе",
       fullName: "Martin Egblewogbe",
-      years: "1975–",
+      years: "1975-",
 
       birthDate: "1975-01-01",
       deathDate: "",

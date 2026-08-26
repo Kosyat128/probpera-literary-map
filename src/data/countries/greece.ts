@@ -58,7 +58,7 @@ export const greece: Country = {
       name: "Сапфо",
       fullName: "Sappho",
 
-      years: "ок. 630–570 до н. э.",
+      years: "ок. 630-570 до н. э.",
 
       birthDate: "ок. 630 до н.э.",
       deathDate: "ок. 570 до н.э.",
@@ -104,7 +104,7 @@ export const greece: Country = {
       name: "Андреас Калвос",
       fullName: "Andreas Kalvos",
 
-      years: "1792–1869",
+      years: "1792-1869",
 
       birthDate: "1792-05-01",
       deathDate: "1869-11-03",
@@ -150,7 +150,7 @@ export const greece: Country = {
       name: "Дионисий Соломос",
       fullName: "Dionysios Solomos",
 
-      years: "1798–1857",
+      years: "1798-1857",
 
       birthDate: "1798-04-08",
       deathDate: "1857-02-09",
@@ -196,7 +196,7 @@ export const greece: Country = {
       name: "Никос Казандзакис",
       fullName: "Nikos Kazantzakis",
 
-      years: "1883–1957",
+      years: "1883-1957",
 
       birthDate: "1883-02-18",
       deathDate: "1957-10-26",
@@ -243,7 +243,7 @@ export const greece: Country = {
       name: "Георгос Сеферис",
       fullName: "Giorgos Seferis",
 
-      years: "1900–1971",
+      years: "1900-1971",
 
       birthDate: "1900-03-13",
       deathDate: "1971-09-20",
@@ -291,7 +291,7 @@ export const greece: Country = {
       name: "Яннис Рицос",
       fullName: "Giannis Ritsos",
 
-      years: "1909–1990",
+      years: "1909-1990",
 
       birthDate: "1909-05-01",
       deathDate: "1990-11-11",
@@ -337,7 +337,7 @@ export const greece: Country = {
       name: "Одисеас Элитис",
       fullName: "Odysseas Elytis",
 
-      years: "1911–1996",
+      years: "1911-1996",
 
       birthDate: "1911-11-02",
       deathDate: "1996-03-18",

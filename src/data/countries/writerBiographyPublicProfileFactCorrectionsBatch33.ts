@@ -19,7 +19,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     countryId: "iran",
     writerId: "forugh_farrokhzad",
     patch: {
-      years: "1934/1935–1967",
+      years: "1934/1935-1967",
       deathPlace: "Тегеран, Иран",
       birthDate: "",
       deathDate: "",
@@ -29,7 +29,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
       { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/forugh-farrokhzad", checkedAt },
       { provider: "Le Monde", url: "https://www.lemonde.fr/culture/article/2024/12/22/forough-farrokhzad-1934-1967-incarner-la-lumiere-sur-france-culture-la-voix-d-une-poetesse-iranienne-surgie-du-fond-de-la-nuit_6462402_3246.html", checkedAt },
     ],
-    note: "Текущие works подтверждаются. Авторитетные источники расходятся по году рождения (1934/1935) и дню смерти (13/14 февраля), поэтому точные birthDate и deathDate нельзя сохранять как бесспорные; место смерти — Тегеран.",
+    note: "Текущие works подтверждаются. Авторитетные источники расходятся по году рождения (1934/1935) и дню смерти (13/14 февраля), поэтому точные birthDate и deathDate нельзя сохранять как бесспорные; место смерти - Тегеран.",
   },
   {
     countryId: "iran",
@@ -42,7 +42,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     },
     evidence: [
       { provider: "Encyclopaedia Iranica", url: "https://www.iranicaonline.org/articles/hafez/", checkedAt },
-      { provider: "Encyclopaedia Iranica — Life and Times", url: "https://www.iranicaonline.org/articles/hafez-ii/", checkedAt },
+      { provider: "Encyclopaedia Iranica - Life and Times", url: "https://www.iranicaonline.org/articles/hafez-ii/", checkedAt },
       { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/hafez", checkedAt },
     ],
     note: "Текущие даты 1315-01-01 и 1390-01-01 являются искусственной точностью для приблизительно датированной биографии. «Диван Хафиза» подтверждён; полное имя стоит добавить в латинской нормализованной форме.",
@@ -65,7 +65,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     countryId: "iran",
     writerId: "omar_khayyam",
     patch: {
-      years: "ок. 1048–ок. 1131",
+      years: "ок. 1048-ок. 1131",
       birthPlace: "Нишапур, Хорасан",
       works: ["Рубаи, приписываемые Омару Хайяму"],
       birthDate: "",
@@ -82,7 +82,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     countryId: "iran",
     writerId: "saadi_shirazi",
     patch: {
-      years: "ок. 1210–1291/1292",
+      years: "ок. 1210-1291/1292",
       deathPlace: "Шираз, Иран",
       birthDate: "",
       deathDate: "",
@@ -102,7 +102,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     },
     evidence: [
       { provider: "Encyclopaedia Iranica", url: "https://www.iranicaonline.org/articles/hedayat-sadeq/", checkedAt },
-      { provider: "Encyclopaedia Iranica — Fiction", url: "https://www.iranicaonline.org/articles/hedayat-sadeq-i/", checkedAt },
+      { provider: "Encyclopaedia Iranica - Fiction", url: "https://www.iranicaonline.org/articles/hedayat-sadeq-i/", checkedAt },
       { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb120669834", checkedAt },
     ],
     note: "Текущая дата рождения подтверждена. Для deathDate сохранена дата 1951-04-09 по профильной Iranica; однодневное расхождение с каталогом BnF явно отмечено. Необходимо добавить отсутствующее deathPlace.",
@@ -111,7 +111,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     countryId: "iran",
     writerId: "shahrnush_parsipur",
     patch: {
-      years: "1946–2026",
+      years: "1946-2026",
       deathDate: "2026-07-03",
       works: ["Женщины без мужчин","Touba and the Meaning of Night","Kissing the Sword"],
     },
@@ -133,7 +133,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
       { provider: "The Guardian", url: "https://www.theguardian.com/world/2012/mar/22/simin-daneshvar", checkedAt },
       { provider: "Library of Congress", url: "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/women-writers.html", checkedAt },
     ],
-    note: "Текущие имя, точные даты, birthPlace и произведение подтверждены. Требуется только добавить подтверждённое место смерти — Тегеран; формулировку о первенстве следует делать конкретной, без общего суперлатива.",
+    note: "Текущие имя, точные даты, birthPlace и произведение подтверждены. Требуется только добавить подтверждённое место смерти - Тегеран; формулировку о первенстве следует делать конкретной, без общего суперлатива.",
   },
   {
     countryId: "iraq",
@@ -154,7 +154,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     writerId: "abu_nuwas",
     patch: {
       fullName: "Abu Ali al-Hasan ibn Hani al-Hakami",
-      years: "ок. 756–ок. 814",
+      years: "ок. 756-ок. 814",
       deathPlace: "Багдад",
       birthDate: "",
       deathDate: "",
@@ -171,7 +171,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
     writerId: "al_mutanabbi",
     patch: {
       fullName: "Abu al-Tayyib Ahmad ibn al-Husayn al-Mutanabbi",
-      years: "915/916–965",
+      years: "915/916-965",
       birthDate: "",
     },
     evidence: [
@@ -192,7 +192,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch33 = [
       { provider: "Encyclopædia Universalis", url: "https://www.universalis.fr/encyclopedie/badr-shakir-as-sayyab/", checkedAt },
       { provider: "Cambridge University Press", url: "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/badr-shakir-alsayyab-and-the-free-verse-movement/BE36EDE3207A246796E77B752EBBC842", checkedAt },
     ],
-    note: "Текущие точные birthDate и deathDate подтверждены BnF, а «Песнь дождя» — литературной энциклопедией. BirthPlace следует уточнить как Джейкур близ Басры и добавить deathPlace Кувейт.",
+    note: "Текущие точные birthDate и deathDate подтверждены BnF, а «Песнь дождя» - литературной энциклопедией. BirthPlace следует уточнить как Джейкур близ Басры и добавить deathPlace Кувейт.",
   },
   {
     countryId: "iraq",

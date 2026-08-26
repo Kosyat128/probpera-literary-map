@@ -83,385 +83,385 @@ export const writerBiographyLegacyCorrections = [
   correction(
     "australia",
     "gregory_david_roberts",
-    "Грегори Дэвид Робертс — писатель, композитор и художник. Его наиболее известный роман — «Шантарам».",
+    "Грегори Дэвид Робертс - писатель, композитор и художник. Его наиболее известный роман - «Шантарам».",
     "Hachette UK",
     "https://www.hachette.co.uk/contributor/gregory-david-roberts/"
   ),
   correction(
     "australia",
     "terry_hayes",
-    "Терри Хейс — писатель, сценарист и продюсер. Он написал шпионский роман «Я — Пилигрим».",
+    "Терри Хейс - писатель, сценарист и продюсер. Он написал шпионский роман «Я - Пилигрим».",
     "Simon & Schuster",
     "https://www.simonandschuster.com/authors/Terry-Hayes/15705144"
   ),
   correction(
     "cyprus",
     "alex_michaelides",
-    "Алекс Михаэлидес — писатель и сценарист. Его дебютный роман — психологический триллер «Безмолвный пациент».",
+    "Алекс Михаэлидес - писатель и сценарист. Его дебютный роман - психологический триллер «Безмолвный пациент».",
     "Library of Congress",
     "https://www.loc.gov/events/2021-national-book-festival/authors/item/n2018066440/alex-michaelides/"
   ),
   correction(
     "dominican_republic",
     "junot_diaz",
-    "Джуно Диас — американский писатель доминиканского происхождения. Роман «Краткая фантастическая жизнь Оскара Вао» принёс ему Пулитцеровскую премию за художественную книгу.",
+    "Джуно Диас - американский писатель доминиканского происхождения. Роман «Краткая фантастическая жизнь Оскара Вао» принёс ему Пулитцеровскую премию за художественную книгу.",
     "The Pulitzer Prizes",
     "https://www.pulitzer.org/winners/junot-diaz"
   ),
   correction(
     "england",
     "rafael_sabatini",
-    "Рафаэль Сабатини — писатель итальянского происхождения, создававший историко-приключенческую прозу на английском языке. К его романам относятся «Одиссея капитана Блада» и «Морской ястреб».",
+    "Рафаэль Сабатини - писатель итальянского происхождения, создававший историко-приключенческую прозу на английском языке. К его романам относятся «Одиссея капитана Блада» и «Морской ястреб».",
     "Rafael Sabatini Society",
     "https://www.rafaelsabatini.com/rsbio.html"
   ),
   correction(
     "england",
     "celia_rees",
-    "Селия Рис — британская писательница, автор книг для подростков. Среди её исторических романов — «Пираты».",
+    "Селия Рис - британская писательница, автор книг для подростков. Среди её исторических романов - «Пираты».",
     "Celia Rees",
     "https://www.celiarees.com/about"
   ),
   correction(
     "england",
     "ronald_delderfield",
-    "Рональд Делдерфилд — английский писатель и драматург. Он написал роман «Приключения Бена Ганна», продолжающий историю персонажа «Острова сокровищ».",
+    "Рональд Делдерфилд - английский писатель и драматург. Он написал роман «Приключения Бена Ганна», продолжающий историю персонажа «Острова сокровищ».",
     "Penguin Books",
     "https://www.penguin.co.uk/authors/311033/rf-delderfield"
   ),
   correction(
     "england",
     "ian_mcewan",
-    "Иэн Макьюэн — британский писатель и сценарист. Один из его наиболее известных романов — «Искупление».",
+    "Иэн Макьюэн - британский писатель и сценарист. Один из его наиболее известных романов - «Искупление».",
     "Ian McEwan",
     "https://www.ianmcewan.com/books/atonement.html"
   ),
   correction(
     "england",
     "hilary_mantel",
-    "Хилари Мантел — британская писательница и литературный критик. Её исторический роман «Волчий зал» удостоен Букеровской премии.",
+    "Хилари Мантел - британская писательница и литературный критик. Её исторический роман «Волчий зал» удостоен Букеровской премии.",
     "The Booker Prizes",
     "https://thebookerprizes.com/the-booker-library/authors/hilary-mantel"
   ),
   correction(
     "england",
     "joanne_harris",
-    "Джоанн Харрис — британская писательница, работающая в разных жанрах. Она написала роман «Пять четвертинок апельсина».",
+    "Джоанн Харрис - британская писательница, работающая в разных жанрах. Она написала роман «Пять четвертинок апельсина».",
     "Joanne Harris",
     "https://www.joanne-harris.co.uk/about/"
   ),
   correction(
     "england",
     "anthony_burgess",
-    "Энтони Бёрджесс — английский писатель и композитор. Его самый известный роман — антиутопия «Заводной апельсин».",
+    "Энтони Бёрджесс - английский писатель и композитор. Его самый известный роман - антиутопия «Заводной апельсин».",
     "International Anthony Burgess Foundation",
     "https://www.anthonyburgess.org/about-anthony-burgess/"
   ),
   correction(
     "england",
     "paula_hawkins",
-    "Пола Хокинс — британская писательница, автор психологических триллеров. Широкую известность ей принёс роман «Девушка в поезде».",
+    "Пола Хокинс - британская писательница, автор психологических триллеров. Широкую известность ей принёс роман «Девушка в поезде».",
     "Bloomsbury",
     "https://www.bloomsbury.com/uk/author/paula-hawkins/"
   ),
   correction(
     "england",
     "john_marrs",
-    "Джон Маррс — британский писатель, автор психологических триллеров и научно-фантастической прозы. Он написал роман «Пассажиры».",
+    "Джон Маррс - британский писатель, автор психологических триллеров и научно-фантастической прозы. Он написал роман «Пассажиры».",
     "John Marrs",
     "https://www.johnmarrsauthor.com/about"
   ),
   correction(
     "england",
     "stuart_turton",
-    "Стюарт Тёртон — британский писатель и журналист. Среди его романов — «Семь смертей Эвелины Хардкасл» и «Дьявол и тёмная вода».",
+    "Стюарт Тёртон - британский писатель и журналист. Среди его романов - «Семь смертей Эвелины Хардкасл» и «Дьявол и тёмная вода».",
     "Stuart Turton",
     "https://www.stuturton.com/about"
   ),
   correction(
     "england",
     "diane_setterfield",
-    "Диана Сеттерфилд — британская писательница. Её дебютный роман «Тринадцатая сказка» обращается к традиции готической прозы.",
+    "Диана Сеттерфилд - британская писательница. Её дебютный роман «Тринадцатая сказка» обращается к традиции готической прозы.",
     "Diane Setterfield",
     "https://www.dianesetterfield.com/bio/"
   ),
   correction(
     "england",
     "liz_jensen",
-    "Лиз Дженсен — британская писательница и автор сценариев. Она написала роман «Девятая жизнь Луи Дракса».",
+    "Лиз Дженсен - британская писательница и автор сценариев. Она написала роман «Девятая жизнь Луи Дракса».",
     "Liz Jensen",
     "https://www.lizjensen.com/test/about-liz/"
   ),
   correction(
     "england",
     "agatha_christie",
-    "Агата Кристи — английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».",
+    "Агата Кристи - английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».",
     "Agatha Christie Limited",
     "https://www.agathachristie.com/about-christie"
   ),
   correction(
     "england",
     "lee_child",
-    "Ли Чайлд — британский писатель, автор серии романов о Джеке Ричере. «Этаж смерти» стал первой книгой этого цикла.",
+    "Ли Чайлд - британский писатель, автор серии романов о Джеке Ричере. «Этаж смерти» стал первой книгой этого цикла.",
     "Macmillan",
     "https://us.macmillan.com/author/leechild"
   ),
   correction(
     "england",
     "frederick_forsyth",
-    "Фредерик Форсайт — британский писатель и журналист, известный политическими триллерами. Его дебютный роман — «День Шакала».",
+    "Фредерик Форсайт - британский писатель и журналист, известный политическими триллерами. Его дебютный роман - «День Шакала».",
     "Frederick Forsyth",
     "https://www.freddieforsyth.com/"
   ),
   correction(
     "england",
     "john_fowles",
-    "Джон Фаулз — английский писатель. Международное признание ему принёс первый опубликованный роман «Коллекционер».",
+    "Джон Фаулз - английский писатель. Международное признание ему принёс первый опубликованный роман «Коллекционер».",
     "Penguin Books",
     "https://www.penguin.co.uk/books/355032/the-collector-by-john-fowles/9780099470472"
   ),
   correction(
     "england",
     "alex_garland",
-    "Алекс Гарленд — британский писатель, сценарист и режиссёр. Его дебютный роман — «Пляж».",
+    "Алекс Гарленд - британский писатель, сценарист и режиссёр. Его дебютный роман - «Пляж».",
     "Penguin Random House",
     "https://www.penguinrandomhouse.com/authors/227370/alex-garland/"
   ),
   correction(
     "england",
     "john_le_carre",
-    "Джон ле Карре — литературный псевдоним британского писателя Дэвида Корнуэлла, автора шпионских романов. Среди его книг — «Маленькая барабанщица».",
+    "Джон ле Карре - литературный псевдоним британского писателя Дэвида Корнуэлла, автора шпионских романов. Среди его книг - «Маленькая барабанщица».",
     "John le Carré",
     "https://johnlecarre.com/biography/"
   ),
   correction(
     "france",
     "franck_thilliez",
-    "Франк Тилье — французский писатель, автор детективов и триллеров. Он написал роман «Головокружение».",
+    "Франк Тилье - французский писатель, автор детективов и триллеров. Он написал роман «Головокружение».",
     "Bibliothèque nationale de France",
     "https://www.bnf.fr/fr/mediatheque/franck-thilliez"
   ),
   correction(
     "italy",
     "emilio_salgari",
-    "Эмилио Сальгари — итальянский писатель, автор приключенческой прозы. К его книгам относится роман «Чёрный корсар».",
+    "Эмилио Сальгари - итальянский писатель, автор приключенческой прозы. К его книгам относится роман «Чёрный корсар».",
     "Treccani",
     "https://www.treccani.it/enciclopedia/emilio-salgari/"
   ),
   correction(
     "russia",
     "robert_shtilmark",
-    "Роберт Александрович Штильмарк — советский писатель и журналист. Он написал историко-приключенческий роман «Наследник из Калькутты».",
+    "Роберт Александрович Штильмарк - советский писатель и журналист. Он написал историко-приключенческий роман «Наследник из Калькутты».",
     "Национальная электронная библиотека",
     "https://rusneb.ru/catalog/000199_000009_003329369/"
   ),
   correction(
     "russia",
     "sergey_lukyanenko",
-    "Сергей Лукьяненко — российский писатель-фантаст. Роман «Лабиринт отражений» положил начало одноимённой трилогии о виртуальной реальности.",
+    "Сергей Лукьяненко - российский писатель-фантаст. Роман «Лабиринт отражений» положил начало одноимённой трилогии о виртуальной реальности.",
     "Сергей Лукьяненко",
     "https://lukianenko.ru/biography/"
   ),
   correction(
     "sweden",
     "stieg_larsson",
-    "Стиг Ларссон — шведский писатель и журналист. Он создал трилогию «Миллениум», открывающуюся романом «Девушка с татуировкой дракона».",
+    "Стиг Ларссон - шведский писатель и журналист. Он создал трилогию «Миллениум», открывающуюся романом «Девушка с татуировкой дракона».",
     "Norstedts Agency",
     "https://www.norstedtsagency.se/authors/stieg-larsson/"
   ),
   correction(
     "sweden",
     "lars_kepler",
-    "Ларс Кеплер — общий псевдоним шведских писателей Александры Коэльо Андориль и Александра Андориля. Их первый совместный роман — «Гипнотизёр».",
+    "Ларс Кеплер - общий псевдоним шведских писателей Александры Коэльо Андориль и Александра Андориля. Их первый совместный роман - «Гипнотизёр».",
     "Lars Kepler",
     "https://larskepler.com/about/"
   ),
   correction(
     "usa",
     "tim_powers",
-    "Тим Пауэрс — американский писатель, работающий в жанрах фантастики и фэнтези. Он написал роман «На странных волнах».",
+    "Тим Пауэрс - американский писатель, работающий в жанрах фантастики и фэнтези. Он написал роман «На странных волнах».",
     "Penguin Random House",
     "https://www.penguinrandomhouse.com/authors/24419/tim-powers/"
   ),
   correction(
     "usa",
     "howard_pyle",
-    "Говард Пайл — американский художник, иллюстратор и писатель. В «Книге пиратов» собраны его рассказы и иллюстрации о морских разбойниках.",
+    "Говард Пайл - американский художник, иллюстратор и писатель. В «Книге пиратов» собраны его рассказы и иллюстрации о морских разбойниках.",
     "Delaware Art Museum",
     "https://emuseum.delart.org/people/75/howard-pyle"
   ),
   correction(
     "usa",
     "donna_tartt",
-    "Донна Тартт — американская писательница. Её роман «Щегол» удостоен Пулитцеровской премии за художественную книгу.",
+    "Донна Тартт - американская писательница. Её роман «Щегол» удостоен Пулитцеровской премии за художественную книгу.",
     "The Pulitzer Prizes",
     "https://www.pulitzer.org/winners/donna-tartt"
   ),
   correction(
     "usa",
     "george_saunders",
-    "Джордж Сондерс — американский писатель и эссеист. Его первый роман «Линкольн в бардо» получил Букеровскую премию.",
+    "Джордж Сондерс - американский писатель и эссеист. Его первый роман «Линкольн в бардо» получил Букеровскую премию.",
     "The Booker Prizes",
     "https://thebookerprizes.com/the-booker-library/books/lincoln-in-the-bardo"
   ),
   correction(
     "usa",
     "min_jin_lee",
-    "Мин Джин Ли — американская писательница корейского происхождения. Она написала семейную сагу «Патинко», изданную по-русски как «Дорога в тысячу ли».",
+    "Мин Джин Ли - американская писательница корейского происхождения. Она написала семейную сагу «Патинко», изданную по-русски как «Дорога в тысячу ли».",
     "Min Jin Lee",
     "https://www.minjinlee.com/about"
   ),
   correction(
     "usa",
     "dan_brown",
-    "Дэн Браун — американский писатель, автор интеллектуальных триллеров. Международную известность ему принёс роман «Код да Винчи».",
+    "Дэн Браун - американский писатель, автор интеллектуальных триллеров. Международную известность ему принёс роман «Код да Винчи».",
     "Dan Brown",
     "https://danbrown.com/about/"
   ),
   correction(
     "usa",
     "andy_weir",
-    "Энди Вейр — американский писатель-фантаст. Его дебютный роман «Марсианин» сначала публиковался по частям в интернете.",
+    "Энди Вейр - американский писатель-фантаст. Его дебютный роман «Марсианин» сначала публиковался по частям в интернете.",
     "Andy Weir",
     "https://andyweirauthor.com/"
   ),
   correction(
     "usa",
     "suzanne_collins",
-    "Сьюзен Коллинз — американская писательница и сценарист. Она создала цикл антиутопических романов «Голодные игры».",
+    "Сьюзен Коллинз - американская писательница и сценарист. Она создала цикл антиутопических романов «Голодные игры».",
     "Scholastic",
     "https://www.scholastic.com/teachers/teaching-tools/articles/authors/suzanne-collins.html"
   ),
   correction(
     "usa",
     "gillian_flynn",
-    "Гиллиан Флинн — американская писательница и сценарист. Она написала психологический триллер «Исчезнувшая».",
+    "Гиллиан Флинн - американская писательница и сценарист. Она написала психологический триллер «Исчезнувшая».",
     "Penguin Random House",
     "https://www.penguinrandomhouse.com/authors/2191849/gillian-flynn/"
   ),
   correction(
     "usa",
     "dennis_lehane",
-    "Деннис Лихэйн — американский писатель и сценарист, автор криминальной прозы. Среди его романов — «Остров проклятых».",
+    "Деннис Лихэйн - американский писатель и сценарист, автор криминальной прозы. Среди его романов - «Остров проклятых».",
     "Dennis Lehane",
     "https://dennislehane.com/about-dennis/"
   ),
   correction(
     "usa",
     "thomas_harris",
-    "Томас Харрис — американский писатель, автор триллеров. Его роман «Молчание ягнят» продолжает цикл о Ганнибале Лектере.",
+    "Томас Харрис - американский писатель, автор триллеров. Его роман «Молчание ягнят» продолжает цикл о Ганнибале Лектере.",
     "Simon & Schuster",
     "https://www.simonandschuster.com/authors/thomas-harris/1451219"
   ),
   correction(
     "usa",
     "patricia_highsmith",
-    "Патриция Хайсмит — американская писательница, известная психологической криминальной прозой. Она создала персонажа Тома Рипли в романе «Талантливый мистер Рипли».",
+    "Патриция Хайсмит - американская писательница, известная психологической криминальной прозой. Она создала персонажа Тома Рипли в романе «Талантливый мистер Рипли».",
     "Penguin Random House",
     "https://www.penguinrandomhouse.com/authors/12941/patricia-highsmith/"
   ),
   correction(
     "usa",
     "blaine_harden",
-    "Блейн Харден — американский журналист и автор документальных книг. Он написал книгу «Побег из лагеря 14» о северокорейском перебежчике Син Дон Хёке.",
+    "Блейн Харден - американский журналист и автор документальных книг. Он написал книгу «Побег из лагеря 14» о северокорейском перебежчике Син Дон Хёке.",
     "Pan Macmillan",
     "https://www.panmacmillan.com/authors/blaine-harden/escape-from-camp-14/9780330519540"
   ),
   correction(
     "usa",
     "ransom_riggs",
-    "Рэнсом Риггз — американский писатель и режиссёр. Он создал цикл, начавшийся романом «Дом странных детей мисс Перегрин».",
+    "Рэнсом Риггз - американский писатель и режиссёр. Он создал цикл, начавшийся романом «Дом странных детей мисс Перегрин».",
     "Ransom Riggs",
     "https://www.ransomriggs.com/about"
   ),
   correction(
     "usa",
     "blake_crouch",
-    "Блейк Крауч — американский писатель и сценарист. Он написал научно-фантастический триллер «Тёмная материя».",
+    "Блейк Крауч - американский писатель и сценарист. Он написал научно-фантастический триллер «Тёмная материя».",
     "Blake Crouch",
     "https://blakecrouch.com/blake/"
   ),
   correction(
     "usa",
     "ernest_cline",
-    "Эрнест Клайн — американский писатель и сценарист. Его дебютный роман — «Первому игроку приготовиться».",
+    "Эрнест Клайн - американский писатель и сценарист. Его дебютный роман - «Первому игроку приготовиться».",
     "Penguin Random House",
     "https://www.penguinrandomhouse.com/authors/130867/ernest-cline/"
   ),
   correction(
     "usa",
     "james_rollins",
-    "Джеймс Роллинс — литературный псевдоним американского писателя Джеймса Чайковски, автора приключенческих триллеров. Среди его книг — роман «Царство костей».",
+    "Джеймс Роллинс - литературный псевдоним американского писателя Джеймса Чайковски, автора приключенческих триллеров. Среди его книг - роман «Царство костей».",
     "James Rollins",
     "https://jamesrollins.com/bio/"
   ),
   correction(
     "usa",
     "n_k_jemisin",
-    "Нора Кейт Джемисин — американская писательница-фантаст. Роман «Пятое время года» открывает её трилогию «Расколотая Земля».",
+    "Нора Кейт Джемисин - американская писательница-фантаст. Роман «Пятое время года» открывает её трилогию «Расколотая Земля».",
     "N. K. Jemisin",
     "https://nkjemisin.com/writing/the-fifth-season/"
   ),
   correction(
     "usa",
     "robert_ludlum",
-    "Роберт Ладлэм — американский писатель, автор шпионских триллеров. Роман «Идентификация Борна» положил начало циклу о Джейсоне Борне.",
+    "Роберт Ладлэм - американский писатель, автор шпионских триллеров. Роман «Идентификация Борна» положил начало циклу о Джейсоне Борне.",
     "Macmillan",
     "https://us.macmillan.com/author/robertludlum/"
   ),
   correction(
     "usa",
     "dan_simmons",
-    "Дэн Симмонс — американский писатель, работающий в жанрах фантастики, фэнтези и хоррора. Он написал исторический роман «Террор».",
+    "Дэн Симмонс - американский писатель, работающий в жанрах фантастики, фэнтези и хоррора. Он написал исторический роман «Террор».",
     "Hachette Book Group",
     "https://www.hachettebookgroup.com/contributor/dan-simmons/?lens=hachette-books"
   ),
   correction(
     "usa",
     "daniel_keyes",
-    "Дэниел Киз — американский писатель. Он написал документальный роман «Множественные умы Билли Миллигана», известный в русском переводе как «Таинственная история Билли Миллигана».",
+    "Дэниел Киз - американский писатель. Он написал документальный роман «Множественные умы Билли Миллигана», известный в русском переводе как «Таинственная история Билли Миллигана».",
     "Daniel Keyes",
     "https://www.danielkeyesauthor.com/dksbio.html"
   ),
   correction(
     "usa",
     "mark_danielewski",
-    "Марк Данилевский — американский писатель, экспериментирующий с композицией и оформлением текста. Его дебютный роман — «Дом листьев».",
+    "Марк Данилевский - американский писатель, экспериментирующий с композицией и оформлением текста. Его дебютный роман - «Дом листьев».",
     "Mark Z. Danielewski",
     "https://www.markzdanielewski.com/about"
   ),
   correction(
     "usa",
     "douglas_preston_lincoln_child",
-    "Дуглас Престон и Линкольн Чайлд — американские писатели и многолетние соавторы. Их первый совместный роман — «Реликт».",
+    "Дуглас Престон и Линкольн Чайлд - американские писатели и многолетние соавторы. Их первый совместный роман - «Реликт».",
     "Preston & Child",
     "https://www.prestonchild.com/"
   ),
   correction(
     "usa",
     "dean_koontz",
-    "Дин Кунц — американский писатель, автор триллеров, фантастики и хоррора. Среди его романов — «Ложная память».",
+    "Дин Кунц - американский писатель, автор триллеров, фантастики и хоррора. Среди его романов - «Ложная память».",
     "Dean Koontz",
     "https://www.deankoontz.com/about/about-dean/"
   ),
   correction(
     "usa",
     "michael_connelly",
-    "Майкл Коннелли — американский писатель и журналист, автор криминальных романов. «Пятый свидетель» входит в цикл об адвокате Микки Холлере.",
+    "Майкл Коннелли - американский писатель и журналист, автор криминальных романов. «Пятый свидетель» входит в цикл об адвокате Микки Холлере.",
     "Michael Connelly",
     "https://www.michaelconnelly.com/writing/thefifthwitness/"
   ),
   correction(
     "usa",
     "john_irving",
-    "Джон Ирвинг — американский писатель и сценарист. Он написал роман «Правила виноделов».",
+    "Джон Ирвинг - американский писатель и сценарист. Он написал роман «Правила виноделов».",
     "John Irving",
     "https://john-irving.com/the-cider-house-rules/"
   ),
   correction(
     "usa",
     "tom_clancy",
-    "Том Клэнси — американский писатель, известный военно-политическими триллерами. Его дебютный роман — «Охота за „Красным Октябрём“».",
+    "Том Клэнси - американский писатель, известный военно-политическими триллерами. Его дебютный роман - «Охота за „Красным Октябрём“».",
     "Tom Clancy",
     "https://tomclancy.com/"
   ),
@@ -486,18 +486,18 @@ export const writerIdentityCorrections = [
       id: "marta_brunet",
       name: "Марта Брунет",
       fullName: "Marta Brunet",
-      years: "1897–1967",
+      years: "1897-1967",
       birthDate: "1897-08-09",
       deathDate: "1967-10-27",
       birthPlace: "Чильян, Чили",
       deathPlace: "Монтевидео, Уругвай",
-      bio: "Марта Брунет — чилийская писательница, создавшая в прозе выразительный мир юга Чили и его сельских сообществ. Её первый роман «Montaña adentro» вышел в 1923 году; позднее она также служила культурным представителем Чили за рубежом.",
+      bio: "Марта Брунет - чилийская писательница, создавшая в прозе выразительный мир юга Чили и его сельских сообществ. Её первый роман «Montaña adentro» вышел в 1923 году; позднее она также служила культурным представителем Чили за рубежом.",
       works: ["Montaña adentro"],
       genres: ["проза"],
     },
     evidence: [
       {
-        provider: "Memoria Chilena — Biblioteca Nacional de Chile",
+        provider: "Memoria Chilena - Biblioteca Nacional de Chile",
         url: "https://www.memoriachilena.gob.cl/602/w3-article-3600.html",
         checkedAt,
       },
@@ -516,12 +516,12 @@ export const writerIdentityCorrections = [
       id: "kataoka_teppei",
       name: "Катаока Тэппэй",
       fullName: "Kataoka Teppei",
-      years: "1894–1944",
+      years: "1894-1944",
       birthDate: "1894-02-02",
       deathDate: "1944-12-25",
       birthPlace: "префектура Окаяма, Япония",
       deathPlace: "",
-      bio: "Катаока Тэппэй — японский писатель, один из участников круга журнала «Бунгэй дзидай» и движения синканкаку-ха. Позднее он обращался к пролетарской, а затем к массовой литературе.",
+      bio: "Катаока Тэппэй - японский писатель, один из участников круга журнала «Бунгэй дзидай» и движения синканкаку-ха. Позднее он обращался к пролетарской, а затем к массовой литературе.",
       works: [],
       genres: ["проза"],
     },
@@ -559,7 +559,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "england",
     writerId: "hilary_mantel",
     patch: {
-      years: "1952–2022",
+      years: "1952-2022",
       birthDate: "1952-07-06",
       deathDate: "2022-09-22",
     },
@@ -581,7 +581,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "england",
     writerId: "ian_mcewan",
     patch: {
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-06-21",
     },
     evidence: [
@@ -602,7 +602,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "england",
     writerId: "joanne_harris",
     patch: {
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964",
     },
     evidence: [
@@ -624,7 +624,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "john_le_carre",
     patch: {
       fullName: "David John Moore Cornwell",
-      years: "1931–2020",
+      years: "1931-2020",
       birthDate: "1931-10-19",
       deathDate: "2020-12-12",
     },
@@ -646,7 +646,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "england",
     writerId: "oliver_goldsmith",
     patch: {
-      years: "1728/1730–1774",
+      years: "1728/1730-1774",
       birthDate: "",
     },
     evidence: [
@@ -668,7 +668,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "lupe_rumazo",
     patch: {
       fullName: "Lupe Rumazo",
-      years: "1933–",
+      years: "1933-",
       birthDate: "1933-10-14",
       deathDate: "",
       deathPlace: "",
@@ -686,7 +686,7 @@ export const writerPublicProfileFactCorrections = [
         checkedAt,
       },
     ],
-    note: "Replaces the false 1904–2004 life dates with the documented 1933 birth date, removes the unsupported death date and publishes two documented works only in the public writer profile.",
+    note: "Replaces the false 1904-2004 life dates with the documented 1933 birth date, removes the unsupported death date and publishes two documented works only in the public writer profile.",
   },
   {
     countryId: "egypt",
@@ -759,7 +759,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "frederick_forsyth",
     patch: {
       fullName: "Frederick Forsyth",
-      years: "1938–2025",
+      years: "1938-2025",
       birthDate: "1938",
       deathDate: "2025",
     },
@@ -793,7 +793,7 @@ export const writerPublicProfileFactCorrections = [
         checkedAt,
       },
       {
-        provider: "OpenEdition Books — EuroPhilosophie Éditions",
+        provider: "OpenEdition Books - EuroPhilosophie Éditions",
         url: "https://books.openedition.org/europhilosophie/1892",
         checkedAt,
       },
@@ -808,12 +808,12 @@ export const writerPublicProfileFactCorrections = [
     },
     evidence: [
       {
-        provider: "Lex — National Encyclopedia of Denmark",
+        provider: "Lex - National Encyclopedia of Denmark",
         url: "https://lex.dk/H.C._Andersen",
         checkedAt,
       },
       {
-        provider: "Hans Christian Andersen Centre — University of Southern Denmark",
+        provider: "Hans Christian Andersen Centre - University of Southern Denmark",
         url: "https://andersen.sdu.dk/liv/",
         checkedAt,
       },
@@ -828,7 +828,7 @@ export const writerPublicProfileFactCorrections = [
     },
     evidence: [
       {
-        provider: "Lex — National Encyclopedia of Denmark",
+        provider: "Lex - National Encyclopedia of Denmark",
         url: "https://lex.dk/Jacob_Paludan",
         checkedAt,
       },
@@ -853,7 +853,7 @@ export const writerPublicProfileFactCorrections = [
         checkedAt,
       },
       {
-        provider: "Lex — National Encyclopedia of Denmark",
+        provider: "Lex - National Encyclopedia of Denmark",
         url: "https://lex.dk/Peter_H%C3%B8eg",
         checkedAt,
       },
@@ -865,7 +865,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "aden_robleh_awaleh",
     patch: {
       name: "Аден Робле Авале",
-      years: "1941–2014",
+      years: "1941-2014",
       birthDate: "1941",
       deathDate: "2014-10-31",
       birthPlace: "Али-Сабих, Джибути",
@@ -874,7 +874,7 @@ export const writerPublicProfileFactCorrections = [
     },
     evidence: [
       {
-        provider: "La Nation — République de Djibouti",
+        provider: "La Nation - République de Djibouti",
         url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/",
         checkedAt,
       },
@@ -980,12 +980,12 @@ export const writerPublicProfileFactCorrections = [
     },
     evidence: [
       {
-        provider: "Takam Tikou — Bibliothèque nationale de France",
+        provider: "Takam Tikou - Bibliothèque nationale de France",
         url: "https://takamtikou.bnf.fr/sites/default/files/d6/Bibliographie_Afrique_novembre_2011.pdf",
         checkedAt,
       },
       {
-        provider: "Université de Lorraine — Écritures",
+        provider: "Université de Lorraine - Écritures",
         url: "https://ecritures.univ-lorraine.fr/sites/default/files/users/documents/livres/lmc_afr_04_bambara_entier.pdf",
         checkedAt,
       },
@@ -1068,7 +1068,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "alemseged_tesfai",
     patch: {
       name: "Алемсегед Тесфай",
-      years: "1944–",
+      years: "1944-",
       birthDate: "1944",
       works: ["The Other War", "An African People’s Quest for Freedom and Justice"],
     },
@@ -1110,7 +1110,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "ethiopia",
     writerId: "bealu_girma",
     patch: {
-      years: "1939–1984",
+      years: "1939-1984",
       birthDate: "1939",
     },
     evidence: [
@@ -1132,7 +1132,7 @@ export const writerPublicProfileFactCorrections = [
     writerId: "fredrika_bremer",
     patch: {
       fullName: "Fredrika Bremer",
-      years: "1801–1865",
+      years: "1801-1865",
       birthDate: "1801-08-17",
       deathDate: "1865-12-31",
       works: ["Соседи", "Херта"],
@@ -1180,13 +1180,13 @@ export const writerPublicProfileFactCorrections = [
     countryId: "france",
     writerId: "francois_rabelais",
     patch: {
-      years: "1483/1494–1553",
+      years: "1483/1494-1553",
       birthDate: "",
       birthPlace: "окрестности Шинона, Франция (предположительно)",
     },
     evidence: [
       {
-        provider: "Musée Rabelais — Maison de la Devinière",
+        provider: "Musée Rabelais - Maison de la Devinière",
         url: "https://www.musee-rabelais.fr/le-musee/rabelais/sa-vie/",
         checkedAt,
       },
@@ -1222,7 +1222,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "georgia",
     writerId: "galaktion_tabidze",
     patch: {
-      years: "1891–1959",
+      years: "1891-1959",
       birthDate: "1891-11-17",
     },
     evidence: [
@@ -1290,7 +1290,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "germany",
     writerId: "sebastian_brant",
     patch: {
-      years: "1458–1521",
+      years: "1458-1521",
       birthDate: "1458",
     },
     evidence: [
@@ -1345,7 +1345,7 @@ export const writerPublicProfileFactCorrections = [
         checkedAt,
       },
       {
-        provider: "Nii Ayikwei Parkes — official site",
+        provider: "Nii Ayikwei Parkes - official site",
         url: "https://niiparkes.com/open/profile/cv/?aid=235&sa=0",
         checkedAt,
       },
@@ -1365,7 +1365,7 @@ export const writerPublicProfileFactCorrections = [
         checkedAt,
       },
       {
-        provider: "Ionian University — POLYSEMi",
+        provider: "Ionian University - POLYSEMi",
         url: "https://polysemi.di.ionio.gr/index.php/2019/08/29/andreas-kalvos-2/",
         checkedAt,
       },
@@ -1397,7 +1397,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "guatemala",
     writerId: "francisco_alejandro_mendez",
     patch: {
-      years: "1964–2026",
+      years: "1964-2026",
       deathDate: "2026-03-28",
     },
     evidence: [
@@ -1463,7 +1463,7 @@ export const writerPublicProfileFactCorrections = [
     },
     evidence: [
       {
-        provider: "Literafro — Universidade Federal de Minas Gerais",
+        provider: "Literafro - Universidade Federal de Minas Gerais",
         url: "https://www.letras.ufmg.br/literafro/literafricas/literatura-da-guine-bissau/1581-wellington-marcal-de-carvalho-abdulai-sila",
         checkedAt: batch31CheckedAt,
       },
@@ -1519,7 +1519,7 @@ export const writerPublicProfileFactCorrections = [
     countryId: "haiti",
     writerId: "franketienne",
     patch: {
-      years: "1936–2025",
+      years: "1936-2025",
       deathDate: "2025-02-20",
       birthPlace: "Равин-Сеш, Артибонит, Гаити",
       deathPlace: "Дельма, Гаити",
@@ -1701,7 +1701,7 @@ export type QuarantinedWriterIdentity = {
  * delete the source-country data.
  */
 export const quarantinedWriterIdentities = [
-  ["portugal", "augusto_abreu", "identity-not-established", "No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927–2011 dates or attributable bibliography."],
+  ["portugal", "augusto_abreu", "identity-not-established", "No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927-2011 dates or attributable bibliography."],
   ["qatar", "ahmad_al_mahmoud", "identity-not-established", "No authoritative source establishes the claimed male Qatari writer and poet born in 1957; the card risks conflating several different people with similar names."],
   ["qatar", "jamal_fayiz_al_maliki", "identity-not-established", "Authoritative Qatari sources identify prose writer Jamal Fayiz Khamis Al-Saeed, born in 1964, not the claimed poet Jamal Fayiz Al-Maliky born in 1953; any remap must be explicit."],
   ["eritrea", "hadish_haile", "identity-not-established", "No institutional authority record or attributable bibliography establishes the claimed Eritrean writer."],
@@ -1731,7 +1731,7 @@ export const quarantinedWriterIdentities = [
   ["burundi", "gaetan_muschimyimana", "identity-not-established", "No authoritative literary identity or bibliographic work match was established for this card."],
   ["bahamas", "cyril_bray", "identity-not-established", "No authoritative catalog match establishes the claimed Bahamian literary identity; the record remains in the internal source archive only."],
   ["bahamas", "wallace_whitfield", "identity-not-established", "No authoritative catalog match establishes the claimed Bahamian literary identity; available results mix the name with other people."],
-  ["andorra", "josep_fonbernat", "identity-not-established", "No authoritative source establishes the claimed contemporary Andorran author; the similarly named Josep Fontbernat i Verdaguer (1896–1977) is a different person."],
+  ["andorra", "josep_fonbernat", "identity-not-established", "No authoritative source establishes the claimed contemporary Andorran author; the similarly named Josep Fontbernat i Verdaguer (1896-1977) is a different person."],
   ["antigua_and_barbuda", "alison_hughes", "cross-country-identity-conflict", "Institutional publisher biographies identify a Canadian children's writer from Edmonton, not the claimed Antiguan author and works."],
   ["argentina", "adolfo_perez_zelas", "duplicate-or-wrong-id", "The id does not identify the displayed Adolfo Bioy Casares duplicate."],
   ["argentina", "alfredo_bryce_echenique", "cross-country-service-record", "Peruvian writer duplicated in Argentina with an explicit non-inclusion note."],
@@ -1765,7 +1765,7 @@ export const quarantinedWriterIdentities = [
   ["gabon", "florentin_moussavou_nzigu", "identity-not-established", "The exact literary identity, Nzigu name component and attributed bibliography are not established; checked institutional sources instead document a Gabonese public official with a similar name."],
   ["gabon", "juste_auguste_kotto", "identity-not-established", "No authoritative literary identity or attributable bibliography was established in the checked BnF and WorldCat catalogs."],
   ["gambia", "baaba_jobarteh", "identity-not-established", "The card appears to conflate names from West African musical traditions; no authoritative literary identity or attributable bibliography was established."],
-  ["grenada", "julian_fedon", "identity-not-established", "Institutional sources identify the historical Julien Fédon who led the 1795–1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."],
+  ["grenada", "julian_fedon", "identity-not-established", "Institutional sources identify the historical Julien Fédon who led the 1795-1796 rebellion, not the claimed twentieth-century Grenadian writer; no attributable modern literary identity or bibliography was established."],
   ["guinea_bissau", "antonio_aurelio_gomes", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Guinea-Bissauan writer; the card remains in the internal source archive only."],
   ["guyana", "roshni_kempadoo", "cross-country-identity-conflict", "The card conflates British-Guyanese visual artist Roshini Kempadoo with Guyanese novelist Oonya Kempadoo; the attributed novels Buxton Spice and Tide Running belong to Oonya Kempadoo."],
   ["laos", "visuth_phommasane", "identity-not-established", "No independent institutional authority record or attributable bibliography establishes the claimed Lao literary identity; the card remains in the internal source archive only."],
@@ -1782,9 +1782,9 @@ export const quarantinedWriterIdentities = [
   ["madagascar", "nirina_lua", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Malagasy poet; the Russian and Latin names also conflict."],
   ["maldives", "amin_jameel", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Maldivian writer, exact dates or language scholarship."],
   ["mauritania", "hamed_ould_hamdane", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Mauritanian writer, 1957 birth year or literary activity."],
-  ["monaco", "jean_baptiste_barla", "cross-country-identity-conflict", "Official French museum records identify Jean-Baptiste Barla (1817–1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer."],
+  ["monaco", "jean_baptiste_barla", "cross-country-identity-conflict", "Official French museum records identify Jean-Baptiste Barla (1817-1896) as a Nice-born botanist and mycologist, not the claimed Monaco writer."],
   ["namibia", "gabi_stolz", "identity-not-established", "No unique national-library authority record or attributable work establishes Gabi Stolz as the claimed Namibia-linked German-language writer born in 1956."],
-  ["namibia", "gustav_frolich", "cross-country-identity-conflict", "German authority records identify Gustav Frölich (1879–1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year."],
+  ["namibia", "gustav_frolich", "cross-country-identity-conflict", "German authority records identify Gustav Frölich (1879-1940) as an agricultural scientist, not the claimed Namibia-linked writer; the source card also gives the wrong death year."],
   ["namibia", "ndapewaoshali_shikongo", "identity-not-established", "A first-party site establishes a Namibian writer using the single name Ndapewoshali, but not the Shikongo surname, 1993 birth year or children's-book identity claimed by this card."],
   ["nauru", "michael_francis", "identity-not-established", "The generic name, unsupported 1960 birth year and missing bibliography do not establish a unique Nauruan literary identity in the checked national and international library catalogs."],
   ["new_zealand", "steven_baker", "cross-country-identity-conflict", "The id and displayed name Steven Baker are conflated with Steven Roger Fischer: the attributed works belong to Fischer, while no authoritative source establishes a matching New Zealand writer named Steven Baker."],

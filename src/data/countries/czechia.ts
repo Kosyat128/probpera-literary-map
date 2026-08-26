@@ -11,7 +11,7 @@ export const czechia: Country = {
       name: "Ян Амос Коменский",
       fullName: "Jan Amos Komenský",
 
-      years: "1592–1670",
+      years: "1592-1670",
 
       birthDate: "1592-03-28",
       deathDate: "1670-11-15",
@@ -58,7 +58,7 @@ export const czechia: Country = {
       name: "Карел Гинек Маха",
       fullName: "Karel Hynek Mácha",
 
-      years: "1810–1836",
+      years: "1810-1836",
 
       birthDate: "1810-11-16",
       deathDate: "1836-11-06",
@@ -104,7 +104,7 @@ export const czechia: Country = {
       name: "Божена Немцова",
       fullName: "Božena Němcová",
 
-      years: "1820–1862",
+      years: "1820-1862",
 
       birthDate: "1820-02-04",
       deathDate: "1862-01-21",
@@ -150,7 +150,7 @@ export const czechia: Country = {
       name: "Алоис Ирасек",
       fullName: "Alois Jirásek",
 
-      years: "1851–1930",
+      years: "1851-1930",
 
       birthDate: "1851-08-23",
       deathDate: "1930-03-12",
@@ -197,7 +197,7 @@ export const czechia: Country = {
       name: "Ярослав Гашек",
       fullName: "Jaroslav Hašek",
 
-      years: "1883–1923",
+      years: "1883-1923",
 
       birthDate: "1883-04-30",
       deathDate: "1923-01-03",
@@ -244,7 +244,7 @@ export const czechia: Country = {
       name: "Карел Чапек",
       fullName: "Karel Čapek",
 
-      years: "1890–1938",
+      years: "1890-1938",
 
       birthDate: "1890-01-09",
       deathDate: "1938-12-25",
@@ -293,7 +293,7 @@ export const czechia: Country = {
       name: "Милан Кундера",
       fullName: "Milan Kundera",
 
-      years: "1929–2023",
+      years: "1929-2023",
 
       birthDate: "1929-04-01",
       deathDate: "2023-07-11",

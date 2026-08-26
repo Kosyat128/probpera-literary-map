@@ -14,7 +14,7 @@ export const samoa: Country = {
 
       fullName: "Albert Tuaopepe Wendt",
 
-      years: "1939–",
+      years: "1939-",
 
       birthDate: "1939-10-27",
 
@@ -74,7 +74,7 @@ export const samoa: Country = {
 
       fullName: "Sia Figiel",
 
-      years: "1967–",
+      years: "1967-",
 
       birthDate: "1967-01-01",
 
@@ -132,7 +132,7 @@ export const samoa: Country = {
 
       fullName: "Lani Wendt Young",
 
-      years: "1968–",
+      years: "1968-",
 
       birthDate: "1968-01-01",
 
@@ -188,7 +188,7 @@ export const samoa: Country = {
 
       fullName: "Tusiata Avia",
 
-      years: "1969–",
+      years: "1969-",
 
       birthDate: "1969-09-01",
 
@@ -243,7 +243,7 @@ export const samoa: Country = {
 
       fullName: "Selina Tusitala Marsh",
 
-      years: "1971–",
+      years: "1971-",
 
       birthDate: "1971-06-04",
 

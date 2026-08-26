@@ -10,7 +10,7 @@ export const niue: Country = {
       id: "john_pule",
       name: "Джон Пуле",
       fullName: "John Puhiatau Pule",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962-04-18",
       deathDate: "",
       birthPlace: "Алофи, Ниуэ",

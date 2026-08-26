@@ -57,7 +57,7 @@ export function editorialArtworkDigest(value: unknown) {
   const digest = limitedText(value, 64).toLowerCase();
   return /^[a-f0-9]{64}$/u.test(digest)
     ? `${digest.slice(0, 12)}…${digest.slice(-8)}`
-    : "—";
+    : "-";
 }
 
 export type EditorialArtworkProvenanceView = {

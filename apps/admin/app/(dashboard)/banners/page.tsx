@@ -124,7 +124,7 @@ function BannerFields({
         </label>
       </div>
       <label className="field">
-        <span>Страницы показа — по одному шаблону на строку</span>
+        <span>Страницы показа - по одному шаблону на строку</span>
         <textarea name="page_patterns" defaultValue={(banner?.page_patterns || ["/"]).join("\n")} />
       </label>
       <label>
@@ -273,7 +273,7 @@ export default async function BannersPage({
             </div>
             <div className="status-list">
               <div><span>Состояние</span><strong>{banner.is_active ? "Активен" : "Выключен"}</strong></div>
-              <div><span>Период</span><strong>{formatDate(banner.starts_at)} — {formatDate(banner.ends_at)}</strong></div>
+              <div><span>Период</span><strong>{formatDate(banner.starts_at)} - {formatDate(banner.ends_at)}</strong></div>
               <div><span>Страницы</span><strong>{banner.page_patterns.length}</strong></div>
             </div>
             <details className="admin-editor-details">

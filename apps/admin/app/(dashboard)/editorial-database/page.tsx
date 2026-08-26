@@ -193,7 +193,7 @@ function OverrideField({
             rows={longTextFields.has(field) ? 7 : 4}
             placeholder={
               field === "timeline" || field === "chronology"
-                ? "Год | Заголовок | Описание — одна запись в строке"
+                ? "Год | Заголовок | Описание - одна запись в строке"
                 : listFields.has(field)
                   ? "Одно значение в строке"
                   : undefined
@@ -323,7 +323,7 @@ export default async function EditorialDatabasePage({
               : "Профиль сохранён и передан в публикацию."}
           {query.publication === "started" && " Сборка запущена."}
           {query.publication === "queued" && " Запрос сохранён в резервной очереди."}
-          {query.publication === "queue-error" && " Не удалось записать резервную очередь — проверьте журнал."}
+          {query.publication === "queue-error" && " Не удалось записать резервную очередь - проверьте журнал."}
         </p>
       )}
       {query.warning === "audit" && <p className="form-message">Профиль и публикация сохранены, но запись журнала требует проверки.</p>}

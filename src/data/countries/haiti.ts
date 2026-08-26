@@ -8,7 +8,7 @@ export const haiti: Country = {
     {
       id: "jacques_roumain",
       name: "Жак Румен",
-      years: "1907–1944",
+      years: "1907-1944",
       birthDate: "1907-06-04",
       deathDate: "1944-08-18",
       birthPlace: "Порт-о-Пренс, Гаити",
@@ -47,7 +47,7 @@ export const haiti: Country = {
     {
       id: "franketienne",
       name: "Франкетьен",
-      years: "1936–2024",
+      years: "1936-2024",
       birthDate: "1936-04-12",
       deathDate: "2024-02-20",
       birthPlace: "Розо, Гаити",
@@ -85,7 +85,7 @@ export const haiti: Country = {
     {
       id: "jacques_stephen_alexis",
       name: "Жак Стивен Алексис",
-      years: "1922–1961",
+      years: "1922-1961",
       birthDate: "1922-04-22",
       deathDate: "1961-04-22",
       birthPlace: "Гонав, Гаити",
@@ -120,7 +120,7 @@ export const haiti: Country = {
     {
       id: "edwidge_danticat",
       name: "Эдвидж Дантикат",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-01-19",
       birthPlace: "Порт-о-Пренс, Гаити",
       coordinates: {

@@ -39,7 +39,7 @@ const writerBiographyFactReviewBatch22Base = [
     originalSha256: "0790ba9efcb4df34e15c98d2cf688d4977eff64ee914f4a9aa86f4fba7370ff5",
     reviewedTextRu: "Эквадорская писательница и эссеистка, автор романов «Carta larga sin final» и «Peste blanca, peste negra».",
     claims: [{
-      textRu: "Лупе Румасо — эквадорская писательница и эссеистка, написавшая романы Carta larga sin final и Peste blanca, peste negra.",
+      textRu: "Лупе Румасо - эквадорская писательница и эссеистка, написавшая романы Carta larga sin final и Peste blanca, peste negra.",
       verdict: "corrected",
       evidence: [
         { provider: "Academia Ecuatoriana de la Lengua", url: "https://www.academiaecuatorianadelalengua.org/sra-d-a-lupe-rumazo-de-alzamora/", checkedAt, findingRu: "Официальная страница Эквадорской академии языка приводит литературную и эссеистическую библиографию Румасо и атрибутирует ей оба романа." },
@@ -48,11 +48,11 @@ const writerBiographyFactReviewBatch22Base = [
     }],
     reviewer,
     decision: "corrected",
-    notes: "Сняты недоказательные ранговая и интерпретационная формулы. Date recommendation: shared карточка ошибочно показывает 1904–2004; авторитетная запись Casa de la Cultura указывает рождение 1933-10-14 в Кито и не устанавливает дату смерти. Shared country files не изменялись.",
+    notes: "Сняты недоказательные ранговая и интерпретационная формулы. Date recommendation: shared карточка ошибочно показывает 1904-2004; авторитетная запись Casa de la Cultura указывает рождение 1933-10-14 в Кито и не устанавливает дату смерти. Shared country files не изменялись.",
   },
   {
     key: "ecuador:medardo_angel_silva",
-    originalSha256: "b006becf96be11c6a0f4315fe8911654eb779985bb3f877aab47a895e9629077",
+    originalSha256: "0a73af672157ebe0a629875311cf45d2f9c894c947e06415b9d3021e0990a68f",
     reviewedTextRu: "Эквадорский поэт и журналист, представитель модернизма и «обезглавленного поколения»; автор сборника «El árbol del bien y el mal».",
     claims: [{
       textRu: "Медардо Анхель Сильва был эквадорским поэтом и журналистом, относился к модернизму и «обезглавленному поколению» и написал El árbol del bien y el mal.",
@@ -72,7 +72,7 @@ const writerBiographyFactReviewBatch22Base = [
     originalSha256: "789c84ee64635575e7ce3348442ef0bca273fde797c98a57e1a741e513172afd",
     reviewedTextRu: "Эквадорская писательница и поэтесса, автор романов «Nefando» и «Mandíbula» и сборника рассказов «Las voladoras».",
     claims: [{
-      textRu: "Моника Охеда — эквадорская писательница и поэтесса, автор романов Nefando и Mandíbula и сборника рассказов Las voladoras.",
+      textRu: "Моника Охеда - эквадорская писательница и поэтесса, автор романов Nefando и Mandíbula и сборника рассказов Las voladoras.",
       verdict: "corrected",
       evidence: [
         { provider: "Coffee House Press", url: "https://coffeehousepress.org/products/nefando", checkedAt, findingRu: "Издательская биография указывает эквадорское происхождение Охеды и атрибутирует ей Nefando, Mandíbula, поэтические книги и Las voladoras." },
@@ -104,11 +104,11 @@ const writerBiographyFactReviewBatch22Base = [
     originalSha256: "dfc883e5c3c94ca385e08a982de5f770bb2907bd6ff08304209f358366573115",
     reviewedTextRu: "Египетская писательница, создающая произведения на английском языке.",
     claims: [{
-      textRu: "Ахдаф Суэйф — египетская писательница, создающая литературные произведения на английском языке.",
+      textRu: "Ахдаф Суэйф - египетская писательница, создающая литературные произведения на английском языке.",
       verdict: "supported",
       evidence: [
-        { provider: "Ahdaf Soueif — official author site", url: "https://www.ahdafsoueif.net/about", checkedAt, findingRu: "Официальная авторская страница перечисляет англоязычные романы, рассказы и эссе Суэйф." },
-        { provider: "American University in Cairo — Knowledge Fountain", url: "https://fount.aucegypt.edu/faculty_journal_articles/3149/", checkedAt, findingRu: "Университетская запись интервью прямо характеризует Суэйф как египетскую писательницу, пишущую на английском языке." },
+        { provider: "Ahdaf Soueif - official author site", url: "https://www.ahdafsoueif.net/about", checkedAt, findingRu: "Официальная авторская страница перечисляет англоязычные романы, рассказы и эссе Суэйф." },
+        { provider: "American University in Cairo - Knowledge Fountain", url: "https://fount.aucegypt.edu/faculty_journal_articles/3149/", checkedAt, findingRu: "Университетская запись интервью прямо характеризует Суэйф как египетскую писательницу, пишущую на английском языке." },
       ],
     }],
     reviewer,
@@ -136,7 +136,7 @@ const writerBiographyFactReviewBatch22Base = [
     originalSha256: "5a92ccd0fcc39da95abcb681b1f4c2dd3f5a96472b32e8da486e2fd89f6d2e5b",
     reviewedTextRu: "Египетский писатель, автор романа «Дом Якобяна».",
     claims: [{
-      textRu: "Алаа аль-Асуани — египетский писатель, автор романа Дом Якобяна.",
+      textRu: "Алаа аль-Асуани - египетский писатель, автор романа Дом Якобяна.",
       verdict: "corrected",
       evidence: [
         { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/2069280/alaa-al-aswany/", checkedAt, findingRu: "Издательская страница определяет аль-Асуани как автора художественной прозы и атрибутирует ему The Yacoubian Building." },
@@ -193,7 +193,7 @@ const writerBiographyFactReviewBatch22Base = [
     }],
     reviewer,
     decision: "corrected",
-    notes: "Расплывчатая тематическая формула заменена ролями и произведениями. Date recommendation: оба источника подтверждают смерть в 2023 году, отсутствующую в shared карточке; год рождения расходится — AUC Press указывает 1967, Words Without Borders 1968, поэтому точный год требует дополнительного разрешения. Shared country files не изменялись.",
+    notes: "Расплывчатая тематическая формула заменена ролями и произведениями. Date recommendation: оба источника подтверждают смерть в 2023 году, отсутствующую в shared карточке; год рождения расходится - AUC Press указывает 1967, Words Without Borders 1968, поэтому точный год требует дополнительного разрешения. Shared country files не изменялись.",
   },
   {
     key: "egypt:ibrahim_aslan",
@@ -209,14 +209,14 @@ const writerBiographyFactReviewBatch22Base = [
     }],
     reviewer,
     decision: "corrected",
-    notes: "Непроверяемая тематическая оценка заменена двумя произведениями. Date recommendation: смерть в 2012 году согласована; AUC Press указывает рождение в 1937 году, Banipal — в 1936, тогда как shared карточка показывает 1935, поэтому точный год рождения следует удержать до разрешения расхождения. Shared country files не изменялись.",
+    notes: "Непроверяемая тематическая оценка заменена двумя произведениями. Date recommendation: смерть в 2012 году согласована; AUC Press указывает рождение в 1937 году, Banipal - в 1936, тогда как shared карточка показывает 1935, поэтому точный год рождения следует удержать до разрешения расхождения. Shared country files не изменялись.",
   },
   {
     key: "egypt:miral_al_tahawy",
     originalSha256: "8a885b4ca1902b268088f7c3277aa4ba801623de3fc26c0d66889bfde09d4c1f",
     reviewedTextRu: "Египетская писательница и исследовательница арабской литературы, автор романов «Палатка» и «Бруклинские высоты».",
     claims: [{
-      textRu: "Мираль аль-Тахави — египетская писательница и исследовательница арабской литературы, автор романов Палатка и Бруклинские высоты.",
+      textRu: "Мираль аль-Тахави - египетская писательница и исследовательница арабской литературы, автор романов Палатка и Бруклинские высоты.",
       verdict: "corrected",
       evidence: [
         { provider: "Arizona State University", url: "https://news.asu.edu/content/egyptian-scholar-new-life-grew-brooklyn", checkedAt, findingRu: "Университетская биография называет аль-Тахави египетской исследовательницей и писательницей и атрибутирует ей The Tent и Brooklyn Heights." },
@@ -235,7 +235,7 @@ const writerBiographyFactReviewBatch22Base = [
       textRu: "Мухаммад Хусейн Хайкаль был египетским писателем, журналистом и политическим деятелем и написал роман Зейнаб.",
       verdict: "corrected",
       evidence: [
-        { provider: "Safahat — Hindawi author archive", url: "https://www.safahat.org/contributors/73037206/", checkedAt, findingRu: "Авторская страница издательского архива описывает Хайкаля как египетского писателя, журналиста, историка и политика и включает Зейнаб в его библиографию." },
+        { provider: "Safahat - Hindawi author archive", url: "https://www.safahat.org/contributors/73037206/", checkedAt, findingRu: "Авторская страница издательского архива описывает Хайкаля как египетского писателя, журналиста, историка и политика и включает Зейнаб в его библиографию." },
         { provider: "Treccani", url: "https://www.treccani.it/enciclopedia/muhammad-husain-haikal/", checkedAt, findingRu: "Итальянская национальная энциклопедия независимо подтверждает литературную, журналистскую и политическую деятельность Хайкаля и роман Zaynab." },
       ],
     }],
@@ -268,7 +268,7 @@ const writerBiographyFactReviewBatch22Base = [
       verdict: "corrected",
       evidence: [
         { provider: "Cambridge University Press", url: "https://www.cambridge.org/core/books/abs/an-introduction-to-arabic-literature/drama/6F872D570E388CF39088DE83C4242B98", checkedAt, findingRu: "Академическое издание определяет Юсуфа Идриса как египетского автора рассказов и драматурга и рассматривает его пьесу al-Farafir." },
-        { provider: "American University in Cairo — Knowledge Fountain", url: "https://fount.aucegypt.edu/faculty_journal_articles/3526/", checkedAt, findingRu: "Университетская публикация независимо атрибутирует Юсуфу Идрису пьесу al-Farafir и исследует её театральную концепцию." },
+        { provider: "American University in Cairo - Knowledge Fountain", url: "https://fount.aucegypt.edu/faculty_journal_articles/3526/", checkedAt, findingRu: "Университетская публикация независимо атрибутирует Юсуфу Идрису пьесу al-Farafir и исследует её театральную концепцию." },
       ],
     }],
     reviewer,
@@ -283,7 +283,7 @@ const writerBiographyFactReviewBatch22Base = [
       textRu: "Альваро Менен Деслеаль был сальвадорским писателем и драматургом и написал пьесу Luz negra.",
       verdict: "corrected",
       evidence: [
-        { provider: "Universidad de El Salvador — El Universitario", url: "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-alvaro-menen-desleal/", checkedAt, findingRu: "Государственный университет называет Менена Деслеаля рассказчиком и драматургом из Сальвадора и включает Luz negra в его театральную библиографию." },
+        { provider: "Universidad de El Salvador - El Universitario", url: "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-alvaro-menen-desleal/", checkedAt, findingRu: "Государственный университет называет Менена Деслеаля рассказчиком и драматургом из Сальвадора и включает Luz negra в его театральную библиографию." },
         { provider: "Universidad Centroamericana José Simeón Cañas", url: "https://revistas.uca.edu.sv/index.php/eca/article/download/10422/10661", checkedAt, findingRu: "Университетское исследование центральноамериканского театра независимо атрибутирует пьесу Luz negra Альваро Менену Деслеалю из Сальвадора." },
       ],
     }],
@@ -299,8 +299,8 @@ const writerBiographyFactReviewBatch22Base = [
       textRu: "Кларибель Алегрия была никарагуанско-сальвадорской поэтессой и писательницей и получила Нейштадтскую премию в 2006 году и премию королевы Софии в 2017 году.",
       verdict: "corrected",
       evidence: [
-        { provider: "Neustadt Prizes — University of Oklahoma", url: "https://www.neustadtprize.org/2006-neustadt-prize-laureate-claribel-alegria/", checkedAt, findingRu: "Официальная страница премии фиксирует лауреатство Алегрии в 2006 году, рождение в Никарагуа и её воспитание и литературную связь с Сальвадором." },
-        { provider: "Universidad de Salamanca — Premio Reina Sofía", url: "https://premioreinasofia.usal.es/claribel-alegria/", checkedAt, findingRu: "Официальный университетский портал подтверждает присуждение премии королевы Софии 2017 года и документирует никарагуанско-сальвадорскую биографию поэтессы." },
+        { provider: "Neustadt Prizes - University of Oklahoma", url: "https://www.neustadtprize.org/2006-neustadt-prize-laureate-claribel-alegria/", checkedAt, findingRu: "Официальная страница премии фиксирует лауреатство Алегрии в 2006 году, рождение в Никарагуа и её воспитание и литературную связь с Сальвадором." },
+        { provider: "Universidad de Salamanca - Premio Reina Sofía", url: "https://premioreinasofia.usal.es/claribel-alegria/", checkedAt, findingRu: "Официальный университетский портал подтверждает присуждение премии королевы Софии 2017 года и документирует никарагуанско-сальвадорскую биографию поэтессы." },
       ],
     }],
     reviewer,
@@ -309,13 +309,13 @@ const writerBiographyFactReviewBatch22Base = [
   },
   {
     key: "england:agatha_christie",
-    originalSha256: "7a40befbc795fb0eecfa46dfcf4a832c40e8cbda783bef37d257f3ad8a04816c",
-    reviewedTextRu: "Агата Кристи — английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».",
+    originalSha256: "8935d7a434d4ab9e11ebd34201a50d8aeed644e9728dab75bfe5b5324d4fa3a6",
+    reviewedTextRu: "Агата Кристи - английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».",
     claims: [{
       textRu: "Агата Кристи была английской писательницей и драматургом, писала детективную прозу и является автором романа И никого не стало.",
       verdict: "supported",
       evidence: [
-        { provider: "Agatha Christie Limited — official estate", url: "https://www.agathachristie.com/about-christie", checkedAt, findingRu: "Официальная биография наследия подтверждает рождение Кристи в Англии, её работу писательницы и драматурга и корпус детективных романов." },
+        { provider: "Agatha Christie Limited - official estate", url: "https://www.agathachristie.com/about-christie", checkedAt, findingRu: "Официальная биография наследия подтверждает рождение Кристи в Англии, её работу писательницы и драматурга и корпус детективных романов." },
         { provider: "British Library", url: "https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie", checkedAt, findingRu: "Британская библиотека документирует писательскую и театральную деятельность Кристи и называет And Then There Were None её романом 1939 года." },
       ],
     }],
@@ -341,10 +341,10 @@ const writerBiographyFactReviewBatch22Base = [
   },
   {
     key: "england:alex_garland",
-    originalSha256: "eceb3d15eca677fcddbb3b0c9060c806b481c29f8948c86cdab60deaca1de4cf",
-    reviewedTextRu: "Алекс Гарленд — британский писатель, сценарист и режиссёр. Его дебютный роман — «Пляж».",
+    originalSha256: "5e9a063ab47f1f6e0667bf418abd626b80df64d15c1e6dcc3f9742a77d0c57a0",
+    reviewedTextRu: "Алекс Гарленд - британский писатель, сценарист и режиссёр. Его дебютный роман - «Пляж».",
     claims: [{
-      textRu: "Алекс Гарленд — британский писатель, сценарист и режиссёр, дебютировавший в литературе романом Пляж.",
+      textRu: "Алекс Гарленд - британский писатель, сценарист и режиссёр, дебютировавший в литературе романом Пляж.",
       verdict: "supported",
       evidence: [
         { provider: "Penguin Books", url: "https://www.penguin.co.uk/books/56173/the-beach-by-garland-alex/9780241976562", checkedAt, findingRu: "Издательская биография называет родившегося в Лондоне Гарленда автором романов и сценариев, фиксирует его режиссёрский дебют и атрибутирует ему The Beach как дебютный роман." },

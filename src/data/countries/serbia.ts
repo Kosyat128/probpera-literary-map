@@ -10,7 +10,7 @@ export const serbia: Country = {
       id: "dositej_obradovic",
       name: "Доситей Обрадович",
       fullName: "Dositej Obradović",
-      years: "1739–1811",
+      years: "1739-1811",
 
       birthDate: "1739",
       deathDate: "1811-03-28",
@@ -57,7 +57,7 @@ export const serbia: Country = {
       name: "Вук Стефанович Караджич",
       fullName: "Vuk Stefanović Karadžić",
 
-      years: "1787–1864",
+      years: "1787-1864",
 
       birthDate: "1787-11-06",
       deathDate: "1864-02-07",
@@ -103,7 +103,7 @@ export const serbia: Country = {
       name: "Бранко Радичевич",
       fullName: "Branko Radičević",
 
-      years: "1824–1853",
+      years: "1824-1853",
 
       birthDate: "1824-03-28",
       deathDate: "1853-07-01",
@@ -148,7 +148,7 @@ export const serbia: Country = {
       name: "Лаза Костич",
       fullName: "Laza Kostić",
 
-      years: "1841–1910",
+      years: "1841-1910",
 
       birthDate: "1841-01-31",
       deathDate: "1910-12-09",
@@ -195,7 +195,7 @@ export const serbia: Country = {
       name: "Иво Андрич",
       fullName: "Ivo Andrić",
 
-      years: "1892–1975",
+      years: "1892-1975",
 
       birthDate: "1892-10-09",
       deathDate: "1975-03-13",
@@ -243,7 +243,7 @@ export const serbia: Country = {
       name: "Милош Црнянский",
       fullName: "Miloš Crnjanski",
 
-      years: "1893–1977",
+      years: "1893-1977",
 
       birthDate: "1893-10-26",
       deathDate: "1977-11-30",
@@ -289,7 +289,7 @@ export const serbia: Country = {
       name: "Меша Селимович",
       fullName: "Meša Selimović",
 
-      years: "1910–1982",
+      years: "1910-1982",
 
       birthDate: "1910-04-26",
       deathDate: "1982-07-11",
@@ -334,7 +334,7 @@ export const serbia: Country = {
       name: "Данило Киш",
       fullName: "Danilo Kiš",
 
-      years: "1935–1989",
+      years: "1935-1989",
 
       birthDate: "1935-02-22",
       deathDate: "1989-10-15",

@@ -64,6 +64,8 @@ const sectionEditorialDescriptions = Object.freeze({
     "Редакционные эссе о литературе, чтении, культурной памяти и роли книг в жизни человека и общества.",
   "author-stories":
     "Литературные истории и авторские тексты журнала «Проба Пера» о чтении, творчестве и личном опыте.",
+  miscellaneous:
+    "Материалы журнала «Проба Пера» на пересечении истории, культуры и литературы: необычные судьбы, эпохи и сюжеты за пределами основных рубрик.",
 });
 
 function xmlEscape(value = "") {
@@ -104,7 +106,7 @@ function conciseMetaDescription(value, fallback, maxLength = 200) {
 
   const wordEnd = candidate.lastIndexOf(" ");
   const clipped = (wordEnd >= 90 ? candidate.slice(0, wordEnd) : candidate)
-    .replace(/[,:;–—-]+$/u, "")
+    .replace(/[,:;-]+$/u, "")
     .trimEnd();
   return `${clipped}…`;
 }
@@ -258,7 +260,7 @@ function redirectHtml(targetUrl) {
   return `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">
 <link rel="canonical" href="${targetUrl}"><meta http-equiv="refresh" content="0;url=${targetUrl}">
-<title>Материал переехал — Проба Пера</title></head>
+<title>Материал переехал - Проба Пера</title></head>
 <body><p>Материал переехал: <a href="${targetUrl}">открыть постоянный адрес</a>.</p>
 <script>location.replace(${JSON.stringify(targetUrl)});</script></body></html>`;
 }
@@ -400,7 +402,7 @@ homeDocument("head").append(
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
         name: "Проба Пера",
-        alternateName: "Проба Пера — литературный журнал",
+        alternateName: "Проба Пера - литературный журнал",
         url: `${siteUrl}/`,
         inLanguage: "ru-RU",
         publisher: { "@id": `${siteUrl}/#organization` },
@@ -421,7 +423,7 @@ homeDocument("#root").html(`
   <main class="static-article-fallback static-home-fallback" data-static-seo>
     <article>
       <span>Литературный журнал и энциклопедия</span>
-      <h1>Проба Пера — статьи о книгах, писателях и мировой литературе</h1>
+      <h1>Проба Пера - статьи о книгах, писателях и мировой литературе</h1>
       <p>Авторский литературный журнал, книжный архив, биографии писателей и интерактивная энциклопедия стран собраны в одном редакционном пространстве.</p>
       <nav aria-label="Основные разделы">
         <a href="${siteBasePath || ""}/stati/">Читать журнал</a>
@@ -431,7 +433,7 @@ homeDocument("#root").html(`
       <nav aria-label="Рубрики журнала">
         <ul>
           ${archiveSections.map((section) => `
-            <li><a href="${siteBasePath || ""}${articleSectionArchivePath(section.id)}/">${xmlEscape(section.label)}</a> — ${section.articles.length}</li>
+            <li><a href="${siteBasePath || ""}${articleSectionArchivePath(section.id)}/">${xmlEscape(section.label)}</a> - ${section.articles.length}</li>
           `).join("\n")}
         </ul>
       </nav>
@@ -473,7 +475,7 @@ async function writeArticleArchivePage(section = null) {
   const canonicalUrl = `${siteUrl}${archivePath}/`;
   const label = section?.label || "Все публикации";
   const title = section
-    ? `${label} — статьи литературного журнала`
+    ? `${label} - статьи литературного журнала`
     : "Все статьи литературного журнала";
   const preferredDescription = section
     ? sectionEditorialDescriptions[section.id]
@@ -486,7 +488,7 @@ async function writeArticleArchivePage(section = null) {
     usedDescriptions: usedMetaDescriptions,
   });
   const $ = loadStaticDocument(baseHtml);
-  $("title").text(`${title} — Проба Пера`);
+  $("title").text(`${title} - Проба Пера`);
   $('meta[name="description"]').attr("content", description);
   $('meta[property="og:type"]').attr("content", "website");
   $('meta[property="og:title"]').attr("content", title);
@@ -520,7 +522,7 @@ async function writeArticleArchivePage(section = null) {
           "@type": "WebSite",
           "@id": `${siteUrl}/#website`,
           name: "Проба Пера",
-          alternateName: "Проба Пера — литературный журнал",
+          alternateName: "Проба Пера - литературный журнал",
           url: `${siteUrl}/`,
           inLanguage: "ru-RU",
           publisher: { "@id": `${siteUrl}/#organization` },
@@ -593,9 +595,9 @@ async function writeArticleArchivePage(section = null) {
         <p>${xmlEscape(description)}</p>
         <nav aria-label="Рубрики журнала">
           <ul>
-            <li><a href="${siteBasePath || ""}/stati/">Все публикации</a> — ${indexableCatalog.length}</li>
+            <li><a href="${siteBasePath || ""}/stati/">Все публикации</a> - ${indexableCatalog.length}</li>
             ${archiveSections.map((item) => `
-              <li><a href="${siteBasePath || ""}${articleSectionArchivePath(item.id)}/">${xmlEscape(item.label)}</a> — ${item.articles.length}</li>
+              <li><a href="${siteBasePath || ""}${articleSectionArchivePath(item.id)}/">${xmlEscape(item.label)}</a> - ${item.articles.length}</li>
             `).join("\n")}
           </ul>
         </nav>
@@ -698,7 +700,7 @@ for (const rawArticle of catalog) {
     contentHtml: positionDzenLeadIllustration(safePublicBody, dzenCover),
   });
 
-  $("title").text(`${article.seoTitle || article.title} — Проба Пера`);
+  $("title").text(`${article.seoTitle || article.title} - Проба Пера`);
   $('meta[name="description"]').attr("content", description);
   if (article.seoKeywords?.length) {
     $("head").append(
@@ -949,7 +951,7 @@ for (const rawArticle of catalog) {
         .attr("lang", "en")
         .attr("data-route-language", "en");
       englishDocumentPage("title").text(
-        `${englishTranslation.seoTitle || englishTranslation.title} — PROBA PERA`
+        `${englishTranslation.seoTitle || englishTranslation.title} - PROBA PERA`
       );
       englishDocumentPage('meta[name="description"]').attr(
         "content",
@@ -1184,7 +1186,7 @@ for (const page of cmsSnapshot.pages || []) {
   const pageImageUrl =
     page.ogImageUrl || page.imageUrl || `${siteUrl}/og-v3.webp`;
   const pageImageAlt = page.imageAlt || page.title;
-  $("title").text(`${page.seoTitle || page.title} — Проба Пера`);
+  $("title").text(`${page.seoTitle || page.title} - Проба Пера`);
   $('meta[name="description"]').attr("content", description);
   $('meta[property="og:type"]').attr("content", "website");
   $('meta[property="og:title"]').attr(
@@ -1277,7 +1279,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:media="http://search.yahoo.com/mrss/"><channel>
-  <title>Проба Пера — литературный журнал</title>
+  <title>Проба Пера - литературный журнал</title>
   <link>${siteUrl}/</link>
   <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
   <description>Авторские статьи о книгах, писателях и мировой литературе.</description>
@@ -1310,7 +1312,7 @@ await fs.writeFile(
   path.join(distDirectory, "site.webmanifest"),
   JSON.stringify(
     {
-      name: "Проба Пера — литературный журнал",
+      name: "Проба Пера - литературный журнал",
       short_name: "Проба Пера",
       description:
         "Статьи о книгах, литературная энциклопедия мира и интерактивный 3D-глобус.",
@@ -1421,7 +1423,7 @@ await fs.writeFile(
 );
 
 const notFoundDocument = loadStaticDocument(baseHtml);
-notFoundDocument("title").text("Страница не найдена — Проба Пера");
+notFoundDocument("title").text("Страница не найдена - Проба Пера");
 notFoundDocument('meta[name="description"]').attr(
   "content",
   "Запрошенная страница не найдена. Перейдите к журналу, книжному архиву или «Литературной планете»."

@@ -1237,7 +1237,7 @@ export default function WriterPanel({
               {activeWriterBiography.sources.map((source) => (
                 <div key={source.url}>
                   <a href={source.url} target="_blank" rel="noreferrer">
-                    {source.author ? `${source.author} — ` : ""}
+                    {source.author ? `${source.author} - ` : ""}
                     {source.title || source.provider}
                   </a>
                   {source.licenseUrl && source.licenseName ? (

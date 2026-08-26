@@ -93,7 +93,7 @@ export default function EditorialWorkbench() {
       setMessage(t("Анонс для социальных сетей скопирован."));
     } catch {
       setMessage(
-        t("Не удалось скопировать автоматически — выделите текст вручную.")
+        t("Не удалось скопировать автоматически - выделите текст вручную.")
       );
     }
   };
@@ -140,6 +140,7 @@ export default function EditorialWorkbench() {
               <option value="folklore">{t("Фольклор и мифология")}</option>
               <option value="language">{t("Русский язык")}</option>
               <option value="literary-essays">{t("О литературе и культуре")}</option>
+              <option value="miscellaneous">{t("Разное")}</option>
             </select>
           </label>
           <label>

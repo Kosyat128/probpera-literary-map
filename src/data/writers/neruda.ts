@@ -1,7 +1,7 @@
 export const nerudaProfile = {
  id:"neruda",
  fullName:"Пабло Неруда",
- years:"1904–1973",
+ years:"1904-1973",
  country:"Чили",
  birthPlace:"Парраль, Чили",
  movement:"Модернизм",

@@ -1,7 +1,7 @@
 export const borgesProfile = {
  id:"borges",
  fullName:"Хорхе Луис Борхес",
- years:"1899–1986",
+ years:"1899-1986",
  country:"Аргентина",
  birthPlace:"Буэнос-Айрес, Аргентина",
  movement:"Постмодернизм",

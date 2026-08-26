@@ -143,7 +143,7 @@ function TranslationEditor({
             rows={7}
             defaultValue={translation?.description || ""}
           />
-          <small>Для публикации: 140–900 знаков и 2–3 законченных предложения.</small>
+          <small>Для публикации: 140-900 знаков и 2-3 законченных предложения.</small>
         </label>
         <div className="work-workspace-grid">
           <label className="field">
@@ -178,7 +178,7 @@ function TranslationEditor({
           <textarea
             name="source_urls"
             rows={3}
-            placeholder="https://… — один адрес в строке"
+            placeholder="https://… - один адрес в строке"
             defaultValue={(translation?.source_urls || []).join("\n")}
           />
         </label>
@@ -348,7 +348,7 @@ export default function LiteraryWorkWorkspace({
                   <input type="hidden" name="candidate_id" value={candidate.id} />
                   <input type="hidden" name="expected_updated_at" value={candidate.updated_at} />
                   <div className="work-workspace-grid">
-                    <label className="field"><span>Качество 0–100</span><input name="quality_score" type="number" min={0} max={100} required defaultValue={candidate.quality_score} /></label>
+                    <label className="field"><span>Качество 0-100</span><input name="quality_score" type="number" min={0} max={100} required defaultValue={candidate.quality_score} /></label>
                     <label className="field"><span>Статус</span><select name="status" defaultValue={candidate.status}>{workImportStatuses.map((status) => <option key={status} value={status}>{status}</option>)}</select></label>
                   </div>
                   <label className="field"><span>Причины отклонения</span><textarea name="rejection_reasons" rows={3} placeholder="Одна причина в строке" defaultValue={(candidate.rejection_reasons || []).join("\n")} /></label>

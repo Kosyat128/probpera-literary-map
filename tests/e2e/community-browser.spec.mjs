@@ -28,7 +28,7 @@ async function openForum(page, isMobile) {
   await expect(trigger).toBeVisible();
   await trigger.click();
   const namedDialog = page.getByRole("dialog", {
-    name: "Говорилка — форум «Проба Пера»",
+    name: "Говорилка - форум «Проба Пера»",
   });
   await expect(namedDialog).toBeVisible();
   return {
@@ -96,7 +96,7 @@ test("форма входа и регистрации сохраняет пон�
   );
 
   await form
-    .getByRole("button", { name: "Нет аккаунта — зарегистрироваться" })
+    .getByRole("button", { name: "Нет аккаунта - зарегистрироваться" })
     .click();
   await expect(
     form.getByRole("heading", { name: "Вступить в литературный клуб" })
@@ -146,7 +146,7 @@ test("форум и вход переключаются внутри одног�
   await expect(email).toHaveValue("reader@example.test");
 
   await tabs.getByRole("button", { name: "Форум", exact: true }).click();
-  await expect(dialog).toHaveAccessibleName("Говорилка — форум «Проба Пера»");
+  await expect(dialog).toHaveAccessibleName("Говорилка - форум «Проба Пера»");
   await expect(dialog.locator(".community-setup")).toBeVisible();
 
   await tabs.getByRole("button", { name: "Вход и регистрация" }).click();
@@ -165,7 +165,7 @@ test("мобильный кабинет помещается в экран и с
   const { dialog } = await openAccount(page);
   const form = dialog.locator("form.auth-form");
   await form
-    .getByRole("button", { name: "Нет аккаунта — зарегистрироваться" })
+    .getByRole("button", { name: "Нет аккаунта - зарегистрироваться" })
     .click();
 
   const geometry = await dialog.evaluate((element) => {

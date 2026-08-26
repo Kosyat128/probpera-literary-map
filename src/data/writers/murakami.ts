@@ -1,11 +1,11 @@
 export const murakamiProfile = {
  id:"murakami",
  fullName:"Харуки Мураками",
- years:"1949–",
+ years:"1949-",
  country:"Япония",
  birthPlace:"Киото, Япония",
  movement:"Постмодернизм",
- century:"XX–XXI века",
+ century:"XX-XXI века",
  language:"Японский",
  nobel:false,
  portrait:"/images/writers/murakami.jpg",
@@ -14,7 +14,7 @@ export const murakamiProfile = {
  works:[
   {title:"Норвежский лес",year:"1987",genre:"Роман"},
   {title:"Кафка на пляже",year:"2002",genre:"Роман"},
-  {title:"1Q84",year:"2009–2010",genre:"Роман"}
+  {title:"1Q84",year:"2009-2010",genre:"Роман"}
  ],
  places:["Токио","Киото"],
  connections:["Кэндзабуро Оэ","Фрэнсис Скотт Фицджеральд"],

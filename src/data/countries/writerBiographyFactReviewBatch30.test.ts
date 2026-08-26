@@ -250,7 +250,7 @@ describe("writer biography claim review batch 30", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|ведущ|важнейш|главнейш|известнейш|одн(?:а|о|им|их)?\s+из\s+(?:главн|ведущ|важней|заметн))/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch30) {
       const originalText = sourceTextForKey(record.key);
@@ -435,7 +435,7 @@ describe("writer biography claim review batch 30", () => {
     expect(qaByKey.get("greece:giannis_ritsos")?.manualResolutions).toEqual([]);
     expect(byKey.get("germany:sebastian_brant")?.notes).toContain("1458");
     expect(byKey.get("germany:hartmann_von_aue")?.reviewedTextRu).toContain(
-      "ок. 1160 — начало XIII века"
+      "ок. 1160 - начало XIII века"
     );
     expect(byKey.get("germany:hartmann_von_aue")?.reviewedTextRu).not.toContain(
       "после 1210"
@@ -574,7 +574,7 @@ describe("writer biography claim review batch 30", () => {
     expect(markdown).toContain("Без изменений: 9");
     expect(markdown).toContain("Исправлено: 30");
     expect(markdown).toContain("Удержано: 1");
-    expect(markdown).toContain("overlap с Batch01–29: 0");
+    expect(markdown).toContain("overlap с Batch01-29: 0");
     expect(markdown).toContain("Q75852");
     expect(markdown).toContain("1930-08-11");
     expect(markdown).toContain("2026-03-28");

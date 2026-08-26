@@ -11,7 +11,7 @@ describe("GlobeViewObserver contract", () => {
     expect(source).not.toContain("hoveredCountry");
   });
 
-  it("samples coordinate context at a bounded 8–12 Hz", () => {
+  it("samples coordinate context at a bounded 8-12 Hz", () => {
     expect(source).toContain("sampleIntervalMs = 100");
     expect(source).toContain("Math.max(80, sampleIntervalMs)");
     expect(source).toContain("atlas.geographicCoordinatesAtUv(hit.uv)");

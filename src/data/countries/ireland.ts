@@ -10,7 +10,7 @@ export const ireland: Country = {
       id: "jonathan_swift",
       name: "Джонатан Свифт",
       fullName: "Jonathan Swift",
-      years: "1667–1745",
+      years: "1667-1745",
 
       birthDate: "1667-11-30",
       deathDate: "1745-10-19",
@@ -58,7 +58,7 @@ export const ireland: Country = {
       name: "Джордж Бернард Шоу",
       fullName: "George Bernard Shaw",
 
-      years: "1856–1950",
+      years: "1856-1950",
 
       birthDate: "1856-07-26",
       deathDate: "1950-11-02",
@@ -108,7 +108,7 @@ export const ireland: Country = {
       name: "Оскар Уайльд",
       fullName: "Oscar Wilde",
 
-      years: "1854–1900",
+      years: "1854-1900",
 
       birthDate: "1854-10-16",
       deathDate: "1900-11-30",
@@ -156,7 +156,7 @@ export const ireland: Country = {
       name: "Брэм Стокер",
       fullName: "Bram Stoker",
 
-      years: "1847–1912",
+      years: "1847-1912",
 
       birthDate: "1847-11-08",
       deathDate: "1912-04-20",
@@ -204,7 +204,7 @@ export const ireland: Country = {
       name: "Уильям Батлер Йейтс",
       fullName: "William Butler Yeats",
 
-      years: "1865–1939",
+      years: "1865-1939",
 
       birthDate: "1865-06-13",
       deathDate: "1939-01-28",
@@ -253,7 +253,7 @@ export const ireland: Country = {
       name: "Джеймс Джойс",
       fullName: "James Joyce",
 
-      years: "1882–1941",
+      years: "1882-1941",
 
       birthDate: "1882-02-02",
       deathDate: "1941-01-13",
@@ -343,7 +343,7 @@ export const ireland: Country = {
       name: "Сэмюэл Беккет",
       fullName: "Samuel Beckett",
 
-      years: "1906–1989",
+      years: "1906-1989",
 
       birthDate: "1906-04-13",
       deathDate: "1989-12-22",
@@ -391,7 +391,7 @@ export const ireland: Country = {
       name: "Фланн О’Брайен",
       fullName: "Flann O'Brien",
 
-      years: "1911–1966",
+      years: "1911-1966",
 
       birthDate: "1911-10-05",
       deathDate: "1966-04-01",
@@ -438,7 +438,7 @@ export const ireland: Country = {
       name: "Эдна О’Брайен",
       fullName: "Edna O'Brien",
 
-      years: "1930–2024",
+      years: "1930-2024",
 
       birthDate: "1930-12-15",
       deathDate: "2024-07-27",
@@ -485,7 +485,7 @@ export const ireland: Country = {
       name: "Шеймус Хини",
       fullName: "Seamus Heaney",
 
-      years: "1939–2013",
+      years: "1939-2013",
 
       birthDate: "1939-04-13",
       deathDate: "2013-08-30",

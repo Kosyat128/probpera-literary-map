@@ -11,9 +11,9 @@ Workflow `Reconcile production database` предназначен только �
    required reviewers. Само поле `environment: production` в workflow не
    заменяет настройку обязательного подтверждения в интерфейсе GitHub.
 2. Добавить GitHub Actions secrets:
-   - `SUPABASE_DB_URL` — PostgreSQL URL именно production-проекта;
-   - `VITE_SUPABASE_URL` — публичный API URL того же Supabase-проекта;
-   - `BACKUP_ENCRYPTION_KEY` — отдельная случайная фраза длиной не менее
+   - `SUPABASE_DB_URL` - PostgreSQL URL именно production-проекта;
+   - `VITE_SUPABASE_URL` - публичный API URL того же Supabase-проекта;
+   - `BACKUP_ENCRYPTION_KEY` - отдельная случайная фраза длиной не менее
      32 символов.
 3. Не передавать значения secrets в issue, pull request, чат, логи или файлы
    репозитория.
@@ -33,8 +33,8 @@ database URL должен быть direct endpoint этого проекта л�
 
 Запускать workflow можно только из ветки `main`. Требуются два поля:
 
-- `expected_main_sha` — полный 40-символьный SHA выбранного commit в `main`;
-- `confirmation` — точная строка `RECONCILE PRODUCTION DATABASE`.
+- `expected_main_sha` - полный 40-символьный SHA выбранного commit в `main`;
+- `confirmation` - точная строка `RECONCILE PRODUCTION DATABASE`.
 
 После environment approval workflow последовательно:
 
@@ -98,9 +98,9 @@ schema-health RPC должны уже существовать. В environment `
 Вручную запускается workflow `Sync book cover batch 2026-08-20` из
 ветки `main`. Поля запуска:
 
-- `expected_main_sha` — точный текущий 40-символьный SHA `main`
+- `expected_main_sha` - точный текущий 40-символьный SHA `main`
   строчными шестнадцатеричными знаками;
-- `confirmation` — точная строка
+- `confirmation` - точная строка
   `SYNC BOOK COVER BATCH 20260820`.
 
 Workflow закрепляет checkout на указанном SHA, собирает точный
@@ -116,7 +116,7 @@ Workflow закрепляет checkout на указанном SHA, собира
   SHA-256 исходных изображений;
 - раскладку 31 primary и 12 secondary artwork;
 - наличие всех 41 ключа произведений, а у 17 новых
-  произведений — одновременно переводы `ru` + `en` и не менее одного
+  произведений - одновременно переводы `ru` + `en` и не менее одного
   зафиксированного источника.
 
 Любое несовпадение останавливает job. В лог выводятся только

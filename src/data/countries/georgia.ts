@@ -62,7 +62,7 @@ export const georgia: Country = {
       name: "Илья Чавчавадзе",
       fullName: "Ilia Chavchavadze",
 
-      years: "1837–1907",
+      years: "1837-1907",
 
       birthDate: "1837-11-08",
       deathDate: "1907-08-30",
@@ -114,7 +114,7 @@ export const georgia: Country = {
       name: "Акакий Церетели",
       fullName: "Akaki Tsereteli",
 
-      years: "1840–1915",
+      years: "1840-1915",
 
       birthDate: "1840-06-09",
       deathDate: "1915-01-26",
@@ -162,7 +162,7 @@ export const georgia: Country = {
       name: "Важа-Пшавела",
       fullName: "Vazha-Pshavela",
 
-      years: "1861–1915",
+      years: "1861-1915",
 
       birthDate: "1861-07-26",
       deathDate: "1915-07-10",
@@ -213,7 +213,7 @@ export const georgia: Country = {
       name: "Галактион Табидзе",
       fullName: "Galaktion Tabidze",
 
-      years: "1892–1959",
+      years: "1892-1959",
 
       birthDate: "1892-11-17",
       deathDate: "1959-03-17",
@@ -261,7 +261,7 @@ export const georgia: Country = {
       name: "Константин Гамсахурдия",
       fullName: "Konstantine Gamsakhurdia",
 
-      years: "1893–1975",
+      years: "1893-1975",
 
       birthDate: "1893-05-03",
       deathDate: "1975-07-17",
@@ -311,7 +311,7 @@ export const georgia: Country = {
       name: "Нодар Думбадзе",
       fullName: "Nodar Dumbadze",
 
-      years: "1928–1984",
+      years: "1928-1984",
 
       birthDate: "1928-07-14",
       deathDate: "1984-09-14",
@@ -361,7 +361,7 @@ export const georgia: Country = {
       name: "Отар Чиладзе",
       fullName: "Otar Chiladze",
 
-      years: "1933–2009",
+      years: "1933-2009",
 
       birthDate: "1933-03-20",
       deathDate: "2009-10-01",
@@ -411,7 +411,7 @@ export const georgia: Country = {
       name: "Ака Морчиладзе",
       fullName: "Aka Morchiladze",
 
-      years: "1966–",
+      years: "1966-",
 
       birthDate: "1966-11-10",
       deathDate: "",

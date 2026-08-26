@@ -241,14 +241,14 @@ await writeFile(
     "",
     ...translationIssues.slice(0, 250).map(
       (book) =>
-        `- **${book.title}** — ${book.writer}, ${book.country}; ${book.issues.join(", ")}`
+        `- **${book.title}** - ${book.writer}, ${book.country}; ${book.issues.join(", ")}`
     ),
     "",
     "## Первые 250 записей редакционной очереди",
     "",
     ...reviewQueue.slice(0, 250).map(
       (book) =>
-        `- **${book.title}** — ${book.writer}, ${book.country}; статус: ${book.status}; требуется: ${book.missing.join(", ")}`
+        `- **${book.title}** - ${book.writer}, ${book.country}; статус: ${book.status}; требуется: ${book.missing.join(", ")}`
     ),
   ].join("\n"),
   "utf8"

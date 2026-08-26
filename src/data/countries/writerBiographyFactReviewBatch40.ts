@@ -46,7 +46,7 @@ const seeds = [
   {
     key: "mexico:sor_juana_ines_de_la_cruz",
     originalSha256: "1908f65a7d142c412617526e503f9cee5a4848a800f21561f8f058bced6967c7",
-    reviewedTextRu: "Сор Хуана Инес де ла Крус (1648–1695) — поэтесса, драматург и монахиня Новой Испании, писавшая на испанском языке. Среди её произведений — поэма «Primero sueño», комедия «Los empeños de una casa» и прозаический ответ «Respuesta a sor Filotea de la Cruz».",
+    reviewedTextRu: "Сор Хуана Инес де ла Крус (1648-1695) - поэтесса, драматург и монахиня Новой Испании, писавшая на испанском языке. Среди её произведений - поэма «Primero sueño», комедия «Los empeños de una casa» и прозаический ответ «Respuesta a sor Filotea de la Cruz».",
     evidence: [
       ["Enciclopedia de la Literatura en México", "https://www.elem.mx/autor/datos/1161Cruz", "Национальная литературная энциклопедия подтверждает даты, религиозную жизнь, жанры и названия произведений Сор Хуаны."],
       ["WorldCat", "https://search.worldcat.org/search?q=au%3A%22Juana+Ines+de+la+Cruz%22", "Международный библиотечный каталог подтверждает авторскую идентичность и библиографию поэтессы."],
@@ -57,7 +57,7 @@ const seeds = [
   {
     key: "mexico:valeria_luiselli",
     originalSha256: "90de04d0c2dcf9352fe3b6c6c7530ea282c6c24b6cfe7d4135dcb0540cb04051",
-    reviewedTextRu: "Валерия Луиселли (род. 1983) — мексиканская писательница, автор художественной и документальной прозы на испанском и английском языках. Она написала романы «Los ingrávidos», «La historia de mis dientes» и «Lost Children Archive», а в 2019 году получила стипендию Мак-Артура.",
+    reviewedTextRu: "Валерия Луиселли (род. 1983) - мексиканская писательница, автор художественной и документальной прозы на испанском и английском языках. Она написала романы «Los ingrávidos», «La historia de mis dientes» и «Lost Children Archive», а в 2019 году получила стипендию Мак-Артура.",
     evidence: [
       ["Enciclopedia de la Literatura en México", "https://www.elem.mx/autor/datos/2825", "Профиль INBAL подтверждает дату и место рождения, мексиканскую авторскую принадлежность и испаноязычные книги Луиселли."],
       ["MacArthur Foundation", "https://www.macfound.org/fellows/class-of-2019/valeria-luiselli", "Официальный профиль стипендии подтверждает жанры, образование, книги и присуждение MacArthur Fellowship в 2019 году."],
@@ -68,7 +68,7 @@ const seeds = [
   {
     key: "mexico:yuri_herrera",
     originalSha256: "06bd2efc6cd4a3ddc4b7b87f06df6e13063a57ecefd60ce1a1a51387d397d5e8",
-    reviewedTextRu: "Юри Эррера (род. 1970) — мексиканский писатель, переводчик и преподаватель литературы. Он написал романы «Trabajos del reino», «Señales que precederán al fin del mundo» и «La transmigración de los cuerpos» и преподаёт в Тулейнском университете.",
+    reviewedTextRu: "Юри Эррера (род. 1970) - мексиканский писатель, переводчик и преподаватель литературы. Он написал романы «Trabajos del reino», «Señales que precederán al fin del mundo» и «La transmigración de los cuerpos» и преподаёт в Тулейнском университете.",
     evidence: [
       ["Enciclopedia de la Literatura en México", "https://www.elem.mx/autor/datos/3471", "Национальная литературная энциклопедия подтверждает год и место рождения, профессиональные роли и библиографию Эрреры."],
       ["Tulane University", "https://stonecenter.tulane.edu/yuri-herrera-gutierrez", "Официальный университетский профиль подтверждает преподавательскую должность, образование и исследовательские области автора."],
@@ -79,7 +79,7 @@ const seeds = [
   {
     key: "moldova:grigore_vieru",
     originalSha256: "f1d5ef5c1da9c08bfa3cb6b7d99f726be5b2cd6e4a86126a087e5e40c978fb2b",
-    reviewedTextRu: "Григоре Виеру (1935–2009) — молдавский поэт, писавший в том числе для детей. Он издал сборники «Alarma», «Numele tău» и «Taina care mă apără», а в 1988 году получил Почётный диплом имени Ханса Кристиана Андерсена.",
+    reviewedTextRu: "Григоре Виеру (1935-2009) - молдавский поэт, писавший в том числе для детей. Он издал сборники «Alarma», «Numele tău» и «Taina care mă apără», а в 1988 году получил Почётный диплом имени Ханса Кристиана Андерсена.",
     evidence: [
       ["MOLDPRES", "https://www.moldpres.md/eng/culture/exhibition-dedicated-to-poet-grigore-vieru-opened-at-national-library", "Государственное информагентство подтверждает даты, поэтические и детские издания и диплом Андерсена 1988 года."],
       ["Biblioteca Națională a Republicii Moldova", "https://www.bnrm.md/?p=3122", "Национальная библиотека документирует первые сборники и книжное наследие Григоре Виеру."],
@@ -90,7 +90,7 @@ const seeds = [
   {
     key: "moldova:ion_druta",
     originalSha256: "3c3375a9fa091561ea510b4b63d9476a6d5cad53eba2e0d3a073693db947589c",
-    reviewedTextRu: "Ион Друцэ (1928–2023) — молдавский прозаик, драматург и эссеист. Среди его книг — «Frunze de dor», «Ultima lună de toamnă» и «Povara bunătății noastre»; в 2008 году он получил Государственную премию Молдовы.",
+    reviewedTextRu: "Ион Друцэ (1928-2023) - молдавский прозаик, драматург и эссеист. Среди его книг - «Frunze de dor», «Ultima lună de toamnă» и «Povara bunătății noastre»; в 2008 году он получил Государственную премию Молдовы.",
     evidence: [
       ["Президенция Республики Молдова", "https://presedinte.md/rom/discursuri/necrolog-ion-druta-3-septembrie-1928-28-septembrie-2023", "Официальный некролог подтверждает даты, жанры, произведения и Государственную премию 2008 года."],
       ["Biblioteca Națională a Republicii Moldova", "https://www.bnrm.md/wp-content/uploads/2014/06/TP-2018.pdf", "Национальная библиотека перечисляет прозу и драматургию Друцэ и его государственные и академические отличия."],
@@ -101,7 +101,7 @@ const seeds = [
   {
     key: "moldova:leonida_lari",
     originalSha256: "547751fda593df95f5f3e20cc2d4349e3525f2f016ab0d1517cbdbcfa2cadbf4",
-    reviewedTextRu: "Леонида Лари (1949–2011) — молдавская поэтесса, переводчица, редактор и общественный деятель. Она издала сборники «Piața Diolei», «Marele vânt» и «Mitul trandafirului» и возглавляла газету «Glasul».",
+    reviewedTextRu: "Леонида Лари (1949-2011) - молдавская поэтесса, переводчица, редактор и общественный деятель. Она издала сборники «Piața Diolei», «Marele vânt» и «Mitul trandafirului» и возглавляла газету «Glasul».",
     evidence: [
       ["MOLDPRES", "https://www.moldpres.md/rom/cultura/sau-implinit-70-de-ani-de-la-nasterea-poetei-leonida-lari", "Государственное информагентство подтверждает даты, образование, книги, переводы и редакторскую работу Лари."],
       ["Biblioteca Națională a Republicii Moldova", "https://www.bnrm.md/?p=762", "Национальная библиотека сохраняет мемориальную и библиографическую запись о Леониде Лари."],
@@ -112,7 +112,7 @@ const seeds = [
   {
     key: "moldova:nicolae_dabija",
     originalSha256: "44c88df19508377c7c4cd32ba3c04a7cb03a3e75fbadd8c549f263e17a5856d1",
-    reviewedTextRu: "Николае Дабижа (1948–2021) — молдавский поэт, прозаик, публицист и историк литературы. Он издал сборник «Ochiul al treilea», роман «Tema pentru acasă» и редактировал еженедельник «Literatura și arta».",
+    reviewedTextRu: "Николае Дабижа (1948-2021) - молдавский поэт, прозаик, публицист и историк литературы. Он издал сборник «Ochiul al treilea», роман «Tema pentru acasă» и редактировал еженедельник «Literatura și arta».",
     evidence: [
       ["MOLDPRES", "https://www.moldpres.md/rom/cultura/scriitorul-nicolae-dabija-isi-sarbatoreste-ziua-de-nastere", "Государственное информагентство подтверждает дату рождения, жанры, сборник Ochiul al treilea и роман Tema pentru acasă."],
       ["Biblioteca Națională a Republicii Moldova", "https://www.bnrm.md/?p=3044", "Национальная библиотека документирует литературное наследие и редакционную деятельность Николае Дабижи."],
@@ -123,7 +123,7 @@ const seeds = [
   {
     key: "moldova:spiridon_vangheli",
     originalSha256: "c4722f812a7c2b2d313ead9fe7b542f68fbc5edd34c30d61cb94808f98412606",
-    reviewedTextRu: "Спиридон Вангели (1932–2024) — молдавский детский писатель, поэт, переводчик и редактор. Он создал героя Гугуцэ и написал книги «Isprăvile lui Guguță», «Guguță — căpitan de corabie» и «Steaua lui Ciuboțel».",
+    reviewedTextRu: "Спиридон Вангели (1932-2024) - молдавский детский писатель, поэт, переводчик и редактор. Он создал героя Гугуцэ и написал книги «Isprăvile lui Guguță», «Guguță - căpitan de corabie» и «Steaua lui Ciuboțel».",
     evidence: [
       ["MOLDPRES", "https://www.moldpres.md/rom/cultura/scriitorul-spiridon-vangheli-a-decedat-la-varsta-de-92-de-ani", "Государственный некролог подтверждает даты, роли, книги о Гугуцэ и переводы Вангели."],
       ["Biblioteca Națională a Republicii Moldova", "https://www.bnrm.md/?p=1110", "Национальная библиотека документирует посвящённый Вангели фестиваль книги и сохранение его литературного наследия."],
@@ -134,10 +134,10 @@ const seeds = [
   {
     key: "monaco:jean_baptiste_barla",
     originalSha256: "2762c384b1d43db4ee419d52b5bab6bc3fbb8a35e73c5c0d2ddefc00bc79deb6",
-    reviewedTextRu: "Официальные музейные записи устанавливают Jean-Baptiste Barla (1817–1896) как уроженца Ниццы, ботаника и исследователя грибов, а не монегасского литератора. Приписанные карточкой место рождения, страна и литературная роль не подтверждены, поэтому профиль не публикуется.",
+    reviewedTextRu: "Официальные музейные записи устанавливают Jean-Baptiste Barla (1817-1896) как уроженца Ниццы, ботаника и исследователя грибов, а не монегасского литератора. Приписанные карточкой место рождения, страна и литературная роль не подтверждены, поэтому профиль не публикуется.",
     evidence: [
       ["Muséum d’Histoire Naturelle de Nice", "https://grandirenculture.nice.fr/uploads/fiches_ets/fiche-mhnn-le-museum.pdf", "Официальная история музея идентифицирует Барла как натуралиста из Ниццы, исследовавшего местную флору, рыб и грибы."],
-      ["Министерство культуры Франции — POP", "https://pop.culture.gouv.fr/notice/joconde/70500004860", "Государственная музейная запись подтверждает годы 1817–1896 и места рождения и смерти в Ницце, а также ботанические работы Барла."],
+      ["Министерство культуры Франции - POP", "https://pop.culture.gouv.fr/notice/joconde/70500004860", "Государственная музейная запись подтверждает годы 1817-1896 и места рождения и смерти в Ницце, а также ботанические работы Барла."],
     ],
     decision: "held",
     notes: "Обнаружен межстрановой и профессиональный конфликт: доказана французская естественно-научная личность, но не заявленный монегасский автор.",
@@ -145,7 +145,7 @@ const seeds = [
   {
     key: "monaco:louis_notari",
     originalSha256: "b59766e0cfe6db74864a9d76ec92891378c6f6ab268fe9feab5214efc8c5bc89",
-    reviewedTextRu: "Луи Нотари (1879–1961) — монегасский поэт и инженер, написавший в 1931 году текст гимна Монако на монегасском языке. Его поэма «A legenda de Santa Devota» была издана в 1927 году и стала ранним литературным произведением на монегасском.",
+    reviewedTextRu: "Луи Нотари (1879-1961) - монегасский поэт и инженер, написавший в 1931 году текст гимна Монако на монегасском языке. Его поэма «A legenda de Santa Devota» была издана в 1927 году и стала ранним литературным произведением на монегасском.",
     evidence: [
       ["Княжеский дворец Монако", "https://palais.mc/en/the-institution/national-anthem-1-22.html", "Официальная история гимна подтверждает авторство монегасского текста Луи Нотари в 1931 году."],
       ["Comité National des Traditions Monégasques", "https://www.traditions-monaco.com/sonotheque/hommage-a-louis-notari-1879-1961", "Национальный комитет традиций подтверждает даты, инженерную службу и роль Нотари в письменной монегасской культуре."],
@@ -156,7 +156,7 @@ const seeds = [
   {
     key: "mongolia:byambyn_rinchen",
     originalSha256: "a889a408e6e6cea37f492355c7258b36882105ed0f4ba8c44657f236725d0897",
-    reviewedTextRu: "Бямбын Ринчен (1905–1977) — монгольский писатель, переводчик, лингвист и этнограф. Он написал трилогию «Үүрийн туяа», романы «Заан Залуудай» и «Их нүүдэл» и занимался исследованиями монгольского языка и культуры.",
+    reviewedTextRu: "Бямбын Ринчен (1905-1977) - монгольский писатель, переводчик, лингвист и этнограф. Он написал трилогию «Үүрийн туяа», романы «Заан Залуудай» и «Их нүүдэл» и занимался исследованиями монгольского языка и культуры.",
     evidence: [
       ["Национальный музей естественной истории Монголии", "https://www.nmns.gov.mn/client/en/article/364", "Государственный музей подтверждает биографию, научную работу и государственные награды Бямбына Ринчена."],
       ["MONTSAME", "https://montsame.mn/en/read/121730", "Национальное информагентство документирует девятитомное издание научного наследия Ринчена под эгидой Национального совета монголоведения."],
@@ -167,7 +167,7 @@ const seeds = [
   {
     key: "mongolia:danzanravjaa",
     originalSha256: "8bf994b185d94d8842e7967b5a5b9e5684652de85cd1d89f90cbd095162df739",
-    reviewedTextRu: "Дулдуйтын Данзанравжаа (1803–1856) — монгольский буддийский деятель, поэт, композитор и драматург. Он основал театр при Хамарын-хийде и поставил музыкальную драму «Саран хөхөө».",
+    reviewedTextRu: "Дулдуйтын Данзанравжаа (1803-1856) - монгольский буддийский деятель, поэт, композитор и драматург. Он основал театр при Хамарын-хийде и поставил музыкальную драму «Саран хөхөө».",
     evidence: [
       ["MONTSAME", "https://montsame.mn/en/read/326794", "Национальное информагентство подтверждает 220-летний юбилей, роли поэта, композитора и драматурга и вклад в основание национального театра."],
       ["UNESCO World Heritage Centre", "https://whc.unesco.org/fr/listesindicatives/6068/", "Материал Монгольской национальной комиссии для ЮНЕСКО подтверждает религиозную идентичность Данзанравжаа и связанные с ним храмы и тексты."],
@@ -178,10 +178,10 @@ const seeds = [
   {
     key: "mongolia:dashdorj_natsagdorj",
     originalSha256: "4482e2351af98a7c31cd32ded8005c6409320f4c713cde74355a44b272d7d15a",
-    reviewedTextRu: "Дашдоржийн Нацагдорж (1906–1937) — монгольский поэт, прозаик и драматург, участвовавший в формировании современной литературы страны. Он написал поэму «Миний нутаг» и пьесу «Учиртай гурван толгой».",
+    reviewedTextRu: "Дашдоржийн Нацагдорж (1906-1937) - монгольский поэт, прозаик и драматург, участвовавший в формировании современной литературы страны. Он написал поэму «Миний нутаг» и пьесу «Учиртай гурван толгой».",
     evidence: [
       ["MONTSAME", "https://www.montsame.mn/en/read/388525", "Национальное информагентство подтверждает даты юбилея и определяет Нацагдоржа как писателя, поэта, драматурга и основателя современной монгольской литературы."],
-      ["UNESCO — History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает годы, жанры и произведения My Homeland и Three Fateful Hills."],
+      ["UNESCO - History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает годы, жанры и произведения My Homeland и Three Fateful Hills."],
     ],
     decision: "corrected",
     notes: "Первенствующая формула смягчена до участия в формировании литературы и дополнена жанрами и двумя оригинальными названиями.",
@@ -189,10 +189,10 @@ const seeds = [
   {
     key: "mongolia:inzhannashi",
     originalSha256: "3a1f5f49b41b9087676a92f8284b460a0a320a5230475e3df2a8b06b451309c1",
-    reviewedTextRu: "Ванчинбалын Инжаннаши (1837–1892) — монгольский писатель, поэт и историк из Внутренней Монголии. Он завершил исторический роман «Хөх судар» и написал романы «Нэгэн давхар асар» и «Улаанаа уйлах танхим».",
+    reviewedTextRu: "Ванчинбалын Инжаннаши (1837-1892) - монгольский писатель, поэт и историк из Внутренней Монголии. Он завершил исторический роман «Хөх судар» и написал романы «Нэгэн давхар асар» и «Улаанаа уйлах танхим».",
     evidence: [
       ["Монгольский государственный университет", "https://portal.num.edu.mn/Staff/7a05581e-891c-48d8-9e18-264ed0f5878f/Publications", "Университетская публикация подтверждает личность Инжаннаши как писателя XIX века и академическое изучение его биографии и трудов."],
-      ["UNESCO — History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО атрибутирует Инжаннаши Blue Book и китайского типа романы."],
+      ["UNESCO - History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО атрибутирует Инжаннаши Blue Book и китайского типа романы."],
     ],
     decision: "corrected",
     notes: "Суперлатив заменён происхождением, жанрами и тремя оригинальными названиями; технические даты 1 января убираются.",
@@ -200,10 +200,10 @@ const seeds = [
   {
     key: "mongolia:lodoidamba",
     originalSha256: "56e5c41d92d7b6398008ae3a375bb26bf8ad1b4a1e536b6f71268c0ed09b80c1",
-    reviewedTextRu: "Чадраабалын Лодойдамба (1917–1970) — монгольский прозаик, драматург и литературовед. Он написал роман «Тунгалаг Тамир», повесть «Манай сургуулийнхан» и произведение «Алтайд».",
+    reviewedTextRu: "Чадраабалын Лодойдамба (1917-1970) - монгольский прозаик, драматург и литературовед. Он написал роман «Тунгалаг Тамир», повесть «Манай сургуулийнхан» и произведение «Алтайд».",
     evidence: [
       ["Библиотека Монгольского государственного университета", "https://catalog.num.edu.mn/cgi-bin/koha/opac-detail.pl?biblionumber=142314", "Университетский каталог подтверждает авторскую идентичность Лодойдамбы и атрибутирует ему роман Tungalag Tamir."],
-      ["University of Szeged", "https://doktori.bibl.u-szeged.hu/11942/1/CANN%20dissertation.pdf", "Университетское исследование подтверждает годы 1917–1970 и роман Tungalag Tamir."],
+      ["University of Szeged", "https://doktori.bibl.u-szeged.hu/11942/1/CANN%20dissertation.pdf", "Университетское исследование подтверждает годы 1917-1970 и роман Tungalag Tamir."],
     ],
     decision: "corrected",
     notes: "Суперлатив заменён жанровыми ролями и тремя атрибутированными произведениями.",
@@ -211,7 +211,7 @@ const seeds = [
   {
     key: "mongolia:mend_ooyo",
     originalSha256: "614f4478967c46d37472259bf5ff669a38c5ea0183e872460ebe33e963b5a6b3",
-    reviewedTextRu: "Гомбожавын Мэнд-Ооёо (род. 1952) — монгольский поэт, прозаик и каллиграф, пишущий о культуре кочевников и природном наследии. Он создал «Алтан Овоо», романы «Гэгээнтэн» и «Шилийн Богд» и в 2015 году получил орден Чингисхана.",
+    reviewedTextRu: "Гомбожавын Мэнд-Ооёо (род. 1952) - монгольский поэт, прозаик и каллиграф, пишущий о культуре кочевников и природном наследии. Он создал «Алтан Овоо», романы «Гэгээнтэн» и «Шилийн Богд» и в 2015 году получил орден Чингисхана.",
     evidence: [
       ["Официальный сайт Г. Мэнд-Ооёо", "https://www.mend-ooyo.mn/biography", "Официальная биография подтверждает происхождение, жанры, культурную работу, книги и награды автора."],
       ["MONTSAME", "https://montsame.mn/en/read/355035", "Национальное информагентство подтверждает литературную идентичность Мэнд-Ооёо и присуждение ему ордена Чингисхана в 2015 году."],
@@ -222,10 +222,10 @@ const seeds = [
   {
     key: "mongolia:sonomyn_udval",
     originalSha256: "dfe8d1c81c04581f709a8299aec51df75b3e92408a633556800c041e8df1028b",
-    reviewedTextRu: "Сономын Удвал — монгольская писательница и общественный деятель, работавшая в прозе, поэзии, драматургии и кино. Её роман «Их хувь заяа» посвящён военачальнику Хатанбаатару Магсаржаву; среди других книг — «Одгэрэл» и «Анхны арван гурав».",
+    reviewedTextRu: "Сономын Удвал - монгольская писательница и общественный деятель, работавшая в прозе, поэзии, драматургии и кино. Её роман «Их хувь заяа» посвящён военачальнику Хатанбаатару Магсаржаву; среди других книг - «Одгэрэл» и «Анхны арван гурав».",
     evidence: [
       ["Министерство культуры Монголии", "https://mocsty.gov.mn/en/news/W4yP1HYmxCIrgoqAkzHvWp2dLnVCgsgB", "Официальный юбилейный материал подтверждает год рождения, литературные жанры, общественные роли и роман Great Destiny."],
-      ["UNESCO — History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает прозу Удвал и роман Great Destiny 1973 года."],
+      ["UNESCO - History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает прозу Удвал и роман Great Destiny 1973 года."],
     ],
     decision: "corrected",
     notes: "Суперлатив и сомнительная точная дата смерти не повторяются; добавлены жанры, общественная роль и три произведения.",
@@ -233,9 +233,9 @@ const seeds = [
   {
     key: "mongolia:tsendiin_damdinsuren",
     originalSha256: "cd47966be4e7ab41cef236bafa79c308fd87fe11bdbb547300c393969546fb38",
-    reviewedTextRu: "Цэндийн Дамдинсурэн (1908–1986) — монгольский писатель, переводчик, филолог и историк литературы. Он написал повесть «Гологдсон хүүхэн», поэму «Буурал ээж минь» и исследования по истории монгольской словесности.",
+    reviewedTextRu: "Цэндийн Дамдинсурэн (1908-1986) - монгольский писатель, переводчик, филолог и историк литературы. Он написал повесть «Гологдсон хүүхэн», поэму «Буурал ээж минь» и исследования по истории монгольской словесности.",
     evidence: [
-      ["UNESCO — History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает годы, роли и произведения The Despised Girl и My Grey-Haired Mother."],
+      ["UNESCO - History of Civilizations of Central Asia, vol. VI", "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993", "История литератур ЮНЕСКО подтверждает годы, роли и произведения The Despised Girl и My Grey-Haired Mother."],
       ["Монгольский государственный университет", "https://journal.num.edu.mn/ms/article/view/6328", "Университетское исследование документирует поэзию Дамдинсурэна и её связь с устной литературной традицией."],
     ],
     decision: "corrected",
@@ -244,7 +244,7 @@ const seeds = [
   {
     key: "mongolia:uriankhai",
     originalSha256: "614f4478967c46d37472259bf5ff669a38c5ea0183e872460ebe33e963b5a6b3",
-    reviewedTextRu: "Дамдинсурэнгийн Урианхай (род. 1940) — монгольский поэт, прозаик, эссеист и драматург. Он издал «Хүн танаа», «Таны шинэ танил» и «Өвлийн шувуу» и в 2017 году стал первым лауреатом Азиатской литературной премии.",
+    reviewedTextRu: "Дамдинсурэнгийн Урианхай (род. 1940) - монгольский поэт, прозаик, эссеист и драматург. Он издал «Хүн танаа», «Таны шинэ танил» и «Өвлийн шувуу» и в 2017 году стал первым лауреатом Азиатской литературной премии.",
     evidence: [
       ["MONTSAME", "https://www.montsame.mn/en/read/132284", "Национальное информагентство подтверждает год рождения, литературную идентичность и первую Азиатскую литературную премию."],
       ["Монгольский государственный университет", "https://journal.num.edu.mn/ms/article/view/5866", "Университетское исследование подтверждает многожанровое творчество Д. Урианхая и международные переводы его произведений."],
@@ -255,7 +255,7 @@ const seeds = [
   {
     key: "montenegro:marko_miljanov",
     originalSha256: "a0b05c39e849b584f96b94aa6d6bde32efdd851b94106734fe15c4e21125fcfe",
-    reviewedTextRu: "Марко Милянов Попович (1833–1901) — черногорский воевода и писатель, обращавшийся к истории, этике и обычаям Кучи. Он написал «Primjeri čojstva i junaštva», «Pleme Kuči u narodnoj priči i pjesmi» и «Život i običaji Arbanasa».",
+    reviewedTextRu: "Марко Милянов Попович (1833-1901) - черногорский воевода и писатель, обращавшийся к истории, этике и обычаям Кучи. Он написал «Primjeri čojstva i junaštva», «Pleme Kuči u narodnoj priči i pjesmi» и «Život i običaji Arbanasa».",
     evidence: [
       ["University of Montenegro", "https://rijec.ucg.ac.me/casopisi/rijec_14.pdf", "Университетское исследование подтверждает годы, писательскую идентичность и состав полного собрания произведений Марко Милянова."],
       ["Национальная библиотека Черногории", "https://www.nb-cg.me/en/events/105-book-exhibition-montenegrin-literature-in-foreign-languages", "Национальная библиотека подтверждает черногорскую принадлежность и переводы Examples of Humanity and Bravery."],
@@ -266,10 +266,10 @@ const seeds = [
   {
     key: "montenegro:miodrag_bulatovic",
     originalSha256: "66218a5478b603e9643281a9d52438238e53fba3b9e4065e4239cd68698f723e",
-    reviewedTextRu: "Миодраг Булатович (1930–1991) — сербский писатель, родившийся близ Биело-Поле в Черногории. Он написал романы «Crveni petao leti prema nebu», «Heroj na magarcu» и «Ljudi sa četiri prsta», за последний из которых получил премию журнала NIN в 1975 году.",
+    reviewedTextRu: "Миодраг Булатович (1930-1991) - сербский писатель, родившийся близ Биело-Поле в Черногории. Он написал романы «Crveni petao leti prema nebu», «Heroj na magarcu» и «Ljudi sa četiri prsta», за последний из которых получил премию журнала NIN в 1975 году.",
     evidence: [
       ["University of Montenegro", "https://ucg.ac.me/objava/blog/6291/objava/71076-nova-objava-09-04-2020-17-29-o-m-bulatovicu", "Университетский материал подтверждает место и дату рождения, образование, основные книги и премию NIN 1975 года."],
-      ["Hrvatska enciklopedija", "https://www.enciklopedija.hr/clanak/bulatovic-miodrag", "Национальная энциклопедия подтверждает годы 1930–1991, литературную идентичность и библиографию Булатовича."],
+      ["Hrvatska enciklopedija", "https://www.enciklopedija.hr/clanak/bulatovic-miodrag", "Национальная энциклопедия подтверждает годы 1930-1991, литературную идентичность и библиографию Булатовича."],
     ],
     decision: "corrected",
     notes: "Общее жанровое описание заменено точной национальной идентичностью, тремя оригинальными названиями и документированной премией.",
@@ -277,7 +277,7 @@ const seeds = [
   {
     key: "montenegro:nikola_i_petrovic",
     originalSha256: "ce6194d8b843fb5de4b3601fbb29fe76778a3935279b59e14e6c7b94e2d0fce0",
-    reviewedTextRu: "Никола I Петрович-Негош (1841–1921) — черногорский правитель и литератор, князь в 1860–1910 годах и король в 1910–1918 годах. Его историческая стихотворная драма «Balkanska carica» входит в документированное литературное наследие автора.",
+    reviewedTextRu: "Никола I Петрович-Негош (1841-1921) - черногорский правитель и литератор, князь в 1860-1910 годах и король в 1910-1918 годах. Его историческая стихотворная драма «Balkanska carica» входит в документированное литературное наследие автора.",
     evidence: [
       ["Национальный музей Черногории", "https://narodnimuzej.me/wp-content/uploads/2021/02/Plan-rada-Narodnog-muzeja-za-2021.-godinu-fin-sajt-converted.pdf", "Национальный музей подтверждает годы жизни, периоды княжения и королевского правления Николы I."],
       ["Национальная библиотека Черногории", "https://www.nb-cg.me/me/dogadjaji/858-bibliografija-knjizevni-opus-nikole-i-petrovica-njegosa-predstavljena-u-nbcg", "Национальная библиотека документирует литературное наследие и драму Balkanska carica."],
@@ -288,7 +288,7 @@ const seeds = [
   {
     key: "montenegro:ognjen_spahic",
     originalSha256: "6375ee4c90a150e0100278358ffee8455a7bad7f1593626213aa09d5c80c7964",
-    reviewedTextRu: "Огнен Спахич (род. 1977) — черногорский прозаик и журналист из Подгорицы. Его роман «Hansenova djeca» получил премию имени Меши Селимовича в 2005 году, а сборник «Puna glava radosti» — Литературную премию Европейского союза в 2014 году.",
+    reviewedTextRu: "Огнен Спахич (род. 1977) - черногорский прозаик и журналист из Подгорицы. Его роман «Hansenova djeca» получил премию имени Меши Селимовича в 2005 году, а сборник «Puna glava radosti» - Литературную премию Европейского союза в 2014 году.",
     evidence: [
       ["European Union Prize for Literature", "https://euprizeliterature.eu/en/prize-author/ognjen-spahic/", "Официальный профиль премии подтверждает рождение в Подгорице в 1977 году, книги и награды 2005 и 2014 годов."],
       ["University of Iowa International Writing Program", "https://iwp.uiowa.edu/writers/2007-resident/ognjen-spahic", "Университетский профиль подтверждает образование, авторство Hansen's Children, сборники рассказов и журналистскую работу."],
@@ -299,7 +299,7 @@ const seeds = [
   {
     key: "montenegro:petar_ii_petrovic_njegos",
     originalSha256: "cf81a1d77357d110c7c0a55e2675e36db6e40aed9e2f503afff2f5b434d6c61d",
-    reviewedTextRu: "Петар II Петрович-Негош (1813–1851) — черногорский владыка и правитель 1830–1851 годов, поэт, писатель и философ. Его поэма-драма «Gorski vijenac» была издана в Вене в 1847 году.",
+    reviewedTextRu: "Петар II Петрович-Негош (1813-1851) - черногорский владыка и правитель 1830-1851 годов, поэт, писатель и философ. Его поэма-драма «Gorski vijenac» была издана в Вене в 1847 году.",
     evidence: [
       ["Национальный музей Черногории", "https://narodnimuzej.me/2020/10/23/gorski-vijenac/", "Национальный музей подтверждает авторство, жанр поэмы-драмы, рукопись 1846 года и венское издание Gorski vijenac 1847 года."],
       ["Правительство Черногории", "https://www.gov.me/clanak/169782--kulturna-istorija-27-februar-170-godina-stampanja-prvog-izdanja-gorskog-vijenca-petra-ii-petrovica-njegosa", "Официальный материал подтверждает авторство, венское издание Gorski vijenac 1847 года и историко-культурный контекст произведения."],
@@ -310,7 +310,7 @@ const seeds = [
   {
     key: "montenegro:stefan_ljubisa",
     originalSha256: "24c5d193e300c5dfcc3795aba71f5b11de1e372416edd90c986b888a731ecc59",
-    reviewedTextRu: "Стефан Митров Любиша (1824–1878) — черногорский писатель из Будвы, работавший в повествовательной прозе. Среди его произведений — «Kanjoš Macedonović», «Prodaja patrijare Brkića» и рассказы о Лжецаре Степане Малом.",
+    reviewedTextRu: "Стефан Митров Любиша (1824-1878) - черногорский писатель из Будвы, работавший в повествовательной прозе. Среди его произведений - «Kanjoš Macedonović», «Prodaja patrijare Brkića» и рассказы о Лжецаре Степане Малом.",
     evidence: [
       ["Национальная библиотека Черногории", "https://www.nb-cg.me/en/events/570-140-years-since-the-death-of-stefan-mitrov-ljubisa-at-nlm", "Национальная библиотека подтверждает даты, место рождения, литературную роль и перечисленные произведения Любиши."],
       ["WorldCat", "https://search.worldcat.org/search?q=au%3A%22Ljubi%C5%A1a%2C+Stefan+Mitrov%22", "Международный каталог подтверждает авторскую идентичность и книжную библиографию Стефана Митрова Любиши."],
@@ -321,7 +321,7 @@ const seeds = [
   {
     key: "morocco:abdellatif_laabi",
     originalSha256: "4c5d6d1fccca47eccd3e973d4fa29e214ca9c647058e84b6d1190280df7521d0",
-    reviewedTextRu: "Абделлатиф Лааби (род. 1942) — марокканский поэт, романист, драматург, эссеист и переводчик с арабского на французский. Он основал журнал «Souffles» в 1966 году, а в 2011 году получил Большую премию Французской академии за вклад во франкофонию.",
+    reviewedTextRu: "Абделлатиф Лааби (род. 1942) - марокканский поэт, романист, драматург, эссеист и переводчик с арабского на французский. Он основал журнал «Souffles» в 1966 году, а в 2011 году получил Большую премию Французской академии за вклад во франкофонию.",
     evidence: [
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb11910338k", "Авторитетная запись BnF подтверждает год и страну рождения, арабский и французский языки, а также роли поэта, журналиста и переводчика."],
       ["Académie française", "https://www.academie-francaise.fr/abdellatif-laabi", "Французская академия подтверждает марокканскую литературную идентичность и Grand Prix de la Francophonie 2011 года."],
@@ -332,7 +332,7 @@ const seeds = [
   {
     key: "morocco:ahmed_sefrioui",
     originalSha256: "a7e8587e1e2f76ef1a589e968204414e4cd16219069e8595a77afcffd9d8cdf4",
-    reviewedTextRu: "Ахмед Сефриуи (1915–2004) — марокканский франкоязычный писатель, журналист и музейный деятель. Среди его книг — сборник «Le Chapelet d’ambre» и автобиографический роман «La Boîte à merveilles».",
+    reviewedTextRu: "Ахмед Сефриуи (1915-2004) - марокканский франкоязычный писатель, журналист и музейный деятель. Среди его книг - сборник «Le Chapelet d’ambre» и автобиографический роман «La Boîte à merveilles».",
     evidence: [
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb119242928", "Авторитетная запись подтверждает даты, марокканскую принадлежность, французский язык, журналистскую и музейную работу."],
       ["Encyclopædia Universalis", "https://www.universalis.fr/encyclopedie/ahmed-sefrioui/", "Энциклопедия подтверждает место в марокканской франкоязычной литературе и книги 1949 и 1954 годов."],
@@ -343,7 +343,7 @@ const seeds = [
   {
     key: "morocco:driss_chraibi",
     originalSha256: "d15ea21cec10e58a6e91e9b2c65f1be7be655142d7b0f060d1bb5b2d76c54155",
-    reviewedTextRu: "Дрисс Шрайби (1926–2007) — марокканский франкоязычный романист и радиопродюсер. Он написал романы «Le Passé simple», «La Civilisation, ma Mère!» и «La Mère du printemps».",
+    reviewedTextRu: "Дрисс Шрайби (1926-2007) - марокканский франкоязычный романист и радиопродюсер. Он написал романы «Le Passé simple», «La Civilisation, ma Mère!» и «La Mère du printemps».",
     evidence: [
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb118968037", "Авторитетная запись подтверждает даты, марокканскую принадлежность, французский язык, профессию романиста и работу на France Culture."],
       ["Encyclopædia Universalis", "https://www.universalis.fr/encyclopedie/driss-chraibi/", "Энциклопедия подтверждает биографию и библиографию, включая три указанных романа."],
@@ -354,7 +354,7 @@ const seeds = [
   {
     key: "morocco:fatima_mernissi",
     originalSha256: "55cbf661dbdcad8c46899e5d2d19dc8aa5c08b8fc74b55e78b7858942f032396",
-    reviewedTextRu: "Фатима Мерниси (1940–2015) — марокканская социолог и писательница, исследовавшая положение женщин в исламских обществах и преподававшая в Университете Мухаммеда V. В 2003 году она разделила литературную премию принца Астурийского, а в 2004 году получила премию Эразма.",
+    reviewedTextRu: "Фатима Мерниси (1940-2015) - марокканская социолог и писательница, исследовавшая положение женщин в исламских обществах и преподававшая в Университете Мухаммеда V. В 2003 году она разделила литературную премию принца Астурийского, а в 2004 году получила премию Эразма.",
     evidence: [
       ["Fundación Princesa de Asturias", "https://www.fpa.es/es/premios-princesa-de-asturias/premiados/2003-fatema-mernissi-y-susan-sontag/?texto=trayectoria", "Официальный профиль премии подтверждает даты, образование, преподавание и совместную литературную премию 2003 года."],
       ["Praemium Erasmianum Foundation", "https://erasmusprijs.org/en/laureates/fatema-mernissi/", "Официальный профиль подтверждает марокканскую писательскую и социологическую деятельность, исследовательскую тему и премию Эразма 2004 года."],
@@ -365,7 +365,7 @@ const seeds = [
   {
     key: "morocco:leila_abouzeid",
     originalSha256: "5c8823ef3f9be04872d82149c88d91bcc81edb7452175f4a7310ea5d4ce28eb0",
-    reviewedTextRu: "Лейла Абу Зейд (род. 1950) — марокканская арабоязычная писательница и бывшая радио- и тележурналистка. Она написала романы «عام الفيل» («Год слона») и «الفصل الأخير» («Последняя глава»), переведённые на английский язык.",
+    reviewedTextRu: "Лейла Абу Зейд (род. 1950) - марокканская арабоязычная писательница и бывшая радио- и тележурналистка. Она написала романы «عام الفيل» («Год слона») и «الفصل الأخير» («Последняя глава»), переведённые на английский язык.",
     evidence: [
       ["American University in Cairo Press", "https://aucpress.com/9781617971853/", "Университетское издательство подтверждает журналистскую работу, арабоязычное письмо, английские переводы и книги The Year of the Elephant и The Last Chapter."],
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=14495586&typeNotice=p", "Авторитетная запись подтверждает имя, 1950 год рождения и международную библиографию Лейлы Абу Зейд."],
@@ -376,7 +376,7 @@ const seeds = [
   {
     key: "morocco:mohamed_choukri",
     originalSha256: "857ab25d11bf1e46e836af22f28b009f46faf793a3aad0c5b6b8cae239c59e07",
-    reviewedTextRu: "Мохамед Шукри (1935–2003) — марокканский арабоязычный романист, известный автобиографической прозой. Он написал книги «الخبز الحافي» («Голый хлеб») и «زمن الأخطاء» («Время ошибок»), а в 1995 году получил премию франко-арабской дружбы.",
+    reviewedTextRu: "Мохамед Шукри (1935-2003) - марокканский арабоязычный романист, известный автобиографической прозой. Он написал книги «الخبز الحافي» («Голый хлеб») и «زمن الأخطاء» («Время ошибок»), а в 1995 году получил премию франко-арабской дружбы.",
     evidence: [
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb118967854", "Авторитетная запись подтверждает даты, марокканскую принадлежность, арабский язык и профессию романиста."],
       ["E-taqafa", "https://www.e-taqafa.ma/dossier/mohamed-choukri", "Марокканский культурный портал подтверждает библиографию и Prix de l’amitié franco-arabe 1995 года."],
@@ -387,7 +387,7 @@ const seeds = [
   {
     key: "morocco:tahar_ben_jelloun",
     originalSha256: "a7f486dbee253fa6b80b0b611124aa4d0a452f158aadb07e05a1c0e545cbbe81",
-    reviewedTextRu: "Тахар Бен Джеллун — марокканский франкоязычный писатель, поэт и художник. Его роман «La Nuit sacrée» получил Гонкуровскую премию в 1987 году, а с 2008 года автор состоит в Гонкуровской академии.",
+    reviewedTextRu: "Тахар Бен Джеллун - марокканский франкоязычный писатель, поэт и художник. Его роман «La Nuit sacrée» получил Гонкуровскую премию в 1987 году, а с 2008 года автор состоит в Гонкуровской академии.",
     evidence: [
       ["Académie Goncourt", "https://www.academiegoncourt.com/tahar-beh-jelloun", "Официальный профиль подтверждает творческие роли, роман, премию 1987 года и членство в Академии с 2008 года."],
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb118911393", "Авторитетная запись подтверждает марокканскую франкоязычную идентичность и Гонкуровскую премию, но приводит дату рождения, отличную от Академии."],
@@ -398,10 +398,10 @@ const seeds = [
   {
     key: "mozambique:eduardo_white",
     originalSha256: "dd9a86dcdad06ca6fcdb7ec95b82ec79952ac65a41840381b004db122503f670",
-    reviewedTextRu: "Эдуарду Уайт (1963–2014) — мозамбикский поэт и прозаик, один из основателей литературного журнала и движения «Charrua». Среди его книг — «O País de Mim» и «Janela para o Índico»; в 2004 году он получил литературную премию имени Жозе Кравейриньи.",
+    reviewedTextRu: "Эдуарду Уайт (1963-2014) - мозамбикский поэт и прозаик, один из основателей литературного журнала и движения «Charrua». Среди его книг - «O País de Mim» и «Janela para o Índico»; в 2004 году он получил литературную премию имени Жозе Кравейриньи.",
     evidence: [
       ["Alcance Editores", "https://alcanceeditores.co.mz/eduardo-white/", "Мозамбикское издательство подтверждает дату и место рождения, Charrua, библиографию и премию Жозе Кравейриньи 2004 года."],
-      ["Universidade de São Paulo", "https://revistas.usp.br/africa/article/download/115368/113021/210607", "Университетская публикация подтверждает полное имя, годы 1963–2014 и участие в литературном движении Charrua."],
+      ["Universidade de São Paulo", "https://revistas.usp.br/africa/article/download/115368/113021/210607", "Университетская публикация подтверждает полное имя, годы 1963-2014 и участие в литературном движении Charrua."],
     ],
     decision: "corrected",
     notes: "Оценочное ранжирование заменено организационной ролью, двумя книгами и проверенной премией.",
@@ -409,7 +409,7 @@ const seeds = [
   {
     key: "mozambique:jose_craveirinha",
     originalSha256: "8d970414644af3b00d0b16dcbb50e5d327514e79d399e25ad988ae4fb1629c79",
-    reviewedTextRu: "Жозе Кравейринья (1922–2003) — мозамбикский поэт, журналист и автор рассказов, находившийся в политическом заключении в 1965–1969 годах. В 1991 году он стал первым африканским писателем, получившим премию Камоэнса.",
+    reviewedTextRu: "Жозе Кравейринья (1922-2003) - мозамбикский поэт, журналист и автор рассказов, находившийся в политическом заключении в 1965-1969 годах. В 1991 году он стал первым африканским писателем, получившим премию Камоэнса.",
     evidence: [
       ["Instituto Camões", "https://cvc.instituto-camoes.pt/poemasemana/35/sentimentos1.html", "Официальный культурный институт подтверждает даты, жанры, журналистскую работу, заключение и премию 1991 года."],
       ["Biblioteca Nacional do Brasil", "https://www.gov.br/bn/pt-br/atuacao/cooperacao-e-difusao/premio-camoes-de-literatura", "Национальная библиотека подтверждает, что Кравейринья был лауреатом 1991 года и первым африканским получателем премии Камоэнса."],
@@ -420,7 +420,7 @@ const seeds = [
   {
     key: "mozambique:lilia_momple",
     originalSha256: "28ee6eb579bda7b7bef583558387856d0f3db11423d0a34af3be0edf12afac6e",
-    reviewedTextRu: "Лилия Момпле (род. 1935) — мозамбикская писательница-прозаик с острова Мозамбик. Она написала «Ninguém Matou Suhura», «Neighbours» и «Os Olhos da Cobra Verde», возглавляла Ассоциацию мозамбикских писателей и входила в Исполнительный совет ЮНЕСКО.",
+    reviewedTextRu: "Лилия Момпле (род. 1935) - мозамбикская писательница-прозаик с острова Мозамбик. Она написала «Ninguém Matou Suhura», «Neighbours» и «Os Olhos da Cobra Verde», возглавляла Ассоциацию мозамбикских писателей и входила в Исполнительный совет ЮНЕСКО.",
     evidence: [
       ["University of Iowa International Writing Program", "https://iwp.uiowa.edu/writers/1997/lilia-maria-clara-carriere-momple", "Университетский профиль подтверждает рождение, национальность, жанр и три книги Момпле."],
       ["Catalogus Moçambique", "https://www.catalogus.co.mz/autor/lilia-momple", "Мозамбикский издательский профиль подтверждает полное имя, дату рождения и руководящие роли в писательской ассоциации и ЮНЕСКО."],
@@ -431,7 +431,7 @@ const seeds = [
   {
     key: "mozambique:mia_couto",
     originalSha256: "bcc5f7b09c4052d84c5c2645d24d2aa58aaa97c6e1e026a80a0b2d9158ee1e9a",
-    reviewedTextRu: "Миа Коуту (Антониу Эмилиу Лейте Коуту; род. 1955) — мозамбикский писатель и биолог, работающий в поэзии, рассказе и романе. Он получил премию Камоэнса в 2013 году и Нейштадтскую международную литературную премию в 2014 году.",
+    reviewedTextRu: "Миа Коуту (Антониу Эмилиу Лейте Коуту; род. 1955) - мозамбикский писатель и биолог, работающий в поэзии, рассказе и романе. Он получил премию Камоэнса в 2013 году и Нейштадтскую международную литературную премию в 2014 году.",
     evidence: [
       ["Официальный сайт Миа Коуту", "https://www.miacouto.org/biografia-bibliografia-e-premiacoes/", "Официальная биография подтверждает полное имя, дату и место рождения, журналистскую работу и образование биолога."],
       ["Neustadt International Prize for Literature", "https://www.neustadtprize.org/2014-mia-couto/", "Официальный профиль подтверждает писательскую и биологическую деятельность и премии Камоэнса и Нейштадта."],
@@ -442,7 +442,7 @@ const seeds = [
   {
     key: "mozambique:orlando_mendes",
     originalSha256: "b2daf74e89b93e2fefd1c248c5369ed2a47d9e18e53e152836dfb2899b26c7e0",
-    reviewedTextRu: "Орланду Мендеш (1916–1990) — мозамбикский биолог, поэт, романист, драматург и критик, связанный с неореализмом. Его роман «Portagem» был опубликован в 1966 году.",
+    reviewedTextRu: "Орланду Мендеш (1916-1990) - мозамбикский биолог, поэт, романист, драматург и критик, связанный с неореализмом. Его роман «Portagem» был опубликован в 1966 году.",
     evidence: [
       ["Infopédia / Porto Editora", "https://www.infopedia.pt/artigos/%24orlando-mendes?uri=lingua-portuguesa%2Fcontador", "Энциклопедическая запись подтверждает даты, образование биолога, литературные жанры, неореализм и роман Portagem."],
       ["Revista Tempo", "https://revista.tempo.co.mz/orlando-mendes/", "Мозамбикский журнал подтверждает годы, профессиональные роли, неореалистическую принадлежность и библиографию Мендеша."],
@@ -453,7 +453,7 @@ const seeds = [
   {
     key: "mozambique:paulina_chiziane",
     originalSha256: "3d5ba714377a09a97cd010ab20dbd91a7ceb3b126c1b9e1b06df9d8aced29694",
-    reviewedTextRu: "Паулина Шизиане (род. 1955) — мозамбикская романистка и рассказчица, обращающаяся к истории страны и положению мозамбикских женщин. В 2021 году она стала первой чернокожей женщиной, удостоенной премии Камоэнса.",
+    reviewedTextRu: "Паулина Шизиане (род. 1955) - мозамбикская романистка и рассказчица, обращающаяся к истории страны и положению мозамбикских женщин. В 2021 году она стала первой чернокожей женщиной, удостоенной премии Камоэнса.",
     evidence: [
       ["Министерство культуры Португалии", "https://culturaportugal.gov.pt/pt/saber/2023/04/cerimonia-de-entrega-do-premio-camoes-a-paulina-chiziane/", "Официальный материал подтверждает мозамбикскую писательскую идентичность, премию 2021 года и установленное первенство."],
       ["Universidade de São Paulo", "https://www.fflch.usp.br/57051", "Университет подтверждает дату рождения, жанры и тематику истории и положения женщин в книгах Шизиане."],
@@ -463,10 +463,10 @@ const seeds = [
   },
   {
     key: "mozambique:virgilio_de_lemos",
-    originalSha256: "6d3343951f2edbb5d4bda8601dd66883208e0822911deb2d6ddf2f3d58b2900a",
-    reviewedTextRu: "Виржилиу де Лемуш (1929–2013) — мозамбикский поэт-авангардист и журналист, публиковавшийся также под литературными именами. В 1961 году его заключила в тюрьму политическая полиция PIDE за поддержку независимости Мозамбика, а с 1963 года он жил и работал во Франции.",
+    originalSha256: "2da2eef0940f2243fb6e58ffccb39c45cece81f6e7791062c00f111fa3a08e2f",
+    reviewedTextRu: "Виржилиу де Лемуш (1929-2013) - мозамбикский поэт-авангардист и журналист, публиковавшийся также под литературными именами. В 1961 году его заключила в тюрьму политическая полиция PIDE за поддержку независимости Мозамбика, а с 1963 года он жил и работал во Франции.",
     evidence: [
-      ["Universidade Eduardo Mondlane — диссертация PUC Minas", "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf", "Докторская диссертация, размещённая Университетом Эдуарду Мондлане, подтверждает точную дату и место рождения, поэтическую и журналистскую деятельность, авангардные влияния, литературные имена и заключение PIDE в 1961–1962 годах за участие в борьбе за независимость."],
+      ["Universidade Eduardo Mondlane - диссертация PUC Minas", "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf", "Докторская диссертация, размещённая Университетом Эдуарду Мондлане, подтверждает точную дату и место рождения, поэтическую и журналистскую деятельность, авангардные влияния, литературные имена и заключение PIDE в 1961-1962 годах за участие в борьбе за независимость."],
       ["Verdade", "https://verdade.co.mz/faleceu-virgilio-de-lemos-o-poeta-das-ilhas/", "Мозамбикское издание подтверждает смерть 6 декабря 2013 года, жизнь и журналистскую работу во Франции с 1963 года и литературные имена."],
     ],
     decision: "corrected",
@@ -475,9 +475,9 @@ const seeds = [
   {
     key: "myanmar:dagon_taryar",
     originalSha256: "f6a8fc38aaa51f58545f9a214472b519d82311dc4b40b0f841edd2ac5659720c",
-    reviewedTextRu: "Дагон Тая (настоящее имя Тхэй Мьяйн; 1919–2013) — бирманский поэт, романист, редактор и участник движения за мир. Через журнал «Taya» он участвовал в послевоенном движении «Новая литература», продвигавшем реализм и принцип «искусство для народа», а в 2013 году получил премию Manhae.",
+    reviewedTextRu: "Дагон Тая (настоящее имя Тхэй Мьяйн; 1919-2013) - бирманский поэт, романист, редактор и участник движения за мир. Через журнал «Taya» он участвовал в послевоенном движении «Новая литература», продвигавшем реализм и принцип «искусство для народа», а в 2013 году получил премию Manhae.",
     evidence: [
-      ["The Irrawaddy — некролог", "https://www.irrawaddy.com/news/burma/burmese-literary-giant-dagon-taya-dead-at-95.html", "Некролог подтверждает настоящее имя, годы, литературную и миротворческую деятельность, New Literature и премию Manhae 2013 года."],
+      ["The Irrawaddy - некролог", "https://www.irrawaddy.com/news/burma/burmese-literary-giant-dagon-taya-dead-at-95.html", "Некролог подтверждает настоящее имя, годы, литературную и миротворческую деятельность, New Literature и премию Manhae 2013 года."],
       ["Ministries of the President's Office, Myanmar", "https://presoffministry.gov.mm/en/news/8074", "Государственный материал подтверждает годы, поэзию, прозу, редакторскую работу, политическую и миротворческую деятельность Дагона Тая."],
     ],
     decision: "corrected",

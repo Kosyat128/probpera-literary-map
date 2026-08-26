@@ -10,7 +10,7 @@ export const algeria: Country = {
       id: "moufdi_zakaria",
       name: "Муфди Закария",
       fullName: "Moufdi Zakaria",
-      years: "1908–1977",
+      years: "1908-1977",
 
       birthDate: "1908-06-12",
       deathDate: "1977-08-17",
@@ -57,7 +57,7 @@ export const algeria: Country = {
       name: "Мулуд Фераун",
       fullName: "Mouloud Feraoun",
 
-      years: "1913–1962",
+      years: "1913-1962",
 
       birthDate: "1913-03-08",
       deathDate: "1962-03-15",
@@ -104,7 +104,7 @@ export const algeria: Country = {
       name: "Мохаммед Диб",
       fullName: "Mohammed Dib",
 
-      years: "1920–2003",
+      years: "1920-2003",
 
       birthDate: "1920-07-21",
       deathDate: "2003-05-02",
@@ -152,7 +152,7 @@ export const algeria: Country = {
       name: "Катеб Ясин",
       fullName: "Kateb Yacine",
 
-      years: "1929–1989",
+      years: "1929-1989",
 
       birthDate: "1929-08-02",
       deathDate: "1989-10-28",
@@ -199,7 +199,7 @@ export const algeria: Country = {
       name: "Ассия Джебар",
       fullName: "Assia Djebar",
 
-      years: "1936–2015",
+      years: "1936-2015",
 
       birthDate: "1936-06-30",
       deathDate: "2015-02-06",
@@ -247,7 +247,7 @@ export const algeria: Country = {
       name: "Рашид Буджедра",
       fullName: "Rachid Boudjedra",
 
-      years: "1941–",
+      years: "1941-",
 
       birthDate: "1941-09-05",
       deathDate: "",
@@ -294,7 +294,7 @@ export const algeria: Country = {
       name: "Буалем Сансаль",
       fullName: "Boualem Sansal",
 
-      years: "1949–",
+      years: "1949-",
 
       birthDate: "1949-10-15",
       deathDate: "",

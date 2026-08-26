@@ -12,7 +12,7 @@ export const pakistan: Country = {
       name: "Мухаммад Икбал",
       fullName: "Muhammad Iqbal",
 
-      years: "1877–1938",
+      years: "1877-1938",
 
       birthDate: "1877-11-09",
       deathDate: "1938-04-21",
@@ -64,7 +64,7 @@ export const pakistan: Country = {
       name: "Саадат Хасан Манто",
       fullName: "Saadat Hasan Manto",
 
-      years: "1912–1955",
+      years: "1912-1955",
 
       birthDate: "1912-05-11",
       deathDate: "1955-01-18",
@@ -116,7 +116,7 @@ export const pakistan: Country = {
       name: "Фаиз Ахмад Фаиз",
       fullName: "Faiz Ahmed Faiz",
 
-      years: "1911–1984",
+      years: "1911-1984",
 
       birthDate: "1911-02-13",
       deathDate: "1984-11-20",
@@ -168,7 +168,7 @@ export const pakistan: Country = {
       name: "Интизар Хусейн",
       fullName: "Intizar Husain",
 
-      years: "1923–2016",
+      years: "1923-2016",
 
       birthDate: "1923-12-21",
       deathDate: "2016-02-02",
@@ -219,7 +219,7 @@ export const pakistan: Country = {
       name: "Бано Кудсия",
       fullName: "Bano Qudsia",
 
-      years: "1928–2017",
+      years: "1928-2017",
 
       birthDate: "1928-11-28",
       deathDate: "2017-02-04",
@@ -269,7 +269,7 @@ export const pakistan: Country = {
       name: "Камила Шамси",
       fullName: "Kamila Shamsie",
 
-      years: "1973–",
+      years: "1973-",
 
       birthDate: "1973-08-13",
       deathDate: "",
@@ -322,7 +322,7 @@ export const pakistan: Country = {
       name: "Мохсин Хамид",
       fullName: "Mohsin Hamid",
 
-      years: "1971–",
+      years: "1971-",
 
       birthDate: "1971-07-23",
       deathDate: "",

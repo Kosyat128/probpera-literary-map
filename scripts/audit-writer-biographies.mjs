@@ -85,7 +85,7 @@ function workflowFor(writer, translation, flags, ready, research) {
     } else if (!editorialDraftComplete) {
       state = "editorial-rewrite";
       nextAction =
-        "Write an original, specific Russian biography of 2–4 sentences without copying source prose.";
+        "Write an original, specific Russian biography of 2-4 sentences without copying source prose.";
     } else if (!factCheckComplete) {
       state = "fact-check";
       nextAction =

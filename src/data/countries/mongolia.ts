@@ -12,7 +12,7 @@ export const mongolia: Country = {
       name: "Дулдуйтын Данзанравжаа",
       fullName: "Dulduityn Danzanravjaa",
 
-      years: "1803–1856",
+      years: "1803-1856",
 
       birthDate: "1803-11-18",
       deathDate: "1856-10-25",
@@ -61,7 +61,7 @@ export const mongolia: Country = {
       name: "Инжаннаши",
       fullName: "Vanchinbalyn Inzannashi",
 
-      years: "1837–1892",
+      years: "1837-1892",
 
       birthDate: "1837-01-01",
       deathDate: "1892-01-01",
@@ -109,7 +109,7 @@ export const mongolia: Country = {
       name: "Дашдоржийн Нацагдорж",
       fullName: "Dashdorjiin Natsagdorj",
 
-      years: "1906–1937",
+      years: "1906-1937",
 
       birthDate: "1906-11-17",
       deathDate: "1937-07-13",
@@ -157,7 +157,7 @@ export const mongolia: Country = {
       name: "Цэндийн Дамдинсурэн",
       fullName: "Tsendiin Damdinsüren",
 
-      years: "1908–1986",
+      years: "1908-1986",
 
       birthDate: "1908-09-14",
       deathDate: "1986-06-07",
@@ -207,7 +207,7 @@ export const mongolia: Country = {
       name: "Бямбын Ринчен",
       fullName: "Byambyn Rinchen",
 
-      years: "1905–1977",
+      years: "1905-1977",
 
       birthDate: "1905-11-21",
       deathDate: "1977-03-04",
@@ -256,7 +256,7 @@ export const mongolia: Country = {
       name: "Чадраабалын Лодойдамба",
       fullName: "Chadraabalyn Lodoidamba",
 
-      years: "1917–1970",
+      years: "1917-1970",
 
       birthDate: "1917-08-20",
       deathDate: "1970-01-11",
@@ -304,7 +304,7 @@ export const mongolia: Country = {
       name: "Сономын Удвал",
       fullName: "Sonomyn Udval",
 
-      years: "1921–1991",
+      years: "1921-1991",
 
       birthDate: "1921-02-23",
       deathDate: "1991-12-05",
@@ -352,7 +352,7 @@ export const mongolia: Country = {
       name: "Дамдинсурэнгийн Урианхай",
       fullName: "D. Uriankhai",
 
-      years: "1940–",
+      years: "1940-",
 
       birthDate: "1940-01-01",
       deathDate: "",
@@ -401,7 +401,7 @@ export const mongolia: Country = {
       name: "Гомбожавын Мэнд-Ооёо",
       fullName: "Gombojavyn Mend-Ooyo",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952-01-01",
       deathDate: "",

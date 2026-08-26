@@ -780,7 +780,7 @@ export async function saveArticleAction(formData: FormData) {
       publicationIssues
     ).join(
       "; "
-    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора — нажмите «Восстановить копию» после возврата.`;
+    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора - нажмите «Восстановить копию» после возврата.`;
     redirect(articleEditPath(articleId, { error: errorMessage }));
   }
 
@@ -1341,7 +1341,7 @@ export async function duplicateArticleAction(formData: FormData) {
   const { data: copy, error } = await supabase
     .from("articles")
     .insert({
-      title: `${source.title} — копия`,
+      title: `${source.title} - копия`,
       subtitle: source.subtitle,
       excerpt: source.excerpt,
       content_json: source.content_json,

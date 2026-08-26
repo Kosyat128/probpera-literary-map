@@ -1,4 +1,4 @@
-# Header + Hero Polish — visual evidence
+# Header + Hero Polish - visual evidence
 
 ## Scope
 
@@ -32,7 +32,7 @@ Representative comparisons:
 | EN 1440 | [before](before/en-1440x900-header-hero.webp) | [after](after/en-1440x900-header-hero.webp) |
 | Articles menu | [before](before/ru-1440x900-articles-menu.webp) | [after](after/ru-1440x900-articles-menu.webp) |
 | Sections menu | [before](before/ru-1440x900-sections-menu.webp) | [after](after/ru-1440x900-sections-menu.webp) |
-| Footer menu spacing | — | [after](after/ru-1440x900-footer-menu.webp) |
+| Footer menu spacing | - | [after](after/ru-1440x900-footer-menu.webp) |
 
 ## Protected asset proof
 
@@ -48,11 +48,11 @@ The Stage 2 diff contains no files under `public/brand/`. Review-time SHA-256 va
 
 ## Findings addressed
 
-- `HEADER-003` — outside/Escape menu close with focus return, without a visual redesign;
-- `A11Y-004` — stable localized accessible name for the reader control;
-- `UI-005` — effective desktop footer white-link row gap reduced from 7 to 5 px;
-- `UI-002` — partial: Header/Hero evidence matrix added;
-- `MOBILE-001` — partial: the existing UI Foundation target contract remains covered.
+- `HEADER-003` - outside/Escape menu close with focus return, without a visual redesign;
+- `A11Y-004` - stable localized accessible name for the reader control;
+- `UI-005` - effective desktop footer white-link row gap reduced from 7 to 5 px;
+- `UI-002` - partial: Header/Hero evidence matrix added;
+- `MOBILE-001` - partial: the existing UI Foundation target contract remains covered.
 
 Owner-directed visual freeze: `HEADER-001`, `HEADER-002`, `HERO-001` and `HERO-002` remain open. No search/button/social/header sizing, two-row geometry, title wrapping or 768 art-direction change is included.
 

@@ -26,7 +26,7 @@ describe("article workspace helpers", () => {
     expect(articleWorkspaceCheckSection("Не менее 250 слов")).toBe("text");
     expect(articleWorkspaceCheckSection("Есть смысловые подзаголовки H2")).toBe("text");
     expect(articleWorkspaceCheckSection("Обложка и её описание")).toBe("cover");
-    expect(articleWorkspaceCheckSection("SEO-описание — от 80 знаков")).toBe("seo");
+    expect(articleWorkspaceCheckSection("SEO-описание - от 80 знаков")).toBe("seo");
     expect(articleWorkspaceCheckSection("Указан хотя бы один источник")).toBe("sources");
     expect(articleWorkspaceCheckSection("Все места для изображений заменены")).toBe("media");
     expect(articleWorkspaceCheckSection("English: статус approved/published")).toBe("publish");

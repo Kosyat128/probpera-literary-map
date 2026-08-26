@@ -6,7 +6,7 @@ type TimelineProps = {
 
 export default function Timeline({
   name = "Лев Толстой",
-  years = "1828–1910",
+  years = "1828-1910",
 }: TimelineProps) {
 
 

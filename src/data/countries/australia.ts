@@ -14,7 +14,7 @@ export const australia: Country = {
 
       fullName: "Andrew Barton Paterson",
 
-      years: "1864–1941",
+      years: "1864-1941",
 
       birthDate: "1864-02-17",
 
@@ -71,7 +71,7 @@ export const australia: Country = {
 
       fullName: "Henry Archibald Lawson",
 
-      years: "1867–1922",
+      years: "1867-1922",
 
       birthDate: "1867-06-17",
 
@@ -128,7 +128,7 @@ export const australia: Country = {
 
       fullName: "Joseph Furphy",
 
-      years: "1843–1912",
+      years: "1843-1912",
 
       birthDate: "1843-09-26",
 
@@ -181,7 +181,7 @@ export const australia: Country = {
 
       fullName: "Stella Maria Sarah Miles Franklin",
 
-      years: "1879–1954",
+      years: "1879-1954",
 
       birthDate: "1879-10-14",
 
@@ -236,7 +236,7 @@ export const australia: Country = {
 
       fullName: "Patrick Victor Martindale White",
 
-      years: "1912–1990",
+      years: "1912-1990",
 
       birthDate: "1912-05-28",
 
@@ -297,7 +297,7 @@ export const australia: Country = {
 
       fullName: "Christina Ellen Stead",
 
-      years: "1902–1983",
+      years: "1902-1983",
 
       birthDate: "1902-07-17",
 
@@ -351,7 +351,7 @@ export const australia: Country = {
 
       fullName: "Nevil Shute Norway",
 
-      years: "1899–1960",
+      years: "1899-1960",
 
       birthDate: "1899-01-17",
 
@@ -407,7 +407,7 @@ export const australia: Country = {
 
       fullName: "Charles Edmund Dumaresq Clavell",
 
-      years: "1921–1994",
+      years: "1921-1994",
 
       birthDate: "1921-10-10",
 
@@ -463,7 +463,7 @@ export const australia: Country = {
 
       fullName: "Rose Dorothy Annie Park",
 
-      years: "1917–2010",
+      years: "1917-2010",
 
       birthDate: "1917-08-24",
 
@@ -515,7 +515,7 @@ export const australia: Country = {
 
       fullName: "Peter Philip Carey",
 
-      years: "1943–",
+      years: "1943-",
 
       birthDate: "1943-05-07",
 
@@ -577,7 +577,7 @@ export const australia: Country = {
 
       fullName: "Timothy John Winton",
 
-      years: "1960–",
+      years: "1960-",
 
       birthDate: "1960-08-04",
 
@@ -635,7 +635,7 @@ export const australia: Country = {
 
       fullName: "Richard Miller Flanagan",
 
-      years: "1961–",
+      years: "1961-",
 
       birthDate: "1961-06-04",
 
@@ -692,7 +692,7 @@ export const australia: Country = {
 
       fullName: "Katherine Gaita Grenville",
 
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-10-14",
 
@@ -749,7 +749,7 @@ export const australia: Country = {
 
       fullName: "Markus Frank Zusak",
 
-      years: "1975–",
+      years: "1975-",
 
       birthDate: "1975-06-23",
 
@@ -768,7 +768,7 @@ export const australia: Country = {
 
       works: [
         "Книжный вор",
-        "Я — посланник",
+        "Я - посланник",
         "Глиняный мост"
       ],
 
@@ -802,7 +802,7 @@ export const australia: Country = {
 
       fullName: "Christos Tsiolkas",
 
-      years: "1965–",
+      years: "1965-",
 
       birthDate: "1965-04-01",
 
@@ -857,7 +857,7 @@ export const australia: Country = {
 
       fullName: "Judith Arundell Wright",
 
-      years: "1915–2000",
+      years: "1915-2000",
 
       birthDate: "1915-05-31",
 
@@ -914,7 +914,7 @@ export const australia: Country = {
 
       fullName: "Leslie Allan Murray",
 
-      years: "1938–2019",
+      years: "1938-2019",
 
       birthDate: "1938-10-17",
 
@@ -967,7 +967,7 @@ export const australia: Country = {
 
       fullName: "Gregory Mark Egan",
 
-      years: "1961–",
+      years: "1961-",
 
       birthDate: "1961-08-20",
 
@@ -1021,7 +1021,7 @@ export const australia: Country = {
 
       fullName: "Kath Walker (Oodgeroo Noonuccal)",
 
-      years: "1920–1993",
+      years: "1920-1993",
 
       birthDate: "1920-11-03",
 
@@ -1074,7 +1074,7 @@ export const australia: Country = {
 
       fullName: "Alexis Wright",
 
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-11-25",
 
@@ -1130,7 +1130,7 @@ export const australia: Country = {
 
       fullName: "Gerald Murnane",
 
-      years: "1939–",
+      years: "1939-",
 
       birthDate: "1939-02-25",
 
@@ -1185,7 +1185,7 @@ export const australia: Country = {
 
       fullName: "Bruce Pascoe",
 
-      years: "1947–",
+      years: "1947-",
 
       birthDate: "1947-02-15",
 

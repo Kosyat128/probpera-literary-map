@@ -1,7 +1,7 @@
 export const hesseProfile = {
  id:"hesse",
  fullName:"Герман Гессе",
- years:"1877–1962",
+ years:"1877-1962",
  country:"Германия",
  birthPlace:"Кальв, Германия",
  movement:"Модернизм",

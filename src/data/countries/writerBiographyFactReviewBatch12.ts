@@ -64,12 +64,12 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Австрийская национальная библиотека",
             "https://arc.onb.ac.at/bibliothek/sammlungen/literatur/bestaende/personen/bernhard-thomas-1931-1989",
-            "Архивная страница фиксирует годы жизни 1931–1989 и литературную работу Бернхарда в прозе и драматургии.",
+            "Архивная страница фиксирует годы жизни 1931-1989 и литературную работу Бернхарда в прозе и драматургии.",
           ),
           evidence(
             "Австрийское национальное туристическое ведомство",
             "https://www.austria.info/en-us/profiles/thomas-bernhard/",
-            "Официальный профиль Австрии называет Бернхарда писателем и автором романов, пьес и рассказов и подтверждает даты 9 февраля 1931 года — 12 февраля 1989 года.",
+            "Официальный профиль Австрии называет Бернхарда писателем и автором романов, пьес и рассказов и подтверждает даты 9 февраля 1931 года - 12 февраля 1989 года.",
           ),
         ],
       },
@@ -77,7 +77,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходный текст полностью подтверждён. Identity audit однозначно соответствует Томасу Бернхарду. Рекомендация — сохранить birthDate 1931-02-09 и deathDate 1989-02-12: точные даты подтверждены двумя австрийскими институциональными источниками. Shared country files не изменялись.",
+      "Исходный текст полностью подтверждён. Identity audit однозначно соответствует Томасу Бернхарду. Рекомендация - сохранить birthDate 1931-02-09 и deathDate 1989-02-12: точные даты подтверждены двумя австрийскими институциональными источниками. Shared country files не изменялись.",
   },
   {
     key: "azerbaijan:chingiz_abdullayev",
@@ -88,7 +88,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Чингиз Абдуллаев — современный азербайджанский писатель, опубликовавший многочисленные детективные романы.",
+          "Чингиз Абдуллаев - современный азербайджанский писатель, опубликовавший многочисленные детективные романы.",
         verdict: "supported",
         evidence: [
           evidence(
@@ -107,14 +107,14 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходная формулировка подтверждена без оценочного ранжирования. Identity audit corroborated. Рекомендация — сохранить birthDate 1959-04-07; обе институциональные публикации подтверждают дату. Shared country files не изменялись.",
+      "Исходная формулировка подтверждена без оценочного ранжирования. Identity audit corroborated. Рекомендация - сохранить birthDate 1959-04-07; обе институциональные публикации подтверждают дату. Shared country files не изменялись.",
   },
   {
     key: "azerbaijan:mirza_alakbar_sabir",
     originalSha256:
       "71b8cc7c729b97749639c68d1098545e7c60dbbd798110a1d7e0ec122bdb531a",
     reviewedTextRu:
-      "Азербайджанский поэт-сатирик и педагог, автор сборника «Хопхопнаме». В 1906–1911 годах публиковал сатирические стихи в журнале «Молла Насреддин».",
+      "Азербайджанский поэт-сатирик и педагог, автор сборника «Хопхопнаме». В 1906-1911 годах публиковал сатирические стихи в журнале «Молла Насреддин».",
     claims: [
       {
         textRu:
@@ -124,12 +124,12 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Дом-музей Мирзы Алекпера Сабира",
             "https://sabirmuseum.az/en/life-and-activities/",
-            "Музейная биография называет Сабира азербайджанским поэтом-сатириком и педагогом, связывает его с Hophopname и публикациями в Molla Nasraddin в 1906–1911 годах.",
+            "Музейная биография называет Сабира азербайджанским поэтом-сатириком и педагогом, связывает его с Hophopname и публикациями в Molla Nasraddin в 1906-1911 годах.",
           ),
           evidence(
             "Президентская библиотека Азербайджана",
             "https://www.preslib.az/en/historical/page/P9fqhJ6",
-            "Официальная биография подтверждает сатирическую поэзию, преподавание, работу с журналом Molla Nasraddin, сборник Hophopnama и даты жизни 30 мая 1862 года — 12 июля 1911 года.",
+            "Официальная биография подтверждает сатирическую поэзию, преподавание, работу с журналом Molla Nasraddin, сборник Hophopnama и даты жизни 30 мая 1862 года - 12 июля 1911 года.",
           ),
         ],
       },
@@ -137,7 +137,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив и неподтверждённая сравнительная формула сняты. Identity audit соответствует Мирзе Алекперу Сабиру. Рекомендация — сохранить birthDate 1862-05-30 и deathDate 1911-07-12; даты подтверждены Президентской библиотекой. Shared country files не изменялись.",
+      "Суперлатив и неподтверждённая сравнительная формула сняты. Identity audit соответствует Мирзе Алекперу Сабиру. Рекомендация - сохранить birthDate 1862-05-30 и deathDate 1911-07-12; даты подтверждены Президентской библиотекой. Shared country files не изменялись.",
   },
   {
     key: "azerbaijan:muhammad_fuzuli",
@@ -157,7 +157,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Официальный проект представляет Мухаммеда Физули как азербайджанского поэта и мыслителя XVI века и документирует его диванное наследие.",
           ),
           evidence(
-            "UNESCO Memory of the World — номинационное досье НАН Азербайджана",
+            "UNESCO Memory of the World - номинационное досье НАН Азербайджана",
             "https://media.unesco.org/sites/default/files/webform/mow001/azerbaijan_fuzuli_eng.pdf",
             "Досье UNESCO, подготовленное Национальной академией наук Азербайджана, описывает Физули как азербайджанского поэта диванной традиции и перечисляет газели, касыды и рубаи в его наследии.",
           ),
@@ -187,7 +187,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Поиск по точному имени не выявил авторитетной записи, которую можно надёжно связать с заявленным багамским писателем.",
           ),
           evidence(
-            "WorldCat — OCLC",
+            "WorldCat - OCLC",
             "https://search.worldcat.org/search?q=%22Cyril%20Bray%22%20Bahamas",
             "Библиографический поиск по имени и стране не выявил изданий или authority identity, подтверждающих исходную карточку.",
           ),
@@ -217,7 +217,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Поиск по точному имени не дал authority-записи, совместимой с заявленной идентичностью багамского писателя.",
           ),
           evidence(
-            "WorldCat — OCLC",
+            "WorldCat - OCLC",
             "https://search.worldcat.org/search?q=%22Wallace%20Whitfield%22%20Bahamas",
             "Поиск по имени и стране не выявил библиографического корпуса, подтверждающего заявленные занятия писателя и поэта.",
           ),
@@ -252,7 +252,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Профиль международной организации называет Халифу бахрейнским поэтом, писателем и исследователем фольклора.",
           ),
           evidence(
-            "Министерство информации Бахрейна — некролог в Al Ayam",
+            "Министерство информации Бахрейна - некролог в Al Ayam",
             "https://amp.alayam.com/online/local/1136855/amp.html?amp=1",
             "Опубликованный 22 июня 2026 года некролог министерства подтверждает смерть поэта и его работу в поэзии и исследовании культурного наследия.",
           ),
@@ -277,7 +277,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
         verdict: "corrected",
         evidence: [
           evidence(
-            "University of Michigan — Michigan Quarterly Review",
+            "University of Michigan - Michigan Quarterly Review",
             "https://sites.lsa.umich.edu/mqr/author/amin-saleh/",
             "Университетский профиль называет Амина Салиха бахрейнским писателем, сценаристом, переводчиком и кинокритиком и подтверждает его работу над первым полнометражным фильмом страны.",
           ),
@@ -292,7 +292,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Роль уточнена с литературного до кинокритика; конкретная работа над фильмом подтверждена двумя источниками. Identity candidate требует отдельного registry review. Рекомендация — сохранить годовой birthDate 1949: University of Michigan подтверждает 1949, а независимого основания для точного дня нет. Shared country files не изменялись.",
+      "Роль уточнена с литературного до кинокритика; конкретная работа над фильмом подтверждена двумя источниками. Identity candidate требует отдельного registry review. Рекомендация - сохранить годовой birthDate 1949: University of Michigan подтверждает 1949, а независимого основания для точного дня нет. Shared country files не изменялись.",
   },
   {
     key: "bangladesh:jibanananda_das",
@@ -307,12 +307,12 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
         verdict: "corrected",
         evidence: [
           evidence(
-            "Banglapedia — Asiatic Society of Bangladesh",
+            "Banglapedia - Asiatic Society of Bangladesh",
             "https://en.banglapedia.org/index.php?title=Das%2C_Jibanananda",
             "Национальная энциклопедия называет Даса поэтом и педагогом, перечисляет Banalata Sen и Rupasi Bangla и описывает сочетание сельской Бенгалии с современной городской жизнью.",
           ),
           evidence(
-            "Teachers Portal — Government of Bangladesh",
+            "Teachers Portal - Government of Bangladesh",
             "https://teachers.gov.bd/content/details/812501?das-jibanananda=&page=710",
             "Государственный образовательный портал подтверждает занятия поэта и преподавателя, книги Banalata Sen и Ruposi Bangla и переход от сельской традиции к реалиям современного города.",
           ),
@@ -322,7 +322,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Недоказанный ранг снят; широкая формула влияния не перенесена. Identity audit corroborated. Рекомендация — сохранить birthDate 1899-02-17 и deathDate 1954-10-22; Banglapedia подтверждает обе даты. Shared country files не изменялись.",
+      "Недоказанный ранг снят; широкая формула влияния не перенесена. Identity audit corroborated. Рекомендация - сохранить birthDate 1899-02-17 и deathDate 1954-10-22; Banglapedia подтверждает обе даты. Shared country files не изменялись.",
   },
   {
     key: "bangladesh:selina_hossain",
@@ -333,11 +333,11 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Селина Хоссейн — бангладешская писательница, чьи романы и рассказы обращаются к национальной истории и человеческим судьбам.",
+          "Селина Хоссейн - бангладешская писательница, чьи романы и рассказы обращаются к национальной истории и человеческим судьбам.",
         verdict: "supported",
         evidence: [
           evidence(
-            "Banglapedia — Asiatic Society of Bangladesh",
+            "Banglapedia - Asiatic Society of Bangladesh",
             "https://en.banglapedia.org/index.php/Women",
             "Энциклопедия связывает романы Селины Хоссейн с Освободительной войной, языковым движением 1952 года и историей Бенгалии до раздела 1947 года.",
           ),
@@ -347,7 +347,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Материал национальной академии представляет Селину Хоссейн как автора художественной прозы и подтверждает её 75-летие 14 июня 2022 года.",
           ),
           evidence(
-            "Bangla Academy — годовой отчёт",
+            "Bangla Academy - годовой отчёт",
             "https://banglaacademy.gov.bd/sites/default/files/files/banglaacademy.portal.gov.bd/annual_reports/4c8085bc_1f62_464c_867e_3e5acbd73a19/Barshik%20Protibadon-18-19.pdf",
             "Издательский отчёт Академии фиксирует публикацию Selected Short Stories of Selina Hossain и других её книг.",
           ),
@@ -357,7 +357,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходный краткий текст подтверждён. Identity audit corroborated. Рекомендация — сохранить birthDate 1947-06-14: 75-летие 14 июня 2022 года подтверждает точную дату. Shared country files не изменялись.",
+      "Исходный краткий текст подтверждён. Identity audit corroborated. Рекомендация - сохранить birthDate 1947-06-14: 75-летие 14 июня 2022 года подтверждает точную дату. Shared country files не изменялись.",
   },
   {
     key: "bangladesh:tahmima_anam",
@@ -387,7 +387,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Временная метка «современная» и оценка известности сняты; языковая характеристика не вынесена без второй прямой опоры. Identity audit corroborated. Источники подтверждают 1975 год, но не дают независимого основания корректировать точный birthDate 1975-10-08; рекомендация — пока сохранить. Shared country files не изменялись.",
+      "Временная метка «современная» и оценка известности сняты; языковая характеристика не вынесена без второй прямой опоры. Identity audit corroborated. Источники подтверждают 1975 год, но не дают независимого основания корректировать точный birthDate 1975-10-08; рекомендация - пока сохранить. Shared country files не изменялись.",
   },
   {
     key: "barbados:austin_clarke",
@@ -402,7 +402,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
         verdict: "supported",
         evidence: [
           evidence(
-            "Athabasca University — English-Canadian Writers",
+            "Athabasca University - English-Canadian Writers",
             "https://canadian-writers.athabascau.ca/english/writers/aclarke/aclarke.php",
             "Университетский профиль подтверждает рождение на Барбадосе, переезд в Канаду и корпус романов и рассказов о жизни карибских иммигрантов.",
           ),
@@ -422,7 +422,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходный текст подтверждён. Identity audit corroborated. Доказанная рекомендация: исправить birthDate 1934-11-26 на 1934-07-26; библиотека McMaster прямо фиксирует 26 июля 1934 года, и это corroborated authority data. deathDate 2016-06-26 сохранить — U of T подтверждает 26 июня 2016 года. Shared country files не изменялись.",
+      "Исходный текст подтверждён. Identity audit corroborated. Доказанная рекомендация: исправить birthDate 1934-11-26 на 1934-07-26; библиотека McMaster прямо фиксирует 26 июля 1934 года, и это corroborated authority data. deathDate 2016-06-26 сохранить - U of T подтверждает 26 июня 2016 года. Shared country files не изменялись.",
   },
   {
     key: "barbados:george_lamming",
@@ -447,7 +447,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
             "Университетский мемориальный материал подтверждает романы In the Castle of My Skin и The Emigrants и рассматривает в его творчестве колониализм, миграцию и идентичность.",
           ),
           evidence(
-            "The University of the West Indies — некролог",
+            "The University of the West Indies - некролог",
             "https://sta.uwi.edu/news/releases/release.asp?id=22457",
             "Официальный некролог университета подтверждает смерть Лэмминга 4 июня 2022 года и его вклад в карибскую литературу.",
           ),
@@ -457,7 +457,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Субъективная сравнительная формула снята. Identity registry gap не препятствует однозначной институциональной идентификации. Рекомендация — сохранить birthDate 1927-06-08 и deathDate 2022-06-04; дата смерти подтверждена UWI, дата рождения — NCF/UWI. Shared country files не изменялись.",
+      "Субъективная сравнительная формула снята. Identity registry gap не препятствует однозначной институциональной идентификации. Рекомендация - сохранить birthDate 1927-06-08 и deathDate 2022-06-04; дата смерти подтверждена UWI, дата рождения - NCF/UWI. Shared country files не изменялись.",
   },
   {
     key: "belarus:ales_adamovich",
@@ -474,7 +474,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Большая российская энциклопедия",
             "https://old.bigenc.ru/literature/text/1799819",
-            "Энциклопедия называет Адамовича белорусским писателем, литературоведом и сценаристом и подтверждает даты жизни 3 сентября 1927 года — 26 января 1994 года.",
+            "Энциклопедия называет Адамовича белорусским писателем, литературоведом и сценаристом и подтверждает даты жизни 3 сентября 1927 года - 26 января 1994 года.",
           ),
           evidence(
             "Российская государственная библиотека для слепых",
@@ -487,7 +487,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходный краткий текст полностью подтверждён; расширение карточки без необходимости не выполнялось. Identity audit corroborated. Рекомендация — сохранить birthDate 1927-09-03 и deathDate 1994-01-26; БРЭ подтверждает обе даты. Shared country files не изменялись.",
+      "Исходный краткий текст полностью подтверждён; расширение карточки без необходимости не выполнялось. Identity audit corroborated. Рекомендация - сохранить birthDate 1927-09-03 и deathDate 1994-01-26; БРЭ подтверждает обе даты. Shared country files не изменялись.",
   },
   {
     key: "belarus:svetlana_alexievich",
@@ -498,13 +498,13 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Светлана Алексиевич — белорусская русскоязычная писательница; её документальная полифоническая проза построена из свидетельств о войне, советской жизни, Афганистане и Чернобыле.",
+          "Светлана Алексиевич - белорусская русскоязычная писательница; её документальная полифоническая проза построена из свидетельств о войне, советской жизни, Афганистане и Чернобыле.",
         verdict: "supported",
         evidence: [
           evidence(
             "Нобелевский фонд",
             "https://www.nobelprize.org/prizes/literature/2015/alexievich/biographical/",
-            "Официальная биография описывает белорусскую писательницу, пишущую по-русски, и её документальный метод — монтаж множества человеческих голосов в книгах о войне, Афганистане, Чернобыле и советской жизни.",
+            "Официальная биография описывает белорусскую писательницу, пишущую по-русски, и её документальный метод - монтаж множества человеческих голосов в книгах о войне, Афганистане, Чернобыле и советской жизни.",
           ),
           evidence(
             "Официальный сайт Светланы Алексиевич",
@@ -522,7 +522,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходная профессиональная проза подтверждена; оценочных суперлативов нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1948-05-31; Нобелевский фонд подтверждает дату. Shared country files не изменялись.",
+      "Исходная профессиональная проза подтверждена; оценочных суперлативов нет. Identity audit corroborated. Рекомендация - сохранить birthDate 1948-05-31; Нобелевский фонд подтверждает дату. Shared country files не изменялись.",
   },
   {
     key: "belarus:symeon_polotsky",
@@ -544,7 +544,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Большая российская энциклопедия",
             "https://bigenc.ru/c/simeon-polotskii-edbe16",
-            "Энциклопедия называет его белорусским и русским поэтом, проповедником и деятелем культуры и подтверждает годы жизни 1629–1680.",
+            "Энциклопедия называет его белорусским и русским поэтом, проповедником и деятелем культуры и подтверждает годы жизни 1629-1680.",
           ),
         ],
       },
@@ -552,7 +552,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходная обобщающая формулировка подтверждена белорусской и русской литературной принадлежностью. Identity audit corroborated. Текущие birthDate 1629-12-12 и deathDate 1680-08-25 соответствуют старому стилю в БРЭ; рекомендация — не переводить их автоматически без единой календарной политики продукта. Shared country files не изменялись.",
+      "Исходная обобщающая формулировка подтверждена белорусской и русской литературной принадлежностью. Identity audit corroborated. Текущие birthDate 1629-12-12 и deathDate 1680-08-25 соответствуют старому стилю в БРЭ; рекомендация - не переводить их автоматически без единой календарной политики продукта. Shared country files не изменялись.",
   },
   {
     key: "belarus:yakub_kolas",
@@ -568,7 +568,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Государственный литературно-мемориальный музей Якуба Коласа",
             "https://yakubkolas.by/spadchyna/biyagrafiya-yakuba-kolasa/",
-            "Официальная биография музея представляет Коласа как классика белорусской литературы, поэта и прозаика и подтверждает даты 3 ноября 1882 года — 13 августа 1956 года.",
+            "Официальная биография музея представляет Коласа как классика белорусской литературы, поэта и прозаика и подтверждает даты 3 ноября 1882 года - 13 августа 1956 года.",
           ),
           evidence(
             "Большая российская энциклопедия",
@@ -581,7 +581,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Слово «классик» прямо поддержано профильным государственным музеем; субъективного сравнительного ранга нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1882-11-03 и deathDate 1956-08-13. Shared country files не изменялись.",
+      "Слово «классик» прямо поддержано профильным государственным музеем; субъективного сравнительного ранга нет. Identity audit corroborated. Рекомендация - сохранить birthDate 1882-11-03 и deathDate 1956-08-13. Shared country files не изменялись.",
   },
   {
     key: "belarus:yanka_kupala",
@@ -603,7 +603,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
           evidence(
             "Большая российская энциклопедия",
             "https://old.bigenc.ru/literature/text/2122299",
-            "Энциклопедия называет Купалу белорусским писателем и народным поэтом БССР и подтверждает даты жизни 7 июля 1882 года — 28 июня 1942 года.",
+            "Энциклопедия называет Купалу белорусским писателем и народным поэтом БССР и подтверждает даты жизни 7 июля 1882 года - 28 июня 1942 года.",
           ),
         ],
       },
@@ -611,14 +611,14 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Статус подтверждён официальным музеем и энциклопедией; сравнительного суперлатива нет. Identity audit corroborated. Рекомендация — сохранить birthDate 1882-07-07 и deathDate 1942-06-28. Shared country files не изменялись.",
+      "Статус подтверждён официальным музеем и энциклопедией; сравнительного суперлатива нет. Identity audit corroborated. Рекомендация - сохранить birthDate 1882-07-07 и deathDate 1942-06-28. Shared country files не изменялись.",
   },
   {
     key: "belgium:amelie_nothomb",
     originalSha256:
       "f12b161a13d8423418b6d59d69cccc00c6dba6d6afc7f6ec2aadae274f7726fc",
     reviewedTextRu:
-      "Бельгийская франкоязычная писательница, автор романов «Гигиена убийцы» и «Страх и трепет». С 2015 года — член Королевской академии французского языка и литературы Бельгии.",
+      "Бельгийская франкоязычная писательница, автор романов «Гигиена убийцы» и «Страх и трепет». С 2015 года - член Королевской академии французского языка и литературы Бельгии.",
     claims: [
       {
         textRu:
@@ -651,7 +651,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Субъективная жанровая характеристика снята и заменена проверяемыми фактами. Identity audit corroborated. Рекомендация — сохранить birthDate 1966-07-09 по authority-записям Королевской академии и BnF; официальный авторский сайт и издатель указывают иную публичную версию (Кобе, 1967), поэтому расхождение нужно оставить явно документированным и не менять автоматически. Shared country files не изменялись.",
+      "Субъективная жанровая характеристика снята и заменена проверяемыми фактами. Identity audit corroborated. Рекомендация - сохранить birthDate 1966-07-09 по authority-записям Королевской академии и BnF; официальный авторский сайт и издатель указывают иную публичную версию (Кобе, 1967), поэтому расхождение нужно оставить явно документированным и не менять автоматически. Shared country files не изменялись.",
   },
   {
     key: "belgium:georges_rodenbach",
@@ -666,9 +666,9 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
         verdict: "corrected",
         evidence: [
           evidence(
-            "KBR — Королевская библиотека Бельгии",
+            "KBR - Королевская библиотека Бельгии",
             "https://opac.kbr.be/Library/detailstatic.aspx?RSC_BASE=SYRACUSE&RSC_DOCID=16747848&TITLE=bruges-la-morte&_lg=fr-BE",
-            "Национальный каталог характеризует Роденбаха как бельгийского поэта и романиста-символиста и подтверждает Bruges-la-Morte и годы жизни 1855–1898.",
+            "Национальный каталог характеризует Роденбаха как бельгийского поэта и романиста-символиста и подтверждает Bruges-la-Morte и годы жизни 1855-1898.",
           ),
           evidence(
             "Bibliothèque nationale de France",
@@ -681,7 +681,7 @@ const writerBiographyFactReviewBatch12Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Оценочное слово «знаменитого» снято; символизм и библиография подтверждены двумя национальными библиотеками. Identity audit corroborated. Рекомендация — сохранить birthDate 1855-07-16 и deathDate 1898-12-25; authority records подтверждают даты. Shared country files не изменялись.",
+      "Оценочное слово «знаменитого» снято; символизм и библиография подтверждены двумя национальными библиотеками. Identity audit corroborated. Рекомендация - сохранить birthDate 1855-07-16 и deathDate 1898-12-25; authority records подтверждают даты. Shared country files не изменялись.",
   },
 ];
 

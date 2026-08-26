@@ -8,7 +8,7 @@ export const jamaica: Country = {
     {
       id: "claude_mckay",
       name: "Клод Маккей",
-      years: "1890–1948",
+      years: "1890-1948",
       birthDate: "1890-09-15",
       deathDate: "1948-05-22",
       birthPlace: "Кларендон, Ямайка",
@@ -47,7 +47,7 @@ export const jamaica: Country = {
     {
       id: "roger_mais",
       name: "Роджер Майс",
-      years: "1905–1955",
+      years: "1905-1955",
       birthDate: "1905-08-11",
       deathDate: "1955-06-21",
       birthPlace: "Кингстон, Ямайка",
@@ -84,7 +84,7 @@ export const jamaica: Country = {
     {
       id: "andrew_salky",
       name: "Эндрю Салкей",
-      years: "1928–1995",
+      years: "1928-1995",
       birthDate: "1928-01-30",
       deathDate: "1995-02-28",
       birthPlace: "Гармони, Ямайка",
@@ -121,7 +121,7 @@ export const jamaica: Country = {
     {
       id: "marlon_james",
       name: "Марлон Джеймс",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970-11-24",
       birthPlace: "Кингстон, Ямайка",
       coordinates: {
@@ -157,7 +157,7 @@ export const jamaica: Country = {
     {
       id: "kerry_yang",
       name: "Керри Янг",
-      years: "1955–",
+      years: "1955-",
       birthDate: "1955-01-01",
       birthPlace: "Ямайка",
       coordinates: {

@@ -196,7 +196,7 @@ describe("writer biography claim review batch 26", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|ведущ|важнейш|главнейш|известнейш|одн(?:а|о|им|их)?\s+из\s+(?:главн|ведущ|важней|заметн))/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch26) {
       const originalText = sourceTextForKey(record.key);
@@ -400,7 +400,7 @@ describe("writer biography claim review batch 26", () => {
     expect(markdown).toContain("Без изменений: 2");
     expect(markdown).toContain("Исправлено: 17");
     expect(markdown).toContain("Удержано в карантине: 1");
-    expect(markdown).toContain("overlap с Batch01–25: 0");
+    expect(markdown).toContain("overlap с Batch01-25: 0");
     expect(markdown).toContain("Q7426104");
     expect(markdown).toContain("Sibhat Gebre-Egziabher");
   });
