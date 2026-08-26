@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T12:44:14.396Z",
+  "generatedAt": "2026-08-26T13:29:25.986Z",
   "scope": "Stage 5D-1 final production-build visual evidence",
   "source": {
     "url": "http://127.0.0.1:4173/#books",
@@ -12,7 +12,7 @@
       "evidence": {
         "frame": {
           "width": 1325,
-          "height": 855
+          "height": 795
         },
         "documentOverflow": 0,
         "frameOverflow": 0,
@@ -29,7 +29,7 @@
       "evidence": {
         "frame": {
           "width": 1325,
-          "height": 855
+          "height": 795
         },
         "documentOverflow": 0,
         "frameOverflow": 0,
@@ -64,8 +64,8 @@
     "ru-mobile-390x844-shelf.png"
   ],
   "screenshotSha256": {
-    "ru-desktop-1440x900-shelf.png": "4A6E2B9075734CBFDAA24B04E29E1BD2171C040E95444F4571E3598F53348B63",
-    "ru-desktop-1440x900-selected.png": "59286ECDB057E9DFE55D76C198777FFF02F62F7CBB32F152CE68F3F7C624F30A",
-    "ru-mobile-390x844-shelf.png": "8B10B51CE97670176E4DA56273CC89023F55787AE1D793445A106AAFA509150B"
+    "ru-desktop-1440x900-shelf.png": "319C870235E6AF286523192D4B38DBCF17FFDAE6CDC1B5AEFBC2ACC84E910ACB",
+    "ru-desktop-1440x900-selected.png": "5F861FDAF7545A1808D1CA4C543895481A206F9C3901E07473E6B98915120E35",
+    "ru-mobile-390x844-shelf.png": "412ABA166C59F0D274CC94F5C04C21E89675E33CFB943A404D838D860DFF96C0"
   }
 }

@@ -61,6 +61,26 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(lines[lines.length - 1]).toMatch(/…$/u);
   });
 
+  it("wraps unspaced CJK spine titles into larger readable glyph groups", () => {
+    const title = "走ることについて語るときに僕の語ること";
+    const spec = buildCompleteShelfBookSpec(
+      {
+        key: "cjk-spine-title",
+        title,
+        writer: "Харуки Мураками",
+        baseColor: "#384f67",
+        accentColor: "#d8b568",
+        paperColor: "#e8dcc4",
+      },
+      1
+    );
+    const lines = buildCompleteShelfArtworkPlan(spec).spineTitleLines;
+
+    expect(lines.length).toBeLessThanOrEqual(8);
+    expect(lines.every((line) => line.length <= 6)).toBe(true);
+    expect(lines.join("")).toBe(title);
+  });
+
   it("keeps a full writer FIO on the spine without an ellipsis", () => {
     const writer =
       "Александр Сергеевич Пушкин-Бутурлин Длинное Редакционное Имя";
@@ -77,7 +97,7 @@ describe("Complete Shelf procedural artwork data", () => {
     const title =
       "Повесть о великом литературном путешествии через пространство и время";
     const front = wrapCompleteShelfTitleText(title, 18, 5);
-    const spine = wrapCompleteShelfTitleText(title, 11, 8);
+    const spine = wrapCompleteShelfTitleText(title, 8, 8);
 
     expect(front).toHaveLength(5);
     expect(spine.length).toBeLessThanOrEqual(8);
@@ -91,7 +111,7 @@ describe("Complete Shelf procedural artwork data", () => {
     );
   });
 
-  it("keeps darker antique-gold spine lettering legible across all palettes", () => {
+  it("keeps solid high-contrast antique-gold lettering legible across all palettes", () => {
     const luminance = (value: string) => {
       const channels = [1, 3, 5].map((offset) => {
         const channel =
@@ -135,8 +155,8 @@ describe("Complete Shelf procedural artwork data", () => {
         spec.baseColor,
         spec.foilColor
       );
-      expect(luminance(textColor)).toBeLessThan(luminance(spec.foilColor));
-      expect(contrast(spec.baseColor, textColor)).toBeGreaterThanOrEqual(3.1);
+      expect(textColor).toMatch(/^#[0-9a-f]{6}$/iu);
+      expect(contrast(spec.baseColor, textColor)).toBeGreaterThanOrEqual(4.4);
     }
   });
 

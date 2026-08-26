@@ -139,10 +139,10 @@
   display: grid;
   grid-template-columns:
     40px
-    minmax(260px, 360px)
+    minmax(180px, 240px)
+    minmax(120px, 140px)
     max-content
-    minmax(132px, 160px)
-    max-content;
+    minmax(0, 1fr);
   align-items: center;
   column-gap: clamp(10px, 1vw, 18px);
   row-gap: 10px;
@@ -241,13 +241,13 @@
 }
 
 .book-shelf-controls__scope {
-  order: 4;
+  order: 3;
   display: block;
   min-width: 0;
 }
 
 .book-shelf-controls__views {
-  order: 3;
+  order: 4;
 }
 
 .book-shelf-controls__views {
@@ -1101,9 +1101,14 @@
 
 @media (min-width: 1101px) and (max-width: 1560px) {
   .book-shelf-controls__topline {
-    grid-template-columns: 40px minmax(280px, 460px) minmax(0, 1fr);
-    column-gap: clamp(10px, 1.25vw, 18px);
-    row-gap: 10px;
+    grid-template-columns:
+      40px
+      minmax(180px, 240px)
+      minmax(120px, 140px)
+      max-content
+      minmax(0, 1fr);
+    column-gap: clamp(8px, 0.8vw, 12px);
+    row-gap: 0;
   }
 
   .book-shelf-controls__mark {
@@ -1114,25 +1119,62 @@
   .book-shelf-controls__search {
     grid-column: 2;
     grid-row: 1;
-    width: min(100%, 420px);
-  }
-
-  .book-shelf-controls__views {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
+    width: 100%;
   }
 
   .book-shelf-controls__scope {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .book-shelf-controls__views {
+    grid-column: 4;
+    grid-row: 1;
     justify-self: start;
-    width: min(100%, 200px);
   }
 
   .book-shelf-controls .book-filter-panel {
-    grid-column: 3;
-    grid-row: 2;
+    grid-column: 5;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1280px) {
+  .book-shelf-frame__search-rail {
+    padding-inline: 16px;
+  }
+
+  .book-shelf-controls__topline {
+    grid-template-columns:
+      40px
+      minmax(155px, 200px)
+      minmax(110px, 126px)
+      max-content
+      minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .book-shelf-controls__views button {
+    padding-inline: 7px;
+    font-size: 0.68rem;
+  }
+
+  .book-shelf-controls .book-filter-panel,
+  .book-shelf-controls .book-archive-filters {
+    gap: 4px;
+  }
+
+  .book-shelf-controls .book-archive-filters > button {
+    width: 96px;
+    min-width: 96px;
+    padding-inline: 7px;
+  }
+
+  .book-shelf-controls__advanced {
+    width: 46px;
   }
 }
 

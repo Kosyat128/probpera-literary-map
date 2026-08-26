@@ -496,8 +496,8 @@ function FoilMaterial({
       depthWrite={false}
       bumpMap={embossMap || undefined}
       bumpScale={front ? 0.016 : 0.017}
-      metalness={front ? 0.94 : 0.92}
-      roughness={front ? 0.18 : 0.16}
+      metalness={precolored ? 0.64 : front ? 0.94 : 0.92}
+      roughness={precolored ? 0.27 : front ? 0.18 : 0.16}
       clearcoat={front ? 0.18 : 0.16}
       clearcoatRoughness={front ? 0.12 : 0.13}
       polygonOffset
@@ -629,17 +629,6 @@ function CompleteShelfBook({
       ),
     [boardThickness, economical, height, pageDepth, spineBow]
   );
-  const spineBandGeometry = useMemo(
-    () =>
-      new RoundedBoxGeometry(
-        economical ? 0.009 : 0.012,
-        economical ? 0.018 : 0.022,
-        (pageDepth + boardThickness * 1.82) * 0.92,
-        1,
-        economical ? 0.002 : 0.0035
-      ),
-    [boardThickness, economical, pageDepth]
-  );
   const spineLiningGeometry = useMemo(
     () =>
       new RoundedBoxGeometry(
@@ -679,7 +668,6 @@ function CompleteShelfBook({
       pageBlockGeometry?.dispose();
       spineGeometry.dispose();
       spineFoilGeometry.dispose();
-      spineBandGeometry.dispose();
       spineLiningGeometry.dispose();
       coverSurfaceGeometry?.dispose();
       endpaperGeometry?.dispose();
@@ -688,7 +676,6 @@ function CompleteShelfBook({
       coverSurfaceGeometry,
       endpaperGeometry,
       pageBlockGeometry,
-      spineBandGeometry,
       spineFoilGeometry,
       spineGeometry,
       spineLiningGeometry,
@@ -935,32 +922,6 @@ function CompleteShelfBook({
           precolored
         />
       </mesh>
-      {[-0.41, 0.41].map((offset) => (
-        <mesh
-          key={offset}
-          geometry={spineBandGeometry}
-          position={[
-            -coverWidth / 2 -
-              spineBoardThickness * 0.855 -
-              spineBow +
-              (economical ? 0.003 : 0.004),
-            height * offset,
-            0,
-          ]}
-          castShadow={!economical}
-          receiveShadow
-          renderOrder={3}
-        >
-            <BindingMaterial
-              binding={spec.binding}
-              color="#2a1c21"
-            bindingMap={bindingMap}
-            bindingNormalMap={bindingNormalMap}
-            bindingRoughnessMap={bindingRoughnessMap}
-            economical={economical}
-          />
-        </mesh>
-      ))}
       <mesh
         geometry={spineLiningGeometry}
         position={[-coverWidth / 2 + spineWidth * 0.38, 0, 0]}

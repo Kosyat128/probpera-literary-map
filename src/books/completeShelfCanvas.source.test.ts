@@ -40,7 +40,7 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain(
       "createCompleteShelfBowedSpineFoilGeometry"
     );
-    expect(rendererSource).toContain("spineBandGeometry");
+    expect(rendererSource).not.toContain("spineBandGeometry");
     expect(rendererSource).not.toContain("onDoubleClick");
   });
 
@@ -88,8 +88,12 @@ describe("Complete Shelf Canvas source contract", () => {
 
   it("separates non-metallic cloth from transparent metallic foil", () => {
     expect(rendererSource).toContain("metalness={0}");
-    expect(rendererSource).toContain("metalness={front ? 0.94 : 0.92}");
-    expect(rendererSource).toContain("roughness={front ? 0.18 : 0.16}");
+    expect(rendererSource).toContain(
+      "metalness={precolored ? 0.64 : front ? 0.94 : 0.92}"
+    );
+    expect(rendererSource).toContain(
+      "roughness={precolored ? 0.27 : front ? 0.18 : 0.16}"
+    );
     expect(rendererSource).toContain("transparent");
     expect(rendererSource).toContain("alphaTest={0.015}");
     expect(rendererSource).toContain("bumpScale={front ? 0.016 : 0.017}");
@@ -146,12 +150,12 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(textureSource).not.toContain("diamondHalfWidth");
     expect(textureSource).not.toContain("upperY:");
     expect(textureSource.match(/paintMotif\(/gu)).toHaveLength(2);
-    expect(rendererSource).toContain("{[-0.41, 0.41].map");
+    expect(textureSource).not.toContain("for (const bandY of [0.115, 0.885])");
     expect(textureSource).not.toContain(
       "context.fillText(plan.yearLabel, spineWidth"
     );
     expect(textureSource).toContain('tailShade.addColorStop(1, "rgba(7,5,9,.62)")');
-    expect(rendererSource).toContain('color="#2a1c21"');
+    expect(rendererSource).not.toContain("spineBandGeometry");
     expect(textureSource).toContain("resolveCompleteShelfSpineTextColor");
     expect(rendererSource).toContain(
       "alphaMap={precolored ? undefined : map || undefined}"

@@ -36,6 +36,9 @@ async function waitForShelf(page) {
   const frame = page.locator("#books .book-shelf-frame");
   await frame.waitFor({ state: "visible", timeout: 60_000 });
   await page.locator("#books").scrollIntoViewIfNeeded();
+  // The Canvas is intentionally mounted only while its scene viewport is
+  // near the screen. Centre that viewport before waiting for lazy WebGL.
+  await page.locator(".book-shelf-scene").scrollIntoViewIfNeeded();
   try {
     await page.waitForFunction(
       () =>

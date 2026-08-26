@@ -35,8 +35,8 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(cssRule(".book-shelf-frame")).toContain("width: 100%");
     expect(cssRule(".book-shelf-frame")).toContain("max-width: none");
     expect(cssRule(".book-shelf-controls__search")).toContain("order: 2");
-    expect(cssRule(".book-shelf-controls__views")).toContain("order: 3");
-    expect(cssRule(".book-shelf-controls__scope")).toContain("order: 4");
+    expect(cssRule(".book-shelf-controls__scope")).toContain("order: 3");
+    expect(cssRule(".book-shelf-controls__views")).toContain("order: 4");
     expect(cssRule(".book-shelf-frame__library-backdrop")).toContain(
       "z-index: 0"
     );
@@ -130,7 +130,7 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(css).not.toContain(".book-shelf-controls__brand");
     expect(cssRule(".book-shelf-controls__mark")).toContain("width: 40px");
     expect(cssRule(".book-shelf-controls__topline")).toContain(
-      "minmax(260px, 360px)"
+      "minmax(180px, 240px)"
     );
     expect(cssRule(".book-shelf-controls__topline")).toContain(
       "max-content"
@@ -145,6 +145,9 @@ describe("approved Complete Shelf outer presentation", () => {
     );
     expect(css).toMatch(
       /@media \(max-width: 767px\)[\s\S]*?\.book-shelf-controls__search\s*\{[\s\S]*?grid-column:\s*2/iu
+    );
+    expect(css).toMatch(
+      /@media \(min-width: 1101px\) and \(max-width: 1560px\)[\s\S]*?\.book-shelf-controls__scope\s*\{[^}]*grid-column:\s*3[^}]*grid-row:\s*1[\s\S]*?\.book-shelf-controls__views\s*\{[^}]*grid-column:\s*4[^}]*grid-row:\s*1[\s\S]*?\.book-shelf-controls \.book-filter-panel\s*\{[^}]*grid-column:\s*5[^}]*grid-row:\s*1/iu
     );
     expect(controller).toContain('className="book-shelf-scene-hint"');
     expect(controller).toContain('t("Выберите книгу")');

@@ -17,13 +17,19 @@ import {
 const textureColor = (value: string, fallback: string) =>
   /^#[0-9a-f]{6}$/iu.test(value.trim()) ? value.trim() : fallback;
 
-const mixTextureColorWithBlack = (value: string, ratio: number) => {
+const mixTextureColor = (
+  value: string,
+  target: "#000000" | "#ffffff",
+  ratio: number
+) => {
   const source = textureColor(value, "#d6b261");
+  const targetChannel = target === "#ffffff" ? 255 : 0;
   const amount = Math.max(0, Math.min(1, ratio));
   return `#${[1, 3, 5]
     .map((offset) =>
       Math.round(
-        Number.parseInt(source.slice(offset, offset + 2), 16) * (1 - amount)
+        Number.parseInt(source.slice(offset, offset + 2), 16) * (1 - amount) +
+          targetChannel * amount
       )
         .toString(16)
         .padStart(2, "0")
@@ -56,16 +62,22 @@ export function resolveCompleteShelfSpineTextColor(
   baseColor: string,
   foilColor: string
 ) {
-  // Antique the lettering just enough to separate it from decorative foil,
-  // while retaining at least a strong large-display contrast on every
-  // deterministic archive binding.
-  for (const ratio of [0.08, 0.06, 0.04, 0.02, 0.01]) {
-    const candidate = mixTextureColorWithBlack(foilColor, ratio);
-    if (completeShelfColorContrast(baseColor, candidate) >= 3.1) {
-      return candidate;
-    }
-  }
-  return textureColor(foilColor, "#d6b261");
+  // Use a single solid foil tone, selected for the binding rather than a
+  // shadow/outline. This keeps every glyph crisp while preserving a warm
+  // antique-gold appearance on both light and dark cloth.
+  const candidates = [
+    mixTextureColor(foilColor, "#ffffff", 0.72),
+    mixTextureColor(foilColor, "#ffffff", 0.42),
+    mixTextureColor(foilColor, "#ffffff", 0.26),
+    textureColor(foilColor, "#d6b261"),
+    mixTextureColor(foilColor, "#000000", 0.76),
+  ];
+  return candidates.reduce((best, candidate) =>
+    completeShelfColorContrast(baseColor, candidate) >
+    completeShelfColorContrast(baseColor, best)
+      ? candidate
+      : best
+  );
 }
 
 
@@ -233,11 +245,23 @@ export function wrapCompleteShelfTitleText(
 export function buildCompleteShelfArtworkPlan(
   spec: CompleteShelfBookSpec
 ): CompleteShelfArtworkPlan {
+  const spineTitleCharacterTarget = /[\u3040-\u30ff\u3400-\u9fff]/u.test(
+    spec.title
+  )
+    ? 6
+    : 8;
   return Object.freeze({
     titleLines: wrapCompleteShelfTitleText(spec.title, 18, 5),
     frontWriterLines: wrapCompleteShelfWriterText(spec.writer, 22, 4),
-    spineTitleLines: wrapCompleteShelfTitleText(spec.title, 11, 8),
-    spineWriterLines: wrapCompleteShelfWriterText(spec.writer, 13, 7),
+    // CJK titles have no spaces to guide wrapping, so they use shorter lines.
+    // Other scripts keep an eight-character target to avoid splitting common
+    // words such as «Голодный» while retaining a large readable type size.
+    spineTitleLines: wrapCompleteShelfTitleText(
+      spec.title,
+      spineTitleCharacterTarget,
+      8
+    ),
+    spineWriterLines: wrapCompleteShelfWriterText(spec.writer, 10, 7),
     spineTitle: normalizeCompleteShelfText(spec.title, 180),
     writer: normalizeCompleteShelfText(spec.writer, 120),
     yearLabel: spec.year ? String(spec.year) : "",
@@ -536,17 +560,17 @@ export function resolveCompleteShelfSpineOrnamentLayout(
   const safeWidth = Math.max(8, Math.round(width));
   const safeHeight = Math.max(8, Math.round(height));
   const centerX = safeWidth / 2;
-  const lineWidth = Math.max(1, Math.round(safeWidth * 0.012));
+  const lineWidth = Math.max(1, Math.round(safeWidth * 0.01));
   const rawCenterY =
     safeHeight * Math.max(0.05, Math.min(0.95, centerRatio));
   const centerY =
     lineWidth % 2 === 0 ? Math.round(rawCenterY) : Math.floor(rawCenterY) + 0.5;
-  const dotRadius = Math.max(2, Math.round(safeWidth * 0.025));
-  const centerGap = Math.max(2, Math.round(safeWidth * 0.025));
+  const dotRadius = Math.max(2, Math.round(safeWidth * 0.022));
+  const centerGap = Math.max(2, Math.round(safeWidth * 0.022));
   const lineLength = Math.max(
     4,
     Math.floor(
-      (safeWidth * 0.64 - (dotRadius + centerGap) * 2) / 2
+      (safeWidth * 0.68 - (dotRadius + centerGap) * 2) / 2
     )
   );
   const leftEnd = centerX - dotRadius - centerGap;
@@ -859,10 +883,10 @@ export function createCompleteShelfArtworkTextures(
         const titleFit = fitCompleteShelfTextBlock(
           context,
           plan.spineTitleLines,
-          spineWidth * 0.84,
-          spineHeight * 0.275,
-          spineWidth * 0.235,
-          spineWidth * 0.06,
+          spineWidth * 0.9,
+          spineHeight * 0.29,
+          spineWidth * 0.255,
+          spineWidth * 0.075,
           700
         );
         context.font =
@@ -878,10 +902,10 @@ export function createCompleteShelfArtworkTextures(
         const writerFit = fitCompleteShelfTextBlock(
           context,
           plan.spineWriterLines,
-          spineWidth * 0.84,
-          spineHeight * 0.24,
-          spineWidth * 0.165,
-          spineWidth * 0.06,
+          spineWidth * 0.9,
+          spineHeight * 0.25,
+          spineWidth * 0.185,
+          spineWidth * 0.07,
           700
         );
         context.font =
@@ -968,26 +992,6 @@ export function createCompleteShelfArtworkTextures(
           );
           context.stroke();
         }
-      }
-      for (const bandY of [0.115, 0.885]) {
-        const bandHeight = spineHeight * 0.016;
-        const band = context.createLinearGradient(
-          0,
-          spineHeight * bandY - bandHeight,
-          0,
-          spineHeight * bandY + bandHeight
-        );
-        band.addColorStop(0, "rgba(0,0,0,.2)");
-        band.addColorStop(0.42, "rgba(255,255,255,.1)");
-        band.addColorStop(0.58, "rgba(255,255,255,.055)");
-        band.addColorStop(1, "rgba(0,0,0,.24)");
-        context.fillStyle = band;
-        context.fillRect(
-          0,
-          spineHeight * bandY - bandHeight,
-          spineWidth,
-          bandHeight * 2
-        );
       }
       const tailShade = context.createLinearGradient(
         0,
