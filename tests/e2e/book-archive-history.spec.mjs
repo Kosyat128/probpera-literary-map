@@ -1,11 +1,22 @@
 import { expect, test } from "@playwright/test";
 
+async function openBookCatalog(page) {
+  await page.goto("/#books");
+  const catalogButton = page.getByRole("button", {
+    name: "КАТАЛОГ",
+    exact: true,
+  });
+  await expect(catalogButton).toBeVisible({ timeout: 20_000 });
+  await catalogButton.click();
+  await expect(catalogButton).toHaveAttribute("aria-pressed", "true");
+}
+
 test("switching book details keeps one history entry and close returns to the archive", async ({
   page,
   isMobile,
 }) => {
   test.skip(Boolean(isMobile), "Desktop history contract");
-  await page.goto("/#books");
+  await openBookCatalog(page);
   await expect(
     page
       .locator(".book-archive-filters")
