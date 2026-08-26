@@ -152,7 +152,7 @@ export const governanceFingerprintRegistry = Object.freeze([
     paths: bookArchiveOwnerPaths,
     expected: {
       files: 9,
-      sha256: "0cc93c1437b7829a9657557b4f26038d2e0d79df41b7791160316c168411cd41",
+      sha256: "a875a1eef7b27a4773a4f364b84d0c0b37796094f620054800d6156c6275596b",
     },
   },
   {
@@ -181,19 +181,98 @@ export const currentIntegrationPremiumTranslationAndHealthPaths = Object.freeze(
   "apps/admin/lib/translation-backfill-cursor.ts",
 ]);
 
+export const stage5D1AdditiveI18nAttestation = Object.freeze({
+  id: "STAGE5-D1-INTERFACE-COPY",
+  sourceIntegrationSha: "fdd981381e859ab0ceaa44b48e9236af70c43db7",
+  fixturePath: "scripts/fixtures/stage5d1-interface-additions.json",
+  allowedPaths: Object.freeze([
+    "src/i18n/InterfaceLanguage.tsx",
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+  ]),
+  interfaceLanguage: Object.freeze({
+    declaration: "englishInterfaceText",
+    baselineEntries: 916,
+    baselinePairsSha256:
+      "7053755a7c46865d1c8f1c795c595b08d96d031bfeb0a9653c1cc1f6dc395c93",
+    codeOutsideInitializerSha256:
+      "96a330622dd3b14b98f4215fc8392e7af7160c8ff74b8e33df2d2e99efb55802",
+    currentEntries: 1065,
+    additions: Object.freeze({
+      entries: 149,
+      keysSha256:
+        "f2879d307bcfba745786bd0f28bbaa15b06c28854bd96e6f38d1b10806f5f32f",
+      pairsSha256:
+        "c0ba3aa8bba7527521182c2e47fb4c741dd0787842d710e218ade01e65728ff8",
+    }),
+  }),
+  catalog: Object.freeze({
+    baselineEntries: 1130,
+    baselineContentSha256:
+      "280bb7704a34921fdbb2c95c51bb5264ecaab1c210dfbdb5b0a37d62a29caa5d",
+    currentEntries: 1279,
+    additions: Object.freeze({
+      entries: 149,
+      keysSha256:
+        "f0d8cf38db01021143079f6fdfa6706c3eab73119ad066d43ef6da5c64670cb6",
+      contentSha256:
+        "95f5529a4927a0ed0279e16d31a4e06b8cd2e707cf468f098a1b9be755b52fda",
+    }),
+  }),
+});
+
+const stage5D1Stage4GlobeStablePaths = Object.freeze(
+  stage4ProductionPaths.filter(
+    (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"
+  )
+);
+
+const stage5D1PremiumCurrentStablePaths = Object.freeze(
+  currentIntegrationPremiumTranslationAndHealthPaths.filter(
+    (entry) => !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry)
+  )
+);
+
+export const stage5D1EnforcedGovernanceScopes = Object.freeze({
+  stage4Globe: Object.freeze({
+    paths: stage5D1Stage4GlobeStablePaths,
+    expected: Object.freeze({
+      files: 19,
+      sha256:
+        "b61b45afb7a3b50ec4942d873b7a58e46bba2c2f8a7e492b5f8622fa17a77253",
+    }),
+  }),
+  premiumCurrent: Object.freeze({
+    paths: stage5D1PremiumCurrentStablePaths,
+    expected: Object.freeze({
+      files: 45,
+      sha256:
+        "961c1326586d54f485c661ce8f97769f0bdc2eb8ff984602ad751a3a6bea79e4",
+    }),
+  }),
+});
+
 export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
   governanceFingerprintRegistry.map((entry) =>
-    entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+    entry.id === "STAGE4-PRODUCTION-SURFACE"
       ? Object.freeze({
           ...entry,
-          sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
-          paths: currentIntegrationPremiumTranslationAndHealthPaths,
-          expected: Object.freeze({
-            files: 47,
-            sha256: "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
-          }),
+          enforced: stage5D1EnforcedGovernanceScopes.stage4Globe,
+          additiveAttestationId: stage5D1AdditiveI18nAttestation.id,
         })
-      : entry
+      : entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+        ? Object.freeze({
+            ...entry,
+            sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
+            paths: currentIntegrationPremiumTranslationAndHealthPaths,
+            expected: Object.freeze({
+              files: 47,
+              sha256:
+                "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
+            }),
+            enforced: stage5D1EnforcedGovernanceScopes.premiumCurrent,
+            additiveAttestationId: stage5D1AdditiveI18nAttestation.id,
+          })
+        : entry
   )
 );
 

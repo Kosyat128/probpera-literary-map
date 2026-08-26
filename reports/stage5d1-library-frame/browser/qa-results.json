@@ -1,0 +1,364 @@
+{
+  "generatedAt": "2026-08-25T23:38:58.506Z",
+  "scope": "Stage 5D-1 three-P2 affected-case regression",
+  "checks": [
+    {
+      "case": "ru-desktop",
+      "name": "Axe #books has zero violations",
+      "passed": true,
+      "evidence": "22 passes"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "verified quick filter: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "verified filter creates removable chip",
+      "passed": true,
+      "evidence": "Проверено редакцией\n×\nСбросить\nСохранить как умную полку"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "remove verified chip: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "chip removal clears verified filter",
+      "passed": true,
+      "evidence": "false"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "verified quick filter before reset: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "query plus verified expose multiple chips",
+      "passed": true,
+      "evidence": "Поиск: Толстой\n×\nПроверено редакцией\n×\nСбросить\nСохранить как умную полку"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "reset active filters: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "reset clears chips and query",
+      "passed": true,
+      "evidence": "{\"chips\":0,\"query\":\"\"}"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "open author drawer: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "author drawer exposes selected-author context",
+      "passed": true,
+      "evidence": "АТ\nАалы Токомбаев\nКыргызстан · 1 произведений\nОткрыть полку автора"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "open writer shelf: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "writer shelf updates collection and chip",
+      "passed": true,
+      "evidence": "Текущая полкаАалы Токомбаев\n1 произведений"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "remove author chip: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "normal console errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "normal page errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-desktop",
+      "name": "normal request failures = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "ru-desktop",
+      "name": "normal HTTP errors = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "en-desktop",
+      "name": "English language: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "en-desktop",
+      "name": "Axe #books has zero violations",
+      "passed": true,
+      "evidence": "22 passes"
+    },
+    {
+      "case": "en-desktop",
+      "name": "normal console errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "en-desktop",
+      "name": "normal page errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "en-desktop",
+      "name": "normal request failures = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "en-desktop",
+      "name": "normal HTTP errors = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "Axe #books has zero violations",
+      "passed": true,
+      "evidence": "22 passes"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "verified quick filter: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "verified filter creates removable chip",
+      "passed": true,
+      "evidence": "Проверено редакцией\n×\nСбросить\nСохранить как умную полку"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "remove verified chip: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "chip removal clears verified filter",
+      "passed": true,
+      "evidence": "false"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "verified quick filter before reset: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "query plus verified expose multiple chips",
+      "passed": true,
+      "evidence": "Поиск: Толстой\n×\nПроверено редакцией\n×\nСбросить\nСохранить как умную полку"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "reset active filters: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "reset clears chips and query",
+      "passed": true,
+      "evidence": "{\"chips\":0,\"query\":\"\"}"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "open author drawer: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "author drawer exposes selected-author context",
+      "passed": true,
+      "evidence": "АТ\nАалы Токомбаев\nКыргызстан · 1 произведений\nОткрыть полку автора"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "open writer shelf: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "writer shelf updates collection and chip",
+      "passed": true,
+      "evidence": "Текущая полкаАалы Токомбаев\n1 произведений"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "remove author chip: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "normal console errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "normal page errors = 0",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "ru-mobile",
+      "name": "normal request failures = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "ru-mobile",
+      "name": "normal HTTP errors = 0",
+      "passed": true,
+      "evidence": "[]"
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "first injected chunk failure falls back to Catalogue",
+      "passed": true,
+      "evidence": "[\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\"]"
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "Shelf retry: ordinary click",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "retry requests a second distinct Canvas chunk",
+      "passed": true,
+      "evidence": "[\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\",\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-B9JztxBr.js\"]"
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "retry recovers exactly one Canvas",
+      "passed": true,
+      "evidence": "1 canvas"
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "only injected request failure occurred",
+      "passed": true,
+      "evidence": "[{\"url\":\"http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js\",\"error\":\"net::ERR_FAILED\"}]"
+    },
+    {
+      "case": "lazy-chunk-retry",
+      "name": "no uncaught page errors during recovery",
+      "passed": true,
+      "evidence": ""
+    }
+  ],
+  "axe": {
+    "ru-desktop": {
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    },
+    "en-desktop": {
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    },
+    "ru-mobile": {
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    }
+  },
+  "diagnostics": {
+    "ru-desktop": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": []
+    },
+    "en-desktop": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": []
+    },
+    "ru-mobile": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": []
+    },
+    "lazy-chunk-retry": {
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_FAILED",
+        "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js"
+      ],
+      "pageErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:4173/probpera-literary-map/assets/BookShelfSceneCanvas-lA95IRCd.js",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": []
+    }
+  },
+  "cases": {
+    "ru-desktop": {
+      "completed": true
+    },
+    "en-desktop": {
+      "completed": true
+    },
+    "ru-mobile": {
+      "completed": true
+    },
+    "lazy-chunk-retry": {
+      "completed": true
+    }
+  },
+  "summary": {
+    "passed": 48,
+    "failed": 0,
+    "total": 48
+  }
+}

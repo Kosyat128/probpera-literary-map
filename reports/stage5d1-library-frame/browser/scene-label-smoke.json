@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-25T23:42:50.783Z",
+  "scope": "stable BookShelfScene accessible-name smoke",
+  "checks": [
+    {
+      "name": "RU stable role/name",
+      "passed": true,
+      "evidence": "{\"role\":\"region\",\"name\":\"Книжный архив\"}"
+    },
+    {
+      "name": "RU exactly one Canvas",
+      "passed": true,
+      "evidence": "1 canvas"
+    },
+    {
+      "name": "RU targeted Axe has no violations",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "name": "EN stable role/name",
+      "passed": true,
+      "evidence": "{\"role\":\"region\",\"name\":\"Book archive\"}"
+    },
+    {
+      "name": "EN exactly one Canvas",
+      "passed": true,
+      "evidence": "1 canvas"
+    },
+    {
+      "name": "EN targeted Axe has no violations",
+      "passed": true,
+      "evidence": ""
+    },
+    {
+      "name": "console/page errors = 0",
+      "passed": true,
+      "evidence": ""
+    }
+  ],
+  "axe": {
+    "ru": {
+      "violations": [],
+      "passes": 11
+    },
+    "en": {
+      "violations": [],
+      "passes": 11
+    }
+  },
+  "consoleErrors": [],
+  "summary": {
+    "passed": 7,
+    "failed": 0
+  }
+}

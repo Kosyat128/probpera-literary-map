@@ -2714,6 +2714,7 @@ export default function App() {
         >
           <BookArchiveSection
             books={bookArchive}
+            countries={countryArchive}
             requestedBook={requestedBook}
             onRequestedBookHandled={() => setRequestedBook(null)}
             onBookSelect={selectBookWriterAndCountry}

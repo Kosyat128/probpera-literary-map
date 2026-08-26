@@ -308,13 +308,20 @@ describe("Stage 5A governance baseline", () => {
   it("keeps BookArchiveSection as the canonical controller", () => {
     expect([...stateOwnerNames(bookArchive)]).toEqual(
       expect.arrayContaining([
+        "filterState",
         "query",
-        "filter",
+        "activeCollectionId",
         "visibleCount",
+        "searchScope",
+        "focusedBookKey",
         "selectedBook",
         "relatedArticles",
         "relatedArticlesLoading",
       ])
+    );
+    expect(bookArchive.text).toContain('const [query, setQuery] = useState("")');
+    expect(bookArchive.text).toContain(
+      "const viewMode = shelfState.effectiveViewMode"
     );
     expect([...importedNames(bookArchive, "../data/bookArchive")]).toEqual(
       expect.arrayContaining([

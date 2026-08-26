@@ -3,9 +3,13 @@ import {
   useDeferredValue,
   useEffect,
   useMemo,
+  useReducer,
   useRef,
   useState,
+  type CSSProperties,
 } from "react";
+
+import { createPortal } from "react-dom";
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import {
@@ -13,6 +17,7 @@ import {
   coverArtworkSrcSet,
   isEditorialCover,
   isCoverArtworkDisplayAllowed,
+  resolveBookArchivePublicTarget,
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import {
@@ -28,35 +33,103 @@ import {
 } from "../data/bookLocalization";
 import {
   getBookArticleMentions,
+  getBookMentionIndex,
   type BookArticleMention,
+  type BookMentionIndex,
 } from "../data/articles/bookMentions";
 import { articleCatalog } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
+import type { Country } from "../data/countries";
+import {
+  applyBookArchiveQuickPreset,
+  BOOK_ARCHIVE_AUDIENCES,
+  BOOK_ARCHIVE_ARTICLE_RELATIONS,
+  BOOK_ARCHIVE_COVER_MODES,
+  BOOK_ARCHIVE_GENRES,
+  BOOK_ARCHIVE_LANGUAGES,
+  BOOK_ARCHIVE_PERIODS,
+  BOOK_ARCHIVE_SORTS,
+  buildBookArchiveFacetIndex,
+  filterBookArchiveFacetIndex,
+  normalizeBookArchiveFilterState,
+  type BookArchiveArticleRelation,
+  type BookArchiveCoverMode,
+  type BookArchiveFilterState,
+  type BookArchiveGenreId,
+  type BookArchivePeriod,
+  type BookArchiveQuickPreset,
+  type BookArchiveSort,
+  type WorkAudienceCategory,
+} from "../books/bookArchiveFacets";
+import {
+  applyBookSmartShelf,
+  readBookSmartShelves,
+  saveBookSmartShelf,
+  type BookSmartShelf,
+} from "../books/bookSmartShelves";
+import {
+  bookShelfStateReducer,
+  createInitialBookShelfState,
+} from "../books/bookShelfState";
+import {
+  bookSceneThemeCssProperties,
+  bookSceneThemeForArchetype,
+  resolveBookSceneTheme,
+} from "../books/bookSceneThemes";
+import {
+  bookArchiveSceneCssProperties,
+  bookSceneOwnerOverrideFromSettings,
+  resolveBookArchiveSceneSettings,
+} from "../books/bookArchiveSceneSettings";
+import {
+  coreHomepageSectionClass,
+  coreHomepageSectionStyle,
+  getCoreHomepageSection,
+} from "../data/cms/homepage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
 import {
+  cmsCoreFieldMarker,
   cmsEntityFieldMarker,
   cmsEntityMarker,
 } from "../cms/directEditBridge";
+import { normalizeLiterarySearch } from "../utils/literarySearch";
 import {
-  literarySearchMatches,
-  normalizeLiterarySearch,
-} from "../utils/literarySearch";
+  BOOKS_GLOBAL_SEARCH_PROFILE,
+  BOOKS_LIBRARY_SEARCH_PROFILE,
+  createGlobalSearchIndex,
+  loadGlobalSearchArticleCatalog,
+  searchGlobalSearchIndex,
+  type GlobalSearchActivateAction,
+  type GlobalSearchExtensionDocument,
+  type GlobalSearchResult,
+} from "../search/globalSearchIndex";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
-
-type ArchiveFilter = "all" | "verified" | "pending" | "classic" | "modern";
+import BrandArrowIcon from "./BrandArrowIcon";
+import BookShelfControls, {
+  type BookShelfQuickFilterOption,
+  type BookShelfSearchScope,
+  type BookShelfViewMode,
+} from "./BookShelfControls";
+import BookShelfFrame from "./BookShelfFrame";
+import BookShelfScene, {
+  type BookShelfSceneAppearance,
+  type BookShelfSceneFailure,
+} from "./BookShelfScene";
+import WriterPortrait from "./WriterPortrait";
 
 type Props = {
   books: BookArchiveEntry[];
+  countries: Country[];
   onBookSelect: (book: BookArchiveEntry) => void;
   requestedBook?: BookArchiveEntry | null;
   onRequestedBookHandled?: () => void;
 };
 
 const archiveFilters: Array<{
-  id: ArchiveFilter;
+  id: Exclude<BookArchiveQuickPreset, "custom">;
   label: string;
   description: string;
 }> = [
@@ -71,9 +144,9 @@ const archiveFilters: Array<{
     description: "Карточки с подтверждёнными данными",
   },
   {
-    id: "pending",
-    label: "Непроверенные",
-    description: "Карточки в редакционной очереди",
+    id: "children",
+    label: "Для детей",
+    description: "Только подтверждённая аудитория",
   },
   {
     id: "classic",
@@ -85,10 +158,87 @@ const archiveFilters: Array<{
     label: "Послевоенная и современная литература",
     description: "Первое издание — с 1946 года по настоящее время",
   },
+  {
+    id: "with-cover",
+    label: "С обложкой",
+    description: "Только обложки с разрешёнными правами",
+  },
+  {
+    id: "saved",
+    label: "Избранное",
+    description: "Книги из личной полки",
+  },
 ];
 
-function editorialRank(item: BookArchiveQueueItem) {
-  return item.status === "verified" ? 0 : 1;
+const periodLabels: Record<BookArchivePeriod, string> = {
+  "pre-1800": "До 1800 года",
+  xix: "XIX век",
+  "1900-1945": "1900–1945",
+  "1946-1999": "1946–1999",
+  xxi: "XXI век",
+  unknown: "Период не подтверждён",
+};
+
+const audienceLabels: Record<WorkAudienceCategory, string> = {
+  children: "Дети",
+  "young-adult": "Подростки",
+  adult: "Взрослые",
+  "all-ages": "Для всех возрастов",
+};
+
+const coverLabels: Record<BookArchiveCoverMode, string> = {
+  uploaded: "Загруженная обложка",
+  editorial: "Редакционная обложка",
+  typographic: "Типографическая обложка",
+};
+
+type AuthorFilterOption = {
+  key: string;
+  label: string;
+  countryLabel: string;
+  count: number;
+  writer: Country["writers"][number] | null;
+};
+
+const relationLabels: Record<BookArchiveArticleRelation, string> = {
+  related: "Есть связь со статьёй",
+  review: "Рецензия",
+  feature: "Главный материал",
+  mention: "Упоминание",
+  unrelated: "Без связанной статьи",
+};
+
+const sortLabels: Record<BookArchiveSort, string> = {
+  "editorial-relevance": "Редакционная релевантность",
+  title: "По названию",
+  writer: "По автору",
+  oldest: "Сначала ранние",
+  newest: "Сначала новые",
+  "cover-first": "Сначала с обложкой",
+  manual: "Редакционный порядок",
+  recent: "Недавно проверенные",
+};
+
+const searchGroupLabels: Record<GlobalSearchResult["group"], string> = {
+  books: "КНИГИ",
+  writers: "АВТОРЫ",
+  countries: "СТРАНЫ",
+  genres: "ЖАНРЫ",
+  audiences: "АУДИТОРИИ",
+  periods: "ПЕРИОДЫ",
+  editorialShelves: "РЕДАКЦИОННЫЕ ПОЛКИ",
+  personalShelves: "МОИ ПОЛКИ",
+  articles: "МАТЕРИАЛЫ ЖУРНАЛА",
+};
+
+function toggleFacetValue<T extends string>(
+  values: readonly T[],
+  value: T,
+  checked: boolean
+) {
+  return checked
+    ? [...new Set([...values, value])]
+    : values.filter((candidate) => candidate !== value);
 }
 
 export function isBookCmsEditable(
@@ -180,19 +330,49 @@ function resolveCoverUrl(url?: string) {
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
 }
 
-function hasArchiveCover(book: BookArchiveEntry) {
-  return isCoverArtworkDisplayAllowed(book);
-}
 
 export default function BookArchiveSection({
   books,
+  countries,
   onBookSelect,
   requestedBook,
   onRequestedBookHandled,
 }: Props) {
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<ArchiveFilter>("all");
+  const [filterState, setFilterState] = useState<BookArchiveFilterState>(() =>
+    normalizeBookArchiveFilterState()
+  );
+  const [smartShelves, setSmartShelves] = useState<readonly BookSmartShelf[]>(
+    () => readBookSmartShelves()
+  );
+  const [smartShelfStatus, setSmartShelfStatus] = useState("");
+  const [activeCollectionId, setActiveCollectionId] = useState("all");
   const [visibleCount, setVisibleCount] = useState(12);
+  const [shelfState, shelfDispatch] = useReducer(
+    bookShelfStateReducer,
+    undefined,
+    () => createInitialBookShelfState("shelf")
+  );
+  const viewMode = shelfState.effectiveViewMode;
+  const setViewMode = useCallback(
+    (nextViewMode: BookShelfViewMode) => {
+      shelfDispatch({ type: "set-view-mode", viewMode: nextViewMode });
+      if (nextViewMode === "shelf" && shelfState.error) {
+        shelfDispatch({
+          type: "recover",
+          requestId: shelfState.requestId + 1,
+        });
+      }
+    },
+    [shelfState.error, shelfState.requestId]
+  );
+  const [searchScope, setSearchScope] =
+    useState<BookShelfSearchScope>("library");
+  const [focusedBookKey, setFocusedBookKey] = useState<string | null>(null);
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
+  const [shelfFailure, setShelfFailure] =
+    useState<BookShelfSceneFailure | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(
     null
   );
@@ -200,13 +380,38 @@ export default function BookArchiveSection({
     []
   );
   const [relatedArticlesLoading, setRelatedArticlesLoading] = useState(false);
+  const [mentionIndex, setMentionIndex] = useState<BookMentionIndex | null>(null);
+  const [globalSearchArticles, setGlobalSearchArticles] = useState<
+    readonly (typeof articleCatalog)[number][]
+  >([]);
   const detailRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const filterDrawerRef = useRef<HTMLElement>(null);
+  const filterReturnFocusRef = useRef<HTMLElement | null>(null);
+  const openAdvancedFilters = useCallback(() => {
+    filterReturnFocusRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    setAdvancedFiltersOpen(true);
+  }, []);
+  const closeAdvancedFilters = useCallback(() => {
+    setAdvancedFiltersOpen(false);
+    window.requestAnimationFrame(() => {
+      const trigger = filterReturnFocusRef.current;
+      filterReturnFocusRef.current = null;
+      if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+    });
+  }, []);
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
   const queue = useMemo(() => classifyBookArchiveQueue(books), [books]);
+  const queueByKey = useMemo(
+    () => new Map(queue.all.map((item) => [item.key, item])),
+    [queue]
+  );
   const openBookDetail = useCallback((
     book: BookArchiveEntry,
     returnFocus?: HTMLElement | null
@@ -252,96 +457,399 @@ export default function BookArchiveSection({
     }
   }, [restoreBookTriggerFocus]);
 
-  const counts = useMemo(
-    () => ({
-      all: queue.counts.total,
-      verified: queue.counts.verified,
-      pending: queue.counts.pending,
-      classic: queue.verified.filter(
-        ({ book }) =>
-          typeof book.firstPublished === "number" && book.firstPublished <= 1945
-      ).length,
-      modern: queue.verified.filter(
-        ({ book }) =>
-          typeof book.firstPublished === "number" && book.firstPublished > 1945
-      ).length,
-    }),
-    [queue]
+  const savedBookKeys = useMemo(
+    () =>
+      new Set(
+        savedReadings
+          .filter((item) => item.kind === "book")
+          .map((item) => item.id)
+      ),
+    [savedReadings]
   );
 
-  const indexedItems = useMemo(
+  useEffect(() => {
+    let active = true;
+    getBookMentionIndex()
+      .then((index) => {
+        if (active) setMentionIndex(index);
+      })
+      .catch(() => {
+        if (active) setMentionIndex(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const facetIndex = useMemo(
     () =>
-      queue.all.map((item) => {
-        const { book } = item;
-        const displayedBook = presentBookArchiveQueueItem(item, language);
-        return {
-          item,
-          displayedBook,
-          searchValues: [
-            displayedBook.title,
-            book.originalTitle,
-            ...(book.alternateTitles || []),
-            selectBookWriterName(book, language, t("Автор")),
-            countryName(book.country.code, book.countryName),
-            ...(item.status === "verified"
-              ? [
-                  displayedBook.description,
-                  selectBookOriginalLanguage(book, language),
-                  ...selectBookMetadataLabels(book, language, t),
-                ]
-              : []),
-          ],
-        };
+      buildBookArchiveFacetIndex({
+        items: queue.all,
+        locale: language,
+        translate: t,
+        countryName,
+        mentionIndex,
       }),
-    [countryName, language, queue, t]
+    [countryName, language, mentionIndex, queue, t]
   );
+  const appliedFilterState = useMemo(
+    () =>
+      normalizeBookArchiveFilterState({
+        ...filterState,
+        query: searchScope === "library" ? deferredQuery : "",
+      }),
+    [deferredQuery, filterState, searchScope]
+  );
+  const facetResult = useMemo(
+    () =>
+      filterBookArchiveFacetIndex(facetIndex, appliedFilterState, {
+        savedBookKeys,
+      }),
+    [appliedFilterState, facetIndex, savedBookKeys]
+  );
+  const quickCountBaseState = useMemo(
+    () =>
+      normalizeBookArchiveFilterState({
+        ...filterState,
+        query: "",
+      }),
+    [filterState]
+  );
+
+  const quickFilterCounts = useMemo(() => {
+    const counts = new Map<BookArchiveQuickPreset, number | null>();
+    archiveFilters.forEach((option) => {
+      if (
+        option.id === "children" &&
+        facetIndex.diagnostics.audienceFacetStatus === "unavailable"
+      ) {
+        counts.set(option.id, null);
+        return;
+      }
+      counts.set(
+        option.id,
+        filterBookArchiveFacetIndex(
+          facetIndex,
+          applyBookArchiveQuickPreset(quickCountBaseState, option.id),
+          { savedBookKeys }
+        ).total
+      );
+    });
+    return counts;
+  }, [facetIndex, quickCountBaseState, savedBookKeys]);
+
+  const quickFilterOptions = useMemo<readonly BookShelfQuickFilterOption[]>(
+    () =>
+      archiveFilters.map((option) => ({
+        ...option,
+        label: t(option.label),
+        description: t(option.description),
+        count: quickFilterCounts.get(option.id) ?? null,
+        unavailable:
+          option.id === "children" &&
+          facetIndex.diagnostics.audienceFacetStatus === "unavailable",
+      })),
+    [facetIndex.diagnostics.audienceFacetStatus, quickFilterCounts, t]
+  );
+
+  const applyQuickFilter = useCallback(
+    (preset: BookArchiveQuickPreset) => {
+      if (
+        preset === "children" &&
+        facetIndex.diagnostics.audienceFacetStatus === "unavailable"
+      ) {
+        return;
+      }
+      if (preset === "custom") return;
+      setFilterState((current) =>
+        applyBookArchiveQuickPreset(current, preset)
+      );
+      setActiveCollectionId(preset);
+    },
+    [facetIndex.diagnostics.audienceFacetStatus]
+  );
+
+  const updateFilterState = useCallback(
+    (patch: Partial<BookArchiveFilterState>) => {
+      const { query: nextQuery, ...structuralPatch } = patch;
+      if (typeof nextQuery === "string") setQuery(nextQuery);
+      setFilterState((current) =>
+        normalizeBookArchiveFilterState({
+          ...current,
+          ...structuralPatch,
+          query: "",
+          quickPreset: "custom",
+        })
+      );
+      setActiveCollectionId("custom");
+    },
+    []
+  );
+  const resetArchiveFilters = useCallback(() => {
+    setQuery("");
+    setFilterState(normalizeBookArchiveFilterState());
+    setActiveCollectionId("all");
+    setSmartShelfStatus("");
+  }, []);
+
+  const authorOptions = useMemo(
+    () => {
+      const options = new Map<string, AuthorFilterOption>();
+      for (const document of facetIndex.documents) {
+        const current = options.get(document.authorKey);
+        if (current) {
+          options.set(document.authorKey, {
+            ...current,
+            count: current.count + 1,
+          });
+          continue;
+        }
+        const publicTarget = resolveBookArchivePublicTarget(
+          countries,
+          document.item.book
+        );
+        options.set(document.authorKey, {
+          key: document.authorKey,
+          label: document.writerLabel,
+          countryLabel: document.countryLabel,
+          count: 1,
+          writer: publicTarget?.writer || null,
+        });
+      }
+      return [...options.values()].sort((first, second) =>
+        first.label.localeCompare(second.label, language)
+      );
+    },
+    [countries, facetIndex, language]
+  );
+  const selectedAuthorOption =
+    authorOptions.find((option) => option.key === filterState.authorKey) || null;
+  const countryOptions = useMemo(
+    () =>
+      [
+        ...new Map(
+          facetIndex.documents.map((document) => [
+            document.countryId,
+            document.countryLabel,
+          ])
+        ).entries(),
+      ].sort((first, second) => first[1].localeCompare(second[1], language)),
+    [facetIndex, language]
+  );
+
+  const globalSearchExtensions = useMemo<
+    readonly GlobalSearchExtensionDocument[]
+  >(() => {
+    const extensions: GlobalSearchExtensionDocument[] = [];
+    for (const genre of BOOK_ARCHIVE_GENRES) {
+      if (!facetIndex.indexes.genre.has(genre.id)) continue;
+      extensions.push({
+        kind: "genre",
+        id: genre.id,
+        label: t(genre.aliases[0]),
+        aliases: genre.aliases,
+      });
+    }
+    if (facetIndex.diagnostics.audienceFacetStatus === "available") {
+      for (const audience of BOOK_ARCHIVE_AUDIENCES) {
+        extensions.push({
+          kind: "audience",
+          id: audience,
+          label: t(audienceLabels[audience]),
+        });
+      }
+    }
+    for (const period of BOOK_ARCHIVE_PERIODS) {
+      extensions.push({
+        kind: "period",
+        id: period,
+        label: t(periodLabels[period]),
+        aliases: [period],
+      });
+    }
+    for (const option of archiveFilters) {
+      extensions.push({
+        kind: option.id === "saved" ? "personal-shelf" : "editorial-shelf",
+        id: option.id,
+        label: t(option.label),
+        aliases: [t(option.description)],
+      });
+    }
+    for (const shelf of smartShelves) {
+      extensions.push({
+        kind: "personal-shelf",
+        id: shelf.id,
+        label: shelf.label,
+        aliases: [t("Умная полка")],
+      });
+    }
+    return extensions;
+  }, [facetIndex, smartShelves, t]);
+
+  useEffect(() => {
+    if (
+      searchScope !== "global" ||
+      normalizeLiterarySearch(deferredQuery).length < 2
+    ) {
+      return;
+    }
+    let active = true;
+    loadGlobalSearchArticleCatalog()
+      .then((articles) => {
+        if (active) setGlobalSearchArticles(articles);
+      })
+      .catch(() => {
+        if (active) setGlobalSearchArticles([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, [deferredQuery, searchScope]);
+
+  const globalSearchIndex = useMemo(
+    () =>
+      createGlobalSearchIndex({
+        countries,
+        books,
+        language,
+        translate: t,
+        countryName,
+        articles: globalSearchArticles,
+        extensions: globalSearchExtensions,
+      }),
+    [
+      books,
+      countries,
+      countryName,
+      globalSearchArticles,
+      globalSearchExtensions,
+      language,
+      t,
+    ]
+  );
+  const globalSearchResponse = useMemo(
+    () =>
+      searchGlobalSearchIndex(
+        globalSearchIndex,
+        searchScope === "global" ? deferredQuery : "",
+        BOOKS_GLOBAL_SEARCH_PROFILE
+      ),
+    [deferredQuery, globalSearchIndex, searchScope]
+  );
+  const librarySearchResponse = useMemo(
+    () =>
+      searchGlobalSearchIndex(
+        globalSearchIndex,
+        searchScope === "library" ? deferredQuery : "",
+        BOOKS_LIBRARY_SEARCH_PROFILE
+      ),
+    [deferredQuery, globalSearchIndex, searchScope]
+  );
+  const activeSearchResponse =
+    searchScope === "global" ? globalSearchResponse : librarySearchResponse;
+  const activeSearchProfile =
+    searchScope === "global"
+      ? BOOKS_GLOBAL_SEARCH_PROFILE
+      : BOOKS_LIBRARY_SEARCH_PROFILE;
 
   const filteredItems = useMemo(() => {
-    const normalizedQuery = normalizeLiterarySearch(deferredQuery);
-    return indexedItems
-      .filter(({ item, searchValues }) => {
-        const { book } = item;
-        if (filter === "verified" && item.status !== "verified") return false;
-        if (filter === "pending" && item.status !== "pending") return false;
-        if (
-          filter === "classic" &&
-          (item.status !== "verified" ||
-            !book.firstPublished ||
-            book.firstPublished > 1945)
-        ) {
-          return false;
-        }
-        if (
-          filter === "modern" &&
-          (item.status !== "verified" ||
-            !book.firstPublished ||
-            book.firstPublished <= 1945)
-        ) {
-          return false;
-        }
-        if (!normalizedQuery) return true;
-        return literarySearchMatches(normalizedQuery, searchValues);
-      })
-      .sort((first, second) => {
-        const rankDifference =
-          editorialRank(first.item) - editorialRank(second.item);
-        if (rankDifference) return rankDifference;
-        if (
-          hasArchiveCover(first.item.book) !== hasArchiveCover(second.item.book)
-        ) {
-          return hasArchiveCover(first.item.book) ? -1 : 1;
-        }
-        return first.displayedBook.title.localeCompare(
-          second.displayedBook.title,
-          language
-        );
-      })
-      .map(({ item }) => item);
-  }, [deferredQuery, filter, indexedItems, language]);
+    if (
+      searchScope !== "global" ||
+      globalSearchResponse.normalizedQuery.length <
+        BOOKS_GLOBAL_SEARCH_PROFILE.minQueryLength
+    ) {
+      return facetResult.items;
+    }
+    const acceptedBookKeys = new Set(
+      facetResult.items.map((item) => item.key)
+    );
+    return globalSearchResponse.allMatches.flatMap((result) => {
+      if (
+        result.kind !== "book" ||
+        !acceptedBookKeys.has(result.focusAction.bookKey)
+      ) {
+        return [];
+      }
+      const item = queueByKey.get(result.focusAction.bookKey);
+      return item ? [item] : [];
+    });
+  }, [facetResult.items, globalSearchResponse, queueByKey, searchScope]);
 
   useEffect(() => {
     setVisibleCount(12);
-  }, [deferredQuery, filter]);
+  }, [deferredQuery, filterState]);
+
+  useEffect(() => {
+    if (searchScope !== "global") return;
+    const firstBook =
+      globalSearchResponse.suggestions.find(
+        (result): result is Extract<GlobalSearchResult, { kind: "book" }> =>
+          result.kind === "book"
+      ) ||
+      globalSearchResponse.allMatches.find(
+        (result): result is Extract<GlobalSearchResult, { kind: "book" }> =>
+          result.kind === "book"
+      );
+    if (firstBook) setFocusedBookKey(firstBook.focusAction.bookKey);
+  }, [globalSearchResponse, searchScope]);
+
+  useEffect(() => {
+    if (
+      searchScope === "library" &&
+      normalizeLiterarySearch(deferredQuery).length > 0
+    ) {
+      setFocusedBookKey(facetResult.bestMatchKey);
+      return;
+    }
+    setFocusedBookKey((current) =>
+      current && filteredItems.some((item) => item.key === current)
+        ? current
+        : filteredItems[0]?.key || null
+    );
+  }, [deferredQuery, facetResult.bestMatchKey, filteredItems, searchScope]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!advancedFiltersOpen) return;
+    const drawer = filterDrawerRef.current;
+    const focusable = () =>
+      drawer
+        ? [...drawer.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), input:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+          )].filter((element) => !element.hidden)
+        : [];
+    focusable()[0]?.focus({ preventScroll: true });
+
+    const handleDialogKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeAdvancedFilters();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const controls = focusable();
+      if (!controls.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleDialogKeyDown);
+    return () =>
+      document.removeEventListener("keydown", handleDialogKeyDown);
+  }, [advancedFiltersOpen, closeAdvancedFilters]);
 
   useEffect(() => {
     const openFromLocation = () => {
@@ -443,9 +951,125 @@ export default function BookArchiveSection({
   }, [language, selectedBook]);
 
   const visibleItems = filteredItems.slice(0, visibleCount);
-  const queueByKey = useMemo(
-    () => new Map(queue.all.map((item) => [item.key, item])),
-    [queue]
+  const coreBookArchive = getCoreHomepageSection("book-archive");
+  const sceneSettings = useMemo(
+    () =>
+      resolveBookArchiveSceneSettings(coreBookArchive?.visualSettings),
+    [coreBookArchive?.visualSettings]
+  );
+  const sceneOwnerOverride = useMemo(
+    () =>
+      bookSceneOwnerOverrideFromSettings(coreBookArchive?.visualSettings) ||
+      (sceneSettings.bookSceneDynamicThemes
+        ? null
+        : ({ archetype: "VIOLET LIBRARY" } as const)),
+    [coreBookArchive?.visualSettings, sceneSettings.bookSceneDynamicThemes]
+  );
+  const sceneItems = useMemo(
+    () =>
+      filteredItems.map((item) => {
+        const displayed = presentBookArchiveQueueItem(item, language);
+        const theme = resolveBookSceneTheme(item.book, {
+          audienceIds: facetIndex.byKey.get(item.key)?.audienceIds,
+          ownerOverride: sceneOwnerOverride,
+        });
+        return {
+          key: item.key,
+          title: displayed.title,
+          writer: selectBookWriterName(
+            item.book,
+            language,
+            t("\u0410\u0432\u0442\u043e\u0440")
+          ),
+          coverUrl: isCoverArtworkDisplayAllowed(item.book)
+            ? resolveCoverUrl(item.book.coverThumbnailUrl || item.book.coverUrl)
+            : undefined,
+          baseColor: theme.baseColor,
+          accentColor: theme.accentColor,
+          paperColor: theme.paperColor,
+        };
+      }),
+    [facetIndex, filteredItems, language, sceneOwnerOverride, t]
+  );
+  const focusedSceneTheme = useMemo(() => {
+    const focusedItem =
+      (focusedBookKey && queueByKey.get(focusedBookKey)) ||
+      filteredItems[0] ||
+      null;
+    return focusedItem
+      ? resolveBookSceneTheme(focusedItem.book, {
+          audienceIds: facetIndex.byKey.get(focusedItem.key)?.audienceIds,
+          ownerOverride: sceneOwnerOverride,
+        })
+      : bookSceneThemeForArchetype(
+          sceneOwnerOverride?.archetype || "VIOLET LIBRARY"
+        );
+  }, [
+    facetIndex,
+    filteredItems,
+    focusedBookKey,
+    queueByKey,
+    sceneOwnerOverride,
+  ]);
+  const sceneCssProperties = useMemo(
+    () => bookArchiveSceneCssProperties(sceneSettings),
+    [sceneSettings]
+  );
+  const frameThemeStyle = useMemo(
+    () =>
+      ({
+        ...bookSceneThemeCssProperties(focusedSceneTheme),
+        ...sceneCssProperties,
+      }) as CSSProperties,
+    [focusedSceneTheme, sceneCssProperties]
+  );
+  const sceneAppearance = useMemo<BookShelfSceneAppearance>(
+    () => ({
+      shelfColor: sceneCssProperties["--book-scene-material-color"],
+      ambientColor:
+        sceneCssProperties["--book-scene-ambient-tint"] === "currentColor"
+          ? focusedSceneTheme.secondaryColor
+          : sceneCssProperties["--book-scene-ambient-tint"],
+      lightColor: focusedSceneTheme.lightColor,
+      materialRoughness: Number(
+        sceneCssProperties["--book-scene-material-roughness"]
+      ),
+      intensity: sceneSettings.bookSceneIntensity / 100,
+    }),
+    [focusedSceneTheme, sceneCssProperties, sceneSettings.bookSceneIntensity]
+  );
+  const focusedIndex = focusedBookKey
+    ? filteredItems.findIndex((item) => item.key === focusedBookKey)
+    : -1;
+  const focusBookAt = useCallback(
+    (index: number) => {
+      if (!filteredItems.length) return;
+      const normalized =
+        (index + filteredItems.length) % filteredItems.length;
+      setFocusedBookKey(filteredItems[normalized]?.key || null);
+    },
+    [filteredItems]
+  );
+  const openFocusedBook = useCallback(() => {
+    if (!focusedBookKey) return;
+    const item = queueByKey.get(focusedBookKey);
+    if (item) openBookDetail(item.book);
+  }, [focusedBookKey, openBookDetail, queueByKey]);
+  const handleShelfFailure = useCallback(
+    (reason: BookShelfSceneFailure) => {
+      const requestId = shelfState.requestId + 1;
+      setShelfFailure(reason);
+      shelfDispatch({
+        type: "fail",
+        requestId,
+        code:
+          reason === "unsupported"
+            ? "webgl-unavailable"
+            : "transition-failed",
+      });
+      shelfDispatch({ type: "set-view-mode", viewMode: "catalog" });
+    },
+    [shelfState.requestId]
   );
   const selectedItem = selectedBook
     ? queueByKey.get(bookKey(selectedBook)) || null
@@ -484,16 +1108,351 @@ export default function BookArchiveSection({
       href: "#books",
     });
 
+  const activateGlobalSearchAction = useCallback(
+    (action: GlobalSearchActivateAction) => {
+      switch (action.type) {
+        case "open-book": {
+          const item = queueByKey.get(action.bookKey);
+          if (!item) return;
+          setFocusedBookKey(action.bookKey);
+          openBookDetail(item.book);
+          return;
+        }
+        case "select-writer":
+          updateFilterState({
+            query: "",
+            authorKey: action.authorKey,
+          });
+          setActiveCollectionId("author:" + action.authorKey);
+          setSearchScope("library");
+          return;
+        case "select-country":
+          updateFilterState({
+            query: "",
+            countryIds: [action.countryId],
+          });
+          setActiveCollectionId("country:" + action.countryId);
+          setSearchScope("library");
+          return;
+        case "apply-facet": {
+          if (action.facet === "genre") {
+            updateFilterState({
+              query: "",
+              genreIds: action.ids as readonly BookArchiveGenreId[],
+            });
+          } else if (action.facet === "audience") {
+            updateFilterState({
+              query: "",
+              audienceIds: action.ids as readonly WorkAudienceCategory[],
+            });
+          } else {
+            updateFilterState({
+              query: "",
+              periods: action.ids as readonly BookArchivePeriod[],
+            });
+          }
+          setSearchScope("library");
+          return;
+        }
+        case "switch-collection": {
+          const smartShelf = smartShelves.find(
+            (shelf) => shelf.id === action.collectionId
+          );
+          const smartState = smartShelf ? applyBookSmartShelf(smartShelf) : null;
+          if (smartShelf && smartState) {
+            setQuery(smartState.query);
+            setFilterState(
+              normalizeBookArchiveFilterState({
+                ...smartState,
+                query: "",
+              })
+            );
+            setActiveCollectionId(smartShelf.id);
+            setSearchScope("library");
+            return;
+          }
+          const preset = action.collectionId as Exclude<
+            BookArchiveQuickPreset,
+            "custom"
+          >;
+          if (archiveFilters.some((option) => option.id === preset)) {
+            setQuery("");
+            applyQuickFilter(preset);
+            setSearchScope("library");
+          }
+          return;
+        }
+        case "navigate-article":
+          window.location.assign(
+            articlePath(
+              action.article.id,
+              action.article.title,
+              action.article.sectionId,
+              action.article.slug
+            )
+          );
+      }
+    },
+    [
+      applyQuickFilter,
+      openBookDetail,
+      queueByKey,
+      setQuery,
+      smartShelves,
+      updateFilterState,
+    ]
+  );
+
+  const saveCurrentAsSmartShelf = useCallback(() => {
+    if (searchScope !== "library") return;
+    setSmartShelfStatus("");
+    const result = saveBookSmartShelf({
+      id: "smart-" + Date.now().toString(36),
+      label: t("Моя умная полка") + " " + number(smartShelves.length + 1),
+      filterState: {
+        ...filterState,
+        query,
+      },
+    });
+    if (!result.shelf || !result.persisted) {
+      setSmartShelfStatus(t("Не удалось сохранить умную полку"));
+      return;
+    }
+    setSmartShelves(result.shelves);
+    setActiveCollectionId(result.shelf.id);
+    setSmartShelfStatus(t("Умная полка сохранена"));
+  }, [filterState, number, query, searchScope, smartShelves.length, t]);
+
+  const activeSmartShelf = smartShelves.find(
+    (shelf) => shelf.id === activeCollectionId
+  );
+  const activeAuthorKey = activeCollectionId.startsWith("author:")
+    ? activeCollectionId.slice("author:".length)
+    : "";
+  const activeCountryId = activeCollectionId.startsWith("country:")
+    ? activeCollectionId.slice("country:".length)
+    : "";
+  const activeCollectionLabel =
+    activeSmartShelf?.label ||
+    (activeAuthorKey
+      ? authorOptions.find((option) => option.key === activeAuthorKey)?.label
+      : "") ||
+    (activeCountryId
+      ? countryOptions.find(([id]) => id === activeCountryId)?.[1]
+      : "") ||
+    (activeCollectionId === "custom"
+      ? t("Свой точный отбор")
+      : t(
+          archiveFilters.find((option) => option.id === activeCollectionId)
+            ?.label || "Весь книжный архив"
+        ));
+  const activeFilterChips: Array<{
+    key: string;
+    label: string;
+    onRemove: () => void;
+  }> = [];
+  const pushChip = (key: string, label: string, onRemove: () => void) => {
+    activeFilterChips.push({ key, label, onRemove });
+  };
+  if (query.trim()) {
+    pushChip("query", t("Поиск") + ": " + query.trim(), () => setQuery(""));
+  }
+  if (selectedAuthorOption) {
+    pushChip(
+      "author:" + selectedAuthorOption.key,
+      t("Автор") + ": " + selectedAuthorOption.label,
+      () => updateFilterState({ authorKey: null })
+    );
+  }
+  for (const id of filterState.countryIds) {
+    const label = countryOptions.find(([countryId]) => countryId === id)?.[1] || id;
+    pushChip("country:" + id, t("Страна") + ": " + label, () =>
+      updateFilterState({
+        countryIds: filterState.countryIds.filter((value) => value !== id),
+      })
+    );
+  }
+  for (const id of filterState.genreIds) {
+    const definition = BOOK_ARCHIVE_GENRES.find((genre) => genre.id === id);
+    pushChip("genre:" + id, t("Жанр") + ": " + t(definition?.aliases[0] || id), () =>
+      updateFilterState({
+        genreIds: filterState.genreIds.filter((value) => value !== id),
+      })
+    );
+  }
+  for (const id of filterState.audienceIds) {
+    pushChip("audience:" + id, t("Аудитория") + ": " + t(audienceLabels[id]), () =>
+      updateFilterState({
+        audienceIds: filterState.audienceIds.filter((value) => value !== id),
+      })
+    );
+  }
+  for (const id of filterState.periods) {
+    pushChip("period:" + id, t("Период") + ": " + t(periodLabels[id]), () =>
+      updateFilterState({
+        periods: filterState.periods.filter((value) => value !== id),
+      })
+    );
+  }
+  for (const id of filterState.originalLanguageIds) {
+    const definition = BOOK_ARCHIVE_LANGUAGES.find((language) => language.id === id);
+    const label =
+      definition?.aliases.find((alias) => /[а-яё]/iu.test(alias)) ||
+      id.toUpperCase();
+    pushChip("language:" + id, t("Язык") + ": " + t(label), () =>
+      updateFilterState({
+        originalLanguageIds: filterState.originalLanguageIds.filter(
+          (value) => value !== id
+        ),
+      })
+    );
+  }
+  for (const status of filterState.editorialStatuses) {
+    const label =
+      status === "verified" ? t("Проверено редакцией") : t("Не проверено");
+    pushChip("status:" + status, label, () =>
+      updateFilterState({
+        editorialStatuses: filterState.editorialStatuses.filter(
+          (value) => value !== status
+        ),
+      })
+    );
+  }
+  for (const mode of filterState.coverModes) {
+    pushChip("cover:" + mode, t(coverLabels[mode]), () =>
+      updateFilterState({
+        coverModes: filterState.coverModes.filter((value) => value !== mode),
+      })
+    );
+  }
+  for (const relation of filterState.articleRelations) {
+    pushChip("relation:" + relation, t(relationLabels[relation]), () =>
+      updateFilterState({
+        articleRelations: filterState.articleRelations.filter(
+          (value) => value !== relation
+        ),
+      })
+    );
+  }
+  if (filterState.savedOnly) {
+    pushChip("saved", t("Только книги из личной полки"), () =>
+      updateFilterState({ savedOnly: false })
+    );
+  }
+  if (filterState.sort !== "editorial-relevance") {
+    pushChip("sort", t(sortLabels[filterState.sort]), () =>
+      updateFilterState({ sort: "editorial-relevance" })
+    );
+  }
+  const searchSuggestionGroups = (
+    Object.keys(searchGroupLabels) as GlobalSearchResult["group"][]
+  ).flatMap((group) => {
+    const results = activeSearchResponse.suggestions.filter(
+      (result) => result.group === group
+    );
+    return results.length
+      ? [{ group, label: searchGroupLabels[group], results }]
+      : [];
+  });
+  const searchSuggestions =
+    activeSearchResponse.normalizedQuery.length >=
+    activeSearchProfile.minQueryLength ? (
+      <div className="book-shelf-search-results">
+        <div className="book-shelf-search-results__summary">
+          <strong>
+            {searchScope === "global"
+              ? t("Подсказки единого каталога")
+              : t("Подсказки библиотеки")}
+          </strong>
+          <span>
+            {number(activeSearchResponse.totalMatches)} {t("совпадений")}
+          </span>
+        </div>
+        <div className="book-shelf-search-results__groups">
+          {searchSuggestionGroups.map((suggestionGroup) => (
+            <section key={suggestionGroup.group}>
+              <h4>{t(suggestionGroup.label)}</h4>
+              <ul
+                aria-label={
+                  searchScope === "global"
+                    ? t("Результаты поиска по всему журналу")
+                    : t("Результаты поиска по библиотеке")
+                }
+              >
+                {suggestionGroup.results.map((result) => (
+                  <li key={result.key}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        activateGlobalSearchAction(result.activateAction)
+                      }
+                    >
+                      <span>{result.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    ) : null;
+
   return (
-    <section className="book-archive-section" id="books">
+    <section
+      className={`book-archive-section${coreHomepageSectionClass(
+        coreBookArchive
+      )}`}
+      id="books"
+      style={coreHomepageSectionStyle(coreBookArchive)}
+      {...cmsCoreFieldMarker(
+        "book-archive",
+        "backgroundMediaId",
+        coreBookArchive?.backgroundImageUrl || "",
+        { kind: "image", label: "Фон книжного архива" }
+      )}
+    >
       <header className="book-archive-heading">
         <div>
-          <span className="section-kicker">{t("Книги, авторы, страны")}</span>
-          <h2>{t("Книжный архив")}</h2>
-          <p>
-            {t(
-              "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
+          <span
+            className="section-kicker"
+            {...cmsCoreFieldMarker(
+              "book-archive",
+              "eyebrow",
+              coreBookArchive?.eyebrow || "Книги, авторы, страны",
+              { label: "Надзаголовок книжного архива" }
             )}
+          >
+            {language === "ru" && coreBookArchive?.eyebrow
+              ? coreBookArchive.eyebrow
+              : t("Книги, авторы, страны")}
+          </span>
+          <h2
+            {...cmsCoreFieldMarker(
+              "book-archive",
+              "title",
+              coreBookArchive?.title || "Книжный архив",
+              { label: "Заголовок книжного архива" }
+            )}
+          >
+            {language === "ru" && coreBookArchive?.title
+              ? coreBookArchive.title
+              : t("Книжный архив")}
+          </h2>
+          <p
+            {...cmsCoreFieldMarker(
+              "book-archive",
+              "description",
+              coreBookArchive?.description ||
+                "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.",
+              { kind: "textarea", label: "Описание книжного архива" }
+            )}
+          >
+            {language === "ru" && coreBookArchive?.description
+              ? coreBookArchive.description
+              : t(
+                  "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
+                )}
           </p>
         </div>
         <div className="book-archive-total">
@@ -502,48 +1461,108 @@ export default function BookArchiveSection({
         </div>
       </header>
 
-      <div className="book-archive-toolbar">
-        <label>
-          <span>{t("Поиск по книге, автору или стране")}</span>
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t("Например, Достоевский или Япония")}
+      <BookShelfFrame
+        viewMode={viewMode}
+        themeStyle={frameThemeStyle}
+        liveMessage={
+          shelfFailure
+            ? t("Трёхмерная полка недоступна. Открыт безопасный каталог.")
+            : focusedIndex >= 0
+              ? `${number(focusedIndex + 1)} ${t("из")} ${number(filteredItems.length)}`
+              : t("В архиве нет книг по выбранным условиям")
+        }
+      >
+        <div className="book-shelf-frame__search-rail">
+          <BookShelfControls
+            query={query}
+            onQueryChange={setQuery}
+            searchLabel={t("Поиск по книге, автору или стране")}
+            searchPlaceholder={t("Например, Достоевский или Япония")}
+            searchScope={searchScope}
+            onSearchScopeChange={setSearchScope}
+            libraryScopeLabel={t("В библиотеке")}
+            globalScopeLabel={t("Во всём журнале")}
+            viewMode={viewMode}
+            onViewModeChange={(mode) => {
+              if (mode === "shelf") setShelfFailure(null);
+              setViewMode(mode);
+            }}
+            shelfLabel={t("ПОЛКА")}
+            catalogLabel={t("КАТАЛОГ")}
+            filters={quickFilterOptions}
+            activeFilterId={filterState.quickPreset}
+            onFilterChange={(id) =>
+              applyQuickFilter(id as BookArchiveQuickPreset)
+            }
+            resultCountLabel={`${number(filteredItems.length)} ${t("результатов")}`}
+            formatCount={number}
+            onOpenAdvancedFilters={openAdvancedFilters}
+            advancedFiltersLabel={t("Расширенные фильтры")}
+            suggestions={searchSuggestions}
           />
-        </label>
-        <div className="book-filter-panel">
-          <div className="book-filter-heading">
-            <span>{t("Отбор архива")}</span>
-            <small aria-live="polite">
-              {number(filteredItems.length)} {t("результатов")}
-            </small>
-          </div>
-          <div
-            className="book-archive-filters"
-            role="group"
-            aria-label={t("Фильтры книжного архива")}
-          >
-            {archiveFilters.map((item) => (
-              <button
-                className={filter === item.id ? "is-active" : ""}
-                type="button"
-                key={item.id}
-                onClick={() => setFilter(item.id)}
-                aria-pressed={filter === item.id}
-              >
-                <span className="book-filter-copy">
-                  <strong>{t(item.label)}</strong>
-                  <small>{t(item.description)}</small>
-                </span>
-                <span className="book-filter-count">{number(counts[item.id])}</span>
-              </button>
-            ))}
-          </div>
         </div>
-      </div>
+
+        <div
+          className="book-shelf-frame__active-rail"
+          aria-label={t("Активные фильтры")}
+        >
+          {activeFilterChips.map((chip) => (
+            <button
+              key={chip.key}
+              className="book-shelf-frame__filter-chip"
+              type="button"
+              onClick={chip.onRemove}
+              aria-label={t("Удалить фильтр") + ": " + chip.label}
+            >
+              <span>{chip.label}</span>
+              <span aria-hidden="true">×</span>
+            </button>
+          ))}
+          {activeFilterChips.length > 0 ? (
+            <>
+              <button
+                className="book-shelf-frame__filter-action"
+                type="button"
+                onClick={resetArchiveFilters}
+              >
+                {t("Сбросить")}
+              </button>
+              {searchScope === "library" ? (
+                <button
+                  className="book-shelf-frame__filter-action is-primary"
+                  type="button"
+                  onClick={saveCurrentAsSmartShelf}
+                >
+                  {t("Сохранить как умную полку")}
+                </button>
+              ) : null}
+            </>
+          ) : null}
+          {smartShelfStatus ? (
+            <span
+              className="book-shelf-frame__filter-status"
+              role="status"
+              aria-live="polite"
+            >
+              {smartShelfStatus}
+            </span>
+          ) : null}
+        </div>
+
+        <div className="book-shelf-frame__collection">
+          <div>
+            <small>{t("Текущая полка")}</small>
+            <strong>{activeCollectionLabel}</strong>
+          </div>
+          <span>
+            {number(filteredItems.length)} {t("произведений")}
+          </span>
+        </div>
+
+        <div className="book-shelf-frame__workspace">
 
       {selectedBook && (
+        <aside className="book-shelf-frame__detail">
         <article
           ref={detailRef}
           id="book-archive-detail"
@@ -841,8 +1860,45 @@ export default function BookArchiveSection({
             subjectType="book"
           />
         </article>
+        </aside>
       )}
 
+          <div className="book-shelf-frame__primary">
+            <div
+              className="book-shelf-frame__scene"
+              hidden={viewMode !== "shelf"}
+            >
+              <div
+                className="book-shelf-frame__cms-background"
+                aria-hidden="true"
+              />
+              {viewMode === "shelf" && (
+                <BookShelfScene
+                  key={shelfState.requestId}
+                  items={sceneItems}
+                  appearance={sceneAppearance}
+                  focusedBookKey={focusedBookKey}
+                  selectedBookKey={selectedBook ? bookKey(selectedBook) : null}
+                  active
+                  economical={reducedMotion || sceneItems.length > 2500}
+                  reducedMotion={reducedMotion}
+                  loadAttempt={shelfState.requestId === 0 ? "primary" : "retry"}
+                  onFocusBook={setFocusedBookKey}
+                  onOpenBook={(key) => {
+                    const item = queueByKey.get(key);
+                    if (item) openBookDetail(item.book);
+                  }}
+                  onFailure={handleShelfFailure}
+                  sceneLabel={t("Книжный архив")}
+                  loadingLabel={t("Собираем виртуальную полку…")}
+                  emptyLabel={t("На этой полке пока нет книг")}
+                />
+              )}
+            </div>
+            <div
+              className="book-shelf-frame__catalog"
+              hidden={viewMode !== "catalog"}
+            >
       <div className="book-archive-grid">
         {visibleItems.map((item) => {
           const { book } = item;
@@ -979,10 +2035,7 @@ export default function BookArchiveSection({
           <p>{t("Попробуйте другое название, автора, страну или фильтр.")}</p>
           <button
             type="button"
-            onClick={() => {
-              setQuery("");
-              setFilter("all");
-            }}
+            onClick={resetArchiveFilters}
           >
             {t("Весь архив")}
           </button>
@@ -1003,6 +2056,413 @@ export default function BookArchiveSection({
           </span>
         </button>
       )}
+            </div>
+          </div>
+        </div>
+
+        <div className="book-shelf-frame__navigation">
+          <button
+            type="button"
+            className="book-shelf-navigation__previous"
+            onClick={() => focusBookAt(focusedIndex <= 0 ? filteredItems.length - 1 : focusedIndex - 1)}
+            disabled={!filteredItems.length}
+            aria-label={t("Предыдущая книга")}
+          >
+            <BrandArrowIcon />
+            <span>{t("Назад")}</span>
+          </button>
+          <div className="book-shelf-navigation__focus">
+            <small>
+              {focusedIndex >= 0
+                ? `${number(focusedIndex + 1)} ${t("из")} ${number(filteredItems.length)}`
+                : t("Полка пуста")}
+            </small>
+            <strong>
+              {focusedIndex >= 0 ? sceneItems[focusedIndex]?.title : t("Книжный архив")}
+            </strong>
+            <button
+              type="button"
+              onClick={openFocusedBook}
+              disabled={focusedIndex < 0}
+            >
+              {t("Открыть книгу")}
+            </button>
+          </div>
+          <button
+            type="button"
+            className="book-shelf-navigation__next"
+            onClick={() => focusBookAt(focusedIndex + 1)}
+            disabled={!filteredItems.length}
+            aria-label={t("Следующая книга")}
+          >
+            <span>{t("Далее")}</span>
+            <BrandArrowIcon />
+          </button>
+        </div>
+
+        {advancedFiltersOpen && typeof document !== "undefined"
+          ? createPortal(
+              <div
+                className="book-shelf-frame__filter-backdrop is-open"
+          aria-hidden={!advancedFiltersOpen}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeAdvancedFilters();
+          }}
+        >
+          <aside
+            ref={filterDrawerRef}
+            className="book-shelf-frame__filter-drawer"
+            role="dialog"
+            aria-modal={advancedFiltersOpen ? "true" : undefined}
+            aria-label={t("Расширенные фильтры книжного архива")}
+            hidden={!advancedFiltersOpen}
+          >
+            <header className="book-shelf-filter-drawer__header">
+              <div>
+                <span>{t("Точный отбор")}</span>
+                <h3>{t("Расширенные фильтры")}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={closeAdvancedFilters}
+                aria-label={t("Закрыть фильтры")}
+              >
+                <BrandCloseIcon />
+              </button>
+            </header>
+            <p>
+              {t("Фильтры применяются по правилу И между категориями и ИЛИ внутри категории. Непроверенные метаданные не угадываются.")}
+            </p>
+            {advancedFiltersOpen && (
+              <div className="book-shelf-filter-drawer__form">
+                <label className="book-shelf-filter-drawer__select">
+                  <span>{t("Автор")}</span>
+                  <select
+                    value={filterState.authorKey || ""}
+                    onChange={(event) =>
+                      updateFilterState({
+                        authorKey: event.target.value || null,
+                      })
+                    }
+                  >
+                    <option value="">{t("Все авторы")}</option>
+                    {authorOptions.map((option) => (
+                      <option key={option.key} value={option.key}>
+                        {option.label} — {option.countryLabel} (
+                        {number(option.count)})
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                {selectedAuthorOption && (
+                  <div className="book-shelf-filter-drawer__author-context">
+                    {selectedAuthorOption.writer && (
+                      <WriterPortrait
+                        writer={selectedAuthorOption.writer}
+                        decorative
+                        className="book-shelf-filter-drawer__author-portrait"
+                      />
+                    )}
+                    <span>
+                      <strong>{selectedAuthorOption.label}</strong>
+                      <small>
+                        {selectedAuthorOption.countryLabel} ·{" "}
+                        {number(selectedAuthorOption.count)} {t("произведений")}
+                      </small>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveCollectionId(
+                          "author:" + selectedAuthorOption.key
+                        );
+                        closeAdvancedFilters();
+                      }}
+                    >
+                      {t("Открыть полку автора")}
+                    </button>
+                  </div>
+                )}
+
+                <label className="book-shelf-filter-drawer__select">
+                  <span>{t("Сортировка")}</span>
+                  <select
+                    value={filterState.sort}
+                    onChange={(event) =>
+                      updateFilterState({
+                        sort: event.target.value as BookArchiveSort,
+                      })
+                    }
+                  >
+                    {BOOK_ARCHIVE_SORTS.map((sort) => (
+                      <option key={sort} value={sort}>
+                        {t(sortLabels[sort])}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <fieldset>
+                  <legend>{t("Страны")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {countryOptions.map(([id, label]) => (
+                      <label key={id}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.countryIds.includes(id)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              countryIds: toggleFacetValue(
+                                filterState.countryIds,
+                                id,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>{t("Жанры")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_GENRES.filter((genre) =>
+                      facetIndex.indexes.genre.has(genre.id)
+                    ).map((genre) => (
+                      <label key={genre.id}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.genreIds.includes(genre.id)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              genreIds: toggleFacetValue(
+                                filterState.genreIds,
+                                genre.id,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{t(genre.aliases[0])}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset
+                  disabled={
+                    facetIndex.diagnostics.audienceFacetStatus === "unavailable"
+                  }
+                >
+                  <legend>{t("Аудитория")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_AUDIENCES.map((audience) => (
+                      <label key={audience}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.audienceIds.includes(audience)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              audienceIds: toggleFacetValue(
+                                filterState.audienceIds,
+                                audience,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{t(audienceLabels[audience])}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>{t("Период")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_PERIODS.map((period) => (
+                      <label key={period}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.periods.includes(period)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              periods: toggleFacetValue(
+                                filterState.periods,
+                                period,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{t(periodLabels[period])}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>{t("Язык оригинала")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_LANGUAGES.filter((definition) =>
+                      facetIndex.indexes.language.has(definition.id)
+                    ).map((definition) => (
+                      <label key={definition.id}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.originalLanguageIds.includes(
+                            definition.id
+                          )}
+                          onChange={(event) =>
+                            updateFilterState({
+                              originalLanguageIds: toggleFacetValue(
+                                filterState.originalLanguageIds,
+                                definition.id,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>
+                          {t(
+                            definition.aliases.find((alias) =>
+                              /[а-яё]/iu.test(alias)
+                            ) || definition.id.toUpperCase()
+                          )}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>{t("Редакционный статус")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {(["verified", "pending"] as const).map((status) => (
+                      <label key={status}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.editorialStatuses.includes(status)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              editorialStatuses: toggleFacetValue(
+                                filterState.editorialStatuses,
+                                status,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>
+                          {status === "verified"
+                            ? t("Проверено редакцией")
+                            : t("Не проверено")}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>{t("Тип обложки")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_COVER_MODES.map((mode) => (
+                      <label key={mode}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.coverModes.includes(mode)}
+                          onChange={(event) =>
+                            updateFilterState({
+                              coverModes: toggleFacetValue(
+                                filterState.coverModes,
+                                mode,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{t(coverLabels[mode])}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset
+                  disabled={
+                    facetIndex.diagnostics.relationFacetStatus === "unavailable"
+                  }
+                >
+                  <legend>{t("Связь со статьями")}</legend>
+                  <div className="book-shelf-filter-drawer__options">
+                    {BOOK_ARCHIVE_ARTICLE_RELATIONS.map((relation) => (
+                      <label key={relation}>
+                        <input
+                          type="checkbox"
+                          checked={filterState.articleRelations.includes(
+                            relation
+                          )}
+                          onChange={(event) =>
+                            updateFilterState({
+                              articleRelations: toggleFacetValue(
+                                filterState.articleRelations,
+                                relation,
+                                event.target.checked
+                              ),
+                            })
+                          }
+                        />
+                        <span>{t(relationLabels[relation])}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <label className="book-shelf-filter-drawer__saved">
+                  <input
+                    type="checkbox"
+                    checked={filterState.savedOnly}
+                    onChange={(event) =>
+                      updateFilterState({ savedOnly: event.target.checked })
+                    }
+                  />
+                  <span>{t("Только книги из личной полки")}</span>
+                </label>
+              </div>
+            )}
+            <dl className="book-shelf-filter-drawer__coverage">
+              <div>
+                <dt>{t("Аудитория")}</dt>
+                <dd>
+                  {facetIndex.diagnostics.audienceFacetStatus === "available"
+                    ? t("Используются только проверенные профили аудитории")
+                    : t("Недоступно: проверенные профили аудитории отсутствуют")}
+                </dd>
+              </div>
+              <div>
+                <dt>{t("Связь со статьями")}</dt>
+                <dd>
+                  {facetIndex.diagnostics.relationFacetStatus === "available"
+                    ? t("Используется редакционный индекс связей")
+                    : t("Индекс связей пока недоступен")}
+                </dd>
+              </div>
+            </dl>
+            <button
+              className="book-shelf-filter-drawer__reset"
+              type="button"
+              onClick={resetArchiveFilters}
+            >
+              {t("Сбросить фильтры")}
+            </button>
+                </aside>
+              </div>,
+              document.body
+            )
+          : null}
+      </BookShelfFrame>
     </section>
   );
 }

@@ -607,6 +607,22 @@ function updatePreviewMarker(message: CmsPreviewUpdateMessage) {
     if (updateHomepageBlockPreview(marker, message)) return;
     if (updateLinkTargetPreview(marker, message)) return;
     if (message.kind === "image") {
+      if (
+        marker.dataset.cmsEntity === "homepage-core" &&
+        marker.dataset.cmsField === "backgroundMediaId"
+      ) {
+        if (message.value) {
+          marker.style.setProperty(
+            "--cms-core-background",
+            `url(${JSON.stringify(message.value)})`
+          );
+          marker.classList.add("has-cms-background");
+        } else {
+          marker.style.removeProperty("--cms-core-background");
+          marker.classList.remove("has-cms-background");
+        }
+        return;
+      }
       if (updateBannerMediaPreview(marker, message)) return;
       let image = marker.matches("img")
         ? (marker as HTMLImageElement)

@@ -10,6 +10,7 @@ import {
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
   ownerCssClasses,
+  stage5D1AdditiveI18nAttestation,
 } from "../stage5-baseline-registry.mjs";
 
 const root = path.resolve(process.cwd());
@@ -84,6 +85,150 @@ function fingerprint(paths, include) {
     aggregate.update(`${relativePath}\0${contentHash}\n`);
   }
   return { files: files.length, sha256: aggregate.digest("hex") };
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function codeUnitCompare(first, second) {
+  return first < second ? -1 : first > second ? 1 : 0;
+}
+
+function jsonSha256(value) {
+  return sha256(JSON.stringify(value));
+}
+
+function canonicalJsonSha256(value) {
+  return jsonSha256(canonicalJson(value));
+}
+
+function sortedTranslationPairs(entries) {
+  return [...entries].sort(([first], [second]) =>
+    codeUnitCompare(first, second)
+  );
+}
+
+function syntaxVisit(node, visitor) {
+  visitor(node);
+  ts.forEachChild(node, (child) => syntaxVisit(child, visitor));
+}
+
+function staticPropertyName(property, sourceFile) {
+  const name = property.name;
+  if (
+    ts.isIdentifier(name) ||
+    ts.isStringLiteralLike(name) ||
+    ts.isNumericLiteral(name)
+  ) {
+    return name.text;
+  }
+  throw new Error(
+    `Non-static englishInterfaceText key: ${name.getText(sourceFile)}`
+  );
+}
+
+function readEnglishInterfaceText() {
+  const absolutePath = path.join(root, "src/i18n/InterfaceLanguage.tsx");
+  const text = readFileSync(absolutePath, "utf8")
+    .replace(/^\uFEFF/u, "")
+    .replace(/\r\n?/gu, "\n");
+  const sourceFile = ts.createSourceFile(
+    "src/i18n/InterfaceLanguage.tsx",
+    text,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX
+  );
+  const matches = [];
+  syntaxVisit(sourceFile, (node) => {
+    if (
+      ts.isVariableDeclaration(node) &&
+      ts.isIdentifier(node.name) &&
+      node.name.text === stage5D1AdditiveI18nAttestation.interfaceLanguage.declaration
+    ) {
+      matches.push(node);
+    }
+  });
+  if (matches.length !== 1) {
+    throw new Error(
+      `Expected one englishInterfaceText declaration, found ${matches.length}`
+    );
+  }
+  const declaration = matches[0];
+  if (!declaration.initializer || !ts.isObjectLiteralExpression(declaration.initializer)) {
+    throw new Error("englishInterfaceText must remain one static object literal");
+  }
+  const entries = new Map();
+  for (const property of declaration.initializer.properties) {
+    if (!ts.isPropertyAssignment(property)) {
+      throw new Error(
+        `Non-static englishInterfaceText member: ${property.getText(sourceFile)}`
+      );
+    }
+    const key = staticPropertyName(property, sourceFile);
+    if (entries.has(key)) {
+      throw new Error(`Duplicate englishInterfaceText key: ${key}`);
+    }
+    if (
+      !ts.isStringLiteral(property.initializer) &&
+      !ts.isNoSubstitutionTemplateLiteral(property.initializer)
+    ) {
+      throw new Error(`Dynamic englishInterfaceText value: ${key}`);
+    }
+    entries.set(key, property.initializer.text);
+  }
+
+  const projectedText =
+    text.slice(0, declaration.initializer.getStart(sourceFile)) +
+    "__ENGLISH_INTERFACE_TEXT_SENTINEL__" +
+    text.slice(declaration.initializer.getEnd());
+  const projectedSource = ts.createSourceFile(
+    "src/i18n/InterfaceLanguage.tsx",
+    projectedText,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX
+  );
+  const codeOutsideInitializerSha256 = sha256(
+    printer.printFile(projectedSource).replace(/\r\n?/gu, "\n")
+  );
+  return { entries, codeOutsideInitializerSha256 };
+}
+
+function readStage5D1I18nFixture() {
+  return JSON.parse(
+    readFileSync(
+      path.join(root, stage5D1AdditiveI18nAttestation.fixturePath),
+      "utf8"
+    )
+  );
+}
+
+function readInterfaceCopyCatalog() {
+  const catalog = JSON.parse(
+    readFileSync(
+      path.join(
+        root,
+        "apps/admin/catalog-assets/interface-copy-catalog.json"
+      ),
+      "utf8"
+    )
+  );
+  if (!Array.isArray(catalog)) {
+    throw new Error("interface-copy catalog must remain an array");
+  }
+  const byKey = new Map();
+  for (const entry of catalog) {
+    if (!entry || typeof entry !== "object" || typeof entry.key !== "string") {
+      throw new Error("interface-copy catalog contains an invalid entry");
+    }
+    if (byKey.has(entry.key)) {
+      throw new Error(`Duplicate interface-copy key: ${entry.key}`);
+    }
+    byKey.set(entry.key, entry);
+  }
+  return { catalog, byKey };
 }
 
 function exactClassTokenPattern(classToken) {
@@ -177,10 +322,133 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
   for (const scope of currentIntegrationGovernanceFingerprintRegistry.filter(
     (entry) => !entry.classTokens
   )) {
-    it(`keeps ${scope.id} semantically unchanged`, () => {
-      expect(fingerprint(scope.paths, () => true)).toEqual(scope.expected);
+    it(`keeps ${scope.id} immutable projection unchanged`, () => {
+      const enforced = scope.enforced || scope;
+      expect(fingerprint(enforced.paths, () => true)).toEqual(
+        enforced.expected
+      );
     });
   }
+
+  it("allows only the approved additive Stage 5D-1 interface-copy delta", () => {
+    const attestation = stage5D1AdditiveI18nAttestation;
+    expect(attestation.allowedPaths).toEqual([
+      "src/i18n/InterfaceLanguage.tsx",
+      "apps/admin/catalog-assets/interface-copy-catalog.json",
+    ]);
+
+    const fixture = readStage5D1I18nFixture();
+    expect(fixture).toMatchObject({
+      schemaVersion: 1,
+      id: attestation.id,
+      sourceIntegrationSha: attestation.sourceIntegrationSha,
+    });
+    expect(Object.keys(fixture).sort()).toEqual([
+      "entries",
+      "id",
+      "schemaVersion",
+      "sourceIntegrationSha",
+    ]);
+    expect(fixture.entries).toHaveLength(
+      attestation.interfaceLanguage.additions.entries
+    );
+    const approvedPairs = fixture.entries.map((entry) => {
+      expect(Object.keys(entry).sort()).toEqual(["english", "source"]);
+      expect(typeof entry.source).toBe("string");
+      expect(entry.source.trim()).toBe(entry.source);
+      expect(typeof entry.english).toBe("string");
+      expect(entry.english.trim()).toBe(entry.english);
+      return [entry.source, entry.english];
+    });
+    const sortedApprovedPairs = sortedTranslationPairs(approvedPairs);
+    expect(approvedPairs).toEqual(sortedApprovedPairs);
+    const approvedKeys = sortedApprovedPairs.map(([source]) => source);
+    expect(new Set(approvedKeys).size).toBe(approvedKeys.length);
+    expect(jsonSha256(approvedKeys)).toBe(
+      attestation.interfaceLanguage.additions.keysSha256
+    );
+    expect(jsonSha256(sortedApprovedPairs)).toBe(
+      attestation.interfaceLanguage.additions.pairsSha256
+    );
+
+    const interfaceState = readEnglishInterfaceText();
+    expect(interfaceState.codeOutsideInitializerSha256).toBe(
+      attestation.interfaceLanguage.codeOutsideInitializerSha256
+    );
+    expect(interfaceState.entries.size).toBe(
+      attestation.interfaceLanguage.currentEntries
+    );
+    const baselineEntries = new Map(interfaceState.entries);
+    for (const [source, english] of sortedApprovedPairs) {
+      expect(interfaceState.entries.get(source)).toBe(english);
+      baselineEntries.delete(source);
+    }
+    expect(baselineEntries.size).toBe(
+      attestation.interfaceLanguage.baselineEntries
+    );
+    expect(jsonSha256(sortedTranslationPairs(baselineEntries))).toBe(
+      attestation.interfaceLanguage.baselinePairsSha256
+    );
+
+    const { catalog, byKey } = readInterfaceCopyCatalog();
+    expect(catalog).toHaveLength(attestation.catalog.currentEntries);
+    const approvedCatalogEntries = sortedApprovedPairs.map(
+      ([source, english]) => {
+        const expected = {
+          key: `interface.${source}`,
+          group: "Весь интерфейс",
+          label: source,
+          defaultRu: source,
+          defaultEn: english,
+          multiline: source.length > 90 || english.length > 90,
+        };
+        expect(byKey.get(expected.key)).toEqual(expected);
+        return expected;
+      }
+    );
+    expect(jsonSha256(approvedCatalogEntries.map(({ key }) => key))).toBe(
+      attestation.catalog.additions.keysSha256
+    );
+    expect(canonicalJsonSha256(approvedCatalogEntries)).toBe(
+      attestation.catalog.additions.contentSha256
+    );
+    const approvedCatalogKeys = new Set(
+      approvedCatalogEntries.map(({ key }) => key)
+    );
+    const baselineCatalog = catalog.filter(
+      (entry) => !approvedCatalogKeys.has(entry.key)
+    );
+    expect(catalog.length - baselineCatalog.length).toBe(
+      attestation.catalog.additions.entries
+    );
+    expect(baselineCatalog).toHaveLength(attestation.catalog.baselineEntries);
+    expect(canonicalJsonSha256(baselineCatalog)).toBe(
+      attestation.catalog.baselineContentSha256
+    );
+  });
+
+  it("preserves historical Stage 4 and current premium raw evidence records", () => {
+    const stage4 = governanceFingerprintRegistry.find(
+      (entry) => entry.id === "STAGE4-PRODUCTION-SURFACE"
+    );
+    expect(stage4.paths).toHaveLength(20);
+    expect(stage4.expected).toEqual({
+      files: 20,
+      sha256: "bdf233f3996f069798908abc42e21f13e620a88c2fe293b3aa633004f7f23f60",
+    });
+
+    const premium = currentIntegrationGovernanceFingerprintRegistry.find(
+      (entry) => entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+    );
+    expect(premium.sourceMainSha).toBe(
+      "97f4a8d191989f454b5625caae0bafc6a22b47d6"
+    );
+    expect(premium.paths).toHaveLength(47);
+    expect(premium.expected).toEqual({
+      files: 47,
+      sha256: "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
+    });
+  });
 
   it("preserves the historical Stage 5A premium-pipeline evidence", () => {
     const scope = governanceFingerprintRegistry.find(
