@@ -144,7 +144,7 @@ export function selectWriterYears(
   const deathYear = (writer.deathDate || writer.death || "").match(
     /-?\d{3,4}/u
   )?.[0];
-  if (birthYear) return `${birthYear}–${deathYear || ""}`;
+  if (birthYear) return `${birthYear}-${deathYear || ""}`;
   return stored.match(/-?\d{3,4}/u)?.[0] || "";
 }
 

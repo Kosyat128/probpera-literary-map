@@ -13,7 +13,7 @@ export const maldives: Country = {
       name: "Мухаммад Джамиль Диди",
       fullName: "Muhammad Jameel Didi",
 
-      years: "1915–1989",
+      years: "1915-1989",
 
       birthDate: "1915-01-20",
       deathDate: "1989-11-19",
@@ -61,7 +61,7 @@ export const maldives: Country = {
       name: "Амин Джамиль",
       fullName: "Amin Jameel",
 
-      years: "1923–2008",
+      years: "1923-2008",
 
       birthDate: "1923-09-21",
       deathDate: "2008-11-12",
@@ -111,7 +111,7 @@ export const maldives: Country = {
       name: "Абдулла Содик",
       fullName: "Abdulla Sodiq",
 
-      years: "1946–",
+      years: "1946-",
 
       birthDate: "1946",
       deathDate: "",

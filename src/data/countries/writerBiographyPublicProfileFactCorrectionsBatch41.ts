@@ -213,7 +213,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch41 = [
     countryId: "netherlands",
     writerId: "alexandre_olivier_exquemelin",
     patch: {
-      years: "ок. 1645–1707",
+      years: "ок. 1645-1707",
       birthDate: "ок. 1645",
       works: ["De Americaensche Zee-Roovers"],
       genres: ["мемуарная проза", "путевая проза", "историческое свидетельство"],
@@ -261,7 +261,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch41 = [
     countryId: "netherlands",
     writerId: "erasmus_rotterdam",
     patch: {
-      years: "1466/1467/1469–1536",
+      years: "1466/1467/1469-1536",
       birthDate: "1466/1467/1469",
       works: ["Moriae encomium (Похвала глупости)"],
       genres: ["гуманистическая проза", "филология", "богословие"],
@@ -369,7 +369,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch41 = [
     countryId: "netherlands",
     writerId: "cees_nooteboom",
     patch: {
-      years: "1933–2026",
+      years: "1933-2026",
       deathDate: "2026-02-11",
       works: ["Rituelen", "Het volgende verhaal"],
       genres: ["роман", "поэзия", "эссе", "путевая проза"],

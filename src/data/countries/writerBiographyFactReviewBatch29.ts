@@ -113,7 +113,7 @@ const writerBiographyFactReviewBatch29Base = [
     decision: "corrected",
     evidence: [
       evidence("Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb313699180.public", "Каталог BnF фиксирует литературные роли Виктора Гюго и атрибутирует ему оба названных романа."),
-      evidence("Maisons de Victor Hugo — Paris Musées", "https://www.maisonsvictorhugo.paris.fr/en/paris/museum/find-out-more-about-victor-hugo/des-questions-sur-la-vie-de-victor-hugo", "Официальный музейный профиль независимо характеризует Гюго как поэта, романиста и драматурга и связывает с ним «Собор Парижской Богоматери» и «Отверженных»."),
+      evidence("Maisons de Victor Hugo - Paris Musées", "https://www.maisonsvictorhugo.paris.fr/en/paris/museum/find-out-more-about-victor-hugo/des-questions-sur-la-vie-de-victor-hugo", "Официальный музейный профиль независимо характеризует Гюго как поэта, романиста и драматурга и связывает с ним «Собор Парижской Богоматери» и «Отверженных»."),
     ],
   }),
   review({
@@ -143,7 +143,7 @@ const writerBiographyFactReviewBatch29Base = [
     reviewedTextRu: "Габонская писательница, автор романов «Elonga» и «Fureurs et cris de femmes».",
     decision: "corrected",
     evidence: [
-      evidence("University of Western Australia — African Literature", "https://aflit.arts.uwa.edu.au/AMINARawiri.html", "Университетский справочник подтверждает габонское происхождение Анжель Равири и её авторство романов «Elonga» и «Fureurs et cris de femmes»."),
+      evidence("University of Western Australia - African Literature", "https://aflit.arts.uwa.edu.au/AMINARawiri.html", "Университетский справочник подтверждает габонское происхождение Анжель Равири и её авторство романов «Elonga» и «Fureurs et cris de femmes»."),
       evidence("Bibliothèque nationale de France", "https://catalogue.bnf.fr/affiner.do?afficheRegroup=false&critereRecherche=&index=TOUS3&listeAffinages=FacNatDocIMP_aMON&motRecherche=&nbResultParPage=100&numNotice=34227375&triResultParPage=5&trouveDansFiltre=NoticePUB&typeNotice=C", "Каталог BnF независимо атрибутирует Равири оба названных романа и фиксирует её как автора текста."),
     ],
   }),
@@ -176,7 +176,7 @@ const writerBiographyFactReviewBatch29Base = [
     decision: "corrected",
     evidence: [
       evidence("Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb12478222c", "Авторитетная запись BnF подтверждает габонскую принадлежность, писательскую и драматургическую деятельность Лорана Овондо и его авторство «Au bout du silence»."),
-      evidence("University of Western Australia — African Literature", "https://aflit.arts.uwa.edu.au/CountryGabonFR.html", "Университетский обзор литературы Габона независимо называет Овондо писателем и драматургом и связывает его с романом «Au bout du silence»."),
+      evidence("University of Western Australia - African Literature", "https://aflit.arts.uwa.edu.au/CountryGabonFR.html", "Университетский обзор литературы Габона независимо называет Овондо писателем и драматургом и связывает его с романом «Au bout du silence»."),
     ],
   }),
   review({
@@ -186,7 +186,7 @@ const writerBiographyFactReviewBatch29Base = [
     decision: "corrected",
     evidence: [
       evidence("Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb45122804t", "Каталог BnF фиксирует Сильви Нтсаме как габонского автора и атрибутирует ей «La Fille du Komo» и «Le soir autour du feu»."),
-      evidence("University of Western Australia — African Literature", "https://aflit.arts.uwa.edu.au/NtsameSylvieEng.html", "Университетский профиль независимо подтверждает её писательскую и издательскую деятельность и называет оба произведения."),
+      evidence("University of Western Australia - African Literature", "https://aflit.arts.uwa.edu.au/NtsameSylvieEng.html", "Университетский профиль независимо подтверждает её писательскую и издательскую деятельность и называет оба произведения."),
     ],
   }),
   review({
@@ -253,7 +253,7 @@ const writerBiographyFactReviewBatch29Base = [
   review({
     key: "georgia:galaktion_tabidze",
     originalSha256: "60420ecbaf51e01343c766a3b91e4d9640633abf87365cf0e84325e28c5ed421",
-    reviewedTextRu: "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй — в 1919 году.",
+    reviewedTextRu: "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй - в 1919 году.",
     decision: "corrected",
     evidence: [
       evidence("National Archives of Georgia", "https://www.archive.gov.ge/en/galaktioni-1", "Национальный архив Грузии называет Табидзе поэтом и документирует выход первого сборника в 1914 году и второго сборника в 1919 году."),
@@ -267,7 +267,7 @@ const writerBiographyFactReviewBatch29Base = [
     reviewedTextRu: "Грузинский писатель, поэт, публицист и общественный деятель.",
     decision: "corrected",
     evidence: [
-      evidence("Georgia Travel — National Tourism Administration", "https://georgia.travel/ilia-chavchavadze-museum", "Официальный государственный портал характеризует Илью Чавчавадзе как грузинского писателя, поэта, публициста и общественного деятеля."),
+      evidence("Georgia Travel - National Tourism Administration", "https://georgia.travel/ilia-chavchavadze-museum", "Официальный государственный портал характеризует Илью Чавчавадзе как грузинского писателя, поэта, публициста и общественного деятеля."),
       evidence("National Parliamentary Library of Georgia", "https://dspace.nplg.gov.ge/handle/1234/3771", "Национальная парламентская библиотека Грузии независимо документирует литературную, публицистическую и общественную деятельность Чавчавадзе."),
     ],
   }),
@@ -304,10 +304,10 @@ const writerBiographyFactReviewBatch29Base = [
   review({
     key: "georgia:shota_rustaveli",
     originalSha256: "1a568e913764f9f10c42d176a40ae1cedb44ceda69708d0b563eaa165033b246",
-    reviewedTextRu: "Грузинский придворный поэт рубежа XII–XIII веков, автор поэмы «Витязь в тигровой шкуре».",
+    reviewedTextRu: "Грузинский придворный поэт рубежа XII-XIII веков, автор поэмы «Витязь в тигровой шкуре».",
     decision: "corrected",
     evidence: [
-      evidence("Georgian Encyclopedia", "https://www.georgianencyclopedia.ge/en/form_eng/903", "Научная редакция Грузинской энциклопедии описывает Руставели как придворного поэта рубежа XII–XIII веков и автора «Витязя в тигровой шкуре»."),
+      evidence("Georgian Encyclopedia", "https://www.georgianencyclopedia.ge/en/form_eng/903", "Научная редакция Грузинской энциклопедии описывает Руставели как придворного поэта рубежа XII-XIII веков и автора «Витязя в тигровой шкуре»."),
       evidence("UNESCO Memory of the World", "https://www.unesco.org/en/memory-world/manuscript-collection-shota-rustavelis-poem-knight-panthers-skin", "ЮНЕСКО независимо атрибутирует Шоте Руставели поэму «Витязь в тигровой шкуре» и связывает её с грузинской средневековой традицией."),
     ],
     notes: "Identity recommendation: очередь QA указывает Q132984; энциклопедия Грузинской национальной академии наук и UNESCO подтверждают именно литературную личность Шоты Руставели и её связь с поэмой. Рекомендуется подтвердить Q132984 при интеграции; shared country files не изменялись.",
@@ -315,7 +315,7 @@ const writerBiographyFactReviewBatch29Base = [
   review({
     key: "georgia:vazha_pshavela",
     originalSha256: "e4ab6bbd9a4b897fb443d8e92fad5d3598a3ff964fe1901ee776f5d9d1b4ca22",
-    reviewedTextRu: "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя — Лука Разикашвили.",
+    reviewedTextRu: "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя - Лука Разикашвили.",
     decision: "corrected",
     evidence: [
       evidence("National Archives of Georgia", "https://www.archive.gov.ge/en/vazha-fshavela-1", "Национальный архив Грузии подтверждает литературные роли Важи-Пшавелы и приводит его настоящее имя Лука Разикашвили."),
@@ -358,7 +358,7 @@ const writerBiographyFactReviewBatch29Base = [
     reviewedTextRu: "Немецкий писатель и юрист, автор современных романов о памяти и исторической ответственности.",
     decision: "unchanged",
     evidence: [
-      evidence("Diogenes Verlag", "https://www.diogenes.ch/leser/autoren/s/bernhard-schlink.html", "Официальный издательский профиль подтверждает, что Бернхард Шлинк — немецкий юрист и писатель, чьи романы обращаются к памяти о национал-социалистическом прошлом и ответственности."),
+      evidence("Diogenes Verlag", "https://www.diogenes.ch/leser/autoren/s/bernhard-schlink.html", "Официальный издательский профиль подтверждает, что Бернхард Шлинк - немецкий юрист и писатель, чьи романы обращаются к памяти о национал-социалистическом прошлом и ответственности."),
       evidence("Rowohlt Theater Verlag", "https://www.rowohlt-theaterverlag.de/autor/bernhard-schlink-4308", "Независимый издательский профиль подтверждает юридическую и литературную деятельность Шлинка и тематическую связь его прозы с памятью и исторической ответственностью."),
     ],
   }),

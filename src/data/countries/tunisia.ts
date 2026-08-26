@@ -10,7 +10,7 @@ export const tunisia: Country = {
       id: "ali_douagi",
       name: "Али Дуаги",
       fullName: "Ali Douagi",
-      years: "1909–1949",
+      years: "1909-1949",
 
       birthDate: "1909-01-04",
       deathDate: "1949-11-27",
@@ -56,7 +56,7 @@ export const tunisia: Country = {
       id: "aboul_qacem_echebbi",
       name: "Абу-ль-Касем аш-Шабби",
       fullName: "Aboul-Qacem Echebbi",
-      years: "1909–1934",
+      years: "1909-1934",
 
       birthDate: "1909-02-24",
       deathDate: "1934-10-09",
@@ -101,7 +101,7 @@ export const tunisia: Country = {
       id: "mahmoud_messadi",
       name: "Махмуд Мессади",
       fullName: "Mahmoud Messadi",
-      years: "1911–2004",
+      years: "1911-2004",
 
       birthDate: "1911-01-28",
       deathDate: "2004-12-16",
@@ -147,7 +147,7 @@ export const tunisia: Country = {
       id: "bechir_khraief",
       name: "Башир Хреф",
       fullName: "Béchir Khraïef",
-      years: "1917–1983",
+      years: "1917-1983",
 
       birthDate: "1917-11-10",
       deathDate: "1983-04-23",
@@ -192,7 +192,7 @@ export const tunisia: Country = {
       id: "abdelwahab_meddeb",
       name: "Абдельвахаб Меддеб",
       fullName: "Abdelwahab Meddeb",
-      years: "1946–2014",
+      years: "1946-2014",
 
       birthDate: "1946-01-17",
       deathDate: "2014-11-05",
@@ -238,7 +238,7 @@ export const tunisia: Country = {
       id: "habib_selmi",
       name: "Хабиб Селми",
       fullName: "Habib Selmi",
-      years: "1951–",
+      years: "1951-",
 
       birthDate: "1951-01-01",
       deathDate: "",

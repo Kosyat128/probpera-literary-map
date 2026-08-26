@@ -33,7 +33,7 @@ function sha256(value: Buffer) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-describe("пользовательские редакционные обложки — batch 2026-08-13", () => {
+describe("пользовательские редакционные обложки - batch 2026-08-13", () => {
   it("подключает 51 новую обложку отдельным непересекающимся манифестом", () => {
     const entries = userSuppliedBookCoverBatch20260813Manifest.entries;
     const previousKeys = new Set(

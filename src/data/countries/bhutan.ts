@@ -12,7 +12,7 @@ export const bhutan: Country = {
       name: "Пема Лингпа",
       fullName: "Pema Lingpa",
 
-      years: "1450–1521",
+      years: "1450-1521",
 
       birthDate: "1450",
       deathDate: "1521",
@@ -63,7 +63,7 @@ export const bhutan: Country = {
       name: "Друкпа Кюнле",
       fullName: "Drukpa Kunley",
 
-      years: "1455–1529",
+      years: "1455-1529",
 
       birthDate: "1455",
       deathDate: "1529",
@@ -113,7 +113,7 @@ export const bhutan: Country = {
       name: "Жабдрунг Нгаванг Намгьял",
       fullName: "Ngawang Namgyal",
 
-      years: "1594–1651",
+      years: "1594-1651",
 
       birthDate: "1594",
       deathDate: "1651",
@@ -162,7 +162,7 @@ export const bhutan: Country = {
       name: "Кунсанг Чоден",
       fullName: "Kunzang Choden",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952",
       deathDate: "",
@@ -212,7 +212,7 @@ export const bhutan: Country = {
       name: "Дзонгсар Кхьенце Ринпоче",
       fullName: "Dzongsar Khyentse Rinpoche",
 
-      years: "1961–",
+      years: "1961-",
 
       birthDate: "1961-06-18",
       deathDate: "",

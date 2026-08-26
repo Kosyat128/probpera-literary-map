@@ -158,7 +158,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
     patch: {
       works: [
         "Isprăvile lui Guguță",
-        "Guguță — căpitan de corabie",
+        "Guguță - căpitan de corabie",
         "Steaua lui Ciuboțel",
       ],
       genres: ["детская литература", "поэзия", "перевод"],
@@ -227,7 +227,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
     evidence: sources(
       "MONTSAME",
       "https://www.montsame.mn/en/read/388525",
-      "UNESCO — History of Civilizations of Central Asia, vol. VI",
+      "UNESCO - History of Civilizations of Central Asia, vol. VI",
       "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993"
     ),
     note: "Русская заглушка заменена двумя оригинальными названиями; драматургия добавлена по источникам.",
@@ -245,7 +245,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
     evidence: sources(
       "Монгольский государственный университет",
       "https://portal.num.edu.mn/Staff/7a05581e-891c-48d8-9e18-264ed0f5878f/Publications",
-      "UNESCO — History of Civilizations of Central Asia, vol. VI",
+      "UNESCO - History of Civilizations of Central Asia, vol. VI",
       "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993"
     ),
     note: "Имя дополнено, технические даты 1 января сведены к годам, библиография расширена тремя оригинальными названиями.",
@@ -294,7 +294,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
     evidence: sources(
       "Министерство культуры Монголии",
       "https://mocsty.gov.mn/en/news/W4yP1HYmxCIrgoqAkzHvWp2dLnVCgsgB",
-      "UNESCO — History of Civilizations of Central Asia, vol. VI",
+      "UNESCO - History of Civilizations of Central Asia, vol. VI",
       "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993"
     ),
     note: "Конфликтующие сведения о смерти удалены; служебное название заменено тремя произведениями и многожанровой практикой.",
@@ -308,7 +308,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
       genres: ["проза", "поэзия", "перевод", "филология", "история литературы"],
     },
     evidence: sources(
-      "UNESCO — History of Civilizations of Central Asia, vol. VI",
+      "UNESCO - History of Civilizations of Central Asia, vol. VI",
       "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1585c732-773d-462a-8c7d-c8cf36ebdca7?_=141275eng.pdf&from=1&to=993",
       "Монгольский государственный университет",
       "https://journal.num.edu.mn/ms/article/view/6328"
@@ -667,7 +667,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch40 = [
       genres: ["авангардная поэзия", "журналистика"],
     },
     evidence: sources(
-      "Universidade Eduardo Mondlane — диссертация PUC Minas",
+      "Universidade Eduardo Mondlane - диссертация PUC Minas",
       "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf",
       "Verdade",
       "https://verdade.co.mz/faleceu-virgilio-de-lemos-o-poeta-das-ilhas/"

@@ -235,7 +235,7 @@ const seeds = [
   [
     "india:jaishankar_prasad",
     {
-      years: "1889/1890–1937",
+      years: "1889/1890-1937",
       birthDate: "",
       deathDate: "1937-11-15",
       works: ["Камаяни", "Скандгупта", "Чандрагупта"],
@@ -274,7 +274,7 @@ const seeds = [
   [
     "india:kalidasa",
     {
-      years: "ок. IV–V век",
+      years: "ок. IV-V век",
       birthDate: "",
       deathDate: "",
       birthPlace: "",
@@ -300,7 +300,7 @@ const seeds = [
   [
     "india:mirabai",
     {
-      years: "конец XV — середина XVI века",
+      years: "конец XV - середина XVI века",
       birthDate: "ок. 1498",
       deathDate: "",
       birthPlace: "окрестности Мерты, Раджастхан",
@@ -390,7 +390,7 @@ const seeds = [
   [
     "india:tulsidas",
     {
-      years: "традиционно ок. 1532–1623",
+      years: "традиционно ок. 1532-1623",
       birthDate: "ок. 1532",
       language: "авадхи",
       works: ["Рамачаритманас", "Виная-патрика"],
@@ -470,7 +470,7 @@ const seeds = [
   [
     "iran:ferdowsi",
     {
-      years: "ок. 940 — ок. 1020",
+      years: "ок. 940 - ок. 1020",
       birthDate: "ок. 940",
       deathDate: "ок. 1020",
     },

@@ -14,7 +14,7 @@ export const newZealand: Country = {
 
       fullName: "Kathleen Mansfield Beauchamp",
 
-      years: "1888–1923",
+      years: "1888-1923",
 
       birthDate: "1888-10-14",
 
@@ -71,7 +71,7 @@ export const newZealand: Country = {
 
       fullName: "James K. Baxter",
 
-      years: "1926–1972",
+      years: "1926-1972",
 
       birthDate: "1926-06-29",
 
@@ -126,7 +126,7 @@ export const newZealand: Country = {
 
       fullName: "Mary Jane Mander",
 
-      years: "1877–1949",
+      years: "1877-1949",
 
       birthDate: "1877-04-09",
 
@@ -180,7 +180,7 @@ export const newZealand: Country = {
 
       fullName: "Frank Sargeson",
 
-      years: "1903–1982",
+      years: "1903-1982",
 
       birthDate: "1903-03-23",
 
@@ -234,7 +234,7 @@ export const newZealand: Country = {
 
       fullName: "Thomas Allen Monro Curnow",
 
-      years: "1911–2001",
+      years: "1911-2001",
 
       birthDate: "1911-06-17",
 
@@ -286,7 +286,7 @@ export const newZealand: Country = {
 
       fullName: "Christian Karlson Stead",
 
-      years: "1932–",
+      years: "1932-",
 
       birthDate: "1932-10-17",
 
@@ -345,7 +345,7 @@ export const newZealand: Country = {
 
       fullName: "Witi Tame Ihimaera-Smiler",
 
-      years: "1944–",
+      years: "1944-",
 
       birthDate: "1944-02-07",
 
@@ -404,7 +404,7 @@ export const newZealand: Country = {
 
       fullName: "Patricia Frances Grace",
 
-      years: "1937–",
+      years: "1937-",
 
       birthDate: "1937-08-17",
 
@@ -463,7 +463,7 @@ export const newZealand: Country = {
 
       fullName: "Keri Ann Ruhi Hulme",
 
-      years: "1947–2021",
+      years: "1947-2021",
 
       birthDate: "1947-03-09",
 
@@ -520,7 +520,7 @@ export const newZealand: Country = {
 
       fullName: "Bruce Edward George Mason",
 
-      years: "1921–1982",
+      years: "1921-1982",
 
       birthDate: "1921-09-28",
 
@@ -573,7 +573,7 @@ export const newZealand: Country = {
 
       fullName: "Eleanor Catton",
 
-      years: "1985–",
+      years: "1985-",
 
       birthDate: "1985-09-24",
 
@@ -630,7 +630,7 @@ export const newZealand: Country = {
 
       fullName: "Elizabeth Fiona Knox",
 
-      years: "1959–",
+      years: "1959-",
 
       birthDate: "1959-02-15",
 
@@ -686,7 +686,7 @@ export const newZealand: Country = {
 
       fullName: "Fiona Judith Kidman",
 
-      years: "1940–",
+      years: "1940-",
 
       birthDate: "1940-03-26",
 
@@ -744,7 +744,7 @@ export const newZealand: Country = {
 
       fullName: "Iris Guiver Wilkinson",
 
-      years: "1906–1939",
+      years: "1906-1939",
 
       birthDate: "1906-01-19",
 
@@ -797,7 +797,7 @@ export const newZealand: Country = {
 
       fullName: "William Manhire",
 
-      years: "1946–",
+      years: "1946-",
 
       birthDate: "1946-12-27",
 
@@ -854,7 +854,7 @@ export const newZealand: Country = {
 
       fullName: "Kate De Goldi",
 
-      years: "1959–",
+      years: "1959-",
 
       birthDate: "1959-11-24",
 
@@ -906,7 +906,7 @@ export const newZealand: Country = {
 
       fullName: "Damien Wilkins",
 
-      years: "1963–",
+      years: "1963-",
 
       birthDate: "1963-02-16",
 
@@ -962,13 +962,13 @@ export const newZealand: Country = {
 
       fullName: "Lloyd Jones",
 
-      years: "1955–",
+      years: "1955-",
 
       birthDate: "1955-03-23",
 
       deathDate: "",
 
-      birthPlace: "Порт-Морсби, Папуа — Новая Гвинея",
+      birthPlace: "Порт-Морсби, Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -9.4438,
@@ -1019,7 +1019,7 @@ export const newZealand: Country = {
 
       fullName: "Nene Janet Paterson Clutha",
 
-      years: "1924–2004",
+      years: "1924-2004",
 
       birthDate: "1924-08-28",
 
@@ -1074,7 +1074,7 @@ export const newZealand: Country = {
 
       fullName: "Steven Roger Fischer",
 
-      years: "1953–",
+      years: "1953-",
 
       birthDate: "1953-11-05",
 

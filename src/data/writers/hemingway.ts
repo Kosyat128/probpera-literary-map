@@ -1,7 +1,7 @@
 export const hemingwayProfile = {
  id:"hemingway",
  fullName:"Эрнест Миллер Хемингуэй",
- years:"1899–1961",
+ years:"1899-1961",
  country:"США",
  birthPlace:"Оук-Парк, США",
  movement:"Модернизм",

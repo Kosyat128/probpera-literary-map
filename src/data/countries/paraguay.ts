@@ -8,7 +8,7 @@ export const paraguay: Country = {
     {
       id: "rafael_barrett",
       name: "Рафаэль Баррет",
-      years: "1876–1910",
+      years: "1876-1910",
       birthDate: "1876-01-07",
       deathDate: "1910-12-17",
       birthPlace: "Торрелавега, Испания",
@@ -47,7 +47,7 @@ export const paraguay: Country = {
     {
       id: "manuel_ortiz_guerrero",
       name: "Мануэль Ортис Герреро",
-      years: "1897–1933",
+      years: "1897-1933",
       birthDate: "1897-07-16",
       deathDate: "1933-05-08",
       birthPlace: "Вильяррика, Парагвай",
@@ -85,7 +85,7 @@ export const paraguay: Country = {
     {
       id: "julio_correa",
       name: "Хулио Корреа",
-      years: "1890–1953",
+      years: "1890-1953",
       birthDate: "1890-06-30",
       deathDate: "1953-07-14",
       birthPlace: "Асунсьон, Парагвай",
@@ -123,7 +123,7 @@ export const paraguay: Country = {
         {
       id: "augusto_roa_bastos",
       name: "Аугусто Роа Бастос",
-      years: "1917–2005",
+      years: "1917-2005",
       birthDate: "1917-06-13",
       deathDate: "2005-04-26",
       birthPlace: "Асунсьон, Парагвай",
@@ -167,7 +167,7 @@ export const paraguay: Country = {
     {
       id: "natalicio_gonzalez",
       name: "Наталисио Гонсалес",
-      years: "1897–1966",
+      years: "1897-1966",
       birthDate: "1897-09-08",
       deathDate: "1966-12-06",
       birthPlace: "Вильяррика, Парагвай",
@@ -206,7 +206,7 @@ export const paraguay: Country = {
     {
       id: "gabriel_casaccia",
       name: "Габриэль Касаксиа",
-      years: "1907–1980",
+      years: "1907-1980",
       birthDate: "1907-04-20",
       deathDate: "1980-11-24",
       birthPlace: "Асунсьон, Парагвай",
@@ -243,7 +243,7 @@ export const paraguay: Country = {
         {
       id: "juan_manuel_marcos",
       name: "Хуан Мануэль Маркос",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-01-01",
       birthPlace: "Асунсьон, Парагвай",
       coordinates: {
@@ -283,7 +283,7 @@ export const paraguay: Country = {
     {
       id: "lisandro_diaz_leon",
       name: "Лисандро Диас Леон",
-      years: "1929–2002",
+      years: "1929-2002",
       birthDate: "1929-03-15",
       deathDate: "2002-06-01",
       birthPlace: "Парагвай",
@@ -320,7 +320,7 @@ export const paraguay: Country = {
     {
       id: "mario_ruben_alvarez",
       name: "Марио Рубен Альварес",
-      years: "1954–",
+      years: "1954-",
       birthDate: "1954-01-01",
       birthPlace: "Парагвай",
       coordinates: {
@@ -356,7 +356,7 @@ export const paraguay: Country = {
         {
       id: "liza_haedo",
       name: "Лис Хаун",
-      years: "1928–2019",
+      years: "1928-2019",
       birthDate: "1928-07-27",
       deathDate: "2019-07-29",
       birthPlace: "Вильяррика, Парагвай",
@@ -393,7 +393,7 @@ export const paraguay: Country = {
     {
       id: "susana_galeano",
       name: "Сусана Гальеано",
-      years: "XX–XXI век",
+      years: "XX-XXI век",
       birthPlace: "Парагвай",
       coordinates: {
         lat: -25.2637,
@@ -457,7 +457,7 @@ export const paraguay: Country = {
         {
       id: "elvio_romero",
       name: "Эльвио Ромеро",
-      years: "1926–2004",
+      years: "1926-2004",
       birthDate: "1926-12-17",
       deathDate: "2004-05-19",
       birthPlace: "Юнкаль, Парагвай",
@@ -496,7 +496,7 @@ export const paraguay: Country = {
     {
       id: "rubén_bareiro_saguier",
       name: "Рубен Барейро Сагье",
-      years: "1930–2014",
+      years: "1930-2014",
       birthDate: "1930-01-10",
       deathDate: "2014-03-25",
       birthPlace: "Вильяррика, Парагвай",

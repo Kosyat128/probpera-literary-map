@@ -8,7 +8,7 @@ export const dominicanRepublic: Country = {
     {
       id: "juan_bosch",
       name: "Хуан Бош",
-      years: "1909–2001",
+      years: "1909-2001",
       birthDate: "1909-06-30",
       deathDate: "2001-11-01",
       birthPlace: "Ла-Вега, Доминиканская Республика",
@@ -47,7 +47,7 @@ export const dominicanRepublic: Country = {
     {
       id: "pedro_henriquez_urena",
       name: "Педро Энрикес Уренья",
-      years: "1884–1946",
+      years: "1884-1946",
       birthDate: "1884-06-29",
       deathDate: "1946-05-11",
       birthPlace: "Санто-Доминго, Доминиканская Республика",
@@ -82,7 +82,7 @@ export const dominicanRepublic: Country = {
     {
       id: "manuel_del_cabral",
       name: "Мануэль дель Кабраль",
-      years: "1907–1999",
+      years: "1907-1999",
       birthDate: "1907-03-07",
       deathDate: "1999-05-14",
       birthPlace: "Сантьяго-де-лос-Кабальерос, Доминиканская Республика",
@@ -118,7 +118,7 @@ export const dominicanRepublic: Country = {
     {
       id: "julia_alvarez",
       name: "Хулия Альварес",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-03-27",
       birthPlace: "Нью-Йорк, США",
       coordinates: {

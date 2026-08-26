@@ -10,7 +10,7 @@ export const hongKong: Country = {
       id: "xi_xi",
       name: "Сянь Юй",
       fullName: "Xi Xi",
-      years: "1937–2022",
+      years: "1937-2022",
       birthDate: "1937-10-08",
       deathDate: "2022-12-18",
       birthPlace: "Шанхай",

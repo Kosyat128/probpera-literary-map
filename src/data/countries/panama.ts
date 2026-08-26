@@ -8,7 +8,7 @@ export const panama: Country = {
     {
       id: "ricardo_miro",
       name: "Рикардо Миро",
-      years: "1883–1940",
+      years: "1883-1940",
       birthDate: "1883-11-05",
       deathDate: "1940-03-02",
       birthPlace: "Панама, Панама",
@@ -45,7 +45,7 @@ export const panama: Country = {
     {
       id: "rogelio_sinan",
       name: "Рохелио Синиан",
-      years: "1904–1994",
+      years: "1904-1994",
       birthDate: "1904-04-25",
       deathDate: "1994-10-04",
       birthPlace: "Табога, Панама",
@@ -82,7 +82,7 @@ export const panama: Country = {
     {
       id: "demetrio_kalleyas",
       name: "Деметрио Кальехас",
-      years: "1875–1958",
+      years: "1875-1958",
       birthDate: "1875-01-01",
       deathDate: "1958-01-01",
       birthPlace: "Панама",
@@ -115,7 +115,7 @@ export const panama: Country = {
     {
       id: "juan_david_morgan",
       name: "Хуан Давид Морган",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-01-01",
       birthPlace: "Панама",
       coordinates: {

@@ -785,11 +785,11 @@ export default async function LibraryPage({
                         <dl>
                           <div>
                             <dt>Тип источника</dt>
-                            <dd>{provenance.kind || "—"}</dd>
+                            <dd>{provenance.kind || "-"}</dd>
                           </div>
                           <div>
                             <dt>Основание сопоставления</dt>
-                            <dd>{provenance.matchBasis || "—"}</dd>
+                            <dd>{provenance.matchBasis || "-"}</dd>
                           </div>
                           <div>
                             <dt>SHA-256 архива</dt>
@@ -1014,7 +1014,7 @@ export default async function LibraryPage({
                         <strong>{textValue(metadata.writerName) || work.writer_id}</strong>
                         <small>{textValue(metadata.countryName) || work.country_id}</small>
                       </td>
-                      <td>{work.first_published ?? "—"}</td>
+                      <td>{work.first_published ?? "-"}</td>
                       <td><span className="badge">{work.editorial_status}</span></td>
                       <td>
                         <span className="badge">
@@ -1243,7 +1243,7 @@ export default async function LibraryPage({
                         : {};
                     return (
                       <option key={work.id} value={work.id}>
-                        {work.title} — {metadata.writerName || work.writer_id} · {work.legacy_id}
+                        {work.title} - {metadata.writerName || work.writer_id} · {work.legacy_id}
                       </option>
                     );
                   })}
@@ -1356,7 +1356,7 @@ export default async function LibraryPage({
                       const metadata = objectValue(work.metadata);
                       return (
                         <option key={work.id} value={work.id}>
-                          {work.title} — {textValue(metadata.writerName) || work.writer_id} · {work.legacy_id}
+                          {work.title} - {textValue(metadata.writerName) || work.writer_id} · {work.legacy_id}
                         </option>
                       );
                     })}
@@ -1419,7 +1419,7 @@ export default async function LibraryPage({
                   <input name="cover_url" type="url" defaultValue={selectedEdition.cover_url || ""} maxLength={2000} />
                 </label>
                 <label className="field edition-edit-wide">
-                  <span>Страница — источник обложки</span>
+                  <span>Страница - источник обложки</span>
                   <input name="cover_source_url" type="url" defaultValue={selectedEdition.cover_source_url || ""} maxLength={2000} />
                 </label>
                 <label className="field">
@@ -1513,8 +1513,8 @@ export default async function LibraryPage({
                         {edition.language || "язык не указан"}
                       </small>
                     </td>
-                    <td>{edition.isbn_13 || edition.isbn_10 || "—"}</td>
-                    <td>{edition.publisher || "—"}</td>
+                    <td>{edition.isbn_13 || edition.isbn_10 || "-"}</td>
+                    <td>{edition.publisher || "-"}</td>
                     <td>
                       <span className="badge">
                         {edition.cover_url

@@ -1,11 +1,11 @@
 export const twainProfile = {
  id:"twain",
  fullName:"Марк Твен",
- years:"1835–1910",
+ years:"1835-1910",
  country:"США",
  birthPlace:"Флорида, Миссури, США",
  movement:"Реализм",
- century:"XIX–XX века",
+ century:"XIX-XX века",
  language:"Английский",
  nobel:false,
  portrait:"/images/writers/twain.jpg",

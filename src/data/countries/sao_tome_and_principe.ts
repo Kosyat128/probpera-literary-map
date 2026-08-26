@@ -28,7 +28,7 @@ export const saoTomeAndPrincipe: Country = {
       id: "francisco_jose_tenreiro",
       name: "Франсишку Жозе Тенрейру",
       fullName: "Francisco José Tenreiro",
-      years: "1921–1963",
+      years: "1921-1963",
       birthDate: "1921-01-20",
       deathDate: "1963",
       birthPlace: "остров Сан-Томе",
@@ -65,7 +65,7 @@ export const saoTomeAndPrincipe: Country = {
       id: "alda_do_espirito_santo",
       name: "Алда ду Эшпириту Санту",
       fullName: "Alda do Espírito Santo",
-      years: "1926–2010",
+      years: "1926-2010",
       birthDate: "1926-04-30",
       deathDate: "2010-03-09",
       birthPlace: "Сан-Томе",
@@ -87,7 +87,7 @@ export const saoTomeAndPrincipe: Country = {
         sources: [
           {
             title: "Каталог изданий Алды Эшпириту Санту",
-            publisher: "Camões — Instituto da Cooperação e da Língua",
+            publisher: "Camões - Instituto da Cooperação e da Língua",
             url: "https://www.instituto-camoes.pt/images/lingua_cultura/edestrangeiro_jan13.pdf",
           },
         ],

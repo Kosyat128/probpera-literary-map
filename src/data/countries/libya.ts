@@ -10,7 +10,7 @@ export const libya: Country = {
       id: "ahmed_rafiq_al_mahdaoui",
       name: "Ахмед Рафик аль-Махдави",
       fullName: "Ahmed Rafiq al-Mahdawi",
-      years: "1898–1961",
+      years: "1898-1961",
 
       birthDate: "1898-01-01",
       deathDate: "1961-01-01",
@@ -54,7 +54,7 @@ export const libya: Country = {
       id: "hassan_al_faqih_hassan",
       name: "Хасан аль-Фких Хасан",
       fullName: "Hassan al-Faqih Hassan",
-      years: "1901–1993",
+      years: "1901-1993",
 
       birthDate: "1901-01-01",
       deathDate: "1993-01-01",
@@ -99,7 +99,7 @@ export const libya: Country = {
       id: "ali_mustafa_al_misrati",
       name: "Али Мустафа аль-Мисрати",
       fullName: "Ali Mustafa Al-Misrati",
-      years: "1926–2021",
+      years: "1926-2021",
 
       birthDate: "1926-01-01",
       deathDate: "2021-01-01",
@@ -145,7 +145,7 @@ export const libya: Country = {
       id: "khalifa_al_tillisi",
       name: "Халифа ат-Тиллиси",
       fullName: "Khalifa al-Tillisi",
-      years: "1930–2010",
+      years: "1930-2010",
 
       birthDate: "1930-01-01",
       deathDate: "2010-01-01",
@@ -190,7 +190,7 @@ export const libya: Country = {
       id: "sadeq_al_neihum",
       name: "Садек аль-Найхум",
       fullName: "Sadeq Al-Neihum",
-      years: "1937–1994",
+      years: "1937-1994",
 
       birthDate: "1937-12-15",
       deathDate: "1994-11-15",
@@ -235,7 +235,7 @@ export const libya: Country = {
       id: "ahmed_fagih",
       name: "Ахмед Факих",
       fullName: "Ahmed Fagih",
-      years: "1942–2021",
+      years: "1942-2021",
 
       birthDate: "1942-12-24",
       deathDate: "2021-04-15",
@@ -280,7 +280,7 @@ export const libya: Country = {
       id: "ibrahim_al_koni",
       name: "Ибрагим аль-Куни",
       fullName: "Ibrahim al-Koni",
-      years: "1948–",
+      years: "1948-",
 
       birthDate: "1948-08-02",
       deathDate: "",

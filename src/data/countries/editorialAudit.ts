@@ -23,7 +23,7 @@ function isExpandedProfile(writer: WriterProfile) {
     biographyOf(writer).trim().length >= 260 &&
     Boolean(writer.works && writer.works.length >= 3) &&
     Boolean(writer.birthDate || writer.birth) &&
-    Boolean(writer.deathDate || writer.death || /–$/.test(writer.years || ""))
+    Boolean(writer.deathDate || writer.death || /-$/.test(writer.years || ""))
   );
 }
 

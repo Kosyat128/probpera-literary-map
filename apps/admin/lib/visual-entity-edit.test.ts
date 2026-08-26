@@ -55,9 +55,9 @@ describe("visual entity editing policy", () => {
         entityType: "writer",
         entityId: "russia:tolstoy",
         field: "years",
-        value: "1828–1910",
+        value: "1828-1910",
       })
-    ).toMatchObject({ field: "years", value: "1828–1910" });
+    ).toMatchObject({ field: "years", value: "1828-1910" });
   });
 
   it("maps each allowed literary field to its fixed database column", () => {
@@ -134,7 +134,7 @@ describe("visual entity editing policy", () => {
       )
     ).toEqual({ name: "Лев Толстой" });
     expect(
-      mergeWriterOverrideFields({ years: "1828–1910" }, "years", "1828—1910")
-    ).toEqual({ years: "1828—1910" });
+      mergeWriterOverrideFields({ years: "1828-1910" }, "years", "1828-1910")
+    ).toEqual({ years: "1828-1910" });
   });
 });

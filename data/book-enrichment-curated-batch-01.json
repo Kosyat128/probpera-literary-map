@@ -15,11 +15,11 @@
         "genres": ["трагедия", "драма"]
       },
       "annotationRu": {
-        "text": "Принц Гамлет возвращается в Данию после смерти отца и узнаёт от его призрака, что короля убил собственный брат, занявший трон. Попытка проверить обвинение и совершить возмездие превращает двор в пространство слежки и обмана, а трагедию — в исследование совести, истины и цены действия.",
+        "text": "Принц Гамлет возвращается в Данию после смерти отца и узнаёт от его призрака, что короля убил собственный брат, занявший трон. Попытка проверить обвинение и совершить возмездие превращает двор в пространство слежки и обмана, а трагедию - в исследование совести, истины и цены действия.",
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -27,7 +27,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -42,7 +42,7 @@
         {"provider": "Bibliothèque nationale de France", "url": "https://catalogue.bnf.fr/ark:/12148/cb11936813g", "usage": "reference-only", "fields": ["identity", "original-language", "genre"], "retrievedAt": "2026-08-08", "textReuse": "none"}
       ],
       "rights": {"textOrigin": "project-original", "copiedSourceText": false, "notes": "Both annotations are project-original summaries written from verified facts; no source wording, translation, or publisher copy was reused."},
-      "editorialNotes": "The canonical work is Shakespeare's tragedy, not a screenplay or collected-tragedies record. The 1603 field records the first printed quarto; composition and early performance are generally dated around 1600–1601."
+      "editorialNotes": "The canonical work is Shakespeare's tragedy, not a screenplay or collected-tragedies record. The 1603 field records the first printed quarto; composition and early performance are generally dated around 1600-1601."
     },
     {
       "recordKey": "russia:tolstoy:war-and-peace",
@@ -60,7 +60,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -68,7 +68,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -83,7 +83,7 @@
         {"provider": "Bibliothèque nationale de France", "url": "https://catalogue.bnf.fr/ark:/12148/cb12166053w", "usage": "reference-only", "fields": ["identity", "publication-year", "original-language"], "retrievedAt": "2026-08-08", "textReuse": "none"}
       ],
       "rights": {"textOrigin": "project-original", "copiedSourceText": false, "notes": "Both annotations are project-original summaries written from verified facts; no source wording, translation, or publisher copy was reused."},
-      "editorialNotes": "The date requires nuance: the work began appearing serially in 1865, the serial run continued through 1867, and the complete six-volume edition was issued in 1868–1869. The canonical year 1869 marks completion of that first full edition, not the sole uncontested start date."
+      "editorialNotes": "The date requires nuance: the work began appearing serially in 1865, the serial run continued through 1867, and the complete six-volume edition was issued in 1868-1869. The canonical year 1869 marks completion of that first full edition, not the sole uncontested start date."
     },
     {
       "recordKey": "russia:dostoevsky:crime-and-punishment",
@@ -101,7 +101,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -109,7 +109,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -142,7 +142,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -150,7 +150,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -182,7 +182,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -190,7 +190,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -223,7 +223,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -231,7 +231,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -264,7 +264,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -272,7 +272,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -305,7 +305,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -313,7 +313,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -347,7 +347,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -355,7 +355,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -388,7 +388,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -396,7 +396,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -429,7 +429,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -437,7 +437,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -471,7 +471,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -479,7 +479,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -514,7 +514,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -522,7 +522,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -555,7 +555,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -563,7 +563,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -596,7 +596,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -604,7 +604,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -650,7 +650,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -658,7 +658,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -692,7 +692,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -700,7 +700,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -734,7 +734,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -742,7 +742,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -775,7 +775,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -783,7 +783,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [
@@ -817,7 +817,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "annotationEn": {
@@ -825,7 +825,7 @@
         "method": "editorial-original",
         "author": "Codex editorial draft",
         "createdAt": "2026-08-08",
-        "reviewedBy": "Codex factual QA — writer-quality agent",
+        "reviewedBy": "Codex factual QA - writer-quality agent",
         "reviewedAt": "2026-08-08"
       },
       "factChecks": [

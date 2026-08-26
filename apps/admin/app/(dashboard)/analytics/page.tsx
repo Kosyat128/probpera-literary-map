@@ -214,7 +214,7 @@ export default async function AnalyticsPage() {
         </article>
         <article className="stat-card">
           <span>Средняя оценка</span>
-          <strong>{averageRating ? averageRating.toFixed(2) : "—"}</strong>
+          <strong>{averageRating ? averageRating.toFixed(2) : "-"}</strong>
           <small>{ratingsCount || 0} оценок за 30 дней</small>
         </article>
         <article className="stat-card">

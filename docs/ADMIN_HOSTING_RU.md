@@ -2,7 +2,7 @@
 
 Публичная часть «Пробы Пера» остаётся статической и не получает приватных
 ключей. Редакционная панель `apps/admin` развёртывается отдельно как Next.js
-Worker. Основной адрес — `https://admin.probpera.ru`: он не смешивает
+Worker. Основной адрес - `https://admin.probpera.ru`: он не смешивает
 GitHub Pages и серверные маршруты панели под одним `/admin`.
 
 ## Основное размещение: Cloudflare Workers
@@ -10,11 +10,11 @@ GitHub Pages и серверные маршруты панели под одни
 Панель адаптирована для Workers через OpenNext. Конфигурация хранится рядом с
 приложением:
 
-- `apps/admin/wrangler.jsonc` — Worker, ассеты и домен;
-- `apps/admin/open-next.config.ts` — адаптер Next.js;
-- `npm run cf:deploy --workspace @probpera/admin` — проверенная сборка
+- `apps/admin/wrangler.jsonc` - Worker, ассеты и домен;
+- `apps/admin/open-next.config.ts` - адаптер Next.js;
+- `npm run cf:deploy --workspace @probpera/admin` - проверенная сборка
   и публикация;
-- `npm run cf:preview --workspace @probpera/admin` — локальная проверка
+- `npm run cf:preview --workspace @probpera/admin` - локальная проверка
   в среде Workers.
 
 Первый deploy можно выполнить через Wrangler после входа в аккаунт Cloudflare.
@@ -45,15 +45,15 @@ OPENAI_AUTO_TRANSLATE_ARTICLES=true
 YANDEX_METRIKA_COUNTER_ID=
 ```
 
-`GITHUB_DEPLOY_TOKEN` — серверный fine-grained token только для указанного
+`GITHUB_DEPLOY_TOKEN` - серверный fine-grained token только для указанного
 репозитория с разрешением Actions: read and write. Он не должен иметь префикс
 `NEXT_PUBLIC_` и не должен храниться в Git.
 
-`OPENAI_API_KEY` — серверный Secret Worker, используемый только автоматическим
+`OPENAI_API_KEY` - серверный Secret Worker, используемый только автоматическим
 английским переводчиком статей. Его нельзя объявлять как `NEXT_PUBLIC_*` или
 `VITE_*`. `OPENAI_TRANSLATION_MODEL` и `OPENAI_AUTO_TRANSLATE_ARTICLES` не
 содержат секрета и могут храниться как обычные Variables. Значение по умолчанию
-для модели — `gpt-5.6-sol`, а автоперевод включён, если флаг не установлен в
+для модели - `gpt-5.6-sol`, а автоперевод включён, если флаг не установлен в
 `false`.
 
 Если переменные создавались через Dashboard, при ручном deploy используйте
@@ -123,10 +123,10 @@ Namespace `probpera-admin-catalogs` предварительно заполня�
 
 В корне проекта находятся:
 
-- `Dockerfile.admin` — production standalone-сборка Next.js;
-- `docker-compose.admin.example.yml` — пример запуска только на локальном
+- `Dockerfile.admin` - production standalone-сборка Next.js;
+- `docker-compose.admin.example.yml` - пример запуска только на локальном
   порту `127.0.0.1:3000`, который затем закрывается HTTPS-прокси;
-- `apps/admin/.env.example` — полный список переменных.
+- `apps/admin/.env.example` - полный список переменных.
 
 Скопируйте пример compose-файла в локальный, задайте секреты вне Git и
 выполните:
@@ -144,8 +144,8 @@ docker compose -f docker-compose.admin.yml up -d
 
 - `NEXT_PUBLIC_SUPABASE_URL` и `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` могут
   присутствовать в клиентской части;
-- deployment hook — только серверная переменная;
-- `OPENAI_API_KEY` — только серверный Secret, если включён автоматический
+- deployment hook - только серверная переменная;
+- `OPENAI_API_KEY` - только серверный Secret, если включён автоматический
   английский перевод;
 - ни один приватный ключ не должен иметь префикс `NEXT_PUBLIC_` или `VITE_`.
 

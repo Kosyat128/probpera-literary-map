@@ -55,22 +55,22 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     originalSha256:
       "16c1b80bd6610653915429945499b82eda8acddbf543e200f4d96dfc78291621",
     reviewedTextRu:
-      "Китайский поэт эпохи Цин, живший в 1792–1841 годах.",
+      "Китайский поэт эпохи Цин, живший в 1792-1841 годах.",
     claims: [
       {
         textRu:
-          "Гун Цзычжэнь был китайским поэтом эпохи Цин и жил в 1792–1841 годах.",
+          "Гун Цзычжэнь был китайским поэтом эпохи Цин и жил в 1792-1841 годах.",
         verdict: "corrected",
         evidence: [
           evidence(
             "Library of Congress",
             "https://www.loc.gov/aba/publications/Archived-LCC01/PL-PM-text.pdf",
-            "Классификация китайской литературы Библиотеки Конгресса фиксирует авторитетную форму Gong Zizhen и годы жизни 1792–1841 в корпусе литературы эпохи Цин.",
+            "Классификация китайской литературы Библиотеки Конгресса фиксирует авторитетную форму Gong Zizhen и годы жизни 1792-1841 в корпусе литературы эпохи Цин.",
           ),
           evidence(
-            "Harvard University — Stephen Owen",
+            "Harvard University - Stephen Owen",
             "https://scholar.harvard.edu/files/sowen/files/owen_stephen_-_an_anthology_of_chinese_literature_-_beginnings_to_1911.pdf",
-            "Университетская антология называет Гун Цзычжэня поэтом и датирует его жизнь 1792–1841 годами.",
+            "Университетская антология называет Гун Цзычжэня поэтом и датирует его жизнь 1792-1841 годами.",
           ),
         ],
       },
@@ -89,7 +89,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Хань Хань — китайский писатель и режиссёр, дебютировавший романом «The Triple Door».",
+          "Хань Хань - китайский писатель и режиссёр, дебютировавший романом «The Triple Door».",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -119,7 +119,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Цзя Пинва — китайский писатель, автор романов «Turbulence» и «Ruined City».",
+          "Цзя Пинва - китайский писатель, автор романов «Turbulence» и «Ruined City».",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -128,7 +128,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
             "Официальный профиль издателя идентифицирует Цзя Пинва как китайского писателя и связывает его библиографию с романом Turbulence.",
           ),
           evidence(
-            "University of Oklahoma — Newman Prize for Chinese Literature",
+            "University of Oklahoma - Newman Prize for Chinese Literature",
             "https://www.ou.edu/cis/research/institute-for-us-china-issues/us-china-cultural-issues/newman-prize-for-chinese-literature.html",
             "Архив литературной премии Университета Оклахомы включает Цзя Пинва и роман Ruined City в документированный список автора и произведения.",
           ),
@@ -160,7 +160,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
           evidence(
             "Columbia University Press",
             "https://cup.columbia.edu/book/teahouse/9789629961251/",
-            "Университетское издательство называет Лао Шэ романистом и драматургом, указывает годы жизни 1899–1966 и атрибутирует ему пьесу Teahouse.",
+            "Университетское издательство называет Лао Шэ романистом и драматургом, указывает годы жизни 1899-1966 и атрибутирует ему пьесу Teahouse.",
           ),
         ],
       },
@@ -179,7 +179,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Лао-цзы — традиционный древнекитайский философский образ; традиция связывает с ним «Дао дэ цзин» и истоки даосизма.",
+          "Лао-цзы - традиционный древнекитайский философский образ; традиция связывает с ним «Дао дэ цзин» и истоки даосизма.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -198,29 +198,29 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Identity/date queue: атрибуция сохранена как традиционная, а грамматически двусмысленная формула об «основах даосизма» уточнена. Рекомендация — не показывать birthDate и deathDate «VI век до н. э.» как две установленные даты; заменить единым периодом «традиционно VI век до н. э.; историчность и датировка спорны». Shared country files не изменялись.",
+      "Identity/date queue: атрибуция сохранена как традиционная, а грамматически двусмысленная формула об «основах даосизма» уточнена. Рекомендация - не показывать birthDate и deathDate «VI век до н. э.» как две установленные даты; заменить единым периодом «традиционно VI век до н. э.; историчность и датировка спорны». Shared country files не изменялись.",
   },
   {
     key: "china:li_bai",
     originalSha256:
       "50f43fdf9ab03e1bd0dab58e0a3c500cb274b3e1afbcdff806cb7ba7a1382c59",
     reviewedTextRu:
-      "Китайский поэт эпохи Тан, живший в 701–762 годах.",
+      "Китайский поэт эпохи Тан, живший в 701-762 годах.",
     claims: [
       {
         textRu:
-          "Ли Бо был китайским поэтом эпохи Тан и жил в 701–762 годах.",
+          "Ли Бо был китайским поэтом эпохи Тан и жил в 701-762 годах.",
         verdict: "corrected",
         evidence: [
           evidence(
             "Poetry Foundation",
             "https://www.poetryfoundation.org/poets/li-po",
-            "Профиль поэта фиксирует форму Li Po, годы 701–762 и его принадлежность к поэзии эпохи Тан.",
+            "Профиль поэта фиксирует форму Li Po, годы 701-762 и его принадлежность к поэзии эпохи Тан.",
           ),
           evidence(
             "Library of Congress",
             "https://www.loc.gov/catdir/cpso/CJKChap25-1.pdf",
-            "Руководство Библиотеки Конгресса приводит авторитетную запись Li Bai, 701–762, и связывает её с его поэтическими произведениями.",
+            "Руководство Библиотеки Конгресса приводит авторитетную запись Li Bai, 701-762, и связывает её с его поэтическими произведениями.",
           ),
         ],
       },
@@ -248,9 +248,9 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
             "БРЭ подтверждает точные даты, роли писателя, публициста и общественного деятеля и прямо относит Лу Синя к основоположникам современной китайской литературы.",
           ),
           evidence(
-            "Columbia University — Asia for Educators",
+            "Columbia University - Asia for Educators",
             "https://afe.easia.columbia.edu/special/china_1900_luxun.htm",
-            "Университетская образовательная справка характеризует Лу Синя как центрального современного китайского писателя и подтверждает годы жизни 1881–1936.",
+            "Университетская образовательная справка характеризует Лу Синя как центрального современного китайского писателя и подтверждает годы жизни 1881-1936.",
           ),
         ],
       },
@@ -269,16 +269,16 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Ло Гуаньчжун — китайский писатель XIV века, которому традиционно приписывают «Троецарствие».",
+          "Ло Гуаньчжун - китайский писатель XIV века, которому традиционно приписывают «Троецарствие».",
         verdict: "corrected",
         evidence: [
           evidence(
             "Library of Congress",
             "https://www.loc.gov/catdir/cpso/CJKChap26.pdf",
-            "Библиотека Конгресса фиксирует авторитетную форму Luo Guanzhong, приблизительные годы 1330–1400 и связь с San guo zhi yan yi.",
+            "Библиотека Конгресса фиксирует авторитетную форму Luo Guanzhong, приблизительные годы 1330-1400 и связь с San guo zhi yan yi.",
           ),
           evidence(
-            "Columbia University — Asia for Educators",
+            "Columbia University - Asia for Educators",
             "https://video.afe.easia.columbia.edu/teaching-guides/romance-of-the-three-kingdoms-teaching-guide/",
             "Учебный материал Колумбийского университета датирует Ло Гуаньчжуна XIV веком и прямо отмечает, что роман ему приписывается.",
           ),
@@ -288,7 +288,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Identity/date queue: личность и приблизительные даты ок. 1330 — ок. 1400 подтверждены LOC; категоричное «эпохи Мин» заменено нейтральным «XIV века», атрибуция сохранена как традиционная. Shared country files не изменялись.",
+      "Identity/date queue: личность и приблизительные даты ок. 1330 - ок. 1400 подтверждены LOC; категоричное «эпохи Мин» заменено нейтральным «XIV века», атрибуция сохранена как традиционная. Shared country files не изменялись.",
   },
   {
     key: "china:mao_dun",
@@ -310,7 +310,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
           evidence(
             "Columbia University Press",
             "https://cup.columbia.edu/book/the-shop-of-the-lin-family-and-spring-silkworms/9789629960452/",
-            "Университетское издательство независимо идентифицирует Мао Дуня (Шэнь Яньбина), годы жизни 1896–1981 и роли критика и романиста.",
+            "Университетское издательство независимо идентифицирует Мао Дуня (Шэнь Яньбина), годы жизни 1896-1981 и роли критика и романиста.",
           ),
         ],
       },
@@ -329,7 +329,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Мо Янь — китайский писатель, лауреат Нобелевской премии по литературе 2012 года и автор романа «Красный гаолян».",
+          "Мо Янь - китайский писатель, лауреат Нобелевской премии по литературе 2012 года и автор романа «Красный гаолян».",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -350,7 +350,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
         verdict: "not-established",
         evidence: [
           evidence(
-            "Nobel Prize — Facts",
+            "Nobel Prize - Facts",
             "https://www.nobelprize.org/laureate/880?from=NobelPress.org",
             "Текущая официальная карточка Nobel Facts указывает 25 марта 1956 года.",
           ),
@@ -365,7 +365,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Обобщённая характеристика поэтики заменена наградой и произведением. Date recommendation: shared birthDate 1955-02-17 не подтверждается согласованно — текущая Nobel Facts и автобиография дают 1956-03-25, тогда как нобелевская биобиблиография и издатель указывают 1955; точную дату не менять автоматически и временно показывать только год после редакционного разрешения конфликта. Shared country files не изменялись.",
+      "Обобщённая характеристика поэтики заменена наградой и произведением. Date recommendation: shared birthDate 1955-02-17 не подтверждается согласованно - текущая Nobel Facts и автобиография дают 1956-03-25, тогда как нобелевская биобиблиография и издатель указывают 1955; точную дату не менять автоматически и временно показывать только год после редакционного разрешения конфликта. Shared country files не изменялись.",
   },
   {
     key: "china:pu_songling",
@@ -406,13 +406,13 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Ши Найань — традиционное имя автора XIV века, которому приписывают роман «Речные заводи».",
+          "Ши Найань - традиционное имя автора XIV века, которому приписывают роман «Речные заводи».",
         verdict: "corrected",
         evidence: [
           evidence(
             "Library of Congress",
             "https://blogs.loc.gov/international-collections/2017/07/the-story-of-water-margin-%E6%B0%B4%E6%BB%B8%E5%82%B3/",
-            "Специалист Азиатского отдела LOC сообщает, что Water Margin традиционно приписывают Ши Найаню (1290–1365) и Ло Гуаньчжуну.",
+            "Специалист Азиатского отдела LOC сообщает, что Water Margin традиционно приписывают Ши Найаню (1290-1365) и Ло Гуаньчжуну.",
           ),
           evidence(
             "Indiana University ScholarWorks",
@@ -430,7 +430,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
   {
     key: "china:sima_qian",
     originalSha256:
-      "45d1e5af364ef938585ed17ecac2c9c427255ab264b66acd133c33c076fa6405",
+      "68859c46487ac0e573e61ef9079e1730db4fa1b740a3361231e1df7202576b76",
     reviewedTextRu:
       "Китайский историк эпохи Хань, автор «Исторических записок» («Ши цзи»).",
     claims: [
@@ -442,10 +442,10 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
           evidence(
             "Smithsonian Libraries and Archives",
             "https://www.si.edu/object/records-grand-historian-han-dynasty-sima-qian-translated-burton-watson%3Asiris_sil_886567",
-            "Каталог Смитсоновских библиотек атрибутирует Сыма Цяню Records of the Grand Historian и фиксирует приблизительные годы 145–86 до н. э. в контексте Хань.",
+            "Каталог Смитсоновских библиотек атрибутирует Сыма Цяню Records of the Grand Historian и фиксирует приблизительные годы 145-86 до н. э. в контексте Хань.",
           ),
           evidence(
-            "Harvard University — Companion to Chinese History",
+            "Harvard University - Companion to Chinese History",
             "https://puett.scholars.harvard.edu/sites/g/files/omnuum3361/files/puett/files/puett_classical_chinese_historical_thought_8.pdf",
             "Академическое издание называет Сыма Цяня автором Shiji и относит его к эпохе императора У-ди династии Хань.",
           ),
@@ -466,11 +466,11 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Су Тун — китайский писатель, автор романа Rice («Рис») и сборника повестей Raise the Red Lantern («Подними красный фонарь»).",
+          "Су Тун - китайский писатель, автор романа Rice («Рис») и сборника повестей Raise the Red Lantern («Подними красный фонарь»).",
         verdict: "corrected",
         evidence: [
           evidence(
-            "International Writing Program — University of Iowa",
+            "International Writing Program - University of Iowa",
             "https://iwp.uiowa.edu/writers/2001/su-tong-sutong",
             "Университетский профиль называет Су Туна китайским прозаиком, автором романа Rice и повести, экранизированной как Raise the Red Lantern.",
           ),
@@ -502,29 +502,29 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Date discrepancy queue: доказанная рекомендация — заменить placeholder birthDate 1963-01-01 на 1963-01-23; точную дату фиксирует Store norske leksikon, а BnF authority corroboration отражена в identity data. Оценка направления заменена произведениями. Shared country files не изменялись.",
+      "Date discrepancy queue: доказанная рекомендация - заменить placeholder birthDate 1963-01-01 на 1963-01-23; точную дату фиксирует Store norske leksikon, а BnF authority corroboration отражена в identity data. Оценка направления заменена произведениями. Shared country files не изменялись.",
   },
   {
     key: "china:tao_yuanming",
     originalSha256:
       "ff6c04682cb5ae74fbaaeca30dff661e7ab3ca29544214e9d9b6986250e5cec4",
     reviewedTextRu:
-      "Китайский поэт IV–V веков, автор «Персикового источника».",
+      "Китайский поэт IV-V веков, автор «Персикового источника».",
     claims: [
       {
         textRu:
-          "Тао Юаньмин был китайским поэтом IV–V веков и написал «Персиковый источник».",
+          "Тао Юаньмин был китайским поэтом IV-V веков и написал «Персиковый источник».",
         verdict: "corrected",
         evidence: [
           evidence(
-            "Columbia University — Asia for Educators",
+            "Columbia University - Asia for Educators",
             "https://afe.easia.columbia.edu/ps/china/taoqian_peachblossom.pdf",
             "Учебное издание Колумбийского университета идентифицирует Тао Цяня (Тао Юаньмина) как поэта и автора Peach Blossom Spring.",
           ),
           evidence(
             "The Metropolitan Museum of Art",
             "https://www.metmuseum.org/exhibitions/listings/2012/chinese-gardens",
-            "Музейная справка называет Тао Юаньмина поэтом, датирует его жизнь 365–427 годами и связывает с текстом Peach Blossom Spring.",
+            "Музейная справка называет Тао Юаньмина поэтом, датирует его жизнь 365-427 годами и связывает с текстом Peach Blossom Spring.",
           ),
         ],
       },
@@ -532,22 +532,22 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив и широкая формула об основоположничестве заменены веком и произведением. Date recommendation: академические источники расходятся в годе рождения (365 и 376), поэтому при следующем shared review показывать «ок. 365 — 427», не точную дату. Shared country files не изменялись.",
+      "Суперлатив и широкая формула об основоположничестве заменены веком и произведением. Date recommendation: академические источники расходятся в годе рождения (365 и 376), поэтому при следующем shared review показывать «ок. 365 - 427», не точную дату. Shared country files не изменялись.",
   },
   {
     key: "china:wang_meng",
     originalSha256:
       "9ee86084c996b6fa6c5336d67a059cf8491bb931e93446d37a6a029845cf4cbd",
     reviewedTextRu:
-      "Китайский писатель и государственный деятель; в 1986–1989 годах занимал пост министра культуры КНР.",
+      "Китайский писатель и государственный деятель; в 1986-1989 годах занимал пост министра культуры КНР.",
     claims: [
       {
         textRu:
-          "Ван Мэн — китайский писатель и государственный деятель, занимавший пост министра культуры КНР в 1986–1989 годах.",
+          "Ван Мэн - китайский писатель и государственный деятель, занимавший пост министра культуры КНР в 1986-1989 годах.",
         verdict: "corrected",
         evidence: [
           evidence(
-            "Chinese University of Hong Kong — Renditions",
+            "Chinese University of Hong Kong - Renditions",
             "https://cuhk.edu.hk/rct/renditions/authors/wangm.html",
             "Университетский авторский профиль подтверждает писательскую деятельность Ван Мэна и назначение министром культуры в 1986 году.",
           ),
@@ -579,12 +579,12 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
           evidence(
             "Poetry Foundation",
             "https://www.poetryfoundation.org/poets/wei-wang",
-            "Профиль подтверждает годы 701–761, роли поэта, художника и государственного деятеля эпохи Тан и характерную природную образность стихов.",
+            "Профиль подтверждает годы 701-761, роли поэта, художника и государственного деятеля эпохи Тан и характерную природную образность стихов.",
           ),
           evidence(
             "The Metropolitan Museum of Art",
             "https://www.metmuseum.org/exhibitions/listings/2012/chinese-gardens",
-            "Метрополитен-музей датирует Ван Вэя приблизительно 701–761 годами и рассматривает его цикл стихов о природном ландшафте Ванчуань.",
+            "Метрополитен-музей датирует Ван Вэя приблизительно 701-761 годами и рассматривает его цикл стихов о природном ландшафте Ванчуань.",
           ),
         ],
       },
@@ -609,12 +609,12 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
           evidence(
             "British Museum",
             "https://www.britishmuseum.org/collection/object/A_1947-0712-160",
-            "Музейный каталог называет У Чэнъэня автором приблизительно 1500–1582 годов и формулирует связь Xi Youji как атрибуцию.",
+            "Музейный каталог называет У Чэнъэня автором приблизительно 1500-1582 годов и формулирует связь Xi Youji как атрибуцию.",
           ),
           evidence(
-            "University of Southern California — Chinese Rare Books",
+            "University of Southern California - Chinese Rare Books",
             "https://scalar.usc.edu/works/chinese-rare-books/media/xiyouzhenquan",
-            "Университетская коллекция идентифицирует У Чэнъэня как минского романиста и поэта приблизительно 1500–1582 годов и отмечает общепринятую атрибуцию Journey to the West.",
+            "Университетская коллекция идентифицирует У Чэнъэня как минского романиста и поэта приблизительно 1500-1582 годов и отмечает общепринятую атрибуцию Journey to the West.",
           ),
         ],
       },
@@ -622,7 +622,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Identity/date queue: личность и приблизительные даты ок. 1500 — ок. 1582 подтверждены, однако авторство романа не следует подавать без оговорки; категоричное «автор» заменено «традиционно приписывают». Shared country files не изменялись.",
+      "Identity/date queue: личность и приблизительные даты ок. 1500 - ок. 1582 подтверждены, однако авторство романа не следует подавать без оговорки; категоричное «автор» заменено «традиционно приписывают». Shared country files не изменялись.",
   },
   {
     key: "china:yan_lianke",
@@ -633,7 +633,7 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Янь Лянькэ — китайский писатель, в прозе которого используются сатира и социальная критика.",
+          "Янь Лянькэ - китайский писатель, в прозе которого используются сатира и социальная критика.",
         verdict: "supported",
         evidence: [
           evidence(
@@ -657,13 +657,13 @@ const writerBiographyFactReviewBatch18Base: readonly Omit<
   {
     key: "china:yu_hua",
     originalSha256:
-      "68ccfe06154f3a2d4665f8e68a155f9bcc16fda1f76019901c1c67b12ababb93",
+      "08f1e9152ebfc1c2950ff0025412d6345edb34c6c10cc44e92c147c61d1c5cfe",
     reviewedTextRu:
       "Китайский писатель, автор романов «Жить» и «Братья».",
     claims: [
       {
         textRu:
-          "Юй Хуа — китайский писатель, автор романов «Жить» и «Братья».",
+          "Юй Хуа - китайский писатель, автор романов «Жить» и «Братья».",
         verdict: "corrected",
         evidence: [
           evidence(

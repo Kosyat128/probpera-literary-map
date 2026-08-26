@@ -10,7 +10,7 @@ export const finland: Country = {
       id: "mikael_agricola",
       name: "Микаэль Агрикола",
       fullName: "Mikael Agricola",
-      years: "ок. 1510–1557",
+      years: "ок. 1510-1557",
 
       birthDate: "ок. 1510",
       deathDate: "1557-04-09",
@@ -57,7 +57,7 @@ export const finland: Country = {
       name: "Йохан Людвиг Рунеберг",
       fullName: "Johan Ludvig Runeberg",
 
-      years: "1804–1877",
+      years: "1804-1877",
 
       birthDate: "1804-02-05",
       deathDate: "1877-05-06",
@@ -103,7 +103,7 @@ export const finland: Country = {
       name: "Фредрика Бремер",
       fullName: "Fredrika Runeberg",
 
-      years: "1807–1879",
+      years: "1807-1879",
 
       birthDate: "1807-09-02",
       deathDate: "1879-03-27",
@@ -150,7 +150,7 @@ export const finland: Country = {
       name: "Алексис Киви",
       fullName: "Aleksis Kivi",
 
-      years: "1834–1872",
+      years: "1834-1872",
 
       birthDate: "1834-10-10",
       deathDate: "1872-12-31",
@@ -197,7 +197,7 @@ export const finland: Country = {
       name: "Минна Кант",
       fullName: "Minna Canth",
 
-      years: "1844–1897",
+      years: "1844-1897",
 
       birthDate: "1844-03-19",
       deathDate: "1897-05-12",
@@ -244,7 +244,7 @@ export const finland: Country = {
       name: "Эйно Лейно",
       fullName: "Eino Leino",
 
-      years: "1878–1926",
+      years: "1878-1926",
 
       birthDate: "1878-07-06",
       deathDate: "1926-01-10",
@@ -290,7 +290,7 @@ export const finland: Country = {
       name: "Франц Эмиль Силланпяя",
       fullName: "Frans Eemil Sillanpää",
 
-      years: "1888–1964",
+      years: "1888-1964",
 
       birthDate: "1888-09-16",
       deathDate: "1964-06-03",
@@ -338,7 +338,7 @@ export const finland: Country = {
       name: "Туве Янссон",
       fullName: "Tove Jansson",
 
-      years: "1914–2001",
+      years: "1914-2001",
 
       birthDate: "1914-08-09",
       deathDate: "2001-06-27",
@@ -385,7 +385,7 @@ export const finland: Country = {
       name: "Вяйнё Линна",
       fullName: "Väinö Linna",
 
-      years: "1920–1992",
+      years: "1920-1992",
 
       birthDate: "1920-12-20",
       deathDate: "1992-04-21",

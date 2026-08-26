@@ -39,7 +39,7 @@ const writerBiographyFactReviewBatch25Base = [
     originalSha256: "40eb0da40b55711e5459f0849fc53eaae1b4ff48654155b3ba0d6c5b27263b5d",
     reviewedTextRu: "Британский писатель японского происхождения, лауреат Нобелевской премии по литературе 2017 года.",
     claims: [{
-      textRu: "Кадзуо Исигуро — британский писатель японского происхождения и лауреат Нобелевской премии по литературе 2017 года.",
+      textRu: "Кадзуо Исигуро - британский писатель японского происхождения и лауреат Нобелевской премии по литературе 2017 года.",
       verdict: "supported",
       evidence: [
         { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/2017/ishiguro/facts/", checkedAt, findingRu: "Официальная страница премии подтверждает рождение Исигуро в Нагасаки, его писательскую деятельность и присуждение Нобелевской премии по литературе в 2017 году." },
@@ -53,9 +53,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:laurence_sterne",
     originalSha256: "ce36ee05ae8fa3118a1b8828231471a4a2a43e5dd14ce5d816b36be9dc8c004b",
-    reviewedTextRu: "Лоренс Стерн (1713–1768) — английский писатель и священник. Он написал романы «Жизнь и мнения Тристрама Шенди, джентльмена» и «Сентиментальное путешествие по Франции и Италии».",
+    reviewedTextRu: "Лоренс Стерн (1713-1768) - английский писатель и священник. Он написал романы «Жизнь и мнения Тристрама Шенди, джентльмена» и «Сентиментальное путешествие по Франции и Италии».",
     claims: [{
-      textRu: "Лоренс Стерн жил в 1713–1768 годах, был английским писателем и священником и написал два названных романа.",
+      textRu: "Лоренс Стерн жил в 1713-1768 годах, был английским писателем и священником и написал два названных романа.",
       verdict: "corrected",
       evidence: [
         { provider: "The Laurence Sterne Trust", url: "https://www.laurencesternetrust.org.uk/sterne/life-and-times/", checkedAt, findingRu: "Профильный музейный фонд подтверждает годы жизни Стерна, духовный сан и авторство Tristram Shandy и A Sentimental Journey through France and Italy." },
@@ -68,13 +68,13 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:lee_child",
-    originalSha256: "bded20c8ea5b5b2dca264a33fd70529a0e6eb7e20e5817473eb525402c28f469",
-    reviewedTextRu: "Ли Чайлд — британский писатель, автор серии романов о Джеке Ричере. «Этаж смерти» стал первой книгой этого цикла.",
+    originalSha256: "0fd868d038346d075ff52617ff12fa3435f724d528b31ac6aea7e2cd6e38dfdd",
+    reviewedTextRu: "Ли Чайлд - британский писатель, автор серии романов о Джеке Ричере. «Этаж смерти» стал первой книгой этого цикла.",
     claims: [{
-      textRu: "Ли Чайлд — британский автор серии о Джеке Ричере, а Killing Floor является её первой книгой.",
+      textRu: "Ли Чайлд - британский автор серии о Джеке Ричере, а Killing Floor является её первой книгой.",
       verdict: "supported",
       evidence: [
-        { provider: "Macmillan Publishers", url: "https://us.macmillan.com/author/leechild", checkedAt, findingRu: "Издательский профиль называет Чайлда уроженцем Англии и автором триллеров о Джеке Ричере, а Killing Floor — его дебютом." },
+        { provider: "Macmillan Publishers", url: "https://us.macmillan.com/author/leechild", checkedAt, findingRu: "Издательский профиль называет Чайлда уроженцем Англии и автором триллеров о Джеке Ричере, а Killing Floor - его дебютом." },
         { provider: "Simon & Schuster", url: "https://www.simonandschuster.com/authors/Lee-Child/260099991", checkedAt, findingRu: "Независимый издатель подтверждает британское происхождение автора и прямо указывает Killing Floor как первую книгу серии о Джеке Ричере." },
       ],
     }],
@@ -84,13 +84,13 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:liz_jensen",
-    originalSha256: "b0712cb697292f815714a97f2939ef3b08b7e1901b6f3a8232e7b16c5b28f99e",
-    reviewedTextRu: "Лиз Дженсен — британская писательница, ранее работавшая журналисткой и продюсером BBC. Среди её романов — «Девятая жизнь Луи Дракса».",
+    originalSha256: "1478743cca5438b8d40a5c59a8f5728742e470de80750799423dce9fb4a16379",
+    reviewedTextRu: "Лиз Дженсен - британская писательница, ранее работавшая журналисткой и продюсером BBC. Среди её романов - «Девятая жизнь Луи Дракса».",
     claims: [{
-      textRu: "Лиз Дженсен — британская писательница с опытом журналистской и продюсерской работы в BBC и автор романа The Ninth Life of Louis Drax.",
+      textRu: "Лиз Дженсен - британская писательница с опытом журналистской и продюсерской работы в BBC и автор романа The Ninth Life of Louis Drax.",
       verdict: "corrected",
       evidence: [
-        { provider: "Liz Jensen — official site", url: "https://www.lizjensen.com/about-liz/", checkedAt, findingRu: "Официальная биография сообщает о работе Дженсен в печатной и радиожурналистике, затем репортёром и продюсером BBC, и перечисляет The Ninth Life of Louis Drax среди её романов." },
+        { provider: "Liz Jensen - official site", url: "https://www.lizjensen.com/about-liz/", checkedAt, findingRu: "Официальная биография сообщает о работе Дженсен в печатной и радиожурналистике, затем репортёром и продюсером BBC, и перечисляет The Ninth Life of Louis Drax среди её романов." },
         { provider: "Bloomsbury Publishing", url: "https://www.bloomsbury.com/us/author/liz-jensen/", checkedAt, findingRu: "Издательский профиль независимо атрибутирует Дженсен восемь романов и включает The Ninth Life of Louis Drax в её библиографию." },
       ],
     }],
@@ -101,9 +101,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:lord_byron",
     originalSha256: "23d83ac85f14faadc8409f3e233f8a53a100de7d6c3998622a0cbd67297f5b43",
-    reviewedTextRu: "Джордж Гордон Байрон (1788–1824) — английский поэт романтической эпохи и автор поэм «Паломничество Чайльд-Гарольда» и «Дон Жуан».",
+    reviewedTextRu: "Джордж Гордон Байрон (1788-1824) - английский поэт романтической эпохи и автор поэм «Паломничество Чайльд-Гарольда» и «Дон Жуан».",
     claims: [{
-      textRu: "Джордж Гордон Байрон жил в 1788–1824 годах, принадлежал к английской романтической поэзии и написал Childe Harold’s Pilgrimage и Don Juan.",
+      textRu: "Джордж Гордон Байрон жил в 1788-1824 годах, принадлежал к английской романтической поэзии и написал Childe Harold’s Pilgrimage и Don Juan.",
       verdict: "corrected",
       evidence: [
         { provider: "Poetry Foundation", url: "https://www.poetryfoundation.org/poets/lord-byron", checkedAt, findingRu: "Биографическая справка подтверждает годы жизни Байрона, его место среди английских романтиков и авторство Childe Harold’s Pilgrimage и Don Juan." },
@@ -117,7 +117,7 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:oliver_goldsmith",
     originalSha256: "d3cdc6a3dd3edf4e3527d8684d5804990b49141df013ac256bc87fafb33ad2e3",
-    reviewedTextRu: "Оливер Голдсмит — ирландский писатель, поэт и драматург XVIII века. Он написал роман «The Vicar of Wakefield» и комедию «She Stoops to Conquer».",
+    reviewedTextRu: "Оливер Голдсмит - ирландский писатель, поэт и драматург XVIII века. Он написал роман «The Vicar of Wakefield» и комедию «She Stoops to Conquer».",
     claims: [{
       textRu: "Оливер Голдсмит был ирландским писателем, поэтом и драматургом XVIII века и написал The Vicar of Wakefield и She Stoops to Conquer.",
       verdict: "corrected",
@@ -133,13 +133,13 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:oscar_wilde",
     originalSha256: "97006f5476abafe48fad8f406089be1c7de4313588c81322b97a0368419965ee",
-    reviewedTextRu: "Оскар Уайльд (1854–1900) — ирландский писатель, поэт и драматург, связанный с эстетическим движением. Он написал роман «The Picture of Dorian Gray» и комедию «The Importance of Being Earnest».",
+    reviewedTextRu: "Оскар Уайльд (1854-1900) - ирландский писатель, поэт и драматург, связанный с эстетическим движением. Он написал роман «The Picture of Dorian Gray» и комедию «The Importance of Being Earnest».",
     claims: [{
-      textRu: "Оскар Уайльд жил в 1854–1900 годах, был ирландским писателем, поэтом и драматургом эстетического движения и написал два названных произведения.",
+      textRu: "Оскар Уайльд жил в 1854-1900 годах, был ирландским писателем, поэтом и драматургом эстетического движения и написал два названных произведения.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp04826/oscar-wilde", checkedAt, findingRu: "Галерея подтверждает годы жизни, занятия автора, связь с эстетическим движением и авторство The Importance of Being Earnest." },
-        { provider: "Trinity College Dublin — Oscar Wilde Centre", url: "https://www.tcd.ie/owc/history/oscar-wilde/", checkedAt, findingRu: "Университетский центр независимо описывает Уайльда как ирландского писателя, связанного с эстетизмом, и атрибутирует ему The Picture of Dorian Gray и The Importance of Being Earnest." },
+        { provider: "Trinity College Dublin - Oscar Wilde Centre", url: "https://www.tcd.ie/owc/history/oscar-wilde/", checkedAt, findingRu: "Университетский центр независимо описывает Уайльда как ирландского писателя, связанного с эстетизмом, и атрибутирует ему The Picture of Dorian Gray и The Importance of Being Earnest." },
       ],
     }],
     reviewer,
@@ -148,10 +148,10 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:paula_hawkins",
-    originalSha256: "f18d5b0c585fc430bebee252e726e27fbeb33befa36bc24476f1d2b8661af436",
-    reviewedTextRu: "Пола Хокинс — родившаяся в Зимбабве британская писательница, ранее работавшая журналисткой. Её первый триллер «Девушка в поезде» был опубликован в 2015 году.",
+    originalSha256: "dcda9cc2a51b7fd24ebc885af83e1167a9859bd28e022231f37f0fa0204649b6",
+    reviewedTextRu: "Пола Хокинс - родившаяся в Зимбабве британская писательница, ранее работавшая журналисткой. Её первый триллер «Девушка в поезде» был опубликован в 2015 году.",
     claims: [{
-      textRu: "Пола Хокинс — родившаяся в Зимбабве британская писательница и бывшая журналистка; её первый триллер The Girl on the Train вышел в 2015 году.",
+      textRu: "Пола Хокинс - родившаяся в Зимбабве британская писательница и бывшая журналистка; её первый триллер The Girl on the Train вышел в 2015 году.",
       verdict: "corrected",
       evidence: [
         { provider: "Bloomsbury Publishing", url: "https://www.bloomsbury.com/uk/author/paula-hawkins/", checkedAt, findingRu: "Издательский профиль подтверждает рождение Хокинс в Зимбабве, британскую принадлежность и авторство психологического триллера The Girl on the Train." },
@@ -165,9 +165,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:percy_shelley",
     originalSha256: "d9828efcebb03da1e2facd019e2e241bd037916ea9d60357fb18714388b74778",
-    reviewedTextRu: "Перси Биши Шелли (1792–1822) — английский поэт романтической эпохи. Среди его произведений — лирическая драма «Prometheus Unbound» и «Ode to the West Wind».",
+    reviewedTextRu: "Перси Биши Шелли (1792-1822) - английский поэт романтической эпохи. Среди его произведений - лирическая драма «Prometheus Unbound» и «Ode to the West Wind».",
     claims: [{
-      textRu: "Перси Биши Шелли жил в 1792–1822 годах, был английским поэтом-романтиком и написал Prometheus Unbound и Ode to the West Wind.",
+      textRu: "Перси Биши Шелли жил в 1792-1822 годах, был английским поэтом-романтиком и написал Prometheus Unbound и Ode to the West Wind.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp04088/percy-bysshe-shelley", checkedAt, findingRu: "Галерея подтверждает годы жизни Шелли, его принадлежность к романтическим поэтам и авторство Ode to the West Wind и Prometheus Unbound." },
@@ -180,8 +180,8 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:rafael_sabatini",
-    originalSha256: "d8edb9271174f362ea6fb6d1fcf6b58f751faa09235def5264ea8952e3c2d60c",
-    reviewedTextRu: "Рафаэль Сабатини — писатель итальянского происхождения, создававший историко-приключенческую прозу на английском языке. К его романам относятся «Одиссея капитана Блада» и «Морской ястреб».",
+    originalSha256: "98085964aba8014b0beed0df7954316fa6e8525bcad10c20051486273f072327",
+    reviewedTextRu: "Рафаэль Сабатини - писатель итальянского происхождения, создававший историко-приключенческую прозу на английском языке. К его романам относятся «Одиссея капитана Блада» и «Морской ястреб».",
     claims: [{
       textRu: "Рафаэль Сабатини был писателем итальянского происхождения, работал в англоязычной историко-приключенческой прозе и написал Captain Blood и The Sea-Hawk.",
       verdict: "supported",
@@ -198,9 +198,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:roald_dahl",
     originalSha256: "ae50f7c4951c8d3cd49bff660da07e50b3d52a181982af59cbbb1a1fd915f018",
-    reviewedTextRu: "Роальд Даль (1916–1990) — британский писатель, создававший книги для детей и рассказы для взрослых. Среди его детских произведений — «Charlie and the Chocolate Factory» и «Matilda».",
+    reviewedTextRu: "Роальд Даль (1916-1990) - британский писатель, создававший книги для детей и рассказы для взрослых. Среди его детских произведений - «Charlie and the Chocolate Factory» и «Matilda».",
     claims: [{
-      textRu: "Роальд Даль жил в 1916–1990 годах, писал для детей и взрослых и является автором Charlie and the Chocolate Factory и Matilda.",
+      textRu: "Роальд Даль жил в 1916-1990 годах, писал для детей и взрослых и является автором Charlie and the Chocolate Factory и Matilda.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/portrait/mw244141/Roald-Dahl", checkedAt, findingRu: "Галерея подтверждает годы жизни Даля, его писательскую деятельность и авторство детских книг Charlie and the Chocolate Factory и Matilda." },
@@ -214,9 +214,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:robert_louis_stevenson",
     originalSha256: "9d4ba3fdb45063ea1bfc33df0a55eb0ae80d13e91200985a54efeb45ba6ded1d",
-    reviewedTextRu: "Роберт Льюис Стивенсон (1850–1894) — шотландский писатель, поэт и эссеист. Он написал романы «Treasure Island» и «Kidnapped» и повесть «Strange Case of Dr Jekyll and Mr Hyde».",
+    reviewedTextRu: "Роберт Льюис Стивенсон (1850-1894) - шотландский писатель, поэт и эссеист. Он написал романы «Treasure Island» и «Kidnapped» и повесть «Strange Case of Dr Jekyll and Mr Hyde».",
     claims: [{
-      textRu: "Роберт Льюис Стивенсон жил в 1850–1894 годах, был шотландским писателем, поэтом и эссеистом и написал три названных произведения.",
+      textRu: "Роберт Льюис Стивенсон жил в 1850-1894 годах, был шотландским писателем, поэтом и эссеистом и написал три названных произведения.",
       verdict: "corrected",
       evidence: [
         { provider: "The University of Edinburgh", url: "https://www.ed.ac.uk/about/people/plaques/stevenson", checkedAt, findingRu: "Университетская справка подтверждает годы жизни Стивенсона, его деятельность поэта и автора и атрибутирует ему Treasure Island, Kidnapped и Dr Jekyll and Mr Hyde." },
@@ -229,10 +229,10 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:ronald_delderfield",
-    originalSha256: "a417e9d64ef9a43144a795128db46ddedc31f52f8c6567cc963b0d6c12a3bd55",
-    reviewedTextRu: "Рональд Делдерфилд (1912–1972) — английский писатель и драматург. Его роман «The Adventures of Ben Gunn» представляет собой предысторию «Treasure Island» Роберта Льюиса Стивенсона.",
+    originalSha256: "691e801f6f9d98eaa274b2036c3d6c30e13bdbcf2ae61aa6b831ceb0900a41cd",
+    reviewedTextRu: "Рональд Делдерфилд (1912-1972) - английский писатель и драматург. Его роман «The Adventures of Ben Gunn» представляет собой предысторию «Treasure Island» Роберта Льюиса Стивенсона.",
     claims: [{
-      textRu: "Рональд Делдерфилд жил в 1912–1972 годах, был английским писателем и драматургом, а The Adventures of Ben Gunn является предысторией Treasure Island.",
+      textRu: "Рональд Делдерфилд жил в 1912-1972 годах, был английским писателем и драматургом, а The Adventures of Ben Gunn является предысторией Treasure Island.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/portrait/mw100516/Ronald-Frederick-Delderfield", checkedAt, findingRu: "Галерея подтверждает полное имя, годы жизни и деятельность Делдерфилда как драматурга и автора." },
@@ -246,9 +246,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:rudyard_kipling",
     originalSha256: "775ca0e46f98d152ab6bb2602c7f368735bf718cca0a7eaa0614a4c3d917a514",
-    reviewedTextRu: "Редьярд Киплинг (1865–1936) — английский писатель, поэт и журналист, родившийся в Бомбее. Он написал «The Jungle Book» и получил Нобелевскую премию по литературе в 1907 году.",
+    reviewedTextRu: "Редьярд Киплинг (1865-1936) - английский писатель, поэт и журналист, родившийся в Бомбее. Он написал «The Jungle Book» и получил Нобелевскую премию по литературе в 1907 году.",
     claims: [{
-      textRu: "Редьярд Киплинг жил в 1865–1936 годах, был английским писателем, поэтом и журналистом, родился в Бомбее, написал The Jungle Book и получил Нобелевскую премию в 1907 году.",
+      textRu: "Редьярд Киплинг жил в 1865-1936 годах, был английским писателем, поэтом и журналистом, родился в Бомбее, написал The Jungle Book и получил Нобелевскую премию в 1907 году.",
       verdict: "corrected",
       evidence: [
         { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1907/kipling/facts/", checkedAt, findingRu: "Официальная страница премии подтверждает годы жизни, рождение в Бомбее, литературные роли, The Jungle Book и награждение в 1907 году." },
@@ -262,9 +262,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:samuel_coleridge",
     originalSha256: "cfb4c2a01851c8773ed423e28d37d91b7d2eaece23554864e4bb4c5defa79842",
-    reviewedTextRu: "Сэмюэл Тейлор Кольридж (1772–1834) — английский поэт, критик и философ романтической эпохи. Вместе с Уильямом Вордсвортом он издал сборник «Lyrical Ballads», куда вошла «The Rime of the Ancient Mariner».",
+    reviewedTextRu: "Сэмюэл Тейлор Кольридж (1772-1834) - английский поэт, критик и философ романтической эпохи. Вместе с Уильямом Вордсвортом он издал сборник «Lyrical Ballads», куда вошла «The Rime of the Ancient Mariner».",
     claims: [{
-      textRu: "Сэмюэл Тейлор Кольридж жил в 1772–1834 годах, был английским поэтом, критиком и философом романтизма и вместе с Вордсвортом издал Lyrical Ballads с The Rime of the Ancient Mariner.",
+      textRu: "Сэмюэл Тейлор Кольридж жил в 1772-1834 годах, был английским поэтом, критиком и философом романтизма и вместе с Вордсвортом издал Lyrical Ballads с The Rime of the Ancient Mariner.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp00966/samuel-taylor-coleridge", checkedAt, findingRu: "Галерея подтверждает годы жизни, поэтическую, критическую и философскую деятельность, романтическое направление и сотрудничество с Вордсвортом над Lyrical Ballads." },
@@ -278,9 +278,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:samuel_richardson",
     originalSha256: "41ab418ed697a1a30cd72214b9a99895fcccfa4efe86c82dd99d2830c5ca998d",
-    reviewedTextRu: "Сэмюэл Ричардсон (1689–1761) — английский писатель и печатник. Он написал эпистолярные романы «Pamela» и «Clarissa».",
+    reviewedTextRu: "Сэмюэл Ричардсон (1689-1761) - английский писатель и печатник. Он написал эпистолярные романы «Pamela» и «Clarissa».",
     claims: [{
-      textRu: "Сэмюэл Ричардсон жил в 1689–1761 годах, был английским писателем и печатником и написал эпистолярные романы Pamela и Clarissa.",
+      textRu: "Сэмюэл Ричардсон жил в 1689-1761 годах, был английским писателем и печатником и написал эпистолярные романы Pamela и Clarissa.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp03775/samuel-richardson", checkedAt, findingRu: "Галерея подтверждает годы жизни Ричардсона, его работу романиста и печатника и авторство Pamela и Clarissa." },
@@ -293,10 +293,10 @@ const writerBiographyFactReviewBatch25Base = [
   },
   {
     key: "england:stuart_turton",
-    originalSha256: "ab8dd151d7a6c5c91fd3c7cd124531a08153fcbe9d26b5b974934ca664069399",
-    reviewedTextRu: "Стюарт Тёртон — британский писатель и журналист. Среди его романов — «Семь смертей Эвелины Хардкасл» и «Дьявол и тёмная вода».",
+    originalSha256: "be40f644220accacc549d76d99fa51420ab1be8d2c91c521ba095461038cdbe4",
+    reviewedTextRu: "Стюарт Тёртон - британский писатель и журналист. Среди его романов - «Семь смертей Эвелины Хардкасл» и «Дьявол и тёмная вода».",
     claims: [{
-      textRu: "Стюарт Тёртон — британский писатель и журналист, автор романов The Seven Deaths of Evelyn Hardcastle и The Devil and the Dark Water.",
+      textRu: "Стюарт Тёртон - британский писатель и журналист, автор романов The Seven Deaths of Evelyn Hardcastle и The Devil and the Dark Water.",
       verdict: "supported",
       evidence: [
         { provider: "DHH Literary Agency", url: "https://www.dhhliteraryagency.com/stuart-turton", checkedAt, findingRu: "Агентский профиль подтверждает журналистскую работу Тёртона, британский контекст и авторство обоих названных романов." },
@@ -310,14 +310,14 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:t_s_eliot",
     originalSha256: "66e9d57c41c59db1aead9c7c1f3374386e299b0937a019a838bae11c6d66f47d",
-    reviewedTextRu: "Томас Стернз Элиот (1888–1965) — родившийся в США британский поэт, драматург и критик. Он написал «The Waste Land» и «Four Quartets» и получил Нобелевскую премию по литературе в 1948 году.",
+    reviewedTextRu: "Томас Стернз Элиот (1888-1965) - родившийся в США британский поэт, драматург и критик. Он написал «The Waste Land» и «Four Quartets» и получил Нобелевскую премию по литературе в 1948 году.",
     claims: [{
-      textRu: "Томас Стернз Элиот жил в 1888–1965 годах, родился в США, стал британским поэтом, драматургом и критиком, написал The Waste Land и Four Quartets и получил Нобелевскую премию 1948 года.",
+      textRu: "Томас Стернз Элиот жил в 1888-1965 годах, родился в США, стал британским поэтом, драматургом и критиком, написал The Waste Land и Four Quartets и получил Нобелевскую премию 1948 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1948/eliot/", checkedAt, findingRu: "Официальная страница премии подтверждает полное имя, годы жизни, рождение в Сент-Луисе, британское гражданство с 1927 года и Нобелевскую премию 1948 года." },
         { provider: "T. S. Eliot Estate and Faber & Faber", url: "https://tseliot.com/foundation/about/", checkedAt, findingRu: "Официальный ресурс наследия независимо называет Элиота поэтом, драматургом и критиком и фиксирует Four Quartets и получение Нобелевской премии." },
-        { provider: "Nobel Prize — bibliography", url: "https://www.nobelprize.org/prizes/literature/1948/eliot/bibliography/", checkedAt, findingRu: "Официальная библиография подтверждает авторство The Waste Land и Four Quartets." },
+        { provider: "Nobel Prize - bibliography", url: "https://www.nobelprize.org/prizes/literature/1948/eliot/bibliography/", checkedAt, findingRu: "Официальная библиография подтверждает авторство The Waste Land и Four Quartets." },
       ],
     }],
     reviewer,
@@ -327,9 +327,9 @@ const writerBiographyFactReviewBatch25Base = [
   {
     key: "england:thomas_hardy",
     originalSha256: "adc02b8ef3b457f6afbbf1600d89c10a6f1e484ba4733dfce74204f3f59c68a5",
-    reviewedTextRu: "Томас Харди (1840–1928) — английский писатель и поэт. Среди его романов — «Tess of the d’Urbervilles» и «Jude the Obscure».",
+    reviewedTextRu: "Томас Харди (1840-1928) - английский писатель и поэт. Среди его романов - «Tess of the d’Urbervilles» и «Jude the Obscure».",
     claims: [{
-      textRu: "Томас Харди жил в 1840–1928 годах, был английским писателем и поэтом и написал Tess of the d’Urbervilles и Jude the Obscure.",
+      textRu: "Томас Харди жил в 1840-1928 годах, был английским писателем и поэтом и написал Tess of the d’Urbervilles и Jude the Obscure.",
       verdict: "corrected",
       evidence: [
         { provider: "National Portrait Gallery, London", url: "https://www.npg.org.uk/collections/search/person/mp02044/thomas-hardy", checkedAt, findingRu: "Галерея подтверждает годы жизни Харди, его деятельность романиста и поэта и авторство Tess of the d’Urbervilles." },

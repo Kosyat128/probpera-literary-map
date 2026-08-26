@@ -8,7 +8,7 @@
 
 ## Architecture
 
-Lifecycle вынесен из `App.tsx` в pure reducer `atlasExperienceState.ts` и DOM/controller hook `useAtlasExperience.ts`. Chrome и APG combobox — отдельные components. URL serialization остаётся в `atlasUrlState.ts`.
+Lifecycle вынесен из `App.tsx` в pure reducer `atlasExperienceState.ts` и DOM/controller hook `useAtlasExperience.ts`. Chrome и APG combobox - отдельные components. URL serialization остаётся в `atlasUrlState.ts`.
 
 ## One-Canvas strategy
 
@@ -16,7 +16,7 @@ Embedded и immersive используют один mounted `LiteraryWorldMap ->
 
 ## Same-mounted-Canvas verification
 
-Source contract закреплён в component tests. Runtime Stage 3 Playwright проверяет `canvas count = 1`, помечает Canvas test-side property и подтверждает тот же DOM node после open/close. Текущий Playwright-прогон: **PASS — 9 tests passed, 9 intentionally skipped, 1.8 min**.
+Source contract закреплён в component tests. Runtime Stage 3 Playwright проверяет `canvas count = 1`, помечает Canvas test-side property и подтверждает тот же DOM node после open/close. Текущий Playwright-прогон: **PASS - 9 tests passed, 9 intentionally skipped, 1.8 min**.
 
 ## Embedded behaviour
 
@@ -26,7 +26,7 @@ Embedded search, filters, ranking, country index, globe controls и country sele
 
 Fine-pointer proximity рассчитывается один раз за frame и передаёт силу/координаты в CSS variables. Он не меняет cursor, actual Canvas geometry и не имеет perpetual RAF. Drag, functional controls, reduced motion, coarse pointer и economical mode имеют приоритет.
 
-Reducer/controller, URL, combobox и globe contracts прошли targeted-прогон: **PASS — 5 files / 32 tests**. Текущий Stage 3 Playwright-прогон взаимодействий также завершён: **9 passed / 9 intentionally skipped**. Отдельный ручной RAF trace не заявляется как выполненный.
+Reducer/controller, URL, combobox и globe contracts прошли targeted-прогон: **PASS - 5 files / 32 tests**. Текущий Stage 3 Playwright-прогон взаимодействий также завершён: **9 passed / 9 intentionally skipped**. Отдельный ручной RAF trace не заявляется как выполненный.
 
 ## Continuous cosmic field
 
@@ -65,7 +65,7 @@ Country, writer, filter, language, globe style, auto state и camera не сбр
 
 ## History / Back / Forward
 
-UI entry создаёт один app-owned history step с marker/source. Внутренние selection/filter updates в immersive используют replace. Close в app-owned step делает Back; direct URL close — replace. `popstate` синхронизирует state немедленно.
+UI entry создаёт один app-owned history step с marker/source. Внутренние selection/filter updates в immersive используют replace. Close в app-owned step делает Back; direct URL close - replace. `popstate` синхронизирует state немедленно.
 
 URL/history contract входит в успешно пройденные targeted 5 files / 32 tests и Stage 3 Playwright current-source suite: **9 passed / 9 intentionally skipped in 1.8 min**.
 
@@ -97,7 +97,7 @@ Reduce убирает entry/exit animation, proximity и CSS motion. Existing gl
 
 ## Economical mode
 
-На Save-Data/low hardware/narrow/high-DPR conditions отключаются proximity, near stars, engraving и ambient halo. Новые слои — CSS, без heavy dependencies и image requests.
+На Save-Data/low hardware/narrow/high-DPR conditions отключаются proximity, near stars, engraving и ambient halo. Новые слои - CSS, без heavy dependencies и image requests.
 
 ## Performance
 
@@ -113,34 +113,34 @@ Production build завершён на **1015 modules**. Performance audit: **11
 | Проверка | Результат |
 |---|---|
 | `npm run typecheck` | **PASS** |
-| Targeted reducer/combobox/URL/globe tests | **PASS — 5 files / 32 tests** |
-| Full Vitest, `--maxWorkers=4` | **PASS — 241 files / 1255 passed + 1 skipped** |
-| Stage 3 Playwright current-source suite | **PASS — 9 passed / 9 intentionally skipped, 1.8 min** |
-| Existing globe/responsive Playwright regressions | **PASS — 22 / 22, 2.2 min** |
-| Production build | **PASS — 1015 modules** |
-| Article and redirect generation | **PASS — 161 articles / 2097 redirects** |
-| SEO readiness | **PASS — 5262 ready** |
-| Domain validation | **PASS — 11319 / 11319** |
-| Performance audit | **PASS — 114,028,640 / 114,819,072 bytes; margin 790,432; 4323 files** |
-| `git diff --check` | **PASS — final full-tree run, exit 0; только CRLF notices** |
-| Visual evidence | **PASS — 26 PNG + README; P0/P1 отсутствуют** |
+| Targeted reducer/combobox/URL/globe tests | **PASS - 5 files / 32 tests** |
+| Full Vitest, `--maxWorkers=4` | **PASS - 241 files / 1255 passed + 1 skipped** |
+| Stage 3 Playwright current-source suite | **PASS - 9 passed / 9 intentionally skipped, 1.8 min** |
+| Existing globe/responsive Playwright regressions | **PASS - 22 / 22, 2.2 min** |
+| Production build | **PASS - 1015 modules** |
+| Article and redirect generation | **PASS - 161 articles / 2097 redirects** |
+| SEO readiness | **PASS - 5262 ready** |
+| Domain validation | **PASS - 11319 / 11319** |
+| Performance audit | **PASS - 114,028,640 / 114,819,072 bytes; margin 790,432; 4323 files** |
+| `git diff --check` | **PASS - final full-tree run, exit 0; только CRLF notices** |
+| Visual evidence | **PASS - 26 PNG + README; P0/P1 отсутствуют** |
 
 Финальная визуальная матрица сохранена в [`reports/stage3-visual-evidence/`](stage3-visual-evidence/): **26 PNG + README**. Она включает RU/EN на 360, 768, 1366, 1440 и 1920 px, embedded/immersive idle и representative search, filters, country drawer, mobile sheet и economical states. Все capture сделаны после `data-atlas-transition="idle"`; P0/P1 не найдено.
 
-Остатки: P2 — у `.atlas-filters` на 360 px слишком деликатная подсказка горизонтального swipe; P3 — selected globe label может визуально дублироваться через полупрозрачный header свёрнутого mobile sheet. Browser harness не поддерживает CSS media emulation, поэтому rendered reduced-motion screenshot честно не заявляется; economical capture оставлен только как performance-fallback proxy. Baseline: `reports/stage3-baseline/`.
+Остатки: P2 - у `.atlas-filters` на 360 px слишком деликатная подсказка горизонтального swipe; P3 - selected globe label может визуально дублироваться через полупрозрачный header свёрнутого mobile sheet. Browser harness не поддерживает CSS media emulation, поэтому rendered reduced-motion screenshot честно не заявляется; economical capture оставлен только как performance-fallback proxy. Baseline: `reports/stage3-baseline/`.
 
 ## Audit findings addressed
 
 ### CLOSED
 
-- `ATLAS-001` — APG keyboard combobox реализован и переиспользован в обоих presentation modes.
+- `ATLAS-001` - APG keyboard combobox реализован и переиспользован в обоих presentation modes.
 
 ### PARTIAL
 
-- `ATLAS-002` — основная Atlas microcopy поднята до 12 px и более плотных semantic colors. Остались `.globe-instruction` 10 px и selected-country labels 9–10 px; rendered forced-colors/gradient verification переносится в Stage 4 / Final QA.
-- `ATLAS-003` — Atlas surface, overlays, panel/sheet и filter overflow получили явные containment rules. Общий legacy `overflow-x: clip` и overflow вне Atlas остаются Final QA/Homepage scope.
+- `ATLAS-002` - основная Atlas microcopy поднята до 12 px и более плотных semantic colors. Остались `.globe-instruction` 10 px и selected-country labels 9-10 px; rendered forced-colors/gradient verification переносится в Stage 4 / Final QA.
+- `ATLAS-003` - Atlas surface, overlays, panel/sheet и filter overflow получили явные containment rules. Общий legacy `overflow-x: clip` и overflow вне Atlas остаются Final QA/Homepage scope.
 
-`GLOBE-001`–`GLOBE-007` остаются **OPEN** для Stage 4. Stage 3 overlay/sheet shell не подменяет полную Stage 4 acceptance этих findings.
+`GLOBE-001`-`GLOBE-007` остаются **OPEN** для Stage 4. Stage 3 overlay/sheet shell не подменяет полную Stage 4 acceptance этих findings.
 
 ## Before/after
 
@@ -167,4 +167,4 @@ Stage 4 должен начаться от fresh `main` только после 
 - Automatic merge: **запрещён**.
 - Stage 4 code в этом PR: **отсутствует**.
 - Stage 4 начинается только от fresh `main` после merge отдельного Stage 3 PR; stacked PR запрещён.
-- Финальный full-tree `git diff --check`: **PASS — exit 0; только CRLF notices**.
+- Финальный full-tree `git diff --check`: **PASS - exit 0; только CRLF notices**.

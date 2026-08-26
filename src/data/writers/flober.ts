@@ -1,7 +1,7 @@
 export const floberProfile = {
  id:"flober",
  fullName:"Гюстав Флобер",
- years:"1821–1880",
+ years:"1821-1880",
  country:"Франция",
  birthPlace:"Руан, Франция",
  movement:"Реализм",

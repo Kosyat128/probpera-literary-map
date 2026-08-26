@@ -8,7 +8,7 @@ export const india: Country = {
     {
       id: "valmiki",
       name: "Вальмики",
-      years: "традиционно ок. V–I век до н. э.",
+      years: "традиционно ок. V-I век до н. э.",
       birthDate: "древность",
       deathDate: "древность",
       birthPlace: "Древняя Индия",
@@ -18,7 +18,7 @@ export const india: Country = {
         lng: 82.9739
       },
       portrait: "",
-      bio: "Древнеиндийский поэт, которому традиция приписывает авторство эпоса «Рамаяна» — одного из важнейших произведений индийской и мировой литературы.",
+      bio: "Древнеиндийский поэт, которому традиция приписывает авторство эпоса «Рамаяна» - одного из важнейших произведений индийской и мировой литературы.",
       works: [
         "Рамаяна"
       ],
@@ -77,8 +77,8 @@ export const india: Country = {
     {
       id: "kalidasa",
       name: "Калидаса",
-      years: "ок. IV–V век",
-      birthDate: "IV–V век",
+      years: "ок. IV-V век",
+      birthDate: "IV-V век",
       deathDate: "V век",
       birthPlace: "Индия",
       deathPlace: "Индия",
@@ -114,8 +114,8 @@ export const india: Country = {
     {
       id: "bhartrihari",
       name: "Бхартрихари",
-      years: "ок. V–VII век",
-      birthDate: "V–VII век",
+      years: "ок. V-VII век",
+      birthDate: "V-VII век",
       deathDate: "VII век",
       birthPlace: "Индия",
       deathPlace: "Индия",
@@ -147,7 +147,7 @@ export const india: Country = {
     {
       id: "bhavabhuti",
       name: "Бхавабхути",
-      years: "ок. VII–VIII век",
+      years: "ок. VII-VIII век",
       birthDate: "VII век",
       deathDate: "VIII век",
       birthPlace: "Индия",
@@ -182,7 +182,7 @@ export const india: Country = {
     {
       id: "tulsidas",
       name: "Тулсидас",
-      years: "1532–1623",
+      years: "1532-1623",
       birthDate: "1532",
       deathDate: "1623",
       birthPlace: "Раджапур, Индия",
@@ -217,7 +217,7 @@ export const india: Country = {
         {
       id: "kabir",
       name: "Кабир",
-      years: "ок. 1440–1518",
+      years: "ок. 1440-1518",
       birthDate: "ок. 1440",
       deathDate: "1518",
       birthPlace: "Варанаси, Индия",
@@ -253,7 +253,7 @@ export const india: Country = {
     {
       id: "mirabai",
       name: "Мирабаи",
-      years: "ок. 1498–1547",
+      years: "ок. 1498-1547",
       birthDate: "ок. 1498",
       deathDate: "1547",
       birthPlace: "Раджастхан, Индия",
@@ -288,7 +288,7 @@ export const india: Country = {
     {
       id: "surdas",
       name: "Сурдас",
-      years: "ок. 1478–1583",
+      years: "ок. 1478-1583",
       birthDate: "ок. 1478",
       deathDate: "1583",
       birthPlace: "Индия",
@@ -323,7 +323,7 @@ export const india: Country = {
     {
       id: "bankim_chandra_chatterjee",
       name: "Банким Чандра Чаттерджи",
-      years: "1838–1894",
+      years: "1838-1894",
       birthDate: "1838-06-26",
       deathDate: "1894-04-08",
       birthPlace: "Канталпара, Индия",
@@ -358,7 +358,7 @@ export const india: Country = {
     {
       id: "sharat_chandra_chattopadhyay",
       name: "Сарат Чандра Чаттопадхай",
-      years: "1876–1938",
+      years: "1876-1938",
       birthDate: "1876-09-15",
       deathDate: "1938-01-16",
       birthPlace: "Дебанандапур, Индия",
@@ -393,7 +393,7 @@ export const india: Country = {
     {
       id: "munshi_premchand",
       name: "Мунши Премчанд",
-      years: "1880–1936",
+      years: "1880-1936",
       birthDate: "1880-07-31",
       deathDate: "1936-10-08",
       birthPlace: "Ламхи, Индия",
@@ -430,7 +430,7 @@ export const india: Country = {
       id: "rabindranath_tagore",
       nobelYear: 1913,
       name: "Рабиндранат Тагор",
-      years: "1861–1941",
+      years: "1861-1941",
       birthDate: "1861-05-07",
       deathDate: "1941-08-07",
       birthPlace: "Калькутта, Индия",
@@ -472,7 +472,7 @@ export const india: Country = {
     {
       id: "jaishankar_prasad",
       name: "Джайшанкар Прасад",
-      years: "1889–1937",
+      years: "1889-1937",
       birthDate: "1889-01-30",
       deathDate: "1937-01-15",
       birthPlace: "Варанаси, Индия",
@@ -508,7 +508,7 @@ export const india: Country = {
     {
       id: "subramania_bharati",
       name: "Субраманья Бхарати",
-      years: "1882–1921",
+      years: "1882-1921",
       birthDate: "1882-12-11",
       deathDate: "1921-09-11",
       birthPlace: "Эттайяпур, Индия",
@@ -542,7 +542,7 @@ export const india: Country = {
     {
       id: "r_k_narayan",
       name: "Р. К. Нараян",
-      years: "1906–2001",
+      years: "1906-2001",
       birthDate: "1906-10-10",
       deathDate: "2001-05-13",
       birthPlace: "Ченнаи, Индия",
@@ -580,7 +580,7 @@ export const india: Country = {
     {
       id: "mulk_raj_anand",
       name: "Мулк Радж Ананд",
-      years: "1905–2004",
+      years: "1905-2004",
       birthDate: "1905-12-12",
       deathDate: "2004-09-28",
       birthPlace: "Пешавар, Британская Индия",
@@ -617,7 +617,7 @@ export const india: Country = {
     {
       id: "khushwant_singh",
       name: "Хушвант Сингх",
-      years: "1915–2014",
+      years: "1915-2014",
       birthDate: "1915-02-02",
       deathDate: "2014-03-20",
       birthPlace: "Хадали, Британская Индия",
@@ -655,7 +655,7 @@ export const india: Country = {
         {
       id: "salman_rushdie",
       name: "Салман Рушди",
-      years: "1947–",
+      years: "1947-",
       birthDate: "1947-06-19",
       birthPlace: "Бомбей (Мумбаи), Индия",
       coordinates: {
@@ -693,7 +693,7 @@ export const india: Country = {
     {
       id: "arundhati_roy",
       name: "Арундати Рой",
-      years: "1961–",
+      years: "1961-",
       birthDate: "1961-11-24",
       birthPlace: "Шиллонг, Индия",
       coordinates: {
@@ -729,7 +729,7 @@ export const india: Country = {
     {
       id: "vikram_seth",
       name: "Викрам Сет",
-      years: "1952–",
+      years: "1952-",
       birthDate: "1952-06-20",
       birthPlace: "Калькутта, Индия",
       coordinates: {
@@ -766,7 +766,7 @@ export const india: Country = {
     {
       id: "amitav_ghosh",
       name: "Амитав Гош",
-      years: "1956–",
+      years: "1956-",
       birthDate: "1956-07-11",
       birthPlace: "Калькутта, Индия",
       coordinates: {
@@ -802,7 +802,7 @@ export const india: Country = {
     {
       id: "anita_desai",
       name: "Анита Десаи",
-      years: "1937–",
+      years: "1937-",
       birthDate: "1937-06-24",
       birthPlace: "Муссури, Индия",
       coordinates: {
@@ -837,7 +837,7 @@ export const india: Country = {
     {
       id: "rohinton_mistry",
       name: "Рохинтон Мистри",
-      years: "1952–",
+      years: "1952-",
       birthDate: "1952-07-03",
       birthPlace: "Бомбей (Мумбаи), Индия",
       coordinates: {
@@ -872,7 +872,7 @@ export const india: Country = {
         {
       id: "kiran_desai",
       name: "Киран Десаи",
-      years: "1971–",
+      years: "1971-",
       birthDate: "1971-09-03",
       birthPlace: "Нью-Дели, Индия",
       coordinates: {
@@ -907,7 +907,7 @@ export const india: Country = {
     {
       id: "aravind_adiga",
       name: "Аравинд Адига",
-      years: "1974–",
+      years: "1974-",
       birthDate: "1974-10-23",
       birthPlace: "Ченнаи, Индия",
       coordinates: {
@@ -943,7 +943,7 @@ export const india: Country = {
     {
       id: "chetan_bhagat",
       name: "Четан Бхагат",
-      years: "1974–",
+      years: "1974-",
       birthDate: "1974-04-22",
       birthPlace: "Нью-Дели, Индия",
       coordinates: {
@@ -976,7 +976,7 @@ export const india: Country = {
     {
       id: "anil_menon",
       name: "Анил Менон",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970",
       birthPlace: "Индия",
       coordinates: {
@@ -1008,7 +1008,7 @@ export const india: Country = {
     {
       id: "jhumpa_lahiri",
       name: "Джумпа Лахири",
-      years: "1967–",
+      years: "1967-",
       birthDate: "1967-07-11",
       birthPlace: "Лондон, Великобритания",
       coordinates: {
@@ -1045,7 +1045,7 @@ export const india: Country = {
     {
       id: "amit_chaudhuri",
       name: "Амита Чоудхури",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962-05-15",
       birthPlace: "Калькутта, Индия",
       coordinates: {
@@ -1081,7 +1081,7 @@ export const india: Country = {
         {
       id: "ruskin_bond",
       name: "Раскин Бонд",
-      years: "1934–",
+      years: "1934-",
       birthDate: "1934-05-19",
       birthPlace: "Касаули, Британская Индия",
       coordinates: {
@@ -1119,7 +1119,7 @@ export const india: Country = {
     {
       id: "v_s_naipaul",
       name: "Видиадхар Сураджпрасад Найпол",
-      years: "1932–2018",
+      years: "1932-2018",
       birthDate: "1932-08-17",
       deathDate: "2018-08-11",
       birthPlace: "Чагуанас, Тринидад и Тобаго",
@@ -1157,7 +1157,7 @@ export const india: Country = {
     {
       id: "geetanjali_shree",
       name: "Гитанджали Шри",
-      years: "1957–",
+      years: "1957-",
       birthDate: "1957-06-12",
       birthPlace: "Манипури, Индия",
       coordinates: {
@@ -1191,7 +1191,7 @@ export const india: Country = {
     {
       id: "perumal_murugan",
       name: "Перумал Муруган",
-      years: "1966–",
+      years: "1966-",
       birthDate: "1966-10-15",
       birthPlace: "Намаккал, Индия",
       coordinates: {
@@ -1225,7 +1225,7 @@ export const india: Country = {
     {
       id: "jeet_thayil",
       name: "Джит Тхайил",
-      years: "1959–",
+      years: "1959-",
       birthDate: "1959-10-13",
       birthPlace: "Керала, Индия",
       coordinates: {

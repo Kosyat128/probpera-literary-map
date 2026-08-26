@@ -1,4 +1,4 @@
-# Фактологическая проверка биографий писателей — Batch 22
+# Фактологическая проверка биографий писателей - Batch 22
 
 Дата проверки: 2026-08-09
 
@@ -7,9 +7,9 @@
 - Исправлено: 16
 - Удержано в карантине: 0
 
-Снимок отбора: reviewQueue 1723; ранее назначено 420 (420 уникальных); карантин 44; доступно 1318; граница 20 (20 уникальных); overlap с Batch01–21: 0; overlap с карантином: 0.
+Снимок отбора: reviewQueue 1723; ранее назначено 420 (420 уникальных); карантин 44; доступно 1318; граница 20 (20 уникальных); overlap с Batch01-21: 0; overlap с карантином: 0.
 
-Граница заморожена по исходной fact-QA reviewQueue, точным Batch01–20 reports и frozen Batch21 boundary до последующей runtime-интеграции.
+Граница заморожена по исходной fact-QA reviewQueue, точным Batch01-20 reports и frozen Batch21 boundary до последующей runtime-интеграции.
 
 Изолированный исследовательский пакет: runtime, страновые данные, агрегатор, статьи, книги и интерфейс не изменялись.
 
@@ -18,23 +18,23 @@
 - Решение: `corrected`
 - SHA-256 исходного русского текста: `0790ba9efcb4df34e15c98d2cf688d4977eff64ee914f4a9aa86f4fba7370ff5`
 - Применимый текст: Эквадорская писательница и эссеистка, автор романов «Carta larga sin final» и «Peste blanca, peste negra».
-- Примечание: Сняты недоказательные ранговая и интерпретационная формулы. Date recommendation: shared карточка ошибочно показывает 1904–2004; авторитетная запись Casa de la Cultura указывает рождение 1933-10-14 в Кито и не устанавливает дату смерти. Shared country files не изменялись.
+- Примечание: Сняты недоказательные ранговая и интерпретационная формулы. Date recommendation: shared карточка ошибочно показывает 1904-2004; авторитетная запись Casa de la Cultura указывает рождение 1933-10-14 в Кито и не устанавливает дату смерти. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Лупе Румасо — эквадорская писательница и эссеистка, написавшая романы Carta larga sin final и Peste blanca, peste negra. (`corrected`)
-    - [Academia Ecuatoriana de la Lengua](https://www.academiaecuatorianadelalengua.org/sra-d-a-lupe-rumazo-de-alzamora/) — Официальная страница Эквадорской академии языка приводит литературную и эссеистическую библиографию Румасо и атрибутирует ей оба романа. Проверено: 2026-08-09.
-    - [Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana](https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=7275&marc=1) — Национальный культурный каталог идентифицирует Лупе Румасо Кобо как эквадорскую писательницу и перечисляет Carta larga sin final и Peste blanca, peste negra среди её произведений. Проверено: 2026-08-09.
+  - Лупе Румасо - эквадорская писательница и эссеистка, написавшая романы Carta larga sin final и Peste blanca, peste negra. (`corrected`)
+    - [Academia Ecuatoriana de la Lengua](https://www.academiaecuatorianadelalengua.org/sra-d-a-lupe-rumazo-de-alzamora/) - Официальная страница Эквадорской академии языка приводит литературную и эссеистическую библиографию Румасо и атрибутирует ей оба романа. Проверено: 2026-08-09.
+    - [Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana](https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=7275&marc=1) - Национальный культурный каталог идентифицирует Лупе Румасо Кобо как эквадорскую писательницу и перечисляет Carta larga sin final и Peste blanca, peste negra среди её произведений. Проверено: 2026-08-09.
 
 ## `ecuador:medardo_angel_silva`
 
 - Решение: `corrected`
-- SHA-256 исходного русского текста: `b006becf96be11c6a0f4315fe8911654eb779985bb3f877aab47a895e9629077`
+- SHA-256 исходного русского текста: `0a73af672157ebe0a629875311cf45d2f9c894c947e06415b9d3021e0990a68f`
 - Применимый текст: Эквадорский поэт и журналист, представитель модернизма и «обезглавленного поколения»; автор сборника «El árbol del bien y el mal».
 - Примечание: Суперлатив «один из главных» заменён проверяемыми направлением, группой и произведением. Shared country files не изменялись.
 - Проверенные утверждения:
   - Медардо Анхель Сильва был эквадорским поэтом и журналистом, относился к модернизму и «обезглавленному поколению» и написал El árbol del bien y el mal. (`corrected`)
-    - [Universidad de las Artes del Ecuador](https://www.uartes.edu.ec/sitio/blog/2019/06/10/escuelabierta-de-este-martes-11-de-junio-esta-dedicada-a-medardo-angel-silva/) — Государственный университет называет Сильву эквадорским писателем, поэтом и журналистом, представителем модернизма и участником Generación Decapitada. Проверено: 2026-08-09.
-    - [Pontificia Universidad Católica del Ecuador](https://repositorio.puce.edu.ec/items/13113938-cf92-4b2d-95d4-6abeb85e6785) — Университетское исследование включает Сильву в круг четырёх эквадорских поэтов-модернистов, известных как Generación Decapitada. Проверено: 2026-08-09.
-    - [Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana](https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-detail.pl?biblionumber=37366) — Библиотечная запись атрибутирует Медардо Анхелю Сильве поэтический сборник El árbol del bien y el mal. Проверено: 2026-08-09.
+    - [Universidad de las Artes del Ecuador](https://www.uartes.edu.ec/sitio/blog/2019/06/10/escuelabierta-de-este-martes-11-de-junio-esta-dedicada-a-medardo-angel-silva/) - Государственный университет называет Сильву эквадорским писателем, поэтом и журналистом, представителем модернизма и участником Generación Decapitada. Проверено: 2026-08-09.
+    - [Pontificia Universidad Católica del Ecuador](https://repositorio.puce.edu.ec/items/13113938-cf92-4b2d-95d4-6abeb85e6785) - Университетское исследование включает Сильву в круг четырёх эквадорских поэтов-модернистов, известных как Generación Decapitada. Проверено: 2026-08-09.
+    - [Biblioteca y Archivo de la Casa de la Cultura Ecuatoriana](https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-detail.pl?biblionumber=37366) - Библиотечная запись атрибутирует Медардо Анхелю Сильве поэтический сборник El árbol del bien y el mal. Проверено: 2026-08-09.
 
 ## `ecuador:monica_ojeda`
 
@@ -43,9 +43,9 @@
 - Применимый текст: Эквадорская писательница и поэтесса, автор романов «Nefando» и «Mandíbula» и сборника рассказов «Las voladoras».
 - Примечание: Ранговая и тематическая оценка заменена ролями и конкретной библиографией; Las voladoras дополнительно подтверждён издателем и материалами UArtes. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Моника Охеда — эквадорская писательница и поэтесса, автор романов Nefando и Mandíbula и сборника рассказов Las voladoras. (`corrected`)
-    - [Coffee House Press](https://coffeehousepress.org/products/nefando) — Издательская биография указывает эквадорское происхождение Охеды и атрибутирует ей Nefando, Mandíbula, поэтические книги и Las voladoras. Проверено: 2026-08-09.
-    - [Universidad de las Artes del Ecuador](https://www.uartes.edu.ec/sitio/en/blog/2019/09/05/escritora-ecuatoriana-monica-ojeda-gana-premio-principe-claus-2019/) — Государственный университет называет Охеду эквадорской писательницей, автором Nefando и Mandíbula, и документирует издание её поэзии. Проверено: 2026-08-09.
+  - Моника Охеда - эквадорская писательница и поэтесса, автор романов Nefando и Mandíbula и сборника рассказов Las voladoras. (`corrected`)
+    - [Coffee House Press](https://coffeehousepress.org/products/nefando) - Издательская биография указывает эквадорское происхождение Охеды и атрибутирует ей Nefando, Mandíbula, поэтические книги и Las voladoras. Проверено: 2026-08-09.
+    - [Universidad de las Artes del Ecuador](https://www.uartes.edu.ec/sitio/en/blog/2019/09/05/escritora-ecuatoriana-monica-ojeda-gana-premio-principe-claus-2019/) - Государственный университет называет Охеду эквадорской писательницей, автором Nefando и Mandíbula, и документирует издание её поэзии. Проверено: 2026-08-09.
 
 ## `egypt:abbas_al_aqqad`
 
@@ -55,8 +55,8 @@
 - Примечание: Широкое слово «мыслитель» заменено точно каталогизированными литературными ролями. Shared country files не изменялись.
 - Проверенные утверждения:
   - Аббас Махмуд аль-Аккад был египетским писателем, эссеистом и литературным критиком. (`corrected`)
-    - [Bibliothèque nationale de France](https://catalogue.bnf.fr/ark%3A/12148/cb12272352s) — Национальная библиотека Франции указывает Египет как страну автора и определяет аль-Аккада как писателя, эссеиста и критика. Проверено: 2026-08-09.
-    - [Treccani](https://www.treccani.it/enciclopedia/abbas-mahmud-al-aqqad/) — Итальянская национальная энциклопедия независимо описывает аль-Аккада как египетского поэта, критика и эссеиста. Проверено: 2026-08-09.
+    - [Bibliothèque nationale de France](https://catalogue.bnf.fr/ark%3A/12148/cb12272352s) - Национальная библиотека Франции указывает Египет как страну автора и определяет аль-Аккада как писателя, эссеиста и критика. Проверено: 2026-08-09.
+    - [Treccani](https://www.treccani.it/enciclopedia/abbas-mahmud-al-aqqad/) - Итальянская национальная энциклопедия независимо описывает аль-Аккада как египетского поэта, критика и эссеиста. Проверено: 2026-08-09.
 
 ## `egypt:ahdaf_soueif`
 
@@ -65,9 +65,9 @@
 - Применимый текст: Египетская писательница, создающая произведения на английском языке.
 - Примечание: Исходное краткое описание точно и нейтрально; независимые авторская и университетская записи подтверждают происхождение и язык творчества. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Ахдаф Суэйф — египетская писательница, создающая литературные произведения на английском языке. (`supported`)
-    - [Ahdaf Soueif — official author site](https://www.ahdafsoueif.net/about) — Официальная авторская страница перечисляет англоязычные романы, рассказы и эссе Суэйф. Проверено: 2026-08-09.
-    - [American University in Cairo — Knowledge Fountain](https://fount.aucegypt.edu/faculty_journal_articles/3149/) — Университетская запись интервью прямо характеризует Суэйф как египетскую писательницу, пишущую на английском языке. Проверено: 2026-08-09.
+  - Ахдаф Суэйф - египетская писательница, создающая литературные произведения на английском языке. (`supported`)
+    - [Ahdaf Soueif - official author site](https://www.ahdafsoueif.net/about) - Официальная авторская страница перечисляет англоязычные романы, рассказы и эссе Суэйф. Проверено: 2026-08-09.
+    - [American University in Cairo - Knowledge Fountain](https://fount.aucegypt.edu/faculty_journal_articles/3149/) - Университетская запись интервью прямо характеризует Суэйф как египетскую писательницу, пишущую на английском языке. Проверено: 2026-08-09.
 
 ## `egypt:ahmad_shawqi`
 
@@ -77,8 +77,8 @@
 - Примечание: Недоказательный суперлатив снят; сохранены роли и добавлены два документированных произведения. Shared country files не изменялись.
 - Проверенные утверждения:
   - Ахмед Шауки был египетским поэтом и драматургом и написал Смерть Клеопатры и Аш-Шаукият. (`corrected`)
-    - [Egypt State Information Service](https://us.sis.gov.eg/Story/97858/Ahmed-Shawqi--%281868---1932%29?lang=en-us) — Официальная государственная биография определяет Шауки как египетского поэта и драматурга и перечисляет The Death of Cleopatra и Ash-Shawqiyyat. Проверено: 2026-08-09.
-    - [Ahmed Shawki National Museum](https://www.egyptianmuseums.net/html/ahmed_shawqi.html) — Музейная биография независимо атрибутирует Шауки пьесу The Death of Cleopatra и четырёхтомный поэтический корпус Ash-Shawqiyyat. Проверено: 2026-08-09.
+    - [Egypt State Information Service](https://us.sis.gov.eg/Story/97858/Ahmed-Shawqi--%281868---1932%29?lang=en-us) - Официальная государственная биография определяет Шауки как египетского поэта и драматурга и перечисляет The Death of Cleopatra и Ash-Shawqiyyat. Проверено: 2026-08-09.
+    - [Ahmed Shawki National Museum](https://www.egyptianmuseums.net/html/ahmed_shawqi.html) - Музейная биография независимо атрибутирует Шауки пьесу The Death of Cleopatra и четырёхтомный поэтический корпус Ash-Shawqiyyat. Проверено: 2026-08-09.
 
 ## `egypt:alaa_al_aswany`
 
@@ -87,9 +87,9 @@
 - Применимый текст: Египетский писатель, автор романа «Дом Якобяна».
 - Примечание: Ранг популярности заменён нейтральной атрибуцией конкретного романа. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Алаа аль-Асуани — египетский писатель, автор романа Дом Якобяна. (`corrected`)
-    - [Penguin Random House](https://www.penguinrandomhouse.com/authors/2069280/alaa-al-aswany/) — Издательская страница определяет аль-Асуани как автора художественной прозы и атрибутирует ему The Yacoubian Building. Проверено: 2026-08-09.
-    - [New York Public Library](https://web.nypl.org/blog/2025/03/28/nypl-researcher-spotlight-alaa-al-aswany) — Профиль исследователя NYPL называет родившегося в Каире аль-Асуани романистом и подтверждает его авторство The Yacoubian Building. Проверено: 2026-08-09.
+  - Алаа аль-Асуани - египетский писатель, автор романа Дом Якобяна. (`corrected`)
+    - [Penguin Random House](https://www.penguinrandomhouse.com/authors/2069280/alaa-al-aswany/) - Издательская страница определяет аль-Асуани как автора художественной прозы и атрибутирует ему The Yacoubian Building. Проверено: 2026-08-09.
+    - [New York Public Library](https://web.nypl.org/blog/2025/03/28/nypl-researcher-spotlight-alaa-al-aswany) - Профиль исследователя NYPL называет родившегося в Каире аль-Асуани романистом и подтверждает его авторство The Yacoubian Building. Проверено: 2026-08-09.
 
 ## `egypt:edward_al_kharrat`
 
@@ -99,8 +99,8 @@
 - Примечание: Широкая классификация модернизма заменена бесспорной ролью и конкретным романом. Shared country files не изменялись.
 - Проверенные утверждения:
   - Эдвар аль-Харрат был египетским писателем и написал роман Рама и дракон. (`corrected`)
-    - [The American University in Cairo Press](https://aucpress.com/author/edwar-al-kharrat/) — Университетское издательство описывает александрийского автора как создателя романов, рассказов, критики и поэзии и атрибутирует ему Rama and the Dragon. Проверено: 2026-08-09.
-    - [The Arab British Centre](https://www.arabbritishcentre.org.uk/resources/library/books/rama-dragon/) — Библиотека зарегистрированной культурной благотворительной организации независимо атрибутирует Rama and the Dragon Эдвару аль-Харрату и приводит его писательскую биографию. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/author/edwar-al-kharrat/) - Университетское издательство описывает александрийского автора как создателя романов, рассказов, критики и поэзии и атрибутирует ему Rama and the Dragon. Проверено: 2026-08-09.
+    - [The Arab British Centre](https://www.arabbritishcentre.org.uk/resources/library/books/rama-dragon/) - Библиотека зарегистрированной культурной благотворительной организации независимо атрибутирует Rama and the Dragon Эдвару аль-Харрату и приводит его писательскую биографию. Проверено: 2026-08-09.
 
 ## `egypt:gamal_al_ghitani`
 
@@ -110,30 +110,30 @@
 - Примечание: Обобщённая характеристика тематики заменена точной ролью и произведением. Shared country files не изменялись.
 - Проверенные утверждения:
   - Гамаль аль-Гитани был египетским писателем и литературным редактором и написал роман Зайни Баракат. (`corrected`)
-    - [The American University in Cairo Press](https://aucpress.com/9781649034663/) — Университетское издательство называет аль-Гитани египетским романистом и основателем-редактором Akhbar al-adab и атрибутирует ему Zayni Barakat. Проверено: 2026-08-09.
-    - [Comma Press](https://commapress.co.uk/authors/gamal-al-ghitani) — Независимое литературное издательство подтверждает редакторскую деятельность аль-Гитани и его авторство романа Zaini Barakat. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/9781649034663/) - Университетское издательство называет аль-Гитани египетским романистом и основателем-редактором Akhbar al-adab и атрибутирует ему Zayni Barakat. Проверено: 2026-08-09.
+    - [Comma Press](https://commapress.co.uk/authors/gamal-al-ghitani) - Независимое литературное издательство подтверждает редакторскую деятельность аль-Гитани и его авторство романа Zaini Barakat. Проверено: 2026-08-09.
 
 ## `egypt:hamdi_abu_golayyel`
 
 - Решение: `corrected`
 - SHA-256 исходного русского текста: `843323d6119873d231073a7d99332cc1b48934fe86ede1f0f30c5b787b6166d7`
 - Применимый текст: Египетский писатель и журналист, автор романов «Thieves in Retirement» и «A Dog with No Tail».
-- Примечание: Расплывчатая тематическая формула заменена ролями и произведениями. Date recommendation: оба источника подтверждают смерть в 2023 году, отсутствующую в shared карточке; год рождения расходится — AUC Press указывает 1967, Words Without Borders 1968, поэтому точный год требует дополнительного разрешения. Shared country files не изменялись.
+- Примечание: Расплывчатая тематическая формула заменена ролями и произведениями. Date recommendation: оба источника подтверждают смерть в 2023 году, отсутствующую в shared карточке; год рождения расходится - AUC Press указывает 1967, Words Without Borders 1968, поэтому точный год требует дополнительного разрешения. Shared country files не изменялись.
 - Проверенные утверждения:
   - Хамди Абу Голайель был египетским писателем и журналистом и написал романы Thieves in Retirement и A Dog with No Tail. (`corrected`)
-    - [The American University in Cairo Press](https://aucpress.com/author/hamdi-abu-golayyel/) — Университетское издательство называет Абу Голайеля египетским писателем и журналистом и перечисляет оба романа. Проверено: 2026-08-09.
-    - [Words Without Borders](https://wordswithoutborders.org/contributors/view/hamdi-abu-golayyel/) — Некоммерческая литературная организация независимо атрибутирует автору Thieves in Retirement и A Dog with No Tail и документирует его редакторскую работу. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/author/hamdi-abu-golayyel/) - Университетское издательство называет Абу Голайеля египетским писателем и журналистом и перечисляет оба романа. Проверено: 2026-08-09.
+    - [Words Without Borders](https://wordswithoutborders.org/contributors/view/hamdi-abu-golayyel/) - Некоммерческая литературная организация независимо атрибутирует автору Thieves in Retirement и A Dog with No Tail и документирует его редакторскую работу. Проверено: 2026-08-09.
 
 ## `egypt:ibrahim_aslan`
 
 - Решение: `corrected`
 - SHA-256 исходного русского текста: `d983541926dd06b93e08e1dab7613df5763c3c6e411128f9ae0e26f8bb9416ee`
 - Применимый текст: Египетский прозаик, автор романов «Цапля» («Malik al-hazin») и «Нильские воробьи».
-- Примечание: Непроверяемая тематическая оценка заменена двумя произведениями. Date recommendation: смерть в 2012 году согласована; AUC Press указывает рождение в 1937 году, Banipal — в 1936, тогда как shared карточка показывает 1935, поэтому точный год рождения следует удержать до разрешения расхождения. Shared country files не изменялись.
+- Примечание: Непроверяемая тематическая оценка заменена двумя произведениями. Date recommendation: смерть в 2012 году согласована; AUC Press указывает рождение в 1937 году, Banipal - в 1936, тогда как shared карточка показывает 1935, поэтому точный год рождения следует удержать до разрешения расхождения. Shared country files не изменялись.
 - Проверенные утверждения:
   - Ибрахим Аслан был египетским прозаиком и написал романы Цапля (Malik al-hazin) и Нильские воробьи. (`corrected`)
-    - [The American University in Cairo Press](https://aucpress.com/author/ibrahim-aslan/) — Университетское издательство атрибутирует египетскому автору первый роман Malik al-hazin (The Heron) и книгу Nile Sparrows. Проверено: 2026-08-09.
-    - [Banipal](https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/) — Специализированный журнал современной арабской литературы независимо рассматривает The Heron и Nile Sparrows как романы Ибрахима Аслана. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/author/ibrahim-aslan/) - Университетское издательство атрибутирует египетскому автору первый роман Malik al-hazin (The Heron) и книгу Nile Sparrows. Проверено: 2026-08-09.
+    - [Banipal](https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/) - Специализированный журнал современной арабской литературы независимо рассматривает The Heron и Nile Sparrows как романы Ибрахима Аслана. Проверено: 2026-08-09.
 
 ## `egypt:miral_al_tahawy`
 
@@ -142,9 +142,9 @@
 - Применимый текст: Египетская писательница и исследовательница арабской литературы, автор романов «Палатка» и «Бруклинские высоты».
 - Примечание: Обобщённая гендерно-поколенческая формула заменена академической ролью и двумя романами. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Мираль аль-Тахави — египетская писательница и исследовательница арабской литературы, автор романов Палатка и Бруклинские высоты. (`corrected`)
-    - [Arizona State University](https://news.asu.edu/content/egyptian-scholar-new-life-grew-brooklyn) — Университетская биография называет аль-Тахави египетской исследовательницей и писательницей и атрибутирует ей The Tent и Brooklyn Heights. Проверено: 2026-08-09.
-    - [The American University in Cairo Press](https://aucpress.com/9789774166594/) — Университетское издательство независимо связывает аль-Тахави с преподаванием арабской литературы и романами The Tent и Brooklyn Heights. Проверено: 2026-08-09.
+  - Мираль аль-Тахави - египетская писательница и исследовательница арабской литературы, автор романов Палатка и Бруклинские высоты. (`corrected`)
+    - [Arizona State University](https://news.asu.edu/content/egyptian-scholar-new-life-grew-brooklyn) - Университетская биография называет аль-Тахави египетской исследовательницей и писательницей и атрибутирует ей The Tent и Brooklyn Heights. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/9789774166594/) - Университетское издательство независимо связывает аль-Тахави с преподаванием арабской литературы и романами The Tent и Brooklyn Heights. Проверено: 2026-08-09.
 
 ## `egypt:muhammad_husayn_haykal`
 
@@ -154,8 +154,8 @@
 - Примечание: Историографически спорный ранг романа снят; оставлены роли и надёжно атрибутированное произведение. Shared country files не изменялись.
 - Проверенные утверждения:
   - Мухаммад Хусейн Хайкаль был египетским писателем, журналистом и политическим деятелем и написал роман Зейнаб. (`corrected`)
-    - [Safahat — Hindawi author archive](https://www.safahat.org/contributors/73037206/) — Авторская страница издательского архива описывает Хайкаля как египетского писателя, журналиста, историка и политика и включает Зейнаб в его библиографию. Проверено: 2026-08-09.
-    - [Treccani](https://www.treccani.it/enciclopedia/muhammad-husain-haikal/) — Итальянская национальная энциклопедия независимо подтверждает литературную, журналистскую и политическую деятельность Хайкаля и роман Zaynab. Проверено: 2026-08-09.
+    - [Safahat - Hindawi author archive](https://www.safahat.org/contributors/73037206/) - Авторская страница издательского архива описывает Хайкаля как египетского писателя, журналиста, историка и политика и включает Зейнаб в его библиографию. Проверено: 2026-08-09.
+    - [Treccani](https://www.treccani.it/enciclopedia/muhammad-husain-haikal/) - Итальянская национальная энциклопедия независимо подтверждает литературную, журналистскую и политическую деятельность Хайкаля и роман Zaynab. Проверено: 2026-08-09.
 
 ## `egypt:radwa_ashour`
 
@@ -165,8 +165,8 @@
 - Примечание: Исходное краткое описание нейтрально и полностью подтверждается университетским издательством и официальной культурной организацией. Shared country files не изменялись.
 - Проверенные утверждения:
   - Радва Ашур была египетской писательницей, литературным критиком и исследовательницей. (`supported`)
-    - [The American University in Cairo Press](https://aucpress.com/9781649033765/) — Университетское издательство характеризует Ашур как египетскую писательницу и исследовательницу, публиковавшую художественную прозу, мемуары и литературную критику. Проверено: 2026-08-09.
-    - [Sultan Bin Ali Al Owais Cultural Foundation](https://www.alowais.com/en/radwa-ashour/) — Официальная страница премии независимо описывает Ашур как египетскую писательницу и университетскую исследовательницу и перечисляет её критические труды. Проверено: 2026-08-09.
+    - [The American University in Cairo Press](https://aucpress.com/9781649033765/) - Университетское издательство характеризует Ашур как египетскую писательницу и исследовательницу, публиковавшую художественную прозу, мемуары и литературную критику. Проверено: 2026-08-09.
+    - [Sultan Bin Ali Al Owais Cultural Foundation](https://www.alowais.com/en/radwa-ashour/) - Официальная страница премии независимо описывает Ашур как египетскую писательницу и университетскую исследовательницу и перечисляет её критические труды. Проверено: 2026-08-09.
 
 ## `egypt:yusuf_idris`
 
@@ -176,8 +176,8 @@
 - Примечание: Оценочное звание «мастер» заменено литературными ролями и конкретной пьесой. Shared country files не изменялись.
 - Проверенные утверждения:
   - Юсуф Идрис был египетским писателем и драматургом и написал пьесу Аль-Фарафир. (`corrected`)
-    - [Cambridge University Press](https://www.cambridge.org/core/books/abs/an-introduction-to-arabic-literature/drama/6F872D570E388CF39088DE83C4242B98) — Академическое издание определяет Юсуфа Идриса как египетского автора рассказов и драматурга и рассматривает его пьесу al-Farafir. Проверено: 2026-08-09.
-    - [American University in Cairo — Knowledge Fountain](https://fount.aucegypt.edu/faculty_journal_articles/3526/) — Университетская публикация независимо атрибутирует Юсуфу Идрису пьесу al-Farafir и исследует её театральную концепцию. Проверено: 2026-08-09.
+    - [Cambridge University Press](https://www.cambridge.org/core/books/abs/an-introduction-to-arabic-literature/drama/6F872D570E388CF39088DE83C4242B98) - Академическое издание определяет Юсуфа Идриса как египетского автора рассказов и драматурга и рассматривает его пьесу al-Farafir. Проверено: 2026-08-09.
+    - [American University in Cairo - Knowledge Fountain](https://fount.aucegypt.edu/faculty_journal_articles/3526/) - Университетская публикация независимо атрибутирует Юсуфу Идрису пьесу al-Farafir и исследует её театральную концепцию. Проверено: 2026-08-09.
 
 ## `el_salvador:alvaro_menen_desleal`
 
@@ -187,8 +187,8 @@
 - Примечание: Широкая поколенческая характеристика заменена проверяемыми ролью и произведением. Shared country files не изменялись.
 - Проверенные утверждения:
   - Альваро Менен Деслеаль был сальвадорским писателем и драматургом и написал пьесу Luz negra. (`corrected`)
-    - [Universidad de El Salvador — El Universitario](https://eluniversitario.ues.edu.sv/escritores-salvadorenos-alvaro-menen-desleal/) — Государственный университет называет Менена Деслеаля рассказчиком и драматургом из Сальвадора и включает Luz negra в его театральную библиографию. Проверено: 2026-08-09.
-    - [Universidad Centroamericana José Simeón Cañas](https://revistas.uca.edu.sv/index.php/eca/article/download/10422/10661) — Университетское исследование центральноамериканского театра независимо атрибутирует пьесу Luz negra Альваро Менену Деслеалю из Сальвадора. Проверено: 2026-08-09.
+    - [Universidad de El Salvador - El Universitario](https://eluniversitario.ues.edu.sv/escritores-salvadorenos-alvaro-menen-desleal/) - Государственный университет называет Менена Деслеаля рассказчиком и драматургом из Сальвадора и включает Luz negra в его театральную библиографию. Проверено: 2026-08-09.
+    - [Universidad Centroamericana José Simeón Cañas](https://revistas.uca.edu.sv/index.php/eca/article/download/10422/10661) - Университетское исследование центральноамериканского театра независимо атрибутирует пьесу Luz negra Альваро Менену Деслеалю из Сальвадора. Проверено: 2026-08-09.
 
 ## `el_salvador:claribel_alegria`
 
@@ -198,19 +198,19 @@
 - Примечание: Субъективный ранг заменён двойной культурной принадлежностью и двумя официально подтверждёнными премиями. Shared country files не изменялись.
 - Проверенные утверждения:
   - Кларибель Алегрия была никарагуанско-сальвадорской поэтессой и писательницей и получила Нейштадтскую премию в 2006 году и премию королевы Софии в 2017 году. (`corrected`)
-    - [Neustadt Prizes — University of Oklahoma](https://www.neustadtprize.org/2006-neustadt-prize-laureate-claribel-alegria/) — Официальная страница премии фиксирует лауреатство Алегрии в 2006 году, рождение в Никарагуа и её воспитание и литературную связь с Сальвадором. Проверено: 2026-08-09.
-    - [Universidad de Salamanca — Premio Reina Sofía](https://premioreinasofia.usal.es/claribel-alegria/) — Официальный университетский портал подтверждает присуждение премии королевы Софии 2017 года и документирует никарагуанско-сальвадорскую биографию поэтессы. Проверено: 2026-08-09.
+    - [Neustadt Prizes - University of Oklahoma](https://www.neustadtprize.org/2006-neustadt-prize-laureate-claribel-alegria/) - Официальная страница премии фиксирует лауреатство Алегрии в 2006 году, рождение в Никарагуа и её воспитание и литературную связь с Сальвадором. Проверено: 2026-08-09.
+    - [Universidad de Salamanca - Premio Reina Sofía](https://premioreinasofia.usal.es/claribel-alegria/) - Официальный университетский портал подтверждает присуждение премии королевы Софии 2017 года и документирует никарагуанско-сальвадорскую биографию поэтессы. Проверено: 2026-08-09.
 
 ## `england:agatha_christie`
 
 - Решение: `unchanged`
-- SHA-256 исходного русского текста: `7a40befbc795fb0eecfa46dfcf4a832c40e8cbda783bef37d257f3ad8a04816c`
-- Применимый текст: Агата Кристи — английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».
+- SHA-256 исходного русского текста: `8935d7a434d4ab9e11ebd34201a50d8aeed644e9728dab75bfe5b5324d4fa3a6`
+- Применимый текст: Агата Кристи - английская писательница и драматург, прославившаяся детективной прозой. К её романам относится «И никого не стало».
 - Примечание: Исходное описание точно, нейтрально и подтверждено estate и национальной библиотекой. Identity recommendation: Q35064 соответствует Агате Кристи; подтверждение следует оформить отдельно от shared country data. Shared country files не изменялись.
 - Проверенные утверждения:
   - Агата Кристи была английской писательницей и драматургом, писала детективную прозу и является автором романа И никого не стало. (`supported`)
-    - [Agatha Christie Limited — official estate](https://www.agathachristie.com/about-christie) — Официальная биография наследия подтверждает рождение Кристи в Англии, её работу писательницы и драматурга и корпус детективных романов. Проверено: 2026-08-09.
-    - [British Library](https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie) — Британская библиотека документирует писательскую и театральную деятельность Кристи и называет And Then There Were None её романом 1939 года. Проверено: 2026-08-09.
+    - [Agatha Christie Limited - official estate](https://www.agathachristie.com/about-christie) - Официальная биография наследия подтверждает рождение Кристи в Англии, её работу писательницы и драматурга и корпус детективных романов. Проверено: 2026-08-09.
+    - [British Library](https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie) - Британская библиотека документирует писательскую и театральную деятельность Кристи и называет And Then There Were None её романом 1939 года. Проверено: 2026-08-09.
 
 ## `england:aldous_huxley`
 
@@ -220,17 +220,17 @@
 - Примечание: Субъективный ранг романа снят; сохранены жанр автора и надёжно атрибутированная антиутопия. Shared country files не изменялись.
 - Проверенные утверждения:
   - Олдос Хаксли был английским писателем и эссеистом и написал роман-антиутопию О дивный новый мир. (`corrected`)
-    - [Dartmouth Libraries Archives & Manuscripts](https://archives-manuscripts.dartmouth.edu/agents/people/1599) — Университетский архив определяет Хаксли как английского автора романов, эссе и других жанров и включает Brave New World в перечень его произведений. Проверено: 2026-08-09.
-    - [HarperAcademic](https://www.harperacademic.com/book/9780061767647/brave-new-world/) — Официальная издательская страница атрибутирует Brave New World Олдосу Хаксли и классифицирует книгу как роман и антиутопию. Проверено: 2026-08-09.
+    - [Dartmouth Libraries Archives & Manuscripts](https://archives-manuscripts.dartmouth.edu/agents/people/1599) - Университетский архив определяет Хаксли как английского автора романов, эссе и других жанров и включает Brave New World в перечень его произведений. Проверено: 2026-08-09.
+    - [HarperAcademic](https://www.harperacademic.com/book/9780061767647/brave-new-world/) - Официальная издательская страница атрибутирует Brave New World Олдосу Хаксли и классифицирует книгу как роман и антиутопию. Проверено: 2026-08-09.
 
 ## `england:alex_garland`
 
 - Решение: `unchanged`
-- SHA-256 исходного русского текста: `eceb3d15eca677fcddbb3b0c9060c806b481c29f8948c86cdab60deaca1de4cf`
-- Применимый текст: Алекс Гарленд — британский писатель, сценарист и режиссёр. Его дебютный роман — «Пляж».
+- SHA-256 исходного русского текста: `5e9a063ab47f1f6e0667bf418abd626b80df64d15c1e6dcc3f9742a77d0c57a0`
+- Применимый текст: Алекс Гарленд - британский писатель, сценарист и режиссёр. Его дебютный роман - «Пляж».
 - Примечание: Исходное описание точно и профессионально. Identity recommendation: Q542634 соответствует Алексу Гарленду; подтверждение следует оформить отдельно от shared country data. Shared country files не изменялись.
 - Проверенные утверждения:
-  - Алекс Гарленд — британский писатель, сценарист и режиссёр, дебютировавший в литературе романом Пляж. (`supported`)
-    - [Penguin Books](https://www.penguin.co.uk/books/56173/the-beach-by-garland-alex/9780241976562) — Издательская биография называет родившегося в Лондоне Гарленда автором романов и сценариев, фиксирует его режиссёрский дебют и атрибутирует ему The Beach как дебютный роман. Проверено: 2026-08-09.
-    - [British Film Institute](https://www.bfi.org.uk/features/where-begin-with-alex-garland) — Британский институт кино независимо описывает Гарленда как романиста, сценариста и режиссёра и называет The Beach его дебютным романом. Проверено: 2026-08-09.
+  - Алекс Гарленд - британский писатель, сценарист и режиссёр, дебютировавший в литературе романом Пляж. (`supported`)
+    - [Penguin Books](https://www.penguin.co.uk/books/56173/the-beach-by-garland-alex/9780241976562) - Издательская биография называет родившегося в Лондоне Гарленда автором романов и сценариев, фиксирует его режиссёрский дебют и атрибутирует ему The Beach как дебютный роман. Проверено: 2026-08-09.
+    - [British Film Institute](https://www.bfi.org.uk/features/where-begin-with-alex-garland) - Британский институт кино независимо описывает Гарленда как романиста, сценариста и режиссёра и называет The Beach его дебютным романом. Проверено: 2026-08-09.
 

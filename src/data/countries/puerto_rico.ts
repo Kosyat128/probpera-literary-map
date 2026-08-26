@@ -8,7 +8,7 @@ export const puertoRico: Country = {
     {
       id: "julia_de_burgos",
       name: "Хулия де Бургос",
-      years: "1914–1953",
+      years: "1914-1953",
       birthDate: "1914-02-17",
       deathDate: "1953-07-06",
       birthPlace: "Каролина, Пуэрто-Рико",
@@ -22,7 +22,7 @@ export const puertoRico: Country = {
       works: [
         "Рио-Гранде-де-Лоиса",
         "Песнь простой истины",
-        "Я — моя"
+        "Я - моя"
       ],
       genres: [
         "поэзия",
@@ -46,7 +46,7 @@ export const puertoRico: Country = {
     {
       id: "rene_marques",
       name: "Рене Маркес",
-      years: "1919–1979",
+      years: "1919-1979",
       birthDate: "1919-10-04",
       deathDate: "1979-03-22",
       birthPlace: "Аресибо, Пуэрто-Рико",
@@ -85,7 +85,7 @@ export const puertoRico: Country = {
     {
       id: "jose_luis_gonzalez",
       name: "Хосе Луис Гонсалес",
-      years: "1926–1996",
+      years: "1926-1996",
       birthDate: "1926-03-08",
       deathDate: "1996-12-08",
       birthPlace: "Сан-Хуан, Пуэрто-Рико",
@@ -121,7 +121,7 @@ export const puertoRico: Country = {
     {
       id: "manuel_ramos_otero",
       name: "Мануэль Рамос Отеро",
-      years: "1948–1990",
+      years: "1948-1990",
       birthDate: "1948-07-22",
       deathDate: "1990-10-07",
       birthPlace: "Манати, Пуэрто-Рико",
@@ -158,7 +158,7 @@ export const puertoRico: Country = {
     {
       id: "esmeralda_santiago",
       name: "Эсмеральда Сантьяго",
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-05-17",
       birthPlace: "Сан-Хуан, Пуэрто-Рико",
       coordinates: {

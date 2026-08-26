@@ -8,7 +8,7 @@ export const suriname: Country = {
     {
       id: "dobru",
       name: "Добру (Робин Равалес)",
-      years: "1935–1983",
+      years: "1935-1983",
       birthDate: "1935-11-18",
       deathDate: "1983-11-03",
       birthPlace: "Парамарибо, Суринам",
@@ -44,7 +44,7 @@ export const suriname: Country = {
         {
       id: "albert_helman",
       name: "Альберт Хелман",
-      years: "1903–1996",
+      years: "1903-1996",
       birthDate: "1903-11-07",
       deathDate: "1996-07-10",
       birthPlace: "Парамарибо, Суринам",
@@ -83,7 +83,7 @@ export const suriname: Country = {
     {
       id: "cynthia_mccleod",
       name: "Синтия Маклеод",
-      years: "1936–",
+      years: "1936-",
       birthDate: "1936-10-04",
       birthPlace: "Парамарибо, Суринам",
       coordinates: {
@@ -119,7 +119,7 @@ export const suriname: Country = {
         {
       id: "clarrisa_lispenard",
       name: "Кларисса Лиспенард",
-      years: "XX–XXI век",
+      years: "XX-XXI век",
       birthPlace: "Суринам",
       coordinates: {
         lat: 5.852,

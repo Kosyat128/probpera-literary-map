@@ -1,11 +1,11 @@
 export const oeProfile = {
  id:"oe",
  fullName:"Кэндзабуро Оэ",
- years:"1935–2023",
+ years:"1935-2023",
  country:"Япония",
  birthPlace:"Ути, Япония",
  movement:"Модернизм",
- century:"XX–XXI века",
+ century:"XX-XXI века",
  language:"Японский",
  nobel:true,
  nobelYear:1994,

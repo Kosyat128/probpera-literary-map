@@ -14,7 +14,7 @@ export const marshallIslands: Country = {
 
       fullName: "Kathy Jetnil-Kijiner",
 
-      years: "1989–",
+      years: "1989-",
 
       birthDate: "1989-01-01",
 

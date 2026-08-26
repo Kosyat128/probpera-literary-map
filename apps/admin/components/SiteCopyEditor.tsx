@@ -128,7 +128,7 @@ export default function SiteCopyEditor({
                       placeholder={definition.defaultRu}
                     />
                   )}
-                  <small>Пусто — исходный текст: {definition.defaultRu}</small>
+                  <small>Пусто - исходный текст: {definition.defaultRu}</small>
                 </label>
                 <label className="field">
                   <span>English · необязательно</span>
@@ -150,7 +150,7 @@ export default function SiteCopyEditor({
                     />
                   )}
                   <small>
-                    Пусто — используется текущий английский перевод сайта.
+                    Пусто - используется текущий английский перевод сайта.
                   </small>
                 </label>
               </div>

@@ -80,7 +80,7 @@ def normalize_text(value: str, key: str) -> str:
             v = lines[0]
 
     if key == "years" and v == "":
-        v = "—"
+        v = "-"
 
     v = v.replace("  ", " ").strip()
     v = re.sub(r"\s{2,}", " ", v)

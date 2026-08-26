@@ -122,7 +122,7 @@
               "findingRu": "Каталог BnF фиксирует литературные роли Виктора Гюго и атрибутирует ему оба названных романа."
             },
             {
-              "provider": "Maisons de Victor Hugo — Paris Musées",
+              "provider": "Maisons de Victor Hugo - Paris Musées",
               "url": "https://www.maisonsvictorhugo.paris.fr/en/paris/museum/find-out-more-about-victor-hugo/des-questions-sur-la-vie-de-victor-hugo",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальный музейный профиль независимо характеризует Гюго как поэта, романиста и драматурга и связывает с ним «Собор Парижской Богоматери» и «Отверженных»."
@@ -203,7 +203,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Western Australia — African Literature",
+              "provider": "University of Western Australia - African Literature",
               "url": "https://aflit.arts.uwa.edu.au/AMINARawiri.html",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский справочник подтверждает габонское происхождение Анжель Равири и её авторство романов «Elonga» и «Fureurs et cris de femmes»."
@@ -296,7 +296,7 @@
               "findingRu": "Авторитетная запись BnF подтверждает габонскую принадлежность, писательскую и драматургическую деятельность Лорана Овондо и его авторство «Au bout du silence»."
             },
             {
-              "provider": "University of Western Australia — African Literature",
+              "provider": "University of Western Australia - African Literature",
               "url": "https://aflit.arts.uwa.edu.au/CountryGabonFR.html",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский обзор литературы Габона независимо называет Овондо писателем и драматургом и связывает его с романом «Au bout du silence»."
@@ -325,7 +325,7 @@
               "findingRu": "Каталог BnF фиксирует Сильви Нтсаме как габонского автора и атрибутирует ей «La Fille du Komo» и «Le soir autour du feu»."
             },
             {
-              "provider": "University of Western Australia — African Literature",
+              "provider": "University of Western Australia - African Literature",
               "url": "https://aflit.arts.uwa.edu.au/NtsameSylvieEng.html",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский профиль независимо подтверждает её писательскую и издательскую деятельность и называет оба произведения."
@@ -515,10 +515,10 @@
     {
       "key": "georgia:galaktion_tabidze",
       "originalSha256": "60420ecbaf51e01343c766a3b91e4d9640633abf87365cf0e84325e28c5ed421",
-      "reviewedTextRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй — в 1919 году.",
+      "reviewedTextRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй - в 1919 году.",
       "claims": [
         {
-          "textRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй — в 1919 году.",
+          "textRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй - в 1919 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -539,7 +539,7 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 29",
       "decision": "corrected",
       "notes": "Date recommendation: карточка содержит birthDate 1892-11-17, однако метрическая запись Национального архива указывает 1891-11-05 по старому стилю, то есть 1891-11-17 по григорианскому календарю. Рекомендуется shared birthDate 1891-11-17 после отдельной интеграционной проверки; shared country files не изменялись.",
-      "applicableTextRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй — в 1919 году."
+      "applicableTextRu": "Грузинский поэт; его первый сборник стихов вышел в 1914 году, а второй - в 1919 году."
     },
     {
       "key": "georgia:ilia_chavchavadze",
@@ -551,7 +551,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "Georgia Travel — National Tourism Administration",
+              "provider": "Georgia Travel - National Tourism Administration",
               "url": "https://georgia.travel/ilia-chavchavadze-museum",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальный государственный портал характеризует Илью Чавчавадзе как грузинского писателя, поэта, публициста и общественного деятеля."
@@ -660,17 +660,17 @@
     {
       "key": "georgia:shota_rustaveli",
       "originalSha256": "1a568e913764f9f10c42d176a40ae1cedb44ceda69708d0b563eaa165033b246",
-      "reviewedTextRu": "Грузинский придворный поэт рубежа XII–XIII веков, автор поэмы «Витязь в тигровой шкуре».",
+      "reviewedTextRu": "Грузинский придворный поэт рубежа XII-XIII веков, автор поэмы «Витязь в тигровой шкуре».",
       "claims": [
         {
-          "textRu": "Грузинский придворный поэт рубежа XII–XIII веков, автор поэмы «Витязь в тигровой шкуре».",
+          "textRu": "Грузинский придворный поэт рубежа XII-XIII веков, автор поэмы «Витязь в тигровой шкуре».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Georgian Encyclopedia",
               "url": "https://www.georgianencyclopedia.ge/en/form_eng/903",
               "checkedAt": "2026-08-09",
-              "findingRu": "Научная редакция Грузинской энциклопедии описывает Руставели как придворного поэта рубежа XII–XIII веков и автора «Витязя в тигровой шкуре»."
+              "findingRu": "Научная редакция Грузинской энциклопедии описывает Руставели как придворного поэта рубежа XII-XIII веков и автора «Витязя в тигровой шкуре»."
             },
             {
               "provider": "UNESCO Memory of the World",
@@ -684,15 +684,15 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 29",
       "decision": "corrected",
       "notes": "Identity recommendation: очередь QA указывает Q132984; энциклопедия Грузинской национальной академии наук и UNESCO подтверждают именно литературную личность Шоты Руставели и её связь с поэмой. Рекомендуется подтвердить Q132984 при интеграции; shared country files не изменялись.",
-      "applicableTextRu": "Грузинский придворный поэт рубежа XII–XIII веков, автор поэмы «Витязь в тигровой шкуре»."
+      "applicableTextRu": "Грузинский придворный поэт рубежа XII-XIII веков, автор поэмы «Витязь в тигровой шкуре»."
     },
     {
       "key": "georgia:vazha_pshavela",
       "originalSha256": "e4ab6bbd9a4b897fb443d8e92fad5d3598a3ff964fe1901ee776f5d9d1b4ca22",
-      "reviewedTextRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя — Лука Разикашвили.",
+      "reviewedTextRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя - Лука Разикашвили.",
       "claims": [
         {
-          "textRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя — Лука Разикашвили.",
+          "textRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя - Лука Разикашвили.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -713,7 +713,7 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 29",
       "decision": "corrected",
       "notes": "Оценочная или слишком общая формулировка заменена проверяемыми сведениями о роли и произведениях. Shared country files не изменялись.",
-      "applicableTextRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя — Лука Разикашвили."
+      "applicableTextRu": "Грузинский поэт и прозаик, публиковавшийся под псевдонимом Важа-Пшавела; настоящее имя - Лука Разикашвили."
     },
     {
       "key": "germany:alfred_doblin",
@@ -815,7 +815,7 @@
               "provider": "Diogenes Verlag",
               "url": "https://www.diogenes.ch/leser/autoren/s/bernhard-schlink.html",
               "checkedAt": "2026-08-09",
-              "findingRu": "Официальный издательский профиль подтверждает, что Бернхард Шлинк — немецкий юрист и писатель, чьи романы обращаются к памяти о национал-социалистическом прошлом и ответственности."
+              "findingRu": "Официальный издательский профиль подтверждает, что Бернхард Шлинк - немецкий юрист и писатель, чьи романы обращаются к памяти о национал-социалистическом прошлом и ответственности."
             },
             {
               "provider": "Rowohlt Theater Verlag",

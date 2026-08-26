@@ -8,7 +8,7 @@ export const cuba: Country = {
     {
       id: "jose_marti",
       name: "Хосе Марти",
-      years: "1853–1895",
+      years: "1853-1895",
       birthDate: "1853-01-28",
       deathDate: "1895-05-19",
       birthPlace: "Гавана, Куба",
@@ -47,7 +47,7 @@ export const cuba: Country = {
     {
       id: "alejo_carpentier",
       name: "Алехо Карпентьер",
-      years: "1904–1980",
+      years: "1904-1980",
       birthDate: "1904-12-26",
       deathDate: "1980-04-24",
       birthPlace: "Лозанна, Швейцария",
@@ -86,7 +86,7 @@ export const cuba: Country = {
     {
       id: "guillermo_cabrera_infante",
       name: "Гильермо Кабрера Инфанте",
-      years: "1929–2005",
+      years: "1929-2005",
       birthDate: "1929-04-22",
       deathDate: "2005-02-21",
       birthPlace: "Хибара, Куба",
@@ -122,7 +122,7 @@ export const cuba: Country = {
     {
       id: "reynaldo_arenas",
       name: "Рейнальдо Аренас",
-      years: "1943–1990",
+      years: "1943-1990",
       birthDate: "1943-07-16",
       deathDate: "1990-12-07",
       birthPlace: "Ольгин, Куба",
@@ -158,7 +158,7 @@ export const cuba: Country = {
     {
       id: "leonardo_padura",
       name: "Леонардо Падура",
-      years: "1955–",
+      years: "1955-",
       birthDate: "1955-10-09",
       birthPlace: "Гавана, Куба",
       coordinates: {

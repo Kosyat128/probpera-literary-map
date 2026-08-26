@@ -14,7 +14,7 @@ export const solomonIslands: Country = {
 
       fullName: "John Saunana",
 
-      years: "1947–",
+      years: "1947-",
 
       birthDate: "1947-01-01",
 
@@ -68,7 +68,7 @@ export const solomonIslands: Country = {
 
       fullName: "Rex Horoi",
 
-      years: "1944–2014",
+      years: "1944-2014",
 
       birthDate: "1944-01-01",
 

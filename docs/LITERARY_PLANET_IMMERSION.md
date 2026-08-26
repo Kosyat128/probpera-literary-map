@@ -126,18 +126,18 @@ writer=<writer-id>
 
 | Доказательство | Статус в документе |
 |---|---|
-| TypeScript | **PASS — `npm run typecheck`** |
-| Targeted reducer/combobox/URL/globe tests | **PASS — 5 files / 32 tests** |
-| Full Vitest, `--maxWorkers=4` | **PASS — 241 files / 1255 passed + 1 skipped** |
-| Stage 3 Playwright current-source suite и One-Canvas identity | **PASS — 9 passed / 9 intentionally skipped, 1.8 min** |
-| Existing globe/responsive Playwright regressions | **PASS — 22 / 22, 2.2 min** |
-| Production build | **PASS — 1015 modules** |
-| Article / redirect generation | **PASS — 161 articles / 2097 redirects** |
-| SEO readiness | **PASS — 5262 ready** |
-| Domain validation | **PASS — 11319 / 11319** |
-| Performance budget | **PASS — 114,028,640 / 114,819,072 bytes; margin 790,432; 4323 files** |
-| RU/EN visual matrix | **PASS — 26 PNG + README; P0/P1 отсутствуют** |
-| Full-tree `git diff --check` | **PASS — final full-tree run, exit 0; только CRLF notices** |
+| TypeScript | **PASS - `npm run typecheck`** |
+| Targeted reducer/combobox/URL/globe tests | **PASS - 5 files / 32 tests** |
+| Full Vitest, `--maxWorkers=4` | **PASS - 241 files / 1255 passed + 1 skipped** |
+| Stage 3 Playwright current-source suite и One-Canvas identity | **PASS - 9 passed / 9 intentionally skipped, 1.8 min** |
+| Existing globe/responsive Playwright regressions | **PASS - 22 / 22, 2.2 min** |
+| Production build | **PASS - 1015 modules** |
+| Article / redirect generation | **PASS - 161 articles / 2097 redirects** |
+| SEO readiness | **PASS - 5262 ready** |
+| Domain validation | **PASS - 11319 / 11319** |
+| Performance budget | **PASS - 114,028,640 / 114,819,072 bytes; margin 790,432; 4323 files** |
+| RU/EN visual matrix | **PASS - 26 PNG + README; P0/P1 отсутствуют** |
+| Full-tree `git diff --check` | **PASS - final full-tree run, exit 0; только CRLF notices** |
 
 Baseline-артефакты хранятся в `reports/stage3-baseline/`. Финальная матрица и manifest: [`reports/stage3-visual-evidence/README.md`](../reports/stage3-visual-evidence/README.md). Все screenshots снимались после stable `data-atlas-transition="idle"`. На 360 px отдельно подтверждён economical fallback; это не подмена reduced-motion capture.
 
@@ -145,15 +145,15 @@ Visual review не обнаружил P0/P1. Остались P2: слабая s
 
 ## Audit findings
 
-- `ATLAS-001` — закрыт Stage 3: единый APG combobox и keyboard model.
-- `ATLAS-002` — partial: основная служебная типографика получила более плотные semantic colors и размер 12 px, но `.globe-instruction` остаётся 10 px, selected-country labels — 9–10 px. Их корректировка и rendered forced-colors/gradient verification переносятся в Stage 4 / Final QA.
-- `ATLAS-003` — partial: Stage 3 добавил `min-width: 0`, safe viewport sizing, contained overlays и явный horizontal-scroll allowlist для filters. Глобальный legacy `overflow-x: clip` и переполнения вне Atlas не изменялись.
+- `ATLAS-001` - закрыт Stage 3: единый APG combobox и keyboard model.
+- `ATLAS-002` - partial: основная служебная типографика получила более плотные semantic colors и размер 12 px, но `.globe-instruction` остаётся 10 px, selected-country labels - 9-10 px. Их корректировка и rendered forced-colors/gradient verification переносятся в Stage 4 / Final QA.
+- `ATLAS-003` - partial: Stage 3 добавил `min-width: 0`, safe viewport sizing, contained overlays и явный horizontal-scroll allowlist для filters. Глобальный legacy `overflow-x: clip` и переполнения вне Atlas не изменялись.
 
 Полный ledger: [`reports/ui-ux-audit.md`](../reports/ui-ux-audit.md).
 
 ## Stage 4 follow-ups
 
-Stage 3 не закрывает `GLOBE-001`–`GLOBE-007`. В Stage 4 остаются:
+Stage 3 не закрывает `GLOBE-001`-`GLOBE-007`. В Stage 4 остаются:
 
 - полная keyboard-candidate и Enter-selection модель на самом глобусе;
 - явный touch page/globe activation contract;

@@ -147,7 +147,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch42 = [
     countryId: "niger",
     writerId: "abdoulaye_mamani",
     patch: {
-      years: "1932–1993",
+      years: "1932-1993",
       birthDate: "1932",
       works: ["Sarraounia"],
       genres: ["роман", "поэзия", "историческая проза"],
@@ -175,7 +175,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch42 = [
     countryId: "niger",
     writerId: "mariama_hima",
     patch: {
-      years: "1951–",
+      years: "1951-",
       birthDate: "1951-02-20",
       works: ["Sagesse africaine : proverbes"],
       genres: ["документальное кино", "этнология", "антропология", "дипломатическая работа"],
@@ -344,7 +344,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch42 = [
     countryId: "north_korea",
     writerId: "choe_myong_ik",
     patch: {
-      years: "1903–?",
+      years: "1903-?",
       birthDate: "1903",
       deathDate: "",
       birthPlace: "Пхеньян, Корея",
@@ -389,7 +389,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch42 = [
     countryId: "north_korea",
     writerId: "ri_ki_yong",
     patch: {
-      years: "1895–1984",
+      years: "1895-1984",
       birthDate: "1895",
       deathDate: "1984",
       works: ["Gohyang (Hometown)", "Ttang (Land)"],

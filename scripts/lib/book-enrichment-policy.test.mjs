@@ -130,7 +130,7 @@ describe("book enrichment policy", () => {
     );
   });
 
-  it("requires original reviewed 2–3 sentence annotations in both locales", () => {
+  it("requires original reviewed 2-3 sentence annotations in both locales", () => {
     expect(russianAnnotationIssues(readyRecord().annotationRu)).toEqual([]);
     expect(englishAnnotationIssues(readyRecord().annotationEn)).toEqual([]);
     expect(

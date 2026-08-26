@@ -122,12 +122,12 @@ export default async function PublicationPage({
       <section className="stat-grid">
         <article className="stat-card">
           <span>В работе</span>
-          <strong>{pendingResponse.count ?? "—"}</strong>
+          <strong>{pendingResponse.count ?? "-"}</strong>
           <small>очередь и запущенные сборки</small>
         </article>
         <article className="stat-card">
           <span>С ошибкой</span>
-          <strong>{failedResponse.count ?? "—"}</strong>
+          <strong>{failedResponse.count ?? "-"}</strong>
           <small>можно повторить вручную</small>
         </article>
         <article className="stat-card">

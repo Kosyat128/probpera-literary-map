@@ -14,7 +14,7 @@ export const thailand: Country = {
 
       fullName: "Kulap Saipradit",
 
-      years: "1905–1974",
+      years: "1905-1974",
 
       birthDate: "1905-03-31",
 
@@ -68,7 +68,7 @@ export const thailand: Country = {
 
       fullName: "Kukrit Pramoj",
 
-      years: "1911–1995",
+      years: "1911-1995",
 
       birthDate: "1911-04-20",
 
@@ -121,7 +121,7 @@ export const thailand: Country = {
 
       fullName: "Chart Korbjitti",
 
-      years: "1954–",
+      years: "1954-",
 
       birthDate: "1954-06-25",
 
@@ -177,7 +177,7 @@ export const thailand: Country = {
 
       fullName: "Pira Sudham",
 
-      years: "1942–",
+      years: "1942-",
 
       birthDate: "1942-01-01",
 
@@ -230,7 +230,7 @@ export const thailand: Country = {
 
       fullName: "Saneh Sangsuk",
 
-      years: "1957–",
+      years: "1957-",
 
       birthDate: "1957-08-23",
 
@@ -283,7 +283,7 @@ export const thailand: Country = {
 
       fullName: "Prabda Yoon",
 
-      years: "1973–",
+      years: "1973-",
 
       birthDate: "1973-08-02",
 

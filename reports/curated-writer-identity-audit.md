@@ -15,10 +15,10 @@ Wikidata используется как структурированный сл
 | --- | --- | --- | --- |
 | `australia:les_murray` | [Q6529770](https://www.wikidata.org/wiki/Q6529770) | [Q259841](https://www.wikidata.org/wiki/Q259841) | The old item describes an Australian sports journalist born in 1945; the corrected item describes the poet Les Murray born in 1938. |
 | `dominican_republic:juan_bosch` | [Q1710380](https://www.wikidata.org/wiki/Q1710380) | [Q439980](https://www.wikidata.org/wiki/Q439980) | The old item describes a Spanish film director born in 1926; the corrected item describes the Dominican writer and president born in 1909. |
-| `england:t_s_eliot` | [Q3261882](https://www.wikidata.org/wiki/Q3261882) | [Q37767](https://www.wikidata.org/wiki/Q37767) | The old item is Louis Favre (1910–1944); the corrected item is the poet T. S. Eliot (1888–1965). |
+| `england:t_s_eliot` | [Q3261882](https://www.wikidata.org/wiki/Q3261882) | [Q37767](https://www.wikidata.org/wiki/Q37767) | The old item is Louis Favre (1910-1944); the corrected item is the poet T. S. Eliot (1888-1965). |
 | `myanmar:ma_ma_lay` | [Q56254273](https://www.wikidata.org/wiki/Q56254273) | [Q6273845](https://www.wikidata.org/wiki/Q6273845) | The old item describes a Burmese politician born in 1962; the corrected item describes the Burmese writer born in 1917. |
 | `sweden:hjalmar_soderberg` | [Q49099212](https://www.wikidata.org/wiki/Q49099212) | [Q331845](https://www.wikidata.org/wiki/Q331845) | The old item describes a Swedish painter born in 1859; the corrected item describes the Swedish writer born in 1869. |
-| `finland:fredrika_bremer` | [Q465687](https://www.wikidata.org/wiki/Q465687) | [Q262145](https://www.wikidata.org/wiki/Q262145) | The old item describes Fredrika Runeberg (1807–1879); the corrected item describes Swedish writer Fredrika Bremer (1801–1865). |
+| `finland:fredrika_bremer` | [Q465687](https://www.wikidata.org/wiki/Q465687) | [Q262145](https://www.wikidata.org/wiki/Q262145) | The old item describes Fredrika Runeberg (1807-1879); the corrected item describes Swedish writer Fredrika Bremer (1801-1865). |
 
 ## Удалённые ложные соответствия
 
@@ -42,37 +42,37 @@ Wikidata используется как структурированный сл
 | `bahrain:amin_saleh` | [Q104903512](https://www.wikidata.org/wiki/Q104903512) | Amin Saleh | Bahraini screenwriter, poet, and translator | birth-year-conflict |
 | `belarus:francysk_skaryna` | [Q435320](https://www.wikidata.org/wiki/Q435320) | Francysk Skaryna / Франциск Скорина | Ruthenian humanist, bible translator and book printer / белорусский и восточнославянский первопечатник, философ, писатель, общественный деятель, предприниматель и учёный-медик | birth-year-conflict, death-year-conflict |
 | `chile:diamela_eltit` | [Q2032745](https://www.wikidata.org/wiki/Q2032745) | Diamela Eltit / Диамела Эльтит | Chilean writer (born 1947) | birth-year-conflict |
-| `china:cao_xueqin` | [Q182874](https://www.wikidata.org/wiki/Q182874) | Cao Xueqin / Цао Сюэцинь | Chinese novelist and poet (1710–1765) / китайский писатель | birth-year-conflict |
+| `china:cao_xueqin` | [Q182874](https://www.wikidata.org/wiki/Q182874) | Cao Xueqin / Цао Сюэцинь | Chinese novelist and poet (1710-1765) / китайский писатель | birth-year-conflict |
 | `china:confucius` | [Q4604](https://www.wikidata.org/wiki/Q4604) | Confucius / Конфуций | 5th-century BCE Chinese philosopher and politician / древний мыслитель и философ Китая | birth-year-conflict, death-year-conflict |
-| `china:du_fu` | [Q33772](https://www.wikidata.org/wiki/Q33772) | Du Fu / Ду Фу | Tang dynasty Chinese poet (712–770) / китайский поэт времен династии Тан | birth-year-conflict, death-year-conflict |
+| `china:du_fu` | [Q33772](https://www.wikidata.org/wiki/Q33772) | Du Fu / Ду Фу | Tang dynasty Chinese poet (712-770) / китайский поэт времен династии Тан | birth-year-conflict, death-year-conflict |
 | `china:lao_tzu` | [Q9333](https://www.wikidata.org/wiki/Q9333) | Laozi / Лао-цзы | 6th-century BC semi-legendary Chinese philosopher, founder of Taoism / древнекитайский философ | local-birth-year-missing |
-| `china:li_bai` | [Q7071](https://www.wikidata.org/wiki/Q7071) | Li Bai / Ли Бо | Classical Chinese poet of the Tang dynasty (701–762) / китайский поэт времен династии Тан | birth-year-conflict, death-year-conflict |
+| `china:li_bai` | [Q7071](https://www.wikidata.org/wiki/Q7071) | Li Bai / Ли Бо | Classical Chinese poet of the Tang dynasty (701-762) / китайский поэт времен династии Тан | birth-year-conflict, death-year-conflict |
 | `china:shi_naian` | [Q1777502](https://www.wikidata.org/wiki/Q1777502) | Shi Nai'an / Ши Найань | Chinese writer (1296-1372) / китайский писатель | local-birth-year-missing |
 | `china:sima_qian` | [Q9372](https://www.wikidata.org/wiki/Q9372) | Sima Qian / Сыма Цянь | 2nd-century BCE Chinese historian and writer | birth-year-conflict |
-| `china:tao_yuanming` | [Q314210](https://www.wikidata.org/wiki/Q314210) | Tao Yuanming / Тао Юаньмин | Chinese poet (365–427) | birth-year-conflict, death-year-conflict |
-| `china:zhuangzi` | [Q47739](https://www.wikidata.org/wiki/Q47739) | Zhuang Zhou / Чжуан-цзы | Chinese Taoist philosopher (c. 369–286 BC) / китайский философ | birth-year-conflict, death-year-conflict |
+| `china:tao_yuanming` | [Q314210](https://www.wikidata.org/wiki/Q314210) | Tao Yuanming / Тао Юаньмин | Chinese poet (365-427) | birth-year-conflict, death-year-conflict |
+| `china:zhuangzi` | [Q47739](https://www.wikidata.org/wiki/Q47739) | Zhuang Zhou / Чжуан-цзы | Chinese Taoist philosopher (c. 369-286 BC) / китайский философ | birth-year-conflict, death-year-conflict |
 | `colombia:santiago_gamboa` | [Q2420039](https://www.wikidata.org/wiki/Q2420039) | Santiago Gamboa / Сантьяго Гамбоа | Colombian writer | birth-year-conflict |
 | `costa_rica:carmen_lyra` | [Q2939620](https://www.wikidata.org/wiki/Q2939620) | Carmen Lyra / Кармен Лира | Costa Rican politician and writer | birth-year-conflict |
 | `cyprus:alex_michaelides` | [Q62071397](https://www.wikidata.org/wiki/Q62071397) | Alex Michaelides / Алекс Михаэлидес | author and screenwriter | local-birth-year-missing |
 | `djibouti:aden_robleh_awaleh` | [Q967740](https://www.wikidata.org/wiki/Q967740) | Aden Robleh Awaleh | Djiboutian politician (1941-2014) | birth-year-conflict, literary-role-not-corroborated |
-| `england:agatha_christie` | [Q35064](https://www.wikidata.org/wiki/Q35064) | Agatha Christie / Агата Кристи | English mystery and detective writer (1890–1976) / английская писательница и драматург (1890—1976) | local-birth-year-missing |
+| `england:agatha_christie` | [Q35064](https://www.wikidata.org/wiki/Q35064) | Agatha Christie / Агата Кристи | English mystery and detective writer (1890-1976) / английская писательница и драматург (1890-1976) | local-birth-year-missing |
 | `england:alex_garland` | [Q542634](https://www.wikidata.org/wiki/Q542634) | Alex Garland / Алекс Гарленд | British writer, scriptwriter and film director (born 1970) / британский писатель, режиссёр и сценарист (род. 1970) | local-birth-year-missing |
-| `england:anthony_burgess` | [Q217619](https://www.wikidata.org/wiki/Q217619) | Anthony Burgess / Энтони Бёрджесс | English writer and composer (1917–1993) / английский писатель (1917—1993) | local-birth-year-missing |
-| `england:bede` | [Q154938](https://www.wikidata.org/wiki/Q154938) | Bede / Беда Достопочтенный | Anglo-Saxon monk, writer and saint (672/3–735) / английский католический бенедиктинский монах и религиозный деятель | birth-year-conflict, death-year-conflict |
+| `england:anthony_burgess` | [Q217619](https://www.wikidata.org/wiki/Q217619) | Anthony Burgess / Энтони Бёрджесс | English writer and composer (1917-1993) / английский писатель (1917-1993) | local-birth-year-missing |
+| `england:bede` | [Q154938](https://www.wikidata.org/wiki/Q154938) | Bede / Беда Достопочтенный | Anglo-Saxon monk, writer and saint (672/3-735) / английский католический бенедиктинский монах и религиозный деятель | birth-year-conflict, death-year-conflict |
 | `england:diane_setterfield` | [Q2550958](https://www.wikidata.org/wiki/Q2550958) | Diane Setterfield / Диана Сеттерфилд | English novelist | local-birth-year-missing |
-| `england:frederick_forsyth` | [Q249197](https://www.wikidata.org/wiki/Q249197) | Frederick Forsyth / Фредерик Форсайт | English novelist (1938–2025) / английский писатель (1938—2025) | local-birth-year-missing |
-| `england:hilary_mantel` | [Q465700](https://www.wikidata.org/wiki/Q465700) | Hilary Mantel / Хилари Мантел | British writer (1952–2022) / британская писательница (1952—2022) | local-birth-year-missing |
+| `england:frederick_forsyth` | [Q249197](https://www.wikidata.org/wiki/Q249197) | Frederick Forsyth / Фредерик Форсайт | English novelist (1938-2025) / английский писатель (1938-2025) | local-birth-year-missing |
+| `england:hilary_mantel` | [Q465700](https://www.wikidata.org/wiki/Q465700) | Hilary Mantel / Хилари Мантел | British writer (1952-2022) / британская писательница (1952-2022) | local-birth-year-missing |
 | `england:ian_mcewan` | [Q190379](https://www.wikidata.org/wiki/Q190379) | Ian McEwan / Иэн Макьюэн | British author (born 1948) / британский писатель | local-birth-year-missing |
 | `england:joanne_harris` | [Q234718](https://www.wikidata.org/wiki/Q234718) | Joanne Harris / Джоанн Харрис | British and French author | local-birth-year-missing |
-| `england:john_le_carre` | [Q209641](https://www.wikidata.org/wiki/Q209641) | John le Carré / Джон ле Карре | British novelist and spy (1931–2020) / английский писатель (1931—2020) | local-birth-year-missing |
+| `england:john_le_carre` | [Q209641](https://www.wikidata.org/wiki/Q209641) | John le Carré / Джон ле Карре | British novelist and spy (1931-2020) / английский писатель (1931-2020) | local-birth-year-missing |
 | `england:john_marrs` | [Q64014274](https://www.wikidata.org/wiki/Q64014274) | John Marrs / Джон Маррс | British science fiction and suspense writer / британский писатель | local-birth-year-missing |
 | `england:lee_child` | [Q333719](https://www.wikidata.org/wiki/Q333719) | Lee Child / Ли Чайлд | British thriller writer (born 1954) / британский писатель (род. 1954) | local-birth-year-missing |
 | `england:paula_hawkins` | [Q20732317](https://www.wikidata.org/wiki/Q20732317) | Paula Hawkins / Пола Хокинс | British writer | local-birth-year-missing |
-| `england:rafael_sabatini` | [Q345104](https://www.wikidata.org/wiki/Q345104) | Rafael Sabatini / Рафаэль Сабатини | Italian–English writer (1875–1950) / английский и итальянский писатель, прославившийся приключенческими историческими романами, в частности, романами о капитане Бладе (1875–1950) | local-birth-year-missing |
+| `england:rafael_sabatini` | [Q345104](https://www.wikidata.org/wiki/Q345104) | Rafael Sabatini / Рафаэль Сабатини | Italian-English writer (1875-1950) / английский и итальянский писатель, прославившийся приключенческими историческими романами, в частности, романами о капитане Бладе (1875-1950) | local-birth-year-missing |
 | `england:stuart_turton` | [Q55474411](https://www.wikidata.org/wiki/Q55474411) | Stuart Turton / Стюарт Тёртон | UK author / британский писатель | local-birth-year-missing |
 | `eritrea:alemseged_tesfai` | [Q55991620](https://www.wikidata.org/wiki/Q55991620) | Alemseged Tesfai |  | birth-year-conflict, literary-role-not-corroborated |
 | `fiji:brij_lal` | [Q2925538](https://www.wikidata.org/wiki/Q2925538) | Brij Lal / Бридж Лал | Fijian historian | literary-role-not-corroborated |
-| `finland:fredrika_bremer` | [Q262145](https://www.wikidata.org/wiki/Q262145) | Fredrika Bremer / Фредрика Бремер | Swedish writer and feminist (1801–1865) / шведская писательница и феминистка | birth-year-conflict, death-year-conflict |
+| `finland:fredrika_bremer` | [Q262145](https://www.wikidata.org/wiki/Q262145) | Fredrika Bremer / Фредрика Бремер | Swedish writer and feminist (1801-1865) / шведская писательница и феминистка | birth-year-conflict, death-year-conflict |
 | `france:franck_thilliez` | [Q779144](https://www.wikidata.org/wiki/Q779144) | Franck Thilliez / Франк Тилье | French writer (born 1973) | local-birth-year-missing |
 | `france:racine` | [Q742](https://www.wikidata.org/wiki/Q742) | Jean Racine / Жан Расин | French dramatist (1639-1699) / французский драматург | wikidata-birth-year-missing |
 | `georgia:shota_rustaveli` | [Q132984](https://www.wikidata.org/wiki/Q132984) | Shota Rustaveli / Шота Руставели | Georgian poet / грузинский поэт XII века | local-birth-year-missing |
@@ -83,19 +83,19 @@ Wikidata используется как структурированный сл
 | `india:kalidasa` | [Q7011](https://www.wikidata.org/wiki/Q7011) | Kalidasa / Калидаса | A classical Sanskrit writer widely regarded as the greatest poet and dramatist of ancient India. / индийский поэт | local-birth-year-missing |
 | `india:surdas` | [Q1325652](https://www.wikidata.org/wiki/Q1325652) | Surdas / Сурдас | Indian writer | birth-year-conflict, death-year-conflict |
 | `india:valmiki` | [Q715607](https://www.wikidata.org/wiki/Q715607) | Valmiki / Вальмики | Celebrated as the harbinger-poet in Sanskrit literature and the author of the epic Ramayana | local-birth-year-missing |
-| `iran:forugh_farrokhzad` | [Q464394](https://www.wikidata.org/wiki/Q464394) | Forugh Farrokhzad / Форуг Фаррохзад | Iranian poet (1935-1967) / Форуг Фаррохзад — иранская поэтесса и кинорежиссёр | birth-year-conflict |
-| `iran:hafez` | [Q6240](https://www.wikidata.org/wiki/Q6240) | Hafez / Хафиз Ширази | Persian poet and mystic (1325–1389) / персидский поэт и суфийский мастер | birth-year-conflict, death-year-conflict |
+| `iran:forugh_farrokhzad` | [Q464394](https://www.wikidata.org/wiki/Q464394) | Forugh Farrokhzad / Форуг Фаррохзад | Iranian poet (1935-1967) / Форуг Фаррохзад - иранская поэтесса и кинорежиссёр | birth-year-conflict |
+| `iran:hafez` | [Q6240](https://www.wikidata.org/wiki/Q6240) | Hafez / Хафиз Ширази | Persian poet and mystic (1325-1389) / персидский поэт и суфийский мастер | birth-year-conflict, death-year-conflict |
 | `iraq:abu_nuwas` | [Q5670](https://www.wikidata.org/wiki/Q5670) | Abu Nuwas / Абу Нувас | 8th-century classical Arabic poet / арабский поэт | birth-year-conflict, death-year-conflict |
-| `iraq:al_mutanabbi` | [Q284542](https://www.wikidata.org/wiki/Q284542) | Al-Mutanabbi / Аль-Мутанабби | Arab poet (c. 915 – 965) / арабский поэт | birth-year-conflict, death-year-conflict |
-| `iraq:nazik_al_malaika` | [Q446761](https://www.wikidata.org/wiki/Q446761) | Nazik Al-Malaika / Назик аль-Малаика | Iraqi poet (1922–2007) | birth-year-conflict |
+| `iraq:al_mutanabbi` | [Q284542](https://www.wikidata.org/wiki/Q284542) | Al-Mutanabbi / Аль-Мутанабби | Arab poet (c. 915 - 965) / арабский поэт | birth-year-conflict, death-year-conflict |
+| `iraq:nazik_al_malaika` | [Q446761](https://www.wikidata.org/wiki/Q446761) | Nazik Al-Malaika / Назик аль-Малаика | Iraqi poet (1922-2007) | birth-year-conflict |
 | `italy:cesare_beccaria` | [Q223723](https://www.wikidata.org/wiki/Q223723) | Cesare Beccaria / Чезаре Беккариа | jurist, philosopher and politician from Italy (1738-1794) | literary-role-not-corroborated |
-| `italy:emilio_salgari` | [Q309786](https://www.wikidata.org/wiki/Q309786) | Emilio Salgari / Эмилио Сальгари | Italian writer (1862–1911) / итальянский писатель | local-birth-year-missing |
-| `japan:murasaki_shikibu` | [Q81731](https://www.wikidata.org/wiki/Q81731) | Murasaki Shikibu / Мурасаки Сикибу | Japanese novelist and poet (c.973–c.1014) / японская поэтесса и писательница XI века | birth-year-conflict |
-| `japan:sei_shonagon` | [Q231603](https://www.wikidata.org/wiki/Q231603) | Sei Shōnagon / Сэй-Сёнагон | Japanese author and court lady / японская писательница X—XI веков | birth-year-conflict |
-| `jordan:munif_al_razzaz` | [Q6936630](https://www.wikidata.org/wiki/Q6936630) | Munif al-Razzaz | Syrian politician (1919–1984) | literary-role-not-corroborated |
+| `italy:emilio_salgari` | [Q309786](https://www.wikidata.org/wiki/Q309786) | Emilio Salgari / Эмилио Сальгари | Italian writer (1862-1911) / итальянский писатель | local-birth-year-missing |
+| `japan:murasaki_shikibu` | [Q81731](https://www.wikidata.org/wiki/Q81731) | Murasaki Shikibu / Мурасаки Сикибу | Japanese novelist and poet (c.973-c.1014) / японская поэтесса и писательница XI века | birth-year-conflict |
+| `japan:sei_shonagon` | [Q231603](https://www.wikidata.org/wiki/Q231603) | Sei Shōnagon / Сэй-Сёнагон | Japanese author and court lady / японская писательница X-XI веков | birth-year-conflict |
+| `jordan:munif_al_razzaz` | [Q6936630](https://www.wikidata.org/wiki/Q6936630) | Munif al-Razzaz | Syrian politician (1919-1984) | literary-role-not-corroborated |
 | `kenya:billy_kahora` | [Q5897263](https://www.wikidata.org/wiki/Q5897263) | Billy Kahora | Kenyan writer | birth-year-conflict |
 | `kyrgyzstan:musa_jangaziev` | [Q20625839](https://www.wikidata.org/wiki/Q20625839) | Musa Jangaziev / Муса Джангазиев | Kyrgyz poet / киргизский советский писатель | birth-year-conflict, death-year-conflict |
-| `laos:phoumi_vongvichit` | [Q878933](https://www.wikidata.org/wiki/Q878933) | Phoumi Vongvichit / Пхуми Вонгвичит | President of Laos (1909–1994) | literary-role-not-corroborated |
+| `laos:phoumi_vongvichit` | [Q878933](https://www.wikidata.org/wiki/Q878933) | Phoumi Vongvichit / Пхуми Вонгвичит | President of Laos (1909-1994) | literary-role-not-corroborated |
 | `liechtenstein:hansjorg_quaderer` | [Q85101361](https://www.wikidata.org/wiki/Q85101361) | Hansjörg Quaderer | Liechtensteiner painter (born 1958) | birth-year-conflict, literary-role-not-corroborated |
 | `liechtenstein:ida_ospelt_amann` | [Q1656540](https://www.wikidata.org/wiki/Q1656540) | Ida Ospelt-Amann | Liechtensteiner vernacular poet, author and writer (1899-1996) | birth-year-conflict, death-year-conflict |
 | `liechtenstein:jurg_hanselmann` | [Q15445061](https://www.wikidata.org/wiki/Q15445061) | Jürg Hanselmann | Swiss pianist | literary-role-not-corroborated |
@@ -109,10 +109,10 @@ Wikidata используется как структурированный сл
 | `niger:abdoulaye_mamani` | [Q308401](https://www.wikidata.org/wiki/Q308401) | Abdoulaye Mamani / Абдулай Мамани | Poet and novelist (1932-1993) | birth-year-conflict |
 | `niger:ibrahim_adam` | [Q99929822](https://www.wikidata.org/wiki/Q99929822) | Ibrahim Adam | Ghanaian politician / ганский политик | wikidata-birth-year-missing, literary-role-not-corroborated |
 | `niger:mariama_hima` | [Q16937510](https://www.wikidata.org/wiki/Q16937510) | Mariama Hima | Filmmaker, ethnologist and Nigerien politician | birth-year-conflict, literary-role-not-corroborated |
-| `north_korea:ri_ki_yong` | [Q485218](https://www.wikidata.org/wiki/Q485218) | Ri Ki-yong / Ли Ги Ён | Korean writer (1896–1984) | birth-year-conflict |
+| `north_korea:ri_ki_yong` | [Q485218](https://www.wikidata.org/wiki/Q485218) | Ri Ki-yong / Ли Ги Ён | Korean writer (1896-1984) | birth-year-conflict |
 | `oman:abdullah_habib` | [Q25451883](https://www.wikidata.org/wiki/Q25451883) | Abdullah Habib | Omani writer and internet activist | wikidata-birth-year-missing |
 | `palau:emelihter_kihleng` | [Q4303636](https://www.wikidata.org/wiki/Q4303636) | Emelihter Kihleng / Эмелитер Киленг | Federated States of Micronesia poet | wikidata-birth-year-missing |
-| `panama:ricardo_miro` | [Q5573605](https://www.wikidata.org/wiki/Q5573605) | Ricardo Miró / Рикардо Миро | Panamanian writer (1882–1940) / Панамский поэт, писатель и дипломат | birth-year-conflict |
+| `panama:ricardo_miro` | [Q5573605](https://www.wikidata.org/wiki/Q5573605) | Ricardo Miró / Рикардо Миро | Panamanian writer (1882-1940) / Панамский поэт, писатель и дипломат | birth-year-conflict |
 | `papua_new_guinea:raymond_gat` | [Q29167994](https://www.wikidata.org/wiki/Q29167994) | Raymond Guth / Рэймонд Гат | actor | local-birth-year-missing, literary-role-not-corroborated |
 | `russia:sergey_lukyanenko` | [Q52224](https://www.wikidata.org/wiki/Q52224) | Sergey Lukyanenko / Сергей Васильевич Лукьяненко | Russian science fiction writer / российский писатель-фантаст | local-birth-year-missing |
 | `samoa:lani_wendt_young` | [Q44217961](https://www.wikidata.org/wiki/Q44217961) | Lani Wendt Young | Samoan writer, editor, publisher and journalist | birth-year-conflict |
@@ -128,7 +128,7 @@ Wikidata используется как структурированный сл
 | `turkmenistan:magtymguly_pyragy` | [Q2355095](https://www.wikidata.org/wiki/Q2355095) | Magtymguly Pyragy / Махтумкули | Turkmen spiritual leader and philosophical poet / туркменский поэт | birth-year-conflict |
 | `uganda:byron_kawadwa` | [Q134561593](https://www.wikidata.org/wiki/Q134561593) | Byron Kawadwa | playwright and former director of the Uganda National Theatre | birth-year-conflict |
 | `usa:blake_crouch` | [Q20630583](https://www.wikidata.org/wiki/Q20630583) | Blake Crouch / Блейк Крауч | American writer (born 1978) / американский писатель (род. 1978) | local-birth-year-missing |
-| `usa:dan_simmons` | [Q297538](https://www.wikidata.org/wiki/Q297538) | Dan Simmons / Дэн Симмонс | American novelist (1948–2026) / американский писатель-фантаст (1948—2026) | local-birth-year-missing |
+| `usa:dan_simmons` | [Q297538](https://www.wikidata.org/wiki/Q297538) | Dan Simmons / Дэн Симмонс | American novelist (1948-2026) / американский писатель-фантаст (1948-2026) | local-birth-year-missing |
 | `usa:daniel_keyes` | [Q185714](https://www.wikidata.org/wiki/Q185714) | Daniel Keyes / Дэниел Киз | American author / американский писатель | local-birth-year-missing |
 | `usa:dean_koontz` | [Q272076](https://www.wikidata.org/wiki/Q272076) | Dean Koontz / Дин Кунц | American writer and screenwriter (born 1945) / американский писатель-фантаст | local-birth-year-missing |
 | `usa:donna_tartt` | [Q255339](https://www.wikidata.org/wiki/Q255339) | Donna Tartt / Донна Тартт | American writer / американская писательница | local-birth-year-missing |
@@ -137,9 +137,9 @@ Wikidata используется как структурированный сл
 | `usa:howard_pyle` | [Q525713](https://www.wikidata.org/wiki/Q525713) | Howard Pyle / Говард Пайл | American illustrator and author (1853-1911) | local-birth-year-missing |
 | `usa:james_rollins` | [Q467404](https://www.wikidata.org/wiki/Q467404) | James Rollins / Джеймс Роллинс | American writer (born 1961) / американский писатель (род. 1961) | local-birth-year-missing |
 | `usa:min_jin_lee` | [Q13563026](https://www.wikidata.org/wiki/Q13563026) | Lee Min Jin / Мин Джин Ли | American writer / американская писательница | local-birth-year-missing |
-| `usa:patricia_highsmith` | [Q270635](https://www.wikidata.org/wiki/Q270635) | Patricia Highsmith / Патриция Хайсмит | American novelist and short story writer (1921–1995) / американская писательница (1921—1995) | local-birth-year-missing |
+| `usa:patricia_highsmith` | [Q270635](https://www.wikidata.org/wiki/Q270635) | Patricia Highsmith / Патриция Хайсмит | American novelist and short story writer (1921-1995) / американская писательница (1921-1995) | local-birth-year-missing |
 | `usa:ralph_ellison` | [Q299965](https://www.wikidata.org/wiki/Q299965) | Ralph Ellison / Ральф Эллисон | American novelist, literary critic, scholar and writer (1914-1994) / американский писатель | birth-year-conflict |
-| `usa:robert_ludlum` | [Q224113](https://www.wikidata.org/wiki/Q224113) | Robert Ludlum / Роберт Ладлэм | American novelist (1927–2001) / американский писатель (1927—2001) | local-birth-year-missing |
+| `usa:robert_ludlum` | [Q224113](https://www.wikidata.org/wiki/Q224113) | Robert Ludlum / Роберт Ладлэм | American novelist (1927-2001) / американский писатель (1927-2001) | local-birth-year-missing |
 | `usa:suzanne_collins` | [Q228624](https://www.wikidata.org/wiki/Q228624) | Suzanne Collins / Сьюзен Коллинз | American television writer and novelist / американская писательница и сценарист | local-birth-year-missing |
 | `usa:tim_powers` | [Q363810](https://www.wikidata.org/wiki/Q363810) | Tim Powers / Тим Пауэрс | American science fiction writer and actor (born 1952) / американский писатель (род. 1952) | local-birth-year-missing |
 | `vietnam:nam_cao` | [Q6961060](https://www.wikidata.org/wiki/Q6961060) | Nam Cao / Нам Као | Vietnamese writer (1917-1951) / вьетнамский писатель | birth-year-conflict |

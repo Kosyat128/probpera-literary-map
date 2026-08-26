@@ -10,7 +10,7 @@ export const estonia: Country = {
       id: "kristjan_jaak_peterson",
       name: "Кристьян Яак Петерсон",
       fullName: "Kristjan Jaak Peterson",
-      years: "1801–1822",
+      years: "1801-1822",
 
       birthDate: "1801-03-14",
       deathDate: "1822-08-04",
@@ -55,7 +55,7 @@ export const estonia: Country = {
       id: "friedrich_robert_faehlmann",
       name: "Фридрих Роберт Фельман",
       fullName: "Friedrich Robert Faehlmann",
-      years: "1798–1850",
+      years: "1798-1850",
 
       birthDate: "1798-12-20",
       deathDate: "1850-04-22",
@@ -102,7 +102,7 @@ export const estonia: Country = {
       name: "Фридрих Рейнхольд Крейцвальд",
       fullName: "Friedrich Reinhold Kreutzwald",
 
-      years: "1803–1882",
+      years: "1803-1882",
 
       birthDate: "1803-12-26",
       deathDate: "1882-08-25",
@@ -149,7 +149,7 @@ export const estonia: Country = {
       name: "Лидия Койдула",
       fullName: "Lydia Koidula",
 
-      years: "1843–1886",
+      years: "1843-1886",
 
       birthDate: "1843-12-24",
       deathDate: "1886-08-11",
@@ -195,7 +195,7 @@ export const estonia: Country = {
       name: "Эдуард Вильде",
       fullName: "Eduard Vilde",
 
-      years: "1865–1933",
+      years: "1865-1933",
 
       birthDate: "1865-03-04",
       deathDate: "1933-12-26",
@@ -243,7 +243,7 @@ export const estonia: Country = {
       name: "Антон Хансен Таммсааре",
       fullName: "Anton Hansen Tammsaare",
 
-      years: "1878–1940",
+      years: "1878-1940",
 
       birthDate: "1878-01-30",
       deathDate: "1940-03-01",
@@ -289,7 +289,7 @@ export const estonia: Country = {
       name: "Фридеберт Туглас",
       fullName: "Friedebert Tuglas",
 
-      years: "1886–1971",
+      years: "1886-1971",
 
       birthDate: "1886-03-02",
       deathDate: "1971-04-15",
@@ -336,7 +336,7 @@ export const estonia: Country = {
       name: "Мария Ундер",
       fullName: "Marie Under",
 
-      years: "1883–1980",
+      years: "1883-1980",
 
       birthDate: "1883-03-27",
       deathDate: "1980-09-25",
@@ -382,7 +382,7 @@ export const estonia: Country = {
       name: "Бетти Альвер",
       fullName: "Betti Alver",
 
-      years: "1906–1989",
+      years: "1906-1989",
 
       birthDate: "1906-11-23",
       deathDate: "1989-06-19",
@@ -428,7 +428,7 @@ export const estonia: Country = {
       name: "Яан Кросс",
       fullName: "Jaan Kross",
 
-      years: "1920–2007",
+      years: "1920-2007",
 
       birthDate: "1920-02-19",
       deathDate: "2007-12-27",
@@ -474,7 +474,7 @@ export const estonia: Country = {
       name: "Арво Валтон",
       fullName: "Arvo Valton",
 
-      years: "1935–2024",
+      years: "1935-2024",
 
       birthDate: "1935-12-14",
       deathDate: "2024-07-26",

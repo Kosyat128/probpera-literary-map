@@ -62,7 +62,7 @@ export const afghanistan: Country = {
       name: "Махмуд Тарзи",
       fullName: "Mahmud Tarzi",
 
-      years: "1865–1933",
+      years: "1865-1933",
 
       birthDate: "1865-08-23",
       deathDate: "1933-11-22",
@@ -113,7 +113,7 @@ export const afghanistan: Country = {
       name: "Халилулла Халили",
       fullName: "Khalilullah Khalili",
 
-      years: "1907–1987",
+      years: "1907-1987",
 
       birthDate: "1907-01-01",
       deathDate: "1987-05-04",
@@ -164,7 +164,7 @@ export const afghanistan: Country = {
       name: "Сайед Бахауддин Маджрух",
       fullName: "Sayyed Bahauddin Majrooh",
 
-      years: "1928–1988",
+      years: "1928-1988",
 
       birthDate: "1928-02-12",
       deathDate: "1988-02-11",
@@ -214,7 +214,7 @@ export const afghanistan: Country = {
       name: "Атик Рахими",
       fullName: "Atiq Rahimi",
 
-      years: "1962–",
+      years: "1962-",
 
       birthDate: "1962-02-26",
       deathDate: "",
@@ -267,7 +267,7 @@ export const afghanistan: Country = {
       name: "Халед Хоссейни",
       fullName: "Khaled Hosseini",
 
-      years: "1965–",
+      years: "1965-",
 
       birthDate: "1965-03-04",
       deathDate: "",

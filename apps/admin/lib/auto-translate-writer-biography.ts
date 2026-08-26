@@ -146,7 +146,7 @@ function validateEnglishBiography(value: unknown) {
   const parsed = biographyOutputSchema.parse(value);
   const count = sentenceCount(parsed.text);
   if (count < 2 || count > 4) {
-    throw new Error("Premium English biography must contain 2–4 sentences");
+    throw new Error("Premium English biography must contain 2-4 sentences");
   }
   if (/\p{Script=Cyrillic}/u.test(parsed.text)) {
     throw new Error("Premium English biography still contains Cyrillic");
@@ -258,7 +258,7 @@ export async function ensureWriterEnglishBiography(input: {
         "This is a concise factual literary biography for a world-literature encyclopedia.",
         "Preserve every biographical fact, date, institution, work and award exactly; do not infer missing facts.",
         "Use the established English form of the writer's name and institutions when unambiguous.",
-        "Write 2–4 fluent sentences with an authoritative reference-work tone, not promotional copy.",
+        "Write 2-4 fluent sentences with an authoritative reference-work tone, not promotional copy.",
       ],
     });
 

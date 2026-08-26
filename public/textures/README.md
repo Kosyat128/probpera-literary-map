@@ -80,7 +80,7 @@ The same vector geometry is used for the visible borders, country hit testing,
 outlines, centroids, and localized labels. Russian and English country names,
 label points, and priorities come from the official `NAME_RU`, `NAME_EN`,
 `LABEL_X`, `LABEL_Y`, `LABELRANK`, and `scalerank` fields. A deterministic
-collision pass retains 87 labels on desktop and 69–70 on compact textures. The
+collision pass retains 87 labels on desktop and 69-70 on compact textures. The
 three longest sovereign names use restrained atlas forms (`Китай`/`China`,
 `ДР Конго`/`DR Congo`, and `США`/`United States`); their official source names
 remain unchanged in the GeoJSON. Five subdued ocean labels use documented
@@ -114,7 +114,7 @@ checksummed relief source; it does not accept an arbitrary raster override.
 Routine public builds run `content:export:cms`, `assets:globe:modern`, and
 `assets:globe:qa` in that order.
 
-The bundled geometry comes from the official Natural Earth Admin 0 – Countries
+The bundled geometry comes from the official Natural Earth Admin 0 - Countries
 GeoJSON in repository release `v5.1.2`, retrieved on 2026-08-09. Natural
 Earth's theme page currently labels the 110m Admin 0 theme `v5.1.1`; both
 identifiers are recorded to avoid conflating the repository and theme versions:

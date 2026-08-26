@@ -191,12 +191,12 @@ describe("legacy writer biography curation", () => {
 
     expect(publicDamas?.name).toBe("Леон-Гонтран Дамас");
     expect(publicTabidze).toMatchObject({
-      years: "1891–1959",
+      years: "1891-1959",
       birthDate: "1891-11-17",
     });
     expect(bookDamas?.name).toBe("Леон-Гонтан Дамас");
     expect(bookTabidze).toMatchObject({
-      years: "1892–1959",
+      years: "1892-1959",
       birthDate: "1892-11-17",
     });
   });
@@ -223,7 +223,7 @@ describe("legacy writer biography curation", () => {
       deathDate: "1930-08-11",
     });
     expect(publicWriters.get("germany:sebastian_brant")).toMatchObject({
-      years: "1458–1521",
+      years: "1458-1521",
       birthDate: "1458",
     });
     expect(publicWriters.get("ghana:martin_egblewogbe")?.birthDate).toBe(
@@ -240,7 +240,7 @@ describe("legacy writer biography curation", () => {
     expect(
       publicWriters.get("guatemala:francisco_alejandro_mendez")
     ).toMatchObject({
-      years: "1964–2026",
+      years: "1964-2026",
       deathDate: "2026-03-28",
     });
 
@@ -253,7 +253,7 @@ describe("legacy writer biography curation", () => {
       deathDate: "1930-01-15",
     });
     expect(bookWriters.get("germany:sebastian_brant")).toMatchObject({
-      years: "1457–1521",
+      years: "1457-1521",
       birthDate: "1457",
     });
     expect(bookWriters.get("ghana:martin_egblewogbe")?.birthDate).toBe(
@@ -270,7 +270,7 @@ describe("legacy writer biography curation", () => {
       deathDate: "2012-01-01",
     });
     expect(bookWriters.get("guatemala:francisco_alejandro_mendez")).toMatchObject({
-      years: "1964–",
+      years: "1964-",
     });
     expect(
       bookWriters.get("guatemala:francisco_alejandro_mendez")?.deathDate
@@ -304,7 +304,7 @@ describe("legacy writer biography curation", () => {
       "Челмсфорд, Англия"
     );
     expect(publicWriters.get("haiti:franketienne")).toMatchObject({
-      years: "1936–2025",
+      years: "1936-2025",
       deathDate: "2025-02-20",
       birthPlace: "Равин-Сеш, Артибонит, Гаити",
       deathPlace: "Дельма, Гаити",
@@ -350,7 +350,7 @@ describe("legacy writer biography curation", () => {
       "Уорикшир, Великобритания"
     );
     expect(bookWriters.get("haiti:franketienne")).toMatchObject({
-      years: "1936–2024",
+      years: "1936-2024",
       deathDate: "2024-02-20",
       birthPlace: "Розо, Гаити",
       deathPlace: "Порт-о-Пренс, Гаити",
@@ -421,7 +421,7 @@ describe("legacy writer biography curation", () => {
       coordinates: undefined,
     });
     expect(publicWriters.get("india:kalidasa")).toMatchObject({
-      years: "ок. IV–V век",
+      years: "ок. IV-V век",
       birthDate: "",
       deathDate: "",
       birthPlace: "",
@@ -434,13 +434,13 @@ describe("legacy writer biography curation", () => {
       awards: ["Премия Сахитья Академи 1960 года за роман «Гид»"],
     });
     expect(publicWriters.get("iran:ferdowsi")).toMatchObject({
-      years: "ок. 940 — ок. 1020",
+      years: "ок. 940 - ок. 1020",
       birthDate: "ок. 940",
       deathDate: "ок. 1020",
     });
 
     expect(bookWriters.get("india:anil_menon")).toMatchObject({
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970",
       birthPlace: "Индия",
       works: ["The Beast With Nine Billion Feet", "Half of What I Say"],
@@ -451,7 +451,7 @@ describe("legacy writer biography curation", () => {
       coordinates: { lat: 26.8467, lng: 80.9462 },
     });
     expect(bookWriters.get("india:kalidasa")).toMatchObject({
-      birthDate: "IV–V век",
+      birthDate: "IV-V век",
       deathDate: "V век",
       birthPlace: "Индия",
       deathPlace: "Индия",
@@ -462,13 +462,13 @@ describe("legacy writer biography curation", () => {
       awards: ["Премия Сахитья Академи 1958 года"],
     });
     expect(bookWriters.get("iran:ferdowsi")).toMatchObject({
-      years: "ок. 940–1020",
+      years: "ок. 940-1020",
       birthDate: "0940-01-01",
       deathDate: "1020-01-01",
     });
   });
 
-  it("publishes compact source-backed profile patches for batches 33–35", () => {
+  it("publishes compact source-backed profile patches for batches 33-35", () => {
     const publicWriters = new Map(
       countries.flatMap((country) =>
         country.writers.map((writer) => [key(country.id, writer.id), writer])
@@ -504,16 +504,16 @@ describe("legacy writer biography curation", () => {
     }
 
     expect(publicWriters.get("iran:shahrnush_parsipur")).toMatchObject({
-      years: "1946–2026",
+      years: "1946-2026",
       deathDate: "2026-07-03",
     });
     expect(publicWriters.get("japan:keigo_higashino")).toMatchObject({
-      years: "1958–2026",
+      years: "1958-2026",
       deathDate: "2026-07-23",
     });
   });
 
-  it("publishes compact source-backed profile patches for batches 36–45", () => {
+  it("publishes compact source-backed profile patches for batches 36-45", () => {
     const publicWriters = new Map(
       countries.flatMap((country) =>
         country.writers.map((writer) => [key(country.id, writer.id), writer])
@@ -682,13 +682,13 @@ describe("legacy writer biography curation", () => {
       .find((country) => country.id === "ecuador")
       ?.writers.find((writer) => writer.id === "lupe_rumazo");
     expect(publicLupe).toMatchObject({
-      years: "1933–",
+      years: "1933-",
       birthDate: "1933-10-14",
       deathDate: "",
       works: ["Carta larga sin final", "Peste blanca, peste negra"],
     });
     expect(bookSourceLupe).toMatchObject({
-      years: "1904–2004",
+      years: "1904-2004",
       birthDate: "1904-10-14",
       deathDate: "2004-01-21",
     });

@@ -10,7 +10,7 @@ export const latvia: Country = {
       id: "rudolfs_blaumanis",
       name: "Рудольф Блауманис",
       fullName: "Rūdolfs Blaumanis",
-      years: "1863–1908",
+      years: "1863-1908",
 
       birthDate: "1863-01-01",
       deathDate: "1908-09-04",
@@ -57,7 +57,7 @@ export const latvia: Country = {
       id: "rainis",
       name: "Райнис",
       fullName: "Jānis Pliekšāns (Rainis)",
-      years: "1865–1929",
+      years: "1865-1929",
 
       birthDate: "1865-09-11",
       deathDate: "1929-09-12",
@@ -104,7 +104,7 @@ export const latvia: Country = {
       id: "aspazija",
       name: "Аспазия",
       fullName: "Elza Rozenberga (Aspazija)",
-      years: "1865–1943",
+      years: "1865-1943",
 
       birthDate: "1865-03-16",
       deathDate: "1943-11-05",
@@ -150,7 +150,7 @@ export const latvia: Country = {
       id: "andrejs_upits",
       name: "Андрейс Упит",
       fullName: "Andrejs Upīts",
-      years: "1877–1970",
+      years: "1877-1970",
 
       birthDate: "1877-12-04",
       deathDate: "1970-11-17",
@@ -195,7 +195,7 @@ export const latvia: Country = {
       id: "janis_jaunsudrabins",
       name: "Янис Яунсудрабиньш",
       fullName: "Jānis Jaunsudrabiņš",
-      years: "1877–1962",
+      years: "1877-1962",
 
       birthDate: "1877-08-25",
       deathDate: "1962-08-28",
@@ -240,7 +240,7 @@ export const latvia: Country = {
       id: "karlis_skalbe",
       name: "Карлис Скалбе",
       fullName: "Kārlis Skalbe",
-      years: "1879–1945",
+      years: "1879-1945",
 
       birthDate: "1879-11-07",
       deathDate: "1945-04-14",
@@ -285,7 +285,7 @@ export const latvia: Country = {
       id: "zigmunds_skujins",
       name: "Зигмунд Скуиньш",
       fullName: "Zigmunds Skujiņš",
-      years: "1926–2012",
+      years: "1926-2012",
 
       birthDate: "1926-12-25",
       deathDate: "2012-03-29",
@@ -329,7 +329,7 @@ export const latvia: Country = {
       id: "vizma_belsevica",
       name: "Визма Белшевица",
       fullName: "Vizma Belševica",
-      years: "1931–2005",
+      years: "1931-2005",
 
       birthDate: "1931-05-30",
       deathDate: "2005-08-06",
@@ -374,7 +374,7 @@ export const latvia: Country = {
       id: "nora_ikstena",
       name: "Нора Икстена",
       fullName: "Nora Ikstena",
-      years: "1969–",
+      years: "1969-",
 
       birthDate: "1969-10-15",
       deathDate: "",

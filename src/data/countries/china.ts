@@ -8,7 +8,7 @@ export const china: Country = {
     {
       id: "confucius",
       name: "Конфуций",
-      years: "551–479 до н. э.",
+      years: "551-479 до н. э.",
       birthDate: "551 до н. э.",
       deathDate: "479 до н. э.",
       birthPlace: "Цюйфу, государство Лу",
@@ -76,7 +76,7 @@ export const china: Country = {
     {
       id: "zhuangzi",
       name: "Чжуан-цзы",
-      years: "ок. 369–286 до н. э.",
+      years: "ок. 369-286 до н. э.",
       birthDate: "ок. 369 до н. э.",
       deathDate: "ок. 286 до н. э.",
       birthPlace: "царство Сун",
@@ -109,7 +109,7 @@ export const china: Country = {
     {
       id: "sima_qian",
       name: "Сыма Цянь",
-      years: "ок. 145–86 до н. э.",
+      years: "ок. 145-86 до н. э.",
       birthDate: "ок. 145 до н. э.",
       deathDate: "ок. 86 до н. э.",
       birthPlace: "Лунмэнь, Китай",
@@ -119,7 +119,7 @@ export const china: Country = {
         lng: 110.08
       },
       portrait: "",
-      bio: "Китайский историк эпохи Хань, автор «Исторических записок» — первого масштабного труда по истории Китая.",
+      bio: "Китайский историк эпохи Хань, автор «Исторических записок» - первого масштабного труда по истории Китая.",
       works: [
         "Ши цзи (Исторические записки)"
       ],
@@ -140,7 +140,7 @@ export const china: Country = {
     {
       id: "tao_yuanming",
       name: "Тао Юаньмин",
-      years: "365–427",
+      years: "365-427",
       birthDate: "365",
       deathDate: "427",
       birthPlace: "Цзюцзян, Китай",
@@ -175,7 +175,7 @@ export const china: Country = {
     {
       id: "li_bai",
       name: "Ли Бо",
-      years: "701–762",
+      years: "701-762",
       birthDate: "701",
       deathDate: "762",
       birthPlace: "Центральная Азия или Сычуань (точное место спорно)",
@@ -210,7 +210,7 @@ export const china: Country = {
         {
       id: "du_fu",
       name: "Ду Фу",
-      years: "712–770",
+      years: "712-770",
       birthDate: "712",
       deathDate: "770",
       birthPlace: "Гунсянь, Китай",
@@ -247,7 +247,7 @@ export const china: Country = {
     {
       id: "bai_juyi",
       name: "Бо Цзюй-и",
-      years: "772–846",
+      years: "772-846",
       birthDate: "772",
       deathDate: "846",
       birthPlace: "Тайюань, Китай",
@@ -284,7 +284,7 @@ export const china: Country = {
     {
       id: "wang_wei",
       name: "Ван Вэй",
-      years: "701–761",
+      years: "701-761",
       birthDate: "701",
       deathDate: "761",
       birthPlace: "Цичжоу, Китай",
@@ -320,7 +320,7 @@ export const china: Country = {
     {
       id: "luo_guanzhong",
       name: "Ло Гуаньчжун",
-      years: "ок. 1330–1400",
+      years: "ок. 1330-1400",
       birthDate: "ок. 1330",
       deathDate: "ок. 1400",
       birthPlace: "Китай",
@@ -387,7 +387,7 @@ export const china: Country = {
     {
       id: "wu_chengen",
       name: "У Чэнъэнь",
-      years: "ок. 1500–1582",
+      years: "ок. 1500-1582",
       birthDate: "ок. 1500",
       deathDate: "1582",
       birthPlace: "Шаньян, Китай",
@@ -421,7 +421,7 @@ export const china: Country = {
         {
       id: "cao_xueqin",
       name: "Цао Сюэцинь",
-      years: "ок. 1715 — ок. 1763",
+      years: "ок. 1715 - ок. 1763",
       birthDate: "ок. 1715",
       deathDate: "ок. 1763",
       birthPlace: "Нанкин, Китай",
@@ -456,7 +456,7 @@ export const china: Country = {
     {
       id: "pu_songling",
       name: "Пу Сунлин",
-      years: "1640–1715",
+      years: "1640-1715",
       birthDate: "1640-06-05",
       deathDate: "1715-02-25",
       birthPlace: "Цзычуань, Китай",
@@ -490,7 +490,7 @@ export const china: Country = {
     {
       id: "gong_zi_zhen",
       name: "Гун Цзычжэнь",
-      years: "1792–1841",
+      years: "1792-1841",
       birthDate: "1792-08-22",
       deathDate: "1841-09-26",
       birthPlace: "Ханчжоу, Китай",
@@ -522,7 +522,7 @@ export const china: Country = {
     {
       id: "lu_xun",
       name: "Лу Синь",
-      years: "1881–1936",
+      years: "1881-1936",
       birthDate: "1881-09-25",
       deathDate: "1936-10-19",
       birthPlace: "Шаосин, Китай",
@@ -559,7 +559,7 @@ export const china: Country = {
     {
       id: "ba_jin",
       name: "Ба Цзинь",
-      years: "1904–2005",
+      years: "1904-2005",
       birthDate: "1904-11-25",
       deathDate: "2005-10-17",
       birthPlace: "Чэнду, Китай",
@@ -597,7 +597,7 @@ export const china: Country = {
     {
       id: "lao_she",
       name: "Лао Шэ",
-      years: "1899–1966",
+      years: "1899-1966",
       birthDate: "1899-02-03",
       deathDate: "1966-08-24",
       birthPlace: "Пекин, Китай",
@@ -634,7 +634,7 @@ export const china: Country = {
         {
       id: "mao_dun",
       name: "Мао Дунь",
-      years: "1896–1981",
+      years: "1896-1981",
       birthDate: "1896-07-04",
       deathDate: "1981-03-27",
       birthPlace: "Тунсян, Китай",
@@ -673,7 +673,7 @@ export const china: Country = {
     {
       id: "ai_qing",
       name: "Ай Цин",
-      years: "1910–1996",
+      years: "1910-1996",
       birthDate: "1910-03-27",
       deathDate: "1996-05-05",
       birthPlace: "Цзиньхуа, Китай",
@@ -685,7 +685,7 @@ export const china: Country = {
       portrait: "",
       bio: "Китайский поэт XX века, один из наиболее значительных представителей современной китайской поэзии.",
       works: [
-        "Даянхэ — моя кормилица",
+        "Даянхэ - моя кормилица",
         "Север"
       ],
       genres: [
@@ -707,7 +707,7 @@ export const china: Country = {
     {
       id: "zhang_a_ling",
       name: "Чжан Айлин",
-      years: "1920–1995",
+      years: "1920-1995",
       birthDate: "1920-09-30",
       deathDate: "1995-09-08",
       birthPlace: "Шанхай, Китай",
@@ -744,7 +744,7 @@ export const china: Country = {
     {
       id: "gao_xingjian",
       name: "Гао Синцзянь",
-      years: "1940–",
+      years: "1940-",
       birthDate: "1940-01-04",
       birthPlace: "Ганьчжоу, Китай",
       coordinates: {
@@ -780,7 +780,7 @@ export const china: Country = {
     {
       id: "mo_yan",
       name: "Мо Янь",
-      years: "1955–",
+      years: "1955-",
       birthDate: "1955-02-17",
       birthPlace: "Гаоми, Китай",
       coordinates: {
@@ -817,7 +817,7 @@ export const china: Country = {
         {
       id: "yu_hua",
       name: "Юй Хуа",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960-04-03",
       birthPlace: "Ханчжоу, Китай",
       coordinates: {
@@ -825,7 +825,7 @@ export const china: Country = {
         lng: 120.1551
       },
       portrait: "",
-      bio: "Современный китайский писатель, один из самых известных представителей китайской литературы конца XX — начала XXI века.",
+      bio: "Современный китайский писатель, один из самых известных представителей китайской литературы конца XX - начала XXI века.",
       works: [
         "Жить",
         "Братья",
@@ -854,7 +854,7 @@ export const china: Country = {
     {
       id: "wang_meng",
       name: "Ван Мэн",
-      years: "1934–",
+      years: "1934-",
       birthDate: "1934-10-15",
       birthPlace: "Пекин, Китай",
       coordinates: {
@@ -891,7 +891,7 @@ export const china: Country = {
     {
       id: "su_tong",
       name: "Су Тун",
-      years: "1963–",
+      years: "1963-",
       birthDate: "1963-01-23",
       birthPlace: "Сучжоу, Китай",
       coordinates: {
@@ -928,7 +928,7 @@ export const china: Country = {
     {
       id: "yan_lianke",
       name: "Янь Лянкэ",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-08-24",
       birthPlace: "Суньсянь, Китай",
       coordinates: {
@@ -965,7 +965,7 @@ export const china: Country = {
     {
       id: "can_xue",
       name: "Цань Сюэ",
-      years: "1953–",
+      years: "1953-",
       birthDate: "1953-05-30",
       birthPlace: "Чанша, Китай",
       coordinates: {
@@ -997,7 +997,7 @@ export const china: Country = {
     {
       id: "han_han",
       name: "Хань Хань",
-      years: "1982–",
+      years: "1982-",
       birthDate: "1982-09-23",
       birthPlace: "Шанхай, Китай",
       coordinates: {
@@ -1031,7 +1031,7 @@ export const china: Country = {
       id: "chi_ziqiang",
       name: "Чи Цзыцянь",
       fullName: "Chi Zijian",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964",
       birthPlace: "Мохэ, Хэйлунцзян, Китай",
       coordinates: {
@@ -1064,7 +1064,7 @@ export const china: Country = {
     {
       id: "jia_pingwa",
       name: "Цзя Пинва",
-      years: "1952–",
+      years: "1952-",
       birthDate: "1952-02-21",
       birthPlace: "Даньфэн, Китай",
       coordinates: {
@@ -1102,7 +1102,7 @@ export const china: Country = {
       id: "chiang_sheng_tao",
       name: "Чжоу Цзожэнь",
       fullName: "Zhou Zuoren",
-      years: "1885–1967",
+      years: "1885-1967",
       birthDate: "1885-01-16",
       deathDate: "1967-05-06",
       birthPlace: "Шаосин, Китай",
@@ -1135,7 +1135,7 @@ export const china: Country = {
     {
       id: "bei_dao",
       name: "Бэй Дао",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-08-02",
       birthPlace: "Пекин, Китай",
       coordinates: {
@@ -1167,7 +1167,7 @@ export const china: Country = {
     {
       id: "zhang_ling",
       name: "Чжан Лин",
-      years: "1957–",
+      years: "1957-",
       birthDate: "1957",
       birthPlace: "Ханчжоу, Чжэцзян, Китай",
       coordinates: {

@@ -14,7 +14,7 @@ export const myanmar: Country = {
 
       fullName: "Thakin Kodaw Hmaing",
 
-      years: "1876–1964",
+      years: "1876-1964",
 
       birthDate: "1876-03-23",
 
@@ -68,7 +68,7 @@ export const myanmar: Country = {
 
       fullName: "Min Thu Wun",
 
-      years: "1909–2004",
+      years: "1909-2004",
 
       birthDate: "1909-02-10",
 
@@ -120,7 +120,7 @@ export const myanmar: Country = {
 
       fullName: "Dagon Taryar",
 
-      years: "1919–2013",
+      years: "1919-2013",
 
       birthDate: "1919-05-10",
 
@@ -172,7 +172,7 @@ export const myanmar: Country = {
 
       fullName: "Ma Ma Lay",
 
-      years: "1917–1982",
+      years: "1917-1982",
 
       birthDate: "1917-04-13",
 
@@ -225,7 +225,7 @@ export const myanmar: Country = {
 
       fullName: "Theippan Maung Wa",
 
-      years: "1899–1942",
+      years: "1899-1942",
 
       birthDate: "1899-01-01",
 
@@ -277,7 +277,7 @@ export const myanmar: Country = {
 
       fullName: "Ludu Daw Amar",
 
-      years: "1915–2008",
+      years: "1915-2008",
 
       birthDate: "1915-11-29",
 

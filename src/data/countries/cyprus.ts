@@ -10,7 +10,7 @@ export const cyprus: Country = {
       id: "vasilis_michaelides",
       name: "Василис Михаилидис",
       fullName: "Vasilis Michaelides",
-      years: "1849–1917",
+      years: "1849-1917",
 
       birthDate: "1849",
       deathDate: "1917-12-18",
@@ -57,7 +57,7 @@ export const cyprus: Country = {
       name: "Никос Николаидис",
       fullName: "Nikos Nikolaidis",
 
-      years: "1884–1956",
+      years: "1884-1956",
 
       birthDate: "1884",
       deathDate: "1956",
@@ -104,7 +104,7 @@ export const cyprus: Country = {
       name: "Тефкрос Анфияс",
       fullName: "Tefkros Anthias",
 
-      years: "1903–1968",
+      years: "1903-1968",
 
       birthDate: "1903-04-03",
       deathDate: "1968-11-08",
@@ -150,7 +150,7 @@ export const cyprus: Country = {
       name: "Костас Монтис",
       fullName: "Kostas Montis",
 
-      years: "1914–2004",
+      years: "1914-2004",
 
       birthDate: "1914-02-18",
       deathDate: "2004-03-01",
@@ -196,7 +196,7 @@ export const cyprus: Country = {
       name: "Пантелис Миханикос",
       fullName: "Pantelis Michanikos",
 
-      years: "1926–1979",
+      years: "1926-1979",
 
       birthDate: "1926-07-30",
       deathDate: "1979-01-20",
@@ -242,7 +242,7 @@ export const cyprus: Country = {
       name: "Кириакос Хараламбидис",
       fullName: "Kyriakos Charalambides",
 
-      years: "1940–",
+      years: "1940-",
 
       birthDate: "1940-01-31",
       deathDate: "",

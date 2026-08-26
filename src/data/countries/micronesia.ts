@@ -14,7 +14,7 @@ export const micronesia: Country = {
 
       fullName: "Peter Sigeo",
 
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-01-01",
 
@@ -68,7 +68,7 @@ export const micronesia: Country = {
 
       fullName: "Marcel Mares",
 
-      years: "XX–XXI век",
+      years: "XX-XXI век",
 
       birthDate: "",
 

@@ -57,7 +57,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "University of Bristol", url: "https://www.bristol.ac.uk/people/person/Billy-Kahora-1efef03c-bbc3-4ec9-b7ae-5c47af64a5b7", checkedAt },
-      { provider: "WritersMosaic — Royal Literary Fund", url: "https://writersmosaic.org.uk/contributors/billy-kahora-at-writersmosaic/", checkedAt },
+      { provider: "WritersMosaic - Royal Literary Fund", url: "https://writersmosaic.org.uk/contributors/billy-kahora-at-writersmosaic/", checkedAt },
     ],
     note: "Авторство и редакторская работа подтверждены, но выбранные авторитетные источники не подтверждают профильные 1975 год и Найроби как место рождения. Непроверенную биографическую точность и связанные координаты следует удалить.",
   },
@@ -89,7 +89,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     countryId: "kenya",
     writerId: "henry_ole_kulet",
     patch: {
-      years: "1946–2021",
+      years: "1946-2021",
       birthDate: "1946",
       deathDate: "2021-02-16",
       birthPlace: "Энкаре-Нгусур (Сийяпей), округ Нарок, Кения",
@@ -98,7 +98,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "University of Nairobi", url: "https://erepository.uonbi.ac.ke/bitstream/handle/11295/18382/Mbugua_Issues%20Of%20Identity%20In%20Ole%20Kulet%27s%20Is%20It%20Possible%20And%20To%20Become%20A%20Man.pdf?sequence=2", checkedAt },
-      { provider: "Business Daily Africa — Nation Media Group", url: "https://www.businessdailyafrica.com/bd/news/author-henry-ole-kulet-dies-aged-75-3294428", checkedAt },
+      { provider: "Business Daily Africa - Nation Media Group", url: "https://www.businessdailyafrica.com/bd/news/author-henry-ole-kulet-dies-aged-75-3294428", checkedAt },
     ],
     note: "В профиле ошибочно указан 2022 год смерти и дата 18 февраля. Они исправлены на 16 февраля 2021 года; место рождения уточнено, а перечень произведений расширен только документированными названиями.",
   },
@@ -110,7 +110,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
       deathPlace: "Найроби, Кения",
     },
     evidence: [
-      { provider: "Marjorie Oludhe Macgoye — официальный семейный архив", url: "https://marjorieoludhe.com/", checkedAt },
+      { provider: "Marjorie Oludhe Macgoye - официальный семейный архив", url: "https://marjorieoludhe.com/", checkedAt },
       { provider: "Dublin Literary Award", url: "https://dublinliteraryaward.ie/the-library/authors/marjorie-oludhe-macgoye/", checkedAt },
     ],
     note: "Исходная оценочная характеристика заменена фактами о происхождении, переезде и книге. Профильный день смерти 1 ноября исправлен на документированное 1 декабря 2015 года.",
@@ -119,7 +119,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     countryId: "kenya",
     writerId: "meja_mwangi",
     patch: {
-      years: "1948–2025",
+      years: "1948-2025",
       birthDate: "1948-12-27",
       deathDate: "2025-12-11",
       birthPlace: "Наньюки, Кения",
@@ -167,7 +167,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "International Literature Festival Berlin", url: "https://literaturfestival.com/en/authors/yvonne-adhiambo-owuor/", checkedAt },
-      { provider: "International Writing Program — University of Iowa", url: "https://iwp.uiowa.edu/writers/2017-resident/owuor-yvonne", checkedAt },
+      { provider: "International Writing Program - University of Iowa", url: "https://iwp.uiowa.edu/writers/2017-resident/owuor-yvonne", checkedAt },
       { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/159826/yvonne-adhiambo-owuor/", checkedAt },
     ],
     note: "Общая характеристика заменена датированными сведениями о премии и конкретных книгах. Место рождения уточнено до Найроби, а русское название второго романа добавлено в список произведений.",
@@ -232,7 +232,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     countryId: "kosovo",
     writerId: "rexhep_qosja",
     patch: {
-      years: "1936–2026",
+      years: "1936-2026",
       deathDate: "2026-04-23",
       birthPlace: "Вутай, Черногория",
       works: ["Смерть приходит ко мне из таких глаз","История албанской литературы: романтизм"],
@@ -251,13 +251,13 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     writerId: "ahmad_al_adwani",
     patch: {
       fullName: "Ahmad Meshari Al-Adwani",
-      years: "1922/1923–1990",
+      years: "1922/1923-1990",
       works: ["Крылья бури","Государственный гимн Кувейта"],
       birthDate: "",
     },
     evidence: [
       { provider: "Национальный совет Кувейта по культуре, искусству и литературе", url: "https://alarabi.nccal.gov.kw/Home/Article/326", checkedAt },
-      { provider: "Национальный совет Кувейта по культуре, искусству и литературе — исследование даты рождения", url: "https://alarabi.nccal.gov.kw/Home/Article/19227", checkedAt },
+      { provider: "Национальный совет Кувейта по культуре, искусству и литературе - исследование даты рождения", url: "https://alarabi.nccal.gov.kw/Home/Article/19227", checkedAt },
       { provider: "Министерство образования Кувейта", url: "https://elibrary.moe.edu.kw/api/File/download/book/1457", checkedAt },
     ],
     note: "Точный год рождения спорен даже в профильном издании кувейтского культурного совета, поэтому прежнее однозначное «1922» заменено консервативным диапазоном 1922/1923. Уточнены полное имя и конкретное издание.",
@@ -327,7 +327,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "Большая российская энциклопедия", url: "https://old.bigenc.ru/literature/text/4195375", checkedAt },
-      { provider: "Open.kg — биографический архив Кыргызстана", url: "https://open.kg/en/about-kyrgyzstan/famous-personalities/writers-kyrgyzstan/print%3Apage%2C1%2C31559-poet-prozaik-dramaturg-aaly-tokombaev-balka.html", checkedAt },
+      { provider: "Open.kg - биографический архив Кыргызстана", url: "https://open.kg/en/about-kyrgyzstan/famous-personalities/writers-kyrgyzstan/print%3Apage%2C1%2C31559-poet-prozaik-dramaturg-aaly-tokombaev-balka.html", checkedAt },
     ],
     note: "Исходная дата смерти 27 июня неверна; Большая российская энциклопедия указывает 19 июня 1988 года. Оценочная формула заменена жанровой и библиографической справкой.",
   },
@@ -342,7 +342,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "Кыргызский центр энциклопедии и терминологии", url: "https://encyclopedia.edu.kg/index.php/%D0%9A%D0%90%D0%9B%D0%AB%D0%9A_%D0%90%D0%BA%D1%8B%D0%B5%D0%B2", checkedAt },
-      { provider: "Open.kg — биографический архив Кыргызстана", url: "https://open.kg/about-kyrgyzstan/famous-personalities/kyrgyz-musicians/print%3Apage%2C1%2C1598-kalyk-akiev-18831953.html", checkedAt },
+      { provider: "Open.kg - биографический архив Кыргызстана", url: "https://open.kg/about-kyrgyzstan/famous-personalities/kyrgyz-musicians/print%3Apage%2C1%2C1598-kalyk-akiev-18831953.html", checkedAt },
       { provider: "UNESCO ICHCAP", url: "https://archive.unesco-ichcap.org/eng/ek/sub1/pdf_file/central_asia/Kyrgyz_2011_02_Intangible_Cultural_Heritage_Inventory.pdf", checkedAt },
     ],
     note: "Точный день рождения 21 сентября не подтверждён выбранными авторитетными источниками и должен быть сокращён до 1883 года. Общее место рождения «Кыргызстан» уточнено, а жанровые заглушки заменены названиями записанных эпосов.",
@@ -356,7 +356,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
       works: ["Окуу куралы","Эне тил"],
     },
     evidence: [
-      { provider: "Министерство образования и науки Кыргызской Республики — Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
+      { provider: "Министерство образования и науки Кыргызской Республики - Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
       { provider: "Национальная академия наук Кыргызской Республики", url: "https://naskr.gov.kg/ky/page/79/?page=33", checkedAt },
       { provider: "Кыргызский национальный университет имени Жусупа Баласагына", url: "https://vestnik.knu.kg/wp-content/uploads/2025/06/%D0%92%D0%B5%D1%81%D1%82%D0%BD%D0%B8%D0%BA-%D0%9A%D0%9D%D0%A3-%E2%84%961-2025...pdf", checkedAt },
     ],
@@ -367,18 +367,18 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     writerId: "musa_jangaziev",
     patch: {
       name: "Муса Жангазиев",
-      years: "1921–1997",
+      years: "1921-1997",
       birthDate: "1921-03-23",
       deathDate: "1997",
       birthPlace: "село Кара-Сакал, Сокулукский район, Чуйская область",
       works: ["Балалык","Детям","Мой дом в золотой долине"],
     },
     evidence: [
-      { provider: "Министерство образования и науки Кыргызской Республики — Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
+      { provider: "Министерство образования и науки Кыргызской Республики - Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
       { provider: "Российская государственная библиотека", url: "https://search.rsl.ru/ru/record/01006110399", checkedAt },
       { provider: "Национальная электронная библиотека России / Российская национальная библиотека", url: "https://rusneb.ru/catalog/000200_000018_RU_NLR_BIBL_A_012097803/", checkedAt },
     ],
-    note: "Исходные годы 1930–2010 и обе технические даты 1 января относятся к ошибочной записи. Библиотечные и государственные источники согласуются на 1921–1997 годах и детской поэзии как важной части наследия.",
+    note: "Исходные годы 1930-2010 и обе технические даты 1 января относятся к ошибочной записи. Библиотечные и государственные источники согласуются на 1921-1997 годах и детской поэзии как важной части наследия.",
   },
   {
     countryId: "kyrgyzstan",
@@ -391,10 +391,10 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
       birthPlace: "село Уч-Эмчек, Таласская область",
     },
     evidence: [
-      { provider: "Министерство образования и науки Кыргызской Республики — Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
+      { provider: "Министерство образования и науки Кыргызской Республики - Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%9A%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0%3A_%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5", checkedAt },
       { provider: "Портал государственных наград Кыргызской Республики", url: "https://nagrada.srs.kg/site/celebreties", checkedAt },
     ],
-    note: "Исходное имя «Суранбай» и даты 1 января 1921 — 1 апреля 2016 ошибочны; также удалён неподтверждённый суперлатив.",
+    note: "Исходное имя «Суранбай» и даты 1 января 1921 - 1 апреля 2016 ошибочны; также удалён неподтверждённый суперлатив.",
   },
   {
     countryId: "kyrgyzstan",
@@ -408,7 +408,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
       genres: ["поэзия","басня","сказка","поэма","эпическая традиция"],
     },
     evidence: [
-      { provider: "Министерство образования и науки Кыргызской Республики — Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%3AKGmapRU", checkedAt },
+      { provider: "Министерство образования и науки Кыргызской Республики - Билим булагы", url: "https://bb.edu.gov.kg/index.php/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%3AKGmapRU", checkedAt },
       { provider: "Российская государственная библиотека", url: "https://search.rsl.ru/ru/record/01006487563", checkedAt },
       { provider: "Национальная электронная библиотека России / Российская государственная библиотека", url: "https://rusneb.ru/catalog/000199_000009_001063214/", checkedAt },
     ],
@@ -445,14 +445,14 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     countryId: "laos",
     writerId: "outhine_bounyavong",
     patch: {
-      years: "1942–2000",
+      years: "1942-2000",
       birthDate: "1942",
       deathDate: "2000",
       birthPlace: "провинция Сайнябули, Лаос",
       works: ["Mother’s Beloved"],
     },
     evidence: [
-      { provider: "Northern Illinois University — SEAsite", url: "https://seasite.niu.edu/lao/LaoLiterature/short_stories/motherBeloved/mother_author.htm", checkedAt },
+      { provider: "Northern Illinois University - SEAsite", url: "https://seasite.niu.edu/lao/LaoLiterature/short_stories/motherBeloved/mother_author.htm", checkedAt },
       { provider: "University of Washington Press", url: "https://uwapress.uw.edu/book/9780295977362/mothers-beloved/", checkedAt },
       { provider: "Library of Congress", url: "https://blogs.loc.gov/international-collections/?p=13109", checkedAt },
     ],
@@ -462,7 +462,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     countryId: "laos",
     writerId: "phoumi_vongvichit",
     patch: {
-      years: "1909–1994",
+      years: "1909-1994",
       birthDate: "1909",
       deathDate: "1994",
       category: "политический деятель и автор политико-исторических трудов",
@@ -470,7 +470,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
       works: ["Laos and the Victorious Struggle of the Lao People against U.S. Neo-colonialism"],
     },
     evidence: [
-      { provider: "Library of Congress — Federal Research Division", url: "https://tile.loc.gov/storage-services/master/frd/frdcstdy/la/laoscountrystudy00sava_0/laoscountrystudy00sava_0.pdf", checkedAt },
+      { provider: "Library of Congress - Federal Research Division", url: "https://tile.loc.gov/storage-services/master/frd/frdcstdy/la/laoscountrystudy00sava_0/laoscountrystudy00sava_0.pdf", checkedAt },
       { provider: "CiNii Books / National Institute of Informatics, Japan", url: "https://ci.nii.ac.jp/ncid/BB30166320", checkedAt },
       { provider: "Tokyo University of Foreign Studies Repository", url: "https://tufs.repo.nii.ac.jp/records/27139", checkedAt },
       { provider: "United Nations Digital Library", url: "https://digitallibrary.un.org/record/67459/files/S_SUPP_1981_4--%5EOR_SC_1981_IV%5E-EN.pdf", checkedAt },
@@ -485,7 +485,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "Объединение мемориальных музеев Латвии", url: "https://memorialiemuzeji.lv/en/personalities/andrejs-upits/", checkedAt },
-      { provider: "Literatura.lv — Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/en/persons/andrejs-upits", checkedAt },
+      { provider: "Literatura.lv - Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/en/persons/andrejs-upits", checkedAt },
     ],
     note: "Суперлатив удалён, а жанровая характеристика дополнена документированной библиографией. Даты и Скривери подтверждены двумя латвийскими институциональными ресурсами.",
   },
@@ -500,7 +500,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     evidence: [
       { provider: "Национальная энциклопедия Латвии", url: "https://enciklopedija.lv/skirklis/31832-Aspazija", checkedAt },
       { provider: "Объединение мемориальных музеев Латвии", url: "https://memorialiemuzeji.lv/en/personalities/aspazija/", checkedAt },
-      { provider: "Национальная библиотека Латвии — Rainis un Aspazija", url: "https://runa.lnb.lv/en/142651/", checkedAt },
+      { provider: "Национальная библиотека Латвии - Rainis un Aspazija", url: "https://runa.lnb.lv/en/142651/", checkedAt },
     ],
     note: "Оценочные формулы заменены проверяемыми ролями, именем и книгами. Текущее место рождения «Джуксте» не соответствует латвийской энциклопедической записи.",
   },
@@ -513,8 +513,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "Национальная энциклопедия Латвии", url: "https://enciklopedija.lv/skirklis/36203-J%C4%81nis-Jaunsudrabi%C5%86%C5%A1", checkedAt },
-      { provider: "Национальная библиотека Латвии — база деятелей книжного дела", url: "https://lgdb.lnb.lv/index/person/1718/", checkedAt },
-      { provider: "Literatura.lv — Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/darbi/1570286", checkedAt },
+      { provider: "Национальная библиотека Латвии - база деятелей книжного дела", url: "https://lgdb.lnb.lv/index/person/1718/", checkedAt },
+      { provider: "Literatura.lv - Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/darbi/1570286", checkedAt },
     ],
     note: "Оценочное слово «знаменитой» заменено конкретной характеристикой формы книги. Роли автора расширены по латвийским институциональным источникам.",
   },
@@ -529,7 +529,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch36 = [
     },
     evidence: [
       { provider: "Национальная энциклопедия Латвии", url: "https://enciklopedija.lv/skirklis/97180-K%C4%81rlis-Skalbe", checkedAt },
-      { provider: "Literatura.lv — Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/en/persons/karlis-skalbe", checkedAt },
+      { provider: "Literatura.lv - Институт литературы, фольклора и искусства Латвийского университета", url: "https://www.literatura.lv/en/persons/karlis-skalbe", checkedAt },
     ],
     note: "Исходная биография была фактически верной, но слишком общей. Критическая ошибка находится в профиле: смерть наступила 15 апреля 1945 года, а не 14 апреля.",
   },

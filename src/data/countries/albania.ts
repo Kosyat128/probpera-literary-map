@@ -10,7 +10,7 @@ export const albania: Country = {
       id: "jeronim_de_rada",
       name: "Иероним де Рада",
       fullName: "Jeronim de Rada",
-      years: "1814–1903",
+      years: "1814-1903",
 
       birthDate: "1814-11-29",
       deathDate: "1903-02-28",
@@ -56,7 +56,7 @@ export const albania: Country = {
       name: "Наим Фрашери",
       fullName: "Naim Frashëri",
 
-      years: "1846–1900",
+      years: "1846-1900",
 
       birthDate: "1846-05-25",
       deathDate: "1900-10-20",
@@ -102,7 +102,7 @@ export const albania: Country = {
       name: "Андон Зако Чаюпи",
       fullName: "Andon Zako Çajupi",
 
-      years: "1866–1930",
+      years: "1866-1930",
 
       birthDate: "1866-03-27",
       deathDate: "1930-07-11",
@@ -150,7 +150,7 @@ export const albania: Country = {
       name: "Фан Ноли",
       fullName: "Fan Noli",
 
-      years: "1882–1965",
+      years: "1882-1965",
 
       birthDate: "1882-01-06",
       deathDate: "1965-03-13",
@@ -197,7 +197,7 @@ export const albania: Country = {
       name: "Митруш Кутели",
       fullName: "Mitrush Kuteli",
 
-      years: "1907–1967",
+      years: "1907-1967",
 
       birthDate: "1907-09-13",
       deathDate: "1967-05-04",
@@ -243,7 +243,7 @@ export const albania: Country = {
       name: "Исмаил Кадаре",
       fullName: "Ismail Kadare",
 
-      years: "1936–2024",
+      years: "1936-2024",
 
       birthDate: "1936-01-28",
       deathDate: "2024-07-01",
@@ -257,7 +257,7 @@ export const albania: Country = {
 
       portrait: "",
 
-      bio: "Крупнейший албанский писатель XX–XXI веков.",
+      bio: "Крупнейший албанский писатель XX-XXI веков.",
 
       works: [
         "Генерал мёртвой армии",
@@ -291,7 +291,7 @@ export const albania: Country = {
       name: "Бесник Мустафай",
       fullName: "Besnik Mustafaj",
 
-      years: "1958–",
+      years: "1958-",
 
       birthDate: "1958-09-23",
       deathDate: "",

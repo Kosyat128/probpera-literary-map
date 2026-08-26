@@ -8,7 +8,7 @@ export const grenada: Country = {
     {
       id: "george_brizan",
       name: "Джордж Бризан",
-      years: "1942–2012",
+      years: "1942-2012",
       birthDate: "1942-01-01",
       deathDate: "2012-01-01",
       birthPlace: "Гренада",
@@ -42,7 +42,7 @@ export const grenada: Country = {
     {
       id: "julian_fedon",
       name: "Джулиан Федон",
-      years: "1940–",
+      years: "1940-",
       birthDate: "1940-01-01",
       birthPlace: "Гренада",
       coordinates: {

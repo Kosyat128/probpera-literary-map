@@ -58,7 +58,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     claims: [
       {
         textRu:
-          "Лори Кубуитсиле — гражданка Ботсваны, пишущая художественную прозу для взрослых и юных читателей; роман «The Scattering» впервые опубликован в 2016 году.",
+          "Лори Кубуитсиле - гражданка Ботсваны, пишущая художественную прозу для взрослых и юных читателей; роман «The Scattering» впервые опубликован в 2016 году.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -77,7 +77,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Исходная формулировка конкретизирована без оценочного ранжирования. Date recommendation: карточка указывает 1963 год, тогда как реестр Botswana Writers Association — 1964-01-15; из-за расхождения с другими публичными биографиями дату нельзя менять автоматически до второй институциональной сверки. Shared country files не изменялись.",
+      "Исходная формулировка конкретизирована без оценочного ранжирования. Date recommendation: карточка указывает 1963 год, тогда как реестр Botswana Writers Association - 1964-01-15; из-за расхождения с другими публичными биографиями дату нельзя менять автоматически до второй институциональной сверки. Shared country files не изменялись.",
   },
   {
     key: "botswana:moshe_motshegwa",
@@ -97,7 +97,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Поиск по точному имени не выявил authority-записи или библиографического корпуса, совместимого с карточкой.",
           ),
           evidence(
-            "WorldCat — OCLC",
+            "WorldCat - OCLC",
             "https://search.worldcat.org/search?q=%22Moshe%20Motshegwa%22%20Botswana",
             "Поиск по имени и стране не выявил изданий, позволяющих установить заявленную идентичность поэта.",
           ),
@@ -118,7 +118,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     claims: [
       {
         textRu:
-          "Юнити Доу — ботсванская писательница и юрист, автор романа Far and Beyon’, ставшая первой женщиной-судьёй Высокого суда страны.",
+          "Юнити Доу - ботсванская писательница и юрист, автор романа Far and Beyon’, ставшая первой женщиной-судьёй Высокого суда страны.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -127,7 +127,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Издатель называет Доу автором четырёх романов, включая Far and Beyon’, правозащитным юристом и первой женщиной-судьёй Высокого суда Ботсваны.",
           ),
           evidence(
-            "United Nations — WomenWatch",
+            "United Nations - WomenWatch",
             "https://www.un.org/womenwatch/daw/panel-children/panel-AEK.htm",
             "Профиль ООН подтверждает юридическую и судейскую карьеру Доу, её литературную деятельность и роман Far and Beyond.",
           ),
@@ -137,7 +137,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Расплывчатая тематика заменена конкретной книгой и документированной профессиональной ролью. Рекомендация — сохранить birthDate 1959-04-23: доступные профили не выявили противоречия. Shared country files не изменялись.",
+      "Расплывчатая тематика заменена конкретной книгой и документированной профессиональной ролью. Рекомендация - сохранить birthDate 1959-04-23: доступные профили не выявили противоречия. Shared country files не изменялись.",
   },
   {
     key: "brazil:carlos_drummond_de_andrade",
@@ -154,10 +154,10 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
           evidence(
             "Instituto Moreira Salles",
             "https://ims.com.br/titular-colecao/carlos-drummond-de-andrade/",
-            "Литературный архив IMS подтверждает работу Друммонда как поэта и хрониста и даты жизни 1902–1987.",
+            "Литературный архив IMS подтверждает работу Друммонда как поэта и хрониста и даты жизни 1902-1987.",
           ),
           evidence(
-            "Fundação Biblioteca Nacional — BNDigital",
+            "Fundação Biblioteca Nacional - BNDigital",
             "https://bndigital.bn.gov.br/carlos-drummond-de-andrade/",
             "Национальная библиотека Бразилии описывает поэтическую и журналистскую деятельность Друммонда и атрибутирует ему A Rosa do Povo, изданную в 1945 году.",
           ),
@@ -167,18 +167,18 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Субъективный суперлатив заменён проверяемыми литературными ролями и конкретной книгой. Рекомендация — сохранить birthDate 1902-10-31 и deathDate 1987-08-17; identity установлена однозначно. Shared country files не изменялись.",
+      "Субъективный суперлатив заменён проверяемыми литературными ролями и конкретной книгой. Рекомендация - сохранить birthDate 1902-10-31 и deathDate 1987-08-17; identity установлена однозначно. Shared country files не изменялись.",
   },
   {
     key: "brazil:manoel_de_barros",
     originalSha256:
       "722d3a2cbf7f84d943d9312129ec353f87913dd76418910ed618257d3dd12bc4",
     reviewedTextRu:
-      "Бразильский поэт XX–XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»).",
+      "Бразильский поэт XX-XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»).",
     claims: [
       {
         textRu:
-          "Маноэл де Баррос был бразильским поэтом XX–XXI веков и написал O guardador das águas и Livro sobre nada.",
+          "Маноэл де Баррос был бразильским поэтом XX-XXI веков и написал O guardador das águas и Livro sobre nada.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -187,9 +187,9 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Государственная библиотека Параны представляет Барроса как поэта и перечисляет O guardador das águas и Livro sobre nada среди его книг.",
           ),
           evidence(
-            "Fundação Biblioteca Nacional — autoridade",
+            "Fundação Biblioteca Nacional - autoridade",
             "https://acervo.bn.gov.br/sophia_web/autoridade/detalhe/000631229",
-            "Authority-запись Национальной библиотеки Бразилии подтверждает идентичность поэта, годы жизни 1916–2014 и библиографию Livro sobre nada.",
+            "Authority-запись Национальной библиотеки Бразилии подтверждает идентичность поэта, годы жизни 1916-2014 и библиографию Livro sobre nada.",
           ),
         ],
       },
@@ -197,7 +197,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Оценочное слово снято; добавлены две атрибутированные книги. Рекомендация — сохранить birthDate 1916-12-19 и deathDate 2014-11-13. Shared country files не изменялись.",
+      "Оценочное слово снято; добавлены две атрибутированные книги. Рекомендация - сохранить birthDate 1916-12-19 и deathDate 2014-11-13. Shared country files не изменялись.",
   },
   {
     key: "brunei:awang_mohammad_yassin",
@@ -217,7 +217,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Поиск по точному имени не выявил authority-записи, совместимой с идентичностью брунейского поэта.",
           ),
           evidence(
-            "WorldCat — OCLC",
+            "WorldCat - OCLC",
             "https://search.worldcat.org/search?q=%22Awang%20Mohammad%20Yassin%22%20Brunei",
             "Поиск по имени и стране не выявил библиографического корпуса, подтверждающего исходную карточку.",
           ),
@@ -234,7 +234,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     originalSha256:
       "7e2d4182bdb5765e9948e097603ccc2e9cae2194417f2f6b8cf29579a233f0f5",
     reviewedTextRu:
-      "Заявленная карточкой идентичность брунейского автора Масури Масруна не установлена; институциональные источники описывают другого автора — сингапурского поэта Масури С. Н.",
+      "Заявленная карточкой идентичность брунейского автора Масури Масруна не установлена; институциональные источники описывают другого автора - сингапурского поэта Масури С. Н.",
     claims: [
       {
         textRu:
@@ -242,7 +242,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
         verdict: "not-established",
         evidence: [
           evidence(
-            "National Library Board Singapore — BiblioAsia",
+            "National Library Board Singapore - BiblioAsia",
             "https://biblioasia.nlb.gov.sg/all-sections/book-di-sebalik-tabir-masuri-sn-biographi-dan-karya-pilihan-yang-belum-tersiar/",
             "Национальная библиотека Сингапура представляет Масури С. Н. как сингапурского поэта и литературного деятеля.",
           ),
@@ -257,7 +257,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "held",
     notes:
-      "Held и identity quarantine recommendation: не подменять карточку сингапурским Масури С. Н. и не публиковать даты 1931–2005; нужна отдельная брунейская authority-запись. Shared country files не изменялись.",
+      "Held и identity quarantine recommendation: не подменять карточку сингапурским Масури С. Н. и не публиковать даты 1931-2005; нужна отдельная брунейская authority-запись. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:blaga_dimitrova",
@@ -273,10 +273,10 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
           evidence(
             "Национальная библиотека Болгарии",
             "https://www.nationallibrary.bg/www/2021/12/26/2-%D1%8F%D0%BD%D1%83%D0%B0%D1%80%D0%B8-%D0%B7%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D0%BE-%D1%84%D0%BE%D0%B0%D0%B9%D0%B5-100-%D0%B3-%D0%BE%D1%82-%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D1%82%D0%BE/",
-            "Национальная библиотека называет Димитрову болгарской писательницей и поэтессой и фиксирует годы жизни 1922–2003.",
+            "Национальная библиотека называет Димитрову болгарской писательницей и поэтессой и фиксирует годы жизни 1922-2003.",
           ),
           evidence(
-            "Болгарское национальное радио — архив",
+            "Болгарское национальное радио - архив",
             "https://archives.bnr.bg/archives/post/13277/blaga-dimitrova",
             "Архив БНР документирует её поэтическое, романное и эссеистическое творчество и точные даты жизни.",
           ),
@@ -286,7 +286,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходный короткий текст полностью подтверждён и не содержит неподдержанного ранжирования. Рекомендация — сохранить birthDate 1922-01-02 и deathDate 2003-05-02. Shared country files не изменялись.",
+      "Исходный короткий текст полностью подтверждён и не содержит неподдержанного ранжирования. Рекомендация - сохранить birthDate 1922-01-02 и deathDate 2003-05-02. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:elin_pelin",
@@ -316,7 +316,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Неопределённые оценочные слова «классик» и «мастер» заменены перечислением документированных жанров. Рекомендация — сохранить birthDate 1877-07-08 и deathDate 1949-12-03. Shared country files не изменялись.",
+      "Неопределённые оценочные слова «классик» и «мастер» заменены перечислением документированных жанров. Рекомендация - сохранить birthDate 1877-07-08 и deathDate 1949-12-03. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:geo_milev",
@@ -346,7 +346,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходная формулировка подтверждена музеем и национальным радио. Рекомендация — сохранить birthDate 1895-01-15; deathDate следует хранить с учётом источниковой неопределённости после 15 мая 1925 года, а не приписывать недоказанный день смерти. Shared country files не изменялись.",
+      "Исходная формулировка подтверждена музеем и национальным радио. Рекомендация - сохранить birthDate 1895-01-15; deathDate следует хранить с учётом источниковой неопределённости после 15 мая 1925 года, а не приписывать недоказанный день смерти. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:hristo_botev",
@@ -376,7 +376,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив и широкое слово «классик» заменены занятиями и исторической ролью. Рекомендация — сохранить birthDate 1848-01-06; точная deathDate требует календарной оговорки старого/нового стиля. Shared country files не изменялись.",
+      "Суперлатив и широкое слово «классик» заменены занятиями и исторической ролью. Рекомендация - сохранить birthDate 1848-01-06; точная deathDate требует календарной оговорки старого/нового стиля. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:ivan_vazov",
@@ -406,7 +406,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Почётное прозвище заменено нейтральными литературными ролями; авторство романа сохранено. Рекомендация — сохранить birthDate 1850-07-09 и deathDate 1921-09-22. Shared country files не изменялись.",
+      "Почётное прозвище заменено нейтральными литературными ролями; авторство романа сохранено. Рекомендация - сохранить birthDate 1850-07-09 и deathDate 1921-09-22. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:paisius_hilendar",
@@ -436,7 +436,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Оценка ключевости заменена датируемым фактом; национальная и монашеская идентичность сохранены. Рекомендация: birthDate 1722 и deathDate 1773 считать приблизительными — Национальная библиотека прямо описывает их как гипотезы. Shared country files не изменялись.",
+      "Оценка ключевости заменена датируемым фактом; национальная и монашеская идентичность сохранены. Рекомендация: birthDate 1722 и deathDate 1773 считать приблизительными - Национальная библиотека прямо описывает их как гипотезы. Shared country files не изменялись.",
   },
   {
     key: "burkina_faso:frederic_titinga_pacere",
@@ -451,7 +451,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
         verdict: "supported",
         evidence: [
           evidence(
-            "Музей Манега — фонд Пасере",
+            "Музей Манега - фонд Пасере",
             "https://manega.net/index.php/le-fondateur-du-musee/",
             "Профиль основателя музея называет Пасере писателем и исследователем культуры и перечисляет его работы об обычаях, обрядах и обществе моси.",
           ),
@@ -486,7 +486,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Authority-запись BnF идентифицирует Гингане как автора из Буркина-Фасо, драматурга, режиссёра и руководителя Théâtre de la Fraternité.",
           ),
           evidence(
-            "UNESCO — International Theatre Institute",
+            "UNESCO - International Theatre Institute",
             "https://www.unesco.org/creativity/sites/default/files/medias/fichiers/2023/02/1cp_List%20of%20Participants_en_fr.pdf",
             "Официальный список UNESCO фиксирует Жан-Пьера Гингане как представителя Международного института театра и руководителя его африканской региональной структуры.",
           ),
@@ -496,7 +496,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "unchanged",
     notes:
-      "Исходная нейтральная формулировка полностью подтверждена. Рекомендация — сохранить birthDate 1947-07-11 и deathDate 2011-01-24 по BnF. Shared country files не изменялись.",
+      "Исходная нейтральная формулировка полностью подтверждена. Рекомендация - сохранить birthDate 1947-07-11 и deathDate 2011-01-24 по BnF. Shared country files не изменялись.",
   },
   {
     key: "burkina_faso:monique_ilboudo",
@@ -507,7 +507,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     claims: [
       {
         textRu:
-          "Моник Ильбудо — писательница и юрист из Буркина-Фасо, автор романа Le Mal de peau и эссе Droit de cité: être femme au Burkina Faso.",
+          "Моник Ильбудо - писательница и юрист из Буркина-Фасо, автор романа Le Mal de peau и эссе Droit de cité: être femme au Burkina Faso.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -526,7 +526,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Неопределённая сравнительная формула о первых женщинах-авторах снята; добавлены профессия и две документированные книги. Рекомендация — сохранить годовой birthDate 1959: точный день институционально не установлен. Shared country files не изменялись.",
+      "Неопределённая сравнительная формула о первых женщинах-авторах снята; добавлены профессия и две документированные книги. Рекомендация - сохранить годовой birthDate 1959: точный день институционально не установлен. Shared country files не изменялись.",
   },
   {
     key: "burkina_faso:norbert_zongo",
@@ -546,7 +546,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Authority-запись BnF подтверждает буркинийскую идентичность, работу журналиста и авторство Le Parachutage.",
           ),
           evidence(
-            "Université Joseph Ki-Zerbo — ProGRES",
+            "Université Joseph Ki-Zerbo - ProGRES",
             "https://www.progres.ujkz.gov.bf/publications/8653/afficher",
             "Университетская публикация рассматривает Норбера Зонго как буркинийского писателя и атрибутирует ему роман Rougbêinga.",
           ),
@@ -556,7 +556,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
     reviewer,
     decision: "corrected",
     notes:
-      "Общая формулировка уточнена двумя романами. Рекомендация — сохранить deathDate 1998-12-13; birthDate лучше хранить как приблизительный 1949, поскольку authority BnF отмечает год вопросительным знаком. Shared country files не изменялись.",
+      "Общая формулировка уточнена двумя романами. Рекомендация - сохранить deathDate 1998-12-13; birthDate лучше хранить как приблизительный 1949, поскольку authority BnF отмечает год вопросительным знаком. Shared country files не изменялись.",
   },
   {
     key: "burkina_faso:patrick_ilboudo",
@@ -636,7 +636,7 @@ const writerBiographyFactReviewBatch14Base: readonly ReviewBase[] = [
             "Поиск по точному имени не выявил authority-записи либо произведений заявленного писателя.",
           ),
           evidence(
-            "WorldCat — OCLC",
+            "WorldCat - OCLC",
             "https://search.worldcat.org/search?q=%22Gaetan%20Muschimyimana%22%20Burundi",
             "Поиск по имени и стране не выявил библиографического корпуса, позволяющего установить личность автора.",
           ),

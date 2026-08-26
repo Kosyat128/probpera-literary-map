@@ -39,10 +39,10 @@ const writerBiographyFactReviewBatch04Base = [
     originalSha256: "e8563afb9b304e637900a0d8b158d4559e19a4e7049ba4ab4fbc6822064f8ed5",
     reviewedTextRu: "Персоязычный поэт XII века, родившийся и живший в Гяндже. Автор цикла из пяти поэм «Хамсе».",
     claims: [{
-      textRu: "Низами был персоязычным поэтом XII века, связанным с Гянджой, и создал «Хамсе» — цикл из пяти поэм.",
+      textRu: "Низами был персоязычным поэтом XII века, связанным с Гянджой, и создал «Хамсе» - цикл из пяти поэм.",
       verdict: "corrected",
       evidence: [
-        { provider: "Encyclopaedia Iranica", url: "https://www.iranicaonline.org/articles/iran-viii2-classical-persian-literature/", checkedAt, findingRu: "Академическая энциклопедия относит Низами Гянджеви к классической персидской литературе, связывает его жизнь с Гянджой и датирует её примерно 1141–1209 годами." },
+        { provider: "Encyclopaedia Iranica", url: "https://www.iranicaonline.org/articles/iran-viii2-classical-persian-literature/", checkedAt, findingRu: "Академическая энциклопедия относит Низами Гянджеви к классической персидской литературе, связывает его жизнь с Гянджой и датирует её примерно 1141-1209 годами." },
         { provider: "Encyclopaedia Iranica", url: "https://www.iranicaonline.org/articles/kamsa-of-nezami/", checkedAt, findingRu: "Специальная статья определяет «Хамсе» Низами как квинтет из пяти повествовательных поэм." },
         { provider: "UNESCO Memory of the World", url: "https://www.unesco.org/en/memory-world/collection-nezamis-panj-ganj", checkedAt, findingRu: "ЮНЕСКО описывает «Пандж Гандж», или «Хамсе», как собрание пяти длинных поэм на персидском языке." },
       ],
@@ -72,7 +72,7 @@ const writerBiographyFactReviewBatch04Base = [
     originalSha256: "f1380c141075719deb300123ef116046a668ca6e98b6dab707db175249854674",
     reviewedTextRu: "Бахрейнский поэт и переводчик, чьё литературное наследие включает переводы произведений Омара Хайяма.",
     claims: [{
-      textRu: "Ибрахим аль-Аррайед был бахрейнским поэтом и переводчиком; среди его работ — переводы произведений Омара Хайяма.",
+      textRu: "Ибрахим аль-Аррайед был бахрейнским поэтом и переводчиком; среди его работ - переводы произведений Омара Хайяма.",
       verdict: "corrected",
       evidence: [
         { provider: "Bahrain Authority for Culture and Antiquities", url: "https://culture.gov.bh/en/visitingbahrain/CulturalTourism/Destinations/Name%2C14796%2Cen.php", checkedAt, findingRu: "Государственное культурное ведомство представляет аль-Аррайеда как центральную фигуру поэзии и литературы Бахрейна." },
@@ -88,7 +88,7 @@ const writerBiographyFactReviewBatch04Base = [
     originalSha256: "8e11427d5d01d001920213f3c90cd490749533ff4f08ca845d5aa0a5eaf2e79c",
     reviewedTextRu: "Бахрейнский поэт, один из основателей Ассоциации писателей Бахрейна. Его первый поэтический сборник «Аль-Бишара» вышел в 1970 году.",
     claims: [{
-      textRu: "Касим Хаддад — бахрейнский поэт, сооснователь Ассоциации писателей Бахрейна; его первый сборник «Аль-Бишара» вышел в 1970 году.",
+      textRu: "Касим Хаддад - бахрейнский поэт, сооснователь Ассоциации писателей Бахрейна; его первый сборник «Аль-Бишара» вышел в 1970 году.",
       verdict: "corrected",
       evidence: [
         { provider: "Sultan Bin Ali Al Owais Cultural Foundation", url: "https://www.alowais.com/en/qassim-haddad/", checkedAt, findingRu: "Культурный фонд подтверждает рождение поэта в Бахрейне, участие в основании Bahrain Writers Association в 1969 году и библиографию." },
@@ -120,7 +120,7 @@ const writerBiographyFactReviewBatch04Base = [
     originalSha256: "41dae27c65b5927f6716f5c93533387a1bb26f9eafee0aee6ab1875a3cc70523",
     reviewedTextRu: "Национальный поэт Бангладеш, также работавший как композитор и журналист. В своих произведениях и общественной деятельности выступал против колониального господства и угнетения.",
     claims: [{
-      textRu: "Кази Назрул Ислам — национальный поэт Бангладеш, композитор и журналист; его творчество и общественная деятельность были направлены против колониального господства и угнетения.",
+      textRu: "Кази Назрул Ислам - национальный поэт Бангладеш, композитор и журналист; его творчество и общественная деятельность были направлены против колониального господства и угнетения.",
       verdict: "corrected",
       evidence: [
         { provider: "Banglapedia, Asiatic Society of Bangladesh", url: "https://en.banglapedia.org/index.php/Islam%2C_Kazi_Nazrul", checkedAt, findingRu: "Национальная энциклопедия подтверждает статус национального поэта, работу в музыке и журналистике, сопротивление колониальному правлению и эксплуатации." },
@@ -201,7 +201,7 @@ const writerBiographyFactReviewBatch04Base = [
   {
     key: "belarus:maksim_bahdanovic",
     originalSha256: "7153a432b5055d5fe8f3a598b96a7e5be5bfec8b9ac6901ca08898aafa59da9c",
-    reviewedTextRu: "Белорусский поэт, переводчик и литературовед. Автор сборника «Вянок» — единственной книги стихов, изданной при его жизни.",
+    reviewedTextRu: "Белорусский поэт, переводчик и литературовед. Автор сборника «Вянок» - единственной книги стихов, изданной при его жизни.",
     claims: [{
       textRu: "Максим Богданович был белорусским поэтом, переводчиком и литературоведом; «Вянок» стал единственной книгой его стихов, опубликованной при жизни.",
       verdict: "corrected",
@@ -217,7 +217,7 @@ const writerBiographyFactReviewBatch04Base = [
   {
     key: "belarus:uladzimir_karatkevich",
     originalSha256: "bb70423dfa5772fa5e82cf851abaa4885f0d056ba8b5270897628c384a3ac2a9",
-    reviewedTextRu: "Белорусский писатель, поэт и драматург, автор исторической прозы. Среди его произведений — романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский».",
+    reviewedTextRu: "Белорусский писатель, поэт и драматург, автор исторической прозы. Среди его произведений - романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский».",
     claims: [{
       textRu: "Владимир Короткевич был белорусским писателем, поэтом и драматургом, работал с исторической прозой и написал романы «Колосья под серпом твоим» и «Чёрный замок Ольшанский».",
       verdict: "corrected",
@@ -274,7 +274,7 @@ const writerBiographyFactReviewBatch04Base = [
       verdict: "corrected",
       evidence: [
         { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb11898881h", checkedAt, findingRu: "Авторитетная запись BnF указывает Бельгию, французский язык и роли романиста и эссеиста." },
-        { provider: "KBR — Royal Library of Belgium", url: "https://opac.kbr.be/Library/detailstatic.aspx?RSC_BASE=SYRACUSE&RSC_DOCID=13331878&TITLE=la-legende-et-les-aventures-heroiques-joyeuses-et-glorieuses-d-ulenspiegel-et-de-lamme-goedzak-au-pa&_lg=en-GB", checkedAt, findingRu: "Каталог Королевской библиотеки Бельгии связывает де Костера с полным французским заглавием «Легенды об Уленшпигеле» и подтверждает авторство." },
+        { provider: "KBR - Royal Library of Belgium", url: "https://opac.kbr.be/Library/detailstatic.aspx?RSC_BASE=SYRACUSE&RSC_DOCID=13331878&TITLE=la-legende-et-les-aventures-heroiques-joyeuses-et-glorieuses-d-ulenspiegel-et-de-lamme-goedzak-au-pa&_lg=en-GB", checkedAt, findingRu: "Каталог Королевской библиотеки Бельгии связывает де Костера с полным французским заглавием «Легенды об Уленшпигеле» и подтверждает авторство." },
       ],
     }],
     reviewer,
@@ -308,7 +308,7 @@ const writerBiographyFactReviewBatch04Base = [
       evidence: [
         { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark%3A/12148/cb13091677x", checkedAt, findingRu: "Авторитетная запись BnF указывает Бельгию, нидерландский язык, литературные роли, а также работу иллюстратора и художника." },
         { provider: "Letterenhuis", url: "https://letterenhuis.be/nl/content/felix-timmermans-pallieter-1916", checkedAt, findingRu: "Фламандский литературный архив определяет Pallieter как роман Феликса Тиммерманса и датирует издание 1916 годом." },
-        { provider: "KBR — Royal Library of Belgium", url: "https://opac.kbr.be/Library/doc/SYRACUSE/13650062/pallieter", checkedAt, findingRu: "Каталог Королевской библиотеки Бельгии подтверждает авторство романа Pallieter." },
+        { provider: "KBR - Royal Library of Belgium", url: "https://opac.kbr.be/Library/doc/SYRACUSE/13650062/pallieter", checkedAt, findingRu: "Каталог Королевской библиотеки Бельгии подтверждает авторство романа Pallieter." },
       ],
     }],
     reviewer,
@@ -337,7 +337,7 @@ const writerBiographyFactReviewBatch04Base = [
     originalSha256: "61b89c798bd55dee4fe475810750e27f60cdc51ca12bbb131dea9b0b37f29fee",
     reviewedTextRu: "Фламандский нидерландоязычный писатель, поэт и драматург. Автор романа «Печаль Бельгии».",
     claims: [{
-      textRu: "Хюго Клаус был фламандским нидерландоязычным писателем, поэтом и драматургом; среди его романов — «Печаль Бельгии».",
+      textRu: "Хюго Клаус был фламандским нидерландоязычным писателем, поэтом и драматургом; среди его романов - «Печаль Бельгии».",
       verdict: "corrected",
       evidence: [
         { provider: "Letterenhuis", url: "https://letterenhuis.be/nl/pagina/wie-was-hugo-claus", checkedAt, findingRu: "Фламандский литературный архив сообщает о рождении Клауса в Брюгге, его поэзии, прозе и пьесах и называет роман Het verdriet van België 1983 года." },

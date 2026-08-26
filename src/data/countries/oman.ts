@@ -12,7 +12,7 @@ export const oman: Country = {
       name: "Абу Муслим аль-Бахляни",
       fullName: "Abu Muslim al-Bahlani",
 
-      years: "1860–1920",
+      years: "1860-1920",
 
       birthDate: "1860",
       deathDate: "1920",
@@ -61,7 +61,7 @@ export const oman: Country = {
       name: "Абдулла бин Мухаммад ат-Таи",
       fullName: "Abdullah bin Mohammed Al-Taie",
 
-      years: "1924–1973",
+      years: "1924-1973",
 
       birthDate: "1924",
       deathDate: "1973",
@@ -110,7 +110,7 @@ export const oman: Country = {
       name: "Саиф ар-Рахби",
       fullName: "Saif Al Rahbi",
 
-      years: "1956–",
+      years: "1956-",
 
       birthDate: "1956",
       deathDate: "",
@@ -159,7 +159,7 @@ export const oman: Country = {
       name: "Джоха аль-Харси",
       fullName: "Jokha Alharthi",
 
-      years: "1978–",
+      years: "1978-",
 
       birthDate: "1978",
       deathDate: "",
@@ -210,7 +210,7 @@ export const oman: Country = {
       name: "Абдулла Хабиб",
       fullName: "Abdullah Habib",
 
-      years: "1962–",
+      years: "1962-",
 
       birthDate: "1962",
       deathDate: "",
@@ -260,7 +260,7 @@ export const oman: Country = {
       name: "Захир аль-Газали",
       fullName: "Zahir Al Ghazali",
 
-      years: "1957–",
+      years: "1957-",
 
       birthDate: "1957",
       deathDate: "",

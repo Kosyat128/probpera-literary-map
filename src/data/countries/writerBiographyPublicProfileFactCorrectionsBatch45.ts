@@ -58,7 +58,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch45 = [
     "portugal",
     "antonio_lobo_antunes",
     {
-      years: "1942–2026",
+      years: "1942-2026",
       deathDate: "2026-03-05",
       works: ["Memória de Elefante", "Os Cus de Judas", "Manual dos Inquisidores"],
       genres: ["роман", "психологическая проза"],
@@ -118,7 +118,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch45 = [
     "portugal",
     "gil_vicente",
     {
-      years: "ок. 1465 — ок. 1536",
+      years: "ок. 1465 - ок. 1536",
       deathDate: "ок. 1536",
       works: ["Auto da Índia", "Autos das Barcas", "Farsa de Inês Pereira"],
       genres: ["драматургия", "поэзия", "фарс", "религиозная пьеса"],
@@ -239,7 +239,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch45 = [
     "luis_de_camoes",
     {
       fullName: "Luís Vaz de Camões",
-      years: "ок. 1524/1525–1580",
+      years: "ок. 1524/1525-1580",
       birthDate: "",
       birthPlace: "",
       works: ["Os Lusíadas", "Rimas"],
@@ -415,7 +415,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch45 = [
     {
       name: "Абдулазиз Аль-Махмуд",
       fullName: "Abdulaziz Al-Mahmoud",
-      years: "1961–",
+      years: "1961-",
       birthDate: "1961",
       birthPlace: "Доха, Катар",
       works: ["Al Qursan (The Corsair)", "The Holy Sail"],
@@ -433,7 +433,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch45 = [
     {
       name: "Кульсум Джабр аль-Кувари",
       fullName: "Kulthum Jabr al-Kuwari",
-      years: "ок. 1958–",
+      years: "ок. 1958-",
       birthDate: "ок. 1958",
       works: ["Anyā wa-ghābāt al-ṣamt wa-l-taraddud", "Фаридж бин Дирхам"],
       genres: ["рассказ", "роман", "поэзия"],

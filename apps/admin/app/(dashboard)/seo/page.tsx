@@ -169,17 +169,17 @@ export default async function SeoPage({
       <section className="stats-grid">
         <article className="stat-card">
           <span>Материалов</span>
-          <strong>{articlesCountResponse.error ? "—" : articlesCountResponse.count || 0}</strong>
+          <strong>{articlesCountResponse.error ? "-" : articlesCountResponse.count || 0}</strong>
           <small>в базе CMS</small>
         </article>
         <article className="stat-card">
           <span>Требуют SEO-проверки</span>
-          <strong>{issuesCountResponse.error ? "—" : issuesCountResponse.count || 0}</strong>
+          <strong>{issuesCountResponse.error ? "-" : issuesCountResponse.count || 0}</strong>
           <small>только опубликованные</small>
         </article>
         <article className="stat-card">
           <span>Активных 301-редиректов</span>
-          <strong>{permanentRedirectsResponse.error ? "—" : permanentRedirectsResponse.count || 0}</strong>
+          <strong>{permanentRedirectsResponse.error ? "-" : permanentRedirectsResponse.count || 0}</strong>
           <small>сохраняют поисковый вес</small>
         </article>
         <article className="stat-card">

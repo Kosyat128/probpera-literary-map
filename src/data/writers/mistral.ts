@@ -1,7 +1,7 @@
 export const mistralProfile = {
  id:"mistral",
  fullName:"Габриэла Мистраль",
- years:"1889–1957",
+ years:"1889-1957",
  country:"Чили",
  birthPlace:"Викуньа, Чили",
  movement:"Модернизм",

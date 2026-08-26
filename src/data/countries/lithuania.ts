@@ -10,7 +10,7 @@ export const lithuania: Country = {
       id: "kristijonas_donelaitis",
       name: "Кристионас Донелайтис",
       fullName: "Kristijonas Donelaitis",
-      years: "1714–1780",
+      years: "1714-1780",
 
       birthDate: "1714-01-01",
       deathDate: "1780-02-18",
@@ -54,7 +54,7 @@ export const lithuania: Country = {
       id: "antanas_baranauskas",
       name: "Антанас Баранаускас",
       fullName: "Antanas Baranauskas",
-      years: "1835–1902",
+      years: "1835-1902",
 
       birthDate: "1835-01-17",
       deathDate: "1902-11-26",
@@ -99,7 +99,7 @@ export const lithuania: Country = {
       id: "maironis",
       name: "Майронис",
       fullName: "Jonas Mačiulis (Maironis)",
-      years: "1862–1932",
+      years: "1862-1932",
 
       birthDate: "1862-10-21",
       deathDate: "1932-06-28",
@@ -145,7 +145,7 @@ export const lithuania: Country = {
       id: "zemaite",
       name: "Жемайте",
       fullName: "Julija Beniuševičiūtė-Žymantienė",
-      years: "1845–1921",
+      years: "1845-1921",
 
       birthDate: "1845-06-04",
       deathDate: "1921-12-07",
@@ -191,7 +191,7 @@ export const lithuania: Country = {
       id: "vincas_kreve",
       name: "Винцас Креве-Мицкявичюс",
       fullName: "Vincas Krėvė-Mickevičius",
-      years: "1882–1954",
+      years: "1882-1954",
 
       birthDate: "1882-10-19",
       deathDate: "1954-07-07",
@@ -238,7 +238,7 @@ export const lithuania: Country = {
       id: "vincas_putinas",
       name: "Винцас Миколайтис-Путинас",
       fullName: "Vincas Mykolaitis-Putinas",
-      years: "1893–1967",
+      years: "1893-1967",
 
       birthDate: "1893-01-06",
       deathDate: "1967-06-07",
@@ -283,7 +283,7 @@ export const lithuania: Country = {
       id: "balys_sruoga",
       name: "Балиc Сруога",
       fullName: "Balys Sruoga",
-      years: "1896–1947",
+      years: "1896-1947",
 
       birthDate: "1896-02-02",
       deathDate: "1947-10-16",
@@ -330,7 +330,7 @@ export const lithuania: Country = {
       id: "ieva_simonaityte",
       name: "Иева Симонайтите",
       fullName: "Ieva Simonaitytė",
-      years: "1897–1978",
+      years: "1897-1978",
 
       birthDate: "1897-01-23",
       deathDate: "1978-08-27",
@@ -376,7 +376,7 @@ export const lithuania: Country = {
       id: "antanas_venclova",
       name: "Антанас Венцлова",
       fullName: "Antanas Venclova",
-      years: "1906–1971",
+      years: "1906-1971",
 
       birthDate: "1906-01-07",
       deathDate: "1971-06-28",
@@ -422,7 +422,7 @@ export const lithuania: Country = {
       id: "tomas_venclova",
       name: "Томас Венцлова",
       fullName: "Tomas Venclova",
-      years: "1937–",
+      years: "1937-",
 
       birthDate: "1937-09-11",
       deathDate: "",
@@ -469,7 +469,7 @@ export const lithuania: Country = {
       id: "jurgis_kuncinas",
       name: "Юргис Кунчинас",
       fullName: "Jurgis Kunčinas",
-      years: "1947–2002",
+      years: "1947-2002",
 
       birthDate: "1947-01-13",
       deathDate: "2002-12-13",
@@ -515,7 +515,7 @@ export const lithuania: Country = {
       id: "ricardas_gavelis",
       name: "Ричардас Гавялис",
       fullName: "Ričardas Gavelis",
-      years: "1950–2002",
+      years: "1950-2002",
 
       birthDate: "1950-11-08",
       deathDate: "2002-08-18",
@@ -560,7 +560,7 @@ export const lithuania: Country = {
       id: "jurga_ivanauskaite",
       name: "Юрга Иванаускайте",
       fullName: "Jurga Ivanauskaitė",
-      years: "1961–2007",
+      years: "1961-2007",
 
       birthDate: "1961-11-14",
       deathDate: "2007-02-17",
@@ -606,7 +606,7 @@ export const lithuania: Country = {
       id: "kristina_sabaliauskaite",
       name: "Кристина Сабаляускайте",
       fullName: "Kristina Sabaliauskaitė",
-      years: "1974–",
+      years: "1974-",
 
       birthDate: "1974-06-02",
       deathDate: "",
@@ -651,7 +651,7 @@ export const lithuania: Country = {
       id: "ruta_sepetys",
       name: "Рута Сепетис",
       fullName: "Ruta Sepetys",
-      years: "1967–",
+      years: "1967-",
 
       birthDate: "1967-11-19",
       deathDate: "",

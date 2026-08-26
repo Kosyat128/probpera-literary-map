@@ -10,7 +10,7 @@ export const nauru: Country = {
       id: "michael_francis",
       name: "Майкл Фрэнсис",
       fullName: "Michael Francis",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960",
       deathDate: "",
       birthPlace: "Науру",

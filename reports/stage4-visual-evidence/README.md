@@ -1,9 +1,9 @@
-# Stage 4 visual evidence — V11
+# Stage 4 visual evidence - V11
 
 Capture date: 2026-08-23
 Preview used: `http://127.0.0.1:4190/` with root base `/`
 Evidence set: **16 PNG files**
-Result: **PASS — no remaining P0/P1 issue was found in the inspected states after the V11 mobile containment correction.**
+Result: **PASS - no remaining P0/P1 issue was found in the inspected states after the V11 mobile containment correction.**
 
 This folder is a visual record of the current V11 domain build. The stale preview that had previously occupied port `4173` was not used: it resolved the HTML but served the wrong Vite base and returned `404` for root assets.
 
@@ -43,7 +43,7 @@ The requested dimensions are the page's exact `window.innerWidth × window.inner
 
 Coverage totals:
 
-- Required viewports: **11/11** — 320×800, 360×800, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1366×700, 1366×768, 1440×900 and 1920×1080.
+- Required viewports: **11/11** - 320×800, 360×800, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1366×700, 1366×768, 1440×900 and 1920×1080.
 - Languages: **RU and EN**.
 - Modes: **embedded and immersive**.
 - Public globe styles: **Старинный, Современный and Классический**.
@@ -55,7 +55,7 @@ The previously observed 430×932 immersive regression was rechecked after the V1
 
 | State | Immersive surface overflow | Surface scrollTop | Surface scrollHeight/clientHeight | Chrome top | Sheet/content height | Result |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| Direct selected state | `clip` | 0 | 932/932 | 14 px | — | PASS |
+| Direct selected state | `clip` | 0 | 932/932 | 14 px | - | PASS |
 | Collapsed | `clip` | 0 | 932/932 | 14 px | content 0 px | PASS |
 | Half | `clip` | 0 | 932/932 | 14 px | 429/357 px | PASS |
 | Expanded | `clip` | 0 | 932/932 | 14 px | 652/580 px | PASS |

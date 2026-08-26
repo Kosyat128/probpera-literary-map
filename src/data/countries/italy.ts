@@ -9,7 +9,7 @@ export const italy: Country = {
       id: "giosue_carducci",
       name: "Джозуэ Кардуччи",
       fullName: "Giosuè Carducci",
-      years: "1835–1907",
+      years: "1835-1907",
       nobelYear: 1906,
       birthDate: "1835-07-27",
       deathDate: "1907-02-16",
@@ -40,7 +40,7 @@ export const italy: Country = {
     {
       id: "dante_alighieri",
       name: "Данте Алигьери",
-      years: "1265–1321",
+      years: "1265-1321",
       birthDate: "1265-05-21",
       deathDate: "1321-09-14",
       birthPlace: "Флоренция, Италия",
@@ -78,7 +78,7 @@ export const italy: Country = {
     {
       id: "francesco_petrarca",
       name: "Франческо Петрарка",
-      years: "1304–1374",
+      years: "1304-1374",
       birthDate: "1304-07-20",
       deathDate: "1374-07-19",
       birthPlace: "Ареццо, Италия",
@@ -115,7 +115,7 @@ export const italy: Country = {
     {
       id: "giovanni_boccaccio",
       name: "Джованни Боккаччо",
-      years: "1313–1375",
+      years: "1313-1375",
       birthDate: "1313-06-16",
       deathDate: "1375-12-21",
       birthPlace: "Чертальдо или Флоренция, Италия",
@@ -152,7 +152,7 @@ export const italy: Country = {
     {
       id: "jacopone_da_todi",
       name: "Якопоне да Тоди",
-      years: "ок. 1230–1306",
+      years: "ок. 1230-1306",
       birthDate: "ок. 1230",
       deathDate: "1306-12-25",
       birthPlace: "Тоди, Италия",
@@ -183,7 +183,7 @@ export const italy: Country = {
     {
       id: "niccolo_machiavelli",
       name: "Никколо Макиавелли",
-      years: "1469–1527",
+      years: "1469-1527",
       birthDate: "1469-05-03",
       deathDate: "1527-06-21",
       birthPlace: "Флоренция, Италия",
@@ -219,7 +219,7 @@ export const italy: Country = {
     {
       id: "ludovico_ariosto",
       name: "Лудовико Ариосто",
-      years: "1474–1533",
+      years: "1474-1533",
       birthDate: "1474-09-08",
       deathDate: "1533-07-06",
       birthPlace: "Реджо-нель-Эмилия, Италия",
@@ -252,7 +252,7 @@ export const italy: Country = {
         {
       id: "torquato_tasso",
       name: "Торквато Тассо",
-      years: "1544–1595",
+      years: "1544-1595",
       birthDate: "1544-03-11",
       deathDate: "1595-04-25",
       birthPlace: "Сорренто, Италия",
@@ -287,7 +287,7 @@ export const italy: Country = {
     {
       id: "baldassare_castiglione",
       name: "Бальдассаре Кастильоне",
-      years: "1478–1529",
+      years: "1478-1529",
       birthDate: "1478-12-06",
       deathDate: "1529-02-02",
       birthPlace: "Казатико, Италия",
@@ -320,7 +320,7 @@ export const italy: Country = {
     {
       id: "giambattista_marino",
       name: "Джамбаттиста Марино",
-      years: "1569–1625",
+      years: "1569-1625",
       birthDate: "1569-10-18",
       deathDate: "1625-03-26",
       birthPlace: "Неаполь, Италия",
@@ -352,7 +352,7 @@ export const italy: Country = {
     {
       id: "carlo_goldoni",
       name: "Карло Гольдони",
-      years: "1707–1793",
+      years: "1707-1793",
       birthDate: "1707-02-25",
       deathDate: "1793-02-06",
       birthPlace: "Венеция, Италия",
@@ -385,7 +385,7 @@ export const italy: Country = {
     {
       id: "vittorio_alfieri",
       name: "Витторио Альфьери",
-      years: "1749–1803",
+      years: "1749-1803",
       birthDate: "1749-01-16",
       deathDate: "1803-10-08",
       birthPlace: "Асти, Италия",
@@ -419,7 +419,7 @@ export const italy: Country = {
     {
       id: "cesare_beccaria",
       name: "Чезаре Беккариа",
-      years: "1738–1794",
+      years: "1738-1794",
       birthDate: "1738-03-15",
       deathDate: "1794-11-28",
       birthPlace: "Милан, Италия",
@@ -452,7 +452,7 @@ export const italy: Country = {
     {
       id: "alessandro_manzoni",
       name: "Алессандро Мандзони",
-      years: "1785–1873",
+      years: "1785-1873",
       birthDate: "1785-03-07",
       deathDate: "1873-05-22",
       birthPlace: "Милан, Италия",
@@ -487,7 +487,7 @@ export const italy: Country = {
         {
       id: "giacomo_leopardi",
       name: "Джакомо Леопарди",
-      years: "1798–1837",
+      years: "1798-1837",
       birthDate: "1798-06-29",
       deathDate: "1837-06-14",
       birthPlace: "Реканати, Италия",
@@ -523,7 +523,7 @@ export const italy: Country = {
     {
       id: "silvio_pellico",
       name: "Сильвио Пеллико",
-      years: "1789–1854",
+      years: "1789-1854",
       birthDate: "1789-06-25",
       deathDate: "1854-01-31",
       birthPlace: "Салуццо, Италия",
@@ -555,7 +555,7 @@ export const italy: Country = {
     {
       id: "giovanni_verga",
       name: "Джованни Верга",
-      years: "1840–1922",
+      years: "1840-1922",
       birthDate: "1840-09-02",
       deathDate: "1922-01-27",
       birthPlace: "Катания, Италия",
@@ -565,7 +565,7 @@ export const italy: Country = {
         lng: 15.083
       },
       portrait: "",
-      bio: "Итальянский писатель, крупнейший представитель веризма — итальянского направления реализма.",
+      bio: "Итальянский писатель, крупнейший представитель веризма - итальянского направления реализма.",
       works: [
         "Семья Малаволья",
         "Сельская честь",
@@ -589,7 +589,7 @@ export const italy: Country = {
     {
       id: "luigi_capuana",
       name: "Луиджи Капуана",
-      years: "1839–1915",
+      years: "1839-1915",
       birthDate: "1839-05-28",
       deathDate: "1915-11-29",
       birthPlace: "Минео, Италия",
@@ -623,7 +623,7 @@ export const italy: Country = {
     {
       id: "gabriele_d_annunzio",
       name: "Габриэле Д’Аннунцио",
-      years: "1863–1938",
+      years: "1863-1938",
       birthDate: "1863-03-12",
       deathDate: "1938-03-01",
       birthPlace: "Пескара, Италия",
@@ -657,7 +657,7 @@ export const italy: Country = {
     {
       id: "luigi_pirandello",
       name: "Луиджи Пиранделло",
-      years: "1867–1936",
+      years: "1867-1936",
       birthDate: "1867-06-28",
       deathDate: "1936-12-10",
       birthPlace: "Агридженто, Италия",
@@ -694,7 +694,7 @@ export const italy: Country = {
         {
       id: "italo_svevo",
       name: "Итало Свево",
-      years: "1861–1928",
+      years: "1861-1928",
       birthDate: "1861-12-19",
       deathDate: "1928-09-13",
       birthPlace: "Триест, Австрийская империя",
@@ -729,7 +729,7 @@ export const italy: Country = {
     {
       id: "grazia_deledda",
       name: "Грация Деледда",
-      years: "1871–1936",
+      years: "1871-1936",
       birthDate: "1871-09-27",
       deathDate: "1936-08-15",
       birthPlace: "Нуоро, Италия",
@@ -764,7 +764,7 @@ export const italy: Country = {
     {
       id: "salvatore_quasimodo",
       name: "Сальваторе Квазимодо",
-      years: "1901–1968",
+      years: "1901-1968",
       birthDate: "1901-08-20",
       deathDate: "1968-06-14",
       birthPlace: "Модика, Италия",
@@ -800,7 +800,7 @@ export const italy: Country = {
     {
       id: "eugenio_montale",
       name: "Эудженио Монтале",
-      years: "1896–1981",
+      years: "1896-1981",
       birthDate: "1896-10-12",
       deathDate: "1981-09-12",
       birthPlace: "Генуя, Италия",
@@ -837,7 +837,7 @@ export const italy: Country = {
     {
       id: "alberto_moravia",
       name: "Альберто Моравиа",
-      years: "1907–1990",
+      years: "1907-1990",
       birthDate: "1907-11-28",
       deathDate: "1990-09-26",
       birthPlace: "Рим, Италия",
@@ -870,7 +870,7 @@ export const italy: Country = {
     {
       id: "cesare_pavese",
       name: "Чезаре Павезе",
-      years: "1908–1950",
+      years: "1908-1950",
       birthDate: "1908-09-09",
       deathDate: "1950-08-27",
       birthPlace: "Сан-Стефано-Бельбо, Италия",
@@ -904,7 +904,7 @@ export const italy: Country = {
     {
       id: "primo_levi",
       name: "Примо Леви",
-      years: "1919–1987",
+      years: "1919-1987",
       birthDate: "1919-07-31",
       deathDate: "1987-04-11",
       birthPlace: "Турин, Италия",
@@ -937,7 +937,7 @@ export const italy: Country = {
         {
       id: "italo_calvino",
       name: "Итало Кальвино",
-      years: "1923–1985",
+      years: "1923-1985",
       birthDate: "1923-10-15",
       deathDate: "1985-09-19",
       birthPlace: "Сантьяго-де-Лас-Вегас, Куба",
@@ -974,7 +974,7 @@ export const italy: Country = {
     {
       id: "dino_buzzati",
       name: "Дино Буццати",
-      years: "1906–1972",
+      years: "1906-1972",
       birthDate: "1906-10-16",
       deathDate: "1972-01-28",
       birthPlace: "Сан-Пеллегрино-ди-Бельзуно, Италия",
@@ -1010,7 +1010,7 @@ export const italy: Country = {
     {
       id: "umberto_eco",
       name: "Умберто Эко",
-      years: "1932–2016",
+      years: "1932-2016",
       birthDate: "1932-01-05",
       deathDate: "2016-02-19",
       birthPlace: "Алессандрия, Италия",
@@ -1068,7 +1068,7 @@ export const italy: Country = {
     {
       id: "dario_fo",
       name: "Дарио Фо",
-      years: "1926–2016",
+      years: "1926-2016",
       birthDate: "1926-03-24",
       deathDate: "2016-10-13",
       birthPlace: "Леньяно, Италия",
@@ -1107,7 +1107,7 @@ export const italy: Country = {
     {
       id: "andrea_camilleri",
       name: "Андреа Камиллери",
-      years: "1925–2019",
+      years: "1925-2019",
       birthDate: "1925-09-06",
       deathDate: "2019-07-17",
       birthPlace: "Порто-Эмпедокле, Италия",
@@ -1140,7 +1140,7 @@ export const italy: Country = {
     {
       id: "elena_ferrante",
       name: "Елена Ферранте",
-      years: "1943–",
+      years: "1943-",
       birthDate: "1943",
       birthPlace: "Неаполь, Италия",
       coordinates: {
@@ -1171,7 +1171,7 @@ export const italy: Country = {
     {
       id: "alessandro_baricco",
       name: "Алессандро Барикко",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-01-25",
       birthPlace: "Турин, Италия",
       coordinates: {
@@ -1201,7 +1201,7 @@ export const italy: Country = {
     {
       id: "roberto_saviano",
       name: "Роберто Савиано",
-      years: "1979–",
+      years: "1979-",
       birthDate: "1979-09-22",
       birthPlace: "Неаполь, Италия",
       coordinates: {

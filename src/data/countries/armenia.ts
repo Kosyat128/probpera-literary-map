@@ -12,7 +12,7 @@ export const armenia: Country = {
       name: "Месроп Маштоц",
       fullName: "Mesrop Mashtots",
 
-      years: "ок. 362–440",
+      years: "ок. 362-440",
 
       birthDate: "0362-01-01",
       deathDate: "0440-02-17",
@@ -61,7 +61,7 @@ export const armenia: Country = {
       name: "Григор Нарекаци",
       fullName: "Grigor Narekatsi",
 
-      years: "ок. 951–1003",
+      years: "ок. 951-1003",
 
       birthDate: "0951-01-01",
       deathDate: "1003-01-01",
@@ -110,7 +110,7 @@ export const armenia: Country = {
       name: "Саят-Нова",
       fullName: "Sayat-Nova",
 
-      years: "1712–1795",
+      years: "1712-1795",
 
       birthDate: "1712-06-14",
       deathDate: "1795-09-22",
@@ -158,7 +158,7 @@ export const armenia: Country = {
       name: "Хачатур Абовян",
       fullName: "Khachatur Abovian",
 
-      years: "1809–1848",
+      years: "1809-1848",
 
       birthDate: "1809-10-15",
       deathDate: "1848-04-14",
@@ -206,7 +206,7 @@ export const armenia: Country = {
       name: "Ованес Туманян",
       fullName: "Hovhannes Tumanyan",
 
-      years: "1869–1923",
+      years: "1869-1923",
 
       birthDate: "1869-02-19",
       deathDate: "1923-03-23",
@@ -256,7 +256,7 @@ export const armenia: Country = {
       name: "Аветик Исаакян",
       fullName: "Avetik Isahakyan",
 
-      years: "1875–1957",
+      years: "1875-1957",
 
       birthDate: "1875-10-30",
       deathDate: "1957-10-17",
@@ -303,7 +303,7 @@ export const armenia: Country = {
       name: "Вильям Сароян",
       fullName: "William Saroyan",
 
-      years: "1908–1981",
+      years: "1908-1981",
 
       birthDate: "1908-08-31",
       deathDate: "1981-05-18",
@@ -355,7 +355,7 @@ export const armenia: Country = {
       name: "Грант Матевосян",
       fullName: "Hrant Matevosyan",
 
-      years: "1935–2002",
+      years: "1935-2002",
 
       birthDate: "1935-02-12",
       deathDate: "2002-12-19",
@@ -404,7 +404,7 @@ export const armenia: Country = {
       name: "Нарине Абгарян",
       fullName: "Narine Abgaryan",
 
-      years: "1971–",
+      years: "1971-",
 
       birthDate: "1971-01-14",
       deathDate: "",

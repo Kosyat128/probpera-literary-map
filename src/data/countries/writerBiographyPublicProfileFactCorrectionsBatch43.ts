@@ -247,7 +247,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
     patch: {
       works: ["Moth Smoke", "The Reluctant Fundamentalist", "Exit West"],
       genres: ["роман", "эссе"],
-      awards: ["The Reluctant Fundamentalist — шорт-лист Букеровской премии, 2007", "Exit West — шорт-лист Букеровской премии, 2017"],
+      awards: ["The Reluctant Fundamentalist - шорт-лист Букеровской премии, 2007", "Exit West - шорт-лист Букеровской премии, 2017"],
     },
     evidence: sources(
       ["Penguin Random House", "https://www.penguinrandomhouse.com/authors/73741/mohsin-hamid/"],
@@ -328,7 +328,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
       birthDate: "1917",
       works: ["Alone with the Days", "The Night and the Horsemen", "A Mountainous Journey"],
       genres: ["поэзия", "автобиография"],
-      awards: ["Sultan Bin Ali Al Owais Cultural Award for Poetry, 1988–1989"],
+      awards: ["Sultan Bin Ali Al Owais Cultural Award for Poetry, 1988-1989"],
     },
     evidence: sources(
       ["PalQuest", "https://www.palquest.org/en/biography/6580/fadwa-tuqan"],
@@ -435,7 +435,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
     patch: {
       name: "Рохелио Синан",
       fullName: "Bernardo Domínguez Alba (Rogelio Sinán)",
-      years: "1902–1994",
+      years: "1902-1994",
       birthDate: "1902-04-25",
       works: ["Onda", "Plenilunio", "La isla mágica"],
       genres: ["поэзия", "рассказ", "роман", "драматургия", "эссе"],
@@ -452,11 +452,11 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
     writerId: "vincent_eri",
     patch: {
       fullName: "Sir Vincent Serei Eri",
-      years: "1936–1993",
+      years: "1936-1993",
       birthDate: "1936-09-12",
       deathDate: "1993-05-25",
-      birthPlace: "Мовеаве, провинция Галф, Папуа — Новая Гвинея",
-      deathPlace: "Порт-Морсби, Папуа — Новая Гвинея",
+      birthPlace: "Мовеаве, провинция Галф, Папуа - Новая Гвинея",
+      deathPlace: "Порт-Морсби, Папуа - Новая Гвинея",
       coordinates: { lat: -8.16667, lng: 146.16667 },
       works: ["The Crocodile"],
       genres: ["роман"],
@@ -552,7 +552,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
     countryId: "paraguay",
     writerId: "lisandro_diaz_leon",
     patch: {
-      years: "1889–1928",
+      years: "1889-1928",
       birthDate: "1889",
       deathDate: "1928",
       birthPlace: "Сантисима-Тринидад, Асунсьон, Парагвай",
@@ -566,7 +566,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
       ["Universidade Estadual de Maringá", "https://periodicos.uem.br/ojs/index.php/Dialogos/article/download/35556/pdf/"],
       ["Office of the Historian, U.S. Department of State", "https://history.state.gov/historicaldocuments/frus1928v01/d368fn62"]
     ),
-    note: "Ложные даты, места, произведения и поэтическая роль заменены документированной личностью 1889–1928 годов; неподтверждённая книга снята.",
+    note: "Ложные даты, места, произведения и поэтическая роль заменены документированной личностью 1889-1928 годов; неподтверждённая книга снята.",
   },
   {
     countryId: "paraguay",
@@ -574,7 +574,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch43 = [
     patch: {
       name: "Лиз Мария Аэдо",
       fullName: "Liz María Haedo",
-      years: "1986–",
+      years: "1986-",
       birthDate: "1986",
       deathDate: "",
       birthPlace: "Асунсьон, Парагвай",

@@ -114,7 +114,7 @@
       "reviewedTextRu": "Экватогвинейский писатель, журналист и исследователь, автор романов «Las tinieblas de tu memoria negra» и «Los poderes de la tempestad».",
       "claims": [
         {
-          "textRu": "Донато Ндонго-Бидиого — экватогвинейский писатель, журналист и исследователь, написавший романы Las tinieblas de tu memoria negra и Los poderes de la tempestad.",
+          "textRu": "Донато Ндонго-Бидиого - экватогвинейский писатель, журналист и исследователь, написавший романы Las tinieblas de tu memoria negra и Los poderes de la tempestad.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -124,7 +124,7 @@
               "findingRu": "Официальный культурный институт Испании называет Ндонго писателем и журналистом, фиксирует его исследовательскую работу и атрибутирует ему оба романа."
             },
             {
-              "provider": "Instituto Cervantes — Centro Virtual Cervantes",
+              "provider": "Instituto Cervantes - Centro Virtual Cervantes",
               "url": "https://cvc.cervantes.es/lengua/africa_subsahariana/eas_2026/capitulo24.htm",
               "checkedAt": "2026-08-09",
               "findingRu": "Институт Сервантеса независимо рассматривает Ндонго как центрального автора литературы Экваториальной Гвинеи и подтверждает авторство и последовательность двух названных романов."
@@ -143,7 +143,7 @@
       "reviewedTextRu": "Экватогвинейский писатель, автор романов «Arde el monte de noche» и «Avión de ricos, ladrón de cerdos».",
       "claims": [
         {
-          "textRu": "Хуан Томас Авила Лаурель — экватогвинейский писатель и автор романов Arde el monte de noche и Avión de ricos, ladrón de cerdos.",
+          "textRu": "Хуан Томас Авила Лаурель - экватогвинейский писатель и автор романов Arde el monte de noche и Avión de ricos, ladrón de cerdos.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -176,7 +176,7 @@
           "verdict": "not-established",
           "evidence": [
             {
-              "provider": "Bahir Dar University — Ethiopian Journal of Language, Culture and Communication",
+              "provider": "Bahir Dar University - Ethiopian Journal of Language, Culture and Communication",
               "url": "https://journals.bdu.edu.et/index.php/EJLCC/article/view/3181?articlesBySimilarityPage=3",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетское исследование атрибутирует писателю Sibhat Gebre-Egziabher романы Sebategnaw Meleak и Tikusat; имя Sebhat Ephrem и заявленная в карточке эритрейско-тигриньяская биография не фигурируют."
@@ -192,7 +192,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 26",
       "decision": "held",
-      "notes": "Identity recommendation: поместить всю карточку в карантин. Key/fullName указывают на писателя Sibhat Gebre-Egziabher, display name — на эритрейского генерала Sebhat Ephrem; годы 1936–2012, страна, язык тигринья, произведение «Колена Сатаны» и литературная роль не образуют подтверждённой единой личности. Shared country files не изменялись.",
+      "notes": "Identity recommendation: поместить всю карточку в карантин. Key/fullName указывают на писателя Sibhat Gebre-Egziabher, display name - на эритрейского генерала Sebhat Ephrem; годы 1936-2012, страна, язык тигринья, произведение «Колена Сатаны» и литературная роль не образуют подтверждённой единой личности. Shared country files не изменялись.",
       "applicableTextRu": null
     },
     {
@@ -205,7 +205,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/t/tammsaare/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь определяет Таммсааре как прозаика, драматурга и эссеиста и называет Tõde ja õigus эпической пенталогией."
@@ -234,7 +234,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/v/eduardvilde/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь документирует прозу и драматургию Вильде, его переход к критическому реализму и роман Mäeküla piimamees 1916 года."
@@ -263,7 +263,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/t/friedeberttuglas/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь подтверждает работу Тугласа как прозаика, критика, исследователя и переводчика и атрибутирует ему Felix Ormusson."
@@ -292,7 +292,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/k/kreutzwald/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь определяет Крейцвальда как поэта и прозаика и подробно документирует составление им литературного эпоса Kalevipoeg."
@@ -321,7 +321,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/k/jaankross/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь подтверждает все четыре литературные роли Кросса и атрибутирует ему биографический исторический роман Keisri hull 1978 года."
@@ -350,7 +350,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/p/kristianjaak/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь характеризует Петерсона как поэта и литературного деятеля и документирует его эстонские стихотворения и дневник."
@@ -379,7 +379,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/k/koidula/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь подтверждает поэтическую, драматургическую и прозаическую работу Койдулы и её участие в эстонском национальном движении."
@@ -408,7 +408,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Tartu — Estonian Writers' Online Dictionary",
+              "provider": "University of Tartu - Estonian Writers' Online Dictionary",
               "url": "https://ewod.ut.ee/u/under/",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский словарь определяет Ундер как поэтессу и переводчицу и документирует её участие в группе Siuru."
@@ -437,7 +437,7 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Gondar — Ethiopian Renaissance Journal of Social Sciences and the Humanities",
+              "provider": "University of Gondar - Ethiopian Renaissance Journal of Social Sciences and the Humanities",
               "url": "https://erjssh.uog.edu.et/index.php/ERJSSH/article/download/1008/235",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетское исследование называет Хаддиса эфиопским романистом и атрибутирует ему Fikir Eske Mekabir."
@@ -491,7 +491,7 @@
       "reviewedTextRu": "Фиджийский писатель и преподаватель творческого письма, автор книг «Gandhianjali» и «Life Journeys: Love & Grief».",
       "claims": [
         {
-          "textRu": "Сатендра Нандан — родившийся на Фиджи писатель и преподаватель творческого письма, автор Gandhianjali и Life Journeys: Love & Grief.",
+          "textRu": "Сатендра Нандан - родившийся на Фиджи писатель и преподаватель творческого письма, автор Gandhianjali и Life Journeys: Love & Grief.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -588,13 +588,13 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "University of Helsinki — 375 Humanists",
+              "provider": "University of Helsinki - 375 Humanists",
               "url": "https://375humanistia.helsinki.fi/humanistit/eino-leino",
               "checkedAt": "2026-08-09",
               "findingRu": "Университет Хельсинки определяет Лейно как поэта, писателя и переводчика и подтверждает его работу в поэзии, прозе и переводе."
             },
             {
-              "provider": "Finnish Literature Society — Finnish Literature in Translation",
+              "provider": "Finnish Literature Society - Finnish Literature in Translation",
               "url": "https://dbgw.finlit.fi/kaannokset/teos.php?asc=1&id=1893&lang=FIN&order=lang&page=2",
               "checkedAt": "2026-08-09",
               "findingRu": "Библиографическая база Общества финской литературы атрибутирует Лейно Helkavirsiä, фиксирует оригинальное издание 1903 года и жанр поэзии."

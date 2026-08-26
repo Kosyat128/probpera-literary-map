@@ -95,7 +95,7 @@ const localSha256 = createHash("sha256")
   .toUpperCase();
 provenance.localSha256 = localSha256;
 provenance.labels = {
-  source: "Natural Earth Admin 0 – Countries",
+  source: "Natural Earth Admin 0 - Countries",
   sourceSha256,
   fields: ["NAME_RU", "NAME_EN", ...labelFields],
   featureCount: atlas.features.length,

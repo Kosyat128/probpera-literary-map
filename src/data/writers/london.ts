@@ -1,7 +1,7 @@
 export const londonProfile = {
  id:"london",
  fullName:"Джек Лондон",
- years:"1876–1916",
+ years:"1876-1916",
  country:"США",
  birthPlace:"Сан-Франциско, США",
  movement:"Реализм",

@@ -85,7 +85,7 @@ export default function WriterProfile({ writer }: WriterProfileProps) {
             <span key={source.url}>
               {index > 0 ? ", " : ""}
               <a href={source.url} target="_blank" rel="noreferrer">
-                {source.author ? `${source.author} — ` : ""}
+                {source.author ? `${source.author} - ` : ""}
                 {source.title || source.provider}
               </a>
               {source.licenseUrl && source.licenseName ? (

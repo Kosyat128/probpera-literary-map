@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -209,7 +209,7 @@ const articleTemplates = [
   {
     label: "Биография писателя",
     description: "Биографическая структура, хронология и 2 места для изображений",
-    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Замените текст: место писателя в литературе и причина обратиться к его судьбе.</p></aside>${mediaSlot("Портрет писателя", "Используйте проверенный портрет с понятным источником и лицензией.")}<h2>Детство и образование</h2><p>Вставьте текст раздела.</p><h2>Начало литературного пути</h2><p>Вставьте текст раздела.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>Хронология</h3><p>Год — важное событие.</p><p>Год — важное событие.</p></section><h2>Главные произведения</h2><p>Вставьте текст раздела.</p>${mediaSlot("Архивное изображение или рукопись", "Замените место изображением и добавьте содержательную подпись в медиатеке.")}<h2>Личная судьба и время</h2><p>Вставьте текст раздела.</p><h2>Наследие</h2><p>Сформулируйте взвешенный редакционный вывод.</p><h2>Источники и библиография</h2><p>Укажите проверяемые источники.</p>`,
+    html: `<aside class="article-lead"><p><strong>Редакционное введение</strong></p><p>Замените текст: место писателя в литературе и причина обратиться к его судьбе.</p></aside>${mediaSlot("Портрет писателя", "Используйте проверенный портрет с понятным источником и лицензией.")}<h2>Детство и образование</h2><p>Вставьте текст раздела.</p><h2>Начало литературного пути</h2><p>Вставьте текст раздела.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>Хронология</h3><p>Год - важное событие.</p><p>Год - важное событие.</p></section><h2>Главные произведения</h2><p>Вставьте текст раздела.</p>${mediaSlot("Архивное изображение или рукопись", "Замените место изображением и добавьте содержательную подпись в медиатеке.")}<h2>Личная судьба и время</h2><p>Вставьте текст раздела.</p><h2>Наследие</h2><p>Сформулируйте взвешенный редакционный вывод.</p><h2>Источники и библиография</h2><p>Укажите проверяемые источники.</p>`,
   },
   {
     label: "Книга и экранизация",
@@ -497,7 +497,7 @@ export default function ArticleEditor({
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({
         placeholder:
-          "Начните писать. Для большого материала используйте подзаголовки — из них автоматически соберётся оглавление.",
+          "Начните писать. Для большого материала используйте подзаголовки - из них автоматически соберётся оглавление.",
       }),
     ],
     content: initialEditorContent,
@@ -877,7 +877,7 @@ export default function ArticleEditor({
         setDraftStorageError("");
       } catch {
         setDraftStorageError(
-          "Автосохранение в браузере не сработало. Нажмите «Сохранить» — текст и загруженные изображения останутся в черновике."
+          "Автосохранение в браузере не сработало. Нажмите «Сохранить» - текст и загруженные изображения останутся в черновике."
         );
       }
     }, 900);
@@ -937,9 +937,9 @@ export default function ArticleEditor({
       { label: "Рубрика выбрана", ok: Boolean(categoryId) },
       { label: "Не менее 250 слов", ok: russianWordCount >= 250 },
       { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
-      { label: "Описание карточки — от 80 знаков", ok: excerpt.trim().length >= 80 },
+      { label: "Описание карточки - от 80 знаков", ok: excerpt.trim().length >= 80 },
       { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
-      { label: "SEO-описание — от 80 знаков", ok: seoDescription.trim().length >= 80 },
+      { label: "SEO-описание - от 80 знаков", ok: seoDescription.trim().length >= 80 },
       { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
       { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
     ];
@@ -951,9 +951,9 @@ export default function ArticleEditor({
       { label: "English: заголовок и адрес", ok: englishTitle.trim().length >= 3 && englishSlug.length >= 2 },
       { label: "English: не менее 250 слов", ok: englishWordCount >= 250 },
       { label: "English: есть подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(englishContentHtml) },
-      { label: "English: описание карточки — от 80 знаков", ok: englishExcerpt.trim().length >= 80 },
+      { label: "English: описание карточки - от 80 знаков", ok: englishExcerpt.trim().length >= 80 },
       { label: "English: alt обложки", ok: englishCoverAlt.trim().length >= 10 },
-      { label: "English: SEO-описание — от 80 знаков", ok: englishSeoDescription.trim().length >= 80 },
+      { label: "English: SEO-описание - от 80 знаков", ok: englishSeoDescription.trim().length >= 80 },
       { label: "English: указан источник", ok: englishSourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
       { label: "English: перевод сверен с текущим оригиналом", ok: englishConfirmedCurrentSource || (!russianSourceChanged && Boolean(englishTranslation?.source_content_hash)) },
     ];
@@ -1907,7 +1907,7 @@ export default function ArticleEditor({
                     type="button"
                     key={template.id}
                     onClick={() => applyTemplate(template.html, template.label)}
-                    title={template.localOnly ? "Локальный шаблон — сохраните его заново, чтобы перенести в базу" : template.visibility === "shared" ? "Общий шаблон редакции" : "Личный шаблон"}
+                    title={template.localOnly ? "Локальный шаблон - сохраните его заново, чтобы перенести в базу" : template.visibility === "shared" ? "Общий шаблон редакции" : "Личный шаблон"}
                   >
                     {template.visibility === "shared" ? "◆" : "★"} {template.label}{template.localOnly ? " · локальный" : ""}
                   </button>
@@ -2108,7 +2108,7 @@ export default function ArticleEditor({
               <EditorContent editor={editor} />
               {isImageDraggingOverEditor && (
                 <span className="editor-drop-hint" aria-hidden="true">
-                  Отпустите изображение — оно появится в этом месте статьи
+                  Отпустите изображение - оно появится в этом месте статьи
                 </span>
               )}
             </div>
@@ -2287,7 +2287,7 @@ export default function ArticleEditor({
                 placeholder={
                   activeLocale === "en"
                     ? "Describe the image for accessibility and search"
-                    : "Что изображено — для доступности и поиска"
+                    : "Что изображено - для доступности и поиска"
                 }
               />
             </label>
@@ -2349,7 +2349,7 @@ export default function ArticleEditor({
               </small>
             </label>
             <label className="field">
-              <span>Старый адрес — только совместимость</span>
+              <span>Старый адрес - только совместимость</span>
               <input
                 name="legacy_path"
                 defaultValue={article.legacy_path || ""}
@@ -2426,7 +2426,7 @@ export default function ArticleEditor({
               </small>
             </label>
             <label className="field">
-              <span>Open Graph — {activeLocale === "en" ? "title" : "заголовок"}</span>
+              <span>Open Graph - {activeLocale === "en" ? "title" : "заголовок"}</span>
               <input
                 value={activeOgTitle}
                 onChange={(event) => {
@@ -2440,7 +2440,7 @@ export default function ArticleEditor({
               />
             </label>
             <label className="field">
-              <span>Open Graph — {activeLocale === "en" ? "description" : "описание"}</span>
+              <span>Open Graph - {activeLocale === "en" ? "description" : "описание"}</span>
               <textarea
                 value={activeOgDescription}
                 onChange={(event) => {
@@ -2490,8 +2490,8 @@ export default function ArticleEditor({
             <label className="field">
               <span>
                 {activeLocale === "en"
-                  ? "Sources — one per line"
-                  : "Источники — по одному на строку"}
+                  ? "Sources - one per line"
+                  : "Источники - по одному на строку"}
               </span>
               <textarea
                 value={activeSourceText}
@@ -2505,16 +2505,16 @@ export default function ArticleEditor({
                 }}
                 placeholder={
                   activeLocale === "en"
-                    ? "Title — https://…"
-                    : "Название — https://…"
+                    ? "Title - https://…"
+                    : "Название - https://…"
                 }
               />
             </label>
             <label className="field">
               <span>
                 {activeLocale === "en"
-                  ? "Bibliography — one entry per line"
-                  : "Библиография — по одной записи на строку"}
+                  ? "Bibliography - one entry per line"
+                  : "Библиография - по одной записи на строку"}
               </span>
               <textarea
                 value={activeBibliographyText}
@@ -2565,7 +2565,7 @@ export default function ArticleEditor({
               </button>
             </div>
             <p>
-              Вставьте до восьми HTTPS-адресов — по одному в строке. Изображения
+              Вставьте до восьми HTTPS-адресов - по одному в строке. Изображения
               останутся одним блоком; порядок строк станет порядком кадров.
               После вставки выберите каждый кадр и уточните его описание через
               «Фото / заменить».

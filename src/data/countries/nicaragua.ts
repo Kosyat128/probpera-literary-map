@@ -8,7 +8,7 @@ export const nicaragua: Country = {
     {
       id: "ruben_dario",
       name: "Рубен Дарио",
-      years: "1867–1916",
+      years: "1867-1916",
       birthDate: "1867-01-18",
       deathDate: "1916-02-06",
       birthPlace: "Метапа, Никарагуа",
@@ -18,7 +18,7 @@ export const nicaragua: Country = {
         lng: -86.2362
       },
       portrait: "",
-      bio: "Никарагуанский поэт, журналист и дипломат. Основатель испаноамериканского модернизма и одна из центральных фигур испаноязычной литературы конца XIX — начала XX века.",
+      bio: "Никарагуанский поэт, журналист и дипломат. Основатель испаноамериканского модернизма и одна из центральных фигур испаноязычной литературы конца XIX - начала XX века.",
       works: [
         "Синяя",
         "Светское песнопение",
@@ -47,7 +47,7 @@ export const nicaragua: Country = {
     {
       id: "ernesto_cardenal",
       name: "Эрнесто Карденаль",
-      years: "1925–2020",
+      years: "1925-2020",
       birthDate: "1925-01-20",
       deathDate: "2020-03-01",
       birthPlace: "Гранада, Никарагуа",
@@ -87,7 +87,7 @@ export const nicaragua: Country = {
     {
       id: "sergio_ramirez",
       name: "Серхио Рамирес",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-08-05",
       birthPlace: "Масатепе, Никарагуа",
       coordinates: {
@@ -125,7 +125,7 @@ export const nicaragua: Country = {
     {
       id: "gioconda_belli",
       name: "Джоконда Белли",
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-12-09",
       birthPlace: "Манагуа, Никарагуа",
       coordinates: {

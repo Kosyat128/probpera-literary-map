@@ -91,7 +91,7 @@ describe("контроль публичного книжного текста", 
   it("не принимает русский текст, замаскированный как английская локаль", () => {
     const mixed = {
       ...validBook.translations!.en!,
-      title: "A Tale of Two Cities — Повесть о двух городах",
+      title: "A Tale of Two Cities - Повесть о двух городах",
       description:
         "This annotation starts in English but затем подставляет русский текст вместо завершённого перевода. A visitor using the English interface must never receive such a mixed-language book card.",
     };
@@ -112,7 +112,7 @@ describe("контроль публичного книжного текста", 
 
     expect(translationQualityIssues(translation, "en")).toEqual(
       expect.arrayContaining([
-        "описание en должно содержать 2–3 предложения",
+        "описание en должно содержать 2-3 предложения",
         "перевод en не прошёл редакционную проверку",
         "нет даты проверки перевода en",
       ])
