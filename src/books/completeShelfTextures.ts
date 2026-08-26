@@ -179,7 +179,10 @@ function wrapCompleteShelfTextWithoutLoss(
         current = "";
         continue;
       }
-      if (remainder.length <= limit) {
+      const canSplitByGlyph =
+        /[\u3040-\u30ff\u3400-\u9fff]/u.test(remainder) &&
+        !/[()[\]{}]/u.test(remainder);
+      if (remainder.length <= limit || !canSplitByGlyph) {
         current = remainder;
         remainder = "";
       } else {

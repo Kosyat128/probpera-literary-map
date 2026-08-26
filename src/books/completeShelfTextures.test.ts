@@ -81,6 +81,22 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(lines.join("")).toBe(title);
   });
 
+  it("never breaks words or parenthetical title parts across spine lines", () => {
+    const fahrenheit = wrapCompleteShelfTitleText(
+      "451° по Фаренгейту",
+      8,
+      8
+    );
+    const parenthetical = wrapCompleteShelfTitleText(
+      "闘牛 (Tōgyū)",
+      6,
+      8
+    );
+
+    expect(fahrenheit).toEqual(["451° по", "Фаренгейту"]);
+    expect(parenthetical).toEqual(["闘牛", "(Tōgyū)"]);
+  });
+
   it("keeps a full writer FIO on the spine without an ellipsis", () => {
     const writer =
       "Александр Сергеевич Пушкин-Бутурлин Длинное Редакционное Имя";

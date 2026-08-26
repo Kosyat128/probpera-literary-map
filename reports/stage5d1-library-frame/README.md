@@ -20,7 +20,7 @@ Status: **READY FOR REVIEW — paused before the next sublevel**.
 
 ## Verification
 
-- Focused suite: **7 files / 62 tests passed**.
+- Focused suite: **7 files / 63 tests passed**.
 - TypeScript `--noEmit`: passed.
 - Production Vite build: passed.
 - Final desktop and mobile browser captures: passed.

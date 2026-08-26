@@ -38,7 +38,10 @@ async function waitForShelf(page) {
   await page.locator("#books").scrollIntoViewIfNeeded();
   // The Canvas is intentionally mounted only while its scene viewport is
   // near the screen. Centre that viewport before waiting for lazy WebGL.
-  await page.locator(".book-shelf-scene").scrollIntoViewIfNeeded();
+  await page.locator(".book-shelf-scene").evaluate((scene) =>
+    scene.scrollIntoView({ block: "center", inline: "nearest" })
+  );
+  await page.waitForTimeout(250);
   try {
     await page.waitForFunction(
       () =>
