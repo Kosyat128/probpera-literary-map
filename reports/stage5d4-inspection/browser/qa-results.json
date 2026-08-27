@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-08-27T21:21:14.108Z",
+  "scope": "Stage 5D-4 inspection visual evidence",
+  "source": {
+    "url": "http://127.0.0.1:4173/probpera-literary-map/#books",
+    "server": "local Vite preview"
+  },
+  "checks": [
+    {
+      "case": "ru-desktop-1440x900",
+      "state": "idle",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "phase": "SHELF_IDLE",
+        "brandCount": 0,
+        "audioElements": 0,
+        "readinessMs": 9173
+      }
+    },
+    {
+      "case": "ru-desktop-1440x900",
+      "state": "selected",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 1,
+        "phase": "INSPECTION_CLOSED",
+        "brandCount": 0,
+        "audioElements": 0
+      }
+    },
+    {
+      "case": "ru-desktop-1440x900",
+      "state": "book-open",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 1,
+        "phase": "BOOK_OPEN",
+        "brandCount": 0,
+        "audioElements": 0
+      }
+    }
+  ],
+  "screenshots": [
+    "ru-desktop-1440x900-shelf.png",
+    "ru-desktop-1440x900-selected.png",
+    "ru-desktop-1440x900-book-open.png"
+  ],
+  "screenshotSha256": {
+    "ru-desktop-1440x900-shelf.png": "EAEB86B8463E880FC1F308DBB67ED683A2235DB092F5FACD51A4DA5212A67774",
+    "ru-desktop-1440x900-selected.png": "6D176E8FDAB5C5A2D9FCC6A25EEA506FA4F20D737D3B5699CD8D24CD2F22E29E",
+    "ru-desktop-1440x900-book-open.png": "BF6230997AD5D745ABB6A5B8148B149FF0BD3A68A684C97AACE1EC6C49BB91C8"
+  }
+}

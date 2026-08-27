@@ -3,6 +3,11 @@ import type { ComponentType, ErrorInfo, ReactNode } from "react";
 
 import type { BookShelfPhase } from "../books/bookShelfState";
 import type { BookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
+import type { BookEditorialDocument } from "../books/bookEditorialPages";
+import type {
+  BookInspectionPageDirection,
+  BookInspectionSession,
+} from "../books/bookInspectionSession";
 import BookShelfBrandLoader from "./BookShelfBrandLoader";
 import type { BookShelfSceneCanvasProps } from "./BookShelfSceneCanvas";
 
@@ -41,15 +46,20 @@ export type BookShelfSceneProps = {
   active: boolean;
   economical: boolean;
   reducedMotion: boolean;
+  editorialDocument: BookEditorialDocument | null;
+  inspectionSession: BookInspectionSession | null;
   loadAttempt: "primary" | "retry";
   onFocusBook: (key: string) => void;
   onOpenBook: (key: string) => void;
   onRequestCoverOpen: (key: string) => void;
   onRequestPageTurn: () => void;
+  onRequestPreviousPage: () => void;
+  onRequestKeyboardPage: (key: string, shiftKey?: boolean) => boolean;
   onRequestInspectionClose: () => void;
   onCrackCover: () => void;
-  onStartPageDrag: () => void;
-  onRequestPageSettle: () => void;
+  onStartPageDrag: (direction: BookInspectionPageDirection) => void;
+  onUpdatePageDrag: (progress: number) => void;
+  onRequestPageSettle: (velocity: number) => void;
   onMotionReached: (requestId: number) => void;
   onMotionSettled: (requestId: number) => void;
   onInspectionEntered: (requestId: number) => void;
@@ -177,6 +187,15 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
       aria-label={props.sceneLabel}
       tabIndex={-1}
       data-book-shelf-phase={props.phase}
+      onKeyDown={(event) => {
+        if (
+          props.phase === "BOOK_OPEN" &&
+          props.onRequestKeyboardPage(event.key, event.shiftKey)
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }}
     >
       <SceneErrorBoundary onFailure={failureHandler}>
         <Suspense fallback={<BookShelfBrandLoader label={props.loadingLabel} />}>
@@ -191,12 +210,15 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               active={props.active}
               economical={props.economical}
               reducedMotion={props.reducedMotion}
+              editorialDocument={props.editorialDocument}
+              inspectionSession={props.inspectionSession}
               onFocusBook={props.onFocusBook}
               onOpenBook={props.onOpenBook}
               onRequestCoverOpen={props.onRequestCoverOpen}
               onRequestInspectionClose={props.onRequestInspectionClose}
               onCrackCover={props.onCrackCover}
               onStartPageDrag={props.onStartPageDrag}
+              onUpdatePageDrag={props.onUpdatePageDrag}
               onRequestPageSettle={props.onRequestPageSettle}
               onMotionReached={props.onMotionReached}
               onMotionSettled={props.onMotionSettled}
@@ -220,9 +242,31 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
             </button>
           ) : null}
           {props.phase === "BOOK_OPEN" && props.pageTurnLabel ? (
-            <button type="button" onClick={props.onRequestPageTurn}>
-              {props.pageTurnLabel}
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={props.onRequestPreviousPage}
+                disabled={!props.inspectionSession?.pageIndex}
+              >
+                {"←"} {props.pageTurnLabel}
+              </button>
+              <span role="status" aria-live="polite">
+                {props.inspectionSession
+                  ? `${props.inspectionSession.pageIndex + 1} / ${props.inspectionSession.pageCount}`
+                  : null}
+              </span>
+              <button
+                type="button"
+                onClick={props.onRequestPageTurn}
+                disabled={
+                  !props.inspectionSession ||
+                  props.inspectionSession.pageIndex >=
+                    props.inspectionSession.pageCount - 1
+                }
+              >
+                {props.pageTurnLabel} {"→"}
+              </button>
+            </>
           ) : null}
           {props.closeInspectionLabel &&
           props.phase !== "INSPECTION_CLOSING" &&

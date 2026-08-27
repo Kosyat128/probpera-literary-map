@@ -452,12 +452,16 @@ export function buildCompleteShelfBookPose({
   phase,
   selectedBookKey,
   focusedBookKey,
+  pageTurnProgress,
+  pageDirection = "forward",
 }: {
   layout: CompleteShelfLayoutEntry;
   anchorSlot: number;
   phase: BookShelfPhase;
   selectedBookKey: string | null;
   focusedBookKey: string | null;
+  pageTurnProgress?: number;
+  pageDirection?: "forward" | "backward";
 }): CompleteShelfBookPose {
   const { spec, slotIndex } = layout;
   const selected = spec.key === selectedBookKey;
@@ -470,7 +474,7 @@ export function buildCompleteShelfBookPose({
         ? COMPLETE_SHELF_INSPECTION_GUTTER
         : 0
     : 0;
-  const leafProgress =
+  const defaultLeafProgress =
     selected && phase === "PAGE_DRAGGING"
       ? 1
       : selected &&
@@ -479,6 +483,15 @@ export function buildCompleteShelfBookPose({
             phase === "PAGE_SETTLING")
         ? 0.28
         : 0;
+  const leafProgress =
+    selected &&
+    (phase === "PAGE_DRAGGING" || phase === "PAGE_SETTLING") &&
+    Number.isFinite(pageTurnProgress)
+      ? Math.min(1, Math.max(0, pageTurnProgress || 0))
+      : defaultLeafProgress;
+  const pageDirectionSign = pageDirection === "backward" ? 1 : -1;
+  const segmentedPageActive = Number.isFinite(pageTurnProgress);
+  const pageTurnAngle = segmentedPageActive ? 0 : 0.68;
   const inspectionScale =
     inspecting &&
     (phase === "COVER_OPENING" ||
@@ -510,8 +523,10 @@ export function buildCompleteShelfBookPose({
     ]) as readonly [number, number, number],
     scale: inspectionScale,
     coverAngle: coverTarget(phase, selected),
-    firstLeafAngle: round(-0.68 * leafProgress),
-    secondLeafAngle: round(-0.34 * leafProgress),
+    firstLeafAngle: round(pageDirectionSign * pageTurnAngle * leafProgress),
+    secondLeafAngle: segmentedPageActive
+      ? 0
+      : round(pageDirectionSign * 0.34 * leafProgress),
   });
 }
 

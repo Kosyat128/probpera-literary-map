@@ -86,6 +86,19 @@ import {
   createInitialBookShelfState,
 } from "../books/bookShelfState";
 import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
+import { buildBookEditorialDocument } from "../books/bookEditorialPages";
+import {
+  beginBookInspectionDrag,
+  createBookInspectionSession,
+  endBookInspectionDrag,
+  getBookInspectionKeyboardTarget,
+  getNextBookInspectionPageTarget,
+  getPreviousBookInspectionPageTarget,
+  settleBookInspectionSession,
+  updateBookInspectionDrag,
+  type BookInspectionPageDirection,
+  type BookInspectionSession,
+} from "../books/bookInspectionSession";
 import {
   bookSceneThemeCssProperties,
   bookSceneThemeForArchetype,
@@ -460,7 +473,14 @@ export default function BookArchiveSection({
     requestId: number;
     returnFocus: HTMLElement | null;
   } | null>(null);
+  const pendingInspectionBookRef = useRef<BookArchiveEntry | null>(null);
+  const pendingBookSwitchRef = useRef<BookArchiveEntry | null>(null);
   const pageTurnFrameRef = useRef<number | null>(null);
+  const inspectionRequestSequenceRef = useRef(0);
+  const [inspectionSession, setInspectionSession] =
+    useState<BookInspectionSession | null>(null);
+  const inspectionSessionRef = useRef<BookInspectionSession | null>(null);
+  inspectionSessionRef.current = inspectionSession;
   const filteredItemsRef = useRef<readonly BookArchiveQueueItem[]>([]);
   const filterDrawerRef = useRef<HTMLElement>(null);
   const filterReturnFocusRef = useRef<HTMLElement | null>(null);
@@ -657,7 +677,6 @@ export default function BookArchiveSection({
     if (
       inspectionActive &&
       viewMode === "shelf" &&
-      !reducedMotion &&
       selectedBook
     ) {
       pendingBookCloseRef.current = { requestId, returnFocus };
@@ -673,7 +692,6 @@ export default function BookArchiveSection({
     finalizeBookDetailClose(returnFocus);
   }, [
     finalizeBookDetailClose,
-    reducedMotion,
     selectedBook,
     viewMode,
     shelfState.phase,
@@ -1445,6 +1463,47 @@ export default function BookArchiveSection({
     },
     [filteredItems, requestFocusBook]
   );
+  const handleSceneOpenBook = useCallback(
+    (key: string) => {
+      const item = queueByKey.get(key);
+      if (!item) return;
+      setRandomAnnouncement("");
+
+      const currentSelected = selectedBookRef.current;
+      if (currentSelected && bookKey(currentSelected) !== key) {
+        pendingBookSwitchRef.current = item.book;
+        closeBookDetail();
+        return;
+      }
+
+      if (
+        shelfStateRef.current.phase === "SHELF_IDLE" &&
+        focusedBookKeyRef.current !== key
+      ) {
+        pendingInspectionBookRef.current = item.book;
+        requestFocusBook(key);
+        return;
+      }
+
+      openBookDetail(item.book);
+    }, [closeBookDetail, openBookDetail, queueByKey, requestFocusBook]
+  );
+  const handleShelfMotionSettled = useCallback(
+    (requestId: number) => {
+      shelfDispatch({ type: "motion-settled", requestId });
+      if (requestId !== shelfStateRef.current.requestId) return;
+      setSettledThemeBookKey(focusedBookKeyRef.current);
+      const pendingBook = pendingInspectionBookRef.current;
+      if (
+        !pendingBook ||
+        bookKey(pendingBook) !== focusedBookKeyRef.current
+      ) {
+        return;
+      }
+      pendingInspectionBookRef.current = null;
+      window.requestAnimationFrame(() => openBookDetail(pendingBook));
+    }, [openBookDetail]
+  );
   const handleShelfKeyDown = useCallback(
     (event: ReactKeyboardEvent<HTMLDivElement>) => {
       if (
@@ -1579,16 +1638,37 @@ export default function BookArchiveSection({
       requestId: currentShelfState.requestId + 1,
     });
   }, []);
-  const requestSelectedPageTurn = useCallback(() => {
+  const requestSelectedPageAt = useCallback((pageIndex: number) => {
     const currentShelfState = shelfStateRef.current;
+    const currentSession = inspectionSessionRef.current;
     if (
       actualViewModeRef.current !== "shelf" ||
       !selectedBookRef.current ||
+      !currentSession ||
+      currentSession.phase !== "idle" ||
       currentShelfState.phase !== "BOOK_OPEN" ||
       pageTurnFrameRef.current !== null
     ) {
       return;
     }
+    const direction: BookInspectionPageDirection =
+      pageIndex < currentSession.pageIndex ? "backward" : "forward";
+    const sessionRequestId = ++inspectionRequestSequenceRef.current;
+    const draggingSession = beginBookInspectionDrag(
+      currentSession,
+      sessionRequestId,
+      direction
+    );
+    if (
+      draggingSession === currentSession ||
+      (direction === "forward"
+        ? getNextBookInspectionPageTarget(currentSession)
+        : getPreviousBookInspectionPageTarget(currentSession)) !== pageIndex
+    ) {
+      return;
+    }
+    inspectionSessionRef.current = draggingSession;
+    setInspectionSession(draggingSession);
     shelfDispatch({
       type: "start-page-drag",
       requestId: currentShelfState.requestId + 1,
@@ -1596,11 +1676,108 @@ export default function BookArchiveSection({
     pageTurnFrameRef.current = window.requestAnimationFrame(() => {
       pageTurnFrameRef.current = null;
       const draggingState = shelfStateRef.current;
-      if (draggingState.phase !== "PAGE_DRAGGING") return;
+      const activeSession = inspectionSessionRef.current;
+      if (
+        draggingState.phase !== "PAGE_DRAGGING" ||
+        !activeSession ||
+        activeSession.phase !== "dragging"
+      ) {
+        return;
+      }
+      const progressed = updateBookInspectionDrag(
+        activeSession,
+        activeSession.requestId,
+        1
+      );
+      const settling = endBookInspectionDrag(progressed, {
+        requestId: progressed.requestId,
+        velocity: direction === "forward" ? 1 : -1,
+      });
+      inspectionSessionRef.current = settling;
+      setInspectionSession(settling);
       shelfDispatch({
         type: "request-page-settle",
         requestId: draggingState.requestId + 1,
       });
+    });
+  }, []);
+  const requestSelectedPageTurn = useCallback(() => {
+    const session = inspectionSessionRef.current;
+    if (!session) return;
+    requestSelectedPageAt(getNextBookInspectionPageTarget(session));
+  }, [requestSelectedPageAt]);
+  const requestSelectedPreviousPage = useCallback(() => {
+    const session = inspectionSessionRef.current;
+    if (!session) return;
+    requestSelectedPageAt(getPreviousBookInspectionPageTarget(session));
+  }, [requestSelectedPageAt]);
+  const requestSelectedKeyboardPage = useCallback(
+    (key: string, shiftKey = false) => {
+      const session = inspectionSessionRef.current;
+      if (!session) return false;
+      const target = getBookInspectionKeyboardTarget(session, key, shiftKey);
+      if (target === null || target === session.pageIndex) return false;
+      requestSelectedPageAt(target);
+      return true;
+    },
+    [requestSelectedPageAt]
+  );
+  const settleSelectedPage = useCallback((requestId: number) => {
+    shelfDispatch({ type: "page-settled", requestId });
+    const session = inspectionSessionRef.current;
+    if (!session || session.phase !== "settling") return;
+    const settled = settleBookInspectionSession(session, session.requestId);
+    inspectionSessionRef.current = settled;
+    setInspectionSession(settled);
+  }, []);
+  const startSelectedPageDrag = useCallback(
+    (direction: BookInspectionPageDirection) => {
+      const shelf = shelfStateRef.current;
+      const session = inspectionSessionRef.current;
+      if (!session || shelf.phase !== "BOOK_OPEN") return;
+      const requestId = ++inspectionRequestSequenceRef.current;
+      const dragging = beginBookInspectionDrag(session, requestId, direction);
+      if (dragging === session) return;
+      inspectionSessionRef.current = dragging;
+      setInspectionSession(dragging);
+      shelfDispatch({
+        type: "start-page-drag",
+        requestId: shelf.requestId + 1,
+      });
+    },
+    []
+  );
+  const updateSelectedPageDrag = useCallback((progress: number) => {
+    const session = inspectionSessionRef.current;
+    if (!session || session.phase !== "dragging") return;
+    const updated = updateBookInspectionDrag(
+      session,
+      session.requestId,
+      progress
+    );
+    if (updated === session) return;
+    inspectionSessionRef.current = updated;
+    setInspectionSession(updated);
+  }, []);
+  const settleSelectedPageDrag = useCallback((velocity: number) => {
+    const shelf = shelfStateRef.current;
+    const session = inspectionSessionRef.current;
+    if (
+      !session ||
+      session.phase !== "dragging" ||
+      shelf.phase !== "PAGE_DRAGGING"
+    ) {
+      return;
+    }
+    const settling = endBookInspectionDrag(session, {
+      requestId: session.requestId,
+      velocity,
+    });
+    inspectionSessionRef.current = settling;
+    setInspectionSession(settling);
+    shelfDispatch({
+      type: "request-page-settle",
+      requestId: shelf.requestId + 1,
     });
   }, []);
 
@@ -1637,6 +1814,25 @@ export default function BookArchiveSection({
       shelfDispatch({ type: "shelf-restored", requestId });
       const pendingClose = pendingBookCloseRef.current;
       if (pendingClose?.requestId === requestId) {
+        const nextBook = pendingBookSwitchRef.current;
+        if (nextBook) {
+          pendingBookSwitchRef.current = null;
+          pendingBookCloseRef.current = null;
+          returnFocusRef.current = null;
+          selectedBookRef.current = null;
+          setSelectedBook(null);
+          const nextKey = bookKey(nextBook);
+          pendingInspectionBookRef.current = nextBook;
+          window.requestAnimationFrame(() => {
+            const currentShelfState = shelfStateRef.current;
+            setFocusedBookKey(nextKey);
+            shelfDispatch({
+              type: "request-focus",
+              requestId: currentShelfState.requestId + 1,
+            });
+          });
+          return;
+        }
         finalizeBookDetailClose(pendingClose.returnFocus);
       }
     },
@@ -1665,6 +1861,125 @@ export default function BookArchiveSection({
   const selectedMetadataLabels = selectedBook && selectedItem?.status === "verified"
     ? selectBookMetadataLabels(selectedBook, language, t)
     : [];
+  const selectedEditorialDocument = useMemo(() => {
+    if (!selectedBook || !selectedBookText) return null;
+    const verified = selectedItem?.status === "verified";
+    const edition = verified ? selectedBook.edition : undefined;
+    const editionMetadata = verified
+      ? [
+          edition?.publisher
+            ? {
+                kind: "publisher" as const,
+                value: edition.publisher,
+                verified: true as const,
+              }
+            : null,
+          edition?.title
+            ? {
+                kind: "edition" as const,
+                value: edition.title,
+                verified: true as const,
+              }
+            : null,
+          edition?.isbn13 || edition?.isbn10
+            ? {
+                kind: "isbn" as const,
+                value: edition.isbn13 || edition.isbn10 || "",
+                verified: true as const,
+              }
+            : null,
+          selectedMetadataLabels[0]
+            ? {
+                kind: "genre" as const,
+                value: selectedMetadataLabels[0],
+                verified: true as const,
+              }
+            : null,
+        ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+      : [];
+    const sourceRights = verified
+      ? (selectedBook.sources || []).map((source) => ({
+          provider: source.provider,
+          sourceUrl: source.url,
+          usage: source.usage,
+          license: source.license,
+          verified: true as const,
+        }))
+      : [];
+    if (verified && selectedBook.sourceUrl && sourceRights.length === 0) {
+      sourceRights.push({
+        provider: language === "en" ? "Editorial source" : "Редакционный источник",
+        sourceUrl: selectedBook.sourceUrl,
+        usage: "reference-only",
+        license: undefined,
+        verified: true,
+      });
+    }
+    return buildBookEditorialDocument({
+      bookKey: bookKey(selectedBook),
+      locale: language,
+      themeVersion: `${focusedSceneTheme.baseColor}:${focusedSceneTheme.paperColor}`,
+      title: selectedBookText.title,
+      writer: selectedWriterName,
+      year:
+        verified && selectedBook.firstPublished
+          ? { value: selectedBook.firstPublished, verified: true }
+          : undefined,
+      language:
+        verified && selectedOriginalLanguage
+          ? { value: selectedOriginalLanguage, verified: true }
+          : undefined,
+      country: verified
+        ? {
+            value: countryName(
+              selectedBook.country.code,
+              selectedBook.countryName
+            ),
+            verified: true,
+          }
+        : undefined,
+      metadata: editionMetadata,
+      description:
+        verified && selectedBookText.description
+          ? { value: selectedBookText.description, verified: true }
+          : undefined,
+      sourceRights,
+    });
+  }, [
+    countryName,
+    focusedSceneTheme.baseColor,
+    focusedSceneTheme.paperColor,
+    language,
+    selectedBook,
+    selectedBookText,
+    selectedItem?.status,
+    selectedMetadataLabels,
+    selectedOriginalLanguage,
+    selectedWriterName,
+  ]);
+
+  useEffect(() => {
+    if (!selectedBook || !selectedEditorialDocument) {
+      inspectionSessionRef.current = null;
+      setInspectionSession(null);
+      return;
+    }
+    const selectedKey = bookKey(selectedBook);
+    const current = inspectionSessionRef.current;
+    if (
+      current?.bookKey === selectedKey &&
+      current.pageCount === selectedEditorialDocument.pages.length
+    ) {
+      return;
+    }
+    const next = createBookInspectionSession({
+      bookKey: selectedKey,
+      pageCount: selectedEditorialDocument.pages.length,
+      requestId: ++inspectionRequestSequenceRef.current,
+    });
+    inspectionSessionRef.current = next;
+    setInspectionSession(next);
+  }, [selectedBook, selectedEditorialDocument]);
   const isBookSaved = (book: BookArchiveEntry) =>
     savedReadings.some(
       (item) => item.kind === "book" && item.id === bookKey(book)
@@ -2395,13 +2710,38 @@ export default function BookArchiveSection({
                 </button>
               ) : null}
               {viewMode === "shelf" && shelfState.phase === "BOOK_OPEN" ? (
-                <button
-                  type="button"
-                  className="book-detail-page-turn"
-                  onClick={requestSelectedPageTurn}
+                <div
+                  className="book-detail-page-navigation"
+                  aria-label={t("Навигация по редакционным страницам")}
                 >
-                  {t("Перелистнуть страницу")}
-                </button>
+                  <button
+                    type="button"
+                    className="book-detail-page-turn is-previous"
+                    onClick={requestSelectedPreviousPage}
+                    disabled={!inspectionSession?.pageIndex}
+                    aria-label={t("Предыдущая страница")}
+                  >
+                    <span aria-hidden="true">←</span>
+                  </button>
+                  <span role="status" aria-live="polite">
+                    {language === "en"
+                      ? `Page ${(inspectionSession?.pageIndex || 0) + 1} of ${inspectionSession?.pageCount || 1}`
+                      : `Страница ${(inspectionSession?.pageIndex || 0) + 1} из ${inspectionSession?.pageCount || 1}`}
+                  </span>
+                  <button
+                    type="button"
+                    className="book-detail-page-turn is-next"
+                    onClick={requestSelectedPageTurn}
+                    disabled={
+                      !inspectionSession ||
+                      inspectionSession.pageIndex >=
+                        inspectionSession.pageCount - 1
+                    }
+                    aria-label={t("Следующая страница")}
+                  >
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               ) : null}
               <button
                 type="button"
@@ -2565,17 +2905,15 @@ export default function BookArchiveSection({
                   }
                   economical={economicalRendering}
                   reducedMotion={reducedMotion}
+                  editorialDocument={selectedEditorialDocument}
+                  inspectionSession={inspectionSession}
                   loadAttempt={sceneLoadGeneration === 0 ? "primary" : "retry"}
                   onFocusBook={requestFocusBook}
-                  onOpenBook={(key) => {
-                    const item = queueByKey.get(key);
-                    if (item) {
-                      setRandomAnnouncement("");
-                      openBookDetail(item.book);
-                    }
-                  }}
+                  onOpenBook={handleSceneOpenBook}
                   onRequestCoverOpen={requestSelectedCoverOpen}
                   onRequestPageTurn={requestSelectedPageTurn}
+                  onRequestPreviousPage={requestSelectedPreviousPage}
+                  onRequestKeyboardPage={requestSelectedKeyboardPage}
                   onRequestInspectionClose={closeBookDetail}
                   onCrackCover={() =>
                     shelfDispatch({
@@ -2583,38 +2921,20 @@ export default function BookArchiveSection({
                       requestId: shelfState.requestId + 1,
                     })
                   }
-                  onStartPageDrag={() =>
-                    shelfDispatch({
-                      type: "start-page-drag",
-                      requestId: shelfState.requestId + 1,
-                    })
-                  }
-                  onRequestPageSettle={() =>
-                    shelfDispatch({
-                      type: "request-page-settle",
-                      requestId: shelfState.requestId + 1,
-                    })
-                  }
+                  onStartPageDrag={startSelectedPageDrag}
+                  onUpdatePageDrag={updateSelectedPageDrag}
+                  onRequestPageSettle={settleSelectedPageDrag}
                   onMotionReached={(requestId) =>
                     shelfDispatch({ type: "motion-reached", requestId })
                   }
-                  onMotionSettled={(requestId) =>
-                    {
-                      shelfDispatch({ type: "motion-settled", requestId });
-                      if (requestId === shelfStateRef.current.requestId) {
-                        setSettledThemeBookKey(focusedBookKeyRef.current);
-                      }
-                    }
-                  }
+                  onMotionSettled={handleShelfMotionSettled}
                   onInspectionEntered={(requestId) =>
                     shelfDispatch({ type: "inspection-entered", requestId })
                   }
                   onCoverOpened={(requestId) =>
                     shelfDispatch({ type: "cover-opened", requestId })
                   }
-                  onPageSettled={(requestId) =>
-                    shelfDispatch({ type: "page-settled", requestId })
-                  }
+                  onPageSettled={settleSelectedPage}
                   onInspectionClosed={(requestId) =>
                     shelfDispatch({ type: "inspection-closed", requestId })
                   }

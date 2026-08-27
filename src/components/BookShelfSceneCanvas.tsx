@@ -1,4 +1,4 @@
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import {
   ACESFilmicToneMapping,
@@ -17,6 +17,20 @@ import type {
 import BookShelfSpatialEnvironment from "./BookShelfSpatialEnvironment";
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection } from "../books/completeShelfModel";
+import {
+  applyBookInspectionOrbitDelta,
+  BOOK_INSPECTION_DEFAULT_ORBIT,
+  resolveBookInspectionCameraFraming,
+  resolveBookInspectionOrbitCamera,
+  smoothBookInspectionCameraTarget,
+  type BookInspectionCameraTarget,
+  type BookInspectionOrbit,
+} from "../books/bookInspectionCamera";
+import type { BookEditorialDocument } from "../books/bookEditorialPages";
+import type {
+  BookInspectionPageDirection,
+  BookInspectionSession,
+} from "../books/bookInspectionSession";
 import CompleteShelfRenderer, {
   type CompleteShelfTransitionCallbacks,
 } from "../books/completeShelfRenderer";
@@ -29,6 +43,8 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   active: boolean;
   economical: boolean;
   reducedMotion: boolean;
+  editorialDocument: BookEditorialDocument | null;
+  inspectionSession: BookInspectionSession | null;
   phase: BookShelfPhase;
   requestId: number;
   onFocusBook: (key: string) => void;
@@ -36,10 +52,144 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   onRequestCoverOpen: (key: string) => void;
   onRequestInspectionClose: () => void;
   onCrackCover: () => void;
-  onStartPageDrag: () => void;
-  onRequestPageSettle: () => void;
+  onStartPageDrag: (direction: BookInspectionPageDirection) => void;
+  onUpdatePageDrag: (progress: number) => void;
+  onRequestPageSettle: (velocity: number) => void;
   onContextLost: () => void;
 };
+
+function InspectionCameraController({
+  detailOpen,
+  itemIndex,
+  itemCount,
+  reducedMotion,
+}: {
+  detailOpen: boolean;
+  itemIndex: number;
+  itemCount: number;
+  reducedMotion: boolean;
+}) {
+  const { camera, gl, invalidate, size } = useThree();
+  const targetRef = useRef<BookInspectionCameraTarget>({
+    position: [0, 0.02, 5.15],
+    lookAt: [0, 0.02, 0],
+    fov: 38,
+  });
+  const orbitRef = useRef<BookInspectionOrbit>(BOOK_INSPECTION_DEFAULT_ORBIT);
+  const dragRef = useRef<{
+    pointerId: number;
+    x: number;
+    y: number;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!detailOpen) {
+      orbitRef.current = BOOK_INSPECTION_DEFAULT_ORBIT;
+      dragRef.current = null;
+    }
+    invalidate();
+  }, [detailOpen, invalidate, itemIndex, itemCount, size.height, size.width]);
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const startOrbit = (event: PointerEvent) => {
+      if (!detailOpen || (event.button !== 1 && !event.altKey)) return;
+      dragRef.current = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+      };
+      canvas.setPointerCapture?.(event.pointerId);
+      event.preventDefault();
+    };
+    const moveOrbit = (event: PointerEvent) => {
+      const drag = dragRef.current;
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      orbitRef.current = applyBookInspectionOrbitDelta(orbitRef.current, {
+        yaw: (event.clientX - drag.x) * -0.0024,
+        pitch: (event.clientY - drag.y) * -0.0019,
+      });
+      drag.x = event.clientX;
+      drag.y = event.clientY;
+      invalidate();
+      event.preventDefault();
+    };
+    const endOrbit = (event: PointerEvent) => {
+      if (dragRef.current?.pointerId !== event.pointerId) return;
+      dragRef.current = null;
+      canvas.releasePointerCapture?.(event.pointerId);
+    };
+    const zoomOrbit = (event: WheelEvent) => {
+      if (!detailOpen || !event.altKey) return;
+      orbitRef.current = applyBookInspectionOrbitDelta(orbitRef.current, {
+        zoom: event.deltaY * -0.00065,
+      });
+      invalidate();
+      event.preventDefault();
+    };
+    const resetOrbit = () => {
+      if (!detailOpen) return;
+      orbitRef.current = BOOK_INSPECTION_DEFAULT_ORBIT;
+      invalidate();
+    };
+    canvas.addEventListener("pointerdown", startOrbit);
+    canvas.addEventListener("pointermove", moveOrbit);
+    canvas.addEventListener("pointerup", endOrbit);
+    canvas.addEventListener("pointercancel", endOrbit);
+    canvas.addEventListener("wheel", zoomOrbit, { passive: false });
+    canvas.addEventListener("dblclick", resetOrbit);
+    return () => {
+      canvas.removeEventListener("pointerdown", startOrbit);
+      canvas.removeEventListener("pointermove", moveOrbit);
+      canvas.removeEventListener("pointerup", endOrbit);
+      canvas.removeEventListener("pointercancel", endOrbit);
+      canvas.removeEventListener("wheel", zoomOrbit);
+      canvas.removeEventListener("dblclick", resetOrbit);
+    };
+  }, [detailOpen, gl, invalidate]);
+
+  useFrame((_state, delta) => {
+    const desiredFraming = detailOpen
+      ? resolveBookInspectionCameraFraming({
+          viewportWidth: size.width,
+          viewportHeight: size.height,
+          detailOpen,
+          itemIndex,
+          itemCount,
+        })
+      : {
+          position: [0, 0.02, 5.15] as const,
+          lookAt: [0, 0, 0] as const,
+          fov: 38,
+        };
+    const desired = resolveBookInspectionOrbitCamera(
+      desiredFraming,
+      orbitRef.current
+    );
+    const next = smoothBookInspectionCameraTarget(
+      targetRef.current,
+      desired,
+      delta * 1_000,
+      { reducedMotion }
+    );
+    const changed =
+      Math.abs(next.position[0] - targetRef.current.position[0]) > 0.00002 ||
+      Math.abs(next.position[1] - targetRef.current.position[1]) > 0.00002 ||
+      Math.abs(next.position[2] - targetRef.current.position[2]) > 0.00002 ||
+      Math.abs(next.lookAt[0] - targetRef.current.lookAt[0]) > 0.00002 ||
+      Math.abs(next.fov - targetRef.current.fov) > 0.00002;
+    targetRef.current = next;
+    camera.position.set(...next.position);
+    camera.lookAt(...next.lookAt);
+    if ("fov" in camera && camera.fov !== next.fov) {
+      camera.fov = next.fov;
+      camera.updateProjectionMatrix();
+    }
+    if (changed) invalidate();
+  });
+
+  return null;
+}
 
 function SceneLifecycle({
   dependency,
@@ -163,6 +313,8 @@ export default function BookShelfSceneCanvas({
   active,
   economical,
   reducedMotion,
+  editorialDocument,
+  inspectionSession,
   phase,
   requestId,
   onFocusBook,
@@ -171,6 +323,7 @@ export default function BookShelfSceneCanvas({
   onRequestInspectionClose,
   onCrackCover,
   onStartPageDrag,
+  onUpdatePageDrag,
   onRequestPageSettle,
   onMotionReached,
   onMotionSettled,
@@ -228,6 +381,17 @@ export default function BookShelfSceneCanvas({
         exposure={economical ? 0.96 : 0.9}
         economical={economical}
         onContextLost={onContextLost}
+      />
+      <InspectionCameraController
+        detailOpen={Boolean(selectedBookKey && inspectionActive)}
+        itemIndex={Math.max(
+          0,
+          items.findIndex(
+            (item) => item.key === (selectedBookKey || focusedBookKey)
+          )
+        )}
+        itemCount={items.length}
+        reducedMotion={reducedMotion}
       />
       <BookShelfSpatialEnvironment
         appearance={appearance}
@@ -308,12 +472,15 @@ export default function BookShelfSceneCanvas({
         requestId={requestId}
         economical={economical}
         reducedMotion={reducedMotion}
+        editorialDocument={editorialDocument}
+        inspectionSession={inspectionSession}
         onFocusBook={onFocusBook}
         onOpenBook={onOpenBook}
         onRequestCoverOpen={onRequestCoverOpen}
         onRequestInspectionClose={onRequestInspectionClose}
         onCrackCover={onCrackCover}
         onStartPageDrag={onStartPageDrag}
+        onUpdatePageDrag={onUpdatePageDrag}
         onRequestPageSettle={onRequestPageSettle}
         onMotionReached={onMotionReached}
         onMotionSettled={onMotionSettled}

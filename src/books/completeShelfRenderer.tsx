@@ -2,10 +2,16 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   BoxGeometry,
+  CanvasTexture as ThreeCanvasTexture,
+  FrontSide,
+  BackSide,
   BufferAttribute,
   DoubleSide,
   MathUtils,
   PlaneGeometry,
+  LinearFilter,
+  RepeatWrapping,
+  SRGBColorSpace,
   Shape,
   ShapeGeometry,
   Vector2,
@@ -19,6 +25,20 @@ import type {
   BookShelfSceneAppearance,
 } from "../components/BookShelfScene";
 import type { BookShelfPhase } from "./bookShelfState";
+import type { BookEditorialDocument } from "./bookEditorialPages";
+import type {
+  BookInspectionPageDirection,
+  BookInspectionSession,
+} from "./bookInspectionSession";
+import {
+  BookInspectionTextureStore,
+  type BookInspectionTextureQuality,
+} from "./bookInspectionTextures";
+import { sampleBookInspectionTransition } from "./bookInspectionCamera";
+import {
+  resolveBookInspectionPageGeometryPlan,
+  sampleBookInspectionPageTurn,
+} from "./bookInspectionPageGeometry";
 import {
   buildCompleteShelfBookPose,
   buildCompleteShelfBookSpec,
@@ -77,13 +97,16 @@ export type CompleteShelfRendererProps = CompleteShelfTransitionCallbacks &
     requestId: number;
     economical: boolean;
     reducedMotion: boolean;
+    editorialDocument: BookEditorialDocument | null;
+    inspectionSession: BookInspectionSession | null;
     onFocusBook: (key: string) => void;
     onOpenBook: (key: string) => void;
     onRequestCoverOpen: (key: string) => void;
     onRequestInspectionClose: () => void;
     onCrackCover: () => void;
-    onStartPageDrag: () => void;
-    onRequestPageSettle: () => void;
+    onStartPageDrag: (direction: BookInspectionPageDirection) => void;
+    onUpdatePageDrag: (progress: number) => void;
+    onRequestPageSettle: (velocity: number) => void;
   }>;
 
 function dispatchSettlement(
@@ -234,6 +257,64 @@ function animatePose(
   ];
   return after.some(
     (value, index) => Math.abs(value - before[index]) > 0.00008
+  );
+}
+
+type CompleteShelfPoseSnapshot = Readonly<{
+  position: readonly [number, number, number];
+  rotation: readonly [number, number, number];
+  scale: number;
+  coverAngle: number;
+  firstLeafAngle: number;
+  secondLeafAngle: number;
+}>;
+
+function captureCurrentPose(
+  group: Group,
+  cover: Group,
+  firstLeaf: Group,
+  secondLeaf: Group
+): CompleteShelfPoseSnapshot {
+  return {
+    position: [group.position.x, group.position.y, group.position.z],
+    rotation: [group.rotation.x, group.rotation.y, group.rotation.z],
+    scale: group.scale.x,
+    coverAngle: cover.rotation.y,
+    firstLeafAngle: firstLeaf.rotation.y,
+    secondLeafAngle: secondLeaf.rotation.y,
+  };
+}
+
+function applyTimedPose(
+  group: Group,
+  cover: Group,
+  firstLeaf: Group,
+  secondLeaf: Group,
+  from: CompleteShelfPoseSnapshot,
+  to: CompleteShelfBookPose,
+  progress: number
+) {
+  group.position.set(
+    MathUtils.lerp(from.position[0], to.position[0], progress),
+    MathUtils.lerp(from.position[1], to.position[1], progress),
+    MathUtils.lerp(from.position[2], to.position[2], progress)
+  );
+  group.rotation.set(
+    MathUtils.lerp(from.rotation[0], to.rotation[0], progress),
+    MathUtils.lerp(from.rotation[1], to.rotation[1], progress),
+    MathUtils.lerp(from.rotation[2], to.rotation[2], progress)
+  );
+  group.scale.setScalar(MathUtils.lerp(from.scale, to.scale, progress));
+  cover.rotation.y = MathUtils.lerp(from.coverAngle, to.coverAngle, progress);
+  firstLeaf.rotation.y = MathUtils.lerp(
+    from.firstLeafAngle,
+    to.firstLeafAngle,
+    progress
+  );
+  secondLeaf.rotation.y = MathUtils.lerp(
+    from.secondLeafAngle,
+    to.secondLeafAngle,
+    progress
   );
 }
 
@@ -524,9 +605,13 @@ function CompleteShelfBook({
   foreEdgeMap,
   headTailEdgeMap,
   contactShadowMap,
+  editorialDocument,
+  inspectionSession,
+  pageTextureQuality,
   onOpenBook,
   onRequestCoverOpen,
   onStartPageDrag,
+  onUpdatePageDrag,
   onRequestPageSettle,
   callbacks,
 }: {
@@ -545,10 +630,14 @@ function CompleteShelfBook({
   foreEdgeMap: CanvasTexture | null;
   headTailEdgeMap: CanvasTexture | null;
   contactShadowMap: CanvasTexture | null;
+  editorialDocument: BookEditorialDocument | null;
+  inspectionSession: BookInspectionSession | null;
+  pageTextureQuality: BookInspectionTextureQuality;
   onOpenBook: (key: string) => void;
   onRequestCoverOpen: (key: string) => void;
-  onStartPageDrag: () => void;
-  onRequestPageSettle: () => void;
+  onStartPageDrag: (direction: BookInspectionPageDirection) => void;
+  onUpdatePageDrag: (progress: number) => void;
+  onRequestPageSettle: (velocity: number) => void;
   callbacks: CompleteShelfTransitionCallbacks;
 }) {
   const groupRef = useRef<Group>(null);
@@ -556,9 +645,23 @@ function CompleteShelfBook({
   const firstLeafRef = useRef<Group>(null);
   const secondLeafRef = useRef<Group>(null);
   const settledSignatureRef = useRef("");
-  const pageGestureStartedRef = useRef(false);
+  const exactTransitionRef = useRef<{
+    signature: string;
+    elapsedMs: number;
+    from: CompleteShelfPoseSnapshot;
+  } | null>(null);
+  const pageGestureStartedRef = useRef<{
+    pointerId: number;
+    direction: BookInspectionPageDirection;
+    startX: number;
+    lastX: number;
+    startedAt: number;
+    lastAt: number;
+  } | null>(null);
   const pageSettleFrameRef = useRef<number | null>(null);
   const pageSettleCallbackRef = useRef(onRequestPageSettle);
+  const pageDragUpdateCallbackRef = useRef(onUpdatePageDrag);
+  const pageTextureStoreRef = useRef<BookInspectionTextureStore | null>(null);
   const { invalidate } = useThree();
   const { spec } = layout;
   const { height, coverWidth, pageDepth, boardThickness } = spec.dimensions;
@@ -573,10 +676,73 @@ function CompleteShelfBook({
   const foreEdgeX = 0.018 + pageWidth * 0.5 + 0.002;
   const headbandY = pageHeight * 0.5 - 0.004;
   const visiblePageWidth = pageWidth - spineWidth * 0.42;
+  const pageGeometryPlan = resolveBookInspectionPageGeometryPlan(
+    pageTextureQuality
+  );
+  const pageSegmentColumns = pageGeometryPlan.widthSegments;
+  const pageSegmentRows = pageGeometryPlan.heightSegments;
+  const activePageGeometry = useMemo(() => {
+    if (!renderFullRig) return null;
+    const geometry = new PlaneGeometry(
+      visiblePageWidth,
+      pageHeight - 0.014,
+      pageSegmentColumns,
+      pageSegmentRows
+    );
+    return geometry;
+  }, [
+    pageHeight,
+    pageSegmentColumns,
+    pageSegmentRows,
+    renderFullRig,
+    visiblePageWidth,
+  ]);
   const signatureOffsets = Array.from(
     { length: economical ? 3 : 6 },
     (_, index) => -0.5 + (index + 1) / (economical ? 4 : 7)
   );
+  const activePageDirection =
+    inspectionSession?.phase === "dragging" ||
+    inspectionSession?.phase === "settling"
+      ? inspectionSession.direction
+      : "forward";
+  const activePageProgress =
+    inspectionSession?.bookKey === spec.key
+      ? inspectionSession.dragProgress
+      : 0;
+  useLayoutEffect(() => {
+    if (!activePageGeometry) return;
+    const position = activePageGeometry.getAttribute("position");
+    let vertex = 0;
+    for (let row = 0; row <= pageSegmentRows; row += 1) {
+      const v = 1 - row / pageSegmentRows;
+      for (let column = 0; column <= pageSegmentColumns; column += 1) {
+        const point = sampleBookInspectionPageTurn({
+          direction: activePageDirection,
+          progress: activePageProgress,
+          u: column / pageSegmentColumns,
+          v,
+          pageWidth: visiblePageWidth,
+          pageHeight: pageHeight - 0.014,
+        });
+        position.setXYZ(vertex, ...point.position);
+        vertex += 1;
+      }
+    }
+    position.needsUpdate = true;
+    activePageGeometry.computeVertexNormals();
+    activePageGeometry.computeBoundingSphere();
+    invalidate();
+  }, [
+    activePageDirection,
+    activePageGeometry,
+    activePageProgress,
+    invalidate,
+    pageHeight,
+    pageSegmentColumns,
+    pageSegmentRows,
+    visiblePageWidth,
+  ]);
   const coverGeometry = useMemo(
     () =>
       renderFullRig
@@ -672,10 +838,12 @@ function CompleteShelfBook({
       spineLiningGeometry.dispose();
       coverSurfaceGeometry?.dispose();
       endpaperGeometry?.dispose();
+      activePageGeometry?.dispose();
     }, [
       coverGeometry,
       coverSurfaceGeometry,
       endpaperGeometry,
+      activePageGeometry,
       pageBlockGeometry,
       spineFoilGeometry,
       spineGeometry,
@@ -685,7 +853,8 @@ function CompleteShelfBook({
 
   useLayoutEffect(() => {
     pageSettleCallbackRef.current = onRequestPageSettle;
-  }, [onRequestPageSettle]);
+    pageDragUpdateCallbackRef.current = onUpdatePageDrag;
+  }, [onRequestPageSettle, onUpdatePageDrag]);
   useEffect(
     () => () => {
       if (pageSettleFrameRef.current !== null) {
@@ -702,8 +871,27 @@ function CompleteShelfBook({
         phase,
         selectedBookKey,
         focusedBookKey,
+        pageTurnProgress:
+          selected &&
+          inspectionSession?.bookKey === spec.key
+            ? inspectionSession.dragProgress
+            : undefined,
+        pageDirection:
+          inspectionSession?.bookKey === spec.key &&
+          inspectionSession.phase !== "idle"
+            ? inspectionSession.direction
+            : "forward",
       }),
-    [anchorSlot, focusedBookKey, layout, phase, selectedBookKey]
+    [
+      anchorSlot,
+      focusedBookKey,
+      inspectionSession,
+      layout,
+      phase,
+      selected,
+      selectedBookKey,
+      spec.key,
+    ]
   );
   const artworkSignature = [
     economical ? "economical" : "quality",
@@ -817,6 +1005,148 @@ function CompleteShelfBook({
       ? loadedCoverTexture.texture
       : null;
 
+  const [editorialPageTextures, setEditorialPageTextures] = useState<{
+    signature: string;
+    front: ThreeCanvasTexture;
+    back: ThreeCanvasTexture | null;
+  } | null>(null);
+  useEffect(
+    () => () => {
+      pageTextureStoreRef.current?.dispose();
+      pageTextureStoreRef.current = null;
+    },
+    []
+  );
+  useEffect(() => {
+    const disposeTextures = (textures: typeof editorialPageTextures) => {
+      textures?.front.dispose();
+      textures?.back?.dispose();
+    };
+    if (
+      !renderFullRig ||
+      !editorialDocument ||
+      !inspectionSession ||
+      inspectionSession.bookKey !== spec.key
+    ) {
+      setEditorialPageTextures((current) => {
+        disposeTextures(current);
+        return null;
+      });
+      return;
+    }
+    const pageIndex = Math.min(
+      editorialDocument.pages.length - 1,
+      Math.max(0, inspectionSession.pageIndex)
+    );
+    const targetIndex = Math.min(
+      editorialDocument.pages.length - 1,
+      Math.max(
+        0,
+        inspectionSession.phase === "settling"
+          ? inspectionSession.settlePageIndex
+          : pageIndex + 1
+      )
+    );
+    const frontPage = editorialDocument.pages[pageIndex];
+    const backPage = editorialDocument.pages[targetIndex];
+    if (!frontPage) return;
+    const store =
+      pageTextureStoreRef.current ||
+      (pageTextureStoreRef.current = new BookInspectionTextureStore({
+        capacity: 4,
+      }));
+    const generation = store.beginGeneration();
+    const signature = [
+      editorialDocument.cacheKey,
+      pageIndex,
+      targetIndex,
+      pageTextureQuality,
+    ].join(":");
+    void Promise.all([
+      store.request(
+        {
+          documentCacheKey: editorialDocument.cacheKey,
+          page: frontPage,
+          quality: pageTextureQuality,
+          theme: {
+            paperColor: spec.paperColor,
+            inkColor: "#261c24",
+            mutedColor: "#6f6266",
+            accentColor: spec.accentColor,
+          },
+        },
+        generation
+      ),
+      backPage && backPage !== frontPage
+        ? store.request(
+            {
+              documentCacheKey: editorialDocument.cacheKey,
+              page: backPage,
+              quality: pageTextureQuality,
+              theme: {
+                paperColor: spec.paperColor,
+                inkColor: "#261c24",
+                mutedColor: "#6f6266",
+                accentColor: spec.accentColor,
+              },
+            },
+            generation
+          )
+        : Promise.resolve(null),
+    ]).then(([frontResource, backResource]) => {
+      if (!generation.isCurrent() || !frontResource) return;
+      const prepareTexture = (
+        resource: NonNullable<typeof frontResource>,
+        mirrored = false
+      ) => {
+        const texture = new ThreeCanvasTexture(
+          resource.surface as HTMLCanvasElement
+        );
+        texture.colorSpace = SRGBColorSpace;
+        texture.minFilter = LinearFilter;
+        texture.magFilter = LinearFilter;
+        texture.anisotropy = pageTextureQuality === "HIGH" ? 8 : 4;
+        if (mirrored) {
+          texture.wrapS = RepeatWrapping;
+          texture.repeat.x = -1;
+          texture.offset.x = 1;
+        }
+        texture.needsUpdate = true;
+        return texture;
+      };
+      const next = {
+        signature,
+        front: prepareTexture(frontResource),
+        back: backResource ? prepareTexture(backResource, true) : null,
+      };
+      setEditorialPageTextures((current) => {
+        disposeTextures(current);
+        return next;
+      });
+      invalidate();
+    });
+    return () => generation.cancel();
+  }, [
+    editorialDocument,
+    inspectionSession,
+    invalidate,
+    pageTextureQuality,
+    renderFullRig,
+    spec.accentColor,
+    spec.key,
+    spec.paperColor,
+  ]);
+  useEffect(
+    () => () => {
+      editorialPageTextures?.front.dispose();
+      editorialPageTextures?.back?.dispose();
+    },
+    [editorialPageTextures]
+  );
+  useLayoutEffect(() => {
+    if (editorialPageTextures) invalidate();
+  }, [editorialPageTextures, invalidate]);
+
   const targetSignature = [
     phase,
     requestId,
@@ -838,6 +1168,17 @@ function CompleteShelfBook({
     if (!group.userData.completeShelfReady) {
       applyPoseImmediately(group, cover, firstLeaf, secondLeaf, pose);
       group.userData.completeShelfReady = true;
+    } else if (
+      phase === "INSPECTION_ENTERING" ||
+      phase === "INSPECTION_CLOSING"
+    ) {
+      exactTransitionRef.current = {
+        signature: targetSignature,
+        elapsedMs: 0,
+        from: captureCurrentPose(group, cover, firstLeaf, secondLeaf),
+      };
+    } else {
+      exactTransitionRef.current = null;
     }
     settledSignatureRef.current = "";
     invalidate();
@@ -849,15 +1190,40 @@ function CompleteShelfBook({
     const firstLeaf = firstLeafRef.current;
     const secondLeaf = secondLeafRef.current;
     if (!group || !cover || !firstLeaf || !secondLeaf) return;
-    const moving = animatePose(
-      group,
-      cover,
-      firstLeaf,
-      secondLeaf,
-      pose,
-      delta,
-      reducedMotion
-    );
+    const exactTransition = exactTransitionRef.current;
+    let moving = false;
+    if (
+      exactTransition?.signature === targetSignature &&
+      (phase === "INSPECTION_ENTERING" || phase === "INSPECTION_CLOSING")
+    ) {
+      exactTransition.elapsedMs += Math.min(delta, 0.08) * 1_000;
+      const sample = sampleBookInspectionTransition({
+        kind: phase === "INSPECTION_ENTERING" ? "enter" : "close",
+        elapsedMs: exactTransition.elapsedMs,
+        reducedMotion,
+      });
+      applyTimedPose(
+        group,
+        cover,
+        firstLeaf,
+        secondLeaf,
+        exactTransition.from,
+        pose,
+        sample.easedProgress
+      );
+      moving = !sample.complete;
+      if (sample.complete) exactTransitionRef.current = null;
+    } else {
+      moving = animatePose(
+        group,
+        cover,
+        firstLeaf,
+        secondLeaf,
+        pose,
+        delta,
+        reducedMotion
+      );
+    }
     if (moving) {
       settledSignatureRef.current = "";
       invalidate();
@@ -1139,47 +1505,107 @@ function CompleteShelfBook({
         onPointerDown={(event) => {
           if (!selected || phase !== "BOOK_OPEN") return;
           event.stopPropagation();
-          pageGestureStartedRef.current = true;
-          onStartPageDrag();
+          const pageIndex = inspectionSession?.pageIndex || 0;
+          const pageCount = inspectionSession?.pageCount || 0;
+          const wantsBackward = Boolean(event.uv && event.uv.x < 0.34);
+          const direction: BookInspectionPageDirection =
+            wantsBackward && pageIndex > 0
+              ? "backward"
+              : pageIndex < pageCount - 1
+                ? "forward"
+                : pageIndex > 0
+                  ? "backward"
+                  : "forward";
+          if (
+            (direction === "forward" && pageIndex >= pageCount - 1) ||
+            (direction === "backward" && pageIndex <= 0)
+          ) {
+            return;
+          }
+          const now = performance.now();
+          pageGestureStartedRef.current = {
+            pointerId: event.pointerId,
+            direction,
+            startX: event.clientX,
+            lastX: event.clientX,
+            startedAt: now,
+            lastAt: now,
+          };
+          (event.target as unknown as {
+            setPointerCapture?: (pointerId: number) => void;
+          } | null)?.setPointerCapture?.(event.pointerId);
+          onStartPageDrag(direction);
+        }}
+        onPointerMove={(event) => {
+          const gesture = pageGestureStartedRef.current;
+          if (!selected || !gesture || gesture.pointerId !== event.pointerId) {
+            return;
+          }
+          event.stopPropagation();
+          const directionalDistance =
+            gesture.direction === "forward"
+              ? gesture.startX - event.clientX
+              : event.clientX - gesture.startX;
+          pageDragUpdateCallbackRef.current(
+            Math.min(1, Math.max(0, directionalDistance / 180))
+          );
+          gesture.lastX = event.clientX;
+          gesture.lastAt = performance.now();
         }}
         onPointerUp={(event) => {
-          if (!selected || !pageGestureStartedRef.current) return;
+          const gesture = pageGestureStartedRef.current;
+          if (!selected || !gesture || gesture.pointerId !== event.pointerId) {
+            return;
+          }
           event.stopPropagation();
-          pageGestureStartedRef.current = false;
+          const elapsed = Math.max(16, performance.now() - gesture.lastAt);
+          const rawVelocity = (event.clientX - gesture.lastX) / elapsed;
+          const logicalVelocity =
+            gesture.direction === "forward" ? -rawVelocity : rawVelocity * -1;
+          (event.target as unknown as {
+            releasePointerCapture?: (pointerId: number) => void;
+          } | null)?.releasePointerCapture?.(event.pointerId);
+          pageGestureStartedRef.current = null;
           pageSettleFrameRef.current = requestAnimationFrame(() => {
             pageSettleFrameRef.current = null;
-            pageSettleCallbackRef.current();
-          });
-        }}
-        onPointerLeave={(event) => {
-          if (!selected || !pageGestureStartedRef.current) return;
-          event.stopPropagation();
-          pageGestureStartedRef.current = false;
-          pageSettleFrameRef.current = requestAnimationFrame(() => {
-            pageSettleFrameRef.current = null;
-            pageSettleCallbackRef.current();
+            pageSettleCallbackRef.current(logicalVelocity);
           });
         }}
         onPointerCancel={(event) => {
-          if (!selected || !pageGestureStartedRef.current) return;
+          const gesture = pageGestureStartedRef.current;
+          if (!selected || !gesture || gesture.pointerId !== event.pointerId) {
+            return;
+          }
           event.stopPropagation();
-          pageGestureStartedRef.current = false;
+          pageGestureStartedRef.current = null;
           pageSettleFrameRef.current = requestAnimationFrame(() => {
             pageSettleFrameRef.current = null;
-            pageSettleCallbackRef.current();
+            pageSettleCallbackRef.current(0);
           });
         }}
         onClick={(event) => event.stopPropagation()}
       >
         {renderFullRig && (
-          <mesh position={[visiblePageWidth / 2, 0, 0.00022]}>
-            <planeGeometry args={[visiblePageWidth, pageHeight - 0.014]} />
-            <meshStandardMaterial
-              color={spec.paperColor}
-              roughness={0.96}
-              side={DoubleSide}
-            />
-          </mesh>
+          <>
+            <mesh geometry={activePageGeometry || undefined} position={[0, 0, 0.00022]}>
+              <meshStandardMaterial
+                key={`front:${editorialPageTextures?.signature || "paper"}`}
+                color={spec.paperColor}
+                map={editorialPageTextures?.front || undefined}
+                roughness={0.96}
+                side={FrontSide}
+              />
+            </mesh>
+            <mesh geometry={activePageGeometry || undefined} position={[0, 0, 0.0002]}>
+              <meshStandardMaterial
+                key={`back:${editorialPageTextures?.signature || "paper"}`}
+                color={spec.paperColor}
+                map={editorialPageTextures?.back || undefined}
+                roughness={0.96}
+                side={BackSide}
+              />
+            </mesh>
+          </>
         )}
       </group>
       <group
@@ -1191,12 +1617,13 @@ function CompleteShelfBook({
         ]}
       >
         {renderFullRig && (
-          <mesh position={[visiblePageWidth / 2, 0, 0.00022]}>
-            <planeGeometry args={[visiblePageWidth, pageHeight - 0.014]} />
+          <mesh geometry={activePageGeometry || undefined} position={[0, 0, 0.00022]}>
             <meshStandardMaterial
+              key={`under:${editorialPageTextures?.signature || "paper"}`}
               color="#efe5cf"
+              map={editorialPageTextures?.front || undefined}
               roughness={0.97}
-              side={DoubleSide}
+              side={FrontSide}
             />
           </mesh>
         )}
@@ -1445,6 +1872,11 @@ export default function CompleteShelfRenderer(
 ) {
   const { size, viewport, invalidate } = useThree();
   const renderingEconomical = props.economical || size.width <= 640;
+  const pageTextureQuality: BookInspectionTextureQuality = renderingEconomical
+    ? "ECONOMY"
+    : size.width < 1100
+      ? "BALANCED"
+      : "HIGH";
   const anchorKey = props.selectedBookKey || props.focusedBookKey;
   const workingSet = useMemo(
     () =>
@@ -1641,9 +2073,13 @@ export default function CompleteShelfRenderer(
             foreEdgeMap={pageEdgeMaps.fore}
             headTailEdgeMap={pageEdgeMaps.headTail}
             contactShadowMap={contactShadowMap}
+            editorialDocument={props.editorialDocument}
+            inspectionSession={props.inspectionSession}
+            pageTextureQuality={pageTextureQuality}
             onOpenBook={props.onOpenBook}
             onRequestCoverOpen={props.onRequestCoverOpen}
             onStartPageDrag={props.onStartPageDrag}
+            onUpdatePageDrag={props.onUpdatePageDrag}
             onRequestPageSettle={props.onRequestPageSettle}
             callbacks={callbacks}
           />

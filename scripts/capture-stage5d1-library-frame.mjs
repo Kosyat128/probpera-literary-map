@@ -157,41 +157,104 @@ try {
     state: "selected",
     evidence: await measure(desktop),
   });
+  if (process.env.STAGE5_CAPTURE_INSPECTION === "true") {
+    const openCover = desktop.locator(".book-detail-open-cover");
+    await openCover.scrollIntoViewIfNeeded();
+    await openCover.click();
+    await desktop.waitForFunction(
+      () =>
+        document.querySelector(".book-shelf-scene")?.getAttribute(
+          "data-book-shelf-phase"
+        ) === "BOOK_OPEN",
+      undefined,
+      { timeout: 30_000 }
+    );
+    await desktop.waitForTimeout(1_200);
+    await captureFrame(
+      desktop,
+      desktopReady.frame,
+      "ru-desktop-1440x900-book-open.png"
+    );
+    evidence.checks.push({
+      case: "ru-desktop-1440x900",
+      state: "book-open",
+      evidence: await measure(desktop),
+    });
+
+    const nextPage = desktop.locator(
+      ".book-detail-page-navigation .book-detail-page-turn.is-next"
+    );
+    if (
+      process.env.STAGE5_CAPTURE_PAGE_TURN !== "false" &&
+      (await nextPage.isEnabled())
+    ) {
+      const priorPosition = await desktop
+        .locator(".book-detail-page-navigation [role='status']")
+        .textContent();
+      await nextPage.click();
+      await desktop.waitForFunction(
+        (previous) => {
+          const phase = document
+            .querySelector(".book-shelf-scene")
+            ?.getAttribute("data-book-shelf-phase");
+          const position = document.querySelector(
+            ".book-detail-page-navigation [role='status']"
+          )?.textContent;
+          return phase === "BOOK_OPEN" && position !== previous;
+        },
+        priorPosition,
+        { timeout: 30_000 }
+      );
+      await desktop.waitForTimeout(500);
+      await captureFrame(
+        desktop,
+        desktopReady.frame,
+        "ru-desktop-1440x900-page-2.png"
+      );
+      evidence.checks.push({
+        case: "ru-desktop-1440x900",
+        state: "page-2",
+        evidence: await measure(desktop),
+      });
+    }
+  }
   await desktop.close();
 
-  // A fresh browser keeps the mobile proof independent from the two desktop
-  // WebGL contexts and mirrors a real phone navigation instead of context reuse.
-  await browser.close();
-  browser = await chromium.launch(browserOptions);
+  if (process.env.STAGE5_CAPTURE_DESKTOP_ONLY !== "true") {
+    // A fresh browser keeps the mobile proof independent from the two desktop
+    // WebGL contexts and mirrors a real phone navigation instead of context reuse.
+    await browser.close();
+    browser = await chromium.launch(browserOptions);
 
-  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
-  const mobileReady = await waitForShelf(mobile);
-  // Capturing the entire tall mobile frame makes Playwright scroll it while
-  // painting. That legitimately trips the scene's IntersectionObserver and
-  // can unmount WebGL halfway through the screenshot. Keep the active scene
-  // centred and capture its real 368x480 viewport instead.
-  const mobileScene = mobile.locator(".book-shelf-scene");
-  await mobileScene.scrollIntoViewIfNeeded();
-  await mobile.waitForFunction(
-    () =>
-      document.querySelector(".book-shelf-scene")?.getAttribute(
-        "data-book-shelf-phase"
-      ) === "SHELF_IDLE" &&
-      document.querySelectorAll(".book-shelf-scene canvas").length === 1,
-    undefined,
-    { timeout: readinessTimeout }
-  );
-  await mobile.waitForTimeout(750);
-  await captureFrame(mobile, mobileScene, "ru-mobile-390x844-shelf.png");
-  evidence.checks.push({
-    case: "ru-mobile-390x844",
-    state: "idle",
-    evidence: {
-      ...(await measure(mobile)),
-      readinessMs: mobileReady.readinessMs,
-    },
-  });
-  await mobile.close();
+    const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    const mobileReady = await waitForShelf(mobile);
+    // Capturing the entire tall mobile frame makes Playwright scroll it while
+    // painting. That legitimately trips the scene's IntersectionObserver and
+    // can unmount WebGL halfway through the screenshot. Keep the active scene
+    // centred and capture its real 368x480 viewport instead.
+    const mobileScene = mobile.locator(".book-shelf-scene");
+    await mobileScene.scrollIntoViewIfNeeded();
+    await mobile.waitForFunction(
+      () =>
+        document.querySelector(".book-shelf-scene")?.getAttribute(
+          "data-book-shelf-phase"
+        ) === "SHELF_IDLE" &&
+        document.querySelectorAll(".book-shelf-scene canvas").length === 1,
+      undefined,
+      { timeout: readinessTimeout }
+    );
+    await mobile.waitForTimeout(750);
+    await captureFrame(mobile, mobileScene, "ru-mobile-390x844-shelf.png");
+    evidence.checks.push({
+      case: "ru-mobile-390x844",
+      state: "idle",
+      evidence: {
+        ...(await measure(mobile)),
+        readinessMs: mobileReady.readinessMs,
+      },
+    });
+    await mobile.close();
+  }
 
   await writeFile(
     `${outputDirectory}/qa-results.json`,
