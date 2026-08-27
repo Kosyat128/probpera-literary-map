@@ -6,6 +6,10 @@ const canvasSource = readFileSync(
   new URL("../components/BookShelfSceneCanvas.tsx", import.meta.url),
   "utf8"
 );
+const sceneSource = readFileSync(
+  new URL("../components/BookShelfScene.tsx", import.meta.url),
+  "utf8"
+);
 const rendererSource = readFileSync(
   new URL("./completeShelfRenderer.tsx", import.meta.url),
   "utf8"
@@ -14,7 +18,8 @@ const textureSource = readFileSync(
   new URL("./completeShelfTextures.ts", import.meta.url),
   "utf8"
 );
-const combinedSource = canvasSource + rendererSource + textureSource;
+const combinedSource =
+  sceneSource + canvasSource + rendererSource + textureSource;
 
 describe("Complete Shelf Canvas source contract", () => {
   it("keeps one demand-driven Canvas and no audio or remote asset loader", () => {
@@ -102,14 +107,13 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain("<meshPhysicalMaterial");
     expect(rendererSource).not.toMatch(/\bemissive(?:Map|Intensity)?=/u);
     expect(textureSource).toContain("context.clearRect(0, 0, width, height)");
-    expect(textureSource).toContain(
-      "const frontHeight = economical ? 512 : 1536"
-    );
+    expect(textureSource).toContain("const frontHeight = quality");
+    expect(textureSource).toContain("Math.trunc(quality.height)");
     expect(textureSource).toContain("const spinePhysicalWidth");
     expect(textureSource).toContain(
       "spec.dimensions.coverWidth / spec.dimensions.height"
     );
-    expect(textureSource).toContain("const widthCap = economical ? 320 : 1024");
+    expect(textureSource).toContain("const widthCap = safeMaximumHeight");
     expect(textureSource).toContain("resolveCompleteShelfCoverTextureSize");
     expect(textureSource).toContain("texture.anisotropy = anisotropy");
     expect(textureSource).toContain("economical ? 4 : 16");
@@ -142,8 +146,10 @@ describe("Complete Shelf Canvas source contract", () => {
     );
     expect(textureSource).toContain("includeFrontFoil = true");
     expect(rendererSource).toContain(
-      "createCompleteShelfArtworkTextures(spec, economical, renderFullRig)"
+      "createCompleteShelfArtworkTextures(spec, economical, renderFullRig, {"
     );
+    expect(rendererSource).toContain("height: artworkTextureHeight");
+    expect(rendererSource).toContain("anisotropy: artworkTextureAnisotropy");
     expect(rendererSource).toContain("createCompleteShelfLeatherMap");
     expect(rendererSource).toContain("createCompleteShelfLeatherSurfaceMaps");
     expect(rendererSource).toContain("const needsFullRigMaps = Boolean");
@@ -173,11 +179,13 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain("resolveCompleteShelfViewportFraming");
     expect(rendererSource).toContain("scale={sceneFraming.scale}");
     expect(rendererSource).toContain(
-      "const renderingEconomical = props.economical || size.width <= 640"
+      'const renderingEconomical = props.qualitySettings.profile === "ECONOMY"'
     );
     expect(rendererSource).toContain(
-      "completeShelfWorkingSetLimit(size.width, props.economical)"
+      "props.qualitySettings.liveBookLimit"
     );
+    expect(rendererSource).toContain("qualitySettings.pageSegments.width");
+    expect(rendererSource).toContain("qualitySettings.pageSegments.height");
     expect(rendererSource).toContain("key={entry.slotIndex}");
     expect(rendererSource).toContain("coverAssignmentGenerationRef");
     expect(rendererSource).toContain(
@@ -201,9 +209,19 @@ describe("Complete Shelf Canvas source contract", () => {
   it("uses a balanced two-sided key setup and bounded tone exposure", () => {
     expect(canvasSource.match(/<directionalLight\b/gu)).toHaveLength(2);
     expect(canvasSource).toContain("gl.toneMappingExposure = exposure");
-    expect(canvasSource).toContain("exposure={economical ? 0.96 : 0.9}");
+    expect(canvasSource).toContain('qualitySettings.profile === "HIGH"');
+    expect(canvasSource).toContain("? 0.9");
+    expect(canvasSource).toContain("? 0.93");
     expect(canvasSource).toContain("new RoomEnvironment()");
-    expect(canvasSource).toContain("scene.environmentIntensity = economical ? 0.48 : 0.72");
+    expect(canvasSource).toContain(
+      "0.38 + qualitySettings.ambientTintStrength * 0.34"
+    );
+    expect(canvasSource).toContain('"webglcontextrestored"');
+    expect(canvasSource).toContain("onTextureFailure={reportTextureFailure}");
+    expect(sceneSource).toContain("resolveBookShelfSceneQualitySettings");
+    expect(sceneSource).toContain("qualitySettings={qualitySettings}");
+    expect(sceneSource).toContain('props.onFailure("texture-error")');
+    expect(sceneSource).toContain("props.onContextRestored?.()");
     expect(canvasSource).toContain('color="#fff8ed"');
     expect(rendererSource).toContain("roughness={0.98}");
     expect(rendererSource).toContain(

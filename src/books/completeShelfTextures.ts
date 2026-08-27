@@ -332,14 +332,24 @@ export function resolveCompleteShelfCoverTextureSize({
   naturalHeight,
   coverAspectRatio,
   economical,
+  maximumHeight,
 }: {
   naturalWidth: number;
   naturalHeight: number;
   coverAspectRatio: number;
   economical: boolean;
+  maximumHeight?: number;
 }) {
   const safeAspectRatio = Math.min(0.72, Math.max(0.42, coverAspectRatio));
-  const widthCap = economical ? 320 : 1024;
+  const safeMaximumHeight =
+    typeof maximumHeight === "number" && Number.isFinite(maximumHeight)
+      ? Math.min(2048, Math.max(256, Math.trunc(maximumHeight)))
+      : null;
+  const widthCap = safeMaximumHeight
+    ? Math.max(1, Math.floor(safeMaximumHeight * safeAspectRatio))
+    : economical
+      ? 320
+      : 1024;
   // Bound the physical-board canvas by usable native pixels on both axes so
   // a small archive image is never blurred by an artificial upscale, while
   // large originals retain the high-quality 1024 px selected-book path.
@@ -761,7 +771,8 @@ function fitCompleteShelfTextBlock(
 export function createCompleteShelfArtworkTextures(
   spec: CompleteShelfBookSpec,
   economical: boolean,
-  includeFrontFoil = true
+  includeFrontFoil = true,
+  quality?: Readonly<{ height: number; anisotropy: number }>
 ): CompleteShelfArtworkTextures {
   const plan = buildCompleteShelfArtworkPlan(spec);
   const textCoverLayout =
@@ -770,7 +781,16 @@ export function createCompleteShelfArtworkTextures(
   // metal colour.  This keeps alphaMap luminance at one instead of making
   // darker copper/gold artwork accidentally translucent.
   const maskColor = "#ffffff";
-  const frontHeight = economical ? 512 : 1536;
+  const frontHeight = quality
+    ? Math.min(2048, Math.max(256, Math.trunc(quality.height)))
+    : economical
+      ? 512
+      : 1536;
+  const textureAnisotropy = quality
+    ? Math.min(16, Math.max(1, Math.trunc(quality.anisotropy)))
+    : economical
+      ? 4
+      : 12;
   const frontWidth = Math.round(
     frontHeight * (spec.dimensions.coverWidth / spec.dimensions.height)
   );
@@ -927,7 +947,7 @@ export function createCompleteShelfArtworkTextures(
             frontHeight * 0.91
           );
         }
-      }, economical ? 4 : 12);
+      }, textureAnisotropy);
   const spineGoldColor = textureColor(plan.foilColor, "#d6b261");
   const spineTextColor = resolveCompleteShelfSpineTextColor(
     plan.baseColor,
@@ -999,7 +1019,7 @@ export function createCompleteShelfArtworkTextures(
         );
       });
     },
-    economical ? 4 : 12
+    textureAnisotropy
   );
   const spineSurface = createTexture(
     spineWidth,
@@ -1086,7 +1106,7 @@ export function createCompleteShelfArtworkTextures(
       context.fillRect(0, 0, spineWidth, spineHeight);
     },
     false,
-    economical ? 4 : 16
+    textureAnisotropy
   );
   return Object.freeze({
     frontFoil,
@@ -1103,13 +1123,18 @@ export function loadCompleteShelfCoverTexture(
     baseColor,
     coverAspectRatio,
     economical,
+    maximumHeight,
+    anisotropy,
   }: {
     coverUrl: string;
     baseColor: string;
     coverAspectRatio: number;
     economical: boolean;
+    maximumHeight?: number;
+    anisotropy?: number;
   },
-  onReady: (texture: CanvasTexture) => void
+  onReady: (texture: CanvasTexture) => void,
+  onError: (reason: string) => void = () => {}
 ) {
   const normalizedUrl = normalizeCompleteShelfCoverUrl(coverUrl);
   if (
@@ -1117,6 +1142,7 @@ export function loadCompleteShelfCoverTexture(
     !isCompleteShelfCoverTextureUrlAllowed(normalizedUrl) ||
     typeof document === "undefined"
   ) {
+    if (typeof document !== "undefined") onError("cover-url-rejected");
     return () => {};
   }
   const image = document.createElement("img");
@@ -1124,12 +1150,17 @@ export function loadCompleteShelfCoverTexture(
   image.decoding = "async";
   if (/^https?:\/\//iu.test(normalizedUrl)) image.crossOrigin = "anonymous";
   image.onload = () => {
-    if (cancelled || !image.naturalWidth || !image.naturalHeight) return;
+    if (cancelled) return;
+    if (!image.naturalWidth || !image.naturalHeight) {
+      onError("cover-image-empty");
+      return;
+    }
     const { width, height } = resolveCompleteShelfCoverTextureSize({
       naturalWidth: image.naturalWidth,
       naturalHeight: image.naturalHeight,
       coverAspectRatio,
       economical,
+      maximumHeight,
     });
     const texture = createTexture(width, height, (context) => {
       context.fillStyle = textureColor(baseColor, "#27364a");
@@ -1152,15 +1183,20 @@ export function loadCompleteShelfCoverTexture(
         contain.width,
         contain.height
       );
-    }, false, economical ? 4 : 16);
-    if (!texture) return;
+    }, false, anisotropy ?? (economical ? 4 : 16));
+    if (!texture) {
+      onError("cover-texture-allocation");
+      return;
+    }
     if (cancelled) {
       texture.dispose();
       return;
     }
     onReady(texture);
   };
-  image.onerror = () => {};
+  image.onerror = () => {
+    if (!cancelled) onError("cover-image-load");
+  };
   image.src = normalizedUrl;
   return () => {
     cancelled = true;

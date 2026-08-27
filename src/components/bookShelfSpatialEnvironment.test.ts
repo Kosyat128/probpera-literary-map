@@ -23,6 +23,9 @@ describe("Stage 5D-3 spatial bookshelf environment", () => {
     expect(resolveBookShelfEnvironmentProfile(1024, false)).toBe("BALANCED");
     expect(resolveBookShelfEnvironmentProfile(640, false)).toBe("ECONOMY");
     expect(resolveBookShelfEnvironmentProfile(1800, true)).toBe("ECONOMY");
+    expect(resolveBookShelfEnvironmentProfile(640, false, "HIGH")).toBe(
+      "HIGH"
+    );
   });
 
   it("builds deterministic bounded instanced midground shelves and books", () => {

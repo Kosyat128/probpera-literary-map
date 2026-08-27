@@ -3,8 +3,9 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 import { Color, InstancedMesh, Object3D } from "three";
 
 import type { BookShelfSceneAppearance } from "./BookShelfScene";
+import type { BookShelfQualityProfile } from "../books/bookShelfQualityController";
 
-export type BookShelfEnvironmentProfile = "HIGH" | "BALANCED" | "ECONOMY";
+export type BookShelfEnvironmentProfile = BookShelfQualityProfile;
 
 type EnvironmentTransform = {
   position: readonly [number, number, number];
@@ -63,8 +64,10 @@ export const BOOK_SHELF_ENVIRONMENT_MAX_BOOK_INSTANCES =
 
 export function resolveBookShelfEnvironmentProfile(
   canvasWidth: number,
-  economical: boolean
+  economical: boolean,
+  requestedProfile?: BookShelfEnvironmentProfile
 ): BookShelfEnvironmentProfile {
+  if (requestedProfile) return requestedProfile;
   if (economical || canvasWidth <= 680) return "ECONOMY";
   if (canvasWidth <= 1360) return "BALANCED";
   return "HIGH";
@@ -204,14 +207,20 @@ function applyTransforms(
 export default function BookShelfSpatialEnvironment({
   appearance,
   economical,
+  qualityProfile,
   inspectionActive,
 }: {
   appearance: BookShelfSceneAppearance;
   economical: boolean;
+  qualityProfile?: BookShelfEnvironmentProfile;
   inspectionActive: boolean;
 }) {
   const { size, invalidate } = useThree();
-  const profile = resolveBookShelfEnvironmentProfile(size.width, economical);
+  const profile = resolveBookShelfEnvironmentProfile(
+    size.width,
+    economical,
+    qualityProfile
+  );
   const config = PROFILE_CONFIG[profile];
   const layout = useMemo(
     () => createBookShelfEnvironmentLayout(profile),

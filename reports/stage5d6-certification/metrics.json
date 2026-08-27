@@ -1,0 +1,1489 @@
+{
+  "schemaVersion": 1,
+  "certification": "STAGE_5D6_STATIC_AND_DETERMINISTIC",
+  "status": "PASS",
+  "evidence": {
+    "sourceFingerprintSha256": "798e13bb6cfc76f8746ecaa5b95b9d61036f7205dbbb1e2a81c5142cd5030751",
+    "runtime": {
+      "node": "v24.19.0",
+      "platform": "win32",
+      "architecture": "x64"
+    },
+    "limitations": [
+      "Browser, GPU, CLS, frame-time and live service-worker measurements are not claimed by this static gate."
+    ]
+  },
+  "sourceContracts": [
+    {
+      "id": "quality-profiles",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "ECONOMY profile",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "BALANCED profile",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "HIGH profile",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "quality settings resolver",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "renderer consumes profile settings",
+          "file": "src/books/completeShelfRenderer.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "texture-budgets",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "desktop 32 and mobile/economy 16 shelf textures",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "one selected high-resolution texture",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "bounded LRU trim",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "LRU touch helper",
+          "file": "src/books/bookShelfQualityController.ts",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "demand-frameloop",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "demand Canvas",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "hidden rendering pause",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "visibility lifecycle",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "always-on Canvas",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "forbidden",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "webgl-context-recovery",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "context lost listener",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "context restored listener",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "context loss fallback",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "context restored callback",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "mobile-detail-states",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "collapsed state",
+          "file": "src/books/bookShelfMobileDetail.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "half state",
+          "file": "src/books/bookShelfMobileDetail.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "expanded state",
+          "file": "src/books/bookShelfMobileDetail.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "axis lock resolver",
+          "file": "src/books/bookShelfMobileDetail.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "reduced-motion transition policy",
+          "file": "src/books/bookShelfMobileDetail.ts",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "mobile state reducer integration",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "mobile state semantic output",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "combobox-live-region",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "integrated search combobox",
+          "file": "src/components/BookShelfControls.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "listbox ownership",
+          "file": "src/components/BookShelfControls.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "active suggestion semantics",
+          "file": "src/components/BookShelfControls.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "rateable Shelf live region",
+          "file": "src/components/BookShelfFrame.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "polite/assertive live priority",
+          "file": "src/components/BookShelfFrame.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "lazy-scene-mount",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "near-viewport observer",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "bounded prefetch margin",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "direct-book activation override",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "lazy Canvas module",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "semantic loading boundary",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "no-audio",
+      "status": "PASS",
+      "checks": [
+        {
+          "label": "Shelf scene source exists",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "Shelf renderer source exists",
+          "file": "src/books/completeShelfRenderer.tsx",
+          "expectation": "required",
+          "status": "PASS"
+        },
+        {
+          "label": "audio API or asset",
+          "file": "src/components/BookArchiveSection.tsx",
+          "expectation": "forbidden",
+          "status": "PASS"
+        },
+        {
+          "label": "audio API or asset",
+          "file": "src/components/BookShelfScene.tsx",
+          "expectation": "forbidden",
+          "status": "PASS"
+        },
+        {
+          "label": "audio API or asset",
+          "file": "src/components/BookShelfSceneCanvas.tsx",
+          "expectation": "forbidden",
+          "status": "PASS"
+        },
+        {
+          "label": "audio API or asset",
+          "file": "src/books/completeShelfRenderer.tsx",
+          "expectation": "forbidden",
+          "status": "PASS"
+        },
+        {
+          "label": "audio API or asset",
+          "file": "src/books/completeShelfModel.ts",
+          "expectation": "forbidden",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "helperMetrics": {
+    "datasetSizes": [
+      1,
+      7,
+      12,
+      100,
+      1000,
+      10000
+    ],
+    "datasetLabels": [
+      "1",
+      "7",
+      "12",
+      "100",
+      "1000",
+      "current",
+      "10000"
+    ],
+    "datasets": [
+      {
+        "label": "1",
+        "source": "synthetic",
+        "logicalBooks": 1,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 1,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 1,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 0,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 1,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 0,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 1,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 1,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 0,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 1,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 0,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 1,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 1,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 0,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 1,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 0,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "7",
+        "source": "synthetic",
+        "logicalBooks": 7,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 3,
+                "anchorResolvedIndex": 3,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 6,
+                "anchorResolvedIndex": 6,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 7,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 6,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 3,
+                "anchorResolvedIndex": 3,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 6,
+                "anchorResolvedIndex": 6,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 7,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 6,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 3,
+                "anchorResolvedIndex": 3,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 6,
+                "anchorResolvedIndex": 6,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 7,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 6,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "12",
+        "source": "synthetic",
+        "logicalBooks": 12,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 12,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 5,
+                "anchorResolvedIndex": 5,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 11,
+                "anchorResolvedIndex": 11,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 12,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 11,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 12,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 5,
+                "anchorResolvedIndex": 5,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 11,
+                "anchorResolvedIndex": 11,
+                "entries": 12,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 12,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 11,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 5,
+                "anchorResolvedIndex": 5,
+                "entries": 7,
+                "firstSourceIndex": 2,
+                "lastSourceIndex": 8,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 11,
+                "anchorResolvedIndex": 11,
+                "entries": 7,
+                "firstSourceIndex": 5,
+                "lastSourceIndex": 11,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 12,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 0,
+            "evictedSelectedTextures": 11,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "100",
+        "source": "synthetic",
+        "logicalBooks": 100,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 21,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 21,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 20,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 49,
+                "anchorResolvedIndex": 49,
+                "entries": 21,
+                "firstSourceIndex": 39,
+                "lastSourceIndex": 59,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 99,
+                "anchorResolvedIndex": 99,
+                "entries": 21,
+                "firstSourceIndex": 79,
+                "lastSourceIndex": 99,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 68,
+            "evictedSelectedTextures": 99,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 13,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 13,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 12,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 49,
+                "anchorResolvedIndex": 49,
+                "entries": 13,
+                "firstSourceIndex": 43,
+                "lastSourceIndex": 55,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 99,
+                "anchorResolvedIndex": 99,
+                "entries": 13,
+                "firstSourceIndex": 87,
+                "lastSourceIndex": 99,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 68,
+            "evictedSelectedTextures": 99,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 49,
+                "anchorResolvedIndex": 49,
+                "entries": 7,
+                "firstSourceIndex": 46,
+                "lastSourceIndex": 52,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 99,
+                "anchorResolvedIndex": 99,
+                "entries": 7,
+                "firstSourceIndex": 93,
+                "lastSourceIndex": 99,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 16,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 84,
+            "evictedSelectedTextures": 99,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "1000",
+        "source": "synthetic",
+        "logicalBooks": 1000,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 21,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 21,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 20,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 499,
+                "anchorResolvedIndex": 499,
+                "entries": 21,
+                "firstSourceIndex": 489,
+                "lastSourceIndex": 509,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 999,
+                "anchorResolvedIndex": 999,
+                "entries": 21,
+                "firstSourceIndex": 979,
+                "lastSourceIndex": 999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 968,
+            "evictedSelectedTextures": 999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 13,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 13,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 12,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 499,
+                "anchorResolvedIndex": 499,
+                "entries": 13,
+                "firstSourceIndex": 493,
+                "lastSourceIndex": 505,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 999,
+                "anchorResolvedIndex": 999,
+                "entries": 13,
+                "firstSourceIndex": 987,
+                "lastSourceIndex": 999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 968,
+            "evictedSelectedTextures": 999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 499,
+                "anchorResolvedIndex": 499,
+                "entries": 7,
+                "firstSourceIndex": 496,
+                "lastSourceIndex": 502,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 999,
+                "anchorResolvedIndex": 999,
+                "entries": 7,
+                "firstSourceIndex": 993,
+                "lastSourceIndex": 999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 16,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 984,
+            "evictedSelectedTextures": 999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "current",
+        "source": "canonical-book-archive",
+        "logicalBooks": 9729,
+        "rawArchiveBooks": 9729,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 21,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 21,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 20,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4864,
+                "anchorResolvedIndex": 4864,
+                "entries": 21,
+                "firstSourceIndex": 4854,
+                "lastSourceIndex": 4874,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9728,
+                "anchorResolvedIndex": 9728,
+                "entries": 21,
+                "firstSourceIndex": 9708,
+                "lastSourceIndex": 9728,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9697,
+            "evictedSelectedTextures": 9728,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 13,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 13,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 12,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4864,
+                "anchorResolvedIndex": 4864,
+                "entries": 13,
+                "firstSourceIndex": 4858,
+                "lastSourceIndex": 4870,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9728,
+                "anchorResolvedIndex": 9728,
+                "entries": 13,
+                "firstSourceIndex": 9716,
+                "lastSourceIndex": 9728,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9697,
+            "evictedSelectedTextures": 9728,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4864,
+                "anchorResolvedIndex": 4864,
+                "entries": 7,
+                "firstSourceIndex": 4861,
+                "lastSourceIndex": 4867,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9728,
+                "anchorResolvedIndex": 9728,
+                "entries": 7,
+                "firstSourceIndex": 9722,
+                "lastSourceIndex": 9728,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 16,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9713,
+            "evictedSelectedTextures": 9728,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      },
+      {
+        "label": "10000",
+        "source": "synthetic",
+        "logicalBooks": 10000,
+        "profiles": [
+          {
+            "profile": "HIGH",
+            "resolvedProfile": "HIGH",
+            "mobile": false,
+            "liveBookLimit": 21,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 512,
+              "focused": 768,
+              "inspection": 2048
+            },
+            "maximumWorkingSet": 21,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 21,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 20,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4999,
+                "anchorResolvedIndex": 4999,
+                "entries": 21,
+                "firstSourceIndex": 4989,
+                "lastSourceIndex": 5009,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9999,
+                "anchorResolvedIndex": 9999,
+                "entries": 21,
+                "firstSourceIndex": 9979,
+                "lastSourceIndex": 9999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9968,
+            "evictedSelectedTextures": 9999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "BALANCED",
+            "resolvedProfile": "BALANCED",
+            "mobile": false,
+            "liveBookLimit": 13,
+            "textureBudgets": {
+              "shelf": 32,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 384,
+              "focused": 640,
+              "inspection": 1536
+            },
+            "maximumWorkingSet": 13,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 13,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 12,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4999,
+                "anchorResolvedIndex": 4999,
+                "entries": 13,
+                "firstSourceIndex": 4993,
+                "lastSourceIndex": 5005,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9999,
+                "anchorResolvedIndex": 9999,
+                "entries": 13,
+                "firstSourceIndex": 9987,
+                "lastSourceIndex": 9999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 32,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9968,
+            "evictedSelectedTextures": 9999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          },
+          {
+            "profile": "ECONOMY",
+            "resolvedProfile": "ECONOMY",
+            "mobile": true,
+            "liveBookLimit": 7,
+            "textureBudgets": {
+              "shelf": 16,
+              "selectedHighResolution": 1
+            },
+            "textureResolution": {
+              "neighbour": 256,
+              "focused": 512,
+              "inspection": 1024
+            },
+            "maximumWorkingSet": 7,
+            "windows": [
+              {
+                "anchorSourceIndex": 0,
+                "anchorResolvedIndex": 0,
+                "entries": 7,
+                "firstSourceIndex": 0,
+                "lastSourceIndex": 6,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 4999,
+                "anchorResolvedIndex": 4999,
+                "entries": 7,
+                "firstSourceIndex": 4996,
+                "lastSourceIndex": 5002,
+                "includesAnchor": true
+              },
+              {
+                "anchorSourceIndex": 9999,
+                "anchorResolvedIndex": 9999,
+                "entries": 7,
+                "firstSourceIndex": 9993,
+                "lastSourceIndex": 9999,
+                "includesAnchor": true
+              }
+            ],
+            "retainedShelfTextures": 16,
+            "retainedSelectedTextures": 1,
+            "evictedShelfTextures": 9984,
+            "evictedSelectedTextures": 9999,
+            "assertions": {
+              "expectedProfile": true,
+              "workingSetBounded": true,
+              "everyAnchorReachable": true,
+              "shelfTextureBudget": true,
+              "selectedTextureBudget": true
+            },
+            "status": "PASS"
+          }
+        ],
+        "status": "PASS"
+      }
+    ],
+    "currentCorpus": {
+      "rawArchiveBooks": 9729,
+      "logicalBooks": 9729,
+      "countries": 200
+    },
+    "maxima": {
+      "logicalBooks": 10000,
+      "liveWorkingSet": 21,
+      "shelfTextures": 32,
+      "selectedHighResolutionTextures": 1
+    },
+    "status": "PASS"
+  },
+  "failures": []
+}

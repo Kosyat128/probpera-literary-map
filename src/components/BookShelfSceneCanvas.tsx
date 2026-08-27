@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import {
   ACESFilmicToneMapping,
   PCFSoftShadowMap,
@@ -31,6 +31,7 @@ import type {
   BookInspectionPageDirection,
   BookInspectionSession,
 } from "../books/bookInspectionSession";
+import type { BookShelfQualitySettings } from "../books/bookShelfQualityController";
 import CompleteShelfRenderer, {
   type CompleteShelfTransitionCallbacks,
 } from "../books/completeShelfRenderer";
@@ -41,14 +42,13 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   focusedBookKey: string | null;
   selectedBookKey: string | null;
   active: boolean;
-  economical: boolean;
-  reducedMotion: boolean;
   editorialDocument: BookEditorialDocument | null;
   inspectionSession: BookInspectionSession | null;
   phase: BookShelfPhase;
   requestId: number;
   onFocusBook: (key: string) => void;
   onOpenBook: (key: string) => void;
+  qualitySettings: BookShelfQualitySettings;
   onRequestCoverOpen: (key: string) => void;
   onRequestInspectionClose: () => void;
   onCrackCover: () => void;
@@ -56,6 +56,8 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   onUpdatePageDrag: (progress: number) => void;
   onRequestPageSettle: (velocity: number) => void;
   onContextLost: () => void;
+  onContextRestored: () => void;
+  onTextureFailure: (reason: string) => void;
 };
 
 function InspectionCameraController({
@@ -194,13 +196,15 @@ function InspectionCameraController({
 function SceneLifecycle({
   dependency,
   exposure,
-  economical,
+  qualitySettings,
   onContextLost,
+  onContextRestored,
 }: {
   dependency: string;
   exposure: number;
-  economical: boolean;
+  qualitySettings: BookShelfQualitySettings;
   onContextLost: () => void;
+  onContextRestored: () => void;
 }) {
   const { gl, scene, invalidate, setFrameloop } = useThree();
 
@@ -223,7 +227,8 @@ function SceneLifecycle({
     gl.outputColorSpace = SRGBColorSpace;
     gl.shadowMap.type = PCFSoftShadowMap;
     scene.environment = environmentTarget.texture;
-    scene.environmentIntensity = economical ? 0.48 : 0.72;
+    scene.environmentIntensity =
+      0.38 + qualitySettings.ambientTintStrength * 0.34;
     invalidate();
     return () => {
       gl.toneMappingExposure = previousExposure;
@@ -235,7 +240,7 @@ function SceneLifecycle({
       environmentTarget.dispose();
       pmrem.dispose();
     };
-  }, [economical, exposure, gl, invalidate, scene]);
+  }, [exposure, gl, invalidate, qualitySettings.ambientTintStrength, scene]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -243,10 +248,33 @@ function SceneLifecycle({
       event.preventDefault();
       onContextLost();
     };
+    const handleContextRestored = () => {
+      if (
+        typeof document !== "undefined" &&
+        document.visibilityState === "hidden"
+      ) {
+        setFrameloop("never");
+      } else {
+        setFrameloop("demand");
+        invalidate();
+      }
+      onContextRestored();
+    };
     canvas.addEventListener("webglcontextlost", handleContextLost, false);
-    return () =>
+    canvas.addEventListener(
+      "webglcontextrestored",
+      handleContextRestored,
+      false
+    );
+    return () => {
       canvas.removeEventListener("webglcontextlost", handleContextLost, false);
-  }, [gl, onContextLost]);
+      canvas.removeEventListener(
+        "webglcontextrestored",
+        handleContextRestored,
+        false
+      );
+    };
+  }, [gl, invalidate, onContextLost, onContextRestored, setFrameloop]);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -311,8 +339,7 @@ export default function BookShelfSceneCanvas({
   focusedBookKey,
   selectedBookKey,
   active,
-  economical,
-  reducedMotion,
+  qualitySettings,
   editorialDocument,
   inspectionSession,
   phase,
@@ -333,6 +360,8 @@ export default function BookShelfSceneCanvas({
   onInspectionClosed,
   onShelfRestored,
   onContextLost,
+  onContextRestored,
+  onTextureFailure,
 }: BookShelfSceneCanvasProps) {
   const dependency = [
     phase,
@@ -346,13 +375,29 @@ export default function BookShelfSceneCanvas({
     appearance.intensity,
   ].join(":");
   const inspectionActive = completeShelfPhaseHasInspection(phase);
+  const dynamicShadows = qualitySettings.shadows !== "selected-contact";
+  const shadowMapSize =
+    qualitySettings.profile === "HIGH"
+      ? 2048
+      : qualitySettings.profile === "BALANCED"
+        ? 1024
+        : 512;
+  const textureFailureReportedRef = useRef(false);
+  const reportTextureFailure = useCallback(
+    (reason: string) => {
+      if (textureFailureReportedRef.current) return;
+      textureFailureReportedRef.current = true;
+      onTextureFailure(reason);
+    },
+    [onTextureFailure]
+  );
 
   return (
     <Canvas
       aria-hidden="true"
       frameloop="demand"
-      shadows={!economical}
-      dpr={economical ? 1 : [1, 2]}
+      shadows={dynamicShadows}
+      dpr={[qualitySettings.dpr[0], qualitySettings.dpr[1]]}
       camera={{
         position: [0, 0.02, 5.15],
         fov: 38,
@@ -361,11 +406,16 @@ export default function BookShelfSceneCanvas({
       }}
       gl={{
         alpha: true,
-        antialias: !economical,
+        antialias: qualitySettings.profile !== "ECONOMY",
         preserveDrawingBuffer: false,
-        powerPreference: economical ? "low-power" : "high-performance",
+        powerPreference:
+          qualitySettings.profile === "ECONOMY"
+            ? "low-power"
+            : "high-performance",
       }}
-      performance={{ min: economical ? 0.65 : 0.8 }}
+      performance={{
+        min: qualitySettings.profile === "ECONOMY" ? 0.65 : 0.8,
+      }}
       style={{ pointerEvents: active ? "auto" : "none" }}
       onPointerMissed={() => {
         if (
@@ -378,9 +428,16 @@ export default function BookShelfSceneCanvas({
     >
       <SceneLifecycle
         dependency={dependency}
-        exposure={economical ? 0.96 : 0.9}
-        economical={economical}
+        exposure={
+          qualitySettings.profile === "HIGH"
+            ? 0.9
+            : qualitySettings.profile === "BALANCED"
+              ? 0.93
+              : 0.96
+        }
+        qualitySettings={qualitySettings}
         onContextLost={onContextLost}
+        onContextRestored={onContextRestored}
       />
       <InspectionCameraController
         detailOpen={Boolean(selectedBookKey && inspectionActive)}
@@ -391,11 +448,12 @@ export default function BookShelfSceneCanvas({
           )
         )}
         itemCount={items.length}
-        reducedMotion={reducedMotion}
+        reducedMotion={qualitySettings.motion.reduced}
       />
       <BookShelfSpatialEnvironment
         appearance={appearance}
-        economical={economical}
+        economical={qualitySettings.profile === "ECONOMY"}
+        qualityProfile={qualitySettings.profile}
         inspectionActive={inspectionActive}
       />
       <hemisphereLight
@@ -406,16 +464,20 @@ export default function BookShelfSceneCanvas({
         ]}
       />
       <ambientLight
-        intensity={economical ? 0.28 : 0.12}
+        intensity={
+          qualitySettings.profile === "ECONOMY"
+            ? 0.28
+            : 0.1 + qualitySettings.ambientTintStrength * 0.04
+        }
         color="#fff8ed"
       />
       <directionalLight
         position={[-4.6, 7.4, 5.8]}
         intensity={1.42 + appearance.intensity * 0.18}
         color="#ffe8c2"
-        castShadow={!economical}
-        shadow-mapSize-width={economical ? 512 : 2048}
-        shadow-mapSize-height={economical ? 512 : 2048}
+        castShadow={dynamicShadows}
+        shadow-mapSize-width={shadowMapSize}
+        shadow-mapSize-height={shadowMapSize}
         shadow-camera-left={-6}
         shadow-camera-right={6}
         shadow-camera-top={6}
@@ -433,7 +495,7 @@ export default function BookShelfSceneCanvas({
       />
       <RakingAreaLight
         color="#ffe8c2"
-        intensity={economical ? 2.2 : 5.4}
+        intensity={2.2 + qualitySettings.ambientTintStrength * 3.2}
         width={4.8}
         height={5.6}
         position={[-3.2, 4.05, 4.6]}
@@ -441,7 +503,7 @@ export default function BookShelfSceneCanvas({
       />
       <RakingAreaLight
         color="#d5a45e"
-        intensity={economical ? 1.2 : 3.45}
+        intensity={1.2 + qualitySettings.ambientTintStrength * 2.25}
         width={1.6}
         height={4.8}
         position={[3.8, 2.15, -2.1]}
@@ -449,7 +511,7 @@ export default function BookShelfSceneCanvas({
       />
       <RakingAreaLight
         color="#ffe8c2"
-        intensity={economical ? 0.75 : 1.9}
+        intensity={0.75 + qualitySettings.ambientTintStrength * 1.15}
         width={0.9}
         height={4.6}
         position={[-4.6, 1.75, 1.1]}
@@ -457,7 +519,7 @@ export default function BookShelfSceneCanvas({
       />
       <RakingAreaLight
         color="#fff7e7"
-        intensity={economical ? 0.8 : 2.15}
+        intensity={0.8 + qualitySettings.ambientTintStrength * 1.35}
         width={1.15}
         height={3.8}
         position={[4.2, 3.35, 3.1]}
@@ -470,8 +532,7 @@ export default function BookShelfSceneCanvas({
         selectedBookKey={selectedBookKey}
         phase={phase}
         requestId={requestId}
-        economical={economical}
-        reducedMotion={reducedMotion}
+        qualitySettings={qualitySettings}
         editorialDocument={editorialDocument}
         inspectionSession={inspectionSession}
         onFocusBook={onFocusBook}
@@ -482,6 +543,7 @@ export default function BookShelfSceneCanvas({
         onStartPageDrag={onStartPageDrag}
         onUpdatePageDrag={onUpdatePageDrag}
         onRequestPageSettle={onRequestPageSettle}
+        onTextureFailure={reportTextureFailure}
         onMotionReached={onMotionReached}
         onMotionSettled={onMotionSettled}
         onInspectionEntered={onInspectionEntered}

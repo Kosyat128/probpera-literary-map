@@ -12,6 +12,14 @@ const controls = readFileSync(
   "utf8"
 );
 const scene = readFileSync(new URL("./BookShelfScene.tsx", import.meta.url), "utf8");
+const qualityController = readFileSync(
+  new URL("../books/bookShelfQualityController.ts", import.meta.url),
+  "utf8"
+);
+const mobileDetailController = readFileSync(
+  new URL("../books/bookShelfMobileDetail.ts", import.meta.url),
+  "utf8"
+);
 const loader = readFileSync(
   new URL("./BookShelfBrandLoader.tsx", import.meta.url),
   "utf8"
@@ -167,7 +175,7 @@ describe("approved Complete Shelf outer presentation", () => {
     );
   });
 
-  it("discovers across the full archive and moves the shelf in 13-book batches", () => {
+  it("discovers across the full archive while quality settings bound the live shelf", () => {
     expect(controller).toContain("candidates: queue.all");
     expect(controller).toContain("rememberRandomBookArchiveItem");
     expect(controller).toContain('t("Случайное произведение")');
@@ -175,10 +183,79 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controls).not.toMatch(
       /book-shelf-controls__random[\s\S]{0,300}aria-pressed/iu
     );
-    expect(controller).toContain("focusedIndex - COMPLETE_SHELF_MAX_WORKING_SET");
-    expect(controller).toContain("focusedIndex + COMPLETE_SHELF_MAX_WORKING_SET");
+    expect(controller).toContain(
+      "bookShelfQualityControllerSettings(qualityController)"
+    );
+    expect(controller).toContain("qualitySettings={qualitySettings}");
+    expect(controller).toMatch(
+      /qualityDispatch\(\{\s*type:\s*"degrade"\s*\}\)/u
+    );
+    expect(controller).toMatch(
+      /qualityDispatch\(\{\s*type:\s*"recover"\s*\}\)/u
+    );
+    expect(controller).toContain(
+      "onContextRestored={handleShelfContextRestored}"
+    );
+    expect(scene).toContain("qualitySettings?: BookShelfQualitySettings");
+    expect(scene).toContain("qualitySettings={qualitySettings}");
+    expect(qualityController).toContain("liveBookLimit");
+    expect(qualityController).toContain('profile === "HIGH"');
     expect(controller).toContain('t("Предыдущие 13 произведений")');
     expect(controller).toContain('t("Следующие 13 произведений")');
+  });
+
+  it("opens the focused shelf book with Enter or Space", () => {
+    expect(controller).toContain(
+      'aria-keyshortcuts="ArrowLeft ArrowRight Home End PageUp PageDown Enter Space"'
+    );
+    expect(controller).toContain(
+      'event.key === "Enter" || event.key === " "'
+    );
+    expect(controller).toContain(
+      "focusedBookKeyRef.current || filteredItems[0]?.key || null"
+    );
+    expect(controller).toContain("handleSceneOpenBook(focusedKey)");
+  });
+
+  it("integrates the deterministic mobile detail sheet without stealing horizontal shelf gestures", () => {
+    expect(mobileDetailController).toContain(
+      "bookShelfMobileDetailReducer"
+    );
+    expect(mobileDetailController).toContain(
+      'axis !== "vertical"'
+    );
+    expect(controller).toContain(
+      "createInitialBookShelfMobileDetailState(\"collapsed\", reduced)"
+    );
+    expect(controller).toContain("if (!qualitySettings.mobile) return;");
+    expect(controller).toContain(
+      'position: selectedBook ? "half" : "collapsed"'
+    );
+    expect(controller).toContain(
+      "getBookShelfMobileDetailMotion(reducedMotion)"
+    );
+    expect(controller).toContain(
+      "data-mobile-position={mobileDetailDisplayPosition}"
+    );
+    expect(controller).toContain(
+      "data-mobile-phase={mobileDetailState.phase}"
+    );
+    expect(controller).toContain(
+      "onPointerDown={handleMobileDetailPointerDown}"
+    );
+    expect(controller).toContain(
+      "onPointerMove={handleMobileDetailPointerMove}"
+    );
+    expect(controller).toContain(
+      "onPointerUp={handleMobileDetailPointerUp}"
+    );
+    expect(controller).toContain(
+      'aria-expanded={mobileDetailDisplayPosition !== "collapsed"}'
+    );
+    expect(controller).toContain(
+      "if (horizontalDirection)"
+    );
+    expect(controller).toContain("handleSceneOpenBook(nextKey)");
   });
 
   it("passes the controller-owned transition state through without local phase state", () => {
@@ -218,18 +295,28 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain("advancedFiltersOpen");
     expect(controller).toContain("pendingBookCloseRef.current");
     expect(controller).toContain("onRequestPageTurn={requestSelectedPageTurn}");
-    expect(controller).toContain("economical={economicalRendering}");
+    expect(controller).toContain("qualitySettings={qualitySettings}");
+    expect(controller).not.toContain("economical={economicalRendering}");
     expect(controller).not.toContain("economical={reducedMotion");
     expect(scene).toContain("tabIndex={-1}");
     expect(controller).toContain('if (viewMode === "shelf") return;');
     expect(controller).toContain(
       "finalizeBookDetailClose(pendingClose.returnFocus)"
     );
-    expect(controller).toContain('className="book-detail-page-turn"');
+    expect(controller).toMatch(
+      /className="book-detail-page-turn is-(?:previous|next)"/u
+    );
     expect(scene).toContain('type="button"');
   });
 
   it("retains responsive, focus, reduced-motion and forced-color fallbacks", () => {
+    const mobileStart = css.indexOf("@media (max-width: 767px)");
+    const mobileEnd = css.indexOf(
+      "@media (prefers-reduced-motion: reduce)",
+      mobileStart
+    );
+    const mobileCss = css.slice(mobileStart, mobileEnd);
+
     expect(css).toContain("@media (max-width: 1100px)");
     expect(css).toContain("@media (max-width: 767px)");
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
@@ -237,8 +324,17 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(css).toContain("animation: none !important");
     expect(css).toContain(".book-shelf-frame button:focus-visible");
     expect(css).toContain(".book-shelf-scene:focus-visible");
-    expect(css).toMatch(
-      /@media \(max-width: 767px\)[\s\S]*?\.book-shelf-frame__workspace\s*\{[\s\S]*?display:\s*flex[\s\S]*?\.book-shelf-frame__primary\s*\{[\s\S]*?order:\s*1[\s\S]*?\.book-shelf-frame__detail\s*\{[\s\S]*?position:\s*relative[\s\S]*?order:\s*2/iu
+    expect(mobileCss).toMatch(
+      /\.book-shelf-frame__workspace\s*\{[^}]*position:\s*relative[^}]*display:\s*flex[^}]*overflow:\s*hidden/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-frame__primary\s*\{[^}]*order:\s*1/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-frame__detail\s*\{[^}]*position:\s*absolute[^}]*inset:\s*auto 0 0/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-frame__detail\[data-mobile-position="collapsed"\]\s*\{[^}]*height:\s*104px/iu
     );
     expect(css).toMatch(
       /@media \(forced-colors: active\)[\s\S]*?\.book-shelf-frame__library-backdrop[\s\S]*?display:\s*none/iu

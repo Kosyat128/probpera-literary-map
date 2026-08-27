@@ -105,6 +105,20 @@ import {
   bookShelfStateReducer,
   createInitialBookShelfState,
 } from "../books/bookShelfState";
+import {
+  bookShelfMobileDetailReducer,
+  createInitialBookShelfMobileDetailState,
+  getBookShelfMobileDetailMotion,
+  type BookShelfMobileDetailPosition,
+} from "../books/bookShelfMobileDetail";
+import {
+  BOOK_SHELF_QUALITY_PROFILES,
+  bookShelfQualityControllerSettings,
+  createBookShelfQualityController,
+  reduceBookShelfQualityController,
+  type BookShelfQualityPreference,
+  type BookShelfQualitySignals,
+} from "../books/bookShelfQualityController";
 import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
 import { buildBookEditorialDocument } from "../books/bookEditorialPages";
 import {
@@ -144,6 +158,7 @@ import {
   cmsEntityMarker,
 } from "../cms/directEditBridge";
 import { normalizeLiterarySearch } from "../utils/literarySearch";
+import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import {
   BOOKS_GLOBAL_SEARCH_PROFILE,
   BOOKS_LIBRARY_SEARCH_PROFILE,
@@ -353,6 +368,41 @@ export function requestedBookKey(search: string) {
 const bookDetailHistoryStateKey = "probperaBookDetail";
 const bookDetailShelfChangedStateKey = "probperaBookDetailShelfChanged";
 const bookArchiveHistoryContextStateKey = "probperaBookArchiveContext";
+const bookShelfQualityStorageKey = "probpera-book-shelf-quality";
+
+function readBookShelfQualityPreference(): BookShelfQualityPreference {
+  if (typeof window === "undefined") return "auto";
+  const stored = readWebStorage("local", bookShelfQualityStorageKey);
+  return stored === "auto" ||
+    BOOK_SHELF_QUALITY_PROFILES.includes(
+      stored as (typeof BOOK_SHELF_QUALITY_PROFILES)[number]
+    )
+    ? (stored as BookShelfQualityPreference)
+    : "auto";
+}
+
+function collectBookShelfQualitySignals(
+  preference: BookShelfQualityPreference,
+  reducedMotion: boolean
+): BookShelfQualitySignals {
+  if (typeof window === "undefined" || typeof navigator === "undefined") {
+    return { viewportWidth: 1280, preference, reducedMotion };
+  }
+  const device = navigator as Navigator & {
+    deviceMemory?: number;
+    connection?: { saveData?: boolean };
+  };
+  return {
+    viewportWidth: window.innerWidth,
+    viewportHeight: window.innerHeight,
+    devicePixelRatio: window.devicePixelRatio,
+    deviceMemoryGb: device.deviceMemory,
+    hardwareConcurrency: device.hardwareConcurrency,
+    saveData: device.connection?.saveData === true,
+    reducedMotion,
+    preference,
+  };
+}
 
 function readInitialBookArchiveNavigationContext(): BookArchiveNavigationContext | null {
   if (typeof window === "undefined") return null;
@@ -534,7 +584,40 @@ export default function BookArchiveSection({
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
   const [shelfFailure, setShelfFailure] =
     useState<BookShelfSceneFailure | null>(null);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const [qualityPreference, setQualityPreference] =
+    useState<BookShelfQualityPreference>(readBookShelfQualityPreference);
+  const [qualityController, qualityDispatch] = useReducer(
+    reduceBookShelfQualityController,
+    { qualityPreference, reducedMotion },
+    ({ qualityPreference: preference, reducedMotion: reduced }) =>
+      createBookShelfQualityController(
+        collectBookShelfQualitySignals(preference, reduced)
+      )
+  );
+  const qualitySettings = useMemo(
+    () => bookShelfQualityControllerSettings(qualityController),
+    [qualityController]
+  );
+  const [mobileDetailState, mobileDetailDispatch] = useReducer(
+    bookShelfMobileDetailReducer,
+    reducedMotion,
+    (reduced) => createInitialBookShelfMobileDetailState("collapsed", reduced)
+  );
+  const mobileDetailGestureRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    y: number;
+    timestamp: number;
+    velocityY: number;
+  } | null>(null);
+  const mobileDetailSuppressClickRef = useRef(false);
   const archiveSectionRef = useRef<HTMLElement>(null);
   const shelfWheelRemainderRef = useRef(0);
   const shelfPointerStartRef = useRef<{
@@ -545,18 +628,6 @@ export default function BookArchiveSection({
   const [sceneNearViewport, setSceneNearViewport] = useState(
     () => typeof IntersectionObserver === "undefined"
   );
-  const economicalRendering = useMemo(() => {
-    if (typeof navigator === "undefined") return false;
-    const device = navigator as Navigator & {
-      deviceMemory?: number;
-      connection?: { saveData?: boolean };
-    };
-    return (
-      device.connection?.saveData === true ||
-      (typeof device.deviceMemory === "number" && device.deviceMemory <= 2) ||
-      (device.hardwareConcurrency > 0 && device.hardwareConcurrency <= 2)
-    );
-  }, []);
   const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(
     null
   );
@@ -1419,6 +1490,55 @@ export default function BookArchiveSection({
   }, []);
 
   useEffect(() => {
+    mobileDetailDispatch({ type: "set-reduced-motion", value: reducedMotion });
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    if (!qualitySettings.mobile) return;
+    mobileDetailDispatch({
+      type: "request-position",
+      position: selectedBook ? "half" : "collapsed",
+    });
+  }, [qualitySettings.mobile, selectedBook]);
+
+  useEffect(() => {
+    const update = () =>
+      qualityDispatch({
+        type: "signals",
+        signals: collectBookShelfQualitySignals(
+          qualityPreference,
+          reducedMotion
+        ),
+      });
+    const connection = (
+      navigator as Navigator & { connection?: EventTarget }
+    ).connection;
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    connection?.addEventListener?.("change", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      connection?.removeEventListener?.("change", update);
+    };
+  }, [qualityPreference, reducedMotion]);
+
+  const changeQualityPreference = useCallback(
+    (preference: BookShelfQualityPreference) => {
+      if (
+        preference !== "auto" &&
+        !BOOK_SHELF_QUALITY_PROFILES.includes(preference)
+      ) {
+        return;
+      }
+      if (preference === qualityPreference) return;
+      setQualityPreference(preference);
+      writeWebStorage("local", bookShelfQualityStorageKey, preference);
+      setSceneLoadGeneration((generation) => generation + 1);
+    },
+    [qualityPreference]
+  );
+
+  useEffect(() => {
     const media = window.matchMedia("(forced-colors: active)");
     const update = () => {
       setForcedColors(media.matches);
@@ -1881,6 +2001,7 @@ export default function BookArchiveSection({
     (requestId: number) => {
       shelfDispatch({ type: "motion-settled", requestId });
       if (requestId !== shelfStateRef.current.requestId) return;
+      qualityDispatch({ type: "recover" });
       setSettledThemeBookKey(focusedBookKeyRef.current);
       const pendingBook = pendingInspectionBookRef.current;
       if (
@@ -1911,6 +2032,14 @@ export default function BookArchiveSection({
       ) {
         return;
       }
+      if (event.key === "Enter" || event.key === " ") {
+        const focusedKey =
+          focusedBookKeyRef.current || filteredItems[0]?.key || null;
+        if (!focusedKey) return;
+        event.preventDefault();
+        handleSceneOpenBook(focusedKey);
+        return;
+      }
       const nextIndex = resolveBookShelfKeyboardNavigation({
         key: event.key,
         focusIndex: shelfNavigation.focusIndex,
@@ -1920,7 +2049,14 @@ export default function BookArchiveSection({
       if (nextIndex === null || nextIndex === shelfNavigation.focusIndex) return;
       event.preventDefault();
       focusBookAt(nextIndex);
-    }, [focusBookAt, navigationLocked, shelfNavigation, viewMode]
+    }, [
+      filteredItems,
+      focusBookAt,
+      handleSceneOpenBook,
+      navigationLocked,
+      shelfNavigation,
+      viewMode,
+    ]
   );
   const handleShelfWheel = useCallback(
     (event: ReactWheelEvent<HTMLDivElement>) => {
@@ -1974,6 +2110,96 @@ export default function BookArchiveSection({
       focusBookAt(shelfNavigation.focusIndex + direction);
     }, [focusBookAt, navigationLocked, shelfNavigation.focusIndex]
   );
+  const requestMobileDetailPosition = useCallback(
+    (position: BookShelfMobileDetailPosition) => {
+      mobileDetailDispatch({ type: "request-position", position });
+    },
+    []
+  );
+  const handleMobileDetailPointerDown = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      if (!qualitySettings.mobile || !event.isPrimary) return;
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+      mobileDetailSuppressClickRef.current = false;
+      mobileDetailGestureRef.current = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        y: event.clientY,
+        timestamp: event.timeStamp,
+        velocityY: 0,
+      };
+      mobileDetailDispatch({
+        type: "drag-start",
+        x: event.clientX,
+        y: event.clientY,
+      });
+    },
+    [qualitySettings.mobile]
+  );
+  const handleMobileDetailPointerMove = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      const gesture = mobileDetailGestureRef.current;
+      if (!gesture || gesture.pointerId !== event.pointerId) return;
+      const elapsed = Math.max(1, event.timeStamp - gesture.timestamp);
+      gesture.velocityY = (event.clientY - gesture.y) / elapsed;
+      gesture.y = event.clientY;
+      gesture.timestamp = event.timeStamp;
+      if (
+        Math.hypot(
+          event.clientX - gesture.startX,
+          event.clientY - gesture.startY
+        ) >= 8
+      ) {
+        mobileDetailSuppressClickRef.current = true;
+      }
+      mobileDetailDispatch({
+        type: "drag-move",
+        x: event.clientX,
+        y: event.clientY,
+      });
+      if (event.cancelable) event.preventDefault();
+    },
+    []
+  );
+  const handleMobileDetailPointerUp = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      const gesture = mobileDetailGestureRef.current;
+      if (!gesture || gesture.pointerId !== event.pointerId) return;
+      mobileDetailGestureRef.current = null;
+      mobileDetailDispatch({
+        type: "drag-move",
+        x: event.clientX,
+        y: event.clientY,
+      });
+      mobileDetailDispatch({
+        type: "drag-end",
+        velocityY: gesture.velocityY,
+      });
+      const horizontalDirection = resolveBookShelfSwipeIntent({
+        startX: gesture.startX,
+        startY: gesture.startY,
+        endX: event.clientX,
+        endY: event.clientY,
+      });
+      if (horizontalDirection) {
+        const nextIndex = clampBookShelfFocusIndex(
+          shelfNavigation.focusIndex + horizontalDirection,
+          filteredItems.length
+        );
+        const nextKey = filteredItems[nextIndex]?.key;
+        if (nextKey) handleSceneOpenBook(nextKey);
+      }
+      if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+        event.currentTarget.releasePointerCapture?.(event.pointerId);
+      }
+    },
+    [filteredItems, handleSceneOpenBook, shelfNavigation.focusIndex]
+  );
+  const cancelMobileDetailPointer = useCallback(() => {
+    mobileDetailGestureRef.current = null;
+    mobileDetailDispatch({ type: "drag-cancel" });
+  }, []);
   const openRandomWork = useCallback(
     (trigger: HTMLButtonElement) => {
       const item = chooseRandomBookArchiveItem({
@@ -2181,6 +2407,7 @@ export default function BookArchiveSection({
     (reason: BookShelfSceneFailure) => {
       const requestId = shelfState.requestId + 1;
       const pendingClose = pendingBookCloseRef.current;
+      qualityDispatch({ type: "degrade" });
       setShelfFailure(reason);
       shelfDispatch({
         type: "fail",
@@ -2197,9 +2424,14 @@ export default function BookArchiveSection({
     },
     [finalizeBookDetailClose, shelfState.requestId]
   );
+  const handleShelfContextRestored = useCallback(() => {
+    qualityDispatch({ type: "recover" });
+    setShelfFailure(null);
+  }, []);
   const handleShelfRestored = useCallback(
     (requestId: number) => {
       shelfDispatch({ type: "shelf-restored", requestId });
+      qualityDispatch({ type: "recover" });
       const pendingClose = pendingBookCloseRef.current;
       if (pendingClose?.requestId === requestId) {
         const nextBook = pendingBookSwitchRef.current;
@@ -3165,6 +3397,44 @@ export default function BookArchiveSection({
   const catalogTabLabel = compactTabLabel(t("КАТАЛОГ"));
   const activeShelfHasNoBooks =
     collectionShelfSelection.activeOption.count === 0;
+  const mobileDetailMotion = getBookShelfMobileDetailMotion(reducedMotion);
+  const mobileDetailDisplayPosition =
+    mobileDetailState.phase === "settling"
+      ? mobileDetailState.targetPosition
+      : mobileDetailState.position;
+  const mobileDetailStyle = {
+    "--book-detail-drag-offset": `${mobileDetailState.dragOffsetPx}px`,
+    "--book-detail-motion-duration": `${mobileDetailMotion.durationMs}ms`,
+    "--book-detail-motion-easing": mobileDetailMotion.easing,
+  } as CSSProperties;
+  const focusedAnnouncementItem = focusedBookKey
+    ? queueByKey.get(focusedBookKey) || null
+    : null;
+  const focusedAnnouncement = focusedAnnouncementItem
+    ? presentBookArchiveQueueItem(focusedAnnouncementItem, language)
+    : null;
+  const focusedAnnouncementWriter = focusedAnnouncementItem
+    ? selectBookWriterName(focusedAnnouncementItem.book, language, t("Автор"))
+    : "";
+  const shelfLiveMessage = randomAnnouncement
+    ? randomAnnouncement
+    : shelfFailure
+      ? t("Трёхмерная полка недоступна. Открыт безопасный каталог.")
+      : selectedBook
+        ? `${selectedBookText?.title || selectedBook.title}. ${selectedWriterName}. ${
+            shelfState.phase === "BOOK_OPEN"
+              ? language === "en"
+                ? `Page ${(inspectionSession?.pageIndex || 0) + 1} of ${inspectionSession?.pageCount || 1}`
+                : `Страница ${(inspectionSession?.pageIndex || 0) + 1} из ${inspectionSession?.pageCount || 1}`
+              : t("Открыты сведения о книге")
+          }`
+        : focusedAnnouncement
+          ? `${focusedAnnouncement.title}. ${focusedAnnouncementWriter}. ${number(
+              navigationIndex + 1
+            )} ${t("из")} ${number(navigationCount)}. ${
+              collectionShelfSelection.activeOption.title
+            }. ${number(filteredItems.length)} ${t("результатов")}.`
+          : t("В архиве нет книг по выбранным условиям");
 
   return (
     <section
@@ -3233,15 +3503,12 @@ export default function BookArchiveSection({
       <BookShelfFrame
         viewMode={viewMode}
         themeStyle={frameThemeStyle}
-        liveMessage={
-          randomAnnouncement
-            ? randomAnnouncement
-            : shelfFailure
-            ? t("Трёхмерная полка недоступна. Открыт безопасный каталог.")
-            : navigationIndex >= 0
-              ? `${number(navigationIndex + 1)} ${t("из")} ${number(navigationCount)}`
-              : t("В архиве нет книг по выбранным условиям")
-        }
+        liveMessage={shelfLiveMessage}
+        liveRegion={{
+          priority: shelfFailure ? "assertive" : "polite",
+          busy: bookCollectionSyncStatus === "syncing",
+          label: t("Состояние книжной полки"),
+        }}
       >
         <div className="book-shelf-frame__search-rail">
           <BookShelfControls
@@ -3375,6 +3642,25 @@ export default function BookArchiveSection({
                 {t("Настроить полку")}
               </button>
             ) : null}
+            <label className="book-shelf-quality-control">
+              <span>{t("Качество")}</span>
+              <select
+                value={qualityPreference}
+                onChange={(event) =>
+                  changeQualityPreference(
+                    event.currentTarget.value as BookShelfQualityPreference
+                  )
+                }
+                aria-label={t("Качество трёхмерной полки")}
+              >
+                <option value="auto">
+                  {t("Авто")} · {qualitySettings.profile}
+                </option>
+                <option value="HIGH">HIGH</option>
+                <option value="BALANCED">BALANCED</option>
+                <option value="ECONOMY">ECONOMY</option>
+              </select>
+            </label>
             <span>
               {number(filteredItems.length)} {t("произведений")}
             </span>
@@ -3412,7 +3698,62 @@ export default function BookArchiveSection({
         <div className="book-shelf-frame__workspace">
 
       {selectedBook && (
-        <aside className="book-shelf-frame__detail">
+        <aside
+          className="book-shelf-frame__detail"
+          data-mobile-position={mobileDetailDisplayPosition}
+          data-mobile-phase={mobileDetailState.phase}
+          style={mobileDetailStyle}
+          onTransitionEnd={(event) => {
+            if (
+              event.target !== event.currentTarget ||
+              mobileDetailState.phase !== "settling"
+            ) {
+              return;
+            }
+            mobileDetailDispatch({
+              type: "settled",
+              transitionId: mobileDetailState.transitionId,
+            });
+          }}
+        >
+        <button
+          className="book-detail-mobile-handle"
+          type="button"
+          aria-controls="book-archive-detail"
+          aria-expanded={mobileDetailDisplayPosition !== "collapsed"}
+          aria-label={
+            mobileDetailDisplayPosition === "expanded"
+              ? t("Свернуть сведения о книге")
+              : t("Развернуть сведения о книге")
+          }
+          onClick={() => {
+            if (mobileDetailSuppressClickRef.current) {
+              mobileDetailSuppressClickRef.current = false;
+              return;
+            }
+            requestMobileDetailPosition(
+              mobileDetailDisplayPosition === "collapsed"
+                ? "half"
+                : mobileDetailDisplayPosition === "half"
+                  ? "expanded"
+                  : "half"
+            );
+          }}
+          onPointerDown={handleMobileDetailPointerDown}
+          onPointerMove={handleMobileDetailPointerMove}
+          onPointerUp={handleMobileDetailPointerUp}
+          onPointerCancel={cancelMobileDetailPointer}
+        >
+          <span aria-hidden="true" />
+          <small>
+            {mobileDetailDisplayPosition === "collapsed"
+              ? t("Сведения о книге")
+              : mobileDetailDisplayPosition === "half"
+                ? t("Показать полностью")
+                : t("Свернуть")}
+          </small>
+          <strong>{selectedBookText?.title || selectedBook.title}</strong>
+        </button>
         <article
           ref={detailRef}
           id="book-archive-detail"
@@ -3780,7 +4121,7 @@ export default function BookArchiveSection({
               className="book-shelf-frame__scene"
               hidden={viewMode !== "shelf"}
               tabIndex={viewMode === "shelf" ? 0 : -1}
-              aria-keyshortcuts="ArrowLeft ArrowRight Home End PageUp PageDown"
+              aria-keyshortcuts="ArrowLeft ArrowRight Home End PageUp PageDown Enter Space"
               onKeyDown={handleShelfKeyDown}
               onWheel={handleShelfWheel}
               onPointerDown={handleShelfPointerDown}
@@ -3805,7 +4146,8 @@ export default function BookArchiveSection({
                   active={
                     sceneNearViewport || Boolean(selectedBook || requestedBook)
                   }
-                  economical={economicalRendering}
+                  qualitySettings={qualitySettings}
+                  economical={qualitySettings.profile === "ECONOMY"}
                   reducedMotion={reducedMotion}
                   editorialDocument={selectedEditorialDocument}
                   inspectionSession={inspectionSession}
@@ -3841,6 +4183,7 @@ export default function BookArchiveSection({
                     shelfDispatch({ type: "inspection-closed", requestId })
                   }
                   onShelfRestored={handleShelfRestored}
+                  onContextRestored={handleShelfContextRestored}
                   onFailure={handleShelfFailure}
                   sceneLabel={t("Книжный архив")}
                   loadingLabel={t("Собираем виртуальную полку…")}

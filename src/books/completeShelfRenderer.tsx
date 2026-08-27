@@ -36,16 +36,15 @@ import {
 } from "./bookInspectionTextures";
 import { sampleBookInspectionTransition } from "./bookInspectionCamera";
 import {
-  resolveBookInspectionPageGeometryPlan,
   sampleBookInspectionPageTurn,
 } from "./bookInspectionPageGeometry";
+import type { BookShelfQualitySettings } from "./bookShelfQualityController";
 import {
   buildCompleteShelfBookPose,
   buildCompleteShelfBookSpec,
   completeShelfPhaseAllowsSelectionSwitch,
   completeShelfPhaseHasInspection,
   completeShelfSettlementForPhase,
-  completeShelfWorkingSetLimit,
   layoutCompleteShelfBooks,
   resolveCompleteShelfViewportFraming,
   selectCompleteShelfWorkingSet,
@@ -95,8 +94,7 @@ export type CompleteShelfRendererProps = CompleteShelfTransitionCallbacks &
     selectedBookKey: string | null;
     phase: BookShelfPhase;
     requestId: number;
-    economical: boolean;
-    reducedMotion: boolean;
+    qualitySettings: BookShelfQualitySettings;
     editorialDocument: BookEditorialDocument | null;
     inspectionSession: BookInspectionSession | null;
     onFocusBook: (key: string) => void;
@@ -107,6 +105,7 @@ export type CompleteShelfRendererProps = CompleteShelfTransitionCallbacks &
     onStartPageDrag: (direction: BookInspectionPageDirection) => void;
     onUpdatePageDrag: (progress: number) => void;
     onRequestPageSettle: (velocity: number) => void;
+    onTextureFailure: (reason: string) => void;
   }>;
 
 function dispatchSettlement(
@@ -608,11 +607,13 @@ function CompleteShelfBook({
   editorialDocument,
   inspectionSession,
   pageTextureQuality,
+  qualitySettings,
   onOpenBook,
   onRequestCoverOpen,
   onStartPageDrag,
   onUpdatePageDrag,
   onRequestPageSettle,
+  onTextureFailure,
   callbacks,
 }: {
   layout: CompleteShelfLayoutEntry;
@@ -633,11 +634,13 @@ function CompleteShelfBook({
   editorialDocument: BookEditorialDocument | null;
   inspectionSession: BookInspectionSession | null;
   pageTextureQuality: BookInspectionTextureQuality;
+  qualitySettings: BookShelfQualitySettings;
   onOpenBook: (key: string) => void;
   onRequestCoverOpen: (key: string) => void;
   onStartPageDrag: (direction: BookInspectionPageDirection) => void;
   onUpdatePageDrag: (progress: number) => void;
   onRequestPageSettle: (velocity: number) => void;
+  onTextureFailure: (reason: string) => void;
   callbacks: CompleteShelfTransitionCallbacks;
 }) {
   const groupRef = useRef<Group>(null);
@@ -676,11 +679,8 @@ function CompleteShelfBook({
   const foreEdgeX = 0.018 + pageWidth * 0.5 + 0.002;
   const headbandY = pageHeight * 0.5 - 0.004;
   const visiblePageWidth = pageWidth - spineWidth * 0.42;
-  const pageGeometryPlan = resolveBookInspectionPageGeometryPlan(
-    pageTextureQuality
-  );
-  const pageSegmentColumns = pageGeometryPlan.widthSegments;
-  const pageSegmentRows = pageGeometryPlan.heightSegments;
+  const pageSegmentColumns = qualitySettings.pageSegments.width;
+  const pageSegmentRows = qualitySettings.pageSegments.height;
   const activePageGeometry = useMemo(() => {
     if (!renderFullRig) return null;
     const geometry = new PlaneGeometry(
@@ -894,7 +894,10 @@ function CompleteShelfBook({
     ]
   );
   const artworkSignature = [
-    economical ? "economical" : "quality",
+    qualitySettings.profile,
+    qualitySettings.textureResolution.neighbour,
+    qualitySettings.textureResolution.focused,
+    qualitySettings.textureResolution.inspection,
     spec.key,
     spec.title,
     spec.writer,
@@ -906,10 +909,45 @@ function CompleteShelfBook({
     spec.coverUrl || "",
     spec.motif,
   ].join(":");
+  const artworkTextureHeight = renderFullRig
+    ? qualitySettings.textureResolution.inspection
+    : spec.key === focusedBookKey
+      ? qualitySettings.textureResolution.focused
+      : qualitySettings.textureResolution.neighbour;
+  const artworkTextureAnisotropy =
+    qualitySettings.profile === "HIGH"
+      ? 16
+      : qualitySettings.profile === "BALANCED"
+        ? 8
+        : 4;
   const artwork = useMemo(
-    () => createCompleteShelfArtworkTextures(spec, economical, renderFullRig),
-    [artworkSignature, renderFullRig]
+    () =>
+      createCompleteShelfArtworkTextures(spec, economical, renderFullRig, {
+        height: artworkTextureHeight,
+        anisotropy: artworkTextureAnisotropy,
+      }),
+    [
+      artworkSignature,
+      artworkTextureAnisotropy,
+      artworkTextureHeight,
+      economical,
+      renderFullRig,
+      spec,
+    ]
   );
+  useEffect(() => {
+    const requiredTextures = [
+      artwork.spineFoil,
+      artwork.spineFoilEmboss,
+      artwork.spineSurface,
+      ...(renderFullRig
+        ? [artwork.frontFoil, artwork.frontFoilEmboss]
+        : []),
+    ];
+    if (requiredTextures.some((texture) => !texture)) {
+      onTextureFailure(`procedural-artwork:${spec.key}`);
+    }
+  }, [artwork, onTextureFailure, renderFullRig, spec.key]);
   useEffect(
     () => () =>
       disposeCompleteShelfTextures([
@@ -925,7 +963,8 @@ function CompleteShelfBook({
     spec.key,
     spec.coverUrl || "fallback",
     spec.baseColor,
-    economical ? "economical" : "quality",
+    qualitySettings.profile,
+    qualitySettings.textureResolution.inspection,
     renderFullRig ? "inspection" : "shelf",
     coverWidth,
     height,
@@ -960,6 +999,8 @@ function CompleteShelfBook({
         baseColor: spec.baseColor,
         coverAspectRatio: coverWidth / height,
         economical,
+        maximumHeight: qualitySettings.textureResolution.inspection,
+        anisotropy: artworkTextureAnisotropy,
       },
       (texture) => {
         if (
@@ -978,7 +1019,8 @@ function CompleteShelfBook({
         loadedCoverTextureRef.current = assignment;
         setLoadedCoverTexture(assignment);
         invalidate();
-      }
+      },
+      (reason) => onTextureFailure(`${reason}:${spec.key}`)
     );
 
     return () => {
@@ -996,6 +1038,9 @@ function CompleteShelfBook({
     economical,
     height,
     invalidate,
+    artworkTextureAnisotropy,
+    onTextureFailure,
+    qualitySettings.textureResolution.inspection,
     renderFullRig,
     spec.baseColor,
     spec.coverUrl,
@@ -1094,7 +1139,12 @@ function CompleteShelfBook({
           )
         : Promise.resolve(null),
     ]).then(([frontResource, backResource]) => {
-      if (!generation.isCurrent() || !frontResource) return;
+      if (!generation.isCurrent()) return;
+      const backRequired = Boolean(backPage && backPage !== frontPage);
+      if (!frontResource || (backRequired && !backResource)) {
+        onTextureFailure(`editorial-page:${spec.key}`);
+        return;
+      }
       const prepareTexture = (
         resource: NonNullable<typeof frontResource>,
         mirrored = false
@@ -1105,7 +1155,7 @@ function CompleteShelfBook({
         texture.colorSpace = SRGBColorSpace;
         texture.minFilter = LinearFilter;
         texture.magFilter = LinearFilter;
-        texture.anisotropy = pageTextureQuality === "HIGH" ? 8 : 4;
+        texture.anisotropy = artworkTextureAnisotropy;
         if (mirrored) {
           texture.wrapS = RepeatWrapping;
           texture.repeat.x = -1;
@@ -1124,12 +1174,18 @@ function CompleteShelfBook({
         return next;
       });
       invalidate();
+    }).catch(() => {
+      if (generation.isCurrent()) {
+        onTextureFailure(`editorial-page:${spec.key}`);
+      }
     });
     return () => generation.cancel();
   }, [
     editorialDocument,
     inspectionSession,
     invalidate,
+    artworkTextureAnisotropy,
+    onTextureFailure,
     pageTextureQuality,
     renderFullRig,
     spec.accentColor,
@@ -1871,21 +1927,22 @@ export default function CompleteShelfRenderer(
   props: CompleteShelfRendererProps
 ) {
   const { size, viewport, invalidate } = useThree();
-  const renderingEconomical = props.economical || size.width <= 640;
-  const pageTextureQuality: BookInspectionTextureQuality = renderingEconomical
-    ? "ECONOMY"
-    : size.width < 1100
-      ? "BALANCED"
-      : "HIGH";
+  const renderingEconomical = props.qualitySettings.profile === "ECONOMY";
+  const pageTextureQuality: BookInspectionTextureQuality =
+    props.qualitySettings.profile;
   const anchorKey = props.selectedBookKey || props.focusedBookKey;
   const workingSet = useMemo(
     () =>
       selectCompleteShelfWorkingSet(
         props.items,
         anchorKey,
-        completeShelfWorkingSetLimit(size.width, props.economical)
+        props.qualitySettings.liveBookLimit
       ),
-    [anchorKey, props.economical, props.items, size.width]
+    [
+      anchorKey,
+      props.items,
+      props.qualitySettings.liveBookLimit,
+    ]
   );
   const specs = useMemo(
     () =>
@@ -1950,6 +2007,36 @@ export default function CompleteShelfRenderer(
     () => createCompleteShelfWoodDetailMap(renderingEconomical),
     [renderingEconomical]
   );
+  useEffect(() => {
+    const requiredTextures = [
+      clothMap,
+      clothSurfaceMaps.normal,
+      clothSurfaceMaps.roughness,
+      leatherMap,
+      leatherSurfaceMaps.normal,
+      leatherSurfaceMaps.roughness,
+      contactShadowMap,
+      woodMap,
+      woodDetailMap,
+      ...(needsFullRigMaps
+        ? [pageEdgeMaps.fore, pageEdgeMaps.headTail]
+        : []),
+    ];
+    if (requiredTextures.some((texture) => !texture)) {
+      props.onTextureFailure("shared-shelf-texture");
+    }
+  }, [
+    clothMap,
+    clothSurfaceMaps,
+    contactShadowMap,
+    leatherMap,
+    leatherSurfaceMaps,
+    needsFullRigMaps,
+    pageEdgeMaps,
+    props.onTextureFailure,
+    woodDetailMap,
+    woodMap,
+  ]);
   useEffect(
     () => () =>
       disposeCompleteShelfTextures([
@@ -2066,7 +2153,7 @@ export default function CompleteShelfRenderer(
             selectedBookKey={props.selectedBookKey}
             reporterKey={reporterKey}
             economical={renderingEconomical}
-            reducedMotion={props.reducedMotion}
+            reducedMotion={props.qualitySettings.motion.reduced}
             bindingMap={bindingMap}
             bindingNormalMap={bindingSurfaceMaps.normal}
             bindingRoughnessMap={bindingSurfaceMaps.roughness}
@@ -2076,11 +2163,13 @@ export default function CompleteShelfRenderer(
             editorialDocument={props.editorialDocument}
             inspectionSession={props.inspectionSession}
             pageTextureQuality={pageTextureQuality}
+            qualitySettings={props.qualitySettings}
             onOpenBook={props.onOpenBook}
             onRequestCoverOpen={props.onRequestCoverOpen}
             onStartPageDrag={props.onStartPageDrag}
             onUpdatePageDrag={props.onUpdatePageDrag}
             onRequestPageSettle={props.onRequestPageSettle}
+            onTextureFailure={props.onTextureFailure}
             callbacks={callbacks}
           />
         );

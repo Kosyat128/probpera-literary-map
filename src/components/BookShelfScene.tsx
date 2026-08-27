@@ -8,6 +8,10 @@ import type {
   BookInspectionPageDirection,
   BookInspectionSession,
 } from "../books/bookInspectionSession";
+import {
+  resolveBookShelfQualitySettings,
+  type BookShelfQualitySettings,
+} from "../books/bookShelfQualityController";
 import BookShelfBrandLoader from "./BookShelfBrandLoader";
 import type { BookShelfSceneCanvasProps } from "./BookShelfSceneCanvas";
 
@@ -34,6 +38,7 @@ export type BookShelfSceneAppearance = {
 export type BookShelfSceneFailure =
   | "unsupported"
   | "context-lost"
+  | "texture-error"
   | "render-error";
 
 export type BookShelfSceneProps = {
@@ -44,6 +49,8 @@ export type BookShelfSceneProps = {
   phase: BookShelfPhase;
   requestId: number;
   active: boolean;
+  qualitySettings?: BookShelfQualitySettings;
+  /** Compatibility signals until the archive controller supplies qualitySettings. */
   economical: boolean;
   reducedMotion: boolean;
   editorialDocument: BookEditorialDocument | null;
@@ -67,6 +74,7 @@ export type BookShelfSceneProps = {
   onPageSettled: (requestId: number) => void;
   onInspectionClosed: (requestId: number) => void;
   onShelfRestored: (requestId: number) => void;
+  onContextRestored?: () => void;
   onFailure: (reason: BookShelfSceneFailure) => void;
   sceneLabel: string;
   loadingLabel: string;
@@ -75,6 +83,38 @@ export type BookShelfSceneProps = {
   pageTurnLabel?: string;
   closeInspectionLabel?: string;
 };
+
+export function resolveBookShelfSceneQualitySettings({
+  qualitySettings,
+  economical,
+  reducedMotion,
+  viewportWidth,
+  viewportHeight,
+  devicePixelRatio,
+  deviceMemoryGb,
+  hardwareConcurrency,
+}: Readonly<{
+  qualitySettings?: BookShelfQualitySettings;
+  economical: boolean;
+  reducedMotion: boolean;
+  viewportWidth: number;
+  viewportHeight?: number;
+  devicePixelRatio?: number;
+  deviceMemoryGb?: number;
+  hardwareConcurrency?: number;
+}>) {
+  if (qualitySettings) return qualitySettings;
+  return resolveBookShelfQualitySettings({
+    viewportWidth,
+    viewportHeight,
+    devicePixelRatio,
+    deviceMemoryGb,
+    hardwareConcurrency,
+    saveData: economical,
+    reducedMotion,
+    preference: economical ? "ECONOMY" : "auto",
+  });
+}
 
 const primarySceneCanvasModules = import.meta.glob<
   ComponentType<BookShelfSceneCanvasProps>
@@ -144,6 +184,25 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
     () => lazy(() => loadSceneCanvas(props.loadAttempt)),
     [props.loadAttempt]
   );
+  const qualitySettings = useMemo(() => {
+    const device =
+      typeof navigator === "undefined"
+        ? null
+        : (navigator as Navigator & { deviceMemory?: number });
+    return resolveBookShelfSceneQualitySettings({
+      qualitySettings: props.qualitySettings,
+      economical: props.economical,
+      reducedMotion: props.reducedMotion,
+      viewportWidth:
+        typeof window === "undefined" ? 1024 : Math.max(1, window.innerWidth),
+      viewportHeight:
+        typeof window === "undefined" ? undefined : window.innerHeight,
+      devicePixelRatio:
+        typeof window === "undefined" ? 1 : window.devicePixelRatio,
+      deviceMemoryGb: device?.deviceMemory,
+      hardwareConcurrency: device?.hardwareConcurrency,
+    });
+  }, [props.economical, props.qualitySettings, props.reducedMotion]);
 
   useEffect(() => {
     if (!props.active) return;
@@ -208,8 +267,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               phase={props.phase}
               requestId={props.requestId}
               active={props.active}
-              economical={props.economical}
-              reducedMotion={props.reducedMotion}
+              qualitySettings={qualitySettings}
               editorialDocument={props.editorialDocument}
               inspectionSession={props.inspectionSession}
               onFocusBook={props.onFocusBook}
@@ -228,6 +286,8 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               onInspectionClosed={props.onInspectionClosed}
               onShelfRestored={props.onShelfRestored}
               onContextLost={() => props.onFailure("context-lost")}
+              onContextRestored={() => props.onContextRestored?.()}
+              onTextureFailure={() => props.onFailure("texture-error")}
             />
           ) : (
             <BookShelfBrandLoader label={props.loadingLabel} />
