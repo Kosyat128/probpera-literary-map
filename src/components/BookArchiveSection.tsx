@@ -84,7 +84,10 @@ import {
   rememberRandomBookArchiveItem,
 } from "../books/bookArchiveDiscovery";
 import {
+  BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY,
+  BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY,
   BOOK_ARCHIVE_NAVIGATION_CONTEXT_VERSION,
+  bookArchiveArticleFocusOrigin,
   parseBookArchiveLocation,
   parseBookArchiveNavigationContext,
   readBookArchiveNavigationContext,
@@ -92,6 +95,7 @@ import {
   serializeBookArchiveNavigationContext,
   writeBookArchiveNavigationContext,
   type BookArchiveNavigationContext,
+  type BookArchiveNavigationFocusOrigin,
 } from "../books/bookArchiveLocation";
 import { COMPLETE_SHELF_CATALOG_BATCH_SIZE } from "../books/completeShelfModel";
 import {
@@ -151,13 +155,21 @@ import {
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useBookCollections } from "../hooks/useBookCollections";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
-import { articlePath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  navigateToArticle,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
 import {
   cmsCoreFieldMarker,
   cmsEntityFieldMarker,
   cmsEntityMarker,
 } from "../cms/directEditBridge";
 import { normalizeLiterarySearch } from "../utils/literarySearch";
+import {
+  commitAtlasUrlState,
+  readAtlasUrlState,
+} from "../utils/atlasUrlState";
 import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import {
   BOOKS_GLOBAL_SEARCH_PROFILE,
@@ -200,6 +212,7 @@ type Props = {
   countries: Country[];
   onBookSelect: (book: BookArchiveEntry) => void;
   requestedBook?: BookArchiveEntry | null;
+  requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
 };
 
@@ -365,9 +378,7 @@ export function requestedBookKey(search: string) {
   return parseBookArchiveLocation(search).bookKey;
 }
 
-const bookDetailHistoryStateKey = "probperaBookDetail";
 const bookDetailShelfChangedStateKey = "probperaBookDetailShelfChanged";
-const bookArchiveHistoryContextStateKey = "probperaBookArchiveContext";
 const bookShelfQualityStorageKey = "probpera-book-shelf-quality";
 
 function readBookShelfQualityPreference(): BookShelfQualityPreference {
@@ -407,8 +418,8 @@ function collectBookShelfQualitySignals(
 function readInitialBookArchiveNavigationContext(): BookArchiveNavigationContext | null {
   if (typeof window === "undefined") return null;
   const historyContext = parseBookArchiveNavigationContext(
-    typeof window.history.state?.[bookArchiveHistoryContextStateKey] === "string"
-      ? window.history.state[bookArchiveHistoryContextStateKey]
+    typeof window.history.state?.[BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY] === "string"
+      ? window.history.state[BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY]
       : null
   );
   if (historyContext) return historyContext;
@@ -446,12 +457,14 @@ function replaceBookLocation(
   const nextState: Record<string, unknown> = {
     ...(window.history.state || {}),
   };
-  const isAppOpenedDetail = Boolean(nextState[bookDetailHistoryStateKey]);
+  const isAppOpenedDetail = Boolean(
+    nextState[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY]
+  );
   if (key && (mode === "push" || isAppOpenedDetail)) {
-    nextState[bookDetailHistoryStateKey] = key;
+    nextState[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY] = key;
     if (mode === "push") delete nextState[bookDetailShelfChangedStateKey];
   } else {
-    delete nextState[bookDetailHistoryStateKey];
+    delete nextState[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY];
     delete nextState[bookDetailShelfChangedStateKey];
   }
   window.history[mode === "push" ? "pushState" : "replaceState"](
@@ -478,7 +491,7 @@ function replaceBookShelfLocation(
     ...(window.history.state || {}),
     probperaBookArchiveShelf: shelfId,
   };
-  if (nextState[bookDetailHistoryStateKey]) {
+  if (nextState[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY]) {
     nextState[bookDetailShelfChangedStateKey] = true;
   }
   window.history[mode === "push" ? "pushState" : "replaceState"](
@@ -511,6 +524,7 @@ export default function BookArchiveSection({
   countries,
   onBookSelect,
   requestedBook,
+  requestedBookReturnFocus,
   onRequestedBookHandled,
 }: Props) {
   const [initialNavigationContext] = useState(
@@ -668,6 +682,16 @@ export default function BookArchiveSection({
   const inspectionSessionRef = useRef<BookInspectionSession | null>(null);
   inspectionSessionRef.current = inspectionSession;
   const restoredNavigationContextRef = useRef(initialNavigationContext);
+  const navigationFocusOriginRef = useRef<BookArchiveNavigationFocusOrigin | null>(
+    initialNavigationContext?.focusOrigin || null
+  );
+  const [pendingNavigationFocusOrigin, setPendingNavigationFocusOrigin] =
+    useState<BookArchiveNavigationFocusOrigin | null>(
+      initialNavigationContext?.focusOrigin || null
+    );
+  const restoreInspectionOpenRef = useRef(
+    initialNavigationContext?.inspectionOpen === true
+  );
   const filteredItemsRef = useRef<readonly BookArchiveQueueItem[]>([]);
   const filterDrawerRef = useRef<HTMLElement>(null);
   const filterReturnFocusRef = useRef<HTMLElement | null>(null);
@@ -756,6 +780,15 @@ export default function BookArchiveSection({
       });
     }
     const nextBookKey = bookKey(book);
+    const restoresExactBookContext =
+      requestedBookKey(window.location.search) === nextBookKey &&
+      restoredNavigationContextRef.current?.selectedBookKey === nextBookKey;
+    if (!restoresExactBookContext) {
+      restoredNavigationContextRef.current = null;
+      navigationFocusOriginRef.current = null;
+      setPendingNavigationFocusOrigin(null);
+      restoreInspectionOpenRef.current = false;
+    }
     setFocusedBookKey(nextBookKey);
     setSettledThemeBookKey(nextBookKey);
     returnFocusRef.current = returnFocus || null;
@@ -795,8 +828,9 @@ export default function BookArchiveSection({
             ".book-shelf-navigation__current button, .book-archive-toolbar input"
           ),
         ].find(canReceiveFocus);
-        const target = reconnectedTrigger ||
-          (returnFocus && canReceiveFocus(returnFocus) ? returnFocus : fallback);
+        const exactReturnFocus =
+          returnFocus && canReceiveFocus(returnFocus) ? returnFocus : null;
+        const target = exactReturnFocus || reconnectedTrigger || fallback;
         if (!target) return;
         target.focus({ preventScroll: true });
         const targetBounds = target.getBoundingClientRect();
@@ -826,6 +860,9 @@ export default function BookArchiveSection({
     (returnFocus: HTMLElement | null) => {
       pendingBookCloseRef.current = null;
       returnFocusRef.current = null;
+      navigationFocusOriginRef.current = null;
+      setPendingNavigationFocusOrigin(null);
+      restoreInspectionOpenRef.current = false;
       setSelectedBook(null);
       setFocusedBookKey((current) =>
         current && filteredItemsRef.current.some((item) => item.key === current)
@@ -833,7 +870,7 @@ export default function BookArchiveSection({
           : filteredItemsRef.current[0]?.key || null
       );
       if (
-        window.history.state?.[bookDetailHistoryStateKey] &&
+        window.history.state?.[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY] &&
         !window.history.state?.[bookDetailShelfChangedStateKey]
       ) {
         skipNextBookPopstateRef.current = true;
@@ -1622,16 +1659,19 @@ export default function BookArchiveSection({
         event?.type === "popstate"
           ? parseBookArchiveNavigationContext(
               typeof (event as PopStateEvent).state?.[
-                bookArchiveHistoryContextStateKey
+                BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY
               ] === "string"
                 ? (event as PopStateEvent).state[
-                    bookArchiveHistoryContextStateKey
+                    BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY
                   ]
                 : null
             )
           : null;
       if (historyContext) {
         restoredNavigationContextRef.current = historyContext;
+        navigationFocusOriginRef.current = historyContext.focusOrigin;
+        setPendingNavigationFocusOrigin(historyContext.focusOrigin);
+        restoreInspectionOpenRef.current = historyContext.inspectionOpen;
         setQuery(historyContext.search.query);
         setSearchScope(historyContext.search.scope);
         setFilterState(
@@ -1711,7 +1751,7 @@ export default function BookArchiveSection({
 
   useEffect(() => {
     if (!requestedBook) return;
-    openBookDetail(requestedBook);
+    openBookDetail(requestedBook, requestedBookReturnFocus);
     onRequestedBookHandled?.();
     window.requestAnimationFrame(() => {
       document.getElementById("books")?.scrollIntoView({
@@ -1719,7 +1759,12 @@ export default function BookArchiveSection({
         block: "start",
       });
     });
-  }, [onRequestedBookHandled, openBookDetail, requestedBook]);
+  }, [
+    onRequestedBookHandled,
+    openBookDetail,
+    requestedBook,
+    requestedBookReturnFocus,
+  ]);
 
   useEffect(() => {
     if (!selectedBook) return;
@@ -2428,6 +2473,15 @@ export default function BookArchiveSection({
     qualityDispatch({ type: "recover" });
     setShelfFailure(null);
   }, []);
+  const handleInspectionEntered = useCallback((requestId: number) => {
+    shelfDispatch({ type: "inspection-entered", requestId });
+    if (!restoreInspectionOpenRef.current) return;
+    restoreInspectionOpenRef.current = false;
+    shelfDispatch({
+      type: "request-cover-open",
+      requestId: requestId + 1,
+    });
+  }, []);
   const handleShelfRestored = useCallback(
     (requestId: number) => {
       shelfDispatch({ type: "shelf-restored", requestId });
@@ -2607,7 +2661,10 @@ export default function BookArchiveSection({
     inspectionSessionRef.current = next;
     setInspectionSession(next);
   }, [selectedBook, selectedEditorialDocument]);
-  const createNavigationContext = useCallback((): BookArchiveNavigationContext => {
+  const createNavigationContext = useCallback((
+    focusOrigin: BookArchiveNavigationFocusOrigin | null =
+      navigationFocusOriginRef.current
+  ): BookArchiveNavigationContext => {
     const filters = {
       quickPreset: filterState.quickPreset,
       authorKey: filterState.authorKey,
@@ -2629,25 +2686,34 @@ export default function BookArchiveSection({
       filters,
       viewMode,
       focusedBookKey,
-      pageIndex: inspectionSession?.pageIndex || 0,
+      pageIndex: inspectionSessionRef.current?.pageIndex || 0,
       scroll: {
         x: Math.max(0, Math.round(window.scrollX)),
         y: Math.max(0, Math.round(window.scrollY)),
       },
       selectedBookKey: selectedBook ? bookKey(selectedBook) : null,
+      inspectionOpen: [
+        "COVER_OPENING",
+        "BOOK_OPEN",
+        "PAGE_DRAGGING",
+        "PAGE_SETTLING",
+      ].includes(shelfStateRef.current.phase),
+      focusOrigin,
     };
   }, [
     collectionShelfSelection.activeShelfId,
     filterState,
     focusedBookKey,
-    inspectionSession?.pageIndex,
     query,
     searchScope,
     selectedBook,
     viewMode,
   ]);
-  const persistNavigationContext = useCallback(() => {
-    const context = createNavigationContext();
+  const persistNavigationContext = useCallback((
+    focusOrigin: BookArchiveNavigationFocusOrigin | null =
+      navigationFocusOriginRef.current
+  ) => {
+    const context = createNavigationContext(focusOrigin);
     const serialized = serializeBookArchiveNavigationContext(context);
     if (!serialized) return;
     try {
@@ -2655,7 +2721,7 @@ export default function BookArchiveSection({
       window.history.replaceState(
         {
           ...(window.history.state || {}),
-          [bookArchiveHistoryContextStateKey]: serialized,
+          [BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY]: serialized,
         },
         "",
         `${window.location.pathname}${window.location.search}${window.location.hash}`
@@ -2690,6 +2756,23 @@ export default function BookArchiveSection({
     });
     return () => window.cancelAnimationFrame(frame);
   }, [initialNavigationContext]);
+  useEffect(() => {
+    if (!pendingNavigationFocusOrigin || !selectedBook) return;
+    const frame = window.requestAnimationFrame(() => {
+      const target = [
+        ...(detailRef.current?.querySelectorAll<HTMLElement>(
+          "[data-book-navigation-origin]"
+        ) || []),
+      ].find(
+        (element) =>
+          element.dataset.bookNavigationOrigin === pendingNavigationFocusOrigin
+      );
+      if (!target) return;
+      target.focus({ preventScroll: true });
+      setPendingNavigationFocusOrigin(null);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [pendingNavigationFocusOrigin, relatedArticles, selectedBook]);
   const isBookSaved = (book: BookArchiveEntry) =>
     savedReadings.some(
       (item) => item.kind === "book" && item.id === bookKey(book)
@@ -3076,20 +3159,15 @@ export default function BookArchiveSection({
           return;
         }
         case "navigate-article":
-          window.location.assign(
-            articlePath(
-              action.article.id,
-              action.article.title,
-              action.article.sectionId,
-              action.article.slug
-            )
-          );
+          persistNavigationContext();
+          navigateToArticle(action.article);
       }
     },
     [
       applyQuickFilter,
       collectionShelfSelection.options,
       openBookDetail,
+      persistNavigationContext,
       queueByKey,
       setQuery,
       smartShelves,
@@ -3999,7 +4077,24 @@ export default function BookArchiveSection({
               </button>
               <button
                 type="button"
-                onClick={() => onBookSelect(selectedBook)}
+                data-book-navigation-origin="book-author"
+                onClick={() => {
+                  navigationFocusOriginRef.current = "book-author";
+                  persistNavigationContext("book-author");
+                  const atlasState = readAtlasUrlState();
+                  if (atlasState.countryId || atlasState.writerId) {
+                    commitAtlasUrlState(
+                      {
+                        ...atlasState,
+                        countryId: null,
+                        writerId: null,
+                      },
+                      "replace",
+                      window.history.state
+                    );
+                  }
+                  onBookSelect(selectedBook);
+                }}
               >
                 {t("Открыть автора и страну")} <span>→</span>
               </button>
@@ -4088,6 +4183,19 @@ export default function BookArchiveSection({
                           article.slug
                         )}
                         key={article.id}
+                        data-book-navigation-origin={
+                          bookArchiveArticleFocusOrigin(article.id) || undefined
+                        }
+                        onClick={(event) => {
+                          if (!shouldUseClientNavigation(event)) return;
+                          const focusOrigin = bookArchiveArticleFocusOrigin(
+                            article.id
+                          );
+                          event.preventDefault();
+                          navigationFocusOriginRef.current = focusOrigin;
+                          persistNavigationContext(focusOrigin);
+                          navigateToArticle(article);
+                        }}
                       >
                         <span>
                           {article.kind === "review"
@@ -4172,9 +4280,7 @@ export default function BookArchiveSection({
                     shelfDispatch({ type: "motion-reached", requestId })
                   }
                   onMotionSettled={handleShelfMotionSettled}
-                  onInspectionEntered={(requestId) =>
-                    shelfDispatch({ type: "inspection-entered", requestId })
-                  }
+                  onInspectionEntered={handleInspectionEntered}
                   onCoverOpened={(requestId) =>
                     shelfDispatch({ type: "cover-opened", requestId })
                   }

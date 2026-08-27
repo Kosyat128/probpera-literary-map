@@ -512,7 +512,9 @@ export default function App() {
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
   const [requestedBook, setRequestedBook] =
     useState<BookArchiveEntry | null>(null);
+  const requestedBookReturnFocusRef = useRef<HTMLElement | null>(null);
   const pendingImmersiveBookRef = useRef<BookArchiveEntry | null>(null);
+  const pendingImmersiveBookFocusRef = useRef<HTMLElement | null>(null);
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
@@ -1091,9 +1093,43 @@ export default function App() {
     return verifiedBookFacts[dayNumber % verifiedBookFacts.length];
   }, []);
 
-  const openBook = useCallback((book: BookArchiveEntry) => {
+  const openBook = useCallback((
+    book: BookArchiveEntry,
+    returnFocus: HTMLElement | null = null
+  ) => {
+    requestedBookReturnFocusRef.current = returnFocus;
     setRequestedBook(book);
   }, []);
+
+  const handleRequestedBookHandled = useCallback(() => {
+    requestedBookReturnFocusRef.current = null;
+    setRequestedBook(null);
+  }, []);
+
+  const openWriterWork = useCallback(
+    (
+      countryId: string,
+      writerId: string,
+      workId: string,
+      returnFocus: HTMLElement
+    ) => {
+      const book = bookArchive.find(
+        (entry) =>
+          entry.countryId === countryId &&
+          entry.writerId === writerId &&
+          entry.id === workId
+      );
+      if (!book) return;
+      if (atlasImmersive) {
+        pendingImmersiveBookRef.current = book;
+        pendingImmersiveBookFocusRef.current = returnFocus;
+        atlasExperience.requestExit("programmatic");
+        return;
+      }
+      openBook(book, returnFocus);
+    },
+    [atlasExperience, atlasImmersive, bookArchive, openBook]
+  );
 
   const selectCountry = useCallback(
     (
@@ -1200,6 +1236,29 @@ export default function App() {
     atlasImmersive,
   ]);
 
+  const selectCalendarCountryOnly = useCallback(
+    (country: Country) => {
+      selectCountry(country, true);
+      setSelectedWriter(null);
+      setWriterFocusRequest(null);
+      commitAtlasExperienceUrlSelection(
+        {
+          filter: atlasFilter,
+          countryId: country.id,
+          writerId: null,
+        },
+        "replace"
+      );
+      focusCountryPresentation();
+    },
+    [
+      atlasFilter,
+      commitAtlasExperienceUrlSelection,
+      focusCountryPresentation,
+      selectCountry,
+    ]
+  );
+
   const selectGlobeCountry = useCallback(
     (country: Country, source?: GlobeCountrySelectionSource) => {
       selectCountry(country);
@@ -1235,6 +1294,7 @@ export default function App() {
         selectBookWriterAndCountry(result.book, false);
         if (atlasImmersive) {
           pendingImmersiveBookRef.current = result.book;
+          pendingImmersiveBookFocusRef.current = null;
           atlasExperience.requestExit("programmatic");
           return;
         }
@@ -1268,8 +1328,12 @@ export default function App() {
       return undefined;
     }
     const book = pendingImmersiveBookRef.current;
+    const returnFocus = pendingImmersiveBookFocusRef.current;
     pendingImmersiveBookRef.current = null;
-    const frame = window.requestAnimationFrame(() => openBook(book));
+    pendingImmersiveBookFocusRef.current = null;
+    const frame = window.requestAnimationFrame(() =>
+      openBook(book, returnFocus)
+    );
     return () => window.cancelAnimationFrame(frame);
   }, [atlasExperience.state.transition, atlasImmersive, openBook]);
 
@@ -2343,6 +2407,7 @@ export default function App() {
                           : undefined
                       }
                       onWriterSelect={selectPanelWriter}
+                      onWorkSelect={openWriterWork}
                       onNavigateWorld={navigateWriterBreadcrumbWorld}
                       onNavigateCountry={navigateWriterBreadcrumbCountry}
                       onShowWriterOnGlobe={showWriterOnGlobe}
@@ -2716,7 +2781,8 @@ export default function App() {
             books={bookArchive}
             countries={countryArchive}
             requestedBook={requestedBook}
-            onRequestedBookHandled={() => setRequestedBook(null)}
+            requestedBookReturnFocus={requestedBookReturnFocusRef.current}
+            onRequestedBookHandled={handleRequestedBookHandled}
             onBookSelect={selectBookWriterAndCountry}
           />
         </Suspense>
@@ -3077,7 +3143,7 @@ export default function App() {
               onCountrySelect={(country, writer) =>
                 writer
                   ? selectWriterAndFocus(country, writer)
-                  : selectCountry(country, true)
+                  : selectCalendarCountryOnly(country)
               }
             />
           </Suspense>

@@ -4,6 +4,7 @@ import { normalizeBookArchiveFilterState } from "./bookArchiveFacets";
 import {
   BOOK_ARCHIVE_NAVIGATION_CONTEXT_VERSION,
   BOOK_ARCHIVE_NAVIGATION_STORAGE_KEY,
+  bookArchiveArticleFocusOrigin,
   clearBookArchiveNavigationContext,
   createBookArchiveHistoryChange,
   parseBookArchiveLocation,
@@ -47,6 +48,8 @@ function navigationContext(): BookArchiveNavigationContext {
     pageIndex: 2,
     scroll: { x: 12.4, y: 840.7 },
     selectedBookKey: "russia:tolstoy:war-and-peace",
+    inspectionOpen: true,
+    focusOrigin: "book-article:tolstoy-review",
   };
 }
 
@@ -134,6 +137,8 @@ describe("book archive navigation session context", () => {
     expect(serialized).not.toBeNull();
     expect(serialized).toContain('"v":1');
     expect(serialized).toContain('"s":"manual:classics"');
+    expect(serialized).toContain('"j":true');
+    expect(serialized).toContain('"h":"book-article:tolstoy-review"');
     expect(serialized).not.toContain("quickPreset");
     expect(parseBookArchiveNavigationContext(serialized)).toEqual({
       ...navigationContext(),
@@ -150,6 +155,8 @@ describe("book archive navigation session context", () => {
       search: { query: "", scope: "library" },
       scroll: { x: 0, y: 0 },
       selectedBookKey: null,
+      inspectionOpen: false,
+      focusOrigin: null,
     });
     expect(parsed?.filters).toEqual(
       expect.objectContaining({
@@ -168,11 +175,21 @@ describe("book archive navigation session context", () => {
       '{"v":1,"s":"all","f":{"g":["unknown-genre"]}}',
       '{"v":1,"s":"all","b":"only:two"}',
       '{"v":1,"s":"all","y":-1}',
+      '{"v":1,"s":"all","j":"yes"}',
+      '{"v":1,"s":"all","j":false}',
+      '{"v":1,"s":"all","h":"book-article:<script>"}',
       "not-json",
     ];
     invalid.forEach((value) => {
       expect(parseBookArchiveNavigationContext(value)).toBeNull();
     });
+  });
+
+  it("normalizes stable article focus origins", () => {
+    expect(bookArchiveArticleFocusOrigin("cms-article-42")).toBe(
+      "book-article:cms-article-42"
+    );
+    expect(bookArchiveArticleFocusOrigin("<script>")).toBeNull();
   });
 
   it("reads, writes, and clears through an injected session storage", () => {

@@ -423,19 +423,35 @@ export default function LiteraryCalendar({
                 </time>
                 <div>
                   {dayEvents.slice(0, selectedDay === day ? 8 : 3).map((event) => (
-                    <button
-                      type="button"
+                    <div
                       key={`${event.country.id}-${event.writer.id}-${event.kind}`}
-                      className={`is-${event.kind}`}
-                      onClick={() => onCountrySelect?.(event.country, event.writer)}
+                      className="calendar-agenda-event"
                     >
-                      <i aria-hidden="true" />
-                      <strong>{event.title}</strong>
-                      <small>
-                        {event.detail} ·{" "}
+                      <button
+                        type="button"
+                        className={`calendar-agenda-writer is-${event.kind}`}
+                        aria-label={`${t("Писатель")}: ${event.title}`}
+                        onClick={() =>
+                          onCountrySelect?.(event.country, event.writer)
+                        }
+                      >
+                        <i aria-hidden="true" />
+                        <strong>{event.title}</strong>
+                        <small>{event.detail}</small>
+                      </button>
+                      <button
+                        type="button"
+                        className="calendar-agenda-country"
+                        aria-label={`${t("Страна")}: ${countryName(
+                          event.country.code,
+                          event.country.name
+                        )}`}
+                        onClick={() => onCountrySelect?.(event.country)}
+                      >
+                        <span>{t("Страна")}</span>
                         {countryName(event.country.code, event.country.name)}
-                      </small>
-                    </button>
+                      </button>
+                    </div>
                   ))}
                   {dayEvents.length > (selectedDay === day ? 8 : 3) && (
                     <span>

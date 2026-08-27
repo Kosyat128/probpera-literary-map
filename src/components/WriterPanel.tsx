@@ -1,4 +1,3 @@
-import { gsap } from "gsap";
 import {
   useCallback,
   useEffect,
@@ -17,7 +16,11 @@ import {
   isNobelLaureate,
 } from "../data/articles/nobelArticles";
 import type { Country, Writer } from "../data/countries";
-import { articlePath } from "../utils/articleRoutes";
+import {
+  articlePath,
+  navigateToArticle,
+  shouldUseClientNavigation,
+} from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
 import { getPublicWriterWorkTitles } from "../data/bookArchive";
 import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
@@ -47,6 +50,27 @@ import {
 } from "./writerPanelPresentation";
 
 const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`;
+const WRITER_PANEL_MOTION_MS = 280;
+const WRITER_DETAIL_MOTION_MS = 200;
+const WRITER_MOTION_EASING = "cubic-bezier(0.2, 0.72, 0.22, 1)";
+
+function animateWriterSurface(
+  element: HTMLElement,
+  keyframes: Keyframe[],
+  duration: number
+) {
+  if (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    typeof element.animate !== "function"
+  ) {
+    return null;
+  }
+  return element.animate(keyframes, {
+    duration,
+    easing: WRITER_MOTION_EASING,
+    fill: "both",
+  });
+}
 
 function FollowBellIcon({ active = false }: { active?: boolean }) {
   return (
@@ -65,6 +89,12 @@ type WriterPanelProps = {
   selectedWriter?: Writer | null;
   focusRequestId?: number;
   onWriterSelect?: (writer: Writer) => void;
+  onWorkSelect?: (
+    countryId: string,
+    writerId: string,
+    workId: string,
+    returnFocus: HTMLElement
+  ) => void;
   onShowWriterOnGlobe?: (writer: Writer) => void;
   onNavigateWorld?: () => void;
   onNavigateCountry?: () => void;
@@ -130,6 +160,7 @@ export default function WriterPanel({
   selectedWriter,
   focusRequestId,
   onWriterSelect,
+  onWorkSelect,
   onShowWriterOnGlobe,
   onNavigateWorld,
   onNavigateCountry,
@@ -175,60 +206,46 @@ export default function WriterPanel({
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    detail.focus({ preventScroll: true });
     detail.scrollIntoView({
       behavior: reducedMotion ? "auto" : "smooth",
       block: "start",
     });
-    window.setTimeout(
-      () => detail.focus({ preventScroll: true }),
-      reducedMotion ? 0 : 420
-    );
   }, []);
 
   useLayoutEffect(() => {
-    if (!panelRef.current) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const animation = gsap.fromTo(
-      panelRef.current,
-      { autoAlpha: 0, x: 42 },
-      { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", clearProps: "transform" }
+    const panel = panelRef.current;
+    if (!panel) return;
+    const animation = animateWriterSurface(
+      panel,
+      [
+        { opacity: 0, transform: "translateX(8px)" },
+        { opacity: 1, transform: "translateX(0)" },
+      ],
+      WRITER_PANEL_MOTION_MS
     );
-    return () => {
-      animation.kill();
-    };
+    return () => animation?.cancel();
   }, [country.id]);
 
   useLayoutEffect(() => {
     if (!detailRef.current || !activeWriter) return;
     const detail = detailRef.current;
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reducedMotion) {
-      if (requestedWriterId.current === activeWriter.id) {
-        requestedWriterId.current = null;
-        const frame = window.requestAnimationFrame(scrollToWriterDetail);
-        return () => window.cancelAnimationFrame(frame);
-      }
-      return;
-    }
-    const animation = gsap.fromTo(
+    const animation = animateWriterSurface(
       detail,
-      { autoAlpha: 0, y: 12 },
-      { autoAlpha: 1, y: 0, duration: 0.42, ease: "power2.out" }
+      [
+        { opacity: 0, transform: "translateY(6px)" },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      WRITER_DETAIL_MOTION_MS
     );
+    let frame: number | null = null;
     if (requestedWriterId.current === activeWriter.id) {
       requestedWriterId.current = null;
-      const frame = window.requestAnimationFrame(() => {
-        scrollToWriterDetail();
-      });
-      return () => {
-        animation.kill();
-        window.cancelAnimationFrame(frame);
-      };
+      frame = window.requestAnimationFrame(scrollToWriterDetail);
     }
     return () => {
-      animation.kill();
+      animation?.cancel();
+      if (frame !== null) window.cancelAnimationFrame(frame);
     };
   }, [activeWriter?.id, scrollToWriterDetail]);
 
@@ -346,6 +363,15 @@ export default function WriterPanel({
     [writerBiographyDisplays]
   );
   const activeWriterStatus = writerBiographyPublicStatus(activeWriterBiography);
+  const activeWriterBiographyText =
+    activeWriterBiography?.text ||
+    (language === "en"
+      ? t("Проверенный английский перевод биографии ещё готовится.")
+      : t("Расширенная биография готовится для энциклопедии."));
+  const activeWriterBiographyParagraphs = activeWriterBiographyText
+    .split(/\r?\n+/u)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
   const hasWriterWorks = activeWriterWorks.length > 0;
   const hasWriterAwards = activeWriterAwards.length > 0;
   const hasWriterSources = Boolean(
@@ -915,7 +941,7 @@ export default function WriterPanel({
                 : t("Следить за новыми материалами автора")}
             </span>
           </button>
-          <p
+          <div
             className="writer-bio"
             {...cmsEntityFieldMarker(
               "writer",
@@ -929,11 +955,12 @@ export default function WriterPanel({
               }
             )}
           >
-            {activeWriterBiography?.text ||
-              (language === "en"
-                ? t("Проверенный английский перевод биографии ещё готовится.")
-                : t("Расширенная биография готовится для энциклопедии."))}
-          </p>
+            {activeWriterBiographyParagraphs.map((paragraph, index) => (
+              <p key={`${activeWriter.id}-biography-${index}`}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
           {activeNobelYear && (
             <div className="writer-nobel-feature">
@@ -947,6 +974,11 @@ export default function WriterPanel({
                     activeNobelArticle.slug
                   )}
                   aria-label={t("Открыть статью о лауреате")}
+                  onClick={(event) => {
+                    if (!shouldUseClientNavigation(event)) return;
+                    event.preventDefault();
+                    navigateToArticle(activeNobelArticle);
+                  }}
                 >
                   <img
                     src={nobelPortraitUrl}
@@ -978,6 +1010,11 @@ export default function WriterPanel({
                       activeNobelArticle.sectionId,
                       activeNobelArticle.slug
                     )}
+                    onClick={(event) => {
+                      if (!shouldUseClientNavigation(event)) return;
+                      event.preventDefault();
+                      navigateToArticle(activeNobelArticle);
+                    }}
                   >
                     {t("Читать редакционный материал года")} <span>→</span>
                   </a>
@@ -1070,6 +1107,23 @@ export default function WriterPanel({
                                         .detail
                                     )}
                               </span>
+                              {onWorkSelect && (
+                                <button
+                                  className="writer-record-open-book"
+                                  type="button"
+                                  aria-label={`${t("Книжный архив")}: ${work.title}`}
+                                  onClick={(event) =>
+                                    onWorkSelect(
+                                      country.id,
+                                      activeWriter.id,
+                                      work.id,
+                                      event.currentTarget
+                                    )
+                                  }
+                                >
+                                  {t("Книжный архив")} <span aria-hidden="true">→</span>
+                                </button>
+                              )}
                               {work.sourceUrl && (
                                 <a
                                   href={work.sourceUrl}
@@ -1221,6 +1275,11 @@ export default function WriterPanel({
                     article.sectionId,
                     article.slug
                   )}
+                  onClick={(event) => {
+                    if (!shouldUseClientNavigation(event)) return;
+                    event.preventDefault();
+                    navigateToArticle(article);
+                  }}
                 >
                   <strong>{article.title}</strong>
                   <small>

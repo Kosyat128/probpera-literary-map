@@ -8,6 +8,15 @@ export const BOOK_ARCHIVE_SHELF_PARAM = "archiveShelf";
 export const BOOK_ARCHIVE_NAVIGATION_CONTEXT_VERSION = 1 as const;
 export const BOOK_ARCHIVE_NAVIGATION_STORAGE_KEY =
   "probpera:book-archive:navigation:v1";
+export const BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY = "probperaBookDetail";
+export const BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY =
+  "probperaBookArchiveContext";
+export const BOOK_ARCHIVE_ARTICLE_FOCUS_HISTORY_STATE_KEY =
+  "probperaArticleBookFocus";
+
+export type BookArchiveNavigationFocusOrigin =
+  | "book-author"
+  | `book-article:${string}`;
 
 export type BookArchiveLocationState = Readonly<{
   bookKey: string | null;
@@ -55,6 +64,8 @@ export type BookArchiveNavigationContext = Readonly<{
     y: number;
   }>;
   selectedBookKey: string | null;
+  inspectionOpen: boolean;
+  focusOrigin: BookArchiveNavigationFocusOrigin | null;
 }>;
 
 export type BookArchiveSessionStorage = Readonly<{
@@ -90,6 +101,8 @@ type StoredNavigationContext = Readonly<{
   i?: "catalog";
   k?: string;
   n?: number;
+  j?: true;
+  h?: BookArchiveNavigationFocusOrigin;
 }>;
 
 type MutableBookArchiveFilterInput = {
@@ -117,6 +130,8 @@ const storedContextKeys = new Set([
   "i",
   "k",
   "n",
+  "j",
+  "h",
 ]);
 const storedFilterKeys = new Set([
   "p",
@@ -232,6 +247,23 @@ export function normalizeBookArchiveBookKey(value: unknown) {
 
 export function normalizeBookArchiveShelfId(value: unknown) {
   return safeRouteId(value);
+}
+
+export function bookArchiveArticleFocusOrigin(
+  articleId: unknown
+): BookArchiveNavigationFocusOrigin | null {
+  const safeArticleId = safeRouteId(articleId);
+  return safeArticleId ? `book-article:${safeArticleId}` : null;
+}
+
+export function normalizeBookArchiveNavigationFocusOrigin(
+  value: unknown
+): BookArchiveNavigationFocusOrigin | null {
+  if (value === "book-author") return value;
+  if (typeof value !== "string" || !value.startsWith("book-article:")) {
+    return null;
+  }
+  return bookArchiveArticleFocusOrigin(value.slice("book-article:".length));
 }
 
 function singleParameter(params: URLSearchParams, name: string) {
@@ -467,6 +499,13 @@ function parseStoredContext(value: unknown): BookArchiveNavigationContext | null
   ) {
     return null;
   }
+  if (value.j !== undefined && value.j !== true) return null;
+  const inspectionOpen = value.j === true;
+  const focusOrigin =
+    value.h === undefined
+      ? null
+      : normalizeBookArchiveNavigationFocusOrigin(value.h);
+  if (value.h !== undefined && !focusOrigin) return null;
 
   return {
     version: BOOK_ARCHIVE_NAVIGATION_CONTEXT_VERSION,
@@ -478,6 +517,8 @@ function parseStoredContext(value: unknown): BookArchiveNavigationContext | null
     pageIndex,
     scroll: { x, y },
     selectedBookKey,
+    inspectionOpen,
+    focusOrigin,
   };
 }
 
@@ -510,6 +551,10 @@ export function serializeBookArchiveNavigationContext(
     : null;
   const viewMode = context.viewMode;
   const pageIndex = context.pageIndex;
+  const inspectionOpen = context.inspectionOpen;
+  const focusOrigin = context.focusOrigin
+    ? normalizeBookArchiveNavigationFocusOrigin(context.focusOrigin)
+    : null;
   if (
     !shelfId ||
     query === null ||
@@ -522,7 +567,9 @@ export function serializeBookArchiveNavigationContext(
     (viewMode !== "shelf" && viewMode !== "catalog") ||
     !Number.isSafeInteger(pageIndex) ||
     pageIndex < 0 ||
-    pageIndex > 10_000
+    pageIndex > 10_000 ||
+    typeof inspectionOpen !== "boolean" ||
+    (context.focusOrigin !== null && !focusOrigin)
   ) {
     return null;
   }
@@ -539,6 +586,8 @@ export function serializeBookArchiveNavigationContext(
     ...(viewMode === "catalog" ? { i: viewMode } : {}),
     ...(focusedBookKey ? { k: focusedBookKey } : {}),
     ...(pageIndex ? { n: pageIndex } : {}),
+    ...(inspectionOpen ? { j: true } : {}),
+    ...(focusOrigin ? { h: focusOrigin } : {}),
   };
   return JSON.stringify(stored);
 }

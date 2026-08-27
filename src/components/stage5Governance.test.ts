@@ -225,6 +225,7 @@ const languageControl = parseSource(
   "src/components/InterfaceLanguageControl.tsx"
 );
 const bookArchive = parseSource("src/components/BookArchiveSection.tsx");
+const bookArchiveLocation = parseSource("src/books/bookArchiveLocation.ts");
 const literaryGlobe = parseSource("src/components/LiteraryGlobe.tsx");
 
 describe("Stage 5A governance baseline", () => {
@@ -310,7 +311,7 @@ describe("Stage 5A governance baseline", () => {
       expect.arrayContaining([
         "filterState",
         "query",
-        "activeCollectionId",
+        "activeShelfId",
         "visibleCount",
         "searchScope",
         "focusedBookKey",
@@ -319,7 +320,10 @@ describe("Stage 5A governance baseline", () => {
         "relatedArticlesLoading",
       ])
     );
-    expect(bookArchive.text).toContain('const [query, setQuery] = useState("")');
+    expect(bookArchive.text).toContain("const [query, setQuery] = useState(");
+    expect(bookArchive.text).toContain(
+      'initialNavigationContext?.search.query || ""'
+    );
     expect(bookArchive.text).toContain(
       "const viewMode = shelfState.effectiveViewMode"
     );
@@ -350,7 +354,10 @@ describe("Stage 5A governance baseline", () => {
   });
 
   it("keeps one Book Archive URL/history owner and the canonical RU/EN path", () => {
-    const archiveStrings = stringLiterals(bookArchive.sourceFile);
+    const archiveStrings = new Set([
+      ...stringLiterals(bookArchive.sourceFile),
+      ...stringLiterals(bookArchiveLocation.sourceFile),
+    ]);
     expect([...archiveStrings]).toEqual(
       expect.arrayContaining([
         "book",
@@ -365,8 +372,8 @@ describe("Stage 5A governance baseline", () => {
         "en",
       ])
     );
-    expect(bookArchive.text.match(/searchParams\.set\(\s*["']book["']/gu)).toHaveLength(1);
-    expect(bookArchive.text.match(/searchParams\.delete\(\s*["']book["']/gu)).toHaveLength(1);
+    expect(bookArchiveLocation.text).toContain("params.set(name, safeValue)");
+    expect(bookArchiveLocation.text).toContain("params.delete(name)");
     expect(bookArchive.text.match(/addEventListener\(\s*["']popstate["']/gu)).toHaveLength(2);
     expect(bookArchive.text).toContain("window.history.back()");
 

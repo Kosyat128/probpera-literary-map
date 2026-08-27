@@ -6,6 +6,10 @@ const panelSource = readFileSync(
   "utf8"
 );
 const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
+const bookArchiveSource = readFileSync(
+  new URL("./BookArchiveSection.tsx", import.meta.url),
+  "utf8"
+);
 const globeSource = readFileSync(
   new URL("./LiteraryGlobe.tsx", import.meta.url),
   "utf8"
@@ -42,6 +46,44 @@ describe("writer panel accessible relationships", () => {
     expect(panelSource).toContain('rel="noreferrer"');
     expect(panelSource).toContain('t("Открыть источник")');
     expect(panelSource).not.toContain("activeWriterWorks.slice(0, 8)");
+  });
+
+  it("opens every published work through an exact archive relation", () => {
+    expect(panelSource).toContain("onWorkSelect?: (");
+    expect(panelSource).toContain('className="writer-record-open-book"');
+    expect(panelSource).toContain("onWorkSelect(");
+    expect(panelSource).toContain("country.id,");
+    expect(panelSource).toContain("activeWriter.id,");
+    expect(panelSource).toContain("work.id");
+    expect(panelSource).toContain("event.currentTarget");
+
+    const transition = appSource.slice(
+      appSource.indexOf("const openWriterWork"),
+      appSource.indexOf("const selectCountry")
+    );
+    expect(transition).toContain("bookArchive.find");
+    expect(transition).toContain("entry.countryId === countryId");
+    expect(transition).toContain("entry.writerId === writerId");
+    expect(transition).toContain("entry.id === workId");
+    expect(transition).toContain("openBook(book, returnFocus)");
+    expect(transition).toContain("pendingImmersiveBookFocusRef.current = returnFocus");
+    expect(transition).toContain('atlasExperience.requestExit("programmatic")');
+    expect(appSource).toContain("onWorkSelect={openWriterWork}");
+    expect(appSource).toContain(
+      "requestedBookReturnFocus={requestedBookReturnFocusRef.current}"
+    );
+    expect(bookArchiveSource).toContain(
+      "openBookDetail(requestedBook, requestedBookReturnFocus)"
+    );
+    expect(bookArchiveSource).toContain(
+      "const target = exactReturnFocus || reconnectedTrigger || fallback"
+    );
+  });
+
+  it("keeps article hrefs while intercepting only ordinary clicks", () => {
+    expect(panelSource.match(/shouldUseClientNavigation\(event\)/gu)).toHaveLength(3);
+    expect(panelSource.match(/navigateToArticle\(/gu)).toHaveLength(3);
+    expect(panelSource.match(/event\.preventDefault\(\)/gu)?.length).toBeGreaterThanOrEqual(3);
   });
 
   it("exposes a semantic breadcrumb and explicit globe actions", () => {
