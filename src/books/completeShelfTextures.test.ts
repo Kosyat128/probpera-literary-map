@@ -6,7 +6,9 @@ import {
   buildCompleteShelfArtworkPlan,
   createCompleteShelfArtworkTextures,
   disposeCompleteShelfTextures,
+  isCompleteShelfCoverTextureUrlAllowed,
   loadCompleteShelfCoverTexture,
+  resolveCompleteShelfCoverContainRect,
   resolveCompleteShelfSpineTextColor,
   resolveCompleteShelfSpineOrnamentLayout,
   resolveCompleteShelfCoverTextureSize,
@@ -47,6 +49,28 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(plan.foilColor).toMatch(/^#[0-9a-f]{6}$/iu);
     expect(plan.foilColor).not.toBe("#b87333");
     expect(plan.hasCoverArtwork).toBe(true);
+  });
+
+  it("provides eight deterministic premium text-cover compositions", () => {
+    const layouts = new Set(
+      Array.from({ length: 256 }, (_, index) =>
+        buildCompleteShelfArtworkPlan(
+          buildCompleteShelfBookSpec(
+            {
+              key: `layout-${index}`,
+              title: `Произведение ${index}`,
+              writer: "Автор Архива",
+              baseColor: "#3f244d",
+              accentColor: "#d8b568",
+              paperColor: "#e8dcc4",
+            },
+            index
+          )
+        ).textCoverLayout
+      )
+    );
+
+    expect(layouts).toEqual(new Set([0, 1, 2, 3, 4, 5, 6, 7]));
   });
 
   it("bounds long artwork text and marks truncation", () => {
@@ -243,6 +267,58 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(large).toMatchObject({ width: 1024, height: 1706 });
     expect(economical).toMatchObject({ width: 320, height: 533 });
   });
+
+  it("contains the complete source cover without crop, stretch, or upscale", () => {
+    const portrait = resolveCompleteShelfCoverContainRect({
+      naturalWidth: 1200,
+      naturalHeight: 1200,
+      targetWidth: 600,
+      targetHeight: 1000,
+    });
+    const narrow = resolveCompleteShelfCoverContainRect({
+      naturalWidth: 300,
+      naturalHeight: 900,
+      targetWidth: 600,
+      targetHeight: 1000,
+    });
+
+    expect(portrait).toEqual({ x: 0, y: 200, width: 600, height: 600 });
+    expect(narrow).toEqual({ x: 150, y: 50, width: 300, height: 900 });
+    expect(narrow.width / narrow.height).toBeCloseTo(1 / 3, 8);
+  });
+
+  it("allows site-owned cover assets and fails closed across origins", () => {
+    const origin = "https://probapera.example";
+
+    expect(
+      isCompleteShelfCoverTextureUrlAllowed(
+        "/brand/book-covers/archive.webp",
+        origin
+      )
+    ).toBe(true);
+    expect(
+      isCompleteShelfCoverTextureUrlAllowed(
+        "https://probapera.example/brand/book-covers/archive.webp",
+        origin
+      )
+    ).toBe(true);
+    expect(
+      isCompleteShelfCoverTextureUrlAllowed(
+        "https://cdn.example/archive.webp",
+        origin
+      )
+    ).toBe(false);
+    expect(
+      isCompleteShelfCoverTextureUrlAllowed(
+        "https://user:secret@probapera.example/archive.webp",
+        origin
+      )
+    ).toBe(false);
+    expect(
+      isCompleteShelfCoverTextureUrlAllowed("ftp://probapera.example/a.webp", origin)
+    ).toBe(false);
+  });
+
   it("exposes only split transparent foil maps and disposes both", () => {
     const spec = buildCompleteShelfBookSpec(
       {

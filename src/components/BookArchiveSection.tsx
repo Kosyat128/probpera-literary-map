@@ -7,6 +7,9 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+  type WheelEvent as ReactWheelEvent,
 } from "react";
 
 import { createPortal } from "react-dom";
@@ -70,11 +73,19 @@ import {
   chooseRandomBookArchiveItem,
   rememberRandomBookArchiveItem,
 } from "../books/bookArchiveDiscovery";
-import { COMPLETE_SHELF_MAX_WORKING_SET } from "../books/completeShelfModel";
+import { COMPLETE_SHELF_CATALOG_BATCH_SIZE } from "../books/completeShelfModel";
+import {
+  accumulateBookShelfWheelIntent,
+  clampBookShelfFocusIndex,
+  getBookShelfNavigationState,
+  resolveBookShelfKeyboardNavigation,
+  resolveBookShelfSwipeIntent,
+} from "../books/bookShelfNavigation";
 import {
   bookShelfStateReducer,
   createInitialBookShelfState,
 } from "../books/bookShelfState";
+import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
 import {
   bookSceneThemeCssProperties,
   bookSceneThemeForArchetype,
@@ -120,6 +131,7 @@ import BookShelfControls, {
   type BookShelfViewMode,
 } from "./BookShelfControls";
 import BookShelfFrame from "./BookShelfFrame";
+import BookShelfProgressRail from "./BookShelfProgressRail";
 import BookShelfScene, {
   type BookShelfSceneAppearance,
   type BookShelfSceneFailure,
@@ -359,7 +371,7 @@ export default function BookArchiveSection({
   const [smartShelfStatus, setSmartShelfStatus] = useState("");
   const [activeCollectionId, setActiveCollectionId] = useState("all");
   const [visibleCount, setVisibleCount] = useState(
-    COMPLETE_SHELF_MAX_WORKING_SET
+    COMPLETE_SHELF_CATALOG_BATCH_SIZE
   );
   const [forcedColors, setForcedColors] = useState(
     () =>
@@ -391,6 +403,9 @@ export default function BookArchiveSection({
   const [searchScope, setSearchScope] =
     useState<BookShelfSearchScope>("library");
   const [focusedBookKey, setFocusedBookKey] = useState<string | null>(null);
+  const [settledThemeBookKey, setSettledThemeBookKey] = useState<string | null>(
+    null
+  );
   const [randomAnnouncement, setRandomAnnouncement] = useState("");
   const randomBookHistoryRef = useRef<string[]>([]);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
@@ -398,6 +413,12 @@ export default function BookArchiveSection({
     useState<BookShelfSceneFailure | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const archiveSectionRef = useRef<HTMLElement>(null);
+  const shelfWheelRemainderRef = useRef(0);
+  const shelfPointerStartRef = useRef<{
+    pointerId: number;
+    x: number;
+    y: number;
+  } | null>(null);
   const [sceneNearViewport, setSceneNearViewport] = useState(
     () => typeof IntersectionObserver === "undefined"
   );
@@ -428,6 +449,8 @@ export default function BookArchiveSection({
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const shelfStateRef = useRef(shelfState);
   shelfStateRef.current = shelfState;
+  const focusedBookKeyRef = useRef<string | null>(focusedBookKey);
+  focusedBookKeyRef.current = focusedBookKey;
   const selectedBookRef = useRef<BookArchiveEntry | null>(selectedBook);
   selectedBookRef.current = selectedBook;
   const actualViewModeRef = useRef<BookShelfViewMode>(viewMode);
@@ -517,7 +540,9 @@ export default function BookArchiveSection({
         requestId: currentShelfState.requestId + 1,
       });
     }
-    setFocusedBookKey(bookKey(book));
+    const nextBookKey = bookKey(book);
+    setFocusedBookKey(nextBookKey);
+    setSettledThemeBookKey(nextBookKey);
     returnFocusRef.current = returnFocus || null;
     selectedBookRef.current = book;
     setSelectedBook(book);
@@ -1005,8 +1030,14 @@ export default function BookArchiveSection({
   filteredItemsRef.current = filteredItems;
 
   useEffect(() => {
-    setVisibleCount(COMPLETE_SHELF_MAX_WORKING_SET);
+    setVisibleCount(COMPLETE_SHELF_CATALOG_BATCH_SIZE);
   }, [deferredQuery, filterState]);
+
+  useEffect(() => {
+    if (shelfState.phase === "SHELF_IDLE") {
+      setSettledThemeBookKey(focusedBookKey);
+    }
+  }, [focusedBookKey, shelfState.phase]);
 
   useEffect(() => {
     if (searchScope !== "global") return;
@@ -1277,8 +1308,10 @@ export default function BookArchiveSection({
     () =>
       sceneQueueItems.map((item) => {
         const displayed = presentBookArchiveQueueItem(item, language);
+        const audienceIds = facetIndex.byKey.get(item.key)?.audienceIds;
+        const hasRealCover = isCoverArtworkDisplayAllowed(item.book);
         const theme = resolveBookSceneTheme(item.book, {
-          audienceIds: facetIndex.byKey.get(item.key)?.audienceIds,
+          audienceIds,
           ownerOverride: sceneOwnerOverride,
         });
         return {
@@ -1293,9 +1326,16 @@ export default function BookArchiveSection({
             item.status === "verified" && item.book.firstPublished
               ? item.book.firstPublished
               : undefined,
-          coverUrl: isCoverArtworkDisplayAllowed(item.book)
+          coverUrl: hasRealCover
             ? resolveCoverUrl(item.book.coverUrl)
             : undefined,
+          presentationProfile: resolveBookShelfPresentationProfile({
+            bookKey: item.key,
+            firstPublished:
+              item.status === "verified" ? item.book.firstPublished : null,
+            audienceIds,
+            hasRealCover,
+          }),
           baseColor: theme.baseColor,
           accentColor: theme.accentColor,
           paperColor: theme.paperColor,
@@ -1305,7 +1345,7 @@ export default function BookArchiveSection({
   );
   const focusedSceneTheme = useMemo(() => {
     const focusedItem =
-      (focusedBookKey && queueByKey.get(focusedBookKey)) ||
+      (settledThemeBookKey && queueByKey.get(settledThemeBookKey)) ||
       filteredItems[0] ||
       null;
     return focusedItem
@@ -1319,9 +1359,9 @@ export default function BookArchiveSection({
   }, [
     facetIndex,
     filteredItems,
-    focusedBookKey,
     queueByKey,
     sceneOwnerOverride,
+    settledThemeBookKey,
   ]);
   const sceneCssProperties = useMemo(
     () => bookArchiveSceneCssProperties(sceneSettings),
@@ -1362,6 +1402,15 @@ export default function BookArchiveSection({
   const navigationLocked =
     Boolean(selectedBook) ||
     (viewMode === "shelf" && shelfState.phase !== "SHELF_IDLE");
+  const shelfNavigation = useMemo(
+    () =>
+      getBookShelfNavigationState(
+        focusedIndex >= 0 ? focusedIndex : 0,
+        filteredItems.length,
+        COMPLETE_SHELF_CATALOG_BATCH_SIZE
+      ),
+    [filteredItems.length, focusedIndex]
+  );
   const requestFocusBook = useCallback(
     (key: string) => {
       if (!key || key === focusedBookKey) return;
@@ -1390,12 +1439,92 @@ export default function BookArchiveSection({
   const focusBookAt = useCallback(
     (index: number) => {
       if (!filteredItems.length) return;
-      const normalized =
-        (index + filteredItems.length) % filteredItems.length;
-      const key = filteredItems[normalized]?.key;
+      const normalized = clampBookShelfFocusIndex(index, filteredItems.length);
+      const key = normalized >= 0 ? filteredItems[normalized]?.key : null;
       if (key) requestFocusBook(key);
     },
     [filteredItems, requestFocusBook]
+  );
+  const handleShelfKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (
+        navigationLocked ||
+        viewMode !== "shelf" ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey
+      ) {
+        return;
+      }
+      const target = event.target as HTMLElement;
+      if (
+        target !== event.currentTarget &&
+        /^(?:A|BUTTON|INPUT|SELECT|TEXTAREA)$/u.test(target.tagName)
+      ) {
+        return;
+      }
+      const nextIndex = resolveBookShelfKeyboardNavigation({
+        key: event.key,
+        focusIndex: shelfNavigation.focusIndex,
+        total: shelfNavigation.total,
+        pageSize: COMPLETE_SHELF_CATALOG_BATCH_SIZE,
+      });
+      if (nextIndex === null || nextIndex === shelfNavigation.focusIndex) return;
+      event.preventDefault();
+      focusBookAt(nextIndex);
+    }, [focusBookAt, navigationLocked, shelfNavigation, viewMode]
+  );
+  const handleShelfWheel = useCallback(
+    (event: ReactWheelEvent<HTMLDivElement>) => {
+      if (navigationLocked || viewMode !== "shelf") return;
+      const intent = accumulateBookShelfWheelIntent(
+        shelfWheelRemainderRef.current,
+        event,
+        { threshold: 32 }
+      );
+      shelfWheelRemainderRef.current = intent.remainder;
+      if (!intent.direction) return;
+      const nextIndex =
+        intent.direction > 0
+          ? shelfNavigation.nextIndex
+          : shelfNavigation.previousIndex;
+      if (nextIndex === shelfNavigation.focusIndex) return;
+      event.preventDefault();
+      focusBookAt(nextIndex);
+    }, [focusBookAt, navigationLocked, shelfNavigation, viewMode]
+  );
+  const handleShelfPointerDown = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      if (
+        navigationLocked ||
+        viewMode !== "shelf" ||
+        event.pointerType === "mouse" ||
+        !event.isPrimary
+      ) {
+        return;
+      }
+      shelfPointerStartRef.current = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+      };
+    }, [navigationLocked, viewMode]
+  );
+  const handleShelfPointerUp = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      const start = shelfPointerStartRef.current;
+      shelfPointerStartRef.current = null;
+      if (!start || start.pointerId !== event.pointerId || navigationLocked) return;
+      const direction = resolveBookShelfSwipeIntent({
+        startX: start.x,
+        startY: start.y,
+        endX: event.clientX,
+        endY: event.clientY,
+      });
+      if (!direction) return;
+      event.preventDefault();
+      focusBookAt(shelfNavigation.focusIndex + direction);
+    }, [focusBookAt, navigationLocked, shelfNavigation.focusIndex]
   );
   const openRandomWork = useCallback(
     (trigger: HTMLButtonElement) => {
@@ -2408,6 +2537,15 @@ export default function BookArchiveSection({
             <div
               className="book-shelf-frame__scene"
               hidden={viewMode !== "shelf"}
+              tabIndex={viewMode === "shelf" ? 0 : -1}
+              aria-keyshortcuts="ArrowLeft ArrowRight Home End PageUp PageDown"
+              onKeyDown={handleShelfKeyDown}
+              onWheel={handleShelfWheel}
+              onPointerDown={handleShelfPointerDown}
+              onPointerUp={handleShelfPointerUp}
+              onPointerCancel={() => {
+                shelfPointerStartRef.current = null;
+              }}
             >
               <div
                 className="book-shelf-frame__cms-background"
@@ -2461,7 +2599,12 @@ export default function BookArchiveSection({
                     shelfDispatch({ type: "motion-reached", requestId })
                   }
                   onMotionSettled={(requestId) =>
-                    shelfDispatch({ type: "motion-settled", requestId })
+                    {
+                      shelfDispatch({ type: "motion-settled", requestId });
+                      if (requestId === shelfStateRef.current.requestId) {
+                        setSettledThemeBookKey(focusedBookKeyRef.current);
+                      }
+                    }
                   }
                   onInspectionEntered={(requestId) =>
                     shelfDispatch({ type: "inspection-entered", requestId })
@@ -2670,7 +2813,7 @@ export default function BookArchiveSection({
           type="button"
           onClick={() =>
             setVisibleCount(
-              (current) => current + COMPLETE_SHELF_MAX_WORKING_SET
+              (current) => current + COMPLETE_SHELF_CATALOG_BATCH_SIZE
             )
           }
         >
@@ -2690,8 +2833,8 @@ export default function BookArchiveSection({
           <button
             type="button"
             className="book-shelf-navigation__previous"
-            onClick={() => focusBookAt(focusedIndex <= 0 ? filteredItems.length - 1 : focusedIndex - 1)}
-            disabled={!filteredItems.length || navigationLocked}
+            onClick={() => focusBookAt(shelfNavigation.previousIndex)}
+            disabled={navigationLocked || !shelfNavigation.canMovePrevious}
             aria-label={t("Предыдущая книга")}
           >
             <BrandArrowIcon />
@@ -2702,8 +2845,8 @@ export default function BookArchiveSection({
               className="is-edge"
               type="button"
               onClick={() => focusBookAt(0)}
-              disabled={!filteredItems.length || navigationLocked || focusedIndex <= 0}
-              aria-label={t("Предыдущая книга")}
+              disabled={navigationLocked || !shelfNavigation.canMovePrevious}
+              aria-label={t("Первая книга")}
             >
               <span aria-hidden="true">|</span>
               <BrandArrowIcon />
@@ -2711,10 +2854,8 @@ export default function BookArchiveSection({
             <button
               className="book-shelf-navigation__batch"
               type="button"
-              onClick={() =>
-                focusBookAt(focusedIndex - COMPLETE_SHELF_MAX_WORKING_SET)
-              }
-              disabled={!filteredItems.length || navigationLocked}
+              onClick={() => focusBookAt(shelfNavigation.pagePreviousIndex)}
+              disabled={navigationLocked || !shelfNavigation.canMovePagePrevious}
               aria-label={t("Предыдущие 13 произведений")}
               title={t("Предыдущие 13 произведений")}
             >
@@ -2724,8 +2865,8 @@ export default function BookArchiveSection({
             <button
               className="book-shelf-navigation__single"
               type="button"
-              onClick={() => focusBookAt(focusedIndex <= 0 ? filteredItems.length - 1 : focusedIndex - 1)}
-              disabled={!filteredItems.length || navigationLocked}
+              onClick={() => focusBookAt(shelfNavigation.previousIndex)}
+              disabled={navigationLocked || !shelfNavigation.canMovePrevious}
               aria-label={t("Предыдущая книга")}
             >
               <BrandArrowIcon />
@@ -2740,11 +2881,20 @@ export default function BookArchiveSection({
                 <small>{t("Полка пуста")}</small>
               )}
             </span>
+            <BookShelfProgressRail
+              focusIndex={shelfNavigation.focusIndex}
+              total={shelfNavigation.total}
+              label={t("Позиция на книжной полке")}
+              valueText={(current, total) =>
+                `${number(current)} ${t("из")} ${number(total)}`
+              }
+              onFocusIndexChange={focusBookAt}
+            />
             <button
               className="book-shelf-navigation__single"
               type="button"
-              onClick={() => focusBookAt(focusedIndex + 1)}
-              disabled={!filteredItems.length || navigationLocked}
+              onClick={() => focusBookAt(shelfNavigation.nextIndex)}
+              disabled={navigationLocked || !shelfNavigation.canMoveNext}
               aria-label={t("Следующая книга")}
             >
               <BrandArrowIcon />
@@ -2752,10 +2902,8 @@ export default function BookArchiveSection({
             <button
               className="book-shelf-navigation__batch"
               type="button"
-              onClick={() =>
-                focusBookAt(focusedIndex + COMPLETE_SHELF_MAX_WORKING_SET)
-              }
-              disabled={!filteredItems.length || navigationLocked}
+              onClick={() => focusBookAt(shelfNavigation.pageNextIndex)}
+              disabled={navigationLocked || !shelfNavigation.canMovePageNext}
               aria-label={t("Следующие 13 произведений")}
               title={t("Следующие 13 произведений")}
             >
@@ -2767,11 +2915,10 @@ export default function BookArchiveSection({
               type="button"
               onClick={() => focusBookAt(filteredItems.length - 1)}
               disabled={
-                !filteredItems.length ||
                 navigationLocked ||
-                focusedIndex >= filteredItems.length - 1
+                !shelfNavigation.canMoveNext
               }
-              aria-label={t("Следующая книга")}
+              aria-label={t("Последняя книга")}
             >
               <BrandArrowIcon />
               <span aria-hidden="true">|</span>

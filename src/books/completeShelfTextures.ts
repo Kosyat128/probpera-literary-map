@@ -96,6 +96,7 @@ export type CompleteShelfArtworkPlan = Readonly<{
   foilColor: string;
   motif: CompleteShelfFoilMotif;
   hasCoverArtwork: boolean;
+  textCoverLayout: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 }>;
 
 export type CompleteShelfArtworkTextures = Readonly<{
@@ -274,8 +275,28 @@ export function buildCompleteShelfArtworkPlan(
     foilColor: spec.foilColor,
     motif: spec.motif,
     hasCoverArtwork: Boolean(spec.coverUrl),
+    textCoverLayout: ((spec.seed >>> 4) & 7) as
+      | 0
+      | 1
+      | 2
+      | 3
+      | 4
+      | 5
+      | 6
+      | 7,
   });
 }
+
+const COMPLETE_SHELF_TEXT_COVER_LAYOUTS = Object.freeze([
+  { medallionY: 0.245, firstRuleY: 0.36, titleY: 0.505, secondRuleY: 0.65, writerY: 0.745, motifY: 0.855 },
+  { medallionY: 0.205, firstRuleY: 0.315, titleY: 0.455, secondRuleY: 0.61, writerY: 0.715, motifY: 0.86 },
+  { medallionY: 0.285, firstRuleY: 0.39, titleY: 0.525, secondRuleY: 0.665, writerY: 0.77, motifY: 0.875 },
+  { medallionY: 0.22, firstRuleY: 0.345, titleY: 0.49, secondRuleY: 0.625, writerY: 0.735, motifY: 0.845 },
+  { medallionY: 0.26, firstRuleY: 0.375, titleY: 0.54, secondRuleY: 0.69, writerY: 0.785, motifY: 0.88 },
+  { medallionY: 0.19, firstRuleY: 0.3, titleY: 0.44, secondRuleY: 0.59, writerY: 0.7, motifY: 0.835 },
+  { medallionY: 0.3, firstRuleY: 0.405, titleY: 0.555, secondRuleY: 0.695, writerY: 0.79, motifY: 0.875 },
+  { medallionY: 0.235, firstRuleY: 0.35, titleY: 0.475, secondRuleY: 0.62, writerY: 0.73, motifY: 0.87 },
+] as const);
 
 function createTexture(
   width: number,
@@ -319,10 +340,9 @@ export function resolveCompleteShelfCoverTextureSize({
 }) {
   const safeAspectRatio = Math.min(0.72, Math.max(0.42, coverAspectRatio));
   const widthCap = economical ? 320 : 1024;
-  // Cover-fill sampling crops one source axis.  Bound the canvas by the
-  // usable native pixels on both axes so a small archive image is never
-  // blurred by an artificial upscale, while large originals retain the
-  // high-quality 1024 px selected-book path.
+  // Bound the physical-board canvas by usable native pixels on both axes so
+  // a small archive image is never blurred by an artificial upscale, while
+  // large originals retain the high-quality 1024 px selected-book path.
   const nativeFillWidth = Math.min(
     Math.max(1, naturalWidth),
     Math.max(1, naturalHeight) * safeAspectRatio
@@ -330,6 +350,61 @@ export function resolveCompleteShelfCoverTextureSize({
   const width = Math.max(1, Math.floor(Math.min(widthCap, nativeFillWidth)));
   const height = Math.max(1, Math.floor(width / safeAspectRatio));
   return Object.freeze({ width, height, aspectRatio: safeAspectRatio });
+}
+
+export function resolveCompleteShelfCoverContainRect({
+  naturalWidth,
+  naturalHeight,
+  targetWidth,
+  targetHeight,
+}: {
+  naturalWidth: number;
+  naturalHeight: number;
+  targetWidth: number;
+  targetHeight: number;
+}) {
+  const safeNaturalWidth = Math.max(1, Number(naturalWidth) || 1);
+  const safeNaturalHeight = Math.max(1, Number(naturalHeight) || 1);
+  const safeTargetWidth = Math.max(1, Number(targetWidth) || 1);
+  const safeTargetHeight = Math.max(1, Number(targetHeight) || 1);
+  const scale = Math.min(
+    1,
+    safeTargetWidth / safeNaturalWidth,
+    safeTargetHeight / safeNaturalHeight
+  );
+  const width = safeNaturalWidth * scale;
+  const height = safeNaturalHeight * scale;
+  return Object.freeze({
+    x: (safeTargetWidth - width) / 2,
+    y: (safeTargetHeight - height) / 2,
+    width,
+    height,
+  });
+}
+
+export function isCompleteShelfCoverTextureUrlAllowed(
+  value: string,
+  siteOrigin =
+    typeof window !== "undefined" && window.location
+      ? window.location.origin
+      : ""
+) {
+  const normalizedUrl = normalizeCompleteShelfCoverUrl(value);
+  if (!normalizedUrl) return false;
+  const scheme = normalizedUrl.match(/^([a-z][a-z\d+.-]*):/iu)?.[1];
+  if (!scheme) return true;
+  if (!/^https?$/iu.test(scheme) || !siteOrigin) return false;
+  try {
+    const target = new URL(normalizedUrl);
+    const site = new URL(siteOrigin);
+    return (
+      !target.username &&
+      !target.password &&
+      target.origin === site.origin
+    );
+  } catch {
+    return false;
+  }
 }
 
 function createFoilTexture(
@@ -689,6 +764,8 @@ export function createCompleteShelfArtworkTextures(
   includeFrontFoil = true
 ): CompleteShelfArtworkTextures {
   const plan = buildCompleteShelfArtworkPlan(spec);
+  const textCoverLayout =
+    COMPLETE_SHELF_TEXT_COVER_LAYOUTS[plan.textCoverLayout];
   // Foil canvases are pure masks; the physical material supplies the actual
   // metal colour.  This keeps alphaMap luminance at one instead of making
   // darker copper/gold artwork accidentally translucent.
@@ -703,9 +780,9 @@ export function createCompleteShelfArtworkTextures(
   const spineWidth = Math.round(
     spineHeight * (spinePhysicalWidth / (spec.dimensions.height - 0.012))
   );
-  // WebGL owns a procedural archive binding only. Authorized edition artwork
-  // stays in the adjacent semantic detail panel, so the selected 3D book
-  // always receives the same embossed foil treatment as the shelf spines.
+  // The foil is the fail-closed text-cover fallback. When an authorized real
+  // cover loads for the selected inspection book it replaces this front map
+  // without altering the reusable archive binding or shelf spines.
   const frontFoil = !includeFrontFoil
     ? null
     : createFoilTexture(frontWidth, frontHeight, (context) => {
@@ -767,14 +844,14 @@ export function createCompleteShelfArtworkTextures(
         paintLiteraryMedallion(
           context,
           frontWidth / 2,
-          frontHeight * 0.245,
+          frontHeight * textCoverLayout.medallionY,
           frontWidth * 0.125,
           maskColor
         );
         paintSplitFoilRule(
           context,
           frontWidth,
-          frontHeight * 0.36,
+          frontHeight * textCoverLayout.firstRuleY,
           maskColor,
           Math.max(1.25, frontWidth * 0.003)
         );
@@ -798,7 +875,7 @@ export function createCompleteShelfArtworkTextures(
             context,
             plan.titleLines,
             frontWidth / 2,
-            frontHeight * 0.505,
+            frontHeight * textCoverLayout.titleY,
             titleFit.lineHeight
           );
         });
@@ -806,7 +883,7 @@ export function createCompleteShelfArtworkTextures(
         paintSplitFoilRule(
           context,
           frontWidth,
-          frontHeight * 0.65,
+          frontHeight * textCoverLayout.secondRuleY,
           maskColor,
           Math.max(1.2, frontWidth * 0.0026)
         );
@@ -827,7 +904,7 @@ export function createCompleteShelfArtworkTextures(
             context,
             plan.frontWriterLines,
             frontWidth / 2,
-            frontHeight * 0.745,
+            frontHeight * textCoverLayout.writerY,
             writerFit.lineHeight
           );
         });
@@ -836,7 +913,7 @@ export function createCompleteShelfArtworkTextures(
           context,
           plan.motif,
           frontWidth / 2,
-          frontHeight * 0.855,
+          frontHeight * textCoverLayout.motifY,
           frontWidth * 0.032,
           maskColor
         );
@@ -1035,7 +1112,13 @@ export function loadCompleteShelfCoverTexture(
   onReady: (texture: CanvasTexture) => void
 ) {
   const normalizedUrl = normalizeCompleteShelfCoverUrl(coverUrl);
-  if (!normalizedUrl || typeof document === "undefined") return () => {};
+  if (
+    !normalizedUrl ||
+    !isCompleteShelfCoverTextureUrlAllowed(normalizedUrl) ||
+    typeof document === "undefined"
+  ) {
+    return () => {};
+  }
   const image = document.createElement("img");
   let cancelled = false;
   image.decoding = "async";
@@ -1051,23 +1134,23 @@ export function loadCompleteShelfCoverTexture(
     const texture = createTexture(width, height, (context) => {
       context.fillStyle = textureColor(baseColor, "#27364a");
       context.fillRect(0, 0, width, height);
-      // Editorial covers are authored as full-bleed 2:3 artwork.  Fill the
-      // physical board and crop only the overflow instead of letterboxing it
-      // inside a second coloured frame.
-      const scale = Math.max(
-        width / image.naturalWidth,
-        height / image.naturalHeight
-      );
-      const drawWidth = image.naturalWidth * scale;
-      const drawHeight = image.naturalHeight * scale;
+      // Keep every authored pixel of the allowed cover.  The board may show a
+      // narrow binding-colour margin when the edition aspect ratio differs;
+      // the artwork itself is never cropped, stretched, or recoloured.
+      const contain = resolveCompleteShelfCoverContainRect({
+        naturalWidth: image.naturalWidth,
+        naturalHeight: image.naturalHeight,
+        targetWidth: width,
+        targetHeight: height,
+      });
       context.imageSmoothingEnabled = true;
       context.imageSmoothingQuality = "high";
       context.drawImage(
         image,
-        (width - drawWidth) / 2,
-        (height - drawHeight) / 2,
-        drawWidth,
-        drawHeight
+        contain.x,
+        contain.y,
+        contain.width,
+        contain.height
       );
     }, false, economical ? 4 : 16);
     if (!texture) return;

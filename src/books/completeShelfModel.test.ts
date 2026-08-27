@@ -3,10 +3,15 @@ import { describe, expect, it } from "vitest";
 import {
   COMPLETE_SHELF_GAP,
   COMPLETE_SHELF_BOOK_FORMAT,
+  COMPLETE_SHELF_CATALOG_BATCH_SIZE,
   COMPLETE_SHELF_ECONOMICAL_WORKING_SET,
   COMPLETE_SHELF_INSPECTION_GUTTER,
   COMPLETE_SHELF_INSPECTION_LIFT,
   COMPLETE_SHELF_MAX_WORKING_SET,
+  COMPLETE_SHELF_MOBILE_ECONOMICAL_WORKING_SET,
+  COMPLETE_SHELF_MOBILE_WORKING_SET,
+  COMPLETE_SHELF_TABLET_ECONOMICAL_WORKING_SET,
+  COMPLETE_SHELF_TABLET_WORKING_SET,
   COMPLETE_SHELF_TOP,
   buildCompleteShelfBookPose,
   buildCompleteShelfBookSpec,
@@ -75,18 +80,29 @@ describe("Complete Shelf procedural model", () => {
     const quality = selectCompleteShelfWorkingSet(
       items,
       "book-27",
-      completeShelfWorkingSetLimit(false)
+      completeShelfWorkingSetLimit(1440, false)
     );
     const economical = selectCompleteShelfWorkingSet(
       items,
       "book-27",
-      completeShelfWorkingSetLimit(true)
+      completeShelfWorkingSetLimit(1440, true)
     );
 
-    expect(COMPLETE_SHELF_MAX_WORKING_SET).toBe(13);
-    expect(COMPLETE_SHELF_ECONOMICAL_WORKING_SET).toBe(13);
-    expect(quality.entries).toHaveLength(13);
-    expect(economical.entries).toHaveLength(13);
+    expect(COMPLETE_SHELF_CATALOG_BATCH_SIZE).toBe(13);
+    expect(COMPLETE_SHELF_MAX_WORKING_SET).toBe(21);
+    expect(COMPLETE_SHELF_ECONOMICAL_WORKING_SET).toBe(17);
+    expect(COMPLETE_SHELF_TABLET_WORKING_SET).toBe(13);
+    expect(COMPLETE_SHELF_TABLET_ECONOMICAL_WORKING_SET).toBe(11);
+    expect(COMPLETE_SHELF_MOBILE_WORKING_SET).toBe(9);
+    expect(COMPLETE_SHELF_MOBILE_ECONOMICAL_WORKING_SET).toBe(7);
+    expect(completeShelfWorkingSetLimit(1025, false)).toBe(21);
+    expect(completeShelfWorkingSetLimit(1025, true)).toBe(17);
+    expect(completeShelfWorkingSetLimit(1024, false)).toBe(13);
+    expect(completeShelfWorkingSetLimit(1024, true)).toBe(11);
+    expect(completeShelfWorkingSetLimit(640, false)).toBe(9);
+    expect(completeShelfWorkingSetLimit(640, true)).toBe(7);
+    expect(quality.entries).toHaveLength(21);
+    expect(economical.entries).toHaveLength(17);
     expect(quality.entries[quality.anchorSlot].item.key).toBe("book-27");
     expect(economical.entries[economical.anchorSlot].item.key).toBe("book-27");
   });
@@ -131,19 +147,20 @@ describe("Complete Shelf procedural model", () => {
     expect(normalizeCompleteShelfCoverUrl("brand/../secret.webp")).toBeNull();
   });
 
-  it("wraps source boundaries so the first and last books keep two flanks", () => {
+  it("clamps source boundaries without wrapping or repeating the archive", () => {
     const items = Array.from({ length: 40 }, (_, index) => ({
       key: `book-${index}`,
     }));
     const first = selectCompleteShelfWorkingSet(items, "book-0", 13);
     const last = selectCompleteShelfWorkingSet(items, "book-39", 13);
 
-    expect(first.anchorSlot).toBe(6);
+    expect(first.anchorSlot).toBe(0);
     expect(first.entries.map((entry) => entry.sourceIndex)).toEqual([
-      34, 35, 36, 37, 38, 39, 0, 1, 2, 3, 4, 5, 6,
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     ]);
+    expect(last.anchorSlot).toBe(12);
     expect(last.entries.map((entry) => entry.sourceIndex)).toEqual([
-      33, 34, 35, 36, 37, 38, 39, 0, 1, 2, 3, 4, 5,
+      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
     ]);
     expect(new Set(first.entries.map((entry) => entry.item.key)).size).toBe(
       13

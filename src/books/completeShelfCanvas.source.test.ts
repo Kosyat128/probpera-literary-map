@@ -20,7 +20,7 @@ describe("Complete Shelf Canvas source contract", () => {
   it("keeps one demand-driven Canvas and no audio or remote asset loader", () => {
     expect(canvasSource.match(/<Canvas\b/gu)).toHaveLength(1);
     expect(canvasSource).toContain('frameloop="demand"');
-    expect(canvasSource).toContain("preserveDrawingBuffer: true");
+    expect(canvasSource).toContain("preserveDrawingBuffer: false");
     expect(combinedSource).not.toMatch(
       /new\s+Audio\b|<audio\b|AudioContext|TextureLoader|useLoader/iu
     );
@@ -120,10 +120,20 @@ describe("Complete Shelf Canvas source contract", () => {
     );
     expect(textureSource).toContain("loadCompleteShelfCoverTexture");
     expect(textureSource).toContain("image.src = normalizedUrl");
+    expect(textureSource).toContain(
+      "isCompleteShelfCoverTextureUrlAllowed(normalizedUrl)"
+    );
+    expect(textureSource).toContain("resolveCompleteShelfCoverContainRect");
     expect(rendererSource).toContain("coverUrl: presentation.coverUrl");
-    expect(rendererSource).not.toContain("loadCompleteShelfCoverTexture");
-    expect(rendererSource).not.toContain("coverArtwork");
-    expect(rendererSource).not.toContain("map={coverArtwork || undefined}");
+    expect(rendererSource).toContain("loadCompleteShelfCoverTexture");
+    expect(rendererSource).toContain("coverArtworkTexture");
+    expect(rendererSource).toContain(
+      "map={coverArtworkTexture || undefined}"
+    );
+    expect(rendererSource).toContain('color="#ffffff"');
+    expect(rendererSource).toContain(
+      "visible={!coverArtworkTexture && Boolean(artwork.frontFoil)}"
+    );
     expect(rendererSource).toContain(
       "const renderFullRig = selected && completeShelfPhaseHasInspection(phase)"
     );
@@ -165,6 +175,15 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain(
       "const renderingEconomical = props.economical || size.width <= 640"
     );
+    expect(rendererSource).toContain(
+      "completeShelfWorkingSetLimit(size.width, props.economical)"
+    );
+    expect(rendererSource).toContain("key={entry.slotIndex}");
+    expect(rendererSource).toContain("coverAssignmentGenerationRef");
+    expect(rendererSource).toContain(
+      "assignmentGeneration !== coverAssignmentGenerationRef.current"
+    );
+    expect(rendererSource).toContain("cancelTextureLoad()");
     expect(rendererSource).toContain("const scheduleStableFrame = () =>");
     expect(rendererSource).toContain(
       'window.addEventListener("scroll", scheduleStableFrame, true)'

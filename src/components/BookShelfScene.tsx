@@ -2,6 +2,7 @@ import { Component, lazy, Suspense, useEffect, useMemo, useRef, useState } from 
 import type { ComponentType, ErrorInfo, ReactNode } from "react";
 
 import type { BookShelfPhase } from "../books/bookShelfState";
+import type { BookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
 import BookShelfBrandLoader from "./BookShelfBrandLoader";
 import type { BookShelfSceneCanvasProps } from "./BookShelfSceneCanvas";
 
@@ -11,6 +12,7 @@ export type BookShelfPresentationItem = {
   writer: string;
   year?: number;
   coverUrl?: string;
+  presentationProfile?: BookShelfPresentationProfile;
   baseColor: string;
   accentColor: string;
   paperColor: string;

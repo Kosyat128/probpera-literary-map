@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   BoxGeometry,
   BufferAttribute,
@@ -44,6 +44,7 @@ import {
   createCompleteShelfWoodDetailMap,
   createCompleteShelfWoodMap,
   disposeCompleteShelfTextures,
+  loadCompleteShelfCoverTexture,
 } from "./completeShelfTextures";
 
 const HIGH_CLOTH_NORMAL_SCALE = new Vector2(0.42, 0.42);
@@ -732,6 +733,89 @@ function CompleteShelfBook({
       ]),
     [artwork]
   );
+  const coverAssignmentSignature = [
+    spec.key,
+    spec.coverUrl || "fallback",
+    spec.baseColor,
+    economical ? "economical" : "quality",
+    renderFullRig ? "inspection" : "shelf",
+    coverWidth,
+    height,
+  ].join(":");
+  const coverAssignmentGenerationRef = useRef(0);
+  const loadedCoverTextureRef = useRef<{
+    generation: number;
+    signature: string;
+    texture: CanvasTexture;
+  } | null>(null);
+  const [loadedCoverTexture, setLoadedCoverTexture] = useState<{
+    generation: number;
+    signature: string;
+    texture: CanvasTexture;
+  } | null>(null);
+  useEffect(() => {
+    const assignmentGeneration = ++coverAssignmentGenerationRef.current;
+    const previousAssignment = loadedCoverTextureRef.current;
+    loadedCoverTextureRef.current = null;
+    if (previousAssignment) {
+      previousAssignment.texture.dispose();
+      setLoadedCoverTexture((current) =>
+        current?.generation === previousAssignment.generation ? null : current
+      );
+    }
+    if (!renderFullRig || !spec.coverUrl) return;
+
+    let active = true;
+    const cancelTextureLoad = loadCompleteShelfCoverTexture(
+      {
+        coverUrl: spec.coverUrl,
+        baseColor: spec.baseColor,
+        coverAspectRatio: coverWidth / height,
+        economical,
+      },
+      (texture) => {
+        if (
+          !active ||
+          assignmentGeneration !== coverAssignmentGenerationRef.current
+        ) {
+          texture.dispose();
+          return;
+        }
+        const assignment = {
+          generation: assignmentGeneration,
+          signature: coverAssignmentSignature,
+          texture,
+        };
+        loadedCoverTextureRef.current?.texture.dispose();
+        loadedCoverTextureRef.current = assignment;
+        setLoadedCoverTexture(assignment);
+        invalidate();
+      }
+    );
+
+    return () => {
+      active = false;
+      cancelTextureLoad();
+      const currentAssignment = loadedCoverTextureRef.current;
+      if (currentAssignment?.generation === assignmentGeneration) {
+        currentAssignment.texture.dispose();
+        loadedCoverTextureRef.current = null;
+      }
+    };
+  }, [
+    coverAssignmentSignature,
+    coverWidth,
+    economical,
+    height,
+    invalidate,
+    renderFullRig,
+    spec.baseColor,
+    spec.coverUrl,
+  ]);
+  const coverArtworkTexture =
+    loadedCoverTexture?.signature === coverAssignmentSignature
+      ? loadedCoverTexture.texture
+      : null;
 
   const targetSignature = [
     phase,
@@ -1145,7 +1229,25 @@ function CompleteShelfBook({
         <mesh
           geometry={coverSurfaceGeometry || undefined}
           position={[coverWidth / 2, 0, boardThickness * 0.605]}
-          visible={Boolean(artwork.frontFoil)}
+          visible={Boolean(coverArtworkTexture)}
+          renderOrder={5}
+        >
+          <meshPhysicalMaterial
+            color="#ffffff"
+            map={coverArtworkTexture || undefined}
+            roughness={0.58}
+            metalness={0}
+            clearcoat={0.08}
+            clearcoatRoughness={0.64}
+            polygonOffset
+            polygonOffsetFactor={-2}
+            polygonOffsetUnits={-2}
+          />
+        </mesh>
+        <mesh
+          geometry={coverSurfaceGeometry || undefined}
+          position={[coverWidth / 2, 0, boardThickness * 0.605]}
+          visible={!coverArtworkTexture && Boolean(artwork.frontFoil)}
           renderOrder={5}
         >
           <FoilMaterial
@@ -1349,9 +1451,9 @@ export default function CompleteShelfRenderer(
       selectCompleteShelfWorkingSet(
         props.items,
         anchorKey,
-        completeShelfWorkingSetLimit(renderingEconomical)
+        completeShelfWorkingSetLimit(size.width, props.economical)
       ),
-    [anchorKey, props.items, renderingEconomical]
+    [anchorKey, props.economical, props.items, size.width]
   );
   const specs = useMemo(
     () =>
@@ -1367,6 +1469,7 @@ export default function CompleteShelfRenderer(
             accentColor: presentation.accentColor,
             paperColor: presentation.paperColor,
             coverUrl: presentation.coverUrl,
+            presentationProfile: presentation.presentationProfile,
           },
           sourceIndex
         );
@@ -1522,7 +1625,7 @@ export default function CompleteShelfRenderer(
           binding === "leather" ? leatherSurfaceMaps : clothSurfaceMaps;
         return (
           <CompleteShelfBook
-            key={entry.item.key}
+            key={entry.slotIndex}
             layout={layout[index]}
             anchorSlot={workingSet.anchorSlot}
             phase={props.phase}

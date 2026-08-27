@@ -1,6 +1,13 @@
 import type { BookShelfPhase } from "./bookShelfState";
-export const COMPLETE_SHELF_MAX_WORKING_SET = 13;
-export const COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 13;
+import type { BookShelfPresentationProfile } from "./bookShelfPresentationProfiles";
+/** The archive/catalog controller advances by one predictable editorial batch. */
+export const COMPLETE_SHELF_CATALOG_BATCH_SIZE = 13;
+export const COMPLETE_SHELF_MAX_WORKING_SET = 21;
+export const COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 17;
+export const COMPLETE_SHELF_TABLET_WORKING_SET = 13;
+export const COMPLETE_SHELF_TABLET_ECONOMICAL_WORKING_SET = 11;
+export const COMPLETE_SHELF_MOBILE_WORKING_SET = 9;
+export const COMPLETE_SHELF_MOBILE_ECONOMICAL_WORKING_SET = 7;
 export const COMPLETE_SHELF_GAP = 0.022;
 export const COMPLETE_SHELF_TOP = -1.02;
 export const COMPLETE_SHELF_INSPECTION_LIFT = 0.13;
@@ -105,6 +112,7 @@ export type CompleteShelfItemInput = Readonly<{
   accentColor: string;
   paperColor: string;
   coverUrl?: string;
+  presentationProfile?: BookShelfPresentationProfile;
 }>;
 
 export type CompleteShelfBookSpec = Readonly<{
@@ -126,6 +134,7 @@ export type CompleteShelfBookSpec = Readonly<{
   paperColor: string;
   foilColor: string;
   coverUrl: string | null;
+  presentationProfile: BookShelfPresentationProfile | null;
   motif: CompleteShelfFoilMotif;
   binding: CompleteShelfBinding;
   lean: number;
@@ -243,6 +252,22 @@ export function buildCompleteShelfBookSpec(
     "orbital",
     "rules",
   ];
+  const presentationProfile = input.presentationProfile || null;
+  const profileMotif: CompleteShelfFoilMotif | null = presentationProfile
+    ? presentationProfile.spinePreset === "ornate"
+      ? "arch"
+      : presentationProfile.spinePreset === "ruled"
+        ? "rules"
+        : presentationProfile.spinePreset === "playful"
+          ? "orbital"
+          : "diamond"
+    : null;
+  const verifiedBinding =
+    presentationProfile?.verifiedEditionMaterial === "leather"
+      ? "leather"
+      : presentationProfile?.verifiedEditionMaterial === "cloth"
+        ? "cloth"
+        : null;
   return Object.freeze({
     key,
     title: normalizeCompleteShelfText(input.title, 180) || "Untitled",
@@ -266,13 +291,34 @@ export function buildCompleteShelfBookSpec(
       seed ^ 0x85ebca6b
     ),
     coverUrl,
-    motif: motifs[(seed >>> 18) % motifs.length],
-    binding: (seed >>> 20) % 3 === 0 ? "cloth" : "leather",
+    presentationProfile,
+    motif: profileMotif || motifs[(seed >>> 18) % motifs.length],
+    binding:
+      verifiedBinding ||
+      (presentationProfile?.materialPreset.includes("cloth")
+        ? "cloth"
+        : (seed >>> 20) % 3 === 0
+          ? "cloth"
+          : "leather"),
     lean: 0,
   });
 }
 
-export function completeShelfWorkingSetLimit(economical: boolean) {
+export function completeShelfWorkingSetLimit(
+  pixelWidth: number,
+  economical: boolean
+) {
+  const safePixelWidth = Math.max(1, Number(pixelWidth) || 1);
+  if (safePixelWidth <= 640) {
+    return economical
+      ? COMPLETE_SHELF_MOBILE_ECONOMICAL_WORKING_SET
+      : COMPLETE_SHELF_MOBILE_WORKING_SET;
+  }
+  if (safePixelWidth <= 1024) {
+    return economical
+      ? COMPLETE_SHELF_TABLET_ECONOMICAL_WORKING_SET
+      : COMPLETE_SHELF_TABLET_WORKING_SET;
+  }
   return economical
     ? COMPLETE_SHELF_ECONOMICAL_WORKING_SET
     : COMPLETE_SHELF_MAX_WORKING_SET;
@@ -307,11 +353,15 @@ export function selectCompleteShelfWorkingSet<T extends { key: string }>(
     found >= 0
       ? found
       : Math.min(items.length - 1, Math.floor((count - 1) / 2));
-  const anchorSlot = Math.floor(count / 2);
+  const preferredAnchorSlot = Math.floor(count / 2);
+  const startSourceIndex = clamp(
+    anchorSourceIndex - preferredAnchorSlot,
+    0,
+    Math.max(0, items.length - count)
+  );
+  const anchorSlot = anchorSourceIndex - startSourceIndex;
   const entries = Array.from({ length: count }, (_, slotIndex) => {
-    const sourceIndex =
-      (anchorSourceIndex + slotIndex - anchorSlot + items.length) %
-      items.length;
+    const sourceIndex = startSourceIndex + slotIndex;
     return Object.freeze({ item: items[sourceIndex], sourceIndex, slotIndex });
   });
   return Object.freeze({

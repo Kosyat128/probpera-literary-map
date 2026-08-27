@@ -14,6 +14,7 @@ import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
 } from "./BookShelfScene";
+import BookShelfSpatialEnvironment from "./BookShelfSpatialEnvironment";
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection } from "../books/completeShelfModel";
 import CompleteShelfRenderer, {
@@ -51,7 +52,7 @@ function SceneLifecycle({
   economical: boolean;
   onContextLost: () => void;
 }) {
-  const { gl, scene, invalidate } = useThree();
+  const { gl, scene, invalidate, setFrameloop } = useThree();
 
   useEffect(() => {
     invalidate();
@@ -96,6 +97,24 @@ function SceneLifecycle({
     return () =>
       canvas.removeEventListener("webglcontextlost", handleContextLost, false);
   }, [gl, onContextLost]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        setFrameloop("never");
+        return;
+      }
+      setFrameloop("demand");
+      invalidate();
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    handleVisibilityChange();
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      setFrameloop("demand");
+    };
+  }, [invalidate, setFrameloop]);
 
   return null;
 }
@@ -169,8 +188,11 @@ export default function BookShelfSceneCanvas({
     selectedBookKey || "",
     items.length,
     appearance.shelfColor,
+    appearance.ambientColor,
+    appearance.lightColor,
     appearance.intensity,
   ].join(":");
+  const inspectionActive = completeShelfPhaseHasInspection(phase);
 
   return (
     <Canvas
@@ -187,7 +209,7 @@ export default function BookShelfSceneCanvas({
       gl={{
         alpha: true,
         antialias: !economical,
-        preserveDrawingBuffer: true,
+        preserveDrawingBuffer: false,
         powerPreference: economical ? "low-power" : "high-performance",
       }}
       performance={{ min: economical ? 0.65 : 0.8 }}
@@ -206,6 +228,11 @@ export default function BookShelfSceneCanvas({
         exposure={economical ? 0.96 : 0.9}
         economical={economical}
         onContextLost={onContextLost}
+      />
+      <BookShelfSpatialEnvironment
+        appearance={appearance}
+        economical={economical}
+        inspectionActive={inspectionActive}
       />
       <hemisphereLight
         args={[

@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { chromium } from "@playwright/test";
@@ -9,9 +10,11 @@ const appUrl =
 const readinessTimeout = Number(
   process.env.STAGE5D1_CAPTURE_TIMEOUT_MS || 20_000
 );
-const outputDirectory = fileURLToPath(
-  new URL("../reports/stage5d1-library-frame/browser/", import.meta.url)
-);
+const outputDirectory = process.env.STAGE5_CAPTURE_OUTPUT
+  ? resolve(process.env.STAGE5_CAPTURE_OUTPUT)
+  : fileURLToPath(
+      new URL("../reports/stage5d1-library-frame/browser/", import.meta.url)
+    );
 
 await mkdir(outputDirectory, { recursive: true });
 
@@ -24,7 +27,9 @@ let browser = await chromium.launch(browserOptions);
 
 const evidence = {
   generatedAt: new Date().toISOString(),
-  scope: "Stage 5D-1 final production-build visual evidence",
+  scope:
+    process.env.STAGE5_CAPTURE_SCOPE ||
+    "Stage 5D-1 final production-build visual evidence",
   source: { url: appUrl, server: "local Vite preview" },
   checks: [],
   screenshots: [],
@@ -32,6 +37,7 @@ const evidence = {
 };
 
 async function waitForShelf(page) {
+  const startedAt = Date.now();
   await page.goto(appUrl, { waitUntil: "domcontentloaded", timeout: 60_000 });
   const frame = page.locator("#books .book-shelf-frame");
   await frame.waitFor({ state: "visible", timeout: 60_000 });
@@ -71,8 +77,9 @@ async function waitForShelf(page) {
     );
     throw error;
   }
+  const readinessMs = Date.now() - startedAt;
   await page.waitForTimeout(2_500);
-  return frame;
+  return { frame, readinessMs };
 }
 
 async function captureFrame(page, frame, name) {
@@ -119,12 +126,15 @@ async function measure(page) {
 
 try {
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-  const desktopFrame = await waitForShelf(desktop);
-  await captureFrame(desktop, desktopFrame, "ru-desktop-1440x900-shelf.png");
+  const desktopReady = await waitForShelf(desktop);
+  await captureFrame(desktop, desktopReady.frame, "ru-desktop-1440x900-shelf.png");
   evidence.checks.push({
     case: "ru-desktop-1440x900",
     state: "idle",
-    evidence: await measure(desktop),
+    evidence: {
+      ...(await measure(desktop)),
+      readinessMs: desktopReady.readinessMs,
+    },
   });
 
   await desktop.locator(".book-shelf-scene-hint").click();
@@ -141,7 +151,7 @@ try {
     { timeout: 30_000 }
   );
   await desktop.waitForTimeout(500);
-  await captureFrame(desktop, desktopFrame, "ru-desktop-1440x900-selected.png");
+  await captureFrame(desktop, desktopReady.frame, "ru-desktop-1440x900-selected.png");
   evidence.checks.push({
     case: "ru-desktop-1440x900",
     state: "selected",
@@ -155,7 +165,7 @@ try {
   browser = await chromium.launch(browserOptions);
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
-  const mobileFrame = await waitForShelf(mobile);
+  const mobileReady = await waitForShelf(mobile);
   // Capturing the entire tall mobile frame makes Playwright scroll it while
   // painting. That legitimately trips the scene's IntersectionObserver and
   // can unmount WebGL halfway through the screenshot. Keep the active scene
@@ -176,7 +186,10 @@ try {
   evidence.checks.push({
     case: "ru-mobile-390x844",
     state: "idle",
-    evidence: await measure(mobile),
+    evidence: {
+      ...(await measure(mobile)),
+      readinessMs: mobileReady.readinessMs,
+    },
   });
   await mobile.close();
 
@@ -186,7 +199,7 @@ try {
     "utf8"
   );
   console.log(
-    `Captured ${evidence.screenshots.length} Stage 5D-1 screenshots in ${outputDirectory}`
+    `Captured ${evidence.screenshots.length} bookshelf screenshots in ${outputDirectory}`
   );
 } finally {
   await browser.close().catch(() => undefined);
