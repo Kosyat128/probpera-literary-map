@@ -10,6 +10,13 @@ const migration = readFileSync(
   ),
   "utf8",
 );
+const iconMigration = readFileSync(
+  path.join(
+    root,
+    "supabase/migrations/20260828_reader_book_collection_icons.sql",
+  ),
+  "utf8",
+);
 const schema = readFileSync(path.join(root, "supabase/schema.sql"), "utf8");
 
 const tables = [
@@ -120,6 +127,19 @@ describe("Stage 5D-2 reader book collection migration", () => {
     expect(migration).not.toMatch(/drop (?:table|column)[^;]*reader_(?:favorites|progress)/iu);
     expect(migration).toContain(
       "-- The existing reader_favorites and reader_progress contracts remain intact.",
+    );
+  });
+
+  it("adds the reviewed safe icon whitelist without rewriting the historical migration", () => {
+    expect(migration).not.toMatch(/^\s*icon text/gmu);
+    expect(iconMigration).toContain(
+      "add column if not exists icon text",
+    );
+    expect(iconMigration).toContain(
+      "icon in ('book', 'star', 'quill', 'archive', 'heart')",
+    );
+    expect(schema).toContain(
+      "icon text check (icon in ('book', 'star', 'quill', 'archive', 'heart'))",
     );
   });
 });

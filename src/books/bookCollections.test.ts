@@ -113,6 +113,19 @@ describe("book collection contracts", () => {
     expect(parsed?.filterState?.quickPreset).toBe("all");
   });
 
+  it("accepts only bundled icon ids while keeping legacy v1 collections valid", () => {
+    const legacy = parseBookCollection(collection());
+    const branded = parseBookCollection(collection({ icon: "quill" }));
+
+    expect(legacy).not.toBeNull();
+    expect(legacy).not.toHaveProperty("icon");
+    expect(branded?.icon).toBe("quill");
+    expect(parseBookCollection({ ...collection(), icon: "https://example.test/icon.svg" }))
+      .toBeNull();
+    expect(parseBookCollection({ ...collection(), icon: "<svg />" })).toBeNull();
+    expect(parseBookCollection({ ...collection(), icon: "custom" })).toBeNull();
+  });
+
   it("fails closed for malformed ids, enums, themes, filters and duplicated metadata", () => {
     expect(parseBookCollection({ ...collection(), id: "../../escape" })).toBeNull();
     expect(parseBookCollection({ ...collection(), kind: "shared" })).toBeNull();
@@ -290,6 +303,20 @@ describe("safe local and remote merge", () => {
         updatedAt: thirdTimestamp,
       },
     ]);
+  });
+
+  it("merges a safe icon with the winning collection metadata", () => {
+    const local = snapshot([
+      collection({ icon: "book", updatedAt: firstTimestamp }),
+    ]);
+    const remote = snapshot([
+      collection({ icon: "star", updatedAt: secondTimestamp }),
+    ]);
+
+    const merged = mergeBookCollectionSnapshots(local, remote);
+
+    expect(merged.collections[0]?.icon).toBe("star");
+    expect(parseBookCollectionSnapshot(merged)).toEqual(merged);
   });
 
   it("fails closed on duplicate or orphan memberships", () => {

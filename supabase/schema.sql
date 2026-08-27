@@ -96,6 +96,7 @@ create table public.reader_book_collections (
     and name = btrim(name)
   ),
   description text check (char_length(description) between 1 and 800),
+  icon text check (icon in ('book', 'star', 'quill', 'archive', 'heart')),
   collection_type text not null default 'manual' check (
     collection_type in ('system', 'manual', 'smart', 'editorial')
   ),

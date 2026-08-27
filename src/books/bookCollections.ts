@@ -31,11 +31,24 @@ export const BOOK_COLLECTION_VISIBILITIES = [
   "public",
 ] as const;
 
+/**
+ * Presentation-safe icon identifiers. Collections never persist SVG, markup,
+ * CSS or remote asset URLs; the UI maps these ids to bundled brand icons.
+ */
+export const BOOK_COLLECTION_ICON_IDS = [
+  "book",
+  "star",
+  "quill",
+  "archive",
+  "heart",
+] as const;
+
 export type BookCollectionKind = (typeof BOOK_COLLECTION_KINDS)[number];
 export type BookCollectionSystemType =
   (typeof BOOK_COLLECTION_SYSTEM_TYPES)[number];
 export type BookCollectionVisibility =
   (typeof BOOK_COLLECTION_VISIBILITIES)[number];
+export type BookCollectionIconId = (typeof BOOK_COLLECTION_ICON_IDS)[number];
 
 export type BookCollection = Readonly<{
   id: string;
@@ -44,6 +57,7 @@ export type BookCollection = Readonly<{
   systemType?: BookCollectionSystemType;
   title: string;
   description?: string;
+  icon?: BookCollectionIconId;
   visibility: BookCollectionVisibility;
   backgroundPreset?: BookScenePresetId;
   dynamicBookThemes: boolean;
@@ -119,6 +133,7 @@ const MAX_POSITION = 1_000_000;
 const kindSet = new Set<string>(BOOK_COLLECTION_KINDS);
 const systemTypeSet = new Set<string>(BOOK_COLLECTION_SYSTEM_TYPES);
 const visibilitySet = new Set<string>(BOOK_COLLECTION_VISIBILITIES);
+const iconSet = new Set<string>(BOOK_COLLECTION_ICON_IDS);
 const presetSet = new Set<string>(bookScenePresetIds);
 const sortSet = new Set<string>(BOOK_ARCHIVE_SORTS);
 const idPattern = /^[A-Za-z0-9](?:[A-Za-z0-9:_-]{0,191})$/u;
@@ -133,6 +148,7 @@ const collectionKeys = new Set([
   "systemType",
   "title",
   "description",
+  "icon",
   "visibility",
   "backgroundPreset",
   "dynamicBookThemes",
@@ -305,6 +321,12 @@ export function parseBookCollection(value: unknown): BookCollection | null {
   const ownerId = value.ownerId === undefined ? undefined : safeId(value.ownerId);
   const title = safeText(value.title, MAX_TITLE_LENGTH);
   const description = safeOptionalText(value.description, MAX_DESCRIPTION_LENGTH);
+  const icon =
+    value.icon === undefined
+      ? undefined
+      : typeof value.icon === "string" && iconSet.has(value.icon)
+        ? (value.icon as BookCollectionIconId)
+        : null;
   const createdAt = safeTimestamp(value.createdAt);
   const updatedAt = safeTimestamp(value.updatedAt);
   const filterState =
@@ -317,6 +339,7 @@ export function parseBookCollection(value: unknown): BookCollection | null {
     (value.ownerId !== undefined && !ownerId) ||
     !title ||
     (value.description !== undefined && !description) ||
+    (value.icon !== undefined && !icon) ||
     !createdAt ||
     !updatedAt ||
     Date.parse(updatedAt) < Date.parse(createdAt) ||
@@ -362,6 +385,7 @@ export function parseBookCollection(value: unknown): BookCollection | null {
     ...(systemType ? { systemType } : {}),
     title,
     ...(description ? { description } : {}),
+    ...(icon ? { icon } : {}),
     visibility: value.visibility as BookCollectionVisibility,
     ...(value.backgroundPreset
       ? { backgroundPreset: value.backgroundPreset as BookScenePresetId }
@@ -712,6 +736,12 @@ export function deriveSystemBookCollections(
       kind: "system",
       systemType,
       title,
+      icon:
+        systemType === "library"
+          ? "archive"
+          : systemType === "finished"
+            ? "star"
+            : "book",
       visibility: "private",
       dynamicBookThemes: true,
       themeIntensity: 72,

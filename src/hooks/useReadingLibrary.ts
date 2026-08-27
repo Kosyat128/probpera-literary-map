@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAuth } from "../community/AuthContext";
 import { supabase } from "../lib/supabase";
@@ -58,14 +58,27 @@ function saveItems(items: SavedReading[]) {
 export function useReadingLibrary() {
   const { configured, user } = useAuth();
   const [items, setItems] = useState<SavedReading[]>(readItems);
+  const itemsRef = useRef(items);
+  const mutationSequenceRef = useRef(0);
+  const latestMutationByItemRef = useRef(new Map<string, number>());
+  const publishItems = useCallback((next: SavedReading[]) => {
+    itemsRef.current = next;
+    saveItems(next);
+    setItems(next);
+  }, []);
 
   useEffect(() => {
     const sync = (event: Event) => {
       const detail = (event as CustomEvent<SavedReading[]>).detail;
-      setItems(Array.isArray(detail) ? detail : readItems());
+      const next = Array.isArray(detail) ? detail : readItems();
+      itemsRef.current = next;
+      setItems(next);
     };
     const syncStorage = (event: StorageEvent) => {
-      if (event.key === STORAGE_KEY) setItems(readItems());
+      if (event.key !== STORAGE_KEY) return;
+      const next = readItems();
+      itemsRef.current = next;
+      setItems(next);
     };
     window.addEventListener(EVENT_NAME, sync);
     window.addEventListener("storage", syncStorage);
@@ -117,8 +130,7 @@ export function useReadingLibrary() {
             if (!merged.has(key)) merged.set(key, item);
           });
         const next = [...merged.values()].slice(0, 200);
-        saveItems(next);
-        setItems(next);
+        publishItems(next);
 
         const remoteKeys = new Set(remoteItems.map(itemKey));
         const localOnly = next.filter((item) => !remoteKeys.has(itemKey(item)));
@@ -142,7 +154,7 @@ export function useReadingLibrary() {
     return () => {
       active = false;
     };
-  }, [configured, user]);
+  }, [configured, publishItems, user]);
 
   const toggle = useCallback((item: Omit<SavedReading, "addedAt" | "status">) => {
     setItems((current) => {
@@ -159,6 +171,7 @@ export function useReadingLibrary() {
             ...current,
           ].slice(0, 200);
       saveItems(next);
+      itemsRef.current = next;
 
       if (configured && supabase && user) {
         if (exists) {
@@ -192,6 +205,54 @@ export function useReadingLibrary() {
     });
   }, [configured, user]);
 
+  const save = useCallback(async (
+    item: Omit<SavedReading, "addedAt" | "status">,
+    status: ReadingStatus = "saved",
+  ) => {
+    const key = itemKey(item);
+    const current = itemsRef.current;
+    const previous = current.find((saved) => itemKey(saved) === key);
+    const saved: SavedReading = {
+      ...item,
+      addedAt: previous?.addedAt || new Date().toISOString(),
+      status,
+    };
+    const next = [
+      saved,
+      ...current.filter((entry) => itemKey(entry) !== key),
+    ].slice(0, 200);
+    const mutationId = ++mutationSequenceRef.current;
+    latestMutationByItemRef.current.set(key, mutationId);
+    publishItems(next);
+
+    if (!configured || !supabase || !user) return true;
+    let remoteError: unknown = null;
+    try {
+      const { error } = await supabase.from("reader_favorites").upsert(
+        {
+          user_id: user.id,
+          item_type: saved.kind,
+          item_id: saved.id,
+          title: saved.title,
+          section_id: saved.sectionId || null,
+          section_label: saved.sectionLabel,
+          href: saved.href || null,
+          added_at: saved.addedAt,
+          reading_status: saved.status,
+        },
+        { onConflict: "user_id,item_type,item_id" }
+      );
+      remoteError = error;
+    } catch (reason) {
+      remoteError = reason;
+    }
+    if (!remoteError) return true;
+    if (latestMutationByItemRef.current.get(key) !== mutationId) return true;
+    const latest = itemsRef.current.filter((entry) => itemKey(entry) !== key);
+    publishItems(previous ? [previous, ...latest].slice(0, 200) : latest);
+    return false;
+  }, [configured, publishItems, user]);
+
   const setStatus = useCallback(
     (id: string, kind: SavedReading["kind"], status: ReadingStatus) => {
       setItems((current) => {
@@ -199,6 +260,7 @@ export function useReadingLibrary() {
           item.id === id && item.kind === kind ? { ...item, status } : item
         );
         saveItems(next);
+        itemsRef.current = next;
 
         if (configured && supabase && user) {
           void supabase
@@ -214,24 +276,38 @@ export function useReadingLibrary() {
     [configured, user]
   );
 
-  const remove = useCallback((id: string, kind: SavedReading["kind"] = "article") => {
-    setItems((current) => {
-      const next = current.filter(
-        (item) => !(item.id === id && item.kind === kind)
-      );
-      saveItems(next);
+  const remove = useCallback(async (
+    id: string,
+    kind: SavedReading["kind"] = "article",
+  ) => {
+    const key = itemKey({ id, kind });
+    const current = itemsRef.current;
+    const previous = current.find((item) => itemKey(item) === key);
+    if (!previous) return true;
+    const next = current.filter((item) => itemKey(item) !== key);
+    const mutationId = ++mutationSequenceRef.current;
+    latestMutationByItemRef.current.set(key, mutationId);
+    publishItems(next);
 
-      if (configured && supabase && user) {
-        void supabase
-          .from("reader_favorites")
-          .delete()
-          .eq("user_id", user.id)
-          .eq("item_type", kind)
-          .eq("item_id", id);
-      }
-      return next;
-    });
-  }, [configured, user]);
+    if (!configured || !supabase || !user) return true;
+    let remoteError: unknown = null;
+    try {
+      const { error } = await supabase
+        .from("reader_favorites")
+        .delete()
+        .eq("user_id", user.id)
+        .eq("item_type", kind)
+        .eq("item_id", id);
+      remoteError = error;
+    } catch (reason) {
+      remoteError = reason;
+    }
+    if (!remoteError) return true;
+    if (latestMutationByItemRef.current.get(key) !== mutationId) return true;
+    const latest = itemsRef.current.filter((item) => itemKey(item) !== key);
+    publishItems([previous, ...latest].slice(0, 200));
+    return false;
+  }, [configured, publishItems, user]);
 
-  return { items, toggle, remove, setStatus };
+  return { items, toggle, save, remove, setStatus };
 }

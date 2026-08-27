@@ -6,7 +6,7 @@ import BrandQuillIcon from "./BrandQuillIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
 
 export type BookShelfViewMode = "shelf" | "catalog";
-export type BookShelfSearchScope = "library" | "global";
+export type BookShelfSearchScope = "library" | "archive" | "global";
 
 export type BookShelfQuickFilterOption = {
   id: string;
@@ -24,6 +24,7 @@ type Props = {
   searchScope: BookShelfSearchScope;
   onSearchScopeChange: (scope: BookShelfSearchScope) => void;
   libraryScopeLabel: string;
+  archiveScopeLabel: string;
   globalScopeLabel: string;
   viewMode: BookShelfViewMode;
   onViewModeChange: (mode: BookShelfViewMode) => void;
@@ -51,6 +52,7 @@ export default function BookShelfControls({
   searchScope,
   onSearchScopeChange,
   libraryScopeLabel,
+  archiveScopeLabel,
   globalScopeLabel,
   viewMode,
   onViewModeChange,
@@ -135,6 +137,7 @@ export default function BookShelfControls({
             aria-label={searchLabel}
           >
             <option value="library">{libraryScopeLabel}</option>
+            <option value="archive">{archiveScopeLabel}</option>
             <option value="global">{globalScopeLabel}</option>
           </select>
         </label>

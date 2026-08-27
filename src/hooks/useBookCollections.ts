@@ -41,6 +41,7 @@ type RemoteCollectionRow = {
   collection_type: string;
   system_type: string | null;
   description: string | null;
+  icon: string | null;
   visibility: string;
   background_preset: string | null;
   dynamic_book_themes: boolean;
@@ -138,6 +139,7 @@ const collectionFromRemote = (row: RemoteCollectionRow): BookCollection | null =
     ...(row.system_type ? { systemType: row.system_type } : {}),
     title: row.name,
     ...(row.description ? { description: row.description } : {}),
+    ...(row.icon ? { icon: row.icon } : {}),
     visibility: row.visibility,
     ...(row.background_preset ? { backgroundPreset: row.background_preset } : {}),
     dynamicBookThemes: row.dynamic_book_themes,
@@ -176,7 +178,7 @@ const readRemoteSnapshot = async (
     client
       .from("reader_book_collections")
       .select(
-        "id,name,collection_type,system_type,description,visibility,background_preset,dynamic_book_themes,theme_intensity,sort_mode,filter_state,schema_version,created_at,updated_at",
+        "id,name,collection_type,system_type,description,icon,visibility,background_preset,dynamic_book_themes,theme_intensity,sort_mode,filter_state,schema_version,created_at,updated_at",
       )
       .eq("user_id", userId),
     client
@@ -220,6 +222,7 @@ const remoteCollection = (value: BookCollection, userId: string) => ({
   collection_type: value.kind,
   system_type: value.systemType ?? null,
   description: value.description ?? null,
+  icon: value.icon ?? null,
   visibility: value.visibility,
   background_preset: value.backgroundPreset ?? null,
   dynamic_book_themes: value.dynamicBookThemes,
@@ -421,6 +424,7 @@ export function useBookCollections() {
         setError(errorMessage(reason));
         setStatus("error");
       }
+      throw reason;
     }).finally(() => {
       if (flushRef.current?.promise === operation) flushRef.current = null;
     });
@@ -518,10 +522,16 @@ export function useBookCollections() {
       const result = await storage.commit(next, mutations);
       publishSnapshot(result.snapshot);
       setError(null);
-      if (configured && user) void flush();
+      if (configured && supabase && user) await flush();
       else setStatus("local-only");
       return true;
     } catch (reason) {
+      try {
+        await storage.acknowledgeMutations(mutations.map(({ id }) => id));
+        await storage.replace(previous);
+      } catch {
+        // The in-memory rollback below remains authoritative for this session.
+      }
       publishSnapshot(previous);
       setError(errorMessage(reason));
       setStatus("error");
@@ -631,6 +641,59 @@ export function useBookCollections() {
       : false;
   }, [commitOptimistic]);
 
+  const reorderBooks = useCallback(async (
+    collectionId: string,
+    orderedBookKeys: readonly string[],
+  ) => {
+    const current = snapshotRef.current;
+    const collection = current.collections.find(({ id }) => id === collectionId);
+    if (!collection || collection.kind !== "manual") return false;
+    const currentItems = current.items.filter(
+      (item) => item.collectionId === collectionId,
+    );
+    const uniqueKeys = [...new Set(orderedBookKeys)];
+    const currentKeySet = new Set(currentItems.map(({ bookKey }) => bookKey));
+    if (
+      uniqueKeys.length !== orderedBookKeys.length ||
+      uniqueKeys.length !== currentKeySet.size ||
+      uniqueKeys.some((key) => !currentKeySet.has(key))
+    ) {
+      return false;
+    }
+    const currentByKey = new Map(currentItems.map((item) => [item.bookKey, item]));
+    const now = new Date().toISOString();
+    const reordered = uniqueKeys.flatMap((bookKey, position) => {
+      const previous = currentByKey.get(bookKey);
+      if (!previous) return [];
+      const item = parseBookCollectionItem({
+        ...previous,
+        position,
+        updatedAt: previous.position === position ? previous.updatedAt : now,
+      });
+      return item ? [item] : [];
+    });
+    if (reordered.length !== uniqueKeys.length) return false;
+    const changed = reordered.filter(
+      (item) => currentByKey.get(item.bookKey)?.position !== item.position,
+    );
+    if (!changed.length) return true;
+    const next = parseBookCollectionSnapshot({
+      ...current,
+      items: [
+        ...current.items.filter((item) => item.collectionId !== collectionId),
+        ...reordered,
+      ],
+    });
+    return next
+      ? commitOptimistic(
+          next,
+          changed.map((value) =>
+            createBookCollectionMutation({ kind: "item-upsert", value }),
+          ),
+        )
+      : false;
+  }, [commitOptimistic]);
+
   const toggleFavorite = useCallback(async (bookKey: string) => {
     const current = snapshotRef.current;
     const previous = current.favorites.find((value) => value.bookKey === bookKey);
@@ -688,6 +751,7 @@ export function useBookCollections() {
     removeCollection,
     addBook,
     removeBook,
+    reorderBooks,
     toggleFavorite,
     retrySync: flush,
   };

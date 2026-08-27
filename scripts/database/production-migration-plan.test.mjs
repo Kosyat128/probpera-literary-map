@@ -75,7 +75,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(15);
+      expect(manifest.migrations).toHaveLength(16);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -92,6 +92,7 @@ describe("guarded production database reconciliation", () => {
         "20260822_zz_atomic_article_bundle.sql",
         "20260823_premium_machine_translation.sql",
         "20260827_reader_book_collections.sql",
+        "20260828_reader_book_collection_icons.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -463,7 +464,7 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=15;invalid_indexes=0"
+      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=16;invalid_indexes=0"
     );
     expect(workflowSource).toContain(
       '[[ "$restore_scope" == "public-application-schema" ]]'

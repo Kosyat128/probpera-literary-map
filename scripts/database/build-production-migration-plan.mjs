@@ -36,6 +36,10 @@ const reviewedMigrations = [
     "20260827_reader_book_collections.sql",
     "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4",
   ],
+  [
+    "20260828_reader_book_collection_icons.sql",
+    "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019",
+  ],
 ];
 
 const reviewedHotfixes = [
