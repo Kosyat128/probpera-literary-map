@@ -32,6 +32,10 @@ const reviewedMigrations = [
     "20260823_premium_machine_translation.sql",
     "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6",
   ],
+  [
+    "20260827_reader_book_collections.sql",
+    "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -228,8 +232,54 @@ begin
     or to_regclass('public.public_build_outbox') is null
     or to_regclass('public.probpera_schema_migrations') is null
     or to_regclass('public.admin_revision_history') is null
-    or to_regclass('public.literary_work_cover_artworks') is null then
+    or to_regclass('public.literary_work_cover_artworks') is null
+    or to_regclass('public.reader_book_collections') is null
+    or to_regclass('public.reader_book_collection_items') is null
+    or to_regclass('public.reader_book_favorites') is null then
     raise exception 'Required editorial relation is missing after reconciliation';
+  end if;
+
+  if (
+    select count(*)
+    from pg_catalog.pg_class relation
+    join pg_catalog.pg_namespace namespace on namespace.oid = relation.relnamespace
+    where namespace.nspname = 'public'
+      and relation.relname in (
+        'reader_book_collections',
+        'reader_book_collection_items',
+        'reader_book_favorites'
+      )
+      and relation.relrowsecurity
+      and relation.relforcerowsecurity
+  ) <> 3 then
+    raise exception 'Reader book collection RLS is not forced on every personal table';
+  end if;
+
+  if (
+    select count(*)
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and tablename in (
+        'reader_book_collections',
+        'reader_book_collection_items',
+        'reader_book_favorites'
+      )
+  ) <> 12 or (
+    select count(*)
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and tablename in (
+        'reader_book_collections',
+        'reader_book_collection_items',
+        'reader_book_favorites'
+      )
+      and roles = array['authenticated'::name]
+      and position(
+        'auth.uid'
+        in coalesce(qual, '') || coalesce(with_check, '')
+      ) > 0
+  ) <> 12 then
+    raise exception 'Reader book collection owner-only policies are incomplete';
   end if;
 
   if to_regprocedure('public.get_editorial_schema_health()') is null

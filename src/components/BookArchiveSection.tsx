@@ -63,10 +63,9 @@ import {
 } from "../books/bookArchiveFacets";
 import {
   applyBookSmartShelf,
-  readBookSmartShelves,
-  saveBookSmartShelf,
   type BookSmartShelf,
 } from "../books/bookSmartShelves";
+import { parseBookCollection } from "../books/bookCollections";
 import {
   chooseRandomBookArchiveItem,
   rememberRandomBookArchiveItem,
@@ -92,6 +91,7 @@ import {
   getCoreHomepageSection,
 } from "../data/cms/homepage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
+import { useBookCollections } from "../hooks/useBookCollections";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { articlePath } from "../utils/articleRoutes";
 import {
@@ -356,9 +356,6 @@ export default function BookArchiveSection({
   const [filterState, setFilterState] = useState<BookArchiveFilterState>(() =>
     normalizeBookArchiveFilterState()
   );
-  const [smartShelves, setSmartShelves] = useState<readonly BookSmartShelf[]>(
-    () => readBookSmartShelves()
-  );
   const [smartShelfStatus, setSmartShelfStatus] = useState("");
   const [activeCollectionId, setActiveCollectionId] = useState("all");
   const [visibleCount, setVisibleCount] = useState(
@@ -476,7 +473,30 @@ export default function BookArchiveSection({
   }, []);
   const { items: savedReadings, toggle: toggleSavedReading } =
     useReadingLibrary();
+  const {
+    collections: bookCollections,
+    favorites: bookFavorites,
+    favoriteKeys,
+    status: bookCollectionSyncStatus,
+    error: bookCollectionError,
+    conflicts: bookCollectionConflicts,
+    upsertCollection,
+    toggleFavorite,
+  } = useBookCollections();
   const { language, t, countryName, number } = useInterfaceLanguage();
+  const smartShelves = useMemo<readonly BookSmartShelf[]>(
+    () =>
+      bookCollections.flatMap((collection) =>
+        collection.kind === "smart" && collection.filterState
+          ? [{
+              id: collection.id,
+              label: collection.title,
+              filterState: collection.filterState,
+            }]
+          : []
+      ),
+    [bookCollections]
+  );
   const deferredQuery = useDeferredValue(query);
   const queue = useMemo(() => classifyBookArchiveQueue(books), [books]);
   const queueByKey = useMemo(
@@ -1532,6 +1552,10 @@ export default function BookArchiveSection({
       )}`,
       href: "#books",
     });
+  const isBookFavorite = (book: BookArchiveEntry) =>
+    favoriteKeys.has(bookKey(book));
+  const toggleBookFavorite = (book: BookArchiveEntry) =>
+    void toggleFavorite(bookKey(book));
 
   const activateGlobalSearchAction = useCallback(
     (action: GlobalSearchActivateAction) => {
@@ -1628,25 +1652,69 @@ export default function BookArchiveSection({
     ]
   );
 
-  const saveCurrentAsSmartShelf = useCallback(() => {
+  const saveCurrentAsSmartShelf = useCallback(async () => {
     if (searchScope !== "library") return;
     setSmartShelfStatus("");
-    const result = saveBookSmartShelf({
+    const now = new Date().toISOString();
+    const collection = parseBookCollection({
       id: "smart-" + Date.now().toString(36),
-      label: t("Моя умная полка") + " " + number(smartShelves.length + 1),
+      kind: "smart",
+      title: t("Моя умная полка") + " " + number(smartShelves.length + 1),
+      visibility: "private",
+      dynamicBookThemes: true,
+      themeIntensity: 70,
+      sortMode: filterState.sort,
       filterState: {
         ...filterState,
         query,
       },
+      schemaVersion: 1,
+      createdAt: now,
+      updatedAt: now,
     });
-    if (!result.shelf || !result.persisted) {
+    if (!collection || !(await upsertCollection(collection))) {
       setSmartShelfStatus(t("Не удалось сохранить умную полку"));
       return;
     }
-    setSmartShelves(result.shelves);
-    setActiveCollectionId(result.shelf.id);
-    setSmartShelfStatus(t("Умная полка сохранена"));
-  }, [filterState, number, query, searchScope, smartShelves.length, t]);
+    setActiveCollectionId(collection.id);
+    setSmartShelfStatus(
+      bookCollectionSyncStatus === "local-only"
+        ? language === "en"
+          ? "Smart shelf saved on this device"
+          : "Умная полка сохранена на этом устройстве"
+        : t("Умная полка сохранена")
+    );
+  }, [
+    bookCollectionSyncStatus,
+    filterState,
+    language,
+    number,
+    query,
+    searchScope,
+    smartShelves.length,
+    t,
+    upsertCollection,
+  ]);
+  const personalCollectionStatus =
+    smartShelfStatus ||
+    (bookCollectionError
+      ? language === "en"
+        ? "Personal shelves could not be synced. Changes remain on this device."
+        : "Не удалось синхронизировать личные полки. Изменения сохранены на этом устройстве."
+      : bookCollectionConflicts.length > 0
+        ? language === "en"
+          ? `Resolved ${number(bookCollectionConflicts.length)} shelf sync conflicts`
+          : `Разрешено конфликтов синхронизации полок: ${number(bookCollectionConflicts.length)}`
+        : bookCollectionSyncStatus === "syncing"
+          ? language === "en"
+            ? "Syncing personal shelves…"
+            : "Синхронизация личных полок…"
+          : bookCollectionSyncStatus === "local-only" &&
+              (smartShelves.length > 0 || bookFavorites.length > 0)
+            ? language === "en"
+              ? "Personal shelves are stored on this device"
+              : "Личные полки хранятся на этом устройстве"
+            : "");
 
   const activeSmartShelf = smartShelves.find(
     (shelf) => shelf.id === activeCollectionId
@@ -1985,13 +2053,13 @@ export default function BookArchiveSection({
               ) : null}
             </>
           ) : null}
-          {smartShelfStatus ? (
+          {personalCollectionStatus ? (
             <span
               className="book-shelf-frame__filter-status"
               role="status"
               aria-live="polite"
             >
-              {smartShelfStatus}
+              {personalCollectionStatus}
             </span>
           ) : null}
         </div>
@@ -2713,22 +2781,24 @@ export default function BookArchiveSection({
             <button
               type="button"
               className={
-                navigationActionBook && isBookSaved(navigationActionBook)
+                navigationActionBook && isBookFavorite(navigationActionBook)
                   ? "is-saved"
                   : ""
               }
-              onClick={() => navigationActionBook && toggleBook(navigationActionBook)}
+              onClick={() =>
+                navigationActionBook && toggleBookFavorite(navigationActionBook)
+              }
               disabled={!navigationActionBook}
               aria-pressed={
                 navigationActionBook
-                  ? isBookSaved(navigationActionBook)
+                  ? isBookFavorite(navigationActionBook)
                   : false
               }
             >
               <BrandHeartIcon
                 filled={
                   navigationActionBook
-                    ? isBookSaved(navigationActionBook)
+                    ? isBookFavorite(navigationActionBook)
                     : false
                 }
               />
