@@ -141,7 +141,7 @@ jobs:
             echo "# Production database reconciliation"
             echo
             printf '%s\n' "- Repository SHA: $EXPECTED_MAIN_SHA"
-            echo "- Migration range: 20260808_article_translations through 20260828_reader_book_collection_icons"
+            echo "- Migration range: 20260808_article_translations through 20260828_zz_editor_autosaves"
             echo "- Guard: exact reviewed SHA-256 allowlist"
           } > reconciliation/summary.md
 
@@ -253,13 +253,18 @@ jobs:
           bash scripts/database/supabase-database-safety.sh verify-production \
             reconciliation/verify.sql \
             reconciliation/production-verification.txt
-          expected='schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=16;invalid_indexes=0'
+          expected='schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=17;invalid_indexes=0'
+          printf '%s\n' "$expected" > reconciliation/production-verification-expected.txt
           actual="$(tr -d '\r\n' < reconciliation/production-verification.txt)"
           [[ "$actual" == "$expected" ]] || {
             echo "::error::Production verification did not return the exact current-schema contract."
             exit 1
           }
           echo "- Production schema health and invariants: passed" >> reconciliation/summary.md
+          printf '%s\n' \
+            "- Expected production verification: $expected" \
+            "- Actual production verification: $actual" \
+            >> reconciliation/summary.md
 
       - name: Finalize redacted summary
         if: always()
@@ -280,6 +285,8 @@ jobs:
           path: |
             reconciliation/migration-manifest.json
             reconciliation/summary.md
+            reconciliation/production-verification-expected.txt
+            reconciliation/production-verification.txt
           retention-days: 90
           if-no-files-found: error
 
@@ -294,4 +301,5 @@ jobs:
             reconciliation/plan.sql \
             reconciliation/verify.sql \
             reconciliation/restore-result.env \
+            reconciliation/production-verification-expected.txt \
             reconciliation/production-verification.txt
