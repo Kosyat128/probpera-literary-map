@@ -55,6 +55,7 @@ import EditorImageDialog, {
 import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
 import RecoveryController from "@/components/editor/RecoveryController";
 import EditorCore from "@/components/article-editor/EditorCore";
+import ArticleEditorShell from "@/components/article-editor/ArticleEditorShell";
 import TranslationPanel from "@/components/article-editor/TranslationPanel";
 import CoverEditor from "@/components/article-editor/CoverEditor";
 import GalleryEditor, {
@@ -1563,9 +1564,63 @@ export default function ArticleEditor({
   };
 
   return (
-    <form
-      ref={formRef}
+    <ArticleEditorShell
+      formRef={formRef}
       action={saveArticleAction}
+      fullscreen={isFullscreen}
+      hidden={{
+        identity: {
+          id: article.id,
+          expectedUpdatedAt: article.updated_at || "",
+          englishExpectedUpdatedAt: englishTranslation?.updated_at || "",
+        },
+        publication: {
+          previousStatus: article.status || "draft",
+          status,
+          scheduledAt,
+          featured,
+          showOnHomepage,
+          pinned,
+          override: "0",
+        },
+        russian: {
+          title,
+          subtitle,
+          excerpt,
+          slug,
+          contentHtml,
+          contentJson,
+          coverAlt,
+          seoTitle,
+          seoDescription,
+          seoKeywords,
+          canonicalUrl,
+          ogTitle,
+          ogDescription,
+          sources: sourceText,
+          bibliography: bibliographyText,
+        },
+        english: {
+          enabled: englishEnabled,
+          title: englishTitle,
+          subtitle: englishSubtitle,
+          excerpt: englishExcerpt,
+          slug: englishSlug,
+          contentHtml: englishContentHtml,
+          contentJson: englishContentJson,
+          coverAlt: englishCoverAlt,
+          seoTitle: englishSeoTitle,
+          seoDescription: englishSeoDescription,
+          seoKeywords: englishSeoKeywords,
+          canonicalUrl: englishCanonicalUrl,
+          ogTitle: englishOgTitle,
+          ogDescription: englishOgDescription,
+          sources: englishSourceText,
+          bibliography: englishBibliographyText,
+          status: englishStatus,
+          confirmedCurrentSource: englishConfirmedCurrentSource,
+        },
+      }}
       onSubmit={(event: ReactFormEvent<HTMLFormElement>) => {
         if (isImageUploadActive) {
           event.preventDefault();
@@ -1610,106 +1665,7 @@ export default function ArticleEditor({
         }
         setIsDirty(false);
       }}
-      className={
-        isFullscreen
-          ? "article-form article-workspace-enabled is-fullscreen"
-          : "article-form article-workspace-enabled"
-      }
     >
-      {article.id && <input type="hidden" name="id" value={article.id} />}
-      {article.id && (
-        <input
-          type="hidden"
-          name="expected_updated_at"
-          value={article.updated_at || ""}
-        />
-      )}
-      <input
-        type="hidden"
-        name="english_expected_updated_at"
-        value={englishTranslation?.updated_at || ""}
-      />
-      <input type="hidden" name="previous_status" value={article.status || "draft"} />
-      <input type="hidden" name="status" value={status} />
-      <input type="hidden" name="scheduled_at" value={scheduledAt} />
-      <input type="hidden" name="featured" value={featured ? "on" : ""} />
-      <input
-        type="hidden"
-        name="show_on_homepage"
-        value={showOnHomepage ? "on" : ""}
-      />
-      <input type="hidden" name="pinned" value={pinned ? "on" : ""} />
-      <input type="hidden" name="title" value={title} />
-      <input type="hidden" name="subtitle" value={subtitle} />
-      <input type="hidden" name="excerpt" value={excerpt} />
-      <input type="hidden" name="slug" value={slug} />
-      <input type="hidden" name="content_html" value={contentHtml} />
-      <input type="hidden" name="content_json" value={contentJson} />
-      <input type="hidden" name="cover_alt" value={coverAlt} />
-      <input type="hidden" name="seo_title" value={seoTitle} />
-      <input type="hidden" name="seo_description" value={seoDescription} />
-      <input type="hidden" name="seo_keywords" value={seoKeywords} />
-      <input type="hidden" name="canonical_url" value={canonicalUrl} />
-      <input type="hidden" name="og_title" value={ogTitle} />
-      <input type="hidden" name="og_description" value={ogDescription} />
-      <input type="hidden" name="sources" value={sourceText} />
-      <input type="hidden" name="bibliography" value={bibliographyText} />
-      <input
-        type="hidden"
-        name="english_enabled"
-        value={englishEnabled ? "on" : ""}
-      />
-      <input type="hidden" name="english_title" value={englishTitle} />
-      <input type="hidden" name="english_subtitle" value={englishSubtitle} />
-      <input type="hidden" name="english_excerpt" value={englishExcerpt} />
-      <input type="hidden" name="english_slug" value={englishSlug} />
-      <input
-        type="hidden"
-        name="english_content_html"
-        value={englishContentHtml}
-      />
-      <input
-        type="hidden"
-        name="english_content_json"
-        value={englishContentJson}
-      />
-      <input type="hidden" name="english_cover_alt" value={englishCoverAlt} />
-      <input type="hidden" name="english_seo_title" value={englishSeoTitle} />
-      <input
-        type="hidden"
-        name="english_seo_description"
-        value={englishSeoDescription}
-      />
-      <input
-        type="hidden"
-        name="english_seo_keywords"
-        value={englishSeoKeywords}
-      />
-      <input
-        type="hidden"
-        name="english_canonical_url"
-        value={englishCanonicalUrl}
-      />
-      <input type="hidden" name="english_og_title" value={englishOgTitle} />
-      <input
-        type="hidden"
-        name="english_og_description"
-        value={englishOgDescription}
-      />
-      <input type="hidden" name="english_sources" value={englishSourceText} />
-      <input
-        type="hidden"
-        name="english_bibliography"
-        value={englishBibliographyText}
-      />
-      <input type="hidden" name="english_status" value={englishStatus} />
-      <input
-        type="hidden"
-        name="english_confirm_current_source"
-        value={englishConfirmedCurrentSource ? "on" : ""}
-      />
-      <input type="hidden" name="publication_override" value="0" />
-
       <RecoveryController
         locator={{
           entityType: "article",
@@ -1873,7 +1829,7 @@ export default function ArticleEditor({
               enqueueFiles: editorMedia.enqueueFiles,
               handleEditorDrop: editorMedia.handleDrop,
               handleEditorPaste: editorMedia.handlePaste,
-              setImageDraggingOverEditor,
+              setImageDraggingOverEditor: setIsImageDraggingOverEditor,
             }}
             refs={{
               fileInputRef: editorMedia.fileInputRef,
@@ -2157,6 +2113,6 @@ export default function ArticleEditor({
           </button>
         </div>
       </footer>
-    </form>
+    </ArticleEditorShell>
   );
 }
