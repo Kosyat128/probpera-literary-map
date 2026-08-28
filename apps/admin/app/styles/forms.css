@@ -1,0 +1,25 @@
+.article-filter-toolbar {
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.article-filter-toolbar .search-input {
+  min-width: 280px;
+}
+
+.article-filter-toolbar input[type="date"],
+.article-filter-toolbar select {
+  min-width: 145px;
+}
+
+.table-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
