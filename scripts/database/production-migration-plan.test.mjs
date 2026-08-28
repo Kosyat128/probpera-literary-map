@@ -22,6 +22,13 @@ const workflowSource = readFileSync(
   path.join(root, ".github/workflows/reconcile-production-database.yml"),
   "utf8"
 ).replace(/\r\n?/gu, "\n");
+const dispatchWorkflowSource = readFileSync(
+  path.join(
+    root,
+    ".github/workflows/dispatch-premium-database-reconciliation.yml"
+  ),
+  "utf8"
+).replace(/\r\n?/gu, "\n");
 const backupWorkflow = readFileSync(
   path.join(root, ".github/workflows/backup.yml"),
   "utf8"
@@ -515,7 +522,22 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;ledger_entries=16;invalid_indexes=0"
+      "Migration range: 20260808_article_translations through 20260828_zz_editor_autosaves"
+    );
+    expect(workflowSource).toContain(
+      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=17;invalid_indexes=0"
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
+    );
+    expect(workflowSource).toContain(
+      "reconciliation/production-verification-expected.txt"
+    );
+    expect(workflowSource).toContain(
+      '"- Expected production verification: $expected"'
+    );
+    expect(workflowSource).toContain(
+      '"- Actual production verification: $actual"'
     );
     expect(workflowSource).toContain(
       '[[ "$restore_scope" == "public-application-schema" ]]'
