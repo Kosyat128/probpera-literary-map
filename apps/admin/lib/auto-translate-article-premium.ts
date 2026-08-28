@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { safeTextToneSpanAttributes } from "./article-content-presentation";
 import { englishTranslationReleaseIssues } from "./article-translations";
+import { sanitizeEditorAnchorAttributes } from "./editor-link";
 import {
   protectedArticleHtmlSignature,
   type AutoTranslationSource,
@@ -104,7 +105,10 @@ const allowedArticleHtml = {
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
-    a: sanitizeHtml.simpleTransform("a", { rel: "noopener noreferrer" }),
+    a: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: sanitizeEditorAnchorAttributes(attributes),
+    }),
     span: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: safeTextToneSpanAttributes(attributes),

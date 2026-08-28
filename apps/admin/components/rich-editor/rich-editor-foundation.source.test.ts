@@ -47,12 +47,14 @@ describe("shared rich editor foundation", () => {
       "toggleBulletList",
       "toggleOrderedList",
       "toggleBlockquote",
+      "insertTable",
+      "setHorizontalRule",
       "undo",
       "redo",
     ]) {
       expect(toolbarSource).toContain(command);
     }
-    expect(toolbarSource).toContain("([2, 3, 4] as const)");
+    expect(toolbarSource).toContain("([2, 3, 4, 5, 6] as const)");
 
     for (const editorSource of [articleSource, pageSource]) {
       expect(editorSource).toContain("createRichEditorExtensions({");

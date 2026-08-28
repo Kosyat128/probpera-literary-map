@@ -59,7 +59,7 @@ export default function RichEditorToolbar({
         disabled={unavailable}
         onClick={() => editor?.chain().focus().toggleUnderline().run()}
       />
-      {([2, 3, 4] as const).map((level) => (
+      {([2, 3, 4, 5, 6] as const).map((level) => (
         <ToolbarButton
           key={level}
           label={`H${level}`}
@@ -87,6 +87,22 @@ export default function RichEditorToolbar({
         active={Boolean(editor?.isActive("blockquote"))}
         disabled={unavailable}
         onClick={() => editor?.chain().focus().toggleBlockquote().run()}
+      />
+      <ToolbarButton
+        label="Таблица 3 × 3"
+        disabled={unavailable}
+        onClick={() =>
+          editor
+            ?.chain()
+            .focus()
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+            .run()
+        }
+      />
+      <ToolbarButton
+        label="Линия-разделитель"
+        disabled={unavailable}
+        onClick={() => editor?.chain().focus().setHorizontalRule().run()}
       />
       <ToolbarButton
         label="Ссылка"

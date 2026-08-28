@@ -24,6 +24,7 @@ import {
   positionLeadingIllustrationJson,
 } from "@/lib/article-leading-illustration";
 import { adminEnv } from "@/lib/env";
+import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
@@ -154,8 +155,9 @@ const allowedArticleHtml = {
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
-    a: sanitizeHtml.simpleTransform("a", {
-      rel: "noopener noreferrer",
+    a: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: sanitizeEditorAnchorAttributes(attributes),
     }),
     span: (tagName: string, attributes: Record<string, string>) => ({
       tagName,

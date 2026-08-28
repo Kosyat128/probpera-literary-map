@@ -18,6 +18,7 @@ import {
   type ArticleTranslationStatus,
 } from "@/lib/article-translations";
 import { adminEnv } from "@/lib/env";
+import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import { articlePublicPath } from "@/lib/article-route";
 import {
   safeTextToneSpanAttributes,
@@ -145,8 +146,9 @@ const allowedArticleHtml = {
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
-    a: sanitizeHtml.simpleTransform("a", {
-      rel: "noopener noreferrer",
+    a: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: sanitizeEditorAnchorAttributes(attributes),
     }),
     span: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
