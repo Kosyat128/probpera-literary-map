@@ -40,6 +40,10 @@ const reviewedMigrations = [
     "20260828_reader_book_collection_icons.sql",
     "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019",
   ],
+  [
+    "20260828_zz_editor_autosaves.sql",
+    "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -239,8 +243,27 @@ begin
     or to_regclass('public.literary_work_cover_artworks') is null
     or to_regclass('public.reader_book_collections') is null
     or to_regclass('public.reader_book_collection_items') is null
-    or to_regclass('public.reader_book_favorites') is null then
+    or to_regclass('public.reader_book_favorites') is null
+    or to_regclass('public.editor_autosaves') is null then
     raise exception 'Required editorial relation is missing after reconciliation';
+  end if;
+
+  if not exists (
+    select 1
+    from pg_catalog.pg_class relation
+    join pg_catalog.pg_namespace namespace on namespace.oid = relation.relnamespace
+    where namespace.nspname = 'public'
+      and relation.relname = 'editor_autosaves'
+      and relation.relrowsecurity
+      and relation.relforcerowsecurity
+  ) or (
+    select count(*)
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and tablename = 'editor_autosaves'
+      and roles = array['authenticated'::name]
+  ) <> 4 then
+    raise exception 'Editor autosave actor-only RLS is incomplete';
   end if;
 
   if (
@@ -305,6 +328,7 @@ begin
     or to_regprocedure('public.enqueue_public_build_request(text,text,text,jsonb)') is null
     or to_regprocedure('public.move_homepage_block(uuid,text)') is null
     or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null
+    or to_regprocedure('public.save_editor_autosave(text,uuid,text,text,timestamptz,uuid,bigint,text,jsonb,timestamptz)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
@@ -450,6 +474,8 @@ select concat(
   ';tags_updated_at=', health ->> 'tagsUpdatedAt',
   ';migration_ledger=', health ->> 'migrationLedger',
   ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
+  ';editor_autosaves=', case when to_regclass('public.editor_autosaves') is not null then 'true' else 'false' end,
+  ';editor_autosave_rpc=', case when to_regprocedure('public.save_editor_autosave(text,uuid,text,text,timestamptz,uuid,bigint,text,jsonb,timestamptz)') is not null then 'true' else 'false' end,
   ';ledger_entries=', (
     select count(*) from public.probpera_schema_migrations
   ),

@@ -83,7 +83,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(16);
+      expect(manifest.migrations).toHaveLength(17);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -101,6 +101,7 @@ describe("guarded production database reconciliation", () => {
         "20260823_premium_machine_translation.sql",
         "20260827_reader_book_collections.sql",
         "20260828_reader_book_collection_icons.sql",
+        "20260828_zz_editor_autosaves.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -111,6 +112,9 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.save_article_bundle");
       expect(plan).toContain("public.premium_machine_translation_ready");
       expect(plan).toContain("public.reader_book_collections");
+      expect(plan).toContain("public.editor_autosaves");
+      expect(plan).toContain("public.save_editor_autosave");
+      expect(plan).toContain("Editor autosave actor-only RLS is incomplete");
       expect(plan).toContain("Reader book collection owner-only policies are incomplete");
       expect(plan).toContain("from pg_catalog.pg_depend dependency");
       expect(plan).toContain("'pg_catalog.pg_policy'::regclass");
@@ -123,6 +127,8 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("staff_editorial_read_policies=");
       expect(verification).toContain("article_bundle_rpc=");
       expect(verification).toContain("premium_machine_translation=");
+      expect(verification).toContain("editor_autosaves=");
+      expect(verification).toContain("editor_autosave_rpc=");
       expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });

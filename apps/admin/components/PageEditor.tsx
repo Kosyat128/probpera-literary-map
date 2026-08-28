@@ -1,14 +1,8 @@
 "use client";
 
-import Link from "@tiptap/extension-link";
-import Placeholder from "@tiptap/extension-placeholder";
-import { TableKit } from "@tiptap/extension-table";
-import TextAlign from "@tiptap/extension-text-align";
-import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { savePageAction } from "@/app/(dashboard)/pages/actions";
 import { createSlug } from "@/lib/slug";
@@ -18,11 +12,16 @@ import {
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
 import {
-  EditorialImage,
   updateEditorialImageAt,
   type EditorialImageLayout,
 } from "@/components/EditorialImage";
 import EditorLinkDialog from "@/components/EditorLinkDialog";
+import EditorImageDialog, {
+  type EditorImageDialogValue,
+} from "@/components/rich-editor/EditorImageDialog";
+import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
+import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
+import RecoveryController from "@/components/editor/RecoveryController";
 import {
   EDITOR_IMAGE_REPLACE_EVENT,
   type EditorImageReplaceDetail,
@@ -49,6 +48,22 @@ type PageImageSelection = {
   expectedSrc?: string;
   nodePos?: number;
   insertionPos?: number;
+};
+
+type PageRecoverySnapshot = {
+  version: 2;
+  title: string;
+  excerpt: string;
+  slug: string;
+  slugEdited: boolean;
+  contentHtml: string;
+  contentJson: string;
+  status: string;
+  seoTitle: string;
+  seoDescription: string;
+  canonicalUrl: string;
+  canonicalEdited: boolean;
+  allowIndexing: boolean;
 };
 
 function suggestedPageImageAlt(file: File) {
@@ -107,11 +122,23 @@ export default function PageEditor({
   const [contentJson, setContentJson] = useState(
     JSON.stringify(page.content_json || { type: "doc", content: [] })
   );
+  const [excerpt, setExcerpt] = useState(page.excerpt || "");
+  const [status, setStatus] = useState(page.status || "draft");
+  const [seoTitle, setSeoTitle] = useState(page.seo_title || "");
+  const [seoDescription, setSeoDescription] = useState(
+    page.seo_description || ""
+  );
+  const [allowIndexing, setAllowIndexing] = useState(
+    page.allow_indexing !== false
+  );
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
   const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
+  const [imageDialogInitialValue, setImageDialogInitialValue] =
+    useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
   const [imageUploadPending, setImageUploadPending] = useState(false);
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
@@ -127,24 +154,58 @@ export default function PageEditor({
   }
   const previewHref = `/pages/${page.id}/preview${previewParams.size ? `?${previewParams.toString()}` : ""}`;
 
+  const recoverySnapshot = useMemo<PageRecoverySnapshot>(
+    () => ({
+      version: 2,
+      title,
+      excerpt,
+      slug,
+      slugEdited,
+      contentHtml,
+      contentJson,
+      status,
+      seoTitle,
+      seoDescription,
+      canonicalUrl,
+      canonicalEdited,
+      allowIndexing,
+    }),
+    [
+      allowIndexing,
+      canonicalEdited,
+      canonicalUrl,
+      contentHtml,
+      contentJson,
+      excerpt,
+      seoDescription,
+      seoTitle,
+      slug,
+      slugEdited,
+      status,
+      title,
+    ]
+  );
+
+  const persistLocalCopy = useCallback(() => {
+    try {
+      window.localStorage.setItem(
+        `probpera-page-editor-${page.id}`,
+        JSON.stringify({ ...recoverySnapshot, savedAt: new Date().toISOString() })
+      );
+      setHasRecoveryCopy(true);
+      return true;
+    } catch {
+      return false;
+    }
+  }, [page.id, recoverySnapshot]);
+
   const editor = useEditor({
     immediatelyRender: false,
-    extensions: [
-      StarterKit.configure({
-        link: false,
-        underline: false,
-      }),
-      EditorialBlock,
-      TableKit,
-      Underline,
-      Link.configure({ openOnClick: false, autolink: true }),
-      EditorialImage,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
-      Placeholder.configure({
-        placeholder:
-          "Напишите содержимое страницы. Подзаголовки, списки и ссылки помогут сделать материал удобным.",
-      }),
-    ],
+    extensions: createRichEditorExtensions({
+      placeholder:
+        "Напишите содержимое страницы. Подзаголовки, списки и ссылки помогут сделать материал удобным.",
+      afterStarterKit: [EditorialBlock],
+    }),
     content: page.content_json || page.content_html || "",
     onUpdate({ editor: currentEditor }) {
       setContentHtml(currentEditor.getHTML());
@@ -186,36 +247,57 @@ export default function PageEditor({
 
   useEffect(() => {
     if (!isDirty) return;
-    const recoveryKey = `probpera-page-editor-${page.id}`;
-    const timer = window.setInterval(() => {
-      window.localStorage.setItem(
-        recoveryKey,
-        JSON.stringify({
-          title,
-          slug,
-          contentHtml,
-          contentJson,
-          savedAt: new Date().toISOString(),
-        })
-      );
-      setHasRecoveryCopy(true);
-    }, 12_000);
+    const timer = window.setInterval(persistLocalCopy, 12_000);
     return () => window.clearInterval(timer);
-  }, [contentHtml, contentJson, isDirty, page.id, slug, title]);
+  }, [isDirty, persistLocalCopy]);
+
+  function applyRecoveryCopy(recovery: Partial<PageRecoverySnapshot>) {
+    if (!editor) return;
+    if (typeof recovery.title === "string") setTitle(recovery.title);
+    if (typeof recovery.excerpt === "string") setExcerpt(recovery.excerpt);
+    if (typeof recovery.slug === "string") setSlug(recovery.slug);
+    if (typeof recovery.slugEdited === "boolean") {
+      setSlugEdited(recovery.slugEdited);
+    }
+    if (typeof recovery.status === "string") setStatus(recovery.status);
+    if (typeof recovery.seoTitle === "string") setSeoTitle(recovery.seoTitle);
+    if (typeof recovery.seoDescription === "string") {
+      setSeoDescription(recovery.seoDescription);
+    }
+    if (typeof recovery.canonicalUrl === "string") {
+      setCanonicalUrl(recovery.canonicalUrl);
+    }
+    if (typeof recovery.canonicalEdited === "boolean") {
+      setCanonicalEdited(recovery.canonicalEdited);
+    }
+    if (typeof recovery.allowIndexing === "boolean") {
+      setAllowIndexing(recovery.allowIndexing);
+    }
+
+    let restoredContent: string | Record<string, unknown> =
+      recovery.contentHtml || "";
+    if (recovery.contentJson) {
+      try {
+        const parsed = JSON.parse(recovery.contentJson) as unknown;
+        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+          restoredContent = parsed as Record<string, unknown>;
+        }
+      } catch {
+        restoredContent = recovery.contentHtml || "";
+      }
+    }
+    editor.commands.setContent(restoredContent);
+    setContentHtml(recovery.contentHtml || editor.getHTML());
+    setContentJson(recovery.contentJson || JSON.stringify(editor.getJSON()));
+    setIsDirty(true);
+  }
 
   function restoreLocalCopy() {
     const raw = window.localStorage.getItem(`probpera-page-editor-${page.id}`);
     if (!raw || !editor) return;
     try {
-      const recovery = JSON.parse(raw) as {
-        title?: string;
-        slug?: string;
-        contentHtml?: string;
-      };
-      if (recovery.title) setTitle(recovery.title);
-      if (recovery.slug) setSlug(recovery.slug);
-      if (recovery.contentHtml) editor.commands.setContent(recovery.contentHtml);
-      setIsDirty(true);
+      const recovery = JSON.parse(raw) as Partial<PageRecoverySnapshot>;
+      applyRecoveryCopy(recovery);
     } catch {
       window.localStorage.removeItem(`probpera-page-editor-${page.id}`);
       setHasRecoveryCopy(false);
@@ -250,6 +332,69 @@ export default function PageEditor({
     setImageUploadMessage("");
     rememberImageSelection();
     imageFileInputRef.current?.click();
+  }
+
+  function openImageUrlDialog() {
+    if (!editor || imageUploadInFlightRef.current) return;
+    setImageUploadError("");
+    setImageUploadMessage("");
+    rememberImageSelection();
+    const attributes = imageSelectionRef.current.attributes;
+    setImageDialogInitialValue({
+      src: typeof attributes.src === "string" ? attributes.src : "",
+      alt: typeof attributes.alt === "string" ? attributes.alt : "",
+      caption:
+        typeof attributes.caption === "string" ? attributes.caption : "",
+    });
+    setImageDialogOpen(true);
+  }
+
+  function applyImageUrl(value: EditorImageDialogValue) {
+    if (!editor) return;
+    const selection = imageSelectionRef.current;
+    const attributes = {
+      ...selection.attributes,
+      src: value.src,
+      mediaId: null,
+      alt: value.alt,
+      caption: value.caption,
+      layout:
+        typeof selection.attributes.layout === "string"
+          ? (selection.attributes.layout as EditorialImageLayout)
+          : "wide",
+    };
+    setImageDialogOpen(false);
+    if (typeof selection.nodePos === "number") {
+      if (
+        !updateEditorialImageAt(
+          editor,
+          selection.nodePos,
+          attributes,
+          selection.expectedSrc
+        )
+      ) {
+        setImageUploadError(
+          "Выбранное изображение уже изменилось. Откройте его и повторите действие."
+        );
+        return;
+      }
+      setImageUploadMessage("Выбранное изображение заменено HTTPS-ссылкой.");
+    } else {
+      const insertionPos = Math.max(
+        0,
+        Math.min(
+          selection.insertionPos ?? editor.state.selection.from,
+          editor.state.doc.content.size
+        )
+      );
+      editor
+        .chain()
+        .focus()
+        .insertContentAt(insertionPos, { type: "image", attrs: attributes })
+        .run();
+      setImageUploadMessage("Изображение по HTTPS-ссылке добавлено в текст.");
+    }
+    setIsDirty(true);
   }
 
   async function uploadImageFile(file: File) {
@@ -375,16 +520,7 @@ export default function PageEditor({
           );
           return;
         }
-        window.localStorage.setItem(
-          `probpera-page-editor-${page.id}`,
-          JSON.stringify({
-            title,
-            slug,
-            contentHtml,
-            contentJson,
-            savedAt: new Date().toISOString(),
-          })
-        );
+        persistLocalCopy();
         setIsDirty(false);
       }}
     >
@@ -396,6 +532,22 @@ export default function PageEditor({
       <input name="editor_revision_page" type="hidden" value={catalogContext.revisionPage} />
       <input name="content_html" type="hidden" value={contentHtml} />
       <input name="content_json" type="hidden" value={contentJson} />
+      <RecoveryController
+        locator={{
+          entityType: "page",
+          entityId: page.id,
+          draftScope: page.id,
+          localeScope: "default",
+          baseUpdatedAt: page.updated_at,
+        }}
+        snapshot={{ ...recoverySnapshot }}
+        isDirty={isDirty}
+        savedAfterSubmit={savedAfterSubmit}
+        onLocalFallback={persistLocalCopy}
+        onRestore={(snapshot) =>
+          applyRecoveryCopy(snapshot as Partial<PageRecoverySnapshot>)
+        }
+      />
       <section className="editor-main panel">
         <div className="editor-kicker">
           <span>Страница сайта</span>
@@ -415,51 +567,16 @@ export default function PageEditor({
         />
         <textarea
           className="lead-input"
-          defaultValue={page.excerpt || ""}
           name="excerpt"
-          onChange={() => setIsDirty(true)}
+          onChange={(event) => {
+            setExcerpt(event.target.value);
+            setIsDirty(true);
+          }}
           placeholder="Краткое описание страницы"
+          value={excerpt}
         />
         <div className="editor-toolbar" aria-label="Форматирование текста">
-          <ToolbarButton
-            active={editor?.isActive("bold")}
-            label="Жирный"
-            onClick={() => editor?.chain().focus().toggleBold().run()}
-          />
-          <ToolbarButton
-            active={editor?.isActive("italic")}
-            label="Курсив"
-            onClick={() => editor?.chain().focus().toggleItalic().run()}
-          />
-          <ToolbarButton
-            active={editor?.isActive("underline")}
-            label="Подчёркивание"
-            onClick={() => editor?.chain().focus().toggleUnderline().run()}
-          />
-          <ToolbarButton
-            active={editor?.isActive("heading", { level: 2 })}
-            label="Заголовок 2"
-            onClick={() =>
-              editor?.chain().focus().toggleHeading({ level: 2 }).run()
-            }
-          />
-          <ToolbarButton
-            active={editor?.isActive("heading", { level: 3 })}
-            label="Заголовок 3"
-            onClick={() =>
-              editor?.chain().focus().toggleHeading({ level: 3 }).run()
-            }
-          />
-          <ToolbarButton
-            active={editor?.isActive("bulletList")}
-            label="Список"
-            onClick={() => editor?.chain().focus().toggleBulletList().run()}
-          />
-          <ToolbarButton
-            active={editor?.isActive("blockquote")}
-            label="Цитата"
-            onClick={() => editor?.chain().focus().toggleBlockquote().run()}
-          />
+          <RichEditorToolbar editor={editor} onLink={setLink} />
           <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
           <ToolbarButton label="Акцент" onClick={() => insertEditorialBlock(editor, "accent")} />
           <ToolbarButton label="2 колонки" onClick={() => insertEditorialBlock(editor, "columns")} />
@@ -469,10 +586,13 @@ export default function PageEditor({
           <ToolbarButton label="Анимация ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
           <ToolbarButton label="Анимация ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
           <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
-          <ToolbarButton label="Ссылка" onClick={setLink} />
           <ToolbarButton
             label={imageUploadPending ? "Загрузка изображения…" : "Изображение с компьютера"}
             onClick={openImagePicker}
+          />
+          <ToolbarButton
+            label="Изображение по HTTPS-адресу"
+            onClick={openImageUrlDialog}
           />
           <ToolbarButton
             label="Таблица"
@@ -518,7 +638,14 @@ export default function PageEditor({
           <h2>Публикация</h2>
           <label className="field">
             <span>Статус</span>
-            <select defaultValue={page.status || "draft"} name="status">
+            <select
+              name="status"
+              value={status}
+              onChange={(event) => {
+                setStatus(event.target.value);
+                setIsDirty(true);
+              }}
+            >
               <option value="draft">Черновик</option>
               <option value="published">Опубликована</option>
               <option value="hidden">Скрыта</option>
@@ -584,13 +711,24 @@ export default function PageEditor({
           <h2>Поисковые системы</h2>
           <label className="field">
             <span>SEO-заголовок</span>
-            <input defaultValue={page.seo_title || ""} name="seo_title" />
+            <input
+              name="seo_title"
+              value={seoTitle}
+              onChange={(event) => {
+                setSeoTitle(event.target.value);
+                setIsDirty(true);
+              }}
+            />
           </label>
           <label className="field">
             <span>SEO-описание</span>
             <textarea
-              defaultValue={page.seo_description || ""}
               name="seo_description"
+              value={seoDescription}
+              onChange={(event) => {
+                setSeoDescription(event.target.value);
+                setIsDirty(true);
+              }}
             />
           </label>
           <label className="field">
@@ -600,15 +738,20 @@ export default function PageEditor({
               onChange={(event) => {
                 setCanonicalEdited(true);
                 setCanonicalUrl(event.target.value);
+                setIsDirty(true);
               }}
               value={canonicalUrl}
             />
           </label>
           <label className="check-field">
             <input
-              defaultChecked={page.allow_indexing !== false}
+              checked={allowIndexing}
               name="allow_indexing"
               type="checkbox"
+              onChange={(event) => {
+                setAllowIndexing(event.target.checked);
+                setIsDirty(true);
+              }}
             />
             <span>Разрешить индексацию</span>
           </label>
@@ -633,6 +776,12 @@ export default function PageEditor({
           }
           setIsDirty(true);
         }}
+      />
+      <EditorImageDialog
+        open={imageDialogOpen}
+        initialValue={imageDialogInitialValue}
+        onCancel={() => setImageDialogOpen(false)}
+        onApply={applyImageUrl}
       />
     </form>
   );

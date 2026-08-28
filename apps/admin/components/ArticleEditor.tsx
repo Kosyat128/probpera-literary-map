@@ -1,13 +1,7 @@
 "use client";
 
-import Link from "@tiptap/extension-link";
-import Placeholder from "@tiptap/extension-placeholder";
-import { TableKit } from "@tiptap/extension-table";
-import TextAlign from "@tiptap/extension-text-align";
-import Underline from "@tiptap/extension-underline";
 import type { JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
 import type {
   DragEvent as ReactDragEvent,
@@ -54,7 +48,6 @@ import {
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
 import {
-  EditorialImage,
   updateEditorialImageAt,
   type EditorialImageLayout,
 } from "@/components/EditorialImage";
@@ -66,6 +59,12 @@ import {
 } from "@/components/editorMediaEvents";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
 import EditorLinkDialog from "@/components/EditorLinkDialog";
+import EditorImageDialog, {
+  type EditorImageDialogValue,
+} from "@/components/rich-editor/EditorImageDialog";
+import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
+import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
+import RecoveryController from "@/components/editor/RecoveryController";
 import {
   useRegisterArticleEditorWorkspace,
   type ArticleEditorWorkspace,
@@ -417,6 +416,9 @@ export default function ArticleEditor({
   const [mediaComposerError, setMediaComposerError] = useState("");
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
   const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
+  const [imageDialogInitialValue, setImageDialogInitialValue] =
+    useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
   const [templatePending, startTemplateTransition] = useTransition();
   const [excerpt, setExcerpt] = useState(article.excerpt || "");
   const [status, setStatus] = useState(article.status || "draft");
@@ -535,23 +537,12 @@ export default function ArticleEditor({
 
   const editor = useEditor({
     immediatelyRender: false,
-    extensions: [
-      StarterKit.configure({
-        link: false,
-        underline: false,
-      }),
-      EditorialBlock,
-      TableKit,
-      Underline,
-      Link.configure({ openOnClick: false, autolink: true }),
-      EditorialImage,
-      ArticleTextTone,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
-      Placeholder.configure({
-        placeholder:
-          "Начните писать. Для большого материала используйте подзаголовки - из них автоматически соберётся оглавление.",
-      }),
-    ],
+    extensions: createRichEditorExtensions({
+      placeholder:
+        "Начните писать. Для большого материала используйте подзаголовки - из них автоматически соберётся оглавление.",
+      afterStarterKit: [EditorialBlock],
+      afterImage: [ArticleTextTone],
+    }),
     content: initialEditorContent,
     onUpdate({ editor: currentEditor }) {
       if (switchingLocaleRef.current) return;
@@ -1171,42 +1162,46 @@ export default function ArticleEditor({
 
   const addImage = () => {
     if (!editor) return;
-    const selectedImage = editor.isActive("image")
-      ? editor.getAttributes("image")
-      : {};
-    const url = window.prompt(
-      editor.isActive("image")
-        ? "Новый адрес выбранного изображения"
-        : "Адрес изображения из медиатеки",
-      typeof selectedImage.src === "string" ? selectedImage.src : ""
-    );
-    if (!url || !editor) return;
-    const alt = window.prompt(
-      "Кратко опишите изображение для читателей и поисковых систем",
-      typeof selectedImage.alt === "string" ? selectedImage.alt : ""
-    );
-    if (alt === null) return;
-    const caption = window.prompt(
-      "Подпись под изображением (необязательно)",
-      typeof selectedImage.caption === "string" ? selectedImage.caption : ""
-    );
-    if (caption === null) return;
+    rememberImageSelection();
+    const selectedImage = imageSelectionRef.current.attributes;
+    setImageDialogInitialValue({
+      src: typeof selectedImage.src === "string" ? selectedImage.src : "",
+      alt: typeof selectedImage.alt === "string" ? selectedImage.alt : "",
+      caption:
+        typeof selectedImage.caption === "string" ? selectedImage.caption : "",
+    });
+    setImageDialogOpen(true);
+  };
+
+  const applyImageUrl = (value: EditorImageDialogValue) => {
+    if (!editor) return;
+    const selection = imageSelectionRef.current;
     const attributes = {
-      src: url,
+      src: value.src,
       // A manually supplied URL is no longer tied to the previously selected
       // media-library record.
       mediaId: null,
-      alt: alt.trim(),
-      caption: caption.trim(),
+      alt: value.alt,
+      caption: value.caption,
       layout:
-        typeof selectedImage.layout === "string"
-          ? (selectedImage.layout as EditorialImageLayout)
+        typeof selection.attributes.layout === "string"
+          ? (selection.attributes.layout as EditorialImageLayout)
           : "wide",
     };
-    if (editor.isActive("image")) {
-      const nodePosition = editor.state.selection.from;
-      if (!updateEditorialImageAt(editor, nodePosition, attributes)) {
-        editor.chain().focus().updateAttributes("image", attributes).run();
+    setImageDialogOpen(false);
+    if (selection.selectedImage && typeof selection.nodePos === "number") {
+      if (
+        !updateEditorialImageAt(
+          editor,
+          selection.nodePos,
+          attributes,
+          selection.expectedSrc
+        )
+      ) {
+        setTemplateMessage(
+          "Выбранное изображение уже изменилось. Откройте его и повторите действие."
+        );
+        return;
       }
       setTemplateMessage("Выбранное изображение заменено.");
       return;
@@ -1650,20 +1645,8 @@ export default function ArticleEditor({
     });
   };
 
-  const restoreLocalCopy = () => {
-    if (!recoverySourceKey) return;
-    const stored = window.localStorage.getItem(recoverySourceKey);
-    if (!stored || !editor) return;
-    try {
-      const recovery = JSON.parse(stored) as ArticleRecoverySnapshot;
-      if (
-        !window.confirm(
-          "Восстановить локальную резервную копию? Текущий текст в редакторе будет заменён."
-        )
-      ) {
-        return;
-      }
-
+  const applyRecoverySnapshot = (recovery: ArticleRecoverySnapshot) => {
+    if (!editor) return;
       if (recovery.version === 2) {
         const english = recovery.english || {};
         setTitle(recovery.title ?? "");
@@ -1785,6 +1768,22 @@ export default function ArticleEditor({
         switchingLocaleRef.current = false;
       }
       setIsDirty(true);
+  };
+
+  const restoreLocalCopy = () => {
+    if (!recoverySourceKey) return;
+    const stored = window.localStorage.getItem(recoverySourceKey);
+    if (!stored || !editor) return;
+    try {
+      const recovery = JSON.parse(stored) as ArticleRecoverySnapshot;
+      if (
+        !window.confirm(
+          "Восстановить локальную резервную копию? Текущий текст в редакторе будет заменён."
+        )
+      ) {
+        return;
+      }
+      applyRecoverySnapshot(recovery);
     } catch {
       window.alert("Локальная копия повреждена и не может быть восстановлена.");
     }
@@ -1937,6 +1936,23 @@ export default function ArticleEditor({
         value={englishConfirmedCurrentSource ? "on" : ""}
       />
       <input type="hidden" name="publication_override" value="0" />
+
+      <RecoveryController
+        locator={{
+          entityType: "article",
+          entityId: article.id || null,
+          draftScope:
+            article.id || recoveryDraftScope || draftKey?.trim() || "new",
+          localeScope: "bilingual",
+          baseUpdatedAt: article.updated_at || null,
+        }}
+        snapshot={{ ...recoverySnapshot }}
+        isDirty={isDirty}
+        savedAfterSubmit={saveConfirmed}
+        onRestore={(snapshot) =>
+          applyRecoverySnapshot(snapshot as ArticleRecoverySnapshot)
+        }
+      />
 
       <nav className="article-language-tabs" aria-label="Язык статьи">
         <button
@@ -2139,19 +2155,11 @@ export default function ArticleEditor({
               aria-disabled={imageUploadTarget !== null}
               inert={imageUploadTarget !== null ? true : undefined}
             >
-              <div className="editor-toolbar-primary">
-                <ToolbarButton label="Жирный" active={editor?.isActive("bold")} onClick={() => editor?.chain().focus().toggleBold().run()} />
-                <ToolbarButton label="Курсив" active={editor?.isActive("italic")} onClick={() => editor?.chain().focus().toggleItalic().run()} />
-                <ToolbarButton label="Подчёркнутый" active={editor?.isActive("underline")} onClick={() => editor?.chain().focus().toggleUnderline().run()} />
-                <ToolbarButton label="H2" active={editor?.isActive("heading", { level: 2 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} />
-                <ToolbarButton label="H3" active={editor?.isActive("heading", { level: 3 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} />
-                <ToolbarButton label="• Список" active={editor?.isActive("bulletList")} onClick={() => editor?.chain().focus().toggleBulletList().run()} />
-                <ToolbarButton label="1. Список" active={editor?.isActive("orderedList")} onClick={() => editor?.chain().focus().toggleOrderedList().run()} />
-                <ToolbarButton label="Цитата" active={editor?.isActive("blockquote")} onClick={() => editor?.chain().focus().toggleBlockquote().run()} />
-                <ToolbarButton label="Ссылка" active={editor?.isActive("link")} onClick={setLink} />
-                <ToolbarButton label="↶ Отменить" onClick={() => editor?.chain().focus().undo().run()} />
-                <ToolbarButton label="↷ Повторить" onClick={() => editor?.chain().focus().redo().run()} />
-              </div>
+              <RichEditorToolbar
+                editor={editor}
+                onLink={setLink}
+                disabled={imageUploadTarget !== null}
+              />
 
               <ToolbarMenu label="＋ Блок">
                 <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
@@ -2208,7 +2216,6 @@ export default function ArticleEditor({
               </ToolbarMenu>
 
               <ToolbarMenu label="Ещё">
-                <ToolbarButton label="H4" active={editor?.isActive("heading", { level: 4 })} onClick={() => editor?.chain().focus().toggleHeading({ level: 4 }).run()} />
                 <ToolbarButton label="Зачёркнутый" active={editor?.isActive("strike")} onClick={() => editor?.chain().focus().toggleStrike().run()} />
                 <ToolbarButton label="Текст слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
                 <ToolbarButton label="Текст по центру" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
@@ -2852,6 +2859,13 @@ export default function ArticleEditor({
           }
           setIsDirty(true);
         }}
+      />
+
+      <EditorImageDialog
+        open={imageDialogOpen}
+        initialValue={imageDialogInitialValue}
+        onCancel={() => setImageDialogOpen(false)}
+        onApply={applyImageUrl}
       />
 
       <footer className="editor-footer">
