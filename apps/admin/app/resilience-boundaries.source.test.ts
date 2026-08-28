@@ -24,7 +24,10 @@ const statusStateSource = readFileSync(
   path.join(process.cwd(), "apps", "admin", "components", "AdminStatusState.tsx"),
   "utf8"
 );
-const stylesSource = readFileSync(path.join(appRoot, "globals.css"), "utf8");
+const layoutStylesSource = readFileSync(
+  path.join(appRoot, "styles", "layout.css"),
+  "utf8"
+);
 
 describe("admin resilience boundaries", () => {
   it("replaces every nullable Supabase page with one shared dependency state", () => {
@@ -62,9 +65,9 @@ describe("admin resilience boundaries", () => {
     expect(statusStateSource).toContain('role="alert"');
     expect(statusStateSource).toContain('aria-live="assertive"');
     expect(statusStateSource).toContain("Редакционная база временно недоступна");
-    expect(stylesSource).toContain(".admin-state-page");
-    expect(stylesSource).toContain(".state-card");
-    expect(stylesSource).toContain(".state-actions");
-    expect(stylesSource).toContain(".primary-button");
+    expect(layoutStylesSource).toContain(".admin-state-page");
+    expect(layoutStylesSource).toContain(".state-card");
+    expect(layoutStylesSource).toContain(".state-actions");
+    expect(layoutStylesSource).toContain(".primary-button");
   });
 });
