@@ -19,6 +19,7 @@
     "cf:upload:built": "opennextjs-cloudflare upload",
     "cf:typegen": "wrangler types --env-interface AdminCloudflareBindings --include-runtime=false cloudflare-env.generated.d.ts && node scripts/normalize-cloudflare-env.mjs",
     "cf:typegen:check": "wrangler types --env-interface AdminCloudflareBindings --include-runtime=false cloudflare-env.generated.d.ts && node scripts/normalize-cloudflare-env.mjs --check",
+    "typecheck": "tsc --noEmit && tsc --project tsconfig.cloudflare.json",
     "start": "node scripts/prepare-standalone.mjs && node scripts/start-admin.mjs",
     "lint": "node ../../scripts/export-editorial-catalog.mjs --check && node ../../scripts/export-interface-copy-catalog.mjs --check && wrangler types --env-interface AdminCloudflareBindings --include-runtime=false cloudflare-env.generated.d.ts && node scripts/normalize-cloudflare-env.mjs --check && tsc --noEmit && tsc --project tsconfig.cloudflare.json"
   },
