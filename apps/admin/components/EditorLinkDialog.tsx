@@ -13,6 +13,7 @@ import {
   type EditorLinkAttributes,
   type EditorLinkRelFlag,
 } from "@/lib/editor-link";
+import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
 
 function updateRelFlags(
   current: EditorLinkRelFlag[],
@@ -46,6 +47,10 @@ export default function EditorLinkDialog({
   const [internalItems, setInternalItems] = useState<EditorInternalLinkItem[]>([]);
   const [internalSearchPending, setInternalSearchPending] = useState(false);
   const [internalSearchError, setInternalSearchError] = useState("");
+  const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
+    open,
+    onClose: onCancel,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -121,13 +126,13 @@ export default function EditorLinkDialog({
       }}
     >
       <section
+        ref={dialogRef}
         className="editor-media-modal editor-link-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") onCancel();
-        }}
+        tabIndex={-1}
+        onKeyDown={onDialogKeyDown}
       >
         <div className="editor-media-modal-heading">
           <div>
@@ -142,7 +147,7 @@ export default function EditorLinkDialog({
         <label className="field">
           <span>Найти опубликованную статью или страницу</span>
           <input
-            autoFocus
+            data-editor-dialog-initial-focus
             value={internalQuery}
             onChange={(event) => setInternalQuery(event.target.value)}
             placeholder="Начните вводить название"
@@ -199,7 +204,6 @@ export default function EditorLinkDialog({
               setError("");
             }}
             onKeyDown={(event) => {
-              if (event.key === "Escape") onCancel();
               if (event.key === "Enter") {
                 event.preventDefault();
                 applyValue();

@@ -1,6 +1,9 @@
 "use client";
 
 import NextLink from "next/link";
+import { useId } from "react";
+
+import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
 
 export type GalleryEditorKind = "gallery" | "slider";
 
@@ -19,6 +22,12 @@ export default function GalleryEditor({
   onCancel: () => void;
   onConfirm: () => void;
 }) {
+  const titleId = useId();
+  const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
+    open: kind !== null,
+    onClose: onCancel,
+  });
+
   if (!kind) return null;
 
   const validUrlCount = value
@@ -36,15 +45,18 @@ export default function GalleryEditor({
       }}
     >
       <section
+        ref={dialogRef}
         className="editor-media-modal"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="editor-media-modal-title"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        onKeyDown={onDialogKeyDown}
       >
         <div className="editor-media-modal-heading">
           <div>
             <span>Изображения статьи</span>
-            <h2 id="editor-media-modal-title">
+            <h2 id={titleId}>
               {kind === "slider" ? "Собрать слайдер" : "Собрать галерею"}
             </h2>
           </div>
@@ -59,7 +71,7 @@ export default function GalleryEditor({
           заменить».
         </p>
         <textarea
-          autoFocus
+          data-editor-dialog-initial-focus
           value={value}
           onChange={(event) => onValueChange(event.target.value)}
           rows={9}

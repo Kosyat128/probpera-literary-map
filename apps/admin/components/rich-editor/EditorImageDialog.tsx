@@ -2,6 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 
+import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
+
 export type EditorImageDialogValue = {
   src: string;
   alt: string;
@@ -37,6 +39,10 @@ export default function EditorImageDialog({
   const [alt, setAlt] = useState(initialValue.alt);
   const [caption, setCaption] = useState(initialValue.caption);
   const [error, setError] = useState("");
+  const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
+    open,
+    onClose: onCancel,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -70,13 +76,13 @@ export default function EditorImageDialog({
       }}
     >
       <section
+        ref={dialogRef}
         className="editor-media-modal editor-image-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") onCancel();
-        }}
+        tabIndex={-1}
+        onKeyDown={onDialogKeyDown}
       >
         <div className="editor-media-modal-heading">
           <div>
@@ -90,7 +96,7 @@ export default function EditorImageDialog({
         <label className="field">
           <span>HTTPS-адрес изображения *</span>
           <input
-            autoFocus
+            data-editor-dialog-initial-focus
             type="url"
             value={src}
             onChange={(event) => {
