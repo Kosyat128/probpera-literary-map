@@ -8,6 +8,7 @@ function source(name: string) {
 describe("article editor panel source contracts", () => {
   it("composes the panels in ArticleEditor without replacing media ownership", () => {
     const articleEditor = source("../ArticleEditor.tsx");
+    const shell = source("./ArticleEditorShell.tsx");
 
     for (const component of [
       "PublishPanel",
@@ -25,10 +26,10 @@ describe("article editor panel source contracts", () => {
     expect(articleEditor).not.toContain("const countHtmlWords =");
     expect(articleEditor).toContain("handleEditorDrop: editorMedia.handleDrop");
     expect(articleEditor).toContain("<EditorMediaDialog");
-    expect(articleEditor).toContain('name="cover_alt"');
-    expect(articleEditor).toContain('name="seo_title"');
-    expect(articleEditor).toContain('name="sources"');
-    expect(articleEditor).toContain('name="bibliography"');
+    expect(shell).toContain('name="cover_alt"');
+    expect(shell).toContain('name="seo_title"');
+    expect(shell).toContain('name="sources"');
+    expect(shell).toContain('name="bibliography"');
   });
 
   it("preserves the existing uncontrolled and named form fields", () => {
