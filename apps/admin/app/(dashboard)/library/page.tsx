@@ -24,6 +24,7 @@ import {
   editorialArtworkSecondaryCount,
 } from "@/lib/literary-work-cover-artwork";
 import { redirect } from "@/lib/navigation";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { saveBookEditionAction, updateBookEditionAction } from "./actions";
 import { saveVisualEntityFieldFormAction } from "../visual-entity-actions";
@@ -207,7 +208,7 @@ export default async function LibraryPage({
     ? await lookupEditionByIsbn(requestedIsbn).catch(() => null)
     : null;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let worksCatalogQuery = supabase
     .from("literary_works")

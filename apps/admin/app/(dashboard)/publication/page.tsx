@@ -7,6 +7,7 @@ import {
   parsePublicationCatalogQuery,
   publicationCatalogHref,
 } from "@/lib/publication-catalog-query";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { requestFullPublicBuildAction, retryPublicationAction } from "./actions";
 
@@ -57,7 +58,7 @@ export default async function PublicationPage({
   const query = await searchParams;
   const catalog = parsePublicationCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let eventsRequest = supabase
     .from("public_build_outbox")

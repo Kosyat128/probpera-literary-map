@@ -11,6 +11,7 @@ import {
   parseHistoryCatalogQuery,
 } from "@/lib/history-catalog-query";
 import { redirect } from "@/lib/navigation";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { restoreRevisionAction } from "./actions";
 
@@ -80,7 +81,7 @@ export default async function HistoryPage({
   const query = await searchParams;
   const catalog = parseHistoryCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let revisionsRequest = supabase
     .from("admin_revision_history")

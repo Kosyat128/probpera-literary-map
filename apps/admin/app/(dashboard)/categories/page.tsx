@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { redirect } from "@/lib/navigation";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   TAXONOMY_TAG_PAGE_SIZE,
@@ -72,7 +73,7 @@ export default async function CategoriesPage({
   const query = await searchParams;
   const catalog = parseTaxonomyCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let tagsRequest = supabase
     .from("tags")

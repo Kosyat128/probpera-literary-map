@@ -3,6 +3,7 @@ import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminMfaStatusLabel } from "@/lib/admin-mfa-policy";
 import { getStaffSession } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   removeStaffMemberAction,
@@ -19,7 +20,7 @@ export default async function SettingsPage({
   const query = await searchParams;
   const session = await getStaffSession();
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const { data: staffResult } =
     (await supabase.from("staff_memberships").select("*").order("created_at")) || {};
   const staff = staffResult || [];

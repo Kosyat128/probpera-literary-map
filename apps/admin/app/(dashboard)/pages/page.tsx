@@ -9,6 +9,7 @@ import {
   parsePageCatalogQuery,
 } from "@/lib/page-catalog-query";
 import { redirect } from "@/lib/navigation";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import {
@@ -35,7 +36,7 @@ export default async function PagesPage({
   const query = await searchParams;
   const catalog = parsePageCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   let pagesRequest = supabase
     .from("pages")
     .select("id,title,slug,status,updated_at", { count: "exact" })

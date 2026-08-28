@@ -1,5 +1,6 @@
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { formatDate } from "@/lib/format";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { deleteBannerAction, saveBannerAction } from "./actions";
 
@@ -145,7 +146,7 @@ export default async function BannersPage({
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const { data: bannersResult } = await supabase
     .from("banners")
     .select("*")

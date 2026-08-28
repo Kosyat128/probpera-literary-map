@@ -4,6 +4,7 @@ import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
 import { articleStatusLabels, formatDate } from "@/lib/format";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { viewPathVariants } from "@/lib/view-path";
 import {
@@ -61,7 +62,7 @@ export default async function ArticlesPage({
     : "updated";
   const currentPage = Math.max(1, Number.parseInt(values.page || "1", 10) || 1);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let request = supabase
     .from("articles")

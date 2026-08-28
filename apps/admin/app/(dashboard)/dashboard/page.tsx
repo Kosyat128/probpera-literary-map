@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { safeCount } from "@/lib/format";
 
@@ -7,7 +8,7 @@ export const metadata = { title: "Обзор" };
 
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const [
     allArticles,
     publishedArticles,

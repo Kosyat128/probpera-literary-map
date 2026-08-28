@@ -7,6 +7,7 @@ import {
   commentsCatalogHref,
   parseCommentsCatalogQuery,
 } from "@/lib/comments-catalog-query";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { moderateCommentAction } from "./actions";
 
@@ -20,7 +21,7 @@ export default async function CommentsPage({
   const query = await searchParams;
   const catalog = parseCommentsCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   let request = supabase
     .from("article_comments")
     .select("id,article_slug,guest_name,body,status,created_at,updated_at,profiles(display_name)", { count: "exact" })
