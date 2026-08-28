@@ -160,36 +160,36 @@ describe("curated writer fact resolutions", () => {
   it("stores Shakuri at the supported month precision without inventing a day", () => {
     const shakuri = writerByKey("tajikistan:muhammadjon_shakuri");
 
-    expect(shakuri?.years).toBe("1925–2012");
+    expect(shakuri?.years).toBe("1925-2012");
     expect(shakuri?.birthDate).toBe("1925-02");
   });
 
   it("keeps Nevil Shute's displayed lifespan consistent with the corrected death date", () => {
-    expect(writerByKey("australia:nevil_shute")?.years).toBe("1899–1960");
+    expect(writerByKey("australia:nevil_shute")?.years).toBe("1899-1960");
   });
 
   it("keeps corrected public names and lifespans consistent with the evidence", () => {
     expect(writerByKey("china:cao_xueqin")?.years).toBe(
-      "ок. 1715 — ок. 1763"
+      "ок. 1715 - ок. 1763"
     );
     expect(writerByKey("china:chi_ziqiang")).toMatchObject({
       name: "Чи Цзыцянь",
       fullName: "Chi Zijian",
-      years: "1964–",
+      years: "1964-",
       birthPlace: "Мохэ, Хэйлунцзян, Китай",
       works: ["Правый берег Аргуни"],
     });
     expect(writerByKey("china:chiang_sheng_tao")).toMatchObject({
       name: "Чжоу Цзожэнь",
       fullName: "Zhou Zuoren",
-      years: "1885–1967",
+      years: "1885-1967",
     });
     expect(writerByKey("comoros:mahmoud_said_ahmed")).toBeUndefined();
     expect(writerByKey("comoros:said_ahmed_mohamed")).toBeUndefined();
     expect(writerByKey("tanzania:said_ahmed_mohamed")).toMatchObject({
       name: "Саид Ахмед Мохамед Хамис",
       fullName: "Said Ahmed Mohamed Khamis",
-      years: "1947–",
+      years: "1947-",
       birthPlace: "Занзибар, Танзания",
     });
     expect(writerByKey("cyprus:kyriakos_charalambous")).toMatchObject({
@@ -198,7 +198,7 @@ describe("curated writer fact resolutions", () => {
       birthPlace: "Ахна, Кипр",
     });
     expect(writerByKey("cyprus:pantelis_michanikos")).toMatchObject({
-      years: "1926–1979",
+      years: "1926-1979",
       birthPlace: "Лимния, Фамагуста, Кипр",
     });
     expect(writerByKey("cyprus:tefkros_anthias")?.birthPlace).toBe(
@@ -210,7 +210,7 @@ describe("curated writer fact resolutions", () => {
     ).toEqual(["Международная литературная премия HKW 2017 года"]);
     expect(writerByKey("democratic_republic_of_congo:v_y_mudimbe")).toMatchObject({
       name: "Валантен-Ив Мудимбе",
-      years: "1941–2025",
+      years: "1941-2025",
     });
     expect(writerByKey("djibouti:abdourahman_waberi")?.name).toBe(
       "Абдурахман Али Вабери"
@@ -225,15 +225,15 @@ describe("curated writer fact resolutions", () => {
     expect(writerByKey("bolivia:vilma_tapia_anda")).toMatchObject({
       name: "Вильма Тапиа Анайя",
       fullName: "Vilma Tapia Anaya",
-      years: "1960–",
+      years: "1960-",
     });
     expect(writerByKey("burkina_faso:frederic_titinga_pacere")?.years).toBe(
-      "1943–2024"
+      "1943-2024"
     );
     expect(writerByKey("burkina_faso:patrick_ilboudo")).toMatchObject({
       name: "Патрик Гомдаого Ильбудо",
       fullName: "Patrick Gomdaogo Ilboudo",
-      years: "1951–1994",
+      years: "1951-1994",
     });
     expect(writerByKey("chad:ahmat_taboye")).toMatchObject({
       name: "Ахмад Табойе",
@@ -241,14 +241,14 @@ describe("curated writer fact resolutions", () => {
     });
     expect(writerByKey("cape_verde:virgilio_de_lemos")).toBeUndefined();
     expect(writerByKey("mozambique:virgilio_de_lemos")).toMatchObject({
-      years: "1929–2013",
+      years: "1929-2013",
       nationality: "мозамбикец",
     });
-    expect(writerByKey("azerbaijan:muhammad_fuzuli")?.years).toBe("1494–1556");
+    expect(writerByKey("azerbaijan:muhammad_fuzuli")?.years).toBe("1494-1556");
     expect(writerByKey("bahrain:ali_abdullah_khalifa")?.years).toBe(
-      "1944–2026"
+      "1944-2026"
     );
-    expect(writerByKey("egypt:sonallah_ibrahim")?.years).toBe("1937–2025");
+    expect(writerByKey("egypt:sonallah_ibrahim")?.years).toBe("1937-2025");
     expect(writerByKey("democratic_republic_of_congo:sylvain_bemba")).toBeUndefined();
     expect(writerByKey("democratic_republic_of_congo:tshibumba_kanda_matulu")).toBeUndefined();
     expect(writerByKey("djibouti:abdourahman_h_yama")).toBeUndefined();
@@ -263,7 +263,7 @@ describe("curated writer fact resolutions", () => {
     expect(writerByKey("egypt:hamdi_abu_golayyel")?.birthDate).toBe("");
     expect(writerByKey("egypt:ibrahim_aslan")?.birthDate).toBe("");
     expect(writerByKey("england:oliver_goldsmith")?.years).toBe(
-      "1728/1730–1774"
+      "1728/1730-1774"
     );
     expect(writerByKey("eritrea:sebhat_gebregziabher")).toBeUndefined();
     expect(writerByKey("fiji:satendra_nandan")).toMatchObject({
@@ -279,16 +279,16 @@ describe("curated writer fact resolutions", () => {
     });
     expect(writerByKey("eritrea:alemseged_tesfai")).toMatchObject({
       name: "Алемсегед Тесфай",
-      years: "1944–",
+      years: "1944-",
       works: ["The Other War", "An African People’s Quest for Freedom and Justice"],
     });
     expect(writerByKey("estonia:friedrich_robert_faehlmann")?.birthDate).toBe(
       "1798-12-31"
     );
-    expect(writerByKey("ethiopia:bealu_girma")?.years).toBe("1939–1984");
+    expect(writerByKey("ethiopia:bealu_girma")?.years).toBe("1939-1984");
     expect(writerByKey("finland:fredrika_bremer")).toMatchObject({
       fullName: "Fredrika Bremer",
-      years: "1801–1865",
+      years: "1801-1865",
       works: ["Соседи", "Херта"],
       nationality: "шведка",
     });
@@ -300,7 +300,7 @@ describe("curated writer fact resolutions", () => {
       deathPlace: "",
     });
     expect(writerByKey("france:francois_rabelais")).toMatchObject({
-      years: "1483/1494–1553",
+      years: "1483/1494-1553",
       birthDate: "",
       birthPlace: "окрестности Шинона, Франция (предположительно)",
     });

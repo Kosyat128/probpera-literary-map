@@ -345,7 +345,7 @@ function accessibleLabel<TCountry, TWriter>(
   member: NobelMarkerSource<TCountry, TWriter>
 ) {
   const year = member.year ? `, ${member.year}` : "";
-  return `${member.writerName} — ${member.countryName}${year}`;
+  return `${member.writerName} - ${member.countryName}${year}`;
 }
 
 function buildAccessibleRows<TCountry, TWriter>(

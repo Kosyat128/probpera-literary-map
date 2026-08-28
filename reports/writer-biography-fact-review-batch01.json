@@ -21,7 +21,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Атик Рахими — писатель и режиссёр.",
+          "claimRu": "Атик Рахими - писатель и режиссёр.",
           "finding": "confirmed",
           "sources": [
             {
@@ -110,7 +110,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Халилулла Халили — афганский поэт XX века.",
+          "claimRu": "Халилулла Халили - афганский поэт XX века.",
           "finding": "confirmed",
           "sources": [
             {
@@ -180,7 +180,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Махмуд Тарзи — писатель, журналист и мыслитель.",
+          "claimRu": "Махмуд Тарзи - писатель, журналист и мыслитель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -226,13 +226,13 @@
     },
     {
       "key": "albania:ismail_kadare",
-      "originalSha256": "349b44b054dcf21e80a5dd73324ba89ddccc9b5c7d5bf72fb4cb39eb413acb74",
-      "originalTextRu": "Крупнейший албанский писатель XX–XXI веков.",
+      "originalSha256": "9c490a561c0d40181e1a30c4324b06272c2c58e9bba1fe629d24918ed0a76fff",
+      "originalTextRu": "Крупнейший албанский писатель XX-XXI веков.",
       "reviewedTextRu": "Албанский писатель, лауреат Международной Букеровской премии 2005 года.",
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Исмаил Кадаре — албанский писатель.",
+          "claimRu": "Исмаил Кадаре - албанский писатель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -309,7 +309,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Джеронимо де Рада — албанский поэт арберешской традиции.",
+          "claimRu": "Джеронимо де Рада - албанский поэт арберешской традиции.",
           "finding": "confirmed",
           "sources": [
             {
@@ -367,7 +367,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Митруш Кутели — писатель, поэт и переводчик.",
+          "claimRu": "Митруш Кутели - писатель, поэт и переводчик.",
           "finding": "confirmed",
           "sources": [
             {
@@ -431,7 +431,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Наим Фрашери — поэт албанского национального Возрождения.",
+          "claimRu": "Наим Фрашери - поэт албанского национального Возрождения.",
           "finding": "confirmed",
           "sources": [
             {
@@ -495,7 +495,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Ассия Джебар — писательница и режиссёр; историю она изучала и преподавала.",
+          "claimRu": "Ассия Джебар - писательница и режиссёр; историю она изучала и преподавала.",
           "finding": "corrected",
           "sources": [
             {
@@ -533,7 +533,7 @@
         },
         {
           "field": "national-cultural-affiliation",
-          "claimRu": "Она — алжирская писательница.",
+          "claimRu": "Она - алжирская писательница.",
           "finding": "confirmed",
           "sources": [
             {
@@ -578,7 +578,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Катеб Ясин — писатель и драматург.",
+          "claimRu": "Катеб Ясин - писатель и драматург.",
           "finding": "confirmed",
           "sources": [
             {
@@ -649,7 +649,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Мохаммед Диб — алжирский писатель.",
+          "claimRu": "Мохаммед Диб - алжирский писатель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -732,7 +732,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Муфди Закария — алжирский поэт.",
+          "claimRu": "Муфди Закария - алжирский поэт.",
           "finding": "confirmed",
           "sources": [
             {
@@ -822,7 +822,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Мулуд Фераун — алжирский писатель.",
+          "claimRu": "Мулуд Фераун - алжирский писатель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -899,7 +899,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Рашид Буджедра — алжирский писатель и романист.",
+          "claimRu": "Рашид Буджедра - алжирский писатель и романист.",
           "finding": "confirmed",
           "sources": [
             {
@@ -988,7 +988,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Антони Морель-и-Мора — андоррский писатель и гуманист.",
+          "claimRu": "Антони Морель-и-Мора - андоррский писатель и гуманист.",
           "finding": "corrected",
           "sources": [
             {
@@ -1040,7 +1040,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Агостиньо Нето — ангольский поэт и общественный деятель.",
+          "claimRu": "Агостиньо Нето - ангольский поэт и общественный деятель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -1091,7 +1091,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Жозе Луандину Виейра — ангольский писатель.",
+          "claimRu": "Жозе Луандину Виейра - ангольский писатель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -1149,7 +1149,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Онджаки — современный ангольский писатель.",
+          "claimRu": "Онджаки - современный ангольский писатель.",
           "finding": "confirmed",
           "sources": [
             {
@@ -1222,11 +1222,11 @@
       "key": "angola:pepetela",
       "originalSha256": "f95c3f3336c3466f706aa255acf42ff62bdcb4d06dd9d0495fa3f1a066843e74",
       "originalTextRu": "Крупнейший ангольский романист, один из главных представителей португалоязычной африканской литературы.",
-      "reviewedTextRu": "Ангольский романист, лауреат премии Камоэнса. Среди его произведений — «Майомбе» и «Поколение утопии».",
+      "reviewedTextRu": "Ангольский романист, лауреат премии Камоэнса. Среди его произведений - «Майомбе» и «Поколение утопии».",
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Пепетела — ангольский романист.",
+          "claimRu": "Пепетела - ангольский романист.",
           "finding": "confirmed",
           "sources": [
             {
@@ -1322,7 +1322,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Джамайка Кинкейд — писательница и эссеистка.",
+          "claimRu": "Джамайка Кинкейд - писательница и эссеистка.",
           "finding": "confirmed",
           "sources": [
             {
@@ -1437,7 +1437,7 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Адольфо Биой Касарес — аргентинский писатель.",
+          "claimRu": "Адольфо Биой Касарес - аргентинский писатель.",
           "finding": "confirmed",
           "sources": [
             {

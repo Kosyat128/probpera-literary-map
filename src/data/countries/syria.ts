@@ -11,7 +11,7 @@ export const syria: Country = {
       name: "Абу аль-Ала аль-Маарри",
       fullName: "Abu al-Ala al-Maarri",
 
-      years: "973–1057",
+      years: "973-1057",
 
       birthDate: "973",
       deathDate: "1057",
@@ -60,7 +60,7 @@ export const syria: Country = {
       name: "Низар Каббани",
       fullName: "Nizar Qabbani",
 
-      years: "1923–1998",
+      years: "1923-1998",
 
       birthDate: "1923-03-21",
       deathDate: "1998-04-30",
@@ -77,7 +77,7 @@ export const syria: Country = {
       bio: "Один из самых известных арабских поэтов XX века.",
 
       works: [
-        "Детство — грудь"
+        "Детство - грудь"
       ],
 
       genres: [
@@ -106,7 +106,7 @@ export const syria: Country = {
       name: "Закария Тамер",
       fullName: "Zakaria Tamer",
 
-      years: "1931–",
+      years: "1931-",
 
       birthDate: "1931-01-02",
       deathDate: "",
@@ -154,7 +154,7 @@ export const syria: Country = {
       name: "Ханна Мина",
       fullName: "Hanna Mina",
 
-      years: "1924–2018",
+      years: "1924-2018",
 
       birthDate: "1924-03-09",
       deathDate: "2018-08-21",
@@ -201,7 +201,7 @@ export const syria: Country = {
       name: "Салим Барракат",
       fullName: "Salim Barakat",
 
-      years: "1951–",
+      years: "1951-",
 
       birthDate: "1951",
       deathDate: "",

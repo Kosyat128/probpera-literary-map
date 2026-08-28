@@ -64,7 +64,7 @@ const EXPECTED_FACTS = {
   "usa:herman_melville:moby-dick": ["Herman Melville", 1851, "английский"],
 };
 
-const EXPECTED_REVIEWER = "Codex factual QA — writer-quality agent";
+const EXPECTED_REVIEWER = "Codex factual QA - writer-quality agent";
 
 describe("curated book enrichment batch 01", () => {
   it("contains the exact 20 unique canonical records selected from the manifest", () => {
@@ -208,7 +208,7 @@ describe("curated book enrichment batch 01", () => {
     );
 
     expect(byKey.get("russia:tolstoy:war-and-peace").editorialNotes).toMatch(
-      /1865.*1867.*1868–1869/u
+      /1865.*1867.*1868-1869/u
     );
     expect(
       byKey.get("spain:miguel_de_cervantes:openlibrary-works-ol15272537w")

@@ -14,7 +14,7 @@ export const bangladesh: Country = {
 
       fullName: "Kazi Nazrul Islam",
 
-      years: "1899–1976",
+      years: "1899-1976",
 
       birthDate: "1899-05-24",
 
@@ -70,7 +70,7 @@ export const bangladesh: Country = {
 
       fullName: "Jibanananda Das",
 
-      years: "1899–1954",
+      years: "1899-1954",
 
       birthDate: "1899-02-17",
 
@@ -122,7 +122,7 @@ export const bangladesh: Country = {
 
       fullName: "Syed Waliullah",
 
-      years: "1922–1971",
+      years: "1922-1971",
 
       birthDate: "1922-08-15",
 
@@ -175,7 +175,7 @@ export const bangladesh: Country = {
 
       fullName: "Humayun Ahmed",
 
-      years: "1948–2012",
+      years: "1948-2012",
 
       birthDate: "1948-11-13",
 
@@ -229,7 +229,7 @@ export const bangladesh: Country = {
 
       fullName: "Selina Hossain",
 
-      years: "1947–",
+      years: "1947-",
 
       birthDate: "1947-06-14",
 
@@ -281,7 +281,7 @@ export const bangladesh: Country = {
 
       fullName: "Tahmima Anam",
 
-      years: "1975–",
+      years: "1975-",
 
       birthDate: "1975-10-08",
 

@@ -627,7 +627,7 @@
     },
     "bangladesh:jibanananda_das": {
       "wikidataId": "Q3116411",
-      "portraitFilename": "Jibanananda Das (1899–1954).jpg",
+      "portraitFilename": "Jibanananda Das (1899-1954).jpg",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q3116411",
       "checkedAt": "2026-08-02"
@@ -1856,7 +1856,7 @@
     },
     "czechia:karel_hynek_macha": {
       "wikidataId": "Q361265",
-      "portraitFilename": "Karel Hynek Mácha – Jan Vilímek – České album.jpg",
+      "portraitFilename": "Karel Hynek Mácha - Jan Vilímek - České album.jpg",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q361265",
       "checkedAt": "2026-08-02"
@@ -3626,7 +3626,7 @@
     },
     "hungary:zsigmond_moricz": {
       "wikidataId": "Q227312",
-      "portraitFilename": "Móricz Zsigmond 1920 körül (Székely Aladár felvétele) – crop.jpg",
+      "portraitFilename": "Móricz Zsigmond 1920 körül (Székely Aladár felvétele) - crop.jpg",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q227312",
       "checkedAt": "2026-08-02"
@@ -6499,7 +6499,7 @@
     },
     "russia:fonvizin": {
       "wikidataId": "Q315885",
-      "portraitFilename": "Armand-Charles Caraffe, Denis Fonvizin, c. 1784–1785, Pushkin House Ж-95; from goskatalog.ru.jpg",
+      "portraitFilename": "Armand-Charles Caraffe, Denis Fonvizin, c. 1784-1785, Pushkin House Ж-95; from goskatalog.ru.jpg",
       "identityRule": "exact-label-and-birth-year",
       "sourceUrl": "https://www.wikidata.org/wiki/Q315885",
       "checkedAt": "2026-08-02"

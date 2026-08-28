@@ -8,7 +8,7 @@ export const bahamas: Country = {
     {
       id: "cyril_bray",
       name: "Сирил Д. Б. Брей",
-      years: "1922–2011",
+      years: "1922-2011",
       birthPlace: "Нассау, Багамы",
       coordinates: {
         lat: 25.0343,
@@ -41,7 +41,7 @@ export const bahamas: Country = {
     {
       id: "wallace_whitfield",
       name: "Уоллес Уитфилд",
-      years: "1930–2007",
+      years: "1930-2007",
       birthPlace: "Багамы",
       coordinates: {
         lat: 25.0343,

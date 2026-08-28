@@ -179,7 +179,7 @@ export default async function EditArticlePage({
       )}
       {query.publish === "queued" && (
         <p className="form-message form-success publication-result">
-          Статья поставлена в очередь публикации. Обновление обычно занимает 5–10 минут.{" "}
+          Статья поставлена в очередь публикации. Обновление обычно занимает 5-10 минут.{" "}
           <a href={publicArticleUrl} target="_blank" rel="noreferrer">
             Публичный адрес статьи →
           </a>

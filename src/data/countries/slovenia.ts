@@ -10,7 +10,7 @@ export const slovenia: Country = {
       id: "france_preseren",
       name: "Франце Прешерн",
       fullName: "France Prešeren",
-      years: "1800–1849",
+      years: "1800-1849",
 
       birthDate: "1800-12-03",
       deathDate: "1849-02-08",
@@ -55,7 +55,7 @@ export const slovenia: Country = {
       id: "ivan_cankar",
       name: "Иван Цанкар",
       fullName: "Ivan Cankar",
-      years: "1876–1918",
+      years: "1876-1918",
 
       birthDate: "1876-05-10",
       deathDate: "1918-12-11",
@@ -102,7 +102,7 @@ export const slovenia: Country = {
       name: "Отон Жупанчич",
       fullName: "Oton Župančič",
 
-      years: "1878–1949",
+      years: "1878-1949",
 
       birthDate: "1878-01-23",
       deathDate: "1949-06-11",
@@ -147,7 +147,7 @@ export const slovenia: Country = {
       name: "Владимир Бартол",
       fullName: "Vladimir Bartol",
 
-      years: "1903–1967",
+      years: "1903-1967",
 
       birthDate: "1903-02-24",
       deathDate: "1967-09-12",
@@ -193,7 +193,7 @@ export const slovenia: Country = {
       name: "Сречко Косовел",
       fullName: "Srečko Kosovel",
 
-      years: "1904–1926",
+      years: "1904-1926",
 
       birthDate: "1904-03-18",
       deathDate: "1926-05-27",
@@ -239,7 +239,7 @@ export const slovenia: Country = {
       name: "Борис Пахор",
       fullName: "Boris Pahor",
 
-      years: "1913–2022",
+      years: "1913-2022",
 
       birthDate: "1913-08-26",
       deathDate: "2022-05-30",
@@ -287,7 +287,7 @@ export const slovenia: Country = {
       name: "Тоне Павчек",
       fullName: "Tone Pavček",
 
-      years: "1928–2011",
+      years: "1928-2011",
 
       birthDate: "1928-01-29",
       deathDate: "2011-10-21",
@@ -333,7 +333,7 @@ export const slovenia: Country = {
       name: "Драго Янчар",
       fullName: "Drago Jančar",
 
-      years: "1948–",
+      years: "1948-",
 
       birthDate: "1948-04-13",
       deathDate: "",

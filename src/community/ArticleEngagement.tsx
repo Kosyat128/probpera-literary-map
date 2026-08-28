@@ -158,7 +158,7 @@ export default function ArticleEngagement({
       setMessage(t("Оценку не удалось сохранить. Попробуйте ещё раз."));
       return;
     }
-    setMessage(t("Спасибо — ваша оценка сохранена."));
+    setMessage(t("Спасибо - ваша оценка сохранена."));
     await loadEngagement();
   };
 
@@ -254,7 +254,7 @@ export default function ArticleEngagement({
       </header>
       <div className="rating-summary">
         <span>
-          <strong>{average ? average.toFixed(1) : "—"}</strong>
+          <strong>{average ? average.toFixed(1) : "-"}</strong>
           <small>
             {number(ratingCount)}{" "}
             {language === "en"

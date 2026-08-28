@@ -135,7 +135,7 @@ const rules = [
     category: "Типографика",
     severity: "low",
     pattern: /(?<=\p{L}|\d)\s-\s(?=\p{L}|\d|«)/gu,
-    suggestion: "Проверить замену дефиса на тире: « — ».",
+    suggestion: "Проверить замену дефиса на тире: « - ».",
     maxPerArticle: 6,
   },
   {
@@ -159,7 +159,7 @@ function excerpt(text, index, length) {
 
 function futureYearFindings(article) {
   const findings = [];
-  const pattern = /\((1[6-9]\d{2}|20\d{2})\s*[–—-]\s*(20\d{2})\)/gu;
+  const pattern = /\((1[6-9]\d{2}|20\d{2})\s*[-]\s*(20\d{2})\)/gu;
   for (const match of article.plainText.matchAll(pattern)) {
     const deathYear = Number(match[2]);
     if (deathYear <= currentYear) continue;

@@ -2464,7 +2464,7 @@ export default function App() {
               <div className="globe-copy">
                 <span>{t("Интерактивный глобус · ручная навигация")}</span>
                 <p>
-                  {t("В выбранной коллекции —")} {archiveDataStatus === "ready" ? number(filteredCountries.length) : "…"}{" "}
+                  {t("В выбранной коллекции -")} {archiveDataStatus === "ready" ? number(filteredCountries.length) : "…"}{" "}
                   {t(
                     selectInterfacePlural(filteredCountries.length, language, [
                       "страна",

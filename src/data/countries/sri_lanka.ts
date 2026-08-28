@@ -13,7 +13,7 @@ export const sriLanka: Country = {
       name: "Мартин Викрамасингхе",
       fullName: "Martin Wickramasinghe",
 
-      years: "1890–1976",
+      years: "1890-1976",
 
       birthDate: "1890-05-29",
       deathDate: "1976-07-23",
@@ -65,7 +65,7 @@ export const sriLanka: Country = {
       name: "Эдиривира Сараччандра",
       fullName: "Ediriweera Sarachchandra",
 
-      years: "1914–1996",
+      years: "1914-1996",
 
       birthDate: "1914-06-03",
       deathDate: "1996-08-16",
@@ -117,7 +117,7 @@ export const sriLanka: Country = {
       name: "Майкл Ондатже",
       fullName: "Philip Michael Ondaatje",
 
-      years: "1943–",
+      years: "1943-",
 
       birthDate: "1943-09-12",
       deathDate: "",
@@ -171,7 +171,7 @@ export const sriLanka: Country = {
       name: "Ромеш Гунесекера",
       fullName: "Romesh Gunesekera",
 
-      years: "1954–",
+      years: "1954-",
 
       birthDate: "1954-01-01",
       deathDate: "",
@@ -222,7 +222,7 @@ export const sriLanka: Country = {
       name: "Шобашакти",
       fullName: "Shobasakthi",
 
-      years: "1964–",
+      years: "1964-",
 
       birthDate: "1964-01-01",
       deathDate: "",
@@ -273,7 +273,7 @@ export const sriLanka: Country = {
       name: "Анн Ранасингхе",
       fullName: "Anne Ranasinghe",
 
-      years: "1925–2016",
+      years: "1925-2016",
 
       birthDate: "1925-10-02",
       deathDate: "2016-12-17",

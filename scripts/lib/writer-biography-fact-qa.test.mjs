@@ -45,14 +45,14 @@ describe("writer biography fact QA", () => {
   it("distinguishes lifespan ranges from years of service", () => {
     expect(
       extractBiographyClaims(
-        "Армянский поэт и общественный деятель, живший в 1875–1957 годах."
+        "Армянский поэт и общественный деятель, живший в 1875-1957 годах."
       ).lifeYearPairs
     ).toEqual([
-      { birthYear: 1875, deathYear: 1957, text: "1875–1957" },
+      { birthYear: 1875, deathYear: 1957, text: "1875-1957" },
     ]);
     expect(
       extractBiographyClaims(
-        "В 1950–1952 годах занимал пост министра образования Египта."
+        "В 1950-1952 годах занимал пост министра образования Египта."
       ).lifeYearPairs
     ).toEqual([]);
   });
@@ -131,7 +131,7 @@ describe("writer biography fact QA", () => {
     expect(claims.nobelYears).toEqual([1970]);
 
     const lifespanAndNobel = extractBiographyClaims(
-      "Дорис Лессинг (1919–2013) — британская писательница, получившая Нобелевскую премию по литературе в 2007 году."
+      "Дорис Лессинг (1919-2013) - британская писательница, получившая Нобелевскую премию по литературе в 2007 году."
     );
     expect(lifespanAndNobel.nobelYears).toEqual([2007]);
     expect(claims.workTitles).toEqual(["Тест"]);
@@ -298,7 +298,7 @@ describe("writer biography fact QA", () => {
         writer: {
           id: "confucius",
           name: "Конфуций",
-          years: "551–479 до н. э.",
+          years: "551-479 до н. э.",
           birthDate: "551 до н. э.",
           deathDate: "479 до н. э.",
           bio: "Китайский мыслитель.",
@@ -313,7 +313,7 @@ describe("writer biography fact QA", () => {
         writer: {
           id: "avvakum",
           name: "Аввакум",
-          years: "1620/1621–1682",
+          years: "1620/1621-1682",
           birthDate: "1620",
           deathDate: "1682",
           bio: "Русский автор.",

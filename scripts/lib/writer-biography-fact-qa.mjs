@@ -20,14 +20,14 @@ const LITERARY_OCCUPATION_IDS = new Set([
 export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
   "djibouti:aden_robleh_awaleh": {
     qid: "Q967740",
-    note: "The exact full name, Djiboutian independence activity and the documented book Djibouti, clef de la mer Rouge establish Aden Robleh Awaleh; the official national biography supplies the corrected 1941–2014 life dates.",
+    note: "The exact full name, Djiboutian independence activity and the documented book Djibouti, clef de la mer Rouge establish Aden Robleh Awaleh; the official national biography supplies the corrected 1941-2014 life dates.",
     sources: [
       {
-        title: "Aden Robleh Awaleh — La Nation, République de Djibouti",
+        title: "Aden Robleh Awaleh - La Nation, République de Djibouti",
         url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/",
       },
       {
-        title: "Aden Robleh Awaleh — Bibliothèque nationale de France",
+        title: "Aden Robleh Awaleh - Bibliothèque nationale de France",
         url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g",
       },
     ],
@@ -37,11 +37,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The estate and British Library identify the English detective writer and playwright Agatha Christie and corroborate the exact mapped entity even though the compact card has no life dates.",
     sources: [
       {
-        title: "Agatha Christie — official estate",
+        title: "Agatha Christie - official estate",
         url: "https://www.agathachristie.com/about-christie",
       },
       {
-        title: "Agatha Christie — British Library",
+        title: "Agatha Christie - British Library",
         url: "https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie",
       },
     ],
@@ -51,11 +51,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The publisher and British Film Institute establish Alex Garland as the British author of The Beach and a screenwriter-director, matching the mapped entity without importing an unsupported birth date.",
     sources: [
       {
-        title: "The Beach — Penguin Books",
+        title: "The Beach - Penguin Books",
         url: "https://www.penguin.co.uk/books/56173/the-beach-by-garland-alex/9780241976562",
       },
       {
-        title: "Alex Garland — British Film Institute",
+        title: "Alex Garland - British Film Institute",
         url: "https://www.bfi.org.uk/features/where-begin-with-alex-garland",
       },
     ],
@@ -65,11 +65,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Anthony Burgess Foundation and Penguin identify the English novelist-composer and author of A Clockwork Orange, establishing the mapped entity.",
     sources: [
       {
-        title: "Anthony Burgess — International Anthony Burgess Foundation",
+        title: "Anthony Burgess - International Anthony Burgess Foundation",
         url: "https://www.anthonyburgess.org/about-anthony-burgess/",
       },
       {
-        title: "A Clockwork Orange — Penguin Books",
+        title: "A Clockwork Orange - Penguin Books",
         url: "https://www.penguin.co.uk/books/384903/a-clockwork-orange-by-anthony-burgess/9781407058542",
       },
     ],
@@ -79,11 +79,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The British Library and Dickinson College identify the Anglo-Saxon monk, historian and theologian Bede and his Historia Ecclesiastica; approximate chronology remains approximate.",
     sources: [
       {
-        title: "Bede — British Library",
+        title: "Bede - British Library",
         url: "https://www.bl.uk/stories/blogs/posts/bede-the-greatest-hits",
       },
       {
-        title: "Bede, Historia Ecclesiastica — Dickinson College Commentaries",
+        title: "Bede, Historia Ecclesiastica - Dickinson College Commentaries",
         url: "https://dcc.dickinson.edu/bede-historia-ecclesiastica/intro/preface",
       },
     ],
@@ -93,11 +93,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Poetry Foundation and National Portrait Gallery establish Geoffrey Chaucer, his royal service and The Canterbury Tales; the public chronology deliberately remains approximate.",
     sources: [
       {
-        title: "Geoffrey Chaucer — Poetry Foundation",
+        title: "Geoffrey Chaucer - Poetry Foundation",
         url: "https://www.poetryfoundation.org/poets/geoffrey-chaucer",
       },
       {
-        title: "Geoffrey Chaucer — National Portrait Gallery",
+        title: "Geoffrey Chaucer - National Portrait Gallery",
         url: "https://www.npg.org.uk/collections/search/person/mp00852/geoffrey-chaucer",
       },
     ],
@@ -107,11 +107,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Poetry Foundation and National Portrait Gallery identify Daniel Defoe as the English writer and journalist associated with Robinson Crusoe; the approximate birth year is not promoted to an exact date.",
     sources: [
       {
-        title: "Daniel Defoe — Poetry Foundation",
+        title: "Daniel Defoe - Poetry Foundation",
         url: "https://www.poetryfoundation.org/poets/daniel-defoe",
       },
       {
-        title: "Daniel Defoe — National Portrait Gallery",
+        title: "Daniel Defoe - National Portrait Gallery",
         url: "https://www.npg.org.uk/collections/search/person/mp01230/daniel-defoe",
       },
     ],
@@ -121,11 +121,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The author's official biography and Simon & Schuster establish the British novelist Diane Setterfield and The Thirteenth Tale, matching the mapped entity without importing an unsupported birthday.",
     sources: [
       {
-        title: "Diane Setterfield — official author site",
+        title: "Diane Setterfield - official author site",
         url: "https://www.dianesetterfield.com/bio/",
       },
       {
-        title: "The Thirteenth Tale — Simon & Schuster",
+        title: "The Thirteenth Tale - Simon & Schuster",
         url: "https://www.simonandschuster.com/books/The-Thirteenth-Tale/Diane-Setterfield/9780743298032",
       },
     ],
@@ -135,11 +135,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Poetry Foundation and National Portrait Gallery identify Edmund Spenser and The Faerie Queene; the approximate birth year remains approximate.",
     sources: [
       {
-        title: "Edmund Spenser — Poetry Foundation",
+        title: "Edmund Spenser - Poetry Foundation",
         url: "https://www.poetryfoundation.org/poets/edmund-spenser",
       },
       {
-        title: "Edmund Spenser — National Portrait Gallery",
+        title: "Edmund Spenser - National Portrait Gallery",
         url: "https://www.npg.org.uk/collections/search/person/mp14383/edmund-spenser",
       },
     ],
@@ -149,11 +149,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The National Portrait Gallery and publisher obituary establish Frederick Forsyth as the British journalist and thriller writer who died in 2025, matching the mapped entity.",
     sources: [
       {
-        title: "Frederick Forsyth — National Portrait Gallery",
+        title: "Frederick Forsyth - National Portrait Gallery",
         url: "https://www.npg.org.uk/collections/search/person/mp05961/frederick-forsyth",
       },
       {
-        title: "Frederick Forsyth obituary — Penguin Random House",
+        title: "Frederick Forsyth obituary - Penguin Random House",
         url: "https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/",
       },
     ],
@@ -163,11 +163,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The exact name, Egyptian writer identity and the two documented novels establish Hamdi Abu Golayyel; this confirmation does not choose between the conflicting 1967 and 1968 birth years.",
     sources: [
       {
-        title: "Hamdi Abu Golayyel — AUC Press",
+        title: "Hamdi Abu Golayyel - AUC Press",
         url: "https://aucpress.com/author/hamdi-abu-golayyel/",
       },
       {
-        title: "Hamdi Abu Golayyel — Words Without Borders",
+        title: "Hamdi Abu Golayyel - Words Without Borders",
         url: "https://wordswithoutborders.org/contributors/view/hamdi-abu-golayyel/",
       },
     ],
@@ -177,11 +177,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The exact name and authorship of The Heron and Nile Sparrows establish Ibrahim Aslan; this confirmation deliberately leaves the conflicting 1935/1936/1937 birth years unresolved.",
     sources: [
       {
-        title: "Ibrahim Aslan — AUC Press",
+        title: "Ibrahim Aslan - AUC Press",
         url: "https://aucpress.com/author/ibrahim-aslan/",
       },
       {
-        title: "Ibrahim Aslan — Banipal",
+        title: "Ibrahim Aslan - Banipal",
         url: "https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/",
       },
     ],
@@ -191,11 +191,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The exact author name, Cypriot-British background, screenwriting work and authorship of The Silent Patient establish Alex Michaelides; the checked sources do not establish an exact birth date, so none is imported.",
     sources: [
       {
-        title: "Alex Michaelides — Macmillan",
+        title: "Alex Michaelides - Macmillan",
         url: "https://us.macmillan.com/author/alexmichaelides",
       },
       {
-        title: "Alex Michaelides — Trinity College Cambridge",
+        title: "Alex Michaelides - Trinity College Cambridge",
         url: "https://www.trin.cam.ac.uk/alumni-interview/alex-michaelides/",
       },
     ],
@@ -205,11 +205,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The exact Zhuangzi/Zhuang Zhou labels, Warring States context and association with the multi-layered Zhuangzi text establish the entity; the public card deliberately keeps approximate dates because the institutional sources emphasize the limits of the biography.",
     sources: [
       {
-        title: "Zhuangzi — Stanford Encyclopedia of Philosophy",
+        title: "Zhuangzi - Stanford Encyclopedia of Philosophy",
         url: "https://plato.stanford.edu/entries/zhuangzi/",
       },
       {
-        title: "Zhuangzi — Internet Encyclopedia of Philosophy, University of Tennessee at Martin",
+        title: "Zhuangzi - Internet Encyclopedia of Philosophy, University of Tennessee at Martin",
         url: "https://iep.utm.edu/zhuangzi-chuang-tzu-chinese-philosopher/",
       },
     ],
@@ -219,11 +219,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The university sources identify Said Ahmed Mohamed Khamis as the Zanzibar-born Tanzanian Swahili writer born on 12 December 1947; the shorter Wikidata label omits Khamis but describes the same person.",
     sources: [
       {
-        title: "Said Ahmed Mohamed Khamis — Universität Bayreuth",
+        title: "Said Ahmed Mohamed Khamis - Universität Bayreuth",
         url: "https://www.presse.uni-bayreuth.de/de/archiv/2012/194-Swahili-Kolloquium.pdf",
       },
       {
-        title: "Said Ahmed Mohamed Khamis — University of Nairobi",
+        title: "Said Ahmed Mohamed Khamis - University of Nairobi",
         url: "https://erepository.uonbi.ac.ke/server/api/core/bitstreams/1a972ff5-f647-4f39-9791-4f705e98abdf/content",
       },
     ],
@@ -233,11 +233,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The authority labels and traditional attribution identify this mapping as the traditional Laozi figure. This confirmation does not establish Laozi's historicity or exact chronology.",
     sources: [
       {
-        title: "Laozi — Stanford Encyclopedia of Philosophy",
+        title: "Laozi - Stanford Encyclopedia of Philosophy",
         url: "https://plato.stanford.edu/archives/spr2026/entries/laozi/",
       },
       {
-        title: "Лао-цзы — Большая российская энциклопедия",
+        title: "Лао-цзы - Большая российская энциклопедия",
         url: "https://bigenc.ru/c/lao-tszy-e153da",
       },
     ],
@@ -247,11 +247,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The authority name, approximate fourteenth-century chronology and traditional attribution of Romance of the Three Kingdoms identify Luo Guanzhong. This confirmation does not resolve variants within the approximate dates.",
     sources: [
       {
-        title: "Chinese Personal Names — Library of Congress",
+        title: "Chinese Personal Names - Library of Congress",
         url: "https://www.loc.gov/catdir/cpso/CJKChap26.pdf",
       },
       {
-        title: "Romance of the Three Kingdoms — Columbia University Asia for Educators",
+        title: "Romance of the Three Kingdoms - Columbia University Asia for Educators",
         url: "https://video.afe.easia.columbia.edu/teaching-guides/romance-of-the-three-kingdoms-teaching-guide/",
       },
     ],
@@ -261,11 +261,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The name and traditional attribution of Water Margin identify the Shi Nai'an figure used by this card. The biography and authorship remain incompletely documented, so this confirmation does not establish exact life dates or sole authorship.",
     sources: [
       {
-        title: "The Story of Water Margin — Library of Congress",
+        title: "The Story of Water Margin - Library of Congress",
         url: "https://blogs.loc.gov/international-collections/2017/07/the-story-of-water-margin-%E6%B0%B4%E6%BB%B8%E5%82%B3/",
       },
       {
-        title: "Water Margin — Indiana University ScholarWorks",
+        title: "Water Margin - Indiana University ScholarWorks",
         url: "https://scholarworks.iu.edu/iuswrrest/api/core/bitstreams/26a1a210-0ac4-4c83-9c3b-705fec901748/content",
       },
     ],
@@ -275,11 +275,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Han-period historian and authorship of the Shiji identify Sima Qian. This confirmation deliberately leaves the competing approximate 145/135 BCE birth and 86/85 BCE death chronologies unresolved.",
     sources: [
       {
-        title: "Records of the Grand Historian — Smithsonian Libraries and Archives",
+        title: "Records of the Grand Historian - Smithsonian Libraries and Archives",
         url: "https://www.si.edu/object/records-grand-historian-han-dynasty-sima-qian-translated-burton-watson%3Asiris_sil_886567",
       },
       {
-        title: "Classical Chinese Historical Thought — Harvard University",
+        title: "Classical Chinese Historical Thought - Harvard University",
         url: "https://puett.scholars.harvard.edu/sites/g/files/omnuum3361/files/puett/files/puett_classical_chinese_historical_thought_8.pdf",
       },
     ],
@@ -289,25 +289,25 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Ming writer and traditional attribution of Journey to the West identify Wu Cheng'en. This confirmation does not promote approximate life dates to exact dates or remove the attribution caveat.",
     sources: [
       {
-        title: "Wu Cheng'en — British Museum",
+        title: "Wu Cheng'en - British Museum",
         url: "https://www.britishmuseum.org/collection/object/A_1947-0712-160",
       },
       {
-        title: "Xiyou zhen quan — University of Southern California Chinese Rare Books",
+        title: "Xiyou zhen quan - University of Southern California Chinese Rare Books",
         url: "https://scalar.usc.edu/works/chinese-rare-books/media/xiyouzhenquan",
       },
     ],
   },
   "china:cao_xueqin": {
     qid: "Q182874",
-    note: "The exact RU/EN labels, Qing-era literary role and authorship of Dream of the Red Chamber identify Cao Xueqin; the Library of Congress and Harvard sources support the deliberately approximate ca. 1715–ca. 1763 display rather than a false exact birth date.",
+    note: "The exact RU/EN labels, Qing-era literary role and authorship of Dream of the Red Chamber identify Cao Xueqin; the Library of Congress and Harvard sources support the deliberately approximate ca. 1715-ca. 1763 display rather than a false exact birth date.",
     sources: [
       {
-        title: "Dream of the Red Chamber — Library of Congress",
+        title: "Dream of the Red Chamber - Library of Congress",
         url: "https://www.loc.gov/resource/gdcwdl.wdl_13547/?sp=5&st=list",
       },
       {
-        title: "The Story of the Stone — Fairbank Center for Chinese Studies, Harvard University",
+        title: "The Story of the Stone - Fairbank Center for Chinese Studies, Harvard University",
         url: "https://fairbank.fas.harvard.edu/events/wei-shang-the-story-of-the-stone-and-the-visual-culture-of-the-manchu-court/",
       },
     ],
@@ -317,11 +317,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The exact RU/EN labels, Chilean authorship, national-literature award and institutional biography identify Diamela Eltit; only Wikidata's 1947 birth-year claim conflicts with the Universidad de Chile record for 1949.",
     sources: [
       {
-        title: "Diamela Eltit González — Universidad de Chile",
+        title: "Diamela Eltit González - Universidad de Chile",
         url: "https://uchile.cl/presentacion/historia/grandes-figuras/premios-nacionales/literatura/diamela-eltit-gonzalez",
       },
       {
-        title: "Diamela Eltit — Ministerio de las Culturas, las Artes y el Patrimonio",
+        title: "Diamela Eltit - Ministerio de las Culturas, las Artes y el Patrimonio",
         url: "https://www.cultura.gob.cl/institucional/ministra-de-las-culturas-anuncia-a-diamela-eltit-como-la-ganadora-del-premio-nacional-de-literatura-2018/",
       },
     ],
@@ -331,11 +331,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The entity identifiers, occupations, Colombian citizenship, authority links and Commons portrait identify the novelist Santiago Gamboa; only its 1962 birth-year claim conflicts with the institutional biography.",
     sources: [
       {
-        title: "Santiago Gamboa — Instituto Cervantes de Lyon",
+        title: "Santiago Gamboa - Instituto Cervantes de Lyon",
         url: "https://cultura.cervantes.es/lyon/es/Santiago-Gamboa/185167",
       },
       {
-        title: "Santiago Gamboa — Europa Editions",
+        title: "Santiago Gamboa - Europa Editions",
         url: "https://www.europaeditions.com/author/119/santiago-gamboa",
       },
     ],
@@ -345,11 +345,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Booker Prize archive and Macmillan identify Hilary Mantel, her Cromwell trilogy and its two Booker-winning novels, establishing the mapped writer identity.",
     sources: [
       {
-        title: "Hilary Mantel — The Booker Prizes",
+        title: "Hilary Mantel - The Booker Prizes",
         url: "https://thebookerprizes.com/the-booker-library/authors/hilary-mantel",
       },
       {
-        title: "Hilary Mantel — Macmillan",
+        title: "Hilary Mantel - Macmillan",
         url: "https://us.macmillan.com/author/hilarymantel/",
       },
     ],
@@ -359,11 +359,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Booker Prize archive and the author's official bibliography identify Ian McEwan and his Booker-winning novel Amsterdam, establishing the mapped writer identity.",
     sources: [
       {
-        title: "Ian McEwan — The Booker Prizes",
+        title: "Ian McEwan - The Booker Prizes",
         url: "https://thebookerprizes.com/the-booker-library/authors/ian-mcewan",
       },
       {
-        title: "Amsterdam — Ian McEwan official website",
+        title: "Amsterdam - Ian McEwan official website",
         url: "https://www.ianmcewan.com/books/amsterdam.html",
       },
     ],
@@ -373,11 +373,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The author's official biography and Hachette identify the Anglo-French novelist Joanne Harris and the documented novels, establishing the mapped identity without inventing a day-level birth date.",
     sources: [
       {
-        title: "Joanne Harris — official website",
+        title: "Joanne Harris - official website",
         url: "https://www.joanne-harris.co.uk/about/",
       },
       {
-        title: "Joanne Harris — Hachette UK",
+        title: "Joanne Harris - Hachette UK",
         url: "https://www.hachette.co.uk/contributor/joanne-harris/",
       },
     ],
@@ -387,11 +387,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The official estate biography and the Bodleian archive identify John le Carré as David John Moore Cornwell and document his intelligence service and literary archive, establishing the mapped identity.",
     sources: [
       {
-        title: "John le Carré — official biography",
+        title: "John le Carré - official biography",
         url: "https://johnlecarre.com/biography/",
       },
       {
-        title: "John le Carré archive — Bodleian Libraries",
+        title: "John le Carré archive - Bodleian Libraries",
         url: "https://archives.bodleian.ox.ac.uk/repositories/2/resources/14397",
       },
     ],
@@ -401,11 +401,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The author's official biography and Pan Macmillan identify the British novelist and his documented thrillers, establishing the mapped identity without importing an unsupported birth date.",
     sources: [
       {
-        title: "John Marrs — official biography",
+        title: "John Marrs - official biography",
         url: "https://www.johnmarrsauthor.com/about",
       },
       {
-        title: "John Marrs — Pan Macmillan",
+        title: "John Marrs - Pan Macmillan",
         url: "https://www.panmacmillan.com/authors/john-marrs/42734",
       },
     ],
@@ -415,11 +415,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Macmillan and Simon & Schuster identify the British author Lee Child and the Jack Reacher series beginning with Killing Floor, establishing the mapped identity.",
     sources: [
       {
-        title: "Lee Child — Macmillan",
+        title: "Lee Child - Macmillan",
         url: "https://us.macmillan.com/author/leechild",
       },
       {
-        title: "Lee Child — Simon & Schuster",
+        title: "Lee Child - Simon & Schuster",
         url: "https://www.simonandschuster.com/authors/Lee-Child/260099991",
       },
     ],
@@ -429,11 +429,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Russian Great Encyclopedia and the National Portrait Gallery identify the same Irish-born writer Oliver Goldsmith and his documented works. Their disagreement over 1728 versus 1730 is retained as date uncertainty, not an identity conflict.",
     sources: [
       {
-        title: "Оливер Голдсмит — Большая российская энциклопедия",
+        title: "Оливер Голдсмит - Большая российская энциклопедия",
         url: "https://old.bigenc.ru/literature/text/2366524",
       },
       {
-        title: "Oliver Goldsmith — National Portrait Gallery",
+        title: "Oliver Goldsmith - National Portrait Gallery",
         url: "https://www.npg.org.uk/collections/search/personExtended/mp01810/oliver-goldsmith?tab=biography",
       },
     ],
@@ -443,11 +443,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Bloomsbury and Penguin identify the Zimbabwe-born British novelist Paula Hawkins and The Girl on the Train, establishing the mapped identity.",
     sources: [
       {
-        title: "Paula Hawkins — Bloomsbury",
+        title: "Paula Hawkins - Bloomsbury",
         url: "https://www.bloomsbury.com/uk/author/paula-hawkins/",
       },
       {
-        title: "The Girl on the Train — Penguin Books",
+        title: "The Girl on the Train - Penguin Books",
         url: "https://www.penguin.co.uk/books/434488/the-girl-on-the-train-by-hawkins-paula/9781448171682",
       },
     ],
@@ -457,11 +457,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Penguin Random House and EBSCO identify the Italy-born British historical novelist Rafael Sabatini and his documented works, establishing the mapped identity.",
     sources: [
       {
-        title: "Rafael Sabatini — Penguin Random House",
+        title: "Rafael Sabatini - Penguin Random House",
         url: "https://www.penguinrandomhouse.com/authors/26615/rafael-sabatini/",
       },
       {
-        title: "Rafael Sabatini — EBSCO Research",
+        title: "Rafael Sabatini - EBSCO Research",
         url: "https://www.ebsco.com/research-starters/biography/rafael-sabatini",
       },
     ],
@@ -471,11 +471,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "DHH Literary Agency and Bloomsbury identify the British novelist-journalist Stuart Turton and his documented novels, establishing the mapped identity without importing an unsupported precise birthday.",
     sources: [
       {
-        title: "Stuart Turton — DHH Literary Agency",
+        title: "Stuart Turton - DHH Literary Agency",
         url: "https://www.dhhliteraryagency.com/stuart-turton",
       },
       {
-        title: "Stuart Turton — Bloomsbury",
+        title: "Stuart Turton - Bloomsbury",
         url: "https://www.bloomsbury.com/uk/author/stuart-turton/",
       },
     ],
@@ -485,11 +485,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Nobel Prize archive and the official T. S. Eliot estate identify Thomas Stearns Eliot; the compact Wikidata label is an abbreviation of the same person.",
     sources: [
       {
-        title: "T. S. Eliot — Nobel Prize",
+        title: "T. S. Eliot - Nobel Prize",
         url: "https://www.nobelprize.org/prizes/literature/1948/eliot/",
       },
       {
-        title: "T. S. Eliot — official estate and Faber & Faber",
+        title: "T. S. Eliot - official estate and Faber & Faber",
         url: "https://tseliot.com/foundation/about/",
       },
     ],
@@ -499,11 +499,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Bloomsbury and Hurst identify the Eritrean playwright-historian Alemseged Tesfai and his documented works; the publisher biographies also establish the corrected 1944 birth year.",
     sources: [
       {
-        title: "Alemseged Tesfai — Bloomsbury Publishing",
+        title: "Alemseged Tesfai - Bloomsbury Publishing",
         url: "https://www.bloomsbury.com/us/author/alemseged-tesfai/",
       },
       {
-        title: "Alemseged Tesfai — C. Hurst & Co. Publishers",
+        title: "Alemseged Tesfai - C. Hurst & Co. Publishers",
         url: "https://www.hurstpublishers.com/wp-content/uploads/2024/03/LBF24-Hurst-catalogue-lo-res-RGB.pdf",
       },
     ],
@@ -513,11 +513,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The National Library of Finland and Finnish Literature Society identify Mikael Agricola, his Reformation-era printed works and his role in the Finnish literary language; the birth year remains explicitly approximate.",
     sources: [
       {
-        title: "Mikael Agricola — National Library of Finland",
+        title: "Mikael Agricola - National Library of Finland",
         url: "https://kansalliskirjasto.finna.fi/Record/doria.10024_130474",
       },
       {
-        title: "Mikael Agricola — Finnish Literature Society",
+        title: "Mikael Agricola - Finnish Literature Society",
         url: "https://www.finna.fi/Record/sks_doabooks.19784",
       },
     ],
@@ -527,11 +527,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The BnF and Yale identify Chrétien de Troyes and his Arthurian romances; the public profile deliberately uses only the second half of the twelfth century because exact life years are not documented.",
     sources: [
       {
-        title: "Quêtes arthuriennes — Bibliothèque nationale de France",
+        title: "Quêtes arthuriennes - Bibliothèque nationale de France",
         url: "https://cdn.essentiels.bnf.fr/uploads/media/attachment/20220321123022000000_quetesarthuriennes.pdf",
       },
       {
-        title: "The Romances of Chrétien de Troyes — Yale University Press",
+        title: "The Romances of Chrétien de Troyes - Yale University Press",
         url: "https://yalebooks.yale.edu/book/9780300133707/the-romances-of-chretien-de-troyes/",
       },
     ],
@@ -541,11 +541,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The BnF and Simon & Schuster identify French thriller writer and screenwriter Franck Thilliez and his documented novels, establishing the mapped identity and retaining the authority birth date.",
     sources: [
       {
-        title: "Franck Thilliez — Bibliothèque nationale de France",
+        title: "Franck Thilliez - Bibliothèque nationale de France",
         url: "https://www.bnf.fr/fr/mediatheque/franck-thilliez",
       },
       {
-        title: "Franck Thilliez — Simon & Schuster",
+        title: "Franck Thilliez - Simon & Schuster",
         url: "https://www.simonandschuster.com/authors/Franck-Thilliez/228575065",
       },
     ],
@@ -555,11 +555,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The BnF and Musée Rabelais identify François Rabelais, the humanist physician and author of the Gargantua-Pantagruel cycle; the public profile keeps the documented 1483/1494 birth-year dispute visible.",
     sources: [
       {
-        title: "François Rabelais — Bibliothèque nationale de France",
+        title: "François Rabelais - Bibliothèque nationale de France",
         url: "https://catalogue.bnf.fr/ark%3A/12148/cb11920939s",
       },
       {
-        title: "François Rabelais — Musée Rabelais",
+        title: "François Rabelais - Musée Rabelais",
         url: "https://www.musee-rabelais.fr/le-musee/rabelais/sa-vie/",
       },
     ],
@@ -569,11 +569,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Académie française and Comédie-Française identify Jean Racine and his tragedies; the public life dates agree with the Academy biography.",
     sources: [
       {
-        title: "Jean Racine — Académie française",
+        title: "Jean Racine - Académie française",
         url: "https://www.academie-francaise.fr/les-immortels/jean-racine",
       },
       {
-        title: "Andromaque — Comédie-Française",
+        title: "Andromaque - Comédie-Française",
         url: "https://www.comedie-francaise.fr/2013-2014/andromaque",
       },
     ],
@@ -583,11 +583,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "The Georgian Encyclopedia and UNESCO identify Shota Rustaveli as the Georgian court poet associated with The Knight in the Panther's Skin, establishing the exact curated entity without promoting disputed exact life dates.",
     sources: [
       {
-        title: "Shota Rustaveli — Georgian Encyclopedia",
+        title: "Shota Rustaveli - Georgian Encyclopedia",
         url: "https://www.georgianencyclopedia.ge/en/form_eng/903",
       },
       {
-        title: "Shota Rustaveli manuscript collection — UNESCO Memory of the World",
+        title: "Shota Rustaveli manuscript collection - UNESCO Memory of the World",
         url: "https://www.unesco.org/en/memory-world/manuscript-collection-shota-rustavelis-poem-knight-panthers-skin",
       },
     ],
@@ -597,25 +597,25 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify the medieval German poet and knight Hartmann von Aue and document Erec, Iwein, Gregorius and Der arme Heinrich; the chronology remains deliberately approximate.",
     sources: [
       {
-        title: "Hartmann von Aue — Deutsche Biographie",
+        title: "Hartmann von Aue - Deutsche Biographie",
         url: "https://www.deutsche-biographie.de/sfz26217.html",
       },
       {
-        title: "Hartmann von Aue — Deutsche Nationalbibliothek",
+        title: "Hartmann von Aue - Deutsche Nationalbibliothek",
         url: "https://d-nb.info/gnd/118546228",
       },
     ],
   },
   "germany:sebastian_brant": {
     qid: "Q60351",
-    note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify Sebastian Brant, his 1458–1521 chronology and his authorship of Das Narrenschiff, establishing the exact curated entity.",
+    note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify Sebastian Brant, his 1458-1521 chronology and his authorship of Das Narrenschiff, establishing the exact curated entity.",
     sources: [
       {
-        title: "Sebastian Brant — Deutsche Biographie",
+        title: "Sebastian Brant - Deutsche Biographie",
         url: "https://www.deutsche-biographie.de/gnd118514474.html",
       },
       {
-        title: "Sebastian Brant — Deutsche Nationalbibliothek",
+        title: "Sebastian Brant - Deutsche Nationalbibliothek",
         url: "https://d-nb.info/gnd/118514474",
       },
     ],
@@ -625,11 +625,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Deutsche Biographie and the Deutsche Nationalbibliothek identify Walther von der Vogelweide as the medieval German lyric poet associated with Minnesang and the surviving manuscript tradition; approximate dates remain approximate.",
     sources: [
       {
-        title: "Walther von der Vogelweide — Deutsche Biographie",
+        title: "Walther von der Vogelweide - Deutsche Biographie",
         url: "https://www.deutsche-biographie.de/sfz84442.html",
       },
       {
-        title: "Walther von der Vogelweide — Deutsche Nationalbibliothek",
+        title: "Walther von der Vogelweide - Deutsche Nationalbibliothek",
         url: "https://d-nb.info/gnd/118628976",
       },
     ],
@@ -639,11 +639,11 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
     note: "Deutsche Biographie and Heidelberg University Library identify Wolfram von Eschenbach as the medieval German poet responsible for Parzival and Willehalm; approximate dates remain approximate.",
     sources: [
       {
-        title: "Wolfram von Eschenbach — Deutsche Biographie",
+        title: "Wolfram von Eschenbach - Deutsche Biographie",
         url: "https://www.deutsche-biographie.de/sfz98512.html",
       },
       {
-        title: "Parzival manuscript — Universitätsbibliothek Heidelberg",
+        title: "Parzival manuscript - Universitätsbibliothek Heidelberg",
         url: "https://digi.ub.uni-heidelberg.de/diglit/cpg339i",
       },
     ],
@@ -665,11 +665,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The exact birth year is disputed: the Russian Great Encyclopedia gives 10 November 1730, while the National Portrait Gallery uses 1728. The public card therefore does not present either year as certain.",
       sources: [
         {
-          title: "Оливер Голдсмит — Большая российская энциклопедия",
+          title: "Оливер Голдсмит - Большая российская энциклопедия",
           url: "https://old.bigenc.ru/literature/text/2366524",
         },
         {
-          title: "Oliver Goldsmith — National Portrait Gallery",
+          title: "Oliver Goldsmith - National Portrait Gallery",
           url: "https://www.npg.org.uk/collections/search/personExtended/mp01810/oliver-goldsmith?tab=biography",
         },
       ],
@@ -684,11 +684,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false 1904 birth date was replaced with the Casa de la Cultura authority date.",
       sources: [
         {
-          title: "Lupe Rumazo — Academia Ecuatoriana de la Lengua",
+          title: "Lupe Rumazo - Academia Ecuatoriana de la Lengua",
           url: "https://www.academiaecuatorianadelalengua.org/sra-d-a-lupe-rumazo-de-alzamora/",
         },
         {
-          title: "Lupe Rumazo — Casa de la Cultura Ecuatoriana authority record",
+          title: "Lupe Rumazo - Casa de la Cultura Ecuatoriana authority record",
           url: "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=7275&marc=1",
         },
       ],
@@ -701,11 +701,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false 2004 death date was removed because the checked authority sources do not establish a death date.",
       sources: [
         {
-          title: "Lupe Rumazo — Academia Ecuatoriana de la Lengua",
+          title: "Lupe Rumazo - Academia Ecuatoriana de la Lengua",
           url: "https://www.academiaecuatorianadelalengua.org/sra-d-a-lupe-rumazo-de-alzamora/",
         },
         {
-          title: "Lupe Rumazo — Casa de la Cultura Ecuatoriana authority record",
+          title: "Lupe Rumazo - Casa de la Cultura Ecuatoriana authority record",
           url: "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=7275&marc=1",
         },
       ],
@@ -720,11 +720,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The existing 1967 year was withheld because the two checked institutional biographies disagree between 1967 and 1968.",
       sources: [
         {
-          title: "Hamdi Abu Golayyel — AUC Press",
+          title: "Hamdi Abu Golayyel - AUC Press",
           url: "https://aucpress.com/author/hamdi-abu-golayyel/",
         },
         {
-          title: "Hamdi Abu Golayyel — Words Without Borders",
+          title: "Hamdi Abu Golayyel - Words Without Borders",
           url: "https://wordswithoutborders.org/contributors/view/hamdi-abu-golayyel/",
         },
       ],
@@ -737,11 +737,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Both checked biographies establish the 2023 death year.",
       sources: [
         {
-          title: "Hamdi Abu Golayyel — AUC Press",
+          title: "Hamdi Abu Golayyel - AUC Press",
           url: "https://aucpress.com/author/hamdi-abu-golayyel/",
         },
         {
-          title: "Hamdi Abu Golayyel — Words Without Borders",
+          title: "Hamdi Abu Golayyel - Words Without Borders",
           url: "https://wordswithoutborders.org/contributors/view/hamdi-abu-golayyel/",
         },
       ],
@@ -756,11 +756,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The existing 1935 year was withheld because the checked sources disagree among 1935, 1936 and 1937.",
       sources: [
         {
-          title: "Ibrahim Aslan — AUC Press",
+          title: "Ibrahim Aslan - AUC Press",
           url: "https://aucpress.com/author/ibrahim-aslan/",
         },
         {
-          title: "Ibrahim Aslan — Banipal",
+          title: "Ibrahim Aslan - Banipal",
           url: "https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/",
         },
       ],
@@ -773,11 +773,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The checked sources agree on the 2012 death year already present in the card.",
       sources: [
         {
-          title: "Ibrahim Aslan — AUC Press",
+          title: "Ibrahim Aslan - AUC Press",
           url: "https://aucpress.com/author/ibrahim-aslan/",
         },
         {
-          title: "Ibrahim Aslan — Banipal",
+          title: "Ibrahim Aslan - Banipal",
           url: "https://www.banipal.co.uk/book_reviews/22/zuzana-kratka-reviews-two-novels-by-ibrahim-aslan/",
         },
       ],
@@ -792,11 +792,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "26 February 1564 is Marlowe's baptism date, not an established birthday, so the public card keeps only the birth year.",
       sources: [
         {
-          title: "Christopher Marlowe — Poetry Foundation",
+          title: "Christopher Marlowe - Poetry Foundation",
           url: "https://www.poetryfoundation.org/poets/christopher-marlowe",
         },
         {
-          title: "Christopher Marlowe — Royal Shakespeare Company",
+          title: "Christopher Marlowe - Royal Shakespeare Company",
           url: "https://www.rsc.org.uk/edward-ii/about-the-play/who-was-christopher-marlowe",
         },
       ],
@@ -811,11 +811,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The unsupported 1940 value was replaced by the 1941 year in the official Djiboutian biography.",
       sources: [
         {
-          title: "Aden Robleh Awaleh — La Nation, République de Djibouti",
+          title: "Aden Robleh Awaleh - La Nation, République de Djibouti",
           url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/",
         },
         {
-          title: "Aden Robleh Awaleh — Bibliothèque nationale de France",
+          title: "Aden Robleh Awaleh - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g",
         },
       ],
@@ -828,11 +828,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The public card now records the source-confirmed death date.",
       sources: [
         {
-          title: "Aden Robleh Awaleh — La Nation, République de Djibouti",
+          title: "Aden Robleh Awaleh - La Nation, République de Djibouti",
           url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/",
         },
         {
-          title: "Aden Robleh Awaleh — Bibliothèque nationale de France",
+          title: "Aden Robleh Awaleh - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g",
         },
       ],
@@ -845,11 +845,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Ali Sabieh replaces the generic and inaccurate Djibouti birthplace.",
       sources: [
         {
-          title: "Aden Robleh Awaleh — La Nation, République de Djibouti",
+          title: "Aden Robleh Awaleh - La Nation, République de Djibouti",
           url: "https://www.lanation.dj/des-partis-et-des-hommes-les-artisans-de-lindependance-la-lpai-ou-lunion-sacree/",
         },
         {
-          title: "Aden Robleh Awaleh — Bibliothèque nationale de France",
+          title: "Aden Robleh Awaleh - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g",
         },
       ],
@@ -864,11 +864,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The birthplace was corrected from Shanghai to Hangzhou, Zhejiang using the publisher biography and the author's official biography.",
       sources: [
         {
-          title: "Ling Zhang — Penguin Random House",
+          title: "Ling Zhang - Penguin Random House",
           url: "https://www.penguinrandomhouse.com/authors/252959/ling-zhang/",
         },
         {
-          title: "Zhang Ling — official author biography",
+          title: "Zhang Ling - official author biography",
           url: "https://zhanglingwriter.com/",
         },
       ],
@@ -883,11 +883,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The death date was corrected from 19 April to 11 April 2002; the unresolved 1920/1921 birth-year variation remains unchanged.",
       sources: [
         {
-          title: "Héctor Rojas Herazo — Editorial Universidad del Norte",
+          title: "Héctor Rojas Herazo - Editorial Universidad del Norte",
           url: "https://editorial.uninorte.edu.co/simeh/authors/view/id/16",
         },
         {
-          title: "Héctor Rojas Herazo anthology — Universidad Externado de Colombia",
+          title: "Héctor Rojas Herazo anthology - Universidad Externado de Colombia",
           url: "https://www.uexternado.edu.co/wp-content/uploads/2017/01/16-antologia-HectorRojasHerazo.pdf",
         },
       ],
@@ -902,11 +902,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The checked institutional and publisher biographies establish 1960 but not 1 May, so the public card no longer invents day precision.",
       sources: [
         {
-          title: "Juan Carlos Botero — Biblioteca Virtual del Banco de la República",
+          title: "Juan Carlos Botero - Biblioteca Virtual del Banco de la República",
           url: "https://babel.banrepcultural.org/digital/collection/hernan-diaz/id/197/",
         },
         {
-          title: "Juan Carlos Botero — Editorial Planeta",
+          title: "Juan Carlos Botero - Editorial Planeta",
           url: "https://www.planetadelibros.com.co/autor/juan-carlos-botero/000039139",
         },
       ],
@@ -921,11 +921,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The checked institutional and publisher biographies establish 1950 but not 1 January, so only the year is published.",
       sources: [
         {
-          title: "Laura Restrepo — Instituto Cervantes",
+          title: "Laura Restrepo - Instituto Cervantes",
           url: "https://cultura.cervantes.es/estambul/es/laura-restrepo/166110",
         },
         {
-          title: "Laura Restrepo — Penguin Libros",
+          title: "Laura Restrepo - Penguin Libros",
           url: "https://www.penguinlibros.com/us/tematicas/367712-ebook-la-multitud-errante-9788410496613",
         },
       ],
@@ -940,11 +940,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The birth date was corrected from 14 February to 14 August 1975 using the university biographical record, with the publisher independently corroborating the year and identity.",
       sources: [
         {
-          title: "Ricardo Silva Romero — Gobernación de Antioquia / Universidad Santo Tomás biography",
+          title: "Ricardo Silva Romero - Gobernación de Antioquia / Universidad Santo Tomás biography",
           url: "https://antioquia.gov.co/images/PDF2/Decretos/2023/12/2023070005714.pdf",
         },
         {
-          title: "Ricardo Silva Romero — Penguin Libros",
+          title: "Ricardo Silva Romero - Penguin Libros",
           url: "https://www.penguinlibros.com/co/tematicas/83502-ebook-historia-oficial-del-amor-9789588948201",
         },
       ],
@@ -959,11 +959,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The generic country-only birthplace was replaced with the documented village Hahaya on Ngazidja.",
       sources: [
         {
-          title: "Salim Hatubou — Ville de Marseille",
+          title: "Salim Hatubou - Ville de Marseille",
           url: "https://www.marseille.fr/culture/actualites/salim-hatubou-le-passeur-de-memoire",
         },
         {
-          title: "Salim Hatubou — Takam Tikou, Bibliothèque nationale de France",
+          title: "Salim Hatubou - Takam Tikou, Bibliothèque nationale de France",
           url: "https://takamtikou.bnf.fr/actualites/2015-04-02/hommage-salim-hatubou-crivain-et-conteur-franco-comorien",
         },
       ],
@@ -978,11 +978,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false Comoros 1956 card was replaced by the source-supported Tanzania/Zanzibar identity and exact date 12 December 1947.",
       sources: [
         {
-          title: "Said Ahmed Mohamed Khamis — Universität Bayreuth",
+          title: "Said Ahmed Mohamed Khamis - Universität Bayreuth",
           url: "https://www.presse.uni-bayreuth.de/de/archiv/2012/194-Swahili-Kolloquium.pdf",
         },
         {
-          title: "Said Ahmed Mohamed Khamis — University of Nairobi",
+          title: "Said Ahmed Mohamed Khamis - University of Nairobi",
           url: "https://erepository.uonbi.ac.ke/server/api/core/bitstreams/1a972ff5-f647-4f39-9791-4f705e98abdf/content",
         },
       ],
@@ -997,11 +997,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The first-of-year placeholder was replaced with 23 January 1963 using two independent authority and national-encyclopedia records.",
       sources: [
         {
-          title: "Su Tong — Bibliothèque nationale de France",
+          title: "Su Tong - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark%3A/12148/cb122453866",
         },
         {
-          title: "Su Tong — Store norske leksikon",
+          title: "Su Tong - Store norske leksikon",
           url: "https://snl.no/Su_Tong",
         },
       ],
@@ -1016,11 +1016,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The public card now keeps only the source-supported year 1970; the competing exact dates 25 May and 20 September are not established by the checked institutional and publisher biographies.",
       sources: [
         {
-          title: "Lina Meruane — New York University Creative Writing in Spanish",
+          title: "Lina Meruane - New York University Creative Writing in Spanish",
           url: "https://wp.nyu.edu/cwskjcc/autores/lina-meruane/",
         },
         {
-          title: "Lina Meruane — Deep Vellum Publishing",
+          title: "Lina Meruane - Deep Vellum Publishing",
           url: "https://www.deepvellum.org/authors/lina-meruane",
         },
       ],
@@ -1035,7 +1035,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card date was corrected from 17 August to 17 September 1928 using the RTP/Lusa family-supported biographical record.",
       sources: [
         {
-          title: "Ovídio Martins — RTP / Agência Lusa",
+          title: "Ovídio Martins - RTP / Agência Lusa",
           url: "https://www.rtp.pt/noticias/cultura/ovidio-martins-poeta-e-ativista-cabo-verdiano-vai-ser-homenageado-em-lisboa_n478097",
         },
       ],
@@ -1048,7 +1048,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The first-of-year placeholder was replaced with 29 April 1999 using the RTP/Lusa family-supported biographical record.",
       sources: [
         {
-          title: "Ovídio Martins — RTP / Agência Lusa",
+          title: "Ovídio Martins - RTP / Agência Lusa",
           url: "https://www.rtp.pt/noticias/cultura/ovidio-martins-poeta-e-ativista-cabo-verdiano-vai-ser-homenageado-em-lisboa_n478097",
         },
       ],
@@ -1063,11 +1063,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Memoria Chilena records 4 May 1830 in its national-library materials; the conflicting Wikidata June claim is not promoted.",
       sources: [
         {
-          title: "Alberto Blest Gana — Memoria Chilena, Biblioteca Nacional de Chile",
+          title: "Alberto Blest Gana - Memoria Chilena, Biblioteca Nacional de Chile",
           url: "https://www.memoriachilena.gob.cl/602/w3-article-3273.html",
         },
         {
-          title: "Don Alberto Blest Gana — Memoria Chilena",
+          title: "Don Alberto Blest Gana - Memoria Chilena",
           url: "https://www.memoriachilena.gob.cl/archivos2/pdfs/MC0009737.pdf",
         },
       ],
@@ -1080,7 +1080,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "A Biblioteca Nacional de Chile document explicitly records 9 November 1920; the conflicting Wikidata 8 November claim is not promoted.",
       sources: [
         {
-          title: "Don Alberto Blest Gana — Memoria Chilena",
+          title: "Don Alberto Blest Gana - Memoria Chilena",
           url: "https://www.memoriachilena.gob.cl/archivos2/pdfs/MC0009737.pdf",
         },
       ],
@@ -1095,7 +1095,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Universidad de Chile official biography supports 24 August 1949; the conflicting Wikidata 1947 claim is not promoted.",
       sources: [
         {
-          title: "Diamela Eltit González — Universidad de Chile",
+          title: "Diamela Eltit González - Universidad de Chile",
           url: "https://uchile.cl/presentacion/historia/grandes-figuras/premios-nacionales/literatura/diamela-eltit-gonzalez",
         },
       ],
@@ -1110,11 +1110,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Government of Cabo Verde obituary and the national news agency's commemorative record support the current biographical identity and 24 February 1938 date; the conflicting Wikidata December claim is not promoted.",
       sources: [
         {
-          title: "Manuel d'Novas — Government of Cabo Verde, Ministry of Culture",
+          title: "Manuel d'Novas - Government of Cabo Verde, Ministry of Culture",
           url: "https://www.governo.cv/ministerio-da-cultura-manifesta-pesar-e-consternacao-pela-morte-de-manuel-dnovas/",
         },
         {
-          title: "Manel d'Novas — Inforpress, Agência Cabo-verdiana de Notícias",
+          title: "Manel d'Novas - Inforpress, Agência Cabo-verdiana de Notícias",
           url: "https://inforpress.cv/en/maneldnovasrecebetributoemlisboaparamarcaros15anossobreoseufalecimento",
         },
       ],
@@ -1129,11 +1129,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Academy of Sciences and Arts of Bosnia and Herzegovina and the Croatian Encyclopedia support 29 July 1902; the conflicting Wikidata day is not promoted.",
       sources: [
         {
-          title: "Mehmed-beg Kapetanović Ljubušak — ANUBiH",
+          title: "Mehmed-beg Kapetanović Ljubušak - ANUBiH",
           url: "https://bastina.anubih.ba/bitstreams/8a324c15-6395-44c8-a07b-6daa7c61339a/download",
         },
         {
-          title: "Kapetanović Ljubušak, Mehmed-beg — Hrvatska enciklopedija",
+          title: "Kapetanović Ljubušak, Mehmed-beg - Hrvatska enciklopedija",
           url: "https://www.enciklopedija.hr/clanak/kapetanovic-ljubusak-mehmed-beg",
         },
       ],
@@ -1148,7 +1148,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1941-10-29 to 1941-10-19 using the Russian encyclopedia entry.",
       sources: [
         {
-          title: "Пепетела — Большая российская энциклопедия",
+          title: "Пепетела - Большая российская энциклопедия",
           url: "https://old.bigenc.ru/text/2711021",
         },
       ],
@@ -1163,7 +1163,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1971-01-01 to 1971-01-14 using the publisher's author page.",
       sources: [
         {
-          title: "Наринэ Абгарян — издательство АСТ",
+          title: "Наринэ Абгарян - издательство АСТ",
           url: "https://ast.ru/authors/abgaryan-narine-ast011330/",
         },
       ],
@@ -1178,7 +1178,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was enriched from year-only precision using the BnF authority record; the staging first-of-year placeholder is not retained.",
       sources: [
         {
-          title: "Rim, Kin (1911-1959) — Bibliothèque nationale de France",
+          title: "Rim, Kin (1911-1959) - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark:/12148/cb12285967d",
         },
       ],
@@ -1191,7 +1191,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was enriched from year-only precision using the BnF authority record; the staging first-of-year placeholder is not retained.",
       sources: [
         {
-          title: "Rim, Kin (1911-1959) — Bibliothèque nationale de France",
+          title: "Rim, Kin (1911-1959) - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark:/12148/cb12285967d",
         },
       ],
@@ -1206,7 +1206,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1961-12-01 to 1961-10-26 after authority-backed review.",
       sources: [
         {
-          title: "Calixthe Beyala — Le Livre de Poche",
+          title: "Calixthe Beyala - Le Livre de Poche",
           url: "https://www.livredepoche.com/auteur/calixthe-beyala",
         },
       ],
@@ -1221,11 +1221,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1965-12-02 to 1965-12-30 using Instituto Cervantes; the conflicting 1962 Wikidata claim is not used.",
       sources: [
         {
-          title: "Santiago Gamboa — Instituto Cervantes de Lyon",
+          title: "Santiago Gamboa - Instituto Cervantes de Lyon",
           url: "https://cultura.cervantes.es/lyon/es/Santiago-Gamboa/185167",
         },
         {
-          title: "Santiago Gamboa — Europa Editions",
+          title: "Santiago Gamboa - Europa Editions",
           url: "https://www.europaeditions.com/author/119/santiago-gamboa",
         },
       ],
@@ -1240,7 +1240,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1914-03-18 to 1914-02-18 using the University of Cyprus library authority record.",
       sources: [
         {
-          title: "Κώστας Μόντης — University of Cyprus Library",
+          title: "Κώστας Μόντης - University of Cyprus Library",
           url: "https://lekythos.library.ucy.ac.cy/archive/item/174854?lang=el",
         },
       ],
@@ -1255,7 +1255,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The National Archives of Georgia records 5 November 1891 Old Style, equivalent to 17 November 1891 in the Gregorian calendar; the unsupported 1892 card year was corrected.",
       sources: [
         {
-          title: "Galaktion Tabidze — National Archives of Georgia",
+          title: "Galaktion Tabidze - National Archives of Georgia",
           url: "https://www.archive.gov.ge/en/galaktioni-1",
         },
       ],
@@ -1270,15 +1270,15 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 2009-10-08 to 2009-10-01 using the Russian encyclopedia entry.",
       sources: [
         {
-          title: "Чиладзе Отар Иванович — Большая российская энциклопедия",
+          title: "Чиладзе Отар Иванович - Большая российская энциклопедия",
           url: "https://bigenc.ru/c/chiladze-otar-ivanovich-b371ff",
         },
         {
-          title: "Умер грузинский писатель Отар Чиладзе — Российская газета",
+          title: "Умер грузинский писатель Отар Чиладзе - Российская газета",
           url: "https://rg.ru/2009/10/01/chiladze-anons.html",
         },
         {
-          title: "Умер грузинский писатель Отар Чиладзе — Коммерсантъ",
+          title: "Умер грузинский писатель Отар Чиладзе - Коммерсантъ",
           url: "https://www.kommersant.ru/doc/1720449",
         },
       ],
@@ -1308,7 +1308,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1926-12-25 to 1926-12-24 using the INHA authority record.",
       sources: [
         {
-          title: "al-Sayyab, Badr Shakir — Institut national d'histoire de l'art",
+          title: "al-Sayyab, Badr Shakir - Institut national d'histoire de l'art",
           url: "https://agorha.inha.fr/ark:/54721/ab33f4f3-f62a-4390-bd1f-862a09ca276c?database=71",
         },
       ],
@@ -1323,11 +1323,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1959-06-13 to 1959-04-13 using the Hebrew Project Ben-Yehuda biography and publisher corroboration.",
       sources: [
         {
-          title: "צרויה שלו — פרויקט בן־יהודה",
+          title: "צרויה שלו - פרויקט בן־יהודה",
           url: "https://benyehuda.org/lexicon/00036.php",
         },
         {
-          title: "Zeruya Shalev — Humanitas",
+          title: "Zeruya Shalev - Humanitas",
           url: "https://humanitas.ro/autori/zeruya-shalev",
         },
       ],
@@ -1342,7 +1342,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Library of Congress authority record supports 1942-08-28; the staging first-of-month value is not promoted.",
       sources: [
         {
-          title: "Ali Podrimja — Library of Congress authority record n85829191",
+          title: "Ali Podrimja - Library of Congress authority record n85829191",
           url: "https://lccn.loc.gov/n85829191",
         },
       ],
@@ -1357,11 +1357,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Kyrgyz state and municipal sources support 14 May; the staging first-of-month value reflects lower precision and is not promoted.",
       sources: [
         {
-          title: "Кабинет Министров Кыргызской Республики — 100-летие Тугельбая Сыдыкбекова",
+          title: "Кабинет Министров Кыргызской Республики - 100-летие Тугельбая Сыдыкбекова",
           url: "https://www.gov.kg/ru/post/s/sostoyalos-torzhestvennoe-otkrytie-memorialnoj-doski-v-chest-100-letiya-narodnogo-pisatelya-tugelbaya-sydykbekova",
         },
         {
-          title: "Мэрия Бишкека — день памяти Туголбая Сыдыкбекова",
+          title: "Мэрия Бишкека - день памяти Туголбая Сыдыкбекова",
           url: "https://www.bishkek.gov.kg/ru/post/15582",
         },
       ],
@@ -1376,7 +1376,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Both values are the same birth date: 22 November Old Style / 4 December New Style. The card retains the Gregorian date.",
       sources: [
         {
-          title: "Упит (Упитс) Андрейс — Большая российская энциклопедия",
+          title: "Упит (Упитс) Андрейс - Большая российская энциклопедия",
           url: "https://old.bigenc.ru/literature/text/4700066",
         },
       ],
@@ -1391,7 +1391,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Both values are the same birth date: 30 August Old Style / 11 September New Style. The card retains the Gregorian date.",
       sources: [
         {
-          title: "Покачать колыбель Райниса — Latvijas Sabiedriskais medijs",
+          title: "Покачать колыбель Райниса - Latvijas Sabiedriskais medijs",
           url: "https://rus.lsm.lv/statja/kultura/kultura/pokachat-kolibel-raynisa.a292372/",
         },
       ],
@@ -1406,11 +1406,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The unsupported 1889-11-17 card value was corrected to the current and prior Russian encyclopedia editions' primary value, 1889-11-22. The current edition explicitly records 1889-10-17 as an alternate report.",
       sources: [
         {
-          title: "Михаил Нуайме — Большая российская энциклопедия",
+          title: "Михаил Нуайме - Большая российская энциклопедия",
           url: "https://bigenc.ru/c/nuaime-mikhail-090e8b",
         },
         {
-          title: "Нуайме Михаил — Большая российская энциклопедия, прежняя электронная версия",
+          title: "Нуайме Михаил - Большая российская энциклопедия, прежняя электронная версия",
           url: "https://old.bigenc.ru/literature/text/2672937",
         },
       ],
@@ -1423,7 +1423,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Both Russian encyclopedia editions support 1988-02-28; the staging first-of-year value is not promoted.",
       sources: [
         {
-          title: "Михаил Нуайме — Большая российская энциклопедия",
+          title: "Михаил Нуайме - Большая российская энциклопедия",
           url: "https://bigenc.ru/c/nuaime-mikhail-090e8b",
         },
       ],
@@ -1438,11 +1438,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Lithuanian national encyclopedia supports 1954-07-07; the staging value is not promoted.",
       sources: [
         {
-          title: "Vincas Krėvė — Visuotinė lietuvių enciklopedija",
+          title: "Vincas Krėvė - Visuotinė lietuvių enciklopedija",
           url: "https://www.vle.lt/straipsnis/vincas-kreve/",
         },
         {
-          title: "Vincas Krėvė-Mickevičius — Lietuvos mokslų akademija",
+          title: "Vincas Krėvė-Mickevičius - Lietuvos mokslų akademija",
           url: "https://www.lma.lt/uploads/Biogramos/Kr%C4%97v%C4%97_V_red..pdf",
         },
       ],
@@ -1457,7 +1457,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "UNESCO and the Library of Congress support 1901; the 1900 staging value is not promoted.",
       sources: [
         {
-          title: "Послание человечеству — Амаду Ампате Ба",
+          title: "Послание человечеству - Амаду Ампате Ба",
           url: "https://www.unesco.org/ru/articles/poslanie-chelovechestvu",
         },
         {
@@ -1476,7 +1476,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Mongolian Film Institute biography, citing the contemporary Shine Toli notice, supports 1937-07-13; the staging value is not promoted.",
       sources: [
         {
-          title: "Дашдоржийн Нацагдорж — Монголын кино урлагийн зөвлөл",
+          title: "Дашдоржийн Нацагдорж - Монголын кино урлагийн зөвлөл",
           url: "https://www.mfi.mn/artist/natsagdorj-dashdorj/detail",
         },
       ],
@@ -1491,11 +1491,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1917-03-10 to 1917-08-20 using Mongolia's official historical dictionary timeline and a national book platform biography.",
       sources: [
         {
-          title: "Чадраабалын Лодойдамба — Монголын түүхийн тайлбар толь",
+          title: "Чадраабалын Лодойдамба - Монголын түүхийн тайлбар толь",
           url: "https://mongoltoli.mn/history/timeline?day=20&month=08&year=1917",
         },
         {
-          title: "Чадраабалын Лодойдамба — M-book",
+          title: "Чадраабалын Лодойдамба - M-book",
           url: "https://www.m-book.mn/authors/1256",
         },
       ],
@@ -1508,11 +1508,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1970-06-20 to 1970-01-11 using the national book platform biography; the official historical dictionary corroborates the identity and birth date.",
       sources: [
         {
-          title: "Чадраабалын Лодойдамба — M-book",
+          title: "Чадраабалын Лодойдамба - M-book",
           url: "https://www.m-book.mn/authors/1256",
         },
         {
-          title: "Чадраабалын Лодойдамба — Монголын түүхийн тайлбар толь",
+          title: "Чадраабалын Лодойдамба - Монголын түүхийн тайлбар толь",
           url: "https://mongoltoli.mn/history/timeline?day=20&month=08&year=1917",
         },
       ],
@@ -1527,11 +1527,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1917-04-06 to 1917-04-13 after the identity mapping was repaired and the publisher biography was checked.",
       sources: [
         {
-          title: "Biography of Journal Kyaw Ma Ma Lay — Cornell University Press",
+          title: "Biography of Journal Kyaw Ma Ma Lay - Cornell University Press",
           url: "https://api.pageplace.de/preview/DT0400.9781501719356_A33947823/preview-9781501719356_A33947823.pdf",
         },
         {
-          title: "Journal Kyaw Ma Ma Lay — Wikidata Q6273845",
+          title: "Journal Kyaw Ma Ma Lay - Wikidata Q6273845",
           url: "https://www.wikidata.org/wiki/Q6273845",
         },
       ],
@@ -1546,7 +1546,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1909-11-13 to the Gregorian conversion 1909-11-12 for the Nepal-government curriculum date Kartik 27, 1966 BS.",
       sources: [
         {
-          title: "English Composition Grade 9–12 — Curriculum Development Centre, Government of Nepal",
+          title: "English Composition Grade 9-12 - Curriculum Development Centre, Government of Nepal",
           url: "https://giwmscdnone.gov.np/media/pdf_upload/English%20Composition%20Grade%209%20-%2012%20%28%E0%A4%B8%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%AD%20%E0%A4%8F%E0%A4%B5%E0%A4%AE%E0%A5%8D%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%20%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%AF%E0%A4%A8%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A5%80%29_h2lkhrs.pdf",
         },
       ],
@@ -1561,7 +1561,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1955-05-23 to 1955-03-23 using the Christchurch City Libraries author record.",
       sources: [
         {
-          title: "Lloyd Jones — Christchurch City Libraries",
+          title: "Lloyd Jones - Christchurch City Libraries",
           url: "https://my.christchurchcitylibraries.com/new-zealand-childrens-authors/lloyd-jones/",
         },
       ],
@@ -1576,11 +1576,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1944-08-21 to 1944-07-21 using South African History Online and Cambridge Orlando records.",
       sources: [
         {
-          title: "Buchi Emecheta — South African History Online",
+          title: "Buchi Emecheta - South African History Online",
           url: "https://sahistory.org.za/people/buchi-emecheta",
         },
         {
-          title: "Buchi Emecheta — Cambridge Orlando",
+          title: "Buchi Emecheta - Cambridge Orlando",
           url: "https://orlando.cambridge.org/people/f75322f4-8804-43a3-888f-c1a5058e2756",
         },
       ],
@@ -1595,7 +1595,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The unsupported day 25 was removed. The author's first-person account establishes November 1967, while the staging first-of-year value is not an exact date.",
       sources: [
         {
-          title: "Helon Habila, Writers on Writing — Lancaster University Transcultural Writing Archive",
+          title: "Helon Habila, Writers on Writing - Lancaster University Transcultural Writing Archive",
           url: "https://www.lancaster.ac.uk/transculturalwriting-archive/radiophonics/contents/writersonwriting/helonhabila/index.html",
         },
       ],
@@ -1608,7 +1608,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The malformed place name 'Кфи' was corrected to Kaltungo, Nigeria using the author's first-person biography.",
       sources: [
         {
-          title: "Helon Habila, Writers on Writing — Lancaster University Transcultural Writing Archive",
+          title: "Helon Habila, Writers on Writing - Lancaster University Transcultural Writing Archive",
           url: "https://www.lancaster.ac.uk/transculturalwriting-archive/radiophonics/contents/writersonwriting/helonhabila/index.html",
         },
       ],
@@ -1627,7 +1627,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
           url: "https://www.poetryfoundation.org/poets/christopher-okigbo",
         },
         {
-          title: "Christopher Okigbo Papers — UNESCO Memory of the World",
+          title: "Christopher Okigbo Papers - UNESCO Memory of the World",
           url: "https://media.unesco.org/sites/default/files/webform/mow001/50africaokigbopapers.pdf",
         },
       ],
@@ -1642,11 +1642,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1939-10-08 to 1939-10-27 using the Academy of New Zealand Literature record and the linked Wikidata authority snapshot.",
       sources: [
         {
-          title: "Albert Wendt — Academy of New Zealand Literature",
+          title: "Albert Wendt - Academy of New Zealand Literature",
           url: "https://www.anzliterature.com/member/albert-wendt/",
         },
         {
-          title: "Albert Wendt — Wikidata Q1235864",
+          title: "Albert Wendt - Wikidata Q1235864",
           url: "https://www.wikidata.org/wiki/Q1235864",
         },
       ],
@@ -1661,7 +1661,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Bibliothèque nationale de France authority record supports 1906-12-11; the staging value is not promoted.",
       sources: [
         {
-          title: "Birago Diop — Bibliothèque nationale de France authority record",
+          title: "Birago Diop - Bibliothèque nationale de France authority record",
           url: "https://catalogue.bnf.fr/ark:/12148/cb11900243p",
         },
       ],
@@ -1676,11 +1676,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1952-04-05 to 1952-04-07 using Taiwan Ministry of Culture and National Chung Hsing University records.",
       sources: [
         {
-          title: "Li Ang — Ministry of Culture, Taiwan",
+          title: "Li Ang - Ministry of Culture, Taiwan",
           url: "https://www.moc.gov.tw/en/News_Content2.aspx?n=491&s=17978",
         },
         {
-          title: "Li Ang — National Chung Hsing University",
+          title: "Li Ang - National Chung Hsing University",
           url: "https://taiwan.nchu.edu.tw/content.php?a=%E9%A7%90%E6%A0%A1%E4%BD%9C%E5%AE%B6&b=%E7%B3%BB%E6%89%80%E6%88%90%E5%93%A1&c=ut&id=50d652d4-bc15-4b9d-9b54-f4e52c8fd393",
         },
       ],
@@ -1695,7 +1695,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "Большая российская энциклопедия supports 1939; the 1938 staging value is not promoted.",
       sources: [
         {
-          title: "Табан Ло Лийонг — Большая российская энциклопедия",
+          title: "Табан Ло Лийонг - Большая российская энциклопедия",
           url: "https://old.bigenc.ru/literature/text/2173989",
         },
       ],
@@ -1710,11 +1710,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 1926-10-30 to the source-supported month precision, February 1925; the evidence does not establish a day.",
       sources: [
         {
-          title: "Таджикский национальный университет — диссертация Т. Х. Каримовой",
+          title: "Таджикский национальный университет - диссертация Т. Х. Каримовой",
           url: "https://tnu.tj/Dissertatsii/KarimovaTKh/KarimovaTKh.pdf",
         },
         {
-          title: "ŠOKUROV, MOḤAMMADJĀN — Encyclopaedia Iranica",
+          title: "ŠOKUROV, MOḤAMMADJĀN - Encyclopaedia Iranica",
           url: "https://www.iranicaonline.org/articles/shokurov-mohammadjan/",
         },
       ],
@@ -1729,7 +1729,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Uzbek history and culture source supports 1926-10-20; the staging value is not promoted.",
       sources: [
         {
-          title: "Одил Ёқубов — Tarix.uz",
+          title: "Одил Ёқубов - Tarix.uz",
           url: "https://www.tarix.uz/site/report?id=238",
         },
       ],
@@ -1742,7 +1742,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Uzbek biography supports 2009-12-21; the staging value is not promoted.",
       sources: [
         {
-          title: "Одил Ёқубов — Muzaffar.uz",
+          title: "Одил Ёқубов - Muzaffar.uz",
           url: "https://muzaffar.uz/mashhurlar-hayotidan/2644-odil-yoqubov.html",
         },
       ],
@@ -1757,11 +1757,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The unsupported 1457 card year was corrected to the 1458 year established by Deutsche Biographie and independently recorded by the Deutsche Nationalbibliothek.",
       sources: [
         {
-          title: "Sebastian Brant — Deutsche Biographie",
+          title: "Sebastian Brant - Deutsche Biographie",
           url: "https://www.deutsche-biographie.de/gnd118514474.html",
         },
         {
-          title: "Sebastian Brant — Deutsche Nationalbibliothek",
+          title: "Sebastian Brant - Deutsche Nationalbibliothek",
           url: "https://d-nb.info/gnd/118514474",
         },
       ],
@@ -1776,11 +1776,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false 24 May value was removed. Inner Temple gives 29 September 1866 while Encyclopaedia Africana gives 28 September 1866, so the public profile publishes only their shared year.",
       sources: [
         {
-          title: "Joseph Ephraim Casely Hayford — Inner Temple",
+          title: "Joseph Ephraim Casely Hayford - Inner Temple",
           url: "https://www.innertemple.org.uk/celebrating-diversity-at-the-bar/joseph-ephraim-casely-hayford/",
         },
         {
-          title: "J. E. Casely Hayford — Encyclopaedia Africana",
+          title: "J. E. Casely Hayford - Encyclopaedia Africana",
           url: "https://encyclopaediaafricana.com/hayford-j-e-casely/",
         },
       ],
@@ -1793,7 +1793,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false 15 January value was replaced with 11 August 1930; this exact day is attributed only to Encyclopaedia Africana, while Inner Temple supports the year alone.",
       sources: [
         {
-          title: "J. E. Casely Hayford — Encyclopaedia Africana",
+          title: "J. E. Casely Hayford - Encyclopaedia Africana",
           url: "https://encyclopaediaafricana.com/hayford-j-e-casely/",
         },
       ],
@@ -1808,15 +1808,15 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Batch30 institutional profiles establish Martin Egblewogbe and his bibliography but do not establish a month or day; the first-of-year placeholder is therefore reduced to the existing 1975 year.",
       sources: [
         {
-          title: "Martin Egblewogbe — Writers Project of Ghana",
+          title: "Martin Egblewogbe - Writers Project of Ghana",
           url: "https://www.writersprojectghana.com/megblewogbe/",
         },
         {
-          title: "Against Ethnography — Cambridge University Press",
+          title: "Against Ethnography - Cambridge University Press",
           url: "https://www.cambridge.org/core/books/decolonizing-the-english-literary-curriculum/against-ethnography/B3D295B83E9DE2EEE9F559DA4E34568B",
         },
         {
-          title: "The Waiting — CiNii Books",
+          title: "The Waiting - CiNii Books",
           url: "https://ci.nii.ac.jp/ncid/BD00490608",
         },
       ],
@@ -1831,11 +1831,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The Batch30 publisher and official-author profiles establish the exact writer identity but do not substantiate either 1 January or the candidate 1 April; the public profile retains only the shared 1974 year.",
       sources: [
         {
-          title: "Nii Ayikwei Parkes — Peepal Tree Press",
+          title: "Nii Ayikwei Parkes - Peepal Tree Press",
           url: "https://www.peepaltreepress.com/authors/nii-ayikwei-parkes",
         },
         {
-          title: "Nii Ayikwei Parkes — official curriculum vitae",
+          title: "Nii Ayikwei Parkes - official curriculum vitae",
           url: "https://niiparkes.com/open/profile/cv/?aid=235&sa=0",
         },
       ],
@@ -1850,11 +1850,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The false 1 May value was removed. Both Batch30 institutional sources establish April 1792 but not a day, and the public profile conservatively keeps year precision only.",
       sources: [
         {
-          title: "Andreas Kalvos — Capodistrias Museum",
+          title: "Andreas Kalvos - Capodistrias Museum",
           url: "https://www.capodistriasmuseum.gr/en/persons/andreas-kalvos/",
         },
         {
-          title: "Andreas Kalvos — Ionian University POLYSEMi",
+          title: "Andreas Kalvos - Ionian University POLYSEMi",
           url: "https://polysemi.di.ionio.gr/index.php/2019/08/29/andreas-kalvos-2/",
         },
       ],
@@ -1869,7 +1869,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The first-of-year placeholder was replaced with 31 October 1942, the exact birth date recorded by the National Democratic Congress of Grenada biography.",
       sources: [
         {
-          title: "George Brizan — National Democratic Congress of Grenada",
+          title: "George Brizan - National Democratic Congress of Grenada",
           url: "https://www.ndcgrenada.org/past-leaders/",
         },
       ],
@@ -1882,7 +1882,7 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The unsupported 1 January placeholder was removed; the CARICOM obituary establishes the 2012 death year, so no month or day is published.",
       sources: [
         {
-          title: "George Brizan — CARICOM",
+          title: "George Brizan - CARICOM",
           url: "https://caricom.org/caricom-remembers-rt-hon-george-brizan/",
         },
       ],
@@ -1894,14 +1894,14 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       cardValue: "2026-03-28",
       stagingValue: "",
       decision: "added-source-confirmed-date",
-      note: "The public profile now records 28 March 2026, the exact death date reported by Prensa Libre and consistent with the 1964–2026 life years in the Guatemalan language-academy biography.",
+      note: "The public profile now records 28 March 2026, the exact death date reported by Prensa Libre and consistent with the 1964-2026 life years in the Guatemalan language-academy biography.",
       sources: [
         {
-          title: "Francisco Alejandro Méndez — Prensa Libre",
+          title: "Francisco Alejandro Méndez - Prensa Libre",
           url: "https://www.prensalibre.com/vida/escenario/fallece-francisco-alejandro-mendez-premio-nacional-de-literatura-2017/",
         },
         {
-          title: "Francisco Alejandro Méndez Castañeda — Academia Guatemalteca de la Lengua",
+          title: "Francisco Alejandro Méndez Castañeda - Academia Guatemalteca de la Lengua",
           url: "https://agl.org.gt/academicos/francisco-alejandro-mendez-castaneda/",
         },
       ],
@@ -1916,11 +1916,11 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       note: "The card was corrected from 5 July to 5 June using the Bibliothèque nationale de France authority record and the Les Francophonies institutional biography; the stale staging value is not promoted.",
       sources: [
         {
-          title: "Sony Labou Tansi — Bibliothèque nationale de France",
+          title: "Sony Labou Tansi - Bibliothèque nationale de France",
           url: "https://catalogue.bnf.fr/ark:/12148/cb11910402v",
         },
         {
-          title: "Sony Labou Tansi — Les Francophonies",
+          title: "Sony Labou Tansi - Les Francophonies",
           url: "https://www.lesfrancophonies.fr/SONY-LABOU-TANSI",
         },
       ],
@@ -1934,7 +1934,7 @@ const CLAIM_PATTERNS = {
   "national-cultural-affiliation":
     /(?:афганск|албанск|алжирск|американск|английск|арабск|аргентинск|армянск|австралийск|австрийск|белорусск|бельгийск|бразильск|британск|болгарск|венгерск|вьетнамск|ганск|греческ|грузинск|датск|египетск|израильск|индийск|иранск|ирландск|испанск|итальянск|казахск|канадск|китайск|колумбийск|корейск|кубинск|латвийск|литовск|мексиканск|немецк|нигерийск|норвежск|пакистанск|перуанск|польск|португальск|российск|русск|сербск|советск|турецк|украинск|финск|французск|чилийск|чешск|шведск|швейцарск|эстонск|южноафриканск|японск)\p{L}*/iu,
   "life-dates":
-    /(?:(?:родил(?:ся|ась)|умер(?:ла)?|годы жизни)|\b(?:1\d{3}|20\d{2})\s*[–—−-]\s*(?:1\d{3}|20\d{2})\b)/iu,
+    /(?:(?:родил(?:ся|ась)|умер(?:ла)?|годы жизни)|\b(?:1\d{3}|20\d{2})\s*[−-]\s*(?:1\d{3}|20\d{2})\b)/iu,
   language:
     /(?:язык\p{L}*|язычн\p{L}*|писал(?:а)?\s+на)/iu,
   works:
@@ -1956,7 +1956,7 @@ const CLAIM_PATTERNS = {
 };
 
 const DATE_PAIR_PATTERN =
-  /\b(1\d{3}|20\d{2})\s*[–—−-]\s*(1\d{3}|20\d{2})\b/gu;
+  /\b(1\d{3}|20\d{2})\s*[−-]\s*(1\d{3}|20\d{2})\b/gu;
 const NOBEL_PATTERN = /Нобелевск\p{L}*/iu;
 const QUOTED_TITLE_PATTERN = /«([^»\r\n]{2,120})»/gu;
 const WORK_TITLE_PATTERN =
@@ -2580,7 +2580,7 @@ function validateCardDates(writer) {
   const yearsLabel = String(writer.years || "");
   const yearsMatch = /(?:\/|или)/iu.test(yearsLabel)
     ? null
-    : yearsLabel.match(/\b(\d{3,4})\s*[–—−-]\s*(\d{3,4})\b/u);
+    : yearsLabel.match(/\b(\d{3,4})\s*[−-]\s*(\d{3,4})\b/u);
   if (yearsMatch) {
     const [, birthYear, deathYear] = yearsMatch;
     const beforeCommonEra = /(?:до\s+н\.\s*э\.?|до\s+нашей\s+эры)/iu.test(

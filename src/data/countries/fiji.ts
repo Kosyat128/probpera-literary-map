@@ -14,7 +14,7 @@ export const fiji: Country = {
 
       fullName: "Subramani Ramaswamy",
 
-      years: "1949–",
+      years: "1949-",
 
       birthDate: "1949-04-01",
 
@@ -70,7 +70,7 @@ export const fiji: Country = {
 
       fullName: "Satendra Nandan",
 
-      years: "1944–",
+      years: "1944-",
 
       birthDate: "1944-09-22",
 
@@ -127,7 +127,7 @@ export const fiji: Country = {
 
       fullName: "Vijay Mishra",
 
-      years: "1940–",
+      years: "1940-",
 
       birthDate: "1940-08-16",
 
@@ -181,7 +181,7 @@ export const fiji: Country = {
 
       fullName: "Brij V. Lal",
 
-      years: "1952–2021",
+      years: "1952-2021",
 
       birthDate: "1952-08-21",
 
@@ -235,7 +235,7 @@ export const fiji: Country = {
 
       fullName: "Teresia Kieuea Teaiwa",
 
-      years: "1968–2017",
+      years: "1968-2017",
 
       birthDate: "1968-08-12",
 
@@ -288,13 +288,13 @@ export const fiji: Country = {
 
       fullName: "Epeli Hauʻofa",
 
-      years: "1939–2009",
+      years: "1939-2009",
 
       birthDate: "1939-12-21",
 
       deathDate: "2009-01-11",
 
-      birthPlace: "Папуа — Новая Гвинея",
+      birthPlace: "Папуа - Новая Гвинея",
 
       coordinates: {
         lat: -9.4438,

@@ -58,7 +58,7 @@ const writerBiographyFactReviewBatch16Base = [
       textRu: "Овидиу де Соуза Мартинш был кабо-вердианским поэтом, прозаиком и журналистом, участвовал в основании Suplemento Cultural и издал Caminhada и Gritarei, berrarei, matarei, não vou para Pasárgada.",
       verdict: "corrected",
       evidence: [
-        { provider: "RTP / Agência Lusa", url: "https://www.rtp.pt/noticias/cultura/ovidio-martins-poeta-e-ativista-cabo-verdiano-vai-ser-homenageado-em-lisboa_n478097", checkedAt, findingRu: "Материал RTP на основе сообщения семьи подтверждает полное имя, кабо-вердианскую идентичность, поэзию, основание Suplemento Cultural, второй сборник и точные даты 17 сентября 1928 — 29 апреля 1999." },
+        { provider: "RTP / Agência Lusa", url: "https://www.rtp.pt/noticias/cultura/ovidio-martins-poeta-e-ativista-cabo-verdiano-vai-ser-homenageado-em-lisboa_n478097", checkedAt, findingRu: "Материал RTP на основе сообщения семьи подтверждает полное имя, кабо-вердианскую идентичность, поэзию, основание Suplemento Cultural, второй сборник и точные даты 17 сентября 1928 - 29 апреля 1999." },
         { provider: "Universidade Federal de Santa Catarina", url: "https://literaturabrasileira.ufsc.br/autores?id=21505", checkedAt, findingRu: "Университетская авторская справка подтверждает роли поэта, прозаика и журналиста и атрибутирует Овидиу Мартиншу книгу Caminhada." },
       ],
     }],
@@ -69,13 +69,13 @@ const writerBiographyFactReviewBatch16Base = [
   {
     key: "cape_verde:virgilio_de_lemos",
     originalSha256: "4117b59e78d89f7bb5249d31b2b2437b718c3ee8b8d37615d57dcf9736b89802",
-    reviewedTextRu: "Мозамбикский поэт и журналист Виржилиу де Лемуш, публиковавшийся также под именем Дуарте Галван. Среди его книг — «Poemas do Tempo Presente», «Negra Azul» и «Eroticus Mozambicanus».",
+    reviewedTextRu: "Мозамбикский поэт и журналист Виржилиу де Лемуш, публиковавшийся также под именем Дуарте Галван. Среди его книг - «Poemas do Tempo Presente», «Negra Azul» и «Eroticus Mozambicanus».",
     claims: [{
       textRu: "Виржилиу де Лемуш был мозамбикским поэтом и журналистом, использовал имя Дуарте Галван и написал Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus.",
       verdict: "corrected",
       evidence: [
-        { provider: "Universidade Eduardo Mondlane — диссертация PUC Minas", url: "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf", checkedAt, findingRu: "Докторская диссертация PUC Minas, размещённая Университетом Эдуарду Мондлане, подтверждает мозамбикскую принадлежность поэта и журналиста, гетероним Duarte Galvão и атрибуцию книг Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus." },
-        { provider: "Universidade de São Paulo — Via Atlântica", url: "https://revistas.usp.br/viaatlantica/article/view/187858", checkedAt, findingRu: "Университетское литературоведческое издание рассматривает Виржилиу де Лемуша в контексте мозамбикской поэзии и подтверждает его авторскую идентичность." },
+        { provider: "Universidade Eduardo Mondlane - диссертация PUC Minas", url: "https://catedraportugues.uem.mz/storage/app/media/2023/abril/luciana-leal-virgilio-de-lemos-poesia-em-transito-1compressed.pdf", checkedAt, findingRu: "Докторская диссертация PUC Minas, размещённая Университетом Эдуарду Мондлане, подтверждает мозамбикскую принадлежность поэта и журналиста, гетероним Duarte Galvão и атрибуцию книг Poemas do Tempo Presente, Negra Azul и Eroticus Mozambicanus." },
+        { provider: "Universidade de São Paulo - Via Atlântica", url: "https://revistas.usp.br/viaatlantica/article/view/187858", checkedAt, findingRu: "Университетское литературоведческое издание рассматривает Виржилиу де Лемуша в контексте мозамбикской поэзии и подтверждает его авторскую идентичность." },
       ],
     }],
     reviewer,
@@ -91,7 +91,7 @@ const writerBiographyFactReviewBatch16Base = [
       verdict: "not-established",
       evidence: [
         { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/rechercher.do?motRecherche=Beno%C3%AEt+N%27Demba&critereRecherche=0&depart=0&facetteModifiee=ok", checkedAt, findingRu: "Поиск точного имени в национальном библиотечном каталоге не выявил авторитетной записи или библиографии, позволяющей подтвердить карточку." },
-        { provider: "IdRef — ABES", url: "https://www.idref.fr/Search?q=Beno%C3%AEt%20N%27Demba", checkedAt, findingRu: "Поиск во французской университетской сети авторитетных данных не дал идентифицируемой записи автора с указанным именем и биографией." },
+        { provider: "IdRef - ABES", url: "https://www.idref.fr/Search?q=Beno%C3%AEt%20N%27Demba", checkedAt, findingRu: "Поиск во французской университетской сети авторитетных данных не дал идентифицируемой записи автора с указанным именем и биографией." },
       ],
     }],
     reviewer,
@@ -120,7 +120,7 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "2ab5008a3acbb9cf10a45765beba85f5df4c21ef6df06e17d12c774b6e492bd4",
     reviewedTextRu: "Чадский писатель, литературовед и преподаватель Ахмад Табойе. Автор исследования «Panorama critique de la littérature tchadienne en langue française», романа «Le Patriarche» и пьесы «Au pays des démocrates ou “La débrouillardise”».",
     claims: [{
-      textRu: "Ахмад Табойе — чадский писатель, литературовед и преподаватель, автор Panorama critique de la littérature tchadienne en langue française, Le Patriarche и Au pays des démocrates ou “La débrouillardise”.",
+      textRu: "Ахмад Табойе - чадский писатель, литературовед и преподаватель, автор Panorama critique de la littérature tchadienne en langue française, Le Patriarche и Au pays des démocrates ou “La débrouillardise”.",
       verdict: "corrected",
       evidence: [
         { provider: "Éditions L’Harmattan", url: "https://www.editions-harmattan.fr/catalogue/auteur/ahmad-taboye/1566", checkedAt, findingRu: "Издательская страница подтверждает написание имени Ahmad Taboye, чадскую принадлежность, литературные и преподавательские роли и атрибутирует три названные книги." },
@@ -134,13 +134,13 @@ const writerBiographyFactReviewBatch16Base = [
   {
     key: "chad:felix_tchikaya",
     originalSha256: "aa95a4f5cf632535726de84e4b9088641c13733c7622fe3e5b5068b0b56346b0",
-    reviewedTextRu: "Личность чадского автора «Феликс Чикая», якобы родившегося в 1955 году, по проверенным источникам не установлена. Карточку нельзя отождествлять с конголезским поэтом Тчикайей У Там’си (Жераль-Феликс Чикая, 1931–1988).",
+    reviewedTextRu: "Личность чадского автора «Феликс Чикая», якобы родившегося в 1955 году, по проверенным источникам не установлена. Карточку нельзя отождествлять с конголезским поэтом Тчикайей У Там’си (Жераль-Феликс Чикая, 1931-1988).",
     claims: [{
-      textRu: "Указанная карточка не установлена как отдельный чадский автор; близкое имя принадлежит конголезскому поэту Тчикайе У Там’си, жившему в 1931–1988 годах.",
+      textRu: "Указанная карточка не установлена как отдельный чадский автор; близкое имя принадлежит конголезскому поэту Тчикайе У Там’си, жившему в 1931-1988 годах.",
       verdict: "not-established",
       evidence: [
-        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb11887681h", checkedAt, findingRu: "BnF связывает варианты Gérald-Félix Tchikaya и Félix Tchicaya с псевдонимом Tchicaya U Tam’si, Республикой Конго и датами 1931–1988, а не с чадским автором 1955 года рождения." },
-        { provider: "Encyclopédie Larousse", url: "https://www.larousse.fr/encyclopedie/personnage/G%C3%A9rald_Tchicaya_U_TamSi/146172", checkedAt, findingRu: "Энциклопедия независимо идентифицирует Жераль-Феликса Чикаю как конголезского поэта Тчикайю У Там’си и приводит даты 1931–1988." },
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb11887681h", checkedAt, findingRu: "BnF связывает варианты Gérald-Félix Tchikaya и Félix Tchicaya с псевдонимом Tchicaya U Tam’si, Республикой Конго и датами 1931-1988, а не с чадским автором 1955 года рождения." },
+        { provider: "Encyclopédie Larousse", url: "https://www.larousse.fr/encyclopedie/personnage/G%C3%A9rald_Tchicaya_U_TamSi/146172", checkedAt, findingRu: "Энциклопедия независимо идентифицирует Жераль-Феликса Чикаю как конголезского поэта Тчикайю У Там’си и приводит даты 1931-1988." },
       ],
     }],
     reviewer,
@@ -152,7 +152,7 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "701e8edd04e17640a3030236b88c952b7f6b98d7b359186026a2428d983c5e00",
     reviewedTextRu: "Чадский драматург, поэт и прозаик, родившийся в Дадуаре в 1959 году. Автор пьес «N’do kela ou l’Initiation avortée» и «Tout bas… si bas», а также романа «La Phalène des collines».",
     claims: [{
-      textRu: "Кулси Ламко — родившийся в Дадуаре в 1959 году чадский драматург, поэт и прозаик, автор N’do kela ou l’Initiation avortée, Tout bas… si bas и La Phalène des collines.",
+      textRu: "Кулси Ламко - родившийся в Дадуаре в 1959 году чадский драматург, поэт и прозаик, автор N’do kela ou l’Initiation avortée, Tout bas… si bas и La Phalène des collines.",
       verdict: "corrected",
       evidence: [
         { provider: "Casa África", url: "https://www.casafrica.es/es/persona/koulsy-lamko", checkedAt, findingRu: "Испанское государственное учреждение культурной дипломатии подтверждает место и год рождения, чадскую идентичность, литературные роли и библиографию Ламко." },
@@ -166,9 +166,9 @@ const writerBiographyFactReviewBatch16Base = [
   {
     key: "chad:nimrod",
     originalSha256: "2ec58087052df4a92770728db9a4a71aff17604b7d81f36226a88c0e4fc030ef",
-    reviewedTextRu: "Нимрод — литературный псевдоним чадского поэта, романиста и эссеиста Нимрода Бена Джангранга. Автор романов «Les Jambes d’Alice», «Le Départ» и «Le Bal des princes».",
+    reviewedTextRu: "Нимрод - литературный псевдоним чадского поэта, романиста и эссеиста Нимрода Бена Джангранга. Автор романов «Les Jambes d’Alice», «Le Départ» и «Le Bal des princes».",
     claims: [{
-      textRu: "Нимрод Бена Джангранг — чадский поэт, романист и эссеист, публикующийся как Нимрод и написавший Les Jambes d’Alice, Le Départ и Le Bal des princes.",
+      textRu: "Нимрод Бена Джангранг - чадский поэт, романист и эссеист, публикующийся как Нимрод и написавший Les Jambes d’Alice, Le Départ и Le Bal des princes.",
       verdict: "corrected",
       evidence: [
         { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb12057710d", checkedAt, findingRu: "Авторитетная запись BnF подтверждает настоящее имя, псевдоним, чадскую принадлежность и роли поэта, романиста и эссеиста." },
@@ -187,24 +187,24 @@ const writerBiographyFactReviewBatch16Base = [
       textRu: "Альберто Блест Гана был чилийским романистом и дипломатом, работал в русле социального реализма и написал Martín Rivas, Durante la Reconquista и El loco Estero.",
       verdict: "corrected",
       evidence: [
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3273.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает романную прозу Блеста Ганы, реалистическое направление, дипломатическую карьеру, три произведения и рождение 4 мая 1830 года." },
-        { provider: "Universidad de Chile — Revista Chilena de Literatura", url: "https://www.revistas.uchile.cl/index.php/RCL/article/view/47629", checkedAt, findingRu: "Университетское литературоведческое исследование рассматривает реалистические романы Блеста Ганы и подтверждает его место в истории чилийского романа." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3273.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает романную прозу Блеста Ганы, реалистическое направление, дипломатическую карьеру, три произведения и рождение 4 мая 1830 года." },
+        { provider: "Universidad de Chile - Revista Chilena de Literatura", url: "https://www.revistas.uchile.cl/index.php/RCL/article/view/47629", checkedAt, findingRu: "Университетское литературоведческое исследование рассматривает реалистические романы Блеста Ганы и подтверждает его место в истории чилийского романа." },
       ],
     }],
     reviewer,
     decision: "corrected",
-    notes: "Оценочная формула «отец чилийского романа» снята. Date recommendation: сохранить shared birthDate 1830-05-04 — её прямо подтверждает Национальная библиотека Чили; значение Wikidata 1830-06-14 отвергнуть. Точная дата смерти в проверенных источниках расходится или не детализирована, поэтому изменение deathDate не предлагается. Shared country files не изменялись.",
+    notes: "Оценочная формула «отец чилийского романа» снята. Date recommendation: сохранить shared birthDate 1830-05-04 - её прямо подтверждает Национальная библиотека Чили; значение Wikidata 1830-06-14 отвергнуть. Точная дата смерти в проверенных источниках расходится или не детализирована, поэтому изменение deathDate не предлагается. Shared country files не изменялись.",
   },
   {
     key: "chile:alejandra_costamagna",
     originalSha256: "aa4274546d368e3844ea9e41626e5970e6b82300dc07f44c783de04bd0dcf68b",
     reviewedTextRu: "Чилийская писательница, журналистка и исследовательница литературы. Автор романов «En voz baja» и «El sistema del tacto», а также сборника рассказов «Últimos fuegos».",
     claims: [{
-      textRu: "Алехандра Костаманьи — чилийская писательница, журналистка и исследовательница литературы, автор En voz baja, El sistema del tacto и Últimos fuegos.",
+      textRu: "Алехандра Костаманьи - чилийская писательница, журналистка и исследовательница литературы, автор En voz baja, El sistema del tacto и Últimos fuegos.",
       verdict: "corrected",
       evidence: [
         { provider: "Universidad Diego Portales", url: "https://centroparalashumanidades.udp.cl/equipo/alejandra-costamagna/", checkedAt, findingRu: "Университетская биография подтверждает литературную, журналистскую и исследовательскую деятельность Костаманьи и перечисляет её книги." },
-        { provider: "Universidad de Chile — Palabra Pública", url: "https://palabrapublica.uchile.cl/author/alejandra-costamagna/", checkedAt, findingRu: "Авторская страница университета независимо подтверждает чилийскую идентичность и писательскую и журналистскую работу Костаманьи." },
+        { provider: "Universidad de Chile - Palabra Pública", url: "https://palabrapublica.uchile.cl/author/alejandra-costamagna/", checkedAt, findingRu: "Авторская страница университета независимо подтверждает чилийскую идентичность и писательскую и журналистскую работу Костаманьи." },
         { provider: "Editorial Anagrama", url: "https://www.anagrama-ed.es/libro/narrativas-hispanicas/el-sistema-del-tacto/9788433998651/NH_617", checkedAt, findingRu: "Издатель атрибутирует Костаманьи роман El sistema del tacto и приводит библиографические сведения о книге." },
       ],
     }],
@@ -233,7 +233,7 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "23314da138606c51a4f69b514237f159960db09ad92a4e186d9810a9d1a7fd4c",
     reviewedTextRu: "Чилийский писатель, поэт и литературный критик. Автор романов «Bonsái», «La vida privada de los árboles», «Formas de volver a casa» и «Poeta chileno».",
     claims: [{
-      textRu: "Алехандро Самбра — чилийский писатель, поэт и литературный критик, автор Bonsái, La vida privada de los árboles, Formas de volver a casa и Poeta chileno.",
+      textRu: "Алехандро Самбра - чилийский писатель, поэт и литературный критик, автор Bonsái, La vida privada de los árboles, Formas de volver a casa и Poeta chileno.",
       verdict: "corrected",
       evidence: [
         { provider: "Editorial Anagrama", url: "https://www.anagrama-ed.es/autor/zambra-alejandro-1146", checkedAt, findingRu: "Издательская авторская страница подтверждает чилийское происхождение, литературные роли Самбры и перечисляет названные романы." },
@@ -252,7 +252,7 @@ const writerBiographyFactReviewBatch16Base = [
       textRu: "Бальдомеро Лильо был чилийским прозаиком, изображавшим шахтёров, сельских жителей и морских рабочих, и издал сборники Sub-terra в 1904 году и Sub-sole в 1907 году.",
       verdict: "corrected",
       evidence: [
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3313.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает биографию Лильо, социальные группы в его рассказах и атрибутирует ему Sub-terra и Sub-sole." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3313.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает биографию Лильо, социальные группы в его рассказах и атрибутирует ему Sub-terra и Sub-sole." },
         { provider: "Pontificia Universidad Católica de Chile", url: "https://www.revistadisena.uc.cl/index.php/alch/article/download/51529/42137/142147", checkedAt, findingRu: "Университетское исследование независимо фиксирует Sub-terra (1904) и Sub-sole (1907) как два книжных сборника автора." },
       ],
     }],
@@ -265,7 +265,7 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "dda165d305a48822ceff7311c98f59fd358497ba3012b9a1cff9553d1a9b8edc",
     reviewedTextRu: "Чилийская писательница и эссеистка, участница художественного коллектива CADA. Автор романов «Lumpérica», «Por la patria» и «El cuarto mundo»; в 2018 году получила Национальную премию Чили по литературе.",
     claims: [{
-      textRu: "Диамела Эльтит — чилийская писательница и эссеистка, участница CADA, автор Lumpérica, Por la patria и El cuarto mundo и лауреат Национальной премии Чили по литературе 2018 года.",
+      textRu: "Диамела Эльтит - чилийская писательница и эссеистка, участница CADA, автор Lumpérica, Por la patria и El cuarto mundo и лауреат Национальной премии Чили по литературе 2018 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Universidad de Chile", url: "https://uchile.cl/presentacion/historia/grandes-figuras/premios-nacionales/literatura/diamela-eltit-gonzalez", checkedAt, findingRu: "Официальная университетская биография подтверждает роли Эльтит, участие в CADA, три романа, премию и дату рождения 24 августа 1949 года." },
@@ -279,13 +279,13 @@ const writerBiographyFactReviewBatch16Base = [
   {
     key: "chile:gabriela_mistral",
     originalSha256: "5723047b5d0cb6f3e99a78104cf5d0ea5d5a236ab57803611ae895c6bf0ae7ee",
-    reviewedTextRu: "Габриэла Мистраль — псевдоним чилийской поэтессы, педагога и дипломата Лусилы Годой Алькаяги. Автор сборников «Desolación», «Ternura» и «Tala»; в 1945 году стала первым лауреатом Нобелевской премии по литературе из Южной Америки.",
+    reviewedTextRu: "Габриэла Мистраль - псевдоним чилийской поэтессы, педагога и дипломата Лусилы Годой Алькаяги. Автор сборников «Desolación», «Ternura» и «Tala»; в 1945 году стала первым лауреатом Нобелевской премии по литературе из Южной Америки.",
     claims: [{
-      textRu: "Габриэла Мистраль — псевдоним чилийской поэтессы, педагога и дипломата Лусилы Годой Алькаяги, автора Desolación, Ternura и Tala и первого южноамериканского лауреата Нобелевской премии по литературе 1945 года.",
+      textRu: "Габриэла Мистраль - псевдоним чилийской поэтессы, педагога и дипломата Лусилы Годой Алькаяги, автора Desolación, Ternura и Tala и первого южноамериканского лауреата Нобелевской премии по литературе 1945 года.",
       verdict: "corrected",
       evidence: [
         { provider: "The Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1945/mistral/facts/", checkedAt, findingRu: "Официальная нобелевская справка подтверждает полное имя, псевдоним, литературную и дипломатическую деятельность, премию 1945 года и статус первого южноамериканского лауреата по литературе." },
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3429.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает чилийскую идентичность, педагогическую деятельность и библиографию Мистраль, включая Desolación, Ternura и Tala." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3429.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает чилийскую идентичность, педагогическую деятельность и библиографию Мистраль, включая Desolación, Ternura и Tala." },
       ],
     }],
     reviewer,
@@ -297,11 +297,11 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "6a3860d4952f6c75079bbbaf3094453f13144a32e7d3bd9a58bc271f8e3b7c82",
     reviewedTextRu: "Чилийский писатель, чьи романы обращены к жизни селитряных посёлков и жителей севера страны. Автор «La Reina Isabel cantaba rancheras» и «Santa María de las flores negras»; в 2022 году получил Национальную премию Чили по литературе.",
     claims: [{
-      textRu: "Эрнан Ривера Летельер — чилийский романист, пишущий о селитряных посёлках и севере страны, автор La Reina Isabel cantaba rancheras и Santa María de las flores negras и лауреат Национальной премии по литературе 2022 года.",
+      textRu: "Эрнан Ривера Летельер - чилийский романист, пишущий о селитряных посёлках и севере страны, автор La Reina Isabel cantaba rancheras и Santa María de las flores negras и лауреат Национальной премии по литературе 2022 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Ministerio de las Culturas, las Artes y el Patrimonio de Chile", url: "https://www.cultura.gob.cl/actualidad/hernan-rivera-letelier-recibe-el-premio-nacional-de-literatura-2022/", checkedAt, findingRu: "Министерство подтверждает биографическую связь Риверы Летельера с селитряными районами, его литературную работу и Национальную премию 2022 года." },
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-propertyvalue-736142.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает авторство двух названных романов и устойчивую тематику селитряных поселений севера страны." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-propertyvalue-736142.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает авторство двух названных романов и устойчивую тематику селитряных поселений севера страны." },
       ],
     }],
     reviewer,
@@ -313,10 +313,10 @@ const writerBiographyFactReviewBatch16Base = [
     originalSha256: "473d51361617ed9df56062078f3a604215af54b74eb4ac4a8936eb23d55fd717",
     reviewedTextRu: "Чилийская писательница, родившаяся в Лиме. Автор романов «La casa de los espíritus», «De amor y de sombra» и «Eva Luna»; в 2010 году получила Национальную премию Чили по литературе.",
     claims: [{
-      textRu: "Исабель Альенде — чилийская писательница, родившаяся в Лиме, автор La casa de los espíritus, De amor y de sombra и Eva Luna и лауреат Национальной премии Чили по литературе 2010 года.",
+      textRu: "Исабель Альенде - чилийская писательница, родившаяся в Лиме, автор La casa de los espíritus, De amor y de sombra и Eva Luna и лауреат Национальной премии Чили по литературе 2010 года.",
       verdict: "corrected",
       evidence: [
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-100654.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает рождение Альенде в Лиме 2 августа 1942 года, чилийскую литературную идентичность, три романа и премию 2010 года." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-100654.html", checkedAt, findingRu: "Национальная библиотека Чили подтверждает рождение Альенде в Лиме 2 августа 1942 года, чилийскую литературную идентичность, три романа и премию 2010 года." },
         { provider: "Ministerio de las Culturas, las Artes y el Patrimonio de Chile", url: "https://www.cultura.gob.cl/premiosnacionales/", checkedAt, findingRu: "Официальный перечень министерства фиксирует Исабель Альенде как лауреата Национальной премии по литературе 2010 года." },
       ],
     }],
@@ -332,7 +332,7 @@ const writerBiographyFactReviewBatch16Base = [
       textRu: "Хосе Доносо был чилийским романистом поколения латиноамериканского бума, написал El lugar sin límites, El obsceno pájaro de la noche и Casa de campo и получил Национальную премию Чили по литературе 1990 года.",
       verdict: "corrected",
       evidence: [
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3477.html", checkedAt, findingRu: "Национальная библиотека Чили связывает Доносо с латиноамериканским бумом и подтверждает его авторство трёх названных романов." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3477.html", checkedAt, findingRu: "Национальная библиотека Чили связывает Доносо с латиноамериканским бумом и подтверждает его авторство трёх названных романов." },
         { provider: "Universidad de Chile", url: "https://uchile.cl/presentacion/historia/grandes-figuras/premios-nacionales/literatura/jose-donoso-yanez", checkedAt, findingRu: "Университетская биография подтверждает чилийскую романную прозу Доносо и присуждение ему Национальной премии по литературе в 1990 году." },
       ],
     }],
@@ -349,7 +349,7 @@ const writerBiographyFactReviewBatch16Base = [
       verdict: "corrected",
       evidence: [
         { provider: "Universidad de Chile", url: "https://uchile.cl/noticias/27666/jose-miguel-varas-galardonado-con-el-premio-nacional-de-literatura-", checkedAt, findingRu: "Университетская биография подтверждает писательскую и журналистскую работу Вараса, названные жанры и книги и Национальную премию 2006 года." },
-        { provider: "Memoria Chilena — Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3481.html", checkedAt, findingRu: "Национальная библиотека Чили независимо подтверждает биографию, журналистскую деятельность и библиографию Вараса." },
+        { provider: "Memoria Chilena - Biblioteca Nacional de Chile", url: "https://www.memoriachilena.gob.cl/602/w3-article-3481.html", checkedAt, findingRu: "Национальная библиотека Чили независимо подтверждает биографию, журналистскую деятельность и библиографию Вараса." },
       ],
     }],
     reviewer,

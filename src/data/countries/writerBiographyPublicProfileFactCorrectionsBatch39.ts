@@ -31,7 +31,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
     countryId: "mali",
     writerId: "modibo_sounkalo_keita",
     patch: {
-      years: "1948–",
+      years: "1948-",
       deathDate: "",
       works: ["L’Archer bassari", "L’Orphelin"],
       genres: ["роман", "рассказ"],
@@ -67,7 +67,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
     patch: {
       name: "Антонио Эмануэле Каруана",
       fullName: "Antonio Emanuele Caruana",
-      years: "1839–1907",
+      years: "1839-1907",
       birthDate: "1839",
       deathDate: "1907",
       works: ["Ineż Farruġ", "Vocabolario della lingua maltese"],
@@ -156,7 +156,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
       genres: ["поэзия", "устное исполнение", "эссе"],
     },
     evidence: sources(
-      "Kathy Jetñil-Kijiner — официальный сайт",
+      "Kathy Jetñil-Kijiner - официальный сайт",
       "https://www.kathyjetnilkijiner.com/",
       "University of Hawaiʻi",
       "https://hawaii.edu/cpis/alumni-and-friends/alumni-spotlight/kathy-jetnil-kijiner-2/"
@@ -206,7 +206,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
       works: ["L’Amour impossible", "Le Barzakh"],
     },
     evidence: sources(
-      "Moussa Ould Ebnou — официальный сайт",
+      "Moussa Ould Ebnou - официальный сайт",
       "https://moussaebnou.net/pages/about",
       "SOAS University of London Repository",
       "https://soas-repository.worktribe.com/OutputFile/362884"
@@ -265,13 +265,13 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
     patch: {
       name: "Хал Торабулли",
       birthPlace: "Порт-Луи, Маврикий",
-      works: ["Cale d’étoiles — Coolitude", "Chair corail, fragments coolies", "Mes Afriques, mes ivoires"],
+      works: ["Cale d’étoiles - Coolitude", "Chair corail, fragments coolies", "Mes Afriques, mes ivoires"],
       genres: ["поэзия", "эссе", "кино"],
     },
     evidence: sources(
       "Bennington College",
       "https://www.bennington.edu/events/n%C3%A9gritude-coolitude-visionary-poetry-of-khal-torabully",
-      "Boston University — AGNI",
+      "Boston University - AGNI",
       "https://agnionline.bu.edu/about/our-people/authors/khal-torabully/"
     ),
     note: "Русская форма имени, место рождения, библиография и режиссёрская работа уточнены.",
@@ -482,7 +482,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch39 = [
     patch: {
       name: "Хавьер Веласко",
       fullName: "Xavier Velasco",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-11-07",
       works: ["Diablo guardián", "Luna llena en las rocas", "Puedo explicarlo todo"],
       genres: ["роман", "хроника", "эссе"],

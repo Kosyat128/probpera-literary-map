@@ -26,17 +26,17 @@ surface, stage, and canvas still measured the full requested viewport.
 
 ## Representative interaction states
 
-- `en-1920x1080-immersive-search-results.png` — APG combobox with the query
+- `en-1920x1080-immersive-search-results.png` - APG combobox with the query
   `Fran`, active France option, writers, and a scrollable results list.
-- `en-1920x1080-immersive-filters.png` — reusable globe filters in the
+- `en-1920x1080-immersive-filters.png` - reusable globe filters in the
   immersive overlay.
-- `en-1920x1080-immersive-country-drawer.png` — selected France and the
+- `en-1920x1080-immersive-country-drawer.png` - selected France and the
   desktop country drawer.
-- `en-360x800-immersive-country-sheet-collapsed.png` — collapsed mobile
+- `en-360x800-immersive-country-sheet-collapsed.png` - collapsed mobile
   country sheet.
-- `en-360x800-immersive-country-sheet-expanded.png` — expanded mobile country
+- `en-360x800-immersive-country-sheet-expanded.png` - expanded mobile country
   sheet.
-- `en-360x800-immersive-economical-mode.png` — rendered mobile economical
+- `en-360x800-immersive-economical-mode.png` - rendered mobile economical
   fallback (`data-atlas-economical="true"`). This is not labelled as a
   reduced-motion capture.
 

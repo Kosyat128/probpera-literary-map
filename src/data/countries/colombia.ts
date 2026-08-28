@@ -8,7 +8,7 @@ export const colombia: Country = {
     {
       id: "jorge_isaacs",
       name: "Хорхе Айзекс",
-      years: "1837–1895",
+      years: "1837-1895",
       birthDate: "1837-04-01",
       deathDate: "1895-04-17",
       birthPlace: "Кали, Новая Гранада",
@@ -45,7 +45,7 @@ export const colombia: Country = {
     {
       id: "rafael_pombo",
       name: "Рафаэль Помбо",
-      years: "1833–1912",
+      years: "1833-1912",
       birthDate: "1833-11-07",
       deathDate: "1912-05-05",
       birthPlace: "Богота, Колумбия",
@@ -82,7 +82,7 @@ export const colombia: Country = {
     {
       id: "jose_asuncion_silva",
       name: "Хосе Асунсьон Сильва",
-      years: "1865–1896",
+      years: "1865-1896",
       birthDate: "1865-11-27",
       deathDate: "1896-05-24",
       birthPlace: "Богота, Колумбия",
@@ -119,7 +119,7 @@ export const colombia: Country = {
         {
       id: "leon_de_greiff",
       name: "Леон де Грейфф",
-      years: "1895–1976",
+      years: "1895-1976",
       birthDate: "1895-07-22",
       deathDate: "1976-07-11",
       birthPlace: "Медельин, Колумбия",
@@ -156,7 +156,7 @@ export const colombia: Country = {
     {
       id: "manuel_mejia_vallejo",
       name: "Мануэль Мехия Вальехо",
-      years: "1923–1998",
+      years: "1923-1998",
       birthDate: "1923-04-23",
       deathDate: "1998-07-23",
       birthPlace: "Хардин, Колумбия",
@@ -195,7 +195,7 @@ export const colombia: Country = {
     {
       id: "german_espinosa",
       name: "Герман Эспиноса",
-      years: "1938–2007",
+      years: "1938-2007",
       birthDate: "1938-04-30",
       deathDate: "2007-10-17",
       birthPlace: "Картахена, Колумбия",
@@ -234,7 +234,7 @@ export const colombia: Country = {
     {
       id: "alvaro_mutis",
       name: "Альваро Мутис",
-      years: "1923–2013",
+      years: "1923-2013",
       birthDate: "1923-08-25",
       deathDate: "2013-09-22",
       birthPlace: "Богота, Колумбия",
@@ -244,7 +244,7 @@ export const colombia: Country = {
         lng: -74.0721
       },
       portrait: "",
-      bio: "Колумбийский поэт и писатель, один из крупнейших представителей латиноамериканской литературы XX века. Создатель образа Макироля — одного из известных персонажей современной испаноязычной прозы.",
+      bio: "Колумбийский поэт и писатель, один из крупнейших представителей латиноамериканской литературы XX века. Создатель образа Макироля - одного из известных персонажей современной испаноязычной прозы.",
       works: [
         "Приключения и невзгоды Макироля",
         "Звезда чёрной воды",
@@ -274,7 +274,7 @@ export const colombia: Country = {
         {
       id: "gabriel_garcia_marquez",
       name: "Габриэль Гарсиа Маркес",
-      years: "1927–2014",
+      years: "1927-2014",
       birthDate: "1927-03-06",
       deathDate: "2014-04-17",
       birthPlace: "Аракатака, Колумбия",
@@ -341,7 +341,7 @@ export const colombia: Country = {
     {
       id: "fernando_vallejo",
       name: "Фернандо Вальехо",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-10-24",
       birthPlace: "Медельин, Колумбия",
       coordinates: {
@@ -378,7 +378,7 @@ export const colombia: Country = {
     {
       id: "laura_restrepo",
       name: "Лаура Рестрепо",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -415,7 +415,7 @@ export const colombia: Country = {
         {
       id: "juan_gabriel_vasquez",
       name: "Хуан Габриэль Васкес",
-      years: "1973–",
+      years: "1973-",
       birthDate: "1973-01-01",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -454,7 +454,7 @@ export const colombia: Country = {
     {
       id: "pilar_quintana",
       name: "Пилар Кинтана",
-      years: "1972–",
+      years: "1972-",
       birthDate: "1972-04-14",
       birthPlace: "Кали, Колумбия",
       coordinates: {
@@ -491,7 +491,7 @@ export const colombia: Country = {
     {
       id: "santiago_gamboa",
       name: "Сантьяго Гамбоа",
-      years: "1965–",
+      years: "1965-",
       birthDate: "1965-12-30",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -526,7 +526,7 @@ export const colombia: Country = {
     {
       id: "hector_abad_faciolince",
       name: "Эктор Абад Фасьолинсе",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-10-01",
       birthPlace: "Медельин, Колумбия",
       coordinates: {
@@ -563,7 +563,7 @@ export const colombia: Country = {
         {
       id: "andres_caicedo",
       name: "Андрес Кайседо",
-      years: "1951–1977",
+      years: "1951-1977",
       birthDate: "1951-09-29",
       deathDate: "1977-03-04",
       birthPlace: "Кали, Колумбия",
@@ -601,7 +601,7 @@ export const colombia: Country = {
     {
       id: "german_castro_caycedo",
       name: "Херман Кастро Кайседо",
-      years: "1940–2021",
+      years: "1940-2021",
       birthDate: "1940-03-03",
       deathDate: "2021-07-15",
       birthPlace: "Сипакира, Колумбия",
@@ -638,7 +638,7 @@ export const colombia: Country = {
     {
       id: "hector_rojas_herazo",
       name: "Эктор Рохас Эрасо",
-      years: "1921–2002",
+      years: "1921-2002",
       birthDate: "1921-08-12",
       deathDate: "2002-04-11",
       birthPlace: "Толу, Колумбия",
@@ -674,7 +674,7 @@ export const colombia: Country = {
     {
       id: "jairo_anibal_nino",
       name: "Хайро Анибаль Ниньо",
-      years: "1941–2010",
+      years: "1941-2010",
       birthDate: "1941-09-05",
       deathDate: "2010-08-30",
       birthPlace: "Монгуа, Колумбия",
@@ -709,7 +709,7 @@ export const colombia: Country = {
         {
       id: "santiago_mutis_duran",
       name: "Сантьяго Мутис Дуран",
-      years: "1951–",
+      years: "1951-",
       birthDate: "1951-03-25",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -742,7 +742,7 @@ export const colombia: Country = {
     {
       id: "mario_mendoza",
       name: "Марио Мендоса",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-01-10",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -779,7 +779,7 @@ export const colombia: Country = {
     {
       id: "juan_carlos_botero",
       name: "Хуан Карлос Ботеро",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960",
       birthPlace: "Богота, Колумбия",
       coordinates: {
@@ -813,7 +813,7 @@ export const colombia: Country = {
     {
       id: "ricardo_silva_romero",
       name: "Рикардо Сильва Ромеро",
-      years: "1975–",
+      years: "1975-",
       birthDate: "1975-08-14",
       birthPlace: "Богота, Колумбия",
       coordinates: {

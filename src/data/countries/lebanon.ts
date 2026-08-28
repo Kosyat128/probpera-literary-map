@@ -12,7 +12,7 @@ export const lebanon: Country = {
       name: "Халиль Джебран",
       fullName: "Khalil Gibran",
 
-      years: "1883–1931",
+      years: "1883-1931",
 
       birthDate: "1883-01-06",
       deathDate: "1931-04-10",
@@ -62,7 +62,7 @@ export const lebanon: Country = {
       name: "Михаил Нуайме",
       fullName: "Mikhail Naimy",
 
-      years: "1889–1988",
+      years: "1889-1988",
 
       birthDate: "1889-11-22",
       deathDate: "1988-02-28",
@@ -111,7 +111,7 @@ export const lebanon: Country = {
       name: "Жорж Шехаде",
       fullName: "Georges Schehadé",
 
-      years: "1905–1989",
+      years: "1905-1989",
 
       birthDate: "1905-11-02",
       deathDate: "1989-01-17",
@@ -160,7 +160,7 @@ export const lebanon: Country = {
       name: "Элиас Хури",
       fullName: "Elias Khoury",
 
-      years: "1948–2024",
+      years: "1948-2024",
 
       birthDate: "1948-07-12",
       deathDate: "2024-09-15",
@@ -210,7 +210,7 @@ export const lebanon: Country = {
       name: "Амин Маалуф",
       fullName: "Amin Maalouf",
 
-      years: "1949–",
+      years: "1949-",
 
       birthDate: "1949-02-25",
       deathDate: "",
@@ -261,7 +261,7 @@ export const lebanon: Country = {
       name: "Хода Баракат",
       fullName: "Hoda Barakat",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952",
       deathDate: "",
@@ -310,7 +310,7 @@ export const lebanon: Country = {
       name: "Антуан Дуаихи",
       fullName: "Antoine Douaihy",
 
-      years: "1948–",
+      years: "1948-",
 
       birthDate: "1948",
       deathDate: "",

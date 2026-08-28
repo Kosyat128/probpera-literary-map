@@ -10,7 +10,7 @@ export const netherlands: Country = {
       id: "erasmus_rotterdam",
       name: "Эразм Роттердамский",
       fullName: "Desiderius Erasmus",
-      years: "1466–1536",
+      years: "1466-1536",
 
       birthDate: "1466-10-28",
       deathDate: "1536-07-12",
@@ -55,7 +55,7 @@ export const netherlands: Country = {
       id: "joost_van_den_vondel",
       name: "Йост ван ден Вондел",
       fullName: "Joost van den Vondel",
-      years: "1587–1679",
+      years: "1587-1679",
 
       birthDate: "1587-11-17",
       deathDate: "1679-02-05",
@@ -101,7 +101,7 @@ export const netherlands: Country = {
       id: "betje_wolff",
       name: "Бетје Вольф",
       fullName: "Elizabeth Wolff-Bekker",
-      years: "1738–1804",
+      years: "1738-1804",
 
       birthDate: "1738-07-24",
       deathDate: "1804-11-05",
@@ -146,7 +146,7 @@ export const netherlands: Country = {
       id: "multatuli",
       name: "Мултатули",
       fullName: "Eduard Douwes Dekker",
-      years: "1820–1887",
+      years: "1820-1887",
 
       birthDate: "1820-03-02",
       deathDate: "1887-02-19",
@@ -192,7 +192,7 @@ export const netherlands: Country = {
       id: "frederik_van_eeden",
       name: "Фредерик ван Эден",
       fullName: "Frederik van Eeden",
-      years: "1860–1932",
+      years: "1860-1932",
 
       birthDate: "1860-04-03",
       deathDate: "1932-06-16",
@@ -206,7 +206,7 @@ export const netherlands: Country = {
 
       portrait: "",
 
-      bio: "Нидерландский писатель, поэт и философ конца XIX — начала XX века.",
+      bio: "Нидерландский писатель, поэт и философ конца XIX - начала XX века.",
 
       works: [
         "Маленький Иоганнес"
@@ -238,7 +238,7 @@ export const netherlands: Country = {
       id: "louis_couperus",
       name: "Луис Куперус",
       fullName: "Louis Couperus",
-      years: "1863–1923",
+      years: "1863-1923",
 
       birthDate: "1863-06-10",
       deathDate: "1923-07-16",
@@ -285,7 +285,7 @@ export const netherlands: Country = {
       id: "anne_frank",
       name: "Анна Франк",
       fullName: "Anne Frank",
-      years: "1929–1945",
+      years: "1929-1945",
 
       birthDate: "1929-06-12",
       deathDate: "1945-02-01",
@@ -331,7 +331,7 @@ export const netherlands: Country = {
       id: "harry_mulisch",
       name: "Гарри Мулиш",
       fullName: "Harry Mulisch",
-      years: "1927–2010",
+      years: "1927-2010",
 
       birthDate: "1927-07-29",
       deathDate: "2010-10-30",
@@ -377,7 +377,7 @@ export const netherlands: Country = {
       id: "cees_nooteboom",
       name: "Сейс Нотебоом",
       fullName: "Cees Nooteboom",
-      years: "1933–",
+      years: "1933-",
 
       birthDate: "1933-07-31",
       deathDate: "",
@@ -424,7 +424,7 @@ export const netherlands: Country = {
       id: "herman_koch",
       name: "Херман Кох",
       fullName: "Herman Koch",
-      years: "1953–",
+      years: "1953-",
 
       birthDate: "1953-09-05",
       deathDate: "",

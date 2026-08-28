@@ -40,7 +40,7 @@ function validateWorkTranslation(value: unknown) {
   }
   const sentences = sentenceCount(parsed.data.description);
   if (sentences < 2 || sentences > 3) {
-    throw new Error("Premium English book description must contain 2–3 sentences");
+    throw new Error("Premium English book description must contain 2-3 sentences");
   }
   return parsed.data;
 }
@@ -173,7 +173,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       domainInstructions: [
         "This is a compact literary-encyclopedia record for a book or literary work.",
         "Use the established English title when it is clearly standard and supported by the source context. Otherwise give a faithful English rendering without inventing an edition title.",
-        "The description must be 2–3 polished sentences, 140–900 characters, suitable for an international literary encyclopedia.",
+        "The description must be 2-3 polished sentences, 140-900 characters, suitable for an international literary encyclopedia.",
         "Do not translate or modify sourceUrls, publication years, identifiers or original-language metadata.",
       ],
     });

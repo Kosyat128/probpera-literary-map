@@ -83,9 +83,9 @@ const jsonPath = path.join(reportsDir, `${reportBase}.json`);
 const markdownPath = path.join(reportsDir, `${reportBase}.md`);
 fs.writeFileSync(jsonPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
-const previousBatchLabel = batch === 1 ? "ранее проверенными партиями" : `Batch01–${String(batch - 1).padStart(2, "0")}`;
+const previousBatchLabel = batch === 1 ? "ранее проверенными партиями" : `Batch01-${String(batch - 1).padStart(2, "0")}`;
 const markdown: string[] = [
-  `# Фактологическая проверка биографий писателей — Batch${suffix}`,
+  `# Фактологическая проверка биографий писателей - Batch${suffix}`,
   "",
   `Дата проверки: ${generatedAt}`,
   "",
@@ -108,7 +108,7 @@ const markdown: string[] = [
 ];
 
 records.forEach((record, index) => {
-  markdown.push(`### ${index + 1}. \`${record.key}\` — ${record.decision}`, "");
+  markdown.push(`### ${index + 1}. \`${record.key}\` - ${record.decision}`, "");
   markdown.push(`**SHA-256 исходного UTF-8:** \`${record.originalSha256}\``, "");
   markdown.push(`**Итоговый текст:** ${record.reviewedTextRu}`, "");
   markdown.push(
@@ -120,7 +120,7 @@ records.forEach((record, index) => {
   for (const claim of record.claims) {
     for (const evidence of claim.evidence) {
       markdown.push(
-        `- [${evidence.provider}](${evidence.url}) — ${evidence.findingRu} Проверено: ${evidence.checkedAt}.`
+        `- [${evidence.provider}](${evidence.url}) - ${evidence.findingRu} Проверено: ${evidence.checkedAt}.`
       );
     }
   }

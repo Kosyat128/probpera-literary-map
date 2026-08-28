@@ -9,7 +9,7 @@ export const germany: Country = {
       id: "theodor_mommsen",
       name: "Кристиан Маттиас Теодор Моммзен",
       fullName: "Christian Matthias Theodor Mommsen",
-      years: "1817–1903",
+      years: "1817-1903",
       nobelYear: 1902,
       birthDate: "1817-11-30",
       deathDate: "1903-11-01",
@@ -41,7 +41,7 @@ export const germany: Country = {
       id: "rudolf_eucken",
       name: "Рудольф Кристоф Эйкен",
       fullName: "Rudolf Christoph Eucken",
-      years: "1846–1926",
+      years: "1846-1926",
       nobelYear: 1908,
       birthDate: "1846-01-05",
       deathDate: "1926-09-15",
@@ -73,7 +73,7 @@ export const germany: Country = {
       id: "paul_heyse",
       name: "Пауль Йохан Людвиг фон Хейзе",
       fullName: "Paul Johann Ludwig von Heyse",
-      years: "1830–1914",
+      years: "1830-1914",
       nobelYear: 1910,
       birthDate: "1830-03-15",
       deathDate: "1914-04-02",
@@ -104,7 +104,7 @@ export const germany: Country = {
     {
       id: "walther_von_der_vogelweide",
       name: "Вальтер фон дер Фогельвейде",
-      years: "ок. 1170–1230",
+      years: "ок. 1170-1230",
       birthDate: "ок. 1170",
       deathDate: "ок. 1230",
       birthPlace: "Тироль или Франкония",
@@ -137,7 +137,7 @@ export const germany: Country = {
     {
       id: "wolfram_von_eschenbach",
       name: "Вольфрам фон Эшенбах",
-      years: "ок. 1170–ок. 1220",
+      years: "ок. 1170-ок. 1220",
       birthDate: "ок. 1170",
       deathDate: "ок. 1220",
       birthPlace: "Эшенбах, Германия",
@@ -171,7 +171,7 @@ export const germany: Country = {
     {
       id: "hartmann_von_aue",
       name: "Гартман фон Ауэ",
-      years: "ок. 1160–ок. 1210",
+      years: "ок. 1160-ок. 1210",
       birthDate: "ок. 1160",
       deathDate: "ок. 1210",
       birthPlace: "Германия",
@@ -203,7 +203,7 @@ export const germany: Country = {
     {
       id: "martin_luther",
       name: "Мартин Лютер",
-      years: "1483–1546",
+      years: "1483-1546",
       birthDate: "1483-11-10",
       deathDate: "1546-02-18",
       birthPlace: "Айслебен, Германия",
@@ -235,7 +235,7 @@ export const germany: Country = {
     {
       id: "sebastian_brant",
       name: "Себастьян Брант",
-      years: "1457–1521",
+      years: "1457-1521",
       birthDate: "1457",
       deathDate: "1521-05-10",
       birthPlace: "Страсбург",
@@ -267,7 +267,7 @@ export const germany: Country = {
     {
       id: "hans_sachs",
       name: "Ганс Сакс",
-      years: "1494–1576",
+      years: "1494-1576",
       birthDate: "1494-11-05",
       deathDate: "1576-01-19",
       birthPlace: "Нюрнберг, Германия",
@@ -301,7 +301,7 @@ export const germany: Country = {
         {
       id: "andreas_gryphius",
       name: "Андреас Грифиус",
-      years: "1616–1664",
+      years: "1616-1664",
       birthDate: "1616-10-02",
       deathDate: "1664-07-16",
       birthPlace: "Глогау, Силезия",
@@ -335,7 +335,7 @@ export const germany: Country = {
     {
       id: "grimmelshausen",
       name: "Ганс Якоб Кристоф Гриммельсгаузен",
-      years: "ок. 1621–1676",
+      years: "ок. 1621-1676",
       birthDate: "ок. 1621",
       deathDate: "1676-08-17",
       birthPlace: "Гельнхаузен, Германия",
@@ -367,7 +367,7 @@ export const germany: Country = {
     {
       id: "lessing",
       name: "Готхольд Эфраим Лессинг",
-      years: "1729–1781",
+      years: "1729-1781",
       birthDate: "1729-01-22",
       deathDate: "1781-02-15",
       birthPlace: "Каменц, Германия",
@@ -401,7 +401,7 @@ export const germany: Country = {
     {
       id: "christoph_martin_wieland",
       name: "Кристоф Мартин Виланд",
-      years: "1733–1813",
+      years: "1733-1813",
       birthDate: "1733-09-05",
       deathDate: "1813-01-20",
       birthPlace: "Оберхольцхайм, Германия",
@@ -437,7 +437,7 @@ export const germany: Country = {
     {
       id: "johann_gottfried_herder",
       name: "Иоганн Готфрид Гердер",
-      years: "1744–1803",
+      years: "1744-1803",
       birthDate: "1744-08-25",
       deathDate: "1803-12-18",
       birthPlace: "Морунген, Пруссия",
@@ -471,7 +471,7 @@ export const germany: Country = {
     {
       id: "johann_wolfgang_goethe",
       name: "Иоганн Вольфганг Гёте",
-      years: "1749–1832",
+      years: "1749-1832",
       birthDate: "1749-08-28",
       deathDate: "1832-03-22",
       birthPlace: "Франкфурт-на-Майне, Германия",
@@ -511,7 +511,7 @@ export const germany: Country = {
     {
       id: "friedrich_schiller",
       name: "Фридрих Шиллер",
-      years: "1759–1805",
+      years: "1759-1805",
       birthDate: "1759-11-10",
       deathDate: "1805-05-09",
       birthPlace: "Марбах-на-Неккаре, Германия",
@@ -548,7 +548,7 @@ export const germany: Country = {
         {
       id: "heinrich_von_kleist",
       name: "Генрих фон Клейст",
-      years: "1777–1811",
+      years: "1777-1811",
       birthDate: "1777-10-18",
       deathDate: "1811-11-21",
       birthPlace: "Франкфурт-на-Одере, Пруссия",
@@ -585,7 +585,7 @@ export const germany: Country = {
     {
       id: "heinrich_heine",
       name: "Генрих Гейне",
-      years: "1797–1856",
+      years: "1797-1856",
       birthDate: "1797-12-13",
       deathDate: "1856-02-17",
       birthPlace: "Дюссельдорф, Германия",
@@ -619,7 +619,7 @@ export const germany: Country = {
     {
       id: "eduard_morike",
       name: "Эдуард Мёрике",
-      years: "1804–1875",
+      years: "1804-1875",
       birthDate: "1804-09-08",
       deathDate: "1875-06-04",
       birthPlace: "Людвигсбург, Германия",
@@ -651,7 +651,7 @@ export const germany: Country = {
     {
       id: "theodor_fontane",
       name: "Теодор Фонтане",
-      years: "1819–1898",
+      years: "1819-1898",
       birthDate: "1819-12-30",
       deathDate: "1898-09-20",
       birthPlace: "Нёйруппин, Пруссия",
@@ -685,7 +685,7 @@ export const germany: Country = {
       id: "gerhart_hauptmann",
       nobelYear: 1912,
       name: "Герхарт Гауптман",
-      years: "1862–1946",
+      years: "1862-1946",
       birthDate: "1862-11-15",
       deathDate: "1946-06-06",
       birthPlace: "Обесальцбрунн, Германия",
@@ -721,7 +721,7 @@ export const germany: Country = {
     {
       id: "thomas_mann",
       name: "Томас Манн",
-      years: "1875–1955",
+      years: "1875-1955",
       birthDate: "1875-06-06",
       deathDate: "1955-08-12",
       birthPlace: "Любек, Германия",
@@ -779,7 +779,7 @@ export const germany: Country = {
     {
       id: "hermann_hesse",
       name: "Герман Гессе",
-      years: "1877–1962",
+      years: "1877-1962",
       birthDate: "1877-07-02",
       deathDate: "1962-08-09",
       birthPlace: "Кальв, Германия",
@@ -817,7 +817,7 @@ export const germany: Country = {
         {
       id: "franz_kafka",
       name: "Франц Кафка",
-      years: "1883–1924",
+      years: "1883-1924",
       birthDate: "1883-07-03",
       deathDate: "1924-06-03",
       birthPlace: "Прага, Австро-Венгрия",
@@ -855,7 +855,7 @@ export const germany: Country = {
     {
       id: "bertolt_brecht",
       name: "Бертольт Брехт",
-      years: "1898–1956",
+      years: "1898-1956",
       birthDate: "1898-02-10",
       deathDate: "1956-08-14",
       birthPlace: "Аугсбург, Германия",
@@ -889,7 +889,7 @@ export const germany: Country = {
     {
       id: "stefan_zweig",
       name: "Стефан Цвейг",
-      years: "1881–1942",
+      years: "1881-1942",
       birthDate: "1881-11-28",
       deathDate: "1942-02-22",
       birthPlace: "Вена, Австро-Венгрия",
@@ -924,7 +924,7 @@ export const germany: Country = {
     {
       id: "erich_maria_remarque",
       name: "Эрих Мария Ремарк",
-      years: "1898–1970",
+      years: "1898-1970",
       birthDate: "1898-06-22",
       deathDate: "1970-09-25",
       birthPlace: "Оснабрюк, Германия",
@@ -996,7 +996,7 @@ export const germany: Country = {
     {
       id: "alfred_doblin",
       name: "Альфред Дёблин",
-      years: "1878–1957",
+      years: "1878-1957",
       birthDate: "1878-08-10",
       deathDate: "1957-06-26",
       birthPlace: "Щецин, Германия",
@@ -1030,7 +1030,7 @@ export const germany: Country = {
     {
       id: "robert_musil",
       name: "Роберт Музиль",
-      years: "1880–1942",
+      years: "1880-1942",
       birthDate: "1880-11-06",
       deathDate: "1942-04-15",
       birthPlace: "Клагенфурт, Австро-Венгрия",
@@ -1064,7 +1064,7 @@ export const germany: Country = {
     {
       id: "anna_seghers",
       name: "Анна Зегерс",
-      years: "1900–1983",
+      years: "1900-1983",
       birthDate: "1900-11-19",
       deathDate: "1983-06-01",
       birthPlace: "Майнц, Германия",
@@ -1096,7 +1096,7 @@ export const germany: Country = {
         {
       id: "heinrich_boell",
       name: "Генрих Бёлль",
-      years: "1917–1985",
+      years: "1917-1985",
       birthDate: "1917-12-21",
       deathDate: "1985-07-16",
       birthPlace: "Кёльн, Германия",
@@ -1134,7 +1134,7 @@ export const germany: Country = {
     {
       id: "guenter_grass",
       name: "Гюнтер Грасс",
-      years: "1927–2015",
+      years: "1927-2015",
       birthDate: "1927-10-16",
       deathDate: "2015-04-13",
       birthPlace: "Данциг, Германия",
@@ -1172,7 +1172,7 @@ export const germany: Country = {
     {
       id: "herta_mueller",
       name: "Герта Мюллер",
-      years: "1953–",
+      years: "1953-",
       birthDate: "1953-08-17",
       birthPlace: "Ницкидорф, Румыния",
       coordinates: {
@@ -1206,7 +1206,7 @@ export const germany: Country = {
     {
       id: "patrick_suskind",
       name: "Патрик Зюскинд",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-03-26",
       birthPlace: "Амбах, Германия",
       coordinates: {
@@ -1237,7 +1237,7 @@ export const germany: Country = {
     {
       id: "christa_wolf",
       name: "Криста Вольф",
-      years: "1929–2011",
+      years: "1929-2011",
       birthDate: "1929-03-18",
       deathDate: "2011-12-01",
       birthPlace: "Ландсберг-на-Варте, Германия",
@@ -1270,7 +1270,7 @@ export const germany: Country = {
     {
       id: "bernhard_schlink",
       name: "Бернхард Шлинк",
-      years: "1944–",
+      years: "1944-",
       birthDate: "1944-07-06",
       birthPlace: "Билефельд, Германия",
       coordinates: {
@@ -1300,7 +1300,7 @@ export const germany: Country = {
     {
       id: "daniel_kehlmann",
       name: "Даниэль Кельман",
-      years: "1975–",
+      years: "1975-",
       birthDate: "1975-01-13",
       birthPlace: "Мюнхен, Германия",
       coordinates: {

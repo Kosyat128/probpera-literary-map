@@ -8,7 +8,7 @@ export const costaRica: Country = {
     {
       id: "joaquin_garcia_monje",
       name: "Хоакин Гарсия Монхе",
-      years: "1881–1958",
+      years: "1881-1958",
       birthDate: "1881-01-20",
       deathDate: "1958-10-31",
       birthPlace: "Деспампарados, Коста-Рика",
@@ -46,7 +46,7 @@ export const costaRica: Country = {
     {
       id: "carmen_lyra",
       name: "Кармен Лира",
-      years: "1888–1949",
+      years: "1888-1949",
       birthDate: "1888-01-15",
       deathDate: "1949-05-14",
       birthPlace: "Сан-Хосе, Коста-Рика",
@@ -83,7 +83,7 @@ export const costaRica: Country = {
     {
       id: "carlos_luis_fallas",
       name: "Карлос Луис Фальяс",
-      years: "1909–1966",
+      years: "1909-1966",
       birthDate: "1909-01-21",
       deathDate: "1966-05-07",
       birthPlace: "Алахуэла, Коста-Рика",
@@ -118,7 +118,7 @@ export const costaRica: Country = {
     {
       id: "ana_istarus",
       name: "Ана Истару",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960-02-03",
       birthPlace: "Сан-Хосе, Коста-Рика",
       coordinates: {

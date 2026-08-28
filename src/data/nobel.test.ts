@@ -19,7 +19,7 @@ import {
 describe("complete Nobel literature archive", () => {
   const laureates = collectNobelLaureates(countries);
 
-  it("contains the official 1901–2025 total without cross-country duplicates", () => {
+  it("contains the official 1901-2025 total without cross-country duplicates", () => {
     expect(laureates).toHaveLength(122);
     expect(new Set(laureates.map(({ year }) => year)).size).toBe(118);
     expect(laureates[0].year).toBe(1901);

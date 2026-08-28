@@ -106,7 +106,7 @@ export default function MediaFocalEditor({
         </span>
       </button>
       <small>
-        Нажмите на главный объект. Стрелки двигают точку на 1%, Shift + стрелка — на 5%.
+        Нажмите на главный объект. Стрелки двигают точку на 1%, Shift + стрелка - на 5%.
         {width && height ? ` Исходник: ${width} × ${height} px.` : ""}
       </small>
       <div className="media-focus-fields">

@@ -26,6 +26,9 @@ export default defineConfig({
   timeout: 45_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
+  // Multiple WebGL globes can starve the shared GitHub runner and turn
+  // otherwise healthy interaction checks into unrelated 45-second timeouts.
+  workers: process.env.CI && suite === "premium-globe" ? 1 : undefined,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["html", { open: "never" }], ["github"]] : "list",

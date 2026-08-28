@@ -14,7 +14,7 @@ export const vietnam: Country = {
 
       fullName: "Nguyễn Du",
 
-      years: "1765–1820",
+      years: "1765-1820",
 
       birthDate: "1765-01-03",
 
@@ -68,7 +68,7 @@ export const vietnam: Country = {
 
       fullName: "Vũ Trọng Phụng",
 
-      years: "1912–1939",
+      years: "1912-1939",
 
       birthDate: "1912-10-20",
 
@@ -122,7 +122,7 @@ export const vietnam: Country = {
 
       fullName: "Nguyễn Công Hoan",
 
-      years: "1903–1977",
+      years: "1903-1977",
 
       birthDate: "1903-03-06",
 
@@ -174,7 +174,7 @@ export const vietnam: Country = {
 
       fullName: "Trần Hữu Tri (Nam Cao)",
 
-      years: "1915–1951",
+      years: "1915-1951",
 
       birthDate: "1915-10-29",
 
@@ -228,7 +228,7 @@ export const vietnam: Country = {
 
       fullName: "Hoàng Ấu Phương (Bảo Ninh)",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952-10-18",
 
@@ -280,7 +280,7 @@ export const vietnam: Country = {
 
       fullName: "Dương Thu Hương",
 
-      years: "1947–",
+      years: "1947-",
 
       birthDate: "1947-04-07",
 

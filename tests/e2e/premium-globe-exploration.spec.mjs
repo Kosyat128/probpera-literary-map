@@ -234,7 +234,7 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
 
   const coordinateReadout = page.locator(".atlas-coordinate strong");
-  await expect(coordinateReadout).not.toHaveText("—");
+  await expect(coordinateReadout).not.toHaveText("-");
   let previousCoordinates = await coordinateReadout.textContent();
   let candidateId = "inactive";
   for (let attempt = 0; attempt < 6; attempt += 1) {
@@ -689,7 +689,7 @@ test("coarse embedded globe preserves page pan until explicit full control", asy
   const activeEndX = activeLeft + (activeRight - activeLeft) * 0.8;
   const scrollBeforeDrag = await page.evaluate(() => window.scrollY);
   const coordinateReadout = page.locator(".atlas-coordinate strong");
-  await expect(coordinateReadout).not.toHaveText("—");
+  await expect(coordinateReadout).not.toHaveText("-");
   const coordinatesBeforeDrag = await coordinateReadout.textContent();
   const revisionBeforeDrag = Number(
     await globe.getAttribute("data-globe-view-revision")

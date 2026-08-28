@@ -1,7 +1,7 @@
 export const faulknerProfile = {
  id:"faulkner",
  fullName:"Уильям Катберт Фолкнер",
- years:"1897–1962",
+ years:"1897-1962",
  country:"США",
  birthPlace:"Нью-Олбани, США",
  movement:"Модернизм",

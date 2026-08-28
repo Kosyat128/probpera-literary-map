@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T14:21:48.254Z",
+  "generatedAt": "2026-08-26T14:19:46.511Z",
   "summary": {
     "records": 9729,
     "rawSourceRecords": 10015,
@@ -304,35 +304,35 @@
       "works": [
         {
           "identity": "argentina:jorge_luis_borges:spanish short stories 1 cuentos hispánicos 1",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хорхе Луис Борхес",
           "country": "Аргентина",
           "status": "draft"
         },
         {
           "identity": "mexico:juan_rulfo:spanish short stories 1 cuentos hispánicos 1",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Рульфо",
           "country": "Мексика",
           "status": "draft"
         },
         {
           "identity": "spain:camilo_jose_cela:spanish short stories 1 cuentos hispánicos 1",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Камило Хосе Села",
           "country": "Испания",
           "status": "draft"
         },
         {
           "identity": "uruguay:juan_carlos_onetti:spanish short stories 1 cuentos hispánicos 1",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Карлос Онетти",
           "country": "Уругвай",
           "status": "draft"
         },
         {
           "identity": "uruguay:mario_benedetti:spanish short stories 1 cuentos hispánicos 1",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Марио Бенедетти",
           "country": "Уругвай",
           "status": "draft"
@@ -3349,9 +3349,9 @@
       ]
     },
     {
-      "id": "article-catalog-1pauxn5",
+      "id": "article-catalog-1u0l26",
       "identity": "australia:terry_hayes:я пилигрим",
-      "title": "Я — Пилигрим",
+      "title": "Я - Пилигрим",
       "writer": "Терри Хейс",
       "country": "Австралия",
       "status": "reviewed",
@@ -3858,7 +3858,7 @@
     {
       "id": "utopia-avenue",
       "identity": "england:david_mitchell:утопия авеню",
-      "title": "Утопия — Авеню",
+      "title": "Утопия - Авеню",
       "writer": "Дэвид Стивен Митчелл",
       "country": "Англия",
       "status": "reviewed",
@@ -5847,7 +5847,7 @@
     {
       "id": "i-am-legend",
       "identity": "usa:richard_matheson:я легенда",
-      "title": "Я — легенда",
+      "title": "Я - легенда",
       "writer": "Ричард Бёртон Матесон",
       "country": "США",
       "status": "reviewed",
@@ -5964,7 +5964,7 @@
     {
       "id": "how-the-grinch-stole-christmas",
       "identity": "usa:dr_seuss:гринч похититель рождества",
-      "title": "Гринч — похититель Рождества",
+      "title": "Гринч - похититель Рождества",
       "writer": "Теодор Сьюз Гайзель",
       "country": "США",
       "status": "reviewed",
@@ -8150,7 +8150,7 @@
     },
     {
       "id": "openlibrary-works-ol264135w",
-      "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+      "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
       "writer": "Хорхе Луис Борхес",
       "country": "Аргентина",
       "status": "draft",
@@ -9151,7 +9151,7 @@
     },
     {
       "id": "legacy-julio_cortazar-все-огни-огонь",
-      "title": "Все огни — огонь",
+      "title": "Все огни - огонь",
       "writer": "Хулио Кортасар",
       "country": "Аргентина",
       "status": "draft",
@@ -11948,7 +11948,7 @@
     },
     {
       "id": "legacy-markus_zusak-я-посланник",
-      "title": "Я — посланник",
+      "title": "Я - посланник",
       "writer": "Маркус Зусак",
       "country": "Австралия",
       "status": "draft",
@@ -12601,8 +12601,8 @@
       ]
     },
     {
-      "id": "article-catalog-1pauxn5",
-      "title": "Я — Пилигрим",
+      "id": "article-catalog-1u0l26",
+      "title": "Я - Пилигрим",
       "writer": "Терри Хейс",
       "country": "Австралия",
       "status": "reviewed",
@@ -23208,7 +23208,7 @@
     },
     {
       "id": "legacy-miriam_toews-все-мои-друзья-призраки",
-      "title": "Все мои друзья — призраки",
+      "title": "Все мои друзья - призраки",
       "writer": "Мириам Тоуэс",
       "country": "Канада",
       "status": "draft",
@@ -26945,7 +26945,7 @@
     },
     {
       "id": "legacy-ai_qing-даянхэ-моя-кормилица",
-      "title": "Даянхэ — моя кормилица",
+      "title": "Даянхэ - моя кормилица",
       "writer": "Ай Цин",
       "country": "Китай",
       "status": "draft",
@@ -32038,7 +32038,7 @@
     },
     {
       "id": "legacy-soren_kierkegaard-или-или",
-      "title": "Или — или",
+      "title": "Или - или",
       "writer": "Сёрен Кьеркегор",
       "country": "Дания",
       "status": "draft",
@@ -45551,7 +45551,7 @@
     },
     {
       "id": "utopia-avenue",
-      "title": "Утопия — Авеню",
+      "title": "Утопия - Авеню",
       "writer": "Дэвид Стивен Митчелл",
       "country": "Англия",
       "status": "reviewed",
@@ -57384,7 +57384,7 @@
     },
     {
       "id": "openlibrary-works-ol1230587w",
-      "title": "Carnets Tome III. Mars 1951 – December 1959",
+      "title": "Carnets Tome III. Mars 1951 - December 1959",
       "writer": "Альбер Камю",
       "country": "Франция",
       "status": "draft",
@@ -87016,7 +87016,7 @@
     },
     {
       "id": "openlibrary-works-ol264135w",
-      "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+      "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
       "writer": "Хуан Рульфо",
       "country": "Мексика",
       "status": "draft",
@@ -95655,7 +95655,7 @@
       "id": "legacy-vincent_eri-the-crocodile",
       "title": "The Crocodile",
       "writer": "Винсент Эри",
-      "country": "Папуа — Новая Гвинея",
+      "country": "Папуа - Новая Гвинея",
       "status": "draft",
       "missing": [
         "год первой публикации",
@@ -95671,7 +95671,7 @@
       "id": "legacy-siri_gising-mister-pip-related-educational-writings",
       "title": "Mister Pip-related educational writings",
       "writer": "Сири Гисинг",
-      "country": "Папуа — Новая Гвинея",
+      "country": "Папуа - Новая Гвинея",
       "status": "draft",
       "missing": [
         "год первой публикации",
@@ -95685,9 +95685,9 @@
     },
     {
       "id": "legacy-kati_thambe-современная-проза-папуа-новой-гвинеи",
-      "title": "Современная проза Папуа — Новой Гвинеи",
+      "title": "Современная проза Папуа - Новой Гвинеи",
       "writer": "Кати Тэмб",
-      "country": "Папуа — Новая Гвинея",
+      "country": "Папуа - Новая Гвинея",
       "status": "draft",
       "missing": [
         "год первой публикации",
@@ -95703,7 +95703,7 @@
       "id": "legacy-raymond_gat-литературные-и-культурные-публикации",
       "title": "Литературные и культурные публикации",
       "writer": "Рэймонд Гат",
-      "country": "Папуа — Новая Гвинея",
+      "country": "Папуа - Новая Гвинея",
       "status": "draft",
       "missing": [
         "год первой публикации",
@@ -101619,7 +101619,7 @@
     },
     {
       "id": "legacy-julia_de_burgos-я-моя",
-      "title": "Я — моя",
+      "title": "Я - моя",
       "writer": "Хулия де Бургос",
       "country": "Пуэрто-Рико",
       "status": "draft",
@@ -104409,7 +104409,7 @@
     },
     {
       "id": "legacy-ostrovsky-свои-люди-сочтёмся",
-      "title": "Свои люди — сочтёмся!",
+      "title": "Свои люди - сочтёмся!",
       "writer": "Александр Николаевич Островский",
       "country": "Россия",
       "status": "draft",
@@ -107074,7 +107074,7 @@
     },
     {
       "id": "legacy-pasternak-сестра-моя-жизнь",
-      "title": "Сестра моя — жизнь",
+      "title": "Сестра моя - жизнь",
       "writer": "Борис Леонидович Пастернак",
       "country": "Россия",
       "status": "draft",
@@ -114441,7 +114441,7 @@
     },
     {
       "id": "openlibrary-works-ol264135w",
-      "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+      "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
       "writer": "Камило Хосе Села",
       "country": "Испания",
       "status": "draft",
@@ -118757,7 +118757,7 @@
     },
     {
       "id": "legacy-nizar_qabbani-детство-грудь",
-      "title": "Детство — грудь",
+      "title": "Детство - грудь",
       "writer": "Низар Каббани",
       "country": "Сирия",
       "status": "draft",
@@ -121486,7 +121486,7 @@
     },
     {
       "id": "openlibrary-works-ol264135w",
-      "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+      "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
       "writer": "Хуан Карлос Онетти",
       "country": "Уругвай",
       "status": "draft",
@@ -121615,7 +121615,7 @@
     },
     {
       "id": "openlibrary-works-ol264135w",
-      "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+      "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
       "writer": "Марио Бенедетти",
       "country": "Уругвай",
       "status": "draft",
@@ -136407,7 +136407,7 @@
     },
     {
       "id": "i-am-legend",
-      "title": "Я — легенда",
+      "title": "Я - легенда",
       "writer": "Ричард Бёртон Матесон",
       "country": "США",
       "status": "reviewed",
@@ -136705,7 +136705,7 @@
     },
     {
       "id": "how-the-grinch-stole-christmas",
-      "title": "Гринч — похититель Рождества",
+      "title": "Гринч - похититель Рождества",
       "writer": "Теодор Сьюз Гайзель",
       "country": "США",
       "status": "reviewed",

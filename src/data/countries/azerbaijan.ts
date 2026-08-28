@@ -12,7 +12,7 @@ export const azerbaijan: Country = {
       name: "Низами Гянджеви",
       fullName: "Nizami Ganjavi",
 
-      years: "ок. 1141–1209",
+      years: "ок. 1141-1209",
 
       birthDate: "1141-01-01",
       deathDate: "1209-01-01",
@@ -65,7 +65,7 @@ export const azerbaijan: Country = {
       name: "Имадеддин Насими",
       fullName: "Imadaddin Nasimi",
 
-      years: "ок. 1369–1417",
+      years: "ок. 1369-1417",
 
       birthDate: "1369-01-01",
       deathDate: "1417-01-01",
@@ -115,7 +115,7 @@ export const azerbaijan: Country = {
       name: "Мухаммед Физули",
       fullName: "Muhammad Fuzuli",
 
-      years: "1494–1556",
+      years: "1494-1556",
 
       birthDate: "1494",
       deathDate: "1556",
@@ -166,7 +166,7 @@ export const azerbaijan: Country = {
       name: "Мирза Фатали Ахундов",
       fullName: "Mirza Fatali Akhundov",
 
-      years: "1812–1878",
+      years: "1812-1878",
 
       birthDate: "1812-07-12",
       deathDate: "1878-03-10",
@@ -215,7 +215,7 @@ export const azerbaijan: Country = {
       name: "Мирза Алекпер Сабир",
       fullName: "Mirza Alakbar Sabir",
 
-      years: "1862–1911",
+      years: "1862-1911",
 
       birthDate: "1862-05-30",
       deathDate: "1911-07-12",
@@ -264,7 +264,7 @@ export const azerbaijan: Country = {
       name: "Джалил Мамедкулизаде",
       fullName: "Jalil Mammadguluzadeh",
 
-      years: "1869–1932",
+      years: "1869-1932",
 
       birthDate: "1869-02-22",
       deathDate: "1932-01-04",
@@ -314,7 +314,7 @@ export const azerbaijan: Country = {
       name: "Гусейн Джавид",
       fullName: "Huseyn Javid",
 
-      years: "1882–1941",
+      years: "1882-1941",
 
       birthDate: "1882-10-24",
       deathDate: "1941-12-05",
@@ -363,7 +363,7 @@ export const azerbaijan: Country = {
       name: "Самед Вургун",
       fullName: "Samed Vurgun",
 
-      years: "1906–1956",
+      years: "1906-1956",
 
       birthDate: "1906-03-21",
       deathDate: "1956-05-27",
@@ -412,7 +412,7 @@ export const azerbaijan: Country = {
       name: "Анар Рзаев",
       fullName: "Anar Rzayev",
 
-      years: "1938–",
+      years: "1938-",
 
       birthDate: "1938-03-14",
       deathDate: "",
@@ -462,7 +462,7 @@ export const azerbaijan: Country = {
       name: "Чингиз Абдуллаев",
       fullName: "Chingiz Abdullayev",
 
-      years: "1959–",
+      years: "1959-",
 
       birthDate: "1959-04-07",
       deathDate: "",

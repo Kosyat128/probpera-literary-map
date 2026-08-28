@@ -369,7 +369,7 @@ const markdown = [
   "",
   "## Итог",
   "",
-  `- Официальных лауреатов 1901–${report.officialSource.throughYear}: ${report.summary.officialLaureates}; лет вручения: ${report.summary.officialAwardYears}.`,
+  `- Официальных лауреатов 1901-${report.officialSource.throughYear}: ${report.summary.officialLaureates}; лет вручения: ${report.summary.officialAwardYears}.`,
   `- Локальных карточек: ${report.summary.localCardRepresentations}; уникальных official laureate ID: ${report.summary.uniqueStructuredOfficialIds}.`,
   `- Прежних пробелов \`nobelYear\`/award metadata закрыто: ${report.summary.previouslyUnstructuredCardsResolved} из ${report.summary.previouslyUnstructuredCards}.`,
   `- Bio с упоминанием Nobel: ${report.summary.biographyNobelMentions}; с явным годом: ${report.summary.biographyClaimsWithExplicitYear}; без года: ${report.summary.biographyClaimsWithoutExplicitYear}; неверных годов: ${report.summary.biographyYearContradictions}.`,
@@ -402,7 +402,7 @@ const markdown = [
   "",
   ...report.specialCases.map(
     (item) =>
-      `- ${item.name} (${item.laureateId}): \`${item.status}\` — ${item.writerKeys
+      `- ${item.name} (${item.laureateId}): \`${item.status}\` - ${item.writerKeys
         .map((key) => `\`${key}\``)
         .join(", ")}.`
   ),

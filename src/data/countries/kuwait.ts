@@ -12,7 +12,7 @@ export const kuwait: Country = {
       name: "Фахд аль-Аскар",
       fullName: "Fahad Al-Askar",
 
-      years: "1917–1951",
+      years: "1917-1951",
 
       birthDate: "1917",
       deathDate: "1951",
@@ -60,7 +60,7 @@ export const kuwait: Country = {
       name: "Ахмад аль-Адваний",
       fullName: "Ahmad Al-Adwani",
 
-      years: "1922–1990",
+      years: "1922-1990",
 
       birthDate: "1922",
       deathDate: "1990",
@@ -109,7 +109,7 @@ export const kuwait: Country = {
       name: "Исмаил Фахд Исмаил",
       fullName: "Ismail Fahd Ismail",
 
-      years: "1940–2018",
+      years: "1940-2018",
 
       birthDate: "1940",
       deathDate: "2018-09-25",
@@ -159,7 +159,7 @@ export const kuwait: Country = {
       name: "Лейла аль-Осман",
       fullName: "Laila al-Othman",
 
-      years: "1943–",
+      years: "1943-",
 
       birthDate: "1943",
       deathDate: "",
@@ -208,7 +208,7 @@ export const kuwait: Country = {
       name: "Тальиб ар-Рифаи",
       fullName: "Taleb al-Refai",
 
-      years: "1958–",
+      years: "1958-",
 
       birthDate: "1958",
       deathDate: "",

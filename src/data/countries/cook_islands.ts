@@ -10,7 +10,7 @@ export const cookIslands: Country = {
       id: "sir_thomas_davis",
       name: "Сэр Томас Дэвис",
       fullName: "Sir Thomas Robert Alexander Davis",
-      years: "1917–2007",
+      years: "1917-2007",
       birthDate: "1917-06-11",
       deathDate: "2007-07-23",
       birthPlace: "Раротонга, Острова Кука",

@@ -10,7 +10,7 @@ export const romania: Country = {
       id: "ion_creanga",
       name: "Ион Крянгэ",
       fullName: "Ion Creangă",
-      years: "1837–1889",
+      years: "1837-1889",
 
       birthDate: "1837-03-01",
       deathDate: "1889-12-31",
@@ -57,7 +57,7 @@ export const romania: Country = {
       name: "Михай Эминеску",
       fullName: "Mihai Eminescu",
 
-      years: "1850–1889",
+      years: "1850-1889",
 
       birthDate: "1850-01-15",
       deathDate: "1889-06-15",
@@ -102,7 +102,7 @@ export const romania: Country = {
       name: "Ион Лука Караджале",
       fullName: "Ion Luca Caragiale",
 
-      years: "1852–1912",
+      years: "1852-1912",
 
       birthDate: "1852-02-13",
       deathDate: "1912-06-09",
@@ -149,7 +149,7 @@ export const romania: Country = {
       name: "Панайт Истрати",
       fullName: "Panait Istrati",
 
-      years: "1884–1935",
+      years: "1884-1935",
 
       birthDate: "1884-08-10",
       deathDate: "1935-04-16",
@@ -194,7 +194,7 @@ export const romania: Country = {
       name: "Ливиу Ребряну",
       fullName: "Liviu Rebreanu",
 
-      years: "1885–1944",
+      years: "1885-1944",
 
       birthDate: "1885-11-27",
       deathDate: "1944-09-01",
@@ -240,7 +240,7 @@ export const romania: Country = {
       name: "Мирча Элиаде",
       fullName: "Mircea Eliade",
 
-      years: "1907–1986",
+      years: "1907-1986",
 
       birthDate: "1907-03-13",
       deathDate: "1986-04-22",
@@ -286,7 +286,7 @@ export const romania: Country = {
       name: "Эжен Ионеско",
       fullName: "Eugène Ionesco",
 
-      years: "1909–1994",
+      years: "1909-1994",
 
       birthDate: "1909-11-26",
       deathDate: "1994-03-28",
@@ -332,7 +332,7 @@ export const romania: Country = {
       name: "Норман Манеа",
       fullName: "Norman Manea",
 
-      years: "1936–",
+      years: "1936-",
 
       birthDate: "1936-07-19",
       deathDate: "",

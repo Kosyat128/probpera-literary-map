@@ -112,7 +112,7 @@ function compactSourceText(
 ) {
   const withoutUrl = url ? text.replace(url, " ") : text;
   const prose = withoutUrl
-    .replace(/\s*(?:[—–-]\s*)?(?:url|ссылка)?\s*[:—–-]?\s*[\]),.;:!?]*$/iu, "")
+    .replace(/\s*(?:[-]\s*)?(?:url|ссылка)?\s*[:-]?\s*[\]),.;:!?]*$/iu, "")
     .replace(/\s{2,}/gu, " ")
     .trim();
   if (prose && !/^https?:\/\//iu.test(prose)) return prose;
@@ -126,7 +126,7 @@ function compactSourceText(
       const fileName = decodeURIComponent(rawFileName)
         .replace(/^File:/iu, "")
         .replace(/_/gu, " ");
-      return fileName ? `Wikimedia Commons — ${fileName}` : "Wikimedia Commons";
+      return fileName ? `Wikimedia Commons - ${fileName}` : "Wikimedia Commons";
     }
     return hostname;
   } catch {

@@ -56,8 +56,8 @@ Direction follows antipodal-safe spherical interpolation; radius and OrbitContro
 
 Implemented duration formula:
 
-- desktop: `320–830 ms` near-to-extreme;
-- mobile: `280–580 ms`;
+- desktop: `320-830 ms` near-to-extreme;
+- mobile: `280-580 ms`;
 - reduced motion: `0 ms`;
 - safe radius: minimum `2.25`, maximum country-focus clamp `4.45`.
 
@@ -202,13 +202,13 @@ Existing economical/Save-Data policy is preserved and reduces decorative particl
 
 Normal mode keeps configured DPR, high-detail sphere, static texture mipmaps/anisotropy, relief, atmosphere, material detail, antique frame and existing surface assets. Speed comes from eliminating redundant work: UV reuse, ID-gated highlight redraw, mip-free bounded dynamic texture, on-demand flags, cached/idle focus metrics, demand frame loop and one renderer sizing owner.
 
-## 33. Premium performance & responsiveness — before / after
+## 33. Premium performance & responsiveness - before / after
 
 | Metric | Before | After | Method / evidence |
 |---|---:|---:|---|
 | Atlas creation / first ready / interactive | Comparable timed Stage 3 trace not available | No timing sampled in the frozen V11 docs pass; one Canvas and ready state verified across the visual matrix | targeted contracts + 16-state visual registry; no numeric claim invented |
 | First hover / country switch / selection cue | Comparable timed Stage 3 trace not available | No timing sampled in the frozen V11 docs pass; visible state transitions inspected without error | targeted contracts + visual registry; no numeric claim invented |
-| Camera start + near/medium/far/opposite | Competing imperative writes | one controller; desktop `320–830 ms`, mobile `280–580 ms`, reduced motion `0 ms` | source timing contract + targeted unit aggregate |
+| Camera start + near/medium/far/opposite | Competing imperative writes | one controller; desktop `320-830 ms`, mobile `280-580 ms`, reduced motion `0 ms` | source timing contract + targeted unit aggregate |
 | Cancellation / rapid latest target | competing writes / late-snap risk | token supersession and manual cancellation contracts implemented | targeted units + premium E2E `22/22` + full E2E `0` failures |
 | Pointer surface raycasts | duplicate path | R3F event UV; no second surface Raycaster | source/unit contract |
 | Highlight upload / mipmaps | dynamic mipmap work | ID-gated `1024×512`, no mipmaps | source/unit contract |
@@ -234,19 +234,19 @@ Focused SVG/flag QA: 360×800 and 390×844 across antique/earth/modern retained 
 
 | Проверка | Evidence in tree | Final result |
 |---|---|---|
-| TypeScript / lint | project scripts | **PASS — public `tsc` and admin `tsc`; interface catalog 1130 entries; i18n 916 phrases / 55 surfaces / 5 approved exceptions** |
-| Camera/focus/projection | `GlobeCameraRig`, focus math, projection tests | **PASS — included in targeted aggregate: 19 files / 121 tests** |
-| Keyboard/touch/view | observer, keyboard and activation tests | **PASS — included in targeted aggregate: 19 files / 121 tests** |
-| Performance/highlight/style | performance, atlas, highlight and style tests | **PASS — included in targeted aggregate: 19 files / 121 tests** |
-| Nobel/writer/coordinates/Random | dedicated unit/accessibility tests | **PASS — included in targeted aggregate: 19 files / 121 tests** |
-| Full Vitest | `npm test -- --maxWorkers=2` | **LOCAL WINDOWS LIMITATION — 258 files passed / 2 skipped / 1 failed; 1362 tests passed / 2 skipped / 1 failed.** Sole failure: pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; tracked migration/test unchanged; green Linux CI required before merge. |
-| Premium E2E | `tests/e2e/premium-globe-exploration.spec.mjs` | **PASS — 22/22** |
-| Existing globe/Stage 3 regressions | globe-runtime, responsive, immersion suites | **PASS — 31 passed / 9 intentional skips** |
-| Full E2E | Playwright full suite | **PASS — 126 passed / 18 intentional skips / 0 failed; 2 workers; 6.4 min** |
-| Globe assets | `npm run assets:globe:qa` | **PASS — full 4096×2048 and mobile 2048×1024 texture tiers for antique/earth/modern RU/EN assets** |
-| Performance | `npm run performance:audit` | **PASS — 114,079,331 / 114,819,072 bytes, headroom 739,741; excluding covers 74,504,165 / 75,497,472, headroom 993,307; 4323 files** |
-| Domain/build/SEO | `npm run build:domain`, domain/SEO audits | **PASS — domain 11319/11319; SEO 5262 ready; 161 pages; 2097 redirects; sitemap 172 URLs; visual runtime console errors 0.** The aggregate Windows release check retains only the documented CRLF-sensitive Vitest failure; Linux CI is required before merge. |
-| Diff hygiene | full-tree `git diff --check` | **PASS — final working tree, exit 0; cached-tree verification is repeated immediately before commit.** |
+| TypeScript / lint | project scripts | **PASS - public `tsc` and admin `tsc`; interface catalog 1130 entries; i18n 916 phrases / 55 surfaces / 5 approved exceptions** |
+| Camera/focus/projection | `GlobeCameraRig`, focus math, projection tests | **PASS - included in targeted aggregate: 19 files / 121 tests** |
+| Keyboard/touch/view | observer, keyboard and activation tests | **PASS - included in targeted aggregate: 19 files / 121 tests** |
+| Performance/highlight/style | performance, atlas, highlight and style tests | **PASS - included in targeted aggregate: 19 files / 121 tests** |
+| Nobel/writer/coordinates/Random | dedicated unit/accessibility tests | **PASS - included in targeted aggregate: 19 files / 121 tests** |
+| Full Vitest | `npm test -- --maxWorkers=2` | **LOCAL WINDOWS LIMITATION - 258 files passed / 2 skipped / 1 failed; 1362 tests passed / 2 skipped / 1 failed.** Sole failure: pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; tracked migration/test unchanged; green Linux CI required before merge. |
+| Premium E2E | `tests/e2e/premium-globe-exploration.spec.mjs` | **PASS - 22/22** |
+| Existing globe/Stage 3 regressions | globe-runtime, responsive, immersion suites | **PASS - 31 passed / 9 intentional skips** |
+| Full E2E | Playwright full suite | **PASS - 126 passed / 18 intentional skips / 0 failed; 2 workers; 6.4 min** |
+| Globe assets | `npm run assets:globe:qa` | **PASS - full 4096×2048 and mobile 2048×1024 texture tiers for antique/earth/modern RU/EN assets** |
+| Performance | `npm run performance:audit` | **PASS - 114,079,331 / 114,819,072 bytes, headroom 739,741; excluding covers 74,504,165 / 75,497,472, headroom 993,307; 4323 files** |
+| Domain/build/SEO | `npm run build:domain`, domain/SEO audits | **PASS - domain 11319/11319; SEO 5262 ready; 161 pages; 2097 redirects; sitemap 172 URLs; visual runtime console errors 0.** The aggregate Windows release check retains only the documented CRLF-sensitive Vitest failure; Linux CI is required before merge. |
+| Diff hygiene | full-tree `git diff --check` | **PASS - final working tree, exit 0; cached-tree verification is repeated immediately before commit.** |
 
 No Stage 4 test uses `.only`; the premium suite contains no `.skip`. Existing viewport-specific skips remain intentional in pre-existing Stage 3 suites and are not introduced to hide Stage 4 coverage. Assertions and performance ceilings are not weakened.
 
@@ -278,7 +278,7 @@ Owner-locked and intentionally untouched: `HEADER-001`, `HEADER-002`, `HERO-001`
 
 Required matrix: `320×800`, `360×800`, `390×844`, `430×932`, `768×1024`, `1024×768`, `1280×800`, `1366×700`, `1366×768`, `1440×900`, `1920×1080`; representative RU/EN; Старинный/Современный/Классический; near/medium/far/opposite/high-latitude/microstate; cancel/latest-wins/Home/writer/Random; keyboard/touch/sheet; reduced motion/forced colors/200% zoom/weak mobile.
 
-- Visual registry: **PASS — 16 PNG covering all 11 required viewports**, RU/EN, embedded/immersive and all three public styles; [`reports/stage4-visual-evidence/README.md`](stage4-visual-evidence/README.md), SHA-256 `2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90`; remaining P0/P1 `0`; console errors `0`.
+- Visual registry: **PASS - 16 PNG covering all 11 required viewports**, RU/EN, embedded/immersive and all three public styles; [`reports/stage4-visual-evidence/README.md`](stage4-visual-evidence/README.md), SHA-256 `2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90`; remaining P0/P1 `0`; console errors `0`.
 - Motion/touch registry: runtime probes PASS with passive uploads `0`, offscreen frames `0` and Auto OFF plateau; premium E2E `22/22`, full E2E `126 passed / 18 intentional skips / 0 failed`, regression subset `31 passed / 9 intentional skips`.
 - Owner-lock comparison: no separate pixel-baseline series was produced in this V11 pass; owner-locked Header/Hero remained visibly present across the 16 captures and still require human PR diff review.
 

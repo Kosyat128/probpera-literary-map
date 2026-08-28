@@ -1,11 +1,11 @@
 export const tagoreProfile = {
  id:"tagore",
  fullName:"Рабиндранат Тагор",
- years:"1861–1941",
+ years:"1861-1941",
  country:"Индия",
  birthPlace:"Калькутта, Индия",
  movement:"Бенгальский ренессанс",
- century:"XIX–XX века",
+ century:"XIX-XX века",
  language:"Бенгальский",
  nobel:true,
  nobelYear:1913,

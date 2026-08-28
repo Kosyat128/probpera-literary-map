@@ -10,7 +10,7 @@ export const morocco: Country = {
       id: "ahmed_sefrioui",
       name: "Ахмед Сефриуи",
       fullName: "Ahmed Sefrioui",
-      years: "1915–2004",
+      years: "1915-2004",
 
       birthDate: "1915-01-01",
       deathDate: "2004-02-25",
@@ -55,7 +55,7 @@ export const morocco: Country = {
       id: "driss_chraibi",
       name: "Дрис Шрайби",
       fullName: "Driss Chraïbi",
-      years: "1926–2007",
+      years: "1926-2007",
 
       birthDate: "1926-07-15",
       deathDate: "2007-04-01",
@@ -100,7 +100,7 @@ export const morocco: Country = {
       id: "mohamed_choukri",
       name: "Мохаммед Шукри",
       fullName: "Mohamed Choukri",
-      years: "1935–2003",
+      years: "1935-2003",
 
       birthDate: "1935-07-15",
       deathDate: "2003-11-15",
@@ -145,7 +145,7 @@ export const morocco: Country = {
       id: "fatima_mernissi",
       name: "Фатима Мернисси",
       fullName: "Fatima Mernissi",
-      years: "1940–2015",
+      years: "1940-2015",
 
       birthDate: "1940-09-27",
       deathDate: "2015-11-30",
@@ -190,7 +190,7 @@ export const morocco: Country = {
       id: "abdellatif_laabi",
       name: "Абдельлатиф Лааби",
       fullName: "Abdellatif Laâbi",
-      years: "1942–",
+      years: "1942-",
 
       birthDate: "1942-05-28",
       deathDate: "",
@@ -238,7 +238,7 @@ export const morocco: Country = {
       id: "tahar_ben_jelloun",
       name: "Тахар Бен Джеллун",
       fullName: "Tahar Ben Jelloun",
-      years: "1944–",
+      years: "1944-",
 
       birthDate: "1944-12-01",
       deathDate: "",
@@ -287,7 +287,7 @@ export const morocco: Country = {
       id: "leila_abouzeid",
       name: "Лейла Абузейд",
       fullName: "Leila Abouzeid",
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-01-01",
       deathDate: "",

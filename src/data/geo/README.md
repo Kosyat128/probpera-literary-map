@@ -9,7 +9,7 @@ countries.geojson
 ```
 
 Источник:
-Natural Earth — Admin 0 Countries.
+Natural Earth - Admin 0 Countries.
 
 После добавления файла он будет подключён к старинному 3D глобусу:
 

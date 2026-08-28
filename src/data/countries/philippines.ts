@@ -11,7 +11,7 @@ export const philippines: Country = {
       id: "francisco_balagtas",
       name: "Франсиско Балагтас",
       fullName: "Francisco Balagtas",
-      years: "1788–1862",
+      years: "1788-1862",
       birthDate: "1788-04-02",
       deathDate: "1862-02-20",
       birthPlace: "Булаг, Филиппины",
@@ -58,7 +58,7 @@ export const philippines: Country = {
       id: "jose_rizal",
       name: "Хосе Рисаль",
       fullName: "José Protacio Rizal",
-      years: "1861–1896",
+      years: "1861-1896",
       birthDate: "1861-06-19",
       deathDate: "1896-12-30",
 
@@ -107,7 +107,7 @@ export const philippines: Country = {
       id: "nick_joaquin",
       name: "Ник Хоакин",
       fullName: "Nicomedes Joaquín",
-      years: "1917–2004",
+      years: "1917-2004",
       birthDate: "1917-05-04",
       deathDate: "2004-04-29",
 
@@ -159,7 +159,7 @@ export const philippines: Country = {
       id: "f_sionil_jose",
       name: "Ф. Сионил Хосе",
       fullName: "Francisco Sionil José",
-      years: "1924–2022",
+      years: "1924-2022",
 
       birthDate: "1924-12-03",
       deathDate: "2022-01-06",
@@ -208,7 +208,7 @@ export const philippines: Country = {
       name: "Эдит Тиампо",
       fullName: "Edith L. Tiempo",
 
-      years: "1919–2011",
+      years: "1919-2011",
 
       birthDate: "1919-04-22",
       deathDate: "2011-08-16",
@@ -258,7 +258,7 @@ export const philippines: Country = {
 
       fullName: "Miguel Syjuco",
 
-      years: "1976–",
+      years: "1976-",
 
       birthDate: "1976-11-17",
 

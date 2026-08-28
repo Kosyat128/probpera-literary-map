@@ -11,7 +11,7 @@ export const ukraine: Country = {
       name: "Григорий Сковорода",
       fullName: "Hryhorii Skovoroda",
 
-      years: "1722–1794",
+      years: "1722-1794",
 
       birthDate: "1722-12-03",
       deathDate: "1794-11-09",
@@ -59,7 +59,7 @@ export const ukraine: Country = {
       name: "Иван Котляревский",
       fullName: "Ivan Kotliarevsky",
 
-      years: "1769–1838",
+      years: "1769-1838",
 
       birthDate: "1769-09-09",
       deathDate: "1838-11-10",
@@ -108,7 +108,7 @@ export const ukraine: Country = {
       name: "Тарас Шевченко",
       fullName: "Taras Shevchenko",
 
-      years: "1814–1861",
+      years: "1814-1861",
 
       birthDate: "1814-03-09",
       deathDate: "1861-03-10",
@@ -154,7 +154,7 @@ export const ukraine: Country = {
       name: "Иван Франко",
       fullName: "Ivan Franko",
 
-      years: "1856–1916",
+      years: "1856-1916",
 
       birthDate: "1856-08-27",
       deathDate: "1916-05-28",
@@ -203,7 +203,7 @@ export const ukraine: Country = {
       name: "Михаил Коцюбинский",
       fullName: "Mykhailo Kotsiubynsky",
 
-      years: "1864–1913",
+      years: "1864-1913",
 
       birthDate: "1864-09-17",
       deathDate: "1913-04-25",
@@ -252,7 +252,7 @@ export const ukraine: Country = {
       name: "Леся Украинка",
       fullName: "Lesya Ukrainka",
 
-      years: "1871–1913",
+      years: "1871-1913",
 
       birthDate: "1871-02-25",
       deathDate: "1913-08-01",
@@ -300,7 +300,7 @@ export const ukraine: Country = {
       name: "Валерий Шевчук",
       fullName: "Valerii Shevchuk",
 
-      years: "1939–",
+      years: "1939-",
 
       birthDate: "1939-08-20",
       deathDate: "",

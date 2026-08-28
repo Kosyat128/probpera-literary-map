@@ -101,7 +101,7 @@ describe("writer biography claim review batch 03", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|огромн|ведущ)/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch03) {
       const originalText = sourceTextForKey(record.key);

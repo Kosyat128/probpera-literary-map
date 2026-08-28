@@ -165,7 +165,7 @@ describe("Nobel marker clustering", () => {
     expect(first.accessibleRows.every((row) => row.clustered)).toBe(true);
     expect(
       first.accessibleRows.every(
-        (row) => row.markerId === first.markers[0].id && row.label.includes("—")
+        (row) => row.markerId === first.markers[0].id && row.label.includes("-")
       )
     ).toBe(true);
   });

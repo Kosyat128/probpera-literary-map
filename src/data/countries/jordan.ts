@@ -13,7 +13,7 @@ export const jordan: Country = {
       name: "Мустафа Вахби ат-Таль (Арар)",
       fullName: "Mustafa Wahbi Al-Tal (Arar)",
 
-      years: "1899–1949",
+      years: "1899-1949",
 
       birthDate: "1899-05-25",
       deathDate: "1949-05-24",
@@ -61,7 +61,7 @@ export const jordan: Country = {
       name: "Галиб Халса",
       fullName: "Ghalib Halasa",
 
-      years: "1932–1989",
+      years: "1932-1989",
 
       birthDate: "1932-12-27",
       deathDate: "1989-10-25",
@@ -110,7 +110,7 @@ export const jordan: Country = {
       name: "Ибрахим Насралла",
       fullName: "Ibrahim Nasrallah",
 
-      years: "1954–",
+      years: "1954-",
 
       birthDate: "1954-12-02",
       deathDate: "",
@@ -160,7 +160,7 @@ export const jordan: Country = {
       name: "Зулайха Абу Риша",
       fullName: "Zuleikha Abu Risha",
 
-      years: "1942–",
+      years: "1942-",
 
       birthDate: "1942",
       deathDate: "",
@@ -209,7 +209,7 @@ export const jordan: Country = {
       name: "Муниф ар-Раззаз",
       fullName: "Munif al-Razzaz",
 
-      years: "1919–1984",
+      years: "1919-1984",
 
       birthDate: "1919",
       deathDate: "1984",

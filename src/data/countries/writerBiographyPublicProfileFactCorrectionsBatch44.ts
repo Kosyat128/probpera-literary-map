@@ -98,7 +98,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch44 = [
     countryId: "peru",
     writerId: "alfredo_bryce_echenique",
     patch: {
-      years: "1939–2026",
+      years: "1939-2026",
       deathDate: "2026-03-10",
       works: ["Un mundo para Julius", "La vida exagerada de Martín Romaña", "El huerto de mi amada"],
       genres: ["роман", "рассказ", "мемуары"],
@@ -214,7 +214,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch44 = [
     countryId: "peru",
     writerId: "jose_watanabe",
     patch: {
-      years: "1945–2007",
+      years: "1945-2007",
       birthDate: "1945-03-17",
       birthPlace: "Ларедо, Ла-Либертад, Перу",
       works: ["Álbum de familia", "El huso de la palabra", "Historia natural"],
@@ -231,7 +231,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch44 = [
     countryId: "peru",
     writerId: "juan_espinosa_medrano",
     patch: {
-      years: "ок. 1632–1688",
+      years: "ок. 1632-1688",
       birthDate: "1632",
       deathDate: "1688",
       birthPlace: "провинция Аймараэс, Вице-королевство Перу",
@@ -306,7 +306,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch44 = [
     countryId: "peru",
     writerId: "mario_vargas_llosa",
     patch: {
-      years: "1936–2025",
+      years: "1936-2025",
       deathDate: "2025-04-13",
       works: ["La ciudad y los perros", "La casa verde", "Conversación en La Catedral", "La fiesta del Chivo"],
       genres: ["роман", "эссе", "журналистика", "драматургия"],
@@ -322,7 +322,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch44 = [
     countryId: "peru",
     writerId: "oscar_colchado_lucio",
     patch: {
-      years: "1947–2023",
+      years: "1947-2023",
       birthDate: "1947-11-14",
       deathDate: "2023-01-20",
       birthPlace: "Уальянка, Анкаш, Перу",

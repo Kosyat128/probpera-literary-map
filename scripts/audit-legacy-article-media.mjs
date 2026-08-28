@@ -24,7 +24,7 @@ function titleTokens(value = "") {
   return normalizeText(value)
     .toLocaleLowerCase("ru")
     .replace(/\bvs\b/giu, " и ")
-    .replace(/[«»„“”"'’`—–-]+/gu, " ")
+    .replace(/[«»„“”"'’`-]+/gu, " ")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .split(/\s+/u)
     .filter(Boolean);

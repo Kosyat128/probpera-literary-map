@@ -10,7 +10,7 @@ export const angola: Country = {
       id: "agostinho_neto",
       name: "Агостинью Нету",
       fullName: "Agostinho Neto",
-      years: "1922–1979",
+      years: "1922-1979",
       birthDate: "1922-09-17",
       deathDate: "1979-09-10",
       birthPlace: "Иколу-э-Бенгу",
@@ -52,7 +52,7 @@ export const angola: Country = {
       id: "jose_luandino_vieira",
       name: "Жозе Луандино Виейра",
       fullName: "José Luandino Vieira",
-      years: "1935–2022",
+      years: "1935-2022",
 
       birthDate: "1935-05-04",
       deathDate: "2022-07-17",
@@ -97,7 +97,7 @@ export const angola: Country = {
       id: "pepetela",
       name: "Пепетела",
       fullName: "Artur Carlos Maurício Pestana dos Santos",
-      years: "1941–",
+      years: "1941-",
 
       birthDate: "1941-10-19",
       deathDate: "",
@@ -144,7 +144,7 @@ export const angola: Country = {
       id: "manuel_rui",
       name: "Мануэл Руй",
       fullName: "Manuel Rui",
-      years: "1941–",
+      years: "1941-",
 
       birthDate: "1941-11-04",
       deathDate: "",
@@ -189,7 +189,7 @@ export const angola: Country = {
       id: "ana_paula_tavares",
       name: "Ана Паулина Тавареш",
       fullName: "Ana Paula Tavares",
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952-10-30",
       deathDate: "",
@@ -235,7 +235,7 @@ export const angola: Country = {
       id: "ondjaki",
       name: "Онжани",
       fullName: "Ndalu de Almeida",
-      years: "1977–",
+      years: "1977-",
 
       birthDate: "1977-07-05",
       deathDate: "",

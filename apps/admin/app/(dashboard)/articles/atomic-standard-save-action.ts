@@ -648,7 +648,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       publicationIssues
     ).join(
       "; "
-    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора — нажмите «Восстановить копию» после возврата.`;
+    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора - нажмите «Восстановить копию» после возврата.`;
     redirect(articleEditPath(articleId, { error: errorMessage }));
   }
 

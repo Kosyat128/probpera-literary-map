@@ -59,7 +59,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Недоказанная сравнительная формула о читаемости заменена проверяемыми сведениями: Пауло Коэльо — бразильский писатель, член Бразильской академии литературы и автор романа «Алхимик».",
+          "Недоказанная сравнительная формула о читаемости заменена проверяемыми сведениями: Пауло Коэльо - бразильский писатель, член Бразильской академии литературы и автор романа «Алхимик».",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -108,7 +108,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Calendar-model queue: birthDate 1878-01-01 хранит дату по старому стилю. Архив БНР прямо указывает 1 января 1878 года (старый стиль), а БНР отмечает годовщину 13 января. Рекомендация для ISO-даты по григорианскому календарю — 1878-01-13; deathDate 1914-10-29 оставить. Shared country files не изменялись.",
+      "Calendar-model queue: birthDate 1878-01-01 хранит дату по старому стилю. Архив БНР прямо указывает 1 января 1878 года (старый стиль), а БНР отмечает годовщину 13 января. Рекомендация для ISO-даты по григорианскому календарю - 1878-01-13; deathDate 1914-10-29 оставить. Shared country files не изменялись.",
   },
   {
     key: "bulgaria:yordan_yovkov",
@@ -143,7 +143,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив снят; сохранены конкретные жанры и количественные сведения музейного профиля. Identity audit: Q527920 относится к Йордану Йовкову; годы 1880–1937 согласуются с институциональными источниками. Shared country files не изменялись.",
+      "Суперлатив снят; сохранены конкретные жанры и количественные сведения музейного профиля. Identity audit: Q527920 относится к Йордану Йовкову; годы 1880-1937 согласуются с институциональными источниками. Shared country files не изменялись.",
   },
   {
     key: "cambodia:kram_ngoy",
@@ -160,7 +160,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
           evidence(
             "Cité internationale universitaire de Paris",
             "https://www.ciup.fr/en/chaises/prendre-position-maison-du-cambodge/",
-            "Институциональная биография описывает Krom Ngoy (1865–1936) как кхмерского поэта и музыканта, мастера однострунного инструмента kse diev."
+            "Институциональная биография описывает Krom Ngoy (1865-1936) как кхмерского поэта и музыканта, мастера однострунного инструмента kse diev."
           ),
           evidence(
             "De Gruyter Brill / University of Hawaiʻi Press",
@@ -178,7 +178,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Identity registry gap: публичный ключ использует романизацию Kram Ngoy, тогда как институциональные источники дают Krom Ngoy; годы 1865–1936 и литературно-музыкальная роль совпадают. Кандидат Q4929923 следует добавить только после отдельного registry review; Wikidata использовалась лишь как corroboration. Shared country files не изменялись.",
+      "Identity registry gap: публичный ключ использует романизацию Kram Ngoy, тогда как институциональные источники дают Krom Ngoy; годы 1865-1936 и литературно-музыкальная роль совпадают. Кандидат Q4929923 следует добавить только после отдельного registry review; Wikidata использовалась лишь как corroboration. Shared country files не изменялись.",
   },
   {
     key: "cambodia:rim_kin",
@@ -207,7 +207,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "unchanged",
     notes:
-      "Structured triage queue: карточка хранит только годы 1911 и 1959. BnF даёт birthDate 1911-11-08 и deathDate 1959-01-27; рекомендация — обогатить даты этими значениями после отдельного review. Identity audit: Q4919402 соответствует Риму Кину. Shared country files не изменялись.",
+      "Structured triage queue: карточка хранит только годы 1911 и 1959. BnF даёт birthDate 1911-11-08 и deathDate 1959-01-27; рекомендация - обогатить даты этими значениями после отдельного review. Identity audit: Q4919402 соответствует Риму Кину. Shared country files не изменялись.",
   },
   {
     key: "cameroon:mongo_beti",
@@ -218,7 +218,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Суперлатив заменён установленной идентичностью: Александр Бийиди-Авала — камерунский франкоязычный писатель и эссеист, использовавший имена Монго Бети и Эза Бото.",
+          "Суперлатив заменён установленной идентичностью: Александр Бийиди-Авала - камерунский франкоязычный писатель и эссеист, использовавший имена Монго Бети и Эза Бото.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -248,7 +248,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Элис Манро — канадская писательница и мастер современного рассказа, лауреат Нобелевской премии по литературе 2013 года; её рассказы исследуют повседневную жизнь, отношения и нравственные конфликты.",
+          "Элис Манро - канадская писательница и мастер современного рассказа, лауреат Нобелевской премии по литературе 2013 года; её рассказы исследуют повседневную жизнь, отношения и нравственные конфликты.",
         verdict: "supported",
         evidence: [
           evidence(
@@ -334,11 +334,11 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     originalSha256:
       "fe685ff938331f848aa04800285a3c15ace8493d9afd71c4b58253d5b7dcfd16",
     reviewedTextRu:
-      "Канадская писательница, поэтесса и литературный критик, дважды лауреат Букеровской премии — за романы «Слепой убийца» и «Заветы».",
+      "Канадская писательница, поэтесса и литературный критик, дважды лауреат Букеровской премии - за романы «Слепой убийца» и «Заветы».",
     claims: [
       {
         textRu:
-          "Сравнительная оценка и обобщённый перечень тем заменены проверяемыми ролями Маргарет Этвуд и двумя Букеровскими премиями — за The Blind Assassin и The Testaments.",
+          "Сравнительная оценка и обобщённый перечень тем заменены проверяемыми ролями Маргарет Этвуд и двумя Букеровскими премиями - за The Blind Assassin и The Testaments.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -486,7 +486,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
           evidence(
             "Massey College",
             "https://masseycollege.ca/library/history-overview/",
-            "Официальная история библиотеки называет Дэвиса канадским романистом и основателем — первым руководителем колледжа."
+            "Официальная история библиотеки называет Дэвиса канадским романистом и основателем - первым руководителем колледжа."
           ),
         ],
       },
@@ -535,11 +535,11 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Армениу Виейра — кабо-вердианский поэт и лауреат Премии Камоэнса 2009 года.",
+          "Армениу Виейра - кабо-вердианский поэт и лауреат Премии Камоэнса 2009 года.",
         verdict: "supported",
         evidence: [
           evidence(
-            "Camões — Instituto da Cooperação e da Língua",
+            "Camões - Instituto da Cooperação e da Língua",
             "https://www.instituto-camoes.pt/sobre/comunicacao/noticias/italia-lancamento-da-edicao-italiana-no-inferno-de-armenio-vieira-premio-camoes-2009",
             "Официальная страница института называет Армениу Виейру кабо-вердианским автором 1941 года рождения и лауреатом Премии Камоэнса 2009 года."
           ),
@@ -614,7 +614,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив снят; литературно-музыкальная роль изложена через конкретные занятия и вклад в жанр. Identity audit: Q1355682 соответствует Эужениу Таварешу; официальные источники подтверждают годы 1867–1930. Shared country files не изменялись.",
+      "Суперлатив снят; литературно-музыкальная роль изложена через конкретные занятия и вклад в жанр. Identity audit: Q1355682 соответствует Эужениу Таварешу; официальные источники подтверждают годы 1867-1930. Shared country files не изменялись.",
   },
   {
     key: "cape_verde:germano_almeida",
@@ -625,11 +625,11 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Оценка известности заменена проверяемыми сведениями: Жерману Алмейда — кабо-вердианский писатель и юрист, получивший Премию Камоэнса в 2018 году.",
+          "Оценка известности заменена проверяемыми сведениями: Жерману Алмейда - кабо-вердианский писатель и юрист, получивший Премию Камоэнса в 2018 году.",
         verdict: "corrected",
         evidence: [
           evidence(
-            "Camões — Instituto da Cooperação e da Língua",
+            "Camões - Instituto da Cooperação e da Língua",
             "https://www.instituto-camoes.pt/sobre/comunicacao/noticias/germano-almeida-premio-camoes-2018",
             "Официальное сообщение называет Жерману Алмейду кабо-вердианским писателем и лауреатом Премии Камоэнса 2018 года."
           ),
@@ -639,7 +639,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
             "Государственное книжно-архивное ведомство подтверждает победу Алмейды в 30-м присуждении Премии Камоэнса и приводит его библиографию."
           ),
           evidence(
-            "Camões — Instituto da Cooperação e da Língua",
+            "Camões - Instituto da Cooperação e da Língua",
             "https://www.instituto-camoes.pt/sobre/comunicacao/noticias/camoes-da-que-falar-com-germano-almeida",
             "Институциональный материал характеризует Алмейду как адвоката, ставшего писателем, и перечисляет произведения его литературной карьеры."
           ),
@@ -671,7 +671,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
           evidence(
             "Министерство образования Кабо-Верде",
             "https://minedu.gov.cv/media/manuais/2020/10/07/Manual_HGCV_5_VDigital.pdf",
-            "Другой государственный учебник называет Барбозу поэтом 1902–1971 годов и связывает с ним книги Arquipélago и Ambiente."
+            "Другой государственный учебник называет Барбозу поэтом 1902-1971 годов и связывает с ним книги Arquipélago и Ambiente."
           ),
           evidence(
             "Rádio e Televisão Cabo-verdiana",
@@ -684,7 +684,7 @@ const writerBiographyFactReviewBatch06Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Date discrepancy queue: карточка содержит birthDate 1902-05-22, а Wikidata — 1902-05-25. RTC Cabo Verde прямо отмечает рождение 22 мая; исследование Universidade NOVA de Lisboa, подготовленное при поддержке семьи, также даёт 1902-05-22. Рекомендация — сохранить 1902-05-22 и deathDate 1971-01-06. Shared country files не изменялись.",
+      "Date discrepancy queue: карточка содержит birthDate 1902-05-22, а Wikidata - 1902-05-25. RTC Cabo Verde прямо отмечает рождение 22 мая; исследование Universidade NOVA de Lisboa, подготовленное при поддержке семьи, также даёт 1902-05-22. Рекомендация - сохранить 1902-05-22 и deathDate 1971-01-06. Shared country files не изменялись.",
   },
 ];
 

@@ -8,7 +8,7 @@ export const trinidadAndTobago: Country = {
     {
       id: "vs_naipaul",
       name: "Видиадхар Сураджпрасад Найпол",
-      years: "1932–2018",
+      years: "1932-2018",
       birthDate: "1932-08-17",
       deathDate: "2018-08-11",
       birthPlace: "Чагуанас, Тринидад и Тобаго",
@@ -49,7 +49,7 @@ export const trinidadAndTobago: Country = {
     {
       id: "samuel_selvon",
       name: "Сэмюэл Селвон",
-      years: "1923–1994",
+      years: "1923-1994",
       birthDate: "1923-05-20",
       deathDate: "1994-04-15",
       birthPlace: "Сан-Фернандо, Тринидад и Тобаго",
@@ -86,7 +86,7 @@ export const trinidadAndTobago: Country = {
     {
       id: "earl_lovelace",
       name: "Эрл Лавлейс",
-      years: "1935–",
+      years: "1935-",
       birthDate: "1935-07-13",
       birthPlace: "Тринидад и Тобаго",
       coordinates: {

@@ -8,7 +8,7 @@ export const southKorea: Country = {
     {
       id: "il_yeon",
       name: "Иль Ён",
-      years: "1206–1289",
+      years: "1206-1289",
       birthDate: "1206",
       deathDate: "1289",
       birthPlace: "Корея",
@@ -18,7 +18,7 @@ export const southKorea: Country = {
         lng: 128.6014
       },
       portrait: "",
-      bio: "Корейский буддийский монах, историк и писатель эпохи Корё. Автор «Самгук Юса» — одного из важнейших источников по древней истории Кореи.",
+      bio: "Корейский буддийский монах, историк и писатель эпохи Корё. Автор «Самгук Юса» - одного из важнейших источников по древней истории Кореи.",
       works: [
         "Самгук Юса (Забытые истории Трёх государств)"
       ],
@@ -42,7 +42,7 @@ export const southKorea: Country = {
     {
       id: "jeong_cheol",
       name: "Чон Чхоль",
-      years: "1536–1593",
+      years: "1536-1593",
       birthDate: "1536-12-18",
       deathDate: "1593-02-07",
       birthPlace: "Корея",
@@ -78,7 +78,7 @@ export const southKorea: Country = {
     {
       id: "ho_gyun",
       name: "Хо Гюн",
-      years: "1569–1618",
+      years: "1569-1618",
       birthDate: "1569",
       deathDate: "1618",
       birthPlace: "Корея",
@@ -112,7 +112,7 @@ export const southKorea: Country = {
     {
       id: "kim_man_jung",
       name: "Ким Ман Джун",
-      years: "1637–1692",
+      years: "1637-1692",
       birthDate: "1637",
       deathDate: "1692",
       birthPlace: "Корея",
@@ -147,7 +147,7 @@ export const southKorea: Country = {
         {
       id: "yi_kwangsu",
       name: "И Квансу",
-      years: "1892–1950",
+      years: "1892-1950",
       birthDate: "1892-03-04",
       deathDate: "1950-10-25",
       birthPlace: "Пхеньян, Корея",
@@ -183,7 +183,7 @@ export const southKorea: Country = {
     {
       id: "kim_so_wol",
       name: "Ким Со Воль",
-      years: "1902–1934",
+      years: "1902-1934",
       birthDate: "1902-09-07",
       deathDate: "1934-12-24",
       birthPlace: "Кусон, Корея",
@@ -217,7 +217,7 @@ export const southKorea: Country = {
     {
       id: "han_yong_un",
       name: "Хан Ён Ун",
-      years: "1879–1944",
+      years: "1879-1944",
       birthDate: "1879-08-29",
       deathDate: "1944-06-29",
       birthPlace: "Хончхон, Корея",
@@ -251,7 +251,7 @@ export const southKorea: Country = {
     {
       id: "yi_sang",
       name: "Ли Сан",
-      years: "1910–1937",
+      years: "1910-1937",
       birthDate: "1910-09-23",
       deathDate: "1937-04-17",
       birthPlace: "Сеул, Корея",
@@ -286,7 +286,7 @@ export const southKorea: Country = {
     {
       id: "park_kyung_ni",
       name: "Пак Кённи",
-      years: "1926–2008",
+      years: "1926-2008",
       birthDate: "1926-12-02",
       deathDate: "2008-05-05",
       birthPlace: "Тхонъён, Корея",
@@ -324,7 +324,7 @@ export const southKorea: Country = {
         {
       id: "ko_un",
       name: "Ко Ын",
-      years: "1933–",
+      years: "1933-",
       birthDate: "1933-08-01",
       birthPlace: "Кунсан, Корея",
       coordinates: {
@@ -362,7 +362,7 @@ export const southKorea: Country = {
     {
       id: "hwang_seok_yong",
       name: "Хван Сок Ён",
-      years: "1943–",
+      years: "1943-",
       birthDate: "1943-01-04",
       birthPlace: "Маньчжурия",
       coordinates: {
@@ -400,7 +400,7 @@ export const southKorea: Country = {
     {
       id: "kim_young_ha",
       name: "Ким Ён Ха",
-      years: "1968–",
+      years: "1968-",
       birthDate: "1968-11-11",
       birthPlace: "Хвачхон, Южная Корея",
       coordinates: {
@@ -437,7 +437,7 @@ export const southKorea: Country = {
     {
       id: "park_min_gyu",
       name: "Пак Мин Гю",
-      years: "1968–",
+      years: "1968-",
       birthDate: "1968-03-15",
       birthPlace: "Ульсан, Южная Корея",
       coordinates: {
@@ -473,7 +473,7 @@ export const southKorea: Country = {
     {
       id: "jeong_yoo_jung",
       name: "Чон Юджон",
-      years: "1966–",
+      years: "1966-",
       birthDate: "1966-08-01",
       birthPlace: "Хаман, Южная Корея",
       coordinates: {
@@ -510,7 +510,7 @@ export const southKorea: Country = {
         {
       id: "han_kang",
       name: "Хан Ган",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970-11-27",
       birthPlace: "Кванджу, Южная Корея",
       coordinates: {
@@ -550,7 +550,7 @@ export const southKorea: Country = {
     {
       id: "kim_hun",
       name: "Ким Хун",
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-05-05",
       birthPlace: "Сеул, Южная Корея",
       coordinates: {
@@ -588,7 +588,7 @@ export const southKorea: Country = {
     {
       id: "park_wan_suh",
       name: "Пак Вансо",
-      years: "1931–2011",
+      years: "1931-2011",
       birthDate: "1931-10-20",
       deathDate: "2011-01-22",
       birthPlace: "Кэсон, Корея",
@@ -628,7 +628,7 @@ export const southKorea: Country = {
     {
       id: "byun_hyung_jun",
       name: "Пён Хёнджун",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962",
       birthPlace: "Южная Корея",
       coordinates: {
@@ -662,7 +662,7 @@ export const southKorea: Country = {
     {
       id: "choi_in_hun",
       name: "Чхве Ин Хун",
-      years: "1936–2018",
+      years: "1936-2018",
       birthDate: "1936-04-13",
       deathDate: "2018-07-23",
       birthPlace: "Хвэрён, Корея",
@@ -699,7 +699,7 @@ export const southKorea: Country = {
         {
       id: "shin_kyung_sook",
       name: "Син Гён Сук",
-      years: "1963–",
+      years: "1963-",
       birthDate: "1963-01-12",
       birthPlace: "Чонджу, Южная Корея",
       coordinates: {
@@ -735,7 +735,7 @@ export const southKorea: Country = {
     {
       id: "gong_ji_young",
       name: "Кон Джи Ён",
-      years: "1963–",
+      years: "1963-",
       birthDate: "1963-01-31",
       birthPlace: "Сеул, Южная Корея",
       coordinates: {
@@ -770,7 +770,7 @@ export const southKorea: Country = {
     {
       id: "kim_aeran",
       name: "Ким Э Ран",
-      years: "1980–",
+      years: "1980-",
       birthDate: "1980-11-12",
       birthPlace: "Инчхон, Южная Корея",
       coordinates: {
@@ -805,7 +805,7 @@ export const southKorea: Country = {
     {
       id: "cho_nam_joo",
       name: "Чо Нам Джу",
-      years: "1978–",
+      years: "1978-",
       birthDate: "1978-10-26",
       birthPlace: "Сеул, Южная Корея",
       coordinates: {
@@ -841,7 +841,7 @@ export const southKorea: Country = {
     {
       id: "bae_su_a",
       name: "Пэ Су А",
-      years: "1965–",
+      years: "1965-",
       birthDate: "1965-03-31",
       birthPlace: "Сеул, Южная Корея",
       coordinates: {

@@ -221,7 +221,7 @@ describe("writer biography claim review batch 01", () => {
       { unchanged: 0, corrected: 0, held: 0 }
     );
     const forbiddenMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     expect(decisionCounts).toEqual({ unchanged: 3, corrected: 17, held: 0 });
     for (const record of writerBiographyFactReviewBatch01) {
@@ -286,7 +286,7 @@ describe("writer biography claim review batch 01", () => {
     });
     expect(jsonReport.records).toEqual(writerBiographyFactReviewBatch01);
     expect(fs.readFileSync(reviewMarkdownPath, "utf8")).toContain(
-      "# Проверка биографий писателей — партия 01"
+      "# Проверка биографий писателей - партия 01"
     );
   });
 });

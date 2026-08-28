@@ -13,7 +13,7 @@ export const qatar: Country = {
       name: "Абдель Азиз аль-Махмуд",
       fullName: "Abdulaziz Al Mahmoud",
 
-      years: "1965–",
+      years: "1965-",
 
       birthDate: "1965",
       deathDate: "",
@@ -62,7 +62,7 @@ export const qatar: Country = {
       name: "Кулсум Джабер",
       fullName: "Kulthum Jaber",
 
-      years: "1958–",
+      years: "1958-",
 
       birthDate: "1958",
       deathDate: "",
@@ -111,7 +111,7 @@ export const qatar: Country = {
       name: "Ахмад аль-Махмуд",
       fullName: "Ahmed Al Mahmoud",
 
-      years: "1957–",
+      years: "1957-",
 
       birthDate: "1957",
       deathDate: "",
@@ -161,7 +161,7 @@ export const qatar: Country = {
       name: "Джамаль Файз аль-Малики",
       fullName: "Jamal Fayiz Al-Maliky",
 
-      years: "1953–",
+      years: "1953-",
 
       birthDate: "1953",
       deathDate: "",

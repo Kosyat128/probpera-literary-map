@@ -72,7 +72,7 @@
       "reviewedTextRu": "Персидоязычная поэтесса, связанная с Балхом и традиционно относимая к X веку. Её стихи известны по средневековым антологиям и позднейшей литературной традиции, тогда как многие подробности биографии имеют легендарный характер.",
       "claims": [
         {
-          "textRu": "Рабиа Балхи — персидоязычная поэтесса, традиционно связанная с Балхом и X веком; её корпус передан антологиями, а биографическое предание нельзя полностью принимать как документированную историю.",
+          "textRu": "Рабиа Балхи - персидоязычная поэтесса, традиционно связанная с Балхом и X веком; её корпус передан антологиями, а биографическое предание нельзя полностью принимать как документированную историю.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -98,7 +98,7 @@
     {
       "key": "albania:andon_zako_cajupi",
       "originalSha256": "2dbe7f265d7e1bc781f9910f38d63cd387c1904c89467a4136de4f12ad4f8f7b",
-      "reviewedTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений — поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër».",
+      "reviewedTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений - поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër».",
       "claims": [
         {
           "textRu": "Андон Зако Чаюпи был албанским поэтом и драматургом национального возрождения и написал «Baba-Tomorri» и стихотворную комедию «Katërmbëdhjetë vjeç dhëndër».",
@@ -122,7 +122,7 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 10",
       "decision": "corrected",
       "notes": "Исходная точная характеристика дополнена двумя документированными произведениями; оценочные ранги не добавлялись. Shared country files не изменялись.",
-      "applicableTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений — поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër»."
+      "applicableTextRu": "Албанский поэт и драматург эпохи национального возрождения. Среди его произведений - поэтический сборник «Baba-Tomorri» и стихотворная комедия «Katërmbëdhjetë vjeç dhëndër»."
     },
     {
       "key": "albania:besnik_mustafaj",
@@ -130,7 +130,7 @@
       "reviewedTextRu": "Албанский писатель, поэт и переводчик, работавший также дипломатом. Автор романа «Vera pa kthim», а также книг прозы, стихов и эссе.",
       "claims": [
         {
-          "textRu": "Бесник Мустафай — албанский писатель, поэт, переводчик и бывший дипломат; роман «Vera pa kthim» входит в его библиографию.",
+          "textRu": "Бесник Мустафай - албанский писатель, поэт, переводчик и бывший дипломат; роман «Vera pa kthim» входит в его библиографию.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -188,7 +188,7 @@
       "reviewedTextRu": "Алжирский франкоязычный писатель и эссеист. Автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde».",
       "claims": [
         {
-          "textRu": "Буалем Сансаль — родившийся в Алжире франкоязычный писатель и эссеист, автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde».",
+          "textRu": "Буалем Сансаль - родившийся в Алжире франкоязычный писатель и эссеист, автор романов «Le Serment des barbares», «Le Village de l’Allemand» и «2084. La fin du monde».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -214,7 +214,7 @@
     {
       "key": "andorra:albert_salvado",
       "originalSha256": "9a0b7e474f116c8a1ce90d825f4a6c3a820093b1c54f36ab5f7fbe56a1488e0e",
-      "reviewedTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений — трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году.",
+      "reviewedTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений - трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году.",
       "claims": [
         {
           "textRu": "Альберт Сальвадо был андоррским писателем исторической прозы, автором трилогий «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; «Els ulls d’Anníbal» получил премию Carlemany 2002 года.",
@@ -238,7 +238,7 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 10",
       "decision": "corrected",
       "notes": "Краткая исходная формула конкретизирована двумя циклами и документированной премией без оценочного ранжирования. Shared country files не изменялись.",
-      "applicableTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений — трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году."
+      "applicableTextRu": "Андоррский писатель, работавший прежде всего в жанре исторического романа. Среди его произведений - трилогии «Jaume I el Conqueridor» и «L’ombra d’Alí Bei»; роман «Els ulls d’Anníbal» получил премию Carlemany в 2002 году."
     },
     {
       "key": "andorra:joan_peruga",
@@ -246,7 +246,7 @@
       "reviewedTextRu": "Андоррский писатель, историк и преподаватель, пишущий на каталонском языке. Его роман «Últim estiu a Ordino» обращается к истории семьи Арень-Пландолит и переменам в Андорре конца XIX века.",
       "claims": [
         {
-          "textRu": "Жоан Перуга — андоррский писатель, историк и преподаватель; в романе «Últim estiu a Ordino» он обращается к семье Арень-Пландолит и истории Андорры конца XIX века.",
+          "textRu": "Жоан Перуга - андоррский писатель, историк и преподаватель; в романе «Últim estiu a Ordino» он обращается к семье Арень-Пландолит и истории Андорры конца XIX века.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -278,23 +278,23 @@
     {
       "key": "andorra:josep_fonbernat",
       "originalSha256": "bb8888a1f34436bf962838ddf4c097a838cf3ba7ab08073012cf384bf7555a3e",
-      "reviewedTextRu": "Идентичность современного андоррского автора «Josep Fonbernat» 1955 года рождения по авторитетным источникам не установлена. Доступные архивы относятся к другому лицу — каталонскому музыканту, политику и автору Josep Fontbernat i Verdaguer, жившему в 1896–1977 годах.",
+      "reviewedTextRu": "Идентичность современного андоррского автора «Josep Fonbernat» 1955 года рождения по авторитетным источникам не установлена. Доступные архивы относятся к другому лицу - каталонскому музыканту, политику и автору Josep Fontbernat i Verdaguer, жившему в 1896-1977 годах.",
       "claims": [
         {
-          "textRu": "Публичную литературную личность «Josep Fonbernat» 1955 года рождения установить не удалось; найденный в институциональных архивах Josep Fontbernat i Verdaguer — другое историческое лицо.",
+          "textRu": "Публичную литературную личность «Josep Fonbernat» 1955 года рождения установить не удалось; найденный в институциональных архивах Josep Fontbernat i Verdaguer - другое историческое лицо.",
           "verdict": "not-established",
           "evidence": [
             {
               "provider": "Govern d’Andorra, Arxiu Nacional",
               "url": "https://www.govern.ad/ca/l/4517901",
               "checkedAt": "2026-08-09",
-              "findingRu": "Архив Андорры описывает фонд Josep Fontbernat i Verdaguer — музыканта и политического деятеля иной эпохи; совпадения с современной карточкой нет."
+              "findingRu": "Архив Андорры описывает фонд Josep Fontbernat i Verdaguer - музыканта и политического деятеля иной эпохи; совпадения с современной карточкой нет."
             },
             {
               "provider": "Parlament de Catalunya",
               "url": "https://www.parlament.cat/document/intrade/23155896",
               "checkedAt": "2026-08-09",
-              "findingRu": "Парламентский биографический материал датирует жизнь Josep Fontbernat i Verdaguer 1896–1977 годами и подтверждает, что это не заявленный автор 1955 года рождения."
+              "findingRu": "Парламентский биографический материал датирует жизнь Josep Fontbernat i Verdaguer 1896-1977 годами и подтверждает, что это не заявленный автор 1955 года рождения."
             }
           ]
         }
@@ -310,7 +310,7 @@
       "reviewedTextRu": "Ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году. Автор сборников «Ritos de Passagem» и «O Lago da Lua»; её исследовательская работа связана с историей и культурным наследием Анголы.",
       "claims": [
         {
-          "textRu": "Ана Паула Тавареш — ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году; она написала «Ritos de Passagem» и «O Lago da Lua» и исследовала культурное наследие Анголы.",
+          "textRu": "Ана Паула Тавареш - ангольская поэтесса и историк, родившаяся в Лубанго в 1952 году; она написала «Ritos de Passagem» и «O Lago da Lua» и исследовала культурное наследие Анголы.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -339,7 +339,7 @@
       "reviewedTextRu": "Ангольский писатель и поэт. Автор повести «Quem me dera ser onda» и текста государственного гимна Анголы «Angola Avante».",
       "claims": [
         {
-          "textRu": "Мануэл Руй — ангольский писатель и поэт, автор «Quem me dera ser onda» и слов государственного гимна «Angola Avante».",
+          "textRu": "Мануэл Руй - ангольский писатель и поэт, автор «Quem me dera ser onda» и слов государственного гимна «Angola Avante».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -394,10 +394,10 @@
     {
       "key": "argentina:alberto_manguel",
       "originalSha256": "61501da44e8a6e0eb4a842f5fc11a0a242379eabc14388371c443e4328bbed45",
-      "reviewedTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг — «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places».",
+      "reviewedTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг - «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places».",
       "claims": [
         {
-          "textRu": "Альберто Мангель — аргентинско-канадский писатель, переводчик и редактор, автор «A History of Reading» и «The Library at Night» и соавтор «The Dictionary of Imaginary Places».",
+          "textRu": "Альберто Мангель - аргентинско-канадский писатель, переводчик и редактор, автор «A History of Reading» и «The Library at Night» и соавтор «The Dictionary of Imaginary Places».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -418,7 +418,7 @@
       "reviewer": "Codex independent claim-by-claim factual review, batch 10",
       "decision": "corrected",
       "notes": "Общая формула о трудах по истории литературы заменена конкретными ролями и библиографией. Shared country files не изменялись.",
-      "applicableTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг — «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places»."
+      "applicableTextRu": "Аргентинско-канадский писатель, переводчик и редактор. Среди его книг - «A History of Reading», «The Library at Night» и написанный вместе с Джанни Гуадалупи справочник «The Dictionary of Imaginary Places»."
     },
     {
       "key": "argentina:jose_hernandez",
@@ -571,7 +571,7 @@
       "reviewedTextRu": "Аргентинский писатель, переводчик и журналист. Автор книг «Historia argentina», «Jardines de Kensington» и трилогии, начатой романом «La parte inventada».",
       "claims": [
         {
-          "textRu": "Родриго Фресан — аргентинский писатель, переводчик и журналист, автор «Historia argentina», «Jardines de Kensington» и трилогии, открытой романом «La parte inventada».",
+          "textRu": "Родриго Фресан - аргентинский писатель, переводчик и журналист, автор «Historia argentina», «Jardines de Kensington» и трилогии, открытой романом «La parte inventada».",
           "verdict": "corrected",
           "evidence": [
             {

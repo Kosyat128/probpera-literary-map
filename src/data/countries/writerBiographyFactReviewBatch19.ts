@@ -42,7 +42,7 @@ const writerBiographyFactReviewBatch19Base = [
       textRu: "Чжан Айлин, известная по-английски как Эйлин Чан, была китайской романисткой, эссеисткой и сценаристкой и написала Love in a Fallen City, The Rice-Sprout Song и Naked Earth.",
       verdict: "corrected",
       evidence: [
-        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb12536146z.public", checkedAt, findingRu: "Авторитетная запись BnF связывает варианты Zhang Ailing и Eileen Chang, подтверждает китайскую идентичность, роль романистки и даты 30 сентября 1920 — 8 сентября 1995." },
+        { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb12536146z.public", checkedAt, findingRu: "Авторитетная запись BnF связывает варианты Zhang Ailing и Eileen Chang, подтверждает китайскую идентичность, роль романистки и даты 30 сентября 1920 - 8 сентября 1995." },
         { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/72556/eileen-chang/", checkedAt, findingRu: "Издательская биография подтверждает роли романистки, эссеистки и сценаристки и называет Love in a Fallen City, The Rice-Sprout Song и Naked Earth среди её произведений." },
       ],
     }],
@@ -55,11 +55,11 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "fee2cb04a43bec248862d2d0944d12da1ba2f857bfba65223be5ac0a875d5d26",
     reviewedTextRu: "Пишущая по-китайски писательница Чжан Лин родилась в 1957 году в Ханчжоу и с 1986 года живёт в Канаде. Автор романов «Gold Mountain Blues» и «A Single Swallow».",
     claims: [{
-      textRu: "Чжан Лин — пишущая по-китайски писательница, родившаяся в Ханчжоу в 1957 году, переехавшая в Канаду в 1986 году и написавшая Gold Mountain Blues и A Single Swallow.",
+      textRu: "Чжан Лин - пишущая по-китайски писательница, родившаяся в Ханчжоу в 1957 году, переехавшая в Канаду в 1986 году и написавшая Gold Mountain Blues и A Single Swallow.",
       verdict: "corrected",
       evidence: [
         { provider: "Penguin Random House", url: "https://www.penguinrandomhouse.com/authors/252959/ling-zhang/", checkedAt, findingRu: "Издательская биография подтверждает рождение Чжан Лин в 1957 году в Ханчжоу, переезд в Канаду в 1986 году, письмо на китайском языке и роман Gold Mountain Blues." },
-        { provider: "Zhang Ling — официальный авторский сайт", url: "https://zhanglingwriter.com/", checkedAt, findingRu: "Официальный сайт автора подтверждает её литературную идентичность и атрибутирует ей романы Gold Mountain Blues и A Single Swallow." },
+        { provider: "Zhang Ling - официальный авторский сайт", url: "https://zhanglingwriter.com/", checkedAt, findingRu: "Официальный сайт автора подтверждает её литературную идентичность и атрибутирует ей романы Gold Mountain Blues и A Single Swallow." },
       ],
     }],
     reviewer,
@@ -69,29 +69,29 @@ const writerBiographyFactReviewBatch19Base = [
   {
     key: "china:zhuangzi",
     originalSha256: "b08e5a9dd74a557722e034389e4deec0e3b2e07086f2637d0c513a608de52c8f",
-    reviewedTextRu: "Чжуан-цзы (Чжуан Чжоу) — китайский философ периода Сражающихся царств, связанный с ранней даосской мыслью. Его именем назван сборник «Чжуан-цзы», в котором исследователи выделяют несколько авторских слоёв.",
+    reviewedTextRu: "Чжуан-цзы (Чжуан Чжоу) - китайский философ периода Сражающихся царств, связанный с ранней даосской мыслью. Его именем назван сборник «Чжуан-цзы», в котором исследователи выделяют несколько авторских слоёв.",
     claims: [{
       textRu: "Чжуан Чжоу был философом периода Сражающихся царств, связанным с ранней даосской мыслью, а названный его именем текст Чжуан-цзы содержит несколько авторских слоёв.",
       verdict: "corrected",
       evidence: [
         { provider: "Stanford Encyclopedia of Philosophy", url: "https://plato.stanford.edu/entries/zhuangzi/", checkedAt, findingRu: "Стэнфордская энциклопедия относит Чжуан-цзы к периоду Сражающихся царств, связывает его с даосской философией и подчёркивает составной характер текста и скудость надёжных биографических данных." },
-        { provider: "Internet Encyclopedia of Philosophy — University of Tennessee at Martin", url: "https://iep.utm.edu/zhuangzi-chuang-tzu-chinese-philosopher/", checkedAt, findingRu: "Университетская философская энциклопедия независимо подтверждает идентичность Чжуан Чжоу, исторический период, даосский контекст и сложную историю текста Чжуан-цзы." },
+        { provider: "Internet Encyclopedia of Philosophy - University of Tennessee at Martin", url: "https://iep.utm.edu/zhuangzi-chuang-tzu-chinese-philosopher/", checkedAt, findingRu: "Университетская философская энциклопедия независимо подтверждает идентичность Чжуан Чжоу, исторический период, даосский контекст и сложную историю текста Чжуан-цзы." },
       ],
     }],
     reviewer,
     decision: "corrected",
-    notes: "Identity recommendation: candidate Q47739 соответствует Чжуан-цзы. Exact shared dates 369–286 до н. э. и место Song не следует представлять как бесспорные: источники подчёркивают ограниченность биографических сведений. Shared country files не изменялись.",
+    notes: "Identity recommendation: candidate Q47739 соответствует Чжуан-цзы. Exact shared dates 369-286 до н. э. и место Song не следует представлять как бесспорные: источники подчёркивают ограниченность биографических сведений. Shared country files не изменялись.",
   },
   {
     key: "colombia:alvaro_mutis",
-    originalSha256: "eea321af4c7056f7cb5c81df3ae6686c04d9823b9b1a7d2ffcc078dfbfc3ff88",
+    originalSha256: "edb3ebabcfaf9d606918866a45a1099fb9d7272efd3b857ebedac4770478e4a3",
     reviewedTextRu: "Колумбийский поэт, романист и журналист Альваро Мутис, создавший персонажа Макироля Гавьеро. Автор цикла «Empresas y tribulaciones de Maqroll el Gaviero»; лауреат премии Сервантеса 2001 года.",
     claims: [{
       textRu: "Альваро Мутис был колумбийским поэтом, романистом и журналистом, создал Макироля Гавьеро, написал Empresas y tribulaciones de Maqroll el Gaviero и получил премию Сервантеса 2001 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Instituto Cervantes", url: "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/estambul_alvaro_mutis.htm", checkedAt, findingRu: "Биография Института Сервантеса подтверждает литературные и журналистскую роли Мутиса, персонажа Макироля, цикл произведений и премию Сервантеса 2001 года." },
-        { provider: "Banrepcultural — Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/%C3%81lvaro_Mutis", checkedAt, findingRu: "Колумбийская культурная энциклопедия независимо подтверждает биографию Мутиса, его поэзию и прозу, Макироля и основные награды." },
+        { provider: "Banrepcultural - Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/%C3%81lvaro_Mutis", checkedAt, findingRu: "Колумбийская культурная энциклопедия независимо подтверждает биографию Мутиса, его поэзию и прозу, Макироля и основные награды." },
       ],
     }],
     reviewer,
@@ -106,8 +106,8 @@ const writerBiographyFactReviewBatch19Base = [
       textRu: "Андрес Кайседо был колумбийским писателем, драматургом и кинокритиком, участвовал в создании киноклуба Кали и Ojo al Cine и написал ¡Que viva la música! и El atravesado.",
       verdict: "corrected",
       evidence: [
-        { provider: "Banrepcultural — Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/index.php/Caicedo_Estela%2C_Andr%C3%A9s", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает писательскую и кинокритическую деятельность Кайседо, киноклуб и роман ¡Que viva la música!." },
-        { provider: "Centro Virtual Isaacs — Universidad del Valle", url: "https://cvisaacs.univalle.edu.co/literatura/andres-caicedo-estela/", checkedAt, findingRu: "Университетский профиль подтверждает драматургию, киноклуб Кали, журнал Ojo al Cine и атрибутирует Кайседо произведения ¡Que viva la música! и El atravesado." },
+        { provider: "Banrepcultural - Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/index.php/Caicedo_Estela%2C_Andr%C3%A9s", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает писательскую и кинокритическую деятельность Кайседо, киноклуб и роман ¡Que viva la música!." },
+        { provider: "Centro Virtual Isaacs - Universidad del Valle", url: "https://cvisaacs.univalle.edu.co/literatura/andres-caicedo-estela/", checkedAt, findingRu: "Университетский профиль подтверждает драматургию, киноклуб Кали, журнал Ojo al Cine и атрибутирует Кайседо произведения ¡Que viva la música! и El atravesado." },
       ],
     }],
     reviewer,
@@ -117,7 +117,7 @@ const writerBiographyFactReviewBatch19Base = [
   {
     key: "colombia:fernando_vallejo",
     originalSha256: "cc69c611ce9ce27dffb0b5cd28829415af8da5a451fecb606af59bfb3b157186",
-    reviewedTextRu: "Фернандо Вальехо — писатель, эссеист и кинорежиссёр, родившийся в Медельине. Автор романов «La Virgen de los sicarios» и «El desbarrancadero»; второй получил премию Ромуло Гальегоса в 2003 году.",
+    reviewedTextRu: "Фернандо Вальехо - писатель, эссеист и кинорежиссёр, родившийся в Медельине. Автор романов «La Virgen de los sicarios» и «El desbarrancadero»; второй получил премию Ромуло Гальегоса в 2003 году.",
     claims: [{
       textRu: "Фернандо Вальехо родился в Медельине, работает как писатель, эссеист и кинорежиссёр, написал La Virgen de los sicarios и El desbarrancadero, получивший премию Ромуло Гальегоса 2003 года.",
       verdict: "corrected",
@@ -149,13 +149,13 @@ const writerBiographyFactReviewBatch19Base = [
   {
     key: "colombia:german_castro_caycedo",
     originalSha256: "3f37e25d1b2b945852e68882e4d503d27353e709bd5ca1c4e9f95ef62e4affac",
-    reviewedTextRu: "Колумбийский журналист и автор документальной прозы Герман Кастро Кайседо. Среди его книг — «Colombia amarga», «Perdido en el Amazonas» и «El Karina».",
+    reviewedTextRu: "Колумбийский журналист и автор документальной прозы Герман Кастро Кайседо. Среди его книг - «Colombia amarga», «Perdido en el Amazonas» и «El Karina».",
     claims: [{
       textRu: "Герман Кастро Кайседо был колумбийским журналистом и автором документальной прозы и написал Colombia amarga, Perdido en el Amazonas и El Karina.",
       verdict: "corrected",
       evidence: [
-        { provider: "Banrepcultural — Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/index.php/Germ%C3%A1n_Castro_Caycedo", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает журналистскую и писательскую деятельность Кастро Кайседо, документальный характер книг и три названных произведения." },
-        { provider: "BibloRed — Red Distrital de Bibliotecas Públicas de Bogotá", url: "https://biblored.gov.co/noticias/legado-german-castro", checkedAt, findingRu: "Городская библиотечная сеть независимо подтверждает его работу писателя и журналиста и описывает документальные книги и хроники о колумбийской действительности." },
+        { provider: "Banrepcultural - Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/index.php/Germ%C3%A1n_Castro_Caycedo", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает журналистскую и писательскую деятельность Кастро Кайседо, документальный характер книг и три названных произведения." },
+        { provider: "BibloRed - Red Distrital de Bibliotecas Públicas de Bogotá", url: "https://biblored.gov.co/noticias/legado-german-castro", checkedAt, findingRu: "Городская библиотечная сеть независимо подтверждает его работу писателя и журналиста и описывает документальные книги и хроники о колумбийской действительности." },
       ],
     }],
     reviewer,
@@ -167,7 +167,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "ef6dbc633f55f7d2fc47b2b77c609e89dc9101711894a224e8f652947b6fa42a",
     reviewedTextRu: "Колумбийский писатель, эссеист и журналист Эктор Абад Фасиолинсе. Автор книг «Angosta», «El olvido que seremos» и «La oculta».",
     claims: [{
-      textRu: "Эктор Абад Фасиолинсе — колумбийский писатель, эссеист и журналист, автор Angosta, El olvido que seremos и La oculta.",
+      textRu: "Эктор Абад Фасиолинсе - колумбийский писатель, эссеист и журналист, автор Angosta, El olvido que seremos и La oculta.",
       verdict: "corrected",
       evidence: [
         { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/casablanca/es/encuentro-con-h%C3%A9ctor-abad-faciolince/118710", checkedAt, findingRu: "Институт Сервантеса подтверждает колумбийскую писательскую и журналистскую идентичность Абад Фасиолинсе и атрибутирует ему Angosta и El olvido que seremos." },
@@ -202,8 +202,8 @@ const writerBiographyFactReviewBatch19Base = [
       textRu: "Хорхе Исаакс был колумбийским писателем, поэтом и политическим деятелем и написал роман María, впервые опубликованный в 1867 году.",
       verdict: "corrected",
       evidence: [
-        { provider: "Banrepcultural — Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/Jorge_Isaacs_Ferrer", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает литературные и политическую роли Исаакса и сообщает о первой публикации María в 1867 году." },
-        { provider: "Universidad del Valle — Archivo Jorge Isaacs", url: "https://jorgeisaacs.univalle.edu.co/obra/", checkedAt, findingRu: "Университетский архив независимо подтверждает даты жизни, поэзию и авторство романа María." },
+        { provider: "Banrepcultural - Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/Jorge_Isaacs_Ferrer", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает литературные и политическую роли Исаакса и сообщает о первой публикации María в 1867 году." },
+        { provider: "Universidad del Valle - Archivo Jorge Isaacs", url: "https://jorgeisaacs.univalle.edu.co/obra/", checkedAt, findingRu: "Университетский архив независимо подтверждает даты жизни, поэзию и авторство романа María." },
       ],
     }],
     reviewer,
@@ -215,7 +215,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "e9addd8dd3057a7251fe1c82c27bf432cf9adb712e53331704414481822b03d7",
     reviewedTextRu: "Колумбийский писатель и газетный колумнист Хуан Карлос Ботеро Сеа. Автор книг «Las semillas del tiempo», «Las ventanas y las voces» и романа «La sentencia».",
     claims: [{
-      textRu: "Хуан Карлос Ботеро Сеа — колумбийский писатель и газетный колумнист, автор Las semillas del tiempo, Las ventanas y las voces и La sentencia.",
+      textRu: "Хуан Карлос Ботеро Сеа - колумбийский писатель и газетный колумнист, автор Las semillas del tiempo, Las ventanas y las voces и La sentencia.",
       verdict: "corrected",
       evidence: [
         { provider: "Biblioteca Virtual del Banco de la República", url: "https://babel.banrepcultural.org/digital/collection/hernan-diaz/id/197/", checkedAt, findingRu: "Библиотечная запись идентифицирует Хуана Карлоса Ботеро Сеа как колумбийского писателя 1960 года рождения и подтверждает его работу колумниста." },
@@ -231,7 +231,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "245ce2a2013d80ce2a34e33f83e08ebe95d3aa897e15947ebf994a042c02fd07",
     reviewedTextRu: "Колумбийская писательница и журналистка Лаура Рестрепо, родившаяся в Боготе в 1950 году. Автор романов «La multitud errante» и «Delirio»; «Delirio» получил премию Alfaguara в 2004 году.",
     claims: [{
-      textRu: "Лаура Рестрепо — родившаяся в Боготе в 1950 году колумбийская писательница и журналистка, автор La multitud errante и Delirio, удостоенного премии Alfaguara 2004 года.",
+      textRu: "Лаура Рестрепо - родившаяся в Боготе в 1950 году колумбийская писательница и журналистка, автор La multitud errante и Delirio, удостоенного премии Alfaguara 2004 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/estambul/es/laura-restrepo/166110", checkedAt, findingRu: "Институт Сервантеса подтверждает колумбийскую писательскую и журналистскую деятельность Рестрепо и атрибутирует ей Delirio." },
@@ -250,7 +250,7 @@ const writerBiographyFactReviewBatch19Base = [
       textRu: "Леон де Грейфф был колумбийским поэтом, участвовал в Los Panidas и Los Nuevos и написал Tergiversaciones, Libro de signos и Variaciones alrededor de nada.",
       verdict: "corrected",
       evidence: [
-        { provider: "Banrepcultural — Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/Le%C3%B3n_de_Greiff", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает поэтическую идентичность, участие в Los Panidas и Los Nuevos и библиографию де Грейффа." },
+        { provider: "Banrepcultural - Banco de la República de Colombia", url: "https://enciclopedia.banrepcultural.org/Le%C3%B3n_de_Greiff", checkedAt, findingRu: "Колумбийская культурная энциклопедия подтверждает поэтическую идентичность, участие в Los Panidas и Los Nuevos и библиографию де Грейффа." },
         { provider: "Biblioteca Nacional de Colombia", url: "https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/en-la-bnc/la-filbo-y-la-biblioteca-nacional-conmemoran-efemerides-literarias", checkedAt, findingRu: "Национальная библиотека независимо связывает поэта с поколением Los Nuevos и его книжным наследием; программа посвящена архиву и переизданию произведений де Грейффа." },
       ],
     }],
@@ -263,7 +263,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "97a31c907a8c03455fd1375863ca1b6c057ad18818cb4be987e829b4a6daa328",
     reviewedTextRu: "Колумбийская писательница и сценаристка Пилар Кинтана, родившаяся в Кали в 1972 году. Автор романов «La perra» и «Los abismos»; второй получил премию Alfaguara 2021 года.",
     claims: [{
-      textRu: "Пилар Кинтана — родившаяся в Кали в 1972 году колумбийская писательница и сценаристка, автор La perra и Los abismos, получившего премию Alfaguara 2021 года.",
+      textRu: "Пилар Кинтана - родившаяся в Кали в 1972 году колумбийская писательница и сценаристка, автор La perra и Los abismos, получившего премию Alfaguara 2021 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/MILAN/es/id/175982", checkedAt, findingRu: "Институт Сервантеса подтверждает колумбийскую идентичность, рождение в 1972 году, роли писательницы и сценаристки и атрибутирует ей La perra и Los abismos." },
@@ -279,7 +279,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "11cead164163902acba93958282de578d2b0e2e36ef61b21fbb9b69bab0067a0",
     reviewedTextRu: "Колумбийский писатель, журналист, сценарист и кинокритик Рикардо Сильва Ромеро, родившийся в Боготе в 1975 году. Автор романов «Historia oficial del amor» и «Cómo perderlo todo».",
     claims: [{
-      textRu: "Рикардо Сильва Ромеро — родившийся в Боготе в 1975 году колумбийский писатель, журналист, сценарист и кинокритик, автор Historia oficial del amor и Cómo perderlo todo.",
+      textRu: "Рикардо Сильва Ромеро - родившийся в Боготе в 1975 году колумбийский писатель, журналист, сценарист и кинокритик, автор Historia oficial del amor и Cómo perderlo todo.",
       verdict: "corrected",
       evidence: [
         { provider: "Gobernación de Antioquia", url: "https://antioquia.gov.co/images/PDF2/Decretos/2023/12/2023070005714.pdf", checkedAt, findingRu: "Официальный декрет подтверждает роли писателя, журналиста, сценариста и кинокритика и связывает Рикардо Сильву Ромеро с Historia oficial del amor." },
@@ -295,7 +295,7 @@ const writerBiographyFactReviewBatch19Base = [
     originalSha256: "1ce2a8efa14e76b91e9f8c6fc4126892f1a1de603638eceafe8e1beadc264439",
     reviewedTextRu: "Колумбийский поэт, эссеист и редактор Сантьяго Мутис Дуран, родившийся в Боготе в 1951 году. Автор книг «En la línea de sombra», «Tú también eres de lluvia» и «Dicen de ti».",
     claims: [{
-      textRu: "Сантьяго Мутис Дуран — родившийся в Боготе в 1951 году колумбийский поэт, эссеист и редактор, автор En la línea de sombra, Tú también eres de lluvia и Dicen de ti.",
+      textRu: "Сантьяго Мутис Дуран - родившийся в Боготе в 1951 году колумбийский поэт, эссеист и редактор, автор En la línea de sombra, Tú también eres de lluvia и Dicen de ti.",
       verdict: "corrected",
       evidence: [
         { provider: "Centro Virtual Cervantes", url: "https://cvc.cervantes.es/el_rinconete/anteriores/mayo_04/19052004_02.htm", checkedAt, findingRu: "Институт Сервантеса подтверждает рождение Мутиса Дурана в Боготе в 1951 году, его поэтическую деятельность и атрибутирует ему En la línea de sombra, Tú también eres de lluvia и Dicen de ti." },
@@ -315,7 +315,7 @@ const writerBiographyFactReviewBatch19Base = [
       verdict: "not-established",
       evidence: [
         { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/rechercher.do?motRecherche=Mahmoud+Sa%C3%AFd+Ahmed&critereRecherche=0&depart=0&facetteModifiee=ok", checkedAt, findingRu: "Поиск точного имени в национальном библиотечном каталоге не выявил authority record или библиографии коморского писателя, соответствующего карточке." },
-        { provider: "IdRef — ABES", url: "https://www.idref.fr/Search?q=Mahmoud%20Sa%C3%AFd%20Ahmed", checkedAt, findingRu: "Поиск во французской университетской сети авторитетных данных не дал идентифицируемой записи автора с указанным именем, страной и годом рождения." },
+        { provider: "IdRef - ABES", url: "https://www.idref.fr/Search?q=Mahmoud%20Sa%C3%AFd%20Ahmed", checkedAt, findingRu: "Поиск во французской университетской сети авторитетных данных не дал идентифицируемой записи автора с указанным именем, страной и годом рождения." },
       ],
     }],
     reviewer,
@@ -325,9 +325,9 @@ const writerBiographyFactReviewBatch19Base = [
   {
     key: "comoros:said_ahmed_mohamed",
     originalSha256: "20f679225bae78d5f4dbf0ddb962fd251e6b933a4dca4a7e20f659585475bb95",
-    reviewedTextRu: "Саид Ахмед Мохамед Хамис — танзанийский писатель и исследователь суахилийской литературы, родившийся на Занзибаре 12 декабря 1947 года. Автор романов на суахили «Asali Chungu», «Utengano» и «Dunia Yao».",
+    reviewedTextRu: "Саид Ахмед Мохамед Хамис - танзанийский писатель и исследователь суахилийской литературы, родившийся на Занзибаре 12 декабря 1947 года. Автор романов на суахили «Asali Chungu», «Utengano» и «Dunia Yao».",
     claims: [{
-      textRu: "Саид Ахмед Мохамед Хамис — танзанийский писатель и исследователь суахилийской литературы, родившийся на Занзибаре 12 декабря 1947 года и написавший Asali Chungu, Utengano и Dunia Yao.",
+      textRu: "Саид Ахмед Мохамед Хамис - танзанийский писатель и исследователь суахилийской литературы, родившийся на Занзибаре 12 декабря 1947 года и написавший Asali Chungu, Utengano и Dunia Yao.",
       verdict: "corrected",
       evidence: [
         { provider: "Universität Bayreuth", url: "https://www.presse.uni-bayreuth.de/de/archiv/2012/194-Swahili-Kolloquium.pdf", checkedAt, findingRu: "Официальный университетский материал идентифицирует Said Ahmed Mohamed Khamis как родившегося в Танзании в 1947 году писателя на суахили и профессора литературы на африканских языках." },
@@ -347,7 +347,7 @@ const writerBiographyFactReviewBatch19Base = [
       verdict: "corrected",
       evidence: [
         { provider: "Ville de Marseille", url: "https://www.marseille.fr/culture/actualites/salim-hatubou-le-passeur-de-memoire", checkedAt, findingRu: "Официальный сайт Марселя подтверждает рождение Салима Хатубу 20 июня 1972 года в Хахайе на Нгазидже, переезд в Марсель и работу по записи коморской устной традиции." },
-        { provider: "Takam Tikou — Bibliothèque nationale de France", url: "https://takamtikou.bnf.fr/actualites/2015-04-02/hommage-salim-hatubou-crivain-et-conteur-franco-comorien", checkedAt, findingRu: "Издание Национальной библиотеки Франции идентифицирует Хатубу как франко-коморского писателя и сказителя 1972–2015 годов и подтверждает его прозу и книги для детей." },
+        { provider: "Takam Tikou - Bibliothèque nationale de France", url: "https://takamtikou.bnf.fr/actualites/2015-04-02/hommage-salim-hatubou-crivain-et-conteur-franco-comorien", checkedAt, findingRu: "Издание Национальной библиотеки Франции идентифицирует Хатубу как франко-коморского писателя и сказителя 1972-2015 годов и подтверждает его прозу и книги для детей." },
       ],
     }],
     reviewer,

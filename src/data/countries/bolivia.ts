@@ -8,7 +8,7 @@ export const bolivia: Country = {
     {
       id: "bartolome_arsans_de_orsua_y_vela",
       name: "Бартоломе Арсанс де Орсуа и Вела",
-      years: "1676–1736",
+      years: "1676-1736",
       birthDate: "1676",
       deathDate: "1736",
       birthPlace: "Потоси, Верхнее Перу",
@@ -45,7 +45,7 @@ export const bolivia: Country = {
     {
       id: "nataniel_aguirre",
       name: "Натаниэль Агирре",
-      years: "1843–1888",
+      years: "1843-1888",
       birthDate: "1843-10-10",
       deathDate: "1888-09-11",
       birthPlace: "Кочабамба, Боливия",
@@ -83,7 +83,7 @@ export const bolivia: Country = {
     {
       id: "adela_zamudio",
       name: "Адэла Самудио",
-      years: "1854–1928",
+      years: "1854-1928",
       birthDate: "1854-10-11",
       deathDate: "1928-06-02",
       birthPlace: "Кочабамба, Боливия",
@@ -93,7 +93,7 @@ export const bolivia: Country = {
         lng: -66.157
       },
       portrait: "",
-      bio: "Боливийская писательница, поэтесса и педагог. Одна из крупнейших фигур национальной литературы XIX–XX веков и одна из первых защитниц прав женщин в Боливии.",
+      bio: "Боливийская писательница, поэтесса и педагог. Одна из крупнейших фигур национальной литературы XIX-XX веков и одна из первых защитниц прав женщин в Боливии.",
       works: [
         "Нити жизни",
         "Интимные страницы",
@@ -123,7 +123,7 @@ export const bolivia: Country = {
         {
       id: "gabriel_rene_moreno",
       name: "Габриэль Рене Морено",
-      years: "1836–1908",
+      years: "1836-1908",
       birthDate: "1836-11-07",
       deathDate: "1908-04-28",
       birthPlace: "Санта-Крус-де-ла-Сьерра, Боливия",
@@ -162,7 +162,7 @@ export const bolivia: Country = {
     {
       id: "alcides_arguedas",
       name: "Альсидес Аргедас",
-      years: "1879–1946",
+      years: "1879-1946",
       birthDate: "1879-07-15",
       deathDate: "1946-05-06",
       birthPlace: "Ла-Пас, Боливия",
@@ -201,7 +201,7 @@ export const bolivia: Country = {
     {
       id: "jesus_lara",
       name: "Хесус Лара",
-      years: "1898–1980",
+      years: "1898-1980",
       birthDate: "1898-01-01",
       deathDate: "1980-09-06",
       birthPlace: "Кочабамба, Боливия",
@@ -239,7 +239,7 @@ export const bolivia: Country = {
         {
       id: "francisco_javier_del_granado",
       name: "Франсиско Хавьер дель Гранадо",
-      years: "1913–1996",
+      years: "1913-1996",
       birthDate: "1913-02-27",
       deathDate: "1996-05-15",
       birthPlace: "Кочабамба, Боливия",
@@ -279,7 +279,7 @@ export const bolivia: Country = {
     {
       id: "oscar_cerruto",
       name: "Оскар Серруто",
-      years: "1912–1981",
+      years: "1912-1981",
       birthDate: "1912-06-13",
       deathDate: "1981-04-10",
       birthPlace: "Ла-Пас, Боливия",
@@ -317,7 +317,7 @@ export const bolivia: Country = {
     {
       id: "jaime_saenz",
       name: "Хайме Саэнс",
-      years: "1921–1986",
+      years: "1921-1986",
       birthDate: "1921-10-08",
       deathDate: "1986-08-16",
       birthPlace: "Ла-Пас, Боливия",
@@ -357,7 +357,7 @@ export const bolivia: Country = {
         {
       id: "marcelo_quiroga_santa_cruz",
       name: "Марсело Кирога Санта-Крус",
-      years: "1931–1980",
+      years: "1931-1980",
       birthDate: "1931-03-13",
       deathDate: "1980-07-17",
       birthPlace: "Кочабамба, Боливия",
@@ -395,7 +395,7 @@ export const bolivia: Country = {
     {
       id: "hilda_mundy",
       name: "Хильда Мунди",
-      years: "1912–1982",
+      years: "1912-1982",
       birthDate: "1912-02-13",
       deathDate: "1982-01-28",
       birthPlace: "Оруро, Боливия",
@@ -434,7 +434,7 @@ export const bolivia: Country = {
       id: "vilma_tapia_anda",
       name: "Вильма Тапиа Анайя",
       fullName: "Vilma Tapia Anaya",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960",
       birthPlace: "Ла-Пас, Боливия",
       coordinates: {
@@ -469,7 +469,7 @@ export const bolivia: Country = {
     {
       id: "edmundo_paz_soldan",
       name: "Эдмундо Пас Солдан",
-      years: "1967–",
+      years: "1967-",
       birthDate: "1967-03-29",
       birthPlace: "Кочабамба, Боливия",
       coordinates: {
@@ -508,7 +508,7 @@ export const bolivia: Country = {
         {
       id: "augusto_cespedes",
       name: "Аугусто Сеспедес",
-      years: "1904–1997",
+      years: "1904-1997",
       birthDate: "1904-02-06",
       deathDate: "1997-05-11",
       birthPlace: "Кочабамба, Боливия",
@@ -547,7 +547,7 @@ export const bolivia: Country = {
     {
       id: "gaston_suarez",
       name: "Гастон Суарес",
-      years: "1929–1984",
+      years: "1929-1984",
       birthDate: "1929-01-27",
       deathDate: "1984-11-06",
       birthPlace: "Туписа, Боливия",
@@ -584,7 +584,7 @@ export const bolivia: Country = {
     {
       id: "yolanda_bedregal",
       name: "Йоланда Бедрегаль",
-      years: "1913–1999",
+      years: "1913-1999",
       birthDate: "1913-09-21",
       deathDate: "1999-05-21",
       birthPlace: "Ла-Пас, Боливия",

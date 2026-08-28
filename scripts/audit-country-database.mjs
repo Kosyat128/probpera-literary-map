@@ -62,7 +62,7 @@ for (const country of countries) {
   }
   ids.add(country.id);
   if (!/^[a-z]{2}$/u.test(code) || codes.has(code)) {
-    criticalIssues.push(`${country.id}: некорректный или повторяющийся код ${code || "—"}`);
+    criticalIssues.push(`${country.id}: некорректный или повторяющийся код ${code || "-"}`);
   }
   codes.add(code);
 
@@ -117,7 +117,7 @@ for (const { country, writer } of writerRecords) {
     ? `qid:${writer.wikidataId}`
     : `person:${normalized(writer.fullName || writer.name)}:${String(
         writer.birthDate || writer.birth || writer.years || ""
-      ).match(/\d{3,4}/u)?.[0] || "—"}`;
+      ).match(/\d{3,4}/u)?.[0] || "-"}`;
   const localKey = `${country.id}:${key}`;
   if (writerKeys.has(localKey)) duplicateWriterLinks.push(localKey);
   writerKeys.add(localKey);
@@ -181,7 +181,7 @@ await writeFile(
     "",
     `Сформирован: ${report.generatedAt}`,
     "",
-    "> Карточки стран и территорий — объекты литературного атласа. Структурная корректность не означает редакционную проверку всех фактов.",
+    "> Карточки стран и территорий - объекты литературного атласа. Структурная корректность не означает редакционную проверку всех фактов.",
     "",
     `- Карточек: ${summary.countryCards}; уникальных кодов: ${summary.uniqueCountryCodes}`,
     `- С писателями: ${summary.cardsWithWriters}/${summary.countryCards}`,

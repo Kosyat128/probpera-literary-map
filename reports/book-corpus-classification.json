@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-11T00:00:00.000Z",
-  "datasetFingerprint": "ce44d7c43e1d5cb7e5637f9242d19847695a123868fdf0cc600b719323890d09",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "datasetFingerprint": "9a5bf4627dfb6c23e6174611ece32bcf0480ad9b5f91ceb7713e0f1ed9b2e8a9",
   "summary": {
     "archiveRecords": 10015,
     "archiveDraftCards": 9739,
@@ -1703,31 +1703,31 @@
       "members": [
         {
           "recordKey": "argentina:jorge_luis_borges:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хорхе Луис Борхес",
           "country": "Аргентина"
         },
         {
           "recordKey": "mexico:juan_rulfo:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Рульфо",
           "country": "Мексика"
         },
         {
           "recordKey": "spain:camilo_jose_cela:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Камило Хосе Села",
           "country": "Испания"
         },
         {
           "recordKey": "uruguay:juan_carlos_onetti:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Карлос Онетти",
           "country": "Уругвай"
         },
         {
           "recordKey": "uruguay:mario_benedetti:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Марио Бенедетти",
           "country": "Уругвай"
         }
@@ -5918,35 +5918,35 @@
       "members": [
         {
           "recordKey": "argentina:jorge_luis_borges:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хорхе Луис Борхес",
           "country": "Аргентина",
           "automaticReject": false
         },
         {
           "recordKey": "mexico:juan_rulfo:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Рульфо",
           "country": "Мексика",
           "automaticReject": false
         },
         {
           "recordKey": "spain:camilo_jose_cela:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Камило Хосе Села",
           "country": "Испания",
           "automaticReject": false
         },
         {
           "recordKey": "uruguay:juan_carlos_onetti:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Хуан Карлос Онетти",
           "country": "Уругвай",
           "automaticReject": false
         },
         {
           "recordKey": "uruguay:mario_benedetti:openlibrary-works-ol264135w",
-          "title": "Spanish Short Stories 1 — Cuentos hispánicos 1",
+          "title": "Spanish Short Stories 1 - Cuentos hispánicos 1",
           "writer": "Марио Бенедетти",
           "country": "Уругвай",
           "automaticReject": false

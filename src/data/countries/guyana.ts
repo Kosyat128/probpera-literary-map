@@ -8,7 +8,7 @@ export const guyana: Country = {
     {
       id: "edgar_mittelholzer",
       name: "Эдгар Миттельхольцер",
-      years: "1909–1965",
+      years: "1909-1965",
       birthDate: "1909-12-16",
       deathDate: "1965-05-05",
       birthPlace: "Нью-Амстердам, Британская Гвиана",
@@ -47,7 +47,7 @@ export const guyana: Country = {
     {
       id: "wilson_harris",
       name: "Уилсон Харрис",
-      years: "1921–2018",
+      years: "1921-2018",
       birthDate: "1921-03-24",
       deathDate: "2018-03-08",
       birthPlace: "Нью-Амстердам, Британская Гвиана",
@@ -85,7 +85,7 @@ export const guyana: Country = {
         {
       id: "martin_carter",
       name: "Мартин Картер",
-      years: "1927–1997",
+      years: "1927-1997",
       birthDate: "1927-06-07",
       deathDate: "1997-12-13",
       birthPlace: "Джорджтаун, Британская Гвиана",
@@ -124,7 +124,7 @@ export const guyana: Country = {
     {
       id: "cyril_dabydeen",
       name: "Сирил Дабидин",
-      years: "1945–",
+      years: "1945-",
       birthDate: "1945-09-05",
       birthPlace: "Бербис, Британская Гвиана",
       coordinates: {
@@ -161,7 +161,7 @@ export const guyana: Country = {
         {
       id: "roshni_kempadoo",
       name: "Рошини Кемпадоо",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-01-01",
       birthPlace: "Лондон, Великобритания",
       coordinates: {

@@ -1,7 +1,7 @@
 export const fitzProfile = {
  id:"fitz",
  fullName:"Ференц Мольнар",
- years:"1878–1952",
+ years:"1878-1952",
  country:"Венгрия",
  birthPlace:"Будапешт, Венгрия",
  movement:"Реализм",

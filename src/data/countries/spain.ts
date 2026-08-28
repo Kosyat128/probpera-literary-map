@@ -9,7 +9,7 @@ export const spain: Country = {
       id: "jose_echegaray",
       name: "Хосе Эчегарай-и-Эйсагирре",
       fullName: "José Echegaray y Eizaguirre",
-      years: "1832–1916",
+      years: "1832-1916",
       nobelYear: 1904,
       birthDate: "1832-04-19",
       deathDate: "1916-09-14",
@@ -41,7 +41,7 @@ export const spain: Country = {
       id: "jacinto_benavente",
       name: "Хасинто Бенавенте-и-Мартинес",
       fullName: "Jacinto Benavente y Martínez",
-      years: "1866–1954",
+      years: "1866-1954",
       nobelYear: 1922,
       birthDate: "1866-08-12",
       deathDate: "1954-07-14",
@@ -72,7 +72,7 @@ export const spain: Country = {
     {
       id: "juan_ruiz",
       name: "Хуан Руис",
-      years: "ок. 1283–ок. 1350",
+      years: "ок. 1283-ок. 1350",
       birthDate: "ок. 1283",
       deathDate: "ок. 1350",
       birthPlace: "Алкала-де-Энарес или окрестности, Кастилия",
@@ -104,7 +104,7 @@ export const spain: Country = {
     {
       id: "alfonso_x_el_sabio",
       name: "Альфонсо X Мудрый",
-      years: "1221–1284",
+      years: "1221-1284",
       birthDate: "1221-11-23",
       deathDate: "1284-04-04",
       birthPlace: "Толедо, Кастилия",
@@ -138,7 +138,7 @@ export const spain: Country = {
     {
       id: "jorge_manrique",
       name: "Хорхе Манрике",
-      years: "ок. 1440–1479",
+      years: "ок. 1440-1479",
       birthDate: "ок. 1440",
       deathDate: "1479-04-24",
       birthPlace: "Паредес-де-Нава, Кастилия",
@@ -169,7 +169,7 @@ export const spain: Country = {
     {
       id: "miguel_de_cervantes",
       name: "Мигель де Сервантес",
-      years: "1547–1616",
+      years: "1547-1616",
       birthDate: "1547-09-29",
       deathDate: "1616-04-22",
       birthPlace: "Алькала-де-Энарес, Испания",
@@ -206,7 +206,7 @@ export const spain: Country = {
     {
       id: "garcilaso_de_la_vega",
       name: "Гарсиласо де ла Вега",
-      years: "1501–1536",
+      years: "1501-1536",
       birthDate: "1501",
       deathDate: "1536-10-14",
       birthPlace: "Толедо, Испания",
@@ -242,7 +242,7 @@ export const spain: Country = {
     {
       id: "teresa_de_avila",
       name: "Тереса Авильская",
-      years: "1515–1582",
+      years: "1515-1582",
       birthDate: "1515-03-28",
       deathDate: "1582-10-04",
       birthPlace: "Авила, Испания",
@@ -278,7 +278,7 @@ export const spain: Country = {
         {
       id: "juan_de_la_cruz",
       name: "Хуан де ла Крус",
-      years: "1542–1591",
+      years: "1542-1591",
       birthDate: "1542-06-24",
       deathDate: "1591-12-14",
       birthPlace: "Фонтиверос, Испания",
@@ -313,7 +313,7 @@ export const spain: Country = {
     {
       id: "lope_de_vega",
       name: "Лопе де Вега",
-      years: "1562–1635",
+      years: "1562-1635",
       birthDate: "1562-11-25",
       deathDate: "1635-08-27",
       birthPlace: "Мадрид, Испания",
@@ -351,7 +351,7 @@ export const spain: Country = {
     {
       id: "calderon_de_la_barca",
       name: "Педро Кальдерон де ла Барка",
-      years: "1600–1681",
+      years: "1600-1681",
       birthDate: "1600-01-17",
       deathDate: "1681-05-25",
       birthPlace: "Мадрид, Испания",
@@ -388,7 +388,7 @@ export const spain: Country = {
     {
       id: "luis_de_gongora",
       name: "Луис де Гонгора",
-      years: "1561–1627",
+      years: "1561-1627",
       birthDate: "1561-07-11",
       deathDate: "1627-05-23",
       birthPlace: "Кордова, Испания",
@@ -423,7 +423,7 @@ export const spain: Country = {
     {
       id: "francisco_de_quevedo",
       name: "Франсиско де Кеведо",
-      years: "1580–1645",
+      years: "1580-1645",
       birthDate: "1580-09-14",
       deathDate: "1645-09-08",
       birthPlace: "Мадрид, Испания",
@@ -459,7 +459,7 @@ export const spain: Country = {
     {
       id: "benito_jeronimo_feijoo",
       name: "Бенито Херонимо Фейхоо",
-      years: "1676–1764",
+      years: "1676-1764",
       birthDate: "1676-10-08",
       deathDate: "1764-09-26",
       birthPlace: "Касдемиро, Испания",
@@ -491,7 +491,7 @@ export const spain: Country = {
         {
       id: "jose_de_espronceda",
       name: "Хосе де Эспронседа",
-      years: "1808–1842",
+      years: "1808-1842",
       birthDate: "1808-03-25",
       deathDate: "1842-05-23",
       birthPlace: "Альмендралехо, Испания",
@@ -524,7 +524,7 @@ export const spain: Country = {
     {
       id: "gustavo_adolfo_becquer",
       name: "Густаво Адольфо Беккер",
-      years: "1836–1870",
+      years: "1836-1870",
       birthDate: "1836-02-17",
       deathDate: "1870-12-22",
       birthPlace: "Севилья, Испания",
@@ -556,7 +556,7 @@ export const spain: Country = {
     {
       id: "mariano_jose_de_larra",
       name: "Мариано Хосе де Ларра",
-      years: "1809–1837",
+      years: "1809-1837",
       birthDate: "1809-03-24",
       deathDate: "1837-02-13",
       birthPlace: "Мадрид, Испания",
@@ -589,7 +589,7 @@ export const spain: Country = {
     {
       id: "benito_perez_galdos",
       name: "Бенито Перес Гальдос",
-      years: "1843–1920",
+      years: "1843-1920",
       birthDate: "1843-05-10",
       deathDate: "1920-01-04",
       birthPlace: "Лас-Пальмас-де-Гран-Канария, Испания",
@@ -622,7 +622,7 @@ export const spain: Country = {
     {
       id: "leopoldo_alas_clarin",
       name: "Леопольдо Алас «Кларин»",
-      years: "1852–1901",
+      years: "1852-1901",
       birthDate: "1852-04-25",
       deathDate: "1901-06-13",
       birthPlace: "Самора, Испания",
@@ -657,7 +657,7 @@ export const spain: Country = {
     {
       id: "emilia_pardo_bazan",
       name: "Эмилия Пардо Басан",
-      years: "1851–1921",
+      years: "1851-1921",
       birthDate: "1851-09-16",
       deathDate: "1921-05-12",
       birthPlace: "Ла-Корунья, Испания",
@@ -693,7 +693,7 @@ export const spain: Country = {
         {
       id: "miguel_de_unamuno",
       name: "Мигель де Унамуно",
-      years: "1864–1936",
+      years: "1864-1936",
       birthDate: "1864-09-29",
       deathDate: "1936-12-31",
       birthPlace: "Бильбао, Испания",
@@ -729,7 +729,7 @@ export const spain: Country = {
     {
       id: "antonio_machado",
       name: "Антонио Мачадо",
-      years: "1875–1939",
+      years: "1875-1939",
       birthDate: "1875-07-26",
       deathDate: "1939-02-22",
       birthPlace: "Севилья, Испания",
@@ -764,7 +764,7 @@ export const spain: Country = {
     {
       id: "pío_baroja",
       name: "Пио Бароха",
-      years: "1872–1956",
+      years: "1872-1956",
       birthDate: "1872-12-28",
       deathDate: "1956-10-30",
       birthPlace: "Сан-Себастьян, Испания",
@@ -799,7 +799,7 @@ export const spain: Country = {
     {
       id: "ramon_del_valle_inclan",
       name: "Рамон Мария дель Валье-Инклан",
-      years: "1866–1936",
+      years: "1866-1936",
       birthDate: "1866-10-28",
       deathDate: "1936-01-05",
       birthPlace: "Вильянуэва-де-Ароса, Испания",
@@ -833,7 +833,7 @@ export const spain: Country = {
     {
       id: "jose_ortega_y_gasset",
       name: "Хосе Ортега-и-Гассет",
-      years: "1883–1955",
+      years: "1883-1955",
       birthDate: "1883-05-09",
       deathDate: "1955-10-18",
       birthPlace: "Мадрид, Испания",
@@ -868,7 +868,7 @@ export const spain: Country = {
     {
       id: "federico_garcia_lorca",
       name: "Федерико Гарсиа Лорка",
-      years: "1898–1936",
+      years: "1898-1936",
       birthDate: "1898-06-05",
       deathDate: "1936-08-19",
       birthPlace: "Фуэнте-Вакерос, Испания",
@@ -905,7 +905,7 @@ export const spain: Country = {
         {
       id: "rafael_alberti",
       name: "Рафаэль Альберти",
-      years: "1902–1999",
+      years: "1902-1999",
       birthDate: "1902-12-16",
       deathDate: "1999-10-28",
       birthPlace: "Эль-Пуэрто-де-Санта-Мария, Испания",
@@ -942,7 +942,7 @@ export const spain: Country = {
     {
       id: "juan_ramon_jimenez",
       name: "Хуан Рамон Хименес",
-      years: "1881–1958",
+      years: "1881-1958",
       birthDate: "1881-12-23",
       deathDate: "1958-05-29",
       birthPlace: "Могер, Испания",
@@ -979,7 +979,7 @@ export const spain: Country = {
     {
       id: "vicente_aleixandre",
       name: "Висенте Алейксандре",
-      years: "1898–1984",
+      years: "1898-1984",
       birthDate: "1898-04-26",
       deathDate: "1984-12-14",
       birthPlace: "Севилья, Испания",
@@ -1016,7 +1016,7 @@ export const spain: Country = {
     {
       id: "camilo_jose_cela",
       name: "Камило Хосе Села",
-      years: "1916–2002",
+      years: "1916-2002",
       birthDate: "1916-05-11",
       deathDate: "2002-01-17",
       birthPlace: "Ирия-Флавия, Испания",
@@ -1052,7 +1052,7 @@ export const spain: Country = {
     {
       id: "carmen_laforet",
       name: "Кармен Лафорет",
-      years: "1921–2004",
+      years: "1921-2004",
       birthDate: "1921-09-06",
       deathDate: "2004-02-28",
       birthPlace: "Барселона, Испания",
@@ -1086,7 +1086,7 @@ export const spain: Country = {
     {
       id: "miguel_delibes",
       name: "Мигель Делибес",
-      years: "1920–2010",
+      years: "1920-2010",
       birthDate: "1920-10-17",
       deathDate: "2010-03-12",
       birthPlace: "Вальядолид, Испания",
@@ -1121,7 +1121,7 @@ export const spain: Country = {
     {
       id: "juan_marse",
       name: "Хуан Марсе",
-      years: "1933–2020",
+      years: "1933-2020",
       birthDate: "1933-01-08",
       deathDate: "2020-07-18",
       birthPlace: "Барселона, Испания",
@@ -1155,7 +1155,7 @@ export const spain: Country = {
     {
       id: "arturo_perez_reverte",
       name: "Артуро Перес-Реверте",
-      years: "1951–",
+      years: "1951-",
       birthDate: "1951-11-25",
       birthPlace: "Картахена, Испания",
       coordinates: {
@@ -1185,7 +1185,7 @@ export const spain: Country = {
     {
       id: "javier_marias",
       name: "Хавьер Мариас",
-      years: "1951–2022",
+      years: "1951-2022",
       birthDate: "1951-09-20",
       deathDate: "2022-09-11",
       birthPlace: "Мадрид, Испания",
@@ -1218,7 +1218,7 @@ export const spain: Country = {
     {
       id: "carlos_ruiz_zafon",
       name: "Карлос Руис Сафон",
-      years: "1964–2020",
+      years: "1964-2020",
       birthDate: "1964-09-25",
       deathDate: "2020-06-19",
       birthPlace: "Барселона, Испания",

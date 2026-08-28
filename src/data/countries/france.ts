@@ -9,7 +9,7 @@ export const france: Country = {
       id: "sully_prudhomme",
       name: "Рене Франсуа Арман Сюлли-Прюдом",
       fullName: "René François Armand Sully Prudhomme",
-      years: "1839–1907",
+      years: "1839-1907",
       nobelYear: 1901,
       birthDate: "1839-03-16",
       deathDate: "1907-09-06",
@@ -41,7 +41,7 @@ export const france: Country = {
       id: "frederic_mistral",
       name: "Фредерик Мистраль",
       fullName: "Frédéric Mistral",
-      years: "1830–1914",
+      years: "1830-1914",
       nobelYear: 1904,
       birthDate: "1830-09-08",
       deathDate: "1914-03-25",
@@ -73,7 +73,7 @@ export const france: Country = {
       id: "romain_rolland",
       name: "Ромен Роллан",
       fullName: "Romain Rolland",
-      years: "1866–1944",
+      years: "1866-1944",
       nobelYear: 1915,
       birthDate: "1866-01-29",
       deathDate: "1944-12-30",
@@ -104,7 +104,7 @@ export const france: Country = {
     {
       id: "chretien_de_troyes",
       name: "Кретьен де Труа",
-      years: "ок. 1135–ок. 1185",
+      years: "ок. 1135-ок. 1185",
       birthDate: "ок. 1135",
       deathDate: "ок. 1185",
       birthPlace: "Труа, Франция",
@@ -171,7 +171,7 @@ export const france: Country = {
     {
       id: "francois_villon",
       name: "Франсуа Вийон",
-      years: "1431–после 1463",
+      years: "1431-после 1463",
       birthDate: "1431",
       deathDate: "после 1463",
       birthPlace: "Париж, Франция",
@@ -204,7 +204,7 @@ export const france: Country = {
     {
       id: "francois_rabelais",
       name: "Франсуа Рабле",
-      years: "ок. 1494–1553",
+      years: "ок. 1494-1553",
       birthDate: "ок. 1494",
       deathDate: "1553",
       birthPlace: "Шинон, Франция",
@@ -236,7 +236,7 @@ export const france: Country = {
     {
       id: "montaigne",
       name: "Мишель де Монтень",
-      years: "1533–1592",
+      years: "1533-1592",
       birthDate: "1533-02-28",
       deathDate: "1592-09-13",
       birthPlace: "Сен-Мишель-де-Монтень, Франция",
@@ -267,7 +267,7 @@ export const france: Country = {
     {
       id: "ronsard",
       name: "Пьер де Ронсар",
-      years: "1524–1585",
+      years: "1524-1585",
       birthDate: "1524-09-11",
       deathDate: "1585-12-27",
       birthPlace: "Ла-Пуассоньер, Франция",
@@ -299,7 +299,7 @@ export const france: Country = {
   {
       id: "joachim_du_bellay",
       name: "Жоашен дю Белле",
-      years: "1522–1560",
+      years: "1522-1560",
       birthDate: "1522",
       deathDate: "1560-01-01",
       birthPlace: "Лире, Франция",
@@ -333,7 +333,7 @@ export const france: Country = {
     {
       id: "corneille",
       name: "Пьер Корнель",
-      years: "1606–1684",
+      years: "1606-1684",
       birthDate: "1606-06-06",
       deathDate: "1684-10-01",
       birthPlace: "Руан, Франция",
@@ -366,7 +366,7 @@ export const france: Country = {
     {
       id: "racine",
       name: "Жан Расин",
-      years: "1639–1699",
+      years: "1639-1699",
       birthDate: "1639-12-22",
       deathDate: "1699-04-21",
       birthPlace: "Ла-Ферте-Милон, Франция",
@@ -399,7 +399,7 @@ export const france: Country = {
     {
       id: "moliere",
       name: "Жан-Батист Мольер",
-      years: "1622–1673",
+      years: "1622-1673",
       birthDate: "1622-01-15",
       deathDate: "1673-02-17",
       birthPlace: "Париж, Франция",
@@ -434,7 +434,7 @@ export const france: Country = {
     {
       id: "lafontaine",
       name: "Жан де Лафонтен",
-      years: "1621–1695",
+      years: "1621-1695",
       birthDate: "1621-07-08",
       deathDate: "1695-04-13",
       birthPlace: "Шато-Тьерри, Франция",
@@ -465,7 +465,7 @@ export const france: Country = {
     {
       id: "boileau",
       name: "Никола Буало",
-      years: "1636–1711",
+      years: "1636-1711",
       birthDate: "1636-11-01",
       deathDate: "1711-03-13",
       birthPlace: "Париж, Франция",
@@ -500,7 +500,7 @@ export const france: Country = {
     {
       id: "voltaire",
       name: "Вольтер",
-      years: "1694–1778",
+      years: "1694-1778",
       birthDate: "1694-11-21",
       deathDate: "1778-05-30",
       birthPlace: "Париж, Франция",
@@ -534,7 +534,7 @@ export const france: Country = {
     {
       id: "rousseau",
       name: "Жан-Жак Руссо",
-      years: "1712–1778",
+      years: "1712-1778",
       birthDate: "1712-06-28",
       deathDate: "1778-07-02",
       birthPlace: "Женева",
@@ -568,7 +568,7 @@ export const france: Country = {
     {
       id: "diderot",
       name: "Дени Дидро",
-      years: "1713–1784",
+      years: "1713-1784",
       birthDate: "1713-10-05",
       deathDate: "1784-07-31",
       birthPlace: "Лангр, Франция",
@@ -605,7 +605,7 @@ export const france: Country = {
     {
       id: "montesquieu",
       name: "Шарль Луи де Монтескьё",
-      years: "1689–1755",
+      years: "1689-1755",
       birthDate: "1689-01-18",
       deathDate: "1755-02-10",
       birthPlace: "Ла-Бред, Франция",
@@ -640,7 +640,7 @@ export const france: Country = {
     {
       id: "beaumarchais",
       name: "Пьер Огюстен Карон де Бомарше",
-      years: "1732–1799",
+      years: "1732-1799",
       birthDate: "1732-01-24",
       deathDate: "1799-05-18",
       birthPlace: "Париж, Франция",
@@ -672,7 +672,7 @@ export const france: Country = {
     {
       id: "chateaubriand",
       name: "Франсуа-Рене де Шатобриан",
-      years: "1768–1848",
+      years: "1768-1848",
       birthDate: "1768-09-04",
       deathDate: "1848-07-04",
       birthPlace: "Сен-Мало, Франция",
@@ -705,7 +705,7 @@ export const france: Country = {
     {
       id: "stendhal",
       name: "Стендаль (Анри Мари Бейль)",
-      years: "1783–1842",
+      years: "1783-1842",
       birthDate: "1783-01-23",
       deathDate: "1842-03-23",
       birthPlace: "Гренобль, Франция",
@@ -757,7 +757,7 @@ export const france: Country = {
     {
       id: "balzac",
       name: "Оноре де Бальзак",
-      years: "1799–1850",
+      years: "1799-1850",
       birthDate: "1799-05-20",
       deathDate: "1850-08-18",
       birthPlace: "Тур, Франция",
@@ -792,7 +792,7 @@ export const france: Country = {
     {
       id: "victor_hugo",
       name: "Виктор Гюго",
-      years: "1802–1885",
+      years: "1802-1885",
       birthDate: "1802-02-26",
       deathDate: "1885-05-22",
       birthPlace: "Безансон, Франция",
@@ -873,7 +873,7 @@ export const france: Country = {
     {
       id: "alexandre_dumas",
       name: "Александр Дюма (отец)",
-      years: "1802–1870",
+      years: "1802-1870",
       birthDate: "1802-07-24",
       deathDate: "1870-12-05",
       birthPlace: "Вилле-Котре, Франция",
@@ -942,7 +942,7 @@ export const france: Country = {
     {
       id: "prosper_merimee",
       name: "Проспер Мериме",
-      years: "1803–1870",
+      years: "1803-1870",
       birthDate: "1803-09-28",
       deathDate: "1870-09-23",
       birthPlace: "Париж, Франция",
@@ -976,7 +976,7 @@ export const france: Country = {
     {
       id: "george_sand",
       name: "Жорж Санд (Амандин Аврора Дюпен)",
-      years: "1804–1876",
+      years: "1804-1876",
       birthDate: "1804-07-01",
       deathDate: "1876-06-08",
       birthPlace: "Париж, Франция",
@@ -1011,7 +1011,7 @@ export const france: Country = {
     {
       id: "flaubert",
       name: "Гюстав Флобер",
-      years: "1821–1880",
+      years: "1821-1880",
       birthDate: "1821-12-12",
       deathDate: "1880-05-08",
       birthPlace: "Руан, Франция",
@@ -1067,7 +1067,7 @@ export const france: Country = {
     {
       id: "emile_zola",
       name: "Эмиль Золя",
-      years: "1840–1902",
+      years: "1840-1902",
       birthDate: "1840-04-02",
       deathDate: "1902-09-29",
       birthPlace: "Париж, Франция",
@@ -1122,7 +1122,7 @@ export const france: Country = {
     {
       id: "maupassant",
       name: "Ги де Мопассан",
-      years: "1850–1893",
+      years: "1850-1893",
       birthDate: "1850-08-05",
       deathDate: "1893-07-06",
       birthPlace: "Миромениль, Франция",
@@ -1157,7 +1157,7 @@ export const france: Country = {
     {
       id: "jules_verne",
       name: "Жюль Верн",
-      years: "1828–1905",
+      years: "1828-1905",
       birthDate: "1828-02-08",
       deathDate: "1905-03-24",
       birthPlace: "Нант, Франция",
@@ -1212,7 +1212,7 @@ export const france: Country = {
       id: "anatole_france",
       nobelYear: 1921,
       name: "Анатоль Франс",
-      years: "1844–1924",
+      years: "1844-1924",
       birthDate: "1844-04-16",
       deathDate: "1924-10-12",
       birthPlace: "Париж, Франция",
@@ -1248,7 +1248,7 @@ export const france: Country = {
     {
       id: "marcel_proust",
       name: "Марсель Пруст",
-      years: "1871–1922",
+      years: "1871-1922",
       birthDate: "1871-07-10",
       deathDate: "1922-11-18",
       birthPlace: "Отёй, Франция",
@@ -1279,7 +1279,7 @@ export const france: Country = {
     {
       id: "andre_gide",
       name: "Андре Жид",
-      years: "1869–1951",
+      years: "1869-1951",
       birthDate: "1869-11-22",
       deathDate: "1951-02-19",
       birthPlace: "Париж, Франция",
@@ -1317,7 +1317,7 @@ export const france: Country = {
     {
       id: "saint_exupery",
       name: "Антуан де Сент-Экзюпери",
-      years: "1900–1944",
+      years: "1900-1944",
       birthDate: "1900-06-29",
       deathDate: "1944-07-31",
       birthPlace: "Лион, Франция",
@@ -1371,7 +1371,7 @@ export const france: Country = {
     {
       id: "albert_camus",
       name: "Альбер Камю",
-      years: "1913–1960",
+      years: "1913-1960",
       birthDate: "1913-11-07",
       deathDate: "1960-01-04",
       birthPlace: "Мондови, Французский Алжир",
@@ -1457,7 +1457,7 @@ export const france: Country = {
     {
       id: "jean_paul_sartre",
       name: "Жан-Поль Сартр",
-      years: "1905–1980",
+      years: "1905-1980",
       birthDate: "1905-06-21",
       deathDate: "1980-04-15",
       birthPlace: "Париж, Франция",
@@ -1495,7 +1495,7 @@ export const france: Country = {
     {
       id: "simone_de_beauvoir",
       name: "Симона де Бовуар",
-      years: "1908–1986",
+      years: "1908-1986",
       birthDate: "1908-01-09",
       deathDate: "1986-04-14",
       birthPlace: "Париж, Франция",
@@ -1531,7 +1531,7 @@ export const france: Country = {
     {
       id: "claude_simon",
       name: "Клод Симон",
-      years: "1913–2005",
+      years: "1913-2005",
       birthDate: "1913-10-10",
       deathDate: "2005-07-06",
       birthPlace: "Тананариве, Мадагаскар",
@@ -1565,7 +1565,7 @@ export const france: Country = {
     {
       id: "patrick_modiano",
       name: "Патрик Модиано",
-      years: "1945–",
+      years: "1945-",
       birthDate: "1945-07-30",
       birthPlace: "Булонь-Бийанкур, Франция",
       coordinates: {
@@ -1597,7 +1597,7 @@ export const france: Country = {
     {
       id: "annie_ernaux",
       name: "Анни Эрно",
-      years: "1940–",
+      years: "1940-",
       birthDate: "1940-09-01",
       birthPlace: "Лиллебонн, Франция",
       coordinates: {
@@ -1630,7 +1630,7 @@ export const france: Country = {
     {
       id: "michel_houellebecq",
       name: "Мишель Уэльбек",
-      years: "1956–",
+      years: "1956-",
       birthDate: "1956-02-26",
       birthPlace: "Реюньон, Франция",
       coordinates: {

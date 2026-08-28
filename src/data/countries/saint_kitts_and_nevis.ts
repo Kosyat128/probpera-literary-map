@@ -8,7 +8,7 @@ export const saintKittsAndNevis: Country = {
     {
       id: "caryl_phillips",
       name: "Кэрил Филлипс",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-03-13",
       birthPlace: "Сент-Китс",
       coordinates: {

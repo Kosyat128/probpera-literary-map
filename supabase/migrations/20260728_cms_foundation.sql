@@ -77,7 +77,7 @@ as $$
   select public.is_staff();
 $$;
 
--- Профиль можно редактировать самостоятельно, но роль сообщества — только
+-- Профиль можно редактировать самостоятельно, но роль сообщества - только
 -- через доверенный серверный контур. Одной RLS для защиты отдельного столбца
 -- недостаточно, поэтому права выдаются только на безопасные поля.
 revoke update on public.profiles from authenticated;
@@ -684,7 +684,7 @@ with check (
   and created_by = (select auth.uid())
 );
 
--- Публичная корзина Storage: читать можно всем, изменять — только редакции.
+-- Публичная корзина Storage: читать можно всем, изменять - только редакции.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
   'editorial-media',

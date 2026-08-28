@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T14:22:04.359Z",
+  "generatedAt": "2026-08-26T14:20:20.998Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -12,17 +12,17 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1684,
-    "uniqueWriters": 1671,
-    "workRecords": 3592,
-    "uniqueWorks": 3574,
+    "writerRecords": 1678,
+    "uniqueWriters": 1665,
+    "workRecords": 3666,
+    "uniqueWorks": 3648,
     "verifiedWriters": 49,
     "sourcedWriters": 129,
-    "expandedBiographies": 43,
+    "expandedBiographies": 63,
     "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1639,
+    "russianBiographiesWithheld": 1633,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1664,
+    "englishBiographiesWithheld": 1658,
     "portraitedWriters": 1058,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
@@ -2303,7 +2303,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 6
+      "writers": 5
     },
     {
       "id": "pakistan",
@@ -2371,11 +2371,11 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 3
     },
     {
       "id": "papua_new_guinea",
-      "name": "Папуа — Новая Гвинея",
+      "name": "Папуа - Новая Гвинея",
       "missing": [
         "столица",
         "описание",
@@ -2388,7 +2388,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "paraguay",
@@ -2473,7 +2473,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 22
+      "writers": 21
     },
     {
       "id": "puerto_rico",
@@ -2507,7 +2507,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 4
+      "writers": 2
     },
     {
       "id": "republic_of_congo",

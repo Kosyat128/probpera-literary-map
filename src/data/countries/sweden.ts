@@ -10,7 +10,7 @@ export const sweden: Country = {
       id: "verner_von_heidenstam",
       name: "Карл Густав Вернер фон Хейденстам",
       fullName: "Carl Gustaf Verner von Heidenstam",
-      years: "1859–1940",
+      years: "1859-1940",
       nobelYear: 1916,
       birthDate: "1859-07-06",
       deathDate: "1940-05-20",
@@ -42,7 +42,7 @@ export const sweden: Country = {
       id: "carl_michael_bellman",
       name: "Карл Михаэль Бельман",
       fullName: "Carl Michael Bellman",
-      years: "1740–1795",
+      years: "1740-1795",
 
       birthDate: "1740-02-04",
       deathDate: "1795-02-11",
@@ -89,7 +89,7 @@ export const sweden: Country = {
       name: "Эсайас Тегнер",
       fullName: "Esaias Tegnér",
 
-      years: "1782–1846",
+      years: "1782-1846",
 
       birthDate: "1782-11-13",
       deathDate: "1846-11-02",
@@ -135,7 +135,7 @@ export const sweden: Country = {
       name: "Август Стриндберг",
       fullName: "August Strindberg",
 
-      years: "1849–1912",
+      years: "1849-1912",
 
       birthDate: "1849-01-22",
       deathDate: "1912-05-14",
@@ -184,7 +184,7 @@ export const sweden: Country = {
       name: "Сельма Лагерлёф",
       fullName: "Selma Lagerlöf",
 
-      years: "1858–1940",
+      years: "1858-1940",
 
       birthDate: "1858-11-20",
       deathDate: "1940-03-16",
@@ -198,7 +198,7 @@ export const sweden: Country = {
 
       portrait: "",
 
-      bio: "Шведская писательница, первая женщина — лауреат Нобелевской премии по литературе.",
+      bio: "Шведская писательница, первая женщина - лауреат Нобелевской премии по литературе.",
 
       works: [
         "Сага о Йёсте Берлинге",
@@ -234,7 +234,7 @@ export const sweden: Country = {
       name: "Хьялмар Сёдерберг",
       fullName: "Hjalmar Söderberg",
 
-      years: "1869–1941",
+      years: "1869-1941",
 
       birthDate: "1869-07-02",
       deathDate: "1941-10-14",
@@ -248,7 +248,7 @@ export const sweden: Country = {
 
       portrait: "",
 
-      bio: "Шведский писатель и драматург, один из крупнейших авторов рубежа XIX–XX веков.",
+      bio: "Шведский писатель и драматург, один из крупнейших авторов рубежа XIX-XX веков.",
 
       works: [
         "Доктор Глас"
@@ -280,7 +280,7 @@ export const sweden: Country = {
       name: "Пэр Лагерквист",
       fullName: "Pär Lagerkvist",
 
-      years: "1891–1974",
+      years: "1891-1974",
 
       birthDate: "1891-05-23",
       deathDate: "1974-07-11",
@@ -329,7 +329,7 @@ export const sweden: Country = {
       name: "Гуннар Эклёф",
       fullName: "Gunnar Ekelöf",
 
-      years: "1907–1968",
+      years: "1907-1968",
 
       birthDate: "1907-09-15",
       deathDate: "1968-03-16",
@@ -374,7 +374,7 @@ export const sweden: Country = {
       name: "Астрид Линдгрен",
       fullName: "Astrid Lindgren",
 
-      years: "1907–2002",
+      years: "1907-2002",
 
       birthDate: "1907-11-14",
       deathDate: "2002-01-28",
@@ -420,7 +420,7 @@ export const sweden: Country = {
       name: "Керстин Экман",
       fullName: "Kerstin Ekman",
 
-      years: "1933–",
+      years: "1933-",
 
       birthDate: "1933-08-27",
       deathDate: "",
@@ -467,7 +467,7 @@ export const sweden: Country = {
       name: "Хеннинг Манкель",
       fullName: "Henning Mankell",
 
-      years: "1948–2015",
+      years: "1948-2015",
 
       birthDate: "1948-02-03",
       deathDate: "2015-10-05",

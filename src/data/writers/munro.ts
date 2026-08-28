@@ -1,11 +1,11 @@
 export const munroProfile = {
  id:"munro",
  fullName:"Элис Энн Манро",
- years:"1931–2024",
+ years:"1931-2024",
  country:"Канада",
  birthPlace:"Уингем, Онтарио, Канада",
  movement:"Постмодернизм",
- century:"XX–XXI века",
+ century:"XX-XXI века",
  language:"Английский",
  nobel:true,
  nobelYear:2013,

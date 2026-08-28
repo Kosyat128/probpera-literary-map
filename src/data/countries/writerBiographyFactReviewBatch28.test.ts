@@ -62,7 +62,7 @@ const expectedOriginalSha256 = new Map<string, string>([
   ["france:diderot", "fd20f0801ee6c4382113cf0c565ea59ee70b5d6070a4a65ad5f6a95967e6faf7"],
   ["france:emile_zola", "3da41b4135edb32a183404f1e94101d9921a902d7c6594583725087eeba9929c"],
   ["france:flaubert", "6a168f1bf1a9e1893f59df5e51170c3cad1f4efe9aff1144435eb3fed8f2247a"],
-  ["france:franck_thilliez", "c0b107b2e8f2eca32344f90a8079209a307d6003e6e0241cfde1715e9f44ae89"],
+  ["france:franck_thilliez", "e07f3adaec2152c54c7991448bfe43aa6431005571904f3e7f8be921982fd9c4"],
   ["france:francois_mauriac", "a63b33623f445f1e18cc92d901f8e1623fecc4bf1ad8b96a086dd2afdfe8f2f8"],
   ["france:francois_rabelais", "f513b18ba8134443ff86e8bce91b43614451a90790689c419f70606665be8df1"],
   ["france:francois_villon", "f053fdb8d280bcaf3ba0c50a17016ed1f0268d7201b443bcbb3b0469cc803979"],
@@ -86,7 +86,7 @@ const expectedOriginalSha256 = new Map<string, string>([
   ["france:patrick_modiano", "8479ed9aa744c46118a0c0a9d8f8e8738fc50838c05083d9154610726e9bb207"],
   ["france:prosper_merimee", "71dd3921739b9598a0b3cff23602615980f30589c38bc19635888d04c2fbc869"],
   ["france:racine", "8b0ebfbf099ff343bc6682da5fbf07b70abe05185a67904fa79f77509f31ca72"],
-  ["france:roger_martin_du_gard", "40059f3edab38154b982c0c6b470d7bb5b3d1b9b8d0dccd8fb218bc70c45c8c3"],
+  ["france:roger_martin_du_gard", "39fa457ad4c7bd07a87c5664056730060b37efd5a7c42d87d3b1a6e9b9fed651"],
   ["france:romain_rolland", "1bfe56e5f95cc2f1c6b3d248d8a956841b341dc3399000c61c576a849a22c004"],
   ["france:ronsard", "3020a0671beff9dcf3736e652c99b45b03531d2a505cba4bc2284a948308eeb0"],
   ["france:rousseau", "295fa6a45123c12e89b9b8e5a855dcc11f7f9be08018875d0a6352dc563a69c2"],
@@ -129,7 +129,7 @@ describe("writer biography claim review batch 28", () => {
 
   it("pins raw hashes, neutral Russian and two independent institutional sources", () => {
     const subjectiveSuperlative = /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|важнейш|главнейш|известнейш)/iu;
-    const publicReviewMarker = /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+    const publicReviewMarker = /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch28) {
       const sentenceCount = record.reviewedTextRu.match(/[.!?…]+(?=\s|$)/gu)?.length ?? 0;

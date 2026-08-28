@@ -69,7 +69,7 @@ const writerBiographyFactReviewBatch07Base = [
   {
     key: "colombia:jose_asuncion_silva",
     originalSha256: "b1e224debd978448ebe5e3946f4b7ce79852441dd020f818564cf64374785a9a",
-    reviewedTextRu: "Колумбийский поэт, связанный со становлением модернизма в литературе Колумбии. Среди его произведений — «Nocturno» и роман «De sobremesa».",
+    reviewedTextRu: "Колумбийский поэт, связанный со становлением модернизма в литературе Колумбии. Среди его произведений - «Nocturno» и роман «De sobremesa».",
     claims: [{
       textRu: "Хосе Асунсьон Сильва был колумбийским поэтом раннего модернизма; к его произведениям относятся «Nocturno» и роман «De sobremesa».",
       verdict: "corrected",
@@ -87,7 +87,7 @@ const writerBiographyFactReviewBatch07Base = [
     originalSha256: "99a0909dc9e98b1904975bd23a52ae9248f6893eec75dd5325f6d402e24cca97",
     reviewedTextRu: "Колумбийский писатель, автор романов «Шум падающих вещей» и «Форма руин». Роман «Шум падающих вещей» получил Международную Дублинскую литературную премию.",
     claims: [{
-      textRu: "Хуан Габриэль Васкес — колумбийский писатель и автор романов «Шум падающих вещей» и «Форма руин»; первый из них отмечен Международной Дублинской литературной премией.",
+      textRu: "Хуан Габриэль Васкес - колумбийский писатель и автор романов «Шум падающих вещей» и «Форма руин»; первый из них отмечен Международной Дублинской литературной премией.",
       verdict: "corrected",
       evidence: [
         { provider: "Library of Congress", url: "https://www.loc.gov/item/no2001088845/juan-gabriel-vasquez-colombia-1973/", checkedAt, findingRu: "Библиотека Конгресса подтверждает колумбийскую идентичность автора, оба романа и International Dublin Award среди его наград." },
@@ -104,7 +104,7 @@ const writerBiographyFactReviewBatch07Base = [
     originalSha256: "b36e72ca6797182f7e5164411a45a7f72e65463c31a16c1b536208136ae8f38b",
     reviewedTextRu: "Колумбийский писатель и журналист. Романы «El día señalado» и «La casa de las dos palmas» отмечены соответственно премиями Надаля и Ромуло Гальегоса.",
     claims: [{
-      textRu: "Мануэль Мехия Вальехо был колумбийским писателем и журналистом; El día señalado получил премию Надаля, а La casa de las dos palmas — Международную премию Ромуло Гальегоса.",
+      textRu: "Мануэль Мехия Вальехо был колумбийским писателем и журналистом; El día señalado получил премию Надаля, а La casa de las dos palmas - Международную премию Ромуло Гальегоса.",
       verdict: "corrected",
       evidence: [
         { provider: "Universidad Nacional de Colombia", url: "https://redcultural.medellin.unal.edu.co/redcultural2/noticias/275-manuel-mej%C3%ADa-vallejo%2C-100-a%C3%B1os-de-historia-y-legado.html", checkedAt, findingRu: "Университетский материал называет Мехию Вальехо писателем и журналистом и связывает оба романа с соответствующими премиями." },
@@ -120,7 +120,7 @@ const writerBiographyFactReviewBatch07Base = [
     originalSha256: "db95cf196fe970f2df243e6cf97547c5a59fdc9ff8aa5e7264ceb92d0b7c9434",
     reviewedTextRu: "Колумбийский писатель, автор романа «Satanás». Этот роман получил премию Biblioteca Breve 2002 года.",
     claims: [{
-      textRu: "Марио Мендоса — колумбийский писатель; его роман «Satanás» получил премию Biblioteca Breve 2002 года.",
+      textRu: "Марио Мендоса - колумбийский писатель; его роман «Satanás» получил премию Biblioteca Breve 2002 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Editorial Planeta / Seix Barral", url: "https://www.planetadelibros.com/premios/premio-biblioteca-breve/edicion/150", checkedAt, findingRu: "Официальная страница издательской премии называет Satanás Марио Мендосы победителем Biblioteca Breve 2002 года." },
@@ -163,10 +163,10 @@ const writerBiographyFactReviewBatch07Base = [
   {
     key: "colombia:santiago_gamboa",
     originalSha256: "6d426276d7d259a520c111f67ad4599f182ef1600ab177c0497692f68716684a",
-    reviewedTextRu: "Колумбийский романист, автор рассказов и журналист. Среди его книг — «Necrópolis» и «Plegarias nocturnas».",
+    reviewedTextRu: "Колумбийский романист, автор рассказов и журналист. Среди его книг - «Necrópolis» и «Plegarias nocturnas».",
     claims: [
       {
-        textRu: "Сантьяго Гамбоа — колумбийский романист, автор рассказов и журналист; он написал Necrópolis и Plegarias nocturnas.",
+        textRu: "Сантьяго Гамбоа - колумбийский романист, автор рассказов и журналист; он написал Necrópolis и Plegarias nocturnas.",
         verdict: "corrected",
         evidence: [
           { provider: "Instituto Cervantes", url: "https://cultura.cervantes.es/lyon/es/Santiago-Gamboa/185167", checkedAt, findingRu: "Институт Сервантеса подтверждает колумбийскую идентичность, журналистскую работу и роман Necrópolis среди основных книг автора." },
@@ -192,7 +192,7 @@ const writerBiographyFactReviewBatch07Base = [
     originalSha256: "92865e9dd1ece8e8823ab0f9f83fdb5574459c6bc78741d9d012deb21eaf48bc",
     reviewedTextRu: "Коста-риканская поэтесса, драматург и актриса. Автор поэтического сборника «La estación de fiebre» и пьесы «Madre nuestra que estás en la tierra».",
     claims: [{
-      textRu: "Ана Истару — коста-риканская поэтесса, драматург и актриса; ей принадлежат La estación de fiebre и пьеса Madre nuestra que estás en la tierra.",
+      textRu: "Ана Истару - коста-риканская поэтесса, драматург и актриса; ей принадлежат La estación de fiebre и пьеса Madre nuestra que estás en la tierra.",
       verdict: "corrected",
       evidence: [
         { provider: "Editorial Costa Rica", url: "https://www.editorialcostarica.com/escritor/1000", checkedAt, findingRu: "Национальное издательство подтверждает коста-риканскую идентичность, поэзию, драматургию и актёрскую работу Истару и называет La estación de fiebre." },
@@ -238,7 +238,7 @@ const writerBiographyFactReviewBatch07Base = [
     reviewedTextRu: "Коста-риканская писательница, педагог и политическая деятельница. Автор книги «Cuentos de mi tía Panchita»; в её прозе также представлены социальные темы.",
     claims: [
       {
-        textRu: "Кармен Лира — псевдоним коста-риканской писательницы, педагога и политической деятельницы Марии Исабель Карвахаль; она написала Cuentos de mi tía Panchita и социальную прозу.",
+        textRu: "Кармен Лира - псевдоним коста-риканской писательницы, педагога и политической деятельницы Марии Исабель Карвахаль; она написала Cuentos de mi tía Panchita и социальную прозу.",
         verdict: "corrected",
         evidence: [
           { provider: "Sistema Nacional de Bibliotecas de Costa Rica", url: "https://www.sinabi.go.cr/diccionariobiografico/biografias/151.html", checkedAt, findingRu: "Национальный биографический словарь связывает псевдоним с Марией Исабель Карвахаль, подтверждает литературную, педагогическую и политическую работу, книгу Cuentos de mi tía Panchita и социальное направление прозы." },
@@ -296,13 +296,13 @@ const writerBiographyFactReviewBatch07Base = [
   {
     key: "cote_d_ivoire:bernard_binlin_dadie",
     originalSha256: "98401e7cefaacad3ef6e3870ae2a13d6fee57cb4d45a7245ddca8998333de2e4",
-    reviewedTextRu: "Ивуарийский писатель и общественный деятель, работавший в прозе, поэзии и драматургии. В 2015 году получил премию UNESCO–UNAM имени Хайме Торреса Бодета.",
+    reviewedTextRu: "Ивуарийский писатель и общественный деятель, работавший в прозе, поэзии и драматургии. В 2015 году получил премию UNESCO-UNAM имени Хайме Торреса Бодета.",
     claims: [{
-      textRu: "Бернар Бинлин Дадье был ивуарийским прозаиком, поэтом, драматургом и общественным деятелем; в 2015 году он получил премию UNESCO–UNAM имени Хайме Торреса Бодета.",
+      textRu: "Бернар Бинлин Дадье был ивуарийским прозаиком, поэтом, драматургом и общественным деятелем; в 2015 году он получил премию UNESCO-UNAM имени Хайме Торреса Бодета.",
       verdict: "corrected",
       evidence: [
         { provider: "UNESCO", url: "https://www.unesco.org/fr/prizes/jaime-torres-bodet/laureates", checkedAt, findingRu: "Официальный реестр премии называет Дадье лауреатом 2015 года, ивуарийским эссеистом, романистом, драматургом, поэтом и общественным деятелем." },
-        { provider: "ASCAD — Académie des Sciences, des Arts, des Cultures d’Afrique et des Diasporas Africaines", url: "https://www.ascad.ci/web/membreascad/monsieur-binlin-bernard-dadi059/2", checkedAt, findingRu: "Национальная академия Кот-д’Ивуара документирует писательскую и государственную деятельность Дадье и его публикации в театре, поэзии, романах и хрониках." },
+        { provider: "ASCAD - Académie des Sciences, des Arts, des Cultures d’Afrique et des Diasporas Africaines", url: "https://www.ascad.ci/web/membreascad/monsieur-binlin-bernard-dadi059/2", checkedAt, findingRu: "Национальная академия Кот-д’Ивуара документирует писательскую и государственную деятельность Дадье и его публикации в театре, поэзии, романах и хрониках." },
       ],
     }],
     reviewer,
@@ -360,7 +360,7 @@ const writerBiographyFactReviewBatch07Base = [
   {
     key: "croatia:miroslav_krleza",
     originalSha256: "cefb1a30cf6e25917d1b500aea27b4fcdb0d2435423e0e238ec84b406ad98512",
-    reviewedTextRu: "Хорватский писатель, работавший в драме, прозе, поэзии и эссеистике. Среди его произведений — драма «Господа Глембаи» и роман «Возвращение Филипа Латиновича».",
+    reviewedTextRu: "Хорватский писатель, работавший в драме, прозе, поэзии и эссеистике. Среди его произведений - драма «Господа Глембаи» и роман «Возвращение Филипа Латиновича».",
     claims: [{
       textRu: "Мирослав Крлежа был хорватским драматургом, прозаиком, поэтом и эссеистом; он написал «Господа Глембаи» и «Возвращение Филипа Латиновича».",
       verdict: "corrected",
@@ -393,7 +393,7 @@ const writerBiographyFactReviewBatch07Base = [
   {
     key: "cuba:alejo_carpentier",
     originalSha256: "a6bd924c281630e98f54d3cbe4afa7f0b61607e0f92df64ed65f1237251e9821",
-    reviewedTextRu: "Кубинский писатель, журналист и музыковед. В прологе к роману «Царство земное» он сформулировал концепцию «чудесной реальности» — lo real maravilloso.",
+    reviewedTextRu: "Кубинский писатель, журналист и музыковед. В прологе к роману «Царство земное» он сформулировал концепцию «чудесной реальности» - lo real maravilloso.",
     claims: [{
       textRu: "Алехо Карпентьер был кубинским писателем, журналистом и музыковедом и сформулировал концепцию lo real maravilloso в прологе к роману «Царство земное».",
       verdict: "corrected",

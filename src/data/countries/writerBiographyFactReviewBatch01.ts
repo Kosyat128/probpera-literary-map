@@ -322,7 +322,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Атик Рахими — писатель и режиссёр.",
+        "Атик Рахими - писатель и режиссёр.",
         "confirmed",
         [bnfAtiq, cannesAtiq]
       ),
@@ -362,7 +362,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Халилулла Халили — афганский поэт XX века.",
+        "Халилулла Халили - афганский поэт XX века.",
         "confirmed",
         [iranicaKhalili, locKhalili]
       ),
@@ -396,7 +396,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Махмуд Тарзи — писатель, журналист и мыслитель.",
+        "Махмуд Тарзи - писатель, журналист и мыслитель.",
         "confirmed",
         [iranicaTarzi]
       ),
@@ -422,14 +422,14 @@ export const writerBiographyFactReviewBatch01 = [
   {
     key: "albania:ismail_kadare",
     originalSha256:
-      "349b44b054dcf21e80a5dd73324ba89ddccc9b5c7d5bf72fb4cb39eb413acb74",
-    originalTextRu: "Крупнейший албанский писатель XX–XXI веков.",
+      "9c490a561c0d40181e1a30c4324b06272c2c58e9bba1fe629d24918ed0a76fff",
+    originalTextRu: "Крупнейший албанский писатель XX-XXI веков.",
     reviewedTextRu:
       "Албанский писатель, лауреат Международной Букеровской премии 2005 года.",
     claimEvidence: [
       claim(
         "identity-role",
-        "Исмаил Кадаре — албанский писатель.",
+        "Исмаил Кадаре - албанский писатель.",
         "confirmed",
         [bookerKadare, albanianAcademyKadare]
       ),
@@ -469,7 +469,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Джеронимо де Рада — албанский поэт арберешской традиции.",
+        "Джеронимо де Рада - албанский поэт арберешской традиции.",
         "confirmed",
         [treccaniDeRada]
       ),
@@ -503,7 +503,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Митруш Кутели — писатель, поэт и переводчик.",
+        "Митруш Кутели - писатель, поэт и переводчик.",
         "confirmed",
         [pogradecKuteli]
       ),
@@ -537,7 +537,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Наим Фрашери — поэт албанского национального Возрождения.",
+        "Наим Фрашери - поэт албанского национального Возрождения.",
         "confirmed",
         [albanianAcademyNaim, albanianAcademyNaimOctober]
       ),
@@ -571,7 +571,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Ассия Джебар — писательница и режиссёр; историю она изучала и преподавала.",
+        "Ассия Джебар - писательница и режиссёр; историю она изучала и преподавала.",
         "corrected",
         [academieDjebar, bnfDjebar]
       ),
@@ -583,7 +583,7 @@ export const writerBiographyFactReviewBatch01 = [
       ),
       claim(
         "national-cultural-affiliation",
-        "Она — алжирская писательница.",
+        "Она - алжирская писательница.",
         "confirmed",
         [bnfDjebar, academieDjebar]
       ),
@@ -611,7 +611,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Катеб Ясин — писатель и драматург.",
+        "Катеб Ясин - писатель и драматург.",
         "confirmed",
         [imaKateb]
       ),
@@ -651,7 +651,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Мохаммед Диб — алжирский писатель.",
+        "Мохаммед Диб - алжирский писатель.",
         "confirmed",
         [bnfDib, bnfDibArchive]
       ),
@@ -691,7 +691,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Муфди Закария — алжирский поэт.",
+        "Муфди Закария - алжирский поэт.",
         "confirmed",
         [radioMoufdi]
       ),
@@ -737,7 +737,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Мулуд Фераун — алжирский писатель.",
+        "Мулуд Фераун - алжирский писатель.",
         "confirmed",
         [imaFeraoun, bnfFeraoun]
       ),
@@ -777,7 +777,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Рашид Буджедра — алжирский писатель и романист.",
+        "Рашид Буджедра - алжирский писатель и романист.",
         "confirmed",
         [bnfBoudjedra, radioBoudjedra]
       ),
@@ -817,7 +817,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Антони Морель-и-Мора — андоррский писатель и гуманист.",
+        "Антони Морель-и-Мора - андоррский писатель и гуманист.",
         "corrected",
         [andorraMorell]
       ),
@@ -851,7 +851,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Агостиньо Нето — ангольский поэт и общественный деятель.",
+        "Агостиньо Нето - ангольский поэт и общественный деятель.",
         "confirmed",
         [angolaNeto, angolaNetoCentenary]
       ),
@@ -879,7 +879,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Жозе Луандину Виейра — ангольский писатель.",
+        "Жозе Луандину Виейра - ангольский писатель.",
         "confirmed",
         [ucclaLuandino, angolaLiteraryPatrimony]
       ),
@@ -913,7 +913,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Онджаки — современный ангольский писатель.",
+        "Онджаки - современный ангольский писатель.",
         "confirmed",
         [ucclaOndjaki, angolaLiteraryPatrimony]
       ),
@@ -949,11 +949,11 @@ export const writerBiographyFactReviewBatch01 = [
     originalTextRu:
       "Крупнейший ангольский романист, один из главных представителей португалоязычной африканской литературы.",
     reviewedTextRu:
-      "Ангольский романист, лауреат премии Камоэнса. Среди его произведений — «Майомбе» и «Поколение утопии».",
+      "Ангольский романист, лауреат премии Камоэнса. Среди его произведений - «Майомбе» и «Поколение утопии».",
     claimEvidence: [
       claim(
         "identity-role",
-        "Пепетела — ангольский романист.",
+        "Пепетела - ангольский романист.",
         "confirmed",
         [angolaLiteraryPatrimony, angolaPepetelaWorks]
       ),
@@ -999,7 +999,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Джамайка Кинкейд — писательница и эссеистка.",
+        "Джамайка Кинкейд - писательница и эссеистка.",
         "confirmed",
         [harvardKincaid, nbfKincaid]
       ),
@@ -1051,7 +1051,7 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Адольфо Биой Касарес — аргентинский писатель.",
+        "Адольфо Биой Касарес - аргентинский писатель.",
         "confirmed",
         [cervantesBioy]
       ),

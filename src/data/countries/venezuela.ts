@@ -8,7 +8,7 @@ export const venezuela: Country = {
     {
       id: "andres_bello",
       name: "Андрес Бельо",
-      years: "1781–1865",
+      years: "1781-1865",
       birthDate: "1781-11-29",
       deathDate: "1865-10-15",
       birthPlace: "Каракас, Венесуэла",
@@ -46,7 +46,7 @@ export const venezuela: Country = {
     {
       id: "simon_rodriguez",
       name: "Симон Родригес",
-      years: "1769–1854",
+      years: "1769-1854",
       birthDate: "1769-10-28",
       deathDate: "1854-02-28",
       birthPlace: "Каракас, Венесуэла",
@@ -83,7 +83,7 @@ export const venezuela: Country = {
         {
       id: "fermin_toro",
       name: "Фермин Торо",
-      years: "1806–1865",
+      years: "1806-1865",
       birthDate: "1806-07-14",
       deathDate: "1865-12-23",
       birthPlace: "Эль-Валье, Венесуэла",
@@ -122,7 +122,7 @@ export const venezuela: Country = {
     {
       id: "juan_vicente_gonzalez",
       name: "Хуан Висенте Гонсалес",
-      years: "1810–1866",
+      years: "1810-1866",
       birthDate: "1810-05-28",
       deathDate: "1866-10-01",
       birthPlace: "Каракас, Венесуэла",
@@ -159,7 +159,7 @@ export const venezuela: Country = {
     {
       id: "eduardo_blanco",
       name: "Эдуардо Бланко",
-      years: "1838–1912",
+      years: "1838-1912",
       birthDate: "1838-12-25",
       deathDate: "1912-06-30",
       birthPlace: "Каракас, Венесуэла",
@@ -194,7 +194,7 @@ export const venezuela: Country = {
         {
       id: "romulo_gallegos",
       name: "Ромуло Гальегос",
-      years: "1884–1969",
+      years: "1884-1969",
       birthDate: "1884-08-02",
       deathDate: "1969-04-05",
       birthPlace: "Каракас, Венесуэла",
@@ -235,7 +235,7 @@ export const venezuela: Country = {
     {
       id: "teresa_de_la_parra",
       name: "Тереса де ла Парра",
-      years: "1889–1936",
+      years: "1889-1936",
       birthDate: "1889-10-05",
       deathDate: "1936-04-23",
       birthPlace: "Париж, Франция",
@@ -272,7 +272,7 @@ export const venezuela: Country = {
     {
       id: "manuel_diaz_rodriguez",
       name: "Мануэль Диас Родригес",
-      years: "1868–1927",
+      years: "1868-1927",
       birthDate: "1868-02-28",
       deathDate: "1927-08-24",
       birthPlace: "Каракас, Венесуэла",
@@ -282,7 +282,7 @@ export const venezuela: Country = {
         lng: -66.9036
       },
       portrait: "",
-      bio: "Венесуэльский писатель, эссеист и дипломат. Один из ведущих представителей модернизма в венесуэльской литературе конца XIX — начала XX века.",
+      bio: "Венесуэльский писатель, эссеист и дипломат. Один из ведущих представителей модернизма в венесуэльской литературе конца XIX - начала XX века.",
       works: [
         "Идолы разбиты",
         "Патрицианская кровь",
@@ -310,7 +310,7 @@ export const venezuela: Country = {
         {
       id: "arturo_uslar_pietri",
       name: "Артуро Услар Пьетри",
-      years: "1906–2001",
+      years: "1906-2001",
       birthDate: "1906-05-16",
       deathDate: "2001-02-26",
       birthPlace: "Каракас, Венесуэла",
@@ -352,7 +352,7 @@ export const venezuela: Country = {
     {
       id: "miguel_otero_silva",
       name: "Мигель Отеро Сильва",
-      years: "1908–1985",
+      years: "1908-1985",
       birthDate: "1908-10-26",
       deathDate: "1985-08-28",
       birthPlace: "Барселона, Венесуэла",
@@ -393,7 +393,7 @@ export const venezuela: Country = {
     {
       id: "adriano_gonzalez_leon",
       name: "Адриано Гонсалес Леон",
-      years: "1931–2008",
+      years: "1931-2008",
       birthDate: "1931-11-13",
       deathDate: "2008-01-12",
       birthPlace: "Вальера, Венесуэла",
@@ -429,7 +429,7 @@ export const venezuela: Country = {
        {
       id: "rafael_cadenas",
       name: "Рафаэль Каденас",
-      years: "1930–",
+      years: "1930-",
       birthDate: "1930-04-08",
       birthPlace: "Баркисимето, Венесуэла",
       coordinates: {
@@ -467,7 +467,7 @@ export const venezuela: Country = {
     {
       id: "eugenio_montejo",
       name: "Эугенио Монтехо",
-      years: "1938–2008",
+      years: "1938-2008",
       birthDate: "1938-10-19",
       deathDate: "2008-06-05",
       birthPlace: "Каракас, Венесуэла",

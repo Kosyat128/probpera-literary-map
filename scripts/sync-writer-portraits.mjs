@@ -427,7 +427,7 @@ function reportMarkdown(report) {
     "## Требуют ручной проверки",
     "",
     ...report.manualReview.slice(0, 500).map(
-      (item) => `- ${item.countryId}:${item.writerId} — ${item.name} (${item.reason})`
+      (item) => `- ${item.countryId}:${item.writerId} - ${item.name} (${item.reason})`
     ),
     "",
   ];

@@ -10,7 +10,7 @@ export const canada: Country = {
       id: "margaret_atwood",
       name: "Маргарет Этвуд",
       fullName: "Margaret Eleanor Atwood",
-      years: "1939–",
+      years: "1939-",
       birthDate: "1939-11-18",
       deathDate: "",
       birthPlace: "Оттава, Онтарио, Канада",
@@ -69,7 +69,7 @@ export const canada: Country = {
 
       fullName: "Alice Ann Munro",
 
-      years: "1931–2024",
+      years: "1931-2024",
 
       birthDate: "1931-07-10",
 
@@ -129,7 +129,7 @@ export const canada: Country = {
 
       fullName: "Lucy Maud Montgomery",
 
-      years: "1874–1942",
+      years: "1874-1942",
 
       birthDate: "1874-11-30",
 
@@ -182,7 +182,7 @@ export const canada: Country = {
 
       fullName: "Philip Michael Ondaatje",
 
-      years: "1943–",
+      years: "1943-",
 
       birthDate: "1943-09-12",
 
@@ -242,7 +242,7 @@ export const canada: Country = {
 
       fullName: "Mordecai Richler",
 
-      years: "1931–2001",
+      years: "1931-2001",
 
       birthDate: "1931-01-27",
 
@@ -301,7 +301,7 @@ export const canada: Country = {
 
       fullName: "William Robertson Davies",
 
-      years: "1913–1995",
+      years: "1913-1995",
 
       birthDate: "1913-08-28",
 
@@ -359,7 +359,7 @@ export const canada: Country = {
 
       fullName: "Herman Northrop Frye",
 
-      years: "1912–1991",
+      years: "1912-1991",
 
       birthDate: "1912-07-14",
 
@@ -411,7 +411,7 @@ export const canada: Country = {
 
       fullName: "Anne Carson",
 
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-06-21",
 
@@ -470,7 +470,7 @@ export const canada: Country = {
 
       fullName: "Yann Martel",
 
-      years: "1963–",
+      years: "1963-",
 
       birthDate: "1963-06-25",
 
@@ -528,7 +528,7 @@ export const canada: Country = {
 
       fullName: "Rohinton Mistry",
 
-      years: "1952–",
+      years: "1952-",
 
       birthDate: "1952-07-03",
 
@@ -586,7 +586,7 @@ export const canada: Country = {
 
       fullName: "Margaret Laurence",
 
-      years: "1926–1987",
+      years: "1926-1987",
 
       birthDate: "1926-07-18",
 
@@ -643,7 +643,7 @@ export const canada: Country = {
 
       fullName: "Miriam Toews",
 
-      years: "1964–",
+      years: "1964-",
 
       birthDate: "1964-05-21",
 
@@ -662,7 +662,7 @@ export const canada: Country = {
 
       works: [
         "Женщины разговаривают",
-        "Все мои друзья — призраки",
+        "Все мои друзья - призраки",
         "Сложная доброта"
       ],
 

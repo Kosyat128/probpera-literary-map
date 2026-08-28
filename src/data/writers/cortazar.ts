@@ -1,7 +1,7 @@
 export const cortazarProfile = {
  id:"cortazar",
  fullName:"Хулио Кортасар",
- years:"1914–1984",
+ years:"1914-1984",
  country:"Аргентина",
  birthPlace:"Иксель, Бельгия",
  movement:"Латиноамериканский бум",

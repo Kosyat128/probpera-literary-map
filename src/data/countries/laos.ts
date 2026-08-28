@@ -12,7 +12,7 @@ export const laos: Country = {
       name: "Оутин Буньявонг",
       fullName: "Outhine Bounyavong",
 
-      years: "1942–2000",
+      years: "1942-2000",
 
       birthDate: "1942",
       deathDate: "2000",
@@ -61,7 +61,7 @@ export const laos: Country = {
       name: "Пхуми Вонгвичит",
       fullName: "Phoumi Vongvichit",
 
-      years: "1909–1994",
+      years: "1909-1994",
 
       birthDate: "1909",
       deathDate: "1994",
@@ -111,7 +111,7 @@ export const laos: Country = {
       name: "Сотхеара Сот",
       fullName: "Sothéara Soth",
 
-      years: "1954–",
+      years: "1954-",
 
       birthDate: "1954",
       deathDate: "",
@@ -161,7 +161,7 @@ export const laos: Country = {
       name: "Доуангчандра Суваннафум",
       fullName: "Douangchandra Souphanouvong",
 
-      years: "1930–",
+      years: "1930-",
 
       birthDate: "1930",
       deathDate: "",
@@ -209,7 +209,7 @@ export const laos: Country = {
       name: "Висутх Пхомсаван",
       fullName: "Visuth Phommasane",
 
-      years: "1945–",
+      years: "1945-",
 
       birthDate: "1945",
       deathDate: "",

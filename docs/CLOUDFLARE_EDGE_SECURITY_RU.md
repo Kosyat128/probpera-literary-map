@@ -14,12 +14,12 @@ Cloudflare Response Header Transform Rules, Cache Rules и Single Redirect Rules
 
 `Audit live production security` разделяет два профиля:
 
-1. `probpera.ru` — direct/DNS-only profile:
+1. `probpera.ru` - direct/DNS-only profile:
    - Cloudflare proxy должен оставаться выключенным (`CF-Ray` отсутствует);
    - HTTP должен корректно переводиться на HTTPS с сохранением host/path/query;
    - HTTPS-корень должен быть доступен;
    - `/.well-known/security.txt` должен быть доступен как `text/plain` и содержать валидные Contact, Expires и Canonical.
-2. `admin.probpera.ru` — strict edge profile:
+2. `admin.probpera.ru` - strict edge profile:
    - HTTPS;
    - HSTS;
    - `X-Content-Type-Options: nosniff`;

@@ -10,7 +10,7 @@ export const brazil: Country = {
       id: "goncalves_dias",
       name: "Гонсалвес Диас",
       fullName: "Antônio Gonçalves Dias",
-      years: "1823–1864",
+      years: "1823-1864",
 
       birthDate: "1823-08-10",
       deathDate: "1864-11-03",
@@ -57,7 +57,7 @@ export const brazil: Country = {
       name: "Жозе де Аленкар",
       fullName: "José de Alencar",
 
-      years: "1829–1877",
+      years: "1829-1877",
 
       birthDate: "1829-05-01",
       deathDate: "1877-12-12",
@@ -105,7 +105,7 @@ export const brazil: Country = {
       name: "Машаду де Ассис",
       fullName: "Joaquim Maria Machado de Assis",
 
-      years: "1839–1908",
+      years: "1839-1908",
 
       birthDate: "1839-06-21",
       deathDate: "1908-09-29",
@@ -154,7 +154,7 @@ export const brazil: Country = {
       name: "Граси́лиану Рамус",
       fullName: "Graciliano Ramos",
 
-      years: "1892–1953",
+      years: "1892-1953",
 
       birthDate: "1892-10-27",
       deathDate: "1953-03-20",
@@ -202,7 +202,7 @@ export const brazil: Country = {
       name: "Карлос Друммонд де Андраде",
       fullName: "Carlos Drummond de Andrade",
 
-      years: "1902–1987",
+      years: "1902-1987",
 
       birthDate: "1902-10-31",
       deathDate: "1987-08-17",
@@ -248,7 +248,7 @@ export const brazil: Country = {
       name: "Жоржи Амаду",
       fullName: "Jorge Amado",
 
-      years: "1912–2001",
+      years: "1912-2001",
 
       birthDate: "1912-08-10",
       deathDate: "2001-08-06",
@@ -296,7 +296,7 @@ export const brazil: Country = {
       name: "Жуан Гимарайнс Роза",
       fullName: "João Guimarães Rosa",
 
-      years: "1908–1967",
+      years: "1908-1967",
 
       birthDate: "1908-06-27",
       deathDate: "1967-11-19",
@@ -343,7 +343,7 @@ export const brazil: Country = {
       name: "Клариси Лиспектор",
       fullName: "Clarice Lispector",
 
-      years: "1920–1977",
+      years: "1920-1977",
 
       birthDate: "1920-12-10",
       deathDate: "1977-12-09",
@@ -391,7 +391,7 @@ export const brazil: Country = {
       name: "Мануэл де Баррос",
       fullName: "Manoel de Barros",
 
-      years: "1916–2014",
+      years: "1916-2014",
 
       birthDate: "1916-12-19",
       deathDate: "2014-11-13",
@@ -437,7 +437,7 @@ export const brazil: Country = {
       name: "Пауло Коэльо",
       fullName: "Paulo Coelho",
 
-      years: "1947–",
+      years: "1947-",
 
       birthDate: "1947-08-24",
       deathDate: "",

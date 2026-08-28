@@ -1,7 +1,7 @@
 export const dostoevskyProfile = {
   id:"dostoevsky",
   fullName:"Фёдор Михайлович Достоевский",
-  years:"1821–1881",
+  years:"1821-1881",
   country:"Россия",
   birthPlace:"Москва, Российская империя",
   deathPlace:"Санкт-Петербург, Российская империя",
@@ -15,8 +15,8 @@ export const dostoevskyProfile = {
   famousQuote:"Красота спасёт мир.",
   works:[
     {title:"Преступление и наказание",year:"1866",genre:"Роман"},
-    {title:"Идиот",year:"1868–1869",genre:"Роман"},
-    {title:"Братья Карамазовы",year:"1879–1880",genre:"Роман"}
+    {title:"Идиот",year:"1868-1869",genre:"Роман"},
+    {title:"Братья Карамазовы",year:"1879-1880",genre:"Роман"}
   ],
   places:["Санкт-Петербург","Дом Достоевского в Москве"],
   connections:["Лев Николаевич Толстой","Антон Павлович Чехов"],

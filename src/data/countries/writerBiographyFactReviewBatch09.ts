@@ -79,14 +79,14 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив снят. Identity audit: Q1153831 соответствует Педро Энрикесу Уренье. Рекомендация — сохранить birthDate 1884-06-29 и deathDate 1946-05-11: две публикации Доминиканской академии подтверждают 29 июня, тогда как единичное 20 июня на другой странице академии является внутренним расхождением. Shared country files не изменялись.",
+      "Суперлатив снят. Identity audit: Q1153831 соответствует Педро Энрикесу Уренье. Рекомендация - сохранить birthDate 1884-06-29 и deathDate 1946-05-11: две публикации Доминиканской академии подтверждают 29 июня, тогда как единичное 20 июня на другой странице академии является внутренним расхождением. Shared country files не изменялись.",
   },
   {
     key: "ecuador:abdon_ubidia",
     originalSha256:
       "2fe6b9e5c114d6d4eed861464635add2ff8067beb382a36d9772503c3ffb192c",
     reviewedTextRu:
-      "Эквадорский писатель и литературный критик. В его прозе заметное место занимает современный Кито, а в исследованиях — устная словесность Эквадора.",
+      "Эквадорский писатель и литературный критик. В его прозе заметное место занимает современный Кито, а в исследованиях - устная словесность Эквадора.",
     claims: [
       {
         textRu:
@@ -99,7 +99,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Университетский профиль называет Убидию прозаиком и критиком, перечисляет его романы и работы об устной словесности Эквадора.",
           ),
           evidence(
-            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "Casa de la Cultura Ecuatoriana - Biblioteca Nacional Eugenio Espejo",
             "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=8293",
             "Национальная библиотечная авторитетная запись подтверждает идентичность эквадорского автора Абдона Убидии и год рождения 1944.",
           ),
@@ -139,9 +139,9 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Официальный материал называет Пареху писателем и бывшим министром иностранных дел Эквадора и отмечает его работу с историческим архивом ведомства.",
           ),
           evidence(
-            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "Casa de la Cultura Ecuatoriana - Biblioteca Nacional Eugenio Espejo",
             "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-authoritiesdetail.pl?authid=6014",
-            "Авторитетная запись национальной библиотеки подтверждает идентичность Alfredo Pareja Diezcanseco и годы жизни 1908–1993.",
+            "Авторитетная запись национальной библиотеки подтверждает идентичность Alfredo Pareja Diezcanseco и годы жизни 1908-1993.",
           ),
         ],
       },
@@ -209,7 +209,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Государственное культурное учреждение называет Карденаса прозаиком и драматургом и указывает роман Polvo y ceniza среди его произведений.",
           ),
           evidence(
-            "Эквадорская академия языка — реестр умерших членов",
+            "Эквадорская академия языка - реестр умерших членов",
             "https://www.academiaecuatorianadelalengua.org/fallecidos/",
             "Официальный реестр фиксирует даты 10 декабря 1950 года и 26 сентября 2021 года.",
           ),
@@ -234,7 +234,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
         verdict: "corrected",
         evidence: [
           evidence(
-            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "Casa de la Cultura Ecuatoriana - Biblioteca Nacional Eugenio Espejo",
             "https://biblioteca.casadelacultura.gob.ec/bib/40708",
             "Национальный библиотечный каталог подтверждает авторство Хавьера Васконеса и библиографические данные сборника Ciudad lejana.",
           ),
@@ -244,7 +244,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Академическое исследование относит Васконеса к эквадорской городской прозе и анализирует городское пространство в его повествовании.",
           ),
           evidence(
-            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "Casa de la Cultura Ecuatoriana - Biblioteca Nacional Eugenio Espejo",
             "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-ISBDdetail.pl?biblionumber=62926",
             "Каталожная запись подтверждает авторство сборника Invitados de honor.",
           ),
@@ -391,7 +391,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     originalSha256:
       "d97d7565eb89ed85f31e7199ee05dfc4fa4d399f092adf53fa0f8d04244e486f",
     reviewedTextRu:
-      "Эквадорский писатель и преподаватель. Среди его научно-фантастических произведений — «В глубине галактики» (Profundo en la galaxia) и «О шаманах и королях» (De shamanes y reyes).",
+      "Эквадорский писатель и преподаватель. Среди его научно-фантастических произведений - «В глубине галактики» (Profundo en la galaxia) и «О шаманах и королях» (De shamanes y reyes).",
     claims: [
       {
         textRu:
@@ -404,7 +404,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Академическая статья называет Паэса эквадорским писателем и исследует De shamanes y reyes как произведение научной фантастики.",
           ),
           evidence(
-            "Casa de la Cultura Ecuatoriana — Biblioteca Nacional Eugenio Espejo",
+            "Casa de la Cultura Ecuatoriana - Biblioteca Nacional Eugenio Espejo",
             "https://biblioteca.casadelacultura.gob.ec/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=29691",
             "Национальный библиотечный каталог подтверждает авторство книги Profundo en la galaxia и год рождения 1958.",
           ),
@@ -496,7 +496,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
           evidence(
             "Нобелевский фонд",
             "https://www.nobelprize.org/laureate/665",
-            "Официальная страница лауреата подтверждает египетскую принадлежность Махфуза, премию по литературе 1988 года и даты 11 декабря 1911 года — 30 августа 2006 года.",
+            "Официальная страница лауреата подтверждает египетскую принадлежность Махфуза, премию по литературе 1988 года и даты 11 декабря 1911 года - 30 августа 2006 года.",
           ),
           evidence(
             "The American University in Cairo Press",
@@ -544,7 +544,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Суперлатив и широкое причинное утверждение сняты. Identity audit: Q981929 соответствует Рифаа ат-Тахтави. Доказанная рекомендация — обогатить birthDate до 1801-10-15 по государственному архиву SIS; deathDate оставить на уровне 1873, поскольку точное 1873-05-27 не получило двух независимых институциональных подтверждений. Shared country files не изменялись.",
+      "Суперлатив и широкое причинное утверждение сняты. Identity audit: Q981929 соответствует Рифаа ат-Тахтави. Доказанная рекомендация - обогатить birthDate до 1801-10-15 по государственному архиву SIS; deathDate оставить на уровне 1873, поскольку точное 1873-05-27 не получило двух независимых институциональных подтверждений. Shared country files не изменялись.",
   },
   {
     key: "egypt:salah_abdel_sabour",
@@ -585,7 +585,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     claims: [
       {
         textRu:
-          "Суперлатив заменён конкретными романами Соналлы Ибрахима и документированной особенностью его прозы — соединением вымысла, документов и общественной проблематики.",
+          "Суперлатив заменён конкретными романами Соналлы Ибрахима и документированной особенностью его прозы - соединением вымысла, документов и общественной проблематики.",
         verdict: "corrected",
         evidence: [
           evidence(
@@ -609,14 +609,14 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Субъективный ранг снят. Identity audit: Q3053937 соответствует Соналле Ибрахиму. Доказанная recommendation: добавить deathDate 2025-08-13. BirthDate оставить годовым 1937: Wikidata приводит 1937-08-03 по паспортным данным, а материалы Al-Ahram — 1937-02-24; до отдельного identity/date review точный день не применять. Shared country files не изменялись.",
+      "Субъективный ранг снят. Identity audit: Q3053937 соответствует Соналле Ибрахиму. Доказанная recommendation: добавить deathDate 2025-08-13. BirthDate оставить годовым 1937: Wikidata приводит 1937-08-03 по паспортным данным, а материалы Al-Ahram - 1937-02-24; до отдельного identity/date review точный день не применять. Shared country files не изменялись.",
   },
   {
     key: "egypt:taha_hussein",
     originalSha256:
       "ad30b0081233b4388dbd8eb9bf11f4ecb296678e7cd56213ae0263406bb5b05c",
     reviewedTextRu:
-      "Египетский писатель, литературный критик и реформатор образования, автор автобиографической книги «Дни». В 1950–1952 годах занимал пост министра образования Египта.",
+      "Египетский писатель, литературный критик и реформатор образования, автор автобиографической книги «Дни». В 1950-1952 годах занимал пост министра образования Египта.",
     claims: [
       {
         textRu:
@@ -631,7 +631,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
           evidence(
             "State Information Service of Egypt",
             "https://sis.gov.eg/es/egipto/figuras/taha-hussien/",
-            "Государственная биография называет Хусейна писателем, мыслителем и литературным критиком, перечисляет The Days и фиксирует даты 14 ноября 1889 года — 28 октября 1973 года.",
+            "Государственная биография называет Хусейна писателем, мыслителем и литературным критиком, перечисляет The Days и фиксирует даты 14 ноября 1889 года - 28 октября 1973 года.",
           ),
         ],
       },
@@ -654,9 +654,9 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
         verdict: "corrected",
         evidence: [
           evidence(
-            "Universidad de El Salvador — El Universitario",
+            "Universidad de El Salvador - El Universitario",
             "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/",
-            "Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года — 10 мая 1975 года, премию Casa de las Américas 1969 года и сочетание протеста, разговорной речи и иронии в его поэзии.",
+            "Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года - 10 мая 1975 года, премию Casa de las Américas 1969 года и сочетание протеста, разговорной речи и иронии в его поэзии.",
           ),
           evidence(
             "Museo de la Palabra y la Imagen",
@@ -674,7 +674,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Недоказанная широкая сравнительная формула снята; социальная и стилистическая характеристика сохранена в источниковой форме. Identity audit: Q539461 соответствует Роке Дальтону. Рекомендация — сохранить birthDate 1935-05-14 и deathDate 1975-05-10; обе даты подтверждены UES и MUPI. Shared country files не изменялись.",
+      "Недоказанная широкая сравнительная формула снята; социальная и стилистическая характеристика сохранена в источниковой форме. Identity audit: Q539461 соответствует Роке Дальтону. Рекомендация - сохранить birthDate 1935-05-14 и deathDate 1975-05-10; обе даты подтверждены UES и MUPI. Shared country files не изменялись.",
   },
   {
     key: "el_salvador:salvador_salarre",
@@ -694,9 +694,9 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Официальный материал подтверждает имя Сальвадора Саласара Арруэ, псевдоним Саларруэ, литературную и художественную деятельность, дату рождения 22 октября 1899 года и книги Cuentos de barro и Cuentos de cipotes.",
           ),
           evidence(
-            "Universidad Centroamericana José Simeón Cañas — Colecciones Virtuales",
+            "Universidad Centroamericana José Simeón Cañas - Colecciones Virtuales",
             "https://coleccion.uca.edu.sv/s/salvador-salazar-arrue-salarrue/page/semblanza",
-            "Университетская коллекция подтверждает литературную и художественную биографию Саларруэ, годы жизни 1899–1975 и обучение живописи.",
+            "Университетская коллекция подтверждает литературную и художественную биографию Саларруэ, годы жизни 1899-1975 и обучение живописи.",
           ),
           evidence(
             "Universidad de El Salvador",
@@ -704,7 +704,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
             "Университетское исследование описывает Cuentos de barro как рассказы на сельском материале с использованием сальвадорской народной речи.",
           ),
           evidence(
-            "Universidad Centroamericana José Simeón Cañas — хронология Саларруэ",
+            "Universidad Centroamericana José Simeón Cañas - хронология Саларруэ",
             "https://coleccion.uca.edu.sv/files/original/a4c30db19d25081e8877fb6b1a95830e6044479d.pdf",
             "Документированная хронология фиксирует назначение Саларруэ культурным атташе посольства Сальвадора в Вашингтоне, точные даты жизни и издания Cuentos de barro и Cuentos de cipotes.",
           ),
@@ -714,7 +714,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
     reviewer,
     decision: "corrected",
     notes:
-      "Оценочный ранг снят; дипломатическая роль уточнена до документированной должности культурного атташе. Identity registry gap: институциональные источники однозначно устанавливают Salvador Efraín Salazar Arrué / Salarrué, но QID mapping требует отдельного review. Рекомендация — сохранить birthDate 1899-10-22 и deathDate 1975-11-27; точные даты подтверждены UES и хронологией UCA. Shared country files не изменялись.",
+      "Оценочный ранг снят; дипломатическая роль уточнена до документированной должности культурного атташе. Identity registry gap: институциональные источники однозначно устанавливают Salvador Efraín Salazar Arrué / Salarrué, но QID mapping требует отдельного review. Рекомендация - сохранить birthDate 1899-10-22 и deathDate 1975-11-27; точные даты подтверждены UES и хронологией UCA. Shared country files не изменялись.",
   },
 ];
 

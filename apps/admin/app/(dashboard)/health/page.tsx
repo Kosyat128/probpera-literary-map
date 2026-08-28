@@ -100,7 +100,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
       <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Сохранение RU+EN</span><strong>{atomicArticleSaveLabel}</strong><small>{atomicArticleSaveDetail}</small></article>
-      <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "—"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
+      <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "-"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
       <article className="stat-card"><span>Автоперевод EN</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
     </section>
     <section className="panel">

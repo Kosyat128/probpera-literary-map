@@ -10,7 +10,7 @@ export const sanMarino: Country = {
       id: "marino_fattori",
       name: "Марино Фаттори",
       fullName: "Marino Fattori",
-      years: "1832–1896",
+      years: "1832-1896",
       birthDate: "1832-03-25",
       deathDate: "1896-04-27",
       birthPlace: "Сан-Марино",

@@ -38,10 +38,10 @@ export function translationQualityIssues(
   const description = translation.description.trim();
   const sentenceCount = countEditorialSentences(description);
   if (sentenceCount < 2 || sentenceCount > 3) {
-    issues.push(`описание ${locale} должно содержать 2–3 предложения`);
+    issues.push(`описание ${locale} должно содержать 2-3 предложения`);
   }
   if (description.length < 140 || description.length > 900) {
-    issues.push(`описание ${locale} должно содержать 140–900 знаков`);
+    issues.push(`описание ${locale} должно содержать 140-900 знаков`);
   }
   if (locale === "ru" && !/[А-Яа-яЁё]/u.test(description)) {
     issues.push("русское описание не содержит кириллицы");

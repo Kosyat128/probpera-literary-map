@@ -118,7 +118,7 @@ function markdownReport(report) {
       `| \`${escapeCell(item.key)}\` | ${escapeCell(item.name)} | \`${escapeCell(
         item.qid
       )}\` | ${escapeCell(JSON.stringify(item.entityLabels))} | ${escapeCell(
-        String(item.cardBirthYear ?? "—")
+        String(item.cardBirthYear ?? "-")
       )} | ${escapeCell(JSON.stringify(item.wikidataBirthYears))} | ${escapeCell(
         item.portraitIdentityRisk ? "да" : "нет"
       )} |`
@@ -148,7 +148,7 @@ function markdownReport(report) {
     `- Надёжных identity-match с локальным staging: ${summary.reliableStagingIdentityMatches}.`,
     `- Из них source-confirmed structured cross-check: ${summary.sourceConfirmedStructuredCrossChecks} (${summary.sourceConfirmedCoveragePercent}%).`,
     `- Offline Wikidata snapshot содержит candidate QID для ${summary.wikidataSnapshotCandidateRecords} карточек, но label+birth-year identity corroborated только у ${summary.wikidataIdentityCorroboratedRecords} (${summary.wikidataStructuredTriageCoveragePercent}% корпуса); identity-discrepant: ${summary.wikidataIdentityDiscrepantRecords}, требуют дополнительной identity-проверки: ${summary.wikidataIdentityReviewRequiredRecords}.`,
-    `- Сопоставлено полей дат со snapshot: ${summary.wikidataDateFieldsCompared}; exact Gregorian: ${summary.wikidataExactGregorianDateMatches}; совместимы при общей precision: ${summary.wikidataSharedPrecisionMatches}; несовместимых строк после curated resolutions: ${summary.wikidataUnresolvedDateDiscrepancies}. Из них ${summary.wikidataLikelyBadQidOrIdentityDateRows} сначала требуют identity repair, а ${summary.wikidataModernReferencedDateContradictions} — современные referenced-противоречия для проверки по авторитетному источнику.`,
+    `- Сопоставлено полей дат со snapshot: ${summary.wikidataDateFieldsCompared}; exact Gregorian: ${summary.wikidataExactGregorianDateMatches}; совместимы при общей precision: ${summary.wikidataSharedPrecisionMatches}; несовместимых строк после curated resolutions: ${summary.wikidataUnresolvedDateDiscrepancies}. Из них ${summary.wikidataLikelyBadQidOrIdentityDateRows} сначала требуют identity repair, а ${summary.wikidataModernReferencedDateContradictions} - современные referenced-противоречия для проверки по авторитетному источнику.`,
     `- Ручных source-resolution с сохранёнными доказательствами: ${summary.manualResolutionEntries} в ${summary.manuallyResolvedRecords} карточках.`,
     `- Карточек с high-confidence противоречиями: ${summary.recordsWithConcreteContradictions}; отдельных противоречий: ${summary.concreteContradictionIssues}.`,
     `- Отдельно допустимые календарные/precision/source расхождения: ${summary.calendarOrSourceDiscrepancyRecords} карточек, ${summary.calendarOrSourceDiscrepancyIssues} полей.`,
@@ -168,7 +168,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- |",
     ...(contradictions.length
       ? contradictions
-      : ["| — | — | — | — | Не найдено | Исправление не требуется |"]),
+      : ["| - | - | - | - | Не найдено | Исправление не требуется |"]),
     "",
     "## Календарные и source-precision расхождения",
     "",
@@ -178,7 +178,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- |",
     ...(calendarDifferences.length
       ? calendarDifferences
-      : ["| — | — | — | — | Не найдено | Исправление не требуется |"]),
+      : ["| - | - | - | - | Не найдено | Исправление не требуется |"]),
     "",
     "## Разрешённые расхождения с более сильным источником",
     "",
@@ -188,7 +188,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- |",
     ...(manualResolutions.length
       ? manualResolutions
-      : ["| — | — | — | — | Не найдено | — |"]),
+      : ["| - | - | - | - | Не найдено | - |"]),
     "",
     "## Offline Wikidata snapshot: структурированная очередь сверки",
     "",
@@ -198,7 +198,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ...(wikidataDateDiscrepancies.length
       ? wikidataDateDiscrepancies
-      : ["| — | — | — | — | — | — | Неразрешённых расхождений нет | — |"]),
+      : ["| - | - | - | - | - | - | Неразрешённых расхождений нет | - |"]),
     "",
     "### QID identity discrepancies",
     "",
@@ -208,7 +208,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- | --- |",
     ...(badQidRows.length
       ? badQidRows
-      : ["| — | — | — | — | — | — | Высокоуверенных identity discrepancies нет |"]),
+      : ["| - | - | - | - | - | - | Высокоуверенных identity discrepancies нет |"]),
     "",
     "## Пробелы metadata: не доказанные ошибки",
     "",
@@ -218,7 +218,7 @@ function markdownReport(report) {
     "| --- | --- | --- | --- | --- | --- |",
     ...(metadataGaps.length
       ? metadataGaps
-      : ["| — | — | — | — | Не найдено | Исправление не требуется |"]),
+      : ["| - | - | - | - | Не найдено | Исправление не требуется |"]),
     "",
     "## Что реально автоматизируется",
     "",

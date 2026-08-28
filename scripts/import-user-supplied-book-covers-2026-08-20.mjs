@@ -524,7 +524,7 @@ function withSource(entry, input) {
 
 function createMarkdownReport(report) {
   const lines = [
-    "# Импорт пользовательских обложек — 20 августа 2026",
+    "# Импорт пользовательских обложек - 20 августа 2026",
     "",
     `Архив: \`${report.archive.name}\`, SHA-256 \`${report.archive.sha256}\`.`,
     "",
@@ -541,7 +541,7 @@ function createMarkdownReport(report) {
     "",
     "## Созданные произведения",
     "",
-    ...report.createdWorks.map((entry) => `- \`${entry.workKey}\` — ${entry.canonicalTitle}.`),
+    ...report.createdWorks.map((entry) => `- \`${entry.workKey}\` - ${entry.canonicalTitle}.`),
     "",
     "## Подтверждённые алиасы Митчелла",
     "",

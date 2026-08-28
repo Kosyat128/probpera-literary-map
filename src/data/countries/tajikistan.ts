@@ -12,7 +12,7 @@ export const tajikistan: Country = {
       name: "Рудаки",
       fullName: "Abu Abd Allah Rudaki",
 
-      years: "ок. 858–941",
+      years: "ок. 858-941",
 
       birthDate: "0858-01-01",
       deathDate: "0941-01-01",
@@ -63,7 +63,7 @@ export const tajikistan: Country = {
       name: "Садриддин Айни",
       fullName: "Sadriddin Ayni",
 
-      years: "1878–1954",
+      years: "1878-1954",
 
       birthDate: "1878-04-15",
       deathDate: "1954-07-15",
@@ -113,7 +113,7 @@ export const tajikistan: Country = {
       name: "Абулькасим Лахути",
       fullName: "Abulqasim Lahuti",
 
-      years: "1887–1957",
+      years: "1887-1957",
 
       birthDate: "1887-12-12",
       deathDate: "1957-03-16",
@@ -161,7 +161,7 @@ export const tajikistan: Country = {
       name: "Мирзо Турсунзаде",
       fullName: "Mirzo Tursunzoda",
 
-      years: "1911–1977",
+      years: "1911-1977",
 
       birthDate: "1911-05-02",
       deathDate: "1977-09-24",
@@ -209,7 +209,7 @@ export const tajikistan: Country = {
       name: "Фазлиддин Мухаммадиев",
       fullName: "Fazliddin Muhammadiev",
 
-      years: "1928–1986",
+      years: "1928-1986",
 
       birthDate: "1928-06-15",
       deathDate: "1986-10-06",
@@ -258,7 +258,7 @@ export const tajikistan: Country = {
       name: "Бозор Собир",
       fullName: "Bozor Sobir",
 
-      years: "1938–2018",
+      years: "1938-2018",
 
       birthDate: "1938-11-20",
       deathDate: "2018-05-01",
@@ -306,7 +306,7 @@ export const tajikistan: Country = {
       name: "Тимур Зульфикаров",
       fullName: "Timur Zulfikarov",
 
-      years: "1936–",
+      years: "1936-",
 
       birthDate: "1936-08-17",
       deathDate: "",
@@ -356,7 +356,7 @@ export const tajikistan: Country = {
       name: "Саттор Турсун",
       fullName: "Sattor Tursun",
 
-      years: "1946–",
+      years: "1946-",
 
       birthDate: "1946-02-15",
       deathDate: "",
@@ -405,7 +405,7 @@ export const tajikistan: Country = {
       name: "Мухаммаджан Шакури",
       fullName: "Muhammadjon Shakuri",
 
-      years: "1925–2012",
+      years: "1925-2012",
 
       birthDate: "1925-02",
       deathDate: "2012-09-16",

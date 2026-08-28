@@ -1,7 +1,7 @@
 export const dickensProfile = {
  id:"dickens",
  fullName:"Чарльз Джон Хаффем Диккенс",
- years:"1812–1870",
+ years:"1812-1870",
  country:"Великобритания",
  birthPlace:"Портсмут, Англия",
  movement:"Реализм",
@@ -12,8 +12,8 @@ export const dickensProfile = {
  profession:["Писатель","Журналист"],
  biography:"Английский писатель, классик мировой литературы XIX века, известный социальными романами.",
  works:[
-  {title:"Оливер Твист",year:"1837–1839",genre:"Роман"},
-  {title:"Большие надежды",year:"1860–1861",genre:"Роман"},
+  {title:"Оливер Твист",year:"1837-1839",genre:"Роман"},
+  {title:"Большие надежды",year:"1860-1861",genre:"Роман"},
   {title:"Рождественская песнь",year:"1843",genre:"Повесть"}
  ],
  places:["Лондон"],

@@ -852,7 +852,7 @@ function withSourceIdentity(decision, input) {
 
 function createMarkdownReport(report) {
   const lines = [
-    "# Импорт пользовательских редакционных обложек — 13 августа 2026",
+    "# Импорт пользовательских редакционных обложек - 13 августа 2026",
     "",
     "Архив обработан без замены существующих обложек. В публикацию попали только PNG с именем ChatGPT Image, сопоставленные с одной существующей карточкой без обложки.",
     "",
@@ -887,7 +887,7 @@ function createMarkdownReport(report) {
         entry.sourceIndex +
         " | " +
         entry.author +
-        " — " +
+        " - " +
         entry.title +
         " | " +
         entry.workKey +

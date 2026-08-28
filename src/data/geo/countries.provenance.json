@@ -1,5 +1,5 @@
 {
-  "dataset": "Natural Earth Admin 0 – Countries",
+  "dataset": "Natural Earth Admin 0 - Countries",
   "version": "5.1.2",
   "repositoryVersion": "5.1.2",
   "themeVersion": "5.1.1",
@@ -10,7 +10,7 @@
   "releaseUrl": "https://github.com/nvkelso/natural-earth-vector/releases/tag/v5.1.2",
   "themeUrl": "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
   "rawSha256": "6866C877D39CBA9C357620878839B336D569F8C662D3CFAB4CB1DBE2D39C977F",
-  "localSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+  "localSha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
   "license": "Public domain",
   "termsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
   "viewpoint": "Natural Earth default",
@@ -34,7 +34,7 @@
       "path": "/textures/modern-atlas-2026-ru.webp",
       "width": 4096,
       "height": 2048,
-      "bytes": 1477396,
+      "bytes": 1477124,
       "locale": "ru",
       "density": "desktop",
       "countryLabelCount": 87,
@@ -43,13 +43,13 @@
         "omittedByRank": "ALB ARM ATF BDI BLZ BRN CYN EST FJI GMB GNB HRV KOS KWT LSO LUX MDA MKD MNE MWI SAH SLV SOM SVK SVN TGO",
         "omittedByCollision": "AFG ARE AUT BEL BEN BFA BGD BGR BIH BLR BOL BTN BWA CAF CHE CIV COG CRI CYP CZE DEU DNK DOM EGY ERI FIN GEO GHA GNQ HND HTI HUN IRL ITA JAM JOR KGZ KHM KOR LAO LTU MMR MRT NIC NLD OMN PRT PSX QAT RWA SDS SLB SLE SOL SRB SUR SWZ SYR TKM TLS UGA URY VEN ZMB"
       },
-      "sha256": "2EB0A86AEA6D1ADFF08C1AACE8FBD89149F432AEBC4001F1B97AEC637321D82B"
+      "sha256": "26A04A83536B6CEB7A3DB37C2FF67C083CD1699C4DD4543292E43C8D694FC4FC"
     },
     {
       "path": "/textures/modern-atlas-2026-ru-mobile.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 395256,
+      "bytes": 395324,
       "locale": "ru",
       "density": "mobile",
       "countryLabelCount": 70,
@@ -58,7 +58,7 @@
         "omittedByRank": "ALB ARE ARM ATA ATF AUT AZE BDI BEN BGR BHS BIH BLR BLZ BRN BTN BWA CAF CHE COG CRI CYN CYP CZE DJI DNK DOM ERI EST FJI FLK GAB GEO GMB GNB GNQ GUY HND HRV HTI HUN ISR JAM JOR KGZ KOS KWT LAO LBN LBR LSO LTU LUX LVA MDA MKD MNE MWI NIC NLD OMN PAN PRI PRY PSX QAT SAH SLE SLV SOL SOM SRB SUR SVK SVN SWZ TGO TJK TKM TLS TTO URY VUT",
         "omittedByCollision": "AFG BEL BFA BGD BOL CIV DEU EGY FIN GHA IRL ITA KHM KOR MMR MRT PRT RWA SDS SLB SYR UGA VEN ZMB"
       },
-      "sha256": "DAB618C766250D9DF340868366A987F2A402864DC8B717482255E470F92C39AB"
+      "sha256": "8817B45F53A9CAA9592A711E52ED83004265F36DD98DE777776A2CB6143BD58B"
     },
     {
       "path": "/textures/modern-atlas-2026-en.webp",
@@ -94,7 +94,7 @@
   "alignment": "Both raster assets combine the equirectangular Natural Earth I physical base with boundaries rendered from countries.geojson. The bundled GeoJSON remains the source for country hit testing, outlines, centroids, and the procedural fallback.",
   "editionNote": "2026 identifies the site's modern visual edition, not the date or legal status of the country boundaries.",
   "labels": {
-    "source": "Natural Earth Admin 0 – Countries",
+    "source": "Natural Earth Admin 0 - Countries",
     "sourceSha256": "6866C877D39CBA9C357620878839B336D569F8C662D3CFAB4CB1DBE2D39C977F",
     "fields": [
       "NAME_RU",

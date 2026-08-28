@@ -8,7 +8,7 @@ export const peru: Country = {
     {
       id: "inca_garcilaso_de_la_vega",
       name: "Инка Гарсиласо де ла Вега",
-      years: "1539–1616",
+      years: "1539-1616",
       birthDate: "1539-04-12",
       deathDate: "1616-04-23",
       birthPlace: "Куско, Вице-королевство Перу",
@@ -45,7 +45,7 @@ export const peru: Country = {
     {
       id: "juan_espinosa_medrano",
       name: "Хуан Эспиноса Медрано",
-      years: "около 1629–1688",
+      years: "около 1629-1688",
       birthDate: "1629",
       deathDate: "1688-11-23",
       birthPlace: "Калькаусо, Перу",
@@ -82,7 +82,7 @@ export const peru: Country = {
     {
       id: "ricardo_palma",
       name: "Рикардо Пальма",
-      years: "1833–1919",
+      years: "1833-1919",
       birthDate: "1833-02-07",
       deathDate: "1919-10-06",
       birthPlace: "Лима, Перу",
@@ -92,7 +92,7 @@ export const peru: Country = {
         lng: -77.0428
       },
       portrait: "",
-      bio: "Перуанский писатель, историк и журналист, создатель жанра «Перуанские традиции» — цикла историко-литературных рассказов о прошлом страны.",
+      bio: "Перуанский писатель, историк и журналист, создатель жанра «Перуанские традиции» - цикла историко-литературных рассказов о прошлом страны.",
       works: [
         "Перуанские традиции",
         "Анналы инквизиции Лимы",
@@ -119,7 +119,7 @@ export const peru: Country = {
         {
       id: "manuel_gonzalez_prada",
       name: "Мануэль Гонсалес Прада",
-      years: "1844–1918",
+      years: "1844-1918",
       birthDate: "1844-01-05",
       deathDate: "1918-07-22",
       birthPlace: "Лима, Перу",
@@ -156,7 +156,7 @@ export const peru: Country = {
     {
       id: "cesar_vallejo",
       name: "Сесар Вальехо",
-      years: "1892–1938",
+      years: "1892-1938",
       birthDate: "1892-03-16",
       deathDate: "1938-04-15",
       birthPlace: "Сантьяго-де-Чуко, Перу",
@@ -195,7 +195,7 @@ export const peru: Country = {
     {
       id: "jose_maria_arguedas",
       name: "Хосе Мария Аргедас",
-      years: "1911–1969",
+      years: "1911-1969",
       birthDate: "1911-01-18",
       deathDate: "1969-12-02",
       birthPlace: "Андауайлас, Перу",
@@ -236,7 +236,7 @@ export const peru: Country = {
         {
       id: "mario_vargas_llosa",
       name: "Марио Варгас Льоса",
-      years: "1936–",
+      years: "1936-",
       birthDate: "1936-03-28",
       birthPlace: "Арекипа, Перу",
       coordinates: {
@@ -282,7 +282,7 @@ export const peru: Country = {
     {
       id: "julio_ramon_ribeyro",
       name: "Хулио Рамон Рибейро",
-      years: "1929–1994",
+      years: "1929-1994",
       birthDate: "1929-08-31",
       deathDate: "1994-12-04",
       birthPlace: "Лима, Перу",
@@ -321,7 +321,7 @@ export const peru: Country = {
     {
       id: "alfredo_bryce_echenique",
       name: "Альфредо Брис Эченике",
-      years: "1939–",
+      years: "1939-",
       birthDate: "1939-02-19",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -358,7 +358,7 @@ export const peru: Country = {
         {
       id: "claudia_salazar_jimenez",
       name: "Клаудия Салазар Хименес",
-      years: "1976–",
+      years: "1976-",
       birthDate: "1976-07-13",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -395,7 +395,7 @@ export const peru: Country = {
     {
       id: "santiago_roncagliolo",
       name: "Сантьяго Ронкальоло",
-      years: "1975–",
+      years: "1975-",
       birthDate: "1975-07-29",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -432,7 +432,7 @@ export const peru: Country = {
     {
       id: "eduardo_gonzalez_viana",
       name: "Эдуардо Гонсалес Вьяна",
-      years: "1941–",
+      years: "1941-",
       birthDate: "1941-11-13",
       birthPlace: "Ла-Оройя, Перу",
       coordinates: {
@@ -467,7 +467,7 @@ export const peru: Country = {
     {
       id: "fernando_iwasaki",
       name: "Фернандо Ивасаки",
-      years: "1961–",
+      years: "1961-",
       birthDate: "1961-06-05",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -502,7 +502,7 @@ export const peru: Country = {
         {
       id: "julio_ortega",
       name: "Хулио Ортега",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-03-13",
       birthPlace: "Касма, Перу",
       coordinates: {
@@ -567,7 +567,7 @@ export const peru: Country = {
     {
       id: "ivan_thays",
       name: "Иван Тайс",
-      years: "1968–",
+      years: "1968-",
       birthDate: "1968-10-21",
       birthPlace: "Лима, Перу",
       coordinates: {
@@ -575,7 +575,7 @@ export const peru: Country = {
         lng: -77.0428
       },
       portrait: "",
-      bio: "Перуанский писатель, журналист и литературный критик. Один из заметных авторов поколения конца XX — начала XXI века.",
+      bio: "Перуанский писатель, журналист и литературный критик. Один из заметных авторов поколения конца XX - начала XXI века.",
       works: [
         "Измерение любви",
         "Незнакомцы"
@@ -603,7 +603,7 @@ export const peru: Country = {
     {
       id: "karina_sainz_borgo_peru_relation",
       name: "Карина Сайнс Борго",
-      years: "1982–",
+      years: "1982-",
       birthPlace: "Каракас, Венесуэла",
       coordinates: {
         lat: 10.4806,
@@ -625,7 +625,7 @@ export const peru: Country = {
         {
       id: "oscar_colchado_lucio",
       name: "Оскар Колчадо Лусио",
-      years: "1947–",
+      years: "1947-",
       birthDate: "1947-07-12",
       birthPlace: "Юнгай, Перу",
       coordinates: {
@@ -659,7 +659,7 @@ export const peru: Country = {
     {
       id: "mario_bellatin",
       name: "Марио Беллатин",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960-07-23",
       birthPlace: "Мехико, Мексика",
       coordinates: {
@@ -695,7 +695,7 @@ export const peru: Country = {
     {
       id: "jose_watanabe",
       name: "Хосе Ватанабе",
-      years: "1946–2007",
+      years: "1946-2007",
       birthDate: "1946-03-17",
       deathDate: "2007-04-25",
       birthPlace: "Трухильо, Перу",

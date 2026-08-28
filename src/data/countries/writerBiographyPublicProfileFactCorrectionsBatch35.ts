@@ -22,7 +22,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       works: ["Мужчина, предавшийся любви","Пять женщин, предавшихся любви","Женщина, предавшаяся любви"],
     },
     evidence: [
-      { provider: "Web NDL Authorities — National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00269930", checkedAt },
+      { provider: "Web NDL Authorities - National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00269930", checkedAt },
       { provider: "Treccani", url: "https://www.treccani.it/enciclopedia/saikaku-ihara/", checkedAt },
     ],
     note: "В текущем списке два названия передавали один и тот же роман Kōshoku ichidai otoko; список заменён тремя различными произведениями. Биография избавлена от расплывчатого жанрового ярлыка «городской реалистический роман».",
@@ -34,7 +34,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       birthPlace: "деревня Хиното (ныне Мориока), префектура Иватэ, Япония",
     },
     evidence: [
-      { provider: "National Diet Library of Japan — Portraits of Modern Japanese Historical Figures", url: "https://www.ndl.go.jp/portrait/e/datas/6251", checkedAt },
+      { provider: "National Diet Library of Japan - Portraits of Modern Japanese Historical Figures", url: "https://www.ndl.go.jp/portrait/e/datas/6251", checkedAt },
       { provider: "Iwate Prefectural Library", url: "https://www.library.pref.iwate.jp/english/intro-t.html", checkedAt },
     ],
     note: "Исправлена русская передача названия префектуры «Иваитэ» на «Иватэ» и уточнено подтверждённое место рождения без изменения дат.",
@@ -43,17 +43,17 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     countryId: "japan",
     writerId: "kamo_no_chomei",
     patch: {
-      years: "ок. 1153/1155–1216",
+      years: "ок. 1153/1155-1216",
       birthPlace: "Киото, Япония",
       deathPlace: "Тоёма близ Киото, Япония",
       birthDate: "",
     },
     evidence: [
       { provider: "Treccani", url: "https://www.treccani.it/enciclopedia/kamo-no-chomei/", checkedAt },
-      { provider: "Web NDL Authorities — National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00270230", checkedAt },
+      { provider: "Web NDL Authorities - National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00270230", checkedAt },
       { provider: "CiNii Research", url: "https://cir.nii.ac.jp/crid/1390282680262950528", checkedAt },
     ],
-    note: "Точный год рождения спорен: NDL принимает 1153, Treccani — 1155. Поэтому ложная точность удалена, а диапазон и места сформулированы консервативно.",
+    note: "Точный год рождения спорен: NDL принимает 1153, Treccani - 1155. Поэтому ложная точность удалена, а диапазон и места сформулированы консервативно.",
   },
   {
     countryId: "japan",
@@ -65,8 +65,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       awards: ["Премия японских книготорговцев 2009 года"],
     },
     evidence: [
-      { provider: "Futabasha — официальный профиль автора", url: "https://fr.futabasha.co.jp/special/minatokanae/author/", checkedAt },
-      { provider: "Japanese Book News — Japan Foundation", url: "https://www.bookmark.jpf.go.jp/media/2024/10/JBNPDF60.pdf", checkedAt },
+      { provider: "Futabasha - официальный профиль автора", url: "https://fr.futabasha.co.jp/special/minatokanae/author/", checkedAt },
+      { provider: "Japanese Book News - Japan Foundation", url: "https://www.bookmark.jpf.go.jp/media/2024/10/JBNPDF60.pdf", checkedAt },
       { provider: "Hachette UK", url: "https://www.hachette.co.uk/contributor/kanae-minato/", checkedAt },
     ],
     note: "Дата 1973-01-01 была неподтверждённой технической подстановкой: официальные профили публикуют только год. Удалены не подтверждённые в проверенных источниках названия «Пчелиная матка» и «Казнь», а ошибочная премия заменена документированной.",
@@ -79,7 +79,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     },
     evidence: [
       { provider: "Kawabata Yasunari Literature Museum / Ibaraki City", url: "https://www.city.ibaraki.osaka.jp/kikou/shimin/bunka/menu/kawabata/bungakuknnnituite/profilekawabata.html", checkedAt },
-      { provider: "National Diet Library of Japan — Portraits", url: "https://www.ndl.go.jp/portrait/e/datas/6086/", checkedAt },
+      { provider: "National Diet Library of Japan - Portraits", url: "https://www.ndl.go.jp/portrait/e/datas/6086/", checkedAt },
       { provider: "Nobel Prize", url: "https://www.nobelprize.org/prizes/literature/1968/kawabata/biographical/", checkedAt },
     ],
     note: "Два японских официальных источника указывают 14 июня, тогда как в текущей карточке стояло 11 июня. Для профильного поля принят согласованный японский музейно-библиотечный вариант; расхождение с частью международных справочников явно зафиксировано.",
@@ -88,13 +88,13 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     countryId: "japan",
     writerId: "keigo_higashino",
     patch: {
-      years: "1958–2026",
+      years: "1958-2026",
       deathDate: "2026-07-23",
       works: ["Преданность подозреваемого X","Злодеяние","Чудеса магазина «Намия»"],
     },
     evidence: [
       { provider: "Kodansha", url: "https://www.kodansha.co.jp/notices", checkedAt },
-      { provider: "Shinchosha — профиль автора", url: "https://www.shinchosha.co.jp/writer/2592/", checkedAt },
+      { provider: "Shinchosha - профиль автора", url: "https://www.shinchosha.co.jp/writer/2592/", checkedAt },
       { provider: "Macmillan", url: "https://academic.macmillan.com/author/keigohigashino/", checkedAt },
     ],
     note: "Карточка была устаревшей: смерть 23 июля 2026 года подтверждена издательством. Неподтверждённое название «Убийство в Белом доме» удалено, список заменён документированными произведениями.",
@@ -123,8 +123,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     },
     evidence: [
       { provider: "Bashō Memorial Association, Iga", url: "https://www.basho-bp.jp/?page_id=16", checkedAt },
-      { provider: "Web NDL Authorities — National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00270778", checkedAt },
-      { provider: "Government of Japan — Highlighting Japan", url: "https://www.gov-online.go.jp/eng/publicity/book/hlj/html/202205/202205_12_en.html", checkedAt },
+      { provider: "Web NDL Authorities - National Diet Library of Japan", url: "https://id.ndl.go.jp/auth/ndlna/00270778", checkedAt },
+      { provider: "Government of Japan - Highlighting Japan", url: "https://www.gov-online.go.jp/eng/publicity/book/hlj/html/202205/202205_12_en.html", checkedAt },
     ],
     note: "«Путешествие на Северную дорогу» и «Тропы Севера» в текущем списке дублировали Oku no hosomichi; оставлено одно редакционно единообразное название. Место рождения уточнено до современного административного обозначения.",
   },
@@ -136,7 +136,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     },
     evidence: [
       { provider: "Japan International Translation Competition / JLPP", url: "https://www.jlpp.go.jp/en/works/author02_10.html", checkedAt },
-      { provider: "Japan Foundation — Worth Sharing", url: "https://www.worthsharing.jpf.go.jp/en/vol_1/tree-house/", checkedAt },
+      { provider: "Japan Foundation - Worth Sharing", url: "https://www.worthsharing.jpf.go.jp/en/vol_1/tree-house/", checkedAt },
       { provider: "Japan Foundation Toronto", url: "https://tr.jpf.go.jp/event/writers-on-writing/", checkedAt },
     ],
     note: "Текущие названия «Дом на берегу», «Женщина в зеркале» и «Маленький дом» не совпадают с подтверждённой библиографией и частично относятся к другим авторам. Они заменены тремя документированными произведениями; год премии Наоки в карточке уже соответствует году вручения.",
@@ -145,7 +145,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     countryId: "japan",
     writerId: "murasaki_shikibu",
     patch: {
-      years: "конец X — начало XI века",
+      years: "конец X - начало XI века",
       birthDate: "",
       deathDate: "",
       birthPlace: "",
@@ -154,9 +154,9 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     },
     evidence: [
       { provider: "Kyoto National Museum", url: "https://www.kyohaku.go.jp/eng/exhibitions/special/2026_genji/", checkedAt },
-      { provider: "Columbia University — Asia for Educators", url: "https://afe.easia.columbia.edu/special/japan_600ce_genji.htm", checkedAt },
+      { provider: "Columbia University - Asia for Educators", url: "https://afe.easia.columbia.edu/special/japan_600ce_genji.htm", checkedAt },
     ],
-    note: "Годы ок. 973–ок. 1014 являются реконструкцией, а не установленными датами; профиль не должен показывать их как проверенный диапазон. Оценку «величайшее произведение» заменяет проверяемое авторство и исторический контекст.",
+    note: "Годы ок. 973-ок. 1014 являются реконструкцией, а не установленными датами; профиль не должен показывать их как проверенный диапазон. Оценку «величайшее произведение» заменяет проверяемое авторство и исторический контекст.",
   },
   {
     countryId: "japan",
@@ -230,7 +230,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       works: ["Охотничье ружьё","Бой быков","Дуньхуан","Лоулань"],
     },
     evidence: [
-      { provider: "Hokkaido Government — Red Brick Office Exhibition Guide", url: "https://akarenga-exhibitionguide.pref.hokkaido.lg.jp/archives/predecessors/62/", checkedAt },
+      { provider: "Hokkaido Government - Red Brick Office Exhibition Guide", url: "https://akarenga-exhibitionguide.pref.hokkaido.lg.jp/archives/predecessors/62/", checkedAt },
       { provider: "Yasushi Inoue Memorial Hall", url: "https://www.inoue.abs-tomonokai.jp/biography", checkedAt },
       { provider: "Japan Literature Publishing Project", url: "https://www.jlpp.go.jp/en/works/author02_05.html", checkedAt },
     ],
@@ -266,7 +266,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     countryId: "japan",
     writerId: "yoshida_kenko",
     patch: {
-      years: "конец XIII — середина XIV века",
+      years: "конец XIII - середина XIV века",
       birthDate: "",
       deathDate: "",
       birthPlace: "",
@@ -278,7 +278,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       { provider: "Suntory Museum of Art", url: "https://www.suntory.com/sma/exhibition/2014_3/display.html", checkedAt },
       { provider: "National Diet Library of Japan Authorities", url: "https://id.ndl.go.jp/auth/ndlna/00272639", checkedAt },
     ],
-    note: "Источники расходятся между 1282–1350 и ок. 1283 — после 1352; точный диапазон 1283–1352 не следует публиковать как установленный. Места рождения и смерти надёжно не подтверждены.",
+    note: "Источники расходятся между 1282-1350 и ок. 1283 - после 1352; точный диапазон 1283-1352 не следует публиковать как установленный. Места рождения и смерти надёжно не подтверждены.",
   },
   {
     countryId: "japan",
@@ -298,7 +298,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     writerId: "ghalib_halasa",
     patch: {
       name: "Галиб Халаса",
-      years: "1932–1989",
+      years: "1932-1989",
       birthDate: "1932",
       deathDate: "1989",
       birthPlace: "Маин, близ Мадабы, Иордания",
@@ -413,13 +413,13 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
       { provider: "Qazaqstan Tarihy", url: "https://e-history.kz/kz/history-of-kazakhstan/show/9024", checkedAt },
       { provider: "Правительство Республики Казахстан / юбилейный проект ЮНЕСКО", url: "https://www.gov.kz/memleket/entities/mfa-helsinki/press/news/details/338208?lang=en", checkedAt },
     ],
-    note: "Текущая дата рождения 1872-01-05 ошибочна. В официальных публикациях встречаются календарные расхождения, но современная государственная памятная дата — 5 сентября 1872 года; суперлатив заменён конкретными трудами.",
+    note: "Текущая дата рождения 1872-01-05 ошибочна. В официальных публикациях встречаются календарные расхождения, но современная государственная памятная дата - 5 сентября 1872 года; суперлатив заменён конкретными трудами.",
   },
   {
     countryId: "kazakhstan",
     writerId: "dulat_isabekov",
     patch: {
-      years: "1942–2025",
+      years: "1942-2025",
       deathDate: "2025-02-22",
       birthPlace: "село Ленинский путь, Арысский район, Южно-Казахстанская область",
       works: ["Гаухартас","Дермене","Каргын","Старшая сестра"],

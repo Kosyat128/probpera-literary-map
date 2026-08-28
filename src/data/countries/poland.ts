@@ -10,7 +10,7 @@ export const poland: Country = {
       id: "jan_kochanowski",
       name: "Ян Кохановский",
       fullName: "Jan Kochanowski",
-      years: "1530–1584",
+      years: "1530-1584",
 
       birthDate: "1530",
       deathDate: "1584-08-22",
@@ -54,7 +54,7 @@ export const poland: Country = {
       id: "adam_mickiewicz",
       name: "Адам Мицкевич",
       fullName: "Adam Mickiewicz",
-      years: "1798–1855",
+      years: "1798-1855",
 
       birthDate: "1798-12-24",
       deathDate: "1855-11-26",
@@ -100,7 +100,7 @@ export const poland: Country = {
       id: "juliusz_slowacki",
       name: "Юлиуш Словацкий",
       fullName: "Juliusz Słowacki",
-      years: "1809–1849",
+      years: "1809-1849",
 
       birthDate: "1809-09-04",
       deathDate: "1849-04-03",
@@ -145,7 +145,7 @@ export const poland: Country = {
       nobelYear: 1905,
       name: "Генрик Сенкевич",
       fullName: "Henryk Sienkiewicz",
-      years: "1846–1916",
+      years: "1846-1916",
 
       birthDate: "1846-05-05",
       deathDate: "1916-11-15",
@@ -194,7 +194,7 @@ export const poland: Country = {
       name: "Болеслав Прус",
       fullName: "Bolesław Prus",
 
-      years: "1847–1912",
+      years: "1847-1912",
 
       birthDate: "1847-08-20",
       deathDate: "1912-05-19",
@@ -240,7 +240,7 @@ export const poland: Country = {
       name: "Станислав Лем",
       fullName: "Stanisław Lem",
 
-      years: "1921–2006",
+      years: "1921-2006",
 
       birthDate: "1921-09-12",
       deathDate: "2006-03-27",
@@ -326,7 +326,7 @@ export const poland: Country = {
       name: "Чеслав Милош",
       fullName: "Czesław Miłosz",
 
-      years: "1911–2004",
+      years: "1911-2004",
 
       birthDate: "1911-06-30",
       deathDate: "2004-08-14",
@@ -375,7 +375,7 @@ export const poland: Country = {
       name: "Вислава Шимборская",
       fullName: "Wisława Szymborska",
 
-      years: "1923–2012",
+      years: "1923-2012",
 
       birthDate: "1923-07-02",
       deathDate: "2012-02-01",

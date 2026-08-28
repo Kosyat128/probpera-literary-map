@@ -182,7 +182,7 @@ describe("CMS direct-edit bridge security", () => {
       ])
     ).toEqual({});
     expect(
-      cmsEntityFieldMarker("writer", "russia:tolstoy", "years", "1828–1910")
+      cmsEntityFieldMarker("writer", "russia:tolstoy", "years", "1828-1910")
     ).toMatchObject({
       "data-cms-field": "years",
       "data-cms-entity-id": "russia:tolstoy",
