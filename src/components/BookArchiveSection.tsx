@@ -3897,16 +3897,30 @@ export default function BookArchiveSection({
                 aria-label={t("Качество трёхмерной полки")}
               >
                 <option value="auto">
-                  {t("Авто")} · {qualitySettings.profile}
+                  {t("Авто")} ·{" "}
+                  {qualitySettings.profile === "HIGH"
+                    ? language === "en"
+                      ? "High"
+                      : "Высокое"
+                    : qualitySettings.profile === "BALANCED"
+                      ? language === "en"
+                        ? "Balanced"
+                        : "Сбалансированное"
+                      : language === "en"
+                        ? "Economy"
+                        : "Экономичное"}
                 </option>
-                <option value="HIGH">HIGH</option>
-                <option value="BALANCED">BALANCED</option>
-                <option value="ECONOMY">ECONOMY</option>
+                <option value="HIGH">
+                  {language === "en" ? "High" : "Высокое"}
+                </option>
+                <option value="BALANCED">
+                  {language === "en" ? "Balanced" : "Сбалансированное"}
+                </option>
+                <option value="ECONOMY">
+                  {language === "en" ? "Economy" : "Экономичное"}
+                </option>
               </select>
             </label>
-            <span>
-              {number(filteredItems.length)} {t("произведений")}
-            </span>
           </div>
           {collectionShelfSelection.missingReferences.length > 0 ? (
             <div className="book-shelf-frame__missing-references" role="status">

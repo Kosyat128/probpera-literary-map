@@ -307,7 +307,7 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
                 expected: Object.freeze({
                   files: 9,
                   sha256:
-                    "7b64ee4ff098a8dab2f65d8169612e6438d5f81a98c646069c162bd123e483f5",
+                    "8cb2e7beb9ae714069e964535b266dc8606c6db2e9f885f84d3553f21c8b4b65",
                 }),
               }),
             })

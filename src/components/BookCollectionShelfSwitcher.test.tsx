@@ -71,7 +71,7 @@ describe("BookCollectionShelfSwitcher", () => {
     );
   });
 
-  it("links the native select to a live, visible status", () => {
+  it("links the native select to a screen-reader live status", () => {
     const markup = renderToStaticMarkup(
       <BookCollectionShelfSwitcher
         id="archive-shelf"

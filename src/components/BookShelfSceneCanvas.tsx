@@ -14,7 +14,6 @@ import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
 } from "./BookShelfScene";
-import BookShelfSpatialEnvironment from "./BookShelfSpatialEnvironment";
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection } from "../books/completeShelfModel";
 import {
@@ -449,12 +448,6 @@ export default function BookShelfSceneCanvas({
         )}
         itemCount={items.length}
         reducedMotion={qualitySettings.motion.reduced}
-      />
-      <BookShelfSpatialEnvironment
-        appearance={appearance}
-        economical={qualitySettings.profile === "ECONOMY"}
-        qualityProfile={qualitySettings.profile}
-        inspectionActive={inspectionActive}
       />
       <hemisphereLight
         args={[
